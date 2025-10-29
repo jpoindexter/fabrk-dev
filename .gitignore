@@ -165,3 +165,4 @@ storybook-static/
 package-lock.json
 npm-lock.json
 yarn.lock
+.ai-context.md
