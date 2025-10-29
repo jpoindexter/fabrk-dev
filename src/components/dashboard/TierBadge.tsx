@@ -1,0 +1,54 @@
+"use client";
+
+type TierName = "free" | "trial" | "starter" | "professional" | "enterprise";
+import { Badge } from "@/components/ui/badge";
+import { tokens } from "@/lib/design-system/tokens";
+import { TIER_BADGES, TIER_NAMES } from "@/lib/features/tier-config";
+import { Crown, Sparkles, Star, Zap } from "lucide-react";
+
+interface TierBadgeProps {
+  tier: string;
+  showIcon?: boolean;
+  size?: "sm" | "md" | "lg";
+}
+
+const tierIcons = {
+  free: Zap,
+  trial: Zap,
+  starter: Star,
+  professional: Crown,
+  enterprise: Sparkles,
+};
+
+export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps) {
+  const tierName = (tier || "trial") as TierName;
+  const displayName = TIER_NAMES[tierName] || "Trial";
+  const badge = TIER_BADGES[tierName] || TIER_BADGES.trial;
+  const Icon = tierIcons[tierName] || Zap;
+
+  const sizeClasses = {
+    sm: "text-xs px-2 py-0.5",
+    md: "text-sm px-2.5 py-3",
+    lg: "text-base px-3 py-3.5",
+  };
+
+  return (
+    <Badge
+      className={`${badge.bgColor} ${badge.color} ${sizeClasses[size]} flex items-center gap-2 font-medium`}
+      variant="secondary"
+    >
+      {showIcon && (
+        <Icon
+          className={
+            size === "sm"
+              ? "size-3"
+              : size === "lg"
+                ? `${tokens.sizes.icon.md}`
+                : `${tokens.sizes.icon.sm}`
+          }
+        />
+      )}
+      {displayName.toUpperCase()}
+    </Badge>
+  );
+}

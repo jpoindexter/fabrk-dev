@@ -1,0 +1,483 @@
+/**
+ * UI Pub Structure Layer
+ *
+ * Applies UI Pub's exact spacing, sizing, shadows, and transitions
+ * while KEEPING ClearGen's existing color palette.
+ *
+ * Import this AFTER globals.css to override with UI Pub aesthetic.
+ */
+
+:root {
+  /* ===================================
+     SPACING - UI Pub's 4px Grid
+     =================================== */
+  --spacing: 0.25rem; /* 4px base unit */
+
+  /* Common spacing shortcuts */
+  --space-1: calc(var(--spacing) * 1);   /* 4px */
+  --space-2: calc(var(--spacing) * 2);   /* 8px */
+  --space-3: calc(var(--spacing) * 3);   /* 12px */
+  --space-4: calc(var(--spacing) * 4);   /* 16px */
+  --space-5: calc(var(--spacing) * 5);   /* 20px */
+  --space-6: calc(var(--spacing) * 6);   /* 24px */
+  --space-8: calc(var(--spacing) * 8);   /* 32px */
+  --space-10: calc(var(--spacing) * 10); /* 40px */
+  --space-12: calc(var(--spacing) * 12); /* 48px */
+  --space-16: calc(var(--spacing) * 16); /* 64px */
+
+  /* ===================================
+     BORDER RADIUS - UI Pub's Values
+     =================================== */
+  --radius-xs: 3px;
+  --radius-sm: 4.5px;
+  --radius-md: 6px;
+  --radius-lg: 7.5px;
+  --radius-xl: 9px;
+  --radius-2xl: 12px;
+  --radius-3xl: 16px;
+  --radius-full: 9999px;
+
+  /* ===================================
+     SHADOWS - UI Pub's Minimal Shadows
+     =================================== */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* ===================================
+     TRANSITIONS - UI Pub's Timing
+     =================================== */
+  --transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===================================
+     TYPOGRAPHY - UI Pub's Scale
+     =================================== */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+}
+
+/* ========================================
+   BUTTON - UI Pub Structure
+   ======================================== */
+
+button,
+[role="button"],
+.button {
+  /* Sizing */
+  height: calc(var(--spacing) * 9);  /* 36px */
+  padding: 0 calc(var(--spacing) * 4); /* 0 16px */
+
+  /* Typography */
+  font-size: var(--text-sm);  /* 14px */
+  font-weight: 500;
+  line-height: 1;
+
+  /* Borders */
+  border-width: 1px;
+  border-radius: var(--radius-md);  /* 6px */
+
+  /* Transitions */
+  transition: all var(--transition-base);
+
+  /* Remove heavy shadows */
+  box-shadow: none;
+}
+
+/* Button sizes */
+button[class*="sm"],
+.button-sm {
+  height: calc(var(--spacing) * 8);  /* 32px */
+  padding: 0 calc(var(--spacing) * 3); /* 0 12px */
+  font-size: 13px;
+}
+
+button[class*="lg"],
+.button-lg {
+  height: calc(var(--spacing) * 11);  /* 44px */
+  padding: 0 calc(var(--spacing) * 6); /* 0 24px */
+  font-size: 15px;
+}
+
+/* Button hover - subtle */
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ========================================
+   INPUT - UI Pub Structure
+   ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  /* Sizing */
+  height: calc(var(--spacing) * 10);  /* 40px */
+  padding: 0 calc(var(--spacing) * 3); /* 0 12px */
+
+  /* Typography */
+  font-size: var(--text-sm);  /* 14px */
+  line-height: 1.5;
+
+  /* Borders */
+  border-width: 1px;
+  border-radius: var(--radius-md);  /* 6px */
+
+  /* Transitions */
+  transition: all var(--transition-base);
+
+  /* Remove shadows */
+  box-shadow: none;
+}
+
+textarea {
+  height: auto;
+  padding: calc(var(--spacing) * 3);  /* 12px */
+  min-height: calc(var(--spacing) * 20);  /* 80px */
+}
+
+/* Input focus - clean ring */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+}
+
+/* Input sizes */
+input[class*="sm"] {
+  height: calc(var(--spacing) * 9);  /* 36px */
+  padding: 0 calc(var(--spacing) * 2.5); /* 0 10px */
+  font-size: 13px;
+}
+
+input[class*="lg"] {
+  height: calc(var(--spacing) * 12);  /* 48px */
+  padding: 0 calc(var(--spacing) * 4); /* 0 16px */
+  font-size: 15px;
+}
+
+/* ========================================
+   CARD - UI Pub Structure
+   ======================================== */
+
+[data-component="card"],
+.card {
+  /* Spacing */
+  padding: calc(var(--spacing) * 6);  /* 24px */
+
+  /* Borders */
+  border-width: 1px;
+  border-radius: var(--radius-lg);  /* 7.5px */
+
+  /* Minimal shadow */
+  box-shadow: var(--shadow-sm);
+
+  /* Smooth transition */
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-base);
+}
+
+/* Card sections */
+[data-slot="card-header"],
+.card-header {
+  padding: 0 0 calc(var(--spacing) * 4) 0;  /* 0 0 16px 0 */
+  margin-bottom: calc(var(--spacing) * 4);  /* 16px */
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+[data-slot="card-footer"],
+.card-footer {
+  padding: calc(var(--spacing) * 4) 0 0 0;  /* 16px 0 0 0 */
+  margin-top: calc(var(--spacing) * 4);  /* 16px */
+  border-top: 1px solid hsl(var(--border));
+}
+
+/* ========================================
+   BADGE - UI Pub Structure
+   ======================================== */
+
+[data-component="badge"],
+.badge {
+  /* Sizing */
+  display: inline-flex;
+  align-items: center;
+  height: calc(var(--spacing) * 5.5);  /* 22px */
+  padding: 0 calc(var(--spacing) * 2.5); /* 0 10px */
+
+  /* Typography */
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+
+  /* Borders */
+  border-radius: var(--radius-sm);  /* 4.5px */
+
+  /* No shadows */
+  box-shadow: none;
+}
+
+/* ========================================
+   DIALOG/MODAL - UI Pub Structure
+   ======================================== */
+
+[data-component="dialog"],
+[role="dialog"],
+.dialog,
+.modal {
+  /* Borders */
+  border-radius: var(--radius-2xl);  /* 12px */
+  border-width: 1px;
+
+  /* Shadow */
+  box-shadow: var(--shadow-lg);
+
+  /* Padding */
+  padding: calc(var(--spacing) * 6);  /* 24px */
+}
+
+/* Dialog sections */
+[data-slot="dialog-header"],
+.dialog-header {
+  padding-bottom: calc(var(--spacing) * 4);  /* 16px */
+  margin-bottom: calc(var(--spacing) * 4);  /* 16px */
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+[data-slot="dialog-footer"],
+.dialog-footer {
+  padding-top: calc(var(--spacing) * 4);  /* 16px */
+  margin-top: calc(var(--spacing) * 4);  /* 16px */
+  border-top: 1px solid hsl(var(--border));
+  display: flex;
+  gap: calc(var(--spacing) * 3);  /* 12px */
+  justify-content: flex-end;
+}
+
+/* ========================================
+   SELECT - UI Pub Structure
+   ======================================== */
+
+select {
+  height: calc(var(--spacing) * 10);  /* 40px */
+  padding: 0 calc(var(--spacing) * 3);  /* 0 12px */
+  padding-right: calc(var(--spacing) * 9);  /* Space for arrow */
+  font-size: var(--text-sm);  /* 14px */
+  border-width: 1px;
+  border-radius: var(--radius-md);  /* 6px */
+  transition: all var(--transition-base);
+  box-shadow: none;
+}
+
+/* ========================================
+   CHECKBOX & RADIO - UI Pub Structure
+   ======================================== */
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  border-width: 1px;
+  border-radius: var(--radius-sm);  /* 4.5px */
+  transition: all var(--transition-fast);
+}
+
+input[type="radio"] {
+  border-radius: var(--radius-full);  /* 50% */
+}
+
+/* ========================================
+   SWITCH/TOGGLE - UI Pub Structure
+   ======================================== */
+
+[data-component="switch"],
+[role="switch"] {
+  /* Track */
+  width: 44px;
+  height: 24px;
+  border-radius: var(--radius-full);  /* 9999px */
+  border-width: 1px;
+  transition: all var(--transition-base);
+}
+
+/* Switch thumb */
+[data-slot="switch-thumb"] {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);  /* 50% */
+  transition: all var(--transition-base);
+}
+
+/* ========================================
+   TABS - UI Pub Structure
+   ======================================== */
+
+[role="tablist"] {
+  border-bottom: 1px solid hsl(var(--border));
+  gap: calc(var(--spacing) * 6);  /* 24px */
+}
+
+[role="tab"] {
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 1);  /* 12px 4px */
+  font-size: var(--text-sm);  /* 14px */
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-base);
+}
+
+[role="tab"][data-state="active"],
+[role="tab"][aria-selected="true"] {
+  border-bottom-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+/* ========================================
+   ALERT - UI Pub Structure
+   ======================================== */
+
+[role="alert"],
+.alert {
+  padding: calc(var(--spacing) * 4);  /* 16px */
+  border-width: 1px;
+  border-radius: var(--radius-lg);  /* 7.5px */
+  box-shadow: none;
+}
+
+/* ========================================
+   TOOLTIP - UI Pub Structure
+   ======================================== */
+
+[role="tooltip"],
+.tooltip {
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);  /* 8px 12px */
+  font-size: 13px;
+  border-radius: var(--radius-md);  /* 6px */
+  box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   SEPARATOR - UI Pub Structure
+   ======================================== */
+
+[data-component="separator"],
+hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: calc(var(--spacing) * 6) 0;  /* 24px 0 */
+}
+
+/* ========================================
+   POPOVER - UI Pub Structure
+   ======================================== */
+
+[data-component="popover"],
+.popover {
+  border-width: 1px;
+  border-radius: var(--radius-lg);  /* 7.5px */
+  box-shadow: var(--shadow-lg);
+  padding: calc(var(--spacing) * 4);  /* 16px */
+}
+
+/* ========================================
+   DROPDOWN MENU - UI Pub Structure
+   ======================================== */
+
+[role="menu"],
+.dropdown-menu {
+  border-width: 1px;
+  border-radius: var(--radius-md);  /* 6px */
+  box-shadow: var(--shadow-md);
+  padding: calc(var(--spacing) * 1);  /* 4px */
+}
+
+[role="menuitem"] {
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);  /* 8px 12px */
+  border-radius: var(--radius-sm);  /* 4.5px */
+  font-size: var(--text-sm);  /* 14px */
+  transition: all var(--transition-fast);
+}
+
+/* ========================================
+   ACCORDION - UI Pub Structure
+   ======================================== */
+
+[data-component="accordion"] {
+  border-radius: var(--radius-lg);  /* 7.5px */
+  border-width: 1px;
+}
+
+[data-slot="accordion-trigger"] {
+  padding: calc(var(--spacing) * 4);  /* 16px */
+  font-weight: 500;
+  transition: all var(--transition-base);
+}
+
+[data-slot="accordion-content"] {
+  padding: 0 calc(var(--spacing) * 4) calc(var(--spacing) * 4) calc(var(--spacing) * 4);  /* 0 16px 16px 16px */
+}
+
+/* ========================================
+   SKELETON - UI Pub Structure
+   ======================================== */
+
+[data-component="skeleton"],
+.skeleton {
+  border-radius: var(--radius-md);  /* 6px */
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========================================
+   GLOBAL REFINEMENTS
+   ======================================== */
+
+/* Consistent focus rings */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove excessive shadows globally */
+* {
+  --tw-shadow: none !important;
+  --tw-shadow-colored: none !important;
+}
+
+/* Disable transitions for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

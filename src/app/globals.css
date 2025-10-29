@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .contain-layout-style-paint {
+    contain: layout style paint;
+  }
+}
+
+@layer base {
+  :root {
+    --font-sans-stack: system-ui, "helvetica", "arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-size-adjust: none;
+    tab-size: 4;
+    font-feature-settings: "kern" off;
+    font-variation-settings: normal;
+    font-kerning: none;
+    text-rendering: optimizeSpeed;
+    text-wrap: pretty;
+    word-break: keep-all;
+
+    /* Tailwind Neutral Palette - Official Colors */
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717;
+    --neutral-950: #0a0a0a;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+
+    /* RGB variants for Tailwind opacity utilities */
+    --neutral-50-rgb: 250, 250, 250;
+    --neutral-100-rgb: 245, 245, 245;
+    --neutral-200-rgb: 229, 229, 229;
+    --neutral-300-rgb: 212, 212, 212;
+    --neutral-400-rgb: 163, 163, 163;
+    --neutral-500-rgb: 115, 115, 115;
+    --neutral-600-rgb: 82, 82, 82;
+    --neutral-700-rgb: 64, 64, 64;
+    --neutral-800-rgb: 38, 38, 38;
+    --neutral-900-rgb: 23, 23, 23;
+    --neutral-950-rgb: 10, 10, 10;
+    --neutral-white-rgb: 255, 255, 255;
+    --neutral-black-rgb: 0, 0, 0;
+
+    /* Surface + content tokens mapped to Tailwind Neutral */
+    --surface-default-rgb: var(--neutral-white-rgb);
+    --surface-raise-rgb: var(--neutral-white-rgb);
+    --surface-secondary-rgb: var(--neutral-50-rgb);
+    --surface-tertiary-rgb: var(--neutral-100-rgb);
+
+    --content-default-rgb: var(--neutral-900-rgb); /* #171717 */
+    --content-secondary-rgb: var(--neutral-600-rgb); /* #525252 */
+    --content-tertiary-rgb: var(--neutral-500-rgb); /* #737373 */
+
+    --accent-primary-rgb: var(--neutral-900-rgb); /* #171717 */
+    --accent-secondary-rgb: var(--neutral-700-rgb); /* #404040 */
+
+    --text-color-rgb: var(--neutral-900-rgb);
+    --text-color: var(--neutral-900);
+    --scroll-text-color: var(--neutral-900);
+
+    /* Using Tailwind's default shadow scale */
+
+    /* Overlay Variables - B&W */
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+    --overlay-light: rgba(255, 255, 255, 0.95);
+    --overlay-subtle: rgba(0, 0, 0, 0.02);
+    --overlay-light-20: rgba(255, 255, 255, 0.2);
+
+    /* Accent colors mapped to Tailwind Neutral */
+    --primary-10: rgb(23 23 23 / 0.05); /* neutral-900 @ 5% */
+    --primary-50: rgb(23 23 23 / 0.5); /* neutral-900 @ 50% */
+
+    /* All accent colors use Tailwind neutral shades */
+    --purple-400: var(--neutral-700); /* #404040 */
+    --purple-500: var(--neutral-900); /* #171717 */
+    --pink-500: var(--neutral-600); /* #525252 */
+    --emerald-500: var(--neutral-800); /* #262626 */
+    --emerald-600: var(--neutral-900); /* #171717 */
+    --indigo-500: var(--neutral-700); /* #404040 */
+    --orange-500: var(--neutral-600); /* #525252 */
+    --amber-500: var(--neutral-500); /* #737373 */
+    --yellow-500: var(--neutral-400); /* #a3a3a3 */
+    --lime-500: var(--neutral-800); /* #262626 */
+    --teal-500: var(--neutral-900); /* #171717 */
+    --cyan-500: var(--neutral-700); /* #404040 */
+    --sky-500: var(--neutral-600); /* #525252 */
+    --fuchsia-500: var(--neutral-800); /* #262626 */
+    /* Modal Heights */
+    --modal-height-60: 60vh;
+    --modal-height-80: 80vh;
+    --modal-height-90: 90vh;
+
+    /* Animation Percentages */
+    --animation-200: 200%;
+    --animation-top-60: 60%;
+    --animation-top-48: 48%;
+    --chat-max-width: 70%;
+
+    /* Grid widths */
+    --grid-width-lg: 600px;
+
+    /* Using Tailwind's default typography scale */
+
+    /* Tailwind Neutral Palette - Exact Match */
+    /* Surface layers mapped to Tailwind neutral colors */
+    --surface-1: 0 0% 98%; /* #fafafa - neutral-50 (Lightest) */
+    --surface-2: 0 0% 96%; /* #f5f5f5 - neutral-100 (Very light) */
+    --surface-3: 0 0% 90%; /* #e5e5e5 - neutral-200 (Light) */
+    --surface-4: 0 0% 83%; /* #d4d4d4 - neutral-300 */
+    --surface-5: 0 0% 64%; /* #a3a3a3 - neutral-400 */
+    --surface-6: 0 0% 45%; /* #737373 - neutral-500 (Mid) */
+    --surface-7: 0 0% 32%; /* #525252 - neutral-600 */
+    --surface-8: 0 0% 25%; /* #404040 - neutral-700 */
+    --surface-9: 0 0% 15%; /* #262626 - neutral-800 (Dark mid) */
+    --surface-10: 0 0% 9%; /* #171717 - neutral-900 (Dark) */
+    --surface-11: 0 0% 4%; /* #0a0a0a - neutral-950 (Very dark) */
+    --surface-12: 0 0% 0%; /* #000000 - black (Darkest) */
+
+    /* Tailwind-compatible semantic colors */
+    --background: 0 0% 98%; /* surface-1 - neutral-50 */
+    --foreground: 0 0% 0%; /* surface-12 - black */
+    --card: 0 0% 96%; /* surface-2 - neutral-100 */
+    --card-foreground: 0 0% 0%; /* surface-12 - black */
+    --popover: 0 0% 98%; /* surface-1 - neutral-50 */
+    --popover-foreground: 0 0% 0%; /* surface-12 - black */
+    --primary: 0 0% 0%; /* surface-12 - black */
+    --primary-foreground: 0 0% 98%; /* surface-1 - neutral-50 */
+    --secondary: 0 0% 90%; /* surface-3 - neutral-200 */
+    --secondary-foreground: 0 0% 0%; /* surface-12 - black */
+    --muted: 0 0% 90%; /* surface-3 - neutral-200 */
+    --muted-foreground: 0 0% 9%; /* surface-10 - neutral-900 */
+    --accent: 0 0% 0%; /* surface-12 - black */
+    --accent-foreground: 0 0% 98%; /* surface-1 - neutral-50 */
+    --destructive: 0 84% 50%; /* Red for error states */
+    --destructive-foreground: 0 0% 99%;
+
+    /* Feedback Colors - Industry Standard (Carbon DS inspired) */
+    --success: 142 71% 45%; /* #24a148 - Green for success states */
+    --success-foreground: 0 0% 99%; /* White text on green */
+    --warning: 38 92% 50%; /* #f59e0b - Amber for warning states */
+    --warning-foreground: 0 0% 11%; /* Dark text on amber */
+    --info: 217 91% 60%; /* #3b82f6 - Blue for info states */
+    --info-foreground: 0 0% 99%; /* White text on blue */
+
+    --border: 0 0% 90%; /* surface-3 - neutral-200 - Thin subtle borders */
+    --input: 0 0% 90%; /* surface-3 - neutral-200 */
+    --ring: 0 0% 0%; /* surface-12 - black - Focus ring */
+    --radius: 7px; /* UI Pub standard */
+
+    /* High-contrast Chart colors - pure colors */
+    --chart-1: 217 91% 50%; /* #1d4ed8 - Blue */
+    --chart-2: 0 100% 50%; /* #ff0000 - Red */
+    --chart-3: 0 0% 0%; /* #000000 - Black */
+    --chart-4: 0 0% 50%; /* #808080 - Gray */
+    --chart-5: 0 0% 100%; /* #ffffff - White */
+
+    /* Code block colors - Always dark theme for code (like GitHub) */
+    --code-block: 0 0% 9%; /* #171717 - neutral-900 - Dark background for code */
+    --code-block-foreground: 0 0% 98%; /* #fafafa - neutral-50 - Light text on dark */
+  }
+
+  /* Tailwind Neutral Dark Mode - Inverted scale */
+  .dark {
+    --surface-1: 0 0% 0%; /* #000000 - black (Darkest) */
+    --surface-2: 0 0% 4%; /* #0a0a0a - neutral-950 (Very dark) */
+    --surface-3: 0 0% 9%; /* #171717 - neutral-900 (Dark) */
+    --surface-4: 0 0% 15%; /* #262626 - neutral-800 (Dark mid) */
+    --surface-5: 0 0% 25%; /* #404040 - neutral-700 */
+    --surface-6: 0 0% 32%; /* #525252 - neutral-600 */
+    --surface-7: 0 0% 45%; /* #737373 - neutral-500 (Mid) */
+    --surface-8: 0 0% 64%; /* #a3a3a3 - neutral-400 */
+    --surface-9: 0 0% 83%; /* #d4d4d4 - neutral-300 */
+    --surface-10: 0 0% 90%; /* #e5e5e5 - neutral-200 (Light) */
+    --surface-11: 0 0% 96%; /* #f5f5f5 - neutral-100 (Very light) */
+    --surface-12: 0 0% 98%; /* #fafafa - neutral-50 (Lightest) */
+
+    --background: 0 0% 0%; /* surface-1 - black */
+    --foreground: 0 0% 98%; /* surface-12 - neutral-50 */
+    --card: 0 0% 4%; /* surface-2 - neutral-950 */
+    --card-foreground: 0 0% 98%; /* surface-12 - neutral-50 */
+    --popover: 0 0% 0%; /* surface-1 - black */
+    --popover-foreground: 0 0% 98%; /* surface-12 - neutral-50 */
+    --primary: 0 0% 98%; /* surface-12 - neutral-50 */
+    --primary-foreground: 0 0% 0%; /* surface-1 - black */
+    --secondary: 0 0% 9%; /* surface-3 - neutral-900 */
+    --secondary-foreground: 0 0% 98%; /* surface-12 - neutral-50 */
+    --muted: 0 0% 9%; /* surface-3 - neutral-900 */
+    --muted-foreground: 0 0% 90%; /* surface-10 - neutral-200 */
+    --accent: 0 0% 98%; /* surface-12 - neutral-50 */
+    --accent-foreground: 0 0% 0%; /* surface-1 - black */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 0%;
+
+    /* Feedback Colors - Dark Mode (Lighter variants) */
+    --success: 142 71% 50%; /* Lighter green for dark mode */
+    --success-foreground: 0 0% 0%; /* Black text */
+    --warning: 38 92% 55%; /* Lighter amber for dark mode */
+    --warning-foreground: 0 0% 0%; /* Black text */
+    --info: 217 91% 65%; /* Lighter blue for dark mode */
+    --info-foreground: 0 0% 0%; /* Black text */
+
+    --border: 0 0% 9%; /* surface-3 - neutral-900 */
+    --input: 0 0% 9%; /* surface-3 - neutral-900 */
+    --ring: 0 0% 98%; /* surface-12 - neutral-50 */
+
+    /* Code block colors - Same dark theme in dark mode (consistency) */
+    --code-block: 0 0% 9%; /* #171717 - neutral-900 - Dark background for code */
+    --code-block-foreground: 0 0% 98%; /* #fafafa - neutral-50 - Light text on dark */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+}
+
+@layer components {
+  /* UI PUB Design System Components */
+
+  /* UI Pub diagonal gradient background */
+  .uipub-gradient-bg {
+    background: hsl(var(--surface-1));
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--surface-3)),
+      hsl(var(--surface-3)) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+
+  /* UI Pub surface layers */
+  .surface-1 {
+    background-color: hsl(var(--surface-1));
+  }
+
+  .surface-2 {
+    background-color: hsl(var(--surface-2));
+  }
+
+  .surface-3 {
+    background-color: hsl(var(--surface-3));
+  }
+
+  /* UI Pub grid layout patterns */
+  .uipub-grid {
+    display: grid;
+    gap: 1px;
+    background-color: hsl(var(--border));
+  }
+
+  .uipub-grid > * {
+    background-color: hsl(var(--background));
+  }
+
+  /* UI Pub button styles - minimal with 1px borders */
+  .uipub-btn {
+    @apply rounded-[7px] border border-border px-5 py-2 text-sm font-medium transition-colors;
+    @apply hover:bg-muted;
+  }
+
+  .uipub-btn-primary {
+    @apply rounded-[7px] bg-primary px-5 py-2 text-sm font-medium text-primary-foreground;
+    @apply hover:bg-primary/90;
+  }
+
+  /* UI Pub card style */
+  .uipub-card {
+    @apply rounded-[7px] border border-border bg-card p-6;
+  }
+
+  /* Code Block Styles - UI Pub inspired */
+  .code-block-wrapper {
+    @apply relative overflow-hidden rounded-[7px] border border-border bg-surface-2;
+  }
+
+  .code-block-header {
+    @apply flex items-center justify-between border-b border-border bg-surface-3 px-4 py-2;
+  }
+
+  .code-block-header span {
+    @apply font-mono text-xs text-muted-foreground;
+  }
+
+  .code-block-content {
+    @apply relative overflow-x-auto;
+  }
+
+  .code-line {
+    @apply flex;
+  }
+
+  .line-number {
+    @apply inline-block min-w-[2.5rem] select-none border-r border-border px-3 py-1 text-right font-mono text-xs text-muted-foreground/60;
+  }
+
+  .line-content {
+    @apply flex-1 px-4 py-1 font-mono text-xs;
+  }
+
+  .copy-button {
+    @apply opacity-0 transition-opacity group-hover:opacity-100;
+  }
+
+  /* Dot Grid Background - for component previews */
+  .dot-grid-bg {
+    background-color: hsl(var(--surface-2));
+    background-image: radial-gradient(circle, hsl(var(--surface-4)) 1px, hsl(var(--surface-2)) 1px);
+    background-size: 16px 16px;
+    background-position: 0 0;
+  }
+}
