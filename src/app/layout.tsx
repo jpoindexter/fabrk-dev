@@ -94,9 +94,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`dark ${dmSans.variable} ${dmMono.variable}`}>
       <head>
-        <meta name="theme-color" content="hsl(var(--background))" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>

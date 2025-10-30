@@ -9,7 +9,9 @@
 }
 
 @layer base {
+  /* Force dark mode as default */
   :root {
+    color-scheme: dark;
     --font-sans-stack: system-ui, "helvetica", "arial", sans-serif;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
@@ -131,35 +133,35 @@
     --surface-11: 0 0% 4%; /* #0a0a0a - neutral-950 (Very dark) */
     --surface-12: 0 0% 0%; /* #000000 - black (Darkest) */
 
-    /* Tailwind-compatible semantic colors */
-    --background: 0 0% 98%; /* surface-1 - neutral-50 */
-    --foreground: 0 0% 0%; /* surface-12 - black */
-    --card: 0 0% 96%; /* surface-2 - neutral-100 */
-    --card-foreground: 0 0% 0%; /* surface-12 - black */
-    --popover: 0 0% 98%; /* surface-1 - neutral-50 */
-    --popover-foreground: 0 0% 0%; /* surface-12 - black */
-    --primary: 0 0% 0%; /* surface-12 - black */
-    --primary-foreground: 0 0% 98%; /* surface-1 - neutral-50 */
-    --secondary: 0 0% 90%; /* surface-3 - neutral-200 */
-    --secondary-foreground: 0 0% 0%; /* surface-12 - black */
-    --muted: 0 0% 90%; /* surface-3 - neutral-200 */
-    --muted-foreground: 0 0% 9%; /* surface-10 - neutral-900 */
-    --accent: 0 0% 0%; /* surface-12 - black */
-    --accent-foreground: 0 0% 98%; /* surface-1 - neutral-50 */
-    --destructive: 0 84% 50%; /* Red for error states */
-    --destructive-foreground: 0 0% 99%;
+    /* Dark theme by default - Neon Crystal aesthetic */
+    --background: 0 0% 0%; /* Pure black */
+    --foreground: 0 0% 100%; /* Pure white - WCAG AAA (21:1 contrast) */
+    --card: 220 30% 5%; /* Very dark blue-tinted card */
+    --card-foreground: 0 0% 100%; /* Pure white */
+    --popover: 220 30% 3%; /* Slightly darker blue-black */
+    --popover-foreground: 0 0% 100%; /* Pure white */
+    --primary: 200 100% 60%; /* Bright cyan/blue - neon crystal color */
+    --primary-foreground: 0 0% 0%; /* Black text on bright blue */
+    --secondary: 280 60% 55%; /* Purple/pink - neon crystal secondary */
+    --secondary-foreground: 0 0% 100%; /* White text */
+    --muted: 220 20% 12%; /* Muted dark blue-gray */
+    --muted-foreground: 0 0% 80%; /* Light gray - WCAG AA (10.3:1) */
+    --accent: 200 100% 60%; /* Cyan accent matching primary */
+    --accent-foreground: 0 0% 0%; /* Black on cyan */
+    --destructive: 0 72% 51%; /* Bright red for errors */
+    --destructive-foreground: 0 0% 100%; /* White text */
 
-    /* Feedback Colors - Industry Standard (Carbon DS inspired) */
-    --success: 142 71% 45%; /* #24a148 - Green for success states */
-    --success-foreground: 0 0% 99%; /* White text on green */
-    --warning: 38 92% 50%; /* #f59e0b - Amber for warning states */
-    --warning-foreground: 0 0% 11%; /* Dark text on amber */
-    --info: 217 91% 60%; /* #3b82f6 - Blue for info states */
-    --info-foreground: 0 0% 99%; /* White text on blue */
+    /* Feedback Colors - Bright for dark theme visibility */
+    --success: 142 71% 55%; /* Brighter green for dark mode */
+    --success-foreground: 0 0% 0%; /* Black text */
+    --warning: 38 92% 60%; /* Brighter amber for dark mode */
+    --warning-foreground: 0 0% 0%; /* Black text */
+    --info: 217 91% 65%; /* Brighter blue for dark mode */
+    --info-foreground: 0 0% 0%; /* Black text */
 
-    --border: 0 0% 90%; /* surface-3 - neutral-200 - Thin subtle borders */
-    --input: 0 0% 90%; /* surface-3 - neutral-200 */
-    --ring: 0 0% 0%; /* surface-12 - black - Focus ring */
+    --border: 220 20% 20%; /* Dark blue-gray border - subtle */
+    --input: 220 20% 10%; /* Very dark input background */
+    --ring: 200 100% 60%; /* Neon cyan focus ring */
     --radius: 7px; /* UI Pub standard */
 
     /* High-contrast Chart colors - pure colors */
@@ -328,6 +330,36 @@
     background-image: radial-gradient(circle, hsl(var(--surface-4)) 1px, hsl(var(--surface-2)) 1px);
     background-size: 16px 16px;
     background-position: 0 0;
+  }
+
+  /* Neon Crystal Gradient - Blue to Pink like the crystal image */
+  .neon-gradient {
+    background: linear-gradient(135deg,
+      hsl(200, 100%, 60%) 0%,     /* Bright cyan */
+      hsl(240, 100%, 65%) 35%,    /* Electric blue */
+      hsl(280, 80%, 60%) 70%,     /* Purple */
+      hsl(320, 85%, 60%) 100%     /* Pink */
+    );
+  }
+
+  .neon-gradient-text {
+    background: linear-gradient(135deg,
+      hsl(200, 100%, 60%) 0%,
+      hsl(240, 100%, 65%) 35%,
+      hsl(280, 80%, 60%) 70%,
+      hsl(320, 85%, 60%) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Neon glow effect for accents */
+  .neon-glow {
+    box-shadow:
+      0 0 10px hsl(200 100% 60% / 0.5),
+      0 0 20px hsl(200 100% 60% / 0.3),
+      0 0 30px hsl(200 100% 60% / 0.2);
   }
 
   /* Pattern animation for landing page sections */
