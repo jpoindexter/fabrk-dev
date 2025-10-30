@@ -10,12 +10,12 @@ interface LogoProps {
   className?: string
 }
 
-export function Logo({ size = 32, className = "" }: LogoProps = {}) {
+export function Logo({ size = 20, className = "" }: LogoProps = {}) {
   // Calculate proportional height (28:40 ratio from original)
   const height = (size / 28) * 40
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
