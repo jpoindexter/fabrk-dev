@@ -91,79 +91,68 @@ const pricingData = {
 }
 
 export function PricingSection4() {
-  const [billingPeriod, setBillingPeriod] = React.useState("monthly")
-
   return (
-    <section id="pricing" className="py-24 md:py-32 lg:py-40 bg-background" aria-labelledby="pricing-section-title-4">
+    <section id="pricing" className="py-24 md:py-32 lg:py-40 bg-background border-t border-primary/10" aria-labelledby="pricing-section-title-4">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col items-center gap-16 md:gap-20">
           <div className="flex flex-col items-center gap-6 max-w-2xl text-center">
             <h2 id="pricing-section-title-4" className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Simple pricing
+              One-time payment. Lifetime access.
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-light">Choose the plan that fits your needs</p>
+            <p className="text-lg md:text-xl text-muted-foreground font-light">No subscriptions. Buy once, use forever.</p>
           </div>
 
-          <Tabs value={billingPeriod} onValueChange={setBillingPeriod} className="w-fit">
-            <TabsList className="glass h-12 p-1.5 rounded-full">
-              <TabsTrigger
-                value="monthly"
-                className="rounded-full px-6 py-2 data-[state=active]:glass-strong smooth-transition"
-              >
-                Monthly
-              </TabsTrigger>
-              <TabsTrigger
-                value="annually"
-                className="rounded-full px-6 py-2 data-[state=active]:glass-strong smooth-transition"
-              >
-                Annually
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
             {pricingData.plans.map((plan, index) => (
-              <Card
+              <div
                 key={plan.name}
-                className={`p-10 space-y-8 smooth-transition hover-lift ${
-                  index === 1 ? "glass-strong scale-105" : "glass-card"
+                className={`relative p-8 rounded-2xl border smooth-transition hover-lift ${
+                  index === 1
+                    ? "border-primary bg-primary/5 shadow-2xl shadow-primary/20"
+                    : "border-primary/20 bg-background/50"
                 }`}
               >
+                {index === 1 && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="inline-flex items-center px-4 py-1 rounded-full text-xs font-semibold refined-gradient text-white">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
                 <div className="space-y-6">
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold">{plan.name}</h3>
-                    <p className="text-sm text-muted-foreground font-light">{plan.description}</p>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold">{plan.name}</h3>
+                    <p className="text-sm text-muted-foreground">{plan.description}</p>
                   </div>
 
-                  <div className="flex items-end gap-1">
-                    <span className="text-5xl font-bold">
-                      ${billingPeriod === "monthly" ? plan.pricing.monthly : plan.pricing.annually}
-                    </span>
-                    <span className="text-base text-muted-foreground pb-2 font-light">
-                      {plan.pricing.monthly === 0 ? "" : `/${billingPeriod === "monthly" ? "mo" : "yr"}`}
-                    </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-bold">${plan.pricing.monthly}</span>
+                    {plan.pricing.monthly > 0 && <span className="text-muted-foreground">/one-time</span>}
                   </div>
 
                   <Button
-                    variant={index === 1 ? "default" : "outline"}
                     size="lg"
-                    className="w-full rounded-full smooth-transition hover:scale-105"
+                    className={`w-full rounded-full smooth-transition hover:scale-105 ${
+                      index === 1 ? "refined-gradient text-white border-0" : ""
+                    }`}
+                    variant={index === 1 ? "default" : "outline"}
                   >
-                    {plan.pricing.monthly === 0 ? "Start for free" : "Get started"}
+                    {plan.pricing.monthly === 0 ? "Start Building" : "Get Fabrk"}
                   </Button>
                 </div>
 
-                <div className="space-y-4">
+                <div className="mt-8 pt-8 border-t border-primary/10">
                   <div className="flex flex-col gap-3">
                     {plan.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Check className="h-5 w-5 text-primary shrink-0" />
-                        <span className="text-sm text-muted-foreground font-light">{feature.name}</span>
+                      <div key={i} className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground">{feature.name}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
