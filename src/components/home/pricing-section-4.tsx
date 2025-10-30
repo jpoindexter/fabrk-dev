@@ -11,79 +11,79 @@ const pricingData = {
   plans: [
     {
       name: "Starter",
-      description: "For individuals or small teams getting started.",
+      description: "Perfect for side projects and MVPs",
       features: [
         {
-          name: "Basic task management",
-          tooltip: "Essential task management features to get you started",
+          name: "Full source code",
+          tooltip: "Complete access to all code",
         },
         {
-          name: "1 automation per workflow",
-          tooltip: "Automate one repetitive task in each workflow",
+          name: "Authentication & payments",
+          tooltip: "NextAuth v5 + Stripe integration",
         },
         {
-          name: "5GB storage",
-          tooltip: "Store your files and documents securely",
+          name: "Email support",
+          tooltip: "Get help when you need it",
         },
       ],
       pricing: {
-        monthly: 0,
-        annually: 0,
+        monthly: 79,
+        annually: 790,
       },
       variant: "secondary",
     },
     {
       name: "Pro",
-      description: "For growing teams ready to scale their business.",
+      description: "For serious founders building to scale",
       badge: "Most popular",
       features: [
         {
-          name: "Unlimited boards",
-          tooltip: "Create as many boards as you need",
+          name: "Everything in Starter",
+          tooltip: "All starter features included",
         },
         {
-          name: "Advanced automation",
-          tooltip: "Powerful automation capabilities for complex workflows",
+          name: "Priority support",
+          tooltip: "Get help faster with priority queue",
         },
         {
-          name: "50GB storage",
-          tooltip: "Expanded storage for growing teams",
+          name: "Lifetime updates",
+          tooltip: "Free updates forever",
         },
         {
-          name: "Integrations",
-          tooltip: "Connect with your favorite tools",
+          name: "Discord access",
+          tooltip: "Private community & resources",
         },
       ],
       pricing: {
-        monthly: 29,
-        annually: 290,
+        monthly: 149,
+        annually: 1490,
       },
       variant: "default",
     },
     {
       name: "Enterprise",
-      description: "For large organizations with custom needs.",
+      description: "Custom solutions for your team",
       features: [
         {
-          name: "Dedicated support",
-          tooltip: "Priority support with dedicated account manager",
+          name: "Everything in Pro",
+          tooltip: "All pro features included",
         },
         {
-          name: "Custom workflows",
-          tooltip: "Build custom workflows tailored to your needs",
+          name: "Custom integrations",
+          tooltip: "We build what you need",
         },
         {
-          name: "150GB storage",
-          tooltip: "Enterprise-grade storage solution",
+          name: "Team training",
+          tooltip: "Onboard your team properly",
         },
         {
-          name: "Advanced security",
-          tooltip: "Enhanced security features and controls",
+          name: "White-label option",
+          tooltip: "Remove Fabrk branding",
         },
       ],
       pricing: {
-        monthly: 129,
-        annually: 1290,
+        monthly: 499,
+        annually: 4990,
       },
       variant: "secondary",
     },

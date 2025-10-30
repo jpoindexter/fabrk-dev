@@ -7,18 +7,18 @@ import { PenLine, ListTodo, Workflow } from "lucide-react"
 const steps = [
   {
     icon: PenLine,
-    title: "Sign up",
-    description: "Create your account instantly",
+    title: "Clone & install",
+    description: "Get the code and dependencies in 30 seconds",
   },
   {
     icon: ListTodo,
-    title: "Set up workflow",
-    description: "Customize to fit your team",
+    title: "Configure",
+    description: "Set up environment variables and database",
   },
   {
     icon: Workflow,
-    title: "Start collaborating",
-    description: "Watch productivity soar",
+    title: "Deploy",
+    description: "Ship to production with Vercel or your host",
   },
 ]
 
@@ -29,9 +29,9 @@ export function FeatureSection3() {
         <div className="flex flex-col gap-12 flex-1">
           <div className="flex flex-col gap-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
-              Getting started is easy
+              From zero to deployed
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-light">Three simple steps</p>
+            <p className="text-lg md:text-xl text-muted-foreground font-light">Launch in under an hour</p>
           </div>
           <div className="flex flex-col gap-8">
             {steps.map((step, index) => {

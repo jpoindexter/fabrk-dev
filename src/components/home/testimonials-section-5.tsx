@@ -5,15 +5,15 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 const testimonials = [
   {
-    quote: "This platform helped us save 10+ hours per week. We can't imagine going back.",
-    author: "Kurt Bates",
-    role: "Marketing Manager",
+    quote: "Saved weeks of setup time. Had auth, payments, and database running in an hour.",
+    author: "Sarah Chen",
+    role: "Indie Developer",
     image: "https://github.com/shadcn.png",
   },
   {
-    quote: "A game-changer for our remote team. The workflow automations are insanely good.",
-    author: "Alex Buckmaster",
-    role: "Founder of TechWave",
+    quote: "Finally a boilerplate that's actually production-ready. Shipped my SaaS in 3 days.",
+    author: "Marcus Rodriguez",
+    role: "Founder, LaunchFast",
     image: "https://github.com/shadcn.png",
   },
 ]
@@ -25,7 +25,7 @@ export function TestimonialsSection5() {
         <div className="flex flex-col gap-16 md:gap-20">
           <div className="flex flex-col gap-6 max-w-2xl mx-auto text-center">
             <h2 id="testimonial-title" className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Loved by teams everywhere
+              Loved by developers
             </h2>
           </div>
 

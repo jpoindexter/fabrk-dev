@@ -5,20 +5,21 @@ import { Button } from "@/components/ui/button"
 
 const faqs = [
   {
-    question: "Is there a free plan available?",
-    answer: "Yes, we offer a free plan with essential features to get you started.",
+    question: "What's included in the boilerplate?",
+    answer:
+      "Next.js 15, TypeScript, Tailwind CSS, NextAuth v5, Stripe, Prisma, email templates, testing setup, and full authentication flows.",
   },
   {
-    question: "Can I cancel anytime?",
-    answer: "Yes, you can cancel your subscription at any time. No commitments required.",
+    question: "Do I get the source code?",
+    answer: "Yes, you get complete access to all source code. No obfuscation, no hidden dependencies.",
   },
   {
-    question: "Do you offer discounts for nonprofits or education?",
-    answer: "Yes, we offer special pricing for nonprofit organizations and educational institutions.",
+    question: "Can I use this for client projects?",
+    answer: "Absolutely. Build unlimited projects for yourself or clients with any plan.",
   },
   {
-    question: "What integrations are supported?",
-    answer: "We integrate with popular tools like Slack, Google Workspace, and many more.",
+    question: "What if I need help?",
+    answer: "All plans include email support. Pro and Enterprise get priority support and Discord access.",
   },
 ]
 
