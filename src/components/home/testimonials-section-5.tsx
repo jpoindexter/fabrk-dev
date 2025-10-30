@@ -38,8 +38,8 @@ export function TestimonialsSection5() {
               <React.Fragment key={index}>
                 {index > 0 && (
                   <>
-                    <div className="hidden md:block w-[1px] self-stretch bg-border" />
-                    <Separator className="md:hidden bg-border" orientation="horizontal" />
+                    <div className="hidden md:block w-[1px] self-stretch bg-primary/20" />
+                    <Separator className="md:hidden bg-primary/20" orientation="horizontal" />
                   </>
                 )}
                 <div className="flex flex-col gap-8">

@@ -52,7 +52,7 @@ export function FaqSection1() {
           ))}
         </Accordion>
 
-        <div className="bg-muted/60 w-full rounded-xl p-6 md:p-8 flex flex-col items-center gap-6">
+        <div className="bg-background w-full rounded-xl p-6 md:p-8 flex flex-col items-center gap-6">
           <div className="flex flex-col text-center gap-2">
             <h2 className="text-2xl font-bold text-foreground">Still have questions?</h2>
             <p className="text-base text-muted-foreground">

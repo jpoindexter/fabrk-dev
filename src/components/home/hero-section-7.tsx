@@ -29,7 +29,7 @@ export function HeroSection7() {
             </div>
           </div>
         </div>
-        <div className="w-full overflow-hidden rounded-xl border bg-background shadow-xl">
+        <div className="w-full overflow-hidden rounded-xl border-primary/20 border bg-background shadow-xl">
           <AspectRatio ratio={16 / 9}>
             <Image
               src="/images/hero-crystal-bg.png"
