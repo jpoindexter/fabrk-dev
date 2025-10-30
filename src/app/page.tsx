@@ -8,6 +8,7 @@
 
 import { LpNavbar1 } from "@/components/home/lp-navbar-1";
 import { HeroSection7 } from "@/components/home/hero-section-7";
+import { ComponentShowcase } from "@/components/home/component-showcase";
 import { FeatureSection9 } from "@/components/home/feature-section-9";
 import { FeatureSection3 } from "@/components/home/feature-section-3";
 import { TestimonialsSection5 } from "@/components/home/testimonials-section-5";
@@ -20,6 +21,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <LpNavbar1 />
       <HeroSection7 />
+      <ComponentShowcase />
       <FeatureSection9 />
       <FeatureSection3 />
       <TestimonialsSection5 />

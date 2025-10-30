@@ -1,13 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import Image from "next/image"
 
 export function HeroSection7() {
   return (
     <section className="bg-background py-24 lg:py-32 xl:py-40" aria-labelledby="hero-heading">
-      <div className="container px-6 flex flex-col items-center gap-16 lg:gap-24 mx-auto max-w-7xl">
+      <div className="container px-6 flex flex-col items-center gap-12 mx-auto max-w-7xl">
         {/* Hero Content - Bold Makerkit-style */}
         <div className="flex flex-col items-center text-center gap-8 max-w-5xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 text-sm">
@@ -44,19 +42,6 @@ export function HeroSection7() {
               View Demo
             </Button>
           </div>
-        </div>
-
-        {/* Hero Image - Larger, more prominent */}
-        <div className="w-full overflow-hidden rounded-2xl border border-primary/20 shadow-2xl subtle-glow">
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              src="/images/hero-crystal-bg.png"
-              alt="Fabrk dashboard interface showing authentication, payments, and admin features"
-              fill
-              priority
-              className="object-cover"
-            />
-          </AspectRatio>
         </div>
       </div>
     </section>
