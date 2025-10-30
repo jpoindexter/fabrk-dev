@@ -123,11 +123,7 @@ export default function ResetPasswordPage({ params }: ResetPasswordPageProps) {
   // UX Heuristic #1: Visibility of system status
   if (isValidating) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <div className="p-6 text-center">
@@ -141,11 +137,7 @@ export default function ResetPasswordPage({ params }: ResetPasswordPageProps) {
 
   if (!tokenValid) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <TokenExpired />
@@ -157,11 +149,7 @@ export default function ResetPasswordPage({ params }: ResetPasswordPageProps) {
 
   if (success) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <ResetSuccess />
@@ -172,11 +160,7 @@ export default function ResetPasswordPage({ params }: ResetPasswordPageProps) {
   }
 
   return (
-    <PageWrapper
-      variant="narrow"
-      padding="default"
-      className="flex min-h-screen items-center justify-center"
-    >
+    <PageWrapper>
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Reset your password</CardTitle>

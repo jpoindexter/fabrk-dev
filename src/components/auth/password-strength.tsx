@@ -8,7 +8,7 @@
 
 import { Progress } from "@/components/ui/progress";
 import { calculatePasswordStrength } from "@/lib/auth/validation";
-import { tokens } from "@/lib/design-system/tokens";
+// Tokens import removed - using Tailwind classes directly
 
 export function PasswordStrength({ password }: { password: string }) {
   const strength = calculatePasswordStrength(password);
@@ -16,9 +16,9 @@ export function PasswordStrength({ password }: { password: string }) {
   if (!password) return null;
 
   const getStrengthColor = () => {
-    if (strength.score >= 75) return tokens.colors.text.success;
-    if (strength.score >= 50) return tokens.colors.text.warning;
-    return tokens.colors.text.error;
+    if (strength.score >= 75) return "text-green-600";
+    if (strength.score >= 50) return "text-yellow-600";
+    return "text-red-600";
   };
 
   return (

@@ -8,7 +8,6 @@ import { FabrkLogo } from "@/components/icons/fabrk-logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { tokens } from "@/lib/design-system/tokens";
 import { ArrowRight, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { footerLinks, socialLinks, trustBadges } from "./footer-data";
@@ -39,7 +38,7 @@ export function NewsletterSection({
 
           <form
             onSubmit={handleSubmit}
-            className={`mx-auto flex max-w-md ${tokens.spacing.gap[2]}`}
+            className={`mx-auto flex max-w-md gap-2`}
           >
             <Input
               type="email"
@@ -59,7 +58,7 @@ export function NewsletterSection({
                 <>
                   Subscribe
                   <ArrowRight
-                    className={`ml-2 ${tokens.sizes.icon.sm} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+                    className={`ml-2 h-4 w-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
                   />
                 </>
               )}
@@ -67,12 +66,12 @@ export function NewsletterSection({
           </form>
 
           {subscribed && (
-            <p className={`mt-4 ${tokens.text.size.sm} text-primary dark:text-primary`}>
+            <p className={`mt-4 text-sm text-primary dark:text-primary`}>
               Thanks for subscribing! Check your email for confirmation.
             </p>
           )}
 
-          <p className={`mt-4 ${tokens.text.size.xs} text-muted-foreground`}>
+          <p className={`mt-4 text-xs text-muted-foreground`}>
             No spam. Unsubscribe at any time.
           </p>
         </div>
@@ -88,16 +87,16 @@ export function FooterLinksSection() {
         {/* Product Column */}
         <div>
           <h4 className="mb-4 font-medium">Product</h4>
-          <ul className={`${tokens.spacing.space.y[2]}`}>
+          <ul className={`space-y-2`}>
             {footerLinks.product.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`inline-flex items-center gap-2 ${tokens.text.size.sm} text-muted-foreground transition-colors hover:text-foreground`}
+                  className={`inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground`}
                 >
                   {link.label}
                   {link.badge && (
-                    <Badge variant="secondary" className={`h-4 px-2 ${tokens.text.size.xs}`}>
+                    <Badge variant="secondary" className={`h-4 px-2 text-xs`}>
                       {link.badge}
                     </Badge>
                   )}
@@ -110,16 +109,16 @@ export function FooterLinksSection() {
         {/* Resources Column */}
         <div>
           <h4 className="mb-4 font-medium">Resources</h4>
-          <ul className={`${tokens.spacing.space.y[2]}`}>
+          <ul className={`space-y-2`}>
             {footerLinks.resources.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`inline-flex items-center gap-2 ${tokens.text.size.sm} text-muted-foreground transition-colors hover:text-foreground`}
+                  className={`inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground`}
                 >
                   {link.label}
                   {link.badge && (
-                    <Badge variant="secondary" className={`h-4 px-2 ${tokens.text.size.xs}`}>
+                    <Badge variant="secondary" className={`h-4 px-2 text-xs`}>
                       {link.badge}
                     </Badge>
                   )}
@@ -132,12 +131,12 @@ export function FooterLinksSection() {
         {/* Company Column */}
         <div>
           <h4 className="mb-4 font-medium">Company</h4>
-          <ul className={`${tokens.spacing.space.y[2]}`}>
+          <ul className={`space-y-2`}>
             {footerLinks.company.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`${tokens.text.size.sm} text-muted-foreground transition-colors hover:text-foreground`}
+                  className={`text-sm text-muted-foreground transition-colors hover:text-foreground`}
                 >
                   {link.label}
                 </Link>
@@ -149,12 +148,12 @@ export function FooterLinksSection() {
         {/* Legal Column */}
         <div>
           <h4 className="mb-4 font-medium">Legal</h4>
-          <ul className={`${tokens.spacing.space.y[2]}`}>
+          <ul className={`space-y-2`}>
             {footerLinks.legal.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`${tokens.text.size.sm} text-muted-foreground transition-colors hover:text-foreground`}
+                  className={`text-sm text-muted-foreground transition-colors hover:text-foreground`}
                 >
                   {link.label}
                 </Link>
@@ -168,7 +167,7 @@ export function FooterLinksSection() {
           <h4 className="mb-4 font-medium">Connect</h4>
 
           {/* Social Links */}
-          <div className={`mb-6 flex ${tokens.spacing.gap[2]}`}>
+          <div className={`mb-6 flex gap-2`}>
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
@@ -180,22 +179,22 @@ export function FooterLinksSection() {
                   className="rounded-lg p-2 transition-colors hover:bg-accent"
                   aria-label={social.label}
                 >
-                  <Icon className={`${tokens.sizes.icon.md}`} />
+                  <Icon className={`h-5 w-5`} />
                 </Link>
               );
             })}
           </div>
 
           {/* Trust Badges */}
-          <div className={`${tokens.spacing.space.y[2]}`}>
+          <div className={`space-y-2`}>
             {trustBadges.map((badge) => {
               const Icon = badge.icon;
               return (
                 <div
                   key={badge.label}
-                  className={`flex items-center gap-2 ${tokens.text.size.sm} text-muted-foreground`}
+                  className={`flex items-center gap-2 text-sm text-muted-foreground`}
                 >
-                  <Icon className={`${tokens.sizes.icon.sm}`} />
+                  <Icon className={`h-4 w-4`} />
                   <span>{badge.label}</span>
                 </div>
               );
@@ -203,9 +202,9 @@ export function FooterLinksSection() {
           </div>
 
           {/* Community Stats */}
-          <div className={`mt-6 rounded-lg bg-muted/50 ${tokens.components.card.content}`}>
+          <div className={`mt-6 rounded-lg bg-muted/50 p-6`}>
             <div className="mb-2 flex items-center justify-between">
-              <span className={`${tokens.text.size.sm} font-medium`}>Join our community</span>
+              <span className={`text-sm font-medium`}>Join our community</span>
               <Badge variant="secondary">7,394 developers</Badge>
             </div>
             <Link href="https://discord.gg/fabrk" target="_blank">
@@ -215,7 +214,7 @@ export function FooterLinksSection() {
                 className="w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Action button"
               >
-                <MessageSquare className={`mr-2 ${tokens.sizes.icon.sm}`} />
+                <MessageSquare className={`mr-2 h-4 w-4`} />
                 Join Discord
               </Button>
             </Link>
@@ -226,18 +225,18 @@ export function FooterLinksSection() {
       {/* Bottom Bar */}
       <div className="mt-12 border-t pt-8">
         <div
-          className={`flex flex-col items-center justify-between ${tokens.spacing.gap[4]} md:flex-row`}
+          className={`flex flex-col items-center justify-between gap-4 md:flex-row`}
         >
           {/* Logo and Copyright */}
-          <div className={`flex items-center ${tokens.spacing.gap[2]}`}>
-            <FabrkLogo size={24} />
-            <span className={`${tokens.text.size.sm} text-muted-foreground`}>
+          <div className={`flex items-center gap-2`}>
+            <FabrkLogo className="h-6 w-6" />
+            <span className={`text-sm text-muted-foreground`}>
               © {new Date().getFullYear()} Fabrk. All rights reserved.
             </span>
           </div>
 
           {/* Additional Links */}
-          <div className={`flex items-center gap-4 ${tokens.text.size.sm} text-muted-foreground`}>
+          <div className={`flex items-center gap-4 text-sm text-muted-foreground`}>
             <Link href="/sitemap" className="transition-colors hover:text-foreground">
               Sitemap
             </Link>

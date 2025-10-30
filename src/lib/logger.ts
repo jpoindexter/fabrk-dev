@@ -7,8 +7,6 @@
  * @performance Async logging with batching
  */
 
-import * as Sentry from "@sentry/nextjs";
-
 type LogLevel = "debug" | "info" | "warn" | "error" | "fatal";
 
 interface LogEntry {
@@ -183,16 +181,6 @@ class Logger {
 
   warn(message: string, context?: Record<string, unknown>): void {
     this.log(this.createLogEntry("warn", message, context));
-
-    // Send warnings to Sentry in production
-    if (!this.isDevelopment && Sentry) {
-      Sentry.captureMessage(message, {
-        level: "warning",
-        contexts: {
-          custom: context,
-        },
-      });
-    }
   }
 
   error(message: string, error?: Error | unknown, context?: Record<string, unknown>): void {
@@ -205,36 +193,11 @@ class Logger {
         errorName: error.name,
         errorMessage: error.message,
       };
-
-      // Send error to Sentry with full context
-      if (Sentry) {
-        Sentry.captureException(error, {
-          contexts: {
-            custom: context,
-          },
-          tags: {
-            logLevel: "error",
-          },
-        });
-      }
     } else if (error) {
       entry.context = {
         ...entry.context,
         error: String(error),
       };
-
-      // Send as message if not an Error instance
-      if (Sentry) {
-        Sentry.captureMessage(message, {
-          level: "error",
-          contexts: {
-            custom: {
-              ...context,
-              error: String(error),
-            },
-          },
-        });
-      }
     }
 
     this.log(entry);
@@ -250,36 +213,15 @@ class Logger {
         errorName: error.name,
         errorMessage: error.message,
       };
-
-      // Send fatal error to Sentry
-      if (Sentry) {
-        Sentry.captureException(error, {
-          level: "fatal",
-          contexts: {
-            custom: context,
-          },
-          tags: {
-            logLevel: "fatal",
-          },
-        });
-      }
     }
 
     this.log(entry);
 
-    // In production, flush Sentry and exit (server-side only)
+    // In production, flush and exit (server-side only)
     if (!this.isDevelopment && !this.isClient) {
-      if (Sentry) {
-        Sentry.flush(2000).then(() => {
-          this.flush().then(() => {
-            process.exit(1);
-          });
-        });
-      } else {
-        this.flush().then(() => {
-          process.exit(1);
-        });
-      }
+      this.flush().then(() => {
+        process.exit(1);
+      });
     }
   }
 

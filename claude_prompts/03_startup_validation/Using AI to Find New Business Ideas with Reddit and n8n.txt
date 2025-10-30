@@ -1,0 +1,553 @@
+00:00 hey it's Max the original flow gramar
+00:02 have you ever used Reddit to research
+00:04 problems that a group of people might
+00:06 have it's a great way to discover
+00:07 opportunities for building products and
+00:09 services like that next side hustle
+00:11 you're trying to build to get out of the
+00:12 right race you could be monitoring the
+00:14 feature requests and complaints for an
+00:16 incumbent app for example an overpriced
+00:18 work for automation tool or be
+00:20 monitoring local regions even cities to
+00:22 identify opportunities in your hometown
+00:24 or on the other side of the world Indie
+00:26 hackers and product managers have been
+00:27 doing this kind of Discovery work
+00:29 manually for years so zuar a member of
+00:31 our Global Community felt this is a
+00:33 pretty good use case for an agentic
+00:35 workflow and ITN is great at grabbing a
+00:37 bunch of daughter and organizing it and
+00:39 AI is pretty good at aggregating and
+00:41 summarizing it so check this one
+00:46 out hey Zar welcome to the show hey Max
+00:49 good to see you man pleasure to be here
+00:51 so for the folks who don't know you
+00:52 would you mind introducing yourself
+00:53 quickly absolutely so my name is a I
+00:56 have a background in engineering the
+00:57 past year and a half I've focused my
+00:59 content on all things AI but
+01:01 specifically the past 6 months I've been
+01:03 Full Throttle on nadn and AI automations
+01:06 and then also I have a school Community
+01:09 that's centered around NN and creating
+01:11 automations for businesses and just
+01:13 learning how to take advantage of this
+01:15 amazing platform that we have so Zuber
+01:17 what have you got to show me today so
+01:18 I'm really excited to show you guys this
+01:20 amazing workflow that I created again
+01:22 the point of this workflow is to
+01:24 actually solve real world problems that
+01:27 small businesses are facing very cool so
+01:29 Zuber was showing me this off camera
+01:30 before we started recording I'm really
+01:32 excited about this one because it's
+01:33 basically identifying like business
+01:35 opportunities right based on problems
+01:36 that people have and this is something
+01:38 that I used to do myself manually on
+01:41 Reddit or using tools like gummy search
+01:42 and stuff I remember paying the tools
+01:44 that would allow me to do it manually
+01:46 myself so Zuber please take it away and
+01:48 show us what you built all right so let
+01:49 me go ahead and test the workflow and
+01:51 then I'm going to go ahead and walk
+01:52 through step by step and click on test
+01:54 workflow awesome and there you go as you
+01:56 can see right now obviously the
+01:58 execution is manual but you can do a
+01:60 schedule Trigger or have other triggers
+02:02 as well but right now it's going through
+02:03 and processing all the nodes updating
+02:05 our Google Sheets and then also we have
+02:08 a centent analysis I've shut off the
+02:09 slack and Gmail because I don't want to
+02:11 receive a bunch of stuff but as you can
+02:12 see right now the workflow executed
+02:14 properly and this is the Google sheet
+02:16 that we have right now so we have a
+02:18 bunch of columns here the subreddit
+02:20 subreddit size post upvotes original
+02:22 post summary and potential solution and
+02:24 as you can see right now it worked so
+02:25 let's go ahead and actually walk through
+02:27 a step by step and explain what's going
+02:29 on I will kind of go through the most
+02:30 important notes what's happening right
+02:32 now the probably the most important note
+02:34 here is the Reddit note the amazing
+02:35 thing about ITN is it already has that
+02:38 Integrations once you create this note
+02:41 what's happening is we're searching
+02:43 through posts inside the subreddit
+02:45 called small business now the small
+02:47 business is actually one of the top
+02:49 subreddits on Reddit where small
+02:51 businesses actually go they they post
+02:53 their problems that their the issues
+02:54 that they're running into so this is a
+02:56 gold mine for people who are looking for
+02:59 solution for businesses because
+03:00 businesses provide their problems
+03:02 they're posting it there so as somebody
+03:04 who is looking to monetize this is great
+03:07 because now you're trying to solve real
+03:09 world problems that the businesses are
+03:11 posting themselves I mean and I think
+03:13 it's not just that they have the problem
+03:15 it's that as a small business owner they
+03:16 took the time to go on Reddit to post
+03:18 that problem that's going to you know
+03:20 validate that issue as more than just a
+03:22 small issue they went on and took that
+03:24 friction to try and get that answer
+03:26 which means they probably also have
+03:27 willingness to pay absolutely yeah
+03:29 obviously a small business don't have
+03:30 time to like figure things out on their
+03:32 own so that's where it's an opportunity
+03:34 for others who can utilize these amazing
+03:36 tools now to actually provide this try
+03:39 to solve a frustration like you said I
+03:40 mean it takes a lot for a business to
+03:43 take time out of their business and go
+03:45 ahead and post somewhere which means
+03:46 they're looking for a solution they're
+03:47 desperate at that point the keyword this
+03:49 is very important this is what this node
+03:51 is going to search in the subreddit and
+03:53 right now I have the keyword as
+03:55 automation this could be whatever you
+03:56 want you can actually change this
+03:58 keyword doesn't have to be automation it
+03:59 could be something like I don't know
+04:01 coffee shops or whatever it may be right
+04:03 I would suggest not toggling this return
+04:05 all because this is going to send a lot
+04:07 of data here so you can the great thing
+04:09 is you can limit the amount of data
+04:10 that's coming in out of the Reddit here
+04:12 so I've put just two because for this
+04:15 demo purposes but what you could do is
+04:16 if you have a scheduled trigger you can
+04:18 do every day you can do five posts that
+04:20 you're like searching through so that
+04:22 way you have like the top posts that are
+04:23 coming through and then additional field
+04:25 you can actually sort by what's hot
+04:27 what's relevant what's new that's
+04:29 another great thing now you can even
+04:31 further filter the data to make sure
+04:33 it's meeting exactly what you're looking
+04:35 for so these are the two hottest posts
+04:37 in the small business subreddit that
+04:38 have the word automation absolutely yeah
+04:40 so actually we can increase the limit a
+04:41 little bit here let me just run this
+04:43 live so people know that this is working
+04:45 now this time I change it to four if I
+04:47 click on test step so now I'm going to
+04:48 get four posts you can see in the view
+04:50 you have four items here on the Json so
+04:52 this is where you can read the title and
+04:54 obviously we're getting a lot of data
+04:56 here that's where we need to now further
+04:58 go ahead in the next step and try to
+04:60 filter and grab the data that's relevant
+05:02 to us so that's the beauty of nadn where
+05:04 now you can e refine the data that's
+05:06 coming out what's happening next is I'm
+05:08 just basically putting this F note and
+05:10 that's where now I am further filtering
+05:13 so I'm saying Hey I want to make sure
+05:14 that the posts have at least two uploads
+05:17 because you want to make sure that the
+05:18 post is being interacted with the next
+05:20 one I'm just making sure that the self
+05:22 text meaning the post is not empty I am
+05:24 filtering and make sure that the time is
+05:26 converted to ISO standard so that way
+05:28 it's readable and then I'm also so
+05:30 here's another great operation I'm
+05:31 saying that I am filtering this so I'm
+05:34 saying that if this post occurred I want
+05:36 to make sure that it's not sending me
+05:38 the data forever right I want to limit
+05:40 it up to 6 months from today so that's
+05:42 another great thing here that we're
+05:43 doing now we can further clean this data
+05:45 if I click on test step here there you
+05:47 go so now we have this nice true branch
+05:49 which is going to further filter the
+05:51 Reddit post that we're looking for
+05:52 specifically if note the output from the
+05:54 if node this is where now we can do a
+05:56 set note to clean the data and grab the
+05:58 exact things that we're looking so in
+06:00 our case I'm looking for upvotes I'm
+06:03 looking for subreddit size the original
+06:05 post the subreddit the date and then the
+06:07 URL so these are the only five things
+06:09 I'm grabbing because as you can see on
+06:10 the left hand side I have a bunch of
+06:12 stuff that's coming out of the if node
+06:13 you want to clean the data and set node
+06:15 to be honest is one of my favorite notes
+06:17 because it does such a great job of
+06:19 cleaning the data so that way you can do
+06:20 a lot more with it now this is something
+06:22 I recommend to everyone guys before your
+06:24 AI step if you're getting raw data from
+06:27 an API there's going to be probably most
+06:29 of the time a a lot of data that is not
+06:31 relevant for getting your task done that
+06:32 could confuse your AI it's definitely
+06:34 going to slow it down it's definitely
+06:35 going to cost more which doesn't matter
+06:36 if you run it once or twice but if
+06:37 you're doing anything at scale so this
+06:39 step that zuar is doing here very
+06:40 important and I think definitely a best
+06:42 practice like send in what you need to
+06:44 nothing more would you agree zuar oh
+06:46 absolutely like I said set node is one
+06:47 of my favorite nodes in NN because what
+06:49 you're doing is now you don't want to
+06:50 overwhelm yourself with all of the data
+06:52 and not only yourself you don't want to
+06:54 overwhelm the AI agents or the further
+06:56 notes that you're putting with all of
+06:57 this data that's coming as unnecessary
+06:59 because it's going to cost you more
+06:60 money obviously the AI agent to process
+07:02 it but not only that it's just going to
+07:03 get everything confused and I also like
+07:05 things to be beautiful and clean this is
+07:07 a perfect way to do that Mak so let's go
+07:09 ahead and test this step and you will
+07:11 see what I'm talking about about the
+07:12 beautiful and the clean this is all the
+07:14 stuff that's coming out from the left
+07:15 hand side and if I click on test step
+07:18 here look how pretty and nice and
+07:20 organized it is on the right hand side
+07:21 now I have four items and I'm only
+07:23 grabbing five things upfold subreddit
+07:25 size original post and this is by the
+07:27 way matching my Google sheet here now
+07:29 that we have have our data cleaned up
+07:31 now we can go ahead and now use AI
+07:33 agents and our AI nodes to do further
+07:35 things with it the next step I'm
+07:37 creating a tools agent uh conversational
+07:39 agent here what I'm doing is just I've
+07:41 kept the prompt very simple I'm saying
+07:44 decide whether this post is actually
+07:45 describing a business related problem
+07:47 I'm just grabbing the original post here
+07:49 the only thing this AI agent needs to
+07:52 Output is a yes or a no that's exactly
+07:54 what we're doing right because we want
+07:55 to be able to filter out further and
+07:58 look for something cuz a lot of people
+07:60 post a lot of things on Reddit so you
+08:01 want to make sure you're filtering out
+08:02 the actual solution or an actual problem
+08:04 that somebody's facing let's go ahead
+08:06 and test the step I'm obviously using my
+08:08 openai chat model here it's up to you
+08:10 you can use cloud or whatever else you
+08:12 are used to so there you go now we have
+08:14 four items and out of the four items
+08:16 three were yes and one was no meaning
+08:18 that three of these posts have was
+08:20 actually a business that's looking for a
+08:22 solution and one of them was probably
+08:23 just a random post now that we have the
+08:25 output from the AI agent now we can
+08:27 actually merge that output along with
+08:30 the data that was coming in using our
+08:31 set node and merge node is also a great
+08:34 node here so we're just combining all of
+08:35 that data one from the yes output from
+08:38 the AI agent and then the rest here the
+08:40 next step is we're just using this
+08:42 filter node to be able to filter the uh
+08:44 output from the AI agent and also that's
+08:46 data that's coming in because we want to
+08:47 make sure that it's using the post that
+08:49 have that yes out for from AI agent
+08:51 let's go ahead and play that and once
+08:54 there you go so now we're good to go
+08:55 here so now we're sending three items
+08:57 because as we saw earlier one of the
+08:58 posts had it item that was related not
+09:01 necessarily to a business prop now we're
+09:03 adding additional notes Here the first
+09:05 one is a summarization chain this is
+09:06 just summarizing the output here because
+09:08 we want to make sure that we're not
+09:10 sending the entire original post and
+09:12 then the openai note here so a quick
+09:15 note on the prompt here it's just saying
+09:17 based on the following Reddit posts
+09:19 suggest a business idea or service that
+09:21 could help solve this problem but not
+09:23 only this other problems that are
+09:24 similar to this because now we're trying
+09:26 to figure out posts that are going to be
+09:28 common amongst more small to mediumsized
+09:30 businesses so this gives you even
+09:32 further refinement and therefore it
+09:34 gives you the ability to do more stuff
+09:36 with it let's go ahead and process these
+09:38 so I'm going to do the summarization
+09:39 chain first that's again same thing I'm
+09:41 using the openi chat model and then
+09:43 obviously we're grabbing some additional
+09:44 data from our filter node here and then
+09:46 we're going to go ahead and use our
+09:47 merge node to combine all of that data
+09:50 that's coming in and we're going to
+09:52 process all of that and upload it to our
+09:54 Google sheet here this is exactly what
+09:56 the output looks like there you go
+09:58 perfect so now as you can see we're just
+09:60 merging all of this stuff together and
+10:02 it's outputting all of that data into
+10:04 our Google Sheets so let's take a look
+10:05 at actually what's going on inside this
+10:07 Google Sheets if we click right here
+10:09 again and we're doing an appen roll
+10:11 operation here if you have your
+10:13 credential up you can grab this exact
+10:15 sheet which I've named Reddit business
+10:17 ideas right here and I'm mapping each
+10:19 column manually right so I'm just
+10:21 grabbing all of that information from my
+10:23 previous merge note and then I'm
+10:24 bringing it here and that's exactly
+10:26 what's happening and on the right hand
+10:27 side as you can see all of the data data
+10:30 is cleanly outputed and now if we go
+10:32 back to our Google sheet there you go
+10:34 right everything is there including the
+10:36 subreddit size the original post the
+10:38 uploads and then including the actual
+10:40 link to that particular Reddit post here
+10:43 so as you can see this is actually real
+10:44 right like you can see somebody has
+10:46 already posted this and this has 1.9
+10:48 million members a lot of interaction is
+10:50 happening here and that's a great thing
+10:51 about posting the actual Reddit URL here
+10:54 so that way you can actually go and
+10:55 check out the original post we have our
+10:57 original post the post summary that we
+10:59 used our summarization chain there and
+11:01 then this is where that potential
+11:02 solution comes in this AI is actually
+11:04 outputting all of the solutions for this
+11:06 problem that this business is actually
+11:08 facing again you can you can do a lot
+11:09 more with this obviously I've added a
+11:11 sentiment analysis here just again this
+11:13 is optional you can send this to your
+11:15 slack channels you can send this to your
+11:17 Gmail if you're saying hey you know what
+11:19 any negative sentimental analysis the
+11:21 output that's coming in I want to send
+11:22 myself an email so that way I have that
+11:25 data as well and there so that way I can
+11:26 do further things with it this is kind
+11:28 of again for inspiration you can do a
+11:30 lot more with this could be a gold mine
+11:32 for finding a potential solution and
+11:34 monetizing definitely I think like with
+11:36 so many solutions these days and a lot
+11:37 of people like well someone's already
+11:39 done that and whatnot but I think like
+11:40 the thing to remember is there's
+11:41 regionalization and localization there's
+11:44 not every customer knows every single
+11:45 products I think especially in with AI
+11:47 and stuff you know a single operator
+11:49 identifying a small problem that VCS and
+11:51 stuff will never touch rapidly with loc
+11:53 code tools and stuff deploying that and
+11:55 getting a couple hundred customers that
+11:56 could pay more than being a startup
+11:58 employee but it's just the total
+11:59 available Market of that problem isn't
+12:01 big enough for some big team to go in
+12:03 but now again with you being able to
+12:04 identify with AI and build tools easier
+12:06 you can probably go serve that pain
+12:08 point and then the result is people
+12:09 getting products that are hyp specific
+12:11 for them you getting income and
+12:13 everyone's happier with the power of AI
+12:14 but I'm curious Zu be what's next for
+12:16 this guy way do you think you'll evolve
+12:18 this as you build it out now what I
+12:20 would do with this honestly is have this
+12:22 as a schedule trigger and then you can
+12:25 run this on a weekly basis now after
+12:27 this Google sheet because now you have
+12:28 all this great data that's all in one
+12:30 space in your Google sheet with all of
+12:32 this information what you could do next
+12:34 is add additional AI nodes in here to be
+12:36 able to say hey you know what all of
+12:38 this data that's coming in find the
+12:40 common problem that these businesses are
+12:42 facing right and then from that now you
+12:44 can do things like come up with a
+12:46 solution for the most common problems
+12:48 that you see that's coming out of these
+12:50 business or these businesses are posting
+12:52 so that's where like I mentioned you
+12:53 could do a lot more with this where you
+12:55 can find the common data you can find
+12:58 the common problems CU you know as this
+12:59 say necessity is the mother of invention
+13:01 you can find the necessities and the
+13:03 problems that these business are facing
+13:05 that's the best way to start any
+13:06 business is to find a problem that
+13:09 somebody's facing come up with a better
+13:10 solution and like you mentioned earlier
+13:12 obviously these small to medium-sized
+13:13 businesses they don't have the budget to
+13:15 go to bigger companies and have
+13:17 thousands of dollars just to talk to
+13:19 them before they can even come up with a
+13:20 solution now you can be a oneperson
+13:22 business a two person business now with
+13:24 these amazing tools that we have at our
+13:26 disposal a one person could start with
+13:28 two clients and make a living off of
+13:30 that that's where you can get going I
+13:31 think the really cool thing Zu bear if
+13:33 if looking at this workflow as well is
+13:34 realizing I can change a trigger change
+13:36 that Google sheet to a set node and I've
+13:38 got an AI tool that some other AI agent
+13:40 can now use this like multi- agentic
+13:42 solution just as a tool again the
+13:44 combinatorics of what's possible just
+13:46 like expands and just one more thing I
+13:48 wanted to point out again you can play
+13:50 around with this this doesn't
+13:52 necessarily mean this is the best
+13:54 possible way to create this workflow
+13:55 right this is just a option you can add
+13:58 for example instead of an AI agent in
+13:60 another note that will be better to
+14:02 solve this for example same thing you
+14:04 don't have to add sentimental analysis
+14:06 you don't have to add like a
+14:07 summarization so there's a lot you can
+14:09 do these are just I always say that when
+14:10 I create these workflows this doesn't
+14:12 necessarily mean that this is the one
+14:15 only solution right there's multiple
+14:16 solution to these things depending on
+14:18 what your use case I can't agree more I
+14:20 think one thing I always tell newbies is
+14:21 like imperfect workflows create value
+14:24 all the time I'll would probably say
+14:25 most of our whole user bases workflows
+14:27 are not perfect they're likely good
+14:30 enough and then that person like went to
+14:31 the other hundred things that they have
+14:32 to do that day iterating on it and
+14:33 improving it over time and I think that
+14:35 is absolutely true in this AI space the
+14:37 models we're using today three months
+14:39 from now probably gonna be using
+14:40 different models probably there's going
+14:42 to be some new pattern or something and
+14:44 I see that all the time like in my
+14:45 community when I post something there's
+14:47 amazing how people come up and like hey
+14:49 by the way I found this better way to do
+14:51 this and I learned from everybody cuz
+14:53 like we're all new in this space that's
+14:54 the great thing about like working with
+14:56 others even if they're completely
+14:58 beginners and like oh by the way you
+14:59 guys know how to I figured out a way to
+15:01 do this and then everybody's like Ah
+15:03 that's amazing we never thought about
+15:04 that so yeah same thing with in my work
+15:06 my job is to talk to FL grammar and they
+15:08 just teaching me all day just like
+15:09 yourself super if people likeing what
+15:11 they see they're inspired they want to
+15:12 see more and get more and be flow
+15:14 gramming along with you where can they
+15:16 do that I have a YouTube channel where
+15:17 you can go ahead and check out like I
+15:18 have tons of tutorials there also I have
+15:21 my school Community that's where I
+15:23 always say that the best way to learn is
+15:26 learn together our the community is a
+15:28 great space where you can go back and
+15:29 forth with people and ask questions we
+15:32 have daily calls that you can jump in
+15:34 and ask myself or others who are hosting
+15:36 these calls we have live build so
+15:38 there's great opportunity there to jump
+15:40 in and learn very cool Zuber thank you
+15:42 so much for your time I know you're a
+15:43 busy guy between the the school
+15:45 community and building Consulting all
+15:47 that so I really appreciate it and I
+15:48 can't wait to have you back on soon cuz
+15:50 I know you're building all the time I'm
+15:51 guessing you're going to have a really
+15:52 cool use case to share with me real soon
+15:54 thanks so much man I hope you have a
+15:55 great rest of your week thank you so
+15:56 much for having me man this a lot of fun
+15:58 thank you it was absolutely my pleasure
+16:02 ciao really cool stuff S Bear thanks for
+16:05 that one o this was a good one 2014
+16:08 homemade strawberry liquor from vuko
+16:10 Stefan himself thanks vuko and that's
+16:12 all for today oh wrong one so that's all
+16:15 for today um where's the brown a brown
+16:18 glass see in Germany like to separate
+16:21 the glasses when we want them mixing ooh
+16:23 I think the lid was on that one sorry
+16:25 shorts what I really like about zub's
+16:28 pattern is how easily can be adapted and
+16:30 changed change your inest sources change
+16:33 some of the filtering logic change some
+16:35 of the ways that you're analyzing it
+16:36 afterwards and I mean you're talking
+16:37 about use cases across dozens of roles
+16:40 right another great thing that zuba
+16:41 highlighted is again if this was a use
+16:44 case that was running 10,000 times a day
+16:45 I'm sure you could optimize it it was a
+16:48 relatively quick and dirty workflow but
+16:49 it's getting him insights today and I
+16:52 think especially when you think about
+16:53 these automations that we want to set up
+16:55 today to improve our life it's got to be
+16:57 something you can knock out in an hour
+16:58 or two who can block out that kind of
+17:00 time in this modern world this video is
+17:02 part of my work at the studio where I
+17:04 share the story of flow grammas from
+17:05 across edn's Global Community I'm Max
+17:08 the original flow Grammer drop a comment
+17:10 on what you'd like to see next and don't
+17:11 forget to mash that subscribe button
+17:13 happy happy happy flow gramming

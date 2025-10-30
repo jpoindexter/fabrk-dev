@@ -7,7 +7,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { tokens } from "@/lib/design-system/tokens";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -46,9 +45,9 @@ export function ThemeToggle() {
     return (
       <div className="relative">
         {isDark ? (
-          <Sun className={`${tokens.sizes.icon.sm}`} />
+          <Sun className="h-4 w-4" />
         ) : (
-          <Moon className={`${tokens.sizes.icon.sm}`} />
+          <Moon className="h-4 w-4" />
         )}
         {theme === "system" && (
           <div className="absolute -bottom-0.5 -right-0.5 size-1.5 rounded-full bg-primary/100"></div>
@@ -69,7 +68,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={toggleTheme}
-      className={`${tokens.sizes.icon.xl} px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+      className="h-6 w-6 px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       aria-label={getAriaLabel()}
     >
       {getIcon()}

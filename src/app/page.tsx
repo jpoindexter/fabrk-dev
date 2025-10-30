@@ -1,82 +1,31 @@
 /**
  * ✅ FABRK COMPONENT
- * Home Page - Shadcn/ui style homepage
+ * Home Page - Modern landing page
  * Production-ready ✓
- * 1:1 replica of shadcn/ui homepage design
  */
 
 "use client";
 
-import { ExamplesShowcase } from "@/components/home/examples-showcase";
-import { HeroShadcn } from "@/components/home/hero-shadcn";
-import { StreamlineSection } from "@/components/home/streamline-section";
-import { KeyboardShortcutsModal } from "@/components/ui/keyboard-shortcuts-modal";
-import { useGlobalKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
-import dynamic from "next/dynamic";
-
-// Lazy load below-the-fold sections for better performance
-const ShowcaseSection = dynamic(
-  () =>
-    import("@/components/home/showcase-section").then((mod) => ({ default: mod.ShowcaseSection })),
-  {
-    loading: () => <div className="min-h-[2000px]" />,
-  }
-);
-
-const DashboardDemo = dynamic(
-  () => import("@/components/home/dashboard-demo").then((mod) => ({ default: mod.DashboardDemo })),
-  {
-    loading: () => <div className="min-h-[800px]" />,
-  }
-);
-
-const PricingShadcn = dynamic(
-  () => import("@/components/home/pricing-shadcn").then((mod) => ({ default: mod.PricingShadcn })),
-  {
-    loading: () => <div className="min-h-[800px]" />,
-  }
-);
-
-const TestimonialsShadcn = dynamic(
-  () =>
-    import("@/components/home/testimonials-shadcn").then((mod) => ({
-      default: mod.TestimonialsShadcn,
-    })),
-  {
-    loading: () => <div className="min-h-[600px]" />,
-  }
-);
-
-const FaqShadcn = dynamic(
-  () => import("@/components/home/faq-shadcn").then((mod) => ({ default: mod.FaqShadcn })),
-  {
-    loading: () => <div className="min-h-[600px]" />,
-  }
-);
-
-const CtaShadcn = dynamic(
-  () => import("@/components/home/cta-shadcn").then((mod) => ({ default: mod.CtaShadcn })),
-  {
-    loading: () => <div className="min-h-[400px]" />,
-  }
-);
+import { LpNavbar1 } from "@/components/home/lp-navbar-1";
+import { HeroSection7 } from "@/components/home/hero-section-7";
+import { FeatureSection9 } from "@/components/home/feature-section-9";
+import { FeatureSection3 } from "@/components/home/feature-section-3";
+import { TestimonialsSection5 } from "@/components/home/testimonials-section-5";
+import { PricingSection4 } from "@/components/home/pricing-section-4";
+import { FaqSection1 } from "@/components/home/faq-section-1";
+import { Footer2 } from "@/components/home/footer-2";
 
 export default function HomePage() {
-  // Enable global keyboard shortcuts
-  useGlobalKeyboardShortcuts();
-
   return (
-    <div className="min-h-screen bg-white">
-      <HeroShadcn />
-      <ExamplesShowcase />
-      <StreamlineSection />
-      <ShowcaseSection />
-      <DashboardDemo />
-      <PricingShadcn />
-      <TestimonialsShadcn />
-      <FaqShadcn />
-      <CtaShadcn />
-      <KeyboardShortcutsModal />
+    <div className="min-h-screen">
+      <LpNavbar1 />
+      <HeroSection7 />
+      <FeatureSection9 />
+      <FeatureSection3 />
+      <TestimonialsSection5 />
+      <PricingSection4 />
+      <FaqSection1 />
+      <Footer2 />
     </div>
   );
 }

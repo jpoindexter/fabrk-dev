@@ -16,7 +16,6 @@ import { SessionsSection } from "@/components/account/sessions-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { tokens } from "@/lib/design-system/tokens";
 import { cn } from "@/lib/utils";
 import { Award, CreditCard, Key, Monitor, Shield, User } from "lucide-react";
 import Link from "next/link";
@@ -84,8 +83,8 @@ export default function AccountPage() {
                   "transition-colors hover:bg-accent hover:text-accent-foreground"
                 )}
               >
-                <Icon className={`${tokens.sizes.icon.sm}`} />
-                <span className={`${tokens.text.size.xs} font-medium`}>{tab.label}</span>
+                <Icon className="h-4 w-4" />
+                <span className="text-xs font-medium">{tab.label}</span>
               </TabsTrigger>
             );
           })}
@@ -166,12 +165,12 @@ export default function AccountPage() {
             </TabsContent>
           </div>
 
-          <div className={`${tokens.spacing.space.y[4]}`}>
+          <div className="space-y-4">
             <Card>
               <CardHeader className="pb-3">
-                <CardTitle className={`${tokens.text.size.base}`}>Quick Actions</CardTitle>
+                <CardTitle className="text-base">Quick Actions</CardTitle>
               </CardHeader>
-              <CardContent className={`${tokens.spacing.space.y[2]}`}>
+              <CardContent className="space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
@@ -186,8 +185,8 @@ export default function AccountPage() {
                     >
                       <Icon className="mt-0.5 size-5" />
                       <div className="space-y-0.5">
-                        <p className={`${tokens.text.size.sm} font-medium`}>{tab.label}</p>
-                        <p className={`${tokens.text.size.xs} text-muted-foreground`}>
+                        <p className="text-sm font-medium">{tab.label}</p>
+                        <p className="text-xs text-muted-foreground">
                           {tab.description}
                         </p>
                       </div>
@@ -199,37 +198,37 @@ export default function AccountPage() {
 
             <Card>
               <CardHeader className="pb-3">
-                <CardTitle className={`${tokens.text.size.base}`}>Account Status</CardTitle>
+                <CardTitle className="text-base">Account Status</CardTitle>
               </CardHeader>
-              <CardContent className={`${tokens.spacing.space.y[4]}`}>
+              <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className={`${tokens.text.size.sm} text-muted-foreground`}>Plan</span>
-                  <span className={`${tokens.text.size.sm} font-medium`}>Pro</span>
+                  <span className="text-sm text-muted-foreground">Plan</span>
+                  <span className="text-sm font-medium">Pro</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={`${tokens.text.size.sm} text-muted-foreground`}>Status</span>
-                  <span className={`text-primary ${tokens.text.size.sm} font-medium`}>Active</span>
+                  <span className="text-sm text-muted-foreground">Status</span>
+                  <span className="text-primary text-sm font-medium">Active</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={`${tokens.text.size.sm} text-muted-foreground`}>
+                  <span className="text-sm text-muted-foreground">
                     Member Since
                   </span>
-                  <span className={`${tokens.text.size.sm} font-medium`}>Jan 2024</span>
+                  <span className="text-sm font-medium">Jan 2024</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={`${tokens.text.size.sm} text-muted-foreground`}>
+                  <span className="text-sm text-muted-foreground">
                     Storage Used
                   </span>
-                  <span className={`${tokens.text.size.sm} font-medium`}>2.4 GB / 10 GB</span>
+                  <span className="text-sm font-medium">2.4 GB / 10 GB</span>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="pb-3">
-                <CardTitle className={`${tokens.text.size.base}`}>Need Help?</CardTitle>
+                <CardTitle className="text-base">Need Help?</CardTitle>
               </CardHeader>
-              <CardContent className={`space-y-2 ${tokens.text.size.sm} text-muted-foreground`}>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
                 <p>
                   Visit our{" "}
                   <Link href="/docs" className="text-primary hover:underline">

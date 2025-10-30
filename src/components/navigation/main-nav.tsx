@@ -23,7 +23,7 @@ export function MainNav() {
         {/* Logo and Navigation together */}
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center gap-2">
-            <FabrkLogo size={28} />
+            <FabrkLogo className="h-7 w-7" />
             <span className="text-lg font-medium text-foreground">Fabrk</span>
           </Link>
 

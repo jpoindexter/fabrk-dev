@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { tokens } from "@/lib/design-system/tokens";
 import { formatUsageDisplay, getUsagePercentage } from "@/lib/features/access-control";
 import { AlertCircle, Database, FolderOpen, Globe, Users } from "lucide-react";
 import Link from "next/link";
@@ -41,14 +40,10 @@ export function UsageLimits({ user }: UsageLimitsProps) {
   };
 
   return (
-    <div
-      className={`rounded-lg border border-border bg-muted/30 ${tokens.components.card.content}`}
-    >
+    <div className="rounded-lg border border-border bg-muted/30 p-6">
       <div className="mb-4 flex items-center justify-between">
-        <div className={`flex items-center ${tokens.spacing.gap[2]}`}>
-          <AlertCircle
-            className={`${tokens.sizes.icon.md} text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
-          />
+        <div className="flex items-center gap-2">
+          <AlertCircle className="h-5 w-5 text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
           <h3 className="font-medium text-muted-foreground dark:text-muted-foreground">
             Free Tier Usage Limits
           </h3>
@@ -60,7 +55,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         </Link>
       </div>
 
-      <div className={`grid grid-cols-1 ${tokens.spacing.gap[4]} md:grid-cols-2`}>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {resources.map((resource) => {
           const Icon = resourceIcons[resource];
           const percentage = getUsagePercentage(fullUser, resource);
@@ -68,16 +63,11 @@ export function UsageLimits({ user }: UsageLimitsProps) {
           const isNearLimit = percentage >= 80;
 
           return (
-            <div
-              key={resource}
-              className={`rounded-lg bg-background ${tokens.components.card.content} dark:bg-muted`}
-            >
+            <div key={resource} className="rounded-lg bg-background p-4 dark:bg-muted">
               <div className="mb-2 flex items-center justify-between">
-                <div className={`flex items-center ${tokens.spacing.gap[2]}`}>
-                  <Icon className={`${tokens.sizes.icon.sm} text-muted-foreground`} />
-                  <span
-                    className={`${tokens.text.size.sm} font-medium text-muted-foreground dark:text-muted-foreground`}
-                  >
+                <div className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground dark:text-muted-foreground">
                     {resourceLabels[resource]}
                   </span>
                 </div>
@@ -96,7 +86,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
                 className={`h-2 ${isNearLimit ? "bg-destructive" : ""}`}
               />
               {isNearLimit && (
-                <p className={`mt-2 ${tokens.text.size.xs} text-destructive`}>
+                <p className="mt-2 text-xs text-destructive">
                   Approaching limit - upgrade recommended
                 </p>
               )}
@@ -105,10 +95,8 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         })}
       </div>
 
-      <div
-        className={`mt-4 rounded-lg bg-primary ${tokens.components.card.content} dark:bg-primary/30`}
-      >
-        <p className={`${tokens.text.size.sm} text-primary dark:text-primary`}>
+      <div className="mt-4 rounded-lg bg-primary p-4 dark:bg-primary/30">
+        <p className="text-sm text-primary dark:text-primary">
           💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources and unlock premium
           features like OAuth, payments, and email integration.
         </p>

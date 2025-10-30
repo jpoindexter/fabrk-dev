@@ -9,7 +9,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { tokens } from "@/lib/design-system/tokens";
 import { Copy, Key } from "lucide-react";
 import { LicenseCardProps } from "./purchase-status-types";
 
@@ -19,15 +18,15 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
   return (
     <Card>
       <CardHeader>
-        <CardTitle className={`flex items-center ${tokens.spacing.gap[2]}`}>
-          <Key className={`${tokens.sizes.icon.md}`} />
+        <CardTitle className="flex items-center gap-2">
+          <Key className="h-5 w-5" />
           License Key
         </CardTitle>
         <CardDescription>Your unique license key for Fabrk</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className={`${tokens.spacing.space.y[4]}`}>
-          <div className={`rounded-md bg-muted p-6 font-mono ${tokens.text.size.sm} dark:bg-muted`}>
+        <div className="space-y-4">
+          <div className="rounded-md bg-muted p-6 font-mono text-sm dark:bg-muted">
             {licenseKey}
           </div>
           <Button
@@ -39,12 +38,12 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
               <>✓ Copied to Clipboard</>
             ) : (
               <>
-                <Copy className={`mr-2 ${tokens.sizes.icon.sm}`} />
+                <Copy className="mr-2 h-4 w-4" />
                 Copy License Key
               </>
             )}
           </Button>
-          <p className={`${tokens.text.size.xs} text-muted-foreground dark:text-muted-foreground`}>
+          <p className="text-xs text-muted-foreground dark:text-muted-foreground">
             Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>

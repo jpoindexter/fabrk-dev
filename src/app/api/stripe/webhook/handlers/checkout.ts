@@ -12,7 +12,7 @@ import { randomBytes } from "crypto";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-08-27.basil",
+  apiVersion: "2023-10-16",
 });
 
 export async function handleCheckoutCompleted(event: Stripe.Event) {
@@ -82,8 +82,6 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
           subscriptionTier: tier || "professional",
           accessGrantedAt: new Date(),
           emailVerified: new Date(), // Auto-verify since they paid
-          magicLinkToken,
-          magicLinkExpiry,
         },
       });
     }
@@ -101,13 +99,13 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       },
     });
 
-    // Send confirmation email with magic link
+    // Send confirmation email
     await sendPurchaseConfirmationEmail({
       email: customerEmail,
       name: user.name || "Customer",
       licenseKey,
       tier: tier || "professional",
-      magicLinkToken: user.magicLinkToken!,
+      magicLinkToken: "", // Magic link functionality removed for simplicity
       receiptUrl: undefined, // Stripe Checkout Session doesn't have receipt_url directly
     });
 

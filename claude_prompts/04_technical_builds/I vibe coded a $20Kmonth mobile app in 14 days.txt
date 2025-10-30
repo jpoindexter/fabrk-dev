@@ -1,0 +1,484 @@
+00:00 I'm 23 years old and my apps do over a
+00:02 million dollars in sales a year.
+00:04 This is Connor, a 23-year-old kid who
+00:07 cracked the code on building apps that
+00:09 actually make money.
+00:11 I built my latest app in less than 2
+00:13 weeks, 100% with AI.
+00:14 To prove it, he joined a hackathon of
+00:17 over 55,000 people, built an app from
+00:20 scratch, grew it to $20,000 a month, and
+00:22 won the entire thing.
+00:24 The apps that I build are designed to
+00:25 make money from day one. I asked Connor
+00:28 to come on to the channel to break down
+00:30 his entire playbook for building
+00:32 money-making apps fast. And in this
+00:34 episode, we will dive into how he finds
+00:37 validated ideas that can make money from
+00:39 day one. Exactly how he vibe codes these
+00:42 apps quickly and his step-by-step
+00:44 playbook on how to grow them into
+00:46 money-making machines. Strap in because
+00:49 this is an episode you cannot miss. I'm
+00:52 Pat Walls and this is Starter Story. All
+00:55 right, welcome Connor to the channel.
+00:56 Tell me about who you are, what you
+00:58 built, and what's your story.
+00:59 Hi, uh, I'm Connor, and over the past
+01:01 few years, I've built a handful of
+01:02 mobile apps. These apps have done over a
+01:04 million in revenue now. I really only
+01:06 got into entrepreneurship roughly 3
+01:08 years ago just by watching YouTube
+01:10 videos and staying optimistic on what
+01:12 I'm building.
+01:12 Okay, Connor, that's amazing. Can you
+01:14 share with me what types of apps that
+01:16 you've built?
+01:16 So, I've built a bunch of different
+01:18 apps. I've probably got around six apps
+01:19 now. My most recent app is called Payout
+01:22 and this is one that I just recently
+01:23 launched in the beginning of August and
+01:25 just scaled it up to doing 20,000 a
+01:27 month in revenue. The downloads is over
+01:28 12,000 over,300 new subscriptions. One
+01:32 cool thing is this is part of the
+01:33 Revenue Cat Chipoton competition. It's a
+01:35 hackathon that people can release new
+01:37 apps to the app store. This year it had
+01:38 over 55,000 entrance and it won first
+01:41 place for the build and grow award which
+01:43 has a total grand prize of $65,000 for
+01:46 the app that has the most growth over
+01:47 the two-month period. Before we get into
+01:49 the app and how you built it, uh, I got
+01:51 to understand a little bit more about
+01:52 your background. I know you're only 23
+01:54 years old and this is pretty impressive
+01:55 what you've done. So, tell me how you
+01:57 get to this place where you even start
+01:58 building apps.
+01:59 So, before I started building apps, I
+02:01 was just, you know, any other kid
+02:03 playing too much video games, staying up
+02:04 late, no computer science background.
+02:06 One night in the middle of the night, I
+02:07 woke up and I just had a random app idea
+02:09 and I wrote down the whole app idea in
+02:11 my notes. You know, I'd never coded
+02:12 anything. The next morning I woke up and
+02:14 I just started watching YouTube videos
+02:15 and I didn't have a MacBook at the time
+02:17 and I really wanted to make an iOS app
+02:18 and I didn't really have any money so I
+02:20 started doing random tasks just like
+02:21 selling random items around my room and
+02:23 eventually like I got my hands on an old
+02:25 MacBook. I started building a social app
+02:27 called Hotspot Events. This app took me
+02:28 6 to 8 months to build kind of failed. I
+02:30 really had no idea what I was doing.
+02:32 After that first app I quickly realized
+02:34 that apps that are social are super hard
+02:36 to scale. So I eventually moved on to
+02:38 utilities and tools and these are much
+02:39 more easy to scale as a oneman person.
+02:41 This was all about three years ago and
+02:43 since then I've scaled these apps to
+02:44 doing over a million in subscription
+02:46 revenue.
+02:46 Okay. I mean that's amazing. I love that
+02:48 you did this without having all the
+02:50 crazy tools or anything like that. So my
+02:52 next question for you is how do you
+02:54 build these apps? What is your playbook
+02:56 for building these apps? How do you
+02:57 think about building an app from
+02:58 scratch?
+02:59 Yeah, before I get into how I do things
+03:01 today, I think it's important that
+03:02 people know that you know you don't need
+03:03 all these fancy tools. I was just
+03:05 watching YouTube videos and going on
+03:06 Stack Overflow and now my process today
+03:08 is pretty straightforward. I have a very
+03:10 specific set of steps that I follow to
+03:12 make sure that the app I'm building has
+03:13 ability to convert, drive a lot of
+03:15 sales, also have really good user
+03:16 retention. My first step is that I'll go
+03:18 and download a whole bunch of apps,
+03:20 maybe 20 apps that are in the niche that
+03:21 I'm diving into, as well as other apps
+03:23 that I just think are beautiful apps
+03:24 that I want to draw inspiration from for
+03:26 their design perspective. The next thing
+03:28 I do is screenshot every single page in
+03:30 every single onboarding. And I take all
+03:31 these screenshots and I'll put them all
+03:32 on one big line in a Figma file so I can
+03:34 see all of the onboardings, every
+03:36 question they ask, every graph they
+03:37 have. and I'll pick out all the ones
+03:38 that I like and I'll grab some from one,
+03:40 some from another, and then I'll
+03:41 redesign them so all have my theme and
+03:43 my aesthetic that I want for my app. I
+03:46 think it's really important to have an
+03:47 extensive onboarding. Realistically, 90%
+03:49 of users will probably only ever see
+03:51 your onboarding if you have a paywalled
+03:53 section in your app. So, I think it's
+03:54 really important that you spend a lot of
+03:56 time on this, maybe even as much time as
+03:57 designing the actual functionality of
+03:59 the app. When it comes to the
+03:60 onboarding, these are the most important
+04:01 things that you want to do to make sure
+04:03 that your app converts successfully. The
+04:04 first one is you want to invoke emotion.
+04:06 You want to make sure that when the user
+04:08 is going through the onboarding, they
+04:09 feel strongly about it. Most purchases
+04:12 are made emotionally and are not logical
+04:14 when it comes to consumers. You also
+04:15 want to make sure that you show the
+04:16 strongest incentives of your app, how
+04:18 it's going to improve your users's life.
+04:20 You want to make sure that they
+04:21 understand the benefits and that it's
+04:23 very simple for them to be able to make
+04:24 that purchase. It's also important to
+04:25 make sure that the app feels
+04:26 personalized. In today's day and age
+04:28 when there's so much competition, people
+04:30 want to make sure that what they're
+04:31 buying feels like it's meant for them
+04:33 specifically rather than just like a
+04:35 generally applicable app. Finally, you
+04:37 want to make sure that you have some
+04:38 sort of charts, graphs, something to
+04:40 make the app feel more scientific.
+04:42 People like to know that something that
+04:43 they're using has been proven to work,
+04:45 that other people have successfully used
+04:47 it. And by adding these charts and
+04:49 graphs, it'll make it so your app seems
+04:50 very legitimate. The next step is you're
+04:52 going to want to design your data
+04:53 structures. This is very important
+04:54 specifically for vibe coding. It's
+04:56 important to know what your data is
+04:58 going to look like, how it's shaped.
+04:59 Because when you feed the AI, such as
+05:01 cursor or claw, it'll make it much more
+05:03 simple for the AI to know what exactly
+05:05 you're trying to build so it doesn't
+05:06 have to make any guesses on what you're
+05:07 trying to make. I recommend making a
+05:09 text document with an explanation as
+05:11 well as some JSON data that explains
+05:12 what your data actually looks like and
+05:15 some information about each of the
+05:17 attributes that you're going to have for
+05:18 your data. By giving it this text
+05:19 document in advance, it allows me to
+05:21 code this thing very quickly. With this
+05:23 prep done, you can actually start to
+05:25 build the app. Usually, I'd start with
+05:26 building the core functionality of the
+05:28 app, skipping the onboarding and just
+05:29 going straight for the main features of
+05:31 the app. You can really just drop the
+05:33 screenshots into Claude or Cursor,
+05:35 whatever AI you're using. And because
+05:37 it's now able to read the images and
+05:39 understand what it's looking at, it'll
+05:40 actually be able to write the code for
+05:42 the full screen for you. When working
+05:43 with AI, it doesn't always get
+05:44 everything right on the first time. So,
+05:46 sometimes you need to just continue to
+05:48 work with it and eventually it'll get
+05:49 the details correct. I don't recommend
+05:51 being too picky because it's important
+05:52 to get a version out quickly rather than
+05:54 getting a perfect app out. As far as the
+05:56 tools that I use now, I honestly just
+05:58 use Claude. That's the only thing I'm
+05:59 using for AI coding and it does
+06:01 everything for me.
+06:02 It is absolutely insane that Connor was
+06:04 able to build and launch this app in
+06:06 just a few weeks. I hope that his story
+06:08 inspires a lot of people watching to get
+06:10 started and vibe code stuff as well.
+06:13 However, I need you to be careful. I see
+06:15 a lot of people get into vibe coding,
+06:17 try to oneshot something real quick, get
+06:19 lost, not be able to deploy, and then
+06:21 give up. Cuz here's the truth about
+06:22 building with AI. You need to know how
+06:24 to use these AI tools effectively. What
+06:27 to build, how to ship fast, and how to
+06:29 build something that actually works.
+06:30 Well, this is exactly why we launched
+06:32 Starter Story Build, which is our
+06:34 program where you will learn how to
+06:36 launch your project using only AI coding
+06:38 tools and do it in just a couple weeks.
+06:41 Once you understand how to actually
+06:42 leverage these AI tools, you can build a
+06:45 lot faster and save a whole lot of time.
+06:48 So, if you're ready to learn how to
+06:49 build apps the right way with AI. Well,
+06:52 head to the first link in the
+06:53 description to check out Starter Story
+06:54 Build. Our next cohort is starting this
+06:56 week, so definitely check out that link
+06:58 and save your spot. All right, let's get
+06:60 back to the video. The next question I
+07:02 have for you is around validation.
+07:04 You've built multiple apps that are
+07:06 really successful, and I know you've
+07:07 also built some stuff that wasn't
+07:09 successful as well. Looking back, how do
+07:11 you know if your app idea is validated
+07:13 and it's worth taking it the distance?
+07:15 So, the way I see it is there's two
+07:16 different types of apps. There's
+07:17 innovating new ideas and there's
+07:19 modifying versions of existing ideas. If
+07:21 you're creating a modified version of an
+07:22 existing app, then congrats, your app is
+07:24 already validated by other people. Now,
+07:26 all you have to do is make some
+07:27 modifications and make it so the app
+07:29 feels like it's your own. The other
+07:30 option is when you're making something
+07:32 brand new. What I'd usually do when I'm
+07:33 making something brand new is go look on
+07:35 Tik Tok, Instagram, see if anyone's
+07:37 talking about the problem that you're
+07:38 trying to solve. You want to make sure
+07:40 that there's an easy path for you to
+07:42 market this app by looking at the
+07:43 comments and seeing like are people
+07:45 asking questions asking like how do I
+07:47 solve this problem? Then now with the
+07:48 current state of how fast you can build
+07:50 apps, I actually will skip the
+07:52 weightless steps and just go ahead and
+07:54 build the app. I really believe that any
+07:56 app can make thousands of dollars these
+07:58 days. Your idea doesn't have to be some
+07:59 crazy app that changes society to make a
+08:02 couple thousand dollars. There's
+08:03 hundreds of millions of people in the US
+08:05 alone. And if you can even capture a
+08:07 tiny grain of sand out of that, then you
+08:09 can make more than enough to sustain
+08:11 yourself.
+08:11 I agree with that, too. There are so
+08:13 many apps out there that are crushing it
+08:15 that we don't even know about. It's
+08:17 pretty insane what's possible today. But
+08:19 as we know, building it is not enough.
+08:21 We have to focus on one very important
+08:22 thing, which is distribution. My next
+08:24 question for you is around marketing.
+08:27 What was your playbook to grow this app
+08:28 from 0 to $20,000 a month in 50 days?
+08:31 And what is your general playbook for
+08:33 marketing apps? For this app, there was
+08:34 a couple different tactics that I used
+08:36 to get the app off the ground. The first
+08:37 one was influencer campaigns. This is
+08:39 when you work with an influencer and
+08:41 have them promote the app or their
+08:42 already existing audience. If you can
+08:44 work with an influencer and get them to
+08:45 promote your product, people already
+08:47 have some degree of trust for that
+08:48 influencer, then they're more likely to
+08:50 listen to their recommendation. For this
+08:52 app, I partnered with a content creator
+08:53 that was already in the niche for the
+08:55 app I was building, and his videos were
+08:56 able to drive a bunch of traffic to the
+08:58 app, like thousands of downloads. The
+08:59 only issue with influencers, though, is
+09:01 that they can be very expensive. My next
+09:02 step will be to run organic UGC
+09:04 campaigns on Tik Tok. This is basically
+09:06 when you work with smaller creators who
+09:08 come off as everyday people or you can
+09:10 even make the content yourself. The goal
+09:11 is to create relatable viral content
+09:13 about your app that comes off as natural
+09:15 and unprocessed. Once one of these
+09:16 videos starts to perform well, you can
+09:18 get more videos like that made with
+09:20 other creators so you can have people
+09:22 just repeat formats that are working for
+09:24 you. One of the major benefits of
+09:25 running these UGC campaigns is that as
+09:27 these creators produce content, you're
+09:29 building out a library of ads that you
+09:31 can run in the future and you already
+09:32 know relatively how good the performance
+09:34 will be on ads based on how well it did
+09:36 organically. Once some of those formats
+09:38 start to consistently go viral and you
+09:39 start to see some installs, you're ready
+09:41 to start putting this video behind paid
+09:42 ads. Which brings me to my final and
+09:44 main channel. I use paid ads for every
+09:46 single app and my goal is to always get
+09:48 my app to the point where I can run paid
+09:50 ads. It's the most consistent way to
+09:51 drive revenue growth to your app.
+09:53 Recently, the paid ads algorithm has
+09:55 changed. Facebook is trying to balance
+09:57 two things. They want to make sure that
+09:58 the advertisers are happy with their
+10:00 results while also keeping people on the
+10:02 platform by making sure the videos are
+10:04 entertaining. The more entertaining your
+10:05 video is, the cheaper it'll be to get
+10:07 your video put in front of people. But
+10:08 you also want to make sure that you're
+10:09 driving conversions. So, your ad has to
+10:11 also make sure that it pushes your
+10:13 product. So, it's important to find that
+10:14 balance between having a video that's
+10:15 very entertaining and also has the
+10:17 potential to convert.
+10:18 Thank you for sharing all those growth
+10:20 tactics. I think that might be the most
+10:22 important part. We haven't really talked
+10:23 too much about what your app actually
+10:26 does. Would you be able to show us a
+10:28 quick demo of your onboarding and how
+10:31 your app works?
+10:32 So, my app is called Payout. It's a
+10:33 class action lawsuit discovery app that
+10:35 lets people find class action lawsuits
+10:37 that they already are applicable for.
+10:38 And this is basically just a way for
+10:40 people to get some money from companies
+10:41 that have done something wrong. So, for
+10:43 the onboarding, I'll quickly run through
+10:44 it here. Asking for activity
+10:46 notifications. You can see the social
+10:48 proof. Here's the payw wall. This payw
+10:50 wall has been converting really well.
+10:51 You can see that I have a weekly and a
+10:52 yearly option here. And the goal is to
+10:54 prioritize users to get the yearly
+10:56 option since it has the highest lifetime
+10:57 value per customer. Here's the main
+10:59 feature of the app. It's a list of class
+11:00 action lawsuits that you can check and
+11:02 see if you're applicable for. For
+11:03 example, this one is the NBA Top Shot
+11:05 app. They had a privacy settlement over
+11:07 the Metapixel being on their website.
+11:09 You can see the description requirements
+11:11 of who's applicable for this lawsuit.
+11:12 You can press the get started button and
+11:14 fill form. And this will take you to a
+11:15 form that you can fill out, put all of
+11:16 your information in, and have everything
+11:18 ready to go to mail this in and claim
+11:20 your class action settlement. And you
+11:21 can see the app will prepare the PDF
+11:23 ready for you to mail in. There's also
+11:24 the wallet tab where you can keep track
+11:26 of all the class action lawsuits that
+11:28 you're applying for and your forms tab
+11:29 where you can see all the forms that
+11:30 you've already filled out.
+11:31 Okay. I mean, that's a really cool idea
+11:33 for an app. I think anybody watching
+11:34 this right now probably wants to go on
+11:36 there and check and see if they're owed
+11:38 any money from these class action
+11:39 lawsuits. What is it about this app that
+11:41 really makes it work? Why do you think
+11:42 it did 0 to 20k a month so fast?
+11:45 I think the value proposition for this
+11:46 app is just very obvious. There's some
+11:49 core things that all people want. They
+11:50 want to be healthier. They want to make
+11:52 more money. They want to look
+11:53 attractive. All sorts of things like
+11:55 this. I like to make apps that tap into
+11:56 these core human desires. And I think
+11:58 that anybody that wants to build apps
+12:00 should be doing the same. And this one
+12:02 plays into people want to make more
+12:03 money. So it's very easy for people to
+12:05 invest money into an app that they know
+12:07 will make them more money.
+12:08 Okay. I want to change topics a little
+12:10 bit and understand how you built this
+12:12 app. What tech stack do you use and what
+12:14 tools you use to run this business?
+12:15 I use Figma for UI design, app store
+12:17 screenshots, and making the app icon. I
+12:19 use Mixpanel for analytics. I use Claude
+12:21 Code for vibe coding. For the more
+12:22 technical stuff, I'll use Nex.js and
+12:24 TypeScript for my website and back end.
+12:26 I use Versell for hosting. I use GitHub
+12:28 for version control as well as making it
+12:29 easier to host. I use Expo for
+12:31 crossplatform build management. And I
+12:33 use RevenueCap for subscription
+12:34 analytics and pricing testing.
+12:36 Okay, cool. Thanks for sharing. That's a
+12:37 pretty simple stack you got there. I
+12:39 like that. The last question that I have
+12:40 for you that I ask everyone who comes on
+12:42 to Starter Story. What advice would you
+12:44 have for anyone watching this that wants
+12:45 to build apps like you? You've built a
+12:47 bunch of successful stuff. You built
+12:49 some failed things. What would be your
+12:50 number one piece of advice on getting
+12:52 started today?
+12:52 My number one piece of advice would be
+12:54 to build something simple with a great
+12:55 onboarding. A simple app can make lots
+12:57 of money. You only really need one to
+12:59 three good features and your onboarding
+13:01 will pull most of the weight for you.
+13:02 All right. Well, that's great advice.
+13:04 Thank you, Connor, for coming on. I love
+13:06 what you built. Amazing stuff you shared
+13:08 here. Thanks for coming on and sharing
+13:09 everything.
+13:10 Yeah, thanks for having me.
+13:11 All right, I want to thank Connor for
+13:12 coming on to the channel. I hope this
+13:14 video finally gives you the proof that
+13:15 you can build apps in a matter of weeks
+13:17 that grow really, really fast. This
+13:19 video was the playbook here on how to do
+13:21 it and we're showing you the real actual
+13:23 app that he did it with. If you're ready
+13:25 to launch your app, then definitely
+13:26 check out Starter Story Build. We will
+13:28 help take your idea, turn it into a real
+13:30 app, get it in front of real people
+13:32 using only AI tools. If you're ready to
+13:35 get off the sidelines and launch, head
+13:37 to the link in the description and check
+13:38 out Starter Story Build. I promise you
+13:40 won't regret it. All right, that's it
+13:42 for this episode. Thank you guys for
+13:43 watching. We'll see you in the next one.
+13:44 Peace.

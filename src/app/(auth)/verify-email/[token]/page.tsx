@@ -79,11 +79,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
   // UX Heuristic #1: Visibility of system status
   if (isVerifying) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <div className="flex items-center justify-center p-6" role="status" aria-live="polite">
@@ -100,11 +96,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
 
   if (verificationStatus === "success") {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <div className="flex items-center justify-center p-6">
@@ -124,11 +116,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
 
   // UX Heuristic #9: Error Recovery
   return (
-    <PageWrapper
-      variant="narrow"
-      padding="default"
-      className="flex min-h-screen items-center justify-center"
-    >
+    <PageWrapper>
       <Card className="w-full">
         <CardContent>
           <div className="p-6 text-center">

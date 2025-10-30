@@ -1,0 +1,25 @@
+This app was built completely using AI.
+I did not even write a single line of
+code. This app allows web developers to
+enter a SAS idea with a description and
+get a visual blueprint to help them
+build their apps using AI as well. So,
+first it'll validate your idea with the
+six core pillars that I created. It'll
+give you improvement suggestions, the
+core features your app needs with the
+entire tech stack and the pricing model.
+And now for the best part, the AI will
+convert your idea into a user flow
+diagram connecting all of your pages.
+And it'll also take all your core
+features and convert them into conbon
+tickets. And it will also show you a
+full overview of your progress so far.
+And the appla uses MCP which connects
+your project to your cursor AI agent. So
+it can move tickets on behalf of you and
+also code your entire application. Now
+this is some real highle stuff. So if
+you want to learn more about AI and web
+development, subscribe to this

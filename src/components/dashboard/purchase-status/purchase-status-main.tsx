@@ -7,7 +7,6 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
 import { logger } from "@/lib/logger";
 import { useState } from "react";
 import { AccessCard } from "./access-card";
@@ -59,7 +58,7 @@ export function PurchaseStatus({ user, purchase, className = "" }: PurchaseStatu
 
   return (
     <div className={`space-y-6 ${className}`}>
-      <div className={`grid ${tokens.spacing.gap[6]} md:grid-cols-2 lg:grid-cols-3`}>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <AccessCard
           hasAccess={hasAccess}
           onGenerateDownload={handleGenerateDownload}

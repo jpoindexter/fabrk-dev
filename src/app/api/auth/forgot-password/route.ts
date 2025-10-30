@@ -61,5 +61,5 @@ async function forgotPasswordHandler(request: NextRequest) {
   return successResponse(null, "If an account exists, a password reset link has been sent");
 }
 
-// Apply both error handling and rate limiting (password reset: 3 requests per hour)
-export const POST = withRateLimit(withErrorHandler(forgotPasswordHandler), "passwordReset");
+// Apply both error handling and rate limiting (password reset: 5 requests per 15 minutes)
+export const POST = withRateLimit(withErrorHandler(forgotPasswordHandler), "auth");

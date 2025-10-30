@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { tokens, cn } from '@/lib/design-system/tokens';
+import { cn } from '@/lib/utils';
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -20,14 +20,13 @@ export function ModeToggle() {
         <Button variant="ghost" size="sm" aria-label="Action button">
           <Sun
             className={cn(
-              tokens.sizes.icon.md,
+              "h-5 w-5",
               "rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
             )}
           />
           <Moon
             className={cn(
-              "absolute",
-              tokens.sizes.icon.md,
+              "absolute h-5 w-5",
               "rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
             )}
           />

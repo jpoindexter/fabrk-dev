@@ -7,7 +7,6 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { tokens } from "@/lib/design-system/tokens";
 import { ShieldCheck, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -20,9 +19,9 @@ export function TokenExpired() {
   };
 
   return (
-    <div className={`${tokens.components.card.content} text-center`}>
+    <div className="p-6 text-center">
       <X className="m-4 size-full" />
-      <h2 className={`m-4 ${tokens.text.size.base} font-medium dark:text-muted-foreground`}>
+      <h2 className="m-4 text-base font-medium dark:text-muted-foreground">
         Link Expired
       </h2>
       <p className="m-4">This password reset link has expired or is invalid.</p>
@@ -51,13 +50,13 @@ export function ResetSuccess() {
 
   // UX Heuristic #1: Visibility of system status
   return (
-    <div className={`${tokens.components.card.content} text-center`}>
+    <div className="p-6 text-center">
       <ShieldCheck className="m-4 size-full" />
-      <h2 className={`m-4 ${tokens.text.size.base} font-medium dark:text-muted-foreground`}>
+      <h2 className="m-4 text-base font-medium dark:text-muted-foreground">
         Password Reset Successfully
       </h2>
       <p className="m-4">Your password has been reset. You can now login with your new password.</p>
-      <p className={`m-4 ${tokens.text.size.base} dark:text-muted-foreground`}>
+      <p className="m-4 text-base dark:text-muted-foreground">
         Redirecting to login...
       </p>
       <Link href="/login">

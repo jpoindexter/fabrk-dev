@@ -7,7 +7,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { tokens } from "@/lib/design-system/tokens";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -18,7 +17,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="absolute left-4 top-4">
         <Link href="/">
           <Button variant="ghost" size="sm">
-            <ArrowLeft className={`mr-2 ${tokens.sizes.icon.sm}`} />
+            <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Button>
         </Link>
@@ -26,7 +25,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
       {/* Logo/Brand */}
       <div className="mb-8">
-        <Link href="/" className={`flex items-center ${tokens.spacing.gap[2]}`}>
+        <Link href="/" className="flex items-center gap-2">
           <div className="flex size-10 items-center justify-center rounded-lg bg-primary">
             <span className="text-xl font-medium text-primary-foreground">C</span>
           </div>
@@ -38,7 +37,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <Card className="w-full max-w-md ">{children}</Card>
 
       {/* Footer Links */}
-      <div className={`mt-8 text-center ${tokens.text.size.sm} text-muted-foreground`}>
+      <div className="mt-8 text-center text-sm text-muted-foreground">
         <div className="flex items-center justify-center gap-4">
           <Link href="/privacy" className="transition-colors hover:text-foreground">
             Privacy Policy

@@ -84,11 +84,7 @@ export default function LoginPage() {
   };
 
   return (
-    <PageWrapper
-      variant="narrow"
-      padding="default"
-      className="flex min-h-screen items-center justify-center"
-    >
+    <PageWrapper>
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Welcome back</CardTitle>

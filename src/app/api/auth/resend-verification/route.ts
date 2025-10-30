@@ -62,5 +62,5 @@ async function resendVerificationHandler(request: NextRequest) {
   return successResponse(null, "Verification email sent successfully");
 }
 
-// Apply both error handling and rate limiting (email: 5 requests per minute to prevent spam)
-export const POST = withRateLimit(withErrorHandler(resendVerificationHandler), "email");
+// Apply both error handling and rate limiting (auth: 5 requests per 15 minutes to prevent spam)
+export const POST = withRateLimit(withErrorHandler(resendVerificationHandler), "auth");

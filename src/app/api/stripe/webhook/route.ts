@@ -116,7 +116,7 @@ import * as subscriptionHandlers from "./handlers/subscription";
 import * as checkoutHandlers from "./handlers/checkout";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-08-27.basil",
+  apiVersion: "2023-10-16",
 });
 
 export async function POST(req: Request) {
@@ -144,7 +144,7 @@ export async function POST(req: Request) {
   }
 
   // Mark event as processed BEFORE handling to prevent race conditions
-  await markWebhookEventProcessed(event.id, event.type, event.data);
+  await markWebhookEventProcessed(event.id, event.type);
 
   try {
     // Route to appropriate handler

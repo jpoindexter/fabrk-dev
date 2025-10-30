@@ -10,6 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ===========================
+// AUTHENTICATION MODELS
+// ===========================
+
 // User model for authentication
 model User {
   id                 String    @id @default(cuid())
@@ -29,19 +33,13 @@ model User {
   trialEndsAt        DateTime? // For trial periods
   licenseKey         String?   // License key for purchased products
   accessGrantedAt    DateTime? // When access was granted
-  
+
   // Usage tracking
   userCount          Int       @default(1) // Track usage for limits
   apiCalls           Int       @default(0) // Track API usage
   storageUsed        Int       @default(0) // Track storage in MB
   projectCount       Int       @default(1) // Track number of projects
 
-  // MFA Fields
-  mfaEnabled          Boolean   @default(false)
-  mfaSecret           String?   // TOTP secret (encrypted)
-  mfaBackupCodes      String[]  // Encrypted backup codes
-  mfaMethod           MfaMethod @default(NONE)
-  
   // Security
   passwordResetToken  String?   @unique
   passwordResetExpiry DateTime?
@@ -49,36 +47,15 @@ model User {
   lastPasswordChange  DateTime?
   failedLoginAttempts Int       @default(0)
   lockoutUntil        DateTime?
-  
-  // Passwordless
-  magicLinkToken      String?   @unique
-  magicLinkExpiry     DateTime?
-  
+
   // Relations
   accounts           Account[]
   sessions           Session[]
   payments           Payment[]
   subscription       Subscription?
-  
-  // Multi-tenancy relations
-  organizationMembers OrganizationMember[]
-  ownedOrganizations Organization[] @relation("OrganizationOwner")
-  invitations        Invitation[] @relation("InvitedBy")
-  auditLogs          AuditLog[]
-  activities         Activity[]
-  
-  // Security relations
-  webauthnCredentials WebAuthnCredential[]
-  securityKeys        SecurityKey[]
-  trustedDevices      TrustedDevice[]
-  loginHistory        LoginHistory[]
-  oauthConnections    OAuthConnection[]
-  securityQuestions   SecurityQuestion[]
-  recoveryCodes       RecoveryCode[]
-  
+
   @@index([email])
   @@index([passwordResetToken])
-  @@index([magicLinkToken])
 }
 
 // OAuth accounts
@@ -126,6 +103,10 @@ enum Role {
   SUPER_ADMIN
 }
 
+// ===========================
+// PAYMENT & SUBSCRIPTION MODELS
+// ===========================
+
 // Stripe payments
 model Payment {
   id                String   @id @default(cuid())
@@ -137,7 +118,7 @@ model Payment {
   status            PaymentStatus
   description       String?
   createdAt         DateTime @default(now())
-  
+
   user User @relation(fields: [userId], references: [id])
 }
 
@@ -162,7 +143,7 @@ model Subscription {
   cancelAtPeriodEnd   Boolean  @default(false)
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
-  
+
   user User @relation(fields: [userId], references: [id])
 }
 
@@ -176,356 +157,11 @@ enum SubscriptionStatus {
   UNPAID
 }
 
-// Dashboard stats tracking
-model DashboardStats {
-  id              String   @id @default(cuid())
-  date            DateTime @default(now())
-  totalUsers      Int      @default(0)
-  activeUsers     Int      @default(0)
-  totalRevenue    Int      @default(0) // in cents
-  newSignups      Int      @default(0)
-  conversionRate  Float    @default(0)
-  
-  @@index([date])
-}
-
-// Multi-tenancy: Organizations
-model Organization {
-  id              String   @id @default(cuid())
-  name            String
-  slug            String   @unique
-  domain          String?  @unique // Custom domain
-  logo            String?
-  website         String?
-  description     String?
-  
-  // Subscription & billing
-  plan            Plan     @default(STARTER)
-  customerId      String?  // Stripe customer ID
-  subscriptionId  String?  // Stripe subscription ID
-  trialEndsAt     DateTime?
-  billingEmail    String?
-  
-  // Usage limits based on plan
-  userLimit       Int      @default(5)
-  projectLimit    Int      @default(10)
-  storageLimit    Int      @default(1000) // MB
-  apiLimit        Int      @default(1000) // requests/month
-  
-  // Current usage tracking
-  userCount       Int      @default(1)
-  projectCount    Int      @default(0)
-  storageUsed     Int      @default(0)
-  apiCalls        Int      @default(0)
-  
-  // Settings
-  settings        Json?    // Organization-wide settings
-  
-  // Timestamps
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  
-  // Relations
-  owner           User     @relation("OrganizationOwner", fields: [ownerId], references: [id])
-  ownerId         String
-  
-  members         OrganizationMember[]
-  invitations     Invitation[]
-  auditLogs       AuditLog[]
-  activities      Activity[]
-  ssoConfig       SSOConfig?
-  
-  @@index([slug])
-  @@index([ownerId])
-}
-
-// Organization membership with roles
-model OrganizationMember {
-  id             String     @id @default(cuid())
-  organizationId String
-  userId         String
-  role           MemberRole @default(MEMBER)
-  
-  // Permissions & access
-  permissions    Json?      // Custom permissions override
-  lastActiveAt   DateTime?
-  invitedAt      DateTime?
-  joinedAt       DateTime   @default(now())
-  
-  // Relations
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@unique([organizationId, userId])
-  @@index([organizationId])
-  @@index([userId])
-}
-
-// Invitation system
-model Invitation {
-  id             String         @id @default(cuid())
-  email          String
-  organizationId String
-  invitedById    String
-  role           MemberRole     @default(MEMBER)
-  status         InvitationStatus @default(PENDING)
-  token          String         @unique @default(cuid())
-  
-  // Expiration
-  expiresAt      DateTime
-  acceptedAt     DateTime?
-  
-  // Relations
-  organization   Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  invitedBy      User          @relation("InvitedBy", fields: [invitedById], references: [id])
-  
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  
-  @@unique([email, organizationId])
-  @@index([organizationId])
-  @@index([token])
-}
-
-// Audit trail for compliance & security
-model AuditLog {
-  id             String   @id @default(cuid())
-  organizationId String?  // Null for system-level events
-  userId         String?  // Null for system events
-  action         String   // e.g., "user.login", "project.created"
-  resource       String?  // Resource type (user, project, etc.)
-  resourceId     String?  // ID of the resource
-  
-  // Event details
-  details        Json?    // Event-specific data
-  ipAddress      String?
-  userAgent      String?
-  
-  // Metadata
-  createdAt      DateTime @default(now())
-  
-  // Relations
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  user           User?         @relation(fields: [userId], references: [id])
-  
-  @@index([organizationId])
-  @@index([userId])
-  @@index([action])
-  @@index([createdAt])
-}
-
-// Activity feed for collaboration
-model Activity {
-  id             String   @id @default(cuid())
-  organizationId String
-  userId         String
-  type           String   // activity type
-  title          String   // Human-readable title
-  description    String?  // Optional description
-  
-  // Activity data
-  data           Json?    // Activity-specific data
-  metadata       Json?    // Additional metadata
-  
-  // Visibility
-  isPublic       Boolean  @default(true)
-  
-  // Timestamps
-  createdAt      DateTime @default(now())
-  
-  // Relations
-  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  user           User         @relation(fields: [userId], references: [id])
-  
-  @@index([organizationId])
-  @@index([userId])
-  @@index([createdAt])
-  @@index([type])
-}
-
-// WebAuthn credentials for passwordless authentication
-model WebAuthnCredential {
-  id                String   @id @default(cuid())
-  userId            String
-  credentialId      String   @unique
-  publicKey         String
-  counter           BigInt
-  deviceType        String
-  transports        String[]
-  name              String?
-  
-  createdAt         DateTime @default(now())
-  lastUsedAt        DateTime?
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
-}
-
-// Security keys for account protection
-model SecurityKey {
-  id                String   @id @default(cuid())
-  userId            String
-  name              String
-  keyHash           String   @unique
-  lastUsedAt        DateTime?
-  createdAt         DateTime @default(now())
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
-}
-
-// Trusted devices for remember me functionality
-model TrustedDevice {
-  id                String   @id @default(cuid())
-  userId            String
-  deviceFingerprint String
-  deviceName        String
-  userAgent         String
-  ip                String
-  trustToken        String   @unique
-  expiresAt         DateTime
-  createdAt         DateTime @default(now())
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@unique([userId, deviceFingerprint])
-  @@index([trustToken])
-}
-
-// Login history for security monitoring
-model LoginHistory {
-  id                String   @id @default(cuid())
-  userId            String
-  ip                String
-  userAgent         String
-  location          String?
-  success           Boolean
-  mfaUsed           Boolean  @default(false)
-  suspiciousReason  String?
-  createdAt         DateTime @default(now())
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
-  @@index([createdAt])
-}
-
-// OAuth provider connections
-model OAuthConnection {
-  id                String   @id @default(cuid())
-  userId            String
-  provider          String   // google, github, microsoft, etc.
-  providerId        String   // ID from the provider
-  accessToken       String?  // Encrypted
-  refreshToken      String?  // Encrypted
-  expiresAt         DateTime?
-  
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@unique([provider, providerId])
-  @@unique([userId, provider])
-  @@index([userId])
-}
-
-// Security questions for account recovery
-model SecurityQuestion {
-  id                String   @id @default(cuid())
-  userId            String
-  question          String
-  answer            String   // Encrypted
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
-}
-
-// Recovery codes for account access
-model RecoveryCode {
-  id                String   @id @default(cuid())
-  userId            String
-  code              String   // Hashed
-  used              Boolean  @default(false)
-  usedAt            DateTime?
-  createdAt         DateTime @default(now())
-  
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
-}
-
-// SSO configuration for organizations
-model SSOConfig {
-  id                String   @id @default(cuid())
-  organizationId    String   @unique
-  type              SSOType  // SAML, OIDC
-  enabled           Boolean  @default(false)
-  
-  // SAML specific
-  entryPoint        String?  // IdP SSO URL
-  issuer            String?  // SP entity ID
-  cert              String?  // IdP certificate
-  signatureAlgorithm String? // sha256, sha512
-  identifierFormat  String?  // NameID format
-  
-  // Attribute mapping
-  attributeMapping  Json?    // Map IdP attributes to user fields
-  
-  // OIDC specific
-  clientId          String?
-  clientSecret      String?  // Encrypted
-  discoveryUrl      String?
-  
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
-  organization      Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-}
-
-// Enums for multi-tenancy
-enum Plan {
-  TRIAL
-  STARTER
-  PROFESSIONAL
-  ENTERPRISE
-}
-
-enum MemberRole {
-  OWNER
-  ADMIN
-  MEMBER
-  VIEWER
-}
-
-enum InvitationStatus {
-  PENDING
-  ACCEPTED
-  EXPIRED
-  REVOKED
-}
-
-enum MfaMethod {
-  NONE
-  TOTP
-  SMS
-  WEBAUTHN
-}
-
-enum SSOType {
-  SAML
-  OIDC
-}
 // ===========================
-// GUMROAD INTEGRATION MODELS
+// ONE-TIME PAYMENT MODELS
 // ===========================
 
-// Customer record for Gumroad purchases
+// Customer record for one-time purchases
 model Customer {
   id              String     @id @default(cuid())
   email           String     @unique
@@ -535,9 +171,9 @@ model Customer {
   lastPurchaseAt  DateTime?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
-  
+
   purchases       Purchase[]
-  
+
   @@index([email])
 }
 
@@ -583,9 +219,9 @@ model DownloadLog {
   userAgent       String
   version         String
   createdAt       DateTime   @default(now())
-  
+
   purchase        Purchase   @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
-  
+
   @@index([purchaseId])
   @@index([createdAt])
 }
@@ -603,7 +239,7 @@ model EmailQueue {
   sentAt          DateTime?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
-  
+
   @@index([status])
   @@index([createdAt])
 }
@@ -631,6 +267,10 @@ enum PaymentProvider {
   GUMROAD
   STRIPE
 }
+
+// ===========================
+// STRIPE WEBHOOK & IDEMPOTENCY
+// ===========================
 
 // Idempotency tracking for checkout sessions
 model CheckoutIdempotency {

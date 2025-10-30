@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { tokens, cn } from "@/lib/design-system/tokens";
+import { cn } from "@/lib/utils";
 import {
   Bell,
   CreditCard,
@@ -51,33 +51,33 @@ const navigation: NavItem[] = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    icon: <LayoutDashboard className={tokens.sizes.icon.sm} />,
+    icon: <LayoutDashboard className="h-4 w-4" />,
   },
   {
     title: "AI Studio",
     href: "/studio",
-    icon: <Palette className={tokens.sizes.icon.sm} />,
+    icon: <Palette className="h-4 w-4" />,
     badge: "New",
   },
   {
     title: "Pricing",
     href: "/pricing",
-    icon: <Sparkles className={tokens.sizes.icon.sm} />,
+    icon: <Sparkles className="h-4 w-4" />,
   },
   {
     title: "Billing",
     href: "/billing",
-    icon: <CreditCard className={tokens.sizes.icon.sm} />,
+    icon: <CreditCard className="h-4 w-4" />,
   },
   {
     title: "Settings",
     href: "/settings",
-    icon: <Settings className={tokens.sizes.icon.sm} />,
+    icon: <Settings className="h-4 w-4" />,
   },
   {
     title: "Admin",
     href: "/admin",
-    icon: <Shield className={tokens.sizes.icon.sm} />,
+    icon: <Shield className="h-4 w-4" />,
     adminOnly: true,
     badge: "Admin",
   },
@@ -92,6 +92,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
   const user = session?.user || null;
 
+  // @ts-ignore - role field exists in DB but not in default NextAuth types
   const isAdmin = user?.role === "ADMIN" || user?.role === "SUPER_ADMIN";
 
   const NavItems = () => (
@@ -126,7 +127,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-background dark:bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-background/95">
-        <div className={cn(tokens.responsive.container.default, "flex h-12 items-center")}>
+        <div className={cn("container", "flex h-12 items-center")}>
           <div className="me-4 flex">
             <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
               <SheetTrigger asChild>
@@ -136,7 +137,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                   className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden"
                   aria-label="Action button"
                 >
-                  <Menu className={tokens.sizes.icon.md} />
+                  <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -146,7 +147,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                     href="/"
                     className={cn("mb-4 flex items-center", "gap-2")}
                   >
-                    <Home className={tokens.sizes.icon.md} />
+                    <Home className="h-5 w-5" />
                     <span className="font-medium">Fabrk</span>
                   </Link>
                   {/* Navigation items */}
@@ -154,7 +155,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               </SheetContent>
             </Sheet>
             <Link href="/" className={cn("me-6 flex items-center", "gap-2")}>
-              <Home className={tokens.sizes.icon.md} />
+              <Home className="h-5 w-5" />
               <span className="hidden font-medium sm:inline-block">Fabrk</span>
             </Link>
           </div>
@@ -205,7 +206,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               className="relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Action button"
             >
-              <Bell className={tokens.sizes.icon.md} />
+              <Bell className="h-5 w-5" />
               <span
                 className={cn(
                   "absolute -right-1 -top-1",
@@ -234,17 +235,17 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 <DropdownMenuLabel className="font-normal">
                   <div className={cn("flex flex-col", "space-y-1")}>
                     <div className="flex items-center justify-between">
-                      <p className={`${tokens.text.size.sm} font-medium leading-none`}>
+                      <p className={`text-sm font-medium leading-none`}>
                         {user?.name || "User"}
                       </p>
                       <TierBadge
-                        tier={user?.subscriptionTier || "trial"}
+                        tier={(user as any)?.subscriptionTier || "trial"}
                         size="sm"
                         showIcon={false}
                       />
                     </div>
                     <p
-                      className={`${tokens.text.size.xs} leading-none text-muted-foreground dark:text-muted-foreground`}
+                      className={`text-xs leading-none text-muted-foreground dark:text-muted-foreground`}
                     >
                       {user?.email || ""}
                     </p>
@@ -252,15 +253,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Users className={cn("me-2", tokens.sizes.icon.sm)} />
+                  <Users className={cn("me-2", "h-4 w-4")} />
                   Profile
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <CreditCard className={cn("me-2", tokens.sizes.icon.sm)} />
+                  <CreditCard className={cn("me-2", "h-4 w-4")} />
                   Billing
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Settings className={cn("me-2", tokens.sizes.icon.sm)} />
+                  <Settings className={cn("me-2", "h-4 w-4")} />
                   Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -268,7 +269,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                   onClick={() => signOut({ callbackUrl: "/login" })}
                   data-testid="logout-button"
                 >
-                  <LogOut className={cn("me-2", tokens.sizes.icon.sm)} />
+                  <LogOut className={cn("me-2", "h-4 w-4")} />
                   Log out
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -278,7 +279,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Main Content */}
-      <main className={tokens.responsive.container.default}>{children}</main>
+      <main className="container">{children}</main>
     </div>
   );
 }

@@ -27,7 +27,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
-              <FabrkLogo size={28} />
+              <FabrkLogo className="h-7 w-7" />
               <span className="text-xl font-medium">Fabrk</span>
             </Link>
             <p className="text-sm text-muted-foreground">

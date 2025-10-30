@@ -19,29 +19,46 @@ A production-ready Next.js 15 boilerplate with authentication, payments, databas
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### Automated Setup (Recommended)
+
+Run the setup script to get started in 60 seconds:
 
 ```bash
-npm install
+chmod +x setup.sh && ./setup.sh
 ```
 
-### 2. Setup Environment
+This will:
+- ✅ Check Node.js version
+- ✅ Install dependencies
+- ✅ Create .env file
+- ✅ Generate Prisma client
+- ✅ Show next steps
 
-Copy `.env.example` to `.env.local` and configure:
+### Manual Setup
+
+#### 1. Install Dependencies
 
 ```bash
-cp .env.example .env.local
+npm install --legacy-peer-deps
 ```
 
-Required environment variables:
+#### 2. Setup Environment
+
+Copy `.env.example` to `.env` and configure:
+
+```bash
+cp .env.example .env
+```
+
+**Required environment variables:**
 
 ```env
 # Database
-DATABASE_URL="postgresql://..."
+DATABASE_URL="postgresql://user:password@localhost:5432/fabrk"
 
-# NextAuth
+# NextAuth (generate with: openssl rand -base64 32)
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-here"
+NEXTAUTH_SECRET="your-generated-secret-here"
 
 # Google OAuth (optional)
 GOOGLE_CLIENT_ID="your-client-id"
@@ -50,27 +67,34 @@ GOOGLE_CLIENT_SECRET="your-client-secret"
 # Stripe
 STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_..."
-STRIPE_PRICE_BASIC="price_..."
-STRIPE_PRICE_PROFESSIONAL="price_..."
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 
-# Email (Nodemailer)
-EMAIL_SERVER="smtp://..."
-EMAIL_FROM="noreply@yourapp.com"
+# Resend Email
+RESEND_API_KEY="re_..."
+EMAIL_FROM="noreply@yourdomain.com"
 ```
 
-### 3. Setup Database
+#### 3. Setup Database
 
 ```bash
-npm run db:push
+npx prisma db push
 ```
 
-### 4. Run Development Server
+#### 4. Run Development Server
 
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+### 📖 Detailed Documentation
+
+- **[Full Setup Guide](docs/01-getting-started/SETUP.md)** - Complete setup instructions
+- **[Environment Variables](docs/01-getting-started/ENVIRONMENT.md)** - All env vars explained
+- **[Database Setup](docs/01-getting-started/DATABASE.md)** - Database configuration
+- **[Development Guide](docs/02-development/RUNNING-LOCALLY.md)** - Local development
+- **[Configuration](src/config.js)** - Central configuration file
 
 ## 📁 Project Structure
 

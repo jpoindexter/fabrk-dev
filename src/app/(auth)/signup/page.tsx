@@ -109,11 +109,7 @@ export default function SignupPage() {
 
   if (emailSent) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <SignupSuccessMessage email={form.getValues("email")} />

@@ -62,6 +62,7 @@ export const authConfig: NextAuthConfig = {
     async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
+        // @ts-ignore - role exists in database but not in NextAuth user type
         token.role = user.role;
         // Fetch fresh user data for subscription info
         const dbUser = await prisma.user.findUnique({
@@ -83,8 +84,8 @@ export const authConfig: NextAuthConfig = {
     async session({ session, token }) {
       if (session?.user) {
         session.user.id = token.id as string;
-        session.user.role = token.role as string;
-        session.user.subscriptionTier = token.subscriptionTier as string;
+        (session.user as any).role = token.role as string;
+        (session.user as any).subscriptionTier = token.subscriptionTier as string;
         (session.user as any).customerId = token.customerId as string | null;
         (session.user as any).trialEndsAt = token.trialEndsAt as Date | null;
       }

@@ -2,7 +2,6 @@
 
 type TierName = "free" | "trial" | "starter" | "professional" | "enterprise";
 import { Badge } from "@/components/ui/badge";
-import { tokens } from "@/lib/design-system/tokens";
 import { TIER_BADGES, TIER_NAMES } from "@/lib/features/tier-config";
 import { Crown, Sparkles, Star, Zap } from "lucide-react";
 
@@ -43,8 +42,8 @@ export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps
             size === "sm"
               ? "size-3"
               : size === "lg"
-                ? `${tokens.sizes.icon.md}`
-                : `${tokens.sizes.icon.sm}`
+                ? "h-5 w-5"
+                : "h-4 w-4"
           }
         />
       )}

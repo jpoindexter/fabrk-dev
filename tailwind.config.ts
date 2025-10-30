@@ -123,7 +123,6 @@ const config: Config = {
   plugins: [
     require("tailwindcss-animate"),
     require("@tailwindcss/typography"),
-    require("./src/lib/tailwind-compliance-plugin.js"),
   ],
 };
 

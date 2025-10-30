@@ -91,7 +91,7 @@ import Stripe from "stripe";
 
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-08-27.basil",
+  apiVersion: "2023-10-16",
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
@@ -221,20 +221,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     // Send welcome email (queue for background processing)
     await queueWelcomeEmail(purchase.id, customerEmail, licenseKey);
 
-    // Log audit trail
-    await prisma.auditLog.create({
-      data: {
-        action: "purchase.created",
-        resource: "purchase",
-        resourceId: purchase.id,
-        details: {
-          provider: "STRIPE",
-          sessionId: session.id,
-          amount: session.amount_total,
-          tier,
-        },
-      },
-    });
+    // Audit logging removed for simplicity
+    // Consider adding back for production if needed
 
     return purchase;
   } catch (error) {

@@ -80,11 +80,7 @@ export default function ForgotPasswordPage() {
   // UX Heuristic #1: Visibility of system status
   if (emailSent) {
     return (
-      <PageWrapper
-        variant="narrow"
-        padding="default"
-        className="flex min-h-screen items-center justify-center"
-      >
+      <PageWrapper>
         <Card className="w-full">
           <CardContent>
             <div className="p-6 text-center">
@@ -109,11 +105,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <PageWrapper
-      variant="narrow"
-      padding="default"
-      className="flex min-h-screen items-center justify-center"
-    >
+    <PageWrapper>
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Forgot your password?</CardTitle>

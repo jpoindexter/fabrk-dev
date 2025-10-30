@@ -1,15 +1,8 @@
 import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/footer";
-import { Navigation } from "@/components/navigation";
 import { Providers } from "@/components/providers";
-import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
-import "@/styles/code-block.css";
-import "@/styles/hero-code-block.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { DM_Mono, DM_Sans } from "next/font/google";
-import "./globals-focus.css";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -100,26 +93,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const organizationSchema = generateOrganizationSchema();
-  const productSchema = generateProductSchema();
-
   return (
     <html lang="en" suppressHydrationWarning className={`${dmSans.variable} ${dmMono.variable}`}>
       <head>
         <meta name="theme-color" content="hsl(var(--background))" />
-        {/* DNS Prefetch and Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://vercel.live" />
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-        />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>
@@ -145,9 +122,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
           </div>
           <div className="relative flex min-h-screen flex-col bg-background">
-            {/* Navigation with Theme Toggle */}
-            <Navigation />
-
             <main id="main-content" className="flex-1 bg-background">
               {children}
             </main>
@@ -159,10 +133,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <CookieConsent />
           </div>
         </Providers>
-
-        {/* Vercel Analytics & Speed Insights */}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

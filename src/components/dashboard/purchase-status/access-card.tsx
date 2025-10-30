@@ -10,7 +10,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { tokens } from "@/lib/design-system/tokens";
 import { CheckCircle, Download, RefreshCw } from "lucide-react";
 import { AccessCardProps } from "./purchase-status-types";
 
@@ -23,16 +22,14 @@ export function AccessCard({
     return (
       <Card className="border-destructive dark:border-destructive">
         <CardHeader>
-          <CardTitle className={`flex items-center ${tokens.spacing.gap[2]}`}>
+          <CardTitle className={`flex items-center gap-2`}>
             <div className="size-2 rounded-full bg-destructive dark:bg-destructive" />
             No Access
           </CardTitle>
           <CardDescription>Purchase required to access Fabrk</CardDescription>
         </CardHeader>
         <CardContent>
-          <p
-            className={`mb-4 ${tokens.text.size.sm} text-muted-foreground dark:text-muted-foreground`}
-          >
+          <p className="mb-4 text-sm text-muted-foreground dark:text-muted-foreground">
             You don&apos;t have access to the Fabrk boilerplate yet.
           </p>
           <Button
@@ -49,18 +46,18 @@ export function AccessCard({
   return (
     <Card className="border-primary dark:border-primary">
       <CardHeader>
-        <CardTitle className={`flex items-center ${tokens.spacing.gap[2]}`}>
-          <CheckCircle className={`${tokens.sizes.icon.md} text-primary dark:text-primary`} />
+        <CardTitle className="flex items-center gap-2">
+          <CheckCircle className="h-5 w-5 text-primary dark:text-primary" />
           Access Granted
         </CardTitle>
         <CardDescription>Full access to Fabrk AI Boilerplate</CardDescription>
       </CardHeader>
-      <CardContent className={`${tokens.spacing.space.y[4]}`}>
+      <CardContent className="space-y-4">
         <div>
           <Badge variant="secondary" className="mb-2">
             Complete Package
           </Badge>
-          <p className={`${tokens.text.size.sm} text-muted-foreground dark:text-muted-foreground`}>
+          <p className="text-sm text-muted-foreground dark:text-muted-foreground">
             You have lifetime access to all Fabrk components, templates, and updates.
           </p>
         </div>
@@ -71,12 +68,12 @@ export function AccessCard({
         >
           {isGeneratingDownload ? (
             <>
-              <RefreshCw className={`mr-2 ${tokens.sizes.icon.sm} animate-spin`} />
+              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
               Generating Download Link...
             </>
           ) : (
             <>
-              <Download className={`mr-2 ${tokens.sizes.icon.sm}`} />
+              <Download className="mr-2 h-4 w-4" />
               Download Fabrk
             </>
           )}

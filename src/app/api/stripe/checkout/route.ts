@@ -176,7 +176,7 @@ async function checkoutHandler(req: NextRequest) {
     }
 
     // Generate or use provided idempotency key
-    const idempotencyKey = clientIdempotencyKey || generateCheckoutIdempotencyKey(userId);
+    const idempotencyKey = clientIdempotencyKey || generateCheckoutIdempotencyKey(userId || null, priceId);
 
     // Check if this idempotency key was already used
     const existingSessionId = await getExistingCheckoutSession(idempotencyKey);
@@ -222,7 +222,7 @@ async function checkoutHandler(req: NextRequest) {
     );
 
     // Store idempotency record in database
-    await storeCheckoutIdempotency(idempotencyKey, checkoutSession.id, priceId, userId);
+    await storeCheckoutIdempotency(idempotencyKey, userId || null, checkoutSession.id, priceId);
 
     logger.info("Created new checkout session", {
       idempotencyKey,

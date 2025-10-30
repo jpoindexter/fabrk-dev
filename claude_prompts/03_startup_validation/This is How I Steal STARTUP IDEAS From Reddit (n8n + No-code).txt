@@ -1,0 +1,263 @@
+00:00 all right so N10 is going wild on
+00:03 [Music]
+00:07 Twitter and everyone now wants an AI
+00:10 engineer or techsavvy hustler who can
+00:12 set up automations or make their
+00:13 internal tools or just work on business
+00:16 processes and make them 10 times faster
+00:18 with AI And what is the centerpiece of
+00:20 all of these requests any
+00:22 [Music]
+00:27 tech So in this video we'll walk you
+00:30 through what even is NE10 and why is it
+00:33 so in and how does it compare to other
+00:36 automation tools like Zapier Taskmagic
+00:38 if T or make and last but not least a
+00:41 hands-on tutorial where we will automate
+00:43 a startup idea and validate it by
+00:45 scraping Reddit to find top-notch
+00:47 business ideas And this will be
+00:49 completely automated Oh and yes by the
+00:51 end of this video we'll show you how to
+00:52 chain all of these pieces together into
+00:54 a sweet AI and NA10 workflow So let's
+00:57 get started
+01:01 Okay but before we dive into N810 or any
+01:03 other tool let's address a basic
+01:05 question Why automate anything at all so
+01:08 in our experience working with countless
+01:10 founders teams and creators we've seen
+01:13 that 80 to 90% of their tasks or any
+01:16 professional tasks are repetitive and
+01:17 that only 10 to 20% of them are truly
+01:20 creative jobs Yes there are exceptions
+01:23 If all you do is art like painting or
+01:25 something but if you're in a corporate
+01:27 job a startup or any typical role you
+01:30 know the drill Tons of repetitive tasks
+01:33 Sure you can keep doing them manually
+01:34 and get really fast at them eventually
+01:36 But if you have a laptop and are a
+01:38 little bit techsavvy then why not just
+01:40 automate
+01:42 it okay now back to any tech So if
+01:45 you've ever Googled automation you've
+01:46 probably bumped into Zapia IFT or Make
+01:49 or even new age automation like Taskmic
+01:51 or Kyros where you just need to record a
+01:54 video and give some access to your
+01:55 personal accounts and then done At the
+01:57 end of the day each lets you create
+01:59 workflows Maybe something like when I
+02:01 get a new email instantly send a message
+02:03 to me on Slack Like that kind of a thing
+02:05 But at scale these platforms can get
+02:08 expensive or limiting Or maybe they lack
+02:10 the deep control that you need or they
+02:12 don't support your weird niche tool that
+02:14 you absolutely must integrate Now enter
+02:17 NA10 NA10 is an open-source automation
+02:20 tool that's more powerful cost effective
+02:23 controllable In short NA10 gives you
+02:25 maximum power and control without
+02:27 forcing you to code everything from
+02:28 scratch Oh and the best part it's got a
+02:31 free tier that's genuinely free It's not
+02:33 your typical free but everything's
+02:34 locked kind of free This one is actually
+02:36 free from the get- go
+02:39 [Music]
+02:41 All right enough theory Let's do
+02:43 something fun and potentially profitable
+02:45 So recently we posted on Instagram that
+02:47 this idea is being used to validate or
+02:49 get million-dollar startup ideas with a
+02:52 defined demand in the market and that we
+02:54 performed so well that we thought why
+02:56 not actually make it usable for all The
+02:58 idea was simple If enough people on
+02:60 Reddit complain about something there
+03:01 might be a gap for a better solution
+03:04 Okay I'll give you the entire idea a bit
+03:05 deeply So we want to scrape Reddit for
+03:08 the posts that contain why I hate Slack
+03:10 or Instagram any of these products and
+03:12 I'm not happy with Instagram or Slack or
+03:14 any of these products and so on We'll
+03:16 gather these complaints automatically
+03:18 and then we'll filter for the ones with
+03:20 decent upwards or engagement And last
+03:22 we'll see if we can derive a potential
+03:24 business idea Sure you could do it
+03:26 manually but hey it's not 2017 So we
+03:28 have any 10 to do this for us So let's
+03:30 get started All right So building the
+03:33 automation in
+03:34 N810 The first thing we're going to do
+03:36 is head to
+03:38 natn.io and sign up like how you usually
+03:41 do Once you're in you'll see two options
+03:43 Start from scratch or test a ready to go
+03:46 AI agent example And what we're going to
+03:48 do is start from scratch And over here
+03:50 you're going to see a plus sign Now we
+03:51 want to make this a manually done
+03:53 automation so that it only runs when we
+03:55 want it to run and not by itself Because
+03:57 with automation anything could be a
+03:58 trigger date change someone posting or
+04:01 you pressing a key anything So now our
+04:04 real automation starts So we're going to
+04:06 quickly add a Reddit note and we're
+04:08 going to use the search parameter here
+04:09 to get the post that we need Okay And to
+04:12 start this automation we'll have to give
+04:13 access to our Reddit account which is a
+04:15 third party app for any temp So
+04:17 considering that we've already done that
+04:20 we don't have to do that again But you
+04:22 can get all of your details like client
+04:23 ID and client secret easily at this link
+04:26 over here Okay So right now we have the
+04:29 keyword as why I stopped using Slack in
+04:31 the Slack subreddit It could be hate
+04:33 docuign in that subreddit or I hate any
+04:36 10 This could be whatever you want it to
+04:38 be Then we will limit the amount of data
+04:41 coming in from Reddit here So so we've
+04:43 just put 10 for demo purposes So for
+04:46 example if you click on test step we'll
+04:49 get 10 posts See we got it People are
+04:51 talking about how they stopped using
+04:52 Slack and why They detail their issues
+04:55 talking about alternatives and exactly
+04:57 what we need Now since we're getting
+04:59 anything and everything it's not going
+04:60 to yield good results Whenever you're
+05:02 manually looking for things you look for
+05:03 something with social acceptance right
+05:05 so let's put an if statement and have
+05:08 some parameters like upwards in it Let's
+05:10 make the upwards to more than or equal
+05:13 to two And the self text should not be
+05:19 empty Okay see our number of posts got
+05:21 reduced and now it's six Okay so we're
+05:23 going to go ahead with these six posts
+05:25 And you can see how much data we have
+05:27 from them The next step is to get only
+05:29 what we need not everything Reddit has
+05:31 to offer for our request So we'll
+05:33 quickly choose set field as our next
+05:35 step And in that we need only the
+05:38 following title which is very important
+05:42 Uh what they're saying which is going to
+05:43 be your self text number of
+05:47 uploads created time
+05:50 URL That's all we need So now we just
+05:53 need to let it
+05:55 run All right So now we bring the star
+05:58 of the automation our AI analyzing the
+06:00 problem behind all of it So we quickly
+06:03 select the model which is going to be
+06:04 Gemini Flash 2.0 All right So as we're
+06:08 running for speed here not complex
+06:09 analysis and it's by far the fastest No
+06:13 jokes Okay Then we'll also need logic or
+06:16 the prompt on what action the model has
+06:18 to take So let's quickly write the
+06:20 prompt
+06:25 [Music]
+06:31 add the post
+06:33 placeholder and get our answer in yes or
+06:37 no See we're getting all yeses in the
+06:40 output here itself And if you want to
+06:42 change the logic it's as simple as this
+06:44 See I'll ask it to explain the problem
+06:47 too Here we got an analysis too which is
+06:50 just amazing Now we need to merge our
+06:52 findings from the AI node and the Reddit
+06:54 search node and present them together So
+06:56 we'll go and find a merge node for this
+06:58 And let's combine the two nodes and set
+06:60 some parameters We're going ahead with
+07:02 combined and not append
+07:08 So now as we've gotten a generated field
+07:10 in our workflow we should filter one
+07:12 more time for all the yes responses and
+07:15 move ahead with that for getting a
+07:17 solution for it So now because we've
+07:19 already gotten yes from our previous
+07:20 node these are the kind of problems
+07:21 you'll be facing So let's try to get the
+07:24 solution using another AI node We repeat
+07:27 the same steps again So we're going to
+07:28 put in Gemini use flash and put a prompt
+07:31 quickly
+07:40 And then we're going to ask for a
+07:41 concise solution based on the problem
+07:43 the user is facing All right we've
+07:45 gotten answers to each and every Reddit
+07:47 post with problems the user is facing
+07:49 and we've gotten super solid plans based
+07:51 on Gemini's response and it's not as
+07:53 fast as yes and no because it requires
+07:55 some sort of analysis from its end Okay
+07:57 And if you use better models let's say
+07:58 some reasoning models like R1 or OpenAI
+08:01 models like or claude you'll be getting
+08:03 much better responses But for fast
+08:05 responses for the sake of this video
+08:06 we're going to go ahead with
+08:08 Gemini Okay So now as we repeat the AI
+08:11 workflow steps we're also going to
+08:13 repeat the entire merge step because
+08:15 we've got the response to the problem So
+08:17 here we'll merge the new AI workflow
+08:19 response through the sheet that we made
+08:21 in the past And as our last step what
+08:24 we'll do is integrate another external
+08:26 app which is Google Sheets for us And
+08:28 what we'll do here is click on the plus
+08:30 icon get to Google Sheets and authorize
+08:32 it For that let's set up a sheet with
+08:34 all the columns we need Title original
+08:36 problem creation date upotes URL and the
+08:39 solution Yes or no the solution and
+08:43 everything All right So we're going to
+08:44 add all of those parameters
+08:45 here We'll also go back to any and
+08:48 quickly set up Google Sheets Okay And
+08:51 here what we're going to do is under
+08:52 documents form list and it shows all the
+08:55 sheets we made in our Google Sheets So
+08:58 let's just choose problems in Slack
+08:59 which we made with all the columns we
+09:01 need and choose sheet number one We'll
+09:03 quickly match each column in Google
+09:04 Sheets to the JSON format we've gotten
+09:06 here in NA10 I'll just pick up
+09:09 everything the match title with title
+09:12 origin problem with the post creation
+09:15 type ups and URL
+09:20 Okay you can quickly run the entire
+09:21 workflow and you'll see that our entire
+09:23 JSON format findings will go to these
+09:25 sheets directly We got everything we
+09:27 just found out and created on our sheets
+09:30 working with the third party app So I
+09:32 think this is good to go So understand
+09:34 this what we did here is we made our
+09:36 entire workflow scrape Reddit for post
+09:39 with this keyword We put it into JSON
+09:41 run our AI workflow on it generate
+09:44 another finding run another AI then
+09:47 another finding and finally we took that
+09:50 finding into a Google sheet If we sat
+09:52 down and coded it right away with if
+09:54 else parameters all these APIs MCP it
+09:57 would take us days And here we showed
+09:59 you how we could do it in what 5 to 6
+10:01 minutes guys Yeah And if you found this
+10:04 helpful like and subscribe and let us
+10:06 know in the comments which repetitive
+10:08 workflow you're excited to automate next
