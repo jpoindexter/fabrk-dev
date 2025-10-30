@@ -7,7 +7,7 @@ import Image from "next/image"
 
 export function HeroSection7() {
   return (
-    <section className="bg-muted pattern-1 py-16 lg:py-24" aria-labelledby="hero-heading">
+    <section className="bg-background py-16 lg:py-24" aria-labelledby="hero-heading">
       <div className="container px-6 flex flex-col items-center gap-12 lg:gap-16 mx-auto">
         <div className="flex gap-12 lg:gap-16">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8">
