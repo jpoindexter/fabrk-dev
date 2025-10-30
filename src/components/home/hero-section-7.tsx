@@ -1,35 +1,34 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import Image from "next/image"
 
 export function HeroSection7() {
   return (
-    <section className="bg-background py-16 lg:py-24" aria-labelledby="hero-heading">
-      <div className="container px-6 flex flex-col items-center gap-12 lg:gap-16 mx-auto">
-        <div className="flex gap-12 lg:gap-16">
-          <div className="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8">
-            <h1 id="hero-heading" className="text-foreground text-3xl lg:text-5xl font-bold flex-1">
-              Work smarter, not harder with <span className="text-primary">Your App</span>
-            </h1>
-            <div className="flex-1 w-full flex flex-col gap-8">
-              <p className="text-muted-foreground text-base lg:text-lg">
-                Automate workflows, streamline tasks, and collaborate seamlessly – all in one platform. Built with modern technologies for the best developer experience.
-              </p>
+    <section className="bg-background py-24 lg:py-32 xl:py-40" aria-labelledby="hero-heading">
+      <div className="container px-6 flex flex-col items-center gap-16 lg:gap-24 mx-auto max-w-7xl">
+        {/* Hero Content - Apple-style minimalism */}
+        <div className="flex flex-col items-center text-center gap-8 max-w-4xl">
+          <h1
+            id="hero-heading"
+            className="text-foreground text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
+          >
+            Work smarter,{" "}
+            <span className="refined-gradient-text">not harder</span>
+          </h1>
 
-              <div className="flex flex-col lg:flex-row gap-3">
-                <Button>Start free trial</Button>
-                <Button variant="ghost">
-                  Explore
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </div>
-            </div>
-          </div>
+          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl max-w-2xl font-light">
+            Automate workflows and collaborate seamlessly
+          </p>
+
+          <Button size="lg" className="mt-4 text-base px-8 py-6 rounded-full smooth-transition hover:scale-105">
+            Start free trial
+          </Button>
         </div>
-        <div className="w-full overflow-hidden rounded-xl border-primary/20 border bg-background shadow-xl">
+
+        {/* Hero Image with Glass Effect */}
+        <div className="w-full overflow-hidden rounded-3xl glass-card">
           <AspectRatio ratio={16 / 9}>
             <Image
               src="/images/hero-crystal-bg.png"

@@ -94,82 +94,71 @@ export function PricingSection4() {
   const [billingPeriod, setBillingPeriod] = React.useState("monthly")
 
   return (
-    <section id="pricing" className="py-16 md:py-24 bg-background" aria-labelledby="pricing-section-title-4">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex flex-col items-center gap-4 md:gap-5 max-w-xl text-center">
-            <p className="text-base font-semibold text-muted-foreground">Pricing</p>
-            <h2 id="pricing-section-title-4" className="text-3xl md:text-4xl font-bold">
-              Simple, transparent pricing
+    <section id="pricing" className="py-24 md:py-32 lg:py-40 bg-background" aria-labelledby="pricing-section-title-4">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="flex flex-col items-center gap-16 md:gap-20">
+          <div className="flex flex-col items-center gap-6 max-w-2xl text-center">
+            <h2 id="pricing-section-title-4" className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Simple pricing
             </h2>
-            <p className="text-base text-muted-foreground">Choose a plan that fits your team's needs.</p>
+            <p className="text-lg md:text-xl text-muted-foreground font-light">Choose the plan that fits your needs</p>
           </div>
 
           <Tabs value={billingPeriod} onValueChange={setBillingPeriod} className="w-fit">
-            <TabsList className="bg-black/30 h-10 p-1 rounded-[40px]">
+            <TabsList className="glass h-12 p-1.5 rounded-full">
               <TabsTrigger
                 value="monthly"
-                className="rounded-full px-3 py-1.5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                className="rounded-full px-6 py-2 data-[state=active]:glass-strong smooth-transition"
               >
                 Monthly
               </TabsTrigger>
               <TabsTrigger
                 value="annually"
-                className="rounded-full px-3 py-1.5 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                className="rounded-full px-6 py-2 data-[state=active]:glass-strong smooth-transition"
               >
                 Annually
               </TabsTrigger>
             </TabsList>
           </Tabs>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:max-w-5xl w-full mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
             {pricingData.plans.map((plan, index) => (
-              <Card key={plan.name} className={`p-8 space-y-8 ${index === 2 ? "bg-foreground text-background" : ""}`}>
+              <Card
+                key={plan.name}
+                className={`p-10 space-y-8 smooth-transition hover-lift ${
+                  index === 1 ? "glass-strong scale-105" : "glass-card"
+                }`}
+              >
                 <div className="space-y-6">
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold leading-7">{plan.name}</h3>
-                    <p className={`text-sm leading-5 ${index === 2 ? "opacity-70" : "text-muted-foreground"}`}>
-                      {plan.description}
-                    </p>
+                    <h3 className="text-xl font-semibold">{plan.name}</h3>
+                    <p className="text-sm text-muted-foreground font-light">{plan.description}</p>
                   </div>
 
-                  <div className="flex items-end gap-0.5">
-                    <span className="text-4xl font-semibold leading-10">
+                  <div className="flex items-end gap-1">
+                    <span className="text-5xl font-bold">
                       ${billingPeriod === "monthly" ? plan.pricing.monthly : plan.pricing.annually}
                     </span>
-                    <span className={`text-base leading-6 ${index === 2 ? "opacity-70" : "text-muted-foreground"}`}>
-                      {plan.pricing.monthly === 0 ? "" : `/${billingPeriod === "monthly" ? "month" : "year"}`}
+                    <span className="text-base text-muted-foreground pb-2 font-light">
+                      {plan.pricing.monthly === 0 ? "" : `/${billingPeriod === "monthly" ? "mo" : "yr"}`}
                     </span>
                   </div>
 
-                  <Button variant={index === 2 ? "secondary" : "default"} className="w-full">
+                  <Button
+                    variant={index === 1 ? "default" : "outline"}
+                    size="lg"
+                    className="w-full rounded-full smooth-transition hover:scale-105"
+                  >
                     {plan.pricing.monthly === 0 ? "Start for free" : "Get started"}
                   </Button>
                 </div>
 
                 <div className="space-y-4">
-                  <p className="text-sm font-medium">
-                    {index === 0 ? "What's included:" : `Everything in ${pricingData.plans[index - 1].name}, plus:`}
-                  </p>
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-3">
                     {plan.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <Check className={`h-5 w-5 ${index === 2 ? "" : "text-primary"}`} />
-                        <span className={`text-sm flex-1 ${index === 2 ? "opacity-70" : "text-muted-foreground"}`}>
-                          {feature.name}
-                        </span>
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <Info
-                                className={`h-4 w-4 ${index === 2 ? "opacity-40" : "text-muted-foreground opacity-70"}`}
-                              />
-                            </TooltipTrigger>
-                            <TooltipContent className="max-w-xs">
-                              <p>{feature.tooltip}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                        <Check className="h-5 w-5 text-primary shrink-0" />
+                        <span className="text-sm text-muted-foreground font-light">{feature.name}</span>
                       </div>
                     ))}
                   </div>

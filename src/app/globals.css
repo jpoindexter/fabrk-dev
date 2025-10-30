@@ -133,36 +133,36 @@
     --surface-11: 0 0% 4%; /* #0a0a0a - neutral-950 (Very dark) */
     --surface-12: 0 0% 0%; /* #000000 - black (Darkest) */
 
-    /* Dark theme by default - Neon Crystal aesthetic */
-    --background: 0 0% 0%; /* Pure black */
-    --foreground: 0 0% 100%; /* Pure white - WCAG AAA (21:1 contrast) */
-    --card: 220 30% 5%; /* Very dark blue-tinted card */
-    --card-foreground: 0 0% 100%; /* Pure white */
-    --popover: 220 30% 3%; /* Slightly darker blue-black */
-    --popover-foreground: 0 0% 100%; /* Pure white */
-    --primary: 200 100% 60%; /* Bright cyan/blue - neon crystal color */
-    --primary-foreground: 0 0% 0%; /* Black text on bright blue */
-    --secondary: 280 60% 55%; /* Purple/pink - neon crystal secondary */
-    --secondary-foreground: 0 0% 100%; /* White text */
-    --muted: 220 20% 12%; /* Muted dark blue-gray */
-    --muted-foreground: 0 0% 80%; /* Light gray - WCAG AA (10.3:1) */
-    --accent: 200 100% 60%; /* Cyan accent matching primary */
-    --accent-foreground: 0 0% 0%; /* Black on cyan */
-    --destructive: 0 72% 51%; /* Bright red for errors */
+    /* Apple-inspired Dark Theme - Sophisticated & Refined */
+    --background: 0 0% 4%; /* Very dark gray (#0a0a0a) - Apple style */
+    --foreground: 0 0% 95%; /* Slightly off-white for less eye strain */
+    --card: 220 15% 8%; /* Subtle blue-tinted card with glass effect */
+    --card-foreground: 0 0% 95%; /* Off-white */
+    --popover: 220 15% 6%; /* Slightly darker with glass effect */
+    --popover-foreground: 0 0% 95%; /* Off-white */
+    --primary: 210 60% 45%; /* Sophisticated blue-gray - Apple style */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --secondary: 240 30% 35%; /* Muted purple-blue secondary */
+    --secondary-foreground: 0 0% 95%; /* Off-white */
+    --muted: 220 15% 12%; /* Subtle muted background */
+    --muted-foreground: 0 0% 60%; /* Medium gray for hierarchy */
+    --accent: 210 60% 50%; /* Slightly brighter blue accent */
+    --accent-foreground: 0 0% 100%; /* White on accent */
+    --destructive: 0 60% 50%; /* More muted red - Apple style */
     --destructive-foreground: 0 0% 100%; /* White text */
 
-    /* Feedback Colors - Bright for dark theme visibility */
-    --success: 142 71% 55%; /* Brighter green for dark mode */
-    --success-foreground: 0 0% 0%; /* Black text */
-    --warning: 38 92% 60%; /* Brighter amber for dark mode */
-    --warning-foreground: 0 0% 0%; /* Black text */
-    --info: 217 91% 65%; /* Brighter blue for dark mode */
-    --info-foreground: 0 0% 0%; /* Black text */
+    /* Feedback Colors - Muted Apple-style */
+    --success: 142 50% 45%; /* Muted green */
+    --success-foreground: 0 0% 100%; /* White text */
+    --warning: 38 70% 50%; /* Muted amber */
+    --warning-foreground: 0 0% 100%; /* White text */
+    --info: 210 60% 50%; /* Muted blue matching primary */
+    --info-foreground: 0 0% 100%; /* White text */
 
-    --border: 220 20% 20%; /* Dark blue-gray border - subtle */
-    --input: 220 20% 10%; /* Very dark input background */
-    --ring: 200 100% 60%; /* Neon cyan focus ring */
-    --radius: 7px; /* UI Pub standard */
+    --border: 220 15% 15%; /* Very subtle border */
+    --input: 220 15% 10%; /* Subtle dark input */
+    --ring: 210 60% 50%; /* Sophisticated blue focus ring */
+    --radius: 12px; /* Apple-style rounded corners */
 
     /* High-contrast Chart colors - pure colors */
     --chart-1: 217 91% 50%; /* #1d4ed8 - Blue */
@@ -229,6 +229,10 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -332,34 +336,68 @@
     background-position: 0 0;
   }
 
-  /* Neon Crystal Gradient - Blue to Pink like the crystal image */
-  .neon-gradient {
+  /* Apple-style Glass Morphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Apple-style Refined Gradient */
+  .refined-gradient {
     background: linear-gradient(135deg,
-      hsl(200, 100%, 60%) 0%,     /* Bright cyan */
-      hsl(240, 100%, 65%) 35%,    /* Electric blue */
-      hsl(280, 80%, 60%) 70%,     /* Purple */
-      hsl(320, 85%, 60%) 100%     /* Pink */
+      hsl(210, 60%, 45%) 0%,     /* Sophisticated blue */
+      hsl(240, 40%, 40%) 50%,    /* Deep blue-purple */
+      hsl(240, 30%, 35%) 100%    /* Muted purple */
     );
   }
 
-  .neon-gradient-text {
+  .refined-gradient-text {
     background: linear-gradient(135deg,
-      hsl(200, 100%, 60%) 0%,
-      hsl(240, 100%, 65%) 35%,
-      hsl(280, 80%, 60%) 70%,
-      hsl(320, 85%, 60%) 100%
+      hsl(210, 60%, 50%) 0%,
+      hsl(240, 50%, 55%) 50%,
+      hsl(260, 40%, 50%) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Neon glow effect for accents */
-  .neon-glow {
+  /* Subtle glow effect for Apple style */
+  .subtle-glow {
     box-shadow:
-      0 0 10px hsl(200 100% 60% / 0.5),
-      0 0 20px hsl(200 100% 60% / 0.3),
-      0 0 30px hsl(200 100% 60% / 0.2);
+      0 0 20px hsl(210 60% 45% / 0.15),
+      0 0 40px hsl(210 60% 45% / 0.08);
+  }
+
+  /* Smooth transitions - Apple style */
+  .smooth-transition {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
   }
 
   /* Pattern animation for landing page sections */

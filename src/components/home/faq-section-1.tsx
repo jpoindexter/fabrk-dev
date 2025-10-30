@@ -2,64 +2,62 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 const faqs = [
   {
     question: "Is there a free plan available?",
-    answer: "Yes! We offer a free plan with essential features to get you started.",
+    answer: "Yes, we offer a free plan with essential features to get you started.",
   },
   {
     question: "Can I cancel anytime?",
-    answer: "Yes, you can cancel your subscription at any time. No long-term commitments required.",
+    answer: "Yes, you can cancel your subscription at any time. No commitments required.",
   },
   {
     question: "Do you offer discounts for nonprofits or education?",
-    answer:
-      "Yes, we offer special pricing for nonprofit organizations and educational institutions. Please contact us for more information.",
+    answer: "Yes, we offer special pricing for nonprofit organizations and educational institutions.",
   },
   {
     question: "What integrations are supported?",
-    answer:
-      "We integrate with popular tools like Slack, Google Workspace, Trello, and many more. Check our documentation for the full list.",
+    answer: "We integrate with popular tools like Slack, Google Workspace, and many more.",
   },
 ]
 
 export function FaqSection1() {
   return (
-    <section id="faq" className="bg-background py-16 md:py-24" aria-labelledby="faq-heading">
-      <div className="max-w-2xl gap-12 mx-auto px-6 flex flex-col">
-        <div className="flex flex-col text-center gap-5">
-          <p className="text-sm md:text-base text-muted-foreground font-semibold">FAQ</p>
-          <h1 id="faq-heading" className="text-3xl md:text-4xl font-bold text-foreground">
-            Got questions? We've got answers.
+    <section id="faq" className="bg-background py-24 md:py-32 lg:py-40" aria-labelledby="faq-heading">
+      <div className="max-w-3xl gap-16 md:gap-20 mx-auto px-6 flex flex-col">
+        <div className="flex flex-col text-center gap-6">
+          <h1 id="faq-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
+            Questions & Answers
           </h1>
-          <p className="text-muted-foreground">
-            We've compiled the most important information to help you get the most out of your experience. Can't find
-            what you're looking for?{" "}
-            <Link href="#" className="text-primary underline">
-              Contact us.
-            </Link>
-          </p>
+          <p className="text-lg md:text-xl text-muted-foreground font-light">Everything you need to know</p>
         </div>
 
-        <Accordion type="single" defaultValue="item-1" aria-label="FAQ items">
+        <Accordion type="single" defaultValue="item-1" aria-label="FAQ items" className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index + 1}`}>
-              <AccordionTrigger className="text-base font-medium text-left">{faq.question}</AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">{faq.answer}</AccordionContent>
+            <AccordionItem key={index} value={`item-${index + 1}`} className="glass-card rounded-2xl px-6 border-0">
+              <AccordionTrigger className="text-lg font-semibold text-left hover:no-underline py-6">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-base text-muted-foreground font-light pb-6">
+                {faq.answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
 
-        <div className="bg-background w-full rounded-xl p-6 md:p-8 flex flex-col items-center gap-6">
-          <div className="flex flex-col text-center gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Still have questions?</h2>
-            <p className="text-base text-muted-foreground">
-              Have questions or need assistance? Our team is here to help!
-            </p>
+        <div className="glass-card w-full rounded-3xl p-10 md:p-12 flex flex-col items-center gap-6 text-center">
+          <div className="flex flex-col gap-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Still have questions?</h2>
+            <p className="text-lg text-muted-foreground font-light">Our team is here to help</p>
           </div>
-          <Button aria-label="Contact our support team">Contact us</Button>
+          <Button
+            size="lg"
+            aria-label="Contact our support team"
+            className="rounded-full smooth-transition hover:scale-105 mt-2"
+          >
+            Contact us
+          </Button>
         </div>
       </div>
     </section>

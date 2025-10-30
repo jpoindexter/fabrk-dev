@@ -8,7 +8,6 @@ import Link from "next/link"
 
 const MENU_ITEMS = [
   { label: "Features", href: "#features" },
-  { label: "Testimonials", href: "#testimonials" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ] as const
@@ -18,10 +17,10 @@ interface NavMenuItemsProps {
 }
 
 const NavMenuItems = ({ className }: NavMenuItemsProps) => (
-  <div className={`flex flex-col md:flex-row gap-1 ${className ?? ""}`}>
+  <div className={`flex flex-col md:flex-row gap-2 ${className ?? ""}`}>
     {MENU_ITEMS.map(({ label, href }) => (
       <Link key={label} href={href}>
-        <Button variant="ghost" className="w-full md:w-auto">
+        <Button variant="ghost" className="w-full md:w-auto smooth-transition text-sm font-normal">
           {label}
         </Button>
       </Link>
@@ -35,36 +34,37 @@ export function LpNavbar1() {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev)
 
   return (
-    <nav className="sticky top-0 z-50 bg-background py-3.5 md:py-4 isolate">
-      <div className="container relative px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 m-auto">
+    <nav className="sticky top-0 z-50 glass py-4 md:py-5 isolate">
+      <div className="container relative px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 m-auto max-w-7xl">
         <div className="flex items-center justify-between">
           <Link href="/">
             <Logo />
           </Link>
           <Button
             variant="ghost"
-            className="size-9 flex items-center justify-center md:hidden"
+            size="icon"
+            className="md:hidden"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-row gap-5 w-full justify-end">
+        <div className="hidden md:flex flex-row items-center gap-2">
           <NavMenuItems />
           <Link href="/auth/signin">
-            <Button>Get started</Button>
+            <Button className="ml-4 rounded-full smooth-transition hover:scale-105">Get started</Button>
           </Link>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden flex flex-col gap-5 w-full justify-end pb-2.5">
+          <div className="md:hidden flex flex-col gap-4 w-full pb-2">
             <NavMenuItems />
             <Link href="/auth/signin">
-              <Button className="w-full">Get started</Button>
+              <Button className="w-full rounded-full">Get started</Button>
             </Link>
           </div>
         )}
