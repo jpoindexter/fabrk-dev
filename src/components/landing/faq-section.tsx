@@ -34,20 +34,24 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-16 bg-white px-6 py-24"
+      className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-12 text-center text-4xl font-bold text-black">
+        <h2 className="mb-12 text-center text-4xl font-black text-foreground">
           Frequently Asked Questions
         </h2>
 
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left text-lg font-semibold text-black hover:text-[#007AFF]">
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="rounded-brutal border-4 border-black bg-background shadow-brutal data-[state=open]:shadow-brutal-lg"
+            >
+              <AccordionTrigger className="px-6 text-left text-lg font-black text-foreground hover:text-primary hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-[#333333]">
+              <AccordionContent className="px-6 font-bold text-muted-foreground">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

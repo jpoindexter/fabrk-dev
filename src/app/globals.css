@@ -4,65 +4,74 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Neobrutalist Color System - Classic Yellow/Pink/Lime */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 48 96% 59%;
-    --primary-foreground: 240 5.9% 10%;
+    /* Primary: Bright Yellow (#FFD700) */
+    --primary: 51 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    /* Secondary: Hot Pink (#FF3366) */
+    --secondary: 347 100% 60%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    /* Muted: Light gray for subtle elements */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 20%;
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent: Lime Green (#00FF00) */
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    /* Destructive: Keep red for errors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 48 96% 59%;
+    /* Borders: Pure Black */
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 51 100% 50%;
 
-    --radius: 0.5rem;
+    /* Minimal border radius for neobrutalism */
+    --radius: 0.25rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Dark mode with brutalist twist */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 100%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 48 96% 59%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 51 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 347 100% 60%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 48 96% 59%;
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 51 100% 50%;
   }
 }
 
@@ -73,5 +82,36 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Brutalist Shadow Utilities */
+@layer utilities {
+  .shadow-brutal-sm {
+    box-shadow: 2px 2px 0px hsl(var(--border));
+  }
+
+  .shadow-brutal {
+    box-shadow: 4px 4px 0px hsl(var(--border));
+  }
+
+  .shadow-brutal-lg {
+    box-shadow: 8px 8px 0px hsl(var(--border));
+  }
+
+  .shadow-brutal-xl {
+    box-shadow: 12px 12px 0px hsl(var(--border));
+  }
+
+  .shadow-brutal-primary {
+    box-shadow: 4px 4px 0px hsl(var(--primary));
+  }
+
+  .shadow-brutal-secondary {
+    box-shadow: 4px 4px 0px hsl(var(--secondary));
+  }
+
+  .shadow-brutal-accent {
+    box-shadow: 4px 4px 0px hsl(var(--accent));
   }
 }

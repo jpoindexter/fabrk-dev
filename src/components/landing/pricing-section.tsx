@@ -1,8 +1,15 @@
-import Link from "next/link";
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import { useCheckout } from "@/hooks/use-checkout";
 
 export function PricingSection() {
+  const { createCheckoutSession, isLoading, error } = useCheckout();
+
+  // Use the Starter tier price from environment
+  const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
+
   const features = [
     "Next.js 15 Boilerplate",
     "Lifetime Updates",
@@ -11,22 +18,30 @@ export function PricingSection() {
     "Full Source Code",
   ];
 
+  const handleCheckout = () => {
+    if (priceId) {
+      createCheckoutSession(priceId);
+    } else {
+      console.error("No price ID configured");
+    }
+  };
+
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 bg-[#F7F7F7] px-6 py-24"
+      className="scroll-mt-16 bg-muted px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-center text-4xl font-bold text-black">
+        <h2 className="mb-4 text-center text-4xl font-black text-foreground">
           One Price. Unlimited Projects. Launch Now.
         </h2>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-2xl border border-black/10 bg-white p-10 shadow-2xl">
+          <div className="rounded-brutal border-5 border-black bg-background p-10 shadow-brutal-xl">
             {/* Plan Name */}
             <div className="mb-6 text-center">
-              <span className="inline-block rounded-full bg-[#007AFF]/10 px-6 py-2 text-sm font-semibold text-[#007AFF]">
+              <span className="inline-block rounded-brutal border-3 border-black bg-secondary px-6 py-2 text-sm font-black uppercase text-secondary-foreground shadow-brutal">
                 Lifetime Deal
               </span>
             </div>
@@ -34,13 +49,13 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-bold text-black">$149</span>
-                <span className="text-2xl text-[#999999] line-through">
+                <span className="text-6xl font-black text-foreground">$149</span>
+                <span className="text-2xl font-bold text-muted-foreground line-through">
                   $299
                 </span>
               </div>
-              <p className="text-lg text-[#333333]">
-                Pay once, use forever. <span className="font-bold">$0 recurring fees.</span>
+              <p className="text-lg font-bold text-foreground">
+                Pay once, use forever. <span className="bg-primary text-primary-foreground px-2 py-1 inline-block">$0 recurring fees.</span>
               </p>
             </div>
 
@@ -48,23 +63,39 @@ export function PricingSection() {
             <ul className="mb-8 space-y-4">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 text-[#007AFF]" strokeWidth={3} />
-                  <span className="text-[#333333]">{feature}</span>
+                  <Check className="h-6 w-6 flex-shrink-0 text-accent" strokeWidth={4} />
+                  <span className="font-bold text-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
+            {/* Error Message */}
+            {error && (
+              <div className="mb-4 rounded-brutal border-3 border-black bg-destructive p-4 text-sm font-bold text-destructive-foreground shadow-brutal">
+                {error}
+              </div>
+            )}
+
             {/* CTA Button */}
             <Button
-              size="lg"
-              className="h-14 w-full bg-[#007AFF] text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#0066CC] hover:shadow-xl"
-              asChild
+              size="xl"
+              className="w-full text-lg"
+              variant="secondary"
+              onClick={handleCheckout}
+              disabled={isLoading || !priceId}
             >
-              <Link href="/checkout">Buy Now & Ship Faster</Link>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Buy Now & Ship Faster"
+              )}
             </Button>
 
             {/* Risk Reversal */}
-            <p className="mt-6 text-center text-sm text-[#666666]">
+            <p className="mt-6 text-center text-sm font-bold text-muted-foreground">
               30-day money-back guarantee. No questions asked.
             </p>
           </div>
