@@ -86,8 +86,16 @@ const config: Config = {
         sm: "calc(var(--radius) - 2px)",
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "sans-serif"],
-        mono: ["var(--font-dm-mono)", "monospace"],
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          "sans-serif",
+        ],
       },
       // Carbon Design System motion durations
       transitionDuration: {
