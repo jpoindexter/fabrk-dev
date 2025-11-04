@@ -27,7 +27,7 @@ export function HeroSection() {
           </h1>
 
           {/* Sub-headline */}
-          <p className="mx-auto mb-6 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
+          <p className="mx-auto mb-10 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
             Stop wrestling with complex setups. Fabrk gives you authentication,
             payments, and database integration in a clean,{" "}
             <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1 border-3 border-black shadow-brutal">
