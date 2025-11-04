@@ -35,38 +35,35 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled || loading}
           className={cn(
-            // Base styles - 8px spacing system & typography tokens
-            "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-[14px] font-normal leading-[1.5] ring-offset-background transition-all duration-200 ease-out",
+            // Brutalist base styles
+            "flex h-10 w-full rounded-brutal border-4 border-black bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
 
-            // Hover state - Subtle border color change
-            "hover:border-accent/50",
-
-            // Focus state - Clear ring indicator
-            "focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            // Brutalist focus state - thick ring + shadow grow
+            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:shadow-brutal-lg",
 
             // File input styles
-            "file:border-0 file:bg-transparent file:text-[14px] file:font-medium file:text-foreground",
+            "file:border-0 file:bg-transparent file:text-[14px] file:font-bold file:text-foreground",
 
             // Placeholder styles
-            "placeholder:text-muted-foreground",
+            "placeholder:text-muted-foreground placeholder:font-bold",
 
-            // Disabled state
-            "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-card",
+            // Disabled state - remove shadow for flat look
+            "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-brutal-none",
 
             // Loading state - Add padding for spinner
             loading && "pr-10",
 
-            // Error state - Red border and ring
+            // Error state - Red border
             error &&
-              "border-destructive text-destructive focus-visible:border-destructive focus-visible:ring-destructive",
+              "border-destructive shadow-brutal-destructive focus-visible:ring-destructive",
 
-            // Success state - Green border and ring
+            // Success state - Green shadow
             success &&
-              "border-primary text-primary-foreground focus-visible:border-primary focus-visible:ring-success",
+              "shadow-brutal-success focus-visible:ring-success",
 
             // Dark mode
-            "dark:border-input dark:bg-background dark:placeholder:text-muted-foreground/60",
-            "dark:hover:border-accent/40 dark:focus-visible:ring-ring",
+            "dark:border-white dark:bg-background dark:placeholder:text-muted-foreground/80",
+            "dark:focus-visible:ring-primary",
 
             className
           )}

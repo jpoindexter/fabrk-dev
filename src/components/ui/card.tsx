@@ -37,21 +37,21 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       ref={ref}
       className={cn(
-        // Base styles - 8px spacing system
-        "rounded-lg border border-border bg-card text-card-foreground shadow-sm",
+        // Brutalist base styles
+        "rounded-brutal border-4 border-black bg-card text-card-foreground shadow-brutal",
 
-        // Transitions - Smooth state changes
-        "transition-all duration-200 ease-out",
+        // Brutalist transitions - snappy 150ms
+        "transition-brutal",
 
-        // Hover state - Subtle lift effect
-        "hover:border-accent/50 hover:shadow-md",
+        // Brutalist hover state - lift + grow shadow
+        "hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
 
-        // Focus-within state - Clear ring indicator for accessibility
-        "focus-within:border-ring focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
+        // Focus-within state - thick ring for accessibility
+        "focus-within:ring-4 focus-within:ring-primary",
 
         // Dark mode
-        "dark:border-border dark:bg-card dark:shadow-sm",
-        "dark:hover:border-accent/40 dark:hover:shadow-md",
+        "dark:border-white dark:bg-card dark:shadow-brutal",
+        "dark:hover:shadow-brutal-lg",
 
         className
       )}
@@ -83,8 +83,8 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       data-slot="card-title"
       ref={ref}
       className={cn(
-        // Using typography tokens - matches typography.h3
-        "text-[20px] leading-[1.2] font-semibold tracking-[-0.018em]",
+        // Brutalist typography - bold and commanding
+        "text-[20px] leading-[1.2] font-black tracking-[-0.018em]",
         "text-card-foreground",
 
         // Dark mode
@@ -104,8 +104,8 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
       data-slot="card-description"
       ref={ref}
       className={cn(
-        // Using typography tokens - matches typography.body
-        "text-[14px] leading-[1.5] font-normal tracking-[-0.003em]",
+        // Brutalist typography - bold body text
+        "text-[14px] leading-[1.5] font-bold tracking-[-0.003em]",
         "text-muted-foreground",
 
         // Dark mode

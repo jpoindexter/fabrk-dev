@@ -79,12 +79,12 @@ const config: Config = {
         "surface-11": "hsl(var(--surface-11))",
         "surface-12": "hsl(var(--surface-12))",
       },
-      // Neobrutalist border radius (minimal)
+      // Neobrutalist border radius (minimal - 2px for purer brutalism)
       borderRadius: {
         lg: "var(--radius)",
         md: "var(--radius)",
         sm: "calc(var(--radius) - 2px)",
-        brutal: "4px", // max 4px for neobrutalism
+        brutal: "2px", // Sharper for pure brutalism
       },
       // Brutalist border widths
       borderWidth: {
