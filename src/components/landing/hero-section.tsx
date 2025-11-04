@@ -53,7 +53,7 @@ export function HeroSection() {
                   Processing...
                 </>
               ) : (
-                "Get Fabrk Now - $149"
+                "Get Fabrk Now - $99"
               )}
             </Button>
           </div>

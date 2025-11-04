@@ -23,9 +23,10 @@ export const authConfig: NextAuthConfig = {
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
+        magicToken: { label: "Magic Token", type: "text" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials?.email) {
           return null;
         }
 
@@ -35,7 +36,39 @@ export const authConfig: NextAuthConfig = {
           },
         });
 
-        if (!user || !user.password) {
+        if (!user) {
+          return null;
+        }
+
+        // Magic link authentication
+        if (credentials.magicToken) {
+          const magicToken = await prisma.verificationToken.findFirst({
+            where: {
+              identifier: credentials.email as string,
+              token: credentials.magicToken as string,
+              expires: { gt: new Date() },
+            },
+          });
+
+          if (!magicToken) {
+            return null;
+          }
+
+          // Delete the used token (one-time use)
+          await prisma.verificationToken.delete({
+            where: { token: credentials.magicToken as string },
+          });
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          };
+        }
+
+        // Regular password authentication
+        if (!credentials.password || !user.password) {
           return null;
         }
 

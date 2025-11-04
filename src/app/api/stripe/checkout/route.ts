@@ -5,7 +5,7 @@
  *     summary: Create Stripe checkout session
  *     description: |
  *       Creates a Stripe checkout session for one-time product purchase.
- *       Requires user authentication via NextAuth session.
+ *       Supports both authenticated users and guest purchases (email collected by Stripe).
  *
  *       **Flow:**
  *       1. User selects product and clicks "Buy Now"
@@ -117,7 +117,7 @@
 /**
  * ✅ FABRK API ROUTE
  * Stripe Checkout Session Creation
- * Requires authentication ✓
+ * Supports both authenticated and guest checkout
  */
 
 import { auth } from "@/lib/auth";
@@ -194,8 +194,8 @@ async function checkoutHandler(req: NextRequest) {
     // Create Stripe checkout session with idempotency key
     const checkoutSession = await stripe.checkout.sessions.create(
       {
-        customer: customerId, // Optional - only set if user is logged in
-        customer_email: customerId ? undefined : undefined, // Let Stripe collect email if guest
+        // Only set customer if logged in, otherwise Stripe creates new customer
+        ...(customerId ? { customer: customerId } : {}),
         mode: "payment", // One-time payment
         payment_method_types: ["card"],
         line_items: [
@@ -214,7 +214,7 @@ async function checkoutHandler(req: NextRequest) {
         },
         allow_promotion_codes: true, // Allow promo codes
         billing_address_collection: "required", // Collect billing address
-        customer_creation: customerId ? undefined : "always", // Create customer for guest purchases
+        customer_creation: "always", // Always create/link customer (required for email)
       },
       {
         idempotencyKey, // Stripe's built-in idempotency

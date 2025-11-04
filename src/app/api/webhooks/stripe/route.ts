@@ -86,6 +86,7 @@
 import { generateUniqueLicenseKey } from "@/lib/license";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
+import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -159,6 +160,26 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       throw new Error("No customer email found in session");
     }
 
+    // Get or create User account (for dashboard access)
+    let user = await prisma.user.findUnique({
+      where: { email: customerEmail },
+    });
+
+    let isNewUser = false;
+    if (!user) {
+      // Create user account without password (magic link auth only)
+      user = await prisma.user.create({
+        data: {
+          email: customerEmail,
+          name: customerName,
+          emailVerified: new Date(), // Auto-verify since they paid
+          // No password - they'll use magic links to sign in
+        },
+      });
+      isNewUser = true;
+      logger.info("Created new user account", { email: customerEmail });
+    }
+
     // Get or create customer record
     let customer = await prisma.customer.findUnique({
       where: { email: customerEmail },
@@ -218,8 +239,25 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       tier,
     });
 
-    // Send welcome email (queue for background processing)
-    await queueWelcomeEmail(purchase.id, customerEmail, licenseKey);
+    // Generate magic link token for one-click dashboard access
+    const magicToken = generateSecureToken();
+    const tokenExpires = getTokenExpiration(24 * 7); // Valid for 7 days
+
+    await prisma.verificationToken.create({
+      data: {
+        identifier: customerEmail,
+        token: magicToken,
+        expires: tokenExpires,
+      },
+    });
+
+    // Build magic link URL
+    const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicToken}&email=${encodeURIComponent(customerEmail)}`;
+
+    logger.info("Magic link generated", { email: customerEmail });
+
+    // Send welcome email with magic link and license key
+    await queueWelcomeEmail(purchase.id, customerEmail, licenseKey, magicLink);
 
     // Audit logging removed for simplicity
     // Consider adding back for production if needed
@@ -234,15 +272,25 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-async function queueWelcomeEmail(purchaseId: string, email: string, licenseKey: string) {
+async function queueWelcomeEmail(
+  purchaseId: string,
+  email: string,
+  licenseKey: string,
+  magicLink: string
+) {
   try {
+    // Store magic link in metadata for email worker to use
     await prisma.emailQueue.create({
       data: {
         purchaseId,
         type: "WELCOME",
         to: email,
-        subject: "Your Fabrk License Key",
+        subject: "Welcome to Fabrk - Your Dashboard Access",
         status: "PENDING",
+        metadata: {
+          licenseKey,
+          magicLink,
+        },
       },
     });
 
