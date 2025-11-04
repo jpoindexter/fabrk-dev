@@ -1,8 +1,8 @@
 "use client";
-import { pricingData } from "@/pricing/pricingData";
-import PriceItem from "./Pricing";
-import CancelSubscription from "./CancelSubscription";
 import SectionHeader from "@/components/Common/SectionHeader";
+import { getPricingData } from "@/pricing/pricingData";
+import CancelSubscription from "./CancelSubscription";
+import PriceItem from "./Pricing";
 
 const Pricing = ({ isBilling }: { isBilling?: boolean }) => {
 	return (
@@ -20,14 +20,9 @@ const Pricing = ({ isBilling }: { isBilling?: boolean }) => {
 
 				<div className='mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0'>
 					<div className='grid grid-cols-1 gap-7.5 md:grid-cols-2 xl:grid-cols-3'>
-						{pricingData &&
-							pricingData.map((price, key) => (
-								<PriceItem
-									plan={{ ...price }}
-									key={key}
-									isBilling={isBilling}
-								/>
-							))}
+						{getPricingData().map((price, key) => (
+							<PriceItem plan={{ ...price }} key={key} isBilling={isBilling} />
+						))}
 					</div>
 				</div>
 			</section>

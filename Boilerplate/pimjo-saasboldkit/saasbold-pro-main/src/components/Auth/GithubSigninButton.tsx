@@ -1,6 +1,6 @@
 import { signIn } from "next-auth/react";
-import { integrations, messages } from "../../../integrations.config";
 import toast from "react-hot-toast";
+import { integrations, messages } from "../../../integrations.config";
 
 export default function GithubSigninButton({ text }: { text: string }) {
 	const handleSignin = () => {
@@ -35,7 +35,7 @@ export default function GithubSigninButton({ text }: { text: string }) {
 					</clipPath>
 				</defs>
 			</svg>
-			{text} with Github
+			{text} Github
 		</button>
 	);
 }

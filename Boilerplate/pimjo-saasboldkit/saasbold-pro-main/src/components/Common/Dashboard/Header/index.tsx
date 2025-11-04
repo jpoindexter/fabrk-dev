@@ -1,10 +1,12 @@
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import AccountButton from "./AccountButton";
 import Notifications from "./NotificationMenu/Notifications";
 import ThemeToggler from "./ThemeToggler";
-import { useSession } from "next-auth/react";
 
 export default function Header({ openSidebar, setOpenSidebar }: any) {
 	const { data: session } = useSession();
+	const t = useTranslations("common");
 
 	return (
 		<div className='sticky top-0 z-999 flex items-center justify-between border-b border-stroke bg-white px-5 py-5 dark:border-stroke-dark dark:bg-gray-dark md:px-10'>
@@ -18,7 +20,7 @@ export default function Header({ openSidebar, setOpenSidebar }: any) {
 				</span>
 			</div>
 			<p className='hidden whitespace-nowrap font-satoshi text-xl font-medium capitalize text-dark dark:text-white lg:block'>
-				Welcome {session?.user?.name}! 👋
+				{t("welcome")} {session?.user?.name}! 👋
 			</p>
 
 			<div className='flex w-full items-center justify-end gap-4'>

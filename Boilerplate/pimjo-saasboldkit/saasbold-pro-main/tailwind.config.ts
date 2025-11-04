@@ -14,6 +14,7 @@ const config: Config = {
 		fontFamily: {
 			satoshi: ["Satoshi", "sans-serif"],
 			inter: ["Inter", "sans-serif"],
+			sans: ['"Satoshi"', ...defaultTheme.fontFamily.sans],
 		},
 		container: {
 			center: true,

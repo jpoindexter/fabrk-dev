@@ -1,12 +1,13 @@
+import { rateLimitByIp } from "@/libs/limiter";
+import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import z from "zod";
+import { integrations, messages } from "../../../integrations.config";
 import FormButton from "../Common/Dashboard/FormButton";
 import InputGroup from "../Common/Dashboard/InputGroup";
-import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
-import validateEmail from "@/libs/validateEmail";
 import Loader from "../Common/Loader";
-import { integrations, messages } from "../../../integrations.config";
-import z from "zod";
 
 const schema = z.object({
 	email: z.string().email(),
@@ -16,18 +17,20 @@ export default function SigninWithMagicLink() {
 	const [email, setEmail] = useState("");
 	const [loading, setLoading] = useState(false);
 
+	const t = useTranslations("signInPage.form");
+
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setLoading(true);
 
 		if (!integrations.isAuthEnabled) {
-			setLoading(false);
 			return toast.error(messages.auth);
 		}
+
+		setLoading(true);
 
 		const result = schema.safeParse({ email });
 
@@ -36,25 +39,29 @@ export default function SigninWithMagicLink() {
 			return toast.error("Please enter a valid email address.");
 		}
 
-		if (!validateEmail(email)) {
+		try {
+			// 2 requests per 20 seconds
+			await rateLimitByIp(2, 20000);
+		} catch (error) {
 			setLoading(false);
-			return toast.error("Please enter a valid email address.");
-		} else {
-			signIn("email", {
+			toast.error("Too many sign-in attempts. Please try again later.");
+			return;
+		}
+
+		try {
+			const callback = await signIn("email", {
 				redirect: false,
 				email,
-			})
-				.then((callback) => {
-					if (callback?.ok) {
-						toast.success("Email sent");
-						setEmail("");
-						setLoading(false);
-					}
-				})
-				.catch((error) => {
-					toast.error(error);
-					setLoading(false);
-				});
+			});
+
+			if (callback?.ok) {
+				toast.success("Email sent");
+				// setEmail("");
+			}
+		} catch (error) {
+			toast.error("Something went wrong");
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -62,8 +69,8 @@ export default function SigninWithMagicLink() {
 		<form onSubmit={handleSubmit}>
 			<div className='mb-5 space-y-4'>
 				<InputGroup
-					label='Email'
-					placeholder='Enter your email'
+					label={t("email.label")}
+					placeholder={t("email.placeholder")}
 					type='email'
 					name='email'
 					required
@@ -78,7 +85,7 @@ export default function SigninWithMagicLink() {
 							Sending <Loader style='border-white dark:border-dark' />
 						</>
 					) : (
-						"Send magic link"
+						<>{t("magicLinkSubmit")}</>
 					)}
 				</FormButton>
 			</div>

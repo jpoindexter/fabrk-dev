@@ -1,22 +1,22 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 const CallToAction = () => {
+	const t = useTranslations("homepage.cta_section");
+
 	return (
 		<section className='relative z-1 overflow-hidden bg-primary py-17.5 lg:py-22.5 xl:py-25'>
 			<div className='mx-auto w-full max-w-[585px] px-4 text-center sm:px-8 xl:px-0'>
 				<h2 className='mb-5 font-satoshi text-3xl font-bold -tracking-[1.6px] text-white lg:text-heading-4 xl:text-heading-2'>
-					Check Out The Demo
+					{t("title")}
 				</h2>
 
-				<p className='text-gray-2'>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-					condimentum dictum euismod malesuada lacus, non consequat quam.
-				</p>
+				<p className='text-gray-2'>{t("subtitle")}</p>
 
 				<a
 					href='/auth/signin'
 					className='mt-7.5 inline-flex rounded-full bg-white px-7 py-3 font-satoshi font-medium -tracking-[0.2px] text-black hover:bg-opacity-90'
 				>
-					Try Live Demo
+					{t("cta")}
 				</a>
 			</div>
 

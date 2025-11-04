@@ -1,7 +1,8 @@
 import { Menu } from "@/types/menu";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const Dropdown = ({
 	stickyMenu,
@@ -15,13 +16,15 @@ const Dropdown = ({
 	const [dropdown, setDropdown] = useState(false);
 	const pathname = usePathname();
 
+	const t = useTranslations("header");
+
 	return (
 		<div className='group relative'>
 			<button
 				onClick={() => setDropdown(!dropdown)}
 				className='flex w-full items-center justify-between gap-1.5 rounded-full px-[14px] py-[3px] font-satoshi font-medium text-dark group-hover:bg-primary/5 group-hover:text-primary dark:text-gray-5 dark:group-hover:bg-white/5 dark:group-hover:text-white'
 			>
-				Pages
+				{t("pages")}
 				<svg
 					className='group-hover:rotate-180'
 					width='19'
@@ -60,7 +63,7 @@ const Dropdown = ({
 										: ""
 								}`}
 							>
-								{item?.title}
+								{t(item?.titleKey)}
 							</Link>
 						</li>
 					))}

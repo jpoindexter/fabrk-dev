@@ -1,32 +1,44 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/libs/prismaDb";
 import { sendEmail } from "@/libs/email";
 import { isAuthorized } from "@/libs/isAuthorized";
-import crypto from "crypto";
+import { prisma } from "@/libs/prismaDb";
+import { NextResponse } from "next/server";
+import crypto from "node:crypto";
+import { invitationSendSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { email, role } = body;
+	const res = invitationSendSchema.safeParse(body);
+
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
+	}
+
+	const { email, role } = res.data;
+
+	const isAlreadyInvited = await prisma.invitation.findUnique({
+		where: { email },
+	});
+
+	if (isAlreadyInvited) {
+		return NextResponse.json(
+			{ message: "User already invited" },
+			{ status: 409 }
+		);
+	}
 
 	const user = await isAuthorized();
+
 	if (!user || user.role !== "ADMIN") {
-		return new NextResponse("Unauthorized", { status: 401 });
+		return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 	}
 
 	const token = crypto.randomBytes(32).toString("hex");
 
-	const isAlreadyInvited = await prisma.invitation.findUnique({
-		where: {
-			email,
-		},
-	});
-
-	if (isAlreadyInvited) {
-		return new NextResponse("User already invited", { status: 400 });
-	}
-
 	try {
-		const invitation = await prisma.invitation.create({
+		await prisma.invitation.create({
 			data: {
 				email,
 				token,
@@ -34,12 +46,11 @@ export async function POST(request: Request) {
 				expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24), // 24 hours from now
 			},
 		});
-
-		if (!invitation) {
-			return new NextResponse("Unable to send invitation", { status: 500 });
-		}
 	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
+		return NextResponse.json(
+			{ message: "Unable to create invitation link" },
+			{ status: 500 }
+		);
 	}
 
 	// Send invitation email
@@ -57,12 +68,18 @@ export async function POST(request: Request) {
       `,
 		});
 
-		return NextResponse.json("Invitation sent", {
-			status: 200,
-		});
+		return NextResponse.json(
+			{ message: "Invitation sent" },
+			{
+				status: 200,
+			}
+		);
 	} catch (error) {
-		return NextResponse.json("Unable to send invitation. Please try again!", {
-			status: 500,
-		});
+		return NextResponse.json(
+			{ message: "Unable to send invitation. Please try again!" },
+			{
+				status: 500,
+			}
+		);
 	}
 }

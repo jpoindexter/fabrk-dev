@@ -1,9 +1,10 @@
 "use client";
-import toast from "react-hot-toast";
+import Loader from "@/components/Common/Loader";
 import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Loader from "@/components/Common/Loader";
+import toast from "react-hot-toast";
 import { integrations, messages } from "../../../../integrations.config";
 
 const DemoSignin = () => {
@@ -12,6 +13,7 @@ const DemoSignin = () => {
 		admin: false,
 		user: false,
 	});
+	const t = useTranslations("signInPage.demo");
 
 	const handleLogin = (role: string) => {
 		setLoading({ ...loading, [role]: true });
@@ -58,7 +60,7 @@ const DemoSignin = () => {
 	return (
 		<div className='mb-12.5'>
 			<p className='pb-4 text-center font-satoshi text-base font-medium text-dark dark:text-white'>
-				Or Continue as Demo User, Admin
+				{t("description")}
 			</p>
 
 			<div className='flex items-center justify-center gap-3 text-center'>
@@ -66,13 +68,13 @@ const DemoSignin = () => {
 					className='flex w-[120px] items-center justify-center gap-2 rounded-md bg-primary px-5 py-2 text-white hover:bg-primary-dark'
 					onClick={() => handleLogin("user")}
 				>
-					User {loading.user && <Loader style='border-white' />}
+					{t("user")} {loading.user && <Loader style='border-white' />}
 				</button>
 				<button
 					onClick={() => handleLogin("admin")}
 					className='flex w-[120px] items-center justify-center gap-2 rounded-md bg-dark px-5 py-2 text-white hover:bg-dark/90 dark:bg-white dark:text-dark dark:hover:bg-slate-200'
 				>
-					Admin{" "}
+					{t("admin")}{" "}
 					{loading.admin && <Loader style='border-white dark:border-dark' />}
 				</button>
 			</div>

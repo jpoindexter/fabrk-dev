@@ -1,27 +1,32 @@
 "use server";
-import { prisma } from "@/libs/prismaDb";
+
 import { isAuthorized } from "@/libs/isAuthorized";
+import { prisma } from "@/libs/prismaDb";
+import { excludeFields } from "@/utils/exclude-fields";
 
 export async function getUsers(filter: any) {
 	const currentUser = await isAuthorized();
 
 	const res = await prisma.user.findMany({
-		where: {
-			role: filter,
-		},
+		where: { role: filter, email: { not: currentUser?.email } },
 	});
 
-	const filtredUsers = res.filter(
-		(user) =>
-			user.email !== currentUser?.email && !user.email?.includes("demo-")
-	);
+	const filteredUsers = res
+		.filter((user) => !user.email?.includes("demo-"))
+		.map((record) =>
+			excludeFields(record, [
+				"password",
+				"passwordResetToken",
+				"passwordResetTokenExp",
+			])
+		);
 
-	return filtredUsers;
+	return filteredUsers;
 }
 
 export async function updateUser(data: any) {
 	const { email } = data;
-	return await prisma.user.update({
+	const user = await prisma.user.update({
 		where: {
 			email: email.toLowerCase(),
 		},
@@ -30,6 +35,12 @@ export async function updateUser(data: any) {
 			...data,
 		},
 	});
+
+	return excludeFields(user, [
+		"password",
+		"passwordResetToken",
+		"passwordResetTokenExp",
+	]);
 }
 
 export async function deleteUser(user: any) {
@@ -41,17 +52,9 @@ export async function deleteUser(user: any) {
 		return new Error("User not found");
 	}
 
-	return await prisma.user.delete({
+	await prisma.user.delete({
 		where: {
 			email: user?.email.toLowerCase() as string,
-		},
-	});
-}
-
-export async function serchUser(email: string) {
-	return await prisma.user.findUnique({
-		where: {
-			email: email.toLowerCase(),
 		},
 	});
 }

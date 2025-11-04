@@ -1,18 +1,26 @@
-// import "../styles/globals.css";
-// import "../styles/satoshi.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { Inter } from "next/font/google";
+
 const inter = Inter({ subsets: ["latin"] });
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+export default async function RootLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const locale = await getLocale();
+	const messages = await getMessages();
+
 	return (
-		<html lang='en' suppressHydrationWarning={true}>
+		<html lang={locale} suppressHydrationWarning={true}>
 			<body
 				className={`${inter.className} flex min-h-screen flex-col dark:bg-[#151F34]`}
 			>
-				{children}
+				<NextIntlClientProvider messages={messages}>
+					{children}
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);
-};
-
-export default layout;
+}

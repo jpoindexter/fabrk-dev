@@ -1,4 +1,6 @@
 "use client";
+
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +11,7 @@ export default function Sidebar({
 	sidebarRef,
 }: any) {
 	const pathname = usePathname();
+	const t = useTranslations("sidebar");
 
 	return (
 		<>
@@ -34,14 +37,14 @@ export default function Sidebar({
 				</Link>
 				<div className='mb-6'>
 					<p className='mb-4 font-satoshi text-sm font-medium uppercase text-body dark:text-gray-6'>
-						Main menu
+						{t("main_menu")}
 					</p>
 					<ul className='space-y-2'>
 						{sidebarData &&
 							sidebarData?.map((item: any, key: number) => (
 								<li key={key}>
 									<Link
-										href={`${item?.path}`}
+										href={item?.path}
 										className={`flex w-full items-center gap-3 rounded-lg px-3.5 py-3 font-satoshi font-medium duration-300 ${
 											pathname === `${item.path}`
 												? "bg-primary bg-opacity-10 text-primary dark:bg-white dark:bg-opacity-10 dark:text-white"
@@ -49,18 +52,18 @@ export default function Sidebar({
 										}`}
 									>
 										<span className='h-[24px] w-[24px]'>{item?.icon}</span>
-										{item?.title}
+
+										<span>{t(item?.titleKey)}</span>
 
 										{item?.comingSoon && (
 											<span
-												className={`rounded-lg px-1.5 text-sm  ${
-													pathname == `${item.path}`
-														? "bg-white/[.08] text-white"
+												className={`ml-auto rounded-lg px-1.5 text-sm ${
+													pathname === item.path
+														? "bg-primary text-white"
 														: "bg-primary/[.08] text-primary"
 												}`}
 											>
-												{" "}
-												Soon
+												{t("soon")}
 											</span>
 										)}
 									</Link>
@@ -71,7 +74,7 @@ export default function Sidebar({
 				{sidebarOthersData && (
 					<div>
 						<p className='mb-4 font-satoshi text-sm font-medium uppercase text-body dark:text-gray-6'>
-							Others
+							{t("others")}
 						</p>
 						<ul className='space-y-2'>
 							{sidebarOthersData?.map((item: any) => (
@@ -85,7 +88,7 @@ export default function Sidebar({
 										}`}
 									>
 										<span>{item?.icon}</span>
-										{item?.title}
+										{t(item?.titleKey)}
 									</Link>
 								</li>
 							))}

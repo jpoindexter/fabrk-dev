@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useState } from "react";
 import GithubSigninButton from "../GithubSigninButton";
 import GoogleSigninButton from "../GoogleSigninButton";
 import SigninWithMagicLink from "../SigninWithMagicLink";
@@ -8,19 +9,21 @@ import SignupWithPassword from "../SignupWithPassword";
 
 export default function Signup() {
 	const [signinOption, setSigninOption] = useState("magic-link");
+	const t = useTranslations("signUpPage");
 
 	return (
 		<>
 			<div className='mx-auto w-full max-w-[400px] px-4 py-10'>
 				<div className='space-y-3 pb-7.5'>
-					<GoogleSigninButton text='Sign up' />
+					<GoogleSigninButton text={t("socialSignUp")} />
 
-					<GithubSigninButton text='Sign up' />
+					<GithubSigninButton text={t("socialSignUp")} />
 				</div>
+
 				<div className='mb-7.5 flex items-center justify-center'>
 					<span className='block h-px w-full bg-stroke dark:bg-stroke-dark'></span>
 					<div className='inline-block bg-white px-3 text-base text-body dark:bg-[#151F34] dark:text-gray-5'>
-						OR
+						{t("or")}
 					</div>
 					<span className='block h-px w-full bg-stroke dark:bg-stroke-dark'></span>
 				</div>
@@ -34,7 +37,7 @@ export default function Signup() {
 								: "text-dark dark:text-white"
 						}`}
 					>
-						Magic Link
+						{t("magicLink")}
 					</button>
 					<button
 						onClick={() => setSigninOption("password")}
@@ -44,7 +47,7 @@ export default function Signup() {
 								: "text-dark dark:text-white"
 						}`}
 					>
-						Email
+						{t("email")}
 					</button>
 				</div>
 
@@ -56,11 +59,17 @@ export default function Signup() {
 					)}
 				</div>
 
-				<p className='text-center font-satoshi text-base font-medium text-dark dark:text-white'>
-					Already have an account?{" "}
-					<Link href='/auth/signin' className='ml-1 inline-block text-primary'>
-						Sign In →
-					</Link>
+				<p className='text-center font-satoshi font-medium text-dark dark:text-white'>
+					{t.rich("alreadyHaveAccount", {
+						link: (chunk) => (
+							<Link
+								href='/auth/signin'
+								className='ml-1 inline-block text-primary'
+							>
+								{chunk} →
+							</Link>
+						),
+					})}
 				</p>
 			</div>
 		</>

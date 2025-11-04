@@ -1,9 +1,9 @@
+import hashPassword from "@/libs/formatPassword";
 import { prisma } from "@/libs/prismaDb";
 import { stripe } from "@/stripe/stripe";
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import type Stripe from "stripe";
-import formatPassword from "@/libs/formatPassword";
 
 export async function POST(request: Request) {
 	const body = await request.text();
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 			},
 		});
 
-		const formatedPassword = await formatPassword("guset-user");
+		const formatedPassword = await hashPassword("guset-user");
 
 		if (!exist) {
 			await prisma.user.create({

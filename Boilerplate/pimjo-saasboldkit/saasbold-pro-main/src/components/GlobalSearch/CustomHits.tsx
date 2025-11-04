@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Highlight } from "react-instantsearch-dom";
+import { Highlight } from "react-instantsearch";
 
 function CustomHits(props: any) {
 	const { hit, setSearchModalOpen } = props;
+
 	return (
 		<>
 			<div className='dark:border-strokedark border-t border-stroke bg-black first-of-type:border-0'>
@@ -13,7 +14,7 @@ function CustomHits(props: any) {
 						href={hit?.objectID || hit?.url}
 						className='flex cursor-pointer items-center gap-4'
 					>
-						{hit?.imageURL?.length > 1 && (
+						{hit?.imageURL && (
 							<div
 								className={`relative h-[60px] w-[106px] overflow-hidden rounded-lg `}
 							>

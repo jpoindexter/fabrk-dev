@@ -1,12 +1,14 @@
 "use client";
-import Graphics from "./Graphics";
+import axios from "axios";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { integrations, messages } from "../../../../integrations.config";
+import Graphics from "./Graphics";
 
 export default function Newsletter() {
 	const [email, setEmail] = useState("");
+	const t = useTranslations("homepage.newsletter_section");
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
@@ -43,11 +45,10 @@ export default function Newsletter() {
 				<div className='mx-auto w-full max-w-[590px]'>
 					<div className='text-center'>
 						<h2 className='mb-5 font-satoshi text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-heading-2'>
-							Subscribe Newsletter
+							{t("title")}
 						</h2>
 						<p className='mb-10 text-base text-body dark:text-gray-4'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-							condimentum dictum euismod malesuada lacus, non consequat quam.
+							{t("subtitle")}
 						</p>
 					</div>
 
@@ -60,14 +61,11 @@ export default function Newsletter() {
 							onChange={(e) => setEmail(e.target.value)}
 							required
 							type='email'
-							placeholder='Enter your email'
+							placeholder={t("input")}
 							className='h-12 w-full rounded-full bg-white px-7.5 shadow-[0px_5px_15px_0px_rgba(7,10,46,0.04)] outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-primary/20 dark:bg-white/5 dark:focus:ring-dark/20 lsm:h-16 lsm:pr-[150px]'
 						/>
-						<button
-							type='submit'
-							className='right-2 mt-4 inline-flex h-12 min-w-[125px] items-center justify-center rounded-full bg-primary px-7 font-satoshi text-base font-medium text-white duration-300 hover:bg-primary-dark lsm:absolute lsm:top-1/2 lsm:mt-0 lsm:-translate-y-1/2'
-						>
-							Subscribe
+						<button className='right-2 mt-4 inline-flex h-12 min-w-[125px] items-center justify-center rounded-full bg-primary px-7 font-satoshi text-base font-medium text-white duration-300 hover:bg-primary-dark lsm:absolute lsm:top-1/2 lsm:mt-0 lsm:-translate-y-1/2'>
+							{t("cta")}
 						</button>
 					</form>
 				</div>

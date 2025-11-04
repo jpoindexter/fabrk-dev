@@ -1,23 +1,11 @@
-const getUpdatedData = async (email: string) => {
+export default async function getUpdatedData(email: string) {
 	try {
-		const res = await fetch("/api/user/fetch-user", {
-			method: "POST",
-			body: JSON.stringify({
-				email,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		const res = await fetch(
+			`/api/user/fetch-user?email=${encodeURIComponent(email)}`
+		);
 
-		const updatedUser = await res.json();
-
-		return updatedUser;
+		return await res.json();
 	} catch (error) {
-		console.log("error in getUpdatedData", error);
+		return null;
 	}
-
-	return null;
-};
-
-export default getUpdatedData;
+}

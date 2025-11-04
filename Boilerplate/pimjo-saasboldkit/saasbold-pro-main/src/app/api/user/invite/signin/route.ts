@@ -1,57 +1,71 @@
-import { NextResponse } from "next/server";
+import hashPassword from "@/libs/formatPassword";
 import { prisma } from "@/libs/prismaDb";
-import formatPassword from "@/libs/formatPassword";
+import { NextResponse } from "next/server";
+import { inviteSigninSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { token, password } = body;
+	const res = inviteSigninSchema.safeParse(body);
 
-	if (!token || !password) {
-		return new NextResponse("Missing Fields", { status: 400 });
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
+
+	const { token, password } = res.data;
 
 	const invitation = await prisma.invitation.findUnique({
 		where: { token },
+		include: { user: true },
 	});
-
-	if (!invitation || invitation.expiresAt < new Date() || invitation.accepted) {
-		if (!token) {
-			return new NextResponse("Missing Fields", { status: 400 });
-		}
-	}
-
-	const hashedPassword = await formatPassword(password);
 
 	if (!invitation) {
-		return new NextResponse("Invalid or expired token", { status: 400 });
+		return NextResponse.json(
+			{ message: "Invalid invitation token" },
+			{ status: 400 }
+		);
 	}
 
-	// Check if user already exists
-	const user = await prisma.user.findUnique({
-		where: { email: invitation.email },
-	});
-
-	if (user) {
-		return new NextResponse("User already exists", { status: 400 });
+	if (invitation.expiresAt < new Date()) {
+		return NextResponse.json(
+			{ message: "Invitation token expired" },
+			{ status: 410 }
+		);
 	}
+
+	if (invitation.accepted || invitation.user) {
+		return NextResponse.json(
+			{ message: "Invitation already accepted" },
+			{ status: 409 }
+		);
+	}
+
+	const hashedPassword = await hashPassword(password);
 
 	try {
-		const user = await prisma.user.create({
-			data: {
-				name: "Guest",
-				email: invitation.email,
-				password: hashedPassword,
-				role: invitation.role,
-			},
+		await prisma.$transaction(async (tx) => {
+			const user = await tx.user.create({
+				data: {
+					name: "Guest",
+					email: invitation.email,
+					password: hashedPassword,
+					role: invitation.role,
+				},
+			});
+
+			await tx.invitation.update({
+				where: { id: invitation.id },
+				data: { accepted: true, userId: user.id },
+			});
 		});
 
-		await prisma.invitation.update({
-			where: { id: invitation.id },
-			data: { accepted: true, userId: user.id },
-		});
-
-		return new NextResponse("Account created", { status: 200 });
+		return NextResponse.json({ message: "Account created" }, { status: 201 });
 	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
+		return NextResponse.json(
+			{ message: "Something went wrong" },
+			{ status: 500 }
+		);
 	}
 }

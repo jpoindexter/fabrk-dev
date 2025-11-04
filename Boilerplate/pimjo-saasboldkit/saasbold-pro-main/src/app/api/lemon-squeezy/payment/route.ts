@@ -1,16 +1,21 @@
 import { lemonSqueezyApiInstance } from "@/lemonSqueezy/ls";
+import { NextResponse } from "next/server";
+import { lemonSqueezyPaymentSchema } from "./schema";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
 	try {
-		const reqData = await req.json();
+		const payload = await req.json();
 
-		if (!reqData.productId)
-			return Response.json(
-				{ message: "productId is required" },
+		const res = lemonSqueezyPaymentSchema.safeParse(payload);
+
+		if (!res.success) {
+			return NextResponse.json(
+				{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
 				{ status: 400 }
 			);
+		}
 
 		const response = await lemonSqueezyApiInstance.post("/checkouts", {
 			data: {
@@ -32,7 +37,7 @@ export async function POST(req: Request) {
 					variant: {
 						data: {
 							type: "variants",
-							id: reqData.productId.toString(),
+							id: res.data.productId,
 						},
 					},
 				},
@@ -43,12 +48,8 @@ export async function POST(req: Request) {
 
 		// if already purchased then redirect to change plan
 
-		return Response.json(
-			{ checkoutUrl: checkoutUrl },
-			{ status: 200, headers: { "Content-Type": "application/json " } }
-		);
+		return NextResponse.json({ checkoutUrl: checkoutUrl }, { status: 200 });
 	} catch (error) {
-		console.error(error);
-		return Response.json({ message: "An error occured" }, { status: 500 });
+		return Response.json({ message: "An error occurred" }, { status: 500 });
 	}
 }

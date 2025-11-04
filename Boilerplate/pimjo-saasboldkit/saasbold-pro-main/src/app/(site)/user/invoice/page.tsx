@@ -1,8 +1,9 @@
-import React from "react";
-import PurchaseHistory from "@/components/User/PurchaseHistory";
 import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
+import PurchaseHistory from "@/components/User/PurchaseHistory";
 
+import { isAuthorized } from "@/libs/isAuthorized";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
 	title: `Invoice - ${process.env.SITE_NAME}`,
@@ -10,13 +11,16 @@ export const metadata: Metadata = {
 	// other discriptions
 };
 
-const PurchseHistoryPage = () => {
+const InvoicePage = async () => {
+	const user = await isAuthorized();
+	const t = await getTranslations("common");
+
 	return (
 		<>
-			<Breadcrumb pageTitle='Invoice' />
-			<PurchaseHistory />
+			<Breadcrumb pageTitle={t('invoice')} />
+			{user && <PurchaseHistory user={user} />}
 		</>
 	);
 };
 
-export default PurchseHistoryPage;
+export default InvoicePage;

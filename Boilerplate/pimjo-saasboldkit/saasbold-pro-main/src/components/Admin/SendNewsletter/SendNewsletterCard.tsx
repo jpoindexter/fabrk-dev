@@ -1,5 +1,8 @@
+"use client";
+
 import Card from "@/components/Common/Dashboard/Card";
 import { Editor } from "@/components/Common/Dashboard/Editor";
+import { useTranslations } from "next-intl";
 
 const arrowIcon = (
 	<svg
@@ -19,21 +22,22 @@ const arrowIcon = (
 );
 
 export default function SendNewsletterCard() {
+	const t = useTranslations("send_newsletter_page.newsletter_content");
+	const tCommon = useTranslations("common");
+
 	return (
 		<>
 			<Card>
 				<div className='mb-6 items-end justify-between sm:flex'>
 					<div className='mb-6 sm:mb-0'>
 						<h3 className='mb-1.5 font-satoshi text-custom-2xl font-bold tracking-[-.5px] text-dark dark:text-white'>
-							Newsletter Content
+							{t("title")}
 						</h3>
-						<p className='text-body dark:text-gray-4'>
-							Type your message that you want to your audience
-						</p>
+						<p className='text-body dark:text-gray-4'>{t("description")}</p>
 					</div>
 					<div className='flex items-center justify-end gap-3.5'>
 						<label
-							htmlFor=''
+							htmlFor='select'
 							className='flex items-center text-dark dark:text-white'
 						>
 							<span className='pr-2'>
@@ -52,8 +56,9 @@ export default function SendNewsletterCard() {
 									/>
 								</svg>
 							</span>
+
 							<span className='mr-3 font-satoshi text-base font-medium tracking-[-.2px]'>
-								Send to:
+								{tCommon("send_to")}:
 							</span>
 
 							<div>
@@ -64,13 +69,13 @@ export default function SendNewsletterCard() {
 										className='relative h-12 w-full appearance-none rounded-md border border-stroke bg-gray-1 pl-4 pr-10 text-dark outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-white/5 dark:text-white dark:focus:border-transparent'
 									>
 										<option value='all-users' className='dark:bg-dark'>
-											All Users
+											{tCommon("all_users")}
 										</option>
 										<option value='free-users' className='dark:bg-dark'>
-											Free Users
+											{tCommon("free_users")}
 										</option>
 										<option value='pro-users' className='dark:bg-dark'>
-											Pro Users
+											{tCommon("pro_users")}
 										</option>
 									</select>
 									<span className='absolute right-4 top-1/2 z-10 -translate-y-1/2'>
@@ -81,7 +86,8 @@ export default function SendNewsletterCard() {
 						</label>
 
 						<button className='flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-5 font-satoshi text-base font-medium tracking-[-.2px] text-white duration-300 hover:bg-primary-dark'>
-							Send
+							<span>{tCommon("send")}</span>
+
 							<span>
 								<svg
 									width='20'

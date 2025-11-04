@@ -1,8 +1,9 @@
-import { getPosts } from "@/sanity/sanity-utils";
 import BlogItem from "@/components/Blog/BlogItem";
 import Breadcrumbs from "@/components/Common/Breadcrumbs";
-import Image from "next/image";
+import { getPosts } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { integrations, messages } from "../../../../integrations.config";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 const BlogGrid = async () => {
 	const posts = integrations?.isSanityEnabled ? await getPosts() : [];
+	const t = await getTranslations("common");
 
 	return (
 		<main>
@@ -36,21 +38,21 @@ const BlogGrid = async () => {
 					</div>
 				</div>
 
-				<Breadcrumbs title='Blog' pages={["Home", "Blog Grids"]} />
+				<Breadcrumbs title={t("blog")} pages={[t("home"), t("blog_grids")]} />
 
 				<div className='mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0'>
 					<div
-						className={`${
+						className={
 							integrations?.isSanityEnabled
 								? "grid grid-cols-1 gap-x-7.5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
 								: ""
-						}`}
+						}
 					>
 						{/* Blog Item */}
 						{posts?.length > 0 ? (
 							posts?.map((item, key) => <BlogItem key={key} blog={item} />)
 						) : integrations.isSanityEnabled ? (
-							<p>No posts found</p>
+							<p>{t("no_posts")}</p>
 						) : (
 							<>{messages.sanity}</>
 						)}

@@ -1,19 +1,22 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
+import { paddleCancelSubscriptionSchema } from "./schema";
 
 async function POST(req: NextRequest) {
 	const body = await req.json();
-	const { subscriptionId } = body;
+	const res = paddleCancelSubscriptionSchema.safeParse(body);
 
-	if (!subscriptionId) {
+	if (!res.success) {
 		return NextResponse.json(
-			{ error: "Subscription ID is required" },
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
 			{ status: 400 }
 		);
 	}
 
+	const { subscriptionId } = res.data;
+
 	try {
-		const res = await axios.post(
+		const { data } = await axios.post(
 			`${process.env.NEXT_PUBLIC_PADDLE_API_URL}/subscriptions/${subscriptionId}/cancel`,
 			{
 				effective_from: "immediately",
@@ -26,16 +29,23 @@ async function POST(req: NextRequest) {
 			}
 		);
 
-		const data = (await res).data;
-
 		return NextResponse.json(
 			{ message: "Subscription canceled successfully", data },
 			{ status: 200 }
 		);
-	} catch (error: any) {
-		// console.log(error.response.data.error.detail);
+	} catch (error) {
+		if (error instanceof AxiosError) {
+			return NextResponse.json(
+				{
+					message: "An error occurred",
+					error: error.response?.data.error.detail,
+				},
+				{ status: error.response?.status }
+			);
+		}
+
 		return NextResponse.json(
-			{ error: error.response.data.error.detail },
+			{ message: "Internal Server Error" },
 			{ status: 500 }
 		);
 	}

@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 const arrowIcon = (
 	<svg
 		width='26'
@@ -16,11 +18,14 @@ const arrowIcon = (
 );
 
 export default function InputSelect(props: any) {
-	const { name, label, options, onChange, value, required } = props;
+	const { name, label, options, onChange, value, required, placeholder } =
+		props;
+	const id = useId();
+
 	return (
 		<div>
 			<label
-				htmlFor={name}
+				htmlFor={id}
 				className='mb-2.5 block font-satoshi text-base font-medium text-dark dark:text-white'
 			>
 				{label}
@@ -28,15 +33,16 @@ export default function InputSelect(props: any) {
 			<div className='relative'>
 				<select
 					name={name}
-					id='select'
+					id={id}
 					value={value}
 					onChange={onChange}
 					required={required}
 					className='relative z-20 h-[52px] w-full appearance-none rounded-lg border border-gray-3 bg-transparent py-3 pl-5.5 text-dark outline-none ring-offset-1 duration-300 focus:shadow-input  focus:ring-primary/20 dark:border-stroke-dark dark:text-white dark:focus:border-transparent'
 				>
-					<option value='Select Option' className='dark:bg-dark'>
-						Select option
+					<option hidden className='dark:bg-dark'>
+						{placeholder}
 					</option>
+
 					{options?.map((option: any) => (
 						<option
 							key={option?.value}

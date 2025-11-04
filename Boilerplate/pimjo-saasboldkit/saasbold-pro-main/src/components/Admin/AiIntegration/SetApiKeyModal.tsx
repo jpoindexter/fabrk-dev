@@ -1,14 +1,17 @@
 import FormButton from "@/components/Common/Dashboard/FormButton";
 import InputGroup from "@/components/Common/Dashboard/InputGroup";
 import ModalCloseButton from "@/components/Common/Modals/ModalCloseButton";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function SetApiKeyModal(props: any) {
 	const { showModal, setShowModal } = props;
 	const [apiKey, setApiKey] = useState("");
 	// const [isDisabled, setIsDisabled] = useState(true);
+
+	const t = useTranslations("ai_integration_page.set_api_key.modal");
 
 	const router = useRouter();
 
@@ -110,12 +113,9 @@ export default function SetApiKeyModal(props: any) {
 
 								<div>
 									<h2 className='mb-2 text-xl font-bold text-dark dark:text-white sm:text-heading-6'>
-										Enter your OpenAI API Key
+										{t("title")}
 									</h2>
-									<p className='mb-7 text-body'>
-										To access the capabilities of AI Tools Template, a valid
-										OpenAI API Key is required.
-									</p>
+									<p className='mb-7 text-body'>{t("description")}</p>
 								</div>
 
 								<form onSubmit={handleSubmit} className='mb-7.5 space-y-4.5'>
@@ -131,7 +131,7 @@ export default function SetApiKeyModal(props: any) {
 										placeholder='API-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 									/>
 
-									<FormButton>Set API Key</FormButton>
+									<FormButton>{t("form.submit")}</FormButton>
 								</form>
 
 								<div>
@@ -141,7 +141,7 @@ export default function SetApiKeyModal(props: any) {
 										rel='noopener noreferrer'
 										className='tracking-[-.16px] text-body underline underline-offset-1 hover:text-primary'
 									>
-										Get your API key from Open AI
+										{t("get_api_key")}
 									</Link>
 								</div>
 							</div>

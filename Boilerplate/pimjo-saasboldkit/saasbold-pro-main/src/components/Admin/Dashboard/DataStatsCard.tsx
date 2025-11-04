@@ -1,35 +1,36 @@
 "use client";
 import { DataStats } from "@/staticData/statsData";
+import { useTranslations } from "next-intl";
 
 export default function DataStatsCard({ data }: { data: DataStats }) {
-	const { icon, value, content, color, isIncrease, percents } = data;
+	const t = useTranslations("admin_page.stats");
 
 	return (
 		<div className='rounded-10 bg-white p-6 shadow-1 dark:bg-gray-dark'>
 			<div
 				className='mb-6 flex aspect-square w-[58px] items-center justify-center rounded-full text-white'
-				style={{ background: color }}
+				style={{ backgroundColor: data.color }}
 			>
-				{icon}
+				{data.icon}
 			</div>
 
 			<div>
 				<h3 className='font-satoshi text-2xl font-bold text-dark dark:text-white'>
-					{value}
+					{data.value}
 				</h3>
 
 				<div className='flex items-center justify-between'>
 					<p className='font-satoshi text-sm font-medium text-body dark:text-gray-4'>
-						{content}
+						{t(data.titleKey)}
 					</p>
 
 					<p
 						className={`flex items-center gap-1.5 font-satoshi text-sm font-medium ${
-							isIncrease ? "text-[#00BC55]" : "text-red"
+							data.isIncrease ? "text-[#00BC55]" : "text-red"
 						}`}
 					>
-						{percents}
-						<span className={`${isIncrease ? "" : "rotate-180"}`}>
+						{data.percents}
+						<span className={`${data.isIncrease ? "" : "rotate-180"}`}>
 							<svg
 								width='10'
 								height='10'

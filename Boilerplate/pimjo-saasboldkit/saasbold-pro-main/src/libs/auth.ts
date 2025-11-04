@@ -1,13 +1,16 @@
 import { prisma } from "@/libs/prismaDb";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { type NextAuthOptions, DefaultSession } from "next-auth";
+import { User } from "@prisma/client";
+import bcrypt from "bcrypt";
+import {
+	type NextAuthOptions,
+	DefaultSession,
+	getServerSession,
+} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import EmailProvider from "next-auth/providers/email";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/email";
-import { getServerSession } from "next-auth";
-import bcrypt from "bcrypt";
-import { User } from "@prisma/client";
 
 declare module "next-auth" {
 	interface Session extends DefaultSession {

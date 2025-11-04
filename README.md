@@ -1,96 +1,189 @@
-# Fabrk Boilerplate
+# Fabrk — Next.js SaaS Boilerplate# Fabrk Boilerplate
 
-**Ship your SaaS in days, not months.**
 
-A production-ready Next.js 15 boilerplate with authentication, payments, database, and email built-in.
 
-## ✨ What's Included
+Hey maker 👋 Let's get your SaaS off the ground, FAST ⚡️**Ship your SaaS in days, not months.**
 
-- ⚡ **Next.js 15** - App Router with Server Components
-- 🔐 **Authentication** - NextAuth v5 with credentials & OAuth
-- 💳 **Payments** - Stripe integration with webhooks
-- 🗄️ **Database** - Prisma ORM with PostgreSQL
-- 📧 **Emails** - React Email with Nodemailer
+
+
+## What You GetA production-ready Next.js 15 boilerplate with authentication, payments, database, and email built-in.
+
+
+
+- ⚡ **Next.js 15** - App Router + Server Components  ## ✨ What's Included
+
+- 🔐 **Auth** - NextAuth v5 (email/password + Google OAuth)  
+
+- 💳 **Payments** - Stripe checkout + webhooks  - ⚡ **Next.js 15** - App Router with Server Components
+
+- 🗄️ **Database** - Prisma + PostgreSQL  - 🔐 **Authentication** - NextAuth v5 with credentials & OAuth
+
+- 📧 **Email** - Resend integration  - 💳 **Payments** - Stripe integration with webhooks
+
+- 🎨 **UI** - Tailwind CSS + Radix components  - 🗄️ **Database** - Prisma ORM with PostgreSQL
+
+- 🌓 **Dark Mode** - Built-in theme switching- 📧 **Emails** - React Email with Nodemailer
+
 - 🎨 **UI Components** - 25 essential Radix UI components
-- 🎯 **Landing Page** - Pre-built hero, pricing, FAQ sections
+
+## Quick Start (5 minutes)- 🎯 **Landing Page** - Pre-built hero, pricing, FAQ sections
+
 - 📊 **Dashboard** - User dashboard with settings & billing
-- 🌓 **Dark Mode** - Built-in theme switching
+
+### 1. Clone & Install- 🌓 **Dark Mode** - Built-in theme switching
+
 - 📱 **Responsive** - Mobile-first design
 
-## 🚀 Quick Start
+```bash
 
-### Automated Setup (Recommended)
+git clone https://github.com/yourusername/fabrk_plate.git## 🚀 Quick Start
+
+cd fabrk_plate
+
+npm install### Automated Setup (Recommended)
+
+```
 
 Run the setup script to get started in 60 seconds:
 
+### 2. Setup Environment
+
 ```bash
-chmod +x setup.sh && ./setup.sh
+
+Copy `.env.example` to `.env`:chmod +x setup.sh && ./setup.sh
+
 ```
 
-This will:
-- ✅ Check Node.js version
+```bash
+
+# DatabaseThis will:
+
+DATABASE_URL="postgresql://..."- ✅ Check Node.js version
+
 - ✅ Install dependencies
-- ✅ Create .env file
-- ✅ Generate Prisma client
-- ✅ Show next steps
 
-### Manual Setup
+# NextAuth (generate: openssl rand -base64 32)- ✅ Create .env file
 
-#### 1. Install Dependencies
+NEXTAUTH_URL="http://localhost:3000"- ✅ Generate Prisma client
+
+NEXTAUTH_SECRET="your-secret"- ✅ Show next steps
+
+
+
+# Stripe### Manual Setup
+
+STRIPE_SECRET_KEY="sk_test_..."
+
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."#### 1. Install Dependencies
+
+STRIPE_WEBHOOK_SECRET="whsec_..."
 
 ```bash
-npm install --legacy-peer-deps
-```
 
-#### 2. Setup Environment
+# Emailnpm install --legacy-peer-deps
 
-Copy `.env.example` to `.env` and configure:
+RESEND_API_KEY="re_..."```
 
-```bash
-cp .env.example .env
-```
+EMAIL_FROM="noreply@yourdomain.com"
 
-**Required environment variables:**
+```#### 2. Setup Environment
 
-```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/fabrk"
 
-# NextAuth (generate with: openssl rand -base64 32)
+
+### 3. Setup DatabaseCopy `.env.example` to `.env` and configure:
+
+
+
+```bash```bash
+
+npx prisma db pushcp .env.example .env
+
+``````
+
+
+
+### 4. Run**Required environment variables:**
+
+
+
+```bash```env
+
+npm run dev# Database
+
+```DATABASE_URL="postgresql://user:password@localhost:5432/fabrk"
+
+
+
+Open [http://localhost:3000](http://localhost:3000) 🚀# NextAuth (generate with: openssl rand -base64 32)
+
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-generated-secret-here"
 
-# Google OAuth (optional)
-GOOGLE_CLIENT_ID="your-client-id"
-GOOGLE_CLIENT_SECRET="your-client-secret"
+## Deploy to VercelNEXTAUTH_SECRET="your-generated-secret-here"
+
+
+
+1. Push to GitHub# Google OAuth (optional)
+
+2. Import to VercelGOOGLE_CLIENT_ID="your-client-id"
+
+3. Add env varsGOOGLE_CLIENT_SECRET="your-client-secret"
+
+4. Deploy
 
 # Stripe
-STRIPE_SECRET_KEY="sk_test_..."
+
+Then configure Stripe webhook: `https://yourdomain.com/api/webhooks/stripe`STRIPE_SECRET_KEY="sk_test_..."
+
 STRIPE_WEBHOOK_SECRET="whsec_..."
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 
-# Resend Email
-RESEND_API_KEY="re_..."
-EMAIL_FROM="noreply@yourdomain.com"
-```
+## What's IncludedNEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 
-#### 3. Setup Database
+
+
+- Landing page with hero, pricing, FAQ# Resend Email
+
+- Email/password + Google authRESEND_API_KEY="re_..."
+
+- Protected dashboard routesEMAIL_FROM="noreply@yourdomain.com"
+
+- Stripe payment flow```
+
+- Email verification & password reset
+
+- Dark mode toggle#### 3. Setup Database
+
+- Mobile responsive
 
 ```bash
-npx prisma db push
+
+## Simple & Hackablenpx prisma db push
+
 ```
+
+Everything in plain TypeScript. No magic, no complex abstractions. 
 
 #### 4. Run Development Server
 
-```bash
-npm run dev
-```
+- `src/config.js` - All app settings in one place
 
-Open [http://localhost:3000](http://localhost:3000)
+- `src/lib/stripe.ts` - All Stripe logic (150 lines)```bash
 
-### 📖 Detailed Documentation
+- `src/lib/email.ts` - Email sending (100 lines)npm run dev
 
-- **[Full Setup Guide](docs/01-getting-started/SETUP.md)** - Complete setup instructions
+- `prisma/schema.prisma` - 7 core models```
+
+
+
+Modify anything. It's YOUR codebase now.Open [http://localhost:3000](http://localhost:3000)
+
+
+
+---### 📖 Detailed Documentation
+
+
+
+**Ship it!** 🚀- **[Full Setup Guide](docs/01-getting-started/SETUP.md)** - Complete setup instructions
+
 - **[Environment Variables](docs/01-getting-started/ENVIRONMENT.md)** - All env vars explained
 - **[Database Setup](docs/01-getting-started/DATABASE.md)** - Database configuration
 - **[Development Guide](docs/02-development/RUNNING-LOCALLY.md)** - Local development

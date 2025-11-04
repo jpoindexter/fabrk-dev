@@ -1,26 +1,38 @@
+import { isAuthorized } from "@/libs/isAuthorized";
+import { absoluteUrl } from "@/libs/uitls";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { absoluteUrl } from "@/libs/uitls";
-import { isAuthorized } from "@/libs/isAuthorized";
+import { paymentSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 		apiVersion: "2023-10-16",
 	});
-	const data = await request.json();
-	const { isSubscribed, priceId, stripeCustomerId, userId } = data;
+
+	const payload = await request.json();
+	const res = paymentSchema.safeParse(payload);
+
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
+	}
+
+	const user = await isAuthorized();
 
 	let billingUrl;
 	let successUrl;
 
-	const user = await isAuthorized();
 	if (user) {
-		successUrl = absoluteUrl("user/");
-		billingUrl = absoluteUrl("user/billing");
+		successUrl = absoluteUrl("/user/");
+		billingUrl = absoluteUrl("/user/billing");
 	} else {
 		successUrl = absoluteUrl("/thank-you");
 		billingUrl = absoluteUrl("/");
 	}
+
+	const { priceId, userId, isSubscribed, stripeCustomerId } = res.data;
 
 	if (isSubscribed && stripeCustomerId) {
 		const stripeSession = await stripe.billingPortal.sessions.create({

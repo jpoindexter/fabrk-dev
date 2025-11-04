@@ -1,6 +1,6 @@
 export type Sidebar = {
 	id: number;
-	title: string;
+	titleKey: string;
 	path?: string;
 	icon: React.ReactNode;
 	comingSoon?: boolean;

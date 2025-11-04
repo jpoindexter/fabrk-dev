@@ -1,29 +1,33 @@
 import { prisma } from "@/libs/prismaDb";
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
-export async function POST(req: NextRequest) {
-	const body = await req.json();
-	const { email } = body;
+export async function GET(req: NextRequest) {
+	const encodedEmail = req.nextUrl.searchParams.get("email");
+	const email = decodeURIComponent(encodedEmail || "");
 
 	if (!email) {
-		return new NextResponse("Missing Fields", { status: 400 });
+		return NextResponse.json({ message: "Email is required" }, { status: 400 });
+	}
+
+	const res = z.string().email().safeParse(email);
+
+	if (!res.success) {
+		return NextResponse.json({ message: "Invalid email" }, { status: 400 });
 	}
 
 	try {
 		const user = await prisma.user.findUnique({
-			where: {
-				email: email.toLowerCase(),
-			},
+			where: { email },
 		});
-		return new NextResponse(
-			JSON.stringify({
+
+		return NextResponse.json(
+			{
 				priceId: user?.priceId,
 				subscriptionId: user?.subscriptionId,
 				currentPeriodEnd: user?.currentPeriodEnd,
-			}),
-			{
-				status: 200,
-			}
+			},
+			{ status: 200 }
 		);
 	} catch (error) {
 		return new NextResponse("Something went wrong", { status: 500 });

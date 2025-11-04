@@ -1,6 +1,7 @@
-import crypto from "crypto";
+import hashPassword from "@/libs/formatPassword";
 import { prisma } from "@/libs/prismaDb";
-import formatPassword from "@/libs/formatPassword";
+import crypto from "node:crypto";
+
 
 export async function POST(req: Request) {
 	try {
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
 				},
 			});
 
-			const formatedPassword = await formatPassword("guset-user");
+			const formatedPassword = await hashPassword("guset-user");
 
 			if (!exist) {
 				await prisma.user.create({

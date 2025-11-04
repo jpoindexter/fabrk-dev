@@ -1,21 +1,25 @@
-import React from "react";
-import { connectHits } from "react-instantsearch-dom";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useHits } from "react-instantsearch";
 import { integrations, messages } from "../../../integrations.config";
 
-const EmptyState = ({ hits }: any) => {
+export default function EmptyState() {
+	const t = useTranslations("global_search");
+	const { items } = useHits();
+
+	if (!integrations?.isAlgoliaEnabled) {
+		return <div className='p-8'>{messages.algolia}</div>;
+	}
+
+	if (items?.length > 0) {
+		return null;
+	}
+
 	return (
-		<>
-			{!integrations?.isAlgoliaEnabled ? (
-				<div className='p-8'>{messages.algolia}</div>
-			) : hits?.length == 0 ? (
-				<div className='p-8'>
-					<p className='text-body-color text-center text-base'>
-						No items found...
-					</p>
-				</div>
-			) : null}
-		</>
+		<div className='p-8'>
+			<p className='text-body-color text-center text-base'>{t("no_results")}</p>
+		</div>
 	);
 };
 
-export default connectHits(EmptyState);

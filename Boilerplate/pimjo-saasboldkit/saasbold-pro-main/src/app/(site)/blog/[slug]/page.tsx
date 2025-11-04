@@ -1,13 +1,13 @@
-import React from "react";
-import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
 import RenderBodyContent from "@/components/Blog/RenderBodyContent";
-import Link from "next/link";
-import Image from "next/image";
-import { structuredAlgoliaHtmlData } from "@/libs/crawlIndex";
-import CopyToClipboard from "@/components/Common/CopyToClipboard";
 import SocialShare from "@/components/Blog/SocialShare";
-import { integrations, messages } from "../../../../../integrations.config";
+import CopyToClipboard from "@/components/Common/CopyToClipboard";
+import { structuredAlgoliaHtmlData } from "@/libs/crawlIndex";
+import { getPostBySlug, imageBuilder } from "@/sanity/sanity-utils";
 import { Blog } from "@/types/blog";
+import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import Link from "next/link";
+import { integrations, messages } from "../../../../../integrations.config";
 
 type Props = {
 	params: Promise<{
@@ -16,15 +16,15 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props) {
-    const params = await props.params;
-    const { slug } = params;
-    const post = integrations.isSanityEnabled
+	const params = await props.params;
+	const { slug } = params;
+	const post = integrations.isSanityEnabled
 		? await getPostBySlug(slug)
 		: ({} as Blog);
-    const siteURL = process.env.SITE_URL;
-    const authorName = process.env.AUTHOR_NAME;
+	const siteURL = process.env.SITE_URL;
+	const authorName = process.env.AUTHOR_NAME;
 
-    if (post) {
+	if (post) {
 		return {
 			title: `${
 				post.title || "Single Post Page"
@@ -88,14 +88,14 @@ export async function generateMetadata(props: Props) {
 }
 
 const SingleBlog = async (props: Props) => {
-    const params = await props.params;
-    const { slug } = params;
-    const post = integrations.isSanityEnabled
+	const params = await props.params;
+	const { slug } = params;
+	const post = integrations.isSanityEnabled
 		? await getPostBySlug(slug)
 		: ({} as Blog);
-    const postURL = `${process.env.SITE_URL}blog/${post?.slug?.current}`;
+	const postURL = `${process.env.SITE_URL}blog/${post?.slug?.current}`;
 
-    if (post) {
+	if (post) {
 		await structuredAlgoliaHtmlData({
 			type: "blog",
 			title: post?.title || "",
@@ -105,7 +105,9 @@ const SingleBlog = async (props: Props) => {
 		});
 	}
 
-    return (
+	const t = await getTranslations("common");
+
+	return (
 		<main>
 			{/* <!-- ===== Blog Details Section Start ===== --> */}
 			<section className='lg:ub-pb-22.5 relative z-1 overflow-hidden pb-17.5 pt-35 xl:pb-27.5'>
@@ -242,7 +244,7 @@ const SingleBlog = async (props: Props) => {
 
 								{/* <!-- Social Links start --> */}
 								<div className='flex items-center gap-3'>
-									<CopyToClipboard text={postURL} label='Copy Link' />
+									<CopyToClipboard text={postURL} label={t("copy_link")} />
 
 									<SocialShare url={postURL} />
 								</div>

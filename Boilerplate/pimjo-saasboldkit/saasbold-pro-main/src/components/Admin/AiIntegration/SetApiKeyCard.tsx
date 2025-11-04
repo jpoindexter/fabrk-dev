@@ -1,10 +1,12 @@
 "use client";
 import Card from "@/components/Common/Dashboard/Card";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import SetApiKeyModal from "./SetApiKeyModal";
 
 export default function SetApiKeyCard() {
 	const [showModal, setShowModal] = useState(false);
+	const t = useTranslations("ai_integration_page.set_api_key");
 
 	return (
 		<>
@@ -65,10 +67,10 @@ export default function SetApiKeyCard() {
 						</svg>
 					</div>
 					<h2 className='mb-3.5 font-satoshi text-heading-5 font-bold tracking-[-.5px] text-dark dark:text-white'>
-						You need an OpenAI API Key to use AI Tools Template&#39;s features.
+						{t("title")}
 					</h2>
 					<p className='mb-7.5 text-sm tracking-[-.14px] text-body'>
-						So set your API key first and start using...
+						{t("subtitle")}
 					</p>
 					<button
 						onClick={() => setShowModal(true)}
@@ -90,7 +92,7 @@ export default function SetApiKeyCard() {
 								/>
 							</svg>
 						</span>
-						Set API Key
+						{t("cta")}
 					</button>
 				</div>
 			</Card>

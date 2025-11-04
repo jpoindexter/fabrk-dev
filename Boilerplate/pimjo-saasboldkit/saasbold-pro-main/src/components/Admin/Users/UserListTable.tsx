@@ -1,28 +1,32 @@
-import { User } from "@prisma/client";
+"use client";
+
+import type { User } from "@prisma/client";
+import { useTranslations } from "next-intl";
 import UserAction from "./UserAction";
-// import axios from "axios";
 
 export default function UserListTable({ users }: { users: User[] }) {
+	const t = useTranslations("manage_users_page.table_header");
+
 	return (
 		<>
-			<div className='rounded-10 bg-white shadow-1 dark:bg-gray-dark'>
+			<div className='max-w-full overflow-x-auto rounded-10 bg-white shadow-1 dark:bg-gray-dark'>
 				<table className='w-full'>
 					<thead>
-						<tr className='hidden border-b border-stroke dark:border-stroke-dark lsm:table-row'>
-							<th className='min-w-[150px] px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 sm:pl-7.5'>
-								Name
+						<tr className='border-b border-stroke dark:border-stroke-dark'>
+							<th className='min-w-[200px] px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 sm:pl-7.5'>
+								{t("name")}
 							</th>
-							<th className='hidden px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 xl:table-cell'>
-								Email
+							<th className='px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5'>
+								{t("email")}
 							</th>
-							<th className='hidden px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 xl:table-cell'>
-								Role
+							<th className='px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5'>
+								{t("role")}
 							</th>
-							<th className='hidden px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 md:table-cell'>
-								Registered on
+							<th className='truncate px-4 py-5 text-left font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5'>
+								{t("registered_on")}
 							</th>
-							<th className='hidden px-4 py-5 text-right font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 lsm:table-cell sm:pr-7.5'>
-								Action
+							<th className='min-w-[300px] px-4 py-5 text-right font-satoshi text-base font-medium tracking-[-.2px] text-body dark:text-gray-5 sm:pr-7.5'>
+								{t("action")}
 							</th>
 						</tr>
 					</thead>
@@ -35,39 +39,18 @@ export default function UserListTable({ users }: { users: User[] }) {
 							>
 								<td className='p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5 sm:pl-7.5'>
 									{user?.name}
-
-									{/* <span className='block xl:hidden'>Name: {user?.name}</span> */}
-
-									<span className='block xl:hidden'>Email: {user?.email}</span>
-
-									<span className='block xl:hidden'>
-										Role:{" "}
-										{user?.role &&
-											user.role.charAt(0).toUpperCase() +
-												user.role.slice(1).toLowerCase()}
-									</span>
-
-									<span className='block md:hidden'>
-										Register Date: {user?.createdAt?.toLocaleDateString()}
-									</span>
-
-									<span className='block lsm:hidden'>
-										<UserAction user={user} />
-									</span>
 								</td>
 
-								<td className='hidden p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5 xl:table-cell'>
+								<td className='p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5'>
 									{user?.email}
 								</td>
-								<td className='hidden p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5 xl:table-cell'>
-									{user?.role &&
-										user.role.charAt(0).toUpperCase() +
-											user.role.slice(1).toLowerCase()}
+								<td className='p-4 text-left text-base capitalize tracking-[-.16px] text-body dark:text-gray-5'>
+									{user?.role?.toLowerCase()}
 								</td>
-								<td className='hidden p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5 md:table-cell'>
+								<td className='p-4 text-left text-base tracking-[-.16px] text-body dark:text-gray-5'>
 									{user?.createdAt?.toLocaleDateString()}
 								</td>
-								<td className='hidden p-4 text-right text-base tracking-[-.16px] text-body dark:text-gray-5 lsm:table-cell sm:pr-7.5'>
+								<td className='p-4 text-right text-base tracking-[-.16px] text-body dark:text-gray-5 sm:pr-7.5'>
 									<UserAction user={user} />
 								</td>
 							</tr>

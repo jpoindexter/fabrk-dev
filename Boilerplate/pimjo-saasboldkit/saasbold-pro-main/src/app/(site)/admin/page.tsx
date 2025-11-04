@@ -3,16 +3,19 @@ import GraphCard from "@/components/Admin/Dashboard/GraphCard";
 import Breadcrumb from "@/components/Common/Dashboard/Breadcrumb";
 import { dataStats, overviewData } from "@/staticData/statsData";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
 	title: `Dashboard - ${process.env.SITE_NAME}`,
-	description: `Dashboard Description`,
+	description: "Dashboard Description",
 };
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+	const t = await getTranslations("admin_page");
+
 	return (
 		<>
-			<Breadcrumb pageTitle='Dashboard' />
+			<Breadcrumb pageTitle={t("heading")} />
 
 			<div className='mb-11 grid grid-cols-1 gap-7.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4'>
 				{dataStats.map((data) => (
@@ -23,11 +26,10 @@ export default function AdminDashboard() {
 			<div>
 				<div className='mb-7.5'>
 					<h3 className='mb-2 font-satoshi text-heading-5 font-bold tracking-[-.5px] text-dark dark:text-white'>
-						Overview
+						{t("overview.title")}
 					</h3>
 					<p className='font-satoshi font-medium tracking-[-.2px] text-body dark:text-gray-4'>
-						An overview of your organization’s activity and performance across
-						all your projects.
+						{t("overview.description")}
 					</p>
 				</div>
 

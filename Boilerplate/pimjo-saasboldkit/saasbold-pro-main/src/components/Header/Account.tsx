@@ -1,11 +1,15 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 import AccountMenu from "../Common/AccountMenu";
 
 const Account = ({ navbarOpen }: { navbarOpen: boolean }) => {
 	const [dropdown, setDropdown] = useState(false);
 	const { data: session } = useSession();
+	const t = useTranslations("common");
 
 	return (
 		<div className='group relative block'>
@@ -13,7 +17,7 @@ const Account = ({ navbarOpen }: { navbarOpen: boolean }) => {
 				onClick={() => setDropdown(!dropdown)}
 				className={`ml-5 flex items-center rounded-lg bg-primary px-5 py-2 font-satoshi font-medium text-white hover:bg-primary-dark `}
 			>
-				Account
+				<span>{t("account")}</span>
 				<svg
 					className='ml-1.5 group-hover:rotate-180'
 					width='19'

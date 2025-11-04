@@ -1,13 +1,19 @@
 "use client";
-import React from "react";
-import Breadcrumbs from "../Common/Breadcrumbs";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Breadcrumbs from "../Common/Breadcrumbs";
 
 const Support = () => {
+	const t = useTranslations("support_page");
+	const tCommon = useTranslations("common");
+
 	return (
 		<section className='lg:ub-pb-22.5 overflow-hidden pb-17.5 pt-35 xl:pb-27.5'>
 			{/* <!-- ===== Breadcrumb Section Start ===== --> */}
-			<Breadcrumbs title={"Support"} pages={["Home", "Support"]} />
+			<Breadcrumbs
+				title={t("heading")}
+				pages={[tCommon("home"), t("heading")]}
+			/>
 			{/* <!-- ===== Breadcrumb Section End ===== --> */}
 
 			<div className='mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0'>
@@ -19,14 +25,14 @@ const Support = () => {
 									htmlFor='fullName'
 									className='mb-2.5 block font-satoshi font-medium -tracking-[0.2px] text-dark dark:text-white'
 								>
-									Full Name
+									{t("form.full_name.label")}
 								</label>
 
 								<input
 									type='text'
 									name='fullName'
 									id='fullName'
-									placeholder='Enter your full name'
+									placeholder={t("form.full_name.placeholder")}
 									className='w-full rounded-[10px] border border-stroke bg-white px-6 py-3 outline-none duration-200 placeholder:text-dark-5 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-black'
 								/>
 							</div>
@@ -36,14 +42,14 @@ const Support = () => {
 									htmlFor='email'
 									className='mb-2.5 block font-satoshi font-medium -tracking-[0.2px] text-dark dark:text-white'
 								>
-									Email
+									{t("form.email.label")}
 								</label>
 
 								<input
 									type='email'
 									name='email'
 									id='email'
-									placeholder='Enter your Email'
+									placeholder={t("form.email.placeholder")}
 									className='w-full rounded-[10px] border border-stroke bg-white px-6 py-3 outline-none duration-200 placeholder:text-dark-5 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-black'
 								/>
 							</div>
@@ -53,23 +59,23 @@ const Support = () => {
 									htmlFor='message'
 									className='mb-2.5 block font-satoshi font-medium -tracking-[0.2px] text-dark dark:text-white'
 								>
-									Message
+									{t("form.message.label")}
 								</label>
 
 								<textarea
 									name='message'
 									id='message'
 									rows={5}
-									placeholder='Type your message'
+									placeholder={t("form.message.placeholder")}
 									className='w-full rounded-[10px] border border-stroke bg-white px-6 py-3 outline-none duration-200 placeholder:text-dark-5 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-black'
-								></textarea>
+								/>
 							</div>
 
 							<button
 								type='submit'
 								className='flex w-full justify-center rounded-full bg-primary p-[13px] font-satoshi font-medium text-white duration-200 ease-out hover:bg-primary-dark'
 							>
-								Send Message
+								{t("form.submit")}
 							</button>
 						</form>
 					</div>
@@ -113,11 +119,9 @@ const Support = () => {
 
 						<div>
 							<h2 className='mb-5 max-w-[357px] font-satoshi text-custom-3xl font-bold -tracking-[1.3px] text-white'>
-								Need any help? Just open a support ticket
+								{t("title")}
 							</h2>
-							<p className='max-w-[270px] text-gray-5'>
-								Our support team will get back to as soon as they can.
-							</p>
+							<p className='max-w-[270px] text-gray-5'>{t("subtitle")}</p>
 						</div>
 					</div>
 				</div>

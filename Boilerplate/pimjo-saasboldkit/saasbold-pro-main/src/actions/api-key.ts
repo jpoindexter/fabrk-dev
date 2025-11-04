@@ -1,17 +1,16 @@
 "use server";
+
+import { isAuthorized } from "@/libs/isAuthorized";
 import { prisma } from "@/libs/prismaDb";
 import bcrypt from "bcrypt";
 import { revalidatePath } from "next/cache";
-import { isAuthorized } from "@/libs/isAuthorized";
 
 export async function getApiKeys() {
 	const user = await isAuthorized();
-	const res = await prisma.apiKey.findMany({
-		where: {
-			userId: user?.id as string,
-		},
+
+	return prisma.apiKey.findMany({
+		where: { userId: user?.id },
 	});
-	return res;
 }
 
 export async function createApiKey(keyName: string) {

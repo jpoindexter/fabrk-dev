@@ -1,8 +1,12 @@
+"use client";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 type PropsType = { pageTitle: string };
 
 export default function Breadcrumb({ pageTitle }: PropsType) {
+	const t = useTranslations("common");
+
 	return (
 		<div className='mb-7.5 items-center justify-between md:flex'>
 			<h2 className='mb-4 font-satoshi text-2xl font-bold text-dark dark:text-white md:mb-0'>
@@ -16,7 +20,7 @@ export default function Breadcrumb({ pageTitle }: PropsType) {
 							href='/'
 							className='text-sm text-body hover:text-primary dark:text-gray-5 dark:hover:text-primary'
 						>
-							Home
+							{t("home")}
 						</Link>
 					</li>
 

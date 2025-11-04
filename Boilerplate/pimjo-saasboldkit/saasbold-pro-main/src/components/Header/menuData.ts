@@ -1,72 +1,81 @@
 import { Menu } from "@/types/menu";
 
+/**
+ * Menu data structure
+ * 
+ * Each item uses titleKey which corresponds to translation keys in locale files.
+ * For example, titleKey: 'features' will use the translation from 'header.features'.
+ * 
+ * This allows the menu structure to remain consistent while supporting multiple languages.
+ * Actual text content should be stored in locale files (en.json, fr.json, etc.).
+ */
+
 export const menuData: Menu[] = [
 	{
 		id: 1,
-		title: "Features",
+		titleKey: "features",
 		newTab: false,
 		path: "#features",
 	},
 	{
 		id: 2,
-		title: "Pricing",
+		titleKey: "pricing",
 		newTab: false,
 		path: "#pricing",
 	},
 	{
 		id: 2,
-		title: "Blog",
+		titleKey: "blog",
 		newTab: false,
 		path: "/blog",
 	},
 
 	{
 		id: 2,
-		title: "Pages",
+		titleKey: "pages",
 		newTab: false,
 		submenu: [
 			{
 				id: 301,
-				title: "Blog",
+				titleKey: "blog",
 				newTab: false,
 				path: "/blog",
 			},
 			{
 				id: 304,
-				title: "Sign In",
+				titleKey: "signIn",
 				newTab: false,
 				path: "/auth/signin",
 			},
 			{
 				id: 305,
-				title: "Sign Up",
+				titleKey: "signUp",
 				newTab: false,
 				path: "/auth/signup",
 			},
 			{
 				id: 306,
-				title: "404 Errors",
+				titleKey: "errors",
 				newTab: false,
 				path: "/error",
 			},
 			{
 				id: 303,
-				title: "Support",
+				titleKey: "support",
 				newTab: false,
 				path: "/support",
 			},
 			{
 				id: 301,
-				title: "Blog Details",
+				titleKey: "blogDetails",
 				newTab: false,
 				path: "/blog/proin-ac-ipsum-et-neque-tincidunt-aliquam-ut-ut-ex-in-viverra",
 			},
 		],
 	},
-
 	{
 		id: 4,
-		title: "Buy Now ↗",
+		titleKey: "buyNow",
 		newTab: true,
 		path: "https://saasbold.com/#pricing",
 	},

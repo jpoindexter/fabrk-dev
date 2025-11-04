@@ -1,25 +1,28 @@
-import bcrypt from "bcrypt";
 import { prisma } from "@/libs/prismaDb";
+import { excludeFields } from "@/utils/exclude-fields";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+import { registerSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { name, email, password } = body;
+	const res = registerSchema.safeParse(body);
 
-	if (!name || !email || !password) {
-		return new NextResponse("Missing Fields", { status: 400 });
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
 
-	const formatedEmail = email.toLowerCase();
+	const { name, email, password } = res.data;
 
-	const exist = await prisma.user.findUnique({
-		where: {
-			email: formatedEmail,
-		},
+	const isUserRegistered = await prisma.user.findUnique({
+		where: { email },
 	});
 
-	if (exist) {
-		throw new Error("Email already exists");
+	if (isUserRegistered) {
+		return new NextResponse("Email already exists", { status: 409 });
 	}
 
 	const adminEmails = process.env.ADMIN_EMAILS?.split(",") || [];
@@ -33,12 +36,12 @@ export async function POST(request: Request) {
 
 	const newUser = {
 		name,
-		email: formatedEmail,
+		email,
 		password: hashedPassword,
 		role: "USER",
 	};
 
-	if (isAdminEmail(formatedEmail)) {
+	if (isAdminEmail(email)) {
 		newUser.role = "ADMIN";
 	}
 
@@ -49,8 +52,20 @@ export async function POST(request: Request) {
 			},
 		});
 
-		return NextResponse.json(user);
+		return NextResponse.json(
+			{
+				message: "User created successfully",
+				data: excludeFields(user, [
+					"password",
+					"passwordResetToken",
+					"passwordResetTokenExp",
+				]),
+			},
+			{ status: 201 }
+		);
 	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
+		if (error instanceof Error) {
+			return NextResponse.json({ message: error.message }, { status: 500 });
+		}
 	}
 }

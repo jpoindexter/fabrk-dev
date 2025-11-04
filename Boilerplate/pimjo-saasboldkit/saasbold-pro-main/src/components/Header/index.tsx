@@ -1,20 +1,23 @@
 "use client";
 import logoLight from "@/../public/images/logo/logo-light.svg";
 import logo from "@/../public/images/logo/logo.svg";
-import { Menu } from "@/types/menu";
+import { onScroll } from "@/libs/scrollActive";
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import Dropdown from "./Dropdown";
-import ThemeSwitcher from "./ThemeSwitcher";
-import { menuData } from "./menuData";
+import { integrations } from "../../../integrations.config";
 import GlobalSearchModal from "../GlobalSearch";
 import Account from "./Account";
-import { useSession } from "next-auth/react";
-import { onScroll } from "@/libs/scrollActive";
-import { usePathname } from "next/navigation";
+import Dropdown from "./Dropdown";
+import ThemeSwitcher from "./ThemeSwitcher";
+import { LanguageSwitcher } from "./language-switcher";
+import { menuData } from "./menuData";
 
 const Header = () => {
+	const t = useTranslations("header");
 	const [stickyMenu, setStickyMenu] = useState(false);
 	const [searchModalOpen, setSearchModalOpen] = useState(false);
 	const { data: session } = useSession();
@@ -59,8 +62,8 @@ const Header = () => {
 				}`}
 			>
 				<div className='relative mx-auto max-w-[1170px] items-center justify-between px-4 sm:px-8 xl:flex xl:px-0'>
-					<div className='flex w-full items-center justify-between xl:w-4/12'>
-						<Link href='/'>
+					<div className='flex shrink-0 items-center justify-between'>
+						<Link href='/' className='shrink-0'>
 							<Image
 								src={logoLight}
 								alt='Logo'
@@ -68,6 +71,10 @@ const Header = () => {
 							/>
 							<Image src={logo} alt='Logo' className='w-full dark:hidden' />
 						</Link>
+
+						<div className='ml-auto mr-4 lg:hidden'>
+							<LanguageSwitcher />
+						</div>
 
 						{/* <!-- Hamburger Toggle BTN --> */}
 						<button
@@ -110,14 +117,14 @@ const Header = () => {
 					</div>
 
 					<div
-						className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto xl:w-8/12 ${
+						className={`invisible h-0 w-full items-center justify-between xl:visible xl:flex xl:h-auto ${
 							navbarOpen &&
 							"!visible relative mt-4 !h-auto max-h-[400px] overflow-y-scroll rounded-md bg-white p-7.5 shadow-lg dark:bg-gray-dark"
 						}`}
 					>
-						<nav>
+						<nav className='lg:mx-auto'>
 							<ul className='flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-2.5'>
-								{menuData?.map((item: Menu, key) =>
+								{menuData?.map((item, key) =>
 									!item?.path && item?.submenu ? (
 										<Dropdown
 											stickyMenu={stickyMenu}
@@ -143,13 +150,13 @@ const Header = () => {
 												}
 												target={item?.newTab ? "_blank" : ""}
 												rel={item?.newTab ? "noopener noreferrer" : ""}
-												className={`flex rounded-full px-[14px] py-[3px] font-satoshi font-medium ${
+												className={`flex truncate rounded-full px-[14px] py-[3px] font-satoshi font-medium ${
 													pathUrl === item?.path
 														? "bg-primary/5 text-primary dark:bg-white/5 dark:text-white"
 														: "text-black hover:bg-primary/5 hover:text-primary dark:text-gray-5 dark:hover:bg-white/5 dark:hover:text-white"
 												} ${item?.path?.startsWith("#") ? "menu-scroll" : ""}`}
 											>
-												{item?.title}
+												{t(item?.titleKey)}
 											</Link>
 										</li>
 									)
@@ -157,7 +164,7 @@ const Header = () => {
 							</ul>
 						</nav>
 
-						<div className='mt-7 flex flex-wrap items-center lg:mt-0'>
+						<div className='mt-7 flex items-center max-lg:flex-wrap lg:mt-0'>
 							<button
 								onClick={() => setSearchModalOpen(true)}
 								className='text-waterloo hidden h-[38px] w-[38px] items-center justify-center rounded-full  sm:flex'
@@ -190,6 +197,12 @@ const Header = () => {
 
 							<ThemeSwitcher />
 
+							{integrations.isI18nEnabled && (
+								<div className='mx-2 max-lg:hidden'>
+									<LanguageSwitcher />
+								</div>
+							)}
+
 							{session?.user ? (
 								<Account navbarOpen={navbarOpen} />
 							) : (
@@ -198,13 +211,14 @@ const Header = () => {
 										href='/auth/signin'
 										className='px-5 py-2 font-satoshi font-medium text-black dark:text-white'
 									>
-										Sign In
+										{t("signIn")}
 									</Link>
+
 									<Link
 										href='/auth/signup'
 										className='rounded-full bg-primary px-5 py-2 font-satoshi font-medium text-white hover:bg-primary-dark'
 									>
-										Sign Up
+										{t("signUp")}
 									</Link>
 								</>
 							)}

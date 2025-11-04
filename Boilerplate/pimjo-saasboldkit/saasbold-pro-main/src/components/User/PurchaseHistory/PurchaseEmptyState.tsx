@@ -1,7 +1,12 @@
+"use client";
+
 import Card from "@/components/Common/Dashboard/Card";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function PurchaseEmptyState() {
+	const t = useTranslations("invoice_page.empty_state");
+
 	return (
 		<div>
 			<Card>
@@ -203,17 +208,17 @@ export default function PurchaseEmptyState() {
 						</svg>
 					</div>
 					<h2 className='mb-3.5 font-satoshi text-2xl font-bold tracking-[-.5px] text-dark dark:text-white'>
-						You don’t have any purchase history
+						{t("title")}
 					</h2>
 					<p className='text-sm tracking-[-.14px] text-body dark:text-gray-5'>
-						Please purchase any plan to see the history! Thank you
+						{t("description")}
 					</p>
 
 					<Link
 						className='text-md mt-4 inline-block rounded-md bg-primary px-5.5 py-2 font-satoshi font-medium text-white duration-300 hover:bg-primary-dark'
 						href='/#pricing'
 					>
-						Pricing
+						{t("cta")}
 					</Link>
 				</div>
 			</Card>

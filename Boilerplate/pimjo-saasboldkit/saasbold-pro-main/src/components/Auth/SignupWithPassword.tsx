@@ -1,13 +1,15 @@
-import React, { useState } from "react";
 import FormButton from "@/components/Common/Dashboard/FormButton";
 import InputGroup from "@/components/Common/Dashboard/InputGroup";
-import toast from "react-hot-toast";
-import axios from "axios";
-import Loader from "../Common/Loader";
-import { useRouter } from "next/navigation";
+import { rateLimitByIp } from "@/libs/limiter";
+import axios, { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
-import { integrations, messages } from "../../../integrations.config";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 import z from "zod";
+import { integrations, messages } from "../../../integrations.config";
+import Loader from "../Common/Loader";
 
 const schema = z.object({
 	name: z
@@ -42,6 +44,7 @@ const SignupWithPassword = () => {
 	const { name, email, password } = data;
 
 	const router = useRouter();
+	const t = useTranslations("signUpPage.form");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setData({
@@ -67,39 +70,45 @@ const SignupWithPassword = () => {
 		setLoading(true);
 
 		try {
-			const res = await axios.post("/api/user/register", {
+			// 2 requests per 20 seconds
+			await rateLimitByIp(2, 20000);
+		} catch (error) {
+			setLoading(false);
+			toast.error("Too many sign-in attempts. Please try again later.");
+			return;
+		}
+
+		try {
+			await axios.post("/api/user/register", {
 				name,
 				email,
 				password,
 			});
 
-			if (res.status === 200) {
-				toast.success("User has been registered");
-				setData({
-					name: "",
-					email: "",
-					password: "",
-				});
-				setLoading(false);
-				signIn("credentials", { ...data, redirect: false }).then((callback) => {
-					if (callback?.error) {
-						toast.error(callback.error);
-						setLoading(false);
-					}
+			setData({
+				name: "",
+				email: "",
+				password: "",
+			});
 
-					if (callback?.ok && !callback?.error) {
-						setLoading(false);
-						router.push("/admin");
-					}
-				});
-			} else {
-				toast.error(res.data);
+			const res = await signIn("credentials", {
+				...data,
+				redirect: false,
+			});
+
+			if (res?.error) {
+				toast.error(res.error);
 				setLoading(false);
+			} else if (res?.ok) {
+				toast.success("User registration successful.");
+				router.push("/admin");
 			}
-		} catch (error: any) {
-			toast.error(error.response.data);
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				toast.error(error.response?.data.message);
+			}
+		} finally {
 			setLoading(false);
-			return;
 		}
 	};
 
@@ -107,8 +116,8 @@ const SignupWithPassword = () => {
 		<form onSubmit={handleSubmit}>
 			<div className='mb-5 space-y-4'>
 				<InputGroup
-					label='Name'
-					placeholder='Enter your username'
+					label={t("name.label")}
+					placeholder={t("name.placeholder")}
 					maxlength='10'
 					type='text'
 					name='name'
@@ -119,8 +128,8 @@ const SignupWithPassword = () => {
 				/>
 
 				<InputGroup
-					label='Email'
-					placeholder='Enter your email'
+					label={t("email.label")}
+					placeholder={t("email.placeholder")}
 					type='email'
 					name='email'
 					required
@@ -130,8 +139,8 @@ const SignupWithPassword = () => {
 				/>
 
 				<InputGroup
-					label='Password'
-					placeholder='Enter your password'
+					label={t("password.label")}
+					placeholder={t("password.placeholder")}
 					type='password'
 					name='password'
 					required
@@ -141,7 +150,8 @@ const SignupWithPassword = () => {
 				/>
 
 				<FormButton height='50px'>
-					Sign Up {loading && <Loader style='border-white dark:border-dark' />}
+					{t("submit")}{" "}
+					{loading && <Loader style='border-white dark:border-dark' />}
 				</FormButton>
 			</div>
 		</form>

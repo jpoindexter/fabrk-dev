@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
-import Sidebar from "@/components/Common/Dashboard/Sidebar";
 import Header from "@/components/Common/Dashboard/Header";
-import { userSidebarData } from "@/staticData/sidebarData";
+import Sidebar from "@/components/Common/Dashboard/Sidebar";
+import { sidebarData } from "@/staticData/sidebarData";
+import { useState } from "react";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 	const [openSidebar, setOpenSidebar] = useState(false);
@@ -15,7 +15,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 						openSidebar ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
 					}`}
 				>
-					<Sidebar sidebarData={userSidebarData} />
+					<Sidebar sidebarData={sidebarData} />
 				</aside>
 				<div
 					onClick={() => setOpenSidebar(false)}

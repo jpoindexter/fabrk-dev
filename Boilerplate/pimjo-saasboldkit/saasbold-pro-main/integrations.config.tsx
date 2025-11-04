@@ -5,6 +5,7 @@ const integrations = {
 	isMailchimpEnabled: true,
 	isAuthEnabled: true,
 	isPaymentsEnabled: true,
+	isI18nEnabled: false,
 };
 
 const messages = {
@@ -101,3 +102,4 @@ const messages = {
 };
 
 export { integrations, messages };
+

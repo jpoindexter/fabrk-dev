@@ -1,25 +1,30 @@
 "use client";
+import { deleteApiKey } from "@/actions/api-key";
 import CopyToClipboard from "@/components/Common/CopyToClipboard";
 import DeleteModal from "@/components/Common/Modals/DeleteModal";
-import { useState } from "react";
 import { ApiKey } from "@prisma/client";
-import { deleteApiKey } from "@/actions/api-key";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function TokenList({ tokens }: { tokens: ApiKey[] }) {
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
-	const [loading, setLodading] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [id, setId] = useState("");
 
+	const t = useTranslations("api_page.token_list");
+	const tCommon = useTranslations("common");
+
 	const handleDelete = async () => {
-		setLodading(true);
+		setLoading(true);
+
 		try {
 			await deleteApiKey(id);
 		} catch (error) {
-			toast.error("Failed to delete token");
+			toast.error(t("error_toast_message"));
 		}
 
-		setLodading(false);
+		setLoading(false);
 		setShowDeleteModal(false);
 	};
 
@@ -30,20 +35,21 @@ export default function TokenList({ tokens }: { tokens: ApiKey[] }) {
 					<>
 						<div className='border-b border-stroke px-9 py-5 dark:border-stroke-dark'>
 							<h3 className='font-satoshi text-custom-2xl font-bold tracking-[-.5px] text-dark dark:text-white'>
-								List of active tokens
+								{t("title")}
 							</h3>
 						</div>
+
 						<table className='w-full'>
 							<thead className='border-b border-stroke dark:border-stroke-dark'>
 								<tr>
 									<th className='p-3 pl-9 text-left font-satoshi text-base font-medium text-body dark:text-gray-5'>
-										Name
+										{tCommon("name")}
 									</th>
 									<th className='hidden p-3 text-left font-satoshi text-base font-medium text-body dark:text-gray-5 md:table-cell'>
-										Date
+										{tCommon("date")}
 									</th>
 									<th className='p-3 pr-9 text-right font-satoshi text-base font-medium text-body dark:text-gray-5'>
-										Action
+										{tCommon("action")}
 									</th>
 								</tr>
 							</thead>
@@ -55,12 +61,12 @@ export default function TokenList({ tokens }: { tokens: ApiKey[] }) {
 									>
 										<td className='p-4.5 pl-9 text-left tracking-[-.16px] text-dark dark:text-white'>
 											<span className='text-body dark:text-gray-5 md:hidden'>
-												Name:{" "}
+												{tCommon("name")}:{" "}
 											</span>
 											{token?.name}
 											<span className='block md:hidden'>
 												<span className='text-body dark:text-gray-5'>
-													Date:{" "}
+													{tCommon("date")}:{" "}
 													{new Date(token?.createdAt).toLocaleDateString()}
 												</span>
 											</span>
@@ -106,7 +112,10 @@ export default function TokenList({ tokens }: { tokens: ApiKey[] }) {
 													</svg>
 												</button>
 
-												<CopyToClipboard text={token.key} label='Copy' />
+												<CopyToClipboard
+													text={token.key}
+													label={tCommon("copy")}
+												/>
 											</div>
 										</td>
 									</tr>
@@ -115,19 +124,18 @@ export default function TokenList({ tokens }: { tokens: ApiKey[] }) {
 						</table>
 					</>
 				)}
-				<div>
-					{tokens?.length === 0 && (
-						<p className='flex justify-center px-9 py-20 tracking-[-.16px] text-body dark:text-gray-5'>
-							No active token available!
-						</p>
-					)}
-				</div>
+
+				{!tokens?.length && (
+					<p className='flex justify-center px-9 py-20 tracking-[-.16px] text-body dark:text-gray-5'>
+						{t("no_token")}
+					</p>
+				)}
 			</div>
 
 			<DeleteModal
 				showDeleteModal={showDeleteModal}
 				setShowDeleteModal={setShowDeleteModal}
-				deleteText='Delete API Key'
+				deleteText={t("delete_api_key")}
 				handleDelete={handleDelete}
 				loading={loading}
 			/>

@@ -1,6 +1,6 @@
 import { signIn } from "next-auth/react";
-import { integrations, messages } from "../../../integrations.config";
 import toast from "react-hot-toast";
+import { integrations, messages } from "../../../integrations.config";
 
 export default function GoogleSigninButton({ text }: { text: string }) {
 	const handleClick = () => {
@@ -40,7 +40,7 @@ export default function GoogleSigninButton({ text }: { text: string }) {
 					fill='#EB4335'
 				/>
 			</svg>
-			{text} with Google
+			{text} Google
 		</button>
 	);
 }

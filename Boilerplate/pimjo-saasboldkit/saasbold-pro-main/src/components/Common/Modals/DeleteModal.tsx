@@ -1,6 +1,7 @@
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
-import ModalCloseButton from "./ModalCloseButton";
 import Loader from "../Loader";
+import ModalCloseButton from "./ModalCloseButton";
 
 export default function DeleteModal(props: any) {
 	const {
@@ -11,8 +12,9 @@ export default function DeleteModal(props: any) {
 		loading,
 	} = props;
 
-	// ===== click outside of dropdown =====
 	const divRef = useRef<HTMLDivElement | null>(null);
+	const t = useTranslations("common.modal:delete");
+
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			const handleClickOutside = (event: MouseEvent) => {
@@ -27,6 +29,7 @@ export default function DeleteModal(props: any) {
 			};
 		}
 	});
+
 	return (
 		<>
 			{showDeleteModal && (
@@ -59,12 +62,9 @@ export default function DeleteModal(props: any) {
 
 							<div className='text-left'>
 								<h2 className='mb-2 text-xl font-bold text-black dark:text-white sm:text-heading-6'>
-									{/* Delete Template */}
 									{deleteText}
 								</h2>
-								<p className='text-custom-sm font-medium'>
-									Are you sure about that? this can not be undone
-								</p>
+								<p className='text-custom-sm font-medium'>{t("description")}</p>
 							</div>
 						</div>
 
@@ -102,14 +102,15 @@ export default function DeleteModal(props: any) {
 								</svg>
 
 								{!loading ? (
-									"Delete"
+									t("confirm_button")
 								) : (
 									<>
-										<span className='mr-2'>Deleting</span>
+										<span className='mr-2'>{t("confirm_button:loading")}</span>
 										<Loader style='border-dark dark:border-white' />
 									</>
 								)}
 							</button>
+
 							<button
 								onClick={() => setShowDeleteModal(false)}
 								className=' inline-flex items-center rounded-lg bg-black px-7 py-2 font-medium text-white duration-200 ease-out hover:bg-slate-700 dark:bg-white dark:text-dark dark:hover:bg-white/90'
@@ -128,7 +129,8 @@ export default function DeleteModal(props: any) {
 										fill='currentColor'
 									/>
 								</svg>
-								Cancel
+
+								{t("cancel_button")}
 							</button>
 						</div>
 					</div>

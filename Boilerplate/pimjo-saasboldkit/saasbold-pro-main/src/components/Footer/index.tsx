@@ -1,8 +1,10 @@
-import React from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
+	const t = useTranslations("footer");
+
 	return (
 		<footer className='relative z-1 mt-auto overflow-hidden bg-black py-17.5 lg:py-22.5 xl:py-27.5'>
 			<div className='mx-auto max-w-[1170px] px-4 sm:px-8 xl:px-0'>
@@ -17,9 +19,7 @@ const Footer = () => {
 								height={40}
 							/>
 						</Link>
-						<p className='mt-5 text-gray-5'>
-							© Your SaaS - Demo SaaS website created using SaaSBold
-						</p>
+						<p className='mt-5 text-gray-5'>{t("copyright")}</p>
 
 						<ul className='mt-11 flex items-center gap-2'>
 							<li>
@@ -84,7 +84,7 @@ const Footer = () => {
 					<div className='flex w-full flex-col justify-between gap-10 sm:w-auto sm:flex-row xl:gap-20'>
 						<div className='w-full sm:w-auto'>
 							<h2 className='mb-5 font-satoshi text-lg font-bold -tracking-[0.2px] text-white'>
-								Products
+								{t("product.title")}
 							</h2>
 
 							<ul className='flex flex-col gap-3'>
@@ -93,7 +93,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Features
+										{t("product.items.features")}
 									</a>
 								</li>
 								<li>
@@ -101,7 +101,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Integrations
+										{t("product.items.integrations")}
 									</a>
 								</li>
 								<li>
@@ -109,7 +109,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Pricing & Plans
+										{t("product.items.pricing")}
 									</a>
 								</li>
 								<li>
@@ -117,7 +117,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Changelog
+										{t("product.items.changelog")}
 									</a>
 								</li>
 							</ul>
@@ -125,7 +125,7 @@ const Footer = () => {
 
 						<div className='w-full sm:w-auto'>
 							<h2 className='mb-5 font-satoshi text-lg font-bold -tracking-[0.2px] text-white'>
-								Resources
+								{t("resources.title")}
 							</h2>
 
 							<ul className='flex flex-col gap-3'>
@@ -134,7 +134,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Our Blog
+										{t("resources.items.ourBlog")}
 									</a>
 								</li>
 								<li>
@@ -142,7 +142,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Heatmaps
+										{t("resources.items.heatMaps")}
 									</a>
 								</li>
 								<li>
@@ -150,7 +150,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Affiliate Program
+										{t("resources.items.affiliate")}
 									</a>
 								</li>
 								<li>
@@ -158,7 +158,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Integrations
+										{t("resources.items.integrations")}
 									</a>
 								</li>
 							</ul>
@@ -166,7 +166,7 @@ const Footer = () => {
 
 						<div className='w-full sm:w-auto'>
 							<h2 className='mb-5 font-satoshi text-lg font-bold -tracking-[0.2px] text-white'>
-								Products
+								{t("product.title")}
 							</h2>
 
 							<ul className='flex flex-col gap-3'>
@@ -175,7 +175,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Features
+										{t("product.items.features")}
 									</a>
 								</li>
 								<li>
@@ -183,7 +183,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Integrations
+										{t("product.items.integrations")}
 									</a>
 								</li>
 								<li>
@@ -191,7 +191,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Pricing & Plans
+										{t("product.items.pricing")}
 									</a>
 								</li>
 								<li>
@@ -199,7 +199,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Changelog
+										{t("product.items.changelog")}
 									</a>
 								</li>
 							</ul>
@@ -207,7 +207,7 @@ const Footer = () => {
 
 						<div className='w-full sm:w-auto'>
 							<h2 className='mb-5 font-satoshi text-lg font-bold -tracking-[0.2px] text-white'>
-								Company
+								{t("company.title")}
 							</h2>
 
 							<ul className='flex flex-col gap-3'>
@@ -216,7 +216,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										About Us
+										{t("company.items.aboutUs")}
 									</a>
 								</li>
 								<li>
@@ -224,7 +224,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Our Story
+										{t("company.items.ourStory")}
 									</a>
 								</li>
 								<li>
@@ -232,7 +232,7 @@ const Footer = () => {
 										className='text-gray-5 duration-200 ease-out hover:text-white'
 										href='#'
 									>
-										Work With Us
+										{t("company.items.workWithUs")}
 									</a>
 								</li>
 							</ul>

@@ -1,7 +1,9 @@
-import React from "react";
 import Card from "@/components/Common/Dashboard/Card";
+import { useTranslations } from "next-intl";
 
 const DeleteAccount = ({ setShowDeleteModal, showDeleteModal }: any) => {
+	const t = useTranslations("account_settings_page.danger_zone");
+
 	return (
 		<div className='w-full max-w-[525px]'>
 			<Card>
@@ -29,16 +31,15 @@ const DeleteAccount = ({ setShowDeleteModal, showDeleteModal }: any) => {
 							fill='#E10E0E'
 						/>
 					</svg>
-					Danger Zone
+					{t("title")}
 				</h3>
 
 				<h4 className='pb-2.5 text-base font-medium text-dark dark:text-white'>
-					Delete Account
+					{t("delete_account.title")}
 				</h4>
-				<p>
-					Deleting the Account will erase all traces of this Account, including
-					all submissions and file uploads and Settings.
-				</p>
+
+				<p>{t("delete_account.description")}</p>
+				
 				<button
 					onClick={() => setShowDeleteModal(!showDeleteModal)}
 					className='mt-6 flex items-center justify-center gap-2 rounded-lg bg-dark px-6 py-2.5 font-satoshi text-base font-medium tracking-[-.2px] text-white duration-300 hover:bg-dark/90 dark:bg-white dark:text-dark dark:hover:bg-white/90'
@@ -69,7 +70,7 @@ const DeleteAccount = ({ setShowDeleteModal, showDeleteModal }: any) => {
 							fill='currentColor'
 						/>
 					</svg>
-					Delete
+					{t("delete_account.button")}
 				</button>
 			</Card>
 		</div>

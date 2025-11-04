@@ -1,27 +1,33 @@
+import { sendEmail } from "@/libs/email";
 import { prisma } from "@/libs/prismaDb";
 import { NextResponse } from "next/server";
-import crypto from "crypto";
-import { sendEmail } from "@/libs/email";
+import crypto from "node:crypto";
+import { resetPasswordSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { email } = body;
+	const res = resetPasswordSchema.safeParse(body);
 
-	if (!email) {
-		return new NextResponse("Missing Fields", { status: 400 });
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
 
-	const formatedEmail = email.toLowerCase();
+	const { email } = res.data;
 
 	const user = await prisma.user.findUnique({
-		where: {
-			email: formatedEmail,
-		},
+		where: { email },
 	});
 
 	if (!user) {
-		return new NextResponse("User doesn't exist", { status: 400 });
+		return NextResponse.json(
+			{ message: "User doesn't exist" },
+			{ status: 404 }
+		);
 	}
+
 
 	const resetToken = crypto.randomBytes(20).toString("hex");
 
@@ -29,9 +35,7 @@ export async function POST(request: Request) {
 	passwordResetTokenExp.setMinutes(passwordResetTokenExp.getMinutes() + 10);
 
 	await prisma.user.update({
-		where: {
-			email: formatedEmail,
-		},
+		where: { email },
 		data: {
 			passwordResetToken: resetToken,
 			passwordResetTokenExp,
@@ -42,7 +46,7 @@ export async function POST(request: Request) {
 
 	try {
 		await sendEmail({
-			to: formatedEmail,
+			to: email,
 			subject: "Reset your password",
 			html: ` 
       <div>
@@ -53,12 +57,18 @@ export async function POST(request: Request) {
       `,
 		});
 
-		return NextResponse.json("An email has been sent to your email", {
-			status: 200,
-		});
+		return NextResponse.json(
+			{ message: "An email has been sent to your email" },
+			{
+				status: 200,
+			}
+		);
 	} catch (error) {
-		return NextResponse.json("An error has occurred. Please try again!", {
-			status: 500,
-		});
+		return NextResponse.json(
+			{ message: "An error occurred. Please try again!" },
+			{
+				status: 500,
+			}
+		);
 	}
 }

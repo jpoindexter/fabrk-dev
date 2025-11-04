@@ -1,14 +1,16 @@
 "use client";
-import { useState } from "react";
+import { rateLimitByIp } from "@/libs/limiter";
+import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import z from "zod";
+import { integrations, messages } from "../../../integrations.config";
 import FormButton from "../Common/Dashboard/FormButton";
 import InputGroup from "../Common/Dashboard/InputGroup";
-import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Loader from "../Common/Loader";
-import { integrations, messages } from "../../../integrations.config";
-import z from "zod";
 
 const schema = z.object({
 	email: z.string().email(),
@@ -39,6 +41,7 @@ export default function SigninWithPassword() {
 	const [loading, setLoading] = useState(false);
 
 	const router = useRouter();
+	const t = useTranslations("signInPage.form");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setData({
@@ -47,7 +50,7 @@ export default function SigninWithPassword() {
 		});
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (!integrations.isAuthEnabled) {
@@ -63,26 +66,33 @@ export default function SigninWithPassword() {
 
 		setLoading(true);
 
-		signIn("credentials", { ...data, redirect: false }).then((callback) => {
-			if (callback?.error) {
-				toast.error(callback.error);
-				setLoading(false);
-			}
+		try {
+			// 2 requests per 20 seconds
+			await rateLimitByIp(2, 20000);
+		} catch (error) {
+			setLoading(false);
+			toast.error("Too many sign-in attempts. Please try again later.");
+			return;
+		}
 
-			if (callback?.ok && !callback?.error) {
-				toast.success("Logged in successfully");
-				setLoading(false);
-				setData({ email: "", password: "", remember: false });
-				router.push("/admin");
-			}
-		});
+		signIn("credentials", { ...data, redirect: false })
+			.then((callback) => {
+				if (callback?.error) {
+					toast.error(callback.error);
+				} else if (callback?.ok) {
+					toast.success("Logged in successfully");
+					setData({ email: "", password: "", remember: false });
+					router.push("/admin");
+				}
+			})
+			.finally(() => setLoading(false));
 	};
 
 	return (
 		<form className='mb-5 space-y-4' onSubmit={handleSubmit}>
 			<InputGroup
-				label='Email'
-				placeholder='Enter your email'
+				label={t("email.label")}
+				placeholder={t("email.placeholder")}
 				type='email'
 				name='email'
 				required
@@ -92,8 +102,8 @@ export default function SigninWithPassword() {
 			/>
 
 			<InputGroup
-				label='Password'
-				placeholder='Enter your password'
+				label={t("password.label")}
+				placeholder={t("password.placeholder")}
 				type='password'
 				name='password'
 				required
@@ -139,19 +149,20 @@ export default function SigninWithPassword() {
 							/>
 						</svg>
 					</span>
-					Remember me
+					{t("rememberMe")}
 				</label>
 
 				<Link
 					href='/auth/forgot-password'
 					className='select-none font-satoshi text-base font-medium text-dark duration-300 hover:text-primary dark:text-white dark:hover:text-primary'
 				>
-					Forgot Password?
+					{t("forgotPassword")}
 				</Link>
 			</div>
 
 			<FormButton height='50px'>
-				Sign In {loading && <Loader style='dark:border-primary border-white' />}
+				{t("passwordSubmit")}{" "}
+				{loading && <Loader style='dark:border-primary border-white' />}
 			</FormButton>
 		</form>
 	);

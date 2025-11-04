@@ -1,26 +1,27 @@
 import { NextResponse } from "next/server";
-// import crypto from "crypto";
 import { prisma } from "@/libs/prismaDb";
 import bcrypt from "bcrypt";
+import { generateAPIKeyPayloadSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { email, keyName } = body;
+	const res = generateAPIKeyPayloadSchema.safeParse(body);
 
-	if (!email) {
-		return new NextResponse("Missing Fields", { status: 400 });
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
 
-	const formatedEmail = email.toLowerCase();
+	const { email, keyName } = res.data;
 
 	const user = await prisma.user.findUnique({
-		where: {
-			email: formatedEmail,
-		},
+		where: { email },
 	});
 
 	if (!user) {
-		return new NextResponse("User not found!", { status: 400 });
+		return NextResponse.json({ message: "User not found!" }, { status: 404 });
 	}
 
 	// Generate a random key
@@ -38,8 +39,17 @@ export async function POST(request: Request) {
 			},
 		});
 
-		return new NextResponse(key, { status: 200 });
+		return NextResponse.json(
+			{
+				message: "API Key generated successfully",
+				key: hashedKey,
+			},
+			{ status: 200 }
+		);
 	} catch (error) {
-		return new NextResponse("Something went wrong", { status: 500 });
+		return NextResponse.json(
+			{ message: "Something went wrong" },
+			{ status: 500 }
+		);
 	}
 }

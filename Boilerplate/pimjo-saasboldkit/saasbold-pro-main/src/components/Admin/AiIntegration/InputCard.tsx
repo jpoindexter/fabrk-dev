@@ -1,6 +1,7 @@
 import Card from "@/components/Common/Dashboard/Card";
 import FormButton from "@/components/Common/Dashboard/FormButton";
 import InputSelect from "@/components/Common/InputSelect";
+import { useTranslations } from "next-intl";
 
 const paragraphsCount = [
 	{
@@ -45,30 +46,31 @@ const contentTypes = [
 ];
 
 export default function InputCard({ data, handleChange, handleSubmit }: any) {
+	const t = useTranslations("ai_integration_page.content_topic");
+
 	return (
 		<Card>
 			<div className='mb-6'>
 				<h3 className='mb-1.5 font-satoshi text-custom-2xl font-bold tracking-[-.5px] text-dark dark:text-white'>
-					Content Topic
+					{t("title")}
 				</h3>
-				<p className='text-body'>What your content will be about?</p>
+				<p className='text-body'>{t("description")}</p>
 			</div>
 
 			<form onSubmit={handleSubmit} className='space-y-4.5'>
-				<div>
-					<textarea
-						value={data?.topic}
-						name='topic'
-						onChange={handleChange}
-						required
-						placeholder='Type your topic'
-						className='h-[150px] w-full rounded-lg border border-gray-3 px-5.5 py-3 text-dark outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-transparent dark:text-white dark:focus:border-transparent'
-					></textarea>
-				</div>
+				<textarea
+					value={data?.topic}
+					name='topic'
+					onChange={handleChange}
+					required
+					placeholder={t("form.topic")}
+					className='h-[150px] w-full rounded-lg border border-gray-3 px-5.5 py-3 text-dark outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-transparent dark:text-white dark:focus:border-transparent'
+				/>
 
 				<InputSelect
 					name='num'
-					label='Number Of Paragraph'
+					label={t("form.paragraph_number.label")}
+					placeholder={t("form.paragraph_number.placeholder")}
 					options={paragraphsCount}
 					value={data?.num}
 					onChange={handleChange}
@@ -76,7 +78,8 @@ export default function InputCard({ data, handleChange, handleSubmit }: any) {
 
 				<InputSelect
 					name='type'
-					label='Select Your Type'
+					label={t("form.type.label")}
+					placeholder={t("form.type.placeholder")}
 					options={contentTypes}
 					value={data?.type}
 					onChange={handleChange}
@@ -101,7 +104,7 @@ export default function InputCard({ data, handleChange, handleSubmit }: any) {
 							/>
 						</svg>
 					</span>
-					Generate
+					{t("form.submit")}
 				</FormButton>
 			</form>
 		</Card>

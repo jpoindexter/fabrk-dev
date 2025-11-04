@@ -1,9 +1,9 @@
 import algoliasearch from "algoliasearch";
 import { load } from "cheerio";
 
-const appID = process.env.NEXT_PUBLIC_ALGOLIA_PROJECT_ID ?? "";
-const apiKEY = process.env.NEXT_PUBLIC_ALGOLIA_API_KEY ?? "";
-const INDEX = process.env.NEXT_PUBLIC_ALGOLIA_INDEX ?? "";
+const appID = process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID ?? "";
+const apiKEY = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY ?? "";
+const INDEX = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME ?? "";
 
 export const structuredAlgoliaHtmlData = async ({
 	pageUrl = "",

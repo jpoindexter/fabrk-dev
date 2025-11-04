@@ -2,7 +2,7 @@ import React from "react";
 
 export type DataStats = {
 	id: number;
-	content: string;
+	titleKey: string;
 	value: string;
 	percents: string;
 	isIncrease: boolean;
@@ -13,6 +13,7 @@ export type DataStats = {
 export type OverviewData = {
 	id: number;
 	title: string;
+	titleKey: string;
 	value: string;
 	percents: string;
 	isIncrease: boolean;
@@ -21,7 +22,7 @@ export type OverviewData = {
 export const dataStats: DataStats[] = [
 	{
 		id: 1,
-		content: "Total Visitors",
+		titleKey: "total_visitors",
 		value: "3.456K",
 		isIncrease: true,
 		percents: "0.43%",
@@ -49,7 +50,7 @@ export const dataStats: DataStats[] = [
 	},
 	{
 		id: 2,
-		content: "Total Revenue",
+		titleKey: "total_revenue",
 		value: "$42.2K",
 		isIncrease: true,
 		percents: "4.35%",
@@ -73,7 +74,7 @@ export const dataStats: DataStats[] = [
 	},
 	{
 		id: 3,
-		content: "Free Users",
+		titleKey: "free_users",
 		value: "43543",
 		isIncrease: true,
 		percents: "2.59%",
@@ -113,7 +114,7 @@ export const dataStats: DataStats[] = [
 	},
 	{
 		id: 4,
-		content: "Pro Users",
+		titleKey: "pro_users",
 		value: "5334",
 		isIncrease: false,
 		percents: "0.95%",
@@ -157,6 +158,7 @@ export const overviewData: OverviewData[] = [
 	{
 		id: 1,
 		title: "Monthly Recurring Revenue",
+		titleKey: "monthly_recurring_revenue",
 		value: "$9.1",
 		percents: "(+4%)",
 		isIncrease: true,
@@ -164,6 +166,7 @@ export const overviewData: OverviewData[] = [
 	{
 		id: 2,
 		title: "Revenue",
+		titleKey: "revenue",
 		value: "$32.9",
 		percents: "(+4%)",
 		isIncrease: true,
@@ -171,28 +174,32 @@ export const overviewData: OverviewData[] = [
 	{
 		id: 3,
 		title: "Fees",
-		value: "$0.5",
+		titleKey: "fees",
+		value: "$50",
 		percents: "(+4%)",
 		isIncrease: true,
 	},
 	{
 		id: 4,
 		title: "New Customers",
-		value: "231",
+		titleKey: "new_customers",
+		value: "$231",
 		percents: "(+4%)",
 		isIncrease: true,
 	},
 	{
 		id: 5,
 		title: "Churn",
-		value: "7.4%",
+		titleKey: "churn",
+		value: "$7.4",
 		percents: "(+4%)",
 		isIncrease: true,
 	},
 	{
 		id: 6,
 		title: "Support Ticket",
-		value: "8.9",
+		titleKey: "support_ticket",
+		value: "$8.9",
 		percents: "(-3%)",
 		isIncrease: false,
 	},

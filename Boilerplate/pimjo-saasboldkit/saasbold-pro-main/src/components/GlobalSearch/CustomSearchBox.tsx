@@ -1,20 +1,41 @@
-import { connectSearchBox } from "react-instantsearch-dom";
+"use client";
 
-function CustomSearchBox({ refine }: any) {
+import { useTranslations } from "next-intl";
+import { useRef } from "react";
+import { useSearchBox } from "react-instantsearch";
+
+export default function CustomSearchBox() {
+	const t = useTranslations("global_search");
+	const { refine } = useSearchBox();
+	const inputRef = useRef<HTMLInputElement>(null);
+
 	return (
 		<form
-			action=''
 			role='search'
 			className='sticky top-0 z-[999] border-b border-stroke dark:border-stroke-dark dark:bg-black'
+			onSubmit={(event) => {
+				event.preventDefault();
+				event.stopPropagation();
+
+				if (inputRef.current) {
+					inputRef.current.blur();
+				}
+			}}
 		>
 			<div className='relative'>
 				<input
-					id='algolia_search'
+					ref={inputRef}
+					autoComplete='off'
+					autoCorrect='off'
+					autoCapitalize='off'
+					spellCheck={false}
 					type='search'
 					onChange={(e) => refine(e.currentTarget.value)}
-					placeholder='Site Search ... (Powered by Algolia)'
+					placeholder={t("placeholder")}
 					className='h-[74px] w-full rounded-lg pl-[60px] pr-5 text-black outline-none dark:bg-black dark:text-gray-5'
+					autoFocus
 				/>
+
 				<span className='text-waterloo absolute left-0 top-0 flex h-[74px] w-[52px] items-center justify-center'>
 					<svg
 						width='20'
@@ -33,5 +54,3 @@ function CustomSearchBox({ refine }: any) {
 		</form>
 	);
 }
-
-export default connectSearchBox(CustomSearchBox);

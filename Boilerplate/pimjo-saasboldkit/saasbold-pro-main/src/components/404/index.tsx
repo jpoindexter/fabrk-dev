@@ -1,8 +1,12 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const NotFound = () => {
+	const t = useTranslations("404_page");
+
 	return (
 		<section className='py-17.5 lg:py-22.5 xl:py-27.5 2xl:py-37.5'>
 			<div className='mx-auto w-full max-w-[575px] px-4 sm:px-8 xl:px-0'>
@@ -44,12 +48,11 @@ const NotFound = () => {
 						</div>
 
 						<h1 className='mb-5 font-satoshi text-heading-4 font-bold -tracking-[1.6px] text-black dark:text-white lg:text-heading-2'>
-							Page not found
+							{t("title")}
 						</h1>
 
 						<p className='mx-auto mb-10 w-full max-w-[355px]'>
-							The page you are looking for doesn’t exist. Here are some helpful
-							links:
+							{t("description")}
 						</p>
 
 						<div className='flex flex-wrap items-center justify-center gap-3'>
@@ -71,14 +74,14 @@ const NotFound = () => {
 										d='M9.27544 4.63472C9.51952 4.8788 9.51952 5.27452 9.27544 5.5186L5.34238 9.45166H17.1668C17.512 9.45166 17.7918 9.73148 17.7918 10.0767C17.7918 10.4218 17.512 10.7017 17.1668 10.7017H5.34238L9.27544 14.6347C9.51952 14.8788 9.51952 15.2745 9.27544 15.5186C9.03136 15.7627 8.63563 15.7627 8.39155 15.5186L3.39155 10.5186C3.14748 10.2745 3.14748 9.8788 3.39155 9.63472L8.39155 4.63472C8.63563 4.39064 9.03136 4.39064 9.27544 4.63472Z'
 									/>
 								</svg>
-								Go back
+								{t("cta.go_back")}
 							</Link>
 
 							<Link
 								href='/'
 								className='inline-flex rounded-full bg-primary px-7 py-3 font-satoshi font-medium text-white hover:bg-primary-dark'
 							>
-								Take me home
+								{t("cta.home")}
 							</Link>
 						</div>
 					</div>

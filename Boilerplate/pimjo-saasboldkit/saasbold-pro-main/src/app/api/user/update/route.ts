@@ -1,42 +1,36 @@
-import { prisma } from "@/libs/prismaDb";
-import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/auth";
+import { prisma } from "@/libs/prismaDb";
+import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { updateUserSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { email, name, image } = body;
+	const res = updateUserSchema.safeParse(body);
+
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
+	}
 
 	const session = await getServerSession(authOptions);
-	const updateData: { [key: string]: any } = {};
-
-	const isDemo = session?.user?.email?.includes("demo-");
 
 	if (!session?.user) {
-		return new NextResponse(JSON.stringify("User not found!"), { status: 400 });
+		return NextResponse.json({ message: "User not found!" }, { status: 404 });
 	}
 
-	if (body === null) {
-		return new NextResponse(JSON.stringify("Missing Fields"), { status: 400 });
-	}
+	const isDemoUser = session?.user?.email?.includes("demo-");
 
-	if (name) {
-		updateData.name = name;
-	}
-
-	if (email) {
-		updateData.email = email.toLowerCase();
-	}
-
-	if (image) {
-		updateData.image = image;
-	}
-
-	if (isDemo) {
-		return new NextResponse(JSON.stringify("Can't update demo user"), {
-			status: 401,
-		});
+	if (isDemoUser) {
+		return NextResponse.json(
+			{ message: "Can't update demo user" },
+			{
+				status: 401,
+			}
+		);
 	}
 
 	try {
@@ -44,25 +38,22 @@ export async function POST(request: Request) {
 			where: {
 				email: session?.user?.email as string,
 			},
-			data: {
-				...updateData,
-			},
+			data: { ...res.data },
 		});
 
 		revalidatePath("/user");
 
 		return NextResponse.json(
 			{
-				email: user.email,
-				name: user.name,
-				image: user.image,
+				message: "User Updated Successfully!",
+				data: {
+					email: user.email,
+					name: user.name,
+					image: user.image,
+				},
 			},
 			{ status: 200 }
 		);
-
-		// return new NextResponse(JSON.stringify("User Updated Successfully!"), {
-		// 	status: 200,
-		// });
 	} catch (error) {
 		return new NextResponse("Something went wrong", { status: 500 });
 	}

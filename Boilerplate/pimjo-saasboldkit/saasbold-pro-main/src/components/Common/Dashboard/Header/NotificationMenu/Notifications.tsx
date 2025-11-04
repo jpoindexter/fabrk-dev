@@ -1,10 +1,14 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import Notification from "./NotificationItem";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-export default function Notifications({ role }: { role: string }) {
+import { useEffect, useRef, useState } from "react";
+import Notification from "./NotificationItem";
+
+export default function Notifications({ role }: { role?: string }) {
 	const [showNotification, setShowNotification] = useState(false);
 	const [showDot, setShowDot] = useState(true);
+
+	const t = useTranslations("header.notification_menu");
 
 	const handleShowNotification = () => {
 		setShowNotification(!showNotification);
@@ -13,6 +17,7 @@ export default function Notifications({ role }: { role: string }) {
 
 	// ===== click outside of modal =====
 	const divRef = useRef<HTMLDivElement | null>(null);
+
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			const handleClickOutside = (event: MouseEvent) => {
@@ -28,10 +33,6 @@ export default function Notifications({ role }: { role: string }) {
 		}
 	});
 
-	const count = [1, 2, 3];
-	const link =
-		role === "admin" ? "/admin/notifications" : "/user/notifications";
-
 	return (
 		<div className='relative' ref={divRef}>
 			<button
@@ -40,9 +41,8 @@ export default function Notifications({ role }: { role: string }) {
 				className='relative hidden aspect-square w-12 cursor-pointer items-center justify-center rounded-full border border-stroke bg-gray-2 text-dark hover:bg-gray-3 dark:border-stroke-dark dark:bg-gray-dark dark:text-white xsm:flex'
 			>
 				<span
-					className={`absolute right-[13px] top-3 aspect-square w-2.5 rounded-full border-2 border-gray-2  bg-red-light dark:border-stroke-dark ${
-						!showDot ? "hidden" : ""
-					}`}
+					className='absolute right-[13px] top-3 aspect-square w-2.5 rounded-full border-2 border-gray-2  bg-red-light dark:border-stroke-dark'
+					hidden={!showDot}
 				></span>
 				<svg
 					width='20'
@@ -62,27 +62,27 @@ export default function Notifications({ role }: { role: string }) {
 			</button>
 
 			<div
-				className={`${
-					showNotification ? "block" : "hidden"
-				} absolute left-0 right-0 top-12 z-99999 mx-auto w-[250px] rounded-md bg-white px-4 shadow-md dark:bg-gray-dark dark:shadow-[0px_1px_4px_1px_rgba(255,200,255,0.08)] md:left-auto md:top-17.5 md:w-[400px]`}
+				className='absolute left-0 right-0 top-12 z-99999 mx-auto w-[250px] rounded-md bg-white px-4 shadow-md dark:bg-gray-dark dark:shadow-[0px_1px_4px_1px_rgba(255,200,255,0.08)] md:left-auto md:top-17.5 md:w-[400px]'
+				hidden={!showNotification}
 			>
-				<div className='mb-4'>
-					<h3 className='text-md border-b border-stroke p-4 text-dark dark:border-stroke-dark dark:text-white'>
-						Notifications
-					</h3>
-				</div>
+				<h3 className='text-md mb-4 border-b border-stroke p-4 text-dark dark:border-stroke-dark dark:text-white'>
+					{t("title")}
+				</h3>
 
-				{count.map((notification) => (
-					<Notification key={notification} link={link} />
+				{Array.from({ length: 3 }).map((_, i) => (
+					<Notification
+						key={i}
+						link={`/${role?.toLowerCase()}/notifications`}
+					/>
 				))}
 
 				<div className='mt-5 flex w-full border-t border-stroke py-4 text-center dark:border-stroke-dark'>
 					<Link
-						href={link}
+						href={`/${role?.toLowerCase()}/notifications`}
 						onClick={() => setShowNotification(false)}
 						className='text-md w-full rounded-md border border-stroke bg-gray py-3  text-dark hover:bg-gray/40 dark:border-stroke-dark dark:bg-slate-700 dark:text-white'
 					>
-						See All Notifications
+						{t("see_all")}
 					</Link>
 				</div>
 			</div>

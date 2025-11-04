@@ -1,12 +1,22 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
+import { paddleChangePlanSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { subscriptionId, priceId } = body;
+	const res = paddleChangePlanSchema.safeParse(body);
+
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
+	}
+
+	const { subscriptionId, priceId } = res.data;
 
 	try {
-		const subscription = await axios.patch(
+		const { data: response } = await axios.patch(
 			`${process.env.NEXT_PUBLIC_PADDLE_API_URL}/subscriptions/${subscriptionId}`,
 			{
 				proration_billing_mode: "prorated_immediately",
@@ -25,19 +35,21 @@ export async function POST(request: Request) {
 			}
 		);
 
-		const newData = {
-			subscriptionId: subscription.data.data.id,
-			customerId: subscription.data.data.customer_id,
-			priceId: subscription.data.data.items[0].price.id,
-			currentPeriodEnd: new Date(
-				subscription.data.data.current_billing_period.ends_at
-			),
-		};
-
-		// console.log(newData);
-		return new NextResponse(JSON.stringify(newData), { status: 200 });
+		return NextResponse.json(
+			{
+				subscriptionId: response.data.id,
+				customerId: response.data.customer_id,
+				priceId: response.data.items[0].price.id,
+				currentPeriodEnd: new Date(
+					response.data.current_billing_period.ends_at
+				),
+			},
+			{ status: 200 }
+		);
 	} catch (error) {
-		console.error(error);
-		return new NextResponse("Something went wrong", { status: 500 });
+		return NextResponse.json(
+			{ message: "Internal Server Error" },
+			{ status: 500 }
+		);
 	}
 }

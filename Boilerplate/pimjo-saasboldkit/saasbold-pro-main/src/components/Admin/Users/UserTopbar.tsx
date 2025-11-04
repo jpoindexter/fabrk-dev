@@ -1,13 +1,14 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
 import InviteUserModal from "@/components/Common/Modals/InviteUserModal";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const filterData = [
 	{
 		id: 1,
-		title: "all users",
+		titleKey: "all_users",
 		value: "all",
 		icon: (
 			<svg
@@ -34,7 +35,7 @@ const filterData = [
 	},
 	{
 		id: 2,
-		title: "User",
+		titleKey: "user",
 		value: "USER",
 		icon: (
 			<svg
@@ -55,7 +56,7 @@ const filterData = [
 	},
 	{
 		id: 3,
-		title: "Admin",
+		titleKey: "admin",
 		value: "ADMIN",
 		icon: (
 			<svg
@@ -82,6 +83,8 @@ export default function UserTopbar() {
 	const [showInviteUserModal, setShowInviteUserModal] = useState(false);
 	const router = useRouter();
 
+	const t = useTranslations("manage_users_page.top_bar");
+
 	// const handleInvite = () => {};
 
 	return (
@@ -93,8 +96,8 @@ export default function UserTopbar() {
 							key={item?.id}
 							onClick={() => {
 								router.push(
-									`/admin/manage-users?filter=${
-										item?.value !== "all" ? item?.value : undefined
+									`/admin/manage-users${
+										item?.value !== "all" ? `?filter=${item?.value}` : ""
 									}`
 								);
 								setFilterValue(item?.value);
@@ -106,7 +109,7 @@ export default function UserTopbar() {
 							}`}
 						>
 							{item?.icon}
-							{item?.title}
+							{t(item?.titleKey)}
 						</button>
 					))}
 				</div>
@@ -114,30 +117,35 @@ export default function UserTopbar() {
 				<div className='flex flex-wrap items-center gap-3'>
 					<button
 						onClick={() => setShowInviteUserModal(true)}
-						className='flex  h-10 items-center justify-center gap-3 rounded-lg bg-primary p-3 text-white hover:bg-primary-dark'
+						className='flex h-10 items-center justify-center gap-3 rounded-lg bg-primary p-3 text-white hover:bg-primary-dark'
 					>
 						<Image
 							src='/images/icon/plus.svg'
 							alt='plus'
 							width={20}
 							height={20}
-						/>{" "}
-						Add new user
+						/>
+						<span>{t("add_new_user.title")}</span>
 					</button>
 
 					{/* Search bar */}
 					<form
 						onSubmit={(e) => {
 							e.preventDefault();
-							router.push(`/admin/manage-users?search=${search}`);
+
+							if (search) {
+								router.push(`/admin/manage-users?search=${search}`);
+							} else {
+								router.push("/admin/manage-users");
+							}
 						}}
 					>
 						<div className='relative'>
 							<input
 								type='search'
-								placeholder='Search user'
+								placeholder={t("search_user")}
 								className='h-11 w-full rounded-lg border border-stroke bg-gray-1 pl-11 pr-4.5 outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-2 focus:ring-primary/20 dark:border-stroke-dark dark:bg-transparent dark:focus:border-transparent'
-								onChange={(e: any) => setSearch(e.target.value)}
+								onChange={(e) => setSearch(e.target.value)}
 							/>
 
 							<span className='absolute left-4.5 top-1/2 -translate-y-1/2 text-dark dark:text-white'>
@@ -168,16 +176,10 @@ export default function UserTopbar() {
 				</div>
 			</div>
 
-			{showInviteUserModal && (
-				<InviteUserModal
-					setShowModal={setShowInviteUserModal}
-					showModal={showInviteUserModal}
-					text={"Add User"}
-					loading={false}
-				/>
-			)}
+			<InviteUserModal
+				setIsOpen={setShowInviteUserModal}
+				isOpen={showInviteUserModal}
+			/>
 		</>
 	);
 }
-
-// showModal, setShowModal, text, loading

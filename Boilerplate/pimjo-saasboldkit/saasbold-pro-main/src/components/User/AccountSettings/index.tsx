@@ -1,12 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import DeleteModal from "@/components/Common/Modals/DeleteModal";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import DeleteAccount from "./DeleteAccount";
 import EditProfile from "./EditProfile";
 import PasswordChange from "./PasswordChange";
-import DeleteAccount from "./DeleteAccount";
-import axios from "axios";
-import toast from "react-hot-toast";
-import { useSession } from "next-auth/react";
-import DeleteModal from "@/components/Common/Modals/DeleteModal";
 
 const AccountSettings = () => {
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -34,6 +35,8 @@ const AccountSettings = () => {
 		setShowDeleteModal(false);
 	};
 
+	const t = useTranslations("common");
+
 	return (
 		<>
 			<div className='flex flex-col gap-y-10 lg:gap-x-10  xl:flex-row'>
@@ -43,7 +46,7 @@ const AccountSettings = () => {
 				<DeleteModal
 					showDeleteModal={showDeleteModal}
 					setShowDeleteModal={setShowDeleteModal}
-					deleteText='Delete Account'
+					deleteText={t("delete_account")}
 					handleDelete={handleDelete}
 					loading={loading}
 				/>

@@ -1,6 +1,11 @@
+"use client";
+
 import Card from "@/components/Common/Dashboard/Card";
+import { useTranslations } from "next-intl";
 
 export default function UserEmptyState() {
+	const t = useTranslations("manage_users_page.no_users");
+
 	return (
 		<div>
 			<Card>
@@ -202,10 +207,11 @@ export default function UserEmptyState() {
 						</svg>
 					</div>
 					<h2 className='mb-3.5 font-satoshi text-heading-5 font-bold tracking-[-.5px] text-dark dark:text-white'>
-						You don’t have any registered user yet!
+						{t("title")}
 					</h2>
+
 					<p className='text-sm tracking-[-.14px] text-body dark:text-gray-5'>
-						If any one register to your site then you can see them in here
+						{t("subtitle")}
 					</p>
 				</div>
 			</Card>

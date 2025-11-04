@@ -1,69 +1,55 @@
 "use client";
+import { deleteUser, updateUser } from "@/actions/user";
 import DeleteModal from "@/components/Common/Modals/DeleteModal";
+import { signIn, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import { deleteUser, updateUser } from "@/actions/user";
-import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
-
-const arrowIcon = (
-	<svg
-		width='20'
-		height='20'
-		viewBox='0 0 16 16'
-		fill='none'
-		xmlns='http://www.w3.org/2000/svg'
-	>
-		<path
-			fillRule='evenodd'
-			clipRule='evenodd'
-			d='M2.95339 5.67461C3.1331 5.46495 3.44875 5.44067 3.65841 5.62038L7.99968 9.34147L12.341 5.62038C12.5506 5.44067 12.8663 5.46495 13.046 5.67461C13.2257 5.88428 13.2014 6.19993 12.9917 6.37964L8.32508 10.3796C8.13783 10.5401 7.86153 10.5401 7.67429 10.3796L3.00762 6.37964C2.79796 6.19993 2.77368 5.88428 2.95339 5.67461Z'
-			fill='white'
-		/>
-	</svg>
-);
+import { ChangeRole } from "./change-role";
 
 export default function UserAction({ user }: any) {
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [role, setRole] = useState(user.role);
-	const [loading, setLodading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
-	const roles = ["ADMIN", "USER"];
+
+	const t = useTranslations("manage_users_page");
 
 	const { data: session } = useSession();
 
 	const handleDelete = async () => {
-		setLodading(true);
+		setIsLoading(true);
 		try {
 			await deleteUser(user);
 			toast.success("User deleted successfully!");
 			router.refresh();
-			setLodading(false);
+			setIsLoading(false);
 		} catch (error: any) {
 			toast.error(error.message);
 			setShowDeleteModal(false);
 		}
 	};
 
-	const handleUpdate = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-		setRole(e.target.value);
-		const role = e.target.value;
+	const handleUpdate = async (newRole: string) => {
+		if (newRole === role) return;
+
+		setRole(newRole);
 
 		try {
 			await updateUser({
 				email: user?.email,
-				role,
+				role: newRole,
 			});
 
 			toast.success("User Role updated successfully!");
 			router.refresh();
-		} catch (error: any) {
-			toast.error(error.message);
+		} catch (error) {
+			toast.error("Something went wrong! Please try again later.");
 		}
 	};
 
-	const hangleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		signIn("impersonate", {
@@ -85,29 +71,18 @@ export default function UserAction({ user }: any) {
 		<>
 			<div className='mt-2 flex flex-wrap items-center gap-3.5 lsm:ml-auto lsm:justify-end sm:mt-0'>
 				<button
-					onClick={hangleLogin}
+					onClick={handleLogin}
 					className='flex h-10 items-center justify-center rounded-lg bg-primary p-3 text-white hover:bg-primary-dark'
 				>
-					Log In
+					{t("log_in")}
 				</button>
 
-				<div className='relative'>
-					<select
-						onChange={handleUpdate}
-						value={role}
-						className=' h-10 cursor-pointer appearance-none rounded-lg bg-dark px-3 pr-8 text-center text-white'
-					>
-						{roles.map((role, index) => (
-							<option key={index} value={role} className='cursor-pointer'>
-								{role.charAt(0).toUpperCase() + role.slice(1).toLowerCase()}
-							</option>
-						))}
-					</select>
+				<ChangeRole
+					currentRole={role}
+					roles={["USER", "ADMIN"]}
+					onChange={handleUpdate}
+				/>
 
-					<span className='absolute right-2 top-1/2 z-10 -translate-y-1/2'>
-						{arrowIcon}
-					</span>
-				</div>
 				<button
 					onClick={() => setShowDeleteModal(true)}
 					className='flex h-10 w-10 items-center justify-center rounded-lg bg-red-light-5 text-red duration-300 hover:bg-red hover:text-white dark:bg-red/10 dark:hover:bg-red'
@@ -146,7 +121,7 @@ export default function UserAction({ user }: any) {
 				setShowDeleteModal={setShowDeleteModal}
 				deleteText='Remove User'
 				handleDelete={handleDelete}
-				loading={loading}
+				loading={isLoading}
 			/>
 		</>
 	);

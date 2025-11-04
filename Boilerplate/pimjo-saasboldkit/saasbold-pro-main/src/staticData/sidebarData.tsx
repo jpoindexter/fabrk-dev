@@ -1,9 +1,7 @@
-import { Sidebar } from "@/types/sidebar";
-
-export const userSidebarData: Sidebar[] = [
+export const sidebarData = [
 	{
 		id: 1,
-		title: "Account Settings",
+		titleKey: "account_settings",
 		path: "/user",
 		icon: (
 			<svg
@@ -30,7 +28,7 @@ export const userSidebarData: Sidebar[] = [
 	},
 	{
 		id: 11,
-		title: "Billing",
+		titleKey: "billing",
 		path: "/user/billing",
 		icon: (
 			<svg
@@ -51,7 +49,7 @@ export const userSidebarData: Sidebar[] = [
 	},
 	{
 		id: 2,
-		title: "Invoice",
+		titleKey: "invoice",
 		path: "/user/invoice",
 		icon: (
 			<svg
@@ -72,7 +70,7 @@ export const userSidebarData: Sidebar[] = [
 	},
 	{
 		id: 3,
-		title: "API",
+		titleKey: "api",
 		path: "/user/api",
 		icon: (
 			<svg
@@ -93,10 +91,11 @@ export const userSidebarData: Sidebar[] = [
 	},
 ];
 
-export const userMenuData: Sidebar[] = [
+export const userMenuData = [
 	{
 		id: 1,
 		title: "Account Settings",
+		titleKey: "account_settings",
 		path: "/user",
 		icon: (
 			<svg
@@ -123,10 +122,11 @@ export const userMenuData: Sidebar[] = [
 	},
 ];
 
-export const adminMenuData: Sidebar[] = [
+export const adminMenuData = [
 	{
 		id: 1,
 		title: "Account Settings",
+		titleKey: "account_settings",
 		path: "/admin/account-settings",
 		icon: (
 			<svg
@@ -154,6 +154,7 @@ export const adminMenuData: Sidebar[] = [
 	{
 		id: 2,
 		title: "Dashboard",
+		titleKey: "dashboard",
 		path: "/admin",
 		icon: (
 			<svg
@@ -192,10 +193,10 @@ export const adminMenuData: Sidebar[] = [
 	},
 ];
 
-export const adminSidebarData: Sidebar[] = [
+export const adminSidebarData = [
 	{
 		id: 1,
-		title: "Dashboard",
+		titleKey: "dashboard",
 		path: "/admin",
 		icon: (
 			<svg
@@ -234,7 +235,7 @@ export const adminSidebarData: Sidebar[] = [
 	},
 	{
 		id: 2,
-		title: "Users",
+		titleKey: "users",
 		path: "/admin/manage-users",
 		icon: (
 			<svg
@@ -269,7 +270,7 @@ export const adminSidebarData: Sidebar[] = [
 	},
 	{
 		id: 3,
-		title: "AI Integration",
+		titleKey: "ai_integration",
 		path: "/admin/ai-integration",
 		icon: (
 			<svg
@@ -290,7 +291,7 @@ export const adminSidebarData: Sidebar[] = [
 	},
 	{
 		id: 5,
-		title: "API",
+		titleKey: "api",
 		path: "/admin/api",
 		icon: (
 			<svg
@@ -311,7 +312,7 @@ export const adminSidebarData: Sidebar[] = [
 	},
 	{
 		id: 4,
-		title: "Send Notification",
+		titleKey: "send_notification",
 		path: "/admin/send-notification",
 		comingSoon: true,
 		icon: (
@@ -333,7 +334,7 @@ export const adminSidebarData: Sidebar[] = [
 	},
 	{
 		id: 6,
-		title: "Send Newsletter",
+		titleKey: "send_newsletter",
 		path: "/admin/send-newsletter",
 		comingSoon: true,
 		icon: (
@@ -355,10 +356,10 @@ export const adminSidebarData: Sidebar[] = [
 	},
 ];
 
-export const adminSidebarOtherData: Sidebar[] = [
+export const adminSidebarOtherData = [
 	{
 		id: 1,
-		title: "Account Settings",
+		titleKey: "account_settings",
 		path: "/admin/account-settings",
 		icon: (
 			<svg

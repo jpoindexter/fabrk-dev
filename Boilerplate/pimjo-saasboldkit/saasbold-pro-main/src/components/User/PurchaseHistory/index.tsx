@@ -1,19 +1,22 @@
-import React from "react";
+"use client";
+
+import { isAuthorized } from "@/libs/isAuthorized";
+import { getPricingData } from "@/pricing/pricingData";
 import PurchaseEmptyState from "./PurchaseEmptyState";
 import PurchaseTable from "./PurchaseTable";
-import { isAuthorized } from "@/libs/isAuthorized";
-import { pricingData } from "@/pricing/pricingData";
 
-const PurchaseHistory = async () => {
-	const user = await isAuthorized();
+type PropsType = {
+	user: Awaited<ReturnType<typeof isAuthorized>>;
+};
+
+export default function PurchaseHistory({ user }: PropsType) {
+	const pricingData = getPricingData();
+
 	const purchasedPlan = pricingData.find(
 		(plan) => plan.priceId === user?.priceId
 	);
 
 	if (!user) return null;
-
-	// const billingDate: any =
-	// 	user.currentPeriodEnd && new Date(user.currentPeriodEnd);
 
 	const isSubscribed =
 		user.priceId &&
@@ -27,9 +30,5 @@ const PurchaseHistory = async () => {
 		nickname: purchasedPlan?.nickname,
 	};
 
-	return (
-		<>{isSubscribed ? <PurchaseTable data={data} /> : <PurchaseEmptyState />}</>
-	);
+	return isSubscribed ? <PurchaseTable data={data} /> : <PurchaseEmptyState />;
 };
-
-export default PurchaseHistory;

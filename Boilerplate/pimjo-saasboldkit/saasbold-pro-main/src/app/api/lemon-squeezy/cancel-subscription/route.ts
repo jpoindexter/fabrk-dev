@@ -1,21 +1,24 @@
+import { lemonSqueezyCancelSubscriptionSchema } from "./schema";
 // https://api.lemonsqueezy.com/v1/subscriptions/{subscription_id}
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 async function POST(req: NextRequest) {
 	const body = await req.json();
-	const { subscriptionId } = body;
+	const res = lemonSqueezyCancelSubscriptionSchema.safeParse(body);
 
-	if (!subscriptionId) {
+	if (!res.success) {
 		return NextResponse.json(
-			{ error: "Subscription ID is required" },
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
 			{ status: 400 }
 		);
 	}
 
+	const { subscriptionId } = res.data;
+
 	try {
-		const res = await axios.delete(
+		const { data } = await axios.delete(
 			`https://api.lemonsqueezy.com/v1/subscriptions/${subscriptionId}`,
 			{
 				headers: {
@@ -25,16 +28,20 @@ async function POST(req: NextRequest) {
 			}
 		);
 
-		const data = (await res).data;
-
 		return NextResponse.json(
 			{ message: "Subscription canceled successfully", data },
 			{ status: 200 }
 		);
-	} catch (error: any) {
-		// console.log(error.response.data.error.detail);
+	} catch (error) {
+		if (error instanceof AxiosError) {
+			return NextResponse.json(
+				{ error: error.response?.data.error.detail },
+				{ status: error.response?.status }
+			);
+		}
+
 		return NextResponse.json(
-			{ error: error.response.data.error.detail },
+			{ message: "Internal Server Error" },
 			{ status: 500 }
 		);
 	}

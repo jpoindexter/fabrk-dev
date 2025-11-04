@@ -1,13 +1,14 @@
 "use client";
+import { getSignedURL } from "@/actions/upload";
 import Card from "@/components/Common/Dashboard/Card";
 import FormButton from "@/components/Common/Dashboard/FormButton";
 import InputGroup from "@/components/Common/Dashboard/InputGroup";
+import Loader from "@/components/Common/Loader";
+import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { getSignedURL } from "@/actions/upload";
-import Loader from "@/components/Common/Loader";
 
 export default function EditProfile() {
 	const { data: session, update } = useSession();
@@ -19,6 +20,8 @@ export default function EditProfile() {
 	const [file, setFile] = useState<File>();
 	const [loading, setLoading] = useState(false);
 	const isDemo = session?.user?.email?.includes("demo-");
+
+	const t = useTranslations("account_settings_page.edit_profile");
 
 	const handleChange = (e: any) => {
 		if (e.target.name === "profilePhoto") {
@@ -162,7 +165,7 @@ export default function EditProfile() {
 		<div className='w-full max-w-[525px]'>
 			<Card>
 				<h3 className='mb-9 font-satoshi text-custom-2xl font-bold tracking-[-.5px] text-dark dark:text-white'>
-					Edit Profile
+					{t("title")}
 				</h3>
 
 				<div>
@@ -228,26 +231,29 @@ export default function EditProfile() {
 
 						{!file && (
 							<p>
-								Recommended size: 300px X 300px <br /> Supported format: jpg,
-								jpeg, png <br /> Max size: 2mb
+								{t("form.upload_image.recommend")}
+								<br />
+								{t("form.upload_image.support")}
+								<br />
+								{t("form.upload_image.max_size")}
 							</p>
 						)}
 					</div>
 
 					<form onSubmit={handleSubmit} className='space-y-5.5'>
 						<InputGroup
-							label='Your Name'
 							name='name'
-							placeholder='Enter Your Name'
+							label={t("form.name.label")}
+							placeholder={t("form.name.placeholder")}
 							value={data.name}
 							type='text'
 							handleChange={handleChange}
 						/>
 
 						<InputGroup
-							label='Email Address'
 							name='email'
-							placeholder='Enter Your Email Address'
+							label={t("form.email.label")}
+							placeholder={t("form.email.placeholder")}
 							value={data.email}
 							type='email'
 							handleChange={handleChange}
@@ -256,10 +262,10 @@ export default function EditProfile() {
 						<FormButton>
 							{loading ? (
 								<>
-									Saving <Loader style='border-white' />
+									{t("form.submit:loading")} <Loader style='border-white' />
 								</>
 							) : (
-								"Save Changes"
+								t("form.submit")
 							)}
 						</FormButton>
 					</form>

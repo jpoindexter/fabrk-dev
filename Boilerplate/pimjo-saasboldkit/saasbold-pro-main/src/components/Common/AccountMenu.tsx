@@ -1,7 +1,10 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
+import { adminMenuData, userMenuData } from "@/staticData/sidebarData";
 import { signOut } from "next-auth/react";
-import { userMenuData, adminMenuData } from "@/staticData/sidebarData";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const AccountMenu = ({ user }: any) => {
@@ -14,30 +17,33 @@ const AccountMenu = ({ user }: any) => {
 			: `${process.env.NEXT_PUBLIC_IMAGE_URL}/${user.image}`
 		: "/images/dashboard/profile-avatar.png";
 
+	const t = useTranslations("header.account_menu");
+
 	return (
 		<>
-			<div className='mb-2 flex items-center border-b border-stroke px-6 pb-3.5 dark:border-stroke-dark'>
-				<div className='mr-3'>
-					<img
-						src={profilePic}
-						alt={user?.name || "profile"}
-						className='h-[48px] w-[48px] overflow-hidden rounded-full'
-					/>
-				</div>
+			<div className='mb-2 flex items-center gap-x-3 border-b border-stroke px-6 pb-3.5 dark:border-stroke-dark'>
+				<img
+					src={profilePic}
+					alt={user?.name || "profile"}
+					className='size-[48px] shrink-0 overflow-hidden rounded-full object-cover'
+				/>
+
 				<div>
 					<p className='font-satoshi text-base font-medium text-dark dark:text-white'>
 						{user?.name}
 					</p>
-					<p className='text-sm text-body dark:text-gray-5'>{user?.email}</p>
+					<p className='line-clamp-1 break-all text-sm text-body dark:text-gray-5'>
+						{user?.email}
+					</p>
 				</div>
 			</div>
 			{/* px-2.5 */}
 			<div>
-				<ul className=''>
-					{sidebarData?.map((item: any) => (
+				<ul>
+					{sidebarData?.map((item) => (
 						<li key={item?.id} className='mx-2.5 mb-1'>
 							<Link
-								href={`${item?.path}`}
+								href={item.path}
 								className={`flex w-full items-center gap-2 rounded-lg px-3.5 py-2.5 font-satoshi font-medium text-body hover:bg-gray-2 hover:text-dark dark:hover:bg-primary dark:hover:text-white ${
 									pathname === item?.path
 										? "bg-gray-2 text-dark dark:bg-primary dark:text-white"
@@ -45,7 +51,7 @@ const AccountMenu = ({ user }: any) => {
 								}`}
 							>
 								<span>{item?.icon}</span>
-								{item?.title}
+								{t(item.titleKey)}
 							</Link>
 						</li>
 					))}

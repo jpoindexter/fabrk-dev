@@ -1,10 +1,16 @@
-import type { NextApiResponse } from "next";
+import axios, { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
+import { newsletterPayloadSchema } from "./schema";
 
 export async function POST(req: NextRequest) {
-	const { email } = await req.json();
-	if (!email) {
-		return NextResponse.json({ error: "Email is required" }, { status: 400 });
+	const payload = await req.json();
+	const res = newsletterPayloadSchema.safeParse(payload);
+
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
 
 	const MailchimpKey = process.env.MAILCHIMP_API_KEY;
@@ -14,22 +20,34 @@ export async function POST(req: NextRequest) {
 	const customUrl = `https://${MailchimpServer}.api.mailchimp.com/3.0/lists/${MailchimpAudience}/members`;
 
 	try {
-		const response = await fetch(customUrl, {
-			method: "POST",
-			headers: {
-				Authorization: `apikey ${MailchimpKey}`,
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email_address: email.toLowerCase(),
+		const { data } = await axios.post(
+			customUrl,
+			{
+				email_address: res.data.email,
 				status: "subscribed",
-			}),
-		});
-		const received = await response.json();
-		return NextResponse.json(received);
+			},
+			{
+				headers: {
+					Authorization: `apikey ${MailchimpKey}`,
+					"Content-Type": "application/json",
+				},
+			}
+		);
+
+		return NextResponse.json(data, { status: 200 });
 	} catch (error) {
+		if (error instanceof AxiosError) {
+			return NextResponse.json(
+				{
+					message: "An error occurred",
+					error: error.response?.data.error.detail,
+				},
+				{ status: error.response?.status }
+			);
+		}
+
 		return NextResponse.json(
-			{ error: "Something went wrong" },
+			{ error: "Internal Server Error" },
 			{ status: 500 }
 		);
 	}

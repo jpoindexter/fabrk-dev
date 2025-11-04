@@ -12,13 +12,18 @@
 	body {
 		@apply relative z-1 font-inter text-base font-normal -tracking-[0.16px] text-body;
 	}
+
+	body[data-scroll-locked] {
+		overflow: hidden !important;
+		overscroll-behavior: contain;
+		position: relative !important;
+		margin-right: var(--scroll-bar-width) !important;
+	}
 }
 
 @layer components {
 	.dropdown {
-		@apply left-0 hidden min-w-max flex-col gap-0 rounded-lg bg-white p-2.5 shadow-dropdown duration-200 ease-in dark:bg-gray-dark xl:invisible
-    xl:absolute xl:flex xl:w-[220px] xl:translate-y-10 xl:opacity-0
-    xl:group-hover:visible xl:group-hover:translate-y-7 xl:group-hover:opacity-100;
+		@apply left-0 hidden min-w-max flex-col gap-0 rounded-lg bg-white p-2.5 shadow-dropdown duration-200 ease-in dark:bg-gray-dark xl:invisible xl:absolute xl:flex xl:w-[220px] xl:translate-y-10 xl:opacity-0 xl:group-hover:visible xl:group-hover:translate-y-7 xl:group-hover:opacity-100;
 	}
 
 	.account-dropdown {

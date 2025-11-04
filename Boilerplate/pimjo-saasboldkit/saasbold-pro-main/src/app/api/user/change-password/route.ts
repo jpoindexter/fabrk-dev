@@ -1,25 +1,29 @@
-import bcrypt from "bcrypt";
 import { prisma } from "@/libs/prismaDb";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+import { changePasswordSchema } from "./schema";
 
 export async function POST(request: Request) {
 	const body = await request.json();
-	const { email, password, currentPassword } = body;
+	const res = changePasswordSchema.safeParse(body);
 
-	if (!email || !password) {
-		return new NextResponse("Missing Fields", { status: 400 });
+	if (!res.success) {
+		return NextResponse.json(
+			{ message: "Invalid Payload", errors: res.error.flatten().fieldErrors },
+			{ status: 400 }
+		);
 	}
 
-	const formatedEmail = email.toLowerCase();
+	const { email, currentPassword, password } = res.data;
 
 	const user = await prisma.user.findUnique({
 		where: {
-			email: formatedEmail,
+			email,
 		},
 	});
 
 	if (!user) {
-		throw new Error("Email does not exists");
+		return NextResponse.json({ message: "User not found!" }, { status: 404 });
 	}
 
 	// check to see if passwords match
@@ -29,30 +33,32 @@ export async function POST(request: Request) {
 	);
 
 	if (!passwordMatch) {
-		return new NextResponse("Incorrect current password!", { status: 400 });
+		return NextResponse.json(
+			{ message: "Current password is incorrect." },
+			{ status: 400 }
+		);
 	}
 
 	const isDemo = user?.email?.includes("demo-");
 
 	if (isDemo) {
-		return new NextResponse("Can't change password for demo user", {
-			status: 401,
-		});
+		return NextResponse.json(
+			{ message: "Can't change password for demo user" },
+			{ status: 401 }
+		);
 	}
 
 	const hashedPassword = await bcrypt.hash(password, 10);
 
 	try {
 		await prisma.user.update({
-			where: {
-				email: formatedEmail,
-			},
+			where: { email },
 			data: {
 				password: hashedPassword,
 			},
 		});
 
-		return NextResponse.json("Password Updated", { status: 200 });
+		return NextResponse.json({ message: "Password Updated" }, { status: 200 });
 	} catch (error) {
 		return new NextResponse("Something went wrong", { status: 500 });
 	}

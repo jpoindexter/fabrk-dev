@@ -1,12 +1,12 @@
-import "../../styles/satoshi.css";
-import "react-quill/dist/quill.snow.css";
-import "../../styles/globals.css";
-import { Providers } from "./providers";
-import ToastContext from "../context/ToastContext";
-import NextTopLoader from "nextjs-toploader";
 import Loader from "@/components/Common/PreLoader";
 import FooterWrapper from "@/components/Footer/FooterWrapper";
 import { HeaderWrapper } from "@/components/Header/HeaderWrapper";
+import NextTopLoader from "nextjs-toploader";
+import "react-quill-new/dist/quill.snow.css";
+import "../../styles/globals.css";
+import "../../styles/satoshi.css";
+import ToastContext from "../context/ToastContext";
+import { Providers } from "./providers";
 
 export default function RootLayout({
 	children,
@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<>
 			<Loader />
-			<>
+			<div className='isolate'>
 				<ToastContext />
 				<Providers>
 					<NextTopLoader
@@ -26,10 +26,11 @@ export default function RootLayout({
 						shadow='none'
 					/>
 					<HeaderWrapper />
-					{children}
+					<div className='isolate'>{children}</div>
+
 					<FooterWrapper />
 				</Providers>
-			</>
+			</div>
 		</>
 	);
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export default function InputGroup(props: any) {
 	const {
@@ -14,11 +14,12 @@ export default function InputGroup(props: any) {
 		maxlength,
 	} = props;
 	const [inputType, setInputType] = useState(type);
+	const id = useId();
 
 	return (
 		<>
 			<label
-				htmlFor={name}
+				htmlFor={id}
 				className='mb-2.5 block font-satoshi text-base font-medium text-dark dark:text-white'
 			>
 				{label} {required && <span className='text-red-500'>*</span>}
@@ -26,13 +27,14 @@ export default function InputGroup(props: any) {
 
 			<div className='relative'>
 				<input
+					id={id}
 					type={inputType}
 					placeholder={placeholder}
 					value={value}
-					onChange={handleChange ? (e) => handleChange(e) : undefined}
+					onChange={handleChange}
 					name={name}
 					className={`w-full rounded-lg border border-gray-3 px-5.5 py-3 text-dark outline-none ring-offset-1 duration-300 focus:shadow-input focus:ring-primary/20 dark:border-stroke-dark dark:bg-transparent dark:text-white dark:focus:border-transparent`}
-					style={{ height: height }}
+					style={{ height }}
 					required={required}
 					maxLength={maxlength}
 				/>
