@@ -4,7 +4,7 @@
   "private": true,
   "description": "Production-ready Next.js SaaS boilerplate",
   "scripts": {
-    "dev": "next dev",
+    "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
