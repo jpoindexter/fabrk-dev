@@ -77,57 +77,57 @@ export function HeroSection() {
             {/* File Structure */}
             <div className="font-mono text-sm font-bold">
               <div className="mb-2 flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="#FFD700" stroke="#FFD700" strokeWidth="1.5"/>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
                 <span className="text-foreground">app/</span>
               </div>
               <div className="ml-4 space-y-1">
                 <div className="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
-                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
-                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
+                    <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="hsl(var(--border))" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="hsl(var(--border))" strokeWidth="1"/>
                   </svg>
                   <span className="text-foreground">layout.tsx</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
-                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
-                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
+                    <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="hsl(var(--border))" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="hsl(var(--border))" strokeWidth="1"/>
                   </svg>
                   <span className="text-foreground">page.tsx</span>
                 </div>
               </div>
               <div className="mb-2 mt-4 flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="#FFD700" stroke="#FFD700" strokeWidth="1.5"/>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
                 <span className="text-foreground">lib/</span>
               </div>
               <div className="ml-4 space-y-1">
                 <div className="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
-                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
-                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
+                    <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="hsl(var(--border))" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="hsl(var(--border))" strokeWidth="1"/>
                   </svg>
                   <span className="text-foreground">auth.ts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
-                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
-                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
+                    <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="hsl(var(--border))" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="hsl(var(--border))" strokeWidth="1"/>
                   </svg>
                   <span className="text-foreground">stripe.ts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
-                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
-                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
+                    <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="hsl(var(--border))" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="hsl(var(--border))" strokeWidth="1"/>
                   </svg>
                   <span className="text-foreground">prisma.ts</span>
                 </div>
