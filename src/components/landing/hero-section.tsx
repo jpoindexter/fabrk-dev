@@ -19,7 +19,7 @@ export function HeroSection() {
         {/* Hero Content */}
         <div className="mx-auto max-w-4xl text-center">
           {/* Massive Headline */}
-          <h1 className="mb-6 text-5xl font-black leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 text-5xl font-black leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             The Radically Simple{" "}
             <span className="block bg-primary text-primary-foreground px-4 py-2 inline-block -rotate-1 shadow-brutal-lg my-4 border-4 border-black">
               Next.js Boilerplate.
@@ -27,7 +27,7 @@ export function HeroSection() {
           </h1>
 
           {/* Sub-headline */}
-          <p className="mx-auto mb-10 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
+          <p className="mx-auto mb-14 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
             Stop wrestling with complex setups. Fabrk gives you authentication,
             payments, and database integration in a clean,{" "}
             <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1 border-3 border-black shadow-brutal">
