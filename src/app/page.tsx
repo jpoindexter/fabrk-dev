@@ -4,30 +4,24 @@
  * Production-ready ✓
  */
 
-"use client";
-
-import { LpNavbar1 } from "@/components/home/lp-navbar-1";
-import { HeroSection7 } from "@/components/home/hero-section-7";
-import { ComponentShowcase } from "@/components/home/component-showcase";
-import { FeatureSection9 } from "@/components/home/feature-section-9";
-import { FeatureSection3 } from "@/components/home/feature-section-3";
-import { TestimonialsSection5 } from "@/components/home/testimonials-section-5";
-import { PricingSection4 } from "@/components/home/pricing-section-4";
-import { FaqSection1 } from "@/components/home/faq-section-1";
-import { Footer2 } from "@/components/home/footer-2";
+import { HeroSection } from "@/components/home/hero-section";
+import { FeaturesSection } from "@/components/home/features-section";
+import { CoreBenefitsSection } from "@/components/home/core-benefits-section";
+import { TechStackSection } from "@/components/home/tech-stack-section";
+import { PricingSection } from "@/components/home/pricing-section";
+import { CTASection } from "@/components/home/cta-section";
+import { Footer } from "@/components/home/footer";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      <LpNavbar1 />
-      <HeroSection7 />
-      <ComponentShowcase />
-      <FeatureSection9 />
-      <FeatureSection3 />
-      <TestimonialsSection5 />
-      <PricingSection4 />
-      <FaqSection1 />
-      <Footer2 />
+      <HeroSection />
+      <FeaturesSection />
+      <CoreBenefitsSection />
+      <TechStackSection />
+      <PricingSection />
+      <CTASection />
+      <Footer />
     </div>
   );
 }

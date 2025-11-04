@@ -6,7 +6,7 @@
 
 "use client";
 
-import { FabrkLogo } from "@/components/icons/fabrk-logo";
+import { Logo } from "@/components/home/logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -32,8 +32,7 @@ export function Navigation() {
           {/* Logo on left */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
-              <FabrkLogo className="h-7 w-auto text-foreground" />
-              <span className="text-lg font-semibold text-foreground">Fabrk</span>
+              <Logo size={28} />
             </Link>
           </div>
 

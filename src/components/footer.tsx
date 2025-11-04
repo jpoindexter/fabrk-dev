@@ -6,7 +6,7 @@
 
 "use client";
 
-import { FabrkLogo } from "@/components/icons/fabrk-logo";
+import { Logo } from "@/components/home/logo";
 import { Cookie, Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 
@@ -27,8 +27,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
-              <FabrkLogo className="h-7 w-7" />
-              <span className="text-xl font-medium">Fabrk</span>
+              <Logo size={28} />
             </Link>
             <p className="text-sm text-muted-foreground">
               Ship your SaaS 10x faster with AI-optimized architecture and production-ready
