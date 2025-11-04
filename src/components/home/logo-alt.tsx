@@ -1,7 +1,7 @@
 /**
- * ✅ FABRK LOGO COMPONENT - ORIGINAL BRUTALIST DESIGN
- * Single bold badge with stacked text layout
- * Unique design with hard shadows and bold geometry
+ * ✅ FABRK LOGO COMPONENT - ICON + WORDMARK
+ * Custom geometric F icon + FABRK wordmark
+ * Similar to Framer's logo pattern (icon + text)
  */
 
 interface LogoProps {
@@ -11,13 +11,26 @@ interface LogoProps {
 
 export function LogoAlt({ size = 20, className = "" }: LogoProps = {}) {
   return (
-    <div className="inline-flex items-center justify-center rounded-brutal border-4 border-black bg-primary px-4 py-2 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1">
-      <div className="flex flex-col items-center leading-none">
-        <span className="text-2xl font-black uppercase tracking-tighter text-primary-foreground">
-          FABRK
-        </span>
-        <div className="mt-0.5 h-1 w-full bg-black"></div>
+    <div className="inline-flex items-center gap-3">
+      {/* Custom F Icon - Brutalist geometric design */}
+      <div className="relative h-10 w-10 -rotate-6 rounded-brutal border-4 border-black bg-secondary shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 hover:rotate-0">
+        <svg
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-full w-full p-1"
+        >
+          {/* Geometric F made of bold rectangles */}
+          <rect x="6" y="6" width="22" height="6" fill="black" />
+          <rect x="6" y="6" width="6" height="28" fill="black" />
+          <rect x="6" y="17" width="16" height="6" fill="black" />
+        </svg>
       </div>
+
+      {/* Wordmark */}
+      <span className="text-2xl font-black uppercase leading-none tracking-tight text-foreground">
+        FABRK
+      </span>
     </div>
   )
 }

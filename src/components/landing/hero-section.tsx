@@ -64,10 +64,10 @@ export function HeroSection() {
           </p>
         </div>
 
-        {/* Code Snippet Mockup */}
+        {/* File Explorer Mockup */}
         <div className="mx-auto mt-20 max-w-4xl">
-          <div className="relative overflow-hidden rounded-brutal border-4 border-black bg-[#1E1E1E] p-6 shadow-brutal-xl">
-            {/* Editor Header */}
+          <div className="relative overflow-hidden rounded-brutal border-4 border-black bg-muted p-6 shadow-brutal-xl">
+            {/* Window Controls */}
             <div className="mb-4 flex items-center gap-2">
               <div className="h-4 w-4 rounded-none border-2 border-black bg-destructive"></div>
               <div className="h-4 w-4 rounded-none border-2 border-black bg-primary"></div>
@@ -77,40 +77,64 @@ export function HeroSection() {
             {/* File Structure */}
             <div className="font-mono text-sm font-bold">
               <div className="mb-2 flex items-center gap-2">
-                <span className="text-primary">📁</span>
-                <span className="text-white">app/</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="#FFD700" stroke="#FFD700" strokeWidth="1.5"/>
+                </svg>
+                <span className="text-foreground">app/</span>
               </div>
               <div className="ml-4 space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-primary">📄</span>
-                  <span className="text-[#9CDCFE]">layout.tsx</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  </svg>
+                  <span className="text-foreground">layout.tsx</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-primary">📄</span>
-                  <span className="text-[#9CDCFE]">page.tsx</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  </svg>
+                  <span className="text-foreground">page.tsx</span>
                 </div>
               </div>
               <div className="mb-2 mt-4 flex items-center gap-2">
-                <span className="text-primary">📁</span>
-                <span className="text-white">lib/</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="#FFD700" stroke="#FFD700" strokeWidth="1.5"/>
+                </svg>
+                <span className="text-foreground">lib/</span>
               </div>
               <div className="ml-4 space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-primary">📄</span>
-                  <span className="text-[#9CDCFE]">auth.ts</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  </svg>
+                  <span className="text-foreground">auth.ts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-primary">📄</span>
-                  <span className="text-[#9CDCFE]">stripe.ts</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  </svg>
+                  <span className="text-foreground">stripe.ts</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-primary">📄</span>
-                  <span className="text-[#9CDCFE]">prisma.ts</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
+                    <rect x="2" y="2" width="12" height="12" fill="#9CDCFE" stroke="black" strokeWidth="1.5"/>
+                    <line x1="5" y1="6" x2="11" y2="6" stroke="black" strokeWidth="1"/>
+                    <line x1="5" y1="9" x2="11" y2="9" stroke="black" strokeWidth="1"/>
+                  </svg>
+                  <span className="text-foreground">prisma.ts</span>
                 </div>
               </div>
-              <div className="mt-6 border-t-2 border-white/20 pt-4 text-center">
+              <div className="mt-6 border-t-4 border-black pt-4 text-center">
                 <span className="bg-primary text-primary-foreground px-3 py-1 inline-block">40 files</span>
-                <span className="text-white/70"> • Production ready</span>
+                <span className="text-foreground"> • Production ready</span>
               </div>
             </div>
           </div>
