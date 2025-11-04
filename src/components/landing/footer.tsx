@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import { siX, siGithub } from "simple-icons";
-import { Logo } from "@/components/home/logo";
+import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
   return (

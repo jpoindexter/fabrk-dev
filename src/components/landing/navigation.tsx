@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/home/logo";
+import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Navigation() {
   return (
