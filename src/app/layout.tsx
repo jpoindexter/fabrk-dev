@@ -1,4 +1,3 @@
-import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
@@ -128,9 +127,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             {/* Footer with Legal Links */}
             <Footer />
-
-            {/* Cookie Consent Banner */}
-            <CookieConsent />
           </div>
         </Providers>
       </body>
