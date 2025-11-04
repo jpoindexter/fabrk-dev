@@ -1,12 +1,13 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 /**
  * Client-side providers
- * Single dark theme - no theme switching
+ * Theme provider for dark mode support
  */
 
 interface ProvidersProps {
@@ -16,8 +17,15 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <SessionProvider>
-      {children}
-      <Toaster position="top-right" richColors />
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem={false}
+        disableTransitionOnChange
+      >
+        {children}
+        <Toaster position="top-right" richColors />
+      </ThemeProvider>
     </SessionProvider>
   );
 }
