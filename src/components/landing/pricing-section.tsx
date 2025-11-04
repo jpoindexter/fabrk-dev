@@ -49,9 +49,9 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-black text-foreground">$149</span>
+                <span className="text-6xl font-black text-foreground">$99</span>
                 <span className="text-2xl font-bold text-foreground line-through">
-                  $299
+                  $199
                 </span>
               </div>
               <p className="text-lg font-bold text-foreground">
