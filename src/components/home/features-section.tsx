@@ -71,7 +71,7 @@ const featureCard = {
 
 export function FeaturesSection() {
   return (
-    <section className="border-t border-border bg-white py-24 lg:py-32">
+    <section className="border-t border-border bg-background py-24 lg:py-32">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <motion.div
           className="mx-auto max-w-3xl text-center"

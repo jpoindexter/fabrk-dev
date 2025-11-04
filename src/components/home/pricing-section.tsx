@@ -92,7 +92,7 @@ export function PricingSection() {
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
-              className={`relative rounded-lg border bg-white p-8 ${
+              className={`relative rounded-lg border bg-background p-8 ${
                 plan.popular ? "border-foreground shadow-sm" : "border-border"
               }`}
               variants={pricingCard}
@@ -126,7 +126,7 @@ export function PricingSection() {
                 className={`mt-8 w-full rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
                   plan.popular
                     ? "bg-foreground text-white hover:bg-card"
-                    : "border border-border bg-white text-foreground hover:bg-muted"
+                    : "border border-border bg-background text-foreground hover:bg-muted"
                 }`}
               >
                 {plan.price === "$0" ? "Coming Soon" : "Get Started"}

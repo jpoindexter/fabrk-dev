@@ -36,7 +36,7 @@ const staggerContainer = {
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-screen flex-col overflow-hidden bg-white">
+    <section className="relative flex min-h-screen flex-col overflow-hidden bg-background">
       <div className="container relative z-10 mx-auto flex flex-1 flex-col justify-center px-6 py-32 sm:px-8 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-4xl text-center">
           {/* h1 rendered immediately for optimal LCP - no animation */}
@@ -67,7 +67,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="/components"
-              className="inline-flex items-center justify-center rounded-lg border border-border bg-white px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
             >
               Browse Components
             </Link>
