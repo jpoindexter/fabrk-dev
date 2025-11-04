@@ -1,104 +1,205 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base;@tailwind base;
 
-@layer utilities {
-  .contain-layout-style-paint {
-    contain: layout style paint;
-  }
+@tailwind components;@tailwind components;
+
+@tailwind utilities;@tailwind utilities;
+
+
+
+@layer base {@layer utilities {
+
+  :root {  .contain-layout-style-paint {
+
+    --background: 0 0% 100%;    contain: layout style paint;
+
+    --foreground: 222.2 84% 4.9%;  }
+
+    --card: 0 0% 100%;}
+
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;@layer base {
+
+    --popover-foreground: 222.2 84% 4.9%;  /* Force dark mode as default */
+
+    --primary: 349 100% 55.5%;  :root {
+
+    --primary-foreground: 210 40% 98%;    color-scheme: dark;
+
+    --secondary: 210 40% 96.1%;    --font-sans-stack: system-ui, "helvetica", "arial", sans-serif;
+
+    --secondary-foreground: 349 100% 55.5%;    -webkit-font-smoothing: antialiased;
+
+    --muted: 210 40% 96.1%;    -webkit-text-size-adjust: 100%;
+
+    --muted-foreground: 215.4 16.3% 46.9%;    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    --accent: 210 40% 96.1%;    text-size-adjust: none;
+
+    --accent-foreground: 349 100% 55.5%;    tab-size: 4;
+
+    --destructive: 0 84.2% 60.2%;    font-feature-settings: "kern" off;
+
+    --destructive-foreground: 210 40% 98%;    font-variation-settings: normal;
+
+    --border: 214.3 31.8% 91.4%;    font-kerning: none;
+
+    --input: 214.3 31.8% 91.4%;    text-rendering: optimizeSpeed;
+
+    --ring: 222.2 84% 4.9%;    text-wrap: pretty;
+
+    --radius: 0.5rem;    word-break: keep-all;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;    /* Onest Font Family */
+
+    --chart-3: 197 37% 24%;    --font-onest: "Onest", sans-serif;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;    /* Tailwind Neutral Palette - Official Colors */
+
+  }    --neutral-50: #fafafa;
+
+    --neutral-100: #f5f5f5;
+
+  .dark {    --neutral-200: #e5e5e5;
+
+    --background: 240 10% 3.9%;    --neutral-300: #d4d4d4;
+
+    --foreground: 0 0% 98%;    --neutral-400: #a3a3a3;
+
+    --card: 240 10% 3.9%;    --neutral-500: #737373;
+
+    --card-foreground: 0 0% 98%;    --neutral-600: #525252;
+
+    --popover: 240 10% 3.9%;    --neutral-700: #404040;
+
+    --popover-foreground: 0 0% 98%;    --neutral-800: #262626;
+
+    --primary: 349 100% 55.5%;    --neutral-900: #171717;
+
+    --primary-foreground: 240 5.9% 10%;    --neutral-950: #0a0a0a;
+
+    --secondary: 240 3.7% 15.9%;    --neutral-white: #ffffff;
+
+    --secondary-foreground: 349 100% 55.5%;    --neutral-black: #000000;
+
+    --muted: 240 3.7% 15.9%;
+
+    --muted-foreground: 240 5% 64.9%;    /* RGB variants for Tailwind opacity utilities */
+
+    --accent: 240 3.7% 15.9%;    --neutral-50-rgb: 250, 250, 250;
+
+    --accent-foreground: 349 100% 55.5%;    --neutral-100-rgb: 245, 245, 245;
+
+    --destructive: 0 62.8% 30.6%;    --neutral-200-rgb: 229, 229, 229;
+
+    --destructive-foreground: 0 85.7% 97.3%;    --neutral-300-rgb: 212, 212, 212;
+
+    --border: 240 3.7% 15.9%;    --neutral-400-rgb: 163, 163, 163;
+
+    --input: 240 3.7% 15.9%;    --neutral-500-rgb: 115, 115, 115;
+
+    --ring: 240 4.9% 83.9%;    --neutral-600-rgb: 82, 82, 82;
+
+    --chart-1: 220 70% 50%;    --neutral-700-rgb: 64, 64, 64;
+
+    --chart-2: 160 60% 45%;    --neutral-800-rgb: 38, 38, 38;
+
+    --chart-3: 30 80% 55%;    --neutral-900-rgb: 23, 23, 23;
+
+    --chart-4: 280 65% 60%;    --neutral-950-rgb: 10, 10, 10;
+
+    --chart-5: 340 75% 55%;    --neutral-white-rgb: 255, 255, 255;
+
+  }    --neutral-black-rgb: 0, 0, 0;
+
 }
 
-@layer base {
-  /* Force dark mode as default */
-  :root {
-    color-scheme: dark;
-    --font-sans-stack: system-ui, "helvetica", "arial", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    text-size-adjust: none;
-    tab-size: 4;
-    font-feature-settings: "kern" off;
-    font-variation-settings: normal;
-    font-kerning: none;
-    text-rendering: optimizeSpeed;
-    text-wrap: pretty;
-    word-break: keep-all;
-
-    /* Onest Font Family */
-    --font-onest: "Onest", sans-serif;
-
-    /* Tailwind Neutral Palette - Official Colors */
-    --neutral-50: #fafafa;
-    --neutral-100: #f5f5f5;
-    --neutral-200: #e5e5e5;
-    --neutral-300: #d4d4d4;
-    --neutral-400: #a3a3a3;
-    --neutral-500: #737373;
-    --neutral-600: #525252;
-    --neutral-700: #404040;
-    --neutral-800: #262626;
-    --neutral-900: #171717;
-    --neutral-950: #0a0a0a;
-    --neutral-white: #ffffff;
-    --neutral-black: #000000;
-
-    /* RGB variants for Tailwind opacity utilities */
-    --neutral-50-rgb: 250, 250, 250;
-    --neutral-100-rgb: 245, 245, 245;
-    --neutral-200-rgb: 229, 229, 229;
-    --neutral-300-rgb: 212, 212, 212;
-    --neutral-400-rgb: 163, 163, 163;
-    --neutral-500-rgb: 115, 115, 115;
-    --neutral-600-rgb: 82, 82, 82;
-    --neutral-700-rgb: 64, 64, 64;
-    --neutral-800-rgb: 38, 38, 38;
-    --neutral-900-rgb: 23, 23, 23;
-    --neutral-950-rgb: 10, 10, 10;
-    --neutral-white-rgb: 255, 255, 255;
-    --neutral-black-rgb: 0, 0, 0;
-
     /* Surface + content tokens mapped to Tailwind Neutral */
-    --surface-default-rgb: var(--neutral-white-rgb);
-    --surface-raise-rgb: var(--neutral-white-rgb);
-    --surface-secondary-rgb: var(--neutral-50-rgb);
-    --surface-tertiary-rgb: var(--neutral-100-rgb);
 
-    --content-default-rgb: var(--neutral-900-rgb); /* #171717 */
-    --content-secondary-rgb: var(--neutral-600-rgb); /* #525252 */
-    --content-tertiary-rgb: var(--neutral-500-rgb); /* #737373 */
+@layer base {    --surface-default-rgb: var(--neutral-white-rgb);
 
-    --accent-primary-rgb: var(--neutral-900-rgb); /* #171717 */
+  :root {    --surface-raise-rgb: var(--neutral-white-rgb);
+
+    --chart-1: 349 100% 55.5%;    --surface-secondary-rgb: var(--neutral-50-rgb);
+
+    --chart-2: 0 0 90;    --surface-tertiary-rgb: var(--neutral-100-rgb);
+
+    --chart-3: 0 0 83;
+
+    --chart-4: 0 0 64;    --content-default-rgb: var(--neutral-900-rgb); /* #171717 */
+
+    --chart-5: 27 87% 67%;    --content-secondary-rgb: var(--neutral-600-rgb); /* #525252 */
+
+    font-family: Inter, sans-serif;    --content-tertiary-rgb: var(--neutral-500-rgb); /* #737373 */
+
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "salt";
+
+  }    --accent-primary-rgb: var(--neutral-900-rgb); /* #171717 */
+
     --accent-secondary-rgb: var(--neutral-700-rgb); /* #404040 */
 
-    --text-color-rgb: var(--neutral-900-rgb);
-    --text-color: var(--neutral-900);
-    --scroll-text-color: var(--neutral-900);
+  .dark {
 
-    /* Using Tailwind's default shadow scale */
+    --chart-1: 220 70% 50%;    --text-color-rgb: var(--neutral-900-rgb);
+
+    --chart-2: 160 60% 45%;    --text-color: var(--neutral-900);
+
+    --chart-3: 30 80% 55%;    --scroll-text-color: var(--neutral-900);
+
+    --chart-4: 280 65% 60%;
+
+    --chart-5: 340 75% 55%;    /* Using Tailwind's default shadow scale */
+
+  }
 
     /* Overlay Variables - B&W */
-    --overlay-dark: rgba(0, 0, 0, 0.6);
-    --overlay-light: rgba(255, 255, 255, 0.95);
-    --overlay-subtle: rgba(0, 0, 0, 0.02);
+
+  * {    --overlay-dark: rgba(0, 0, 0, 0.6);
+
+    @apply border-border;    --overlay-light: rgba(255, 255, 255, 0.95);
+
+  }    --overlay-subtle: rgba(0, 0, 0, 0.02);
+
     --overlay-light-20: rgba(255, 255, 255, 0.2);
 
-    /* Accent colors mapped to Tailwind Neutral */
-    --primary-10: rgb(23 23 23 / 0.05); /* neutral-900 @ 5% */
-    --primary-50: rgb(23 23 23 / 0.5); /* neutral-900 @ 50% */
+  @supports (font-variation-settings: normal) {
 
-    /* All accent colors use Tailwind neutral shades */
+    :root {    /* Accent colors mapped to Tailwind Neutral */
+
+      font-family: InterVariable, sans-serif;    --primary-10: rgb(23 23 23 / 0.05); /* neutral-900 @ 5% */
+
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11", "salt";    --primary-50: rgb(23 23 23 / 0.5); /* neutral-900 @ 50% */
+
+    }
+
+  }    /* All accent colors use Tailwind neutral shades */
+
     --purple-400: var(--neutral-700); /* #404040 */
-    --purple-500: var(--neutral-900); /* #171717 */
-    --pink-500: var(--neutral-600); /* #525252 */
-    --emerald-500: var(--neutral-800); /* #262626 */
+
+  body {    --purple-500: var(--neutral-900); /* #171717 */
+
+    @apply bg-background text-foreground;    --pink-500: var(--neutral-600); /* #525252 */
+
+  }    --emerald-500: var(--neutral-800); /* #262626 */
+
     --emerald-600: var(--neutral-900); /* #171717 */
-    --indigo-500: var(--neutral-700); /* #404040 */
-    --orange-500: var(--neutral-600); /* #525252 */
-    --amber-500: var(--neutral-500); /* #737373 */
-    --yellow-500: var(--neutral-400); /* #a3a3a3 */
-    --lime-500: var(--neutral-800); /* #262626 */
-    --teal-500: var(--neutral-900); /* #171717 */
+
+  /* Smooth scrolling */    --indigo-500: var(--neutral-700); /* #404040 */
+
+  html,    --orange-500: var(--neutral-600); /* #525252 */
+
+  body {    --amber-500: var(--neutral-500); /* #737373 */
+
+    scroll-behavior: smooth !important;    --yellow-500: var(--neutral-400); /* #a3a3a3 */
+
+  }    --lime-500: var(--neutral-800); /* #262626 */
+
+}    --teal-500: var(--neutral-900); /* #171717 */
+
     --cyan-500: var(--neutral-700); /* #404040 */
     --sky-500: var(--neutral-600); /* #525252 */
     --fuchsia-500: var(--neutral-800); /* #262626 */
