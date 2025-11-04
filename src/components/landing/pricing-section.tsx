@@ -29,7 +29,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 bg-muted px-6 py-24"
+      className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-4 text-center text-4xl font-black text-foreground">
@@ -38,7 +38,7 @@ export function PricingSection() {
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-brutal border-5 border-black bg-background p-10 shadow-brutal-xl">
+          <div className="rounded-brutal border-4 border-black bg-background p-10 shadow-brutal-xl">
             {/* Plan Name */}
             <div className="mb-6 text-center">
               <span className="inline-block rounded-brutal border-3 border-black bg-secondary px-6 py-2 text-sm font-black uppercase text-secondary-foreground shadow-brutal">
@@ -50,7 +50,7 @@ export function PricingSection() {
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-6xl font-black text-foreground">$149</span>
-                <span className="text-2xl font-bold text-muted-foreground line-through">
+                <span className="text-2xl font-bold text-foreground line-through">
                   $299
                 </span>
               </div>
@@ -95,7 +95,7 @@ export function PricingSection() {
             </Button>
 
             {/* Risk Reversal */}
-            <p className="mt-6 text-center text-sm font-bold text-muted-foreground">
+            <p className="mt-6 text-center text-sm font-bold text-foreground">
               30-day money-back guarantee. No questions asked.
             </p>
           </div>

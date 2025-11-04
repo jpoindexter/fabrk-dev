@@ -21,20 +21,20 @@ export function HeroSection() {
           {/* Massive Headline */}
           <h1 className="mb-8 text-5xl font-black leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             The Radically Simple{" "}
-            <span className="block bg-primary text-primary-foreground px-4 py-2 inline-block -rotate-1 shadow-brutal-lg my-4">
+            <span className="block bg-primary text-primary-foreground px-4 py-2 inline-block -rotate-1 shadow-brutal-lg my-4 border-4 border-black">
               Next.js Boilerplate.
             </span>
           </h1>
 
           {/* Sub-headline */}
-          <p className="mx-auto mb-12 max-w-3xl text-lg font-bold leading-relaxed text-muted-foreground sm:text-xl">
+          <p className="mx-auto mb-12 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
             Stop wrestling with complex setups. Fabrk gives you authentication,
             payments, and database integration in a clean,{" "}
-            <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1">
+            <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1 border-3 border-black shadow-brutal">
               40-file Next.js 15 project
             </span>
             . Ship your SaaS in{" "}
-            <span className="bg-secondary text-secondary-foreground px-2 py-1 inline-block -rotate-1">
+            <span className="bg-secondary text-secondary-foreground px-2 py-1 inline-block -rotate-1 border-3 border-black shadow-brutal">
               days, not weeks
             </span>.
           </p>
@@ -59,7 +59,7 @@ export function HeroSection() {
           </div>
 
           {/* Social Proof */}
-          <p className="text-sm font-bold text-muted-foreground">
+          <p className="text-sm font-bold text-foreground">
             Join 100+ developers who ship faster.
           </p>
         </div>
@@ -68,21 +68,21 @@ export function HeroSection() {
         <div className="mx-auto mt-20 max-w-4xl">
           <div className="relative overflow-hidden rounded-brutal border-4 border-black bg-muted p-6 shadow-brutal-xl">
             {/* Window Controls */}
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-6 flex items-center gap-2">
               <div className="h-4 w-4 rounded-none border-2 border-black bg-destructive"></div>
               <div className="h-4 w-4 rounded-none border-2 border-black bg-primary"></div>
               <div className="h-4 w-4 rounded-none border-2 border-black bg-accent"></div>
             </div>
 
             {/* File Structure */}
-            <div className="font-mono text-sm font-bold">
-              <div className="mb-2 flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
-                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5"/>
+            <div className="font-mono text-base font-bold">
+              <div className="mb-3 flex items-center gap-3">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="2"/>
                 </svg>
                 <span className="text-foreground">app/</span>
               </div>
-              <div className="ml-4 space-y-1">
+              <div className="ml-6 space-y-2">
                 <div className="flex items-center gap-2">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
                     <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
@@ -100,13 +100,13 @@ export function HeroSection() {
                   <span className="text-foreground">page.tsx</span>
                 </div>
               </div>
-              <div className="mb-2 mt-4 flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
-                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="currentColor" strokeWidth="1.5"/>
+              <div className="mb-3 mt-6 flex items-center gap-3">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-primary">
+                  <path d="M0 2 L6 2 L8 4 L16 4 L16 14 L0 14 Z" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="2"/>
                 </svg>
                 <span className="text-foreground">lib/</span>
               </div>
-              <div className="ml-4 space-y-1">
+              <div className="ml-6 space-y-2">
                 <div className="flex items-center gap-2">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0 text-accent">
                     <rect x="2" y="2" width="12" height="12" fill="currentColor" stroke="hsl(var(--border))" strokeWidth="1.5"/>
@@ -132,8 +132,8 @@ export function HeroSection() {
                   <span className="text-foreground">prisma.ts</span>
                 </div>
               </div>
-              <div className="mt-6 border-t-4 border-black pt-4 text-center">
-                <span className="bg-primary text-primary-foreground px-3 py-1 inline-block">40 files</span>
+              <div className="mt-6 border-t-4 border-black pt-6 text-center">
+                <span className="bg-primary text-primary-foreground px-3 py-1 inline-block rounded-brutal border-3 border-black shadow-brutal font-bold">40 files</span>
                 <span className="text-foreground"> • Production ready</span>
               </div>
             </div>

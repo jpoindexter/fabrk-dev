@@ -21,7 +21,7 @@ export function TechStack() {
   ];
 
   return (
-    <section className="border-y-4 border-black bg-background px-6 py-16">
+    <section className="bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-3xl font-black text-foreground">
           A Modern Stack You Can Trust.
@@ -36,7 +36,7 @@ export function TechStack() {
               <SimpleIcon
                 path={tech.path}
                 size={40}
-                className="text-foreground transition-all group-hover:text-primary"
+                className="text-foreground"
               />
               <span className="text-sm font-bold text-foreground">
                 {tech.name}

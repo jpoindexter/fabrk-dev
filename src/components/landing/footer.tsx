@@ -5,7 +5,7 @@ import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
   return (
-    <footer className="border-t-4 border-black bg-muted px-6 py-12">
+    <footer className="border-t-4 border-black bg-background px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Logo & Copyright */}
@@ -13,7 +13,7 @@ export function Footer() {
             <Link href="/" className="mb-4 inline-block transition-transform hover:-translate-y-1">
               <Logo size={24} />
             </Link>
-            <p className="text-sm font-bold text-muted-foreground">
+            <p className="text-sm font-bold text-foreground">
               © 2025 Fabrk. All rights reserved.
             </p>
           </div>

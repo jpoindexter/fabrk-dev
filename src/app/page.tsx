@@ -20,7 +20,6 @@ export default function HomePage() {
       <TechStack />
       <FeaturesSection />
       <PricingSection />
-      <div className="border-t-4 border-black"></div>
       <FAQSection />
       <Footer />
     </div>

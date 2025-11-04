@@ -49,24 +49,31 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="scroll-mt-16 bg-muted px-6 py-24">
+    <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-4 text-left text-4xl font-black text-foreground">
           Everything You Need, Nothing You Don't.
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
+            const colors = [
+              { bg: "bg-primary", text: "text-primary-foreground", icon: "text-primary-foreground" },
+              { bg: "bg-secondary", text: "text-secondary-foreground", icon: "text-secondary-foreground" },
+              { bg: "bg-accent", text: "text-accent-foreground", icon: "text-accent-foreground" },
+            ];
+            const color = colors[index % 3];
+
             return (
               <div
                 key={feature.title}
-                className="group rounded-brutal border-4 border-black bg-background p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2"
+                className={`group rounded-brutal border-4 border-black ${color.bg} p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2`}
               >
-                <SimpleIcon path={feature.icon} className="mb-4 h-12 w-12 text-foreground" />
-                <h3 className="mb-3 text-xl font-black text-foreground">
+                <SimpleIcon path={feature.icon} className={`mb-4 h-12 w-12 ${color.icon}`} />
+                <h3 className={`mb-3 text-xl font-black ${color.text}`}>
                   {feature.title}
                 </h3>
-                <p className="font-bold leading-relaxed text-muted-foreground">
+                <p className={`font-bold leading-relaxed ${color.text}`}>
                   {feature.description}
                 </p>
               </div>
