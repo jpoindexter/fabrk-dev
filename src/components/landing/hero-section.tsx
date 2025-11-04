@@ -58,10 +58,32 @@ export function HeroSection() {
             </Button>
           </div>
 
-          {/* Social Proof */}
-          <p className="text-sm font-bold text-foreground">
-            Join 100+ developers who ship faster.
-          </p>
+          {/* Social Proof with Avatars */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            {/* Avatar Stack */}
+            <div className="flex -space-x-3">
+              <div className="h-12 w-12 rounded-full border-4 border-black bg-primary flex items-center justify-center text-primary-foreground font-black text-sm shadow-brutal">
+                JD
+              </div>
+              <div className="h-12 w-12 rounded-full border-4 border-black bg-accent flex items-center justify-center text-accent-foreground font-black text-sm shadow-brutal">
+                SK
+              </div>
+              <div className="h-12 w-12 rounded-full border-4 border-black bg-secondary flex items-center justify-center text-secondary-foreground font-black text-sm shadow-brutal">
+                AM
+              </div>
+              <div className="h-12 w-12 rounded-full border-4 border-black bg-destructive flex items-center justify-center text-destructive-foreground font-black text-sm shadow-brutal">
+                TC
+              </div>
+              <div className="h-12 w-12 rounded-full border-4 border-black bg-muted flex items-center justify-center text-foreground font-black text-sm shadow-brutal">
+                +95
+              </div>
+            </div>
+
+            {/* Text */}
+            <p className="text-sm font-bold text-foreground">
+              Join 100+ developers who ship faster.
+            </p>
+          </div>
         </div>
 
         {/* File Explorer Mockup */}
