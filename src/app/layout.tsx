@@ -1,21 +1,9 @@
 import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
-import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fabrk.dev"),
@@ -93,7 +81,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`dark ${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className="dark">
       <head>
         <meta name="theme-color" content="#000000" />
       </head>
