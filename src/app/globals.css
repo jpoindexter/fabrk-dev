@@ -136,10 +136,20 @@
   --spacing-reverseBoxShadowY: var(--reverse-box-shadow-y);
 
   --radius-base: var(--border-radius);
+  --radius-brutal: var(--border-radius);
 
   --shadow-shadow: var(--shadow);
   --shadow-nav: 4px 4px 0px 0px var(--border);
   --shadow-darkNav: 4px 4px 0px 0px var(--dark-border);
+
+  /* Brutalist shadow utilities */
+  --shadow-brutal: 4px 4px 0px 0px var(--border);
+  --shadow-brutal-lg: 6px 6px 0px 0px var(--border);
+  --shadow-brutal-xl: 8px 8px 0px 0px var(--border);
+
+  /* Brutalist transition */
+  --transition-timing-function-brutal: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-duration-brutal: 200ms;
 
   --font-weight-base: var(--base-font-weight);
   --font-weight-heading: var(--heading-font-weight);
