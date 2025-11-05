@@ -56,17 +56,24 @@ export function FeaturesSection() {
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
+            const colors = [
+              { bg: "bg-primary", text: "text-primary-foreground", icon: "text-primary-foreground" },
+              { bg: "bg-secondary", text: "text-secondary-foreground", icon: "text-secondary-foreground" },
+              { bg: "bg-accent", text: "text-accent-foreground", icon: "text-accent-foreground" },
+            ];
+            const color = colors[index % 3];
+
             return (
               <div
                 key={feature.title}
-                className="group rounded-brutal border-4 border-black bg-card p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2"
+                className={`group rounded-brutal border-4 border-black ${color.bg} p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2`}
               >
-                <SimpleIcon path={feature.icon} className="mb-4 h-12 w-12 text-foreground" />
-                <h3 className="mb-3 text-xl font-black text-foreground">
+                <SimpleIcon path={feature.icon} className={`mb-4 h-12 w-12 ${color.icon}`} />
+                <h3 className={`mb-3 text-xl font-black ${color.text}`}>
                   {feature.title}
                 </h3>
-                <p className="font-bold leading-relaxed text-foreground">
+                <p className={`font-bold leading-relaxed ${color.text}`}>
                   {feature.description}
                 </p>
               </div>
@@ -75,7 +82,7 @@ export function FeaturesSection() {
         </div>
 
         {/* Bonus Features */}
-        <div className="mt-16 rounded-brutal border-4 border-black bg-card p-8 shadow-brutal-lg">
+        <div className="mt-16 rounded-brutal border-4 border-black bg-muted p-8 shadow-brutal-lg">
           <p className="text-center text-lg">
             <span className="font-black text-foreground">Also Included: </span>
             <span className="font-bold text-foreground">
