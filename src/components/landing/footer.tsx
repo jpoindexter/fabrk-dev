@@ -3,7 +3,7 @@ import { Twitter, Github } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-[#EEEEEE] px-6 py-12">
+    <footer className="border-t border-black/10 bg-white px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Logo & Copyright */}
