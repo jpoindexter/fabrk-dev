@@ -38,7 +38,7 @@ export function PricingSection() {
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-brutal border-4 border-black bg-background p-10 shadow-brutal-xl">
+          <div className="rounded-brutal border-4 border-black bg-card p-10 shadow-brutal-xl">
             {/* Plan Name */}
             <div className="mb-6 text-center">
               <span className="inline-block rounded-brutal border-3 border-black bg-secondary px-6 py-2 text-sm font-black uppercase text-secondary-foreground shadow-brutal">
