@@ -27,6 +27,30 @@
 
   --shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
 
+  /* Map neobrutalism colors to component system */
+  --primary: oklch(67.47% 0.1725 259.61); /* Purple */
+  --primary-foreground: oklch(100% 0 0); /* White */
+
+  --secondary: oklch(67.28% 0.2147 24.22); /* Orange/Red */
+  --secondary-foreground: oklch(0% 0 0); /* Black */
+
+  --accent: oklch(86.03% 0.176 92.36); /* Yellow */
+  --accent-foreground: oklch(0% 0 0); /* Black */
+
+  --muted: oklch(96% 0 0); /* Light gray */
+  --muted-foreground: oklch(45% 0 0); /* Dark gray */
+
+  --destructive: oklch(62% 0.25 29); /* Red */
+  --destructive-foreground: oklch(100% 0 0); /* White */
+
+  --card: oklch(100% 0 0); /* White */
+  --card-foreground: oklch(0% 0 0); /* Black */
+
+  --popover: oklch(100% 0 0); /* White */
+  --popover-foreground: oklch(0% 0 0); /* Black */
+
+  --input: oklch(0% 0 0); /* Black */
+
   --chart-1: oklch(67.47% 0.1726 259.49);
   --chart-2: oklch(67.28% 0.2147 24.22);
   --chart-3: oklch(86.03% 0.176 92.36);
@@ -41,10 +65,34 @@
   --foreground: oklch(92.49% 0 0);
   --main-foreground: oklch(0% 0 0);
 
-  --border: oklch(0% 0 0);
+  --border: oklch(100% 0 0); /* White borders in dark mode */
   --ring: oklch(100% 0 0);
 
   --shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
+
+  /* Map neobrutalism colors to component system (dark mode) */
+  --primary: oklch(67.47% 0.1725 259.61); /* Purple */
+  --primary-foreground: oklch(0% 0 0); /* Black text on purple */
+
+  --secondary: oklch(67.28% 0.2147 24.22); /* Orange/Red */
+  --secondary-foreground: oklch(0% 0 0); /* Black */
+
+  --accent: oklch(86.03% 0.176 92.36); /* Yellow */
+  --accent-foreground: oklch(0% 0 0); /* Black */
+
+  --muted: oklch(35% 0 0); /* Darker gray */
+  --muted-foreground: oklch(70% 0 0); /* Lighter gray text */
+
+  --destructive: oklch(62% 0.25 29); /* Red */
+  --destructive-foreground: oklch(100% 0 0); /* White */
+
+  --card: oklch(25% 0 0); /* Dark card */
+  --card-foreground: oklch(92.49% 0 0); /* Light text */
+
+  --popover: oklch(25% 0 0); /* Dark popover */
+  --popover-foreground: oklch(92.49% 0 0); /* Light text */
+
+  --input: oklch(100% 0 0); /* White borders */
 
   --chart-active-dot: #fff;
 }
