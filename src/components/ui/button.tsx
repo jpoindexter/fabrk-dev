@@ -35,7 +35,7 @@ const buttonVariants = cva(
 
         // Outline - White with thick black border
         outline:
-          "border-4 border-black bg-background text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-4 border-black bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Secondary - Hot pink with hard shadow
         secondary:
@@ -55,7 +55,7 @@ const buttonVariants = cva(
 
         // Marketing outline - Bold outline with colored hover
         marketingOutline:
-          "border-4 border-black bg-background font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-4 border-black bg-card font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
       },
       size: {
         // Aligned with 8px spacing system
