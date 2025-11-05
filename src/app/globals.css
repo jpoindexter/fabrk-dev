@@ -56,7 +56,7 @@
   --chart-3: oklch(86.03% 0.176 92.36);
   --chart-4: oklch(79.76% 0.2044 153.08);
   --chart-5: oklch(66.34% 0.1806 277.2);
-  --chart-active-dot: #000;
+  --chart-active-dot: oklch(0% 0 0);
 }
 
 .dark {
@@ -94,7 +94,7 @@
 
   --input: oklch(100% 0 0); /* White borders */
 
-  --chart-active-dot: #fff;
+  --chart-active-dot: oklch(100% 0 0);
 }
 
 @theme inline {
@@ -195,14 +195,14 @@
 
 body,
 .scrollbar {
-  --sb-track-color: #ffffff;
-  --sb-thumb-color: #000000;
+  --sb-track-color: oklch(100% 0 0);
+  --sb-thumb-color: oklch(0% 0 0);
 }
 
 html.dark body,
 html.dark .scrollbar {
-  --sb-track-color: #1f1f1f;
-  --sb-thumb-color: #e6e6e6;
+  --sb-track-color: oklch(18% 0 0);
+  --sb-thumb-color: oklch(90% 0 0);
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -223,7 +223,7 @@ body::-webkit-scrollbar-track,
 }
 
 body::-webkit-scrollbar-track {
-  border-left: 4px solid #000;
+  border-left: 4px solid var(--border);
 }
 
 body::-webkit-scrollbar-thumb,
@@ -232,7 +232,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 html.dark body::-webkit-scrollbar-thumb {
-  border-left: 4px solid #000;
+  border-left: 4px solid var(--border);
 }
 
 .code::-webkit-scrollbar-track {
@@ -240,7 +240,7 @@ html.dark body::-webkit-scrollbar-thumb {
 }
 
 .code::-webkit-scrollbar-thumb {
-  background: white;
+  background: oklch(100% 0 0);
 }
 
 .code::-webkit-scrollbar {
@@ -263,7 +263,7 @@ html.dark body::-webkit-scrollbar-thumb {
 }
 
 .command-scrollbar::-webkit-scrollbar-thumb {
-  background: #000;
+  background: var(--border);
 }
 
 @supports not selector(::-webkit-scrollbar) {
@@ -273,6 +273,6 @@ html.dark body::-webkit-scrollbar-thumb {
   }
 
   .command-scrollbar {
-    scrollbar-color: #000 transparent;
+    scrollbar-color: var(--border) transparent;
   }
 }
