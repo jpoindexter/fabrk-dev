@@ -27,17 +27,14 @@ export function PricingSection() {
             {/* Plan Name */}
             <div className="mb-6 text-center">
               <span className="inline-block rounded-full bg-[#007AFF]/10 px-6 py-2 text-sm font-semibold text-[#007AFF]">
-                Lifetime Deal
+                Early Access - Launch Special
               </span>
             </div>
 
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-bold text-black">$149</span>
-                <span className="text-2xl text-[#999999] line-through">
-                  $299
-                </span>
+                <span className="text-6xl font-bold text-black">$79</span>
               </div>
               <p className="text-lg text-[#333333]">
                 Pay once, use forever. <span className="font-bold">$0 recurring fees.</span>

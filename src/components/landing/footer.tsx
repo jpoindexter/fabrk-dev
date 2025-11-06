@@ -3,7 +3,7 @@ import { Twitter, Github } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-[#EEEEEE] px-6 py-12">
+    <footer className="border-t border-black/10 bg-white px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Logo & Copyright */}
@@ -16,8 +16,9 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Column 2: Links */}
+          {/* Column 2: Product Links */}
           <div>
+            <h3 className="mb-3 text-sm font-semibold text-black">Product</h3>
             <nav className="flex flex-col gap-3">
               <Link
                 href="#features"
@@ -32,36 +33,59 @@ export function Footer() {
                 Pricing
               </Link>
               <Link
-                href="/contact"
+                href="/terms"
                 className="text-sm text-[#333333] transition-colors hover:text-[#007AFF]"
               >
-                Contact
+                Terms
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-sm text-[#333333] transition-colors hover:text-[#007AFF]"
+              >
+                Privacy
               </Link>
             </nav>
           </div>
 
-          {/* Column 3: Social */}
+          {/* Column 3: Support */}
           <div>
-            <div className="flex items-center gap-4">
+            <h3 className="mb-3 text-sm font-semibold text-black">Support</h3>
+            <nav className="flex flex-col gap-3">
               <a
-                href="https://twitter.com/fabrk"
+                href="https://discord.gg/fabrk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#333333] transition-colors hover:text-[#007AFF]"
-                aria-label="Twitter"
+                className="text-sm text-[#333333] transition-colors hover:text-[#007AFF]"
               >
-                <Twitter className="h-5 w-5" />
+                Discord Community
               </a>
               <a
-                href="https://github.com/fabrk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#333333] transition-colors hover:text-[#007AFF]"
-                aria-label="GitHub"
+                href="mailto:support@fabrk.dev"
+                className="text-sm text-[#333333] transition-colors hover:text-[#007AFF]"
               >
-                <Github className="h-5 w-5" />
+                Email Support
               </a>
-            </div>
+              <div className="mt-2 flex items-center gap-3">
+                <a
+                  href="https://twitter.com/fabrk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#333333] transition-colors hover:text-[#007AFF]"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://github.com/fabrk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#333333] transition-colors hover:text-[#007AFF]"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+              </div>
+            </nav>
           </div>
         </div>
       </div>

@@ -119,6 +119,21 @@ docs/*.md
 !docs/ARCHITECTURE.md
 !docs/TESTING.md
 !docs/SECURITY.md
+!docs/ANALYTICS-SETUP.md
+!docs/LAUNCH-TIMELINE.md
+!docs/POST-LAUNCH-MONITORING.md
+!docs/CUSTOMER-ONBOARDING.md
+!docs/PERFORMANCE-OPTIMIZATION.md
+!docs/CONVERSION-OPTIMIZATION.md
+!docs/GROWTH-TACTICS.md
+!docs/API-REFERENCE.md
+!docs/SECURITY-BEST-PRACTICES.md
+!docs/TROUBLESHOOTING.md
+!docs/BACKUP-RECOVERY.md
+!docs/README.md
+!docs/ALTERNATIVE-DEPLOYMENTS.md
+!docs/COMPARISON.md
+!docs/COMPONENT-BEST-PRACTICES.md
 
 # Test outputs and reports
 test-results.json

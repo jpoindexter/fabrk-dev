@@ -11,39 +11,39 @@ export function FeaturesSection() {
   const features = [
     {
       icon: Lock,
-      title: "Secure Auth, Simplified",
+      title: "Add Google Login in 5 Minutes",
       description:
-        "Full authentication with NextAuth v5. Includes credentials (email/password) and Google OAuth out of the box.",
+        "Full authentication with email/password and OAuth (Google) already connected. Just add your API keys and it works.",
     },
     {
       icon: CreditCard,
-      title: "Stripe Payments",
+      title: "Accept Payments Without Reading Stripe Docs",
       description:
-        "Accept one-time payments and manage subscriptions with Stripe. Webhooks and customer portal are pre-configured.",
+        "Stripe checkout, webhooks, and customer portal pre-configured. One-time payments and subscriptions work out of the box.",
     },
     {
       icon: Database,
-      title: "Prisma + PostgreSQL",
+      title: "Type-Safe Database with Free Hosting",
       description:
-        "A clean, production-ready database schema powered by Prisma ORM. Easy to extend and manage.",
+        "PostgreSQL with Prisma ORM. Deploy to Supabase or Railway free tier in minutes. No MongoDB lock-in.",
     },
     {
       icon: Mail,
-      title: "Transactional Emails",
+      title: "Send Beautiful Emails Without Fighting HTML Tables",
       description:
-        "Welcome emails, password resets, and email verification powered by Resend.",
+        "Welcome emails, password resets, and verifications already built. Just configure Resend and go.",
     },
     {
       icon: Palette,
-      title: "Tailwind + shadcn/ui",
+      title: "Build Any Interface with Battle-Tested Components",
       description:
-        "A minimal set of essential UI components. Fully customizable and free of complex abstractions.",
+        "80+ production-ready components including data tables, charts, forms, and dashboards. No UI reinvention needed.",
     },
     {
       icon: Code,
-      title: "Radically Simple Code",
+      title: "161 Files You Can Actually Understand",
       description:
-        "No over-engineering. A small, understandable codebase (just ~40 files) that you can easily modify and own.",
+        "No 1000-file maze. Clean, readable TypeScript code you can modify without fear. If you can read Next.js, you can use Fabrk.",
     },
   ];
 

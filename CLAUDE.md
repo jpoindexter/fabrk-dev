@@ -32,16 +32,18 @@ npm start                  # Start production server
 
 # Code Quality
 npm run lint               # Run ESLint
-npm run lint:fix           # Auto-fix ESLint issues
 npm run type-check         # TypeScript validation (no emit)
-npm run format             # Format with Prettier
 
 # Stripe (Local Development)
 npm run stripe:listen      # Listen to Stripe webhooks locally
 ```
 
 ### Testing
-**Note:** The boilerplate includes 2 example tests (register, verify-email) showing the testing pattern with Vitest. Customers are expected to add their own comprehensive tests.
+**Note:** The boilerplate includes 2 example tests (register, verify-email) located at:
+- `src/app/api/auth/register/route.test.ts`
+- `src/app/api/auth/verify-email/route.test.ts`
+
+No test runner is configured yet. Customers should add their own testing setup (Vitest, Jest, etc.) and comprehensive tests.
 
 ## Architecture Overview
 
@@ -75,72 +77,76 @@ src/app/
    - Frontend calls `/api/stripe/checkout` with `priceId`
    - Creates Stripe Checkout session (mode: "payment")
    - Webhook handles `checkout.session.completed`
-   - Creates `Purchase` + `Customer` records
-   - Generates unique license key
-   - Queues welcome email via `EmailQueue`
+   - Creates `Payment` record
+   - Updates `User.customerId` (Stripe customer ID)
+   - Sends welcome email immediately (no queue)
 
-2. **Subscription Flow** (optional):
+2. **Subscription Flow** (you'll need to implement):
    - Similar to one-time but mode: "subscription"
-   - Webhook handles subscription lifecycle events
-   - Updates `Subscription` model status
+   - Webhook can handle subscription lifecycle events
+   - Note: No `Subscription` model exists yet - add it to schema if needed
 
 **Key Files:**
 - `src/app/api/stripe/checkout/route.ts` - Creates checkout sessions with idempotency
 - `src/app/api/webhooks/stripe/route.ts` - Processes payment events
-- `src/lib/stripe/idempotency.ts` - Prevents duplicate charges
+- `src/lib/stripe.ts` - Stripe client and helper functions
 
-**Idempotency:** All checkout sessions use idempotency keys stored in `CheckoutIdempotency` table to prevent duplicate charges on refresh/retry.
+**Idempotency:** All checkout sessions use idempotency via the `CheckoutSession` model, which stores session IDs with 24-hour expiry to prevent duplicate charges on page refresh.
 
 ### Database Architecture
 
-**Core Models:**
-- `User` - Authentication + subscription tier tracking
-- `Account`, `Session`, `VerificationToken` - NextAuth adapter models
-- `Payment`, `Subscription` - Stripe payment tracking
+**All Models** (7 total - kept intentionally minimal):
+- `User` - Authentication + Stripe customer ID + tier tracking
+  - Includes `resetToken`, `resetExpires`, `verifyToken` for auth flows
+  - `role` enum (USER, ADMIN)
+- `Account` - OAuth provider accounts (NextAuth adapter)
+- `Session` - Active user sessions (NextAuth adapter)
+- `VerificationToken` - Email verification tokens (NextAuth adapter)
+- `Payment` - Stripe payment records
+  - Stores `stripeId`, `amount`, `status`, `productId`
+- `CheckoutSession` - Prevents duplicate checkouts on page refresh
+  - Stores session ID with 24-hour expiry
+- `WebhookEvent` - Prevents duplicate webhook processing
+  - Idempotency tracking via Stripe event ID
 
-**Multi-Tenancy Models (Can be simplified/removed):**
-- `Organization`, `OrganizationMember`, `Invitation`
-- `AuditLog`, `Activity` - Compliance tracking
+**No subscription model** - The schema tracks payments but not active subscriptions. Add a `Subscription` model if you need subscription lifecycle management.
 
-**Security Models (Can be simplified/removed):**
-- `WebAuthnCredential`, `SecurityKey`, `TrustedDevice`
-- `LoginHistory`, `OAuthConnection`, `SecurityQuestion`, `RecoveryCode`
-- MFA fields on `User` model
-
-**Gumroad Integration Models:**
-- `Customer`, `Purchase`, `DownloadLog`
-- `EmailQueue` - Retry mechanism for email sending
-
-**Important:** The Prisma schema is intentionally comprehensive but can be simplified for basic use cases. For a minimal SaaS, you only need: User, Account, Session, VerificationToken, Payment, Subscription.
+**Philosophy:** This is a minimal, ShipFast-style schema. No multi-tenancy, no MFA, no audit logs. Add complexity only when you need it.
 
 ### Email System
 
-**Pattern:** Queue-based email sending with retry logic
-- **Service:** `src/lib/email/` - React Email templates
-- **Queue:** `EmailQueue` model stores pending emails
-- **Templates:** `src/emails/` - React Email components
+**Pattern:** Simple direct sending via Resend (ShipFast style - no queue, no retry)
+- **Service:** `src/lib/email.ts` - ~100 lines with 3 send functions
+- **Templates:** `src/emails/welcome-html.ts` - Simple HTML templates (no React Email)
 - **Provider:** Resend (configured via `RESEND_API_KEY`)
+- **Dev Mode:** Logs to console instead of sending when `RESEND_API_KEY` is not set
 
-**Email Types:**
-- Welcome email (after purchase)
-- Email verification (after registration)
-- Password reset
-- Purchase confirmation
+**Email Functions:**
+- `sendWelcomeEmail(to, name, licenseKey?)` - After purchase
+- `sendVerificationEmail(to, token)` - After registration
+- `sendResetEmail(to, token)` - Password reset flow
+
+**No queue or retry logic** - Emails send immediately. For production-grade retry logic, consider adding a queue system (Bull, Inngest, etc.).
 
 ### Logging & Monitoring
 
-**Logger** (`src/lib/logger.ts`):
-- Singleton pattern with sanitization of sensitive data (passwords, tokens, API keys)
-- Development: Colored console output
-- Production: Buffered logs flushed to Sentry + external service
-- Auto-flushes on error/fatal levels
-- Graceful shutdown handling
+**No built-in logger** - The boilerplate uses simple `console.log`/`console.error` throughout.
 
-**Sentry Integration:**
-- Configured in `next.config.ts` and `sentry.*.config.ts` (not in boilerplate root but expected)
-- Error tracking with context
-- Performance monitoring
-- Automatic source map upload in production
+**Error Handling Pattern:**
+```typescript
+try {
+  // business logic
+} catch (error) {
+  console.error("Description:", error);
+  return NextResponse.json({ error: "User message" }, { status: 500 });
+}
+```
+
+**Add Sentry (optional):**
+- Install `@sentry/nextjs`
+- Run `npx @sentry/wizard@latest -i nextjs`
+- Configure DSN in environment variables
+- No Sentry config is included by default
 
 ### Path Aliases
 
@@ -155,13 +161,13 @@ src/app/
 ## Important Patterns
 
 ### 1. API Error Handling
-All API routes should follow this pattern:
+All API routes follow this pattern:
 ```typescript
 try {
   // Business logic
   return NextResponse.json({ data }, { status: 200 });
 } catch (error) {
-  logger.error("Description", error);
+  console.error("Description:", error);
   return NextResponse.json({ error: "User-friendly message" }, { status: 500 });
 }
 ```
@@ -189,7 +195,10 @@ const event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
 ```
 
 ### 5. Idempotency for Payments
-All payment operations use idempotency keys to prevent duplicate charges. See `src/lib/stripe/idempotency.ts` for the pattern.
+Payment operations use the `CheckoutSession` model to prevent duplicate charges:
+- Store checkout session ID with 24-hour expiry
+- Check for existing session before creating new one
+- Webhook uses `WebhookEvent` model to prevent duplicate processing
 
 ## Environment Variables
 
@@ -261,8 +270,8 @@ stripe trigger checkout.session.completed
 - **No emojis** in code or comments (unless explicitly requested)
 - **Concise comments** - focus on "why" not "what"
 - **TypeScript strict mode** enabled
-- **ESLint** - Run before committing
-- **Prettier** - Format on save recommended
+- **ESLint** - Run `npm run lint` before committing
+- **No Prettier config** - Use your editor's default formatting
 
 ## Security Considerations
 
@@ -281,14 +290,28 @@ stripe trigger checkout.session.completed
 - Add webhook events in Stripe Dashboard: `checkout.session.completed`, `payment_intent.succeeded`, `payment_intent.payment_failed`
 - For production, set up Redis (Upstash) for distributed rate limiting
 
+## Central Configuration
+
+**All app settings live in `src/config.js`** - This is your single source of truth:
+- App metadata (name, description, URLs)
+- Auth providers and session settings
+- Stripe price IDs and configuration
+- Email settings (Resend)
+- Feature flags (enable/disable features)
+- Subscription tiers with pricing
+- API rate limits
+- Development mode toggles
+
+**Update this file first** when configuring your SaaS. It's referenced throughout the codebase.
+
 ## File Organization Philosophy
 
 This boilerplate follows the "essential files only" principle:
-- **161 total files** (vs 1000+ in over-engineered version)
-- **25 UI components** (vs 169 in original)
-- **30 dependencies** (vs 100+ in original)
+- ~105 TypeScript/TSX files (vs 1000+ in over-engineered version)
+- ~10 core UI components from Radix (vs 169 in original)
+- Minimal dependencies (check package.json)
 - No extensive test suites (customers add their own)
 - No complex pre-commit hooks (basic linting only)
-- No generated documentation (README + this file only)
+- No generated documentation (README + CLAUDE.md only)
 
 When adding features, maintain this simplicity principle.

@@ -39,10 +39,10 @@ export function generateWelcomeEmailHTML({
           <tr>
             <td style="padding: 40px;">
               <h2 style="margin: 0 0 16px 0; color: #171717; font-size: 24px; font-weight: 600;">
-                Welcome to Fabrk, ${name}! 🚀
+                Welcome to Fabrk, ${name}!
               </h2>
               <p style="margin: 0 0 24px 0; color: #525252; font-size: 16px; line-height: 1.5;">
-                Thank you for purchasing Fabrk! You've just gained access to the most AI-optimized SaaS boilerplate that will help you ship production-ready applications 55.8% faster.
+                Thank you for purchasing Fabrk! You've just gained access to the anti-bloat Next.js boilerplate with 161 files (not 1000) that will help you ship your SaaS in hours, not weeks.
               </p>
 
               <!-- License Section -->
@@ -74,13 +74,13 @@ export function generateWelcomeEmailHTML({
               <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 32px 0;" />
               <h3 style="margin: 0 0 16px 0; color: #171717; font-size: 20px; font-weight: 600;">What's Included</h3>
               <ul style="margin: 0; padding-left: 20px; color: #525252; font-size: 15px; line-height: 1.8;">
-                <li>✅ 106+ Production-Ready Components</li>
-                <li>✅ Complete Authentication System</li>
+                <li>✅ 80+ Production-Ready Components</li>
+                <li>✅ Complete Authentication System (Email + OAuth)</li>
                 <li>✅ Stripe Payments Integration</li>
-                <li>✅ Vertical Slice Architecture</li>
-                <li>✅ AI-Optimized File Structure</li>
-                <li>✅ TypeScript + Next.js 15</li>
-                <li>✅ Dark Mode Support</li>
+                <li>✅ PostgreSQL Database with Prisma</li>
+                <li>✅ Data Table (Sortable, Filterable, Paginated)</li>
+                <li>✅ TypeScript Strict Mode + Next.js 15</li>
+                <li>✅ 161 Essential Files (Not 1000)</li>
                 <li>✅ Email System with Templates</li>
               </ul>
 
@@ -137,7 +137,7 @@ export function generateWelcomeEmailText({
   return `
 Welcome to Fabrk, ${name}!
 
-Thank you for purchasing Fabrk! You've just gained access to the most AI-optimized SaaS boilerplate that will help you ship production-ready applications 55.8% faster.
+Thank you for purchasing Fabrk! You've just gained access to the anti-bloat Next.js boilerplate with 161 files (not 1000) that will help you ship your SaaS in hours, not weeks.
 
 Your License Key: ${licenseKey}
 
@@ -152,13 +152,13 @@ QUICK START GUIDE
 
 WHAT'S INCLUDED
 
-✅ 106+ Production-Ready Components
-✅ Complete Authentication System
+✅ 80+ Production-Ready Components
+✅ Complete Authentication System (Email + OAuth)
 ✅ Stripe Payments Integration
-✅ Vertical Slice Architecture
-✅ AI-Optimized File Structure
-✅ TypeScript + Next.js 15
-✅ Dark Mode Support
+✅ PostgreSQL Database with Prisma
+✅ Data Table (Sortable, Filterable, Paginated)
+✅ TypeScript Strict Mode + Next.js 15
+✅ 161 Essential Files (Not 1000)
 ✅ Email System with Templates
 
 RESOURCES & SUPPORT
