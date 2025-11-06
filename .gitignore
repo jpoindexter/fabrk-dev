@@ -135,6 +135,8 @@ docs/*.md
 !docs/COMPARISON.md
 !docs/COMPONENT-BEST-PRACTICES.md
 !docs/TESTING-GUIDE.md
+!docs/SEO-AEO-GEO-GUIDE.md
+!docs/SEO-QUICK-REFERENCE.md
 
 # Test outputs and reports
 test-results.json
