@@ -123,6 +123,10 @@ docs/*.md
 !docs/LAUNCH-TIMELINE.md
 !docs/POST-LAUNCH-MONITORING.md
 !docs/CUSTOMER-ONBOARDING.md
+!docs/PERFORMANCE-OPTIMIZATION.md
+!docs/CONVERSION-OPTIMIZATION.md
+!docs/GROWTH-TACTICS.md
+!docs/API-REFERENCE.md
 
 # Test outputs and reports
 test-results.json
