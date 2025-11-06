@@ -134,6 +134,7 @@ docs/*.md
 !docs/ALTERNATIVE-DEPLOYMENTS.md
 !docs/COMPARISON.md
 !docs/COMPONENT-BEST-PRACTICES.md
+!docs/TESTING-GUIDE.md
 
 # Test outputs and reports
 test-results.json
