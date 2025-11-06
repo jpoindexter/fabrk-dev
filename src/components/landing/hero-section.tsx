@@ -20,10 +20,10 @@ export function HeroSection() {
             Stop wrestling with complex setups. Fabrk gives you authentication,
             payments, and database integration in a clean,{" "}
             <span className="font-bold text-black">
-              40-file Next.js 15 project
+              161-file Next.js 15 project
             </span>
             . Ship your SaaS in{" "}
-            <span className="font-bold text-black">days, not weeks</span>.
+            <span className="font-bold text-black">hours, not weeks</span>.
           </p>
 
           {/* Primary CTA */}
@@ -33,14 +33,21 @@ export function HeroSection() {
               className="h-14 bg-[#007AFF] px-8 text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#0066CC] hover:shadow-xl"
               asChild
             >
-              <Link href="#pricing">Get Fabrk Now - $149</Link>
+              <Link href="#pricing">Get Fabrk Now - $79</Link>
             </Button>
           </div>
 
           {/* Social Proof */}
-          <p className="text-sm text-[#333333]">
-            Join 100+ developers who ship faster.
-          </p>
+          <div className="text-center">
+            <div className="mb-2 inline-block rounded-full bg-[#007AFF]/10 px-4 py-1.5">
+              <p className="text-sm font-semibold text-[#007AFF]">
+                Early Access - Join First 100 Launch Customers
+              </p>
+            </div>
+            <p className="text-xs text-[#666666]">
+              30-day money-back guarantee • Lifetime updates
+            </p>
+          </div>
 
           {/* Placeholder for logos */}
           <div className="mt-6 flex items-center justify-center gap-8 opacity-40 grayscale">
@@ -93,8 +100,8 @@ export function HeroSection() {
                 </div>
               </div>
               <div className="mt-6 border-t border-white/10 pt-4 text-center">
-                <span className="text-[#007AFF]">40 files</span>
-                <span className="text-white/50"> • Production ready</span>
+                <span className="text-[#007AFF]">161 files</span>
+                <span className="text-white/50"> • Not 1000 • Production ready</span>
               </div>
             </div>
           </div>
