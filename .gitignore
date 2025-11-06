@@ -130,6 +130,10 @@ docs/*.md
 !docs/SECURITY-BEST-PRACTICES.md
 !docs/TROUBLESHOOTING.md
 !docs/BACKUP-RECOVERY.md
+!docs/README.md
+!docs/ALTERNATIVE-DEPLOYMENTS.md
+!docs/COMPARISON.md
+!docs/COMPONENT-BEST-PRACTICES.md
 
 # Test outputs and reports
 test-results.json
