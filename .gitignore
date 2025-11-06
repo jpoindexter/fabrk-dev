@@ -127,6 +127,9 @@ docs/*.md
 !docs/CONVERSION-OPTIMIZATION.md
 !docs/GROWTH-TACTICS.md
 !docs/API-REFERENCE.md
+!docs/SECURITY-BEST-PRACTICES.md
+!docs/TROUBLESHOOTING.md
+!docs/BACKUP-RECOVERY.md
 
 # Test outputs and reports
 test-results.json
