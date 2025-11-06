@@ -69,3 +69,148 @@ export const defaultMetadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 };
+
+/**
+ * Metadata Utilities
+ * Helper functions for generating consistent metadata across pages
+ */
+
+interface GenerateMetadataProps {
+  title: string;
+  description?: string;
+  image?: string;
+  noIndex?: boolean;
+  path?: string;
+}
+
+/**
+ * Generate consistent metadata for pages
+ * @example
+ * export const metadata = generateMetadata({
+ *   title: "Dashboard",
+ *   description: "Manage your account",
+ *   noIndex: true
+ * });
+ */
+export function generateMetadata({
+  title,
+  description,
+  image,
+  noIndex = false,
+  path = "",
+}: GenerateMetadataProps): Metadata {
+  const fullTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+  const metaDescription = description || siteConfig.description;
+  const ogImage = image || siteConfig.ogImage;
+  const url = `${siteConfig.url}${path}`;
+
+  return {
+    title: fullTitle,
+    description: metaDescription,
+    robots: noIndex ? "noindex, nofollow" : "index, follow",
+    openGraph: {
+      title: fullTitle,
+      description: metaDescription,
+      url,
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: fullTitle,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: metaDescription,
+      images: [ogImage],
+      creator: "@yourhandle",
+    },
+    alternates: {
+      canonical: url,
+    },
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for organization
+ */
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/logo.png`,
+    sameAs: [
+      siteConfig.links.twitter,
+      siteConfig.links.github,
+    ],
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for product/software
+ */
+export function generateProductSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Web",
+    offers: {
+      "@type": "Offer",
+      price: "79",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "127",
+    },
+  };
+}
+
+/**
+ * Generate breadcrumb JSON-LD structured data
+ */
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteConfig.url}${item.url}`,
+    })),
+  };
+}
+
+/**
+ * Generate FAQ JSON-LD structured data
+ */
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
