@@ -119,6 +119,10 @@ docs/*.md
 !docs/ARCHITECTURE.md
 !docs/TESTING.md
 !docs/SECURITY.md
+!docs/ANALYTICS-SETUP.md
+!docs/LAUNCH-TIMELINE.md
+!docs/POST-LAUNCH-MONITORING.md
+!docs/CUSTOMER-ONBOARDING.md
 
 # Test outputs and reports
 test-results.json
