@@ -76,11 +76,12 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 | Guide | What You'll Learn | Time |
 |-------|------------------|------|
+| [SECURITY-IMPLEMENTATION.md](./SECURITY-IMPLEMENTATION.md) | **Complete guide:** Rate limiting, input validation, bot protection, audit logging, GDPR | 4 hours |
 | [SECURITY-BEST-PRACTICES.md](./SECURITY-BEST-PRACTICES.md) | Authentication, authorization, data protection, incident response | 3 hours |
 | [BACKUP-RECOVERY.md](./BACKUP-RECOVERY.md) | Database backups, disaster recovery, business continuity | 2 hours |
 | [SECURITY.md](./SECURITY.md) | Security features overview, compliance (GDPR, PCI) | 30 min |
 
-**Total:** ~5.5 hours to secure and protect your SaaS.
+**Total:** ~9.5 hours to secure and protect your SaaS.
 
 ---
 
