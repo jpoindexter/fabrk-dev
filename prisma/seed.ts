@@ -148,18 +148,12 @@ async function main() {
     data: [
       {
         eventId: "evt_test_123",
-        type: "checkout.session.completed",
-        processed: true,
       },
       {
         eventId: "evt_test_456",
-        type: "payment_intent.succeeded",
-        processed: true,
       },
       {
         eventId: "evt_test_789",
-        type: "payment_intent.payment_failed",
-        processed: true,
       },
     ],
   });
