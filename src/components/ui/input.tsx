@@ -35,14 +35,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled || loading}
           className={cn(
-            // Base styles - 8px spacing system & typography tokens
-            "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-[14px] font-normal leading-[1.5] ring-offset-background transition-all duration-200 ease-out",
+            // Base styles - Neo-Brutalism with bold borders
+            "flex h-10 w-full rounded-md border-3 border-black dark:border-white bg-background px-3 py-2 text-[14px] font-normal leading-[1.5] shadow-brutal-sm transition-all duration-150 ease-out",
 
-            // Hover state - Subtle border color change
-            "hover:border-accent/50",
+            // Hover state - Subtle lift effect
+            "hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)]",
 
-            // Focus state - Clear ring indicator
-            "focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            // Focus state - Clear ring indicator with brutal style
+            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20",
 
             // File input styles
             "file:border-0 file:bg-transparent file:text-[14px] file:font-medium file:text-foreground",
@@ -56,17 +56,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             // Loading state - Add padding for spinner
             loading && "pr-10",
 
-            // Error state - Red border and ring
+            // Error state - Red border with brutal style
             error &&
-              "border-destructive text-destructive focus-visible:border-destructive focus-visible:ring-destructive",
+              "border-destructive focus-visible:ring-destructive/20",
 
-            // Success state - Green border and ring
+            // Success state - Green border with brutal style
             success &&
-              "border-primary text-primary-foreground focus-visible:border-primary focus-visible:ring-success",
-
-            // Dark mode
-            "dark:border-input dark:bg-background dark:placeholder:text-muted-foreground/60",
-            "dark:hover:border-accent/40 dark:focus-visible:ring-ring",
+              "border-success focus-visible:ring-success/20",
 
             className
           )}
