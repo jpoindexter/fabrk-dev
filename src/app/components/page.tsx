@@ -4,6 +4,7 @@
  */
 
 import Link from "next/link";
+import { ShowcaseNav } from "@/components/showcase/showcase-nav";
 import {
   Card,
   CardContent,
@@ -49,7 +50,10 @@ export default function ComponentsPage() {
       </header>
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
-        {/* Navigation */}
+        {/* Showcase Navigation */}
+        <ShowcaseNav />
+
+        {/* Quick Navigation */}
         <Card>
           <CardHeader>
             <CardTitle>Quick Navigation</CardTitle>

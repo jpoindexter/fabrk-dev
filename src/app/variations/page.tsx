@@ -23,11 +23,19 @@ import {
   PricingTable,
   Footer,
 } from "@/components/landing";
+import { ShowcaseNav } from "@/components/showcase/showcase-nav";
 
 export default function VariationsPage() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
+
+      {/* Showcase Navigation */}
+      <section className="bg-background py-8">
+        <div className="container mx-auto max-w-7xl px-6">
+          <ShowcaseNav />
+        </div>
+      </section>
 
       {/* Hero Variations */}
       <section className="border-b-8 border-black bg-[#F9F9F9] py-16">
