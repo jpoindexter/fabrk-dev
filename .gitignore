@@ -138,6 +138,9 @@ docs/*.md
 !docs/SEO-AEO-GEO-GUIDE.md
 !docs/SEO-QUICK-REFERENCE.md
 !docs/SECURITY-IMPLEMENTATION.md
+!docs/ENTERPRISE-FEATURES-SETUP.md
+!docs/COMPONENTS-INVENTORY.md
+!docs/DEPLOYMENT.md
 
 # Test outputs and reports
 test-results.json
