@@ -1,232 +1,129 @@
 /**
- * ✅ FABRK COMPONENT
  * Landing Page Variations Showcase
- *
- * This page demonstrates all available landing page component variations:
- * - 3 Hero variations (Centered, Split-Screen, Video)
- * - 2 Pricing variations (Cards, Comparison Table)
- *
- * Use this to preview and choose your preferred layouts.
- *
- * To use in production:
- * 1. Choose your favorite hero variation
- * 2. Choose your favorite pricing layout
- * 3. Update src/app/page.tsx with your selections
+ * Multiple styled landing pages for buyers to preview
  */
 
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
-  Navigation,
-  HeroSection,
-  HeroSplit,
-  HeroVideo,
-  PricingSection,
-  PricingTable,
-  Footer,
-} from "@/components/landing";
-import { ShowcaseNav } from "@/components/showcase/showcase-nav";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Eye, Home, Sparkles, Zap } from "lucide-react";
+
+const variations = [
+  {
+    id: "default",
+    name: "Neo-Brutalism (Current)",
+    description: "Bold borders, hard shadows, purple accents. The default Fabrk theme.",
+    href: "/",
+    badge: "Default",
+    features: ["3px borders", "Hard shadows", "Press animations", "Purple theme"],
+  },
+  {
+    id: "modern",
+    name: "Modern Minimal",
+    description: "Clean, sleek design with subtle shadows and smooth animations.",
+    href: "/variations/modern",
+    badge: "Popular",
+    features: ["Soft shadows", "Smooth transitions", "Blue accents", "Minimal borders"],
+  },
+  {
+    id: "saas",
+    name: "SaaS Landing",
+    description: "Feature-focused layout perfect for B2B SaaS products.",
+    href: "/variations/saas",
+    badge: "B2B",
+    features: ["Feature grid", "Social proof", "CTA-optimized", "Professional"],
+  },
+  {
+    id: "startup",
+    name: "Startup Bold",
+    description: "Attention-grabbing design for early-stage startups and MVPs.",
+    href: "/variations/startup",
+    badge: "New",
+    features: ["Bold typography", "Gradient accents", "High contrast", "Energetic"],
+  },
+];
 
 export default function VariationsPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-
-      {/* Showcase Navigation */}
-      <section className="bg-background py-8">
-        <div className="container mx-auto max-w-7xl px-6">
-          <ShowcaseNav />
-        </div>
-      </section>
-
-      {/* Hero Variations */}
-      <section className="border-b-8 border-black bg-[#F9F9F9] py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="mb-4 text-4xl font-bold text-black">
-            Hero Variations
-          </h2>
-          <p className="mb-8 text-lg text-[#666666]">
-            Choose the hero layout that best showcases your product. See{" "}
-            <code className="rounded bg-black/10 px-2 py-1 text-sm">
-              docs/LANDING-PAGE-VARIATIONS.md
-            </code>{" "}
-            for details.
-          </p>
-        </div>
-      </section>
-
-      {/* Variation 1: Centered Hero (Default) */}
-      <section id="hero-centered">
-        <div className="border-b-4 border-black bg-[#FFE5B4] py-4">
-          <div className="mx-auto max-w-7xl px-6">
-            <h3 className="text-2xl font-bold text-black">
-              1. Centered Hero (Default)
-            </h3>
-            <p className="text-sm text-[#666666]">
-              Best for: Simple messaging, code-first products
-            </p>
-          </div>
-        </div>
-        <HeroSection />
-      </section>
-
-      {/* Variation 2: Split-Screen Hero */}
-      <section id="hero-split" className="border-t-8 border-black">
-        <div className="border-b-4 border-black bg-[#E5F5FF] py-4">
-          <div className="mx-auto max-w-7xl px-6">
-            <h3 className="text-2xl font-bold text-black">
-              2. Split-Screen Hero
-            </h3>
-            <p className="text-sm text-[#666666]">
-              Best for: Showcasing product UI, visual products
-            </p>
-          </div>
-        </div>
-        <HeroSplit />
-      </section>
-
-      {/* Variation 3: Video Background Hero */}
-      <section id="hero-video" className="border-t-8 border-black">
-        <div className="border-b-4 border-black bg-[#FFE5F0] py-4">
-          <div className="mx-auto max-w-7xl px-6">
-            <h3 className="text-2xl font-bold text-black">
-              3. Video Background Hero
-            </h3>
-            <p className="text-sm text-[#666666]">
-              Best for: High-impact launches, demo videos
-            </p>
-          </div>
-        </div>
-        <HeroVideo />
-      </section>
-
-      {/* Pricing Variations */}
-      <section className="border-t-8 border-black bg-[#F9F9F9] py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="mb-4 text-4xl font-bold text-black">
-            Pricing Variations
-          </h2>
-          <p className="mb-8 text-lg text-[#666666]">
-            Choose between card-based pricing or a competitive comparison table.
-          </p>
-        </div>
-      </section>
-
-      {/* Variation 1: Pricing Cards (Default) */}
-      <section id="pricing-cards">
-        <div className="border-b-4 border-black bg-[#E5FFE5] py-4">
-          <div className="mx-auto max-w-7xl px-6">
-            <h3 className="text-2xl font-bold text-black">
-              1. Pricing Cards (Default)
-            </h3>
-            <p className="text-sm text-[#666666]">
-              Best for: Simple pricing, clear CTAs
-            </p>
-          </div>
-        </div>
-        <PricingSection />
-      </section>
-
-      {/* Variation 2: Comparison Table */}
-      <section id="pricing-table" className="border-t-8 border-black">
-        <div className="border-b-4 border-black bg-[#FFF5E5] py-4">
-          <div className="mx-auto max-w-7xl px-6">
-            <h3 className="text-2xl font-bold text-black">
-              2. Comparison Table
-            </h3>
-            <p className="text-sm text-[#666666]">
-              Best for: Showing competitive advantages, feature-rich products
-            </p>
-          </div>
-        </div>
-        <PricingTable />
-      </section>
-
-      {/* Implementation Instructions */}
-      <section className="border-t-8 border-black bg-[#F0F0F0] py-16">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="mb-6 text-3xl font-bold text-black">
-            How to Use These Variations
-          </h2>
-
-          <div className="space-y-6">
-            <div className="rounded-lg border-4 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-3 text-xl font-bold text-black">
-                Step 1: Choose Your Hero
-              </h3>
-              <p className="mb-4 text-[#666666]">
-                Pick one of the three hero variations above. Copy the import and
-                component to your landing page.
-              </p>
-              <pre className="overflow-x-auto rounded bg-black p-4 text-sm text-white">
-                {`// In src/app/page.tsx
-import { HeroSplit } from "@/components/landing";
-
-export default function HomePage() {
-  return (
-    <>
-      <HeroSplit />
-      {/* Other sections... */}
-    </>
-  );
-}`}
-              </pre>
-            </div>
-
-            <div className="rounded-lg border-4 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-3 text-xl font-bold text-black">
-                Step 2: Choose Your Pricing Layout
-              </h3>
-              <p className="mb-4 text-[#666666]">
-                Pick between pricing cards or comparison table. Cards are simpler,
-                table shows competitive advantages.
-              </p>
-              <pre className="overflow-x-auto rounded bg-black p-4 text-sm text-white">
-                {`// In src/app/page.tsx
-import { PricingTable } from "@/components/landing";
-
-export default function HomePage() {
-  return (
-    <>
-      {/* Other sections... */}
-      <PricingTable />
-    </>
-  );
-}`}
-              </pre>
-            </div>
-
-            <div className="rounded-lg border-4 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-3 text-xl font-bold text-black">
-                Step 3: Customize Props
-              </h3>
-              <p className="mb-4 text-[#666666]">
-                Each variation accepts props for customization. See full
-                documentation in{" "}
-                <code className="rounded bg-black/10 px-2 py-1 text-sm">
-                  docs/LANDING-PAGE-VARIATIONS.md
-                </code>
+    <div className="min-h-screen bg-background">
+      <header className="border-b-3 border-border bg-card">
+        <div className="container mx-auto max-w-7xl px-6 py-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold mb-2">Landing Page Variations</h1>
+              <p className="text-muted-foreground text-lg">
+                4 pre-built designs. All included in your purchase.
               </p>
             </div>
-
-            <div className="rounded-lg border-4 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="mb-3 text-xl font-bold text-black">
-                Need Help?
-              </h3>
-              <p className="text-[#666666]">
-                Check the{" "}
-                <a
-                  href="/docs/LANDING-PAGE-VARIATIONS.md"
-                  className="font-semibold text-[#007AFF] underline"
-                >
-                  Landing Page Variations Guide
-                </a>{" "}
-                for detailed instructions, prop references, and best practices.
-              </p>
-            </div>
+            <Link href="/">
+              <Button variant="outline">
+                <Home className="mr-2 h-4 w-4" />
+                Home
+              </Button>
+            </Link>
           </div>
         </div>
-      </section>
+      </header>
 
-      <Footer />
+      <main className="container mx-auto max-w-7xl px-6 py-12">
+        <Card className="mb-12">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <Sparkles className="h-6 w-6 text-primary" />
+              <div>
+                <CardTitle>All Variations Included</CardTitle>
+                <CardDescription>
+                  Copy components between designs. Mix and match to create your perfect landing page.
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+        </Card>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {variations.map((variation) => (
+            <Card key={variation.id} className="group">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle className="text-2xl">{variation.name}</CardTitle>
+                    <CardDescription className="mt-2">{variation.description}</CardDescription>
+                  </div>
+                  <Badge>{variation.badge}</Badge>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="aspect-video bg-muted border-3 border-border rounded-lg flex items-center justify-center">
+                  <div className="text-center">
+                    <Eye className="h-12 w-12 mx-auto text-muted-foreground mb-2" />
+                    <p className="text-sm text-muted-foreground">{variation.name}</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {variation.features.map((feature) => (
+                    <Badge key={feature} variant="secondary">{feature}</Badge>
+                  ))}
+                </div>
+
+                <Button asChild className="w-full">
+                  <Link href={variation.href}>
+                    View Live Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
