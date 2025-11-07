@@ -1,0 +1,88 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Sundays at 2 AM UTC
+    - cron: '0 2 * * 0'
+
+jobs:
+  lighthouse:
+    name: Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          DATABASE_URL: "postgresql://test:test@localhost:5432/test"
+          NEXTAUTH_SECRET: "test-secret-for-lighthouse"
+          NEXTAUTH_URL: "http://localhost:3000"
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@latest
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-results
+          path: .lighthouseci
+          retention-days: 30
+
+      - name: Comment PR with Lighthouse scores
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('.lighthouseci/manifest.json', 'utf8'));
+
+            const scores = results[0].summary;
+            const output = `
+            ## ⚡ Lighthouse Performance Results
+
+            | Category | Score |
+            |----------|-------|
+            | 🎨 Performance | ${Math.round(scores.performance * 100)}/100 |
+            | ♿ Accessibility | ${Math.round(scores.accessibility * 100)}/100 |
+            | ✅ Best Practices | ${Math.round(scores['best-practices'] * 100)}/100 |
+            | 🔍 SEO | ${Math.round(scores.seo * 100)}/100 |
+
+            ${scores.performance >= 0.9 ? '✅ Great performance!' : '⚠️ Performance could be improved'}
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            });
+        continue-on-error: true
+
+      - name: Fail if performance < 90
+        run: |
+          SCORE=$(jq -r '.[0].summary.performance' .lighthouseci/manifest.json)
+          if (( $(echo "$SCORE < 0.9" | bc -l) )); then
+            echo "Performance score $SCORE is below 90%"
+            exit 1
+          fi
+        continue-on-error: true

@@ -61,12 +61,14 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 | Guide | What You'll Learn | Time |
 |-------|------------------|------|
+| [SEO-AEO-GEO-GUIDE.md](./SEO-AEO-GEO-GUIDE.md) | **Complete guide:** SEO, Answer Engine, AI citations, structured data | 5 hours |
+| [SEO-QUICK-REFERENCE.md](./SEO-QUICK-REFERENCE.md) | Quick lookup: common patterns, schemas, checklists | 30 min |
 | [PERFORMANCE-OPTIMIZATION.md](./PERFORMANCE-OPTIMIZATION.md) | Core Web Vitals, image optimization, code splitting, caching | 4 hours |
 | [CONVERSION-OPTIMIZATION.md](./CONVERSION-OPTIMIZATION.md) | Landing page optimization, A/B testing, funnel analysis | 4 hours |
 | [GROWTH-TACTICS.md](./GROWTH-TACTICS.md) | Content marketing, SEO, community, $0→$10k MRR roadmap | 6 hours |
 | [MARKETING.md](./MARKETING.md) | Distribution channels, content strategy, messaging | 3 hours |
 
-**Total:** ~17 hours to master growth and optimization.
+**Total:** ~22.5 hours to master growth and optimization.
 
 ---
 
@@ -74,11 +76,12 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 | Guide | What You'll Learn | Time |
 |-------|------------------|------|
+| [SECURITY-IMPLEMENTATION.md](./SECURITY-IMPLEMENTATION.md) | **Complete guide:** Rate limiting, input validation, bot protection, audit logging, GDPR | 4 hours |
 | [SECURITY-BEST-PRACTICES.md](./SECURITY-BEST-PRACTICES.md) | Authentication, authorization, data protection, incident response | 3 hours |
 | [BACKUP-RECOVERY.md](./BACKUP-RECOVERY.md) | Database backups, disaster recovery, business continuity | 2 hours |
 | [SECURITY.md](./SECURITY.md) | Security features overview, compliance (GDPR, PCI) | 30 min |
 
-**Total:** ~5.5 hours to secure and protect your SaaS.
+**Total:** ~9.5 hours to secure and protect your SaaS.
 
 ---
 

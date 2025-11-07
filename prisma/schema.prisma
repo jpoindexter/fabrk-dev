@@ -35,9 +35,14 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts      Account[]
-  sessions      Session[]
-  payments      Payment[]
+  accounts           Account[]
+  sessions           Session[]
+  payments           Payment[]
+  mfaDevices         MFADevice[]
+  backupCodes        BackupCode[]
+  organizations      OrganizationMember[]
+  organizationInvites OrganizationInvite[]
+  uploads            Upload[]
 
   @@index([email])
 }
@@ -121,4 +126,160 @@ model WebhookEvent {
   processed DateTime @default(now())
 
   @@index([eventId])
+}
+
+// ===========================
+// MULTI-FACTOR AUTHENTICATION
+// ===========================
+
+model MFADevice {
+  id        String    @id @default(cuid())
+  userId    String
+  type      String    @default("totp") // totp, sms, webauthn
+  secret    String?   // TOTP secret
+  verified  Boolean   @default(false)
+  name      String?   // Device name
+  lastUsed  DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model BackupCode {
+  id        String    @id @default(cuid())
+  userId    String
+  code      String    // Hashed backup code
+  used      Boolean   @default(false)
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([code])
+}
+
+// ===========================
+// TEAMS/ORGANIZATIONS
+// ===========================
+
+model Organization {
+  id             String   @id @default(cuid())
+  name           String
+  slug           String   @unique
+  description    String?
+  logo           String?
+  plan           String   @default("FREE") // FREE, STARTER, PRO, ENTERPRISE
+  customerId     String?  @unique // Stripe customer ID
+  subscriptionId String?  // Stripe subscription ID
+  settings       Json?    // Organization settings
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  members  OrganizationMember[]
+  invites  OrganizationInvite[]
+  uploads  Upload[]
+
+  @@index([slug])
+}
+
+model OrganizationMember {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  role           OrgRole  @default(MEMBER)
+  joinedAt       DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+  @@index([userId])
+  @@index([organizationId])
+}
+
+model OrganizationInvite {
+  id             String    @id @default(cuid())
+  organizationId String
+  email          String
+  role           OrgRole   @default(MEMBER)
+  invitedBy      String
+  token          String    @unique
+  expiresAt      DateTime
+  acceptedAt     DateTime?
+  createdAt      DateTime  @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  inviter      User         @relation(fields: [invitedBy], references: [id], onDelete: Cascade)
+
+  @@index([email])
+  @@index([token])
+}
+
+enum OrgRole {
+  OWNER
+  ADMIN
+  MEMBER
+  GUEST
+}
+
+// ===========================
+// FILE UPLOADS
+// ===========================
+
+model Upload {
+  id             String   @id @default(cuid())
+  userId         String
+  organizationId String?
+  filename       String
+  originalName   String
+  mimeType       String
+  size           Int      // bytes
+  url            String
+  key            String   // S3 key
+  bucket         String?
+  metadata       Json?
+  visibility     String   @default("private") // private, public
+  createdAt      DateTime @default(now())
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([organizationId])
+}
+
+// ===========================
+// BACKGROUND JOBS
+// ===========================
+
+model Job {
+  id           String    @id @default(cuid())
+  type         String    // email, webhook, report, etc.
+  status       JobStatus @default(PENDING)
+  priority     Int       @default(0) // Higher = more priority
+  attempts     Int       @default(0)
+  maxAttempts  Int       @default(3)
+  data         Json?     // Job payload
+  result       Json?     // Job result
+  error        String?   // Error message
+  scheduledFor DateTime? // For delayed jobs
+  startedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([type])
+  @@index([status])
+  @@index([scheduledFor])
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
 }

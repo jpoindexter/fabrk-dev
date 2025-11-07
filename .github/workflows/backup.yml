@@ -1,0 +1,107 @@
+name: Database Backup
+
+on:
+  schedule:
+    # Daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  backup:
+    name: Backup Production Database
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Create backup
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          BACKUP_FILE="backup-${TIMESTAMP}.sql"
+
+          echo "Creating backup: ${BACKUP_FILE}"
+          pg_dump "${DATABASE_URL}" > "${BACKUP_FILE}"
+
+          # Compress backup
+          gzip "${BACKUP_FILE}"
+
+          echo "BACKUP_FILE=${BACKUP_FILE}.gz" >> $GITHUB_ENV
+          echo "Backup created: ${BACKUP_FILE}.gz"
+
+      - name: Upload backup to artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: database-backup
+          path: ${{ env.BACKUP_FILE }}
+          retention-days: 30
+
+      - name: Upload backup to AWS S3 (optional)
+        if: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          aws s3 cp "${{ env.BACKUP_FILE }}" "s3://${{ secrets.S3_BACKUP_BUCKET }}/database/"
+        continue-on-error: true
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '❌ Database Backup Failed',
+              body: `Database backup failed on ${new Date().toISOString()}. Please investigate immediately.`,
+              labels: ['bug', 'critical', 'backup']
+            });
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ Database backup completed successfully"
+          echo "Backup file: ${{ env.BACKUP_FILE }}"
+          echo "Retention: 30 days in GitHub Artifacts"
+
+  cleanup:
+    name: Cleanup Old Backups
+    runs-on: ubuntu-latest
+    needs: backup
+
+    steps:
+      - name: Delete old artifacts (optional)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listArtifactsForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const backupArtifacts = artifacts.data.artifacts.filter(
+              artifact => artifact.name === 'database-backup'
+            );
+
+            // Keep last 30 backups, delete older ones
+            const toDelete = backupArtifacts.slice(30);
+
+            for (const artifact of toDelete) {
+              await github.rest.actions.deleteArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: artifact.id,
+              });
+            }
+
+            console.log(`Deleted ${toDelete.length} old backup artifacts`);
+        continue-on-error: true
