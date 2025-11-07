@@ -100,3 +100,39 @@ export async function sendResetEmail(to: string, token: string) {
     return { success: false, error };
   }
 }
+
+/**
+ * Email Service Object (for compatibility)
+ */
+export const emailService = {
+  sendWelcomeEmail,
+  sendVerificationEmail,
+  sendResetEmail,
+
+  /**
+   * Send template-based email
+   */
+  async sendTemplate(
+    template: "email-verification" | "password-reset" | "welcome",
+    to: string,
+    data: { verificationLink?: string; resetLink?: string; name?: string; licenseKey?: string }
+  ) {
+    switch (template) {
+      case "email-verification":
+        if (!data.verificationLink) throw new Error("verificationLink required");
+        const token = data.verificationLink.split("/").pop() || "";
+        return sendVerificationEmail(to, token);
+
+      case "password-reset":
+        if (!data.resetLink) throw new Error("resetLink required");
+        const resetToken = data.resetLink.split("/").pop() || "";
+        return sendResetEmail(to, resetToken);
+
+      case "welcome":
+        return sendWelcomeEmail(to, data.name || "User", data.licenseKey);
+
+      default:
+        throw new Error(`Unknown template: ${template}`);
+    }
+  },
+};
