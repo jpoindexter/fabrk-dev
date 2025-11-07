@@ -48,9 +48,9 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="scroll-mt-16 bg-white px-6 py-24">
+    <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-left text-4xl font-bold text-black">
+        <h2 className="mb-4 text-left text-4xl font-bold text-foreground">
           Everything You Need, Nothing You Don't.
         </h2>
 
@@ -60,13 +60,13 @@ export function FeaturesSection() {
             return (
               <div
                 key={feature.title}
-                className="group rounded-lg border border-black/10 bg-white p-8 shadow-sm transition-all hover:shadow-lg"
+                className="group rounded-lg border-3 border-border bg-card p-8 shadow-brutal transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm"
               >
-                <Icon className="mb-4 h-8 w-8 text-[#007AFF]" strokeWidth={1.5} />
-                <h3 className="mb-3 text-xl font-bold text-black">
+                <Icon className="mb-4 h-8 w-8 text-primary" strokeWidth={1.5} />
+                <h3 className="mb-3 text-xl font-bold text-foreground">
                   {feature.title}
                 </h3>
-                <p className="leading-relaxed text-[#333333]">
+                <p className="leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>
