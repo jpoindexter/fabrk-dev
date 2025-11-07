@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { CheckoutButton } from "@/components/pricing/checkout-button";
 
 export function PricingSection() {
   const features = [
@@ -52,13 +51,13 @@ export function PricingSection() {
             </ul>
 
             {/* CTA Button */}
-            <Button
-              size="lg"
-              className="h-14 w-full bg-[#007AFF] text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#0066CC] hover:shadow-xl"
-              asChild
+            <CheckoutButton
+              priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || ""}
+              planName="Fabrk Boilerplate"
+              className="h-14 w-full bg-primary text-lg font-semibold text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="/checkout">Buy Now & Ship Faster</Link>
-            </Button>
+              Buy Now & Ship Faster
+            </CheckoutButton>
 
             {/* Risk Reversal */}
             <p className="mt-6 text-center text-sm text-[#666666]">
