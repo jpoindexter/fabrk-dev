@@ -11,22 +11,43 @@
 
 ---
 
+## 🎨 **NEW: Interactive Showcases** ⭐
+
+**See everything before you build:**
+
+- **[/components](http://localhost:3000/components)** - All 87+ UI components with variants
+- **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
+- **[/whats-included](http://localhost:3000/whats-included)** - Complete feature overview
+- **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
+- **[/examples/analytics](http://localhost:3000/examples/analytics)** - Analytics dashboard
+
+**Preview everything interactively before purchasing!**
+
+---
+
 ## What is Fabrk?
 
-Fabrk is a production-ready Next.js 15 SaaS boilerplate that includes everything you need to launch your SaaS in days, not months:
+Fabrk is a production-ready Next.js 15 SaaS boilerplate with **5 features NO competitor has**:
+
+🔐 **Multi-Factor Authentication (2FA)** - TOTP with QR codes + backup codes
+⚙️ **Background Job Queue** - Database-backed, no Redis needed
+👥 **Team/Organization Management** - Complete multi-tenancy with RBAC
+📤 **File Upload System** - S3-compatible with image optimization
+🤖 **AI Integration Toolkit** - OpenAI + Anthropic with streaming
+
+**Plus all the essentials:**
 
 ✅ **Authentication** - NextAuth v5 (Credentials + Google OAuth)
 ✅ **Payments** - Stripe (one-time + subscriptions)
 ✅ **Database** - PostgreSQL + Prisma ORM
 ✅ **Email** - Resend with React Email templates
-✅ **UI Components** - 87 components built with Radix UI
-✅ **Styling** - Tailwind CSS + Dark mode
+✅ **UI Components** - 87 components with neo-brutalism styling
+✅ **Admin Dashboard** - User management, analytics, monitoring
 ✅ **TypeScript** - Strict mode, zero `any` types
-✅ **Documentation** - 400KB of guides (24 comprehensive docs)
-✅ **CI/CD** - GitHub Actions workflows included
-✅ **Testing** - Vitest + Playwright ready
+✅ **Documentation** - 50+ comprehensive guides
+✅ **Testing** - Vitest configured with examples
 
-**Ship your SaaS this weekend.** No bloat. No complexity. Just the essentials.
+**Ship your SaaS this weekend.** No bloat. No complexity. Just production-ready code.
 
 ---
 

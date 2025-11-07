@@ -79,11 +79,24 @@ const config: Config = {
         "surface-11": "hsl(var(--surface-11))",
         "surface-12": "hsl(var(--surface-12))",
       },
-      // UI Pub 7px border radius
+      // Neo-Brutalism border radius
       borderRadius: {
         lg: "var(--radius)",
         md: "var(--radius)",
         sm: "calc(var(--radius) - 2px)",
+      },
+      // Neo-Brutalism shadows
+      boxShadow: {
+        "brutal-sm": "2px 2px 0px 0px rgba(0, 0, 0, 1)",
+        brutal: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
+        "brutal-md": "4px 4px 0px 0px rgba(0, 0, 0, 1)",
+        "brutal-lg": "8px 8px 0px 0px rgba(0, 0, 0, 1)",
+        "brutal-xl": "12px 12px 0px 0px rgba(0, 0, 0, 1)",
+      },
+      // Neo-Brutalism border widths
+      borderWidth: {
+        3: "3px",
+        4: "4px",
       },
       fontFamily: {
         sans: [

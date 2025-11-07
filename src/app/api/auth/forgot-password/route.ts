@@ -9,7 +9,7 @@ import { successResponse } from "@/lib/api/response";
 import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { randomBytes } from "crypto";
+import { createHash, randomBytes } from "crypto";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 
@@ -38,20 +38,23 @@ async function forgotPasswordHandler(request: NextRequest) {
     },
   });
 
-  // Generate reset token
+  // Generate reset token (this is sent in the email)
   const token = randomBytes(32).toString("hex");
   const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
-  // Store token with "reset:" prefix to differentiate from email verification
+  // Hash token before storing (security: tokens are hashed in DB)
+  const hashedToken = createHash("sha256").update(token).digest("hex");
+
+  // Store hashed token with "reset:" prefix to differentiate from email verification
   await prisma.verificationToken.create({
     data: {
       identifier: `reset:${email}`,
-      token,
+      token: hashedToken,
       expires,
     },
   });
 
-  // Send password reset email
+  // Send password reset email with plain token
   const resetLink = `${process.env.NEXTAUTH_URL}/reset-password/${token}`;
   await emailService.sendTemplate("password-reset", email, {
     resetLink,

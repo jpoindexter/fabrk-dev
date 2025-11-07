@@ -159,72 +159,65 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       throw new Error("No customer email found in session");
     }
 
-    // Get or create customer record
-    let customer = await prisma.customer.findUnique({
+    // Get or create user record
+    let user = await prisma.user.findUnique({
       where: { email: customerEmail },
     });
 
-    if (!customer) {
-      customer = await prisma.customer.create({
+    if (!user) {
+      // Create new user if doesn't exist
+      const licenseKey = await generateUniqueLicenseKey();
+      user = await prisma.user.create({
         data: {
           email: customerEmail,
           name: customerName,
-          totalPurchases: 1,
-          totalSpent: session.amount_total || 0,
-          lastPurchaseAt: new Date(),
+          customerId: session.customer as string,
+          licenseKey,
+          tier: session.metadata?.tier || "starter",
+          subscriptionTier: session.metadata?.tier || "starter",
         },
       });
     } else {
-      await prisma.customer.update({
+      // Update existing user with license and tier
+      const licenseKey = user.licenseKey || (await generateUniqueLicenseKey());
+      await prisma.user.update({
         where: { email: customerEmail },
         data: {
-          totalPurchases: { increment: 1 },
-          totalSpent: { increment: session.amount_total || 0 },
-          lastPurchaseAt: new Date(),
+          customerId: session.customer as string,
+          licenseKey,
+          tier: session.metadata?.tier || user.tier,
+          subscriptionTier: session.metadata?.tier || user.tier,
         },
       });
     }
 
-    // Generate unique license key
-    const licenseKey = await generateUniqueLicenseKey();
-
-    // Extract tier from metadata or default to 'developer'
-    const tier = session.metadata?.tier || "developer";
+    // Extract tier from metadata
+    const tier = session.metadata?.tier || "starter";
     const productId = session.metadata?.productId || null;
 
-    // Create purchase record
-    const purchase = await prisma.purchase.create({
+    // Create payment record
+    const payment = await prisma.payment.create({
       data: {
-        email: customerEmail,
-        name: customerName,
-        licenseKey,
-        provider: "STRIPE",
-        stripeCustomerId: session.customer as string,
-        stripeSessionId: session.id,
+        userId: user.id,
+        stripeId: session.id,
         stripePaymentId: session.payment_intent as string,
         amount: session.amount_total || 0,
+        status: "succeeded",
         productId,
-        tier,
-        status: "ACTIVE",
-        purchasedAt: new Date(),
-        welcomeEmailSent: false,
       },
     });
 
-    logger.info("Purchase created:", {
-      id: purchase.id,
+    logger.info("Payment created:", {
+      id: payment.id,
       email: customerEmail,
-      licenseKey,
+      licenseKey: user.licenseKey,
       tier,
     });
 
-    // Send welcome email (queue for background processing)
-    await queueWelcomeEmail(purchase.id, customerEmail, licenseKey);
+    // Send welcome email directly (ShipFast style - no queue)
+    await sendWelcomeEmailDirect(user.id, customerEmail, user.licenseKey!);
 
-    // Audit logging removed for simplicity
-    // Consider adding back for production if needed
-
-    return purchase;
+    return payment;
   } catch (error) {
     logger.error(
       "Error handling checkout completion:",
@@ -234,22 +227,14 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-async function queueWelcomeEmail(purchaseId: string, email: string, licenseKey: string) {
+async function sendWelcomeEmailDirect(userId: string, email: string, licenseKey: string) {
   try {
-    await prisma.emailQueue.create({
-      data: {
-        purchaseId,
-        type: "WELCOME",
-        to: email,
-        subject: "Your Fabrk License Key",
-        status: "PENDING",
-      },
-    });
-
-    logger.info("Welcome email queued", { email });
+    const { sendWelcomeEmail } = await import("@/lib/email");
+    await sendWelcomeEmail(email, email.split("@")[0], licenseKey);
+    logger.info("Welcome email sent", { email });
   } catch (error) {
     logger.error(
-      "Error queueing welcome email",
+      "Error sending welcome email",
       error instanceof Error ? error.message : String(error)
     );
     // Don't throw - email failure shouldn't block purchase

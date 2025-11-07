@@ -24,14 +24,18 @@ model User {
   role          Role      @default(USER)
   
   // Stripe integration
-  customerId    String?   @unique // Stripe customer ID
-  tier          String    @default("free") // free, starter, pro
-  
+  customerId       String?   @unique // Stripe customer ID
+  tier             String    @default("free") // free, starter, pro
+  subscriptionTier String?   // Subscription tier (for NextAuth session)
+  trialEndsAt      DateTime? // Trial expiration date
+  licenseKey       String?   @unique // Product license key
+
   // Simple security
   resetToken    String?   @unique
   resetExpires  DateTime?
   verifyToken   String?   @unique
-  
+  sessionVersion Int      @default(1) // Incremented to invalidate all sessions
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -95,6 +99,7 @@ model Payment {
   id               String   @id @default(cuid())
   userId           String
   stripeId         String   @unique // payment_intent or session id
+  stripePaymentId  String?  // Stripe payment_intent ID (for compatibility)
   amount           Int      // cents
   status           String   // succeeded, failed, pending
   productId        String?  // Your product identifier

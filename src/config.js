@@ -188,4 +188,11 @@ const config = {
   },
 };
 
+// Export as both config and siteConfig for compatibility
 module.exports = config;
+module.exports.siteConfig = {
+  name: config.app.name,
+  description: config.app.description,
+  url: config.app.url,
+};
+module.exports.default = config;

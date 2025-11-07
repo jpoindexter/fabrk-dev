@@ -16,46 +16,46 @@ import * as React from "react";
 import { cn } from "@/lib/design-system/utils";
 
 const buttonVariants = cva(
-  // Base styles - Using 8px spacing system & typography tokens
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[14px] font-medium leading-none ring-offset-background transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  // Base styles - Neo-Brutalism with bold borders and shadows
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[14px] font-bold leading-none border-3 border-black dark:border-white shadow-brutal-sm transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Primary action - Purple brand color with border for definition
+        // Primary action - Purple brand color with brutal border
         default:
-          "border border-primary bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 active:bg-primary/95",
+          "bg-primary text-primary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
-        // Destructive action - High contrast red with clear danger signal
+        // Destructive action - High contrast red with brutal shadow
         destructive:
-          "border border-destructive bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 active:bg-destructive/95",
+          "bg-destructive text-destructive-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
         // Success action - Green for positive actions
         success:
-          "border border-primary bg-success text-primary-foreground shadow-sm hover:bg-success/90 active:bg-success/95",
+          "bg-success text-success-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
-        // Outline - Subtle with hover state
+        // Outline - White background with brutal border
         outline:
-          "border border-input bg-background hover:border-accent hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
+          "bg-background text-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
-        // Secondary - Less emphasis than primary
+        // Secondary - Yellow accent with brutal style
         secondary:
-          "border border-secondary bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 active:bg-secondary/90",
+          "bg-secondary text-secondary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
-        // Ghost - Minimal, no border
+        // Ghost - No shadow, minimal border
         ghost:
-          "hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
+          "border-transparent shadow-none hover:bg-accent hover:text-accent-foreground hover:border-black dark:hover:border-white",
 
-        // Link - Text-only
+        // Link - Text-only, no border or shadow
         link:
-          "text-primary underline-offset-4 hover:underline active:text-primary/80",
+          "border-transparent shadow-none text-primary underline-offset-4 hover:underline",
 
-        // Marketing - Bold, uppercase
+        // Marketing - Bold, uppercase with brutal styling
         marketing:
-          "border border-border bg-primary font-semibold uppercase tracking-wide text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg active:scale-[0.97]",
+          "bg-primary uppercase tracking-wide text-primary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
 
-        // Marketing outline
+        // Marketing outline - Brutal outline style
         marketingOutline:
-          "border-2 border-border bg-background font-semibold uppercase tracking-wide text-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
+          "bg-background uppercase tracking-wide text-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
       },
       size: {
         // Aligned with 8px spacing system

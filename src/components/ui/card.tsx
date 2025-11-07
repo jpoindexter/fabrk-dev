@@ -37,21 +37,20 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       ref={ref}
       className={cn(
-        // Base styles - 8px spacing system
-        "rounded-lg border border-border bg-card text-card-foreground shadow-sm",
+        // Base styles - Neo-Brutalism
+        "rounded-lg border-3 border-black dark:border-white bg-card text-card-foreground shadow-brutal",
 
         // Transitions - Smooth state changes
-        "transition-all duration-200 ease-out",
+        "transition-all duration-150 ease-out",
 
-        // Hover state - Subtle lift effect
-        "hover:border-accent/50 hover:shadow-md",
+        // Hover state - Brutal lift effect
+        "hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm",
 
         // Focus-within state - Clear ring indicator for accessibility
-        "focus-within:border-ring focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
+        "focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/20",
 
         // Dark mode
-        "dark:border-border dark:bg-card dark:shadow-sm",
-        "dark:hover:border-accent/40 dark:hover:shadow-md",
+        "dark:border-white dark:bg-card dark:shadow-brutal",
 
         className
       )}

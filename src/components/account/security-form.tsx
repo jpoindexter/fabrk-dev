@@ -59,18 +59,42 @@ export function SecurityForm() {
   async function onSubmit(data: SecurityFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/password", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          currentPassword: data.currentPassword,
+          newPassword: data.newPassword,
+        }),
+      });
 
-    console.log("Password change:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Password updated",
-      description: "Your password has been changed successfully.",
-    });
+      if (!response.ok) {
+        toast({
+          title: "Error",
+          description: result.error || "Failed to update password",
+          variant: "destructive",
+        });
+        return;
+      }
 
-    form.reset();
-    setIsLoading(false);
+      toast({
+        title: "Password updated",
+        description: "Your password has been changed successfully.",
+      });
+
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to update password. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
