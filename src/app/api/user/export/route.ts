@@ -1,0 +1,106 @@
+/**
+ * Export User Data API Route
+ * GET /api/user/export
+ * GDPR-compliant data export
+ */
+
+import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+
+export async function GET(req: Request) {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Gather all user data
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: {
+        accounts: true,
+        sessions: true,
+        payments: true,
+        uploads: true,
+        mfaDevices: true,
+        backupCodes: true,
+        organizationMembers: {
+          include: {
+            organization: true,
+          },
+        },
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Remove sensitive data
+    const exportData = {
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        image: user.image,
+        role: user.role,
+        tier: user.tier,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+      },
+      accounts: user.accounts.map((account) => ({
+        provider: account.provider,
+        type: account.type,
+        createdAt: account.createdAt,
+      })),
+      sessions: user.sessions.map((session) => ({
+        createdAt: session.createdAt,
+        expiresAt: session.expires,
+      })),
+      payments: user.payments.map((payment) => ({
+        id: payment.id,
+        amount: payment.amount,
+        currency: payment.currency,
+        status: payment.status,
+        productId: payment.productId,
+        createdAt: payment.createdAt,
+      })),
+      uploads: user.uploads.map((upload) => ({
+        id: upload.id,
+        filename: upload.filename,
+        mimeType: upload.mimeType,
+        size: upload.size,
+        visibility: upload.visibility,
+        createdAt: upload.createdAt,
+      })),
+      organizations: user.organizationMembers.map((member) => ({
+        organizationId: member.organizationId,
+        organizationName: member.organization.name,
+        role: member.role,
+        joinedAt: member.joinedAt,
+      })),
+      security: {
+        mfaEnabled: user.mfaDevices.some((d) => d.verified),
+        mfaDevicesCount: user.mfaDevices.filter((d) => d.verified).length,
+      },
+      exportedAt: new Date().toISOString(),
+    };
+
+    // Return as JSON download
+    return new NextResponse(JSON.stringify(exportData, null, 2), {
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Disposition": `attachment; filename="user-data-${user.id}.json"`,
+      },
+    });
+  } catch (error) {
+    console.error("[Data Export] Error:", error);
+    return NextResponse.json(
+      { error: "Failed to export data" },
+      { status: 500 }
+    );
+  }
+}
