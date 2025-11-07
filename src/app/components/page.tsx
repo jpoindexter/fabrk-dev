@@ -24,6 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X, Zap } from "lucide-react";
 
 export default function ComponentsPage() {
@@ -39,12 +40,15 @@ export default function ComponentsPage() {
                 Preview all 87+ production-ready components with neo-brutalism styling
               </p>
             </div>
-            <Link href="/">
-              <Button variant="outline">
-                <Home className="mr-2 h-4 w-4" />
-                Back to Home
-              </Button>
-            </Link>
+            <div className="flex items-center gap-3">
+              <ThemeSwitcher />
+              <Link href="/">
+                <Button variant="outline">
+                  <Home className="mr-2 h-4 w-4" />
+                  Back to Home
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>

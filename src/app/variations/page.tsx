@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ArrowRight, Eye, Home, Sparkles, Zap } from "lucide-react";
 
 const variations = [
@@ -62,12 +63,15 @@ export default function VariationsPage() {
                 4 pre-built designs. All included in your purchase.
               </p>
             </div>
-            <Link href="/">
-              <Button variant="outline">
-                <Home className="mr-2 h-4 w-4" />
-                Home
-              </Button>
-            </Link>
+            <div className="flex items-center gap-3">
+              <ThemeSwitcher />
+              <Link href="/">
+                <Button variant="outline">
+                  <Home className="mr-2 h-4 w-4" />
+                  Home
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
