@@ -19,6 +19,13 @@ export type AuditEventType =
   | "auth.email_verified"
   | "auth.failed_login"
   | "auth.suspicious_login"
+  | "auth.mfa_enabled"
+  | "auth.mfa_disabled"
+  | "auth.mfa_verified"
+  | "auth.mfa_success"
+  | "auth.mfa_failed"
+  | "auth.backup_code_used"
+  | "auth.backup_codes_regenerated"
 
   // Authorization events
   | "authz.role_changed"
@@ -292,6 +299,80 @@ export const AuditLog = {
       result: "success",
       severity: "medium",
       metadata: { oldValue, newValue },
+    }),
+
+  // MFA events
+  mfaEnabled: (userId: string, email: string) =>
+    logAuditEvent({
+      eventType: "auth.mfa_enabled",
+      userId,
+      userEmail: email,
+      action: "MFA enabled",
+      result: "success",
+      severity: "medium",
+    }),
+
+  mfaDisabled: (userId: string, email: string) =>
+    logAuditEvent({
+      eventType: "auth.mfa_disabled",
+      userId,
+      userEmail: email,
+      action: "MFA disabled",
+      result: "success",
+      severity: "high",
+    }),
+
+  mfaVerified: (userId: string, email: string) =>
+    logAuditEvent({
+      eventType: "auth.mfa_verified",
+      userId,
+      userEmail: email,
+      action: "MFA device verified",
+      result: "success",
+      severity: "low",
+    }),
+
+  mfaSuccess: (userId: string, email: string, ip?: string) =>
+    logAuditEvent({
+      eventType: "auth.mfa_success",
+      userId,
+      userEmail: email,
+      ipAddress: ip,
+      action: "MFA verification successful",
+      result: "success",
+      severity: "low",
+    }),
+
+  mfaFailed: (userId: string, email: string, ip?: string) =>
+    logAuditEvent({
+      eventType: "auth.mfa_failed",
+      userId,
+      userEmail: email,
+      ipAddress: ip,
+      action: "MFA verification failed",
+      result: "failure",
+      severity: "medium",
+    }),
+
+  backupCodeUsed: (userId: string, email: string, ip?: string) =>
+    logAuditEvent({
+      eventType: "auth.backup_code_used",
+      userId,
+      userEmail: email,
+      ipAddress: ip,
+      action: "Backup code used for login",
+      result: "success",
+      severity: "medium",
+    }),
+
+  backupCodesRegenerated: (userId: string, email: string) =>
+    logAuditEvent({
+      eventType: "auth.backup_codes_regenerated",
+      userId,
+      userEmail: email,
+      action: "Backup codes regenerated",
+      result: "success",
+      severity: "medium",
     }),
 };
 
