@@ -9,6 +9,7 @@ import { successResponse } from "@/lib/api/response";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { hash } from "bcryptjs";
+import { createHash } from "crypto";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 
@@ -21,9 +22,12 @@ async function resetPasswordHandler(request: NextRequest) {
   const body = await request.json();
   const { token, password } = resetPasswordSchema.parse(body);
 
-  // Find reset token
+  // Hash the token from URL to match stored hash
+  const hashedToken = createHash("sha256").update(token).digest("hex");
+
+  // Find reset token (searching by hashed token)
   const resetToken = await prisma.verificationToken.findUnique({
-    where: { token },
+    where: { token: hashedToken },
   });
 
   if (!resetToken || !resetToken.identifier.startsWith("reset:")) {
@@ -34,7 +38,7 @@ async function resetPasswordHandler(request: NextRequest) {
   if (resetToken.expires < new Date()) {
     // Delete expired token
     await prisma.verificationToken.delete({
-      where: { token },
+      where: { token: hashedToken },
     });
 
     throw new ValidationError("Reset token has expired");
@@ -46,15 +50,18 @@ async function resetPasswordHandler(request: NextRequest) {
   // Hash new password
   const hashedPassword = await hash(password, 12);
 
-  // Update user password
+  // Update user password and increment session version (invalidates all sessions)
   await prisma.user.update({
     where: { email },
-    data: { password: hashedPassword },
+    data: {
+      password: hashedPassword,
+      sessionVersion: { increment: 1 }
+    },
   });
 
   // Delete used token
   await prisma.verificationToken.delete({
-    where: { token },
+    where: { token: hashedToken },
   });
 
   return successResponse(null, "Password reset successfully");

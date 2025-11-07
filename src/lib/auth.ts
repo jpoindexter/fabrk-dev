@@ -62,32 +62,47 @@ export const authConfig: NextAuthConfig = {
     async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
-        // @ts-ignore - role exists in database but not in NextAuth user type
         token.role = user.role;
-        // Fetch fresh user data for subscription info
+        // Fetch fresh user data for subscription info and session version
         const dbUser = await prisma.user.findUnique({
           where: { id: user.id },
           select: {
             subscriptionTier: true,
             customerId: true,
             trialEndsAt: true,
+            sessionVersion: true,
           },
         });
         if (dbUser) {
           token.subscriptionTier = dbUser.subscriptionTier;
           token.customerId = dbUser.customerId;
           token.trialEndsAt = dbUser.trialEndsAt;
+          token.sessionVersion = dbUser.sessionVersion;
         }
       }
+
+      // Verify session version on every request (invalidate if changed)
+      if (token.id && token.sessionVersion) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id as string },
+          select: { sessionVersion: true },
+        });
+
+        // If session version doesn't match, invalidate the token
+        if (!dbUser || dbUser.sessionVersion !== token.sessionVersion) {
+          return null; // This will log the user out
+        }
+      }
+
       return token;
     },
     async session({ session, token }) {
       if (session?.user) {
-        session.user.id = token.id as string;
-        (session.user as any).role = token.role as string;
-        (session.user as any).subscriptionTier = token.subscriptionTier as string;
-        (session.user as any).customerId = token.customerId as string | null;
-        (session.user as any).trialEndsAt = token.trialEndsAt as Date | null;
+        session.user.id = token.id;
+        session.user.role = token.role;
+        session.user.subscriptionTier = token.subscriptionTier;
+        session.user.customerId = token.customerId;
+        session.user.trialEndsAt = token.trialEndsAt;
       }
       return session;
     },

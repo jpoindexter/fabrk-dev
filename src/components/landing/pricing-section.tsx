@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { CheckoutButton } from "@/components/pricing/checkout-button";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export function PricingSection() {
   const features = [
@@ -51,13 +52,23 @@ export function PricingSection() {
             </ul>
 
             {/* CTA Button */}
-            <CheckoutButton
-              priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || ""}
-              planName="Fabrk Boilerplate"
-              className="h-14 w-full text-lg font-semibold"
+            <ErrorBoundary
+              fallback={
+                <div className="rounded-lg border-3 border-destructive bg-destructive/10 p-4 text-center">
+                  <p className="text-sm text-destructive">
+                    Unable to load checkout. Please refresh the page or contact support.
+                  </p>
+                </div>
+              }
             >
-              Buy Now & Ship Faster
-            </CheckoutButton>
+              <CheckoutButton
+                priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || ""}
+                planName="Fabrk Boilerplate"
+                className="h-14 w-full text-lg font-semibold"
+              >
+                Buy Now & Ship Faster
+              </CheckoutButton>
+            </ErrorBoundary>
 
             {/* Risk Reversal */}
             <p className="mt-6 text-center text-sm text-muted-foreground">
