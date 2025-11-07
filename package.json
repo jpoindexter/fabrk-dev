@@ -17,7 +17,12 @@
     "db:reset": "prisma db push --force-reset && npm run db:seed",
     "db:migrate": "prisma migrate dev",
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe",
-    "test": "echo \"Tests not configured. Add your test runner (Vitest, Jest, etc.)\" && exit 0",
+    "jobs:worker": "node scripts/job-worker.js",
+    "jobs:dev": "nodemon scripts/job-worker.js",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
     "test:e2e": "echo \"E2E tests not configured. Add Playwright or Cypress.\" && exit 0",
     "analyze": "ANALYZE=true npm run build"
   },

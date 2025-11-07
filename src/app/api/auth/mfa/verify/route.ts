@@ -1,0 +1,52 @@
+/**
+ * Verify MFA Device API Route
+ * POST /api/auth/mfa/verify
+ */
+
+import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
+import { verifyMFADevice } from "@/lib/auth/mfa";
+
+export async function POST(req: Request) {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.id || !session?.user?.email) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    const { token } = await req.json();
+
+    if (!token || token.length !== 6) {
+      return NextResponse.json(
+        { error: "Invalid token" },
+        { status: 400 }
+      );
+    }
+
+    // Verify device
+    const verified = await verifyMFADevice(
+      session.user.id,
+      session.user.email,
+      token
+    );
+
+    if (!verified) {
+      return NextResponse.json(
+        { error: "Invalid verification code" },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("[MFA Verify] Error:", error);
+    return NextResponse.json(
+      { error: "Failed to verify MFA" },
+      { status: 500 }
+    );
+  }
+}
