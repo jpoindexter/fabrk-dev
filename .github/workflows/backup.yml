@@ -37,7 +37,7 @@ jobs:
           echo "Backup created: ${BACKUP_FILE}.gz"
 
       - name: Upload backup to artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         with:
           name: database-backup
           path: ${{ env.BACKUP_FILE }}
