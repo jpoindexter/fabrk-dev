@@ -25,8 +25,8 @@ export function generateCheckoutIdempotencyKey(
 export async function getExistingCheckoutSession(
   idempotencyKey: string
 ): Promise<string | null> {
-  const record = await prisma.checkoutIdempotency.findUnique({
-    where: { idempotencyKey },
+  const record = await prisma.checkoutSession.findUnique({
+    where: { sessionId: idempotencyKey },
     select: { sessionId: true },
   });
 
@@ -45,10 +45,9 @@ export async function storeCheckoutIdempotency(
   const expiresAt = new Date();
   expiresAt.setHours(expiresAt.getHours() + 24); // 24 hour expiry
 
-  await prisma.checkoutIdempotency.create({
+  await prisma.checkoutSession.create({
     data: {
-      idempotencyKey,
-      userId,
+      userId: userId || "guest",
       sessionId,
       priceId,
       expiresAt,
