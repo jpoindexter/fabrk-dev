@@ -72,14 +72,15 @@ export function DataTable<TData, TValue>({
         searchKey={searchKey}
         searchPlaceholder={searchPlaceholder}
       />
-      <div className="rounded-lg border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="rounded-lg border-2 border-black bg-card shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-b-2 border-black hover:bg-transparent">
                 {headerGroup.headers.map((header) => {
+                  if (!header || !header.column) return null;
                   return (
-                    <TableHead key={header.id} className="font-bold text-black">
+                    <TableHead key={header.id} className="font-bold text-foreground">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -101,9 +102,9 @@ export function DataTable<TData, TValue>({
                   onClick={() => onRowClick?.(row.original)}
                   className={`
                     border-b border-black/10
-                    ${index % 2 === 0 ? "bg-white" : "bg-[#F7F7F7]"}
-                    ${onRowClick ? "cursor-pointer hover:bg-[#007AFF]/5" : ""}
-                    ${row.getIsSelected() ? "bg-[#007AFF]/10" : ""}
+                    ${index % 2 === 0 ? "bg-card" : "bg-muted"}
+                    ${onRowClick ? "cursor-pointer hover:bg-primary/5" : ""}
+                    ${row.getIsSelected() ? "bg-primary/10" : ""}
                   `}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -117,11 +118,11 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-sm text-[#666666]">No results found.</p>
+                    <p className="text-sm text-muted-foreground">No results found.</p>
                     {searchKey && table.getColumn(searchKey)?.getFilterValue() && (
                       <button
                         onClick={() => table.getColumn(searchKey)?.setFilterValue("")}
-                        className="text-xs text-[#007AFF] hover:underline"
+                        className="text-xs text-primary hover:underline"
                       >
                         Clear search
                       </button>

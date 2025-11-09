@@ -6,11 +6,11 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Simple Header */}
-      <header className="border-b border-black/10 bg-white px-6 py-4">
+      <header className="border-b border-border/60 bg-background px-6 py-4">
         <div className="mx-auto max-w-4xl">
-          <Link href="/" className="text-xl font-bold text-black hover:text-[#007AFF]">
+          <Link href="/" className="text-xl font-bold text-foreground hover:text-primary">
             ← Back to Fabrk
           </Link>
         </div>
@@ -24,19 +24,19 @@ export default function LegalLayout({
       </main>
 
       {/* Simple Footer */}
-      <footer className="border-t border-black/10 bg-[#F7F7F7] px-6 py-8">
+      <footer className="border-t border-border/60 bg-muted px-6 py-8">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm text-[#666666]">
+          <p className="text-sm text-muted-foreground">
             © 2025 Fabrk. All rights reserved.
           </p>
           <div className="mt-4 flex justify-center gap-6">
-            <Link href="/terms" className="text-sm text-[#333333] hover:text-[#007AFF]">
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary">
               Terms
             </Link>
-            <Link href="/privacy" className="text-sm text-[#333333] hover:text-[#007AFF]">
+            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary">
               Privacy
             </Link>
-            <Link href="/refund" className="text-sm text-[#333333] hover:text-[#007AFF]">
+            <Link href="/refund" className="text-sm text-muted-foreground hover:text-primary">
               Refund Policy
             </Link>
           </div>

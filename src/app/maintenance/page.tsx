@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  */
 export default function MaintenancePage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
       <div className="mx-auto max-w-2xl text-center">
         {/* Maintenance Icon */}
         <div className="mb-8 flex justify-center">
@@ -29,10 +29,10 @@ export default function MaintenancePage() {
         </div>
 
         {/* Message */}
-        <h1 className="mb-4 text-4xl font-bold text-black">
+        <h1 className="mb-4 text-4xl font-bold text-foreground">
           Scheduled Maintenance
         </h1>
-        <p className="mb-6 text-lg text-[#666666]">
+        <p className="mb-6 text-lg text-muted-foreground">
           We're currently performing scheduled maintenance to improve your experience.
           We'll be back shortly!
         </p>
@@ -47,7 +47,7 @@ export default function MaintenancePage() {
 
         {/* Status Updates */}
         <div className="mb-8">
-          <p className="mb-2 text-sm text-[#666666]">
+          <p className="mb-2 text-sm text-muted-foreground">
             For real-time updates, follow us on:
           </p>
           <div className="flex justify-center gap-4">
@@ -55,7 +55,7 @@ export default function MaintenancePage() {
               href="https://twitter.com/yourhandle"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-[#007AFF] hover:underline"
+              className="text-sm font-semibold text-primary hover:underline"
             >
               Twitter
             </a>
@@ -63,7 +63,7 @@ export default function MaintenancePage() {
               href="https://status.yourapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-[#007AFF] hover:underline"
+              className="text-sm font-semibold text-primary hover:underline"
             >
               Status Page
             </a>
@@ -71,21 +71,21 @@ export default function MaintenancePage() {
         </div>
 
         {/* What We're Doing */}
-        <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-6 text-left">
-          <h2 className="mb-4 text-lg font-semibold text-black">
+        <div className="rounded-lg border-2 border-border/60 bg-card p-6 text-left">
+          <h2 className="mb-4 text-lg font-semibold text-foreground">
             What we're working on:
           </h2>
-          <ul className="space-y-2 text-sm text-[#666666]">
+          <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
-              <span className="text-[#007AFF]">•</span>
+              <span className="text-primary">•</span>
               Database optimization for faster performance
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#007AFF]">•</span>
+              <span className="text-primary">•</span>
               Security updates and patches
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#007AFF]">•</span>
+              <span className="text-primary">•</span>
               New features deployment
             </li>
           </ul>
@@ -93,12 +93,12 @@ export default function MaintenancePage() {
 
         {/* Support */}
         <div className="mt-12 border-t border-black/10 pt-8">
-          <p className="mb-2 text-sm text-[#666666]">
+          <p className="mb-2 text-sm text-muted-foreground">
             Need urgent assistance?
           </p>
           <a
             href="mailto:support@fabrk.dev"
-            className="text-sm font-semibold text-[#007AFF] hover:underline"
+            className="text-sm font-semibold text-primary hover:underline"
           >
             support@fabrk.dev
           </a>

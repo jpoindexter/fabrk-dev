@@ -81,9 +81,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="hsl(var(--background))" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>

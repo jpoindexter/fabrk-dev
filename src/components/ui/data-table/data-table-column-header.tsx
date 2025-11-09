@@ -15,7 +15,7 @@ export function DataTableColumnHeader<TData, TValue>({
   title,
   className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
-  if (!column.getCanSort()) {
+  if (!column || !column.getCanSort()) {
     return <div className={cn(className)}>{title}</div>;
   }
 
@@ -23,7 +23,7 @@ export function DataTableColumnHeader<TData, TValue>({
     <div className={cn("flex items-center space-x-2", className)}>
       <button
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="flex items-center gap-2 hover:text-[#007AFF]"
+        className="flex items-center gap-2 hover:text-primary"
       >
         <span>{title}</span>
         {column.getIsSorted() === "desc" ? (

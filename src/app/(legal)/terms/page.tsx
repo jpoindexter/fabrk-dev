@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <article className="prose prose-slate max-w-none">
-      <h1 className="mb-2 text-4xl font-bold text-black">Terms of Service</h1>
-      <p className="mb-8 text-sm text-[#666666]">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold text-foreground">Terms of Service</h1>
+      <p className="mb-8 text-sm text-muted-foreground">Last updated: January 2025</p>
 
-      <div className="space-y-8 text-[#333333]">
+      <div className="space-y-8 text-foreground">
         <section>
-          <h2 className="text-2xl font-bold text-black">1. License Grant</h2>
+          <h2 className="text-2xl font-bold text-foreground">1. License Grant</h2>
           <p>
             By purchasing Fabrk, you are granted a non-exclusive, perpetual license to use the
             boilerplate code for:
@@ -36,7 +36,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">2. Restrictions</h2>
+          <h2 className="text-2xl font-bold text-foreground">2. Restrictions</h2>
           <p>You may NOT:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>
@@ -64,7 +64,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">3. Updates and Support</h2>
+          <h2 className="text-2xl font-bold text-foreground">3. Updates and Support</h2>
           <ul className="ml-6 list-disc space-y-2">
             <li>
               <strong>Lifetime updates for v1.x:</strong> You receive all minor and patch updates
@@ -86,7 +86,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">4. Refund Policy</h2>
+          <h2 className="text-2xl font-bold text-foreground">4. Refund Policy</h2>
           <p>
             We offer a <strong>30-day money-back guarantee</strong>. If you're not satisfied with
             Fabrk, email support@fabrk.dev within 30 days of purchase for a full refund.
@@ -97,13 +97,13 @@ export default function TermsPage() {
             <li>After refund, you lose access to future updates and support</li>
           </ul>
           <p className="mt-4">
-            See our <a href="/refund" className="text-[#007AFF] hover:underline">Refund Policy</a>{" "}
+            See our <a href="/refund" className="text-primary hover:underline">Refund Policy</a>{" "}
             for full details.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">5. Warranty Disclaimer</h2>
+          <h2 className="text-2xl font-bold text-foreground">5. Warranty Disclaimer</h2>
           <p>
             Fabrk is provided <strong>"as is"</strong> without warranty of any kind, express or
             implied. We do not guarantee that:
@@ -121,7 +121,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">6. Limitation of Liability</h2>
+          <h2 className="text-2xl font-bold text-foreground">6. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by law, Fabrk and its operators shall not be liable for
             any indirect, incidental, special, consequential, or punitive damages, including but not
@@ -138,7 +138,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">7. EU Consumer Rights</h2>
+          <h2 className="text-2xl font-bold text-foreground">7. EU Consumer Rights</h2>
           <p>
             If you are a consumer in the European Union, you have additional rights under the EU
             Consumer Rights Directive:
@@ -161,7 +161,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">8. GDPR Compliance</h2>
+          <h2 className="text-2xl font-bold text-foreground">8. GDPR Compliance</h2>
           <p>
             We comply with the General Data Protection Regulation (GDPR). You have the right to:
           </p>
@@ -172,13 +172,13 @@ export default function TermsPage() {
             <li>Data portability</li>
           </ul>
           <p className="mt-4">
-            See our <a href="/privacy" className="text-[#007AFF] hover:underline">Privacy Policy</a>{" "}
+            See our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>{" "}
             for details on how we handle your data.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">9. Governing Law</h2>
+          <h2 className="text-2xl font-bold text-foreground">9. Governing Law</h2>
           <p>
             These Terms are governed by the laws of the jurisdiction where Fabrk operates, without
             regard to conflict of law provisions.
@@ -190,7 +190,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">10. Changes to Terms</h2>
+          <h2 className="text-2xl font-bold text-foreground">10. Changes to Terms</h2>
           <p>
             We may update these Terms from time to time. Changes will be posted on this page with an
             updated "Last updated" date. Continued use of Fabrk after changes constitutes acceptance
@@ -202,10 +202,10 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">11. Contact</h2>
+          <h2 className="text-2xl font-bold text-foreground">11. Contact</h2>
           <p>
             Questions about these Terms? Contact us at:{" "}
-            <a href="mailto:support@fabrk.dev" className="text-[#007AFF] hover:underline">
+            <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
               support@fabrk.dev
             </a>
           </p>

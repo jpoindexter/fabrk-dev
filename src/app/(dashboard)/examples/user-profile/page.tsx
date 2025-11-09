@@ -80,7 +80,7 @@ export default async function UserProfilePage() {
     <div className="space-y-8 p-8">
       {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight text-black">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
           User Profile
         </h1>
         <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export default async function UserProfilePage() {
             <Share2 className="mr-2 h-4 w-4" />
             Share
           </Button>
-          <Button className="border-2 border-black bg-[#007AFF] text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+          <Button className="border-2 border-black bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
             <Edit className="mr-2 h-4 w-4" />
             Edit Profile
           </Button>
@@ -120,37 +120,37 @@ export default async function UserProfilePage() {
               </div>
 
               {/* Name & Role */}
-              <h2 className="mt-4 text-2xl font-bold text-black">
+              <h2 className="mt-4 text-2xl font-bold text-foreground">
                 {mockUserProfile.name}
               </h2>
-              <span className="mt-1 inline-block rounded-full border-2 border-black bg-[#007AFF] px-3 py-1 text-xs font-semibold text-white">
+              <span className="mt-1 inline-block rounded-full border-2 border-black bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                 {mockUserProfile.role}
               </span>
 
               {/* Bio */}
-              <p className="mt-4 text-sm leading-relaxed text-[#666666]">
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 {mockUserProfile.bio}
               </p>
 
               {/* Stats */}
               <div className="mt-6 grid w-full grid-cols-3 gap-4 border-t-2 border-black/10 pt-6">
                 <div>
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-2xl font-bold text-foreground">
                     {mockUserProfile.stats.projects}
                   </p>
-                  <p className="text-xs text-[#666666]">Projects</p>
+                  <p className="text-xs text-muted-foreground">Projects</p>
                 </div>
                 <div className="border-x-2 border-black/10">
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-2xl font-bold text-foreground">
                     {mockUserProfile.stats.followers}
                   </p>
-                  <p className="text-xs text-[#666666]">Followers</p>
+                  <p className="text-xs text-muted-foreground">Followers</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-2xl font-bold text-foreground">
                     {mockUserProfile.stats.following}
                   </p>
-                  <p className="text-xs text-[#666666]">Following</p>
+                  <p className="text-xs text-muted-foreground">Following</p>
                 </div>
               </div>
             </div>
@@ -161,28 +161,28 @@ export default async function UserProfilePage() {
             <h3 className="mb-4 text-lg font-bold text-black">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-[#666666]" />
-                <span className="text-sm text-[#666666]">
+                <Mail className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">
                   {mockUserProfile.email}
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <Calendar className="h-4 w-4 text-[#666666]" />
-                <span className="text-sm text-[#666666]">
+                <Calendar className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">
                   Joined {mockUserProfile.joinedDate}
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-[#666666]" />
-                <span className="text-sm text-[#666666]">
+                <MapPin className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">
                   {mockUserProfile.location}
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <LinkIcon className="h-4 w-4 text-[#666666]" />
+                <LinkIcon className="h-4 w-4 text-muted-foreground" />
                 <a
                   href={`https://${mockUserProfile.website}`}
-                  className="text-sm text-[#007AFF] hover:underline"
+                  className="text-sm text-primary hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -194,38 +194,38 @@ export default async function UserProfilePage() {
 
           {/* Social Links */}
           <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="mb-4 text-lg font-bold text-black">Social Links</h3>
+            <h3 className="mb-4 text-lg font-bold text-foreground">Social Links</h3>
             <div className="space-y-3">
               <a
                 href={`https://twitter.com/${mockUserProfile.social.twitter.slice(1)}`}
-                className="flex items-center gap-3 rounded border-2 border-black/10 bg-[#F9F9F9] p-3 transition-colors hover:bg-[#007AFF]/5"
+                className="flex items-center gap-3 rounded border-2 border-black/10 bg-muted p-3 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter className="h-5 w-5 text-[#1DA1F2]" />
-                <span className="text-sm font-semibold text-black">
+                <Twitter className="h-5 w-5 text-info" />
+                <span className="text-sm font-semibold text-foreground">
                   {mockUserProfile.social.twitter}
                 </span>
               </a>
               <a
                 href={`https://github.com/${mockUserProfile.social.github}`}
-                className="flex items-center gap-3 rounded border-2 border-black/10 bg-[#F9F9F9] p-3 transition-colors hover:bg-[#007AFF]/5"
+                className="flex items-center gap-3 rounded border-2 border-black/10 bg-muted p-3 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="h-5 w-5 text-black" />
-                <span className="text-sm font-semibold text-black">
+                <Github className="h-5 w-5 text-foreground" />
+                <span className="text-sm font-semibold text-foreground">
                   {mockUserProfile.social.github}
                 </span>
               </a>
               <a
                 href={`https://linkedin.com/in/${mockUserProfile.social.linkedin}`}
-                className="flex items-center gap-3 rounded border-2 border-black/10 bg-[#F9F9F9] p-3 transition-colors hover:bg-[#007AFF]/5"
+                className="flex items-center gap-3 rounded border-2 border-black/10 bg-muted p-3 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Linkedin className="h-5 w-5 text-[#0A66C2]" />
-                <span className="text-sm font-semibold text-black">
+                <Linkedin className="h-5 w-5 text-info" />
+                <span className="text-sm font-semibold text-foreground">
                   {mockUserProfile.social.linkedin}
                 </span>
               </a>
@@ -271,14 +271,14 @@ export default async function UserProfilePage() {
                           {project.status}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm text-[#666666]">
+                      <p className="mt-1 text-sm text-muted-foreground">
                         {project.description}
                       </p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded border-2 border-black bg-[#F9F9F9] px-2 py-1 text-xs font-semibold text-black"
+                            className="rounded border-2 border-black bg-muted px-2 py-1 text-xs font-semibold text-foreground"
                           >
                             {tech}
                           </span>
@@ -286,7 +286,7 @@ export default async function UserProfilePage() {
                       </div>
                     </div>
                     <button className="ml-2 rounded p-1 hover:bg-black/5">
-                      <MoreVertical className="h-5 w-5 text-[#666666]" />
+                      <MoreVertical className="h-5 w-5 text-muted-foreground" />
                     </button>
                   </div>
                 </div>
@@ -297,20 +297,20 @@ export default async function UserProfilePage() {
           {/* Recent Activity */}
           <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div className="mb-4 border-b-2 border-black/10 pb-4">
-              <h3 className="text-xl font-bold text-black">Recent Activity</h3>
+              <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
             </div>
             <div className="space-y-4">
               {mockUserProfile.activity.map((activity, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-black bg-[#007AFF]/10">
-                    <User className="h-5 w-5 text-[#007AFF]" />
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-black bg-primary/10">
+                    <User className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-black">
+                    <p className="text-sm text-foreground">
                       <span className="font-semibold">{activity.action}</span>{" "}
-                      <span className="text-[#666666]">{activity.item}</span>
+                      <span className="text-muted-foreground">{activity.item}</span>
                     </p>
-                    <p className="text-xs text-[#999999]">{activity.time}</p>
+                    <p className="text-xs text-muted-foreground/80">{activity.time}</p>
                   </div>
                 </div>
               ))}
@@ -320,9 +320,9 @@ export default async function UserProfilePage() {
       </div>
 
       {/* Implementation Note */}
-      <div className="rounded-lg border-2 border-[#007AFF] bg-[#007AFF]/5 p-4">
-        <p className="text-sm text-[#666666]">
-          <span className="font-semibold text-black">👤 Implementation Note:</span>{" "}
+      <div className="rounded-lg border-2 border-primary bg-primary/5 p-4">
+        <p className="text-sm text-muted-foreground">
+          <span className="font-semibold text-foreground">👤 Implementation Note:</span>{" "}
           This is a demo user profile page with mock data. Replace{" "}
           <code className="rounded bg-black/10 px-1 py-0.5 text-xs">
             mockUserProfile

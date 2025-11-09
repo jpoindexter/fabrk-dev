@@ -29,35 +29,35 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
           <div className="mx-auto max-w-2xl text-center">
             {/* Error Icon */}
             <div className="mb-8 flex justify-center">
-              <div className="rounded-full bg-red-100 p-6">
-                <AlertTriangle className="h-16 w-16 text-red-600" />
+              <div className="rounded-full bg-destructive/10 p-6">
+                <AlertTriangle className="h-16 w-16 text-destructive" />
               </div>
             </div>
 
             {/* Error Message */}
-            <h1 className="mb-4 text-4xl font-bold text-black">
+            <h1 className="mb-4 text-4xl font-bold text-foreground">
               Critical Application Error
             </h1>
-            <p className="mb-8 text-lg text-gray-600">
+            <p className="mb-8 text-lg text-muted-foreground">
               We apologize, but a critical error has occurred. Our team has been notified
               and is working to resolve the issue.
             </p>
 
             {/* Error Details (Development Only) */}
             {process.env.NODE_ENV === "development" && (
-              <div className="mb-8 rounded-lg border-2 border-red-200 bg-red-50 p-4 text-left">
-                <p className="mb-2 text-sm font-semibold text-red-900">
+              <div className="mb-8 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-left">
+                <p className="mb-2 text-sm font-semibold text-destructive">
                   Error Details (Development Only):
                 </p>
-                <p className="font-mono text-xs text-red-800 break-words">
+                <p className="font-mono text-xs text-destructive break-words">
                   {error.message}
                 </p>
                 {error.digest && (
-                  <p className="mt-2 text-xs text-red-700">
+                  <p className="mt-2 text-xs text-destructive">
                     Error ID: {error.digest}
                   </p>
                 )}
@@ -76,16 +76,13 @@ export default function GlobalError({
 
             {/* Action Buttons */}
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button
-                onClick={reset}
-                className="h-12 bg-blue-600 px-8 text-white hover:bg-blue-700"
-              >
+              <Button onClick={reset} className="h-12 px-8">
                 Try Again
               </Button>
               <Button
                 onClick={() => window.location.href = "/"}
                 variant="outline"
-                className="h-12 border-2 border-black px-8"
+                className="h-12 border px-8"
               >
                 <Home className="mr-2 h-4 w-4" />
                 Back to Home
@@ -93,18 +90,18 @@ export default function GlobalError({
             </div>
 
             {/* Support Info */}
-            <div className="mt-12 border-t border-gray-200 pt-8">
-              <p className="mb-2 text-sm text-gray-600">
+            <div className="mt-12 border-t border-border/60 pt-8">
+              <p className="mb-2 text-sm text-muted-foreground">
                 If this problem persists, please contact support:
               </p>
               <a
                 href="mailto:support@fabrk.dev"
-                className="text-sm font-semibold text-blue-600 hover:underline"
+                className="text-sm font-semibold text-primary hover:underline"
               >
                 support@fabrk.dev
               </a>
               {error.digest && (
-                <p className="mt-2 text-xs text-gray-500">
+                <p className="mt-2 text-xs text-muted-foreground">
                   Error ID: {error.digest}
                 </p>
               )}

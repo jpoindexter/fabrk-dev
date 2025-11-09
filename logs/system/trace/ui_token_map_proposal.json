@@ -1,0 +1,48 @@
+{
+  "colorTokens": [
+    {"source": "src/app/globals.css:6", "token": "--background", "current": "0 0% 100%", "proposedSemantic": "color.surface.background", "shadcnEquivalent": "bg-background"},
+    {"source": "src/app/globals.css:7", "token": "--foreground", "current": "0 0% 0%", "proposedSemantic": "color.text.primary", "shadcnEquivalent": "text-foreground"},
+    {"source": "src/app/globals.css:14", "token": "--primary", "current": "258 90% 66%", "proposedSemantic": "color.brand.primary", "shadcnEquivalent": "bg-primary"},
+    {"source": "src/app/globals.css:15", "token": "--primary-foreground", "current": "0 0% 100%", "proposedSemantic": "color.brand.onPrimary", "shadcnEquivalent": "text-primary-foreground"},
+    {"source": "src/app/globals.css:19", "token": "--secondary", "current": "48 96% 59%", "proposedSemantic": "color.brand.secondary", "shadcnEquivalent": "bg-secondary"},
+    {"source": "src/app/globals.css:26", "token": "--muted", "current": "210 40% 96%", "proposedSemantic": "color.surface.muted", "shadcnEquivalent": "bg-muted"},
+    {"source": "src/app/globals.css:31", "token": "--accent", "current": "48 96% 89%", "proposedSemantic": "color.accent.background", "shadcnEquivalent": "bg-accent"},
+    {"source": "src/app/globals.css:36", "token": "--destructive", "current": "0 84% 60%", "proposedSemantic": "color.status.error", "shadcnEquivalent": "bg-destructive"},
+    {"source": "src/app/globals.css:42", "token": "--success", "current": "142 76% 36%", "proposedSemantic": "color.status.success", "shadcnEquivalent": "bg-success"},
+    {"source": "src/app/globals.css:48", "token": "--warning", "current": "38 92% 50%", "proposedSemantic": "color.status.warning", "shadcnEquivalent": "bg-warning"},
+    {"source": "src/app/globals.css:54", "token": "--info", "current": "199 89% 48%", "proposedSemantic": "color.status.info", "shadcnEquivalent": "bg-info"},
+    {"source": "src/app/globals.css:60", "token": "--border", "current": "0 0% 0%", "proposedSemantic": "color.border.default", "shadcnEquivalent": "border-border"},
+    {"source": "src/app/globals.css:61", "token": "--input", "current": "0 0% 0%", "proposedSemantic": "color.border.input", "shadcnEquivalent": "border-input"},
+    {"source": "src/app/globals.css:62", "token": "--ring", "current": "258 90% 66%", "proposedSemantic": "color.focus.ring", "shadcnEquivalent": "ring-ring"},
+    {"source": "tailwind.config.ts:33", "token": "surface-1…surface-12", "current": "CSS variables", "proposedSemantic": "color.surface.step[1-12]", "shadcnEquivalent": "bg-surface-{n}"},
+    {"source": "src/app/globals.css:70", "token": "--radius", "current": "0.5rem", "proposedSemantic": "radius.md", "shadcnEquivalent": "rounded-lg"}
+  ],
+  "spacingTokens": [
+    {"source": "src/lib/design-system/tokens.ts:12", "token": "spacing.xs", "current": "0.25rem", "proposedSemantic": "space.1", "tailwindScale": "1"},
+    {"source": "src/lib/design-system/tokens.ts:13", "token": "spacing.sm", "current": "0.5rem", "proposedSemantic": "space.2", "tailwindScale": "2"},
+    {"source": "src/lib/design-system/tokens.ts:14", "token": "spacing.md", "current": "1rem", "proposedSemantic": "space.4", "tailwindScale": "4"},
+    {"source": "src/lib/design-system/tokens.ts:15", "token": "spacing.lg", "current": "1.5rem", "proposedSemantic": "space.6", "tailwindScale": "6"},
+    {"source": "src/lib/design-system/tokens.ts:16", "token": "spacing.xl", "current": "2rem", "proposedSemantic": "space.8", "tailwindScale": "8"},
+    {"source": "src/lib/design-system/tokens.ts:17", "token": "spacing.2xl", "current": "2.5rem", "proposedSemantic": "space.10", "tailwindScale": "10"},
+    {"source": "src/lib/design-system/tokens.ts:18", "token": "spacing.3xl", "current": "3rem", "proposedSemantic": "space.12", "tailwindScale": "12"}
+  ],
+  "radiusTokens": [
+    {"source": "tailwind.config.ts:74", "token": "borderRadius.lg", "current": "var(--radius)", "proposedSemantic": "radius.lg", "shadcnEquivalent": "rounded-lg"},
+    {"source": "tailwind.config.ts:75", "token": "borderRadius.md", "current": "var(--radius)", "proposedSemantic": "radius.md", "shadcnEquivalent": "rounded-md"},
+    {"source": "tailwind.config.ts:76", "token": "borderRadius.sm", "current": "calc(var(--radius) - 2px)", "proposedSemantic": "radius.sm", "shadcnEquivalent": "rounded-sm"}
+  ],
+  "shadowTokens": [
+    {"source": "tailwind.config.ts:81", "token": "boxShadow.brutal-sm", "current": "2px 2px 0px 0px rgba(0, 0, 0, 1)", "proposedSemantic": "shadow.brutal.sm", "shadcnEquivalent": "shadow-brutal-sm"},
+    {"source": "tailwind.config.ts:82", "token": "boxShadow.brutal", "current": "4px 4px 0px 0px rgba(0, 0, 0, 1)", "proposedSemantic": "shadow.brutal.base", "shadcnEquivalent": "shadow-brutal"},
+    {"source": "tailwind.config.ts:83", "token": "boxShadow.brutal-md", "current": "4px 4px 0px 0px rgba(0, 0, 0, 1)", "proposedSemantic": "shadow.brutal.md", "shadcnEquivalent": "shadow-brutal-md"},
+    {"source": "tailwind.config.ts:84", "token": "boxShadow.brutal-lg", "current": "8px 8px 0px 0px rgba(0, 0, 0, 1)", "proposedSemantic": "shadow.brutal.lg", "shadcnEquivalent": "shadow-brutal-lg"},
+    {"source": "tailwind.config.ts:85", "token": "boxShadow.brutal-xl", "current": "12px 12px 0px 0px rgba(0, 0, 0, 1)", "proposedSemantic": "shadow.brutal.xl", "shadcnEquivalent": "shadow-brutal-xl"}
+  ],
+  "motionTokens": [
+    {"source": "tailwind.config.ts:101", "token": "transitionDuration.70", "current": "70ms", "proposedSemantic": "motion.fast", "shadcnEquivalent": "duration-75"},
+    {"source": "tailwind.config.ts:102", "token": "transitionDuration.110", "current": "110ms", "proposedSemantic": "motion.medium", "shadcnEquivalent": "duration-100"},
+    {"source": "tailwind.config.ts:103", "token": "transitionDuration.240", "current": "240ms", "proposedSemantic": "motion.slow", "shadcnEquivalent": "duration-200"},
+    {"source": "tailwind.config.ts:104", "token": "transitionDuration.400", "current": "400ms", "proposedSemantic": "motion.deliberate", "shadcnEquivalent": "duration-300"},
+    {"source": "tailwind.config.ts:105", "token": "keyframes.accordion-*", "current": "custom", "proposedSemantic": "motion.accordion", "shadcnEquivalent": "accordion-down/up"}
+  ]
+}

@@ -52,7 +52,7 @@ export function HeroVideo({
           </>
         ) : (
           /* Animated gradient fallback */
-          <div className="h-full w-full bg-gradient-to-br from-[#007AFF] via-purple-600 to-[#007AFF] animate-gradient-shift">
+          <div className="h-full w-full animate-gradient-shift bg-gradient-to-br from-primary via-purple-600 to-primary">
             <div
               className="absolute inset-0 bg-black"
               style={{ opacity: 0.5 }}

@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <article className="prose prose-slate max-w-none">
-      <h1 className="mb-2 text-4xl font-bold text-black">Privacy Policy</h1>
-      <p className="mb-8 text-sm text-[#666666]">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold text-foreground">Privacy Policy</h1>
+      <p className="mb-8 text-sm text-muted-foreground">Last updated: January 2025</p>
 
-      <div className="space-y-8 text-[#333333]">
+      <div className="space-y-8 text-foreground">
         <section>
-          <h2 className="text-2xl font-bold text-black">1. Introduction</h2>
+          <h2 className="text-2xl font-bold text-foreground">1. Introduction</h2>
           <p>
             Fabrk ("we", "our", or "us") respects your privacy. This Privacy Policy explains how we
             collect, use, disclose, and safeguard your information when you purchase and use our
@@ -26,9 +26,9 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">2. Information We Collect</h2>
+          <h2 className="text-2xl font-bold text-foreground">2. Information We Collect</h2>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">2.1 Information You Provide</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">2.1 Information You Provide</h3>
           <p>When you purchase Fabrk, we collect:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li><strong>Name:</strong> For personalization and communication</li>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
             </li>
           </ul>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">2.2 Automatically Collected Information</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">2.2 Automatically Collected Information</h3>
           <p>We automatically collect:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li><strong>Purchase date:</strong> To track your license</li>
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
             </li>
           </ul>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">2.3 Information We Do NOT Collect</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">2.3 Information We Do NOT Collect</h3>
           <ul className="ml-6 list-disc space-y-2">
             <li>We do NOT track your usage of the Fabrk code</li>
             <li>We do NOT collect analytics from the boilerplate itself</li>
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">3. How We Use Your Information</h2>
+          <h2 className="text-2xl font-bold text-foreground">3. How We Use Your Information</h2>
           <p>We use your information to:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li><strong>Deliver your product:</strong> Send you the Fabrk download link and license key</li>
@@ -78,10 +78,10 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">4. How We Share Your Information</h2>
+          <h2 className="text-2xl font-bold text-foreground">4. How We Share Your Information</h2>
           <p>We only share your information with:</p>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">4.1 Payment Processor (Stripe)</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">4.1 Payment Processor (Stripe)</h3>
           <p>
             We use Stripe to process payments securely. Stripe may collect and process your payment
             information, IP address, and device information for fraud prevention. See{" "}
@@ -89,20 +89,20 @@ export default function PrivacyPage() {
               href="https://stripe.com/privacy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#007AFF] hover:underline"
+              className="text-primary hover:underline"
             >
               Stripe's Privacy Policy
             </a>
             .
           </p>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">4.2 Email Service (Resend)</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">4.2 Email Service (Resend)</h3>
           <p>
             We use Resend to send transactional emails (license delivery, updates). Your email
             address is shared with Resend for this purpose only.
           </p>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">4.3 We Do NOT:</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">4.3 We Do NOT:</h3>
           <ul className="ml-6 list-disc space-y-2">
             <li>Sell your data to third parties</li>
             <li>Share your data with advertisers</li>
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">5. Data Retention</h2>
+          <h2 className="text-2xl font-bold text-foreground">5. Data Retention</h2>
           <p>We retain your information:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>
@@ -128,7 +128,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">6. Data Security</h2>
+          <h2 className="text-2xl font-bold text-foreground">6. Data Security</h2>
           <p>We protect your information using:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li><strong>Encryption:</strong> HTTPS/TLS for all data transmission</li>
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">7. Your Rights (GDPR)</h2>
+          <h2 className="text-2xl font-bold text-foreground">7. Your Rights (GDPR)</h2>
           <p>If you are in the EU/EEA, you have the right to:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>
@@ -171,7 +171,7 @@ export default function PrivacyPage() {
           </ul>
           <p className="mt-4">
             To exercise your rights, email{" "}
-            <a href="mailto:support@fabrk.dev" className="text-[#007AFF] hover:underline">
+            <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
               support@fabrk.dev
             </a>{" "}
             with "GDPR Request" in the subject line.
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">8. International Data Transfers</h2>
+          <h2 className="text-2xl font-bold text-foreground">8. International Data Transfers</h2>
           <p>
             Your data may be transferred to and processed in countries outside the EU/EEA. We ensure
             adequate protection through:
@@ -198,7 +198,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">9. Children's Privacy</h2>
+          <h2 className="text-2xl font-bold text-foreground">9. Children's Privacy</h2>
           <p>
             Fabrk is not intended for individuals under 18 years of age. We do not knowingly collect
             data from children. If you are a parent and believe your child provided us with data,
@@ -207,7 +207,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">10. Cookies</h2>
+          <h2 className="text-2xl font-bold text-foreground">10. Cookies</h2>
           <p>We use minimal cookies:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>
@@ -222,7 +222,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">11. Changes to This Policy</h2>
+          <h2 className="text-2xl font-bold text-foreground">11. Changes to This Policy</h2>
           <p>
             We may update this Privacy Policy. Changes will be posted on this page with an updated
             "Last updated" date. We will notify you of material changes via email.
@@ -233,14 +233,14 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">12. Contact Us</h2>
+          <h2 className="text-2xl font-bold text-foreground">12. Contact Us</h2>
           <p>
             Questions or concerns about your privacy? Contact us at:
           </p>
           <ul className="ml-6 list-none space-y-2">
             <li>
               <strong>Email:</strong>{" "}
-              <a href="mailto:support@fabrk.dev" className="text-[#007AFF] hover:underline">
+              <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
                 support@fabrk.dev
               </a>
             </li>

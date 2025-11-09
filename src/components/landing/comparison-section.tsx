@@ -16,23 +16,23 @@ export function ComparisonSection() {
   const renderCell = (value: string | boolean) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className="mx-auto h-5 w-5 text-green-600" strokeWidth={3} />
+        <Check className="mx-auto h-5 w-5 text-success" strokeWidth={3} />
       ) : (
-        <X className="mx-auto h-5 w-5 text-red-500" strokeWidth={3} />
+        <X className="mx-auto h-5 w-5 text-destructive" strokeWidth={3} />
       );
     }
-    return <span className="text-sm font-medium text-[#333333]">{value}</span>;
+    return <span className="text-sm font-medium text-foreground">{value}</span>;
   };
 
   return (
-    <section className="bg-white px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-black">
+          <h2 className="mb-4 text-4xl font-bold text-foreground">
             How Fabrk Stacks Up
           </h2>
-          <p className="text-lg text-[#666666]">
+          <p className="text-lg text-muted-foreground">
             We're not just cheaper—we're better.
           </p>
         </div>
@@ -44,19 +44,19 @@ export function ComparisonSection() {
             <thead>
               <tr className="border-b-2 border-black">
                 <th className="p-4 text-left">
-                  <span className="text-sm font-semibold text-[#666666]">Feature</span>
+                  <span className="text-sm font-semibold text-muted-foreground">Feature</span>
                 </th>
                 <th className="p-4 text-center">
-                  <span className="text-sm font-semibold text-[#666666]">DIY</span>
+                  <span className="text-sm font-semibold text-muted-foreground">DIY</span>
                 </th>
                 <th className="p-4 text-center">
-                  <span className="text-sm font-semibold text-[#666666]">ShipFast</span>
+                  <span className="text-sm font-semibold text-muted-foreground">ShipFast</span>
                 </th>
                 <th className="p-4 text-center">
-                  <span className="text-sm font-semibold text-[#666666]">Supastarter</span>
+                  <span className="text-sm font-semibold text-muted-foreground">Supastarter</span>
                 </th>
-                <th className="bg-[#007AFF]/5 p-4 text-center">
-                  <span className="text-sm font-bold text-[#007AFF]">Fabrk</span>
+                <th className="bg-primary/5 p-4 text-center">
+                  <span className="text-sm font-bold text-primary">Fabrk</span>
                 </th>
               </tr>
             </thead>
@@ -66,15 +66,15 @@ export function ComparisonSection() {
               {comparisons.map((row, idx) => (
                 <tr
                   key={idx}
-                  className="border-b border-black/10 transition-colors hover:bg-[#F7F7F7]"
+                  className="border-b border-black/10 transition-colors hover:bg-muted"
                 >
                   <td className="p-4">
-                    <span className="text-sm font-semibold text-black">{row.feature}</span>
+                    <span className="text-sm font-semibold text-foreground">{row.feature}</span>
                   </td>
                   <td className="p-4 text-center">{renderCell(row.diy)}</td>
                   <td className="p-4 text-center">{renderCell(row.shipfast)}</td>
                   <td className="p-4 text-center">{renderCell(row.supastarter)}</td>
-                  <td className="bg-[#007AFF]/5 p-4 text-center font-bold">
+                  <td className="bg-primary/5 p-4 text-center font-bold">
                     {renderCell(row.fabrk)}
                   </td>
                 </tr>
@@ -85,13 +85,13 @@ export function ComparisonSection() {
 
         {/* CTA Below Table */}
         <div className="mt-12 text-center">
-          <p className="mb-4 text-lg text-[#333333]">
-            <span className="font-bold text-black">60-77% cheaper</span> than competitors.
+          <p className="mb-4 text-lg text-foreground">
+            <span className="font-bold text-foreground">60-77% cheaper</span> than competitors.
             <span className="ml-2">Same quality. Better stack.</span>
           </p>
           <a
             href="#pricing"
-            className="inline-block rounded-lg bg-[#007AFF] px-8 py-3 text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#0066CC] hover:shadow-xl"
+            className="inline-block rounded-lg bg-primary px-8 py-3 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
           >
             Get Started - $79
           </a>

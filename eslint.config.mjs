@@ -1,20 +1,47 @@
-import tailwindcss from "eslint-plugin-tailwindcss";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 
-import { FlatCompat } from "@eslint/eslintrc";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 
 // Import custom design system rules
 import noHardcodedColors from "./eslint-rules/no-hardcoded-colors.js";
 import noInlineStyles from "./eslint-rules/no-inline-styles.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+const sanitizePlugin = (plugin) => {
+  if (!plugin || typeof plugin !== "object") return plugin;
+  const { configs, ...rest } = plugin;
+  return { ...rest };
+};
+
+const sanitizeCompatConfig = (config) => {
+  if (!config?.plugins) return config;
+  const sanitizedPlugins = Object.fromEntries(
+    Object.entries(config.plugins).map(([name, plugin]) => [name, sanitizePlugin(plugin)])
+  );
+  return { ...config, plugins: sanitizedPlugins };
+};
+
+let tailwindFlatConfigs = [];
+try {
+  const tailwindcss = await import("eslint-plugin-tailwindcss");
+  tailwindFlatConfigs = tailwindcss.default?.configs?.["flat/recommended"] ?? tailwindcss.configs?.["flat/recommended"] ?? [];
+} catch (error) {
+  console.warn("⚠️  eslint-plugin-tailwindcss unavailable; skipping Tailwind lint presets.");
+}
+
+let nextFlatConfigs = [];
+try {
+  const nextConfigsModule = await import("eslint-config-next");
+  const nextConfigArray = Array.isArray(nextConfigsModule.default ?? nextConfigsModule)
+    ? nextConfigsModule.default ?? nextConfigsModule
+    : [];
+  nextFlatConfigs = nextConfigArray.map(sanitizeCompatConfig);
+} catch (error) {
+  console.warn("⚠️  eslint-config-next unavailable; skipping Next.js lint presets.");
+}
+
+const hasJsxA11yFromNext = nextFlatConfigs.some(
+  (config) => config.plugins && Object.prototype.hasOwnProperty.call(config.plugins, "jsx-a11y")
+);
 
 const eslintConfig = [
   {
@@ -43,17 +70,17 @@ const eslintConfig = [
       "**/generated-sources.ts", // Auto-generated component sources
     ],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  ...tailwindcss.configs["flat/recommended"],
+  ...nextFlatConfigs,
+  ...tailwindFlatConfigs,
   {
     plugins: {
-      'design-system': {
+      "design-system": {
         rules: {
-          'no-hardcoded-colors': noHardcodedColors,
-          'no-inline-styles': noInlineStyles,
-        }
+          "no-hardcoded-colors": noHardcodedColors,
+          "no-inline-styles": noInlineStyles,
+        },
       },
-      'jsx-a11y': jsxA11y
+      ...(hasJsxA11yFromNext ? {} : { "jsx-a11y": jsxA11y }),
     },
     rules: {
       // Existing rules
@@ -63,8 +90,6 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": "off",
       "react-hooks/exhaustive-deps": "off",
       "@next/next/no-img-element": "off",
-      "jsx-a11y/role-supports-aria-props": "off",
-      "jsx-a11y/alt-text": "off",
       "@typescript-eslint/ban-ts-comment": "off",
 
       // Design system rules (CRITICAL)
@@ -76,23 +101,26 @@ const eslintConfig = [
       'react/display-name': 'off', // Dev tooling only, doesn't affect production
       '@next/next/no-html-link-for-pages': 'off', // Minor performance optimization
 
-      // Accessibility rules (jsx-a11y)
-      'jsx-a11y/alt-text': 'error',
-      'jsx-a11y/aria-props': 'error',
-      'jsx-a11y/aria-proptypes': 'error',
-      'jsx-a11y/aria-unsupported-elements': 'error',
-      'jsx-a11y/role-has-required-aria-props': 'error',
-      'jsx-a11y/role-supports-aria-props': 'error',
-      'jsx-a11y/heading-has-content': 'warn',
-      'jsx-a11y/html-has-lang': 'warn',
-      'jsx-a11y/lang': 'warn',
-      'jsx-a11y/no-autofocus': 'warn',
-      'jsx-a11y/click-events-have-key-events': 'warn',
-      'jsx-a11y/no-static-element-interactions': 'warn',
-
       // Tailwind rules - OFF for Rails compliance (0 warnings required)
       'tailwindcss/no-arbitrary-value': 'off',
       'tailwindcss/no-custom-classname': 'off',
+    },
+  },
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    rules: {
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/aria-props": "error",
+      "jsx-a11y/aria-proptypes": "error",
+      "jsx-a11y/aria-unsupported-elements": "error",
+      "jsx-a11y/role-has-required-aria-props": "error",
+      "jsx-a11y/role-supports-aria-props": "error",
+      "jsx-a11y/heading-has-content": "warn",
+      "jsx-a11y/html-has-lang": "warn",
+      "jsx-a11y/lang": "warn",
+      "jsx-a11y/no-autofocus": "warn",
+      "jsx-a11y/click-events-have-key-events": "warn",
+      "jsx-a11y/no-static-element-interactions": "warn",
     },
   },
   {

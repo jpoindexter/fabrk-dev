@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 export default function RefundPage() {
   return (
     <article className="prose prose-slate max-w-none">
-      <h1 className="mb-2 text-4xl font-bold text-black">Refund Policy</h1>
-      <p className="mb-8 text-sm text-[#666666]">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold text-foreground">Refund Policy</h1>
+      <p className="mb-8 text-sm text-muted-foreground">Last updated: January 2025</p>
 
-      <div className="space-y-8 text-[#333333]">
+      <div className="space-y-8 text-foreground">
         <section>
-          <h2 className="text-2xl font-bold text-black">30-Day Money-Back Guarantee</h2>
+          <h2 className="text-2xl font-bold text-foreground">30-Day Money-Back Guarantee</h2>
           <p>
             We stand behind Fabrk. If you're not satisfied with your purchase for any reason, we
             offer a <strong>full refund within 30 days</strong> of purchase—no questions asked.
@@ -25,11 +25,11 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">How to Request a Refund</h2>
+          <h2 className="text-2xl font-bold text-foreground">How to Request a Refund</h2>
           <ol className="ml-6 list-decimal space-y-3">
             <li>
               <strong>Email us:</strong> Send an email to{" "}
-              <a href="mailto:support@fabrk.dev" className="text-[#007AFF] hover:underline">
+              <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
                 support@fabrk.dev
               </a>{" "}
               with "Refund Request" in the subject line
@@ -46,7 +46,7 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">Refund Processing</h2>
+          <h2 className="text-2xl font-bold text-foreground">Refund Processing</h2>
           <ul className="ml-6 list-disc space-y-2">
             <li>
               <strong>Processing time:</strong> Refunds are processed within 5-7 business days of
@@ -68,9 +68,9 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">What Happens After a Refund</h2>
+          <h2 className="text-2xl font-bold text-foreground">What Happens After a Refund</h2>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">You Keep:</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">You Keep:</h3>
           <ul className="ml-6 list-disc space-y-2">
             <li>
               Any code you've already downloaded—you can continue using it in your existing projects
@@ -80,7 +80,7 @@ export default function RefundPage() {
             </li>
           </ul>
 
-          <h3 className="mt-6 text-xl font-semibold text-black">You Lose Access To:</h3>
+          <h3 className="mt-6 text-xl font-semibold text-foreground">You Lose Access To:</h3>
           <ul className="ml-6 list-disc space-y-2">
             <li>Future updates and new versions</li>
             <li>Discord community access</li>
@@ -96,7 +96,7 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">Eligibility</h2>
+          <h2 className="text-2xl font-bold text-foreground">Eligibility</h2>
           <p>Refunds are available:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>Within 30 days of purchase</li>
@@ -110,7 +110,7 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">EU Consumer Rights</h2>
+          <h2 className="text-2xl font-bold text-foreground">EU Consumer Rights</h2>
           <p>
             If you are a consumer in the European Union, you have a legal right to a 14-day
             withdrawal period under the EU Consumer Rights Directive.
@@ -127,7 +127,7 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">Chargebacks</h2>
+          <h2 className="text-2xl font-bold text-foreground">Chargebacks</h2>
           <p>
             We have a generous refund policy—there's no need for chargebacks. If you file a
             chargeback instead of requesting a refund:
@@ -144,7 +144,7 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">Refund Exceptions</h2>
+          <h2 className="text-2xl font-bold text-foreground">Refund Exceptions</h2>
           <p>Refunds are NOT available:</p>
           <ul className="ml-6 list-disc space-y-2">
             <li>After 30 days from purchase date</li>
@@ -157,10 +157,10 @@ export default function RefundPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-black">Questions?</h2>
+          <h2 className="text-2xl font-bold text-foreground">Questions?</h2>
           <p>
             Have questions about our refund policy? Contact us at{" "}
-            <a href="mailto:support@fabrk.dev" className="text-[#007AFF] hover:underline">
+            <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
               support@fabrk.dev
             </a>
           </p>

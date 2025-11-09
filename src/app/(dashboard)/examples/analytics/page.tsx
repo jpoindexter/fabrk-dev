@@ -77,10 +77,10 @@ export default async function AnalyticsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-black">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
             Analytics
           </h1>
-          <p className="mt-2 text-sm text-[#666666]">
+          <p className="mt-2 text-sm text-muted-foreground">
             Track your SaaS performance and growth metrics
           </p>
         </div>
@@ -106,12 +106,12 @@ export default async function AnalyticsPage() {
               className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
             >
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-[#007AFF]/10">
-                  <Icon className="h-6 w-6 text-[#007AFF]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-primary/10">
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <div
                   className={`flex items-center gap-1 text-sm font-semibold ${
-                    isPositive ? "text-green-600" : "text-red-600"
+                    isPositive ? "text-success" : "text-destructive"
                   }`}
                 >
                   {isPositive ? (
@@ -123,8 +123,8 @@ export default async function AnalyticsPage() {
                 </div>
               </div>
               <div className="mt-4">
-                <p className="text-sm text-[#666666]">{stat.label}</p>
-                <p className="mt-1 text-3xl font-bold text-black">
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="mt-1 text-3xl font-bold text-foreground">
                   {stat.value}
                 </p>
               </div>
@@ -137,8 +137,8 @@ export default async function AnalyticsPage() {
         {/* Recent Activity */}
         <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
-            <h3 className="text-xl font-bold text-black">Recent Activity</h3>
-            <button className="text-sm font-semibold text-[#007AFF] hover:underline">
+            <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
+            <button className="text-sm font-semibold text-primary hover:underline">
               View All
             </button>
           </div>
@@ -146,15 +146,15 @@ export default async function AnalyticsPage() {
             {mockAnalytics.recentActivity.map((activity, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded border-2 border-black/10 bg-[#F9F9F9] p-3"
+                className="flex items-center justify-between rounded border-2 border-black/10 bg-muted p-3"
               >
                 <div>
-                  <p className="text-sm font-semibold text-black">
+                  <p className="text-sm font-semibold text-foreground">
                     {activity.action}
                   </p>
-                  <p className="text-xs text-[#666666]">{activity.user}</p>
+                  <p className="text-xs text-muted-foreground">{activity.user}</p>
                 </div>
-                <p className="text-xs text-[#666666]">{activity.time}</p>
+                <p className="text-xs text-muted-foreground">{activity.time}</p>
               </div>
             ))}
           </div>
@@ -163,8 +163,8 @@ export default async function AnalyticsPage() {
         {/* Top Pages */}
         <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
-            <h3 className="text-xl font-bold text-black">Top Pages</h3>
-            <button className="text-sm font-semibold text-[#007AFF] hover:underline">
+            <h3 className="text-xl font-bold text-foreground">Top Pages</h3>
+            <button className="text-sm font-semibold text-primary hover:underline">
               View All
             </button>
           </div>
@@ -172,19 +172,19 @@ export default async function AnalyticsPage() {
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded border-2 border-black/10 bg-[#F9F9F9] p-3"
+                className="flex items-center justify-between rounded border-2 border-black/10 bg-muted p-3"
               >
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-black">
+                  <p className="text-sm font-semibold text-foreground">
                     {page.path}
                   </p>
-                  <p className="text-xs text-[#666666]">{page.views} views</p>
+                  <p className="text-xs text-muted-foreground">{page.views} views</p>
                 </div>
                 <div
                   className={`text-sm font-semibold ${
                     page.change.startsWith("+")
-                      ? "text-green-600"
-                      : "text-red-600"
+                      ? "text-success"
+                      : "text-destructive"
                   }`}
                 >
                   {page.change}
@@ -198,18 +198,18 @@ export default async function AnalyticsPage() {
       {/* Chart Placeholder */}
       <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="mb-4 border-b-2 border-black/10 pb-4">
-          <h3 className="text-xl font-bold text-black">Revenue Over Time</h3>
-          <p className="text-sm text-[#666666]">
+          <h3 className="text-xl font-bold text-foreground">Revenue Over Time</h3>
+          <p className="text-sm text-muted-foreground">
             Monthly recurring revenue trend
           </p>
         </div>
-        <div className="flex h-64 items-center justify-center rounded border-2 border-dashed border-black/20 bg-[#F9F9F9]">
+        <div className="flex h-64 items-center justify-center rounded border-2 border-dashed border-black/20 bg-muted">
           <div className="text-center">
-            <TrendingUp className="mx-auto mb-2 h-12 w-12 text-[#007AFF]/50" />
-            <p className="text-sm font-semibold text-[#666666]">
+            <TrendingUp className="mx-auto mb-2 h-12 w-12 text-primary/50" />
+            <p className="text-sm font-semibold text-muted-foreground">
               Chart component goes here
             </p>
-            <p className="text-xs text-[#999999]">
+            <p className="text-xs text-muted-foreground/80">
               Integrate Recharts, Chart.js, or your preferred library
             </p>
           </div>
@@ -217,9 +217,9 @@ export default async function AnalyticsPage() {
       </Card>
 
       {/* Implementation Note */}
-      <div className="rounded-lg border-2 border-[#007AFF] bg-[#007AFF]/5 p-4">
-        <p className="text-sm text-[#666666]">
-          <span className="font-semibold text-black">📊 Implementation Note:</span>{" "}
+      <div className="rounded-lg border-2 border-primary bg-primary/5 p-4">
+        <p className="text-sm text-muted-foreground">
+          <span className="font-semibold text-foreground">📊 Implementation Note:</span>{" "}
           This is a demo analytics page with mock data. Replace{" "}
           <code className="rounded bg-black/10 px-1 py-0.5 text-xs">
             mockAnalytics

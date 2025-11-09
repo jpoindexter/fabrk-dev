@@ -76,12 +76,13 @@ const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => {
+      if (!row) return null;
       return (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#007AFF]/10">
-            <User className="h-4 w-4 text-[#007AFF]" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
+            <User className="h-4 w-4 text-primary" />
           </div>
-          <span className="font-medium text-black">{row.getValue("name")}</span>
+          <span className="font-medium text-foreground">{row.getValue("name")}</span>
         </div>
       );
     },
@@ -92,8 +93,9 @@ const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => {
+      if (!row) return null;
       return (
-        <div className="flex items-center gap-2 text-[#666666]">
+        <div className="flex items-center gap-2 text-muted-foreground">
           <Mail className="h-4 w-4" />
           <span>{row.getValue("email")}</span>
         </div>
@@ -106,10 +108,11 @@ const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Role" />
     ),
     cell: ({ row }) => {
+      if (!row) return null;
       const role = row.getValue("role") as string;
       return (
         <div className="flex items-center gap-2">
-          <Shield className="h-4 w-4 text-[#666666]" />
+          <Shield className="h-4 w-4 text-muted-foreground" />
           <span
             className={`rounded-full px-2 py-1 text-xs font-semibold ${
               role === "ADMIN"
@@ -129,6 +132,7 @@ const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
+      if (!row) return null;
       const status = row.getValue("status") as string;
       return (
         <span
@@ -151,12 +155,15 @@ const columns: ColumnDef<User>[] = [
       <DataTableColumnHeader column={column} title="Joined" />
     ),
     cell: ({ row }) => {
-      return <span className="text-[#666666]">{row.getValue("createdAt")}</span>;
+      if (!row) return null;
+      return <span className="text-muted-foreground">{row.getValue("createdAt")}</span>;
     },
   },
   {
     id: "actions",
+    header: () => <div className="text-right">Actions</div>,
     cell: ({ row }) => {
+      if (!row) return null;
       const user = row.original;
 
       return (
@@ -193,12 +200,12 @@ export default function AdminPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-black">User Management</h1>
-          <p className="text-[#666666]">
+          <h1 className="text-3xl font-bold text-foreground">User Management</h1>
+          <p className="text-muted-foreground">
             Manage users, roles, and permissions
           </p>
         </div>
-        <Button className="bg-[#007AFF] text-white hover:bg-[#0066CC]">
+        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
           Add User
         </Button>
       </div>
@@ -206,17 +213,17 @@ export default function AdminPage() {
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
         <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <p className="text-sm font-medium text-[#666666]">Total Users</p>
-          <p className="text-3xl font-bold text-black">{users.length}</p>
+          <p className="text-sm font-medium text-muted-foreground">Total Users</p>
+          <p className="text-3xl font-bold text-foreground">{users.length}</p>
         </div>
         <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <p className="text-sm font-medium text-[#666666]">Active Users</p>
+          <p className="text-sm font-medium text-muted-foreground">Active Users</p>
           <p className="text-3xl font-bold text-green-600">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
         <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <p className="text-sm font-medium text-[#666666]">Admins</p>
+          <p className="text-sm font-medium text-muted-foreground">Admins</p>
           <p className="text-3xl font-bold text-purple-600">
             {users.filter((u) => u.role === "ADMIN").length}
           </p>
