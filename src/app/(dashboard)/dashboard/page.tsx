@@ -186,15 +186,15 @@ export default function DashboardPage() {
               <p className="text-xs text-muted-foreground flex items-center gap-1">
                 {stats.revenueChange >= 0 ? (
                   <>
-                    <ArrowUpRight className="h-3 w-3 text-green-500" />
-                    <span className="text-green-500">
+                    <ArrowUpRight className="h-3 w-3 text-success" />
+                    <span className="text-success">
                       +{stats.revenueChange}%
                     </span>
                   </>
                 ) : (
                   <>
-                    <ArrowDownRight className="h-3 w-3 text-red-500" />
-                    <span className="text-red-500">{stats.revenueChange}%</span>
+                    <ArrowDownRight className="h-3 w-3 text-destructive" />
+                    <span className="text-destructive">{stats.revenueChange}%</span>
                   </>
                 )}
                 <span>from last month</span>
@@ -217,15 +217,15 @@ export default function DashboardPage() {
               <p className="text-xs text-muted-foreground flex items-center gap-1">
                 {stats.usersChange >= 0 ? (
                   <>
-                    <ArrowUpRight className="h-3 w-3 text-green-500" />
-                    <span className="text-green-500">
+                    <ArrowUpRight className="h-3 w-3 text-success" />
+                    <span className="text-success">
                       +{stats.usersChange}%
                     </span>
                   </>
                 ) : (
                   <>
-                    <ArrowDownRight className="h-3 w-3 text-red-500" />
-                    <span className="text-red-500">{stats.usersChange}%</span>
+                    <ArrowDownRight className="h-3 w-3 text-destructive" />
+                    <span className="text-destructive">{stats.usersChange}%</span>
                   </>
                 )}
                 <span>from last month</span>
@@ -248,15 +248,15 @@ export default function DashboardPage() {
               <p className="text-xs text-muted-foreground flex items-center gap-1">
                 {stats.uploadsChange >= 0 ? (
                   <>
-                    <ArrowUpRight className="h-3 w-3 text-green-500" />
-                    <span className="text-green-500">
+                    <ArrowUpRight className="h-3 w-3 text-success" />
+                    <span className="text-success">
                       +{stats.uploadsChange}%
                     </span>
                   </>
                 ) : (
                   <>
-                    <ArrowDownRight className="h-3 w-3 text-red-500" />
-                    <span className="text-red-500">{stats.uploadsChange}%</span>
+                    <ArrowDownRight className="h-3 w-3 text-destructive" />
+                    <span className="text-destructive">{stats.uploadsChange}%</span>
                   </>
                 )}
                 <span>from last month</span>
@@ -281,7 +281,8 @@ export default function DashboardPage() {
               <div className="mt-2">
                 <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-primary"
+                    className="h-full bg-primary transition-all duration-300"
+                    data-storage-percent={(stats.storageUsed / stats.storageLimit) * 100}
                     style={{
                       width: `${(stats.storageUsed / stats.storageLimit) * 100}%`,
                     }}
@@ -422,7 +423,7 @@ export default function DashboardPage() {
               <Activity className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Status</p>
-                <Badge className="mt-1 bg-green-500">Active</Badge>
+                <Badge className="mt-1 bg-success text-success-foreground">Active</Badge>
               </div>
             </div>
           </div>
