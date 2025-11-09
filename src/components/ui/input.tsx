@@ -13,7 +13,7 @@
 
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/design-system/utils";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 
@@ -35,34 +35,35 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled || loading}
           className={cn(
-            // Base styles - Neo-Brutalism with bold borders
-            "flex h-10 w-full rounded-md border-3 border-black dark:border-white bg-background px-3 py-2 text-[14px] font-normal leading-[1.5] shadow-brutal-sm transition-all duration-150 ease-out",
+            // Brutalist base styles
+            "flex h-10 w-full rounded-brutal border-4 border-black bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
 
-            // Hover state - Subtle lift effect
-            "hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)]",
-
-            // Focus state - Clear ring indicator with brutal style
-            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20",
+            // Brutalist focus state - thick ring + shadow grow
+            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:shadow-brutal-lg",
 
             // File input styles
-            "file:border-0 file:bg-transparent file:text-[14px] file:font-medium file:text-foreground",
+            "file:border-0 file:bg-transparent file:text-[14px] file:font-bold file:text-foreground",
 
             // Placeholder styles
-            "placeholder:text-muted-foreground",
+            "placeholder:text-muted-foreground placeholder:font-bold",
 
-            // Disabled state
-            "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-card",
+            // Disabled state - remove shadow for flat look
+            "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-brutal-none",
 
             // Loading state - Add padding for spinner
             loading && "pr-10",
 
-            // Error state - Red border with brutal style
+            // Error state - Red border
             error &&
-              "border-destructive focus-visible:ring-destructive/20",
+              "border-destructive shadow-brutal-destructive focus-visible:ring-destructive",
 
-            // Success state - Green border with brutal style
+            // Success state - Green shadow
             success &&
-              "border-success focus-visible:ring-success/20",
+              "shadow-brutal-success focus-visible:ring-success",
+
+            // Dark mode
+            "dark:border-white dark:bg-background dark:placeholder:text-muted-foreground/80",
+            "dark:focus-visible:ring-primary",
 
             className
           )}

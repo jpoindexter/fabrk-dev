@@ -1,40 +1,50 @@
 import { z } from "zod";
 
+// Lavender Neobrutalist Color Palette
+// Based on brutalist-redesign branch with light lavender background
+// and bold purple/orange/yellow feature cards
 const palette = {
   base: {
-    background: { light: "0 0% 100%", dark: "222 16% 6%" },
-    foreground: { light: "222 47% 11%", dark: "210 40% 98%" },
-    muted: { light: "215 20% 95%", dark: "217 15% 22%" },
-    mutedForeground: { light: "215 16% 46%", dark: "217 15% 80%" },
+    // Light lavender background (oklch(93.46% 0.0304 254.32) approximated to HSL)
+    background: { light: "254 40% 95%", dark: "254 15% 8%" },
+    foreground: { light: "0 0% 0%", dark: "0 0% 98%" },
+    muted: { light: "254 30% 90%", dark: "254 15% 20%" },
+    mutedForeground: { light: "0 0% 40%", dark: "0 0% 70%" },
   },
   surfaces: {
-    card: { light: "0 0% 100%", dark: "222 16% 8%" },
-    cardForeground: { light: "222 47% 11%", dark: "210 40% 98%" },
-    popover: { light: "0 0% 100%", dark: "222 16% 8%" },
-    popoverForeground: { light: "222 47% 11%", dark: "210 40% 98%" },
+    // White cards on lavender background
+    card: { light: "0 0% 100%", dark: "254 20% 10%" },
+    cardForeground: { light: "0 0% 0%", dark: "0 0% 98%" },
+    popover: { light: "0 0% 100%", dark: "254 20% 10%" },
+    popoverForeground: { light: "0 0% 0%", dark: "0 0% 98%" },
   },
   interactive: {
-    border: { light: "214 32% 91%", dark: "217 27% 26%" },
-    input: { light: "214 32% 91%", dark: "217 27% 26%" },
-    ring: { light: "211 100% 50%", dark: "210 100% 60%" },
+    // Pure black borders for neobrutalist style
+    border: { light: "0 0% 0%", dark: "254 20% 30%" },
+    input: { light: "0 0% 0%", dark: "254 20% 30%" },
+    ring: { light: "259 60% 60%", dark: "259 60% 65%" },
   },
   brand: {
-    primary: { light: "211 100% 50%", dark: "210 100% 65%" },
-    primaryForeground: { light: "210 40% 98%", dark: "222 47% 11%" },
-    secondary: { light: "218 14% 93%", dark: "217 33% 18%" },
-    secondaryForeground: { light: "222 47% 11%", dark: "210 40% 98%" },
-    accent: { light: "15 86% 57%", dark: "15 80% 62%" },
-    accentForeground: { light: "0 0% 100%", dark: "0 0% 12%" },
+    // Primary: Purple/Blue (oklch(67.47% 0.1725 259.61))
+    primary: { light: "259 60% 60%", dark: "259 60% 65%" },
+    primaryForeground: { light: "0 0% 100%", dark: "0 0% 0%" },
+    // Secondary: Orange/Red (oklch(67.28% 0.2147 24.22))
+    secondary: { light: "24 85% 60%", dark: "24 80% 65%" },
+    secondaryForeground: { light: "0 0% 0%", dark: "0 0% 0%" },
+    // Accent: Yellow (oklch(86.03% 0.176 92.36))
+    accent: { light: "48 95% 70%", dark: "48 90% 65%" },
+    accentForeground: { light: "0 0% 0%", dark: "0 0% 0%" },
+    // Destructive: Red (oklch(62% 0.25 29))
     destructive: { light: "0 72% 51%", dark: "0 82% 60%" },
     destructiveForeground: { light: "0 0% 100%", dark: "0 0% 100%" },
   },
   semantic: {
     success: { light: "142 70% 45%", dark: "142 70% 55%" },
-    successForeground: { light: "142 85% 10%", dark: "142 20% 15%" },
+    successForeground: { light: "0 0% 0%", dark: "0 0% 0%" },
     warning: { light: "38 92% 50%", dark: "38 92% 60%" },
-    warningForeground: { light: "38 10% 10%", dark: "38 10% 10%" },
+    warningForeground: { light: "0 0% 0%", dark: "0 0% 0%" },
     info: { light: "207 90% 54%", dark: "207 90% 64%" },
-    infoForeground: { light: "0 0% 100%", dark: "207 30% 10%" },
+    infoForeground: { light: "0 0% 100%", dark: "0 0% 0%" },
   },
 } as const;
 
@@ -85,14 +95,21 @@ const radius = {
   xl: "0.75rem",
   "2xl": "1rem",
   full: "9999px",
+  // Neobrutalist specific
+  brutal: "2px",
 } as const;
 
 const shadows = {
-  xs: "0 1px 2px 0 rgba(15, 23, 42, 0.03)",
-  sm: "0 1px 3px 0 rgba(15, 23, 42, 0.08)",
-  md: "0 4px 6px -1px rgba(15, 23, 42, 0.12)",
-  lg: "0 10px 15px -3px rgba(15, 23, 42, 0.15)",
-  xl: "0 20px 25px -5px rgba(15, 23, 42, 0.2)",
+  xs: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+  sm: "0 1px 3px 0 rgba(0, 0, 0, 0.10)",
+  md: "0 4px 6px -1px rgba(0, 0, 0, 0.15)",
+  lg: "0 10px 15px -3px rgba(0, 0, 0, 0.20)",
+  xl: "0 20px 25px -5px rgba(0, 0, 0, 0.25)",
+  // Neobrutalist hard shadows
+  brutal: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
+  "brutal-sm": "2px 2px 0px 0px rgba(0, 0, 0, 1)",
+  "brutal-lg": "8px 8px 0px 0px rgba(0, 0, 0, 1)",
+  "brutal-xl": "12px 12px 0px 0px rgba(0, 0, 0, 1)",
 } as const;
 
 const typography = {
@@ -119,6 +136,7 @@ const typography = {
     semibold: "600",
     bold: "700",
     extrabold: "800",
+    black: "900", // For neobrutalist headings
   },
   lineHeight: {
     tight: "1.25",

@@ -1,81 +1,63 @@
 /**
- * Application Logger
- * Structured logging with proper error tracking
- * Console logs only in development, silent in production
+ * Simple Logger Utility
+ * Provides consistent logging across the application
  */
 
 type LogLevel = "info" | "warn" | "error" | "debug";
 
-interface LogEntry {
-  level: LogLevel;
-  message: string;
-  timestamp: string;
-  data?: any;
-  error?: Error;
-}
-
 class Logger {
-  private isDevelopment = process.env.NODE_ENV === "development";
-
-  private formatLog(entry: LogEntry): string {
-    const { timestamp, level, message, data } = entry;
-    const dataStr = data ? ` ${JSON.stringify(data)}` : "";
-    return `[${timestamp}] ${level.toUpperCase()}: ${message}${dataStr}`;
+  private sanitizeSensitiveData(data: any): any {
+    if (typeof data === "string") {
+      // Redact potential sensitive patterns
+      return data
+        .replace(/password['":\s]+[^,}\]]+/gi, 'password":"[REDACTED]"')
+        .replace(/token['":\s]+[^,}\]]+/gi, 'token":"[REDACTED]"')
+        .replace(/key['":\s]+[^,}\]]+/gi, 'key":"[REDACTED]"');
+    }
+    return data;
   }
 
-  private log(level: LogLevel, message: string, data?: any, error?: Error) {
-    const entry: LogEntry = {
-      level,
-      message,
-      timestamp: new Date().toISOString(),
-      data,
-      error,
-    };
+  private log(level: LogLevel, message: string, ...args: any[]) {
+    const timestamp = new Date().toISOString();
+    const sanitizedArgs = args.map((arg) => this.sanitizeSensitiveData(arg));
 
-    // In development, log to console
-    if (this.isDevelopment) {
-      const formatted = this.formatLog(entry);
-      switch (level) {
-        case "error":
-          console.error(formatted, error || "");
-          break;
-        case "warn":
-          console.warn(formatted);
-          break;
-        case "debug":
-          console.debug(formatted);
-          break;
-        default:
-          console.log(formatted);
-      }
-    }
+    const logMessage = `[${timestamp}] [${level.toUpperCase()}] ${message}`;
 
-    // In production, you would send to a logging service (Sentry, Datadog, etc.)
-    // For now, only log errors to console.error (Next.js removes other console.* in production)
-    if (!this.isDevelopment && level === "error") {
-      console.error(message, error || data || "");
+    switch (level) {
+      case "error":
+        console.error(logMessage, ...sanitizedArgs);
+        break;
+      case "warn":
+        console.warn(logMessage, ...sanitizedArgs);
+        break;
+      case "debug":
+        if (process.env.NODE_ENV === "development") {
+          console.debug(logMessage, ...sanitizedArgs);
+        }
+        break;
+      default:
+        console.log(logMessage, ...sanitizedArgs);
     }
   }
 
-  info(message: string, data?: any) {
-    this.log("info", message, data);
+  info(message: string, ...args: any[]) {
+    this.log("info", message, ...args);
   }
 
-  warn(message: string, data?: any) {
-    this.log("warn", message, data);
+  warn(message: string, ...args: any[]) {
+    this.log("warn", message, ...args);
   }
 
-  error(message: string, error?: Error | any) {
-    // Handle both Error objects and plain objects
+  error(message: string, error?: any, ...args: any[]) {
     if (error instanceof Error) {
-      this.log("error", message, undefined, error);
+      this.log("error", message, { error: error.message, stack: error.stack }, ...args);
     } else {
-      this.log("error", message, error);
+      this.log("error", message, error, ...args);
     }
   }
 
-  debug(message: string, data?: any) {
-    this.log("debug", message, data);
+  debug(message: string, ...args: any[]) {
+    this.log("debug", message, ...args);
   }
 }
 

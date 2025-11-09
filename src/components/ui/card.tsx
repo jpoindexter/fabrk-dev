@@ -10,7 +10,7 @@
 
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/design-system/utils";
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -37,20 +37,21 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       ref={ref}
       className={cn(
-        // Base styles - Neo-Brutalism
-        "rounded-lg border-3 border-black dark:border-white bg-card text-card-foreground shadow-brutal",
+        // Brutalist base styles
+        "rounded-brutal border-4 border-black bg-card text-card-foreground shadow-brutal",
 
-        // Transitions - Smooth state changes
-        "transition-all duration-150 ease-out",
+        // Brutalist transitions - snappy 150ms
+        "transition-brutal",
 
-        // Hover state - Brutal lift effect
-        "hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm",
+        // Brutalist hover state - lift + grow shadow
+        "hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
 
-        // Focus-within state - Clear ring indicator for accessibility
-        "focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/20",
+        // Focus-within state - thick ring for accessibility
+        "focus-within:ring-4 focus-within:ring-primary",
 
         // Dark mode
         "dark:border-white dark:bg-card dark:shadow-brutal",
+        "dark:hover:shadow-brutal-lg",
 
         className
       )}
@@ -82,8 +83,8 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       data-slot="card-title"
       ref={ref}
       className={cn(
-        // Using typography tokens - matches typography.h3
-        "text-[20px] leading-[1.2] font-semibold tracking-[-0.018em]",
+        // Brutalist typography - bold and commanding
+        "text-[20px] leading-[1.2] font-black tracking-[-0.018em]",
         "text-card-foreground",
 
         // Dark mode
@@ -103,8 +104,8 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
       data-slot="card-description"
       ref={ref}
       className={cn(
-        // Using typography tokens - matches typography.body
-        "text-[14px] leading-[1.5] font-normal tracking-[-0.003em]",
+        // Brutalist typography - bold body text
+        "text-[14px] leading-[1.5] font-bold tracking-[-0.003em]",
         "text-muted-foreground",
 
         // Dark mode
