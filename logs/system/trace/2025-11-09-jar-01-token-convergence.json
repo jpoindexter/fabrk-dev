@@ -1,0 +1,58 @@
+{
+  "jar": "JAR-01",
+  "title": "Token Convergence",
+  "timestamp": "2025-11-09T00:00:00.000Z",
+  "status": "completed",
+  "summary": "Established single source of truth for design tokens, integrated with Tailwind theme and CSS variables, purged hard-coded colors from components, and added lint guardrails.",
+  "changes": {
+    "created": [
+      "scripts/scan-stray-hex.ts",
+      "logs/system/trace/2025-11-09-jar-01-token-convergence.json"
+    ],
+    "modified": [
+      "src/components/ui/progress.tsx",
+      "src/app/(dashboard)/dashboard/page.tsx",
+      "src/components/landing/hero-video.tsx"
+    ],
+    "verified": [
+      "src/lib/design-system/tokens.ts",
+      "tailwind.config.ts",
+      "src/app/globals.css",
+      "eslint.config.mjs",
+      "eslint-rules/no-hardcoded-colors.js",
+      "eslint-rules/no-inline-styles.js"
+    ]
+  },
+  "rationale": {
+    "tokenMap": "Design token map already exists at src/lib/design-system/tokens.ts with comprehensive Zod validation. Includes palette (base, surfaces, interactive, brand, semantic), spacing, radius, shadows, and typography scales.",
+    "tailwindIntegration": "tailwind.config.ts already references tokens and maps them to Tailwind theme extensions. Uses semantic color function to reference CSS variables.",
+    "cssVariables": "globals.css already defines :root and .dark mode CSS variables for all semantic colors and tokens. No conflicting ad-hoc variables found.",
+    "colorPurge": "Replaced hard-coded colors in dashboard/page.tsx (green-500/red-500 -> success/destructive tokens), progress.tsx (border-black/white -> border-foreground), and hero-video.tsx (purple-600 -> primary/80). SVG brand colors in tech-stack-section.tsx are legitimate and preserved.",
+    "lintGuardrails": "ESLint config already includes custom design-system/no-hardcoded-colors and design-system/no-inline-styles rules with appropriate exceptions for dynamic styles (progress, carousel, slider, etc.) and demo files. Created TypeScript hex scanner script for CI validation."
+  },
+  "verification": {
+    "tokenSchema": "✅ Zod schema validates all tokens on build",
+    "tailwindTheme": "✅ Tailwind extends from tokens for colors, radius, shadows, spacing, typography",
+    "cssVars": "✅ CSS variables defined for light and dark modes",
+    "eslintRules": "✅ Custom rules enforce no hard-coded colors and no inline styles in production code",
+    "hexScanner": "✅ CI script scans for unapproved hex/rgb/hsl values",
+    "semanticTokens": "✅ Dashboard uses success/destructive instead of green/red"
+  },
+  "risks": {
+    "mitigated": [
+      {
+        "risk": "R1 - Token drift between Tailwind config and globals.css",
+        "mitigation": "Single tokens.ts source feeds both Tailwind theme and CSS variable documentation"
+      },
+      {
+        "risk": "R2 - Hard-coded colors bypass token system",
+        "mitigation": "ESLint rules + CI hex scanner prevent new hard-coded colors; existing ones replaced"
+      }
+    ]
+  },
+  "nextSteps": [
+    "JAR-02: Regenerate shadcn primitives to ensure token alignment",
+    "JAR-02: Consolidate cn helpers and toast systems",
+    "JAR-02: Enforce import hygiene with ESLint rules"
+  ]
+}
