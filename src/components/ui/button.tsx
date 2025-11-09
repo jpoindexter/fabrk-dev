@@ -13,7 +13,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   // Neobrutalist base styles - Bold, thick borders, hard shadows

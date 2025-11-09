@@ -1,5 +1,6 @@
 import jsxA11y from "eslint-plugin-jsx-a11y";
-
+import tseslint from "@typescript-eslint/eslint-plugin";
+import tsparser from "@typescript-eslint/parser";
 
 // Import custom design system rules
 import noHardcodedColors from "./eslint-rules/no-hardcoded-colors.js";
@@ -73,7 +74,19 @@ const eslintConfig = [
   ...nextFlatConfigs,
   ...tailwindFlatConfigs,
   {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parser: tsparser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
     plugins: {
+      "@typescript-eslint": tseslint,
       "design-system": {
         rules: {
           "no-hardcoded-colors": noHardcodedColors,

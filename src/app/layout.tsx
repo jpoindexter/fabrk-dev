@@ -80,8 +80,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className="dark">
       <head>
-        {/* Lavender background color for mobile browser theme */}
-        <meta name="theme-color" content="hsl(254 40% 95%)" />
+        {/* Pink background color for mobile browser theme */}
+        <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>
