@@ -48,7 +48,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.65.0",
     "resend": "^6.3.0",
-    "simple-icons": "^15.19.0",
+    "simple-icons": "^15.20.0",
     "sonner": "^1.4.0",
     "stripe": "^14.0.0",
     "tailwind-merge": "^2.2.1",
