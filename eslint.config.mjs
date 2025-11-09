@@ -147,7 +147,7 @@ const eslintConfig = [
     }
   },
   {
-    // RELAXED validation for demo/showcase files
+    // RELAXED validation for demo/showcase files and marketing pages with SVG brand colors
     files: [
       "**/examples/**",
       "**/showcase/**",
@@ -156,7 +156,10 @@ const eslintConfig = [
       "**/*.backup.tsx",
       "**/component-previews/**",
       "**/demo/**",
-      "**/demo-*/**"
+      "**/demo-*/**",
+      "**/variations/**", // Landing page variations
+      "**/landing/**", // Landing page components
+      "**/home/tech-stack-section.tsx" // SVG brand logos (React, TypeScript, etc.)
     ],
     rules: {
       'design-system/no-hardcoded-colors': 'off',
