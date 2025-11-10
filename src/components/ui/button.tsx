@@ -8,8 +8,6 @@
  * ```
  */
 
-"use client";
-
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Loader2 } from "lucide-react";
@@ -18,46 +16,46 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  // Base styles - Neo-Brutalism with bold borders and shadows
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[14px] font-bold leading-none border-3 border-black dark:border-white shadow-brutal-sm transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  // Neobrutalist base styles - Bold, thick borders, hard shadows
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-brutal text-[14px] font-bold leading-none transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Primary action - Purple brand color with brutal border
+        // Primary action - Bright yellow with thick border and hard shadow
         default:
-          "bg-primary text-primary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Destructive action - High contrast red with brutal shadow
+        // Destructive action - Bold red with hard shadow
         destructive:
-          "bg-destructive text-destructive-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Success action - Green for positive actions
+        // Success action - Lime green brutalist style
         success:
-          "bg-success text-success-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Outline - White background with brutal border
+        // Outline - White with thick black border
         outline:
-          "bg-background text-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Secondary - Yellow accent with brutal style
+        // Secondary - Hot pink with hard shadow
         secondary:
-          "bg-secondary text-secondary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Ghost - No shadow, minimal border
+        // Ghost - Minimal with hover transform
         ghost:
-          "border-transparent shadow-none hover:bg-accent hover:text-accent-foreground hover:border-black dark:hover:border-white",
+          "border-2 border-transparent hover:border-black hover:bg-muted active:bg-muted/80",
 
-        // Link - Text-only, no border or shadow
+        // Link - Bold with underline
         link:
-          "border-transparent shadow-none text-primary underline-offset-4 hover:underline",
+          "text-foreground font-bold underline-offset-4 hover:underline active:text-foreground/80",
 
-        // Marketing - Bold, uppercase with brutal styling
+        // Marketing - Ultra bold with colored shadow
         marketing:
-          "bg-primary uppercase tracking-wide text-primary-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-primary font-black uppercase tracking-wide text-primary-foreground shadow-brutal-secondary hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2 active:shadow-brutal active:translate-x-1 active:translate-y-1",
 
-        // Marketing outline - Brutal outline style
+        // Marketing outline - Bold outline with colored hover
         marketingOutline:
-          "bg-background uppercase tracking-wide text-foreground hover:bg-accent hover:text-accent-foreground hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+          "border-4 border-black bg-card font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
       },
       size: {
         // Aligned with 8px spacing system

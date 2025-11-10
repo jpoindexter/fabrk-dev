@@ -1,8 +1,15 @@
-import { Check } from "lucide-react";
-import { CheckoutButton } from "@/components/pricing/checkout-button";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Check, Loader2 } from "lucide-react";
+import { useCheckout } from "@/hooks/use-checkout";
 
 export function PricingSection() {
+  const { createCheckoutSession, isLoading, error } = useCheckout();
+
+  // Use the Starter tier price from environment
+  const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
+
   const features = [
     "Next.js 15 Boilerplate",
     "Lifetime Updates",
@@ -11,33 +18,44 @@ export function PricingSection() {
     "Full Source Code",
   ];
 
+  const handleCheckout = () => {
+    if (priceId) {
+      createCheckoutSession(priceId);
+    } else {
+      console.error("No price ID configured");
+    }
+  };
+
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 bg-accent px-6 py-24"
+      className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-center text-4xl font-bold text-foreground">
+        <h2 className="mb-4 text-center text-4xl font-black text-foreground">
           One Price. Unlimited Projects. Launch Now.
         </h2>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-2xl border-3 border-border bg-card p-10 shadow-brutal-lg">
+          <div className="rounded-brutal border-4 border-black bg-background p-10 shadow-brutal-xl">
             {/* Plan Name */}
             <div className="mb-6 text-center">
-              <span className="inline-block rounded-full bg-primary/10 px-6 py-2 text-sm font-semibold text-primary">
-                Early Access - Launch Special
+              <span className="inline-block rounded-brutal border-3 border-black bg-secondary px-6 py-2 text-sm font-black uppercase text-secondary-foreground shadow-brutal">
+                Lifetime Deal
               </span>
             </div>
 
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-bold text-foreground">$79</span>
+                <span className="text-6xl font-black text-foreground">$99</span>
+                <span className="text-2xl font-bold text-foreground line-through">
+                  $199
+                </span>
               </div>
-              <p className="text-lg text-muted-foreground">
-                Pay once, use forever. <span className="font-bold text-foreground">$0 recurring fees.</span>
+              <p className="text-lg font-bold text-foreground">
+                Pay once, use forever. <span className="bg-primary text-primary-foreground px-2 py-1 inline-block">$0 recurring fees.</span>
               </p>
             </div>
 
@@ -45,33 +63,39 @@ export function PricingSection() {
             <ul className="mb-8 space-y-4">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 text-primary" strokeWidth={3} />
-                  <span className="text-foreground">{feature}</span>
+                  <Check className="h-6 w-6 flex-shrink-0 text-accent" strokeWidth={4} />
+                  <span className="font-bold text-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
+            {/* Error Message */}
+            {error && (
+              <div className="mb-4 rounded-brutal border-3 border-black bg-destructive p-4 text-sm font-bold text-destructive-foreground shadow-brutal">
+                {error}
+              </div>
+            )}
+
             {/* CTA Button */}
-            <ErrorBoundary
-              fallback={
-                <div className="rounded-lg border-3 border-destructive bg-destructive/10 p-4 text-center">
-                  <p className="text-sm text-destructive">
-                    Unable to load checkout. Please refresh the page or contact support.
-                  </p>
-                </div>
-              }
+            <Button
+              size="xl"
+              className="w-full text-lg"
+              variant="secondary"
+              onClick={handleCheckout}
+              disabled={isLoading || !priceId}
             >
-              <CheckoutButton
-                priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || ""}
-                planName="Fabrk Boilerplate"
-                className="h-14 w-full text-lg font-semibold"
-              >
-                Buy Now & Ship Faster
-              </CheckoutButton>
-            </ErrorBoundary>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Buy Now & Ship Faster"
+              )}
+            </Button>
 
             {/* Risk Reversal */}
-            <p className="mt-6 text-center text-sm text-muted-foreground">
+            <p className="mt-6 text-center text-sm font-bold text-foreground">
               30-day money-back guarantee. No questions asked.
             </p>
           </div>

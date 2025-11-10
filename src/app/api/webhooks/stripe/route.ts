@@ -86,6 +86,7 @@
 import { generateUniqueLicenseKey } from "@/lib/license";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
+import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -159,65 +160,109 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       throw new Error("No customer email found in session");
     }
 
-    // Get or create user record
+    // Get or create User account (for dashboard access)
     let user = await prisma.user.findUnique({
       where: { email: customerEmail },
     });
 
+    let isNewUser = false;
     if (!user) {
-      // Create new user if doesn't exist
-      const licenseKey = await generateUniqueLicenseKey();
+      // Create user account without password (magic link auth only)
       user = await prisma.user.create({
         data: {
           email: customerEmail,
           name: customerName,
-          customerId: session.customer as string,
-          licenseKey,
-          tier: session.metadata?.tier || "starter",
-          subscriptionTier: session.metadata?.tier || "starter",
+          emailVerified: new Date(), // Auto-verify since they paid
+          // No password - they'll use magic links to sign in
+        },
+      });
+      isNewUser = true;
+      logger.info("Created new user account", { email: customerEmail });
+    }
+
+    // Get or create customer record
+    let customer = await prisma.customer.findUnique({
+      where: { email: customerEmail },
+    });
+
+    if (!customer) {
+      customer = await prisma.customer.create({
+        data: {
+          email: customerEmail,
+          name: customerName,
+          totalPurchases: 1,
+          totalSpent: session.amount_total || 0,
+          lastPurchaseAt: new Date(),
         },
       });
     } else {
-      // Update existing user with license and tier
-      const licenseKey = user.licenseKey || (await generateUniqueLicenseKey());
-      await prisma.user.update({
+      await prisma.customer.update({
         where: { email: customerEmail },
         data: {
-          customerId: session.customer as string,
-          licenseKey,
-          tier: session.metadata?.tier || user.tier,
-          subscriptionTier: session.metadata?.tier || user.tier,
+          totalPurchases: { increment: 1 },
+          totalSpent: { increment: session.amount_total || 0 },
+          lastPurchaseAt: new Date(),
         },
       });
     }
 
-    // Extract tier from metadata
-    const tier = session.metadata?.tier || "starter";
+    // Generate unique license key
+    const licenseKey = await generateUniqueLicenseKey();
+
+    // Extract tier from metadata or default to 'developer'
+    const tier = session.metadata?.tier || "developer";
     const productId = session.metadata?.productId || null;
 
-    // Create payment record
-    const payment = await prisma.payment.create({
+    // Create purchase record
+    const purchase = await prisma.purchase.create({
       data: {
-        userId: user.id,
-        stripeId: session.id,
+        email: customerEmail,
+        name: customerName,
+        licenseKey,
+        provider: "STRIPE",
+        stripeCustomerId: session.customer as string,
+        stripeSessionId: session.id,
         stripePaymentId: session.payment_intent as string,
         amount: session.amount_total || 0,
-        status: "succeeded",
         productId,
+        tier,
+        status: "ACTIVE",
+        purchasedAt: new Date(),
+        welcomeEmailSent: false,
       },
     });
 
-    logger.info("Payment created:", {
-      id: payment.id,
+    logger.info("Purchase created:", {
+      id: purchase.id,
       email: customerEmail,
-      licenseKey: user.licenseKey,
+      licenseKey,
       tier,
     });
 
-    // Send welcome email directly (ShipFast style - no queue)
-    await sendWelcomeEmailDirect(user.id, customerEmail, user.licenseKey!);
+    // Generate magic link token for one-click dashboard access
+    const magicToken = generateSecureToken();
+    const tokenExpires = getTokenExpiration(24 * 7); // Valid for 7 days
 
-    return payment;
+    await prisma.verificationToken.create({
+      data: {
+        identifier: customerEmail,
+        token: magicToken,
+        expires: tokenExpires,
+      },
+    });
+
+    // Build magic link URL
+    const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicToken}&email=${encodeURIComponent(customerEmail)}`;
+
+    logger.info("Magic link generated", { email: customerEmail });
+
+    // Send welcome email with magic link and license key
+    await queueWelcomeEmail(purchase.id, customerEmail, licenseKey, magicLink);
+
+    // Audit logging removed for simplicity
+    // Consider adding back for production if needed
+
+    return purchase;
   } catch (error) {
     logger.error(
       "Error handling checkout completion:",
@@ -227,14 +272,32 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-async function sendWelcomeEmailDirect(userId: string, email: string, licenseKey: string) {
+async function queueWelcomeEmail(
+  purchaseId: string,
+  email: string,
+  licenseKey: string,
+  magicLink: string
+) {
   try {
-    const { sendWelcomeEmail } = await import("@/lib/email");
-    await sendWelcomeEmail(email, email.split("@")[0], licenseKey);
-    logger.info("Welcome email sent", { email });
+    // Store magic link in metadata for email worker to use
+    await prisma.emailQueue.create({
+      data: {
+        purchaseId,
+        type: "WELCOME",
+        to: email,
+        subject: "Welcome to Fabrk - Your Dashboard Access",
+        status: "PENDING",
+        metadata: {
+          licenseKey,
+          magicLink,
+        },
+      },
+    });
+
+    logger.info("Welcome email queued", { email });
   } catch (error) {
     logger.error(
-      "Error sending welcome email",
+      "Error queueing welcome email",
       error instanceof Error ? error.message : String(error)
     );
     // Don't throw - email failure shouldn't block purchase

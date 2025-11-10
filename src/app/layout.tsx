@@ -1,9 +1,6 @@
-import { Footer } from "@/components/footer";
 import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fabrk.dev"),
@@ -81,9 +78,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <head>
-        <meta name="theme-color" content="hsl(var(--background))" />
+        {/* Pink background color for mobile browser theme */}
+        <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>
@@ -112,9 +110,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main id="main-content" className="flex-1 bg-background">
               {children}
             </main>
-
-            {/* Footer with Legal Links */}
-            <Footer />
           </div>
         </Providers>
       </body>

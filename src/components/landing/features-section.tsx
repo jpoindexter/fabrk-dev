@@ -1,77 +1,94 @@
+import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
-  Lock,
-  CreditCard,
-  Database,
-  Mail,
-  Palette,
-  Code,
-} from "lucide-react";
+  siAuth0,
+  siStripe,
+  siPrisma,
+  siResend,
+  siTailwindcss,
+  siTypescript,
+} from "simple-icons";
 
 export function FeaturesSection() {
   const features = [
     {
-      icon: Lock,
-      title: "Add Google Login in 5 Minutes",
+      icon: siAuth0.path,
+      title: "Complete Authentication System",
       description:
-        "Full authentication with email/password and OAuth (Google) already connected. Just add your API keys and it works.",
+        "NextAuth v5 with credentials, Google OAuth, and magic link passwordless login. Email verification and password reset flows included.",
     },
     {
-      icon: CreditCard,
-      title: "Accept Payments Without Reading Stripe Docs",
+      icon: siStripe.path,
+      title: "Stripe Payments & Webhooks",
       description:
-        "Stripe checkout, webhooks, and customer portal pre-configured. One-time payments and subscriptions work out of the box.",
+        "Accept one-time payments and subscriptions. Production-ready webhook processing with signature verification and idempotency protection.",
     },
     {
-      icon: Database,
-      title: "Type-Safe Database with Free Hosting",
+      icon: siPrisma.path,
+      title: "Prisma + PostgreSQL Database",
       description:
-        "PostgreSQL with Prisma ORM. Deploy to Supabase or Railway free tier in minutes. No MongoDB lock-in.",
+        "Production-ready database schema with type-safe queries. Clean structure that's easy to extend and manage.",
     },
     {
-      icon: Mail,
-      title: "Send Beautiful Emails Without Fighting HTML Tables",
+      icon: siResend.path,
+      title: "Email Infrastructure",
       description:
-        "Welcome emails, password resets, and verifications already built. Just configure Resend and go.",
+        "Transactional emails via Resend. Includes welcome emails, verification flows, password resets, and purchase confirmations.",
     },
     {
-      icon: Palette,
-      title: "Build Any Interface with Battle-Tested Components",
+      icon: siTailwindcss.path,
+      title: "Modern UI Stack",
       description:
-        "80+ production-ready components including data tables, charts, forms, and dashboards. No UI reinvention needed.",
+        "Tailwind CSS + shadcn/ui components with built-in dark mode support. Minimal, customizable, and free of complex abstractions.",
     },
     {
-      icon: Code,
-      title: "161 Files You Can Actually Understand",
+      icon: siTypescript.path,
+      title: "Radically Simple Code",
       description:
-        "No 1000-file maze. Clean, readable TypeScript code you can modify without fear. If you can read Next.js, you can use Fabrk.",
+        "No over-engineering. A small, understandable codebase (just ~40 files) that you can easily modify and own.",
     },
   ];
 
   return (
     <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-left text-4xl font-bold text-foreground">
+        <h2 className="mb-4 text-left text-4xl font-black text-foreground">
           Everything You Need, Nothing You Don't.
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
-            const Icon = feature.icon;
+          {features.map((feature, index) => {
+            const colors = [
+              { bg: "bg-primary", text: "text-primary-foreground", icon: "text-primary-foreground" },
+              { bg: "bg-secondary", text: "text-secondary-foreground", icon: "text-secondary-foreground" },
+              { bg: "bg-accent", text: "text-accent-foreground", icon: "text-accent-foreground" },
+            ];
+            const color = colors[index % 3];
+
             return (
               <div
                 key={feature.title}
-                className="group rounded-lg border-3 border-border bg-card p-8 shadow-brutal transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm"
+                className={`group rounded-brutal border-4 border-black ${color.bg} p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2`}
               >
-                <Icon className="mb-4 h-8 w-8 text-primary" strokeWidth={1.5} />
-                <h3 className="mb-3 text-xl font-bold text-foreground">
+                <SimpleIcon path={feature.icon} className={`mb-4 h-12 w-12 ${color.icon}`} />
+                <h3 className={`mb-3 text-xl font-black ${color.text}`}>
                   {feature.title}
                 </h3>
-                <p className="leading-relaxed text-muted-foreground">
+                <p className={`font-bold leading-relaxed ${color.text}`}>
                   {feature.description}
                 </p>
               </div>
             );
           })}
+        </div>
+
+        {/* Bonus Features */}
+        <div className="mt-16 rounded-brutal border-4 border-black bg-muted p-8 shadow-brutal-lg">
+          <p className="text-center text-lg">
+            <span className="font-black text-foreground">Also Included: </span>
+            <span className="font-bold text-foreground">
+              User dashboard • Account settings • Rate limiting • Admin capabilities • TypeScript strict mode • Production-ready logging
+            </span>
+          </p>
         </div>
       </div>
     </section>

@@ -1,91 +1,69 @@
 import Link from "next/link";
-import { Twitter, Github } from "lucide-react";
+import { SimpleIcon } from "@/components/ui/simple-icon";
+import { siX, siGithub } from "simple-icons";
+import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
   return (
-    <footer className="border-t-3 border-border bg-background px-6 py-12">
+    <footer className="border-t-4 border-black bg-background px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Column 1: Logo & Copyright */}
           <div>
-            <Link href="/" className="mb-4 inline-block text-xl font-bold text-foreground">
-              Fabrk
+            <Link href="/" className="mb-4 inline-block transition-transform hover:-translate-y-1">
+              <Logo size={24} />
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm font-bold text-foreground">
               © 2025 Fabrk. All rights reserved.
             </p>
           </div>
 
-          {/* Column 2: Product Links */}
+          {/* Column 2: Links */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Product</h3>
             <nav className="flex flex-col gap-3">
               <Link
                 href="#features"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm font-bold text-foreground transition-transform hover:-translate-x-1"
               >
                 Features
               </Link>
               <Link
                 href="#pricing"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm font-bold text-foreground transition-transform hover:-translate-x-1"
               >
                 Pricing
               </Link>
               <Link
-                href="/terms"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                href="/contact"
+                className="text-sm font-bold text-foreground transition-transform hover:-translate-x-1"
               >
-                Terms
-              </Link>
-              <Link
-                href="/privacy"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
-              >
-                Privacy
+                Contact
               </Link>
             </nav>
           </div>
 
-          {/* Column 3: Support */}
+          {/* Column 3: Social */}
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Support</h3>
-            <nav className="flex flex-col gap-3">
+            <div className="flex items-center gap-4">
               <a
-                href="https://discord.gg/fabrk"
+                href="https://twitter.com/fabrk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="rounded-brutal border-3 border-black bg-background p-3 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1"
+                aria-label="X (Twitter)"
               >
-                Discord Community
+                <SimpleIcon path={siX.path} size={24} />
               </a>
               <a
-                href="mailto:support@fabrk.dev"
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                href="https://github.com/fabrk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-brutal border-3 border-black bg-background p-3 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1"
+                aria-label="GitHub"
               >
-                Email Support
+                <SimpleIcon path={siGithub.path} size={24} />
               </a>
-              <div className="mt-2 flex items-center gap-3">
-                <a
-                  href="https://twitter.com/fabrk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://github.com/fabrk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </div>
-            </nav>
+            </div>
           </div>
         </div>
       </div>
