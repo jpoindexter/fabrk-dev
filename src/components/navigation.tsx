@@ -62,6 +62,12 @@ export function Navigation() {
             >
               Pricing
             </Link>
+            <Link
+              href="/demo"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Demo
+            </Link>
           </div>
 
           {/* Mobile Menu */}
