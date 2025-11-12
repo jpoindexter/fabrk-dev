@@ -38,7 +38,7 @@ export default function AboutPage() {
           <Badge variant="secondary" className="mb-4">
             Our Story
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
             Built by Developers,
             <br />
             <span className="text-primary">For Developers</span>
@@ -54,7 +54,7 @@ export default function AboutPage() {
         {/* Mission */}
         <section>
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex p-4 rounded-full bg-primary/10 border-3 border-border mb-4">
+            <div className="inline-flex p-4 rounded-full bg-primary/10 border-2 border-border mb-4">
               <Target className="h-12 w-12 text-primary" />
             </div>
             <h2 className="text-4xl font-bold">Our Mission</h2>
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 { value: "~160", label: "Essential Files" },
               ].map((stat, i) => (
                 <div key={i}>
-                  <p className="text-5xl font-black text-primary mb-2">{stat.value}</p>
+                  <p className="text-5xl font-bold text-primary mb-2">{stat.value}</p>
                   <p className="text-muted-foreground">{stat.label}</p>
                 </div>
               ))}

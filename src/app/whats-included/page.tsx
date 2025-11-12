@@ -488,7 +488,7 @@ export default function WhatsIncludedPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-3">
+          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2">
             <CardContent className="pt-12 pb-12">
               <h2 className="text-4xl font-bold mb-4">Ready to Build?</h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">

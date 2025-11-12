@@ -251,7 +251,7 @@ export default function FeaturesPage() {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <Badge variant="secondary" className="mb-4">Everything You Need</Badge>
-            <h1 className="text-5xl md:text-6xl font-black tracking-tight">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
               Complete SaaS Infrastructure
             </h1>
             <p className="text-xl text-muted-foreground">

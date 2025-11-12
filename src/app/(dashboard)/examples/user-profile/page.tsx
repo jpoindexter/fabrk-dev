@@ -103,11 +103,11 @@ export default async function UserProfilePage() {
         {/* Left Column - Profile Card */}
         <div className="space-y-6 lg:col-span-1">
           {/* Profile Info */}
-          <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex flex-col items-center text-center">
               {/* Avatar */}
               <div className="relative">
-                <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                <div className="h-32 w-32 overflow-hidden rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <img
                     src={mockUserProfile.avatar}
                     alt={mockUserProfile.name}
@@ -157,7 +157,7 @@ export default async function UserProfilePage() {
           </Card>
 
           {/* Contact Info */}
-          <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <h3 className="mb-4 text-lg font-bold text-black">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
@@ -193,7 +193,7 @@ export default async function UserProfilePage() {
           </Card>
 
           {/* Social Links */}
-          <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <h3 className="mb-4 text-lg font-bold text-foreground">Social Links</h3>
             <div className="space-y-3">
               <a
@@ -236,7 +236,7 @@ export default async function UserProfilePage() {
         {/* Right Column - Projects & Activity */}
         <div className="space-y-6 lg:col-span-2">
           {/* Recent Projects */}
-          <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
               <h3 className="text-xl font-bold text-black">Recent Projects</h3>
               <Button
@@ -251,7 +251,7 @@ export default async function UserProfilePage() {
               {mockUserProfile.recentProjects.map((project, index) => (
                 <div
                   key={index}
-                  className="rounded border-4 border-black bg-white p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                  className="rounded border-2 border-black bg-white p-4 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -295,7 +295,7 @@ export default async function UserProfilePage() {
           </Card>
 
           {/* Recent Activity */}
-          <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div className="mb-4 border-b-2 border-black/10 pb-4">
               <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
             </div>

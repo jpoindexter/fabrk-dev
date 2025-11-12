@@ -21,7 +21,7 @@ export default function StartupVariation() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500" />
-              <span className="text-2xl font-black">FABRK</span>
+              <span className="text-2xl font-bold">FABRK</span>
             </div>
             <div className="flex items-center gap-4">
               <Button
@@ -59,7 +59,7 @@ export default function StartupVariation() {
               SHIP YOUR MVP IN DAYS, NOT MONTHS
             </Badge>
 
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-none">
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-none">
               BUILD THE
               <br />
               <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
@@ -75,7 +75,7 @@ export default function StartupVariation() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-6">
               <Button
                 size="xl"
-                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-black text-xl px-12 py-8 border-0 shadow-2xl shadow-purple-500/50 hover:scale-105 transition-all"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-xl px-12 py-8 border-0 shadow-2xl shadow-purple-500/50 hover:scale-105 transition-all"
                 asChild
               >
                 <Link href="/#pricing">
@@ -118,7 +118,7 @@ export default function StartupVariation() {
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-5xl md:text-6xl font-black">
+            <h2 className="text-5xl md:text-6xl font-bold">
               EVERYTHING YOU NEED
             </h2>
             <p className="text-2xl text-white/60 font-bold">
@@ -173,7 +173,7 @@ export default function StartupVariation() {
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center`}>
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-black">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold">{feature.title}</h3>
                   <p className="text-white/60 font-medium leading-relaxed">
                     {feature.description}
                   </p>
@@ -195,7 +195,7 @@ export default function StartupVariation() {
               { value: "100%", label: "Money Back Guarantee" },
             ].map((stat, i) => (
               <div key={i} className="space-y-2">
-                <p className="text-5xl md:text-6xl font-black bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                   {stat.value}
                 </p>
                 <p className="text-lg text-white/60 font-bold">{stat.label}</p>
@@ -210,7 +210,7 @@ export default function StartupVariation() {
         <div className="container mx-auto max-w-4xl px-6">
           <div className="space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-5xl font-black">WHAT YOU GET</h2>
+              <h2 className="text-5xl font-bold">WHAT YOU GET</h2>
               <p className="text-xl text-white/60 font-bold">
                 Everything to go from zero to launch
               </p>
@@ -252,7 +252,7 @@ export default function StartupVariation() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
 
         <div className="container mx-auto max-w-4xl px-6 relative text-center space-y-10">
-          <h2 className="text-5xl md:text-7xl font-black leading-tight">
+          <h2 className="text-5xl md:text-7xl font-bold leading-tight">
             STOP PLANNING.
             <br />
             START BUILDING.
@@ -266,7 +266,7 @@ export default function StartupVariation() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
             <Button
               size="xl"
-              className="bg-black text-white hover:bg-black/90 font-black text-2xl px-12 py-8 shadow-2xl hover:scale-105 transition-all"
+              className="bg-black text-white hover:bg-black/90 font-bold text-2xl px-12 py-8 shadow-2xl hover:scale-105 transition-all"
               asChild
             >
               <Link href="/#pricing">
@@ -307,7 +307,7 @@ export default function StartupVariation() {
       {/* Floating Style Badge */}
       <div className="fixed bottom-6 right-6">
         <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl p-4 shadow-2xl shadow-purple-500/50 border-2 border-white/20">
-          <p className="font-black text-sm mb-1">STARTUP BOLD</p>
+          <p className="font-bold text-sm mb-1">STARTUP BOLD</p>
           <p className="text-xs text-white/80 mb-3 font-medium">
             High-energy design for MVPs
           </p>

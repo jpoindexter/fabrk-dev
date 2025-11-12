@@ -103,7 +103,7 @@ export default async function AnalyticsPage() {
           return (
             <Card
               key={stat.label}
-              className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
+              className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
             >
               <div className="flex items-center justify-between">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-primary/10">
@@ -135,7 +135,7 @@ export default async function AnalyticsPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
             <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
             <button className="text-sm font-semibold text-primary hover:underline">
@@ -161,7 +161,7 @@ export default async function AnalyticsPage() {
         </Card>
 
         {/* Top Pages */}
-        <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
             <h3 className="text-xl font-bold text-foreground">Top Pages</h3>
             <button className="text-sm font-semibold text-primary hover:underline">
@@ -196,7 +196,7 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Chart Placeholder */}
-      <Card className="border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="mb-4 border-b-2 border-black/10 pb-4">
           <h3 className="text-xl font-bold text-foreground">Revenue Over Time</h3>
           <p className="text-sm text-muted-foreground">

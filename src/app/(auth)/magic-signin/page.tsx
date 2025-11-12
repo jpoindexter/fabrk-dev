@@ -45,9 +45,9 @@ export default function MagicSigninPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-6 rounded-brutal border-4 border-black bg-background p-8 shadow-brutal-xl">
+      <div className="w-full max-w-md space-y-6 rounded-brutal border-2 border-black bg-background p-8 shadow-brutal-lg">
         <div className="text-center">
-          <h1 className="text-3xl font-black">
+          <h1 className="text-3xl font-bold">
             {status === "loading" && "Signing In"}
             {status === "success" && "Welcome Back!"}
             {status === "error" && "Oops!"}
@@ -59,7 +59,7 @@ export default function MagicSigninPage() {
 
         {status === "loading" && (
           <div className="flex justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-black border-t-primary" />
+            <div className="h-12 w-12 animate-spin rounded-full border-2 border-black border-t-primary" />
           </div>
         )}
 

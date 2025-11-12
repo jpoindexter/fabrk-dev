@@ -104,7 +104,7 @@ export default function VariationsPage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="aspect-video bg-muted border-3 border-border rounded-lg flex items-center justify-center">
+                <div className="aspect-video bg-muted border-2 border-border rounded-lg flex items-center justify-center">
                   <div className="text-center">
                     <Eye className="h-12 w-12 mx-auto text-muted-foreground mb-2" />
                     <p className="text-sm text-muted-foreground">{variation.name}</p>
