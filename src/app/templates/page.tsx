@@ -107,13 +107,23 @@ const templates: Template[] = [
     features: ["Team roster", "Activity feed", "Invites", "Permissions"],
   },
   {
-    id: "security-settings",
+    id: "security-privacy",
     name: "Security & Privacy",
     description: "Security settings with 2FA, sessions, and audit logs",
     category: "account",
     icon: Shield,
-    href: "/templates/security-settings",
-    features: ["2FA setup", "Active sessions", "Audit log", "API keys"],
+    href: "/templates/security-privacy",
+    features: ["2FA setup", "Active sessions", "Audit log", "GDPR controls"],
+  },
+  {
+    id: "chart-library",
+    name: "Chart Library",
+    description: "Data visualization with Recharts (line, area, bar, pie charts)",
+    category: "dashboard",
+    icon: BarChart3,
+    badge: "New",
+    href: "/templates/chart-library",
+    features: ["Line charts", "Area charts", "Bar charts", "Pie/Donut charts"],
   },
 ];
 
