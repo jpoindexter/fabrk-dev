@@ -31,6 +31,13 @@ export function FAQSection() {
     },
   ];
 
+  const colors = [
+    { bg: "bg-primary", text: "text-primary-foreground" },
+    { bg: "bg-accent", text: "text-accent-foreground" },
+    { bg: "bg-secondary", text: "text-secondary-foreground" },
+    { bg: "bg-primary", text: "text-primary-foreground" },
+  ];
+
   return (
     <section
       id="faq"
@@ -42,20 +49,23 @@ export function FAQSection() {
         </h2>
 
         <Accordion type="single" collapsible className="w-full space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="rounded-brutal border-4 border-black bg-background shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg data-[state=open]:shadow-brutal-lg"
-            >
-              <AccordionTrigger className="px-6 text-left text-lg font-black text-foreground hover:no-underline">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="px-6 font-bold text-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
+          {faqs.map((faq, index) => {
+            const color = colors[index];
+            return (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className={`rounded-brutal border-2 border-brutal ${color.bg} shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg data-[state=open]:shadow-brutal-lg`}
+              >
+                <AccordionTrigger className={`px-6 text-left text-lg font-black ${color.text} hover:no-underline`}>
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className={`px-6 font-bold ${color.text}`}>
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
         </Accordion>
       </div>
     </section>
