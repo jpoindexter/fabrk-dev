@@ -75,9 +75,36 @@ src/app/
 │   └── startup/page.tsx       # Bold startup design
 ├── components/page.tsx         # UI component showcase (25+ components)
 └── templates/
-    ├── page.tsx               # Template gallery (8 templates)
-    └── analytics-dashboard/   # Example: Analytics dashboard
+    ├── page.tsx                      # Template gallery (8 templates)
+    ├── README.md                     # Template documentation & usage guide
+    ├── analytics-dashboard/          # Analytics with charts & metrics
+    ├── team-dashboard/               # Multi-tenancy with RBAC
+    ├── chart-library/                # Recharts showcase
+    ├── user-management/              # Admin panel with data table
+    ├── settings-page/                # 4-tab settings interface
+    ├── billing-dashboard/            # Subscriptions & payments
+    ├── security-privacy/             # 2FA, OAuth, audit log, GDPR
+    ├── email-templates/              # Email showcase & previews
+    └── documentation-layout/         # 3-column docs site
 ```
+
+### Template Gallery
+
+The boilerplate includes **8 production-ready page templates** accessible at `/templates`:
+
+1. **Analytics Dashboard** - Data visualization with charts, metrics, and tables
+2. **Team Dashboard** - Multi-tenancy with RBAC (Owner/Admin/Member/Guest roles)
+3. **Chart Library** - Recharts showcase (line, area, bar, pie charts)
+4. **User Management** - Admin panel with TanStack Table (sorting, filtering, pagination)
+5. **Settings Page** - 4-tab interface (General, Account, Privacy, Billing)
+6. **Billing Dashboard** - Subscription management, usage tracking, payment history
+7. **Security & Privacy** - 2FA, OAuth, sessions, audit log, GDPR compliance
+8. **Email Templates** - Interactive showcase of 5 transactional emails
+9. **Documentation Layout** - 3-column docs site with markdown parsing
+
+**Usage:** Each template is self-contained and copy-paste ready. See `src/app/templates/README.md` for detailed documentation, customization guide, and integration patterns.
+
+**Dependencies:** All templates use existing UI components except Chart Library which requires `recharts` (already installed).
 
 #### Application Interface (Protected Pages)
 ```

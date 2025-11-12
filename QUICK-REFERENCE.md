@@ -91,18 +91,35 @@ GOOGLE_CLIENT_SECRET="..."
 ## 🎯 Quick Pages
 
 ```
+# Marketing & Showcase
 /                       Landing page (default)
 /landing-alt            With comparison section
 /variations             All component variations
+/components             UI component showcase
+/templates              Template gallery ⭐ NEW
 
+# Templates (Copy-Paste Ready) ⭐ NEW
+/templates/analytics-dashboard    Analytics with charts & metrics
+/templates/team-dashboard         Multi-tenancy with RBAC
+/templates/chart-library          Recharts showcase
+/templates/user-management        Admin panel with data table
+/templates/settings-page          4-tab settings interface
+/templates/billing-dashboard      Subscriptions & payments
+/templates/security-privacy       2FA, OAuth, audit log, GDPR
+/templates/email-templates        Email showcase & previews
+/templates/documentation-layout   3-column docs site
+
+# Examples
 /examples/admin         Data table demo
 /examples/analytics     Analytics dashboard
 /examples/user-profile  User profile page
 
+# Legal
 /terms                  Terms of Service
 /privacy                Privacy Policy
 /refund                 Refund Policy
 
+# Auth & Dashboard
 /login                  Login page
 /signup                 Registration
 /dashboard              Main dashboard

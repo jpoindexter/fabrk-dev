@@ -16,6 +16,7 @@
 **See everything before you build:**
 
 - **[/components](http://localhost:3000/components)** - All 87+ UI components with variants
+- **[/templates](http://localhost:3000/templates)** - 8 copy-paste ready page templates ⭐ NEW
 - **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
 - **[/whats-included](http://localhost:3000/whats-included)** - Complete feature overview
 - **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
@@ -133,6 +134,29 @@ Visit **http://localhost:3000** 🎉
 - Area chart
 - Bar chart
 - Line chart
+
+### 8 Copy-Paste Ready Templates ⭐ NEW
+
+Production-ready page templates for common SaaS use cases. Each template is fully functional, responsive, and built with the same components and design system.
+
+**Dashboards (3 templates):**
+- **Analytics Dashboard** - Metrics, charts, data tables, traffic analysis
+- **Team Dashboard** - Multi-tenancy, RBAC, member management, activity feed
+- **Chart Library** - Recharts showcase (line, area, bar, pie charts)
+
+**Admin Panels (1 template):**
+- **User Management** - TanStack Table with sorting, filtering, pagination, bulk actions
+
+**Account Pages (3 templates):**
+- **Settings Page** - 4-tab interface (General, Account, Privacy, Billing)
+- **Billing Dashboard** - Subscriptions, usage tracking, payment history
+- **Security & Privacy** - 2FA, OAuth, sessions, audit log, GDPR compliance
+
+**Marketing (2 templates):**
+- **Email Templates** - Interactive showcase of 5 transactional emails
+- **Documentation Layout** - 3-column docs site with markdown parsing
+
+**View all templates:** [/templates](http://localhost:3000/templates) | [Template README](./src/app/templates/README.md)
 
 **Email Templates (5):**
 - Welcome email
