@@ -33,6 +33,12 @@ export function Navigation() {
           >
             FAQ
           </Link>
+          <Link
+            href="/templates"
+            className="text-sm font-bold uppercase tracking-wide text-foreground transition-all hover:-translate-y-1"
+          >
+            Demo
+          </Link>
         </div>
 
         {/* CTA Buttons */}

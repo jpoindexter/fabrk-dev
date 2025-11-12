@@ -48,9 +48,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 
   // Webpack configuration to exclude @react-email from server-side bundling
   webpack: (config, { isServer }) => {
