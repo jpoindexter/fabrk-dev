@@ -157,9 +157,9 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Modern neobrutalism tokens */
+  /* Modern neobrutalism tokens - Lighter, refined aesthetic */
   --border-width-brutal: 2px;
-  --border-width-brutal-thick: 3px;
+  --border-width-brutal-thick: 3px; /* DEPRECATED: Use border-2 instead for consistency */
   --border-width-brutal-thin: 1px;
 
   --radius-brutal: 8px;
@@ -167,10 +167,11 @@
   --radius-brutal-lg: 12px;
   --radius-base: 15px;
 
+  /* Updated shadows: Lighter weights for modern neo-brutalism */
   --shadow-brutal: 2px 2px 0px 0px var(--border);
   --shadow-brutal-sm: 1px 1px 0px 0px var(--border);
-  --shadow-brutal-lg: 4px 4px 0px 0px var(--border);
-  --shadow-brutal-xl: 6px 6px 0px 0px var(--border);
+  --shadow-brutal-lg: 3px 3px 0px 0px var(--border); /* Reduced from 4px */
+  --shadow-brutal-xl: 4px 4px 0px 0px var(--border); /* Reduced from 6px, use sparingly for hero sections only */
   --shadow-shadow: var(--shadow);
 
   --spacing-boxShadowX: 2px;
@@ -178,6 +179,7 @@
   --spacing-reverseBoxShadowX: -2px;
   --spacing-reverseBoxShadowY: -2px;
 
+  /* Font weights: Max 700 (bold), avoid 900 (black) for readability */
   --font-weight-base: 500;
   --font-weight-heading: 700;
 }

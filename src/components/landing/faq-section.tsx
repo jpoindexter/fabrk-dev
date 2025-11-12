@@ -44,7 +44,7 @@ export function FAQSection() {
       className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-12 text-center text-4xl font-black text-foreground">
+        <h2 className="mb-12 text-center text-4xl font-bold text-foreground">
           Frequently Asked Questions
         </h2>
 
@@ -57,7 +57,7 @@ export function FAQSection() {
                 value={`item-${index}`}
                 className={`rounded-brutal border-2 border-brutal ${color.bg} shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg data-[state=open]:shadow-brutal-lg`}
               >
-                <AccordionTrigger className={`px-6 text-left text-lg font-black ${color.text} hover:no-underline`}>
+                <AccordionTrigger className={`px-6 text-left text-lg font-bold ${color.text} hover:no-underline`}>
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className={`px-6 font-bold ${color.text}`}>

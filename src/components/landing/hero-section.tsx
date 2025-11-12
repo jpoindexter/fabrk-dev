@@ -19,9 +19,9 @@ export function HeroSection() {
         {/* Hero Content */}
         <div className="mx-auto max-w-4xl text-center">
           {/* Massive Headline */}
-          <h1 className="mb-8 text-5xl font-black leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             The Radically Simple{" "}
-            <span className="block bg-primary text-primary-foreground px-4 py-2 inline-block -rotate-1 shadow-brutal-lg my-4 border-4 border-black">
+            <span className="block bg-primary text-primary-foreground px-4 py-2 inline-block -rotate-1 shadow-brutal-lg my-4 border-2 border-black">
               Next.js Boilerplate.
             </span>
           </h1>
@@ -30,11 +30,11 @@ export function HeroSection() {
           <p className="mx-auto mb-14 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
             Stop wrestling with complex setups. Fabrk gives you authentication,
             payments, and database integration in a clean,{" "}
-            <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1 border-3 border-black shadow-brutal">
+            <span className="bg-accent text-accent-foreground px-2 py-1 inline-block rotate-1 border-2 border-black shadow-brutal">
               40-file Next.js 15 project
             </span>
             . Ship your SaaS in{" "}
-            <span className="bg-secondary text-secondary-foreground px-2 py-1 inline-block -rotate-1 border-3 border-black shadow-brutal">
+            <span className="bg-secondary text-secondary-foreground px-2 py-1 inline-block -rotate-1 border-2 border-black shadow-brutal">
               days, not weeks
             </span>.
           </p>
@@ -62,19 +62,19 @@ export function HeroSection() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             {/* Avatar Stack */}
             <div className="flex -space-x-3">
-              <div className="h-12 w-12 rounded-full border-4 border-black bg-primary flex items-center justify-center text-primary-foreground font-black text-sm shadow-brutal">
+              <div className="h-12 w-12 rounded-full border-2 border-black bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm shadow-brutal">
                 JD
               </div>
-              <div className="h-12 w-12 rounded-full border-4 border-black bg-accent flex items-center justify-center text-accent-foreground font-black text-sm shadow-brutal">
+              <div className="h-12 w-12 rounded-full border-2 border-black bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm shadow-brutal">
                 SK
               </div>
-              <div className="h-12 w-12 rounded-full border-4 border-black bg-secondary flex items-center justify-center text-secondary-foreground font-black text-sm shadow-brutal">
+              <div className="h-12 w-12 rounded-full border-2 border-black bg-secondary flex items-center justify-center text-secondary-foreground font-bold text-sm shadow-brutal">
                 AM
               </div>
-              <div className="h-12 w-12 rounded-full border-4 border-black bg-destructive flex items-center justify-center text-destructive-foreground font-black text-sm shadow-brutal">
+              <div className="h-12 w-12 rounded-full border-2 border-black bg-destructive flex items-center justify-center text-destructive-foreground font-bold text-sm shadow-brutal">
                 TC
               </div>
-              <div className="h-12 w-12 rounded-full border-4 border-black bg-muted flex items-center justify-center text-foreground font-black text-sm shadow-brutal">
+              <div className="h-12 w-12 rounded-full border-2 border-black bg-muted flex items-center justify-center text-foreground font-bold text-sm shadow-brutal">
                 +95
               </div>
             </div>
@@ -88,7 +88,7 @@ export function HeroSection() {
 
         {/* File Explorer Mockup */}
         <div className="mx-auto mt-20 max-w-4xl">
-          <div className="relative overflow-hidden rounded-brutal border-4 border-black bg-muted p-6 shadow-brutal-xl">
+          <div className="relative overflow-hidden rounded-brutal border-2 border-black bg-muted p-6 shadow-brutal-lg">
             {/* Window Controls */}
             <div className="mb-6 flex items-center gap-2">
               <div className="h-4 w-4 rounded-none border-2 border-black bg-destructive"></div>
@@ -154,8 +154,8 @@ export function HeroSection() {
                   <span className="text-foreground">prisma.ts</span>
                 </div>
               </div>
-              <div className="mt-6 border-t-4 border-black pt-6 text-center">
-                <span className="bg-primary text-primary-foreground px-3 py-1 inline-block rounded-brutal border-3 border-black shadow-brutal font-bold">40 files</span>
+              <div className="mt-6 border-t-2 border-black pt-6 text-center">
+                <span className="bg-primary text-primary-foreground px-3 py-1 inline-block rounded-brutal border-2 border-black shadow-brutal font-bold">40 files</span>
                 <span className="text-foreground"> • Production ready</span>
               </div>
             </div>

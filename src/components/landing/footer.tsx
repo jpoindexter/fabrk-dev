@@ -23,7 +23,7 @@ export function Footer() {
 
           {/* Column 2: Product */}
           <div>
-            <h4 className="mb-4 text-sm font-black uppercase tracking-wide text-black">
+            <h4 className="mb-4 text-sm font-bold text-black">
               Product
             </h4>
             <nav className="flex flex-col gap-3">
@@ -62,7 +62,7 @@ export function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h4 className="mb-4 text-sm font-black uppercase tracking-wide text-black">
+            <h4 className="mb-4 text-sm font-bold text-black">
               Resources
             </h4>
             <nav className="flex flex-col gap-3">
@@ -97,7 +97,7 @@ export function Footer() {
 
           {/* Column 4: Legal */}
           <div>
-            <h4 className="mb-4 text-sm font-black uppercase tracking-wide text-black">
+            <h4 className="mb-4 text-sm font-bold text-black">
               Legal
             </h4>
             <nav className="flex flex-col gap-3">
@@ -124,7 +124,7 @@ export function Footer() {
 
           {/* Column 5: Social & Community */}
           <div>
-            <h4 className="mb-4 text-sm font-black uppercase tracking-wide text-black">
+            <h4 className="mb-4 text-sm font-bold text-black">
               Community
             </h4>
             <div className="flex flex-col gap-4">

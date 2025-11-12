@@ -51,7 +51,7 @@ export function FeaturesSection() {
   return (
     <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-left text-4xl font-black text-foreground">
+        <h2 className="mb-4 text-left text-4xl font-bold text-foreground">
           Everything You Need, Nothing You Don't.
         </h2>
 
@@ -67,10 +67,10 @@ export function FeaturesSection() {
             return (
               <div
                 key={feature.title}
-                className={`group rounded-brutal border-4 border-black ${color.bg} p-8 shadow-brutal-lg transition-all hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2`}
+                className={`group rounded-brutal border-2 border-black ${color.bg} p-8 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1`}
               >
                 <SimpleIcon path={feature.icon} className={`mb-4 h-12 w-12 ${color.icon}`} />
-                <h3 className={`mb-3 text-xl font-black ${color.text}`}>
+                <h3 className={`mb-3 text-xl font-bold ${color.text}`}>
                   {feature.title}
                 </h3>
                 <p className={`font-bold leading-relaxed ${color.text}`}>
@@ -82,9 +82,9 @@ export function FeaturesSection() {
         </div>
 
         {/* Bonus Features */}
-        <div className="mt-16 rounded-brutal border-4 border-black bg-muted p-8 shadow-brutal-lg">
+        <div className="mt-16 rounded-brutal border-2 border-black bg-muted p-8 shadow-brutal">
           <p className="text-center text-lg">
-            <span className="font-black text-foreground">Also Included: </span>
+            <span className="font-bold text-foreground">Also Included: </span>
             <span className="font-bold text-foreground">
               User dashboard • Account settings • Rate limiting • Admin capabilities • TypeScript strict mode • Production-ready logging
             </span>

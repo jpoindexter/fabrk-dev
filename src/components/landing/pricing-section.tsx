@@ -32,16 +32,16 @@ export function PricingSection() {
       className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-center text-4xl font-black text-foreground">
+        <h2 className="mb-4 text-center text-4xl font-bold text-foreground">
           One Price. Unlimited Projects. Launch Now.
         </h2>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-brutal border-4 border-black bg-white p-10 shadow-brutal-xl">
+          <div className="rounded-brutal border-2 border-black bg-white p-10 shadow-brutal-lg">
             {/* Plan Name */}
             <div className="mb-6 text-center">
-              <span className="inline-block rounded-brutal border-3 border-black bg-secondary px-6 py-2 text-sm font-black uppercase text-secondary-foreground shadow-brutal">
+              <span className="inline-block rounded-brutal border-2 border-black bg-secondary px-6 py-2 text-sm font-bold uppercase text-secondary-foreground shadow-brutal">
                 Lifetime Deal
               </span>
             </div>
@@ -49,7 +49,7 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-black text-foreground">$99</span>
+                <span className="text-6xl font-bold text-foreground">$99</span>
                 <span className="text-2xl font-bold text-foreground line-through">
                   $199
                 </span>
@@ -71,7 +71,7 @@ export function PricingSection() {
 
             {/* Error Message */}
             {error && (
-              <div className="mb-4 rounded-brutal border-3 border-black bg-destructive p-4 text-sm font-bold text-destructive-foreground shadow-brutal">
+              <div className="mb-4 rounded-brutal border-2 border-black bg-destructive p-4 text-sm font-bold text-destructive-foreground shadow-brutal">
                 {error}
               </div>
             )}
