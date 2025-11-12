@@ -47,7 +47,7 @@ export default function SaaSVariation() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="flex items-center gap-2">
-                <Badge className="bg-green-500/10 text-green-700 border-green-500/20">
+                <Badge className="bg-primary/10 text-primary border-primary/20">
                   Enterprise Ready
                 </Badge>
                 <Badge variant="outline">SOC 2 Compliant</Badge>
@@ -83,7 +83,7 @@ export default function SaaSVariation() {
                 <div>
                   <div className="flex items-center gap-1">
                     {[1,2,3,4,5].map((i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-4 w-4 fill-accent text-accent" />
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground">Trusted by 10,000+ teams</p>
@@ -92,7 +92,7 @@ export default function SaaSVariation() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl border border-border p-8">
+              <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl border border-border p-8">
                 <div className="h-full bg-card rounded-xl border border-border shadow-2xl flex items-center justify-center">
                   <p className="text-muted-foreground">Dashboard Preview</p>
                 </div>
@@ -171,7 +171,7 @@ export default function SaaSVariation() {
                   <ul className="space-y-2">
                     {feature.features.map((f, j) => (
                       <li key={j} className="flex items-center gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-500" />
+                        <Check className="h-4 w-4 text-primary" />
                         <span>{f}</span>
                       </li>
                     ))}

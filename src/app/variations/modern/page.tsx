@@ -74,15 +74,15 @@ export default function ModernVariation() {
 
             <div className="flex items-center justify-center gap-8 pt-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500" />
+                <Check className="h-4 w-4 text-primary" />
                 <span>No subscription</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500" />
+                <Check className="h-4 w-4 text-primary" />
                 <span>Lifetime updates</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500" />
+                <Check className="h-4 w-4 text-primary" />
                 <span>Full source code</span>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function ModernVariation() {
             </div>
             <div className="flex items-center justify-center gap-1">
               {[1,2,3,4,5].map((i) => (
-                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="h-5 w-5 fill-accent text-accent" />
               ))}
               <span className="ml-2 text-sm text-muted-foreground">
                 (4.9/5 from 127 reviews)

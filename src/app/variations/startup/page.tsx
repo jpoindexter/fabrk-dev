@@ -235,8 +235,8 @@ export default function StartupVariation() {
                   key={i}
                   className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-white/5 to-transparent border border-white/10"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
-                    <Check className="h-5 w-5 text-white" />
+                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <Check className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <p className="font-bold text-lg">{item}</p>
                 </div>
