@@ -201,6 +201,167 @@ try {
 @/types/*           // src/types/*
 ```
 
+## Design System
+
+Fabrk uses a unified design token system with OKLCH colors for perceptually uniform theming and neo-brutalism aesthetic patterns.
+
+### Theme System
+
+**6 Color Themes Available:**
+- Purple (Default) - `oklch(70.28% 0.1753 295.36)`
+- Ocean Blue - `oklch(65% 0.15 240)`
+- Forest Green - `oklch(65% 0.15 160)`
+- Sunset Orange - `oklch(70% 0.15 60)`
+- Hot Pink - `oklch(70% 0.20 340)`
+- Ruby Red - `oklch(60% 0.20 25)`
+
+**Theme Switching:**
+- Located at `/components` page in theme switcher dropdown
+- Uses `localStorage` for persistence
+- All UI components automatically respond to theme changes
+- Landing page variations are theme-responsive
+
+### Design Tokens (CSS Variables)
+
+All components use centralized design tokens defined in `src/app/globals.css`:
+
+```css
+:root {
+  /* Base Colors */
+  --background: oklch(100% 0 0);      /* White */
+  --foreground: oklch(15% 0 0);       /* Near-black text */
+
+  /* Theme Colors (OKLCH format) */
+  --primary: oklch(70.28% 0.1753 295.36);
+  --primary-foreground: oklch(100% 0 0);
+  --secondary: oklch(95% 0.02 295.36);
+  --secondary-foreground: oklch(15% 0 0);
+  --accent: oklch(95% 0.02 295.36);
+  --accent-foreground: oklch(15% 0 0);
+
+  /* Semantic Colors */
+  --muted: oklch(95% 0 0);
+  --muted-foreground: oklch(50% 0 0);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(15% 0 0);
+  --border: oklch(90% 0 0);
+  --destructive: oklch(55% 0.20 25);
+
+  /* Neo-Brutalism Tokens */
+  --radius-brutal: 8px;
+  --border-brutal: 2px;
+  --shadow-brutal: 2px 2px 0px 0px hsl(var(--border));
+  --shadow-brutal-lg: 4px 4px 0px 0px hsl(var(--border));
+  --shadow-brutal-xl: 6px 6px 0px 0px hsl(var(--border));
+}
+```
+
+### Component Styling Patterns
+
+**Always use design tokens, never hardcoded colors:**
+
+```typescript
+// ✅ GOOD - Uses design tokens
+<Button className="bg-primary text-primary-foreground">Click</Button>
+<div className="text-muted-foreground border-border">Content</div>
+<Check className="text-primary" />
+
+// ❌ BAD - Hardcoded colors (won't respond to theme changes)
+<Button className="bg-purple-500 text-white">Click</Button>
+<div className="text-gray-600 border-gray-300">Content</div>
+<Check className="text-green-500" />
+```
+
+**Neo-Brutalism Utility Classes:**
+
+```css
+.rounded-brutal     /* border-radius: var(--radius-brutal) */
+.border-brutal      /* border-width: var(--border-brutal) */
+.shadow-brutal      /* box-shadow: var(--shadow-brutal) */
+.shadow-brutal-lg   /* box-shadow: var(--shadow-brutal-lg) */
+.shadow-brutal-xl   /* box-shadow: var(--shadow-brutal-xl) */
+```
+
+**Common Component Patterns:**
+
+```typescript
+// Card with neo-brutalism styling
+<div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal hover:shadow-brutal-lg transition-all">
+  <h3 className="font-black text-foreground">Title</h3>
+  <p className="text-muted-foreground">Content</p>
+</div>
+
+// Button with theme colors
+<Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+  Action
+</Button>
+
+// Icon with theme color
+<Check className="h-5 w-5 text-primary" />
+
+// Badge with theme colors
+<Badge className="bg-accent text-accent-foreground">Label</Badge>
+```
+
+### Landing Page Variations
+
+Three landing page variations maintain their unique aesthetics while being theme-responsive:
+
+**Modern Variation** (`/variations/modern`):
+- Soft shadows, rounded corners
+- Uses `text-primary`, `fill-accent/text-accent` for theme colors
+- Gradients use `from-primary/20 to-accent/20`
+
+**SaaS Variation** (`/variations/saas`):
+- Professional B2B design
+- Enterprise badges use `bg-primary/10 text-primary border-primary/20`
+- Check marks and stars use theme tokens
+
+**Startup Variation** (`/variations/startup`):
+- Bold black background (intentional, not theme-dependent)
+- Check marks use `bg-primary` and `text-primary-foreground`
+- Maintains high-energy aesthetic with theme-responsive accents
+
+### Adding New Components
+
+When creating new components, follow these guidelines:
+
+1. **Use design tokens for all colors:**
+   - Text: `text-foreground`, `text-muted-foreground`, `text-primary`
+   - Backgrounds: `bg-background`, `bg-card`, `bg-primary`, `bg-accent`, `bg-secondary`
+   - Borders: `border-border`, `border-brutal`
+
+2. **Apply neo-brutalism utilities:**
+   - Borders: `border-2 border-brutal` (2px solid with design token color)
+   - Radius: `rounded-brutal` (8px)
+   - Shadows: `shadow-brutal`, `shadow-brutal-lg`, `shadow-brutal-xl`
+
+3. **Use semantic color pairings:**
+   - Primary: `bg-primary` + `text-primary-foreground`
+   - Accent: `bg-accent` + `text-accent-foreground`
+   - Secondary: `bg-secondary` + `text-secondary-foreground`
+   - Card: `bg-card` + `text-card-foreground`
+
+4. **Avoid hardcoded Tailwind colors:**
+   - Never use: `bg-purple-500`, `text-green-600`, `border-blue-400`
+   - Always use: `bg-primary`, `text-primary`, `border-border`
+
+### Theme-Responsive Examples
+
+**Before (hardcoded):**
+```typescript
+<Check className="h-4 w-4 text-green-500" />
+<Star className="fill-yellow-400 text-yellow-400" />
+<Badge className="bg-green-500/10 text-green-700 border-green-500/20">
+```
+
+**After (theme-responsive):**
+```typescript
+<Check className="h-4 w-4 text-primary" />
+<Star className="fill-accent text-accent" />
+<Badge className="bg-primary/10 text-primary border-primary/20">
+```
+
 ## Important Patterns
 
 ### 1. API Error Handling
