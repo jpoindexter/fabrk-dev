@@ -49,13 +49,13 @@ const buttonVariants = cva(
         link:
           "text-foreground font-bold underline-offset-4 hover:underline active:text-foreground/80",
 
-        // Marketing - Ultra bold with colored shadow
+        // Marketing - Bold with colored shadow (modern neo-brutalism)
         marketing:
-          "border-3-brutal border-brutal bg-primary font-black uppercase tracking-wide text-primary-foreground shadow-brutal-secondary hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2 active:shadow-brutal active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-primary font-bold text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Marketing outline - Bold outline with colored hover
         marketingOutline:
-          "border-3-brutal border-brutal bg-card font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-card font-bold text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
       },
       size: {
         // Aligned with 8px spacing system

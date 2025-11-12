@@ -80,7 +80,7 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       ref={ref}
       className={cn(
         // Brutalist typography - bold and commanding
-        "text-[20px] leading-[1.2] font-black tracking-[-0.018em]",
+        "text-[20px] leading-[1.2] font-bold tracking-[-0.018em]",
         "text-card-foreground",
 
         // Dark mode
