@@ -38,7 +38,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Brutalist base styles
-        "rounded-brutal border-4 border-black bg-card text-card-foreground shadow-brutal",
+        "rounded-brutal border-2 border-brutal bg-card text-card-foreground shadow-brutal",
 
         // Brutalist transitions - snappy 150ms
         "transition-brutal",
@@ -48,10 +48,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 
         // Focus-within state - thick ring for accessibility
         "focus-within:ring-4 focus-within:ring-primary",
-
-        // Dark mode
-        "dark:border-white dark:bg-card dark:shadow-brutal",
-        "dark:hover:shadow-brutal-lg",
 
         className
       )}

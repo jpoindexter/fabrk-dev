@@ -25,7 +25,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "inline-flex h-12 items-center justify-center rounded-brutal border-4 border-black bg-background p-1.5 text-foreground shadow-brutal gap-1",
+        "inline-flex h-12 items-center justify-center rounded-brutal border-2 border-brutal bg-background p-1.5 text-foreground shadow-brutal gap-1",
         className,
       )}
       {...props}
@@ -41,7 +41,7 @@ function TabsTrigger({
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-brutal border-2 border-transparent px-4 py-2 gap-1.5 text-sm font-bold transition-all hover:border-black hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-black data-[state=active]:shadow-brutal",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-brutal border-2 border-transparent px-4 py-2 gap-1.5 text-sm font-bold transition-brutal hover:border-brutal hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-brutal data-[state=active]:shadow-brutal",
         className,
       )}
       {...props}

@@ -21,29 +21,29 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary action - Bright yellow with thick border and hard shadow
+        // Primary action - Bright yellow with modern border and hard shadow
         default:
-          "border-4 border-black bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Destructive action - Bold red with hard shadow
         destructive:
-          "border-4 border-black bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Success action - Lime green brutalist style
         success:
-          "border-4 border-black bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
-        // Outline - White with thick black border
+        // Outline - White with modern border
         outline:
-          "border-4 border-black bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Secondary - Hot pink with hard shadow
         secondary:
-          "border-4 border-black bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-2 border-brutal bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Ghost - Minimal with hover transform
         ghost:
-          "border-2 border-transparent hover:border-black hover:bg-muted active:bg-muted/80",
+          "border-2 border-transparent hover:border-brutal hover:bg-muted active:bg-muted/80",
 
         // Link - Bold with underline
         link:
@@ -51,11 +51,11 @@ const buttonVariants = cva(
 
         // Marketing - Ultra bold with colored shadow
         marketing:
-          "border-4 border-black bg-primary font-black uppercase tracking-wide text-primary-foreground shadow-brutal-secondary hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2 active:shadow-brutal active:translate-x-1 active:translate-y-1",
+          "border-3-brutal border-brutal bg-primary font-black uppercase tracking-wide text-primary-foreground shadow-brutal-secondary hover:shadow-brutal-xl hover:-translate-x-2 hover:-translate-y-2 active:shadow-brutal active:translate-x-1 active:translate-y-1",
 
         // Marketing outline - Bold outline with colored hover
         marketingOutline:
-          "border-4 border-black bg-card font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-3-brutal border-brutal bg-card font-black uppercase tracking-wide text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
       },
       size: {
         // Aligned with 8px spacing system

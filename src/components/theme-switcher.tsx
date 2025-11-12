@@ -31,8 +31,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Purple (Default)",
     preview: "bg-purple-600",
     css: {
-      primary: "270 80% 60%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(71.5% 0.197 354.23)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
   {
@@ -40,8 +40,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Ocean Blue",
     preview: "bg-blue-600",
     css: {
-      primary: "210 100% 50%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(65% 0.2 250)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
   {
@@ -49,8 +49,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Forest Green",
     preview: "bg-green-600",
     css: {
-      primary: "142 71% 45%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(70% 0.18 145)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
   {
@@ -58,8 +58,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Sunset Orange",
     preview: "bg-orange-600",
     css: {
-      primary: "25 95% 53%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(72% 0.19 45)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
   {
@@ -67,8 +67,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Hot Pink",
     preview: "bg-pink-600",
     css: {
-      primary: "330 81% 60%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(70% 0.22 350)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
   {
@@ -76,8 +76,8 @@ const colorSchemes: ColorSchemeConfig[] = [
     name: "Ruby Red",
     preview: "bg-red-600",
     css: {
-      primary: "0 72% 51%",
-      primaryForeground: "0 0% 100%",
+      primary: "oklch(60% 0.22 25)",
+      primaryForeground: "oklch(0% 0 0)",
     },
   },
 ];
@@ -99,8 +99,11 @@ export function ThemeSwitcher() {
     if (!scheme) return;
 
     const root = document.documentElement;
+    // Set both --primary and --main (they're aliased in globals.css)
     root.style.setProperty("--primary", scheme.css.primary);
+    root.style.setProperty("--main", scheme.css.primary);
     root.style.setProperty("--primary-foreground", scheme.css.primaryForeground);
+    root.style.setProperty("--main-foreground", scheme.css.primaryForeground);
 
     setCurrentScheme(schemeId);
     localStorage.setItem("color-scheme", schemeId);

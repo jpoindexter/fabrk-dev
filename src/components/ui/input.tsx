@@ -36,7 +36,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled || loading}
           className={cn(
             // Brutalist base styles
-            "flex h-10 w-full rounded-brutal border-4 border-black bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
+            "flex h-10 w-full rounded-brutal border-2 border-brutal bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
 
             // Brutalist focus state - thick ring + shadow grow
             "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:shadow-brutal-lg",
@@ -48,22 +48,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             "placeholder:text-muted-foreground placeholder:font-bold",
 
             // Disabled state - remove shadow for flat look
-            "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-brutal-none",
+            "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
 
             // Loading state - Add padding for spinner
             loading && "pr-10",
 
             // Error state - Red border
             error &&
-              "border-destructive shadow-brutal-destructive focus-visible:ring-destructive",
+              "border-destructive focus-visible:ring-destructive",
 
-            // Success state - Green shadow
+            // Success state - Green ring
             success &&
-              "shadow-brutal-success focus-visible:ring-success",
-
-            // Dark mode
-            "dark:border-white dark:bg-background dark:placeholder:text-muted-foreground/80",
-            "dark:focus-visible:ring-primary",
+              "focus-visible:ring-success",
 
             className
           )}
