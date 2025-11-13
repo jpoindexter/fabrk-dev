@@ -228,7 +228,7 @@ export function ImageUploader({
           {files.map((file, index) => (
             <div
               key={`${file.name}-${index}`}
-              className="group relative aspect-square overflow-hidden rounded-brutal border-2 border-brutal bg-muted shadow-brutal"
+              className="group relative aspect-square overflow-hidden rounded-brutal border-brutal bg-muted shadow-brutal"
             >
               {file.preview ? (
                 <img
@@ -250,7 +250,7 @@ export function ImageUploader({
                 }}
                 disabled={disabled}
                 className={cn(
-                  "absolute right-2 top-2 rounded-brutal border-2 border-brutal bg-destructive p-1 text-destructive-foreground shadow-brutal opacity-0 transition-all",
+                  "absolute right-2 top-2 rounded-brutal border-brutal bg-destructive p-1 text-destructive-foreground shadow-brutal opacity-0 transition-all",
                   "group-hover:opacity-100 hover:scale-110 active:scale-95",
                   disabled && "cursor-not-allowed opacity-50"
                 )}

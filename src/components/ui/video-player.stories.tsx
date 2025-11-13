@@ -189,7 +189,7 @@ export const PlaybackSpeedControl: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
         <h3 className="mb-2 font-bold">Playback Speed Control</h3>
         <p className="text-sm text-muted-foreground">
           Click the Settings button (gear icon) in the controls to change playback
@@ -215,7 +215,7 @@ export const KeyboardShortcuts: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
         <h3 className="mb-2 font-bold">Keyboard Shortcuts</h3>
         <ul className="space-y-1 text-sm text-muted-foreground">
           <li>
@@ -297,7 +297,7 @@ export const WithCallbacks: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
         <h3 className="mb-2 font-bold">Event Callbacks</h3>
         <p className="text-sm text-muted-foreground">
           Open the browser console to see event logs when you play, pause, or finish

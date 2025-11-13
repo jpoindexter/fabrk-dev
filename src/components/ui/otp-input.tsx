@@ -120,7 +120,7 @@ export function OTPInput({
           onPaste={handlePaste}
           disabled={disabled}
           className={cn(
-            "flex h-14 w-12 items-center justify-center rounded-brutal border-2 border-brutal bg-background text-center text-2xl font-bold text-foreground shadow-brutal transition-all",
+            "flex h-14 w-12 items-center justify-center rounded-brutal border-brutal bg-background text-center text-2xl font-bold text-foreground shadow-brutal transition-all",
             "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
             "disabled:cursor-not-allowed disabled:opacity-50",
             digit && "border-primary"

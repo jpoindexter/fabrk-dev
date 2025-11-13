@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+// Temporarily disabled i18n to debug 404
+// import createNextIntlPlugin from 'next-intl/plugin';
+// const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 // Security headers for production
 const securityHeaders = [
@@ -101,5 +104,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Export config
+// Export config without next-intl plugin (temporarily disabled)
 export default nextConfig;

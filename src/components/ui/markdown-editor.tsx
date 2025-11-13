@@ -62,7 +62,7 @@ function parseMarkdown(markdown: string): string {
   // Code blocks (must be first to prevent other parsing inside)
   html = html.replace(
     /```(\w+)?\n([\s\S]*?)```/g,
-    '<pre class="bg-muted rounded-brutal p-4 my-4 overflow-x-auto border-2 border-brutal"><code class="text-sm font-mono">$2</code></pre>'
+    '<pre class="bg-muted rounded-brutal p-4 my-4 overflow-x-auto border-brutal"><code class="text-sm font-mono">$2</code></pre>'
   );
 
   // Headers (h1-h6)
@@ -169,7 +169,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
       <div ref={ref} className={cn("flex flex-col gap-3", className)}>
         {/* Toolbar */}
         {!previewOnly && !disabled && (
-          <div className="flex items-center gap-2 p-2 rounded-brutal border-2 border-brutal bg-card shadow-brutal">
+          <div className="flex items-center gap-2 p-2 rounded-brutal border-brutal bg-card shadow-brutal">
             <div className="flex items-center gap-1">
               {toolbarButtons.map((btn) => (
                 <Button
@@ -255,7 +255,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
               )}
               <div
                 className={cn(
-                  "rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal overflow-y-auto",
+                  "rounded-brutal border-brutal bg-card p-4 shadow-brutal overflow-y-auto",
                   "prose prose-sm max-w-none",
                   "prose-headings:text-foreground prose-p:text-foreground",
                   "prose-strong:text-foreground prose-code:text-foreground",

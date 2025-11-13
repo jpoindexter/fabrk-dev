@@ -105,7 +105,7 @@ export const CustomToolbar: Story = {
 export const FullFeatured: Story = {
   render: () => (
     <div className="space-y-4">
-      <div className="rounded-brutal border-2 border-brutal bg-accent p-4 shadow-brutal">
+      <div className="rounded-brutal border-brutal bg-accent p-4 shadow-brutal">
         <h3 className="mb-2 font-black text-foreground">
           Full-Featured Editor
         </h3>
@@ -189,7 +189,7 @@ export const EmailComposer: Story = {
             <input
               type="email"
               placeholder="recipient@example.com"
-              className="w-full rounded-brutal border-2 border-brutal bg-background px-3 py-2 text-foreground shadow-brutal outline-none focus:shadow-brutal-lg"
+              className="w-full rounded-brutal border-brutal bg-background px-3 py-2 text-foreground shadow-brutal outline-none focus:shadow-brutal-lg"
             />
           </div>
           <div className="space-y-2">
@@ -199,7 +199,7 @@ export const EmailComposer: Story = {
             <input
               type="text"
               placeholder="Email subject"
-              className="w-full rounded-brutal border-2 border-brutal bg-background px-3 py-2 text-foreground shadow-brutal outline-none focus:shadow-brutal-lg"
+              className="w-full rounded-brutal border-brutal bg-background px-3 py-2 text-foreground shadow-brutal outline-none focus:shadow-brutal-lg"
             />
           </div>
           <div className="space-y-2">

@@ -124,7 +124,7 @@ export function SparklineCard({
   return (
     <div
       className={cn(
-        "rounded-brutal border-2 border-brutal bg-card p-4",
+        "rounded-brutal border-brutal bg-card p-4",
         className
       )}
     >
@@ -167,7 +167,7 @@ export function SparklineGroup({ items, className }: SparklineGroupProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="flex items-center justify-between gap-4 p-3 rounded-brutal border-2 border-brutal bg-card hover:bg-accent transition-colors"
+          className="flex items-center justify-between gap-4 p-3 rounded-brutal border-brutal bg-card hover:bg-accent transition-colors"
         >
           <div className="flex-1">
             <p className="text-sm font-bold">{item.label}</p>

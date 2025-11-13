@@ -61,7 +61,7 @@ export function Stepper({
                 <div className="flex items-center">
                   <div
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-brutal border-2 border-brutal transition-all",
+                      "flex h-10 w-10 items-center justify-center rounded-brutal border-brutal transition-all",
                       isComplete &&
                         "bg-primary text-primary-foreground border-primary shadow-brutal",
                       isCurrent &&

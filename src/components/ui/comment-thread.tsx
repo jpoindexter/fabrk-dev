@@ -114,7 +114,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
   return (
     <div className={cn("group", depth > 0 && "ml-8 mt-4")}>
       <div className="flex gap-3">
-        <Avatar className="h-10 w-10 border-2 border-brutal shadow-brutal">
+        <Avatar className="h-10 w-10 border-brutal shadow-brutal">
           <AvatarImage src={comment.author.avatar} alt={comment.author.name} />
           <AvatarFallback className="bg-secondary text-secondary-foreground font-bold">
             {getInitials(comment.author.name)}
@@ -122,7 +122,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
         </Avatar>
 
         <div className="flex-1 min-w-0">
-          <div className="bg-card border-2 border-brutal rounded-brutal p-4 shadow-brutal">
+          <div className="bg-card border-brutal rounded-brutal p-4 shadow-brutal">
             {/* Header */}
             <div className="flex items-start justify-between gap-2 mb-2">
               <div>
@@ -143,7 +143,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border-2 border-brutal shadow-brutal">
+                  <DropdownMenuContent align="end" className="border-brutal shadow-brutal">
                     <DropdownMenuItem
                       onClick={() => setIsEditing(true)}
                       className="cursor-pointer"
@@ -338,7 +338,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     return (
       <div
         className={cn(
-          "bg-card border-2 border-brutal rounded-brutal p-12 text-center shadow-brutal",
+          "bg-card border-brutal rounded-brutal p-12 text-center shadow-brutal",
           className
         )}
       >

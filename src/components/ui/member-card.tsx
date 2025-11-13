@@ -41,7 +41,7 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="flex items-center gap-3 rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal">
+      <div className="flex items-center gap-3 rounded-brutal border-brutal bg-card p-3 shadow-brutal">
         <div className="relative">
           <div className="h-10 w-10 animate-pulse rounded-full bg-muted" />
         </div>
@@ -55,7 +55,7 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
   }
 
   return (
-    <div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal">
+    <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <div className="h-20 w-20 animate-pulse rounded-full bg-muted" />
@@ -126,7 +126,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "flex items-center gap-3 rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+            "flex items-center gap-3 rounded-brutal border-brutal bg-card p-3 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
             className
           )}
           {...props}
@@ -217,7 +217,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+          "rounded-brutal border-brutal bg-card p-6 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
           className
         )}
         {...props}

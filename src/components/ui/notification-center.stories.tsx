@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { NotificationCenter, type Notification } from "./notification-center";
 import { useState } from "react";
+import { generateDemoDates } from "@/lib/utils/demo-dates";
 
 const meta: Meta<typeof NotificationCenter> = {
   title: "Components/NotificationCenter",
@@ -14,13 +15,16 @@ const meta: Meta<typeof NotificationCenter> = {
 export default meta;
 type Story = StoryObj<typeof NotificationCenter>;
 
+// ✅ Generate demo dates for consistent previews
+const { now, minutesAgo } = generateDemoDates();
+
 // Sample notification data
-const createNotification = (overrides: Partial<Notification> = {}): Notification => ({
+const createNotification = (overrides: Partial<Notification> = {}, offsetMinutes = 0): Notification => ({
   id: Math.random().toString(36).substring(7),
   type: "info",
   title: "New notification",
   message: "This is a sample notification message",
-  timestamp: new Date(),
+  timestamp: offsetMinutes > 0 ? minutesAgo(offsetMinutes) : now(),
   read: false,
   ...overrides,
 });

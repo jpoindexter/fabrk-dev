@@ -179,7 +179,7 @@ const ChatInput = React.forwardRef<HTMLTextAreaElement, ChatInputProps>(
         )}
 
         {/* Input container */}
-        <div className="relative flex items-end gap-2 rounded-brutal border-2 border-brutal bg-card p-2 shadow-brutal transition-brutal focus-within:shadow-brutal-lg">
+        <div className="relative flex items-end gap-2 rounded-brutal border-brutal bg-card p-2 shadow-brutal transition-brutal focus-within:shadow-brutal-lg">
           {/* Attachment button */}
           <Button
             type="button"

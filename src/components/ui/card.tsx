@@ -38,7 +38,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Brutalist base styles
-        "rounded-brutal border-2 border-brutal bg-card text-card-foreground shadow-brutal",
+        "rounded-brutal border-brutal bg-card text-card-foreground shadow-brutal",
 
         // Brutalist transitions - snappy 150ms
         "transition-brutal",

@@ -105,7 +105,7 @@ export const OnIcon: Story = {
   },
   render: (args) => (
     <NotificationBadge {...args}>
-      <div className="rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal">
+      <div className="rounded-brutal border-brutal bg-card p-3 shadow-brutal">
         <Mail className="h-6 w-6" />
       </div>
     </NotificationBadge>
@@ -262,7 +262,7 @@ export const AllPositions: Story = {
     <div className="flex flex-wrap gap-8">
       <div className="flex flex-col items-center gap-2">
         <NotificationBadge count={5} position="top-right">
-          <div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal">
+          <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
             <Mail className="h-8 w-8" />
           </div>
         </NotificationBadge>
@@ -271,7 +271,7 @@ export const AllPositions: Story = {
 
       <div className="flex flex-col items-center gap-2">
         <NotificationBadge count={5} position="top-left">
-          <div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal">
+          <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
             <Mail className="h-8 w-8" />
           </div>
         </NotificationBadge>
@@ -280,7 +280,7 @@ export const AllPositions: Story = {
 
       <div className="flex flex-col items-center gap-2">
         <NotificationBadge count={5} position="bottom-right">
-          <div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal">
+          <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
             <Mail className="h-8 w-8" />
           </div>
         </NotificationBadge>
@@ -289,7 +289,7 @@ export const AllPositions: Story = {
 
       <div className="flex flex-col items-center gap-2">
         <NotificationBadge count={5} position="bottom-left">
-          <div className="rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal">
+          <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
             <Mail className="h-8 w-8" />
           </div>
         </NotificationBadge>
@@ -413,7 +413,7 @@ export const CustomOffset: Story = {
 // Navigation Menu Example
 export const NavigationMenu: Story = {
   render: () => (
-    <nav className="flex items-center gap-4 rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+    <nav className="flex items-center gap-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
       <NotificationBadge count={3} variant="destructive">
         <button className="rounded-brutal p-2 hover:bg-muted">
           <Bell className="h-5 w-5" />
@@ -452,7 +452,7 @@ export const MultipleBadges: Story = {
             position="bottom-right"
             variant="destructive"
           >
-            <div className="rounded-brutal border-2 border-brutal bg-card p-8 shadow-brutal">
+            <div className="rounded-brutal border-brutal bg-card p-8 shadow-brutal">
               <User className="h-12 w-12" />
             </div>
           </NotificationBadge>
@@ -506,7 +506,7 @@ export const InteractiveDemo: Story = {
 // Real-World Example: Inbox
 export const RealWorldInbox: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card shadow-brutal">
+    <div className="w-[400px] rounded-brutal border-brutal bg-card shadow-brutal">
       <div className="border-b-2 border-brutal p-4">
         <h3 className="font-bold">Inbox</h3>
       </div>

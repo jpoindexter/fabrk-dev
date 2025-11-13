@@ -161,7 +161,7 @@ export function FunnelChart({
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div
-              className="w-3 h-3 rounded-sm border-2 border-brutal"
+              className="w-3 h-3 rounded-sm border-brutal"
               style={{
                 backgroundColor:
                   stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],

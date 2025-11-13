@@ -153,7 +153,7 @@ export const FormExample: Story = {
           />
         </div>
         {selected.length > 0 && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm font-bold">Selected Frameworks:</p>
             <ul className="list-disc list-inside text-sm text-muted-foreground">
               {selected.map((value) => {
@@ -197,7 +197,7 @@ export const MultipleSelectors: Story = {
           />
         </div>
         {(selectedFrameworks.length > 0 || selectedFruits.length > 0) && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold">Your Selections:</p>
             <p className="text-sm text-muted-foreground">
               Frameworks: {selectedFrameworks.length > 0 ? selectedFrameworks.join(", ") : "None"}

@@ -164,7 +164,7 @@ export const Interactive: Story = {
         <div className="flex-1 p-6">
           <h1 className="text-2xl font-bold">Interactive Sidebar</h1>
           {selectedItem ? (
-            <div className="mt-4 rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+            <div className="mt-4 rounded-brutal border-brutal bg-primary/10 p-4">
               <p className="text-sm font-bold">Selected:</p>
               <p className="text-sm text-muted-foreground">{selectedItem}</p>
             </div>
@@ -284,7 +284,7 @@ export const ApplicationLayout: Story = {
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
-                className="h-32 rounded-brutal border-2 border-brutal bg-card p-4"
+                className="h-32 rounded-brutal border-brutal bg-card p-4"
               >
                 <div className="text-sm font-bold">Card {i}</div>
                 <div className="text-xs text-muted-foreground mt-2">

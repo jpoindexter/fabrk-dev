@@ -109,7 +109,7 @@ export function Heatmap({
                     return (
                       <div
                         key={String(xLabel)}
-                        className="rounded-sm border-2 border-brutal bg-muted"
+                        className="rounded-sm border-brutal bg-muted"
                         style={{ width: cellSize, height: cellSize }}
                       />
                     );
@@ -119,7 +119,7 @@ export function Heatmap({
                     <div
                       key={String(xLabel)}
                       className={cn(
-                        "rounded-sm border-2 border-brutal flex items-center justify-center cursor-pointer transition-all",
+                        "rounded-sm border-brutal flex items-center justify-center cursor-pointer transition-all",
                         isHovered && "scale-110 shadow-brutal-lg"
                       )}
                       style={{
@@ -146,7 +146,7 @@ export function Heatmap({
       </div>
 
       {hoveredCell && (
-        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border-2 border-brutal rounded-brutal bg-card shadow-brutal-lg">
+        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border-brutal rounded-brutal bg-card shadow-brutal-lg">
           <p className="text-xs font-bold">
             {hoveredCell.y} × {hoveredCell.x}
           </p>

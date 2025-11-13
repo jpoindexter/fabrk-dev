@@ -141,6 +141,9 @@ docs/*.md
 !docs/ENTERPRISE-FEATURES-SETUP.md
 !docs/COMPONENTS-INVENTORY.md
 !docs/DEPLOYMENT.md
+!docs/PERFORMANCE.md
+!docs/LIGHTHOUSE-CI.md
+!docs/LIGHTHOUSE-SETUP-SUMMARY.md
 
 # Test outputs and reports
 test-results.json
@@ -167,6 +170,7 @@ src/app/components/[slug]/generated-sources.ts
 # Lighthouse reports (build artifacts) - keep only organized ones in docs/
 lighthouse*.report.html
 lighthouse*.report.json
+.lighthouseci/
 !docs/04-reports/lighthouse/**/*.html
 !docs/04-reports/lighthouse/**/*.json
 

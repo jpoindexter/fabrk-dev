@@ -44,7 +44,7 @@ export const WithoutPercentages: Story = {
 
 export const SalesFunnel: Story = {
   render: () => (
-    <div className="w-[700px] p-6 rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[700px] p-6 rounded-brutal border-brutal bg-card">
       <h3 className="font-bold text-center mb-6">E-commerce Sales Funnel</h3>
       <FunnelChart data={salesFunnelData} width={600} height={400} />
       <div className="mt-6 pt-4 border-t-2 border-brutal grid grid-cols-2 gap-4">
@@ -63,7 +63,7 @@ export const SalesFunnel: Story = {
 
 export const LeadGeneration: Story = {
   render: () => (
-    <div className="w-[700px] p-6 rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[700px] p-6 rounded-brutal border-brutal bg-card">
       <h3 className="font-bold text-center mb-6">B2B Lead Generation Funnel</h3>
       <FunnelChart data={leadFunnelData} width={600} height={450} />
       <div className="mt-6 pt-4 border-t-2 border-brutal">
@@ -97,7 +97,7 @@ export const MarketingFunnel: Story = {
     ];
 
     return (
-      <div className="w-[700px] p-6 rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-[700px] p-6 rounded-brutal border-brutal bg-card">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-bold">Campaign Performance</h3>
           <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export const MarketingFunnel: Story = {
 
 export const SmallFunnel: Story = {
   render: () => (
-    <div className="w-[400px] p-4 rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[400px] p-4 rounded-brutal border-brutal bg-card">
       <h3 className="font-bold text-sm text-center mb-4">Checkout Flow</h3>
       <FunnelChart
         data={[

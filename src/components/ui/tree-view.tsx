@@ -424,7 +424,7 @@ export const TreeView: React.FC<TreeViewProps> = ({
   return (
     <div
       className={cn(
-        "rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal",
+        "rounded-brutal border-brutal bg-card p-4 shadow-brutal",
         className
       )}
       role="tree"

@@ -150,7 +150,7 @@ export const MultiStepForm: Story = {
           onStepClick={(index) => index <= currentStep && setCurrentStep(index)}
         />
 
-        <div className="rounded-brutal border-2 border-brutal bg-card p-6 min-h-[300px]">
+        <div className="rounded-brutal border-brutal bg-card p-6 min-h-[300px]">
           {currentStep === 0 && (
             <div className="space-y-4">
               <h3 className="text-lg font-bold">Account Information</h3>
@@ -162,7 +162,7 @@ export const MultiStepForm: Story = {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full rounded-brutal border-2 border-brutal p-2"
+                  className="w-full rounded-brutal border-brutal p-2"
                   placeholder="you@example.com"
                 />
               </div>
@@ -180,7 +180,7 @@ export const MultiStepForm: Story = {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full rounded-brutal border-2 border-brutal p-2"
+                  className="w-full rounded-brutal border-brutal p-2"
                   placeholder="John Doe"
                 />
               </div>
@@ -198,7 +198,7 @@ export const MultiStepForm: Story = {
                   onChange={(e) =>
                     setFormData({ ...formData, company: e.target.value })
                   }
-                  className="w-full rounded-brutal border-2 border-brutal p-2"
+                  className="w-full rounded-brutal border-brutal p-2"
                   placeholder="Acme Inc."
                 />
               </div>
@@ -215,7 +215,7 @@ export const MultiStepForm: Story = {
                   onChange={(e) =>
                     setFormData({ ...formData, theme: e.target.value })
                   }
-                  className="w-full rounded-brutal border-2 border-brutal p-2"
+                  className="w-full rounded-brutal border-brutal p-2"
                 >
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
@@ -243,7 +243,7 @@ export const MultiStepForm: Story = {
         </div>
 
         {currentStep === formSteps.length - 1 && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold">Form Data:</p>
             <pre className="text-sm text-muted-foreground mt-2">
               {JSON.stringify(formData, null, 2)}

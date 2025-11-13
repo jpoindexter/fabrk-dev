@@ -96,7 +96,7 @@ export const FormExample: Story = {
           />
         </div>
         {dateTime && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm font-bold">Selected Date & Time:</p>
             <p className="text-sm text-muted-foreground">
               Date: {dateTime.toLocaleDateString()}
@@ -141,7 +141,7 @@ export const BookingScenario: Story = {
           />
         </div>
         {checkIn && checkOut && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold">Booking Summary:</p>
             <p className="text-sm text-muted-foreground">
               Check-in: {checkIn.toLocaleString()}

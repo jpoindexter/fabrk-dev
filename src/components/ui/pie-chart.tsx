@@ -164,7 +164,7 @@ export function PieChart({
               onClick={() => onSegmentClick?.(segment, index)}
             >
               <div
-                className="w-3 h-3 rounded-sm border-2 border-brutal"
+                className="w-3 h-3 rounded-sm border-brutal"
                 style={{ backgroundColor: segment.color }}
               />
               <span className="text-xs font-medium">

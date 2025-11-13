@@ -269,7 +269,7 @@ export const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
           containerRef.current = node;
         }}
         className={cn(
-          "relative overflow-hidden rounded-brutal border-2 border-brutal bg-black shadow-brutal",
+          "relative overflow-hidden rounded-brutal border-brutal bg-black shadow-brutal",
           aspectRatioClass,
           className
         )}
@@ -402,7 +402,7 @@ export const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
                     {playbackRate}x
                   </Button>
                   {showSpeedMenu && (
-                    <div className="absolute bottom-full right-0 mb-2 rounded-brutal border-2 border-brutal bg-card shadow-brutal">
+                    <div className="absolute bottom-full right-0 mb-2 rounded-brutal border-brutal bg-card shadow-brutal">
                       {[0.5, 1, 1.5, 2].map((speed) => (
                         <button
                           key={speed}

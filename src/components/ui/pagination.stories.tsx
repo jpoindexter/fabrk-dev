@@ -237,7 +237,7 @@ export const DataTable: Story = {
 
     return (
       <div className="w-[600px] space-y-4">
-        <div className="rounded-brutal border-2 border-brutal bg-card">
+        <div className="rounded-brutal border-brutal bg-card">
           <table className="w-full">
             <thead className="border-b-2 border-brutal">
               <tr>

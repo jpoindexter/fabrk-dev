@@ -216,7 +216,7 @@ export const MetricsTable: Story = {
     ];
 
     return (
-      <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card overflow-hidden">
+      <div className="w-[600px] rounded-brutal border-brutal bg-card overflow-hidden">
         <div className="border-b-2 border-brutal p-4">
           <h3 className="font-bold">Performance Metrics</h3>
         </div>
@@ -275,7 +275,7 @@ export const CompactMetrics: Story = {
       ].map((metric, index) => (
         <div
           key={index}
-          className="rounded-brutal border-2 border-brutal bg-card p-3 flex-1"
+          className="rounded-brutal border-brutal bg-card p-3 flex-1"
         >
           <div className="flex items-center justify-between mb-1">
             <p className="text-xs text-muted-foreground">{metric.label}</p>

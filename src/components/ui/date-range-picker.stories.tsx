@@ -93,7 +93,7 @@ export const FormExample: Story = {
           />
         </div>
         {dateRange?.from && dateRange?.to && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm font-bold">Selected Range:</p>
             <p className="text-sm text-muted-foreground">
               From: {dateRange.from.toLocaleDateString()}

@@ -150,7 +150,7 @@ export function KanbanBoard({
             <div
               key={column.id}
               className={cn(
-                "flex min-w-[300px] flex-col rounded-brutal border-2 border-brutal bg-card shadow-brutal transition-all",
+                "flex min-w-[300px] flex-col rounded-brutal border-brutal bg-card shadow-brutal transition-all",
                 isDraggedOver && "ring-4 ring-primary ring-offset-2"
               )}
               onDragOver={handleDragOver}
@@ -215,7 +215,7 @@ export function KanbanBoard({
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, column.id, index)}
                         className={cn(
-                          "group cursor-move rounded-brutal border-2 border-brutal bg-background p-4 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+                          "group cursor-move rounded-brutal border-brutal bg-background p-4 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
                           draggedCard?.cardId === card.id && "opacity-40"
                         )}
                       >

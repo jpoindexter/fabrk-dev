@@ -166,7 +166,7 @@ export function RoleSelector({
               onClick={() => handleRoleClick(role.id, role.disabled)}
               disabled={role.disabled}
               className={cn(
-                "group relative flex items-start gap-4 rounded-brutal border-2 border-brutal bg-card p-4 text-left shadow-brutal transition-all",
+                "group relative flex items-start gap-4 rounded-brutal border-brutal bg-card p-4 text-left shadow-brutal transition-all",
                 selected &&
                   "border-primary bg-primary/5 shadow-brutal-lg -translate-x-1 -translate-y-1",
                 !selected && !role.disabled && "hover:shadow-brutal-lg hover:-translate-x-0.5 hover:-translate-y-0.5",
@@ -174,7 +174,7 @@ export function RoleSelector({
               )}
             >
               {selected && (
-                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-brutal border-2 border-brutal bg-primary shadow-brutal">
+                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-brutal border-brutal bg-primary shadow-brutal">
                   <Check className="h-3 w-3 text-primary-foreground" />
                 </div>
               )}
@@ -182,7 +182,7 @@ export function RoleSelector({
               {Icon && (
                 <div
                   className={cn(
-                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-brutal border-2 border-brutal bg-background shadow-brutal",
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-brutal border-brutal bg-background shadow-brutal",
                     selected && "bg-primary text-primary-foreground"
                   )}
                 >
@@ -253,7 +253,7 @@ export function RoleSelector({
             onClick={() => handleRoleClick(role.id, role.disabled)}
             disabled={role.disabled}
             className={cn(
-              "group relative flex flex-col items-center rounded-brutal border-2 border-brutal bg-card p-6 text-center shadow-brutal transition-all",
+              "group relative flex flex-col items-center rounded-brutal border-brutal bg-card p-6 text-center shadow-brutal transition-all",
               selected &&
                 "border-primary bg-primary/5 shadow-brutal-lg -translate-x-1 -translate-y-1",
               !selected && !role.disabled && "hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
@@ -261,7 +261,7 @@ export function RoleSelector({
             )}
           >
             {selected && (
-              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-brutal border-2 border-brutal bg-primary shadow-brutal">
+              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-brutal border-brutal bg-primary shadow-brutal">
                 <Check className="h-4 w-4 text-primary-foreground" />
               </div>
             )}
@@ -269,7 +269,7 @@ export function RoleSelector({
             {Icon && (
               <div
                 className={cn(
-                  "mb-4 flex h-16 w-16 items-center justify-center rounded-brutal border-2 border-brutal bg-background shadow-brutal transition-all",
+                  "mb-4 flex h-16 w-16 items-center justify-center rounded-brutal border-brutal bg-background shadow-brutal transition-all",
                   selected && "bg-primary text-primary-foreground shadow-brutal-lg"
                 )}
               >

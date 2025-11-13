@@ -8,7 +8,7 @@ import {
   detectSQLInjection,
   detectXSS,
   detectPathTraversal,
-  sanitizeInput,
+  sanitizeString,
   sanitizeHTML,
   ValidationSchemas,
 } from "./validation";
@@ -59,16 +59,16 @@ describe("Security Validation", () => {
 
   describe("Input Sanitization", () => {
     it("should sanitize dangerous input", () => {
-      expect(sanitizeInput("<script>alert('xss')</script>")).toBe(
+      expect(sanitizeString("<script>alert('xss')</script>")).toBe(
         "&lt;script&gt;alert('xss')&lt;/script&gt;"
       );
-      expect(sanitizeInput("Hello & goodbye")).toBe("Hello &amp; goodbye");
-      expect(sanitizeInput('Test "quotes"')).toBe("Test &quot;quotes&quot;");
+      expect(sanitizeString("Hello & goodbye")).toBe("Hello &amp; goodbye");
+      expect(sanitizeString('Test "quotes"')).toBe("Test &quot;quotes&quot;");
     });
 
     it("should trim whitespace", () => {
-      expect(sanitizeInput("  hello  ")).toBe("hello");
-      expect(sanitizeInput("\n\ntest\n\n")).toBe("test");
+      expect(sanitizeString("  hello  ")).toBe("hello");
+      expect(sanitizeString("\n\ntest\n\n")).toBe("test");
     });
   });
 

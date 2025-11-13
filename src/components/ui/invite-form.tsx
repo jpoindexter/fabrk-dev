@@ -190,7 +190,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
         ref={ref}
         onSubmit={handleSubmit}
         className={cn(
-          "rounded-brutal border-2 border-brutal bg-card p-6 shadow-brutal",
+          "rounded-brutal border-brutal bg-card p-6 shadow-brutal",
           className
         )}
       >

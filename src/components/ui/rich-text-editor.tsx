@@ -240,7 +240,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       <div className={`w-full ${className}`}>
         {/* Toolbar */}
         {!readOnly && (
-          <div className="mb-2 flex flex-wrap gap-1 rounded-brutal border-2 border-brutal bg-card p-2 shadow-brutal">
+          <div className="mb-2 flex flex-wrap gap-1 rounded-brutal border-brutal bg-card p-2 shadow-brutal">
             {toolbarButtons.map((tool, index) => (
               <Button
                 key={index}
@@ -272,7 +272,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={`
-            w-full overflow-y-auto rounded-brutal border-2 border-brutal bg-background p-4 text-foreground
+            w-full overflow-y-auto rounded-brutal border-brutal bg-background p-4 text-foreground
             outline-none transition-all
             ${isFocused ? "shadow-brutal-lg" : "shadow-brutal"}
             ${readOnly ? "cursor-default bg-muted/50" : "cursor-text"}

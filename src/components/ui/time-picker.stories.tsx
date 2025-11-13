@@ -100,7 +100,7 @@ export const FormExample: Story = {
           />
         </div>
         {time && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm font-bold">Selected Time:</p>
             <p className="text-sm text-muted-foreground">{time}</p>
           </div>

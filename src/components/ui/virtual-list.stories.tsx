@@ -50,7 +50,7 @@ export const BasicList: Story = {
               <p className="text-xs text-muted-foreground">{item.description}</p>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -100,7 +100,7 @@ export const InfiniteScroll: Story = {
           onEndReached={loadMore}
           endReachedThreshold={0.8}
           loading={loading}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -138,7 +138,7 @@ export const DynamicHeights: Story = {
               <p className="text-xs text-muted-foreground">{item.description}</p>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -156,7 +156,7 @@ export const EmptyState: Story = {
           renderItem={() => null}
           emptyComponent={
             <div className="text-center p-8">
-              <div className="rounded-brutal border-2 border-brutal bg-muted p-4 inline-block mb-4">
+              <div className="rounded-brutal border-brutal bg-muted p-4 inline-block mb-4">
                 <Mail className="h-12 w-12 text-muted-foreground" />
               </div>
               <p className="font-bold mb-2">No items to display</p>
@@ -165,7 +165,7 @@ export const EmptyState: Story = {
               </p>
             </div>
           }
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -222,7 +222,7 @@ export const UserList: Story = {
               </div>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -272,7 +272,7 @@ export const LogViewer: Story = {
               <span className="flex-1">{log.message}</span>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );
@@ -306,7 +306,7 @@ export const GridLayout: Story = {
           columns={5}
           gap={8}
           renderItem={(item) => (
-            <div className="h-full border-2 border-brutal rounded-brutal overflow-hidden hover:shadow-brutal-lg transition-all cursor-pointer">
+            <div className="h-full border-brutal rounded-brutal overflow-hidden hover:shadow-brutal-lg transition-all cursor-pointer">
               <div
                 className="h-24 flex items-center justify-center"
                 style={{ backgroundColor: item.color }}
@@ -318,7 +318,7 @@ export const GridLayout: Story = {
               </div>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-background"
+          className="border-brutal rounded-brutal bg-background"
         />
       </div>
     );
@@ -360,7 +360,7 @@ export const MessageThread: Story = {
             >
               <div
                 className={cn(
-                  "max-w-[70%] rounded-brutal border-2 border-brutal p-3",
+                  "max-w-[70%] rounded-brutal border-brutal p-3",
                   message.isOwn ? "bg-primary text-primary-foreground" : "bg-card"
                 )}
               >
@@ -381,7 +381,7 @@ export const MessageThread: Story = {
               </div>
             </div>
           )}
-          className="border-2 border-brutal rounded-brutal bg-background"
+          className="border-brutal rounded-brutal bg-background"
         />
       </div>
     );
@@ -435,7 +435,7 @@ export const NotificationCenter: Story = {
                   !notification.read && "bg-primary/5"
                 )}
               >
-                <div className="rounded-brutal border-2 border-brutal bg-muted p-2">
+                <div className="rounded-brutal border-brutal bg-muted p-2">
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
@@ -455,7 +455,7 @@ export const NotificationCenter: Story = {
               </div>
             );
           }}
-          className="border-2 border-brutal rounded-brutal bg-card"
+          className="border-brutal rounded-brutal bg-card"
         />
       </div>
     );

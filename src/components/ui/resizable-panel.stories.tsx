@@ -19,13 +19,13 @@ export const HorizontalDefault: Story = {
   render: () => (
     <div style={{ height: "400px" }}>
       <ResizablePanel>
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Left Panel</h3>
           <p className="text-sm text-muted-foreground">
             Drag the handle to resize this panel.
           </p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Right Panel</h3>
           <p className="text-sm text-muted-foreground">
             This panel automatically fills the remaining space.
@@ -40,13 +40,13 @@ export const VerticalDefault: Story = {
   render: () => (
     <div style={{ height: "500px" }}>
       <ResizablePanel direction="vertical">
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Top Panel</h3>
           <p className="text-sm text-muted-foreground">
             Drag the handle down to resize this panel.
           </p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Bottom Panel</h3>
           <p className="text-sm text-muted-foreground">
             This panel automatically fills the remaining space.
@@ -61,13 +61,13 @@ export const CustomDefaultSize: Story = {
   render: () => (
     <div style={{ height: "400px" }}>
       <ResizablePanel defaultSize={30}>
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Sidebar (30%)</h3>
           <p className="text-sm text-muted-foreground">
             Starts at 30% width.
           </p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Main Content (70%)</h3>
           <p className="text-sm text-muted-foreground">
             Takes up the remaining 70%.
@@ -82,13 +82,13 @@ export const WithSizeConstraints: Story = {
   render: () => (
     <div style={{ height: "400px" }}>
       <ResizablePanel defaultSize={25} minSize={15} maxSize={40}>
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Constrained Panel</h3>
           <p className="text-sm text-muted-foreground">
             Min: 15%, Max: 40%
           </p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Main Content</h3>
           <p className="text-sm text-muted-foreground">
             The left panel cannot be resized beyond its constraints.
@@ -103,13 +103,13 @@ export const WithoutHandle: Story = {
   render: () => (
     <div style={{ height: "400px" }}>
       <ResizablePanel showHandle={false}>
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Left Panel</h3>
           <p className="text-sm text-muted-foreground">
             Handle is hidden but still draggable.
           </p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Right Panel</h3>
           <p className="text-sm text-muted-foreground">
             Hover over the divider to see the cursor change.
@@ -126,19 +126,19 @@ export const WithResizeCallback: Story = {
 
     return (
       <div style={{ height: "400px" }}>
-        <div className="mb-4 p-4 bg-muted rounded-brutal border-2 border-brutal">
+        <div className="mb-4 p-4 bg-muted rounded-brutal border-brutal">
           <p className="text-sm font-bold">
             Current left panel size: {size.toFixed(1)}%
           </p>
         </div>
         <ResizablePanel onResize={setSize}>
-          <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+          <div className="h-full p-4 bg-card border-brutal rounded-brutal">
             <h3 className="font-bold mb-2">Left Panel</h3>
             <p className="text-sm text-muted-foreground">
               Resize to see the percentage update.
             </p>
           </div>
-          <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+          <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
             <h3 className="font-bold mb-2">Right Panel</h3>
             <p className="text-sm text-muted-foreground">
               The onResize callback tracks size changes.
@@ -154,7 +154,7 @@ export const IDELayout: Story = {
   render: () => (
     <div style={{ height: "600px" }}>
       <ResizablePanel defaultSize={20} minSize={15} maxSize={40}>
-        <div className="h-full border-2 border-brutal rounded-brutal bg-card">
+        <div className="h-full border-brutal rounded-brutal bg-card">
           <div className="border-b-2 border-brutal p-3">
             <h3 className="font-bold text-sm">Explorer</h3>
           </div>
@@ -179,7 +179,7 @@ export const IDELayout: Story = {
         </div>
         <div className="h-full">
           <ResizablePanel direction="vertical" defaultSize={70}>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-background">
+            <div className="h-full border-brutal rounded-brutal bg-background">
               <div className="border-b-2 border-brutal p-3">
                 <h3 className="font-bold text-sm">index.ts</h3>
               </div>
@@ -188,7 +188,7 @@ export const IDELayout: Story = {
                 <div className="text-green-600">// Code editor content</div>
               </div>
             </div>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-card">
+            <div className="h-full border-brutal rounded-brutal bg-card">
               <div className="border-b-2 border-brutal p-3">
                 <h3 className="font-bold text-sm">Terminal</h3>
               </div>
@@ -208,7 +208,7 @@ export const EmailClientLayout: Story = {
   render: () => (
     <div style={{ height: "600px" }}>
       <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>
-        <div className="h-full border-2 border-brutal rounded-brutal bg-card">
+        <div className="h-full border-brutal rounded-brutal bg-card">
           <div className="border-b-2 border-brutal p-3">
             <h3 className="font-bold text-sm">Folders</h3>
           </div>
@@ -239,7 +239,7 @@ export const EmailClientLayout: Story = {
         </div>
         <div className="h-full">
           <ResizablePanel defaultSize={40}>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-background">
+            <div className="h-full border-brutal rounded-brutal bg-background">
               <div className="border-b-2 border-brutal p-3">
                 <h3 className="font-bold text-sm">Message List</h3>
               </div>
@@ -257,7 +257,7 @@ export const EmailClientLayout: Story = {
                 ))}
               </div>
             </div>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-card">
+            <div className="h-full border-brutal rounded-brutal bg-card">
               <div className="border-b-2 border-brutal p-3">
                 <h3 className="font-bold text-sm">Message Content</h3>
               </div>
@@ -278,14 +278,14 @@ export const DashboardLayout: Story = {
   render: () => (
     <div style={{ height: "600px" }}>
       <ResizablePanel direction="vertical" defaultSize={20}>
-        <div className="h-full border-2 border-brutal rounded-brutal bg-card p-4">
+        <div className="h-full border-brutal rounded-brutal bg-card p-4">
           <h3 className="font-bold mb-4">Header</h3>
           <div className="flex gap-4">
-            <div className="flex-1 p-4 border-2 border-brutal rounded-brutal">
+            <div className="flex-1 p-4 border-brutal rounded-brutal">
               <p className="text-2xl font-bold">1,234</p>
               <p className="text-sm text-muted-foreground">Total Users</p>
             </div>
-            <div className="flex-1 p-4 border-2 border-brutal rounded-brutal">
+            <div className="flex-1 p-4 border-brutal rounded-brutal">
               <p className="text-2xl font-bold">$12,456</p>
               <p className="text-sm text-muted-foreground">Revenue</p>
             </div>
@@ -293,19 +293,19 @@ export const DashboardLayout: Story = {
         </div>
         <div className="h-full">
           <ResizablePanel defaultSize={60}>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-background p-4">
+            <div className="h-full border-brutal rounded-brutal bg-background p-4">
               <h3 className="font-bold mb-4">Main Chart</h3>
-              <div className="h-32 bg-muted rounded-brutal border-2 border-brutal flex items-center justify-center">
+              <div className="h-32 bg-muted rounded-brutal border-brutal flex items-center justify-center">
                 <p className="text-sm text-muted-foreground">Chart Area</p>
               </div>
             </div>
-            <div className="h-full border-2 border-brutal rounded-brutal bg-card p-4">
+            <div className="h-full border-brutal rounded-brutal bg-card p-4">
               <h3 className="font-bold mb-4">Recent Activity</h3>
               <div className="space-y-2">
                 {Array.from({ length: 3 }).map((_, i) => (
                   <div
                     key={i}
-                    className="p-2 border-2 border-brutal rounded-brutal"
+                    className="p-2 border-brutal rounded-brutal"
                   >
                     <p className="text-sm">Activity item {i + 1}</p>
                   </div>
@@ -323,15 +323,15 @@ export const ThreePanelHorizontal: Story = {
   render: () => (
     <div style={{ height: "400px" }}>
       <ResizableThreePanel>
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Left Panel</h3>
           <p className="text-sm text-muted-foreground">First panel (33%)</p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Middle Panel</h3>
           <p className="text-sm text-muted-foreground">Second panel (33%)</p>
         </div>
-        <div className="h-full p-4 bg-secondary border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-secondary border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Right Panel</h3>
           <p className="text-sm text-muted-foreground">Third panel (34%)</p>
         </div>
@@ -344,15 +344,15 @@ export const ThreePanelVertical: Story = {
   render: () => (
     <div style={{ height: "600px" }}>
       <ResizableThreePanel direction="vertical">
-        <div className="h-full p-4 bg-card border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-card border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Top Panel</h3>
           <p className="text-sm text-muted-foreground">First panel (33%)</p>
         </div>
-        <div className="h-full p-4 bg-accent border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-accent border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Middle Panel</h3>
           <p className="text-sm text-muted-foreground">Second panel (33%)</p>
         </div>
-        <div className="h-full p-4 bg-secondary border-2 border-brutal rounded-brutal">
+        <div className="h-full p-4 bg-secondary border-brutal rounded-brutal">
           <h3 className="font-bold mb-2">Bottom Panel</h3>
           <p className="text-sm text-muted-foreground">Third panel (34%)</p>
         </div>

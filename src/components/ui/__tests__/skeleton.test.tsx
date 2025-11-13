@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import { createRef } from 'react'
 import { Skeleton } from '../skeleton'
 
 describe('Skeleton', () => {
@@ -238,8 +239,8 @@ describe('Skeleton', () => {
     })
 
     it('forwards ref', () => {
-      const ref = { current: null }
-      render(<Skeleton ref={ref as any} data-testid="skeleton" />)
+      const ref = createRef<HTMLDivElement>()
+      render(<Skeleton ref={ref} data-testid="skeleton" />)
 
       expect(ref.current).not.toBeNull()
     })

@@ -82,7 +82,7 @@ export const GithubContributions: Story = {
     );
 
     return (
-      <div className="w-full overflow-auto p-4 rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-full overflow-auto p-4 rounded-brutal border-brutal bg-card">
         <h3 className="font-bold mb-4">Contribution Activity</h3>
         <Heatmap
           data={data}
@@ -118,7 +118,7 @@ export const ServerLoad: Story = {
     );
 
     return (
-      <div className="w-full overflow-auto p-4 rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-full overflow-auto p-4 rounded-brutal border-brutal bg-card">
         <h3 className="font-bold mb-4">Server Load (24 Hours)</h3>
         <Heatmap data={data} cellSize={32} gap={2} />
       </div>
@@ -139,7 +139,7 @@ export const SalesHeatmap: Story = {
     );
 
     return (
-      <div className="w-[500px] p-6 rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-[500px] p-6 rounded-brutal border-brutal bg-card">
         <h3 className="font-bold mb-4 text-center">Regional Sales by Product</h3>
         <Heatmap
           data={data}

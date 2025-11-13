@@ -308,7 +308,7 @@ export const ListView: Story = {
 // Loading skeleton
 export const LoadingSkeleton: Story = {
   render: () => (
-    <div className="max-w-sm overflow-hidden rounded-brutal border-2 border-brutal bg-card shadow-brutal">
+    <div className="max-w-sm overflow-hidden rounded-brutal border-brutal bg-card shadow-brutal">
       {/* Image skeleton */}
       <div className="aspect-[4/3] animate-pulse bg-muted" />
 

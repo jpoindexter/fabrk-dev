@@ -91,7 +91,7 @@ export const Interactive: Story = {
     return (
       <div className="p-4">
         {selected !== null && (
-          <div className="mb-4 p-3 border-2 border-brutal rounded-brutal bg-card">
+          <div className="mb-4 p-3 border-brutal rounded-brutal bg-card">
             <p className="text-sm font-bold">Selected:</p>
             <p className="text-sm text-muted-foreground">
               {sampleData[selected].label} -{" "}
@@ -116,7 +116,7 @@ export const Interactive: Story = {
 
 export const BrowserUsage: Story = {
   render: () => (
-    <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold mb-4 text-center">Browser Market Share</h3>
       <PieChart data={browserData} size={300} showLabels={true} />
       <p className="text-xs text-muted-foreground text-center mt-4">
@@ -128,7 +128,7 @@ export const BrowserUsage: Story = {
 
 export const SalesByCategory: Story = {
   render: () => (
-    <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold mb-4 text-center">Sales by Category</h3>
       <PieChart data={categoryData} size={300} showPercentages={true} />
       <div className="mt-4 pt-4 border-t-2 border-brutal">
@@ -158,7 +158,7 @@ export const ProjectAllocation: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
         <h3 className="font-bold mb-4 text-center">Team Time Allocation</h3>
         <PieChart data={projectData} size={300} showLabels={true} />
         <div className="mt-4 pt-4 border-t-2 border-brutal space-y-2">
@@ -169,7 +169,7 @@ export const ProjectAllocation: Story = {
             >
               <div className="flex items-center gap-2">
                 <div
-                  className="w-3 h-3 rounded-sm border-2 border-brutal"
+                  className="w-3 h-3 rounded-sm border-brutal"
                   style={{ backgroundColor: item.color }}
                 />
                 <span>{item.label}</span>
@@ -191,7 +191,7 @@ export const TwoSegments: Story = {
     ];
 
     return (
-      <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
         <h3 className="font-bold mb-4 text-center">Conversion Rate</h3>
         <PieChart
           data={conversionData}
@@ -223,7 +223,7 @@ export const ManySegments: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
         <h3 className="font-bold mb-4 text-center">Traffic by Country</h3>
         <PieChart data={countryData} size={350} showPercentages={false} />
       </div>

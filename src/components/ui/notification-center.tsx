@@ -168,7 +168,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
               <AvatarFallback>{notification.title.substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
           ) : (
-            <div className="h-10 w-10 rounded-full border-2 border-brutal bg-background flex items-center justify-center shadow-brutal-sm">
+            <div className="h-10 w-10 rounded-full border-brutal bg-background flex items-center justify-center shadow-brutal-sm">
               {getNotificationIcon(notification.type)}
             </div>
           )}
@@ -267,7 +267,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           >
             <Bell className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-destructive-foreground text-xs font-bold flex items-center justify-center border-2 border-brutal shadow-brutal-sm">
+              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-destructive-foreground text-xs font-bold flex items-center justify-center border-brutal shadow-brutal-sm">
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}

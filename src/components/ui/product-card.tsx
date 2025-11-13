@@ -147,7 +147,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
       <div
         ref={ref}
         className={cn(
-          "group relative overflow-hidden rounded-brutal border-2 border-brutal bg-card shadow-brutal transition-all duration-200 hover:shadow-brutal-lg",
+          "group relative overflow-hidden rounded-brutal border-brutal bg-card shadow-brutal transition-all duration-200 hover:shadow-brutal-lg",
           isCompact ? "max-w-[280px]" : "max-w-sm",
           className
         )}

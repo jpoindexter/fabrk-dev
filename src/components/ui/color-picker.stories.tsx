@@ -92,12 +92,12 @@ export const FormExample: Story = {
           <ColorPicker color={secondaryColor} onChange={setSecondaryColor} />
         </div>
         {(primaryColor || secondaryColor) && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4 space-y-4">
+          <div className="rounded-brutal border-brutal bg-card p-4 space-y-4">
             <div>
               <p className="text-sm font-bold">Primary Color</p>
               <div className="flex items-center gap-2 mt-1">
                 <div
-                  className="h-8 w-8 rounded-brutal border-2 border-brutal"
+                  className="h-8 w-8 rounded-brutal border-brutal"
                   style={{ backgroundColor: primaryColor }}
                 />
                 <p className="text-sm text-muted-foreground">{primaryColor}</p>
@@ -107,7 +107,7 @@ export const FormExample: Story = {
               <p className="text-sm font-bold">Secondary Color</p>
               <div className="flex items-center gap-2 mt-1">
                 <div
-                  className="h-8 w-8 rounded-brutal border-2 border-brutal"
+                  className="h-8 w-8 rounded-brutal border-brutal"
                   style={{ backgroundColor: secondaryColor }}
                 />
                 <p className="text-sm text-muted-foreground">
@@ -220,13 +220,13 @@ export const ColorPalette: Story = {
             </div>
           ))}
         </div>
-        <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+        <div className="rounded-brutal border-brutal bg-card p-4">
           <p className="text-sm font-bold mb-2">Palette Preview</p>
           <div className="flex gap-2">
             {colors.map((color, index) => (
               <div
                 key={index}
-                className="h-16 flex-1 rounded-brutal border-2 border-brutal"
+                className="h-16 flex-1 rounded-brutal border-brutal"
                 style={{ backgroundColor: color }}
               />
             ))}

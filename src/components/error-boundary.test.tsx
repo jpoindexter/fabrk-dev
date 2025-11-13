@@ -3,7 +3,7 @@
  * Test React error boundary component
  */
 
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ErrorBoundary } from "./error-boundary";
 
@@ -78,8 +78,7 @@ describe("ErrorBoundary", () => {
   });
 
   it("should show error details in development mode", () => {
-    const originalEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = "development";
+    vi.stubEnv("NODE_ENV", "development");
 
     render(
       <ErrorBoundary>
@@ -89,7 +88,7 @@ describe("ErrorBoundary", () => {
 
     expect(screen.getByText("Error Details")).toBeInTheDocument();
 
-    process.env.NODE_ENV = originalEnv;
+    vi.unstubAllEnvs();
   });
 
   it("should have refresh button", () => {

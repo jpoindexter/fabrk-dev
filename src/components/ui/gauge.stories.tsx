@@ -125,7 +125,7 @@ export const ScoreVariant: Story = {
 export const DashboardMetrics: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-6 w-[600px]">
-      <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+      <div className="rounded-brutal border-brutal bg-card p-4">
         <h3 className="font-bold text-center mb-2">CPU Usage</h3>
         <Gauge
           value={68}
@@ -141,7 +141,7 @@ export const DashboardMetrics: Story = {
         </div>
       </div>
 
-      <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+      <div className="rounded-brutal border-brutal bg-card p-4">
         <h3 className="font-bold text-center mb-2">Memory</h3>
         <Gauge
           value={72}
@@ -156,7 +156,7 @@ export const DashboardMetrics: Story = {
         </div>
       </div>
 
-      <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+      <div className="rounded-brutal border-brutal bg-card p-4">
         <h3 className="font-bold text-center mb-2">Disk I/O</h3>
         <Gauge
           value={34}
@@ -172,7 +172,7 @@ export const DashboardMetrics: Story = {
         </div>
       </div>
 
-      <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+      <div className="rounded-brutal border-brutal bg-card p-4">
         <h3 className="font-bold text-center mb-2">Network</h3>
         <Gauge
           value={15}
@@ -193,7 +193,7 @@ export const DashboardMetrics: Story = {
 
 export const SpeedometerStyle: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold text-center mb-4">Vehicle Speed</h3>
       <Gauge
         value={85}
@@ -227,7 +227,7 @@ export const SpeedometerStyle: Story = {
 
 export const PerformanceScore: Story = {
   render: () => (
-    <div className="w-[450px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold text-center mb-4">Website Performance</h3>
       <Gauge
         value={88}
@@ -250,7 +250,7 @@ export const PerformanceScore: Story = {
         ].map((metric, index) => (
           <div
             key={index}
-            className="flex items-center justify-between p-2 rounded-brutal border-2 border-brutal"
+            className="flex items-center justify-between p-2 rounded-brutal border-brutal"
           >
             <span className="text-sm font-medium">{metric.label}</span>
             <span className="text-sm font-bold" style={{ color: metric.color }}>
@@ -265,7 +265,7 @@ export const PerformanceScore: Story = {
 
 export const BatteryLevel: Story = {
   render: () => (
-    <div className="w-[350px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[350px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold text-center mb-4">Battery Status</h3>
       <Gauge
         value={42}
@@ -294,7 +294,7 @@ export const BatteryLevel: Story = {
 
 export const ServerLoad: Story = {
   render: () => (
-    <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold text-center mb-6">Server Load Distribution</h3>
       <div className="grid grid-cols-3 gap-4">
         {[

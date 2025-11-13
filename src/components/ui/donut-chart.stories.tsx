@@ -167,7 +167,7 @@ export const MultipleProgress: Story = {
 
 export const DashboardCard: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-bold">Revenue Breakdown</h3>
         <div className="flex items-center gap-1 text-green-600">
@@ -193,7 +193,7 @@ export const DashboardCard: Story = {
           >
             <div className="flex items-center gap-2">
               <div
-                className="w-3 h-3 rounded-sm border-2 border-brutal"
+                className="w-3 h-3 rounded-sm border-brutal"
                 style={{ backgroundColor: item.color }}
               />
               <span>{item.label}</span>
@@ -218,7 +218,7 @@ export const GoalTracker: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
         <h3 className="font-bold mb-6 text-center">Monthly Goals</h3>
         <div className="flex justify-around">
           {goals.map((goal, index) => (
@@ -252,7 +252,7 @@ export const UserActivity: Story = {
     ];
 
     return (
-      <div className="w-[450px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
         <h3 className="font-bold mb-4 text-center">User Activity Levels</h3>
         <MetricDonutChart
           data={activityData}
@@ -271,7 +271,7 @@ export const UserActivity: Story = {
 
 export const StorageUsage: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card p-6">
+    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
       <h3 className="font-bold mb-4 text-center">Storage Usage</h3>
       <ProgressDonutChart
         value={72.4}
@@ -308,7 +308,7 @@ export const TaskCompletion: Story = {
     ];
 
     return (
-      <div className="w-[450px] rounded-brutal border-2 border-brutal bg-card p-6">
+      <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold">Project Tasks</h3>
           <div className="flex items-center gap-1 text-green-600">

@@ -23,23 +23,23 @@ const buttonVariants = cva(
       variant: {
         // Primary action - Bright yellow with modern border and hard shadow
         default:
-          "border-2 border-brutal bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Destructive action - Bold red with hard shadow
         destructive:
-          "border-2 border-brutal bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Success action - Lime green brutalist style
         success:
-          "border-2 border-brutal bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Outline - White with modern border
         outline:
-          "border-2 border-brutal bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Secondary - Hot pink with hard shadow
         secondary:
-          "border-2 border-brutal bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Ghost - Minimal with hover transform
         ghost:
@@ -51,11 +51,11 @@ const buttonVariants = cva(
 
         // Marketing - Bold with colored shadow (modern neo-brutalism)
         marketing:
-          "border-2 border-brutal bg-primary font-bold text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-primary font-bold text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
 
         // Marketing outline - Bold outline with colored hover
         marketingOutline:
-          "border-2 border-brutal bg-card font-bold text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border-brutal bg-card font-bold text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
       },
       size: {
         // Aligned with 8px spacing system

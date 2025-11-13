@@ -83,7 +83,7 @@ export const FormExample: Story = {
           </p>
         </div>
         {completed && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold text-primary">
               Code verified successfully!
             </p>
@@ -136,19 +136,19 @@ export const TwoFactorAuth: Story = {
           />
         </div>
         {isVerifying && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm text-muted-foreground">Verifying...</p>
           </div>
         )}
         {verificationStatus === "success" && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold text-primary">
               Authentication successful!
             </p>
           </div>
         )}
         {verificationStatus === "error" && (
-          <div className="rounded-brutal border-2 border-brutal bg-destructive/10 p-4">
+          <div className="rounded-brutal border-brutal bg-destructive/10 p-4">
             <p className="text-sm font-bold text-destructive">
               Invalid code. Please try again.
             </p>
@@ -230,7 +230,7 @@ export const PhoneVerification: Story = {
         <div className="space-y-2">
           <OTPInput value={value} onChange={setValue} autoFocus />
         </div>
-        <div className="rounded-brutal border-2 border-brutal bg-card p-4 space-y-2">
+        <div className="rounded-brutal border-brutal bg-card p-4 space-y-2">
           <p className="text-sm font-bold">Tips:</p>
           <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
             <li>Code expires in 10 minutes</li>

@@ -169,7 +169,7 @@ export const WithFileAttachment = () => {
         onSend={handleSend}
         onFileAttach={handleFileAttach}
       />
-      <div className="rounded-brutal border-2 border-brutal bg-muted p-4">
+      <div className="rounded-brutal border-brutal bg-muted p-4">
         <p className="text-xs text-muted-foreground">
           <strong>💡 Tip:</strong> Click the paperclip icon to test file
           attachment. File previews will appear above the input.
@@ -273,7 +273,7 @@ export const InChatInterface = () => {
                 key={msg.id}
                 className={`flex gap-3 ${msg.isMe ? "flex-row-reverse" : ""}`}
               >
-                <Avatar className="h-8 w-8 shrink-0 rounded-brutal border-2 border-brutal bg-primary text-xs font-bold text-primary-foreground">
+                <Avatar className="h-8 w-8 shrink-0 rounded-brutal border-brutal bg-primary text-xs font-bold text-primary-foreground">
                   {msg.avatar}
                 </Avatar>
                 <div
@@ -284,7 +284,7 @@ export const InChatInterface = () => {
                     <span>{msg.time}</span>
                   </div>
                   <div
-                    className={`rounded-brutal border-2 border-brutal px-4 py-2 shadow-brutal ${
+                    className={`rounded-brutal border-brutal px-4 py-2 shadow-brutal ${
                       msg.isMe
                         ? "bg-primary text-primary-foreground"
                         : "bg-card text-foreground"
@@ -331,7 +331,7 @@ export const Minimal = () => {
       </p>
 
       {/* Custom minimal implementation */}
-      <div className="relative flex items-end gap-2 rounded-brutal border-2 border-brutal bg-card p-2 shadow-brutal">
+      <div className="relative flex items-end gap-2 rounded-brutal border-brutal bg-card p-2 shadow-brutal">
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -355,7 +355,7 @@ export const Minimal = () => {
             }
           }}
           disabled={!message.trim()}
-          className="shrink-0 rounded-brutal border-2 border-brutal bg-primary p-2 text-primary-foreground shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg disabled:opacity-50 disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-brutal"
+          className="shrink-0 rounded-brutal border-brutal bg-primary p-2 text-primary-foreground shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg disabled:opacity-50 disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-brutal"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +401,7 @@ export const LongMessage = () => {
         showCharCount={true}
         maxLength={500}
       />
-      <div className="rounded-brutal border-2 border-brutal bg-muted p-4">
+      <div className="rounded-brutal border-brutal bg-muted p-4">
         <p className="text-xs text-muted-foreground">
           <strong>💡 Try this:</strong> Paste this text to see auto-resize in
           action:
@@ -480,7 +480,7 @@ export const DarkModeDemo = () => {
           <p className="text-xs font-bold uppercase text-muted-foreground">
             Light Theme
           </p>
-          <div className="rounded-brutal border-2 border-brutal bg-background p-4">
+          <div className="rounded-brutal border-brutal bg-background p-4">
             <ChatInput
               value={message}
               onChange={setMessage}
@@ -494,7 +494,7 @@ export const DarkModeDemo = () => {
           <p className="text-xs font-bold uppercase text-muted-foreground">
             With Background
           </p>
-          <div className="rounded-brutal border-2 border-brutal bg-muted p-4">
+          <div className="rounded-brutal border-brutal bg-muted p-4">
             <ChatInput
               value={message}
               onChange={setMessage}

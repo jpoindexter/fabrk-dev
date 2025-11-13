@@ -77,7 +77,7 @@ export function ColorPicker({
         >
           <div className="flex w-full items-center gap-2">
             <div
-              className="h-4 w-4 rounded-brutal border-2 border-brutal"
+              className="h-4 w-4 rounded-brutal border-brutal"
               style={{ backgroundColor: localColor }}
             />
             <Paintbrush className="h-4 w-4" />
@@ -133,7 +133,7 @@ export function ColorPicker({
               />
             </div>
             <div
-              className="h-24 rounded-brutal border-2 border-brutal"
+              className="h-24 rounded-brutal border-brutal"
               style={{ backgroundColor: localColor }}
             />
           </TabsContent>

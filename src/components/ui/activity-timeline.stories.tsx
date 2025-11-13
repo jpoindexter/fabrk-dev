@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ActivityTimeline, TimelineEvent } from "./activity-timeline";
+import { generateDemoDates } from "@/lib/utils/demo-dates";
 
 const meta = {
   title: "UI/ActivityTimeline",
@@ -27,10 +28,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const now = new Date();
-const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-const twoDaysAgo = new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000);
-const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+// ✅ Use fixed base date for consistent Storybook previews
+const { now, minutesAgo, hoursAgo, daysAgo } = generateDemoDates();
 
 const basicEvents: TimelineEvent[] = [
   {
@@ -53,7 +52,7 @@ const basicEvents: TimelineEvent[] = [
     },
     title: "Updated project settings",
     description: "Changed project visibility to public",
-    timestamp: new Date(now.getTime() - 30 * 60 * 1000), // 30 mins ago
+    timestamp: minutesAgo(30), // 30 mins ago
     metadata: {
       visibility: "public",
       previous_visibility: "private",
@@ -68,7 +67,7 @@ const basicEvents: TimelineEvent[] = [
     },
     title: "Added a comment",
     description: "This looks great! When can we start the next phase?",
-    timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000), // 2 hours ago
+    timestamp: hoursAgo(2), // 2 hours ago
   },
 ];
 
@@ -99,7 +98,7 @@ export const WithIcons: Story = {
         user: { name: "Charlie Brown", avatar: "https://avatar.vercel.sh/charlie" },
         title: "Status changed",
         description: "Issue moved from 'Open' to 'In Progress'",
-        timestamp: new Date(now.getTime() - 15 * 60 * 1000),
+        timestamp: minutesAgo(15),
         metadata: {
           from: "Open",
           to: "In Progress",
@@ -110,7 +109,7 @@ export const WithIcons: Story = {
         type: "assigned",
         user: { name: "Diana Prince", avatar: "https://avatar.vercel.sh/diana" },
         title: "Assigned to developer",
-        timestamp: new Date(now.getTime() - 45 * 60 * 1000),
+        timestamp: minutesAgo(45),
         metadata: {
           assignee: "John Doe",
         },
@@ -121,7 +120,7 @@ export const WithIcons: Story = {
         user: { name: "John Doe", avatar: "https://avatar.vercel.sh/john" },
         title: "Left a comment",
         description: "I've identified the issue. Working on a fix now.",
-        timestamp: new Date(now.getTime() - 90 * 60 * 1000),
+        timestamp: minutesAgo(90),
       },
       {
         id: "5",
@@ -129,7 +128,7 @@ export const WithIcons: Story = {
         user: { name: "John Doe", avatar: "https://avatar.vercel.sh/john" },
         title: "Updated issue",
         description: "Added fix and updated timeline",
-        timestamp: new Date(now.getTime() - 3 * 60 * 60 * 1000),
+        timestamp: hoursAgo(3),
         metadata: {
           estimated_time: "2 hours",
           complexity: "medium",
@@ -155,7 +154,7 @@ export const GroupedByDate: Story = {
         user: { name: "Kyle Reese", avatar: "https://avatar.vercel.sh/kyle" },
         title: "Added feedback",
         description: "Great start! Let's add authentication next.",
-        timestamp: new Date(now.getTime() - 1 * 60 * 60 * 1000),
+        timestamp: hoursAgo(1),
       },
       {
         id: "3",
@@ -215,7 +214,7 @@ export const CompactView: Story = {
         user: { name: "User", avatar: "https://avatar.vercel.sh/user" },
         title: "Profile updated",
         description: "Changed email and profile picture",
-        timestamp: new Date(now.getTime() - 30 * 60 * 1000),
+        timestamp: minutesAgo(30),
         metadata: { fields_changed: 2 },
       },
       {
@@ -223,7 +222,7 @@ export const CompactView: Story = {
         type: "status_changed",
         user: { name: "System", avatar: "https://avatar.vercel.sh/system" },
         title: "Email verified",
-        timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000),
+        timestamp: hoursAgo(2),
         metadata: { verified: true },
       },
     ],
@@ -241,7 +240,7 @@ export const ProjectTimeline: Story = {
         title: "Project kickoff",
         description:
           "Initialized new SaaS project with team of 5 developers. Budget approved and timeline set for 12 weeks.",
-        timestamp: new Date(now.getTime() - 10 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(10),
         metadata: {
           budget: "$50,000",
           duration: "12 weeks",
@@ -254,7 +253,7 @@ export const ProjectTimeline: Story = {
         user: { name: "Project Manager", avatar: "https://avatar.vercel.sh/pm" },
         title: "Team assignments",
         description: "Assigned roles and responsibilities to team members",
-        timestamp: new Date(now.getTime() - 9 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(9),
         metadata: {
           frontend_devs: 2,
           backend_devs: 2,
@@ -267,7 +266,7 @@ export const ProjectTimeline: Story = {
         user: { name: "Lead Developer", avatar: "https://avatar.vercel.sh/dev1" },
         title: "Tech stack finalized",
         description: "Selected Next.js, PostgreSQL, and Stripe for the stack",
-        timestamp: new Date(now.getTime() - 8 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(8),
         metadata: {
           frontend: "Next.js 15",
           database: "PostgreSQL",
@@ -280,7 +279,7 @@ export const ProjectTimeline: Story = {
         user: { name: "System", avatar: "https://avatar.vercel.sh/system" },
         title: "Sprint 1 completed",
         description: "Successfully delivered authentication and dashboard",
-        timestamp: new Date(now.getTime() - 5 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(5),
         metadata: {
           sprint: 1,
           features_completed: 8,
@@ -294,7 +293,7 @@ export const ProjectTimeline: Story = {
         title: "Client feedback",
         description:
           "Love the progress! The dashboard looks amazing. Can we add analytics next?",
-        timestamp: new Date(now.getTime() - 4 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(4),
       },
       {
         id: "6",
@@ -302,7 +301,7 @@ export const ProjectTimeline: Story = {
         user: { name: "Designer", avatar: "https://avatar.vercel.sh/designer" },
         title: "Design system updated",
         description: "Added new color scheme and component variants",
-        timestamp: new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(3),
         metadata: {
           components_added: 5,
           themes: 3,
@@ -314,7 +313,7 @@ export const ProjectTimeline: Story = {
         user: { name: "QA Engineer", avatar: "https://avatar.vercel.sh/qa" },
         title: "Moved to testing",
         description: "Sprint 2 features ready for QA testing",
-        timestamp: new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(1),
         metadata: {
           sprint: 2,
           test_cases: 24,
@@ -326,7 +325,7 @@ export const ProjectTimeline: Story = {
         user: { name: "Lead Developer", avatar: "https://avatar.vercel.sh/dev1" },
         title: "Code review completed",
         description: "All pull requests reviewed and merged. Ready for deployment.",
-        timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000),
+        timestamp: hoursAgo(12),
       },
     ],
     groupByDate: true,
@@ -343,7 +342,7 @@ export const IssueHistory: Story = {
         user: { name: "Bug Reporter", avatar: "https://avatar.vercel.sh/reporter" },
         title: "Issue #456 created",
         description: "Payment form validation not working correctly for international cards",
-        timestamp: new Date(now.getTime() - 48 * 60 * 60 * 1000),
+        timestamp: hoursAgo(48),
         metadata: {
           priority: "critical",
           severity: "high",
@@ -356,7 +355,7 @@ export const IssueHistory: Story = {
         user: { name: "Team Lead", avatar: "https://avatar.vercel.sh/lead" },
         title: "Assigned to developer",
         description: "Assigned to payment team for investigation",
-        timestamp: new Date(now.getTime() - 47 * 60 * 60 * 1000),
+        timestamp: hoursAgo(47),
         metadata: {
           assignee: "Payment Team",
           estimated_time: "4 hours",
@@ -369,7 +368,7 @@ export const IssueHistory: Story = {
         title: "Investigation started",
         description:
           "Found the issue - Stripe validation regex doesn't support all international formats. Working on fix.",
-        timestamp: new Date(now.getTime() - 46 * 60 * 60 * 1000),
+        timestamp: hoursAgo(46),
       },
       {
         id: "4",
@@ -377,7 +376,7 @@ export const IssueHistory: Story = {
         user: { name: "Developer", avatar: "https://avatar.vercel.sh/dev" },
         title: "Status updated",
         description: "Moved to 'In Progress' after identifying root cause",
-        timestamp: new Date(now.getTime() - 45 * 60 * 60 * 1000),
+        timestamp: hoursAgo(45),
         metadata: {
           from: "Open",
           to: "In Progress",
@@ -389,7 +388,7 @@ export const IssueHistory: Story = {
         user: { name: "Developer", avatar: "https://avatar.vercel.sh/dev" },
         title: "Code fix committed",
         description: "Updated validation logic to support all card formats",
-        timestamp: new Date(now.getTime() - 42 * 60 * 60 * 1000),
+        timestamp: hoursAgo(42),
         metadata: {
           commit: "abc123f",
           files_changed: 3,
@@ -401,7 +400,7 @@ export const IssueHistory: Story = {
         user: { name: "QA Engineer", avatar: "https://avatar.vercel.sh/qa" },
         title: "Testing completed",
         description: "Tested with 20+ international card formats. All working correctly!",
-        timestamp: new Date(now.getTime() - 24 * 60 * 60 * 1000),
+        timestamp: hoursAgo(24),
       },
       {
         id: "7",
@@ -409,7 +408,7 @@ export const IssueHistory: Story = {
         user: { name: "Team Lead", avatar: "https://avatar.vercel.sh/lead" },
         title: "Issue resolved",
         description: "Fix deployed to production. Monitoring for 24 hours.",
-        timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000),
+        timestamp: hoursAgo(12),
         metadata: {
           from: "In Progress",
           to: "Resolved",
@@ -430,7 +429,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Account created",
         description: "Signed up via Google OAuth",
-        timestamp: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(30),
         metadata: {
           provider: "google",
           plan: "free",
@@ -442,7 +441,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Profile completed",
         description: "Added profile picture and bio",
-        timestamp: new Date(now.getTime() - 29 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(29),
         metadata: {
           bio_length: 120,
           avatar_uploaded: true,
@@ -454,7 +453,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Upgraded to Pro",
         description: "Subscribed to Pro plan ($29/month)",
-        timestamp: new Date(now.getTime() - 20 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(20),
         metadata: {
           from_plan: "free",
           to_plan: "pro",
@@ -467,7 +466,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "First project created",
         description: "Created 'E-commerce Redesign' project",
-        timestamp: new Date(now.getTime() - 15 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(15),
       },
       {
         id: "5",
@@ -475,7 +474,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Team member invited",
         description: "Invited 3 team members to collaborate",
-        timestamp: new Date(now.getTime() - 10 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(10),
         metadata: {
           invites_sent: 3,
         },
@@ -486,7 +485,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Left feedback",
         description: "Commented on design mockup #23",
-        timestamp: new Date(now.getTime() - 5 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(5),
       },
       {
         id: "7",
@@ -494,7 +493,7 @@ export const UserActivity: Story = {
         user: { name: "Emma Watson", avatar: "https://avatar.vercel.sh/emma" },
         title: "Settings updated",
         description: "Enabled 2FA and email notifications",
-        timestamp: new Date(now.getTime() - 2 * 24 * 60 * 60 * 1000),
+        timestamp: daysAgo(2),
         metadata: {
           two_factor: true,
           notifications: true,
@@ -523,7 +522,7 @@ export const WithFilters: Story = {
         user: { name: "Admin", avatar: "https://avatar.vercel.sh/admin" },
         title: "Server configuration updated",
         description: "Increased memory allocation to 16GB",
-        timestamp: new Date(now.getTime() - 30 * 60 * 1000),
+        timestamp: minutesAgo(30),
         metadata: { memory: "16GB", previous: "8GB" },
       },
       {
@@ -532,7 +531,7 @@ export const WithFilters: Story = {
         user: { name: "Admin", avatar: "https://avatar.vercel.sh/admin" },
         title: "Old logs deleted",
         description: "Removed logs older than 90 days",
-        timestamp: new Date(now.getTime() - 2 * 60 * 60 * 1000),
+        timestamp: hoursAgo(2),
         metadata: { files_deleted: 1240, space_freed: "5.7 GB" },
       },
       {
@@ -541,7 +540,7 @@ export const WithFilters: Story = {
         user: { name: "System", avatar: "https://avatar.vercel.sh/system" },
         title: "Deployment status",
         description: "Application deployed to production",
-        timestamp: new Date(now.getTime() - 5 * 60 * 60 * 1000),
+        timestamp: hoursAgo(5),
         metadata: { environment: "production", build: "v2.1.4" },
       },
       {
@@ -550,7 +549,7 @@ export const WithFilters: Story = {
         user: { name: "DevOps", avatar: "https://avatar.vercel.sh/devops" },
         title: "Deployment notes",
         description: "No issues detected. Monitoring metrics look healthy.",
-        timestamp: new Date(now.getTime() - 6 * 60 * 60 * 1000),
+        timestamp: hoursAgo(6),
       },
       {
         id: "6",
@@ -558,7 +557,7 @@ export const WithFilters: Story = {
         user: { name: "Manager", avatar: "https://avatar.vercel.sh/manager" },
         title: "On-call rotation",
         description: "Assigned weekend on-call duty",
-        timestamp: new Date(now.getTime() - 12 * 60 * 60 * 1000),
+        timestamp: hoursAgo(12),
         metadata: { assignee: "DevOps Team", duration: "48 hours" },
       },
       {

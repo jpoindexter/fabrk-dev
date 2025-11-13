@@ -95,7 +95,7 @@ export const FormExample: Story = {
           <Rating rating={rating} onRatingChange={setRating} showValue />
         </div>
         {rating > 0 && (
-          <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+          <div className="rounded-brutal border-brutal bg-card p-4">
             <p className="text-sm font-bold">Your Rating:</p>
             <p className="text-sm text-muted-foreground">
               {rating === 1 && "Poor"}
@@ -146,7 +146,7 @@ export const ReviewCard: Story = {
           </div>
         </div>
         {averageRating > 0 && (
-          <div className="rounded-brutal border-2 border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
             <p className="text-sm font-bold">Average Rating</p>
             <div className="flex items-center gap-2 mt-2">
               <Rating rating={averageRating} readonly showValue size="lg" />
@@ -195,7 +195,7 @@ export const ProductList: Story = {
         {products.map((product, index) => (
           <div
             key={index}
-            className="flex items-center justify-between rounded-brutal border-2 border-brutal bg-card p-4"
+            className="flex items-center justify-between rounded-brutal border-brutal bg-card p-4"
           >
             <div>
               <p className="font-bold">{product.name}</p>

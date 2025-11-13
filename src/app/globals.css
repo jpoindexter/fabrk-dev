@@ -214,7 +214,7 @@
   }
 
   .border-brutal {
-    border-color: var(--border);
+    border: 2px solid var(--border);
   }
 
   .border-2-brutal {

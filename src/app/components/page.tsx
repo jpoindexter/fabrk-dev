@@ -25,6 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import ActivityTimelineDemo from "./activity-timeline-demo";
 import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X, Zap } from "lucide-react";
 
 export default function ComponentsPage() {
@@ -64,9 +65,9 @@ export default function ComponentsPage() {
             <CardDescription>Jump to component categories</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
-            {["Buttons", "Forms", "Cards", "Typography", "Feedback", "Data Display", "Navigation", "Overlays"].map((cat) => (
+            {["Buttons", "Forms", "Cards", "Typography", "Feedback", "Data Display", "Navigation", "Overlays", "Activity Timeline"].map((cat) => (
               <Button key={cat} variant="outline" size="sm" asChild>
-                <a href={`#${cat.toLowerCase().replace(" ", "-")}`}>{cat}</a>
+                <a href={`#${cat.toLowerCase().replace(/ /g, "-")}`}>{cat}</a>
               </Button>
             ))}
           </CardContent>
@@ -412,6 +413,11 @@ export default function ComponentsPage() {
               </Tabs>
             </CardContent>
           </Card>
+        </section>
+
+        {/* Activity Timeline Section */}
+        <section id="activity-timeline" className="space-y-6">
+          <ActivityTimelineDemo />
         </section>
 
         {/* Footer Navigation */}

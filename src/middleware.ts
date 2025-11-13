@@ -1,32 +1,17 @@
-import createIntlMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './i18n/config';
 import { auth } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Create i18n middleware
-const intlMiddleware = createIntlMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'as-needed',
-});
-
-// Combine i18n and auth middleware
+// Simplified middleware - removing i18n temporarily to debug
 export default auth((req) => {
-  // First handle i18n routing
-  const intlResponse = intlMiddleware(req as NextRequest);
-
-  // Then check authentication for protected routes
+  // Check authentication for protected routes
   const isLoggedIn = !!req.auth;
   const pathname = req.nextUrl.pathname;
 
-  // Remove locale prefix to check base path
-  const pathWithoutLocale = pathname.replace(/^\/(en|es|fr|de|pt)/, '');
-
-  const isOnDashboard = pathWithoutLocale.startsWith('/dashboard');
-  const isOnAdmin = pathWithoutLocale.startsWith('/admin');
-  const isOnBilling = pathWithoutLocale.startsWith('/billing');
-  const isOnSettings = pathWithoutLocale.startsWith('/settings');
+  const isOnDashboard = pathname.startsWith('/dashboard');
+  const isOnAdmin = pathname.startsWith('/admin');
+  const isOnBilling = pathname.startsWith('/billing');
+  const isOnSettings = pathname.startsWith('/settings');
   const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings;
 
   if (isProtectedRoute && !isLoggedIn) {
@@ -39,7 +24,7 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
-  return intlResponse || NextResponse.next();
+  return NextResponse.next();
 });
 
 export const config = {

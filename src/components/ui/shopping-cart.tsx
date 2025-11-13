@@ -106,7 +106,7 @@ export function ShoppingCart({
 
   const EmptyState = () => (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="mb-6 rounded-brutal border-2 border-brutal bg-muted/20 p-8">
+      <div className="mb-6 rounded-brutal border-brutal bg-muted/20 p-8">
         <ShoppingBag className="h-16 w-16 text-muted-foreground" />
       </div>
       <h3 className="mb-2 text-xl font-black text-foreground">Your cart is empty</h3>
@@ -133,12 +133,12 @@ export function ShoppingCart({
           return (
             <div
               key={item.id}
-              className="group relative rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal transition-all hover:shadow-brutal-lg"
+              className="group relative rounded-brutal border-brutal bg-card p-4 shadow-brutal transition-all hover:shadow-brutal-lg"
             >
               {/* Remove Button */}
               <button
                 onClick={() => onRemoveItem?.(item.id)}
-                className="absolute -right-2 -top-2 rounded-full border-2 border-brutal bg-destructive p-1.5 text-white opacity-0 shadow-brutal transition-all hover:shadow-brutal-lg group-hover:opacity-100"
+                className="absolute -right-2 -top-2 rounded-full border-brutal bg-destructive p-1.5 text-white opacity-0 shadow-brutal transition-all hover:shadow-brutal-lg group-hover:opacity-100"
                 aria-label="Remove item"
               >
                 <X className="h-4 w-4" />
@@ -147,7 +147,7 @@ export function ShoppingCart({
               <div className="flex gap-4">
                 {/* Product Image */}
                 <div className="flex-shrink-0">
-                  <div className="h-20 w-20 overflow-hidden rounded-brutal border-2 border-brutal bg-muted">
+                  <div className="h-20 w-20 overflow-hidden rounded-brutal border-brutal bg-muted">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -170,7 +170,7 @@ export function ShoppingCart({
 
                   {/* Quantity Controls */}
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center rounded-brutal border-2 border-brutal bg-background shadow-brutal">
+                    <div className="flex items-center rounded-brutal border-brutal bg-background shadow-brutal">
                       <button
                         onClick={() =>
                           handleQuantityChange(item.id, item.quantity - 1)
@@ -220,7 +220,7 @@ export function ShoppingCart({
 
       {/* Promo Code */}
       {onApplyPromo && (
-        <div className="rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+        <div className="rounded-brutal border-brutal bg-card p-4 shadow-brutal">
           <div className="flex gap-2">
             <div className="relative flex-1">
               <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -244,7 +244,7 @@ export function ShoppingCart({
       )}
 
       {/* Price Breakdown */}
-      <div className="rounded-brutal border-2 border-brutal bg-card p-4 shadow-brutal">
+      <div className="rounded-brutal border-brutal bg-card p-4 shadow-brutal">
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Subtotal</span>
@@ -326,7 +326,7 @@ export function ShoppingCart({
     return (
       <div
         className={cn(
-          'rounded-brutal border-2 border-brutal bg-background shadow-brutal',
+          'rounded-brutal border-brutal bg-background shadow-brutal',
           variant === 'sidebar' && 'fixed right-4 top-20 w-96 max-h-[calc(100vh-6rem)]',
           variant === 'page' && 'mx-auto max-w-2xl',
           className
@@ -341,7 +341,7 @@ export function ShoppingCart({
     return (
       <div
         className={cn(
-          'fixed right-4 top-20 flex w-96 max-h-[calc(100vh-6rem)] flex-col gap-4 rounded-brutal border-2 border-brutal bg-background p-4 shadow-brutal-xl',
+          'fixed right-4 top-20 flex w-96 max-h-[calc(100vh-6rem)] flex-col gap-4 rounded-brutal border-brutal bg-background p-4 shadow-brutal-xl',
           className
         )}
       >

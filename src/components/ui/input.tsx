@@ -36,7 +36,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled || loading}
           className={cn(
             // Brutalist base styles
-            "flex h-10 w-full rounded-brutal border-2 border-brutal bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
+            "flex h-10 w-full rounded-brutal border-brutal bg-background px-3 py-2 text-[14px] font-bold leading-[1.5] shadow-brutal transition-brutal",
 
             // Brutalist focus state - thick ring + shadow grow
             "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:shadow-brutal-lg",

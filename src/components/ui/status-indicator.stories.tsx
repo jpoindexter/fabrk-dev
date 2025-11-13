@@ -110,9 +110,9 @@ export const AllSizes: Story = {
 
 export const UserCard: Story = {
   render: () => (
-    <div className="w-[300px] rounded-brutal border-2 border-brutal bg-card p-4">
+    <div className="w-[300px] rounded-brutal border-brutal bg-card p-4">
       <div className="flex items-start gap-4">
-        <div className="h-12 w-12 rounded-brutal border-2 border-brutal bg-primary/10" />
+        <div className="h-12 w-12 rounded-brutal border-brutal bg-primary/10" />
         <div className="flex-1">
           <div className="flex items-center gap-2">
             <h3 className="font-bold">John Doe</h3>
@@ -135,7 +135,7 @@ export const UserList: Story = {
     ];
 
     return (
-      <div className="w-[400px] rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-[400px] rounded-brutal border-brutal bg-card">
         <div className="border-b-2 border-brutal p-4">
           <h2 className="font-bold">Team Members</h2>
         </div>
@@ -165,7 +165,7 @@ export const ServerStatus: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-2 border-brutal bg-card">
+      <div className="w-[500px] rounded-brutal border-brutal bg-card">
         <div className="border-b-2 border-brutal p-4">
           <h2 className="font-bold">System Status</h2>
         </div>

@@ -123,7 +123,7 @@ function LightboxStory({
                   setCurrentIndex(index);
                   setIsOpen(true);
                 }}
-                className="overflow-hidden rounded-brutal border-2 border-brutal shadow-brutal transition-all hover:shadow-brutal-lg"
+                className="overflow-hidden rounded-brutal border-brutal shadow-brutal transition-all hover:shadow-brutal-lg"
               >
                 {item.type === "image" ? (
                   <img
@@ -203,7 +203,7 @@ export const KeyboardNavigation: Story = {
     <div className="flex min-h-screen items-center justify-center bg-muted p-8">
       <div className="max-w-2xl space-y-4 text-center">
         <h3 className="text-2xl font-bold">Keyboard Navigation Demo</h3>
-        <div className="space-y-2 rounded-brutal border-2 border-brutal bg-card p-6 text-left shadow-brutal">
+        <div className="space-y-2 rounded-brutal border-brutal bg-card p-6 text-left shadow-brutal">
           <p className="font-bold">Available keyboard shortcuts:</p>
           <ul className="space-y-1 text-sm text-muted-foreground">
             <li>
@@ -332,7 +332,7 @@ export const OpeningFromGrid: Story = {
                   setCurrentIndex(index);
                   setIsOpen(true);
                 }}
-                className="group overflow-hidden rounded-brutal border-2 border-brutal shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-y-1"
+                className="group overflow-hidden rounded-brutal border-brutal shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-y-1"
               >
                 <div className="relative aspect-square">
                   <img

@@ -52,7 +52,7 @@ export const NoIcon: Story = {
 
 export const InboxEmpty: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={Inbox}
         title="Inbox Zero!"
@@ -64,7 +64,7 @@ export const InboxEmpty: Story = {
 
 export const NoSearchResults: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={Search}
         title="No results found"
@@ -80,7 +80,7 @@ export const NoSearchResults: Story = {
 
 export const NoTeamMembers: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={Users}
         title: "No team members yet",
@@ -96,7 +96,7 @@ export const NoTeamMembers: Story = {
 
 export const NoProducts: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={Package}
         title="No products in store",
@@ -112,7 +112,7 @@ export const NoProducts: Story = {
 
 export const EmptyCart: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={ShoppingCart}
         title="Your cart is empty",
@@ -128,7 +128,7 @@ export const EmptyCart: Story = {
 
 export const NoImages: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={Image}
         title="No images uploaded",
@@ -144,7 +144,7 @@ export const NoImages: Story = {
 
 export const NoComments: Story = {
   render: () => (
-    <div className="w-[600px] rounded-brutal border-2 border-brutal bg-card">
+    <div className="w-[600px] rounded-brutal border-brutal bg-card">
       <EmptyState
         icon={MessageSquare}
         title="No comments yet",
@@ -165,7 +165,7 @@ export const InDataTable: Story = {
         <h2 className="text-xl font-bold">Orders</h2>
         <div className="text-sm text-muted-foreground">0 results</div>
       </div>
-      <div className="rounded-brutal border-2 border-brutal bg-card">
+      <div className="rounded-brutal border-brutal bg-card">
         <table className="w-full">
           <thead className="border-b-2 border-brutal">
             <tr>

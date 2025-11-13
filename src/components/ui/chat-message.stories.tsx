@@ -4,6 +4,7 @@ import {
   TypingIndicator,
   MessageThread,
 } from "./chat-message";
+import { generateDemoDates } from "@/lib/utils/demo-dates";
 
 const meta = {
   title: "UI/ChatMessage",
@@ -28,7 +29,9 @@ const ownUser = {
   avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=You",
 };
 
-const timestamp = new Date();
+// ✅ Generate demo dates for consistent previews
+const { now, minutesAgo } = generateDemoDates();
+const timestamp = now();
 
 export const Default: Story = {
   args: {
