@@ -31,9 +31,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 const languageFormSchema = z.object({
-  language: z.enum(["en", "es", "fr", "de", "ja", "zh", "pt", "ko"], {
-    errorMap: () => ({ message: "Select a valid language" }),
-  }),
+  language: z.enum(["en", "es", "fr", "de", "ja", "zh", "pt", "ko"]),
 });
 
 type LanguageFormValues = z.infer<typeof languageFormSchema>;

@@ -211,7 +211,7 @@ export function ApiKeysSection() {
 
                 <div className="flex justify-end">
                   <Button
-                    variant="destructive"
+                                      variant="destructive"
                     size="sm"
                     onClick={() => handleDeleteKey(apiKey.id)}
                   >

@@ -66,7 +66,7 @@ export default async function InvoicesPage() {
       case "succeeded":
         return <Badge variant="default">Paid</Badge>;
       case "failed":
-        return <Badge variant="destructive">Failed</Badge>;
+        return <Badge variant="outline">Failed</Badge>;
       default:
         return <Badge variant="secondary">Pending</Badge>;
     }

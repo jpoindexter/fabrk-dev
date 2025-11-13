@@ -195,18 +195,18 @@ const paletteSchema = z.object({
   }),
 });
 
-const spacingSchema = z.record(z.string());
-const radiusSchema = z.record(z.string());
-const shadowsSchema = z.record(z.string());
+const spacingSchema = z.record(z.string(), z.string());
+const radiusSchema = z.record(z.string(), z.string());
+const shadowsSchema = z.record(z.string(), z.string());
 const typographySchema = z.object({
   fonts: z.object({
     sans: z.array(z.string()),
     mono: z.array(z.string()),
   }),
-  size: z.record(z.string()),
-  weight: z.record(z.string()),
-  lineHeight: z.record(z.string()),
-  letterSpacing: z.record(z.string()),
+  size: z.record(z.string(), z.string()),
+  weight: z.record(z.string(), z.string()),
+  lineHeight: z.record(z.string(), z.string()),
+  letterSpacing: z.record(z.string(), z.string()),
 });
 
 export const DesignTokensSchema = z.object({

@@ -74,6 +74,7 @@
     "**/*.stories.tsx",
     "mcp-servers",
     "Boilerplate",
-    "sample_landing"
+    "sample_landing",
+    "agent-tools"
   ]
 }

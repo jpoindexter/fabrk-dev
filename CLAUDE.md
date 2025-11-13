@@ -36,6 +36,10 @@ npm run type-check         # TypeScript validation (no emit)
 
 # Stripe (Local Development)
 npm run stripe:listen      # Listen to Stripe webhooks locally
+
+# Email Queue Worker
+npm run email:worker       # Start email queue worker (production)
+npm run email:dev          # Start email queue worker with auto-restart (development)
 ```
 
 ### Testing
@@ -185,18 +189,48 @@ src/app/api/
 
 ### Email System
 
-**Pattern:** Simple direct sending via Resend (ShipFast style - no queue, no retry)
-- **Service:** `src/lib/email.ts` - ~100 lines with 3 send functions
-- **Templates:** `src/emails/welcome-html.ts` - Simple HTML templates (no React Email)
+**Pattern:** Dual-mode email system with both direct sending and queue support
+- **Service:** `src/lib/email.ts` - Email service with queue functions
+- **Queue:** `EmailQueue` model in Prisma schema - Database-backed queue with retry logic
+- **Worker:** `scripts/email-worker.js` - Background worker for processing queued emails
 - **Provider:** Resend (configured via `RESEND_API_KEY`)
 - **Dev Mode:** Logs to console instead of sending when `RESEND_API_KEY` is not set
 
-**Email Functions:**
-- `sendWelcomeEmail(to, name, licenseKey?)` - After purchase
-- `sendVerificationEmail(to, token)` - After registration
-- `sendResetEmail(to, token)` - Password reset flow
+**Direct Send Functions (for auth, immediate delivery):**
+- `sendWelcomeEmail(to, name, licenseKey?)` - Direct send
+- `sendVerificationEmail(to, token)` - Direct send (auth emails)
+- `sendResetEmail(to, token)` - Direct send (auth emails)
 
-**No queue or retry logic** - Emails send immediately. For production-grade retry logic, consider adding a queue system (Bull, Inngest, etc.).
+**Queue Functions (for purchases, background sending):**
+- `queueWelcomeEmail(params)` - Queue welcome email after purchase
+- `queueVerificationEmail(params)` - Queue verification email (optional)
+- `queueResetEmail(params)` - Queue reset email (optional)
+- `queueEmail(params)` - Generic queue function
+
+**Email Queue Worker:**
+The email worker processes queued emails in the background with retry logic:
+```bash
+# Production
+npm run email:worker
+
+# Development (with auto-restart)
+npm run email:dev
+```
+
+**Queue Features:**
+- 3 automatic retries with exponential backoff
+- Status tracking (PENDING, SENDING, SENT, FAILED)
+- Error logging and monitoring
+- Batch processing (10 emails per cycle)
+- 5-second polling interval (configurable)
+
+**Database Schema:**
+The `EmailQueue` table stores:
+- Email details (to, subject, html, type)
+- Retry tracking (attempts, maxAttempts, lastError)
+- Metadata (licenseKey, magicLink, etc.)
+- Timestamps (sentAt, createdAt, updatedAt)
+- Optional associations (userId, purchaseId)
 
 ### Logging & Monitoring
 

@@ -26,7 +26,7 @@ export async function GET(req: Request) {
         uploads: true,
         mfaDevices: true,
         backupCodes: true,
-        organizationMembers: {
+        organizations: {
           include: {
             organization: true,
           },
@@ -54,16 +54,13 @@ export async function GET(req: Request) {
       accounts: user.accounts.map((account) => ({
         provider: account.provider,
         type: account.type,
-        createdAt: account.createdAt,
       })),
       sessions: user.sessions.map((session) => ({
-        createdAt: session.createdAt,
         expiresAt: session.expires,
       })),
       payments: user.payments.map((payment) => ({
         id: payment.id,
         amount: payment.amount,
-        currency: payment.currency,
         status: payment.status,
         productId: payment.productId,
         createdAt: payment.createdAt,
@@ -76,7 +73,7 @@ export async function GET(req: Request) {
         visibility: upload.visibility,
         createdAt: upload.createdAt,
       })),
-      organizations: user.organizationMembers.map((member) => ({
+      organizations: user.organizations.map((member) => ({
         organizationId: member.organizationId,
         organizationName: member.organization.name,
         role: member.role,

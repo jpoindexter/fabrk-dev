@@ -348,10 +348,10 @@ export default function CookiesPage() {
               Related Legal Documents:
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/legal/terms">
+              <Link href="/terms">
                 <Button variant="outline" size="sm">Terms of Service</Button>
               </Link>
-              <Link href="/legal/privacy">
+              <Link href="/privacy">
                 <Button variant="outline" size="sm">Privacy Policy</Button>
               </Link>
             </div>

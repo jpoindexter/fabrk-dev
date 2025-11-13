@@ -66,7 +66,7 @@ export function BillingSection() {
       case "canceled":
         return "secondary";
       case "past_due":
-        return "destructive";
+        return "outline";
       default:
         return "outline";
     }

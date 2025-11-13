@@ -3,6 +3,8 @@
  * Complete dashboard with charts, metrics, and data visualization
  */
 
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -118,7 +120,7 @@ export default function AnalyticsDashboardTemplate() {
                 <div className="text-3xl font-bold">{metric.value}</div>
                 <div className="flex items-center gap-2 pt-1">
                   <Badge
-                    variant={metric.trend === "up" ? "default" : "destructive"}
+                    variant={metric.trend === "up" ? "default" : "outline"}
                     className="text-xs"
                   >
                     {metric.trend === "up" ? (

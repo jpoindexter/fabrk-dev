@@ -8,6 +8,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-Commercial-green)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./docs/CONTRIBUTING.md)
+[![CI](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/ci.yml)
+[![Deploy](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/deploy.yml)
+[![E2E Tests](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/jpoindexter/fabrk_plate/actions/workflows/e2e-tests.yml)
 
 ---
 

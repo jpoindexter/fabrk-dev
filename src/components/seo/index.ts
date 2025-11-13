@@ -3,7 +3,7 @@
  * AEO-optimized components for better search visibility
  */
 
-export { SchemaScript } from "./SchemaScript";
-export { FAQSection, type FAQ } from "./FAQSection";
-export { Breadcrumbs, type BreadcrumbItem } from "./Breadcrumbs";
-export { HowTo, type HowToStep } from "./HowTo";
+export { SchemaScript } from "./schema-script";
+export { FAQSection, type FAQ } from "./faq-section";
+export { Breadcrumbs, type BreadcrumbItem } from "./breadcrumbs";
+export { HowTo, type HowToStep } from "./how-to";

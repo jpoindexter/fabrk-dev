@@ -85,7 +85,7 @@ export function DataTable<TData, TValue>({
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.context
+                            header.getContext()
                           )}
                     </TableHead>
                   );
@@ -109,7 +109,7 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.context)}
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -119,7 +119,7 @@ export function DataTable<TData, TValue>({
                 <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <p className="text-sm text-muted-foreground">No results found.</p>
-                    {searchKey && table.getColumn(searchKey)?.getFilterValue() && (
+                    {searchKey && !!table.getColumn(searchKey)?.getFilterValue() && (
                       <button
                         onClick={() => table.getColumn(searchKey)?.setFilterValue("")}
                         className="text-xs text-primary hover:underline"

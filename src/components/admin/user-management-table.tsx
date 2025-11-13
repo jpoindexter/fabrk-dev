@@ -238,7 +238,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                         Yes
                       </Badge>
                     ) : (
-                      <Badge variant="destructive">No</Badge>
+                      <Badge variant="accent">No</Badge>
                     )}
                   </TableCell>
                   <TableCell className="text-muted-foreground">

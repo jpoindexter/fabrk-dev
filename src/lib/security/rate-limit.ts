@@ -13,7 +13,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-interface RateLimitConfig {
+export interface RateLimitConfig {
   interval: number; // Time window in milliseconds
   maxRequests: number; // Max requests per window
   uniqueTokenPerInterval?: number; // Max unique tokens to track
@@ -179,9 +179,11 @@ export async function checkRateLimitRedis(
   }
 
   try {
-    // Lazy import to avoid errors if @upstash/ratelimit not installed
-    const { Ratelimit } = await import("@upstash/ratelimit");
-    const { Redis } = await import("@upstash/redis");
+    // Lazy require to avoid errors if @upstash/ratelimit not installed
+    const upstashRatelimit = require("@upstash/ratelimit");
+    const upstashRedis = require("@upstash/redis");
+    const { Ratelimit } = upstashRatelimit;
+    const { Redis } = upstashRedis;
 
     const redis = new Redis({
       url: process.env.UPSTASH_REDIS_REST_URL,

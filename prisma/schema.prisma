@@ -288,3 +288,54 @@ enum JobStatus {
   FAILED
   CANCELLED
 }
+
+// ===========================
+// EMAIL QUEUE
+// ===========================
+
+model EmailQueue {
+  id          String       @id @default(cuid())
+  type        EmailType    // WELCOME, VERIFICATION, RESET, etc.
+  to          String       // Recipient email
+  subject     String
+  html        String       @db.Text
+  status      EmailStatus  @default(PENDING)
+
+  // Optional associations
+  userId      String?
+  purchaseId  String?      // For purchase-related emails
+
+  // Metadata for template variables
+  metadata    Json?        // { licenseKey, magicLink, name, etc. }
+
+  // Retry logic
+  attempts    Int          @default(0)
+  maxAttempts Int          @default(3)
+  lastError   String?      @db.Text
+
+  // Timestamps
+  sentAt      DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([status])
+  @@index([type])
+  @@index([createdAt])
+  @@index([userId])
+}
+
+enum EmailType {
+  WELCOME
+  VERIFICATION
+  RESET
+  INVOICE
+  NOTIFICATION
+}
+
+enum EmailStatus {
+  PENDING
+  SENDING
+  SENT
+  FAILED
+  CANCELLED
+}

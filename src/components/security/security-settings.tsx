@@ -244,7 +244,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
           <div className="space-y-3">
             <Button
-              variant="destructive"
+                                variant="destructive"
               onClick={handleInvalidateAllSessions}
               className="w-full"
             >

@@ -31,12 +31,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 const appearanceFormSchema = z.object({
-  theme: z.enum(["light", "dark", "system"], {
-    errorMap: () => ({ message: "Select a valid theme" }),
-  }),
-  language: z.enum(["en", "es", "fr", "de", "ja"], {
-    errorMap: () => ({ message: "Select a valid language" }),
-  }),
+  theme: z.enum(["light", "dark", "system"]),
+  language: z.enum(["en", "es", "fr", "de", "ja"]),
 });
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;

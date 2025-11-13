@@ -413,3 +413,142 @@ registerJobHandler<{ url: string; payload: any }>(
     }
   }
 );
+
+/**
+ * Process email queue
+ * Fetches pending emails from EmailQueue and sends them via Resend
+ */
+export async function processEmailQueue(): Promise<number> {
+  const Resend = (await import("resend")).Resend;
+  const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+  if (!resend) {
+    console.log("⚠️ [Email Queue] Resend API key not configured. Emails will be logged only.");
+  }
+
+  const FROM_EMAIL = process.env.EMAIL_FROM || "noreply@yourdomain.com";
+
+  // Fetch pending emails (limit to 10 per batch)
+  const pendingEmails = await prisma.emailQueue.findMany({
+    where: {
+      status: "PENDING",
+      attempts: { lt: prisma.emailQueue.fields.maxAttempts },
+    },
+    orderBy: { createdAt: "asc" },
+    take: 10,
+  });
+
+  if (pendingEmails.length === 0) {
+    return 0;
+  }
+
+  console.log(`📧 [Email Queue] Processing ${pendingEmails.length} emails...`);
+
+  let successCount = 0;
+
+  for (const email of pendingEmails) {
+    try {
+      // Mark as sending
+      await prisma.emailQueue.update({
+        where: { id: email.id },
+        data: {
+          status: "SENDING",
+          attempts: email.attempts + 1,
+        },
+      });
+
+      // Send email
+      if (resend) {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: email.to,
+          subject: email.subject,
+          html: email.html,
+        });
+      } else {
+        // Dev mode - just log
+        console.log(`📧 [DEV] Email to: ${email.to} - Subject: ${email.subject}`);
+      }
+
+      // Mark as sent
+      await prisma.emailQueue.update({
+        where: { id: email.id },
+        data: {
+          status: "SENT",
+          sentAt: new Date(),
+          lastError: null,
+        },
+      });
+
+      successCount++;
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(`❌ [Email Queue] Failed to send email ${email.id}:`, errorMessage);
+
+      // Check if should retry
+      const shouldRetry = email.attempts + 1 < email.maxAttempts;
+
+      await prisma.emailQueue.update({
+        where: { id: email.id },
+        data: {
+          status: shouldRetry ? "PENDING" : "FAILED",
+          lastError: errorMessage,
+        },
+      });
+
+      // Log to monitoring if failed permanently
+      if (!shouldRetry) {
+        captureError(error instanceof Error ? error : new Error(String(error)), {
+          metadata: {
+            emailQueueId: email.id,
+            emailType: email.type,
+            recipient: email.to,
+            attempts: email.attempts + 1,
+          },
+        });
+      }
+    }
+  }
+
+  console.log(`✅ [Email Queue] Successfully sent ${successCount}/${pendingEmails.length} emails`);
+
+  return successCount;
+}
+
+/**
+ * Start email queue worker
+ * Polls EmailQueue table and processes pending emails
+ */
+export function startEmailQueueWorker(options: {
+  interval?: number; // Poll interval in ms (default: 5000 = 5 seconds)
+} = {}) {
+  const interval = options.interval || 5000; // Default: 5 seconds
+
+  let isRunning = true;
+
+  async function processEmails() {
+    if (!isRunning) return;
+
+    try {
+      await processEmailQueue();
+    } catch (error) {
+      console.error("[Email Queue Worker] Error:", error);
+      captureError(error instanceof Error ? error : new Error(String(error)));
+    }
+
+    // Schedule next run
+    if (isRunning) {
+      setTimeout(processEmails, interval);
+    }
+  }
+
+  // Start processing
+  console.log("🚀 [Email Queue Worker] Started (polling every 5 seconds)");
+  processEmails();
+
+  // Return stop function
+  return () => {
+    console.log("🛑 [Email Queue Worker] Stopping...");
+    isRunning = false;
+  };
+}

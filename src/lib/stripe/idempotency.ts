@@ -54,3 +54,22 @@ export async function storeCheckoutIdempotency(
     },
   });
 }
+
+/**
+ * Check if a webhook event has already been processed
+ */
+export async function isWebhookEventProcessed(eventId: string): Promise<boolean> {
+  const record = await prisma.webhookEvent.findUnique({
+    where: { eventId },
+  });
+  return record !== null;
+}
+
+/**
+ * Mark a webhook event as processed
+ */
+export async function markWebhookEventProcessed(eventId: string): Promise<void> {
+  await prisma.webhookEvent.create({
+    data: { eventId, processed: new Date() },
+  });
+}

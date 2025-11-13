@@ -206,7 +206,7 @@ export default function ContactPage() {
 
                   <p className="text-xs text-muted-foreground text-center">
                     By submitting this form, you agree to our{" "}
-                    <Link href="/legal/privacy" className="text-primary hover:underline">
+                    <Link href="/privacy" className="text-primary hover:underline">
                       Privacy Policy
                     </Link>
                   </p>

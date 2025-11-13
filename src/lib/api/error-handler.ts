@@ -74,7 +74,7 @@ function formatErrorResponse(error: Error): ErrorResponse {
     return {
       error: "Validation failed",
       code: "VALIDATION_ERROR",
-      details: error.errors.map((e) => ({
+      details: error.issues.map((e) => ({
         field: e.path.join("."),
         message: e.message,
       })),

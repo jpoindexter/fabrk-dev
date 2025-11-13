@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # Enable version updates for npm
+  # NPM package updates
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -9,44 +9,58 @@ updates:
       time: "09:00"
     open-pull-requests-limit: 5
     reviewers:
-      - "your-github-username"
+      - "jpoindexter"
     labels:
       - "dependencies"
       - "automated"
     commit-message:
-      prefix: "chore"
+      prefix: "chore(deps)"
       include: "scope"
 
-    # Group minor and patch updates together
+    # Group updates to reduce PR noise
     groups:
-      development-dependencies:
+      dev-dependencies:
         dependency-type: "development"
         update-types:
           - "minor"
           - "patch"
-      production-dependencies:
+      prod-patches:
         dependency-type: "production"
         update-types:
           - "patch"
+      prod-minor:
+        dependency-type: "production"
+        update-types:
+          - "minor"
 
-    # Ignore specific dependencies
+    # High-priority security updates
+    allow:
+      - dependency-type: "production"
+        update-types:
+          - "security"
+
+    # Ignore major version updates (manual review needed)
     ignore:
-      # Ignore major version updates (review manually)
       - dependency-name: "next"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react"
         update-types: ["version-update:semver-major"]
       - dependency-name: "react-dom"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
-  # Enable version updates for GitHub Actions
+  # GitHub Actions updates
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
+      time: "10:00"
     labels:
-      - "dependencies"
-      - "github-actions"
+      - "ci"
+      - "automated"
     commit-message:
-      prefix: "ci"
+      prefix: "ci(actions)"
+      include: "scope"
+    open-pull-requests-limit: 3

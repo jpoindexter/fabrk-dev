@@ -11,6 +11,7 @@ import {
   getFeatureVariant,
   getFeatureValue,
   type FeatureFlagContext,
+  type FeatureFlagValue,
 } from "./index";
 
 /**
@@ -57,7 +58,7 @@ export function useFeatureVariant(flagKey: string): string | null {
 /**
  * Hook to get feature value (config flags)
  */
-export function useFeatureValue<T = any>(
+export function useFeatureValue<T extends FeatureFlagValue = any>(
   flagKey: string,
   defaultValue?: T
 ): T | null {

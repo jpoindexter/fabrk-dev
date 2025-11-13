@@ -66,7 +66,7 @@ export function LicenseSection() {
       case "expired":
         return "secondary";
       case "suspended":
-        return "destructive";
+        return "outline";
       default:
         return "outline";
     }

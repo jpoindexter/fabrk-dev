@@ -1,216 +1,235 @@
-import { Metadata } from "next";
+/**
+ * Terms of Service Page
+ * Legal agreement between Fabrk and users
+ */
 
-export const metadata: Metadata = {
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, FileText } from "lucide-react";
+
+export const metadata = {
   title: "Terms of Service | Fabrk",
-  description: "Terms of service for Fabrk boilerplate",
+  description: "Terms and conditions for using Fabrk SaaS boilerplate",
 };
 
 export default function TermsPage() {
   return (
-    <article className="prose prose-slate max-w-none">
-      <h1 className="mb-2 text-4xl font-bold text-foreground">Terms of Service</h1>
-      <p className="mb-8 text-sm text-muted-foreground">Last updated: January 2025</p>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b-3 border-border bg-card sticky top-0 z-50">
+        <div className="container mx-auto max-w-4xl px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <FileText className="h-6 w-6 text-primary" />
+              <h1 className="text-2xl font-bold">Terms of Service</h1>
+            </div>
+            <Link href="/">
+              <Button variant="outline" size="sm">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Home
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </header>
 
-      <div className="space-y-8 text-foreground">
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">1. License Grant</h2>
-          <p>
-            By purchasing Fabrk, you are granted a non-exclusive, perpetual license to use the
-            boilerplate code for:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              <strong>Unlimited projects:</strong> Create as many SaaS applications, websites, or
-              products as you want (personal or commercial)
-            </li>
-            <li>
-              <strong>Client work:</strong> Use Fabrk to build products for clients
-            </li>
-            <li>
-              <strong>Modifications:</strong> Modify, adapt, and extend the code as needed
-            </li>
-            <li>
-              <strong>No attribution:</strong> You are not required to credit Fabrk in your projects
-            </li>
-          </ul>
-        </section>
+      <main className="container mx-auto max-w-4xl px-6 py-12">
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Last Updated: November 7, 2024</CardTitle>
+          </CardHeader>
+          <CardContent className="prose dark:prose-invert max-w-none">
+            <p className="text-muted-foreground">
+              Please read these Terms of Service carefully before using Fabrk.
+            </p>
+          </CardContent>
+        </Card>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">2. Restrictions</h2>
-          <p>You may NOT:</p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              <strong>Resell or redistribute:</strong> You cannot resell, redistribute, or share
-              Fabrk as a boilerplate, template, or starter kit (even if modified)
-            </li>
-            <li>
-              <strong>Compete:</strong> You cannot use Fabrk to create a competing boilerplate
-              product
-            </li>
-            <li>
-              <strong>Share your license:</strong> Each license is for a single developer. Team
-              members need their own licenses
-            </li>
-            <li>
-              <strong>Claim ownership:</strong> You cannot claim Fabrk or its original code as your
-              own intellectual property
-            </li>
-          </ul>
-          <p className="mt-4">
-            <strong>Clarification:</strong> You CAN sell products you build with Fabrk (e.g., a SaaS
-            app, a client website). You CANNOT sell Fabrk itself or create a product that competes
-            with Fabrk.
-          </p>
-        </section>
+        <div className="prose dark:prose-invert max-w-none space-y-8">
+          <section>
+            <h2 className="text-3xl font-bold mb-4">1. Agreement to Terms</h2>
+            <p>
+              By accessing or using Fabrk ("Service", "we", "us", or "our"), you agree to be
+              bound by these Terms of Service. If you disagree with any part of these terms,
+              you may not access the Service.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">3. Updates and Support</h2>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              <strong>Lifetime updates for v1.x:</strong> You receive all minor and patch updates
-              for version 1 (e.g., 1.0, 1.1, 1.2... 1.99) at no additional cost
-            </li>
-            <li>
-              <strong>Major version upgrades:</strong> Major versions (e.g., v2.0) are offered at a
-              50% discount for existing customers
-            </li>
-            <li>
-              <strong>Support:</strong> Email support (support@fabrk.dev) and Discord community
-              access included
-            </li>
-            <li>
-              <strong>No guarantee of support:</strong> Support is provided on a best-effort basis.
-              We do not guarantee response times or issue resolution
-            </li>
-          </ul>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">2. Description of Service</h2>
+            <p>
+              Fabrk provides a Next.js SaaS boilerplate with authentication, payments,
+              database integration, and UI components. The Service is provided as a software
+              license for development purposes.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">2.1 License Grant</h3>
+            <p>
+              Upon purchase, we grant you a non-exclusive, non-transferable license to:
+            </p>
+            <ul>
+              <li>Use the source code to create unlimited projects</li>
+              <li>Modify the code for your own use</li>
+              <li>Deploy applications built with Fabrk</li>
+            </ul>
+            <h3 className="text-xl font-bold mt-4 mb-2">2.2 License Restrictions</h3>
+            <p>You may NOT:</p>
+            <ul>
+              <li>Resell, redistribute, or share the source code</li>
+              <li>Create derivative boilerplates for sale</li>
+              <li>Claim the code as your own creation</li>
+              <li>Use the product to build competing boilerplate products</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">4. Refund Policy</h2>
-          <p>
-            We offer a <strong>30-day money-back guarantee</strong>. If you're not satisfied with
-            Fabrk, email support@fabrk.dev within 30 days of purchase for a full refund.
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>Refunds are processed within 5-7 business days</li>
-            <li>You may keep any code you've already downloaded</li>
-            <li>After refund, you lose access to future updates and support</li>
-          </ul>
-          <p className="mt-4">
-            See our <a href="/refund" className="text-primary hover:underline">Refund Policy</a>{" "}
-            for full details.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">3. User Accounts</h2>
+            <h3 className="text-xl font-bold mt-4 mb-2">3.1 Account Creation</h3>
+            <p>
+              You must create an account to access certain features. You are responsible for:
+            </p>
+            <ul>
+              <li>Maintaining the security of your account credentials</li>
+              <li>All activities that occur under your account</li>
+              <li>Notifying us immediately of any unauthorized access</li>
+            </ul>
+            <h3 className="text-xl font-bold mt-4 mb-2">3.2 Account Termination</h3>
+            <p>
+              We reserve the right to suspend or terminate accounts that violate these terms,
+              engage in fraudulent activity, or pose security risks.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">5. Warranty Disclaimer</h2>
-          <p>
-            Fabrk is provided <strong>"as is"</strong> without warranty of any kind, express or
-            implied. We do not guarantee that:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>The code is error-free or bug-free</li>
-            <li>The code meets your specific requirements</li>
-            <li>The code is compatible with all environments or third-party services</li>
-            <li>Updates will not introduce breaking changes</li>
-          </ul>
-          <p className="mt-4">
-            You are responsible for testing and ensuring Fabrk meets your needs before deploying to
-            production.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">4. Payment Terms</h2>
+            <h3 className="text-xl font-bold mt-4 mb-2">4.1 Pricing</h3>
+            <p>
+              Current pricing is displayed on our website. We reserve the right to modify
+              pricing for new purchases, but existing licenses are honored at their purchase
+              price.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">4.2 Payment Processing</h3>
+            <p>
+              Payments are processed securely through Stripe. We do not store your complete
+              credit card information. By providing payment information, you authorize us to
+              charge your payment method.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">4.3 Refund Policy</h3>
+            <p>
+              We offer a 30-day money-back guarantee. If you're not satisfied, contact us
+              within 30 days of purchase for a full refund. Refunds are not available after
+              30 days.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">6. Limitation of Liability</h2>
-          <p>
-            To the maximum extent permitted by law, Fabrk and its operators shall not be liable for
-            any indirect, incidental, special, consequential, or punitive damages, including but not
-            limited to:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>Loss of profits, revenue, or data</li>
-            <li>Business interruption</li>
-            <li>Damage to reputation</li>
-          </ul>
-          <p className="mt-4">
-            Our total liability is limited to the amount you paid for Fabrk ($79).
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">5. Intellectual Property</h2>
+            <p>
+              The Service and its original content, features, and functionality are owned by
+              Fabrk and are protected by international copyright, trademark, patent, trade
+              secret, and other intellectual property laws.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">5.1 Your Content</h3>
+            <p>
+              You retain all rights to any content, code, or applications you create using
+              Fabrk. We claim no ownership over your work.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">5.2 Fabrk Content</h3>
+            <p>
+              The boilerplate code, documentation, and templates remain our intellectual
+              property, licensed to you under the terms specified in Section 2.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">7. EU Consumer Rights</h2>
-          <p>
-            If you are a consumer in the European Union, you have additional rights under the EU
-            Consumer Rights Directive:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              <strong>14-day withdrawal period:</strong> You have the right to withdraw from this
-              contract within 14 days without giving any reason
-            </li>
-            <li>
-              <strong>Exception:</strong> By downloading Fabrk, you acknowledge that you lose your
-              right of withdrawal as you have requested the digital content be made available
-              immediately
-            </li>
-            <li>
-              However, our 30-day money-back guarantee provides more generous terms than EU law
-              requires
-            </li>
-          </ul>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">6. Prohibited Uses</h2>
+            <p>You agree not to use the Service:</p>
+            <ul>
+              <li>For any unlawful purpose or to violate any laws</li>
+              <li>To transmit malware, viruses, or harmful code</li>
+              <li>To harass, abuse, or harm others</li>
+              <li>To impersonate others or misrepresent your affiliation</li>
+              <li>To collect user data without consent</li>
+              <li>To overload or interfere with our systems</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">8. GDPR Compliance</h2>
-          <p>
-            We comply with the General Data Protection Regulation (GDPR). You have the right to:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>Access your personal data</li>
-            <li>Rectify inaccurate data</li>
-            <li>Request deletion of your data</li>
-            <li>Data portability</li>
-          </ul>
-          <p className="mt-4">
-            See our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>{" "}
-            for details on how we handle your data.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">7. Disclaimers and Limitations</h2>
+            <h3 className="text-xl font-bold mt-4 mb-2">7.1 "As Is" Service</h3>
+            <p>
+              THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY
+              KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+              MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">7.2 Limitation of Liability</h3>
+            <p>
+              IN NO EVENT SHALL FABRK BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+              CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER
+              INCURRED DIRECTLY OR INDIRECTLY.
+            </p>
+            <h3 className="text-xl font-bold mt-4 mb-2">7.3 No Technical Support Guarantee</h3>
+            <p>
+              While we strive to provide helpful documentation and community support, we do
+              not guarantee technical support or troubleshooting assistance.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">9. Governing Law</h2>
-          <p>
-            These Terms are governed by the laws of the jurisdiction where Fabrk operates, without
-            regard to conflict of law provisions.
-          </p>
-          <p className="mt-4">
-            For EU customers, nothing in these Terms affects your statutory rights under EU consumer
-            protection law.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">8. Updates and Maintenance</h2>
+            <p>
+              We may update, modify, or discontinue any aspect of the Service at any time.
+              Lifetime license holders receive all updates at no additional cost, but we do
+              not guarantee indefinite maintenance.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">10. Changes to Terms</h2>
-          <p>
-            We may update these Terms from time to time. Changes will be posted on this page with an
-            updated "Last updated" date. Continued use of Fabrk after changes constitutes acceptance
-            of the new Terms.
-          </p>
-          <p className="mt-4">
-            Material changes will be notified via email to customers.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">9. Governing Law</h2>
+            <p>
+              These Terms shall be governed by and construed in accordance with the laws of
+              [Your Jurisdiction], without regard to its conflict of law provisions.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-foreground">11. Contact</h2>
-          <p>
-            Questions about these Terms? Contact us at:{" "}
-            <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
-              support@fabrk.dev
-            </a>
-          </p>
-        </section>
-      </div>
-    </article>
+          <section>
+            <h2 className="text-3xl font-bold mb-4">10. Changes to Terms</h2>
+            <p>
+              We reserve the right to modify these terms at any time. Changes will be
+              effective immediately upon posting. Your continued use of the Service after
+              changes constitutes acceptance of the new terms.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold mb-4">11. Contact Information</h2>
+            <p>
+              Questions about these Terms? Contact us at:
+            </p>
+            <ul>
+              <li>Email: legal@fabrk.dev</li>
+              <li>Website: <Link href="/contact" className="text-primary hover:underline">Contact Form</Link></li>
+            </ul>
+          </section>
+        </div>
+
+        {/* Related Links */}
+        <Card className="mt-12">
+          <CardContent className="pt-6">
+            <p className="text-sm text-muted-foreground mb-4">
+              Related Legal Documents:
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/privacy">
+                <Button variant="outline" size="sm">Privacy Policy</Button>
+              </Link>
+              <Link href="/cookies">
+                <Button variant="outline" size="sm">Cookie Policy</Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
   );
 }

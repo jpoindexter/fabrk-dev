@@ -9,7 +9,7 @@ import crypto from "crypto";
 
 // Initialize Stripe
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", {
-  apiVersion: "2023-10-16",
+  apiVersion: "2025-10-29.clover",
   typescript: true,
 });
 
@@ -17,6 +17,15 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_place
 // CUSTOMER MANAGEMENT
 // ===========================
 
+/**
+ * Get existing Stripe customer or create a new one
+ * @param userId - User ID from database
+ * @param email - Customer email address
+ * @param name - Optional customer name
+ * @returns Stripe customer ID
+ * @example
+ * const customerId = await getOrCreateCustomer("user123", "user@example.com", "John Doe")
+ */
 export async function getOrCreateCustomer(
   userId: string,
   email: string,
@@ -47,6 +56,15 @@ export async function getOrCreateCustomer(
 // CHECKOUT IDEMPOTENCY
 // ===========================
 
+/**
+ * Generate unique idempotency key for checkout session
+ * @param userId - User ID from database
+ * @param priceId - Stripe price ID
+ * @returns Unique idempotency key with timestamp and random bytes
+ * @example
+ * const key = generateIdempotencyKey("user123", "price_abc")
+ * // Returns: "checkout_user123_price_abc_1699123456789_a1b2c3d4"
+ */
 export function generateIdempotencyKey(userId: string, priceId: string): string {
   const timestamp = Date.now();
   const random = crypto.randomBytes(8).toString("hex");
@@ -101,6 +119,23 @@ export async function markWebhookProcessed(eventId: string): Promise<void> {
 // CHECKOUT SESSION
 // ===========================
 
+/**
+ * Create a Stripe checkout session for one-time payment
+ * @param userId - User ID from database
+ * @param priceId - Stripe price ID for the product
+ * @param email - Customer email address
+ * @param name - Optional customer name
+ * @returns Checkout session URL for redirect
+ * @throws Error if session creation fails
+ * @example
+ * const url = await createCheckoutSession(
+ *   "user123",
+ *   "price_abc",
+ *   "user@example.com",
+ *   "John Doe"
+ * )
+ * // Redirect user to url
+ */
 export async function createCheckoutSession(
   userId: string,
   priceId: string,
@@ -139,6 +174,17 @@ export async function createCheckoutSession(
 // WEBHOOK HANDLING
 // ===========================
 
+/**
+ * Handle Stripe checkout.session.completed webhook event
+ * Updates user tier and records payment in database
+ * @param session - Stripe checkout session object from webhook
+ * @returns Promise<void>
+ * @example
+ * // In webhook handler:
+ * if (event.type === "checkout.session.completed") {
+ *   await handleCheckoutCompleted(event.data.object)
+ * }
+ */
 export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.userId;
   if (!userId) {

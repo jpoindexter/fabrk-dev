@@ -245,10 +245,10 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
       const status = row.getValue<string>("status");
-      const variants: Record<string, "default" | "secondary" | "destructive"> = {
+      const variants: Record<string, "default" | "secondary" | "outline"> = {
         active: "default",
         inactive: "secondary",
-        suspended: "destructive",
+        suspended: "outline",
       };
       return (
         <Badge variant={variants[status]} className="font-bold capitalize">

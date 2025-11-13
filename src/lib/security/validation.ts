@@ -121,7 +121,7 @@ export function validateEmail(email: string): { valid: boolean; email?: string; 
     const validated = ValidationSchemas.email.parse(email);
     return { valid: true, email: validated };
   } catch (error) {
-    return { valid: false, error: (error as z.ZodError).errors[0]?.message };
+    return { valid: false, error: (error as z.ZodError).issues[0]?.message };
   }
 }
 
@@ -135,7 +135,7 @@ export function validatePassword(
     const validated = ValidationSchemas.password.parse(password);
     return { valid: true, password: validated };
   } catch (error) {
-    return { valid: false, errors: (error as z.ZodError).errors.map((e) => e.message) };
+    return { valid: false, errors: (error as z.ZodError).issues.map((e) => e.message) };
   }
 }
 
@@ -275,7 +275,7 @@ export function createSchema<T extends z.ZodType>(schema: T) {
       if (result.success) {
         return { valid: true, data: result.data };
       }
-      return { valid: false, errors: result.error.errors.map((e) => e.message) };
+      return { valid: false, errors: result.error.issues.map((e) => e.message) };
     },
   };
 }
@@ -293,7 +293,7 @@ export async function validateRequest<T>(
   } catch (error) {
     if (error instanceof z.ZodError) {
       const errors: Record<string, string> = {};
-      error.errors.forEach((err) => {
+      error.issues.forEach((err) => {
         const path = err.path.join(".");
         errors[path] = err.message;
       });

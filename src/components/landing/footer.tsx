@@ -102,19 +102,19 @@ export function Footer() {
             </h4>
             <nav className="flex flex-col gap-3">
               <Link
-                href="/legal/terms"
+                href="/terms"
                 className="text-sm font-bold text-black transition-colors hover:text-primary"
               >
                 Terms of Service
               </Link>
               <Link
-                href="/legal/privacy"
+                href="/privacy"
                 className="text-sm font-bold text-black transition-colors hover:text-primary"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="/legal/cookies"
+                href="/cookies"
                 className="text-sm font-bold text-black transition-colors hover:text-primary"
               >
                 Cookie Policy

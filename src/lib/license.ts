@@ -3,32 +3,17 @@
  * Simple utility for generating unique license keys
  */
 
-import { prisma } from "./prisma";
-
 /**
  * Generate a unique license key
  * Format: XXXX-XXXX-XXXX-XXXX-XXXX
+ *
+ * Note: Currently generates keys with timestamp for uniqueness.
+ * If you add a licenseKey field to your Payment model, you can
+ * re-enable database checking for collision detection.
  */
 export async function generateUniqueLicenseKey(): Promise<string> {
-  let attempts = 0;
-  const maxAttempts = 10;
-
-  while (attempts < maxAttempts) {
-    const key = generateLicenseKey();
-
-    // Check if key already exists
-    const existing = await prisma.purchase.findUnique({
-      where: { licenseKey: key },
-    });
-
-    if (!existing) {
-      return key;
-    }
-
-    attempts++;
-  }
-
-  // Fallback: add timestamp to ensure uniqueness
+  // Use timestamp to ensure uniqueness since schema doesn't
+  // currently track license keys
   return `${generateLicenseKey()}-${Date.now()}`;
 }
 

@@ -83,6 +83,7 @@
  * Handles post-purchase flow for Stripe payments
  */
 
+import { queueWelcomeEmail } from "@/lib/email";
 import { generateUniqueLicenseKey } from "@/lib/license";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
@@ -92,7 +93,7 @@ import Stripe from "stripe";
 
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16",
+  apiVersion: "2025-10-29.clover",
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
@@ -180,32 +181,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       logger.info("Created new user account", { email: customerEmail });
     }
 
-    // Get or create customer record
-    let customer = await prisma.customer.findUnique({
-      where: { email: customerEmail },
-    });
-
-    if (!customer) {
-      customer = await prisma.customer.create({
-        data: {
-          email: customerEmail,
-          name: customerName,
-          totalPurchases: 1,
-          totalSpent: session.amount_total || 0,
-          lastPurchaseAt: new Date(),
-        },
-      });
-    } else {
-      await prisma.customer.update({
-        where: { email: customerEmail },
-        data: {
-          totalPurchases: { increment: 1 },
-          totalSpent: { increment: session.amount_total || 0 },
-          lastPurchaseAt: new Date(),
-        },
-      });
-    }
-
     // Generate unique license key
     const licenseKey = await generateUniqueLicenseKey();
 
@@ -213,27 +188,20 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     const tier = session.metadata?.tier || "developer";
     const productId = session.metadata?.productId || null;
 
-    // Create purchase record
-    const purchase = await prisma.purchase.create({
+    // Create payment record
+    const payment = await prisma.payment.create({
       data: {
-        email: customerEmail,
-        name: customerName,
-        licenseKey,
-        provider: "STRIPE",
-        stripeCustomerId: session.customer as string,
-        stripeSessionId: session.id,
+        userId: user.id,
+        stripeId: session.id,
         stripePaymentId: session.payment_intent as string,
         amount: session.amount_total || 0,
-        productId,
-        tier,
-        status: "ACTIVE",
-        purchasedAt: new Date(),
-        welcomeEmailSent: false,
+        status: "succeeded",
+        productId: tier,
       },
     });
 
-    logger.info("Purchase created:", {
-      id: purchase.id,
+    logger.info("Payment created:", {
+      id: payment.id,
       email: customerEmail,
       licenseKey,
       tier,
@@ -256,13 +224,20 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 
     logger.info("Magic link generated", { email: customerEmail });
 
-    // Send welcome email with magic link and license key
-    await queueWelcomeEmail(purchase.id, customerEmail, licenseKey, magicLink);
+    // Queue welcome email with magic link and license key
+    await queueWelcomeEmail({
+      to: customerEmail,
+      name: customerName,
+      licenseKey,
+      magicLink,
+      purchaseId: payment.id,
+      userId: user.id,
+    });
 
     // Audit logging removed for simplicity
     // Consider adding back for production if needed
 
-    return purchase;
+    return payment;
   } catch (error) {
     logger.error(
       "Error handling checkout completion:",
@@ -272,34 +247,4 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-async function queueWelcomeEmail(
-  purchaseId: string,
-  email: string,
-  licenseKey: string,
-  magicLink: string
-) {
-  try {
-    // Store magic link in metadata for email worker to use
-    await prisma.emailQueue.create({
-      data: {
-        purchaseId,
-        type: "WELCOME",
-        to: email,
-        subject: "Welcome to Fabrk - Your Dashboard Access",
-        status: "PENDING",
-        metadata: {
-          licenseKey,
-          magicLink,
-        },
-      },
-    });
-
-    logger.info("Welcome email queued", { email });
-  } catch (error) {
-    logger.error(
-      "Error queueing welcome email",
-      error instanceof Error ? error.message : String(error)
-    );
-    // Don't throw - email failure shouldn't block purchase
-  }
-}
+// queueWelcomeEmail function removed - now using the one from @/lib/email

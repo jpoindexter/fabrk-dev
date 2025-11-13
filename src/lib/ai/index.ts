@@ -10,19 +10,35 @@
  * - Token usage tracking
  * - Rate limiting
  * - Cost tracking
+ *
+ * Note: OpenAI and Anthropic SDKs are optional dependencies.
+ * Install them if you need AI features:
+ * npm install openai @anthropic-ai/sdk
  */
 
-import OpenAI from "openai";
-import Anthropic from "@anthropic-ai/sdk";
+// Dynamic imports for optional dependencies
+let OpenAI: any;
+let Anthropic: any;
+let openai: any;
+let anthropic: any;
 
-// Initialize clients
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+try {
+  OpenAI = require("openai").default || require("openai");
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+} catch (error) {
+  console.warn("OpenAI SDK not installed. Install with: npm install openai");
+}
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+try {
+  Anthropic = require("@anthropic-ai/sdk").default || require("@anthropic-ai/sdk");
+  anthropic = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY,
+  });
+} catch (error) {
+  console.warn("Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk");
+}
 
 export type AIProvider = "openai" | "anthropic";
 export type OpenAIModel = "gpt-4" | "gpt-4-turbo" | "gpt-3.5-turbo";
@@ -100,6 +116,10 @@ export async function chatWithOpenAI(options: {
   maxTokens?: number;
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const model = options.model || "gpt-3.5-turbo";
 
   if (options.stream) {
@@ -176,6 +196,10 @@ export async function chatWithClaude(options: {
   maxTokens?: number;
   stream?: boolean;
 }): Promise<AIResponse | AsyncIterable<string>> {
+  if (!anthropic) {
+    throw new Error("Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk");
+  }
+
   const model = options.model || "claude-3-sonnet-20240229";
 
   // Separate system message
@@ -270,12 +294,16 @@ export async function generateEmbeddings(
   text: string | string[],
   model: string = "text-embedding-3-small"
 ): Promise<number[][]> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const response = await openai.embeddings.create({
     model,
     input: text,
   });
 
-  return response.data.map((d) => d.embedding);
+  return response.data.map((d: any) => d.embedding);
 }
 
 /**
@@ -286,6 +314,10 @@ export async function moderateContent(text: string): Promise<{
   categories: Record<string, boolean>;
   scores: Record<string, number>;
 }> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const response = await openai.moderations.create({
     input: text,
   });
@@ -309,6 +341,10 @@ export async function generateImage(options: {
   quality?: "standard" | "hd";
   n?: number;
 }): Promise<string[]> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const response = await openai.images.generate({
     model: options.model || "dall-e-3",
     prompt: options.prompt,
@@ -317,7 +353,7 @@ export async function generateImage(options: {
     n: options.n || 1,
   });
 
-  return response.data.map((d) => d.url || "");
+  return response.data.map((d: any) => d.url || "");
 }
 
 /**
@@ -328,6 +364,10 @@ export async function textToSpeech(options: {
   voice?: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer";
   model?: "tts-1" | "tts-1-hd";
 }): Promise<Buffer> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const response = await openai.audio.speech.create({
     model: options.model || "tts-1",
     voice: options.voice || "alloy",
@@ -347,6 +387,10 @@ export async function speechToText(
     prompt?: string;
   }
 ): Promise<string> {
+  if (!openai) {
+    throw new Error("OpenAI SDK not installed. Install with: npm install openai");
+  }
+
   const response = await openai.audio.transcriptions.create({
     file: audioFile,
     model: "whisper-1",

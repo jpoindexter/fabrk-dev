@@ -6,7 +6,7 @@
 
 import { Check } from "lucide-react";
 import { generateHowToSchema } from "@/lib/seo/structured-data";
-import { SchemaScript } from "./SchemaScript";
+import { SchemaScript } from "./schema-script";
 
 export interface HowToStep {
   name: string;

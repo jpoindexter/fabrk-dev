@@ -25,6 +25,7 @@ export default function SettingsPage() {
       description: "Customize the look and feel of the application",
       icon: Palette,
       component: AppearanceForm,
+      isDanger: false,
     },
     {
       id: "notifications",
@@ -32,6 +33,7 @@ export default function SettingsPage() {
       description: "Manage your notification preferences",
       icon: Bell,
       component: NotificationsForm,
+      isDanger: false,
     },
     {
       id: "privacy",
@@ -39,6 +41,7 @@ export default function SettingsPage() {
       description: "Control your data sharing and privacy settings",
       icon: Lock,
       component: PrivacyForm,
+      isDanger: false,
     },
     {
       id: "language",
@@ -46,6 +49,7 @@ export default function SettingsPage() {
       description: "Set your preferred language and regional settings",
       icon: Globe,
       component: LanguageForm,
+      isDanger: false,
     },
     {
       id: "data-export",
@@ -53,6 +57,7 @@ export default function SettingsPage() {
       description: "Download a copy of your data",
       icon: Download,
       component: DataExportSection,
+      isDanger: false,
     },
     {
       id: "danger-zone",

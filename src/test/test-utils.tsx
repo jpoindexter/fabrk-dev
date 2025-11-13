@@ -6,6 +6,7 @@
 import { render, RenderOptions } from "@testing-library/react";
 import { ReactElement, ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
+import { vi, expect } from "vitest";
 
 // Mock session data
 export const mockSession = {

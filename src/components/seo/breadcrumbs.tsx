@@ -6,7 +6,7 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { generateBreadcrumbSchema } from "@/lib/seo/structured-data";
-import { SchemaScript } from "./SchemaScript";
+import { SchemaScript } from "./schema-script";
 
 export interface BreadcrumbItem {
   name: string;

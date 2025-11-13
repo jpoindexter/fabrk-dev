@@ -7,12 +7,12 @@
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
-import { sendPurchaseConfirmationEmail } from "@/lib/email/purchase-confirmation";
+import { sendWelcomeEmail } from "@/lib/email";
 import { randomBytes } from "crypto";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16",
+  apiVersion: "2025-10-29.clover",
 });
 
 export async function handleCheckoutCompleted(event: Stripe.Event) {
@@ -61,7 +61,6 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
           licenseKey,
           tier: tier || "professional",
           subscriptionTier: tier || "professional",
-          accessGrantedAt: new Date(),
         },
       });
     } else {
@@ -80,7 +79,6 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
           licenseKey,
           tier: tier || "professional",
           subscriptionTier: tier || "professional",
-          accessGrantedAt: new Date(),
           emailVerified: new Date(), // Auto-verify since they paid
         },
       });
@@ -90,24 +88,20 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     await prisma.payment.create({
       data: {
         userId: user.id,
+        stripeId: session.id,
         stripePaymentId: session.payment_intent as string,
-        stripeCustomerId: customerId || "",
         amount: session.amount_total || 0,
-        currency: session.currency || "usd",
-        status: "SUCCEEDED",
-        description: `Purchase: ${tier || "professional"} tier`,
+        status: "succeeded",
+        productId: tier || "professional",
       },
     });
 
-    // Send confirmation email
-    await sendPurchaseConfirmationEmail({
-      email: customerEmail,
-      name: user.name || "Customer",
-      licenseKey,
-      tier: tier || "professional",
-      magicLinkToken: "", // Magic link functionality removed for simplicity
-      receiptUrl: undefined, // Stripe Checkout Session doesn't have receipt_url directly
-    });
+    // Send welcome email with license key
+    await sendWelcomeEmail(
+      customerEmail,
+      user.name || "Customer",
+      licenseKey
+    );
 
     logger.info("Purchase processed successfully", {
       userId: user.id,

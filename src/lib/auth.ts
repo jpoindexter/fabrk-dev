@@ -12,7 +12,7 @@ import Google from "next-auth/providers/google";
  */
 
 export const authConfig: NextAuthConfig = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as any,
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -93,7 +93,7 @@ export const authConfig: NextAuthConfig = {
   },
   callbacks: {
     async jwt({ token, user, account }) {
-      if (user) {
+      if (user && user.id) {
         token.id = user.id;
         token.role = user.role;
         // Fetch fresh user data for subscription info and session version

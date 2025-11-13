@@ -75,7 +75,6 @@ export function SecurityForm() {
         toast({
           title: "Error",
           description: result.error || "Failed to update password",
-          variant: "destructive",
         });
         return;
       }
@@ -90,7 +89,6 @@ export function SecurityForm() {
       toast({
         title: "Error",
         description: "Failed to update password. Please try again.",
-        variant: "destructive",
       });
     } finally {
       setIsLoading(false);

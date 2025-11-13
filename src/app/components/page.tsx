@@ -342,7 +342,7 @@ export default function ComponentsPage() {
             <CardContent className="flex flex-wrap gap-3">
               <Badge>Default</Badge>
               <Badge variant="secondary">Secondary</Badge>
-              <Badge variant="destructive">Destructive</Badge>
+              <Badge variant="accent">Accent</Badge>
               <Badge variant="outline">Outline</Badge>
             </CardContent>
           </Card>

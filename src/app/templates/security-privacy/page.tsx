@@ -608,7 +608,7 @@ export default function SecurityPrivacyTemplate() {
                           <TableCell>
                             <Badge
                               variant={
-                                log.status === "success" ? "default" : "destructive"
+                                log.status === "success" ? "default" : "outline"
                               }
                               className="font-bold capitalize"
                             >

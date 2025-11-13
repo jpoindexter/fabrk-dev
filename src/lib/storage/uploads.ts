@@ -3,28 +3,48 @@
  * S3-compatible file storage with image optimization
  *
  * Features:
- * - S3/R2/MinIO compatible
+ * - S3/R2/MinIO compatible (requires @aws-sdk/client-s3)
  * - Image optimization (sharp)
  * - File validation
  * - Signed URLs
  * - Virus scanning (optional)
  * - Quota management
+ *
+ * NOTE: AWS SDK packages are optional. Install them if you need S3 uploads:
+ * npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
  */
 
 import { prisma } from "@/lib/prisma";
-import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import * as crypto from "crypto";
 
+// AWS SDK imports are optional - only import if packages are installed
+let S3Client: any;
+let PutObjectCommand: any;
+let GetObjectCommand: any;
+let DeleteObjectCommand: any;
+let getSignedUrl: any;
+
+try {
+  const s3 = require("@aws-sdk/client-s3");
+  const presigner = require("@aws-sdk/s3-request-presigner");
+  S3Client = s3.S3Client;
+  PutObjectCommand = s3.PutObjectCommand;
+  GetObjectCommand = s3.GetObjectCommand;
+  DeleteObjectCommand = s3.DeleteObjectCommand;
+  getSignedUrl = presigner.getSignedUrl;
+} catch (e) {
+  // AWS SDK not installed - uploads will throw helpful error
+}
+
 // S3 Client (works with AWS S3, Cloudflare R2, MinIO, etc.)
-const s3Client = new S3Client({
+const s3Client = S3Client ? new S3Client({
   region: process.env.AWS_REGION || "auto",
   endpoint: process.env.S3_ENDPOINT, // For R2/MinIO
   credentials: {
-    accessKeyId: process.env.S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.S3_ACCESS_KEY_ID || "not-configured",
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "not-configured",
   },
-});
+}) : null;
 
 const BUCKET_NAME = process.env.S3_BUCKET_NAME || "fabrk-uploads";
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB default
@@ -78,6 +98,13 @@ export async function uploadFile(options: UploadOptions): Promise<{
   url: string;
   key: string;
 }> {
+  // Check if S3 is configured
+  if (!s3Client) {
+    throw new Error(
+      "S3 upload service not configured. Install AWS SDK packages: npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner"
+    );
+  }
+
   // Validate file
   const validation = validateFile(options.file, {});
   if (!validation.valid) {

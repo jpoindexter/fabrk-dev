@@ -193,9 +193,9 @@ export default function AdminMonitoringPage() {
                         <Badge
                           variant={
                             error.type === "error"
-                              ? "destructive"
-                              : error.type === "warning"
                               ? "default"
+                              : error.type === "warning"
+                              ? "accent"
                               : "secondary"
                           }
                         >
@@ -248,9 +248,9 @@ export default function AdminMonitoringPage() {
                         <Badge
                           variant={
                             error.type === "error"
-                              ? "destructive"
-                              : error.type === "warning"
                               ? "default"
+                              : error.type === "warning"
+                              ? "accent"
                               : "secondary"
                           }
                         >

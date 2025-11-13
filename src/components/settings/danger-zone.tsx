@@ -127,7 +127,7 @@ export function DangerZone() {
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button
-            variant="destructive"
+                              variant="destructive"
             onClick={() => setDeleteDialogOpen(true)}
             disabled={isLoading}
           >

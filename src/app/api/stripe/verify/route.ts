@@ -182,36 +182,43 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Customer email not found" }, { status: 400 });
     }
 
-    // Find purchase in database
-    const purchase = await prisma.purchase.findFirst({
+    // Find payment in database
+    const payment = await prisma.payment.findFirst({
       where: {
-        OR: [{ gumroadSaleId: sessionId! }, { email: customerEmail }],
+        stripeId: sessionId!,
       },
-      orderBy: { createdAt: "desc" },
       include: {
-        customer: true,
+        user: {
+          select: {
+            email: true,
+            name: true,
+            licenseKey: true,
+          },
+        },
       },
     });
 
-    if (!purchase) {
-      // Purchase might not be processed yet by webhook
+    if (!payment) {
+      // Payment might not be processed yet by webhook
       return NextResponse.json(
         {
-          error: "Purchase not found",
+          error: "Payment not found",
           message: "Your purchase is being processed. Please check your email for details.",
         },
         { status: 202 }
       );
     }
 
-    // Return purchase details
+    // Return payment details
     return NextResponse.json({
-      licenseKey: purchase.licenseKey,
-      email: purchase.customer.email,
-      name: purchase.customer.name,
-      downloadUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/download?key=${purchase.licenseKey}`,
-      purchaseDate: purchase.purchasedAt,
-      status: purchase.status,
+      licenseKey: payment.user.licenseKey || "",
+      email: payment.user.email,
+      name: payment.user.name || "",
+      downloadUrl: payment.user.licenseKey
+        ? `${process.env.NEXT_PUBLIC_APP_URL}/api/download?key=${payment.user.licenseKey}`
+        : "",
+      purchaseDate: payment.createdAt,
+      status: payment.status,
     });
   } catch (error) {
     logger.error("Verification error:", {

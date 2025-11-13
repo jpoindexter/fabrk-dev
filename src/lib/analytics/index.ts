@@ -17,7 +17,7 @@ export {
   checkoutFunnel,
   Funnels,
   type AnalyticsEvent,
-  type AnalyticsProvider,
+  type AnalyticsProvider as AnalyticsProviderType,
   type UserProperties,
 } from "./tracking";
 
@@ -35,4 +35,4 @@ export {
 } from "./hooks";
 
 // Provider component
-export { AnalyticsProvider } from "./AnalyticsProvider";
+export { AnalyticsProvider } from "./analytics-provider";
