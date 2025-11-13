@@ -1,0 +1,79 @@
+"use client";
+
+import * as React from "react";
+import { X, AlertCircle, Info, CheckCircle, AlertTriangle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+export type BannerVariant = "info" | "success" | "warning" | "error";
+
+interface BannerProps {
+  variant?: BannerVariant;
+  title?: string;
+  children: React.ReactNode;
+  onDismiss?: () => void;
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
+  className?: string;
+}
+
+const variantStyles: Record<BannerVariant, string> = {
+  info: "bg-blue-50 border-blue-500 text-blue-900",
+  success: "bg-green-50 border-green-500 text-green-900",
+  warning: "bg-yellow-50 border-yellow-500 text-yellow-900",
+  error: "bg-red-50 border-red-500 text-red-900",
+};
+
+const variantIcons: Record<BannerVariant, React.ReactNode> = {
+  info: <Info className="h-5 w-5" />,
+  success: <CheckCircle className="h-5 w-5" />,
+  warning: <AlertTriangle className="h-5 w-5" />,
+  error: <AlertCircle className="h-5 w-5" />,
+};
+
+export function Banner({
+  variant = "info",
+  title,
+  children,
+  onDismiss,
+  action,
+  className,
+}: BannerProps) {
+  return (
+    <div
+      className={cn(
+        "flex items-start gap-3 rounded-brutal border-l-4 p-4",
+        variantStyles[variant],
+        className
+      )}
+      role="alert"
+    >
+      <div className="flex-shrink-0">{variantIcons[variant]}</div>
+      <div className="flex-1">
+        {title && <p className="font-bold mb-1">{title}</p>}
+        <div className="text-sm">{children}</div>
+      </div>
+      {action && (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={action.onClick}
+          className="flex-shrink-0"
+        >
+          {action.label}
+        </Button>
+      )}
+      {onDismiss && (
+        <button
+          onClick={onDismiss}
+          className="flex-shrink-0 rounded-brutal p-1 hover:bg-black/10 transition-colors"
+          aria-label="Dismiss"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      )}
+    </div>
+  );
+}
