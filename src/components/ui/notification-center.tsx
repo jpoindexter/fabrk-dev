@@ -1,0 +1,354 @@
+"use client";
+
+import * as React from "react";
+import { Bell, Check, X, Info, AlertTriangle, CheckCircle, XCircle, AtSign } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+export interface Notification {
+  id: string;
+  type: "info" | "success" | "warning" | "error" | "mention";
+  title: string;
+  message: string;
+  timestamp: Date | string;
+  read: boolean;
+  avatar?: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}
+
+export interface NotificationCenterProps {
+  notifications: Notification[];
+  onMarkAsRead?: (id: string) => void;
+  onMarkAllAsRead?: () => void;
+  onDelete?: (id: string) => void;
+  onClearAll?: () => void;
+  maxHeight?: number;
+  groupByDate?: boolean;
+  autoMarkAsRead?: boolean;
+  className?: string;
+}
+
+// Utility to get notification icon by type
+const getNotificationIcon = (type: Notification["type"]) => {
+  const iconClass = "h-5 w-5";
+
+  switch (type) {
+    case "info":
+      return <Info className={cn(iconClass, "text-primary")} />;
+    case "success":
+      return <CheckCircle className={cn(iconClass, "text-success")} />;
+    case "warning":
+      return <AlertTriangle className={cn(iconClass, "text-accent")} />;
+    case "error":
+      return <XCircle className={cn(iconClass, "text-destructive")} />;
+    case "mention":
+      return <AtSign className={cn(iconClass, "text-primary")} />;
+    default:
+      return <Info className={cn(iconClass, "text-primary")} />;
+  }
+};
+
+// Utility to format timestamp
+const formatTimestamp = (timestamp: Date | string): string => {
+  const date = typeof timestamp === "string" ? new Date(timestamp) : timestamp;
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  if (diffInSeconds < 60) return "Just now";
+  if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
+  if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+  if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)}d ago`;
+
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+};
+
+// Utility to group notifications by date
+const groupNotificationsByDate = (notifications: Notification[]): Record<string, Notification[]> => {
+  const now = new Date();
+  const groups: Record<string, Notification[]> = {
+    Today: [],
+    Yesterday: [],
+    "This Week": [],
+    Older: [],
+  };
+
+  notifications.forEach((notification) => {
+    const date = typeof notification.timestamp === "string"
+      ? new Date(notification.timestamp)
+      : notification.timestamp;
+    const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+
+    if (diffInDays === 0) {
+      groups.Today.push(notification);
+    } else if (diffInDays === 1) {
+      groups.Yesterday.push(notification);
+    } else if (diffInDays <= 7) {
+      groups["This Week"].push(notification);
+    } else {
+      groups.Older.push(notification);
+    }
+  });
+
+  // Remove empty groups
+  return Object.fromEntries(
+    Object.entries(groups).filter(([_, items]) => items.length > 0)
+  );
+};
+
+// Individual notification item component
+interface NotificationItemProps {
+  notification: Notification;
+  onMarkAsRead?: (id: string) => void;
+  onDelete?: (id: string) => void;
+  autoMarkAsRead?: boolean;
+}
+
+const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>(
+  ({ notification, onMarkAsRead, onDelete, autoMarkAsRead }, ref) => {
+    const [isHovered, setIsHovered] = React.useState(false);
+
+    const handleClick = () => {
+      if (autoMarkAsRead && !notification.read && onMarkAsRead) {
+        onMarkAsRead(notification.id);
+      }
+    };
+
+    const handleMarkAsRead = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (onMarkAsRead) {
+        onMarkAsRead(notification.id);
+      }
+    };
+
+    const handleDelete = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (onDelete) {
+        onDelete(notification.id);
+      }
+    };
+
+    const handleAction = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (notification.onAction) {
+        notification.onAction();
+      }
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "relative flex gap-3 p-3 rounded-brutal border-2 border-transparent transition-all",
+          "hover:border-brutal hover:bg-muted/50 hover:shadow-brutal-sm cursor-pointer",
+          !notification.read && "bg-primary/5"
+        )}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
+      >
+        {/* Unread indicator */}
+        {!notification.read && (
+          <div className="absolute left-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary" />
+        )}
+
+        {/* Avatar or icon */}
+        <div className="flex-shrink-0 ml-3">
+          {notification.avatar ? (
+            <Avatar className="h-10 w-10">
+              <AvatarImage src={notification.avatar} alt={notification.title} />
+              <AvatarFallback>{notification.title.substring(0, 2).toUpperCase()}</AvatarFallback>
+            </Avatar>
+          ) : (
+            <div className="h-10 w-10 rounded-full border-2 border-brutal bg-background flex items-center justify-center shadow-brutal-sm">
+              {getNotificationIcon(notification.type)}
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-2">
+            <p className="font-bold text-sm text-foreground">{notification.title}</p>
+            <span className="text-xs text-muted-foreground whitespace-nowrap">
+              {formatTimestamp(notification.timestamp)}
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">
+            {notification.message}
+          </p>
+
+          {/* Action button */}
+          {notification.actionLabel && notification.onAction && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="mt-2 h-7 text-xs"
+              onClick={handleAction}
+            >
+              {notification.actionLabel}
+            </Button>
+          )}
+        </div>
+
+        {/* Actions (visible on hover) */}
+        {isHovered && (
+          <div className="flex items-start gap-1 flex-shrink-0">
+            {!notification.read && onMarkAsRead && (
+              <button
+                onClick={handleMarkAsRead}
+                className="p-1 rounded-brutal hover:bg-muted transition-colors"
+                title="Mark as read"
+              >
+                <Check className="h-4 w-4 text-success" />
+              </button>
+            )}
+            {onDelete && (
+              <button
+                onClick={handleDelete}
+                className="p-1 rounded-brutal hover:bg-muted transition-colors"
+                title="Delete"
+              >
+                <X className="h-4 w-4 text-destructive" />
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+NotificationItem.displayName = "NotificationItem";
+
+// Main NotificationCenter component
+export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationCenterProps>(
+  (
+    {
+      notifications,
+      onMarkAsRead,
+      onMarkAllAsRead,
+      onDelete,
+      onClearAll,
+      maxHeight = 600,
+      groupByDate = true,
+      autoMarkAsRead = false,
+      className,
+    },
+    ref
+  ) => {
+    const [open, setOpen] = React.useState(false);
+    const unreadCount = notifications.filter((n) => !n.read).length;
+    const sortedNotifications = [...notifications].sort((a, b) => {
+      const dateA = typeof a.timestamp === "string" ? new Date(a.timestamp) : a.timestamp;
+      const dateB = typeof b.timestamp === "string" ? new Date(b.timestamp) : b.timestamp;
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    const groupedNotifications = groupByDate
+      ? groupNotificationsByDate(sortedNotifications)
+      : { All: sortedNotifications };
+
+    return (
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("relative", className)}
+            aria-label={`Notifications (${unreadCount} unread)`}
+          >
+            <Bell className="h-5 w-5" />
+            {unreadCount > 0 && (
+              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-destructive-foreground text-xs font-bold flex items-center justify-center border-2 border-brutal shadow-brutal-sm">
+                {unreadCount > 9 ? "9+" : unreadCount}
+              </span>
+            )}
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent
+          ref={ref}
+          align="end"
+          className="w-full max-w-md p-0"
+          style={{ maxHeight: `${maxHeight}px` }}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b-2 border-brutal">
+            <h3 className="font-bold text-lg">Notifications</h3>
+            <div className="flex items-center gap-2">
+              {unreadCount > 0 && onMarkAllAsRead && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 text-xs"
+                  onClick={onMarkAllAsRead}
+                >
+                  <Check className="h-3 w-3 mr-1" />
+                  Mark all read
+                </Button>
+              )}
+              {notifications.length > 0 && onClearAll && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 text-xs text-destructive hover:text-destructive"
+                  onClick={onClearAll}
+                >
+                  <X className="h-3 w-3 mr-1" />
+                  Clear all
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {/* Notification list */}
+          {notifications.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 px-4">
+              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+                <Bell className="h-8 w-8 text-muted-foreground" />
+              </div>
+              <p className="font-bold text-foreground mb-1">You're all caught up!</p>
+              <p className="text-sm text-muted-foreground text-center">
+                No new notifications at the moment
+              </p>
+            </div>
+          ) : (
+            <ScrollArea className="h-full" style={{ maxHeight: `${maxHeight - 73}px` }}>
+              <div className="p-2 space-y-1">
+                {Object.entries(groupedNotifications).map(([group, items]) => (
+                  <div key={group}>
+                    {groupByDate && (
+                      <div className="sticky top-0 bg-muted px-3 py-1.5 rounded-brutal-sm mb-2 z-10">
+                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                          {group}
+                        </span>
+                      </div>
+                    )}
+                    {items.map((notification) => (
+                      <NotificationItem
+                        key={notification.id}
+                        notification={notification}
+                        onMarkAsRead={onMarkAsRead}
+                        onDelete={onDelete}
+                        autoMarkAsRead={autoMarkAsRead}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+);
+NotificationCenter.displayName = "NotificationCenter";
