@@ -1,0 +1,333 @@
+{
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "update": "Aktualisieren",
+    "submit": "Absenden",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "actions": "Aktionen",
+    "viewAll": "Alle Anzeigen",
+    "learnMore": "Mehr Erfahren",
+    "getStarted": "Loslegen",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "description": "Beschreibung",
+    "title": "Titel",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "yes": "Ja",
+    "no": "Nein",
+    "confirm": "Bestätigen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "share": "Teilen",
+    "print": "Drucken",
+    "export": "Exportieren",
+    "import": "Importieren",
+    "selectAll": "Alle Auswählen",
+    "deselectAll": "Alle Abwählen",
+    "showMore": "Mehr Anzeigen",
+    "showLess": "Weniger Anzeigen"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "dashboard": "Dashboard",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "docs": "Dokumentation",
+    "support": "Support",
+    "settings": "Einstellungen",
+    "profile": "Profil",
+    "billing": "Abrechnung",
+    "team": "Team",
+    "admin": "Admin",
+    "apiKeys": "API-Schlüssel",
+    "components": "Komponenten",
+    "templates": "Vorlagen",
+    "variations": "Variationen"
+  },
+  "auth": {
+    "login": {
+      "title": "Melden Sie sich bei Ihrem Konto an",
+      "subtitle": "Willkommen zurück! Bitte geben Sie Ihre Daten ein.",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "signInButton": "Anmelden",
+      "noAccount": "Noch kein Konto?",
+      "signUpLink": "Kostenlos registrieren",
+      "orContinueWith": "Oder fortfahren mit",
+      "googleSignIn": "Mit Google fortfahren",
+      "githubSignIn": "Mit GitHub fortfahren",
+      "error": {
+        "invalidCredentials": "Ungültige E-Mail oder Passwort",
+        "emailRequired": "E-Mail ist erforderlich",
+        "passwordRequired": "Passwort ist erforderlich"
+      }
+    },
+    "register": {
+      "title": "Erstellen Sie Ihr Konto",
+      "subtitle": "Beginnen Sie mit dem Aufbau erstaunlicher SaaS-Anwendungen.",
+      "namePlaceholder": "Geben Sie Ihren Namen ein",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "passwordPlaceholder": "Erstellen Sie ein Passwort",
+      "confirmPasswordPlaceholder": "Bestätigen Sie Ihr Passwort",
+      "signUpButton": "Registrieren",
+      "hasAccount": "Haben Sie bereits ein Konto?",
+      "signInLink": "Anmelden",
+      "termsAgreement": "Mit der Registrierung stimmen Sie unseren {terms} und {privacy} zu",
+      "termsLink": "Nutzungsbedingungen",
+      "privacyLink": "Datenschutzrichtlinie",
+      "error": {
+        "nameRequired": "Name ist erforderlich",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail ein",
+        "passwordTooShort": "Passwort muss mindestens 8 Zeichen lang sein",
+        "passwordsMustMatch": "Passwörter müssen übereinstimmen",
+        "emailExists": "E-Mail ist bereits registriert"
+      }
+    },
+    "forgotPassword": {
+      "title": "Setzen Sie Ihr Passwort zurück",
+      "subtitle": "Geben Sie Ihre E-Mail ein und wir senden Ihnen einen Zurücksetzungslink.",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "sendButton": "Link Senden",
+      "backToLogin": "Zurück zur Anmeldung",
+      "success": "Überprüfen Sie Ihre E-Mail für einen Zurücksetzungslink",
+      "error": {
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailNotFound": "E-Mail nicht gefunden"
+      }
+    },
+    "resetPassword": {
+      "title": "Neues Passwort festlegen",
+      "subtitle": "Geben Sie unten Ihr neues Passwort ein.",
+      "passwordPlaceholder": "Neues Passwort",
+      "confirmPasswordPlaceholder": "Neues Passwort bestätigen",
+      "resetButton": "Passwort Zurücksetzen",
+      "success": "Passwort erfolgreich zurückgesetzt",
+      "error": {
+        "invalidToken": "Zurücksetzungslink ist ungültig oder abgelaufen",
+        "passwordTooShort": "Passwort muss mindestens 8 Zeichen lang sein",
+        "passwordsMustMatch": "Passwörter müssen übereinstimmen"
+      }
+    },
+    "verifyEmail": {
+      "title": "Bestätigen Sie Ihre E-Mail",
+      "subtitle": "Wir haben einen Bestätigungslink an Ihre E-Mail gesendet.",
+      "resendButton": "Bestätigungs-E-Mail erneut senden",
+      "success": "E-Mail erfolgreich bestätigt!",
+      "error": {
+        "invalidToken": "Bestätigungslink ist ungültig oder abgelaufen"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "Willkommen zurück, {name}!",
+    "overview": "Übersicht",
+    "recentActivity": "Kürzliche Aktivität",
+    "stats": {
+      "users": "Benutzer",
+      "revenue": "Umsatz",
+      "projects": "Projekte",
+      "apiCalls": "API-Aufrufe"
+    },
+    "quickActions": {
+      "title": "Schnellaktionen",
+      "newProject": "Neues Projekt",
+      "inviteTeam": "Team Einladen",
+      "viewDocs": "Dokumentation Anzeigen",
+      "getSupport": "Support Erhalten"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "general": {
+      "title": "Allgemein",
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "ihre@email.de",
+      "timezone": "Zeitzone",
+      "language": "Sprache",
+      "saveButton": "Änderungen Speichern",
+      "success": "Einstellungen erfolgreich aktualisiert"
+    },
+    "account": {
+      "title": "Konto",
+      "deleteAccount": "Konto Löschen",
+      "deleteWarning": "Diese Aktion kann nicht rückgängig gemacht werden. Dies wird Ihr Konto dauerhaft löschen.",
+      "deleteButton": "Mein Konto Löschen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten?"
+    },
+    "security": {
+      "title": "Sicherheit",
+      "changePassword": "Passwort Ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Neues Passwort Bestätigen",
+      "updatePassword": "Passwort Aktualisieren",
+      "twoFactor": "Zwei-Faktor-Authentifizierung",
+      "twoFactorEnabled": "2FA Aktiviert",
+      "twoFactorDisabled": "2FA Deaktiviert",
+      "enableTwoFactor": "2FA Aktivieren",
+      "disableTwoFactor": "2FA Deaktivieren",
+      "sessions": "Aktive Sitzungen",
+      "revokeAll": "Alle Sitzungen Widerrufen"
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "emailNotifications": "E-Mail-Benachrichtigungen",
+      "productUpdates": "Produktaktualisierungen",
+      "securityAlerts": "Sicherheitswarnungen",
+      "weeklyDigest": "Wöchentliche Zusammenfassung",
+      "pushNotifications": "Push-Benachrichtigungen"
+    }
+  },
+  "billing": {
+    "title": "Abrechnung",
+    "currentPlan": "Aktueller Plan",
+    "upgradePlan": "Plan Upgraden",
+    "managePlan": "Plan Verwalten",
+    "paymentMethods": "Zahlungsmethoden",
+    "addPaymentMethod": "Zahlungsmethode Hinzufügen",
+    "invoices": "Rechnungen",
+    "downloadInvoice": "Rechnung Herunterladen",
+    "billingHistory": "Abrechnungsverlauf",
+    "nextBillingDate": "Nächstes Abrechnungsdatum",
+    "cancelSubscription": "Abonnement Kündigen",
+    "plans": {
+      "starter": "Starter",
+      "professional": "Professionell",
+      "enterprise": "Enterprise",
+      "perMonth": "pro Monat",
+      "perYear": "pro Jahr",
+      "free": "Kostenlos"
+    }
+  },
+  "team": {
+    "title": "Team",
+    "members": "Mitglieder",
+    "inviteMembers": "Mitglieder Einladen",
+    "roles": {
+      "owner": "Eigentümer",
+      "admin": "Administrator",
+      "member": "Mitglied",
+      "guest": "Gast"
+    },
+    "invite": {
+      "emailPlaceholder": "kollege@beispiel.de",
+      "selectRole": "Rolle Auswählen",
+      "sendInvite": "Einladung Senden",
+      "success": "Einladung erfolgreich gesendet"
+    },
+    "removeMember": "Mitglied Entfernen",
+    "changeRole": "Rolle Ändern"
+  },
+  "apiKeys": {
+    "title": "API-Schlüssel",
+    "description": "Verwalten Sie Ihre API-Schlüssel für programmatischen Zugriff.",
+    "createNew": "Neuen API-Schlüssel Erstellen",
+    "name": "Name",
+    "namePlaceholder": "Mein API-Schlüssel",
+    "key": "Schlüssel",
+    "created": "Erstellt",
+    "lastUsed": "Zuletzt Verwendet",
+    "revoke": "Widerrufen",
+    "copyKey": "Schlüssel Kopieren",
+    "keyCreated": "API-Schlüssel erfolgreich erstellt",
+    "keyCopied": "API-Schlüssel in Zwischenablage kopiert",
+    "keyRevoked": "API-Schlüssel widerrufen"
+  },
+  "errors": {
+    "404": {
+      "title": "Seite Nicht Gefunden",
+      "description": "Die gesuchte Seite existiert nicht.",
+      "button": "Zur Startseite"
+    },
+    "500": {
+      "title": "Serverfehler",
+      "description": "Etwas ist auf unserer Seite schief gelaufen.",
+      "button": "Erneut Versuchen"
+    },
+    "unauthorized": "Sie haben keine Berechtigung, auf diese Ressource zuzugreifen",
+    "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+    "unknownError": "Ein unbekannter Fehler ist aufgetreten",
+    "validationError": "Bitte überprüfen Sie Ihre Eingabe und versuchen Sie es erneut"
+  },
+  "landing": {
+    "hero": {
+      "title": "Starten Sie Ihr SaaS dieses Wochenende",
+      "subtitle": "Produktionsbereite Next.js-Boilerplate mit Authentifizierung, Zahlungen und allem, was Sie zum schnellen Start benötigen.",
+      "cta": "Loslegen",
+      "secondaryCta": "Demo Ansehen"
+    },
+    "features": {
+      "title": "Alles, was Sie zum Start benötigen",
+      "subtitle": "Verschwenden Sie keine Zeit mit Boilerplate. Konzentrieren Sie sich auf das, was Ihr Produkt einzigartig macht.",
+      "auth": {
+        "title": "Authentifizierung",
+        "description": "E-Mail/Passwort, OAuth, 2FA, Magic Links. Alles eingerichtet und bereit."
+      },
+      "payments": {
+        "title": "Zahlungen",
+        "description": "Stripe-Integration mit Abonnements, Einmalzahlungen und Kundenportal."
+      },
+      "database": {
+        "title": "Datenbank",
+        "description": "PostgreSQL mit Prisma ORM. Typsichere Abfragen und einfache Migrationen."
+      },
+      "email": {
+        "title": "E-Mail",
+        "description": "Transaktions-E-Mails mit Resend. Vorlagen für alle gängigen Abläufe."
+      }
+    },
+    "pricing": {
+      "title": "Einfache, transparente Preise",
+      "subtitle": "Einmalige Zahlung. Lebenslanger Zugang.",
+      "features": "Alle Funktionen enthalten",
+      "lifetime": "Lebenslange Updates",
+      "support": "Premium-Support",
+      "buy": "Jetzt Kaufen"
+    },
+    "faq": {
+      "title": "Häufig Gestellte Fragen",
+      "q1": "Was ist enthalten?",
+      "a1": "Alles, was Sie in der Demo sehen, plus umfassende Dokumentation.",
+      "q2": "Erhalte ich Updates?",
+      "a2": "Ja! Alle zukünftigen Updates sind kostenlos enthalten.",
+      "q3": "Kann ich eine Rückerstattung erhalten?",
+      "a3": "Ja. 30-Tage-Geld-zurück-Garantie, keine Fragen gestellt."
+    }
+  },
+  "footer": {
+    "product": "Produkt",
+    "company": "Unternehmen",
+    "legal": "Rechtliches",
+    "followUs": "Folgen Sie Uns",
+    "allRightsReserved": "Alle Rechte vorbehalten",
+    "builtWith": "Erstellt mit"
+  }
+}

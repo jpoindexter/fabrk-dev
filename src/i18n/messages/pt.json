@@ -1,0 +1,333 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "update": "Atualizar",
+    "submit": "Enviar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "actions": "Ações",
+    "viewAll": "Ver Tudo",
+    "learnMore": "Saiba Mais",
+    "getStarted": "Começar",
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "signOut": "Sair",
+    "email": "Email",
+    "password": "Senha",
+    "name": "Nome",
+    "description": "Descrição",
+    "title": "Título",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "yes": "Sim",
+    "no": "Não",
+    "confirm": "Confirmar",
+    "download": "Baixar",
+    "upload": "Enviar",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "share": "Compartilhar",
+    "print": "Imprimir",
+    "export": "Exportar",
+    "import": "Importar",
+    "selectAll": "Selecionar Tudo",
+    "deselectAll": "Desselecionar Tudo",
+    "showMore": "Mostrar Mais",
+    "showLess": "Mostrar Menos"
+  },
+  "navigation": {
+    "home": "Início",
+    "dashboard": "Painel",
+    "features": "Recursos",
+    "pricing": "Preços",
+    "about": "Sobre",
+    "contact": "Contato",
+    "blog": "Blog",
+    "docs": "Documentação",
+    "support": "Suporte",
+    "settings": "Configurações",
+    "profile": "Perfil",
+    "billing": "Faturamento",
+    "team": "Equipe",
+    "admin": "Admin",
+    "apiKeys": "Chaves API",
+    "components": "Componentes",
+    "templates": "Modelos",
+    "variations": "Variações"
+  },
+  "auth": {
+    "login": {
+      "title": "Entre na sua conta",
+      "subtitle": "Bem-vindo de volta! Por favor, insira seus dados.",
+      "emailPlaceholder": "Digite seu email",
+      "passwordPlaceholder": "Digite sua senha",
+      "rememberMe": "Lembrar de mim",
+      "forgotPassword": "Esqueceu a senha?",
+      "signInButton": "Entrar",
+      "noAccount": "Não tem uma conta?",
+      "signUpLink": "Cadastre-se grátis",
+      "orContinueWith": "Ou continue com",
+      "googleSignIn": "Continuar com Google",
+      "githubSignIn": "Continuar com GitHub",
+      "error": {
+        "invalidCredentials": "Email ou senha inválidos",
+        "emailRequired": "Email é obrigatório",
+        "passwordRequired": "Senha é obrigatória"
+      }
+    },
+    "register": {
+      "title": "Crie sua conta",
+      "subtitle": "Comece a construir aplicações SaaS incríveis.",
+      "namePlaceholder": "Digite seu nome",
+      "emailPlaceholder": "Digite seu email",
+      "passwordPlaceholder": "Crie uma senha",
+      "confirmPasswordPlaceholder": "Confirme sua senha",
+      "signUpButton": "Cadastrar",
+      "hasAccount": "Já tem uma conta?",
+      "signInLink": "Entrar",
+      "termsAgreement": "Ao se cadastrar, você concorda com nossos {terms} e {privacy}",
+      "termsLink": "Termos de Serviço",
+      "privacyLink": "Política de Privacidade",
+      "error": {
+        "nameRequired": "Nome é obrigatório",
+        "emailRequired": "Email é obrigatório",
+        "emailInvalid": "Por favor, insira um email válido",
+        "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
+        "passwordsMustMatch": "As senhas devem corresponder",
+        "emailExists": "Email já cadastrado"
+      }
+    },
+    "forgotPassword": {
+      "title": "Recupere sua senha",
+      "subtitle": "Digite seu email e enviaremos um link de recuperação.",
+      "emailPlaceholder": "Digite seu email",
+      "sendButton": "Enviar Link",
+      "backToLogin": "Voltar ao login",
+      "success": "Verifique seu email para um link de recuperação",
+      "error": {
+        "emailRequired": "Email é obrigatório",
+        "emailNotFound": "Email não encontrado"
+      }
+    },
+    "resetPassword": {
+      "title": "Defina nova senha",
+      "subtitle": "Digite sua nova senha abaixo.",
+      "passwordPlaceholder": "Nova senha",
+      "confirmPasswordPlaceholder": "Confirme a nova senha",
+      "resetButton": "Redefinir Senha",
+      "success": "Senha redefinida com sucesso",
+      "error": {
+        "invalidToken": "O link de recuperação é inválido ou expirou",
+        "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
+        "passwordsMustMatch": "As senhas devem corresponder"
+      }
+    },
+    "verifyEmail": {
+      "title": "Verifique seu email",
+      "subtitle": "Enviamos um link de verificação para seu email.",
+      "resendButton": "Reenviar email de verificação",
+      "success": "Email verificado com sucesso!",
+      "error": {
+        "invalidToken": "O link de verificação é inválido ou expirou"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "Bem-vindo de volta, {name}!",
+    "overview": "Visão Geral",
+    "recentActivity": "Atividade Recente",
+    "stats": {
+      "users": "Usuários",
+      "revenue": "Receita",
+      "projects": "Projetos",
+      "apiCalls": "Chamadas API"
+    },
+    "quickActions": {
+      "title": "Ações Rápidas",
+      "newProject": "Novo Projeto",
+      "inviteTeam": "Convidar Equipe",
+      "viewDocs": "Ver Documentação",
+      "getSupport": "Obter Suporte"
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "general": {
+      "title": "Geral",
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "timezone": "Fuso Horário",
+      "language": "Idioma",
+      "saveButton": "Salvar Alterações",
+      "success": "Configurações atualizadas com sucesso"
+    },
+    "account": {
+      "title": "Conta",
+      "deleteAccount": "Excluir Conta",
+      "deleteWarning": "Esta ação não pode ser desfeita. Isso excluirá permanentemente sua conta.",
+      "deleteButton": "Excluir Minha Conta",
+      "deleteConfirm": "Tem certeza de que deseja excluir sua conta?"
+    },
+    "security": {
+      "title": "Segurança",
+      "changePassword": "Alterar Senha",
+      "currentPassword": "Senha Atual",
+      "newPassword": "Nova Senha",
+      "confirmPassword": "Confirmar Nova Senha",
+      "updatePassword": "Atualizar Senha",
+      "twoFactor": "Autenticação de Dois Fatores",
+      "twoFactorEnabled": "2FA Ativado",
+      "twoFactorDisabled": "2FA Desativado",
+      "enableTwoFactor": "Ativar 2FA",
+      "disableTwoFactor": "Desativar 2FA",
+      "sessions": "Sessões Ativas",
+      "revokeAll": "Revogar Todas as Sessões"
+    },
+    "notifications": {
+      "title": "Notificações",
+      "emailNotifications": "Notificações por Email",
+      "productUpdates": "Atualizações de Produto",
+      "securityAlerts": "Alertas de Segurança",
+      "weeklyDigest": "Resumo Semanal",
+      "pushNotifications": "Notificações Push"
+    }
+  },
+  "billing": {
+    "title": "Faturamento",
+    "currentPlan": "Plano Atual",
+    "upgradePlan": "Atualizar Plano",
+    "managePlan": "Gerenciar Plano",
+    "paymentMethods": "Métodos de Pagamento",
+    "addPaymentMethod": "Adicionar Método de Pagamento",
+    "invoices": "Faturas",
+    "downloadInvoice": "Baixar Fatura",
+    "billingHistory": "Histórico de Faturamento",
+    "nextBillingDate": "Próxima data de faturamento",
+    "cancelSubscription": "Cancelar Assinatura",
+    "plans": {
+      "starter": "Iniciante",
+      "professional": "Profissional",
+      "enterprise": "Empresarial",
+      "perMonth": "por mês",
+      "perYear": "por ano",
+      "free": "Grátis"
+    }
+  },
+  "team": {
+    "title": "Equipe",
+    "members": "Membros",
+    "inviteMembers": "Convidar Membros",
+    "roles": {
+      "owner": "Proprietário",
+      "admin": "Administrador",
+      "member": "Membro",
+      "guest": "Convidado"
+    },
+    "invite": {
+      "emailPlaceholder": "colega@exemplo.com",
+      "selectRole": "Selecionar Função",
+      "sendInvite": "Enviar Convite",
+      "success": "Convite enviado com sucesso"
+    },
+    "removeMember": "Remover Membro",
+    "changeRole": "Alterar Função"
+  },
+  "apiKeys": {
+    "title": "Chaves API",
+    "description": "Gerencie suas chaves API para acesso programático.",
+    "createNew": "Criar Nova Chave API",
+    "name": "Nome",
+    "namePlaceholder": "Minha Chave API",
+    "key": "Chave",
+    "created": "Criada",
+    "lastUsed": "Último Uso",
+    "revoke": "Revogar",
+    "copyKey": "Copiar Chave",
+    "keyCreated": "Chave API criada com sucesso",
+    "keyCopied": "Chave API copiada para a área de transferência",
+    "keyRevoked": "Chave API revogada"
+  },
+  "errors": {
+    "404": {
+      "title": "Página Não Encontrada",
+      "description": "A página que você está procurando não existe.",
+      "button": "Ir para Início"
+    },
+    "500": {
+      "title": "Erro do Servidor",
+      "description": "Algo deu errado do nosso lado.",
+      "button": "Tentar Novamente"
+    },
+    "unauthorized": "Você não tem permissão para acessar este recurso",
+    "networkError": "Erro de rede. Por favor, verifique sua conexão.",
+    "unknownError": "Ocorreu um erro desconhecido",
+    "validationError": "Por favor, verifique sua entrada e tente novamente"
+  },
+  "landing": {
+    "hero": {
+      "title": "Lance seu SaaS neste fim de semana",
+      "subtitle": "Boilerplate Next.js pronto para produção com autenticação, pagamentos e tudo que você precisa para lançar rápido.",
+      "cta": "Começar",
+      "secondaryCta": "Ver Demo"
+    },
+    "features": {
+      "title": "Tudo que você precisa para lançar",
+      "subtitle": "Pare de perder tempo com código base. Foque no que torna seu produto único.",
+      "auth": {
+        "title": "Autenticação",
+        "description": "Email/senha, OAuth, 2FA, links mágicos. Tudo configurado e pronto."
+      },
+      "payments": {
+        "title": "Pagamentos",
+        "description": "Integração Stripe com assinaturas, pagamentos únicos e portal do cliente."
+      },
+      "database": {
+        "title": "Banco de Dados",
+        "description": "PostgreSQL com Prisma ORM. Consultas type-safe e migrações fáceis."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Emails transacionais com Resend. Modelos para todos os fluxos comuns."
+      }
+    },
+    "pricing": {
+      "title": "Preços simples e transparentes",
+      "subtitle": "Pagamento único. Acesso vitalício.",
+      "features": "Todos os recursos incluídos",
+      "lifetime": "Atualizações vitalícias",
+      "support": "Suporte premium",
+      "buy": "Comprar Agora"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "q1": "O que está incluído?",
+      "a1": "Tudo que você vê na demo mais documentação completa.",
+      "q2": "Recebo atualizações?",
+      "a2": "Sim! Todas as atualizações futuras estão incluídas gratuitamente.",
+      "q3": "Posso obter um reembolso?",
+      "a3": "Sim. Garantia de devolução do dinheiro de 30 dias, sem perguntas."
+    }
+  },
+  "footer": {
+    "product": "Produto",
+    "company": "Empresa",
+    "legal": "Legal",
+    "followUs": "Siga-nos",
+    "allRightsReserved": "Todos os direitos reservados",
+    "builtWith": "Construído com"
+  }
+}

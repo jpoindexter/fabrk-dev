@@ -1,0 +1,333 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "submit": "Submit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "actions": "Actions",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "description": "Description",
+    "title": "Title",
+    "required": "Required",
+    "optional": "Optional",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "download": "Download",
+    "upload": "Upload",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "share": "Share",
+    "print": "Print",
+    "export": "Export",
+    "import": "Import",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "showMore": "Show More",
+    "showLess": "Show Less"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "docs": "Documentation",
+    "support": "Support",
+    "settings": "Settings",
+    "profile": "Profile",
+    "billing": "Billing",
+    "team": "Team",
+    "admin": "Admin",
+    "apiKeys": "API Keys",
+    "components": "Components",
+    "templates": "Templates",
+    "variations": "Variations"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "subtitle": "Welcome back! Please enter your details.",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signInButton": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up for free",
+      "orContinueWith": "Or continue with",
+      "googleSignIn": "Continue with Google",
+      "githubSignIn": "Continue with GitHub",
+      "error": {
+        "invalidCredentials": "Invalid email or password",
+        "emailRequired": "Email is required",
+        "passwordRequired": "Password is required"
+      }
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Start building amazing SaaS applications.",
+      "namePlaceholder": "Enter your name",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Create a password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "signUpButton": "Sign Up",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "termsAgreement": "By signing up, you agree to our {terms} and {privacy}",
+      "termsLink": "Terms of Service",
+      "privacyLink": "Privacy Policy",
+      "error": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordsMustMatch": "Passwords must match",
+        "emailExists": "Email already registered"
+      }
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email and we'll send you a reset link.",
+      "emailPlaceholder": "Enter your email",
+      "sendButton": "Send Reset Link",
+      "backToLogin": "Back to login",
+      "success": "Check your email for a reset link",
+      "error": {
+        "emailRequired": "Email is required",
+        "emailNotFound": "Email not found"
+      }
+    },
+    "resetPassword": {
+      "title": "Set new password",
+      "subtitle": "Enter your new password below.",
+      "passwordPlaceholder": "New password",
+      "confirmPasswordPlaceholder": "Confirm new password",
+      "resetButton": "Reset Password",
+      "success": "Password reset successfully",
+      "error": {
+        "invalidToken": "Reset link is invalid or expired",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordsMustMatch": "Passwords must match"
+      }
+    },
+    "verifyEmail": {
+      "title": "Verify your email",
+      "subtitle": "We sent a verification link to your email.",
+      "resendButton": "Resend verification email",
+      "success": "Email verified successfully!",
+      "error": {
+        "invalidToken": "Verification link is invalid or expired"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {name}!",
+    "overview": "Overview",
+    "recentActivity": "Recent Activity",
+    "stats": {
+      "users": "Users",
+      "revenue": "Revenue",
+      "projects": "Projects",
+      "apiCalls": "API Calls"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "newProject": "New Project",
+      "inviteTeam": "Invite Team",
+      "viewDocs": "View Docs",
+      "getSupport": "Get Support"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": {
+      "title": "General",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "timezone": "Timezone",
+      "language": "Language",
+      "saveButton": "Save Changes",
+      "success": "Settings updated successfully"
+    },
+    "account": {
+      "title": "Account",
+      "deleteAccount": "Delete Account",
+      "deleteWarning": "This action cannot be undone. This will permanently delete your account.",
+      "deleteButton": "Delete My Account",
+      "deleteConfirm": "Are you sure you want to delete your account?"
+    },
+    "security": {
+      "title": "Security",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updatePassword": "Update Password",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorEnabled": "2FA Enabled",
+      "twoFactorDisabled": "2FA Disabled",
+      "enableTwoFactor": "Enable 2FA",
+      "disableTwoFactor": "Disable 2FA",
+      "sessions": "Active Sessions",
+      "revokeAll": "Revoke All Sessions"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "emailNotifications": "Email Notifications",
+      "productUpdates": "Product Updates",
+      "securityAlerts": "Security Alerts",
+      "weeklyDigest": "Weekly Digest",
+      "pushNotifications": "Push Notifications"
+    }
+  },
+  "billing": {
+    "title": "Billing",
+    "currentPlan": "Current Plan",
+    "upgradePlan": "Upgrade Plan",
+    "managePlan": "Manage Plan",
+    "paymentMethods": "Payment Methods",
+    "addPaymentMethod": "Add Payment Method",
+    "invoices": "Invoices",
+    "downloadInvoice": "Download Invoice",
+    "billingHistory": "Billing History",
+    "nextBillingDate": "Next billing date",
+    "cancelSubscription": "Cancel Subscription",
+    "plans": {
+      "starter": "Starter",
+      "professional": "Professional",
+      "enterprise": "Enterprise",
+      "perMonth": "per month",
+      "perYear": "per year",
+      "free": "Free"
+    }
+  },
+  "team": {
+    "title": "Team",
+    "members": "Members",
+    "inviteMembers": "Invite Members",
+    "roles": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member",
+      "guest": "Guest"
+    },
+    "invite": {
+      "emailPlaceholder": "colleague@example.com",
+      "selectRole": "Select Role",
+      "sendInvite": "Send Invite",
+      "success": "Invitation sent successfully"
+    },
+    "removeMember": "Remove Member",
+    "changeRole": "Change Role"
+  },
+  "apiKeys": {
+    "title": "API Keys",
+    "description": "Manage your API keys for programmatic access.",
+    "createNew": "Create New API Key",
+    "name": "Name",
+    "namePlaceholder": "My API Key",
+    "key": "Key",
+    "created": "Created",
+    "lastUsed": "Last Used",
+    "revoke": "Revoke",
+    "copyKey": "Copy Key",
+    "keyCreated": "API key created successfully",
+    "keyCopied": "API key copied to clipboard",
+    "keyRevoked": "API key revoked"
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The page you're looking for doesn't exist.",
+      "button": "Go Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "Something went wrong on our end.",
+      "button": "Try Again"
+    },
+    "unauthorized": "You don't have permission to access this resource",
+    "networkError": "Network error. Please check your connection.",
+    "unknownError": "An unknown error occurred",
+    "validationError": "Please check your input and try again"
+  },
+  "landing": {
+    "hero": {
+      "title": "Ship your SaaS this weekend",
+      "subtitle": "Production-ready Next.js boilerplate with authentication, payments, and everything you need to launch fast.",
+      "cta": "Get Started",
+      "secondaryCta": "View Demo"
+    },
+    "features": {
+      "title": "Everything you need to launch",
+      "subtitle": "Stop wasting time on boilerplate. Focus on what makes your product unique.",
+      "auth": {
+        "title": "Authentication",
+        "description": "Email/password, OAuth, 2FA, magic links. All set up and ready."
+      },
+      "payments": {
+        "title": "Payments",
+        "description": "Stripe integration with subscriptions, one-time payments, and customer portal."
+      },
+      "database": {
+        "title": "Database",
+        "description": "PostgreSQL with Prisma ORM. Type-safe queries and easy migrations."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Transactional emails with Resend. Templates for all common flows."
+      }
+    },
+    "pricing": {
+      "title": "Simple, transparent pricing",
+      "subtitle": "One-time payment. Lifetime access.",
+      "features": "All features included",
+      "lifetime": "Lifetime updates",
+      "support": "Premium support",
+      "buy": "Buy Now"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "What's included?",
+      "a1": "Everything you see in the demo plus comprehensive documentation.",
+      "q2": "Do I get updates?",
+      "a2": "Yes! All future updates are included for free.",
+      "q3": "Can I get a refund?",
+      "a3": "Yes. 30-day money-back guarantee, no questions asked."
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved",
+    "builtWith": "Built with"
+  }
+}

@@ -99,6 +99,42 @@ const config = {
     blog: false, // Enable when you add blog posts
     documentation: true,
     changelog: false,
+
+    // Search features
+    algoliaSearch: !!(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID && process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY),
+    commandPalette: true, // ⌘K keyboard shortcut
+
+    // CMS features
+    sanityCMS: !!(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET),
+  },
+
+  // ============================================================================
+  // SEARCH CONFIGURATION (Algolia)
+  // ============================================================================
+  search: {
+    enabled: !!(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID && process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY),
+    appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    searchApiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+    adminApiKey: process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
+    indices: {
+      pages: 'pages',
+      components: 'components',
+      templates: 'templates',
+      docs: 'docs',
+    },
+  },
+
+  // ============================================================================
+  // CMS CONFIGURATION (Sanity)
+  // ============================================================================
+  cms: {
+    enabled: !!(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET),
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    apiToken: process.env.SANITY_API_TOKEN, // Server-side only
+    studio: {
+      basePath: '/studio', // Studio accessible at /studio
+    },
   },
 
   // ============================================================================
