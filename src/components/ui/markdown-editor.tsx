@@ -62,20 +62,20 @@ function parseMarkdown(markdown: string): string {
   // Code blocks (must be first to prevent other parsing inside)
   html = html.replace(
     /```(\w+)?\n([\s\S]*?)```/g,
-    '<pre class="bg-muted rounded-brutal p-4 my-4 overflow-x-auto border-brutal"><code class="text-sm font-mono">$2</code></pre>'
+    '<pre class="bg-muted rounded-md p-4 my-4 overflow-x-auto border"><code class="text-sm font-mono">$2</code></pre>'
   );
 
   // Headers (h1-h6)
-  html = html.replace(/^######\s+(.+)$/gm, '<h6 class="text-base font-bold mt-6 mb-2">$1</h6>');
-  html = html.replace(/^#####\s+(.+)$/gm, '<h5 class="text-lg font-bold mt-6 mb-2">$1</h5>');
-  html = html.replace(/^####\s+(.+)$/gm, '<h4 class="text-xl font-bold mt-6 mb-2">$1</h4>');
-  html = html.replace(/^###\s+(.+)$/gm, '<h3 class="text-2xl font-bold mt-6 mb-3">$1</h3>');
-  html = html.replace(/^##\s+(.+)$/gm, '<h2 class="text-3xl font-bold mt-8 mb-4">$1</h2>');
-  html = html.replace(/^#\s+(.+)$/gm, '<h1 class="text-4xl font-bold mt-8 mb-4">$1</h1>');
+  html = html.replace(/^######\s+(.+)$/gm, '<h6 class="text-base font-semibold mt-6 mb-2">$1</h6>');
+  html = html.replace(/^#####\s+(.+)$/gm, '<h5 class="text-lg font-semibold mt-6 mb-2">$1</h5>');
+  html = html.replace(/^####\s+(.+)$/gm, '<h4 class="text-xl font-semibold mt-6 mb-2">$1</h4>');
+  html = html.replace(/^###\s+(.+)$/gm, '<h3 class="text-2xl font-semibold mt-6 mb-3">$1</h3>');
+  html = html.replace(/^##\s+(.+)$/gm, '<h2 class="text-3xl font-semibold mt-8 mb-4">$1</h2>');
+  html = html.replace(/^#\s+(.+)$/gm, '<h1 class="text-4xl font-semibold mt-8 mb-4">$1</h1>');
 
   // Bold
-  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="font-bold">$1</strong>');
-  html = html.replace(/__(.+?)__/g, '<strong class="font-bold">$1</strong>');
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold">$1</strong>');
+  html = html.replace(/__(.+?)__/g, '<strong class="font-semibold">$1</strong>');
 
   // Italic
   html = html.replace(/\*(.+?)\*/g, '<em class="italic">$1</em>');
@@ -90,7 +90,7 @@ function parseMarkdown(markdown: string): string {
   // Inline code
   html = html.replace(
     /`([^`]+)`/g,
-    '<code class="bg-muted px-1.5 py-0.5 rounded text-sm font-mono border border-brutal">$1</code>'
+    '<code class="bg-muted px-1.5 py-0.5 rounded text-sm font-mono border">$1</code>'
   );
 
   // Unordered lists
@@ -169,7 +169,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
       <div ref={ref} className={cn("flex flex-col gap-3", className)}>
         {/* Toolbar */}
         {!previewOnly && !disabled && (
-          <div className="flex items-center gap-2 p-2 rounded-brutal border-brutal bg-card shadow-brutal">
+          <div className="flex items-center gap-2 p-2 rounded-md border bg-card shadow-sm">
             <div className="flex items-center gap-1">
               {toolbarButtons.map((btn) => (
                 <Button
@@ -224,7 +224,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
           {isEditorVisible && (
             <div className="flex flex-col">
               {isPreviewVisible && (
-                <div className="flex items-center gap-2 mb-2 text-sm font-bold text-muted-foreground">
+                <div className="flex items-center gap-2 mb-2 text-sm font-medium text-muted-foreground">
                   <Edit3 className="h-4 w-4" />
                   <span>Editor</span>
                 </div>
@@ -248,14 +248,14 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
           {isPreviewVisible && (
             <div className="flex flex-col">
               {isEditorVisible && (
-                <div className="flex items-center gap-2 mb-2 text-sm font-bold text-muted-foreground">
+                <div className="flex items-center gap-2 mb-2 text-sm font-medium text-muted-foreground">
                   <Eye className="h-4 w-4" />
                   <span>Preview</span>
                 </div>
               )}
               <div
                 className={cn(
-                  "rounded-brutal border-brutal bg-card p-4 shadow-brutal overflow-y-auto",
+                  "rounded-md border bg-card p-4 shadow-sm overflow-y-auto",
                   "prose prose-sm max-w-none",
                   "prose-headings:text-foreground prose-p:text-foreground",
                   "prose-strong:text-foreground prose-code:text-foreground",

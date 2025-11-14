@@ -114,19 +114,19 @@ const SingleComment: React.FC<SingleCommentProps> = ({
   return (
     <div className={cn("group", depth > 0 && "ml-8 mt-4")}>
       <div className="flex gap-3">
-        <Avatar className="h-10 w-10 border-brutal shadow-brutal">
+        <Avatar className="h-10 w-10 border shadow-sm">
           <AvatarImage src={comment.author.avatar} alt={comment.author.name} />
-          <AvatarFallback className="bg-secondary text-secondary-foreground font-bold">
+          <AvatarFallback className="bg-secondary text-secondary-foreground font-medium">
             {getInitials(comment.author.name)}
           </AvatarFallback>
         </Avatar>
 
         <div className="flex-1 min-w-0">
-          <div className="bg-card border-brutal rounded-brutal p-4 shadow-brutal">
+          <div className="bg-card border rounded-md p-4 shadow-sm">
             {/* Header */}
             <div className="flex items-start justify-between gap-2 mb-2">
               <div>
-                <div className="font-bold text-foreground">{comment.author.name}</div>
+                <div className="font-semibold text-foreground">{comment.author.name}</div>
                 <div className="text-xs text-muted-foreground">
                   {formatTimestamp(comment.timestamp)}
                 </div>
@@ -143,7 +143,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border-brutal shadow-brutal">
+                  <DropdownMenuContent align="end" className="border shadow-md">
                     <DropdownMenuItem
                       onClick={() => setIsEditing(true)}
                       className="cursor-pointer"
@@ -210,7 +210,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
                 <Heart
                   className={cn("h-4 w-4", localIsLiked && "fill-current")}
                 />
-                <span className="text-sm font-medium">{localLikes}</span>
+                <span className="text-sm">{localLikes}</span>
               </Button>
 
               {canNest && onReply && (
@@ -221,7 +221,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
                   onClick={() => setIsReplying(!isReplying)}
                 >
                   <MessageSquare className="h-4 w-4" />
-                  <span className="text-sm font-medium">Reply</span>
+                  <span className="text-sm">Reply</span>
                 </Button>
               )}
 
@@ -232,7 +232,7 @@ const SingleComment: React.FC<SingleCommentProps> = ({
                   className="h-8 px-2 hover:bg-transparent"
                   onClick={() => setShowReplies(!showReplies)}
                 >
-                  <span className="text-sm font-medium">
+                  <span className="text-sm">
                     {showReplies ? "Hide" : "Show"} {comment.replies!.length}{" "}
                     {comment.replies!.length === 1 ? "reply" : "replies"}
                   </span>
@@ -338,12 +338,12 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     return (
       <div
         className={cn(
-          "bg-card border-brutal rounded-brutal p-12 text-center shadow-brutal",
+          "bg-card border rounded-md p-12 text-center shadow-sm",
           className
         )}
       >
         <MessageSquare className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-bold text-foreground mb-2">No comments yet</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-2">No comments yet</h3>
         <p className="text-muted-foreground">Be the first to share your thoughts!</p>
       </div>
     );
@@ -353,7 +353,7 @@ export const CommentThread: React.FC<CommentThreadProps> = ({
     <div className={cn("space-y-6", className)}>
       {/* Sorting Controls */}
       <div className="flex items-center gap-2">
-        <span className="text-sm font-medium text-muted-foreground">Sort by:</span>
+        <span className="text-sm text-muted-foreground">Sort by:</span>
         <div className="flex gap-2">
           {(["newest", "oldest", "top"] as const).map((sort) => (
             <Button

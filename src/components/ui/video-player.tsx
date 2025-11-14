@@ -269,7 +269,7 @@ export const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
           containerRef.current = node;
         }}
         className={cn(
-          "relative overflow-hidden rounded-brutal border-brutal bg-black shadow-brutal",
+          "relative overflow-hidden rounded-md border bg-black shadow-md",
           aspectRatioClass,
           className
         )}
@@ -383,7 +383,7 @@ export const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
                 </div>
 
                 {/* Time Display */}
-                <div className="text-sm font-medium text-white">
+                <div className="text-sm text-white">
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </div>
               </div>
@@ -402,13 +402,13 @@ export const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
                     {playbackRate}x
                   </Button>
                   {showSpeedMenu && (
-                    <div className="absolute bottom-full right-0 mb-2 rounded-brutal border-brutal bg-card shadow-brutal">
+                    <div className="absolute bottom-full right-0 mb-2 rounded-md border bg-card shadow-md">
                       {[0.5, 1, 1.5, 2].map((speed) => (
                         <button
                           key={speed}
                           onClick={() => handleSpeedChange(speed)}
                           className={cn(
-                            "block w-full px-4 py-2 text-left text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground",
+                            "block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-primary hover:text-primary-foreground",
                             playbackRate === speed && "bg-muted"
                           )}
                         >

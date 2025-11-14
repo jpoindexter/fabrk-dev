@@ -177,7 +177,7 @@ const TreeNodeItem: React.FC<TreeNodeItemProps> = ({
     <div className="select-none">
       <div
         className={cn(
-          "group flex items-center gap-2 py-1.5 px-2 cursor-pointer transition-colors rounded-brutal",
+          "group flex items-center gap-2 py-1.5 px-2 cursor-pointer transition-colors rounded-md",
           "hover:bg-muted/50",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
           isSelected && !showCheckboxes && "bg-primary/10 border border-primary/20",
@@ -229,7 +229,7 @@ const TreeNodeItem: React.FC<TreeNodeItemProps> = ({
         {/* Label */}
         <span
           className={cn(
-            "text-sm font-medium text-foreground flex-1 truncate",
+            "text-sm text-foreground flex-1 truncate",
             node.disabled && "text-muted-foreground"
           )}
         >
@@ -424,7 +424,7 @@ export const TreeView: React.FC<TreeViewProps> = ({
   return (
     <div
       className={cn(
-        "rounded-brutal border-brutal bg-card p-4 shadow-brutal",
+        "rounded-md border bg-card p-4 shadow-sm",
         className
       )}
       role="tree"

@@ -240,7 +240,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       <div className={`w-full ${className}`}>
         {/* Toolbar */}
         {!readOnly && (
-          <div className="mb-2 flex flex-wrap gap-1 rounded-brutal border-brutal bg-card p-2 shadow-brutal">
+          <div className="mb-2 flex flex-wrap gap-1 rounded-md border bg-card p-2 shadow-sm">
             {toolbarButtons.map((tool, index) => (
               <Button
                 key={index}
@@ -272,16 +272,16 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={`
-            w-full overflow-y-auto rounded-brutal border-brutal bg-background p-4 text-foreground
+            w-full overflow-y-auto rounded-md border bg-background p-4 text-foreground
             outline-none transition-all
-            ${isFocused ? "shadow-brutal-lg" : "shadow-brutal"}
+            ${isFocused ? "shadow-md" : "shadow-sm"}
             ${readOnly ? "cursor-default bg-muted/50" : "cursor-text"}
             prose prose-sm max-w-none
-            prose-headings:font-black prose-headings:text-foreground
+            prose-headings:font-semibold prose-headings:text-foreground
             prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
             prose-p:text-foreground prose-p:leading-relaxed
             prose-a:text-primary prose-a:underline
-            prose-strong:font-bold prose-strong:text-foreground
+            prose-strong:font-semibold prose-strong:text-foreground
             prose-em:italic prose-em:text-foreground
             prose-ul:list-disc prose-ul:pl-6
             prose-ol:list-decimal prose-ol:pl-6

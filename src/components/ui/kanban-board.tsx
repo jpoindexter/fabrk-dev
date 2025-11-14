@@ -150,8 +150,8 @@ export function KanbanBoard({
             <div
               key={column.id}
               className={cn(
-                "flex min-w-[300px] flex-col rounded-brutal border-brutal bg-card shadow-brutal transition-all",
-                isDraggedOver && "ring-4 ring-primary ring-offset-2"
+                "flex min-w-[300px] flex-col rounded-md border bg-card shadow-sm transition-all",
+                isDraggedOver && "ring-2 ring-primary ring-offset-2"
               )}
               onDragOver={handleDragOver}
               onDragEnter={() => handleDragEnter(column.id)}
@@ -161,21 +161,20 @@ export function KanbanBoard({
               {/* Column Header */}
               <div
                 className={cn(
-                  "flex items-center justify-between border-b-2 border-brutal p-4",
+                  "flex items-center justify-between border-b p-4",
                   column.color && `border-l-4`,
                 )}
                 style={column.color ? { borderLeftColor: column.color } : {}}
               >
                 <div className="flex items-center gap-2">
-                  <h3 className="font-black text-foreground">{column.title}</h3>
-                  <Badge variant="neutral" className="shadow-brutal-sm">
+                  <h3 className="font-semibold text-foreground">{column.title}</h3>
+                  <Badge variant="neutral">
                     {column.cards.length}
                   </Badge>
                   {column.limit && (
                     <Badge
                       variant={isOverLimit ? "default" : "neutral"}
                       className={cn(
-                        "shadow-brutal-sm",
                         isOverLimit && "bg-destructive text-destructive-foreground"
                       )}
                     >
@@ -215,13 +214,13 @@ export function KanbanBoard({
                         onDragOver={handleDragOver}
                         onDrop={(e) => handleDrop(e, column.id, index)}
                         className={cn(
-                          "group cursor-move rounded-brutal border-brutal bg-background p-4 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+                          "group cursor-move rounded-md border bg-background p-4 shadow-sm transition-all hover:shadow-md",
                           draggedCard?.cardId === card.id && "opacity-40"
                         )}
                       >
                         {/* Card Header */}
                         <div className="mb-2 flex items-start justify-between gap-2">
-                          <h4 className="flex-1 font-bold text-foreground">
+                          <h4 className="flex-1 font-semibold text-foreground">
                             {card.title}
                           </h4>
                           <div className="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
@@ -261,7 +260,6 @@ export function KanbanBoard({
                           {card.priority && (
                             <Badge
                               className={cn(
-                                "shadow-brutal-sm",
                                 priorityColors[card.priority]
                               )}
                             >
@@ -274,7 +272,6 @@ export function KanbanBoard({
                             <Badge
                               key={tag}
                               variant="outline"
-                              className="shadow-brutal-sm"
                             >
                               {tag}
                             </Badge>
@@ -311,7 +308,7 @@ export function KanbanBoard({
 
                   {/* Add Card Button */}
                   {onCardAdd && (
-                    <div className="border-t-2 border-brutal p-4">
+                    <div className="border-t p-4">
                       <Button
                         variant="ghost"
                         size="sm"
