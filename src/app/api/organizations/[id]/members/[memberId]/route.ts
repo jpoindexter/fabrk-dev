@@ -14,6 +14,7 @@ import {
 import { OrgRole } from "@prisma/client";
 import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
+import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 
 export async function PATCH(
   req: NextRequest,
@@ -93,6 +94,19 @@ export async function PATCH(
           userId: member.userId,
           userName: member.user.name || member.user.email || "User",
         });
+
+        // Trigger webhook
+        await triggerWebhook(params.id, WEBHOOK_EVENTS.ORG_MEMBER_ROLE_CHANGED, {
+          userId: member.userId,
+          userEmail: member.user.email,
+          userName: member.user.name,
+          newRole: role,
+          changedBy: {
+            id: session.user.id,
+            email: session.user.email,
+            name: session.user.name,
+          },
+        });
       }
     } catch (notifyError) {
       console.error("Failed to send notifications:", notifyError);
@@ -167,6 +181,18 @@ export async function DELETE(
           description: `was removed from the organization`,
           userId: member.userId,
           userName: member.user.name || member.user.email || "User",
+        });
+
+        // Trigger webhook
+        await triggerWebhook(params.id, WEBHOOK_EVENTS.ORG_MEMBER_REMOVED, {
+          userId: member.userId,
+          userEmail: member.user.email,
+          userName: member.user.name,
+          removedBy: {
+            id: session.user.id,
+            email: session.user.email,
+            name: session.user.name,
+          },
         });
       } catch (activityError) {
         console.error("Failed to create activity:", activityError);

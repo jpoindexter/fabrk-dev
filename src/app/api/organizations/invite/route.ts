@@ -10,6 +10,7 @@ import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
 import { createOrgActivity } from "@/lib/notifications";
+import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 
 export async function POST(req: NextRequest) {
   try {
@@ -87,6 +88,23 @@ export async function POST(req: NextRequest) {
       });
     } catch (activityError) {
       console.error("Failed to create activity:", activityError);
+    }
+
+    // Trigger webhook
+    try {
+      await triggerWebhook(organizationId, WEBHOOK_EVENTS.ORG_MEMBER_INVITED, {
+        email,
+        role: inviteRole,
+        invitedBy: {
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.name,
+        },
+        inviteId: invite.id,
+        expiresAt: invite.expiresAt,
+      });
+    } catch (webhookError) {
+      console.error("Failed to trigger webhook:", webhookError);
     }
 
     return NextResponse.json({

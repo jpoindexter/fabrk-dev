@@ -5,8 +5,7 @@
  * Generate, view, and revoke API keys for programmatic access
  */
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -37,30 +37,54 @@ import {
   AlertTriangle,
   CheckCircle2,
   Code,
+  Loader2,
 } from "lucide-react";
 
 interface ApiKey {
   id: string;
   name: string;
-  key: string;
-  createdAt: Date;
-  lastUsed: Date | null;
+  keyPrefix: string;
+  permissions: string[];
+  lastUsedAt: string | null;
+  createdAt: string;
+  user: {
+    name: string | null;
+    email: string;
+  };
 }
 
+// This should come from organization context
+const ORGANIZATION_ID = "org_demo"; // TODO: Get from context/props
+
 export default function ApiKeysPage() {
-  const [apiKeys, setApiKeys] = useState<ApiKey[]>([
-    {
-      id: "1",
-      name: "Production API",
-      key: "sk_live_1234567890abcdef",
-      createdAt: new Date("2024-01-15"),
-      lastUsed: new Date("2024-11-05"),
-    },
-  ]);
+  const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showKey, setShowKey] = useState<Record<string, boolean>>({});
   const [isCreating, setIsCreating] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newKeyName, setNewKeyName] = useState("");
+  const [selectedPermissions, setSelectedPermissions] = useState<string[]>(["read"]);
   const [createdKey, setCreatedKey] = useState<string | null>(null);
+
+  // Fetch API keys on mount
+  useEffect(() => {
+    fetchApiKeys();
+  }, []);
+
+  const fetchApiKeys = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/api-keys?organizationId=${ORGANIZATION_ID}`);
+      if (response.ok) {
+        const data = await response.json();
+        setApiKeys(data);
+      }
+    } catch (error) {
+      console.error("Error fetching API keys:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleCreateKey = async () => {
     if (!newKeyName.trim()) {
@@ -68,39 +92,72 @@ export default function ApiKeysPage() {
       return;
     }
 
+    if (selectedPermissions.length === 0) {
+      alert("Please select at least one permission");
+      return;
+    }
+
     setIsCreating(true);
 
-    // TODO: Call API to generate key
-    // In real implementation, this would be a cryptographically secure random string
-    const newKey = `sk_live_${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+    try {
+      const response = await fetch("/api/api-keys", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          organizationId: ORGANIZATION_ID,
+          name: newKeyName,
+          permissions: selectedPermissions,
+        }),
+      });
 
-    const apiKey: ApiKey = {
-      id: Date.now().toString(),
-      name: newKeyName,
-      key: newKey,
-      createdAt: new Date(),
-      lastUsed: null,
-    };
-
-    setApiKeys([...apiKeys, apiKey]);
-    setCreatedKey(newKey);
-    setNewKeyName("");
-    setIsCreating(false);
+      if (response.ok) {
+        const data = await response.json();
+        setCreatedKey(data.key); // Full key only shown once
+        setNewKeyName("");
+        setSelectedPermissions(["read"]);
+        setIsDialogOpen(false);
+        fetchApiKeys(); // Refresh list
+      } else {
+        const error = await response.json();
+        alert(error.error || "Failed to create API key");
+      }
+    } catch (error) {
+      console.error("Error creating API key:", error);
+      alert("Failed to create API key");
+    } finally {
+      setIsCreating(false);
+    }
   };
 
   const handleCopyKey = async (key: string) => {
     await navigator.clipboard.writeText(key);
+    // You could use a toast here instead
     alert("API key copied to clipboard!");
   };
 
   const handleRevokeKey = async (id: string) => {
     if (
-      confirm(
+      !confirm(
         "Are you sure you want to revoke this API key? This action cannot be undone and will immediately stop all API requests using this key."
       )
     ) {
-      // TODO: Call API to revoke key
-      setApiKeys(apiKeys.filter((k) => k.id !== id));
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/api-keys/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        fetchApiKeys(); // Refresh list
+      } else {
+        const error = await response.json();
+        alert(error.error || "Failed to revoke API key");
+      }
+    } catch (error) {
+      console.error("Error revoking API key:", error);
+      alert("Failed to revoke API key");
     }
   };
 
@@ -108,17 +165,38 @@ export default function ApiKeysPage() {
     setShowKey({ ...showKey, [id]: !showKey[id] });
   };
 
-  const maskKey = (key: string) => {
-    return `${key.substring(0, 12)}${"•".repeat(20)}`;
+  const maskKey = (keyPrefix: string) => {
+    return `${keyPrefix}${"•".repeat(40)}`;
   };
 
-  const formatDate = (date: Date | null) => {
-    if (!date) return "Never";
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return "Never";
     return new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "short",
       day: "numeric",
-    }).format(new Date(date));
+    }).format(new Date(dateString));
+  };
+
+  const togglePermission = (permission: string) => {
+    if (selectedPermissions.includes(permission)) {
+      setSelectedPermissions(selectedPermissions.filter((p) => p !== permission));
+    } else {
+      setSelectedPermissions([...selectedPermissions, permission]);
+    }
+  };
+
+  const getPermissionBadgeVariant = (permission: string) => {
+    switch (permission) {
+      case "read":
+        return "default";
+      case "write":
+        return "secondary";
+      case "admin":
+        return "destructive";
+      default:
+        return "outline";
+    }
   };
 
   return (
@@ -133,7 +211,7 @@ export default function ApiKeysPage() {
             </p>
           </div>
 
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button>
                 <Plus className="mr-2 h-4 w-4" />
@@ -144,7 +222,7 @@ export default function ApiKeysPage() {
               <DialogHeader>
                 <DialogTitle>Create New API Key</DialogTitle>
                 <DialogDescription>
-                  Give your API key a descriptive name to help identify its purpose
+                  Give your API key a descriptive name and select permissions
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 pt-4">
@@ -157,12 +235,56 @@ export default function ApiKeysPage() {
                     placeholder="e.g., Production API, Mobile App, Testing"
                   />
                 </div>
+
+                <div className="space-y-2">
+                  <Label>Permissions</Label>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="read"
+                        checked={selectedPermissions.includes("read")}
+                        onCheckedChange={() => togglePermission("read")}
+                      />
+                      <Label htmlFor="read" className="cursor-pointer">
+                        Read - View organization data
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="write"
+                        checked={selectedPermissions.includes("write")}
+                        onCheckedChange={() => togglePermission("write")}
+                      />
+                      <Label htmlFor="write" className="cursor-pointer">
+                        Write - Create and update resources
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="admin"
+                        checked={selectedPermissions.includes("admin")}
+                        onCheckedChange={() => togglePermission("admin")}
+                      />
+                      <Label htmlFor="admin" className="cursor-pointer text-destructive">
+                        Admin - Full admin access (dangerous)
+                      </Label>
+                    </div>
+                  </div>
+                </div>
+
                 <Button
                   onClick={handleCreateKey}
                   disabled={isCreating}
                   className="w-full"
                 >
-                  {isCreating ? "Creating..." : "Create API Key"}
+                  {isCreating ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating...
+                    </>
+                  ) : (
+                    "Create API Key"
+                  )}
                 </Button>
               </div>
             </DialogContent>
@@ -191,7 +313,7 @@ export default function ApiKeysPage() {
               Make sure to copy your API key now. You won't be able to see it again!
             </p>
             <div className="flex items-center gap-2">
-              <code className="flex-1 p-2 bg-background rounded border-2 border-border text-sm font-mono">
+              <code className="flex-1 p-2 bg-background rounded border-2 border-border text-sm font-mono break-all">
                 {createdKey}
               </code>
               <Button
@@ -215,79 +337,83 @@ export default function ApiKeysPage() {
       )}
 
       {/* API Keys List */}
-      <div className="space-y-4">
-        {apiKeys.length === 0 ? (
-          <Card>
-            <CardContent className="pt-6 text-center space-y-4">
-              <Key className="h-12 w-12 mx-auto text-muted-foreground" />
-              <div>
-                <h3 className="font-semibold mb-1">No API keys yet</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Create an API key to start making programmatic requests
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        ) : (
-          apiKeys.map((apiKey) => (
-            <Card key={apiKey.id}>
-              <CardContent className="pt-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
-                      <Key className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-semibold">{apiKey.name}</h3>
-                        <Badge variant="outline" className="text-xs">
-                          {apiKey.key.startsWith("sk_live") ? "Live" : "Test"}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Created {formatDate(apiKey.createdAt)} • Last used{" "}
-                        {formatDate(apiKey.lastUsed)}
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleRevokeKey(apiKey.id)}
-                  >
-                    <Trash2 className="h-4 w-4 mr-2" />
-                    Revoke
-                  </Button>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <code className="flex-1 p-2 bg-muted rounded border-2 border-border text-sm font-mono">
-                    {showKey[apiKey.id] ? apiKey.key : maskKey(apiKey.key)}
-                  </code>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => toggleShowKey(apiKey.id)}
-                  >
-                    {showKey[apiKey.id] ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleCopyKey(apiKey.key)}
-                  >
-                    <Copy className="h-4 w-4" />
-                  </Button>
+      {loading ? (
+        <div className="flex justify-center py-12">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {apiKeys.length === 0 ? (
+            <Card>
+              <CardContent className="pt-6 text-center space-y-4">
+                <Key className="h-12 w-12 mx-auto text-muted-foreground" />
+                <div>
+                  <h3 className="font-semibold mb-1">No API keys yet</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Create an API key to start making programmatic requests
+                  </p>
                 </div>
               </CardContent>
             </Card>
-          ))
-        )}
-      </div>
+          ) : (
+            apiKeys.map((apiKey) => (
+              <Card key={apiKey.id}>
+                <CardContent className="pt-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+                        <Key className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                          <h3 className="font-semibold">{apiKey.name}</h3>
+                          {apiKey.permissions.map((permission) => (
+                            <Badge
+                              key={permission}
+                              variant={getPermissionBadgeVariant(permission)}
+                              className="text-xs"
+                            >
+                              {permission}
+                            </Badge>
+                          ))}
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Created {formatDate(apiKey.createdAt)} by {apiKey.user.name || apiKey.user.email}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Last used {formatDate(apiKey.lastUsedAt)}
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleRevokeKey(apiKey.id)}
+                    >
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      Revoke
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <code className="flex-1 p-2 bg-muted rounded border-2 border-border text-sm font-mono">
+                      {maskKey(apiKey.keyPrefix)}
+                    </code>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleCopyKey(apiKey.keyPrefix)}
+                      title="Copy prefix"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          )}
+        </div>
+      )}
 
       {/* Documentation */}
       <div className="grid md:grid-cols-2 gap-4 mt-8">
@@ -303,9 +429,13 @@ export default function ApiKeysPage() {
             <code className="block p-3 bg-muted rounded border-2 border-border font-mono text-xs">
               Authorization: Bearer YOUR_API_KEY
             </code>
-            <Link href="/docs/api-reference" className="text-primary hover:underline inline-block mt-2">
-              View API Documentation →
-            </Link>
+            <div className="pt-2">
+              <p className="font-semibold mb-2">Example (cURL):</p>
+              <code className="block p-3 bg-muted rounded border-2 border-border font-mono text-xs whitespace-pre-wrap">
+{`curl https://yourdomain.com/api/v1/organizations/${ORGANIZATION_ID} \\
+  -H "Authorization: Bearer sk_live_..."`}
+              </code>
+            </div>
           </CardContent>
         </Card>
 
@@ -323,6 +453,7 @@ export default function ApiKeysPage() {
               <li>Use environment variables</li>
               <li>Revoke unused keys immediately</li>
               <li>Monitor API usage for anomalies</li>
+              <li>Use read-only keys when possible</li>
             </ul>
           </CardContent>
         </Card>

@@ -49,6 +49,7 @@ model User {
   uploads            Upload[]
   auditLogs          AuditLog[]
   notifications      Notification[]
+  apiKeys            ApiKey[]
 
   @@index([email])
 }
@@ -188,6 +189,8 @@ model Organization {
   members  OrganizationMember[]
   invites  OrganizationInvite[]
   uploads  Upload[]
+  apiKeys  ApiKey[]
+  webhooks Webhook[]
 
   @@index([slug])
 }
@@ -409,4 +412,69 @@ enum NotificationType {
   PAYMENT_FAILED
   SECURITY_ALERT
   SYSTEM
+}
+
+// ===========================
+// API KEYS
+// ===========================
+
+model ApiKey {
+  id             String    @id @default(cuid())
+  organizationId String
+  userId         String    // Creator
+  name           String
+  keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_abc1")
+  keyHash        String    @unique // SHA-256 hash of full key
+  permissions    String[]  // Array of permissions (read, write, admin)
+  lastUsedAt     DateTime?
+  expiresAt      DateTime?
+  createdAt      DateTime  @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([keyPrefix])
+  @@index([keyHash])
+}
+
+// ===========================
+// WEBHOOKS
+// ===========================
+
+model Webhook {
+  id             String   @id @default(cuid())
+  organizationId String
+  url            String
+  secret         String   // HMAC signing secret
+  events         String[] // Array of event types to subscribe to
+  enabled        Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  deliveries   WebhookDelivery[]
+
+  @@index([organizationId])
+  @@index([enabled])
+}
+
+model WebhookDelivery {
+  id          String    @id @default(cuid())
+  webhookId   String
+  event       String
+  payload     Json
+  status      String    // pending, success, failed
+  statusCode  Int?
+  response    String?   @db.Text
+  attempts    Int       @default(0)
+  nextRetryAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  webhook Webhook @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([status, nextRetryAt])
+  @@index([createdAt])
 }
