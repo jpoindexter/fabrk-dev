@@ -177,11 +177,11 @@ export function ImageUploader({
         onDrop={handleDrop}
         onClick={() => !disabled && fileInputRef.current?.click()}
         className={cn(
-          "relative flex flex-col items-center justify-center rounded-brutal border-2 border-dashed border-brutal bg-muted/20 px-6 py-8 transition-all cursor-pointer",
-          isDragging && "border-primary bg-primary/10 scale-[1.02]",
+          "relative flex flex-col items-center justify-center rounded-md border-2 border-dashed bg-muted/20 px-6 py-8 transition-all cursor-pointer",
+          isDragging && "border-primary bg-primary/10",
           error && "border-destructive bg-destructive/10",
           disabled && "opacity-50 cursor-not-allowed",
-          !disabled && "hover:border-primary hover:bg-primary/5 hover:scale-[1.01]"
+          !disabled && "hover:border-primary hover:bg-primary/5"
         )}
         role="button"
         tabIndex={disabled ? -1 : 0}
@@ -192,7 +192,7 @@ export function ImageUploader({
           "mb-4 h-10 w-10 transition-colors",
           isDragging ? "text-primary" : "text-muted-foreground"
         )} />
-        <p className="mb-2 text-sm font-bold text-foreground">
+        <p className="mb-2 text-sm font-medium text-foreground">
           {isDragging ? "Drop files here" : "Click to upload or drag and drop"}
         </p>
         <p className="text-xs text-muted-foreground">
@@ -217,8 +217,8 @@ export function ImageUploader({
 
       {/* Error Message */}
       {error && (
-        <div className="rounded-brutal border-2 border-destructive bg-destructive/10 px-4 py-3">
-          <p className="text-sm font-bold text-destructive">{error}</p>
+        <div className="rounded-md border border-destructive bg-destructive/10 px-4 py-3">
+          <p className="text-sm font-medium text-destructive">{error}</p>
         </div>
       )}
 
@@ -228,7 +228,7 @@ export function ImageUploader({
           {files.map((file, index) => (
             <div
               key={`${file.name}-${index}`}
-              className="group relative aspect-square overflow-hidden rounded-brutal border-brutal bg-muted shadow-brutal"
+              className="group relative aspect-square overflow-hidden rounded-md border bg-muted shadow-sm"
             >
               {file.preview ? (
                 <img
@@ -250,7 +250,7 @@ export function ImageUploader({
                 }}
                 disabled={disabled}
                 className={cn(
-                  "absolute right-2 top-2 rounded-brutal border-brutal bg-destructive p-1 text-destructive-foreground shadow-brutal opacity-0 transition-all",
+                  "absolute right-2 top-2 rounded-md border bg-destructive p-1 text-destructive-foreground shadow-sm opacity-0 transition-all",
                   "group-hover:opacity-100 hover:scale-110 active:scale-95",
                   disabled && "cursor-not-allowed opacity-50"
                 )}
@@ -261,7 +261,7 @@ export function ImageUploader({
 
               {/* File Info Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-overlay px-2 py-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-                <p className="truncate text-xs font-bold text-white">
+                <p className="truncate text-xs font-medium text-white">
                   {file.name}
                 </p>
                 <p className="text-xs text-white/80">

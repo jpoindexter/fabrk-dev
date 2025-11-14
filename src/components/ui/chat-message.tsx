@@ -114,9 +114,9 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>(
         {/* Avatar */}
         <div className={cn("flex-shrink-0", isGrouped && !showAvatar && "w-10")}>
           {showAvatar && !isGrouped && (
-            <Avatar className="h-10 w-10 border-brutal">
+            <Avatar className="h-10 w-10 border">
               <AvatarImage src={sender.avatar} alt={sender.name} />
-              <AvatarFallback className="bg-accent text-accent-foreground font-bold text-xs">
+              <AvatarFallback className="bg-accent text-accent-foreground font-medium text-xs">
                 {getInitials(sender.name)}
               </AvatarFallback>
             </Avatar>
@@ -141,7 +141,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>(
           <div className="relative">
             <div
               className={cn(
-                "rounded-brutal border-brutal px-4 py-2.5 shadow-brutal",
+                "rounded-md border px-4 py-2.5 shadow-sm",
                 "transition-all duration-200",
                 isOwn
                   ? "bg-primary text-primary-foreground"
@@ -160,7 +160,7 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>(
                     <div
                       key={index}
                       className={cn(
-                        "rounded-brutal border-2 overflow-hidden",
+                        "rounded-md border overflow-hidden",
                         isOwn
                           ? "border-primary-foreground/20 bg-primary-foreground/10"
                           : "border-border bg-accent"
@@ -231,13 +231,13 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>(
                       onClick={() => onReact?.(reaction.emoji)}
                       className={cn(
                         "flex items-center gap-1 px-2 py-0.5",
-                        "rounded-brutal border-brutal",
-                        "bg-background shadow-brutal hover:shadow-brutal-lg",
+                        "rounded-md border",
+                        "bg-background shadow-sm hover:shadow-md",
                         "transition-all duration-200"
                       )}
                     >
                       <span className="text-sm">{reaction.emoji}</span>
-                      <span className="text-xs font-semibold text-foreground">
+                      <span className="text-xs font-medium text-foreground">
                         {reaction.count}
                       </span>
                     </button>
@@ -247,8 +247,8 @@ export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>(
                       <div
                         className={cn(
                           "absolute bottom-full mb-2 z-10",
-                          "px-3 py-2 rounded-brutal border-brutal",
-                          "bg-card text-card-foreground shadow-brutal-lg",
+                          "px-3 py-2 rounded-md border",
+                          "bg-card text-card-foreground shadow-md",
                           "whitespace-nowrap text-xs"
                         )}
                       >
@@ -335,19 +335,19 @@ export const TypingIndicator = React.forwardRef<
       className={cn("flex gap-3 mt-4", className)}
       {...props}
     >
-      <Avatar className="h-10 w-10 border-brutal">
+      <Avatar className="h-10 w-10 border">
         <AvatarImage src={sender.avatar} alt={sender.name} />
-        <AvatarFallback className="bg-accent text-accent-foreground font-bold text-xs">
+        <AvatarFallback className="bg-accent text-accent-foreground font-medium text-xs">
           {getInitials(sender.name)}
         </AvatarFallback>
       </Avatar>
 
       <div className="flex flex-col gap-1 max-w-[70%]">
-        <span className="text-xs font-semibold text-foreground px-1">
+        <span className="text-xs font-medium text-foreground px-1">
           {sender.name}
         </span>
 
-        <div className="rounded-brutal border-brutal px-4 py-3 bg-card shadow-brutal">
+        <div className="rounded-md border px-4 py-3 bg-card shadow-sm">
           <div className="flex gap-1.5">
             {[0, 1, 2].map((i) => (
               <div

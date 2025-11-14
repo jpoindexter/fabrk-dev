@@ -169,7 +169,7 @@ const ChatInput = React.forwardRef<HTMLTextAreaElement, ChatInputProps>(
                 <button
                   type="button"
                   onClick={() => removeFile(index)}
-                  className="ml-1 rounded-brutal-sm p-0.5 hover:bg-destructive hover:text-destructive-foreground"
+                  className="ml-1 rounded-sm p-0.5 hover:bg-destructive hover:text-destructive-foreground"
                 >
                   <X className="h-3 w-3" />
                 </button>
@@ -179,7 +179,7 @@ const ChatInput = React.forwardRef<HTMLTextAreaElement, ChatInputProps>(
         )}
 
         {/* Input container */}
-        <div className="relative flex items-end gap-2 rounded-brutal border-brutal bg-card p-2 shadow-brutal transition-brutal focus-within:shadow-brutal-lg">
+        <div className="relative flex items-end gap-2 rounded-md border bg-card p-2 shadow-sm focus-within:shadow-md">
           {/* Attachment button */}
           <Button
             type="button"
