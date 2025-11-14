@@ -6,20 +6,17 @@ Complete index of all documentation organized into numbered sections for easy na
 
 ## 📚 Documentation Structure
 
-All documentation is organized into 10 numbered folders:
+All documentation is organized into 7 numbered folders:
 
 ```
 docs/
 ├── 01-getting-started/      # Quick start, troubleshooting, setup
 ├── 02-components/           # Component library, charts, landing pages
-├── 03-development/          # API docs, browser automation, agent tools
+├── 03-development/          # API docs, testing, browser automation
 ├── 04-features/             # Feature guides, enterprise setup, accessibility
-├── 05-testing/              # Test coverage, Lighthouse, testing guides
-├── 06-launch/               # Launch prep, demo video, Product Hunt
-├── 07-deployment/           # Vercel, alternative platforms
-├── 08-advanced/             # Performance, security, backup & recovery
-├── 09-operations/           # Monitoring, analytics, alerting
-└── 10-marketing/            # Comparison, SEO, growth tactics
+├── 05-deployment/           # Launch prep, deployment, monitoring
+├── 06-marketing/            # Comparison, SEO, growth tactics
+└── 07-advanced/             # Performance, security, backup & recovery
 ```
 
 ---
@@ -32,9 +29,9 @@ docs/
 3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 87 components
 
 ### Preparing for Launch
-1. [06-launch/V1-BLOCKER-FIXES.md](./06-launch/V1-BLOCKER-FIXES.md) - ⚠️ Critical pre-launch fixes
-2. [06-launch/DEMO-VIDEO-GUIDE.md](./06-launch/DEMO-VIDEO-GUIDE.md) - Record demo video
-3. [10-marketing/COMPARISON.md](./10-marketing/COMPARISON.md) - Competitive positioning
+1. [05-deployment/V1-BLOCKER-FIXES.md](./05-deployment/V1-BLOCKER-FIXES.md) - ⚠️ Critical pre-launch fixes
+2. [05-deployment/DEMO-VIDEO-GUIDE.md](./05-deployment/DEMO-VIDEO-GUIDE.md) - Record demo video
+3. [06-marketing/COMPARISON.md](./06-marketing/COMPARISON.md) - Competitive positioning
 
 ### Designer/Frontend
 1. [02-components/README.md](./02-components/README.md) - Component overview
@@ -85,8 +82,12 @@ docs/
 - **API_DOCUMENTATION_SUMMARY.md** - Quick reference
 - **BROWSER-AUTOMATION-TESTING.md** - Playwright guide
 - **AGENT-TOOLS-INTEGRATION.md** - AI agent patterns
+- **TESTING-COMPLETE.md** - 100% test coverage report
+- **TESTING-GUIDE.md** - Vitest + React Testing Library
+- **LIGHTHOUSE-CI.md** - CI/CD integration
+- **LIGHTHOUSE-SETUP-SUMMARY.md** - Performance monitoring
 
-**For developers building with Fabrk.**
+**For developers building with Fabrk. Includes testing and quality assurance.**
 
 ---
 
@@ -108,46 +109,21 @@ docs/
 
 ---
 
-### 05 - Testing
+### 05 - Deployment
 
-**Path:** `docs/05-testing/`
-
-**Contents:**
-- **TESTING-COMPLETE.md** - 100% coverage report (17,822 lines)
-- **TESTING-GUIDE.md** - Vitest + React Testing Library
-- **LIGHTHOUSE-CI.md** - CI/CD integration
-- **LIGHTHOUSE-SETUP-SUMMARY.md** - Performance monitoring
-
-**Test Statistics:**
-- 44 test files
-- 17,822 lines of test code
-- 100% component coverage
-- 82 Storybook stories
-
----
-
-### 06 - Launch
-
-**Path:** `docs/06-launch/`
+**Path:** `docs/05-deployment/`
 
 **Contents:**
-- **V1-BLOCKER-FIXES.md** - ⚠️ Critical pre-launch fixes (31 TS errors, 94 hex colors, 2 console.logs)
+- **V1-BLOCKER-FIXES.md** - ⚠️ Critical pre-launch fixes
 - **LAUNCH-TIMELINE.md** - Complete launch timeline
 - **DEMO-VIDEO-GUIDE.md** - 3-5 minute production guide
 - **PRODUCT-HUNT.md** - Launch strategy
-- **WEEK-2-COMPLETION-REPORT.md** - Historical milestone
-
-**Critical path to v1.0 launch.**
-
----
-
-### 07 - Deployment
-
-**Path:** `docs/07-deployment/`
-
-**Contents:**
 - **DEPLOYMENT.md** - Vercel deployment (recommended)
 - **ALTERNATIVE-DEPLOYMENTS.md** - Netlify, AWS, Railway, DigitalOcean
+- **POST-LAUNCH-MONITORING.md** - System monitoring
+- **ANALYTICS-SETUP.md** - Vercel Analytics, Google Analytics
+
+**Includes:** Launch preparation, deployment, and post-launch operations
 
 **Supported Platforms:**
 - Vercel (one-click)
@@ -156,9 +132,34 @@ docs/
 
 ---
 
-### 08 - Advanced
+### 06 - Marketing
 
-**Path:** `docs/08-advanced/`
+**Path:** `docs/06-marketing/`
+
+**Contents:**
+- **COMPARISON.md** - Fabrk vs ShipFast, Supastarter, Makerkit
+- **MARKETING.md** - Marketing strategy
+- **SEO-QUICK-REFERENCE.md** - SEO optimization
+- **SEO-AEO-GEO-GUIDE.md** - Complete search optimization
+- **CONVERSION-OPTIMIZATION.md** - CRO strategies
+- **GROWTH-TACTICS.md** - Growth hacking
+- **CUSTOMER-ONBOARDING.md** - User activation
+
+**Pricing: $299 (Premium Enterprise)**
+
+**Why $299?**
+- 87 components vs Makerkit 60 (+45%)
+- Complete testing suite
+- Exclusive Storybook integration
+- 156 files vs 800+ (80% cleaner)
+- 6 themes vs 2 (3x more)
+- Next.js 15 (latest)
+
+---
+
+### 07 - Advanced
+
+**Path:** `docs/07-advanced/`
 
 **Contents:**
 - **PERFORMANCE.md** - Optimization strategies
@@ -175,46 +176,6 @@ docs/
 
 ---
 
-### 09 - Operations
-
-**Path:** `docs/09-operations/`
-
-**Contents:**
-- **POST-LAUNCH-MONITORING.md** - System monitoring
-- **ANALYTICS-SETUP.md** - Vercel Analytics, Google Analytics
-
-**Monitoring Stack:**
-- Application monitoring (Vercel, Sentry)
-- User analytics (GA4, Mixpanel)
-- Alerts & notifications
-
----
-
-### 10 - Marketing
-
-**Path:** `docs/10-marketing/`
-
-**Contents:**
-- **COMPARISON.md** - Fabrk vs ShipFast, Supastarter, Makerkit
-- **MARKETING.md** - Marketing strategy
-- **SEO-QUICK-REFERENCE.md** - SEO optimization
-- **SEO-AEO-GEO-GUIDE.md** - Complete search optimization
-- **CONVERSION-OPTIMIZATION.md** - CRO strategies
-- **GROWTH-TACTICS.md** - Growth hacking
-- **CUSTOMER-ONBOARDING.md** - User activation
-
-**Pricing: $299 (Premium Enterprise)**
-
-**Why $299?**
-- 87 components vs Makerkit 60 (+45%)
-- 17,822 test lines vs 2,000 (8.9x better)
-- Exclusive Storybook integration
-- 161 files vs 800+ (80% cleaner)
-- 6 themes vs 2 (3x more)
-- Next.js 15 (latest)
-
----
-
 ## 🎯 Find What You Need
 
 ### "How do I..."
@@ -226,19 +187,19 @@ docs/
 → [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md)
 
 **...prepare for launch?**
-→ [06-launch/V1-BLOCKER-FIXES.md](./06-launch/V1-BLOCKER-FIXES.md)
+→ [05-deployment/V1-BLOCKER-FIXES.md](./05-deployment/V1-BLOCKER-FIXES.md)
 
 **...deploy to production?**
-→ [07-deployment/DEPLOYMENT.md](./07-deployment/DEPLOYMENT.md)
+→ [05-deployment/DEPLOYMENT.md](./05-deployment/DEPLOYMENT.md)
 
 **...compare Fabrk to competitors?**
-→ [10-marketing/COMPARISON.md](./10-marketing/COMPARISON.md)
+→ [06-marketing/COMPARISON.md](./06-marketing/COMPARISON.md)
 
 **...optimize performance?**
-→ [08-advanced/PERFORMANCE.md](./08-advanced/PERFORMANCE.md)
+→ [07-advanced/PERFORMANCE.md](./07-advanced/PERFORMANCE.md)
 
 **...set up analytics?**
-→ [09-operations/ANALYTICS-SETUP.md](./09-operations/ANALYTICS-SETUP.md)
+→ [05-deployment/ANALYTICS-SETUP.md](./05-deployment/ANALYTICS-SETUP.md)
 
 ---
 
@@ -340,5 +301,5 @@ npm run type-check       # TypeScript validation
 **Last Updated:** November 14, 2025
 **Documentation Files:** 77 markdown files
 **Total Size:** 10+ MB
-**Organization:** 10 numbered sections
+**Organization:** 7 numbered sections
 **Status:** ✅ Production ready
