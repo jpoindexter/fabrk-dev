@@ -10,11 +10,16 @@ import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { retryWebhookDelivery } from "@/lib/webhooks";
 
+interface RouteContext {
+  params: Promise<{ deliveryId: string }>;
+}
+
 export async function POST(
   req: NextRequest,
-  { params }: { params: { deliveryId: string } }
+  context: RouteContext
 ) {
   try {
+    const { deliveryId } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -22,7 +27,7 @@ export async function POST(
     }
 
     const delivery = await prisma.webhookDelivery.findUnique({
-      where: { id: params.deliveryId },
+      where: { id: deliveryId },
       include: {
         webhook: true,
       },
@@ -66,7 +71,7 @@ export async function POST(
     }
 
     // Retry delivery
-    await retryWebhookDelivery(params.deliveryId);
+    await retryWebhookDelivery(deliveryId);
 
     return NextResponse.json({
       success: true,

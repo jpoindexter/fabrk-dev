@@ -12,11 +12,16 @@ import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { isValidEvent } from "@/lib/webhooks/events";
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -24,7 +29,7 @@ export async function GET(
     }
 
     const webhook = await prisma.webhook.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         organization: {
           select: {
@@ -83,9 +88,10 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -93,7 +99,7 @@ export async function PATCH(
     }
 
     const webhook = await prisma.webhook.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!webhook) {
@@ -166,7 +172,7 @@ export async function PATCH(
     }
 
     const updatedWebhook = await prisma.webhook.update({
-      where: { id: params.id },
+      where: { id },
       data: updateData,
     });
 
@@ -188,9 +194,10 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -198,7 +205,7 @@ export async function DELETE(
     }
 
     const webhook = await prisma.webhook.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!webhook) {
@@ -223,7 +230,7 @@ export async function DELETE(
     }
 
     await prisma.webhook.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({

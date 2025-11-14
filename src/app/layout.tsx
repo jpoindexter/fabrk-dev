@@ -1,6 +1,18 @@
-import { Providers } from "@/components/providers";
+/**
+ * Root Layout (Metadata Only)
+ *
+ * This layout provides metadata for routes OUTSIDE of /[locale].
+ * For page routes, the /[locale]/layout.tsx handles all HTML structure.
+ *
+ * IMPORTANT: Do NOT add <html>, <body>, or providers here - that causes
+ * hydration conflicts with the locale layout. This is just metadata + passthrough.
+ *
+ * Industry Standard Pattern: next-intl with "as-needed" locale prefix
+ * - This layout: Metadata only
+ * - Locale layout: Full HTML structure for all languages
+ */
+
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fabrk.dev"),
@@ -76,43 +88,10 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
+/**
+ * Passthrough layout - no HTML rendering here
+ * All HTML structure is handled by /[locale]/layout.tsx
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <head>
-        {/* Pink background color for mobile browser theme */}
-        <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
-      </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
-        <Providers>
-          {/* Enhanced skip links for keyboard navigation */}
-          <div className="skip-links">
-            <a
-              href="#main-content"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            >
-              Skip to main content
-            </a>
-            <a
-              href="#navigation"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-20 focus:z-50 focus:rounded-md focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            >
-              Skip to navigation
-            </a>
-            <a
-              href="#footer"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-36 focus:z-50 focus:rounded-md focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            >
-              Skip to footer
-            </a>
-          </div>
-          <div className="relative flex min-h-screen flex-col bg-background">
-            <main id="main-content" className="flex-1 bg-background">
-              {children}
-            </main>
-          </div>
-        </Providers>
-      </body>
-    </html>
-  );
+  return children;
 }

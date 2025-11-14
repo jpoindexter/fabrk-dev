@@ -4,6 +4,8 @@ import { locales } from '@/i18n/config';
 import { getHTMLDir } from '@/lib/i18n/rtl';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -12,11 +14,14 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  // Await params before accessing properties (Next.js 15+)
+  const { locale } = await params;
+
   // Validate that the incoming locale parameter is valid
   if (!locales.includes(locale as any)) {
     notFound();
@@ -26,7 +31,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={getHTMLDir(locale)} suppressHydrationWarning className="dark">
+    <html lang={locale} dir={getHTMLDir(locale)} suppressHydrationWarning className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
       </head>
