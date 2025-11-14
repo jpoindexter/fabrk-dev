@@ -20,7 +20,7 @@ export const Square: Story = {
         <img
           src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
           alt="Photo by Drew Beamer"
-          className="rounded-brutal object-cover w-full h-full border-2 border-black shadow-brutal"
+          className="rounded-md object-cover w-full h-full border border-border shadow-md"
         />
       </AspectRatio>
     </div>
@@ -34,7 +34,7 @@ export const Video: Story = {
         <img
           src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?w=800&dpr=2&q=80"
           alt="Photo by Alvaro Pinot"
-          className="rounded-brutal object-cover w-full h-full border-2 border-black shadow-brutal"
+          className="rounded-md object-cover w-full h-full border border-border shadow-md"
         />
       </AspectRatio>
     </div>
@@ -48,7 +48,7 @@ export const Portrait: Story = {
         <img
           src="https://images.unsplash.com/photo-1706885093476-b1e54f26d6b6?w=800&dpr=2&q=80"
           alt="Portrait photo"
-          className="rounded-brutal object-cover w-full h-full border-2 border-black shadow-brutal"
+          className="rounded-md object-cover w-full h-full border border-border shadow-md"
         />
       </AspectRatio>
     </div>
@@ -59,7 +59,7 @@ export const Placeholder: Story = {
   render: () => (
     <div className="w-[450px]">
       <AspectRatio ratio={16 / 9}>
-        <div className="flex h-full items-center justify-center rounded-brutal border-2 border-black bg-muted shadow-brutal">
+        <div className="flex h-full items-center justify-center rounded-md border border-border bg-muted shadow-md">
           <p className="text-muted-foreground">16:9 Aspect Ratio</p>
         </div>
       </AspectRatio>

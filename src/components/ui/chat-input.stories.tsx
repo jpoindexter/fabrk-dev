@@ -169,7 +169,7 @@ export const WithFileAttachment = () => {
         onSend={handleSend}
         onFileAttach={handleFileAttach}
       />
-      <div className="rounded-brutal border-brutal bg-muted p-4">
+      <div className="rounded-md border bg-muted p-4">
         <p className="text-xs text-muted-foreground">
           <strong>💡 Tip:</strong> Click the paperclip icon to test file
           attachment. File previews will appear above the input.
@@ -259,7 +259,7 @@ export const InChatInterface = () => {
       </p>
 
       <Card className="overflow-hidden">
-        <CardHeader className="border-b-2 border-brutal">
+        <CardHeader className="border-b">
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg">Team Chat</CardTitle>
             <Badge variant="accent">3 Online</Badge>
@@ -273,18 +273,18 @@ export const InChatInterface = () => {
                 key={msg.id}
                 className={`flex gap-3 ${msg.isMe ? "flex-row-reverse" : ""}`}
               >
-                <Avatar className="h-8 w-8 shrink-0 rounded-brutal border-brutal bg-primary text-xs font-bold text-primary-foreground">
+                <Avatar className="h-8 w-8 shrink-0 rounded-md border bg-primary text-xs font-semibold text-primary-foreground">
                   {msg.avatar}
                 </Avatar>
                 <div
                   className={`flex max-w-[70%] flex-col gap-1 ${msg.isMe ? "items-end" : ""}`}
                 >
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    {!msg.isMe && <span className="font-bold">{msg.user}</span>}
+                    {!msg.isMe && <span className="font-semibold">{msg.user}</span>}
                     <span>{msg.time}</span>
                   </div>
                   <div
-                    className={`rounded-brutal border-brutal px-4 py-2 shadow-brutal ${
+                    className={`rounded-md border px-4 py-2 shadow-sm ${
                       msg.isMe
                         ? "bg-primary text-primary-foreground"
                         : "bg-card text-foreground"
@@ -298,7 +298,7 @@ export const InChatInterface = () => {
           </div>
 
           {/* Chat input */}
-          <div className="border-t-2 border-brutal bg-muted p-4">
+          <div className="border-t bg-muted p-4">
             <ChatInput
               value={message}
               onChange={setMessage}
@@ -331,7 +331,7 @@ export const Minimal = () => {
       </p>
 
       {/* Custom minimal implementation */}
-      <div className="relative flex items-end gap-2 rounded-brutal border-brutal bg-card p-2 shadow-brutal">
+      <div className="relative flex items-end gap-2 rounded-md border bg-card p-2 shadow-sm">
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -355,7 +355,7 @@ export const Minimal = () => {
             }
           }}
           disabled={!message.trim()}
-          className="shrink-0 rounded-brutal border-brutal bg-primary p-2 text-primary-foreground shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg disabled:opacity-50 disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-brutal"
+          className="shrink-0 rounded-md border bg-primary p-2 text-primary-foreground shadow-sm transition-all hover:shadow-md disabled:opacity-50"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +401,7 @@ export const LongMessage = () => {
         showCharCount={true}
         maxLength={500}
       />
-      <div className="rounded-brutal border-brutal bg-muted p-4">
+      <div className="rounded-md border bg-muted p-4">
         <p className="text-xs text-muted-foreground">
           <strong>💡 Try this:</strong> Paste this text to see auto-resize in
           action:
@@ -477,10 +477,10 @@ export const DarkModeDemo = () => {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <p className="text-xs font-bold uppercase text-muted-foreground">
+          <p className="text-xs font-semibold uppercase text-muted-foreground">
             Light Theme
           </p>
-          <div className="rounded-brutal border-brutal bg-background p-4">
+          <div className="rounded-md border bg-background p-4">
             <ChatInput
               value={message}
               onChange={setMessage}
@@ -491,10 +491,10 @@ export const DarkModeDemo = () => {
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-bold uppercase text-muted-foreground">
+          <p className="text-xs font-semibold uppercase text-muted-foreground">
             With Background
           </p>
-          <div className="rounded-brutal border-brutal bg-muted p-4">
+          <div className="rounded-md border bg-muted p-4">
             <ChatInput
               value={message}
               onChange={setMessage}

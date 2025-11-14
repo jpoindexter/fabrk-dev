@@ -64,7 +64,7 @@ export const WithCenterText: Story = {
     thickness: 60,
     centerContent: (
       <div className="text-center">
-        <p className="text-3xl font-black">$12.4K</p>
+        <p className="text-3xl font-semibold">$12.4K</p>
         <p className="text-xs text-muted-foreground">Total Revenue</p>
       </div>
     ),
@@ -167,12 +167,12 @@ export const MultipleProgress: Story = {
 
 export const DashboardCard: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
+    <div className="w-[400px] rounded-md border bg-card p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold">Revenue Breakdown</h3>
+        <h3 className="font-semibold">Revenue Breakdown</h3>
         <div className="flex items-center gap-1 text-green-600">
           <TrendingUp className="h-4 w-4" />
-          <span className="text-sm font-bold">+12%</span>
+          <span className="text-sm font-semibold">+12%</span>
         </div>
       </div>
       <MetricDonutChart
@@ -185,7 +185,7 @@ export const DashboardCard: Story = {
           sublabel: "This month",
         }}
       />
-      <div className="mt-4 pt-4 border-t-2 border-brutal space-y-2">
+      <div className="mt-4 pt-4 border-t space-y-2">
         {revenueData.map((item, index) => (
           <div
             key={index}
@@ -193,12 +193,12 @@ export const DashboardCard: Story = {
           >
             <div className="flex items-center gap-2">
               <div
-                className="w-3 h-3 rounded-sm border-brutal"
+                className="w-3 h-3 rounded-sm border"
                 style={{ backgroundColor: item.color }}
               />
               <span>{item.label}</span>
             </div>
-            <span className="font-bold">
+            <span className="font-semibold">
               $
               {((item.value / 100) * 48.2).toFixed(1)}K
             </span>
@@ -218,8 +218,8 @@ export const GoalTracker: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
-        <h3 className="font-bold mb-6 text-center">Monthly Goals</h3>
+      <div className="w-[500px] rounded-md border bg-card p-6">
+        <h3 className="font-semibold mb-6 text-center">Monthly Goals</h3>
         <div className="flex justify-around">
           {goals.map((goal, index) => (
             <div key={index} className="text-center">
@@ -230,7 +230,7 @@ export const GoalTracker: Story = {
                 thickness={20}
                 color={goal.color}
               />
-              <p className="text-sm font-bold mt-3">{goal.label}</p>
+              <p className="text-sm font-semibold mt-3">{goal.label}</p>
               <p className="text-xs text-muted-foreground">
                 {goal.current.toLocaleString()} / {goal.target.toLocaleString()}
               </p>
@@ -252,8 +252,8 @@ export const UserActivity: Story = {
     ];
 
     return (
-      <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
-        <h3 className="font-bold mb-4 text-center">User Activity Levels</h3>
+      <div className="w-[450px] rounded-md border bg-card p-6">
+        <h3 className="font-semibold mb-4 text-center">User Activity Levels</h3>
         <MetricDonutChart
           data={activityData}
           size={280}
@@ -271,8 +271,8 @@ export const UserActivity: Story = {
 
 export const StorageUsage: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
-      <h3 className="font-bold mb-4 text-center">Storage Usage</h3>
+    <div className="w-[400px] rounded-md border bg-card p-6">
+      <h3 className="font-semibold mb-4 text-center">Storage Usage</h3>
       <ProgressDonutChart
         value={72.4}
         max={100}
@@ -281,16 +281,16 @@ export const StorageUsage: Story = {
         label="Used"
         color="oklch(70% 0.15 240)"
       />
-      <div className="mt-4 pt-4 border-t-2 border-brutal">
+      <div className="mt-4 pt-4 border-t">
         <div className="flex justify-between text-sm mb-2">
           <span className="text-muted-foreground">Used</span>
-          <span className="font-bold">72.4 GB</span>
+          <span className="font-semibold">72.4 GB</span>
         </div>
         <div className="flex justify-between text-sm mb-2">
           <span className="text-muted-foreground">Available</span>
-          <span className="font-bold">27.6 GB</span>
+          <span className="font-semibold">27.6 GB</span>
         </div>
-        <div className="flex justify-between text-sm font-bold">
+        <div className="flex justify-between text-sm font-semibold">
           <span>Total</span>
           <span>100 GB</span>
         </div>
@@ -308,12 +308,12 @@ export const TaskCompletion: Story = {
     ];
 
     return (
-      <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
+      <div className="w-[450px] rounded-md border bg-card p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold">Project Tasks</h3>
+          <h3 className="font-semibold">Project Tasks</h3>
           <div className="flex items-center gap-1 text-green-600">
             <TrendingUp className="h-4 w-4" />
-            <span className="text-sm font-bold">On Track</span>
+            <span className="text-sm font-semibold">On Track</span>
           </div>
         </div>
         <MetricDonutChart

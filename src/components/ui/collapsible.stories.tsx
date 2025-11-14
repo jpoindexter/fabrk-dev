@@ -31,7 +31,7 @@ export const Default: Story = {
         className="w-[350px] space-y-2"
       >
         <div className="flex items-center justify-between space-x-4 px-4">
-          <h4 className="text-sm font-bold">
+          <h4 className="text-sm font-semibold">
             @peduarte starred 3 repositories
           </h4>
           <CollapsibleTrigger asChild>
@@ -41,14 +41,14 @@ export const Default: Story = {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <div className="rounded-brutal border-2 border-black px-4 py-3 font-mono text-sm shadow-brutal">
+        <div className="rounded-md border border-border px-4 py-3 font-mono text-sm shadow-sm">
           @radix-ui/primitives
         </div>
         <CollapsibleContent className="space-y-2">
-          <div className="rounded-brutal border-2 border-black px-4 py-3 font-mono text-sm shadow-brutal">
+          <div className="rounded-md border border-border px-4 py-3 font-mono text-sm shadow-sm">
             @radix-ui/colors
           </div>
-          <div className="rounded-brutal border-2 border-black px-4 py-3 font-mono text-sm shadow-brutal">
+          <div className="rounded-md border border-border px-4 py-3 font-mono text-sm shadow-sm">
             @stitches/react
           </div>
         </CollapsibleContent>
@@ -71,7 +71,7 @@ export const FAQ: Story = {
               <ChevronsUpDown className="h-4 w-4" />
             </Button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="mt-2 rounded-brutal border-2 border-black p-4 shadow-brutal">
+          <CollapsibleContent className="mt-2 rounded-md border border-border p-4 shadow-sm">
             <p className="text-sm text-muted-foreground">
               React is a JavaScript library for building user interfaces. It
               lets you create reusable components and manage the state of your
@@ -87,7 +87,7 @@ export const FAQ: Story = {
               <ChevronsUpDown className="h-4 w-4" />
             </Button>
           </CollapsibleTrigger>
-          <CollapsibleContent className="mt-2 rounded-brutal border-2 border-black p-4 shadow-brutal">
+          <CollapsibleContent className="mt-2 rounded-md border border-border p-4 shadow-sm">
             <p className="text-sm text-muted-foreground">
               You can get started by installing React using npm or yarn, then
               creating your first component. Check out the official React

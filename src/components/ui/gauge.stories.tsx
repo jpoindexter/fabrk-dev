@@ -125,8 +125,8 @@ export const ScoreVariant: Story = {
 export const DashboardMetrics: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-6 w-[600px]">
-      <div className="rounded-brutal border-brutal bg-card p-4">
-        <h3 className="font-bold text-center mb-2">CPU Usage</h3>
+      <div className="rounded-md border border-border bg-card p-4">
+        <h3 className="font-semibold text-center mb-2">CPU Usage</h3>
         <Gauge
           value={68}
           size={180}
@@ -135,14 +135,14 @@ export const DashboardMetrics: Story = {
           label="Current"
           unit="%"
         />
-        <div className="mt-3 pt-3 border-t-2 border-brutal flex justify-between text-xs">
+        <div className="mt-3 pt-3 border-t border-border flex justify-between text-xs">
           <span className="text-muted-foreground">Avg: 52%</span>
           <span className="text-muted-foreground">Max: 95%</span>
         </div>
       </div>
 
-      <div className="rounded-brutal border-brutal bg-card p-4">
-        <h3 className="font-bold text-center mb-2">Memory</h3>
+      <div className="rounded-md border border-border bg-card p-4">
+        <h3 className="font-semibold text-center mb-2">Memory</h3>
         <Gauge
           value={72}
           size={180}
@@ -151,13 +151,13 @@ export const DashboardMetrics: Story = {
           label="8.6 GB"
           unit=" / 12 GB"
         />
-        <div className="mt-3 pt-3 border-t-2 border-brutal flex justify-between text-xs">
+        <div className="mt-3 pt-3 border-t border-border flex justify-between text-xs">
           <span className="text-muted-foreground">Available: 3.4 GB</span>
         </div>
       </div>
 
-      <div className="rounded-brutal border-brutal bg-card p-4">
-        <h3 className="font-bold text-center mb-2">Disk I/O</h3>
+      <div className="rounded-md border border-border bg-card p-4">
+        <h3 className="font-semibold text-center mb-2">Disk I/O</h3>
         <Gauge
           value={34}
           size={180}
@@ -166,14 +166,14 @@ export const DashboardMetrics: Story = {
           label="Read/Write"
           unit=" MB/s"
         />
-        <div className="mt-3 pt-3 border-t-2 border-brutal flex justify-between text-xs">
+        <div className="mt-3 pt-3 border-t border-border flex justify-between text-xs">
           <span className="text-muted-foreground">Read: 28 MB/s</span>
           <span className="text-muted-foreground">Write: 6 MB/s</span>
         </div>
       </div>
 
-      <div className="rounded-brutal border-brutal bg-card p-4">
-        <h3 className="font-bold text-center mb-2">Network</h3>
+      <div className="rounded-md border border-border bg-card p-4">
+        <h3 className="font-semibold text-center mb-2">Network</h3>
         <Gauge
           value={15}
           size={180}
@@ -182,7 +182,7 @@ export const DashboardMetrics: Story = {
           label="Bandwidth"
           unit=" Mbps"
         />
-        <div className="mt-3 pt-3 border-t-2 border-brutal flex justify-between text-xs">
+        <div className="mt-3 pt-3 border-t border-border flex justify-between text-xs">
           <span className="text-muted-foreground">Down: 12 Mbps</span>
           <span className="text-muted-foreground">Up: 3 Mbps</span>
         </div>
@@ -193,8 +193,8 @@ export const DashboardMetrics: Story = {
 
 export const SpeedometerStyle: Story = {
   render: () => (
-    <div className="w-[400px] rounded-brutal border-brutal bg-card p-6">
-      <h3 className="font-bold text-center mb-4">Vehicle Speed</h3>
+    <div className="w-[400px] rounded-md border border-border bg-card p-6">
+      <h3 className="font-semibold text-center mb-4">Vehicle Speed</h3>
       <Gauge
         value={85}
         max={200}
@@ -210,15 +210,15 @@ export const SpeedometerStyle: Story = {
       <div className="mt-4 grid grid-cols-3 gap-4 text-center">
         <div>
           <p className="text-xs text-muted-foreground">Avg Speed</p>
-          <p className="text-sm font-bold">72 km/h</p>
+          <p className="text-sm font-semibold">72 km/h</p>
         </div>
         <div>
           <p className="text-xs text-muted-foreground">Max Speed</p>
-          <p className="text-sm font-bold">142 km/h</p>
+          <p className="text-sm font-semibold">142 km/h</p>
         </div>
         <div>
           <p className="text-xs text-muted-foreground">Trip Time</p>
-          <p className="text-sm font-bold">2h 15m</p>
+          <p className="text-sm font-semibold">2h 15m</p>
         </div>
       </div>
     </div>
@@ -227,8 +227,8 @@ export const SpeedometerStyle: Story = {
 
 export const PerformanceScore: Story = {
   render: () => (
-    <div className="w-[450px] rounded-brutal border-brutal bg-card p-6">
-      <h3 className="font-bold text-center mb-4">Website Performance</h3>
+    <div className="w-[450px] rounded-md border border-border bg-card p-6">
+      <h3 className="font-semibold text-center mb-4">Website Performance</h3>
       <Gauge
         value={88}
         size={250}
@@ -250,10 +250,10 @@ export const PerformanceScore: Story = {
         ].map((metric, index) => (
           <div
             key={index}
-            className="flex items-center justify-between p-2 rounded-brutal border-brutal"
+            className="flex items-center justify-between p-2 rounded-md border border-border"
           >
             <span className="text-sm font-medium">{metric.label}</span>
-            <span className="text-sm font-bold" style={{ color: metric.color }}>
+            <span className="text-sm font-semibold" style={{ color: metric.color }}>
               {metric.value}
             </span>
           </div>
@@ -265,8 +265,8 @@ export const PerformanceScore: Story = {
 
 export const BatteryLevel: Story = {
   render: () => (
-    <div className="w-[350px] rounded-brutal border-brutal bg-card p-6">
-      <h3 className="font-bold text-center mb-4">Battery Status</h3>
+    <div className="w-[350px] rounded-md border border-border bg-card p-6">
+      <h3 className="font-semibold text-center mb-4">Battery Status</h3>
       <Gauge
         value={42}
         size={200}
@@ -281,11 +281,11 @@ export const BatteryLevel: Story = {
       <div className="mt-4 grid grid-cols-2 gap-4 text-center">
         <div>
           <p className="text-xs text-muted-foreground">Time Left</p>
-          <p className="text-sm font-bold">3h 24m</p>
+          <p className="text-sm font-semibold">3h 24m</p>
         </div>
         <div>
           <p className="text-xs text-muted-foreground">Health</p>
-          <p className="text-sm font-bold">Good</p>
+          <p className="text-sm font-semibold">Good</p>
         </div>
       </div>
     </div>
@@ -294,8 +294,8 @@ export const BatteryLevel: Story = {
 
 export const ServerLoad: Story = {
   render: () => (
-    <div className="w-[500px] rounded-brutal border-brutal bg-card p-6">
-      <h3 className="font-bold text-center mb-6">Server Load Distribution</h3>
+    <div className="w-[500px] rounded-md border border-border bg-card p-6">
+      <h3 className="font-semibold text-center mb-6">Server Load Distribution</h3>
       <div className="grid grid-cols-3 gap-4">
         {[
           { label: "Server 1", value: 45, color: "oklch(70% 0.15 240)" },

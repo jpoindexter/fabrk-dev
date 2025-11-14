@@ -83,7 +83,7 @@ export const FormExample: Story = {
     return (
       <div className="w-[600px] space-y-4">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Booking Dates
           </label>
           <DateRangePicker
@@ -93,15 +93,15 @@ export const FormExample: Story = {
           />
         </div>
         {dateRange?.from && dateRange?.to && (
-          <div className="rounded-brutal border-brutal bg-card p-4">
-            <p className="text-sm font-bold">Selected Range:</p>
+          <div className="rounded-md border border-border bg-card p-4">
+            <p className="text-sm font-semibold">Selected Range:</p>
             <p className="text-sm text-muted-foreground">
               From: {dateRange.from.toLocaleDateString()}
             </p>
             <p className="text-sm text-muted-foreground">
               To: {dateRange.to.toLocaleDateString()}
             </p>
-            <p className="text-sm font-bold mt-2">
+            <p className="text-sm font-semibold mt-2">
               Total Days:{" "}
               {Math.ceil(
                 (dateRange.to.getTime() - dateRange.from.getTime()) /

@@ -34,7 +34,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Command className="rounded-brutal border-2 border-black shadow-brutal-lg">
+    <Command className="rounded-md border shadow-md">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -90,7 +90,7 @@ export const Dialog: Story = {
         </p>
         <button
           onClick={() => setOpen(true)}
-          className="rounded-brutal border-2 border-black bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-brutal hover:shadow-brutal-lg transition-all"
+          className="rounded-md border bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:shadow-md transition-all"
         >
           Open Command Dialog
         </button>
@@ -139,7 +139,7 @@ export const Dialog: Story = {
 
 export const WithKeyboardShortcuts: Story = {
   render: () => (
-    <Command className="rounded-brutal border-2 border-black shadow-brutal-lg">
+    <Command className="rounded-md border shadow-md">
       <CommandInput placeholder="Search commands..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>

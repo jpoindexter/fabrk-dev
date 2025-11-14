@@ -123,7 +123,7 @@ function LightboxStory({
                   setCurrentIndex(index);
                   setIsOpen(true);
                 }}
-                className="overflow-hidden rounded-brutal border-brutal shadow-brutal transition-all hover:shadow-brutal-lg"
+                className="overflow-hidden rounded-md border border-border shadow-sm transition-all hover:shadow-md"
               >
                 {item.type === "image" ? (
                   <img
@@ -203,35 +203,35 @@ export const KeyboardNavigation: Story = {
     <div className="flex min-h-screen items-center justify-center bg-muted p-8">
       <div className="max-w-2xl space-y-4 text-center">
         <h3 className="text-2xl font-bold">Keyboard Navigation Demo</h3>
-        <div className="space-y-2 rounded-brutal border-brutal bg-card p-6 text-left shadow-brutal">
-          <p className="font-bold">Available keyboard shortcuts:</p>
+        <div className="space-y-2 rounded-md border border-border bg-card p-6 text-left shadow-sm">
+          <p className="font-semibold">Available keyboard shortcuts:</p>
           <ul className="space-y-1 text-sm text-muted-foreground">
             <li>
-              <kbd className="rounded border border-brutal bg-muted px-2 py-1 font-mono text-xs">
+              <kbd className="rounded border border-border bg-muted px-2 py-1 font-mono text-xs">
                 Esc
               </kbd>{" "}
               - Close lightbox
             </li>
             <li>
-              <kbd className="rounded border border-brutal bg-muted px-2 py-1 font-mono text-xs">
+              <kbd className="rounded border border-border bg-muted px-2 py-1 font-mono text-xs">
                 ←
               </kbd>{" "}
               - Previous image
             </li>
             <li>
-              <kbd className="rounded border border-brutal bg-muted px-2 py-1 font-mono text-xs">
+              <kbd className="rounded border border-border bg-muted px-2 py-1 font-mono text-xs">
                 →
               </kbd>{" "}
               - Next image
             </li>
             <li>
-              <kbd className="rounded border border-brutal bg-muted px-2 py-1 font-mono text-xs">
+              <kbd className="rounded border border-border bg-muted px-2 py-1 font-mono text-xs">
                 +
               </kbd>{" "}
               - Zoom in
             </li>
             <li>
-              <kbd className="rounded border border-brutal bg-muted px-2 py-1 font-mono text-xs">
+              <kbd className="rounded border border-border bg-muted px-2 py-1 font-mono text-xs">
                 -
               </kbd>{" "}
               - Zoom out
@@ -332,7 +332,7 @@ export const OpeningFromGrid: Story = {
                   setCurrentIndex(index);
                   setIsOpen(true);
                 }}
-                className="group overflow-hidden rounded-brutal border-brutal shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-y-1"
+                className="group overflow-hidden rounded-md border border-border shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
               >
                 <div className="relative aspect-square">
                   <img
@@ -343,7 +343,7 @@ export const OpeningFromGrid: Story = {
                   <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10" />
                 </div>
                 {item.caption && (
-                  <div className="bg-card p-2 text-xs font-bold">
+                  <div className="bg-card p-2 text-xs font-semibold">
                     {item.caption}
                   </div>
                 )}

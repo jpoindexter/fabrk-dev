@@ -80,34 +80,34 @@ export const FormExample: Story = {
     return (
       <div className="w-[500px] space-y-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Primary Brand Color
           </label>
           <ColorPicker color={primaryColor} onChange={setPrimaryColor} />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Secondary Brand Color
           </label>
           <ColorPicker color={secondaryColor} onChange={setSecondaryColor} />
         </div>
         {(primaryColor || secondaryColor) && (
-          <div className="rounded-brutal border-brutal bg-card p-4 space-y-4">
+          <div className="rounded-md border bg-card p-4 space-y-4">
             <div>
-              <p className="text-sm font-bold">Primary Color</p>
+              <p className="text-sm font-semibold">Primary Color</p>
               <div className="flex items-center gap-2 mt-1">
                 <div
-                  className="h-8 w-8 rounded-brutal border-brutal"
+                  className="h-8 w-8 rounded-md border"
                   style={{ backgroundColor: primaryColor }}
                 />
                 <p className="text-sm text-muted-foreground">{primaryColor}</p>
               </div>
             </div>
             <div>
-              <p className="text-sm font-bold">Secondary Color</p>
+              <p className="text-sm font-semibold">Secondary Color</p>
               <div className="flex items-center gap-2 mt-1">
                 <div
-                  className="h-8 w-8 rounded-brutal border-brutal"
+                  className="h-8 w-8 rounded-md border"
                   style={{ backgroundColor: secondaryColor }}
                 />
                 <p className="text-sm text-muted-foreground">
@@ -133,23 +133,23 @@ export const ThemeBuilder: Story = {
       <div className="w-[700px] space-y-6">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-bold text-foreground">
+            <label className="text-sm font-semibold text-foreground">
               Background
             </label>
             <ColorPicker color={background} onChange={setBackground} />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-bold text-foreground">
+            <label className="text-sm font-semibold text-foreground">
               Foreground
             </label>
             <ColorPicker color={foreground} onChange={setForeground} />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-bold text-foreground">Accent</label>
+            <label className="text-sm font-semibold text-foreground">Accent</label>
             <ColorPicker color={accent} onChange={setAccent} />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-bold text-foreground">
+            <label className="text-sm font-semibold text-foreground">
               Destructive
             </label>
             <ColorPicker color={destructive} onChange={setDestructive} />
@@ -157,26 +157,26 @@ export const ThemeBuilder: Story = {
         </div>
 
         <div
-          className="rounded-brutal border-2 p-6 space-y-4"
+          className="rounded-md border p-6 space-y-4"
           style={{
             backgroundColor: background,
             color: foreground,
             borderColor: accent,
           }}
         >
-          <h3 className="text-lg font-bold">Theme Preview</h3>
+          <h3 className="text-lg font-semibold">Theme Preview</h3>
           <p className="text-sm">
             This is a preview of your custom theme configuration.
           </p>
           <div className="flex gap-2">
             <div
-              className="px-4 py-2 rounded-brutal border-2 font-bold"
+              className="px-4 py-2 rounded-md border font-semibold"
               style={{ backgroundColor: accent, color: background }}
             >
               Accent Button
             </div>
             <div
-              className="px-4 py-2 rounded-brutal border-2 font-bold"
+              className="px-4 py-2 rounded-md border font-semibold"
               style={{ backgroundColor: destructive, color: background }}
             >
               Destructive Button
@@ -206,11 +206,11 @@ export const ColorPalette: Story = {
 
     return (
       <div className="w-[600px] space-y-6">
-        <h3 className="text-lg font-bold">Color Palette Builder</h3>
+        <h3 className="text-lg font-semibold">Color Palette Builder</h3>
         <div className="grid grid-cols-5 gap-4">
           {colors.map((color, index) => (
             <div key={index} className="space-y-2">
-              <label className="text-sm font-bold text-foreground">
+              <label className="text-sm font-semibold text-foreground">
                 Color {index + 1}
               </label>
               <ColorPicker
@@ -220,13 +220,13 @@ export const ColorPalette: Story = {
             </div>
           ))}
         </div>
-        <div className="rounded-brutal border-brutal bg-card p-4">
-          <p className="text-sm font-bold mb-2">Palette Preview</p>
+        <div className="rounded-md border bg-card p-4">
+          <p className="text-sm font-semibold mb-2">Palette Preview</p>
           <div className="flex gap-2">
             {colors.map((color, index) => (
               <div
                 key={index}
-                className="h-16 flex-1 rounded-brutal border-brutal"
+                className="h-16 flex-1 rounded-md border"
                 style={{ backgroundColor: color }}
               />
             ))}

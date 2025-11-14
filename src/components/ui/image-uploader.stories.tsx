@@ -213,8 +213,8 @@ export const Controlled: Story = {
           maxSize={5 * 1024 * 1024}
           showPreview
         />
-        <div className="rounded-brutal border-brutal bg-card p-4">
-          <p className="mb-2 text-sm font-bold">Current files:</p>
+        <div className="rounded-md border border-border bg-card p-4">
+          <p className="mb-2 text-sm font-semibold">Current files:</p>
           {files.length === 0 ? (
             <p className="text-sm text-muted-foreground">No files selected</p>
           ) : (
@@ -314,8 +314,8 @@ export const MaxFilesError: Story = {
 
     return (
       <div className="w-[800px] space-y-4">
-        <div className="rounded-brutal border-brutal bg-muted/20 p-4">
-          <p className="text-sm font-bold text-foreground">
+        <div className="rounded-md border border-border bg-muted/20 p-4">
+          <p className="text-sm font-semibold text-foreground">
             Instructions: Try to upload more than 3 files to see the error state
           </p>
         </div>
@@ -338,8 +338,8 @@ export const FileTypeError: Story = {
 
     return (
       <div className="w-[800px] space-y-4">
-        <div className="rounded-brutal border-brutal bg-muted/20 p-4">
-          <p className="text-sm font-bold text-foreground">
+        <div className="rounded-md border border-border bg-muted/20 p-4">
+          <p className="text-sm font-semibold text-foreground">
             Instructions: Try to upload a non-PNG file to see the validation error
           </p>
         </div>
@@ -388,8 +388,8 @@ export const Complete: Story = {
 
     return (
       <div className="w-[900px] space-y-4">
-        <div className="rounded-brutal border-brutal bg-card p-6">
-          <h2 className="mb-4 text-lg font-black">Upload Product Images</h2>
+        <div className="rounded-md border border-border bg-card p-6">
+          <h2 className="mb-4 text-lg font-bold">Upload Product Images</h2>
           <ImageUploader
             value={files}
             onChange={setFiles}
@@ -400,8 +400,8 @@ export const Complete: Story = {
           />
         </div>
 
-        <div className="rounded-brutal border-brutal bg-muted/20 p-4">
-          <h3 className="mb-2 text-sm font-bold">Debug Info:</h3>
+        <div className="rounded-md border border-border bg-muted/20 p-4">
+          <h3 className="mb-2 text-sm font-semibold">Debug Info:</h3>
           <ul className="space-y-1 text-xs text-muted-foreground">
             <li>Files selected: {files.length}</li>
             <li>Total size: {(files.reduce((acc, f) => acc + f.size, 0) / 1024 / 1024).toFixed(2)} MB</li>

@@ -23,7 +23,7 @@ export const Default: Story = {
         mode="single"
         selected={date}
         onSelect={setDate}
-        className="rounded-brutal border-2 border-black shadow-brutal"
+        className="rounded-md border shadow-sm"
       />
     );
   },
@@ -38,7 +38,7 @@ export const Range: Story = {
         mode="range"
         selected={dateRange}
         onSelect={setDateRange}
-        className="rounded-brutal border-2 border-black shadow-brutal"
+        className="rounded-md border shadow-sm"
         numberOfMonths={2}
       />
     );
@@ -54,7 +54,7 @@ export const Multiple: Story = {
         mode="multiple"
         selected={dates}
         onSelect={setDates}
-        className="rounded-brutal border-2 border-black shadow-brutal"
+        className="rounded-md border shadow-sm"
       />
     );
   },
@@ -71,7 +71,7 @@ export const DisabledDates: Story = {
         selected={date}
         onSelect={setDate}
         disabled={(date) => date < today}
-        className="rounded-brutal border-2 border-black shadow-brutal"
+        className="rounded-md border shadow-sm"
       />
     );
   },

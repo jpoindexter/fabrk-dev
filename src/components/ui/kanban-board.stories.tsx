@@ -746,8 +746,8 @@ export const InteractiveDragDrop: Story = {
 
     return (
       <div className="h-screen bg-background p-4">
-        <div className="mb-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
-          <h2 className="mb-2 font-black text-foreground">
+        <div className="mb-4 rounded-md border border-border bg-card p-4 shadow-sm">
+          <h2 className="mb-2 font-bold text-foreground">
             Interactive Drag & Drop Demo
           </h2>
           <p className="text-sm text-muted-foreground">

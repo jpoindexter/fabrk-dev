@@ -30,7 +30,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-brutal border-2 border-black border-dashed text-sm shadow-brutal">
+      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-border border-dashed text-sm shadow-sm">
         Right click here
       </ContextMenuTrigger>
       <ContextMenuContent className="w-64">
@@ -82,7 +82,7 @@ export const Default: Story = {
 export const Simple: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-brutal border-2 border-black bg-card text-sm shadow-brutal">
+      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-border bg-card text-sm shadow-sm">
         Right click for options
       </ContextMenuTrigger>
       <ContextMenuContent>

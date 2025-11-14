@@ -86,7 +86,7 @@ export const FormExample: Story = {
     return (
       <div className="w-[500px] space-y-4">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Event Start Time
           </label>
           <DateTimePicker
@@ -96,8 +96,8 @@ export const FormExample: Story = {
           />
         </div>
         {dateTime && (
-          <div className="rounded-brutal border-brutal bg-card p-4">
-            <p className="text-sm font-bold">Selected Date & Time:</p>
+          <div className="rounded-md border border-border bg-card p-4">
+            <p className="text-sm font-semibold">Selected Date & Time:</p>
             <p className="text-sm text-muted-foreground">
               Date: {dateTime.toLocaleDateString()}
             </p>
@@ -121,7 +121,7 @@ export const BookingScenario: Story = {
     return (
       <div className="w-[600px] space-y-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Check-in Date & Time
           </label>
           <DateTimePicker
@@ -131,7 +131,7 @@ export const BookingScenario: Story = {
           />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Check-out Date & Time
           </label>
           <DateTimePicker
@@ -141,8 +141,8 @@ export const BookingScenario: Story = {
           />
         </div>
         {checkIn && checkOut && (
-          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
-            <p className="text-sm font-bold">Booking Summary:</p>
+          <div className="rounded-md border border-border bg-primary/10 p-4">
+            <p className="text-sm font-semibold">Booking Summary:</p>
             <p className="text-sm text-muted-foreground">
               Check-in: {checkIn.toLocaleString()}
             </p>
@@ -150,7 +150,7 @@ export const BookingScenario: Story = {
               Check-out: {checkOut.toLocaleString()}
             </p>
             {checkOut > checkIn ? (
-              <p className="text-sm font-bold mt-2 text-primary">
+              <p className="text-sm font-semibold mt-2 text-primary">
                 Duration:{" "}
                 {Math.ceil(
                   (checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24)
@@ -158,7 +158,7 @@ export const BookingScenario: Story = {
                 days
               </p>
             ) : (
-              <p className="text-sm font-bold mt-2 text-destructive">
+              <p className="text-sm font-semibold mt-2 text-destructive">
                 Invalid: Check-out must be after check-in
               </p>
             )}
@@ -176,7 +176,7 @@ export const ComparisonView: Story = {
     return (
       <div className="w-[700px] space-y-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             12-Hour Format
           </label>
           <DateTimePicker
@@ -185,7 +185,7 @@ export const ComparisonView: Story = {
           />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             24-Hour Format
           </label>
           <DateTimePicker
