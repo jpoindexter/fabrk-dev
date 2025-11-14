@@ -72,7 +72,7 @@ export const Default: Story = {
     <div className="h-[600px] flex">
       <Sidebar items={items} />
       <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold">Main Content</h1>
+        <h1 className="text-2xl font-semibold">Main Content</h1>
         <p className="text-muted-foreground">
           This is the main content area
         </p>
@@ -86,7 +86,7 @@ export const Collapsed: Story = {
     <div className="h-[600px] flex">
       <Sidebar items={items} defaultCollapsed />
       <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold">Main Content</h1>
+        <h1 className="text-2xl font-semibold">Main Content</h1>
         <p className="text-muted-foreground">
           Sidebar starts collapsed
         </p>
@@ -141,7 +141,7 @@ export const WithManyItems: Story = {
       <div className="h-[800px] flex">
         <Sidebar items={manyItems} />
         <div className="flex-1 p-6">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <h1 className="text-2xl font-semibold">Dashboard</h1>
           <p className="text-muted-foreground">
             Sidebar with many items and nested navigation
           </p>
@@ -162,10 +162,10 @@ export const Interactive: Story = {
           onItemClick={(item) => setSelectedItem(item.label)}
         />
         <div className="flex-1 p-6">
-          <h1 className="text-2xl font-bold">Interactive Sidebar</h1>
+          <h1 className="text-2xl font-semibold">Interactive Sidebar</h1>
           {selectedItem ? (
-            <div className="mt-4 rounded-brutal border-brutal bg-primary/10 p-4">
-              <p className="text-sm font-bold">Selected:</p>
+            <div className="mt-4 rounded-md border bg-primary/10 p-4">
+              <p className="text-sm font-semibold">Selected:</p>
               <p className="text-sm text-muted-foreground">{selectedItem}</p>
             </div>
           ) : (
@@ -192,7 +192,7 @@ export const SimpleLayout: Story = {
       <div className="h-[500px] flex">
         <Sidebar items={simpleItems} />
         <div className="flex-1 p-6">
-          <h1 className="text-2xl font-bold">Simple Sidebar</h1>
+          <h1 className="text-2xl font-semibold">Simple Sidebar</h1>
           <p className="text-muted-foreground">
             Basic sidebar without nested items
           </p>
@@ -274,8 +274,8 @@ export const ApplicationLayout: Story = {
       <div className="h-[700px] flex">
         <Sidebar items={appItems} />
         <div className="flex-1 p-6 space-y-4">
-          <div className="flex items-center justify-between border-b-2 border-brutal pb-4">
-            <h1 className="text-2xl font-bold capitalize">{selectedView}</h1>
+          <div className="flex items-center justify-between border-b pb-4">
+            <h1 className="text-2xl font-semibold capitalize">{selectedView}</h1>
             <div className="text-sm text-muted-foreground">
               View: {selectedView}
             </div>
@@ -284,9 +284,9 @@ export const ApplicationLayout: Story = {
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
-                className="h-32 rounded-brutal border-brutal bg-card p-4"
+                className="h-32 rounded-md border bg-card p-4"
               >
-                <div className="text-sm font-bold">Card {i}</div>
+                <div className="text-sm font-semibold">Card {i}</div>
                 <div className="text-xs text-muted-foreground mt-2">
                   Content for {selectedView}
                 </div>

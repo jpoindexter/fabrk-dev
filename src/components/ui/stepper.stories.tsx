@@ -150,19 +150,19 @@ export const MultiStepForm: Story = {
           onStepClick={(index) => index <= currentStep && setCurrentStep(index)}
         />
 
-        <div className="rounded-brutal border-brutal bg-card p-6 min-h-[300px]">
+        <div className="rounded-md border bg-card p-6 min-h-[300px]">
           {currentStep === 0 && (
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">Account Information</h3>
+              <h3 className="text-lg font-semibold">Account Information</h3>
               <div className="space-y-2">
-                <label className="text-sm font-bold">Email</label>
+                <label className="text-sm font-semibold">Email</label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full rounded-brutal border-brutal p-2"
+                  className="w-full rounded-md border p-2"
                   placeholder="you@example.com"
                 />
               </div>
@@ -171,16 +171,16 @@ export const MultiStepForm: Story = {
 
           {currentStep === 1 && (
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">Personal Details</h3>
+              <h3 className="text-lg font-semibold">Personal Details</h3>
               <div className="space-y-2">
-                <label className="text-sm font-bold">Full Name</label>
+                <label className="text-sm font-semibold">Full Name</label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full rounded-brutal border-brutal p-2"
+                  className="w-full rounded-md border p-2"
                   placeholder="John Doe"
                 />
               </div>
@@ -189,16 +189,16 @@ export const MultiStepForm: Story = {
 
           {currentStep === 2 && (
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">Company Information</h3>
+              <h3 className="text-lg font-semibold">Company Information</h3>
               <div className="space-y-2">
-                <label className="text-sm font-bold">Company Name</label>
+                <label className="text-sm font-semibold">Company Name</label>
                 <input
                   type="text"
                   value={formData.company}
                   onChange={(e) =>
                     setFormData({ ...formData, company: e.target.value })
                   }
-                  className="w-full rounded-brutal border-brutal p-2"
+                  className="w-full rounded-md border p-2"
                   placeholder="Acme Inc."
                 />
               </div>
@@ -207,15 +207,15 @@ export const MultiStepForm: Story = {
 
           {currentStep === 3 && (
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">Preferences</h3>
+              <h3 className="text-lg font-semibold">Preferences</h3>
               <div className="space-y-2">
-                <label className="text-sm font-bold">Theme</label>
+                <label className="text-sm font-semibold">Theme</label>
                 <select
                   value={formData.theme}
                   onChange={(e) =>
                     setFormData({ ...formData, theme: e.target.value })
                   }
-                  className="w-full rounded-brutal border-brutal p-2"
+                  className="w-full rounded-md border p-2"
                 >
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
@@ -243,8 +243,8 @@ export const MultiStepForm: Story = {
         </div>
 
         {currentStep === formSteps.length - 1 && (
-          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
-            <p className="text-sm font-bold">Form Data:</p>
+          <div className="rounded-md border bg-primary/10 p-4">
+            <p className="text-sm font-semibold">Form Data:</p>
             <pre className="text-sm text-muted-foreground mt-2">
               {JSON.stringify(formData, null, 2)}
             </pre>

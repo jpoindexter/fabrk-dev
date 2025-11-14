@@ -110,12 +110,12 @@ export const AllSizes: Story = {
 
 export const UserCard: Story = {
   render: () => (
-    <div className="w-[300px] rounded-brutal border-brutal bg-card p-4">
+    <div className="w-[300px] rounded-md border bg-card p-4">
       <div className="flex items-start gap-4">
-        <div className="h-12 w-12 rounded-brutal border-brutal bg-primary/10" />
+        <div className="h-12 w-12 rounded-md border bg-primary/10" />
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <h3 className="font-bold">John Doe</h3>
+            <h3 className="font-semibold">John Doe</h3>
             <StatusIndicator status="online" showPulse size="sm" />
           </div>
           <p className="text-sm text-muted-foreground">Software Engineer</p>
@@ -135,15 +135,15 @@ export const UserList: Story = {
     ];
 
     return (
-      <div className="w-[400px] rounded-brutal border-brutal bg-card">
-        <div className="border-b-2 border-brutal p-4">
-          <h2 className="font-bold">Team Members</h2>
+      <div className="w-[400px] rounded-md border bg-card">
+        <div className="border-b p-4">
+          <h2 className="font-semibold">Team Members</h2>
         </div>
         <div className="divide-y divide-brutal">
           {users.map((user) => (
             <div key={user.name} className="p-4 flex items-center justify-between">
               <div>
-                <p className="font-bold text-sm">{user.name}</p>
+                <p className="font-semibold text-sm">{user.name}</p>
                 <p className="text-xs text-muted-foreground">{user.role}</p>
               </div>
               <StatusIndicator status={user.status} label={user.status} />
@@ -165,9 +165,9 @@ export const ServerStatus: Story = {
     ];
 
     return (
-      <div className="w-[500px] rounded-brutal border-brutal bg-card">
-        <div className="border-b-2 border-brutal p-4">
-          <h2 className="font-bold">System Status</h2>
+      <div className="w-[500px] rounded-md border bg-card">
+        <div className="border-b p-4">
+          <h2 className="font-semibold">System Status</h2>
         </div>
         <div className="divide-y divide-brutal">
           {servers.map((server) => (
@@ -182,7 +182,7 @@ export const ServerStatus: Story = {
                   size="lg"
                 />
                 <div>
-                  <p className="font-bold text-sm">{server.name}</p>
+                  <p className="font-semibold text-sm">{server.name}</p>
                   <p className="text-xs text-muted-foreground">
                     Uptime: {server.uptime}
                   </p>

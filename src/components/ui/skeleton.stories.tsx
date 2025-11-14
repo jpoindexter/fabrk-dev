@@ -14,13 +14,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Skeleton className="w-[100px] h-[20px] rounded-brutal" />,
+  render: () => <Skeleton className="w-[100px] h-[20px] rounded-md" />,
 };
 
 export const Card: Story = {
   render: () => (
     <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[125px] w-[250px] rounded-brutal" />
+      <Skeleton className="h-[125px] w-[250px] rounded-md" />
       <div className="space-y-2">
         <Skeleton className="h-4 w-[250px]" />
         <Skeleton className="h-4 w-[200px]" />
@@ -45,7 +45,7 @@ export const List: Story = {
   render: () => (
     <div className="space-y-2">
       {[...Array(5)].map((_, i) => (
-        <Skeleton key={i} className="h-12 w-full rounded-brutal" />
+        <Skeleton key={i} className="h-12 w-full rounded-md" />
       ))}
     </div>
   ),

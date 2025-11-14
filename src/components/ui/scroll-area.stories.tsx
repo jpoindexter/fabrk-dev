@@ -20,9 +20,9 @@ const tags = Array.from({ length: 50 }).map(
 
 export const Default: Story = {
   render: () => (
-    <ScrollArea className="h-72 w-48 rounded-brutal border-2 border-black shadow-brutal">
+    <ScrollArea className="h-72 w-48 rounded-md border shadow-sm">
       <div className="p-4">
-        <h4 className="mb-4 text-sm font-bold leading-none">Tags</h4>
+        <h4 className="mb-4 text-sm font-semibold leading-none">Tags</h4>
         {tags.map((tag) => (
           <div key={tag}>
             <div className="text-sm">{tag}</div>
@@ -36,12 +36,12 @@ export const Default: Story = {
 
 export const Horizontal: Story = {
   render: () => (
-    <ScrollArea className="w-96 whitespace-nowrap rounded-brutal border-2 border-black shadow-brutal">
+    <ScrollArea className="w-96 whitespace-nowrap rounded-md border shadow-sm">
       <div className="flex w-max space-x-4 p-4">
         {tags.map((tag) => (
           <div
             key={tag}
-            className="shrink-0 rounded-brutal border-2 border-black p-3 text-sm shadow-brutal"
+            className="shrink-0 rounded-md border p-3 text-sm shadow-sm"
           >
             {tag}
           </div>
@@ -54,7 +54,7 @@ export const Horizontal: Story = {
 
 export const LongContent: Story = {
   render: () => (
-    <ScrollArea className="h-[200px] w-[350px] rounded-brutal border-2 border-black p-4 shadow-brutal">
+    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4 shadow-sm">
       <div className="space-y-2">
         <p className="text-sm">
           This is a scrollable area with long content. Lorem ipsum dolor sit

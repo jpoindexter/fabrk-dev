@@ -90,7 +90,7 @@ export const FormExample: Story = {
     return (
       <div className="w-[400px] space-y-4">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             Appointment Time
           </label>
           <TimePicker
@@ -100,8 +100,8 @@ export const FormExample: Story = {
           />
         </div>
         {time && (
-          <div className="rounded-brutal border-brutal bg-card p-4">
-            <p className="text-sm font-bold">Selected Time:</p>
+          <div className="rounded-md border bg-card p-4">
+            <p className="text-sm font-semibold">Selected Time:</p>
             <p className="text-sm text-muted-foreground">{time}</p>
           </div>
         )}
@@ -117,13 +117,13 @@ export const ComparisonView: Story = {
     return (
       <div className="w-[600px] space-y-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             12-Hour Format
           </label>
           <TimePicker time={time12} onTimeChange={setTime12} />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-foreground">
+          <label className="text-sm font-semibold text-foreground">
             24-Hour Format
           </label>
           <TimePicker time={time24} onTimeChange={setTime24} use24Hour />

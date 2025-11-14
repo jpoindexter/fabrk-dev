@@ -521,7 +521,7 @@ export const WithNodeActions: Story = {
       <div className="w-[600px] space-y-4">
         <div className="space-y-2">
           <div className="text-sm font-medium">Click any node to see event logs</div>
-          <div className="rounded-brutal border-brutal bg-muted p-3 text-sm space-y-1 min-h-[100px]">
+          <div className="rounded-md border bg-muted p-3 text-sm space-y-1 min-h-[100px]">
             {logs.length === 0 ? (
               <div className="text-muted-foreground">No events yet...</div>
             ) : (
@@ -561,19 +561,19 @@ export const ControlledState: Story = {
           <div className="flex gap-2">
             <button
               onClick={() => setExpandedIds(["1", "1-1", "1-2", "2"])}
-              className="px-3 py-1 text-sm rounded-brutal border-brutal bg-primary text-primary-foreground hover:bg-primary/90"
+              className="px-3 py-1 text-sm rounded-md border bg-primary text-primary-foreground hover:bg-primary/90"
             >
               Expand All
             </button>
             <button
               onClick={() => setExpandedIds([])}
-              className="px-3 py-1 text-sm rounded-brutal border-brutal bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              className="px-3 py-1 text-sm rounded-md border bg-secondary text-secondary-foreground hover:bg-secondary/90"
             >
               Collapse All
             </button>
             <button
               onClick={() => setSelectedIds([])}
-              className="px-3 py-1 text-sm rounded-brutal border-brutal bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              className="px-3 py-1 text-sm rounded-md border bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               Clear Selection
             </button>

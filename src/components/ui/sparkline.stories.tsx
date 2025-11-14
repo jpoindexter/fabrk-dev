@@ -216,29 +216,29 @@ export const MetricsTable: Story = {
     ];
 
     return (
-      <div className="w-[600px] rounded-brutal border-brutal bg-card overflow-hidden">
-        <div className="border-b-2 border-brutal p-4">
-          <h3 className="font-bold">Performance Metrics</h3>
+      <div className="w-[600px] rounded-md border bg-card overflow-hidden">
+        <div className="border-b p-4">
+          <h3 className="font-semibold">Performance Metrics</h3>
         </div>
         <table className="w-full">
-          <thead className="border-b-2 border-brutal bg-muted">
+          <thead className="border-b bg-muted">
             <tr>
-              <th className="text-left p-3 text-xs font-bold">Metric</th>
-              <th className="text-right p-3 text-xs font-bold">Value</th>
-              <th className="text-right p-3 text-xs font-bold">Change</th>
-              <th className="text-right p-3 text-xs font-bold">Trend</th>
+              <th className="text-left p-3 text-xs font-semibold">Metric</th>
+              <th className="text-right p-3 text-xs font-semibold">Value</th>
+              <th className="text-right p-3 text-xs font-semibold">Change</th>
+              <th className="text-right p-3 text-xs font-semibold">Trend</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brutal">
+          <tbody className="divide-y">
             {metrics.map((metric, index) => (
               <tr key={index} className="hover:bg-accent transition-colors">
                 <td className="p-3 text-sm font-medium">{metric.name}</td>
-                <td className="p-3 text-sm text-right font-bold">
+                <td className="p-3 text-sm text-right font-semibold">
                   {metric.value}
                 </td>
                 <td
                   className={cn(
-                    "p-3 text-sm text-right font-bold",
+                    "p-3 text-sm text-right font-semibold",
                     metric.change.startsWith("+")
                       ? "text-green-600"
                       : "text-red-600"
@@ -275,11 +275,11 @@ export const CompactMetrics: Story = {
       ].map((metric, index) => (
         <div
           key={index}
-          className="rounded-brutal border-brutal bg-card p-3 flex-1"
+          className="rounded-md border bg-card p-3 flex-1"
         >
           <div className="flex items-center justify-between mb-1">
             <p className="text-xs text-muted-foreground">{metric.label}</p>
-            <p className="text-sm font-black">{metric.value}</p>
+            <p className="text-sm font-semibold">{metric.value}</p>
           </div>
           <Sparkline
             data={metric.data}

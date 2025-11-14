@@ -189,8 +189,8 @@ export const PlaybackSpeedControl: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
-        <h3 className="mb-2 font-bold">Playback Speed Control</h3>
+      <div className="mt-4 rounded-md border bg-card p-4 shadow-md">
+        <h3 className="mb-2 font-semibold">Playback Speed Control</h3>
         <p className="text-sm text-muted-foreground">
           Click the Settings button (gear icon) in the controls to change playback
           speed:
@@ -215,8 +215,8 @@ export const KeyboardShortcuts: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
-        <h3 className="mb-2 font-bold">Keyboard Shortcuts</h3>
+      <div className="mt-4 rounded-md border bg-card p-4 shadow-md">
+        <h3 className="mb-2 font-semibold">Keyboard Shortcuts</h3>
         <ul className="space-y-1 text-sm text-muted-foreground">
           <li>
             <kbd className="rounded bg-muted px-2 py-1 font-mono text-xs">
@@ -250,7 +250,7 @@ export const ResponsiveSizing: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h3 className="mb-2 font-bold">Large (800px)</h3>
+        <h3 className="mb-2 font-semibold">Large (800px)</h3>
         <div className="w-[800px]">
           <VideoPlayer
             src={BIG_BUCK_BUNNY_MP4}
@@ -261,7 +261,7 @@ export const ResponsiveSizing: Story = {
       </div>
 
       <div>
-        <h3 className="mb-2 font-bold">Medium (600px)</h3>
+        <h3 className="mb-2 font-semibold">Medium (600px)</h3>
         <div className="w-[600px]">
           <VideoPlayer
             src={BIG_BUCK_BUNNY_MP4}
@@ -272,7 +272,7 @@ export const ResponsiveSizing: Story = {
       </div>
 
       <div>
-        <h3 className="mb-2 font-bold">Small (400px)</h3>
+        <h3 className="mb-2 font-semibold">Small (400px)</h3>
         <div className="w-[400px]">
           <VideoPlayer
             src={BIG_BUCK_BUNNY_MP4}
@@ -297,8 +297,8 @@ export const WithCallbacks: Story = {
   render: (args) => (
     <div className="w-[800px]">
       <VideoPlayer {...args} />
-      <div className="mt-4 rounded-brutal border-brutal bg-card p-4 shadow-brutal">
-        <h3 className="mb-2 font-bold">Event Callbacks</h3>
+      <div className="mt-4 rounded-md border bg-card p-4 shadow-md">
+        <h3 className="mb-2 font-semibold">Event Callbacks</h3>
         <p className="text-sm text-muted-foreground">
           Open the browser console to see event logs when you play, pause, or finish
           the video.
@@ -312,7 +312,7 @@ export const AllAspectRatios: Story = {
   render: () => (
     <div className="grid grid-cols-3 gap-8">
       <div>
-        <h3 className="mb-2 text-center font-bold">16:9 (Widescreen)</h3>
+        <h3 className="mb-2 text-center font-semibold">16:9 (Widescreen)</h3>
         <VideoPlayer
           src={BIG_BUCK_BUNNY_MP4}
           poster={BIG_BUCK_BUNNY_POSTER}
@@ -321,7 +321,7 @@ export const AllAspectRatios: Story = {
       </div>
 
       <div>
-        <h3 className="mb-2 text-center font-bold">4:3 (Classic)</h3>
+        <h3 className="mb-2 text-center font-semibold">4:3 (Classic)</h3>
         <VideoPlayer
           src={BIG_BUCK_BUNNY_MP4}
           poster={BIG_BUCK_BUNNY_POSTER}
@@ -330,7 +330,7 @@ export const AllAspectRatios: Story = {
       </div>
 
       <div>
-        <h3 className="mb-2 text-center font-bold">1:1 (Square)</h3>
+        <h3 className="mb-2 text-center font-semibold">1:1 (Square)</h3>
         <VideoPlayer
           src={BIG_BUCK_BUNNY_MP4}
           poster={BIG_BUCK_BUNNY_POSTER}

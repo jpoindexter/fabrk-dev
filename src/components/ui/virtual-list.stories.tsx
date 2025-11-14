@@ -33,7 +33,7 @@ export const BasicList: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Rendering 10,000 items with virtualization
           </p>
           <p className="text-xs text-muted-foreground">
@@ -45,12 +45,12 @@ export const BasicList: Story = {
           itemHeight={60}
           containerHeight={400}
           renderItem={(item) => (
-            <div className="px-4 py-3 border-b border-brutal hover:bg-accent transition-colors">
-              <p className="font-bold text-sm">{item.title}</p>
+            <div className="px-4 py-3 border-b border hover:bg-accent transition-colors">
+              <p className="font-semibold text-sm">{item.title}</p>
               <p className="text-xs text-muted-foreground">{item.description}</p>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -80,7 +80,7 @@ export const InfiniteScroll: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Infinite scroll with lazy loading ({items.length} items loaded)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -92,15 +92,15 @@ export const InfiniteScroll: Story = {
           itemHeight={60}
           containerHeight={400}
           renderItem={(item) => (
-            <div className="px-4 py-3 border-b border-brutal hover:bg-accent transition-colors">
-              <p className="font-bold text-sm">{item.title}</p>
+            <div className="px-4 py-3 border-b border hover:bg-accent transition-colors">
+              <p className="font-semibold text-sm">{item.title}</p>
               <p className="text-xs text-muted-foreground">{item.description}</p>
             </div>
           )}
           onEndReached={loadMore}
           endReachedThreshold={0.8}
           loading={loading}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -121,7 +121,7 @@ export const DynamicHeights: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Dynamic item heights (1,000 items)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -133,12 +133,12 @@ export const DynamicHeights: Story = {
           containerHeight={400}
           estimatedItemHeight={80}
           renderItem={(item) => (
-            <div className="px-4 py-3 border-b border-brutal hover:bg-accent transition-colors">
-              <p className="font-bold text-sm mb-1">{item.title}</p>
+            <div className="px-4 py-3 border-b border hover:bg-accent transition-colors">
+              <p className="font-semibold text-sm mb-1">{item.title}</p>
               <p className="text-xs text-muted-foreground">{item.description}</p>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -156,16 +156,16 @@ export const EmptyState: Story = {
           renderItem={() => null}
           emptyComponent={
             <div className="text-center p-8">
-              <div className="rounded-brutal border-brutal bg-muted p-4 inline-block mb-4">
+              <div className="rounded-md border bg-muted p-4 inline-block mb-4">
                 <Mail className="h-12 w-12 text-muted-foreground" />
               </div>
-              <p className="font-bold mb-2">No items to display</p>
+              <p className="font-semibold mb-2">No items to display</p>
               <p className="text-sm text-muted-foreground">
                 The list is currently empty
               </p>
             </div>
           }
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -186,7 +186,7 @@ export const UserList: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             User directory (5,000 users)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -198,13 +198,13 @@ export const UserList: Story = {
           itemHeight={72}
           containerHeight={500}
           renderItem={(user) => (
-            <div className="px-4 py-3 border-b border-brutal hover:bg-accent transition-colors flex items-center gap-3">
+            <div className="px-4 py-3 border-b border hover:bg-accent transition-colors flex items-center gap-3">
               <Avatar>
                 <User className="h-4 w-4" />
               </Avatar>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <p className="font-bold text-sm">{user.name}</p>
+                  <p className="font-semibold text-sm">{user.name}</p>
                   <Badge
                     variant={user.status === "online" ? "default" : "secondary"}
                     className="text-xs"
@@ -222,7 +222,7 @@ export const UserList: Story = {
               </div>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -241,7 +241,7 @@ export const LogViewer: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Server logs (50,000 entries)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -253,7 +253,7 @@ export const LogViewer: Story = {
           itemHeight={48}
           containerHeight={500}
           renderItem={(log) => (
-            <div className="px-4 py-2 border-b border-brutal hover:bg-accent transition-colors font-mono text-xs flex items-center gap-3">
+            <div className="px-4 py-2 border-b border hover:bg-accent transition-colors font-mono text-xs flex items-center gap-3">
               <span className="text-muted-foreground">
                 {new Date(log.timestamp).toLocaleTimeString()}
               </span>
@@ -272,7 +272,7 @@ export const LogViewer: Story = {
               <span className="flex-1">{log.message}</span>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
@@ -290,7 +290,7 @@ export const GridLayout: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Image grid (10,000 items)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -306,7 +306,7 @@ export const GridLayout: Story = {
           columns={5}
           gap={8}
           renderItem={(item) => (
-            <div className="h-full border-brutal rounded-brutal overflow-hidden hover:shadow-brutal-lg transition-all cursor-pointer">
+            <div className="h-full border rounded-md overflow-hidden hover:shadow-md transition-all cursor-pointer">
               <div
                 className="h-24 flex items-center justify-center"
                 style={{ backgroundColor: item.color }}
@@ -314,11 +314,11 @@ export const GridLayout: Story = {
                 <ImageIcon className="h-8 w-8 text-white/80" />
               </div>
               <div className="p-2 bg-card">
-                <p className="text-xs font-bold truncate">{item.title}</p>
+                <p className="text-xs font-semibold truncate">{item.title}</p>
               </div>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-background"
+          className="border rounded-md bg-background"
         />
       </div>
     );
@@ -340,7 +340,7 @@ export const MessageThread: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Chat messages (3,000 messages)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -360,12 +360,12 @@ export const MessageThread: Story = {
             >
               <div
                 className={cn(
-                  "max-w-[70%] rounded-brutal border-brutal p-3",
+                  "max-w-[70%] rounded-md border p-3",
                   message.isOwn ? "bg-primary text-primary-foreground" : "bg-card"
                 )}
               >
                 {!message.isOwn && (
-                  <p className="text-xs font-bold mb-1">{message.author}</p>
+                  <p className="text-xs font-semibold mb-1">{message.author}</p>
                 )}
                 <p className="text-sm">{message.content}</p>
                 <p
@@ -381,7 +381,7 @@ export const MessageThread: Story = {
               </div>
             </div>
           )}
-          className="border-brutal rounded-brutal bg-background"
+          className="border rounded-md bg-background"
         />
       </div>
     );
@@ -415,7 +415,7 @@ export const NotificationCenter: Story = {
     return (
       <div className="p-4">
         <div className="mb-4">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             Notification center (2,000 notifications)
           </p>
           <p className="text-xs text-muted-foreground">
@@ -431,16 +431,16 @@ export const NotificationCenter: Story = {
             return (
               <div
                 className={cn(
-                  "px-4 py-3 border-b border-brutal hover:bg-accent transition-colors flex items-start gap-3",
+                  "px-4 py-3 border-b border hover:bg-accent transition-colors flex items-start gap-3",
                   !notification.read && "bg-primary/5"
                 )}
               >
-                <div className="rounded-brutal border-brutal bg-muted p-2">
+                <div className="rounded-md border bg-muted p-2">
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <p className="font-bold text-sm">{notification.title}</p>
+                    <p className="font-semibold text-sm">{notification.title}</p>
                     {!notification.read && (
                       <div className="h-2 w-2 rounded-full bg-primary" />
                     )}
@@ -455,7 +455,7 @@ export const NotificationCenter: Story = {
               </div>
             );
           }}
-          className="border-brutal rounded-brutal bg-card"
+          className="border rounded-md bg-card"
         />
       </div>
     );
