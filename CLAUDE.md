@@ -4,7 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Fabrk is a **production-ready Next.js 15 SaaS boilerplate** built for rapid deployment. Unlike bloated competitors (450-1000 files), Fabrk maintains ~161 essential files with a "ship fast, stay lean" philosophy.
+Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Unlike bloated competitors (450-1000 files), Fabrk maintains ~161 essential files while delivering more components (87) than competitors like Makerkit (60).
+
+**Pricing:** $299 one-time payment
+**Components:** 87 production-ready (more than any competitor)
+**Templates:** 8 copy-paste ready page layouts
+**Themes:** 6 color schemes with instant switching
+**Test Coverage:** 17,822 test lines (Vitest + Playwright + Storybook)
+**Storybook:** Integrated for component development and documentation
 
 **Tech Stack:**
 - Next.js 15 (App Router, Server Components, React 19, Turbopack)

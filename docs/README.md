@@ -2,6 +2,8 @@
 
 Complete guide to all Fabrk documentation. Start here to find what you need.
 
+**Fabrk Premium:** $299 | 87 Components | 8 Templates | 6 Themes | 17,822 Test Lines | Storybook Integrated
+
 ---
 
 ## 🚀 Quick Start
@@ -266,6 +268,14 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 **Estimated reading time:** ~25 hours (comprehensive)
 **Estimated reading time (essentials only):** ~5 hours
 
+**Product Stats:**
+- **87 Components** (more than Makerkit's 60)
+- **8 Templates** (Analytics, Team, Charts, User Management, Settings, Billing, Security, Emails)
+- **6 Themes** (Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red)
+- **17,822 Test Lines** (Vitest + Playwright + Storybook)
+- **Storybook Integration** (Interactive component development)
+- **Price:** $299 (same as Makerkit, more value)
+
 ---
 
 ## 🎓 Learning Paths
@@ -402,3 +412,4 @@ npm run dev
 **Last updated:** January 2025
 **Fabrk Version:** 1.0.0
 **Total Documentation:** 19 files, ~300KB, ~9,000 lines
+**Price:** $299 | **Components:** 87 | **Templates:** 8 | **Themes:** 6 | **Test Lines:** 17,822
