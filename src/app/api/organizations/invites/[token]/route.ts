@@ -6,13 +6,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+interface RouteContext {
+  params: Promise<{ token: string }>;
+}
+
 export async function GET(
   req: NextRequest,
-  { params }: { params: { token: string } }
+  context: RouteContext
 ) {
   try {
+    const { token } = await context.params;
+
     const invite = await prisma.organizationInvite.findUnique({
-      where: { token: params.token },
+      where: { token },
       include: {
         organization: {
           select: {

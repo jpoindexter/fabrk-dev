@@ -1,6 +1,8 @@
 /**
- * Organization by Slug API Route
- * GET - Fetch organization by slug
+ * Organization by ID API Route (Industry Standard)
+ * Accepts both UUID (primary) and slug (backwards compatible)
+ *
+ * GET - Fetch organization by ID or slug
  * PATCH - Update organization (requires OWNER or ADMIN)
  * DELETE - Delete organization (requires OWNER)
  */
@@ -16,11 +18,37 @@ import {
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
 
+// UUID v4 format regex
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+// Route context interface for Next.js 15+ async params
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
+/**
+ * Helper: Detect if parameter is UUID or slug, then fetch organization
+ */
+async function getOrganization(idOrSlug: string) {
+  const isUUID = UUID_REGEX.test(idOrSlug);
+
+  if (isUUID) {
+    // Look up by ID (primary method)
+    return await prisma.organization.findUnique({
+      where: { id: idOrSlug },
+    });
+  } else {
+    // Look up by slug (backwards compatible)
+    return await getOrganizationBySlug(idOrSlug);
+  }
+}
+
 export async function GET(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -30,7 +58,7 @@ export async function GET(
       );
     }
 
-    const organization = await getOrganizationBySlug(params.slug);
+    const organization = await getOrganization(id);
 
     if (!organization) {
       return NextResponse.json(
@@ -74,9 +102,10 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -86,7 +115,7 @@ export async function PATCH(
       );
     }
 
-    const organization = await getOrganizationBySlug(params.slug);
+    const organization = await getOrganization(id);
 
     if (!organization) {
       return NextResponse.json(
@@ -159,9 +188,10 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -171,7 +201,7 @@ export async function DELETE(
       );
     }
 
-    const organization = await getOrganizationBySlug(params.slug);
+    const organization = await getOrganization(id);
 
     if (!organization) {
       return NextResponse.json(

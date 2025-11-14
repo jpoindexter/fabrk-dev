@@ -10,11 +10,16 @@ import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { OrgRole } from "@prisma/client";
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -26,7 +31,7 @@ export async function POST(
 
     // Verify user has permission (OWNER or ADMIN)
     const canManageBilling = await hasOrganizationRole(
-      params.id,
+      id,
       session.user.id,
       OrgRole.ADMIN
     );
@@ -40,7 +45,7 @@ export async function POST(
 
     // Fetch organization
     const organization = await prisma.organization.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: { customerId: true, slug: true },
     });
 

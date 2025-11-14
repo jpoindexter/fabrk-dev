@@ -8,11 +8,16 @@ import { auth } from "@/lib/auth";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
+    const { id } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -23,7 +28,7 @@ export async function GET(
     }
 
     // Verify user is a member
-    const isMember = await isOrganizationMember(params.id, session.user.id);
+    const isMember = await isOrganizationMember(id, session.user.id);
     if (!isMember) {
       return NextResponse.json(
         { error: "You are not a member of this organization" },
@@ -33,7 +38,7 @@ export async function GET(
 
     // Fetch organization with member count
     const organization = await prisma.organization.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         _count: {
           select: {

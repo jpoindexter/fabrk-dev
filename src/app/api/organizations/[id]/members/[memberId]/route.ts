@@ -16,11 +16,16 @@ import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 
+interface RouteContext {
+  params: Promise<{ id: string; memberId: string }>;
+}
+
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string; memberId: string } }
+  context: RouteContext
 ) {
   try {
+    const { id, memberId } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -32,7 +37,7 @@ export async function PATCH(
 
     // Verify user has permission (must be OWNER or ADMIN)
     const canUpdate = await hasOrganizationRole(
-      params.id,
+      id,
       session.user.id,
       OrgRole.ADMIN
     );
@@ -55,8 +60,8 @@ export async function PATCH(
     }
 
     await updateMemberRole(
-      params.id,
-      params.memberId,
+      id,
+      memberId,
       role as OrgRole,
       session.user.id
     );
@@ -65,11 +70,11 @@ export async function PATCH(
     try {
       const [org, member] = await Promise.all([
         prisma.organization.findUnique({
-          where: { id: params.id },
+          where: { id },
           select: { name: true },
         }),
         prisma.organizationMember.findUnique({
-          where: { id: params.memberId },
+          where: { id: memberId },
           include: {
             user: {
               select: { id: true, name: true, email: true },
@@ -84,11 +89,11 @@ export async function PATCH(
           member.userId,
           org.name,
           role,
-          params.id
+          id
         );
 
         // Create activity event
-        await createOrgActivity(params.id, {
+        await createOrgActivity(id, {
           type: "role_changed",
           description: `role was changed to ${role}`,
           userId: member.userId,
@@ -96,7 +101,7 @@ export async function PATCH(
         });
 
         // Trigger webhook
-        await triggerWebhook(params.id, WEBHOOK_EVENTS.ORG_MEMBER_ROLE_CHANGED, {
+        await triggerWebhook(id, WEBHOOK_EVENTS.ORG_MEMBER_ROLE_CHANGED, {
           userId: member.userId,
           userEmail: member.user.email,
           userName: member.user.name,
@@ -135,9 +140,10 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string; memberId: string } }
+  context: RouteContext
 ) {
   try {
+    const { id, memberId } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -149,7 +155,7 @@ export async function DELETE(
 
     // Verify user has permission (must be OWNER or ADMIN)
     const canRemove = await hasOrganizationRole(
-      params.id,
+      id,
       session.user.id,
       OrgRole.ADMIN
     );
@@ -163,7 +169,7 @@ export async function DELETE(
 
     // Get member details before removing
     const member = await prisma.organizationMember.findUnique({
-      where: { id: params.memberId },
+      where: { id: memberId },
       include: {
         user: {
           select: { id: true, name: true, email: true },
@@ -171,12 +177,12 @@ export async function DELETE(
       },
     });
 
-    await removeMember(params.id, params.memberId, session.user.id);
+    await removeMember(id, memberId, session.user.id);
 
     // Create activity event for member removal
     if (member) {
       try {
-        await createOrgActivity(params.id, {
+        await createOrgActivity(id, {
           type: "member_removed",
           description: `was removed from the organization`,
           userId: member.userId,
@@ -184,7 +190,7 @@ export async function DELETE(
         });
 
         // Trigger webhook
-        await triggerWebhook(params.id, WEBHOOK_EVENTS.ORG_MEMBER_REMOVED, {
+        await triggerWebhook(id, WEBHOOK_EVENTS.ORG_MEMBER_REMOVED, {
           userId: member.userId,
           userEmail: member.user.email,
           userName: member.user.name,
