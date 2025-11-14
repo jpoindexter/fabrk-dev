@@ -63,7 +63,7 @@ export function Sidebar({
         <button
           onClick={() => handleItemClick(item)}
           className={cn(
-            "w-full flex items-center gap-2 px-3 py-2 text-left text-sm transition-all rounded-brutal",
+            "w-full flex items-center gap-2 px-3 py-2 text-left text-sm transition-all rounded-md",
             "hover:bg-accent hover:text-accent-foreground",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             depth > 0 && "ml-4"
@@ -77,7 +77,7 @@ export function Sidebar({
             <>
               <span className="flex-1 font-medium">{item.label}</span>
               {item.badge && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-brutal bg-primary text-xs font-bold text-primary-foreground">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
                   {item.badge}
                 </span>
               )}
@@ -105,14 +105,14 @@ export function Sidebar({
   return (
     <aside
       className={cn(
-        "flex flex-col border-r-2 border-brutal bg-card transition-all duration-300",
+        "flex flex-col border-r bg-card transition-all duration-300",
         isCollapsed ? "w-16" : "w-64",
         className
       )}
     >
-      <div className="flex items-center justify-between border-b-2 border-brutal p-4">
+      <div className="flex items-center justify-between border-b p-4">
         {!isCollapsed && (
-          <h2 className="text-lg font-bold">Navigation</h2>
+          <h2 className="text-lg font-semibold">Navigation</h2>
         )}
         <Button
           variant="ghost"
