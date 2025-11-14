@@ -61,29 +61,29 @@ export function Stepper({
                 <div className="flex items-center">
                   <div
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-brutal border-brutal transition-all",
+                      "flex h-10 w-10 items-center justify-center rounded-md border transition-all",
                       isComplete &&
-                        "bg-primary text-primary-foreground border-primary shadow-brutal",
+                        "bg-primary text-primary-foreground border-primary shadow-sm",
                       isCurrent &&
                         !isComplete &&
-                        "border-primary text-primary bg-background shadow-brutal",
+                        "border-primary text-primary bg-background shadow-sm",
                       !isComplete &&
                         !isCurrent &&
                         "bg-muted text-muted-foreground",
-                      isClickable && "group-hover:scale-110"
+                      isClickable && "group-hover:opacity-90"
                     )}
                   >
                     {isComplete ? (
                       <Check className="h-5 w-5" />
                     ) : (
-                      <span className="font-bold">{index + 1}</span>
+                      <span className="font-semibold">{index + 1}</span>
                     )}
                   </div>
                   {!isHorizontal && (
                     <div className="ml-4 flex-1 text-left">
                       <p
                         className={cn(
-                          "text-sm font-bold transition-colors",
+                          "text-sm font-semibold transition-colors",
                           isCurrent && "text-foreground",
                           !isCurrent && "text-muted-foreground",
                           isClickable && "group-hover:text-foreground"
@@ -103,7 +103,7 @@ export function Stepper({
                   <div className="ml-2 flex-1">
                     <p
                       className={cn(
-                        "text-sm font-bold transition-colors whitespace-nowrap",
+                        "text-sm font-semibold transition-colors whitespace-nowrap",
                         isCurrent && "text-foreground",
                         !isCurrent && "text-muted-foreground",
                         isClickable && "group-hover:text-foreground"

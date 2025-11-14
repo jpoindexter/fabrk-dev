@@ -77,7 +77,7 @@ export function ColorPicker({
         >
           <div className="flex w-full items-center gap-2">
             <div
-              className="h-4 w-4 rounded-brutal border-brutal"
+              className="h-4 w-4 rounded-md border"
               style={{ backgroundColor: localColor }}
             />
             <Paintbrush className="h-4 w-4" />
@@ -100,7 +100,7 @@ export function ColorPicker({
             <HexColorPicker color={localColor} onChange={handleColorChange} />
             {showPresets && (
               <div className="space-y-2">
-                <p className="text-sm font-bold text-muted-foreground">
+                <p className="text-sm font-semibold text-muted-foreground">
                   Presets
                 </p>
                 <div className="grid grid-cols-10 gap-2">
@@ -108,10 +108,10 @@ export function ColorPicker({
                     <button
                       key={presetColor}
                       className={cn(
-                        "h-6 w-6 rounded-brutal border-2 cursor-pointer hover:scale-110 transition-transform",
+                        "h-6 w-6 rounded-md border cursor-pointer hover:opacity-90 transition-opacity",
                         presetColor === localColor
                           ? "border-primary ring-2 ring-primary ring-offset-2"
-                          : "border-brutal"
+                          : "border"
                       )}
                       style={{ backgroundColor: presetColor }}
                       onClick={() => handleColorChange(presetColor)}
@@ -124,7 +124,7 @@ export function ColorPicker({
 
           <TabsContent value="input" className="space-y-4 mt-0">
             <div className="space-y-2">
-              <label className="text-sm font-bold text-foreground">HEX</label>
+              <label className="text-sm font-semibold text-foreground">HEX</label>
               <Input
                 value={localColor}
                 onChange={(e) => handleColorChange(e.target.value)}
@@ -133,7 +133,7 @@ export function ColorPicker({
               />
             </div>
             <div
-              className="h-24 rounded-brutal border-brutal"
+              className="h-24 rounded-md border"
               style={{ backgroundColor: localColor }}
             />
           </TabsContent>

@@ -147,8 +147,8 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
       <div
         ref={ref}
         className={cn(
-          "relative flex gap-3 p-3 rounded-brutal border-2 border-transparent transition-all",
-          "hover:border-brutal hover:bg-muted/50 hover:shadow-brutal-sm cursor-pointer",
+          "relative flex gap-3 p-3 rounded-md border border-transparent transition-all",
+          "hover:border hover:bg-muted/50 hover:shadow-sm cursor-pointer",
           !notification.read && "bg-primary/5"
         )}
         onMouseEnter={() => setIsHovered(true)}
@@ -168,7 +168,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
               <AvatarFallback>{notification.title.substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
           ) : (
-            <div className="h-10 w-10 rounded-full border-brutal bg-background flex items-center justify-center shadow-brutal-sm">
+            <div className="h-10 w-10 rounded-full border bg-background flex items-center justify-center shadow-sm">
               {getNotificationIcon(notification.type)}
             </div>
           )}
@@ -177,7 +177,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <p className="font-bold text-sm text-foreground">{notification.title}</p>
+            <p className="font-semibold text-sm text-foreground">{notification.title}</p>
             <span className="text-xs text-muted-foreground whitespace-nowrap">
               {formatTimestamp(notification.timestamp)}
             </span>
@@ -205,7 +205,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
             {!notification.read && onMarkAsRead && (
               <button
                 onClick={handleMarkAsRead}
-                className="p-1 rounded-brutal hover:bg-muted transition-colors"
+                className="p-1 rounded-md hover:bg-muted transition-colors"
                 title="Mark as read"
               >
                 <Check className="h-4 w-4 text-success" />
@@ -214,7 +214,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
             {onDelete && (
               <button
                 onClick={handleDelete}
-                className="p-1 rounded-brutal hover:bg-muted transition-colors"
+                className="p-1 rounded-md hover:bg-muted transition-colors"
                 title="Delete"
               >
                 <X className="h-4 w-4 text-destructive" />
@@ -267,7 +267,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           >
             <Bell className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-destructive-foreground text-xs font-bold flex items-center justify-center border-brutal shadow-brutal-sm">
+              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-destructive-foreground text-xs font-semibold flex items-center justify-center border shadow-sm">
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}
@@ -281,8 +281,8 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           style={{ maxHeight: `${maxHeight}px` }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b-2 border-brutal">
-            <h3 className="font-bold text-lg">Notifications</h3>
+          <div className="flex items-center justify-between p-4 border-b">
+            <h3 className="font-semibold text-lg">Notifications</h3>
             <div className="flex items-center gap-2">
               {unreadCount > 0 && onMarkAllAsRead && (
                 <Button
@@ -315,7 +315,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
               <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
                 <Bell className="h-8 w-8 text-muted-foreground" />
               </div>
-              <p className="font-bold text-foreground mb-1">You're all caught up!</p>
+              <p className="font-semibold text-foreground mb-1">You're all caught up!</p>
               <p className="text-sm text-muted-foreground text-center">
                 No new notifications at the moment
               </p>
@@ -326,8 +326,8 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div className="sticky top-0 bg-muted px-3 py-1.5 rounded-brutal-sm mb-2 z-10">
-                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                      <div className="sticky top-0 bg-muted px-3 py-1.5 rounded-md mb-2 z-10">
+                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                           {group}
                         </span>
                       </div>

@@ -172,7 +172,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
       {/* Icon */}
       <div
         className={cn(
-          "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-brutal border-brutal shadow-brutal",
+          "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md border shadow-sm",
           config.color
         )}
       >
@@ -194,7 +194,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
             </div>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Avatar className="h-5 w-5 border-brutal">
+              <Avatar className="h-5 w-5 border">
                 <AvatarImage src={event.user.avatar} alt={event.user.name} />
                 <AvatarFallback className="text-xs">
                   {getInitials(event.user.name)}
@@ -233,7 +233,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
 
         {/* Expanded Content */}
         {!compact && (isExpanded || (!hasExpandableContent && event.description)) && (
-          <div className="rounded-brutal border-brutal bg-card p-4 shadow-brutal">
+          <div className="rounded-md border bg-card p-4 shadow-sm">
             {event.description && (
               <p className="text-sm text-muted-foreground">
                 {event.description}
@@ -329,7 +329,7 @@ export function ActivityTimeline({
     return (
       <div
         className={cn(
-          "rounded-brutal border-brutal bg-muted p-8 text-center shadow-brutal",
+          "rounded-md border bg-muted p-8 text-center shadow-sm",
           className
         )}
       >
@@ -385,7 +385,7 @@ export function ActivityTimeline({
 
       {/* Timeline */}
       {filteredEvents.length === 0 ? (
-        <div className="rounded-brutal border-brutal bg-muted p-8 text-center shadow-brutal">
+        <div className="rounded-md border bg-muted p-8 text-center shadow-sm">
           <p className="text-sm text-muted-foreground">
             No events match the selected filters
           </p>
@@ -394,7 +394,7 @@ export function ActivityTimeline({
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
             <div className="sticky top-0 z-10 bg-background py-2">
-              <h4 className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 {dateGroup}
               </h4>
             </div>
