@@ -125,7 +125,7 @@ export function TimePicker({
                     setHours(e.target.value);
                   }
                 }}
-                className="w-16 text-center font-bold text-lg"
+                className="w-16 text-center font-semibold text-lg"
                 min={use24Hour ? "0" : "1"}
                 max={use24Hour ? "23" : "12"}
               />
@@ -161,7 +161,7 @@ export function TimePicker({
                     setMinutes(e.target.value);
                   }
                 }}
-                className="w-16 text-center font-bold text-lg"
+                className="w-16 text-center font-semibold text-lg"
                 min="0"
                 max="59"
               />

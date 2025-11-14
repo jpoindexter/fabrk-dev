@@ -123,7 +123,7 @@ export function DateTimePicker({
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <Tabs defaultValue="date" className="w-full">
-          <TabsList className="w-full rounded-none border-b-2 border-brutal">
+          <TabsList className="w-full rounded-none border-b">
             <TabsTrigger value="date" className="flex-1">
               <CalendarIcon className="mr-2 h-4 w-4" />
               Date
@@ -167,7 +167,7 @@ export function DateTimePicker({
                         setHours(e.target.value);
                       }
                     }}
-                    className="w-16 text-center font-bold text-lg"
+                    className="w-16 text-center font-semibold text-lg"
                     min={use24Hour ? "0" : "1"}
                     max={use24Hour ? "23" : "12"}
                   />
@@ -182,7 +182,7 @@ export function DateTimePicker({
                   <Label className="text-xs text-muted-foreground">Hours</Label>
                 </div>
 
-                <span className="text-2xl font-bold">:</span>
+                <span className="text-2xl font-semibold">:</span>
 
                 {/* Minutes */}
                 <div className="flex flex-col items-center space-y-2">
@@ -203,7 +203,7 @@ export function DateTimePicker({
                         setMinutes(e.target.value);
                       }
                     }}
-                    className="w-16 text-center font-bold text-lg"
+                    className="w-16 text-center font-semibold text-lg"
                     min="0"
                     max="59"
                   />
@@ -227,7 +227,7 @@ export function DateTimePicker({
                       variant="outline"
                       size="sm"
                       onClick={() => setPeriod(period === "AM" ? "PM" : "AM")}
-                      className="h-16 w-16 text-lg font-bold"
+                      className="h-16 w-16 text-lg font-semibold"
                     >
                       {period}
                     </Button>
@@ -241,7 +241,7 @@ export function DateTimePicker({
           </TabsContent>
         </Tabs>
 
-        <div className="p-3 border-t-2 border-brutal">
+        <div className="p-3 border-t">
           <Button onClick={handleApply} className="w-full" disabled={!selectedDate}>
             Apply
           </Button>

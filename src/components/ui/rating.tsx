@@ -83,7 +83,7 @@ export function Rating({
         })}
       </div>
       {showValue && (
-        <span className="text-sm font-bold text-muted-foreground ml-2">
+        <span className="text-sm font-medium text-muted-foreground ml-2">
           {rating.toFixed(1)} / {maxRating}
         </span>
       )}
