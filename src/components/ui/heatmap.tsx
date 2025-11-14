@@ -109,7 +109,7 @@ export function Heatmap({
                     return (
                       <div
                         key={String(xLabel)}
-                        className="rounded-sm border-brutal bg-muted"
+                        className="rounded-sm border bg-muted"
                         style={{ width: cellSize, height: cellSize }}
                       />
                     );
@@ -119,8 +119,8 @@ export function Heatmap({
                     <div
                       key={String(xLabel)}
                       className={cn(
-                        "rounded-sm border-brutal flex items-center justify-center cursor-pointer transition-all",
-                        isHovered && "scale-110 shadow-brutal-lg"
+                        "rounded-sm border flex items-center justify-center cursor-pointer transition-all",
+                        isHovered && "scale-110 shadow-md"
                       )}
                       style={{
                         width: cellSize,
@@ -132,7 +132,7 @@ export function Heatmap({
                       onClick={() => onCellClick?.(cellData)}
                     >
                       {showValues && (
-                        <span className="text-xs font-bold">
+                        <span className="text-xs font-medium">
                           {cellData.value}
                         </span>
                       )}
@@ -146,11 +146,11 @@ export function Heatmap({
       </div>
 
       {hoveredCell && (
-        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border-brutal rounded-brutal bg-card shadow-brutal-lg">
-          <p className="text-xs font-bold">
+        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border rounded-md bg-card shadow-md">
+          <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}
           </p>
-          <p className="text-lg font-black">{hoveredCell.value}</p>
+          <p className="text-lg font-semibold">{hoveredCell.value}</p>
         </div>
       )}
     </div>

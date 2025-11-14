@@ -124,16 +124,16 @@ export function SparklineCard({
   return (
     <div
       className={cn(
-        "rounded-brutal border-brutal bg-card p-4",
+        "rounded-md border bg-card p-4",
         className
       )}
     >
       <div className="flex items-start justify-between mb-2">
         <div className="flex-1">
           <p className="text-sm text-muted-foreground mb-1">{title}</p>
-          <p className="text-2xl font-black leading-none">{value}</p>
+          <p className="text-2xl font-semibold leading-none">{value}</p>
           {change && (
-            <p className={cn("text-xs font-bold mt-1", changeColor)}>
+            <p className={cn("text-xs font-medium mt-1", changeColor)}>
               {isPositive ? "+" : ""}
               {change.value}%{change.label && ` ${change.label}`}
             </p>
@@ -167,10 +167,10 @@ export function SparklineGroup({ items, className }: SparklineGroupProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="flex items-center justify-between gap-4 p-3 rounded-brutal border-brutal bg-card hover:bg-accent transition-colors"
+          className="flex items-center justify-between gap-4 p-3 rounded-md border bg-card hover:bg-accent transition-colors"
         >
           <div className="flex-1">
-            <p className="text-sm font-bold">{item.label}</p>
+            <p className="text-sm font-medium">{item.label}</p>
             <p className="text-xs text-muted-foreground">{item.value}</p>
           </div>
           <Sparkline

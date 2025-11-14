@@ -95,9 +95,9 @@ export function FunnelChart({
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="text-center">
-                    <p className="font-bold text-sm">{stage.label}</p>
+                    <p className="font-medium text-sm">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-black">{stage.value.toLocaleString()}</p>
+                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                     {showPercentages && index > 0 && (
                       <p className="text-xs text-foreground/70">
@@ -137,9 +137,9 @@ export function FunnelChart({
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="text-center">
-                    <p className="font-bold text-sm">{stage.label}</p>
+                    <p className="font-medium text-sm">{stage.label}</p>
                     {showValues && (
-                      <p className="text-lg font-black">{stage.value.toLocaleString()}</p>
+                      <p className="text-lg font-semibold">{stage.value.toLocaleString()}</p>
                     )}
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export function FunnelChart({
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div
-              className="w-3 h-3 rounded-sm border-brutal"
+              className="w-3 h-3 rounded-sm border"
               style={{
                 backgroundColor:
                   stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],

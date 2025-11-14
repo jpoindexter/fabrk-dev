@@ -136,7 +136,7 @@ export function PieChart({
                   y={getLabelPosition(startAngle, endAngle).y}
                   textAnchor="middle"
                   dominantBaseline="middle"
-                  className="fill-background text-xs font-bold pointer-events-none"
+                  className="fill-background text-xs font-medium pointer-events-none"
                 >
                   {showPercentages
                     ? `${segment.percentage.toFixed(0)}%`
@@ -164,7 +164,7 @@ export function PieChart({
               onClick={() => onSegmentClick?.(segment, index)}
             >
               <div
-                className="w-3 h-3 rounded-sm border-brutal"
+                className="w-3 h-3 rounded-sm border"
                 style={{ backgroundColor: segment.color }}
               />
               <span className="text-xs font-medium">

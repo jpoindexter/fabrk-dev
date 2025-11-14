@@ -168,7 +168,7 @@ export function Gauge({
               y={getTextPosition(startAngle, radius + thickness).y}
               textAnchor="middle"
               dominantBaseline="middle"
-              className="fill-muted-foreground text-xs font-bold"
+              className="fill-muted-foreground text-xs font-medium"
             >
               {min}
             </text>
@@ -177,7 +177,7 @@ export function Gauge({
               y={getTextPosition(endAngle, radius + thickness).y}
               textAnchor="middle"
               dominantBaseline="middle"
-              className="fill-muted-foreground text-xs font-bold"
+              className="fill-muted-foreground text-xs font-medium"
             >
               {max}
             </text>
@@ -188,7 +188,7 @@ export function Gauge({
       {/* Value and label below gauge */}
       {showValue && (
         <div className="text-center">
-          <p className="text-3xl font-black leading-none">
+          <p className="text-3xl font-semibold leading-none">
             {normalizedValue.toFixed(0)}
             {unit && <span className="text-lg">{unit}</span>}
           </p>
