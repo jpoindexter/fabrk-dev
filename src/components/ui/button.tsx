@@ -16,46 +16,46 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  // Neobrutalist base styles - Bold, thick borders, hard shadows
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-brutal text-[14px] font-bold leading-none transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  // Vercel minimal styles - Subtle, 1px borders, soft transitions
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[14px] font-medium leading-none transition-vercel-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Primary action - Bright yellow with modern border and hard shadow
+        // Primary action - Clean black with subtle hover
         default:
-          "border-brutal bg-primary text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-primary text-primary-foreground hover:opacity-90 active:opacity-80",
 
-        // Destructive action - Bold red with hard shadow
+        // Destructive action - Clean red with subtle hover
         destructive:
-          "border-brutal bg-destructive text-destructive-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-destructive text-destructive-foreground hover:opacity-90 active:opacity-80",
 
-        // Success action - Lime green brutalist style
+        // Success action - Clean accent color with subtle hover
         success:
-          "border-brutal bg-accent text-accent-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-accent text-accent-foreground hover:opacity-90 active:opacity-80",
 
-        // Outline - White with modern border
+        // Outline - Minimal border with hover background
         outline:
-          "border-brutal bg-card text-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-card text-foreground hover:bg-muted active:bg-muted/80",
 
-        // Secondary - Hot pink with hard shadow
+        // Secondary - Subtle background with hover
         secondary:
-          "border-brutal bg-secondary text-secondary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70",
 
-        // Ghost - Minimal with hover transform
+        // Ghost - Minimal with subtle hover
         ghost:
-          "border-2 border-transparent hover:border-brutal hover:bg-muted active:bg-muted/80",
+          "border border-transparent hover:bg-muted active:bg-muted/80",
 
-        // Link - Bold with underline
+        // Link - Clean link style
         link:
-          "text-foreground font-bold underline-offset-4 hover:underline active:text-foreground/80",
+          "text-foreground font-medium underline-offset-4 hover:underline active:text-foreground/80",
 
-        // Marketing - Bold with colored shadow (modern neo-brutalism)
+        // Marketing - Bold CTA style (keeps font-bold as it's a CTA)
         marketing:
-          "border-brutal bg-primary font-bold text-primary-foreground shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-primary font-bold text-primary-foreground hover:opacity-90 active:opacity-80",
 
-        // Marketing outline - Bold outline with colored hover
+        // Marketing outline - Bold outline CTA (keeps font-bold as it's a CTA)
         marketingOutline:
-          "border-brutal bg-card font-bold text-foreground shadow-brutal hover:bg-primary hover:text-primary-foreground hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 active:shadow-brutal-sm active:translate-x-1 active:translate-y-1",
+          "border bg-card font-bold text-foreground hover:bg-primary hover:text-primary-foreground active:opacity-80",
       },
       size: {
         // Aligned with 8px spacing system

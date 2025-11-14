@@ -37,17 +37,14 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       ref={ref}
       className={cn(
-        // Brutalist base styles
-        "rounded-brutal border-brutal bg-card text-card-foreground shadow-brutal",
+        // Vercel minimal styles - Border only, no shadow
+        "rounded-lg border bg-card text-card-foreground",
 
-        // Brutalist transitions - snappy 150ms
-        "transition-brutal",
+        // Subtle transition
+        "transition-vercel-colors",
 
-        // Brutalist hover state - lift + grow shadow
-        "hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
-
-        // Focus-within state - thick ring for accessibility
-        "focus-within:ring-4 focus-within:ring-primary",
+        // Focus-within state - thin ring for accessibility
+        "focus-within:ring-2 focus-within:ring-primary",
 
         className
       )}
@@ -79,8 +76,8 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       data-slot="card-title"
       ref={ref}
       className={cn(
-        // Brutalist typography - bold and commanding
-        "text-[20px] leading-[1.2] font-bold tracking-[-0.018em]",
+        // Vercel typography - semibold for headings
+        "text-[20px] leading-[1.2] font-semibold tracking-[-0.018em]",
         "text-card-foreground",
 
         // Dark mode
@@ -100,8 +97,8 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
       data-slot="card-description"
       ref={ref}
       className={cn(
-        // Brutalist typography - bold body text
-        "text-[14px] leading-[1.5] font-bold tracking-[-0.003em]",
+        // Vercel typography - normal weight for body text
+        "text-[14px] leading-[1.5] font-normal tracking-[-0.003em]",
         "text-muted-foreground",
 
         // Dark mode
