@@ -35,3 +35,10 @@ vi.mock('next-themes', () => ({
 // Mock environment variables
 process.env.NEXTAUTH_URL = 'http://localhost:3000'
 process.env.NEXTAUTH_SECRET = 'test-secret'
+
+// Mock ResizeObserver (required for Radix UI Slider)
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
