@@ -9,6 +9,7 @@ import { inviteToOrganization, hasOrganizationRole, getOrganizationBySlug } from
 import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
+import { createOrgActivity } from "@/lib/notifications";
 
 export async function POST(req: NextRequest) {
   try {
@@ -74,6 +75,18 @@ export async function POST(req: NextRequest) {
     } catch (emailError) {
       console.error("Failed to send invitation email:", emailError);
       // Don't fail the request if email fails - invitation is already created
+    }
+
+    // Create real-time activity notification
+    try {
+      await createOrgActivity(organizationId, {
+        type: "member_invited",
+        description: `invited ${email} to join`,
+        userId: session.user.id,
+        userName: session.user.name || session.user.email || "User",
+      });
+    } catch (activityError) {
+      console.error("Failed to create activity:", activityError);
     }
 
     return NextResponse.json({

@@ -15,11 +15,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations('navigation');
 
   return (
     <nav
@@ -37,37 +40,32 @@ export function Navigation() {
           </div>
 
           {/* Right-aligned Navigation Links */}
-          <div className="ml-auto hidden items-center gap-8 lg:flex">
+          <div className="ml-auto hidden items-center gap-6 lg:flex">
             <Link
               href="/docs"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              Docs
+              {t('docs')}
             </Link>
             <Link
               href="/about"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              About
+              {t('about')}
             </Link>
             <Link
               href="/blog"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              Blog
+              {t('blog')}
             </Link>
             <Link
               href="/pricing"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              Pricing
+              {t('pricing')}
             </Link>
-            <Link
-              href="/demo"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Demo
-            </Link>
+            <LocaleSwitcher />
           </div>
 
           {/* Mobile Menu */}
@@ -110,91 +108,59 @@ export function Navigation() {
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    Home
+                    {t('home')}
                   </Link>
                   <Link
                     href="/components"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    Components
-                  </Link>
-                  <Link
-                    href="/starter-kits"
-                    onClick={() => setOpen(false)}
-                    className="py-1 text-lg font-medium hover:underline"
-                  >
-                    Starter Kits
+                    {t('components')}
                   </Link>
                   <Link
                     href="/pricing"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    Pricing
-                  </Link>
-                  <Link
-                    href="/roadmap"
-                    onClick={() => setOpen(false)}
-                    className="py-1 text-lg font-medium hover:underline"
-                  >
-                    Roadmap
+                    {t('pricing')}
                   </Link>
                   <Link
                     href="/blog"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    Blog
+                    {t('blog')}
                   </Link>
                 </nav>
 
                 <div className="mt-8">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Resources</h3>
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">{t('docs')}</h3>
                   <nav className="flex flex-col space-y-1">
                     <Link
                       href="/docs"
                       onClick={() => setOpen(false)}
                       className="py-1 text-lg font-medium hover:underline"
                     >
-                      Documentation
-                    </Link>
-                    <Link
-                      href="/examples"
-                      onClick={() => setOpen(false)}
-                      className="py-1 text-lg font-medium hover:underline"
-                    >
-                      Examples
-                    </Link>
-                    <Link
-                      href="/showcase"
-                      onClick={() => setOpen(false)}
-                      className="py-1 text-lg font-medium hover:underline"
-                    >
-                      Showcase
+                      {t('docs')}
                     </Link>
                   </nav>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Support</h3>
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">{t('support')}</h3>
                   <nav className="flex flex-col space-y-1">
                     <Link
                       href="/contact"
                       onClick={() => setOpen(false)}
                       className="py-1 text-lg font-medium hover:underline"
                     >
-                      Contact
+                      {t('contact')}
                     </Link>
                   </nav>
                 </div>
 
                 <div className="mt-8 border-t pt-8">
-                  <Button size="sm" className="w-full" asChild>
-                    <Link href="/demo" onClick={() => setOpen(false)}>
-                      Book Demo
-                    </Link>
-                  </Button>
+                  <LocaleSwitcher />
                 </div>
               </SheetContent>
             </Sheet>

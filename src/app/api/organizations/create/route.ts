@@ -6,6 +6,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { createOrganization } from "@/lib/teams/organizations";
+import { trackOrgCreated } from "@/lib/analytics/events";
+import { logOrgCreated } from "@/lib/audit/logger";
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,6 +44,14 @@ export async function POST(req: NextRequest) {
       description,
       ownerId: session.user.id,
     });
+
+    // Track in analytics
+    await trackOrgCreated(session.user.id, organization.id, organization.name, {
+      slug: organization.slug,
+    });
+
+    // Log in audit trail
+    await logOrgCreated(session.user.id, organization.id, organization.name);
 
     return NextResponse.json({
       success: true,

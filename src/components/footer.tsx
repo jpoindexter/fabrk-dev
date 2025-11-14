@@ -9,8 +9,12 @@
 import { Logo } from "@/components/home/logo";
 import { Cookie, Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export function Footer() {
+  const t = useTranslations('footer');
+  const tNav = useTranslations('navigation');
+
   const openCookieSettings = () => {
     // Trigger cookie consent modal by removing consent from localStorage
     localStorage.removeItem("cookie-consent");
@@ -30,8 +34,7 @@ export function Footer() {
               <Logo size={28} />
             </Link>
             <p className="text-sm text-muted-foreground">
-              Ship your SaaS 10x faster with AI-optimized architecture and production-ready
-              components.
+              {t('builtWith')} Next.js, TypeScript, Tailwind CSS
             </p>
             <div className="flex gap-3">
               <a
@@ -75,14 +78,14 @@ export function Footer() {
 
           {/* Product Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Product</h3>
+            <h3 className="text-sm font-medium">{t('product')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/components"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Components
+                  {tNav('components')}
                 </Link>
               </li>
               <li>
@@ -90,7 +93,7 @@ export function Footer() {
                   href="/templates"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Templates
+                  {tNav('templates')}
                 </Link>
               </li>
               <li>
@@ -98,7 +101,7 @@ export function Footer() {
                   href="/docs"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Documentation
+                  {tNav('docs')}
                 </Link>
               </li>
               <li>
@@ -106,15 +109,7 @@ export function Footer() {
                   href="/pricing"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/changelog"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Changelog
+                  {tNav('pricing')}
                 </Link>
               </li>
             </ul>
@@ -122,14 +117,14 @@ export function Footer() {
 
           {/* Company Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Company</h3>
+            <h3 className="text-sm font-medium">{t('company')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/about"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  About
+                  {tNav('about')}
                 </Link>
               </li>
               <li>
@@ -137,15 +132,7 @@ export function Footer() {
                   href="/blog"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/careers"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Careers
+                  {tNav('blog')}
                 </Link>
               </li>
               <li>
@@ -153,7 +140,7 @@ export function Footer() {
                   href="/contact"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Contact
+                  {tNav('contact')}
                 </Link>
               </li>
               <li>
@@ -161,7 +148,7 @@ export function Footer() {
                   href="/support"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Support
+                  {tNav('support')}
                 </Link>
               </li>
             </ul>
@@ -169,7 +156,7 @@ export function Footer() {
 
           {/* Legal Links - GDPR Required */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">Legal</h3>
+            <h3 className="text-sm font-medium">{t('legal')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -230,7 +217,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl p-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="text-center text-sm text-muted-foreground sm:text-left">
-              © {new Date().getFullYear()} Fabrk. All rights reserved.
+              © {new Date().getFullYear()} Fabrk. {t('allRightsReserved')}
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <Link href="/sitemap" className="transition-colors hover:text-foreground">

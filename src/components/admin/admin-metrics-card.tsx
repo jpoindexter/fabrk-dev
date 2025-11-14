@@ -1,0 +1,134 @@
+/**
+ * ✅ FABRK COMPONENT
+ * Reusable metric card with trend indicators (up/down arrows, percentage change).
+ *
+ * @example
+ * ```tsx
+ * <AdminMetricsCard
+ *   title="Total Users"
+ *   value={1234}
+ *   change={12.5}
+ *   icon={<Users />}
+ * />
+ * ```
+ */
+
+"use client";
+
+import * as React from "react";
+import { TrendingDown, TrendingUp, Minus, LucideIcon } from "lucide-react";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+interface AdminMetricsCardProps {
+  title: string;
+  value: string | number;
+  change?: number;
+  changeLabel?: string;
+  icon?: React.ReactNode;
+  iconClassName?: string;
+  variant?: "default" | "primary" | "success" | "warning" | "danger";
+  loading?: boolean;
+  className?: string;
+}
+
+export function AdminMetricsCard({
+  title,
+  value,
+  change,
+  changeLabel = "vs last period",
+  icon,
+  iconClassName,
+  variant = "default",
+  loading = false,
+  className,
+}: AdminMetricsCardProps) {
+  const isPositive = change !== undefined && change > 0;
+  const isNegative = change !== undefined && change < 0;
+  const isNeutral = change !== undefined && change === 0;
+
+  const TrendIcon = isPositive ? TrendingUp : isNegative ? TrendingDown : Minus;
+
+  const variantStyles = {
+    default: "border-border bg-card",
+    primary: "border-primary bg-primary/5",
+    success: "border-primary bg-primary/5",
+    warning: "border-yellow-500 bg-yellow-500/5",
+    danger: "border-destructive bg-destructive/5",
+  };
+
+  const iconWrapperStyles = {
+    default: "bg-accent text-accent-foreground",
+    primary: "bg-primary/10 text-primary",
+    success: "bg-primary/10 text-primary",
+    warning: "bg-yellow-500/10 text-yellow-500",
+    danger: "bg-destructive/10 text-destructive",
+  };
+
+  return (
+    <Card className={cn("relative overflow-hidden", variantStyles[variant], className)}>
+      <CardContent className="p-6">
+        <div className="flex items-start justify-between">
+          <div className="flex-1 space-y-3">
+            <p className="text-sm font-medium text-muted-foreground">{title}</p>
+
+            {loading ? (
+              <div className="space-y-2">
+                <div className="h-8 w-24 animate-pulse rounded bg-muted" />
+                <div className="h-4 w-20 animate-pulse rounded bg-muted" />
+              </div>
+            ) : (
+              <>
+                <div className="text-3xl font-black text-foreground">
+                  {typeof value === "number" ? value.toLocaleString() : value}
+                </div>
+
+                {change !== undefined && (
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={cn(
+                        "flex items-center gap-1 rounded-brutal border-brutal px-2 py-0.5 text-xs font-bold",
+                        isPositive && "border-primary bg-primary/10 text-primary",
+                        isNegative && "border-destructive bg-destructive/10 text-destructive",
+                        isNeutral && "border-border bg-muted text-muted-foreground"
+                      )}
+                    >
+                      <TrendIcon className="h-3 w-3" />
+                      {Math.abs(change).toFixed(1)}%
+                    </div>
+                    <span className="text-xs text-muted-foreground">{changeLabel}</span>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+
+          {icon && (
+            <div
+              className={cn(
+                "flex h-12 w-12 items-center justify-center rounded-brutal border-2 border-brutal",
+                iconWrapperStyles[variant],
+                iconClassName
+              )}
+            >
+              {icon}
+            </div>
+          )}
+        </div>
+      </CardContent>
+
+      {/* Background decoration */}
+      <div
+        className={cn(
+          "absolute -right-8 -bottom-8 h-32 w-32 rounded-full blur-3xl opacity-20",
+          variant === "primary" && "bg-primary",
+          variant === "success" && "bg-primary",
+          variant === "warning" && "bg-yellow-500",
+          variant === "danger" && "bg-destructive",
+          variant === "default" && "bg-accent"
+        )}
+      />
+    </Card>
+  );
+}

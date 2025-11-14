@@ -1,0 +1,246 @@
+/**
+ * Database-backed Feature Flags Management
+ * Persistent feature flags with admin controls
+ */
+
+'use client';
+
+import { useState, useEffect } from 'react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
+import { Slider } from '@/components/ui/slider';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { toast } from 'sonner';
+import { Plus, Trash2 } from 'lucide-react';
+
+interface FeatureFlag {
+  id: string;
+  name: string;
+  description: string | null;
+  enabled: boolean;
+  rolloutPercentage: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export default function FeatureFlagsDbPage() {
+  const [flags, setFlags] = useState<FeatureFlag[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [newFlag, setNewFlag] = useState({
+    name: '',
+    description: '',
+    enabled: false,
+    rolloutPercentage: 0,
+  });
+
+  useEffect(() => {
+    fetchFlags();
+  }, []);
+
+  const fetchFlags = async () => {
+    try {
+      const res = await fetch('/api/admin/feature-flags');
+      const data = await res.json();
+      setFlags(data.flags || []);
+    } catch (error) {
+      toast.error('Failed to fetch feature flags');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleToggle = async (id: string, enabled: boolean) => {
+    try {
+      const res = await fetch('/api/admin/feature-flags', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, enabled }),
+      });
+
+      if (!res.ok) throw new Error('Failed to update');
+
+      toast.success(`Feature flag ${enabled ? 'enabled' : 'disabled'}`);
+      fetchFlags();
+    } catch (error) {
+      toast.error('Failed to update feature flag');
+    }
+  };
+
+  const handleRolloutChange = async (id: string, rolloutPercentage: number) => {
+    try {
+      const res = await fetch('/api/admin/feature-flags', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, rolloutPercentage }),
+      });
+
+      if (!res.ok) throw new Error('Failed to update');
+
+      fetchFlags();
+    } catch (error) {
+      toast.error('Failed to update rollout percentage');
+    }
+  };
+
+  const handleCreate = async () => {
+    try {
+      const res = await fetch('/api/admin/feature-flags', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newFlag),
+      });
+
+      if (!res.ok) throw new Error('Failed to create');
+
+      toast.success('Feature flag created');
+      setNewFlag({ name: '', description: '', enabled: false, rolloutPercentage: 0 });
+      setShowCreateForm(false);
+      fetchFlags();
+    } catch (error) {
+      toast.error('Failed to create feature flag');
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this flag?')) return;
+
+    try {
+      const res = await fetch(`/api/admin/feature-flags?id=${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) throw new Error('Failed to delete');
+
+      toast.success('Feature flag deleted');
+      fetchFlags();
+    } catch (error) {
+      toast.error('Failed to delete feature flag');
+    }
+  };
+
+  if (loading) {
+    return <div className="flex h-48 items-center justify-center">Loading...</div>;
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Feature Flags (Database)</h1>
+          <p className="text-muted-foreground">Persistent feature flags with rollout control</p>
+        </div>
+        <Button onClick={() => setShowCreateForm(!showCreateForm)}>
+          <Plus className="mr-2 h-4 w-4" />
+          New Flag
+        </Button>
+      </div>
+
+      {showCreateForm && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Create Feature Flag</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <Label>Flag Name</Label>
+              <Input
+                value={newFlag.name}
+                onChange={(e) => setNewFlag({ ...newFlag, name: e.target.value })}
+                placeholder="new_feature"
+              />
+            </div>
+            <div>
+              <Label>Description</Label>
+              <Textarea
+                value={newFlag.description}
+                onChange={(e) => setNewFlag({ ...newFlag, description: e.target.value })}
+                placeholder="What does this flag control?"
+              />
+            </div>
+            <div className="flex items-center space-x-2">
+              <Switch
+                checked={newFlag.enabled}
+                onCheckedChange={(checked) => setNewFlag({ ...newFlag, enabled: checked })}
+              />
+              <Label>Enable immediately</Label>
+            </div>
+            <div className="flex gap-2">
+              <Button onClick={handleCreate}>Create</Button>
+              <Button variant="outline" onClick={() => setShowCreateForm(false)}>
+                Cancel
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid gap-4">
+        {flags.map((flag) => (
+          <Card key={flag.id}>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <CardTitle className="text-lg">{flag.name}</CardTitle>
+                  {flag.description && <CardDescription>{flag.description}</CardDescription>}
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      id={`toggle-${flag.id}`}
+                      checked={flag.enabled}
+                      onCheckedChange={(checked) => handleToggle(flag.id, checked)}
+                    />
+                    <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
+                      {flag.enabled ? 'Enabled' : 'Disabled'}
+                    </Label>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleDelete(flag.id)}
+                  >
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  </Button>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label>Rollout Percentage</Label>
+                  <Badge variant="outline">{flag.rolloutPercentage}%</Badge>
+                </div>
+                <Slider
+                  value={[flag.rolloutPercentage]}
+                  onValueCommit={(value) => handleRolloutChange(flag.id, value[0])}
+                  max={100}
+                  step={5}
+                  disabled={!flag.enabled}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+
+        {flags.length === 0 && (
+          <Card>
+            <CardContent className="flex h-48 items-center justify-center text-muted-foreground">
+              No feature flags created yet. Click "New Flag" to create one.
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+}

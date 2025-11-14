@@ -12,6 +12,8 @@ import {
   updateMemberRole,
 } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
+import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
+import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   req: NextRequest,
@@ -57,6 +59,44 @@ export async function PATCH(
       role as OrgRole,
       session.user.id
     );
+
+    // Get organization and member details for notifications
+    try {
+      const [org, member] = await Promise.all([
+        prisma.organization.findUnique({
+          where: { id: params.id },
+          select: { name: true },
+        }),
+        prisma.organizationMember.findUnique({
+          where: { id: params.memberId },
+          include: {
+            user: {
+              select: { id: true, name: true, email: true },
+            },
+          },
+        }),
+      ]);
+
+      if (org && member) {
+        // Notify user about role change
+        await notifyRoleChanged(
+          member.userId,
+          org.name,
+          role,
+          params.id
+        );
+
+        // Create activity event
+        await createOrgActivity(params.id, {
+          type: "role_changed",
+          description: `role was changed to ${role}`,
+          userId: member.userId,
+          userName: member.user.name || member.user.email || "User",
+        });
+      }
+    } catch (notifyError) {
+      console.error("Failed to send notifications:", notifyError);
+    }
 
     return NextResponse.json({
       success: true,
@@ -107,7 +147,31 @@ export async function DELETE(
       );
     }
 
+    // Get member details before removing
+    const member = await prisma.organizationMember.findUnique({
+      where: { id: params.memberId },
+      include: {
+        user: {
+          select: { id: true, name: true, email: true },
+        },
+      },
+    });
+
     await removeMember(params.id, params.memberId, session.user.id);
+
+    // Create activity event for member removal
+    if (member) {
+      try {
+        await createOrgActivity(params.id, {
+          type: "member_removed",
+          description: `was removed from the organization`,
+          userId: member.userId,
+          userName: member.user.name || member.user.email || "User",
+        });
+      } catch (activityError) {
+        console.error("Failed to create activity:", activityError);
+      }
+    }
 
     return NextResponse.json({
       success: true,

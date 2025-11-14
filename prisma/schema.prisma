@@ -47,6 +47,8 @@ model User {
   organizations      OrganizationMember[]
   organizationInvites OrganizationInvite[]
   uploads            Upload[]
+  auditLogs          AuditLog[]
+  notifications      Notification[]
 
   @@index([email])
 }
@@ -338,4 +340,73 @@ enum EmailStatus {
   SENT
   FAILED
   CANCELLED
+}
+
+// ===========================
+// AUDIT LOGS
+// ===========================
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String   // Who performed the action
+  action    String   // Action type (e.g., "org.member.removed", "org.deleted")
+  resource  String?  // Resource type (e.g., "organization", "user")
+  resourceId String? // ID of the affected resource
+  metadata  Json?    // Additional context (IP, user agent, etc.)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ===========================
+// FEATURE FLAGS
+// ===========================
+
+model FeatureFlag {
+  id                String   @id @default(cuid())
+  name              String   @unique // Flag name (e.g., "new_dashboard")
+  description       String?  // Human-readable description
+  enabled           Boolean  @default(false)
+  rolloutPercentage Int      @default(0) // 0-100
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([name])
+}
+
+// ===========================
+// NOTIFICATIONS
+// ===========================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  link      String?  // Optional link to related resource
+  metadata  Json?    // Additional data (organizationId, inviteId, etc.)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([read])
+  @@index([createdAt])
+}
+
+enum NotificationType {
+  ORG_INVITE
+  ORG_MEMBER_ADDED
+  ORG_MEMBER_REMOVED
+  ORG_ROLE_CHANGED
+  PAYMENT_SUCCESS
+  PAYMENT_FAILED
+  SECURITY_ALERT
+  SYSTEM
 }

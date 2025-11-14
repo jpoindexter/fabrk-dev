@@ -116,6 +116,7 @@ import { emailService } from "@/lib/email";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { trackUserSignup } from "@/lib/analytics/events";
 import { hash } from "bcryptjs";
 import { randomBytes } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
@@ -181,6 +182,12 @@ async function registerHandler(req: NextRequest) {
     await emailService.sendTemplate("email-verification", email, {
       verificationLink,
       name: user.name || email.split("@")[0],
+    });
+
+    // Track signup in analytics
+    await trackUserSignup(user.id, email, {
+      name: user.name,
+      provider: 'credentials',
     });
 
     return NextResponse.json(

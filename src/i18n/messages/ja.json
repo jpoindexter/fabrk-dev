@@ -1,0 +1,333 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "update": "更新",
+    "submit": "送信",
+    "close": "閉じる",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "search": "検索",
+    "filter": "フィルター",
+    "sort": "並び替え",
+    "actions": "アクション",
+    "viewAll": "すべて表示",
+    "learnMore": "詳細を見る",
+    "getStarted": "始める",
+    "signIn": "ログイン",
+    "signUp": "登録",
+    "signOut": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "name": "名前",
+    "description": "説明",
+    "title": "タイトル",
+    "required": "必須",
+    "optional": "任意",
+    "yes": "はい",
+    "no": "いいえ",
+    "confirm": "確認",
+    "download": "ダウンロード",
+    "upload": "アップロード",
+    "copy": "コピー",
+    "copied": "コピーしました！",
+    "share": "共有",
+    "print": "印刷",
+    "export": "エクスポート",
+    "import": "インポート",
+    "selectAll": "すべて選択",
+    "deselectAll": "すべて選択解除",
+    "showMore": "もっと見る",
+    "showLess": "閉じる"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "dashboard": "ダッシュボード",
+    "features": "機能",
+    "pricing": "料金",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "blog": "ブログ",
+    "docs": "ドキュメント",
+    "support": "サポート",
+    "settings": "設定",
+    "profile": "プロフィール",
+    "billing": "請求",
+    "team": "チーム",
+    "admin": "管理者",
+    "apiKeys": "APIキー",
+    "components": "コンポーネント",
+    "templates": "テンプレート",
+    "variations": "バリエーション"
+  },
+  "auth": {
+    "login": {
+      "title": "アカウントにログイン",
+      "subtitle": "お帰りなさい！詳細を入力してください。",
+      "emailPlaceholder": "メールアドレスを入力",
+      "passwordPlaceholder": "パスワードを入力",
+      "rememberMe": "ログイン状態を保持",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "signInButton": "ログイン",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signUpLink": "無料で登録",
+      "orContinueWith": "または続行",
+      "googleSignIn": "Googleで続行",
+      "githubSignIn": "GitHubで続行",
+      "error": {
+        "invalidCredentials": "メールアドレスまたはパスワードが正しくありません",
+        "emailRequired": "メールアドレスは必須です",
+        "passwordRequired": "パスワードは必須です"
+      }
+    },
+    "register": {
+      "title": "アカウントを作成",
+      "subtitle": "素晴らしいSaaSアプリケーションの構築を始めましょう。",
+      "namePlaceholder": "名前を入力",
+      "emailPlaceholder": "メールアドレスを入力",
+      "passwordPlaceholder": "パスワードを作成",
+      "confirmPasswordPlaceholder": "パスワードを確認",
+      "signUpButton": "登録",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "signInLink": "ログイン",
+      "termsAgreement": "登録することで、{terms}と{privacy}に同意したことになります",
+      "termsLink": "利用規約",
+      "privacyLink": "プライバシーポリシー",
+      "error": {
+        "nameRequired": "名前は必須です",
+        "emailRequired": "メールアドレスは必須です",
+        "emailInvalid": "有効なメールアドレスを入力してください",
+        "passwordTooShort": "パスワードは8文字以上である必要があります",
+        "passwordsMustMatch": "パスワードが一致しません",
+        "emailExists": "このメールアドレスは既に登録されています"
+      }
+    },
+    "forgotPassword": {
+      "title": "パスワードをリセット",
+      "subtitle": "メールアドレスを入力すると、リセットリンクをお送りします。",
+      "emailPlaceholder": "メールアドレスを入力",
+      "sendButton": "リセットリンクを送信",
+      "backToLogin": "ログインに戻る",
+      "success": "リセットリンクをメールで確認してください",
+      "error": {
+        "emailRequired": "メールアドレスは必須です",
+        "emailNotFound": "メールアドレスが見つかりません"
+      }
+    },
+    "resetPassword": {
+      "title": "新しいパスワードを設定",
+      "subtitle": "以下に新しいパスワードを入力してください。",
+      "passwordPlaceholder": "新しいパスワード",
+      "confirmPasswordPlaceholder": "新しいパスワードを確認",
+      "resetButton": "パスワードをリセット",
+      "success": "パスワードが正常にリセットされました",
+      "error": {
+        "invalidToken": "リセットリンクが無効または期限切れです",
+        "passwordTooShort": "パスワードは8文字以上である必要があります",
+        "passwordsMustMatch": "パスワードが一致しません"
+      }
+    },
+    "verifyEmail": {
+      "title": "メールアドレスを確認",
+      "subtitle": "確認リンクをメールでお送りしました。",
+      "resendButton": "確認メールを再送信",
+      "success": "メールアドレスが正常に確認されました！",
+      "error": {
+        "invalidToken": "確認リンクが無効または期限切れです"
+      }
+    }
+  },
+  "dashboard": {
+    "welcome": "お帰りなさい、{name}さん！",
+    "overview": "概要",
+    "recentActivity": "最近のアクティビティ",
+    "stats": {
+      "users": "ユーザー",
+      "revenue": "収益",
+      "projects": "プロジェクト",
+      "apiCalls": "API呼び出し"
+    },
+    "quickActions": {
+      "title": "クイックアクション",
+      "newProject": "新規プロジェクト",
+      "inviteTeam": "チームを招待",
+      "viewDocs": "ドキュメントを見る",
+      "getSupport": "サポートを受ける"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "general": {
+      "title": "一般",
+      "name": "名前",
+      "namePlaceholder": "あなたの名前",
+      "email": "メールアドレス",
+      "emailPlaceholder": "your@email.com",
+      "timezone": "タイムゾーン",
+      "language": "言語",
+      "saveButton": "変更を保存",
+      "success": "設定が正常に更新されました"
+    },
+    "account": {
+      "title": "アカウント",
+      "deleteAccount": "アカウントを削除",
+      "deleteWarning": "この操作は元に戻せません。アカウントが完全に削除されます。",
+      "deleteButton": "アカウントを削除",
+      "deleteConfirm": "本当にアカウントを削除してもよろしいですか？"
+    },
+    "security": {
+      "title": "セキュリティ",
+      "changePassword": "パスワード変更",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワードを確認",
+      "updatePassword": "パスワードを更新",
+      "twoFactor": "二要素認証",
+      "twoFactorEnabled": "2FA有効",
+      "twoFactorDisabled": "2FA無効",
+      "enableTwoFactor": "2FAを有効にする",
+      "disableTwoFactor": "2FAを無効にする",
+      "sessions": "アクティブなセッション",
+      "revokeAll": "すべてのセッションを無効化"
+    },
+    "notifications": {
+      "title": "通知",
+      "emailNotifications": "メール通知",
+      "productUpdates": "製品アップデート",
+      "securityAlerts": "セキュリティアラート",
+      "weeklyDigest": "週間ダイジェスト",
+      "pushNotifications": "プッシュ通知"
+    }
+  },
+  "billing": {
+    "title": "請求",
+    "currentPlan": "現在のプラン",
+    "upgradePlan": "プランをアップグレード",
+    "managePlan": "プランを管理",
+    "paymentMethods": "支払い方法",
+    "addPaymentMethod": "支払い方法を追加",
+    "invoices": "請求書",
+    "downloadInvoice": "請求書をダウンロード",
+    "billingHistory": "請求履歴",
+    "nextBillingDate": "次回請求日",
+    "cancelSubscription": "サブスクリプションをキャンセル",
+    "plans": {
+      "starter": "スターター",
+      "professional": "プロフェッショナル",
+      "enterprise": "エンタープライズ",
+      "perMonth": "月額",
+      "perYear": "年額",
+      "free": "無料"
+    }
+  },
+  "team": {
+    "title": "チーム",
+    "members": "メンバー",
+    "inviteMembers": "メンバーを招待",
+    "roles": {
+      "owner": "オーナー",
+      "admin": "管理者",
+      "member": "メンバー",
+      "guest": "ゲスト"
+    },
+    "invite": {
+      "emailPlaceholder": "colleague@example.com",
+      "selectRole": "役割を選択",
+      "sendInvite": "招待を送信",
+      "success": "招待が正常に送信されました"
+    },
+    "removeMember": "メンバーを削除",
+    "changeRole": "役割を変更"
+  },
+  "apiKeys": {
+    "title": "APIキー",
+    "description": "プログラムアクセス用のAPIキーを管理します。",
+    "createNew": "新しいAPIキーを作成",
+    "name": "名前",
+    "namePlaceholder": "マイAPIキー",
+    "key": "キー",
+    "created": "作成日",
+    "lastUsed": "最終使用日",
+    "revoke": "無効化",
+    "copyKey": "キーをコピー",
+    "keyCreated": "APIキーが正常に作成されました",
+    "keyCopied": "APIキーがクリップボードにコピーされました",
+    "keyRevoked": "APIキーが無効化されました"
+  },
+  "errors": {
+    "404": {
+      "title": "ページが見つかりません",
+      "description": "お探しのページは存在しません。",
+      "button": "ホームに戻る"
+    },
+    "500": {
+      "title": "サーバーエラー",
+      "description": "サーバー側で問題が発生しました。",
+      "button": "再試行"
+    },
+    "unauthorized": "このリソースへのアクセス権限がありません",
+    "networkError": "ネットワークエラー。接続を確認してください。",
+    "unknownError": "不明なエラーが発生しました",
+    "validationError": "入力内容を確認して再試行してください"
+  },
+  "landing": {
+    "hero": {
+      "title": "今週末にSaaSをリリース",
+      "subtitle": "認証、決済など、すぐに起動できるNext.js本番環境対応ボイラープレート。",
+      "cta": "始める",
+      "secondaryCta": "デモを見る"
+    },
+    "features": {
+      "title": "リリースに必要なすべて",
+      "subtitle": "ボイラープレートに時間を浪費しないでください。製品の独自性に集中しましょう。",
+      "auth": {
+        "title": "認証",
+        "description": "メール/パスワード、OAuth、2FA、マジックリンク。すべて設定済みです。"
+      },
+      "payments": {
+        "title": "決済",
+        "description": "サブスクリプション、一回払い、顧客ポータルを備えたStripe統合。"
+      },
+      "database": {
+        "title": "データベース",
+        "description": "Prisma ORMを使用したPostgreSQL。型安全なクエリと簡単な移行。"
+      },
+      "email": {
+        "title": "メール",
+        "description": "Resendによるトランザクションメール。すべての一般的なフローのテンプレート。"
+      }
+    },
+    "pricing": {
+      "title": "シンプルで透明な料金",
+      "subtitle": "買い切り。生涯アクセス。",
+      "features": "すべての機能が含まれています",
+      "lifetime": "生涯アップデート",
+      "support": "プレミアムサポート",
+      "buy": "今すぐ購入"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": "何が含まれていますか？",
+      "a1": "デモに表示されているすべてと包括的なドキュメント。",
+      "q2": "アップデートは受け取れますか？",
+      "a2": "はい！将来のすべてのアップデートは無料で含まれています。",
+      "q3": "返金はできますか？",
+      "a3": "はい。30日間の返金保証、質問なし。"
+    }
+  },
+  "footer": {
+    "product": "製品",
+    "company": "会社",
+    "legal": "法的情報",
+    "followUs": "フォローする",
+    "allRightsReserved": "著作権所有",
+    "builtWith": "構築技術"
+  }
+}

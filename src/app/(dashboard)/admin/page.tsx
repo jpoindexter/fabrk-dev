@@ -12,17 +12,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Users, CreditCard, AlertTriangle, Activity } from "lucide-react";
+import { Users, CreditCard, AlertTriangle, Activity, Building } from "lucide-react";
 
 async function getStats() {
   const [
     totalUsers,
+    totalOrganizations,
     totalPayments,
     recentUsers,
     recentPayments,
     activeUsers,
   ] = await Promise.all([
     prisma.user.count(),
+    prisma.organization.count(),
     prisma.payment.count(),
     prisma.user.count({
       where: {
@@ -51,22 +53,37 @@ async function getStats() {
     }),
   ]);
 
-  const totalRevenue = await prisma.payment.aggregate({
-    _sum: {
-      amount: true,
-    },
-    where: {
-      status: "succeeded",
-    },
-  });
+  const [totalRevenue, monthlyRevenue] = await Promise.all([
+    prisma.payment.aggregate({
+      _sum: {
+        amount: true,
+      },
+      where: {
+        status: "succeeded",
+      },
+    }),
+    prisma.payment.aggregate({
+      _sum: {
+        amount: true,
+      },
+      where: {
+        status: "succeeded",
+        createdAt: {
+          gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), // Last 30 days
+        },
+      },
+    }),
+  ]);
 
   return {
     totalUsers,
+    totalOrganizations,
     totalPayments,
     recentUsers,
     recentPayments,
     activeUsers,
     totalRevenue: totalRevenue._sum.amount || 0,
+    monthlyRevenue: monthlyRevenue._sum.amount || 0,
   };
 }
 
@@ -74,7 +91,7 @@ async function AdminStats() {
   const stats = await getStats();
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Users</CardTitle>
@@ -84,6 +101,19 @@ async function AdminStats() {
           <div className="text-2xl font-bold">{stats.totalUsers}</div>
           <p className="text-xs text-muted-foreground">
             +{stats.recentUsers} in last 7 days
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">Organizations</CardTitle>
+          <Building className="h-4 w-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold">{stats.totalOrganizations}</div>
+          <p className="text-xs text-muted-foreground">
+            Total workspaces
           </p>
         </CardContent>
       </Card>
@@ -103,6 +133,21 @@ async function AdminStats() {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">MRR</CardTitle>
+          <CreditCard className="h-4 w-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent>
+          <div className="text-2xl font-bold">
+            ${(stats.monthlyRevenue / 100).toFixed(2)}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Last 30 days revenue
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
           <CreditCard className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
@@ -112,19 +157,6 @@ async function AdminStats() {
           </div>
           <p className="text-xs text-muted-foreground">
             {stats.totalPayments} payments
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Recent Activity</CardTitle>
-          <AlertTriangle className="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{stats.recentPayments}</div>
-          <p className="text-xs text-muted-foreground">
-            Payments in last 7 days
           </p>
         </CardContent>
       </Card>
@@ -144,8 +176,8 @@ export default function AdminPage() {
 
       <Suspense
         fallback={
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {[...Array(4)].map((_, i) => (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {[...Array(5)].map((_, i) => (
               <Card key={i}>
                 <CardHeader>
                   <div className="h-4 w-24 animate-pulse rounded bg-muted" />
