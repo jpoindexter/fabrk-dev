@@ -147,7 +147,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
       <div
         ref={ref}
         className={cn(
-          "group relative overflow-hidden rounded-brutal border-brutal bg-card shadow-brutal transition-all duration-200 hover:shadow-brutal-lg",
+          "group relative overflow-hidden rounded-md border bg-card shadow-sm transition-all duration-200 hover:shadow-md",
           isCompact ? "max-w-[280px]" : "max-w-sm",
           className
         )}
@@ -165,7 +165,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                     ? "secondary"
                     : "default"
               }
-              className="shadow-brutal-lg"
+              className="shadow-sm"
             >
               {product.badge.text}
             </Badge>
@@ -177,7 +177,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           <div className="absolute right-3 top-3 z-10">
             <Badge
               variant="default"
-              className="bg-destructive text-destructive-foreground shadow-brutal-lg"
+              className="bg-destructive text-destructive-foreground shadow-sm"
             >
               -{discountPercentage}%
             </Badge>
@@ -245,7 +245,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           <div className="mb-3">
             <h3
               className={cn(
-                "font-bold text-foreground line-clamp-1",
+                "font-medium text-foreground line-clamp-1",
                 isCompact ? "text-sm" : "text-base"
               )}
             >
@@ -287,7 +287,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                 <>
                   <span
                     className={cn(
-                      "font-bold text-destructive",
+                      "font-semibold text-destructive",
                       isCompact ? "text-lg" : "text-xl"
                     )}
                   >
@@ -300,7 +300,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
               ) : (
                 <span
                   className={cn(
-                    "font-bold text-foreground",
+                    "font-semibold text-foreground",
                     isCompact ? "text-lg" : "text-xl"
                   )}
                 >

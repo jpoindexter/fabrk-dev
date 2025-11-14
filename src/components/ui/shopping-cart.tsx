@@ -106,10 +106,10 @@ export function ShoppingCart({
 
   const EmptyState = () => (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="mb-6 rounded-brutal border-brutal bg-muted/20 p-8">
+      <div className="mb-6 rounded-md border bg-muted/20 p-8">
         <ShoppingBag className="h-16 w-16 text-muted-foreground" />
       </div>
-      <h3 className="mb-2 text-xl font-black text-foreground">Your cart is empty</h3>
+      <h3 className="mb-2 text-xl font-semibold text-foreground">Your cart is empty</h3>
       <p className="mb-6 text-sm text-muted-foreground">
         Add some items to get started
       </p>
@@ -133,12 +133,12 @@ export function ShoppingCart({
           return (
             <div
               key={item.id}
-              className="group relative rounded-brutal border-brutal bg-card p-4 shadow-brutal transition-all hover:shadow-brutal-lg"
+              className="group relative rounded-md border bg-card p-4 shadow-sm transition-all hover:shadow-md"
             >
               {/* Remove Button */}
               <button
                 onClick={() => onRemoveItem?.(item.id)}
-                className="absolute -right-2 -top-2 rounded-full border-brutal bg-destructive p-1.5 text-white opacity-0 shadow-brutal transition-all hover:shadow-brutal-lg group-hover:opacity-100"
+                className="absolute -right-2 -top-2 rounded-full border bg-destructive p-1.5 text-white opacity-0 shadow-sm transition-all hover:shadow-md group-hover:opacity-100"
                 aria-label="Remove item"
               >
                 <X className="h-4 w-4" />
@@ -147,7 +147,7 @@ export function ShoppingCart({
               <div className="flex gap-4">
                 {/* Product Image */}
                 <div className="flex-shrink-0">
-                  <div className="h-20 w-20 overflow-hidden rounded-brutal border-brutal bg-muted">
+                  <div className="h-20 w-20 overflow-hidden rounded-md border bg-muted">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -159,29 +159,29 @@ export function ShoppingCart({
                 {/* Product Details */}
                 <div className="flex flex-1 flex-col justify-between">
                   <div>
-                    <h4 className="font-bold text-foreground">{item.name}</h4>
+                    <h4 className="font-medium text-foreground">{item.name}</h4>
                     {item.variant && (
                       <p className="text-xs text-muted-foreground">{item.variant}</p>
                     )}
-                    <p className="mt-1 text-sm font-bold text-primary">
+                    <p className="mt-1 text-sm font-medium text-primary">
                       {formatPrice(item.price, currency)}
                     </p>
                   </div>
 
                   {/* Quantity Controls */}
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center rounded-brutal border-brutal bg-background shadow-brutal">
+                    <div className="flex items-center rounded-md border bg-background shadow-sm">
                       <button
                         onClick={() =>
                           handleQuantityChange(item.id, item.quantity - 1)
                         }
                         disabled={item.quantity <= 1}
-                        className="flex h-8 w-8 items-center justify-center border-r-2 border-brutal transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-8 w-8 items-center justify-center border-r transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
                         aria-label="Decrease quantity"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
-                      <span className="flex h-8 w-12 items-center justify-center text-sm font-bold">
+                      <span className="flex h-8 w-12 items-center justify-center text-sm font-medium">
                         {item.quantity}
                       </span>
                       <button
@@ -189,7 +189,7 @@ export function ShoppingCart({
                           handleQuantityChange(item.id, item.quantity + 1)
                         }
                         disabled={isMaxQuantity}
-                        className="flex h-8 w-8 items-center justify-center border-l-2 border-brutal transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex h-8 w-8 items-center justify-center border-l transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
                         aria-label="Increase quantity"
                       >
                         <Plus className="h-4 w-4" />
@@ -208,7 +208,7 @@ export function ShoppingCart({
 
                 {/* Item Total */}
                 <div className="flex-shrink-0 text-right">
-                  <p className="font-black text-foreground">
+                  <p className="font-semibold text-foreground">
                     {formatPrice(item.price * item.quantity, currency)}
                   </p>
                 </div>
@@ -220,7 +220,7 @@ export function ShoppingCart({
 
       {/* Promo Code */}
       {onApplyPromo && (
-        <div className="rounded-brutal border-brutal bg-card p-4 shadow-brutal">
+        <div className="rounded-md border bg-card p-4 shadow-sm">
           <div className="flex gap-2">
             <div className="relative flex-1">
               <Tag className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -244,38 +244,38 @@ export function ShoppingCart({
       )}
 
       {/* Price Breakdown */}
-      <div className="rounded-brutal border-brutal bg-card p-4 shadow-brutal">
+      <div className="rounded-md border bg-card p-4 shadow-sm">
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Subtotal</span>
-            <span className="font-bold">{formatPrice(subtotal, currency)}</span>
+            <span className="font-medium">{formatPrice(subtotal, currency)}</span>
           </div>
 
           {tax > 0 && (
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Tax</span>
-              <span className="font-bold">{formatPrice(tax, currency)}</span>
+              <span className="font-medium">{formatPrice(tax, currency)}</span>
             </div>
           )}
 
           {shipping > 0 && (
             <div className="flex justify-between text-sm">
               <span className="text-muted-foreground">Shipping</span>
-              <span className="font-bold">{formatPrice(shipping, currency)}</span>
+              <span className="font-medium">{formatPrice(shipping, currency)}</span>
             </div>
           )}
 
           {discount > 0 && (
             <div className="flex justify-between text-sm text-primary">
               <span>Discount</span>
-              <span className="font-bold">-{formatPrice(discount, currency)}</span>
+              <span className="font-medium">-{formatPrice(discount, currency)}</span>
             </div>
           )}
 
-          <div className="border-t-2 border-brutal pt-2">
+          <div className="border-t pt-2">
             <div className="flex justify-between">
-              <span className="font-black">Total</span>
-              <span className="text-xl font-black text-primary">
+              <span className="font-semibold">Total</span>
+              <span className="text-xl font-semibold text-primary">
                 {formatPrice(total, currency)}
               </span>
             </div>
@@ -326,7 +326,7 @@ export function ShoppingCart({
     return (
       <div
         className={cn(
-          'rounded-brutal border-brutal bg-background shadow-brutal',
+          'rounded-md border bg-background shadow-sm',
           variant === 'sidebar' && 'fixed right-4 top-20 w-96 max-h-[calc(100vh-6rem)]',
           variant === 'page' && 'mx-auto max-w-2xl',
           className
@@ -341,12 +341,12 @@ export function ShoppingCart({
     return (
       <div
         className={cn(
-          'fixed right-4 top-20 flex w-96 max-h-[calc(100vh-6rem)] flex-col gap-4 rounded-brutal border-brutal bg-background p-4 shadow-brutal-xl',
+          'fixed right-4 top-20 flex w-96 max-h-[calc(100vh-6rem)] flex-col gap-4 rounded-md border bg-background p-4 shadow-md',
           className
         )}
       >
-        <div className="flex items-center justify-between border-b-2 border-brutal pb-4">
-          <h2 className="text-xl font-black">Shopping Cart</h2>
+        <div className="flex items-center justify-between border-b pb-4">
+          <h2 className="text-xl font-semibold">Shopping Cart</h2>
           <Badge variant="default">{items.length} items</Badge>
         </div>
         <CartContent />
@@ -357,7 +357,7 @@ export function ShoppingCart({
   return (
     <div className={cn('mx-auto max-w-2xl', className)}>
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-black">Shopping Cart</h1>
+        <h1 className="text-3xl font-semibold">Shopping Cart</h1>
         <Badge variant="default" className="text-base">
           {items.length} items
         </Badge>

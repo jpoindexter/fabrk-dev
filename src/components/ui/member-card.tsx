@@ -41,7 +41,7 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="flex items-center gap-3 rounded-brutal border-brutal bg-card p-3 shadow-brutal">
+      <div className="flex items-center gap-3 rounded-md border bg-card p-3 shadow-sm">
         <div className="relative">
           <div className="h-10 w-10 animate-pulse rounded-full bg-muted" />
         </div>
@@ -55,7 +55,7 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
   }
 
   return (
-    <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
+    <div className="rounded-md border bg-card p-6 shadow-sm">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <div className="h-20 w-20 animate-pulse rounded-full bg-muted" />
@@ -67,8 +67,8 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
           <div className="h-3 w-5/6 animate-pulse rounded bg-muted" />
         </div>
         <div className="flex gap-2">
-          <div className="h-9 w-20 animate-pulse rounded-brutal bg-muted" />
-          <div className="h-9 w-20 animate-pulse rounded-brutal bg-muted" />
+          <div className="h-9 w-20 animate-pulse rounded-md bg-muted" />
+          <div className="h-9 w-20 animate-pulse rounded-md bg-muted" />
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "flex items-center gap-3 rounded-brutal border-brutal bg-card p-3 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+            "flex items-center gap-3 rounded-md border bg-card p-3 shadow-sm transition-all hover:shadow-md hover:opacity-90",
             className
           )}
           {...props}
@@ -139,7 +139,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-card",
+                  "absolute bottom-0 right-0 h-3 w-3 rounded-full border border-card",
                   getStatusColor(member.status)
                 )}
               />
@@ -148,7 +148,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <h4 className="font-bold text-sm text-foreground truncate">{member.name}</h4>
+              <h4 className="font-semibold text-sm text-foreground truncate">{member.name}</h4>
               {member.status === "online" && (
                 <Badge variant="accent" className="text-[10px] px-2 py-0">
                   Online
@@ -217,7 +217,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-brutal border-brutal bg-card p-6 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+          "rounded-md border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:opacity-90",
           className
         )}
         {...props}
@@ -231,7 +231,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-1 right-1 h-4 w-4 rounded-full border-2 border-card",
+                  "absolute bottom-1 right-1 h-4 w-4 rounded-full border border-card",
                   getStatusColor(member.status)
                 )}
               />
@@ -240,14 +240,14 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
 
           <div className="text-center w-full space-y-1">
             <div className="flex items-center justify-center gap-2">
-              <h3 className="font-black text-lg text-foreground">{member.name}</h3>
+              <h3 className="font-semibold text-lg text-foreground">{member.name}</h3>
               {member.status === "online" && (
                 <Badge variant="accent" className="text-[10px] px-2 py-0.5">
                   Online
                 </Badge>
               )}
             </div>
-            <p className="text-sm font-bold text-primary">{member.role}</p>
+            <p className="text-sm font-medium text-primary">{member.role}</p>
             {member.bio && <p className="text-sm text-muted-foreground mt-2">{member.bio}</p>}
             {member.memberSince && (
               <p className="text-xs text-muted-foreground">

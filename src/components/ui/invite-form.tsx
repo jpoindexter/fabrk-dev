@@ -190,7 +190,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
         ref={ref}
         onSubmit={handleSubmit}
         className={cn(
-          "rounded-brutal border-brutal bg-card p-6 shadow-brutal",
+          "rounded-md border bg-card p-6 shadow-sm",
           className
         )}
       >
@@ -224,7 +224,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
               disabled={isSubmitting}
             />
             {errors.email && (
-              <p className="text-sm font-medium text-destructive">{errors.email}</p>
+              <p className="text-sm font-normal text-destructive">{errors.email}</p>
             )}
             {allowMultiple && emails.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-2">
@@ -318,16 +318,16 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
 
           {/* Submit Error */}
           {errors.submit && (
-            <div className="rounded-brutal border-2 border-destructive bg-destructive/10 p-3">
-              <p className="text-sm font-medium text-destructive">{errors.submit}</p>
+            <div className="rounded-md border border-destructive bg-destructive/10 p-3">
+              <p className="text-sm font-normal text-destructive">{errors.submit}</p>
             </div>
           )}
 
           {/* Success Message */}
           {showSuccess && (
-            <div className="rounded-brutal border-2 border-primary bg-primary/10 p-3 flex items-center gap-2">
+            <div className="rounded-md border border-primary bg-primary/10 p-3 flex items-center gap-2">
               <Check className="h-4 w-4 text-primary" />
-              <p className="text-sm font-medium text-primary">
+              <p className="text-sm font-normal text-primary">
                 Invitation{allowMultiple && "s"} sent successfully!
               </p>
             </div>

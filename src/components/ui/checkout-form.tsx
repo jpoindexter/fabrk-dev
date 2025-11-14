@@ -230,8 +230,8 @@ export function CheckoutForm({
             {/* Step 1: Shipping */}
             {currentStep === 0 && (
               <div className="space-y-6">
-                <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
-                  <h2 className="mb-4 text-xl font-black">Shipping Information</h2>
+                <div className="rounded-md border bg-card p-6 shadow-sm">
+                  <h2 className="mb-4 text-xl font-semibold">Shipping Information</h2>
 
                   <div className="space-y-4">
                     <div>
@@ -384,8 +384,8 @@ export function CheckoutForm({
             {/* Step 2: Payment */}
             {currentStep === 1 && (
               <div className="space-y-6">
-                <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
-                  <h2 className="mb-4 text-xl font-black">Payment Method</h2>
+                <div className="rounded-md border bg-card p-6 shadow-sm">
+                  <h2 className="mb-4 text-xl font-semibold">Payment Method</h2>
 
                   <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
                     {[
@@ -407,14 +407,14 @@ export function CheckoutForm({
                           })
                         }
                         className={cn(
-                          "rounded-brutal border-brutal p-4 transition-all",
+                          "rounded-md border p-4 transition-all",
                           formData.payment.method === value
-                            ? "bg-primary text-primary-foreground shadow-brutal"
-                            : "bg-background hover:shadow-brutal"
+                            ? "bg-primary text-primary-foreground shadow-sm"
+                            : "bg-background hover:shadow-sm hover:opacity-90"
                         )}
                       >
                         <Icon className="mx-auto mb-2 h-6 w-6" />
-                        <p className="text-sm font-bold">{label}</p>
+                        <p className="text-sm font-medium">{label}</p>
                       </button>
                     ))}
                   </div>
@@ -501,7 +501,7 @@ export function CheckoutForm({
                   )}
 
                   {formData.payment.method !== "card" && (
-                    <div className="rounded-brutal border-brutal bg-muted p-4">
+                    <div className="rounded-md border bg-muted p-4">
                       <p className="text-sm text-muted-foreground">
                         You will be redirected to {formData.payment.method === "paypal" ? "PayPal" : formData.payment.method === "apple_pay" ? "Apple Pay" : "Google Pay"} to complete your payment.
                       </p>
@@ -514,12 +514,12 @@ export function CheckoutForm({
             {/* Step 3: Review */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <div className="rounded-brutal border-brutal bg-card p-6 shadow-brutal">
-                  <h2 className="mb-4 text-xl font-black">Review Order</h2>
+                <div className="rounded-md border bg-card p-6 shadow-sm">
+                  <h2 className="mb-4 text-xl font-semibold">Review Order</h2>
 
                   <div className="space-y-6">
                     <div>
-                      <h3 className="mb-2 font-bold">Shipping Address</h3>
+                      <h3 className="mb-2 font-medium">Shipping Address</h3>
                       <div className="text-sm text-muted-foreground">
                         <p>{formData.shipping.fullName}</p>
                         <p>{formData.shipping.address}</p>
@@ -534,8 +534,8 @@ export function CheckoutForm({
                       </div>
                     </div>
 
-                    <div className="border-t-2 border-brutal pt-4">
-                      <h3 className="mb-2 font-bold">Payment Method</h3>
+                    <div className="border-t pt-4">
+                      <h3 className="mb-2 font-medium">Payment Method</h3>
                       <div className="text-sm text-muted-foreground">
                         {formData.payment.method === "card" && formData.payment.cardNumber && (
                           <p>Card ending in {formData.payment.cardNumber.slice(-4)}</p>
@@ -580,36 +580,36 @@ export function CheckoutForm({
         {/* Order Summary Sidebar */}
         {showOrderSummary && (
           <div className="lg:col-span-1">
-            <div className="sticky top-4 rounded-brutal border-brutal bg-card p-6 shadow-brutal">
-              <h2 className="mb-4 text-xl font-black">Order Summary</h2>
+            <div className="sticky top-4 rounded-md border bg-card p-6 shadow-sm">
+              <h2 className="mb-4 text-xl font-semibold">Order Summary</h2>
 
-              <div className="space-y-3 border-b-2 border-brutal pb-4">
+              <div className="space-y-3 border-b pb-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-bold">
+                  <span className="font-medium">
                     {currency} {cartTotal.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Shipping</span>
-                  <span className="font-bold">Free</span>
+                  <span className="font-medium">Free</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Tax</span>
-                  <span className="font-bold">
+                  <span className="font-medium">
                     {currency} {(cartTotal * 0.1).toFixed(2)}
                   </span>
                 </div>
               </div>
 
               <div className="mt-4 flex justify-between">
-                <span className="text-lg font-black">Total</span>
-                <span className="text-lg font-black">
+                <span className="text-lg font-semibold">Total</span>
+                <span className="text-lg font-semibold">
                   {currency} {(cartTotal * 1.1).toFixed(2)}
                 </span>
               </div>
 
-              <div className="mt-6 flex items-center gap-2 rounded-brutal border-brutal bg-muted p-3">
+              <div className="mt-6 flex items-center gap-2 rounded-md border bg-muted p-3">
                 <Lock className="h-4 w-4 text-muted-foreground" />
                 <p className="text-xs text-muted-foreground">
                   Secure checkout powered by Stripe

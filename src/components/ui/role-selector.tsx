@@ -166,15 +166,15 @@ export function RoleSelector({
               onClick={() => handleRoleClick(role.id, role.disabled)}
               disabled={role.disabled}
               className={cn(
-                "group relative flex items-start gap-4 rounded-brutal border-brutal bg-card p-4 text-left shadow-brutal transition-all",
+                "group relative flex items-start gap-4 rounded-md border bg-card p-4 text-left shadow-sm transition-all",
                 selected &&
-                  "border-primary bg-primary/5 shadow-brutal-lg -translate-x-1 -translate-y-1",
-                !selected && !role.disabled && "hover:shadow-brutal-lg hover:-translate-x-0.5 hover:-translate-y-0.5",
+                  "border-primary bg-primary/5 shadow-md",
+                !selected && !role.disabled && "hover:shadow-md hover:opacity-90",
                 role.disabled && "cursor-not-allowed opacity-50"
               )}
             >
               {selected && (
-                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-brutal border-brutal bg-primary shadow-brutal">
+                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-md border bg-primary shadow-sm">
                   <Check className="h-3 w-3 text-primary-foreground" />
                 </div>
               )}
@@ -182,7 +182,7 @@ export function RoleSelector({
               {Icon && (
                 <div
                   className={cn(
-                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-brutal border-brutal bg-background shadow-brutal",
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-md border bg-background shadow-sm",
                     selected && "bg-primary text-primary-foreground"
                   )}
                 >
@@ -192,7 +192,7 @@ export function RoleSelector({
 
               <div className="flex-1 space-y-2">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-black text-foreground">{role.name}</h4>
+                  <h4 className="font-semibold text-foreground">{role.name}</h4>
                   {isCurrent && (
                     <Badge variant="secondary">Current</Badge>
                   )}
@@ -253,15 +253,15 @@ export function RoleSelector({
             onClick={() => handleRoleClick(role.id, role.disabled)}
             disabled={role.disabled}
             className={cn(
-              "group relative flex flex-col items-center rounded-brutal border-brutal bg-card p-6 text-center shadow-brutal transition-all",
+              "group relative flex flex-col items-center rounded-md border bg-card p-6 text-center shadow-sm transition-all",
               selected &&
-                "border-primary bg-primary/5 shadow-brutal-lg -translate-x-1 -translate-y-1",
-              !selected && !role.disabled && "hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1",
+                "border-primary bg-primary/5 shadow-md",
+              !selected && !role.disabled && "hover:shadow-md hover:opacity-90",
               role.disabled && "cursor-not-allowed opacity-50"
             )}
           >
             {selected && (
-              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-brutal border-brutal bg-primary shadow-brutal">
+              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-md border bg-primary shadow-sm">
                 <Check className="h-4 w-4 text-primary-foreground" />
               </div>
             )}
@@ -269,8 +269,8 @@ export function RoleSelector({
             {Icon && (
               <div
                 className={cn(
-                  "mb-4 flex h-16 w-16 items-center justify-center rounded-brutal border-brutal bg-background shadow-brutal transition-all",
-                  selected && "bg-primary text-primary-foreground shadow-brutal-lg"
+                  "mb-4 flex h-16 w-16 items-center justify-center rounded-md border bg-background shadow-sm transition-all",
+                  selected && "bg-primary text-primary-foreground shadow-md"
                 )}
               >
                 <Icon className="h-8 w-8" />
@@ -279,7 +279,7 @@ export function RoleSelector({
 
             <div className="space-y-2">
               <div className="flex flex-col items-center gap-2">
-                <h4 className="font-black text-foreground">{role.name}</h4>
+                <h4 className="font-semibold text-foreground">{role.name}</h4>
                 {isCurrent && (
                   <Badge variant="secondary">Current</Badge>
                 )}
