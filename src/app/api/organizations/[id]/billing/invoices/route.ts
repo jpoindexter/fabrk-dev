@@ -1,0 +1,70 @@
+/**
+ * Organization Invoices API Route
+ * GET - Fetch organization's Stripe invoices
+ */
+
+import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
+import { isOrganizationMember } from "@/lib/teams/organizations";
+import { prisma } from "@/lib/prisma";
+import { stripe } from "@/lib/stripe";
+
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const session = await auth();
+
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    // Verify user is a member
+    const isMember = await isOrganizationMember(params.id, session.user.id);
+    if (!isMember) {
+      return NextResponse.json(
+        { error: "You are not a member of this organization" },
+        { status: 403 }
+      );
+    }
+
+    // Fetch organization
+    const organization = await prisma.organization.findUnique({
+      where: { id: params.id },
+      select: { customerId: true },
+    });
+
+    if (!organization?.customerId) {
+      return NextResponse.json(
+        { invoices: [] },
+        { status: 200 }
+      );
+    }
+
+    // Fetch invoices from Stripe
+    const invoices = await stripe.invoices.list({
+      customer: organization.customerId,
+      limit: 12, // Last 12 invoices
+    });
+
+    return NextResponse.json({
+      invoices: invoices.data.map((invoice) => ({
+        id: invoice.id,
+        amount: invoice.amount_paid,
+        status: invoice.status,
+        created: new Date(invoice.created * 1000).toISOString(),
+        invoicePdf: invoice.invoice_pdf,
+      })),
+    });
+  } catch (error) {
+    console.error("Failed to fetch invoices:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch invoices" },
+      { status: 500 }
+    );
+  }
+}
