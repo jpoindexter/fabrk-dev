@@ -1,0 +1,154 @@
+/**
+ * ✅ FABRK COMPONENT - UX HEURISTIC #9
+ * Help Users Recognize, Diagnose, and Recover from Errors
+ *
+ * Error Message Formula:
+ * - What went wrong
+ * - Why it happened
+ * - How to fix it
+ * - Action to resolve (optional)
+ */
+
+"use client";
+
+import { tokens } from "@/lib/design-system/tokens";
+import { cn } from "@/lib/design-system/utils";
+import { AlertCircle, RefreshCw } from "lucide-react";
+import * as React from "react";
+import { Button } from "./button";
+
+
+
+
+
+
+export interface FormErrorProps {
+  what?: string;
+  why?: string;
+  how?: string;
+  onRetry?: () => void;
+  helpLink?: string;
+  className?: string;
+  id?: string;
+}
+
+export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
+  ({ what = "Something went wrong", why, how, onRetry, helpLink, className, id }, ref) => {
+    return (
+      <div
+      data-slot="form-error"
+        ref={ref}
+        id={id}
+        role="alert"
+        aria-live="polite"
+        className={cn(
+          "rounded-lg border border-destructive/50 bg-destructive/15 p-6",
+          "dark:border-destructive/50 dark:bg-destructive/15",
+          className
+        )}
+      >
+        <div className={`flex ${tokens.spacing.gap[3]}`}>
+          <AlertCircle
+            className={`"h-5 w-5" mt-0.5 shrink-0 text-destructive dark:text-destructive`}
+          />
+          <div className={`flex-1 ${tokens.spacing.space.y[2]}`}>
+            {/* What went wrong */}
+            <p className={`"text-sm" font-medium text-destructive dark:text-destructive`}>{what}</p>
+
+            {/* Why it happened */}
+            {why && <p className={`"text-sm" text-muted-foreground`}>{why}</p>}
+
+            {/* How to fix it */}
+            {how && (
+              <p className={`"text-sm" text-foreground`}>
+                <span className="font-medium">How to fix:</span> {how}
+              </p>
+            )}
+
+            {/* Actions */}
+            {(onRetry || helpLink) && (
+              <div className={`flex ${tokens.spacing.gap[2]} pt-2`}>
+                {onRetry && (
+                  <Button size="sm" variant="outline" onClick={onRetry} className="h-7">
+                    <RefreshCw className="mr-1 size-3" />
+                    Try Again
+                  </Button>
+                )}
+                {helpLink && (
+                  <Button size="sm" variant="ghost" asChild className="h-7">
+                    <a href={helpLink} target="_blank" rel="noopener noreferrer">
+                      Learn More →
+                    </a>
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+);
+FormError.displayName = "FormError";
+
+// Common error patterns with helpful messages
+export const commonErrors = {
+  network: {
+    what: "Unable to connect to the server",
+    why: "This might be due to network issues or server maintenance.",
+    how: "Check your internet connection and try again.",
+  },
+  validation: {
+    email: {
+      what: "Invalid email address",
+      why: "The email format doesn't match our requirements.",
+      how: "Enter a valid email like name@example.com",
+    },
+    password: {
+      what: "Password too weak",
+      why: "Your password doesn't meet security requirements.",
+      how: "Use at least 12 characters with uppercase, lowercase, numbers, and symbols.",
+    },
+    required: {
+      what: "Required field is empty",
+      why: "This field is mandatory for form submission.",
+      how: "Please fill in this field before continuing.",
+    },
+  },
+  auth: {
+    sessionExpired: {
+      what: "Your session has expired",
+      why: "You've been inactive for too long.",
+      how: "Please log in again to continue.",
+    },
+    unauthorized: {
+      what: "Access denied",
+      why: "You don't have permission to access this resource.",
+      how: "Contact your administrator for access.",
+    },
+  },
+  upload: {
+    tooLarge: {
+      what: "File too large",
+      why: "The file exceeds the maximum size limit.",
+      how: "Choose a file smaller than 10MB or compress it first.",
+    },
+    wrongFormat: {
+      what: "Invalid file format",
+      why: "This file type is not supported.",
+      how: "Use supported formats: JPG, PNG, PDF, or DOCX.",
+    },
+  },
+  payment: {
+    declined: {
+      what: "Payment declined",
+      why: "Your card was declined by the payment processor.",
+      how: "Check your card details or try a different payment method.",
+    },
+    insufficient: {
+      what: "Insufficient funds",
+      why: "The card doesn't have enough available balance.",
+      how: "Use a different card or contact your bank.",
+    },
+  },
+};
