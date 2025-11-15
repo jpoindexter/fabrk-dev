@@ -208,7 +208,8 @@ export default function SecurityPrivacyTemplate() {
         </Card>
 
         {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
+        <div suppressHydrationWarning>
+          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="security" className="font-semibold">
               <Shield className="mr-2 h-4 w-4" />
@@ -709,6 +710,7 @@ export default function SecurityPrivacyTemplate() {
             </Card>
           </TabsContent>
         </Tabs>
+        </div>
 
         {/* Implementation Note */}
         <Card className="border border-primary/20 bg-primary/5">

@@ -147,7 +147,8 @@ export default function SettingsPageTemplate() {
 
       {/* Main Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <div suppressHydrationWarning>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           {/* Tab Navigation */}
           <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
             <TabsTrigger value="general" className="font-semibold">
@@ -428,6 +429,7 @@ export default function SettingsPageTemplate() {
             {renderSections(dangerSections)}
           </TabsContent>
         </Tabs>
+        </div>
 
         {/* Implementation Note */}
         <Card className="mt-8 border border-primary/20 bg-primary/5">

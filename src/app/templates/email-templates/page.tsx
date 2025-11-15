@@ -423,7 +423,8 @@ export default function EmailTemplatesShowcase() {
               </div>
             </CardHeader>
             <CardContent>
-              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
+              <div suppressHydrationWarning>
+                <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="preview" className="font-semibold">
                     <Eye className="mr-2 h-4 w-4" />
@@ -477,6 +478,8 @@ export default function EmailTemplatesShowcase() {
                     ))}
                   </div>
                 </div>
+              </div>
+              </Tabs>
               </div>
             </CardContent>
           </Card>
