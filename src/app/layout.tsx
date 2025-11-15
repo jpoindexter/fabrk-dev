@@ -1,18 +1,18 @@
 /**
- * Root Layout (Metadata Only)
+ * Root Layout (For Non-Locale Routes)
  *
- * This layout provides metadata for routes OUTSIDE of /[locale].
- * For page routes, the /[locale]/layout.tsx handles all HTML structure.
+ * This layout provides HTML structure for routes OUTSIDE of /[locale].
+ * - Locale routes (/[locale]/*): Use /[locale]/layout.tsx (with i18n)
+ * - Non-locale routes (/demo, /components, etc.): Use this layout
  *
- * IMPORTANT: Do NOT add <html>, <body>, or providers here - that causes
- * hydration conflicts with the locale layout. This is just metadata + passthrough.
- *
- * Industry Standard Pattern: next-intl with "as-needed" locale prefix
- * - This layout: Metadata only
- * - Locale layout: Full HTML structure for all languages
+ * Next.js 16 requires ALL layouts to have <html> and <body> tags.
  */
 
 import type { Metadata } from "next";
+import { Providers } from "@/components/providers";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fabrk.dev"),
@@ -88,10 +88,21 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-/**
- * Passthrough layout - no HTML rendering here
- * All HTML structure is handled by /[locale]/layout.tsx
- */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <html lang="en" suppressHydrationWarning className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
+      <head>
+        <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
+      </head>
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        <Providers>
+          <div className="relative flex min-h-screen flex-col bg-background">
+            <main id="main-content" className="flex-1 bg-background">
+              {children}
+            </main>
+          </div>
+        </Providers>
+      </body>
+    </html>
+  );
 }
