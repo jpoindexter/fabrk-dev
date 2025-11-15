@@ -7,11 +7,14 @@ import { cn } from "@/lib/utils";
 function Tabs({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Root>) {
+}: React.ComponentProps<typeof TabsPrimitive.Root> & {
+  suppressHydrationWarning?: boolean;
+}) {
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
       className={cn("w-full", className)}
+      suppressHydrationWarning={props.suppressHydrationWarning}
       {...props}
     />
   );
