@@ -204,12 +204,13 @@ export default function AnalyticsDashboardTemplate() {
         </div>
 
         {/* Tabs Section */}
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
-          </TabsList>
+        <div suppressHydrationWarning>
+          <Tabs defaultValue="overview" className="space-y-4">
+            <TabsList>
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="reports">Reports</TabsTrigger>
+            </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
             <Card>
@@ -345,6 +346,7 @@ export default function AnalyticsDashboardTemplate() {
             </Card>
           </TabsContent>
         </Tabs>
+        </div>
 
         {/* Code Preview Card */}
         <Card className="bg-accent/30">
