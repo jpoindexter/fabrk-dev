@@ -41,7 +41,7 @@ const securityHeaders = [
       "img-src 'self' data: https: blob:; " +
       "font-src 'self' data:; " +
       "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com; " +
-      "frame-src https://js.stripe.com https://hooks.stripe.com; " +
+      "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
       "frame-ancestors 'self';",
   },
 ];

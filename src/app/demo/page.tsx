@@ -25,9 +25,9 @@ export default function DemoPage() {
     {
       id: "dashboard",
       label: "Dashboard",
-      url: "/examples/analytics",
-      description: "Analytics dashboard with metrics, charts, and activity feed",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/(dashboard)/examples/analytics/page.tsx",
+      url: "/templates/team-dashboard",
+      description: "Team dashboard with multi-tenancy, RBAC, and organization management",
+      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/team-dashboard/page.tsx",
     },
     {
       id: "settings",
@@ -39,9 +39,9 @@ export default function DemoPage() {
     {
       id: "admin",
       label: "Admin Panel",
-      url: "/examples/admin",
+      url: "/templates/user-management",
       description: "User management with TanStack Table, sorting, filtering, and actions",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/(dashboard)/examples/admin/page.tsx",
+      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/user-management/page.tsx",
     },
     {
       id: "charts",
