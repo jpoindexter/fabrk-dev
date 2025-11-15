@@ -11,8 +11,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Image as ImageIcon, Upload, X } from "lucide-react";
 import * as React from "react";
 
@@ -192,7 +191,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             className="sr-only"
           />
 
-          <Upload className={`mx-auto ${tokens.sizes.avatar.lg} text-muted-foreground`} />
+          <Upload className={`mx-auto h-12 w-12 text-muted-foreground`} />
           <p className={`"text-sm" mt-2 font-medium`}>Drop images here or click to upload</p>
           <p className={`"text-xs" mt-1 text-muted-foreground`}>
             {acceptedFormats.map((f) => f.split("/")[1].toUpperCase()).join(", ")} up to{" "}
@@ -201,20 +200,20 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
         </div>
 
         {files.length > 0 && (
-          <div className={`mt-4 ${tokens.spacing.space.y[2]}`}>
+          <div className={`mt-4 space-y-2`}>
             {files.map((file, index) => (
               <div
                 key={index}
-                className={`flex items-center ${tokens.spacing.gap[3]} rounded-lg border p-3`}
+                className={`flex items-center gap-3 rounded-lg border p-3`}
               >
                 {preview && previews[index] ? (
                   <img
                     src={previews[index]}
                     alt={`Preview of ${file.name}`}
-                    className={`${tokens.sizes.avatar.lg} rounded object-cover`}
+                    className={`h-12 w-12 rounded object-cover`}
                   />
                 ) : (
-                  <ImageIcon className={`${tokens.sizes.avatar.lg} text-muted-foreground`} aria-hidden="true" />
+                  <ImageIcon className={`h-12 w-12 text-muted-foreground`} aria-hidden="true" />
                 )}
                 <div className="min-w-0 flex-1">
                   <p className={`"text-sm" truncate font-medium`}>{file.name}</p>

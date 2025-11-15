@@ -68,25 +68,25 @@ export function ComparisonSection() {
     <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-black text-foreground">
+          <h2 className="mb-4 text-3xl font-semibold text-foreground">
             Why Build From Scratch?
           </h2>
-          <p className="text-lg font-bold text-muted-foreground">
+          <p className="text-lg font-normal text-muted-foreground">
             See how much time and effort Fabrk saves you
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-brutal border-2 border-brutal bg-white shadow-brutal">
+        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
           <table className="w-full">
             <thead>
-              <tr className="border-b-2 border-brutal bg-muted">
-                <th className="px-6 py-4 text-left text-sm font-black uppercase tracking-wide text-foreground">
+              <tr className="border-b border-border bg-muted/50">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                   Feature
                 </th>
-                <th className="border-l-2 border-brutal px-6 py-4 text-center text-sm font-black uppercase tracking-wide text-foreground">
+                <th className="border-l border-border px-6 py-4 text-center text-sm font-semibold text-foreground">
                   Manual Setup
                 </th>
-                <th className="border-l-2 border-brutal bg-primary px-6 py-4 text-center text-sm font-black uppercase tracking-wide text-primary-foreground">
+                <th className="border-l border-border bg-primary/5 px-6 py-4 text-center text-sm font-semibold text-primary">
                   Fabrk
                 </th>
               </tr>
@@ -95,40 +95,40 @@ export function ComparisonSection() {
               {features.map((feature, index) => (
                 <tr
                   key={index}
-                  className={`border-b-2 border-brutal transition-colors hover:bg-muted/50 ${
-                    index % 2 === 0 ? "bg-background" : "bg-muted/20"
+                  className={`border-b border-border transition-colors hover:bg-muted/30 ${
+                    index % 2 === 0 ? "bg-background" : "bg-muted/10"
                   }`}
                 >
-                  <td className="px-6 py-4 text-sm font-bold text-foreground">
-                    <div>{feature.name}</div>
-                    <div className="mt-1 text-xs font-bold text-muted-foreground">
+                  <td className="px-6 py-4 text-sm font-normal text-foreground">
+                    <div className="font-medium">{feature.name}</div>
+                    <div className="mt-1 text-xs font-normal text-muted-foreground">
                       Time: {feature.time}
                     </div>
                   </td>
-                  <td className="border-l-2 border-brutal px-6 py-4 text-center">
+                  <td className="border-l border-border px-6 py-4 text-center">
                     {feature.manual ? (
-                      <Check className="inline-block h-6 w-6 text-green-600" />
+                      <Check className="inline-block h-5 w-5 text-green-600" />
                     ) : (
-                      <X className="inline-block h-6 w-6 text-red-600" />
+                      <X className="inline-block h-5 w-5 text-red-600" />
                     )}
                   </td>
-                  <td className="border-l-2 border-brutal bg-primary/5 px-6 py-4 text-center">
+                  <td className="border-l border-border bg-primary/5 px-6 py-4 text-center">
                     {feature.fabrk ? (
-                      <Check className="inline-block h-6 w-6 text-primary" />
+                      <Check className="inline-block h-5 w-5 text-primary" />
                     ) : (
-                      <X className="inline-block h-6 w-6 text-red-600" />
+                      <X className="inline-block h-5 w-5 text-red-600" />
                     )}
                   </td>
                 </tr>
               ))}
-              <tr className="border-t-2 border-brutal bg-muted">
-                <td className="px-6 py-4 text-sm font-black uppercase text-foreground">
+              <tr className="border-t border-border bg-muted/50">
+                <td className="px-6 py-4 text-sm font-semibold text-foreground">
                   Total Time Investment
                 </td>
-                <td className="border-l-2 border-brutal px-6 py-4 text-center text-lg font-black text-red-600">
+                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-red-600">
                   73+ hours
                 </td>
-                <td className="border-l-2 border-brutal bg-primary px-6 py-4 text-center text-lg font-black text-primary-foreground">
+                <td className="border-l border-border bg-primary/10 px-6 py-4 text-center text-base font-semibold text-primary">
                   0 hours
                 </td>
               </tr>
@@ -137,7 +137,7 @@ export function ComparisonSection() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm font-bold text-muted-foreground">
+          <p className="text-sm font-normal text-muted-foreground">
             Start building your unique features on day one. Skip the boring
             boilerplate.
           </p>

@@ -288,7 +288,7 @@ export default function EmailTemplatesShowcase() {
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-semibold tracking-tight">
             Email Templates
           </h1>
           <p className="mt-2 text-muted-foreground">
@@ -300,26 +300,26 @@ export default function EmailTemplatesShowcase() {
         <div className="grid gap-6 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Total Templates</CardDescription>
-              <CardTitle className="text-3xl font-bold">5</CardTitle>
+              <CardDescription className="font-semibold">Total Templates</CardDescription>
+              <CardTitle className="text-3xl font-semibold">5</CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Categories</CardDescription>
-              <CardTitle className="text-3xl font-bold">3</CardTitle>
+              <CardDescription className="font-semibold">Categories</CardDescription>
+              <CardTitle className="text-3xl font-semibold">3</CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Email Provider</CardDescription>
-              <CardTitle className="text-3xl font-bold">Resend</CardTitle>
+              <CardDescription className="font-semibold">Email Provider</CardDescription>
+              <CardTitle className="text-3xl font-semibold">Resend</CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Compatibility</CardDescription>
-              <CardTitle className="text-3xl font-bold">100%</CardTitle>
+              <CardDescription className="font-semibold">Compatibility</CardDescription>
+              <CardTitle className="text-3xl font-semibold">100%</CardTitle>
             </CardHeader>
           </Card>
         </div>
@@ -329,7 +329,7 @@ export default function EmailTemplatesShowcase() {
           {/* Template List */}
           <Card className="lg:col-span-1">
             <CardHeader>
-              <CardTitle className="font-bold">Templates</CardTitle>
+              <CardTitle className="font-semibold">Templates</CardTitle>
               <CardDescription>
                 Click to preview each email template
               </CardDescription>
@@ -341,9 +341,9 @@ export default function EmailTemplatesShowcase() {
                   <button
                     key={template.id}
                     onClick={() => setSelectedTemplate(template)}
-                    className={`w-full rounded-lg border-2 border-brutal p-4 text-left transition-all ${
+                    className={`w-full rounded-lg border border-border p-4 text-left transition-all ${
                       selectedTemplate.id === template.id
-                        ? "bg-primary text-primary-foreground shadow-brutal-lg"
+                        ? "bg-primary text-primary-foreground shadow-sm-lg"
                         : "bg-background hover:bg-muted"
                     }`}
                   >
@@ -356,7 +356,7 @@ export default function EmailTemplatesShowcase() {
                         }`}
                       />
                       <div className="flex-1">
-                        <p className="font-bold">{template.name}</p>
+                        <p className="font-semibold">{template.name}</p>
                         <p
                           className={`text-sm ${
                             selectedTemplate.id === template.id
@@ -372,7 +372,7 @@ export default function EmailTemplatesShowcase() {
                               ? "secondary"
                               : "outline"
                           }
-                          className="mt-2 font-bold"
+                          className="mt-2 font-semibold"
                         >
                           {template.category}
                         </Badge>
@@ -389,7 +389,7 @@ export default function EmailTemplatesShowcase() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="font-bold">
+                  <CardTitle className="font-semibold">
                     {selectedTemplate.name}
                   </CardTitle>
                   <CardDescription>
@@ -401,7 +401,7 @@ export default function EmailTemplatesShowcase() {
                     variant="outline"
                     size="sm"
                     onClick={handleCopy}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     {copied ? (
                       <CheckCircle2 className="mr-2 h-4 w-4" />
@@ -414,7 +414,7 @@ export default function EmailTemplatesShowcase() {
                     variant="outline"
                     size="sm"
                     onClick={handleSendTest}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     <Send className="mr-2 h-4 w-4" />
                     Send Test
@@ -425,29 +425,29 @@ export default function EmailTemplatesShowcase() {
             <CardContent>
               <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="preview" className="font-bold">
+                  <TabsTrigger value="preview" className="font-semibold">
                     <Eye className="mr-2 h-4 w-4" />
                     Preview
                   </TabsTrigger>
-                  <TabsTrigger value="code" className="font-bold">
+                  <TabsTrigger value="code" className="font-semibold">
                     <Code className="mr-2 h-4 w-4" />
                     HTML Code
                   </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="preview" className="mt-6">
-                  <div className="rounded-lg border-2 border-brutal bg-muted p-4">
+                  <div className="rounded-lg border border-border bg-muted p-4">
                     <iframe
                       srcDoc={selectedTemplate.preview}
                       title={selectedTemplate.name}
-                      className="h-[600px] w-full rounded border-2 border-brutal bg-white"
+                      className="h-[600px] w-full rounded border border-border bg-white"
                     />
                   </div>
                 </TabsContent>
 
                 <TabsContent value="code" className="mt-6">
                   <div className="relative">
-                    <pre className="max-h-[600px] overflow-auto rounded-lg border-2 border-brutal bg-muted p-4 text-xs">
+                    <pre className="max-h-[600px] overflow-auto rounded-lg border border-border bg-muted p-4 text-xs">
                       <code>{selectedTemplate.preview}</code>
                     </pre>
                   </div>
@@ -457,10 +457,10 @@ export default function EmailTemplatesShowcase() {
               {/* Template Details */}
               <div className="mt-6 space-y-4">
                 <div>
-                  <h4 className="mb-2 font-bold">Trigger Events</h4>
+                  <h4 className="mb-2 font-semibold">Trigger Events</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedTemplate.triggers.map((trigger, idx) => (
-                      <Badge key={idx} variant="outline" className="font-bold">
+                      <Badge key={idx} variant="outline" className="font-semibold">
                         {trigger}
                       </Badge>
                     ))}
@@ -468,10 +468,10 @@ export default function EmailTemplatesShowcase() {
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-bold">Variables</h4>
+                  <h4 className="mb-2 font-semibold">Variables</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedTemplate.variables.map((variable, idx) => (
-                      <Badge key={idx} className="font-mono font-bold">
+                      <Badge key={idx} className="font-mono font-semibold">
                         {`{${variable}}`}
                       </Badge>
                     ))}
@@ -483,37 +483,37 @@ export default function EmailTemplatesShowcase() {
         </div>
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">📧 Template Features</h4>
+            <h4 className="mb-2 font-semibold">📧 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ 5 email templates (Welcome, Verification, Password Reset, Purchase, Subscription)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Both HTML and plain text versions for all templates
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Mobile-responsive table-based layouts (works in all email clients)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Consistent branding with Fabrk color scheme
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Dynamic variables for personalization
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ CTA buttons with proper link tracking
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Security notices and expiry warnings
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Resend integration ready (configured in{" "}
                 <code className="rounded bg-muted px-1 py-0.5">src/lib/email.ts</code>)
               </li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               All templates located in{" "}
               <code className="rounded bg-muted px-1 py-0.5">src/emails/</code>.
               Add your Resend API key to start sending emails.

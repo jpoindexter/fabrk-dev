@@ -186,14 +186,14 @@ export default function ApiKeysPage() {
     }
   };
 
-  const getPermissionBadgeVariant = (permission: string) => {
+  const getPermissionBadgeVariant = (permission: string): "default" | "secondary" | "accent" | "outline" => {
     switch (permission) {
       case "read":
         return "default";
       case "write":
         return "secondary";
       case "admin":
-        return "destructive";
+        return "accent";
       default:
         return "outline";
     }

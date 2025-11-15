@@ -11,8 +11,7 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { AlertCircle, RefreshCw } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
@@ -47,11 +46,11 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
           className
         )}
       >
-        <div className={`flex ${tokens.spacing.gap[3]}`}>
+        <div className={`flex gap-3`}>
           <AlertCircle
             className={`"h-5 w-5" mt-0.5 shrink-0 text-destructive dark:text-destructive`}
           />
-          <div className={`flex-1 ${tokens.spacing.space.y[2]}`}>
+          <div className={`flex-1 space-y-2`}>
             {/* What went wrong */}
             <p className={`"text-sm" font-medium text-destructive dark:text-destructive`}>{what}</p>
 
@@ -67,7 +66,7 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
 
             {/* Actions */}
             {(onRetry || helpLink) && (
-              <div className={`flex ${tokens.spacing.gap[2]} pt-2`}>
+              <div className={`flex gap-2 pt-2`}>
                 {onRetry && (
                   <Button size="sm" variant="outline" onClick={onRetry} className="h-7">
                     <RefreshCw className="mr-1 size-3" />

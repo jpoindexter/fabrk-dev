@@ -65,8 +65,8 @@ export async function GET(
           amount: price?.unit_amount || 0,
           interval: price?.recurring?.interval || "month",
         },
-        currentPeriodEnd: new Date(subscription.current_period_end * 1000).toISOString(),
-        cancelAtPeriodEnd: subscription.cancel_at_period_end,
+        currentPeriodEnd: new Date((subscription as any).current_period_end * 1000).toISOString(),
+        cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
       },
     });
   } catch (error) {
@@ -190,7 +190,7 @@ export async function DELETE(
     }
 
     // Cancel subscription
-    await stripe.subscriptions.del(organization.subscriptionId);
+    await stripe.subscriptions.cancel(organization.subscriptionId);
 
     // Update organization to remove subscription ID
     await prisma.organization.update({

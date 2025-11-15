@@ -18,7 +18,7 @@
 
 import * as React from "react";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export interface ImageUploaderProps {

@@ -11,8 +11,7 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Upload } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
@@ -31,7 +30,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
     return (
       <div data-slot="file-upload" ref={ref} className={cn(className)} {...props}>
         <Dropzone onDrop={handleDrop} className="min-h-48" aria-label="Upload files">
-          <div className={`flex flex-col items-center justify-center ${tokens.spacing.gap[2]} `}>
+          <div className={`flex flex-col items-center justify-center gap-2 `}>
             <Upload
               className={`"h-8 w-8" text-muted-foreground dark:text-muted-foreground`}
               aria-hidden="true"

@@ -112,6 +112,6 @@ export function isValidEvent(event: string): event is WebhookEvent {
 /**
  * Get events by category
  */
-export function getEventsByCategory(category: keyof typeof EVENT_CATEGORIES): WebhookEvent[] {
+export function getEventsByCategory(category: keyof typeof EVENT_CATEGORIES): readonly WebhookEvent[] {
   return EVENT_CATEGORIES[category];
 }

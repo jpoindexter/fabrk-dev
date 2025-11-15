@@ -47,13 +47,13 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="bg-muted/20 px-6 py-24">
+    <section className="bg-muted/30 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-black text-foreground">
+          <h2 className="mb-4 text-3xl font-semibold text-foreground">
             Loved by Developers
           </h2>
-          <p className="text-lg font-bold text-muted-foreground">
+          <p className="text-lg font-normal text-muted-foreground">
             See what developers are saying about Fabrk
           </p>
         </div>
@@ -62,23 +62,23 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`group rounded-brutal border-2 border-brutal ${testimonial.color} p-6 shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg`}
+              className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
             >
-              <div className="mb-4 text-4xl font-black opacity-50">"</div>
-              <p className="mb-6 text-sm font-bold leading-relaxed">
+              <div className="mb-4 text-3xl font-normal text-muted-foreground/30">"</div>
+              <p className="mb-6 text-sm font-normal leading-relaxed text-muted-foreground">
                 {testimonial.quote}
               </p>
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">
-                  <AvatarFallback className={`${testimonial.color} text-sm font-black`}>
+                  <AvatarFallback className="bg-primary/10 text-primary text-sm font-medium">
                     {testimonial.initials}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="text-sm font-black">
+                  <div className="text-sm font-semibold text-foreground">
                     {testimonial.author}
                   </div>
-                  <div className="text-xs font-bold opacity-80">
+                  <div className="text-xs font-normal text-muted-foreground">
                     {testimonial.role}
                   </div>
                 </div>

@@ -58,8 +58,8 @@ const organizationSchema = z.object({
 });
 
 const inviteSchema = z.object({
-  emails: z.string().optional(),
-  role: z.enum(["OWNER", "ADMIN", "MEMBER", "GUEST"]).default("MEMBER"),
+  emails: z.string(),
+  role: z.enum(["OWNER", "ADMIN", "MEMBER", "GUEST"]),
 });
 
 type OrganizationFormData = z.infer<typeof organizationSchema>;

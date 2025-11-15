@@ -165,7 +165,7 @@ export default function OrganizationBillingPage() {
       case "trialing":
         return <Badge variant="secondary" className="gap-1"><Zap className="h-3 w-3" />Trial</Badge>;
       case "past_due":
-        return <Badge variant="destructive" className="gap-1"><AlertTriangle className="h-3 w-3" />Past Due</Badge>;
+        return <Badge variant="accent" className="gap-1"><AlertTriangle className="h-3 w-3" />Past Due</Badge>;
       case "canceled":
         return <Badge variant="outline" className="gap-1"><XCircle className="h-3 w-3" />Canceled</Badge>;
       default:
@@ -182,7 +182,7 @@ export default function OrganizationBillingPage() {
       case "void":
         return <Badge variant="outline">Void</Badge>;
       case "uncollectible":
-        return <Badge variant="destructive">Uncollectible</Badge>;
+        return <Badge variant="accent">Uncollectible</Badge>;
       default:
         return <Badge>{status}</Badge>;
     }

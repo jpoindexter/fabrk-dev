@@ -15,8 +15,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import * as React from "react";
 
@@ -152,15 +151,15 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
       switch (strength) {
         case 0:
         case 1:
-          return tokens.colors.bg.strengthWeak;
+          return "bg-red-500";
         case 2:
-          return tokens.colors.bg.strengthFair;
+          return "bg-orange-500";
         case 3:
-          return tokens.colors.bg.strengthFair;
+          return "bg-orange-500";
         case 4:
-          return tokens.colors.bg.strengthGood;
+          return "bg-yellow-500";
         case 5:
-          return tokens.colors.bg.strengthStrong;
+          return "bg-green-500";
         default:
           return "bg-card";
       }
@@ -191,7 +190,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
     };
 
     return (
-      <div data-slot="password-strength" className={cn(`${tokens.spacing.space.y[2]}`, className)}>
+      <div data-slot="password-strength" className={cn(`space-y-2`, className)}>
         <div className="relative">
           <Input
             ref={ref}
@@ -216,7 +215,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
             type="button"
             variant="ghost"
             size="icon"
-            className={`absolute right-0 top-0 h-full ${tokens.spacing.px[3]} hover:bg-background/0`}
+            className={`absolute right-0 top-0 h-full px-3 hover:bg-background/0`}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             aria-label={showPassword ? "Hide password" : "Show password"}
@@ -264,7 +263,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
                 key={index}
                 className={cn(
                   "flex items-center gap-2",
-                  req.met ? tokens.colors.text.success : "text-muted-foreground"
+                  req.met ? "text-green-600" : "text-muted-foreground"
                 )}
               >
                 {req.met ? (

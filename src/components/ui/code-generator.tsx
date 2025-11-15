@@ -15,14 +15,13 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Code2, Copy, Download, Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
 import { Card } from "./card";
 import { Textarea } from "./textarea";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 export interface CodeGeneratorProps extends React.HTMLAttributes<HTMLDivElement> {
   onGenerate?: (prompt: string) => Promise<string>;
@@ -48,7 +47,6 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
     const [prompt, setPrompt] = React.useState(defaultPrompt || "");
     const [generatedCode, setGeneratedCode] = React.useState("");
     const [isGenerating, setIsGenerating] = React.useState(false);
-    const { toast } = useToast();
 
     const handleGenerate = async () => {
       if (!prompt.trim() || !onGenerate) return;
@@ -94,10 +92,10 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
       <div
         data-slot="code-generator"
         ref={ref}
-        className={cn(`${tokens.spacing.space.y[6]}`, className)}
+        className={cn("space-y-6", className)}
         {...props}
       >
-        <div className={`${tokens.spacing.space.y[2]}`}>
+        <div className={"space-y-2"}>
           <Textarea
             placeholder={placeholder}
             value={prompt}
@@ -124,10 +122,10 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
         </div>
 
         {generatedCode && (
-          <Card className={`${tokens.spacing.p[6]}`}>
+          <Card className={"p-6"}>
             <div className="mb-2 flex items-center justify-between">
               <span className={`"text-sm" font-medium text-muted-foreground`}>Generated Code</span>
-              <div className={`flex ${tokens.spacing.gap[2]}`}>
+              <div className={"flex gap-2"}>
                 <Button variant="ghost" size="icon" onClick={handleCopy} className="size-8">
                   <Copy className="size-4" />
                   <span className="sr-only">Copy code</span>
@@ -139,7 +137,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
               </div>
             </div>
             <pre
-              className={`overflow-x-auto rounded-md border border-border bg-card ${tokens.components.card.content}`}
+              className={`overflow-x-auto rounded-md border border-border bg-card `}
             >
               <code className={`language-${language}`}>{generatedCode}</code>
             </pre>

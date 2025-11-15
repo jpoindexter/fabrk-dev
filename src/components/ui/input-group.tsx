@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 
 export type InputGroupProps = React.ComponentProps<"div"> & {
   size?: "sm" | "md" | "lg";

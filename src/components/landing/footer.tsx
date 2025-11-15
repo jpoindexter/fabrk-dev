@@ -5,55 +5,55 @@ import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-brutal bg-white px-6 py-16">
+    <footer className="border-t border-border bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Column 1: Logo & Copyright */}
           <div className="lg:col-span-1">
-            <Link href="/" className="mb-4 inline-block transition-transform hover:-translate-y-1">
-              <Logo size={32} />
+            <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
+              <Logo size={28} />
             </Link>
-            <p className="text-sm font-bold text-black mb-6">
+            <p className="text-sm font-normal text-muted-foreground mb-6">
               Ship your SaaS in days, not weeks.
             </p>
-            <p className="text-xs font-bold text-black">
+            <p className="text-xs font-normal text-muted-foreground">
               © 2025 Fabrk. All rights reserved.
             </p>
           </div>
 
           {/* Column 2: Product */}
           <div>
-            <h4 className="mb-4 text-sm font-bold text-black">
+            <h4 className="mb-4 text-sm font-semibold text-foreground">
               Product
             </h4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="#features"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Features
               </Link>
               <Link
                 href="#pricing"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Pricing
               </Link>
               <Link
                 href="/templates"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Demo
               </Link>
               <Link
                 href="/variations"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Variations
               </Link>
               <Link
                 href="/components"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Components
               </Link>
@@ -62,25 +62,25 @@ export function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h4 className="mb-4 text-sm font-bold text-black">
+            <h4 className="mb-4 text-sm font-semibold text-foreground">
               Resources
             </h4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="/templates"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Templates
               </Link>
               <Link
                 href="/about"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Contact
               </Link>
@@ -88,7 +88,7 @@ export function Footer() {
                 href="https://github.com/fabrk/docs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Documentation
               </a>
@@ -97,25 +97,25 @@ export function Footer() {
 
           {/* Column 4: Legal */}
           <div>
-            <h4 className="mb-4 text-sm font-bold text-black">
+            <h4 className="mb-4 text-sm font-semibold text-foreground">
               Legal
             </h4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="/terms"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/privacy"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/cookies"
-                className="text-sm font-bold text-black transition-colors hover:text-primary"
+                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Cookie Policy
               </Link>
@@ -124,7 +124,7 @@ export function Footer() {
 
           {/* Column 5: Social & Community */}
           <div>
-            <h4 className="mb-4 text-sm font-bold text-black">
+            <h4 className="mb-4 text-sm font-semibold text-foreground">
               Community
             </h4>
             <div className="flex flex-col gap-4">
@@ -134,10 +134,10 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3"
               >
-                <div className="rounded-brutal border-2 border-brutal bg-primary p-2.5 shadow-brutal transition-brutal group-hover:shadow-brutal-lg group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
-                  <SimpleIcon path={siX.path} size={20} className="text-primary-foreground" />
+                <div className="rounded-md border border-border bg-muted p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
+                  <SimpleIcon path={siX.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
                 </div>
-                <span className="text-sm font-bold text-black group-hover:text-primary">
+                <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">
                   Follow on X
                 </span>
               </a>
@@ -147,10 +147,10 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3"
               >
-                <div className="rounded-brutal border-2 border-brutal bg-accent p-2.5 shadow-brutal transition-brutal group-hover:shadow-brutal-lg group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
-                  <SimpleIcon path={siGithub.path} size={20} className="text-accent-foreground" />
+                <div className="rounded-md border border-border bg-muted p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
+                  <SimpleIcon path={siGithub.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
                 </div>
-                <span className="text-sm font-bold text-black group-hover:text-primary">
+                <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">
                   Star on GitHub
                 </span>
               </a>
@@ -159,9 +159,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8">
-          <div className="flex justify-start">
-            <p className="text-xs font-bold text-black">
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="flex justify-center">
+            <p className="text-xs font-normal text-muted-foreground">
               Made with ❤️ by indie developers
             </p>
           </div>

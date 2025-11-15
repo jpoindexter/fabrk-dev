@@ -10,8 +10,7 @@
  * ```
  */
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 import { CropperControls } from "./cropper-controls";
 

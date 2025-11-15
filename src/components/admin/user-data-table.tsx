@@ -166,7 +166,7 @@ export function UserDataTable({
               status === "ACTIVE"
                 ? "default"
                 : status === "SUSPENDED"
-                  ? "destructive"
+                  ? "accent"
                   : "secondary"
             }
             className="font-medium"

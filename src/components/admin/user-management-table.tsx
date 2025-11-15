@@ -44,7 +44,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { MoreHorizontal, Search, UserCog, Ban, Trash2 } from "lucide-react";
-import { toast } from "@/lib/notifications";
+import { toast } from "sonner";
 
 interface User {
   id: string;
@@ -97,10 +97,10 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       setUsers(
         users.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
       );
-      toast.success("Success", "User role updated successfully");
+      toast.success("User role updated successfully");
       router.refresh();
     } catch (error: any) {
-      toast.error("Error", error.message || "Failed to update user role");
+      toast.error(error.message || "Failed to update user role");
     } finally {
       setActionLoading(false);
     }
@@ -123,10 +123,10 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       }
 
       setUsers(users.filter((u) => u.id !== selectedUser.id));
-      toast.success("Success", "User deleted successfully");
+      toast.success("User deleted successfully");
       router.refresh();
     } catch (error: any) {
-      toast.error("Error", error.message || "Failed to delete user");
+      toast.error(error.message || "Failed to delete user");
     } finally {
       setActionLoading(false);
       setDeleteDialogOpen(false);
@@ -148,10 +148,10 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
         throw new Error(error.error || "Failed to suspend user");
       }
 
-      toast.success("Success", "User suspended successfully");
+      toast.success("User suspended successfully");
       router.refresh();
     } catch (error: any) {
-      toast.error("Error", error.message || "Failed to suspend user");
+      toast.error(error.message || "Failed to suspend user");
     } finally {
       setActionLoading(false);
     }

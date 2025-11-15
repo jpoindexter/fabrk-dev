@@ -4,14 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Unlike bloated competitors (450-1000 files), Fabrk maintains ~161 essential files while delivering 100+ production-ready components.
+Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Unlike bloated competitors (450-1000 files), Fabrk maintains ~161 essential files while delivering 100 production-ready components.
 
 **Pricing:** $299 one-time payment
-**Components:** 100+ production-ready (more than any competitor)
+**Components:** 100 production-ready (67% more than shadcn/ui's 67, 150% more than ShipFast's 40)
+**Unique Tools:** 13 AI/Code + Image tools competitors don't have
 **Templates:** 8 copy-paste ready page layouts
 **Themes:** 6 color schemes with instant switching
-**Test Coverage:** 17,822+ test lines (Vitest + Playwright + Storybook)
-**Storybook:** Integrated for component development and documentation
+**Test Coverage:** 64% (64/100 components), 931+ comprehensive tests
+**Storybook:** 95% story coverage (95/100 components) for component development and documentation
 
 **Tech Stack:**
 - Next.js 15 (App Router, Server Components, React 19, Turbopack)
@@ -686,7 +687,7 @@ tests/
 
 ### Component Development with Storybook
 
-**All 100+ components have Storybook stories:**
+**95% of 100 components have Storybook stories (95/100):**
 
 ```bash
 npm run storybook  # Opens at http://localhost:6006
@@ -888,7 +889,8 @@ vercel
 **Essential Files Only:**
 - ~161 total files (vs 450-1000 in competitors)
 - ~105 TypeScript/TSX files
-- 100+ production-ready components
+- 100 production-ready components (67% more than shadcn/ui, 150% more than ShipFast)
+- 13 unique AI/Code + Image tools
 - Minimal dependencies
 
 **When Adding Features:**

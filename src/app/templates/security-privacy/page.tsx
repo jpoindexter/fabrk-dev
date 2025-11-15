@@ -159,7 +159,7 @@ export default function SecurityPrivacyTemplate() {
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-semibold tracking-tight">
             Security & Privacy
           </h1>
           <p className="mt-2 text-muted-foreground">
@@ -168,21 +168,21 @@ export default function SecurityPrivacyTemplate() {
         </div>
 
         {/* Security Score Card */}
-        <Card className="border-2 border-primary">
+        <Card className="border border-primary">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-brutal bg-primary/10">
-                  <span className="text-2xl font-bold text-primary">75%</span>
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-primary/10">
+                  <span className="text-2xl font-semibold text-primary">75%</span>
                 </div>
                 <div>
-                  <CardTitle className="font-bold">Security Score</CardTitle>
+                  <CardTitle className="font-semibold">Security Score</CardTitle>
                   <CardDescription>
                     Good security posture, but improvements recommended
                   </CardDescription>
                 </div>
               </div>
-              <Badge variant="secondary" className="font-bold">
+              <Badge variant="secondary" className="font-semibold">
                 Medium Risk
               </Badge>
             </div>
@@ -191,15 +191,15 @@ export default function SecurityPrivacyTemplate() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="h-4 w-4 text-green-600" />
-                <span className="font-bold">Email verified</span>
+                <span className="font-semibold">Email verified</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <XCircle className="h-4 w-4 text-red-600" />
-                <span className="font-bold">Two-factor authentication disabled</span>
+                <span className="font-semibold">Two-factor authentication disabled</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="h-4 w-4 text-green-600" />
-                <span className="font-bold">
+                <span className="font-semibold">
                   Password changed 60 days ago (recommended: every 90 days)
                 </span>
               </div>
@@ -210,19 +210,19 @@ export default function SecurityPrivacyTemplate() {
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="security" className="font-bold">
+            <TabsTrigger value="security" className="font-semibold">
               <Shield className="mr-2 h-4 w-4" />
               Security
             </TabsTrigger>
-            <TabsTrigger value="privacy" className="font-bold">
+            <TabsTrigger value="privacy" className="font-semibold">
               <Lock className="mr-2 h-4 w-4" />
               Privacy
             </TabsTrigger>
-            <TabsTrigger value="audit" className="font-bold">
+            <TabsTrigger value="audit" className="font-semibold">
               <Activity className="mr-2 h-4 w-4" />
               Audit Log
             </TabsTrigger>
-            <TabsTrigger value="compliance" className="font-bold">
+            <TabsTrigger value="compliance" className="font-semibold">
               <FileText className="mr-2 h-4 w-4" />
               Compliance
             </TabsTrigger>
@@ -235,11 +235,11 @@ export default function SecurityPrivacyTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                    <div className="rounded-lg border border-border bg-primary/10 p-3">
                       <Smartphone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className="font-bold">
+                      <CardTitle className="font-semibold">
                         Two-Factor Authentication
                       </CardTitle>
                       <CardDescription>
@@ -247,7 +247,7 @@ export default function SecurityPrivacyTemplate() {
                       </CardDescription>
                     </div>
                   </div>
-                  <Badge variant="secondary" className="gap-1 font-bold">
+                  <Badge variant="secondary" className="gap-1 font-semibold">
                     <XCircle className="h-3 w-3" />
                     Disabled
                   </Badge>
@@ -258,7 +258,7 @@ export default function SecurityPrivacyTemplate() {
                   Use an authenticator app like Google Authenticator or Authy to
                   generate time-based codes.
                 </p>
-                <Button onClick={handleEnable2FA} className="font-bold">
+                <Button onClick={handleEnable2FA} className="font-semibold">
                   <Shield className="mr-2 h-4 w-4" />
                   Enable 2FA
                 </Button>
@@ -269,11 +269,11 @@ export default function SecurityPrivacyTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Key className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Connected Accounts</CardTitle>
+                    <CardTitle className="font-semibold">Connected Accounts</CardTitle>
                     <CardDescription>
                       OAuth providers linked to your account
                     </CardDescription>
@@ -284,26 +284,26 @@ export default function SecurityPrivacyTemplate() {
                 {securityData.connectedAccounts.map((account, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4"
+                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
                   >
                     <div>
-                      <p className="font-bold capitalize">{account.provider}</p>
+                      <p className="font-semibold capitalize">{account.provider}</p>
                       <p className="text-sm text-muted-foreground">
                         Connected on{" "}
                         {new Date(account.connectedAt).toLocaleDateString()}
                       </p>
                     </div>
-                    <Button variant="outline" size="sm" className="font-bold">
+                    <Button variant="outline" size="sm" className="font-semibold">
                       <Trash2 className="mr-2 h-4 w-4" />
                       Disconnect
                     </Button>
                   </div>
                 ))}
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="font-bold">
+                  <Button variant="outline" size="sm" className="font-semibold">
                     Connect Google
                   </Button>
-                  <Button variant="outline" size="sm" className="font-bold">
+                  <Button variant="outline" size="sm" className="font-semibold">
                     Connect GitHub
                   </Button>
                 </div>
@@ -314,11 +314,11 @@ export default function SecurityPrivacyTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Clock className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Active Sessions</CardTitle>
+                    <CardTitle className="font-semibold">Active Sessions</CardTitle>
                     <CardDescription>
                       {securityData.activeSessions.length} active devices
                     </CardDescription>
@@ -329,13 +329,13 @@ export default function SecurityPrivacyTemplate() {
                 {securityData.activeSessions.map((session) => (
                   <div
                     key={session.id}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4"
+                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-bold">{session.device}</p>
+                        <p className="font-semibold">{session.device}</p>
                         {session.isCurrent && (
-                          <Badge className="font-bold">Current</Badge>
+                          <Badge className="font-semibold">Current</Badge>
                         )}
                       </div>
                       <p className="text-sm text-muted-foreground">
@@ -350,7 +350,7 @@ export default function SecurityPrivacyTemplate() {
                         variant="outline"
                         size="sm"
                         onClick={() => handleRevokeSession(session.id)}
-                        className="font-bold"
+                        className="font-semibold"
                       >
                         <LogOut className="mr-2 h-4 w-4" />
                         Revoke
@@ -359,7 +359,7 @@ export default function SecurityPrivacyTemplate() {
                   </div>
                 ))}
                 <Separator />
-                <Button variant="destructive" className="w-full font-bold">
+                <Button variant="destructive" className="w-full font-semibold">
                   <LogOut className="mr-2 h-4 w-4" />
                   Sign Out All Other Devices
                 </Button>
@@ -370,11 +370,11 @@ export default function SecurityPrivacyTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Key className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Password</CardTitle>
+                    <CardTitle className="font-semibold">Password</CardTitle>
                     <CardDescription>
                       Last changed on{" "}
                       {new Date(
@@ -385,7 +385,7 @@ export default function SecurityPrivacyTemplate() {
                 </div>
               </CardHeader>
               <CardContent>
-                <Button variant="outline" className="font-bold">
+                <Button variant="outline" className="font-semibold">
                   Change Password
                 </Button>
               </CardContent>
@@ -397,7 +397,7 @@ export default function SecurityPrivacyTemplate() {
             {/* Profile Privacy */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Profile & Activity</CardTitle>
+                <CardTitle className="font-semibold">Profile & Activity</CardTitle>
                 <CardDescription>
                   Control who can see your profile and activity
                 </CardDescription>
@@ -422,10 +422,10 @@ export default function SecurityPrivacyTemplate() {
                 ].map((setting) => (
                   <div
                     key={setting.key}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal p-4"
+                    className="flex items-center justify-between rounded-lg border border-border p-4"
                   >
                     <div>
-                      <p className="font-bold">{setting.label}</p>
+                      <p className="font-semibold">{setting.label}</p>
                       <p className="text-sm text-muted-foreground">
                         {setting.description}
                       </p>
@@ -442,7 +442,7 @@ export default function SecurityPrivacyTemplate() {
             {/* Data Sharing */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Data Sharing</CardTitle>
+                <CardTitle className="font-semibold">Data Sharing</CardTitle>
                 <CardDescription>
                   Manage how your data is used and shared
                 </CardDescription>
@@ -462,10 +462,10 @@ export default function SecurityPrivacyTemplate() {
                 ].map((setting) => (
                   <div
                     key={setting.key}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal p-4"
+                    className="flex items-center justify-between rounded-lg border border-border p-4"
                   >
                     <div>
-                      <p className="font-bold">{setting.label}</p>
+                      <p className="font-semibold">{setting.label}</p>
                       <p className="text-sm text-muted-foreground">
                         {setting.description}
                       </p>
@@ -482,7 +482,7 @@ export default function SecurityPrivacyTemplate() {
             {/* Cookie Preferences */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Cookie Preferences</CardTitle>
+                <CardTitle className="font-semibold">Cookie Preferences</CardTitle>
                 <CardDescription>
                   Manage which cookies you allow
                 </CardDescription>
@@ -510,10 +510,10 @@ export default function SecurityPrivacyTemplate() {
                 ].map((setting) => (
                   <div
                     key={setting.key}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal p-4"
+                    className="flex items-center justify-between rounded-lg border border-border p-4"
                   >
                     <div>
-                      <p className="font-bold">{setting.label}</p>
+                      <p className="font-semibold">{setting.label}</p>
                       <p className="text-sm text-muted-foreground">
                         {setting.description}
                       </p>
@@ -531,7 +531,7 @@ export default function SecurityPrivacyTemplate() {
             {/* Communication Preferences */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Email Preferences</CardTitle>
+                <CardTitle className="font-semibold">Email Preferences</CardTitle>
                 <CardDescription>
                   Choose which emails you want to receive
                 </CardDescription>
@@ -551,10 +551,10 @@ export default function SecurityPrivacyTemplate() {
                 ].map((setting) => (
                   <div
                     key={setting.key}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal p-4"
+                    className="flex items-center justify-between rounded-lg border border-border p-4"
                   >
                     <div>
-                      <p className="font-bold">{setting.label}</p>
+                      <p className="font-semibold">{setting.label}</p>
                       <p className="text-sm text-muted-foreground">
                         {setting.description}
                       </p>
@@ -575,32 +575,32 @@ export default function SecurityPrivacyTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">Security Audit Log</CardTitle>
+                    <CardTitle className="font-semibold">Security Audit Log</CardTitle>
                     <CardDescription>
                       Track all security-related events on your account
                     </CardDescription>
                   </div>
-                  <Button variant="outline" size="sm" className="font-bold">
+                  <Button variant="outline" size="sm" className="font-semibold">
                     <Download className="mr-2 h-4 w-4" />
                     Export Log
                   </Button>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="rounded-md border-2 border-brutal">
+                <div className="rounded-md border border-border">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="font-bold">Action</TableHead>
-                        <TableHead className="font-bold">Timestamp</TableHead>
-                        <TableHead className="font-bold">IP Address</TableHead>
-                        <TableHead className="font-bold">Status</TableHead>
+                        <TableHead className="font-semibold">Action</TableHead>
+                        <TableHead className="font-semibold">Timestamp</TableHead>
+                        <TableHead className="font-semibold">IP Address</TableHead>
+                        <TableHead className="font-semibold">Status</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {securityData.auditLog.map((log) => (
                         <TableRow key={log.id}>
-                          <TableCell className="font-bold">{log.action}</TableCell>
+                          <TableCell className="font-semibold">{log.action}</TableCell>
                           <TableCell>{log.timestamp}</TableCell>
                           <TableCell className="font-mono text-sm">
                             {log.ip}
@@ -610,7 +610,7 @@ export default function SecurityPrivacyTemplate() {
                               variant={
                                 log.status === "success" ? "default" : "outline"
                               }
-                              className="font-bold capitalize"
+                              className="font-semibold capitalize"
                             >
                               {log.status}
                             </Badge>
@@ -630,11 +630,11 @@ export default function SecurityPrivacyTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Globe className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">GDPR Rights</CardTitle>
+                    <CardTitle className="font-semibold">GDPR Rights</CardTitle>
                     <CardDescription>
                       Exercise your data protection rights
                     </CardDescription>
@@ -644,7 +644,7 @@ export default function SecurityPrivacyTemplate() {
               <CardContent className="space-y-3">
                 <Button
                   variant="outline"
-                  className="w-full justify-start font-bold"
+                  className="w-full justify-start font-semibold"
                   onClick={handleExportData}
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -652,21 +652,21 @@ export default function SecurityPrivacyTemplate() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start font-bold"
+                  className="w-full justify-start font-semibold"
                 >
                   <Eye className="mr-2 h-4 w-4" />
                   Request Data Access Report
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start font-bold"
+                  className="w-full justify-start font-semibold"
                 >
                   <FileText className="mr-2 h-4 w-4" />
                   View Privacy Policy
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start font-bold"
+                  className="w-full justify-start font-semibold"
                 >
                   <FileText className="mr-2 h-4 w-4" />
                   View Terms of Service
@@ -675,14 +675,14 @@ export default function SecurityPrivacyTemplate() {
             </Card>
 
             {/* Data Deletion */}
-            <Card className="border-2 border-destructive">
+            <Card className="border border-destructive">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border-2 border-brutal bg-destructive/10 p-3">
+                  <div className="rounded-lg border border-border bg-destructive/10 p-3">
                     <UserX className="h-6 w-6 text-destructive" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Danger Zone</CardTitle>
+                    <CardTitle className="font-semibold">Danger Zone</CardTitle>
                     <CardDescription>
                       Irreversible actions - proceed with caution
                     </CardDescription>
@@ -692,14 +692,14 @@ export default function SecurityPrivacyTemplate() {
               <CardContent className="space-y-4">
                 <Alert>
                   <AlertTriangle className="h-4 w-4" />
-                  <AlertDescription className="font-bold">
+                  <AlertDescription className="font-semibold">
                     Deleting your account is permanent and cannot be undone. All your
                     data will be permanently erased.
                   </AlertDescription>
                 </Alert>
                 <Button
                   variant="destructive"
-                  className="w-full font-bold"
+                  className="w-full font-semibold"
                   onClick={handleDeleteAccount}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
@@ -711,42 +711,42 @@ export default function SecurityPrivacyTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">🔒 Template Features</h4>
+            <h4 className="mb-2 font-semibold">🔒 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Security score dashboard with recommendations
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Two-factor authentication setup (TOTP placeholder)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ OAuth account management (Google, GitHub)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Active sessions viewer with device details and IP addresses
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Session revocation and bulk sign-out
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Privacy controls (11 toggles for profile, cookies, emails)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Security audit log with timestamps and status badges
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ GDPR compliance (data export, access request, policies)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Account deletion with confirmation modal
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ 4-tab navigation (Security, Privacy, Audit Log, Compliance)
               </li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               Integrate with existing security components in{" "}
               <code className="rounded bg-muted px-1 py-0.5">
                 src/components/security/

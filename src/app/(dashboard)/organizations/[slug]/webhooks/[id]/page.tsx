@@ -159,9 +159,9 @@ export default function WebhookDetailPage() {
   }
 
   function getStatusBadge(status: string) {
-    const variants: Record<string, "default" | "destructive" | "secondary"> = {
+    const variants: Record<string, "default" | "accent" | "secondary"> = {
       success: "default",
-      failed: "destructive",
+      failed: "accent",
       pending: "secondary",
     };
 

@@ -24,8 +24,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Copy, FileText, Hash, Plus, Save, Variable, X } from "lucide-react";
 import * as React from "react";
 import { PromptBuilderProps, PromptTemplate, usePromptBuilder } from "./prompt-builder-logic";
@@ -90,9 +89,9 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
             {showPreview && <TabsTrigger value="preview">Preview</TabsTrigger>}
           </TabsList>
 
-          <TabsContent value="editor" className={`${tokens.spacing.space.y[6]}`}>
+          <TabsContent value="editor" className={`space-y-6`}>
             {showTemplates && templates.length > 0 && (
-              <div className={`${tokens.spacing.space.y[2]}`}>
+              <div className={`space-y-2`}>
                 <Label>Load Template</Label>
                 <Select
                   value={selectedTemplate || ""}
@@ -106,7 +105,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                   <SelectContent>
                     {templates.map((template: PromptTemplate) => (
                       <SelectItem key={template.id} value={template.id}>
-                        <div className={`flex items-center ${tokens.spacing.gap[2]}`}>
+                        <div className={`flex items-center gap-2`}>
                           <FileText className="size-4" />
                           {template.name}
                           {template.category && (
@@ -122,7 +121,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
               </div>
             )}
 
-            <div className={`${tokens.spacing.space.y[2]}`}>
+            <div className={`space-y-2`}>
               <div className="flex items-center justify-between">
                 <Label>Prompt Content</Label>
                 <Button variant="ghost" size="sm" onClick={extractVariables} className="text-xs">
@@ -143,7 +142,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
             </div>
 
             {onSaveTemplate && (
-              <div className={`flex ${tokens.spacing.gap[2]}`}>
+              <div className={`flex gap-2`}>
                 <Input
                   placeholder="Template name..."
                   value={templateName}
@@ -158,7 +157,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
           </TabsContent>
 
           {showVariables && (
-            <TabsContent value="variables" className={`${tokens.spacing.space.y[6]}`}>
+            <TabsContent value="variables" className={`space-y-6`}>
               <div className="flex items-center justify-between">
                 <Label>Variables</Label>
                 <Button
@@ -173,7 +172,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
               </div>
 
               <ScrollArea className="h-96">
-                <div className={`${tokens.spacing.space.y[3]} pr-4`}>
+                <div className={`space-y-3 pr-4`}>
                   {variables.length === 0 ? (
                     <p className={`"text-sm" py-8 text-center text-muted-foreground`}>
                       No variables defined. Add variables or extract them from your prompt.
@@ -182,7 +181,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                     variables.map((variable) => (
                       <div
                         key={variable.id}
-                        className={`${tokens.spacing.space.y[2]} rounded-lg border p-3`}
+                        className={`space-y-2 rounded-lg border p-3`}
                       >
                         <div className="flex items-center justify-between">
                           <Input
@@ -238,17 +237,17 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
           )}
 
           {showPreview && (
-            <TabsContent value="preview" className={`${tokens.spacing.space.y[6]}`}>
-              <div className={`${tokens.spacing.space.y[2]}`}>
+            <TabsContent value="preview" className={`space-y-6`}>
+              <div className={`space-y-2`}>
                 <Label>Processed Prompt</Label>
                 <ScrollArea
-                  className={`h-96 rounded-lg border bg-card ${tokens.components.card.content}`}
+                  className={`h-96 rounded-lg border bg-card `}
                 >
                   <pre className={`"text-sm" whitespace-pre-wrap font-mono`}>{processPrompt()}</pre>
                 </ScrollArea>
               </div>
 
-              <div className={`flex ${tokens.spacing.gap[2]}`}>
+              <div className={`flex gap-2`}>
                 <Button onClick={handleCopy} variant="outline">
                   <Copy className={`"h-4 w-4" mr-2`} />
                   Copy Prompt

@@ -32,16 +32,19 @@ export function PricingSection() {
       className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-center text-4xl font-bold text-foreground">
+        <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
           One Price. Unlimited Projects. Launch Now.
         </h2>
+        <p className="mb-16 text-center text-lg text-muted-foreground">
+          No subscriptions, no recurring fees. Pay once, use forever.
+        </p>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-brutal border-2 border-black bg-white p-10 shadow-brutal-lg">
+          <div className="rounded-lg border border-border bg-card p-10 shadow-md">
             {/* Plan Name */}
             <div className="mb-6 text-center">
-              <span className="inline-block rounded-brutal border-2 border-black bg-secondary px-6 py-2 text-sm font-bold uppercase text-secondary-foreground shadow-brutal">
+              <span className="inline-block rounded-md bg-secondary/10 border border-secondary/20 px-6 py-2 text-sm font-medium uppercase text-secondary">
                 Lifetime Deal
               </span>
             </div>
@@ -49,43 +52,43 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-6xl font-bold text-foreground">$99</span>
-                <span className="text-2xl font-bold text-foreground line-through">
+                <span className="text-5xl font-semibold text-foreground">$99</span>
+                <span className="text-xl font-medium text-muted-foreground line-through">
                   $199
                 </span>
               </div>
-              <p className="text-lg font-bold text-foreground">
-                Pay once, use forever. <span className="bg-primary text-primary-foreground px-2 py-1 inline-block">$0 recurring fees.</span>
+              <p className="text-base font-normal text-muted-foreground">
+                Pay once, use forever. <span className="font-medium text-foreground">$0 recurring fees.</span>
               </p>
             </div>
 
             {/* Features List */}
-            <ul className="mb-8 space-y-4">
+            <ul className="mb-8 space-y-3">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-6 w-6 flex-shrink-0 text-accent" strokeWidth={4} />
-                  <span className="font-bold text-foreground">{feature}</span>
+                  <Check className="h-5 w-5 flex-shrink-0 text-primary" strokeWidth={2} />
+                  <span className="font-normal text-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
             {/* Error Message */}
             {error && (
-              <div className="mb-4 rounded-brutal border-2 border-black bg-destructive p-4 text-sm font-bold text-destructive-foreground shadow-brutal">
+              <div className="mb-4 rounded-md border border-destructive/50 bg-destructive/10 p-4 text-sm font-medium text-destructive">
                 {error}
               </div>
             )}
 
             {/* CTA Button */}
             <Button
-              size="xl"
-              className="w-full text-lg"
+              size="lg"
+              className="w-full"
               onClick={handleCheckout}
               disabled={isLoading || !priceId}
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Processing...
                 </>
               ) : (
@@ -94,7 +97,7 @@ export function PricingSection() {
             </Button>
 
             {/* Risk Reversal */}
-            <p className="mt-6 text-center text-sm font-bold text-foreground">
+            <p className="mt-6 text-center text-sm font-normal text-muted-foreground">
               30-day money-back guarantee. No questions asked.
             </p>
           </div>

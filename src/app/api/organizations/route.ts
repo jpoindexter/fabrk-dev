@@ -22,10 +22,10 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       organizations: organizations.map((org) => ({
-        id: org.organization.id,
-        name: org.organization.name,
-        slug: org.organization.slug,
-        logo: org.organization.logo,
+        id: org.id,
+        name: org.name,
+        slug: org.slug,
+        logo: org.logo,
         role: org.role,
       })),
     });

@@ -21,7 +21,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
-import { toast } from "@/lib/notifications";
+import { toast } from "sonner";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -48,13 +48,13 @@ export default function ProfilePage() {
       });
 
       if (response.ok) {
-        toast.success("Success", "Profile updated successfully");
+        toast.success("Profile updated successfully");
         setIsEditing(false);
       } else {
-        toast.error("Error", "Failed to update profile");
+        toast.error("Failed to update profile");
       }
     } catch (error) {
-      toast.error("Error", "Failed to update profile");
+      toast.error("Failed to update profile");
     } finally {
       setIsSaving(false);
     }
@@ -74,14 +74,14 @@ export default function ProfilePage() {
       });
 
       if (response.ok) {
-        toast.success("Success", "Avatar updated");
+        toast.success("Avatar updated");
         // Refresh session
         window.location.reload();
       } else {
-        toast.error("Error", "Failed to upload avatar");
+        toast.error("Failed to upload avatar");
       }
     } catch (error) {
-      toast.error("Error", "Failed to upload avatar");
+      toast.error("Failed to upload avatar");
     }
   };
 

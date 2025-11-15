@@ -21,24 +21,23 @@ export function TechStack() {
   ];
 
   return (
-    <section className="bg-background px-6 py-16">
+    <section className="bg-muted/30 px-6 py-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center text-3xl font-black text-foreground">
+        <h2 className="mb-12 text-center text-2xl font-semibold text-foreground">
           A Modern Stack You Can Trust.
         </h2>
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-7">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-7">
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="group flex flex-col items-center justify-center gap-3 rounded-brutal border-4 border-black bg-card p-6 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1"
+              className="group flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
             >
               <SimpleIcon
                 path={tech.path}
-                size={40}
-                className="text-foreground"
+                className="h-8 w-8 text-foreground transition-colors group-hover:text-primary"
               />
-              <span className="text-sm font-bold text-foreground">
+              <span className="text-xs font-medium text-muted-foreground">
                 {tech.name}
               </span>
             </div>

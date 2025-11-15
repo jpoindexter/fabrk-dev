@@ -15,7 +15,7 @@ import { useMemo } from "react";
 
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 
 export type FieldSetProps = React.ComponentProps<"fieldset">;
 export type FieldLegendProps = React.ComponentProps<"legend"> & { variant?: "legend" | "label" };

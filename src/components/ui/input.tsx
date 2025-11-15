@@ -13,7 +13,7 @@
 
 "use client";
 
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 

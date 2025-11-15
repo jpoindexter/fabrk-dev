@@ -41,26 +41,28 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-16 bg-background px-6 py-24"
+      className="scroll-mt-16 bg-muted/30 px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-12 text-center text-4xl font-bold text-foreground">
+        <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
           Frequently Asked Questions
         </h2>
+        <p className="mb-12 text-center text-lg text-muted-foreground">
+          Everything you need to know about Fabrk
+        </p>
 
-        <Accordion type="single" collapsible className="w-full space-y-4">
+        <Accordion type="single" collapsible className="w-full space-y-3">
           {faqs.map((faq, index) => {
-            const color = colors[index];
             return (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className={`rounded-brutal border-2 border-brutal ${color.bg} shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg data-[state=open]:shadow-brutal-lg`}
+                className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
               >
-                <AccordionTrigger className={`px-6 text-left text-lg font-bold ${color.text} hover:no-underline`}>
+                <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className={`px-6 font-bold ${color.text}`}>
+                <AccordionContent className="px-6 font-normal text-muted-foreground">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

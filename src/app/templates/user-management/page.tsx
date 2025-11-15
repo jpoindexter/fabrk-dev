@@ -177,7 +177,7 @@ const DataTableColumnHeader = ({
     <Button
       variant="ghost"
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      className="font-bold hover:bg-accent"
+      className="font-semibold hover:bg-accent"
     >
       {title}
       <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -211,10 +211,10 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-brutal bg-primary/10 font-bold text-primary">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-primary/10 font-semibold text-primary">
           {row.getValue<string>("name").charAt(0)}
         </div>
-        <span className="font-bold">{row.getValue("name")}</span>
+        <span className="font-semibold">{row.getValue("name")}</span>
       </div>
     ),
   },
@@ -233,7 +233,7 @@ const columns: ColumnDef<User>[] = [
       return (
         <Badge
           variant={role === "ADMIN" ? "default" : "secondary"}
-          className="font-bold"
+          className="font-semibold"
         >
           {role}
         </Badge>
@@ -251,7 +251,7 @@ const columns: ColumnDef<User>[] = [
         suspended: "outline",
       };
       return (
-        <Badge variant={variants[status]} className="font-bold capitalize">
+        <Badge variant={variants[status]} className="font-semibold capitalize">
           {status}
         </Badge>
       );
@@ -265,7 +265,7 @@ const columns: ColumnDef<User>[] = [
       return (
         <Badge
           variant={plan === "Enterprise" ? "default" : "outline"}
-          className="font-bold"
+          className="font-semibold"
         >
           {plan}
         </Badge>
@@ -304,24 +304,24 @@ const columns: ColumnDef<User>[] = [
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="border-2 border-brutal">
-            <DropdownMenuLabel className="font-bold">Actions</DropdownMenuLabel>
+          <DropdownMenuContent align="end" className="border border-border">
+            <DropdownMenuLabel className="font-semibold">Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-              className="font-bold"
+              className="font-semibold"
             >
               Copy user ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="font-bold">
+            <DropdownMenuItem className="font-semibold">
               <UserCog className="mr-2 h-4 w-4" />
               Edit user
             </DropdownMenuItem>
-            <DropdownMenuItem className="font-bold">
+            <DropdownMenuItem className="font-semibold">
               <UserX className="mr-2 h-4 w-4" />
               Suspend user
             </DropdownMenuItem>
-            <DropdownMenuItem className="font-bold text-destructive">
+            <DropdownMenuItem className="font-semibold text-destructive">
               <Trash2 className="mr-2 h-4 w-4" />
               Delete user
             </DropdownMenuItem>
@@ -389,7 +389,7 @@ export default function UserManagementTemplate() {
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">User Management</h1>
+          <h1 className="text-4xl font-semibold tracking-tight">User Management</h1>
           <p className="mt-2 text-muted-foreground">
             Manage users, roles, and permissions with TanStack Table
           </p>
@@ -399,32 +399,32 @@ export default function UserManagementTemplate() {
         <div className="grid gap-6 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Total Users</CardDescription>
-              <CardTitle className="text-3xl font-bold">
+              <CardDescription className="font-semibold">Total Users</CardDescription>
+              <CardTitle className="text-3xl font-semibold">
                 {mockUsers.length}
               </CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Active Users</CardDescription>
-              <CardTitle className="text-3xl font-bold">
+              <CardDescription className="font-semibold">Active Users</CardDescription>
+              <CardTitle className="text-3xl font-semibold">
                 {mockUsers.filter((u) => u.status === "active").length}
               </CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Admins</CardDescription>
-              <CardTitle className="text-3xl font-bold">
+              <CardDescription className="font-semibold">Admins</CardDescription>
+              <CardTitle className="text-3xl font-semibold">
                 {mockUsers.filter((u) => u.role === "ADMIN").length}
               </CardTitle>
             </CardHeader>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Enterprise</CardDescription>
-              <CardTitle className="text-3xl font-bold">
+              <CardDescription className="font-semibold">Enterprise</CardDescription>
+              <CardTitle className="text-3xl font-semibold">
                 {mockUsers.filter((u) => u.plan === "Enterprise").length}
               </CardTitle>
             </CardHeader>
@@ -436,12 +436,12 @@ export default function UserManagementTemplate() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="font-bold">All Users</CardTitle>
+                <CardTitle className="font-semibold">All Users</CardTitle>
                 <CardDescription>
                   Search, filter, and manage your user base
                 </CardDescription>
               </div>
-              <Button onClick={exportToCSV} variant="outline" className="font-bold">
+              <Button onClick={exportToCSV} variant="outline" className="font-semibold">
                 <Download className="mr-2 h-4 w-4" />
                 Export CSV
               </Button>
@@ -459,16 +459,16 @@ export default function UserManagementTemplate() {
                     onChange={(event) =>
                       table.getColumn("name")?.setFilterValue(event.target.value)
                     }
-                    className="pl-10 font-bold"
+                    className="pl-10 font-semibold"
                   />
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="font-bold">
+                    <Button variant="outline" className="font-semibold">
                       Columns <ChevronDown className="ml-2 h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border-2 border-brutal">
+                  <DropdownMenuContent align="end" className="border border-border">
                     {table
                       .getAllColumns()
                       .filter((column) => column.getCanHide())
@@ -476,7 +476,7 @@ export default function UserManagementTemplate() {
                         return (
                           <DropdownMenuCheckboxItem
                             key={column.id}
-                            className="font-bold capitalize"
+                            className="font-semibold capitalize"
                             checked={column.getIsVisible()}
                             onCheckedChange={(value) =>
                               column.toggleVisibility(!!value)
@@ -493,21 +493,21 @@ export default function UserManagementTemplate() {
               {/* Bulk Actions */}
               {selectedCount > 0 && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold text-muted-foreground">
+                  <span className="text-sm font-semibold text-muted-foreground">
                     {selectedCount} selected
                   </span>
-                  <Button variant="outline" size="sm" className="font-bold">
+                  <Button variant="outline" size="sm" className="font-semibold">
                     <UserCog className="mr-2 h-4 w-4" />
                     Change Role
                   </Button>
-                  <Button variant="outline" size="sm" className="font-bold">
+                  <Button variant="outline" size="sm" className="font-semibold">
                     <UserX className="mr-2 h-4 w-4" />
                     Suspend
                   </Button>
                   <Button
                     variant="destructive"
                     size="sm"
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
                     Delete
@@ -517,7 +517,7 @@ export default function UserManagementTemplate() {
             </div>
 
             {/* Table */}
-            <div className="rounded-md border-2 border-brutal">
+            <div className="rounded-md border border-border">
               <Table>
                 <TableHeader>
                   {table.getHeaderGroups().map((headerGroup) => (
@@ -571,7 +571,7 @@ export default function UserManagementTemplate() {
             {/* Pagination */}
             <div className="mt-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-muted-foreground">
+                <span className="text-sm font-semibold text-muted-foreground">
                   Rows per page:
                 </span>
                 <select
@@ -579,7 +579,7 @@ export default function UserManagementTemplate() {
                   onChange={(e) => {
                     table.setPageSize(Number(e.target.value));
                   }}
-                  className="rounded-md border-2 border-brutal bg-background px-3 py-1 font-bold shadow-brutal"
+                  className="rounded-md border border-border bg-background px-3 py-1 font-semibold shadow-sm"
                 >
                   {[10, 25, 50, 100].map((pageSize) => (
                     <option key={pageSize} value={pageSize}>
@@ -590,7 +590,7 @@ export default function UserManagementTemplate() {
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-muted-foreground">
+                <span className="text-sm font-semibold text-muted-foreground">
                   Page {table.getState().pagination.pageIndex + 1} of{" "}
                   {table.getPageCount()}
                 </span>
@@ -600,7 +600,7 @@ export default function UserManagementTemplate() {
                     size="sm"
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     Previous
                   </Button>
@@ -609,7 +609,7 @@ export default function UserManagementTemplate() {
                     size="sm"
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     Next
                   </Button>
@@ -620,22 +620,22 @@ export default function UserManagementTemplate() {
         </Card>
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">📋 Template Features</h4>
+            <h4 className="mb-2 font-semibold">📋 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">✓ TanStack Table v8 with sorting, filtering, pagination</li>
-              <li className="font-bold">✓ Bulk actions (select multiple users)</li>
-              <li className="font-bold">✓ Column visibility toggle</li>
-              <li className="font-bold">✓ Search by name/email</li>
-              <li className="font-bold">✓ Export to CSV functionality</li>
-              <li className="font-bold">✓ Role badges (Admin, User, Guest)</li>
-              <li className="font-bold">✓ Status indicators (Active, Inactive, Suspended)</li>
-              <li className="font-bold">✓ Row actions menu (Edit, Suspend, Delete)</li>
-              <li className="font-bold">✓ Stats cards (Total, Active, Admins, Enterprise)</li>
-              <li className="font-bold">✓ Responsive design with neo-brutalism styling</li>
+              <li className="font-semibold">✓ TanStack Table v8 with sorting, filtering, pagination</li>
+              <li className="font-semibold">✓ Bulk actions (select multiple users)</li>
+              <li className="font-semibold">✓ Column visibility toggle</li>
+              <li className="font-semibold">✓ Search by name/email</li>
+              <li className="font-semibold">✓ Export to CSV functionality</li>
+              <li className="font-semibold">✓ Role badges (Admin, User, Guest)</li>
+              <li className="font-semibold">✓ Status indicators (Active, Inactive, Suspended)</li>
+              <li className="font-semibold">✓ Row actions menu (Edit, Suspend, Delete)</li>
+              <li className="font-semibold">✓ Stats cards (Total, Active, Admins, Enterprise)</li>
+              <li className="font-semibold">✓ Responsive design with neo-brutalism styling</li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               Replace <code className="rounded bg-muted px-1 py-0.5">mockUsers</code> with your API data. Add API routes for edit/delete/suspend actions.
             </p>
           </CardContent>

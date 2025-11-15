@@ -12,8 +12,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Loader2, Search, X } from "lucide-react";
 import * as React from "react";
 
@@ -68,7 +67,7 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
               type="button"
               variant="ghost"
               size="sm"
-              className={`absolute right-0 top-0 h-full ${tokens.spacing.px[3]} py-1 hover:bg-background/0`}
+              className={`absolute right-0 top-0 h-full px-3 py-1 hover:bg-background/0`}
               onClick={handleClear}
               disabled={disabled}
               aria-label="Clear search"

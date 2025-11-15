@@ -118,7 +118,7 @@ export default function CreateWebhookPage() {
     const allSelected = categoryEvents.every((event) => selectedEvents.includes(event));
 
     if (allSelected) {
-      setSelectedEvents((prev) => prev.filter((e) => !categoryEvents.includes(e as any)));
+      setSelectedEvents((prev) => prev.filter((e) => !(categoryEvents as readonly string[]).includes(e)));
     } else {
       setSelectedEvents((prev) => [...new Set([...prev, ...categoryEvents])]);
     }

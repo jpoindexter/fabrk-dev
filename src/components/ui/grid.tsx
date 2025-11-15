@@ -8,8 +8,7 @@
  * ```
  */
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
@@ -33,9 +32,9 @@ const gridVariants = cva("grid", {
     gap: {
       0: "gap-0",
       1: "gap-1",
-      2: `${tokens.spacing.gap[2]}`,
+      2: `gap-2`,
       3: "gap-3",
-      4: `${tokens.spacing.gap[6]}`,
+      4: `gap-6`,
       5: "gap-5",
       6: "gap-6",
       7: "gap-7",

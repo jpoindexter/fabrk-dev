@@ -13,8 +13,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
 export interface InputColorProps
@@ -125,8 +124,8 @@ const InputColor = React.forwardRef<HTMLInputElement, InputColorProps>(
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-64" align="start">
-            <div className={`${tokens.spacing.space.y[3]}`}>
-              <div className={`grid grid-cols-5 ${tokens.spacing.gap[2]}`}>
+            <div className={`space-y-3`}>
+              <div className={`grid grid-cols-5 gap-2`}>
                 {presetColors.map((color) => (
                   <button
                     key={color}
@@ -143,13 +142,13 @@ const InputColor = React.forwardRef<HTMLInputElement, InputColorProps>(
                   />
                 ))}
               </div>
-              <div className={`${tokens.spacing.space.y[2]}`}>
+              <div className={`space-y-2`}>
                 <label className={`"text-sm" font-medium`}>Custom Color</label>
                 <input
                   type="color"
                   value={value}
                   onChange={(e) => handleColorChange(e.target.value)}
-                  className={`${tokens.sizes.input.md} w-full cursor-pointer rounded-md`}
+                  className={`h-10 w-full cursor-pointer rounded-md`}
                   disabled={disabled}
                 />
               </div>

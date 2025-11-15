@@ -8,8 +8,7 @@
  * ```
  */
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
@@ -143,7 +142,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
       <Component
         data-slot="section-header"
         ref={ref}
-        className={cn(`${tokens.spacing.space.y[6]}`, alignClasses[align], className)}
+        className={cn(`space-y-6`, alignClasses[align], className)}
         {...props}
       >
         {subtitle && (

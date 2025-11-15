@@ -218,19 +218,19 @@ export default function DocumentationLayoutTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 z-50 border-b-2 border-brutal bg-card">
+      <div className="sticky top-0 z-50 border-b-2 border-border bg-card">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="font-bold lg:hidden"
+              className="font-semibold lg:hidden"
             >
               {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
             <div>
-              <h1 className="text-2xl font-bold">Fabrk Documentation</h1>
+              <h1 className="text-2xl font-semibold">Fabrk Documentation</h1>
               <p className="text-sm text-muted-foreground">
                 Complete guide to building your SaaS
               </p>
@@ -243,10 +243,10 @@ export default function DocumentationLayoutTemplate() {
                 placeholder="Search docs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-64 pl-10 font-bold"
+                className="w-64 pl-10 font-semibold"
               />
             </div>
-            <Button variant="outline" size="sm" className="font-bold">
+            <Button variant="outline" size="sm" className="font-semibold">
               <ExternalLink className="mr-2 h-4 w-4" />
               GitHub
             </Button>
@@ -259,7 +259,7 @@ export default function DocumentationLayoutTemplate() {
         <aside
           className={`${
             sidebarOpen ? "block" : "hidden"
-          } w-64 border-r-2 border-brutal bg-card lg:block`}
+          } w-64 border-r-2 border-border bg-card lg:block`}
         >
           <nav className="space-y-6 p-6">
             {docsStructure.map((section, idx) => {
@@ -268,7 +268,7 @@ export default function DocumentationLayoutTemplate() {
                 <div key={idx}>
                   <div className="mb-3 flex items-center gap-2">
                     <Icon className="h-4 w-4 text-primary" />
-                    <h3 className="font-bold">{section.section}</h3>
+                    <h3 className="font-semibold">{section.section}</h3>
                   </div>
                   <ul className="space-y-1">
                     {section.pages.map((page) => (
@@ -285,7 +285,7 @@ export default function DocumentationLayoutTemplate() {
                           {page.badge && (
                             <Badge
                               variant={activeDoc === page.id ? "secondary" : "outline"}
-                              className="text-xs font-bold"
+                              className="text-xs font-semibold"
                             >
                               {page.badge}
                             </Badge>
@@ -305,24 +305,24 @@ export default function DocumentationLayoutTemplate() {
           <div className="mx-auto max-w-4xl space-y-6">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="font-bold">Docs</span>
+              <span className="font-semibold">Docs</span>
               <ChevronRight className="h-4 w-4" />
-              <span className="font-bold">Getting Started</span>
+              <span className="font-semibold">Getting Started</span>
               <ChevronRight className="h-4 w-4" />
-              <span className="font-bold text-foreground">{currentDoc.title}</span>
+              <span className="font-semibold text-foreground">{currentDoc.title}</span>
             </div>
 
             {/* Page Header */}
             <div>
-              <h1 className="text-4xl font-bold mb-2">{currentDoc.title}</h1>
+              <h1 className="text-4xl font-semibold mb-2">{currentDoc.title}</h1>
               <p className="text-lg text-muted-foreground mb-4">
                 {currentDoc.description}
               </p>
               <div className="flex items-center gap-4">
-                <Badge variant="outline" className="font-bold">
+                <Badge variant="outline" className="font-semibold">
                   Last updated: {currentDoc.lastUpdated}
                 </Badge>
-                <Button variant="ghost" size="sm" className="font-bold">
+                <Button variant="ghost" size="sm" className="font-semibold">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Edit on GitHub
                 </Button>
@@ -336,7 +336,7 @@ export default function DocumentationLayoutTemplate() {
               {parseContent(currentDoc.content).map((section, idx) => {
                 if (section.type === "heading") {
                   return (
-                    <h2 key={idx} className="text-2xl font-bold mt-8 mb-4">
+                    <h2 key={idx} className="text-2xl font-semibold mt-8 mb-4">
                       {section.content}
                     </h2>
                   );
@@ -345,15 +345,15 @@ export default function DocumentationLayoutTemplate() {
                 if (section.type === "code") {
                   return (
                     <div key={idx} className="relative">
-                      <div className="flex items-center justify-between rounded-t-lg border-2 border-b-0 border-brutal bg-muted px-4 py-2">
-                        <Badge variant="outline" className="font-mono text-xs font-bold">
+                      <div className="flex items-center justify-between rounded-t-lg border border-b-0 border-border bg-muted px-4 py-2">
+                        <Badge variant="outline" className="font-mono text-xs font-semibold">
                           {section.language || "code"}
                         </Badge>
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                          className="font-bold"
+                          className="font-semibold"
                         >
                           {copiedCode === `code-${idx}` ? (
                             <>
@@ -368,7 +368,7 @@ export default function DocumentationLayoutTemplate() {
                           )}
                         </Button>
                       </div>
-                      <pre className="overflow-auto rounded-b-lg border-2 border-brutal bg-muted p-4 text-sm">
+                      <pre className="overflow-auto rounded-b-lg border border-border bg-muted p-4 text-sm">
                         <code className="font-mono">{section.content}</code>
                       </pre>
                     </div>
@@ -387,32 +387,32 @@ export default function DocumentationLayoutTemplate() {
             <Separator className="my-12" />
 
             <div className="flex items-center justify-between">
-              <Button variant="outline" className="font-bold">
+              <Button variant="outline" className="font-semibold">
                 ← Previous: Installation
               </Button>
-              <Button variant="outline" className="font-bold">
+              <Button variant="outline" className="font-semibold">
                 Next: Environment Setup →
               </Button>
             </div>
 
             {/* Help Section */}
-            <Card className="mt-12 border-2 border-primary/20 bg-primary/5">
+            <Card className="mt-12 border border-primary/20 bg-primary/5">
               <CardHeader>
-                <CardTitle className="font-bold">Need Help?</CardTitle>
+                <CardTitle className="font-semibold">Need Help?</CardTitle>
                 <CardDescription>
                   Can't find what you're looking for?
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button variant="outline" className="w-full justify-start font-bold">
+                <Button variant="outline" className="w-full justify-start font-semibold">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Ask on GitHub Discussions
                 </Button>
-                <Button variant="outline" className="w-full justify-start font-bold">
+                <Button variant="outline" className="w-full justify-start font-semibold">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Report an Issue
                 </Button>
-                <Button variant="outline" className="w-full justify-start font-bold">
+                <Button variant="outline" className="w-full justify-start font-semibold">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Contact Support
                 </Button>
@@ -422,8 +422,8 @@ export default function DocumentationLayoutTemplate() {
         </main>
 
         {/* Table of Contents (Right Sidebar) */}
-        <aside className="hidden w-64 border-l-2 border-brutal bg-card p-6 xl:block">
-          <h3 className="mb-4 font-bold">On This Page</h3>
+        <aside className="hidden w-64 border-l-2 border-border bg-card p-6 xl:block">
+          <h3 className="mb-4 font-semibold">On This Page</h3>
           <ul className="space-y-2 text-sm">
             {[
               "Prerequisites",
@@ -436,7 +436,7 @@ export default function DocumentationLayoutTemplate() {
               <li key={idx}>
                 <a
                   href={`#${heading.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="text-muted-foreground hover:text-foreground font-bold transition-colors"
+                  className="text-muted-foreground hover:text-foreground font-semibold transition-colors"
                 >
                   {heading}
                 </a>
@@ -448,18 +448,18 @@ export default function DocumentationLayoutTemplate() {
 
       {/* Implementation Note (Fixed at bottom) */}
       <div className="fixed bottom-4 right-4 max-w-sm">
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-4">
-            <h4 className="mb-2 text-sm font-bold">📚 Template Features</h4>
+            <h4 className="mb-2 text-sm font-semibold">📚 Template Features</h4>
             <ul className="space-y-1 text-xs text-muted-foreground">
-              <li className="font-bold">✓ 3-column layout (sidebar, content, TOC)</li>
-              <li className="font-bold">✓ Nested navigation with icons and badges</li>
-              <li className="font-bold">✓ Search bar (placeholder)</li>
-              <li className="font-bold">✓ Syntax-highlighted code blocks with copy</li>
-              <li className="font-bold">✓ Breadcrumb navigation</li>
-              <li className="font-bold">✓ Previous/Next page navigation</li>
-              <li className="font-bold">✓ Mobile-responsive with collapsible sidebar</li>
-              <li className="font-bold">✓ Markdown-style content parsing</li>
+              <li className="font-semibold">✓ 3-column layout (sidebar, content, TOC)</li>
+              <li className="font-semibold">✓ Nested navigation with icons and badges</li>
+              <li className="font-semibold">✓ Search bar (placeholder)</li>
+              <li className="font-semibold">✓ Syntax-highlighted code blocks with copy</li>
+              <li className="font-semibold">✓ Breadcrumb navigation</li>
+              <li className="font-semibold">✓ Previous/Next page navigation</li>
+              <li className="font-semibold">✓ Mobile-responsive with collapsible sidebar</li>
+              <li className="font-semibold">✓ Markdown-style content parsing</li>
             </ul>
           </CardContent>
         </Card>

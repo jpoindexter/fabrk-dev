@@ -208,12 +208,12 @@ export default function TeamDashboardTemplate() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight">Team Dashboard</h1>
+            <h1 className="text-4xl font-semibold tracking-tight">Team Dashboard</h1>
             <p className="mt-2 text-muted-foreground">
               Manage team members, roles, and permissions
             </p>
           </div>
-          <Button className="font-bold">
+          <Button className="font-semibold">
             <Settings className="mr-2 h-4 w-4" />
             Organization Settings
           </Button>
@@ -223,25 +223,25 @@ export default function TeamDashboardTemplate() {
         <div className="grid gap-6 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Organization</CardDescription>
-              <CardTitle className="text-2xl font-bold">
+              <CardDescription className="font-semibold">Organization</CardDescription>
+              <CardTitle className="text-2xl font-semibold">
                 {teamData.organization.name}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Badge className="font-bold">{teamData.organization.plan}</Badge>
+              <Badge className="font-semibold">{teamData.organization.plan}</Badge>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Team Size</CardDescription>
-              <CardTitle className="text-2xl font-bold">
+              <CardDescription className="font-semibold">Team Size</CardDescription>
+              <CardTitle className="text-2xl font-semibold">
                 {teamData.members.length} /{" "}
                 {teamData.organization.memberLimit}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground font-bold">
+              <p className="text-sm text-muted-foreground font-semibold">
                 {teamData.organization.memberLimit - teamData.members.length}{" "}
                 seats available
               </p>
@@ -249,23 +249,23 @@ export default function TeamDashboardTemplate() {
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">
+              <CardDescription className="font-semibold">
                 Pending Invites
               </CardDescription>
-              <CardTitle className="text-2xl font-bold">
+              <CardTitle className="text-2xl font-semibold">
                 {teamData.pendingInvitations.length}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground font-bold">
+              <p className="text-sm text-muted-foreground font-semibold">
                 Awaiting response
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Active Now</CardDescription>
-              <CardTitle className="text-2xl font-bold">
+              <CardDescription className="font-semibold">Active Now</CardDescription>
+              <CardTitle className="text-2xl font-semibold">
                 {
                   teamData.members.filter((m) => m.lastActive === "Just now")
                     .length
@@ -273,7 +273,7 @@ export default function TeamDashboardTemplate() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground font-bold">
+              <p className="text-sm text-muted-foreground font-semibold">
                 Online members
               </p>
             </CardContent>
@@ -286,7 +286,7 @@ export default function TeamDashboardTemplate() {
             {/* Invite Section */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Invite Team Member</CardTitle>
+                <CardTitle className="font-semibold">Invite Team Member</CardTitle>
                 <CardDescription>
                   Send an invitation to join {teamData.organization.name}
                 </CardDescription>
@@ -298,19 +298,19 @@ export default function TeamDashboardTemplate() {
                     placeholder="email@example.com"
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
-                    className="flex-1 font-bold"
+                    className="flex-1 font-semibold"
                   />
                   <Select value={inviteRole} onValueChange={setInviteRole}>
-                    <SelectTrigger className="w-32 font-bold">
+                    <SelectTrigger className="w-32 font-semibold">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="admin" className="font-bold">Admin</SelectItem>
-                      <SelectItem value="member" className="font-bold">Member</SelectItem>
-                      <SelectItem value="guest" className="font-bold">Guest</SelectItem>
+                      <SelectItem value="admin" className="font-semibold">Admin</SelectItem>
+                      <SelectItem value="member" className="font-semibold">Member</SelectItem>
+                      <SelectItem value="guest" className="font-semibold">Guest</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button onClick={handleInvite} className="font-bold">
+                  <Button onClick={handleInvite} className="font-semibold">
                     <Send className="mr-2 h-4 w-4" />
                     Invite
                   </Button>
@@ -321,7 +321,7 @@ export default function TeamDashboardTemplate() {
             {/* Members Table */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">
+                <CardTitle className="font-semibold">
                   Team Members ({teamData.members.length})
                 </CardTitle>
                 <CardDescription>
@@ -329,14 +329,14 @@ export default function TeamDashboardTemplate() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="rounded-md border-2 border-brutal">
+                <div className="rounded-md border border-border">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="font-bold">Member</TableHead>
-                        <TableHead className="font-bold">Role</TableHead>
-                        <TableHead className="font-bold">Last Active</TableHead>
-                        <TableHead className="font-bold">Actions</TableHead>
+                        <TableHead className="font-semibold">Member</TableHead>
+                        <TableHead className="font-semibold">Role</TableHead>
+                        <TableHead className="font-semibold">Last Active</TableHead>
+                        <TableHead className="font-semibold">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -346,8 +346,8 @@ export default function TeamDashboardTemplate() {
                           <TableRow key={member.id}>
                             <TableCell>
                               <div className="flex items-center gap-3">
-                                <Avatar className="h-10 w-10 border-2 border-brutal">
-                                  <AvatarFallback className="bg-primary/10 font-bold">
+                                <Avatar className="h-10 w-10 border border-border">
+                                  <AvatarFallback className="bg-primary/10 font-semibold">
                                     {member.name
                                       .split(" ")
                                       .map((n) => n[0])
@@ -355,7 +355,7 @@ export default function TeamDashboardTemplate() {
                                   </AvatarFallback>
                                 </Avatar>
                                 <div>
-                                  <p className="font-bold">{member.name}</p>
+                                  <p className="font-semibold">{member.name}</p>
                                   <p className="text-sm text-muted-foreground">
                                     {member.email}
                                   </p>
@@ -365,7 +365,7 @@ export default function TeamDashboardTemplate() {
                             <TableCell>
                               <Badge
                                 variant={roleColors[member.role] as any}
-                                className="gap-1 font-bold capitalize"
+                                className="gap-1 font-semibold capitalize"
                               >
                                 <RoleIcon className="h-3 w-3" />
                                 {member.role}
@@ -383,9 +383,9 @@ export default function TeamDashboardTemplate() {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent
                                   align="end"
-                                  className="border-2 border-brutal"
+                                  className="border border-border"
                                 >
-                                  <DropdownMenuLabel className="font-bold">
+                                  <DropdownMenuLabel className="font-semibold">
                                     Actions
                                   </DropdownMenuLabel>
                                   <DropdownMenuSeparator />
@@ -395,7 +395,7 @@ export default function TeamDashboardTemplate() {
                                         onClick={() =>
                                           handleRoleChange(member.id, "admin")
                                         }
-                                        className="font-bold"
+                                        className="font-semibold"
                                       >
                                         Make Admin
                                       </DropdownMenuItem>
@@ -403,7 +403,7 @@ export default function TeamDashboardTemplate() {
                                         onClick={() =>
                                           handleRoleChange(member.id, "member")
                                         }
-                                        className="font-bold"
+                                        className="font-semibold"
                                       >
                                         Make Member
                                       </DropdownMenuItem>
@@ -411,7 +411,7 @@ export default function TeamDashboardTemplate() {
                                         onClick={() =>
                                           handleRoleChange(member.id, "guest")
                                         }
-                                        className="font-bold"
+                                        className="font-semibold"
                                       >
                                         Make Guest
                                       </DropdownMenuItem>
@@ -420,7 +420,7 @@ export default function TeamDashboardTemplate() {
                                         onClick={() =>
                                           handleRemoveMember(member.id)
                                         }
-                                        className="font-bold text-destructive"
+                                        className="font-semibold text-destructive"
                                       >
                                         <Trash2 className="mr-2 h-4 w-4" />
                                         Remove
@@ -428,7 +428,7 @@ export default function TeamDashboardTemplate() {
                                     </>
                                   )}
                                   {member.role === "owner" && (
-                                    <DropdownMenuItem disabled className="font-bold">
+                                    <DropdownMenuItem disabled className="font-semibold">
                                       Owner cannot be changed
                                     </DropdownMenuItem>
                                   )}
@@ -447,7 +447,7 @@ export default function TeamDashboardTemplate() {
             {/* Pending Invitations */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">
+                <CardTitle className="font-semibold">
                   Pending Invitations ({teamData.pendingInvitations.length})
                 </CardTitle>
                 <CardDescription>
@@ -458,12 +458,12 @@ export default function TeamDashboardTemplate() {
                 {teamData.pendingInvitations.map((invitation) => (
                   <div
                     key={invitation.id}
-                    className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4"
+                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
                   >
                     <div className="flex items-center gap-3">
                       <Mail className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <p className="font-bold">{invitation.email}</p>
+                        <p className="font-semibold">{invitation.email}</p>
                         <p className="text-sm text-muted-foreground">
                           Invited by {invitation.sentBy} •{" "}
                           {new Date(invitation.sentAt).toLocaleDateString()}
@@ -471,14 +471,14 @@ export default function TeamDashboardTemplate() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="font-bold capitalize">
+                      <Badge variant="outline" className="font-semibold capitalize">
                         {invitation.role}
                       </Badge>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => handleRevokeInvitation(invitation.id)}
-                        className="font-bold"
+                        className="font-semibold"
                       >
                         Revoke
                       </Button>
@@ -496,7 +496,7 @@ export default function TeamDashboardTemplate() {
                 <div className="flex items-center gap-3">
                   <Activity className="h-5 w-5 text-primary" />
                   <div>
-                    <CardTitle className="font-bold">Activity Feed</CardTitle>
+                    <CardTitle className="font-semibold">Activity Feed</CardTitle>
                     <CardDescription>Recent team changes</CardDescription>
                   </div>
                 </div>
@@ -509,7 +509,7 @@ export default function TeamDashboardTemplate() {
                   >
                     <Clock className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                     <div className="flex-1">
-                      <p className="text-sm font-bold">
+                      <p className="text-sm font-semibold">
                         <span className="text-foreground">{activity.user}</span>{" "}
                         {activity.type === "member_added" && "added"}
                         {activity.type === "role_changed" && "changed role of"}
@@ -534,7 +534,7 @@ export default function TeamDashboardTemplate() {
             {/* Role Permissions */}
             <Card>
               <CardHeader>
-                <CardTitle className="font-bold">Role Permissions</CardTitle>
+                <CardTitle className="font-semibold">Role Permissions</CardTitle>
                 <CardDescription>
                   What each role can do
                 </CardDescription>
@@ -575,11 +575,11 @@ export default function TeamDashboardTemplate() {
                     <div key={item.role} className="space-y-2">
                       <div className="flex items-center gap-2">
                         <RoleIcon className="h-4 w-4 text-primary" />
-                        <p className="font-bold capitalize">{item.role}</p>
+                        <p className="font-semibold capitalize">{item.role}</p>
                       </div>
                       <ul className="ml-6 space-y-1 text-sm text-muted-foreground">
                         {item.permissions.map((perm, idx) => (
-                          <li key={idx} className="font-bold">
+                          <li key={idx} className="font-semibold">
                             • {perm}
                           </li>
                         ))}
@@ -593,42 +593,42 @@ export default function TeamDashboardTemplate() {
         </div>
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">👥 Template Features</h4>
+            <h4 className="mb-2 font-semibold">👥 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ 4 stat cards (Organization, Team Size, Pending, Active)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Invite team member form with email and role selector
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Team members table with avatars, roles, last active
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Role badges with icons (Owner, Admin, Member, Guest)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Dropdown actions (change role, remove member)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Pending invitations list with revoke functionality
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Activity feed with recent team changes
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Role permissions reference card
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ RBAC system (Owner → Admin → Member → Guest)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Multi-tenancy organization structure
               </li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               Add API routes for team management in{" "}
               <code className="rounded bg-muted px-1 py-0.5">
                 src/app/api/teams/

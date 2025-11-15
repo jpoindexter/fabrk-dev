@@ -7,7 +7,6 @@
  */
 
 import { Stack } from "@/components/ui/stack";
-import { tokens } from "@/lib/design-system/tokens";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 const meta: Meta<typeof Stack> = {

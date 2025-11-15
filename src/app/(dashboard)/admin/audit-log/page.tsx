@@ -52,8 +52,8 @@ function getActionIcon(action: string) {
   return <Shield className="h-4 w-4" />;
 }
 
-function getActionBadgeVariant(action: string): 'default' | 'destructive' | 'secondary' {
-  if (action.includes('deleted') || action.includes('removed')) return 'destructive';
+function getActionBadgeVariant(action: string): 'default' | 'outline' | 'secondary' {
+  if (action.includes('deleted') || action.includes('removed')) return 'outline';
   if (action.includes('created') || action.includes('added')) return 'default';
   return 'secondary';
 }

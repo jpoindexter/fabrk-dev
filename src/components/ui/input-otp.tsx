@@ -9,7 +9,7 @@
 
 "use client";
 
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { Dot } from "lucide-react";
 import * as React from "react";

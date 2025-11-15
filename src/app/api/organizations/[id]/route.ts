@@ -70,7 +70,7 @@ export async function GET(
     // Get user's role in this organization
     const userOrgs = await getUserOrganizations(session.user.id);
     const userMembership = userOrgs.find(
-      (uo) => uo.organization.id === organization.id
+      (uo) => uo.id === organization.id
     );
 
     if (!userMembership) {

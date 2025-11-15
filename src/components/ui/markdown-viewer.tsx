@@ -13,7 +13,7 @@
 
 "use client";
 
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
 export interface MarkdownViewerProps {

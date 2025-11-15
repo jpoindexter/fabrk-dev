@@ -27,13 +27,13 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="bg-muted/30 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-black text-foreground">
+          <h2 className="mb-4 text-3xl font-semibold text-foreground">
             Trusted by Developers Worldwide
           </h2>
-          <p className="text-lg font-bold text-muted-foreground">
+          <p className="text-lg font-normal text-muted-foreground">
             Join hundreds of developers shipping production-ready SaaS apps
           </p>
         </div>
@@ -42,11 +42,11 @@ export function StatsSection() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`group rounded-brutal border-2 border-brutal ${stat.color} p-8 shadow-brutal transition-brutal hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg`}
+              className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
             >
-              <div className="mb-2 text-5xl font-black">{stat.value}</div>
-              <div className="mb-2 text-xl font-black">{stat.label}</div>
-              <div className="text-sm font-bold opacity-90">
+              <div className="mb-2 text-4xl font-semibold text-foreground">{stat.value}</div>
+              <div className="mb-2 text-base font-semibold text-foreground">{stat.label}</div>
+              <div className="text-sm font-normal text-muted-foreground">
                 {stat.description}
               </div>
             </div>

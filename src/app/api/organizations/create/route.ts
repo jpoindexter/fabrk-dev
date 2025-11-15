@@ -59,7 +59,6 @@ export async function POST(req: NextRequest) {
         id: organization.id,
         name: organization.name,
         slug: organization.slug,
-        description: organization.description,
       },
     });
   } catch (error: any) {

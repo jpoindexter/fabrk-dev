@@ -51,29 +51,27 @@ export function FeaturesSection() {
   return (
     <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-4 text-left text-4xl font-bold text-foreground">
+        <h2 className="mb-2 text-left text-3xl font-semibold text-foreground">
           Everything You Need, Nothing You Don't.
         </h2>
+        <p className="mb-16 text-left text-lg text-muted-foreground">
+          Production-ready features that save you weeks of development time.
+        </p>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
-            const colors = [
-              { bg: "bg-primary", text: "text-primary-foreground", icon: "text-primary-foreground" },
-              { bg: "bg-secondary", text: "text-secondary-foreground", icon: "text-secondary-foreground" },
-              { bg: "bg-accent", text: "text-accent-foreground", icon: "text-accent-foreground" },
-            ];
-            const color = colors[index % 3];
-
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => {
             return (
               <div
                 key={feature.title}
-                className={`group rounded-brutal border-2 border-black ${color.bg} p-8 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1`}
+                className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
               >
-                <SimpleIcon path={feature.icon} className={`mb-4 h-12 w-12 ${color.icon}`} />
-                <h3 className={`mb-3 text-xl font-bold ${color.text}`}>
+                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
+                  <SimpleIcon path={feature.icon} className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mb-3 text-lg font-semibold text-foreground">
                   {feature.title}
                 </h3>
-                <p className={`font-bold leading-relaxed ${color.text}`}>
+                <p className="font-normal leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>
@@ -82,10 +80,10 @@ export function FeaturesSection() {
         </div>
 
         {/* Bonus Features */}
-        <div className="mt-16 rounded-brutal border-2 border-black bg-muted p-8 shadow-brutal">
-          <p className="text-center text-lg">
-            <span className="font-bold text-foreground">Also Included: </span>
-            <span className="font-bold text-foreground">
+        <div className="mt-16 rounded-lg border border-border bg-muted/50 p-8">
+          <p className="text-center text-sm">
+            <span className="font-semibold text-foreground">Also Included: </span>
+            <span className="font-normal text-muted-foreground">
               User dashboard • Account settings • Rate limiting • Admin capabilities • TypeScript strict mode • Production-ready logging
             </span>
           </p>

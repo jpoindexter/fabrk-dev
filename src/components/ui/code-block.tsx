@@ -9,8 +9,7 @@
  * ```
  */
 
-import { RenderedToken, renderTokens, tokenize } from "@/lib/code-block-tokenizer";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Check, Copy, FileText } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
@@ -115,49 +114,23 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
             >
               <code className="block">
                 {showLineNumbers
-                  ? lines.map((line, index) => {
-                      const lineTokens = tokenize(line, language);
-                      const renderedTokens = renderTokens(lineTokens);
-                      return (
-                        <div key={index} className="code-line">
-                          <span className="line-number" aria-hidden="true">
-                            {index + 1}
-                          </span>
-                          <span className="line-content">
-                            {renderedTokens.map((token: RenderedToken) =>
-                              token.type === "text" ? (
-                                <span key={token.key}>{token.content}</span>
-                              ) : (
-                                <span key={token.key} className={token.className}>
-                                  {token.content}
-                                </span>
-                              )
-                            )}
-                            {line.length === 0 && "\n"}
-                          </span>
-                        </div>
-                      );
-                    })
-                  : lines.map((line, index) => {
-                      const lineTokens = tokenize(line, language);
-                      const renderedTokens = renderTokens(lineTokens);
-                      return (
-                        <div key={index} className="code-line">
-                          <span className="line-content">
-                            {renderedTokens.map((token: RenderedToken) =>
-                              token.type === "text" ? (
-                                <span key={token.key}>{token.content}</span>
-                              ) : (
-                                <span key={token.key} className={token.className}>
-                                  {token.content}
-                                </span>
-                              )
-                            )}
-                            {line.length === 0 && "\n"}
-                          </span>
-                        </div>
-                      );
-                    })}
+                  ? lines.map((line, index) => (
+                      <div key={index} className="code-line">
+                        <span className="line-number" aria-hidden="true">
+                          {index + 1}
+                        </span>
+                        <span className="line-content">
+                          {line || "\n"}
+                        </span>
+                      </div>
+                    ))
+                  : lines.map((line, index) => (
+                      <div key={index} className="code-line">
+                        <span className="line-content">
+                          {line || "\n"}
+                        </span>
+                      </div>
+                    ))}
               </code>
             </pre>
           </div>

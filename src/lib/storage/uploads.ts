@@ -25,13 +25,15 @@ let DeleteObjectCommand: any;
 let getSignedUrl: any;
 
 try {
-  const s3 = require("@aws-sdk/client-s3");
-  const presigner = require("@aws-sdk/s3-request-presigner");
-  S3Client = s3.S3Client;
-  PutObjectCommand = s3.PutObjectCommand;
-  GetObjectCommand = s3.GetObjectCommand;
-  DeleteObjectCommand = s3.DeleteObjectCommand;
-  getSignedUrl = presigner.getSignedUrl;
+  // S3 SDK is optional - uncomment and install packages if needed:
+  // npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
+  // const s3 = require("@aws-sdk/client-s3");
+  // const presigner = require("@aws-sdk/s3-request-presigner");
+  // S3Client = s3.S3Client;
+  // PutObjectCommand = s3.PutObjectCommand;
+  // GetObjectCommand = s3.GetObjectCommand;
+  // DeleteObjectCommand = s3.DeleteObjectCommand;
+  // getSignedUrl = presigner.getSignedUrl;
 } catch (e) {
   // AWS SDK not installed - uploads will throw helpful error
 }

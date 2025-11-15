@@ -41,7 +41,7 @@ export default function AnalyticsDashboardTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b-3 border-border bg-card sticky top-0 z-50">
+      <header className="border-b border-border bg-card sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto max-w-7xl px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -52,7 +52,7 @@ export default function AnalyticsDashboardTemplate() {
                 </Button>
               </Link>
               <div className="hidden md:block">
-                <h1 className="text-xl font-bold">Analytics Dashboard</h1>
+                <h1 className="text-xl font-semibold">Analytics Dashboard</h1>
                 <p className="text-sm text-muted-foreground">
                   Real-time metrics and insights
                 </p>
@@ -117,11 +117,11 @@ export default function AnalyticsDashboardTemplate() {
                 <metric.icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">{metric.value}</div>
+                <div className="text-3xl font-semibold">{metric.value}</div>
                 <div className="flex items-center gap-2 pt-1">
                   <Badge
                     variant={metric.trend === "up" ? "default" : "outline"}
-                    className="text-xs"
+                    className="text-xs font-medium"
                   >
                     {metric.trend === "up" ? (
                       <TrendingUp className="mr-1 h-3 w-3" />
@@ -154,7 +154,7 @@ export default function AnalyticsDashboardTemplate() {
                 {[65, 85, 75, 90, 95, 100].map((height, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-2">
                     <div
-                      className="w-full bg-primary rounded-t-lg transition-all hover:bg-primary/80"
+                      className="w-full bg-primary rounded-t-md transition-all hover:opacity-90"
                       style={{ height: `${height}%` }}
                     />
                     <span className="text-xs text-muted-foreground">
@@ -184,7 +184,7 @@ export default function AnalyticsDashboardTemplate() {
                   { user: "Charlie Davis", action: "Referred friend", time: "3h ago" },
                 ].map((activity, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-sm font-bold text-primary-foreground">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-sm font-semibold text-primary-foreground">
                       {activity.user.split(" ").map((n) => n[0]).join("")}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -323,7 +323,7 @@ export default function AnalyticsDashboardTemplate() {
                   ].map((report, i) => (
                     <div
                       key={i}
-                      className="p-4 border-2 border-border rounded-lg hover:border-primary transition-all cursor-pointer"
+                      className="p-4 border border-border rounded-md hover:shadow-md transition-all cursor-pointer"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <div>

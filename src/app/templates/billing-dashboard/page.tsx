@@ -207,39 +207,39 @@ export default function BillingDashboardTemplate() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight">
+            <h1 className="text-4xl font-semibold tracking-tight">
               Billing & Subscription
             </h1>
             <p className="mt-2 text-muted-foreground">
               Manage your subscription, payments, and billing information
             </p>
           </div>
-          <Button className="font-bold">
+          <Button className="font-semibold">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             Upgrade Plan
           </Button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-2 border-b-2 border-brutal pb-2">
+        <div className="flex gap-2 border-b-2 border-border pb-2">
           <Button
             variant={activeTab === "overview" ? "default" : "ghost"}
             onClick={() => setActiveTab("overview")}
-            className="font-bold"
+            className="font-semibold"
           >
             Overview
           </Button>
           <Button
             variant={activeTab === "plans" ? "default" : "ghost"}
             onClick={() => setActiveTab("plans")}
-            className="font-bold"
+            className="font-semibold"
           >
             Plans & Pricing
           </Button>
           <Button
             variant={activeTab === "history" ? "default" : "ghost"}
             onClick={() => setActiveTab("history")}
-            className="font-bold"
+            className="font-semibold"
           >
             Billing History
           </Button>
@@ -249,15 +249,15 @@ export default function BillingDashboardTemplate() {
         {activeTab === "overview" && (
           <div className="space-y-6">
             {/* Current Plan */}
-            <Card className="border-2 border-primary">
+            <Card className="border border-primary">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                    <div className="rounded-lg border border-border bg-primary/10 p-3">
                       <Star className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className="font-bold">
+                      <CardTitle className="font-semibold">
                         {subscription.plan} Plan
                       </CardTitle>
                       <CardDescription>
@@ -266,7 +266,7 @@ export default function BillingDashboardTemplate() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-3xl font-bold">
+                    <p className="text-3xl font-semibold">
                       ${subscription.price}
                       <span className="text-lg text-muted-foreground">
                         /month
@@ -283,16 +283,16 @@ export default function BillingDashboardTemplate() {
                   {subscription.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span className="font-bold">{feature}</span>
+                      <span className="font-semibold">{feature}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-6 flex gap-3">
-                  <Button variant="outline" className="flex-1 font-bold">
+                  <Button variant="outline" className="flex-1 font-semibold">
                     <Calendar className="mr-2 h-4 w-4" />
                     Manage Subscription
                   </Button>
-                  <Button variant="outline" className="flex-1 font-bold">
+                  <Button variant="outline" className="flex-1 font-semibold">
                     <ArrowUpRight className="mr-2 h-4 w-4" />
                     Upgrade to Enterprise
                   </Button>
@@ -305,13 +305,13 @@ export default function BillingDashboardTemplate() {
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="font-bold">Usage This Month</CardTitle>
+                    <CardTitle className="font-semibold">Usage This Month</CardTitle>
                     <Users className="h-5 w-5 text-muted-foreground" />
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm font-bold">
+                    <div className="flex justify-between text-sm font-semibold">
                       <span>Team Members</span>
                       <span>
                         {usage.users.current} / {usage.users.limit}
@@ -320,7 +320,7 @@ export default function BillingDashboardTemplate() {
                     <Progress value={usage.users.percentage} />
                   </div>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm font-bold">
+                    <div className="flex justify-between text-sm font-semibold">
                       <span>Storage</span>
                       <span>
                         {usage.storage.current}
@@ -331,7 +331,7 @@ export default function BillingDashboardTemplate() {
                     <Progress value={usage.storage.percentage} />
                   </div>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm font-bold">
+                    <div className="flex justify-between text-sm font-semibold">
                       <span>API Calls</span>
                       <span>
                         {usage.apiCalls.current.toLocaleString()} /{" "}
@@ -346,7 +346,7 @@ export default function BillingDashboardTemplate() {
               <Card>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="font-bold">Payment Methods</CardTitle>
+                    <CardTitle className="font-semibold">Payment Methods</CardTitle>
                     <CreditCard className="h-5 w-5 text-muted-foreground" />
                   </div>
                 </CardHeader>
@@ -354,14 +354,14 @@ export default function BillingDashboardTemplate() {
                   {paymentMethods.map((method) => (
                     <div
                       key={method.id}
-                      className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-3"
+                      className="flex items-center justify-between rounded-lg border border-border bg-muted p-3"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded border-2 border-brutal bg-background font-bold">
+                        <div className="flex h-10 w-10 items-center justify-center rounded border border-border bg-background font-semibold">
                           {method.brand === "visa" ? "💳" : "💵"}
                         </div>
                         <div>
-                          <p className="font-bold capitalize">
+                          <p className="font-semibold capitalize">
                             {method.brand} •••• {method.last4}
                           </p>
                           <p className="text-sm text-muted-foreground">
@@ -370,11 +370,11 @@ export default function BillingDashboardTemplate() {
                         </div>
                       </div>
                       {method.isDefault && (
-                        <Badge className="font-bold">Default</Badge>
+                        <Badge className="font-semibold">Default</Badge>
                       )}
                     </div>
                   ))}
-                  <Button variant="outline" className="w-full font-bold">
+                  <Button variant="outline" className="w-full font-semibold">
                     <Plus className="mr-2 h-4 w-4" />
                     Add Payment Method
                   </Button>
@@ -387,14 +387,14 @@ export default function BillingDashboardTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">Recent Invoices</CardTitle>
+                    <CardTitle className="font-semibold">Recent Invoices</CardTitle>
                     <CardDescription>Last 3 billing transactions</CardDescription>
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setActiveTab("history")}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     View All
                   </Button>
@@ -405,21 +405,21 @@ export default function BillingDashboardTemplate() {
                   {payments.slice(0, 3).map((payment) => (
                     <div
                       key={payment.id}
-                      className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4"
+                      className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
                     >
                       <div className="flex items-center gap-3">
                         {getStatusIcon(payment.status)}
                         <div>
-                          <p className="font-bold">{payment.description}</p>
+                          <p className="font-semibold">{payment.description}</p>
                           <p className="text-sm text-muted-foreground">
                             {formatDate(payment.date)}
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <p className="font-bold">{formatCurrency(payment.amount)}</p>
+                        <p className="font-semibold">{formatCurrency(payment.amount)}</p>
                         {getStatusBadge(payment.status)}
-                        <Button variant="ghost" size="sm" className="font-bold">
+                        <Button variant="ghost" size="sm" className="font-semibold">
                           <Download className="h-4 w-4" />
                         </Button>
                       </div>
@@ -436,7 +436,7 @@ export default function BillingDashboardTemplate() {
           <div className="space-y-6">
             <Alert>
               <AlertTriangle className="h-4 w-4" />
-              <AlertDescription className="font-bold">
+              <AlertDescription className="font-semibold">
                 Changing your plan will take effect at the next billing cycle
               </AlertDescription>
             </Alert>
@@ -447,19 +447,19 @@ export default function BillingDashboardTemplate() {
                   key={plan.name}
                   className={
                     plan.current
-                      ? "border-2 border-primary"
-                      : "border-2 border-brutal"
+                      ? "border border-primary"
+                      : "border border-border"
                   }
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="font-bold">{plan.name}</CardTitle>
+                      <CardTitle className="font-semibold">{plan.name}</CardTitle>
                       {plan.current && (
-                        <Badge className="font-bold">Current Plan</Badge>
+                        <Badge className="font-semibold">Current Plan</Badge>
                       )}
                     </div>
                     <div className="mt-4">
-                      <p className="text-4xl font-bold">
+                      <p className="text-4xl font-semibold">
                         ${plan.price}
                         <span className="text-lg text-muted-foreground">/mo</span>
                       </p>
@@ -471,12 +471,12 @@ export default function BillingDashboardTemplate() {
                       {plan.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-2">
                           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                          <span className="text-sm font-bold">{feature}</span>
+                          <span className="text-sm font-semibold">{feature}</span>
                         </div>
                       ))}
                     </div>
                     <Button
-                      className="w-full font-bold"
+                      className="w-full font-semibold"
                       variant={plan.current ? "secondary" : "default"}
                       disabled={plan.current}
                     >
@@ -487,15 +487,15 @@ export default function BillingDashboardTemplate() {
               ))}
             </div>
 
-            <Card className="border-2 border-primary/20 bg-primary/5">
+            <Card className="border border-primary/20 bg-primary/5">
               <CardHeader>
-                <CardTitle className="font-bold">Need a Custom Plan?</CardTitle>
+                <CardTitle className="font-semibold">Need a Custom Plan?</CardTitle>
                 <CardDescription>
                   Contact our sales team for custom pricing and features
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button variant="outline" className="font-bold">
+                <Button variant="outline" className="font-semibold">
                   Contact Sales
                 </Button>
               </CardContent>
@@ -510,42 +510,42 @@ export default function BillingDashboardTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">Billing History</CardTitle>
+                    <CardTitle className="font-semibold">Billing History</CardTitle>
                     <CardDescription>
                       Complete payment and invoice history
                     </CardDescription>
                   </div>
-                  <Button variant="outline" className="font-bold">
+                  <Button variant="outline" className="font-semibold">
                     <Download className="mr-2 h-4 w-4" />
                     Export All
                   </Button>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="rounded-md border-2 border-brutal">
+                <div className="rounded-md border border-border">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead className="font-bold">Date</TableHead>
-                        <TableHead className="font-bold">Description</TableHead>
-                        <TableHead className="font-bold">Amount</TableHead>
-                        <TableHead className="font-bold">Status</TableHead>
-                        <TableHead className="font-bold">Invoice</TableHead>
+                        <TableHead className="font-semibold">Date</TableHead>
+                        <TableHead className="font-semibold">Description</TableHead>
+                        <TableHead className="font-semibold">Amount</TableHead>
+                        <TableHead className="font-semibold">Status</TableHead>
+                        <TableHead className="font-semibold">Invoice</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {payments.map((payment) => (
                         <TableRow key={payment.id}>
-                          <TableCell className="font-bold">
+                          <TableCell className="font-semibold">
                             {formatDate(payment.date)}
                           </TableCell>
                           <TableCell>{payment.description}</TableCell>
-                          <TableCell className="font-bold">
+                          <TableCell className="font-semibold">
                             {formatCurrency(payment.amount)}
                           </TableCell>
                           <TableCell>{getStatusBadge(payment.status)}</TableCell>
                           <TableCell>
-                            <Button variant="ghost" size="sm" className="font-bold">
+                            <Button variant="ghost" size="sm" className="font-semibold">
                               <Download className="h-4 w-4" />
                             </Button>
                           </TableCell>
@@ -559,7 +559,7 @@ export default function BillingDashboardTemplate() {
 
             <Alert>
               <Shield className="h-4 w-4" />
-              <AlertDescription className="font-bold">
+              <AlertDescription className="font-semibold">
                 All invoices are automatically emailed to your registered email
                 address. Contact support if you need assistance.
               </AlertDescription>
@@ -568,42 +568,42 @@ export default function BillingDashboardTemplate() {
         )}
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">💳 Template Features</h4>
+            <h4 className="mb-2 font-semibold">💳 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ 3-tab navigation (Overview, Plans & Pricing, Billing History)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Current subscription card with plan details and features
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Usage metrics with progress bars (team, storage, API calls)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Payment methods management (add, remove, set default)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Recent invoices preview with download buttons
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Plan comparison cards (Free, Pro, Enterprise)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Complete billing history table with status badges
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Upgrade prompts and CTAs throughout
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Stripe integration ready (add Stripe Customer Portal)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Invoice PDF download functionality (placeholder)
               </li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               Connect to Stripe API for live data. See{" "}
               <code className="rounded bg-muted px-1 py-0.5">
                 src/app/(dashboard)/billing/

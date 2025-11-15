@@ -15,8 +15,7 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
@@ -37,9 +36,9 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const sizeClasses = {
-  sm: `${tokens.sizes.avatar.sm}`,
-  md: `${tokens.sizes.avatar.md}`,
-  lg: `${tokens.sizes.avatar.lg}`,
+  sm: "h-8 w-8",
+  md: "h-10 w-10",
+  lg: "h-12 w-12",
 };
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(

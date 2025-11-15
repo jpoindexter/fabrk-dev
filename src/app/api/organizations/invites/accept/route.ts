@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
       message: "Successfully joined organization",
       organization: invite.organization,
       membership: {
-        id: membership.id,
+        organizationId: membership.organizationId,
         role: membership.role,
       },
     });

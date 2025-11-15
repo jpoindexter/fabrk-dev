@@ -10,8 +10,7 @@
  * ```
  */
 
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button, ButtonProps } from "./button";
@@ -34,8 +33,8 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   ({ className, size = "md", ...props }, ref) => {
     const sizeClasses = {
       sm: `"h-4 w-4"`,
-      md: `${tokens.sizes.avatar.sm}`,
-      lg: `${tokens.sizes.avatar.lg}`,
+      md: `h-8 w-8`,
+      lg: `h-12 w-12`,
     };
 
     return (
@@ -118,7 +117,7 @@ export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContaine
       <div data-slot="loading-container"
         ref={ref}
         className={cn(
-          `flex min-h-96 flex-col items-center justify-center ${tokens.spacing.gap[6]}`,
+          `flex min-h-96 flex-col items-center justify-center gap-6`,
           className,
           ""
         )}
@@ -126,7 +125,7 @@ export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContaine
       >
         <Spinner size="lg" />
         {children && (
-          <p className={`${tokens.text.size.base} dark:text-muted-foreground`}>{children}</p>
+          <p className={`text-base dark:text-muted-foreground`}>{children}</p>
         )}
       </div>
     );

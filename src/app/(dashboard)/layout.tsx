@@ -6,6 +6,9 @@
 
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 
+// Force dynamic rendering for auth-protected pages
+export const dynamic = "force-dynamic";
+
 export default function DashboardLayout({
   children,
 }: {

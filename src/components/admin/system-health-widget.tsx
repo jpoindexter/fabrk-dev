@@ -84,7 +84,7 @@ export function SystemHealthWidget({
             System Health
           </CardTitle>
           <Badge
-            variant={overallStatus === "healthy" ? "default" : "destructive"}
+            variant={overallStatus === "healthy" ? "default" : "accent"}
             className="font-medium"
           >
             <StatusIcon className="mr-1 h-3 w-3" />

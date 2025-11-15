@@ -104,11 +104,11 @@ export default function SettingsPageTemplate() {
       return (
         <div key={section.id}>
           {index > 0 && <Separator className="mb-8" />}
-          <Card className={section.isDanger ? "border-2 border-destructive" : ""}>
+          <Card className={section.isDanger ? "border border-destructive" : ""}>
             <CardHeader>
               <div className="flex items-center gap-4">
                 <div
-                  className={`rounded-lg border-2 border-brutal p-3 ${
+                  className={`rounded-lg border border-border p-3 ${
                     section.isDanger ? "bg-destructive/10" : "bg-primary/10"
                   }`}
                 >
@@ -119,7 +119,7 @@ export default function SettingsPageTemplate() {
                   />
                 </div>
                 <div>
-                  <CardTitle className="font-bold">{section.title}</CardTitle>
+                  <CardTitle className="font-semibold">{section.title}</CardTitle>
                   <CardDescription>{section.description}</CardDescription>
                 </div>
               </div>
@@ -136,9 +136,9 @@ export default function SettingsPageTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b-2 border-brutal bg-card">
+      <div className="border-b-2 border-border bg-card">
         <div className="container mx-auto max-w-7xl px-6 py-8">
-          <h1 className="text-4xl font-bold mb-2">Settings</h1>
+          <h1 className="text-4xl font-semibold mb-2">Settings</h1>
           <p className="text-muted-foreground text-lg">
             Manage your application preferences and account settings
           </p>
@@ -150,19 +150,19 @@ export default function SettingsPageTemplate() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           {/* Tab Navigation */}
           <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
-            <TabsTrigger value="general" className="font-bold">
+            <TabsTrigger value="general" className="font-semibold">
               <Settings className="mr-2 h-4 w-4" />
               General
             </TabsTrigger>
-            <TabsTrigger value="account" className="font-bold">
+            <TabsTrigger value="account" className="font-semibold">
               <User className="mr-2 h-4 w-4" />
               Account
             </TabsTrigger>
-            <TabsTrigger value="privacy" className="font-bold">
+            <TabsTrigger value="privacy" className="font-semibold">
               <Lock className="mr-2 h-4 w-4" />
               Privacy
             </TabsTrigger>
-            <TabsTrigger value="billing" className="font-bold">
+            <TabsTrigger value="billing" className="font-semibold">
               <CreditCard className="mr-2 h-4 w-4" />
               Billing
             </TabsTrigger>
@@ -176,11 +176,11 @@ export default function SettingsPageTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Settings className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Quick Actions</CardTitle>
+                    <CardTitle className="font-semibold">Quick Actions</CardTitle>
                     <CardDescription>
                       Frequently used settings and shortcuts
                     </CardDescription>
@@ -189,19 +189,19 @@ export default function SettingsPageTemplate() {
               </CardHeader>
               <CardContent>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <Button variant="outline" className="justify-start font-bold">
+                  <Button variant="outline" className="justify-start font-semibold">
                     <Shield className="mr-2 h-4 w-4" />
                     Security Settings
                   </Button>
-                  <Button variant="outline" className="justify-start font-bold">
+                  <Button variant="outline" className="justify-start font-semibold">
                     <CreditCard className="mr-2 h-4 w-4" />
                     Billing Settings
                   </Button>
-                  <Button variant="outline" className="justify-start font-bold">
+                  <Button variant="outline" className="justify-start font-semibold">
                     <Bell className="mr-2 h-4 w-4" />
                     Notification Preferences
                   </Button>
-                  <Button variant="outline" className="justify-start font-bold">
+                  <Button variant="outline" className="justify-start font-semibold">
                     <Download className="mr-2 h-4 w-4" />
                     Export My Data
                   </Button>
@@ -215,11 +215,11 @@ export default function SettingsPageTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <User className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Profile Information</CardTitle>
+                    <CardTitle className="font-semibold">Profile Information</CardTitle>
                     <CardDescription>
                       Update your personal details and profile settings
                     </CardDescription>
@@ -229,59 +229,59 @@ export default function SettingsPageTemplate() {
               <CardContent className="space-y-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-foreground">
+                    <label className="text-sm font-semibold text-foreground">
                       Full Name
                     </label>
                     <input
                       type="text"
                       placeholder="John Doe"
-                      className="w-full rounded-md border-2 border-brutal bg-background px-4 py-2 font-bold shadow-brutal focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-foreground">
+                    <label className="text-sm font-semibold text-foreground">
                       Email Address
                     </label>
                     <input
                       type="email"
                       placeholder="john@example.com"
-                      className="w-full rounded-md border-2 border-brutal bg-background px-4 py-2 font-bold shadow-brutal focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-foreground">
+                    <label className="text-sm font-semibold text-foreground">
                       Company
                     </label>
                     <input
                       type="text"
                       placeholder="Acme Inc."
-                      className="w-full rounded-md border-2 border-brutal bg-background px-4 py-2 font-bold shadow-brutal focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-foreground">
+                    <label className="text-sm font-semibold text-foreground">
                       Job Title
                     </label>
                     <input
                       type="text"
                       placeholder="Software Engineer"
-                      className="w-full rounded-md border-2 border-brutal bg-background px-4 py-2 font-bold shadow-brutal focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-foreground">Bio</label>
+                  <label className="text-sm font-semibold text-foreground">Bio</label>
                   <textarea
                     placeholder="Tell us about yourself..."
                     rows={4}
-                    className="w-full rounded-md border-2 border-brutal bg-background px-4 py-2 font-bold shadow-brutal focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div className="flex justify-end gap-3">
-                  <Button variant="outline" className="font-bold">
+                  <Button variant="outline" className="font-semibold">
                     Cancel
                   </Button>
-                  <Button className="font-bold">Save Changes</Button>
+                  <Button className="font-semibold">Save Changes</Button>
                 </div>
               </CardContent>
             </Card>
@@ -289,11 +289,11 @@ export default function SettingsPageTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">Account Security</CardTitle>
+                    <CardTitle className="font-semibold">Account Security</CardTitle>
                     <CardDescription>
                       Manage password and authentication methods
                     </CardDescription>
@@ -301,36 +301,36 @@ export default function SettingsPageTemplate() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4">
+                <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
                   <div>
-                    <p className="font-bold">Password</p>
+                    <p className="font-semibold">Password</p>
                     <p className="text-sm text-muted-foreground">
                       Last changed 3 months ago
                     </p>
                   </div>
-                  <Button variant="outline" className="font-bold">
+                  <Button variant="outline" className="font-semibold">
                     Change Password
                   </Button>
                 </div>
-                <div className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4">
+                <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
                   <div>
-                    <p className="font-bold">Two-Factor Authentication</p>
+                    <p className="font-semibold">Two-Factor Authentication</p>
                     <p className="text-sm text-muted-foreground">
                       Add an extra layer of security
                     </p>
                   </div>
-                  <Button variant="outline" className="font-bold">
+                  <Button variant="outline" className="font-semibold">
                     Enable 2FA
                   </Button>
                 </div>
-                <div className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4">
+                <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
                   <div>
-                    <p className="font-bold">Active Sessions</p>
+                    <p className="font-semibold">Active Sessions</p>
                     <p className="text-sm text-muted-foreground">
                       Manage devices and sessions
                     </p>
                   </div>
-                  <Button variant="outline" className="font-bold">
+                  <Button variant="outline" className="font-semibold">
                     View Sessions
                   </Button>
                 </div>
@@ -348,11 +348,11 @@ export default function SettingsPageTemplate() {
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-4">
-                  <div className="rounded-lg border-2 border-brutal bg-primary/10 p-3">
+                  <div className="rounded-lg border border-border bg-primary/10 p-3">
                     <CreditCard className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-bold">
+                    <CardTitle className="font-semibold">
                       Subscription & Billing
                     </CardTitle>
                     <CardDescription>
@@ -362,26 +362,26 @@ export default function SettingsPageTemplate() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="rounded-lg border-2 border-brutal bg-primary/5 p-6">
+                <div className="rounded-lg border border-border bg-primary/5 p-6">
                   <div className="mb-4 flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-bold text-muted-foreground">
+                      <p className="text-sm font-semibold text-muted-foreground">
                         Current Plan
                       </p>
-                      <p className="text-3xl font-bold">Pro</p>
+                      <p className="text-3xl font-semibold">Pro</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-bold text-muted-foreground">
+                      <p className="text-sm font-semibold text-muted-foreground">
                         Billing Cycle
                       </p>
-                      <p className="text-xl font-bold">$29/month</p>
+                      <p className="text-xl font-semibold">$29/month</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <Button variant="outline" className="flex-1 font-bold">
+                    <Button variant="outline" className="flex-1 font-semibold">
                       Change Plan
                     </Button>
-                    <Button variant="outline" className="flex-1 font-bold">
+                    <Button variant="outline" className="flex-1 font-semibold">
                       View Invoices
                     </Button>
                   </div>
@@ -390,34 +390,34 @@ export default function SettingsPageTemplate() {
                 <Separator />
 
                 <div>
-                  <h3 className="mb-4 text-lg font-bold">Payment Methods</h3>
+                  <h3 className="mb-4 text-lg font-semibold">Payment Methods</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between rounded-lg border-2 border-brutal bg-muted p-4">
+                    <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded border-2 border-brutal bg-background font-bold">
+                        <div className="flex h-10 w-10 items-center justify-center rounded border border-border bg-background font-semibold">
                           💳
                         </div>
                         <div>
-                          <p className="font-bold">Visa ending in 4242</p>
+                          <p className="font-semibold">Visa ending in 4242</p>
                           <p className="text-sm text-muted-foreground">
                             Expires 12/2025
                           </p>
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="font-bold">
+                        <Button variant="outline" size="sm" className="font-semibold">
                           Edit
                         </Button>
                         <Button
                           variant="outline"
                           size="sm"
-                          className="font-bold text-destructive"
+                          className="font-semibold text-destructive"
                         >
                           Remove
                         </Button>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full font-bold">
+                    <Button variant="outline" className="w-full font-semibold">
                       Add Payment Method
                     </Button>
                   </div>
@@ -430,24 +430,24 @@ export default function SettingsPageTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card className="mt-8 border-2 border-primary/20 bg-primary/5">
+        <Card className="mt-8 border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">⚙️ Template Features</h4>
+            <h4 className="mb-2 font-semibold">⚙️ Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">✓ 4-tab navigation (General, Account, Privacy, Billing)</li>
-              <li className="font-bold">✓ Appearance settings (theme, font size, layout)</li>
-              <li className="font-bold">✓ Notification preferences (email, push, in-app)</li>
-              <li className="font-bold">✓ Privacy controls (data sharing, cookies, analytics)</li>
-              <li className="font-bold">✓ Language & region settings</li>
-              <li className="font-bold">✓ Data export functionality</li>
-              <li className="font-bold">✓ Account profile form (name, email, company, bio)</li>
-              <li className="font-bold">✓ Security settings (password, 2FA, sessions)</li>
-              <li className="font-bold">✓ Subscription management (plan, billing cycle)</li>
-              <li className="font-bold">✓ Payment methods management</li>
-              <li className="font-bold">✓ Danger zone (account deletion)</li>
-              <li className="font-bold">✓ Quick actions shortcuts</li>
+              <li className="font-semibold">✓ 4-tab navigation (General, Account, Privacy, Billing)</li>
+              <li className="font-semibold">✓ Appearance settings (theme, font size, layout)</li>
+              <li className="font-semibold">✓ Notification preferences (email, push, in-app)</li>
+              <li className="font-semibold">✓ Privacy controls (data sharing, cookies, analytics)</li>
+              <li className="font-semibold">✓ Language & region settings</li>
+              <li className="font-semibold">✓ Data export functionality</li>
+              <li className="font-semibold">✓ Account profile form (name, email, company, bio)</li>
+              <li className="font-semibold">✓ Security settings (password, 2FA, sessions)</li>
+              <li className="font-semibold">✓ Subscription management (plan, billing cycle)</li>
+              <li className="font-semibold">✓ Payment methods management</li>
+              <li className="font-semibold">✓ Danger zone (account deletion)</li>
+              <li className="font-semibold">✓ Quick actions shortcuts</li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               All form components are located in{" "}
               <code className="rounded bg-muted px-1 py-0.5">
                 src/components/settings/

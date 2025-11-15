@@ -14,8 +14,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { tokens } from "@/lib/design-system/tokens";
-import { cn } from "@/lib/design-system/utils";
+import { cn } from "@/lib/utils";
 import { AlertCircle, Bell, Check, X } from "lucide-react";
 import * as React from "react";
 
@@ -55,13 +54,13 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
         <div
           data-slot="notification-list"
           ref={ref}
-          className={cn(`${tokens.spacing.space.y[2]}`, className, "")}
+          className={cn(`space-y-2`, className, "")}
         >
           {[...Array(3)].map((_, i) => (
-            <div key={i} className={`animate-pulse ${tokens.components.card.content} `}>
-              <div className={`flex ${tokens.spacing.gap[6]} `}>
+            <div key={i} className={`animate-pulse  `}>
+              <div className={`flex gap-6 `}>
                 <div className={`"h-8 w-8" rounded-full border border-border bg-card`} />
-                <div className={`flex-1 ${tokens.spacing.space.y[2]} `}>
+                <div className={`flex-1 space-y-2 `}>
                   <div className="h-4 w-3/4 rounded border border-border bg-card" />
                   <div className="h-3 w-1/2 rounded border border-border bg-card" />
                 </div>
@@ -124,7 +123,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                 }}
                 aria-label={`Notification: ${notification.title}${!notification.read ? " (unread)" : ""}`}
               >
-                <div className={`flex ${tokens.spacing.gap[6]} `}>
+                <div className={`flex gap-6 `}>
                   <div
                     className={`"h-8 w-8" flex items-center justify-center rounded-full border border-border bg-card transition-transform hover:scale-110`}
                   >

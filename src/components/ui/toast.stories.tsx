@@ -58,7 +58,7 @@ export const Destructive: Story = {
         <Button variant="destructive" onClick={() => setOpen(true)}>
           Show Error Toast
         </Button>
-        <Toast variant="accent" open={open} onOpenChange={setOpen}>
+        <Toast variant="destructive" open={open} onOpenChange={setOpen}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <ToastTitle>Error</ToastTitle>
             <ToastDescription>Something went wrong. Please try again.</ToastDescription>

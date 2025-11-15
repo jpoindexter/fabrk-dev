@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
         inviterName: session.user.name || session.user.email || "A team member",
         role: inviteRole,
         token: invite.token,
-        expiresAt: invite.expiresAt,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
       });
     } catch (emailError) {
       console.error("Failed to send invitation email:", emailError);
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
           name: session.user.name,
         },
         inviteId: invite.id,
-        expiresAt: invite.expiresAt,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
       });
     } catch (webhookError) {
       console.error("Failed to trigger webhook:", webhookError);
@@ -111,9 +111,9 @@ export async function POST(req: NextRequest) {
       success: true,
       invite: {
         id: invite.id,
-        email: invite.email,
-        role: invite.role,
-        expiresAt: invite.expiresAt,
+        email,
+        role: inviteRole,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
       },
     });
   } catch (error: any) {

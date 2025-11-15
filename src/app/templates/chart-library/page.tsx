@@ -89,11 +89,11 @@ const conversionFunnelData = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="rounded-lg border-2 border-brutal bg-card p-3 shadow-brutal">
-        <p className="mb-1 font-bold">{label}</p>
+      <div className="rounded-lg border border-border bg-card p-3 shadow-sm">
+        <p className="mb-1 font-semibold">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} className="text-sm" style={{ color: entry.color }}>
-            <span className="font-bold">{entry.name}:</span> ${entry.value.toLocaleString()}
+            <span className="font-semibold">{entry.name}:</span> ${entry.value.toLocaleString()}
           </p>
         ))}
       </div>
@@ -110,7 +110,7 @@ export default function ChartLibraryTemplate() {
       <div className="mx-auto max-w-7xl space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-semibold tracking-tight">
             Chart Library
           </h1>
           <p className="mt-2 text-muted-foreground">
@@ -122,11 +122,11 @@ export default function ChartLibraryTemplate() {
         <div className="grid gap-6 md:grid-cols-4">
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Total Revenue</CardDescription>
-              <CardTitle className="text-3xl font-bold">$91.9K</CardTitle>
+              <CardDescription className="font-semibold">Total Revenue</CardDescription>
+              <CardTitle className="text-3xl font-semibold">$91.9K</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-bold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <TrendingUp className="h-4 w-4" />
                 <span>+23.5%</span>
               </div>
@@ -134,11 +134,11 @@ export default function ChartLibraryTemplate() {
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Active Users</CardDescription>
-              <CardTitle className="text-3xl font-bold">12.5K</CardTitle>
+              <CardDescription className="font-semibold">Active Users</CardDescription>
+              <CardTitle className="text-3xl font-semibold">12.5K</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-bold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <TrendingUp className="h-4 w-4" />
                 <span>+941%</span>
               </div>
@@ -146,11 +146,11 @@ export default function ChartLibraryTemplate() {
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Conversion Rate</CardDescription>
-              <CardTitle className="text-3xl font-bold">4.5%</CardTitle>
+              <CardDescription className="font-semibold">Conversion Rate</CardDescription>
+              <CardTitle className="text-3xl font-semibold">4.5%</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-bold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <TrendingUp className="h-4 w-4" />
                 <span>+0.8%</span>
               </div>
@@ -158,11 +158,11 @@ export default function ChartLibraryTemplate() {
           </Card>
           <Card>
             <CardHeader className="pb-3">
-              <CardDescription className="font-bold">Avg. Order Value</CardDescription>
-              <CardTitle className="text-3xl font-bold">$89</CardTitle>
+              <CardDescription className="font-semibold">Avg. Order Value</CardDescription>
+              <CardTitle className="text-3xl font-semibold">$89</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-bold text-red-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-red-600">
                 <TrendingUp className="h-4 w-4 rotate-180" />
                 <span>-2.3%</span>
               </div>
@@ -173,16 +173,16 @@ export default function ChartLibraryTemplate() {
         {/* Chart Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="line" className="font-bold">
+            <TabsTrigger value="line" className="font-semibold">
               Line Chart
             </TabsTrigger>
-            <TabsTrigger value="area" className="font-bold">
+            <TabsTrigger value="area" className="font-semibold">
               Area Chart
             </TabsTrigger>
-            <TabsTrigger value="bar" className="font-bold">
+            <TabsTrigger value="bar" className="font-semibold">
               Bar Chart
             </TabsTrigger>
-            <TabsTrigger value="pie" className="font-bold">
+            <TabsTrigger value="pie" className="font-semibold">
               Pie Chart
             </TabsTrigger>
           </TabsList>
@@ -193,14 +193,14 @@ export default function ChartLibraryTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">
+                    <CardTitle className="font-semibold">
                       Revenue Overview
                     </CardTitle>
                     <CardDescription>
                       Monthly revenue, expenses, and profit (2024)
                     </CardDescription>
                   </div>
-                  <Badge className="font-bold">Multi-Line</Badge>
+                  <Badge className="font-semibold">Multi-Line</Badge>
                 </div>
               </CardHeader>
               <CardContent>
@@ -255,14 +255,14 @@ export default function ChartLibraryTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">
+                    <CardTitle className="font-semibold">
                       User Growth
                     </CardTitle>
                     <CardDescription>
                       Total active users over time
                     </CardDescription>
                   </div>
-                  <Badge className="font-bold">Gradient Fill</Badge>
+                  <Badge className="font-semibold">Gradient Fill</Badge>
                 </div>
               </CardHeader>
               <CardContent>
@@ -321,14 +321,14 @@ export default function ChartLibraryTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">
+                    <CardTitle className="font-semibold">
                       Conversion Funnel
                     </CardTitle>
                     <CardDescription>
                       User journey from visitor to retained customer
                     </CardDescription>
                   </div>
-                  <Badge className="font-bold">Horizontal Bars</Badge>
+                  <Badge className="font-semibold">Horizontal Bars</Badge>
                 </div>
               </CardHeader>
               <CardContent>
@@ -372,14 +372,14 @@ export default function ChartLibraryTemplate() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="font-bold">
+                    <CardTitle className="font-semibold">
                       Traffic Sources
                     </CardTitle>
                     <CardDescription>
                       Distribution of website visitors by source
                     </CardDescription>
                   </div>
-                  <Badge className="font-bold">Donut Chart</Badge>
+                  <Badge className="font-semibold">Donut Chart</Badge>
                 </div>
               </CardHeader>
               <CardContent>
@@ -415,13 +415,13 @@ export default function ChartLibraryTemplate() {
                       <div key={idx} className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div
-                            className="h-4 w-4 rounded border-2 border-brutal"
+                            className="h-4 w-4 rounded border border-border"
                             style={{ backgroundColor: source.color }}
                           />
-                          <span className="font-bold">{source.name}</span>
+                          <span className="font-semibold">{source.name}</span>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold">{source.value.toLocaleString()}</p>
+                          <p className="font-semibold">{source.value.toLocaleString()}</p>
                           <p className="text-sm text-muted-foreground">
                             {(
                               (source.value /
@@ -441,43 +441,43 @@ export default function ChartLibraryTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card className="border-2 border-primary/20 bg-primary/5">
+        <Card className="border border-primary/20 bg-primary/5">
           <CardContent className="pt-6">
-            <h4 className="mb-2 font-bold">📊 Template Features</h4>
+            <h4 className="mb-2 font-semibold">📊 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ 4 chart types (Line, Area, Bar, Pie/Donut)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Recharts library ({" "}
                 <code className="rounded bg-muted px-1 py-0.5">npm install recharts</code>)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Custom tooltips with neo-brutalism styling
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Gradient fills for area charts
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Responsive containers (adapts to screen size)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Custom color schemes matching design system
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Formatted axes (K notation for large numbers)
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Legend components with bold styling
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Tab navigation between chart types
               </li>
-              <li className="font-bold">
+              <li className="font-semibold">
                 ✓ Stat cards with trend indicators
               </li>
             </ul>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">
+            <p className="mt-4 text-sm font-semibold text-muted-foreground">
               Replace mock data with your API. Recharts supports many more chart types:
               Scatter, Radar, Composed, Treemap, and more.
             </p>

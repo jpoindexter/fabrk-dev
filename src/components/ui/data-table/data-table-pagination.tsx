@@ -25,7 +25,7 @@
 
 "use client";
 
-import { tokens } from "@/lib/design-system/tokens";
+import { Table } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import * as React from "react";
@@ -38,7 +38,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DataTablePaginationProps } from "./data-table-types";
+
+interface DataTablePaginationProps<TData> extends React.HTMLAttributes<HTMLElement> {
+  table: Table<TData>;
+  pageSizeOptions?: number[];
+}
 
 export type { DataTablePaginationProps };
 
@@ -53,7 +57,7 @@ function DataTablePaginationInner<TData>(
     <nav
       data-slot="data-table-pagination"
       ref={ref}
-      className={cn(`flex items-center justify-between ${tokens.spacing.px[2]}`, className)}
+      className={cn("flex items-center justify-between px-2", className)}
       aria-label="Table pagination"
     >
       <div className={`flex items-center space-x-2`}>
