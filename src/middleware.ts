@@ -19,7 +19,8 @@ export default auth((req) => {
     pathname.startsWith('/demo') ||
     pathname.startsWith('/components') ||
     pathname.startsWith('/whats-included') ||
-    pathname.startsWith('/variations');
+    pathname.startsWith('/variations') ||
+    pathname.startsWith('/templates');
 
   if (isShowcasePage) {
     return NextResponse.next();
