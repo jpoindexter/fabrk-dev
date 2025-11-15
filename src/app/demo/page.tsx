@@ -167,25 +167,6 @@ export default function DemoPage() {
           </Card>
         </div>
 
-        {/* Video Section Placeholder */}
-        {/*
-        <div className="mt-12">
-          <Card className="p-6">
-            <h3 className="mb-4 text-center text-2xl font-bold">Video Walkthrough</h3>
-            <div className="aspect-video w-full bg-muted flex items-center justify-center rounded-lg">
-              <p className="text-muted-foreground">Video walkthrough coming soon</p>
-              {/* Replace with:
-              <iframe
-                src="https://www.loom.com/embed/YOUR_VIDEO_ID"
-                className="w-full h-full rounded-lg"
-                allowFullScreen
-              />
-              */}
-            </div>
-          </Card>
-        </div>
-        */}
-
         {/* CTA Section */}
         <div className="mt-12 text-center">
           <h3 className="text-2xl font-bold">Explore More</h3>
