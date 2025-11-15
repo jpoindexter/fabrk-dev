@@ -12,9 +12,21 @@ const intlMiddleware = createMiddleware({
 });
 
 export default auth((req) => {
+  const pathname = req.nextUrl.pathname;
+
+  // Skip i18n for showcase pages (they exist outside [locale] structure)
+  const isShowcasePage =
+    pathname.startsWith('/demo') ||
+    pathname.startsWith('/components') ||
+    pathname.startsWith('/whats-included') ||
+    pathname.startsWith('/variations');
+
+  if (isShowcasePage) {
+    return NextResponse.next();
+  }
+
   // Check authentication for protected routes
   const isLoggedIn = !!req.auth;
-  const pathname = req.nextUrl.pathname;
 
   // Remove locale prefix for route checking
   const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, '');

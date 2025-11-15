@@ -96,11 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>
-          <div className="relative flex min-h-screen flex-col bg-background">
-            <main id="main-content" className="flex-1 bg-background">
-              {children}
-            </main>
-          </div>
+          {children}
         </Providers>
       </body>
     </html>
