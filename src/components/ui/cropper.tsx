@@ -259,7 +259,7 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
       <div
         data-slot="cropper"
         ref={ref}
-        className={cn(`${tokens.spacing.space.y[6]}`, className)}
+        className={cn("space-y-6", className)}
         {...props}
       >
         <div

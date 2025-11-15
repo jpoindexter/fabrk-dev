@@ -83,8 +83,8 @@ export const NoTeamMembers: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={Users}
-        title: "No team members yet",
-        description="Invite team members to collaborate on your projects.",
+        title="No team members yet"
+        description="Invite team members to collaborate on your projects."
         action={{
           label: "Invite Members",
           onClick: () => alert("Invite clicked"),

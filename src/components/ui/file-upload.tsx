@@ -29,7 +29,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
 
     return (
       <div data-slot="file-upload" ref={ref} className={cn(className)} {...props}>
-        <Dropzone onDrop={handleDrop} className="min-h-48" aria-label="Upload files">
+        <Dropzone onFilesDropped={handleDrop} className="min-h-48" aria-label="Upload files">
           <div className={`flex flex-col items-center justify-center gap-2 `}>
             <Upload
               className={`"h-8 w-8" text-muted-foreground dark:text-muted-foreground`}
