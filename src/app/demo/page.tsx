@@ -92,63 +92,65 @@ export default function DemoPage() {
 
       {/* Tabbed Playground */}
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          {/* Tab Navigation */}
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
+        <div suppressHydrationWarning>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            {/* Tab Navigation */}
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
+              {demos.map((demo) => (
+                <TabsTrigger key={demo.id} value={demo.id}>
+                  {demo.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Tab Content */}
             {demos.map((demo) => (
-              <TabsTrigger key={demo.id} value={demo.id}>
-                {demo.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Tab Content */}
-          {demos.map((demo) => (
-            <TabsContent key={demo.id} value={demo.id} className="mt-6">
-              <Card className="overflow-hidden">
-                {/* Demo Info Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b bg-muted/50 p-4">
-                  <div className="flex-1">
-                    <h3 className="font-semibold">{demo.label}</h3>
-                    <p className="text-sm text-muted-foreground">{demo.description}</p>
+              <TabsContent key={demo.id} value={demo.id} className="mt-6">
+                <Card className="overflow-hidden">
+                  {/* Demo Info Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-b bg-muted/50 p-4">
+                    <div className="flex-1">
+                      <h3 className="font-semibold">{demo.label}</h3>
+                      <p className="text-sm text-muted-foreground">{demo.description}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                      >
+                        <a href={demo.url} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Open Full Page
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                      >
+                        <a href={demo.sourceUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="mr-2 h-4 w-4" />
+                          View Source
+                        </a>
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      asChild
-                    >
-                      <a href={demo.url} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open Full Page
-                      </a>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                    >
-                      <a href={demo.sourceUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        View Source
-                      </a>
-                    </Button>
-                  </div>
-                </div>
 
-                {/* Iframe Preview */}
-                <div className="relative aspect-[16/10] w-full bg-muted">
-                  <iframe
-                    src={demo.url}
-                    className="absolute inset-0 h-full w-full border-0"
-                    title={`${demo.label} Preview`}
-                    loading="lazy"
-                  />
-                </div>
-              </Card>
+                  {/* Iframe Preview */}
+                  <div className="relative aspect-[16/10] w-full bg-muted">
+                    <iframe
+                      src={demo.url}
+                      className="absolute inset-0 h-full w-full border-0"
+                      title={`${demo.label} Preview`}
+                      loading="lazy"
+                    />
+                  </div>
+                </Card>
             </TabsContent>
           ))}
-        </Tabs>
+          </Tabs>
+        </div>
 
         {/* Additional Info */}
         <div className="mt-12 grid gap-6 md:grid-cols-2">
