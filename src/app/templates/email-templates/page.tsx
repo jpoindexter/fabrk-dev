@@ -454,6 +454,7 @@ export default function EmailTemplatesShowcase() {
                   </div>
                 </TabsContent>
               </Tabs>
+              </div>
 
               {/* Template Details */}
               <div className="mt-6 space-y-4">
@@ -478,8 +479,6 @@ export default function EmailTemplatesShowcase() {
                     ))}
                   </div>
                 </div>
-              </div>
-              </Tabs>
               </div>
             </CardContent>
           </Card>
