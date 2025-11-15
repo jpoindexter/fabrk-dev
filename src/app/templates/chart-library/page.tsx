@@ -171,8 +171,7 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Chart Tabs */}
-        <div suppressHydrationWarning>
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <Tabs value={activeTab} onValueChange={setActiveTab} suppressHydrationWarning>
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="line" className="font-semibold">
               Line Chart
@@ -440,7 +439,6 @@ export default function ChartLibraryTemplate() {
             </Card>
           </TabsContent>
         </Tabs>
-        </div>
 
         {/* Implementation Note */}
         <Card className="border border-primary/20 bg-primary/5">
