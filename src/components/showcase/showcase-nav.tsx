@@ -18,10 +18,18 @@ import {
   BarChart3,
   Home,
   ChevronRight,
+  MonitorPlay,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const showcasePages = [
+  {
+    title: "Demo Playground",
+    href: "/demo",
+    icon: MonitorPlay,
+    description: "Interactive preview",
+    badge: "Live Demo",
+  },
   {
     title: "What's Included",
     href: "/whats-included",
@@ -75,7 +83,7 @@ export function ShowcaseNav() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
           {showcasePages.map((page) => {
             const Icon = page.icon;
             const isActive = pathname === page.href;

@@ -34,7 +34,7 @@ export function Navigation() {
             FAQ
           </Link>
           <Link
-            href="/templates"
+            href="/demo"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Demo
