@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Users, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
 import { AdminMetricsCard } from "./admin-metrics-card";
 

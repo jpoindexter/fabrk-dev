@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
 import {
   Card,
   CardContent,
@@ -73,20 +73,22 @@ export default function AdminSecurityPage() {
   const [summary, setSummary] = useState<ReturnType<typeof getSecuritySummary>>();
 
   useEffect(() => {
-    // Load logs
-    const filters: any = {};
-    if (severityFilter) {
-      filters.severity = severityFilter;
-    }
-    filters.limit = 50;
+    // Load logs - use startTransition for non-urgent updates
+    startTransition(() => {
+      const filters: any = {};
+      if (severityFilter) {
+        filters.severity = severityFilter;
+      }
+      filters.limit = 50;
 
-    const auditLogs = queryAuditLogs(filters);
-    setLogs(auditLogs);
+      const auditLogs = queryAuditLogs(filters);
+      setLogs(auditLogs);
 
-    // Load summary (last 7 days)
-    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    const summaryData = getSecuritySummary(since);
-    setSummary(summaryData);
+      // Load summary (last 7 days)
+      const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+      const summaryData = getSecuritySummary(since);
+      setSummary(summaryData);
+    });
   }, [severityFilter]);
 
   return (

@@ -94,7 +94,20 @@ export function PieChart({
     };
   };
 
-  let currentAngle = -90; // Start at top
+  // Calculate angles without mutation (industry-standard pattern)
+  const segmentsWithAngles = segments.reduce<Array<typeof segments[0] & { startAngle: number; endAngle: number }>>(
+    (acc, segment) => {
+      const prevEndAngle = acc.length > 0 ? acc[acc.length - 1].endAngle : -90;
+      const angle = (segment.value / total) * 360;
+      acc.push({
+        ...segment,
+        startAngle: prevEndAngle,
+        endAngle: prevEndAngle + angle,
+      });
+      return acc;
+    },
+    []
+  );
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
@@ -104,11 +117,8 @@ export function PieChart({
         viewBox={`0 0 ${size} ${size}`}
         className="mx-auto"
       >
-        {segments.map((segment, index) => {
-          const startAngle = currentAngle;
-          const angle = (segment.value / total) * 360;
-          const endAngle = startAngle + angle;
-          currentAngle = endAngle;
+        {segmentsWithAngles.map((segment, index) => {
+          const { startAngle, endAngle } = segment;
 
           const isHovered = hoveredIndex === index;
           const segmentRadius = isHovered ? radius + 5 : radius;

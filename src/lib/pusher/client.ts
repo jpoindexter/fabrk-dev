@@ -183,16 +183,14 @@ export function usePresence(organizationId: string | undefined) {
  * Hook to get Pusher connection status
  */
 export function usePusherStatus() {
+  // Initialize state based on client availability (industry-standard pattern)
+  const client = getPusherClient();
   const [status, setStatus] = useState<
     "connecting" | "connected" | "disconnected" | "unavailable"
-  >("connecting");
+  >(!client ? "unavailable" : "connecting");
 
   useEffect(() => {
-    const client = getPusherClient();
-    if (!client) {
-      setStatus("unavailable");
-      return;
-    }
+    if (!client) return;
 
     const updateStatus = () => {
       setStatus(client.connection.state as any);
@@ -204,7 +202,7 @@ export function usePusherStatus() {
     return () => {
       client.connection.unbind("state_change", updateStatus);
     };
-  }, []);
+  }, [client]);
 
   return status;
 }

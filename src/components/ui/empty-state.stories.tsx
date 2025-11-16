@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { EmptyState } from "./empty-state";
 import {
   Inbox,
@@ -99,7 +99,7 @@ export const NoProducts: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={Package}
-        title="No products in store",
+        title="No products in store"
         description="Add your first product to start selling.",
         action={{
           label: "Add Product",

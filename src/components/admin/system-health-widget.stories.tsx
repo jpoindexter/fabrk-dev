@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { SystemHealthWidget } from "./system-health-widget";
 
 const meta: Meta<typeof SystemHealthWidget> = {

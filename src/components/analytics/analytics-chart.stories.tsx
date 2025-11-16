@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { AnalyticsChart } from "./analytics-chart";
 
 const meta: Meta<typeof AnalyticsChart> = {

@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
 import {
   Card,
   CardContent,
@@ -39,13 +39,15 @@ export default function AdminMonitoringPage() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    // Load stats (last 24 hours)
-    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    const errors = getErrorStats(since);
-    const perf = getPerformanceStats(since);
+    // Load stats (last 24 hours) - use startTransition for non-urgent updates
+    startTransition(() => {
+      const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const errors = getErrorStats(since);
+      const perf = getPerformanceStats(since);
 
-    setErrorStats(errors);
-    setPerformanceStats(perf);
+      setErrorStats(errors);
+      setPerformanceStats(perf);
+    });
   }, [refreshKey]);
 
   const handleClearLogs = () => {
