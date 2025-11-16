@@ -210,7 +210,7 @@ export function Lightbox({
         <div className="absolute right-4 top-20 z-50 flex flex-col gap-2">
           <Button
             variant="ghost"
-            size="icon-sm"
+            size="sm"
             className="border-2 border-white bg-white text-black hover:bg-white/90"
             onClick={handleZoomIn}
             disabled={zoomLevel >= 3}
@@ -220,7 +220,7 @@ export function Lightbox({
           </Button>
           <Button
             variant="ghost"
-            size="icon-sm"
+            size="sm"
             className="border-2 border-white bg-white text-black hover:bg-white/90"
             onClick={handleZoomOut}
             disabled={zoomLevel <= 0.5}

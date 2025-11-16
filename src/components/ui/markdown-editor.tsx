@@ -175,7 +175,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                 <Button
                   key={btn.label}
                   variant="ghost"
-                  size="icon-sm"
+                  size="sm"
                   onClick={btn.action}
                   title={btn.label}
                   type="button"

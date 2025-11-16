@@ -3,10 +3,9 @@ import {
   siTypescript,
   siStorybook,
   siVitest,
-  siPlaywright,
   siGithubactions,
 } from "simple-icons";
-import { Globe, CheckCircle2 } from "lucide-react";
+import { Globe, CheckCircle2, TestTube2 } from "lucide-react";
 
 export function QualitySection() {
   const qualityMetrics = [
@@ -44,7 +43,7 @@ export function QualitySection() {
       metric: "931+",
       label: "Comprehensive Tests",
       description: "Unit tests + E2E Playwright tests for critical user flows",
-      icon: siPlaywright.path,
+      iconComponent: "testTube",
     },
   ];
 
@@ -74,6 +73,8 @@ export function QualitySection() {
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-success/10 p-3">
                   {item.iconComponent === "globe" ? (
                     <Globe className="h-6 w-6 text-success" />
+                  ) : item.iconComponent === "testTube" ? (
+                    <TestTube2 className="h-6 w-6 text-success" />
                   ) : (
                     <SimpleIcon path={item.icon!} className="h-6 w-6 text-success" />
                   )}
