@@ -80,7 +80,7 @@ export default function ActivityTimelineDemo() {
         id: "1",
         type: "created",
         user: { name: "Bug Reporter", avatar: "https://avatar.vercel.sh/reporter" },
-        title: "Issue #456 created",
+        title: "Issue created",
         description: "Payment form validation not working correctly for international cards",
         timestamp: hoursAgo(48),
         metadata: {

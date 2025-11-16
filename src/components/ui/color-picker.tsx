@@ -23,8 +23,8 @@ interface ColorPickerProps {
 }
 
 const defaultPresets = [
-  "#000000",
-  "#FFFFFF",
+  "black",
+  "white",
   "#EF4444",
   "#F97316",
   "#F59E0B",
@@ -45,7 +45,7 @@ const defaultPresets = [
 ];
 
 export function ColorPicker({
-  color = "#000000",
+  color = "black",
   onChange,
   placeholder = "Pick a color",
   disabled = false,
