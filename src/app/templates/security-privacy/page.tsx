@@ -190,15 +190,15 @@ export default function SecurityPrivacyTemplate() {
           <CardContent>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <CheckCircle2 className="h-4 w-4 text-success" />
                 <span className="font-semibold">Email verified</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <XCircle className="h-4 w-4 text-red-600" />
+                <XCircle className="h-4 w-4 text-destructive" />
                 <span className="font-semibold">Two-factor authentication disabled</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <CheckCircle2 className="h-4 w-4 text-success" />
                 <span className="font-semibold">
                   Password changed 60 days ago (recommended: every 90 days)
                 </span>

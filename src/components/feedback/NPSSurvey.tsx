@@ -41,9 +41,9 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
 
   if (step === "thanks") {
     return (
-      <div className="rounded-lg border-2 border-green-200 bg-green-50 p-6 text-center">
-        <h3 className="mb-2 text-lg font-semibold text-green-900">Thank you!</h3>
-        <p className="text-sm text-green-700">
+      <div className="rounded-lg border-2 border-green-200 bg-success/10 p-6 text-center">
+        <h3 className="mb-2 text-lg font-semibold text-success-foreground">Thank you!</h3>
+        <p className="text-sm text-success">
           Your feedback helps us improve our product.
         </p>
       </div>
@@ -112,10 +112,10 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
             onClick={() => handleScoreSelect(num)}
             className={`flex h-12 w-12 items-center justify-center rounded-lg border-2 font-semibold transition-all hover:scale-105 ${
               num <= 6
-                ? "border-red-200 bg-red-50 hover:border-red-400 hover:bg-red-100"
+                ? "border-destructive/30 bg-destructive/10 hover:border-red-400 hover:bg-destructive/20"
                 : num <= 8
-                  ? "border-yellow-200 bg-yellow-50 hover:border-yellow-400 hover:bg-yellow-100"
-                  : "border-green-200 bg-green-50 hover:border-green-400 hover:bg-green-100"
+                  ? "border-warning/30 bg-warning/10 hover:border-yellow-400 hover:bg-warning/20"
+                  : "border-green-200 bg-success/10 hover:border-green-400 hover:bg-success/20"
             }`}
             aria-label={`Score ${num}`}
           >

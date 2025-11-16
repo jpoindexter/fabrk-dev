@@ -47,14 +47,14 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="bg-muted/30 px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-semibold text-foreground">
             Loved by Developers
           </h2>
           <p className="text-lg font-normal text-muted-foreground">
-            See what developers are saying about Fabrk
+            Early access customer feedback
           </p>
         </div>
 

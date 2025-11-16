@@ -110,7 +110,7 @@ export function SessionsSection() {
                         <div>
                           <p className="font-medium">{session.device}</p>
                           {session.isCurrent && (
-                            <p className="text-xs text-green-600">Current session</p>
+                            <p className="text-xs text-success">Current session</p>
                           )}
                         </div>
                       </td>

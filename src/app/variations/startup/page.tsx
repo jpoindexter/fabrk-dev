@@ -106,7 +106,7 @@ export default function StartupVariation() {
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-white/20 flex items-center justify-center">
-                    <item.icon className="h-6 w-6 text-pink-400" />
+                    <item.icon className="h-6 w-6 text-accent" />
                   </div>
                   <p className="text-sm font-semibold text-white/80">{item.text}</p>
                 </div>

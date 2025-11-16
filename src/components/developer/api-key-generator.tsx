@@ -167,9 +167,9 @@ export function ApiKeyGenerator({
             </div>
 
             {/* Security Notice */}
-            <div className="rounded-brutal border-2 border-brutal bg-yellow-500/10 p-3">
+            <div className="rounded-brutal border-2 border-brutal bg-warning/10 p-3">
               <div className="flex gap-2">
-                <AlertTriangle className="h-4 w-4 text-yellow-600 flex-shrink-0 mt-0.5" />
+                <AlertTriangle className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
                 <div className="flex-1 space-y-1">
                   <p className="text-xs font-bold text-foreground">Keep this secret!</p>
                   <p className="text-xs text-muted-foreground">

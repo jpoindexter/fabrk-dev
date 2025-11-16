@@ -14,13 +14,22 @@ const intlMiddleware = createMiddleware({
 export default auth((req) => {
   const pathname = req.nextUrl.pathname;
 
+  // Remove locale prefix for consistent route checking
+  const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, '') || '/';
+
   // Skip i18n for showcase pages (they exist outside [locale] structure)
+  // Check both original pathname and pathname without locale prefix to handle /en/demo, /demo, etc.
   const isShowcasePage =
     pathname.startsWith('/demo') ||
     pathname.startsWith('/components') ||
     pathname.startsWith('/whats-included') ||
     pathname.startsWith('/variations') ||
-    pathname.startsWith('/templates');
+    pathname.startsWith('/templates') ||
+    pathnameWithoutLocale.startsWith('/demo') ||
+    pathnameWithoutLocale.startsWith('/components') ||
+    pathnameWithoutLocale.startsWith('/whats-included') ||
+    pathnameWithoutLocale.startsWith('/variations') ||
+    pathnameWithoutLocale.startsWith('/templates');
 
   if (isShowcasePage) {
     return NextResponse.next();
@@ -28,9 +37,6 @@ export default auth((req) => {
 
   // Check authentication for protected routes
   const isLoggedIn = !!req.auth;
-
-  // Remove locale prefix for route checking
-  const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, '');
 
   const isOnDashboard = pathnameWithoutLocale.startsWith('/dashboard');
   const isOnAdmin = pathnameWithoutLocale.startsWith('/admin');

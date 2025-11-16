@@ -21,7 +21,7 @@ describe('Banner', () => {
   it('renders info variant by default', () => {
     render(<Banner>Info message</Banner>)
     const banner = screen.getByRole('alert')
-    expect(banner).toHaveClass('bg-blue-50', 'border-blue-500', 'text-blue-900')
+    expect(banner).toHaveClass('bg-info/10', 'border-blue-500', 'text-blue-900')
   })
 
   it('renders success variant', () => {
@@ -31,7 +31,7 @@ describe('Banner', () => {
       </Banner>
     )
     const banner = screen.getByRole('alert')
-    expect(banner).toHaveClass('bg-green-50', 'border-green-500', 'text-green-900')
+    expect(banner).toHaveClass('bg-success/10', 'border-success', 'text-success-foreground')
   })
 
   it('renders warning variant', () => {
@@ -41,7 +41,7 @@ describe('Banner', () => {
       </Banner>
     )
     const banner = screen.getByRole('alert')
-    expect(banner).toHaveClass('bg-yellow-50', 'border-yellow-500', 'text-yellow-900')
+    expect(banner).toHaveClass('bg-warning/10', 'border-warning', 'text-warning-foreground')
   })
 
   it('renders error variant', () => {
@@ -51,7 +51,7 @@ describe('Banner', () => {
       </Banner>
     )
     const banner = screen.getByRole('alert')
-    expect(banner).toHaveClass('bg-red-50', 'border-red-500', 'text-red-900')
+    expect(banner).toHaveClass('bg-destructive/10', 'border-destructive', 'text-destructive-foreground')
   })
 
   it('displays correct icon for info variant', () => {

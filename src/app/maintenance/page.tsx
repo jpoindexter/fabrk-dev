@@ -23,8 +23,8 @@ export default function MaintenancePage() {
       <div className="mx-auto max-w-2xl text-center">
         {/* Maintenance Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="rounded-full bg-orange-100 p-6">
-            <Wrench className="h-16 w-16 text-orange-600" />
+          <div className="rounded-full bg-warning/20 p-6">
+            <Wrench className="h-16 w-16 text-warning" />
           </div>
         </div>
 
@@ -38,9 +38,9 @@ export default function MaintenancePage() {
         </p>
 
         {/* Estimated Time */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-lg bg-orange-50 px-6 py-3">
-          <Clock className="h-5 w-5 text-orange-600" />
-          <span className="text-sm font-medium text-orange-900">
+        <div className="mb-8 inline-flex items-center gap-2 rounded-lg bg-warning/10 px-6 py-3">
+          <Clock className="h-5 w-5 text-warning" />
+          <span className="text-sm font-medium text-warning-foreground">
             Estimated downtime: 30 minutes
           </span>
         </div>

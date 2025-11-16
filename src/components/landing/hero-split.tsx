@@ -29,7 +29,7 @@ export function HeroSplit({
   const imageOrder = imagePosition === "left" ? "lg:order-1" : "lg:order-2";
 
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24 sm:py-32">
+    <section className="relative overflow-hidden bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Content Side */}
@@ -84,9 +84,9 @@ export function HeroSplit({
               ))}
             </div>
 
-            {/* Guarantee */}
+            {/* Final Sale Notice */}
             <p className="mt-6 text-sm text-muted-foreground">
-              30-day money-back guarantee • Lifetime updates
+              All sales final • Lifetime v1.x updates
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function HeroSplit({
           <div className={`${imageOrder} relative`}>
             <div className="relative rounded-lg border-4 border-black bg-muted shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               {/* Dashboard Mockup */}
-              <div className="aspect-[4/3] p-6">
+              <div className="aspect-4/3 p-6">
                 <div className="h-full w-full rounded border-2 border-black/10 bg-white p-4">
                   {/* Header */}
                   <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-3">
@@ -145,7 +145,7 @@ export function HeroSplit({
 
             {/* Decorative Elements */}
             <div className="absolute -left-8 top-8 -z-10 h-32 w-32 rounded-full bg-primary/10"></div>
-            <div className="absolute -bottom-8 -right-8 -z-10 h-24 w-24 rounded-full bg-purple-500/10"></div>
+            <div className="absolute -bottom-8 -right-8 -z-10 h-24 w-24 rounded-full bg-accent/10"></div>
           </div>
         </div>
       </div>

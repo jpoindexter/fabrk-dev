@@ -170,7 +170,7 @@ export const DashboardCard: Story = {
     <div className="w-[400px] rounded-md border bg-card p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold">Revenue Breakdown</h3>
-        <div className="flex items-center gap-1 text-green-600">
+        <div className="flex items-center gap-1 text-success">
           <TrendingUp className="h-4 w-4" />
           <span className="text-sm font-semibold">+12%</span>
         </div>
@@ -311,7 +311,7 @@ export const TaskCompletion: Story = {
       <div className="w-[450px] rounded-md border bg-card p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold">Project Tasks</h3>
-          <div className="flex items-center gap-1 text-green-600">
+          <div className="flex items-center gap-1 text-success">
             <TrendingUp className="h-4 w-4" />
             <span className="text-sm font-semibold">On Track</span>
           </div>

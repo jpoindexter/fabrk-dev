@@ -57,13 +57,13 @@ function getSeverityColor(severity: string) {
 function getResultIcon(result: string) {
   switch (result) {
     case "success":
-      return <CheckCircle className="h-4 w-4 text-green-500" />;
+      return <CheckCircle className="h-4 w-4 text-success" />;
     case "failure":
-      return <XCircle className="h-4 w-4 text-red-500" />;
+      return <XCircle className="h-4 w-4 text-destructive" />;
     case "error":
-      return <AlertTriangle className="h-4 w-4 text-orange-500" />;
+      return <AlertTriangle className="h-4 w-4 text-warning" />;
     default:
-      return <Info className="h-4 w-4 text-blue-500" />;
+      return <Info className="h-4 w-4 text-info" />;
   }
 }
 
@@ -128,7 +128,7 @@ export default function AdminSecurityPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">High</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-orange-500" />
+              <AlertTriangle className="h-4 w-4 text-warning" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -140,7 +140,7 @@ export default function AdminSecurityPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Medium</CardTitle>
-              <Info className="h-4 w-4 text-blue-500" />
+              <Info className="h-4 w-4 text-info" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">

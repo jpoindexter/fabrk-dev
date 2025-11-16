@@ -116,7 +116,7 @@ export function SystemHealthWidget({
             className={cn(
               "h-2",
               uptimeStatus === "healthy" && "bg-primary/20",
-              uptimeStatus === "warning" && "bg-yellow-500/20",
+              uptimeStatus === "warning" && "bg-warning/20",
               uptimeStatus === "critical" && "bg-destructive/20"
             )}
           />
@@ -144,7 +144,7 @@ export function SystemHealthWidget({
                     ? responseTimeStatus === "healthy"
                       ? "bg-primary"
                       : responseTimeStatus === "warning"
-                        ? "bg-yellow-500"
+                        ? "bg-warning"
                         : "bg-destructive"
                     : "bg-muted"
                 )}
@@ -172,7 +172,7 @@ export function SystemHealthWidget({
             className={cn(
               "h-2",
               errorRateStatus === "healthy" && "bg-primary/20",
-              errorRateStatus === "warning" && "bg-yellow-500/20",
+              errorRateStatus === "warning" && "bg-warning/20",
               errorRateStatus === "critical" && "bg-destructive/20"
             )}
           />

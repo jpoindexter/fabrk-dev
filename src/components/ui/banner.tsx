@@ -20,10 +20,10 @@ interface BannerProps {
 }
 
 const variantStyles: Record<BannerVariant, string> = {
-  info: "bg-blue-50 border-blue-500 text-blue-900",
-  success: "bg-green-50 border-green-500 text-green-900",
-  warning: "bg-yellow-50 border-yellow-500 text-yellow-900",
-  error: "bg-red-50 border-red-500 text-red-900",
+  info: "bg-info/10 border-blue-500 text-blue-900",
+  success: "bg-success/10 border-success text-success-foreground",
+  warning: "bg-warning/10 border-warning text-warning-foreground",
+  error: "bg-destructive/10 border-destructive text-destructive-foreground",
 };
 
 const variantIcons: Record<BannerVariant, React.ReactNode> = {

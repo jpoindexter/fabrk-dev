@@ -126,7 +126,7 @@ export default function ChartLibraryTemplate() {
               <CardTitle className="text-3xl font-semibold">$91.9K</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-success">
                 <TrendingUp className="h-4 w-4" />
                 <span>+23.5%</span>
               </div>
@@ -138,7 +138,7 @@ export default function ChartLibraryTemplate() {
               <CardTitle className="text-3xl font-semibold">12.5K</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-success">
                 <TrendingUp className="h-4 w-4" />
                 <span>+941%</span>
               </div>
@@ -150,7 +150,7 @@ export default function ChartLibraryTemplate() {
               <CardTitle className="text-3xl font-semibold">4.5%</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-success">
                 <TrendingUp className="h-4 w-4" />
                 <span>+0.8%</span>
               </div>
@@ -162,7 +162,7 @@ export default function ChartLibraryTemplate() {
               <CardTitle className="text-3xl font-semibold">$89</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-red-600">
+              <div className="flex items-center gap-1 text-sm font-semibold text-destructive">
                 <TrendingUp className="h-4 w-4 rotate-180" />
                 <span>-2.3%</span>
               </div>

@@ -125,7 +125,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           {user.twoFactorEnabled ? (
             <div className="space-y-4">
               <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <CheckCircle2 className="h-4 w-4 text-success" />
                 <span>2FA is currently protecting your account</span>
               </div>
               <div className="flex gap-3">
@@ -291,28 +291,28 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           <ul className="space-y-2 text-sm">
             {!user.emailVerified && (
               <li className="flex items-start gap-2">
-                <AlertTriangle className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="h-4 w-4 text-warning shrink-0 mt-0.5" />
                 <span>Verify your email address</span>
               </li>
             )}
             {!user.twoFactorEnabled && (
               <li className="flex items-start gap-2">
-                <AlertTriangle className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
+                <AlertTriangle className="h-4 w-4 text-warning shrink-0 mt-0.5" />
                 <span>Enable two-factor authentication</span>
               </li>
             )}
             {connectedAccounts.length === 0 && (
               <li className="flex items-start gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-600 shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
                 <span>Connect a backup sign-in method (Google or GitHub)</span>
               </li>
             )}
             <li className="flex items-start gap-2">
-              <CheckCircle2 className="h-4 w-4 text-green-600 shrink-0 mt-0.5" />
+              <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
               <span>Use a strong, unique password</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle2 className="h-4 w-4 text-green-600 shrink-0 mt-0.5" />
+              <CheckCircle2 className="h-4 w-4 text-success shrink-0 mt-0.5" />
               <span>Review your active sessions regularly</span>
             </li>
           </ul>

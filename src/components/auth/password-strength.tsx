@@ -16,9 +16,9 @@ export function PasswordStrength({ password }: { password: string }) {
   if (!password) return null;
 
   const getStrengthColor = () => {
-    if (strength.score >= 75) return "text-green-600";
-    if (strength.score >= 50) return "text-yellow-600";
-    return "text-red-600";
+    if (strength.score >= 75) return "text-success";
+    if (strength.score >= 50) return "text-warning";
+    return "text-destructive";
   };
 
   return (

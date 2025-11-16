@@ -27,7 +27,7 @@ export function FAQSection() {
     {
       question: "Do you offer refunds?",
       answer:
-        "Yes. We offer a full 30-day money-back guarantee, no questions asked. We only want happy customers.",
+        "No. Due to the nature of digital products, all sales are final once you gain access to the source code. We encourage you to review the documentation and feature list before purchasing.",
     },
   ];
 
@@ -41,7 +41,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-16 bg-muted/30 px-6 py-24"
+      className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
@@ -51,7 +51,7 @@ export function FAQSection() {
           Everything you need to know about Fabrk
         </p>
 
-        <Accordion type="single" collapsible className="w-full space-y-3">
+        <Accordion type="single" collapsible className="w-full space-y-3" suppressHydrationWarning>
           {faqs.map((faq, index) => {
             return (
               <AccordionItem

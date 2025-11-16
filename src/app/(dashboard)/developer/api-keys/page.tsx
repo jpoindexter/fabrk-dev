@@ -303,10 +303,10 @@ export default function ApiKeysPage() {
 
       {/* New Key Created Modal */}
       {createdKey && (
-        <Alert className="mb-6 bg-green-500/10 border-green-500/20">
-          <CheckCircle2 className="h-4 w-4 text-green-600" />
+        <Alert className="mb-6 bg-success/10 border-success/20">
+          <CheckCircle2 className="h-4 w-4 text-success" />
           <AlertDescription>
-            <p className="font-semibold text-green-600 mb-2">
+            <p className="font-semibold text-success mb-2">
               API Key Created Successfully!
             </p>
             <p className="text-sm mb-3">

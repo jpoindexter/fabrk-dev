@@ -83,12 +83,12 @@ const defaultPlans: PricingPlan[] = [
   },
   {
     name: "Fabrk",
-    price: "$79",
-    description: "The Anti-Bloat",
+    price: "$299",
+    description: "Enterprise-Grade",
     features: {
       typescript: "Strict Mode",
       database: "PostgreSQL",
-      components: "80+",
+      components: "100+",
       dataTable: true,
       emailTemplates: "5",
       oauthProviders: true,
@@ -132,7 +132,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
   };
 
   return (
-    <section className="bg-background px-6 py-24 sm:py-32" id="pricing">
+    <section className="bg-background px-6 py-24" id="pricing">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-16 text-center">
@@ -203,7 +203,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                 {Object.entries(featureLabels).map(([key, label], index) => (
                   <tr
                     key={key}
-                    className={index % 2 === 0 ? "bg-card" : "bg-muted"}
+                    className="bg-card"
                   >
                     <td className="sticky left-0 z-10 border-r-4 border-black bg-inherit px-6 py-4">
                       <span className="text-sm font-semibold text-foreground">
@@ -264,10 +264,10 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
           </p>
         </div>
 
-        {/* Guarantee */}
+        {/* Final Sale Notice */}
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            30-day money-back guarantee • No questions asked
+            All sales final • Digital product • Lifetime v1.x updates included
           </p>
         </div>
       </div>

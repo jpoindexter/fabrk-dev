@@ -355,7 +355,7 @@ export const WithProgress: Story = {
                     <p className="text-sm font-medium">{item.file.name}</p>
                   </div>
                   {item.progress === 100 && (
-                    <Badge variant="outline" className="bg-green-50 text-green-700">
+                    <Badge variant="outline" className="bg-success/10 text-success">
                       Complete
                     </Badge>
                   )}

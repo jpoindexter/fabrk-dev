@@ -127,14 +127,14 @@ export function ActivityFeed({
     switch (type) {
       case "member_joined":
       case "member_added":
-        return "text-green-500";
+        return "text-success";
       case "member_removed":
       case "member_left":
-        return "text-red-500";
+        return "text-destructive";
       case "role_changed":
-        return "text-blue-500";
+        return "text-info";
       case "member_invited":
-        return "text-purple-500";
+        return "text-primary";
       default:
         return "text-muted-foreground";
     }

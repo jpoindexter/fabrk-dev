@@ -47,5 +47,5 @@ export function isUserOnline(
  * Get online status indicator color
  */
 export function getPresenceColor(isOnline: boolean): string {
-  return isOnline ? "bg-green-500" : "bg-gray-400";
+  return isOnline ? "bg-success" : "bg-gray-400";
 }

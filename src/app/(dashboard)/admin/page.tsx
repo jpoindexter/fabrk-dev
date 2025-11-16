@@ -238,25 +238,25 @@ export default function AdminPage() {
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm">Database</span>
-              <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-semibold text-green-500">
+              <span className="rounded-full bg-success/10 px-2 py-1 text-xs font-semibold text-success">
                 Healthy
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Authentication</span>
-              <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-semibold text-green-500">
+              <span className="rounded-full bg-success/10 px-2 py-1 text-xs font-semibold text-success">
                 Healthy
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Payments</span>
-              <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-semibold text-green-500">
+              <span className="rounded-full bg-success/10 px-2 py-1 text-xs font-semibold text-success">
                 Healthy
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm">Email Service</span>
-              <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-semibold text-green-500">
+              <span className="rounded-full bg-success/10 px-2 py-1 text-xs font-semibold text-success">
                 Healthy
               </span>
             </div>

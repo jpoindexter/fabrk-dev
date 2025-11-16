@@ -134,7 +134,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3"
               >
-                <div className="rounded-md border border-border bg-muted p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
+                <div className="rounded-md border border-border bg-background p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
                   <SimpleIcon path={siX.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
                 </div>
                 <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">
@@ -147,7 +147,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3"
               >
-                <div className="rounded-md border border-border bg-muted p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
+                <div className="rounded-md border border-border bg-background p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
                   <SimpleIcon path={siGithub.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
                 </div>
                 <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">

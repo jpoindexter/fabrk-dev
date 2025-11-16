@@ -119,7 +119,7 @@ export function SparklineCard({
   className,
 }: SparklineCardProps) {
   const isPositive = change && change.value >= 0;
-  const changeColor = isPositive ? "text-green-600" : "text-red-600";
+  const changeColor = isPositive ? "text-success" : "text-destructive";
 
   return (
     <div

@@ -14,11 +14,11 @@ interface StatusIndicatorProps {
 }
 
 const statusColors: Record<Status, string> = {
-  online: "bg-green-500",
+  online: "bg-success",
   offline: "bg-gray-400",
-  busy: "bg-red-500",
-  away: "bg-yellow-500",
-  idle: "bg-orange-500",
+  busy: "bg-destructive",
+  away: "bg-warning",
+  idle: "bg-warning",
 };
 
 const statusLabels: Record<Status, string> = {

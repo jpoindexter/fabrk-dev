@@ -24,7 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import ActivityTimelineDemo from "./activity-timeline-demo";
 import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X, Zap } from "lucide-react";
 
@@ -42,7 +42,7 @@ export default function ComponentsPage() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <ThemeSwitcher />
+              <ThemeToggle />
               <Link href="/">
                 <Button variant="outline">
                   <Home className="mr-2 h-4 w-4" />

@@ -6,8 +6,9 @@
 
 import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
-import { TechStack } from "@/components/landing/tech-stack";
 import { FeaturesSection } from "@/components/landing/features-section";
+import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
+import { QualitySection } from "@/components/landing/quality-section";
 import { StatsSection } from "@/components/landing/stats-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -20,8 +21,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
-      <TechStack />
       <FeaturesSection />
+      <EnterpriseFeaturesSection />
+      <QualitySection />
       <StatsSection />
       <PricingSection />
       <TestimonialsSection />

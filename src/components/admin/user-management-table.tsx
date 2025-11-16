@@ -234,7 +234,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                   <TableCell>{user._count.sessions}</TableCell>
                   <TableCell>
                     {user.emailVerified ? (
-                      <Badge variant="default" className="bg-green-500">
+                      <Badge variant="default" className="bg-success">
                         Yes
                       </Badge>
                     ) : (

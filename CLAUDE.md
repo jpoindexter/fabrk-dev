@@ -1,18 +1,10 @@
-# CLAUDE.md
+# WARP.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
 ## Project Overview
 
-Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Unlike bloated competitors (450-1000 files), Fabrk maintains ~161 essential files while delivering 100 production-ready components.
-
-**Pricing:** $299 one-time payment
-**Components:** 100 production-ready (67% more than shadcn/ui's 67, 150% more than ShipFast's 40)
-**Unique Tools:** 13 AI/Code + Image tools competitors don't have
-**Templates:** 8 copy-paste ready page layouts
-**Themes:** 6 color schemes with instant switching
-**Test Coverage:** 64% (64/100 components), 931+ comprehensive tests
-**Storybook:** 95% story coverage (95/100 components) for component development and documentation
+Fabrk is a Next.js 15 SaaS boilerplate with authentication, billing, multi-tenant organizations, real-time features, analytics, i18n, and a production-ready component library.
 
 **Tech Stack:**
 - Next.js 15 (App Router, Server Components, React 19, Turbopack)
@@ -51,13 +43,15 @@ npm run type-check          # TypeScript validation (no emit)
 npm run format              # Prettier format
 npm run format:check        # Prettier check
 
-# Testing
-npm run test                # Vitest unit tests
-npm run test:watch          # Vitest watch mode
-npm run test:coverage       # Coverage report
-npm run test:e2e            # Playwright E2E tests
-npm run test:e2e:ui         # Playwright UI mode
-npm run test:all            # Run all tests
+# Testing (Vitest + Playwright)
+npm run test                                # Run all Vitest unit tests
+npm run test -- path/to/file.test.ts        # Run a single Vitest test file
+npm run test:watch                          # Vitest watch mode
+npm run test:coverage                       # Coverage report
+npm run test:e2e                            # Run all Playwright E2E tests
+npm run test:e2e -- tests/e2e/auth.spec.ts  # Run a single Playwright spec file
+npm run test:e2e:ui                         # Playwright UI mode
+npm run test:all                            # Run Vitest + Playwright suites
 
 # Stripe (Local Development)
 npm run stripe:listen       # Forward webhooks to localhost
@@ -383,20 +377,7 @@ npm run db:push
 
 **Status:** ✅ Infrastructure Complete (100%)
 
-Fabrk includes full i18n support with `next-intl` for **6 languages**:
-- 🇺🇸 English (en) - Default
-- 🇪🇸 Spanish (es)
-- 🇫🇷 French (fr)
-- 🇩🇪 German (de)
-- 🇵🇹 Portuguese (pt)
-- 🇯🇵 Japanese (ja)
-
-**Translation Coverage:** 1,998 translations (251 keys × 6 languages + 492 existing)
-- Common UI actions (save, cancel, edit, delete)
-- Navigation labels
-- Complete auth flows
-- Dashboard, settings, billing, team management
-- Error messages, landing page content
+Fabrk uses `next-intl` with 6 locales to provide full UI translation coverage across auth, dashboard, settings, billing, and marketing pages.
 
 **Key Files:**
 - `src/i18n/config.ts` - Locale definitions
@@ -429,37 +410,17 @@ export default function MyComponent() {
 
 ### Search Integration (Algolia - Optional)
 
-**When Enabled:** Requires `NEXT_PUBLIC_ALGOLIA_APP_ID` and `NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY`
+When Algolia environment variables are configured, the app indexes `pages`, `components`, `templates`, and `docs` for search.
 
-**Indices:**
-- `pages` - Application pages
-- `components` - Component library
-- `templates` - Page templates
-- `docs` - Documentation
-
-**Features:**
-- Instant search
-- Fuzzy matching
-- Faceted filtering
-- Highlighting
-
-**Key Files:**
+Key files:
 - `src/lib/algolia/client.ts` - Search client
 - `src/components/search/search-dialog.tsx` - Search UI
 
 ### CMS Integration (Sanity - Optional)
 
-**When Enabled:** Requires `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET`
+When Sanity environment variables are configured, content is managed via Sanity Studio at `/studio`.
 
-**Features:**
-- Visual content editor
-- Image optimization
-- Portable Text rendering
-- Real-time preview
-
-**Studio Access:** `/studio` route (when configured)
-
-**Key Files:**
+Key files:
 - `src/lib/sanity/client.ts` - Sanity client
 - `src/lib/sanity/queries.ts` - GROQ queries
 
@@ -554,13 +515,7 @@ All components use centralized tokens from `src/app/globals.css`:
 
 ### Landing Page Variations
 
-Three variations at `/variations/*` demonstrate theme-responsive design:
-
-1. **Modern** (`/variations/modern`) - Soft shadows, rounded corners
-2. **SaaS** (`/variations/saas`) - B2B professional with enterprise badges
-3. **Startup** (`/variations/startup`) - Bold black background with high-energy accents
-
-All variations respond to theme changes except intentional design choices (e.g., Startup's black background).
+Example marketing layouts live under `/variations/*` and demonstrate theme-responsive design.
 
 ## Important Patterns
 
@@ -687,36 +642,11 @@ tests/
 
 ### Component Development with Storybook
 
-**95% of 100 components have Storybook stories (95/100):**
-
-```bash
-npm run storybook  # Opens at http://localhost:6006
-```
-
-**Component Categories in Storybook:**
-- Admin (3 components)
-- Analytics (3 components)
-- Organization (2 components)
-- Developer (2 components)
-- Marketing (1 component)
-- UI Primitives (25+ components)
-- Landing sections
-- Dashboard components
-- Settings pages
+Use `npm run storybook` to explore and develop components in isolation.
 
 ### Template Gallery System
 
-**8 Production-Ready Templates** at `/templates`:
-1. Analytics Dashboard
-2. Team Dashboard (Multi-tenancy + RBAC)
-3. Chart Library (Recharts)
-4. User Management (TanStack Table)
-5. Settings Page (4 tabs)
-6. Billing Dashboard
-7. Security & Privacy (2FA, OAuth, sessions)
-8. Email Templates Showcase
-
-**Usage Pattern:** Each template is self-contained and copy-paste ready. See `src/app/templates/README.md` for integration guide.
+Templates live under `/templates` and are documented in `src/app/templates/README.md`. Each template is self-contained and can be copied into a production app.
 
 ## Path Aliases
 
@@ -886,12 +816,7 @@ vercel
 
 ## File Organization Philosophy
 
-**Essential Files Only:**
-- ~161 total files (vs 450-1000 in competitors)
-- ~105 TypeScript/TSX files
-- 100 production-ready components (67% more than shadcn/ui, 150% more than ShipFast)
-- 13 unique AI/Code + Image tools
-- Minimal dependencies
+The project keeps a relatively small, focused file set and avoids unnecessary abstractions.
 
 **When Adding Features:**
 - Maintain simplicity principle

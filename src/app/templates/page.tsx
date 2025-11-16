@@ -15,7 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import {
   LayoutDashboard,
   Settings,
@@ -150,7 +150,7 @@ export default function TemplatesPage() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <ThemeSwitcher />
+              <ThemeToggle />
               <Link href="/">
                 <Button variant="outline">
                   <Home className="mr-2 h-4 w-4" />

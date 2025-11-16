@@ -116,7 +116,7 @@ const columns: ColumnDef<User>[] = [
           <span
             className={`rounded-full px-2 py-1 text-xs font-semibold ${
               role === "ADMIN"
-                ? "bg-purple-100 text-purple-800"
+                ? "bg-primary/20 text-purple-800"
                 : "bg-gray-100 text-gray-800"
             }`}
           >
@@ -138,10 +138,10 @@ const columns: ColumnDef<User>[] = [
         <span
           className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
             status === "active"
-              ? "bg-green-100 text-green-800"
+              ? "bg-success/20 text-success-foreground"
               : status === "pending"
-              ? "bg-yellow-100 text-yellow-800"
-              : "bg-red-100 text-red-800"
+              ? "bg-warning/20 text-yellow-800"
+              : "bg-destructive/20 text-destructive-foreground"
           }`}
         >
           {status}
@@ -184,7 +184,7 @@ const columns: ColumnDef<User>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>View details</DropdownMenuItem>
             <DropdownMenuItem>Edit user</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">
+            <DropdownMenuItem className="text-destructive">
               Delete user
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -218,13 +218,13 @@ export default function AdminPage() {
         </div>
         <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <p className="text-sm font-medium text-muted-foreground">Active Users</p>
-          <p className="text-3xl font-bold text-green-600">
+          <p className="text-3xl font-bold text-success">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
         <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <p className="text-sm font-medium text-muted-foreground">Admins</p>
-          <p className="text-3xl font-bold text-purple-600">
+          <p className="text-3xl font-bold text-primary">
             {users.filter((u) => u.role === "ADMIN").length}
           </p>
         </div>

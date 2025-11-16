@@ -48,7 +48,7 @@ export function Navigation() {
             className="hidden md:inline-flex"
             asChild
           >
-            <Link href="/login">Login</Link>
+            <Link href="/demo">Demo</Link>
           </Button>
           <Button
             asChild
