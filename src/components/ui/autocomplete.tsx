@@ -14,7 +14,7 @@
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, startTransition } from "react";
 
 export interface AutocompleteOption {
   value: string;
@@ -63,11 +63,13 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
     };
 
     useEffect(() => {
-      const filtered = (options || []).filter((opt) => {
-        const label = getLabel(opt);
-        return label.toLowerCase().includes(search.toLowerCase());
+      startTransition(() => {
+        const filtered = (options || []).filter((opt) => {
+          const label = getLabel(opt);
+          return label.toLowerCase().includes(search.toLowerCase());
+        });
+        setFiltered(filtered);
       });
-      setFiltered(filtered);
     }, [search, options]);
 
     useEffect(() => {
