@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const settingsSchema = z.object({
   // Privacy settings
@@ -62,7 +63,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json({ settings: user?.settings || {} });
   } catch (error: unknown) {
-    console.error("[Settings Get] Error:", error);
+    logger.error("[Settings Get] Error:", error);
     return NextResponse.json(
       { error: "Failed to fetch settings" },
       { status: 500 }
@@ -134,7 +135,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Settings Update] Error:", error);
+    logger.error("[Settings Update] Error:", error);
     return NextResponse.json(
       { error: "Failed to update settings" },
       { status: 500 }

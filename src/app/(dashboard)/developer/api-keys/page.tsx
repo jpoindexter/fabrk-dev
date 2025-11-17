@@ -28,6 +28,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   Key,
   Plus,
   Copy,
@@ -85,6 +95,8 @@ export default function ApiKeysPage() {
   const [newKeyName, setNewKeyName] = useState("");
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>(["read"]);
   const [createdKey, setCreatedKey] = useState<string | null>(null);
+  const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
+  const [keyToRevoke, setKeyToRevoke] = useState<string | null>(null);
 
   // Fetch API keys on mount
   useEffect(() => {
@@ -164,19 +176,14 @@ export default function ApiKeysPage() {
     }
   };
 
-  const handleRevokeKey = async (id: string) => {
-    if (
-      !confirm(
-        "Are you sure you want to revoke this API key? This action cannot be undone and will immediately stop all API requests using this key."
-      )
-    ) {
-      return;
-    }
+  const confirmRevokeKey = async () => {
+    if (!keyToRevoke) return;
 
-    setIsRevoking(id);
+    setIsRevoking(keyToRevoke);
+    setRevokeDialogOpen(false);
 
     try {
-      const response = await fetch(`/api/api-keys/${id}`, {
+      const response = await fetch(`/api/api-keys/${keyToRevoke}`, {
         method: "DELETE",
       });
 
@@ -192,6 +199,7 @@ export default function ApiKeysPage() {
       error("Failed to revoke API key", "A network error occurred. Please check your connection and try again.");
     } finally {
       setIsRevoking(null);
+      setKeyToRevoke(null);
     }
   };
 
@@ -422,7 +430,10 @@ export default function ApiKeysPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => handleRevokeKey(apiKey.id)}
+                      onClick={() => {
+                        setKeyToRevoke(apiKey.id);
+                        setRevokeDialogOpen(true);
+                      }}
                       disabled={isRevoking === apiKey.id}
                     >
                       {isRevoking === apiKey.id ? (
@@ -502,6 +513,27 @@ export default function ApiKeysPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Revoke API Key Dialog */}
+      <AlertDialog open={revokeDialogOpen} onOpenChange={setRevokeDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Revoke API Key?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently revoke the API key and immediately stop all API requests using this key.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmRevokeKey}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Revoke API Key
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

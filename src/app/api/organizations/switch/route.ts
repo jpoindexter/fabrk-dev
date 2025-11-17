@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { isOrganizationMember } from "@/lib/teams/organizations";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -52,7 +53,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       organizationId,
     });
   } catch (error: unknown) {
-    console.error("Failed to switch organization:", error);
+    logger.error("Failed to switch organization:", error);
     return NextResponse.json(
       { error: "Failed to switch organization" },
       { status: 500 }

@@ -3,6 +3,7 @@ import { requirePermission } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
 import { sendOrganizationInvite } from "@/lib/email";
 import crypto from "crypto";
+import { logger } from "@/lib/logger";
 
 /**
  * POST /api/v1/members/invite
@@ -114,7 +115,7 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
       inviteUrl: `${process.env.NEXT_PUBLIC_APP_URL}/invite/${token}`,
     });
   } catch (error: unknown) {
-    console.error("Error creating invite:", error);
+    logger.error("Error creating invite:", error);
     return NextResponse.json(
       { error: "Failed to create invite" },
       { status: 500 }

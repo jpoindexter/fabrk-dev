@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/invoices/[id]
@@ -96,14 +97,14 @@ export async function GET(
 
       return NextResponse.json({ url: invoiceUrl }, { status: 200 });
     } catch (stripeError: unknown) {
-      console.error("Stripe API error:", stripeError);
+      logger.error("Stripe API error:", stripeError);
       return NextResponse.json(
         { error: "Failed to retrieve invoice from Stripe" },
         { status: 500 }
       );
     }
   } catch (error: unknown) {
-    console.error("Invoice retrieval error:", error);
+    logger.error("Invoice retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve invoice" },
       { status: 500 }

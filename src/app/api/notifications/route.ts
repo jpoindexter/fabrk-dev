@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { triggerNotification } from "@/lib/pusher/server";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/notifications
@@ -37,7 +38,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(notifications);
   } catch (error: unknown) {
-    console.error("Failed to fetch notifications:", error);
+    logger.error("Failed to fetch notifications:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -91,7 +92,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(notification, { status: 201 });
   } catch (error: unknown) {
-    console.error("Failed to create notification:", error);
+    logger.error("Failed to create notification:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

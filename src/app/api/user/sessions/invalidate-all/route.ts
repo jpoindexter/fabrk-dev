@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -77,7 +78,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       newSessionVersion: updatedUser.sessionVersion,
     });
   } catch (error: unknown) {
-    console.error("[Session Invalidation] Error:", error);
+    logger.error("[Session Invalidation] Error:", error);
     return NextResponse.json(
       { error: "Failed to invalidate sessions" },
       { status: 500 }

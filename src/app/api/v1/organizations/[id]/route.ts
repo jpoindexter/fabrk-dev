@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission, type RouteContext } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/v1/organizations/[id]
@@ -55,7 +56,7 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey, co
 
     return NextResponse.json(organization);
   } catch (error: unknown) {
-    console.error("Error fetching organization:", error);
+    logger.error("Error fetching organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },
       { status: 500 }

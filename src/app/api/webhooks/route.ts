@@ -12,6 +12,7 @@ import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { generateWebhookSecret } from "@/lib/webhooks";
 import { isValidEvent } from "@/lib/webhooks/events";
+import { logger } from "@/lib/logger";
 
 export async function GET(req: NextRequest) {
   try {
@@ -71,7 +72,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(safeWebhooks);
   } catch (error: unknown) {
-    console.error("Failed to fetch webhooks:", error);
+    logger.error("Failed to fetch webhooks:", error);
     return NextResponse.json(
       { error: "Failed to fetch webhooks" },
       { status: 500 }
@@ -171,7 +172,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       createdAt: webhook.createdAt,
     });
   } catch (error: unknown) {
-    console.error("Failed to create webhook:", error);
+    logger.error("Failed to create webhook:", error);
     return NextResponse.json(
       { error: "Failed to create webhook" },
       { status: 500 }

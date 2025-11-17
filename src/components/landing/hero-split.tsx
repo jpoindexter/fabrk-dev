@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import config from "@/config";
 
 interface HeroSplitProps {
   headline?: string;
@@ -18,7 +19,7 @@ interface HeroSplitProps {
 export function HeroSplit({
   headline = "The Anti-Bloat Next.js Boilerplate",
   subheadline = "161 files. Not 1000. Ship your SaaS in hours, not weeks.",
-  ctaPrimary = { text: "Get Fabrk Now - $79", href: "#pricing" },
+  ctaPrimary = { text: `Get Fabrk Now - ${config.pricing.product.display.current}`, href: "#pricing" },
   ctaSecondary = { text: "View Docs", href: "/docs" },
   trustBadges = ["TypeScript Strict", "PostgreSQL + Prisma", "Next.js 15", "80+ Components"],
   image = "/dashboard-preview.png",

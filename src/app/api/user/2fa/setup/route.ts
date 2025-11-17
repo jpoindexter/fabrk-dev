@@ -17,6 +17,7 @@ import {
 import { prisma } from "@/lib/prisma";
 import { AuditLog } from "@/lib/security/audit-log";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -90,7 +91,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       message: "2FA setup initiated. Please verify with your authenticator app.",
     });
   } catch (error: unknown) {
-    console.error("[2FA Setup] Error:", error);
+    logger.error("[2FA Setup] Error:", error);
     return NextResponse.json(
       { error: "Failed to setup 2FA" },
       { status: 500 }

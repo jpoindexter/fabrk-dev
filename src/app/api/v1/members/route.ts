@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/v1/members
@@ -29,7 +30,7 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey) =>
 
     return NextResponse.json(members);
   } catch (error: unknown) {
-    console.error("Error fetching members:", error);
+    logger.error("Error fetching members:", error);
     return NextResponse.json(
       { error: "Failed to fetch members" },
       { status: 500 }

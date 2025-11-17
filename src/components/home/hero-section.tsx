@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import config from "@/config";
 
 const metrics = [
   { label: "Components", value: "169" },
@@ -62,7 +63,7 @@ export function HeroSection() {
               href="/pricing"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-card"
             >
-              Buy Now - $299
+              Buy Now - {config.pricing.product.display.current}
               <ArrowRight className="size-4" />
             </Link>
             <Link

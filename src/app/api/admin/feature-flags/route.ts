@@ -13,6 +13,7 @@ import {
   deleteDbFlag,
 } from '@/lib/feature-flags/db-flags';
 import { logFeatureFlagChange } from '@/lib/audit/logger';
+import { logger } from '@/lib/logger';
 
 export async function GET(req: NextRequest) {
   try {
@@ -30,7 +31,7 @@ export async function GET(req: NextRequest) {
     const flags = await getAllDbFlags();
     return NextResponse.json({ flags });
   } catch (error: unknown) {
-    console.error('Failed to fetch feature flags:', error);
+    logger.error('Failed to fetch feature flags:', error);
     return NextResponse.json({ error: 'Failed to fetch flags' }, { status: 500 });
   }
 }
@@ -68,7 +69,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({ flag });
   } catch (error: unknown) {
-    console.error('Failed to create feature flag:', error);
+    logger.error('Failed to create feature flag:', error);
     return NextResponse.json({ error: 'Failed to create flag' }, { status: 500 });
   }
 });
@@ -106,7 +107,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({ flag });
   } catch (error: unknown) {
-    console.error('Failed to update feature flag:', error);
+    logger.error('Failed to update feature flag:', error);
     return NextResponse.json({ error: 'Failed to update flag' }, { status: 500 });
   }
 });
@@ -138,7 +139,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
-    console.error('Failed to delete feature flag:', error);
+    logger.error('Failed to delete feature flag:', error);
     return NextResponse.json({ error: 'Failed to delete flag' }, { status: 500 });
   }
 });

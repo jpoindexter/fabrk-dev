@@ -7,6 +7,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 export async function GET(req: Request) {
   try {
@@ -94,7 +95,7 @@ export async function GET(req: Request) {
       },
     });
   } catch (error: unknown) {
-    console.error("[Data Export] Error:", error);
+    logger.error("[Data Export] Error:", error);
     return NextResponse.json(
       { error: "Failed to export data" },
       { status: 500 }

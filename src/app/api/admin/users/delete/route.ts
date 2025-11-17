@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const deleteSchema = z.object({
   userId: z.string(),
@@ -53,7 +54,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Admin Delete User] Error:", error);
+    logger.error("[Admin Delete User] Error:", error);
     return NextResponse.json(
       { error: "Failed to delete user" },
       { status: 500 }

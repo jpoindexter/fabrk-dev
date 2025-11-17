@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -79,7 +80,7 @@ export async function GET(
       },
     });
   } catch (error: unknown) {
-    console.error("Failed to fetch deliveries:", error);
+    logger.error("Failed to fetch deliveries:", error);
     return NextResponse.json(
       { error: "Failed to fetch deliveries" },
       { status: 500 }

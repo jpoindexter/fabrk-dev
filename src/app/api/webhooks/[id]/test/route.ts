@@ -10,6 +10,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { deliverWebhook } from "@/lib/webhooks";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -70,7 +71,7 @@ export const POST = withCsrfProtection(async (
       message: "Test webhook sent successfully",
     });
   } catch (error: unknown) {
-    console.error("Failed to send test webhook:", error);
+    logger.error("Failed to send test webhook:", error);
     return NextResponse.json(
       { error: "Failed to send test webhook" },
       { status: 500 }

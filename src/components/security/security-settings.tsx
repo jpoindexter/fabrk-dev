@@ -19,6 +19,16 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   Shield,
   Smartphone,
   Key,
@@ -50,6 +60,12 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   const [disconnectingProvider, setDisconnectingProvider] = useState<string | null>(null);
   const [isInvalidatingSessions, setIsInvalidatingSessions] = useState(false);
 
+  // Dialog states
+  const [disable2FADialogOpen, setDisable2FADialogOpen] = useState(false);
+  const [disconnectDialogOpen, setDisconnectDialogOpen] = useState(false);
+  const [providerToDisconnect, setProviderToDisconnect] = useState<string | null>(null);
+  const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] = useState(false);
+
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
 
@@ -63,16 +79,27 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // 6. Generate backup codes and display once
       // Reference: https://github.com/speakeasyjs/speakeasy
 
-      // TODO: Implement POST /api/user/2fa/enable
-      // const response = await fetch("/api/user/2fa/enable", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to enable 2FA");
+      // Call the MFA enable API
+      const response = await fetch("/api/auth/mfa/enable", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to enable 2FA");
+      }
+
+      const data = await response.json();
 
       info(
-        "Feature requires setup",
-        "2FA requires adding MFADevice and BackupCode models to your database schema. See implementation comments in the code."
+        "2FA Setup Required",
+        "Scan the QR code with your authenticator app and enter the verification code."
       );
+
+      // TODO: Show QR code modal with data.qrCode and verify code
+      // For now, redirect to MFA setup page or show toast
+      window.location.href = "/settings/security/2fa/setup";
     } catch (err: unknown) {
       error(
         "Error enabling 2FA",
@@ -83,12 +110,9 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
     }
   };
 
-  const handleDisable2FA = async () => {
-    if (!confirm("Are you sure you want to disable two-factor authentication?")) {
-      return;
-    }
-
+  const confirmDisable2FA = async () => {
     setIsDisabling2FA(true);
+    setDisable2FADialogOpen(false);
 
     try {
       // Implementation: Disable 2FA
@@ -97,16 +121,24 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // 3. Server updates User: twoFactorEnabled = false, clear twoFactorSecret
       // 4. Delete MFADevice and BackupCode records
 
-      // TODO: Implement POST /api/user/2fa/disable
-      // const response = await fetch("/api/user/2fa/disable", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to disable 2FA");
+      // Call the MFA disable API
+      const response = await fetch("/api/auth/mfa/disable", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to disable 2FA");
+      }
 
       info(
-        "Feature requires setup",
-        "2FA disable requires API implementation at /api/user/2fa/disable. See implementation comments in the code."
+        "2FA Disabled",
+        "Two-factor authentication has been disabled. Consider re-enabling it for better security."
       );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (err: unknown) {
       error(
         "Error disabling 2FA",
@@ -117,12 +149,11 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
     }
   };
 
-  const handleDisconnectAccount = async (provider: string) => {
-    if (!confirm(`Disconnect your ${provider} account? You'll need another way to sign in.`)) {
-      return;
-    }
+  const confirmDisconnectAccount = async () => {
+    if (!providerToDisconnect) return;
 
-    setDisconnectingProvider(provider);
+    setDisconnectingProvider(providerToDisconnect);
+    setDisconnectDialogOpen(false);
 
     try {
       // Implementation: Disconnect OAuth account
@@ -130,32 +161,38 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // Delete the Account record for this provider
       // Note: Ensure user has another login method (password or another OAuth)
 
-      // TODO: Implement DELETE /api/user/accounts/[provider]
-      // const response = await fetch(`/api/user/accounts/${provider}`, {
-      //   method: "DELETE",
-      // });
-      // if (!response.ok) throw new Error("Failed to disconnect account");
+      // Call the account disconnect API
+      const response = await fetch(`/api/user/accounts/${providerToDisconnect}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to disconnect account");
+      }
 
       info(
-        "Feature requires setup",
-        `Account disconnect requires API implementation at /api/user/accounts/${provider}. See implementation comments in the code.`
+        "Account Disconnected",
+        `Your ${providerToDisconnect} account has been disconnected successfully.`
       );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (err: unknown) {
       error(
         "Error disconnecting account",
-        err instanceof Error ? err.message : `Failed to disconnect ${provider} account`
+        err instanceof Error ? err.message : `Failed to disconnect ${providerToDisconnect} account`
       );
     } finally {
       setDisconnectingProvider(null);
+      setProviderToDisconnect(null);
     }
   };
 
-  const handleInvalidateAllSessions = async () => {
-    if (!confirm("This will log you out of all devices except this one. Continue?")) {
-      return;
-    }
-
+  const confirmInvalidateAllSessions = async () => {
     setIsInvalidatingSessions(true);
+    setInvalidateSessionsDialogOpen(false);
 
     try {
       // Implementation: Invalidate all sessions by incrementing sessionVersion
@@ -166,17 +203,26 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // })
       // Client: Redirect to login after success
 
-      // TODO: Implement POST /api/user/sessions/invalidate-all
-      // const response = await fetch("/api/user/sessions/invalidate-all", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to invalidate sessions");
-      // window.location.href = "/login";
+      // Call the session invalidation API
+      const response = await fetch("/api/user/sessions/invalidate-all", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to invalidate sessions");
+      }
 
       info(
-        "Feature requires setup",
-        "Session invalidation requires API implementation at /api/user/sessions/invalidate-all. See implementation comments in the code."
+        "Sessions Invalidated",
+        "All other sessions have been logged out. Redirecting..."
       );
+
+      // Redirect to dashboard after brief delay
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1500);
     } catch (err: unknown) {
       error(
         "Error invalidating sessions",
@@ -263,7 +309,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                 </Button>
                 <Button
                   variant="destructive"
-                  onClick={handleDisable2FA}
+                  onClick={() => setDisable2FADialogOpen(true)}
                   disabled={isDisabling2FA}
                 >
                   {isDisabling2FA ? "Disabling..." : "Disable 2FA"}
@@ -317,7 +363,10 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleDisconnectAccount(account.provider)}
+                    onClick={() => {
+                      setProviderToDisconnect(account.provider);
+                      setDisconnectDialogOpen(true);
+                    }}
                     disabled={disconnectingProvider === account.provider}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
@@ -379,7 +428,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           <div className="space-y-3">
             <Button
               variant="destructive"
-              onClick={handleInvalidateAllSessions}
+              onClick={() => setInvalidateSessionsDialogOpen(true)}
               disabled={isInvalidatingSessions}
               className="w-full"
             >
@@ -453,6 +502,63 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           </ul>
         </CardContent>
       </Card>
+
+      {/* Disable 2FA Dialog */}
+      <AlertDialog open={disable2FADialogOpen} onOpenChange={setDisable2FADialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Disable Two-Factor Authentication?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will remove an important security layer from your account. You will only need your password to sign in.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDisable2FA}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Disable 2FA
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Disconnect Account Dialog */}
+      <AlertDialog open={disconnectDialogOpen} onOpenChange={setDisconnectDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Disconnect {providerToDisconnect} Account?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will disconnect your {providerToDisconnect} account. You&apos;ll need another way to sign in (password or another OAuth provider).
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDisconnectAccount}>
+              Disconnect
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Invalidate Sessions Dialog */}
+      <AlertDialog open={invalidateSessionsDialogOpen} onOpenChange={setInvalidateSessionsDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Sign Out All Other Sessions?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will log you out of all devices except this one. You&apos;ll need to sign in again on those devices.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmInvalidateAllSessions}>
+              Sign Out All Other Sessions
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

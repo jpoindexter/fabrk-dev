@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const roleSchema = z.object({
   userId: z.string(),
@@ -55,7 +56,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Admin Role Update] Error:", error);
+    logger.error("[Admin Role Update] Error:", error);
     return NextResponse.json(
       { error: "Failed to update user role" },
       { status: 500 }

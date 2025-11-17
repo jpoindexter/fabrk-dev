@@ -11,6 +11,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const providerSchema = z.enum(["google", "github", "facebook", "twitter"]);
 
@@ -101,7 +102,7 @@ export const DELETE = withCsrfProtection(async (
       })),
     });
   } catch (error: unknown) {
-    console.error("[Account Disconnect] Error:", error);
+    logger.error("[Account Disconnect] Error:", error);
     return NextResponse.json(
       { error: "Failed to disconnect account" },
       { status: 500 }

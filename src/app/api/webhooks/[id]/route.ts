@@ -12,6 +12,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { isValidEvent } from "@/lib/webhooks/events";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -79,7 +80,7 @@ export async function GET(
       updatedAt: webhook.updatedAt,
     });
   } catch (error: unknown) {
-    console.error("Failed to fetch webhook:", error);
+    logger.error("Failed to fetch webhook:", error);
     return NextResponse.json(
       { error: "Failed to fetch webhook" },
       { status: 500 }
@@ -189,7 +190,7 @@ export const PATCH = withCsrfProtection(async (
       updatedAt: updatedWebhook.updatedAt,
     });
   } catch (error: unknown) {
-    console.error("Failed to update webhook:", error);
+    logger.error("Failed to update webhook:", error);
     return NextResponse.json(
       { error: "Failed to update webhook" },
       { status: 500 }
@@ -243,7 +244,7 @@ export const DELETE = withCsrfProtection(async (
       message: "Webhook deleted successfully",
     });
   } catch (error: unknown) {
-    console.error("Failed to delete webhook:", error);
+    logger.error("Failed to delete webhook:", error);
     return NextResponse.json(
       { error: "Failed to delete webhook" },
       { status: 500 }

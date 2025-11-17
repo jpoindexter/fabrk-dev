@@ -16,6 +16,7 @@ import { OrgRole } from "@prisma/client";
 import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string; memberId: string }>;
@@ -115,7 +116,7 @@ export const PATCH = withCsrfProtection(async (
         });
       }
     } catch (notifyError: unknown) {
-      console.error("Failed to send notifications:", notifyError);
+      logger.error("Failed to send notifications:", notifyError);
     }
 
     return NextResponse.json({
@@ -124,7 +125,7 @@ export const PATCH = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to update member role";
-    console.error("Failed to update member role:", errorMessage);
+    logger.error("Failed to update member role:", errorMessage);
 
     if (errorMessage.includes("permission")) {
       return NextResponse.json(
@@ -203,7 +204,7 @@ export const DELETE = withCsrfProtection(async (
           },
         });
       } catch (activityError: unknown) {
-        console.error("Failed to create activity:", activityError);
+        logger.error("Failed to create activity:", activityError);
       }
     }
 
@@ -213,7 +214,7 @@ export const DELETE = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to remove member";
-    console.error("Failed to remove member:", errorMessage);
+    logger.error("Failed to remove member:", errorMessage);
 
     if (errorMessage.includes("permission") || errorMessage.includes("owner")) {
       return NextResponse.json(

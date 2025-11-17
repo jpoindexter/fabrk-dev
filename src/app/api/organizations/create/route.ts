@@ -9,6 +9,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { createOrganization } from "@/lib/teams/organizations";
 import { trackOrgCreated } from "@/lib/analytics/events";
 import { logOrgCreated } from "@/lib/audit/logger";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -64,7 +65,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to create organization";
-    console.error("Failed to create organization:", errorMessage);
+    logger.error("Failed to create organization:", errorMessage);
 
     // Handle Prisma unique constraint violations
     if (error && typeof error === "object" && "code" in error && error.code === "P2002") {

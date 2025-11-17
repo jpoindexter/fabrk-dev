@@ -1,0 +1,140 @@
+---
+title: "5 Features Every SaaS Needs (And Why Fabrk Has Them All)"
+excerpt: "From authentication to payments, discover the essential features your SaaS needs to succeed - and how Fabrk provides them out of the box."
+author: "Fabrk Team"
+date: "2025-11-10"
+category: "Guides"
+tags: ["saas", "features", "best-practices"]
+image: "/images/blog/5-features.jpg"
+---
+
+# 5 Features Every SaaS Needs
+
+Building a SaaS? Here are the **5 non-negotiable features** every successful SaaS application needs - and why they're all included in Fabrk.
+
+## 1. Authentication & Authorization
+
+**Why it matters:** Without secure authentication, you don't have a product.
+
+**What you need:**
+- Email/password login
+- OAuth providers (Google, GitHub, etc.)
+- Magic link authentication
+- Two-factor authentication (2FA)
+- Session management
+- Password reset flows
+
+**Fabrk includes:**
+- ✅ NextAuth v5 with all auth methods
+- ✅ Complete 2FA/MFA with backup codes
+- ✅ Session versioning for instant invalidation
+- ✅ OAuth with Google (easy to add more)
+- ✅ Magic link passwordless authentication
+
+```typescript
+// Authentication ready out of the box
+import { auth } from "@/lib/auth";
+
+const session = await auth();
+if (!session?.user) {
+  return redirect("/login");
+}
+```
+
+## 2. Payment Processing
+
+**Why it matters:** No payments = no revenue.
+
+**What you need:**
+- One-time payments
+- Subscription billing
+- Invoice generation
+- Webhook handling
+- Secure checkout
+- Payment method management
+
+**Fabrk includes:**
+- ✅ Complete Stripe integration
+- ✅ Webhook deduplication
+- ✅ Idempotent checkout sessions
+- ✅ License key generation
+- ✅ Payment history & invoices
+
+## 3. Multi-Tenancy & Teams
+
+**Why it matters:** B2B SaaS needs team collaboration.
+
+**What you need:**
+- Organization management
+- Role-based access control (RBAC)
+- Member invitations
+- Permission levels
+- Team settings
+
+**Fabrk includes:**
+- ✅ Full multi-tenancy architecture
+- ✅ 4-level RBAC (Owner, Admin, Member, Guest)
+- ✅ Email-based invitations
+- ✅ Organization switching (Cmd+K)
+- ✅ Per-organization billing
+
+## 4. Admin Dashboard
+
+**Why it matters:** You need visibility into your business.
+
+**What you need:**
+- User management
+- Revenue analytics
+- Activity monitoring
+- Audit logging
+- Feature flags
+- System health
+
+**Fabrk includes:**
+- ✅ Complete admin dashboard
+- ✅ User/org statistics
+- ✅ Audit log viewer
+- ✅ Feature flag management
+- ✅ Real-time monitoring
+- ✅ User impersonation (debug mode)
+
+## 5. API & Webhooks
+
+**Why it matters:** Modern SaaS needs to integrate with everything.
+
+**What you need:**
+- RESTful API
+- API key authentication
+- Permission-based access
+- Webhook system
+- Delivery tracking
+- Automatic retries
+
+**Fabrk includes:**
+- ✅ Complete API key system
+- ✅ Read/write/admin permissions
+- ✅ 22 webhook events
+- ✅ Exponential backoff retries
+- ✅ HMAC-SHA256 signatures
+- ✅ Delivery history tracking
+
+## Bonus: What Else Fabrk Includes
+
+Beyond these 5 essentials, Fabrk also provides:
+
+- **Real-time features** with Pusher
+- **Email templates** with React Email
+- **Search** (optional Algolia integration)
+- **Analytics** (optional PostHog integration)
+- **100 UI components** with Storybook
+- **Comprehensive testing** (64% coverage)
+
+## Start Building Today
+
+Why spend weeks building these features when you can have them all today?
+
+[Get Fabrk now](#pricing) and focus on building your unique product, not reinventing the wheel.
+
+---
+
+*Questions? Reach out to us at [hello@fabrk.com](mailto:hello@fabrk.com)*

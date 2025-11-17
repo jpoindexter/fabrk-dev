@@ -13,6 +13,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { captureError } from "@/lib/monitoring";
+import { logger } from "@/lib/logger";
 
 export type JobType =
   | "email.send"
@@ -134,7 +135,7 @@ export async function processNextJob(): Promise<boolean> {
   const handler = jobHandlers.get(job.type as JobType);
 
   if (!handler) {
-    console.error(`No handler registered for job type: ${job.type}`);
+    logger.error(`No handler registered for job type: ${job.type}`);
 
     await prisma.job.update({
       where: { id: job.id },
@@ -233,7 +234,7 @@ export function startJobWorker(options: {
           await new Promise((resolve) => setTimeout(resolve, interval));
         }
       } catch (error: unknown) {
-        console.error("[Job Worker] Error processing job:", error);
+        logger.error("[Job Worker] Error processing job:", error);
         captureError(error instanceof Error ? error : new Error(String(error)));
       } finally {
         activeWorkers--;
@@ -423,7 +424,7 @@ export async function processEmailQueue(): Promise<number> {
   const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
   if (!resend) {
-    console.log("⚠️ [Email Queue] Resend API key not configured. Emails will be logged only.");
+    logger.warn("⚠️ [Email Queue] Resend API key not configured. Emails will be logged only.");
   }
 
   const FROM_EMAIL = process.env.EMAIL_FROM || "noreply@yourdomain.com";
@@ -442,7 +443,7 @@ export async function processEmailQueue(): Promise<number> {
     return 0;
   }
 
-  console.log(`📧 [Email Queue] Processing ${pendingEmails.length} emails...`);
+  logger.info(`📧 [Email Queue] Processing ${pendingEmails.length} emails...`);
 
   let successCount = 0;
 
@@ -467,7 +468,7 @@ export async function processEmailQueue(): Promise<number> {
         });
       } else {
         // Dev mode - just log
-        console.log(`📧 [DEV] Email to: ${email.to} - Subject: ${email.subject}`);
+        logger.debug(`📧 [DEV] Email to: ${email.to} - Subject: ${email.subject}`);
       }
 
       // Mark as sent
@@ -483,7 +484,7 @@ export async function processEmailQueue(): Promise<number> {
       successCount++;
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error(`❌ [Email Queue] Failed to send email ${email.id}:`, errorMessage);
+      logger.error(`❌ [Email Queue] Failed to send email ${email.id}:`, errorMessage);
 
       // Check if should retry
       const shouldRetry = email.attempts + 1 < email.maxAttempts;
@@ -510,7 +511,7 @@ export async function processEmailQueue(): Promise<number> {
     }
   }
 
-  console.log(`✅ [Email Queue] Successfully sent ${successCount}/${pendingEmails.length} emails`);
+  logger.info(`✅ [Email Queue] Successfully sent ${successCount}/${pendingEmails.length} emails`);
 
   return successCount;
 }
@@ -532,7 +533,7 @@ export function startEmailQueueWorker(options: {
     try {
       await processEmailQueue();
     } catch (error: unknown) {
-      console.error("[Email Queue Worker] Error:", error);
+      logger.error("[Email Queue Worker] Error:", error);
       captureError(error instanceof Error ? error : new Error(String(error)));
     }
 
@@ -543,12 +544,12 @@ export function startEmailQueueWorker(options: {
   }
 
   // Start processing
-  console.log("🚀 [Email Queue Worker] Started (polling every 5 seconds)");
+  logger.info("🚀 [Email Queue Worker] Started (polling every 5 seconds)");
   processEmails();
 
   // Return stop function
   return () => {
-    console.log("🛑 [Email Queue Worker] Stopping...");
+    logger.info("🛑 [Email Queue Worker] Stopping...");
     isRunning = false;
   };
 }

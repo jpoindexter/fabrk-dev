@@ -6,6 +6,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { enableMFA } from "@/lib/auth/mfa";
+import { logger } from "@/lib/logger";
 
 export async function POST() {
   try {
@@ -30,7 +31,7 @@ export async function POST() {
       backupCodes: result.backupCodes,
     });
   } catch (error: unknown) {
-    console.error("[MFA Enable] Error:", error);
+    logger.error("[MFA Enable] Error:", error);
     return NextResponse.json(
       { error: "Failed to enable MFA" },
       { status: 500 }

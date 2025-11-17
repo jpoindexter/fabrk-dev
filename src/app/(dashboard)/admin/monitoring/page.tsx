@@ -23,6 +23,16 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { getErrorStats, getPerformanceStats, clearErrorLogs } from "@/lib/monitoring";
 import { AlertTriangle, Activity, Trash2 } from "lucide-react";
 
@@ -37,6 +47,7 @@ export default function AdminMonitoringPage() {
   const [errorStats, setErrorStats] = useState<ReturnType<typeof getErrorStats>>();
   const [perfStats, setPerformanceStats] = useState<ReturnType<typeof getPerformanceStats>>();
   const [refreshKey, setRefreshKey] = useState(0);
+  const [clearLogsDialogOpen, setClearLogsDialogOpen] = useState(false);
 
   useEffect(() => {
     // Load stats (last 24 hours)
@@ -48,11 +59,10 @@ export default function AdminMonitoringPage() {
     setPerformanceStats(perf);
   }, [refreshKey]);
 
-  const handleClearLogs = () => {
-    if (confirm("Are you sure you want to clear all error logs?")) {
-      clearErrorLogs();
-      setRefreshKey((k) => k + 1);
-    }
+  const confirmClearLogs = () => {
+    setClearLogsDialogOpen(false);
+    clearErrorLogs();
+    setRefreshKey((k) => k + 1);
   };
 
   return (
@@ -75,7 +85,7 @@ export default function AdminMonitoringPage() {
           <Button
             variant="outline"
             size="sm"
-            onClick={handleClearLogs}
+            onClick={() => setClearLogsDialogOpen(true)}
             className="text-destructive"
           >
             <Trash2 className="mr-2 h-4 w-4" />
@@ -283,6 +293,27 @@ export default function AdminMonitoringPage() {
           </CardContent>
         </Card>
       )}
+
+      {/* Clear Logs Dialog */}
+      <AlertDialog open={clearLogsDialogOpen} onOpenChange={setClearLogsDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Clear All Error Logs?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete all error logs and performance metrics from the monitoring system.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmClearLogs}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Clear All Logs
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

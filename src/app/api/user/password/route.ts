@@ -9,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { hash, compare } from "bcryptjs";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const passwordSchema = z.object({
   currentPassword: z.string().min(8),
@@ -79,7 +80,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Password Change] Error:", error);
+    logger.error("[Password Change] Error:", error);
     return NextResponse.json(
       { error: "Failed to change password" },
       { status: 500 }

@@ -10,6 +10,7 @@ import { withCsrfProtection } from '@/lib/security/csrf';
 import { logUserImpersonation } from '@/lib/audit/logger';
 import { trackAdminImpersonation } from '@/lib/analytics/events';
 import crypto from 'crypto';
+import { logger } from '@/lib/logger';
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -104,7 +105,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
   } catch (error: unknown) {
-    console.error('Impersonation error:', error);
+    logger.error('Impersonation error:', error);
     return NextResponse.json({ error: 'Failed to process impersonation' }, { status: 500 });
   }
 });

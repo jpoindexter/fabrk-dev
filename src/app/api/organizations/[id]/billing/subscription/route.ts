@@ -11,6 +11,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -71,7 +72,7 @@ export async function GET(
       },
     });
   } catch (error: unknown) {
-    console.error("Failed to fetch subscription:", error);
+    logger.error("Failed to fetch subscription:", error);
     return NextResponse.json(
       { error: "Failed to fetch subscription" },
       { status: 500 }
@@ -145,7 +146,7 @@ export const POST = withCsrfProtection(async (
       },
     });
   } catch (error: unknown) {
-    console.error("Failed to create subscription:", error);
+    logger.error("Failed to create subscription:", error);
     return NextResponse.json(
       { error: "Failed to create subscription" },
       { status: 500 }
@@ -204,7 +205,7 @@ export const DELETE = withCsrfProtection(async (
       message: "Subscription cancelled successfully",
     });
   } catch (error: unknown) {
-    console.error("Failed to cancel subscription:", error);
+    logger.error("Failed to cancel subscription:", error);
     return NextResponse.json(
       { error: "Failed to cancel subscription" },
       { status: 500 }

@@ -18,6 +18,16 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   CreditCard,
   Plus,
   Trash2,
@@ -30,6 +40,8 @@ import { useToast } from "@/hooks/use-toast";
 export default function PaymentMethodsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [methodToDelete, setMethodToDelete] = useState<string | null>(null);
 
   // Mock data - in real implementation, fetch from Stripe API
   const [paymentMethods] = useState([
@@ -102,29 +114,33 @@ export default function PaymentMethodsPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to remove this payment method?")) {
-      try {
-        // Implementation: Detach payment method from customer
-        // DELETE /api/stripe/payment-methods/:id
-        // Then call stripe.paymentMethods.detach() on server
+  const confirmDelete = async () => {
+    if (!methodToDelete) return;
 
-        // TODO: Implement payment method deletion
-        // const response = await fetch(`/api/stripe/payment-methods/${id}`, {
-        //   method: "DELETE",
-        // });
-        // if (!response.ok) throw new Error("Failed to delete payment method");
+    setDeleteDialogOpen(false);
 
-        toast({
-          title: "Coming Soon",
-          description: `Payment method deletion will be available soon. Implementation requires Stripe paymentMethods.detach() API.`,
-        });
-      } catch (error: unknown) {
-        toast({
-          title: "Error",
-          description: error instanceof Error ? error.message : "Failed to delete payment method",
-        });
-      }
+    try {
+      // Implementation: Detach payment method from customer
+      // DELETE /api/stripe/payment-methods/:id
+      // Then call stripe.paymentMethods.detach() on server
+
+      // TODO: Implement payment method deletion
+      // const response = await fetch(`/api/stripe/payment-methods/${methodToDelete}`, {
+      //   method: "DELETE",
+      // });
+      // if (!response.ok) throw new Error("Failed to delete payment method");
+
+      toast({
+        title: "Coming Soon",
+        description: `Payment method deletion will be available soon. Implementation requires Stripe paymentMethods.detach() API.`,
+      });
+    } catch (error: unknown) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to delete payment method",
+      });
+    } finally {
+      setMethodToDelete(null);
     }
   };
 
@@ -224,7 +240,10 @@ export default function PaymentMethodsPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => handleDelete(method.id)}
+                      onClick={() => {
+                        setMethodToDelete(method.id);
+                        setDeleteDialogOpen(true);
+                      }}
                       disabled={method.isDefault && paymentMethods.length === 1}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -259,6 +278,27 @@ export default function PaymentMethodsPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Delete Payment Method Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Remove Payment Method?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently remove this payment method from your account. You can add it again later if needed.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Remove Payment Method
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

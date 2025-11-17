@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{
@@ -74,7 +75,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest, context: Route
 
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
-    console.error("Error revoking API key:", error);
+    logger.error("Error revoking API key:", error);
     return NextResponse.json(
       { error: "Failed to revoke API key" },
       { status: 500 }
@@ -172,7 +173,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteC
 
     return NextResponse.json(updated);
   } catch (error: unknown) {
-    console.error("Error updating API key:", error);
+    logger.error("Error updating API key:", error);
     return NextResponse.json(
       { error: "Failed to update API key" },
       { status: 500 }
