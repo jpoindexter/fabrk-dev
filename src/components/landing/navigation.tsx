@@ -10,7 +10,7 @@ export function Navigation() {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
-    { label: "Live Demo", href: "/demo" },
+    { label: "Live Demo", href: "/templates" },
   ];
 
   return (
@@ -58,7 +58,7 @@ export function Navigation() {
             className="hidden md:inline-flex"
             asChild
           >
-            <Link href="/demo">View Live Demo</Link>
+            <Link href="/templates">View Live Demo</Link>
           </Button>
           <Button
             asChild
