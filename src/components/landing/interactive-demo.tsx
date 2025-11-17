@@ -30,7 +30,7 @@ export function InteractiveDemo() {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Live Demo: Explore Templates
+              🎬 Live Demo: Explore Templates
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
               See production-ready dashboards, data tables, and settings pages. Click tabs to explore.
