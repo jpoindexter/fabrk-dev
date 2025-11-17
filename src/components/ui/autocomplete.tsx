@@ -148,21 +148,30 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
               filtered.map((option, i) => {
                 const label = getLabel(option);
                 const value = getValue(option);
+                const handleSelect = () => {
+                  setSearch(label);
+                  onValueChange?.(value);
+                  onChange?.(value);
+                  setIsOpen(false);
+                  setHighlightedIndex(-1);
+                };
+
                 return (
                   <div
                     key={i}
                     id={`option-${i}`}
                     role="option"
                     aria-selected={i === highlightedIndex}
-                    onClick={() => {
-                      setSearch(label);
-                      onValueChange?.(value);
-                      onChange?.(value);
-                      setIsOpen(false);
-                      setHighlightedIndex(-1);
+                    onClick={handleSelect}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        handleSelect();
+                      }
                     }}
+                    tabIndex={0}
                     className={cn(
-                      "cursor-pointer px-3 py-3 text-sm",
+                      "cursor-pointer px-3 py-3 text-sm outline-none",
                       "hover:bg-accent hover:text-accent-foreground",
                       "dark:text-muted-foreground dark:hover:bg-background dark:hover:text-foreground",
                       i === highlightedIndex &&

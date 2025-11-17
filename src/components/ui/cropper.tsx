@@ -68,21 +68,7 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
     const imageRef = React.useRef<HTMLImageElement>(null);
     const containerRef = React.useRef<HTMLDivElement>(null);
 
-    React.useEffect(() => {
-      if (typeof image === "string") {
-        setImageUrl(image);
-      } else if (image instanceof File) {
-        const url = URL.createObjectURL(image);
-        setImageUrl(url);
-        return () => URL.revokeObjectURL(url);
-      }
-    }, [image]);
-
-    React.useEffect(() => {
-      drawCanvas();
-    }, [imageUrl, zoom, rotation, cropArea]);
-
-    const drawCanvas = () => {
+    const drawCanvas = React.useCallback(() => {
       const canvas = canvasRef.current;
       const img = imageRef.current;
       if (!canvas || !img || !img.complete) return;
@@ -196,7 +182,21 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
       } else {
         ctx.strokeRect(cropX, cropY, cropWidth, cropHeight);
       }
-    };
+    }, [cropArea, cropShape, rotation, zoom, showGrid, aspectRatio]);
+
+    React.useEffect(() => {
+      if (typeof image === "string") {
+        setImageUrl(image);
+      } else if (image instanceof File) {
+        const url = URL.createObjectURL(image);
+        setImageUrl(url);
+        return () => URL.revokeObjectURL(url);
+      }
+    }, [image]);
+
+    React.useEffect(() => {
+      drawCanvas();
+    }, [imageUrl, zoom, rotation, cropArea, drawCanvas]);
 
     const handleMouseDown = (e: React.MouseEvent) => {
       setIsDragging(true);
