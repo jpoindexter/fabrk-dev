@@ -6,6 +6,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { regenerateBackupCodes } from "@/lib/auth/mfa";
+import { logger } from "@/lib/logger";
 
 export async function POST() {
   try {
@@ -26,7 +27,7 @@ export async function POST() {
 
     return NextResponse.json({ backupCodes });
   } catch (error: unknown) {
-    console.error("[MFA Regenerate Codes] Error:", error);
+    logger.error("[MFA Regenerate Codes] Error:", error);
     return NextResponse.json(
       { error: "Failed to regenerate backup codes" },
       { status: 500 }

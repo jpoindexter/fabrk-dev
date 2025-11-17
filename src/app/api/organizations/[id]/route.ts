@@ -18,6 +18,7 @@ import {
 } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
+import { logger } from "@/lib/logger";
 
 // UUID v4 format regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -93,7 +94,7 @@ export async function GET(
       },
     });
   } catch (error: unknown) {
-    console.error("Failed to fetch organization:", error);
+    logger.error("Failed to fetch organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },
       { status: 500 }
@@ -172,7 +173,7 @@ export const PATCH = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to update organization";
-    console.error("Failed to update organization:", errorMessage);
+    logger.error("Failed to update organization:", errorMessage);
 
     // Check for Prisma unique constraint violation
     if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
@@ -234,7 +235,7 @@ export const DELETE = withCsrfProtection(async (
       message: "Organization deleted successfully",
     });
   } catch (error: unknown) {
-    console.error("Failed to delete organization:", error);
+    logger.error("Failed to delete organization:", error);
     return NextResponse.json(
       { error: "Failed to delete organization" },
       { status: 500 }

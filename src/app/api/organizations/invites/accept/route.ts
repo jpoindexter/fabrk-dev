@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { acceptInvite } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -73,7 +74,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to accept invitation";
-    console.error("Failed to accept invitation:", errorMessage);
+    logger.error("Failed to accept invitation:", errorMessage);
 
     // Handle specific error cases
     if (errorMessage.includes("expired")) {

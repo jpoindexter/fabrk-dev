@@ -10,6 +10,7 @@ import { sendVerificationEmail } from "@/lib/email";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 import crypto from "crypto";
+import { logger } from "@/lib/logger";
 
 const emailSchema = z.object({
   newEmail: z.string().email(),
@@ -80,7 +81,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Email Change] Error:", error);
+    logger.error("[Email Change] Error:", error);
     return NextResponse.json(
       { error: "Failed to change email" },
       { status: 500 }

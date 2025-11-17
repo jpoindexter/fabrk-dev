@@ -9,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { compare } from "bcryptjs";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const deleteSchema = z.object({
   password: z.string().min(8),
@@ -66,7 +67,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest) => {
       );
     }
 
-    console.error("[Account Delete] Error:", error);
+    logger.error("[Account Delete] Error:", error);
     return NextResponse.json(
       { error: "Failed to delete account" },
       { status: 500 }

@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { authorizeChannel } from "@/lib/pusher/server";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   try {
@@ -81,7 +82,7 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error: unknown) {
-    console.error("Pusher auth error:", error);
+    logger.error("Pusher auth error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

@@ -10,6 +10,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { retryWebhookDelivery } from "@/lib/webhooks";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ deliveryId: string }>;
@@ -79,7 +80,7 @@ export const POST = withCsrfProtection(async (
       message: "Delivery retry initiated",
     });
   } catch (error: unknown) {
-    console.error("Failed to retry delivery:", error);
+    logger.error("Failed to retry delivery:", error);
     return NextResponse.json(
       { error: "Failed to retry delivery" },
       { status: 500 }

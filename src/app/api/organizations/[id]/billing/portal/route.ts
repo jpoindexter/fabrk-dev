@@ -10,6 +10,7 @@ import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { OrgRole } from "@prisma/client";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -74,7 +75,7 @@ export const POST = withCsrfProtection(async (
       url: portalSession.url,
     });
   } catch (error: unknown) {
-    console.error("Failed to create portal session:", error);
+    logger.error("Failed to create portal session:", error);
     return NextResponse.json(
       { error: "Failed to create billing portal session" },
       { status: 500 }

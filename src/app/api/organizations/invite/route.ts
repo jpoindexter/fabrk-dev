@@ -12,6 +12,7 @@ import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
 import { createOrgActivity } from "@/lib/notifications";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
+import { logger } from "@/lib/logger";
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -75,7 +76,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
       });
     } catch (emailError: unknown) {
-      console.error("Failed to send invitation email:", emailError);
+      logger.error("Failed to send invitation email:", emailError);
       // Don't fail the request if email fails - invitation is already created
     }
 
@@ -88,7 +89,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
         userName: session.user.name || session.user.email || "User",
       });
     } catch (activityError: unknown) {
-      console.error("Failed to create activity:", activityError);
+      logger.error("Failed to create activity:", activityError);
     }
 
     // Trigger webhook
@@ -105,7 +106,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
       });
     } catch (webhookError: unknown) {
-      console.error("Failed to trigger webhook:", webhookError);
+      logger.error("Failed to trigger webhook:", webhookError);
     }
 
     return NextResponse.json({
@@ -119,7 +120,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Failed to send invitation";
-    console.error("Failed to send invitation:", errorMessage);
+    logger.error("Failed to send invitation:", errorMessage);
 
     // Handle Prisma duplicate invitations
     if (error && typeof error === "object" && "code" in error && error.code === "P2002") {

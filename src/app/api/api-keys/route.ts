@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { generateApiKey } from "@/lib/api-keys/generator";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/api-keys
@@ -64,7 +65,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(apiKeys);
   } catch (error: unknown) {
-    console.error("Error fetching API keys:", error);
+    logger.error("Error fetching API keys:", error);
     return NextResponse.json(
       { error: "Failed to fetch API keys" },
       { status: 500 }
@@ -181,7 +182,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       key: generated.key, // Full key returned only once
     });
   } catch (error: unknown) {
-    console.error("Error creating API key:", error);
+    logger.error("Error creating API key:", error);
     return NextResponse.json(
       { error: "Failed to create API key" },
       { status: 500 }
