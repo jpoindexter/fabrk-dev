@@ -5,6 +5,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import {
   LayoutDashboard,
   Settings,
@@ -25,7 +26,6 @@ import {
   Mail,
   CreditCard,
   Shield,
-  Home,
   Code,
   Copy,
   ExternalLink,
@@ -136,36 +136,71 @@ const categories = [
   { id: "marketing", name: "Marketing", icon: FileText },
 ];
 
+const demos = [
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    url: "/templates/team-dashboard",
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    url: "/templates/settings-page",
+  },
+  {
+    id: "admin",
+    label: "Admin Panel",
+    url: "/templates/user-management",
+  },
+  {
+    id: "charts",
+    label: "Analytics",
+    url: "/templates/analytics-dashboard",
+  },
+];
+
 export default function TemplatesPage() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto max-w-7xl px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold mb-2">Template Gallery</h1>
-              <p className="text-muted-foreground text-lg">
-                Copy-paste ready layouts for your SaaS application
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <Link href="/demo">
-                <Button variant="outline">
-                  Demo
-                </Button>
-              </Link>
-              <Link href="/">
-                <Button variant="outline">
-                  <Home className="mr-2 h-4 w-4" />
-                  Home
-                </Button>
-              </Link>
-            </div>
+      {/* Main Navigation */}
+      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          {/* Logo/Home Link */}
+          <Link href="/" className="transition-opacity hover:opacity-80">
+            <Logo size={24} />
+          </Link>
+
+          {/* Navigation Links */}
+          <div className="flex items-center gap-8">
+            {demos.map((demo) => (
+              <button
+                key={demo.id}
+                onClick={() => setActiveTab(demo.id)}
+                className={`text-sm font-medium transition-colors ${
+                  activeTab === demo.id
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {demo.label}
+              </button>
+            ))}
+            <Link
+              href="/templates"
+              className="text-sm font-medium text-foreground"
+            >
+              Templates
+            </Link>
           </div>
+
+          {/* CTA Button */}
+          <Button asChild>
+            <Link href="/">Back Home</Link>
+          </Button>
         </div>
-      </header>
+      </nav>
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Info Card */}
