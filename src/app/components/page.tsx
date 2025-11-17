@@ -5,6 +5,7 @@
 
 import Link from "next/link";
 import { ShowcaseNav } from "@/components/showcase/showcase-nav";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Card,
   CardContent,
@@ -24,35 +25,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import ActivityTimelineDemo from "./activity-timeline-demo";
-import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X } from "lucide-react";
+import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X } from "lucide-react";
 
 export default function ComponentsPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b-3 border-black dark:border-white bg-card">
-        <div className="container mx-auto max-w-7xl px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold mb-2">UI Components Showcase</h1>
-              <p className="text-muted-foreground text-lg">
-                Preview all 87+ production-ready components with neo-brutalism styling
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <Link href="/">
-                <Button variant="outline">
-                  <Home className="mr-2 h-4 w-4" />
-                  Back to Home
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="dashboard" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Showcase Navigation */}

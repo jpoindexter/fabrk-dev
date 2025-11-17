@@ -40,6 +40,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Users,
   UserPlus,
@@ -203,8 +204,12 @@ export default function TeamDashboardTemplate() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <div className="min-h-screen bg-background">
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="dashboard" />
+
+      {/* Page Content */}
+      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>

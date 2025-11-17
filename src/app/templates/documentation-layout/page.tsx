@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Search,
   ChevronRight,
@@ -165,9 +166,7 @@ Now that you're set up, explore these guides:
 
 export default function DocumentationLayoutTemplate() {
   const [activeDoc, setActiveDoc] = useState("quick-start");
-  const [searchQuery, setSearchQuery] = useState("");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const handleCopyCode = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
@@ -217,50 +216,13 @@ export default function DocumentationLayoutTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="sticky top-0 z-50 border-b-2 border-border bg-card">
-        <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="font-semibold lg:hidden"
-            >
-              {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-            <div>
-              <h1 className="text-2xl font-semibold">Fabrk Documentation</h1>
-              <p className="text-sm text-muted-foreground">
-                Complete guide to building your SaaS
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="relative hidden md:block">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search docs..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-64 pl-10 font-semibold"
-              />
-            </div>
-            <Button variant="outline" size="sm" className="font-semibold">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              GitHub
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="dashboard" />
 
+      {/* Page Content */}
       <div className="flex">
         {/* Sidebar */}
-        <aside
-          className={`${
-            sidebarOpen ? "block" : "hidden"
-          } w-64 border-r-2 border-border bg-card lg:block`}
-        >
+        <aside className="w-64 border-r-2 border-border bg-card">
           <nav className="space-y-6 p-6">
             {docsStructure.map((section, idx) => {
               const Icon = section.icon;

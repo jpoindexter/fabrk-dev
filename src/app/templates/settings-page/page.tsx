@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
   AlertTriangle,
   Bell,
@@ -138,17 +139,10 @@ export default function SettingsPageTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b-2 border-border bg-card">
-        <div className="container mx-auto max-w-7xl px-6 py-8">
-          <h1 className="text-4xl font-semibold mb-2">Settings</h1>
-          <p className="text-muted-foreground text-lg">
-            Manage your application preferences and account settings
-          </p>
-        </div>
-      </div>
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="settings" />
 
-      {/* Main Content */}
+      {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6" suppressHydrationWarning>
           {/* Tab Navigation */}

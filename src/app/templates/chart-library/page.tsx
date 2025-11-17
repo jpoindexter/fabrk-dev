@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
   LineChart,
   Line,
@@ -106,8 +107,12 @@ export default function ChartLibraryTemplate() {
   const [activeTab, setActiveTab] = useState<string>("line");
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <div className="min-h-screen bg-background">
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="charts" />
+
+      {/* Page Content */}
+      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div>
           <h1 className="text-4xl font-semibold tracking-tight">
