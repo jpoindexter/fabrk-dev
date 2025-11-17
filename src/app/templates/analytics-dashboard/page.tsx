@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -38,34 +38,10 @@ import {
 } from "lucide-react";
 
 export default function AnalyticsDashboardTemplate() {
-  const [animatedHeights, setAnimatedHeights] = useState([0, 0, 0, 0, 0, 0]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    // Stagger animation for each bar
-    const targetHeights = [55, 70, 65, 85, 90, 100];
-    const animationDuration = 800;
-    const startTime = Date.now();
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / animationDuration, 1);
-
-      const easeOutQuad = 1 - (1 - progress) * (1 - progress);
-
-      setAnimatedHeights(
-        targetHeights.map((target) => target * easeOutQuad)
-      );
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    const timer = setTimeout(() => {
-      animate();
-    }, 100);
-
-    return () => clearTimeout(timer);
+    setIsAnimating(true);
   }, []);
 
   return (
@@ -154,21 +130,40 @@ export default function AnalyticsDashboardTemplate() {
             <CardContent>
               <div className="space-y-6">
                 <div className="h-[300px] flex items-end justify-between gap-2 px-2">
+                  <style>{`
+                    @keyframes growBar {
+                      from {
+                        height: 0;
+                      }
+                      to {
+                        height: var(--target-height);
+                      }
+                    }
+                    .bar-animate {
+                      animation: growBar 0.8s ease-out forwards;
+                      animation-delay: var(--delay);
+                    }
+                  `}</style>
                   {[
-                    { month: "Jan", revenue: 32000 },
-                    { month: "Feb", revenue: 42000 },
-                    { month: "Mar", revenue: 38000 },
-                    { month: "Apr", revenue: 54000 },
-                    { month: "May", revenue: 57000 },
-                    { month: "Jun", revenue: 63000 },
+                    { month: "Jan", revenue: 32000, height: 55 },
+                    { month: "Feb", revenue: 42000, height: 70 },
+                    { month: "Mar", revenue: 38000, height: 65 },
+                    { month: "Apr", revenue: 54000, height: 85 },
+                    { month: "May", revenue: 57000, height: 90 },
+                    { month: "Jun", revenue: 63000, height: 100 },
                   ].map((data, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
                       <span className="text-xs font-semibold text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                         ${(data.revenue / 1000).toFixed(0)}k
                       </span>
                       <div
-                        className="w-full bg-primary rounded-t-md transition-all hover:bg-primary/90 hover:shadow-md"
-                        style={{ height: `${animatedHeights[i]}%`, minHeight: "24px" }}
+                        className={`w-full bg-primary rounded-t-md transition-all hover:bg-primary/90 hover:shadow-md ${isAnimating ? 'bar-animate' : ''}`}
+                        style={{
+                          '--target-height': `${data.height}%`,
+                          '--delay': `${i * 100}ms`,
+                          height: isAnimating ? undefined : `${data.height}%`,
+                          minHeight: "24px",
+                        } as React.CSSProperties}
                       />
                       <span className="text-xs text-muted-foreground">
                         {data.month}
