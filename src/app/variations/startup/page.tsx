@@ -26,20 +26,19 @@ export default function StartupVariation() {
             </div>
             <div className="flex items-center gap-3">
               <Button
-                variant="ghost"
+                variant="ghostOnDark"
                 size="sm"
-                className="text-white/80 hover:text-white hover:bg-white/10"
                 asChild
               >
                 <Link href="/login">Sign In</Link>
               </Button>
               <Button
+                variant="primaryCta"
                 size="sm"
-                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white font-semibold border-0 shadow-md shadow-purple-500/30 rounded-lg transition-opacity"
                 asChild
               >
                 <Link href="/#pricing">
-                  Start Free
+                  Get Fabrk Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -77,24 +76,23 @@ export default function StartupVariation() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <Button
-                size="lg"
-                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white font-semibold text-lg px-10 py-6 border-0 shadow-lg shadow-purple-500/30 rounded-lg transition-opacity"
+                size="xl"
+                variant="primaryCta"
                 asChild
               >
                 <Link href="/#pricing">
-                  GET STARTED NOW
+                  Get Fabrk Now - {config.pricing.product.display.current}
                   <Rocket className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border border-white/30 text-white hover:bg-white/10 font-semibold text-lg px-10 py-6 rounded-lg backdrop-blur-sm"
+                variant="ghostOnDark"
                 asChild
               >
                 <Link href="/variations">
                   <ArrowLeft className="mr-2 h-5 w-5" />
-                  OTHER STYLES
+                  Other Styles
                 </Link>
               </Button>
             </div>
@@ -268,12 +266,12 @@ export default function StartupVariation() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <Button
-              size="lg"
-              className="bg-black text-white hover:opacity-90 font-semibold text-xl px-12 py-7 shadow-lg rounded-lg transition-opacity"
+              size="xl"
+              variant="primaryCta"
               asChild
             >
               <Link href="/#pricing">
-                BUY NOW - {config.pricing.product.display.current}
+                Get Fabrk Now - {config.pricing.product.display.current}
                 <ChevronRight className="ml-2 h-6 w-6" />
               </Link>
             </Button>
@@ -316,11 +314,12 @@ export default function StartupVariation() {
           </p>
           <Button
             size="sm"
-            className="w-full bg-black/30 hover:bg-black/50 border border-white/20 backdrop-blur-sm rounded-md"
+            variant="ghostOnDark"
+            className="w-full"
             asChild
           >
             <Link href="/variations">
-              View All 4 Styles
+              View All Styles
             </Link>
           </Button>
         </div>

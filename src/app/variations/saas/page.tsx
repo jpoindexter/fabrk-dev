@@ -33,8 +33,8 @@ export default function SaaSVariation() {
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Sign In</Link>
               </Button>
-              <Button size="sm" className="rounded-lg" asChild>
-                <Link href="/#pricing">Start Free Trial</Link>
+              <Button variant="primaryCta" size="sm" asChild>
+                <Link href="/#pricing">Get Fabrk Now</Link>
               </Button>
             </div>
           </div>
@@ -63,13 +63,21 @@ export default function SaaSVariation() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <Button size="lg" className="rounded-lg hover:opacity-90 transition-opacity" asChild>
+                <Button
+                  size="xl"
+                  variant="primaryCta"
+                  asChild
+                >
                   <Link href="/#pricing">
-                    Start Free Trial
+                    Get Fabrk Now - {""}{/* price displayed on main pages */}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-lg" asChild>
+                <Button
+                  size="lg"
+                  variant="secondaryCta"
+                  asChild
+                >
                   <Link href="/components">View Documentation</Link>
                 </Button>
               </div>
@@ -193,11 +201,17 @@ export default function SaaSVariation() {
             Join thousands of companies using Fabrk to power their SaaS
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button size="lg" variant="secondary" className="rounded-lg hover:opacity-90 transition-opacity">
-              Start Free Trial
+            <Button
+              size="xl"
+              variant="secondaryCta"
+            >
+              Get Fabrk Now
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-lg border-white/20 text-white hover:bg-white/10">
+            <Button
+              size="lg"
+              variant="ghostOnDark"
+            >
               <ArrowLeft className="mr-2 h-4 w-4" />
               View All Styles
             </Button>

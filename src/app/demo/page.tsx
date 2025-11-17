@@ -94,9 +94,13 @@ export default function DemoPage() {
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" suppressHydrationWarning>
           {/* Tab Navigation */}
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
+          <TabsList className="flex w-full gap-2 overflow-x-auto border-b border-border bg-card/60 px-1 py-1">
             {demos.map((demo) => (
-              <TabsTrigger key={demo.id} value={demo.id}>
+              <TabsTrigger
+                key={demo.id}
+                value={demo.id}
+                className="whitespace-nowrap px-3 py-1 text-sm"
+              >
                 {demo.label}
               </TabsTrigger>
             ))}
@@ -137,10 +141,16 @@ export default function DemoPage() {
                 </div>
 
                 {/* Iframe Preview */}
-                <div className="relative aspect-[16/10] w-full bg-muted">
+                <div className="relative aspect-[16/10] w-full rounded-lg border border-border bg-muted">
+                  <div className="flex items-center gap-1 border-b border-border/60 bg-card/80 px-3 py-1.5 text-xs text-muted-foreground">
+                    <span className="h-2 w-2 rounded-full bg-destructive" />
+                    <span className="h-2 w-2 rounded-full bg-warning" />
+                    <span className="h-2 w-2 rounded-full bg-success" />
+                    <span className="ml-3 truncate">{demo.url}</span>
+                  </div>
                   <iframe
                     src={demo.url}
-                    className="absolute inset-0 h-full w-full border-0"
+                    className="h-[calc(100%-1.75rem)] w-full border-0"
                     title={`${demo.label} Preview`}
                     loading="lazy"
                   />
@@ -168,23 +178,23 @@ export default function DemoPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-12 text-center">
-          <h3 className="text-2xl font-bold">Explore More</h3>
-          <p className="mt-2 text-muted-foreground">
-            See our complete component library and template gallery
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Button asChild>
-              <a href="/components">Browse Components</a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="/templates">View Templates</a>
-            </Button>
-            <Button variant="ghost" asChild>
-              <a href="/whats-included">What's Included</a>
-            </Button>
+          <div className="mt-12 text-center">
+            <h3 className="text-2xl font-bold">Explore More</h3>
+            <p className="mt-2 text-muted-foreground">
+              See our complete component library and template gallery
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <Button asChild variant="primaryCta">
+                <a href="/components">Browse Components</a>
+              </Button>
+              <Button asChild variant="secondaryCta">
+                <a href="/templates">View Templates</a>
+              </Button>
+              <Button variant="ghost" asChild>
+                <a href="/whats-included">What's Included</a>
+              </Button>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );

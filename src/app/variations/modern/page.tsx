@@ -31,8 +31,8 @@ export default function ModernVariation() {
               <Button variant="ghost" size="sm" asChild>
                 <Link href="/login">Sign In</Link>
               </Button>
-              <Button size="sm" className="rounded-lg" asChild>
-                <Link href="/#pricing">Get Started</Link>
+              <Button variant="primaryCta" size="sm" asChild>
+                <Link href="/#pricing">Get Fabrk Now</Link>
               </Button>
             </div>
           </div>
@@ -59,13 +59,21 @@ export default function ModernVariation() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
-              <Button size="lg" className="rounded-lg hover:opacity-90 transition-opacity" asChild>
+              <Button
+                size="xl"
+                variant="primaryCta"
+                asChild
+              >
                 <Link href="/#pricing">
-                  Get Started - {config.pricing.product.display.current}
+                  Get Fabrk Now - {config.pricing.product.display.current}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-lg" asChild>
+              <Button
+                size="lg"
+                variant="secondaryCta"
+                asChild
+              >
                 <Link href="/variations">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   View All Styles
@@ -166,13 +174,21 @@ export default function ModernVariation() {
               Join hundreds of developers who chose Fabrk to launch faster.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-              <Button size="lg" variant="secondary" className="rounded-lg hover:opacity-90 transition-opacity" asChild>
+              <Button
+                size="xl"
+                variant="secondaryCta"
+                asChild
+              >
                 <Link href="/#pricing">
-                  Get Started - {config.pricing.product.display.current}
+                  Get Fabrk Now - {config.pricing.product.display.current}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-lg border-white/20 text-white hover:bg-white/10" asChild>
+              <Button
+                size="lg"
+                variant="ghostOnDark"
+                asChild
+              >
                 <Link href="/components">View Components</Link>
               </Button>
             </div>

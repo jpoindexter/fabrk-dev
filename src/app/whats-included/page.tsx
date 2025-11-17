@@ -251,18 +251,18 @@ export default function WhatsIncludedPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b-3 border-black dark:border-white bg-gradient-to-r from-primary/10 to-secondary/10">
+      <header className="border-b border-border bg-gradient-to-r from-primary/10 to-secondary/10">
         <div className="container mx-auto max-w-7xl px-6 py-16">
           <div className="flex items-start justify-between">
             <div className="space-y-4">
               <Badge className="mb-2">Complete Boilerplate</Badge>
-              <h1 className="text-5xl font-bold mb-4">What's Included</h1>
-              <p className="text-xl text-muted-foreground max-w-2xl">
+              <h1 className="text-5xl sm:text-6xl font-semibold mb-4">What's Included</h1>
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">
                 Everything you need to launch your SaaS in hours, not weeks. 87+ components, 5 unique features, complete authentication, and more.
               </p>
             </div>
             <Link href="/">
-              <Button variant="outline" size="lg">
+              <Button variant="secondaryCta" size="lg">
                 Back to Home
               </Button>
             </Link>
@@ -340,7 +340,7 @@ export default function WhatsIncludedPage() {
                       ))}
                     </ul>
                     <Link href={feature.link}>
-                      <Button variant="outline" size="sm" className="w-full">
+                      <Button variant="secondaryCta" size="sm" className="w-full">
                         View Example
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -378,7 +378,7 @@ export default function WhatsIncludedPage() {
                   </CardHeader>
                   <CardContent>
                     <Link href={page.url}>
-                      <Button className="w-full">
+                      <Button variant="secondaryCta" className="w-full">
                         Open Preview
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </Button>
@@ -488,26 +488,26 @@ export default function WhatsIncludedPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2">
-            <CardContent className="pt-12 pb-12">
-              <h2 className="text-4xl font-bold mb-4">Ready to Build?</h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border">
+            <CardContent className="py-12">
+              <h2 className="text-4xl font-semibold mb-4">Ready to Build?</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Everything you see here is included. No hidden features, no upsells. Just ship your SaaS faster.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/components">
-                  <Button size="lg">
+                  <Button variant="primaryCta" size="lg">
                     Browse Components
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/variations">
-                  <Button size="lg" variant="outline">
+                  <Button variant="secondaryCta" size="lg">
                     View Landing Variations
                   </Button>
                 </Link>
                 <Link href="/examples/admin">
-                  <Button size="lg" variant="outline">
+                  <Button variant="secondaryCta" size="lg">
                     See Dashboard Examples
                   </Button>
                 </Link>

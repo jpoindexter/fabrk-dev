@@ -30,6 +30,13 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Consistent high-emphasis CTA styles used across marketing, demo, and variation pages
+        primaryCta:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-lg text-base px-6 py-3",
+        secondaryCta:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-lg text-base px-6 py-3",
+        ghostOnDark:
+          "border border-white/30 bg-transparent text-white hover:bg-white/10 rounded-lg text-base px-6 py-3",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -73,8 +80,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // UX Heuristic #1: Visibility of System Status
     return (
-      <Comp data-slot="button"
-        className={cn(buttonVariants({ variant, size, className }))}
+      <Comp
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size }), className)}
         ref={ref}
         disabled={disabled || loading}
         aria-busy={loading ? "true" : undefined}
@@ -83,7 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading ? (
           <>
-            <Loader2 className={`"h-4 w-4" animate-spin`} />
+            <Loader2 className="h-4 w-4 animate-spin" />
             <span>{loadingText}</span>
           </>
         ) : (

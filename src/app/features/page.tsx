@@ -248,28 +248,25 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="border-b-3 border-border bg-gradient-to-b from-accent/30 to-background py-20">
+      <section className="border-b border-border bg-gradient-to-b from-accent/30 to-background py-20">
         <div className="container mx-auto max-w-7xl px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
+          <div className="mx-auto max-w-3xl text-center space-y-6">
             <Badge variant="secondary" className="mb-4">Everything You Need</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+            <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight">
               Complete SaaS Infrastructure
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Authentication, payments, database, email, UI components, and more.
-              Stop wasting time on boilerplate code.
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              Authentication, payments, database, email, UI components, and more. Stop wasting time on boilerplate code.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" asChild>
+              <Button variant="primaryCta" size="xl" asChild>
                 <Link href="/#pricing">
-                  Get Started - {config.pricing.product.display.current}
+                  Get Fabrk Now - {config.pricing.product.display.current}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/components">
-                  View Components
-                </Link>
+              <Button variant="secondaryCta" size="lg" asChild>
+                <Link href="/components">View Components</Link>
               </Button>
             </div>
           </div>
@@ -425,27 +422,24 @@ export default function FeaturesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="text-center space-y-8 py-12">
-          <h2 className="text-4xl font-bold">Ready to Build Your SaaS?</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Get instant access to all features, components, and templates.
-            One-time payment, lifetime access, and all future updates.
+        <section className="py-12 text-center space-y-8">
+          <h2 className="text-4xl font-semibold">Ready to Build Your SaaS?</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Get instant access to all features, components, and templates. One-time payment, lifetime access, and all future updates.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button variant="primaryCta" size="xl" asChild>
               <Link href="/#pricing">
-                Get Fabrk - {config.pricing.product.display.current}
+                Get Fabrk Now - {config.pricing.product.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/templates">
-                View Templates
-              </Link>
+            <Button variant="secondaryCta" size="lg" asChild>
+              <Link href="/templates">View Templates</Link>
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            ✓ Instant access ✓ Lifetime updates ✓ 30-day money back guarantee
+            ✓ Instant access ✓ Lifetime updates ✓ 30-day money-back guarantee
           </p>
         </section>
       </main>

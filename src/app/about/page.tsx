@@ -34,17 +34,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="border-b-3 border-border bg-gradient-to-b from-accent/30 to-background py-20">
+      <section className="border-b border-border bg-gradient-to-b from-accent/30 to-background py-20">
         <div className="container mx-auto max-w-5xl px-6 text-center">
           <Badge variant="secondary" className="mb-4">
             Our Story
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight mb-6">
             Built by Developers,
             <br />
             <span className="text-primary">For Developers</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             We're on a mission to eliminate the repetitive work that slows down every
             SaaS project, so you can focus on building features that matter.
           </p>
@@ -262,19 +262,19 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="text-center space-y-6 py-12">
-          <h2 className="text-4xl font-bold">Ready to Build Your SaaS?</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Join 500+ developers who are shipping faster with Fabrk
+        <section className="py-12 text-center space-y-6">
+          <h2 className="text-4xl font-semibold">Ready to Build Your SaaS?</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Join 500+ developers who are shipping faster with Fabrk.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button variant="primaryCta" size="xl" asChild>
               <Link href="/#pricing">
-                Get Started - {config.pricing.product.display.current}
+                Get Fabrk Now - {config.pricing.product.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button variant="secondaryCta" size="lg" asChild>
               <Link href="/features">View All Features</Link>
             </Button>
           </div>

@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import config from "@/config";
+import { Button } from "@/components/ui/button";
 
 const metrics = [
   { label: "Components", value: "87" },
@@ -59,25 +60,28 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Link
-              href="/pricing"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-card"
+            <Button
+              asChild
+              variant="primaryCta"
+              size="xl"
             >
-              Buy Now - {config.pricing.product.display.current}
-              <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              <Link href="/pricing">
+                Get Fabrk Now - {config.pricing.product.display.current}
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="secondaryCta"
             >
-              View Live Demo
-            </Link>
-            <Link
-              href="/components"
-              className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              <Link href="/demo">View Live Demo</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
             >
-              Browse Components
-            </Link>
+              <Link href="/components">Browse Components</Link>
+            </Button>
           </motion.div>
 
           {/* Trust badges - inline style */}
