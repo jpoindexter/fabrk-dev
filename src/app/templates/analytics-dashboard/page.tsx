@@ -5,7 +5,6 @@
 
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -25,8 +24,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DemoNav } from "@/components/demo/demo-nav";
 import {
-  ArrowLeft,
   TrendingUp,
   TrendingDown,
   Users,
@@ -40,38 +39,10 @@ import {
 export default function AnalyticsDashboardTemplate() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto max-w-7xl px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/templates">
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Templates
-                </Button>
-              </Link>
-              <div className="hidden md:block">
-                <h1 className="text-xl font-semibold">Analytics Dashboard</h1>
-                <p className="text-sm text-muted-foreground">
-                  Real-time metrics and insights
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Button variant="outline" size="sm">
-                <Calendar className="mr-2 h-4 w-4" />
-                Last 30 days
-              </Button>
-              <Button size="sm">
-                <Download className="mr-2 h-4 w-4" />
-                Export
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Demo Navigation */}
+      <DemoNav activeDemo="charts" />
 
+      {/* Page Content */}
       <main className="container mx-auto max-w-7xl px-6 py-8 space-y-8">
         {/* Metric Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
