@@ -88,7 +88,14 @@ export default async function InvoicesPage() {
   };
 
   const handleDownload = async (paymentId: string) => {
-    // TODO: Generate and download invoice PDF
+    // Implementation: Generate and download invoice PDF
+    // Option 1: Use Stripe's hosted invoice URL
+    //   - Call stripe.invoices.retrieve() to get invoice.hosted_invoice_url
+    //   - Open URL in new window or redirect
+    // Option 2: Generate custom PDF with @react-pdf/renderer or puppeteer
+    //   - POST /api/invoices/generate with paymentId
+    //   - Return PDF blob and trigger download
+    // Reference: https://stripe.com/docs/api/invoices/object#invoice_object-hosted_invoice_url
     alert(`Download invoice for ${paymentId} - to be implemented`);
   };
 

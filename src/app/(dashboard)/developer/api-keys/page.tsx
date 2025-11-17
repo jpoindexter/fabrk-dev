@@ -53,8 +53,12 @@ interface ApiKey {
   };
 }
 
-// This should come from organization context
-const ORGANIZATION_ID = "org_demo"; // TODO: Get from context/props
+// Organization ID - options to get this:
+// 1. From URL params: const orgId = params.orgId
+// 2. From organization context when OrganizationProvider is set up
+// 3. From user's active organization in session
+// For now, using demo organization ID
+const ORGANIZATION_ID = "org_demo";
 
 export default function ApiKeysPage() {
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);

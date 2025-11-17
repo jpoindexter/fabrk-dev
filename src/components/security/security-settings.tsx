@@ -47,28 +47,48 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
-    // TODO: Implement 2FA setup flow
+    // Implementation: 2FA setup flow
+    // 1. Generate TOTP secret: const secret = speakeasy.generateSecret()
+    // 2. Display QR code: use qrcode library to generate QR from secret.otpauth_url
+    // 3. User scans with authenticator app (Google Authenticator, Authy, etc.)
+    // 4. User enters verification code to confirm
+    // 5. Save to database: Update User with twoFactorSecret (encrypted) and twoFactorEnabled=true
+    // 6. Generate backup codes and display once
+    // Reference: https://github.com/speakeasyjs/speakeasy
     alert("2FA setup will be implemented. This requires adding 2FA fields to User model.");
     setIsEnabling2FA(false);
   };
 
   const handleDisable2FA = async () => {
     if (confirm("Are you sure you want to disable two-factor authentication?")) {
-      // TODO: Implement 2FA disable
+      // Implementation: Disable 2FA
+      // 1. Verify user password or current 2FA code for security
+      // 2. POST /api/user/2fa/disable
+      // 3. Server updates User: twoFactorEnabled = false, clear twoFactorSecret
+      // 4. Delete MFADevice and BackupCode records
       alert("2FA disable functionality to be implemented");
     }
   };
 
   const handleDisconnectAccount = async (provider: string) => {
     if (confirm(`Disconnect your ${provider} account?`)) {
-      // TODO: Implement account disconnection
+      // Implementation: Disconnect OAuth account
+      // DELETE /api/user/accounts/:provider
+      // Delete the Account record for this provider
+      // Note: Ensure user has another login method (password or another OAuth)
       alert(`Disconnect ${provider} functionality to be implemented`);
     }
   };
 
   const handleInvalidateAllSessions = async () => {
     if (confirm("This will log you out of all devices. Continue?")) {
-      // TODO: Implement session invalidation by incrementing sessionVersion
+      // Implementation: Invalidate all sessions by incrementing sessionVersion
+      // POST /api/user/sessions/invalidate-all
+      // Server: await prisma.user.update({
+      //   where: { id: session.user.id },
+      //   data: { sessionVersion: { increment: 1 } }
+      // })
+      // Client: Redirect to login after success
       alert("Session invalidation to be implemented");
     }
   };

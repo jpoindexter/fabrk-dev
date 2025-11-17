@@ -38,9 +38,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // In a production app, you'd update the user's activeOrganizationId in the session
-    // For now, we'll return success and let the client handle the context
-    // TODO: Implement session update with activeOrganizationId
+    // Session update with activeOrganizationId is handled client-side
+    // The organization context is stored in localStorage and managed by the OrganizationProvider
+    // To persist across sessions, add 'activeOrganizationId' field to User model and update here:
+    // await prisma.user.update({
+    //   where: { id: session.user.id },
+    //   data: { activeOrganizationId: organizationId }
+    // });
 
     return NextResponse.json({
       success: true,

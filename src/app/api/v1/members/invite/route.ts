@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
+import { sendOrganizationInvite } from "@/lib/email";
 import crypto from "crypto";
 
 /**
@@ -96,8 +97,14 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
       },
     });
 
-    // TODO: Send invite email
-    // await sendInviteEmail(email, invite.organization.name, token);
+    // Send invite email
+    await sendOrganizationInvite(email, {
+      organizationName: invite.organization.name,
+      inviterName: invite.inviter.name || invite.inviter.email || "A team member",
+      role: invite.role,
+      token,
+      expiresAt: invite.expiresAt,
+    });
 
     return NextResponse.json({
       id: invite.id,

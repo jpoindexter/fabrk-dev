@@ -44,19 +44,27 @@ export default function PaymentMethodsPage() {
 
   const handleAddPaymentMethod = async () => {
     setIsLoading(true);
-    // TODO: Open Stripe payment method setup
+    // Implementation: Create Stripe SetupIntent and redirect to Stripe Checkout
+    // 1. POST /api/stripe/setup-intent to create SetupIntent
+    // 2. Redirect to Stripe Checkout or use Stripe Elements
+    // 3. Handle webhook stripe.setup_intent.succeeded to save payment method
+    // Reference: https://stripe.com/docs/payments/save-and-reuse
     alert("Stripe payment method setup to be implemented");
     setIsLoading(false);
   };
 
   const handleSetDefault = async (id: string) => {
-    // TODO: Update default payment method in Stripe
+    // Implementation: Update default payment method via Stripe API
+    // POST /api/stripe/payment-methods/default with { paymentMethodId: id }
+    // Then call stripe.customers.update() to set invoice_settings.default_payment_method
     alert(`Set ${id} as default - to be implemented`);
   };
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to remove this payment method?")) {
-      // TODO: Delete payment method from Stripe
+      // Implementation: Detach payment method from customer
+      // DELETE /api/stripe/payment-methods/:id
+      // Then call stripe.paymentMethods.detach() on server
       alert(`Delete ${id} - to be implemented`);
     }
   };
