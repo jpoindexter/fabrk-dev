@@ -133,15 +133,14 @@ export default function AnalyticsDashboardTemplate() {
                   <style>{`
                     @keyframes growBar {
                       from {
-                        transform: scaleY(0);
+                        height: 0;
                       }
                       to {
-                        transform: scaleY(1);
+                        height: var(--bar-height);
                       }
                     }
                     .bar-animate {
-                      animation: growBar 0.8s ease-out forwards;
-                      transform-origin: bottom;
+                      animation: growBar 0.8s ease-out forwards !important;
                     }
                   `}</style>
                   {[
@@ -157,10 +156,11 @@ export default function AnalyticsDashboardTemplate() {
                         ${(data.revenue / 1000).toFixed(0)}k
                       </span>
                       <div
-                        className={`w-full bg-primary rounded-t-md transition-all hover:bg-primary/90 hover:shadow-md ${isAnimating ? 'bar-animate' : ''}`}
+                        className={`w-full bg-primary rounded-t-md hover:bg-primary/90 hover:shadow-md ${isAnimating ? 'bar-animate' : ''}`}
                         style={{
-                          height: `${data.height}%`,
-                          animationDelay: `${i * 100}ms`,
+                          '--bar-height': `${data.height}%`,
+                          animationDelay: isAnimating ? `${i * 100}ms` : undefined,
+                          height: isAnimating ? undefined : `${data.height}%`,
                           minHeight: "24px",
                         } as React.CSSProperties}
                       />
