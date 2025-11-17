@@ -15,7 +15,7 @@ export function HeroSection() {
     }
   };
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
+    <section className="relative overflow-hidden bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
         {/* Hero Content */}
         <div className="mx-auto max-w-4xl text-center">
