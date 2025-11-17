@@ -12,7 +12,7 @@ import Link from "next/link";
 import config from "@/config";
 
 const metrics = [
-  { label: "Components", value: "169" },
+  { label: "Components", value: "87" },
   { label: "Test Coverage", value: "85%" },
   { label: "Quality Grade", value: "A" },
 ];
@@ -50,7 +50,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            169 components. Automated quality. One price.
+            87 components. Automated quality. One price.
           </motion.p>
 
           <motion.div
@@ -65,6 +65,12 @@ export function HeroSection() {
             >
               Buy Now - {config.pricing.product.display.current}
               <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              href="/demo"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              View Live Demo
             </Link>
             <Link
               href="/components"
@@ -82,7 +88,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-foreground">169</span>
+              <span className="font-semibold text-foreground">87</span>
               <span>Components</span>
             </div>
             <div className="h-4 w-px bg-border" />

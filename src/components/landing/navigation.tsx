@@ -37,7 +37,7 @@ export function Navigation() {
             href="/demo"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
-            Demo
+            Live Demo
           </Link>
         </div>
 
@@ -48,7 +48,7 @@ export function Navigation() {
             className="hidden md:inline-flex"
             asChild
           >
-            <Link href="/demo">Demo</Link>
+            <Link href="/demo">View Live Demo</Link>
           </Button>
           <Button
             asChild

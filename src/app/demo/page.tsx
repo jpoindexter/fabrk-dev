@@ -70,11 +70,11 @@ export default function DemoPage() {
             {/* Quick Stats */}
             <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
               <div>
-                <div className="text-2xl font-bold text-primary">102+</div>
+                <div className="text-2xl font-bold text-primary">87</div>
                 <div className="text-muted-foreground">Components</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">28</div>
+                <div className="text-2xl font-bold text-primary">8</div>
                 <div className="text-muted-foreground">Templates</div>
               </div>
               <div>
@@ -82,8 +82,8 @@ export default function DemoPage() {
                 <div className="text-muted-foreground">Color Themes</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">30+</div>
-                <div className="text-muted-foreground">API Routes</div>
+                <div className="text-2xl font-bold text-primary">95%</div>
+                <div className="text-muted-foreground">Storybook Coverage</div>
               </div>
             </div>
           </div>
