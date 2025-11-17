@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
+import config from "@/config";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
@@ -49,12 +50,19 @@ export function PricingSection() {
               </span>
             </div>
 
+            {/* Scarcity Badge */}
+            <div className="mb-4 text-center">
+              <span className="inline-block rounded-md bg-destructive/10 border border-destructive/20 px-4 py-2 text-sm font-semibold text-destructive">
+                🔥 $100 OFF - First 500 Customers Only
+              </span>
+            </div>
+
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">$199</span>
+                <span className="text-5xl font-semibold text-foreground">{config.pricing.product.display.current}</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
-                  $599
+                  {config.pricing.product.display.original}
                 </span>
               </div>
               <p className="text-base font-normal text-muted-foreground">
