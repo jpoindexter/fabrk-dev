@@ -33,7 +33,7 @@ export function useCheckout() {
       } else {
         throw new Error("No checkout URL returned");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       const errorMessage =
         err instanceof Error ? err.message : "Something went wrong";
       setError(errorMessage);

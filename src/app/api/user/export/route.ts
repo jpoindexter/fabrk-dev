@@ -93,7 +93,7 @@ export async function GET(req: Request) {
         "Content-Disposition": `attachment; filename="user-data-${user.id}.json"`,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Data Export] Error:", error);
     return NextResponse.json(
       { error: "Failed to export data" },

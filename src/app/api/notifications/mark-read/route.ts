@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, marked: notificationId });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to mark notification as read:", error);
     return NextResponse.json(
       { error: "Internal server error" },

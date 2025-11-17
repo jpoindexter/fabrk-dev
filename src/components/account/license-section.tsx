@@ -51,7 +51,7 @@ export function LicenseSection() {
       });
 
       setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Failed to copy",
         description: "Please try again or copy manually.",

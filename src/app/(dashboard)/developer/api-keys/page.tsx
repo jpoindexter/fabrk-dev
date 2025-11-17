@@ -39,6 +39,7 @@ import {
   Code,
   Loader2,
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 interface ApiKey {
   id: string;
@@ -53,14 +54,33 @@ interface ApiKey {
   };
 }
 
-// This should come from organization context
-const ORGANIZATION_ID = "org_demo"; // TODO: Get from context/props
+/**
+ * ORGANIZATION ID CONTEXT
+ *
+ * Implementation Options (choose one based on your multi-tenancy setup):
+ *
+ * Option 1: OrganizationProvider context (recommended for full multi-tenancy)
+ * const { activeOrganization } = useOrganization();
+ * const ORGANIZATION_ID = activeOrganization?.id || '';
+ *
+ * Option 2: User's single organization (for simple SaaS)
+ * Fetch from API on mount or pass as prop from server component
+ *
+ * Option 3: URL params (for org-scoped routes)
+ * Use route like /organizations/[slug]/developer/api-keys
+ *
+ * Current Implementation: Using mock data for demonstration
+ * For production: Replace with actual organization context from your auth/session
+ */
+const ORGANIZATION_ID = "org_demo"; // REPLACE WITH ACTUAL ORG ID FROM CONTEXT/SESSION
 
 export default function ApiKeysPage() {
+  const { success, error } = useToast();
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
   const [loading, setLoading] = useState(true);
   const [showKey, setShowKey] = useState<Record<string, boolean>>({});
   const [isCreating, setIsCreating] = useState(false);
+  const [isRevoking, setIsRevoking] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newKeyName, setNewKeyName] = useState("");
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>(["read"]);
@@ -78,9 +98,13 @@ export default function ApiKeysPage() {
       if (response.ok) {
         const data = await response.json();
         setApiKeys(data);
+      } else {
+        const errorData = await response.json();
+        error("Failed to load API keys", errorData.error || "Please try again later");
       }
-    } catch (error) {
-      console.error("Error fetching API keys:", error);
+    } catch (err: unknown) {
+      console.error("Error fetching API keys:", err);
+      error("Failed to load API keys", "A network error occurred. Please check your connection.");
     } finally {
       setLoading(false);
     }
@@ -88,12 +112,12 @@ export default function ApiKeysPage() {
 
   const handleCreateKey = async () => {
     if (!newKeyName.trim()) {
-      alert("Please enter a name for your API key");
+      error("Name required", "Please enter a descriptive name for your API key");
       return;
     }
 
     if (selectedPermissions.length === 0) {
-      alert("Please select at least one permission");
+      error("Permissions required", "Please select at least one permission level for the API key");
       return;
     }
 
@@ -117,22 +141,27 @@ export default function ApiKeysPage() {
         setSelectedPermissions(["read"]);
         setIsDialogOpen(false);
         fetchApiKeys(); // Refresh list
+        success("API key created", "Make sure to copy your new API key - you won't be able to see it again!");
       } else {
-        const error = await response.json();
-        alert(error.error || "Failed to create API key");
+        const errorData = await response.json();
+        error("Failed to create API key", errorData.error || "An error occurred while creating the API key. Please try again.");
       }
-    } catch (error) {
-      console.error("Error creating API key:", error);
-      alert("Failed to create API key");
+    } catch (err: unknown) {
+      console.error("Error creating API key:", err);
+      error("Failed to create API key", "A network error occurred. Please check your connection and try again.");
     } finally {
       setIsCreating(false);
     }
   };
 
   const handleCopyKey = async (key: string) => {
-    await navigator.clipboard.writeText(key);
-    // You could use a toast here instead
-    alert("API key copied to clipboard!");
+    try {
+      await navigator.clipboard.writeText(key);
+      success("Copied to clipboard", "API key has been copied to your clipboard");
+    } catch (err: unknown) {
+      console.error("Error copying to clipboard:", err);
+      error("Failed to copy", "Please try copying manually");
+    }
   };
 
   const handleRevokeKey = async (id: string) => {
@@ -144,20 +173,25 @@ export default function ApiKeysPage() {
       return;
     }
 
+    setIsRevoking(id);
+
     try {
       const response = await fetch(`/api/api-keys/${id}`, {
         method: "DELETE",
       });
 
       if (response.ok) {
+        success("API key revoked", "The API key has been permanently revoked and can no longer be used");
         fetchApiKeys(); // Refresh list
       } else {
-        const error = await response.json();
-        alert(error.error || "Failed to revoke API key");
+        const errorData = await response.json();
+        error("Failed to revoke API key", errorData.error || "An error occurred while revoking the API key. Please try again.");
       }
-    } catch (error) {
-      console.error("Error revoking API key:", error);
-      alert("Failed to revoke API key");
+    } catch (err: unknown) {
+      console.error("Error revoking API key:", err);
+      error("Failed to revoke API key", "A network error occurred. Please check your connection and try again.");
+    } finally {
+      setIsRevoking(null);
     }
   };
 
@@ -389,9 +423,19 @@ export default function ApiKeysPage() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleRevokeKey(apiKey.id)}
+                      disabled={isRevoking === apiKey.id}
                     >
-                      <Trash2 className="h-4 w-4 mr-2" />
-                      Revoke
+                      {isRevoking === apiKey.id ? (
+                        <>
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          Revoking...
+                        </>
+                      ) : (
+                        <>
+                          <Trash2 className="h-4 w-4 mr-2" />
+                          Revoke
+                        </>
+                      )}
                     </Button>
                   </div>
 

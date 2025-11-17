@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import {
   getOrganizationBySlug,
   hasOrganizationRole,
@@ -91,7 +92,7 @@ export async function GET(
         role: userMembership.role,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },
@@ -100,10 +101,10 @@ export async function GET(
   }
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -169,10 +170,12 @@ export async function PATCH(
         logo: updated.logo,
       },
     });
-  } catch (error: any) {
-    console.error("Failed to update organization:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to update organization";
+    console.error("Failed to update organization:", errorMessage);
 
-    if (error.code === "P2002") {
+    // Check for Prisma unique constraint violation
+    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
       return NextResponse.json(
         { error: "An organization with this slug already exists" },
         { status: 409 }
@@ -184,12 +187,12 @@ export async function PATCH(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -230,11 +233,11 @@ export async function DELETE(
       success: true,
       message: "Organization deleted successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to delete organization:", error);
     return NextResponse.json(
       { error: "Failed to delete organization" },
       { status: 500 }
     );
   }
-}
+});

@@ -66,7 +66,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
           const code = await onGenerate(prompt);
           setGeneratedCode(code);
         }
-      } catch (err) {
+      } catch (err: unknown) {
         toast.error("Failed to generate code. Please try again.");
       } finally {
         setIsGenerating(false);

@@ -133,9 +133,9 @@ export function flatten<T>(arr: (T | T[])[]): T[] {
 /**
  * Deep flatten nested array
  */
-export function flattenDeep(arr: any[]): any[] {
-  return arr.reduce(
-    (flat, item) => flat.concat(Array.isArray(item) ? flattenDeep(item) : item),
+export function flattenDeep<T = unknown>(arr: unknown[]): T[] {
+  return arr.reduce<T[]>(
+    (flat, item) => flat.concat(Array.isArray(item) ? flattenDeep<T>(item) : (item as T)),
     []
   );
 }

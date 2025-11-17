@@ -34,7 +34,7 @@ export async function sendEmail(to: string, subject: string, html: string) {
       html,
     });
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to send email:", error);
     return { success: false, error };
   }
@@ -69,7 +69,7 @@ export async function sendWelcomeEmail(to: string, name: string, licenseKey?: st
       `,
     });
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to send welcome email:", error);
     return { success: false, error };
   }
@@ -104,7 +104,7 @@ export async function sendVerificationEmail(to: string, token: string) {
       `,
     });
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to send verification email:", error);
     return { success: false, error };
   }
@@ -140,7 +140,7 @@ export async function sendResetEmail(to: string, token: string) {
       `,
     });
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to send reset email:", error);
     return { success: false, error };
   }
@@ -232,7 +232,7 @@ export async function queueEmail(params: {
     });
 
     return { success: true, emailQueueId: emailQueue.id };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to queue email:", error);
     return { success: false, error };
   }
@@ -429,7 +429,7 @@ export async function sendOrganizationInvite(
       html,
     });
     return { success: true };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to send organization invite:", error);
     return { success: false, error };
   }

@@ -33,7 +33,7 @@ describe('Lightbox Component', () => {
 
   const defaultProps = {
     items: mockItems,
-    open: true,
+    isOpen: true,
     currentIndex: 0,
     onClose: vi.fn(),
     onNavigate: vi.fn(),
@@ -51,7 +51,7 @@ describe('Lightbox Component', () => {
     });
 
     it('does not render when closed', () => {
-      render(<Lightbox {...defaultProps} open={false} />);
+      render(<Lightbox {...defaultProps} isOpen={false} />);
 
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
@@ -365,23 +365,23 @@ describe('Lightbox Component', () => {
 
   describe('Body Scroll Lock', () => {
     it('prevents body scroll when open', () => {
-      render(<Lightbox {...defaultProps} open={true} />);
+      render(<Lightbox {...defaultProps} isOpen={true} />);
 
       expect(document.body.style.overflow).toBe('hidden');
     });
 
     it('restores body scroll when closed', () => {
-      const { rerender } = render(<Lightbox {...defaultProps} open={true} />);
+      const { rerender } = render(<Lightbox {...defaultProps} isOpen={true} />);
 
       expect(document.body.style.overflow).toBe('hidden');
 
-      rerender(<Lightbox {...defaultProps} open={false} />);
+      rerender(<Lightbox {...defaultProps} isOpen={false} />);
 
       expect(document.body.style.overflow).toBe('');
     });
 
     it('restores body scroll on unmount', () => {
-      const { unmount } = render(<Lightbox {...defaultProps} open={true} />);
+      const { unmount } = render(<Lightbox {...defaultProps} isOpen={true} />);
 
       expect(document.body.style.overflow).toBe('hidden');
 
@@ -582,9 +582,9 @@ describe('Lightbox Component', () => {
     });
 
     it('restores focus on close', () => {
-      const { rerender } = render(<Lightbox {...defaultProps} open={true} />);
+      const { rerender } = render(<Lightbox {...defaultProps} isOpen={true} />);
 
-      rerender(<Lightbox {...defaultProps} open={false} />);
+      rerender(<Lightbox {...defaultProps} isOpen={false} />);
 
       // Focus should be restored
       expect(document.activeElement).toBeDefined();

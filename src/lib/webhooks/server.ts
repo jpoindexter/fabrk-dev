@@ -71,7 +71,7 @@ export async function triggerWebhook(
     Promise.all(deliveryPromises).catch((error) => {
       console.error("[Webhooks] Error delivering webhooks:", error);
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Webhooks] Error triggering webhook:", error);
   }
 }
@@ -160,7 +160,7 @@ export async function deliverWebhook(
         // HTTP error
         throw new Error(`HTTP ${response.status}: ${responseText}`);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       // Delivery failed
       const errorMessage =
         error instanceof Error ? error.message : String(error);
@@ -180,7 +180,7 @@ export async function deliverWebhook(
         errorMessage
       );
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Webhooks] Error in deliverWebhook:", error);
   }
 }
@@ -278,7 +278,7 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
       } else {
         throw new Error(`HTTP ${response.status}: ${responseText}`);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : String(error);
 
@@ -300,7 +300,7 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
         errorMessage
       );
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Webhooks] Error in retryWebhookDelivery:", error);
   }
 }

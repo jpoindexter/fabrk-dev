@@ -73,7 +73,7 @@ export default function LoginPage() {
         router.push("/dashboard");
         router.refresh();
       }
-    } catch (err) {
+    } catch (err: unknown) {
       // UX Heuristic #9: Error Recovery - Stay on login page and show error
       setError(err instanceof Error ? err.message : "An error occurred during login");
       toast.error("Login failed. Please check your credentials.");

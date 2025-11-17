@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
         role: org.role,
       })),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch organizations:", error);
     return NextResponse.json(
       { error: "Failed to fetch organizations" },

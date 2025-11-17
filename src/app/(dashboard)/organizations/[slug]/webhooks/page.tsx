@@ -71,7 +71,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to fetch organization");
       const data = await response.json();
       setOrganization(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching organization:", error);
       toast.error("Failed to load organization");
       router.push("/organizations");
@@ -87,7 +87,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to fetch webhooks");
       const data = await response.json();
       setWebhooks(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching webhooks:", error);
       toast.error("Failed to load webhooks");
     } finally {
@@ -107,7 +107,7 @@ export default function OrganizationWebhooksPage() {
 
       toast.success(enabled ? "Webhook enabled" : "Webhook disabled");
       fetchWebhooks();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error toggling webhook:", error);
       toast.error("Failed to update webhook");
     }
@@ -125,7 +125,7 @@ export default function OrganizationWebhooksPage() {
 
       toast.success("Webhook deleted successfully");
       fetchWebhooks();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error deleting webhook:", error);
       toast.error("Failed to delete webhook");
     }
@@ -140,7 +140,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to send test webhook");
 
       toast.success("Test webhook sent successfully");
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error testing webhook:", error);
       toast.error("Failed to send test webhook");
     }

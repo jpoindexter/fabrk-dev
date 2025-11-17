@@ -52,7 +52,7 @@ export default function ContactPage() {
 
       // Reset success message after 5 seconds
       setTimeout(() => setStatus("idle"), 5000);
-    } catch (error) {
+    } catch (error: unknown) {
       setStatus("error");
       setErrorMessage("Failed to send message. Please try again or email us directly.");
     }

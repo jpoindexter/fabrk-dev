@@ -111,7 +111,7 @@ export default function ResetPasswordPage({ params }: ResetPasswordPageProps) {
 
       setSuccess(true);
       toast.success("Password reset successfully!");
-    } catch (err) {
+    } catch (err: unknown) {
       // UX Heuristic #9: Error Recovery
       setError(err instanceof Error ? err.message : "Failed to reset password");
       toast.error("Reset failed. Please try again.");

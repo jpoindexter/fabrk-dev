@@ -29,7 +29,7 @@ export async function POST() {
       qrCodeUri: result.qrCodeUri,
       backupCodes: result.backupCodes,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[MFA Enable] Error:", error);
     return NextResponse.json(
       { error: "Failed to enable MFA" },

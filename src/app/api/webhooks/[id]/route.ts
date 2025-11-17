@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { isValidEvent } from "@/lib/webhooks/events";
@@ -70,14 +71,14 @@ export async function GET(
       id: webhook.id,
       url: webhook.url,
       events: webhook.events,
-      secret: webhook.secret, // Expose secret in detail view
+      // Secret is only exposed once during creation for security
       enabled: webhook.enabled,
       organization: webhook.organization,
       deliveryCount: webhook._count.deliveries,
       createdAt: webhook.createdAt,
       updatedAt: webhook.updatedAt,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to fetch webhook:", error);
     return NextResponse.json(
       { error: "Failed to fetch webhook" },
@@ -86,10 +87,10 @@ export async function GET(
   }
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -126,7 +127,11 @@ export async function PATCH(
     const body = await req.json();
     const { url, events, enabled } = body;
 
-    const updateData: any = {};
+    const updateData: {
+      url?: string;
+      events?: string[];
+      enabled?: boolean;
+    } = {};
 
     if (url !== undefined) {
       // Validate URL
@@ -139,7 +144,7 @@ export async function PATCH(
           );
         }
         updateData.url = url;
-      } catch (error) {
+      } catch (error: unknown) {
         return NextResponse.json(
           { error: "Invalid webhook URL" },
           { status: 400 }
@@ -183,19 +188,19 @@ export async function PATCH(
       enabled: updatedWebhook.enabled,
       updatedAt: updatedWebhook.updatedAt,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to update webhook:", error);
     return NextResponse.json(
       { error: "Failed to update webhook" },
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -237,11 +242,11 @@ export async function DELETE(
       success: true,
       message: "Webhook deleted successfully",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to delete webhook:", error);
     return NextResponse.json(
       { error: "Failed to delete webhook" },
       { status: 500 }
     );
   }
-}
+});

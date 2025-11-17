@@ -7,6 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
@@ -69,7 +70,7 @@ export async function GET(
         cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch subscription:", error);
     return NextResponse.json(
       { error: "Failed to fetch subscription" },
@@ -78,10 +79,10 @@ export async function GET(
   }
 }
 
-export async function POST(
+export const POST = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -143,19 +144,19 @@ export async function POST(
         status: subscription.status,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create subscription:", error);
     return NextResponse.json(
       { error: "Failed to create subscription" },
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -202,11 +203,11 @@ export async function DELETE(
       success: true,
       message: "Subscription cancelled successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to cancel subscription:", error);
     return NextResponse.json(
       { error: "Failed to cancel subscription" },
       { status: 500 }
     );
   }
-}
+});

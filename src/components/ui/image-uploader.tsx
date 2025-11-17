@@ -31,6 +31,10 @@ export interface ImageUploaderProps {
   showPreview?: boolean;
   onUpload?: (files: File[]) => Promise<void>;
   className?: string;
+  multiple?: boolean;
+  uploading?: boolean;
+  progress?: number;
+  error?: string;
 }
 
 interface FileWithPreview extends File {
@@ -47,12 +51,21 @@ export function ImageUploader({
   showPreview = true,
   onUpload,
   className,
+  multiple: externalMultiple,
+  uploading: externalUploading,
+  progress: externalProgress,
+  error: externalError,
 }: ImageUploaderProps) {
   const [files, setFiles] = React.useState<FileWithPreview[]>(value);
   const [isDragging, setIsDragging] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
-  const [uploading, setUploading] = React.useState(false);
+  const [internalError, setInternalError] = React.useState<string | null>(null);
+  const [internalUploading, setInternalUploading] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  // Use external props if provided, otherwise use internal state
+  const error = externalError ?? internalError;
+  const uploading = externalUploading ?? internalUploading;
+  const isMultiple = externalMultiple ?? (maxFiles > 1);
 
   // Sync internal state with external value
   React.useEffect(() => {
@@ -94,7 +107,7 @@ export function ImageUploader({
     const remainingSlots = maxFiles - files.length;
 
     if (filesArray.length > remainingSlots) {
-      setError(`Maximum ${maxFiles} files allowed. You can add ${remainingSlots} more.`);
+      setInternalError(`Maximum ${maxFiles} files allowed. You can add ${remainingSlots} more.`);
       return;
     }
 
@@ -102,12 +115,12 @@ export function ImageUploader({
     for (const file of filesArray) {
       const validationError = validateFile(file);
       if (validationError) {
-        setError(validationError);
+        setInternalError(validationError);
         return;
       }
     }
 
-    setError(null);
+    setInternalError(null);
     const updatedFiles = [...files, ...filesArray];
     setFiles(updatedFiles);
     onChange?.(updatedFiles);
@@ -145,19 +158,19 @@ export function ImageUploader({
     const updatedFiles = files.filter((_, i) => i !== index);
     setFiles(updatedFiles);
     onChange?.(updatedFiles);
-    setError(null);
+    setInternalError(null);
   };
 
   const handleUpload = async () => {
     if (!onUpload || files.length === 0) return;
 
-    setUploading(true);
+    setInternalUploading(true);
     try {
       await onUpload(files);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Upload failed");
+    } catch (err: unknown) {
+      setInternalError(err instanceof Error ? err.message : "Upload failed");
     } finally {
-      setUploading(false);
+      setInternalUploading(false);
     }
   };
 
@@ -207,7 +220,7 @@ export function ImageUploader({
           ref={fileInputRef}
           type="file"
           accept={accept}
-          multiple={maxFiles > 1}
+          multiple={isMultiple}
           onChange={(e) => handleFiles(e.target.files)}
           className="hidden"
           disabled={disabled}

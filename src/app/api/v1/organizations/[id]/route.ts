@@ -1,21 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requirePermission } from "@/middleware/api-auth";
+import { requirePermission, type RouteContext } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
-
-interface RouteContext {
-  params: Promise<{
-    id: string;
-  }>;
-}
 
 /**
  * GET /api/v1/organizations/[id]
  * Get organization details
  * Requires API key with 'read' permission
  */
-export const GET = requirePermission("read", async (req: NextRequest, apiKey, context: RouteContext) => {
+export const GET = requirePermission("read", async (req: NextRequest, apiKey, context?: RouteContext) => {
   try {
-    const { id } = await context.params;
+    if (!context) {
+      return NextResponse.json(
+        { error: "Missing route context" },
+        { status: 500 }
+      );
+    }
+    const params = await context.params;
+    const id = typeof params.id === 'string' ? params.id : params.id[0];
 
     // Verify API key belongs to this organization
     if (apiKey.organizationId !== id) {
@@ -53,7 +54,7 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey, co
     }
 
     return NextResponse.json(organization);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },

@@ -74,7 +74,7 @@ export async function GET(
         inviter: inviter || { name: null, email: "Unknown" },
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch invitation:", error);
     return NextResponse.json(
       { error: "Failed to fetch invitation" },

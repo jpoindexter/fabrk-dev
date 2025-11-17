@@ -51,7 +51,7 @@ export async function fetchBlogPosts() {
         }
       }
     `);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching blog posts:', error);
     return [];
   }
@@ -86,7 +86,7 @@ export async function fetchBlogPost(slug: string) {
     `,
       { slug }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching blog post:', error);
     return null;
   }
@@ -108,7 +108,7 @@ export async function fetchDocPages() {
         excerpt
       }
     `);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching doc pages:', error);
     return [];
   }
@@ -134,7 +134,7 @@ export async function fetchDocPage(slug: string) {
     `,
       { slug }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching doc page:', error);
     return null;
   }

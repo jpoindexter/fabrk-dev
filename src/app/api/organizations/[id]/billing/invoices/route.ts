@@ -65,7 +65,7 @@ export async function GET(
         invoicePdf: invoice.invoice_pdf,
       })),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch invoices:", error);
     return NextResponse.json(
       { error: "Failed to fetch invoices" },

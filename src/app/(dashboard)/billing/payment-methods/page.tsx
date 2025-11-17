@@ -25,9 +25,11 @@ import {
   ArrowLeft,
   Shield,
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function PaymentMethodsPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   // Mock data - in real implementation, fetch from Stripe API
   const [paymentMethods] = useState([
@@ -44,20 +46,85 @@ export default function PaymentMethodsPage() {
 
   const handleAddPaymentMethod = async () => {
     setIsLoading(true);
-    // TODO: Open Stripe payment method setup
-    alert("Stripe payment method setup to be implemented");
-    setIsLoading(false);
+    try {
+      // Implementation: Create Stripe SetupIntent and redirect to Stripe Checkout
+      // 1. POST /api/stripe/setup-intent to create SetupIntent
+      // 2. Redirect to Stripe Checkout or use Stripe Elements
+      // 3. Handle webhook stripe.setup_intent.succeeded to save payment method
+      // Reference: https://stripe.com/docs/payments/save-and-reuse
+
+      // TODO: Implement Stripe SetupIntent flow
+      // const response = await fetch("/api/stripe/setup-intent", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      // });
+      // if (!response.ok) throw new Error("Failed to create setup intent");
+      // const { url } = await response.json();
+      // window.location.href = url;
+
+      toast({
+        title: "Coming Soon",
+        description: "Stripe payment method setup will be available soon. Implementation requires SetupIntent API integration.",
+      });
+    } catch (error: unknown) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to add payment method",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSetDefault = async (id: string) => {
-    // TODO: Update default payment method in Stripe
-    alert(`Set ${id} as default - to be implemented`);
+    try {
+      // Implementation: Update default payment method via Stripe API
+      // POST /api/stripe/payment-methods/default with { paymentMethodId: id }
+      // Then call stripe.customers.update() to set invoice_settings.default_payment_method
+
+      // TODO: Implement set default payment method
+      // const response = await fetch("/api/stripe/payment-methods/default", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ paymentMethodId: id }),
+      // });
+      // if (!response.ok) throw new Error("Failed to set default payment method");
+
+      toast({
+        title: "Coming Soon",
+        description: `Setting payment method as default will be available soon. Implementation requires Stripe customer.update() API.`,
+      });
+    } catch (error: unknown) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to set default payment method",
+      });
+    }
   };
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to remove this payment method?")) {
-      // TODO: Delete payment method from Stripe
-      alert(`Delete ${id} - to be implemented`);
+      try {
+        // Implementation: Detach payment method from customer
+        // DELETE /api/stripe/payment-methods/:id
+        // Then call stripe.paymentMethods.detach() on server
+
+        // TODO: Implement payment method deletion
+        // const response = await fetch(`/api/stripe/payment-methods/${id}`, {
+        //   method: "DELETE",
+        // });
+        // if (!response.ok) throw new Error("Failed to delete payment method");
+
+        toast({
+          title: "Coming Soon",
+          description: `Payment method deletion will be available soon. Implementation requires Stripe paymentMethods.detach() API.`,
+        });
+      } catch (error: unknown) {
+        toast({
+          title: "Error",
+          description: error instanceof Error ? error.message : "Failed to delete payment method",
+        });
+      }
     }
   };
 

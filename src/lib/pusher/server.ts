@@ -66,7 +66,7 @@ export async function triggerNotification(
   try {
     await pusher.trigger(`private-user-${userId}`, "notification", notification);
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to trigger notification:", error);
     return false;
   }
@@ -96,7 +96,7 @@ export async function triggerOrgActivity(
       activity
     );
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to trigger org activity:", error);
     return false;
   }
@@ -120,7 +120,7 @@ export async function triggerPresenceUpdate(
       timestamp: new Date(),
     });
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to trigger presence update:", error);
     return false;
   }
@@ -152,7 +152,7 @@ export function authorizeChannel(
 
     // Private channels
     return JSON.stringify(pusher.authorizeChannel(socketId, channel));
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to authorize channel:", error);
     return null;
   }

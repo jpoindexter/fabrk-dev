@@ -10,7 +10,7 @@
  * - Voice search optimization
  */
 
-interface ContentAnalysis {
+export interface ContentAnalysis {
   wordCount: number;
   readingTime: number;
   readabilityScore: number;

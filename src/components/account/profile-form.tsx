@@ -37,7 +37,7 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, success, error } = useToast();
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -50,17 +50,32 @@ export function ProfileForm() {
   async function onSubmit(data: ProfileFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/profile", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    console.log("Profile update:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Profile updated",
-      description: "Your profile has been updated successfully.",
-    });
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to update profile");
+      }
 
-    setIsLoading(false);
+      success("Profile updated", "Your profile has been updated successfully.");
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update profile. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

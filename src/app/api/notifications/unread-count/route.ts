@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json({ count });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch unread count:", error);
     return NextResponse.json(
       { error: "Internal server error" },

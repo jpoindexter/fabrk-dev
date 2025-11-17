@@ -265,7 +265,7 @@ export function importFlags(json: string) {
     Object.entries(importedFlags).forEach(([key, value]) => {
       flags[key] = value as FeatureFlag;
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Feature Flags] Failed to import flags:", error);
   }
 }

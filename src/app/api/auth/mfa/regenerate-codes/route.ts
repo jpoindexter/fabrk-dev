@@ -25,7 +25,7 @@ export async function POST() {
     );
 
     return NextResponse.json({ backupCodes });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[MFA Regenerate Codes] Error:", error);
     return NextResponse.json(
       { error: "Failed to regenerate backup codes" },

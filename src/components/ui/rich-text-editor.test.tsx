@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -9,7 +10,7 @@ const mockExecCommand = vi.fn();
 document.execCommand = mockExecCommand;
 
 // Mock document.queryCommandState
-const mockQueryCommandState = vi.fn(() => false);
+const mockQueryCommandState = vi.fn((_command: string) => false);
 document.queryCommandState = mockQueryCommandState;
 
 describe('RichTextEditor Component', () => {
@@ -303,7 +304,7 @@ describe('RichTextEditor Component', () => {
 
   describe('Format State Tracking', () => {
     it('highlights active format buttons', () => {
-      mockQueryCommandState.mockImplementation((command) => command === 'bold');
+      mockQueryCommandState.mockImplementation((command: string) => command === 'bold');
       const { container } = render(<RichTextEditor />);
 
       const boldButton = container.querySelector('[aria-label="Bold"]');
@@ -477,7 +478,7 @@ describe('RichTextEditor Component', () => {
 
   describe('Ref Forwarding', () => {
     it('forwards ref to editor div', () => {
-      const ref = { current: null } as React.RefObject<HTMLDivElement>;
+      const ref = React.createRef<HTMLDivElement>();
       render(<RichTextEditor ref={ref} />);
 
       expect(ref.current).toBeInstanceOf(HTMLDivElement);

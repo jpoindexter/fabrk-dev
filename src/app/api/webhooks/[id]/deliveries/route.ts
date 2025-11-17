@@ -78,7 +78,7 @@ export async function GET(
         totalPages: Math.ceil(total / limit),
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to fetch deliveries:", error);
     return NextResponse.json(
       { error: "Failed to fetch deliveries" },

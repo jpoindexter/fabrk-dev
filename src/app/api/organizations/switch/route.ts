@@ -5,9 +5,10 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -38,19 +39,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // In a production app, you'd update the user's activeOrganizationId in the session
-    // For now, we'll return success and let the client handle the context
-    // TODO: Implement session update with activeOrganizationId
+    // Session update with activeOrganizationId is handled client-side
+    // The organization context is stored in localStorage and managed by the OrganizationProvider
+    // To persist across sessions, add 'activeOrganizationId' field to User model and update here:
+    // await prisma.user.update({
+    //   where: { id: session.user.id },
+    //   data: { activeOrganizationId: organizationId }
+    // });
 
     return NextResponse.json({
       success: true,
       organizationId,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to switch organization:", error);
     return NextResponse.json(
       { error: "Failed to switch organization" },
       { status: 500 }
     );
   }
-}
+});

@@ -38,7 +38,7 @@ type LanguageFormValues = z.infer<typeof languageFormSchema>;
 
 export function LanguageForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<LanguageFormValues>({
     resolver: zodResolver(languageFormSchema),
@@ -50,17 +50,35 @@ export function LanguageForm() {
   async function onSubmit(data: LanguageFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/settings", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ language: data.language }),
+      });
 
-    console.log("Language settings:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Settings saved",
-      description: "Your language preference has been updated.",
-    });
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to update language settings");
+      }
 
-    setIsLoading(false);
+      toast({
+        title: "Settings saved",
+        description: "Your language preference has been updated.",
+      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update language settings. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

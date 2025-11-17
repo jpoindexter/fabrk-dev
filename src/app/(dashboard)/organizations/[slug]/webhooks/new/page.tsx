@@ -52,7 +52,7 @@ export default function CreateWebhookPage() {
       if (!response.ok) throw new Error("Failed to fetch organization");
       const data = await response.json();
       setOrganization(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching organization:", error);
       toast.error("Failed to load organization");
       router.push("/organizations");
@@ -99,9 +99,10 @@ export default function CreateWebhookPage() {
       // Show the secret
       setCreatedSecret(data.secret);
       toast.success("Webhook created successfully");
-    } catch (error: any) {
-      console.error("Error creating webhook:", error);
-      toast.error(error.message || "Failed to create webhook");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create webhook";
+      console.error("Error creating webhook:", errorMessage);
+      toast.error(errorMessage);
     } finally {
       setCreating(false);
     }

@@ -10,23 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Download,
-  FileText,
-  CheckCircle2,
-  XCircle,
-  Clock,
-} from "lucide-react";
+import { ArrowLeft, FileText, CheckCircle2 } from "lucide-react";
+import { InvoiceTable } from "./invoice-table";
 
 export const metadata = {
   title: "Invoices | Fabrk",
@@ -50,47 +35,6 @@ export default async function InvoicesPage() {
     take: 50, // Show last 50 payments
   });
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "succeeded":
-        return <CheckCircle2 className="h-4 w-4 text-green-600" />;
-      case "failed":
-        return <XCircle className="h-4 w-4 text-red-600" />;
-      default:
-        return <Clock className="h-4 w-4 text-yellow-600" />;
-    }
-  };
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case "succeeded":
-        return <Badge variant="default">Paid</Badge>;
-      case "failed":
-        return <Badge variant="outline">Failed</Badge>;
-      default:
-        return <Badge variant="secondary">Pending</Badge>;
-    }
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount / 100);
-  };
-
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }).format(new Date(date));
-  };
-
-  const handleDownload = async (paymentId: string) => {
-    // TODO: Generate and download invoice PDF
-    alert(`Download invoice for ${paymentId} - to be implemented`);
-  };
 
   return (
     <div className="container mx-auto max-w-6xl px-6 py-8">
@@ -130,52 +74,7 @@ export default async function InvoicesPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Description</TableHead>
-                  <TableHead>Amount</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Invoice</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {payments.map((payment) => (
-                  <TableRow key={payment.id}>
-                    <TableCell className="font-medium">
-                      {formatDate(payment.createdAt)}
-                    </TableCell>
-                    <TableCell>
-                      <div>
-                        <p className="font-medium">
-                          {payment.productId || "One-time purchase"}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          Invoice #{payment.stripeId?.slice(-8)}
-                        </p>
-                      </div>
-                    </TableCell>
-                    <TableCell className="font-mono">
-                      {formatCurrency(payment.amount)}
-                    </TableCell>
-                    <TableCell>{getStatusBadge(payment.status)}</TableCell>
-                    <TableCell className="text-right">
-                      {payment.status === "succeeded" && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDownload(payment.id)}
-                        >
-                          <Download className="h-4 w-4 mr-2" />
-                          Download
-                        </Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <InvoiceTable payments={payments} />
           </CardContent>
         </Card>
       )}

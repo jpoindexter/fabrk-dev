@@ -36,13 +36,24 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com; " +
-      "style-src 'self' 'unsafe-inline'; " +
+      // Scripts: Nonce-based CSP (middleware injects unique nonce per request)
+      // Note: 'unsafe-inline' removed for security, nonce injected by middleware
+      // Development uses 'unsafe-eval' for hot module reloading
+      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://va.vercel-scripts.com " +
+      (process.env.NODE_ENV === "production" ? "" : "'unsafe-eval' ") + "; " +
+      // Styles: Allow self and inline styles for Tailwind/styled components
+      // Note: 'unsafe-inline' required for Tailwind CSS and CSS-in-JS
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "img-src 'self' data: https: blob:; " +
-      "font-src 'self' data:; " +
-      "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com; " +
+      "font-src 'self' data: https://fonts.gstatic.com; " +
+      "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com " +
+      "https://api.posthog.com https://us.i.posthog.com https://api.openai.com https://api.anthropic.com; " +
       "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
-      "frame-ancestors 'self';",
+      "frame-ancestors 'self'; " +
+      "base-uri 'self'; " +
+      "form-action 'self'; " +
+      "object-src 'none'; " +
+      "upgrade-insecure-requests;",
   },
 ];
 

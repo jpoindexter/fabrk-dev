@@ -39,7 +39,7 @@ type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
 export function AppearanceForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
@@ -52,17 +52,37 @@ export function AppearanceForm() {
   async function onSubmit(data: AppearanceFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/settings", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ appearance: data }),
+      });
 
-    console.log("Appearance settings:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Settings saved",
-      description: "Your appearance settings have been updated.",
-    });
+      if (!response.ok) {
+        throw new Error(
+          result.error || "Failed to update appearance settings"
+        );
+      }
 
-    setIsLoading(false);
+      toast({
+        title: "Settings saved",
+        description: "Your appearance settings have been updated.",
+      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update appearance settings. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

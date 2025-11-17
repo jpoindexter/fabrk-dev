@@ -220,7 +220,7 @@ export async function GET(request: NextRequest) {
       purchaseDate: payment.createdAt,
       status: payment.status,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Verification error:", {
       error: error instanceof Error ? error.message : "Unknown error",
       timestamp: new Date().toISOString(),

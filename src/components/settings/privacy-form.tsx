@@ -35,7 +35,7 @@ type PrivacyFormValues = z.infer<typeof privacyFormSchema>;
 
 export function PrivacyForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<PrivacyFormValues>({
     resolver: zodResolver(privacyFormSchema),
@@ -51,17 +51,35 @@ export function PrivacyForm() {
   async function onSubmit(data: PrivacyFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/settings", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ privacy: data }),
+      });
 
-    console.log("Privacy settings:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Settings saved",
-      description: "Your privacy preferences have been updated.",
-    });
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to update privacy settings");
+      }
 
-    setIsLoading(false);
+      toast({
+        title: "Settings saved",
+        description: "Your privacy preferences have been updated.",
+      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update privacy settings. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

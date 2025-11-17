@@ -28,7 +28,7 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey) =>
     });
 
     return NextResponse.json(members);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching members:", error);
     return NextResponse.json(
       { error: "Failed to fetch members" },

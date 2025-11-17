@@ -98,7 +98,7 @@ export default function SignupPage() {
       toast.success("Account created successfully!");
       router.push("/dashboard");
       router.refresh();
-    } catch (err) {
+    } catch (err: unknown) {
       // UX Heuristic #9: Error Recovery
       setError(err instanceof Error ? err.message : "An error occurred during signup");
       toast.error("Signup failed. Please try again.");

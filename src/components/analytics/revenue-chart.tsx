@@ -97,7 +97,16 @@ export function RevenueChart({
     return `$${value}`;
   };
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  const CustomTooltip = ({
+    active,
+    payload,
+  }: {
+    active?: boolean;
+    payload?: Array<{
+      value: number;
+      payload: RevenueDataPoint;
+    }>;
+  }) => {
     if (active && payload && payload.length) {
       return (
         <div className="rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal">

@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
@@ -14,10 +15,10 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export async function POST(
+export const POST = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -72,11 +73,11 @@ export async function POST(
     return NextResponse.json({
       url: portalSession.url,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create portal session:", error);
     return NextResponse.json(
       { error: "Failed to create billing portal session" },
       { status: 500 }
     );
   }
-}
+});

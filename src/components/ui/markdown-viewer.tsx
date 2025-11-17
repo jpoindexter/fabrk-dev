@@ -15,6 +15,7 @@
 
 import { cn } from "@/lib/utils";
 import * as React from "react";
+import DOMPurify from "isomorphic-dompurify";
 
 export interface MarkdownViewerProps {
   className?: string;
@@ -43,16 +44,27 @@ export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerPro
       return <div className={cn("text-destructive", className, "")}>Error loading content</div>;
     }
 
-    // SECURITY: Content must be sanitized before being passed to this component
-    // For user-generated content, use DOMPurify.sanitize() before passing here
-    // This component only accepts pre-sanitized content from trusted sources
+    // SECURITY: Content is sanitized using DOMPurify to prevent XSS attacks
+    const sanitizedContent = React.useMemo(() => {
+      return DOMPurify.sanitize(content, {
+        ALLOWED_TAGS: [
+          "h1", "h2", "h3", "h4", "h5", "h6",
+          "p", "br", "strong", "em", "u", "s",
+          "a", "ul", "ol", "li", "blockquote",
+          "code", "pre", "img", "table", "thead",
+          "tbody", "tr", "th", "td"
+        ],
+        ALLOWED_ATTR: ["href", "src", "alt", "title", "class"],
+        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+      });
+    }, [content]);
+
     return (
       <div
         ref={ref}
         className={cn("prose prose-sm max-w-none dark:prose-invert", className, "")}
         role="article"
-        /* DOMPurify: content sanitized at source */
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         {...props}
       />
     );

@@ -13,6 +13,7 @@ import {
   analyzeContent,
   scoreContent,
   calculateReadabilityScore,
+  type ContentAnalysis,
 } from "./content-optimization";
 
 export interface ComprehensiveScore {
@@ -88,7 +89,7 @@ export function analyzeContentComprehensive(
 /**
  * Calculate SEO score (0-100)
  */
-function calculateSEOScore(analysis: any, keywords: string[]): number {
+function calculateSEOScore(analysis: ContentAnalysis, keywords: string[]): number {
   let score = 0;
 
   // Word count (20 points)
@@ -117,7 +118,7 @@ function calculateSEOScore(analysis: any, keywords: string[]): number {
 /**
  * Calculate AEO score (0-100)
  */
-function calculateAEOScore(analysis: any): number {
+function calculateAEOScore(analysis: ContentAnalysis): number {
   let score = 0;
 
   // Questions (35 points) - critical for featured snippets
@@ -136,7 +137,7 @@ function calculateAEOScore(analysis: any): number {
  * Calculate GEO score (0-100)
  * Measures AI citation potential
  */
-function calculateGEOScore(content: string, analysis: any): number {
+function calculateGEOScore(content: string, analysis: ContentAnalysis): number {
   let score = 0;
 
   // Clear definitions (25 points)
@@ -182,7 +183,10 @@ function getGrade(score: number): "A+" | "A" | "B" | "C" | "D" | "F" {
 /**
  * Identify content strengths
  */
-function identifyStrengths(analysis: any, scores: any): string[] {
+function identifyStrengths(
+  analysis: ContentAnalysis,
+  scores: ComprehensiveScore['scores']
+): string[] {
   const strengths: string[] = [];
 
   if (scores.readability >= 70) {
@@ -212,9 +216,13 @@ function identifyStrengths(analysis: any, scores: any): string[] {
  * Identify areas for improvement
  */
 function identifyImprovements(
-  analysis: any,
-  scores: any,
-  options: any
+  analysis: ContentAnalysis,
+  scores: ComprehensiveScore['scores'],
+  options: {
+    minWordCount: number;
+    targetReadability: number;
+    requireSchema: boolean;
+  }
 ): string[] {
   const improvements: string[] = [];
 

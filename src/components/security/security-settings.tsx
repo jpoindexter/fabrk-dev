@@ -17,6 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
 import {
   Shield,
   Smartphone,
@@ -43,34 +44,162 @@ interface SecuritySettingsProps {
 }
 
 export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsProps) {
+  const { info, error } = useToast();
   const [isEnabling2FA, setIsEnabling2FA] = useState(false);
+  const [isDisabling2FA, setIsDisabling2FA] = useState(false);
+  const [disconnectingProvider, setDisconnectingProvider] = useState<string | null>(null);
+  const [isInvalidatingSessions, setIsInvalidatingSessions] = useState(false);
 
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
-    // TODO: Implement 2FA setup flow
-    alert("2FA setup will be implemented. This requires adding 2FA fields to User model.");
-    setIsEnabling2FA(false);
+
+    try {
+      // Implementation: 2FA setup flow
+      // 1. Generate TOTP secret: const secret = speakeasy.generateSecret()
+      // 2. Display QR code: use qrcode library to generate QR from secret.otpauth_url
+      // 3. User scans with authenticator app (Google Authenticator, Authy, etc.)
+      // 4. User enters verification code to confirm
+      // 5. Save to database: Update User with twoFactorSecret (encrypted) and twoFactorEnabled=true
+      // 6. Generate backup codes and display once
+      // Reference: https://github.com/speakeasyjs/speakeasy
+
+      // TODO: Implement POST /api/user/2fa/enable
+      // const response = await fetch("/api/user/2fa/enable", {
+      //   method: "POST",
+      // });
+      // if (!response.ok) throw new Error("Failed to enable 2FA");
+
+      info(
+        "Feature requires setup",
+        "2FA requires adding MFADevice and BackupCode models to your database schema. See implementation comments in the code."
+      );
+    } catch (err: unknown) {
+      error(
+        "Error enabling 2FA",
+        err instanceof Error ? err.message : "Failed to enable two-factor authentication"
+      );
+    } finally {
+      setIsEnabling2FA(false);
+    }
   };
 
   const handleDisable2FA = async () => {
-    if (confirm("Are you sure you want to disable two-factor authentication?")) {
-      // TODO: Implement 2FA disable
-      alert("2FA disable functionality to be implemented");
+    if (!confirm("Are you sure you want to disable two-factor authentication?")) {
+      return;
+    }
+
+    setIsDisabling2FA(true);
+
+    try {
+      // Implementation: Disable 2FA
+      // 1. Verify user password or current 2FA code for security
+      // 2. POST /api/user/2fa/disable
+      // 3. Server updates User: twoFactorEnabled = false, clear twoFactorSecret
+      // 4. Delete MFADevice and BackupCode records
+
+      // TODO: Implement POST /api/user/2fa/disable
+      // const response = await fetch("/api/user/2fa/disable", {
+      //   method: "POST",
+      // });
+      // if (!response.ok) throw new Error("Failed to disable 2FA");
+
+      info(
+        "Feature requires setup",
+        "2FA disable requires API implementation at /api/user/2fa/disable. See implementation comments in the code."
+      );
+    } catch (err: unknown) {
+      error(
+        "Error disabling 2FA",
+        err instanceof Error ? err.message : "Failed to disable two-factor authentication"
+      );
+    } finally {
+      setIsDisabling2FA(false);
     }
   };
 
   const handleDisconnectAccount = async (provider: string) => {
-    if (confirm(`Disconnect your ${provider} account?`)) {
-      // TODO: Implement account disconnection
-      alert(`Disconnect ${provider} functionality to be implemented`);
+    if (!confirm(`Disconnect your ${provider} account? You'll need another way to sign in.`)) {
+      return;
+    }
+
+    setDisconnectingProvider(provider);
+
+    try {
+      // Implementation: Disconnect OAuth account
+      // DELETE /api/user/accounts/:provider
+      // Delete the Account record for this provider
+      // Note: Ensure user has another login method (password or another OAuth)
+
+      // TODO: Implement DELETE /api/user/accounts/[provider]
+      // const response = await fetch(`/api/user/accounts/${provider}`, {
+      //   method: "DELETE",
+      // });
+      // if (!response.ok) throw new Error("Failed to disconnect account");
+
+      info(
+        "Feature requires setup",
+        `Account disconnect requires API implementation at /api/user/accounts/${provider}. See implementation comments in the code.`
+      );
+    } catch (err: unknown) {
+      error(
+        "Error disconnecting account",
+        err instanceof Error ? err.message : `Failed to disconnect ${provider} account`
+      );
+    } finally {
+      setDisconnectingProvider(null);
     }
   };
 
   const handleInvalidateAllSessions = async () => {
-    if (confirm("This will log you out of all devices. Continue?")) {
-      // TODO: Implement session invalidation by incrementing sessionVersion
-      alert("Session invalidation to be implemented");
+    if (!confirm("This will log you out of all devices except this one. Continue?")) {
+      return;
     }
+
+    setIsInvalidatingSessions(true);
+
+    try {
+      // Implementation: Invalidate all sessions by incrementing sessionVersion
+      // POST /api/user/sessions/invalidate-all
+      // Server: await prisma.user.update({
+      //   where: { id: session.user.id },
+      //   data: { sessionVersion: { increment: 1 } }
+      // })
+      // Client: Redirect to login after success
+
+      // TODO: Implement POST /api/user/sessions/invalidate-all
+      // const response = await fetch("/api/user/sessions/invalidate-all", {
+      //   method: "POST",
+      // });
+      // if (!response.ok) throw new Error("Failed to invalidate sessions");
+      // window.location.href = "/login";
+
+      info(
+        "Feature requires setup",
+        "Session invalidation requires API implementation at /api/user/sessions/invalidate-all. See implementation comments in the code."
+      );
+    } catch (err: unknown) {
+      error(
+        "Error invalidating sessions",
+        err instanceof Error ? err.message : "Failed to invalidate all sessions"
+      );
+    } finally {
+      setIsInvalidatingSessions(false);
+    }
+  };
+
+  const handleViewBackupCodes = () => {
+    // Implementation: View backup codes
+    // 1. Verify user identity (require password or 2FA code)
+    // 2. GET /api/user/2fa/backup-codes
+    // 3. Display codes in a modal with copy functionality
+    // 4. Warn user to store codes securely
+    // 5. Option to regenerate codes (invalidates old ones)
+
+    // TODO: Implement backup codes modal
+    info(
+      "Feature requires setup",
+      "Backup codes require implementing a modal to display MFADevice backup codes. See implementation comments in the code."
+    );
   };
 
   return (
@@ -129,11 +258,15 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                 <span>2FA is currently protecting your account</span>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" onClick={() => alert("View backup codes")}>
+                <Button variant="outline" onClick={handleViewBackupCodes}>
                   View Backup Codes
                 </Button>
-                <Button variant="destructive" onClick={handleDisable2FA}>
-                  Disable 2FA
+                <Button
+                  variant="destructive"
+                  onClick={handleDisable2FA}
+                  disabled={isDisabling2FA}
+                >
+                  {isDisabling2FA ? "Disabling..." : "Disable 2FA"}
                 </Button>
               </div>
             </div>
@@ -185,9 +318,10 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                     variant="ghost"
                     size="sm"
                     onClick={() => handleDisconnectAccount(account.provider)}
+                    disabled={disconnectingProvider === account.provider}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Disconnect
+                    {disconnectingProvider === account.provider ? "Disconnecting..." : "Disconnect"}
                   </Button>
                 </div>
               ))}
@@ -244,12 +378,13 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
           <div className="space-y-3">
             <Button
-                                variant="destructive"
+              variant="destructive"
               onClick={handleInvalidateAllSessions}
+              disabled={isInvalidatingSessions}
               className="w-full"
             >
               <LogOut className="mr-2 h-4 w-4" />
-              Sign Out All Other Sessions
+              {isInvalidatingSessions ? "Invalidating sessions..." : "Sign Out All Other Sessions"}
             </Button>
             <p className="text-xs text-muted-foreground text-center">
               This will log you out from all devices except this one. You'll need to sign in

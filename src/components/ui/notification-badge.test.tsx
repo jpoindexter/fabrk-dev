@@ -143,9 +143,9 @@ describe('NotificationBadge Component', () => {
   });
 
   describe('Dot Mode', () => {
-    it('renders dot when showDot is true', () => {
+    it('renders dot when dot is true', () => {
       const { container } = render(
-        <NotificationBadge showDot={true}>
+        <NotificationBadge dot={true}>
           <button>Test</button>
         </NotificationBadge>
       );
@@ -156,7 +156,7 @@ describe('NotificationBadge Component', () => {
 
     it('does not show count when in dot mode', () => {
       render(
-        <NotificationBadge count={5} showDot={true}>
+        <NotificationBadge count={5} dot={true}>
           <button>Test</button>
         </NotificationBadge>
       );
@@ -166,7 +166,7 @@ describe('NotificationBadge Component', () => {
 
     it('renders smaller badge in dot mode', () => {
       const { container } = render(
-        <NotificationBadge showDot={true}>
+        <NotificationBadge dot={true}>
           <button>Test</button>
         </NotificationBadge>
       );
@@ -176,9 +176,9 @@ describe('NotificationBadge Component', () => {
       expect(dot).toBeInTheDocument();
     });
 
-    it('does not render when showDot is true but no count', () => {
+    it('does not render when dot is true but no count', () => {
       const { container } = render(
-        <NotificationBadge count={0} showDot={true}>
+        <NotificationBadge count={0} dot={true}>
           <button>Test</button>
         </NotificationBadge>
       );
@@ -258,7 +258,7 @@ describe('NotificationBadge Component', () => {
 
     it('adds pulse animation in dot mode', () => {
       const { container } = render(
-        <NotificationBadge showDot={true} pulse={true}>
+        <NotificationBadge dot={true} pulse={true}>
           <button>Test</button>
         </NotificationBadge>
       );
@@ -386,11 +386,15 @@ describe('NotificationBadge Component', () => {
     });
 
     it('handles missing children gracefully', () => {
-      const { container } = render(<NotificationBadge count={5} />);
+      const { container } = render(
+        <NotificationBadge count={5}>
+          <button>Test</button>
+        </NotificationBadge>
+      );
 
       // Should still render badge
       expect(screen.getByText('5')).toBeInTheDocument();
-      expect(container.querySelector('.relative.inline-block')).toBeInTheDocument();
+      expect(container.querySelector('.relative.inline-flex')).toBeInTheDocument();
     });
 
     it('handles multiple notification badges', () => {
@@ -456,7 +460,7 @@ describe('NotificationBadge Component', () => {
       expect(screen.getByText('5')).toBeInTheDocument();
 
       rerender(
-        <NotificationBadge count={5} showDot={true}>
+        <NotificationBadge count={5} dot={true}>
           <button>Test</button>
         </NotificationBadge>
       );

@@ -199,7 +199,7 @@ export async function checkRateLimitRedis(
     const { success, limit, remaining, reset } = await ratelimit.limit(identifier);
 
     return { success, limit, remaining, reset };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Rate Limit] Upstash error, falling back to in-memory:", error);
     return checkRateLimit(identifier, config);
   }

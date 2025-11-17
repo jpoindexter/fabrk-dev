@@ -30,6 +30,16 @@ interface Activity {
   timestamp: Date;
 }
 
+// DTO type for activities coming from API/Pusher
+interface ActivityDTO {
+  id: string;
+  type: string;
+  description: string;
+  userId: string;
+  userName: string;
+  timestamp: string | Date;
+}
+
 interface ActivityFeedProps {
   organizationId?: string;
   limit?: number;
@@ -45,7 +55,7 @@ export function ActivityFeed({
   const [loading, setLoading] = useState(true);
 
   // Subscribe to real-time activity updates
-  const handleNewActivity = useCallback((activity: any) => {
+  const handleNewActivity = useCallback((activity: ActivityDTO) => {
     setActivities((prev) => [
       {
         ...activity,
@@ -94,7 +104,7 @@ export function ActivityFeed({
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
           },
         ]);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch activities:", error);
       } finally {
         setLoading(false);

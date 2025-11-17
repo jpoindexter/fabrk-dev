@@ -41,7 +41,7 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
         await navigator.clipboard.writeText(value);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
-      } catch (err) {
+      } catch (err: unknown) {
         console.error("Failed to copy:", err);
       }
     };
