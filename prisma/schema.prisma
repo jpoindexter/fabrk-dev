@@ -20,39 +20,39 @@ model User {
   name          String?
   image         String?
   emailVerified DateTime?
-  password      String?   // For credentials auth
+  password      String? // For credentials auth
   role          Role      @default(USER)
-  
+
   // Stripe integration
   customerId       String?   @unique // Stripe customer ID
   tier             String    @default("free") // free, starter, pro
-  subscriptionTier String?   // Subscription tier (for NextAuth session)
+  subscriptionTier String? // Subscription tier (for NextAuth session)
   trialEndsAt      DateTime? // Trial expiration date
   licenseKey       String?   @unique // Product license key
 
   // Simple security
-  resetToken    String?   @unique
-  resetExpires  DateTime?
-  verifyToken   String?   @unique
-  sessionVersion Int      @default(1) // Incremented to invalidate all sessions
+  resetToken     String?   @unique
+  resetExpires   DateTime?
+  verifyToken    String?   @unique
+  sessionVersion Int       @default(1) // Incremented to invalidate all sessions
 
   // User preferences and settings
-  settings      Json?     // Privacy, notifications, language, appearance preferences
+  settings Json? // Privacy, notifications, language, appearance preferences
 
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  accounts           Account[]
-  sessions           Session[]
-  payments           Payment[]
-  mfaDevices         MFADevice[]
-  backupCodes        BackupCode[]
-  organizations      OrganizationMember[]
+  accounts            Account[]
+  sessions            Session[]
+  payments            Payment[]
+  mfaDevices          MFADevice[]
+  backupCodes         BackupCode[]
+  organizations       OrganizationMember[]
   organizationInvites OrganizationInvite[]
-  uploads            Upload[]
-  auditLogs          AuditLog[]
-  notifications      Notification[]
-  apiKeys            ApiKey[]
+  uploads             Upload[]
+  auditLogs           AuditLog[]
+  notifications       Notification[]
+  apiKeys             ApiKey[]
 
   @@index([email])
 }
@@ -102,29 +102,30 @@ enum Role {
 // ===========================
 
 model Payment {
-  id               String   @id @default(cuid())
-  userId           String
-  stripeId         String   @unique // payment_intent or session id
-  stripePaymentId  String?  // Stripe payment_intent ID (for compatibility)
-  amount           Int      // cents
-  status           String   // succeeded, failed, pending
-  productId        String?  // Your product identifier
-  createdAt        DateTime @default(now())
+  id              String   @id @default(cuid())
+  userId          String
+  stripeId        String   @unique // payment_intent or session id
+  stripePaymentId String? // Stripe payment_intent ID (for compatibility)
+  amount          Int // cents
+  status          String // succeeded, failed, pending
+  productId       String? // Your product identifier
+  createdAt       DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([stripeId])
+  @@index([userId, createdAt]) // Composite index for user payment history queries
 }
 
 // Prevent duplicate checkouts on refresh
 model CheckoutSession {
-  id         String   @id @default(cuid())
-  userId     String
-  sessionId  String   @unique // Stripe checkout session ID
-  priceId    String
-  createdAt  DateTime @default(now())
-  expiresAt  DateTime // 24 hours
+  id        String   @id @default(cuid())
+  userId    String
+  sessionId String   @unique // Stripe checkout session ID
+  priceId   String
+  createdAt DateTime @default(now())
+  expiresAt DateTime // 24 hours
 
   @@index([userId])
   @@index([sessionId])
@@ -147,9 +148,9 @@ model MFADevice {
   id        String    @id @default(cuid())
   userId    String
   type      String    @default("totp") // totp, sms, webauthn
-  secret    String?   // TOTP secret
+  secret    String? // TOTP secret
   verified  Boolean   @default(false)
-  name      String?   // Device name
+  name      String? // Device name
   lastUsed  DateTime?
   createdAt DateTime  @default(now())
 
@@ -161,7 +162,7 @@ model MFADevice {
 model BackupCode {
   id        String    @id @default(cuid())
   userId    String
-  code      String    // Hashed backup code
+  code      String // Hashed backup code
   used      Boolean   @default(false)
   usedAt    DateTime?
   createdAt DateTime  @default(now())
@@ -184,8 +185,8 @@ model Organization {
   logo           String?
   plan           String   @default("FREE") // FREE, STARTER, PRO, ENTERPRISE
   customerId     String?  @unique // Stripe customer ID
-  subscriptionId String?  // Stripe subscription ID
-  settings       Json?    // Organization settings
+  subscriptionId String? // Stripe subscription ID
+  settings       Json? // Organization settings
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -249,9 +250,9 @@ model Upload {
   filename       String
   originalName   String
   mimeType       String
-  size           Int      // bytes
+  size           Int // bytes
   url            String
-  key            String   // S3 key
+  key            String // S3 key
   bucket         String?
   metadata       Json?
   visibility     String   @default("private") // private, public
@@ -262,6 +263,7 @@ model Upload {
 
   @@index([userId])
   @@index([organizationId])
+  @@index([organizationId, createdAt]) // Composite index for org file listings
 }
 
 // ===========================
@@ -270,14 +272,14 @@ model Upload {
 
 model Job {
   id           String    @id @default(cuid())
-  type         String    // email, webhook, report, etc.
+  type         String // email, webhook, report, etc.
   status       JobStatus @default(PENDING)
   priority     Int       @default(0) // Higher = more priority
   attempts     Int       @default(0)
   maxAttempts  Int       @default(3)
-  data         Json?     // Job payload
-  result       Json?     // Job result
-  error        String?   // Error message
+  data         Json? // Job payload
+  result       Json? // Job result
+  error        String? // Error message
   scheduledFor DateTime? // For delayed jobs
   startedAt    DateTime?
   completedAt  DateTime?
@@ -302,29 +304,29 @@ enum JobStatus {
 // ===========================
 
 model EmailQueue {
-  id          String       @id @default(cuid())
-  type        EmailType    // WELCOME, VERIFICATION, RESET, etc.
-  to          String       // Recipient email
-  subject     String
-  html        String       @db.Text
-  status      EmailStatus  @default(PENDING)
+  id      String      @id @default(cuid())
+  type    EmailType // WELCOME, VERIFICATION, RESET, etc.
+  to      String // Recipient email
+  subject String
+  html    String      @db.Text
+  status  EmailStatus @default(PENDING)
 
   // Optional associations
-  userId      String?
-  purchaseId  String?      // For purchase-related emails
+  userId     String?
+  purchaseId String? // For purchase-related emails
 
   // Metadata for template variables
-  metadata    Json?        // { licenseKey, magicLink, name, etc. }
+  metadata Json? // { licenseKey, magicLink, name, etc. }
 
   // Retry logic
-  attempts    Int          @default(0)
-  maxAttempts Int          @default(3)
-  lastError   String?      @db.Text
+  attempts    Int     @default(0)
+  maxAttempts Int     @default(3)
+  lastError   String? @db.Text
 
   // Timestamps
-  sentAt      DateTime?
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  sentAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 
   @@index([status])
   @@index([type])
@@ -353,19 +355,20 @@ enum EmailStatus {
 // ===========================
 
 model AuditLog {
-  id        String   @id @default(cuid())
-  userId    String   // Who performed the action
-  action    String   // Action type (e.g., "org.member.removed", "org.deleted")
-  resource  String?  // Resource type (e.g., "organization", "user")
+  id         String   @id @default(cuid())
+  userId     String // Who performed the action
+  action     String // Action type (e.g., "org.member.removed", "org.deleted")
+  resource   String? // Resource type (e.g., "organization", "user")
   resourceId String? // ID of the affected resource
-  metadata  Json?    // Additional context (IP, user agent, etc.)
-  createdAt DateTime @default(now())
+  metadata   Json? // Additional context (IP, user agent, etc.)
+  createdAt  DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([action])
   @@index([createdAt])
+  @@index([userId, createdAt]) // Composite index for user audit history queries
 }
 
 // ===========================
@@ -375,7 +378,7 @@ model AuditLog {
 model FeatureFlag {
   id                String   @id @default(cuid())
   name              String   @unique // Flag name (e.g., "new_dashboard")
-  description       String?  // Human-readable description
+  description       String? // Human-readable description
   enabled           Boolean  @default(false)
   rolloutPercentage Int      @default(0) // 0-100
   createdAt         DateTime @default(now())
@@ -389,21 +392,22 @@ model FeatureFlag {
 // ===========================
 
 model Notification {
-  id        String   @id @default(cuid())
+  id        String           @id @default(cuid())
   userId    String
   type      NotificationType
   title     String
-  message   String   @db.Text
-  read      Boolean  @default(false)
-  link      String?  // Optional link to related resource
-  metadata  Json?    // Additional data (organizationId, inviteId, etc.)
-  createdAt DateTime @default(now())
+  message   String           @db.Text
+  read      Boolean          @default(false)
+  link      String? // Optional link to related resource
+  metadata  Json? // Additional data (organizationId, inviteId, etc.)
+  createdAt DateTime         @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([read])
   @@index([createdAt])
+  @@index([userId, read, createdAt]) // Composite index for unread notifications queries
 }
 
 enum NotificationType {
@@ -424,11 +428,11 @@ enum NotificationType {
 model ApiKey {
   id             String    @id @default(cuid())
   organizationId String
-  userId         String    // Creator
+  userId         String // Creator
   name           String
   keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_abc1")
   keyHash        String    @unique // SHA-256 hash of full key
-  permissions    String[]  // Array of permissions (read, write, admin)
+  permissions    String[] // Array of permissions (read, write, admin)
   lastUsedAt     DateTime?
   expiresAt      DateTime?
   createdAt      DateTime  @default(now())
@@ -440,6 +444,7 @@ model ApiKey {
   @@index([userId])
   @@index([keyPrefix])
   @@index([keyHash])
+  @@index([organizationId, userId]) // Composite index for org API keys by creator
 }
 
 // ===========================
@@ -450,7 +455,7 @@ model Webhook {
   id             String   @id @default(cuid())
   organizationId String
   url            String
-  secret         String   // HMAC signing secret
+  secret         String // HMAC signing secret
   events         String[] // Array of event types to subscribe to
   enabled        Boolean  @default(true)
   createdAt      DateTime @default(now())
@@ -468,7 +473,7 @@ model WebhookDelivery {
   webhookId   String
   event       String
   payload     Json
-  status      String    // pending, success, failed
+  status      String // pending, success, failed
   statusCode  Int?
   response    String?   @db.Text
   attempts    Int       @default(0)

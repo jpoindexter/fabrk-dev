@@ -37,10 +37,13 @@ export async function PATCH(req: Request) {
       );
     }
 
-    // Generate verification token
+    // Generate verification token (this is sent in the email)
     const token = crypto.randomBytes(32).toString("hex");
     const expiresAt = new Date();
     expiresAt.setHours(expiresAt.getHours() + 24); // 24-hour expiry
+
+    // Hash token before storing (security: tokens are hashed in DB)
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
 
     // Update email and create verification token
     await prisma.$transaction([
@@ -54,7 +57,7 @@ export async function PATCH(req: Request) {
       prisma.verificationToken.create({
         data: {
           identifier: validatedData.newEmail,
-          token,
+          token: hashedToken,
           expires: expiresAt,
         },
       }),

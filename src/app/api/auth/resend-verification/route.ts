@@ -9,7 +9,7 @@ import { successResponse } from "@/lib/api/response";
 import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
-import { randomBytes } from "crypto";
+import { randomBytes, createHash } from "crypto";
 import { NextRequest } from "next/server";
 
 async function resendVerificationHandler(request: NextRequest) {
@@ -39,15 +39,18 @@ async function resendVerificationHandler(request: NextRequest) {
     where: { identifier: email },
   });
 
-  // Generate new token
+  // Generate new token (this is sent in the email)
   const token = randomBytes(32).toString("hex");
   const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
-  // Store token
+  // Hash token before storing (security: tokens are hashed in DB)
+  const hashedToken = createHash("sha256").update(token).digest("hex");
+
+  // Store hashed token
   await prisma.verificationToken.create({
     data: {
       identifier: email,
-      token,
+      token: hashedToken,
       expires,
     },
   });

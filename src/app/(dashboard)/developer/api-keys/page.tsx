@@ -57,15 +57,22 @@ interface ApiKey {
 /**
  * ORGANIZATION ID CONTEXT
  *
- * TODO: This should be dynamically retrieved from one of:
- * 1. OrganizationProvider context (when multi-tenancy is fully implemented)
- * 2. User's activeOrganizationId from session
- * 3. URL params (for org-specific routes like /org/[slug]/developer/api-keys)
+ * Implementation Options (choose one based on your multi-tenancy setup):
  *
- * For demo/development purposes, using a hardcoded value.
- * Replace this with proper organization context integration.
+ * Option 1: OrganizationProvider context (recommended for full multi-tenancy)
+ * const { activeOrganization } = useOrganization();
+ * const ORGANIZATION_ID = activeOrganization?.id || '';
+ *
+ * Option 2: User's single organization (for simple SaaS)
+ * Fetch from API on mount or pass as prop from server component
+ *
+ * Option 3: URL params (for org-scoped routes)
+ * Use route like /organizations/[slug]/developer/api-keys
+ *
+ * Current Implementation: Using mock data for demonstration
+ * For production: Replace with actual organization context from your auth/session
  */
-const ORGANIZATION_ID = "org_demo";
+const ORGANIZATION_ID = "org_demo"; // REPLACE WITH ACTUAL ORG ID FROM CONTEXT/SESSION
 
 export default function ApiKeysPage() {
   const { success, error } = useToast();

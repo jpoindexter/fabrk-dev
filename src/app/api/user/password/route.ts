@@ -54,15 +54,21 @@ export async function PATCH(req: Request) {
     // Hash new password
     const hashedPassword = await hash(validatedData.newPassword, 12);
 
-    // Update password
+    // Update password and increment sessionVersion to invalidate all other sessions
+    // This ensures that changing password logs out all devices except the current one
     await prisma.user.update({
       where: { id: session.user.id },
-      data: { password: hashedPassword },
+      data: {
+        password: hashedPassword,
+        sessionVersion: {
+          increment: 1,
+        },
+      },
     });
 
     return NextResponse.json({
       success: true,
-      message: "Password updated successfully",
+      message: "Password updated successfully. All other sessions have been logged out for security.",
     });
   } catch (error) {
     if (error instanceof z.ZodError) {

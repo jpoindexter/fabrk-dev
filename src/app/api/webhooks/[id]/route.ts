@@ -70,7 +70,7 @@ export async function GET(
       id: webhook.id,
       url: webhook.url,
       events: webhook.events,
-      secret: webhook.secret, // Expose secret in detail view
+      // Secret is only exposed once during creation for security
       enabled: webhook.enabled,
       organization: webhook.organization,
       deliveryCount: webhook._count.deliveries,
