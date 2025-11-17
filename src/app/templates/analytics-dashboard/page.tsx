@@ -121,18 +121,46 @@ export default function AnalyticsDashboardTemplate() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px] flex items-end justify-between gap-2">
-                {[65, 85, 75, 90, 95, 100].map((height, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                    <div
-                      className="w-full bg-primary rounded-t-md transition-all hover:opacity-90"
-                      style={{ height: `${height}%` }}
-                    />
-                    <span className="text-xs text-muted-foreground">
-                      {["Jan", "Feb", "Mar", "Apr", "May", "Jun"][i]}
-                    </span>
+              <div className="space-y-6">
+                <div className="h-[300px] flex items-end justify-between gap-2 px-2">
+                  {[
+                    { month: "Jan", revenue: 32000, height: 55 },
+                    { month: "Feb", revenue: 42000, height: 70 },
+                    { month: "Mar", revenue: 38000, height: 65 },
+                    { month: "Apr", revenue: 54000, height: 85 },
+                    { month: "May", revenue: 57000, height: 90 },
+                    { month: "Jun", revenue: 63000, height: 100 },
+                  ].map((data, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
+                      <span className="text-xs font-semibold text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                        ${(data.revenue / 1000).toFixed(0)}k
+                      </span>
+                      <div
+                        className="w-full bg-primary rounded-t-md transition-all hover:bg-primary/90 hover:shadow-md"
+                        style={{ height: `${data.height}%`, minHeight: "24px" }}
+                      />
+                      <span className="text-xs text-muted-foreground">
+                        {data.month}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-4 border-t border-border">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Average</p>
+                      <p className="text-lg font-semibold">$47,667</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Highest</p>
+                      <p className="text-lg font-semibold">$63,000</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Growth</p>
+                      <p className="text-lg font-semibold text-green-600">+96.9%</p>
+                    </div>
                   </div>
-                ))}
+                </div>
               </div>
             </CardContent>
           </Card>
