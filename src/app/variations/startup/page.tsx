@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import config from "@/config";
 import {
   Rocket, Zap, Target, TrendingUp, Sparkles, ArrowRight,
   Check, Globe, Code, Layers, ArrowLeft, ChevronRight
@@ -272,7 +273,7 @@ export default function StartupVariation() {
               asChild
             >
               <Link href="/#pricing">
-                BUY NOW - $79
+                BUY NOW - {config.pricing.product.display.current}
                 <ChevronRight className="ml-2 h-6 w-6" />
               </Link>
             </Button>

@@ -184,6 +184,61 @@ const config = {
   },
 
   // ============================================================================
+  // PRODUCT PRICING (Landing Page Display)
+  // ============================================================================
+  pricing: {
+    // Boilerplate product pricing (what customers pay to buy Fabrk)
+    product: {
+      current: 99, // Current sale price
+      original: 199, // Original/regular price
+      currency: "USD",
+      display: {
+        current: "$99",
+        original: "$199",
+      },
+    },
+    // Competitor pricing (for comparison tables)
+    competitors: {
+      diy: {
+        name: "DIY",
+        price: 0,
+        display: "$0",
+      },
+      shipfast: {
+        name: "ShipFast",
+        price: 199,
+        display: "$199",
+      },
+      supastarter: {
+        name: "Supastarter",
+        price: 349,
+        display: "$349",
+      },
+    },
+    // Example SaaS tier pricing (for customer's product demos)
+    exampleTiers: {
+      starter: {
+        name: "Starter",
+        price: 29,
+        display: "$29",
+        period: "/month",
+      },
+      professional: {
+        name: "Professional",
+        price: 99,
+        display: "$99",
+        period: "/month",
+      },
+      enterprise: {
+        name: "Enterprise",
+        price: 299,
+        display: "$299",
+        period: "/month",
+      },
+    },
+  },
+
+  // ============================================================================
   // API CONFIGURATION
   // ============================================================================
   api: {

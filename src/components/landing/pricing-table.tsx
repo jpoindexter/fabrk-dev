@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import config from "@/config";
 
 interface PricingPlan {
   name: string;
@@ -19,8 +20,8 @@ interface PricingTableProps {
 
 const defaultPlans: PricingPlan[] = [
   {
-    name: "DIY",
-    price: "$0",
+    name: config.pricing.competitors.diy.name,
+    price: config.pricing.competitors.diy.display,
     description: "Build from scratch",
     features: {
       typescript: true,
@@ -40,8 +41,8 @@ const defaultPlans: PricingPlan[] = [
     cta: { text: "Start Building", href: "#" },
   },
   {
-    name: "ShipFast",
-    price: "$199",
+    name: config.pricing.competitors.shipfast.name,
+    price: config.pricing.competitors.shipfast.display,
     description: "Popular choice",
     features: {
       typescript: false,
@@ -61,8 +62,8 @@ const defaultPlans: PricingPlan[] = [
     cta: { text: "View ShipFast", href: "https://shipfa.st" },
   },
   {
-    name: "Supastarter",
-    price: "$349",
+    name: config.pricing.competitors.supastarter.name,
+    price: config.pricing.competitors.supastarter.display,
     description: "Most complete",
     features: {
       typescript: true,
@@ -83,7 +84,7 @@ const defaultPlans: PricingPlan[] = [
   },
   {
     name: "Fabrk",
-    price: "$79",
+    price: config.pricing.product.display.current,
     description: "The Anti-Bloat",
     features: {
       typescript: "Strict Mode",

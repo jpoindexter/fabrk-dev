@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
+import config from "@/config";
 
 export function HeroSection() {
   const { createCheckoutSession, isLoading } = useCheckout();
@@ -53,7 +54,7 @@ export function HeroSection() {
                   Processing...
                 </>
               ) : (
-                "Get Fabrk Now - $99"
+                `Get Fabrk Now - ${config.pricing.product.display.current}`
               )}
             </Button>
           </div>

@@ -10,6 +10,7 @@ import {
   ArrowRight, Check, Zap, Shield, Rocket,
   ArrowLeft, Star, Users
 } from "lucide-react";
+import config from "@/config";
 
 export default function ModernVariation() {
   return (
@@ -60,7 +61,7 @@ export default function ModernVariation() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
               <Button size="lg" className="rounded-lg hover:opacity-90 transition-opacity" asChild>
                 <Link href="/#pricing">
-                  Get Started - $79
+                  Get Started - {config.pricing.product.display.current}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -167,7 +168,7 @@ export default function ModernVariation() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
               <Button size="lg" variant="secondary" className="rounded-lg hover:opacity-90 transition-opacity" asChild>
                 <Link href="/#pricing">
-                  Get Started - $79
+                  Get Started - {config.pricing.product.display.current}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

@@ -3,12 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
+import config from "@/config";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
 
   // Use the Starter tier price from environment
   const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
+
+  // Get pricing from centralized config
+  const { current, original } = config.pricing.product.display;
 
   const features = [
     "Next.js 15 Boilerplate",
@@ -52,9 +56,9 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">$99</span>
+                <span className="text-5xl font-semibold text-foreground">{current}</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
-                  $199
+                  {original}
                 </span>
               </div>
               <p className="text-base font-normal text-muted-foreground">

@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import config from "@/config";
 
 const plans = [
   {
     name: "Starter",
-    price: "$99",
+    price: config.pricing.exampleTiers.starter.display,
     period: "one-time",
     description: "Perfect for individual developers",
     features: [
@@ -20,7 +21,7 @@ const plans = [
   },
   {
     name: "Professional",
-    price: "$199",
+    price: config.pricing.exampleTiers.professional.display,
     period: "one-time",
     description: "Everything you need to build production apps",
     features: [
@@ -35,7 +36,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "$499",
+    price: config.pricing.exampleTiers.enterprise.display,
     period: "one-time",
     description: "Advanced features for team collaboration",
     features: [
