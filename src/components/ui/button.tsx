@@ -39,11 +39,11 @@ const buttonVariants = cva(
           "border border-white/30 bg-transparent text-white hover:bg-white/10 rounded-lg text-base px-6 py-3",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        xl: "h-14 rounded-md px-10 text-lg",
-        icon: "h-9 w-9",
+        default: "h-8 px-3 py-1.5",
+        sm: "h-7 rounded-md px-2 text-xs",
+        lg: "h-9 rounded-md px-6",
+        xl: "h-12 rounded-md px-8 text-lg",
+        icon: "h-8 w-8",
       },
     },
     defaultVariants: {
