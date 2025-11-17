@@ -5,6 +5,7 @@
 
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -49,6 +50,38 @@ export default function DemoPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Main Navigation */}
+      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          {/* Logo/Home Link */}
+          <Link href="/" className="text-lg font-semibold transition-opacity hover:opacity-80">
+            Demo
+          </Link>
+
+          {/* Navigation Links */}
+          <div className="flex items-center gap-8">
+            {demos.map((demo) => (
+              <button
+                key={demo.id}
+                onClick={() => setActiveTab(demo.id)}
+                className={`text-sm font-medium transition-colors ${
+                  activeTab === demo.id
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {demo.label}
+              </button>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <Button asChild>
+            <Link href="/">Back Home</Link>
+          </Button>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <div className="border-b bg-card">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
