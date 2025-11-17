@@ -43,7 +43,7 @@ function SuccessContent() {
           description: data.error || "Please try again or contact support.",
         });
       }
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error("Error", {
         description: "Failed to resend email. Please try again later.",
       });

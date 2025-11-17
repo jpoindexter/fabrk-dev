@@ -3,18 +3,20 @@
  * DELETE /api/user/delete
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { compare } from "bcryptjs";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const deleteSchema = z.object({
   password: z.string().min(8),
   confirmation: z.literal("DELETE"),
 });
 
-export async function DELETE(req: Request) {
+export const DELETE = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -57,7 +59,7 @@ export async function DELETE(req: Request) {
       success: true,
       message: "Account deleted successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },
@@ -65,10 +67,10 @@ export async function DELETE(req: Request) {
       );
     }
 
-    console.error("[Account Delete] Error:", error);
+    logger.error("[Account Delete] Error:", error);
     return NextResponse.json(
       { error: "Failed to delete account" },
       { status: 500 }
     );
   }
-}
+});

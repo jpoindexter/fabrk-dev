@@ -6,6 +6,7 @@
 
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -22,7 +23,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
  */
 export async function sendEmail(to: string, subject: string, html: string) {
   if (!resend) {
-    console.log("📧 [DEV] Email to:", to, "Subject:", subject);
+    logger.debug("📧 [DEV] Email to:", to, "Subject:", subject);
     return { success: true };
   }
 
@@ -34,8 +35,8 @@ export async function sendEmail(to: string, subject: string, html: string) {
       html,
     });
     return { success: true };
-  } catch (error) {
-    console.error("Failed to send email:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to send email:", error);
     return { success: false, error };
   }
 }
@@ -51,7 +52,7 @@ export async function sendEmail(to: string, subject: string, html: string) {
  */
 export async function sendWelcomeEmail(to: string, name: string, licenseKey?: string) {
   if (!resend) {
-    console.log("📧 [DEV] Welcome email to:", to);
+    logger.debug("📧 [DEV] Welcome email to:", to);
     return { success: true };
   }
 
@@ -69,8 +70,8 @@ export async function sendWelcomeEmail(to: string, name: string, licenseKey?: st
       `,
     });
     return { success: true };
-  } catch (error) {
-    console.error("Failed to send welcome email:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to send welcome email:", error);
     return { success: false, error };
   }
 }
@@ -85,7 +86,7 @@ export async function sendWelcomeEmail(to: string, name: string, licenseKey?: st
  */
 export async function sendVerificationEmail(to: string, token: string) {
   if (!resend) {
-    console.log("📧 [DEV] Verification email to:", to, "- Token:", token);
+    logger.debug("📧 [DEV] Verification email to:", to, "- Token:", token);
     return { success: true };
   }
 
@@ -104,8 +105,8 @@ export async function sendVerificationEmail(to: string, token: string) {
       `,
     });
     return { success: true };
-  } catch (error) {
-    console.error("Failed to send verification email:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to send verification email:", error);
     return { success: false, error };
   }
 }
@@ -120,7 +121,7 @@ export async function sendVerificationEmail(to: string, token: string) {
  */
 export async function sendResetEmail(to: string, token: string) {
   if (!resend) {
-    console.log("📧 [DEV] Reset email to:", to, "- Token:", token);
+    logger.debug("📧 [DEV] Reset email to:", to, "- Token:", token);
     return { success: true };
   }
 
@@ -140,8 +141,8 @@ export async function sendResetEmail(to: string, token: string) {
       `,
     });
     return { success: true };
-  } catch (error) {
-    console.error("Failed to send reset email:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to send reset email:", error);
     return { success: false, error };
   }
 }
@@ -232,8 +233,8 @@ export async function queueEmail(params: {
     });
 
     return { success: true, emailQueueId: emailQueue.id };
-  } catch (error) {
-    console.error("Failed to queue email:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to queue email:", error);
     return { success: false, error };
   }
 }
@@ -353,7 +354,7 @@ export async function sendOrganizationInvite(
   }
 ) {
   if (!resend) {
-    console.log("📧 [DEV] Organization invite to:", to, "- Org:", params.organizationName);
+    logger.debug("📧 [DEV] Organization invite to:", to, "- Org:", params.organizationName);
     return { success: true };
   }
 
@@ -429,8 +430,8 @@ export async function sendOrganizationInvite(
       html,
     });
     return { success: true };
-  } catch (error) {
-    console.error("Failed to send organization invite:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to send organization invite:", error);
     return { success: false, error };
   }
 }

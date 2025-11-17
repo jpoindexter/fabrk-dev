@@ -3,18 +3,20 @@
  * PATCH /api/user/password
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hash, compare } from "bcryptjs";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const passwordSchema = z.object({
   currentPassword: z.string().min(8),
   newPassword: z.string().min(8),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -54,17 +56,23 @@ export async function PATCH(req: Request) {
     // Hash new password
     const hashedPassword = await hash(validatedData.newPassword, 12);
 
-    // Update password
+    // Update password and increment sessionVersion to invalidate all other sessions
+    // This ensures that changing password logs out all devices except the current one
     await prisma.user.update({
       where: { id: session.user.id },
-      data: { password: hashedPassword },
+      data: {
+        password: hashedPassword,
+        sessionVersion: {
+          increment: 1,
+        },
+      },
     });
 
     return NextResponse.json({
       success: true,
-      message: "Password updated successfully",
+      message: "Password updated successfully. All other sessions have been logged out for security.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },
@@ -72,10 +80,10 @@ export async function PATCH(req: Request) {
       );
     }
 
-    console.error("[Password Change] Error:", error);
+    logger.error("[Password Change] Error:", error);
     return NextResponse.json(
       { error: "Failed to change password" },
       { status: 500 }
     );
   }
-}
+});

@@ -5,6 +5,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import config from "@/config";
 import {
   Card,
   CardContent,
@@ -269,7 +270,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
               <Link href="/#pricing">
-                Get Started - $79
+                Get Started - {config.pricing.product.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

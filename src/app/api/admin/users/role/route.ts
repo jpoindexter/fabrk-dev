@@ -3,17 +3,19 @@
  * PATCH /api/admin/users/role
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const roleSchema = z.object({
   userId: z.string(),
   role: z.enum(["USER", "ADMIN"]),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -46,7 +48,7 @@ export async function PATCH(req: Request) {
       success: true,
       message: "User role updated successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },
@@ -54,10 +56,10 @@ export async function PATCH(req: Request) {
       );
     }
 
-    console.error("[Admin Role Update] Error:", error);
+    logger.error("[Admin Role Update] Error:", error);
     return NextResponse.json(
       { error: "Failed to update user role" },
       { status: 500 }
     );
   }
-}
+});

@@ -176,7 +176,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
         setShowSuccess(true);
 
         setTimeout(() => setShowSuccess(false), 3000);
-      } catch (error) {
+      } catch (error: unknown) {
         setErrors({
           submit: error instanceof Error ? error.message : "Failed to send invites",
         });

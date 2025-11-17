@@ -120,8 +120,9 @@ export function validateEmail(email: string): { valid: boolean; email?: string; 
   try {
     const validated = ValidationSchemas.email.parse(email);
     return { valid: true, email: validated };
-  } catch (error) {
-    return { valid: false, error: (error as z.ZodError).issues[0]?.message };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof z.ZodError ? error.issues[0]?.message : "Invalid email";
+    return { valid: false, error: errorMessage };
   }
 }
 
@@ -134,8 +135,9 @@ export function validatePassword(
   try {
     const validated = ValidationSchemas.password.parse(password);
     return { valid: true, password: validated };
-  } catch (error) {
-    return { valid: false, errors: (error as z.ZodError).issues.map((e) => e.message) };
+  } catch (error: unknown) {
+    const errors = error instanceof z.ZodError ? error.issues.map((e) => e.message) : ["Invalid password"];
+    return { valid: false, errors };
   }
 }
 
@@ -258,7 +260,7 @@ export function validateJSON(input: string): { valid: boolean; data?: any; error
   try {
     const data = JSON.parse(input);
     return { valid: true, data };
-  } catch (error) {
+  } catch (error: unknown) {
     return { valid: false, error: "Invalid JSON" };
   }
 }
@@ -290,7 +292,7 @@ export async function validateRequest<T>(
   try {
     const validated = await schema.parseAsync(data);
     return { success: true, data: validated };
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       const errors: Record<string, string> = {};
       error.issues.forEach((err) => {

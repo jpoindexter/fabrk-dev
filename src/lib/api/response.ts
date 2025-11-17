@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 
-interface ApiResponse<T = any> {
+interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   message?: string;
@@ -15,7 +15,7 @@ interface ApiResponse<T = any> {
 /**
  * Success response helper
  */
-export function successResponse<T = any>(
+export function successResponse<T = unknown>(
   data: T,
   message?: string,
   status: number = 200
@@ -33,7 +33,7 @@ export function successResponse<T = any>(
 /**
  * Created response (201)
  */
-export function createdResponse<T = any>(
+export function createdResponse<T = unknown>(
   data: T,
   message: string = "Resource created successfully"
 ): NextResponse {
@@ -71,7 +71,7 @@ export function errorResponse(
  */
 export function validationError(
   message: string = "Validation failed",
-  details?: any
+  details?: Record<string, unknown> | unknown[]
 ): NextResponse {
   return NextResponse.json(
     {

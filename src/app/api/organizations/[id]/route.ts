@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import {
   getOrganizationBySlug,
   hasOrganizationRole,
@@ -17,6 +18,7 @@ import {
 } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
+import { logger } from "@/lib/logger";
 
 // UUID v4 format regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -91,8 +93,8 @@ export async function GET(
         role: userMembership.role,
       },
     });
-  } catch (error) {
-    console.error("Failed to fetch organization:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to fetch organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },
       { status: 500 }
@@ -100,10 +102,10 @@ export async function GET(
   }
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -169,10 +171,12 @@ export async function PATCH(
         logo: updated.logo,
       },
     });
-  } catch (error: any) {
-    console.error("Failed to update organization:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to update organization";
+    logger.error("Failed to update organization:", errorMessage);
 
-    if (error.code === "P2002") {
+    // Check for Prisma unique constraint violation
+    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
       return NextResponse.json(
         { error: "An organization with this slug already exists" },
         { status: 409 }
@@ -184,12 +188,12 @@ export async function PATCH(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -230,11 +234,11 @@ export async function DELETE(
       success: true,
       message: "Organization deleted successfully",
     });
-  } catch (error) {
-    console.error("Failed to delete organization:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to delete organization:", error);
     return NextResponse.json(
       { error: "Failed to delete organization" },
       { status: 500 }
     );
   }
-}
+});

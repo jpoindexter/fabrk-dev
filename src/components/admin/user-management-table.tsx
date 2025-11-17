@@ -99,8 +99,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       );
       toast.success("User role updated successfully");
       router.refresh();
-    } catch (error: any) {
-      toast.error(error.message || "Failed to update user role");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update user role";
+      toast.error(errorMessage);
     } finally {
       setActionLoading(false);
     }
@@ -125,8 +126,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       setUsers(users.filter((u) => u.id !== selectedUser.id));
       toast.success("User deleted successfully");
       router.refresh();
-    } catch (error: any) {
-      toast.error(error.message || "Failed to delete user");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to delete user";
+      toast.error(errorMessage);
     } finally {
       setActionLoading(false);
       setDeleteDialogOpen(false);
@@ -150,8 +152,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
 
       toast.success("User suspended successfully");
       router.refresh();
-    } catch (error: any) {
-      toast.error(error.message || "Failed to suspend user");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to suspend user";
+      toast.error(errorMessage);
     } finally {
       setActionLoading(false);
     }

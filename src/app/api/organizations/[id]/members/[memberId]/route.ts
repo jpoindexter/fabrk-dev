@@ -6,6 +6,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import {
   hasOrganizationRole,
   removeMember,
@@ -15,15 +16,16 @@ import { OrgRole } from "@prisma/client";
 import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
+import { logger } from "@/lib/logger";
 
 interface RouteContext {
   params: Promise<{ id: string; memberId: string }>;
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id, memberId } = await context.params;
     const session = await auth();
@@ -113,20 +115,21 @@ export async function PATCH(
           },
         });
       }
-    } catch (notifyError) {
-      console.error("Failed to send notifications:", notifyError);
+    } catch (notifyError: unknown) {
+      logger.error("Failed to send notifications:", notifyError);
     }
 
     return NextResponse.json({
       success: true,
       message: "Member role updated successfully",
     });
-  } catch (error: any) {
-    console.error("Failed to update member role:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to update member role";
+    logger.error("Failed to update member role:", errorMessage);
 
-    if (error.message?.includes("permission")) {
+    if (errorMessage.includes("permission")) {
       return NextResponse.json(
-        { error: error.message },
+        { error: errorMessage },
         { status: 403 }
       );
     }
@@ -136,12 +139,12 @@ export async function PATCH(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id, memberId } = await context.params;
     const session = await auth();
@@ -200,8 +203,8 @@ export async function DELETE(
             name: session.user.name,
           },
         });
-      } catch (activityError) {
-        console.error("Failed to create activity:", activityError);
+      } catch (activityError: unknown) {
+        logger.error("Failed to create activity:", activityError);
       }
     }
 
@@ -209,12 +212,13 @@ export async function DELETE(
       success: true,
       message: "Member removed successfully",
     });
-  } catch (error: any) {
-    console.error("Failed to remove member:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to remove member";
+    logger.error("Failed to remove member:", errorMessage);
 
-    if (error.message?.includes("permission") || error.message?.includes("owner")) {
+    if (errorMessage.includes("permission") || errorMessage.includes("owner")) {
       return NextResponse.json(
-        { error: error.message },
+        { error: errorMessage },
         { status: 403 }
       );
     }
@@ -224,4 +228,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-}
+});

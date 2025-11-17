@@ -29,7 +29,7 @@ export async function retry<T>(
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
       return await fn();
-    } catch (error) {
+    } catch (error: unknown) {
       if (attempt === attempts) throw error;
 
       if (onRetry) {
@@ -95,6 +95,7 @@ export async function batchPromises<T, R>(
 /**
  * Debounce async function
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
   fn: T,
   delay: number
@@ -109,7 +110,7 @@ export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
         try {
           const result = await fn(...args);
           resolve(result);
-        } catch (error) {
+        } catch (error: unknown) {
           reject(error);
         }
       }, delay);
@@ -120,6 +121,7 @@ export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
 /**
  * Throttle async function
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttleAsync<T extends (...args: any[]) => Promise<any>>(
   fn: T,
   limit: number
@@ -164,7 +166,7 @@ export async function safe<T>(
   try {
     const data = await promise;
     return [null, data];
-  } catch (error) {
+  } catch (error: unknown) {
     return [error as Error, null];
   }
 }

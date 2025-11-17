@@ -118,7 +118,7 @@ import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { trackUserSignup } from "@/lib/analytics/events";
 import { hash } from "bcryptjs";
-import { randomBytes } from "crypto";
+import { randomBytes, createHash } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { z, ZodError } from "zod";
 
@@ -164,15 +164,18 @@ async function registerHandler(req: NextRequest) {
       },
     });
 
-    // Generate verification token
+    // Generate verification token (this is sent in the email)
     const token = randomBytes(32).toString("hex");
     const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
-    // Store verification token
+    // Hash token before storing (security: tokens are hashed in DB)
+    const hashedToken = createHash("sha256").update(token).digest("hex");
+
+    // Store hashed verification token
     await prisma.verificationToken.create({
       data: {
         identifier: email,
-        token,
+        token: hashedToken,
         expires,
       },
     });
@@ -198,7 +201,7 @@ async function registerHandler(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Registration error:", error);
 
     if (error instanceof ZodError) {

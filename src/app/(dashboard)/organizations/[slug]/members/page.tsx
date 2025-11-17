@@ -113,7 +113,7 @@ export default function OrganizationMembersPage() {
         if (!membersResponse.ok) throw new Error("Failed to fetch members");
         const membersData = await membersResponse.json();
         setMembers(membersData.members);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch data:", error);
         toast.error("Failed to load organization members");
       } finally {
@@ -149,8 +149,9 @@ export default function OrganizationMembersPage() {
       toast.success(`Invitation sent to ${inviteEmail}`);
       setInviteEmail("");
       setInviteRole("MEMBER");
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to send invitation";
+      toast.error(errorMessage);
     } finally {
       setInviting(false);
     }
@@ -171,8 +172,9 @@ export default function OrganizationMembersPage() {
 
       setMembers((prev) => prev.filter((m) => m.id !== memberId));
       toast.success("Member removed successfully");
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to remove member";
+      toast.error(errorMessage);
     }
   };
 
@@ -197,8 +199,9 @@ export default function OrganizationMembersPage() {
         )
       );
       toast.success("Member role updated successfully");
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update role";
+      toast.error(errorMessage);
     }
   };
 

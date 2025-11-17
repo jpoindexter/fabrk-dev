@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   try {
@@ -61,8 +62,8 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, marked: notificationId });
-  } catch (error) {
-    console.error("Failed to mark notification as read:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to mark notification as read:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

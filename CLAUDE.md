@@ -779,10 +779,58 @@ When creating components:
 - **Password hashing:** bcrypt with 12 rounds
 - **JWT sessions:** 30-day expiration
 - **Security headers:** Configured in `next.config.ts` (HSTS, CSP, X-Frame-Options)
+- **CSP nonce system:** Production-grade nonce-based CSP eliminates 'unsafe-inline' (see below)
 - **Session versioning:** Increment `User.sessionVersion` to invalidate all sessions
 - **API key storage:** SHA-256 hashed, never store raw keys
 - **Timing-safe comparison:** Use crypto.timingSafeEqual() for sensitive comparisons
 - **HMAC signing:** All webhooks use HMAC-SHA256 signatures
+
+### CSP Nonce System
+
+**Production-Grade Content Security Policy** with nonce-based inline script execution:
+
+**How It Works:**
+1. Middleware generates unique 128-bit nonce per request
+2. Nonce injected into CSP header and custom `x-nonce` header
+3. Components retrieve nonce and add to script tags
+4. Browser only executes scripts with matching nonce
+
+**Usage in Server Components:**
+```typescript
+import { NonceScript } from "@/components/security/nonce-script";
+
+export async function MyPage() {
+  return (
+    <NonceScript type="application/ld+json">
+      {JSON.stringify(schema)}
+    </NonceScript>
+  );
+}
+```
+
+**Usage in Client Components:**
+```typescript
+"use client";
+import { ClientSchemaScript } from "@/components/security/client-schema-script";
+
+export function MyComponent() {
+  return <ClientSchemaScript schema={schema} />;
+}
+```
+
+**Security Benefits:**
+- ✅ Prevents XSS via inline script injection
+- ✅ Blocks event handler injection (onclick, etc.)
+- ✅ Prevents javascript: URI execution
+- ✅ 128-bit entropy prevents nonce guessing
+- ✅ Per-request rotation prevents replay attacks
+
+**Key Files:**
+- `src/lib/security/csp-nonce.ts` - Nonce generation
+- `src/components/security/nonce-script.tsx` - Server component
+- `src/components/security/client-schema-script.tsx` - Client fallback
+- `src/middleware.ts` - CSP injection logic
+- `docs/04-features/CSP-NONCE.md` - Full documentation
 
 ## Deployment
 

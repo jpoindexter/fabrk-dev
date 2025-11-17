@@ -26,6 +26,7 @@ import {
   EyeOff,
   Edit3,
 } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -263,7 +264,19 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                   "prose-a:text-primary"
                 )}
                 style={{ minHeight }}
-                dangerouslySetInnerHTML={{ __html: parseMarkdown(value) }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(parseMarkdown(value), {
+                    ALLOWED_TAGS: [
+                      "h1", "h2", "h3", "h4", "h5", "h6",
+                      "p", "br", "strong", "em", "u", "s",
+                      "a", "ul", "ol", "li", "blockquote",
+                      "code", "pre", "img", "table", "thead",
+                      "tbody", "tr", "th", "td"
+                    ],
+                    ALLOWED_ATTR: ["href", "src", "alt", "title", "class", "target", "rel"],
+                    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+                  })
+                }}
               />
             </div>
           )}

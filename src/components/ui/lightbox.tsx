@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export interface LightboxItem {
+  id?: string;
   type: "image" | "video";
   src: string;
   alt?: string;

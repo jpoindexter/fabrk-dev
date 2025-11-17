@@ -5,6 +5,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { retryWebhookDelivery } from "./server";
+import { logger } from "@/lib/logger";
 
 /**
  * Process failed webhooks that are ready for retry
@@ -34,7 +35,7 @@ export async function retryFailedWebhooks(): Promise<number> {
       return 0;
     }
 
-    console.log(
+    logger.info(
       `[Webhook Retry Worker] Processing ${failedDeliveries.length} failed deliveries...`
     );
 
@@ -45,13 +46,13 @@ export async function retryFailedWebhooks(): Promise<number> {
 
     await Promise.allSettled(retryPromises);
 
-    console.log(
+    logger.info(
       `[Webhook Retry Worker] Completed processing ${failedDeliveries.length} deliveries`
     );
 
     return failedDeliveries.length;
-  } catch (error) {
-    console.error("[Webhook Retry Worker] Error:", error);
+  } catch (error: unknown) {
+    logger.error("[Webhook Retry Worker] Error:", error);
     return 0;
   }
 }
@@ -72,8 +73,8 @@ export function startWebhookRetryWorker(options: {
 
     try {
       await retryFailedWebhooks();
-    } catch (error) {
-      console.error("[Webhook Retry Worker] Error:", error);
+    } catch (error: unknown) {
+      logger.error("[Webhook Retry Worker] Error:", error);
     }
 
     // Schedule next run
@@ -83,12 +84,12 @@ export function startWebhookRetryWorker(options: {
   }
 
   // Start processing
-  console.log("🔄 [Webhook Retry Worker] Started (polling every 1 minute)");
+  logger.info("🔄 [Webhook Retry Worker] Started (polling every 1 minute)");
   processRetries();
 
   // Return stop function
   return () => {
-    console.log("🛑 [Webhook Retry Worker] Stopping...");
+    logger.info("🛑 [Webhook Retry Worker] Stopping...");
     isRunning = false;
   };
 }
@@ -113,13 +114,13 @@ export async function cleanupOldDeliveries(olderThanDays: number = 30): Promise<
       },
     });
 
-    console.log(
+    logger.info(
       `[Webhook Cleanup] Deleted ${result.count} old delivery records`
     );
 
     return result.count;
-  } catch (error) {
-    console.error("[Webhook Cleanup] Error:", error);
+  } catch (error: unknown) {
+    logger.error("[Webhook Cleanup] Error:", error);
     return 0;
   }
 }

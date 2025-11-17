@@ -74,8 +74,9 @@ export default function AcceptInvitePage() {
 
         const data = await response.json();
         setInvite(data.invite);
-      } catch (error: any) {
-        setError(error.message);
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "Failed to fetch invitation";
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -103,8 +104,9 @@ export default function AcceptInvitePage() {
       const result = await response.json();
       toast.success(`Successfully joined ${result.organization.name}!`);
       router.push(`/organizations/${result.organization.slug}/members`);
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to accept invitation";
+      toast.error(errorMessage);
       setAccepting(false);
     }
   };

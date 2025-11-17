@@ -6,6 +6,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { verifyMFADevice } from "@/lib/auth/mfa";
+import { logger } from "@/lib/logger";
 
 export async function POST(req: Request) {
   try {
@@ -42,8 +43,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("[MFA Verify] Error:", error);
+  } catch (error: unknown) {
+    logger.error("[MFA Verify] Error:", error);
     return NextResponse.json(
       { error: "Failed to verify MFA" },
       { status: 500 }

@@ -15,6 +15,8 @@ import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { ComparisonSection } from "@/components/landing/comparison-section";
 import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/landing/footer";
+import { StickyCTABar } from "@/components/landing/sticky-cta-bar";
+import { ExitIntentPopup } from "@/components/landing/exit-intent-popup";
 
 export default function HomePage() {
   return (
@@ -30,6 +32,15 @@ export default function HomePage() {
       <ComparisonSection />
       <FAQSection />
       <Footer />
+      <StickyCTABar
+        message="Launch your SaaS in days, not months"
+        ctaText="Get Fabrk Now"
+      />
+      <ExitIntentPopup
+        title="Wait! Before You Go..."
+        description="Get Fabrk and launch your SaaS 10x faster. 100 components, authentication, payments, and more."
+        ctaText="Get Fabrk Now"
+      />
     </div>
   );
 }

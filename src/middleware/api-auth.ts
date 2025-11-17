@@ -7,6 +7,14 @@ import { validateApiKey, extractApiKeyFromHeader, type ValidatedApiKey } from "@
  */
 
 /**
+ * Route context type for Next.js 15 App Router
+ * Params are now async in Next.js 15
+ */
+export type RouteContext = {
+  params: Promise<Record<string, string | string[]>>;
+};
+
+/**
  * Authenticate request using API key from Authorization header
  * @param request - Next.js request object
  * @returns Validated API key details or null if invalid
@@ -21,7 +29,7 @@ export async function authenticateApiKey(request: NextRequest): Promise<Validate
     }
 
     return await validateApiKey(apiKey);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error authenticating API key:", error);
     return null;
   }
@@ -34,9 +42,9 @@ export async function authenticateApiKey(request: NextRequest): Promise<Validate
  * @returns Wrapped handler with authentication
  */
 export function requireApiKey(
-  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: any) => Promise<NextResponse>
+  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: RouteContext) => Promise<NextResponse>
 ) {
-  return async (req: NextRequest, context?: any) => {
+  return async (req: NextRequest, context?: RouteContext) => {
     const apiKey = await authenticateApiKey(req);
 
     if (!apiKey) {
@@ -59,7 +67,7 @@ export function requireApiKey(
  */
 export function requirePermission(
   permission: string,
-  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: any) => Promise<NextResponse>
+  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: RouteContext) => Promise<NextResponse>
 ) {
   return requireApiKey(async (req, apiKey, context) => {
     if (!apiKey.permissions.includes(permission)) {

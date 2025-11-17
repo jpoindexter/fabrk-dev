@@ -6,6 +6,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { authorizeChannel } from "@/lib/pusher/server";
+import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
   try {
@@ -44,15 +46,20 @@ export async function POST(req: NextRequest) {
         .replace("private-org-", "")
         .replace("presence-org-", "");
 
-      // TODO: Verify user is a member of this organization
-      // For now, we'll allow access if the user is authenticated
-      // In production, add membership check:
-      // const membership = await prisma.organizationMember.findFirst({
-      //   where: { userId: session.user.id, organizationId: orgId }
-      // });
-      // if (!membership) {
-      //   return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-      // }
+      // Verify user is a member of this organization
+      const membership = await prisma.organizationMember.findFirst({
+        where: {
+          userId: session.user.id,
+          organizationId: orgId,
+        },
+      });
+
+      if (!membership) {
+        return NextResponse.json(
+          { error: "You are not a member of this organization" },
+          { status: 403 }
+        );
+      }
     } else {
       return NextResponse.json({ error: "Invalid channel" }, { status: 403 });
     }
@@ -74,8 +81,8 @@ export async function POST(req: NextRequest) {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (error) {
-    console.error("Pusher auth error:", error);
+  } catch (error: unknown) {
+    logger.error("Pusher auth error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

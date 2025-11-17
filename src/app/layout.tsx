@@ -81,10 +81,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "google-site-verification-code", // TODO: Add actual verification code
-    yandex: "yandex-verification-code", // TODO: Add actual verification code
-  },
+  // Add your site verification codes when ready
+  // verification: {
+  //   google: "your-google-verification-code",
+  //   yandex: "your-yandex-verification-code",
+  // },
   category: "technology",
 };
 

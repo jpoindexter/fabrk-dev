@@ -24,6 +24,15 @@ export default async function SecurityPage() {
       email: true,
       emailVerified: true,
       sessionVersion: true,
+      _count: {
+        select: {
+          mfaDevices: {
+            where: {
+              verified: true, // Only count verified MFA devices
+            },
+          },
+        },
+      },
     },
   });
 
@@ -39,6 +48,9 @@ export default async function SecurityPage() {
       providerAccountId: true,
     },
   });
+
+  // Determine if 2FA is enabled based on verified MFA devices
+  const twoFactorEnabled = user._count.mfaDevices > 0;
 
   return (
     <div className="container mx-auto max-w-4xl px-6 py-8">
@@ -61,7 +73,7 @@ export default async function SecurityPage() {
           email: user.email || "",
           emailVerified: !!user.emailVerified,
           sessionVersion: user.sessionVersion || 1,
-          twoFactorEnabled: false,
+          twoFactorEnabled,
         }}
         connectedAccounts={accounts.map((acc) => ({
           provider: acc.provider,

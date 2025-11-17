@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -624,7 +625,7 @@ describe('MarkdownEditor Component', () => {
 
   describe('Ref Forwarding', () => {
     it('forwards ref to container div', () => {
-      const ref = { current: null } as React.RefObject<HTMLDivElement>;
+      const ref = React.createRef<HTMLDivElement>();
       render(<MarkdownEditor ref={ref} value="" onChange={() => {}} />);
 
       expect(ref.current).toBeInstanceOf(HTMLDivElement);

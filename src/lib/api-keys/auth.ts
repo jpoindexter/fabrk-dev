@@ -57,7 +57,7 @@ export async function validateApiKey(key: string): Promise<ValidatedApiKey | nul
     trackApiKeyUsage(apiKey.id).catch(console.error);
 
     return apiKey;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error validating API key:", error);
     return null;
   }

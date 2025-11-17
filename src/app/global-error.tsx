@@ -17,11 +17,15 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to console and potentially to error tracking service
+    // Log error to console and error tracking service
     console.error("Global application error:", error);
 
-    // TODO: Send to error tracking service (e.g., Sentry)
-    // if (typeof window !== "undefined") {
+    // Send to error tracking service
+    // To enable Sentry:
+    // 1. Install: npm install @sentry/nextjs
+    // 2. Configure: npx @sentry/wizard@latest -i nextjs
+    // 3. Uncomment the code below
+    // if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_SENTRY_DSN) {
     //   Sentry.captureException(error);
     // }
   }, [error]);

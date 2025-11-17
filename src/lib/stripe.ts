@@ -6,9 +6,17 @@
 import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 import crypto from "crypto";
+import { logger } from "@/lib/logger";
 
-// Initialize Stripe
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", {
+// Initialize Stripe - throw error if STRIPE_SECRET_KEY is not set
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error(
+    "STRIPE_SECRET_KEY environment variable is required. " +
+    "Please set it in your .env.local file or environment configuration."
+  );
+}
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2025-10-29.clover",
   typescript: true,
 });
@@ -188,7 +196,7 @@ export async function createCheckoutSession(
 export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const userId = session.metadata?.userId;
   if (!userId) {
-    console.error("No userId in session metadata");
+    logger.error("No userId in session metadata");
     return;
   }
 
@@ -212,7 +220,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     },
   });
 
-  console.log("✓ Checkout completed for user:", userId);
+  logger.info("✓ Checkout completed for user:", userId);
 }
 
 // Helper: Map price ID to tier

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { generateApiKey } from "@/lib/api-keys/generator";
+import { logger } from "@/lib/logger";
 
 /**
  * GET /api/api-keys
@@ -62,8 +64,8 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json(apiKeys);
-  } catch (error) {
-    console.error("Error fetching API keys:", error);
+  } catch (error: unknown) {
+    logger.error("Error fetching API keys:", error);
     return NextResponse.json(
       { error: "Failed to fetch API keys" },
       { status: 500 }
@@ -76,7 +78,7 @@ export async function GET(req: NextRequest) {
  * Create a new API key
  * Requires ADMIN or OWNER role
  */
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -179,11 +181,11 @@ export async function POST(req: NextRequest) {
       ...apiKey,
       key: generated.key, // Full key returned only once
     });
-  } catch (error) {
-    console.error("Error creating API key:", error);
+  } catch (error: unknown) {
+    logger.error("Error creating API key:", error);
     return NextResponse.json(
       { error: "Failed to create API key" },
       { status: 500 }
     );
   }
-}
+});

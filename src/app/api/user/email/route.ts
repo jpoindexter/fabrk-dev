@@ -3,16 +3,20 @@
  * PATCH /api/user/email
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { sendVerificationEmail } from "@/lib/email";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import crypto from "crypto";
+import { logger } from "@/lib/logger";
 
 const emailSchema = z.object({
   newEmail: z.string().email(),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -35,24 +39,41 @@ export async function PATCH(req: Request) {
       );
     }
 
-    // Update email
-    await prisma.user.update({
-      where: { id: session.user.id },
-      data: {
-        email: validatedData.newEmail,
-        emailVerified: null, // Reset verification
-      },
-    });
+    // Generate verification token (this is sent in the email)
+    const token = crypto.randomBytes(32).toString("hex");
+    const expiresAt = new Date();
+    expiresAt.setHours(expiresAt.getHours() + 24); // 24-hour expiry
 
-    // TODO: Send verification email to new address
-    // await sendVerificationEmail(validatedData.newEmail, token);
+    // Hash token before storing (security: tokens are hashed in DB)
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    // Update email and create verification token
+    await prisma.$transaction([
+      prisma.user.update({
+        where: { id: session.user.id },
+        data: {
+          email: validatedData.newEmail,
+          emailVerified: null, // Reset verification
+        },
+      }),
+      prisma.verificationToken.create({
+        data: {
+          identifier: validatedData.newEmail,
+          token: hashedToken,
+          expires: expiresAt,
+        },
+      }),
+    ]);
+
+    // Send verification email to new address
+    await sendVerificationEmail(validatedData.newEmail, token);
 
     return NextResponse.json({
       success: true,
       message:
         "Email updated successfully. Please verify your new email address.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid email address", details: error.issues },
@@ -60,10 +81,10 @@ export async function PATCH(req: Request) {
       );
     }
 
-    console.error("[Email Change] Error:", error);
+    logger.error("[Email Change] Error:", error);
     return NextResponse.json(
       { error: "Failed to change email" },
       { status: 500 }
     );
   }
-}
+});

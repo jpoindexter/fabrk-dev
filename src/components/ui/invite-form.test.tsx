@@ -415,7 +415,7 @@ describe('InviteForm Component', () => {
 
     it('shows loading state during submission', async () => {
       const mockSubmit = vi.fn(
-        () => new Promise((resolve) => setTimeout(resolve, 100))
+        () => new Promise<void>((resolve) => setTimeout(() => resolve(), 100))
       );
       render(<InviteForm allowMultiple={false} onSubmit={mockSubmit} />);
 
@@ -497,7 +497,7 @@ describe('InviteForm Component', () => {
   describe('Disabled State', () => {
     it('disables inputs during submission', async () => {
       const mockSubmit = vi.fn(
-        () => new Promise((resolve) => setTimeout(resolve, 100))
+        () => new Promise<void>((resolve) => setTimeout(() => resolve(), 100))
       );
       render(<InviteForm allowMultiple={false} onSubmit={mockSubmit} />);
 

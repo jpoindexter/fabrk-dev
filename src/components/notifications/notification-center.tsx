@@ -31,6 +31,17 @@ interface Notification {
   createdAt: Date;
 }
 
+// DTO type for notifications coming from API
+interface NotificationDTO {
+  id: string;
+  type: string;
+  title: string;
+  message: string;
+  read: boolean;
+  link?: string;
+  createdAt: string | Date;
+}
+
 export function NotificationCenter() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -42,14 +53,14 @@ export function NotificationCenter() {
     try {
       const response = await fetch("/api/notifications?limit=20");
       if (response.ok) {
-        const data = await response.json();
-        setNotifications(data.map((n: any) => ({
+        const data: NotificationDTO[] = await response.json();
+        setNotifications(data.map((n) => ({
           ...n,
           createdAt: new Date(n.createdAt),
         })));
-        setUnreadCount(data.filter((n: any) => !n.read).length);
+        setUnreadCount(data.filter((n) => !n.read).length);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to fetch notifications:", error);
     } finally {
       setLoading(false);
@@ -61,12 +72,17 @@ export function NotificationCenter() {
   }, [fetchNotifications]);
 
   // Subscribe to real-time notifications
-  const handleNewNotification = useCallback((notification: any) => {
+  const handleNewNotification = useCallback((notification: {
+    id: string;
+    type: string;
+    title: string;
+    message: string;
+    createdAt: Date;
+  }) => {
     setNotifications((prev) => [
       {
         ...notification,
         read: false,
-        createdAt: new Date(notification.createdAt),
       },
       ...prev,
     ]);
@@ -92,7 +108,7 @@ export function NotificationCenter() {
         );
         setUnreadCount((prev) => Math.max(0, prev - 1));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to mark notification as read:", error);
     }
   };
@@ -112,7 +128,7 @@ export function NotificationCenter() {
         );
         setUnreadCount(0);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to mark all as read:", error);
     }
   };

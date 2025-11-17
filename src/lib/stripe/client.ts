@@ -5,8 +5,15 @@
 import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 
-// Initialize Stripe
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_placeholder", {
+// Initialize Stripe - require environment variable to prevent silent failures
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error(
+    "STRIPE_SECRET_KEY is required. Please set it in your .env file.\n" +
+    "Get your key from: https://dashboard.stripe.com/apikeys"
+  );
+}
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2025-10-29.clover",
   typescript: true,
 });

@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
@@ -869,7 +870,7 @@ describe('NotificationCenter Component', () => {
 
   describe('Ref Forwarding', () => {
     it('forwards ref to dropdown content', () => {
-      const ref = { current: null } as React.RefObject<HTMLDivElement>;
+      const ref = React.createRef<HTMLDivElement>();
       render(<NotificationCenter {...defaultProps} ref={ref} />);
 
       expect(ref.current).toBeDefined();

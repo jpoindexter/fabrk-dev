@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { getUserOrganizations } from "@/lib/teams/organizations";
+import { logger } from "@/lib/logger";
 
 export async function GET(req: NextRequest) {
   try {
@@ -29,8 +30,8 @@ export async function GET(req: NextRequest) {
         role: org.role,
       })),
     });
-  } catch (error) {
-    console.error("Failed to fetch organizations:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to fetch organizations:", error);
     return NextResponse.json(
       { error: "Failed to fetch organizations" },
       { status: 500 }

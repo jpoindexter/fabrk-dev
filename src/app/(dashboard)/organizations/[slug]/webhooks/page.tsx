@@ -29,6 +29,16 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface WebhookItem {
   id: string;
@@ -54,6 +64,8 @@ export default function OrganizationWebhooksPage() {
   const [loading, setLoading] = React.useState(true);
   const [organization, setOrganization] = React.useState<Organization | null>(null);
   const [webhooks, setWebhooks] = React.useState<WebhookItem[]>([]);
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
+  const [webhookToDelete, setWebhookToDelete] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     fetchOrganization();
@@ -71,7 +83,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to fetch organization");
       const data = await response.json();
       setOrganization(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching organization:", error);
       toast.error("Failed to load organization");
       router.push("/organizations");
@@ -87,7 +99,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to fetch webhooks");
       const data = await response.json();
       setWebhooks(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching webhooks:", error);
       toast.error("Failed to load webhooks");
     } finally {
@@ -107,17 +119,19 @@ export default function OrganizationWebhooksPage() {
 
       toast.success(enabled ? "Webhook enabled" : "Webhook disabled");
       fetchWebhooks();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error toggling webhook:", error);
       toast.error("Failed to update webhook");
     }
   }
 
-  async function deleteWebhook(webhookId: string) {
-    if (!confirm("Are you sure you want to delete this webhook?")) return;
+  async function confirmDeleteWebhook() {
+    if (!webhookToDelete) return;
+
+    setDeleteDialogOpen(false);
 
     try {
-      const response = await fetch(`/api/webhooks/${webhookId}`, {
+      const response = await fetch(`/api/webhooks/${webhookToDelete}`, {
         method: "DELETE",
       });
 
@@ -125,9 +139,11 @@ export default function OrganizationWebhooksPage() {
 
       toast.success("Webhook deleted successfully");
       fetchWebhooks();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error deleting webhook:", error);
       toast.error("Failed to delete webhook");
+    } finally {
+      setWebhookToDelete(null);
     }
   }
 
@@ -140,7 +156,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to send test webhook");
 
       toast.success("Test webhook sent successfully");
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error testing webhook:", error);
       toast.error("Failed to send test webhook");
     }
@@ -268,7 +284,10 @@ export default function OrganizationWebhooksPage() {
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => deleteWebhook(webhook.id)}
+                        onClick={() => {
+                          setWebhookToDelete(webhook.id);
+                          setDeleteDialogOpen(true);
+                        }}
                       >
                         <Trash2 className="h-4 w-4 text-destructive" />
                       </Button>
@@ -319,6 +338,27 @@ export default function OrganizationWebhooksPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Delete Webhook Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Webhook?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the webhook and stop all event notifications to this URL.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDeleteWebhook}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Delete Webhook
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

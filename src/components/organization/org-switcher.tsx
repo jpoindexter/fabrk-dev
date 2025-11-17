@@ -58,7 +58,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         } else {
           setCurrentOrg(data.organizations[0] || null);
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch organizations:", error);
         setOrganizations([]);
       } finally {
@@ -87,7 +87,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
       // Refresh the page to update context
       router.refresh();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to switch organization:", error);
     }
   };

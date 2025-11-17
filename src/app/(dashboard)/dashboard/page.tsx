@@ -106,7 +106,7 @@ export default function DashboardPage() {
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 48),
           },
         ]);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch dashboard data:", error);
       } finally {
         setLoading(false);

@@ -93,7 +93,7 @@ export default function WebhookDetailPage() {
       if (!response.ok) throw new Error("Failed to fetch webhook");
       const data = await response.json();
       setWebhook(data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching webhook:", error);
       toast.error("Failed to load webhook");
       router.back();
@@ -108,7 +108,7 @@ export default function WebhookDetailPage() {
       if (!response.ok) throw new Error("Failed to fetch deliveries");
       const data = await response.json();
       setDeliveries(data.deliveries);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching deliveries:", error);
     }
   }
@@ -124,7 +124,7 @@ export default function WebhookDetailPage() {
 
       toast.success("Delivery retry initiated");
       setTimeout(fetchDeliveries, 2000); // Refresh after 2 seconds
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error retrying delivery:", error);
       toast.error("Failed to retry delivery");
     } finally {

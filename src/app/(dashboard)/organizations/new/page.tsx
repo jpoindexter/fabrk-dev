@@ -124,8 +124,9 @@ export default function CreateOrganizationPage() {
       setCreatedOrgId(result.organization.id);
       toast.success("Organization created successfully!");
       setStep(2);
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create organization";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -161,7 +162,7 @@ export default function CreateOrganizationPage() {
       await Promise.all(promises);
       toast.success(`Sent ${emailList.length} invitation(s)!`);
       router.push("/dashboard");
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error("Failed to send some invitations");
     } finally {
       setLoading(false);

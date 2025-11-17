@@ -14,7 +14,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { generateFAQSchema } from "@/lib/seo/structured-data";
-import { SchemaScript } from "./schema-script";
+import { ClientSchemaScript } from "@/components/security/client-schema-script";
 
 export interface FAQ {
   question: string;
@@ -47,7 +47,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
 
   return (
     <>
-      <SchemaScript schema={schema} />
+      <ClientSchemaScript schema={schema} />
 
       <section className={cn("mx-auto max-w-3xl", className)}>
         {title && (

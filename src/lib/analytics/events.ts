@@ -58,7 +58,7 @@ export async function trackEvent(
         timestamp: new Date().toISOString(),
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to track event:', error);
   }
 }
@@ -87,7 +87,7 @@ export async function identifyUser(
       distinctId: userId,
       properties,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to identify user:', error);
   }
 }

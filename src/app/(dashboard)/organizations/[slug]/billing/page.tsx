@@ -121,7 +121,7 @@ export default function OrganizationBillingPage() {
             setUsage(usageData.usage);
           }
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch billing data:", error);
         toast.error("Failed to load billing information");
       } finally {
@@ -147,7 +147,7 @@ export default function OrganizationBillingPage() {
 
       const data = await response.json();
       window.location.href = data.url;
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error("Failed to open billing portal");
       setLoadingPortal(false);
     }

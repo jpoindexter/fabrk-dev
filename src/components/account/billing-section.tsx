@@ -36,20 +36,26 @@ export function BillingSection() {
     setIsLoading(true);
 
     try {
-      // TODO: Replace with actual Stripe portal API call
-      // const response = await fetch('/api/create-portal-session', {
-      //   method: 'POST',
-      // });
-      // const { url } = await response.json();
-      // window.location.href = url;
+      // Implementation: Create Stripe billing portal session
+      // 1. Create API route: POST /api/stripe/create-portal-session
+      // 2. Server-side: Call stripe.billingPortal.sessions.create({
+      //      customer: user.stripeCustomerId,
+      //      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing`,
+      //    })
+      // 3. Redirect user to the portal URL
+      // Reference: https://stripe.com/docs/api/customer_portal
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      toast({
-        title: "Redirecting to billing portal",
-        description: "You'll be redirected to manage your subscription.",
+      const response = await fetch('/api/stripe/create-portal-session', {
+        method: 'POST',
       });
-    } catch (error) {
+
+      if (!response.ok) {
+        throw new Error('Failed to create portal session');
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description: "Failed to open billing portal. Please try again.",

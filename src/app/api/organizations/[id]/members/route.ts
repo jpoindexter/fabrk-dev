@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
+import { logger } from "@/lib/logger";
 
 // Route context interface for Next.js 15+ async params
 interface RouteContext {
@@ -66,8 +67,8 @@ export async function GET(
         user: m.user,
       })),
     });
-  } catch (error) {
-    console.error("Failed to fetch members:", error);
+  } catch (error: unknown) {
+    logger.error("Failed to fetch members:", error);
     return NextResponse.json(
       { error: "Failed to fetch members" },
       { status: 500 }

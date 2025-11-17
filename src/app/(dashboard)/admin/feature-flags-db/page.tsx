@@ -22,6 +22,16 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { Plus, Trash2 } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 interface FeatureFlag {
   id: string;
@@ -43,6 +53,8 @@ export default function FeatureFlagsDbPage() {
     enabled: false,
     rolloutPercentage: 0,
   });
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [flagToDelete, setFlagToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetchFlags();
@@ -53,7 +65,7 @@ export default function FeatureFlagsDbPage() {
       const res = await fetch('/api/admin/feature-flags');
       const data = await res.json();
       setFlags(data.flags || []);
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error('Failed to fetch feature flags');
     } finally {
       setLoading(false);
@@ -72,7 +84,7 @@ export default function FeatureFlagsDbPage() {
 
       toast.success(`Feature flag ${enabled ? 'enabled' : 'disabled'}`);
       fetchFlags();
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error('Failed to update feature flag');
     }
   };
@@ -88,7 +100,7 @@ export default function FeatureFlagsDbPage() {
       if (!res.ok) throw new Error('Failed to update');
 
       fetchFlags();
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error('Failed to update rollout percentage');
     }
   };
@@ -107,16 +119,18 @@ export default function FeatureFlagsDbPage() {
       setNewFlag({ name: '', description: '', enabled: false, rolloutPercentage: 0 });
       setShowCreateForm(false);
       fetchFlags();
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error('Failed to create feature flag');
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this flag?')) return;
+  const confirmDelete = async () => {
+    if (!flagToDelete) return;
+
+    setDeleteDialogOpen(false);
 
     try {
-      const res = await fetch(`/api/admin/feature-flags?id=${id}`, {
+      const res = await fetch(`/api/admin/feature-flags?id=${flagToDelete}`, {
         method: 'DELETE',
       });
 
@@ -124,8 +138,10 @@ export default function FeatureFlagsDbPage() {
 
       toast.success('Feature flag deleted');
       fetchFlags();
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error('Failed to delete feature flag');
+    } finally {
+      setFlagToDelete(null);
     }
   };
 
@@ -208,7 +224,10 @@ export default function FeatureFlagsDbPage() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => handleDelete(flag.id)}
+                    onClick={() => {
+                      setFlagToDelete(flag.id);
+                      setDeleteDialogOpen(true);
+                    }}
                   >
                     <Trash2 className="h-4 w-4 text-destructive" />
                   </Button>
@@ -241,6 +260,27 @@ export default function FeatureFlagsDbPage() {
           </Card>
         )}
       </div>
+
+      {/* Delete Feature Flag Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Feature Flag?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the feature flag and remove it from all configurations.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Delete Flag
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

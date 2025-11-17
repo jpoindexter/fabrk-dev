@@ -5,11 +5,13 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { createOrganization } from "@/lib/teams/organizations";
 import { trackOrgCreated } from "@/lib/analytics/events";
 import { logOrgCreated } from "@/lib/audit/logger";
+import { logger } from "@/lib/logger";
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -61,11 +63,12 @@ export async function POST(req: NextRequest) {
         slug: organization.slug,
       },
     });
-  } catch (error: any) {
-    console.error("Failed to create organization:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to create organization";
+    logger.error("Failed to create organization:", errorMessage);
 
-    // Handle unique constraint violations
-    if (error.code === "P2002") {
+    // Handle Prisma unique constraint violations
+    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
       return NextResponse.json(
         { error: "An organization with this slug already exists" },
         { status: 409 }
@@ -77,4 +80,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

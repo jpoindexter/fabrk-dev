@@ -6,10 +6,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth, signIn } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { withCsrfProtection } from '@/lib/security/csrf';
 import { logUserImpersonation } from '@/lib/audit/logger';
 import { trackAdminImpersonation } from '@/lib/analytics/events';
+import crypto from 'crypto';
+import { logger } from '@/lib/logger';
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     // Check authentication
     const session = await auth();
@@ -63,9 +66,17 @@ export async function POST(req: NextRequest) {
       // Track in analytics
       await trackAdminImpersonation(session.user.id, targetUserId, 'started');
 
-      // Return the target user info for client-side session switch
-      // Note: Actual session switch would need to be handled client-side
-      // or you can use a custom session token stored in a cookie
+      // Generate a cryptographically secure impersonation token
+      // This token should be stored in the database with expiration and validated on each request
+      const impersonationToken = `imp_${crypto.randomBytes(32).toString('base64url')}`;
+
+      // TODO: Store token in database with:
+      // - adminUserId (session.user.id)
+      // - targetUserId
+      // - token (hashed with crypto.createHash('sha256'))
+      // - expiresAt (e.g., 1 hour from now)
+      // - createdAt
+
       return NextResponse.json({
         success: true,
         message: 'Impersonation started',
@@ -74,7 +85,7 @@ export async function POST(req: NextRequest) {
           email: targetUser.email,
           name: targetUser.name,
         },
-        impersonationToken: `imp_${session.user.id}_${targetUserId}_${Date.now()}`,
+        impersonationToken,
       });
     } else if (action === 'stop') {
       // Log the end of impersonation
@@ -93,8 +104,8 @@ export async function POST(req: NextRequest) {
     } else {
       return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error) {
-    console.error('Impersonation error:', error);
+  } catch (error: unknown) {
+    logger.error('Impersonation error:', error);
     return NextResponse.json({ error: 'Failed to process impersonation' }, { status: 500 });
   }
-}
+});

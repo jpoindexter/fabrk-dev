@@ -65,7 +65,7 @@ export function ApiKeyGenerator({
       await navigator.clipboard.writeText(apiKey);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Failed to copy API key:", err);
     }
   };

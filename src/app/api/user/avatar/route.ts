@@ -3,15 +3,17 @@
  * POST /api/user/avatar
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uploadFile } from "@/lib/storage/uploads";
+import { withCsrfProtection } from "@/lib/security/csrf";
+import { logger } from "@/lib/logger";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
-export async function POST(req: Request) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -73,9 +75,9 @@ export async function POST(req: Request) {
         url: uploadResult.url,
         success: true,
       });
-    } catch (uploadError) {
+    } catch (uploadError: unknown) {
       // If S3 is not configured, return a placeholder or error
-      console.error("[Avatar Upload] S3 not configured:", uploadError);
+      logger.error("[Avatar Upload] S3 not configured:", uploadError);
       return NextResponse.json(
         {
           error:
@@ -84,11 +86,11 @@ export async function POST(req: Request) {
         { status: 503 }
       );
     }
-  } catch (error) {
-    console.error("[Avatar Upload] Error:", error);
+  } catch (error: unknown) {
+    logger.error("[Avatar Upload] Error:", error);
     return NextResponse.json(
       { error: "Failed to upload avatar" },
       { status: 500 }
     );
   }
-}
+});

@@ -3,16 +3,18 @@
  * DELETE /api/admin/users/delete
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const deleteSchema = z.object({
   userId: z.string(),
 });
 
-export async function DELETE(req: Request) {
+export const DELETE = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -44,7 +46,7 @@ export async function DELETE(req: Request) {
       success: true,
       message: "User deleted successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },
@@ -52,10 +54,10 @@ export async function DELETE(req: Request) {
       );
     }
 
-    console.error("[Admin Delete User] Error:", error);
+    logger.error("[Admin Delete User] Error:", error);
     return NextResponse.json(
       { error: "Failed to delete user" },
       { status: 500 }
     );
   }
-}
+});

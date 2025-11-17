@@ -3,20 +3,23 @@
  * PATCH /api/user/profile
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const profileSchema = z.object({
-  name: z.string().min(1).max(100).optional(),
+  name: z.string().min(2, "Name must be at least 2 characters").max(100).optional(),
+  email: z.string().email("Please enter a valid email address").optional(),
   bio: z.string().max(500).optional(),
   website: z.string().url().max(200).optional().or(z.literal("")),
   twitter: z.string().max(50).optional(),
   github: z.string().max(50).optional(),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -27,13 +30,26 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const validatedData = profileSchema.parse(body);
 
+    // Check if email is being updated and if it's already taken
+    if (validatedData.email && validatedData.email !== session.user.email) {
+      const existingUser = await prisma.user.findUnique({
+        where: { email: validatedData.email },
+      });
+
+      if (existingUser) {
+        return NextResponse.json(
+          { error: "Email is already in use" },
+          { status: 400 }
+        );
+      }
+    }
+
     // Update user profile
     const user = await prisma.user.update({
       where: { id: session.user.id },
       data: {
         name: validatedData.name,
-        // Store additional fields in user metadata (you may want to add these columns to User model)
-        // For now, we'll just update the name field
+        email: validatedData.email,
       },
       select: {
         id: true,
@@ -44,7 +60,7 @@ export async function PATCH(req: Request) {
     });
 
     return NextResponse.json({ user });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },
@@ -52,10 +68,10 @@ export async function PATCH(req: Request) {
       );
     }
 
-    console.error("[Profile Update] Error:", error);
+    logger.error("[Profile Update] Error:", error);
     return NextResponse.json(
       { error: "Failed to update profile" },
       { status: 500 }
     );
   }
-}
+});
