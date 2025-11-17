@@ -188,6 +188,12 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     const tier = session.metadata?.tier || "developer";
     const productId = session.metadata?.productId || null;
 
+    // Store license key in User model for future reference
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { licenseKey },
+    });
+
     // Create payment record
     const payment = await prisma.payment.create({
       data: {

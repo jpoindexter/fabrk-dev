@@ -63,16 +63,27 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // 6. Generate backup codes and display once
       // Reference: https://github.com/speakeasyjs/speakeasy
 
-      // TODO: Implement POST /api/user/2fa/enable
-      // const response = await fetch("/api/user/2fa/enable", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to enable 2FA");
+      // Call the MFA enable API
+      const response = await fetch("/api/auth/mfa/enable", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to enable 2FA");
+      }
+
+      const data = await response.json();
 
       info(
-        "Feature requires setup",
-        "2FA requires adding MFADevice and BackupCode models to your database schema. See implementation comments in the code."
+        "2FA Setup Required",
+        "Scan the QR code with your authenticator app and enter the verification code."
       );
+
+      // TODO: Show QR code modal with data.qrCode and verify code
+      // For now, redirect to MFA setup page or show toast
+      window.location.href = "/settings/security/2fa/setup";
     } catch (err: unknown) {
       error(
         "Error enabling 2FA",
@@ -97,16 +108,24 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // 3. Server updates User: twoFactorEnabled = false, clear twoFactorSecret
       // 4. Delete MFADevice and BackupCode records
 
-      // TODO: Implement POST /api/user/2fa/disable
-      // const response = await fetch("/api/user/2fa/disable", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to disable 2FA");
+      // Call the MFA disable API
+      const response = await fetch("/api/auth/mfa/disable", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to disable 2FA");
+      }
 
       info(
-        "Feature requires setup",
-        "2FA disable requires API implementation at /api/user/2fa/disable. See implementation comments in the code."
+        "2FA Disabled",
+        "Two-factor authentication has been disabled. Consider re-enabling it for better security."
       );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (err: unknown) {
       error(
         "Error disabling 2FA",
@@ -130,16 +149,24 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // Delete the Account record for this provider
       // Note: Ensure user has another login method (password or another OAuth)
 
-      // TODO: Implement DELETE /api/user/accounts/[provider]
-      // const response = await fetch(`/api/user/accounts/${provider}`, {
-      //   method: "DELETE",
-      // });
-      // if (!response.ok) throw new Error("Failed to disconnect account");
+      // Call the account disconnect API
+      const response = await fetch(`/api/user/accounts/${provider}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to disconnect account");
+      }
 
       info(
-        "Feature requires setup",
-        `Account disconnect requires API implementation at /api/user/accounts/${provider}. See implementation comments in the code.`
+        "Account Disconnected",
+        `Your ${provider} account has been disconnected successfully.`
       );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (err: unknown) {
       error(
         "Error disconnecting account",
@@ -166,17 +193,26 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // })
       // Client: Redirect to login after success
 
-      // TODO: Implement POST /api/user/sessions/invalidate-all
-      // const response = await fetch("/api/user/sessions/invalidate-all", {
-      //   method: "POST",
-      // });
-      // if (!response.ok) throw new Error("Failed to invalidate sessions");
-      // window.location.href = "/login";
+      // Call the session invalidation API
+      const response = await fetch("/api/user/sessions/invalidate-all", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to invalidate sessions");
+      }
 
       info(
-        "Feature requires setup",
-        "Session invalidation requires API implementation at /api/user/sessions/invalidate-all. See implementation comments in the code."
+        "Sessions Invalidated",
+        "All other sessions have been logged out. Redirecting..."
       );
+
+      // Redirect to dashboard after brief delay
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1500);
     } catch (err: unknown) {
       error(
         "Error invalidating sessions",

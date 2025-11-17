@@ -3,6 +3,8 @@
  * Simple utility for generating unique license keys
  */
 
+import crypto from "crypto";
+
 /**
  * Generate a unique license key
  * Format: XXXX-XXXX-XXXX-XXXX-XXXX
@@ -31,7 +33,9 @@ export function generateLicenseKey(): string {
   for (let i = 0; i < segments; i++) {
     let segment = "";
     for (let j = 0; j < segmentLength; j++) {
-      segment += chars.charAt(Math.floor(Math.random() * chars.length));
+      // Use cryptographically secure random number generation
+      const randomIndex = crypto.randomInt(0, chars.length);
+      segment += chars.charAt(randomIndex);
     }
     key.push(segment);
   }
