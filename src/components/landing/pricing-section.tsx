@@ -45,7 +45,7 @@ export function PricingSection() {
           <div className="rounded-lg border border-border bg-card p-10 shadow-md">
             {/* Plan Name */}
             <div className="mb-6 text-center">
-              <span className="inline-block rounded-md bg-secondary/10 border border-secondary/20 px-6 py-2 text-sm font-medium uppercase text-secondary">
+              <span className="inline-block rounded-md bg-primary/10 border border-primary/20 px-6 py-2 text-sm font-semibold uppercase text-primary">
                 Lifetime Deal
               </span>
             </div>
