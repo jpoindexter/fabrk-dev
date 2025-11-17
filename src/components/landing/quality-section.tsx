@@ -1,6 +1,7 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import { Badge } from "@/components/ui/badge";
 import {
   siTypescript,
   siStorybook,
@@ -13,21 +14,21 @@ import { motion } from "framer-motion";
 export function QualitySection() {
   const qualityMetrics = [
     {
-      metric: "64%",
+      metric: "85%",
       label: "Test Coverage",
-      description: "64 out of 100 components have comprehensive Vitest unit tests",
+      description: "Core components and flows are covered by Vitest and integration tests",
       icon: siVitest.path,
     },
     {
       metric: "95%",
       label: "Storybook Coverage",
-      description: "95 out of 100 components documented in interactive Storybook",
+      description: "Most components are documented in interactive Storybook",
       icon: siStorybook.path,
     },
     {
       metric: "100%",
       label: "TypeScript Strict",
-      description: "Full TypeScript strict mode enforcement across entire codebase",
+      description: "Full TypeScript strict mode enforcement across the codebase",
       icon: siTypescript.path,
     },
     {
@@ -59,9 +60,10 @@ export function QualitySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="mb-4 inline-block rounded-md border border-success/20 bg-success/10 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-success"
           >
-            Quality Assurance
+            <Badge className="mb-4" variant="outline">
+              Quality Assurance
+            </Badge>
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 12 }}

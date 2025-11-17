@@ -46,7 +46,7 @@ Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for pr
 ✅ **Payments** - Stripe (one-time + subscriptions)
 ✅ **Database** - PostgreSQL + Prisma ORM
 ✅ **Email** - Resend with React Email templates
-✅ **UI Components** - 100 production-ready components with neo-brutalism styling + Storybook
+✅ **UI Components** - 87+ production-ready components with a cohesive design system + Storybook
 ✅ **Admin Dashboard** - User management, analytics, monitoring
 ✅ **TypeScript** - Strict mode, zero `any` types
 ✅ **Documentation** - 400KB comprehensive guides

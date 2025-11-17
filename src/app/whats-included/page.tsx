@@ -40,10 +40,10 @@ const features = [
   {
     icon: Layout,
     title: "87+ UI Components",
-    description: "Production-ready components with neo-brutalism styling",
+    description: "Production-ready components with a cohesive design system",
     items: [
-      "25 Radix UI base components",
-      "62 custom components",
+      "Radix UI base components",
+      "Custom layout and marketing components",
       "All variants included",
       "Fully accessible (WCAG AA)",
       "Dark mode support",
@@ -53,17 +53,17 @@ const features = [
   },
   {
     icon: Palette,
-    title: "Neo-Brutalism Design System",
-    description: "Bold, unique aesthetic that stands out",
+    title: "Design System",
+    description: "Cohesive, modern visual language",
     items: [
-      "3px solid borders",
-      "Hard-edge brutal shadows",
-      "Purple & yellow color scheme",
-      "Press animation effects",
-      "Consistent spacing system",
+      "Token-based spacing and colors",
+      "Consistent border radius and shadows",
+      "Accessible color contrast",
+      "Interactive states and motion",
+      "Responsive layout primitives",
     ],
     link: "/components",
-    badge: "Unique Design",
+    badge: "Unified Design",
   },
   {
     icon: Shield,
@@ -458,8 +458,8 @@ export default function WhatsIncludedPage() {
                 competitors: "ShipFast: ❌ | Shipixen: ❌ | SaaS UI: ❌",
               },
               {
-                title: "Neo-Brutalism Design",
-                description: "Unique, bold aesthetic that stands out",
+                title: "Unified Design System",
+                description: "Cohesive, modern aesthetic with consistent tokens and components",
                 competitors: "ShipFast: Generic | Shipixen: Generic | SaaS UI: Generic",
               },
             ].map((feature) => (

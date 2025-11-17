@@ -7,7 +7,7 @@ This folder contains documentation for the Fabrk component library.
 - **COMPONENTS-INVENTORY.md** - Complete list of all 87 components with descriptions
 - **COMPONENT-BEST-PRACTICES.md** - Design patterns and usage guidelines
 - **CHARTS-GUIDE.md** - Recharts integration and chart components
-- **LANDING-PAGE-VARIATIONS.md** - 4 landing page variations (Neo-Brutalism, Modern, SaaS, Startup)
+- **LANDING-PAGE-VARIATIONS.md** - 4 landing page variations (Modern, SaaS, Startup, Legacy)
 
 ## Quick Links
 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import config from "@/config";
 
 const plans = [
@@ -123,15 +124,13 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <button
-                className={`mt-8 w-full rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
-                  plan.popular
-                    ? "bg-foreground text-white hover:bg-card"
-                    : "border border-border bg-background text-foreground hover:bg-muted"
-                }`}
+              <Button
+                className="mt-8 w-full"
+                variant={plan.popular ? "primaryCta" : "secondaryCta"}
+                disabled={plan.price === "$0"}
               >
-                {plan.price === "$0" ? "Coming Soon" : "Get Started"}
-              </button>
+                {plan.price === "$0" ? "Coming Soon" : "Get Fabrk Now"}
+              </Button>
             </motion.div>
           ))}
         </motion.div>

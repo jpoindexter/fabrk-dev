@@ -7,6 +7,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
 
@@ -53,10 +54,10 @@ export function CoreBenefitsSection() {
         {/* AI-First */}
         <motion.div className="mx-auto max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-sm font-medium text-foreground">
+            <Badge className="inline-flex items-center gap-2">
               <Sparkles className="size-4" />
               <span>AI-First</span>
-            </div>
+            </Badge>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Copy. Paste. Build.
             </h2>
@@ -86,10 +87,10 @@ export function CoreBenefitsSection() {
         {/* Quality-First */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-sm font-medium text-foreground">
+            <Badge className="inline-flex items-center gap-2">
               <Terminal className="size-4" />
               <span>Quality-First</span>
-            </div>
+            </Badge>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Quality enforced automatically
             </h2>
@@ -135,9 +136,9 @@ export function CoreBenefitsSection() {
         {/* Complete System */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-3 py-1 text-sm font-medium text-foreground">
-              <span>Complete</span>
-            </div>
+            <Badge>
+              Complete
+            </Badge>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Everything you need, nothing you don&apos;t
             </h2>

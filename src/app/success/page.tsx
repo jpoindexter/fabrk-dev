@@ -54,10 +54,10 @@ function SuccessContent() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <div className="w-full max-w-2xl space-y-6 rounded-brutal border-2 border-black bg-background p-8 shadow-brutal-lg">
+      <div className="w-full max-w-2xl space-y-6 rounded-lg border border-border bg-card p-8 shadow-sm">
         {/* Success Icon & Header */}
         <div className="space-y-4 text-center">
-          <div className="mx-auto flex size-20 items-center justify-center rounded-brutal border-2 border-black bg-primary shadow-brutal">
+          <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-border bg-primary">
             <CheckCircle className="size-12 text-primary-foreground" />
           </div>
           <h1 className="text-4xl font-bold">Purchase Successful!</h1>
@@ -67,7 +67,7 @@ function SuccessContent() {
         </div>
 
         {/* Check your email banner */}
-        <div className="space-y-3 rounded-brutal border-2 border-black bg-primary/10 p-6 shadow-brutal">
+        <div className="space-y-3 rounded-lg border border-border bg-primary/10 p-6">
           <div className="flex items-center justify-center gap-3">
             <Mail className="size-6 text-foreground" />
             <h3 className="text-lg font-bold">Check Your Email</h3>
@@ -78,7 +78,7 @@ function SuccessContent() {
         </div>
 
         {/* What's in the email */}
-        <div className="space-y-4 rounded-brutal border-2 border-black bg-muted p-6 shadow-brutal">
+        <div className="space-y-4 rounded-lg border border-border bg-muted p-6">
           <h3 className="text-lg font-bold">What's in Your Email:</h3>
           <ul className="space-y-3 font-bold text-foreground">
             <li className="flex items-start gap-3">
@@ -109,7 +109,7 @@ function SuccessContent() {
         </div>
 
         {/* Immediate Download Access */}
-        <div className="space-y-4 rounded-brutal border-2 border-black bg-secondary/20 p-6 shadow-brutal">
+        <div className="space-y-4 rounded-lg border border-border bg-secondary/20 p-6">
           <div className="flex items-center justify-center gap-2">
             <Package className="size-5 text-foreground" />
             <h3 className="font-bold">Start Downloading Now</h3>
@@ -139,12 +139,13 @@ function SuccessContent() {
             Didn't receive the email? Check your spam folder.
           </p>
           {!isResending ? (
-            <button
+            <Button
               onClick={handleResendEmail}
-              className="font-bold text-primary underline-offset-4 transition-colors hover:underline"
+              variant="link"
+              className="font-bold text-primary underline-offset-4"
             >
               Click to resend
-            </button>
+            </Button>
           ) : (
             <div className="inline-flex items-center gap-2 text-sm font-bold text-foreground">
               <div className="size-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
@@ -155,7 +156,7 @@ function SuccessContent() {
 
         {/* Alternative action */}
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild variant="outline" className="flex-1">
+          <Button asChild variant="secondaryCta" className="flex-1">
             <Link href="/">
               Return Home
             </Link>
