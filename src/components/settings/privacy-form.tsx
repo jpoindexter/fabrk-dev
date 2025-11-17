@@ -51,17 +51,37 @@ export function PrivacyForm() {
   async function onSubmit(data: PrivacyFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/settings", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ privacy: data }),
+      });
 
-    console.log("Privacy settings:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Settings saved",
-      description: "Your privacy preferences have been updated.",
-    });
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to update privacy settings");
+      }
 
-    setIsLoading(false);
+      toast({
+        title: "Settings saved",
+        description: "Your privacy preferences have been updated.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to update privacy settings. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (

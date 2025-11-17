@@ -36,6 +36,9 @@ model User {
   verifyToken   String?   @unique
   sessionVersion Int      @default(1) // Incremented to invalidate all sessions
 
+  // User preferences and settings
+  settings      Json?     // Privacy, notifications, language, appearance preferences
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 

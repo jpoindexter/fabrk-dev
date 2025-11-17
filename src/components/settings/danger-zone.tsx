@@ -42,8 +42,6 @@ export function DangerZone() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    console.log("Account deleted");
-
     toast({
       title: "Account deleted",
       description: "Your account and all associated data have been deleted.",

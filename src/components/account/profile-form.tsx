@@ -50,17 +50,37 @@ export function ProfileForm() {
   async function onSubmit(data: ProfileFormValues) {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("/api/user/profile", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    console.log("Profile update:", data);
+      const result = await response.json();
 
-    toast({
-      title: "Profile updated",
-      description: "Your profile has been updated successfully.",
-    });
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to update profile");
+      }
 
-    setIsLoading(false);
+      toast({
+        title: "Profile updated",
+        description: "Your profile has been updated successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to update profile. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
