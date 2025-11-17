@@ -10,6 +10,9 @@ import { FeaturesSection } from "@/components/landing/features-section";
 import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 import { QualitySection } from "@/components/landing/quality-section";
 import { StatsSection } from "@/components/landing/stats-section";
+import { FeaturesShowcase } from "@/components/home/features-showcase";
+import { WhatsIncludedBreakdown } from "@/components/home/whats-included-breakdown";
+import { ValueProposition } from "@/components/home/value-proposition";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { ComparisonSection } from "@/components/landing/comparison-section";
@@ -23,6 +26,9 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
+      <FeaturesShowcase />
+      <WhatsIncludedBreakdown />
+      <ValueProposition />
       <FeaturesSection />
       <EnterpriseFeaturesSection />
       <QualitySection />
