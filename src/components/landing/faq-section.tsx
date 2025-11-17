@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -44,28 +45,47 @@ export function FAQSection() {
       className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-2 text-center text-3xl font-semibold text-foreground"
+        >
           Frequently Asked Questions
-        </h2>
-        <p className="mb-12 text-center text-lg text-muted-foreground">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center text-lg text-muted-foreground"
+        >
           Everything you need to know about Fabrk
-        </p>
+        </motion.p>
 
         <Accordion type="single" collapsible className="w-full space-y-3" suppressHydrationWarning>
           {faqs.map((faq, index) => {
             return (
-              <AccordionItem
+              <motion.div
                 key={index}
-                value={`item-${index}`}
-                className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.06 }}
+                viewport={{ once: true }}
               >
-                <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="px-6 font-normal text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                >
+                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 font-normal text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             );
           })}
         </Accordion>

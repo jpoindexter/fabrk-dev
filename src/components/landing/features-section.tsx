@@ -1,3 +1,5 @@
+"use client";
+
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
   siAuth0,
@@ -9,6 +11,7 @@ import {
   siOpenai,
 } from "simple-icons";
 import { Upload, Brain, Flag as FlagIcon, Lock, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function FeaturesSection() {
   const features = [
@@ -89,15 +92,27 @@ export function FeaturesSection() {
   return (
     <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-2 text-left text-3xl font-semibold text-foreground">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-2 text-left text-3xl font-semibold text-foreground"
+        >
           Everything You Need, Nothing You Don't.
-        </h2>
-        <p className="mb-16 text-left text-lg text-muted-foreground">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-16 text-left text-lg text-muted-foreground"
+        >
           Production-ready features that save you weeks of development time.
-        </p>
+        </motion.p>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
+          {features.map((feature, index) => {
             const IconComponent =
               feature.iconComponent === "flag" ? FlagIcon :
               feature.iconComponent === "lock" ? Lock :
@@ -107,8 +122,12 @@ export function FeaturesSection() {
               null;
 
             return (
-              <div
+              <motion.div
                 key={feature.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+                viewport={{ once: true }}
                 className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
@@ -124,20 +143,26 @@ export function FeaturesSection() {
                 <p className="font-normal leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Bonus Features */}
-        <div className="mt-16 rounded-lg border border-border bg-background p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-16 rounded-lg border border-border bg-background p-8"
+        >
           <p className="text-center text-sm">
             <span className="font-semibold text-foreground">Also Included: </span>
             <span className="font-normal text-muted-foreground">
               User dashboard • Account settings • Rate limiting • Admin capabilities • TypeScript strict mode • Production-ready logging
             </span>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

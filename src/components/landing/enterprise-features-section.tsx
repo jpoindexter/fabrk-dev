@@ -1,4 +1,7 @@
+"use client";
+
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [
@@ -56,23 +59,45 @@ export function EnterpriseFeaturesSection() {
     <section className="bg-muted/30 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <span className="mb-4 inline-block rounded-md border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-primary">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="mb-4 inline-block rounded-md border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-primary"
+          >
             Enterprise-Grade Features
-          </span>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+          >
             Built for Scale, Security, and Teams
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-2xl text-lg text-muted-foreground"
+          >
             Production-ready enterprise features that would cost $10,000+ to build yourself.
             All included, fully tested, and ready to deploy.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {enterpriseFeatures.map((feature) => {
+          {enterpriseFeatures.map((feature, index) => {
             return (
-              <div
+              <motion.div
                 key={feature.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                viewport={{ once: true }}
                 className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
@@ -100,20 +125,26 @@ export function EnterpriseFeaturesSection() {
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Value Proposition */}
-        <div className="mt-12 rounded-lg border border-border bg-background p-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          viewport={{ once: true }}
+          className="mt-12 rounded-lg border border-border bg-background p-8 text-center"
+        >
           <p className="text-lg font-semibold text-foreground">
             <span className="text-primary">$200,000+</span> worth of enterprise features, included out-of-the-box
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             These features would take 6-12 months to build yourself. We've done the hard work so you can focus on your product.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

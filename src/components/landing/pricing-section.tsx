@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
 import config from "@/config";
+import { motion } from "framer-motion";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
@@ -33,32 +34,68 @@ export function PricingSection() {
       className="scroll-mt-16 bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-2 text-center text-3xl font-semibold text-foreground"
+        >
           One Price. Unlimited Projects. Launch Now.
-        </h2>
-        <p className="mb-16 text-center text-lg text-muted-foreground">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-16 text-center text-lg text-muted-foreground"
+        >
           No subscriptions, no recurring fees. Pay once, use forever.
-        </p>
+        </motion.p>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
-          <div className="rounded-lg border border-border bg-card p-10 shadow-md">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="rounded-lg border border-border bg-card p-10 shadow-md"
+          >
             {/* Plan Name */}
-            <div className="mb-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mb-6 text-center"
+            >
               <span className="inline-block rounded-md bg-primary/10 border border-primary/20 px-6 py-2 text-sm font-semibold uppercase text-primary">
                 Lifetime Deal
               </span>
-            </div>
+            </motion.div>
 
             {/* Scarcity Badge */}
-            <div className="mb-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mb-4 text-center"
+            >
               <span className="inline-block rounded-md bg-destructive/10 border border-destructive/20 px-4 py-2 text-sm font-semibold text-destructive">
                 🔥 $100 OFF - First 500 Customers Only
               </span>
-            </div>
+            </motion.div>
 
             {/* Price */}
-            <div className="mb-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="mb-8 text-center"
+            >
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-5xl font-semibold text-foreground">{config.pricing.product.display.current}</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
@@ -68,15 +105,22 @@ export function PricingSection() {
               <p className="text-base font-normal text-muted-foreground">
                 Pay once, use forever. <span className="font-medium text-foreground">$0 recurring fees.</span>
               </p>
-            </div>
+            </motion.div>
 
             {/* Features List */}
             <ul className="mb-8 space-y-3">
-              {features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
+              {features.map((feature, idx) => (
+                <motion.li
+                  key={feature}
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 + idx * 0.05 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3"
+                >
                   <Check className="h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
                   <span className="font-normal text-foreground">{feature}</span>
-                </li>
+                </motion.li>
               ))}
             </ul>
 
@@ -88,27 +132,40 @@ export function PricingSection() {
             )}
 
             {/* CTA Button */}
-            <Button
-              size="lg"
-              className="w-full"
-              onClick={handleCheckout}
-              disabled={isLoading || !priceId}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.85 }}
+              viewport={{ once: true }}
             >
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                "Buy Now & Ship Faster"
-              )}
-            </Button>
+              <Button
+                size="lg"
+                className="w-full"
+                onClick={handleCheckout}
+                disabled={isLoading || !priceId}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  "Buy Now & Ship Faster"
+                )}
+              </Button>
+            </motion.div>
 
             {/* Final Sale Notice */}
-            <p className="mt-6 text-center text-sm font-normal text-muted-foreground">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              viewport={{ once: true }}
+              className="mt-6 text-center text-sm font-normal text-muted-foreground"
+            >
               All sales are final. Digital product - no refunds after download.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </div>
     </section>
