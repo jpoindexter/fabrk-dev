@@ -3,6 +3,7 @@ import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from '@/i18n/config';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { ensureCsrfToken } from '@/lib/security/csrf';
 
 // Create the i18n middleware
 const intlMiddleware = createMiddleware({
@@ -23,7 +24,9 @@ export default auth((req) => {
     pathname.startsWith('/templates');
 
   if (isShowcasePage) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    ensureCsrfToken(req, response);
+    return response;
   }
 
   // Check authentication for protected routes
@@ -48,8 +51,10 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
-  // Apply i18n routing
-  return intlMiddleware(req as NextRequest);
+  // Apply i18n routing and ensure CSRF token
+  const response = intlMiddleware(req as NextRequest);
+  ensureCsrfToken(req, response);
+  return response;
 });
 
 export const config = {

@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       success: true,
       message: "User suspended successfully. All sessions terminated.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },

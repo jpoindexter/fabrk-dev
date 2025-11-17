@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       sessionsInvalidated: activeSessions,
       newSessionVersion: updatedUser.sessionVersion,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Session Invalidation] Error:", error);
     return NextResponse.json(
       { error: "Failed to invalidate sessions" },

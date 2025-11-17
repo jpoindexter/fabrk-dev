@@ -70,25 +70,26 @@ export async function POST(req: NextRequest) {
         role: membership.role,
       },
     });
-  } catch (error: any) {
-    console.error("Failed to accept invitation:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to accept invitation";
+    console.error("Failed to accept invitation:", errorMessage);
 
-    // Handle specific errors
-    if (error.message?.includes("expired")) {
+    // Handle specific error cases
+    if (errorMessage.includes("expired")) {
       return NextResponse.json(
         { error: "This invitation has expired" },
         { status: 410 }
       );
     }
 
-    if (error.message?.includes("already accepted")) {
+    if (errorMessage.includes("already accepted")) {
       return NextResponse.json(
         { error: "This invitation has already been accepted" },
         { status: 410 }
       );
     }
 
-    if (error.message?.includes("already a member")) {
+    if (errorMessage.includes("already a member")) {
       return NextResponse.json(
         { error: "You are already a member of this organization" },
         { status: 409 }

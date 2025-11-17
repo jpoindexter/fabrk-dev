@@ -60,7 +60,7 @@ export async function GET(req: Request) {
     });
 
     return NextResponse.json({ settings: user?.settings || {} });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Settings Get] Error:", error);
     return NextResponse.json(
       { error: "Failed to fetch settings" },
@@ -125,7 +125,7 @@ export async function PATCH(req: Request) {
     });
 
     return NextResponse.json({ settings: user.settings });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },

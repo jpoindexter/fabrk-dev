@@ -53,7 +53,7 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey, co
     }
 
     return NextResponse.json(organization);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching organization:", error);
     return NextResponse.json(
       { error: "Failed to fetch organization" },

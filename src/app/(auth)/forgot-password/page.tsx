@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
 
       setEmailSent(true);
       toast.success("Reset link sent to your email!");
-    } catch (err) {
+    } catch (err: unknown) {
       // UX Heuristic #9: Error Recovery
       setError(err instanceof Error ? err.message : "An error occurred. Please try again later.");
       toast.error("Failed to send reset link");

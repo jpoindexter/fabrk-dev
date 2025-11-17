@@ -27,7 +27,7 @@ export async function measureAsync<T>(
     });
 
     return result;
-  } catch (error) {
+  } catch (error: unknown) {
     const duration = performance.now() - start;
 
     trackPerformance({
@@ -63,7 +63,7 @@ export function measure<T>(
     });
 
     return result;
-  } catch (error) {
+  } catch (error: unknown) {
     const duration = performance.now() - start;
 
     trackPerformance({
@@ -271,7 +271,7 @@ export async function trackAPIPerformance<T>(
     });
 
     return response;
-  } catch (error) {
+  } catch (error: unknown) {
     const duration = performance.now() - start;
 
     trackPerformance({

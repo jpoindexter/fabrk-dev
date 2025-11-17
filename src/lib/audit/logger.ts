@@ -55,7 +55,7 @@ export async function logAudit(options: AuditLogOptions): Promise<void> {
         },
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to create audit log:', error);
     // Don't throw - audit logging should not break the main flow
   }

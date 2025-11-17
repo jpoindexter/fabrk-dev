@@ -69,7 +69,7 @@ export async function GET(
         cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch subscription:", error);
     return NextResponse.json(
       { error: "Failed to fetch subscription" },
@@ -143,7 +143,7 @@ export async function POST(
         status: subscription.status,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create subscription:", error);
     return NextResponse.json(
       { error: "Failed to create subscription" },
@@ -202,7 +202,7 @@ export async function DELETE(
       success: true,
       message: "Subscription cancelled successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to cancel subscription:", error);
     return NextResponse.json(
       { error: "Failed to cancel subscription" },

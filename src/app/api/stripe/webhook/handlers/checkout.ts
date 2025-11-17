@@ -108,7 +108,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       email: customerEmail,
       tier,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Error processing checkout.session.completed", error);
     throw error;
   }

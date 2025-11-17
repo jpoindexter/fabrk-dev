@@ -88,7 +88,7 @@ export async function GET(
         },
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch usage:", error);
     return NextResponse.json(
       { error: "Failed to fetch usage" },

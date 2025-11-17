@@ -73,7 +73,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         "Feature requires setup",
         "2FA requires adding MFADevice and BackupCode models to your database schema. See implementation comments in the code."
       );
-    } catch (err) {
+    } catch (err: unknown) {
       error(
         "Error enabling 2FA",
         err instanceof Error ? err.message : "Failed to enable two-factor authentication"
@@ -107,7 +107,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         "Feature requires setup",
         "2FA disable requires API implementation at /api/user/2fa/disable. See implementation comments in the code."
       );
-    } catch (err) {
+    } catch (err: unknown) {
       error(
         "Error disabling 2FA",
         err instanceof Error ? err.message : "Failed to disable two-factor authentication"
@@ -140,7 +140,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         "Feature requires setup",
         `Account disconnect requires API implementation at /api/user/accounts/${provider}. See implementation comments in the code.`
       );
-    } catch (err) {
+    } catch (err: unknown) {
       error(
         "Error disconnecting account",
         err instanceof Error ? err.message : `Failed to disconnect ${provider} account`
@@ -177,7 +177,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         "Feature requires setup",
         "Session invalidation requires API implementation at /api/user/sessions/invalidate-all. See implementation comments in the code."
       );
-    } catch (err) {
+    } catch (err: unknown) {
       error(
         "Error invalidating sessions",
         err instanceof Error ? err.message : "Failed to invalidate all sessions"

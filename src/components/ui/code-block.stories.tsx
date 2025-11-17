@@ -155,7 +155,7 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error:', error);
     } finally {
       setIsSubmitting(false);

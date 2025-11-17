@@ -70,7 +70,7 @@ export async function PATCH(req: Request) {
       success: true,
       message: "Password updated successfully. All other sessions have been logged out for security.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },

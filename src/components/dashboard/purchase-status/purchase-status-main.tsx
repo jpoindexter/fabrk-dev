@@ -41,7 +41,7 @@ export function PurchaseStatus({ user, purchase, className = "" }: PurchaseStatu
       } else {
         logger.error("Download generation failed:", data.error);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       logger.error("Download generation error:", error);
     } finally {
       setIsGeneratingDownload(false);

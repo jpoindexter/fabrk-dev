@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
     let event: Stripe.Event;
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch (err) {
+    } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Unknown error";
       logger.error("Webhook signature verification failed:", errorMessage);
       return NextResponse.json({ error: `Webhook Error: ${errorMessage}` }, { status: 400 });
@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ received: true }, { status: 200 });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Webhook handler error:", error instanceof Error ? error.message : String(error));
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
@@ -238,7 +238,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     // Consider adding back for production if needed
 
     return payment;
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error(
       "Error handling checkout completion:",
       error instanceof Error ? error.message : String(error)

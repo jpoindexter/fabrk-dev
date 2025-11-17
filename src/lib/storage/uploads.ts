@@ -34,7 +34,7 @@ try {
   // GetObjectCommand = s3.GetObjectCommand;
   // DeleteObjectCommand = s3.DeleteObjectCommand;
   // getSignedUrl = presigner.getSignedUrl;
-} catch (e) {
+} catch (e: unknown) {
   // AWS SDK not installed - uploads will throw helpful error
 }
 
@@ -317,7 +317,7 @@ export async function optimizeImage(
     }
 
     return await image.toBuffer();
-  } catch (error) {
+  } catch (error: unknown) {
     // If sharp not installed, return original
     return buffer;
   }

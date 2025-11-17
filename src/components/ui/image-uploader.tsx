@@ -154,7 +154,7 @@ export function ImageUploader({
     setUploading(true);
     try {
       await onUpload(files);
-    } catch (err) {
+    } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setUploading(false);

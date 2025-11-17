@@ -165,7 +165,7 @@ export async function processNextJob(): Promise<boolean> {
     } else {
       throw new Error(result.error || "Job failed");
     }
-  } catch (error) {
+  } catch (error: unknown) {
     const attempts = job.attempts + 1;
     const shouldRetry = attempts < job.maxAttempts;
 
@@ -232,7 +232,7 @@ export function startJobWorker(options: {
           // No jobs, wait before next poll
           await new Promise((resolve) => setTimeout(resolve, interval));
         }
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("[Job Worker] Error processing job:", error);
         captureError(error instanceof Error ? error : new Error(String(error)));
       } finally {
@@ -297,7 +297,7 @@ export async function cancelJob(jobId: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     return false;
   }
 }
@@ -318,7 +318,7 @@ export async function retryJob(jobId: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     return false;
   }
 }
@@ -377,7 +377,7 @@ registerJobHandler<{ to: string; subject: string; html: string }>(
     try {
       await sendEmail(data.to, data.subject, data.html);
       return { success: true };
-    } catch (error) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error instanceof Error ? error.message : String(error),
@@ -405,7 +405,7 @@ registerJobHandler<{ url: string; payload: any }>(
         success: true,
         data: { status: response.status },
       };
-    } catch (error) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error instanceof Error ? error.message : String(error),
@@ -481,7 +481,7 @@ export async function processEmailQueue(): Promise<number> {
       });
 
       successCount++;
-    } catch (error) {
+    } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       console.error(`❌ [Email Queue] Failed to send email ${email.id}:`, errorMessage);
 
@@ -531,7 +531,7 @@ export function startEmailQueueWorker(options: {
 
     try {
       await processEmailQueue();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("[Email Queue Worker] Error:", error);
       captureError(error instanceof Error ? error : new Error(String(error)));
     }

@@ -77,7 +77,7 @@ export async function POST(
       success: true,
       message: "Delivery retry initiated",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to retry delivery:", error);
     return NextResponse.json(
       { error: "Failed to retry delivery" },

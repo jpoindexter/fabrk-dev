@@ -70,7 +70,7 @@ export function NotificationsForm() {
         title: "Settings saved",
         description: "Your notification preferences have been updated.",
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description:

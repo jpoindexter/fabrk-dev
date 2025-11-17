@@ -34,7 +34,7 @@ async function refreshCache(): Promise<void> {
     );
 
     lastCacheRefresh = Date.now();
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to refresh feature flag cache:', error);
   }
 }

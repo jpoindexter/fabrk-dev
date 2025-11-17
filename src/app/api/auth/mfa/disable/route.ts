@@ -22,7 +22,7 @@ export async function POST() {
     await disableMFA(session.user.id, session.user.email);
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[MFA Disable] Error:", error);
     return NextResponse.json(
       { error: "Failed to disable MFA" },

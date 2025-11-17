@@ -174,7 +174,7 @@ export async function GET(req: NextRequest) {
         recent: recentPayments,
       },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to fetch admin stats:', error);
     return NextResponse.json({ error: 'Failed to fetch stats' }, { status: 500 });
   }

@@ -69,7 +69,7 @@ export function LanguageForm() {
         title: "Settings saved",
         description: "Your language preference has been updated.",
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description:

@@ -46,7 +46,7 @@ export async function PATCH(req: Request) {
       success: true,
       message: "User role updated successfully",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },

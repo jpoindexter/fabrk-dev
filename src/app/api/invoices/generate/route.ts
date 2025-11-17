@@ -256,7 +256,7 @@ async function generateInvoiceHandler(req: NextRequest) {
           paymentId,
           stripeId: payment.stripeId,
         });
-      } catch (stripeError) {
+      } catch (stripeError: unknown) {
         logger.error("Stripe invoice retrieval error:", stripeError);
         // Continue to custom invoice generation
       }
@@ -296,7 +296,7 @@ async function generateInvoiceHandler(req: NextRequest) {
     });
 
     return NextResponse.json({ invoice: invoiceData });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Invoice generation error:", error);
     return NextResponse.json(
       { error: "Failed to generate invoice" },

@@ -71,7 +71,7 @@ export async function PATCH(req: Request) {
       message:
         "Email updated successfully. Please verify your new email address.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid email address", details: error.issues },

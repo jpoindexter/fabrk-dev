@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json(apiKeys);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching API keys:", error);
     return NextResponse.json(
       { error: "Failed to fetch API keys" },
@@ -179,7 +179,7 @@ export async function POST(req: NextRequest) {
       ...apiKey,
       key: generated.key, // Full key returned only once
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error creating API key:", error);
     return NextResponse.json(
       { error: "Failed to create API key" },

@@ -58,7 +58,7 @@ export async function PATCH(req: Request) {
     });
 
     return NextResponse.json({ user });
-  } catch (error) {
+  } catch (error: unknown) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid input", details: error.issues },

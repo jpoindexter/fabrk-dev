@@ -77,7 +77,7 @@ export async function GET(
       createdAt: webhook.createdAt,
       updatedAt: webhook.updatedAt,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to fetch webhook:", error);
     return NextResponse.json(
       { error: "Failed to fetch webhook" },
@@ -139,7 +139,7 @@ export async function PATCH(
           );
         }
         updateData.url = url;
-      } catch (error) {
+      } catch (error: unknown) {
         return NextResponse.json(
           { error: "Invalid webhook URL" },
           { status: 400 }
@@ -183,7 +183,7 @@ export async function PATCH(
       enabled: updatedWebhook.enabled,
       updatedAt: updatedWebhook.updatedAt,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to update webhook:", error);
     return NextResponse.json(
       { error: "Failed to update webhook" },
@@ -237,7 +237,7 @@ export async function DELETE(
       success: true,
       message: "Webhook deleted successfully",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to delete webhook:", error);
     return NextResponse.json(
       { error: "Failed to delete webhook" },

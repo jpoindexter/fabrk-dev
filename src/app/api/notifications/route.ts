@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json(notifications);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch notifications:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(notification, { status: 201 });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create notification:", error);
     return NextResponse.json(
       { error: "Internal server error" },

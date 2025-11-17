@@ -53,7 +53,7 @@ export default function VerifyEmailPage({ params }: VerifyEmailPageProps) {
         setTimeout(() => {
           router.push("/dashboard");
         }, 3000);
-      } catch (err) {
+      } catch (err: unknown) {
         setVerificationStatus("error");
         if (err instanceof Error) {
           if (err.message.includes("expired")) {

@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Pusher auth error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

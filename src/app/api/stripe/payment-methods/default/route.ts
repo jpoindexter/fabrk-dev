@@ -182,7 +182,7 @@ async function setDefaultPaymentMethodHandler(req: NextRequest) {
       success: true,
       message: "Default payment method updated",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Default payment method update error:", error);
     return NextResponse.json(
       { error: "Failed to update default payment method" },

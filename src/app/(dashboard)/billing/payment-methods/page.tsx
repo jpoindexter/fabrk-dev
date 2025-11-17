@@ -66,7 +66,7 @@ export default function PaymentMethodsPage() {
         title: "Coming Soon",
         description: "Stripe payment method setup will be available soon. Implementation requires SetupIntent API integration.",
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to add payment method",
@@ -94,7 +94,7 @@ export default function PaymentMethodsPage() {
         title: "Coming Soon",
         description: `Setting payment method as default will be available soon. Implementation requires Stripe customer.update() API.`,
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to set default payment method",
@@ -119,7 +119,7 @@ export default function PaymentMethodsPage() {
           title: "Coming Soon",
           description: `Payment method deletion will be available soon. Implementation requires Stripe paymentMethods.detach() API.`,
         });
-      } catch (error) {
+      } catch (error: unknown) {
         toast({
           title: "Error",
           description: error instanceof Error ? error.message : "Failed to delete payment method",

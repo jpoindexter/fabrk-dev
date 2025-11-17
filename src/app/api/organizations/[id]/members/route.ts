@@ -66,7 +66,7 @@ export async function GET(
         user: m.user,
       })),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to fetch members:", error);
     return NextResponse.json(
       { error: "Failed to fetch members" },

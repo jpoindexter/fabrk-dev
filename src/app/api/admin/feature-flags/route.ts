@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
 
     const flags = await getAllDbFlags();
     return NextResponse.json({ flags });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to fetch feature flags:', error);
     return NextResponse.json({ error: 'Failed to fetch flags' }, { status: 500 });
   }
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ flag });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to create feature flag:', error);
     return NextResponse.json({ error: 'Failed to create flag' }, { status: 500 });
   }
@@ -104,7 +104,7 @@ export async function PATCH(req: NextRequest) {
     });
 
     return NextResponse.json({ flag });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to update feature flag:', error);
     return NextResponse.json({ error: 'Failed to update flag' }, { status: 500 });
   }
@@ -136,7 +136,7 @@ export async function DELETE(req: NextRequest) {
     await logFeatureFlagChange(session.user.id, id, 'deleted', {});
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Failed to delete feature flag:', error);
     return NextResponse.json({ error: 'Failed to delete flag' }, { status: 500 });
   }

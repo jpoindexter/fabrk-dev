@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
     } else {
       return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Impersonation error:', error);
     return NextResponse.json({ error: 'Failed to process impersonation' }, { status: 500 });
   }

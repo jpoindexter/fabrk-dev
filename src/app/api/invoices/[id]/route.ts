@@ -102,7 +102,7 @@ export async function GET(
         { status: 500 }
       );
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Invoice retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve invoice" },

@@ -118,7 +118,7 @@ export function withErrorHandler<T extends any[]>(
   return async (req: NextRequest, ...args: T): Promise<NextResponse> => {
     try {
       return await handler(req, ...args);
-    } catch (error) {
+    } catch (error: unknown) {
       // Log error
       logger.error("API Error:", error);
 

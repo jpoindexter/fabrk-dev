@@ -164,7 +164,7 @@ async function deletePaymentMethodHandler(
       success: true,
       message: "Payment method removed",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Payment method deletion error:", error);
     return NextResponse.json(
       { error: "Failed to remove payment method" },

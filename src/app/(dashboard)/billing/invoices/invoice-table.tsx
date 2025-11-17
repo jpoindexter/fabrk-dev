@@ -112,7 +112,7 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       window.open(url, "_blank", "noopener,noreferrer");
 
       success("Invoice opened", "The invoice has been opened in a new window");
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Invoice download error:", err);
       error(
         "Download failed",

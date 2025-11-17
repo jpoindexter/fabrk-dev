@@ -94,7 +94,7 @@ export function ActivityFeed({
             timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
           },
         ]);
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch activities:", error);
       } finally {
         setLoading(false);

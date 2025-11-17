@@ -113,7 +113,7 @@ export async function PATCH(
           },
         });
       }
-    } catch (notifyError) {
+    } catch (notifyError: unknown) {
       console.error("Failed to send notifications:", notifyError);
     }
 
@@ -121,12 +121,13 @@ export async function PATCH(
       success: true,
       message: "Member role updated successfully",
     });
-  } catch (error: any) {
-    console.error("Failed to update member role:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to update member role";
+    console.error("Failed to update member role:", errorMessage);
 
-    if (error.message?.includes("permission")) {
+    if (errorMessage.includes("permission")) {
       return NextResponse.json(
-        { error: error.message },
+        { error: errorMessage },
         { status: 403 }
       );
     }
@@ -200,7 +201,7 @@ export async function DELETE(
             name: session.user.name,
           },
         });
-      } catch (activityError) {
+      } catch (activityError: unknown) {
         console.error("Failed to create activity:", activityError);
       }
     }
@@ -209,12 +210,13 @@ export async function DELETE(
       success: true,
       message: "Member removed successfully",
     });
-  } catch (error: any) {
-    console.error("Failed to remove member:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Failed to remove member";
+    console.error("Failed to remove member:", errorMessage);
 
-    if (error.message?.includes("permission") || error.message?.includes("owner")) {
+    if (errorMessage.includes("permission") || errorMessage.includes("owner")) {
       return NextResponse.json(
-        { error: error.message },
+        { error: errorMessage },
         { status: 403 }
       );
     }

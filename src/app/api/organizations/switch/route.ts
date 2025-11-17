@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       success: true,
       organizationId,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to switch organization:", error);
     return NextResponse.json(
       { error: "Failed to switch organization" },

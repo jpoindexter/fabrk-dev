@@ -49,7 +49,7 @@ export function NotificationCenter() {
         })));
         setUnreadCount(data.filter((n: any) => !n.read).length);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to fetch notifications:", error);
     } finally {
       setLoading(false);
@@ -92,7 +92,7 @@ export function NotificationCenter() {
         );
         setUnreadCount((prev) => Math.max(0, prev - 1));
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to mark notification as read:", error);
     }
   };
@@ -112,7 +112,7 @@ export function NotificationCenter() {
         );
         setUnreadCount(0);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Failed to mark all as read:", error);
     }
   };

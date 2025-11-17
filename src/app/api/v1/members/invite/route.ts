@@ -113,7 +113,7 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
       expiresAt: invite.expiresAt,
       inviteUrl: `${process.env.NEXT_PUBLIC_APP_URL}/invite/${token}`,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error creating invite:", error);
     return NextResponse.json(
       { error: "Failed to create invite" },

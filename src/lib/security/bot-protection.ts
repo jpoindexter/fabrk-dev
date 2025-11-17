@@ -271,7 +271,7 @@ export async function verifyHCaptcha(token: string): Promise<CaptchaVerification
       hostname: data.hostname,
       errorCodes: data["error-codes"],
     };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Bot Protection] hCaptcha verification error:", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }
@@ -307,7 +307,7 @@ export async function verifyRecaptcha(
       hostname: data.hostname,
       errorCodes: data["error-codes"],
     };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Bot Protection] reCAPTCHA verification error:", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }
@@ -339,7 +339,7 @@ export async function verifyTurnstile(token: string): Promise<CaptchaVerificatio
       hostname: data.hostname,
       errorCodes: data["error-codes"],
     };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Bot Protection] Turnstile verification error:", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }

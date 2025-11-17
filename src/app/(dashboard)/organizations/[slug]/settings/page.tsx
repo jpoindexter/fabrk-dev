@@ -109,7 +109,7 @@ export default function OrganizationSettingsPage() {
           slug: data.organization.slug,
           logo: data.organization.logo || "",
         });
-      } catch (error) {
+      } catch (error: unknown) {
         console.error("Failed to fetch organization:", error);
         toast.error("Failed to load organization settings");
       } finally {
@@ -146,8 +146,9 @@ export default function OrganizationSettingsPage() {
       if (data.slug !== params.slug) {
         router.push(`/organizations/${data.slug}/settings`);
       }
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update organization";
+      toast.error(errorMessage);
     } finally {
       setSaving(false);
     }
@@ -169,8 +170,9 @@ export default function OrganizationSettingsPage() {
 
       toast.success("Organization deleted successfully");
       router.push("/dashboard");
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to delete organization";
+      toast.error(errorMessage);
       setDeleting(false);
     }
   };

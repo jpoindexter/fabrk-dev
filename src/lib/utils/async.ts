@@ -29,7 +29,7 @@ export async function retry<T>(
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
       return await fn();
-    } catch (error) {
+    } catch (error: unknown) {
       if (attempt === attempts) throw error;
 
       if (onRetry) {
@@ -109,7 +109,7 @@ export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
         try {
           const result = await fn(...args);
           resolve(result);
-        } catch (error) {
+        } catch (error: unknown) {
           reject(error);
         }
       }, delay);
@@ -164,7 +164,7 @@ export async function safe<T>(
   try {
     const data = await promise;
     return [null, data];
-  } catch (error) {
+  } catch (error: unknown) {
     return [error as Error, null];
   }
 }

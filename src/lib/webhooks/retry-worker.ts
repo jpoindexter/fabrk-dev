@@ -50,7 +50,7 @@ export async function retryFailedWebhooks(): Promise<number> {
     );
 
     return failedDeliveries.length;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Webhook Retry Worker] Error:", error);
     return 0;
   }
@@ -72,7 +72,7 @@ export function startWebhookRetryWorker(options: {
 
     try {
       await retryFailedWebhooks();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("[Webhook Retry Worker] Error:", error);
     }
 
@@ -118,7 +118,7 @@ export async function cleanupOldDeliveries(olderThanDays: number = 30): Promise<
     );
 
     return result.count;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Webhook Cleanup] Error:", error);
     return 0;
   }

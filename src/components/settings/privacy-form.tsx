@@ -70,7 +70,7 @@ export function PrivacyForm() {
         title: "Settings saved",
         description: "Your privacy preferences have been updated.",
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description:

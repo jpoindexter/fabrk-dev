@@ -27,7 +27,7 @@ export async function GET() {
       },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Health Check] Error:", error);
 
     return NextResponse.json(

@@ -50,7 +50,7 @@ export function CheckoutButton({
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Checkout error:", error);
       alert("Failed to start checkout. Please try again.");
       setLoading(false);

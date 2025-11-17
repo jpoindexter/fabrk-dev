@@ -201,7 +201,7 @@ async function registerHandler(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("Registration error:", error);
 
     if (error instanceof ZodError) {

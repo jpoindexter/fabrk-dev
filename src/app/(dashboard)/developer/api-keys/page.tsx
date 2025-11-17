@@ -102,7 +102,7 @@ export default function ApiKeysPage() {
         const errorData = await response.json();
         error("Failed to load API keys", errorData.error || "Please try again later");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error fetching API keys:", err);
       error("Failed to load API keys", "A network error occurred. Please check your connection.");
     } finally {
@@ -146,7 +146,7 @@ export default function ApiKeysPage() {
         const errorData = await response.json();
         error("Failed to create API key", errorData.error || "An error occurred while creating the API key. Please try again.");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error creating API key:", err);
       error("Failed to create API key", "A network error occurred. Please check your connection and try again.");
     } finally {
@@ -158,7 +158,7 @@ export default function ApiKeysPage() {
     try {
       await navigator.clipboard.writeText(key);
       success("Copied to clipboard", "API key has been copied to your clipboard");
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error copying to clipboard:", err);
       error("Failed to copy", "Please try copying manually");
     }
@@ -187,7 +187,7 @@ export default function ApiKeysPage() {
         const errorData = await response.json();
         error("Failed to revoke API key", errorData.error || "An error occurred while revoking the API key. Please try again.");
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Error revoking API key:", err);
       error("Failed to revoke API key", "A network error occurred. Please check your connection and try again.");
     } finally {

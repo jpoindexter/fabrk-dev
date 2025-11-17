@@ -27,7 +27,7 @@ try {
   openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
-} catch (error) {
+} catch (error: unknown) {
   console.warn("OpenAI SDK not installed. Install with: npm install openai");
 }
 
@@ -36,7 +36,7 @@ try {
   anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
-} catch (error) {
+} catch (error: unknown) {
   console.warn("Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk");
 }
 

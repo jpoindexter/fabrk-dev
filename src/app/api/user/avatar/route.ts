@@ -73,7 +73,7 @@ export async function POST(req: Request) {
         url: uploadResult.url,
         success: true,
       });
-    } catch (uploadError) {
+    } catch (uploadError: unknown) {
       // If S3 is not configured, return a placeholder or error
       console.error("[Avatar Upload] S3 not configured:", uploadError);
       return NextResponse.json(
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
         { status: 503 }
       );
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Avatar Upload] Error:", error);
     return NextResponse.json(
       { error: "Failed to upload avatar" },

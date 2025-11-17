@@ -68,7 +68,7 @@ export async function POST(
       success: true,
       message: "Test webhook sent successfully",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to send test webhook:", error);
     return NextResponse.json(
       { error: "Failed to send test webhook" },

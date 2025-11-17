@@ -72,7 +72,7 @@ export async function DELETE(req: NextRequest, context: RouteContext) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error revoking API key:", error);
     return NextResponse.json(
       { error: "Failed to revoke API key" },
@@ -170,7 +170,7 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
     });
 
     return NextResponse.json(updated);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error updating API key:", error);
     return NextResponse.json(
       { error: "Failed to update API key" },

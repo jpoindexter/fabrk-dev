@@ -53,7 +53,7 @@ export default function ProfilePage() {
       } else {
         toast.error("Failed to update profile");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error("Failed to update profile");
     } finally {
       setIsSaving(false);
@@ -80,7 +80,7 @@ export default function ProfilePage() {
       } else {
         toast.error("Failed to upload avatar");
       }
-    } catch (error) {
+    } catch (error: unknown) {
       toast.error("Failed to upload avatar");
     }
   };

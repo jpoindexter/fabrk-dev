@@ -168,7 +168,7 @@ async function setupIntentHandler(req: NextRequest) {
       clientSecret: setupIntent.client_secret,
       customerId,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     logger.error("SetupIntent creation error:", error);
     return NextResponse.json(
       { error: "Failed to create setup intent" },

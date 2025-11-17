@@ -73,7 +73,7 @@ export function AppearanceForm() {
         title: "Settings saved",
         description: "Your appearance settings have been updated.",
       });
-    } catch (error) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
         description:

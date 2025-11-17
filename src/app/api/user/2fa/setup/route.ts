@@ -88,7 +88,7 @@ export async function POST() {
       backupCodes,
       message: "2FA setup initiated. Please verify with your authenticator app.",
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[2FA Setup] Error:", error);
     return NextResponse.json(
       { error: "Failed to setup 2FA" },

@@ -69,7 +69,7 @@ export async function GET(req: NextRequest) {
     }));
 
     return NextResponse.json(safeWebhooks);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to fetch webhooks:", error);
     return NextResponse.json(
       { error: "Failed to fetch webhooks" },
@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
           { status: 400 }
         );
       }
-    } catch (error) {
+    } catch (error: unknown) {
       return NextResponse.json(
         { error: "Invalid webhook URL" },
         { status: 400 }
@@ -169,7 +169,7 @@ export async function POST(req: NextRequest) {
       enabled: webhook.enabled,
       createdAt: webhook.createdAt,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Failed to create webhook:", error);
     return NextResponse.json(
       { error: "Failed to create webhook" },

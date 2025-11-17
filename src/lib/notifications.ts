@@ -50,7 +50,7 @@ export async function createNotification({
     });
 
     return notification;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create notification:", error);
     throw error;
   }
@@ -74,7 +74,7 @@ export async function createOrgActivity(
       ...activity,
       timestamp: new Date(),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Failed to create org activity:", error);
   }
 }

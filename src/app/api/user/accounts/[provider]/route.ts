@@ -94,7 +94,7 @@ export async function DELETE(
         id: acc.id,
       })),
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("[Account Disconnect] Error:", error);
     return NextResponse.json(
       { error: "Failed to disconnect account" },
