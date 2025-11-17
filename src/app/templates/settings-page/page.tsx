@@ -22,6 +22,9 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import {
   AlertTriangle,
   Bell,
@@ -229,52 +232,52 @@ export default function SettingsPageTemplate() {
               <CardContent className="space-y-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground">
+                    <Label htmlFor="fullname" className="font-semibold">
                       Full Name
-                    </label>
-                    <input
+                    </Label>
+                    <Input
+                      id="fullname"
                       type="text"
                       placeholder="John Doe"
-                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground">
+                    <Label htmlFor="email" className="font-semibold">
                       Email Address
-                    </label>
-                    <input
+                    </Label>
+                    <Input
+                      id="email"
                       type="email"
                       placeholder="john@example.com"
-                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground">
+                    <Label htmlFor="company" className="font-semibold">
                       Company
-                    </label>
-                    <input
+                    </Label>
+                    <Input
+                      id="company"
                       type="text"
                       placeholder="Acme Inc."
-                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground">
+                    <Label htmlFor="jobtitle" className="font-semibold">
                       Job Title
-                    </label>
-                    <input
+                    </Label>
+                    <Input
+                      id="jobtitle"
                       type="text"
                       placeholder="Software Engineer"
-                      className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-foreground">Bio</label>
-                  <textarea
+                  <Label htmlFor="bio" className="font-semibold">Bio</Label>
+                  <Textarea
+                    id="bio"
                     placeholder="Tell us about yourself..."
                     rows={4}
-                    className="w-full rounded-md border border-border bg-background px-4 py-2 font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
                 <div className="flex justify-end gap-3">
