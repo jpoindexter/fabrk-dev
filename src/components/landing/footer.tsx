@@ -46,12 +46,6 @@ export function Footer() {
                 Demo
               </Link>
               <Link
-                href="/variations"
-                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Variations
-              </Link>
-              <Link
                 href="/components"
                 className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >

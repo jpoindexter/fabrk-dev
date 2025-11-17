@@ -209,13 +209,6 @@ const features = [
 
 const showcasePages = [
   {
-    title: "Landing Page Variations",
-    description: "3 hero styles + 2 pricing layouts",
-    url: "/variations",
-    icon: Layout,
-    count: "5 variations",
-  },
-  {
     title: "UI Components Showcase",
     description: "All 87+ components with variants",
     url: "/components",
@@ -499,11 +492,6 @@ export default function WhatsIncludedPage() {
                   <Button variant="primaryCta" size="lg">
                     Browse Components
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/variations">
-                  <Button variant="secondaryCta" size="lg">
-                    View Landing Variations
                   </Button>
                 </Link>
                 <Link href="/examples/admin">

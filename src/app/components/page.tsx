@@ -26,7 +26,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import ActivityTimelineDemo from "./activity-timeline-demo";
-import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X, Zap } from "lucide-react";
+import { ArrowRight, Bell, Check, Download, Heart, Home, Mail, Search, Settings, Upload, User, X } from "lucide-react";
 
 export default function ComponentsPage() {
   return (
@@ -425,13 +425,7 @@ export default function ComponentsPage() {
             <CardTitle>More Showcases</CardTitle>
             <CardDescription>Explore other demo pages</CardDescription>
           </CardHeader>
-          <CardContent className="grid md:grid-cols-3 gap-4">
-            <Link href="/variations" className="block">
-              <Button variant="outline" className="w-full justify-start">
-                <Zap className="mr-2 h-4 w-4" />
-                Landing Page Variations
-              </Button>
-            </Link>
+          <CardContent className="grid md:grid-cols-2 gap-4">
             <Link href="/examples/admin" className="block">
               <Button variant="outline" className="w-full justify-start">
                 <User className="mr-2 h-4 w-4" />

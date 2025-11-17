@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Layout,
   Palette,
   Sparkles,
   Users,
@@ -43,13 +42,6 @@ const showcasePages = [
     icon: Palette,
     description: "87+ components",
     badge: "Interactive",
-  },
-  {
-    title: "Landing Variations",
-    href: "/variations",
-    icon: Layout,
-    description: "3 hero + 2 pricing",
-    badge: "5 Variations",
   },
   {
     title: "Admin Dashboard",

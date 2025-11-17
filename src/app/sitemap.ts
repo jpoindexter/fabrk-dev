@@ -50,27 +50,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Component showcase pages
-  const showcasePages = [
-    {
-      url: `${baseUrl}/variations/hero`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/variations/features`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/variations/pricing`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-  ];
-
-  return [...staticPages, ...showcasePages];
+  return staticPages;
 }

@@ -314,12 +314,6 @@ export default function TemplatesPage() {
                 UI Components
               </Link>
             </Button>
-            <Button variant="outline" asChild>
-              <Link href="/variations">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                Landing Variations
-              </Link>
-            </Button>
           </CardContent>
         </Card>
       </main>
