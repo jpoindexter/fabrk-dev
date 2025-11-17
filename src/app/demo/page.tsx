@@ -12,16 +12,9 @@ import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
 
 export default function DemoPage() {
-  const [activeTab, setActiveTab] = useState("landing");
+  const [activeTab, setActiveTab] = useState("dashboard");
 
   const demos = [
-    {
-      id: "landing",
-      label: "Landing Page",
-      url: "/variations/modern",
-      description: "Modern minimal landing page with hero, features, pricing, and testimonials",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/variations/modern/page.tsx",
-    },
     {
       id: "dashboard",
       label: "Dashboard",
