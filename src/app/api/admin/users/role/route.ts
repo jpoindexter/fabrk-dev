@@ -3,9 +3,10 @@
  * PATCH /api/admin/users/role
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const roleSchema = z.object({
@@ -13,7 +14,7 @@ const roleSchema = z.object({
   role: z.enum(["USER", "ADMIN"]),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -60,4 +61,4 @@ export async function PATCH(req: Request) {
       { status: 500 }
     );
   }
-}
+});

@@ -59,7 +59,7 @@ export class RateLimitError extends ApiError {
 interface ErrorResponse {
   error: string;
   code?: string;
-  details?: any;
+  details?: Record<string, unknown> | unknown[] | string;
   timestamp?: string;
 }
 
@@ -112,7 +112,7 @@ function formatErrorResponse(error: Error): ErrorResponse {
 /**
  * Error handler middleware wrapper
  */
-export function withErrorHandler<T extends any[]>(
+export function withErrorHandler<T extends unknown[]>(
   handler: (req: NextRequest, ...args: T) => Promise<NextResponse>
 ) {
   return async (req: NextRequest, ...args: T): Promise<NextResponse> => {

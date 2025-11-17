@@ -146,15 +146,21 @@ export function validateCsrfMiddleware(req: NextRequest): {
  *
  * Usage:
  * ```typescript
+ * // For simple routes
  * export const POST = withCsrfProtection(async (req: NextRequest) => {
+ *   // Your handler code
+ * });
+ *
+ * // For dynamic routes with context
+ * export const POST = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
  *   // Your handler code
  * });
  * ```
  */
-export function withCsrfProtection(
-  handler: (req: NextRequest, ...args: unknown[]) => Promise<NextResponse>
-) {
-  return async (req: NextRequest, ...args: unknown[]): Promise<NextResponse> => {
+export function withCsrfProtection<T extends any[]>(
+  handler: (req: NextRequest, ...args: T) => Promise<NextResponse>
+): (req: NextRequest, ...args: T) => Promise<NextResponse> {
+  return async (req: NextRequest, ...args: T): Promise<NextResponse> => {
     const csrfCheck = validateCsrfMiddleware(req);
 
     if (!csrfCheck.valid) {

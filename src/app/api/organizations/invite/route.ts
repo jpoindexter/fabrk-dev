@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { inviteToOrganization, hasOrganizationRole, getOrganizationBySlug } from "@/lib/teams/organizations";
 import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
@@ -12,7 +13,7 @@ import { OrgRole } from "@prisma/client";
 import { createOrgActivity } from "@/lib/notifications";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -133,4 +134,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

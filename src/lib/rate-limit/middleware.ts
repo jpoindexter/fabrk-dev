@@ -95,11 +95,11 @@ if (typeof setInterval !== "undefined") {
 /**
  * Rate limiting middleware wrapper
  */
-export function withRateLimit(
-  handler: (req: NextRequest) => Promise<NextResponse>,
+export function withRateLimit<T extends unknown[]>(
+  handler: (req: NextRequest, ...args: T) => Promise<NextResponse>,
   type: RateLimitType = "api"
 ) {
-  return async (req: NextRequest): Promise<NextResponse> => {
+  return async (req: NextRequest, ...args: T): Promise<NextResponse> => {
     const clientId = getClientId(req);
     const { allowed, remaining, resetAt } = checkRateLimit(clientId, type);
 
@@ -123,8 +123,8 @@ export function withRateLimit(
       );
     }
 
-    // Call the handler
-    const response = await handler(req);
+    // Call the handler with all arguments
+    const response = await handler(req, ...args);
 
     // Add rate limit headers to response
     response.headers.set("X-RateLimit-Limit", String(RATE_LIMITS[type].requests));

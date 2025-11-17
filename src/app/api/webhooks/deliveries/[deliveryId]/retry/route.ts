@@ -6,6 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { retryWebhookDelivery } from "@/lib/webhooks";
@@ -14,10 +15,10 @@ interface RouteContext {
   params: Promise<{ deliveryId: string }>;
 }
 
-export async function POST(
+export const POST = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { deliveryId } = await context.params;
     const session = await auth();
@@ -84,4 +85,4 @@ export async function POST(
       { status: 500 }
     );
   }
-}
+});

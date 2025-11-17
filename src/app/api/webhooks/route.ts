@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { generateWebhookSecret } from "@/lib/webhooks";
@@ -78,7 +79,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -176,4 +177,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

@@ -8,7 +8,7 @@ import {
   siTypescript,
   siOpenai,
 } from "simple-icons";
-import { Upload, Brain, Flag as FlagIcon, Lock, FileText, Invoice } from "lucide-react";
+import { Upload, Brain, Flag as FlagIcon, Lock, FileText } from "lucide-react";
 
 export function FeaturesSection() {
   const features = [

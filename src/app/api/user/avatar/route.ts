@@ -3,15 +3,16 @@
  * POST /api/user/avatar
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { uploadFile } from "@/lib/storage/uploads";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
-export async function POST(req: Request) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -91,4 +92,4 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-}
+});

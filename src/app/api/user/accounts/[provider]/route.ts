@@ -6,17 +6,23 @@
  * Ensures user has alternative login method before disconnecting
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const providerSchema = z.enum(["google", "github", "facebook", "twitter"]);
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { provider: string } }
-) {
+interface RouteContext {
+  params: Promise<{ provider: string }>;
+}
+
+export const DELETE = withCsrfProtection(async (
+  req: NextRequest,
+  context: RouteContext
+) => {
+  const { provider: providerParam } = await context.params;
   try {
     const session = await auth();
 
@@ -28,7 +34,7 @@ export async function DELETE(
     }
 
     // Validate provider
-    const validationResult = providerSchema.safeParse(params.provider);
+    const validationResult = providerSchema.safeParse(providerParam);
     if (!validationResult.success) {
       return NextResponse.json(
         { error: "Invalid provider" },
@@ -101,4 +107,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-}
+});

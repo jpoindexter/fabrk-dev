@@ -3,9 +3,10 @@
  * PATCH /api/user/profile
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const profileSchema = z.object({
@@ -17,7 +18,7 @@ const profileSchema = z.object({
   github: z.string().max(50).optional(),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -72,4 +73,4 @@ export async function PATCH(req: Request) {
       { status: 500 }
     );
   }
-}
+});

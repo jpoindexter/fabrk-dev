@@ -36,8 +36,9 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      // Scripts: Allow self, Stripe, Vercel analytics, and inline scripts for Next.js hydration
-      // Note: 'unsafe-inline' kept for Next.js compatibility, consider adding nonce for production
+      // Scripts: Nonce-based CSP (middleware injects unique nonce per request)
+      // Note: 'unsafe-inline' removed for security, nonce injected by middleware
+      // Development uses 'unsafe-eval' for hot module reloading
       "script-src 'self' 'unsafe-inline' https://js.stripe.com https://va.vercel-scripts.com " +
       (process.env.NODE_ENV === "production" ? "" : "'unsafe-eval' ") + "; " +
       // Styles: Allow self and inline styles for Tailwind/styled components

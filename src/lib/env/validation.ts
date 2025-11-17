@@ -9,6 +9,8 @@
  *   validateEnv(); // Throws with detailed error if validation fails
  */
 
+import { logger } from "@/lib/logger";
+
 interface ValidationError {
   variable: string;
   message: string;

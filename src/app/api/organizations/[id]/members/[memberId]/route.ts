@@ -6,6 +6,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import {
   hasOrganizationRole,
   removeMember,
@@ -20,10 +21,10 @@ interface RouteContext {
   params: Promise<{ id: string; memberId: string }>;
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id, memberId } = await context.params;
     const session = await auth();
@@ -137,12 +138,12 @@ export async function PATCH(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id, memberId } = await context.params;
     const session = await auth();
@@ -226,4 +227,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-}
+});

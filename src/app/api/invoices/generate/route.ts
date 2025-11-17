@@ -234,8 +234,9 @@ async function generateInvoiceHandler(req: NextRequest) {
         );
 
         // Get the invoice if one exists
-        if (paymentIntent.invoice && typeof paymentIntent.invoice === "string") {
-          const invoice = await stripe.invoices.retrieve(paymentIntent.invoice);
+        const piWithInvoice = paymentIntent as unknown as { invoice?: string | null };
+        if (piWithInvoice.invoice && typeof piWithInvoice.invoice === "string") {
+          const invoice = await stripe.invoices.retrieve(piWithInvoice.invoice);
 
           if (invoice.hosted_invoice_url) {
             logger.info("Generated invoice URL", {

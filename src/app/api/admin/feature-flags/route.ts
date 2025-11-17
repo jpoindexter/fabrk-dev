@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
+import { withCsrfProtection } from '@/lib/security/csrf';
 import {
   getAllDbFlags,
   createDbFlag,
@@ -34,7 +35,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     // Check authentication
     const session = await auth();
@@ -70,9 +71,9 @@ export async function POST(req: NextRequest) {
     console.error('Failed to create feature flag:', error);
     return NextResponse.json({ error: 'Failed to create flag' }, { status: 500 });
   }
-}
+});
 
-export async function PATCH(req: NextRequest) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     // Check authentication
     const session = await auth();
@@ -108,9 +109,9 @@ export async function PATCH(req: NextRequest) {
     console.error('Failed to update feature flag:', error);
     return NextResponse.json({ error: 'Failed to update flag' }, { status: 500 });
   }
-}
+});
 
-export async function DELETE(req: NextRequest) {
+export const DELETE = withCsrfProtection(async (req: NextRequest) => {
   try {
     // Check authentication
     const session = await auth();
@@ -140,4 +141,4 @@ export async function DELETE(req: NextRequest) {
     console.error('Failed to delete feature flag:', error);
     return NextResponse.json({ error: 'Failed to delete flag' }, { status: 500 });
   }
-}
+});

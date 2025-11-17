@@ -6,7 +6,7 @@
  * Returns the secret and QR code URI along with backup codes
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import {
   generateTOTPSecret,
@@ -16,8 +16,9 @@ import {
 } from "@/lib/auth/mfa";
 import { prisma } from "@/lib/prisma";
 import { AuditLog } from "@/lib/security/audit-log";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
-export async function POST() {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -95,4 +96,4 @@ export async function POST() {
       { status: 500 }
     );
   }
-}
+});

@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { isValidEvent } from "@/lib/webhooks/events";
@@ -86,10 +87,10 @@ export async function GET(
   }
 }
 
-export async function PATCH(
+export const PATCH = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -126,7 +127,11 @@ export async function PATCH(
     const body = await req.json();
     const { url, events, enabled } = body;
 
-    const updateData: any = {};
+    const updateData: {
+      url?: string;
+      events?: string[];
+      enabled?: boolean;
+    } = {};
 
     if (url !== undefined) {
       // Validate URL
@@ -190,12 +195,12 @@ export async function PATCH(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -244,4 +249,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-}
+});

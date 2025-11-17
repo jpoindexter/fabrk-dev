@@ -35,7 +35,7 @@ type PrivacyFormValues = z.infer<typeof privacyFormSchema>;
 
 export function PrivacyForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<PrivacyFormValues>({
     resolver: zodResolver(privacyFormSchema),
@@ -70,15 +70,13 @@ export function PrivacyForm() {
         title: "Settings saved",
         description: "Your privacy preferences have been updated.",
       });
-    } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to update privacy settings. Please try again.",
-        variant: "destructive",
-      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update privacy settings. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }

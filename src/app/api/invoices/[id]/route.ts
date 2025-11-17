@@ -56,11 +56,11 @@ export async function GET(
       if (payment.stripeId.startsWith("pi_")) {
         const paymentIntent = await stripe.paymentIntents.retrieve(payment.stripeId);
 
-        if (paymentIntent.invoice) {
+        if ((paymentIntent as unknown as { invoice?: string | null }).invoice) {
           const invoice = await stripe.invoices.retrieve(
-            paymentIntent.invoice as string
+            (paymentIntent as unknown as { invoice: string }).invoice
           );
-          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf;
+          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
         }
       }
       // Try as checkout session
@@ -71,18 +71,18 @@ export async function GET(
           const invoice = await stripe.invoices.retrieve(
             checkoutSession.invoice as string
           );
-          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf;
+          invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
         } else if (checkoutSession.payment_intent) {
           // Get payment intent from checkout session
           const paymentIntent = await stripe.paymentIntents.retrieve(
             checkoutSession.payment_intent as string
           );
 
-          if (paymentIntent.invoice) {
+          if ((paymentIntent as unknown as { invoice?: string | null }).invoice) {
             const invoice = await stripe.invoices.retrieve(
-              paymentIntent.invoice as string
+              (paymentIntent as unknown as { invoice: string }).invoice
             );
-            invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf;
+            invoiceUrl = invoice.hosted_invoice_url || invoice.invoice_pdf || null;
           }
         }
       }

@@ -39,7 +39,7 @@ type AppearanceFormValues = z.infer<typeof appearanceFormSchema>;
 
 export function AppearanceForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
@@ -73,15 +73,13 @@ export function AppearanceForm() {
         title: "Settings saved",
         description: "Your appearance settings have been updated.",
       });
-    } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to update appearance settings. Please try again.",
-        variant: "destructive",
-      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update appearance settings. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }

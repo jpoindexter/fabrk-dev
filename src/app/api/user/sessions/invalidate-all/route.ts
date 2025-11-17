@@ -7,11 +7,12 @@
  * Useful for security events like password changes or suspicious activity
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
-export async function POST(req: Request) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -82,4 +83,4 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-}
+});

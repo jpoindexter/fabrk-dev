@@ -3,16 +3,17 @@
  * DELETE /api/admin/users/delete
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const deleteSchema = z.object({
   userId: z.string(),
 });
 
-export async function DELETE(req: Request) {
+export const DELETE = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -58,4 +59,4 @@ export async function DELETE(req: Request) {
       { status: 500 }
     );
   }
-}
+});

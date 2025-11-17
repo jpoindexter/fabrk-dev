@@ -3,10 +3,11 @@
  * PATCH /api/user/email
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { sendVerificationEmail } from "@/lib/email";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 import crypto from "crypto";
 
@@ -14,7 +15,7 @@ const emailSchema = z.object({
   newEmail: z.string().email(),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -85,4 +86,4 @@ export async function PATCH(req: Request) {
       { status: 500 }
     );
   }
-}
+});

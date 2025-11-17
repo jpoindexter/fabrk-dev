@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
 interface RouteContext {
   params: Promise<{
@@ -13,7 +14,7 @@ interface RouteContext {
  * Revoke (delete) an API key
  * Requires ADMIN/OWNER role or being the key creator
  */
-export async function DELETE(req: NextRequest, context: RouteContext) {
+export const DELETE = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -79,14 +80,14 @@ export async function DELETE(req: NextRequest, context: RouteContext) {
       { status: 500 }
     );
   }
-}
+});
 
 /**
  * PATCH /api/api-keys/[id]
  * Update an API key (name or permissions)
  * Requires ADMIN/OWNER role
  */
-export async function PATCH(req: NextRequest, context: RouteContext) {
+export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -177,4 +178,4 @@ export async function PATCH(req: NextRequest, context: RouteContext) {
       { status: 500 }
     );
   }
-}
+});

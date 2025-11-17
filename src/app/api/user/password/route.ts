@@ -3,9 +3,10 @@
  * PATCH /api/user/password
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hash, compare } from "bcryptjs";
 import { z } from "zod";
 
@@ -14,7 +15,7 @@ const passwordSchema = z.object({
   newPassword: z.string().min(8),
 });
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -84,4 +85,4 @@ export async function PATCH(req: Request) {
       { status: 500 }
     );
   }
-}
+});

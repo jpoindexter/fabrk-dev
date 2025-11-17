@@ -5,10 +5,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { acceptInvite } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 
-export async function POST(req: NextRequest) {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -101,4 +102,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-}
+});

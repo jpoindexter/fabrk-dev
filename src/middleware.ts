@@ -4,6 +4,7 @@ import { locales, defaultLocale } from '@/i18n/config';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { ensureCsrfToken } from '@/lib/security/csrf';
+import { generateNonce, getNonceHeaderName } from '@/lib/security/csp-nonce';
 
 // Create the i18n middleware
 const intlMiddleware = createMiddleware({
@@ -12,8 +13,27 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'as-needed', // Don't add locale prefix for default locale
 });
 
+/**
+ * Inject CSP nonce into response headers
+ * Updates Content-Security-Policy header to replace 'unsafe-inline' with nonce
+ */
+function injectCSPNonce(response: NextResponse, nonce: string): void {
+  const csp = response.headers.get("Content-Security-Policy");
+  if (csp) {
+    // Replace 'unsafe-inline' in script-src with nonce
+    const updatedCsp = csp.replace(
+      /script-src ([^;]*)'unsafe-inline'([^;]*);/,
+      `script-src $1'nonce-${nonce}'$2;`
+    );
+    response.headers.set("Content-Security-Policy", updatedCsp);
+  }
+}
+
 export default auth((req) => {
   const pathname = req.nextUrl.pathname;
+
+  // Generate nonce for this request
+  const nonce = generateNonce();
 
   // Skip i18n for showcase pages (they exist outside [locale] structure)
   const isShowcasePage =
@@ -25,6 +45,9 @@ export default auth((req) => {
 
   if (isShowcasePage) {
     const response = NextResponse.next();
+    // Inject nonce into response
+    response.headers.set(getNonceHeaderName(), nonce);
+    injectCSPNonce(response, nonce);
     ensureCsrfToken(req, response);
     return response;
   }
@@ -51,8 +74,10 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
-  // Apply i18n routing and ensure CSRF token
+  // Apply i18n routing, inject nonce, and ensure CSRF token
   const response = intlMiddleware(req as NextRequest);
+  response.headers.set(getNonceHeaderName(), nonce);
+  injectCSPNonce(response, nonce);
   ensureCsrfToken(req, response);
   return response;
 });

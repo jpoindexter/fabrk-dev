@@ -37,7 +37,7 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, success, error } = useToast();
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -65,19 +65,14 @@ export function ProfileForm() {
         throw new Error(result.error || "Failed to update profile");
       }
 
-      toast({
-        title: "Profile updated",
-        description: "Your profile has been updated successfully.",
-      });
-    } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to update profile. Please try again.",
-        variant: "destructive",
-      });
+      success("Profile updated", "Your profile has been updated successfully.");
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update profile. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }

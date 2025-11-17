@@ -7,6 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { isOrganizationMember } from "@/lib/teams/organizations";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
@@ -78,10 +79,10 @@ export async function GET(
   }
 }
 
-export async function POST(
+export const POST = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -150,12 +151,12 @@ export async function POST(
       { status: 500 }
     );
   }
-}
+});
 
-export async function DELETE(
+export const DELETE = withCsrfProtection(async (
   req: NextRequest,
   context: RouteContext
-) {
+) => {
   try {
     const { id } = await context.params;
     const session = await auth();
@@ -209,4 +210,4 @@ export async function DELETE(
       { status: 500 }
     );
   }
-}
+});

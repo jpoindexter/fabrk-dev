@@ -3,9 +3,10 @@
  * PATCH /api/user/settings
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const settingsSchema = z.object({
@@ -69,7 +70,7 @@ export async function GET(req: Request) {
   }
 }
 
-export async function PATCH(req: Request) {
+export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
     const session = await auth();
 
@@ -139,4 +140,4 @@ export async function PATCH(req: Request) {
       { status: 500 }
     );
   }
-}
+});

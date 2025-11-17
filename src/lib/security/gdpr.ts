@@ -17,11 +17,11 @@ export interface GDPRDataExport {
   userId: string;
   exportDate: Date;
   personalData: {
-    profile: Record<string, any>;
-    payments: any[];
-    sessions: any[];
-    auditLogs: any[];
-    otherData: Record<string, any>;
+    profile: Record<string, unknown>;
+    payments: Record<string, unknown>[];
+    sessions: Record<string, unknown>[];
+    auditLogs: Record<string, unknown>[];
+    otherData: Record<string, unknown>;
   };
   metadata: {
     format: "json" | "csv";

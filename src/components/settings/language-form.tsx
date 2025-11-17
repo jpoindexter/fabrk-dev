@@ -38,7 +38,7 @@ type LanguageFormValues = z.infer<typeof languageFormSchema>;
 
 export function LanguageForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error } = useToast();
 
   const form = useForm<LanguageFormValues>({
     resolver: zodResolver(languageFormSchema),
@@ -69,15 +69,13 @@ export function LanguageForm() {
         title: "Settings saved",
         description: "Your language preference has been updated.",
       });
-    } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "Failed to update language settings. Please try again.",
-        variant: "destructive",
-      });
+    } catch (err: unknown) {
+      error(
+        "Error",
+        err instanceof Error
+          ? err.message
+          : "Failed to update language settings. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
