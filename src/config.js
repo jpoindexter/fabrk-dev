@@ -189,11 +189,11 @@ const config = {
   pricing: {
     // Boilerplate product pricing (what customers pay to buy Fabrk)
     product: {
-      current: 299, // One-time price for Fabrk boilerplate
+      current: 199, // One-time price for Fabrk boilerplate
       original: null, // No original price - premium positioning
       currency: "USD",
       display: {
-        current: "$299",
+        current: "$199",
         original: null,
       },
     },

@@ -52,7 +52,7 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">$299</span>
+                <span className="text-5xl font-semibold text-foreground">$199</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
                   $599
                 </span>

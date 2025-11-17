@@ -83,7 +83,7 @@ const defaultPlans: PricingPlan[] = [
   },
   {
     name: "Fabrk",
-    price: "$299",
+    price: "$199",
     description: "Enterprise-Grade",
     features: {
       typescript: "Strict Mode",

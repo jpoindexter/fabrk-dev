@@ -129,7 +129,7 @@ export function ValueProposition() {
     return sum;
   }, 0);
 
-  const roi = totalDIYCost / 299;
+  const roi = totalDIYCost / 199;
 
   return (
     <section className="border-t border-border bg-background py-16 lg:py-20">
@@ -214,7 +214,7 @@ export function ValueProposition() {
               </div>
               <div>
                 <div className="text-4xl font-bold text-primary">{Math.round(roi)}x ROI</div>
-                <p className="mt-2 text-sm text-muted-foreground">Return on $299 investment</p>
+                <p className="mt-2 text-sm text-muted-foreground">Return on $199 investment</p>
                 <p className="mt-1 text-xs text-muted-foreground">Pays for itself in first week</p>
               </div>
             </div>
@@ -328,7 +328,7 @@ export function ValueProposition() {
               </p>
             </div>
             <Button asChild size="lg">
-              <Link href="/pricing">Get Started - $299</Link>
+              <Link href="/pricing">Get Started - $199</Link>
             </Button>
           </motion.div>
         </motion.div>
