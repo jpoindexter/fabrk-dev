@@ -1,9 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { SimpleIcon } from "@/components/ui/simple-icon";
 import { Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
 import config from "@/config";
+import {
+  siNextdotjs,
+  siReact,
+  siTailwindcss,
+  siPrisma,
+  siStripe,
+  siAuth0,
+  siResend,
+} from "simple-icons";
 
 export function HeroSection() {
   const { createCheckoutSession, isLoading } = useCheckout();
@@ -56,7 +66,7 @@ export function HeroSection() {
           </div>
 
           {/* Social Proof with Avatars */}
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             {/* Avatar Stack */}
             <div className="flex -space-x-2">
               <div className="h-10 w-10 rounded-full border-2 border-background bg-primary flex items-center justify-center text-primary-foreground font-medium text-xs shadow-sm">
@@ -80,6 +90,38 @@ export function HeroSection() {
             <p className="text-sm font-medium text-muted-foreground">
               Join 100+ developers who ship faster.
             </p>
+          </div>
+
+          {/* Tech Stack - A Modern Stack You Can Trust */}
+          <div className="space-y-6">
+            <h2 className="text-center text-lg font-semibold text-foreground">
+              A Modern Stack You Can Trust.
+            </h2>
+
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
+              {[
+                { name: "Next.js", path: siNextdotjs.path },
+                { name: "React", path: siReact.path },
+                { name: "Tailwind CSS", path: siTailwindcss.path },
+                { name: "Prisma", path: siPrisma.path },
+                { name: "Stripe", path: siStripe.path },
+                { name: "NextAuth", path: siAuth0.path },
+                { name: "Resend", path: siResend.path },
+              ].map((tech) => (
+                <div
+                  key={tech.name}
+                  className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-4 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                >
+                  <SimpleIcon
+                    path={tech.path}
+                    className="h-6 w-6 text-foreground transition-colors group-hover:text-primary"
+                  />
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {tech.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
