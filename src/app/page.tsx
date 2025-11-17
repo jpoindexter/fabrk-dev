@@ -6,7 +6,6 @@
 
 import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
-import { InteractiveDemo } from "@/components/landing/interactive-demo";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 import { QualitySection } from "@/components/landing/quality-section";
@@ -27,7 +26,6 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
-      <InteractiveDemo />
       <FeaturesShowcase />
       <WhatsIncludedBreakdown />
       <ValueProposition />
