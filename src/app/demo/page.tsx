@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
 
@@ -54,8 +55,8 @@ export default function DemoPage() {
       <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           {/* Logo/Home Link */}
-          <Link href="/" className="text-lg font-semibold transition-opacity hover:opacity-80">
-            Demo
+          <Link href="/" className="transition-opacity hover:opacity-80">
+            <Logo size={24} />
           </Link>
 
           {/* Navigation Links */}
