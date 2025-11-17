@@ -74,6 +74,12 @@ export default function DemoPage() {
                 {demo.label}
               </button>
             ))}
+            <Link
+              href="/templates"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Templates
+            </Link>
           </div>
 
           {/* CTA Button */}

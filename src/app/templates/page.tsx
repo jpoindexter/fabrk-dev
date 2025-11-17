@@ -151,6 +151,11 @@ export default function TemplatesPage() {
             </div>
             <div className="flex items-center gap-3">
               <ThemeToggle />
+              <Link href="/demo">
+                <Button variant="outline">
+                  Demo
+                </Button>
+              </Link>
               <Link href="/">
                 <Button variant="outline">
                   <Home className="mr-2 h-4 w-4" />
