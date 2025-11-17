@@ -133,8 +133,8 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
     const [showPreview, setShowPreview] = React.useState(!editorOnly && !previewOnly);
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
-    // Insert markdown syntax at cursor position
-    const insertMarkdown = (before: string, after: string = "") => {
+    // Insert markdown syntax at cursor position (industry-standard useCallback pattern)
+    const insertMarkdown = React.useCallback((before: string, after: string = "") => {
       const textarea = textareaRef.current;
       if (!textarea) return;
 
@@ -152,15 +152,16 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
         const newCursorPos = start + before.length + selectedText.length;
         textarea.setSelectionRange(newCursorPos, newCursorPos);
       }, 0);
-    };
+    }, [value, onChange]);
 
+    // Define toolbar buttons as stable data (avoid ref capture during render)
     const toolbarButtons = [
-      { icon: Bold, label: "Bold", action: () => insertMarkdown("**", "**") },
-      { icon: Italic, label: "Italic", action: () => insertMarkdown("*", "*") },
-      { icon: Heading1, label: "Heading", action: () => insertMarkdown("# ", "") },
-      { icon: LinkIcon, label: "Link", action: () => insertMarkdown("[", "](url)") },
-      { icon: Code, label: "Code", action: () => insertMarkdown("```\n", "\n```") },
-      { icon: List, label: "List", action: () => insertMarkdown("- ", "") },
+      { icon: Bold, label: "Bold", before: "**", after: "**" },
+      { icon: Italic, label: "Italic", before: "*", after: "*" },
+      { icon: Heading1, label: "Heading", before: "# ", after: "" },
+      { icon: LinkIcon, label: "Link", before: "[", after: "](url)" },
+      { icon: Code, label: "Code", before: "```\n", after: "\n```" },
+      { icon: List, label: "List", before: "- ", after: "" },
     ];
 
     const isEditorVisible = previewOnly ? false : !editorOnly;
@@ -176,8 +177,8 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                 <Button
                   key={btn.label}
                   variant="ghost"
-                  size="icon-sm"
-                  onClick={btn.action}
+                  size="sm"
+                  onClick={() => insertMarkdown(btn.before, btn.after)}
                   title={btn.label}
                   type="button"
                 >

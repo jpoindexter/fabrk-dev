@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Sparkline, SparklineCard, SparklineGroup } from "./sparkline";
 
 const meta: Meta<typeof Sparkline> = {
@@ -240,8 +240,8 @@ export const MetricsTable: Story = {
                   className={cn(
                     "p-3 text-sm text-right font-semibold",
                     metric.change.startsWith("+")
-                      ? "text-green-600"
-                      : "text-red-600"
+                      ? "text-success"
+                      : "text-destructive"
                   )}
                 >
                   {metric.change}

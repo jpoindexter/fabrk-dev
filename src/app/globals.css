@@ -5,314 +5,121 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@theme {
+  /* Font families */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Border radius */
+  --radius: 0.5rem;
+
+  /* Color mappings for Tailwind v4 */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+}
+
 :root {
-  /* Vercel Color System - Light Mode */
-  /* Backgrounds */
-  --background: 250 250 250;              /* #FAFAFA - Vercel's exact background */
-  --secondary-background: 255 255 255;    /* #FFFFFF - Pure white */
-  --foreground: 0 0 0;                    /* #000000 - Pure black text */
-
-  /* Primary (Black buttons in light mode) */
-  --main: 0 0 0;                          /* #000000 - Black */
-  --main-foreground: 255 255 255;         /* #FFFFFF - White text on black */
-  --primary: var(--main);
-  --primary-foreground: var(--main-foreground);
-
-  /* Secondary (Light gray) */
-  --secondary: 250 250 250;               /* #FAFAFA - Same as background */
-  --secondary-foreground: 0 0 0;          /* #000000 - Black text */
-
-  /* Accent (Vercel Blue #0070F3) */
-  --accent: 0 112 243;                    /* #0070F3 - Vercel brand blue */
-  --accent-hover: 11 123 254;             /* #0B7BFE - Hover state */
-  --accent-foreground: 255 255 255;       /* #FFFFFF - White text on blue */
-
-  /* Destructive (Red) */
-  --destructive: 220 38 38;               /* #DC2626 - Red */
-  --destructive-foreground: 255 255 255;  /* #FFFFFF */
-
-  /* Success (Use Vercel blue for success) */
-  --success: 0 112 243;                   /* #0070F3 - Same as accent */
-  --success-foreground: 255 255 255;      /* #FFFFFF */
-
-  /* Muted (Light gray for subtle backgrounds) */
-  --muted: 234 234 234;                   /* #EAEAEA - Vercel Accents-2 */
-  --muted-foreground: 102 102 102;        /* #666666 - Medium gray text */
-
-  /* Card (Pure white cards) */
-  --card: 255 255 255;                    /* #FFFFFF */
-  --card-foreground: 0 0 0;               /* #000000 */
-
-  /* Popover (Same as card) */
-  --popover: 255 255 255;                 /* #FFFFFF */
-  --popover-foreground: 0 0 0;            /* #000000 */
-
-  /* Borders (Light gray) */
-  --border: 234 234 234;                  /* #EAEAEA - Subtle border */
-  --input: 234 234 234;                   /* #EAEAEA - Input borders */
-  --ring: 0 112 243;                      /* #0070F3 - Focus ring (blue) */
-  --overlay: 0 0 0 / 0.5;                 /* Black overlay, 50% opacity */
-
-  /* Chart colors (keep existing for now) */
-  --chart-1: 0 112 243;                   /* #0070F3 - Vercel blue */
-  --chart-2: 234 179 8;                   /* #EAB308 - Yellow */
-  --chart-3: 34 197 94;                   /* #22C55E - Green */
-  --chart-4: 239 68 68;                   /* #EF4444 - Red */
-  --chart-5: 168 85 247;                  /* #A855F7 - Purple */
-  --chart-active-dot: 0 0 0;              /* #000000 */
+  /* Black Theme - Light Mode (for users who want light) */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 0%;
+  --info: 217 91% 60%;
+  --info-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 0% 0%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
 }
 
 .dark {
-  /* Vercel Color System - Dark Mode */
-  /* Backgrounds */
-  --background: 0 0 0;                    /* #000000 - Pure black background */
-  --secondary-background: 10 10 10;       /* #0A0A0A - Slightly lifted */
-  --foreground: 255 255 255;              /* #FFFFFF - Pure white text */
-
-  /* Primary (White buttons in dark mode) */
-  --main: 255 255 255;                    /* #FFFFFF - White */
-  --main-foreground: 0 0 0;               /* #000000 - Black text on white */
-  --primary: var(--main);
-  --primary-foreground: var(--main-foreground);
-
-  /* Secondary (Dark gray) */
-  --secondary: 23 23 23;                  /* #171717 - Dark gray */
-  --secondary-foreground: 255 255 255;    /* #FFFFFF - White text */
-
-  /* Accent (Vercel Blue - same as light mode) */
-  --accent: 0 112 243;                    /* #0070F3 - Vercel blue */
-  --accent-hover: 11 123 254;             /* #0B7BFE - Hover state */
-  --accent-foreground: 255 255 255;       /* #FFFFFF */
-
-  /* Destructive (Red) */
-  --destructive: 220 38 38;               /* #DC2626 - Red */
-  --destructive-foreground: 255 255 255;  /* #FFFFFF */
-
-  /* Success (Use Vercel blue) */
-  --success: 0 112 243;                   /* #0070F3 */
-  --success-foreground: 255 255 255;      /* #FFFFFF */
-
-  /* Muted (Dark gray for subtle backgrounds) */
-  --muted: 23 23 23;                      /* #171717 */
-  --muted-foreground: 153 153 153;        /* #999999 - Light gray text */
-
-  /* Card (Slightly lifted from background) */
-  --card: 10 10 10;                       /* #0A0A0A */
-  --card-foreground: 255 255 255;         /* #FFFFFF */
-
-  /* Popover (Same as card) */
-  --popover: 10 10 10;                    /* #0A0A0A */
-  --popover-foreground: 255 255 255;      /* #FFFFFF */
-
-  /* Borders (Dark gray) */
-  --border: 23 23 23;                     /* #171717 - Subtle dark border */
-  --input: 23 23 23;                      /* #171717 */
-  --ring: 0 112 243;                      /* #0070F3 - Focus ring (blue) */
-
-  /* Chart colors (same as light mode) */
-  --chart-1: 0 112 243;                   /* #0070F3 - Vercel blue */
-  --chart-2: 234 179 8;                   /* #EAB308 - Yellow */
-  --chart-3: 34 197 94;                   /* #22C55E - Green */
-  --chart-4: 239 68 68;                   /* #EF4444 - Red */
-  --chart-5: 168 85 247;                  /* #A855F7 - Purple */
-  --chart-active-dot: 255 255 255;        /* #FFFFFF */
-
-  /* Glassmorphism (Dark Mode) */
-  --glass-bg: 0 0 0 / 0.7;                /* Black with 70% opacity */
-  --glass-border: 255 255 255 / 0.1;      /* Subtle white border */
-  --glass-blur: 12px;                     /* Backdrop blur amount */
-}
-
-@theme inline {
-  /* Color mappings for Tailwind */
-  --color-main: var(--main);
-  --color-background: var(--background);
-  --color-secondary-background: var(--secondary-background);
-  --color-foreground: var(--foreground);
-  --color-main-foreground: var(--main-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-border: var(--border);
-  --color-overlay: var(--overlay);
-  --color-ring: var(--ring);
-
-  /* Chart color mappings */
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  /* Vercel Design Tokens */
-
-  /* Border Widths (Vercel uses 1px almost everywhere) */
-  --border-width: 1px;
-  --border-width-thick: 2px;  /* Rare, for emphasis only */
-
-  /* Border Radius (Vercel standard: 6px) */
-  --radius-sm: 4px;           /* Rare, small elements */
-  --radius: 6px;              /* DEFAULT - buttons, inputs, cards */
-  --radius-md: 6px;           /* Same as default */
-  --radius-lg: 8px;           /* Rare, large modals */
-  --radius-xl: 16px;          /* Extra large containers */
-  --radius-2xl: 20px;         /* Hero sections, feature cards */
-  --radius-full: 9999px;      /* Avatars, pills */
-
-  /* Shadows (Vercel's Minimal Approach) */
-  --shadow-none: none;
-  --shadow-border: 0 0 0 1px hsl(var(--border));  /* Border-like shadow - MOST COMMON */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);     /* Subtle elevation */
-  --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1);      /* Modals, dropdowns */
-  --shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);  /* Rare */
-
-  /* Typography (Vercel/Geist Standards) */
-
-  /* Font Families */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-geist-sans);
-  --font-body: var(--font-geist-sans);
-
-  /* Font Weights */
-  --font-weight-light: 300;       /* Subtle, elegant text */
-  --font-weight-normal: 400;      /* Body text */
-  --font-weight-medium: 500;      /* Buttons, labels - DEFAULT */
-  --font-weight-semibold: 600;    /* Headings (rarely used) */
-  --font-weight-bold: 700;        /* Strong emphasis (rarely used) */
-
-  /* Font Sizes (Type Scale) */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg: 1.125rem;     /* 18px */
-  --font-size-xl: 1.25rem;      /* 20px */
-  --font-size-2xl: 1.5rem;      /* 24px */
-  --font-size-3xl: 1.875rem;    /* 30px */
-  --font-size-4xl: 2.25rem;     /* 36px */
-
-  /* Line Heights */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
-
-  /* Letter Spacing */
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.025em;
-
-  /* Component Heights (Vercel standard: 32px) */
-  --component-height-sm: 28px;
-  --component-height: 32px;       /* DEFAULT - buttons, inputs */
-  --component-height-lg: 40px;
-
-  /* Spacing Scale (based on 12px Vercel unit) */
-  --spacing-1: 0.25rem;   /* 4px */
-  --spacing-2: 0.5rem;    /* 8px */
-  --spacing-3: 0.75rem;   /* 12px - Vercel's base unit */
-  --spacing-4: 1rem;      /* 16px */
-  --spacing-5: 1.5rem;    /* 24px */
-  --spacing-6: 2rem;      /* 32px */
-
-  /* Transitions (Vercel standard: 150ms) */
-  --duration-fast: 100ms;
-  --duration-normal: 150ms;       /* DEFAULT */
-  --duration-slow: 200ms;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Glassmorphism (Light Mode) */
-  --glass-bg: 255 255 255 / 0.7;              /* White with 70% opacity */
-  --glass-border: 255 255 255 / 0.18;         /* Subtle white border */
-  --glass-blur: 12px;                         /* Backdrop blur amount */
-}
-
-@layer utilities {
-  /* Vercel Utility Classes */
-
-  /* Border Utilities */
-  .border-vercel {
-    border: 1px solid hsl(var(--border));
-  }
-
-  /* Shadow Utilities (Vercel's minimal approach) */
-  .shadow-vercel {
-    box-shadow: var(--shadow-border);  /* Border-like shadow */
-  }
-
-  .shadow-vercel-sm {
-    box-shadow: var(--shadow-sm);
-  }
-
-  .shadow-vercel-md {
-    box-shadow: var(--shadow-md);
-  }
-
-  .shadow-vercel-lg {
-    box-shadow: var(--shadow-lg);
-  }
-
-  /* Radius Utilities */
-  .rounded-vercel {
-    border-radius: 6px;  /* Vercel's standard radius */
-  }
-
-  /* Height Utilities */
-  .h-vercel {
-    height: 32px;  /* Vercel's standard component height */
-  }
-
-  /* Transition Utilities */
-  .transition-vercel {
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .transition-vercel-colors {
-    transition: background-color, border-color, color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Glassmorphism Utility */
-  .glass {
-    background: rgb(var(--glass-bg));
-    border: 1px solid rgb(var(--glass-border));
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur)); /* Safari support */
-  }
-
-  /* Legacy brutal utilities (DEPRECATED - will be removed) */
-  .rounded-brutal { border-radius: 8px; }
-  .shadow-brutal { box-shadow: 0 0 0 1px hsl(var(--border)); }
-  .border-brutal { border: 1px solid hsl(var(--border)); }
-  .transition-brutal { transition: all 150ms ease-out; }
-}
-
-@layer base {
-  body {
-    @apply text-foreground font-body bg-background;
-  }
-
-  h1, h2, h3, h4, h5, h6{
-    @apply font-heading;
-  }
+  /* Black Theme - Dark Mode (PURE BLACK) */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+  --success: 142 70% 45%;
+  --success-foreground: 0 0% 0%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 0%;
+  --info: 217 91% 60%;
+  --info-foreground: 0 0% 100%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 80%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
 }

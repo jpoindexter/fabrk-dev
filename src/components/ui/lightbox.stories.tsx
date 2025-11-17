@@ -6,7 +6,7 @@
 "use client";
 
 import * as React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { Lightbox, type LightboxItem } from "./lightbox";
 import { Button } from "./button";

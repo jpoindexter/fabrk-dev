@@ -41,13 +41,13 @@ const iconMap = {
 };
 
 const colorMap = {
-  success: "text-green-500",
-  error: "text-red-500",
-  warning: "text-orange-500",
-  info: "text-blue-500",
-  feature: "text-purple-500",
-  payment: "text-green-500",
-  security: "text-orange-500",
+  success: "text-success",
+  error: "text-destructive",
+  warning: "text-warning",
+  info: "text-info",
+  feature: "text-primary",
+  payment: "text-success",
+  security: "text-warning",
   system: "text-gray-500",
 };
 

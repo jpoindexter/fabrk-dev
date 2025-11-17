@@ -79,7 +79,7 @@ export function ComparisonSection() {
         <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border bg-muted/50">
+              <tr className="border-b border-border bg-background">
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                   Feature
                 </th>
@@ -95,9 +95,7 @@ export function ComparisonSection() {
               {features.map((feature, index) => (
                 <tr
                   key={index}
-                  className={`border-b border-border transition-colors hover:bg-muted/30 ${
-                    index % 2 === 0 ? "bg-background" : "bg-muted/10"
-                  }`}
+                  className="border-b border-border transition-colors hover:bg-background bg-background"
                 >
                   <td className="px-6 py-4 text-sm font-normal text-foreground">
                     <div className="font-medium">{feature.name}</div>
@@ -107,25 +105,25 @@ export function ComparisonSection() {
                   </td>
                   <td className="border-l border-border px-6 py-4 text-center">
                     {feature.manual ? (
-                      <Check className="inline-block h-5 w-5 text-green-600" />
+                      <Check className="inline-block h-5 w-5 text-success" />
                     ) : (
-                      <X className="inline-block h-5 w-5 text-red-600" />
+                      <X className="inline-block h-5 w-5 text-destructive" />
                     )}
                   </td>
                   <td className="border-l border-border bg-primary/5 px-6 py-4 text-center">
                     {feature.fabrk ? (
                       <Check className="inline-block h-5 w-5 text-primary" />
                     ) : (
-                      <X className="inline-block h-5 w-5 text-red-600" />
+                      <X className="inline-block h-5 w-5 text-destructive" />
                     )}
                   </td>
                 </tr>
               ))}
-              <tr className="border-t border-border bg-muted/50">
+              <tr className="border-t border-border bg-background">
                 <td className="px-6 py-4 text-sm font-semibold text-foreground">
                   Total Time Investment
                 </td>
-                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-red-600">
+                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-destructive">
                   73+ hours
                 </td>
                 <td className="border-l border-border bg-primary/10 px-6 py-4 text-center text-base font-semibold text-primary">

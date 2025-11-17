@@ -16,56 +16,27 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  // Vercel minimal styles - Subtle, 1px borders, soft transitions
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[14px] font-medium leading-none transition-vercel-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Primary action - Clean black with subtle hover
         default:
-          "border bg-primary text-primary-foreground hover:opacity-90 active:opacity-80",
-
-        // Destructive action - Clean red with subtle hover
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive:
-          "border bg-destructive text-destructive-foreground hover:opacity-90 active:opacity-80",
-
-        // Success action - Clean accent color with subtle hover
-        success:
-          "border bg-accent text-accent-foreground hover:opacity-90 active:opacity-80",
-
-        // Outline - Minimal border with hover background
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
-          "border bg-card text-foreground hover:bg-muted active:bg-muted/80",
-
-        // Secondary - Subtle background with hover
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "border bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/70",
-
-        // Ghost - Minimal with subtle hover
-        ghost:
-          "border border-transparent hover:bg-muted active:bg-muted/80",
-
-        // Link - Clean link style
-        link:
-          "text-foreground font-medium underline-offset-4 hover:underline active:text-foreground/80",
-
-        // Marketing - Bold CTA style (keeps font-bold as it's a CTA)
-        marketing:
-          "border bg-primary font-bold text-primary-foreground hover:opacity-90 active:opacity-80",
-
-        // Marketing outline - Bold outline CTA (keeps font-bold as it's a CTA)
-        marketingOutline:
-          "border bg-card font-bold text-foreground hover:bg-primary hover:text-primary-foreground active:opacity-80",
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        // Aligned with 8px spacing system
-        sm: "h-8 px-3 py-1.5 text-[12px]",      // 32px height (4 × 8px)
-        default: "h-10 px-4 py-2",               // 40px height (5 × 8px)
-        lg: "h-12 px-6 py-3 text-[16px]",       // 48px height (6 × 8px)
-        xl: "h-14 px-8 py-4 text-[16px]",       // 56px height (7 × 8px)
-        icon: "size-10",                         // 40px square (5 × 8px)
-        "icon-sm": "size-8",                     // 32px square (4 × 8px)
-        "icon-lg": "size-12",                    // 48px square (6 × 8px)
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        xl: "h-14 rounded-md px-10 text-lg",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {

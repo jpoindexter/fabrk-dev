@@ -295,7 +295,7 @@ describe('SparklineCard Component', () => {
         />
       );
 
-      const changeElement = container.querySelector('.text-green-600');
+      const changeElement = container.querySelector('.text-success');
       expect(changeElement).toBeInTheDocument();
     });
 
@@ -309,7 +309,7 @@ describe('SparklineCard Component', () => {
         />
       );
 
-      const changeElement = container.querySelector('.text-red-600');
+      const changeElement = container.querySelector('.text-destructive');
       expect(changeElement).toBeInTheDocument();
     });
 
@@ -323,7 +323,7 @@ describe('SparklineCard Component', () => {
         />
       );
 
-      const changeElement = container.querySelector('.text-green-600');
+      const changeElement = container.querySelector('.text-success');
       expect(changeElement).toBeInTheDocument();
       expect(screen.getByText(/\+0%/)).toBeInTheDocument();
     });

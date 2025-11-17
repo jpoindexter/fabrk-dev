@@ -54,14 +54,13 @@ export function DashboardHeader() {
     { href: "/developer/api-keys", label: t('apiKeys'), icon: Code },
   ];
 
-  const userInitials = React.useMemo(() => {
-    if (!session?.user?.name) return "U";
-    return session.user.name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase();
-  }, [session?.user?.name]);
+  const userInitials = session?.user?.name
+    ? session.user.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+    : "U";
 
   const isAdmin = (session?.user as any)?.role === "ADMIN";
 

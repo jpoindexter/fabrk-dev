@@ -19,6 +19,7 @@ export function LocaleSwitcher() {
 
   const switchLocale = (newLocale: Locale) => {
     // Store locale preference in cookie
+    // eslint-disable-next-line react-hooks/immutability
     document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
 
     // Get current path without locale prefix

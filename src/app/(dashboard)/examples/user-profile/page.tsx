@@ -114,8 +114,8 @@ export default async function UserProfilePage() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="absolute bottom-0 right-0 rounded-full border-2 border-white bg-green-500 p-1">
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <div className="absolute bottom-0 right-0 rounded-full border-2 border-white bg-success p-1">
+                  <div className="h-3 w-3 rounded-full bg-success"></div>
                 </div>
               </div>
 
@@ -262,10 +262,10 @@ export default async function UserProfilePage() {
                         <span
                           className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
                             project.status === "Live"
-                              ? "bg-green-100 text-green-700"
+                              ? "bg-success/20 text-success"
                               : project.status === "In Development"
-                                ? "bg-blue-100 text-blue-700"
-                                : "bg-yellow-100 text-yellow-700"
+                                ? "bg-info/20 text-info"
+                                : "bg-warning/20 text-warning"
                           }`}
                         >
                           {project.status}

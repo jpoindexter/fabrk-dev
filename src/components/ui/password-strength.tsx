@@ -151,15 +151,15 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
       switch (strength) {
         case 0:
         case 1:
-          return "bg-red-500";
+          return "bg-destructive";
         case 2:
-          return "bg-orange-500";
+          return "bg-warning";
         case 3:
-          return "bg-orange-500";
+          return "bg-warning";
         case 4:
-          return "bg-yellow-500";
+          return "bg-warning";
         case 5:
-          return "bg-green-500";
+          return "bg-success";
         default:
           return "bg-card";
       }
@@ -263,7 +263,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
                 key={index}
                 className={cn(
                   "flex items-center gap-2",
-                  req.met ? "text-green-600" : "text-muted-foreground"
+                  req.met ? "text-success" : "text-muted-foreground"
                 )}
               >
                 {req.met ? (

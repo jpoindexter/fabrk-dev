@@ -421,7 +421,7 @@ export function Button({ label, onClick }: ButtonProps) {
   <h2>Step 3: Add Styling</h2>
   <p>Apply some basic styles:</p>
   <pre><code>&lt;button
-  className="px-4 py-2 bg-blue-500 text-white rounded"
+  className="px-4 py-2 bg-info text-white rounded"
   onClick={onClick}
 &gt;
   {label}

@@ -3,16 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
-import config from "@/config";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
 
   // Use the Starter tier price from environment
   const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
-
-  // Get pricing from centralized config
-  const { current, original } = config.pricing.product.display;
 
   const features = [
     "Next.js 15 Boilerplate",
@@ -56,9 +52,9 @@ export function PricingSection() {
             {/* Price */}
             <div className="mb-8 text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">{current}</span>
+                <span className="text-5xl font-semibold text-foreground">$299</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
-                  {original}
+                  $599
                 </span>
               </div>
               <p className="text-base font-normal text-muted-foreground">
@@ -70,7 +66,7 @@ export function PricingSection() {
             <ul className="mb-8 space-y-3">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">
-                  <Check className="h-5 w-5 flex-shrink-0 text-primary" strokeWidth={2} />
+                  <Check className="h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
                   <span className="font-normal text-foreground">{feature}</span>
                 </li>
               ))}
@@ -100,9 +96,9 @@ export function PricingSection() {
               )}
             </Button>
 
-            {/* Risk Reversal */}
+            {/* Final Sale Notice */}
             <p className="mt-6 text-center text-sm font-normal text-muted-foreground">
-              30-day money-back guarantee. No questions asked.
+              All sales are final. Digital product - no refunds after download.
             </p>
           </div>
         </div>

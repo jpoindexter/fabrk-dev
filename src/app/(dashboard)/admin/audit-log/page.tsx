@@ -163,8 +163,8 @@ export default function AuditLogPage() {
         </CardContent>
       </Card>
 
-      <div className="rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4">
-        <h3 className="mb-2 flex items-center gap-2 font-semibold text-yellow-600 dark:text-yellow-500">
+      <div className="rounded-lg border border-warning/20 bg-warning/10 p-4">
+        <h3 className="mb-2 flex items-center gap-2 font-semibold text-warning dark:text-warning">
           <Shield className="h-4 w-4" />
           Security Notice
         </h3>

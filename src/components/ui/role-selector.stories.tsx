@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import * as React from "react";
 import { RoleSelector, DEFAULT_ROLES, type Role } from "./role-selector";
 import { Crown, Shield, User, Eye, Pencil, MessageSquare } from "lucide-react";

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { NotificationCenter, type Notification } from "./notification-center";
 import { useState } from "react";
 import { generateDemoDates } from "@/lib/utils/demo-dates";

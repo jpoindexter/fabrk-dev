@@ -81,7 +81,7 @@ export function HowTo({
         <ol className="space-y-6">
           {steps.map((step, index) => (
             <li key={index} className="flex gap-4">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white font-semibold">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-info text-white font-semibold">
                 {index + 1}
               </div>
 
@@ -101,7 +101,7 @@ export function HowTo({
               </div>
 
               <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center">
-                <Check className="h-5 w-5 text-green-600" />
+                <Check className="h-5 w-5 text-success" />
               </div>
             </li>
           ))}

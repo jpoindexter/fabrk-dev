@@ -27,7 +27,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="bg-muted/30 px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-semibold text-foreground">
@@ -35,6 +35,9 @@ export function StatsSection() {
           </h2>
           <p className="text-lg font-normal text-muted-foreground">
             Join hundreds of developers shipping production-ready SaaS apps
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            *Projected estimates based on early access users
           </p>
         </div>
 

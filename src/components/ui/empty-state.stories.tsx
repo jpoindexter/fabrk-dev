@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { EmptyState } from "./empty-state";
 import {
   Inbox,
@@ -71,7 +71,7 @@ export const NoSearchResults: Story = {
         description="We couldn't find any results matching your search. Try adjusting your filters or search terms."
         action={{
           label: "Clear Filters",
-          onClick: () => alert("Filters cleared"),
+          onClick: () => alert("Filters cleared")
         }}
       />
     </div>
@@ -87,7 +87,7 @@ export const NoTeamMembers: Story = {
         description="Invite team members to collaborate on your projects."
         action={{
           label: "Invite Members",
-          onClick: () => alert("Invite clicked"),
+          onClick: () => alert("Invite clicked")
         }}
       />
     </div>
@@ -99,11 +99,11 @@ export const NoProducts: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={Package}
-        title="No products in store",
-        description="Add your first product to start selling.",
+        title="No products in store"
+        description="Add your first product to start selling."
         action={{
           label: "Add Product",
-          onClick: () => alert("Add product clicked"),
+          onClick: () => alert("Add product clicked")
         }}
       />
     </div>
@@ -115,11 +115,11 @@ export const EmptyCart: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={ShoppingCart}
-        title="Your cart is empty",
-        description="Browse our products and add items to your cart.",
+        title="Your cart is empty"
+        description="Browse our products and add items to your cart."
         action={{
           label: "Start Shopping",
-          onClick: () => alert("Shopping clicked"),
+          onClick: () => alert("Shopping clicked")
         }}
       />
     </div>
@@ -131,11 +131,11 @@ export const NoImages: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={Image}
-        title="No images uploaded",
-        description="Upload images to create your gallery.",
+        title="No images uploaded"
+        description="Upload images to create your gallery."
         action={{
           label: "Upload Images",
-          onClick: () => alert("Upload clicked"),
+          onClick: () => alert("Upload clicked")
         }}
       />
     </div>
@@ -147,11 +147,11 @@ export const NoComments: Story = {
     <div className="w-[600px] rounded-md border bg-card">
       <EmptyState
         icon={MessageSquare}
-        title="No comments yet",
-        description="Be the first to share your thoughts on this post.",
+        title="No comments yet"
+        description="Be the first to share your thoughts on this post."
         action={{
           label: "Add Comment",
-          onClick: () => alert("Comment clicked"),
+          onClick: () => alert("Comment clicked")
         }}
       />
     </div>

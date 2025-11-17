@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { FunnelVisualizer } from "./funnel-visualizer";
 
 const meta: Meta<typeof FunnelVisualizer> = {

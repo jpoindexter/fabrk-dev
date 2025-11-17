@@ -113,9 +113,9 @@ export function HeroVideo({
             ))}
           </div>
 
-          {/* Guarantee */}
+          {/* Final Sale Notice */}
           <p className="text-sm text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            30-day money-back guarantee • Lifetime updates
+            All sales final • Lifetime v1.x updates
           </p>
         </div>
       </div>

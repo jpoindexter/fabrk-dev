@@ -97,37 +97,33 @@ export function RevenueChart({
     return `$${value}`;
   };
 
-  const CustomTooltip = ({
-    active,
-    payload,
-  }: {
-    active?: boolean;
-    payload?: Array<{
-      value: number;
-      payload: RevenueDataPoint;
-    }>;
-  }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal">
-          <p className="text-sm font-bold text-foreground mb-2">
-            {payload[0].payload.period}
-          </p>
-          <div className="space-y-1">
-            <p className="text-xs text-muted-foreground">
-              MRR: <span className="font-bold text-primary">{formatCurrency(payload[0].value)}</span>
-            </p>
-            {showArr && payload[1] && (
-              <p className="text-xs text-muted-foreground">
-                ARR: <span className="font-bold text-accent">{formatCurrency(payload[1].value)}</span>
+  // Memoize tooltip component to prevent recreation on every render (industry-standard pattern)
+  const CustomTooltip = React.useMemo(
+    () =>
+      ({ active, payload }: any) => {
+        if (active && payload && payload.length) {
+          return (
+            <div className="rounded-brutal border-2 border-brutal bg-card p-3 shadow-brutal">
+              <p className="text-sm font-bold text-foreground mb-2">
+                {payload[0].payload.period}
               </p>
-            )}
-          </div>
-        </div>
-      );
-    }
-    return null;
-  };
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground">
+                  MRR: <span className="font-bold text-primary">{formatCurrency(payload[0].value)}</span>
+                </p>
+                {showArr && payload[1] && (
+                  <p className="text-xs text-muted-foreground">
+                    ARR: <span className="font-bold text-accent">{formatCurrency(payload[1].value)}</span>
+                  </p>
+                )}
+              </div>
+            </div>
+          );
+        }
+        return null;
+      },
+    [showArr]
+  );
 
   return (
     <Card className={cn("overflow-hidden", className)}>
@@ -228,7 +224,7 @@ export function RevenueChart({
                   tick={{ fill: "hsl(var(--muted-foreground))" }}
                   tickFormatter={formatCompactCurrency}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={CustomTooltip} />
                 <Legend />
                 <Area
                   type="monotone"
@@ -264,7 +260,7 @@ export function RevenueChart({
                   tick={{ fill: "hsl(var(--muted-foreground))" }}
                   tickFormatter={formatCompactCurrency}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={CustomTooltip} />
                 <Legend />
                 <Line
                   type="monotone"

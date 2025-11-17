@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { RichTextEditor } from "./rich-text-editor";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
 import { Button } from "./button";

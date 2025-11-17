@@ -35,7 +35,7 @@ export function TechStackSection() {
               >
                 <mask
                   id="mask0_408_139"
-                  style={{ maskType: "alpha" }} // eslint-disable-line design-system/no-inline-styles
+                  style={{ maskType: "alpha" }}
                   maskUnits="userSpaceOnUse"
                   x="0"
                   y="0"

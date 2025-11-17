@@ -217,7 +217,7 @@ describe('NotificationBadge Component', () => {
         </NotificationBadge>
       );
 
-      const badge = container.querySelector('.bg-green-500');
+      const badge = container.querySelector('.bg-success');
       expect(badge).toBeInTheDocument();
     });
 
@@ -228,7 +228,7 @@ describe('NotificationBadge Component', () => {
         </NotificationBadge>
       );
 
-      const badge = container.querySelector('.bg-yellow-500');
+      const badge = container.querySelector('.bg-warning');
       expect(badge).toBeInTheDocument();
     });
   });

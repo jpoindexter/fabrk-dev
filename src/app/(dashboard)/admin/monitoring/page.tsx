@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
 import {
   Card,
   CardContent,
@@ -50,13 +50,15 @@ export default function AdminMonitoringPage() {
   const [clearLogsDialogOpen, setClearLogsDialogOpen] = useState(false);
 
   useEffect(() => {
-    // Load stats (last 24 hours)
-    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    const errors = getErrorStats(since);
-    const perf = getPerformanceStats(since);
+    // Load stats (last 24 hours) - use startTransition for non-urgent updates
+    startTransition(() => {
+      const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const errors = getErrorStats(since);
+      const perf = getPerformanceStats(since);
 
-    setErrorStats(errors);
-    setPerformanceStats(perf);
+      setErrorStats(errors);
+      setPerformanceStats(perf);
+    });
   }, [refreshKey]);
 
   const confirmClearLogs = () => {
@@ -124,7 +126,7 @@ export default function AdminMonitoringPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Warnings</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-orange-500" />
+              <AlertTriangle className="h-4 w-4 text-warning" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
@@ -136,7 +138,7 @@ export default function AdminMonitoringPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Info</CardTitle>
-              <Activity className="h-4 w-4 text-blue-500" />
+              <Activity className="h-4 w-4 text-info" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">

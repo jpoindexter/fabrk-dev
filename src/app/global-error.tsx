@@ -31,7 +31,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
+    <html lang="en">
       <body>
         <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
           <div className="mx-auto max-w-2xl text-center">
@@ -67,10 +67,10 @@ export default function GlobalError({
                 )}
                 {error.stack && (
                   <details className="mt-4">
-                    <summary className="cursor-pointer text-xs font-semibold text-red-900">
+                    <summary className="cursor-pointer text-xs font-semibold text-destructive-foreground">
                       Stack Trace
                     </summary>
-                    <pre className="mt-2 overflow-auto text-xs text-red-800">
+                    <pre className="mt-2 overflow-auto text-xs text-destructive-foreground">
                       {error.stack}
                     </pre>
                   </details>

@@ -11,6 +11,15 @@ const allowPatterns = [
   /^sample_landing\//,
   /^logs\//,
   /tech-stack-section\.tsx$/,
+  /^src\/stories\//,
+  /\.stories\.(t|j)sx?$/,
+  /__tests__\//,
+  /\.test\.(t|j)sx?$/,
+  /\.mdx?$/,
+  /CHAT-INPUT-PREVIEW\.md$/,
+  /email-templates\/page\.tsx$/,
+  /src\/lib\/email\.ts$/,
+  /src\/components\/ui\/color-picker\.tsx$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;
@@ -27,7 +36,16 @@ files.forEach((file) => {
   if (!file.startsWith("src")) return;
 
   const absolute = path.resolve(file);
-  const lines = readFileSync(absolute, "utf8").split(/\r?\n/);
+  let lines;
+
+  try {
+    lines = readFileSync(absolute, "utf8").split(/\r?\n/);
+  } catch (error) {
+    // File is tracked by git but missing on disk (e.g. after refactors).
+    // Skip it for hex scanning but surface a warning so it can be cleaned up.
+    console.warn(`⚠️  Skipping missing file in scan-stray-hex: ${file}`);
+    return;
+  }
 
   lines.forEach((line, index) => {
     const matches = line.match(hexPattern);

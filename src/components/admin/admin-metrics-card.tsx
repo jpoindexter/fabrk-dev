@@ -54,7 +54,7 @@ export function AdminMetricsCard({
     default: "border-border bg-card",
     primary: "border-primary bg-primary/5",
     success: "border-primary bg-primary/5",
-    warning: "border-yellow-500 bg-yellow-500/5",
+    warning: "border-warning bg-warning/5",
     danger: "border-destructive bg-destructive/5",
   };
 
@@ -62,7 +62,7 @@ export function AdminMetricsCard({
     default: "bg-accent text-accent-foreground",
     primary: "bg-primary/10 text-primary",
     success: "bg-primary/10 text-primary",
-    warning: "bg-yellow-500/10 text-yellow-500",
+    warning: "bg-warning/10 text-warning",
     danger: "bg-destructive/10 text-destructive",
   };
 
@@ -124,7 +124,7 @@ export function AdminMetricsCard({
           "absolute -right-8 -bottom-8 h-32 w-32 rounded-full blur-3xl opacity-20",
           variant === "primary" && "bg-primary",
           variant === "success" && "bg-primary",
-          variant === "warning" && "bg-yellow-500",
+          variant === "warning" && "bg-warning",
           variant === "danger" && "bg-destructive",
           variant === "default" && "bg-accent"
         )}

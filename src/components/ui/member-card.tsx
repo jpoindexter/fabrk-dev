@@ -162,7 +162,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {onEmail && (
               <Button
                 variant="ghost"
-                size="icon-sm"
+                size="sm"
                 onClick={() => onEmail(member)}
                 className="shrink-0"
               >
@@ -173,7 +173,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {hasActions && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon-sm" className="shrink-0">
+                  <Button variant="ghost" size="sm" className="shrink-0">
                     <MoreVertical className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -333,7 +333,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
           {hasActions && (onEmail || onMessage) && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon-sm" className="absolute top-2 right-2">
+                <Button variant="ghost" size="sm" className="absolute top-2 right-2">
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>

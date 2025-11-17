@@ -11,23 +11,27 @@ import { useEffect, useState } from "react";
 export default function MagicSigninPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
-  const [message, setMessage] = useState("Signing you in...");
+
+  // Derive initial state from URL params (industry-standard pattern)
+  const token = searchParams.get("token");
+  const email = searchParams.get("email");
+  const isValidLink = token && email;
+
+  const [status, setStatus] = useState<"loading" | "success" | "error">(
+    isValidLink ? "loading" : "error"
+  );
+  const [message, setMessage] = useState(
+    isValidLink ? "Signing you in..." : "Invalid magic link. Please request a new one."
+  );
 
   useEffect(() => {
-    const token = searchParams.get("token");
-    const email = searchParams.get("email");
-
-    if (!token || !email) {
-      setStatus("error");
-      setMessage("Invalid magic link. Please request a new one.");
-      return;
-    }
+    // Only proceed if we have valid params
+    if (!isValidLink) return;
 
     // Attempt to sign in with magic token
     signIn("credentials", {
-      email,
-      magicToken: token,
+      email: email!,
+      magicToken: token!,
       redirect: false,
     }).then((result) => {
       if (result?.error) {
@@ -41,7 +45,7 @@ export default function MagicSigninPage() {
         }, 1000);
       }
     });
-  }, [searchParams, router]);
+  }, [isValidLink, email, token, router]);
 
   return (
     <div className="flex min-h-screen items-center justify-center">

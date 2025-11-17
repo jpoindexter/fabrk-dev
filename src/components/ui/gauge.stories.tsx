@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Gauge, ScoreGauge } from "./gauge";
 
 const meta: Meta<typeof Gauge> = {
