@@ -7,26 +7,14 @@
 "use client";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 
-// Dynamically import templates to optimize bundle size
-// Templates will load only when their tab is clicked
-const TeamDashboardTemplate = dynamic(() => import("@/app/templates/team-dashboard/page"), {
-  loading: () => <div className="p-12 text-center text-muted-foreground">Loading dashboard...</div>,
-});
-
-const AnalyticsDashboardTemplate = dynamic(() => import("@/app/templates/analytics-dashboard/page"), {
-  loading: () => <div className="p-12 text-center text-muted-foreground">Loading analytics...</div>,
-});
-
-const UserManagementTemplate = dynamic(() => import("@/app/templates/user-management/page"), {
-  loading: () => <div className="p-12 text-center text-muted-foreground">Loading data table...</div>,
-});
-
-const SettingsPageTemplate = dynamic(() => import("@/app/templates/settings-page/page"), {
-  loading: () => <div className="p-12 text-center text-muted-foreground">Loading settings...</div>,
-});
+const DEMO_ROUTES = [
+  { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },
+  { id: "analytics", label: "Analytics", path: "/templates/analytics-dashboard" },
+  { id: "users", label: "Data Table", path: "/templates/user-management" },
+  { id: "settings", label: "Settings", path: "/templates/settings-page" },
+];
 
 export function InteractiveDemo() {
   return (
@@ -52,49 +40,25 @@ export function InteractiveDemo() {
           {/* Tabbed Demo */}
           <Tabs defaultValue="team" className="space-y-6" suppressHydrationWarning>
             <TabsList className="grid w-full grid-cols-4 gap-2">
-              <TabsTrigger value="team" className="text-sm sm:text-base">
-                Team Dashboard
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="text-sm sm:text-base">
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger value="users" className="text-sm sm:text-base">
-                Data Table
-              </TabsTrigger>
-              <TabsTrigger value="settings" className="text-sm sm:text-base">
-                Settings
-              </TabsTrigger>
+              {DEMO_ROUTES.map((route) => (
+                <TabsTrigger key={route.id} value={route.id} className="text-sm sm:text-base">
+                  {route.label}
+                </TabsTrigger>
+              ))}
             </TabsList>
 
             {/* Demo Container */}
             <div className="overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg">
-              {/* Team Dashboard Tab */}
-              <TabsContent value="team" className="m-0">
-                <div className="max-h-[700px] overflow-y-auto">
-                  <TeamDashboardTemplate />
-                </div>
-              </TabsContent>
-
-              {/* Analytics Dashboard Tab */}
-              <TabsContent value="analytics" className="m-0">
-                <div className="max-h-[700px] overflow-y-auto">
-                  <AnalyticsDashboardTemplate />
-                </div>
-              </TabsContent>
-
-              {/* User Management (Data Table) Tab */}
-              <TabsContent value="users" className="m-0">
-                <div className="max-h-[700px] overflow-y-auto">
-                  <UserManagementTemplate />
-                </div>
-              </TabsContent>
-
-              {/* Settings Page Tab */}
-              <TabsContent value="settings" className="m-0">
-                <div className="max-h-[700px] overflow-y-auto">
-                  <SettingsPageTemplate />
-                </div>
-              </TabsContent>
+              {DEMO_ROUTES.map((route) => (
+                <TabsContent key={route.id} value={route.id} className="m-0">
+                  <iframe
+                    src={route.path}
+                    className="w-full border-0"
+                    style={{ height: "700px" }}
+                    title={route.label}
+                  />
+                </TabsContent>
+              ))}
             </div>
 
             {/* Info Box */}
