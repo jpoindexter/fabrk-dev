@@ -19,6 +19,16 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   Shield,
   Smartphone,
   Key,
@@ -49,6 +59,12 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   const [isDisabling2FA, setIsDisabling2FA] = useState(false);
   const [disconnectingProvider, setDisconnectingProvider] = useState<string | null>(null);
   const [isInvalidatingSessions, setIsInvalidatingSessions] = useState(false);
+
+  // Dialog states
+  const [disable2FADialogOpen, setDisable2FADialogOpen] = useState(false);
+  const [disconnectDialogOpen, setDisconnectDialogOpen] = useState(false);
+  const [providerToDisconnect, setProviderToDisconnect] = useState<string | null>(null);
+  const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] = useState(false);
 
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
@@ -94,12 +110,9 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
     }
   };
 
-  const handleDisable2FA = async () => {
-    if (!confirm("Are you sure you want to disable two-factor authentication?")) {
-      return;
-    }
-
+  const confirmDisable2FA = async () => {
     setIsDisabling2FA(true);
+    setDisable2FADialogOpen(false);
 
     try {
       // Implementation: Disable 2FA
@@ -136,12 +149,11 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
     }
   };
 
-  const handleDisconnectAccount = async (provider: string) => {
-    if (!confirm(`Disconnect your ${provider} account? You'll need another way to sign in.`)) {
-      return;
-    }
+  const confirmDisconnectAccount = async () => {
+    if (!providerToDisconnect) return;
 
-    setDisconnectingProvider(provider);
+    setDisconnectingProvider(providerToDisconnect);
+    setDisconnectDialogOpen(false);
 
     try {
       // Implementation: Disconnect OAuth account
@@ -150,7 +162,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // Note: Ensure user has another login method (password or another OAuth)
 
       // Call the account disconnect API
-      const response = await fetch(`/api/user/accounts/${provider}`, {
+      const response = await fetch(`/api/user/accounts/${providerToDisconnect}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
@@ -162,7 +174,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
       info(
         "Account Disconnected",
-        `Your ${provider} account has been disconnected successfully.`
+        `Your ${providerToDisconnect} account has been disconnected successfully.`
       );
 
       // Reload to update UI
@@ -170,19 +182,17 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
     } catch (err: unknown) {
       error(
         "Error disconnecting account",
-        err instanceof Error ? err.message : `Failed to disconnect ${provider} account`
+        err instanceof Error ? err.message : `Failed to disconnect ${providerToDisconnect} account`
       );
     } finally {
       setDisconnectingProvider(null);
+      setProviderToDisconnect(null);
     }
   };
 
-  const handleInvalidateAllSessions = async () => {
-    if (!confirm("This will log you out of all devices except this one. Continue?")) {
-      return;
-    }
-
+  const confirmInvalidateAllSessions = async () => {
     setIsInvalidatingSessions(true);
+    setInvalidateSessionsDialogOpen(false);
 
     try {
       // Implementation: Invalidate all sessions by incrementing sessionVersion
@@ -299,7 +309,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                 </Button>
                 <Button
                   variant="destructive"
-                  onClick={handleDisable2FA}
+                  onClick={() => setDisable2FADialogOpen(true)}
                   disabled={isDisabling2FA}
                 >
                   {isDisabling2FA ? "Disabling..." : "Disable 2FA"}
@@ -353,7 +363,10 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => handleDisconnectAccount(account.provider)}
+                    onClick={() => {
+                      setProviderToDisconnect(account.provider);
+                      setDisconnectDialogOpen(true);
+                    }}
                     disabled={disconnectingProvider === account.provider}
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
@@ -415,7 +428,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           <div className="space-y-3">
             <Button
               variant="destructive"
-              onClick={handleInvalidateAllSessions}
+              onClick={() => setInvalidateSessionsDialogOpen(true)}
               disabled={isInvalidatingSessions}
               className="w-full"
             >
@@ -489,6 +502,63 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           </ul>
         </CardContent>
       </Card>
+
+      {/* Disable 2FA Dialog */}
+      <AlertDialog open={disable2FADialogOpen} onOpenChange={setDisable2FADialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Disable Two-Factor Authentication?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will remove an important security layer from your account. You will only need your password to sign in.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDisable2FA}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Disable 2FA
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Disconnect Account Dialog */}
+      <AlertDialog open={disconnectDialogOpen} onOpenChange={setDisconnectDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Disconnect {providerToDisconnect} Account?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will disconnect your {providerToDisconnect} account. You&apos;ll need another way to sign in (password or another OAuth provider).
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDisconnectAccount}>
+              Disconnect
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Invalidate Sessions Dialog */}
+      <AlertDialog open={invalidateSessionsDialogOpen} onOpenChange={setInvalidateSessionsDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Sign Out All Other Sessions?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will log you out of all devices except this one. You&apos;ll need to sign in again on those devices.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmInvalidateAllSessions}>
+              Sign Out All Other Sessions
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
