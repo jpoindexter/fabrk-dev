@@ -116,7 +116,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 async function deletePaymentMethodHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -129,7 +129,8 @@ async function deletePaymentMethodHandler(
     }
 
     // Get payment method ID from URL params
-    const paymentMethodId = params.id;
+    const { id } = await params;
+    const paymentMethodId = id;
 
     // Get user from database
     const user = await prisma.user.findUnique({
