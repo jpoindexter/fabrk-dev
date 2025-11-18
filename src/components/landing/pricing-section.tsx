@@ -5,6 +5,7 @@ import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
 import config from "@/config";
 import { motion } from "framer-motion";
+import { logger } from "@/lib/logger";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
@@ -24,7 +25,7 @@ export function PricingSection() {
     if (priceId) {
       createCheckoutSession(priceId);
     } else {
-      console.error("No price ID configured");
+      logger.error("No price ID configured");
     }
   };
 

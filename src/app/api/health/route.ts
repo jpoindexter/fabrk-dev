@@ -40,7 +40,10 @@ export async function GET() {
           database: "disconnected",
           server: "running",
         },
-        error: error instanceof Error ? error.message : "Unknown error",
+        // Only expose error details in development
+        ...(process.env.NODE_ENV === "development" && {
+          error: error instanceof Error ? error.message : "Unknown error",
+        }),
       },
       { status: 503 }
     );

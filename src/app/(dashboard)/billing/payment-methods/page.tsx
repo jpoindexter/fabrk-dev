@@ -39,50 +39,46 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function PaymentMethodsPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const { toast, error: showError, success } = useToast();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [methodToDelete, setMethodToDelete] = useState<string | null>(null);
 
-  // Mock data - in real implementation, fetch from Stripe API
-  const [paymentMethods] = useState([
-    {
-      id: "pm_123",
-      type: "card",
-      brand: "visa",
-      last4: "4242",
-      expMonth: 12,
-      expYear: 2025,
-      isDefault: true,
-    },
-  ]);
+  // Payment methods list - initially empty
+  // In a full implementation, fetch from GET /api/stripe/payment-methods endpoint
+  // which would call stripe.paymentMethods.list({ customer: customerId })
+  const [paymentMethods] = useState<Array<{
+    id: string;
+    type: string;
+    brand: string;
+    last4: string;
+    expMonth: number;
+    expYear: number;
+    isDefault: boolean;
+  }>>([]);
 
   const handleAddPaymentMethod = async () => {
     setIsLoading(true);
     try {
-      // Implementation: Create Stripe SetupIntent and redirect to Stripe Checkout
-      // 1. POST /api/stripe/setup-intent to create SetupIntent
-      // 2. Redirect to Stripe Checkout or use Stripe Elements
-      // 3. Handle webhook stripe.setup_intent.succeeded to save payment method
-      // Reference: https://stripe.com/docs/payments/save-and-reuse
-
-      // TODO: Implement Stripe SetupIntent flow
-      // const response = await fetch("/api/stripe/setup-intent", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      // });
-      // if (!response.ok) throw new Error("Failed to create setup intent");
-      // const { url } = await response.json();
-      // window.location.href = url;
-
-      toast({
-        title: "Coming Soon",
-        description: "Stripe payment method setup will be available soon. Implementation requires SetupIntent API integration.",
+      // Create Stripe Checkout session in setup mode
+      const response = await fetch("/api/stripe/setup-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
       });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to create setup intent");
+      }
+
+      const { url } = await response.json();
+
+      // Redirect to Stripe Checkout
+      window.location.href = url;
     } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to add payment method",
-      });
+      showError(
+        "Error",
+        error instanceof Error ? error.message : "Failed to add payment method"
+      );
     } finally {
       setIsLoading(false);
     }
@@ -90,27 +86,30 @@ export default function PaymentMethodsPage() {
 
   const handleSetDefault = async (id: string) => {
     try {
-      // Implementation: Update default payment method via Stripe API
-      // POST /api/stripe/payment-methods/default with { paymentMethodId: id }
-      // Then call stripe.customers.update() to set invoice_settings.default_payment_method
-
-      // TODO: Implement set default payment method
-      // const response = await fetch("/api/stripe/payment-methods/default", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ paymentMethodId: id }),
-      // });
-      // if (!response.ok) throw new Error("Failed to set default payment method");
-
-      toast({
-        title: "Coming Soon",
-        description: `Setting payment method as default will be available soon. Implementation requires Stripe customer.update() API.`,
+      // Update default payment method via Stripe API
+      const response = await fetch("/api/stripe/payment-methods/default", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ paymentMethodId: id }),
       });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to set default payment method");
+      }
+
+      success(
+        "Success",
+        "Default payment method updated successfully"
+      );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to set default payment method",
-      });
+      showError(
+        "Error",
+        error instanceof Error ? error.message : "Failed to set default payment method"
+      );
     }
   };
 
@@ -120,25 +119,28 @@ export default function PaymentMethodsPage() {
     setDeleteDialogOpen(false);
 
     try {
-      // Implementation: Detach payment method from customer
-      // DELETE /api/stripe/payment-methods/:id
-      // Then call stripe.paymentMethods.detach() on server
-
-      // TODO: Implement payment method deletion
-      // const response = await fetch(`/api/stripe/payment-methods/${methodToDelete}`, {
-      //   method: "DELETE",
-      // });
-      // if (!response.ok) throw new Error("Failed to delete payment method");
-
-      toast({
-        title: "Coming Soon",
-        description: `Payment method deletion will be available soon. Implementation requires Stripe paymentMethods.detach() API.`,
+      // Detach payment method from customer
+      const response = await fetch(`/api/stripe/payment-methods/${methodToDelete}`, {
+        method: "DELETE",
       });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to delete payment method");
+      }
+
+      success(
+        "Success",
+        "Payment method removed successfully"
+      );
+
+      // Reload to update UI
+      window.location.reload();
     } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to delete payment method",
-      });
+      showError(
+        "Error",
+        error instanceof Error ? error.message : "Failed to delete payment method"
+      );
     } finally {
       setMethodToDelete(null);
     }

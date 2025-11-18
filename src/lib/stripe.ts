@@ -79,6 +79,22 @@ export function generateIdempotencyKey(userId: string, priceId: string): string 
   return `checkout_${userId}_${priceId}_${timestamp}_${random}`;
 }
 
+/**
+ * Retrieves an existing unexpired checkout session for a user
+ * Used to prevent duplicate checkout sessions when user refreshes the page
+ *
+ * @param key - Idempotency key (contains userId)
+ * @returns Stripe session ID if found, null otherwise
+ *
+ * @example
+ * ```typescript
+ * const existingSessionId = await getExistingCheckout("checkout_user123_price_abc_...");
+ * if (existingSessionId) {
+ *   const session = await stripe.checkout.sessions.retrieve(existingSessionId);
+ *   return session.url;
+ * }
+ * ```
+ */
 export async function getExistingCheckout(key: string): Promise<string | null> {
   const record = await prisma.checkoutSession.findFirst({
     where: {
@@ -92,6 +108,25 @@ export async function getExistingCheckout(key: string): Promise<string | null> {
   return record?.sessionId || null;
 }
 
+/**
+ * Stores a checkout session record for idempotency tracking
+ * Records expire after 24 hours (matching Stripe's session expiration)
+ *
+ * @param key - Unique idempotency key
+ * @param userId - User ID from database
+ * @param sessionId - Stripe checkout session ID
+ * @param priceId - Stripe price ID
+ *
+ * @example
+ * ```typescript
+ * await storeCheckoutSession(
+ *   "checkout_user123_price_abc_...",
+ *   "user123",
+ *   "cs_test_...",
+ *   "price_abc"
+ * );
+ * ```
+ */
 export async function storeCheckoutSession(
   key: string,
   userId: string,
@@ -110,6 +145,21 @@ export async function storeCheckoutSession(
 // WEBHOOK IDEMPOTENCY
 // ===========================
 
+/**
+ * Checks if a Stripe webhook event has already been processed
+ * Prevents duplicate processing of the same webhook event
+ *
+ * @param eventId - Stripe event ID (evt_xxx)
+ * @returns True if event was previously processed, false otherwise
+ *
+ * @example
+ * ```typescript
+ * if (await isWebhookProcessed(event.id)) {
+ *   console.log("Event already processed, skipping");
+ *   return;
+ * }
+ * ```
+ */
 export async function isWebhookProcessed(eventId: string): Promise<boolean> {
   const record = await prisma.webhookEvent.findUnique({
     where: { eventId },
@@ -117,6 +167,18 @@ export async function isWebhookProcessed(eventId: string): Promise<boolean> {
   return record !== null;
 }
 
+/**
+ * Marks a Stripe webhook event as processed
+ * Creates a database record to track processed events and prevent duplicates
+ *
+ * @param eventId - Stripe event ID (evt_xxx)
+ *
+ * @example
+ * ```typescript
+ * await markWebhookProcessed(event.id);
+ * console.log("Event marked as processed");
+ * ```
+ */
 export async function markWebhookProcessed(eventId: string): Promise<void> {
   await prisma.webhookEvent.create({
     data: { eventId, processed: new Date() },

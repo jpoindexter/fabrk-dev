@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "sonner";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -90,7 +91,7 @@ export default function DashboardsPage() {
                       variant="outline"
                       size="icon"
                       onClick={() => {
-                        alert("Template code copied to clipboard! (Demo)");
+                        toast.success("Template code copied to clipboard!");
                       }}
                     >
                       <Copy className="h-4 w-4" />

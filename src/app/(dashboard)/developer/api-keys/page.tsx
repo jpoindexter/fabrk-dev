@@ -64,30 +64,11 @@ interface ApiKey {
   };
 }
 
-/**
- * ORGANIZATION ID CONTEXT
- *
- * Implementation Options (choose one based on your multi-tenancy setup):
- *
- * Option 1: OrganizationProvider context (recommended for full multi-tenancy)
- * const { activeOrganization } = useOrganization();
- * const ORGANIZATION_ID = activeOrganization?.id || '';
- *
- * Option 2: User's single organization (for simple SaaS)
- * Fetch from API on mount or pass as prop from server component
- *
- * Option 3: URL params (for org-scoped routes)
- * Use route like /organizations/[slug]/developer/api-keys
- *
- * Current Implementation: Using mock data for demonstration
- * For production: Replace with actual organization context from your auth/session
- */
-const ORGANIZATION_ID = "org_demo"; // REPLACE WITH ACTUAL ORG ID FROM CONTEXT/SESSION
-
 export default function ApiKeysPage() {
   const { success, error } = useToast();
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
   const [loading, setLoading] = useState(true);
+  const [organizationId, setOrganizationId] = useState<string | null>(null);
   const [showKey, setShowKey] = useState<Record<string, boolean>>({});
   const [isCreating, setIsCreating] = useState(false);
   const [isRevoking, setIsRevoking] = useState<string | null>(null);
@@ -98,15 +79,44 @@ export default function ApiKeysPage() {
   const [revokeDialogOpen, setRevokeDialogOpen] = useState(false);
   const [keyToRevoke, setKeyToRevoke] = useState<string | null>(null);
 
-  // Fetch API keys on mount
+  // Fetch user's organization on mount
   useEffect(() => {
-    fetchApiKeys();
-  }, []);
+    const fetchOrganization = async () => {
+      try {
+        const response = await fetch("/api/organizations");
+        if (response.ok) {
+          const data = await response.json();
+          // Use the first organization (or implement org switcher for multi-org support)
+          if (data.organizations && data.organizations.length > 0) {
+            setOrganizationId(data.organizations[0].id);
+          } else {
+            error("No organization found", "Please create an organization first to use API keys.");
+          }
+        } else {
+          error("Failed to load organization", "Please try again later");
+        }
+      } catch (err: unknown) {
+        console.error("Error fetching organization:", err);
+        error("Failed to load organization", "A network error occurred.");
+      }
+    };
+
+    fetchOrganization();
+  }, [error]);
+
+  // Fetch API keys when organization is loaded
+  useEffect(() => {
+    if (organizationId) {
+      fetchApiKeys();
+    }
+  }, [organizationId]);
 
   const fetchApiKeys = async () => {
+    if (!organizationId) return;
+
     try {
       setLoading(true);
-      const response = await fetch(`/api/api-keys?organizationId=${ORGANIZATION_ID}`);
+      const response = await fetch(`/api/api-keys?organizationId=${organizationId}`);
       if (response.ok) {
         const data = await response.json();
         setApiKeys(data);
@@ -123,6 +133,11 @@ export default function ApiKeysPage() {
   };
 
   const handleCreateKey = async () => {
+    if (!organizationId) {
+      error("Organization not loaded", "Please wait for organization data to load");
+      return;
+    }
+
     if (!newKeyName.trim()) {
       error("Name required", "Please enter a descriptive name for your API key");
       return;
@@ -140,7 +155,7 @@ export default function ApiKeysPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          organizationId: ORGANIZATION_ID,
+          organizationId: organizationId,
           name: newKeyName,
           permissions: selectedPermissions,
         }),
@@ -487,7 +502,7 @@ export default function ApiKeysPage() {
             <div className="pt-2">
               <p className="font-semibold mb-2">Example (cURL):</p>
               <code className="block p-3 bg-muted rounded border-2 border-border font-mono text-xs whitespace-pre-wrap">
-{`curl https://yourdomain.com/api/v1/organizations/${ORGANIZATION_ID} \\
+{`curl https://yourdomain.com/api/v1/organizations/${organizationId || "{org_id}"} \\
   -H "Authorization: Bearer sk_live_..."`}
               </code>
             </div>

@@ -12,6 +12,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { logger } from "@/lib/logger";
 
 export interface RateLimitConfig {
   interval: number; // Time window in milliseconds
@@ -200,7 +201,7 @@ export async function checkRateLimitRedis(
 
     return { success, limit, remaining, reset };
   } catch (error: unknown) {
-    console.error("[Rate Limit] Upstash error, falling back to in-memory:", error);
+    logger.error("[Rate Limit] Upstash error, falling back to in-memory", error);
     return checkRateLimit(identifier, config);
   }
 }

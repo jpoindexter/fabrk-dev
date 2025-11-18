@@ -9,6 +9,7 @@ import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
 import { queueWelcomeEmail } from "@/lib/email";
 import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
+import { createHash } from "crypto";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -96,16 +97,19 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const magicLinkToken = generateSecureToken();
     const magicLinkExpiry = getTokenExpiration(24 * 7); // Valid for 7 days
 
-    // Store token in database
+    // Hash token before storing in database (security: never store plain tokens)
+    const hashedMagicToken = createHash("sha256").update(magicLinkToken).digest("hex");
+
+    // Store hashed token in database
     await prisma.verificationToken.create({
       data: {
         identifier: customerEmail,
-        token: magicLinkToken,
+        token: hashedMagicToken,
         expires: magicLinkExpiry,
       },
     });
 
-    // Build magic link URL
+    // Build magic link URL with plain token (sent via email)
     const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
     // Queue welcome email with license key and magic link

@@ -3,6 +3,7 @@ import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from '@/i18n/config';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { generateNonce, getNonceHeaderName } from '@/lib/security/csp-nonce';
 
 // Create the i18n middleware
 const intlMiddleware = createMiddleware({
@@ -30,7 +31,25 @@ export default auth((req) => {
     pathnameWithoutLocale.startsWith('/templates');
 
   if (isShowcasePage) {
-    return NextResponse.next();
+    // Generate nonce for CSP
+    const nonce = generateNonce();
+    const response = NextResponse.next();
+
+    // Inject nonce into request headers for server components
+    response.headers.set(getNonceHeaderName(), nonce);
+
+    // Update CSP header with actual nonce (only in production)
+    if (process.env.NODE_ENV === 'production') {
+      const cspHeader = response.headers.get('Content-Security-Policy');
+      if (cspHeader) {
+        response.headers.set(
+          'Content-Security-Policy',
+          cspHeader.replace(/nonce-NONCE_PLACEHOLDER/g, `nonce-${nonce}`)
+        );
+      }
+    }
+
+    return response;
   }
 
   // Check authentication for protected routes
@@ -51,8 +70,27 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
-  // Apply i18n routing
-  return intlMiddleware(req as NextRequest);
+  // Apply i18n routing and inject nonce
+  const response = intlMiddleware(req as NextRequest);
+
+  // Generate nonce for CSP
+  const nonce = generateNonce();
+
+  // Inject nonce into request headers for server components
+  response.headers.set(getNonceHeaderName(), nonce);
+
+  // Update CSP header with actual nonce (only in production)
+  if (process.env.NODE_ENV === 'production') {
+    const cspHeader = response.headers.get('Content-Security-Policy');
+    if (cspHeader) {
+      response.headers.set(
+        'Content-Security-Policy',
+        cspHeader.replace(/nonce-NONCE_PLACEHOLDER/g, `nonce-${nonce}`)
+      );
+    }
+  }
+
+  return response;
 });
 
 export const config = {

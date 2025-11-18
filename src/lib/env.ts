@@ -347,6 +347,7 @@ const parseEnv = () => {
   const serverEnv = serverSchema.safeParse(process.env);
 
   if (!serverEnv.success) {
+    // Use console.error for startup errors (before logger is fully initialized)
     console.error('❌ Invalid server environment variables:');
     console.error(JSON.stringify(serverEnv.error.format(), null, 2));
     throw new Error('Invalid server environment variables. See error details above.');
@@ -356,6 +357,7 @@ const parseEnv = () => {
   const clientEnv = clientSchema.safeParse(process.env);
 
   if (!clientEnv.success) {
+    // Use console.error for startup errors (before logger is fully initialized)
     console.error('❌ Invalid client environment variables:');
     console.error(JSON.stringify(clientEnv.error.format(), null, 2));
     throw new Error('Invalid client environment variables. See error details above.');
@@ -397,6 +399,7 @@ export const isTest = env.server.NODE_ENV === 'test';
 /**
  * Startup validation check
  * This runs immediately when the module is imported
+ * Note: Using console for startup logs (before logger is fully initialized)
  */
 if (isProduction) {
   console.log('✅ Environment variables validated successfully for PRODUCTION');

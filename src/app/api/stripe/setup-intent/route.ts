@@ -2,25 +2,26 @@
  * @swagger
  * /api/stripe/setup-intent:
  *   post:
- *     summary: Create Stripe SetupIntent for adding payment methods
+ *     summary: Create Stripe Checkout session for adding payment methods
  *     description: |
- *       Creates a Stripe SetupIntent that allows users to securely add
+ *       Creates a Stripe Checkout session in setup mode that allows users to securely add
  *       payment methods without an immediate charge. Used for saving cards
  *       for future use, subscriptions, or recurring payments.
  *
  *       **Flow:**
  *       1. User clicks "Add Payment Method"
  *       2. Frontend calls this endpoint
- *       3. Returns client_secret to initialize Stripe Elements
- *       4. User enters card details in Stripe-hosted form
- *       5. Card is saved to customer's payment methods
+ *       3. Returns checkout URL to redirect user to Stripe
+ *       4. User enters card details on Stripe-hosted checkout page
+ *       5. Stripe redirects back to success_url with payment method saved
  *       6. Webhook handles setup_intent.succeeded event
  *
  *       **Features:**
  *       - No immediate charge
  *       - Automatic customer creation if needed
- *       - Secure card tokenization via Stripe
+ *       - Secure card tokenization via Stripe Checkout
  *       - PCI compliance built-in
+ *       - Consistent with other payment flows in the app
  *     tags:
  *       - Payments
  *       - Stripe
@@ -28,16 +29,17 @@
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: SetupIntent created successfully
+ *         description: Checkout session created successfully
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 clientSecret:
+ *                 url:
  *                   type: string
- *                   example: seti_1234567890_secret_abcdefghijklmnop
- *                   description: Client secret to initialize Stripe Elements
+ *                   format: uri
+ *                   example: https://checkout.stripe.com/c/pay/cs_test_abc123
+ *                   description: Stripe checkout URL to redirect user to
  *                 customerId:
  *                   type: string
  *                   example: cus_1234567890abcdef
@@ -82,15 +84,10 @@
  *             },
  *           });
  *
- *           const { clientSecret } = await response.json();
+ *           const { url } = await response.json();
  *
- *           // Use with Stripe Elements
- *           const stripe = await loadStripe(publishableKey);
- *           const { error } = await stripe.confirmCardSetup(clientSecret, {
- *             payment_method: {
- *               card: cardElement,
- *             },
- *           });
+ *           // Redirect to Stripe Checkout
+ *           window.location.href = url;
  *       - lang: curl
  *         source: |
  *           curl -X POST https://fabrk.dev/api/stripe/setup-intent \
@@ -100,7 +97,7 @@
 
 /**
  * ✅ FABRK API ROUTE
- * Stripe SetupIntent Creation
+ * Stripe Checkout Session Creation (Setup Mode)
  * Allows users to add payment methods without immediate charge
  */
 
@@ -149,23 +146,28 @@ async function setupIntentHandler(req: NextRequest) {
       });
     }
 
-    // Create SetupIntent
-    const setupIntent = await stripe.setupIntents.create({
+    // Create Checkout Session in setup mode
+    // This allows users to add payment methods without an immediate charge
+    // Using Checkout is consistent with the rest of the codebase
+    const checkoutSession = await stripe.checkout.sessions.create({
       customer: customerId,
+      mode: "setup",
       payment_method_types: ["card"],
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing/payment-methods?setup=success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/billing/payment-methods?setup=cancelled`,
       metadata: {
         userId: user.id,
       },
     });
 
-    logger.info("Created SetupIntent", {
+    logger.info("Created SetupIntent Checkout Session", {
       userId: user.id,
       customerId,
-      setupIntentId: setupIntent.id,
+      sessionId: checkoutSession.id,
     });
 
     return NextResponse.json({
-      clientSecret: setupIntent.client_secret,
+      url: checkoutSession.url,
       customerId,
     });
   } catch (error: unknown) {

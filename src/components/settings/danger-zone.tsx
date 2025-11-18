@@ -58,42 +58,40 @@ export function DangerZone() {
   const handleExportData = async () => {
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Fetch real user data from API
+      const response = await fetch("/api/user/export");
 
-    const mockData = {
-      exportDate: new Date().toISOString(),
-      user: {
-        id: "user_123",
-        email: "user@example.com",
-        name: "John Doe",
-        createdAt: "2024-01-01T00:00:00Z",
-      },
-      settings: {
-        theme: "system",
-        language: "en",
-        notifications: true,
-      },
-    };
+      if (!response.ok) {
+        throw new Error("Failed to export data");
+      }
 
-    const dataStr = JSON.stringify(mockData, null, 2);
-    const dataBlob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `user-data-${new Date().getTime()}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+      // Get the blob directly from the response
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `user-data-${new Date().getTime()}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
 
-    toast({
-      title: "Data exported",
-      description: "Your data has been exported successfully.",
-    });
+      toast({
+        title: "Data exported",
+        description: "Your data has been exported successfully.",
+      });
 
-    setIsLoading(false);
-    setExportDialogOpen(false);
+      setExportDialogOpen(false);
+    } catch (error: unknown) {
+      console.error("Error exporting data:", error);
+      toast({
+        title: "Export failed",
+        description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

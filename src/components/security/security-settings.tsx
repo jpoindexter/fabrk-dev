@@ -6,6 +6,7 @@
  */
 
 import { useState } from "react";
+import { BackupCodesModal } from "@/components/security/backup-codes-modal";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -65,6 +66,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   const [disconnectDialogOpen, setDisconnectDialogOpen] = useState(false);
   const [providerToDisconnect, setProviderToDisconnect] = useState<string | null>(null);
   const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] = useState(false);
+  const [backupCodesModalOpen, setBackupCodesModalOpen] = useState(false);
 
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
@@ -234,18 +236,23 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   };
 
   const handleViewBackupCodes = () => {
-    // Implementation: View backup codes
-    // 1. Verify user identity (require password or 2FA code)
-    // 2. GET /api/user/2fa/backup-codes
-    // 3. Display codes in a modal with copy functionality
-    // 4. Warn user to store codes securely
-    // 5. Option to regenerate codes (invalidates old ones)
+    // Open the backup codes modal
+    setBackupCodesModalOpen(true);
+  };
 
-    // TODO: Implement backup codes modal
-    info(
-      "Feature requires setup",
-      "Backup codes require implementing a modal to display MFADevice backup codes. See implementation comments in the code."
-    );
+  const handleRegenerateBackupCodes = async (): Promise<string[]> => {
+    const response = await fetch("/api/auth/mfa/regenerate-codes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.error || "Failed to regenerate backup codes");
+    }
+
+    const data = await response.json();
+    return data.backupCodes;
   };
 
   return (
@@ -559,6 +566,13 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Backup Codes Modal */}
+      <BackupCodesModal
+        open={backupCodesModalOpen}
+        onOpenChange={setBackupCodesModalOpen}
+        onRegenerate={handleRegenerateBackupCodes}
+      />
     </div>
   );
 }

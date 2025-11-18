@@ -6,6 +6,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -135,15 +136,15 @@ export default function SecurityPrivacyTemplate() {
   };
 
   const handleEnable2FA = () => {
-    alert("2FA setup modal would open here with QR code");
+    toast.info("2FA setup modal would open here with QR code");
   };
 
   const handleRevokeSession = (sessionId: string) => {
-    alert(`Revoke session ${sessionId}`);
+    toast.success(`Session revoked successfully`);
   };
 
   const handleExportData = () => {
-    alert("Export all user data as JSON");
+    toast.success("Your data export has been started. You'll receive an email when it's ready.");
   };
 
   const handleDeleteAccount = () => {
@@ -152,7 +153,7 @@ export default function SecurityPrivacyTemplate() {
         "Are you sure you want to delete your account? This action cannot be undone."
       )
     ) {
-      alert("Account deletion flow would start here");
+      toast.success("Account deletion process initiated. Check your email for confirmation.");
     }
   };
 

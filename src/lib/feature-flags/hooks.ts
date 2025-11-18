@@ -24,7 +24,7 @@ export function useFeatureFlag(flagKey: string): boolean {
     () => ({
       userId: session?.user?.id,
       email: session?.user?.email || undefined,
-      role: (session?.user as any)?.role,
+      role: session?.user?.role,
       environment: process.env.NODE_ENV,
     }),
     [session]
@@ -46,7 +46,7 @@ export function useFeatureVariant(flagKey: string): string | null {
     () => ({
       userId: session?.user?.id,
       email: session?.user?.email || undefined,
-      role: (session?.user as any)?.role,
+      role: session?.user?.role,
       environment: process.env.NODE_ENV,
     }),
     [session]
@@ -58,7 +58,7 @@ export function useFeatureVariant(flagKey: string): string | null {
 /**
  * Hook to get feature value (config flags)
  */
-export function useFeatureValue<T extends FeatureFlagValue = any>(
+export function useFeatureValue<T extends FeatureFlagValue = FeatureFlagValue>(
   flagKey: string,
   defaultValue?: T
 ): T | null {
@@ -68,7 +68,7 @@ export function useFeatureValue<T extends FeatureFlagValue = any>(
     () => ({
       userId: session?.user?.id,
       email: session?.user?.email || undefined,
-      role: (session?.user as any)?.role,
+      role: session?.user?.role,
       environment: process.env.NODE_ENV,
     }),
     [session]
@@ -92,7 +92,7 @@ export function useFeatureFlags(
     () => ({
       userId: session?.user?.id,
       email: session?.user?.email || undefined,
-      role: (session?.user as any)?.role,
+      role: session?.user?.role,
       environment: process.env.NODE_ENV,
     }),
     [session]

@@ -4,6 +4,7 @@
  */
 
 import { getPostHogClient } from './posthog';
+import { logger } from '@/lib/logger';
 
 // Event type definitions for type safety
 export type AnalyticsEvent =
@@ -59,7 +60,7 @@ export async function trackEvent(
       },
     });
   } catch (error: unknown) {
-    console.error('Failed to track event:', error);
+    logger.error('Failed to track event', error);
   }
 }
 
@@ -88,7 +89,7 @@ export async function identifyUser(
       properties,
     });
   } catch (error: unknown) {
-    console.error('Failed to identify user:', error);
+    logger.error('Failed to identify user', error);
   }
 }
 

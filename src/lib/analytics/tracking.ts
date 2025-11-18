@@ -11,6 +11,8 @@
  * - Error tracking
  */
 
+import { logger } from "@/lib/logger";
+
 export type AnalyticsProvider = "ga4" | "plausible" | "posthog" | "mixpanel" | "custom";
 
 // Event definitions (type-safe)
@@ -61,8 +63,8 @@ export type AnalyticsEvent =
   | { name: "error_occurred"; props: { error: string; page: string; severity: string } }
   | { name: "api_error"; props: { endpoint: string; status: number; error: string } }
 
-  // Custom events
-  | { name: string; props?: Record<string, any> };
+  // Custom events (catch-all for non-typed events)
+  | { name: string; props?: Record<string, unknown> };
 
 // User properties (for segmentation)
 export interface UserProperties {
@@ -74,6 +76,8 @@ export interface UserProperties {
   subscription_status?: "active" | "cancelled" | "trial" | "expired";
   total_revenue?: number;
   account_age_days?: number;
+  // Allow additional custom properties
+  [key: string]: unknown;
 }
 
 /**
@@ -100,7 +104,7 @@ export function initAnalytics(options: AnalyticsConfig) {
   config = { ...config, ...options };
 
   if (config.debug) {
-    console.log("[Analytics] Initialized with providers:", config.providers);
+    logger.debug("[Analytics] Initialized with providers", { providers: config.providers });
   }
 }
 
@@ -115,7 +119,7 @@ export function trackEvent<T extends AnalyticsEvent>(
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Event:", event, props);
+    logger.debug("[Analytics] Event", { event, props });
   }
 
   config.providers.forEach((provider) => {
@@ -150,7 +154,7 @@ export function identifyUser(userId: string, properties?: UserProperties) {
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Identify user:", userId, properties);
+    logger.debug("[Analytics] Identify user", { userId, properties });
   }
 
   config.providers.forEach((provider) => {
@@ -161,8 +165,8 @@ export function identifyUser(userId: string, properties?: UserProperties) {
         }
         break;
       case "posthog":
-        if (typeof window !== "undefined" && (window as any).posthog) {
-          (window as any).posthog.identify(userId, properties);
+        if (typeof window !== "undefined" && window.posthog) {
+          window.posthog.identify(userId, properties);
         }
         break;
     }
@@ -176,12 +180,12 @@ export function trackRevenue(
   amount: number,
   currency: string = "USD",
   transactionId: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Revenue:", amount, currency, transactionId);
+    logger.debug("[Analytics] Revenue", { amount, currency, transactionId });
   }
 
   // GA4 purchase event
@@ -198,9 +202,9 @@ export function trackRevenue(
   if (
     config.providers.includes("posthog") &&
     typeof window !== "undefined" &&
-    (window as any).posthog
+    window.posthog
   ) {
-    (window as any).posthog.capture("purchase", {
+    window.posthog.capture("purchase", {
       transaction_id: transactionId,
       value: amount,
       currency,
@@ -218,12 +222,12 @@ export function trackFunnelStep(
   status: "viewed" | "completed" | "abandoned"
 ) {
   const eventMap = {
-    viewed: "funnel_step_viewed",
-    completed: "funnel_step_completed",
-    abandoned: "funnel_abandoned",
-  } as const;
+    viewed: "funnel_step_viewed" as const,
+    completed: "funnel_step_completed" as const,
+    abandoned: "funnel_abandoned" as const,
+  };
 
-  trackEvent(eventMap[status] as any, { funnel, step } as any);
+  trackEvent(eventMap[status], { funnel, step });
 }
 
 /**
@@ -250,25 +254,36 @@ export function abandonFunnel(funnelName: string, step: number) {
 
 // Provider-specific implementations
 
-function trackGA4Event(event: string, props?: Record<string, any>) {
+function trackGA4Event(event: string, props?: Record<string, unknown>) {
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", event, props);
   }
 }
 
-function trackPlausibleEvent(event: string, props?: Record<string, any>) {
-  if (typeof window !== "undefined" && (window as any).plausible) {
-    (window as any).plausible(event, { props });
+function trackPlausibleEvent(event: string, props?: Record<string, unknown>) {
+  if (typeof window !== "undefined" && window.plausible) {
+    // Convert unknown values to acceptable Plausible types
+    const plausibleProps: Record<string, string | number | boolean> = {};
+    if (props) {
+      Object.entries(props).forEach(([key, value]) => {
+        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+          plausibleProps[key] = value;
+        } else if (value !== null && value !== undefined) {
+          plausibleProps[key] = String(value);
+        }
+      });
+    }
+    window.plausible(event, { props: plausibleProps });
   }
 }
 
-function trackPostHogEvent(event: string, props?: Record<string, any>) {
-  if (typeof window !== "undefined" && (window as any).posthog) {
-    (window as any).posthog.capture(event, props);
+function trackPostHogEvent(event: string, props?: Record<string, unknown>) {
+  if (typeof window !== "undefined" && window.posthog) {
+    window.posthog.capture(event, props);
   }
 }
 
-function trackCustomEvent(event: string, props?: Record<string, any>) {
+function trackCustomEvent(event: string, props?: Record<string, unknown>) {
   // Send to custom endpoint
   if (typeof window !== "undefined") {
     fetch("/api/analytics", {
@@ -276,17 +291,36 @@ function trackCustomEvent(event: string, props?: Record<string, any>) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ event, props, timestamp: new Date().toISOString() }),
     }).catch((error) => {
-      console.error("[Analytics] Failed to send custom event:", error);
+      logger.error("[Analytics] Failed to send custom event", error);
     });
   }
+}
+
+/**
+ * PostHog client interface
+ */
+interface PostHogClient {
+  identify: (userId: string, properties?: Record<string, unknown>) => void;
+  capture: (event: string, properties?: Record<string, unknown>) => void;
+}
+
+/**
+ * Plausible options interface
+ */
+interface PlausibleOptions {
+  props?: Record<string, string | number | boolean>;
 }
 
 // Type declarations for global analytics objects
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
-    plausible?: (event: string, options?: any) => void;
-    posthog?: any;
+    gtag?: (
+      command: 'event' | 'set' | 'config',
+      targetOrAction: string,
+      params?: Record<string, unknown>
+    ) => void;
+    plausible?: (event: string, options?: PlausibleOptions) => void;
+    posthog?: PostHogClient;
   }
 }
 

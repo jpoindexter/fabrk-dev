@@ -4,38 +4,162 @@
  */
 
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import * as crypto from "crypto";
 import { WebhookEvent, isValidEvent } from "./events";
 
+/**
+ * Type guard for HTTP errors with status codes
+ */
+interface HttpError extends Error {
+  status?: number;
+}
+
+function isHttpError(error: unknown): error is HttpError {
+  return error instanceof Error && 'status' in error;
+}
+
+/**
+ * Webhook event payload types
+ * Defines the structure of data for each webhook event type
+ */
+
+// Organization member event payloads
+interface OrgMemberPayload {
+  memberId: string;
+  userId: string;
+  email: string;
+  role?: string;
+}
+
+interface OrgMemberRoleChangedPayload extends OrgMemberPayload {
+  previousRole: string;
+  newRole: string;
+}
+
+// Organization event payloads
+interface OrgPayload {
+  organizationId: string;
+  name: string;
+  slug?: string;
+}
+
+// Payment event payloads
+interface PaymentPayload {
+  paymentId: string;
+  amount: number;
+  currency: string;
+  status: string;
+}
+
+interface PaymentFailedPayload extends PaymentPayload {
+  errorMessage: string;
+}
+
+// Subscription event payloads
+interface SubscriptionPayload {
+  subscriptionId: string;
+  planId: string;
+  status: string;
+  currentPeriodStart?: Date;
+  currentPeriodEnd?: Date;
+}
+
+// API Key event payloads
+interface ApiKeyPayload {
+  apiKeyId: string;
+  name: string;
+  createdAt?: Date;
+  revokedAt?: Date;
+}
+
+// Security event payloads
+interface SecurityPayload {
+  userId: string;
+  action: string;
+  timestamp: Date;
+}
+
+/**
+ * Union type of all possible webhook event data payloads
+ */
+export type WebhookEventData =
+  | OrgMemberPayload
+  | OrgMemberRoleChangedPayload
+  | OrgPayload
+  | PaymentPayload
+  | PaymentFailedPayload
+  | SubscriptionPayload
+  | ApiKeyPayload
+  | SecurityPayload
+  | Record<string, unknown>; // Fallback for custom events
+
 export interface WebhookPayload {
   event: WebhookEvent;
-  data: Record<string, any>;
+  data: WebhookEventData;
   organizationId: string;
   timestamp: string;
 }
 
 /**
- * Generate HMAC-SHA256 signature for webhook payload
+ * Generates HMAC-SHA256 signature for webhook payload verification
+ * Used to cryptographically sign webhook payloads so recipients can verify authenticity
+ *
+ * @param payload - The JSON string payload to sign
+ * @param secret - The webhook secret key
+ * @returns Hexadecimal string of the HMAC-SHA256 signature
+ *
+ * @example
+ * ```typescript
+ * const payload = JSON.stringify({ event: "user.created", data: {...} });
+ * const signature = signPayload(payload, "webhook_secret_key");
+ * // Include signature in X-Webhook-Signature header
+ * ```
  */
 export function signPayload(payload: string, secret: string): string {
   return crypto.createHmac("sha256", secret).update(payload).digest("hex");
 }
 
 /**
- * Generate a secure webhook secret
+ * Generates a cryptographically secure random webhook secret
+ * Creates a 64-character hexadecimal string (256 bits of entropy)
+ *
+ * @returns Secure random webhook secret as hex string
+ *
+ * @example
+ * ```typescript
+ * const secret = generateWebhookSecret();
+ * // Store this secret securely and use it to sign/verify webhook payloads
+ * console.log(secret); // "a3f2c8d9e..."
+ * ```
  */
 export function generateWebhookSecret(): string {
   return crypto.randomBytes(32).toString("hex");
 }
 
 /**
- * Trigger webhook for organization
- * Creates delivery records for all active webhooks subscribed to the event
+ * Triggers webhook delivery for all active webhooks subscribed to an event
+ * Finds all enabled webhooks for the organization subscribed to this event type,
+ * creates delivery records, and initiates HTTP delivery (fire-and-forget)
+ *
+ * @param organizationId - The organization's ID
+ * @param event - The webhook event type (e.g., "org.member.added")
+ * @param data - Event-specific payload data
+ *
+ * @example
+ * ```typescript
+ * await triggerWebhook("org_123", "org.member.added", {
+ *   memberId: "mem_456",
+ *   userId: "user_789",
+ *   email: "newmember@example.com",
+ *   role: "MEMBER"
+ * });
+ * ```
  */
 export async function triggerWebhook(
   organizationId: string,
   event: WebhookEvent,
-  data: Record<string, any>
+  data: WebhookEventData
 ): Promise<void> {
   if (!isValidEvent(event)) {
     return;
@@ -72,13 +196,28 @@ export async function triggerWebhook(
 }
 
 /**
- * Deliver webhook to endpoint
- * Creates delivery record and attempts HTTP delivery
+ * Delivers a webhook to a specific endpoint via HTTP POST
+ * Creates a delivery record, signs the payload, and sends to the webhook URL.
+ * Includes retry scheduling for failed deliveries.
+ *
+ * @param webhookId - The webhook's ID
+ * @param event - The webhook event type
+ * @param data - Event-specific payload data
+ *
+ * @example
+ * ```typescript
+ * await deliverWebhook("webhook_123", "payment.succeeded", {
+ *   paymentId: "pay_456",
+ *   amount: 5000,
+ *   currency: "usd",
+ *   status: "succeeded"
+ * });
+ * ```
  */
 export async function deliverWebhook(
   webhookId: string,
   event: WebhookEvent,
-  data: Record<string, any>
+  data: WebhookEventData
 ): Promise<void> {
   try {
     // Fetch webhook details
@@ -114,7 +253,8 @@ export async function deliverWebhook(
       data: {
         webhookId,
         event,
-        payload: payload as any,
+        // Prisma JSON field - convert to unknown first for type safety
+        payload: payload as unknown as Prisma.InputJsonValue,
         status: "pending",
         attempts: 1,
       },
@@ -160,7 +300,7 @@ export async function deliverWebhook(
         where: { id: delivery.id },
         data: {
           status: "failed",
-          statusCode: error instanceof Error && "status" in error ? (error as any).status : null,
+          statusCode: isHttpError(error) ? error.status ?? null : null,
           response: errorMessage.substring(0, 5000),
           nextRetryAt: calculateNextRetry(1),
         },
@@ -172,8 +312,18 @@ export async function deliverWebhook(
 }
 
 /**
- * Calculate next retry time based on attempt number
- * Exponential backoff: 1min, 5min, 15min, 1hr, 6hr
+ * Calculates the next retry time using exponential backoff strategy
+ * Retry schedule: 1min, 5min, 15min, 1hr, 6hr (max)
+ *
+ * @param attempts - Current number of delivery attempts
+ * @returns Date object for when the next retry should occur
+ *
+ * @example
+ * ```typescript
+ * const nextRetry1 = calculateNextRetry(1); // +1 minute
+ * const nextRetry2 = calculateNextRetry(2); // +5 minutes
+ * const nextRetry5 = calculateNextRetry(5); // +6 hours (max)
+ * ```
  */
 export function calculateNextRetry(attempts: number): Date {
   const delays = [
@@ -191,7 +341,17 @@ export function calculateNextRetry(attempts: number): Date {
 }
 
 /**
- * Retry failed webhook delivery
+ * Retries a failed webhook delivery
+ * Increments attempt count, reattempts HTTP delivery, and schedules next retry if needed.
+ * Maximum of 5 attempts before marking as permanently failed.
+ *
+ * @param deliveryId - The webhook delivery record's ID
+ *
+ * @example
+ * ```typescript
+ * // Typically called by a background worker processing failed deliveries
+ * await retryWebhookDelivery("delivery_123");
+ * ```
  */
 export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
   try {
@@ -212,7 +372,8 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
     }
 
     const webhook = delivery.webhook;
-    const payload = delivery.payload as any;
+    // Cast from Prisma JsonValue to our typed payload
+    const payload = delivery.payload as unknown as WebhookPayload;
     const payloadString = JSON.stringify(payload);
     const signature = signPayload(payloadString, webhook.secret);
 
@@ -268,7 +429,7 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
         where: { id: deliveryId },
         data: {
           status: "failed",
-          statusCode: error instanceof Error && "status" in error ? (error as any).status : null,
+          statusCode: isHttpError(error) ? error.status ?? null : null,
           response: errorMessage.substring(0, 5000),
           nextRetryAt: shouldRetry ? calculateNextRetry(newAttempts) : null,
         },
@@ -280,7 +441,18 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
 }
 
 /**
- * Get webhook statistics for organization
+ * Retrieves webhook statistics and metrics for an organization
+ * Includes total webhooks, active count, delivery counts, and success rate
+ *
+ * @param organizationId - The organization's ID
+ * @returns Statistics object with webhook counts and success rate percentage
+ *
+ * @example
+ * ```typescript
+ * const stats = await getWebhookStats("org_123");
+ * console.log(`Success rate: ${stats.successRate}%`);
+ * console.log(`Active webhooks: ${stats.activeWebhooks}/${stats.totalWebhooks}`);
+ * ```
  */
 export async function getWebhookStats(organizationId: string) {
   const [totalWebhooks, activeWebhooks, totalDeliveries, successfulDeliveries, failedDeliveries] =

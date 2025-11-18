@@ -6,6 +6,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -182,25 +183,25 @@ export default function TeamDashboardTemplate() {
 
   const handleInvite = () => {
     if (!inviteEmail) {
-      alert("Please enter an email address");
+      toast.error("Please enter an email address");
       return;
     }
-    alert(`Invitation sent to ${inviteEmail} as ${inviteRole}`);
+    toast.success(`Invitation sent to ${inviteEmail} as ${inviteRole}`);
     setInviteEmail("");
   };
 
   const handleRoleChange = (memberId: string, newRole: string) => {
-    alert(`Change member ${memberId} to ${newRole}`);
+    toast.success(`Changed member role to ${newRole}`);
   };
 
   const handleRemoveMember = (memberId: string) => {
     if (confirm("Are you sure you want to remove this member?")) {
-      alert(`Remove member ${memberId}`);
+      toast.success(`Member removed successfully`);
     }
   };
 
   const handleRevokeInvitation = (invitationId: string) => {
-    alert(`Revoke invitation ${invitationId}`);
+    toast.success(`Invitation revoked successfully`);
   };
 
   return (

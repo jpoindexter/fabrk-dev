@@ -4,6 +4,7 @@
  */
 
 import Pusher from "pusher";
+import { logger } from "@/lib/logger";
 
 // Singleton instance
 let pusherInstance: Pusher | null = null;
@@ -20,9 +21,7 @@ export function getPusherServer(): Pusher | null {
   const cluster = process.env.NEXT_PUBLIC_PUSHER_CLUSTER;
 
   if (!appId || !key || !secret || !cluster) {
-    console.warn(
-      "Pusher credentials not configured. Real-time features disabled."
-    );
+    logger.warn("Pusher credentials not configured. Real-time features disabled.");
     return null;
   }
 
@@ -67,7 +66,7 @@ export async function triggerNotification(
     await pusher.trigger(`private-user-${userId}`, "notification", notification);
     return true;
   } catch (error: unknown) {
-    console.error("Failed to trigger notification:", error);
+    logger.error("Failed to trigger notification", error);
     return false;
   }
 }
@@ -97,7 +96,7 @@ export async function triggerOrgActivity(
     );
     return true;
   } catch (error: unknown) {
-    console.error("Failed to trigger org activity:", error);
+    logger.error("Failed to trigger org activity", error);
     return false;
   }
 }
@@ -121,7 +120,7 @@ export async function triggerPresenceUpdate(
     });
     return true;
   } catch (error: unknown) {
-    console.error("Failed to trigger presence update:", error);
+    logger.error("Failed to trigger presence update", error);
     return false;
   }
 }
@@ -153,7 +152,7 @@ export function authorizeChannel(
     // Private channels
     return JSON.stringify(pusher.authorizeChannel(socketId, channel));
   } catch (error: unknown) {
-    console.error("Failed to authorize channel:", error);
+    logger.error("Failed to authorize channel", error);
     return null;
   }
 }

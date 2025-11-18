@@ -1,6 +1,9 @@
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -89,7 +92,7 @@ export default async function InvoicesPage() {
 
   const handleDownload = async (paymentId: string) => {
     // TODO: Generate and download invoice PDF
-    alert(`Download invoice for ${paymentId} - to be implemented`);
+    toast.info("Invoice download feature coming soon");
   };
 
   return (

@@ -8,6 +8,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import PusherClient from "pusher-js";
 import { useSession } from "next-auth/react";
+import { logger } from "@/lib/logger";
 
 // Singleton client instance
 let pusherClient: PusherClient | null = null;
@@ -20,9 +21,7 @@ function getPusherClient(): PusherClient | null {
   const cluster = process.env.NEXT_PUBLIC_PUSHER_CLUSTER;
 
   if (!key || !cluster) {
-    console.warn(
-      "Pusher credentials not configured. Real-time features disabled."
-    );
+    logger.warn("Pusher credentials not configured. Real-time features disabled.");
     return null;
   }
 

@@ -13,6 +13,7 @@
 import * as React from "react";
 import { Check, Copy, Code } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
+import { logger } from "@/lib/logger";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,7 +44,7 @@ export function CodeBlock({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err: unknown) {
-      console.error("Failed to copy code:", err);
+      logger.error("Failed to copy code", err);
     }
   };
 

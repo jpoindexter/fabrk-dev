@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { logger } from "@/lib/logger";
 
 interface CheckoutButtonProps {
   priceId: string;
@@ -51,8 +53,8 @@ export function CheckoutButton({
         window.location.href = data.url;
       }
     } catch (error: unknown) {
-      console.error("Checkout error:", error);
-      alert("Failed to start checkout. Please try again.");
+      logger.error("Checkout error", error);
+      toast.error("Failed to start checkout. Please try again.");
       setLoading(false);
     }
   }
