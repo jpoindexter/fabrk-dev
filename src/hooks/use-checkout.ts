@@ -37,7 +37,6 @@ export function useCheckout() {
       const errorMessage =
         err instanceof Error ? err.message : "Something went wrong";
       setError(errorMessage);
-      console.error("Checkout error:", err);
     } finally {
       setIsLoading(false);
     }

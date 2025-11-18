@@ -92,8 +92,8 @@ describe('Lightbox Component', () => {
     it('renders navigation buttons', () => {
       render(<Lightbox {...defaultProps} />);
 
-      expect(screen.getByLabelText('Previous')).toBeInTheDocument();
-      expect(screen.getByLabelText('Next')).toBeInTheDocument();
+      expect(screen.getByLabelText('Previous image')).toBeInTheDocument();
+      expect(screen.getByLabelText('Next image')).toBeInTheDocument();
     });
 
     it('renders thumbnail strip', () => {
@@ -118,7 +118,7 @@ describe('Lightbox Component', () => {
       const mockNavigate = vi.fn();
       render(<Lightbox {...defaultProps} onNavigate={mockNavigate} />);
 
-      const nextButton = screen.getByLabelText('Next');
+      const nextButton = screen.getByLabelText('Next image');
       fireEvent.click(nextButton);
 
       expect(mockNavigate).toHaveBeenCalledWith(1);
@@ -128,7 +128,7 @@ describe('Lightbox Component', () => {
       const mockNavigate = vi.fn();
       render(<Lightbox {...defaultProps} currentIndex={1} onNavigate={mockNavigate} />);
 
-      const previousButton = screen.getByLabelText('Previous');
+      const previousButton = screen.getByLabelText('Previous image');
       fireEvent.click(previousButton);
 
       expect(mockNavigate).toHaveBeenCalledWith(0);
@@ -137,14 +137,14 @@ describe('Lightbox Component', () => {
     it('disables previous button on first item', () => {
       render(<Lightbox {...defaultProps} currentIndex={0} />);
 
-      const previousButton = screen.getByLabelText('Previous');
+      const previousButton = screen.getByLabelText('Previous image');
       expect(previousButton).toBeDisabled();
     });
 
     it('disables next button on last item', () => {
       render(<Lightbox {...defaultProps} currentIndex={2} />);
 
-      const nextButton = screen.getByLabelText('Next');
+      const nextButton = screen.getByLabelText('Next image');
       expect(nextButton).toBeDisabled();
     });
 
@@ -470,7 +470,7 @@ describe('Lightbox Component', () => {
       const mockNavigate = vi.fn();
       render(<Lightbox {...defaultProps} onNavigate={mockNavigate} />);
 
-      const nextButton = screen.getByLabelText('Next');
+      const nextButton = screen.getByLabelText('Next image');
 
       for (let i = 0; i < 10; i++) {
         fireEvent.click(nextButton);

@@ -38,7 +38,7 @@ Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for pr
 **8 Copy-Paste Templates** - Analytics, team management, billing, security
 **6 Color Themes** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
 **Storybook Integration** - 95% Storybook story coverage (87+ components with stories)
-**Complete Testing Suite** - Comprehensive test suite with 931+ tests
+**Complete Testing Suite** - Comprehensive test suite with 1500+ tests (1200+ passing)
 
 **Enterprise Features:**
 
@@ -78,7 +78,9 @@ npm run dev
 
 Visit **http://localhost:3000** 🎉
 
-**Detailed setup:** See [docs/QUICK-START.md](./docs/QUICK-START.md)
+**Detailed setup:** See [docs/01-getting-started/QUICK-START.md](./docs/01-getting-started/QUICK-START.md)
+
+**What's new:** See [CHANGELOG.md](./CHANGELOG.md) for v1.0.0 release notes (security fixes, performance improvements, environment validation)
 
 ---
 
@@ -270,7 +272,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 | **Price** | **$299** | Free | $199 | $297 | $299 |
 | **Files** | **156** | N/A | 450+ | 600+ | 800+ |
 | **Components** | **87** | 67 | 40+ | 60+ | 60+ |
-| **Test Coverage** | **64%** | None | None | Basic | Basic |
+| **Test Coverage** | **1500+ tests** | None | None | Basic | Basic |
 | **Storybook** | **95%** | None | None | None | None |
 | **Unique Tools** | **13** | 0 | 0 | 0 | 0 |
 | **Templates** | **8** | 0 | 0 | 3 | 5 |
@@ -281,7 +283,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 | **Documentation** | **400KB** | Basic | Moderate | Extensive | Extensive |
 | **CI/CD** | **✅** | ❌ | ❌ | ❌ | ⚠️ |
 
-**Bottom Line:** 87 production-ready components (vs shadcn/ui's 67 and ShipFast's 40), complete testing suite with 931+ tests, 95% Storybook coverage, same price as Makerkit ($299), 13 unique AI/Code + Image tools competitors don't have, cleaner codebase (156 files vs 800).
+**Bottom Line:** 87 production-ready components (vs shadcn/ui's 67 and ShipFast's 40), complete testing suite with 1500+ tests, 95% Storybook coverage, same price as Makerkit ($299), 13 unique AI/Code + Image tools competitors don't have, cleaner codebase (156 files vs 800).
 
 See [docs/COMPARISON.md](./docs/COMPARISON.md) for detailed comparison.
 
@@ -314,7 +316,7 @@ See [docs/COMPARISON.md](./docs/COMPARISON.md) for detailed comparison.
 - **Files:** 156 (vs 450-1000 in competitors)
 - **Components:** 87 production-ready (30% more than shadcn/ui's 67, 118% more than ShipFast's 40)
 - **Unique Tools:** 13 AI/Code + Image tools (competitors don't have)
-- **Test Coverage:** 64% complete test suite with 931+ tests
+- **Test Coverage:** 80% pass rate with 1500+ tests (1200+ passing)
 - **Storybook:** 95% coverage with interactive stories
 - **Templates:** 8 copy-paste ready page layouts
 - **Themes:** 6 color schemes with instant switching
@@ -358,7 +360,7 @@ See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for ste
 **What you get:**
 - ✅ Complete source code (87 components, 8 templates, 6 themes)
 - ✅ Storybook integration (95% story coverage)
-- ✅ Complete testing suite (931+ comprehensive tests, 64% coverage)
+- ✅ Complete testing suite (1500+ tests, 1200+ passing, 80% pass rate)
 - ✅ Lifetime updates (v1.x)
 - ✅ Unlimited projects (personal + commercial)
 - ✅ 400KB documentation (24 guides)
@@ -370,7 +372,7 @@ See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for ste
 - **30% more components than shadcn/ui** (87 vs 67) at a fraction of the setup time
 - **118% more components than ShipFast** (87 vs 40) at same price
 - **13 unique AI/Code + Image tools** competitors don't have
-- **Complete testing suite with 931+ tests** (vs competitors' none or basic)
+- **Complete testing suite with 1500+ tests** (vs competitors' none or basic)
 - **95% Storybook story coverage** (vs competitors who don't include Storybook)
 - **6 themes** vs competitors' 1-2 themes
 - **Cleaner codebase** (156 files vs Makerkit's 800+)

@@ -9,6 +9,7 @@ import { successResponse } from "@/lib/api/response";
 import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { createHash, randomBytes } from "crypto";
 import { NextRequest } from "next/server";
 import { z } from "zod";
@@ -64,5 +65,5 @@ async function forgotPasswordHandler(request: NextRequest) {
   return successResponse(null, "If an account exists, a password reset link has been sent");
 }
 
-// Apply both error handling and rate limiting (password reset: 5 requests per 15 minutes)
-export const POST = withRateLimit(withErrorHandler(forgotPasswordHandler), "auth");
+// Apply CSRF protection, error handling, and rate limiting (password reset: 5 requests per 15 minutes)
+export const POST = withRateLimit(withCsrfProtection(withErrorHandler(forgotPasswordHandler)), "auth");

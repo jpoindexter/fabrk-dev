@@ -3,12 +3,13 @@
  * POST /api/auth/mfa/verify
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { verifyMFADevice } from "@/lib/auth/mfa";
 import { logger } from "@/lib/logger";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
-export async function POST(req: Request) {
+async function verifyMFAHandler(req: NextRequest) {
   try {
     const session = await auth();
 
@@ -51,3 +52,6 @@ export async function POST(req: Request) {
     );
   }
 }
+
+// Apply CSRF protection
+export const POST = withCsrfProtection(verifyMFAHandler);

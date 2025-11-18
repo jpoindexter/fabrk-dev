@@ -62,7 +62,7 @@ export function DashboardHeader() {
         .toUpperCase()
     : "U";
 
-  const isAdmin = (session?.user as any)?.role === "ADMIN";
+  const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 border-brutal bg-background shadow-brutal">

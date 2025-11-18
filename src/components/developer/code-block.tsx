@@ -12,6 +12,7 @@
 
 import * as React from "react";
 import { Check, Copy, Code } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -79,7 +80,13 @@ export function CodeBlock({
       .replace(comments, '<span class="text-muted-foreground italic">$1</span>')
       .replace(numbers, '<span class="text-accent">$1</span>');
 
-    return <span dangerouslySetInnerHTML={{ __html: highlighted }} />;
+    // Sanitize HTML to prevent XSS attacks
+    const sanitized = DOMPurify.sanitize(highlighted, {
+      ALLOWED_TAGS: ['span'],
+      ALLOWED_ATTR: ['class'],
+    });
+
+    return <span dangerouslySetInnerHTML={{ __html: sanitized }} />;
   };
 
   return (

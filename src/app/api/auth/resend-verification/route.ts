@@ -9,15 +9,18 @@ import { successResponse } from "@/lib/api/response";
 import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { randomBytes, createHash } from "crypto";
 import { NextRequest } from "next/server";
+import { z } from "zod";
+
+const resendVerificationSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
 
 async function resendVerificationHandler(request: NextRequest) {
-  const { email } = await request.json();
-
-  if (!email) {
-    throw new ValidationError("Email is required");
-  }
+  const body = await request.json();
+  const { email } = resendVerificationSchema.parse(body);
 
   // Find user
   const user = await prisma.user.findUnique({
@@ -65,5 +68,5 @@ async function resendVerificationHandler(request: NextRequest) {
   return successResponse(null, "Verification email sent successfully");
 }
 
-// Apply both error handling and rate limiting (auth: 5 requests per 15 minutes to prevent spam)
-export const POST = withRateLimit(withErrorHandler(resendVerificationHandler), "auth");
+// Apply CSRF protection, error handling, and rate limiting (auth: 5 requests per 15 minutes to prevent spam)
+export const POST = withRateLimit(withCsrfProtection(withErrorHandler(resendVerificationHandler)), "auth");

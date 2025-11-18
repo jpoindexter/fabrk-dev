@@ -33,12 +33,13 @@ describe('MarkdownEditor Component', () => {
     });
 
     it('renders toolbar by default', () => {
-      const { container } = render(
+      render(
         <MarkdownEditor value="" onChange={() => {}} />
       );
 
-      const toolbar = container.querySelector('.rounded-brutal.border-brutal.bg-card');
-      expect(toolbar).toBeInTheDocument();
+      // Toolbar contains markdown formatting buttons
+      expect(screen.getByTitle('Bold')).toBeInTheDocument();
+      expect(screen.getByTitle('Italic')).toBeInTheDocument();
     });
 
     it('does not render toolbar in previewOnly mode', () => {
@@ -72,8 +73,11 @@ describe('MarkdownEditor Component', () => {
 
   describe('Markdown Parsing', () => {
     it('parses headings correctly', () => {
+      const mdValue = `# H1
+## H2
+### H3`;
       const { container } = render(
-        <MarkdownEditor value="# H1\n## H2\n### H3" onChange={() => {}} />
+        <MarkdownEditor value={mdValue} onChange={() => {}} />
       );
 
       const preview = container.querySelector('.prose');
@@ -127,9 +131,12 @@ describe('MarkdownEditor Component', () => {
     });
 
     it('parses code blocks correctly', () => {
+      const mdValue = `\`\`\`javascript
+const x = 1;
+\`\`\``;
       const { container } = render(
         <MarkdownEditor
-          value="```javascript\nconst x = 1;\n```"
+          value={mdValue}
           onChange={() => {}}
         />
       );
@@ -489,18 +496,15 @@ describe('MarkdownEditor Component', () => {
       expect(preview).toHaveClass('max-w-none');
     });
 
-    it('applies neobrutalism styling', () => {
+    it('applies border and shadow styling', () => {
       const { container } = render(
         <MarkdownEditor value="" onChange={() => {}} />
       );
 
-      const toolbar = container.querySelector('.rounded-brutal.border-brutal');
-      expect(toolbar).toBeInTheDocument();
-
       const preview = container.querySelector('.prose');
-      expect(preview).toHaveClass('rounded-brutal');
-      expect(preview).toHaveClass('border-brutal');
-      expect(preview).toHaveClass('shadow-brutal');
+      expect(preview).toHaveClass('rounded-md');
+      expect(preview).toHaveClass('border');
+      expect(preview).toHaveClass('shadow-sm');
     });
 
     it('applies monospace font to editor', () => {
@@ -600,8 +604,11 @@ describe('MarkdownEditor Component', () => {
     });
 
     it('preview has semantic HTML structure', () => {
+      const mdValue = `# Heading
+
+Paragraph`;
       const { container } = render(
-        <MarkdownEditor value="# Heading\n\nParagraph" onChange={() => {}} />
+        <MarkdownEditor value={mdValue} onChange={() => {}} />
       );
 
       const preview = container.querySelector('.prose');

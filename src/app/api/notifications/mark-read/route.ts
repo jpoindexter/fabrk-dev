@@ -7,6 +7,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
+import { z } from "zod";
+
+const markReadSchema = z.object({
+  notificationId: z.string().optional(),
+  all: z.boolean().optional(),
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,7 +22,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { notificationId, all } = body;
+    const { notificationId, all } = markReadSchema.parse(body);
 
     if (all) {
       // Mark all notifications as read
@@ -63,6 +69,13 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, marked: notificationId });
   } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid input", details: error.issues },
+        { status: 400 }
+      );
+    }
+
     logger.error("Failed to mark notification as read:", error);
     return NextResponse.json(
       { error: "Internal server error" },

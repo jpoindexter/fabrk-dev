@@ -30,7 +30,6 @@ export async function authenticateApiKey(request: NextRequest): Promise<Validate
 
     return await validateApiKey(apiKey);
   } catch (error: unknown) {
-    console.error("Error authenticating API key:", error);
     return null;
   }
 }

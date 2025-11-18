@@ -30,48 +30,7 @@ import { Star } from "lucide-react";
  *   rating: 5,
  * }
  */
-const TESTIMONIALS = [
-  {
-    id: "testimonial-1",
-    quote:
-      "Fabrk cut our development time from 6 months to 3 weeks. The component library alone is worth the price.",
-    author: "Sarah Chen",
-    role: "Founder & CEO",
-    company: "DataFlow Analytics",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
-    rating: 5,
-  },
-  {
-    id: "testimonial-2",
-    quote:
-      "The most complete Next.js boilerplate I've used. Everything is production-ready and well-documented.",
-    author: "Marcus Rodriguez",
-    role: "CTO",
-    company: "CloudScale Inc",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=marcus",
-    rating: 5,
-  },
-  {
-    id: "testimonial-3",
-    quote:
-      "Fabrk includes features our competitors paid $5K+ to build. The ROI is incredible.",
-    author: "Emily Watson",
-    role: "Product Lead",
-    company: "HealthTech Solutions",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=emily",
-    rating: 5,
-  },
-  {
-    id: "testimonial-4",
-    quote:
-      "The code quality is exceptional. Every component is tested, documented, and follows best practices.",
-    author: "David Kim",
-    role: "Engineering Manager",
-    company: "FinTech Ventures",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
-    rating: 5,
-  },
-];
+const TESTIMONIALS: TestimonialProps[] = [];
 
 interface TestimonialProps {
   id: string;
@@ -147,21 +106,23 @@ export function TestimonialsSection() {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Trusted by indie hackers & agencies
+              Join early adopters building with Fabrk
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Real customers, real results. Join {TESTIMONIALS.length}+ teams building with Fabrk.
+              Production-ready Next.js boilerplate trusted by indie developers and agencies worldwide
             </p>
           </div>
 
-          {/* Testimonials Grid */}
-          <div className="grid gap-6 md:grid-cols-2">
-            {TESTIMONIALS.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} {...testimonial} />
-            ))}
-          </div>
+          {/* Testimonials Grid - Only show if testimonials exist */}
+          {TESTIMONIALS.length > 0 && (
+            <div className="grid gap-6 md:grid-cols-2">
+              {TESTIMONIALS.map((testimonial) => (
+                <TestimonialCard key={testimonial.id} {...testimonial} />
+              ))}
+            </div>
+          )}
 
-          {/* Social Proof Footer */}
+          {/* Call to Action */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -170,7 +131,7 @@ export function TestimonialsSection() {
             className="rounded-lg border border-border bg-muted/50 p-6 text-center sm:p-8"
           >
             <p className="text-sm text-muted-foreground">
-              💬 "The best Next.js boilerplate I've used" — Built by indie developers, for indie developers
+              Built by indie developers, for indie developers. Start shipping faster with 87 production-ready components.
             </p>
           </motion.div>
         </motion.div>

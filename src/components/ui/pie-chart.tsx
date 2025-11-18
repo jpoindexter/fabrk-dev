@@ -163,6 +163,9 @@ export function PieChart({
           {segments.map((segment, index) => (
             <div
               key={index}
+              role="button"
+              tabIndex={0}
+              aria-label={`${segment.label}: ${segment.percentage.toFixed(1)}%`}
               className={cn(
                 "flex items-center gap-2 cursor-pointer transition-opacity",
                 hoveredIndex !== null &&
@@ -172,6 +175,12 @@ export function PieChart({
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => onSegmentClick?.(segment, index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSegmentClick?.(segment, index);
+                }
+              }}
             >
               <div
                 className="w-3 h-3 rounded-sm border"

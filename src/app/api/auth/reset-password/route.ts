@@ -8,6 +8,7 @@ import { NotFoundError, ValidationError, withErrorHandler } from "@/lib/api/erro
 import { successResponse } from "@/lib/api/response";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { hash } from "bcryptjs";
 import { createHash } from "crypto";
 import { NextRequest } from "next/server";
@@ -67,5 +68,5 @@ async function resetPasswordHandler(request: NextRequest) {
   return successResponse(null, "Password reset successfully");
 }
 
-// Apply both error handling and rate limiting (auth: 5 requests per 15 minutes)
-export const POST = withRateLimit(withErrorHandler(resetPasswordHandler), "auth");
+// Apply CSRF protection, error handling, and rate limiting (auth: 5 requests per 15 minutes)
+export const POST = withRateLimit(withCsrfProtection(withErrorHandler(resetPasswordHandler)), "auth");

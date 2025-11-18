@@ -26,6 +26,21 @@ export interface MarkdownViewerProps {
 
 export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerProps>(
   ({ className, loading = false, error = false, content = "", ...props }, ref) => {
+    // SECURITY: Content is sanitized using DOMPurify to prevent XSS attacks
+    const sanitizedContent = React.useMemo(() => {
+      return DOMPurify.sanitize(content, {
+        ALLOWED_TAGS: [
+          "h1", "h2", "h3", "h4", "h5", "h6",
+          "p", "br", "strong", "em", "u", "s",
+          "a", "ul", "ol", "li", "blockquote",
+          "code", "pre", "img", "table", "thead",
+          "tbody", "tr", "th", "td"
+        ],
+        ALLOWED_ATTR: ["href", "src", "alt", "title", "class"],
+        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+      });
+    }, [content]);
+
     if (loading) {
       return (
         <div
@@ -43,21 +58,6 @@ export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerPro
     if (error) {
       return <div className={cn("text-destructive", className, "")}>Error loading content</div>;
     }
-
-    // SECURITY: Content is sanitized using DOMPurify to prevent XSS attacks
-    const sanitizedContent = React.useMemo(() => {
-      return DOMPurify.sanitize(content, {
-        ALLOWED_TAGS: [
-          "h1", "h2", "h3", "h4", "h5", "h6",
-          "p", "br", "strong", "em", "u", "s",
-          "a", "ul", "ol", "li", "blockquote",
-          "code", "pre", "img", "table", "thead",
-          "tbody", "tr", "th", "td"
-        ],
-        ALLOWED_ATTR: ["href", "src", "alt", "title", "class"],
-        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
-      });
-    }, [content]);
 
     return (
       <div

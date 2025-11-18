@@ -259,7 +259,7 @@ describe('RichTextEditor Component', () => {
       const editor = container.querySelector('[contenteditable="true"]');
       if (editor) {
         fireEvent.focus(editor);
-        expect(editor).toHaveClass('shadow-brutal-lg');
+        expect(editor).toHaveClass('shadow-md');
       }
     });
 
@@ -269,11 +269,11 @@ describe('RichTextEditor Component', () => {
       const editor = container.querySelector('[contenteditable="true"]');
       if (editor) {
         fireEvent.focus(editor);
-        expect(editor).toHaveClass('shadow-brutal-lg');
+        expect(editor).toHaveClass('shadow-md');
 
         fireEvent.blur(editor);
-        expect(editor).toHaveClass('shadow-brutal');
-        expect(editor).not.toHaveClass('shadow-brutal-lg');
+        expect(editor).toHaveClass('shadow-sm');
+        expect(editor).not.toHaveClass('shadow-md');
       }
     });
   });
@@ -361,13 +361,13 @@ describe('RichTextEditor Component', () => {
       expect(editor).toHaveClass('prose-sm');
     });
 
-    it('applies neobrutalism styling', () => {
+    it('applies border and shadow styling', () => {
       const { container } = render(<RichTextEditor />);
 
       const editor = container.querySelector('[contenteditable="true"]');
-      expect(editor).toHaveClass('rounded-brutal');
-      expect(editor).toHaveClass('border-brutal');
-      expect(editor).toHaveClass('shadow-brutal');
+      expect(editor).toHaveClass('rounded-md');
+      expect(editor).toHaveClass('border');
+      expect(editor).toHaveClass('shadow-sm');
     });
 
     it('applies theme-responsive colors', () => {

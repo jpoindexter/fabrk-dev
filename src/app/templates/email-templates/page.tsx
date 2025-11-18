@@ -28,6 +28,7 @@ import {
   Shield,
   CreditCard,
   Bell,
+  Download,
 } from "lucide-react";
 import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
 import { generateVerifyEmailHTML } from "@/emails/verify-email";

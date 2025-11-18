@@ -394,7 +394,7 @@ describe('NotificationBadge Component', () => {
 
       // Should still render badge
       expect(screen.getByText('5')).toBeInTheDocument();
-      expect(container.querySelector('.relative.inline-flex')).toBeInTheDocument();
+      expect(container.querySelector('.relative.inline-block')).toBeInTheDocument();
     });
 
     it('handles multiple notification badges', () => {

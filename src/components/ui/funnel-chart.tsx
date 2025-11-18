@@ -46,7 +46,7 @@ export function FunnelChart({
   ];
 
   return (
-    <div className={cn("flex flex-col gap-4", className)}>
+    <div className={cn("space-y-4", className)}>
       <div
         className={cn(
           "relative",
@@ -71,6 +71,9 @@ export function FunnelChart({
             return (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                aria-label={`${stage.label}: ${stage.value}`}
                 className={cn(
                   "relative transition-all cursor-pointer",
                   isHovered && "scale-105"
@@ -79,6 +82,12 @@ export function FunnelChart({
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onStageClick?.(stage, index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onStageClick?.(stage, index);
+                  }
+                }}
               >
                 <svg
                   width={width}
@@ -113,6 +122,9 @@ export function FunnelChart({
             return (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                aria-label={`${stage.label}: ${stage.value}`}
                 className={cn(
                   "relative transition-all cursor-pointer",
                   isHovered && "scale-105"
@@ -121,6 +133,12 @@ export function FunnelChart({
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onStageClick?.(stage, index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onStageClick?.(stage, index);
+                  }
+                }}
               >
                 <svg
                   width={stageWidth}
@@ -153,21 +171,21 @@ export function FunnelChart({
         {data.map((stage, index) => (
           <div
             key={index}
+            role="presentation"
             className={cn(
-              "flex items-center gap-2 cursor-pointer transition-opacity",
+              "flex items-center gap-2 transition-opacity",
               hoveredIndex !== null && hoveredIndex !== index && "opacity-50"
             )}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <div
-              className="w-3 h-3 rounded-sm border"
+              className="w-3 h-3 rounded-sm border-brutal"
               style={{
                 backgroundColor:
                   stage.color || DEFAULT_COLORS[index % DEFAULT_COLORS.length],
               }}
             />
-            <span className="text-xs font-medium">{stage.label}</span>
           </div>
         ))}
       </div>

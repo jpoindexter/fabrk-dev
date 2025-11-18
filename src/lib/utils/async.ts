@@ -95,7 +95,6 @@ export async function batchPromises<T, R>(
 /**
  * Debounce async function
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
   fn: T,
   delay: number
@@ -121,7 +120,6 @@ export function debounceAsync<T extends (...args: any[]) => Promise<any>>(
 /**
  * Throttle async function
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttleAsync<T extends (...args: any[]) => Promise<any>>(
   fn: T,
   limit: number

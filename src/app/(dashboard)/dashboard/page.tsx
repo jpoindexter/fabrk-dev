@@ -366,7 +366,7 @@ export default function DashboardPage() {
             </Link>
 
             {/* Show admin link if user is admin */}
-            {(session?.user as any)?.role === "ADMIN" && (
+            {(session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN") && (
               <Link href="/admin">
                 <Button variant="outline" className="w-full justify-start">
                   <Users className="mr-2 h-4 w-4" />
@@ -395,13 +395,13 @@ export default function DashboardPage() {
                 <div className="flex items-center gap-2 mt-1">
                   <Badge
                     variant={
-                      (session?.user as any)?.mfaEnabled
+                      session?.user?.mfaEnabled
                         ? "default"
                         : "secondary"
                     }
                   >
                     2FA{" "}
-                    {(session?.user as any)?.mfaEnabled
+                    {session?.user?.mfaEnabled
                       ? "Enabled"
                       : "Disabled"}
                   </Badge>
@@ -414,7 +414,7 @@ export default function DashboardPage() {
               <div>
                 <p className="text-sm font-medium">Account Type</p>
                 <Badge variant="outline" className="mt-1">
-                  {(session?.user as any)?.tier || "FREE"}
+                  {session?.user?.tier || "FREE"}
                 </Badge>
               </div>
             </div>

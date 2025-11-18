@@ -44,7 +44,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const form = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema) as any, // Type compatibility with zod optional fields
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",

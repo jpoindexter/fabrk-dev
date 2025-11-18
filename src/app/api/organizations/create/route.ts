@@ -10,6 +10,16 @@ import { createOrganization } from "@/lib/teams/organizations";
 import { trackOrgCreated } from "@/lib/analytics/events";
 import { logOrgCreated } from "@/lib/audit/logger";
 import { logger } from "@/lib/logger";
+import { z } from "zod";
+
+const createOrgSchema = z.object({
+  name: z.string().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  slug: z.string()
+    .min(1, "Slug is required")
+    .max(50, "Slug must be less than 50 characters")
+    .regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"),
+  description: z.string().max(500, "Description must be less than 500 characters").optional(),
+});
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -23,22 +33,8 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     }
 
     const body = await req.json();
-    const { name, slug, description } = body;
-
-    if (!name || !slug) {
-      return NextResponse.json(
-        { error: "Name and slug are required" },
-        { status: 400 }
-      );
-    }
-
-    // Validate slug format
-    if (!/^[a-z0-9-]+$/.test(slug)) {
-      return NextResponse.json(
-        { error: "Slug can only contain lowercase letters, numbers, and hyphens" },
-        { status: 400 }
-      );
-    }
+    const validatedData = createOrgSchema.parse(body);
+    const { name, slug, description } = validatedData;
 
     const organization = await createOrganization({
       name,
@@ -64,6 +60,13 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       },
     });
   } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid input", details: error.issues },
+        { status: 400 }
+      );
+    }
+
     const errorMessage = error instanceof Error ? error.message : "Failed to create organization";
     logger.error("Failed to create organization:", errorMessage);
 

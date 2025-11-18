@@ -267,6 +267,10 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
         {/* Editor */}
         <div
           ref={editorRef}
+          role="textbox"
+          aria-multiline="true"
+          aria-label={placeholder}
+          aria-readonly={readOnly}
           contentEditable={!readOnly}
           onInput={handleInput}
           onFocus={() => setIsFocused(true)}

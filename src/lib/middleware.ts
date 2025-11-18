@@ -21,7 +21,6 @@ export default auth((req) => {
   }
 
   // Check admin routes
-  // @ts-ignore - role exists in database but not in NextAuth user type
   if (isOnAdmin && req.auth?.user?.role !== "ADMIN" && req.auth?.user?.role !== "SUPER_ADMIN") {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }

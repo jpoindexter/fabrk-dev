@@ -146,6 +146,9 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
     return (
       <div
         ref={ref}
+        role="button"
+        tabIndex={0}
+        aria-label={notification.title}
         className={cn(
           "relative flex gap-3 p-3 rounded-md border border-transparent transition-all",
           "hover:border hover:bg-muted/50 hover:shadow-sm cursor-pointer",
@@ -154,6 +157,12 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleClick();
+          }
+        }}
       >
         {/* Unread indicator */}
         {!notification.read && (

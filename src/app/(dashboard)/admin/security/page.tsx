@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect, startTransition } from "react";
+import React, { useState, useEffect, startTransition } from "react";
 import {
   Card,
   CardContent,
@@ -32,14 +32,14 @@ import {
 import { queryAuditLogs, getSecuritySummary, type AuditLogEntry } from "@/lib/security/audit-log";
 import { AlertTriangle, CheckCircle, Info, XCircle } from "lucide-react";
 
-function formatDate(date: Date) {
+function formatDate(date: Date): string {
   return new Intl.DateTimeFormat("en-US", {
     dateStyle: "short",
     timeStyle: "medium",
   }).format(new Date(date));
 }
 
-function getSeverityColor(severity: string) {
+function getSeverityColor(severity: string): "destructive" | "default" | "secondary" | "outline" {
   switch (severity) {
     case "critical":
       return "destructive";
@@ -54,7 +54,7 @@ function getSeverityColor(severity: string) {
   }
 }
 
-function getResultIcon(result: string) {
+function getResultIcon(result: string): React.JSX.Element {
   switch (result) {
     case "success":
       return <CheckCircle className="h-4 w-4 text-success" />;
@@ -218,7 +218,7 @@ export default function AdminSecurityPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={getSeverityColor(log.severity) as any}>
+                        <Badge variant={getSeverityColor(log.severity)}>
                           {log.severity}
                         </Badge>
                       </TableCell>

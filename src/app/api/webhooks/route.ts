@@ -13,6 +13,13 @@ import { OrgRole } from "@prisma/client";
 import { generateWebhookSecret } from "@/lib/webhooks";
 import { isValidEvent } from "@/lib/webhooks/events";
 import { logger } from "@/lib/logger";
+import { z } from "zod";
+
+const createWebhookSchema = z.object({
+  organizationId: z.string().min(1, "Organization ID is required"),
+  url: z.string().url("Invalid webhook URL"),
+  events: z.array(z.string()).min(1, "At least one event is required"),
+});
 
 export async function GET(req: NextRequest) {
   try {
@@ -89,14 +96,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     }
 
     const body = await req.json();
-    const { organizationId, url, events } = body;
-
-    if (!organizationId || !url || !events || !Array.isArray(events)) {
-      return NextResponse.json(
-        { error: "Organization ID, URL, and events are required" },
-        { status: 400 }
-      );
-    }
+    const { organizationId, url, events } = createWebhookSchema.parse(body);
 
     // Verify user has ADMIN role
     const canCreate = await hasOrganizationRole(
@@ -172,6 +172,13 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       createdAt: webhook.createdAt,
     });
   } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid input", details: error.issues },
+        { status: 400 }
+      );
+    }
+
     logger.error("Failed to create webhook:", error);
     return NextResponse.json(
       { error: "Failed to create webhook" },

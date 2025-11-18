@@ -51,7 +51,7 @@ export function Rating({
 
   return (
     <div className={cn("flex items-center gap-1", className)}>
-      <div className="flex items-center" onMouseLeave={handleMouseLeave}>
+      <div className="flex items-center" role="presentation" onMouseLeave={handleMouseLeave}>
         {Array.from({ length: maxRating }).map((_, index) => {
           const starValue = index + 1;
           const isFilled = starValue <= displayRating;
