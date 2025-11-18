@@ -35,7 +35,7 @@ const NotificationBadge = React.forwardRef<
 >(
   (
     {
-      count = 0,
+      count,
       max = 99,
       showZero = false,
       dot = false,
@@ -49,16 +49,16 @@ const NotificationBadge = React.forwardRef<
     },
     ref
   ) => {
-    const displayCount = count > max ? `${max}+` : count.toString();
-    const shouldShow = count > 0 || showZero;
+    const displayCount = count !== undefined && count > max ? `${max}+` : count !== undefined ? Math.floor(count).toString() : '';
+    const shouldShow = count === undefined ? dot : (count > 0 || showZero);
 
     // Variant styles
     const variantStyles = {
       primary: "bg-primary text-primary-foreground border-primary",
       destructive:
         "bg-destructive text-destructive-foreground border-destructive",
-      success: "bg-accent text-accent-foreground border-accent",
-      warning: "bg-[oklch(75%_0.15_60)] text-foreground border-[oklch(75%_0.15_60)]",
+      success: "bg-success text-success-foreground border-success",
+      warning: "bg-warning text-warning-foreground border-warning",
     };
 
     // Position styles
@@ -72,24 +72,20 @@ const NotificationBadge = React.forwardRef<
     // Size styles
     const sizeStyles = {
       sm: dot ? "h-2 w-2" : "h-4 w-4 text-[8px] min-w-4",
-      md: dot ? "h-2.5 w-2.5" : "h-5 w-5 text-[10px] min-w-5",
+      md: dot ? "h-2 w-2" : "h-5 w-5 text-[10px] min-w-5",
       lg: dot ? "h-3 w-3" : "h-6 w-6 text-[11px] min-w-6",
     };
 
-    // Custom offset transform
-    const customOffset =
-      offset.x !== 0 || offset.y !== 0
-        ? { transform: `translate(${offset.x}px, ${offset.y}px)` }
-        : {};
+    // Custom offset transform - always apply transform
+    const customOffset = { transform: `translate(${offset.x}px, ${offset.y}px)` };
 
     return (
-      <div ref={ref} className="relative inline-flex">
+      <div ref={ref} className="relative inline-block">
         {children}
         {shouldShow && (
           <span
             className={cn(
-              "absolute z-50 flex items-center justify-center border font-semibold shadow-sm transition-all duration-150",
-              dot ? "rounded-full" : "rounded-full",
+              "absolute z-10 flex items-center justify-center border font-semibold shadow-sm transition-all duration-150 rounded-full tabular-nums",
               variantStyles[variant],
               positionStyles[position],
               sizeStyles[size],

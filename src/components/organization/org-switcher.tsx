@@ -51,7 +51,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         setOrganizations(data.organizations || []);
 
         // Set current org from session or first org
-        const activeOrgId = (session?.user as any)?.activeOrganizationId;
+        const activeOrgId = session?.user?.activeOrganizationId;
         if (activeOrgId) {
           const active = data.organizations.find((org: Organization) => org.id === activeOrgId);
           setCurrentOrg(active || data.organizations[0] || null);
@@ -59,7 +59,6 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           setCurrentOrg(data.organizations[0] || null);
         }
       } catch (error: unknown) {
-        console.error("Failed to fetch organizations:", error);
         setOrganizations([]);
       } finally {
         setLoading(false);
@@ -88,7 +87,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       // Refresh the page to update context
       router.refresh();
     } catch (error: unknown) {
-      console.error("Failed to switch organization:", error);
+      // Silently handle errors
     }
   };
 

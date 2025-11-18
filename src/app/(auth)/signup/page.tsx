@@ -47,7 +47,7 @@ export default function SignupPage() {
   const router = useRouter();
 
   const form = useForm<SignupFormData>({
-    resolver: zodResolver(signupSchema) as any, // Type compatibility with zod optional fields
+    resolver: zodResolver(signupSchema),
     mode: "onChange", // Enable real-time validation for submit button state
     defaultValues: {
       name: "",

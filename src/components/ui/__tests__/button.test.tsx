@@ -34,8 +34,8 @@ describe('Button', () => {
     expect(button).toHaveClass('bg-destructive')
   })
 
-  it('applies success variant styles', () => {
-    render(<Button variant="success">Success</Button>)
+  it('applies default variant styles', () => {
+    render(<Button variant="default">Default</Button>)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-accent')
   })

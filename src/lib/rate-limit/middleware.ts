@@ -2,12 +2,36 @@
  * Simple Rate Limiting Middleware
  * Uses in-memory storage for development
  * For production, consider using Redis (Upstash) for distributed rate limiting
+ *
+ * ⚠️ WARNING: This in-memory implementation is NOT suitable for production!
+ *
+ * Issues with in-memory storage in production:
+ * 1. Does not work across multiple server instances (load balancers)
+ * 2. Resets on server restart, losing all rate limit data
+ * 3. No persistence - limits are ephemeral
+ * 4. Cannot be shared between edge functions or serverless instances
+ *
+ * For production, use:
+ * - Upstash Redis (serverless-friendly)
+ * - Vercel KV (built-in rate limiting)
+ * - Redis Cloud
+ * - Any distributed cache solution
  */
 
 import { NextRequest, NextResponse } from "next/server";
 
-// In-memory store for rate limiting (use Redis in production)
+// ⚠️ WARNING: In-memory store NOT suitable for production (see above)
+// Use Redis/Upstash for production deployments
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+
+// Emit production warning once
+if (process.env.NODE_ENV === "production") {
+  console.warn(
+    "⚠️ WARNING: In-memory rate limiting detected in production. " +
+    "This will not work correctly with multiple server instances. " +
+    "Please use Redis (Upstash) or Vercel KV for production rate limiting."
+  );
+}
 
 // Rate limit configurations by route type
 const RATE_LIMITS = {

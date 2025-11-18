@@ -9,6 +9,7 @@ import { successResponse } from "@/lib/api/response";
 import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { randomBytes, createHash } from "crypto";
 import { NextRequest } from "next/server";
 
@@ -65,5 +66,5 @@ async function resendVerificationHandler(request: NextRequest) {
   return successResponse(null, "Verification email sent successfully");
 }
 
-// Apply both error handling and rate limiting (auth: 5 requests per 15 minutes to prevent spam)
-export const POST = withRateLimit(withErrorHandler(resendVerificationHandler), "auth");
+// Apply CSRF protection, error handling, and rate limiting (auth: 5 requests per 15 minutes to prevent spam)
+export const POST = withRateLimit(withCsrfProtection(withErrorHandler(resendVerificationHandler)), "auth");

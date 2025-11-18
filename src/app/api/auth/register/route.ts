@@ -116,6 +116,7 @@ import { emailService } from "@/lib/email";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { trackUserSignup } from "@/lib/analytics/events";
 import { hash } from "bcryptjs";
 import { randomBytes, createHash } from "crypto";
@@ -212,5 +213,5 @@ async function registerHandler(req: NextRequest) {
   }
 }
 
-// Apply rate limiting: 5 requests per 15 minutes for auth endpoints
-export const POST = withRateLimit(registerHandler, "auth");
+// Apply CSRF protection and rate limiting: 5 requests per 15 minutes for auth endpoints
+export const POST = withRateLimit(withCsrfProtection(registerHandler), "auth");

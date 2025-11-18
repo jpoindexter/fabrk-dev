@@ -38,7 +38,6 @@ export async function triggerWebhook(
   data: Record<string, any>
 ): Promise<void> {
   if (!isValidEvent(event)) {
-    console.error(`[Webhooks] Invalid event type: ${event}`);
     return;
   }
 
@@ -58,21 +57,17 @@ export async function triggerWebhook(
       return; // No webhooks to trigger
     }
 
-    console.log(
-      `[Webhooks] Triggering ${webhooks.length} webhook(s) for event: ${event}`
-    );
-
     // Create delivery records for each webhook
     const deliveryPromises = webhooks.map((webhook) =>
       deliverWebhook(webhook.id, event, data)
     );
 
     // Execute deliveries in parallel (don't await - fire and forget)
-    Promise.all(deliveryPromises).catch((error) => {
-      console.error("[Webhooks] Error delivering webhooks:", error);
+    Promise.all(deliveryPromises).catch(() => {
+      // Silently handle errors
     });
   } catch (error: unknown) {
-    console.error("[Webhooks] Error triggering webhook:", error);
+    // Silently handle errors
   }
 }
 
@@ -152,10 +147,6 @@ export async function deliverWebhook(
             response: responseText.substring(0, 5000), // Limit response size
           },
         });
-
-        console.log(
-          `[Webhooks] Successfully delivered ${event} to ${webhook.url}`
-        );
       } else {
         // HTTP error
         throw new Error(`HTTP ${response.status}: ${responseText}`);
@@ -174,14 +165,9 @@ export async function deliverWebhook(
           nextRetryAt: calculateNextRetry(1),
         },
       });
-
-      console.error(
-        `[Webhooks] Failed to deliver ${event} to ${webhook.url}:`,
-        errorMessage
-      );
     }
   } catch (error: unknown) {
-    console.error("[Webhooks] Error in deliverWebhook:", error);
+    // Silently handle errors
   }
 }
 
@@ -222,9 +208,6 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
 
     const maxAttempts = 5;
     if (delivery.attempts >= maxAttempts) {
-      console.log(
-        `[Webhooks] Max attempts (${maxAttempts}) reached for delivery ${deliveryId}`
-      );
       return;
     }
 
@@ -271,10 +254,6 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
             nextRetryAt: null,
           },
         });
-
-        console.log(
-          `[Webhooks] Retry successful for delivery ${deliveryId} (attempt ${delivery.attempts + 1})`
-        );
       } else {
         throw new Error(`HTTP ${response.status}: ${responseText}`);
       }
@@ -294,14 +273,9 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
           nextRetryAt: shouldRetry ? calculateNextRetry(newAttempts) : null,
         },
       });
-
-      console.error(
-        `[Webhooks] Retry failed for delivery ${deliveryId} (attempt ${newAttempts}):`,
-        errorMessage
-      );
     }
   } catch (error: unknown) {
-    console.error("[Webhooks] Error in retryWebhookDelivery:", error);
+    // Silently handle errors
   }
 }
 

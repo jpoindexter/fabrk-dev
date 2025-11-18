@@ -18,7 +18,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX } from "lucide-react";
+import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX, UserPlus } from "lucide-react";
 import { DemoNav } from "@/components/demo/demo-nav";
 
 import { Button } from "@/components/ui/button";

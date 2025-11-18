@@ -7,8 +7,8 @@
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
-import { sendWelcomeEmail } from "@/lib/email";
-import { randomBytes } from "crypto";
+import { queueWelcomeEmail } from "@/lib/email";
+import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -67,10 +67,6 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       // Create new user account (passwordless)
       logger.info("Creating new user account", { email: customerEmail });
 
-      // Generate magic link token
-      const magicLinkToken = generateMagicLinkToken();
-      const magicLinkExpiry = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-
       user = await prisma.user.create({
         data: {
           email: customerEmail,
@@ -96,12 +92,30 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       },
     });
 
-    // Send welcome email with license key
-    await sendWelcomeEmail(
-      customerEmail,
-      user.name || "Customer",
-      licenseKey
-    );
+    // Generate magic link token for one-click dashboard access
+    const magicLinkToken = generateSecureToken();
+    const magicLinkExpiry = getTokenExpiration(24 * 7); // Valid for 7 days
+
+    // Store token in database
+    await prisma.verificationToken.create({
+      data: {
+        identifier: customerEmail,
+        token: magicLinkToken,
+        expires: magicLinkExpiry,
+      },
+    });
+
+    // Build magic link URL
+    const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
+
+    // Queue welcome email with license key and magic link
+    await queueWelcomeEmail({
+      to: customerEmail,
+      name: user.name || "Customer",
+      licenseKey,
+      magicLink,
+      userId: user.id,
+    });
 
     logger.info("Purchase processed successfully", {
       userId: user.id,
@@ -112,11 +126,4 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     logger.error("Error processing checkout.session.completed", error);
     throw error;
   }
-}
-
-/**
- * Generate a secure magic link token
- */
-function generateMagicLinkToken(): string {
-  return randomBytes(32).toString("hex");
 }

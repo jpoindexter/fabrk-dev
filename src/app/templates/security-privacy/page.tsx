@@ -46,6 +46,7 @@ import {
   FileText,
   UserX,
   Activity,
+  Settings,
 } from "lucide-react";
 
 // Mock data

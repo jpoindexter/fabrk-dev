@@ -16,8 +16,8 @@ const config = {
     name: "Fabrk Boilerplate",
     description: "Production-ready SaaS boilerplate with authentication, payments, and dashboard",
     url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-    author: "Your Name",
-    supportEmail: "support@yourdomain.com",
+    author: process.env.NEXT_PUBLIC_AUTHOR_NAME || "Fabrk Team",
+    supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@example.com",
   },
 
   // ============================================================================
@@ -62,9 +62,9 @@ const config = {
     apiKey: process.env.RESEND_API_KEY,
     from: {
       name: "Fabrk Boilerplate",
-      email: process.env.EMAIL_FROM || "noreply@yourdomain.com",
+      email: process.env.EMAIL_FROM || "noreply@example.com",
     },
-    replyTo: process.env.EMAIL_REPLY_TO || "support@yourdomain.com",
+    replyTo: process.env.EMAIL_REPLY_TO || "support@example.com",
   },
 
   // ============================================================================

@@ -162,7 +162,7 @@ const teamData = {
   ],
 };
 
-const roleColors: Record<string, string> = {
+const roleColors: Record<string, "default" | "destructive" | "outline" | "secondary"> = {
   owner: "default",
   admin: "secondary",
   member: "outline",
@@ -369,7 +369,7 @@ export default function TeamDashboardTemplate() {
                             </TableCell>
                             <TableCell>
                               <Badge
-                                variant={roleColors[member.role] as any}
+                                variant={roleColors[member.role]}
                                 className="gap-1 font-semibold capitalize"
                               >
                                 <RoleIcon className="h-3 w-3" />

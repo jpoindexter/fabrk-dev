@@ -3,12 +3,13 @@
  * POST /api/auth/mfa/enable
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { enableMFA } from "@/lib/auth/mfa";
 import { logger } from "@/lib/logger";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
-export async function POST() {
+async function enableMFAHandler(req: NextRequest) {
   try {
     const session = await auth();
 
@@ -38,3 +39,6 @@ export async function POST() {
     );
   }
 }
+
+// Apply CSRF protection
+export const POST = withCsrfProtection(enableMFAHandler);

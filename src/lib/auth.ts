@@ -11,8 +11,32 @@ import Google from "next-auth/providers/google";
  * Keep under 100 lines following 300-line rule
  */
 
+// Session version cache to avoid N+1 queries
+const sessionVersionCache = new Map<string, { version: number; timestamp: number }>();
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const MAX_CACHE_SIZE = 1000;
+
+function getCachedSessionVersion(userId: string): number | null {
+  const cached = sessionVersionCache.get(userId);
+  if (!cached) return null;
+  if (Date.now() - cached.timestamp > CACHE_TTL) {
+    sessionVersionCache.delete(userId);
+    return null;
+  }
+  return cached.version;
+}
+
+function setCachedSessionVersion(userId: string, version: number) {
+  if (sessionVersionCache.size >= MAX_CACHE_SIZE) {
+    const entriesToDelete = Array.from(sessionVersionCache.keys()).slice(0, 100);
+    entriesToDelete.forEach(key => sessionVersionCache.delete(key));
+  }
+  sessionVersionCache.set(userId, { version, timestamp: Date.now() });
+}
+
 export const authConfig: NextAuthConfig = {
-  adapter: PrismaAdapter(prisma) as any,
+  // @ts-expect-error - Adapter version mismatch between @auth/core and next-auth
+  adapter: PrismaAdapter(prisma),
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -116,14 +140,28 @@ export const authConfig: NextAuthConfig = {
 
       // Verify session version on every request (invalidate if changed)
       if (token.id && token.sessionVersion) {
-        const dbUser = await prisma.user.findUnique({
-          where: { id: token.id as string },
-          select: { sessionVersion: true },
-        });
+        // Check cache first to avoid N+1 query
+        const cachedVersion = getCachedSessionVersion(token.id as string);
 
-        // If session version doesn't match, invalidate the token
-        if (!dbUser || dbUser.sessionVersion !== token.sessionVersion) {
-          return null; // This will log the user out
+        if (cachedVersion !== null) {
+          // Use cached version
+          if (cachedVersion !== token.sessionVersion) {
+            return null; // Session invalidated
+          }
+        } else {
+          // Cache miss - query database and cache result
+          const dbUser = await prisma.user.findUnique({
+            where: { id: token.id as string },
+            select: { sessionVersion: true },
+          });
+
+          // If session version doesn't match, invalidate the token
+          if (!dbUser || dbUser.sessionVersion !== token.sessionVersion) {
+            return null; // This will log the user out
+          }
+
+          // Cache the version for future requests
+          setCachedSessionVersion(token.id as string, dbUser.sessionVersion);
         }
       }
 
