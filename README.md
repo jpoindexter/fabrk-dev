@@ -18,10 +18,10 @@
 
 **See everything before you build:**
 
+- **[/demo](http://localhost:3000/demo)** - Complete feature overview - What's Included
 - **[/components](http://localhost:3000/components)** - All 87 production-ready UI components with variants
 - **[/templates](http://localhost:3000/templates)** - 8 copy-paste ready page templates ⭐ NEW
 - **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
-- **[/whats-included](http://localhost:3000/whats-included)** - Complete feature overview
 - **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
 - **[/examples/analytics](http://localhost:3000/examples/analytics)** - Analytics dashboard
 

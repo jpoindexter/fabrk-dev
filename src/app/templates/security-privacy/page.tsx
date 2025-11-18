@@ -158,18 +158,24 @@ export default function SecurityPrivacyTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="dashboard" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Security & Privacy
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            Manage your account security, privacy settings, and data controls
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight">
+              Security & Privacy
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              Manage your account security, privacy settings, and data controls
+            </p>
+          </div>
+          <Button className="font-semibold">
+            <Settings className="mr-2 h-4 w-4" />
+            View Audit Log
+          </Button>
         </div>
 
         {/* Security Score Card */}
@@ -213,7 +219,7 @@ export default function SecurityPrivacyTemplate() {
         </Card>
 
         {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} suppressHydrationWarning>
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="security" className="font-semibold">
               <Shield className="mr-2 h-4 w-4" />

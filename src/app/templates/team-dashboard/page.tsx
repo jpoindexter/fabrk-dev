@@ -206,7 +206,7 @@ export default function TeamDashboardTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="dashboard" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">

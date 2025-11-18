@@ -140,11 +140,11 @@ export default function SettingsPageTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="settings" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6" suppressHydrationWarning>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           {/* Tab Navigation */}
           <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
             <TabsTrigger value="general" className="font-semibold">

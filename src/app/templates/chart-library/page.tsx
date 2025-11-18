@@ -6,6 +6,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -38,6 +39,7 @@ import {
   BarChart3,
   PieChart as PieChartIcon,
   Activity,
+  Download,
 } from "lucide-react";
 
 // Mock data
@@ -109,18 +111,24 @@ export default function ChartLibraryTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="charts" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Chart Library
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            Recharts visualization components for data-driven dashboards
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight">
+              Chart Library
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              Recharts visualization components for data-driven dashboards
+            </p>
+          </div>
+          <Button className="font-semibold">
+            <Download className="mr-2 h-4 w-4" />
+            View Docs
+          </Button>
         </div>
 
         {/* Stats */}
@@ -176,7 +184,7 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Chart Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} suppressHydrationWarning>
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="line" className="font-semibold">
               Line Chart

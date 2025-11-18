@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+// Animation handled via CSS, no state needed
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -38,19 +38,27 @@ import {
 } from "lucide-react";
 
 export default function AnalyticsDashboardTemplate() {
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  useEffect(() => {
-    setIsAnimating(true);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="charts" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl px-6 py-8 space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight">Analytics Dashboard</h1>
+            <p className="mt-2 text-muted-foreground">
+              Track revenue, users, conversions, and growth metrics
+            </p>
+          </div>
+          <Button className="font-semibold">
+            <Download className="mr-2 h-4 w-4" />
+            Export Data
+          </Button>
+        </div>
+
         {/* Metric Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
@@ -129,46 +137,46 @@ export default function AnalyticsDashboardTemplate() {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <div className="h-[300px] flex items-end justify-between gap-2 px-2">
-                  <style>{`
-                    @keyframes growBar {
-                      from {
-                        height: 0;
-                      }
-                      to {
-                        height: var(--bar-height);
-                      }
-                    }
-                    .bar-animate {
-                      animation: growBar 0.8s ease-out forwards !important;
-                    }
-                  `}</style>
-                  {[
-                    { month: "Jan", revenue: 32000, height: 55 },
-                    { month: "Feb", revenue: 42000, height: 70 },
-                    { month: "Mar", revenue: 38000, height: 65 },
-                    { month: "Apr", revenue: 54000, height: 85 },
-                    { month: "May", revenue: 57000, height: 90 },
-                    { month: "Jun", revenue: 63000, height: 100 },
-                  ].map((data, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
-                      <span className="text-xs font-semibold text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-                        ${(data.revenue / 1000).toFixed(0)}k
-                      </span>
-                      <div
-                        className={`w-full bg-primary rounded-t-md hover:bg-primary/90 hover:shadow-md ${isAnimating ? 'bar-animate' : ''}`}
-                        style={{
-                          '--bar-height': `${data.height}%`,
-                          animationDelay: isAnimating ? `${i * 100}ms` : undefined,
-                          height: isAnimating ? undefined : `${data.height}%`,
-                          minHeight: "24px",
-                        } as React.CSSProperties}
-                      />
-                      <span className="text-xs text-muted-foreground">
-                        {data.month}
-                      </span>
-                    </div>
-                  ))}
+                <div className="space-y-4">
+                  <div className="h-[300px] flex items-end justify-between gap-2 px-2">
+                    {[
+                      { month: "Jan", revenue: 32000, height: 55 },
+                      { month: "Feb", revenue: 42000, height: 70 },
+                      { month: "Mar", revenue: 38000, height: 65 },
+                      { month: "Apr", revenue: 54000, height: 85 },
+                      { month: "May", revenue: 57000, height: 90 },
+                      { month: "Jun", revenue: 63000, height: 100 },
+                    ].map((data, i) => (
+                      <div key={i} className="flex-1 flex flex-col items-center group h-full">
+                        <span className="text-xs font-semibold text-foreground opacity-0 group-hover:opacity-100 transition-opacity mb-1">
+                          ${(data.revenue / 1000).toFixed(0)}k
+                        </span>
+                        <div className="flex-1 flex items-end w-full">
+                          <div
+                            className="w-full bg-primary rounded-t-md hover:bg-primary/90 hover:shadow-md transition-colors"
+                            style={{
+                              height: `${data.height}%`,
+                              animation: `bar-grow 0.6s ease-out ${i * 100}ms both`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between px-2 gap-2">
+                    {[
+                      { month: "Jan", revenue: 32000, height: 55 },
+                      { month: "Feb", revenue: 42000, height: 70 },
+                      { month: "Mar", revenue: 38000, height: 65 },
+                      { month: "Apr", revenue: 54000, height: 85 },
+                      { month: "May", revenue: 57000, height: 90 },
+                      { month: "Jun", revenue: 63000, height: 100 },
+                    ].map((data, i) => (
+                      <div key={i} className="flex-1 text-center">
+                        <span className="text-xs text-muted-foreground">{data.month}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="pt-4 border-t border-border">
                   <div className="grid grid-cols-3 gap-4 text-center">
@@ -228,7 +236,7 @@ export default function AnalyticsDashboardTemplate() {
         </div>
 
         {/* Tabs Section */}
-        <Tabs defaultValue="overview" className="space-y-4" suppressHydrationWarning>
+        <Tabs defaultValue="overview" className="space-y-4">
           <TabsList>
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -370,26 +378,20 @@ export default function AnalyticsDashboardTemplate() {
           </TabsContent>
         </Tabs>
 
-        {/* Code Preview Card */}
-        <Card className="bg-accent/30">
-          <CardHeader>
-            <CardTitle>Template Code</CardTitle>
-            <CardDescription>
-              This entire dashboard is copy-paste ready. View the source code of this
-              page to see how it's built with your boilerplate components.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex gap-3">
-              <Button variant="outline">
-                View Source Code
-              </Button>
-              <Button
-                onClick={() => alert("Template code copied! (Demo)")}
-              >
-                Copy Template
-              </Button>
-            </div>
+        {/* Template Features Card */}
+        <Card className="border border-primary/20 bg-primary/5">
+          <CardContent className="pt-6">
+            <h4 className="mb-2 font-semibold">📊 Template Features</h4>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li className="font-semibold">✓ 4 key metric cards (revenue, users, conversions, growth)</li>
+              <li className="font-semibold">✓ Revenue overview chart with 6-month data</li>
+              <li className="font-semibold">✓ Recent activity feed with user avatars</li>
+              <li className="font-semibold">✓ Tabbed analytics section (Overview, Analytics, Reports)</li>
+              <li className="font-semibold">✓ Top performing pages table with bounce rates</li>
+              <li className="font-semibold">✓ Traffic sources breakdown with progress bars</li>
+              <li className="font-semibold">✓ Device breakdown statistics</li>
+              <li className="font-semibold">✓ Report generation templates (Monthly, User Behavior, Revenue, Custom)</li>
+            </ul>
           </CardContent>
         </Card>
       </main>

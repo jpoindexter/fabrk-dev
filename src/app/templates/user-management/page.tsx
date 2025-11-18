@@ -388,16 +388,22 @@ export default function UserManagementTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="admin" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">User Management</h1>
-          <p className="mt-2 text-muted-foreground">
-            Manage users, roles, and permissions with TanStack Table
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight">User Management</h1>
+            <p className="mt-2 text-muted-foreground">
+              Manage users, roles, and permissions with TanStack Table
+            </p>
+          </div>
+          <Button className="font-semibold">
+            <UserPlus className="mr-2 h-4 w-4" />
+            Add User
+          </Button>
         </div>
 
         {/* Stats Cards */}

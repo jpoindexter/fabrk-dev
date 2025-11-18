@@ -4,7 +4,6 @@
  */
 
 import Link from "next/link";
-import { ShowcaseNav } from "@/components/showcase/showcase-nav";
 import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Card,
@@ -26,32 +25,48 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import ActivityTimelineDemo from "./activity-timeline-demo";
-import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X } from "lucide-react";
+import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X, LayoutDashboard, FileText, Palette } from "lucide-react";
 
 export default function ComponentsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="dashboard" />
+      <DemoNav />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
-        {/* Showcase Navigation */}
-        <ShowcaseNav />
-
-        {/* Quick Navigation */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Navigation</CardTitle>
-            <CardDescription>Jump to component categories</CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            {["Buttons", "Forms", "Cards", "Typography", "Feedback", "Data Display", "Navigation", "Overlays", "Activity Timeline"].map((cat) => (
-              <Button key={cat} variant="outline" size="sm" asChild>
-                <a href={`#${cat.toLowerCase().replace(/ /g, "-")}`}>{cat}</a>
-              </Button>
-            ))}
-          </CardContent>
-        </Card>
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Button variant="outline" asChild className="gap-2">
+            <a href="/demo">
+              <LayoutDashboard className="h-4 w-4" />
+              Dashboards
+            </a>
+          </Button>
+          <Button variant="outline" asChild className="gap-2">
+            <a href="/demo">
+              <Settings className="h-4 w-4" />
+              Admin Panels
+            </a>
+          </Button>
+          <Button variant="outline" asChild className="gap-2">
+            <a href="/demo">
+              <User className="h-4 w-4" />
+              Account Pages
+            </a>
+          </Button>
+          <Button variant="outline" asChild className="gap-2">
+            <a href="/demo">
+              <FileText className="h-4 w-4" />
+              Marketing
+            </a>
+          </Button>
+          <Button variant="outline" asChild className="gap-2">
+            <a href="/components">
+              <Palette className="h-4 w-4" />
+              Components
+            </a>
+          </Button>
+        </div>
 
         {/* Buttons Section */}
         <section id="buttons" className="space-y-6">
@@ -398,28 +413,6 @@ export default function ComponentsPage() {
         <section id="activity-timeline" className="space-y-6">
           <ActivityTimelineDemo />
         </section>
-
-        {/* Footer Navigation */}
-        <Card>
-          <CardHeader>
-            <CardTitle>More Showcases</CardTitle>
-            <CardDescription>Explore other demo pages</CardDescription>
-          </CardHeader>
-          <CardContent className="grid md:grid-cols-2 gap-4">
-            <Link href="/examples/admin" className="block">
-              <Button variant="outline" className="w-full justify-start">
-                <User className="mr-2 h-4 w-4" />
-                Admin Dashboard Example
-              </Button>
-            </Link>
-            <Link href="/examples/analytics" className="block">
-              <Button variant="outline" className="w-full justify-start">
-                <Settings className="mr-2 h-4 w-4" />
-                Analytics Dashboard
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
       </main>
     </div>
   );

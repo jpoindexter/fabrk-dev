@@ -1,234 +1,122 @@
 /**
- * Demo Playground Page
- * Interactive showcase of key boilerplate features
+ * Template Gallery Hub
+ * Browse templates by category
  */
-
-"use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogoAlt as Logo } from "@/components/home/logo-alt";
-import { ExternalLink, Github } from "lucide-react";
-import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { DemoNav } from "@/components/demo/demo-nav";
+import {
+  LayoutDashboard,
+  Settings,
+  Users,
+  FileText,
+  Palette,
+  ArrowRight,
+} from "lucide-react";
+
+const categories = [
+  {
+    id: "dashboard",
+    name: "Dashboards",
+    description: "Analytics, metrics, and data visualization templates",
+    icon: LayoutDashboard,
+    href: "/templates/dashboards",
+    count: 3,
+  },
+  {
+    id: "admin",
+    name: "Admin Panels",
+    description: "User management and administrative interfaces",
+    icon: Settings,
+    href: "/templates/admin-panels",
+    count: 1,
+  },
+  {
+    id: "account",
+    name: "Account Pages",
+    description: "Settings, billing, security, and user profile pages",
+    icon: Users,
+    href: "/templates/account-pages",
+    count: 3,
+  },
+  {
+    id: "marketing",
+    name: "Marketing",
+    description: "Email templates and documentation layouts",
+    icon: FileText,
+    href: "/templates/marketing",
+    count: 2,
+  },
+  {
+    id: "components",
+    name: "Components",
+    description: "87+ UI components with variants",
+    icon: Palette,
+    href: "/components",
+    count: null,
+  },
+];
 
 export default function DemoPage() {
-  const [activeTab, setActiveTab] = useState("dashboard");
-
-  const demos = [
-    {
-      id: "dashboard",
-      label: "Dashboard",
-      url: "/templates/team-dashboard",
-      description: "Team dashboard with multi-tenancy, RBAC, and organization management",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/team-dashboard/page.tsx",
-    },
-    {
-      id: "settings",
-      label: "Settings",
-      url: "/templates/settings-page",
-      description: "Complete settings page with 4 tabs: profile, notifications, privacy, and team",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/settings-page/page.tsx",
-    },
-    {
-      id: "admin",
-      label: "Admin Panel",
-      url: "/templates/user-management",
-      description: "User management with TanStack Table, sorting, filtering, and actions",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/user-management/page.tsx",
-    },
-    {
-      id: "charts",
-      label: "Analytics",
-      url: "/templates/analytics-dashboard",
-      description: "Full analytics dashboard with charts, metrics, and data visualization",
-      sourceUrl: "https://github.com/yourusername/fabrk/blob/main/src/app/templates/analytics-dashboard/page.tsx",
-    },
-  ];
-
-  const currentDemo = demos.find((d) => d.id === activeTab);
-
   return (
     <div className="min-h-screen bg-background">
-      {/* Main Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          {/* Logo/Home Link */}
-          <Link href="/" className="transition-opacity hover:opacity-80">
-            <Logo size={24} />
-          </Link>
+      <DemoNav />
 
-          {/* Navigation Links */}
-          <div className="flex items-center gap-8">
-            {demos.map((demo) => (
-              <button
-                key={demo.id}
-                onClick={() => setActiveTab(demo.id)}
-                className={`text-sm font-medium transition-colors ${
-                  activeTab === demo.id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {demo.label}
-              </button>
-            ))}
-            <Link
-              href="/templates"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Templates
-            </Link>
-          </div>
+      <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+        {/* Header */}
+        <section className="space-y-4 text-center">
+          <h1 className="text-4xl font-bold">Template Gallery</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Choose a category to explore ready-to-use templates. Each template is copy-paste ready and fully customizable.
+          </p>
+        </section>
 
-          {/* CTA Button */}
-          <Button asChild>
-            <Link href="/">Back Home</Link>
-          </Button>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <div className="border-b bg-card">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Live Demo Playground
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Interact with real pages and components. Click through tabs to explore different areas of the boilerplate.
-            </p>
-
-            {/* Quick Stats */}
-            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm">
-              <div>
-                <div className="text-2xl font-bold text-primary">87</div>
-                <div className="text-muted-foreground">Components</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-primary">8</div>
-                <div className="text-muted-foreground">Templates</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-primary">6</div>
-                <div className="text-muted-foreground">Color Themes</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-primary">95%</div>
-                <div className="text-muted-foreground">Storybook Coverage</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tabbed Playground */}
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" suppressHydrationWarning>
-          {/* Tab Navigation */}
-          <TabsList className="flex w-full gap-2 overflow-x-auto border-b border-border bg-card/60 px-1 py-1">
-            {demos.map((demo) => (
-              <TabsTrigger
-                key={demo.id}
-                value={demo.id}
-                className="whitespace-nowrap px-3 py-1 text-sm"
-              >
-                {demo.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Tab Content */}
-          {demos.map((demo) => (
-            <TabsContent key={demo.id} value={demo.id} className="mt-6">
-              <Card className="overflow-hidden">
-                {/* Demo Info Bar */}
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b bg-muted/50 p-4">
-                  <div className="flex-1">
-                    <h3 className="font-semibold">{demo.label}</h3>
-                    <p className="text-sm text-muted-foreground">{demo.description}</p>
+        {/* Category Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {categories.map((category) => (
+            <Link key={category.id} href={category.href}>
+              <Card className="h-full group hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start gap-3">
+                      <div className="p-3 rounded-lg bg-primary/10 border-2 border-border group-hover:bg-primary/20 transition-colors">
+                        <category.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl">{category.name}</CardTitle>
+                        <CardDescription className="mt-1">
+                          {category.description}
+                        </CardDescription>
+                      </div>
+                    </div>
+                    {category.count && (
+                      <Badge variant="secondary">{category.count}</Badge>
+                    )}
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      asChild
-                    >
-                      <a href={demo.url} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open Full Page
-                      </a>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                    >
-                      <a href={demo.sourceUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        View Source
-                      </a>
-                    </Button>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-muted-foreground">
+                      Browse
+                    </span>
+                    <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
-
-                {/* Iframe Preview */}
-                <div className="relative aspect-[16/10] w-full rounded-lg border border-border bg-muted">
-                  <div className="flex items-center gap-1 border-b border-border/60 bg-card/80 px-3 py-1.5 text-xs text-muted-foreground">
-                    <span className="h-2 w-2 rounded-full bg-destructive" />
-                    <span className="h-2 w-2 rounded-full bg-warning" />
-                    <span className="h-2 w-2 rounded-full bg-success" />
-                    <span className="ml-3 truncate">{demo.url}</span>
-                  </div>
-                  <iframe
-                    src={demo.url}
-                    className="h-[calc(100%-1.75rem)] w-full border-0"
-                    title={`${demo.label} Preview`}
-                    loading="lazy"
-                  />
-                </div>
+                </CardContent>
               </Card>
-            </TabsContent>
+            </Link>
           ))}
-        </Tabs>
-
-        {/* Additional Info */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <Card className="p-6">
-            <h3 className="mb-2 text-lg font-semibold">Fully Interactive</h3>
-            <p className="text-sm text-muted-foreground">
-              These are live pages running the actual boilerplate code. Click buttons, toggle themes, interact with forms - everything works exactly as it will in your app.
-            </p>
-          </Card>
-
-          <Card className="p-6">
-            <h3 className="mb-2 text-lg font-semibold">Ready to Use</h3>
-            <p className="text-sm text-muted-foreground">
-              All pages, components, and templates shown here are production-ready. Copy the code, customize the styling, and ship your SaaS faster.
-            </p>
-          </Card>
         </div>
 
-        {/* CTA Section */}
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold">Explore More</h3>
-            <p className="mt-2 text-muted-foreground">
-              See our complete component library and template gallery
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Button asChild variant="primaryCta">
-                <a href="/components">Browse Components</a>
-              </Button>
-              <Button asChild variant="secondaryCta">
-                <a href="/templates">View Templates</a>
-              </Button>
-              <Button variant="ghost" asChild>
-                <a href="/whats-included">What's Included</a>
-              </Button>
-            </div>
-          </div>
-      </div>
+      </main>
     </div>
   );
 }

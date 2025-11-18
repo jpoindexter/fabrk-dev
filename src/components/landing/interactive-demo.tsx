@@ -38,7 +38,7 @@ export function InteractiveDemo() {
           </div>
 
           {/* Tabbed Demo */}
-          <Tabs defaultValue="team" className="space-y-6" suppressHydrationWarning>
+          <Tabs defaultValue="team" className="space-y-6">
             <TabsList className="grid w-full grid-cols-4 gap-2">
               {DEMO_ROUTES.map((route) => (
                 <TabsTrigger key={route.id} value={route.id} className="text-sm sm:text-base">

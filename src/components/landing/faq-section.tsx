@@ -64,7 +64,7 @@ export function FAQSection() {
           Everything you need to know about Fabrk
         </motion.p>
 
-        <Accordion type="single" collapsible className="w-full space-y-3" suppressHydrationWarning>
+        <Accordion type="single" collapsible className="w-full space-y-3">
           {faqs.map((faq, index) => {
             return (
               <motion.div

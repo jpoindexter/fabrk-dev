@@ -23,15 +23,8 @@ import { cn } from "@/lib/utils";
 
 const showcasePages = [
   {
-    title: "Demo Playground",
-    href: "/demo",
-    icon: MonitorPlay,
-    description: "Interactive preview",
-    badge: "Live Demo",
-  },
-  {
     title: "What's Included",
-    href: "/whats-included",
+    href: "/demo",
     icon: Sparkles,
     description: "Complete overview",
     badge: "Start Here",

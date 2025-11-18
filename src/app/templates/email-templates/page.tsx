@@ -287,18 +287,24 @@ export default function EmailTemplatesShowcase() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav activeDemo="dashboard" />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
-        <div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Email Templates
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            5 production-ready transactional email templates with HTML and text versions
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight">
+              Email Templates
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              5 production-ready transactional email templates with HTML and text versions
+            </p>
+          </div>
+          <Button className="font-semibold">
+            <Download className="mr-2 h-4 w-4" />
+            Download All
+          </Button>
         </div>
 
         {/* Stats */}
@@ -428,7 +434,7 @@ export default function EmailTemplatesShowcase() {
               </div>
             </CardHeader>
             <CardContent>
-              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} suppressHydrationWarning>
+              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="preview" className="font-semibold">
                     <Eye className="mr-2 h-4 w-4" />

@@ -22,12 +22,10 @@ export default auth((req) => {
   const isShowcasePage =
     pathname.startsWith('/demo') ||
     pathname.startsWith('/components') ||
-    pathname.startsWith('/whats-included') ||
     pathname.startsWith('/variations') ||
     pathname.startsWith('/templates') ||
     pathnameWithoutLocale.startsWith('/demo') ||
     pathnameWithoutLocale.startsWith('/components') ||
-    pathnameWithoutLocale.startsWith('/whats-included') ||
     pathnameWithoutLocale.startsWith('/variations') ||
     pathnameWithoutLocale.startsWith('/templates');
 
