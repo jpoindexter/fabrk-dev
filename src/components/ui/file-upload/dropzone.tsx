@@ -49,15 +49,26 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       }
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleClick();
+      }
+    };
+
     return (
       <>
         <div
           data-slot="dropzone"
           ref={ref}
+          role="button"
+          tabIndex={0}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={handleClick}
+          onKeyDown={handleKeyDown}
+          aria-label="Upload files"
           className={cn(
             "cursor-pointer rounded-lg border-2 border-dashed border-border p-8 text-center transition-colors",
             isDragOver && "border-primary bg-primary/5",

@@ -13,6 +13,13 @@ import { OrgRole } from "@prisma/client";
 import { createOrgActivity } from "@/lib/notifications";
 import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 import { logger } from "@/lib/logger";
+import { z } from "zod";
+
+const inviteSchema = z.object({
+  organizationId: z.string().min(1, "Organization ID is required"),
+  email: z.string().email("Invalid email address"),
+  role: z.enum(["OWNER", "ADMIN", "MEMBER", "GUEST"]).optional(),
+});
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
@@ -26,14 +33,8 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     }
 
     const body = await req.json();
-    const { organizationId, email, role } = body;
-
-    if (!organizationId || !email) {
-      return NextResponse.json(
-        { error: "Organization ID and email are required" },
-        { status: 400 }
-      );
-    }
+    const validatedData = inviteSchema.parse(body);
+    const { organizationId, email, role } = validatedData;
 
     // Verify user has permission to invite (must be OWNER or ADMIN)
     const canInvite = await hasOrganizationRole(
@@ -119,6 +120,13 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       },
     });
   } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid input", details: error.issues },
+        { status: 400 }
+      );
+    }
+
     const errorMessage = error instanceof Error ? error.message : "Failed to send invitation";
     logger.error("Failed to send invitation:", errorMessage);
 

@@ -118,6 +118,9 @@ export function Heatmap({
                   return (
                     <div
                       key={String(xLabel)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${cellData.y} × ${cellData.x}: ${cellData.value}`}
                       className={cn(
                         "rounded-sm border flex items-center justify-center cursor-pointer transition-all",
                         isHovered && "scale-110 shadow-md"
@@ -130,6 +133,12 @@ export function Heatmap({
                       onMouseEnter={() => setHoveredCell(cellData)}
                       onMouseLeave={() => setHoveredCell(null)}
                       onClick={() => onCellClick?.(cellData)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          onCellClick?.(cellData);
+                        }
+                      }}
                     >
                       {showValues && (
                         <span className="text-xs font-medium">

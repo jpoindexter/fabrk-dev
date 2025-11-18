@@ -69,6 +69,8 @@ sudo -u postgres createdb fabrk
 
 ## Step 3: Environment Variables
 
+Fabrk uses **runtime validation** for all environment variables to prevent silent failures. Missing or invalid variables will cause immediate startup errors with clear messages.
+
 1. Copy the example environment file:
 
 ```bash
@@ -78,19 +80,20 @@ cp .env.example .env.local
 2. Edit `.env.local` and fill in your values:
 
 ```env
-# Database
+# Required for Development (minimum)
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="generate-a-random-secret-here"  # Min 32 chars
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+# Database (optional in dev, required in production)
 DATABASE_URL="your-postgresql-connection-string-here"
 
-# NextAuth (generate with: openssl rand -base64 32)
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="generate-a-random-secret-here"
-
-# Stripe (from https://dashboard.stripe.com/test/apikeys)
+# Stripe (optional - only if you want to test payments)
 STRIPE_SECRET_KEY="sk_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_..." # (see Stripe setup below)
 
-# Resend Email (from https://resend.com/api-keys)
+# Resend Email (optional - emails will log to console if not set)
 RESEND_API_KEY="re_..."
 EMAIL_FROM="noreply@yourdomain.com"
 
@@ -98,6 +101,8 @@ EMAIL_FROM="noreply@yourdomain.com"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 ```
+
+**Important:** All environment variables are validated at startup. If validation fails, you'll see a clear error message indicating what's wrong. See `/docs/ENV-VALIDATION.md` for complete validation rules.
 
 ### How to Get Each API Key:
 
@@ -220,6 +225,35 @@ npm run stripe:listen
 ---
 
 ## Troubleshooting
+
+### Environment variable validation errors
+If you see errors like:
+```
+❌ Invalid server environment variables:
+{
+  "NEXTAUTH_SECRET": {
+    "_errors": ["String must contain at least 32 character(s)"]
+  }
+}
+```
+
+**Solution:**
+```bash
+# Generate a strong secret
+openssl rand -base64 32
+
+# Add to .env.local
+echo "NEXTAUTH_SECRET=your-generated-secret-here" >> .env.local
+
+# Restart the dev server
+npm run dev
+```
+
+**Common validation issues:**
+- `NEXTAUTH_SECRET` must be at least 32 characters
+- `NEXTAUTH_URL` must be a valid URL (HTTPS in production)
+- Stripe keys must start with correct prefix (`sk_test_` or `sk_live_`)
+- See `/docs/ENV-VALIDATION.md` for complete validation rules
 
 ### "Module not found" errors
 ```bash

@@ -67,9 +67,7 @@ export function ExitIntentPopup({
   cookieExpiry = 7,
 }: ExitIntentPopupProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
-
-  useEffect(() => {
+  const [hasShown, setHasShown] = useState(() => {
     // Check if user already saw popup recently
     const exitIntentShown = localStorage.getItem("exit-intent-shown");
     if (exitIntentShown) {
@@ -78,10 +76,14 @@ export function ExitIntentPopup({
         shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000
       );
       if (new Date() < expiryDate) {
-        setHasShown(true);
-        return;
+        return true;
       }
     }
+    return false;
+  });
+
+  useEffect(() => {
+    if (hasShown) return;
 
     let timeoutId: NodeJS.Timeout;
 
@@ -102,7 +104,7 @@ export function ExitIntentPopup({
       document.removeEventListener("mouseleave", handleMouseLeave);
       if (timeoutId) clearTimeout(timeoutId);
     };
-  }, [hasShown, delay, cookieExpiry]);
+  }, [hasShown, delay]);
 
   const handleClose = () => {
     setIsOpen(false);

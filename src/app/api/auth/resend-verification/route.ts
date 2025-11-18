@@ -12,13 +12,15 @@ import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { randomBytes, createHash } from "crypto";
 import { NextRequest } from "next/server";
+import { z } from "zod";
+
+const resendVerificationSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
 
 async function resendVerificationHandler(request: NextRequest) {
-  const { email } = await request.json();
-
-  if (!email) {
-    throw new ValidationError("Email is required");
-  }
+  const body = await request.json();
+  const { email } = resendVerificationSchema.parse(body);
 
   // Find user
   const user = await prisma.user.findUnique({

@@ -164,8 +164,8 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
       { icon: List, label: "List", before: "- ", after: "" },
     ];
 
-    const isEditorVisible = previewOnly ? false : !editorOnly;
-    const isPreviewVisible = editorOnly ? false : (previewOnly || showPreview);
+    const isEditorVisible = !previewOnly;
+    const isPreviewVisible = !editorOnly && (previewOnly || showPreview);
 
     return (
       <div ref={ref} className={cn("flex flex-col gap-3", className)}>

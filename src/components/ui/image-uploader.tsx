@@ -189,6 +189,12 @@ export function ImageUploader({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !disabled && fileInputRef.current?.click()}
+        onKeyDown={(e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
+            e.preventDefault();
+            fileInputRef.current?.click();
+          }
+        }}
         className={cn(
           "relative flex flex-col items-center justify-center rounded-md border-2 border-dashed bg-muted/20 px-6 py-8 transition-all cursor-pointer",
           isDragging && "border-primary bg-primary/10",

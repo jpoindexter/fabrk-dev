@@ -155,12 +155,20 @@ export function Lightbox({
 
   const lightboxContent = (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Lightbox"
       className={cn(
         "fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm",
         "animate-in fade-in duration-200",
         className
       )}
       onClick={handleBackdropClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      }}
     >
       {/* Close button */}
       <Button

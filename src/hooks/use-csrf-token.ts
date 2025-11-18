@@ -39,11 +39,7 @@ function getCsrfToken(): string | null {
  * ```
  */
 export function useCsrfToken(): string | null {
-  const [token, setToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    setToken(getCsrfToken());
-  }, []);
+  const [token] = useState<string | null>(() => getCsrfToken());
 
   return token;
 }

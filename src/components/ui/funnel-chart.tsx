@@ -71,6 +71,9 @@ export function FunnelChart({
             return (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                aria-label={`${stage.label}: ${stage.value}`}
                 className={cn(
                   "relative transition-all cursor-pointer",
                   isHovered && "scale-105"
@@ -79,6 +82,12 @@ export function FunnelChart({
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onStageClick?.(stage, index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onStageClick?.(stage, index);
+                  }
+                }}
               >
                 <svg
                   width={width}
@@ -113,6 +122,9 @@ export function FunnelChart({
             return (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                aria-label={`${stage.label}: ${stage.value}`}
                 className={cn(
                   "relative transition-all cursor-pointer",
                   isHovered && "scale-105"
@@ -121,6 +133,12 @@ export function FunnelChart({
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onStageClick?.(stage, index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onStageClick?.(stage, index);
+                  }
+                }}
               >
                 <svg
                   width={stageWidth}
@@ -153,6 +171,7 @@ export function FunnelChart({
         {data.map((stage, index) => (
           <div
             key={index}
+            role="presentation"
             className={cn(
               "flex items-center gap-2 transition-opacity",
               hoveredIndex !== null && hoveredIndex !== index && "opacity-50"

@@ -14,7 +14,7 @@ This file provides guidance to Claude Code when working with this repository.
 - Resend + React Email templates
 - Framer Motion (v12.23.24) for animations
 - Radix UI (25+ primitives) + Tailwind CSS 4
-- Vitest (931+ tests, 64% coverage)
+- Vitest (1500+ tests, 1200+ passing, 80% pass rate)
 - Playwright E2E tests
 - Storybook (95% coverage)
 - next-intl (6 languages)
@@ -324,8 +324,45 @@ const t = useTranslations('common');
 return <button>{t('save')}</button>;
 ```
 
+### Environment Variable Usage
+**ALWAYS use validated env vars from `src/lib/env.ts`:**
+
+```typescript
+import { env } from '@/lib/env';
+
+// ✅ GOOD - Type-safe and validated
+const apiKey = env.server.STRIPE_SECRET_KEY;
+const appUrl = env.client.NEXT_PUBLIC_APP_URL;
+
+// ❌ BAD - No validation or type safety
+const apiKey = process.env.STRIPE_SECRET_KEY;
+```
+
+**When adding new environment variables:**
+1. Add to Zod schema in `src/lib/env.ts` first
+2. Update `.env.example` with documentation
+3. Use via `env.server` or `env.client` in code
+4. Never use `process.env` directly (bypasses validation)
+
+### CSRF Protection Pattern
+**Auth routes automatically protected by Next.js:**
+```typescript
+// In API routes handling authentication
+import { auth } from '@/lib/auth';
+
+// CSRF tokens handled by NextAuth automatically
+const session = await auth();
+```
+
+**For custom forms requiring CSRF:**
+```typescript
+import { getCsrfToken } from 'next-auth/react';
+
+const csrfToken = await getCsrfToken();
+```
+
 ### Testing Strategy
-- **Vitest** - Unit/integration tests (931+ tests)
+- **Vitest** - Unit/integration tests (1500+ tests total, 1200+ passing)
 - **Playwright** - E2E tests (critical user flows)
 - **Storybook** - Visual testing (95% coverage)
 - **Accessibility** - axe/playwright a11y tests
@@ -339,19 +376,41 @@ npm run test:all
 
 ## Commonly Modified Files
 
-1. **`src/config.js`** - App settings, pricing, feature flags
-2. **`src/app/[locale]/page.tsx`** - Landing page content
-3. **`src/components/landing/*`** - Landing page sections (with animations)
-4. **`src/components/ui/*`** - Theme-using UI components
-5. **`src/lib/auth.ts`** - Auth configuration
-6. **`src/app/api/*`** - API endpoints
-7. **`prisma/schema.prisma`** - Database schema
-8. **`src/app/globals.css`** - Theme colors & design tokens
-9. **`src/emails/*`** - Email templates
+1. **`src/config.js`** - App settings, pricing, feature flags (uses validated env vars)
+2. **`src/lib/env.ts`** - Environment variable validation (add new vars here first)
+3. **`src/app/[locale]/page.tsx`** - Landing page content
+4. **`src/components/landing/*`** - Landing page sections (with animations)
+5. **`src/components/ui/*`** - Theme-using UI components
+6. **`src/lib/auth.ts`** - Auth configuration
+7. **`src/app/api/*`** - API endpoints
+8. **`prisma/schema.prisma`** - Database schema
+9. **`src/app/globals.css`** - Theme colors & design tokens
+10. **`src/emails/*`** - Email templates
 
 ---
 
 ## Key Technical Decisions
+
+### Environment Variable Validation
+- **Type-Safe Validation:** All environment variables validated with Zod at startup
+- **Fail Loudly:** Invalid/missing variables cause immediate startup failure with clear errors
+- **Conditional Requirements:** Variables required based on feature flags (e.g., Stripe keys only if payments enabled)
+- **Production Safety:** Critical vars like `DATABASE_URL` required in production, optional in dev
+- **Format Validation:** API keys validated to match expected formats (e.g., `sk_test_` for Stripe)
+
+**Pattern for using environment variables:**
+```typescript
+import { env } from '@/lib/env';
+
+// Server-side (never exposed to browser)
+const dbUrl = env.server.DATABASE_URL;
+const stripeKey = env.server.STRIPE_SECRET_KEY;
+
+// Client-side (must be NEXT_PUBLIC_* prefix)
+const appUrl = env.client.NEXT_PUBLIC_APP_URL;
+```
+
+**See:** `/docs/ENV-VALIDATION.md` for complete guide
 
 ### Payment Flow
 - **Mode:** Supports both one-time purchases AND subscriptions
@@ -380,6 +439,15 @@ try {
 - **Session Versioning:** Increment `User.sessionVersion` to invalidate all sessions
 - **API Keys:** 256-bit crypto + SHA-256 hashing + timing-safe comparison
 - **Webhook Signatures:** HMAC-SHA256 verification (ALWAYS verify)
+- **CSRF Protection:** Auth routes protected with Next.js built-in CSRF tokens
+- **Environment Validation:** All sensitive keys validated at startup (never fail silently)
+
+### Accessibility
+- **WCAG 2.1 AA Compliant:** All components meet accessibility standards
+- **Keyboard Navigation:** Full keyboard support across UI components
+- **Screen Reader Support:** Proper ARIA labels and semantic HTML
+- **Focus Management:** Clear focus indicators and logical tab order
+- **Color Contrast:** Minimum 4.5:1 contrast ratio for text
 
 ---
 
@@ -399,6 +467,32 @@ Located in `src/config.js`:
 ---
 
 ## Troubleshooting Common Issues
+
+### Environment Variable Validation Errors
+**Cause:** Missing or invalid environment variables
+
+**Symptoms:**
+```
+❌ Invalid server environment variables:
+{
+  "NEXTAUTH_SECRET": {
+    "_errors": ["String must contain at least 32 character(s)"]
+  }
+}
+```
+
+**Solution:**
+1. Check the error message for the specific variable
+2. Add or fix the variable in `.env.local`:
+   ```bash
+   # Generate a strong secret
+   openssl rand -base64 32
+
+   # Add to .env.local
+   echo "NEXTAUTH_SECRET=your-generated-secret" >> .env.local
+   ```
+3. Verify format matches expectations (e.g., Stripe keys start with `sk_test_` or `sk_live_`)
+4. See `/docs/ENV-VALIDATION.md` for complete validation rules
 
 ### Hydration Mismatch Errors
 **Cause:** Radix UI components with different IDs on server vs client
@@ -436,6 +530,19 @@ npm run dev              # Terminal 2: Start app
 stripe trigger checkout.session.completed  # Terminal 3: Trigger event
 ```
 
+### TypeScript Errors with Environment Variables
+**Cause:** Using `process.env` instead of validated `env` object
+
+**Solution:**
+```typescript
+// ❌ BAD - No type safety
+const key = process.env.STRIPE_SECRET_KEY;
+
+// ✅ GOOD - Type-safe and validated
+import { env } from '@/lib/env';
+const key = env.server.STRIPE_SECRET_KEY;
+```
+
 ---
 
 ## Key Metrics
@@ -443,10 +550,12 @@ stripe trigger checkout.session.completed  # Terminal 3: Trigger event
 - **Files:** 156 (cleaner than competitors)
 - **Components:** 87 (30% more than shadcn/ui's 67)
 - **Themes:** 6 (switchable)
-- **Test Coverage:** 64% with 931+ tests
-- **Storybook:** 95% coverage
-- **Documentation:** 400KB across 24 guides
+- **Test Suite:** 1500+ total tests, 1200+ passing (80% pass rate)
+- **Storybook:** 95% component coverage
+- **Documentation:** 400KB+ across 25+ guides
 - **TypeScript:** 100% strict mode
+- **Accessibility:** WCAG 2.1 AA compliant
+- **Security:** Environment validation, CSRF protection, secure session management
 - **Performance:** Production-ready with CI/CD
 
 ---
@@ -454,7 +563,8 @@ stripe trigger checkout.session.completed  # Terminal 3: Trigger event
 ## Documentation Reference
 
 **Key docs to read first:**
-- `/docs/QUICK-START.md` - Setup guide
+- `/docs/01-getting-started/QUICK-START.md` - Setup guide
+- `/docs/ENV-VALIDATION.md` - Environment variable validation guide
 - `/docs/COMPONENT-SHOWCASE.md` - All 87 components
 - `/docs/API-REFERENCE.md` - Complete API docs
 - `/docs/TESTING-GUIDE.md` - Testing setup
@@ -486,5 +596,5 @@ When adding features, ask: "Does this help ship faster?" If no, delete it.
 
 ---
 
-**Last Updated:** November 17, 2025
+**Last Updated:** November 18, 2025
 **Version:** 1.0.0

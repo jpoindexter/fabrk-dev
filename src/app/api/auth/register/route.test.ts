@@ -39,6 +39,21 @@ vi.mock("@/lib/logger", () => ({
   },
 }));
 
+// Mock rate limiting middleware to pass through
+vi.mock("@/lib/rate-limit/middleware", () => ({
+  withRateLimit: (handler: any) => handler,
+}));
+
+// Mock CSRF protection to pass through
+vi.mock("@/lib/security/csrf", () => ({
+  withCsrfProtection: (handler: any) => handler,
+}));
+
+// Mock analytics
+vi.mock("@/lib/analytics/events", () => ({
+  trackUserSignup: vi.fn(),
+}));
+
 describe("/api/auth/register", () => {
   beforeEach(() => {
     vi.clearAllMocks();

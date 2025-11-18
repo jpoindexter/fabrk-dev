@@ -6,7 +6,23 @@
  * 1. Copy this to your project root if needed
  * 2. Update all values to match your app
  * 3. Never commit real API keys to git
+ *
+ * IMPORTANT: Environment variables are now validated via src/lib/env.ts
+ * Critical variables will fail loudly if missing in production
  */
+
+// Import validated environment variables for type safety
+// Note: Using dynamic import to avoid module system conflicts
+let env;
+try {
+  // Only import env validation in Node.js environment (not during Next.js client bundling)
+  if (typeof window === 'undefined') {
+    env = require('./lib/env').env;
+  }
+} catch (error) {
+  // Fallback to process.env if env.ts hasn't been loaded yet
+  env = { server: process.env, client: process.env };
+}
 
 const config = {
   // ============================================================================
@@ -15,22 +31,22 @@ const config = {
   app: {
     name: "Fabrk Boilerplate",
     description: "Production-ready SaaS boilerplate with authentication, payments, and dashboard",
-    url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-    author: process.env.NEXT_PUBLIC_AUTHOR_NAME || "Fabrk Team",
-    supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@example.com",
+    url: env?.client?.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    author: env?.client?.NEXT_PUBLIC_AUTHOR_NAME || process.env.NEXT_PUBLIC_AUTHOR_NAME || "Fabrk Team",
+    supportEmail: env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@example.com",
   },
 
   // ============================================================================
   // AUTHENTICATION (NextAuth v5)
   // ============================================================================
   auth: {
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: env?.server?.NEXTAUTH_SECRET || process.env.NEXTAUTH_SECRET,
     sessionMaxAge: 30 * 24 * 60 * 60, // 30 days
     providers: {
       google: {
-        enabled: !!process.env.GOOGLE_CLIENT_ID,
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        enabled: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
+        clientId: env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID,
+        clientSecret: env?.server?.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET,
       },
       credentials: {
         enabled: true, // Email/password auth
@@ -40,17 +56,20 @@ const config = {
 
   // ============================================================================
   // STRIPE PAYMENT CONFIGURATION
+  // CRITICAL: Price IDs must be set in production (no fallbacks)
   // ============================================================================
   stripe: {
-    publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-    secretKey: process.env.STRIPE_SECRET_KEY,
-    webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+    publishableKey: env?.client?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    secretKey: env?.server?.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY,
+    webhookSecret: env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
 
     // Your Stripe Price IDs
+    // IMPORTANT: These fallbacks only work in development
+    // In production, these MUST be set or the app will fail during env validation
     prices: {
-      starter: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "price_starter",
-      professional: process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || "price_professional",
-      enterprise: process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || "price_enterprise",
+      starter: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_STARTER || process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "price_starter",
+      professional: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || "price_professional",
+      enterprise: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || "price_enterprise",
     },
   },
 
@@ -59,21 +78,22 @@ const config = {
   // ============================================================================
   email: {
     provider: "resend", // or "sendgrid", "ses", etc.
-    apiKey: process.env.RESEND_API_KEY,
+    apiKey: env?.server?.RESEND_API_KEY || process.env.RESEND_API_KEY,
     from: {
       name: "Fabrk Boilerplate",
-      email: process.env.EMAIL_FROM || "noreply@example.com",
+      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "noreply@example.com",
     },
-    replyTo: process.env.EMAIL_REPLY_TO || "support@example.com",
+    replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || "support@example.com",
   },
 
   // ============================================================================
   // DATABASE (Prisma)
+  // CRITICAL: DATABASE_URL is required in production
   // ============================================================================
   database: {
-    url: process.env.DATABASE_URL,
+    url: env?.server?.DATABASE_URL || process.env.DATABASE_URL,
     // For connection pooling (recommended for serverless)
-    directUrl: process.env.DATABASE_URL_DIRECT,
+    directUrl: env?.server?.DATABASE_URL_DIRECT || process.env.DATABASE_URL_DIRECT,
   },
 
   // ============================================================================
@@ -83,12 +103,14 @@ const config = {
     // Authentication features
     emailVerification: true,
     passwordReset: true,
-    googleAuth: !!process.env.GOOGLE_CLIENT_ID,
+    googleAuth: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
 
     // Payment features
     subscriptions: true,
     oneTimePurchases: true,
-    trialPeriod: true,
+    // TODO: Trial period - Database field exists (User.trialEndsAt) but checkout flow
+    // needs implementation. Set trialEndsAt on user creation and check in middleware/API routes.
+    trialPeriod: false, // Not fully implemented
 
     // Dashboard features
     analytics: false, // Enable when ready
@@ -101,21 +123,24 @@ const config = {
     changelog: false,
 
     // Search features
-    algoliaSearch: !!(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID && process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY),
+    algoliaSearch: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+                      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
     commandPalette: true, // ⌘K keyboard shortcut
 
     // CMS features
-    sanityCMS: !!(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET),
+    sanityCMS: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+                  (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
   },
 
   // ============================================================================
   // SEARCH CONFIGURATION (Algolia)
   // ============================================================================
   search: {
-    enabled: !!(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID && process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY),
-    appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    searchApiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
-    adminApiKey: process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
+    enabled: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
+                (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
+    appId: env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    searchApiKey: env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+    adminApiKey: env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
     indices: {
       pages: 'pages',
       components: 'components',
@@ -128,10 +153,11 @@ const config = {
   // CMS CONFIGURATION (Sanity)
   // ============================================================================
   cms: {
-    enabled: !!(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_DATASET),
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-    apiToken: process.env.SANITY_API_TOKEN, // Server-side only
+    enabled: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
+                (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
+    projectId: env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET,
+    apiToken: env?.server?.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Server-side only
     studio: {
       basePath: '/studio', // Studio accessible at /studio
     },
@@ -149,7 +175,7 @@ const config = {
     starter: {
       name: "Starter",
       price: 29,
-      priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
+      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_STARTER || process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
       features: [
         "All basic features",
         "Increased limits",
@@ -160,7 +186,7 @@ const config = {
     professional: {
       name: "Professional",
       price: 99,
-      priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
+      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
       features: [
         "All Starter features",
         "Advanced analytics",
@@ -172,7 +198,7 @@ const config = {
     enterprise: {
       name: "Enterprise",
       price: "Custom",
-      priceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
+      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
       features: [
         "All Professional features",
         "Unlimited usage",
