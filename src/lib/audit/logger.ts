@@ -4,6 +4,7 @@
  */
 
 import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 export type AuditAction =
   | 'org.created'
@@ -56,7 +57,7 @@ export async function logAudit(options: AuditLogOptions): Promise<void> {
       },
     });
   } catch (error: unknown) {
-    console.error('Failed to create audit log:', error);
+    logger.error('Failed to create audit log', error);
     // Don't throw - audit logging should not break the main flow
   }
 }

@@ -11,6 +11,8 @@
  * - Error tracking
  */
 
+import { logger } from "@/lib/logger";
+
 export type AnalyticsProvider = "ga4" | "plausible" | "posthog" | "mixpanel" | "custom";
 
 // Event definitions (type-safe)
@@ -102,7 +104,7 @@ export function initAnalytics(options: AnalyticsConfig) {
   config = { ...config, ...options };
 
   if (config.debug) {
-    console.log("[Analytics] Initialized with providers:", config.providers);
+    logger.debug("[Analytics] Initialized with providers", { providers: config.providers });
   }
 }
 
@@ -117,7 +119,7 @@ export function trackEvent<T extends AnalyticsEvent>(
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Event:", event, props);
+    logger.debug("[Analytics] Event", { event, props });
   }
 
   config.providers.forEach((provider) => {
@@ -152,7 +154,7 @@ export function identifyUser(userId: string, properties?: UserProperties) {
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Identify user:", userId, properties);
+    logger.debug("[Analytics] Identify user", { userId, properties });
   }
 
   config.providers.forEach((provider) => {
@@ -183,7 +185,7 @@ export function trackRevenue(
   if (!config.enabled) return;
 
   if (config.debug) {
-    console.log("[Analytics] Revenue:", amount, currency, transactionId);
+    logger.debug("[Analytics] Revenue", { amount, currency, transactionId });
   }
 
   // GA4 purchase event
@@ -289,7 +291,7 @@ function trackCustomEvent(event: string, props?: Record<string, unknown>) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ event, props, timestamp: new Date().toISOString() }),
     }).catch((error) => {
-      console.error("[Analytics] Failed to send custom event:", error);
+      logger.error("[Analytics] Failed to send custom event", error);
     });
   }
 }

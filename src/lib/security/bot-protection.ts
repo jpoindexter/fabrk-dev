@@ -11,6 +11,7 @@
  */
 
 import { NextRequest } from "next/server";
+import { logger } from "@/lib/logger";
 
 export type BotType = "good" | "bad" | "unknown";
 
@@ -252,7 +253,7 @@ export async function verifyHCaptcha(token: string): Promise<CaptchaVerification
   const secret = process.env.HCAPTCHA_SECRET_KEY;
 
   if (!secret) {
-    console.error("[Bot Protection] hCaptcha secret not configured");
+    logger.error("[Bot Protection] hCaptcha secret not configured");
     return { success: false, errorCodes: ["missing-secret"] };
   }
 
@@ -272,7 +273,7 @@ export async function verifyHCaptcha(token: string): Promise<CaptchaVerification
       errorCodes: data["error-codes"],
     };
   } catch (error: unknown) {
-    console.error("[Bot Protection] hCaptcha verification error:", error);
+    logger.error("[Bot Protection] hCaptcha verification error", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }
 }
@@ -287,7 +288,7 @@ export async function verifyRecaptcha(
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!secret) {
-    console.error("[Bot Protection] reCAPTCHA secret not configured");
+    logger.error("[Bot Protection] reCAPTCHA secret not configured");
     return { success: false, errorCodes: ["missing-secret"] };
   }
 
@@ -308,7 +309,7 @@ export async function verifyRecaptcha(
       errorCodes: data["error-codes"],
     };
   } catch (error: unknown) {
-    console.error("[Bot Protection] reCAPTCHA verification error:", error);
+    logger.error("[Bot Protection] reCAPTCHA verification error", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }
 }
@@ -320,7 +321,7 @@ export async function verifyTurnstile(token: string): Promise<CaptchaVerificatio
   const secret = process.env.TURNSTILE_SECRET_KEY;
 
   if (!secret) {
-    console.error("[Bot Protection] Turnstile secret not configured");
+    logger.error("[Bot Protection] Turnstile secret not configured");
     return { success: false, errorCodes: ["missing-secret"] };
   }
 
@@ -340,7 +341,7 @@ export async function verifyTurnstile(token: string): Promise<CaptchaVerificatio
       errorCodes: data["error-codes"],
     };
   } catch (error: unknown) {
-    console.error("[Bot Protection] Turnstile verification error:", error);
+    logger.error("[Bot Protection] Turnstile verification error", error);
     return { success: false, errorCodes: ["verification-failed"] };
   }
 }

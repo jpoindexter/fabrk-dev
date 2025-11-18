@@ -11,6 +11,8 @@
  * - Optional Sentry integration
  */
 
+import { logger } from "@/lib/logger";
+
 export interface ErrorContext {
   userId?: string;
   userEmail?: string;
@@ -86,7 +88,7 @@ export function initErrorTracking(options?: {
     });
   }
 
-  console.log("[Error Tracking] Initialized");
+  logger.info("[Error Tracking] Initialized");
 }
 
 /**
@@ -130,9 +132,9 @@ export function captureError(
     errorStore.shift();
   }
 
-  // Log to console in development
+  // Log in development
   if (process.env.NODE_ENV === "development") {
-    console.error("[Error Tracker]", errorMessage, context);
+    logger.error("[Error Tracker]", { message: errorMessage, context });
   }
 
   // Send to Sentry if available
@@ -160,7 +162,7 @@ export function captureWarning(message: string, context?: ErrorContext): string 
   errorStore.push(report);
 
   if (process.env.NODE_ENV === "development") {
-    console.warn("[Error Tracker - Warning]", message, context);
+    logger.warn("[Error Tracker - Warning]", { message, context });
   }
 
   return report.id;
@@ -226,7 +228,7 @@ export function trackPerformance(metric: Omit<PerformanceMetric, "timestamp">) {
   }
 
   if (process.env.NODE_ENV === "development") {
-    console.log(`[Performance] ${metric.name}: ${metric.value}${metric.unit}`);
+    logger.debug(`[Performance] ${metric.name}: ${metric.value}${metric.unit}`);
   }
 
   // Send to Sentry if available

@@ -10,6 +10,8 @@
  * - Incident investigation support
  */
 
+import { logger } from "@/lib/logger";
+
 export type AuditEventType =
   // Authentication events
   | "auth.login"
@@ -106,9 +108,9 @@ export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp
   // Store log (in production, save to database)
   auditLogs.push(entry);
 
-  // Log critical events to console immediately
+  // Log critical events immediately
   if (entry.severity === "critical" || entry.severity === "high") {
-    console.error("[Audit Log - CRITICAL]", {
+    logger.error("[Audit Log - CRITICAL]", {
       eventType: entry.eventType,
       userId: entry.userId,
       action: entry.action,

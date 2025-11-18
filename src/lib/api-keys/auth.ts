@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { hashApiKey } from "./hasher";
 import { isValidApiKeyFormat } from "./generator";
+import { logger } from "@/lib/logger";
 
 /**
  * API Key Authentication
@@ -54,11 +55,11 @@ export async function validateApiKey(key: string): Promise<ValidatedApiKey | nul
     }
 
     // Track usage (async, don't wait)
-    trackApiKeyUsage(apiKey.id).catch(console.error);
+    trackApiKeyUsage(apiKey.id).catch((err) => logger.error("Failed to track API key usage", err));
 
     return apiKey;
   } catch (error: unknown) {
-    console.error("Error validating API key:", error);
+    logger.error("Error validating API key", error);
     return null;
   }
 }

@@ -107,7 +107,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       image: matterResult.data.image,
       content: matterResult.content,
     };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(`Error reading post ${slug}:`, error);
     return null;
   }

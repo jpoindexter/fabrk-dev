@@ -240,7 +240,27 @@ export async function queueEmail(params: {
 }
 
 /**
- * Queue welcome email (for purchases)
+ * Queues a welcome email for background sending (typically after purchase)
+ * Includes license key and magic login link if provided
+ *
+ * @param params - Welcome email parameters
+ * @param params.to - Recipient email address
+ * @param params.name - User's name for personalization
+ * @param params.licenseKey - Optional license key to include
+ * @param params.magicLink - Optional magic login link
+ * @param params.purchaseId - Optional purchase ID for tracking
+ * @param params.userId - Optional user ID for tracking
+ * @returns Promise with success status and emailQueueId
+ *
+ * @example
+ * ```typescript
+ * await queueWelcomeEmail({
+ *   to: "user@example.com",
+ *   name: "John Doe",
+ *   licenseKey: "LICENSE-123-ABC",
+ *   purchaseId: "purchase_456"
+ * });
+ * ```
  */
 export async function queueWelcomeEmail(params: {
   to: string;
@@ -281,7 +301,23 @@ export async function queueWelcomeEmail(params: {
 }
 
 /**
- * Queue verification email
+ * Queues an email verification email for background sending
+ * Generates verification URL with token (24-hour expiry)
+ *
+ * @param params - Verification email parameters
+ * @param params.to - Recipient email address
+ * @param params.token - Verification token
+ * @param params.userId - Optional user ID for tracking
+ * @returns Promise with success status and emailQueueId
+ *
+ * @example
+ * ```typescript
+ * await queueVerificationEmail({
+ *   to: "user@example.com",
+ *   token: "verify_token_abc123",
+ *   userId: "user_123"
+ * });
+ * ```
  */
 export async function queueVerificationEmail(params: {
   to: string;
@@ -309,7 +345,23 @@ export async function queueVerificationEmail(params: {
 }
 
 /**
- * Queue password reset email
+ * Queues a password reset email for background sending
+ * Generates reset URL with token (1-hour expiry)
+ *
+ * @param params - Reset email parameters
+ * @param params.to - Recipient email address
+ * @param params.token - Password reset token
+ * @param params.userId - Optional user ID for tracking
+ * @returns Promise with success status and emailQueueId
+ *
+ * @example
+ * ```typescript
+ * await queueResetEmail({
+ *   to: "user@example.com",
+ *   token: "reset_token_xyz789",
+ *   userId: "user_123"
+ * });
+ * ```
  */
 export async function queueResetEmail(params: {
   to: string;

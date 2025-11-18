@@ -12,6 +12,7 @@
  */
 
 import { AuditLog } from "./audit-log";
+import { logger } from "@/lib/logger";
 
 export interface GDPRDataExport {
   userId: string;
@@ -184,7 +185,7 @@ export async function recordConsent(consent: Omit<ConsentRecord, "consentDate">)
   // In production, save to database
   // await prisma.consent.create({ data: record });
 
-  console.log("[GDPR] Consent recorded:", record);
+  logger.info("[GDPR] Consent recorded", { record });
 }
 
 /**

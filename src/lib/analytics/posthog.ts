@@ -4,6 +4,7 @@
  */
 
 import { PostHog } from 'posthog-node';
+import { logger } from '@/lib/logger';
 
 // Server-side PostHog client (singleton)
 let posthogClient: PostHog | null = null;
@@ -11,7 +12,7 @@ let posthogClient: PostHog | null = null;
 export function getPostHogClient(): PostHog | null {
   // Only initialize if API key is configured
   if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-    console.warn('PostHog API key not configured. Analytics disabled.');
+    logger.warn('PostHog API key not configured. Analytics disabled.');
     return null;
   }
 
