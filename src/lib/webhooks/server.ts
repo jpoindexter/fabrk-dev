@@ -4,12 +4,99 @@
  */
 
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import * as crypto from "crypto";
 import { WebhookEvent, isValidEvent } from "./events";
 
+/**
+ * Type guard for HTTP errors with status codes
+ */
+interface HttpError extends Error {
+  status?: number;
+}
+
+function isHttpError(error: unknown): error is HttpError {
+  return error instanceof Error && 'status' in error;
+}
+
+/**
+ * Webhook event payload types
+ * Defines the structure of data for each webhook event type
+ */
+
+// Organization member event payloads
+interface OrgMemberPayload {
+  memberId: string;
+  userId: string;
+  email: string;
+  role?: string;
+}
+
+interface OrgMemberRoleChangedPayload extends OrgMemberPayload {
+  previousRole: string;
+  newRole: string;
+}
+
+// Organization event payloads
+interface OrgPayload {
+  organizationId: string;
+  name: string;
+  slug?: string;
+}
+
+// Payment event payloads
+interface PaymentPayload {
+  paymentId: string;
+  amount: number;
+  currency: string;
+  status: string;
+}
+
+interface PaymentFailedPayload extends PaymentPayload {
+  errorMessage: string;
+}
+
+// Subscription event payloads
+interface SubscriptionPayload {
+  subscriptionId: string;
+  planId: string;
+  status: string;
+  currentPeriodStart?: Date;
+  currentPeriodEnd?: Date;
+}
+
+// API Key event payloads
+interface ApiKeyPayload {
+  apiKeyId: string;
+  name: string;
+  createdAt?: Date;
+  revokedAt?: Date;
+}
+
+// Security event payloads
+interface SecurityPayload {
+  userId: string;
+  action: string;
+  timestamp: Date;
+}
+
+/**
+ * Union type of all possible webhook event data payloads
+ */
+export type WebhookEventData =
+  | OrgMemberPayload
+  | OrgMemberRoleChangedPayload
+  | OrgPayload
+  | PaymentPayload
+  | PaymentFailedPayload
+  | SubscriptionPayload
+  | ApiKeyPayload
+  | SecurityPayload
+  | Record<string, unknown>; // Fallback for custom events
+
 export interface WebhookPayload {
   event: WebhookEvent;
-  data: Record<string, any>;
+  data: WebhookEventData;
   organizationId: string;
   timestamp: string;
 }
@@ -35,7 +122,7 @@ export function generateWebhookSecret(): string {
 export async function triggerWebhook(
   organizationId: string,
   event: WebhookEvent,
-  data: Record<string, any>
+  data: WebhookEventData
 ): Promise<void> {
   if (!isValidEvent(event)) {
     return;
@@ -78,7 +165,7 @@ export async function triggerWebhook(
 export async function deliverWebhook(
   webhookId: string,
   event: WebhookEvent,
-  data: Record<string, any>
+  data: WebhookEventData
 ): Promise<void> {
   try {
     // Fetch webhook details
@@ -114,7 +201,8 @@ export async function deliverWebhook(
       data: {
         webhookId,
         event,
-        payload: payload as any,
+        // Prisma JSON field - convert to unknown first for type safety
+        payload: payload as unknown as Prisma.InputJsonValue,
         status: "pending",
         attempts: 1,
       },
@@ -160,7 +248,7 @@ export async function deliverWebhook(
         where: { id: delivery.id },
         data: {
           status: "failed",
-          statusCode: error instanceof Error && "status" in error ? (error as any).status : null,
+          statusCode: isHttpError(error) ? error.status ?? null : null,
           response: errorMessage.substring(0, 5000),
           nextRetryAt: calculateNextRetry(1),
         },
@@ -212,7 +300,8 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
     }
 
     const webhook = delivery.webhook;
-    const payload = delivery.payload as any;
+    // Cast from Prisma JsonValue to our typed payload
+    const payload = delivery.payload as unknown as WebhookPayload;
     const payloadString = JSON.stringify(payload);
     const signature = signPayload(payloadString, webhook.secret);
 
@@ -268,7 +357,7 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
         where: { id: deliveryId },
         data: {
           status: "failed",
-          statusCode: error instanceof Error && "status" in error ? (error as any).status : null,
+          statusCode: isHttpError(error) ? error.status ?? null : null,
           response: errorMessage.substring(0, 5000),
           nextRetryAt: shouldRetry ? calculateNextRetry(newAttempts) : null,
         },

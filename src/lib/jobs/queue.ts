@@ -12,6 +12,7 @@
  */
 
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { captureError } from "@/lib/monitoring";
 import { logger } from "@/lib/logger";
 
@@ -30,29 +31,29 @@ export type JobType =
 
 export type JobPriority = "low" | "normal" | "high" | "urgent";
 
-export interface JobData<T = any> {
+export interface JobData<T = unknown> {
   type: JobType;
   payload: T;
   priority?: JobPriority;
   maxAttempts?: number;
   scheduledFor?: Date;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
-export interface JobResult<T = any> {
+export interface JobResult<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;
 }
 
 // Job handler type
-export type JobHandler<TInput = any, TOutput = any> = (
+export type JobHandler<TInput = unknown, TOutput = unknown> = (
   data: TInput,
   jobId: string
 ) => Promise<JobResult<TOutput>>;
 
-// Job registry
-const jobHandlers: Map<JobType, JobHandler> = new Map();
+// Job registry - use flexible typing to allow different handler signatures
+const jobHandlers: Map<JobType, JobHandler<unknown, unknown>> = new Map();
 
 /**
  * Priority mapping
@@ -67,17 +68,18 @@ const PRIORITY_MAP: Record<JobPriority, number> = {
 /**
  * Register job handler
  */
-export function registerJobHandler<TInput = any, TOutput = any>(
+export function registerJobHandler<TInput = unknown, TOutput = unknown>(
   type: JobType,
   handler: JobHandler<TInput, TOutput>
 ) {
-  jobHandlers.set(type, handler);
+  // Store handler with type erasure to allow different signatures
+  jobHandlers.set(type, handler as JobHandler<unknown, unknown>);
 }
 
 /**
  * Enqueue a job
  */
-export async function enqueueJob<T = any>(
+export async function enqueueJob<T = unknown>(
   data: JobData<T>
 ): Promise<string> {
   const priority =
@@ -89,7 +91,8 @@ export async function enqueueJob<T = any>(
       status: "PENDING",
       priority,
       maxAttempts: data.maxAttempts || 3,
-      data: data.payload as any,
+      // Prisma JSON field
+      data: data.payload as Prisma.InputJsonValue,
       scheduledFor: data.scheduledFor,
     },
   });
@@ -159,7 +162,8 @@ export async function processNextJob(): Promise<boolean> {
         where: { id: job.id },
         data: {
           status: "COMPLETED",
-          result: result.data as any,
+          // Prisma JSON field
+          result: result.data as Prisma.InputJsonValue,
           completedAt: new Date(),
         },
       });
@@ -388,7 +392,7 @@ registerJobHandler<{ to: string; subject: string; html: string }>(
 );
 
 // Webhook send job
-registerJobHandler<{ url: string; payload: any }>(
+registerJobHandler<{ url: string; payload: unknown }>(
   "webhook.send",
   async (data) => {
     try {

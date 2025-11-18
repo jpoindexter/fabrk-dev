@@ -36,11 +36,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value:
       "default-src 'self'; " +
-      // Scripts: Nonce-based CSP (middleware injects unique nonce per request)
-      // Note: 'unsafe-inline' removed for security, nonce injected by middleware
-      // Development uses 'unsafe-eval' for hot module reloading
-      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://va.vercel-scripts.com " +
-      (process.env.NODE_ENV === "production" ? "" : "'unsafe-eval' ") + "; " +
+      // Scripts: Nonce-based CSP for production (middleware injects unique nonce per request)
+      // Development: Keep 'unsafe-inline' and 'unsafe-eval' for HMR
+      // Production: Remove unsafe directives, rely on nonce from middleware
+      (process.env.NODE_ENV === "production"
+        ? "script-src 'self' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com; "
+        : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com; ") +
       // Styles: Allow self and inline styles for Tailwind/styled components
       // Note: 'unsafe-inline' required for Tailwind CSS and CSS-in-JS
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +

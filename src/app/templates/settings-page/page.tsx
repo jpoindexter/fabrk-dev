@@ -232,7 +232,7 @@ export default function SettingsPageTemplate() {
                     <Input
                       id="fullname"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Enter your full name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -242,7 +242,7 @@ export default function SettingsPageTemplate() {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="you@example.com"
                     />
                   </div>
                   <div className="space-y-2">
@@ -252,7 +252,7 @@ export default function SettingsPageTemplate() {
                     <Input
                       id="company"
                       type="text"
-                      placeholder="Acme Inc."
+                      placeholder="Your company name"
                     />
                   </div>
                   <div className="space-y-2">
@@ -389,15 +389,16 @@ export default function SettingsPageTemplate() {
                 <div>
                   <h3 className="mb-4 text-lg font-semibold">Payment Methods</h3>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
+                    {/* Example payment method - replace with real data from Stripe API */}
+                    {/* <div className="flex items-center justify-between rounded-lg border border-border bg-muted p-4">
                       <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded border border-border bg-background font-semibold">
                           💳
                         </div>
                         <div>
-                          <p className="font-semibold">Visa ending in 4242</p>
+                          <p className="font-semibold">Card ending in ••••</p>
                           <p className="text-sm text-muted-foreground">
-                            Expires 12/2025
+                            Expires MM/YYYY
                           </p>
                         </div>
                       </div>
@@ -413,6 +414,9 @@ export default function SettingsPageTemplate() {
                           Remove
                         </Button>
                       </div>
+                    </div> */}
+                    <div className="text-center py-4 text-sm text-muted-foreground">
+                      No payment methods added yet. Use Stripe Customer Portal to manage payment methods.
                     </div>
                     <Button variant="outline" className="w-full font-semibold">
                       Add Payment Method

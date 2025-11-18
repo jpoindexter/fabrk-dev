@@ -47,69 +47,6 @@ export function DataExport() {
     }));
   };
 
-  const generateMockData = () => {
-    const data: Record<string, unknown> = {};
-
-    if (options.includeProfile) {
-      data.profile = {
-        id: "user_123",
-        email: "user@example.com",
-        name: "John Doe",
-        avatar: "https://api.example.com/avatars/user_123.jpg",
-        createdAt: "2024-01-01T00:00:00Z",
-        updatedAt: new Date().toISOString(),
-      };
-    }
-
-    if (options.includeSettings) {
-      data.settings = {
-        theme: "system",
-        language: "en",
-        notifications: {
-          email: true,
-          push: false,
-          sms: false,
-        },
-        privacy: {
-          profilePublic: false,
-          showEmail: false,
-        },
-      };
-    }
-
-    if (options.includeActivity) {
-      data.activity = {
-        lastLogin: new Date().toISOString(),
-        loginHistory: [
-          {
-            timestamp: new Date().toISOString(),
-            device: "Chrome on MacOS",
-            ip: "192.168.1.100",
-          },
-        ],
-        actions: [
-          {
-            timestamp: new Date(Date.now() - 86400000).toISOString(),
-            action: "profile_updated",
-            details: "Updated profile information",
-          },
-        ],
-      };
-    }
-
-    if (options.includePreferences) {
-      data.preferences = {
-        defaultView: "grid",
-        itemsPerPage: 20,
-        autoSave: true,
-        darkMode: false,
-        compactMode: false,
-      };
-    }
-
-    return data;
-  };
-
   const handleExport = async () => {
     // Verify at least one option is selected
     const hasSelection = Object.values(options).some((value) => value);
@@ -123,49 +60,86 @@ export function DataExport() {
 
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Fetch real user data from API
+      const response = await fetch("/api/user/export");
 
-    const data = generateMockData();
+      if (!response.ok) {
+        throw new Error("Failed to export data");
+      }
 
-    if (format === "json") {
-      const dataStr = JSON.stringify(data, null, 2);
-      const dataBlob = new Blob([dataStr], { type: "application/json" });
-      const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `user-data-${new Date().getTime()}.json`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    } else if (format === "csv") {
-      const csvContent = Object.entries(data)
-        .map(([key, value]) => {
-          return `"${key}","${JSON.stringify(value).replace(/"/g, '""')}"`;
-        })
-        .join("\n");
+      const data = await response.json();
 
-      const dataBlob = new Blob(
-        ["key,value\n", csvContent],
-        { type: "text/csv" }
-      );
-      const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `user-data-${new Date().getTime()}.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      // Filter data based on selected options
+      const filteredData: Record<string, unknown> = {
+        exportedAt: new Date().toISOString(),
+      };
+
+      if (options.includeProfile && data.user) {
+        filteredData.profile = data.user;
+      }
+
+      if (options.includeSettings && data.accounts) {
+        filteredData.accounts = data.accounts;
+      }
+
+      if (options.includeActivity && data.sessions) {
+        filteredData.activity = {
+          sessions: data.sessions,
+          payments: data.payments || [],
+        };
+      }
+
+      if (options.includePreferences && data.organizations) {
+        filteredData.organizations = data.organizations;
+        filteredData.security = data.security;
+      }
+
+      if (format === "json") {
+        const dataStr = JSON.stringify(filteredData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: "application/json" });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `user-data-${new Date().getTime()}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      } else if (format === "csv") {
+        const csvContent = Object.entries(filteredData)
+          .map(([key, value]) => {
+            return `"${key}","${JSON.stringify(value).replace(/"/g, '""')}"`;
+          })
+          .join("\n");
+
+        const dataBlob = new Blob(
+          ["key,value\n", csvContent],
+          { type: "text/csv" }
+        );
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `user-data-${new Date().getTime()}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+      toast({
+        title: "Data exported",
+        description: `Your data has been exported as ${format.toUpperCase()}.`,
+      });
+    } catch (error: unknown) {
+      console.error("Error exporting data:", error);
+      toast({
+        title: "Export failed",
+        description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
     }
-
-    toast({
-      title: "Data exported",
-      description: `Your data has been exported as ${format.toUpperCase()}.`,
-    });
-
-    setIsLoading(false);
   };
 
   return (

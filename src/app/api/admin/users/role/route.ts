@@ -9,6 +9,7 @@ import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 import { logger } from "@/lib/logger";
+import { checkRateLimit, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 
 const roleSchema = z.object({
   userId: z.string(),
@@ -17,6 +18,29 @@ const roleSchema = z.object({
 
 export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Apply strict rate limiting to admin operations
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimit(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        {
+          error: "Too many requests",
+          message: "You have exceeded the rate limit for admin operations.",
+          retryAfter: Math.ceil((rateLimit.reset - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "X-RateLimit-Reset": rateLimit.reset.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     // Check if user is admin

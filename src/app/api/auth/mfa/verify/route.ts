@@ -8,9 +8,33 @@ import { auth } from "@/lib/auth";
 import { verifyMFADevice } from "@/lib/auth/mfa";
 import { logger } from "@/lib/logger";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimit, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 
 async function verifyMFAHandler(req: NextRequest) {
   try {
+    // Apply strict rate limiting to prevent brute force attacks on MFA codes
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimit(identifier, RateLimiters.auth);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        {
+          error: "Too many verification attempts",
+          message: "You have exceeded the rate limit. Please try again later.",
+          retryAfter: Math.ceil((rateLimit.reset - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "X-RateLimit-Reset": rateLimit.reset.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {

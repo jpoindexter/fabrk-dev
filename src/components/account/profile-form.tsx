@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -38,14 +39,25 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 export function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast, success, error } = useToast();
+  const { data: session } = useSession();
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      name: "John Doe",
-      email: "john@example.com",
+      name: "",
+      email: "",
     },
   });
+
+  // Update form values when session data loads
+  useEffect(() => {
+    if (session?.user) {
+      form.reset({
+        name: session.user.name || "",
+        email: session.user.email || "",
+      });
+    }
+  }, [session, form]);
 
   async function onSubmit(data: ProfileFormValues) {
     setIsLoading(true);

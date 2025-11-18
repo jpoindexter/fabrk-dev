@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
+import { createHash } from "crypto";
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -66,10 +67,15 @@ export const authConfig: NextAuthConfig = {
 
         // Magic link authentication
         if (credentials.magicToken) {
+          // Hash the incoming token to match stored hash (security: tokens are hashed in DB)
+          const hashedToken = createHash("sha256")
+            .update(credentials.magicToken as string)
+            .digest("hex");
+
           const magicToken = await prisma.verificationToken.findFirst({
             where: {
               identifier: credentials.email as string,
-              token: credentials.magicToken as string,
+              token: hashedToken,
               expires: { gt: new Date() },
             },
           });
@@ -80,7 +86,7 @@ export const authConfig: NextAuthConfig = {
 
           // Delete the used token (one-time use)
           await prisma.verificationToken.delete({
-            where: { token: credentials.magicToken as string },
+            where: { token: hashedToken },
           });
 
           return {
