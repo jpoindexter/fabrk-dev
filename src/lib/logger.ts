@@ -5,8 +5,10 @@
 
 type LogLevel = "info" | "warn" | "error" | "debug";
 
+type LogArg = string | number | boolean | null | undefined | Error | Record<string, unknown> | unknown[];
+
 class Logger {
-  private sanitizeSensitiveData(data: any): any {
+  private sanitizeSensitiveData(data: LogArg): LogArg {
     if (typeof data === "string") {
       // Redact potential sensitive patterns
       return data
@@ -17,7 +19,7 @@ class Logger {
     return data;
   }
 
-  private log(level: LogLevel, message: string, ...args: any[]) {
+  private log(level: LogLevel, message: string, ...args: LogArg[]) {
     const timestamp = new Date().toISOString();
     const sanitizedArgs = args.map((arg) => this.sanitizeSensitiveData(arg));
 
@@ -40,23 +42,23 @@ class Logger {
     }
   }
 
-  info(message: string, ...args: any[]) {
+  info(message: string, ...args: LogArg[]) {
     this.log("info", message, ...args);
   }
 
-  warn(message: string, ...args: any[]) {
+  warn(message: string, ...args: LogArg[]) {
     this.log("warn", message, ...args);
   }
 
-  error(message: string, error?: any, ...args: any[]) {
+  error(message: string, error?: Error | unknown, ...args: LogArg[]) {
     if (error instanceof Error) {
       this.log("error", message, { error: error.message, stack: error.stack }, ...args);
     } else {
-      this.log("error", message, error, ...args);
+      this.log("error", message, error as LogArg, ...args);
     }
   }
 
-  debug(message: string, ...args: any[]) {
+  debug(message: string, ...args: LogArg[]) {
     this.log("debug", message, ...args);
   }
 }

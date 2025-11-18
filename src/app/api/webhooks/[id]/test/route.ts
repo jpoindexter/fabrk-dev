@@ -11,6 +11,7 @@ import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { deliverWebhook } from "@/lib/webhooks";
 import { logger } from "@/lib/logger";
+import { WebhookEvent } from "@/lib/webhooks/events";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -62,9 +63,9 @@ export const POST = withCsrfProtection(async (
     };
 
     // Use the first subscribed event for testing
-    const testEvent = webhook.events[0] || "org.member.added";
+    const testEvent = (webhook.events[0] || "org.member.added") as WebhookEvent;
 
-    await deliverWebhook(webhook.id, testEvent as any, testPayload);
+    await deliverWebhook(webhook.id, testEvent, testPayload);
 
     return NextResponse.json({
       success: true,

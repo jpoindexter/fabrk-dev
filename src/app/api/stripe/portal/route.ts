@@ -75,6 +75,7 @@ import { auth } from "@/lib/auth";
 import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe/client";
+import { env } from "@/lib/env";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -100,7 +101,7 @@ export async function POST(req: NextRequest) {
     // Create portal session
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: user.customerId,
-      return_url: `${process.env.NEXTAUTH_URL}/dashboard`,
+      return_url: `${env.server.NEXTAUTH_URL}/dashboard`,
     });
 
     return NextResponse.json({ url: portalSession.url });

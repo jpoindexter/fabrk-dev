@@ -19,6 +19,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { logger } from "@/lib/logger";
 
 // ⚠️ WARNING: In-memory store NOT suitable for production (see above)
 // Use Redis/Upstash for production deployments
@@ -26,7 +27,7 @@ const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 // Emit production warning once
 if (process.env.NODE_ENV === "production") {
-  console.warn(
+  logger.warn(
     "⚠️ WARNING: In-memory rate limiting detected in production. " +
     "This will not work correctly with multiple server instances. " +
     "Please use Redis (Upstash) or Vercel KV for production rate limiting."

@@ -9,10 +9,11 @@ import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
 import { queueWelcomeEmail } from "@/lib/email";
 import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
+import { env } from "@/lib/env";
 import { createHash } from "crypto";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(env.server.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-10-29.clover",
 });
 
@@ -110,7 +111,7 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     });
 
     // Build magic link URL with plain token (sent via email)
-    const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
+    const magicLink = `${env.client.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
     // Queue welcome email with license key and magic link
     await queueWelcomeEmail({

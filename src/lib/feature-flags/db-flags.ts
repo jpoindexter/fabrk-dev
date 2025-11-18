@@ -4,6 +4,7 @@
  */
 
 import { prisma } from '@/lib/prisma';
+import { logger } from '@/lib/logger';
 
 // In-memory cache for feature flags (refreshed every 60 seconds)
 let flagCache: Map<string, { enabled: boolean; rolloutPercentage: number }> | null = null;
@@ -35,7 +36,7 @@ async function refreshCache(): Promise<void> {
 
     lastCacheRefresh = Date.now();
   } catch (error: unknown) {
-    console.error('Failed to refresh feature flag cache:', error);
+    logger.error('Failed to refresh feature flag cache', error);
   }
 }
 

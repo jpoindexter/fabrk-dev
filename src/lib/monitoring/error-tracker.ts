@@ -19,7 +19,7 @@ export interface ErrorContext {
   route?: string;
   component?: string;
   action?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface ErrorReport {
@@ -138,10 +138,13 @@ export function captureError(
   }
 
   // Send to Sentry if available
-  if (typeof window !== "undefined" && (window as any).Sentry) {
-    (window as any).Sentry.captureException(error, {
-      contexts: { custom: context },
-    });
+  if (typeof window !== "undefined") {
+    const windowWithSentry = window as typeof window & { Sentry?: { captureException: (error: Error | string, options?: unknown) => void } };
+    if (windowWithSentry.Sentry) {
+      windowWithSentry.Sentry.captureException(error, {
+        contexts: { custom: context },
+      });
+    }
   }
 
   return report.id;
@@ -188,13 +191,20 @@ export function captureInfo(message: string, context?: ErrorContext): string {
 /**
  * Set user context
  */
+interface SentryWindow {
+  Sentry?: {
+    setUser: (user: { id: string; email?: string; username?: string } | null) => void;
+    addBreadcrumb: (breadcrumb: { category: string; message: string; level: string }) => void;
+  };
+}
+
 export function setUserContext(user: {
   id: string;
   email?: string;
   name?: string;
 }) {
-  if (typeof window !== "undefined" && (window as any).Sentry) {
-    (window as any).Sentry.setUser({
+  if (typeof window !== "undefined" && (window as SentryWindow).Sentry) {
+    (window as SentryWindow).Sentry!.setUser({
       id: user.id,
       email: user.email,
       username: user.name,
@@ -206,8 +216,8 @@ export function setUserContext(user: {
  * Clear user context
  */
 export function clearUserContext() {
-  if (typeof window !== "undefined" && (window as any).Sentry) {
-    (window as any).Sentry.setUser(null);
+  if (typeof window !== "undefined" && (window as SentryWindow).Sentry) {
+    (window as SentryWindow).Sentry!.setUser(null);
   }
 }
 
@@ -232,8 +242,8 @@ export function trackPerformance(metric: Omit<PerformanceMetric, "timestamp">) {
   }
 
   // Send to Sentry if available
-  if (typeof window !== "undefined" && (window as any).Sentry) {
-    (window as any).Sentry.addBreadcrumb({
+  if (typeof window !== "undefined" && (window as SentryWindow).Sentry) {
+    (window as SentryWindow).Sentry!.addBreadcrumb({
       category: "performance",
       message: `${metric.name}: ${metric.value}${metric.unit}`,
       level: "info",

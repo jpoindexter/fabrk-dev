@@ -6,6 +6,7 @@ import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
+import { env } from "@/lib/env";
 
 /**
  * NextAuth configuration
@@ -40,8 +41,8 @@ export const authConfig: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: env.server.GOOGLE_CLIENT_ID!,
+      clientSecret: env.server.GOOGLE_CLIENT_SECRET!,
     }),
     Credentials({
       name: "credentials",
@@ -184,7 +185,7 @@ export const authConfig: NextAuthConfig = {
       return session;
     },
   },
-  debug: process.env.NODE_ENV === "development",
+  debug: env.server.NODE_ENV === "development",
 };
 
 export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);

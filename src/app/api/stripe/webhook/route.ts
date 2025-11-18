@@ -107,6 +107,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 import {
   isWebhookEventProcessed,
   markWebhookEventProcessed,
@@ -115,7 +116,7 @@ import * as paymentHandlers from "./handlers/payment";
 import * as subscriptionHandlers from "./handlers/subscription";
 import * as checkoutHandlers from "./handlers/checkout";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(env.server.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-10-29.clover",
 });
 
@@ -127,7 +128,7 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!);
+    event = stripe.webhooks.constructEvent(body, signature, env.server.STRIPE_WEBHOOK_SECRET!);
   } catch (error: unknown) {
     logger.error("Webhook signature verification failed", error);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });

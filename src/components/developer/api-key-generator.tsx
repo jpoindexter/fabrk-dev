@@ -33,6 +33,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
+import { logger } from "@/lib/logger";
 
 interface ApiKeyGeneratorProps {
   apiKey?: string;
@@ -66,7 +67,7 @@ export function ApiKeyGenerator({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err: unknown) {
-      console.error("Failed to copy API key:", err);
+      logger.error("Failed to copy API key", err);
     }
   };
 

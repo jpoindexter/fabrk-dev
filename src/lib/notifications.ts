@@ -6,6 +6,9 @@
 import { prisma } from "./prisma";
 import { triggerNotification, triggerOrgActivity } from "./pusher/server";
 import type { NotificationType } from "@prisma/client";
+import { logger } from "./logger";
+
+import type { Prisma } from "@prisma/client";
 
 interface CreateNotificationParams {
   userId: string;
@@ -13,7 +16,7 @@ interface CreateNotificationParams {
   title: string;
   message: string;
   link?: string;
-  metadata?: any;
+  metadata?: Prisma.InputJsonValue;
 }
 
 /**
@@ -51,7 +54,7 @@ export async function createNotification({
 
     return notification;
   } catch (error: unknown) {
-    console.error("Failed to create notification:", error);
+    logger.error("Failed to create notification", error);
     throw error;
   }
 }
@@ -75,7 +78,7 @@ export async function createOrgActivity(
       timestamp: new Date(),
     });
   } catch (error: unknown) {
-    console.error("Failed to create org activity:", error);
+    logger.error("Failed to create org activity", error);
   }
 }
 

@@ -19,6 +19,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { logger } from "@/lib/logger";
 
 type ExportFormat = "json" | "csv";
 
@@ -132,7 +133,7 @@ export function DataExport() {
         description: `Your data has been exported as ${format.toUpperCase()}.`,
       });
     } catch (error: unknown) {
-      console.error("Error exporting data:", error);
+      logger.error("Error exporting data", error);
       toast({
         title: "Export failed",
         description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",

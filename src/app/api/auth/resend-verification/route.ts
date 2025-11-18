@@ -10,6 +10,7 @@ import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { env } from "@/lib/env";
 import { randomBytes, createHash } from "crypto";
 import { NextRequest } from "next/server";
 import { z } from "zod";
@@ -59,7 +60,7 @@ async function resendVerificationHandler(request: NextRequest) {
   });
 
   // Send verification email
-  const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email/${token}`;
+  const verificationLink = `${env.server.NEXTAUTH_URL}/verify-email/${token}`;
   await emailService.sendTemplate("email-verification", email, {
     verificationLink,
     name: user.name || email.split("@")[0],

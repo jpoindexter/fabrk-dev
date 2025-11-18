@@ -35,7 +35,7 @@ export type AnalyticsEvent =
 interface BaseEventProperties {
   userId: string;
   email?: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | undefined;
 }
 
 /**
@@ -75,7 +75,7 @@ export async function identifyUser(
     role?: string;
     tier?: string;
     createdAt?: Date;
-    [key: string]: any;
+    [key: string]: string | number | boolean | Date | undefined;
   }
 ): Promise<void> {
   const client = getPostHogClient();
@@ -99,7 +99,7 @@ export async function identifyUser(
 export async function trackUserSignup(
   userId: string,
   email: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, string | number | boolean | undefined>
 ): Promise<void> {
   await trackEvent('user_signed_up', {
     userId,
@@ -123,7 +123,7 @@ export async function trackOrgCreated(
   userId: string,
   orgId: string,
   orgName: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, string | number | boolean | undefined>
 ): Promise<void> {
   await trackEvent('org_created', {
     userId,

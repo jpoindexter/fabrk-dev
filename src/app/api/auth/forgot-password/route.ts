@@ -10,6 +10,7 @@ import { emailService } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { env } from "@/lib/env";
 import { createHash, randomBytes } from "crypto";
 import { NextRequest } from "next/server";
 import { z } from "zod";
@@ -56,7 +57,7 @@ async function forgotPasswordHandler(request: NextRequest) {
   });
 
   // Send password reset email with plain token
-  const resetLink = `${process.env.NEXTAUTH_URL}/reset-password/${token}`;
+  const resetLink = `${env.server.NEXTAUTH_URL}/reset-password/${token}`;
   await emailService.sendTemplate("password-reset", email, {
     resetLink,
     name: user.name || email.split("@")[0],

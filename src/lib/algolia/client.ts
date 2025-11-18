@@ -1,9 +1,10 @@
 import { algoliasearch } from 'algoliasearch';
+import { env } from '@/lib/env';
 
 // Algolia client configuration
 export const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '',
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || ''
+  env.client.NEXT_PUBLIC_ALGOLIA_APP_ID || '',
+  env.client.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || ''
 );
 
 // Index names
@@ -17,8 +18,8 @@ export const INDICES = {
 // Check if Algolia is configured
 export function isAlgoliaConfigured(): boolean {
   return !!(
-    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID &&
-    process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY
+    env.client.NEXT_PUBLIC_ALGOLIA_APP_ID &&
+    env.client.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY
   );
 }
 

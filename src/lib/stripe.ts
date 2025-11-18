@@ -7,16 +7,17 @@ import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 import crypto from "crypto";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
 // Initialize Stripe - throw error if STRIPE_SECRET_KEY is not set
-if (!process.env.STRIPE_SECRET_KEY) {
+if (!env.server.STRIPE_SECRET_KEY) {
   throw new Error(
     "STRIPE_SECRET_KEY environment variable is required. " +
     "Please set it in your .env.local file or environment configuration."
   );
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+export const stripe = new Stripe(env.server.STRIPE_SECRET_KEY, {
   apiVersion: "2025-10-29.clover",
   typescript: true,
 });
@@ -228,8 +229,8 @@ export async function createCheckoutSession(
     customer: customerId,
     line_items: [{ price: priceId, quantity: 1 }],
     mode: "payment", // one-time payment (use "subscription" for recurring)
-    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?success=true`,
-    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/pricing`,
+    success_url: `${env.client.NEXT_PUBLIC_APP_URL}/dashboard?success=true`,
+    cancel_url: `${env.client.NEXT_PUBLIC_APP_URL}/pricing`,
     allow_promotion_codes: true,
     metadata: { userId, priceId },
   });
@@ -288,7 +289,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
 // Helper: Map price ID to tier
 function getTierFromPrice(priceId: string): string {
   // Get from config.js or env vars
-  if (priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return "starter";
-  if (priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO) return "pro";
+  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return "starter";
+  if (priceId === env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL) return "pro";
   return "free";
 }

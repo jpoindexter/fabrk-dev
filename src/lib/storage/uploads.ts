@@ -18,10 +18,15 @@ import { prisma } from "@/lib/prisma";
 import * as crypto from "crypto";
 
 // AWS SDK imports are optional - only import if packages are installed
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let S3Client: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let PutObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let GetObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let DeleteObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let getSignedUrl: any;
 
 try {
@@ -58,7 +63,7 @@ export interface UploadOptions {
   filename?: string;
   mimeType?: string;
   visibility?: "private" | "public";
-  metadata?: Record<string, any>;
+  metadata?: Record<string, string>;
 }
 
 /**
@@ -152,7 +157,7 @@ export async function uploadFile(options: UploadOptions): Promise<{
       url,
       key,
       bucket: BUCKET_NAME,
-      metadata: options.metadata as any,
+      metadata: options.metadata,
       visibility: options.visibility || "private",
     },
   });

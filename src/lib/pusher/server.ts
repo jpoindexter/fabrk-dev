@@ -5,6 +5,7 @@
 
 import Pusher from "pusher";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
 // Singleton instance
 let pusherInstance: Pusher | null = null;
@@ -15,10 +16,10 @@ let pusherInstance: Pusher | null = null;
  */
 export function getPusherServer(): Pusher | null {
   // Check if credentials are configured
-  const appId = process.env.PUSHER_APP_ID;
-  const key = process.env.NEXT_PUBLIC_PUSHER_KEY;
-  const secret = process.env.PUSHER_SECRET;
-  const cluster = process.env.NEXT_PUBLIC_PUSHER_CLUSTER;
+  const appId = env.server.PUSHER_APP_ID;
+  const key = env.client.NEXT_PUBLIC_PUSHER_KEY;
+  const secret = env.server.PUSHER_SECRET;
+  const cluster = env.client.NEXT_PUBLIC_PUSHER_CLUSTER;
 
   if (!appId || !key || !secret || !cluster) {
     logger.warn("Pusher credentials not configured. Real-time features disabled.");

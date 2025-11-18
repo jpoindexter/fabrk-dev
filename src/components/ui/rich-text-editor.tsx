@@ -2,6 +2,15 @@
 
 import * as React from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Bold,
   Italic,
@@ -60,6 +69,8 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
     const [currentFormat, setCurrentFormat] = React.useState<
       Record<string, boolean>
     >({});
+    const [isLinkDialogOpen, setIsLinkDialogOpen] = React.useState(false);
+    const [linkUrl, setLinkUrl] = React.useState("");
 
     // Merge refs
     React.useImperativeHandle(ref, () => editorRef.current as HTMLDivElement);
@@ -85,11 +96,18 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       updateFormatState();
     };
 
-    // Insert link
-    const insertLink = () => {
-      const url = prompt("Enter URL:");
-      if (url) {
-        executeCommand("createLink", url);
+    // Insert link - open dialog
+    const openLinkDialog = () => {
+      setLinkUrl("");
+      setIsLinkDialogOpen(true);
+    };
+
+    // Handle link insertion from dialog
+    const handleInsertLink = () => {
+      if (linkUrl) {
+        executeCommand("createLink", linkUrl);
+        setIsLinkDialogOpen(false);
+        setLinkUrl("");
       }
     };
 
@@ -249,7 +267,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
                 size="sm"
                 onClick={() => {
                   if (tool.command === "createLink") {
-                    insertLink();
+                    openLinkDialog();
                   } else {
                     executeCommand(tool.command, tool.value);
                   }
@@ -306,6 +324,44 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
             pointer-events: none;
           }
         `}</style>
+
+        {/* Link Dialog */}
+        <Dialog open={isLinkDialogOpen} onOpenChange={setIsLinkDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Insert Link</DialogTitle>
+              <DialogDescription>
+                Enter the URL you want to link to.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="py-4">
+              <Input
+                type="url"
+                placeholder="https://example.com"
+                value={linkUrl}
+                onChange={(e) => setLinkUrl(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleInsertLink();
+                  }
+                }}
+                autoFocus
+              />
+            </div>
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setIsLinkDialogOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button onClick={handleInsertLink} disabled={!linkUrl}>
+                Insert Link
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }

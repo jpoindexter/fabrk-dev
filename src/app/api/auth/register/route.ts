@@ -118,6 +118,7 @@ import { prisma } from "@/lib/prisma";
 import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { trackUserSignup } from "@/lib/analytics/events";
+import { env } from "@/lib/env";
 import { hash } from "bcryptjs";
 import { randomBytes, createHash } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
@@ -182,7 +183,7 @@ async function registerHandler(req: NextRequest) {
     });
 
     // Send verification email
-    const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email/${token}`;
+    const verificationLink = `${env.server.NEXTAUTH_URL}/verify-email/${token}`;
     await emailService.sendTemplate("email-verification", email, {
       verificationLink,
       name: user.name || email.split("@")[0],
@@ -190,7 +191,7 @@ async function registerHandler(req: NextRequest) {
 
     // Track signup in analytics
     await trackUserSignup(user.id, email, {
-      name: user.name,
+      name: user.name ?? undefined,
       provider: 'credentials',
     });
 

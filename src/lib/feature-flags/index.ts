@@ -11,6 +11,8 @@
  * - Server and client-side support
  */
 
+import { logger } from '@/lib/logger';
+
 export type FeatureFlagValue = boolean | string | number | object;
 
 export interface FeatureFlag {
@@ -30,7 +32,7 @@ export interface FeatureFlagContext {
   email?: string;
   role?: string;
   environment?: string;
-  customProperties?: Record<string, any>;
+  customProperties?: Record<string, unknown>;
 }
 
 // Default feature flags configuration
@@ -91,7 +93,7 @@ export function isFeatureEnabled(
   const flag = flags[flagKey];
 
   if (!flag) {
-    console.warn(`[Feature Flags] Flag "${flagKey}" not found`);
+    logger.warn(`[Feature Flags] Flag "${flagKey}" not found`);
     return false;
   }
 
@@ -105,7 +107,8 @@ export function isFeatureEnabled(
 
   // Check environment
   if (flag.environments && context?.environment) {
-    if (!flag.environments.includes(context.environment as any)) {
+    const validEnvironments: Array<"development" | "production" | "staging"> = ["development", "production", "staging"];
+    if (!flag.environments.includes(context.environment as typeof validEnvironments[number])) {
       return false;
     }
   }
@@ -164,7 +167,7 @@ export function getFeatureVariant(
 /**
  * Get feature flag value (for config flags)
  */
-export function getFeatureValue<T extends FeatureFlagValue = any>(
+export function getFeatureValue<T extends FeatureFlagValue = FeatureFlagValue>(
   flagKey: string,
   context?: FeatureFlagContext,
   defaultValue?: T
@@ -198,7 +201,7 @@ export function updateFeatureFlag(
   updates: Partial<FeatureFlag>
 ) {
   if (!flags[flagKey]) {
-    console.warn(`[Feature Flags] Cannot update non-existent flag "${flagKey}"`);
+    logger.warn(`[Feature Flags] Cannot update non-existent flag "${flagKey}"`);
     return;
   }
 
@@ -266,7 +269,7 @@ export function importFlags(json: string) {
       flags[key] = value as FeatureFlag;
     });
   } catch (error: unknown) {
-    console.error("[Feature Flags] Failed to import flags:", error);
+    logger.error("[Feature Flags] Failed to import flags", error);
   }
 }
 

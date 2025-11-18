@@ -13,6 +13,7 @@ import { OrgRole } from "@prisma/client";
 import { generateWebhookSecret } from "@/lib/webhooks";
 import { isValidEvent } from "@/lib/webhooks/events";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 import { z } from "zod";
 
 const createWebhookSchema = z.object({
@@ -115,7 +116,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     // Validate URL
     try {
       const parsedUrl = new URL(url);
-      if (process.env.NODE_ENV === "production" && parsedUrl.protocol !== "https:") {
+      if (env.server.NODE_ENV === "production" && parsedUrl.protocol !== "https:") {
         return NextResponse.json(
           { error: "Webhook URL must use HTTPS in production" },
           { status: 400 }

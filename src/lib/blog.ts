@@ -11,6 +11,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { logger } from "./logger";
 
 export interface BlogPost {
   slug: string;
@@ -108,7 +109,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       content: matterResult.content,
     };
   } catch (error: unknown) {
-    console.error(`Error reading post ${slug}:`, error);
+    logger.error(`Error reading post ${slug}`, error);
     return null;
   }
 }

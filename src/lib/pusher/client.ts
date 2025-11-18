@@ -38,6 +38,12 @@ function getPusherClient(): PusherClient | null {
 /**
  * Hook to subscribe to user notifications
  */
+interface PusherChannel {
+  bind: (event: string, callback: (data: unknown) => void) => void;
+  unbind: (event: string, callback: (data: unknown) => void) => void;
+  unbind_all: () => void;
+}
+
 export function useNotifications(
   onNotification: (notification: {
     id: string;
@@ -48,7 +54,7 @@ export function useNotifications(
   }) => void
 ) {
   const { data: session } = useSession();
-  const channelRef = useRef<any>(null);
+  const channelRef = useRef<PusherChannel | null>(null);
 
   useEffect(() => {
     if (!session?.user?.id) return;
@@ -59,12 +65,22 @@ export function useNotifications(
     const channelName = `private-user-${session.user.id}`;
     const channel = client.subscribe(channelName);
 
-    channel.bind("notification", onNotification);
+    const notificationHandler = (data: unknown) => {
+      onNotification(data as {
+        id: string;
+        type: string;
+        title: string;
+        message: string;
+        createdAt: Date;
+      });
+    };
+
+    channel.bind("notification", notificationHandler);
     channelRef.current = channel;
 
     return () => {
       if (channelRef.current) {
-        channelRef.current.unbind("notification", onNotification);
+        channelRef.current.unbind("notification", notificationHandler);
         client.unsubscribe(channelName);
         channelRef.current = null;
       }
@@ -86,7 +102,7 @@ export function useOrgActivity(
     timestamp: Date;
   }) => void
 ) {
-  const channelRef = useRef<any>(null);
+  const channelRef = useRef<PusherChannel | null>(null);
 
   useEffect(() => {
     if (!organizationId) return;
@@ -97,12 +113,23 @@ export function useOrgActivity(
     const channelName = `private-org-${organizationId}`;
     const channel = client.subscribe(channelName);
 
-    channel.bind("activity", onActivity);
+    const activityHandler = (data: unknown) => {
+      onActivity(data as {
+        id: string;
+        type: string;
+        description: string;
+        userId: string;
+        userName: string;
+        timestamp: Date;
+      });
+    };
+
+    channel.bind("activity", activityHandler);
     channelRef.current = channel;
 
     return () => {
       if (channelRef.current) {
-        channelRef.current.unbind("activity", onActivity);
+        channelRef.current.unbind("activity", activityHandler);
         client.unsubscribe(channelName);
         channelRef.current = null;
       }
@@ -113,6 +140,18 @@ export function useOrgActivity(
 /**
  * Hook to track online presence in an organization
  */
+interface PusherMemberInfo {
+  id: string;
+  info: {
+    name: string;
+    email?: string;
+  };
+}
+
+interface PusherMembers {
+  each: (callback: (member: PusherMemberInfo) => void) => void;
+}
+
 export function usePresence(organizationId: string | undefined) {
   const { data: session } = useSession();
   const [members, setMembers] = useState<
@@ -122,7 +161,7 @@ export function usePresence(organizationId: string | undefined) {
       email?: string;
     }>
   >([]);
-  const channelRef = useRef<any>(null);
+  const channelRef = useRef<PusherChannel | null>(null);
 
   useEffect(() => {
     if (!organizationId || !session?.user?.id) return;
@@ -134,10 +173,10 @@ export function usePresence(organizationId: string | undefined) {
     const channel = client.subscribe(channelName);
 
     // Handle successful subscription
-    channel.bind("pusher:subscription_succeeded", (members: any) => {
+    channel.bind("pusher:subscription_succeeded", (members: unknown) => {
       const membersList: Array<{ id: string; name: string; email?: string }> =
         [];
-      members.each((member: any) => {
+      (members as PusherMembers).each((member: PusherMemberInfo) => {
         membersList.push({
           id: member.id,
           name: member.info.name,
@@ -148,20 +187,22 @@ export function usePresence(organizationId: string | undefined) {
     });
 
     // Handle member added
-    channel.bind("pusher:member_added", (member: any) => {
+    channel.bind("pusher:member_added", (member: unknown) => {
+      const memberInfo = member as PusherMemberInfo;
       setMembers((prev) => [
         ...prev,
         {
-          id: member.id,
-          name: member.info.name,
-          email: member.info.email,
+          id: memberInfo.id,
+          name: memberInfo.info.name,
+          email: memberInfo.info.email,
         },
       ]);
     });
 
     // Handle member removed
-    channel.bind("pusher:member_removed", (member: any) => {
-      setMembers((prev) => prev.filter((m) => m.id !== member.id));
+    channel.bind("pusher:member_removed", (member: unknown) => {
+      const memberInfo = member as PusherMemberInfo;
+      setMembers((prev) => prev.filter((m) => m.id !== memberInfo.id));
     });
 
     channelRef.current = channel;
@@ -181,18 +222,20 @@ export function usePresence(organizationId: string | undefined) {
 /**
  * Hook to get Pusher connection status
  */
+type PusherConnectionState = "connecting" | "connected" | "disconnected" | "unavailable";
+
 export function usePusherStatus() {
   // Initialize state based on client availability (industry-standard pattern)
   const client = getPusherClient();
-  const [status, setStatus] = useState<
-    "connecting" | "connected" | "disconnected" | "unavailable"
-  >(!client ? "unavailable" : "connecting");
+  const [status, setStatus] = useState<PusherConnectionState>(
+    !client ? "unavailable" : "connecting"
+  );
 
   useEffect(() => {
     if (!client) return;
 
     const updateStatus = () => {
-      setStatus(client.connection.state as any);
+      setStatus(client.connection.state as PusherConnectionState);
     };
 
     client.connection.bind("state_change", updateStatus);

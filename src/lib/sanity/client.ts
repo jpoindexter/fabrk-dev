@@ -1,14 +1,16 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { env } from '@/lib/env';
+import { logger } from '@/lib/logger';
 
 // Sanity client configuration
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId: env.client.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  dataset: env.client.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2024-01-01', // Use current date
-  useCdn: process.env.NODE_ENV === 'production', // CDN for production
-  token: process.env.SANITY_API_TOKEN, // Optional: for write operations
+  useCdn: env.server.NODE_ENV === 'production', // CDN for production
+  token: env.server.SANITY_API_TOKEN, // Optional: for write operations
 });
 
 // Image URL builder
@@ -21,8 +23,8 @@ export function urlFor(source: SanityImageSource) {
 // Check if Sanity is configured
 export function isSanityConfigured(): boolean {
   return !!(
-    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID &&
-    process.env.NEXT_PUBLIC_SANITY_DATASET
+    env.client.NEXT_PUBLIC_SANITY_PROJECT_ID &&
+    env.client.NEXT_PUBLIC_SANITY_DATASET
   );
 }
 
@@ -52,7 +54,7 @@ export async function fetchBlogPosts() {
       }
     `);
   } catch (error: unknown) {
-    console.error('Error fetching blog posts:', error);
+    logger.error('Error fetching blog posts', error);
     return [];
   }
 }
@@ -87,7 +89,7 @@ export async function fetchBlogPost(slug: string) {
       { slug }
     );
   } catch (error: unknown) {
-    console.error('Error fetching blog post:', error);
+    logger.error('Error fetching blog post', error);
     return null;
   }
 }
@@ -109,7 +111,7 @@ export async function fetchDocPages() {
       }
     `);
   } catch (error: unknown) {
-    console.error('Error fetching doc pages:', error);
+    logger.error('Error fetching doc pages', error);
     return [];
   }
 }
@@ -135,7 +137,7 @@ export async function fetchDocPage(slug: string) {
       { slug }
     );
   } catch (error: unknown) {
-    console.error('Error fetching doc page:', error);
+    logger.error('Error fetching doc page', error);
     return null;
   }
 }

@@ -106,8 +106,7 @@ export const ImageUpload: Story = {
       <div className="w-96 space-y-4">
         <Dropzone onDrop={handleDrop} accept="image/*" className="min-h-48">
           <div className="flex flex-col items-center justify-center gap-2">
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <Image className="size-10 text-muted-foreground" aria-hidden="true" />
+            <Image className="size-10 text-muted-foreground" aria-hidden="true" alt="" />
             <p className="text-sm font-medium">Upload Images</p>
             <p className="text-xs text-muted-foreground">
               PNG, JPG, GIF up to 10MB
@@ -286,8 +285,7 @@ export const ProfilePicture: Story = {
             className="flex size-32 items-center justify-center rounded-full border-2"
           >
             <div className="flex flex-col items-center gap-1">
-              {/* eslint-disable-next-line jsx-a11y/alt-text */}
-              <Image className="size-8 text-muted-foreground" aria-hidden="true" />
+              <Image className="size-8 text-muted-foreground" aria-hidden="true" alt="" />
               <p className="text-xs text-muted-foreground">Upload</p>
             </div>
           </Dropzone>
@@ -438,8 +436,7 @@ export const FileTypeRestrictions: Story = {
       <div className="w-96 space-y-4">
         <Dropzone onDrop={handleDrop} accept="image/png,image/jpeg,image/jpg" className="min-h-32">
           <div className="flex flex-col items-center justify-center gap-2">
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <Image className="size-8 text-muted-foreground" aria-hidden="true" />
+            <Image className="size-8 text-muted-foreground" aria-hidden="true" alt="" />
             <p className="text-sm font-medium">PNG or JPG only</p>
             <p className="text-xs text-muted-foreground">
               Maximum 5MB per file

@@ -7,12 +7,13 @@
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const resend = env.server.RESEND_API_KEY ? new Resend(env.server.RESEND_API_KEY) : null;
 
-const FROM_EMAIL = process.env.EMAIL_FROM || "noreply@yourdomain.com";
+const FROM_EMAIL = env.server.EMAIL_FROM || "noreply@yourdomain.com";
 const APP_NAME = "Fabrk";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+const APP_URL = env.client.NEXT_PUBLIC_APP_URL;
 
 /**
  * Generic email sending function

@@ -17,9 +17,13 @@
  */
 
 // Dynamic imports for optional dependencies
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let OpenAI: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let Anthropic: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let openai: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let anthropic: any;
 
 try {
@@ -28,7 +32,7 @@ try {
     apiKey: process.env.OPENAI_API_KEY,
   });
 } catch (error: unknown) {
-  console.warn("OpenAI SDK not installed. Install with: npm install openai");
+  // OpenAI SDK is optional - silent skip for optional dependencies
 }
 
 try {
@@ -37,7 +41,7 @@ try {
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
 } catch (error: unknown) {
-  console.warn("Anthropic SDK not installed. Install with: npm install @anthropic-ai/sdk");
+  // Anthropic SDK is optional - silent skip for optional dependencies
 }
 
 export type AIProvider = "openai" | "anthropic";
@@ -126,7 +130,7 @@ export async function chatWithOpenAI(options: {
     // Streaming response
     const stream = await openai.chat.completions.create({
       model,
-      messages: options.messages as any,
+      messages: options.messages,
       temperature: options.temperature || 0.7,
       max_tokens: options.maxTokens,
       stream: true,
@@ -144,7 +148,7 @@ export async function chatWithOpenAI(options: {
     // Regular response
     const completion = await openai.chat.completions.create({
       model,
-      messages: options.messages as any,
+      messages: options.messages,
       temperature: options.temperature || 0.7,
       max_tokens: options.maxTokens,
     });
@@ -210,7 +214,7 @@ export async function chatWithClaude(options: {
     // Streaming response
     const stream = await anthropic.messages.create({
       model,
-      messages: messages as any,
+      messages: messages,
       system: systemMessage?.content,
       temperature: options.temperature || 0.7,
       max_tokens: options.maxTokens || 1024,
@@ -228,7 +232,7 @@ export async function chatWithClaude(options: {
     // Regular response
     const message = await anthropic.messages.create({
       model,
-      messages: messages as any,
+      messages: messages,
       system: systemMessage?.content,
       temperature: options.temperature || 0.7,
       max_tokens: options.maxTokens || 1024,
@@ -269,21 +273,41 @@ export async function chat(options: {
   const provider = options.provider || "openai";
 
   if (provider === "openai") {
-    return chatWithOpenAI({
-      messages: options.messages,
-      model: (options.model as OpenAIModel) || "gpt-3.5-turbo",
-      temperature: options.temperature,
-      maxTokens: options.maxTokens,
-      stream: options.stream as any,
-    });
+    if (options.stream) {
+      return chatWithOpenAI({
+        messages: options.messages,
+        model: (options.model as OpenAIModel) || "gpt-3.5-turbo",
+        temperature: options.temperature,
+        maxTokens: options.maxTokens,
+        stream: true,
+      });
+    } else {
+      return chatWithOpenAI({
+        messages: options.messages,
+        model: (options.model as OpenAIModel) || "gpt-3.5-turbo",
+        temperature: options.temperature,
+        maxTokens: options.maxTokens,
+        stream: false,
+      });
+    }
   } else {
-    return chatWithClaude({
-      messages: options.messages,
-      model: (options.model as AnthropicModel) || "claude-3-sonnet-20240229",
-      temperature: options.temperature,
-      maxTokens: options.maxTokens,
-      stream: options.stream as any,
-    });
+    if (options.stream) {
+      return chatWithClaude({
+        messages: options.messages,
+        model: (options.model as AnthropicModel) || "claude-3-sonnet-20240229",
+        temperature: options.temperature,
+        maxTokens: options.maxTokens,
+        stream: true,
+      });
+    } else {
+      return chatWithClaude({
+        messages: options.messages,
+        model: (options.model as AnthropicModel) || "claude-3-sonnet-20240229",
+        temperature: options.temperature,
+        maxTokens: options.maxTokens,
+        stream: false,
+      });
+    }
   }
 }
 
@@ -303,7 +327,7 @@ export async function generateEmbeddings(
     input: text,
   });
 
-  return response.data.map((d: any) => d.embedding);
+  return response.data.map((d: { embedding: number[] }) => d.embedding);
 }
 
 /**
@@ -326,8 +350,8 @@ export async function moderateContent(text: string): Promise<{
 
   return {
     flagged: result.flagged,
-    categories: result.categories as any,
-    scores: result.category_scores as any,
+    categories: result.categories as Record<string, boolean>,
+    scores: result.category_scores as Record<string, number>,
   };
 }
 
@@ -353,7 +377,7 @@ export async function generateImage(options: {
     n: options.n || 1,
   });
 
-  return response.data.map((d: any) => d.url || "");
+  return response.data.map((d: { url?: string }) => d.url || "");
 }
 
 /**

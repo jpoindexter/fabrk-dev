@@ -7,15 +7,16 @@
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
 /**
  * Maps Stripe price IDs to subscription tiers
  */
 function getTierFromPriceId(priceId: string): string {
   const priceMap: Record<string, string> = {
-    [process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "price_starter"]: "starter",
-    [process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || "price_professional"]: "professional",
-    [process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || "price_enterprise"]: "enterprise",
+    [env.client.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "price_starter"]: "starter",
+    [env.client.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || "price_professional"]: "professional",
+    [env.client.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || "price_enterprise"]: "enterprise",
   };
   return priceMap[priceId] || "professional";
 }

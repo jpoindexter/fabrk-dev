@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Home } from "lucide-react";
+import { logger } from "@/lib/logger";
 
 /**
  * Global Error Handler
@@ -17,8 +18,8 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to console and error tracking service
-    console.error("Global application error:", error);
+    // Log error to error tracking service
+    logger.error("Global application error", error);
 
     // Send to error tracking service
     // To enable Sentry:

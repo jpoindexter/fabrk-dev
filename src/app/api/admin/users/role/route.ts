@@ -44,7 +44,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     const session = await auth();
 
     // Check if user is admin
-    if (!session?.user?.id || (session.user as any).role !== "ADMIN") {
+    if (!session?.user?.id || session.user.role !== "ADMIN") {
       return NextResponse.json(
         { error: "Unauthorized. Admin access required." },
         { status: 403 }

@@ -200,10 +200,18 @@ export function trackResourceLoad(resourceType: string) {
 /**
  * Monitor memory usage (Chrome only)
  */
+interface PerformanceWithMemory extends Performance {
+  memory?: {
+    usedJSHeapSize: number;
+    totalJSHeapSize: number;
+    jsHeapSizeLimit: number;
+  };
+}
+
 export function trackMemoryUsage() {
   if (typeof window === "undefined") return;
 
-  const memory = (performance as any).memory;
+  const memory = (performance as PerformanceWithMemory).memory;
   if (!memory) return;
 
   setInterval(() => {
