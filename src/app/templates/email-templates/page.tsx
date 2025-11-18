@@ -6,6 +6,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -282,7 +283,7 @@ export default function EmailTemplatesShowcase() {
   };
 
   const handleSendTest = () => {
-    alert(`Test email would be sent for: ${selectedTemplate.name}`);
+    toast.success(`Test email sent for: ${selectedTemplate.name}`);
   };
 
   return (
