@@ -444,11 +444,25 @@ npx husky install
 4. ✅ Fixed TypeScript errors - type-check passes
 5. ✅ Verified code quality - lint clean
 
+**v1.1 Features Completed (Same Session):**
+1. ✅ **Invoice PDF Download** - Wired up to Stripe hosted invoices (30 minutes)
+   - Users can download professional Stripe invoices
+   - Uses existing API infrastructure
+   - Zero new dependencies
+   - Commit: `ccf22f5`
+
+2. ❌ **Trial Period** - Not applicable (one-time purchase model only)
+   - Deferred indefinitely, kept for future if subscriptions added
+
+3. ❌ **2FA QR Modal** - Not needed (redirect works fine)
+   - Deferred as UX polish, not blocking
+
 **Current status:** READY FOR IMMEDIATE LAUNCH
+**v1.1 status:** Invoice PDF feature complete, no other v1.1 features needed
 **Confidence level:** Very High ✅
 **Risk level:** Zero ✅
 
-**The boilerplate is production-grade and ready for customer sales immediately.**
+**The boilerplate is production-grade and ready for customer sales immediately. v1.1 first feature (invoice PDF) is already complete.**
 
 ---
 
