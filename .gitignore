@@ -149,6 +149,7 @@ docs/api/
 !docs/PERFORMANCE.md
 !docs/LIGHTHOUSE-CI.md
 !docs/LIGHTHOUSE-SETUP-SUMMARY.md
+!docs/ONBOARDING-CHECKLIST.md
 
 # Test outputs and reports
 test-results.json
