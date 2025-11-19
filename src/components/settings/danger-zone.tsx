@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
-import { logger } from "@/lib/logger";
 
 export function DangerZone() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -85,7 +84,7 @@ export function DangerZone() {
 
       setExportDialogOpen(false);
     } catch (error: unknown) {
-      logger.error("Error exporting data", error);
+      console.error("Error exporting data:", error);
       toast({
         title: "Export failed",
         description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",

@@ -8,6 +8,7 @@ node_modules
 Boilerplate/
 claude_prompts/
 sample_landing/
+agent-tools/
 
 # Internal development docs (not for customers)
 .internal/
@@ -209,3 +210,4 @@ storybook-static/
 npm-lock.json
 yarn.lock
 .ai-context.md
+

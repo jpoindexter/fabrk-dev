@@ -41,16 +41,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Users,
@@ -190,7 +180,6 @@ const roleIcons: Record<string, any> = {
 export default function TeamDashboardTemplate() {
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteRole, setInviteRole] = useState("member");
-  const [memberToRemove, setMemberToRemove] = useState<string | null>(null);
 
   const handleInvite = () => {
     if (!inviteEmail) {
@@ -206,13 +195,8 @@ export default function TeamDashboardTemplate() {
   };
 
   const handleRemoveMember = (memberId: string) => {
-    setMemberToRemove(memberId);
-  };
-
-  const confirmRemoveMember = () => {
-    if (memberToRemove) {
+    if (confirm("Are you sure you want to remove this member?")) {
       toast.success(`Member removed successfully`);
-      setMemberToRemove(null);
     }
   };
 
@@ -659,24 +643,6 @@ export default function TeamDashboardTemplate() {
             </p>
           </CardContent>
         </Card>
-
-        {/* Remove Member Confirmation Dialog */}
-        <AlertDialog open={!!memberToRemove} onOpenChange={(open) => !open && setMemberToRemove(null)}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Remove Team Member</AlertDialogTitle>
-              <AlertDialogDescription>
-                Are you sure you want to remove this member? They will lose access to the organization and all associated data. This action cannot be undone.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={confirmRemoveMember} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-                Remove Member
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
       </div>
     </div>
   );

@@ -28,16 +28,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { DemoNav } from "@/components/demo/demo-nav";
 import {
   Shield,
@@ -140,7 +130,6 @@ export default function SecurityPrivacyTemplate() {
     "security" | "privacy" | "audit" | "compliance"
   >("security");
   const [privacy, setPrivacy] = useState(privacySettings);
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const handlePrivacyToggle = (key: keyof typeof privacySettings) => {
     setPrivacy((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -159,12 +148,13 @@ export default function SecurityPrivacyTemplate() {
   };
 
   const handleDeleteAccount = () => {
-    setIsDeleteDialogOpen(true);
-  };
-
-  const confirmDeleteAccount = () => {
-    toast.success("Account deletion process initiated. Check your email for confirmation.");
-    setIsDeleteDialogOpen(false);
+    if (
+      confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      toast.success("Account deletion process initiated. Check your email for confirmation.");
+    }
   };
 
   return (
@@ -779,28 +769,6 @@ export default function SecurityPrivacyTemplate() {
           </CardContent>
         </Card>
       </div>
-
-      {/* Delete Account Confirmation Dialog */}
-      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete Account</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to delete your account? This action cannot be undone.
-              All your data will be permanently erased.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={confirmDeleteAccount}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            >
-              Delete Account
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 }

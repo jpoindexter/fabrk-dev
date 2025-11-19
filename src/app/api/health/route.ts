@@ -6,7 +6,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
-import { env } from "@/lib/env";
 
 export const dynamic = "force-dynamic";
 
@@ -20,8 +19,8 @@ export async function GET() {
         status: "ok",
         timestamp: new Date().toISOString(),
         service: "fabrk",
-        version: env.client.NEXT_PUBLIC_APP_VERSION,
-        environment: env.server.NODE_ENV,
+        version: process.env.npm_package_version || "1.0.0",
+        environment: process.env.NODE_ENV,
         checks: {
           database: "connected",
           server: "running",
@@ -42,7 +41,7 @@ export async function GET() {
           server: "running",
         },
         // Only expose error details in development
-        ...(env.server.NODE_ENV === "development" && {
+        ...(process.env.NODE_ENV === "development" && {
           error: error instanceof Error ? error.message : "Unknown error",
         }),
       },

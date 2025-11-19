@@ -1,9 +1,6 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +27,7 @@ import {
   XCircle,
   Clock,
 } from "lucide-react";
+import { InvoicesClient } from "./invoices-client";
 
 export const metadata = {
   title: "Invoices | Fabrk",
@@ -88,11 +86,6 @@ export default async function InvoicesPage() {
       month: "short",
       day: "numeric",
     }).format(new Date(date));
-  };
-
-  const handleDownload = async (paymentId: string) => {
-    // TODO: Generate and download invoice PDF
-    toast.info("Invoice download feature coming soon");
   };
 
   return (
@@ -164,16 +157,7 @@ export default async function InvoicesPage() {
                     </TableCell>
                     <TableCell>{getStatusBadge(payment.status)}</TableCell>
                     <TableCell className="text-right">
-                      {payment.status === "succeeded" && (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDownload(payment.id)}
-                        >
-                          <Download className="h-4 w-4 mr-2" />
-                          Download
-                        </Button>
-                      )}
+                      <InvoicesClient paymentId={payment.id} />
                     </TableCell>
                   </TableRow>
                 ))}
