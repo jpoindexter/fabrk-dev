@@ -72,8 +72,8 @@ export function DataTable<TData, TValue>({
         searchKey={searchKey}
         searchPlaceholder={searchPlaceholder}
       />
-      <div className="rounded-lg border-2 border-black bg-card shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <Table>
+      <div className="overflow-x-auto rounded-lg border-2 border-black bg-card shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
+        <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-b-2 border-black hover:bg-transparent">

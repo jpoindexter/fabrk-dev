@@ -146,7 +146,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         </div>
 
         {/* Pricing Table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
           <div className="inline-block min-w-full align-middle">
             <table className="min-w-full border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               {/* Header Row */}
