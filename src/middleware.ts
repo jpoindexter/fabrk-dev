@@ -1,3 +1,16 @@
+/**
+ * Middleware for authentication, i18n routing, and CSP nonce injection.
+ *
+ * Note: Despite Next.js 16 deprecation warnings, middleware.ts is required for Auth.js v5.
+ * Auth.js middleware wrapper cannot be migrated to next.config.ts proxy feature.
+ * See: https://next-auth.js.org/deployment/nextjs
+ *
+ * This file handles:
+ * - Authentication protection for dashboard routes
+ * - Internationalization routing (i18n)
+ * - CSP nonce generation for security headers
+ */
+
 import { auth } from '@/lib/auth';
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from '@/i18n/config';
