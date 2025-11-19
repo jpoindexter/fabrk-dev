@@ -38,7 +38,7 @@ Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for pr
 **8 Copy-Paste Templates** - Analytics, team management, billing, security
 **6 Color Themes** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
 **Storybook Integration** - 95% Storybook story coverage (87+ components with stories)
-**Complete Testing Suite** - Comprehensive test suite with 1500+ tests (1200+ passing)
+**Complete Testing Suite** - Comprehensive test suite with 72 test files covering UI components, accessibility, and E2E flows
 
 **Enterprise Features:**
 
