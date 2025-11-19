@@ -98,7 +98,7 @@ export default async function InvoicesPage() {
             Back to Billing
           </Button>
         </Link>
-        <h1 className="text-4xl font-bold mb-2">Invoices & Receipts</h1>
+        <h1 className="text-4xl font-semibold tracking-tight mb-2">Invoices & Receipts</h1>
         <p className="text-muted-foreground text-lg">
           View and download your payment history
         </p>

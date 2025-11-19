@@ -66,7 +66,7 @@ export default function AccountPage() {
   return (
     <div className="container mx-auto max-w-7xl px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-medium tracking-tight">Account Settings</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Account Settings</h1>
         <p className="mt-2 text-muted-foreground">Manage your account settings and preferences</p>
       </div>
 

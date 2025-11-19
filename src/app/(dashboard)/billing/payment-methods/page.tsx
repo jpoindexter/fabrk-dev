@@ -163,7 +163,7 @@ export default function PaymentMethodsPage() {
         </Link>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Payment Methods</h1>
+            <h1 className="text-4xl font-semibold tracking-tight mb-2">Payment Methods</h1>
             <p className="text-muted-foreground text-lg">
               Manage your payment methods and billing information
             </p>

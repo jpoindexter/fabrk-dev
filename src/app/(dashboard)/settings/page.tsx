@@ -72,7 +72,7 @@ export default function SettingsPage() {
   return (
     <div className="container mx-auto max-w-5xl px-6 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-medium tracking-tight">Settings</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Settings</h1>
         <p className="mt-2 text-muted-foreground">
           Manage your application preferences and settings
         </p>

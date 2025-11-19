@@ -155,7 +155,7 @@ export default function DashboardPage() {
       {/* Welcome Section */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="text-4xl font-semibold tracking-tight">
             Welcome back, {session?.user?.name?.split(" ")[0] || "User"}!
           </h1>
           <p className="text-muted-foreground">
