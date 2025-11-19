@@ -31,7 +31,7 @@ export default function ComponentsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav />
+      <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Category Filters */}

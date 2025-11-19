@@ -10,7 +10,7 @@ interface DemoNavProps {
 }
 
 export function DemoNav({
-  backButtonText = "Back Home",
+  backButtonText = "Back",
   backButtonHref = "/",
 }: DemoNavProps = {}) {
   return (
