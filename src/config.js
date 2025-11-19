@@ -33,7 +33,7 @@ const config = {
     description: "Production-ready SaaS boilerplate with authentication, payments, and dashboard",
     url: env?.client?.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     author: env?.client?.NEXT_PUBLIC_AUTHOR_NAME || process.env.NEXT_PUBLIC_AUTHOR_NAME || "Fabrk Team",
-    supportEmail: env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@example.com",
+    supportEmail: env?.client?.NEXT_PUBLIC_SUPPORT_EMAIL || process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@fabrk.dev",
   },
 
   // ============================================================================
@@ -81,9 +81,9 @@ const config = {
     apiKey: env?.server?.RESEND_API_KEY || process.env.RESEND_API_KEY,
     from: {
       name: "Fabrk Boilerplate",
-      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "noreply@example.com",
+      email: env?.server?.EMAIL_FROM || process.env.EMAIL_FROM || "noreply@fabrk.dev",
     },
-    replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || "support@example.com",
+    replyTo: env?.server?.EMAIL_REPLY_TO || process.env.EMAIL_REPLY_TO || "support@fabrk.dev",
   },
 
   // ============================================================================
