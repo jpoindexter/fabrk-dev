@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";
-import { createHash } from "crypto";
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -33,6 +32,15 @@ function setCachedSessionVersion(userId: string, version: number) {
     entriesToDelete.forEach(key => sessionVersionCache.delete(key));
   }
   sessionVersionCache.set(userId, { version, timestamp: Date.now() });
+}
+
+// Hash token using Web Crypto API (edge runtime compatible)
+async function hashTokenWebCrypto(token: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(token);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 export const authConfig: NextAuthConfig = {
@@ -68,9 +76,7 @@ export const authConfig: NextAuthConfig = {
         // Magic link authentication
         if (credentials.magicToken) {
           // Hash the incoming token to match stored hash (security: tokens are hashed in DB)
-          const hashedToken = createHash("sha256")
-            .update(credentials.magicToken as string)
-            .digest("hex");
+          const hashedToken = await hashTokenWebCrypto(credentials.magicToken as string);
 
           const magicToken = await prisma.verificationToken.findFirst({
             where: {

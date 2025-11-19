@@ -9,9 +9,9 @@
  * - Base64 encoding for CSP compatibility
  * - Unique per request
  * - Retrieved via custom header
+ * - Edge runtime compatible (uses Web Crypto API)
  */
 
-import { randomBytes } from "crypto";
 import { headers } from "next/headers";
 
 /**
@@ -23,10 +23,18 @@ const NONCE_HEADER = "x-nonce";
 /**
  * Generate a cryptographically secure nonce
  *
+ * Uses Web Crypto API (available in edge runtime)
+ * instead of Node.js crypto module
+ *
  * @returns Base64-encoded random string (128-bit entropy)
  */
 export function generateNonce(): string {
-  return randomBytes(16).toString("base64");
+  // Use Web Crypto API for edge runtime compatibility
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  
+  // Convert to base64
+  return Buffer.from(bytes).toString("base64");
 }
 
 /**
