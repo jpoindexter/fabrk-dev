@@ -17,6 +17,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Table,
@@ -180,6 +189,8 @@ const roleIcons: Record<string, any> = {
 export default function TeamDashboardTemplate() {
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteRole, setInviteRole] = useState("member");
+  const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
+  const [memberToRemove, setMemberToRemove] = useState<string | null>(null);
 
   const handleInvite = () => {
     if (!inviteEmail) {
@@ -194,9 +205,11 @@ export default function TeamDashboardTemplate() {
     toast.success(`Changed member role to ${newRole}`);
   };
 
-  const handleRemoveMember = (memberId: string) => {
-    if (confirm("Are you sure you want to remove this member?")) {
+  const handleRemoveMember = () => {
+    if (memberToRemove) {
       toast.success(`Member removed successfully`);
+      setRemoveDialogOpen(false);
+      setMemberToRemove(null);
     }
   };
 
@@ -422,15 +435,36 @@ export default function TeamDashboardTemplate() {
                                         Make Guest
                                       </DropdownMenuItem>
                                       <DropdownMenuSeparator />
-                                      <DropdownMenuItem
-                                        onClick={() =>
-                                          handleRemoveMember(member.id)
-                                        }
-                                        className="font-semibold text-destructive"
-                                      >
-                                        <Trash2 className="mr-2 h-4 w-4" />
-                                        Remove
-                                      </DropdownMenuItem>
+                                      <AlertDialog open={removeDialogOpen} onOpenChange={setRemoveDialogOpen}>
+                                        <AlertDialogTrigger asChild>
+                                          <DropdownMenuItem
+                                            onSelect={(e) => {
+                                              e.preventDefault();
+                                              setMemberToRemove(member.id);
+                                              setRemoveDialogOpen(true);
+                                            }}
+                                            className="font-semibold text-destructive"
+                                          >
+                                            <Trash2 className="mr-2 h-4 w-4" />
+                                            Remove
+                                          </DropdownMenuItem>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                          <AlertDialogTitle>Remove Member</AlertDialogTitle>
+                                          <AlertDialogDescription>
+                                            Are you sure you want to remove this member? They will lose access to the team.
+                                          </AlertDialogDescription>
+                                          <div className="flex gap-4 justify-end">
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                            <AlertDialogAction
+                                              onClick={handleRemoveMember}
+                                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                            >
+                                              Remove Member
+                                            </AlertDialogAction>
+                                          </div>
+                                        </AlertDialogContent>
+                                      </AlertDialog>
                                     </>
                                   )}
                                   {member.role === "owner" && (

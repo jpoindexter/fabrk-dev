@@ -19,6 +19,15 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
@@ -130,6 +139,7 @@ export default function SecurityPrivacyTemplate() {
     "security" | "privacy" | "audit" | "compliance"
   >("security");
   const [privacy, setPrivacy] = useState(privacySettings);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const handlePrivacyToggle = (key: keyof typeof privacySettings) => {
     setPrivacy((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -148,13 +158,8 @@ export default function SecurityPrivacyTemplate() {
   };
 
   const handleDeleteAccount = () => {
-    if (
-      confirm(
-        "Are you sure you want to delete your account? This action cannot be undone."
-      )
-    ) {
-      toast.success("Account deletion process initiated. Check your email for confirmation.");
-    }
+    toast.success("Account deletion process initiated. Check your email for confirmation.");
+    setDeleteDialogOpen(false);
   };
 
   return (
@@ -710,14 +715,32 @@ export default function SecurityPrivacyTemplate() {
                     data will be permanently erased.
                   </AlertDescription>
                 </Alert>
-                <Button
-                  variant="destructive"
-                  className="w-full font-semibold"
-                  onClick={handleDeleteAccount}
-                >
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  Delete My Account
-                </Button>
+                <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      variant="destructive"
+                      className="w-full font-semibold"
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Delete My Account
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogTitle>Delete Account</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently erased.
+                    </AlertDialogDescription>
+                    <div className="flex gap-4 justify-end">
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={handleDeleteAccount}
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      >
+                        Delete Account
+                      </AlertDialogAction>
+                    </div>
+                  </AlertDialogContent>
+                </AlertDialog>
               </CardContent>
             </Card>
           </TabsContent>
