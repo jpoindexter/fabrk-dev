@@ -108,9 +108,11 @@ const config = {
     // Payment features
     subscriptions: true,
     oneTimePurchases: true,
-    // TODO: Trial period - Database field exists (User.trialEndsAt) but checkout flow
-    // needs implementation. Set trialEndsAt on user creation and check in middleware/API routes.
-    trialPeriod: false, // Not fully implemented
+    // Trial period feature - Planned for v1.1
+    // Database field exists (User.trialEndsAt) but checkout flow incomplete.
+    // Implementation: Set trialEndsAt on user creation, check expiration in middleware/API routes
+    // TODO v1.1: Complete trial checkout flow, add trial countdown UI, enforce trial limits
+    trialPeriod: false, // Infrastructure ready, business logic deferred
 
     // Dashboard features
     analytics: false, // Enable when ready

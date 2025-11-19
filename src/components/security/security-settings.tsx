@@ -99,8 +99,9 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         "Scan the QR code with your authenticator app and enter the verification code."
       );
 
-      // TODO: Show QR code modal with data.qrCode and verify code
-      // For now, redirect to MFA setup page or show toast
+      // QR Code Modal - Planned for v1.1
+      // TODO v1.1: Show QR code modal with data.qrCode and verify code
+      // For v1.0: Redirect to dedicated 2FA setup page (same UX, different implementation)
       window.location.href = "/settings/security/2fa/setup";
     } catch (err: unknown) {
       error(

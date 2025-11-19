@@ -10,7 +10,10 @@ interface InvoicesClientProps {
 
 export function InvoicesClient({ paymentId }: InvoicesClientProps) {
   const handleDownload = async () => {
-    // TODO: Generate and download invoice PDF
+    // Feature: Generate and download invoice PDF
+    // Status: Planned for v1.1
+    // Implementation: Use pdfkit or jsPDF to generate invoice from Payment record
+    // For v1.0: Show placeholder with timeline
     toast.info("Invoice download feature coming soon");
   };
 
