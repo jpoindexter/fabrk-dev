@@ -93,7 +93,7 @@ function DataTablePaginationInner<TData>(
         <div className={`flex items-center space-x-2`}>
           <Button
             variant="outline"
-            className={`"h-8 w-8" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
+            className={`"h-10 w-10" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
@@ -102,7 +102,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-8 w-8" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-10 w-10" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -111,7 +111,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-8 w-8" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-10 w-10" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
@@ -120,7 +120,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-8 w-8" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
+            className={`"h-10 w-10" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
