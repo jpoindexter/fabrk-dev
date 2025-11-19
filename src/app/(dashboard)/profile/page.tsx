@@ -150,7 +150,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Account Info */}
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="flex items-center gap-3 rounded-lg border p-3">
               <Mail className="h-5 w-5 text-muted-foreground" />
               <div>
@@ -234,7 +234,7 @@ export default function ProfilePage() {
             />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="website">Website</Label>
               <Input

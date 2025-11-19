@@ -64,14 +64,14 @@ export default function AccountPage() {
   ];
 
   return (
-    <div className="container mx-auto max-w-7xl px-6 py-8">
+    <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
         <h1 className="text-4xl font-semibold tracking-tight">Account Settings</h1>
         <p className="mt-2 text-muted-foreground">Manage your account settings and preferences</p>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid h-auto w-full max-w-4xl grid-cols-6 p-2">
+        <TabsList className="grid h-auto w-full max-w-6xl grid-cols-6 p-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -90,7 +90,7 @@ export default function AccountPage() {
           })}
         </TabsList>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <TabsContent value="profile" className="mt-0 space-y-4">
               <Card>
@@ -178,7 +178,7 @@ export default function AccountPage() {
                       key={tab.value}
                       onClick={() => setActiveTab(tab.value)}
                       className={cn(
-                        "flex w-full items-start gap-4 rounded-lg p-6 text-left transition-colors",
+                        "flex w-full items-start gap-6 rounded-lg p-6 text-left transition-colors",
                         "hover:bg-accent hover:text-accent-foreground",
                         activeTab === tab.value && "bg-accent"
                       )}

@@ -152,7 +152,7 @@ export default function PaymentMethodsPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-4xl px-6 py-8">
+    <div className="container mx-auto max-w-6xl px-6 py-8">
       {/* Header */}
       <div className="mb-8">
         <Link href="/billing">
@@ -207,7 +207,7 @@ export default function PaymentMethodsPage() {
             <Card key={method.id}>
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-6">
                     <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
                       {getCardIcon(method.brand)}
                     </div>
@@ -259,7 +259,7 @@ export default function PaymentMethodsPage() {
       </div>
 
       {/* Information Cards */}
-      <div className="grid md:grid-cols-2 gap-4 mt-8">
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Secure Processing</CardTitle>

@@ -168,7 +168,7 @@ export default async function InvoicesPage() {
       )}
 
       {/* Information Cards */}
-      <div className="grid md:grid-cols-2 gap-4 mt-8">
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">

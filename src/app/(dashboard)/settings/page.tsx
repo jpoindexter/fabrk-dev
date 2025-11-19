@@ -70,7 +70,7 @@ export default function SettingsPage() {
   ];
 
   return (
-    <div className="container mx-auto max-w-5xl px-6 py-8">
+    <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
         <h1 className="text-4xl font-semibold tracking-tight">Settings</h1>
         <p className="mt-2 text-muted-foreground">
@@ -88,7 +88,7 @@ export default function SettingsPage() {
               {index > 0 && <Separator className="mb-8" />}
               <Card className={section.isDanger ? "border-destructive/50" : ""}>
                 <CardHeader>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-6">
                     <div
                       className={`rounded-lg p-2 ${
                         section.isDanger ? "bg-destructive/10" : "bg-primary/10"

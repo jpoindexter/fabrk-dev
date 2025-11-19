@@ -417,7 +417,7 @@ export default function ApiKeysPage() {
               <Card key={apiKey.id}>
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-6">
                       <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
                         <Key className="h-6 w-6 text-primary" />
                       </div>
@@ -486,7 +486,7 @@ export default function ApiKeysPage() {
       )}
 
       {/* Documentation */}
-      <div className="grid md:grid-cols-2 gap-4 mt-8">
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">

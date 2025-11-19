@@ -91,7 +91,7 @@ async function AdminStats() {
   const stats = await getStats();
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Users</CardTitle>
@@ -176,7 +176,7 @@ export default function AdminPage() {
 
       <Suspense
         fallback={
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {[...Array(5)].map((_, i) => (
               <Card key={i}>
                 <CardHeader>
@@ -193,7 +193,7 @@ export default function AdminPage() {
         <AdminStats />
       </Suspense>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
