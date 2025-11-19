@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Check, X } from "lucide-react";
 
 interface PricingPlan {
@@ -188,9 +189,9 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           {plan.price}
                         </div>
                         {plan.highlighted && (
-                          <span className="inline-block rounded-full bg-card px-3 py-1 text-xs font-semibold text-primary">
+                          <Badge variant="default" size="sm">
                             Best Value
-                          </span>
+                          </Badge>
                         )}
                       </div>
                     </th>

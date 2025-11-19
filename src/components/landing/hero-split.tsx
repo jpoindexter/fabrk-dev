@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import config from "@/config";
 
 interface HeroSplitProps {
@@ -37,11 +38,9 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5">
-                <p className="text-sm font-semibold text-primary">
-                  Early Access - Join First 100 Launch Customers
-                </p>
-              </div>
+              <Badge variant="default" size="lg">
+                Early Access - Join First 100 Launch Customers
+              </Badge>
             </div>
 
             {/* Headline */}
@@ -76,12 +75,14 @@ export function HeroSplit({
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-3">
               {trustBadges.map((badge) => (
-                <div
+                <Badge
                   key={badge}
-                  className="rounded-md border-2 border-black bg-card px-3 py-1.5 text-sm font-semibold text-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                  variant="outline"
+                  size="md"
+                  className="border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                 >
                   {badge}
-                </div>
+                </Badge>
               ))}
             </div>
 

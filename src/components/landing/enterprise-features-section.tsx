@@ -2,6 +2,7 @@
 
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [
@@ -59,15 +60,17 @@ export function EnterpriseFeaturesSection() {
     <section className="bg-muted/30 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="mb-4 inline-block rounded-md border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium uppercase tracking-wide text-primary"
+            className="mb-4 inline-block"
           >
-            Enterprise-Grade Features
-          </motion.span>
+            <Badge variant="default" size="lg" className="uppercase tracking-wide">
+              Enterprise-Grade Features
+            </Badge>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Check, Loader2 } from "lucide-react";
 import { useCheckout } from "@/hooks/use-checkout";
 import config from "@/config";
@@ -71,9 +72,9 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mb-6 text-center"
             >
-              <span className="inline-block rounded-md bg-primary/10 border border-primary/20 px-6 py-2 text-sm font-semibold uppercase text-primary">
+              <Badge variant="default" size="lg" className="uppercase">
                 Lifetime Deal
-              </span>
+              </Badge>
             </motion.div>
 
             {/* Scarcity Badge */}
@@ -84,9 +85,9 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mb-4 text-center"
             >
-              <span className="inline-block rounded-md bg-destructive/10 border border-destructive/20 px-4 py-2 text-sm font-semibold text-destructive">
+              <Badge variant="destructive" size="lg">
                 🔥 $100 OFF - First 500 Customers Only
-              </span>
+              </Badge>
             </motion.div>
 
             {/* Price */}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import config from "@/config";
@@ -87,9 +88,9 @@ export function StickyCTABar({
               </p>
               {showPrice && (
                 <div className="flex items-center gap-2">
-                  <span className="inline-block rounded-md bg-primary/10 px-2 py-1 text-xs font-bold text-primary">
+                  <Badge variant="default" size="sm">
                     {config.pricing.product.display.current}
-                  </span>
+                  </Badge>
                   <span className="text-xs text-muted-foreground line-through">
                     {config.pricing.product.display.original}
                   </span>

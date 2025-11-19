@@ -4,20 +4,29 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full border px-3 py-1 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1.5 [&>svg]:pointer-events-none transition-vercel-colors",
+  "inline-flex items-center justify-center rounded-full border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-1.5",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground",
-        secondary: "bg-secondary text-secondary-foreground",
-        accent: "bg-accent text-accent-foreground",
-        destructive: "bg-destructive text-destructive-foreground",
-        neutral: "bg-background text-foreground",
-        outline: "bg-transparent border-foreground text-foreground",
+        default: "bg-primary text-primary-foreground border-primary hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90",
+        accent: "bg-accent text-accent-foreground border-accent hover:bg-accent/90",
+        destructive: "bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90",
+        neutral: "bg-background text-foreground border-foreground hover:bg-muted",
+        outline: "bg-transparent border-foreground text-foreground hover:bg-foreground/10",
+        success: "bg-green-100 text-green-900 border-green-300 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-100 dark:border-green-700",
+        warning: "bg-yellow-100 text-yellow-900 border-yellow-300 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-100 dark:border-yellow-700",
+        info: "bg-blue-100 text-blue-900 border-blue-300 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-100 dark:border-blue-700",
+      },
+      size: {
+        sm: "px-2 py-1 text-xs font-semibold [&>svg]:size-3",
+        md: "px-3 py-1 text-xs font-medium [&>svg]:size-3",
+        lg: "px-4 py-1.5 text-sm font-semibold [&>svg]:size-4",
       },
     },
     defaultVariants: {
       variant: "default",
+      size: "md",
     },
   },
 );
@@ -25,6 +34,7 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant,
+  size,
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> &
@@ -36,7 +46,7 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
+      className={cn(badgeVariants({ variant, size }), className)}
       {...props}
     />
   );

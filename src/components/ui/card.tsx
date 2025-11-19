@@ -41,7 +41,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         "rounded-lg border bg-card text-card-foreground",
 
         // Subtle transition
-        "transition-vercel-colors",
+        "transition-colors",
 
         // Focus-within state - thin ring for accessibility
         "focus-within:ring-2 focus-within:ring-primary",

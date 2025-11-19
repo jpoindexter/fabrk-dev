@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
 import config from "@/config";
 
@@ -66,11 +67,13 @@ export function HeroVideo({
         <div className="mx-auto max-w-4xl text-center">
           {/* Early Access Badge */}
           <div className="mb-8">
-            <div className="inline-block rounded-full border-2 border-white/30 bg-white/10 px-4 py-1.5 backdrop-blur-sm">
-              <p className="text-sm font-semibold text-white">
-                Early Access - Join First 100 Launch Customers
-              </p>
-            </div>
+            <Badge
+              variant="outline"
+              size="lg"
+              className="border-2 border-white/30 bg-white/10 text-white backdrop-blur-sm"
+            >
+              Early Access - Join First 100 Launch Customers
+            </Badge>
           </div>
 
           {/* Headline */}
@@ -104,12 +107,14 @@ export function HeroVideo({
           {/* Trust Badges */}
           <div className="mb-8 flex flex-wrap justify-center gap-3">
             {trustBadges.map((badge) => (
-              <div
+              <Badge
                 key={badge}
-                className="rounded-md border-2 border-white/30 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-sm"
+                variant="outline"
+                size="md"
+                className="border-2 border-white/30 bg-white/10 text-white backdrop-blur-sm"
               >
                 {badge}
-              </div>
+              </Badge>
             ))}
           </div>
 

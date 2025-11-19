@@ -1,4 +1,5 @@
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import { Badge } from "@/components/ui/badge";
 import {
   siTypescript,
   siPrisma,
@@ -62,11 +63,9 @@ export function DeveloperExperienceSection() {
     <section className="scroll-mt-16 bg-muted/30 px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <div className="mb-4 inline-block rounded-full border-2 border-primary bg-primary/10 px-4 py-1.5">
-            <p className="text-sm font-semibold text-primary">
-              Built for Developers
-            </p>
-          </div>
+          <Badge variant="default" size="lg" className="mb-4">
+            Built for Developers
+          </Badge>
         </div>
 
         <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
