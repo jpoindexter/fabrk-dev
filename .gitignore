@@ -150,6 +150,7 @@ docs/api/
 !docs/LIGHTHOUSE-CI.md
 !docs/LIGHTHOUSE-SETUP-SUMMARY.md
 !docs/ONBOARDING-CHECKLIST.md
+!docs/DISTRIBUTION-GITHUB.md
 
 # Test outputs and reports
 test-results.json
