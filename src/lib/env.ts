@@ -203,6 +203,20 @@ const serverSchema = z.object({
     }, 'ANTHROPIC_API_KEY must be a valid Anthropic API key'),
 
   // ============================================================================
+  // GITHUB REPOSITORY ACCESS - For distribution to customers
+  // ============================================================================
+  GITHUB_ACCESS_TOKEN: z.string().optional()
+    .refine((val) => {
+      // If provided, should be a valid GitHub personal access token (ghp_*)
+      if (val) {
+        return val.startsWith('ghp_') || val.startsWith('github_pat_');
+      }
+      return true;
+    }, 'GITHUB_ACCESS_TOKEN must be a valid GitHub personal access token'),
+  GITHUB_REPO_OWNER: z.string().optional(),
+  GITHUB_REPO_NAME: z.string().optional(),
+
+  // ============================================================================
   // MONITORING - Sentry (Optional)
   // ============================================================================
   SENTRY_AUTH_TOKEN: z.string().optional(),

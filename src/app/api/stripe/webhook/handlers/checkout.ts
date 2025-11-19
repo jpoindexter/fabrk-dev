@@ -9,6 +9,7 @@ import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
 import { queueWelcomeEmail } from "@/lib/email";
 import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
+import { handleGitHubAccessGrant } from "./github-access";
 import { createHash } from "crypto";
 import Stripe from "stripe";
 
@@ -121,10 +122,16 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       userId: user.id,
     });
 
+    // Grant GitHub repository access (if enabled)
+    const githubResult = await handleGitHubAccessGrant(session);
+
     logger.info("Purchase processed successfully", {
       userId: user.id,
       email: customerEmail,
       tier,
+      githubAccessGranted: githubResult.success,
+      githubUsername: githubResult.githubUsername,
+      githubError: githubResult.error,
     });
   } catch (error: unknown) {
     logger.error("Error processing checkout.session.completed", error);
