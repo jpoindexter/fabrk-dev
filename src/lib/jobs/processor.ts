@@ -110,6 +110,17 @@ export async function processNextJob(): Promise<boolean> {
         },
       });
 
+      // Handle GitHub access grant failure notification
+      if (job.type === "github.access_grant") {
+        const { handleGitHubAccessGrantFailure } = await import("./handlers");
+        const jobData = job.data as { userId: string; githubUsername: string };
+        await handleGitHubAccessGrantFailure(
+          jobData.userId,
+          jobData.githubUsername,
+          error instanceof Error ? error.message : String(error)
+        );
+      }
+
       // Log error
       captureError(error instanceof Error ? error : new Error(String(error)), {
         metadata: {

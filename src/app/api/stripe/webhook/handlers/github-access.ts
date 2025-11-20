@@ -1,12 +1,14 @@
 /**
  * ✅ FABRK COMPONENT
  * GitHub access handler for checkout completions
- * Grants customers repository access automatically after purchase
+ * Queues a background job to grant customers repository access after purchase
+ * Uses retry mechanism for transient GitHub API failures
  */
 
 import { logger } from "@/lib/logger";
-import { grantRepositoryAccess } from "@/lib/github";
 import { env } from "@/lib/env";
+import { enqueueJob } from "@/lib/jobs/queue";
+import { prisma } from "@/lib/prisma";
 import Stripe from "stripe";
 
 /**
@@ -19,6 +21,7 @@ export async function handleGitHubAccessGrant(
   success: boolean;
   githubUsername?: string;
   repoUrl?: string;
+  jobId?: string;
   error?: string;
 }> {
   try {
@@ -40,12 +43,12 @@ export async function handleGitHubAccessGrant(
     }
 
     // Extract GitHub username from custom fields
-    // Custom fields are stored in session.custom_fields
-    const customFields = (session as any).custom_fields || {};
-    const githubUsername =
-      customFields.values && customFields.values.github_username
-        ? customFields.values.github_username.text_value
-        : null;
+    // Stripe sends custom_fields as an array: [{ key: "github_username", type: "text", text: { value: "..." } }]
+    const customFields = (session as any).custom_fields || [];
+    const githubField = customFields.find(
+      (field: { key: string }) => field.key === "github_username"
+    );
+    const githubUsername = githubField?.text?.value || null;
 
     if (!githubUsername) {
       logger.warn("No GitHub username provided in checkout session", {
@@ -58,39 +61,70 @@ export async function handleGitHubAccessGrant(
       };
     }
 
-    logger.info("Attempting to grant GitHub repository access", {
-      sessionId: session.id,
-      githubUsername,
-    });
+    // Get user ID from session metadata or find by email
+    const customerEmail = session.customer_email || session.customer_details?.email;
+    let userId = session.metadata?.userId;
 
-    // Grant repository access
-    const result = await grantRepositoryAccess(githubUsername, "pull");
-
-    if (!result.success) {
-      logger.error("Failed to grant GitHub repository access", {
-        sessionId: session.id,
-        githubUsername,
-        error: result.error,
+    if (!userId || userId === "guest") {
+      // Find user by email
+      const user = await prisma.user.findUnique({
+        where: { email: customerEmail as string },
+        select: { id: true },
       });
-      // Don't throw - we don't want to fail the entire webhook
-      // The customer can manually request access via support
+      userId = user?.id;
+    }
+
+    if (!userId) {
+      logger.error("Could not find user for GitHub access grant", {
+        sessionId: session.id,
+        customerEmail,
+      });
       return {
         success: false,
         githubUsername,
-        error: result.error,
+        error: "User not found for GitHub access grant",
       };
     }
 
-    logger.info("GitHub repository access granted successfully", {
+    // Update user with pending status and GitHub username
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        githubUsername,
+        githubAccessStatus: "pending",
+      },
+    });
+
+    logger.info("Queueing GitHub repository access grant job", {
       sessionId: session.id,
+      userId,
       githubUsername,
-      repoUrl: result.repoUrl,
+    });
+
+    // Queue the job for background processing with retry logic
+    const jobId = await enqueueJob({
+      type: "github.access_grant",
+      payload: {
+        userId,
+        githubUsername,
+        repoOwner: env.server.GITHUB_REPO_OWNER!,
+        repoName: env.server.GITHUB_REPO_NAME!,
+      },
+      priority: "high",
+      maxAttempts: 3, // Retry up to 3 times with exponential backoff
+    });
+
+    logger.info("GitHub access grant job queued successfully", {
+      sessionId: session.id,
+      jobId,
+      userId,
+      githubUsername,
     });
 
     return {
       success: true,
       githubUsername,
-      repoUrl: result.repoUrl,
+      jobId,
     };
   } catch (error: unknown) {
     const errorMessage =

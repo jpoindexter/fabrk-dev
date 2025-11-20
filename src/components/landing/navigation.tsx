@@ -19,12 +19,11 @@ export function Navigation() {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
-    { label: "Live Demo", href: "/demo" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}
@@ -36,8 +35,8 @@ export function Navigation() {
           </Link>
         </motion.div>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden items-center gap-8 md:flex">
+        {/* Desktop Navigation Links - Centered */}
+        <div className="hidden flex-1 items-center justify-center gap-8 md:flex">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.href}

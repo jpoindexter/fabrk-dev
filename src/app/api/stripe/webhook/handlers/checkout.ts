@@ -48,39 +48,31 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     // Generate license key
     const licenseKey = generateLicenseKey();
 
-    // Check if user exists
-    let user = await prisma.user.findUnique({
+    // Upsert user first (atomic operation to prevent race conditions)
+    const user = await prisma.user.upsert({
       where: { email: customerEmail },
+      update: {
+        customerId: customerId || undefined,
+        licenseKey,
+        tier: tier || "professional",
+        subscriptionTier: tier || "professional",
+      },
+      create: {
+        email: customerEmail,
+        name: session.customer_details?.name || null,
+        customerId,
+        licenseKey,
+        tier: tier || "professional",
+        subscriptionTier: tier || "professional",
+        emailVerified: new Date(), // Auto-verify since they paid
+      },
     });
 
-    if (user) {
-      // Update existing user
-      logger.info("Updating existing user", { userId: user.id });
-      user = await prisma.user.update({
-        where: { id: user.id },
-        data: {
-          customerId: customerId || user.customerId,
-          licenseKey,
-          tier: tier || "professional",
-          subscriptionTier: tier || "professional",
-        },
-      });
-    } else {
-      // Create new user account (passwordless)
-      logger.info("Creating new user account", { email: customerEmail });
+    // Queue GitHub repository access grant job (if enabled)
+    // This handles retry logic for transient GitHub API failures
+    const githubResult = await handleGitHubAccessGrant(session);
 
-      user = await prisma.user.create({
-        data: {
-          email: customerEmail,
-          name: session.customer_details?.name || null,
-          customerId,
-          licenseKey,
-          tier: tier || "professional",
-          subscriptionTier: tier || "professional",
-          emailVerified: new Date(), // Auto-verify since they paid
-        },
-      });
-    }
+    logger.info("User upserted", { userId: user.id, email: customerEmail });
 
     // Create payment record
     await prisma.payment.create({
@@ -114,22 +106,24 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
     // Queue welcome email with license key and magic link
+    // Note: GitHub access is handled asynchronously via job queue
     await queueWelcomeEmail({
       to: customerEmail,
       name: user.name || "Customer",
       licenseKey,
       magicLink,
       userId: user.id,
+      // GitHub info will be communicated separately once job completes
+      githubRepoUrl: null,
+      githubUsername: githubResult.githubUsername || null,
     });
-
-    // Grant GitHub repository access (if enabled)
-    const githubResult = await handleGitHubAccessGrant(session);
 
     logger.info("Purchase processed successfully", {
       userId: user.id,
       email: customerEmail,
       tier,
-      githubAccessGranted: githubResult.success,
+      githubJobQueued: githubResult.success,
+      githubJobId: githubResult.jobId,
       githubUsername: githubResult.githubUsername,
       githubError: githubResult.error,
     });

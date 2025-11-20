@@ -270,7 +270,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="primaryCta" size="xl" asChild>
               <Link href="/#pricing">
-                Get Fabrk Now - {config.pricing.product.display.current}
+                Get Fabrk Now - {config.pricing.fabrk.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

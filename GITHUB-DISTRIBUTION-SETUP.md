@@ -7,12 +7,13 @@
 ## ✅ What You've Done
 
 1. ✅ Generated GitHub Personal Access Token (classic)
-   - Token: `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`
+   - Token: `ghp_your_personal_access_token_here`
    - Scopes: `repo` + `admin:repo_hook`
+   - **Note:** Copy the token immediately when generated - you won't see it again. Keep it secret!
 
 2. ✅ Added to `.env`:
    ```env
-   GITHUB_ACCESS_TOKEN="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"
+   GITHUB_ACCESS_TOKEN="your_github_token_here"
    GITHUB_REPO_OWNER="jpoindexter"
    GITHUB_REPO_NAME="fabrk-boilerplate-private"
    ```
@@ -117,7 +118,7 @@ stripe trigger checkout.session.completed \
 
 ```bash
 # Test the token directly (if you have curl)
-curl -H "Authorization: token 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" \
+curl -H "Authorization: token your_github_token_here" \
   https://api.github.com/user
 
 # You should get your GitHub user info back (JSON)
@@ -127,7 +128,7 @@ curl -H "Authorization: token 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" \
 
 ```bash
 # The token should have access to the repository
-curl -H "Authorization: token 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" \
+curl -H "Authorization: token your_github_token_here" \
   https://api.github.com/repos/jpoindexter/fabrk-boilerplate-private
 
 # Should return repo info (not 404)
@@ -152,7 +153,7 @@ npm run dev
 
 | Variable | Value | Purpose |
 |----------|-------|---------|
-| `GITHUB_ACCESS_TOKEN` | `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` | Authenticate with GitHub API |
+| `GITHUB_ACCESS_TOKEN` | `your_github_token_here` | Authenticate with GitHub API |
 | `GITHUB_REPO_OWNER` | `jpoindexter` | Your GitHub username/org |
 | `GITHUB_REPO_NAME` | `fabrk-boilerplate-private` | Repository to grant access to |
 

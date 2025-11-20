@@ -131,6 +131,7 @@ import {
   getExistingCheckoutSession,
   storeCheckoutIdempotency,
 } from "@/lib/stripe/idempotency";
+import config from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 
 async function checkoutHandler(req: NextRequest) {
@@ -191,6 +192,17 @@ async function checkoutHandler(req: NextRequest) {
       return NextResponse.json({ url: existingSession.url });
     }
 
+    // Check if early adopter promotion code is active and apply if available
+    const discounts: Array<{ promotion_code?: string }> = [];
+    if (config.stripe.coupons.earlyAdopter.active && config.stripe.coupons.earlyAdopter.promotionCodeId) {
+      discounts.push({ promotion_code: config.stripe.coupons.earlyAdopter.promotionCodeId });
+      logger.info("Early adopter promotion code applied", {
+        promotionCode: config.stripe.coupons.earlyAdopter.code,
+        promotionCodeId: config.stripe.coupons.earlyAdopter.promotionCodeId,
+        discount: config.stripe.coupons.earlyAdopter.discountAmount,
+      });
+    }
+
     // Create Stripe checkout session with idempotency key
     const checkoutSession = await stripe.checkout.sessions.create(
       {
@@ -204,6 +216,7 @@ async function checkoutHandler(req: NextRequest) {
             quantity: 1,
           },
         ],
+        ...(discounts.length > 0 ? { discounts } : {}), // Apply coupon if available
         success_url: `${STRIPE_CONFIG.successUrl}&product=${tierName}`,
         cancel_url: STRIPE_CONFIG.cancelUrl,
         metadata: {
@@ -212,7 +225,9 @@ async function checkoutHandler(req: NextRequest) {
           tier: tierName,
           idempotencyKey, // Store for reference
         },
-        allow_promotion_codes: true, // Allow promo codes
+        // Note: Cannot use both allow_promotion_codes and discounts together
+        // If automatic coupon is applied, users cannot add additional promo codes
+        ...(discounts.length === 0 ? { allow_promotion_codes: true } : {}),
         billing_address_collection: "required", // Collect billing address
         customer_creation: "always", // Always create/link customer (required for email)
       },

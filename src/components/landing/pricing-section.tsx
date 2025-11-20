@@ -11,8 +11,8 @@ import { logger } from "@/lib/logger";
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
 
-  // Use the Starter tier price from environment
-  const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
+  // Use the Fabrk one-time purchase price
+  const priceId = config.stripe.prices.fabrk || process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK || "";
 
   const features = [
     "Next.js 15 Boilerplate",
@@ -99,9 +99,9 @@ export function PricingSection() {
               className="mb-8 text-center"
             >
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">{config.pricing.product.display.current}</span>
+                <span className="text-5xl font-semibold text-foreground">{config.pricing.fabrk.display.current}</span>
                 <span className="text-xl font-medium text-muted-foreground line-through">
-                  {config.pricing.product.display.original}
+                  {config.pricing.fabrk.display.original}
                 </span>
               </div>
               <p className="text-base font-normal text-muted-foreground">

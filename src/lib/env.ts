@@ -213,8 +213,26 @@ const serverSchema = z.object({
       }
       return true;
     }, 'GITHUB_ACCESS_TOKEN must be a valid GitHub personal access token'),
-  GITHUB_REPO_OWNER: z.string().optional(),
-  GITHUB_REPO_NAME: z.string().optional(),
+  GITHUB_REPO_OWNER: conditionalRequired(
+    !!process.env.GITHUB_ACCESS_TOKEN,
+    'GITHUB_REPO_OWNER'
+  ).refine((val) => {
+    // GitHub usernames/org names: alphanumeric and hyphens only
+    if (val) {
+      return /^[a-zA-Z0-9-]+$/.test(val);
+    }
+    return true;
+  }, 'GITHUB_REPO_OWNER must contain only alphanumeric characters and hyphens'),
+  GITHUB_REPO_NAME: conditionalRequired(
+    !!process.env.GITHUB_ACCESS_TOKEN,
+    'GITHUB_REPO_NAME'
+  ).refine((val) => {
+    // GitHub repo names: alphanumeric, hyphens, underscores, and dots
+    if (val) {
+      return /^[a-zA-Z0-9._-]+$/.test(val);
+    }
+    return true;
+  }, 'GITHUB_REPO_NAME must contain only alphanumeric characters, hyphens, underscores, and dots'),
 
   // ============================================================================
   // MONITORING - Sentry (Optional)

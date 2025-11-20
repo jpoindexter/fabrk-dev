@@ -112,6 +112,7 @@ export default function PrivacyPage() {
               <li><strong>Payment Information:</strong> Processed by Stripe (we don't store full card details)</li>
               <li><strong>Profile Data:</strong> Optional profile picture, bio, preferences</li>
               <li><strong>Communications:</strong> Support inquiries, feedback, email correspondence</li>
+              <li><strong>GitHub Username:</strong> Required for granting repository access to purchased code. This information is used to invite you as a collaborator to our private GitHub repository with read-only access.</li>
             </ul>
 
             <h3 className="text-xl font-bold mt-4 mb-2">1.2 Automatically Collected Information</h3>
@@ -165,6 +166,7 @@ export default function PrivacyPage() {
               <li><strong>Resend:</strong> Transactional email delivery</li>
               <li><strong>Vercel/Hosting Provider:</strong> Infrastructure and hosting</li>
               <li><strong>Analytics Services:</strong> Usage analytics (anonymized when possible)</li>
+              <li><strong>GitHub:</strong> We use GitHub's Collaborator API to grant you access to the fabrk-boilerplate repository after purchase. GitHub is a data processor for your GitHub username and will receive a collaboration invitation request. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">GitHub's privacy policy</a></li>
             </ul>
 
             <h3 className="text-xl font-bold mt-4 mb-2">4.2 Legal Requirements</h3>
@@ -238,6 +240,11 @@ export default function PrivacyPage() {
               <li>Account Settings: <Link href="/settings" className="text-primary hover:underline">Edit your data directly</Link></li>
             </ul>
             <p>We'll respond within 30 days.</p>
+
+            <h3 className="text-xl font-bold mt-4 mb-2">7.4 GitHub Access Revocation</h3>
+            <p>
+              If you request your data be deleted, we will revoke your access to the fabrk-boilerplate repository on GitHub.
+            </p>
           </section>
 
           <section>

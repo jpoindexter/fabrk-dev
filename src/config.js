@@ -63,14 +63,33 @@ const config = {
     secretKey: env?.server?.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY,
     webhookSecret: env?.server?.STRIPE_WEBHOOK_SECRET || process.env.STRIPE_WEBHOOK_SECRET,
 
-    // Your Stripe Price IDs
-    // IMPORTANT: These fallbacks only work in development
-    // In production, these MUST be set or the app will fail during env validation
+    // Stripe Lookup Keys (one-time purchase model)
+    // Using lookup keys allows price updates in Stripe dashboard without code changes
+    // OR use Price ID directly: price_1ABC123xyz...
     prices: {
-      starter: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_STARTER || process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "price_starter",
-      professional: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || "price_professional",
-      enterprise: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || "price_enterprise",
+      fabrk: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_FABRK || process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK || "", // Set to Price ID from Stripe
     },
+
+    // Promotion codes and coupons
+    coupons: {
+      // Phase 2: Limited coupon (after time-based launch discount expires)
+      earlyAdopter: {
+        enabled: true,
+        code: "EARLY500", // Display code for customers
+        promotionCodeId: "promo_1SVGK4P7kSSEYWlXBq1LtaNM", // Stripe Promotion Code ID
+        couponId: env?.server?.STRIPE_COUPON_EARLY_ADOPTER || process.env.STRIPE_COUPON_EARLY_ADOPTER || "early_adopter_100off",
+        discountAmount: 100,
+        originalPrice: 299,
+        discountedPrice: 199, // After $100 off
+        maxRedemptions: 500,
+        description: "$100 off for first 500 early adopters",
+        expiresAt: null, // No expiration (limited by count)
+        active: true,
+      },
+    },
+
+    // Product reference
+    productId: "prod_TSAZlUUKJKVYPv", // Fabrk product ID from Stripe
   },
 
   // ============================================================================
@@ -106,8 +125,8 @@ const config = {
     googleAuth: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
 
     // Payment features
-    subscriptions: true,
-    oneTimePurchases: true,
+    subscriptions: false, // Fabrk uses one-time purchase model
+    oneTimePurchases: true, // $199 one-time payment for Fabrk boilerplate
     // Trial period feature - Planned for v1.1
     // Database field exists (User.trialEndsAt) but checkout flow incomplete.
     // Implementation: Set trialEndsAt on user creation, check expiration in middleware/API routes
@@ -166,64 +185,46 @@ const config = {
   },
 
   // ============================================================================
-  // SUBSCRIPTION TIERS
+  // PRODUCT INFORMATION
   // ============================================================================
-  tiers: {
-    trial: {
-      name: "Trial",
-      durationDays: 14,
-      features: ["Basic features", "Limited usage", "Email support"],
-    },
-    starter: {
-      name: "Starter",
-      price: 29,
-      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_STARTER || process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
-      features: [
-        "All basic features",
-        "Increased limits",
-        "Priority email support",
-        "Monthly updates",
-      ],
-    },
-    professional: {
-      name: "Professional",
-      price: 99,
-      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL || process.env.NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL,
-      features: [
-        "All Starter features",
-        "Advanced analytics",
-        "API access",
-        "Dedicated support",
-        "Custom integrations",
-      ],
-    },
-    enterprise: {
-      name: "Enterprise",
-      price: "Custom",
-      priceId: env?.client?.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE || process.env.NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE,
-      features: [
-        "All Professional features",
-        "Unlimited usage",
-        "SLA guarantee",
-        "Dedicated account manager",
-        "Custom development",
-      ],
-    },
+  product: {
+    name: "Fabrk - SaaS Boilerplate",
+    description: "Launch your SaaS product in days, not months. Fabrk is a complete, production-ready Next.js 15 foundation built with 87 premium components, comprehensive testing (1500+ tests), and full feature parity for modern SaaS applications.",
+    shortDescription: "Premium SaaS boilerplate with 87 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.",
+    features: [
+      "Authentication (NextAuth v5 with Google OAuth & email/password)",
+      "Payment Processing (Stripe one-time & subscription billing)",
+      "Dashboard & Multi-Tenancy (Organization management with RBAC)",
+      "Database (PostgreSQL with Prisma ORM)",
+      "Email System (Resend templates + queue system)",
+      "6 Switchable Color Themes",
+      "Real-Time Features (Pusher notifications & activity feeds)",
+      "Webhook System (22 event types with retry logic)",
+      "Comprehensive Documentation (400KB+ guides)",
+      "Full Test Suite (Vitest + Playwright E2E)",
+      "Storybook Component Library (95% coverage)",
+      "Multi-Language Support (6 languages with next-intl)",
+      "TypeScript Strict Mode throughout",
+      "WCAG 2.1 AA Accessibility compliance",
+    ],
   },
 
   // ============================================================================
-  // PRODUCT PRICING (Landing Page Display)
+  // PRODUCT PRICING
   // ============================================================================
   pricing: {
-    // Boilerplate product pricing (what customers pay to buy Fabrk)
-    product: {
+    // Fabrk boilerplate pricing (one-time purchase)
+    fabrk: {
       current: 199, // One-time price for Fabrk boilerplate
-      original: 299, // Original price before launch discount
+      original: 299, // Original price before launch discount (expires 02/01/2026)
       currency: "USD",
       display: {
         current: "$199",
         original: "$299",
       },
+      billingModel: "one-time",
+      launchDiscount: true,
+      discountExpiresAt: "2026-02-01",
     },
     // Competitor pricing (for comparison tables)
     competitors: {

@@ -89,10 +89,10 @@ export function StickyCTABar({
               {showPrice && (
                 <div className="flex items-center gap-2">
                   <Badge variant="default" size="sm">
-                    {config.pricing.product.display.current}
+                    {config.pricing.fabrk.display.current}
                   </Badge>
                   <span className="text-xs text-muted-foreground line-through">
-                    {config.pricing.product.display.original}
+                    {config.pricing.fabrk.display.original}
                   </span>
                 </div>
               )}

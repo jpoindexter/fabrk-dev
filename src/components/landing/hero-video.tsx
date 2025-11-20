@@ -20,7 +20,7 @@ interface HeroVideoProps {
 export function HeroVideo({
   headline = "The Anti-Bloat Next.js Boilerplate",
   subheadline = "161 files. Not 1000. Ship your SaaS in hours, not weeks.",
-  ctaPrimary = { text: `Get Fabrk Now - ${config.pricing.product.display.current}`, href: "#pricing" },
+  ctaPrimary = { text: "Get Fabrk", href: "#pricing" },
   ctaSecondary = { text: "View Demo", href: "#demo" },
   trustBadges = ["TypeScript Strict", "PostgreSQL", "Next.js 15", "80+ Components"],
   videoSrc,

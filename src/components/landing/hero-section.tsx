@@ -1,10 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Loader2 } from "lucide-react";
-import { useCheckout } from "@/hooks/use-checkout";
-import config from "@/config";
 import { motion } from "framer-motion";
 import {
   siNextdotjs,
@@ -17,14 +15,6 @@ import {
 } from "simple-icons";
 
 export function HeroSection() {
-  const { createCheckoutSession, isLoading } = useCheckout();
-  const priceId = process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER || "";
-
-  const handleCheckout = () => {
-    if (priceId) {
-      createCheckoutSession(priceId);
-    }
-  };
   return (
     <section className="relative overflow-hidden bg-background px-6 py-16">
       <div className="mx-auto max-w-7xl">
@@ -57,28 +47,18 @@ export function HeroSection() {
             </span>.
           </motion.p>
 
-          {/* Primary CTA */}
+          {/* Primary CTA - Scroll to pricing */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <Button
-              size="xl"
-              className="text-lg"
-              onClick={handleCheckout}
-              disabled={isLoading || !priceId}
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                `Get Fabrk Now - ${config.pricing.product.display.current}`
-              )}
-            </Button>
+            <Link href="#pricing">
+              <Button size="xl" className="text-lg">
+                Get Fabrk
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Social Proof with Avatars */}

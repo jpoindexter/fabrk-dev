@@ -14,7 +14,8 @@ export type JobType =
   | "import.data"
   | "image.optimize"
   | "notification.send"
-  | "analytics.calculate";
+  | "analytics.calculate"
+  | "github.access_grant";
 
 export type JobPriority = "low" | "normal" | "high" | "urgent";
 

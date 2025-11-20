@@ -134,10 +134,10 @@ export function ExitIntentPopup({
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-3xl font-bold text-foreground">
-                  {config.pricing.product.display.current}
+                  {config.pricing.fabrk.display.current}
                 </span>
                 <span className="text-lg text-muted-foreground line-through">
-                  {config.pricing.product.display.original}
+                  {config.pricing.fabrk.display.original}
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">

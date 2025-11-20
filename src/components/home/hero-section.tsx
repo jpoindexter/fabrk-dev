@@ -66,7 +66,7 @@ export function HeroSection() {
               size="xl"
             >
               <Link href="/pricing">
-                Get Fabrk Now - {config.pricing.product.display.current}
+                Get Fabrk Now - {config.pricing.fabrk.display.current}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>

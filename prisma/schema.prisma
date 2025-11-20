@@ -30,6 +30,11 @@ model User {
   trialEndsAt      DateTime? // Trial expiration date
   licenseKey       String?   @unique // Product license key
 
+  // GitHub access tracking
+  githubUsername     String?   // The GitHub username granted access
+  githubAccessAt     DateTime? // Timestamp when access was granted
+  githubAccessStatus String?   // Status: 'pending' | 'granted' | 'failed' | 'revoked'
+
   // Simple security
   resetToken     String?   @unique
   resetExpires   DateTime?
