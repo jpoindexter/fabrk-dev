@@ -142,23 +142,6 @@ export function HeroVideo({
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        .animate-gradient-shift {
-          background-size: 200% 200%;
-          animation: gradient-shift 15s ease infinite;
-        }
-      `}</style>
     </section>
   );
 }

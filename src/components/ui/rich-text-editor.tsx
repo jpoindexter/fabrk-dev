@@ -317,13 +317,6 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           suppressContentEditableWarning
         />
 
-        <style jsx>{`
-          [contenteditable]:empty:before {
-            content: attr(data-placeholder);
-            color: hsl(var(--muted-foreground));
-            pointer-events: none;
-          }
-        `}</style>
 
         {/* Link Dialog */}
         <Dialog open={isLinkDialogOpen} onOpenChange={setIsLinkDialogOpen}>

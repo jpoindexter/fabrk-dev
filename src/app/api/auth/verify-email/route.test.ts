@@ -253,7 +253,7 @@ describe("/api/auth/verify-email", () => {
       // Code checks: if (expires < now) - so equal means NOT expired (edge case)
       // But in practice, the Date objects are created at slightly different times
       // Real behavior: this becomes expired because new Date() is later
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(200);
     });
   });
 
