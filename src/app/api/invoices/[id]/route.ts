@@ -4,6 +4,8 @@ import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 import { logger } from "@/lib/logger";
 
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/invoices/[id]
  * Retrieves Stripe invoice URL for a payment

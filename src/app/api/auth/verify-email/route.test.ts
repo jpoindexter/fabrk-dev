@@ -230,30 +230,26 @@ describe("/api/auth/verify-email", () => {
       });
     });
 
-    it("should handle token that expires exactly now", async () => {
-      const now = new Date();
+    it("should handle token that just expired", async () => {
+      // Use a token that expired 1ms ago to make test deterministic
+      const justExpired = new Date(Date.now() - 1);
 
       vi.mocked(prisma.verificationToken.findUnique).mockResolvedValue({
         identifier: "user@example.com",
-        token: "expires-now",
-        expires: now,
+        token: "just-expired",
+        expires: justExpired,
       });
 
       vi.mocked(prisma.verificationToken.delete).mockResolvedValue({} as any);
 
       const request = new NextRequest(
-        new URL("http://localhost/api/auth/verify-email?token=expires-now")
+        new URL("http://localhost/api/auth/verify-email?token=just-expired")
       );
-
-      vi.mocked(prisma.user.update).mockResolvedValue({} as any);
 
       const response = await GET(request);
 
-      // Token expires exactly at current time
-      // Code checks: if (expires < now) - so equal means NOT expired (edge case)
-      // But in practice, the Date objects are created at slightly different times
-      // Real behavior: this becomes expired because new Date() is later
-      expect(response.status).toBe(200);
+      // Token expired 1ms ago - should be rejected
+      expect(response.status).toBe(400);
     });
   });
 

@@ -572,6 +572,6 @@ A: We'll create a ZIP, but GitHub is recommended for updates/version control.
 ---
 
 **Distribution Model v1.0**
-**Last Updated:** November 19, 2025
+**Last Updated:** November 22, 2025
 
 For questions: business@fabrk.dev

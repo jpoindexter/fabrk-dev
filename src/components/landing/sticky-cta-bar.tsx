@@ -44,11 +44,14 @@ export function StickyCTABar({
   showPrice = true,
 }: StickyCTABarProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(() => {
-    // Check if user previously dismissed
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  useEffect(() => {
     const dismissed = localStorage.getItem("sticky-cta-dismissed");
-    return dismissed === "true";
-  });
+    if (dismissed === "true") {
+      setIsDismissed(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (isDismissed) return;

@@ -67,7 +67,9 @@ export function ExitIntentPopup({
   cookieExpiry = 7,
 }: ExitIntentPopupProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(() => {
+  const [hasShown, setHasShown] = useState(false);
+
+  useEffect(() => {
     // Check if user already saw popup recently
     const exitIntentShown = localStorage.getItem("exit-intent-shown");
     if (exitIntentShown) {
@@ -76,11 +78,10 @@ export function ExitIntentPopup({
         shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000
       );
       if (new Date() < expiryDate) {
-        return true;
+        setHasShown(true);
       }
     }
-    return false;
-  });
+  }, [cookieExpiry]);
 
   useEffect(() => {
     if (hasShown) return;

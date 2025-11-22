@@ -78,6 +78,8 @@ import { stripe } from "@/lib/stripe/client";
 import { env } from "@/lib/env";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const session = await auth();

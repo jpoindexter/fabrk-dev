@@ -74,6 +74,10 @@ const serverSchema = z.object({
     .refine((val) => {
       // In production, must be HTTPS
       if (process.env.NODE_ENV === 'production') {
+        // Allow localhost for local production builds/testing
+        if (val.includes('localhost') || val.includes('127.0.0.1')) {
+          return true;
+        }
         return val.startsWith('https://');
       }
       return true;
