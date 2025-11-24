@@ -225,7 +225,7 @@ export default function DocsLayout({
                         key={item.href}
                         href={item.href}
                         className={cn(
-                          "flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
+                          "flex items-center gap-2 rounded-md px-2 py-1.5 text-base transition-colors",
                           isActive
                             ? "bg-primary text-primary-foreground"
                             : "text-muted-foreground hover:bg-muted hover:text-foreground"

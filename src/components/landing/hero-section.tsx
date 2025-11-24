@@ -82,7 +82,7 @@ export function HeroSection() {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 + idx * 0.05 }}
-                  className={`h-10 w-10 rounded-full border-2 border-background ${avatar.bgColor} flex items-center justify-center ${avatar.textColor} font-medium text-xs shadow-sm`}
+                  className={`h-10 w-10 rounded-full border-2 border-background ${avatar.bgColor} flex items-center justify-center ${avatar.textColor} font-medium text-sm shadow-sm`}
                 >
                   {avatar.initials}
                 </motion.div>
@@ -127,7 +127,7 @@ export function HeroSection() {
                     path={tech.path}
                     className="h-6 w-6 text-foreground transition-colors group-hover:text-primary"
                   />
-                  <span className="text-xs font-medium text-muted-foreground">
+                  <span className="text-sm font-medium text-muted-foreground">
                     {tech.name}
                   </span>
                 </motion.div>
