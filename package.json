@@ -5,6 +5,7 @@
   "description": "Production-ready Next.js SaaS boilerplate",
   "scripts": {
     "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
+    "dev:restart": "npm run dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "npm run scan:hex && ESLINT_USE_FLAT_CONFIG=true eslint src",
