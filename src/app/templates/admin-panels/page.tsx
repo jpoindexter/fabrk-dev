@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DemoNav } from "@/components/demo/demo-nav";
-import { Copy, ExternalLink, LayoutDashboard, Settings, Users, FileText, Palette } from "lucide-react";
-import { templates, categories, getCategoryInfo, getTemplatesByCategory } from "../template-data";
+import { Copy, ExternalLink } from "lucide-react";
+import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AdminPanelsPage() {
   const categoryTemplates = getTemplatesByCategory("admin");
@@ -18,30 +18,6 @@ export default function AdminPanelsPage() {
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap gap-3 justify-center">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={category.id === "admin" ? "default" : "outline"}
-              asChild
-              className="gap-2"
-            >
-              {category.href ? (
-                <Link href={category.href}>
-                  <category.icon className="h-4 w-4" />
-                  {category.name}
-                </Link>
-              ) : (
-                <Link href={`/templates/${category.id === "dashboard" ? "dashboards" : category.id === "admin" ? "admin-panels" : category.id === "account" ? "account-pages" : "marketing"}`}>
-                  <category.icon className="h-4 w-4" />
-                  {category.name}
-                </Link>
-              )}
-            </Button>
-          ))}
-        </div>
-
         {/* Category Header */}
         <section className="space-y-6">
           <div className="flex items-center gap-3">
