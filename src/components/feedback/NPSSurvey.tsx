@@ -52,15 +52,15 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
 
   if (step === "comment") {
     return (
-      <div className="rounded-lg border-2 border-gray-200 bg-white p-6">
+      <div className="rounded-lg border-2 border-border bg-card p-6">
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-black">
+          <h3 className="text-lg font-semibold text-foreground">
             Thanks for your rating! Want to tell us more?
           </h3>
           {onDismiss && (
             <button
               onClick={onDismiss}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-muted-foreground hover:text-foreground"
               aria-label="Dismiss survey"
             >
               <X className="h-5 w-5" />
@@ -89,15 +89,15 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
   }
 
   return (
-    <div className="rounded-lg border-2 border-gray-200 bg-white p-6">
+    <div className="rounded-lg border-2 border-border bg-card p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-black">
+        <h3 className="text-lg font-semibold text-foreground">
           How likely are you to recommend us to a friend?
         </h3>
         {onDismiss && (
           <button
             onClick={onDismiss}
-            className="text-gray-400 hover:text-gray-600"
+            className="text-muted-foreground hover:text-foreground"
             aria-label="Dismiss survey"
           >
             <X className="h-5 w-5" />

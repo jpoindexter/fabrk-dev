@@ -17,7 +17,7 @@ const fadeInUp = {
 
 export function TechStackSection() {
   return (
-    <section className="border-t border-border bg-white py-16 lg:py-20">
+    <section className="border-t border-border bg-background py-16 lg:py-20">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <motion.div className="text-center" {...fadeInUp}>
           <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">

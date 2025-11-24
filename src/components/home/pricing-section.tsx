@@ -101,7 +101,7 @@ export function PricingSection() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-foreground px-3 py-1 text-xs font-medium text-white">
+                  <span className="rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background">
                     Most Popular
                   </span>
                 </div>

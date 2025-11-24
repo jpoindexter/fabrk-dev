@@ -61,7 +61,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-lg border-2 border-gray-200 bg-white"
+              className="rounded-lg border-2 border-border bg-card"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

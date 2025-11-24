@@ -56,7 +56,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-info text-white shadow-lg transition-all hover:scale-110 hover:bg-blue-700"
+        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-info text-info-foreground shadow-lg transition-all hover:scale-110 hover:bg-info/80"
         aria-label="Give feedback"
       >
         <MessageCircle className="h-6 w-6" />
@@ -65,12 +65,12 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 rounded-lg border-2 border-gray-200 bg-white shadow-xl">
-      <div className="flex items-center justify-between border-b border-gray-200 p-4">
-        <h3 className="font-semibold text-black">Send Feedback</h3>
+    <div className="fixed bottom-6 right-6 w-96 rounded-lg border-2 border-border bg-card shadow-xl">
+      <div className="flex items-center justify-between border-b border-border p-4">
+        <h3 className="font-semibold text-foreground">Send Feedback</h3>
         <button
           onClick={() => setIsOpen(false)}
-          className="text-gray-400 hover:text-gray-600"
+          className="text-muted-foreground hover:text-foreground"
           aria-label="Close feedback"
         >
           <X className="h-5 w-5" />

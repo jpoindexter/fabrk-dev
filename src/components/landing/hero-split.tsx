@@ -97,7 +97,7 @@ export function HeroSplit({
             <div className="relative rounded-lg border-4 border-black bg-muted shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
-                <div className="h-full w-full rounded border-2 border-black/10 bg-white p-4">
+                <div className="h-full w-full rounded border-2 border-border/20 bg-card p-4">
                   {/* Header */}
                   <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-3">
                     <div className="flex items-center gap-3">
@@ -115,7 +115,7 @@ export function HeroSplit({
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="rounded border-2 border-black bg-white p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                        className="rounded border-2 border-black bg-card p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                       >
                         <div className="mb-2 h-2 w-12 rounded bg-black/10"></div>
                         <div className="h-4 w-8 rounded bg-primary/20"></div>

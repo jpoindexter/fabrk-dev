@@ -183,7 +183,7 @@ export function ValueProposition() {
                       {item.diy.cost}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Check className="mx-auto size-5 text-green-600" />
+                      <Check className="mx-auto size-5 text-success" />
                     </td>
                   </motion.tr>
                 ))}
@@ -275,7 +275,7 @@ export function ValueProposition() {
             <h3 className="mb-4 text-xl font-semibold">Key Takeaways</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-green-600" />
+                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Ship 6 weeks faster</p>
                   <p className="text-sm text-muted-foreground">
@@ -284,7 +284,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-green-600" />
+                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Save $30K+ in dev costs</p>
                   <p className="text-sm text-muted-foreground">
@@ -293,7 +293,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-green-600" />
+                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Production-ready from day 1</p>
                   <p className="text-sm text-muted-foreground">
@@ -302,7 +302,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-green-600" />
+                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Focus on your differentiation</p>
                   <p className="text-sm text-muted-foreground">

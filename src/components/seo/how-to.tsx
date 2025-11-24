@@ -81,15 +81,15 @@ export function HowTo({
         <ol className="space-y-6">
           {steps.map((step, index) => (
             <li key={index} className="flex gap-4">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-info text-white font-semibold">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-info text-info-foreground font-semibold">
                 {index + 1}
               </div>
 
               <div className="flex-1">
-                <h3 className="mb-2 text-xl font-semibold text-black">
+                <h3 className="mb-2 text-xl font-semibold text-foreground">
                   {step.name}
                 </h3>
-                <p className="text-gray-700">{step.text}</p>
+                <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (
                   <img
