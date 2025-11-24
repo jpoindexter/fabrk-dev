@@ -109,8 +109,7 @@ export default function ThemingPage() {
 export function MyNavbar() {
   return (
     <nav>
-      <ThemeDropdown /> {/* Dropdown with all 6 themes */}
-      <ThemeToggle />   {/* Light/dark mode toggle */}
+      <ThemeDropdown /> {/* Dropdown with all 20 DaisyUI themes */}
     </nav>
   );
 }`} />
@@ -226,35 +225,18 @@ export function MyNavbar() {
         </div>
       </div>
 
-      {/* Light/Dark Mode */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Light/Dark Mode</h2>
-        <p className="text-muted-foreground">
-          The <code className="rounded bg-muted px-1 py-0.5">ThemeToggle</code> component (from next-themes) handles light/dark switching:
-        </p>
-        <CodeBlock language="tsx" code={`import { ThemeToggle } from "@/components/theme/ThemeToggle";
-
-// In your navbar
-<ThemeToggle />
-
-// Cycles: system → light → dark`} />
-        <p className="text-sm text-muted-foreground">
-          Note: Color themes and light/dark mode are independent - users can pick any combination (e.g., "Ocean Blue + Dark Mode")
-        </p>
-      </div>
-
       {/* Best Practices */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Best Practices</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Two independent systems:</strong> Color themes (via data-theme) + light/dark mode (via next-themes)</li>
+              <li><strong>DaisyUI theme system:</strong> 20 color themes with data-theme attribute (inspired by DaisyUI)</li>
               <li><strong>Use semantic colors:</strong> <code className="bg-muted px-1 rounded">bg-primary</code> instead of <code className="bg-muted px-1 rounded">bg-purple-500</code></li>
-              <li><strong>Each theme has light + dark variants:</strong> CSS defines both in globals.css</li>
-              <li><strong>Test all combinations:</strong> Verify UI works across 6 themes × 2 modes = 12 combinations</li>
-              <li><strong>Default to purple + light:</strong> Most users expect this combination</li>
-              <li><strong>Limit choices if needed:</strong> Remove themes from dropdown if you want fewer options</li>
+              <li><strong>Light and dark themes:</strong> Select from various light themes (Light, Cupcake, Fantasy) or dark themes (Dark, Dracula, Synthwave)</li>
+              <li><strong>Test across themes:</strong> Verify UI works across multiple light and dark theme variants</li>
+              <li><strong>Default to Light theme:</strong> Clean, neutral starting point for most users</li>
+              <li><strong>Customize themes:</strong> Modify theme colors in globals.css by editing the [data-theme="..."] selectors</li>
             </ul>
           </CardContent>
         </Card>
@@ -267,22 +249,19 @@ export function MyNavbar() {
           <CardContent className="pt-6">
             <div className="space-y-3 text-sm">
               <div>
-                <strong>ThemeDropdown</strong> - Navbar component for selecting color theme (purple, blue, etc.)
-              </div>
-              <div>
-                <strong>ThemeToggle</strong> - Navbar component for light/dark mode
+                <strong>ThemeDropdown</strong> - Navbar component for selecting from 20 DaisyUI-inspired color themes
               </div>
               <div>
                 <strong>ColorThemeSwitcher</strong> - Full-page grid showing all themes (for settings pages)
               </div>
               <div>
-                <strong>globals.css</strong> - Contains all theme CSS variable definitions
+                <strong>globals.css</strong> - Contains all 20 theme CSS variable definitions with [data-theme] selectors
               </div>
               <div>
                 <strong>layout.tsx</strong> - Pre-hydration script prevents theme flash on page load
               </div>
               <div>
-                <strong>localStorage</strong> - Persists user preference (key: 'theme')
+                <strong>localStorage</strong> - Persists user theme preference (key: 'theme')
               </div>
             </div>
           </CardContent>

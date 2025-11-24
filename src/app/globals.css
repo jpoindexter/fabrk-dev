@@ -4,8 +4,6 @@
 
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is(.dark *));
-
 @keyframes bar-grow {
   0% {
     transform: scaleY(0);
@@ -114,40 +112,6 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-}
-
-.dark {
-  /* Black Theme - Dark Mode (PURE BLACK) */
-  --background: 0 0% 0%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 5%;
-  --card-foreground: 0 0% 100%;
-  --popover: 0 0% 5%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 0 0% 100%;
-  --primary-foreground: 0 0% 0%;
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 0 0% 15%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 100%;
-  --success: 142 70% 45%;
-  --success-foreground: 0 0% 0%;
-  --warning: 38 92% 50%;
-  --warning-foreground: 0 0% 0%;
-  --info: 217 91% 60%;
-  --info-foreground: 0 0% 100%;
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 0 0% 80%;
-  --chart-1: 220 70% 50%;
-  --chart-2: 160 60% 45%;
-  --chart-3: 30 80% 55%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 340 75% 55%;
 }
 
 /* ============================================
@@ -428,27 +392,43 @@
   --ring: 275 100% 25%;
 }
 
-/* Luxury - High-end white/gold */
+/* Luxury - High-end dark with gold accents */
 [data-theme="luxury"] {
-  --background: 0 0% 9%;
-  --foreground: 0 0% 100%;
+  --background: 285 4% 14%;
+  --foreground: 90 90% 76%;
+  --card: 308 4% 20%;
+  --card-foreground: 90 90% 76%;
+  --popover: 308 4% 20%;
+  --popover-foreground: 90 90% 76%;
   --primary: 0 0% 100%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 50 11% 41%;
-  --secondary-foreground: 0 0% 100%;
-  --accent: 50 11% 41%;
-  --accent-foreground: 0 0% 100%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 60%;
-  --border: 0 0% 20%;
-  --input: 0 0% 20%;
-  --ring: 0 0% 100%;
+  --primary-foreground: 285 4% 14%;
+  --secondary: 261 6% 28%;
+  --secondary-foreground: 261 13% 86%;
+  --muted: 308 4% 30%;
+  --muted-foreground: 77 90% 93%;
+  --accent: 339 5% 37%;
+  --accent-foreground: 339 10% 87%;
+  --destructive: 23 18% 72%;
+  --destructive-foreground: 285 4% 14%;
+  --success: 132 19% 78%;
+  --success-foreground: 285 4% 14%;
+  --warning: 103 14% 86%;
+  --warning-foreground: 285 4% 14%;
+  --info: 237 12% 79%;
+  --info-foreground: 285 4% 14%;
+  --border: 60 6% 24%;
+  --input: 60 6% 24%;
+  --ring: 90 90% 76%;
 }
 
 /* Dracula - Purple developer */
 [data-theme="dracula"] {
   --background: 231 15% 18%;
   --foreground: 60 30% 96%;
+  --card: 231 15% 24%;
+  --card-foreground: 60 30% 96%;
+  --popover: 231 15% 24%;
+  --popover-foreground: 60 30% 96%;
   --primary: 326 100% 74%;
   --primary-foreground: 231 15% 18%;
   --secondary: 191 97% 77%;

@@ -31,7 +31,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 const appearanceFormSchema = z.object({
-  theme: z.enum(["light", "dark", "system"]),
   language: z.enum(["en", "es", "fr", "de", "ja"]),
 });
 
@@ -44,7 +43,6 @@ export function AppearanceForm() {
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
     defaultValues: {
-      theme: "system",
       language: "en",
     },
   });
@@ -90,38 +88,12 @@ export function AppearanceForm() {
       <CardHeader>
         <CardTitle>Appearance</CardTitle>
         <CardDescription>
-          Customize how the application looks and feels.
+          Customize your language preference. Use the theme dropdown in the navigation bar to change color themes.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="theme"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Theme</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a theme" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>
-                    Choose between light, dark, or system theme preference.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             <FormField
               control={form.control}
               name="language"
