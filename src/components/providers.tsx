@@ -1,13 +1,13 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 
 /**
  * Client-side providers
- * Theme provider for dark mode support
+ * Only DaisyUI theme system (data-theme attribute) is used
+ * Dark/light mode toggle removed in favor of 20 color themes
  */
 
 interface ProvidersProps {
@@ -17,15 +17,8 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <SessionProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem={false}
-        disableTransitionOnChange
-      >
-        {children}
-        <Toaster position="top-right" richColors />
-      </ThemeProvider>
+      {children}
+      <Toaster position="top-right" richColors />
     </SessionProvider>
   );
 }

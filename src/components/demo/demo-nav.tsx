@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
 
 interface DemoNavProps {
@@ -26,7 +25,6 @@ export function DemoNav({
         {/* Right Side: Theme Controls + Back Button */}
         <div className="flex items-center gap-2">
           <ThemeDropdown />
-          <ThemeToggle />
           <Button asChild>
             <Link href={backButtonHref}>{backButtonText}</Link>
           </Button>

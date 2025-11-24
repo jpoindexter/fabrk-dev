@@ -12,7 +12,6 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
 
 export function Navigation() {
@@ -64,7 +63,6 @@ export function Navigation() {
           className="hidden items-center gap-2 md:flex"
         >
           <ThemeDropdown />
-          <ThemeToggle />
           <Button
             variant="outline"
             asChild
@@ -113,7 +111,6 @@ export function Navigation() {
                   <h3 className="mb-3 text-sm font-medium text-muted-foreground">Theme</h3>
                   <div className="flex items-center gap-2 mb-4">
                     <ThemeDropdown />
-                    <ThemeToggle />
                   </div>
                 </div>
                 <div className="border-t border-border pt-6">
