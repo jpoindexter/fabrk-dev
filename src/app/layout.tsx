@@ -118,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
           </div>
           <div className="relative flex min-h-screen flex-col bg-background">
-            <main id="main-content" className="flex-1 bg-background">
+            <main id="main-content" className="flex-1 bg-background" suppressHydrationWarning>
               {children}
             </main>
           </div>
