@@ -6,106 +6,147 @@ export default function ThemingPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Theming</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Theming & Customization</h1>
         <p className="text-lg text-muted-foreground">
-          Customize your app with 6 built-in color themes and dark mode support.
+          Choose from 6 professionally-designed color themes or create your own.
         </p>
       </div>
 
       <Card>
         <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">Available Themes</h3>
+          <h3 className="mb-2 font-semibold">Theme System</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li>Purple (default)</li>
-            <li>Ocean Blue</li>
-            <li>Forest Green</li>
-            <li>Sunset Orange</li>
-            <li>Hot Pink</li>
-            <li>Ruby Red</li>
+            <li><strong>6 Color Themes:</strong> Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red</li>
+            <li><strong>Light/Dark Mode:</strong> Automatic dark mode with next-themes</li>
+            <li><strong>Persistent:</strong> Theme choice saved to localStorage</li>
+            <li><strong>No Flash:</strong> Pre-hydration loading prevents theme flash</li>
+            <li><strong>Tailwind v4 Native:</strong> Works seamlessly with Tailwind CSS v4</li>
           </ul>
         </CardContent>
       </Card>
 
-      {/* CSS Variables */}
+      {/* Available Themes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">CSS Variables</h2>
+        <h2 className="text-2xl font-semibold">Available Color Themes (6)</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(262,83%,58%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Purple</div>
+                  <div className="text-xs text-muted-foreground">Default</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(217,91%,60%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Ocean Blue</div>
+                  <div className="text-xs text-muted-foreground">Professional</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(142,76%,36%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Forest Green</div>
+                  <div className="text-xs text-muted-foreground">Natural</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(25,95%,53%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Sunset Orange</div>
+                  <div className="text-xs text-muted-foreground">Energetic</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(330,81%,60%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Hot Pink</div>
+                  <div className="text-xs text-muted-foreground">Bold</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-[hsl(0,84%,60%)] border-2 border-border" />
+                <div>
+                  <div className="font-semibold">Ruby Red</div>
+                  <div className="text-xs text-muted-foreground">Powerful</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Theme Dropdown Component */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Theme Switcher Component</h2>
         <p className="text-muted-foreground">
-          Themes are built using CSS variables in <code className="rounded bg-muted px-1 py-0.5">src/app/globals.css</code>:
+          The <code className="rounded bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
         </p>
-        <CodeBlock language="css" code={`/* src/app/globals.css */
+        <CodeBlock language="tsx" code={`import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
 
-:root {
-  /* Background colors */
-  --background: 0 0% 100%;        /* Main background */
-  --foreground: 240 10% 3.9%;     /* Main text color */
-
-  /* Card/surface colors */
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
-
-  /* Primary brand color */
-  --primary: 262.1 83.3% 57.8%;           /* Purple */
-  --primary-foreground: 210 20% 98%;
-
-  /* Secondary/muted colors */
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-
-  /* UI elements */
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 262.1 83.3% 57.8%;
-
-  /* Semantic colors */
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-
-  --success: 142 76% 36%;
-  --success-foreground: 0 0% 98%;
-
-  /* Border radius */
-  --radius: 0.5rem;
-}
-
-/* Dark mode */
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-
-  --primary: 263.4 70% 50.4%;
-  --primary-foreground: 210 20% 98%;
-
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 263.4 70% 50.4%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
+export function MyNavbar() {
+  return (
+    <nav>
+      <ThemeDropdown /> {/* Dropdown with all 6 themes */}
+      <ThemeToggle />   {/* Light/dark mode toggle */}
+    </nav>
+  );
 }`} />
       </div>
 
-      {/* Theme Definitions */}
+      {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Theme Definitions</h2>
+        <h2 className="text-2xl font-semibold">How It Works</h2>
+        <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute + CSS variables -->
+<html data-theme="purple" class="dark">
+  <!-- data-theme="purple" sets the color palette -->
+  <!-- class="dark" enables dark mode -->
+</html>
+
+<!-- Theme is auto-loaded before React hydration (no flash) -->
+<script>
+  const theme = localStorage.getItem('theme') || 'purple';
+  document.documentElement.setAttribute('data-theme', theme);
+</script>`} />
+      </div>
+
+      {/* CSS Implementation */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">CSS Implementation</h2>
         <p className="text-muted-foreground">
-          Each theme overrides the primary color:
+          Each theme defines custom CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
         </p>
         <CodeBlock language="css" code={`/* Purple (default) */
-:root {
+[data-theme="purple"] {
   --primary: 262.1 83.3% 57.8%;
   --ring: 262.1 83.3% 57.8%;
+}
+
+[data-theme="purple"].dark {
+  --primary: 263.4 70% 50.4%;
+  --ring: 263.4 70% 50.4%;
 }
 
 /* Ocean Blue */
@@ -114,319 +155,150 @@ export default function ThemingPage() {
   --ring: 217.2 91.2% 59.8%;
 }
 
-/* Forest Green */
-[data-theme="green"] {
-  --primary: 142.1 76.2% 36.3%;
-  --ring: 142.1 76.2% 36.3%;
-}
-
-/* Sunset Orange */
-[data-theme="orange"] {
-  --primary: 24.6 95% 53.1%;
-  --ring: 24.6 95% 53.1%;
-}
-
-/* Hot Pink */
-[data-theme="pink"] {
-  --primary: 330.4 81.2% 60.4%;
-  --ring: 330.4 81.2% 60.4%;
-}
-
-/* Ruby Red */
-[data-theme="red"] {
-  --primary: 0 84.2% 60.2%;
-  --ring: 0 84.2% 60.2%;
-}`} />
-      </div>
-
-      {/* Theme Provider */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Theme Provider</h2>
-        <p className="text-muted-foreground">
-          Uses next-themes for theme management:
-        </p>
-        <CodeBlock language="tsx" code={`// src/components/providers/theme-provider.tsx
-
-"use client";
-
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
-
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
-}
-
-// src/app/layout.tsx
-
-import { ThemeProvider } from "@/components/providers/theme-provider";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
-  );
-}`} />
-      </div>
-
-      {/* Theme Switcher */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Theme Switcher Component</h2>
-        <p className="text-muted-foreground">
-          Let users switch between light/dark modes:
-        </p>
-        <CodeBlock language="tsx" code={`"use client";
-
-import { useTheme } from "next-themes";
-import { Moon, Sun, Monitor } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-export function ThemeSwitcher() {
-  const { setTheme, theme } = useTheme();
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun className="mr-2 h-4 w-4" />
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon className="mr-2 h-4 w-4" />
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Monitor className="mr-2 h-4 w-4" />
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}`} />
-      </div>
-
-      {/* Color Theme Switcher */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Color Theme Switcher</h2>
-        <p className="text-muted-foreground">
-          Switch between color themes (purple, blue, etc.):
-        </p>
-        <CodeBlock language="tsx" code={`"use client";
-
-import { useEffect, useState } from "react";
-
-const themes = [
-  { id: "purple", name: "Purple", color: "hsl(262, 83%, 58%)" },
-  { id: "blue", name: "Ocean Blue", color: "hsl(217, 91%, 60%)" },
-  { id: "green", name: "Forest Green", color: "hsl(142, 76%, 36%)" },
-  { id: "orange", name: "Sunset Orange", color: "hsl(25, 95%, 53%)" },
-  { id: "pink", name: "Hot Pink", color: "hsl(330, 81%, 60%)" },
-  { id: "red", name: "Ruby Red", color: "hsl(0, 84%, 60%)" },
-];
-
-export function ColorThemeSwitcher() {
-  const [currentTheme, setCurrentTheme] = useState("purple");
-
-  useEffect(() => {
-    // Load saved theme
-    const saved = localStorage.getItem("color-theme") || "purple";
-    setCurrentTheme(saved);
-    document.documentElement.setAttribute("data-theme", saved);
-  }, []);
-
-  const handleChange = (themeId: string) => {
-    setCurrentTheme(themeId);
-    localStorage.setItem("color-theme", themeId);
-    document.documentElement.setAttribute("data-theme", themeId);
-  };
-
-  return (
-    <div className="flex gap-2">
-      {themes.map((theme) => (
-        <button
-          key={theme.id}
-          onClick={() => handleChange(theme.id)}
-          className={\`h-6 w-6 rounded-full border-2 \${
-            currentTheme === theme.id
-              ? "border-foreground"
-              : "border-transparent"
-          }\`}
-          style={{ backgroundColor: theme.color }}
-          title={theme.name}
-        />
-      ))}
-    </div>
-  );
-}`} />
+/* ...and 4 more themes */`} />
       </div>
 
       {/* Using Theme Colors */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Using Theme Colors</h2>
         <p className="text-muted-foreground">
-          Always use CSS variables, never hardcoded colors:
+          Always use semantic color classes that adapt to the active theme:
         </p>
-        <CodeBlock language="tsx" code={`// ✅ GOOD - Uses theme variables
+        <CodeBlock language="tsx" code={`// ✅ GOOD - Theme-aware colors
 <button className="bg-primary text-primary-foreground">
-  Click me
+  Matches active theme (purple, blue, green, etc.)
 </button>
 
-<div className="border-border bg-card text-card-foreground">
-  Card content
+<div className="border-primary ring-primary">
+  Adapts automatically when user switches themes
 </div>
 
-<p className="text-muted-foreground">
-  Secondary text
-</p>
-
-<span className="text-destructive">
-  Error message
-</span>
-
-// ❌ BAD - Hardcoded colors break theming
-<button className="bg-purple-500 text-white">
-  Click me
+// ❌ BAD - Hardcoded colors
+<button className="bg-blue-500 text-white">
+  Always blue, ignores theme selection
 </button>
 
-<div className="border-gray-200 bg-white text-gray-900">
-  Card content
-</div>
-
-// Run lint to catch hardcoded colors:
-npm run scan:hex`} />
-      </div>
-
-      {/* Custom Colors */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Adding Custom Colors</h2>
-        <p className="text-muted-foreground">
-          Add new semantic colors to your theme:
-        </p>
-        <CodeBlock language="css" code={`/* src/app/globals.css */
-
-:root {
-  /* Add custom semantic colors */
-  --warning: 38 92% 50%;
-  --warning-foreground: 0 0% 100%;
-
-  --info: 199 89% 48%;
-  --info-foreground: 0 0% 100%;
-
-  --accent: 262 83% 58%;
-  --accent-foreground: 0 0% 100%;
-}
-
-.dark {
-  --warning: 38 92% 50%;
-  --warning-foreground: 0 0% 0%;
-
-  --info: 199 89% 48%;
-  --info-foreground: 0 0% 0%;
-}
-
-/* tailwind.config.ts */
-
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        warning: {
-          DEFAULT: "hsl(var(--warning))",
-          foreground: "hsl(var(--warning-foreground))",
-        },
-        info: {
-          DEFAULT: "hsl(var(--info))",
-          foreground: "hsl(var(--info-foreground))",
-        },
-      },
-    },
-  },
-};
-
-// Usage
-<div className="bg-warning text-warning-foreground">
-  Warning message
+<div className="border-green-500">
+  Hardcoded green doesn't respect user preference
 </div>`} />
       </div>
 
-      {/* Dark Mode Images */}
+      {/* Adding Custom Themes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Dark Mode Images</h2>
+        <h2 className="text-2xl font-semibold">Adding Custom Themes</h2>
         <p className="text-muted-foreground">
-          Swap images based on theme:
+          Add new themes in 3 steps:
         </p>
-        <CodeBlock language="tsx" code={`// Using CSS to swap images
-<img
-  src="/logo-light.svg"
-  alt="Logo"
-  className="dark:hidden"
-/>
-<img
-  src="/logo-dark.svg"
-  alt="Logo"
-  className="hidden dark:block"
-/>
+        <div className="space-y-3">
+          <div>
+            <h3 className="font-semibold mb-2">1. Add CSS in globals.css</h3>
+            <CodeBlock language="css" code={`/* Your Custom Theme */
+[data-theme="teal"] {
+  --primary: 173 80% 40%;
+  --ring: 173 80% 40%;
+}
 
-// Or use CSS filter to invert
-<img
-  src="/logo.svg"
-  alt="Logo"
-  className="dark:invert"
-/>
-
-// Using useTheme hook
-"use client";
-
-import { useTheme } from "next-themes";
-
-export function ThemedLogo() {
-  const { resolvedTheme } = useTheme();
-
-  return (
-    <img
-      src={resolvedTheme === "dark" ? "/logo-dark.svg" : "/logo-light.svg"}
-      alt="Logo"
-    />
-  );
+[data-theme="teal"].dark {
+  --primary: 173 80% 45%;
+  --ring: 173 80% 45%;
 }`} />
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2">2. Add to ThemeDropdown.tsx</h3>
+            <CodeBlock language="tsx" code={`const themes = [
+  { id: "purple", name: "Purple", preview: "hsl(262, 83%, 58%)" },
+  { id: "blue", name: "Ocean Blue", preview: "hsl(217, 91%, 60%)" },
+  // ...existing themes...
+  { id: "teal", name: "Teal Dream", preview: "hsl(173, 80%, 40%)" },
+];`} />
+          </div>
+          <div>
+            <h3 className="font-semibold mb-2">3. Update type definition</h3>
+            <CodeBlock language="tsx" code={`export type ColorTheme = 
+  | "purple" 
+  | "blue" 
+  | "green" 
+  | "orange" 
+  | "pink" 
+  | "red"
+  | "teal"; // Add your new theme`} />
+          </div>
+        </div>
+      </div>
+
+      {/* Light/Dark Mode */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Light/Dark Mode</h2>
+        <p className="text-muted-foreground">
+          The <code className="rounded bg-muted px-1 py-0.5">ThemeToggle</code> component (from next-themes) handles light/dark switching:
+        </p>
+        <CodeBlock language="tsx" code={`import { ThemeToggle } from "@/components/theme/ThemeToggle";
+
+// In your navbar
+<ThemeToggle />
+
+// Cycles: system → light → dark`} />
+        <p className="text-sm text-muted-foreground">
+          Note: Color themes and light/dark mode are independent - users can pick any combination (e.g., "Ocean Blue + Dark Mode")
+        </p>
+      </div>
+
+      {/* Best Practices */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Best Practices</h2>
+        <Card>
+          <CardContent className="pt-6">
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Two independent systems:</strong> Color themes (via data-theme) + light/dark mode (via next-themes)</li>
+              <li><strong>Use semantic colors:</strong> <code className="bg-muted px-1 rounded">bg-primary</code> instead of <code className="bg-muted px-1 rounded">bg-purple-500</code></li>
+              <li><strong>Each theme has light + dark variants:</strong> CSS defines both in globals.css</li>
+              <li><strong>Test all combinations:</strong> Verify UI works across 6 themes × 2 modes = 12 combinations</li>
+              <li><strong>Default to purple + light:</strong> Most users expect this combination</li>
+              <li><strong>Limit choices if needed:</strong> Remove themes from dropdown if you want fewer options</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Architecture */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Architecture</h2>
+        <Card>
+          <CardContent className="pt-6">
+            <div className="space-y-3 text-sm">
+              <div>
+                <strong>ThemeDropdown</strong> - Navbar component for selecting color theme (purple, blue, etc.)
+              </div>
+              <div>
+                <strong>ThemeToggle</strong> - Navbar component for light/dark mode
+              </div>
+              <div>
+                <strong>ColorThemeSwitcher</strong> - Full-page grid showing all themes (for settings pages)
+              </div>
+              <div>
+                <strong>globals.css</strong> - Contains all theme CSS variable definitions
+              </div>
+              <div>
+                <strong>layout.tsx</strong> - Pre-hydration script prevents theme flash on page load
+              </div>
+              <div>
+                <strong>localStorage</strong> - Persists user preference (key: 'theme')
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Next Steps */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Next Steps</h2>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/extras/i18n">
+          <Link href="/docs/components">
             <Card className="h-full transition-colors hover:bg-muted/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Internationalization</h3>
+                <h3 className="font-semibold">UI Components</h3>
                 <p className="text-sm text-muted-foreground">
-                  Add multiple language support
+                  All components use semantic colors and adapt to themes
                 </p>
               </CardContent>
             </Card>
@@ -436,7 +308,7 @@ export function ThemedLogo() {
               <CardContent className="p-4">
                 <h3 className="font-semibold">Testing</h3>
                 <p className="text-sm text-muted-foreground">
-                  Test your themed components
+                  Test your app across different themes and modes
                 </p>
               </CardContent>
             </Card>

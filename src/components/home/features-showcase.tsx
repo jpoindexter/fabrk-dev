@@ -139,10 +139,9 @@ const FEATURES = [
     id: "testing",
     icon: TestTube,
     title: "Complete Test Suite",
-    description: "931+ tests with 64% coverage. Vitest for unit tests, Playwright for E2E. Production-quality code guarantee.",
+    description: "130+ tests. Vitest for unit tests, Playwright for E2E. Production-quality code guarantee.",
     highlights: [
-      "931+ comprehensive tests",
-      "64% code coverage",
+      "130+ comprehensive tests",
       "Vitest unit tests",
       "Playwright E2E tests",
       "CI/CD pipelines",
@@ -290,12 +289,12 @@ export function FeaturesShowcase() {
                 <div className="mt-2 text-sm text-muted-foreground">Major Features</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">931+</div>
+                <div className="text-3xl font-bold text-primary">130+</div>
                 <div className="mt-2 text-sm text-muted-foreground">Tests</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">64%</div>
-                <div className="mt-2 text-sm text-muted-foreground">Test Coverage</div>
+                <div className="text-3xl font-bold text-primary">100%</div>
+                <div className="mt-2 text-sm text-muted-foreground">Type Safe</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">400KB</div>

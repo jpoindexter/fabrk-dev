@@ -145,12 +145,12 @@ const config = {
 
     // Search features
     algoliaSearch: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
-                      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
     commandPalette: true, // ⌘K keyboard shortcut
 
     // CMS features
     sanityCMS: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-                  (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
   },
 
   // ============================================================================
@@ -158,7 +158,7 @@ const config = {
   // ============================================================================
   search: {
     enabled: !!((env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID) &&
-                (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
+      (env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)),
     appId: env?.client?.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
     searchApiKey: env?.client?.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
     adminApiKey: env?.server?.ALGOLIA_ADMIN_API_KEY || process.env.ALGOLIA_ADMIN_API_KEY, // Server-side only
@@ -175,7 +175,7 @@ const config = {
   // ============================================================================
   cms: {
     enabled: !!((env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-                (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
+      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)),
     projectId: env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     dataset: env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET,
     apiToken: env?.server?.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Server-side only
@@ -189,7 +189,7 @@ const config = {
   // ============================================================================
   product: {
     name: "Fabrk - SaaS Boilerplate",
-    description: "Launch your SaaS product in days, not months. Fabrk is a complete, production-ready Next.js 15 foundation built with 87 premium components, comprehensive testing (1500+ tests), and full feature parity for modern SaaS applications.",
+    description: "Launch your SaaS product in days, not months. Fabrk is a complete, production-ready Next.js 15 foundation built with 87 premium components, comprehensive testing (130+ tests), and full feature parity for modern SaaS applications.",
     shortDescription: "Premium SaaS boilerplate with 87 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.",
     features: [
       "Authentication (NextAuth v5 with Google OAuth & email/password)",

@@ -43,46 +43,58 @@ import {
 
 const navigation = [
   {
-    title: "Get Started",
+    title: "Start Here",
     items: [
       { title: "Getting Started", href: "/docs/getting-started", icon: BookOpen },
-      { title: "Ship in 5 Minutes", href: "/docs/tutorials/ship-in-5-minutes", icon: Rocket },
+      { title: "Architecture", href: "/docs/architecture", icon: Blocks },
+      { title: "Quick Start", href: "/docs/tutorials/quick-start", icon: Rocket },
     ],
   },
   {
-    title: "Tutorials",
+    title: "Foundation Setup",
     items: [
-      { title: "User Authentication", href: "/docs/tutorials/authentication", icon: Lock },
+      { title: "Environment Variables", href: "/docs/deployment/environment", icon: Settings },
+      { title: "Database Setup", href: "/docs/deployment/database", icon: Database },
+      { title: "Database (Prisma)", href: "/docs/features/database", icon: Database },
+      { title: "Theming", href: "/docs/extras/theming", icon: Palette },
+      { title: "Internationalization", href: "/docs/extras/i18n", icon: Globe },
+    ],
+  },
+  {
+    title: "Authentication",
+    items: [
+      { title: "Auth Overview", href: "/docs/tutorials/authentication", icon: Lock },
+      { title: "Google OAuth", href: "/docs/features/google-oauth", icon: Key },
+      { title: "Magic Links", href: "/docs/features/magic-links", icon: Zap },
+      { title: "Multi-Factor Auth", href: "/docs/features/mfa", icon: ShieldCheck },
+    ],
+  },
+  {
+    title: "Payments",
+    items: [
+      { title: "Stripe Setup", href: "/docs/features/payments", icon: CreditCard },
+      { title: "Subscription Guide", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
+    ],
+  },
+  {
+    title: "Emails & Notifications",
+    items: [
+      { title: "Resend Setup", href: "/docs/features/emails", icon: Mail },
+      { title: "Email Templates", href: "/docs/tutorials/email-templates", icon: Mail },
+      { title: "Notifications", href: "/docs/features/notifications", icon: Bell },
+    ],
+  },
+  {
+    title: "Core Building Blocks",
+    items: [
       { title: "API Routes", href: "/docs/tutorials/api-routes", icon: FileCode },
       { title: "Protected Pages", href: "/docs/tutorials/protected-pages", icon: Shield },
-      { title: "Stripe Payments", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
-      { title: "Email Templates", href: "/docs/tutorials/email-templates", icon: Mail },
       { title: "File Uploads", href: "/docs/tutorials/file-uploads", icon: Upload },
       { title: "Webhooks Setup", href: "/docs/tutorials/webhooks", icon: Webhook },
     ],
   },
   {
-    title: "Features",
-    items: [
-      { title: "SEO & Metadata", href: "/docs/features/seo", icon: Globe },
-      { title: "Database (Prisma)", href: "/docs/features/database", icon: Database },
-      { title: "Emails (Resend)", href: "/docs/features/emails", icon: Mail },
-      { title: "Payments (Stripe)", href: "/docs/features/payments", icon: CreditCard },
-      { title: "Google OAuth", href: "/docs/features/google-oauth", icon: Key },
-      { title: "Magic Links", href: "/docs/features/magic-links", icon: Zap },
-      { title: "Multi-Factor Auth", href: "/docs/features/mfa", icon: ShieldCheck },
-      { title: "Organizations & Teams", href: "/docs/features/organizations", icon: Users },
-      { title: "Real-Time (Pusher)", href: "/docs/features/realtime", icon: Bell },
-      { title: "Webhooks", href: "/docs/features/webhooks", icon: Webhook },
-      { title: "Analytics", href: "/docs/features/analytics", icon: BarChart3 },
-      { title: "Notifications", href: "/docs/features/notifications", icon: Bell },
-      { title: "API Keys", href: "/docs/features/api-keys", icon: Key },
-      { title: "Feature Flags", href: "/docs/features/feature-flags", icon: Flag },
-      { title: "Background Jobs", href: "/docs/features/background-jobs", icon: Clock },
-    ],
-  },
-  {
-    title: "Components",
+    title: "Components Library",
     items: [
       { title: "Navigation & Header", href: "/docs/components/navigation", icon: Layout },
       { title: "Hero Sections", href: "/docs/components/hero", icon: Blocks },
@@ -96,7 +108,20 @@ const navigation = [
       { title: "Data Display", href: "/docs/components/data-display", icon: Table },
       { title: "Charts & Analytics", href: "/docs/components/charts", icon: LineChart },
       { title: "Modals & Dialogs", href: "/docs/components/modals", icon: MessageSquare },
-      { title: "File Uploads", href: "/docs/components/uploads", icon: Image },
+      { title: "Upload Components", href: "/docs/components/uploads", icon: Image },
+    ],
+  },
+  {
+    title: "Advanced Features",
+    items: [
+      { title: "Organizations & Teams", href: "/docs/features/organizations", icon: Users },
+      { title: "Real-Time (Pusher)", href: "/docs/features/realtime", icon: Bell },
+      { title: "Background Jobs", href: "/docs/features/background-jobs", icon: Clock },
+      { title: "Analytics", href: "/docs/features/analytics", icon: BarChart3 },
+      { title: "SEO & Metadata", href: "/docs/features/seo", icon: Globe },
+      { title: "API Keys", href: "/docs/features/api-keys", icon: Key },
+      { title: "Feature Flags", href: "/docs/features/feature-flags", icon: Flag },
+      { title: "Webhooks (Outgoing)", href: "/docs/features/webhooks", icon: Webhook },
     ],
   },
   {
@@ -114,16 +139,13 @@ const navigation = [
     title: "Deployment",
     items: [
       { title: "Deploy to Vercel", href: "/docs/deployment/vercel", icon: Cloud },
-      { title: "Environment Variables", href: "/docs/deployment/environment", icon: Settings },
-      { title: "Database Setup", href: "/docs/deployment/database", icon: Database },
+      { title: "Testing Guide", href: "/docs/extras/testing", icon: TestTube },
     ],
   },
   {
-    title: "Extras",
+    title: "Launch",
     items: [
-      { title: "Internationalization", href: "/docs/extras/i18n", icon: Globe },
-      { title: "Theming (6 themes)", href: "/docs/extras/theming", icon: Palette },
-      { title: "Testing Guide", href: "/docs/extras/testing", icon: TestTube },
+      { title: "Launch Checklist", href: "/docs/launch/checklist", icon: Rocket },
     ],
   },
   {
@@ -169,7 +191,7 @@ export default function DocsLayout({
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r border-border md:block">
+        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
           <nav className="space-y-6 p-4">
             {navigation.map((section) => (
               <div key={section.title}>

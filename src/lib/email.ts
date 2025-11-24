@@ -411,6 +411,42 @@ export async function queueResetEmail(params: {
 }
 
 /**
+ * Queues a payment confirmation email
+ * @param params - Confirmation email parameters
+ * @returns Promise with success status and emailQueueId
+ */
+export async function queueConfirmationEmail(params: {
+  to: string;
+  name: string;
+  amount: number;
+  productName: string;
+  receiptUrl: string;
+  userId?: string;
+  purchaseId?: string;
+}) {
+  const { to, name, amount, productName, receiptUrl, userId, purchaseId } = params;
+
+  const html = `
+    <h2>Payment Confirmation</h2>
+    <p>Hi ${name},</p>
+    <p>Thanks for your purchase of <strong>${productName}</strong>.</p>
+    <p>Amount: $${(amount / 100).toFixed(2)}</p>
+    <p>You can view your receipt here:</p>
+    <a href="${receiptUrl}">View Receipt</a>
+  `;
+
+  return queueEmail({
+    type: "INVOICE",
+    to,
+    subject: `Receipt for ${productName}`,
+    html,
+    userId,
+    purchaseId,
+    metadata: { amount, productName, receiptUrl },
+  });
+}
+
+/**
  * Send organization invitation email
  * @param to - Recipient email address
  * @param params - Invitation parameters

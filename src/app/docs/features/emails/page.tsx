@@ -21,13 +21,13 @@ export default function EmailsPage() {
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
-              Fabrk uses Resend for email delivery with React Email for templates. The system supports:
+              Fabrk uses Resend for email delivery with lightweight HTML templates. The system supports:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>React Email templates with full TypeScript support</li>
+              <li>Lightweight HTML templates for maximum performance</li>
               <li>Dual-mode sending: immediate (auth) and queued (bulk)</li>
               <li>Pre-built templates for common emails</li>
-              <li>Email previews in development</li>
+              <li>Zero-dependency template system</li>
               <li>Automatic retry and error handling</li>
             </ul>
           </CardContent>
@@ -44,8 +44,7 @@ export default function EmailsPage() {
             <CodeBlock language="bash" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
 
-# Optional: for email previews
-EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`} />
+EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
           </CardContent>
         </Card>
 
@@ -78,62 +77,49 @@ EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`} />
           <CardContent className="pt-6">
             <p className="mb-4">Templates are in <code className="bg-muted px-2 py-1 rounded">src/emails/</code>. Pre-built templates include:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li><code className="bg-muted px-1 rounded">WelcomeEmail.tsx</code> - New user onboarding</li>
-              <li><code className="bg-muted px-1 rounded">VerificationEmail.tsx</code> - Email verification</li>
-              <li><code className="bg-muted px-1 rounded">ResetPasswordEmail.tsx</code> - Password reset</li>
-              <li><code className="bg-muted px-1 rounded">PaymentConfirmation.tsx</code> - Purchase receipt</li>
-              <li><code className="bg-muted px-1 rounded">InviteEmail.tsx</code> - Organization invite</li>
+              <li><code className="bg-muted px-1 rounded">welcome-html.ts</code> - New user onboarding</li>
+              <li><code className="bg-muted px-1 rounded">verify-email.ts</code> - Email verification</li>
+              <li><code className="bg-muted px-1 rounded">reset-password.ts</code> - Password reset</li>
+              <li><code className="bg-muted px-1 rounded">purchase-confirmation.ts</code> - Purchase receipt</li>
+              <li><code className="bg-muted px-1 rounded">subscription-update.ts</code> - Subscription changes</li>
             </ul>
-            <CodeBlock language="tsx" code={`// src/emails/WelcomeEmail.tsx
-import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Heading,
-  Html,
-  Preview,
-  Section,
-  Text,
-} from "@react-email/components";
-
-interface WelcomeEmailProps {
+            <CodeBlock language="typescript" code={`// src/emails/welcome-html.ts
+export interface WelcomeEmailProps {
   name: string;
-  loginUrl: string;
+  licenseKey: string;
+  downloadUrl: string;
 }
 
-export default function WelcomeEmail({ name, loginUrl }: WelcomeEmailProps) {
-  return (
-    <Html>
-      <Head />
-      <Preview>Welcome to {config.app.name}!</Preview>
-      <Body style={main}>
-        <Container style={container}>
-          <Heading style={h1}>Welcome, {name}!</Heading>
-          <Text style={text}>
-            Thanks for signing up. We're excited to have you on board.
-          </Text>
-          <Section style={buttonContainer}>
-            <Button style={button} href={loginUrl}>
-              Get Started
-            </Button>
-          </Section>
-          <Text style={footer}>
-            If you didn't create this account, you can ignore this email.
-          </Text>
-        </Container>
-      </Body>
-    </Html>
-  );
-}
+export function generateWelcomeEmailHTML({
+  name,
+  licenseKey,
+  downloadUrl,
+}: WelcomeEmailProps): string {
+  return \`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Fabrk!</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: system-ui, sans-serif;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 40px;">
+    <h1>Welcome to Fabrk, \${name}!</h1>
+    <p>Thank you for your purchase.</p>
+    
+    <div style="background: #f4f4f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <strong>Your License Key:</strong>
+      <code style="display: block; font-size: 18px; margin-top: 10px;">\${licenseKey}</code>
+    </div>
 
-const main = { backgroundColor: "#f6f9fc", padding: "40px 0" };
-const container = { backgroundColor: "#ffffff", padding: "40px", borderRadius: "8px" };
-const h1 = { fontSize: "24px", fontWeight: "bold", margin: "0 0 20px" };
-const text = { fontSize: "16px", lineHeight: "26px", margin: "0 0 20px" };
-const buttonContainer = { textAlign: "center" as const, margin: "30px 0" };
-const button = { backgroundColor: "#7c3aed", color: "#fff", padding: "12px 24px", borderRadius: "6px" };
-const footer = { fontSize: "14px", color: "#666", margin: "20px 0 0" };`} />
+    <a href="\${downloadUrl}" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
+      Download Now
+    </a>
+  </div>
+</body>
+</html>
+  \`.trim();
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -190,10 +176,9 @@ await queueConfirmationEmail({
         <h3 className="text-xl font-medium mb-3">Custom Email Sending</h3>
         <Card className="mb-6">
           <CardContent className="pt-6">
-            <p className="mb-4">Send any React Email template:</p>
+            <p className="mb-4">Send any HTML content:</p>
             <CodeBlock language="typescript" code={`import { Resend } from "resend";
 import { env } from "@/lib/env";
-import CustomEmail from "@/emails/CustomEmail";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
 
@@ -201,10 +186,7 @@ await resend.emails.send({
   from: env.server.EMAIL_FROM,
   to: "user@example.com",
   subject: "Your Custom Subject",
-  react: CustomEmail({
-    name: "John",
-    customProp: "value",
-  }),
+  html: "<h1>Hello World</h1><p>This is a custom email.</p>",
 });`} />
           </CardContent>
         </Card>
@@ -221,7 +203,7 @@ const emails = users.map((user) => ({
   from: env.server.EMAIL_FROM,
   to: user.email,
   subject: "Important Update",
-  react: UpdateEmail({ name: user.name }),
+  html: \`<h1>Hello \${user.name}</h1>\`,
 }));
 
 // Send up to 100 emails in one API call
@@ -230,19 +212,7 @@ await resend.batch.send(emails);`} />
         </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Development Preview</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Preview emails during development:</p>
-            <CodeBlock language="bash" code={`# Start the email preview server
-npx react-email dev --dir src/emails
 
-# Opens at http://localhost:3001
-# See all templates with live reload`} />
-          </CardContent>
-        </Card>
-      </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>

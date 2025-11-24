@@ -95,6 +95,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
+        {/* Load DaisyUI theme before hydration to prevent flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+              } catch (e) {}
+            `,
+          }}
+        />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>

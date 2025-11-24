@@ -148,14 +148,19 @@ datasource db {
         </p>
         <CodeBlock language="prisma" code={`// Core authentication
 model User {
-  id              String    @id @default(cuid())
-  email           String    @unique
-  emailVerified   DateTime?
-  hashedPassword  String?
-  name            String?
-  image           String?
-  role            Role      @default(USER)
-  sessionVersion  Int       @default(0)  // For session invalidation
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  emailVerified DateTime?
+  password      String?   // For credentials auth
+  role          Role      @default(USER)
+  sessionVersion Int      @default(1) // Incremented to invalidate all sessions
+
+  // Stripe integration
+  customerId       String?   @unique
+  subscriptionTier String?
+  trialEndsAt      DateTime?
 
   accounts        Account[]
   sessions        Session[]
@@ -165,14 +170,15 @@ model User {
 
 // Payments
 model Payment {
-  id              String    @id @default(cuid())
+  id              String   @id @default(cuid())
   userId          String
-  amount          Int
-  currency        String    @default("usd")
-  status          String
-  stripePaymentId String?   @unique
+  stripeId        String   @unique // payment_intent or session id
+  amount          Int      // cents
+  status          String   // succeeded, failed, pending
+  productId       String?
+  createdAt       DateTime @default(now())
 
-  user            User      @relation(fields: [userId], references: [id])
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 // Multi-tenancy
@@ -180,15 +186,16 @@ model Organization {
   id          String    @id @default(cuid())
   name        String
   slug        String    @unique
+  plan        String    @default("FREE")
   members     OrganizationMember[]
 }
 
 // Feature flags
 model FeatureFlag {
   id          String    @id @default(cuid())
-  key         String    @unique
+  name        String    @unique
   enabled     Boolean   @default(false)
-  rollout     Int       @default(0)  // Percentage
+  rolloutPercentage Int @default(0)
 }`} />
       </div>
 

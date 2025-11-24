@@ -276,8 +276,7 @@ const CATEGORIES = [
       {
         category: "Testing & Quality",
         items: [
-          "931+ comprehensive tests",
-          "64% code coverage",
+          "130+ comprehensive tests",
           "Vitest unit tests",
           "Playwright E2E tests",
           "CI/CD workflows",
@@ -362,9 +361,8 @@ function CategoryItem({ category }: CategoryItemProps) {
           <p className="mt-1 text-sm text-muted-foreground">{category.description}</p>
         </div>
         <ChevronDown
-          className={`size-5 flex-shrink-0 text-muted-foreground transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`size-5 flex-shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""
+            }`}
         />
       </button>
 

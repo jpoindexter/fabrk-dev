@@ -16,8 +16,7 @@ export default function TestingGuidePage() {
         <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">Test Coverage</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li>1500+ total tests</li>
-            <li>1200+ passing tests (80% pass rate)</li>
+            <li>130+ total tests</li>
             <li>Unit tests with Vitest</li>
             <li>E2E tests with Playwright</li>
             <li>Accessibility tests with axe-core</li>

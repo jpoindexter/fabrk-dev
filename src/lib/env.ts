@@ -113,6 +113,8 @@ const serverSchema = z.object({
     return true;
   }, 'STRIPE_WEBHOOK_SECRET must be a valid Stripe webhook secret'),
 
+  STRIPE_COUPON_EARLY_ADOPTER: z.string().optional(),
+
   // ============================================================================
   // EMAIL SERVICE - Resend (Required if email features enabled)
   // ============================================================================
@@ -331,6 +333,8 @@ const clientSchema = z.object({
     }
     return true;
   }, 'NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE must be a valid Stripe Price ID'),
+
+  NEXT_PUBLIC_STRIPE_PRICE_FABRK: z.string().optional(),
 
   // ============================================================================
   // PUSHER PUBLIC CONFIG

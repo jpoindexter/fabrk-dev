@@ -159,7 +159,7 @@ export function CoreBenefitsSection() {
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="text-4xl font-semibold text-foreground">85%</div>
               <div className="mt-2 text-sm font-medium text-foreground">Test Coverage</div>
-              <p className="mt-2 text-sm text-muted-foreground">1,664 tests. Production-ready.</p>
+              <p className="mt-2 text-sm text-muted-foreground">130+ tests. Production-ready.</p>
             </div>
 
             <div className="rounded-lg border border-border bg-background p-6">

@@ -12,6 +12,8 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,13 +56,15 @@ export function Navigation() {
           ))}
         </div>
 
-        {/* Desktop CTA Buttons */}
+        {/* Desktop Theme Controls + CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="hidden items-center gap-4 md:flex"
+          className="hidden items-center gap-2 md:flex"
         >
+          <ThemeDropdown />
+          <ThemeToggle />
           <Button
             variant="outline"
             asChild
@@ -105,6 +109,13 @@ export function Navigation() {
                     </Link>
                   </SheetClose>
                 ))}
+                <div className="border-t border-border pt-6">
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Theme</h3>
+                  <div className="flex items-center gap-2 mb-4">
+                    <ThemeDropdown />
+                    <ThemeToggle />
+                  </div>
+                </div>
                 <div className="border-t border-border pt-6">
                   <SheetClose asChild>
                     <Button

@@ -68,7 +68,7 @@ const COMPARISON_ITEMS = [
   },
   {
     feature: "Testing Suite",
-    description: "931+ tests, 64% coverage",
+    description: "130+ tests, Type Safe",
     diy: { time: "5-7 days", cost: "$2,500-$3,500" },
     fabrk: "Included",
   },

@@ -88,9 +88,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side
 STRIPE_WEBHOOK_SECRET="whsec_..."
 
 # Price IDs (create in Stripe Dashboard)
-STRIPE_PRICE_ID_STARTER="price_..."
-STRIPE_PRICE_ID_PRO="price_..."
-STRIPE_PRICE_ID_ENTERPRISE="price_..."
+NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
+NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."
+NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
 
 # Development vs Production:
 # - Test mode: sk_test_..., pk_test_...
@@ -268,8 +268,8 @@ EMAIL_FROM="dev@your-domain.com"
 STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_PRICE_ID_STARTER="price_..."
-STRIPE_PRICE_ID_PRO="price_..."
+NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_..."
+NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_..."
 
 # Analytics (optional)
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."

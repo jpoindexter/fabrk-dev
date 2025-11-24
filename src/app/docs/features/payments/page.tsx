@@ -49,9 +49,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_xxxxxxxxxxxx"
 STRIPE_WEBHOOK_SECRET="whsec_xxxxxxxxxxxx"
 
 # Price IDs (from Stripe Dashboard → Products)
-STRIPE_PRICE_ID_BASIC="price_xxxxxxxxxxxx"
-STRIPE_PRICE_ID_PRO="price_xxxxxxxxxxxx"
-STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`} />
+NEXT_PUBLIC_STRIPE_PRICE_STARTER="price_xxxxxxxxxxxx"
+NEXT_PUBLIC_STRIPE_PRICE_PROFESSIONAL="price_xxxxxxxxxxxx"
+NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_xxxxxxxxxxxx"`} />
           </CardContent>
         </Card>
 
@@ -59,26 +59,28 @@ STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`} />
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Set up pricing in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
-            <CodeBlock language="bash" code={`export const config = {
-  stripe: {
-    mode: "subscription", // or "one-time"
-    plans: [
-      {
-        name: "Basic",
-        priceId: process.env.STRIPE_PRICE_ID_BASIC,
-        price: 9,
-        interval: "month",
-        features: ["5 projects", "Basic support", "1GB storage"],
-      },
-      {
-        name: "Pro",
-        priceId: process.env.STRIPE_PRICE_ID_PRO,
+            <CodeBlock language="javascript" code={`export const config = {
+  pricing: {
+    exampleTiers: {
+      starter: {
+        name: "Starter",
         price: 29,
-        interval: "month",
-        features: ["Unlimited projects", "Priority support", "10GB storage"],
-        popular: true,
+        display: "$29",
+        period: "/month",
       },
-    ],
+      professional: {
+        name: "Professional",
+        price: 99,
+        display: "$99",
+        period: "/month",
+      },
+      enterprise: {
+        name: "Enterprise",
+        price: 299,
+        display: "$299",
+        period: "/month",
+      },
+    },
   },
 };`} />
           </CardContent>

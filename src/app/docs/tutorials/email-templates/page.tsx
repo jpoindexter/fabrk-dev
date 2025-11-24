@@ -8,7 +8,7 @@ export default function EmailTemplatesTutorialPage() {
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Email Templates</h1>
         <p className="text-lg text-muted-foreground">
-          Create and send beautiful transactional emails with Resend and React Email templates.
+          Create and send beautiful transactional emails with Resend and lightweight HTML templates.
         </p>
       </div>
 
@@ -17,7 +17,7 @@ export default function EmailTemplatesTutorialPage() {
           <h3 className="mb-2 font-semibold">What's Included</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
             <li>Resend API integration for reliable email delivery</li>
-            <li>React Email templates for beautiful, responsive emails</li>
+            <li>Lightweight HTML templates for maximum performance</li>
             <li>Direct sending for immediate emails (auth)</li>
             <li>Queue system for background sending (notifications)</li>
             <li>Pre-built templates (welcome, verification, reset)</li>
@@ -132,21 +132,10 @@ await queueWelcomeEmail({
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Creating Custom Email Templates</h2>
         <p className="text-muted-foreground">
-          Create React Email templates in <code className="rounded bg-muted px-1 py-0.5">src/emails/</code> for
-          complex, reusable email designs:
+          Create HTML template functions in <code className="rounded bg-muted px-1 py-0.5">src/emails/</code>.
+          This approach keeps dependencies low and performance high.
         </p>
-        <CodeBlock language="tsx" code={`// src/emails/invoice.tsx
-
-import {
-  Html,
-  Head,
-  Body,
-  Container,
-  Section,
-  Text,
-  Button,
-  Hr,
-} from "@react-email/components";
+        <CodeBlock language="typescript" code={`// src/emails/invoice-html.ts
 
 interface InvoiceEmailProps {
   customerName: string;
@@ -154,95 +143,60 @@ interface InvoiceEmailProps {
   invoiceUrl: string;
 }
 
-export default function InvoiceEmail({
+export function generateInvoiceEmailHTML({
   customerName,
   amount,
   invoiceUrl,
-}: InvoiceEmailProps) {
-  return (
-    <Html>
-      <Head />
-      <Body style={main}>
-        <Container style={container}>
-          <Section style={section}>
-            <Text style={heading}>Invoice Paid</Text>
-            <Text style={text}>
-              Hi {customerName}, your payment of
-              \${amount.toFixed(2)} was successful.
-            </Text>
-            <Button href={invoiceUrl} style={button}>
-              View Invoice
-            </Button>
-          </Section>
-          <Hr style={hr} />
-          <Text style={footer}>
-            Thanks for your business!
-          </Text>
-        </Container>
-      </Body>
-    </Html>
-  );
-}
-
-const main = {
-  backgroundColor: "#f6f9fc",
-  fontFamily: "sans-serif",
-};
-
-const container = {
-  backgroundColor: "#ffffff",
-  margin: "0 auto",
-  padding: "20px",
-  maxWidth: "600px",
-};
-
-const section = {
-  padding: "24px",
-};
-
-const heading = {
-  fontSize: "24px",
-  fontWeight: "bold",
-  marginBottom: "16px",
-};
-
-const text = {
-  fontSize: "16px",
-  lineHeight: "1.6",
-};
-
-const button = {
-  backgroundColor: "#6366f1",
-  color: "#ffffff",
-  padding: "12px 24px",
-  borderRadius: "6px",
-  textDecoration: "none",
-  display: "inline-block",
-  marginTop: "16px",
-};
-
-const hr = {
-  borderTop: "1px solid #e5e7eb",
-  margin: "24px 0",
-};
-
-const footer = {
-  fontSize: "14px",
-  color: "#6b7280",
-};`} />
+}: InvoiceEmailProps): string {
+  return \`
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .button { 
+      display: inline-block; 
+      padding: 12px 24px; 
+      background-color: #6366f1; 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 6px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Invoice Paid</h1>
+    <p>Hi \${customerName},</p>
+    <p>Your payment of \$\${amount.toFixed(2)} was successful.</p>
+    
+    <div style="margin: 24px 0;">
+      <a href="\${invoiceUrl}" class="button">View Invoice</a>
+    </div>
+    
+    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
+    
+    <p style="color: #6b7280; font-size: 14px;">
+      Thanks for your business!
+    </p>
+  </div>
+</body>
+</html>
+  \`.trim();
+}`} />
       </div>
 
-      {/* Using React Email Templates */}
+      {/* Sending Custom Templates */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Sending React Email Templates</h2>
+        <h2 className="text-2xl font-semibold">Sending Custom HTML Emails</h2>
         <p className="text-muted-foreground">
-          Render your React Email templates and send them with Resend:
+          Generate the HTML and send it using Resend:
         </p>
         <CodeBlock language="typescript" code={`// src/app/api/send-invoice/route.ts
 
 import { Resend } from "resend";
-import { render } from "@react-email/render";
-import InvoiceEmail from "@/emails/invoice";
+import { generateInvoiceEmailHTML } from "@/emails/invoice-html";
 import { env } from "@/lib/env";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
@@ -251,14 +205,12 @@ export async function POST(request: Request) {
   const { email, customerName, amount, invoiceUrl } = await request.json();
 
   try {
-    // Render React component to HTML
-    const html = await render(
-      InvoiceEmail({
-        customerName,
-        amount,
-        invoiceUrl,
-      })
-    );
+    // Generate HTML
+    const html = generateInvoiceEmailHTML({
+      customerName,
+      amount,
+      invoiceUrl,
+    });
 
     // Send with Resend
     const { data, error } = await resend.emails.send({

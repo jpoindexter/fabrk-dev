@@ -89,13 +89,13 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:border-success/50 hover:shadow-md"
+                className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:border-primary/50 hover:shadow-md"
               >
-                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-success/10 p-3">
+                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
                   {item.iconComponent === "testTube" ? (
-                    <TestTube2 className="h-6 w-6 text-success" />
+                    <TestTube2 className="h-6 w-6 text-primary" />
                   ) : (
-                    <SimpleIcon path={item.icon!} className="h-6 w-6 text-success" />
+                    <SimpleIcon path={item.icon!} className="h-6 w-6 text-primary" />
                   )}
                 </div>
                 <div className="mb-3">
@@ -120,11 +120,11 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-success/20 bg-success/5 p-8"
+          className="mt-12 rounded-lg border border-primary/20 bg-primary/5 p-8"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0">
-              <CheckCircle2 className="h-8 w-8 text-success" />
+              <CheckCircle2 className="h-8 w-8 text-primary" />
             </div>
             <div>
               <h3 className="mb-2 text-xl font-semibold text-foreground">
