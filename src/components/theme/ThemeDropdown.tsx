@@ -47,6 +47,11 @@ export function ThemeDropdown() {
 
     useEffect(() => {
         setMounted(true);
+
+        // Remove any leftover dark mode class from old theme system
+        document.documentElement.classList.remove("dark");
+
+        // Set DaisyUI theme
         const saved = (localStorage.getItem("theme") as ColorTheme) || "light";
         setCurrentTheme(saved);
         document.documentElement.setAttribute("data-theme", saved);
