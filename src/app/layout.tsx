@@ -9,6 +9,7 @@
  */
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Providers } from "@/components/providers";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -118,8 +119,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
           </div>
           <div className="relative flex min-h-screen flex-col bg-background">
-            <main id="main-content" className="flex-1 bg-background" suppressHydrationWarning>
-              {children}
+            <main id="main-content" className="flex-1 bg-background">
+              <Suspense>
+                {children}
+              </Suspense>
             </main>
           </div>
         </Providers>

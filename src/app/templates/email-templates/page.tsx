@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
 import { generateVerifyEmailHTML } from "@/emails/verify-email";
+import { CodeBlock } from "@/components/ui/code-block";
 
 // Mock email data
 const emailTemplates = [
@@ -459,10 +460,8 @@ export default function EmailTemplatesShowcase() {
                 </TabsContent>
 
                 <TabsContent value="code" className="mt-6">
-                  <div className="relative">
-                    <pre className="max-h-[600px] overflow-auto rounded-lg border border-border bg-muted p-4 text-xs">
-                      <code>{selectedTemplate.preview}</code>
-                    </pre>
+                  <div className="max-h-[600px] overflow-auto">
+                    <CodeBlock code={selectedTemplate.preview} language="markup" />
                   </div>
                 </TabsContent>
               </Tabs>

@@ -8,7 +8,7 @@ export default function ShipIn5MinutesPage() {
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Ship in 5 Minutes</h1>
         <p className="text-lg text-muted-foreground">
-          Launch your first feature with Fabrk in under 5 minutes.
+          Launch a startup landing page with email collection in under 5 minutes.
         </p>
       </div>
 
@@ -26,7 +26,56 @@ export default function ShipIn5MinutesPage() {
 
       {/* Step 1 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">1. Update Your App Name</h2>
+        <h2 className="text-2xl font-semibold">1. Build Your Landing Page</h2>
+        <p className="text-muted-foreground">
+          Replace the contents of <code className="rounded bg-muted px-1 py-0.5">src/app/page.tsx</code> with
+          our pre-built components:
+        </p>
+        <CodeBlock language="typescript" code={`import { Navigation } from "@/components/landing/navigation";
+import { HeroSection } from "@/components/landing/hero-section";
+import { FeaturesSection } from "@/components/landing/features-section";
+import { PricingSection } from "@/components/landing/pricing-section";
+import { FAQSection } from "@/components/landing/faq-section";
+import { Footer } from "@/components/landing/footer";
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <HeroSection />
+      <FeaturesSection />
+      <PricingSection />
+      <FAQSection />
+      <Footer />
+    </div>
+  );
+}`} />
+        <p className="text-muted-foreground">
+          That's it! You now have a complete landing page with hero, features, pricing, and FAQ sections.
+        </p>
+      </div>
+
+      {/* Step 2 */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">2. Customize Your Copy</h2>
+        <p className="text-muted-foreground">
+          Edit each component to match your business. Each section is in{" "}
+          <code className="rounded bg-muted px-1 py-0.5">src/components/landing/</code>:
+        </p>
+        <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+          <li><code className="rounded bg-muted px-1 py-0.5">hero-section.tsx</code> - Main headline and CTA</li>
+          <li><code className="rounded bg-muted px-1 py-0.5">features-section.tsx</code> - Feature list with icons</li>
+          <li><code className="rounded bg-muted px-1 py-0.5">pricing-section.tsx</code> - Pricing tiers</li>
+          <li><code className="rounded bg-muted px-1 py-0.5">faq-section.tsx</code> - Common questions</li>
+        </ul>
+        <p className="text-muted-foreground">
+          Tip: Focus on the problem you solve and the benefits, not features.
+        </p>
+      </div>
+
+      {/* Step 3 */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">3. Update App Info</h2>
         <p className="text-muted-foreground">
           Open <code className="rounded bg-muted px-1 py-0.5">src/config.js</code> and update
           your app information:
@@ -43,83 +92,57 @@ export default function ShipIn5MinutesPage() {
 };`} />
       </div>
 
-      {/* Step 2 */}
+      {/* Step 4 (Optional) */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">2. Configure Stripe</h2>
+        <h2 className="text-2xl font-semibold">4. Add Email Collection (Optional)</h2>
         <p className="text-muted-foreground">
-          Set up your payment product in Stripe and update the price ID:
+          Want to collect emails before your product launches? Add the waitlist component to your hero:
         </p>
-        <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-          <li>Go to <a href="https://dashboard.stripe.com/test/products" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Stripe Dashboard → Products</a></li>
-          <li>Create a new product with your price</li>
-          <li>Copy the Price ID (starts with <code className="rounded bg-muted px-1 py-0.5">price_</code>)</li>
-          <li>Update <code className="rounded bg-muted px-1 py-0.5">.env.local</code>:</li>
-        </ol>
-        <CodeBlock language="bash" code={`NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id_here"`} />
-      </div>
+        <CodeBlock language="typescript" code={`// In hero-section.tsx, add email collection
+import { WaitlistForm } from "@/components/waitlist-form";
 
-      {/* Step 3 */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">3. Set Up Stripe Webhooks</h2>
+// Replace the CTA button with:
+<WaitlistForm />
+
+// Or keep both:
+<div className="flex flex-col gap-4 sm:flex-row">
+  <WaitlistForm />
+  <Button variant="outline">Learn More</Button>
+</div>`} />
         <p className="text-muted-foreground">
-          For local development, use the Stripe CLI to forward webhooks:
+          Emails are stored in your database. Set up the database following the{" "}
+          <Link href="/docs/getting-started" className="text-primary hover:underline">
+            Getting Started
+          </Link>{" "}
+          guide.
         </p>
-        <CodeBlock language="bash" code={`# Install Stripe CLI (macOS)
-brew install stripe/stripe-cli/stripe
-
-# Login to Stripe
-stripe login
-
-# Forward webhooks to localhost
-stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
-        <p className="text-muted-foreground">
-          Copy the webhook signing secret and add to <code className="rounded bg-muted px-1 py-0.5">.env.local</code>:
-        </p>
-        <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_secret_here"`} />
-      </div>
-
-      {/* Step 4 */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">4. Test the Purchase Flow</h2>
-        <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-          <li>Go to <a href="http://localhost:3000" className="text-primary hover:underline" target="_blank">localhost:3000</a></li>
-          <li>Click "Get Started" or your CTA button</li>
-          <li>Use Stripe test card: <code className="rounded bg-muted px-1 py-0.5">4242 4242 4242 4242</code></li>
-          <li>Complete checkout</li>
-          <li>You should be redirected to the success page!</li>
-        </ol>
       </div>
 
       {/* Step 5 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">5. Customize the Landing Page</h2>
+        <h2 className="text-2xl font-semibold">5. Deploy</h2>
         <p className="text-muted-foreground">
-          Edit the landing page sections in <code className="rounded bg-muted px-1 py-0.5">src/app/page.tsx</code>:
+          Push to GitHub and deploy to Vercel in one click:
         </p>
-        <CodeBlock language="typescript" code={`// Update hero text, features, pricing, testimonials
-// Each section is a separate component in src/components/landing/
-
-import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { PricingSection } from "@/components/landing/pricing-section";
-// ...`} />
+        <CodeBlock language="bash" code={`git add .
+git commit -m "Initial landing page"
+git push origin main`} />
+        <p className="text-muted-foreground">
+          Then connect your repo at{" "}
+          <a href="https://vercel.com/new" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+            vercel.com/new
+          </a>{" "}
+          and deploy.
+        </p>
       </div>
 
       {/* You're Done */}
       <Card>
         <CardContent className="p-6 text-center">
-          <h3 className="mb-2 text-xl font-semibold">You're Ready to Ship!</h3>
+          <h3 className="mb-2 text-xl font-semibold">You're Live!</h3>
           <p className="text-muted-foreground">
-            Your SaaS is now configured with payments. Next, deploy to Vercel to go live.
+            Your landing page is deployed and ready to collect leads or customers.
           </p>
-          <div className="mt-4">
-            <Link
-              href="/docs/deployment/vercel"
-              className="text-primary hover:underline"
-            >
-              Deploy to Vercel →
-            </Link>
-          </div>
         </CardContent>
       </Card>
 
@@ -130,19 +153,19 @@ import { PricingSection } from "@/components/landing/pricing-section";
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-colors hover:bg-muted/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">User Authentication</h3>
+                <h3 className="font-semibold">Add Authentication</h3>
                 <p className="text-sm text-muted-foreground">
-                  Set up Google OAuth and email/password auth
+                  Set up Google OAuth and email/password login
                 </p>
               </CardContent>
             </Card>
           </Link>
-          <Link href="/docs/features/emails">
+          <Link href="/docs/features/payments">
             <Card className="h-full transition-colors hover:bg-muted/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Email Templates</h3>
+                <h3 className="font-semibold">Add Payments</h3>
                 <p className="text-sm text-muted-foreground">
-                  Customize transactional emails with Resend
+                  Configure Stripe for one-time or subscription payments
                 </p>
               </CardContent>
             </Card>

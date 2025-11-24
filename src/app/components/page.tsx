@@ -25,7 +25,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import ActivityTimelineDemo from "./activity-timeline-demo";
-import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X, LayoutDashboard, FileText, Palette } from "lucide-react";
+import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X } from "lucide-react";
 
 export default function ComponentsPage() {
   return (
@@ -34,40 +34,6 @@ export default function ComponentsPage() {
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
-        {/* Category Filters */}
-        <div className="flex flex-wrap gap-3 justify-center">
-          <Button variant="outline" asChild className="gap-2">
-            <a href="/demo">
-              <LayoutDashboard className="h-4 w-4" />
-              Dashboards
-            </a>
-          </Button>
-          <Button variant="outline" asChild className="gap-2">
-            <a href="/demo">
-              <Settings className="h-4 w-4" />
-              Admin Panels
-            </a>
-          </Button>
-          <Button variant="outline" asChild className="gap-2">
-            <a href="/demo">
-              <User className="h-4 w-4" />
-              Account Pages
-            </a>
-          </Button>
-          <Button variant="outline" asChild className="gap-2">
-            <a href="/demo">
-              <FileText className="h-4 w-4" />
-              Marketing
-            </a>
-          </Button>
-          <Button variant="outline" asChild className="gap-2">
-            <a href="/components">
-              <Palette className="h-4 w-4" />
-              Components
-            </a>
-          </Button>
-        </div>
-
         {/* Buttons Section */}
         <section id="buttons" className="space-y-6">
           <div>

@@ -450,11 +450,11 @@ export default function BillingDashboardTemplate() {
               {plans.map((plan) => (
                 <Card
                   key={plan.name}
-                  className={
+                  className={`flex flex-col ${
                     plan.current
                       ? "border border-primary"
                       : "border border-border"
-                  }
+                  }`}
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -470,9 +470,9 @@ export default function BillingDashboardTemplate() {
                       </p>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="flex flex-1 flex-col">
                     <Separator />
-                    <div className="space-y-3">
+                    <div className="mt-4 flex-1 space-y-3">
                       {plan.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-2">
                           <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -481,7 +481,7 @@ export default function BillingDashboardTemplate() {
                       ))}
                     </div>
                     <Button
-                      className="w-full font-semibold"
+                      className="mt-4 w-full font-semibold"
                       variant={plan.current ? "secondary" : "default"}
                       disabled={plan.current}
                     >
