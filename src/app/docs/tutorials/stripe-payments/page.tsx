@@ -17,9 +17,9 @@ export default function StripePaymentsTutorialPage() {
         <p className="text-muted-foreground">
           Add your Stripe API keys to <code className="rounded bg-muted px-1 py-0.5">.env.local</code>:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>{`# Get from https://dashboard.stripe.com/test/apikeys
 STRIPE_SECRET_KEY="sk_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
@@ -49,9 +49,9 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`}</code>
           <li>Choose "One time" or "Recurring"</li>
           <li>Copy the Price ID</li>
         </ol>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>{`# .env.local
 NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`}</code>
             </pre>
@@ -65,9 +65,9 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`}</code>
         <p className="text-muted-foreground">
           Use the checkout API to create a payment session:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>{`"use client";
 
 import { useState } from "react";
@@ -117,9 +117,9 @@ export function CheckoutButton() {
         <p className="text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>{`# Install Stripe CLI
 brew install stripe/stripe-cli/stripe
 
@@ -134,9 +134,9 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`}</code>
         <p className="text-muted-foreground">
           For production, add your webhook endpoint in the Stripe Dashboard:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>https://yourdomain.com/api/webhooks/stripe</code>
             </pre>
           </CardContent>
@@ -166,9 +166,9 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`}</code>
         <p className="text-muted-foreground">
           Configure promotion codes in <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-zinc-100">
+            <pre className="overflow-x-auto text-sm text-foreground">
               <code>{`// src/config.js
 stripe: {
   coupons: {

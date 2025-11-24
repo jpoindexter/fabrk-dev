@@ -18,7 +18,7 @@ export default function GoogleOAuthPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk supports Google OAuth through NextAuth v5 with:
@@ -82,13 +82,11 @@ export default function GoogleOAuthPage() {
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Set Environment Variables</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Add to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`}
-            </pre>
+            <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
             <p className="mt-4 text-muted-foreground">
               Google OAuth is automatically enabled when these variables are set.
             </p>
@@ -103,8 +101,7 @@ GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Google provider is configured in <code className="bg-muted px-2 py-1 rounded">src/lib/auth.ts</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/auth.ts
+            <CodeBlock language="typescript" code={`// src/lib/auth.ts
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { env } from "@/lib/env";
@@ -154,8 +151,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return true;
     },
   },
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
@@ -163,8 +159,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Add Google sign-in to your login page:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`"use client";
+            <CodeBlock language="tsx" code={`"use client";
 
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -197,17 +192,15 @@ export function GoogleSignInButton() {
       Continue with Google
     </Button>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Conditional Rendering</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Show Google button only when configured:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { config } from "@/config";
+            <CodeBlock language="tsx" code={`import { config } from "@/config";
 
 export function LoginForm() {
   return (
@@ -232,8 +225,7 @@ export function LoginForm() {
       )}
     </div>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -242,7 +234,7 @@ export function LoginForm() {
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Frictionless Onboarding</h3>
               <p className="text-muted-foreground">
@@ -251,7 +243,7 @@ export function LoginForm() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Account Linking</h3>
               <p className="text-muted-foreground">
@@ -260,7 +252,7 @@ export function LoginForm() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">G Suite Organizations</h3>
               <p className="text-muted-foreground">
@@ -269,7 +261,7 @@ export function LoginForm() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Profile Sync</h3>
               <p className="text-muted-foreground">
@@ -282,7 +274,7 @@ export function LoginForm() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Troubleshooting</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <div className="space-y-4">
               <div>
@@ -310,7 +302,7 @@ export function LoginForm() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Always offer email/password as an alternative to OAuth</li>

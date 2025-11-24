@@ -11,7 +11,7 @@ export default function TestimonialsComponentsPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Available Components</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -22,7 +22,7 @@ export default function TestimonialsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
           <CodeBlock language="typescript" code={`// Testimonials section
@@ -37,7 +37,7 @@ import { Card, CardContent } from "@/components/ui/card";`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
 
@@ -83,7 +83,7 @@ export function TestimonialCard({
   avatar
 }: TestimonialProps) {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardContent className="pt-6">
         <p className="text-muted-foreground italic mb-4">
           "{quote}"

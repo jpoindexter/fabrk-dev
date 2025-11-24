@@ -43,8 +43,7 @@ export default function NotificationsPage() {
           <p className="mb-4">
             Notification model in Prisma schema:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// prisma/schema.prisma
+          <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model Notification {
   id        String   @id @default(cuid())
   userId    String
@@ -62,8 +61,7 @@ model Notification {
 
   @@index([userId, read])
   @@index([userId, createdAt])
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -73,8 +71,7 @@ model Notification {
           <p className="mb-4">
             Send notifications from anywhere in your application:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/notifications.ts
+          <CodeBlock language="typescript" code={`// src/lib/notifications.ts
 import { prisma } from "@/lib/db";
 import { pusherServer } from "@/lib/pusher/server";
 
@@ -129,8 +126,7 @@ await createNotification({
   type: "info",
   title: "New team member",
   body: "John Doe joined your organization",
-});`}</code>
-          </pre>
+});`} />
         </CardContent>
       </Card>
 
@@ -140,8 +136,7 @@ await createNotification({
           <p className="mb-4">
             The notification bell with real-time updates and dropdown:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`"use client";
+          <CodeBlock language="tsx" code={`"use client";
 
 import { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
@@ -256,8 +251,7 @@ export function NotificationBell({ userId }: { userId: string }) {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -267,8 +261,7 @@ export function NotificationBell({ userId }: { userId: string }) {
           <p className="mb-4">
             Notification management endpoints:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// GET /api/v1/notifications
+          <CodeBlock language="typescript" code={`// GET /api/v1/notifications
 export async function GET(req: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -319,12 +312,11 @@ export async function POST(req: Request) {
   });
 
   return Response.json({ success: true });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">

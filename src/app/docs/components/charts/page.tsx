@@ -11,7 +11,7 @@ export default function ChartsComponentsPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Available Components</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -25,7 +25,7 @@ export default function ChartsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
           <CodeBlock language="typescript" code={`// Donut chart
@@ -48,7 +48,7 @@ import { Progress } from "@/components/ui/progress";`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
 
@@ -63,7 +63,7 @@ const data = [
 
 export function DeviceBreakdown() {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Traffic by Device</CardTitle>
       </CardHeader>
@@ -79,7 +79,7 @@ export function DeviceBreakdown() {
 
 export function PerformanceGauge() {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Performance Score</CardTitle>
       </CardHeader>
@@ -114,7 +114,7 @@ const chartData = [
 
 export function RevenueChart() {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Revenue Overview</CardTitle>
         <CardDescription>Monthly revenue and user growth</CardDescription>
@@ -146,7 +146,7 @@ const funnelData = [
 
 export function ConversionFunnel() {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Conversion Funnel</CardTitle>
         <CardDescription>User journey from visitor to retention</CardDescription>
@@ -206,7 +206,7 @@ export function StorageProgress() {
   const percentage = (used / total) * 100;
 
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Storage</CardTitle>
       </CardHeader>

@@ -14,10 +14,10 @@ export default function GettingStartedPage() {
       </div>
 
       {/* Welcome */}
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
-          <h2 className="mb-3 text-xl font-semibold text-zinc-100">Welcome to Fabrk!</h2>
-          <p className="text-zinc-300">
+          <h2 className="mb-3 text-xl font-semibold text-foreground">Welcome to Fabrk!</h2>
+          <p className="text-muted-foreground">
             Fabrk is a production-ready Next.js 15 SaaS boilerplate with authentication,
             payments, database, emails, and 87 pre-built components. Follow this guide to
             get started, then check out the{" "}
@@ -237,10 +237,10 @@ npm run db:studio`}
       </div>
 
       {/* Support */}
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6 text-center">
-          <h3 className="mb-2 font-semibold text-zinc-100">Need Help?</h3>
-          <p className="text-sm text-zinc-300">
+          <h3 className="mb-2 font-semibold text-foreground">Need Help?</h3>
+          <p className="text-sm text-muted-foreground">
             Join our Discord community or email{" "}
             <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
               support@fabrk.dev

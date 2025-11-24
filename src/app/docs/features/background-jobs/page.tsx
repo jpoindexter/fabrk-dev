@@ -44,8 +44,7 @@ export default function BackgroundJobsPage() {
           <p className="mb-4">
             Job model in Prisma schema:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// prisma/schema.prisma
+          <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model Job {
   id          String   @id @default(cuid())
   queue       String   // "default", "email", "webhooks"
@@ -69,8 +68,7 @@ model Job {
 
   @@index([queue, status, runAt])
   @@index([status, runAt])
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -80,8 +78,7 @@ model Job {
           <p className="mb-4">
             Core service for managing job queues:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/jobs/queue.ts
+          <CodeBlock language="typescript" code={`// src/lib/jobs/queue.ts
 import { prisma } from "@/lib/db";
 
 interface JobOptions {
@@ -193,8 +190,7 @@ export async function failJob(
       error,
     },
   });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -204,8 +200,7 @@ export async function failJob(
           <p className="mb-4">
             Create workers to process jobs:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// scripts/worker.ts
+          <CodeBlock language="bash" code={`// scripts/worker.ts
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 
 // Job handlers
@@ -274,8 +269,7 @@ function sleep(ms: number) {
 }
 
 // Start worker
-processJobs(process.env.QUEUE || "default");`}</code>
-          </pre>
+processJobs(process.env.QUEUE || "default");`} />
         </CardContent>
       </Card>
 
@@ -285,8 +279,7 @@ processJobs(process.env.QUEUE || "default");`}</code>
           <p className="mb-4">
             Dedicated worker for processing email queue:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// scripts/email-worker.ts
+          <CodeBlock language="bash" code={`// scripts/email-worker.ts
 import { Resend } from "resend";
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 import { WelcomeEmail } from "@/emails/welcome";
@@ -346,8 +339,7 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-processEmailQueue();`}</code>
-          </pre>
+processEmailQueue();`} />
           <p className="mt-4 text-sm text-muted-foreground">
             Run the email worker with: <code>npm run email:dev</code>
           </p>
@@ -360,8 +352,7 @@ processEmailQueue();`}</code>
           <p className="mb-4">
             Queue jobs from your API routes:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// In API routes
+          <CodeBlock language="typescript" code={`// In API routes
 import { enqueueJob } from "@/lib/jobs/queue";
 
 // Queue an email
@@ -412,8 +403,7 @@ await enqueueJob(
     queue: "webhooks",
     maxAttempts: 5,
   }
-);`}</code>
-          </pre>
+);`} />
         </CardContent>
       </Card>
 
@@ -423,8 +413,7 @@ await enqueueJob(
           <p className="mb-4">
             Start workers for different queues:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`# Development (with auto-restart)
+          <CodeBlock language="bash" code={`# Development (with auto-restart)
 npm run jobs:dev        # Default queue worker
 npm run email:dev       # Email queue worker
 
@@ -456,12 +445,11 @@ services:
     build: .
     command: node scripts/worker.js
     environment:
-      - QUEUE=webhooks`}</code>
-          </pre>
+      - QUEUE=webhooks`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">

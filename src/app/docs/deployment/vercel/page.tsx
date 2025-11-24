@@ -12,7 +12,7 @@ export default function DeployVercelPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">What You'll Get</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
@@ -227,7 +227,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Troubleshooting</h2>
         <div className="space-y-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="p-4">
               <h3 className="mb-2 font-semibold">Build fails with Prisma error</h3>
               <p className="text-sm text-muted-foreground">
@@ -242,7 +242,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="p-4">
               <h3 className="mb-2 font-semibold">Environment variables not working</h3>
               <p className="text-sm text-muted-foreground">
@@ -255,7 +255,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="p-4">
               <h3 className="mb-2 font-semibold">Database connection timeout</h3>
               <p className="text-sm text-muted-foreground">

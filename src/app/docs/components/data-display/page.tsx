@@ -11,7 +11,7 @@ export default function DataDisplayComponentsPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Available Components</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -32,7 +32,7 @@ export default function DataDisplayComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
           <CodeBlock language="typescript" code={`// Table
@@ -79,7 +79,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
 
@@ -134,7 +134,7 @@ import { Button } from "@/components/ui/button";
 
 export function ProfileCard() {
   return (
-    <Card className="bg-zinc-950">
+    <Card>
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
         <CardDescription>

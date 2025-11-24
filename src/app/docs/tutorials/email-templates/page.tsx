@@ -12,7 +12,7 @@ export default function EmailTemplatesTutorialPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">What's Included</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
@@ -317,7 +317,7 @@ await sendOrganizationInvite("newmember@example.com", {
       {/* Best Practices */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-6">
             <ul className="list-inside list-disc space-y-2 text-muted-foreground">
               <li>

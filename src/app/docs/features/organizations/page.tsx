@@ -18,7 +18,7 @@ export default function OrganizationsPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk includes a complete multi-tenancy system for B2B SaaS applications:
@@ -37,11 +37,10 @@ export default function OrganizationsPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Core models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`enum OrgRole {
+            <CodeBlock language="prisma" code={`enum OrgRole {
   OWNER
   ADMIN
   MEMBER
@@ -92,15 +91,14 @@ model OrganizationInvite {
 
   @@index([email])
   @@index([token])
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Role Permissions</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -184,8 +182,7 @@ model OrganizationInvite {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">API endpoint to create a new organization:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/v1/organizations/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -259,8 +256,7 @@ export async function GET() {
   });
 
   return NextResponse.json(organizations);
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -268,8 +264,7 @@ export async function GET() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Send team invitations:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/v1/organizations/invite/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/route.ts
 import { nanoid } from "nanoid";
 import { sendInviteEmail } from "@/lib/email";
 
@@ -338,8 +333,7 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ success: true, invite });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -347,8 +341,7 @@ export async function POST(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Handle invite acceptance:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/v1/organizations/invite/accept/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/accept/route.ts
 export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -395,8 +388,7 @@ export async function POST(request: Request) {
     success: true,
     organization: invite.organization,
   });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -404,8 +396,7 @@ export async function POST(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Reusable permission checking:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/permissions.ts
+            <CodeBlock language="typescript" code={`// src/lib/permissions.ts
 import { prisma } from "@/lib/db";
 
 type Permission =
@@ -456,17 +447,15 @@ export async function DELETE(request: Request) {
   }
 
   // Proceed with deletion...
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Organization Context Hook</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Client-side organization context:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/hooks/useOrganization.ts
+            <CodeBlock language="tsx" code={`// src/hooks/useOrganization.ts
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -530,8 +519,7 @@ function TeamPage() {
       {role === "OWNER" && <DeleteOrgButton />}
     </div>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -540,7 +528,7 @@ function TeamPage() {
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Team Workspaces</h3>
               <p className="text-muted-foreground">
@@ -549,7 +537,7 @@ function TeamPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Per-Seat Billing</h3>
               <p className="text-muted-foreground">
@@ -558,7 +546,7 @@ function TeamPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Admin Dashboard</h3>
               <p className="text-muted-foreground">
@@ -567,7 +555,7 @@ function TeamPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">SSO/SAML Integration</h3>
               <p className="text-muted-foreground">
@@ -580,7 +568,7 @@ function TeamPage() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Always check permissions before any organization action</li>

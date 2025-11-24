@@ -18,7 +18,7 @@ export default function EmailsPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk uses Resend for email delivery with React Email for templates. The system supports:
@@ -41,13 +41,11 @@ export default function EmailsPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Add your Resend API key to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`RESEND_API_KEY="re_xxxxxxxxxxxx"
+            <CodeBlock language="bash" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
 
 # Optional: for email previews
-EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`}
-            </pre>
+EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`} />
           </CardContent>
         </Card>
 
@@ -65,20 +63,18 @@ EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`}
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Start Email Worker</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">For queued emails, run the worker:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`npm run email:dev
-# Watches queue and sends emails with auto-restart`}
-            </pre>
+            <CodeBlock language="bash" code={`npm run email:dev
+# Watches queue and sends emails with auto-restart`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Email Templates</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Templates are in <code className="bg-muted px-2 py-1 rounded">src/emails/</code>. Pre-built templates include:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -88,8 +84,7 @@ EMAIL_PREVIEW_URL="http://localhost:3000/api/email-preview"`}
               <li><code className="bg-muted px-1 rounded">PaymentConfirmation.tsx</code> - Purchase receipt</li>
               <li><code className="bg-muted px-1 rounded">InviteEmail.tsx</code> - Organization invite</li>
             </ul>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/emails/WelcomeEmail.tsx
+            <CodeBlock language="tsx" code={`// src/emails/WelcomeEmail.tsx
 import {
   Body,
   Button,
@@ -138,8 +133,7 @@ const h1 = { fontSize: "24px", fontWeight: "bold", margin: "0 0 20px" };
 const text = { fontSize: "16px", lineHeight: "26px", margin: "0 0 20px" };
 const buttonContainer = { textAlign: "center" as const, margin: "30px 0" };
 const button = { backgroundColor: "#7c3aed", color: "#fff", padding: "12px 24px", borderRadius: "6px" };
-const footer = { fontSize: "14px", color: "#666", margin: "20px 0 0" };`}
-            </pre>
+const footer = { fontSize: "14px", color: "#666", margin: "20px 0 0" };`} />
           </CardContent>
         </Card>
       </section>
@@ -151,8 +145,7 @@ const footer = { fontSize: "14px", color: "#666", margin: "20px 0 0" };`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">For immediate delivery (verification, password reset):</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { sendVerificationEmail, sendResetEmail } from "@/lib/email";
+            <CodeBlock language="typescript" code={`import { sendVerificationEmail, sendResetEmail } from "@/lib/email";
 
 // Send verification email
 await sendVerificationEmail({
@@ -166,8 +159,7 @@ await sendResetEmail({
   to: user.email,
   name: user.name,
   resetUrl: \`\${config.app.url}/reset-password?token=\${token}\`,
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
@@ -175,8 +167,7 @@ await sendResetEmail({
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">For non-urgent emails (welcome, receipts):</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { queueWelcomeEmail, queueConfirmationEmail } from "@/lib/email";
+            <CodeBlock language="typescript" code={`import { queueWelcomeEmail, queueConfirmationEmail } from "@/lib/email";
 
 // Queue welcome email
 await queueWelcomeEmail({
@@ -192,8 +183,7 @@ await queueConfirmationEmail({
   amount: payment.amount,
   productName: payment.productName,
   receiptUrl: payment.receiptUrl,
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
@@ -201,8 +191,7 @@ await queueConfirmationEmail({
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Send any React Email template:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { Resend } from "resend";
+            <CodeBlock language="typescript" code={`import { Resend } from "resend";
 import { env } from "@/lib/env";
 import CustomEmail from "@/emails/CustomEmail";
 
@@ -216,17 +205,15 @@ await resend.emails.send({
     name: "John",
     customProp: "value",
   }),
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Batch Sending</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Send to multiple recipients:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { Resend } from "resend";
+            <CodeBlock language="typescript" code={`import { Resend } from "resend";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
 
@@ -238,24 +225,21 @@ const emails = users.map((user) => ({
 }));
 
 // Send up to 100 emails in one API call
-await resend.batch.send(emails);`}
-            </pre>
+await resend.batch.send(emails);`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Development Preview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Preview emails during development:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Start the email preview server
+            <CodeBlock language="bash" code={`# Start the email preview server
 npx react-email dev --dir src/emails
 
 # Opens at http://localhost:3001
-# See all templates with live reload`}
-            </pre>
+# See all templates with live reload`} />
           </CardContent>
         </Card>
       </section>
@@ -264,7 +248,7 @@ npx react-email dev --dir src/emails
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">User Onboarding Sequence</h3>
               <p className="text-muted-foreground">
@@ -273,7 +257,7 @@ npx react-email dev --dir src/emails
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Organization Invites</h3>
               <p className="text-muted-foreground">
@@ -282,7 +266,7 @@ npx react-email dev --dir src/emails
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Payment Receipts</h3>
               <p className="text-muted-foreground">
@@ -291,7 +275,7 @@ npx react-email dev --dir src/emails
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Activity Notifications</h3>
               <p className="text-muted-foreground">
@@ -304,7 +288,7 @@ npx react-email dev --dir src/emails
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Use direct send for auth emails, queue for everything else</li>

@@ -90,8 +90,7 @@ export default function WebhooksPage() {
           <p className="mb-4">
             Register a webhook endpoint to receive events:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// API Route: POST /api/v1/webhooks
+          <CodeBlock language="typescript" code={`// API Route: POST /api/v1/webhooks
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { generateWebhookSecret } from "@/lib/webhooks/server";
@@ -124,8 +123,7 @@ export async function POST(req: Request) {
     events: webhook.events,
     secret: webhook.secret, // Show once on creation
   });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -135,8 +133,7 @@ export async function POST(req: Request) {
           <p className="mb-4">
             Trigger webhook deliveries from your application:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/webhooks/server.ts
+          <CodeBlock language="json" code={`// src/lib/webhooks/server.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
 
@@ -208,8 +205,7 @@ await sendWebhook("user.created", {
   id: user.id,
   email: user.email,
   name: user.name,
-});`}</code>
-          </pre>
+});`} />
         </CardContent>
       </Card>
 
@@ -219,8 +215,7 @@ await sendWebhook("user.created", {
           <p className="mb-4">
             When receiving webhooks, always verify the signature:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// In your webhook receiver endpoint
+          <CodeBlock language="bash" code={`// In your webhook receiver endpoint
 import crypto from "crypto";
 
 export async function POST(req: Request) {
@@ -251,8 +246,7 @@ export async function POST(req: Request) {
   console.log(\`Received \${event}:\`, data.payload);
 
   return Response.json({ received: true });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -262,8 +256,7 @@ export async function POST(req: Request) {
           <p className="mb-4">
             Failed webhooks are automatically retried with exponential backoff:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// Retry configuration
+          <CodeBlock language="typescript" code={`// Retry configuration
 const RETRY_CONFIG = {
   maxRetries: 5,
   initialDelay: 60,    // 1 minute
@@ -300,12 +293,11 @@ async function queueWebhookRetry(
     payload,
     attempt: attempt + 1,
   }, { delay: delay * 1000 });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Security Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">

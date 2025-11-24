@@ -11,7 +11,7 @@ export default function ApiRoutesTutorialPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
           <p className="text-muted-foreground">
             Fabrk uses Next.js 15 App Router for API routes. All routes are in{" "}

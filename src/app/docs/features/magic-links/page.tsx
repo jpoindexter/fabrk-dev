@@ -18,7 +18,7 @@ export default function MagicLinksPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Magic links provide passwordless authentication by sending a unique, time-limited link to the user's email. Features include:
@@ -41,14 +41,12 @@ export default function MagicLinksPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Enable the feature in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`export const config = {
+            <CodeBlock language="typescript" code={`export const config = {
   features: {
     magicLinks: true,
     // ...other features
   },
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
 
@@ -56,26 +54,22 @@ export default function MagicLinksPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Ensure email is configured in <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`RESEND_API_KEY="re_xxxxxxxxxxxx"
+            <CodeBlock language="typescript" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"`}
-            </pre>
+NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Token Settings</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Configure token expiration:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`export const config = {
+            <CodeBlock language="typescript" code={`export const config = {
   auth: {
     magicLinkExpiry: 24 * 60 * 60 * 1000, // 24 hours in ms
     // ...
   },
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
       </section>
@@ -87,8 +81,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Create the API endpoint at <code className="bg-muted px-2 py-1 rounded">/api/auth/magic-link</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/auth/magic-link/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/auth/magic-link/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { sendMagicLinkEmail } from "@/lib/email";
@@ -142,8 +135,7 @@ export async function POST(request: Request) {
     success: true,
     message: "Magic link sent to your email",
   });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -151,8 +143,7 @@ export async function POST(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Handle link verification at <code className="bg-muted px-2 py-1 rounded">/api/auth/verify</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/auth/verify/route.ts
+            <CodeBlock language="bash" code={`// src/app/api/auth/verify/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { cookies } from "next/headers";
@@ -220,8 +211,7 @@ export async function GET(request: Request) {
   });
 
   return NextResponse.redirect(\`\${config.app.url}/dashboard\`);
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -229,8 +219,7 @@ export async function GET(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Client-side form component:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`"use client";
+            <CodeBlock language="json" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -292,17 +281,15 @@ export function MagicLinkForm() {
       </Button>
     </form>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Magic Link Email Template</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Create the email template:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/emails/MagicLinkEmail.tsx
+            <CodeBlock language="tsx" code={`// src/emails/MagicLinkEmail.tsx
 import {
   Body,
   Button,
@@ -346,8 +333,7 @@ export default function MagicLinkEmail({
       </Body>
     </Html>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -356,7 +342,7 @@ export default function MagicLinkEmail({
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Passwordless Primary Auth</h3>
               <p className="text-muted-foreground">
@@ -365,7 +351,7 @@ export default function MagicLinkEmail({
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Secondary Sign-In Option</h3>
               <p className="text-muted-foreground">
@@ -374,7 +360,7 @@ export default function MagicLinkEmail({
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Account Recovery</h3>
               <p className="text-muted-foreground">
@@ -383,7 +369,7 @@ export default function MagicLinkEmail({
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Invite-Based Onboarding</h3>
               <p className="text-muted-foreground">
@@ -396,7 +382,7 @@ export default function MagicLinkEmail({
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Security Considerations</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Single-use tokens:</strong> Delete tokens after verification</li>
@@ -411,7 +397,7 @@ export default function MagicLinkEmail({
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Show clear confirmation after sending the link</li>

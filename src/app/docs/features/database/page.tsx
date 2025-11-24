@@ -18,7 +18,7 @@ export default function DatabasePage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes:
@@ -41,13 +41,11 @@ export default function DatabasePage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
+            <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
 # For production with connection pooling (e.g., Supabase):
 DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
-DIRECT_URL="postgresql://user:password@host:5432/postgres"`}
-            </pre>
+DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
           </CardContent>
         </Card>
 
@@ -55,8 +53,7 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Push the schema to your database:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Push schema changes (development)
+            <CodeBlock language="bash" code={`# Push schema changes (development)
 npm run db:push
 
 # Generate Prisma Client
@@ -66,30 +63,26 @@ npx prisma generate
 npm run db:seed
 
 # Reset and reseed
-npm run db:reset`}
-            </pre>
+npm run db:reset`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Prisma Studio</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Browse and edit data with the visual GUI:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`npm run db:studio
-# Opens at http://localhost:5555`}
-            </pre>
+            <CodeBlock language="bash" code={`npm run db:studio
+# Opens at http://localhost:5555`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Core Models</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Fabrk includes these pre-built models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// Authentication
+            <CodeBlock language="prisma" code={`// Authentication
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -145,8 +138,7 @@ model OrganizationMember {
   organization   Organization @relation(fields: [organizationId], references: [id])
 
   @@unique([userId, organizationId])
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -158,8 +150,7 @@ model OrganizationMember {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Use the singleton client from <code className="bg-muted px-2 py-1 rounded">src/lib/db/index.ts</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`import { prisma } from "@/lib/db";
+            <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
 
 // Find user by email
 const user = await prisma.user.findUnique({
@@ -184,8 +175,7 @@ const newUser = await prisma.user.create({
       },
     },
   },
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
@@ -193,8 +183,7 @@ const newUser = await prisma.user.create({
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Use Prisma in API routes:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/v1/users/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/v1/users/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -217,8 +206,7 @@ export async function GET() {
   });
 
   return NextResponse.json(user);
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -226,8 +214,7 @@ export async function GET() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Use transactions for atomic operations:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// Transfer ownership atomically
+            <CodeBlock language="typescript" code={`// Transfer ownership atomically
 const result = await prisma.$transaction(async (tx) => {
   // Remove current owner
   await tx.organizationMember.update({
@@ -251,17 +238,15 @@ const result = await prisma.$transaction(async (tx) => {
   });
 
   return newOwner;
-});`}
-            </pre>
+});`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Pagination</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Implement cursor-based pagination:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`const pageSize = 20;
+            <CodeBlock language="typescript" code={`const pageSize = 20;
 
 const users = await prisma.user.findMany({
   take: pageSize + 1, // Fetch one extra to check for next page
@@ -274,27 +259,24 @@ const hasNextPage = users.length > pageSize;
 const data = hasNextPage ? users.slice(0, -1) : users;
 const nextCursor = hasNextPage ? data[data.length - 1].id : null;
 
-return { data, nextCursor, hasNextPage };`}
-            </pre>
+return { data, nextCursor, hasNextPage };`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Migrations</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">For production, use migrations instead of <code className="bg-muted px-2 py-1 rounded">db:push</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Create a new migration
+            <CodeBlock language="bash" code={`# Create a new migration
 npm run db:migrate -- --name add_user_preferences
 
 # Apply migrations in production
 npx prisma migrate deploy
 
 # Check migration status
-npx prisma migrate status`}
-            </pre>
+npx prisma migrate status`} />
           </CardContent>
         </Card>
       </section>
@@ -303,7 +285,7 @@ npx prisma migrate status`}
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">User Profile Updates</h3>
               <p className="text-muted-foreground">
@@ -312,7 +294,7 @@ npx prisma migrate status`}
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Soft Deletes</h3>
               <p className="text-muted-foreground">
@@ -321,7 +303,7 @@ npx prisma migrate status`}
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Full-Text Search</h3>
               <p className="text-muted-foreground">
@@ -330,7 +312,7 @@ npx prisma migrate status`}
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Aggregations</h3>
               <p className="text-muted-foreground">
@@ -343,7 +325,7 @@ npx prisma migrate status`}
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Always use the singleton client from <code className="bg-muted px-1 rounded">@/lib/db</code></li>

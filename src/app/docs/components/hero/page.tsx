@@ -11,7 +11,7 @@ export default function HeroComponentsPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Available Components</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -22,7 +22,7 @@ export default function HeroComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
           <CodeBlock language="typescript" code={`// Standard hero section
@@ -36,7 +36,7 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
 
@@ -94,7 +94,7 @@ export default function LandingPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Animation Pattern</h2>
           <p className="text-muted-foreground mb-3">

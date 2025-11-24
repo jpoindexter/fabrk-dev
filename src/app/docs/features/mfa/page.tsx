@@ -18,7 +18,7 @@ export default function MFAPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk supports multiple MFA methods for enhanced security:
@@ -41,8 +41,7 @@ export default function MFAPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Enable in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`export const config = {
+            <CodeBlock language="typescript" code={`export const config = {
   features: {
     mfa: true,
     mfaMethods: ["totp", "sms", "webauthn"], // Enable specific methods
@@ -50,48 +49,42 @@ export default function MFAPage() {
   auth: {
     mfaIssuer: "Your App Name", // Shown in authenticator apps
   },
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">2. Install Dependencies</h3>
         <Card className="mb-6">
           <CardContent className="pt-6">
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# For TOTP
+            <CodeBlock language="bash" code={`# For TOTP
 npm install otplib qrcode
 
 # For WebAuthn
 npm install @simplewebauthn/server @simplewebauthn/browser
 
 # For SMS (using Twilio)
-npm install twilio`}
-            </pre>
+npm install twilio`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Environment Variables</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">For SMS verification (optional):</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Twilio for SMS
+            <CodeBlock language="bash" code={`# Twilio for SMS
 TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxx"
 TWILIO_AUTH_TOKEN="xxxxxxxxxxxx"
-TWILIO_PHONE_NUMBER="+1234567890"`}
-            </pre>
+TWILIO_PHONE_NUMBER="+1234567890"`} />
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Add MFA fields to your Prisma schema:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// prisma/schema.prisma
+            <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model User {
   id                String    @id @default(cuid())
   // ... existing fields
@@ -122,8 +115,7 @@ model WebAuthnCredential {
   createdAt       DateTime @default(now())
 
   user            User     @relation(fields: [userId], references: [id])
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -135,8 +127,7 @@ model WebAuthnCredential {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Generate and verify TOTP codes:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/mfa/totp.ts
+            <CodeBlock language="typescript" code={`// src/lib/mfa/totp.ts
 import { authenticator } from "otplib";
 import QRCode from "qrcode";
 import { config } from "@/config";
@@ -209,8 +200,7 @@ export async function verifySetup(request: Request) {
     success: true,
     backupCodes, // Show once, user must save them
   });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -218,8 +208,7 @@ export async function verifySetup(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Register hardware security keys:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/mfa/webauthn.ts
+            <CodeBlock language="typescript" code={`// src/lib/mfa/webauthn.ts
 import {
   generateRegistrationOptions,
   verifyRegistrationResponse,
@@ -288,8 +277,7 @@ export async function verifyRegistration(user: User, response: any) {
   }
 
   return verification;
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -297,8 +285,7 @@ export async function verifyRegistration(user: User, response: any) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Require MFA after password verification:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/auth.ts - in signIn callback
+            <CodeBlock language="typescript" code={`// src/lib/auth.ts - in signIn callback
 callbacks: {
   async signIn({ user, account, credentials }) {
     // Check if MFA is enabled for this user
@@ -354,17 +341,15 @@ export async function verifyMFA(request: Request) {
     success: true,
     redirect: "/dashboard"
   });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Backup Codes</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Generate and verify backup codes:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/mfa/backup-codes.ts
+            <CodeBlock language="typescript" code={`// src/lib/mfa/backup-codes.ts
 import { nanoid } from "nanoid";
 import bcrypt from "bcryptjs";
 
@@ -401,8 +386,7 @@ export async function verifyBackupCode(
   }
 
   return false;
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -411,7 +395,7 @@ export async function verifyBackupCode(
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">TOTP for All Users</h3>
               <p className="text-muted-foreground">
@@ -420,7 +404,7 @@ export async function verifyBackupCode(
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">SMS for Accessibility</h3>
               <p className="text-muted-foreground">
@@ -429,7 +413,7 @@ export async function verifyBackupCode(
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">WebAuthn for Enterprise</h3>
               <p className="text-muted-foreground">
@@ -438,7 +422,7 @@ export async function verifyBackupCode(
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Admin-Only MFA</h3>
               <p className="text-muted-foreground">
@@ -451,7 +435,7 @@ export async function verifyBackupCode(
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Security Considerations</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Encrypt secrets:</strong> Always encrypt TOTP secrets at rest</li>
@@ -466,7 +450,7 @@ export async function verifyBackupCode(
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Offer multiple MFA methods for user preference</li>

@@ -18,7 +18,7 @@ export default function SEOPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides:
@@ -41,8 +41,7 @@ export default function SEOPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Edit <code className="bg-muted px-2 py-1 rounded">src/config.js</code> with your site details:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`export const config = {
+            <CodeBlock language="typescript" code={`export const config = {
   app: {
     name: "Your SaaS Name",
     description: "Your compelling product description",
@@ -51,8 +50,7 @@ export default function SEOPage() {
     twitterHandle: "@yourusername",
   },
   // ...
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
 
@@ -60,8 +58,7 @@ export default function SEOPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">The root layout exports metadata automatically:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/layout.tsx
+            <CodeBlock language="typescript" code={`// src/app/layout.tsx
 import { config } from "@/config";
 
 export const metadata = {
@@ -84,17 +81,15 @@ export const metadata = {
     description: config.app.description,
     creator: config.app.twitterHandle,
   },
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Page-Specific Metadata</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Override metadata for individual pages:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/pricing/page.tsx
+            <CodeBlock language="tsx" code={`// src/app/pricing/page.tsx
 export const metadata = {
   title: "Pricing",
   description: "Simple, transparent pricing for teams of all sizes",
@@ -106,8 +101,7 @@ export const metadata = {
 
 export default function PricingPage() {
   return <div>...</div>;
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -119,8 +113,7 @@ export default function PricingPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Generate metadata based on dynamic content:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/blog/[slug]/page.tsx
+            <CodeBlock language="typescript" code={`// src/app/blog/[slug]/page.tsx
 import { prisma } from "@/lib/db";
 
 export async function generateMetadata({ params }) {
@@ -139,8 +132,7 @@ export async function generateMetadata({ params }) {
       publishedTime: post.createdAt,
     },
   };
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -148,8 +140,7 @@ export async function generateMetadata({ params }) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Add structured data for rich search results:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/lib/seo/structured-data.ts
+            <CodeBlock language="json" code={`// src/lib/seo/structured-data.ts
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -170,17 +161,15 @@ export function generateOrganizationSchema() {
   dangerouslySetInnerHTML={{
     __html: JSON.stringify(generateOrganizationSchema()),
   }}
-/>`}
-            </pre>
+/>`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Sitemap Generation</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Automatic sitemap at <code className="bg-muted px-2 py-1 rounded">/sitemap.xml</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/sitemap.ts
+            <CodeBlock language="typescript" code={`// src/app/sitemap.ts
 import { config } from "@/config";
 
 export default async function sitemap() {
@@ -201,8 +190,7 @@ export default async function sitemap() {
   }));
 
   return [...staticPages, ...postPages];
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -211,7 +199,7 @@ export default async function sitemap() {
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Landing Page SEO</h3>
               <p className="text-muted-foreground">
@@ -220,7 +208,7 @@ export default async function sitemap() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Blog Post Optimization</h3>
               <p className="text-muted-foreground">
@@ -229,7 +217,7 @@ export default async function sitemap() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Product Pages</h3>
               <p className="text-muted-foreground">
@@ -238,7 +226,7 @@ export default async function sitemap() {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Localized Content</h3>
               <p className="text-muted-foreground">
@@ -251,7 +239,7 @@ export default async function sitemap() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Keep titles under 60 characters for full display in search results</li>

@@ -11,7 +11,7 @@ export default function FormsComponentsPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Available Components</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -36,7 +36,7 @@ export default function FormsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
           <CodeBlock language="typescript" code={`// Basic inputs
@@ -74,7 +74,7 @@ import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
 

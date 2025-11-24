@@ -42,22 +42,18 @@ export default function AnalyticsPage() {
           <p className="mb-4">
             Add your PostHog credentials to environment variables:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`# .env.local
+          <CodeBlock language="bash" code={`# .env.local
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`}</code>
-          </pre>
+NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`} />
           <p className="mb-4">
             Enable analytics in your config:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto">
-            <code>{`// src/config.js
+          <CodeBlock language="typescript" code={`// src/config.js
 module.exports = {
   features: {
     analytics: true, // Enable PostHog
   },
-};`}</code>
-          </pre>
+};`} />
         </CardContent>
       </Card>
 
@@ -67,8 +63,7 @@ module.exports = {
           <p className="mb-4">
             Initialize PostHog in your application:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/components/providers/posthog-provider.tsx
+          <CodeBlock language="bash" code={`// src/components/providers/posthog-provider.tsx
 "use client";
 
 import posthog from "posthog-js";
@@ -102,8 +97,7 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -113,8 +107,7 @@ export default function RootLayout({ children }) {
           <p className="mb-4">
             Track custom events throughout your application:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`"use client";
+          <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
 
@@ -147,8 +140,7 @@ export function CheckoutButton({ plan, price }: Props) {
 // - feature_used
 // - settings_changed
 // - organization_created
-// - member_invited`}</code>
-          </pre>
+// - member_invited`} />
         </CardContent>
       </Card>
 
@@ -158,8 +150,7 @@ export function CheckoutButton({ plan, price }: Props) {
           <p className="mb-4">
             Identify users after authentication to link their activity:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`"use client";
+          <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
 import { useSession } from "next-auth/react";
@@ -193,8 +184,7 @@ export function UserIdentifier() {
 const handleLogout = () => {
   posthog.reset(); // Clear user identity
   signOut();
-};`}</code>
-          </pre>
+};`} />
         </CardContent>
       </Card>
 
@@ -204,8 +194,7 @@ const handleLogout = () => {
           <p className="mb-4">
             Track page views with the Next.js router:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`"use client";
+          <CodeBlock language="tsx" code={`"use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
@@ -229,8 +218,7 @@ export function PageViewTracker() {
   }, [pathname, searchParams, posthog]);
 
   return null;
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -240,8 +228,7 @@ export function PageViewTracker() {
           <p className="mb-4">
             Track events from API routes and server actions:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/analytics/server.ts
+          <CodeBlock language="bash" code={`// src/lib/analytics/server.ts
 import { PostHog } from "posthog-node";
 
 const posthogServer = new PostHog(
@@ -277,12 +264,11 @@ export async function POST(req: Request) {
   });
 
   return Response.json({ success: true });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">

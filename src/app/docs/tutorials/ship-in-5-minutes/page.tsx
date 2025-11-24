@@ -12,7 +12,7 @@ export default function ShipIn5MinutesPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
           <p className="text-muted-foreground">
             This tutorial assumes you've completed the{" "}
@@ -106,7 +106,7 @@ import { PricingSection } from "@/components/landing/pricing-section";
       </div>
 
       {/* You're Done */}
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6 text-center">
           <h3 className="mb-2 text-xl font-semibold">You're Ready to Ship!</h3>
           <p className="text-muted-foreground">

@@ -12,7 +12,7 @@ export default function WebhooksTutorialPage() {
         </p>
       </div>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">What's Included</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
@@ -300,7 +300,7 @@ export async function GET(request: NextRequest) {
         <p className="text-muted-foreground">
           Failed deliveries are automatically retried with exponential backoff:
         </p>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-6">
             <ul className="list-inside list-disc space-y-1 text-muted-foreground">
               <li><strong>Attempt 1:</strong> Immediate</li>
@@ -376,7 +376,7 @@ const description = EVENT_DESCRIPTIONS["payment.succeeded"];
       {/* Security Best Practices */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Security Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="p-6">
             <ul className="list-inside list-disc space-y-2 text-muted-foreground">
               <li>

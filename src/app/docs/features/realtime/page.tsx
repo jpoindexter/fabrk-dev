@@ -42,8 +42,7 @@ export default function RealtimePage() {
           <p className="mb-4">
             Add your Pusher credentials to your environment variables:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`# .env.local
+          <CodeBlock language="bash" code={`# .env.local
 PUSHER_APP_ID=your_app_id
 PUSHER_KEY=your_key
 PUSHER_SECRET=your_secret
@@ -51,8 +50,7 @@ PUSHER_CLUSTER=your_cluster
 
 # Client-side (exposed to browser)
 NEXT_PUBLIC_PUSHER_KEY=your_key
-NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`}</code>
-          </pre>
+NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
           <p className="text-sm text-muted-foreground">
             Get your credentials from the <a href="https://dashboard.pusher.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Pusher Dashboard</a>.
           </p>
@@ -65,8 +63,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`}</code>
           <p className="mb-4">
             Use the server client to trigger events from your API routes:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/pusher/server.ts
+          <CodeBlock language="bash" code={`// src/lib/pusher/server.ts
 import Pusher from "pusher";
 
 export const pusherServer = new Pusher({
@@ -98,8 +95,7 @@ await pusherServer.trigger(
     actor: { name: "John Doe", avatar: "/avatar.png" },
     timestamp: new Date().toISOString(),
   }
-);`}</code>
-          </pre>
+);`} />
         </CardContent>
       </Card>
 
@@ -109,8 +105,7 @@ await pusherServer.trigger(
           <p className="mb-4">
             Subscribe to channels and listen for events in your React components:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/pusher/client.ts
+          <CodeBlock language="bash" code={`// src/lib/pusher/client.ts
 import PusherClient from "pusher-js";
 
 export const pusherClient = new PusherClient(
@@ -153,8 +148,7 @@ export function NotificationBell({ userId }: { userId: string }) {
       )}
     </button>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -164,8 +158,7 @@ export function NotificationBell({ userId }: { userId: string }) {
           <p className="mb-4">
             Track which members are online in an organization:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// Client-side presence subscription
+          <CodeBlock language="tsx" code={`// Client-side presence subscription
 "use client";
 import { useEffect, useState } from "react";
 import { pusherClient } from "@/lib/pusher/client";
@@ -205,12 +198,11 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
       ))}
     </div>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">

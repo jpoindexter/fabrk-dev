@@ -18,7 +18,7 @@ export default function PaymentsPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
               Fabrk includes a production-ready Stripe integration with:
@@ -41,8 +41,7 @@ export default function PaymentsPage() {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Add your Stripe keys to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Stripe API Keys
+            <CodeBlock language="bash" code={`# Stripe API Keys
 STRIPE_SECRET_KEY="sk_test_xxxxxxxxxxxx"
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_xxxxxxxxxxxx"
 
@@ -52,8 +51,7 @@ STRIPE_WEBHOOK_SECRET="whsec_xxxxxxxxxxxx"
 # Price IDs (from Stripe Dashboard → Products)
 STRIPE_PRICE_ID_BASIC="price_xxxxxxxxxxxx"
 STRIPE_PRICE_ID_PRO="price_xxxxxxxxxxxx"
-STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`}
-            </pre>
+STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`} />
           </CardContent>
         </Card>
 
@@ -61,8 +59,7 @@ STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Set up pricing in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`export const config = {
+            <CodeBlock language="bash" code={`export const config = {
   stripe: {
     mode: "subscription", // or "one-time"
     plans: [
@@ -83,17 +80,15 @@ STRIPE_PRICE_ID_ENTERPRISE="price_xxxxxxxxxxxx"`}
       },
     ],
   },
-};`}
-            </pre>
+};`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Set Up Webhooks</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">For local development, forward webhooks:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`# Install Stripe CLI
+            <CodeBlock language="bash" code={`# Install Stripe CLI
 brew install stripe/stripe-cli/stripe
 
 # Forward webhooks to localhost
@@ -101,8 +96,7 @@ npm run stripe:listen
 # or: stripe listen --forward-to localhost:3000/api/webhooks/stripe
 
 # Trigger test events
-stripe trigger checkout.session.completed`}
-            </pre>
+stripe trigger checkout.session.completed`} />
           </CardContent>
         </Card>
       </section>
@@ -114,8 +108,7 @@ stripe trigger checkout.session.completed`}
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">The checkout API at <code className="bg-muted px-2 py-1 rounded">/api/stripe/checkout</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/stripe/checkout/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/stripe/checkout/route.ts
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { auth } from "@/lib/auth";
@@ -168,8 +161,7 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ url: checkoutSession.url });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -177,8 +169,7 @@ export async function POST(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Handle Stripe events at <code className="bg-muted px-2 py-1 rounded">/api/webhooks/stripe</code>:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/webhooks/stripe/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/webhooks/stripe/route.ts
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { prisma } from "@/lib/db";
@@ -256,8 +247,7 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ received: true });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
@@ -265,8 +255,7 @@ export async function POST(request: Request) {
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Trigger checkout from React components:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`"use client";
+            <CodeBlock language="json" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -301,17 +290,15 @@ export function PricingCard({ plan }) {
       {loading ? "Loading..." : \`Subscribe to \${plan.name}\`}
     </Button>
   );
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
 
         <h3 className="text-xl font-medium mb-3">Customer Portal</h3>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <p className="mb-4">Allow users to manage subscriptions:</p>
-            <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
-{`// src/app/api/stripe/portal/route.ts
+            <CodeBlock language="typescript" code={`// src/app/api/stripe/portal/route.ts
 export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -333,8 +320,7 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ url: portalSession.url });
-}`}
-            </pre>
+}`} />
           </CardContent>
         </Card>
       </section>
@@ -343,7 +329,7 @@ export async function POST(request: Request) {
         <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
 
         <div className="grid gap-4">
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">SaaS Subscriptions</h3>
               <p className="text-muted-foreground">
@@ -352,7 +338,7 @@ export async function POST(request: Request) {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">One-Time Purchases</h3>
               <p className="text-muted-foreground">
@@ -361,7 +347,7 @@ export async function POST(request: Request) {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Free Trials</h3>
               <p className="text-muted-foreground">
@@ -370,7 +356,7 @@ export async function POST(request: Request) {
             </CardContent>
           </Card>
 
-          <Card className="bg-zinc-950">
+          <Card>
             <CardContent className="pt-6">
               <h3 className="font-semibold mb-2">Usage-Based Billing</h3>
               <p className="text-muted-foreground">
@@ -383,7 +369,7 @@ export async function POST(request: Request) {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <Card className="bg-zinc-950">
+        <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Always verify webhook signatures - never trust unverified payloads</li>

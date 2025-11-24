@@ -42,8 +42,7 @@ export default function FeatureFlagsPage() {
           <p className="mb-4">
             Feature flag model in Prisma schema:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// prisma/schema.prisma
+          <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model FeatureFlag {
   id          String   @id @default(cuid())
   key         String   @unique // "new-dashboard", "beta-api"
@@ -68,8 +67,7 @@ model FeatureFlag {
   updatedAt   DateTime @updatedAt
 
   @@index([key, environment])
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -79,8 +77,7 @@ model FeatureFlag {
           <p className="mb-4">
             Core service for checking feature flags:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/lib/feature-flags.ts
+          <CodeBlock language="bash" code={`// src/lib/feature-flags.ts
 import { prisma } from "@/lib/db";
 import crypto from "crypto";
 
@@ -153,8 +150,7 @@ export async function getFeatureFlags(context: FlagContext = {}) {
   }
 
   return result;
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -164,8 +160,7 @@ export async function getFeatureFlags(context: FlagContext = {}) {
           <p className="mb-4">
             Check feature flags in API routes and server components:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// In API routes
+          <CodeBlock language="tsx" code={`// In API routes
 import { auth } from "@/lib/auth";
 import { isFeatureEnabled } from "@/lib/feature-flags";
 
@@ -210,8 +205,7 @@ export default async function DashboardPage() {
       )}
     </div>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -221,8 +215,7 @@ export default async function DashboardPage() {
           <p className="mb-4">
             Use feature flags in client components with a React hook:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// src/hooks/use-feature-flags.ts
+          <CodeBlock language="tsx" code={`// src/hooks/use-feature-flags.ts
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -291,8 +284,7 @@ export function NewFeature() {
       {/* Feature content */}
     </div>
   );
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
@@ -302,8 +294,7 @@ export function NewFeature() {
           <p className="mb-4">
             API routes for managing feature flags:
           </p>
-          <pre className="bg-muted p-4 rounded-md overflow-x-auto mb-4">
-            <code>{`// POST /api/admin/feature-flags
+          <CodeBlock language="typescript" code={`// POST /api/admin/feature-flags
 export async function POST(req: Request) {
   const session = await auth();
   if (session?.user?.role !== "admin") {
@@ -367,12 +358,11 @@ export async function POST(
   });
 
   return Response.json({ flag: updated });
-}`}</code>
-          </pre>
+}`} />
         </CardContent>
       </Card>
 
-      <Card className="bg-zinc-950">
+      <Card>
         <CardContent className="pt-6">
           <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
           <ul className="list-disc pl-6 space-y-2">
