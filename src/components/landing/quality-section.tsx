@@ -8,7 +8,7 @@ import {
   siVitest,
   siGithubactions,
 } from "simple-icons";
-import { Globe, CheckCircle2, TestTube2 } from "lucide-react";
+import { CheckCircle2, TestTube2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function QualitySection() {
@@ -38,13 +38,7 @@ export function QualitySection() {
       icon: siGithubactions.path,
     },
     {
-      metric: "6",
-      label: "Languages Supported",
-      description: "Full i18n with 1,998 translations across English, Spanish, French, German, Portuguese, Japanese",
-      iconComponent: "globe",
-    },
-    {
-      metric: "931+",
+      metric: "114+",
       label: "Comprehensive Tests",
       description: "Unit tests + E2E Playwright tests for critical user flows",
       iconComponent: "testTube",
@@ -98,9 +92,7 @@ export function QualitySection() {
                 className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:border-success/50 hover:shadow-md"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-success/10 p-3">
-                  {item.iconComponent === "globe" ? (
-                    <Globe className="h-6 w-6 text-success" />
-                  ) : item.iconComponent === "testTube" ? (
+                  {item.iconComponent === "testTube" ? (
                     <TestTube2 className="h-6 w-6 text-success" />
                   ) : (
                     <SimpleIcon path={item.icon!} className="h-6 w-6 text-success" />

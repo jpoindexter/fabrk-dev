@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { SimpleIcon } from "@/components/ui/simple-icon";
-import { siX, siGithub } from "simple-icons";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
@@ -128,40 +126,6 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Column 5: Social & Community */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">
-              Community
-            </h4>
-            <div className="flex flex-col gap-4">
-              <a
-                href="https://twitter.com/fabrk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3"
-              >
-                <div className="rounded-md border border-border bg-background p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
-                  <SimpleIcon path={siX.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
-                </div>
-                <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">
-                  Follow on X
-                </span>
-              </a>
-              <a
-                href="https://github.com/fabrk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3"
-              >
-                <div className="rounded-md border border-border bg-background p-2 transition-colors group-hover:bg-primary group-hover:border-primary">
-                  <SimpleIcon path={siGithub.path} className="h-4 w-4 text-foreground transition-colors group-hover:text-primary-foreground" />
-                </div>
-                <span className="text-sm font-normal text-muted-foreground transition-colors group-hover:text-foreground">
-                  Star on GitHub
-                </span>
-              </a>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Bar */}
