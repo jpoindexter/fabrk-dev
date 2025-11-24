@@ -3,7 +3,6 @@
 @import "tw-animate-css";
 
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -152,74 +151,349 @@
 }
 
 /* ============================================
-   CUSTOM COLOR THEMES
-   6 color options that work with light/dark mode
+   DAISY UI-INSPIRED COLOR THEMES
+   20 professionally designed themes (MIT License)
+   Color palettes inspired by DaisyUI - https://daisyui.com
    ============================================ */
 
-/* Purple (default) */
-[data-theme="purple"] {
-  --primary: 262.1 83.3% 57.8%;
-  --ring: 262.1 83.3% 57.8%;
+/* Light - Clean white theme */
+[data-theme="light"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 13%;
+  --primary: 262 80% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 338 71% 75%;
+  --secondary-foreground: 0 0% 13%;
+  --accent: 199 89% 48%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 262 80% 50%;
 }
 
-[data-theme="purple"].dark {
-  --primary: 263.4 70% 50.4%;
-  --ring: 263.4 70% 50.4%;
+/* Dark - Professional dark theme */
+[data-theme="dark"] {
+  --background: 222 47% 11%;
+  --foreground: 0 0% 89%;
+  --primary: 197 92% 61%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 338 71% 75%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 199 89% 48%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 222 47% 18%;
+  --muted-foreground: 0 0% 60%;
+  --border: 222 47% 23%;
+  --input: 222 47% 23%;
+  --ring: 197 92% 61%;
 }
 
-/* Ocean Blue */
-[data-theme="blue"] {
-  --primary: 217.2 91.2% 59.8%;
-  --ring: 217.2 91.2% 59.8%;
+/* Cupcake - Soft pastels */
+[data-theme="cupcake"] {
+  --background: 28 80% 97%;
+  --foreground: 222 47% 11%;
+  --primary: 153 60% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 338 71% 75%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 46 100% 61%;
+  --accent-foreground: 222 47% 11%;
+  --muted: 28 80% 92%;
+  --muted-foreground: 0 0% 40%;
+  --border: 28 40% 85%;
+  --input: 28 40% 85%;
+  --ring: 153 60% 53%;
 }
 
-[data-theme="blue"].dark {
-  --primary: 217.2 91.2% 50%;
-  --ring: 217.2 91.2% 50%;
+/* Bumblebee - Yellow accents */
+[data-theme="bumblebee"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 13%;
+  --primary: 41 100% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 80% 72%;
+  --secondary-foreground: 0 0% 13%;
+  --accent: 202 95% 47%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 41 100% 47%;
 }
 
-/* Forest Green */
-[data-theme="green"] {
-  --primary: 142.1 76.2% 36.3%;
-  --ring: 142.1 76.2% 36.3%;
+/* Emerald - Green tones */
+[data-theme="emerald"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 13%;
+  --primary: 152 57% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 339 84% 60%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 44 100% 63%;
+  --accent-foreground: 0 0% 13%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 152 57% 52%;
 }
 
-[data-theme="green"].dark {
-  --primary: 142.1 70% 45%;
-  --ring: 142.1 70% 45%;
+/* Corporate - Blue business */
+[data-theme="corporate"] {
+  --background: 0 0% 100%;
+  --foreground: 216 19% 27%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 28% 17%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 183 100% 25%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 221 83% 53%;
 }
 
-/* Sunset Orange */
-[data-theme="orange"] {
-  --primary: 24.6 95% 53.1%;
-  --ring: 24.6 95% 53.1%;
+/* Synthwave - Neon purple/pink */
+[data-theme="synthwave"] {
+  --background: 262 58% 8%;
+  --foreground: 0 0% 100%;
+  --primary: 321 70% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 194 100% 50%;
+  --secondary-foreground: 262 58% 8%;
+  --accent: 58 90% 68%;
+  --accent-foreground: 262 58% 8%;
+  --muted: 262 58% 13%;
+  --muted-foreground: 0 0% 60%;
+  --border: 262 40% 20%;
+  --input: 262 40% 20%;
+  --ring: 321 70% 52%;
 }
 
-[data-theme="orange"].dark {
-  --primary: 24.6 95% 48%;
-  --ring: 24.6 95% 48%;
+/* Retro - Vintage warm */
+[data-theme="retro"] {
+  --background: 25 45% 87%;
+  --foreground: 339 100% 16%;
+  --primary: 3 74% 66%;
+  --primary-foreground: 339 100% 16%;
+  --secondary: 45 78% 72%;
+  --secondary-foreground: 339 100% 16%;
+  --accent: 185 67% 55%;
+  --accent-foreground: 339 100% 16%;
+  --muted: 25 45% 80%;
+  --muted-foreground: 339 100% 30%;
+  --border: 25 30% 70%;
+  --input: 25 30% 70%;
+  --ring: 3 74% 66%;
 }
 
-/* Hot Pink */
-[data-theme="pink"] {
-  --primary: 330.4 81.2% 60.4%;
-  --ring: 330.4 81.2% 60.4%;
+/* Cyberpunk - Pink/yellow tech */
+[data-theme="cyberpunk"] {
+  --background: 53 100% 50%;
+  --foreground: 337 60% 17%;
+  --primary: 340 100% 63%;
+  --primary-foreground: 337 60% 17%;
+  --secondary: 195 100% 52%;
+  --secondary-foreground: 337 60% 17%;
+  --accent: 53 100% 50%;
+  --accent-foreground: 337 60% 17%;
+  --muted: 53 90% 45%;
+  --muted-foreground: 337 60% 30%;
+  --border: 53 80% 40%;
+  --input: 53 80% 40%;
+  --ring: 340 100% 63%;
 }
 
-[data-theme="pink"].dark {
-  --primary: 330.4 81.2% 55%;
-  --ring: 330.4 81.2% 55%;
+/* Valentine - Romantic pink */
+[data-theme="valentine"] {
+  --background: 316 53% 89%;
+  --foreground: 343 77% 15%;
+  --primary: 348 100% 70%;
+  --primary-foreground: 343 77% 15%;
+  --secondary: 269 81% 73%;
+  --secondary-foreground: 343 77% 15%;
+  --accent: 9 76% 68%;
+  --accent-foreground: 343 77% 15%;
+  --muted: 316 53% 82%;
+  --muted-foreground: 343 77% 30%;
+  --border: 316 35% 75%;
+  --input: 316 35% 75%;
+  --ring: 348 100% 70%;
 }
 
-/* Ruby Red */
-[data-theme="red"] {
-  --primary: 0 84.2% 60.2%;
-  --ring: 0 84.2% 60.2%;
+/* Halloween - Orange/dark */
+[data-theme="halloween"] {
+  --background: 265 69% 10%;
+  --foreground: 0 0% 100%;
+  --primary: 31 100% 50%;
+  --primary-foreground: 265 69% 10%;
+  --secondary: 198 93% 60%;
+  --secondary-foreground: 265 69% 10%;
+  --accent: 119 95% 46%;
+  --accent-foreground: 265 69% 10%;
+  --muted: 265 69% 15%;
+  --muted-foreground: 0 0% 60%;
+  --border: 265 45% 25%;
+  --input: 265 45% 25%;
+  --ring: 31 100% 50%;
 }
 
-[data-theme="red"].dark {
-  --primary: 0 72% 51%;
-  --ring: 0 72% 51%;
+/* Forest - Nature green */
+[data-theme="forest"] {
+  --background: 145 17% 16%;
+  --foreground: 137 14% 86%;
+  --primary: 141 52% 51%;
+  --primary-foreground: 145 17% 16%;
+  --secondary: 141 53% 82%;
+  --secondary-foreground: 145 17% 16%;
+  --accent: 188 100% 35%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 145 17% 22%;
+  --muted-foreground: 137 14% 60%;
+  --border: 145 15% 30%;
+  --input: 145 15% 30%;
+  --ring: 141 52% 51%;
+}
+
+/* Aqua - Cyan/blue */
+[data-theme="aqua"] {
+  --background: 204 25% 21%;
+  --foreground: 201 52% 88%;
+  --primary: 184 100% 43%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 207 84% 79%;
+  --secondary-foreground: 204 25% 21%;
+  --accent: 334 82% 65%;
+  --accent-foreground: 204 25% 21%;
+  --muted: 204 25% 28%;
+  --muted-foreground: 201 52% 65%;
+  --border: 204 20% 35%;
+  --input: 204 20% 35%;
+  --ring: 184 100% 43%;
+}
+
+/* Lo-Fi - Minimalist dark */
+[data-theme="lofi"] {
+  --background: 0 0% 98%;
+  --foreground: 0 0% 5%;
+  --primary: 0 0% 5%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 82%;
+  --secondary-foreground: 0 0% 5%;
+  --accent: 0 0% 82%;
+  --accent-foreground: 0 0% 5%;
+  --muted: 0 0% 92%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 85%;
+  --input: 0 0% 85%;
+  --ring: 0 0% 5%;
+}
+
+/* Pastel - Light pastels */
+[data-theme="pastel"] {
+  --background: 260 13% 93%;
+  --foreground: 255 19% 27%;
+  --primary: 262 40% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 180 19% 70%;
+  --secondary-foreground: 255 19% 27%;
+  --accent: 30 50% 75%;
+  --accent-foreground: 255 19% 27%;
+  --muted: 260 13% 87%;
+  --muted-foreground: 255 19% 45%;
+  --border: 260 10% 80%;
+  --input: 260 10% 80%;
+  --ring: 262 40% 65%;
+}
+
+/* Fantasy - Purple fantasy */
+[data-theme="fantasy"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 13%;
+  --primary: 275 100% 25%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 335 78% 42%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 44 92% 63%;
+  --accent-foreground: 275 100% 25%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 275 100% 25%;
+}
+
+/* Luxury - High-end white/gold */
+[data-theme="luxury"] {
+  --background: 0 0% 9%;
+  --foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 50 11% 41%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 50 11% 41%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 0% 100%;
+}
+
+/* Dracula - Purple developer */
+[data-theme="dracula"] {
+  --background: 231 15% 18%;
+  --foreground: 60 30% 96%;
+  --primary: 326 100% 74%;
+  --primary-foreground: 231 15% 18%;
+  --secondary: 191 97% 77%;
+  --secondary-foreground: 231 15% 18%;
+  --accent: 65 92% 76%;
+  --accent-foreground: 231 15% 18%;
+  --muted: 231 15% 24%;
+  --muted-foreground: 60 30% 70%;
+  --border: 231 15% 30%;
+  --input: 231 15% 30%;
+  --ring: 326 100% 74%;
+}
+
+/* Autumn - Warm earth tones */
+[data-theme="autumn"] {
+  --background: 0 0% 100%;
+  --foreground: 345 80% 14%;
+  --primary: 345 65% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 14 80% 63%;
+  --secondary-foreground: 345 80% 14%;
+  --accent: 180 29% 50%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 345 80% 30%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 345 65% 47%;
+}
+
+/* Business - Professional blue */
+[data-theme="business"] {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --primary: 215 28% 17%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 220 14% 96%;
+  --accent-foreground: 222 47% 11%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 215 28% 17%;
 }
 
 /* Rich text editor placeholder */
