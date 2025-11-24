@@ -230,6 +230,17 @@ async function checkoutHandler(req: NextRequest) {
         ...(discounts.length === 0 ? { allow_promotion_codes: true } : {}),
         billing_address_collection: "required", // Collect billing address
         customer_creation: "always", // Always create/link customer (required for email)
+        custom_fields: [
+          {
+            key: "github_username",
+            label: {
+              type: "custom",
+              custom: "GitHub Username (for repo access)",
+            },
+            type: "text",
+            optional: false,
+          },
+        ],
       },
       {
         idempotencyKey, // Stripe's built-in idempotency

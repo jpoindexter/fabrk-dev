@@ -1,7 +1,7 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Footer Component - GDPR Compliant with Legal Links
- * Production-ready ✓
+ * Production-ready
  */
 
 "use client";
@@ -9,12 +9,8 @@
 import { Logo } from "@/components/home/logo";
 import { Cookie, Github, Linkedin, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 export function Footer() {
-  const t = useTranslations('footer');
-  const tNav = useTranslations('navigation');
-
   const openCookieSettings = () => {
     // Trigger cookie consent modal by removing consent from localStorage
     localStorage.removeItem("cookie-consent");
@@ -34,7 +30,7 @@ export function Footer() {
               <Logo size={28} />
             </Link>
             <p className="text-sm text-muted-foreground">
-              {t('builtWith')} Next.js, TypeScript, Tailwind CSS
+              Built with Next.js, TypeScript, Tailwind CSS
             </p>
             <div className="flex gap-3">
               <a
@@ -78,14 +74,14 @@ export function Footer() {
 
           {/* Product Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">{t('product')}</h3>
+            <h3 className="text-sm font-medium">Product</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/components"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('components')}
+                  Components
                 </Link>
               </li>
               <li>
@@ -93,7 +89,7 @@ export function Footer() {
                   href="/templates"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('templates')}
+                  Templates
                 </Link>
               </li>
               <li>
@@ -101,7 +97,7 @@ export function Footer() {
                   href="/docs"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('docs')}
+                  Documentation
                 </Link>
               </li>
               <li>
@@ -109,7 +105,7 @@ export function Footer() {
                   href="/pricing"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('pricing')}
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -117,14 +113,14 @@ export function Footer() {
 
           {/* Company Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">{t('company')}</h3>
+            <h3 className="text-sm font-medium">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/about"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('about')}
+                  About
                 </Link>
               </li>
               <li>
@@ -132,7 +128,7 @@ export function Footer() {
                   href="/blog"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('blog')}
+                  Blog
                 </Link>
               </li>
               <li>
@@ -140,7 +136,7 @@ export function Footer() {
                   href="/contact"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('contact')}
+                  Contact
                 </Link>
               </li>
               <li>
@@ -148,7 +144,7 @@ export function Footer() {
                   href="/support"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {tNav('support')}
+                  Support
                 </Link>
               </li>
             </ul>
@@ -156,7 +152,7 @@ export function Footer() {
 
           {/* Legal Links - GDPR Required */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium">{t('legal')}</h3>
+            <h3 className="text-sm font-medium">Legal</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -217,7 +213,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl p-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="text-center text-sm text-muted-foreground sm:text-left">
-              © {new Date().getFullYear()} Fabrk. {t('allRightsReserved')}
+              © {new Date().getFullYear()} Fabrk. All rights reserved.
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <Link href="/sitemap" className="transition-colors hover:text-foreground">

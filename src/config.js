@@ -76,7 +76,7 @@ const config = {
       earlyAdopter: {
         enabled: true,
         code: "EARLY500", // Display code for customers
-        promotionCodeId: "promo_1SVGK4P7kSSEYWlXBq1LtaNM", // Stripe Promotion Code ID
+        promotionCodeId: env?.server?.STRIPE_COUPON_EARLY_ADOPTER || process.env.STRIPE_COUPON_EARLY_ADOPTER || "promo_1SVGK4P7kSSEYWlXBq1LtaNM", // Stripe Promotion Code ID
         couponId: env?.server?.STRIPE_COUPON_EARLY_ADOPTER || process.env.STRIPE_COUPON_EARLY_ADOPTER || "early_adopter_100off",
         discountAmount: 100,
         originalPrice: 299,
@@ -203,7 +203,7 @@ const config = {
       "Comprehensive Documentation (400KB+ guides)",
       "Full Test Suite (Vitest + Playwright E2E)",
       "Storybook Component Library (95% coverage)",
-      "Multi-Language Support (6 languages with next-intl)",
+      "TypeScript-First Development",
       "TypeScript Strict Mode throughout",
       "WCAG 2.1 AA Accessibility compliance",
     ],

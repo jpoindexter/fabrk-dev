@@ -1,5 +1,5 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Dashboard Header Component
  * Shared header for all dashboard pages with org switcher
  */
@@ -36,22 +36,18 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { OrgSwitcher } from "@/components/organization/org-switcher";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
-import { useTranslations } from "next-intl";
 import { NotificationCenter } from "@/components/notifications/notification-center";
 
 export function DashboardHeader() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const t = useTranslations('navigation');
-  const tCommon = useTranslations('common');
 
   const navigationItems = [
-    { href: "/dashboard", label: t('dashboard'), icon: Home },
-    { href: "/settings", label: t('settings'), icon: Settings },
-    { href: "/billing", label: t('billing'), icon: CreditCard },
-    { href: "/developer/api-keys", label: t('apiKeys'), icon: Code },
+    { href: "/dashboard", label: "Dashboard", icon: Home },
+    { href: "/settings", label: "Settings", icon: Settings },
+    { href: "/billing", label: "Billing", icon: CreditCard },
+    { href: "/developer/api-keys", label: "API Keys", icon: Code },
   ];
 
   const userInitials = session?.user?.name
@@ -105,13 +101,8 @@ export function DashboardHeader() {
           )}
         </nav>
 
-        {/* Right Section: Locale Switcher + Org Switcher + Notifications + User Menu */}
+        {/* Right Section: Org Switcher + Notifications + User Menu */}
         <div className="flex items-center gap-4">
-          {/* Locale Switcher */}
-          <div className="hidden lg:block">
-            <LocaleSwitcher />
-          </div>
-
           {/* Organization Switcher */}
           <div className="hidden lg:block">
             <OrgSwitcher />
@@ -154,19 +145,19 @@ export function DashboardHeader() {
               <DropdownMenuItem asChild>
                 <Link href="/profile" className="cursor-pointer">
                   <User className="mr-2 h-4 w-4" />
-                  {t('profile')}
+                  Profile
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/settings" className="cursor-pointer">
                   <Settings className="mr-2 h-4 w-4" />
-                  {t('settings')}
+                  Settings
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/settings/security" className="cursor-pointer">
                   <Shield className="mr-2 h-4 w-4" />
-                  {t('settings')}
+                  Security
                 </Link>
               </DropdownMenuItem>
               {isAdmin && (
@@ -175,7 +166,7 @@ export function DashboardHeader() {
                   <DropdownMenuItem asChild>
                     <Link href="/admin" className="cursor-pointer text-primary">
                       <Shield className="mr-2 h-4 w-4" />
-                      {t('admin')}
+                      Admin
                     </Link>
                   </DropdownMenuItem>
                 </>
@@ -186,7 +177,7 @@ export function DashboardHeader() {
                 className="cursor-pointer text-destructive focus:text-destructive"
               >
                 <LogOut className="mr-2 h-4 w-4" />
-                {tCommon('signOut')}
+                Sign Out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -200,12 +191,6 @@ export function DashboardHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-6 py-6">
-                {/* Mobile Locale Switcher */}
-                <div>
-                  <p className="mb-2 text-sm font-medium text-muted-foreground">{tCommon('settings')}</p>
-                  <LocaleSwitcher />
-                </div>
-
                 {/* Mobile Org Switcher */}
                 <div>
                   <p className="mb-2 text-sm font-medium text-muted-foreground">Organization</p>
@@ -214,7 +199,7 @@ export function DashboardHeader() {
 
                 {/* Mobile Navigation */}
                 <nav className="flex flex-col space-y-2">
-                  <p className="text-sm font-medium text-muted-foreground">{t('home')}</p>
+                  <p className="text-sm font-medium text-muted-foreground">Navigation</p>
                   {navigationItems.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -247,7 +232,7 @@ export function DashboardHeader() {
                       )}
                     >
                       <Shield className="h-5 w-5" />
-                      {t('admin')}
+                      Admin
                     </Link>
                   )}
                 </nav>

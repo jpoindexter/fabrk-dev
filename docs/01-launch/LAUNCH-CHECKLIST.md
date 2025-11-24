@@ -32,19 +32,68 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 
 ---
 
-## 2. Launch Day Execution
+## 2. Stripe & Payments Setup (Detailed)
+
+### Product Configuration
+- [ ] **Create Products:** Create "Fabrk Starter", "Fabrk Professional", "Fabrk Enterprise" in Stripe Dashboard.
+- [ ] **Set Prices:** Set one-time prices (e.g., $199).
+- [ ] **Get IDs:** Copy Price IDs (starts with `price_`) to `.env` (`NEXT_PUBLIC_STRIPE_PRICE_*`).
+- [ ] **Coupons:** Create "EARLYBIRD" coupon (optional) and add ID to `src/config.js`.
+
+### Webhook Configuration
+- [ ] **Endpoint:** Add `https://your-domain.com/api/stripe/webhook` to Stripe Webhooks.
+- [ ] **Events:** Select `checkout.session.completed`, `customer.subscription.*`, `payment_intent.*`.
+- [ ] **Secret:** Copy Signing Secret (`whsec_...`) to `.env` (`STRIPE_WEBHOOK_SECRET`).
+
+### Checkout Flow Verification
+- [ ] **Custom Fields:** Verify "GitHub Username" field appears on checkout (Required for auto-distribution).
+- [ ] **Test Purchase:** Run a test mode purchase.
+- [ ] **Verify Database:** Check `User` table for `licenseKey` and `githubUsername`.
+
+---
+
+## 3. Auto-Distribution Automation
+
+### GitHub Access
+- [ ] **Token:** Generate GitHub Personal Access Token (Classic) with `repo` and `admin:org` scopes.
+- [ ] **Env Var:** Add token to `.env` as `GITHUB_ACCESS_TOKEN`.
+- [ ] **Repo Owner:** Set `GITHUB_REPO_OWNER` in `.env`.
+- [ ] **Repo Name:** Set `GITHUB_REPO_NAME` in `.env`.
+
+### Automation Workflow
+- [ ] **Job Worker:** Verify background job worker is running (`npm run worker` or similar).
+- [ ] **Test Grant:** Manually trigger `github.access_grant` job for a test user.
+- [ ] **Verify Access:** Check if test user was added as a collaborator to the private repo.
+
+---
+
+## 4. Marketing Assets & Videos
+
+### Video 1: "The Pitch" (30-60s)
+- [ ] **Script:** "Stop building auth. Stop building payments. Start building your SaaS."
+- [ ] **Visuals:** Fast cuts of Dashboard, Stripe integration, Email templates.
+- [ ] **Call to Action:** "Get Fabrk today."
+- [ ] **Distribution:** Twitter/X, LinkedIn, Hero Section.
+
+### Video 2: "The Walkthrough" (3-5 mins)
+- [ ] **Script:** Deep dive into the folder structure and key features.
+- [ ] **Visuals:** Screen recording of VS Code, running `npm run dev`, making a quick change.
+- [ ] **Goal:** Show developer experience (DX) is top-tier.
+- [ ] **Distribution:** YouTube, Documentation.
+
+### Video 3: "From Zero to Deploy" (Short)
+- [ ] **Script:** Time-lapse of cloning repo -> deploying to Vercel.
+- [ ] **Goal:** Prove speed to market.
+
+---
+
+## 5. Launch Day Execution
 
 ### Distribution Setup
 - [ ] **GitHub Repo:** Create private repository for distribution
 - [ ] **Access Control:** Verify invite system for new customers
 - [ ] **Webhooks:** Test Stripe -> GitHub access automation
 - [ ] **Welcome Email:** Verify "Welcome to Fabrk" email template
-
-### Marketing Assets
-- [ ] **Landing Page:** Deploy `fabrk.dev` (or equivalent)
-- [ ] **Demo:** Ensure live demo is running and stable
-- [ ] **Screenshots:** Capture high-res screenshots of Dashboard, Billing, Auth
-- [ ] **Video:** (Optional) Record 30s "What is Fabrk?" walkthrough
 
 ### Announcement
 - [ ] **Product Hunt:** Schedule launch post
@@ -53,12 +102,13 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 
 ---
 
-## 3. Post-Launch (First 48 Hours)
+## 6. Post-Launch (First 48 Hours)
 
 ### Monitoring
 - [ ] **Support:** Monitor `support@fabrk.dev` continuously
 - [ ] **Stripe:** Watch for failed payments or disputes
 - [ ] **GitHub:** Monitor repo access issues
+- [ ] **Errors:** Check Sentry/Logs for unhandled exceptions.
 
 ### Feedback Loop
 - [ ] **Bugs:** Triage critical bugs immediately
@@ -67,7 +117,7 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 
 ---
 
-## 4. Rollback Plan
+## 7. Rollback Plan
 
 If critical issues arise (e.g., broken auth, payment failures):
 1. **Pause Sales:** Disable Stripe checkout
@@ -91,4 +141,7 @@ npm run build
 
 # Check types
 npm run type-check
+
+# Run background worker (for local testing)
+npm run worker
 ```

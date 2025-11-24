@@ -1,7 +1,7 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Navigation Component
- * Production-ready ✓
+ * Production-ready
  */
 
 "use client";
@@ -15,14 +15,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 import Link from "next/link";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
-  const t = useTranslations('navigation');
 
   return (
     <nav
@@ -45,27 +42,26 @@ export function Navigation() {
               href="/docs"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {t('docs')}
+              Documentation
             </Link>
             <Link
               href="/about"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {t('about')}
+              About
             </Link>
             <Link
               href="/blog"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {t('blog')}
+              Blog
             </Link>
             <Link
               href="/pricing"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {t('pricing')}
+              Pricing
             </Link>
-            <LocaleSwitcher />
           </div>
 
           {/* Mobile Menu */}
@@ -108,59 +104,55 @@ export function Navigation() {
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    {t('home')}
+                    Home
                   </Link>
                   <Link
                     href="/components"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    {t('components')}
+                    Components
                   </Link>
                   <Link
                     href="/pricing"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    {t('pricing')}
+                    Pricing
                   </Link>
                   <Link
                     href="/blog"
                     onClick={() => setOpen(false)}
                     className="py-1 text-lg font-medium hover:underline"
                   >
-                    {t('blog')}
+                    Blog
                   </Link>
                 </nav>
 
                 <div className="mt-8">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">{t('docs')}</h3>
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Documentation</h3>
                   <nav className="flex flex-col space-y-1">
                     <Link
                       href="/docs"
                       onClick={() => setOpen(false)}
                       className="py-1 text-lg font-medium hover:underline"
                     >
-                      {t('docs')}
+                      Documentation
                     </Link>
                   </nav>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">{t('support')}</h3>
+                  <h3 className="mb-3 text-sm font-medium text-muted-foreground">Support</h3>
                   <nav className="flex flex-col space-y-1">
                     <Link
                       href="/contact"
                       onClick={() => setOpen(false)}
                       className="py-1 text-lg font-medium hover:underline"
                     >
-                      {t('contact')}
+                      Contact
                     </Link>
                   </nav>
-                </div>
-
-                <div className="mt-8 border-t pt-8">
-                  <LocaleSwitcher />
                 </div>
               </SheetContent>
             </Sheet>
