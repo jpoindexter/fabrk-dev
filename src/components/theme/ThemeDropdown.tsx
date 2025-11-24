@@ -48,13 +48,23 @@ export function ThemeDropdown() {
     useEffect(() => {
         setMounted(true);
 
-        // Remove any leftover dark mode class from old theme system
+        // Remove any leftover dark mode class and localStorage from old theme system
         document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove("light");
 
-        // Set DaisyUI theme
+        // Clear old next-themes localStorage keys
+        localStorage.removeItem("theme-mode"); // Old key if it exists
+
+        // Set DaisyUI theme (force light as default if no valid theme)
         const saved = (localStorage.getItem("theme") as ColorTheme) || "light";
         setCurrentTheme(saved);
         document.documentElement.setAttribute("data-theme", saved);
+
+        // Force reload if dark class persists (nuclear option)
+        if (document.documentElement.classList.contains("dark")) {
+            localStorage.clear();
+            window.location.reload();
+        }
     }, []);
 
     const handleChange = (themeId: ColorTheme) => {
