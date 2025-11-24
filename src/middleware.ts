@@ -38,10 +38,14 @@ export default auth((req) => {
     pathname.startsWith('/components') ||
     pathname.startsWith('/variations') ||
     pathname.startsWith('/templates') ||
+    pathname.startsWith('/success') ||
+    pathname.startsWith('/docs') ||
     pathnameWithoutLocale.startsWith('/demo') ||
     pathnameWithoutLocale.startsWith('/components') ||
     pathnameWithoutLocale.startsWith('/variations') ||
-    pathnameWithoutLocale.startsWith('/templates');
+    pathnameWithoutLocale.startsWith('/templates') ||
+    pathnameWithoutLocale.startsWith('/success') ||
+    pathnameWithoutLocale.startsWith('/docs');
 
   if (isShowcasePage) {
     // Generate nonce for CSP
