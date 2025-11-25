@@ -36,44 +36,47 @@ export function Navigation() {
           </Link>
         </motion.div>
 
-        {/* Desktop Navigation Links - Centered */}
-        <div className="hidden flex-1 items-center justify-center gap-8 md:flex">
-          {navLinks.map((link, index) => (
-            <motion.div
-              key={link.href}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-            >
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Desktop Navigation Links + Theme Controls + CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, x: 12 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hidden items-center gap-6 md:flex"
+        >
+          {/* Navigation Links */}
+          <div className="flex items-center gap-6">
+            {navLinks.map((link, index) => (
               <Link
+                key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
               </Link>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Desktop Theme Controls + CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, x: 12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="hidden items-center gap-2 md:flex ml-auto"
-        >
-          <ThemeDropdown />
-          <Button
-            variant="outline"
-            asChild
-          >
-            <Link href="/demo">View Live Demo</Link>
-          </Button>
-          <Button
-            asChild
-          >
-            <Link href="#pricing" className="scroll-smooth">Get Started</Link>
-          </Button>
+          {/* Vertical Separator */}
+          <div className="h-6 w-px bg-border" />
+
+          {/* Theme + CTA Buttons */}
+          <div className="flex items-center gap-2">
+            <ThemeDropdown />
+            <Button
+              variant="outline"
+              asChild
+            >
+              <Link href="/demo">View Live Demo</Link>
+            </Button>
+            <Button
+              asChild
+            >
+              <Link href="#pricing" className="scroll-smooth">Get Started</Link>
+            </Button>
+          </div>
         </motion.div>
 
         {/* Mobile Menu Trigger & CTA */}
