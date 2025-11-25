@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
+import { H4, Small } from "@/components/ui/typography";
 
 export function Footer() {
   return (
@@ -11,21 +12,21 @@ export function Footer() {
             <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
               <Logo size={28} />
             </Link>
-            <p className="text-sm font-normal text-muted-foreground mb-6">
+            <Small className="block mb-6 text-muted-foreground">
               Ship your SaaS in days, not weeks.
-            </p>
-            <p className="text-xs font-normal text-muted-foreground">
+            </Small>
+            <Small className="block text-muted-foreground">
               © 2025 Fabrk. All rights reserved.
-            </p>
+            </Small>
           </div>
 
           {/* Center: Navigation Columns */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 lg:gap-16 flex-grow lg:justify-self-center lg:mx-auto lg:max-w-3xl">
             {/* Column 1: Product */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">
+            <H4 className="mb-4">
               Product
-            </h4>
+            </H4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="#features"
@@ -50,9 +51,9 @@ export function Footer() {
 
           {/* Column 2: Resources */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">
+            <H4 className="mb-4">
               Resources
-            </h4>
+            </H4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="/about"
@@ -79,9 +80,9 @@ export function Footer() {
 
           {/* Column 3: Legal */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">
+            <H4 className="mb-4">
               Legal
-            </h4>
+            </H4>
             <nav className="flex flex-col gap-3">
               <Link
                 href="/terms"
@@ -109,9 +110,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex justify-center">
-            <p className="text-xs font-normal text-muted-foreground">
+            <Small className="text-muted-foreground">
               Made with ❤️ by indie developers
-            </p>
+            </Small>
           </div>
         </div>
       </div>
