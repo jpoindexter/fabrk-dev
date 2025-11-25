@@ -3,6 +3,7 @@
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [
@@ -71,25 +72,27 @@ export function EnterpriseFeaturesSection() {
               Enterprise-Grade Features
             </Badge>
           </motion.div>
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
           >
-            Built for Scale, Security, and Teams
-          </motion.h2>
-          <motion.p
+            <H2 className="mb-4">
+              Built for Scale, Security, and Teams
+            </H2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-2xl text-lg text-muted-foreground"
           >
-            Production-ready enterprise features that would cost $10,000+ to build yourself.
-            All included, fully tested, and ready to deploy.
-          </motion.p>
+            <Body className="mx-auto max-w-2xl text-muted-foreground">
+              Production-ready enterprise features that would cost $10,000+ to build yourself.
+              All included, fully tested, and ready to deploy.
+            </Body>
+          </motion.div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -122,12 +125,12 @@ export function EnterpriseFeaturesSection() {
                     <BarChart className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-foreground">
+                <H3 className="mb-3">
                   {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                </H3>
+                <Small className="block text-muted-foreground">
                   {feature.description}
-                </p>
+                </Small>
               </motion.div>
             );
           })}
@@ -141,12 +144,12 @@ export function EnterpriseFeaturesSection() {
           viewport={{ once: true }}
           className="mt-12 rounded-lg border border-border bg-card shadow-sm p-8 text-center"
         >
-          <p className="text-lg font-semibold text-foreground">
-            <span className="text-primary">$200,000+</span> worth of enterprise features, included out-of-the-box
-          </p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <Body className="font-semibold">
+            <Strong className="text-primary">$200,000+</Strong> worth of enterprise features, included out-of-the-box
+          </Body>
+          <Small className="block mt-2 text-muted-foreground">
             These features would take 6-12 months to build yourself. We've done the hard work so you can focus on your product.
-          </p>
+          </Small>
         </motion.div>
       </div>
     </section>
