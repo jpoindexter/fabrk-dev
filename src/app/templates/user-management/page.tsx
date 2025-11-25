@@ -601,7 +601,7 @@ export default function UserManagementTemplate() {
                   <SelectTrigger className="h-8 w-[70px] font-semibold">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="min-w-[70px]">
                     {[10, 25, 50, 100].map((pageSize) => (
                       <SelectItem key={pageSize} value={`${pageSize}`} className="font-semibold">
                         {pageSize}
