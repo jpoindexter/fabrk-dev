@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { X, Sparkles } from "lucide-react";
 import config from "@/config";
+import { Small } from "@/components/ui/typography";
 
 interface ExitIntentPopupProps {
   /**
@@ -141,9 +142,9 @@ export function ExitIntentPopup({
                   {config.pricing.fabrk.display.original}
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <Small className="block text-muted-foreground">
                 One-time payment. Lifetime access.
-              </p>
+              </Small>
             </div>
           </div>
         )}
@@ -164,9 +165,9 @@ export function ExitIntentPopup({
 
         {/* 30-day guarantee badge */}
         <div className="mt-4 text-center">
-          <p className="text-xs text-muted-foreground">
+          <Small className="text-muted-foreground">
             30-day money-back guarantee • No questions asked
-          </p>
+          </Small>
         </div>
       </DialogContent>
     </Dialog>
