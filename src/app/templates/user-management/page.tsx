@@ -603,7 +603,7 @@ export default function UserManagementTemplate() {
                   </SelectTrigger>
                   <SelectContent>
                     {[10, 25, 50, 100].map((pageSize) => (
-                      <SelectItem key={pageSize} value={`${pageSize}`}>
+                      <SelectItem key={pageSize} value={`${pageSize}`} className="font-semibold">
                         {pageSize}
                       </SelectItem>
                     ))}
