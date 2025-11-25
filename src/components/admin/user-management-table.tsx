@@ -181,13 +181,13 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
           />
         </div>
         <Select value={roleFilter} onValueChange={setRoleFilter}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-[180px] font-semibold">
             <SelectValue placeholder="Filter by role" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Roles</SelectItem>
-            <SelectItem value="USER">Users</SelectItem>
-            <SelectItem value="ADMIN">Admins</SelectItem>
+            <SelectItem value="all" className="font-semibold">All Roles</SelectItem>
+            <SelectItem value="USER" className="font-semibold">Users</SelectItem>
+            <SelectItem value="ADMIN" className="font-semibold">Admins</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -269,6 +269,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                               user.role === "ADMIN" ? "USER" : "ADMIN"
                             )
                           }
+                          className="font-semibold"
                         >
                           <UserCog className="mr-2 h-4 w-4" />
                           {user.role === "ADMIN"
@@ -277,6 +278,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleSuspendUser(user.id)}
+                          className="font-semibold"
                         >
                           <Ban className="mr-2 h-4 w-4" />
                           Suspend User
@@ -287,7 +289,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                             setSelectedUser(user);
                             setDeleteDialogOpen(true);
                           }}
-                          className="text-destructive"
+                          className="text-destructive font-semibold"
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
                           Delete User

@@ -157,7 +157,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           <DropdownMenuItem
             key={org.id}
             onSelect={() => handleSwitchOrg(org.id)}
-            className="cursor-pointer"
+            className="cursor-pointer font-semibold"
           >
             <div className="flex w-full items-center gap-2">
               {org.logo ? (
@@ -184,10 +184,10 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={handleCreateOrg}
-          className="cursor-pointer text-primary"
+          className="cursor-pointer text-primary font-semibold"
         >
           <Plus className="mr-2 h-4 w-4" />
-          <span className="text-sm font-medium">Create Organization</span>
+          <span className="text-sm">Create Organization</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

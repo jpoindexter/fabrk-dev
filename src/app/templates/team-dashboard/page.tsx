@@ -390,7 +390,7 @@ export default function TeamDashboardTemplate() {
                                 {member.role}
                               </Badge>
                             </TableCell>
-                            <TableCell className="text-sm text-muted-foreground">
+                            <TableCell className="text-sm text-muted-foreground text-right">
                               {member.lastActive}
                             </TableCell>
                             <TableCell>

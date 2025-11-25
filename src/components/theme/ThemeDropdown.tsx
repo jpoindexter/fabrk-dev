@@ -15,6 +15,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 
 const themes = [
     { id: "light", name: "Light", preview: "#ffffff" },
@@ -96,7 +97,7 @@ export function ThemeDropdown() {
                     <DropdownMenuItem
                         key={theme.id}
                         onClick={() => handleChange(theme.id)}
-                        className={currentTheme === theme.id ? "bg-accent" : ""}
+                        className={cn("font-semibold", currentTheme === theme.id && "bg-accent")}
                     >
                         <div
                             className="mr-2 h-4 w-4 rounded-full border"
