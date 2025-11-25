@@ -267,6 +267,7 @@ export default function ChangelogPage() {
               Follow on Twitter
             </Link>
           </Button>
+        </div>
       </div>
     </div>
   );
