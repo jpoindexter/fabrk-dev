@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { DemoNav } from "@/components/demo/demo-nav";
 
 export default function LegalLayout({
