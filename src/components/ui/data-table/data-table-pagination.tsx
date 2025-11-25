@@ -75,7 +75,7 @@ function DataTablePaginationInner<TData>(
               table.setPageSize(Number(value));
             }}
           >
-            <SelectTrigger className="h-8 w-16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <SelectTrigger className="w-16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               <SelectValue placeholder={`${table.getState().pagination.pageSize}`} />
             </SelectTrigger>
             <SelectContent>
