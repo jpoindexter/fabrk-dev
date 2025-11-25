@@ -12,6 +12,7 @@ import {
 } from "simple-icons";
 import { Upload, Brain, Flag as FlagIcon, Lock, FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
 
 export function FeaturesSection() {
   const features = [
@@ -92,24 +93,26 @@ export function FeaturesSection() {
   return (
     <section id="features" className="scroll-mt-16 border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-2 text-left text-3xl font-semibold text-foreground"
         >
-          Everything You Need, Nothing You Don't.
-        </motion.h2>
-        <motion.p
+          <H2 className="mb-2 text-left">
+            Everything You Need, Nothing You Don't.
+          </H2>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mb-16 text-left text-lg text-muted-foreground"
         >
-          Production-ready features that save you weeks of development time.
-        </motion.p>
+          <Body className="mb-16 text-left text-muted-foreground">
+            Production-ready features that save you weeks of development time.
+          </Body>
+        </motion.div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => {
@@ -137,12 +140,12 @@ export function FeaturesSection() {
                     <IconComponent className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-foreground">
+                <H3 className="mb-3">
                   {feature.title}
-                </h3>
-                <p className="font-normal leading-relaxed text-muted-foreground">
+                </H3>
+                <Body className="text-muted-foreground">
                   {feature.description}
-                </p>
+                </Body>
               </motion.div>
             );
           })}
@@ -156,12 +159,12 @@ export function FeaturesSection() {
           viewport={{ once: true }}
           className="mt-16 rounded-lg border border-border bg-card shadow-sm p-8"
         >
-          <p className="text-center text-sm">
-            <span className="font-semibold text-foreground">Also Included: </span>
-            <span className="font-normal text-muted-foreground">
+          <Small className="block text-center">
+            <Strong>Also Included: </Strong>
+            <span className="text-muted-foreground">
               User dashboard • Account settings • Rate limiting • Admin capabilities • TypeScript strict mode • Production-ready logging
             </span>
-          </p>
+          </Small>
         </motion.div>
       </div>
     </section>
