@@ -5,22 +5,23 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Logo & Copyright Section */}
-        <div className="mb-12">
-          <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
-            <Logo size={28} />
-          </Link>
-          <p className="text-sm font-normal text-muted-foreground mb-6">
-            Ship your SaaS in days, not weeks.
-          </p>
-          <p className="text-xs font-normal text-muted-foreground">
-            © 2025 Fabrk. All rights reserved.
-          </p>
-        </div>
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
+          {/* Left: Logo & Copyright Section */}
+          <div className="lg:w-64 flex-shrink-0">
+            <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
+              <Logo size={28} />
+            </Link>
+            <p className="text-sm font-normal text-muted-foreground mb-6">
+              Ship your SaaS in days, not weeks.
+            </p>
+            <p className="text-xs font-normal text-muted-foreground">
+              © 2025 Fabrk. All rights reserved.
+            </p>
+          </div>
 
-        {/* Centered Navigation Columns */}
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 max-w-3xl mx-auto">
-          {/* Column 1: Product */}
+          {/* Right: Navigation Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 flex-grow lg:max-w-2xl lg:ml-auto">
+            {/* Column 1: Product */}
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Product
@@ -126,7 +127,7 @@ export function Footer() {
               </Link>
             </nav>
           </div>
-
+        </div>
         </div>
 
         {/* Bottom Bar */}
