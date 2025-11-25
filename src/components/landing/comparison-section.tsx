@@ -2,6 +2,7 @@
 
 import { Check, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { H2, Body, Small, Strong } from "@/components/ui/typography";
 
 export function ComparisonSection() {
   const features = [
@@ -71,24 +72,26 @@ export function ComparisonSection() {
     <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-4 text-3xl font-semibold text-foreground"
           >
-            Why Build From Scratch?
-          </motion.h2>
-          <motion.p
+            <H2 className="mb-4">
+              Why Build From Scratch?
+            </H2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg font-normal text-muted-foreground"
           >
-            See how much time and effort Fabrk saves you
-          </motion.p>
+            <Body className="text-muted-foreground">
+              See how much time and effort Fabrk saves you
+            </Body>
+          </motion.div>
         </div>
 
         <motion.div
@@ -122,11 +125,11 @@ export function ComparisonSection() {
                   viewport={{ once: true }}
                   className="border-b border-border transition-colors hover:bg-muted/50"
                 >
-                  <td className="px-6 py-4 text-sm font-normal text-foreground">
-                    <div className="font-medium">{feature.name}</div>
-                    <div className="mt-1 text-xs font-normal text-muted-foreground">
+                  <td className="px-6 py-4">
+                    <Small className="block font-semibold">{feature.name}</Small>
+                    <Small className="block mt-1 text-muted-foreground">
                       Time: {feature.time}
-                    </div>
+                    </Small>
                   </td>
                   <td className="border-l border-border px-6 py-4 text-center">
                     {feature.manual ? (
@@ -172,10 +175,10 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mt-8 text-center"
         >
-          <p className="text-sm font-normal text-muted-foreground">
+          <Small className="block text-muted-foreground">
             Start building your unique features on day one. Skip the boring
             boilerplate.
-          </p>
+          </Small>
         </motion.div>
       </div>
     </section>
