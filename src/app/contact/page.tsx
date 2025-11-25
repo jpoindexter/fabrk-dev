@@ -7,6 +7,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
 import { Button } from "@/components/ui/button";
@@ -259,50 +260,106 @@ export default function ContactPage() {
 
         {/* FAQ Section */}
         <section className="mt-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-2 text-center text-3xl font-semibold text-foreground"
+          >
             Frequently Asked Questions
-          </h2>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mb-12 text-center text-lg text-muted-foreground"
+          >
+            Everything you need to know
+          </motion.p>
+
           <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full" suppressHydrationWarning>
-              <AccordionItem value="refunds">
-                <AccordionTrigger className="text-lg font-semibold">
-                  Do you offer refunds?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
-                  <Link href="/refund" className="text-primary hover:underline">
-                    Refund Policy
-                  </Link>{" "}
-                  for more details.
-                </AccordionContent>
-              </AccordionItem>
+            <Accordion type="single" collapsible className="w-full space-y-3">
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <AccordionItem
+                  value="refunds"
+                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                >
+                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
+                    Do you offer refunds?
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 font-normal text-muted-foreground">
+                    No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
+                    <Link href="/refund" className="text-primary hover:underline">
+                      Refund Policy
+                    </Link>{" "}
+                    for more details.
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
 
-              <AccordionItem value="support">
-                <AccordionTrigger className="text-lg font-semibold">
-                  Is technical support included?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  Yes, we provide email support for all license holders. Response time is typically within 24 hours.
-                </AccordionContent>
-              </AccordionItem>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.26 }}
+                viewport={{ once: true }}
+              >
+                <AccordionItem
+                  value="support"
+                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                >
+                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
+                    Is technical support included?
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 font-normal text-muted-foreground">
+                    Yes, we provide email support for all license holders. Response time is typically within 24 hours.
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
 
-              <AccordionItem value="client-projects">
-                <AccordionTrigger className="text-lg font-semibold">
-                  Can I use Fabrk for client projects?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  Absolutely! Your license allows you to create unlimited projects for yourself or clients.
-                </AccordionContent>
-              </AccordionItem>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.32 }}
+                viewport={{ once: true }}
+              >
+                <AccordionItem
+                  value="client-projects"
+                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                >
+                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
+                    Can I use Fabrk for client projects?
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 font-normal text-muted-foreground">
+                    Absolutely! Your license allows you to create unlimited projects for yourself or clients.
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
 
-              <AccordionItem value="updates">
-                <AccordionTrigger className="text-lg font-semibold">
-                  Do I get lifetime updates?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  Yes, all future updates and improvements are included at no additional cost.
-                </AccordionContent>
-              </AccordionItem>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.38 }}
+                viewport={{ once: true }}
+              >
+                <AccordionItem
+                  value="updates"
+                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                >
+                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
+                    Do I get lifetime updates?
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 font-normal text-muted-foreground">
+                    Yes, all future updates and improvements are included at no additional cost.
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             </Accordion>
           </div>
         </section>
