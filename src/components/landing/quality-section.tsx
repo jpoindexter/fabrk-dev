@@ -10,6 +10,7 @@ import {
 } from "simple-icons";
 import { CheckCircle2, TestTube2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
 
 export function QualitySection() {
   const qualityMetrics = [
@@ -59,25 +60,27 @@ export function QualitySection() {
               Quality Assurance
             </Badge>
           </motion.span>
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
           >
-            Built to Last, Tested to Ship
-          </motion.h2>
-          <motion.p
+            <H2 className="mb-4">
+              Built to Last, Tested to Ship
+            </H2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-2xl text-lg text-muted-foreground"
           >
-            Every component is battle-tested with comprehensive coverage. No cutting corners,
-            no technical debt. Production-ready from day one.
-          </motion.p>
+            <Body className="mx-auto max-w-2xl text-muted-foreground">
+              Every component is battle-tested with comprehensive coverage. No cutting corners,
+              no technical debt. Production-ready from day one.
+            </Body>
+          </motion.div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -102,13 +105,13 @@ export function QualitySection() {
                   <div className="text-4xl font-bold text-foreground">
                     {item.metric}
                   </div>
-                  <div className="mt-1 text-lg font-semibold text-foreground">
+                  <H3 className="mt-1">
                     {item.label}
-                  </div>
+                  </H3>
                 </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <Small className="block text-muted-foreground">
                   {item.description}
-                </p>
+                </Small>
               </motion.div>
             );
           })}
@@ -127,14 +130,14 @@ export function QualitySection() {
               <CheckCircle2 className="h-8 w-8 text-primary" />
             </div>
             <div>
-              <h3 className="mb-2 text-xl font-semibold text-foreground">
+              <H3 className="mb-2">
                 Quality Guarantee
-              </h3>
-              <p className="text-muted-foreground">
+              </H3>
+              <Body className="text-muted-foreground">
                 Unlike other boilerplates that ship untested code, every Fabrk component is
                 rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
                 You're not inheriting technical debt—you're getting production-grade infrastructure.
-              </p>
+              </Body>
             </div>
           </div>
         </motion.div>
