@@ -67,7 +67,7 @@ export function CoreBenefitsSection() {
             </p>
           </div>
 
-          <div className="mt-12 rounded-lg border border-border bg-background p-6">
+          <div className="mt-12 rounded-lg border border-border bg-card shadow-sm p-6">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <span className="font-mono text-sm text-muted-foreground">Button Component</span>
               <Button size="sm" variant="outline" className="gap-2">
@@ -99,7 +99,7 @@ export function CoreBenefitsSection() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-lg border border-border bg-background">
+          <div className="mt-12 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
             <div className="flex items-center gap-2 border-b border-border bg-muted px-4 py-3">
               <div className="size-3 rounded-full bg-destructive/100" />
               <div className="size-3 rounded-full bg-accent/100" />
@@ -148,7 +148,7 @@ export function CoreBenefitsSection() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            <div className="rounded-lg border border-border bg-background p-6">
+            <div className="rounded-lg border border-border bg-card shadow-sm p-6">
               <div className="text-4xl font-semibold text-foreground">169</div>
               <div className="mt-2 text-sm font-medium text-foreground">Components</div>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -156,13 +156,13 @@ export function CoreBenefitsSection() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-border bg-background p-6">
+            <div className="rounded-lg border border-border bg-card shadow-sm p-6">
               <div className="text-4xl font-semibold text-foreground">85%</div>
               <div className="mt-2 text-sm font-medium text-foreground">Test Coverage</div>
               <p className="mt-2 text-sm text-muted-foreground">130+ tests. Production-ready.</p>
             </div>
 
-            <div className="rounded-lg border border-border bg-background p-6">
+            <div className="rounded-lg border border-border bg-card shadow-sm p-6">
               <div className="text-4xl font-semibold text-foreground">100%</div>
               <div className="mt-2 text-sm font-medium text-foreground">Type-Safe</div>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -170,7 +170,7 @@ export function CoreBenefitsSection() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-border bg-background p-6">
+            <div className="rounded-lg border border-border bg-card shadow-sm p-6">
               <div className="text-4xl font-semibold text-foreground">WCAG</div>
               <div className="mt-2 text-sm font-medium text-foreground">2.1 AA</div>
               <p className="mt-2 text-sm text-muted-foreground">
