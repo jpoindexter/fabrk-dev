@@ -218,7 +218,7 @@ export default function AdminSecurityPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={getSeverityColor(log.severity)}>
+                        <Badge variant={getSeverityColor(log.severity)} className="w-24 justify-center font-semibold">
                           {log.severity}
                         </Badge>
                       </TableCell>

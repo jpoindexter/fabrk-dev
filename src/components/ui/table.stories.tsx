@@ -133,28 +133,28 @@ export const WithBadges: Story = {
         <TableRow>
           <TableCell>Fix authentication bug</TableCell>
           <TableCell>
-            <Badge>In Progress</Badge>
+            <Badge className="w-24 justify-center font-semibold">In Progress</Badge>
           </TableCell>
           <TableCell>
-            <Badge variant="accent">High</Badge>
+            <Badge variant="accent" className="w-24 justify-center font-semibold">High</Badge>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Update documentation</TableCell>
           <TableCell>
-            <Badge variant="secondary">Pending</Badge>
+            <Badge variant="secondary" className="w-24 justify-center font-semibold">Pending</Badge>
           </TableCell>
           <TableCell>
-            <Badge variant="outline">Low</Badge>
+            <Badge variant="outline" className="w-24 justify-center font-semibold">Low</Badge>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>Deploy to production</TableCell>
           <TableCell>
-            <Badge>Done</Badge>
+            <Badge className="w-24 justify-center font-semibold">Done</Badge>
           </TableCell>
           <TableCell>
-            <Badge variant="accent">High</Badge>
+            <Badge variant="accent" className="w-24 justify-center font-semibold">High</Badge>
           </TableCell>
         </TableRow>
       </TableBody>
@@ -182,7 +182,7 @@ export const UserTable: Story = {
           <TableCell>john@example.com</TableCell>
           <TableCell>Admin</TableCell>
           <TableCell>
-            <Badge>Active</Badge>
+            <Badge className="w-24 justify-center font-semibold">Active</Badge>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -191,7 +191,7 @@ export const UserTable: Story = {
           <TableCell>jane@example.com</TableCell>
           <TableCell>Editor</TableCell>
           <TableCell>
-            <Badge>Active</Badge>
+            <Badge className="w-24 justify-center font-semibold">Active</Badge>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -200,7 +200,7 @@ export const UserTable: Story = {
           <TableCell>bob@example.com</TableCell>
           <TableCell>Viewer</TableCell>
           <TableCell>
-            <Badge variant="secondary">Inactive</Badge>
+            <Badge variant="secondary" className="w-24 justify-center font-semibold">Inactive</Badge>
           </TableCell>
         </TableRow>
       </TableBody>

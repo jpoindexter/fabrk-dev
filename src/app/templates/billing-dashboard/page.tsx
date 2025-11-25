@@ -194,11 +194,11 @@ export default function BillingDashboardTemplate() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "succeeded":
-        return <Badge variant="default">Paid</Badge>;
+        return <Badge variant="default" className="w-24 justify-center font-semibold">Paid</Badge>;
       case "failed":
-        return <Badge variant="accent">Failed</Badge>;
+        return <Badge variant="accent" className="w-24 justify-center font-semibold">Failed</Badge>;
       default:
-        return <Badge variant="secondary">Pending</Badge>;
+        return <Badge variant="secondary" className="w-24 justify-center font-semibold">Pending</Badge>;
     }
   };
 

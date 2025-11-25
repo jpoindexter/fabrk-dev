@@ -5,9 +5,6 @@ import { useRouter } from 'next/navigation';
 import { Command } from 'cmdk';
 import {
   FileText,
-  LayoutDashboard,
-  Settings,
-  CreditCard,
   Code,
   Blocks,
   Home,
@@ -59,24 +56,6 @@ export function CommandPalette() {
       icon: Home,
       label: 'Home',
       url: '/',
-      category: 'Navigation',
-    },
-    {
-      icon: LayoutDashboard,
-      label: 'Dashboard',
-      url: '/dashboard',
-      category: 'Navigation',
-    },
-    {
-      icon: Settings,
-      label: 'Settings',
-      url: '/settings',
-      category: 'Navigation',
-    },
-    {
-      icon: CreditCard,
-      label: 'Billing',
-      url: '/billing/payment-methods',
       category: 'Navigation',
     },
     {

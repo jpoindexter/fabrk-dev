@@ -384,7 +384,7 @@ export default function TeamDashboardTemplate() {
                             <TableCell>
                               <Badge
                                 variant={roleColors[member.role]}
-                                className="gap-1 font-semibold capitalize"
+                                className="gap-1 font-semibold capitalize w-24 justify-center"
                               >
                                 <RoleIcon className="h-3 w-3" />
                                 {member.role}
@@ -511,14 +511,14 @@ export default function TeamDashboardTemplate() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="font-semibold capitalize">
+                      <Badge variant="outline" className="font-semibold capitalize w-24 justify-center">
                         {invitation.role}
                       </Badge>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => handleRevokeInvitation(invitation.id)}
-                        className="font-semibold"
+                        className="font-semibold w-24"
                       >
                         Revoke
                       </Button>

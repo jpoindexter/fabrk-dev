@@ -274,7 +274,7 @@ export default function AnalyticsDashboardTemplate() {
                         <TableCell>{row.views}</TableCell>
                         <TableCell>{row.bounce}</TableCell>
                         <TableCell>
-                          <Badge variant="secondary">{row.conversion}</Badge>
+                          <Badge variant="secondary" className="w-24 justify-center font-semibold">{row.conversion}</Badge>
                         </TableCell>
                       </TableRow>
                     ))}

@@ -176,15 +176,15 @@ export default function OrganizationBillingPage() {
   const getInvoiceStatusBadge = (status: string) => {
     switch (status) {
       case "paid":
-        return <Badge variant="default">Paid</Badge>;
+        return <Badge variant="default" className="w-24 justify-center font-semibold">Paid</Badge>;
       case "open":
-        return <Badge variant="secondary">Open</Badge>;
+        return <Badge variant="secondary" className="w-24 justify-center font-semibold">Open</Badge>;
       case "void":
-        return <Badge variant="outline">Void</Badge>;
+        return <Badge variant="outline" className="w-24 justify-center font-semibold">Void</Badge>;
       case "uncollectible":
-        return <Badge variant="accent">Uncollectible</Badge>;
+        return <Badge variant="accent" className="w-24 justify-center font-semibold">Uncollectible</Badge>;
       default:
-        return <Badge>{status}</Badge>;
+        return <Badge className="w-24 justify-center font-semibold">{status}</Badge>;
     }
   };
 

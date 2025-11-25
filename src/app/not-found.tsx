@@ -35,15 +35,6 @@ export default function NotFound() {
               Back to Home
             </Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 border px-8"
-          >
-            <Link href="/dashboard">
-              Go to Dashboard
-            </Link>
-          </Button>
         </div>
 
         {/* Helpful Links */}
@@ -60,12 +51,6 @@ export default function NotFound() {
             </Link>
             <Link href="/#faq" className="text-primary hover:underline">
               FAQ
-            </Link>
-            <Link href="/login" className="text-primary hover:underline">
-              Login
-            </Link>
-            <Link href="/register" className="text-primary hover:underline">
-              Sign Up
             </Link>
           </div>
         </div>

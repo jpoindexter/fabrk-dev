@@ -628,7 +628,7 @@ export default function SecurityPrivacyTemplate() {
                               variant={
                                 log.status === "success" ? "default" : "outline"
                               }
-                              className="font-semibold capitalize"
+                              className="font-semibold capitalize w-24 justify-center"
                             >
                               {log.status}
                             </Badge>

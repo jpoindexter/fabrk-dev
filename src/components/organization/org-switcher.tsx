@@ -8,7 +8,6 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { Check, ChevronsUpDown, Plus, Building2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,6 @@ interface OrgSwitcherProps {
 
 export function OrgSwitcher({ className }: OrgSwitcherProps) {
   const router = useRouter();
-  const { data: session } = useSession();
   const [organizations, setOrganizations] = React.useState<Organization[]>([]);
   const [currentOrg, setCurrentOrg] = React.useState<Organization | null>(null);
   const [loading, setLoading] = React.useState(true);

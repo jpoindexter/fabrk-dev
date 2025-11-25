@@ -389,7 +389,7 @@ export default function OrganizationMembersPage() {
                     <TableCell>
                       <Badge
                         variant={getRoleBadgeVariant(member.role)}
-                        className="gap-1"
+                        className="gap-1 w-24 justify-center"
                       >
                         {getRoleIcon(member.role)}
                         {member.role}

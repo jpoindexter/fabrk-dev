@@ -9,7 +9,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
 import {
   Home,
   Settings,
@@ -40,8 +39,15 @@ import { NotificationCenter } from "@/components/notifications/notification-cent
 
 export function DashboardHeader() {
   const pathname = usePathname();
-  const { data: session } = useSession();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  // Mock user data for showcase (no authentication required)
+  const mockUser = {
+    name: "Demo User",
+    email: "demo@fabrk.dev",
+    image: null,
+    role: "USER",
+  };
 
   const navigationItems = [
     { href: "/dashboard", label: "Dashboard", icon: Home },
@@ -50,15 +56,13 @@ export function DashboardHeader() {
     { href: "/developer/api-keys", label: "API Keys", icon: Code },
   ];
 
-  const userInitials = session?.user?.name
-    ? session.user.name
-        .split(" ")
-        .map((n) => n[0])
-        .join("")
-        .toUpperCase()
-    : "U";
+  const userInitials = mockUser.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
 
-  const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
+  const isAdmin = false; // No admin for showcase
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 border-brutal bg-background shadow-brutal">
@@ -120,7 +124,7 @@ export function DashboardHeader() {
                 aria-label="User menu"
               >
                 <Avatar className="h-10 w-10 border-2 border-brutal">
-                  <AvatarImage src={session?.user?.image || ""} alt={session?.user?.name || "User"} />
+                  <AvatarImage src={mockUser.image || ""} alt={mockUser.name} />
                   <AvatarFallback className="bg-primary text-primary-foreground font-bold">
                     {userInitials}
                   </AvatarFallback>
@@ -134,10 +138,10 @@ export function DashboardHeader() {
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">
-                    {session?.user?.name}
+                    {mockUser.name}
                   </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {session?.user?.email}
+                    {mockUser.email}
                   </p>
                 </div>
               </DropdownMenuLabel>
@@ -172,12 +176,11 @@ export function DashboardHeader() {
                 </>
               )}
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onSelect={() => signOut({ callbackUrl: "/" })}
-                className="cursor-pointer text-destructive focus:text-destructive"
-              >
-                <LogOut className="mr-2 h-4 w-4" />
-                Sign Out
+              <DropdownMenuItem asChild>
+                <Link href="/" className="cursor-pointer text-muted-foreground">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Back to Home
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

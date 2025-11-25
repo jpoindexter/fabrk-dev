@@ -227,21 +227,22 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                   <TableCell>
                     <Badge
                       variant={user.role === "ADMIN" ? "default" : "secondary"}
+                      className="w-24 justify-center font-semibold"
                     >
                       {user.role}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline">{user.tier || "FREE"}</Badge>
+                    <Badge variant="outline" className="w-24 justify-center font-semibold">{user.tier || "FREE"}</Badge>
                   </TableCell>
                   <TableCell>{user._count.sessions}</TableCell>
                   <TableCell>
                     {user.emailVerified ? (
-                      <Badge variant="default" className="bg-success">
+                      <Badge variant="default" className="bg-success w-24 justify-center font-semibold">
                         Yes
                       </Badge>
                     ) : (
-                      <Badge variant="accent">No</Badge>
+                      <Badge variant="accent" className="w-24 justify-center font-semibold">No</Badge>
                     )}
                   </TableCell>
                   <TableCell className="text-muted-foreground">

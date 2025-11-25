@@ -252,7 +252,7 @@ const columns: ColumnDef<User>[] = [
         suspended: "outline",
       };
       return (
-        <Badge variant={variants[status]} className="font-semibold capitalize">
+        <Badge variant={variants[status]} className="font-semibold capitalize w-24 justify-center">
           {status}
         </Badge>
       );

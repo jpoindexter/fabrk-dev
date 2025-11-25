@@ -96,7 +96,7 @@ async function AuditLogTable() {
               <TableCell>
                 <div className="flex items-center gap-2">
                   {getActionIcon(log.action)}
-                  <Badge variant={getActionBadgeVariant(log.action)}>
+                  <Badge variant={getActionBadgeVariant(log.action)} className="w-24 justify-center font-semibold">
                     {log.action.replace(/\./g, ' ').toUpperCase()}
                   </Badge>
                 </div>
