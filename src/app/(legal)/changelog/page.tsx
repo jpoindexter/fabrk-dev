@@ -200,22 +200,9 @@ const getVersionBadgeVariant = (type: string) => {
 
 export default function ChangelogPage() {
   return (
-    <>
-      {/* Header */}
-      <div className="border-b border-border bg-card">
-        <div className="mx-auto max-w-4xl px-6 py-16">
-          <h1 className="mb-4 text-5xl font-bold tracking-tight">Changelog</h1>
-          <p className="text-xl text-muted-foreground">
-            Track all updates, new features, and improvements to Fabrk. We believe in
-            transparency and keeping our community informed.
-          </p>
-        </div>
-      </div>
-
+    <div className="space-y-12">
       {/* Changelog Entries */}
-      <div className="mx-auto max-w-4xl px-6 py-16">
-        <div className="space-y-12">
-          {changelog.map((entry) => (
+      {changelog.map((entry) => (
             <Card key={entry.version} className="overflow-hidden">
               <CardHeader className="border-b border-border bg-muted/30">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -263,27 +250,24 @@ export default function ChangelogPage() {
                 </ul>
               </CardContent>
             </Card>
-          ))}
-        </div>
+        ))}
 
         {/* Footer CTA */}
-        <div className="mt-16 rounded-lg border-2 border-border bg-card p-8 text-center">
-          <h2 className="mb-3 text-2xl font-bold">Stay Updated</h2>
-          <p className="mb-6 text-muted-foreground">
-            We ship updates regularly. Follow our development or get started today.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg">
-              <Link href="/#pricing">Get Started</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="https://twitter.com/fabrk" target="_blank" rel="noopener">
-                Follow on Twitter
-              </Link>
-            </Button>
-          </div>
-        </div>
+      <div className="mt-16 rounded-lg border-2 border-border bg-card p-8 text-center">
+        <h2 className="mb-3 text-2xl font-bold">Stay Updated</h2>
+        <p className="mb-6 text-muted-foreground">
+          We ship updates regularly. Follow our development or get started today.
+        </p>
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link href="/#pricing">Get Started</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link href="https://twitter.com/fabrk" target="_blank" rel="noopener">
+              Follow on Twitter
+            </Link>
+          </Button>
       </div>
-    </>
+    </div>
   );
 }
