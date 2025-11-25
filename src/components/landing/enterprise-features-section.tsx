@@ -139,7 +139,7 @@ export function EnterpriseFeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-border bg-background p-8 text-center"
+          className="mt-12 rounded-lg border border-border bg-card shadow-sm p-8 text-center"
         >
           <p className="text-lg font-semibold text-foreground">
             <span className="text-primary">$200,000+</span> worth of enterprise features, included out-of-the-box
