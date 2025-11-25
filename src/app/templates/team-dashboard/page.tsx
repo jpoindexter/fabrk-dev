@@ -317,10 +317,10 @@ export default function TeamDashboardTemplate() {
                     placeholder="email@example.com"
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
-                    className="flex-1 h-10 font-semibold"
+                    className="flex-1 h-8 font-semibold"
                   />
                   <Select value={inviteRole} onValueChange={setInviteRole}>
-                    <SelectTrigger className="w-32 h-10 font-semibold">
+                    <SelectTrigger className="w-32 h-8 font-semibold">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -329,7 +329,7 @@ export default function TeamDashboardTemplate() {
                       <SelectItem value="guest" className="font-semibold">Guest</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button onClick={handleInvite} className="h-10 font-semibold">
+                  <Button onClick={handleInvite} className="font-semibold">
                     <Send className="mr-2 h-4 w-4" />
                     Invite
                   </Button>
