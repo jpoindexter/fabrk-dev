@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import config from "@/config";
+import { Small } from "@/components/ui/typography";
 
 interface StickyCTABarProps {
   /**
@@ -86,17 +87,17 @@ export function StickyCTABar({
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <p className="text-center text-sm font-medium text-foreground sm:text-left">
+              <Small className="text-center font-medium sm:text-left">
                 {message}
-              </p>
+              </Small>
               {showPrice && (
                 <div className="flex items-center gap-2">
                   <Badge variant="default" size="sm">
                     {config.pricing.fabrk.display.current}
                   </Badge>
-                  <span className="text-xs text-muted-foreground line-through">
+                  <Small className="text-muted-foreground line-through">
                     {config.pricing.fabrk.display.original}
-                  </span>
+                  </Small>
                 </div>
               )}
             </div>
