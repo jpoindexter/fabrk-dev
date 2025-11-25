@@ -5,21 +5,22 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          {/* Column 1: Logo & Copyright */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
-              <Logo size={28} />
-            </Link>
-            <p className="text-sm font-normal text-muted-foreground mb-6">
-              Ship your SaaS in days, not weeks.
-            </p>
-            <p className="text-xs font-normal text-muted-foreground">
-              © 2025 Fabrk. All rights reserved.
-            </p>
-          </div>
+        {/* Logo & Copyright Section */}
+        <div className="mb-12">
+          <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
+            <Logo size={28} />
+          </Link>
+          <p className="text-sm font-normal text-muted-foreground mb-6">
+            Ship your SaaS in days, not weeks.
+          </p>
+          <p className="text-xs font-normal text-muted-foreground">
+            © 2025 Fabrk. All rights reserved.
+          </p>
+        </div>
 
-          {/* Column 2: Product */}
+        {/* Centered Navigation Columns */}
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 max-w-3xl mx-auto">
+          {/* Column 1: Product */}
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Product
@@ -52,7 +53,7 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Column 3: Resources */}
+          {/* Column 2: Resources */}
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Resources
@@ -99,7 +100,7 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Column 4: Legal */}
+          {/* Column 3: Legal */}
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Legal
