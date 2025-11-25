@@ -28,6 +28,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Mail, MapPin, MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
@@ -256,34 +262,48 @@ export default function ContactPage() {
           <h2 className="text-3xl font-bold mb-8 text-center">
             Frequently Asked Questions
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                q: "Do you offer refunds?",
-                a: "Yes! We offer a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.",
-              },
-              {
-                q: "Is technical support included?",
-                a: "Yes, we provide email support for all license holders. Response time is typically within 24 hours.",
-              },
-              {
-                q: "Can I use Fabrk for client projects?",
-                a: "Absolutely! Your license allows you to create unlimited projects for yourself or clients.",
-              },
-              {
-                q: "Do I get lifetime updates?",
-                a: "Yes, all future updates and improvements are included at no additional cost.",
-              },
-            ].map((faq, i) => (
-              <Card key={i}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{faq.q}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{faq.a}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full" suppressHydrationWarning>
+              <AccordionItem value="refunds">
+                <AccordionTrigger className="text-lg font-semibold">
+                  Do you offer refunds?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
+                  <Link href="/refund" className="text-primary hover:underline">
+                    Refund Policy
+                  </Link>{" "}
+                  for more details.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="support">
+                <AccordionTrigger className="text-lg font-semibold">
+                  Is technical support included?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Yes, we provide email support for all license holders. Response time is typically within 24 hours.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="client-projects">
+                <AccordionTrigger className="text-lg font-semibold">
+                  Can I use Fabrk for client projects?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Absolutely! Your license allows you to create unlimited projects for yourself or clients.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="updates">
+                <AccordionTrigger className="text-lg font-semibold">
+                  Do I get lifetime updates?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Yes, all future updates and improvements are included at no additional cost.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </section>
       </main>
