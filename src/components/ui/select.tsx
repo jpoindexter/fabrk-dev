@@ -56,6 +56,48 @@ SelectTrigger.displayName = "SelectTrigger";
 
 export type SelectContentProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>;
 
+/**
+ * SelectContent displays the dropdown options for a Select component.
+ *
+ * **ALIGNMENT BEHAVIOR:**
+ * Select components align automatically to match the trigger width and position.
+ * Unlike DropdownMenu, you should NOT specify an `align` prop on SelectContent.
+ * The component automatically handles positioning to prevent overflow.
+ *
+ * **USAGE:**
+ * - Form inputs: Default positioning (automatic alignment)
+ * - Pagination: Use compact width like `w-[70px]` on SelectTrigger
+ * - Filters: Standard width, let content match trigger
+ *
+ * @param {string} position - Portal positioning strategy (default: "popper")
+ *   - "popper" - Dynamic positioning with collision detection
+ *   - "item-aligned" - Aligns selected item with trigger
+ *
+ * @example
+ * // Standard form select
+ * <Select>
+ *   <SelectTrigger>
+ *     <SelectValue placeholder="Select role" />
+ *   </SelectTrigger>
+ *   <SelectContent>
+ *     <SelectItem value="admin">Admin</SelectItem>
+ *     <SelectItem value="member">Member</SelectItem>
+ *   </SelectContent>
+ * </Select>
+ *
+ * @example
+ * // Compact pagination select
+ * <Select>
+ *   <SelectTrigger className="h-8 w-[70px] font-semibold">
+ *     <SelectValue />
+ *   </SelectTrigger>
+ *   <SelectContent>
+ *     <SelectItem value="10" className="font-semibold">10</SelectItem>
+ *     <SelectItem value="20" className="font-semibold">20</SelectItem>
+ *     <SelectItem value="50" className="font-semibold">50</SelectItem>
+ *   </SelectContent>
+ * </Select>
+ */
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
@@ -90,6 +132,37 @@ SelectContent.displayName = "SelectContent";
 
 export type SelectItemProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>;
 
+/**
+ * SelectItem represents an option within a Select dropdown.
+ *
+ * **FONT WEIGHT PATTERNS:**
+ * - Default: Use default font weight (no className needed)
+ * - Emphasized contexts: Add `font-semibold` for data-heavy interfaces
+ *   - Pagination selects (rows per page)
+ *   - Admin panels and filters
+ *   - Dashboard controls
+ *
+ * **STYLING:**
+ * - Automatically displays checkmark icon when selected
+ * - Supports disabled state via `disabled` prop
+ * - Truncates long text automatically
+ *
+ * @example
+ * // Standard form select item
+ * <SelectItem value="option1">Option 1</SelectItem>
+ *
+ * @example
+ * // Emphasized select item (pagination, admin panels)
+ * <SelectItem value="10" className="font-semibold">
+ *   10 rows
+ * </SelectItem>
+ *
+ * @example
+ * // Disabled option
+ * <SelectItem value="disabled" disabled>
+ *   Unavailable Option
+ * </SelectItem>
+ */
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>

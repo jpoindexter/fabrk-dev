@@ -50,6 +50,47 @@ const DropdownMenuSubContent = React.forwardRef<
 DropdownMenuSubContent.displayName =
   DropdownMenuPrimitive.SubContent.displayName;
 
+/**
+ * DropdownMenuContent displays actions in a dropdown menu.
+ *
+ * **ALIGNMENT GUIDE:**
+ * The `align` prop controls horizontal alignment relative to the trigger button.
+ * Choose alignment based on trigger position to prevent content overflow at screen edges.
+ *
+ * @param {string} align - Controls horizontal alignment relative to trigger
+ *   - `"end"` - Right-aligned (for right-side triggers: table actions, navbar menus, card actions)
+ *   - `"start"` - Left-aligned (for left-side triggers: sidebar menus, left-positioned actions)
+ *   - `"center"` - Centered (rare, only for centered triggers)
+ *   - Default (omit) - Auto-aligned based on available space
+ *
+ * @param {number} sideOffset - Space between trigger and content (default: 4px)
+ *
+ * @example
+ * // Table action menu (right-aligned to prevent overflow)
+ * <DropdownMenuContent align="end" className="w-48">
+ *   <DropdownMenuLabel>Actions</DropdownMenuLabel>
+ *   <DropdownMenuSeparator />
+ *   <DropdownMenuItem className="font-semibold">
+ *     <UserCog className="mr-2 h-4 w-4" />
+ *     Edit User
+ *   </DropdownMenuItem>
+ *   <DropdownMenuItem className="text-destructive font-semibold">
+ *     <Trash2 className="mr-2 h-4 w-4" />
+ *     Delete
+ *   </DropdownMenuItem>
+ * </DropdownMenuContent>
+ *
+ * @example
+ * // Sidebar menu (left-aligned)
+ * <DropdownMenuContent align="start" className="w-56">
+ *   <DropdownMenuItem className="font-semibold">
+ *     <Settings className="mr-2 h-4 w-4" />
+ *     Settings
+ *   </DropdownMenuItem>
+ * </DropdownMenuContent>
+ *
+ * @see {@link /docs/DROPDOWN-ALIGNMENT-GUIDE.md} for comprehensive alignment guide
+ */
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
@@ -69,6 +110,40 @@ const DropdownMenuContent = React.forwardRef<
 ));
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
+/**
+ * DropdownMenuItem represents an actionable item within a dropdown menu.
+ *
+ * **ICON & SPACING STANDARDS:**
+ * - Icons: Use `h-4 w-4` (16px) size
+ * - Spacing: Add `mr-2` (8px gap) between icon and text
+ * - Font weight: Add `font-semibold` for emphasized menu items
+ * - Destructive actions: Use `text-destructive` className
+ *
+ * @param {boolean} inset - Adds left padding for alignment with items that have indicators
+ *
+ * @example
+ * // Standard menu item with icon
+ * <DropdownMenuItem className="font-semibold">
+ *   <Settings className="mr-2 h-4 w-4" />
+ *   Settings
+ * </DropdownMenuItem>
+ *
+ * @example
+ * // Destructive action (delete, remove, etc.)
+ * <DropdownMenuItem className="text-destructive font-semibold">
+ *   <Trash2 className="mr-2 h-4 w-4" />
+ *   Delete Item
+ * </DropdownMenuItem>
+ *
+ * @example
+ * // With long text (uses truncation)
+ * <DropdownMenuItem className="font-semibold">
+ *   <FileText className="mr-2 h-4 w-4" />
+ *   <span className="flex-1 truncate">
+ *     Very long menu item text that will be truncated
+ *   </span>
+ * </DropdownMenuItem>
+ */
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
