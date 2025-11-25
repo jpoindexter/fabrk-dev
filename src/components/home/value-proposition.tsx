@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
 import Link from "next/link";
 
 const COMPARISON_ITEMS = [
@@ -143,12 +144,10 @@ export function ValueProposition() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              The Real Cost of DIY
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            <H2 className="mb-4">The Real Cost of DIY</H2>
+            <Body className="mx-auto max-w-2xl">
               Build it yourself or use Fabrk? Here's the financial breakdown.
-            </p>
+            </Body>
           </div>
 
           {/* Feature Comparison Table */}
@@ -173,14 +172,14 @@ export function ValueProposition() {
                     className="hover:bg-muted/30"
                   >
                     <td className="px-6 py-4">
-                      <p className="font-medium text-foreground">{item.feature}</p>
-                      <p className="text-xs text-muted-foreground">{item.description}</p>
+                      <Strong className="block">{item.feature}</Strong>
+                      <Small className="text-muted-foreground">{item.description}</Small>
                     </td>
-                    <td className="px-6 py-4 text-center text-sm text-foreground">
-                      {item.diy.time}
+                    <td className="px-6 py-4 text-center">
+                      <Small className="text-foreground">{item.diy.time}</Small>
                     </td>
-                    <td className="px-6 py-4 text-center text-sm text-foreground">
-                      {item.diy.cost}
+                    <td className="px-6 py-4 text-center">
+                      <Small className="text-foreground">{item.diy.cost}</Small>
                     </td>
                     <td className="px-6 py-4 text-center">
                       <Check className="mx-auto size-5 text-success" />
@@ -202,27 +201,27 @@ export function ValueProposition() {
             <div className="grid gap-8 md:grid-cols-3">
               <div>
                 <div className="text-4xl font-bold text-primary">{Math.round(totalDIYTime)} days</div>
-                <p className="mt-2 text-sm text-muted-foreground">Total dev time for DIY</p>
-                <p className="mt-1 text-xs text-muted-foreground">That's 2 months of development</p>
+                <Small className="block mt-2 text-muted-foreground">Total dev time for DIY</Small>
+                <Small className="block mt-1 text-muted-foreground">That's 2 months of development</Small>
               </div>
               <div>
                 <div className="text-4xl font-bold text-primary">
                   ${Math.round(totalDIYCost / 1000)}K
                 </div>
-                <p className="mt-2 text-sm text-muted-foreground">Total cost for DIY</p>
-                <p className="mt-1 text-xs text-muted-foreground">At $50-75/hr developer salary</p>
+                <Small className="block mt-2 text-muted-foreground">Total cost for DIY</Small>
+                <Small className="block mt-1 text-muted-foreground">At $50-75/hr developer salary</Small>
               </div>
               <div>
                 <div className="text-4xl font-bold text-primary">{Math.round(roi)}x ROI</div>
-                <p className="mt-2 text-sm text-muted-foreground">Return on $199 investment</p>
-                <p className="mt-1 text-xs text-muted-foreground">Pays for itself in first week</p>
+                <Small className="block mt-2 text-muted-foreground">Return on $199 investment</Small>
+                <Small className="block mt-1 text-muted-foreground">Pays for itself in first week</Small>
               </div>
             </div>
           </motion.div>
 
           {/* Timeline Comparison */}
           <div>
-            <h3 className="mb-6 text-2xl font-bold">Timeline Comparison</h3>
+            <H3 className="mb-6">Timeline Comparison</H3>
             <div className="grid gap-6 md:grid-cols-2">
               {TIMELINE_COMPARISON.map((approach, idx) => (
                 <motion.div
@@ -234,7 +233,7 @@ export function ValueProposition() {
                   className="rounded-lg border border-border bg-card p-6"
                 >
                   <div className="mb-4 flex items-baseline justify-between">
-                    <h4 className="text-lg font-semibold">{approach.label}</h4>
+                    <H4>{approach.label}</H4>
                     <span className="text-3xl font-bold text-primary">
                       {approach.weeks} {approach.weeks === 1 ? "week" : "weeks"}
                     </span>
@@ -253,9 +252,9 @@ export function ValueProposition() {
 
                   <ul className="space-y-2">
                     {approach.breakdown.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <li key={i} className="flex items-start gap-2">
                         <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                        {item}
+                        <Small className="text-muted-foreground">{item}</Small>
                       </li>
                     ))}
                   </ul>
@@ -272,42 +271,42 @@ export function ValueProposition() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="rounded-lg border border-border bg-card p-8 shadow-sm"
           >
-            <h3 className="mb-4 text-xl font-semibold">Key Takeaways</h3>
+            <H3 className="mb-4">Key Takeaways</H3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <p className="font-semibold text-foreground">Ship 6 weeks faster</p>
-                  <p className="text-sm text-muted-foreground">
+                  <Strong className="block">Ship 6 weeks faster</Strong>
+                  <Small className="block text-muted-foreground">
                     Get to market faster, validate product-market fit sooner
-                  </p>
+                  </Small>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <p className="font-semibold text-foreground">Save $30K+ in dev costs</p>
-                  <p className="text-sm text-muted-foreground">
+                  <Strong className="block">Save $30K+ in dev costs</Strong>
+                  <Small className="block text-muted-foreground">
                     $300 investment replaces months of expensive engineering
-                  </p>
+                  </Small>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <p className="font-semibold text-foreground">Production-ready from day 1</p>
-                  <p className="text-sm text-muted-foreground">
+                  <Strong className="block">Production-ready from day 1</Strong>
+                  <Small className="block text-muted-foreground">
                     931+ tests, documentation, and security best practices included
-                  </p>
+                  </Small>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <p className="font-semibold text-foreground">Focus on your differentiation</p>
-                  <p className="text-sm text-muted-foreground">
+                  <Strong className="block">Focus on your differentiation</Strong>
+                  <Small className="block text-muted-foreground">
                     Use your dev time to build unique features, not boilerplate
-                  </p>
+                  </Small>
                 </div>
               </div>
             </div>
@@ -322,10 +321,10 @@ export function ValueProposition() {
             className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center shadow-sm sm:flex-row"
           >
             <div>
-              <p className="text-lg font-semibold text-foreground">Ready to ship faster?</p>
-              <p className="text-sm text-muted-foreground">
+              <Body className="font-semibold">Ready to ship faster?</Body>
+              <Small className="block text-muted-foreground">
                 Get Fabrk and save 6 weeks + $30K in dev costs
-              </p>
+              </Small>
             </div>
             <Button asChild size="lg">
               <Link href="/pricing">Get Started - $199</Link>
