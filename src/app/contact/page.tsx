@@ -7,6 +7,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Navigation } from "@/components/landing/navigation";
+import { Footer } from "@/components/landing/footer";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -60,20 +62,9 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b-3 border-border bg-card">
-        <div className="container mx-auto max-w-7xl px-6 py-8">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
-            <p className="text-muted-foreground text-lg">
-              Have questions? We're here to help. Send us a message and we'll respond
-              within 24 hours.
-            </p>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
-      <main className="container mx-auto max-w-7xl px-6 py-12">
+      <main className="container mx-auto max-w-7xl px-6 py-16">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form */}
           <div className="lg:col-span-2">
@@ -330,6 +321,8 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
