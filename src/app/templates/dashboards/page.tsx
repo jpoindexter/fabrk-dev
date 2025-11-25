@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DemoNav } from "@/components/demo/demo-nav";
-import { Copy, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function DashboardsPage() {
@@ -56,21 +56,12 @@ export default function DashboardsPage() {
                     ))}
                   </div>
 
-                  <div className="flex gap-2 pt-2">
-                    <Button asChild className="flex-1">
+                  <div className="pt-2">
+                    <Button asChild className="w-full">
                       <Link href={template.href}>
                         <ExternalLink className="mr-2 h-4 w-4" />
                         View Template
                       </Link>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={() => {
-                        toast.success("Template code copied to clipboard!");
-                      }}
-                    >
-                      <Copy className="h-4 w-4" />
                     </Button>
                   </div>
                 </CardContent>
