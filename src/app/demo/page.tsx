@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/footer";
 import {
   LayoutDashboard,
   Settings,
@@ -117,6 +118,8 @@ export default function DemoPage() {
         </div>
 
       </main>
+
+      <Footer />
     </div>
   );
 }
