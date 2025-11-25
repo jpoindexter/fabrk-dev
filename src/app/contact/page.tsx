@@ -248,40 +248,6 @@ export default function ContactPage() {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Office Location */}
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-1">Office Location</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Remote-first team
-                      <br />
-                      Available worldwide
-                      <br />
-                      9 AM - 5 PM EST
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* FAQ Link */}
-            <Card className="bg-accent/30">
-              <CardContent className="pt-6">
-                <h3 className="font-bold mb-2">Have a quick question?</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Check out our documentation for common questions and guides.
-                </p>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <Link href="/docs">View Documentation</Link>
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
 
