@@ -1,174 +1,239 @@
-import { Metadata } from "next";
+/**
+ * Refund Policy Page
+ * No refunds policy for digital product
+ */
 
-export const metadata: Metadata = {
-  title: "Refund Policy | Fabrk",
-  description: "30-day money-back guarantee policy",
-};
+"use client";
+
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import {
+  H1,
+  H2,
+  H3,
+  Body,
+  Small,
+  List,
+  ListItem,
+  Link,
+  Strong,
+} from "@/components/ui/typography";
 
 export default function RefundPage() {
   return (
-    <article className="prose prose-slate max-w-none">
-      <h1 className="mb-2 text-4xl font-bold text-foreground">Refund Policy</h1>
-      <p className="mb-8 text-sm text-muted-foreground">Last updated: January 2025</p>
+    <main className="container mx-auto max-w-4xl px-6 py-16">
+      {/* Header */}
+      <div className="mb-12 text-center">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Badge variant="default" size="lg" className="mb-6 uppercase tracking-wide">
+            Legal
+          </Badge>
+        </motion.span>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <H1 className="mb-4">Refund Policy</H1>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Small>Last Updated: January 2025</Small>
+        </motion.div>
+      </div>
 
-      <div className="space-y-8 text-foreground">
+      {/* Introduction */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="mb-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+      >
+        <Body className="text-lg">
+          Due to the nature of digital products, all sales are final. Please review this policy carefully before making your purchase.
+        </Body>
+      </motion.div>
+
+      <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-bold text-foreground">30-Day Money-Back Guarantee</h2>
-          <p>
-            We stand behind Fabrk. If you're not satisfied with your purchase for any reason, we
-            offer a <strong>full refund within 30 days</strong> of purchase—no questions asked.
-          </p>
-          <p className="mt-4">
-            We want you to be confident in your purchase. If Fabrk doesn't meet your needs, we'll
-            refund your money.
-          </p>
+          <H2 className="mb-4">1. No Refunds Policy</H2>
+          <Body className="mb-4">
+            <Strong>All sales are final.</Strong> Once you gain access to the Fabrk source code and download the files, no refunds, exchanges, or credits are available under any circumstances.
+          </Body>
+          <Body className="mb-4">
+            By completing your purchase, you acknowledge and accept that digital products cannot be "returned" once downloaded. This policy is standard for digital products and software licenses.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">How to Request a Refund</h2>
-          <ol className="ml-6 list-decimal space-y-3">
-            <li>
-              <strong>Email us:</strong> Send an email to{" "}
-              <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
-                support@fabrk.dev
-              </a>{" "}
-              with "Refund Request" in the subject line
-            </li>
-            <li>
-              <strong>Include your details:</strong> Provide your purchase email and license key (or
-              order number)
-            </li>
-            <li>
-              <strong>Optional feedback:</strong> While not required, we appreciate knowing what
-              didn't work for you so we can improve
-            </li>
-          </ol>
+          <H2 className="mb-4">2. Why No Refunds?</H2>
+          <Body className="mb-4">
+            Unlike physical products, digital products like Fabrk provide immediate value upon download:
+          </Body>
+          <List className="mb-4">
+            <ListItem>You receive instant access to the complete source code</ListItem>
+            <ListItem>You can immediately copy, modify, and use the code</ListItem>
+            <ListItem>Digital products cannot be "returned" once downloaded</ListItem>
+            <ListItem>There's no way to verify the code hasn't been copied before requesting a refund</ListItem>
+          </List>
+          <Body className="mb-4">
+            This policy protects the integrity of our business and prevents abuse while ensuring fair pricing for all customers.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">Refund Processing</h2>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              <strong>Processing time:</strong> Refunds are processed within 5-7 business days of
-              your request
-            </li>
-            <li>
-              <strong>Refund method:</strong> Refunds are issued to your original payment method
-              (same card/account you used to purchase)
-            </li>
-            <li>
-              <strong>Stripe processing:</strong> It may take an additional 5-10 business days for
-              your bank to reflect the refund
-            </li>
-            <li>
-              <strong>Confirmation:</strong> You'll receive an email confirmation once the refund is
-              processed
-            </li>
-          </ul>
+          <H2 className="mb-4">3. Before You Purchase</H2>
+          <Body className="mb-4">
+            We encourage you to thoroughly review Fabrk before purchasing:
+          </Body>
+          <List className="mb-4">
+            <ListItem>Review the <Link href="/features">complete feature list</Link> and component showcase</ListItem>
+            <ListItem>Browse the <Link href="/docs">comprehensive documentation</Link></ListItem>
+            <ListItem>Check the tech stack and integrations to ensure compatibility</ListItem>
+            <ListItem>Contact <Link href="/contact">support@fabrk.dev</Link> with any pre-purchase questions</ListItem>
+          </List>
+          <Body className="mb-4">
+            We want you to be fully informed about what Fabrk includes before you buy.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">What Happens After a Refund</h2>
+          <H2 className="mb-4">4. What You Get After Purchase</H2>
 
-          <h3 className="mt-6 text-xl font-semibold text-foreground">You Keep:</h3>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>
-              Any code you've already downloaded—you can continue using it in your existing projects
-            </li>
-            <li>
-              Knowledge and experience gained from using Fabrk
-            </li>
-          </ul>
+          <H3 className="mt-6 mb-3">4.1 Immediate Access</H3>
+          <List className="mb-4">
+            <ListItem>Instant download of the complete Fabrk source code</ListItem>
+            <ListItem>Lifetime license to use the code (v1.x updates included)</ListItem>
+            <ListItem>Access to all 87 production-ready components</ListItem>
+            <ListItem>Complete documentation and setup guides</ListItem>
+          </List>
 
-          <h3 className="mt-6 text-xl font-semibold text-foreground">You Lose Access To:</h3>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>Future updates and new versions</li>
-            <li>Discord community access</li>
-            <li>Email support</li>
-            <li>New components and features added after your refund</li>
-          </ul>
-
-          <p className="mt-4">
-            <strong>Important:</strong> We trust our customers. While you can keep the code you
-            downloaded, we ask that you honor the spirit of the refund and not use it for new
-            commercial projects after receiving a refund.
-          </p>
+          <H3 className="mt-6 mb-3">4.2 Ongoing Benefits</H3>
+          <List className="mb-4">
+            <ListItem>All future v1.x updates at no additional cost</ListItem>
+            <ListItem>Email support for technical questions</ListItem>
+            <ListItem>Access to community Discord (when available)</ListItem>
+            <ListItem>New components and features as they're released</ListItem>
+          </List>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">Eligibility</h2>
-          <p>Refunds are available:</p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>Within 30 days of purchase</li>
-            <li>For any reason (no questions asked)</li>
-            <li>One refund per customer (to prevent abuse)</li>
-          </ul>
-          <p className="mt-4">
-            <strong>Note:</strong> We reserve the right to refuse refunds for suspected fraud or
-            abuse (e.g., repeated purchases and refunds).
-          </p>
+          <H2 className="mb-4">5. Technical Support</H2>
+          <Body className="mb-4">
+            While we don't offer refunds, we do provide comprehensive support to ensure Fabrk works for you:
+          </Body>
+          <List className="mb-4">
+            <ListItem><Strong>Email support:</Strong> support@fabrk.dev for technical questions</ListItem>
+            <ListItem><Strong>Documentation:</Strong> 400KB+ of guides, tutorials, and examples</ListItem>
+            <ListItem><Strong>Bug fixes:</Strong> We actively maintain and improve Fabrk</ListItem>
+            <ListItem><Strong>Community:</Strong> Connect with other Fabrk users</ListItem>
+          </List>
+          <Body className="mb-4">
+            Our goal is to ensure you can successfully use Fabrk for your projects.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">EU Consumer Rights</h2>
-          <p>
-            If you are a consumer in the European Union, you have a legal right to a 14-day
-            withdrawal period under the EU Consumer Rights Directive.
-          </p>
-          <p className="mt-4">
-            <strong>However:</strong> By downloading Fabrk immediately after purchase, you
-            acknowledge that you waive this 14-day right of withdrawal (as you requested immediate
-            delivery of digital content).
-          </p>
-          <p className="mt-4">
-            <strong>Good news:</strong> Our 30-day money-back guarantee is more generous than the EU
-            legal requirement, giving you twice as long to decide.
-          </p>
+          <H2 className="mb-4">6. Chargebacks</H2>
+          <Body className="mb-4">
+            <Strong>Important:</Strong> Initiating a chargeback for a valid purchase is considered fraudulent activity.
+          </Body>
+          <Body className="mb-4">
+            If you file a chargeback instead of contacting us about legitimate technical issues:
+          </Body>
+          <List className="mb-4">
+            <ListItem>It costs us significant processing fees</ListItem>
+            <ListItem>Your license will be immediately terminated</ListItem>
+            <ListItem>You'll be banned from future purchases</ListItem>
+            <ListItem>The dispute will be contested with full documentation</ListItem>
+          </List>
+          <Body className="mb-4">
+            If you have concerns about your purchase, please contact support@fabrk.dev first. We're here to help resolve any legitimate issues.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">Chargebacks</h2>
-          <p>
-            We have a generous refund policy—there's no need for chargebacks. If you file a
-            chargeback instead of requesting a refund:
-          </p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>It costs us significant processing fees (often more than the purchase price)</li>
-            <li>It's flagged as fraudulent activity</li>
-            <li>You may be banned from future purchases</li>
-          </ul>
-          <p className="mt-4">
-            <strong>Please contact us first.</strong> We'll process your refund quickly and
-            professionally.
-          </p>
+          <H2 className="mb-4">7. EU Consumer Rights</H2>
+          <Body className="mb-4">
+            If you are a consumer in the European Union, you have a legal right to a 14-day withdrawal period under the EU Consumer Rights Directive (2011/83/EU).
+          </Body>
+          <Body className="mb-4">
+            <Strong>However:</Strong> By downloading Fabrk immediately after purchase, you expressly acknowledge and agree that you waive this 14-day right of withdrawal, as you have requested immediate delivery and performance of digital content.
+          </Body>
+          <Body className="mb-4">
+            This waiver is required under Article 16(m) of the Consumer Rights Directive, which states that the right of withdrawal does not apply to "the supply of digital content which is not supplied on a tangible medium if the performance has begun with the consumer's prior express consent and his acknowledgment that he thereby loses his right of withdrawal."
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">Refund Exceptions</h2>
-          <p>Refunds are NOT available:</p>
-          <ul className="ml-6 list-disc space-y-2">
-            <li>After 30 days from purchase date</li>
-            <li>
-              For customers who have already received a refund for Fabrk (one refund per customer
-              policy)
-            </li>
-            <li>In cases of suspected fraud or terms of service violations</li>
-          </ul>
+          <H2 className="mb-4">8. Exceptions</H2>
+          <Body className="mb-4">
+            We may issue refunds at our sole discretion in the following rare cases:
+          </Body>
+          <List className="mb-4">
+            <ListItem><Strong>Technical impossibility:</Strong> If Fabrk fundamentally cannot work as described due to our error</ListItem>
+            <ListItem><Strong>Duplicate charges:</Strong> If you were accidentally charged multiple times for the same purchase</ListItem>
+            <ListItem><Strong>Service failure:</Strong> If we fail to deliver access to the product within 7 days</ListItem>
+          </List>
+          <Body className="mb-4">
+            These exceptions require documented proof and are evaluated on a case-by-case basis. Contact support@fabrk.dev with details.
+          </Body>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-foreground">Questions?</h2>
-          <p>
-            Have questions about our refund policy? Contact us at{" "}
-            <a href="mailto:support@fabrk.dev" className="text-primary hover:underline">
-              support@fabrk.dev
-            </a>
-          </p>
-          <p className="mt-4">
-            We're here to help and want to ensure you have a great experience with Fabrk.
-          </p>
+          <H2 className="mb-4">9. Policy Updates</H2>
+          <Body className="mb-4">
+            We reserve the right to modify this Refund Policy at any time. Changes will be posted on this page with an updated "Last Updated" date.
+          </Body>
+          <Body className="mb-4">
+            Your purchase is governed by the Refund Policy in effect at the time of purchase. Policy changes do not affect purchases made before the change.
+          </Body>
+        </section>
+
+        <section>
+          <H2 className="mb-4">10. Questions?</H2>
+          <Body className="mb-4">
+            Have questions about this policy or Fabrk in general? We're here to help:
+          </Body>
+          <List className="mb-4">
+            <ListItem><Strong>Pre-purchase questions:</Strong> <Link href="/contact">Contact form</Link> or support@fabrk.dev</ListItem>
+            <ListItem><Strong>Technical support:</Strong> support@fabrk.dev</ListItem>
+            <ListItem><Strong>Legal inquiries:</Strong> legal@fabrk.dev</ListItem>
+          </List>
+          <Body className="mb-4">
+            We want you to feel confident in your purchase. Please reach out before buying if you have any concerns.
+          </Body>
         </section>
       </div>
-    </article>
+
+      {/* Related Links */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="mt-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+      >
+        <Small className="block mb-4">
+          Related Legal Documents:
+        </Small>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/terms" className="text-sm font-medium">
+            Terms of Service
+          </Link>
+          <span className="text-muted-foreground">•</span>
+          <Link href="/privacy" className="text-sm font-medium">
+            Privacy Policy
+          </Link>
+        </div>
+      </motion.div>
+    </main>
   );
 }
