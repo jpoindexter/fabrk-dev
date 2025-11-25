@@ -8,6 +8,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  H1,
+  H2,
+  H3,
+  Body,
+  BodyMuted,
+  Lead,
+  Small,
+  Strong,
+} from "@/components/ui/typography";
 import config from "@/config";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
@@ -103,26 +113,28 @@ export default function AboutPage() {
             </Badge>
           </motion.span>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl"
           >
-            Built by Developers,
-            <br />
-            <span className="text-primary">For Developers</span>
-          </motion.h1>
+            <H1 className="mb-6">
+              Built by Developers,
+              <br />
+              <span className="text-primary">For Developers</span>
+            </H1>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mb-12 max-w-2xl text-lg font-normal leading-relaxed text-muted-foreground sm:text-xl"
           >
-            We're on a mission to eliminate the repetitive work that slows down every
-            SaaS project, so you can focus on building features that matter.
-          </motion.p>
+            <Lead className="mx-auto mb-12 max-w-2xl">
+              We're on a mission to eliminate the repetitive work that slows down every
+              SaaS project, so you can focus on building features that matter.
+            </Lead>
+          </motion.div>
         </div>
       </section>
 
@@ -140,39 +152,40 @@ export default function AboutPage() {
               <Target className="h-12 w-12 text-primary" />
             </motion.div>
 
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-3xl font-semibold text-foreground sm:text-4xl"
             >
-              Our Mission
-            </motion.h2>
+              <H2>Our Mission</H2>
+            </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-lg font-normal leading-relaxed text-muted-foreground"
             >
-              Every developer has experienced the frustration of rebuilding the same
-              authentication system, payment integration, and UI components for the
-              hundredth time. We created Fabrk to solve this problem once and for all.
-            </motion.p>
+              <Body>
+                Every developer has experienced the frustration of rebuilding the same
+                authentication system, payment integration, and UI components for the
+                hundredth time. We created Fabrk to solve this problem once and for all.
+              </Body>
+            </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="text-lg font-normal leading-relaxed text-muted-foreground"
             >
-              Our mission is simple: <strong className="font-semibold text-foreground">help you ship your SaaS product in days, not
-              months</strong>. We handle the boring infrastructure so you can focus on the
-              innovation that makes your product unique.
-            </motion.p>
+              <Body>
+                Our mission is simple: <Strong>help you ship your SaaS product in days, not
+                months</Strong>. We handle the boring infrastructure so you can focus on the
+                innovation that makes your product unique.
+              </Body>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -181,24 +194,22 @@ export default function AboutPage() {
       <section className="border-t border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-4 text-3xl font-semibold text-foreground sm:text-4xl"
             >
-              Our Values
-            </motion.h2>
-            <motion.p
+              <H2 className="mb-4">Our Values</H2>
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-lg font-normal text-muted-foreground sm:text-xl"
             >
-              The principles that guide everything we build
-            </motion.p>
+              <Lead>The principles that guide everything we build</Lead>
+            </motion.div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -214,12 +225,8 @@ export default function AboutPage() {
                 <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 border-2 border-border p-3">
                   <value.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-foreground">
-                  {value.title}
-                </h3>
-                <p className="text-base font-normal text-muted-foreground">
-                  {value.description}
-                </p>
+                <H3 className="mb-2">{value.title}</H3>
+                <Body>{value.description}</Body>
               </motion.div>
             ))}
           </div>
@@ -231,24 +238,22 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="text-center">
-              <motion.h2
+              <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="mb-4 text-3xl font-semibold text-foreground sm:text-4xl"
               >
-                The Story Behind Fabrk
-              </motion.h2>
-              <motion.p
+                <H2 className="mb-4">The Story Behind Fabrk</H2>
+              </motion.div>
+              <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-lg font-normal text-muted-foreground sm:text-xl"
               >
-                From frustration to solution
-              </motion.p>
+                <Lead>From frustration to solution</Lead>
+              </motion.div>
             </div>
 
             <motion.div
@@ -258,15 +263,15 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <p className="text-lg font-normal leading-relaxed text-muted-foreground">
+              <Body>
                 Like many developers, we were tired of rebuilding the same infrastructure for
                 every new SaaS project. Authentication, payments, database setup, email
                 integration—it's the same story every time.
-              </p>
+              </Body>
 
-              <p className="text-lg font-normal leading-relaxed text-muted-foreground">
+              <Body>
                 We looked at existing solutions, but they all had the same problems:
-              </p>
+              </Body>
 
               <ul className="space-y-3">
                 {[
@@ -284,22 +289,22 @@ export default function AboutPage() {
                     className="flex items-start gap-3"
                   >
                     <span className="mt-1 text-destructive font-bold">✗</span>
-                    <span className="text-base font-normal text-muted-foreground">{problem}</span>
+                    <Body>{problem}</Body>
                   </motion.li>
                 ))}
               </ul>
 
-              <p className="text-lg font-normal leading-relaxed text-muted-foreground">
+              <Body>
                 So we built Fabrk differently. We started with a 1000+ file codebase, then
                 ruthlessly cut it down to just the essentials. We removed every line of code
                 that didn't serve a clear purpose. We focused on clarity over cleverness.
-              </p>
+              </Body>
 
-              <p className="text-lg font-normal leading-relaxed text-muted-foreground">
+              <Body>
                 The result? A boilerplate with ~160 files that includes everything you need
                 and nothing you don't. Clean TypeScript, modern Next.js, industry-standard
                 tools, and comprehensive documentation.
-              </p>
+              </Body>
             </motion.div>
           </div>
         </div>
@@ -310,24 +315,22 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="text-center">
-              <motion.h2
+              <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="mb-4 text-3xl font-semibold text-foreground sm:text-4xl"
               >
-                Why Choose Fabrk?
-              </motion.h2>
-              <motion.p
+                <H2 className="mb-4">Why Choose Fabrk?</H2>
+              </motion.div>
+              <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-lg font-normal text-muted-foreground sm:text-xl"
               >
-                We're not just selling code, we're selling time
-              </motion.p>
+                <Lead>We're not just selling code, we're selling time</Lead>
+              </motion.div>
             </div>
 
             <div className="space-y-4">
@@ -340,12 +343,8 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   className="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
                 >
-                  <h3 className="mb-2 text-lg font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-base font-normal text-muted-foreground">
-                    {item.description}
-                  </p>
+                  <H3 className="mb-2">{item.title}</H3>
+                  <Body>{item.description}</Body>
                 </motion.div>
               ))}
             </div>
@@ -356,25 +355,25 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="border-t border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-4xl text-center space-y-8">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-semibold text-foreground sm:text-4xl"
           >
-            Ready to Build Your SaaS?
-          </motion.h2>
+            <H2>Ready to Build Your SaaS?</H2>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-2xl text-lg font-normal text-muted-foreground sm:text-xl"
           >
-            Join 500+ developers who are shipping faster with Fabrk.
-          </motion.p>
+            <Lead className="mx-auto max-w-2xl">
+              Join 500+ developers who are shipping faster with Fabrk.
+            </Lead>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -394,15 +393,16 @@ export default function AboutPage() {
             </Button>
           </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-sm font-medium text-muted-foreground"
           >
-            ✓ Instant access ✓ Lifetime updates ✓ 30-day money-back guarantee
-          </motion.p>
+            <Small className="block font-medium text-muted-foreground">
+              ✓ Instant access ✓ Lifetime updates ✓ 30-day money-back guarantee
+            </Small>
+          </motion.div>
         </div>
       </section>
 

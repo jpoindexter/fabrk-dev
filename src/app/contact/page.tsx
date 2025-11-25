@@ -35,6 +35,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  H2,
+  H3,
+  Body,
+  BodyMuted,
+  Small,
+  Link as TypographyLink,
+} from "@/components/ui/typography";
 import { Mail, MapPin, MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
@@ -223,16 +231,16 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">Email Us</h3>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <H3 className="mb-1">Email Us</H3>
+                    <Small className="block mb-2">
                       Prefer email? Send us a message directly:
-                    </p>
-                    <a
+                    </Small>
+                    <TypographyLink
                       href="mailto:support@fabrk.dev"
-                      className="text-sm text-primary hover:underline"
+                      className="text-sm"
                     >
                       support@fabrk.dev
-                    </a>
+                    </TypographyLink>
                   </div>
                 </div>
               </CardContent>
@@ -246,11 +254,11 @@ export default function ContactPage() {
                     <MessageCircle className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">Response Time</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <H3 className="mb-1">Response Time</H3>
+                    <Small>
                       We typically respond within 24 hours during business days.
                       For urgent issues, please mention "URGENT" in your subject.
-                    </p>
+                    </Small>
                   </div>
                 </div>
               </CardContent>
@@ -260,24 +268,24 @@ export default function ContactPage() {
 
         {/* FAQ Section */}
         <section className="mt-16">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-2 text-center text-3xl font-semibold text-foreground"
           >
-            Frequently Asked Questions
-          </motion.h2>
-          <motion.p
+            <H2 className="mb-2 text-center">Frequently Asked Questions</H2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mb-12 text-center text-lg text-muted-foreground"
           >
-            Everything you need to know
-          </motion.p>
+            <BodyMuted className="mb-12 text-center">
+              Everything you need to know
+            </BodyMuted>
+          </motion.div>
 
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-3">
