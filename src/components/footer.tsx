@@ -23,54 +23,56 @@ export function Footer() {
     <footer id="footer" className="mt-auto border-t border-border bg-background">
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-12 sm:px-8 lg:px-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
-              <Logo size={28} />
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              Built with Next.js, TypeScript, Tailwind CSS
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="GitHub"
-              >
-                <Github className="size-5" strokeWidth={1.5} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Twitter"
-              >
-                <Twitter className="size-5" fill="none" strokeWidth={1.5} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="size-5" fill="none" strokeWidth={1.5} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="YouTube"
-              >
-                <Youtube className="size-5" fill="none" strokeWidth={1.5} />
-              </a>
-            </div>
+        {/* Logo and Social - Aligned with header */}
+        <div className="mb-12 space-y-4">
+          <Link href="/" className="inline-flex items-center gap-2" aria-label="Fabrk Home">
+            <Logo size={28} />
+          </Link>
+          <p className="text-sm text-muted-foreground">
+            Built with Next.js, TypeScript, Tailwind CSS
+          </p>
+          <div className="flex gap-3">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="GitHub"
+            >
+              <Github className="size-5" strokeWidth={1.5} />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Twitter"
+            >
+              <Twitter className="size-5" fill="none" strokeWidth={1.5} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="size-5" fill="none" strokeWidth={1.5} />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="YouTube"
+            >
+              <Youtube className="size-5" fill="none" strokeWidth={1.5} />
+            </a>
           </div>
+        </div>
+
+        {/* Footer Links Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* Product Links */}
           <div className="space-y-4">
