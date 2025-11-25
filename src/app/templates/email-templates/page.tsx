@@ -150,8 +150,8 @@ const emailTemplates = [
           <tr>
             <td style="padding: 40px;">
               <div style="text-align: center; margin-bottom: 24px;">
-                <div style="display: inline-block; background-color: #10B981; border-radius: 50%; padding: 16px;">
-                  <span style="color: #ffffff; font-size: 40px;">✓</span>
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background-color: #10B981; border-radius: 50%;">
+                  <span style="color: #ffffff; font-size: 40px; line-height: 1;">✓</span>
                 </div>
               </div>
               <h2 style="margin: 0 0 16px 0; color: #171717; font-size: 24px; font-weight: 600; text-align: center;">Payment Confirmed!</h2>
