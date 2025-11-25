@@ -3,48 +3,60 @@
  * Legal agreement between Fabrk and users
  */
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, FileText } from "lucide-react";
+"use client";
 
-export const metadata = {
-  title: "Terms of Service | Fabrk",
-  description: "Terms and conditions for using Fabrk SaaS boilerplate",
-};
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Navigation } from "@/components/landing/navigation";
+import { Footer } from "@/components/landing/footer";
+import { Badge } from "@/components/ui/badge";
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b-3 border-border bg-card sticky top-0 z-50">
-        <div className="container mx-auto max-w-4xl px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <FileText className="h-6 w-6 text-primary" />
-              <h1 className="text-2xl font-bold">Terms of Service</h1>
-            </div>
-            <Link href="/">
-              <Button variant="outline" size="sm">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Home
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
-      <main className="container mx-auto max-w-4xl px-6 py-12">
-        <Card className="mb-8 border-2">
-          <CardHeader>
-            <CardTitle className="text-2xl">Last Updated: January 1, 2025</CardTitle>
-          </CardHeader>
-          <CardContent className="prose dark:prose-invert max-w-none">
-            <p className="text-muted-foreground text-lg">
-              Please read these Terms of Service carefully before purchasing or using Fabrk. By accessing or using our Service, you acknowledge that you have read, understood, and agree to be bound by these terms.
-            </p>
-          </CardContent>
-        </Card>
+      <main className="container mx-auto max-w-4xl px-6 py-16">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Badge variant="default" size="lg" className="mb-6 uppercase tracking-wide">
+              Legal
+            </Badge>
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-4 text-4xl font-bold text-foreground"
+          >
+            Terms of Service
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-sm text-muted-foreground"
+          >
+            Last Updated: January 1, 2025
+          </motion.p>
+        </div>
+
+        {/* Introduction */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        >
+          <p className="text-lg text-muted-foreground">
+            Please read these Terms of Service carefully before purchasing or using Fabrk. By accessing or using our Service, you acknowledge that you have read, understood, and agree to be bound by these terms.
+          </p>
+        </motion.div>
 
         <div className="prose dark:prose-invert max-w-none space-y-8">
           <section>
@@ -374,22 +386,29 @@ export default function TermsPage() {
         </div>
 
         {/* Related Links */}
-        <Card className="mt-12">
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground mb-4">
-              Related Legal Documents:
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/privacy">
-                <Button variant="outline" size="sm">Privacy Policy</Button>
-              </Link>
-              <Link href="/cookies">
-                <Button variant="outline" size="sm">Cookie Policy</Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        >
+          <p className="text-sm text-muted-foreground mb-4">
+            Related Legal Documents:
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/privacy" className="text-sm text-primary hover:underline font-medium">
+              Privacy Policy
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link href="/cookies" className="text-sm text-primary hover:underline font-medium">
+              Cookie Policy
+            </Link>
+          </div>
+        </motion.div>
       </main>
+
+      <Footer />
     </div>
   );
 }
