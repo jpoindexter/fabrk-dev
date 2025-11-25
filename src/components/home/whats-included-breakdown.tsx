@@ -9,6 +9,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
 
 const CATEGORIES = [
   {
@@ -357,8 +358,8 @@ function CategoryItem({ category }: CategoryItemProps) {
         className="flex w-full items-center justify-between p-6 text-left hover:bg-muted/50"
       >
         <div>
-          <h3 className="text-xl font-semibold text-foreground">{category.title}</h3>
-          <p className="mt-1 text-sm text-muted-foreground">{category.description}</p>
+          <H3>{category.title}</H3>
+          <Small className="block mt-1 text-muted-foreground">{category.description}</Small>
         </div>
         <ChevronDown
           className={`size-5 flex-shrink-0 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""
@@ -377,15 +378,15 @@ function CategoryItem({ category }: CategoryItemProps) {
           <div className="space-y-6">
             {category.items.map((section, idx) => (
               <div key={idx}>
-                <h4 className="font-semibold text-foreground">{section.category}</h4>
+                <H4>{section.category}</H4>
                 <ul className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-3">
                   {section.items.map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                      className="flex items-start gap-2"
                     >
                       <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-primary" />
-                      {item}
+                      <Small className="text-muted-foreground">{item}</Small>
                     </li>
                   ))}
                 </ul>
@@ -411,12 +412,12 @@ export function WhatsIncludedBreakdown() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <H2 className="mb-4">
               Everything You Get
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            </H2>
+            <Body className="mx-auto max-w-2xl text-muted-foreground">
               87 components, 8 templates, 12+ features, 931+ tests, 400KB docs. Click to expand each category.
-            </p>
+            </Body>
           </div>
 
           {/* Categories */}
@@ -434,25 +435,25 @@ export function WhatsIncludedBreakdown() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="rounded-lg border border-border bg-card shadow-sm p-8"
           >
-            <h3 className="text-xl font-semibold text-foreground">What This Means</h3>
-            <div className="mt-4 grid gap-6 md:grid-cols-3">
+            <H3 className="mb-4">What This Means</H3>
+            <div className="grid gap-6 md:grid-cols-3">
               <div>
-                <p className="font-semibold text-primary">3-4 Weeks Saved</p>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <Strong className="block text-primary">3-4 Weeks Saved</Strong>
+                <Small className="block mt-1 text-muted-foreground">
                   Building auth, payments, and features from scratch
-                </p>
+                </Small>
               </div>
               <div>
-                <p className="font-semibold text-primary">$10,000+ Value</p>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <Strong className="block text-primary">$10,000+ Value</Strong>
+                <Small className="block mt-1 text-muted-foreground">
                   3-4 weeks × $50-75/hr developer salary
-                </p>
+                </Small>
               </div>
               <div>
-                <p className="font-semibold text-primary">Production Quality</p>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <Strong className="block text-primary">Production Quality</Strong>
+                <Small className="block mt-1 text-muted-foreground">
                   931+ tests, 64% coverage, TypeScript strict mode
-                </p>
+                </Small>
               </div>
             </div>
           </motion.div>
