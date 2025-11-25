@@ -31,19 +31,16 @@ export default function AdminPanelsPage() {
             {categoryTemplates.map((template) => (
               <Card key={template.id} className="group hover:border-primary/50 transition-all">
                 <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start gap-3">
-                      <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
-                        <template.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-xl">{template.name}</CardTitle>
-                        <CardDescription className="mt-1">
-                          {template.description}
-                        </CardDescription>
-                      </div>
+                  <div className="flex items-start gap-3">
+                    <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+                      <template.icon className="h-6 w-6 text-primary" />
                     </div>
-                    {template.badge && <Badge>{template.badge}</Badge>}
+                    <div>
+                      <CardTitle className="text-xl">{template.name}</CardTitle>
+                      <CardDescription className="mt-1">
+                        {template.description}
+                      </CardDescription>
+                    </div>
                   </div>
                 </CardHeader>
 
