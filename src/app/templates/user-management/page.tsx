@@ -234,7 +234,7 @@ const columns: ColumnDef<User>[] = [
       return (
         <Badge
           variant={role === "ADMIN" ? "default" : "secondary"}
-          className="font-semibold"
+          className="font-semibold min-w-[80px] justify-center"
         >
           {role}
         </Badge>
@@ -266,7 +266,7 @@ const columns: ColumnDef<User>[] = [
       return (
         <Badge
           variant={plan === "Enterprise" ? "default" : "outline"}
-          className="font-semibold"
+          className="font-semibold min-w-[100px] justify-center"
         >
           {plan}
         </Badge>
