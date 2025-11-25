@@ -35,6 +35,38 @@ import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
 import { generateVerifyEmailHTML } from "@/emails/verify-email";
 import { CodeBlock } from "@/components/ui/code-block";
 
+// Inject custom scrollbar styling into email HTML
+function injectScrollbarStyles(html: string): string {
+  const scrollbarStyles = `
+    <style>
+      /* Custom scrollbar styling - matches main site */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #e5e5e5 transparent;
+      }
+      *:hover {
+        scrollbar-color: #a855f7 transparent;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a855f7;
+      }
+    </style>
+  `;
+  return html.replace('</head>', `${scrollbarStyles}</head>`);
+}
+
 // Mock email data
 const emailTemplates = [
   {
@@ -452,9 +484,9 @@ export default function EmailTemplatesShowcase() {
                 <TabsContent value="preview" className="mt-6">
                   <div className="rounded-lg border border-border bg-muted p-4">
                     <iframe
-                      srcDoc={selectedTemplate.preview}
+                      srcDoc={injectScrollbarStyles(selectedTemplate.preview)}
                       title={selectedTemplate.name}
-                      className="min-h-[1200px] w-[700px] mx-auto block rounded border border-border bg-white overflow-hidden"
+                      className="min-h-[1200px] w-[700px] mx-auto block rounded border border-border bg-white"
                     />
                   </div>
                 </TabsContent>
