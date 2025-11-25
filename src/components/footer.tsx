@@ -22,7 +22,7 @@ export function Footer() {
   return (
     <footer id="footer" className="mt-auto border-t border-border bg-background">
       {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <div className="container mx-auto px-6 py-12 sm:px-8 lg:px-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="space-y-4">
