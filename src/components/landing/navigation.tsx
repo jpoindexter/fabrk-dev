@@ -60,7 +60,7 @@ export function Navigation() {
           initial={{ opacity: 0, x: 12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="hidden items-center gap-2 md:flex"
+          className="hidden items-center gap-2 md:flex ml-auto"
         >
           <ThemeDropdown />
           <Button
