@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/landing/footer";
 import {
   LayoutDashboard,
   Settings,
