@@ -152,10 +152,10 @@ export function ValueProposition() {
           </div>
 
           {/* Feature Comparison Table */}
-          <div className="overflow-x-auto rounded-lg border border-border">
+          <div className="overflow-x-auto rounded-lg border border-border bg-card shadow-sm">
             <table className="w-full">
-              <thead className="bg-muted/50">
-                <tr>
+              <thead>
+                <tr className="border-b border-border bg-muted">
                   <th className="px-6 py-4 text-left font-semibold">Feature</th>
                   <th className="px-6 py-4 text-center font-semibold">DIY Time</th>
                   <th className="px-6 py-4 text-center font-semibold">DIY Cost</th>
@@ -197,7 +197,7 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-lg border border-primary/20 bg-primary/5 p-8"
+            className="rounded-lg border border-border bg-card p-8 shadow-sm"
           >
             <div className="grid gap-8 md:grid-cols-3">
               <div>
@@ -254,7 +254,7 @@ export function ValueProposition() {
                   <ul className="space-y-2">
                     {approach.breakdown.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-primary" />
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
                         {item}
                       </li>
                     ))}
@@ -270,12 +270,12 @@ export function ValueProposition() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-lg border border-border bg-muted/50 p-8"
+            className="rounded-lg border border-border bg-card p-8 shadow-sm"
           >
             <h3 className="mb-4 text-xl font-semibold">Key Takeaways</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
+                <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Ship 6 weeks faster</p>
                   <p className="text-sm text-muted-foreground">
@@ -284,7 +284,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
+                <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Save $30K+ in dev costs</p>
                   <p className="text-sm text-muted-foreground">
@@ -293,7 +293,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
+                <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Production-ready from day 1</p>
                   <p className="text-sm text-muted-foreground">
@@ -302,7 +302,7 @@ export function ValueProposition() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="mt-1 size-5 flex-shrink-0 text-success" />
+                <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
                   <p className="font-semibold text-foreground">Focus on your differentiation</p>
                   <p className="text-sm text-muted-foreground">
@@ -319,7 +319,7 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-primary/20 bg-primary/5 p-8 text-center sm:flex-row"
+            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center shadow-sm sm:flex-row"
           >
             <div>
               <p className="text-lg font-semibold text-foreground">Ready to ship faster?</p>

@@ -234,7 +234,7 @@ export function TechStackSection() {
             {/* shadcn/ui */}
             <div className="flex flex-col items-center gap-2 grayscale transition-all hover:grayscale-0">
               <div className="flex size-12 items-center justify-center rounded-lg bg-foreground">
-                <span className="font-mono text-xl font-bold text-white">$</span>
+                <span className="font-mono text-xl font-bold text-background">$</span>
               </div>
               <span className="text-xs text-muted-foreground">shadcn/ui</span>
             </div>

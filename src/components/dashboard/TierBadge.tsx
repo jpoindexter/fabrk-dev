@@ -22,7 +22,7 @@ const tierIcons = {
 export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps) {
   const tierName = (tier || "trial") as TierName;
   const displayName = TIER_NAMES[tierName] || "Trial";
-  const badge = TIER_BADGES[tierName] || TIER_BADGES.trial;
+  const variant = TIER_BADGES[tierName] || TIER_BADGES.trial;
   const Icon = tierIcons[tierName] || Zap;
 
   const sizeClasses = {
@@ -33,8 +33,9 @@ export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps
 
   return (
     <Badge
-      className={`${badge.bgColor} ${badge.color} ${sizeClasses[size]} flex items-center gap-2 font-medium`}
-      variant="secondary"
+      variant={variant as "default" | "secondary" | "accent" | "neutral"}
+      size={size}
+      className="flex items-center gap-2 font-medium"
     >
       {showIcon && (
         <Icon

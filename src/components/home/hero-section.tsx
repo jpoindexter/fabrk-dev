@@ -72,13 +72,15 @@ export function HeroSection() {
             </Button>
             <Button
               asChild
-              variant="secondaryCta"
+              variant="outline"
+              size="xl"
             >
               <Link href="/demo">View Live Demo</Link>
             </Button>
             <Button
               asChild
-              variant="outline"
+              variant="ghost"
+              size="xl"
             >
               <Link href="/components">Browse Components</Link>
             </Button>

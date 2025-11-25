@@ -80,8 +80,8 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       {submitted ? (
         <div className="p-6 text-center">
           <div className="mb-2 text-4xl">✅</div>
-          <h4 className="mb-1 font-semibold text-black">Thanks for your feedback!</h4>
-          <p className="text-sm text-gray-600">We appreciate your input.</p>
+          <h4 className="mb-1 font-semibold text-foreground">Thanks for your feedback!</h4>
+          <p className="text-sm text-muted-foreground">We appreciate your input.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="p-4">

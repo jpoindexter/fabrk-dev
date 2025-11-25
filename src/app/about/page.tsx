@@ -73,7 +73,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="bg-accent/20 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
+        <section className="bg-muted/40 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Our Values</h2>
@@ -193,7 +193,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section className="bg-accent/20 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
+        <section className="bg-muted/40 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold">By the Numbers</h2>

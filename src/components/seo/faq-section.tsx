@@ -51,7 +51,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
 
       <section className={cn("mx-auto max-w-3xl", className)}>
         {title && (
-          <h2 className="mb-2 text-3xl font-bold text-black">{title}</h2>
+          <h2 className="mb-2 text-3xl font-bold text-foreground">{title}</h2>
         )}
         {description && (
           <p className="mb-8 text-lg text-gray-600">{description}</p>
@@ -68,7 +68,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
                 className="flex w-full items-center justify-between p-6 text-left"
                 aria-expanded={openIndex === index}
               >
-                <h3 className="text-lg font-semibold text-black pr-4">
+                <h3 className="text-lg font-semibold text-foreground pr-4">
                   {faq.question}
                 </h3>
                 <ChevronDown

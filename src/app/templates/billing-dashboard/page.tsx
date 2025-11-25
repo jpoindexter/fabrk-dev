@@ -492,7 +492,7 @@ export default function BillingDashboardTemplate() {
               ))}
             </div>
 
-            <Card className="border border-primary/20 bg-primary/5">
+            <Card className="shadow-sm">
               <CardHeader>
                 <CardTitle className="font-semibold">Need a Custom Plan?</CardTitle>
                 <CardDescription>
@@ -573,7 +573,7 @@ export default function BillingDashboardTemplate() {
         )}
 
         {/* Implementation Note */}
-        <Card className="border border-primary/20 bg-primary/5">
+        <Card className="shadow-sm">
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">💳 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">

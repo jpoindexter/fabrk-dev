@@ -60,11 +60,11 @@ export function HowTo({
       <SchemaScript schema={schema} />
 
       <div className={className}>
-        <h2 className="mb-2 text-3xl font-bold text-black">{title}</h2>
-        <p className="mb-8 text-lg text-gray-600">{description}</p>
+        <h2 className="mb-2 text-3xl font-bold text-foreground">{title}</h2>
+        <p className="mb-8 text-lg text-muted-foreground">{description}</p>
 
         {(totalTime || estimatedCost) && (
-          <div className="mb-8 flex gap-6 text-sm text-gray-600">
+          <div className="mb-8 flex gap-6 text-sm text-muted-foreground">
             {totalTime && (
               <div>
                 <span className="font-semibold">Total Time:</span> {totalTime}

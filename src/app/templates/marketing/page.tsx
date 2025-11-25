@@ -80,7 +80,7 @@ export default function MarketingPage() {
         </section>
 
         {/* Template Features Card */}
-        <Card className="border border-primary/20 bg-primary/5">
+        <Card className="shadow-sm">
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">📢 Marketing Page Templates</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">

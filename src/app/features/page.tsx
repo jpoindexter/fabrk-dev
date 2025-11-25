@@ -312,7 +312,7 @@ export default function FeaturesPage() {
         </section>
 
         {/* UI Features */}
-        <section className="bg-accent/20 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
+        <section className="bg-muted/40 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Beautiful UI Out of the Box</h2>
@@ -386,7 +386,7 @@ export default function FeaturesPage() {
         </section>
 
         {/* Bonus Features */}
-        <section className="bg-accent/20 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
+        <section className="bg-muted/40 -mx-6 px-6 py-16 md:-mx-16 md:px-16">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Bonus Features</h2>

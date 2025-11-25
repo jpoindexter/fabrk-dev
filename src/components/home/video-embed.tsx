@@ -100,12 +100,12 @@ export function VideoEmbed({ className, showTitle = true }: VideoEmbedProps) {
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-all duration-300 group-hover:bg-black/40">
               <div className="rounded-full bg-primary p-4 transition-transform duration-300 group-hover:scale-110">
-                <Play className="size-8 fill-white text-white" />
+                <Play className="size-8 fill-foreground text-foreground" />
               </div>
             </div>
 
             {/* Video duration (optional) */}
-            <div className="absolute bottom-4 right-4 rounded bg-black/80 px-2 py-1 text-xs font-semibold text-white">
+            <div className="absolute bottom-4 right-4 rounded bg-black/80 px-2 py-1 text-xs font-semibold text-foreground">
               1:00
             </div>
           </div>

@@ -139,7 +139,6 @@ const config = {
     teamFeatures: false, // Coming soon
 
     // Content features
-    blog: false, // Enable when you add blog posts
     documentation: true,
     changelog: false,
 

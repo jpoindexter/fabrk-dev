@@ -49,12 +49,6 @@ export function Navigation() {
               About
             </Link>
             <Link
-              href="/blog"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Blog
-            </Link>
-            <Link
               href="/pricing"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
@@ -117,13 +111,6 @@ export function Navigation() {
                     className="py-1 text-lg font-medium hover:underline"
                   >
                     Pricing
-                  </Link>
-                  <Link
-                    href="/blog"
-                    onClick={() => setOpen(false)}
-                    className="py-1 text-lg font-medium hover:underline"
-                  >
-                    Blog
                   </Link>
                 </nav>
 

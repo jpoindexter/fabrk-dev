@@ -348,10 +348,10 @@ export function ActivityTimeline({
           </h3>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="gap-2">
+              <Button variant="outline" size="sm" className="h-10 gap-2">
                 <Filter className="h-4 w-4" />
                 Filter
-                <Badge variant="secondary" className="ml-1">
+                <Badge variant="secondary" size="sm" className="ml-1">
                   {selectedTypes.size}
                 </Badge>
               </Button>
@@ -393,11 +393,9 @@ export function ActivityTimeline({
       ) : groupByDate ? (
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
-            <div className="sticky top-0 z-10 bg-background py-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                {dateGroup}
-              </h4>
-            </div>
+            <h4 className="rounded-md bg-muted px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              {dateGroup}
+            </h4>
             <div className="pl-2">
               {groupEvents.map((event, index) => (
                 <TimelineItem

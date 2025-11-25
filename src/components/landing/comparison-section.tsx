@@ -100,7 +100,7 @@ export function ComparisonSection() {
         >
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border">
+              <tr className="border-b border-border bg-muted">
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                   Feature
                 </th>

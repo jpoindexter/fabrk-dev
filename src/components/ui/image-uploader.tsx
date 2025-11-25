@@ -280,10 +280,10 @@ export function ImageUploader({
 
               {/* File Info Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-overlay px-2 py-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-                <p className="truncate text-xs font-medium text-white">
+                <p className="truncate text-xs font-medium text-foreground">
                   {file.name}
                 </p>
-                <p className="text-xs text-white/80">
+                <p className="text-xs text-foreground/80">
                   {formatFileSize(file.size)}
                 </p>
               </div>

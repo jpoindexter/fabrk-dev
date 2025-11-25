@@ -197,7 +197,7 @@ export const MultipleSelectors: Story = {
           />
         </div>
         {(selectedFrameworks.length > 0 || selectedFruits.length > 0) && (
-          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-card shadow-sm p-4">
             <p className="text-sm font-bold">Your Selections:</p>
             <p className="text-sm text-muted-foreground">
               Frameworks: {selectedFrameworks.length > 0 ? selectedFrameworks.join(", ") : "None"}

@@ -164,7 +164,7 @@ export const Interactive: Story = {
         <div className="flex-1 p-6">
           <h1 className="text-2xl font-semibold">Interactive Sidebar</h1>
           {selectedItem ? (
-            <div className="mt-4 rounded-md border bg-primary/10 p-4">
+            <div className="mt-4 rounded-md border bg-card shadow-sm p-4">
               <p className="text-sm font-semibold">Selected:</p>
               <p className="text-sm text-muted-foreground">{selectedItem}</p>
             </div>

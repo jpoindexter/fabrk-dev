@@ -72,11 +72,11 @@ export function DataTable<TData, TValue>({
         searchKey={searchKey}
         searchPlaceholder={searchPlaceholder}
       />
-      <div className="overflow-x-auto rounded-lg border-2 border-black bg-card shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
+      <div className="overflow-x-auto rounded-lg border-2 border-foreground bg-card shadow-[4px_4px_0px_0px_var(--foreground)] scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
         <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-b-2 border-black hover:bg-transparent">
+              <TableRow key={headerGroup.id} className="border-b-2 border-foreground hover:bg-transparent">
                 {headerGroup.headers.map((header) => {
                   if (!header || !header.column) return null;
                   return (
@@ -101,9 +101,9 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => onRowClick?.(row.original)}
                   className={`
-                    border-b border-black/10
+                    border-b border-foreground/10
                     ${index % 2 === 0 ? "bg-card" : "bg-muted"}
-                    ${onRowClick ? "cursor-pointer hover:bg-primary/5" : ""}
+                    ${onRowClick ? "cursor-pointer hover:bg-muted/50" : ""}
                     ${row.getIsSelected() ? "bg-primary/10" : ""}
                   `}
                 >

@@ -154,7 +154,7 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16 rounded-lg border border-border bg-background p-8"
+          className="mt-16 rounded-lg border border-border bg-card shadow-sm p-8"
         >
           <p className="text-center text-sm">
             <span className="font-semibold text-foreground">Also Included: </span>

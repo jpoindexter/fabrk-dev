@@ -309,7 +309,7 @@ export function FeaturesShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-lg border border-primary/20 bg-primary/5 p-8"
+            className="rounded-lg border border-border bg-card shadow-sm p-8"
           >
             <h3 className="text-xl font-semibold text-foreground">
               Why This Saves You 4-6 Weeks

@@ -204,7 +204,7 @@ stripe: {
         <h2 className="text-2xl font-semibold">Next Steps</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
-            <Card className="h-full transition-colors hover:bg-muted/50">
+            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Payments Feature Guide</h3>
                 <p className="text-sm text-muted-foreground">
@@ -214,7 +214,7 @@ stripe: {
             </Card>
           </Link>
           <Link href="/docs/tutorials/webhooks">
-            <Card className="h-full transition-colors hover:bg-muted/50">
+            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Webhooks Setup</h3>
                 <p className="text-sm text-muted-foreground">

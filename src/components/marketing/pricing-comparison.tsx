@@ -129,7 +129,7 @@ export function PricingComparison({
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b-2 border-brutal bg-accent/10">
+              <tr className="border-b-2 border-brutal bg-muted">
                 <th className="p-4 text-left">
                   <span className="text-sm font-black text-foreground">Features</span>
                 </th>
@@ -146,7 +146,7 @@ export function PricingComparison({
                   {categories.map((category, categoryIndex) => (
                     <React.Fragment key={category || "uncategorized"}>
                       {/* Category Header */}
-                      <tr className="bg-muted/50 border-t-2 border-brutal">
+                      <tr className="border-t-2 border-brutal">
                         <td colSpan={plans.length + 1} className="p-3">
                           <span className="text-xs font-black text-foreground uppercase tracking-wide">
                             {category || "Other Features"}
@@ -157,7 +157,7 @@ export function PricingComparison({
                       {getFeaturesByCategory(category).map((feature, featureIndex) => (
                         <tr
                           key={`${category}-${featureIndex}`}
-                          className="border-t border-brutal hover:bg-accent/5 transition-colors"
+                          className="border-t border-brutal hover:bg-muted/50 transition-colors"
                         >
                           <td className="p-4">
                             <span className="text-sm text-foreground">{feature.name}</span>
@@ -197,7 +197,7 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className="rounded-brutal border-2 border-brutal bg-primary/5 p-6 text-center">
+      <div className="rounded-brutal border-2 border-brutal bg-card p-6 text-center">
         <h3 className="text-xl font-black text-foreground mb-2">Need help choosing?</h3>
         <p className="text-sm text-muted-foreground mb-4">
           Contact our team for personalized recommendations

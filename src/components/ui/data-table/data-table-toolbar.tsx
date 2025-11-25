@@ -28,7 +28,7 @@ export function DataTableToolbar<TData>({
             onChange={(event) =>
               table.getColumn(searchKey)?.setFilterValue(event.target.value)
             }
-            className="h-10 w-full max-w-sm border-2 border-black"
+            className="h-10 w-full max-w-sm border-2 border-foreground"
           />
         )}
         {isFiltered && (

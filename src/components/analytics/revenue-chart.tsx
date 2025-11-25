@@ -148,7 +148,7 @@ export function RevenueChart({
       <CardContent className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-brutal border-2 border-brutal bg-primary/5 p-4">
+          <div className="rounded-brutal border-2 border-brutal bg-card shadow-sm p-4">
             <p className="text-xs font-medium text-muted-foreground mb-1">Current MRR</p>
             <p className="text-2xl font-black text-foreground">
               {formatCompactCurrency(latestMRR)}

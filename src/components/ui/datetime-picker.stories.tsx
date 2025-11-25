@@ -141,7 +141,7 @@ export const BookingScenario: Story = {
           />
         </div>
         {checkIn && checkOut && (
-          <div className="rounded-md border border-border bg-primary/10 p-4">
+          <div className="rounded-md border border-border bg-card shadow-sm p-4">
             <p className="text-sm font-semibold">Booking Summary:</p>
             <p className="text-sm text-muted-foreground">
               Check-in: {checkIn.toLocaleString()}

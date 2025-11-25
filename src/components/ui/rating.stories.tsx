@@ -146,7 +146,7 @@ export const ReviewCard: Story = {
           </div>
         </div>
         {averageRating > 0 && (
-          <div className="rounded-brutal border-brutal bg-primary/10 p-4">
+          <div className="rounded-brutal border-brutal bg-card shadow-sm p-4">
             <p className="text-sm font-bold">Average Rating</p>
             <div className="flex items-center gap-2 mt-2">
               <Rating rating={averageRating} readonly showValue size="lg" />

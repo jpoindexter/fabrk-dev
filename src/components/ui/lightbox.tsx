@@ -174,7 +174,7 @@ export function Lightbox({
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 top-4 z-50 border-2 border-white bg-white text-black hover:bg-white/90"
+        className="absolute right-4 top-4 z-50 border-2 border-foreground bg-card text-foreground hover:bg-muted"
         onClick={onClose}
         aria-label="Close lightbox"
       >
@@ -188,7 +188,7 @@ export function Lightbox({
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute left-4 top-1/2 z-50 -translate-y-1/2 border-2 border-white bg-white text-black hover:bg-white/90",
+              "absolute left-4 top-1/2 z-50 -translate-y-1/2 border-2 border-foreground bg-card text-foreground hover:bg-muted",
               currentIndex === 0 && "opacity-50 cursor-not-allowed"
             )}
             onClick={handlePrevious}
@@ -202,7 +202,7 @@ export function Lightbox({
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute right-4 top-1/2 z-50 -translate-y-1/2 border-2 border-white bg-white text-black hover:bg-white/90",
+              "absolute right-4 top-1/2 z-50 -translate-y-1/2 border-2 border-foreground bg-card text-foreground hover:bg-muted",
               currentIndex === items.length - 1 && "opacity-50 cursor-not-allowed"
             )}
             onClick={handleNext}
@@ -220,7 +220,7 @@ export function Lightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="border-2 border-white bg-white text-black hover:bg-white/90"
+            className="border-2 border-foreground bg-card text-foreground hover:bg-muted"
             onClick={handleZoomIn}
             disabled={zoomLevel >= 3}
             aria-label="Zoom in"
@@ -230,7 +230,7 @@ export function Lightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="border-2 border-white bg-white text-black hover:bg-white/90"
+            className="border-2 border-foreground bg-card text-foreground hover:bg-muted"
             onClick={handleZoomOut}
             disabled={zoomLevel <= 0.5}
             aria-label="Zoom out"
@@ -242,7 +242,7 @@ export function Lightbox({
 
       {/* Image counter */}
       {hasMultipleItems && (
-        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-md border-2 border-white bg-white px-3 py-1 text-sm font-semibold text-black">
+        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-md border-2 border-foreground bg-card px-3 py-1 text-sm font-semibold text-foreground">
           {currentIndex + 1} / {items.length}
         </div>
       )}
@@ -281,7 +281,7 @@ export function Lightbox({
       {/* Caption */}
       {currentItem.caption && (
         <div className="absolute bottom-0 left-0 right-0 z-50 bg-black/80 px-6 py-4 text-center backdrop-blur-sm">
-          <p className="text-sm text-white">{currentItem.caption}</p>
+          <p className="text-sm text-foreground">{currentItem.caption}</p>
         </div>
       )}
 
@@ -296,8 +296,8 @@ export function Lightbox({
                 className={cn(
                   "h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all",
                   index === currentIndex
-                    ? "border-white ring-2 ring-white ring-offset-2 ring-offset-black"
-                    : "border-white/50 opacity-60 hover:opacity-100"
+                    ? "border-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
+                    : "border-foreground/50 opacity-60 hover:opacity-100"
                 )}
                 aria-label={`View image ${index + 1}`}
               >

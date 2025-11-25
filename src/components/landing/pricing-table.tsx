@@ -152,7 +152,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 border-b-4 border-r-4 border-foreground bg-card px-6 py-4 text-left">
+                  <th className="sticky left-0 z-10 border-b-4 border-r-4 border-foreground bg-muted px-6 py-4 text-left">
                     <span className="text-sm font-semibold text-muted-foreground">
                       Features
                     </span>
@@ -161,7 +161,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     <th
                       key={plan.name}
                       className={`border-b-4 border-l-4 border-foreground px-6 py-4 ${
-                        plan.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
+                        plan.highlighted ? "bg-primary text-primary-foreground" : "bg-muted"
                       }`}
                     >
                       <div className="flex flex-col items-start gap-2">
