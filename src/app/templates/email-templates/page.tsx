@@ -454,7 +454,7 @@ export default function EmailTemplatesShowcase() {
                     <iframe
                       srcDoc={selectedTemplate.preview}
                       title={selectedTemplate.name}
-                      className="min-h-[1200px] w-[600px] mx-auto block rounded border border-border bg-white"
+                      className="min-h-[1200px] w-[800px] mx-auto block rounded border border-border bg-white"
                     />
                   </div>
                 </TabsContent>
