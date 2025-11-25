@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
   Card,
@@ -36,12 +36,7 @@ import { generateVerifyEmailHTML } from "@/emails/verify-email";
 import { CodeBlock } from "@/components/ui/code-block";
 
 // Inject custom scrollbar styling into email HTML
-function injectScrollbarStyles(html: string): string {
-  // Get computed theme color from document
-  const primaryColor = typeof window !== 'undefined'
-    ? getComputedStyle(document.documentElement).getPropertyValue('--primary').trim()
-    : '271.5 81.3% 55.9%'; // Default purple fallback
-
+function injectScrollbarStyles(html: string, primaryColor: string): string {
   const scrollbarStyles = `
     <style>
       /* Custom scrollbar styling - matches main site */
@@ -313,6 +308,36 @@ export default function EmailTemplatesShowcase() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [selectedTemplate, setSelectedTemplate] = useState(emailTemplates[0]);
   const [copied, setCopied] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState('271.5 81.3% 55.9%'); // Default purple
+
+  // Track theme changes
+  useEffect(() => {
+    const updatePrimaryColor = () => {
+      const color = getComputedStyle(document.documentElement)
+        .getPropertyValue('--primary')
+        .trim();
+      if (color) setPrimaryColor(color);
+    };
+
+    // Initial color
+    updatePrimaryColor();
+
+    // Watch for theme changes (data-theme attribute changes)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          updatePrimaryColor();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(selectedTemplate.preview);
@@ -489,7 +514,7 @@ export default function EmailTemplatesShowcase() {
                 <TabsContent value="preview" className="mt-6">
                   <div className="rounded-lg border border-border bg-muted p-4">
                     <iframe
-                      srcDoc={injectScrollbarStyles(selectedTemplate.preview)}
+                      srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
                       title={selectedTemplate.name}
                       className="min-h-[1200px] w-[700px] mx-auto block rounded border border-border bg-white"
                     />
