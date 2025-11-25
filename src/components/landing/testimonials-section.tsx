@@ -2,6 +2,7 @@
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
+import { H2, Body, Small, Strong } from "@/components/ui/typography";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -53,24 +54,26 @@ export function TestimonialsSection() {
     <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-4 text-3xl font-semibold text-foreground"
           >
-            Loved by Developers
-          </motion.h2>
-          <motion.p
+            <H2 className="mb-4">
+              Loved by Developers
+            </H2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg font-normal text-muted-foreground"
           >
-            Early access customer feedback
-          </motion.p>
+            <Body className="text-muted-foreground">
+              Early access customer feedback
+            </Body>
+          </motion.div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -84,9 +87,9 @@ export function TestimonialsSection() {
               className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
             >
               <div className="mb-4 text-3xl font-normal text-muted-foreground/30">"</div>
-              <p className="mb-6 text-sm font-normal leading-relaxed text-muted-foreground">
+              <Small className="block mb-6 text-muted-foreground">
                 {testimonial.quote}
-              </p>
+              </Small>
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">
                   <AvatarFallback className="bg-primary/10 text-primary text-sm font-medium">
@@ -94,12 +97,12 @@ export function TestimonialsSection() {
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <div className="text-sm font-semibold text-foreground">
+                  <Small className="block font-semibold">
                     {testimonial.author}
-                  </div>
-                  <div className="text-xs font-normal text-muted-foreground">
+                  </Small>
+                  <Small className="block text-muted-foreground">
                     {testimonial.role}
-                  </div>
+                  </Small>
                 </div>
               </div>
             </motion.div>
