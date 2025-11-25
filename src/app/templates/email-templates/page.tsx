@@ -37,15 +37,20 @@ import { CodeBlock } from "@/components/ui/code-block";
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string): string {
+  // Get computed theme color from document
+  const primaryColor = typeof window !== 'undefined'
+    ? getComputedStyle(document.documentElement).getPropertyValue('--primary').trim()
+    : '271.5 81.3% 55.9%'; // Default purple fallback
+
   const scrollbarStyles = `
     <style>
       /* Custom scrollbar styling - matches main site */
       * {
         scrollbar-width: thin;
-        scrollbar-color: #e5e5e5 transparent;
+        scrollbar-color: hsl(var(--border, 0 0% 90%)) transparent;
       }
       *:hover {
-        scrollbar-color: #a855f7 transparent;
+        scrollbar-color: hsl(${primaryColor} / 0.5) transparent;
       }
       ::-webkit-scrollbar {
         width: 8px;
@@ -55,12 +60,12 @@ function injectScrollbarStyles(html: string): string {
         background: transparent;
       }
       ::-webkit-scrollbar-thumb {
-        background: #e5e5e5;
+        background: hsl(var(--border, 0 0% 90%));
         border-radius: 4px;
         transition: background 0.2s;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #a855f7;
+        background: hsl(${primaryColor} / 0.5);
       }
     </style>
   `;
