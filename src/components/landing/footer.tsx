@@ -3,8 +3,8 @@ import { LogoAlt as Logo } from "@/components/home/logo-alt";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background px-6 py-16">
-      <div className="mx-auto max-w-7xl">
+    <footer className="border-t border-border bg-background py-16">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Column 1: Logo & Copyright */}
           <div className="lg:col-span-1">
