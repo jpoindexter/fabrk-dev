@@ -62,13 +62,6 @@ export default function AboutPage() {
     },
   ];
 
-  const stats = [
-    { value: "500+", label: "Developers" },
-    { value: "1000+", label: "Projects Launched" },
-    { value: "4.9/5", label: "Average Rating" },
-    { value: "~160", label: "Essential Files" },
-  ];
-
   const reasons = [
     {
       title: "Save Weeks of Development",
@@ -132,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="border-t border-border bg-muted/40 px-6 py-24">
+      <section className="border-t border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center space-y-6">
             <motion.div
@@ -232,7 +225,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="border-t border-border bg-muted/40 px-6 py-24">
+      <section className="border-t border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="text-center">
@@ -310,45 +303,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="border-t border-border bg-background px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl font-semibold text-foreground sm:text-4xl"
-            >
-              By the Numbers
-            </motion.h2>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="mb-2 text-4xl font-bold text-primary sm:text-5xl">
-                  {stat.value}
-                </div>
-                <div className="text-base font-medium text-muted-foreground">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Fabrk */}
-      <section className="border-t border-border bg-muted/40 px-6 py-24">
+      <section className="border-t border-border bg-background px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="text-center">
