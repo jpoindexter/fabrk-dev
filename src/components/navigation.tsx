@@ -30,11 +30,9 @@ export function Navigation() {
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex h-16 items-center">
           {/* Logo on left */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
-              <Logo size={28} />
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
+            <Logo size={28} />
+          </Link>
 
           {/* Right-aligned Navigation Links */}
           <div className="ml-auto hidden items-center gap-6 lg:flex">

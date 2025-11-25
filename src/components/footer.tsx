@@ -25,7 +25,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-12 sm:px-8 lg:px-12">
         {/* Logo and Social - Aligned with header */}
         <div className="mb-12 space-y-4">
-          <Link href="/" className="inline-flex items-center gap-2" aria-label="Fabrk Home">
+          <Link href="/" className="flex items-center gap-2" aria-label="Fabrk Home">
             <Logo size={28} />
           </Link>
           <p className="text-sm text-muted-foreground">
