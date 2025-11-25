@@ -7,6 +7,7 @@ import { useCheckout } from "@/hooks/use-checkout";
 import config from "@/config";
 import { motion } from "framer-motion";
 import { logger } from "@/lib/logger";
+import { H2, Body, Small, Strong } from "@/components/ui/typography";
 
 export function PricingSection() {
   const { createCheckoutSession, isLoading, error } = useCheckout();
@@ -36,24 +37,26 @@ export function PricingSection() {
       className="scroll-mt-16 border-t border-border bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-2 text-center text-3xl font-semibold text-foreground"
         >
-          One Price. Unlimited Projects. Launch Now.
-        </motion.h2>
-        <motion.p
+          <H2 className="mb-2 text-center">
+            One Price. Unlimited Projects. Launch Now.
+          </H2>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mb-16 text-center text-lg text-muted-foreground"
         >
-          No subscriptions, no recurring fees. Pay once, use forever.
-        </motion.p>
+          <Body className="mb-16 text-center text-muted-foreground">
+            No subscriptions, no recurring fees. Pay once, use forever.
+          </Body>
+        </motion.div>
 
         {/* Pricing Card */}
         <div className="mx-auto mt-16 max-w-lg">
@@ -104,9 +107,9 @@ export function PricingSection() {
                   {config.pricing.fabrk.display.original}
                 </span>
               </div>
-              <p className="text-base font-normal text-muted-foreground">
-                Pay once, use forever. <span className="font-medium text-foreground">$0 recurring fees.</span>
-              </p>
+              <Body className="text-muted-foreground">
+                Pay once, use forever. <Strong>$0 recurring fees.</Strong>
+              </Body>
             </motion.div>
 
             {/* Features List */}
@@ -121,7 +124,7 @@ export function PricingSection() {
                   className="flex items-center gap-3"
                 >
                   <Check className="h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
-                  <span className="font-normal text-foreground">{feature}</span>
+                  <Body>{feature}</Body>
                 </motion.li>
               ))}
             </ul>
@@ -158,15 +161,16 @@ export function PricingSection() {
             </motion.div>
 
             {/* Final Sale Notice */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 1 }}
               viewport={{ once: true }}
-              className="mt-6 text-center text-sm font-normal text-muted-foreground"
             >
-              All sales are final. Digital product - no refunds after download.
-            </motion.p>
+              <Small className="block mt-6 text-center text-muted-foreground">
+                All sales are final. Digital product - no refunds after download.
+              </Small>
+            </motion.div>
           </motion.div>
         </div>
       </div>
