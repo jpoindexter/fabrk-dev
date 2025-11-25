@@ -33,7 +33,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 bg-background px-6 py-24"
+      className="scroll-mt-16 border-t border-border bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-7xl">
         <motion.h2

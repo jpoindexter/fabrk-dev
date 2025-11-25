@@ -70,19 +70,19 @@ export function HeroVideo({
             <Badge
               variant="outline"
               size="lg"
-              className="border-2 border-white/30 bg-white/10 text-white backdrop-blur-sm"
+              className="border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
             >
               Early Access - Join First 100 Launch Customers
             </Badge>
           </div>
 
           {/* Headline */}
-          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
             {headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-foreground/90 sm:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             {subheadline}
           </p>
 
@@ -90,14 +90,14 @@ export function HeroVideo({
           <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="h-14 bg-white px-8 text-lg font-semibold text-black shadow-lg transition-all hover:bg-white/90 hover:shadow-xl hover:scale-105"
+              className="h-14 bg-card px-8 text-lg font-semibold text-foreground shadow-lg transition-all hover:bg-muted hover:shadow-xl hover:scale-105"
               asChild
             >
               <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
             </Button>
             <Button
               size="lg"
-              className="h-14 border-2 border-white bg-transparent px-8 text-lg font-semibold text-white transition-all hover:bg-white hover:text-black"
+              className="h-14 border-2 border-foreground bg-transparent px-8 text-lg font-semibold text-foreground transition-all hover:bg-card hover:text-foreground"
               asChild
             >
               <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -111,7 +111,7 @@ export function HeroVideo({
                 key={badge}
                 variant="outline"
                 size="md"
-                className="border-2 border-white/30 bg-white/10 text-white backdrop-blur-sm"
+                className="border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
               >
                 {badge}
               </Badge>
@@ -119,7 +119,7 @@ export function HeroVideo({
           </div>
 
           {/* Final Sale Notice */}
-          <p className="text-sm text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="text-sm text-foreground/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             All sales final • Lifetime v1.x updates
           </p>
         </div>
@@ -129,7 +129,7 @@ export function HeroVideo({
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2">
           <svg
-            className="h-6 w-6 text-white/60"
+            className="h-6 w-6 text-foreground/60"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"

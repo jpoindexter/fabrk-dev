@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-1.5",
+  "inline-flex items-center justify-center rounded-md border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-1.5",
   {
     variants: {
       variant: {
@@ -14,13 +14,11 @@ const badgeVariants = cva(
         destructive: "bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90",
         neutral: "bg-background text-foreground border-foreground hover:bg-muted",
         outline: "bg-transparent border-foreground text-foreground hover:bg-foreground/10",
-        success: "bg-green-100 text-green-900 border-green-300 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-100 dark:border-green-700",
-        warning: "bg-yellow-100 text-yellow-900 border-yellow-300 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-100 dark:border-yellow-700",
-        info: "bg-blue-100 text-blue-900 border-blue-300 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-100 dark:border-blue-700",
       },
       size: {
-        sm: "px-2 py-1 text-xs font-semibold [&>svg]:size-3",
-        md: "px-3 py-1 text-xs font-medium [&>svg]:size-3",
+        // Industry standard: Minimum py-1.5 (6px) for touch-friendly spacing
+        sm: "px-2 py-1.5 text-xs font-semibold [&>svg]:size-3",
+        md: "px-3 py-1.5 text-xs font-medium [&>svg]:size-3",
         lg: "px-4 py-1.5 text-sm font-semibold [&>svg]:size-4",
       },
     },

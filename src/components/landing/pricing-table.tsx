@@ -133,7 +133,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
   };
 
   return (
-    <section className="bg-background px-6 py-24" id="pricing">
+    <section className="border-t border-border bg-background px-6 py-24" id="pricing">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-16 text-center">
@@ -148,11 +148,11 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
         {/* Pricing Table */}
         <div className="overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
           <div className="inline-block min-w-full align-middle">
-            <table className="min-w-full border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <table className="min-w-full border-4 border-foreground shadow-[8px_8px_0px_0px_var(--foreground)]">
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 border-b-4 border-r-4 border-black bg-card px-6 py-4 text-left">
+                  <th className="sticky left-0 z-10 border-b-4 border-r-4 border-foreground bg-card px-6 py-4 text-left">
                     <span className="text-sm font-semibold text-muted-foreground">
                       Features
                     </span>
@@ -160,7 +160,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`border-b-4 border-l-4 border-black px-6 py-4 ${
+                      className={`border-b-4 border-l-4 border-foreground px-6 py-4 ${
                         plan.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
                       }`}
                     >
@@ -206,7 +206,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     key={key}
                     className="bg-card"
                   >
-                    <td className="sticky left-0 z-10 border-r-4 border-black bg-inherit px-6 py-4">
+                    <td className="sticky left-0 z-10 border-r-4 border-foreground bg-inherit px-6 py-4">
                       <span className="text-sm font-semibold text-foreground">
                         {label}
                       </span>
@@ -214,8 +214,8 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     {plans.map((plan) => (
                       <td
                         key={`${plan.name}-${key}`}
-                        className={`border-l-4 border-black px-6 py-4 text-center ${
-                          plan.highlighted ? "bg-primary/5" : ""
+                        className={`border-l-4 border-foreground px-6 py-4 text-center ${
+                          plan.highlighted ? "" : ""
                         }`}
                       >
                         {renderFeatureValue(
@@ -229,20 +229,20 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
               {/* CTA Row */}
               <tfoot>
-                <tr className="border-t-4 border-black">
-                  <td className="sticky left-0 z-10 border-r-4 border-black bg-card px-6 py-6"></td>
+                <tr className="border-t-4 border-foreground">
+                  <td className="sticky left-0 z-10 border-r-4 border-foreground bg-card px-6 py-6"></td>
                   {plans.map((plan) => (
                     <td
                       key={`cta-${plan.name}`}
-                      className={`border-l-4 border-black px-6 py-6 ${
-                        plan.highlighted ? "bg-primary/5" : "bg-card"
+                      className={`border-l-4 border-foreground px-6 py-6 ${
+                        plan.highlighted ? "" : "bg-card"
                       }`}
                     >
                       <Button
                         className={`w-full ${
                           plan.highlighted
                             ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                            : "border-2 border-black bg-card text-foreground hover:bg-foreground hover:text-background"
+                            : "border-2 border-foreground bg-card text-foreground hover:bg-foreground hover:text-background"
                         }`}
                         asChild
                       >

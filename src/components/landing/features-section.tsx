@@ -90,7 +90,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="scroll-mt-16 bg-background px-6 py-24">
+    <section id="features" className="scroll-mt-16 border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

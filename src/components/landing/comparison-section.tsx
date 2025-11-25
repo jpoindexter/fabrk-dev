@@ -68,7 +68,7 @@ export function ComparisonSection() {
   ];
 
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <motion.h2
@@ -100,14 +100,14 @@ export function ComparisonSection() {
         >
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border bg-background">
+              <tr className="border-b border-border">
                 <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
                   Feature
                 </th>
                 <th className="border-l border-border px-6 py-4 text-center text-sm font-semibold text-foreground">
                   Manual Setup
                 </th>
-                <th className="border-l border-border bg-primary/5 px-6 py-4 text-center text-sm font-semibold text-primary">
+                <th className="border-l border-border px-6 py-4 text-center text-sm font-semibold text-primary">
                   Fabrk
                 </th>
               </tr>
@@ -120,7 +120,7 @@ export function ComparisonSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.03 }}
                   viewport={{ once: true }}
-                  className="border-b border-border transition-colors hover:bg-background bg-background"
+                  className="border-b border-border transition-colors hover:bg-muted/50"
                 >
                   <td className="px-6 py-4 text-sm font-normal text-foreground">
                     <div className="font-medium">{feature.name}</div>
@@ -135,7 +135,7 @@ export function ComparisonSection() {
                       <X className="inline-block h-5 w-5 text-destructive" />
                     )}
                   </td>
-                  <td className="border-l border-border bg-primary/5 px-6 py-4 text-center">
+                  <td className="border-l border-border px-6 py-4 text-center">
                     {feature.fabrk ? (
                       <Check className="inline-block h-5 w-5 text-primary" />
                     ) : (
@@ -149,7 +149,7 @@ export function ComparisonSection() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.65 }}
                 viewport={{ once: true }}
-                className="border-t border-border bg-background"
+                className="border-t border-border"
               >
                 <td className="px-6 py-4 text-sm font-semibold text-foreground">
                   Total Time Investment
@@ -157,7 +157,7 @@ export function ComparisonSection() {
                 <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-destructive">
                   73+ hours
                 </td>
-                <td className="border-l border-border bg-primary/10 px-6 py-4 text-center text-base font-semibold text-primary">
+                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-primary">
                   0 hours
                 </td>
               </motion.tr>

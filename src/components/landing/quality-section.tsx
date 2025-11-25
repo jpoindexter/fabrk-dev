@@ -46,7 +46,7 @@ export function QualitySection() {
   ];
 
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.span
@@ -55,7 +55,7 @@ export function QualitySection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Badge className="mb-4" variant="outline">
+            <Badge variant="default" size="lg" className="mb-4 uppercase tracking-wide">
               Quality Assurance
             </Badge>
           </motion.span>
@@ -120,7 +120,7 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-primary/20 bg-primary/5 p-8"
+          className="mt-12 rounded-lg border border-border bg-card shadow-sm p-8"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0">

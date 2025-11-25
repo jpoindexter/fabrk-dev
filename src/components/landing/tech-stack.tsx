@@ -21,7 +21,7 @@ export function TechStack() {
   ];
 
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-2xl font-semibold text-foreground">
           A Modern Stack You Can Trust.

@@ -67,7 +67,7 @@ export function InteractiveDemo() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-lg border border-primary/20 bg-primary/5 p-6"
+              className="rounded-lg border border-border bg-card shadow-sm p-6"
             >
               <p className="text-sm text-foreground">
                 <span className="font-semibold">💡 Fully Interactive:</span> All dashboards and tables are fully functional.

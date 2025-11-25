@@ -57,7 +57,7 @@ export function EnterpriseFeaturesSection() {
   ];
 
   return (
-    <section className="bg-muted/30 px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div

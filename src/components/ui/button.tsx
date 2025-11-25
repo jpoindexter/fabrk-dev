@@ -28,15 +28,16 @@ const buttonVariants = cva(
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "text-foreground hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Consistent high-emphasis CTA styles used across marketing, demo, and variation pages
+        // Industry standard: All button variants use rounded-md for consistency
         primaryCta:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-lg text-base px-6 py-3",
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-md text-base px-6 py-3",
         secondaryCta:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-lg text-base px-6 py-3",
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-md text-base px-6 py-3",
         ghostOnDark:
-          "border border-white/30 bg-transparent text-white hover:bg-white/10 rounded-lg text-base px-6 py-3",
+          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-md text-base px-6 py-3",
       },
       size: {
         default: "h-8 px-3 py-1.5",

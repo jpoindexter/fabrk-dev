@@ -50,7 +50,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.h2

@@ -54,7 +54,7 @@ export function CoreBenefitsSection() {
         {/* AI-First */}
         <motion.div className="mx-auto max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge className="inline-flex items-center gap-2">
+            <Badge variant="default" size="lg" className="inline-flex items-center gap-2 uppercase tracking-wide">
               <Sparkles className="size-4" />
               <span>AI-First</span>
             </Badge>
@@ -87,7 +87,7 @@ export function CoreBenefitsSection() {
         {/* Quality-First */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge className="inline-flex items-center gap-2">
+            <Badge variant="default" size="lg" className="inline-flex items-center gap-2 uppercase tracking-wide">
               <Terminal className="size-4" />
               <span>Quality-First</span>
             </Badge>
@@ -136,7 +136,7 @@ export function CoreBenefitsSection() {
         {/* Complete System */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge>
+            <Badge variant="default" size="lg" className="uppercase tracking-wide">
               Complete
             </Badge>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">

@@ -60,10 +60,10 @@ export function DeveloperExperienceSection() {
   ];
 
   return (
-    <section className="scroll-mt-16 bg-muted/30 px-6 py-24">
+    <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <Badge variant="default" size="lg" className="mb-4">
+          <Badge variant="default" size="lg" className="mb-4 uppercase tracking-wide">
             Built for Developers
           </Badge>
         </div>
