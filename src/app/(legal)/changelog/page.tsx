@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, Bug, Zap, Shield, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DemoNav } from "@/components/demo/demo-nav";
 
 export const metadata: Metadata = {
   title: "Changelog - Product Updates | Fabrk",
@@ -201,9 +200,7 @@ const getVersionBadgeVariant = (type: string) => {
 
 export default function ChangelogPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <DemoNav backButtonText="Back to Home" backButtonHref="/" />
-
+    <>
       {/* Header */}
       <div className="border-b border-border bg-card">
         <div className="mx-auto max-w-4xl px-6 py-16">
@@ -287,6 +284,6 @@ export default function ChangelogPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

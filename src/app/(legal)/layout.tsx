@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DemoNav } from "@/components/demo/demo-nav";
 
 export default function LegalLayout({
   children,
@@ -7,14 +7,7 @@ export default function LegalLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      {/* Simple Header */}
-      <header className="border-b border-border/60 bg-background px-6 py-4">
-        <div className="mx-auto max-w-4xl">
-          <Link href="/" className="text-xl font-bold text-foreground hover:text-primary">
-            ← Back to Fabrk
-          </Link>
-        </div>
-      </header>
+      <DemoNav backButtonText="Back to Home" backButtonHref="/" />
 
       {/* Content */}
       <main className="px-6 py-12">
