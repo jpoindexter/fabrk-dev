@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12">
           {/* Left: Logo & Copyright Section */}
           <div className="lg:w-64 flex-shrink-0">
             <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
@@ -19,8 +19,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Right: Navigation Columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 flex-grow lg:max-w-2xl lg:ml-auto">
+          {/* Center: Navigation Columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 lg:gap-16 flex-grow lg:justify-self-center lg:mx-auto lg:max-w-3xl">
             {/* Column 1: Product */}
           <div>
             <h4 className="mb-4 text-sm font-semibold text-foreground">
