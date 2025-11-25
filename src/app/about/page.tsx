@@ -14,6 +14,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Navigation } from "@/components/landing/navigation";
+import { Footer } from "@/components/landing/footer";
 import {
   Rocket,
   Target,
@@ -33,6 +35,8 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
+
       {/* Hero Section */}
       <section className="border-b border-border bg-gradient-to-b from-accent/30 to-background py-20">
         <div className="container mx-auto max-w-5xl px-6 text-center">
@@ -283,6 +287,8 @@ export default function AboutPage() {
           </p>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
