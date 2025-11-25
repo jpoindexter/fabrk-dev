@@ -85,7 +85,7 @@ export default async function AnalyticsPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <select className="rounded-md border-2 border-black px-4 py-2 text-sm font-semibold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+          <select className="rounded-md border-2 border-black pl-4 pr-10 py-2 text-sm font-semibold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
             <option>Last 7 days</option>
             <option>Last 30 days</option>
             <option>Last 90 days</option>

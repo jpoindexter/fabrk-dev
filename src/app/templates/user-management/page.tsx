@@ -590,7 +590,7 @@ export default function UserManagementTemplate() {
                   onChange={(e) => {
                     table.setPageSize(Number(e.target.value));
                   }}
-                  className="rounded-md border border-border bg-background px-3 py-1 font-semibold shadow-sm"
+                  className="rounded-md border border-border bg-background pl-3 pr-8 py-1 font-semibold shadow-sm"
                 >
                   {[10, 25, 50, 100].map((pageSize) => (
                     <option key={pageSize} value={pageSize}>
