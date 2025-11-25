@@ -7,6 +7,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { H2, H3, Body, BodyMuted, Small } from "@/components/ui/typography";
 import {
   Lock,
   CreditCard,
@@ -219,19 +220,19 @@ function FeatureCard({
       </div>
 
       {/* Title */}
-      <h3 className="mb-2 text-lg font-semibold text-foreground">{title}</h3>
+      <H3 className="mb-2">{title}</H3>
 
       {/* Description */}
-      <p className="mb-4 text-sm text-muted-foreground">{description}</p>
+      <Small className="block mb-4 text-muted-foreground">{description}</Small>
 
       {/* Highlights */}
       <div className="space-y-2">
-        <p className="text-xs font-semibold text-foreground">Includes:</p>
+        <Small className="block font-semibold text-foreground">Includes:</Small>
         <ul className="space-y-1">
           {highlights.map((highlight, i) => (
-            <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+            <li key={i} className="flex items-start gap-2">
               <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-primary" />
-              {highlight}
+              <Small className="text-muted-foreground">{highlight}</Small>
             </li>
           ))}
         </ul>
@@ -253,13 +254,11 @@ export function FeaturesShowcase() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Complete Feature Set
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            <H2 className="mb-4">Complete Feature Set</H2>
+            <Body className="mx-auto max-w-2xl">
               Not just components. Complete SaaS boilerplate with authentication, payments,
               database, real-time, multi-tenancy, admin dashboard, API keys, webhooks, and more.
-            </p>
+            </Body>
           </div>
 
           {/* Features Grid */}
@@ -286,19 +285,19 @@ export function FeaturesShowcase() {
             <div className="grid gap-8 md:grid-cols-4">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">12+</div>
-                <div className="mt-2 text-sm text-muted-foreground">Major Features</div>
+                <Small className="block mt-2 text-muted-foreground">Major Features</Small>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">130+</div>
-                <div className="mt-2 text-sm text-muted-foreground">Tests</div>
+                <Small className="block mt-2 text-muted-foreground">Tests</Small>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="mt-2 text-sm text-muted-foreground">Type Safe</div>
+                <Small className="block mt-2 text-muted-foreground">Type Safe</Small>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">400KB</div>
-                <div className="mt-2 text-sm text-muted-foreground">Documentation</div>
+                <Small className="block mt-2 text-muted-foreground">Documentation</Small>
               </div>
             </div>
           </motion.div>
@@ -311,27 +310,25 @@ export function FeaturesShowcase() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="rounded-lg border border-border bg-card shadow-sm p-8"
           >
-            <h3 className="text-xl font-semibold text-foreground">
-              Why This Saves You 4-6 Weeks
-            </h3>
-            <p className="mt-2 text-muted-foreground">
+            <H3 className="mb-2">Why This Saves You 4-6 Weeks</H3>
+            <Body>
               Building authentication, payments, real-time features, multi-tenancy, admin dashboard, API
               system, and webhooks from scratch typically takes 4-6 weeks of development. Fabrk includes
               all of this production-ready, tested, and documented. Focus on your unique features while we
               handle the boilerplate.
-            </p>
+            </Body>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <div>
-                <p className="text-sm font-semibold text-foreground">Without Fabrk</p>
-                <p className="text-xs text-muted-foreground">
+                <Small className="block font-semibold text-foreground">Without Fabrk</Small>
+                <Small className="block text-muted-foreground">
                   6-8 weeks building features + 2-4 weeks debugging = 8-12 weeks
-                </p>
+                </Small>
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">With Fabrk</p>
-                <p className="text-xs text-muted-foreground">
+                <Small className="block font-semibold text-foreground">With Fabrk</Small>
+                <Small className="block text-muted-foreground">
                   2 weeks customization + focus on unique features = 2-4 weeks
-                </p>
+                </Small>
               </div>
             </div>
           </motion.div>
