@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import { H1, H2, Lead, Small, Strong } from "@/components/ui/typography";
 import { motion } from "framer-motion";
 import {
   siNextdotjs,
@@ -21,31 +22,33 @@ export function HeroSection() {
         {/* Hero Content */}
         <div className="mx-auto max-w-4xl text-center">
           {/* Massive Headline */}
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Ship Your SaaS in 48 Hours, Not 4 Weeks
-          </motion.h1>
+            <H1 className="mb-6">
+              Ship Your SaaS in 48 Hours, Not 4 Weeks
+            </H1>
+          </motion.div>
 
           {/* Sub-headline */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mb-12 max-w-2xl text-lg font-normal leading-relaxed text-muted-foreground sm:text-xl"
           >
-            Stop wrestling with complex setups. Fabrk gives you{" "}
-            <span className="font-medium text-foreground">
-              100 production-ready components
-            </span>
-            , authentication, payments, and everything you need. Ship your SaaS in{" "}
-            <span className="font-medium text-foreground">
-              days, not weeks
-            </span>.
-          </motion.p>
+            <Lead className="mx-auto mb-12 max-w-2xl">
+              Stop wrestling with complex setups. Fabrk gives you{" "}
+              <Strong>
+                100 production-ready components
+              </Strong>
+              , authentication, payments, and everything you need. Ship your SaaS in{" "}
+              <Strong>
+                days, not weeks
+              </Strong>.
+            </Lead>
+          </motion.div>
 
           {/* Primary CTA - Scroll to pricing */}
           <motion.div
@@ -90,9 +93,9 @@ export function HeroSection() {
             </div>
 
             {/* Text */}
-            <p className="text-sm font-medium text-muted-foreground">
+            <Small className="font-medium text-muted-foreground">
               Join 100+ developers who ship faster.
-            </p>
+            </Small>
           </motion.div>
 
           {/* Tech Stack - A Modern Stack You Can Trust */}
@@ -102,9 +105,9 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="space-y-6"
           >
-            <h2 className="text-center text-lg font-semibold text-foreground">
+            <H2 className="text-center">
               A Modern Stack You Can Trust.
-            </h2>
+            </H2>
 
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
               {[
@@ -127,9 +130,9 @@ export function HeroSection() {
                     path={tech.path}
                     className="h-6 w-6 text-foreground transition-colors group-hover:text-primary"
                   />
-                  <span className="text-sm font-medium text-muted-foreground">
+                  <Small className="font-medium text-muted-foreground">
                     {tech.name}
-                  </span>
+                  </Small>
                 </motion.div>
               ))}
             </div>
