@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { H2, Body } from "@/components/ui/typography";
 
 export function FAQSection() {
   const faqs = [
@@ -45,24 +46,26 @@ export function FAQSection() {
       className="scroll-mt-16 border-t border-border bg-background px-6 py-24"
     >
       <div className="mx-auto max-w-3xl">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-2 text-center text-3xl font-semibold text-foreground"
         >
-          Frequently Asked Questions
-        </motion.h2>
-        <motion.p
+          <H2 className="mb-2 text-center">
+            Frequently Asked Questions
+          </H2>
+        </motion.div>
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="mb-12 text-center text-lg text-muted-foreground"
         >
-          Everything you need to know about Fabrk
-        </motion.p>
+          <Body className="mb-12 text-center text-muted-foreground">
+            Everything you need to know about Fabrk
+          </Body>
+        </motion.div>
 
         <Accordion type="single" collapsible className="w-full space-y-3">
           {faqs.map((faq, index) => {
