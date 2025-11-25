@@ -598,7 +598,7 @@ export default function UserManagementTemplate() {
                     table.setPageSize(Number(value));
                   }}
                 >
-                  <SelectTrigger className="h-8 w-16 font-semibold">
+                  <SelectTrigger className="h-8 w-[70px] font-semibold">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
