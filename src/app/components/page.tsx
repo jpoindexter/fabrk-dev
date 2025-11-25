@@ -34,10 +34,38 @@ export default function ComponentsPage() {
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+        {/* Hero Section */}
+        <div className="mb-12 space-y-4 text-center">
+          <h1 className="text-4xl font-bold">87 Production-Ready Components</h1>
+          <p className="text-xl text-muted-foreground">
+            Built with Radix UI + shadcn/ui • 6 Color Themes • TypeScript • WCAG AA Compliant
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Button asChild size="lg">
+              <Link href="/storybook">
+                Explore in Storybook →
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/docs">
+                Documentation
+              </Link>
+            </Button>
+          </div>
+        </div>
+
         {/* Buttons Section */}
         <section id="buttons" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Buttons</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Buttons</h2>
+              <Badge variant="secondary">5 variants</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-button">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Interactive elements with neo-brutalism press effects</p>
           </div>
 
@@ -110,7 +138,15 @@ export default function ComponentsPage() {
         {/* Forms Section */}
         <section id="forms" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Form Components</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Form Components</h2>
+              <Badge variant="secondary">8 types</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-input">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Input elements with brutal borders and focus states</p>
           </div>
 
@@ -219,7 +255,15 @@ export default function ComponentsPage() {
         {/* Cards Section */}
         <section id="cards" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Cards</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Cards</h2>
+              <Badge variant="secondary">3 layouts</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-card">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Content containers with brutal shadows</p>
           </div>
 
@@ -257,7 +301,15 @@ export default function ComponentsPage() {
         {/* Typography Section */}
         <section id="typography" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Typography</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Typography</h2>
+              <Badge variant="secondary">6 styles</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-typography">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Text styles and formatting</p>
           </div>
 
@@ -291,7 +343,15 @@ export default function ComponentsPage() {
         {/* Feedback Section */}
         <section id="feedback" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Feedback</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Feedback</h2>
+              <Badge variant="secondary">2 types</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-alert">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Alerts, badges, and status indicators</p>
           </div>
 
@@ -336,7 +396,15 @@ export default function ComponentsPage() {
         {/* Navigation Section */}
         <section id="navigation" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Navigation</h2>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-3xl font-bold">Navigation</h2>
+              <Badge variant="secondary">1 component</Badge>
+              <Button asChild variant="ghost" size="sm" className="ml-auto">
+                <Link href="/storybook/?path=/story/ui-tabs">
+                  View in Storybook →
+                </Link>
+              </Button>
+            </div>
             <p className="text-muted-foreground">Tabs and navigation elements</p>
           </div>
 
@@ -380,6 +448,20 @@ export default function ComponentsPage() {
           <ActivityTimelineDemo />
         </section>
       </main>
+
+      {/* Sticky CTA Bar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t p-4 flex justify-center gap-4 z-50">
+        <Button asChild size="lg">
+          <Link href="/pricing">
+            Get Started
+          </Link>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <Link href="/storybook">
+            Explore All 87 Components →
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
