@@ -38,15 +38,15 @@ const securityHeaders = [
       // Development: Keep 'unsafe-inline' and 'unsafe-eval' for HMR
       // Production: Remove unsafe directives, rely on nonce from middleware
       (process.env.NODE_ENV === "production"
-        ? "script-src 'self' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com; "
-        : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com; ") +
+        ? "script-src 'self' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com; "
+        : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com; ") +
       // Styles: Allow self and inline styles for Tailwind/styled components
       // Note: 'unsafe-inline' required for Tailwind CSS and CSS-in-JS
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "img-src 'self' data: https: blob:; " +
       "font-src 'self' data: https://fonts.gstatic.com; " +
       "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com " +
-      "https://api.posthog.com https://us.i.posthog.com https://api.openai.com https://api.anthropic.com; " +
+      "https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com https://api.openai.com https://api.anthropic.com; " +
       "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
       "frame-ancestors 'self'; " +
       "base-uri 'self'; " +
@@ -59,6 +59,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
+  },
+
+  // Enable instrumentation for PostHog and monitoring
+  experimental: {
+    instrumentationHook: true,
   },
 
   // Webpack configuration to exclude @react-email from server-side bundling
