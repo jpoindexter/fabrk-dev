@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -13,7 +13,7 @@ This file provides guidance to Claude Code when working with this repository.
 - Prisma ORM + PostgreSQL
 - Resend + React Email templates
 - Framer Motion (v12.23.24) for animations
-- Radix UI (25+ primitives) + Tailwind CSS 4
+- Radix UI (25+ primitives) + Tailwind CSS 4 + DaisyUI
 - Vitest (1500+ tests, 1200+ passing, 80% pass rate)
 - Playwright E2E tests
 - Storybook (95% coverage)
@@ -60,8 +60,20 @@ npm run test:ui          # Vitest UI
 npm run test:e2e         # Playwright E2E tests
 npm run test:e2e:ui      # Playwright UI
 npm run test:e2e:headed  # Playwright with visible browser
-npm run test:a11y        # Accessibility tests
+npm run test:e2e:debug   # Playwright debug mode
+npm run test:a11y        # Accessibility tests (components)
+npm run test:a11y:ui     # Accessibility tests with UI
+npm run test:a11y:headed # Accessibility tests with visible browser
+npm run test:a11y:report # Run a11y tests and open reports
 npm run test:all         # Run Vitest + Playwright
+```
+
+### Documentation & Analysis
+```bash
+npm run docs:api         # Generate TypeDoc API documentation
+npm run docs:serve       # Serve API docs
+npm run lighthouse       # Run Lighthouse audit
+npm run lighthouse:ci    # Lighthouse CI audit
 ```
 
 ### Component Development
@@ -97,9 +109,10 @@ fabrk/
 │   ├── app/
 │   │   ├── [locale]/          # i18n routes (en, es, fr, etc)
 │   │   ├── (legal)/           # Legal pages (privacy, terms, refund)
-│   │   ├── variations/        # Hero/pricing layout variations
+│   │   ├── features/          # Features deep-dive page
+│   │   ├── templates/         # Copy-paste ready templates showcase
 │   │   ├── components/        # Component showcase page
-│   │   ├── templates/         # Copy-paste ready templates
+│   │   ├── variations/        # Hero/pricing layout variations
 │   │   ├── api/              # API routes (v1, webhooks)
 │   │   ├── layout.tsx         # Root layout
 │   │   └── page.tsx           # Landing page
@@ -122,7 +135,7 @@ fabrk/
 │   ├── hooks/                 # Custom React hooks
 │   ├── middleware.ts          # NextAuth + i18n middleware
 │   ├── config.js              # Central configuration ⭐
-│   └── globals.css            # Tailwind + CSS variables
+│   └── globals.css            # Tailwind + CSS variables + DaisyUI themes
 ├── .storybook/                # Storybook config
 ├── tests/
 │   ├── e2e/                   # Playwright tests
@@ -170,7 +183,12 @@ if (!session?.user) {
 }
 ```
 
-### Stripe Payment Integration
+### Payment Integration (Stripe + Polar)
+
+**Dual Payment System:**
+The codebase supports both Stripe and Polar.sh for payments. Polar is the primary system for Fabrk product sales.
+
+**Stripe Integration:**
 **`src/lib/stripe.ts`** + **`src/app/api/stripe/checkout/route.ts`** - Payment flow:
 1. Create Stripe Checkout session
 2. User pays
@@ -182,6 +200,26 @@ if (!session?.user) {
 - `CheckoutSession` model tracks sessions
 - Same user + price = returns existing checkout URL
 - Prevents duplicate charges on page refresh
+
+**Polar Integration:**
+**`src/lib/polar.ts`** + **`src/app/api/polar/checkout/route.ts`** - Primary payment system:
+- Product sales via Polar.sh
+- One-time purchases with per-seat licensing
+- Discount codes supported (auto-expiring at usage limits)
+- Webhook handling at `src/app/api/webhooks/polar/route.ts`
+
+**Environment Variables:**
+```bash
+# Polar (primary payment system)
+POLAR_ACCESS_TOKEN=polar_at_xxx
+NEXT_PUBLIC_POLAR_PRODUCT_ID=your_product_id
+POLAR_WEBHOOK_SECRET=whsec_xxx
+
+# Stripe (legacy/alternative)
+STRIPE_SECRET_KEY=sk_test_xxx
+STRIPE_PUBLISHABLE_KEY=pk_test_xxx
+STRIPE_WEBHOOK_SECRET=whsec_xxx
+```
 
 ### Multi-Tenancy & RBAC
 **Models:** `Organization`, `OrganizationMember`, `OrganizationInvite`
@@ -202,6 +240,27 @@ if (!session?.user) {
 - Notifications (bell icon with badge)
 - Activity feed (org events)
 - Presence tracking (online members)
+
+### Analytics (PostHog)
+**Optional Integration:** Set `analytics` feature flag in `src/config.js`
+
+**Components:**
+- **`src/components/providers/analytics-provider.tsx`** - Client-side PostHog provider
+- **`src/components/analytics/posthog-pageview.tsx`** - Automatic pageview tracking
+
+**Environment Variables:**
+```bash
+NEXT_PUBLIC_POSTHOG_KEY=phc_xxx
+NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
+```
+
+**Usage:**
+```typescript
+import { usePostHog } from 'posthog-js/react';
+
+const posthog = usePostHog();
+posthog?.capture('event_name', { property: 'value' });
+```
 
 ### Webhooks System
 **`src/lib/webhooks/server.ts`** - Production-grade webhook handling:
@@ -236,27 +295,29 @@ npm run email:dev    # Run worker with auto-restart
 ### Design System & Styling
 **CRITICAL RULE:** Use design tokens, never hardcoded colors.
 
+**DaisyUI Theme System (20 themes):**
+The project uses DaisyUI themes with OKLCH color format in `src/app/globals.css`. All colors are defined using OKLCH values directly from DaisyUI's official theme files for pixel-perfect accuracy.
+
 **CSS Variables in `src/app/globals.css`:**
 ```css
---primary              /* Theme-specific */
+--primary              /* Theme-specific (OKLCH format) */
 --primary-foreground   /* Text on primary */
 --background
 --foreground
+--card
 --muted
 --muted-foreground
 --border
---card
 --destructive          /* Error/danger */
 --success              /* Success states */
 ```
 
-**6 Color Themes:**
-- Purple (default)
-- Ocean Blue
-- Forest Green
-- Sunset Orange
-- Hot Pink
-- Ruby Red
+**20 DaisyUI Themes:**
+- light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro, cyberpunk, valentine
+- halloween, garden, forest, aqua, lofi, pastel, fantasy, wireframe, luxury, dracula, cmyk, autumn, business, acid, lemonade, night, coffee, winter, dim, nord, sunset
+
+**Theme Switching:**
+Users can switch themes via the theme selector component. Themes are applied using `data-theme` attribute.
 
 **Strict Rule - Run linter to catch violations:**
 ```bash
@@ -272,6 +333,14 @@ npm run scan:hex      # Detects hardcoded hex colors ❌
 // ❌ BAD (breaks theme switching)
 <Button className="bg-purple-500 text-white">
 <div className="text-gray-600">
+```
+
+**OKLCH Color Format:**
+Tailwind CSS 4 supports OKLCH natively. Format: `oklch(lightness% chroma hue)`
+```css
+/* Example from DaisyUI dark theme */
+--background: 23.26% 0.014 253.1;      /* oklch(23.26% 0.014 253.1) */
+--card: 25.33% 0.016 252.42;           /* oklch(25.33% 0.016 252.42) */
 ```
 
 ---
@@ -378,14 +447,15 @@ npm run test:all
 
 1. **`src/config.js`** - App settings, pricing, feature flags (uses validated env vars)
 2. **`src/lib/env.ts`** - Environment variable validation (add new vars here first)
-3. **`src/app/[locale]/page.tsx`** - Landing page content
-4. **`src/components/landing/*`** - Landing page sections (with animations)
-5. **`src/components/ui/*`** - Theme-using UI components
-6. **`src/lib/auth.ts`** - Auth configuration
-7. **`src/app/api/*`** - API endpoints
-8. **`prisma/schema.prisma`** - Database schema
-9. **`src/app/globals.css`** - Theme colors & design tokens
-10. **`src/emails/*`** - Email templates
+3. **`src/app/page.tsx`** - Landing page content
+4. **`src/app/features/page.tsx`** - Features deep-dive page (8 feature categories)
+5. **`src/components/landing/*`** - Landing page sections (with animations)
+6. **`src/components/ui/*`** - Theme-using UI components
+7. **`src/lib/auth.ts`** - Auth configuration
+8. **`src/app/api/*`** - API endpoints
+9. **`prisma/schema.prisma`** - Database schema
+10. **`src/app/globals.css`** - Theme colors & DaisyUI OKLCH values
+11. **`src/emails/*`** - Email templates
 
 ---
 
@@ -466,6 +536,30 @@ Located in `src/config.js`:
 
 ---
 
+## Legal & Licensing
+
+**Business Model:** Per-seat licensing at €299 per developer seat
+
+**Legal Entity:** THEFT BV (Netherlands)
+- KVK: 81705344
+- VAT: NL862188726B01
+- Fabrk is a product of THEFT BV
+
+**Key Legal Documents:**
+- **Terms of Service** (`src/app/(legal)/terms/page.tsx`) - Comprehensive ToS with per-seat licensing model, EU consumer rights, and Dutch jurisdiction
+- **Privacy Policy** (`src/app/(legal)/privacy/page.tsx`)
+- **Cookie Policy** (`src/app/(legal)/cookies/page.tsx`)
+- **Refund Policy** (`src/app/(legal)/refund/page.tsx`)
+
+**Licensing Rules:**
+- One license = one developer seat
+- Enterprise threshold: 10+ seats (contact legal@fabrk.dev)
+- Licenses can be reassigned permanently (employee turnover)
+- No concurrent usage by multiple developers
+- Account termination = seat termination
+
+---
+
 ## Troubleshooting Common Issues
 
 ### Environment Variable Validation Errors
@@ -509,7 +603,7 @@ Located in `src/config.js`:
 ```bash
 npm run scan:hex
 ```
-Use tokens from `globals.css` instead.
+Use tokens from `globals.css` instead. All colors must use design tokens (CSS variables) to work with DaisyUI themes.
 
 ### Port 3000 Already in Use
 **Solution:** The dev script auto-kills processes, so just run:
@@ -549,7 +643,7 @@ const key = env.server.STRIPE_SECRET_KEY;
 
 - **Files:** 156 (cleaner than competitors)
 - **Components:** 87 (30% more than shadcn/ui's 67)
-- **Themes:** 6 (switchable)
+- **Themes:** 20 DaisyUI themes (switchable)
 - **Test Suite:** 1500+ total tests, 1200+ passing (80% pass rate)
 - **Storybook:** 95% component coverage
 - **Documentation:** 400KB+ across 25+ guides
@@ -596,5 +690,17 @@ When adding features, ask: "Does this help ship faster?" If no, delete it.
 
 ---
 
-**Last Updated:** November 18, 2025
+## Recent Updates
+
+**November 26, 2025:**
+- Added comprehensive per-seat licensing model (€299/seat)
+- Integrated Polar.sh as primary payment system (alongside Stripe)
+- Updated Terms of Service with THEFT BV legal entity (KVK: 81705344, VAT: NL862188726B01)
+- Added EU consumer withdrawal rights and Dutch jurisdiction
+- Enterprise threshold set at 10+ seats
+- PostHog analytics integration for usage tracking
+
+---
+
+**Last Updated:** November 26, 2025
 **Version:** 1.0.0
