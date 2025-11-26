@@ -482,7 +482,7 @@
 [data-theme="autumn"] {
   --background: 0 0% 100%;
   --foreground: 345 80% 14%;
-  --card: 0 0% 98%; /* Light gray for subtle card elevation */
+  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
   --primary: 345 65% 47%;
   --primary-foreground: 0 0% 100%;
   --secondary: 14 80% 63%;
@@ -501,8 +501,8 @@
 [data-theme="business"] {
   --background: 210 14% 13%;
   --foreground: 0 0% 100%;
-  --card: 210 14% 16%;
-  --card-foreground: 0 0% 100%;
+  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
+  --card-foreground: 0 0% 13%; /* Dark text on white cards */
   --popover: 210 14% 16%;
   --popover-foreground: 0 0% 100%;
   --primary: 210 64% 31%;
