@@ -7,6 +7,7 @@
 
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   H1,
   H2,
@@ -54,11 +55,15 @@ export default function TermsPage() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-12 rounded-lg border border-border bg-card p-6"
+          className="mb-12"
         >
-          <Body className="text-lg">
-            Please read these Terms of Service carefully before purchasing or using Fabrk. By accessing or using our Service, you acknowledge that you have read, understood, and agree to be bound by these terms.
-          </Body>
+          <Card>
+            <CardContent className="pt-6">
+              <Body className="text-lg">
+                Please read these Terms of Service carefully before purchasing or using Fabrk. By accessing or using our Service, you acknowledge that you have read, understood, and agree to be bound by these terms.
+              </Body>
+            </CardContent>
+          </Card>
         </motion.div>
 
         <div className="space-y-12">
@@ -394,20 +399,24 @@ export default function TermsPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-border bg-card p-6"
+          className="mt-12"
         >
-          <Small className="block mb-4">
-            Related Legal Documents:
-          </Small>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/privacy" className="text-sm font-medium">
-              Privacy Policy
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link href="/cookies" className="text-sm font-medium">
-              Cookie Policy
-            </Link>
-          </div>
+          <Card>
+            <CardContent className="pt-6">
+              <Small className="block mb-4">
+                Related Legal Documents:
+              </Small>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/privacy" className="text-sm font-medium">
+                  Privacy Policy
+                </Link>
+                <span className="text-muted-foreground">•</span>
+                <Link href="/cookies" className="text-sm font-medium">
+                  Cookie Policy
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
     </main>
   );
