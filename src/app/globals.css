@@ -145,19 +145,19 @@
 
 /* Dark - Professional dark theme */
 [data-theme="dark"] {
-  --background: 222 47% 11%;
+  --background: 222 47% 12%; /* Material Design inspired */
   --foreground: 0 0% 89%;
   --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
   --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 222 47% 14%;
+  --popover: 222 47% 20%; /* +8% for elevation */
   --popover-foreground: 0 0% 89%;
   --primary: 197 92% 61%;
   --primary-foreground: 222 47% 11%;
-  --secondary: 338 71% 75%;
+  --secondary: 222 47% 28%; /* Aligned with muted for consistency */
   --secondary-foreground: 222 47% 11%;
   --accent: 199 89% 48%;
   --accent-foreground: 0 0% 100%;
-  --muted: 222 47% 18%;
+  --muted: 222 47% 28%; /* +16% for clear contrast */
   --muted-foreground: 0 0% 78%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
   --border: 222 47% 23%;
   --input: 222 47% 23%;
@@ -238,11 +238,11 @@
 
 /* Synthwave - Neon purple/pink */
 [data-theme="synthwave"] {
-  --background: 262 58% 8%;
+  --background: 262 58% 12%; /* Material Design inspired */
   --foreground: 0 0% 100%;
   --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
   --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 262 58% 11%;
+  --popover: 262 58% 20%; /* +8% for elevation */
   --popover-foreground: 0 0% 100%;
   --primary: 321 70% 38%; /* WCAG AA fix: darkened from 52% for 4.5:1 contrast */
   --primary-foreground: 0 0% 100%;
@@ -250,7 +250,7 @@
   --secondary-foreground: 262 58% 8%;
   --accent: 58 90% 68%;
   --accent-foreground: 262 58% 8%;
-  --muted: 262 58% 13%;
+  --muted: 262 58% 28%; /* +16% for clear contrast */
   --muted-foreground: 0 0% 80%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
   --border: 262 40% 20%;
   --input: 262 40% 20%;
@@ -280,13 +280,16 @@
   --background: 53 100% 50%;
   --foreground: 337 60% 17%;
   --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
+  --card-foreground: 0 0% 13%; /* Dark text on white cards */
+  --popover: 0 0% 96%; /* Neutral gray for luminance contrast on yellow */
+  --popover-foreground: 0 0% 13%; /* Dark text on light gray popover */
   --primary: 340 100% 63%;
   --primary-foreground: 337 60% 17%;
-  --secondary: 195 100% 52%;
+  --secondary: 0 0% 92%; /* Aligned with muted */
   --secondary-foreground: 337 60% 17%;
-  --accent: 53 100% 50%;
+  --accent: 340 100% 63%; /* Pink accent for visibility */
   --accent-foreground: 337 60% 17%;
-  --muted: 53 90% 45%;
+  --muted: 0 0% 92%; /* Neutral gray for visibility */
   --muted-foreground: 337 60% 30%;
   --border: 53 80% 40%;
   --input: 53 80% 40%;
@@ -463,7 +466,7 @@
   --foreground: 60 30% 96%;
   --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
   --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 231 15% 24%;
+  --popover: 231 15% 20%; /* +8% for elevation */
   --popover-foreground: 60 30% 96%;
   --primary: 326 100% 74%;
   --primary-foreground: 231 15% 18%;
