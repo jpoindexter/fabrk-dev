@@ -51,7 +51,7 @@ const defaultPlans: PricingPlan[] = [
       dataTable: true,
       emailTemplates: "5",
       oauthProviders: true,
-      paymentProviders: "Stripe",
+      paymentProviders: "Stripe/Lemon",
       documentation: "Good",
       support: "Discord",
       updates: "Lifetime",

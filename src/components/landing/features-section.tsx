@@ -3,14 +3,13 @@
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
   siAuth0,
-  siStripe,
   siPrisma,
   siResend,
   siTailwindcss,
   siTypescript,
   siOpenai,
 } from "simple-icons";
-import { Upload, Brain, Flag as FlagIcon, Lock, FileText } from "lucide-react";
+import { Upload, Brain, Flag as FlagIcon, Lock, FileText, CreditCard } from "lucide-react";
 import { motion } from "framer-motion";
 import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
 
@@ -23,10 +22,10 @@ export function FeaturesSection() {
         "NextAuth v5 with credentials, Google OAuth, and magic link passwordless login. Email verification and password reset flows included.",
     },
     {
-      icon: siStripe.path,
+      iconComponent: "creditcard",
       title: "Stripe Payments & Webhooks",
       description:
-        "Accept one-time payments and subscriptions. Production-ready webhook processing with signature verification and idempotency protection.",
+        "Accept one-time payments and subscriptions with Stripe Checkout. Production-ready webhook processing with signature verification.",
     },
     {
       icon: siPrisma.path,
@@ -80,7 +79,7 @@ export function FeaturesSection() {
       iconComponent: "invoice",
       title: "Invoice Generation",
       description:
-        "Automatic Stripe invoice creation for subscriptions and one-time purchases. PDF generation and email delivery handled automatically.",
+        "Automatic invoice creation for purchases. PDF generation and email delivery handled automatically via webhook events.",
     },
     {
       iconComponent: "filetext",
@@ -122,6 +121,7 @@ export function FeaturesSection() {
               feature.iconComponent === "invoice" ? FileText :
               feature.iconComponent === "filetext" ? FileText :
               feature.iconComponent === "upload" ? Upload :
+              feature.iconComponent === "creditcard" ? CreditCard :
               null;
 
             return (

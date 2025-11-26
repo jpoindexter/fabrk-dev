@@ -168,8 +168,8 @@ const CATEGORIES = [
         items: [
           "Stripe integration",
           "One-time payments",
-          "Recurring subscriptions",
-          "Customer portal",
+          "Subscriptions",
+          "Stripe Checkout",
           "Invoice generation",
           "Webhook handling",
           "Idempotency system",

@@ -43,7 +43,7 @@ Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for pr
 **Enterprise Features:**
 
 ✅ **Authentication** - NextAuth v5 (Credentials + Google OAuth)
-✅ **Payments** - Stripe (one-time + subscriptions)
+✅ **Payments** - Stripe (one-time payments + subscriptions)
 ✅ **Database** - PostgreSQL + Prisma ORM
 ✅ **Email** - Resend with React Email templates
 ✅ **UI Components** - 87+ production-ready components with a cohesive design system + Storybook
@@ -112,7 +112,7 @@ Visit **http://localhost:3000** 🎉
 
 - **Next.js 15** - App Router, Server Components, React 19
 - **Authentication** - NextAuth v5 with email/password + OAuth
-- **Payments** - Stripe Checkout + Customer Portal + Webhooks
+- **Payments** - Stripe Checkout + Webhooks
 - **Database** - PostgreSQL with Prisma ORM
 - **Email** - Transactional emails via Resend
 - **TypeScript** - Strict mode for type safety
@@ -273,7 +273,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 | Setup Next.js + TypeScript | 4 hours | ✅ Done |
 | Database + Prisma | 8 hours | ✅ Done |
 | Authentication | 40 hours | ✅ Done |
-| Stripe integration | 24 hours | ✅ Done |
+| Payment integration | 24 hours | ✅ Done |
 | Email system | 16 hours | ✅ Done |
 | UI components | 40 hours | ✅ Done |
 | Landing pages | 16 hours | ✅ Done |
@@ -478,7 +478,7 @@ fabrk/
 │   │   ├── dashboard/      # Dashboard components
 │   │   └── settings/       # Settings pages
 │   ├── emails/             # 5 email templates
-│   ├── lib/                # Utilities (auth, db, stripe, email)
+│   ├── lib/                # Utilities (auth, db, polar, email)
 │   └── config.js           # Central configuration
 └── public/                 # Static assets
 ```

@@ -49,7 +49,7 @@ export function DeveloperExperienceSection() {
       iconComponent: "terminal",
       title: "Developer Commands",
       description:
-        "npm run dev:restart kills port conflicts. Prisma Studio for database GUI. Stripe CLI webhooks. Storybook for component development.",
+        "npm run dev:restart kills port conflicts. Prisma Studio for database GUI. Stripe CLI for webhook testing. Storybook for component development.",
     },
     {
       icon: siTypescript.path,

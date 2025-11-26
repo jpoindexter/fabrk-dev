@@ -21,7 +21,7 @@ const COMPARISON_ITEMS = [
   },
   {
     feature: "Stripe Payments",
-    description: "One-time payments, subscriptions, webhooks",
+    description: "Checkout, subscriptions, webhooks",
     diy: { time: "3-5 days", cost: "$1,500-$2,500" },
     fabrk: "Included",
   },

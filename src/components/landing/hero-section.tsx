@@ -12,9 +12,9 @@ import {
   siReact,
   siTailwindcss,
   siPrisma,
-  siStripe,
   siAuth0,
   siResend,
+  siStripe,
 } from "simple-icons";
 
 export function HeroSection() {
@@ -125,8 +125,8 @@ export function HeroSection() {
                 { name: "React", path: siReact.path },
                 { name: "Tailwind CSS", path: siTailwindcss.path },
                 { name: "Prisma", path: siPrisma.path },
-                { name: "Stripe", path: siStripe.path },
                 { name: "NextAuth", path: siAuth0.path },
+                { name: "Stripe", path: siStripe.path },
                 { name: "Resend", path: siResend.path },
               ].map((tech, idx) => (
                 <motion.div
