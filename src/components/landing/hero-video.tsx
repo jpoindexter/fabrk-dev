@@ -77,12 +77,12 @@ export function HeroVideo({
           </div>
 
           {/* Headline */}
-          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
             {headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-foreground/90 sm:text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-foreground/90 sm:text-xl">
             {subheadline}
           </p>
 
@@ -90,7 +90,7 @@ export function HeroVideo({
           <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="h-14 bg-card px-8 text-lg font-semibold text-foreground shadow-lg transition-all hover:bg-muted hover:shadow-xl hover:scale-105"
+              className="h-14 bg-card px-8 text-lg font-semibold text-foreground transition-all hover:bg-muted hover:scale-105"
               asChild
             >
               <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
@@ -119,7 +119,7 @@ export function HeroVideo({
           </div>
 
           {/* Final Sale Notice */}
-          <p className="text-sm text-foreground/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+          <p className="text-sm text-foreground/80">
             All sales final • Lifetime v1.x updates
           </p>
         </div>

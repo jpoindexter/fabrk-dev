@@ -21,21 +21,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+          "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-foreground/20 bg-background shadow-sm hover:bg-foreground/10 hover:border-foreground/40",
+          "border border-foreground/20 bg-background hover:bg-foreground/10 hover:border-foreground/40",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "text-foreground hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Consistent high-emphasis CTA styles used across marketing, demo, and variation pages
         // Industry standard: All button variants use rounded-md for consistency
         primaryCta:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90 rounded-md text-base px-6 py-3",
+          "bg-primary text-primary-foreground hover:bg-primary/90 rounded-md text-base px-6 py-3",
         secondaryCta:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-md text-base px-6 py-3",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md text-base px-6 py-3",
         ghostOnDark:
           "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-md text-base px-6 py-3",
       },

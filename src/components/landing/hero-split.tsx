@@ -57,7 +57,7 @@ export function HeroSplit({
             <div className="mb-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="h-14 bg-primary px-8 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
+                className="h-14 bg-primary px-8 text-lg font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                 asChild
               >
                 <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>

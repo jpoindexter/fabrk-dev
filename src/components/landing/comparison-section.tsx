@@ -99,7 +99,7 @@ export function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+          className="overflow-hidden rounded-lg border border-border bg-card"
         >
           <table className="w-full">
             <thead>

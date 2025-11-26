@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import { H1, H2, Lead, Small, Strong } from "@/components/ui/typography";
+import { PolarCheckoutButton } from "@/components/polar/checkout-button";
+import { DiscountCounter } from "@/components/polar/discount-counter";
 import { motion } from "framer-motion";
 import {
   siNextdotjs,
@@ -50,25 +52,33 @@ export function HeroSection() {
             </Lead>
           </motion.div>
 
-          {/* Primary CTA - Scroll to pricing */}
+          {/* Primary CTA - Polar.sh Checkout */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+            className="mb-4 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <Link href="#pricing">
-              <Button size="xl" className="text-lg">
-                Get Fabrk
-              </Button>
-            </Link>
+            <PolarCheckoutButton className="text-lg">
+              Get Fabrk - $199
+            </PolarCheckoutButton>
+          </motion.div>
+
+          {/* Discount Counter */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mb-8 flex justify-center"
+          >
+            <DiscountCounter />
           </motion.div>
 
           {/* Social Proof with Avatars */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
             {/* Avatar Stack */}
@@ -85,7 +95,7 @@ export function HeroSection() {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 + idx * 0.05 }}
-                  className={`h-10 w-10 rounded-full border-2 border-background ${avatar.bgColor} flex items-center justify-center ${avatar.textColor} font-medium text-sm shadow-sm`}
+                  className={`h-10 w-10 rounded-full border-2 border-background ${avatar.bgColor} flex items-center justify-center ${avatar.textColor} font-medium text-sm`}
                 >
                   {avatar.initials}
                 </motion.div>
@@ -124,7 +134,7 @@ export function HeroSection() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 + idx * 0.05 }}
-                  className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-4 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                  className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-border bg-card p-4 transition-all hover:border-primary/50"
                 >
                   <SimpleIcon
                     path={tech.path}

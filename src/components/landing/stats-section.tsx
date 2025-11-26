@@ -75,7 +75,7 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               viewport={{ once: true }}
-              className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+              className="group rounded-lg border border-border bg-card p-8 transition-all hover:border-primary/50"
             >
               <div className="mb-2 text-4xl font-semibold text-foreground">{stat.value}</div>
               <H3 className="mb-2">{stat.label}</H3>

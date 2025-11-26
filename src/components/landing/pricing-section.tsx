@@ -1,20 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Loader2 } from "lucide-react";
-import { useCheckout } from "@/hooks/use-checkout";
+import { Check } from "lucide-react";
 import config from "@/config";
 import { motion } from "framer-motion";
-import { logger } from "@/lib/logger";
 import { H2, Body, Small, Strong } from "@/components/ui/typography";
+import { DiscountCounter } from "@/components/polar/discount-counter";
+import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 
 export function PricingSection() {
-  const { createCheckoutSession, isLoading, error } = useCheckout();
-
-  // Use the Fabrk one-time purchase price
-  const priceId = config.stripe.prices.fabrk || process.env.NEXT_PUBLIC_STRIPE_PRICE_FABRK || "";
-
   const features = [
     "Next.js 15 Boilerplate",
     "Lifetime Updates",
@@ -22,14 +16,6 @@ export function PricingSection() {
     "Access to Private Discord",
     "Full Source Code",
   ];
-
-  const handleCheckout = () => {
-    if (priceId) {
-      createCheckoutSession(priceId);
-    } else {
-      logger.error("No price ID configured");
-    }
-  };
 
   return (
     <section
@@ -65,7 +51,7 @@ export function PricingSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="rounded-lg border border-border bg-card p-10 shadow-md"
+            className="rounded-lg border border-border bg-card p-10"
           >
             {/* Plan Name */}
             <motion.div
@@ -80,17 +66,15 @@ export function PricingSection() {
               </Badge>
             </motion.div>
 
-            {/* Scarcity Badge */}
+            {/* Scarcity Badge - Live Discount Counter */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mb-4 text-center"
+              className="mb-4 flex justify-center"
             >
-              <Badge variant="destructive" size="lg">
-                🔥 $100 OFF - First 500 Customers Only
-              </Badge>
+              <DiscountCounter />
             </motion.div>
 
             {/* Price */}
@@ -129,13 +113,6 @@ export function PricingSection() {
               ))}
             </ul>
 
-            {/* Error Message */}
-            {error && (
-              <div className="mb-4 rounded-md border border-destructive/50 bg-destructive/10 p-4 text-sm font-medium text-destructive">
-                {error}
-              </div>
-            )}
-
             {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -143,21 +120,9 @@ export function PricingSection() {
               transition={{ duration: 0.5, delay: 0.85 }}
               viewport={{ once: true }}
             >
-              <Button
-                size="lg"
-                className="w-full"
-                onClick={handleCheckout}
-                disabled={isLoading || !priceId}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  "Buy Now & Ship Faster"
-                )}
-              </Button>
+              <PolarCheckoutButton size="lg" className="w-full">
+                Buy Now & Ship Faster
+              </PolarCheckoutButton>
             </motion.div>
 
             {/* Final Sale Notice */}

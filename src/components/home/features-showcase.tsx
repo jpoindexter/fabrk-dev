@@ -308,7 +308,7 @@ export function FeaturesShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-lg border border-border bg-card shadow-sm p-8"
+            className="rounded-lg border border-border bg-card p-8"
           >
             <H3 className="mb-2">Why This Saves You 4-6 Weeks</H3>
             <Body>

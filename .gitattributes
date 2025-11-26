@@ -1,0 +1,7 @@
+
+# Distribution exclusions (for git archive)
+tests/theme-screenshots export-ignore
+.gemini export-ignore
+src/app/test-posthog export-ignore
+src/app/demo-dashboard export-ignore
+.git-archive-exclude export-ignore

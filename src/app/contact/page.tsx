@@ -297,7 +297,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="refunds"
-                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Do you offer refunds?
@@ -320,7 +320,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="support"
-                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Is technical support included?
@@ -339,7 +339,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="client-projects"
-                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Can I use Fabrk for client projects?
@@ -358,7 +358,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="updates"
-                  className="rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md data-[state=open]:shadow-md"
+                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Do I get lifetime updates?

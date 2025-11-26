@@ -131,7 +131,7 @@ export function FeaturesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                className="group rounded-lg border border-border bg-card p-8 transition-all hover:border-primary/50"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
                   {feature.icon ? (
@@ -157,7 +157,7 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16 rounded-lg border border-border bg-card shadow-sm p-8"
+          className="mt-16 rounded-lg border border-border bg-card p-8"
         >
           <Small className="block text-center">
             <Strong>Also Included: </Strong>

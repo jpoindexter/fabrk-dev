@@ -82,7 +82,7 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="border-t-2 border-border bg-card/95 backdrop-blur-sm shadow-lg">
+      <div className="border-t-2 border-border bg-card/95 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-3">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
             {/* Message */}
@@ -104,7 +104,7 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm" className="shadow-md">
+              <Button asChild size="sm">
                 <Link href={ctaHref}>
                   {ctaText}
                   <ArrowRight className="ml-2 h-4 w-4" />

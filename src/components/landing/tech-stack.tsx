@@ -31,7 +31,7 @@ export function TechStack() {
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="group flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+              className="group flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-card p-6 transition-all hover:border-primary/50"
             >
               <SimpleIcon
                 path={tech.path}

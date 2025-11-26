@@ -151,7 +151,7 @@ export function ValueProposition() {
           </div>
 
           {/* Feature Comparison Table */}
-          <div className="overflow-x-auto rounded-lg border border-border bg-card shadow-sm">
+          <div className="overflow-x-auto rounded-lg border border-border bg-card">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border bg-muted">
@@ -196,7 +196,7 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-lg border border-border bg-card p-8 shadow-sm"
+            className="rounded-lg border border-border bg-card p-8"
           >
             <div className="grid gap-8 md:grid-cols-3">
               <div>
@@ -269,7 +269,7 @@ export function ValueProposition() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-lg border border-border bg-card p-8 shadow-sm"
+            className="rounded-lg border border-border bg-card p-8"
           >
             <H3 className="mb-4">Key Takeaways</H3>
             <div className="space-y-3">
@@ -318,7 +318,7 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center shadow-sm sm:flex-row"
+            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center sm:flex-row"
           >
             <div>
               <Body className="font-semibold">Ready to ship faster?</Body>

@@ -132,7 +132,7 @@ export function ExitIntentPopup({
         </DialogHeader>
 
         {showPricing && (
-          <div className="my-4 rounded-lg border-2 border-border bg-card shadow-sm p-4">
+          <div className="my-4 rounded-lg border-2 border-border bg-card p-4">
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-3xl font-bold text-foreground">

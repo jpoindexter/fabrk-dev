@@ -87,7 +87,7 @@ export function DeveloperExperienceSection() {
             return (
               <div
                 key={feature.title}
-                className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                className="group rounded-lg border border-border bg-card p-6 transition-all hover:border-primary/50"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
                   {feature.icon ? (

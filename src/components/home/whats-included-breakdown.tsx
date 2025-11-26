@@ -433,7 +433,7 @@ export function WhatsIncludedBreakdown() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-lg border border-border bg-card shadow-sm p-8"
+            className="rounded-lg border border-border bg-card p-8"
           >
             <H3 className="mb-4">What This Means</H3>
             <div className="grid gap-6 md:grid-cols-3">

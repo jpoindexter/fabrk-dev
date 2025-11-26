@@ -92,7 +92,7 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-8 shadow-sm transition-all hover:border-primary/50 hover:shadow-md"
+                className="group rounded-lg border border-border bg-card p-8 transition-all hover:border-primary/50"
               >
                 <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
                   {item.iconComponent === "testTube" ? (
@@ -123,7 +123,7 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-border bg-card shadow-sm p-8"
+          className="mt-12 rounded-lg border border-border bg-card p-8"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0">

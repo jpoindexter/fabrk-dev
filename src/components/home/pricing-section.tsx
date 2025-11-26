@@ -95,7 +95,7 @@ export function PricingSection() {
             <motion.div
               key={plan.name}
               className={`relative rounded-lg border bg-background p-8 ${
-                plan.popular ? "border-foreground shadow-sm" : "border-border"
+                plan.popular ? "border-foreground" : "border-border"
               }`}
               variants={pricingCard}
             >
