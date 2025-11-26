@@ -128,7 +128,8 @@
 [data-theme="light"] {
   --background: 0 0% 100%;
   --foreground: 0 0% 13%;
-  --card: 0 0% 98%; /* Light gray for subtle card elevation */
+  --card: 0 0% 96%; /* Light gray for better card visibility and accessibility */
+  --card-foreground: 0 0% 13%;
   --primary: 262 80% 50%;
   --primary-foreground: 0 0% 100%;
   --secondary: 338 71% 75%;
