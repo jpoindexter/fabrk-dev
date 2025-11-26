@@ -61,10 +61,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
 
-  // Enable instrumentation for PostHog and monitoring
-  experimental: {
-    instrumentationHook: true,
-  },
+  // Instrumentation is automatically enabled in Next.js 15
 
   // Webpack configuration to exclude @react-email from server-side bundling
   webpack: (config, { isServer }) => {
@@ -113,6 +110,23 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+    ];
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+      {
+        source: "/ingest/decide",
+        destination: "https://us.i.posthog.com/decide",
       },
     ];
   },

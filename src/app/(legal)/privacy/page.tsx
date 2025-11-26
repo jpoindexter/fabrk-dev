@@ -54,7 +54,7 @@ export default function PrivacyPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mb-12 rounded-lg border border-border bg-card p-6"
       >
         <Body className="text-lg">
           We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information.
@@ -270,7 +270,7 @@ export default function PrivacyPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mt-12 rounded-lg border border-border bg-card p-6"
       >
         <Small className="block mb-4">
           Related Legal Documents:

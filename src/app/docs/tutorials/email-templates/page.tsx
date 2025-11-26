@@ -300,7 +300,7 @@ await sendOrganizationInvite("newmember@example.com", {
         <h2 className="text-2xl font-semibold">Next Steps</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
-            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Authentication</h3>
                 <p className="text-sm text-muted-foreground">
@@ -310,7 +310,7 @@ await sendOrganizationInvite("newmember@example.com", {
             </Card>
           </Link>
           <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Stripe Payments</h3>
                 <p className="text-sm text-muted-foreground">

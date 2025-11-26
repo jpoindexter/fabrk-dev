@@ -53,7 +53,7 @@ export default function CookiesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Small>Last Updated: November 7, 2024</Small>
+          <Small>Last Updated: November 26, 2025</Small>
         </motion.div>
       </div>
 
@@ -62,7 +62,7 @@ export default function CookiesPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mb-12 rounded-lg border border-border bg-card p-6"
       >
         <Body className="text-lg">
           This Cookie Policy explains how Fabrk uses cookies and similar technologies to recognize you when you visit our website.
@@ -94,7 +94,7 @@ export default function CookiesPage() {
             These cookies are necessary for the website to function and cannot be disabled.
           </Body>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6 shadow-sm">
+          <div className="mb-6 rounded-lg border border-border bg-card p-6">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -128,7 +128,7 @@ export default function CookiesPage() {
             These cookies enable enhanced functionality and personalization.
           </Body>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6 shadow-sm">
+          <div className="mb-6 rounded-lg border border-border bg-card p-6">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -162,7 +162,7 @@ export default function CookiesPage() {
             These cookies help us understand how visitors use our website.
           </Body>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6 shadow-sm">
+          <div className="mb-6 rounded-lg border border-border bg-card p-6">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -191,7 +191,7 @@ export default function CookiesPage() {
             When you use certain features, third-party services may set their own cookies:
           </Body>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6 shadow-sm">
+          <div className="mb-6 rounded-lg border border-border bg-card p-6">
             <Table>
               <TableHeader>
                 <TableRow>
@@ -202,10 +202,10 @@ export default function CookiesPage() {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell>Stripe</TableCell>
+                  <TableCell>Polar.sh</TableCell>
                   <TableCell>Payment processing, fraud detection</TableCell>
                   <TableCell>
-                    <Link href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://polar.sh/legal/privacy" target="_blank" rel="noopener noreferrer">
                       View Policy
                     </Link>
                   </TableCell>
@@ -280,7 +280,7 @@ export default function CookiesPage() {
             If you have questions about our use of cookies, please contact us:
           </Body>
           <List className="mb-4">
-            <ListItem>Email: privacy@fabrk.dev</ListItem>
+            <ListItem>Email: support@fabrk.dev</ListItem>
             <ListItem>Contact Form: <Link href="/contact">Contact Page</Link></ListItem>
           </List>
         </section>
@@ -292,7 +292,7 @@ export default function CookiesPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-lg border border-border bg-accent/30 p-6 shadow-sm"
+        className="mt-12 rounded-lg border border-border bg-accent/30 p-6"
       >
         <H3 className="mb-3">Managing Your Cookie Preferences</H3>
         <Body className="mb-4">
@@ -309,7 +309,7 @@ export default function CookiesPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="mt-8 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mt-8 rounded-lg border border-border bg-card p-6"
       >
         <Small className="block mb-4">
           Related Legal Documents:

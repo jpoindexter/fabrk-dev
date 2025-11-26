@@ -120,7 +120,7 @@ export function PricingSection() {
               transition={{ duration: 0.5, delay: 0.85 }}
               viewport={{ once: true }}
             >
-              <PolarCheckoutButton size="lg" className="w-full">
+              <PolarCheckoutButton className="w-full">
                 Buy Now & Ship Faster
               </PolarCheckoutButton>
             </motion.div>

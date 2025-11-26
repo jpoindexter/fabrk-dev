@@ -45,7 +45,7 @@ export default function RefundPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Small>Last Updated: January 2025</Small>
+          <Small>Last Updated: November 26, 2025</Small>
         </motion.div>
       </div>
 
@@ -54,7 +54,7 @@ export default function RefundPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mb-12 rounded-lg border border-border bg-card p-6"
       >
         <Body className="text-lg">
           Due to the nature of digital products, all sales are final. Please review this policy carefully before making your purchase.
@@ -119,7 +119,6 @@ export default function RefundPage() {
           <List className="mb-4">
             <ListItem>All future v1.x updates at no additional cost</ListItem>
             <ListItem>Email support for technical questions</ListItem>
-            <ListItem>Access to community Discord (when available)</ListItem>
             <ListItem>New components and features as they're released</ListItem>
           </List>
         </section>
@@ -205,7 +204,7 @@ export default function RefundPage() {
           <List className="mb-4">
             <ListItem><Strong>Pre-purchase questions:</Strong> <Link href="/contact">Contact form</Link> or support@fabrk.dev</ListItem>
             <ListItem><Strong>Technical support:</Strong> support@fabrk.dev</ListItem>
-            <ListItem><Strong>Legal inquiries:</Strong> legal@fabrk.dev</ListItem>
+            <ListItem><Strong>Legal inquiries:</Strong> support@fabrk.dev</ListItem>
           </List>
           <Body className="mb-4">
             We want you to feel confident in your purchase. Please reach out before buying if you have any concerns.
@@ -219,7 +218,7 @@ export default function RefundPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-lg border border-border bg-card p-6 shadow-sm"
+        className="mt-12 rounded-lg border border-border bg-card p-6"
       >
         <Small className="block mb-4">
           Related Legal Documents:

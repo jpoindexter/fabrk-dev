@@ -92,7 +92,7 @@ const conversionFunnelData = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="rounded-lg border border-border bg-card p-3 shadow-sm">
+      <div className="rounded-lg border border-border bg-card p-3">
         <p className="mb-1 font-semibold">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} className="text-sm" style={{ color: entry.color }}>
@@ -454,7 +454,7 @@ export default function ChartLibraryTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card className="shadow-sm">
+        <Card>
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">📊 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">

@@ -1,6 +1,17 @@
 /**
- * AI Integration Kit
- * OpenAI & Anthropic helpers with streaming support
+ * 🚀 OPTIONAL FEATURE: AI Integration Toolkit
+ *
+ * ⚠️ This module is NOT active by default. To enable AI features:
+ *
+ * 1. Install dependencies:
+ *    npm install openai @anthropic-ai/sdk
+ *
+ * 2. Add API keys to .env:
+ *    OPENAI_API_KEY=sk-...
+ *    ANTHROPIC_API_KEY=sk-ant-...
+ *
+ * 3. Import and use in your code:
+ *    import { chatWithOpenAI, chatWithClaude } from '@/lib/ai'
  *
  * Features:
  * - OpenAI GPT-4/GPT-3.5 support
@@ -11,9 +22,10 @@
  * - Rate limiting
  * - Cost tracking
  *
- * Note: OpenAI and Anthropic SDKs are optional dependencies.
- * Install them if you need AI features:
- * npm install openai @anthropic-ai/sdk
+ * ✨ Zero cost if unused (tree-shaken from production bundle)
+ *
+ * @module ai
+ * @optional
  */
 
 // Dynamic imports for optional dependencies

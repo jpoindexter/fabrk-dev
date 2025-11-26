@@ -13,9 +13,19 @@ agent-tools/
 # Internal development docs (not for customers)
 .internal/
 
+# Archive (old code preserved for reference)
+.archive/
+
+# Agent workspace (local development only)
+.agent-workspace/
+
+# Development plans (local notes)
+.dev-plans/
+
 # Backup files
 *.backup
 *.bak
+*.tmp
 
 # testing
 coverage

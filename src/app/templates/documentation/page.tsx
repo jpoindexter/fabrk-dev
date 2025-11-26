@@ -318,7 +318,7 @@ export default function DocumentationLayoutTemplate() {
                 if (section.type === "code") {
                   return (
                     <div key={idx} className="not-prose my-6" role="region" aria-label={`Code example in ${section.language || "code"}`}>
-                      <div className="rounded-lg border-2 border-border overflow-hidden shadow-sm bg-card">
+                      <div className="rounded-lg border-2 border-border overflow-hidden bg-card">
                         <div className="flex items-center justify-between bg-muted px-4 py-2.5 border-b-2 border-border">
                           <Badge variant="secondary" className="font-mono text-xs font-bold" aria-label="Programming language">
                             {section.language || "code"}
@@ -382,7 +382,7 @@ export default function DocumentationLayoutTemplate() {
             </nav>
 
             {/* Help Section */}
-            <Card className="mt-12 shadow-sm">
+            <Card className="mt-12">
               <CardHeader>
                 <CardTitle className="font-bold text-foreground">Need Help?</CardTitle>
                 <CardDescription className="text-foreground/75">
@@ -451,7 +451,7 @@ export default function DocumentationLayoutTemplate() {
 
       {/* Implementation Note (Fixed at bottom) */}
       <aside className="fixed bottom-4 right-4 max-w-sm" aria-label="Template features">
-        <Card className="shadow-lg">
+        <Card>
           <CardContent className="pt-4">
             <h4 className="mb-3 text-sm font-bold text-foreground">📚 Template Features</h4>
             <ul className="space-y-1.5 text-xs text-foreground/80" role="list">

@@ -5,7 +5,8 @@ import { Toaster } from "sonner";
 
 /**
  * Client-side providers
- * Only DaisyUI theme system (data-theme attribute) is used
+ * DaisyUI theme system (data-theme attribute)
+ * PostHog analytics initialized via instrumentation-client.ts (Next.js 15+)
  * Dark/light mode toggle removed in favor of 20 color themes
  * Authentication removed - no SessionProvider needed
  */

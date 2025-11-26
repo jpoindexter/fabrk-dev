@@ -359,7 +359,7 @@ export default function SettingsPageTemplate() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+                <div className="rounded-lg border border-border bg-card p-6">
                   <div className="mb-4 flex items-center justify-between">
                     <div>
                       <p className="text-sm font-semibold text-muted-foreground">
@@ -431,7 +431,7 @@ export default function SettingsPageTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card className="mt-8 shadow-sm">
+        <Card className="mt-8">
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">⚙️ Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">

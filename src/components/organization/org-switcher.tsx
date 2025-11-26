@@ -48,10 +48,9 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         const data = await response.json();
         setOrganizations(data.organizations || []);
 
-        // Set current org from session or first org
-        const activeOrgId = session?.user?.activeOrganizationId;
-        if (activeOrgId) {
-          const active = data.organizations.find((org: Organization) => org.id === activeOrgId);
+        // Set current org from first org or active org from API response
+        if (data.activeOrganizationId) {
+          const active = data.organizations.find((org: Organization) => org.id === data.activeOrganizationId);
           setCurrentOrg(active || data.organizations[0] || null);
         } else {
           setCurrentOrg(data.organizations[0] || null);
@@ -63,10 +62,8 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       }
     };
 
-    if (session?.user) {
-      fetchOrganizations();
-    }
-  }, [session]);
+    fetchOrganizations();
+  }, []);
 
   const handleSwitchOrg = async (orgId: string) => {
     try {

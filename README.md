@@ -84,6 +84,28 @@ Visit **http://localhost:3000** 🎉
 
 ---
 
+## 📁 Repository Structure
+
+### Core Directories
+
+- **`/src`** - Application source code
+- **`/docs`** - Comprehensive documentation (400KB+)
+- **`/tests`** - Vitest + Playwright tests
+- **`/prisma`** - Database schema
+- **`/scripts`** - Utility scripts
+- **`/public`** - Static assets
+
+### Organization
+
+- **`/assets`** - Images, logos, release archives
+- **`.agent-workspace`** - Agent configs (gitignored)
+- **`.dev-plans`** - Development plans (gitignored)
+- **`.integrations`** - Third-party integration docs
+- **`.archive`** - Preserved old code (gitignored)
+- **`/Boilerplate`** - Reference boilerplates (gitignored)
+
+---
+
 ## 📦 What's Included
 
 ### Core Features
@@ -577,3 +599,9 @@ Fabrk builds on amazing open-source projects:
 ---
 
 **Ready to ship?** Get Fabrk for **$299** → [fabrk.dev](https://fabrk.dev)
+
+---
+
+**© 2025 THEFT BV. All rights reserved.**
+
+See [LICENSE.md](./LICENSE.md) for complete license terms.

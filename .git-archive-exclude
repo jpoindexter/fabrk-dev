@@ -1,0 +1,18 @@
+# Exclude test screenshots (customers don't need these)
+tests/theme-screenshots/
+
+# Exclude development files
+.git/
+.github/
+.gemini/
+node_modules/
+.next/
+.env.local
+
+# Exclude test artifacts
+coverage/
+playwright-report/
+test-results/
+*.log
+
+# Keep the important stuff

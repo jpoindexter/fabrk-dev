@@ -11,6 +11,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Providers } from "@/components/providers";
+import { PostHogPageView } from "@/components/analytics/posthog-pageview";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -109,6 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Providers>
+          <Suspense>
+            <PostHogPageView />
+          </Suspense>
           <div className="skip-links">
             <a
               href="#main-content"

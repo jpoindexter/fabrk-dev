@@ -419,7 +419,7 @@ export default function EmailTemplatesShowcase() {
                     onClick={() => setSelectedTemplate(template)}
                     className={`w-full rounded-lg border border-border p-4 text-left transition-all ${
                       selectedTemplate.id === template.id
-                        ? "bg-primary text-primary-foreground shadow-sm-lg"
+                        ? "bg-primary text-primary-foreground"
                         : "bg-background hover:bg-muted"
                     }`}
                   >
@@ -557,7 +557,7 @@ export default function EmailTemplatesShowcase() {
         </div>
 
         {/* Implementation Note */}
-        <Card className="shadow-sm">
+        <Card>
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">📧 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">

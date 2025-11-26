@@ -9,7 +9,6 @@
 
 import { ApiKeysSection } from "@/components/account/api-keys-section";
 import { BillingSection } from "@/components/account/billing-section";
-import { LicenseSection } from "@/components/account/license-section";
 import { ProfileForm } from "@/components/account/profile-form";
 import { SecurityForm } from "@/components/account/security-form";
 import { SessionsSection } from "@/components/account/sessions-section";
@@ -17,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import { Award, CreditCard, Key, Monitor, Shield, User } from "lucide-react";
+import { CreditCard, Key, Monitor, Shield, User } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -36,12 +35,6 @@ export default function AccountPage() {
       label: "Security",
       icon: Shield,
       description: "Password and two-factor authentication",
-    },
-    {
-      value: "license",
-      label: "License",
-      icon: Award,
-      description: "License key and download access",
     },
     {
       value: "billing",
@@ -71,7 +64,7 @@ export default function AccountPage() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid h-auto w-full max-w-6xl grid-cols-6 p-2">
+        <TabsList className="grid h-auto w-full max-w-6xl grid-cols-5 p-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -116,10 +109,6 @@ export default function AccountPage() {
                   <SecurityForm />
                 </CardContent>
               </Card>
-            </TabsContent>
-
-            <TabsContent value="license" className="mt-0 space-y-4">
-              <LicenseSection />
             </TabsContent>
 
             <TabsContent value="billing" className="mt-0 space-y-4">

@@ -272,7 +272,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         <h2 className="text-2xl font-semibold">Next Steps</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/environment">
-            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Environment Variables</h3>
                 <p className="text-sm text-muted-foreground">
@@ -282,7 +282,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
             </Card>
           </Link>
           <Link href="/docs/deployment/database">
-            <Card className="h-full shadow-sm transition-all hover:shadow-lg hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Database Setup</h3>
                 <p className="text-sm text-muted-foreground">

@@ -153,7 +153,7 @@ export default function AnalyticsDashboardTemplate() {
                         </span>
                         <div className="flex-1 flex items-end w-full">
                           <div
-                            className="w-full bg-primary rounded-t-md hover:bg-primary/90 hover:shadow-md transition-colors"
+                            className="w-full bg-primary rounded-t-md hover:bg-primary/90 transition-colors"
                             style={{
                               height: `${data.height}%`,
                               animation: `bar-grow 0.6s ease-out ${i * 100}ms both`,
@@ -355,7 +355,7 @@ export default function AnalyticsDashboardTemplate() {
                   ].map((report, i) => (
                     <div
                       key={i}
-                      className="p-4 border border-border rounded-md hover:shadow-md transition-all cursor-pointer"
+                      className="p-4 border border-border rounded-md transition-all cursor-pointer"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <div>
@@ -379,7 +379,7 @@ export default function AnalyticsDashboardTemplate() {
         </Tabs>
 
         {/* Template Features Card */}
-        <Card className="shadow-sm">
+        <Card>
           <CardContent className="pt-6">
             <h4 className="mb-2 font-semibold">📊 Template Features</h4>
             <ul className="space-y-1 text-sm text-muted-foreground">
