@@ -143,24 +143,24 @@
   --ring: 262 80% 50%;
 }
 
-/* Dark - Professional dark theme */
+/* Dark - Professional dark theme - EXACT DaisyUI match */
 [data-theme="dark"] {
-  --background: 222 47% 12%; /* Material Design inspired */
-  --foreground: 0 0% 89%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 222 47% 20%; /* +8% for elevation */
-  --popover-foreground: 0 0% 89%;
+  --background: 253 14% 23%; /* base-200: oklch(23.26% 0.014 253.1) */
+  --foreground: 257 29% 98%; /* base-content: oklch(97.807% 0.029 256.847) */
+  --card: 252 16% 25%; /* base-100: oklch(25.33% 0.016 252.42) */
+  --card-foreground: 257 29% 98%; /* Same as foreground */
+  --popover: 252 16% 25%; /* Match card */
+  --popover-foreground: 257 29% 98%;
   --primary: 197 92% 61%;
-  --primary-foreground: 222 47% 11%;
-  --secondary: 222 47% 28%; /* Aligned with muted for consistency */
-  --secondary-foreground: 222 47% 11%;
+  --primary-foreground: 253 14% 23%;
+  --secondary: 254 12% 21%; /* Match muted */
+  --secondary-foreground: 257 29% 98%;
   --accent: 199 89% 48%;
   --accent-foreground: 0 0% 100%;
-  --muted: 222 47% 28%; /* +16% for clear contrast */
-  --muted-foreground: 0 0% 78%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
-  --border: 222 47% 23%;
-  --input: 222 47% 23%;
+  --muted: 254 12% 21%; /* base-300: oklch(21.15% 0.012 254.09) */
+  --muted-foreground: 257 29% 88%; /* Slightly dimmed foreground */
+  --border: 254 12% 21%;
+  --input: 254 12% 21%;
   --ring: 197 92% 61%;
 }
 
@@ -236,63 +236,66 @@
   --ring: 221 83% 53%;
 }
 
-/* Synthwave - Neon purple/pink */
+/* Synthwave - Neon purple/pink - EXACT DaisyUI match with REVERSED hierarchy */
 [data-theme="synthwave"] {
-  --background: 262 58% 12%; /* Material Design inspired */
-  --foreground: 0 0% 100%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 262 58% 20%; /* +8% for elevation */
-  --popover-foreground: 0 0% 100%;
-  --primary: 321 70% 38%; /* WCAG AA fix: darkened from 52% for 4.5:1 contrast */
+  --background: 281 90% 20%; /* base-200: oklch(20% 0.09 281.288) - LIGHTER than cards! */
+  --foreground: 275 100% 78%; /* base-content */
+  --card: 281 90% 15%; /* base-100: oklch(15% 0.09 281.288) - DARKER than background! */
+  --card-foreground: 275 100% 78%; /* Same as foreground */
+  --popover: 281 90% 15%; /* Match card */
+  --popover-foreground: 275 100% 78%;
+  --primary: 321 70% 52%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 194 100% 50%;
-  --secondary-foreground: 262 58% 8%;
+  --secondary: 281 90% 25%; /* Match muted */
+  --secondary-foreground: 275 100% 78%;
   --accent: 58 90% 68%;
-  --accent-foreground: 262 58% 8%;
-  --muted: 262 58% 28%; /* +16% for clear contrast */
-  --muted-foreground: 0 0% 80%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
-  --border: 262 40% 20%;
-  --input: 262 40% 20%;
+  --accent-foreground: 281 90% 15%;
+  --muted: 281 90% 25%; /* base-300: oklch(25% 0.09 281.288) - LIGHTEST! */
+  --muted-foreground: 275 100% 68%; /* Slightly dimmed foreground */
+  --border: 281 90% 25%;
+  --input: 281 90% 25%;
   --ring: 321 70% 52%;
 }
 
-/* Retro - Vintage warm */
+/* Retro - Vintage warm - EXACT DaisyUI match - LIGHT THEME! */
 [data-theme="retro"] {
-  --background: 25 45% 87%;
-  --foreground: 339 100% 16%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
+  --background: 92 49% 88%; /* base-200: oklch(88.272% 0.049 91.774) - yellow-orange tint */
+  --foreground: 46 112% 41%; /* base-content: oklch(41% 0.112 45.904) - dark brown text */
+  --card: 91 34% 92%; /* base-100: oklch(91.637% 0.034 90.515) - LIGHTER than background */
+  --card-foreground: 46 112% 41%; /* Same as foreground */
+  --popover: 91 34% 92%; /* Match card */
+  --popover-foreground: 46 112% 41%;
   --primary: 3 74% 66%;
-  --primary-foreground: 339 100% 16%;
-  --secondary: 45 78% 72%;
-  --secondary-foreground: 339 100% 16%;
+  --primary-foreground: 46 112% 41%;
+  --secondary: 91 65% 84%; /* Match muted */
+  --secondary-foreground: 46 112% 41%;
   --accent: 185 67% 55%;
-  --accent-foreground: 339 100% 16%;
-  --muted: 25 45% 80%;
-  --muted-foreground: 339 100% 30%;
-  --border: 25 30% 70%;
-  --input: 25 30% 70%;
+  --accent-foreground: 46 112% 41%;
+  --muted: 91 65% 84%; /* base-300: oklch(84.133% 0.065 90.856) */
+  --muted-foreground: 46 112% 31%; /* Slightly darker foreground */
+  --border: 91 65% 80%;
+  --input: 91 65% 80%;
   --ring: 3 74% 66%;
 }
 
-/* Cyberpunk - Pink/yellow tech */
+/* Cyberpunk - Pink/yellow tech - EXACT DaisyUI match - LIGHT THEME! */
 [data-theme="cyberpunk"] {
-  --background: 53 100% 50%;
-  --foreground: 337 60% 17%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 0 0% 96%; /* Neutral gray for luminance contrast on yellow */
-  --popover-foreground: 0 0% 13%; /* Dark text on light gray popover */
+  --background: 104 100% 92%; /* base-200: oklch(91.51% 0.179 104.32) - yellow tint */
+  --foreground: 0 0% 0%; /* base-content: oklch(0% 0 0) - pure black text */
+  --card: 104 100% 95%; /* base-100: oklch(94.51% 0.179 104.32) - light gray */
+  --card-foreground: 0 0% 0%; /* Black text on light cards */
+  --popover: 104 100% 95%; /* Match card */
+  --popover-foreground: 0 0% 0%;
   --primary: 340 100% 63%;
-  --primary-foreground: 337 60% 17%;
-  --secondary: 0 0% 92%; /* Aligned with muted */
-  --secondary-foreground: 337 60% 17%;
-  --accent: 340 100% 63%; /* Pink accent for visibility */
-  --accent-foreground: 337 60% 17%;
-  --muted: 0 0% 92%; /* Neutral gray for visibility */
-  --muted-foreground: 337 60% 30%;
-  --border: 53 80% 40%;
-  --input: 53 80% 40%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 104 100% 86%; /* Match muted */
+  --secondary-foreground: 0 0% 0%;
+  --accent: 340 100% 63%; /* Pink accent */
+  --accent-foreground: 0 0% 0%;
+  --muted: 104 100% 86%; /* base-300: oklch(85.51% 0.179 104.32) */
+  --muted-foreground: 0 0% 30%; /* Dimmed black */
+  --border: 104 100% 80%;
+  --input: 104 100% 80%;
   --ring: 340 100% 63%;
 }
 
@@ -314,66 +317,66 @@
   --ring: 348 100% 70%;
 }
 
-/* Halloween - Orange/dark */
+/* Halloween - Orange/dark - EXACT DaisyUI match */
 [data-theme="halloween"] {
-  --background: 265 69% 10%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 265 69% 13%;
-  --popover-foreground: 0 0% 100%;
+  --background: 49 4% 14%; /* base-200: oklch(14% 0.004 49.25) */
+  --foreground: 0 0% 85%; /* base-content: oklch(84.955% 0 0) */
+  --card: 56 6% 21%; /* base-100: oklch(21% 0.006 56.043) - LIGHTER than background */
+  --card-foreground: 0 0% 85%; /* Same as foreground */
+  --popover: 56 6% 21%; /* Match card */
+  --popover-foreground: 0 0% 85%;
   --primary: 31 100% 50%;
-  --primary-foreground: 265 69% 10%;
-  --secondary: 198 93% 60%;
-  --secondary-foreground: 265 69% 10%;
+  --primary-foreground: 49 4% 14%;
+  --secondary: 0 0% 0%; /* Match muted */
+  --secondary-foreground: 0 0% 85%;
   --accent: 119 95% 46%;
-  --accent-foreground: 265 69% 10%;
-  --muted: 265 69% 15%;
-  --muted-foreground: 0 0% 80%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
-  --border: 265 45% 25%;
-  --input: 265 45% 25%;
+  --accent-foreground: 49 4% 14%;
+  --muted: 0 0% 0%; /* base-300: oklch(0% 0 0) - pure black */
+  --muted-foreground: 0 0% 75%; /* Slightly dimmed foreground */
+  --border: 0 0% 0%;
+  --input: 0 0% 0%;
   --ring: 31 100% 50%;
 }
 
-/* Forest - Nature green */
+/* Forest - Nature green - EXACT DaisyUI match */
 [data-theme="forest"] {
-  --background: 145 17% 16%;
-  --foreground: 137 14% 86%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 145 17% 19%;
-  --popover-foreground: 137 14% 86%;
+  --background: 18 7% 19%; /* base-200: oklch(18.522% 0.007 17.911) */
+  --foreground: 18 1% 84%; /* base-content */
+  --card: 18 8% 21%; /* base-100: oklch(20.84% 0.008 17.911) - LIGHTER than background */
+  --card-foreground: 18 1% 84%; /* Same as foreground */
+  --popover: 18 8% 21%; /* Match card */
+  --popover-foreground: 18 1% 84%;
   --primary: 141 52% 51%;
-  --primary-foreground: 145 17% 16%;
-  --secondary: 141 53% 82%;
-  --secondary-foreground: 145 17% 16%;
+  --primary-foreground: 18 7% 19%;
+  --secondary: 18 7% 16%; /* Match muted */
+  --secondary-foreground: 18 1% 84%;
   --accent: 188 100% 35%;
   --accent-foreground: 0 0% 100%;
-  --muted: 145 17% 22%;
-  --muted-foreground: 137 14% 82%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
-  --border: 145 15% 30%;
-  --input: 145 15% 30%;
+  --muted: 18 7% 16%; /* base-300: oklch(16.203% 0.007 17.911) */
+  --muted-foreground: 18 1% 74%; /* Slightly dimmed foreground */
+  --border: 18 7% 16%;
+  --input: 18 7% 16%;
   --ring: 141 52% 51%;
 }
 
-/* Aqua - Cyan/blue */
+/* Aqua - Cyan/blue - EXACT DaisyUI match */
 [data-theme="aqua"] {
-  --background: 204 25% 21%;
-  --foreground: 201 52% 88%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 204 25% 24%;
-  --popover-foreground: 201 52% 88%;
-  --primary: 184 100% 27%; /* WCAG AA fix: darkened from 43% to 27% for 4.5:1 contrast */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 207 84% 79%;
-  --secondary-foreground: 204 25% 21%;
+  --background: 268 91% 28%; /* base-200: oklch(28% 0.091 267.935) */
+  --foreground: 231 58% 90%; /* base-content: oklch(90% 0.058 230.902) */
+  --card: 266 146% 37%; /* base-100: oklch(37% 0.146 265.522) - MUCH LIGHTER than background */
+  --card-foreground: 231 58% 90%; /* Same as foreground */
+  --popover: 266 146% 37%; /* Match card */
+  --popover-foreground: 231 58% 90%;
+  --primary: 184 100% 43%;
+  --primary-foreground: 268 91% 28%;
+  --secondary: 268 91% 22%; /* Match muted */
+  --secondary-foreground: 231 58% 90%;
   --accent: 334 82% 65%;
-  --accent-foreground: 204 25% 21%;
-  --muted: 204 25% 28%;
-  --muted-foreground: 201 52% 85%; /* WCAG AA fix: brightened from 65% for 4.5:1 contrast */
-  --border: 204 20% 35%;
-  --input: 204 20% 35%;
+  --accent-foreground: 268 91% 28%;
+  --muted: 268 91% 22%; /* base-300: oklch(22% 0.091 267.935) */
+  --muted-foreground: 231 58% 80%; /* Slightly dimmed foreground */
+  --border: 268 91% 22%;
+  --input: 268 91% 22%;
   --ring: 184 100% 43%;
 }
 
@@ -431,53 +434,53 @@
   --ring: 275 100% 25%;
 }
 
-/* Luxury - High-end dark with gold accents */
+/* Luxury - High-end dark with gold accents - EXACT DaisyUI match with REVERSED hierarchy */
 [data-theme="luxury"] {
-  --background: 285 4% 14%;
-  --foreground: 90 90% 76%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 308 4% 20%;
-  --popover-foreground: 90 90% 76%;
+  --background: 308 4% 20%; /* base-200: oklch(20.219% 0.004 308.229) - LIGHTER than cards! */
+  --foreground: 77 100% 76%; /* base-content */
+  --card: 286 4% 14%; /* base-100: oklch(14.076% 0.004 285.822) - DARKER than background! */
+  --card-foreground: 77 100% 76%; /* Same as foreground */
+  --popover: 286 4% 14%; /* Match card */
+  --popover-foreground: 77 100% 76%;
   --primary: 0 0% 100%;
-  --primary-foreground: 285 4% 14%;
-  --secondary: 261 6% 28%;
-  --secondary-foreground: 261 13% 86%;
-  --muted: 308 4% 30%;
-  --muted-foreground: 77 90% 93%; /* Already bright enough - no change needed */
+  --primary-foreground: 308 4% 20%;
+  --secondary: 308 4% 23%; /* Match muted */
+  --secondary-foreground: 77 100% 76%;
+  --muted: 308 4% 23%; /* base-300: oklch(23.219% 0.004 308.229) - LIGHTEST! */
+  --muted-foreground: 77 100% 66%; /* Slightly dimmed foreground */
   --accent: 339 5% 37%;
-  --accent-foreground: 339 10% 87%;
+  --accent-foreground: 77 100% 76%;
   --destructive: 23 18% 72%;
-  --destructive-foreground: 285 4% 14%;
+  --destructive-foreground: 308 4% 20%;
   --success: 132 19% 78%;
-  --success-foreground: 285 4% 14%;
+  --success-foreground: 308 4% 20%;
   --warning: 103 14% 86%;
-  --warning-foreground: 285 4% 14%;
+  --warning-foreground: 308 4% 20%;
   --info: 237 12% 79%;
-  --info-foreground: 285 4% 14%;
-  --border: 60 6% 24%;
-  --input: 60 6% 24%;
-  --ring: 90 90% 76%;
+  --info-foreground: 308 4% 20%;
+  --border: 308 4% 23%;
+  --input: 308 4% 23%;
+  --ring: 77 100% 76%;
 }
 
-/* Dracula - Purple developer */
+/* Dracula - Purple developer - EXACT DaisyUI match */
 [data-theme="dracula"] {
-  --background: 231 15% 18%;
-  --foreground: 60 30% 96%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 231 15% 20%; /* +8% for elevation */
-  --popover-foreground: 60 30% 96%;
+  --background: 278 20% 27%; /* base-200: oklch(26.805% 0.02 277.508) */
+  --foreground: 107 7% 98%; /* base-content: oklch(97.747% 0.007 106.545) */
+  --card: 278 22% 29%; /* base-100: oklch(28.822% 0.022 277.508) - LIGHTER than background */
+  --card-foreground: 107 7% 98%; /* Same as foreground */
+  --popover: 278 22% 29%; /* Match card */
+  --popover-foreground: 107 7% 98%;
   --primary: 326 100% 74%;
-  --primary-foreground: 231 15% 18%;
-  --secondary: 191 97% 77%;
-  --secondary-foreground: 231 15% 18%;
+  --primary-foreground: 278 20% 27%;
+  --secondary: 278 19% 25%; /* Match muted */
+  --secondary-foreground: 107 7% 98%;
   --accent: 65 92% 76%;
-  --accent-foreground: 231 15% 18%;
-  --muted: 231 15% 24%;
-  --muted-foreground: 60 30% 85%; /* WCAG AA fix: brightened from 70% for 4.5:1 contrast */
-  --border: 231 15% 30%;
-  --input: 231 15% 30%;
+  --accent-foreground: 278 20% 27%;
+  --muted: 278 19% 25%; /* base-300: oklch(24.787% 0.019 277.508) */
+  --muted-foreground: 107 7% 88%; /* Slightly dimmed foreground */
+  --border: 278 19% 25%;
+  --input: 278 19% 25%;
   --ring: 326 100% 74%;
 }
 
@@ -499,25 +502,24 @@
   --ring: 345 65% 47%;
 }
 
-/* Business - Professional blue */
-/* Business - Professional dark blue */
+/* Business - Professional dark blue - EXACT DaisyUI match */
 [data-theme="business"] {
-  --background: 210 14% 13%;
-  --foreground: 0 0% 100%;
-  --card: 0 0% 100%; /* White cards for accessibility - WCAG 3:1 contrast */
-  --card-foreground: 0 0% 13%; /* Dark text on white cards */
-  --popover: 210 14% 16%;
-  --popover-foreground: 0 0% 100%;
+  --background: 0 0% 23%; /* base-200: oklch(22.648% 0 0) */
+  --foreground: 0 0% 85%; /* base-content: oklch(84.87% 0 0) */
+  --card: 0 0% 24%; /* base-100: oklch(24.353% 0 0) - LIGHTER than background */
+  --card-foreground: 0 0% 85%; /* Same as foreground */
+  --popover: 0 0% 24%; /* Match card */
+  --popover-foreground: 0 0% 85%;
   --primary: 210 64% 31%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 200 11% 55%;
-  --secondary-foreground: 210 14% 13%;
+  --secondary: 0 0% 21%; /* Match muted */
+  --secondary-foreground: 0 0% 85%;
   --accent: 13 78% 60%;
   --accent-foreground: 0 0% 100%;
-  --muted: 210 14% 20%;
-  --muted-foreground: 0 0% 80%; /* WCAG AA fix: brightened from 60% for 4.5:1 contrast */
-  --border: 210 14% 25%;
-  --input: 210 14% 25%;
+  --muted: 0 0% 21%; /* base-300: oklch(20.944% 0 0) */
+  --muted-foreground: 0 0% 75%; /* Slightly dimmed foreground */
+  --border: 0 0% 21%;
+  --input: 0 0% 21%;
   --ring: 210 64% 31%;
 }
 
