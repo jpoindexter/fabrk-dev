@@ -67,14 +67,6 @@ export function Footer() {
               >
                 Contact
               </Link>
-              <a
-                href="https://github.com/fabrk/docs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Documentation
-              </a>
             </nav>
           </div>
 
