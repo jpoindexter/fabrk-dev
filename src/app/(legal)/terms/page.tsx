@@ -46,7 +46,7 @@ export default function TermsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Small>Last Updated: January 1, 2025</Small>
+            <Small>Last Updated: November 26, 2025</Small>
           </motion.div>
         </div>
 
@@ -73,7 +73,7 @@ export default function TermsPage() {
               By accessing, purchasing, or using Fabrk ("Service", "Product", "we", "us", or "our"), you ("Buyer", "User", "you") agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access or use the Service.
             </Body>
             <Body className="mb-4">
-              These Terms constitute a legal agreement between you and Fabrk. Your purchase and use of the Service signifies your acceptance of these Terms.
+              Fabrk is a product offered by THEFT BV, a company registered in the Netherlands (KVK: 81705344, VAT: NL862188726B01). These Terms constitute a legal agreement between you and THEFT BV. References to "Fabrk", "we", "us", or "our" in these Terms mean THEFT BV. Your purchase and use of the Service signifies your acceptance of these Terms.
             </Body>
           </section>
 
@@ -82,9 +82,12 @@ export default function TermsPage() {
             <Body className="mb-4">
               Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing 100 production-ready components, authentication, payment processing, database integration, multi-tenancy, webhooks, API key management, real-time features, 2FA security, background job queues, analytics, and comprehensive testing infrastructure. The Service is provided as a one-time purchase software license for development purposes.
             </Body>
+            <Body className="mb-4">
+              Fabrk is provided as a self-hosted boilerplate and codebase. We do not host your production applications for you; you are responsible for your own hosting, infrastructure, and operational environment.
+            </Body>
             <H3 className="mt-6 mb-3">2.1 Perpetual License Grant</H3>
             <Body className="mb-4">
-              Upon successful payment of $299, we grant you a <Strong>non-exclusive, non-transferable, perpetual license</Strong> to:
+              Upon successful payment of €299 per developer seat (or equivalent in your local currency), we grant you a <Strong>non-exclusive, non-transferable, perpetual license</Strong> to:
             </Body>
             <List className="mb-4">
               <ListItem>Access and download the complete Fabrk source code</ListItem>
@@ -94,6 +97,24 @@ export default function TermsPage() {
               <ListItem>Receive all future updates and improvements at no additional cost (Lifetime v1.x updates)</ListItem>
               <ListItem>Use Fabrk components in client projects (commercial use permitted)</ListItem>
             </List>
+            <H3 className="mt-6 mb-3">2.1.1 Per-Seat License</H3>
+            <Body className="mb-4">
+              A "license" is granted per individual developer seat. One license permits one natural person (developer) to access and use the Fabrk source code.
+            </Body>
+            <Body className="mb-4">
+              If you are a company or team, you must purchase one license per developer who:
+            </Body>
+            <List className="mb-4">
+              <ListItem>Has access to the Fabrk source code, or</ListItem>
+              <ListItem>Works directly with the Fabrk codebase in any capacity (development, maintenance, refactoring)</ListItem>
+            </List>
+            <Body className="mb-4">
+              Licenses may be reassigned permanently (for example, when an employee leaves and another developer takes over), but may not be used concurrently by multiple individuals.
+            </Body>
+            <H3 className="mt-6 mb-3">2.1.2 Team / Enterprise Use</H3>
+            <Body className="mb-4">
+              For multi-team, organization-wide, or enterprise use, or if you need more than 10 seats, you must contact us at legal@fabrk.dev to arrange a custom or enterprise license.
+            </Body>
             <H3 className="mt-6 mb-3">2.2 License Restrictions</H3>
             <Body className="mb-4">You are expressly <Strong>prohibited</Strong> from:</Body>
             <List className="mb-4">
@@ -105,6 +126,9 @@ export default function TermsPage() {
               <ListItem>Using Fabrk to create "SaaS boilerplate generators" or similar automated template services</ListItem>
               <ListItem>Sharing your license or account credentials with other individuals or organizations</ListItem>
             </List>
+            <Body className="mb-4">
+              Each paid license corresponds to one Fabrk account. You may not share a single account across multiple developers to avoid purchasing additional seats.
+            </Body>
             <Body className="mb-4">
               <Strong>Violation of these restrictions will result in immediate license termination and may subject you to legal action.</Strong>
             </Body>
@@ -140,6 +164,9 @@ export default function TermsPage() {
               <ListItem>Security threats or attempted unauthorized access to our systems</ListItem>
             </List>
             <Body className="mb-4">
+              If your account is terminated, the license and seat associated with that account are also terminated.
+            </Body>
+            <Body className="mb-4">
               Upon termination, your license to use Fabrk is immediately revoked, and you must cease all use of the software. <Strong>Termination does not entitle you to a refund under any circumstances.</Strong>
             </Body>
           </section>
@@ -148,14 +175,17 @@ export default function TermsPage() {
             <H2 className="mb-4">4. Payment Terms</H2>
             <H3 className="mt-6 mb-3">4.1 Pricing and License Validity</H3>
             <Body className="mb-4">
-              The current price for a Fabrk license is <Strong>$299 USD</Strong> (one-time payment). This is a <Strong>lifetime license</Strong> with no recurring fees, no subscriptions, and no hidden costs.
+              The current price for a Fabrk license is <Strong>€299 per developer seat</Strong> (or equivalent in your local currency) as a one-time payment. This is a <Strong>lifetime license</Strong> with no recurring fees, no subscriptions, and no hidden costs.
             </Body>
             <Body className="mb-4">
               We reserve the right to modify pricing for future purchases at any time without prior notice. However, pricing changes do not affect licenses already purchased—your perpetual license is honored at the price you paid.
             </Body>
             <H3 className="mt-6 mb-3">4.2 Payment Processing and Authorization</H3>
             <Body className="mb-4">
-              All payments are processed securely through <Strong>Stripe</Strong>, a PCI-compliant payment processor. We do not store your complete credit card information on our servers.
+              All payments are processed securely through one or more third-party payment processors or platforms (including Polar and/or Stripe). We do not store your complete credit card information on our servers.
+            </Body>
+            <Body className="mb-4">
+              Payments may be processed by Polar (polar.sh) or other providers. Their own terms and privacy policies apply to your use of their checkout.
             </Body>
             <Body className="mb-4">
               By providing payment information and completing the purchase, you:
@@ -182,12 +212,16 @@ export default function TermsPage() {
             <Body className="mb-4">
               We encourage you to review our documentation, component library, and feature list thoroughly before making your purchase decision. If you have questions before purchasing, please contact us at support@fabrk.dev.
             </Body>
+            <H3 className="mt-6 mb-3">4.4 EU Consumer Withdrawal Rights</H3>
+            <Body className="mb-4">
+              If you are a consumer in the EU/EEA, you may have a statutory right of withdrawal for certain digital purchases. Where applicable, we may ask you at checkout to request immediate access to the digital content and acknowledge that you lose your statutory right of withdrawal once access or download begins, as permitted by law. Nothing in this section affects any mandatory consumer rights you may have.
+            </Body>
           </section>
 
           <section>
             <H2 className="mb-4">5. Intellectual Property Rights</H2>
             <Body className="mb-4">
-              The Fabrk Service, including but not limited to its source code, architecture, design, documentation, components, templates, integrations, and all related intellectual property, are owned exclusively by Fabrk and are protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+              The Fabrk Service, including but not limited to its source code, architecture, design, documentation, components, templates, integrations, and all related intellectual property, are owned exclusively by THEFT BV and are protected by Dutch and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
             </Body>
             <H3 className="mt-6 mb-3">5.1 Fabrk's Intellectual Property</H3>
             <Body className="mb-4">

@@ -56,12 +56,6 @@ export function Footer() {
             </H4>
             <nav className="flex flex-col gap-3">
               <Link
-                href="/features"
-                className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Features
-              </Link>
-              <Link
                 href="/about"
                 className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
