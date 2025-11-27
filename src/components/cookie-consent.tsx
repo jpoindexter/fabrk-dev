@@ -132,36 +132,36 @@ export function CookieConsent() {
 
   return (
     <>
-      {/* Floating Cookie Button - Neobrutalist Style */}
+      {/* Floating Cookie Button */}
       {showButton && !showModal && (
         <button
           onClick={openModal}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-brutal border-2 border-foreground bg-background px-4 py-3 text-foreground shadow-brutal transition-all duration-300 animate-in slide-in-from-bottom-5 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg border bg-background px-4 py-3 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
-          <span className="text-sm font-semibold">Cookie Settings</span>
+          <span className="text-sm font-medium">Cookie Settings</span>
         </button>
       )}
 
-      {/* Cookie Modal - Neobrutalist Style */}
+      {/* Cookie Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[100] overflow-y-auto">
-          <div className="fixed inset-0 bg-foreground/50 backdrop-blur-sm" onClick={closeModal} />
+          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={closeModal} />
           <div className="flex min-h-full items-center justify-center p-4">
             <div
-              className={`relative w-full max-w-2xl rounded-brutal border-2 border-foreground bg-background shadow-brutal-lg transition-all duration-300 ${
+              className={`relative w-full max-w-2xl rounded-lg border bg-background transition-all duration-300 ${
                 isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
               }`}
             >
               {/* Header */}
-              <div className="flex items-center justify-between border-b-2 border-foreground p-6">
+              <div className="flex items-center justify-between border-b p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-brutal border-2 border-foreground bg-muted p-2">
+                  <div className="rounded-lg border bg-muted p-2">
                     <Cookie className="size-6" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold">Cookie Preferences</h2>
+                    <h2 className="text-lg font-medium">Cookie Preferences</h2>
                     <p className="text-sm text-muted-foreground">
                       Manage your cookie settings
                     </p>
@@ -169,22 +169,22 @@ export function CookieConsent() {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="rounded-brutal border-2 border-foreground p-2 transition-colors hover:bg-muted"
+                  className="rounded-md p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring"
                   aria-label="Close"
                 >
-                  <X className="size-5" />
+                  <X className="size-4" />
                 </button>
               </div>
 
               {/* Tabs */}
-              <div className="flex border-b-2 border-foreground">
+              <div className="flex border-b">
                 {(["consent", "details", "about"] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`flex-1 px-6 py-3 text-sm font-semibold transition-colors ${
+                    className={`flex-1 px-6 py-3 text-sm font-medium transition-colors ${
                       activeTab === tab
-                        ? "border-b-4 border-primary bg-primary/10 text-primary"
+                        ? "border-b-2 border-primary text-primary"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     }`}
                   >

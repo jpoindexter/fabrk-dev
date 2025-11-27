@@ -20,9 +20,9 @@ export function ConsentTabContent({
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <div className="flex items-center justify-between rounded-brutal border-2 border-foreground bg-muted p-4">
+        <div className="flex items-center justify-between rounded-lg border bg-muted p-4">
           <div className="flex-1">
-            <h4 className="font-semibold">Necessary Cookies</h4>
+            <h4 className="font-medium">Necessary Cookies</h4>
             <p className="mt-1 text-sm text-muted-foreground">
               Essential for website functionality. Cannot be disabled.
             </p>
@@ -30,9 +30,9 @@ export function ConsentTabContent({
           <Switch checked={true} disabled />
         </div>
 
-        <div className="flex items-center justify-between rounded-brutal border-2 border-foreground p-4">
+        <div className="flex items-center justify-between rounded-lg border p-4">
           <div className="flex-1">
-            <h4 className="font-semibold">Preference Cookies</h4>
+            <h4 className="font-medium">Preference Cookies</h4>
             <p className="mt-1 text-sm text-muted-foreground">
               Remember your settings and preferences.
             </p>
@@ -43,9 +43,9 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-brutal border-2 border-foreground p-4">
+        <div className="flex items-center justify-between rounded-lg border p-4">
           <div className="flex-1">
-            <h4 className="font-semibold">Statistics Cookies</h4>
+            <h4 className="font-medium">Statistics Cookies</h4>
             <p className="mt-1 text-sm text-muted-foreground">
               Help us understand how visitors interact with our website.
             </p>
@@ -56,9 +56,9 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-brutal border-2 border-foreground p-4">
+        <div className="flex items-center justify-between rounded-lg border p-4">
           <div className="flex-1">
-            <h4 className="font-semibold">Marketing Cookies</h4>
+            <h4 className="font-medium">Marketing Cookies</h4>
             <p className="mt-1 text-sm text-muted-foreground">
               Used to track visitors across websites for relevant advertising.
             </p>
@@ -164,7 +164,7 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
         <div key={category.id} className="space-y-3">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-semibold">{category.name}</h4>
+              <h4 className="font-medium">{category.name}</h4>
               <p className="text-sm text-muted-foreground">{category.description}</p>
             </div>
             <Switch
@@ -177,9 +177,9 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
           </div>
           <div className="ml-6 space-y-2">
             {category.cookies.map((cookie) => (
-              <div key={cookie.name} className="rounded-brutal border-2 border-foreground bg-muted p-3 text-sm">
+              <div key={cookie.name} className="rounded-lg border bg-muted p-3 text-sm">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold">{cookie.name}</span>
+                  <span className="font-mono text-xs font-medium">{cookie.name}</span>
                   <span className="text-xs text-muted-foreground">{cookie.duration}</span>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -199,7 +199,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
     <div className="space-y-6">
       <div className="space-y-4">
         <div>
-          <h4 className="mb-2 font-semibold">What are cookies?</h4>
+          <h4 className="mb-2 font-medium">What are cookies?</h4>
           <p className="text-sm text-muted-foreground">
             Cookies are small text files that are placed on your device when you visit a website.
             They help the website remember information about your visit, which can make your next
@@ -208,7 +208,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">How we use cookies</h4>
+          <h4 className="mb-2 font-medium">How we use cookies</h4>
           <p className="text-sm text-muted-foreground">
             We use different types of cookies for various purposes, including improving your
             browsing experience, analyzing site traffic, and serving personalized content or ads.
@@ -216,7 +216,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">Your rights</h4>
+          <h4 className="mb-2 font-medium">Your rights</h4>
           <p className="text-sm text-muted-foreground">
             Under GDPR and other privacy regulations, you have the right to:
           </p>
@@ -230,11 +230,11 @@ export function AboutTabContent({}: AboutTabContentProps) {
           </ul>
         </div>
 
-        <div className="rounded-brutal border-2 border-foreground bg-primary/10 p-4">
+        <div className="rounded-lg border bg-primary/10 p-4">
           <div className="flex items-start space-x-3">
             <Shield className="mt-0.5 size-5 text-primary" />
             <div>
-              <h4 className="font-semibold text-primary">GDPR Compliant</h4>
+              <h4 className="font-medium text-primary">GDPR Compliant</h4>
               <p className="mt-1 text-sm text-primary/80">
                 Our cookie policy and consent management comply with GDPR requirements.
               </p>
@@ -243,7 +243,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div>
-          <h4 className="mb-2 font-semibold">Contact us</h4>
+          <h4 className="mb-2 font-medium">Contact us</h4>
           <p className="text-sm text-muted-foreground">
             If you have questions about our use of cookies or your privacy rights, please contact
             our Data Protection Officer at privacy@fabrk.dev
