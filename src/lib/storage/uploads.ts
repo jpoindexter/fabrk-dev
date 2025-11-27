@@ -31,13 +31,11 @@ import * as path from "path";
 import { logger } from "@/lib/logger";
 
 // AWS SDK imports are optional (loaded dynamically)
-/* eslint-disable @typescript-eslint/no-explicit-any */
 let S3Client: any;
 let PutObjectCommand: any;
 let GetObjectCommand: any;
 let DeleteObjectCommand: any;
 let getSignedUrl: any;
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Storage provider type
 type StorageProvider = "r2" | "s3" | "local";
@@ -74,9 +72,7 @@ async function initializeS3Client() {
 
   try {
     // Dynamic require to avoid TypeScript errors when SDK not installed
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const s3 = require("@aws-sdk/client-s3");
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const presigner = require("@aws-sdk/s3-request-presigner");
 
     S3Client = s3.S3Client;
