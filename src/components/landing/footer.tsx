@@ -45,7 +45,7 @@ export function Footer() {
                 Pricing
               </Link>
               <Link
-                href="/templates"
+                href="/demo"
                 className="text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
               >
                 Demo
