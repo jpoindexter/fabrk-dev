@@ -131,13 +131,13 @@ const config = {
     googleAuth: !!(env?.server?.GOOGLE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID),
 
     // Payment features
-    subscriptions: false, // Fabrk uses one-time purchase model
+    subscriptions: true, // Enable subscriptions for trial period support
     oneTimePurchases: true, // $199 one-time payment for Fabrk boilerplate
-    // Trial period feature - Planned for v1.1
-    // Database field exists (User.trialEndsAt) but checkout flow incomplete.
-    // Implementation: Set trialEndsAt on user creation, check expiration in middleware/API routes
-    // TODO v1.1: Complete trial checkout flow, add trial countdown UI, enforce trial limits
-    trialPeriod: false, // Infrastructure ready, business logic deferred
+    // Trial period feature - Enable free trial flow
+    // When enabled, users can start a free trial with Stripe subscription mode
+    // Trial ends after trialDays, then user must subscribe or lose access
+    trialPeriod: true,
+    trialDays: 14, // Number of days for free trial
 
     // Dashboard features
     analytics: false, // Enable when ready

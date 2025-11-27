@@ -6,8 +6,10 @@
  */
 
 import { useState } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import { BackupCodesModal } from "@/components/security/backup-codes-modal";
 import { Button } from "@/components/ui/button";
+import { useCsrfFetch } from "@/hooks/use-csrf-token";
 import {
   Card,
   CardContent,
@@ -30,6 +32,20 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from "@/components/ui/input-otp";
+import {
   Shield,
   Smartphone,
   Key,
@@ -39,6 +55,9 @@ import {
   CheckCircle2,
   XCircle,
   AlertTriangle,
+  Loader2,
+  Copy,
+  Check,
 } from "lucide-react";
 
 interface SecuritySettingsProps {
@@ -56,6 +75,7 @@ interface SecuritySettingsProps {
 
 export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsProps) {
   const { info, error } = useToast();
+  const fetchWithCsrf = useCsrfFetch();
   const [isEnabling2FA, setIsEnabling2FA] = useState(false);
   const [isDisabling2FA, setIsDisabling2FA] = useState(false);
   const [disconnectingProvider, setDisconnectingProvider] = useState<string | null>(null);
@@ -68,41 +88,39 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   const [invalidateSessionsDialogOpen, setInvalidateSessionsDialogOpen] = useState(false);
   const [backupCodesModalOpen, setBackupCodesModalOpen] = useState(false);
 
+  // 2FA Setup Modal states
+  const [setup2FAModalOpen, setSetup2FAModalOpen] = useState(false);
+  const [setupStep, setSetupStep] = useState<"qr" | "verify" | "backup">("qr");
+  const [qrCodeUri, setQrCodeUri] = useState<string>("");
+  const [setupBackupCodes, setSetupBackupCodes] = useState<string[]>([]);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [copiedSecret, setCopiedSecret] = useState(false);
+  const [totpSecret, setTotpSecret] = useState<string>("");
+
   const handleEnable2FA = async () => {
     setIsEnabling2FA(true);
 
     try {
-      // Implementation: 2FA setup flow
-      // 1. Generate TOTP secret: const secret = speakeasy.generateSecret()
-      // 2. Display QR code: use qrcode library to generate QR from secret.otpauth_url
-      // 3. User scans with authenticator app (Google Authenticator, Authy, etc.)
-      // 4. User enters verification code to confirm
-      // 5. Save to database: Update User with twoFactorSecret (encrypted) and twoFactorEnabled=true
-      // 6. Generate backup codes and display once
-      // Reference: https://github.com/speakeasyjs/speakeasy
-
-      // Call the MFA enable API
-      const response = await fetch("/api/auth/mfa/enable", {
+      // Call the 2FA setup API to generate TOTP secret and backup codes
+      const response = await fetchWithCsrf("/api/user/2fa/setup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
       });
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || "Failed to enable 2FA");
+        throw new Error(data.error || "Failed to setup 2FA");
       }
 
       const data = await response.json();
 
-      info(
-        "2FA Setup Required",
-        "Scan the QR code with your authenticator app and enter the verification code."
-      );
-
-      // QR Code Modal - Planned for v1.1
-      // TODO v1.1: Show QR code modal with data.qrCode and verify code
-      // For v1.0: Redirect to dedicated 2FA setup page (same UX, different implementation)
-      window.location.href = "/settings/security/2fa/setup";
+      // Store the setup data and open the modal
+      setQrCodeUri(data.qrCodeUri);
+      setTotpSecret(data.secret);
+      setSetupBackupCodes(data.backupCodes);
+      setSetupStep("qr");
+      setVerificationCode("");
+      setSetup2FAModalOpen(true);
     } catch (err: unknown) {
       error(
         "Error enabling 2FA",
@@ -110,6 +128,54 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       );
     } finally {
       setIsEnabling2FA(false);
+    }
+  };
+
+  const handleVerify2FA = async () => {
+    if (verificationCode.length !== 6) return;
+
+    setIsVerifying(true);
+
+    try {
+      const response = await fetchWithCsrf("/api/user/2fa/verify", {
+        method: "POST",
+        body: JSON.stringify({ token: verificationCode }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Invalid verification code");
+      }
+
+      // Move to backup codes step
+      setSetupStep("backup");
+      info("2FA Verified", "Two-factor authentication has been enabled.");
+    } catch (err: unknown) {
+      error(
+        "Verification Failed",
+        err instanceof Error ? err.message : "Please check your code and try again"
+      );
+      setVerificationCode("");
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+  const handleCopySecret = async () => {
+    try {
+      await navigator.clipboard.writeText(totpSecret);
+      setCopiedSecret(true);
+      setTimeout(() => setCopiedSecret(false), 2000);
+    } catch {
+      error("Copy Failed", "Could not copy to clipboard");
+    }
+  };
+
+  const handleClose2FASetup = () => {
+    setSetup2FAModalOpen(false);
+    // If completed, reload to update UI
+    if (setupStep === "backup") {
+      window.location.reload();
     }
   };
 
@@ -125,9 +191,8 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // 4. Delete MFADevice and BackupCode records
 
       // Call the MFA disable API
-      const response = await fetch("/api/auth/mfa/disable", {
+      const response = await fetchWithCsrf("/api/auth/mfa/disable", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
       });
 
       if (!response.ok) {
@@ -165,9 +230,8 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // Note: Ensure user has another login method (password or another OAuth)
 
       // Call the account disconnect API
-      const response = await fetch(`/api/user/accounts/${providerToDisconnect}`, {
+      const response = await fetchWithCsrf(`/api/user/accounts/${providerToDisconnect}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
       });
 
       if (!response.ok) {
@@ -207,9 +271,8 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       // Client: Redirect to login after success
 
       // Call the session invalidation API
-      const response = await fetch("/api/user/sessions/invalidate-all", {
+      const response = await fetchWithCsrf("/api/user/sessions/invalidate-all", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
       });
 
       if (!response.ok) {
@@ -242,9 +305,8 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
   };
 
   const handleRegenerateBackupCodes = async (): Promise<string[]> => {
-    const response = await fetch("/api/auth/mfa/regenerate-codes", {
+    const response = await fetchWithCsrf("/api/auth/mfa/regenerate-codes", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
     });
 
     if (!response.ok) {
@@ -567,6 +629,128 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* 2FA Setup Modal */}
+      <Dialog open={setup2FAModalOpen} onOpenChange={handleClose2FASetup}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              {setupStep === "qr" && "Set Up Two-Factor Authentication"}
+              {setupStep === "verify" && "Verify Your Authenticator"}
+              {setupStep === "backup" && "Save Your Backup Codes"}
+            </DialogTitle>
+            <DialogDescription>
+              {setupStep === "qr" &&
+                "Scan the QR code with your authenticator app (Google Authenticator, Authy, etc.)"}
+              {setupStep === "verify" &&
+                "Enter the 6-digit code from your authenticator app"}
+              {setupStep === "backup" &&
+                "Store these codes safely. You can use them to sign in if you lose access to your authenticator."}
+            </DialogDescription>
+          </DialogHeader>
+
+          {setupStep === "qr" && (
+            <div className="space-y-4">
+              <div className="flex justify-center p-4 bg-white rounded-lg">
+                <QRCodeSVG value={qrCodeUri} size={200} />
+              </div>
+              <div className="space-y-2">
+                <p className="text-sm text-muted-foreground text-center">
+                  Can&apos;t scan? Enter this code manually:
+                </p>
+                <div className="flex items-center gap-2 p-2 bg-muted rounded-md">
+                  <code className="flex-1 text-xs font-mono break-all">
+                    {totpSecret}
+                  </code>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleCopySecret}
+                    className="shrink-0"
+                  >
+                    {copiedSecret ? (
+                      <Check className="h-4 w-4 text-success" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button onClick={() => setSetupStep("verify")} className="w-full">
+                  Continue
+                </Button>
+              </DialogFooter>
+            </div>
+          )}
+
+          {setupStep === "verify" && (
+            <div className="space-y-4">
+              <div className="flex justify-center">
+                <InputOTP
+                  maxLength={6}
+                  value={verificationCode}
+                  onChange={(value) => setVerificationCode(value)}
+                  disabled={isVerifying}
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                  </InputOTPGroup>
+                  <InputOTPSeparator />
+                  <InputOTPGroup>
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+              <DialogFooter className="flex-col gap-2 sm:flex-row">
+                <Button
+                  variant="outline"
+                  onClick={() => setSetupStep("qr")}
+                  disabled={isVerifying}
+                >
+                  Back
+                </Button>
+                <Button
+                  onClick={handleVerify2FA}
+                  disabled={verificationCode.length !== 6 || isVerifying}
+                  className="flex-1"
+                >
+                  {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {isVerifying ? "Verifying..." : "Verify & Enable"}
+                </Button>
+              </DialogFooter>
+            </div>
+          )}
+
+          {setupStep === "backup" && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-2 p-4 bg-muted rounded-lg">
+                {setupBackupCodes.map((code, i) => (
+                  <code key={i} className="text-sm font-mono text-center py-1">
+                    {code}
+                  </code>
+                ))}
+              </div>
+              <Alert>
+                <AlertTriangle className="h-4 w-4" />
+                <AlertDescription>
+                  Each code can only be used once. Store them in a safe place.
+                </AlertDescription>
+              </Alert>
+              <DialogFooter>
+                <Button onClick={handleClose2FASetup} className="w-full">
+                  <CheckCircle2 className="mr-2 h-4 w-4" />
+                  Done
+                </Button>
+              </DialogFooter>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Backup Codes Modal */}
       <BackupCodesModal

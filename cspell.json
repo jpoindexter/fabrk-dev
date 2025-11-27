@@ -1,0 +1,35 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "qrcode",
+    "totp",
+    "TOTP",
+    "Fabrk",
+    "Authy",
+    "nextauth",
+    "prisma",
+    "shadcn",
+    "tailwindcss",
+    "lucide",
+    "radix",
+    "sonner",
+    "resend",
+    "posthog",
+    "upstash",
+    "vercel",
+    "signin",
+    "signout",
+    "csrf",
+    "hmac",
+    "oauth"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    ".next/**",
+    "public/**",
+    "*.lock",
+    "package-lock.json"
+  ]
+}

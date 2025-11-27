@@ -24,6 +24,7 @@ function getTierFromPriceId(priceId: string): string {
 /**
  * Handle new subscription created
  * Updates user subscription status and tier
+ * Handles trial period setup if subscription is in trial
  */
 export async function handleSubscriptionCreated(event: Stripe.Event) {
   const subscription = event.data.object as Stripe.Subscription;
@@ -33,6 +34,7 @@ export async function handleSubscriptionCreated(event: Stripe.Event) {
       subscriptionId: subscription.id,
       customerId: subscription.customer,
       status: subscription.status,
+      trialEnd: subscription.trial_end,
     });
 
     const customerId = typeof subscription.customer === "string" ? subscription.customer : null;
@@ -45,14 +47,19 @@ export async function handleSubscriptionCreated(event: Stripe.Event) {
     const priceId = subscription.items.data[0]?.price?.id;
     const tier = priceId ? getTierFromPriceId(priceId) : "professional";
 
+    // Check if this is a trial subscription
+    const isTrialing = subscription.status === "trialing" && subscription.trial_end;
+    const trialEndsAt = isTrialing
+      ? new Date(subscription.trial_end! * 1000) // Convert Unix timestamp to Date
+      : null;
+
     // Update user with subscription info
     await prisma.user.update({
       where: { customerId },
       data: {
         subscriptionTier: tier,
-        tier,
-        // Clear trial period since they now have an active subscription
-        trialEndsAt: null,
+        tier: isTrialing ? "trial" : tier, // Mark as "trial" during trial period
+        trialEndsAt, // Set trial end date if trialing
       },
     });
 
@@ -60,6 +67,8 @@ export async function handleSubscriptionCreated(event: Stripe.Event) {
       customerId,
       tier,
       status: subscription.status,
+      isTrialing,
+      trialEndsAt: trialEndsAt?.toISOString(),
     });
   } catch (error: unknown) {
     logger.error("Error processing subscription.created", error);
