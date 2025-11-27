@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 
+// Extend Window interface for dataLayer
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 interface PolarCheckoutButtonProps {
   customerEmail?: string
   className?: string
@@ -20,6 +27,21 @@ export function PolarCheckoutButton({
 
   const handleCheckout = async () => {
     setIsLoading(true)
+
+    // Track begin_checkout event in GTM
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'begin_checkout',
+      ecommerce: {
+        currency: 'USD',
+        value: 149,
+        items: [{
+          item_name: 'Fabrk Boilerplate',
+          price: 149,
+          quantity: 1,
+        }],
+      },
+    });
 
     try {
       const response = await fetch('/api/polar/checkout', {

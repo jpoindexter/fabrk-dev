@@ -1,5 +1,7 @@
+import { Suspense } from 'react'
 import { CheckCircle, Download, Mail, Github } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { PurchaseTracker } from '@/components/analytics/purchase-tracker'
 import Link from 'next/link'
 
 export const metadata = {
@@ -10,6 +12,10 @@ export const metadata = {
 export default function PurchaseSuccessPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
+      {/* Track purchase conversion in GA4 */}
+      <Suspense fallback={null}>
+        <PurchaseTracker value={149} itemName="Fabrk Boilerplate" />
+      </Suspense>
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
         <div className="flex justify-center mb-8">

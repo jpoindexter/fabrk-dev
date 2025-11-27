@@ -6,6 +6,13 @@
  */
 
 import { useState } from "react";
+
+// Extend Window interface for dataLayer
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/landing/navigation";
@@ -63,6 +70,13 @@ export default function ContactPage() {
       // In a real implementation, this would send to an API endpoint
       // For now, we'll simulate a successful submission
       await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Track contact form submission in GTM
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'contact_form_submit',
+        form_subject: formData.subject,
+      });
 
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
