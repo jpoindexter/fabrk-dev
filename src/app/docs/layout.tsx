@@ -73,6 +73,7 @@ const navigation = [
     title: "Payments",
     items: [
       { title: "Stripe Setup", href: "/docs/features/payments", icon: CreditCard },
+      { title: "Free Trials", href: "/docs/features/trial", icon: Clock },
       { title: "Subscription Guide", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
     ],
   },
@@ -89,6 +90,7 @@ const navigation = [
     items: [
       { title: "API Routes", href: "/docs/tutorials/api-routes", icon: FileCode },
       { title: "Protected Pages", href: "/docs/tutorials/protected-pages", icon: Shield },
+      { title: "Cloud Storage", href: "/docs/features/cloud-storage", icon: Cloud },
       { title: "File Uploads", href: "/docs/tutorials/file-uploads", icon: Upload },
       { title: "Webhooks Setup", href: "/docs/tutorials/webhooks", icon: Webhook },
     ],

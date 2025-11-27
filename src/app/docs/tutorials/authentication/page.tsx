@@ -5,169 +5,498 @@ import { CodeBlock } from "@/components/ui/code-block";
 export default function AuthenticationTutorialPage() {
   return (
     <div className="space-y-8">
+      {/* Header */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">User Authentication</h1>
         <p className="text-lg text-muted-foreground">
-          Set up user authentication with NextAuth v5, Google OAuth, and email/password.
+          Let users create accounts, log in, and securely access your app.
         </p>
       </div>
 
+      {/* What is Authentication - Plain English */}
       <Card>
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li>Email/password authentication with bcrypt</li>
-            <li>Google OAuth (optional)</li>
-            <li>Email verification flow</li>
-            <li>Password reset with secure tokens</li>
-            <li>JWT sessions (30-day expiration)</li>
-            <li>Session versioning for instant logout</li>
+        <CardContent className="p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-foreground">What is Authentication?</h2>
+          <p className="text-muted-foreground">
+            Authentication is how your app knows who someone is. When a user creates an account
+            and logs in, your app gives them a &quot;pass&quot; (called a session) that proves their identity.
+            This pass gets checked every time they access protected areas of your app.
+          </p>
+          <p className="text-muted-foreground">
+            Think of it like a hotel key card - you check in once (log in), get your key card (session),
+            and use it to access your room (protected pages) without re-checking in every time.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Why You Need This */}
+      <Card>
+        <CardContent className="p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-foreground">Why You Need This</h2>
+          <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+            <li><strong>Personalization:</strong> Save user preferences, data, and history</li>
+            <li><strong>Security:</strong> Keep private data private and prevent unauthorized access</li>
+            <li><strong>Billing:</strong> Know who to charge for premium features</li>
+            <li><strong>Communication:</strong> Send emails to specific users</li>
           </ul>
         </CardContent>
       </Card>
 
-      {/* Basic Setup */}
+      {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Basic Setup</h2>
+        <h2 className="text-2xl font-semibold">What&apos;s Already Built</h2>
         <p className="text-muted-foreground">
-          Authentication is already configured in <code className="rounded bg-muted px-1 py-0.5">src/lib/auth.ts</code>.
-          You just need to set your environment variables:
+          Fabrk includes a complete authentication system. You don&apos;t need to build any of this:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Email/Password</h3>
+              <p className="text-sm text-muted-foreground">
+                Traditional signup with encrypted passwords. Industry-standard bcrypt hashing.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Google Login</h3>
+              <p className="text-sm text-muted-foreground">
+                One-click signup with Google accounts. No passwords to remember.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Email Verification</h3>
+              <p className="text-sm text-muted-foreground">
+                Confirm users own their email address before full access.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Password Reset</h3>
+              <p className="text-sm text-muted-foreground">
+                Secure &quot;forgot password&quot; flow with expiring tokens.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Two-Factor Auth</h3>
+              <p className="text-sm text-muted-foreground">
+                Optional 2FA with authenticator apps for extra security.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="font-semibold">Protected Routes</h3>
+              <p className="text-sm text-muted-foreground">
+                Automatically block unauthenticated users from private pages.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Quick Setup */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <h2 className="text-2xl font-semibold">Quick Setup</h2>
+          <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+            2 minutes
+          </span>
+        </div>
+        <p className="text-muted-foreground">
+          Authentication works out of the box. Just set these two environment variables:
         </p>
         <CodeBlock language="bash" code={`# .env.local
 
-# Required for all auth
+# Where your app runs
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-32-character-secret-here"
 
-# Generate a secret with:
-openssl rand -base64 32`} />
+# A random secret for encrypting sessions (generate one below)
+NEXTAUTH_SECRET="your-32-character-secret"`} />
+        <p className="text-sm text-muted-foreground">
+          Generate a secret by running: <code className="rounded bg-muted px-1">openssl rand -base64 32</code>
+        </p>
+        <p className="text-sm text-muted-foreground">
+          That&apos;s it! Users can now sign up and log in with email/password. Google login requires
+          additional setup below.
+        </p>
       </div>
 
-      {/* Google OAuth */}
+      {/* How Authentication Works - For learners */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Google OAuth Setup</h2>
-        <ol className="list-inside list-decimal space-y-3 text-muted-foreground">
-          <li>
-            Go to{" "}
-            <a
-              href="https://console.cloud.google.com/apis/credentials"
-              className="text-primary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Google Cloud Console → Credentials
-            </a>
-          </li>
-          <li>Create a new OAuth 2.0 Client ID</li>
-          <li>
-            Add authorized redirect URI:
-            <code className="ml-2 rounded bg-muted px-1 py-0.5">
-              http://localhost:3000/api/auth/callback/google
-            </code>
-          </li>
-          <li>Copy Client ID and Client Secret</li>
-        </ol>
-        <CodeBlock language="bash" code={`# .env.local
+        <h2 className="text-2xl font-semibold">How It Works</h2>
+        <p className="text-muted-foreground">
+          Here&apos;s what happens when a user interacts with your app:
+        </p>
+        <div className="space-y-3">
+          <div className="rounded-lg border p-4">
+            <h3 className="font-semibold mb-2">When a User Signs Up</h3>
+            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
+              <li>User enters email and password on the signup form</li>
+              <li>Password is encrypted (never stored as plain text)</li>
+              <li>Account is created in your database</li>
+              <li>Verification email is sent (if enabled)</li>
+              <li>User clicks the verification link to confirm their email</li>
+            </ol>
+          </div>
+          <div className="rounded-lg border p-4">
+            <h3 className="font-semibold mb-2">When a User Logs In</h3>
+            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
+              <li>User enters email and password</li>
+              <li>System checks if the password matches</li>
+              <li>If correct, a session token is created</li>
+              <li>Token is stored in a secure cookie in their browser</li>
+              <li>User is redirected to the dashboard</li>
+            </ol>
+          </div>
+          <div className="rounded-lg border p-4">
+            <h3 className="font-semibold mb-2">On Every Page Visit</h3>
+            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
+              <li>Browser automatically sends the session cookie</li>
+              <li>Server verifies the token is valid</li>
+              <li>If valid, user sees the page. If not, redirected to login</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* Google OAuth - Step by Step */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Add Google Login (Optional)</h2>
+        <p className="text-muted-foreground">
+          Let users sign in with their Google account. This is convenient for users and often
+          increases signup rates.
+        </p>
+
+        {/* Analogy */}
+        <Card className="bg-muted/50">
+          <CardContent className="p-4">
+            <p className="text-sm text-muted-foreground">
+              <strong>How Google login works:</strong> Think of it like a valet service. Instead
+              of giving your app your password (car keys), you let Google (the valet) verify
+              who you are and vouch for you. Google tells your app &quot;yes, this person is who
+              they say they are&quot; without ever sharing the user&apos;s Google password.
+            </p>
+          </CardContent>
+        </Card>
+
+        <div className="space-y-6 mt-4">
+          {/* Step 1 */}
+          <div className="space-y-3 rounded-lg border p-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                1
+              </span>
+              <h3 className="font-semibold">Create a Google Cloud Project</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Go to the{" "}
+              <a
+                href="https://console.cloud.google.com/"
+                className="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Cloud Console
+              </a>{" "}
+              and create a new project (or use an existing one). The project name can be anything -
+              it&apos;s just for your organization.
+            </p>
+          </div>
+
+          {/* Step 2 */}
+          <div className="space-y-3 rounded-lg border p-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                2
+              </span>
+              <h3 className="font-semibold">Configure OAuth Consent Screen</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Go to &quot;APIs &amp; Services&quot; → &quot;OAuth consent screen&quot;. This is the screen users see
+              when signing in with Google. Choose &quot;External&quot; (for public apps), then fill in:
+            </p>
+            <ul className="list-inside list-disc text-sm text-muted-foreground mt-2">
+              <li><strong>App name:</strong> Your SaaS name</li>
+              <li><strong>User support email:</strong> Your email</li>
+              <li><strong>Developer contact:</strong> Your email</li>
+            </ul>
+            <p className="text-sm text-muted-foreground mt-2">
+              Skip the scopes page (defaults are fine) and save.
+            </p>
+          </div>
+
+          {/* Step 3 */}
+          <div className="space-y-3 rounded-lg border p-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                3
+              </span>
+              <h3 className="font-semibold">Create OAuth Credentials</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Go to &quot;APIs &amp; Services&quot; → &quot;Credentials&quot; → &quot;Create Credentials&quot; → &quot;OAuth client ID&quot;.
+            </p>
+            <ul className="list-inside list-disc text-sm text-muted-foreground mt-2">
+              <li><strong>Application type:</strong> Web application</li>
+              <li><strong>Name:</strong> Anything (e.g., &quot;My SaaS Web Client&quot;)</li>
+              <li><strong>Authorized redirect URIs:</strong></li>
+            </ul>
+            <CodeBlock language="text" code={`http://localhost:3000/api/auth/callback/google`} />
+            <p className="text-sm text-muted-foreground mt-2">
+              For production, add your real domain too:
+            </p>
+            <CodeBlock language="text" code={`https://yourdomain.com/api/auth/callback/google`} />
+          </div>
+
+          {/* Step 4 */}
+          <div className="space-y-3 rounded-lg border p-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                4
+              </span>
+              <h3 className="font-semibold">Add Credentials to Your App</h3>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Copy the Client ID and Client Secret from Google, then add them to your{" "}
+              <code className="rounded bg-muted px-1">.env.local</code> file:
+            </p>
+            <CodeBlock language="bash" code={`# .env.local
 
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-client-secret"`} />
+            <p className="text-sm text-muted-foreground">
+              Google login is now enabled! The &quot;Sign in with Google&quot; button will appear automatically
+              on your login page.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Protecting Pages */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Protected Pages</h2>
+        <p className="text-muted-foreground">
+          Some pages should only be visible to logged-in users. Fabrk automatically protects
+          these routes:
+        </p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div className="rounded border p-3">
+            <code className="text-sm">/dashboard/*</code>
+            <p className="text-xs text-muted-foreground">Main user dashboard</p>
+          </div>
+          <div className="rounded border p-3">
+            <code className="text-sm">/settings/*</code>
+            <p className="text-xs text-muted-foreground">User settings pages</p>
+          </div>
+          <div className="rounded border p-3">
+            <code className="text-sm">/billing/*</code>
+            <p className="text-xs text-muted-foreground">Payment and subscription pages</p>
+          </div>
+          <div className="rounded border p-3">
+            <code className="text-sm">/admin/*</code>
+            <p className="text-xs text-muted-foreground">Admin-only pages</p>
+          </div>
+        </div>
         <p className="text-sm text-muted-foreground">
-          Google OAuth is automatically enabled when these variables are set.
+          If someone tries to visit these pages without being logged in, they&apos;re automatically
+          sent to the login page.
         </p>
       </div>
 
-      {/* Protecting Routes */}
+      {/* Code Examples - For developers */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Protecting Routes</h2>
+        <h2 className="text-2xl font-semibold">Code Reference</h2>
         <p className="text-muted-foreground">
-          Routes are protected via middleware in <code className="rounded bg-muted px-1 py-0.5">src/middleware.ts</code>.
-          These routes require authentication:
+          Here&apos;s how to use authentication in your own code:
         </p>
-        <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li><code className="rounded bg-muted px-1 py-0.5">/dashboard/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/admin/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/billing/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/settings/*</code></li>
-        </ul>
-      </div>
 
-      {/* API Route Protection */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">API Route Protection</h2>
-        <p className="text-muted-foreground">
-          Protect API routes by checking the session:
-        </p>
-        <CodeBlock language="typescript" code={`// src/app/api/your-route/route.ts
+        {/* Check if user is logged in - API routes */}
+        <div className="space-y-2">
+          <h3 className="font-semibold">In API Routes (Server-Side)</h3>
+          <p className="text-sm text-muted-foreground">
+            Check if the user is logged in and get their info:
+          </p>
+          <CodeBlock language="typescript" code={`// src/app/api/your-route/route.ts
 
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  // Get the current user's session
   const session = await auth();
 
+  // Check if they're logged in
   if (!session?.user) {
     return NextResponse.json(
-      { error: "Unauthorized" },
+      { error: "You must be logged in" },
       { status: 401 }
     );
   }
 
-  // User is authenticated
+  // User is logged in - you can access their info
   const userId = session.user.id;
+  const userEmail = session.user.email;
 
-  return NextResponse.json({ userId });
+  return NextResponse.json({
+    message: "Hello!",
+    userId
+  });
 }`} />
-      </div>
+        </div>
 
-      {/* Client-Side Auth */}
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Client-Side Authentication</h2>
-        <p className="text-muted-foreground">
-          Use the session in client components:
-        </p>
-        <CodeBlock language="tsx" code={`"use client";
+        {/* Client-side auth */}
+        <div className="space-y-2 mt-6">
+          <h3 className="font-semibold">In React Components (Client-Side)</h3>
+          <p className="text-sm text-muted-foreground">
+            Show different content based on login status:
+          </p>
+          <CodeBlock language="tsx" code={`"use client";
 
 import { useSession, signIn, signOut } from "next-auth/react";
 
-export function AuthButton() {
+export function UserStatus() {
+  // Get session data and loading state
   const { data: session, status } = useSession();
 
+  // Show loading while checking auth
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   }
 
+  // User is logged in
   if (session) {
     return (
       <div>
-        <p>Signed in as {session.user?.email}</p>
-        <button onClick={() => signOut()}>Sign out</button>
+        <p>Welcome, {session.user?.email}!</p>
+        <button onClick={() => signOut()}>
+          Log out
+        </button>
       </div>
     );
   }
 
+  // User is not logged in
   return (
-    <button onClick={() => signIn()}>Sign in</button>
+    <button onClick={() => signIn()}>
+      Log in
+    </button>
   );
 }`} />
+        </div>
+
+        {/* Server component */}
+        <div className="space-y-2 mt-6">
+          <h3 className="font-semibold">In Server Components</h3>
+          <p className="text-sm text-muted-foreground">
+            Check auth status in Next.js Server Components:
+          </p>
+          <CodeBlock language="tsx" code={`// No "use client" - this runs on the server
+
+import { auth } from "@/lib/auth";
+
+export default async function PrivatePage() {
+  const session = await auth();
+
+  if (!session) {
+    return <p>Please log in to view this page.</p>;
+  }
+
+  return (
+    <div>
+      <h1>Welcome, {session.user?.name}!</h1>
+      <p>This is your private dashboard.</p>
+    </div>
+  );
+}`} />
+        </div>
       </div>
 
       {/* Email Verification */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Email Verification</h2>
         <p className="text-muted-foreground">
-          Email verification is enabled by default. When a user registers:
+          By default, Fabrk requires users to verify their email address. This ensures you can
+          contact users and prevents fake signups.
         </p>
-        <ol className="list-inside list-decimal space-y-1 text-muted-foreground">
-          <li>A verification token is generated</li>
-          <li>An email is sent with a verification link</li>
-          <li>User clicks link to verify their email</li>
-          <li>User can now access protected features</li>
-        </ol>
-        <p className="mt-4 text-sm text-muted-foreground">
-          To disable email verification, set{" "}
-          <code className="rounded bg-muted px-1 py-0.5">emailVerification: false</code> in{" "}
-          <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>.
+        <div className="rounded-lg border p-4">
+          <h3 className="font-semibold mb-2">How It Works</h3>
+          <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
+            <li>User signs up with their email</li>
+            <li>They receive an email with a special link</li>
+            <li>Clicking the link verifies their email</li>
+            <li>They can now fully use your app</li>
+          </ol>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          <strong>Want to disable verification?</strong> In{" "}
+          <code className="rounded bg-muted px-1">src/config.js</code>, set{" "}
+          <code className="rounded bg-muted px-1">emailVerification: false</code>. Not recommended
+          for production apps.
         </p>
+      </div>
+
+      {/* Common Questions */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Common Questions</h2>
+        <div className="space-y-3">
+          <details className="rounded-lg border">
+            <summary className="cursor-pointer p-4 font-medium">
+              How long do sessions last?
+            </summary>
+            <div className="border-t p-4 text-sm text-muted-foreground">
+              <p>
+                Sessions last 30 days by default. After 30 days, users need to log in again.
+                You can change this in <code className="rounded bg-muted px-1">src/lib/auth.ts</code>.
+              </p>
+            </div>
+          </details>
+
+          <details className="rounded-lg border">
+            <summary className="cursor-pointer p-4 font-medium">
+              How do I force a user to log out?
+            </summary>
+            <div className="border-t p-4 text-sm text-muted-foreground">
+              <p>
+                Increment the user&apos;s <code className="rounded bg-muted px-1">sessionVersion</code> in
+                the database. This instantly invalidates all their sessions. Useful for security
+                actions like password changes.
+              </p>
+            </div>
+          </details>
+
+          <details className="rounded-lg border">
+            <summary className="cursor-pointer p-4 font-medium">
+              Are passwords stored securely?
+            </summary>
+            <div className="border-t p-4 text-sm text-muted-foreground">
+              <p>
+                Yes. Passwords are hashed using bcrypt with 12 rounds. Even if your database
+                is compromised, attackers can&apos;t see the original passwords.
+              </p>
+            </div>
+          </details>
+
+          <details className="rounded-lg border">
+            <summary className="cursor-pointer p-4 font-medium">
+              Can I add other OAuth providers (GitHub, Twitter, etc.)?
+            </summary>
+            <div className="border-t p-4 text-sm text-muted-foreground">
+              <p>
+                Yes! NextAuth supports 50+ providers. Add them in{" "}
+                <code className="rounded bg-muted px-1">src/lib/auth.ts</code>. See the{" "}
+                <a href="https://authjs.dev/reference/core/providers" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                  NextAuth providers documentation
+                </a>.
+              </p>
+            </div>
+          </details>
+        </div>
       </div>
 
       {/* Next Steps */}
@@ -177,24 +506,31 @@ export function AuthButton() {
           <Link href="/docs/features/mfa">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Multi-Factor Auth</h3>
+                <h3 className="font-semibold">Two-Factor Authentication</h3>
                 <p className="text-sm text-muted-foreground">
-                  Add TOTP, SMS, or WebAuthn 2FA
+                  Add extra security with authenticator apps like Google Authenticator.
                 </p>
               </CardContent>
             </Card>
           </Link>
-          <Link href="/docs/tutorials/protected-pages">
+          <Link href="/docs/features/payments">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Protected Pages</h3>
+                <h3 className="font-semibold">Set Up Payments</h3>
                 <p className="text-sm text-muted-foreground">
-                  Create pages that require authentication
+                  Accept payments from your authenticated users.
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
+      </div>
+
+      {/* Back to docs link */}
+      <div className="pt-4">
+        <Link href="/docs" className="text-primary hover:underline">
+          ← Back to Documentation
+        </Link>
       </div>
     </div>
   );
