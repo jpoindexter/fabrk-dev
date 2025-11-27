@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Providers } from "@/components/providers";
 import { PostHogPageView } from "@/components/analytics/posthog-pageview";
+import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -22,6 +23,15 @@ export const metadata: Metadata = {
     default: "Fabrk - Build Production Apps at AI Speed",
     template: "%s | Fabrk",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
   description:
     "A complete UI system with 169 production-ready components, design tokens, automated testing, and AI workflows. Build faster with enforced quality standards.",
   keywords: [
@@ -159,6 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </Suspense>
             </main>
           </div>
+          <CookieConsent />
         </Providers>
       </body>
     </html>

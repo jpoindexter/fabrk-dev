@@ -1,0 +1,72 @@
+# Fabrk Boilerplate - Cursor IDE Rules
+
+## Primary Instructions
+Read CLAUDE.md in the project root for comprehensive AI agent instructions.
+For detailed patterns and architecture, see .agent-workspace/CLAUDE.md
+
+## Quick Reference
+
+### File Structure
+- src/app/ - Next.js App Router (pages, API routes, layouts)
+- src/components/ - React components organized by feature
+- src/lib/ - Utilities, services, and configurations
+- prisma/ - Database schema
+
+### Code Style
+- TypeScript strict mode
+- Functional components with hooks
+- Server components by default, "use client" when needed
+- Tailwind CSS with design tokens from globals.css
+
+### Naming Conventions
+- kebab-case for files: user-profile.tsx
+- PascalCase for components: UserProfile
+- camelCase for functions: getUserProfile
+
+### Component Pattern
+```tsx
+"use client"; // Only if client-side interactivity needed
+
+import { ComponentProps } from "@/types";
+
+interface Props extends ComponentProps {
+  // Props definition
+}
+
+export function ComponentName({ prop }: Props) {
+  // Implementation
+}
+```
+
+### API Route Pattern
+```ts
+import { NextResponse } from "next/server";
+import { auth } from "@/lib/auth";
+
+export async function GET() {
+  const session = await auth();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  // Implementation
+}
+```
+
+### Design System
+- Uses neobrutalist styling (thick borders, hard shadows)
+- Primary color: Purple theme
+- Components from @/components/ui/
+- Border: border-2 border-foreground
+- Shadow: shadow-brutal classes
+- Radius: rounded-brutal
+
+### Testing
+- npm run test - Run all tests
+- npm run test:watch - Watch mode
+- Tests in __tests__ folders or *.test.ts files
+
+### Common Commands
+- npm run dev - Start development server
+- npm run build - Production build
+- npm run lint - Run ESLint
+- npm run typecheck - TypeScript check
