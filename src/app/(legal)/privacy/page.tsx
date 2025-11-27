@@ -45,7 +45,7 @@ export default function PrivacyPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Small>Last Updated: November 7, 2024</Small>
+          <Small>Last Updated: November 26, 2025</Small>
         </motion.div>
       </div>
 
