@@ -39,6 +39,7 @@ import {
   ScrollText,
   ShieldCheck,
   AlertTriangle,
+  Cookie,
 } from "lucide-react";
 
 const navigation = [
@@ -126,8 +127,9 @@ const navigation = [
     ],
   },
   {
-    title: "Security",
+    title: "Security & Privacy",
     items: [
+      { title: "Cookie Consent", href: "/docs/features/cookie-consent", icon: Cookie },
       { title: "Rate Limiting", href: "/docs/security/rate-limiting", icon: AlertTriangle },
       { title: "CSRF Protection", href: "/docs/security/csrf", icon: Shield },
       { title: "Security Headers", href: "/docs/security/headers", icon: ShieldCheck },
