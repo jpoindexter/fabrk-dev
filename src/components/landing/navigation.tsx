@@ -1,3 +1,7 @@
+/* 💡 NAV TIP: Update the navLinks array to match your site sections.
+ * Replace the Logo component with your own logo.
+ * The navigation is responsive - mobile menu handled via Sheet component.
+ */
 "use client";
 
 import Link from "next/link";
@@ -12,7 +16,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
-import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
+import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,3 +1,7 @@
+/* 💡 COPY TIP: Replace these testimonials with real customer quotes!
+ * Authentic testimonials convert 3-5x better than generic ones.
+ * Include specific results (e.g., "saved 40 hours") when possible.
+ */
 "use client";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";

@@ -10,9 +10,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { X, Sparkles } from "lucide-react";
-import config from "@/config";
+import { Sparkles } from "lucide-react";
 import { Small } from "@/components/ui/typography";
+import { PolarCheckoutButton } from "@/components/polar/checkout-button";
+
+/* 💡 EXIT INTENT TIP: This popup offers an extra discount to visitors about to leave.
+ * Update the EXTRA_DISCOUNT_ID with your Polar coupon ID for special offers.
+ * Current offer: $175 (additional $24 off the regular $199 price)
+ */
+const EXIT_INTENT_DISCOUNT_ID = "4ef6f4e5-e11e-46bc-97a2-e5c15fe25173";
 
 interface ExitIntentPopupProps {
   /**
@@ -59,9 +65,7 @@ interface ExitIntentPopupProps {
 
 export function ExitIntentPopup({
   title = "Wait! Before You Go...",
-  description = "Get access to the complete Fabrk boilerplate and launch your SaaS faster.",
-  ctaText = "Get Started Now",
-  ctaHref = "#pricing",
+  description = "Get Fabrk and launch your SaaS 10x faster. 100 components, authentication, payments, and more.",
   secondaryCtaText = "No thanks, I'll build from scratch",
   showPricing = true,
   delay = 300,
@@ -79,6 +83,7 @@ export function ExitIntentPopup({
         shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000
       );
       if (new Date() < expiryDate) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
         setHasShown(true);
       }
     }
@@ -112,10 +117,6 @@ export function ExitIntentPopup({
     setIsOpen(false);
   };
 
-  const handleCTA = () => {
-    window.location.href = ctaHref;
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="max-w-md">
@@ -136,10 +137,10 @@ export function ExitIntentPopup({
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-3xl font-bold text-foreground">
-                  {config.pricing.fabrk.display.current}
+                  $175
                 </span>
                 <span className="text-lg text-muted-foreground line-through">
-                  {config.pricing.fabrk.display.original}
+                  $299
                 </span>
               </div>
               <Small className="block text-muted-foreground">
@@ -150,9 +151,12 @@ export function ExitIntentPopup({
         )}
 
         <DialogFooter className="flex-col gap-2 sm:flex-col">
-          <Button onClick={handleCTA} className="w-full" size="lg">
-            {ctaText}
-          </Button>
+          <PolarCheckoutButton
+            discountId={EXIT_INTENT_DISCOUNT_ID}
+            className="w-full"
+          >
+            Get Fabrk Now
+          </PolarCheckoutButton>
           <Button
             onClick={handleClose}
             variant="ghost"

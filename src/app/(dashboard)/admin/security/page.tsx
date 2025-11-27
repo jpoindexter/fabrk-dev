@@ -70,24 +70,28 @@ function getResultIcon(result: string): React.JSX.Element {
 export default function AdminSecurityPage() {
   const [logs, setLogs] = useState<AuditLogEntry[]>([]);
   const [severityFilter, setSeverityFilter] = useState<string | undefined>();
-  const [summary, setSummary] = useState<ReturnType<typeof getSecuritySummary>>();
+  const [summary, setSummary] = useState<Awaited<ReturnType<typeof getSecuritySummary>>>();
 
   useEffect(() => {
     // Load logs - use startTransition for non-urgent updates
     startTransition(() => {
-      const filters: any = {};
-      if (severityFilter) {
-        filters.severity = severityFilter;
-      }
-      filters.limit = 50;
+      const loadData = async () => {
+        const filters: Parameters<typeof queryAuditLogs>[0] = {};
+        if (severityFilter && severityFilter !== "all") {
+          filters.severity = severityFilter as AuditLogEntry["severity"];
+        }
+        filters.limit = 50;
 
-      const auditLogs = queryAuditLogs(filters);
-      setLogs(auditLogs);
+        const auditLogs = await queryAuditLogs(filters);
+        setLogs(auditLogs);
 
-      // Load summary (last 7 days)
-      const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-      const summaryData = getSecuritySummary(since);
-      setSummary(summaryData);
+        // Load summary (last 7 days)
+        const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        const summaryData = await getSecuritySummary(since);
+        setSummary(summaryData);
+      };
+
+      loadData();
     });
   }, [severityFilter]);
 

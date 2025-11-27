@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
-import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
+import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 interface DemoNavProps {
   backButtonText?: string;

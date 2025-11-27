@@ -10,7 +10,7 @@ import { logger } from '@/lib/logger';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { customerEmail, metadata } = body;
+    const { customerEmail, discountId, metadata } = body;
 
     // Get base URL for success redirect
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     const checkout = await createCheckoutSession({
       customerEmail,
       successUrl,
+      discountId, // Pass custom discount if provided (e.g., exit intent special offer)
       metadata: {
         source: 'fabrk_website',
         ...metadata,

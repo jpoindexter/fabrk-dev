@@ -1,3 +1,8 @@
+/* 💡 STYLING TIP: Customize theme colors below in the :root section.
+ * Colors use OKLCH format (lightness% chroma hue) for better color accuracy.
+ * Multiple themes available: black, purple, green, blue, orange, rose.
+ * Toggle themes via the ThemeDropdown component or ColorThemeSwitcher.
+ */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";

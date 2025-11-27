@@ -17,16 +17,11 @@
 import { prisma } from "@/lib/prisma";
 import * as crypto from "crypto";
 
-// AWS SDK imports are optional - only import if packages are installed
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// AWS SDK imports are optional (type safety not available until SDK installed)
 let S3Client: any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let PutObjectCommand: any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let GetObjectCommand: any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let DeleteObjectCommand: any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let getSignedUrl: any;
 
 try {

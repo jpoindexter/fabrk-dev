@@ -153,7 +153,7 @@ Now that you're set up, explore these guides:
 - [Authentication Setup](/docs/auth) - Configure OAuth providers
 - [Stripe Integration](/docs/payments) - Set up payments
 - [Email Templates](/docs/emails) - Customize transactional emails
-- [UI Components](/docs/ui-components) - Browse 87+ components
+- [UI Components](/docs/ui-components) - Browse 100+ components
 
 ## Need Help?
 

@@ -28,7 +28,7 @@ const VIDEO_CONFIG = {
   platform: "youtube", // "youtube" or "vimeo"
   videoId: "dQw4w9WgXcQ", // Replace with your video ID
   title: "Fabrk 60-Second Demo",
-  description: "See how Fabrk accelerates your SaaS launch with 87 production-ready components",
+  description: "See how Fabrk accelerates your SaaS launch with 100+ production-ready components",
 };
 
 interface VideoEmbedProps {

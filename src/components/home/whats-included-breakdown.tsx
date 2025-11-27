@@ -14,7 +14,7 @@ import { H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
 const CATEGORIES = [
   {
     id: "components",
-    title: "87 Production-Ready Components",
+    title: "100+ Production-Ready Components",
     description: "Complete UI library with variants, themes, and accessibility",
     items: [
       {
@@ -416,7 +416,7 @@ export function WhatsIncludedBreakdown() {
               Everything You Get
             </H2>
             <Body className="mx-auto max-w-2xl text-muted-foreground">
-              87 components, 8 templates, 12+ features, 931+ tests, 400KB docs. Click to expand each category.
+              100+ components, 8 templates, 12+ features, 931+ tests, 400KB docs. Click to expand each category.
             </Body>
           </div>
 

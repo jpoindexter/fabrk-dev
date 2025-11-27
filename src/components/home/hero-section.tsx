@@ -13,7 +13,7 @@ import config from "@/config";
 import { Button } from "@/components/ui/button";
 
 const metrics = [
-  { label: "Components", value: "87" },
+  { label: "Components", value: "100+" },
   { label: "Test Coverage", value: "85%" },
   { label: "Quality Grade", value: "A" },
 ];
@@ -51,7 +51,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            87 components. Automated quality. One price.
+            100+ components. Automated quality. One price.
           </motion.p>
 
           <motion.div

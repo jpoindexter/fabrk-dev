@@ -47,6 +47,7 @@ export function ThemeDropdown() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Hydration pattern for SSR compatibility
         setMounted(true);
 
         // Remove any leftover dark mode class and localStorage from old theme system
@@ -61,10 +62,13 @@ export function ThemeDropdown() {
         setCurrentTheme(saved);
         document.documentElement.setAttribute("data-theme", saved);
 
-        // Force reload if dark class persists (nuclear option)
+        // Force remove dark class if it somehow persists (safe cleanup)
         if (document.documentElement.classList.contains("dark")) {
-            localStorage.clear();
-            window.location.reload();
+            document.documentElement.classList.remove("dark");
+            // Only remove theme-related keys, not auth tokens or other data
+            localStorage.removeItem("theme");
+            localStorage.removeItem("theme-mode");
+            localStorage.removeItem("color-theme");
         }
     }, []);
 

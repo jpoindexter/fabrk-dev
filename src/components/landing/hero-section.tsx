@@ -1,3 +1,7 @@
+/* 💡 COPY TIP: This is your main landing page hero section.
+ * Update the headline (line ~33) and sub-headline (line ~44) to match your product's value proposition.
+ * The tech stack logos at the bottom can be customized to show your actual stack.
+ */
 "use client";
 
 import Link from "next/link";

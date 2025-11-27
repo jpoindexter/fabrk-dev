@@ -50,6 +50,7 @@ export function StickyCTABar({
   useEffect(() => {
     const dismissed = localStorage.getItem("sticky-cta-dismissed");
     if (dismissed === "true") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
       setIsDismissed(true);
     }
   }, []);

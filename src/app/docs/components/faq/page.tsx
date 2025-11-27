@@ -82,7 +82,7 @@ export default function LandingPage() {
 const faqs = [
   {
     question: "What is included in the boilerplate?",
-    answer: "The boilerplate includes authentication, payments, email, database, and 87 UI components ready for production."
+    answer: "The boilerplate includes authentication, payments, email, database, and 100+ UI components ready for production."
   },
   {
     question: "Do I need to pay for updates?",

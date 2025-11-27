@@ -254,6 +254,7 @@ export function UserDataTable({
     },
   ];
 
+  // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
   const table = useReactTable({
     data: users,
     columns,

@@ -111,7 +111,7 @@ export default function RefundPage() {
           <List className="mb-4">
             <ListItem>Instant download of the complete Fabrk source code</ListItem>
             <ListItem>Lifetime license to use the code (v1.x updates included)</ListItem>
-            <ListItem>Access to all 87 production-ready components</ListItem>
+            <ListItem>Access to all 100+ production-ready components</ListItem>
             <ListItem>Complete documentation and setup guides</ListItem>
           </List>
 

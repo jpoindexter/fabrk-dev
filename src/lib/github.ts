@@ -226,7 +226,7 @@ export async function listRepositoryCollaborators(): Promise<
       repo: env.server.GITHUB_REPO_NAME!,
     });
 
-    return collaborators.data.map((collab: any) => ({
+    return collaborators.data.map((collab) => ({
       username: collab.login,
       permission: collab.role_name || collab.permissions?.pull ? "pull" : "push",
       type: collab.type,

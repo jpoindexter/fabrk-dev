@@ -1,3 +1,7 @@
+/* 💡 COPY TIP: Update the features array to match your actual product features.
+ * Each feature should highlight a specific benefit, not just a capability.
+ * Icons come from simple-icons (tech brands) and lucide-react (generic icons).
+ */
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";

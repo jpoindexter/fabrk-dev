@@ -1,3 +1,7 @@
+/* 💡 PRICING TIP: Update your pricing in src/config.js under the 'pricing' section.
+ * The features list below should match what you're actually offering.
+ * The PolarCheckoutButton handles the payment flow - see src/components/polar/ for customization.
+ */
 "use client";
 
 import { Badge } from "@/components/ui/badge";

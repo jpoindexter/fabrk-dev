@@ -1,3 +1,9 @@
+/* 💡 EMAIL TIP: Get your Resend API key from https://resend.com/api-keys
+ * Update FROM_EMAIL below with your verified domain (e.g., hello@yourdomain.com).
+ * In development, emails are logged to console instead of being sent.
+ * Queue functions (queueEmail, etc.) store emails in DB for background processing.
+ */
+
 /**
  * Email Service with Queue Support
  * - Direct sending for immediate emails (auth)

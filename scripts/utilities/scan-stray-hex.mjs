@@ -20,6 +20,13 @@ const allowPatterns = [
   /email-templates\/page\.tsx$/,
   /src\/lib\/email\.ts$/,
   /src\/components\/ui\/color-picker\.tsx$/,
+  // Intentional hex colors: Google OAuth brand colors (must match Google's brand guidelines)
+  /src\/app\/docs\/features\/google-oauth\/page\.tsx$/,
+  // Intentional hex colors: Theme preview swatches showing actual theme colors
+  /src\/components\/theme\/color-theme-switcher\.tsx$/,
+  /src\/components\/theme\/theme-dropdown\.tsx$/,
+  // Intentional hex colors: Email docs showing example email styling
+  /src\/app\/docs\/features\/emails\/page\.tsx$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;

@@ -39,6 +39,7 @@ export function ColorThemeSwitcher() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Hydration pattern for SSR compatibility
         setMounted(true);
         // Load saved theme from localStorage
         const saved = (localStorage.getItem("theme") as DaisyUITheme) || "light";

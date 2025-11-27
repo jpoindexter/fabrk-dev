@@ -60,7 +60,7 @@ const categories = [
   {
     id: "components",
     name: "Components",
-    description: "87+ UI components with variants",
+    description: "100+ UI components with variants",
     icon: Palette,
     href: "/components",
     count: null,

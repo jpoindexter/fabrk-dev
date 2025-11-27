@@ -1,3 +1,9 @@
+/* 💡 PAYMENT TIP: This handles Stripe webhook events (subscriptions, payments, etc).
+ * Test locally: stripe listen --forward-to localhost:3000/api/stripe/webhook
+ * Then run: stripe trigger payment_intent.succeeded
+ * Update STRIPE_WEBHOOK_SECRET in .env after deploying (get from Stripe Dashboard → Webhooks).
+ */
+
 /**
  * @swagger
  * /api/stripe/webhook:

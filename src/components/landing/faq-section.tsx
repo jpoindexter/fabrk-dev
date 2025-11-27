@@ -1,3 +1,7 @@
+/* 💡 COPY TIP: Update FAQs to address your customers' actual questions.
+ * Great FAQs reduce support tickets and increase conversions.
+ * Include questions about refunds, licensing, and support.
+ */
 "use client";
 
 import { motion } from "framer-motion";

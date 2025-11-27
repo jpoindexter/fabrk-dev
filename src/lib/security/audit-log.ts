@@ -1,16 +1,19 @@
 /**
- * Security Audit Logging
+ * Security Audit Logging - Production Ready
  * Track security-relevant events for compliance and incident response
  *
  * Features:
+ * - Database persistence (Prisma)
  * - User activity logging
  * - Security event tracking
- * - Tamper-proof logs
+ * - Tamper-proof logs (hash verification)
  * - GDPR compliance
  * - Incident investigation support
+ * - In-memory fallback for development without database
  */
 
 import { logger } from "@/lib/logger";
+import { prisma } from "@/lib/prisma";
 
 export type AuditEventType =
   // Authentication events
@@ -84,47 +87,25 @@ export interface AuditLogEntry {
   resource?: string; // What was accessed
   action: string; // What action was performed
   result: "success" | "failure" | "error";
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   severity: "low" | "medium" | "high" | "critical";
   hash?: string; // For tamper detection
 }
 
-// In-memory store (use database in production)
-const auditLogs: AuditLogEntry[] = [];
+// In-memory fallback for development (when database not available)
+const memoryLogs: AuditLogEntry[] = [];
+const MAX_MEMORY_LOGS = 10000;
 
 /**
- * Log audit event
+ * Check if database is available
  */
-export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp" | "hash">): Promise<void> {
-  const entry: AuditLogEntry = {
-    id: crypto.randomUUID(),
-    timestamp: new Date(),
-    ...event,
-  };
-
-  // Generate hash for tamper detection
-  entry.hash = await generateEntryHash(entry);
-
-  // Store log (in production, save to database)
-  auditLogs.push(entry);
-
-  // Log critical events immediately
-  if (entry.severity === "critical" || entry.severity === "high") {
-    logger.error("[Audit Log - CRITICAL]", {
-      eventType: entry.eventType,
-      userId: entry.userId,
-      action: entry.action,
-      result: entry.result,
-    });
+async function isDatabaseAvailable(): Promise<boolean> {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+    return true;
+  } catch {
+    return false;
   }
-
-  // Keep only last 10000 logs in memory
-  if (auditLogs.length > 10000) {
-    auditLogs.shift();
-  }
-
-  // In production, you would save to database:
-  // await prisma.auditLog.create({ data: entry });
 }
 
 /**
@@ -152,6 +133,76 @@ async function generateEntryHash(entry: Omit<AuditLogEntry, "hash">): Promise<st
   const hashBuffer = await crypto.subtle.digest("SHA-256", dataBuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/**
+ * Log audit event - persists to database in production
+ */
+export async function logAuditEvent(event: Omit<AuditLogEntry, "id" | "timestamp" | "hash">): Promise<void> {
+  const entry: AuditLogEntry = {
+    id: crypto.randomUUID(),
+    timestamp: new Date(),
+    ...event,
+  };
+
+  // Generate hash for tamper detection
+  entry.hash = await generateEntryHash(entry);
+
+  // Log critical events immediately to console
+  if (entry.severity === "critical" || entry.severity === "high") {
+    logger.error("[Audit Log - CRITICAL]", {
+      eventType: entry.eventType,
+      userId: entry.userId,
+      action: entry.action,
+      result: entry.result,
+    });
+  }
+
+  // Try to persist to database
+  const dbAvailable = await isDatabaseAvailable();
+
+  if (dbAvailable && entry.userId) {
+    try {
+      await prisma.auditLog.create({
+        data: {
+          userId: entry.userId,
+          action: entry.eventType, // Use eventType as the action field
+          resource: entry.resource,
+          resourceId: entry.metadata?.resourceId as string | undefined,
+          metadata: {
+            originalAction: entry.action,
+            result: entry.result,
+            severity: entry.severity,
+            userEmail: entry.userEmail,
+            ipAddress: entry.ipAddress,
+            userAgent: entry.userAgent,
+            hash: entry.hash,
+            ...entry.metadata,
+          },
+        },
+      });
+      return;
+    } catch (error) {
+      logger.error("Failed to persist audit log to database:", error);
+      // Fall through to memory storage
+    }
+  }
+
+  // Fallback to memory storage (for dev or when userId is missing)
+  memoryLogs.push(entry);
+
+  // Keep only last MAX_MEMORY_LOGS in memory
+  if (memoryLogs.length > MAX_MEMORY_LOGS) {
+    memoryLogs.shift();
+  }
+
+  // Warn in production if falling back to memory
+  if (process.env.NODE_ENV === "production") {
+    logger.warn(
+      "⚠️ Audit log stored in memory (not persisted). " +
+      "Ensure database is configured and userId is provided for production audit logging."
+    );
+  }
 }
 
 /**
@@ -285,22 +336,22 @@ export const AuditLog = {
     logAuditEvent({
       eventType: "admin.user_deleted",
       userId: adminId,
-      resource: targetUserId,
+      resource: "user",
       action: `Admin deleted user ${targetEmail}`,
       result: "success",
       severity: "high",
-      metadata: { targetUserId, targetEmail },
+      metadata: { targetUserId, targetEmail, resourceId: targetUserId },
     }),
 
-  configChanged: (adminId: string, configKey: string, oldValue: any, newValue: any) =>
+  configChanged: (adminId: string, configKey: string, oldValue: unknown, newValue: unknown) =>
     logAuditEvent({
       eventType: "admin.config_changed",
       userId: adminId,
-      resource: configKey,
+      resource: "config",
       action: `Config changed: ${configKey}`,
       result: "success",
       severity: "medium",
-      metadata: { oldValue, newValue },
+      metadata: { oldValue, newValue, resourceId: configKey },
     }),
 
   // MFA events
@@ -379,17 +430,58 @@ export const AuditLog = {
 };
 
 /**
- * Query audit logs
+ * Query audit logs from database
  */
-export function queryAuditLogs(filters: {
+export async function queryAuditLogs(filters: {
   userId?: string;
   eventType?: AuditEventType;
   startDate?: Date;
   endDate?: Date;
   severity?: AuditLogEntry["severity"];
   limit?: number;
-}): AuditLogEntry[] {
-  let results = [...auditLogs];
+}): Promise<AuditLogEntry[]> {
+  const dbAvailable = await isDatabaseAvailable();
+
+  if (dbAvailable) {
+    try {
+      const dbLogs = await prisma.auditLog.findMany({
+        where: {
+          ...(filters.userId && { userId: filters.userId }),
+          ...(filters.eventType && { action: filters.eventType }),
+          ...(filters.startDate && { createdAt: { gte: filters.startDate } }),
+          ...(filters.endDate && { createdAt: { lte: filters.endDate } }),
+        },
+        orderBy: { createdAt: "desc" },
+        take: filters.limit || 100,
+      });
+
+      // Transform database records to AuditLogEntry format
+      return dbLogs.map((log) => {
+        const metadata = log.metadata as Record<string, unknown> | null;
+        return {
+          id: log.id,
+          timestamp: log.createdAt,
+          eventType: log.action as AuditEventType,
+          userId: log.userId,
+          userEmail: metadata?.userEmail as string | undefined,
+          ipAddress: metadata?.ipAddress as string | undefined,
+          userAgent: metadata?.userAgent as string | undefined,
+          resource: log.resource || undefined,
+          action: (metadata?.originalAction as string) || log.action,
+          result: (metadata?.result as "success" | "failure" | "error") || "success",
+          severity: (metadata?.severity as "low" | "medium" | "high" | "critical") || "low",
+          metadata: metadata || undefined,
+          hash: metadata?.hash as string | undefined,
+        };
+      });
+    } catch (error) {
+      logger.error("Failed to query audit logs from database:", error);
+      // Fall through to memory logs
+    }
+  }
+
+  // Fallback to memory logs
+  let results = [...memoryLogs];
 
   if (filters.userId) {
     results = results.filter((log) => log.userId === filters.userId);
@@ -424,13 +516,13 @@ export function queryAuditLogs(filters: {
 /**
  * Get security events summary
  */
-export function getSecuritySummary(since: Date): {
+export async function getSecuritySummary(since: Date): Promise<{
   totalEvents: number;
   byType: Record<string, number>;
   bySeverity: Record<string, number>;
   criticalEvents: AuditLogEntry[];
-} {
-  const logs = queryAuditLogs({ startDate: since });
+}> {
+  const logs = await queryAuditLogs({ startDate: since });
 
   const byType: Record<string, number> = {};
   const bySeverity: Record<string, number> = {};
@@ -455,8 +547,8 @@ export function getSecuritySummary(since: Date): {
 /**
  * Export audit logs to JSON
  */
-export function exportAuditLogs(filters?: Parameters<typeof queryAuditLogs>[0]): string {
-  const logs = queryAuditLogs(filters || {});
+export async function exportAuditLogs(filters?: Parameters<typeof queryAuditLogs>[0]): Promise<string> {
+  const logs = await queryAuditLogs(filters || {});
   return JSON.stringify(logs, null, 2);
 }
 
@@ -465,6 +557,24 @@ export function exportAuditLogs(filters?: Parameters<typeof queryAuditLogs>[0]):
  */
 export async function verifyLogIntegrity(entry: AuditLogEntry): Promise<boolean> {
   const { hash, ...entryWithoutHash } = entry;
+  if (!hash) return false;
   const expectedHash = await generateEntryHash(entryWithoutHash);
   return hash === expectedHash;
+}
+
+/**
+ * Get audit logging status for health checks
+ */
+export async function getAuditLoggingStatus(): Promise<{
+  mode: "database" | "memory";
+  healthy: boolean;
+  memoryLogCount: number;
+}> {
+  const dbAvailable = await isDatabaseAvailable();
+
+  return {
+    mode: dbAvailable ? "database" : "memory",
+    healthy: dbAvailable,
+    memoryLogCount: memoryLogs.length,
+  };
 }

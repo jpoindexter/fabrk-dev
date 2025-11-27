@@ -1,3 +1,9 @@
+/* 💡 CONFIG TIP: This is your app's central configuration file.
+ * Update app.name, pricing, and features to match your product.
+ * All environment variables should be set in .env.local (see .env.example).
+ * Feature flags in the 'features' section let you toggle functionality.
+ */
+
 /**
  * Central Configuration File
  * Single source of truth for all app settings

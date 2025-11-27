@@ -339,6 +339,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
                     handleInsertLink();
                   }
                 }}
+                // eslint-disable-next-line jsx-a11y/no-autofocus -- Intentional: Dialog input should be focused for UX
                 autoFocus
               />
             </div>

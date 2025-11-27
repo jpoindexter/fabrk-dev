@@ -190,7 +190,7 @@ const FEATURE_CATEGORIES = [
 
 // Component library stats
 const COMPONENT_STATS = [
-  { icon: Layers, label: "UI Components", value: "87", description: "Production-ready components" },
+  { icon: Layers, label: "UI Components", value: "100+", description: "Production-ready components" },
   { icon: Palette, label: "Color Themes", value: "20", description: "DaisyUI themes included" },
   { icon: FileCode, label: "Page Templates", value: "8", description: "Copy-paste ready pages" },
   { icon: TestTube, label: "Tests", value: "130+", description: "Vitest & Playwright" },

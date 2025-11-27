@@ -1,3 +1,9 @@
+/* 💡 PAYMENT TIP: Get your Stripe keys from https://dashboard.stripe.com/apikeys
+ * Use test keys (sk_test_...) during development.
+ * Switch to live keys (sk_live_...) when deploying to production.
+ * Test webhook locally: stripe listen --forward-to localhost:3000/api/stripe/webhook
+ */
+
 /**
  * Stripe Client and Customer Management
  */

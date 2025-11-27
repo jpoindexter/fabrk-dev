@@ -1,3 +1,8 @@
+/* 💡 AUTH TIP: This is the main NextAuth v5 configuration file.
+ * Add new OAuth providers by importing from "next-auth/providers/..." and adding to providers[].
+ * Configure callback URLs in your OAuth provider dashboard (e.g., Google Cloud Console).
+ * Session settings and redirect paths can be customized in the callbacks section below.
+ */
 import { prisma } from "@/lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compare } from "bcryptjs";

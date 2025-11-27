@@ -1,3 +1,9 @@
+/* 💡 PAYMENT TIP: Polar.sh is a Stripe alternative optimized for digital products.
+ * Get your access token from https://polar.sh/settings → Developer Settings.
+ * Product ID is found in Polar Dashboard → Products → your product.
+ * Create discount codes in Polar Dashboard → Marketing → Discounts.
+ */
+
 /**
  * Polar.sh Integration
  * Handles product sales and checkout for Fabrk
@@ -16,19 +22,27 @@ export const FABRK_DISCOUNT_ID = '1161689c-dbc2-4e53-8c18-43f4af7aaa3f'; // Auto
 
 /**
  * Create a checkout session for Fabrk purchase
+ * @param params.customerEmail - Pre-fill customer email
+ * @param params.successUrl - Redirect URL after successful purchase
+ * @param params.discountId - Optional custom discount ID (overrides default)
+ * @param params.metadata - Additional metadata for the order
  */
 export async function createCheckoutSession(params: {
   customerEmail?: string;
   successUrl: string;
+  discountId?: string;
   metadata?: Record<string, string>;
 }) {
   if (!FABRK_PRODUCT_ID) {
     throw new Error('Polar product ID not configured');
   }
 
+  // Use custom discount if provided, otherwise use default
+  const discountToApply = params.discountId || FABRK_DISCOUNT_ID;
+
   const checkout = await polar.checkouts.create({
     products: [FABRK_PRODUCT_ID],
-    discountId: FABRK_DISCOUNT_ID,
+    discountId: discountToApply,
     customerEmail: params.customerEmail,
     successUrl: params.successUrl,
     metadata: params.metadata,

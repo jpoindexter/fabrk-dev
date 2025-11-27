@@ -1,6 +1,6 @@
 /**
  * UI Components Showcase
- * Interactive preview of all 87+ UI components with variants
+ * Interactive preview of all 100+ UI components with variants
  */
 
 import Link from "next/link";

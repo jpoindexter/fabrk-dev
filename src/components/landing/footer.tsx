@@ -1,3 +1,7 @@
+/* 💡 COPY TIP: Update your company name, copyright year, and footer links.
+ * Add your social media links and any legal pages required for your region.
+ * The tagline should reinforce your main value proposition.
+ */
 import Link from "next/link";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import { H4, Small } from "@/components/ui/typography";

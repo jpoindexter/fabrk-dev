@@ -47,10 +47,10 @@ const SCREENSHOTS = [
   },
   {
     id: "components",
-    title: "87 Production Components",
+    title: "100+ Production Components",
     description: "Complete UI library with variants, themes, and Storybook integration",
     image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='675'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(34,197,94);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgb(59,130,246);stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='675' fill='url(%23g3)' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui, -apple-system, sans-serif' font-size='32' fill='white' font-weight='600'%3EReplace with your screenshot%3C/text%3E%3C/svg%3E",
-    alt: "Component showcase with 87 production-ready UI components",
+    alt: "Component showcase with 100+ production-ready UI components",
   },
   {
     id: "billing",

@@ -208,7 +208,7 @@ export const ACCESSIBILITY = {
  * @see /docs/DESIGN-SYSTEM.md for full documentation
  */
 
-export default {
+const designSystemConstants = {
   TYPOGRAPHY,
   SPACING,
   BUTTON_SIZES,
@@ -217,3 +217,5 @@ export default {
   BREAKPOINTS,
   ACCESSIBILITY,
 };
+
+export default designSystemConstants;

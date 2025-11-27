@@ -33,7 +33,7 @@ const showcasePages = [
     title: "UI Components",
     href: "/components",
     icon: Palette,
-    description: "87+ components",
+    description: "100+ components",
     badge: "Interactive",
   },
   {

@@ -104,7 +104,7 @@ export default function ThemingPage() {
         <p className="text-muted-foreground">
           The <code className="rounded bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
         </p>
-        <CodeBlock language="tsx" code={`import { ThemeDropdown } from "@/components/theme/ThemeDropdown";
+        <CodeBlock language="tsx" code={`import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function MyNavbar() {
   return (

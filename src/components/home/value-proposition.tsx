@@ -8,9 +8,9 @@
 
 import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
-import Link from "next/link";
+import { PolarCheckoutButton } from "@/components/polar/checkout-button";
+import { DiscountCounter } from "@/components/polar/discount-counter";
 
 const COMPARISON_ITEMS = [
   {
@@ -63,7 +63,7 @@ const COMPARISON_ITEMS = [
   },
   {
     feature: "UI Component Library",
-    description: "87 production components with variants",
+    description: "100+ production components with variants",
     diy: { time: "10-15 days", cost: "$5,000-$7,500" },
     fabrk: "Included",
   },
@@ -318,17 +318,18 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center sm:flex-row"
+            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center"
           >
-            <div>
-              <Body className="font-semibold">Ready to ship faster?</Body>
-              <Small className="block text-muted-foreground">
-                Get Fabrk and save 6 weeks + $30K in dev costs
-              </Small>
+            <DiscountCounter />
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
+              <div>
+                <Body className="font-semibold">Ready to ship faster?</Body>
+                <Small className="block text-muted-foreground">
+                  Get Fabrk and save 6 weeks + $30K in dev costs
+                </Small>
+              </div>
+              <PolarCheckoutButton>Get Started - $199</PolarCheckoutButton>
             </div>
-            <Button asChild size="lg">
-              <Link href="/pricing">Get Started - $199</Link>
-            </Button>
           </motion.div>
         </motion.div>
       </div>

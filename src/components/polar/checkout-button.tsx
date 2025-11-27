@@ -16,12 +16,15 @@ interface PolarCheckoutButtonProps {
   customerEmail?: string
   className?: string
   children?: React.ReactNode
+  /** Optional Polar discount ID to apply at checkout */
+  discountId?: string
 }
 
 export function PolarCheckoutButton({
   customerEmail,
   className,
   children = 'Get Fabrk - $199',
+  discountId,
 }: PolarCheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -51,6 +54,7 @@ export function PolarCheckoutButton({
         },
         body: JSON.stringify({
           customerEmail,
+          discountId,
           metadata: {
             timestamp: new Date().toISOString(),
           },

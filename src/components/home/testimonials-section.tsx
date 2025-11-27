@@ -131,7 +131,7 @@ export function TestimonialsSection() {
             className="rounded-lg border border-border bg-muted/50 p-6 text-center sm:p-8"
           >
             <p className="text-sm text-muted-foreground">
-              Built by indie developers, for indie developers. Start shipping faster with 87 production-ready components.
+              Built by indie developers, for indie developers. Start shipping faster with 100+ production-ready components.
             </p>
           </motion.div>
         </motion.div>
