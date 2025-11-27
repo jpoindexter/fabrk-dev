@@ -9,7 +9,6 @@ import { useState } from "react";
 import { AppearanceForm } from "@/components/settings/appearance-form";
 import { DangerZone } from "@/components/settings/danger-zone";
 import { DataExportSection } from "@/components/settings/data-export";
-import { LanguageForm } from "@/components/settings/language-form";
 import { NotificationsForm } from "@/components/settings/notifications-form";
 import { PrivacyForm } from "@/components/settings/privacy-form";
 import {
@@ -30,7 +29,6 @@ import {
   AlertTriangle,
   Bell,
   Download,
-  Globe,
   Lock,
   Palette,
   User,
@@ -50,14 +48,6 @@ export default function SettingsPageTemplate() {
       description: "Customize the look and feel of the application",
       icon: Palette,
       component: AppearanceForm,
-      isDanger: false,
-    },
-    {
-      id: "language",
-      title: "Language & Region",
-      description: "Set your preferred language and regional settings",
-      icon: Globe,
-      component: LanguageForm,
       isDanger: false,
     },
   ];
@@ -439,7 +429,6 @@ export default function SettingsPageTemplate() {
               <li className="font-semibold">✓ Appearance settings (theme, font size, layout)</li>
               <li className="font-semibold">✓ Notification preferences (email, push, in-app)</li>
               <li className="font-semibold">✓ Privacy controls (data sharing, cookies, analytics)</li>
-              <li className="font-semibold">✓ Language & region settings</li>
               <li className="font-semibold">✓ Data export functionality</li>
               <li className="font-semibold">✓ Account profile form (name, email, company, bio)</li>
               <li className="font-semibold">✓ Security settings (password, 2FA, sessions)</li>
