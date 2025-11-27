@@ -51,6 +51,9 @@ export function generateCSP(options?: {
       "https://api.stripe.com",
       "https://www.google-analytics.com",
       "https://analytics.google.com",
+      "https://www.googletagmanager.com",
+      "https://*.google-analytics.com",
+      "https://*.analytics.google.com",
       "https://plausible.io",
       ...(isDevelopment ? ["ws:", "wss:"] : []), // WebSocket for HMR
     ],

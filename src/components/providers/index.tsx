@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { SessionProvider } from "next-auth/react";
 import { Toaster } from "sonner";
 
 /**
@@ -8,7 +9,7 @@ import { Toaster } from "sonner";
  * DaisyUI theme system (data-theme attribute)
  * PostHog analytics initialized via instrumentation-client.ts (Next.js 15+)
  * Dark/light mode toggle removed in favor of 20 color themes
- * Authentication removed - no SessionProvider needed
+ * SessionProvider for next-auth useSession hook
  */
 
 interface ProvidersProps {
@@ -17,9 +18,9 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <>
+    <SessionProvider>
       {children}
       <Toaster position="top-right" richColors />
-    </>
+    </SessionProvider>
   );
 }

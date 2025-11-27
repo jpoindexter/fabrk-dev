@@ -1,7 +1,7 @@
 /**
  * Cookie Consent Component - GDPR Compliant
  * Floating button with comprehensive modal
- * Styled with Fabrk neobrutalist design system
+ * Integrates with Google Consent Mode v2 for GTM
  */
 
 "use client";
@@ -55,18 +55,36 @@ export function CookieConsent() {
   }, []);
 
   const updateGoogleConsent = (prefs: CookiePreferences) => {
-    // Push consent update to dataLayer for Google Tag Manager
-    if (typeof window !== "undefined" && "dataLayer" in window) {
-      const dataLayer = (window as { dataLayer?: unknown[] }).dataLayer;
-      if (dataLayer) {
-        dataLayer.push({
-          event: "consent_update",
-          ad_storage: prefs.marketing ? "granted" : "denied",
-          analytics_storage: prefs.statistics ? "granted" : "denied",
-          functionality_storage: prefs.preferences ? "granted" : "denied",
-          personalization_storage: prefs.marketing ? "granted" : "denied",
-        });
+    // Use gtag consent API for Google Consent Mode v2
+    if (typeof window !== "undefined") {
+      const win = window as Window & {
+        dataLayer?: unknown[];
+        gtag?: (...args: unknown[]) => void;
+      };
+
+      // Ensure dataLayer and gtag exist
+      win.dataLayer = win.dataLayer || [];
+      if (!win.gtag) {
+        win.gtag = function() {
+          win.dataLayer?.push(arguments);
+        };
       }
+
+      // Update consent state
+      win.gtag("consent", "update", {
+        ad_storage: prefs.marketing ? "granted" : "denied",
+        ad_user_data: prefs.marketing ? "granted" : "denied",
+        ad_personalization: prefs.marketing ? "granted" : "denied",
+        analytics_storage: prefs.statistics ? "granted" : "denied",
+        functionality_storage: prefs.preferences ? "granted" : "denied",
+        personalization_storage: prefs.marketing ? "granted" : "denied",
+      });
+
+      // Also push event for GTM triggers
+      win.dataLayer?.push({
+        event: "cookie_consent_update",
+        cookie_consent: prefs,
+      });
     }
   };
 
@@ -140,7 +158,7 @@ export function CookieConsent() {
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
-          <span className="text-sm font-medium">Cookie Settings</span>
+          <span className="text-sm font-normal">Cookie Settings</span>
         </button>
       )}
 
@@ -161,8 +179,8 @@ export function CookieConsent() {
                     <Cookie className="size-6" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-medium">Cookie Preferences</h2>
-                    <p className="text-sm text-muted-foreground">
+                    <h2 className="text-xl font-semibold leading-tight text-foreground">Cookie Preferences</h2>
+                    <p className="text-sm font-normal leading-relaxed text-muted-foreground">
                       Manage your cookie settings
                     </p>
                   </div>

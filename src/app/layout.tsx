@@ -117,6 +117,43 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        {/* Google Consent Mode v2 - Must load BEFORE GTM */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+
+              // Set default consent to denied (GDPR compliant)
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'functionality_storage': 'denied',
+                'personalization_storage': 'denied',
+                'security_storage': 'granted',
+                'wait_for_update': 500
+              });
+
+              // Check for existing consent
+              try {
+                const consent = localStorage.getItem('cookie-consent');
+                if (consent) {
+                  const prefs = JSON.parse(consent);
+                  gtag('consent', 'update', {
+                    'ad_storage': prefs.marketing ? 'granted' : 'denied',
+                    'ad_user_data': prefs.marketing ? 'granted' : 'denied',
+                    'ad_personalization': prefs.marketing ? 'granted' : 'denied',
+                    'analytics_storage': prefs.statistics ? 'granted' : 'denied',
+                    'functionality_storage': prefs.preferences ? 'granted' : 'denied',
+                    'personalization_storage': prefs.marketing ? 'granted' : 'denied'
+                  });
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
