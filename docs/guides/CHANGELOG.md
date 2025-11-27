@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2025-11-27 - Security & Billing Update 🔐
+
+### Added
+
+#### Two-Factor Authentication (2FA)
+- TOTP-based multi-factor authentication
+- QR code setup with authenticator app support
+- Manual secret key entry option
+- 10 backup codes (XXXX-XXXX format) for account recovery
+- Security settings page integration
+- Audit logging for MFA events
+
+#### Trial Period System
+- Stripe subscription trial checkout flow
+- Configurable trial duration (`config.features.trialDays`)
+- Trial banner with days remaining
+- Urgency states as expiration approaches
+- Duplicate trial prevention per user
+- Automatic upgrade CTA on expiration
+
+#### Cloud Storage
+- Auto-detection: Cloudflare R2 → AWS S3 → Local storage
+- File validation (size, MIME type)
+- Signed URLs for private files
+- Organization-level access control
+- Image optimization support (requires sharp)
+
+#### Test Coverage
+- Unit tests for MFA, Trial, Storage, CSRF modules
+- E2E tests for 2FA flow, Cookie Consent, Trial, File Upload
+- 80+ new test cases
+
+### Changed
+- Cookie consent hydration fix (combined state pattern)
+- CSRF protection now Edge Runtime compatible
+- Improved accessibility (modal keyboard handling)
+
+### Fixed
+- Cookie consent hydration mismatch errors
+- Missing NextAuth route handler
+- ESLint warnings in layout and uploads
+
+---
+
 ## [1.0.0] - 2025-11-06 - LAUNCH READY 🚀
 
 ### Initial Release
