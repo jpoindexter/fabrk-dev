@@ -449,12 +449,12 @@ export async function deleteAccount(userId: string, mfaCode: string) {
               </CardContent>
             </Card>
           </Link>
-          <Link href="/docs/security/overview">
+          <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Security Overview</h3>
+                <h3 className="font-semibold">Security Headers</h3>
                 <p className="text-sm text-muted-foreground">
-                  Learn about other security features in Fabrk.
+                  Learn about security headers and CSRF protection.
                 </p>
               </CardContent>
             </Card>

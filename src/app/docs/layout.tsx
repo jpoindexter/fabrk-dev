@@ -57,7 +57,6 @@ const navigation = [
       { title: "Database Setup", href: "/docs/deployment/database", icon: Database },
       { title: "Database (Prisma)", href: "/docs/features/database", icon: Database },
       { title: "Theming", href: "/docs/extras/theming", icon: Palette },
-      { title: "Internationalization", href: "/docs/extras/i18n", icon: Globe },
     ],
   },
   {
