@@ -1,51 +1,44 @@
 /**
  * Refund Policy Page
- * No refunds policy for digital product
+ * No refunds policy for digital product - Terminal Console Style
  */
 
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import {
-  H1,
-  H2,
-  H3,
-  Body,
-  Small,
-  List,
-  ListItem,
-  Link,
-  Strong,
-} from "@/components/ui/typography";
+import Link from "next/link";
 
 export default function RefundPage() {
   return (
-    <main className="container mx-auto max-w-4xl px-6 py-16">
+    <main className="container mx-auto max-w-4xl px-6 py-16 font-mono">
       {/* Header */}
       <div className="mb-12 text-center">
-        <motion.span
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
+          className="mb-6"
         >
-          <Badge variant="default" size="lg" className="mb-6 uppercase tracking-wide">
-            Legal
-          </Badge>
-        </motion.span>
+          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            [ [0x00] LEGAL ] REFUND_POLICY
+          </span>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <H1 className="mb-4">Refund Policy</H1>
+          <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+            REFUND_POLICY
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Small>Last Updated: November 26, 2025</Small>
+          <span className="text-xs text-muted-foreground">LAST_UPDATED: November 26, 2025</span>
         </motion.div>
       </div>
 
@@ -54,161 +47,204 @@ export default function RefundPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 rounded-lg border border-border bg-card p-6"
+        className="mb-12 border border-destructive/30 bg-destructive/5 p-6"
       >
-        <Body className="text-lg">
-          Due to the nature of digital products, all sales are final. Please review this policy carefully before making your purchase.
-        </Body>
+        <div className="mb-2 text-xs text-muted-foreground">
+          [ [0x01] NOTICE ]────────────────────────
+        </div>
+        <p className="text-sm text-foreground">
+          <span className="text-destructive font-semibold">ALL SALES ARE FINAL.</span> Due to the nature of digital products, no refunds, exchanges, or credits are available. Please review this policy carefully before purchasing.
+        </p>
       </motion.div>
 
-      <div className="space-y-12">
-        <section>
-          <H2 className="mb-4">1. No Refunds Policy</H2>
-          <Body className="mb-4">
-            <Strong>All sales are final.</Strong> Once you gain access to the Fabrk source code and download the files, no refunds, exchanges, or credits are available under any circumstances.
-          </Body>
-          <Body className="mb-4">
-            By completing your purchase, you acknowledge and accept that digital products cannot be "returned" once downloaded. This policy is standard for digital products and software licenses.
-          </Body>
+      <div className="space-y-6">
+        {/* Section 1 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x10]</span>
+            <h2 className="text-lg font-bold">NO_REFUNDS_POLICY</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Once you gain access to the Fabrk source code and download the files, no refunds are available under any circumstances.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            By completing your purchase, you acknowledge that digital products cannot be "returned" once downloaded. This is standard for digital products and software licenses.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">2. Why No Refunds?</H2>
-          <Body className="mb-4">
-            Unlike physical products, digital products like Fabrk provide immediate value upon download:
-          </Body>
-          <List className="mb-4">
-            <ListItem>You receive instant access to the complete source code</ListItem>
-            <ListItem>You can immediately copy, modify, and use the code</ListItem>
-            <ListItem>Digital products cannot be "returned" once downloaded</ListItem>
-            <ListItem>There's no way to verify the code hasn't been copied before requesting a refund</ListItem>
-          </List>
-          <Body className="mb-4">
-            This policy protects the integrity of our business and prevents abuse while ensuring fair pricing for all customers.
-          </Body>
+        {/* Section 2 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x20]</span>
+            <h2 className="text-lg font-bold">WHY_NO_REFUNDS</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Unlike physical products, digital products provide immediate value upon download:
+          </p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ Instant access to complete source code</li>
+            <li>├─ Immediate ability to copy, modify, and use</li>
+            <li>├─ Digital products cannot be "returned"</li>
+            <li>└─ No way to verify code wasn't copied before refund request</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            This policy protects business integrity and ensures fair pricing for all customers.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">3. Before You Purchase</H2>
-          <Body className="mb-4">
+        {/* Section 3 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x30]</span>
+            <h2 className="text-lg font-bold">BEFORE_YOU_PURCHASE</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
             We encourage you to thoroughly review Fabrk before purchasing:
-          </Body>
-          <List className="mb-4">
-            <ListItem>Review the <Link href="/features">complete feature list</Link> and component showcase</ListItem>
-            <ListItem>Browse the <Link href="/docs">comprehensive documentation</Link></ListItem>
-            <ListItem>Check the tech stack and integrations to ensure compatibility</ListItem>
-            <ListItem>Contact <Link href="/contact">support@fabrk.dev</Link> with any pre-purchase questions</ListItem>
-          </List>
-          <Body className="mb-4">
-            We want you to be fully informed about what Fabrk includes before you buy.
-          </Body>
+          </p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ Review the <Link href="/features" className="text-primary hover:underline">COMPLETE_FEATURE_LIST</Link></li>
+            <li>├─ Browse the <Link href="/docs" className="text-primary hover:underline">DOCUMENTATION</Link></li>
+            <li>├─ Check tech stack and integrations</li>
+            <li>└─ Contact <Link href="/contact" className="text-primary hover:underline">support@fabrk.dev</Link> with questions</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            We want you to be fully informed before you buy.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">4. What You Get After Purchase</H2>
+        {/* Section 4 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x40]</span>
+            <h2 className="text-lg font-bold">WHAT_YOU_GET</h2>
+          </div>
 
-          <H3 className="mt-6 mb-3">4.1 Immediate Access</H3>
-          <List className="mb-4">
-            <ListItem>Instant download of the complete Fabrk source code</ListItem>
-            <ListItem>Lifetime license to use the code (v1.x updates included)</ListItem>
-            <ListItem>Access to all 100+ production-ready components</ListItem>
-            <ListItem>Complete documentation and setup guides</ListItem>
-          </List>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">[4.1] IMMEDIATE_ACCESS</h3>
+              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+                <li>├─ Instant download of complete source code</li>
+                <li>├─ Lifetime license (v1.x updates included)</li>
+                <li>├─ Access to 100+ production-ready components</li>
+                <li>└─ Complete documentation and setup guides</li>
+              </ul>
+            </div>
 
-          <H3 className="mt-6 mb-3">4.2 Ongoing Benefits</H3>
-          <List className="mb-4">
-            <ListItem>All future v1.x updates at no additional cost</ListItem>
-            <ListItem>Email support for technical questions</ListItem>
-            <ListItem>New components and features as they're released</ListItem>
-          </List>
+            <div>
+              <h3 className="text-sm font-semibold mb-2">[4.2] ONGOING_BENEFITS</h3>
+              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+                <li>├─ All future v1.x updates at no cost</li>
+                <li>├─ Email support for technical questions</li>
+                <li>└─ New components and features as released</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <H2 className="mb-4">5. Technical Support</H2>
-          <Body className="mb-4">
-            While we don't offer refunds, we do provide comprehensive support to ensure Fabrk works for you:
-          </Body>
-          <List className="mb-4">
-            <ListItem><Strong>Email support:</Strong> support@fabrk.dev for technical questions</ListItem>
-            <ListItem><Strong>Documentation:</Strong> 400KB+ of guides, tutorials, and examples</ListItem>
-            <ListItem><Strong>Bug fixes:</Strong> We actively maintain and improve Fabrk</ListItem>
-            <ListItem><Strong>Community:</Strong> Connect with other Fabrk users</ListItem>
-          </List>
-          <Body className="mb-4">
+        {/* Section 5 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x50]</span>
+            <h2 className="text-lg font-bold">TECHNICAL_SUPPORT</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            While we don't offer refunds, we provide comprehensive support:
+          </p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev for technical questions</li>
+            <li>├─ <span className="text-foreground">DOCS:</span> 400KB+ of guides and examples</li>
+            <li>├─ <span className="text-foreground">MAINTENANCE:</span> Active bug fixes and improvements</li>
+            <li>└─ <span className="text-foreground">COMMUNITY:</span> Connect with other Fabrk users</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
             Our goal is to ensure you can successfully use Fabrk for your projects.
-          </Body>
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">6. Chargebacks</H2>
-          <Body className="mb-4">
-            <Strong>Important:</Strong> Initiating a chargeback for a valid purchase is considered fraudulent activity.
-          </Body>
-          <Body className="mb-4">
-            If you file a chargeback instead of contacting us about legitimate technical issues:
-          </Body>
-          <List className="mb-4">
-            <ListItem>It costs us significant processing fees</ListItem>
-            <ListItem>Your license will be immediately terminated</ListItem>
-            <ListItem>You'll be banned from future purchases</ListItem>
-            <ListItem>The dispute will be contested with full documentation</ListItem>
-          </List>
-          <Body className="mb-4">
-            If you have concerns about your purchase, please contact support@fabrk.dev first. We're here to help resolve any legitimate issues.
-          </Body>
+        {/* Section 6 */}
+        <section className="border border-destructive/30 bg-destructive/5 p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x60]</span>
+            <h2 className="text-lg font-bold text-destructive">CHARGEBACKS</h2>
+          </div>
+          <p className="text-xs text-foreground mb-3">
+            <span className="text-destructive font-semibold">WARNING:</span> Initiating a chargeback for a valid purchase is considered fraudulent activity.
+          </p>
+          <p className="text-xs text-muted-foreground mb-2">
+            Filing a chargeback instead of contacting us about legitimate issues:
+          </p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-destructive">✗</span> Costs significant processing fees</li>
+            <li>├─ <span className="text-destructive">✗</span> Immediate license termination</li>
+            <li>├─ <span className="text-destructive">✗</span> Banned from future purchases</li>
+            <li>└─ <span className="text-destructive">✗</span> Dispute will be contested with documentation</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            Have concerns? Contact support@fabrk.dev first. We're here to help resolve legitimate issues.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">7. EU Consumer Rights</H2>
-          <Body className="mb-4">
-            If you are a consumer in the European Union, you have a legal right to a 14-day withdrawal period under the EU Consumer Rights Directive (2011/83/EU).
-          </Body>
-          <Body className="mb-4">
-            <Strong>However:</Strong> By downloading Fabrk immediately after purchase, you expressly acknowledge and agree that you waive this 14-day right of withdrawal, as you have requested immediate delivery and performance of digital content.
-          </Body>
-          <Body className="mb-4">
-            This waiver is required under Article 16(m) of the Consumer Rights Directive, which states that the right of withdrawal does not apply to "the supply of digital content which is not supplied on a tangible medium if the performance has begun with the consumer's prior express consent and his acknowledgment that he thereby loses his right of withdrawal."
-          </Body>
+        {/* Section 7 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x70]</span>
+            <h2 className="text-lg font-bold">EU_CONSUMER_RIGHTS</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            EU consumers have a 14-day withdrawal right under the Consumer Rights Directive (2011/83/EU).
+          </p>
+          <p className="text-xs text-foreground mb-3">
+            <span className="text-warning font-semibold">HOWEVER:</span> By downloading immediately after purchase, you expressly waive this right, as you requested immediate delivery of digital content.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            This waiver is required under Article 16(m) of the Consumer Rights Directive.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">8. Exceptions</H2>
-          <Body className="mb-4">
-            We may issue refunds at our sole discretion in the following rare cases:
-          </Body>
-          <List className="mb-4">
-            <ListItem><Strong>Technical impossibility:</Strong> If Fabrk fundamentally cannot work as described due to our error</ListItem>
-            <ListItem><Strong>Duplicate charges:</Strong> If you were accidentally charged multiple times for the same purchase</ListItem>
-            <ListItem><Strong>Service failure:</Strong> If we fail to deliver access to the product within 7 days</ListItem>
-          </List>
-          <Body className="mb-4">
-            These exceptions require documented proof and are evaluated on a case-by-case basis. Contact support@fabrk.dev with details.
-          </Body>
+        {/* Section 8 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x80]</span>
+            <h2 className="text-lg font-bold">EXCEPTIONS</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            We may issue refunds at our sole discretion in rare cases:
+          </p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">TECHNICAL_IMPOSSIBILITY:</span> Product fundamentally cannot work as described (our error)</li>
+            <li>├─ <span className="text-foreground">DUPLICATE_CHARGES:</span> Accidentally charged multiple times</li>
+            <li>└─ <span className="text-foreground">SERVICE_FAILURE:</span> Failed to deliver access within 7 days</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            Exceptions require documented proof and case-by-case evaluation. Contact support@fabrk.dev with details.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">9. Policy Updates</H2>
-          <Body className="mb-4">
-            We reserve the right to modify this Refund Policy at any time. Changes will be posted on this page with an updated "Last Updated" date.
-          </Body>
-          <Body className="mb-4">
-            Your purchase is governed by the Refund Policy in effect at the time of purchase. Policy changes do not affect purchases made before the change.
-          </Body>
+        {/* Section 9-10 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x90]</span>
+            <h2 className="text-lg font-bold">POLICY_UPDATES</h2>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            We may modify this policy at any time. Your purchase is governed by the policy in effect at time of purchase.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">10. Questions?</H2>
-          <Body className="mb-4">
-            Have questions about this policy or Fabrk in general? We're here to help:
-          </Body>
-          <List className="mb-4">
-            <ListItem><Strong>Pre-purchase questions:</Strong> <Link href="/contact">Contact form</Link> or support@fabrk.dev</ListItem>
-            <ListItem><Strong>Technical support:</Strong> support@fabrk.dev</ListItem>
-            <ListItem><Strong>Legal inquiries:</Strong> support@fabrk.dev</ListItem>
-          </List>
-          <Body className="mb-4">
-            We want you to feel confident in your purchase. Please reach out before buying if you have any concerns.
-          </Body>
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0xA0]</span>
+            <h2 className="text-lg font-bold">QUESTIONS</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">Have questions about this policy or Fabrk?</p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">PRE_PURCHASE:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link> or support@fabrk.dev</li>
+            <li>├─ <span className="text-foreground">TECHNICAL:</span> support@fabrk.dev</li>
+            <li>└─ <span className="text-foreground">LEGAL:</span> legal@fabrk.dev</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">
+            Please reach out before buying if you have any concerns.
+          </p>
         </section>
       </div>
 
@@ -218,18 +254,20 @@ export default function RefundPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-lg border border-border bg-card p-6"
+        className="mt-12 border border-border bg-card p-6"
       >
-        <Small className="block mb-4">
-          Related Legal Documents:
-        </Small>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/terms" className="text-sm font-medium">
-            Terms of Service
+        <span className="block mb-3 text-xs text-muted-foreground">
+          [ RELATED_DOCUMENTS ]
+        </span>
+        <div className="flex flex-wrap gap-4 text-xs">
+          <Link href="/terms" className="text-primary hover:underline">
+            &gt; TERMS_OF_SERVICE
           </Link>
-          <span className="text-muted-foreground">•</span>
-          <Link href="/privacy" className="text-sm font-medium">
-            Privacy Policy
+          <Link href="/privacy" className="text-primary hover:underline">
+            &gt; PRIVACY_POLICY
+          </Link>
+          <Link href="/cookies" className="text-primary hover:underline">
+            &gt; COOKIE_POLICY
           </Link>
         </div>
       </motion.div>

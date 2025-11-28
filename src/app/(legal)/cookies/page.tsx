@@ -1,59 +1,44 @@
 /**
  * Cookie Policy Page
- * How we use cookies and similar tracking technologies
+ * How we use cookies and similar tracking technologies - Terminal Console Style
  */
 
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  H1,
-  H2,
-  H3,
-  Body,
-  Small,
-  List,
-  ListItem,
-  Link,
-  Strong,
-} from "@/components/ui/typography";
+import Link from "next/link";
 
 export default function CookiesPage() {
   return (
-    <main className="container mx-auto max-w-4xl px-6 py-16">
+    <main className="container mx-auto max-w-4xl px-6 py-16 font-mono">
       {/* Header */}
       <div className="mb-12 text-center">
-        <motion.span
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
+          className="mb-6"
         >
-          <Badge variant="default" size="lg" className="mb-6 uppercase tracking-wide">
-            Legal
-          </Badge>
-        </motion.span>
+          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            [ [0x00] LEGAL ] COOKIE_POLICY
+          </span>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <H1 className="mb-4">Cookie Policy</H1>
+          <h1 className="mb-2 text-sm text-muted-foreground">FABRK_LEGAL:</h1>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+            COOKIE_POLICY
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Small>Last Updated: November 26, 2025</Small>
+          <span className="text-xs text-muted-foreground">LAST_UPDATED: November 26, 2025</span>
         </motion.div>
       </div>
 
@@ -62,227 +47,266 @@ export default function CookiesPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mb-12 rounded-lg border border-border bg-card p-6"
+        className="mb-12 border border-border bg-card p-6"
       >
-        <Body className="text-lg">
+        <div className="mb-2 text-xs text-muted-foreground">
+          [ [0x01] OVERVIEW ]────────────────────────
+        </div>
+        <p className="text-sm text-muted-foreground">
           This Cookie Policy explains how Fabrk uses cookies and similar technologies to recognize you when you visit our website.
-        </Body>
+        </p>
       </motion.div>
 
-      <div className="space-y-12">
-        <section>
-          <H2 className="mb-4">1. What Are Cookies?</H2>
-          <Body className="mb-4">
-            Cookies are small text files that are placed on your device (computer, smartphone, or tablet) when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners.
-          </Body>
+      <div className="space-y-6">
+        {/* Section 1 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x10]</span>
+            <h2 className="text-lg font-bold">WHAT_ARE_COOKIES</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-4">
+            Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and provide information to website owners.
+          </p>
 
-          <H3 className="mt-6 mb-3">1.1 Types of Cookies</H3>
-          <List className="mb-4">
-            <ListItem><Strong>Session Cookies:</Strong> Temporary cookies that expire when you close your browser</ListItem>
-            <ListItem><Strong>Persistent Cookies:</Strong> Remain on your device until they expire or you delete them</ListItem>
-            <ListItem><Strong>First-Party Cookies:</Strong> Set by Fabrk directly</ListItem>
-            <ListItem><Strong>Third-Party Cookies:</Strong> Set by external services we use (analytics, payment processing)</ListItem>
-          </List>
+          <h3 className="text-sm font-semibold mb-2">[1.1] COOKIE_TYPES</h3>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">SESSION:</span> Temporary, expire when browser closes</li>
+            <li>├─ <span className="text-foreground">PERSISTENT:</span> Remain until expiry or deletion</li>
+            <li>├─ <span className="text-foreground">FIRST_PARTY:</span> Set by Fabrk directly</li>
+            <li>└─ <span className="text-foreground">THIRD_PARTY:</span> Set by external services</li>
+          </ul>
         </section>
 
-        <section>
-          <H2 className="mb-4">2. Cookies We Use</H2>
-          <Body className="mb-4">Fabrk uses the following categories of cookies:</Body>
-
-          <H3 className="mt-6 mb-3">2.1 Essential Cookies (Required)</H3>
-          <Body className="mb-4">
-            These cookies are necessary for the website to function and cannot be disabled.
-          </Body>
-
-          <div className="mb-6 rounded-lg border border-border bg-card p-6">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Cookie Name</TableHead>
-                  <TableHead>Purpose</TableHead>
-                  <TableHead>Duration</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">next-auth.session-token</TableCell>
-                  <TableCell>User authentication and session management</TableCell>
-                  <TableCell>30 days</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">next-auth.csrf-token</TableCell>
-                  <TableCell>Security - prevents CSRF attacks</TableCell>
-                  <TableCell>Session</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">__Secure-next-auth.callback-url</TableCell>
-                  <TableCell>OAuth callback handling</TableCell>
-                  <TableCell>Session</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+        {/* Section 2 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x20]</span>
+            <h2 className="text-lg font-bold">COOKIES_WE_USE</h2>
           </div>
 
-          <H3 className="mt-6 mb-3">2.2 Functional Cookies (Optional)</H3>
-          <Body className="mb-4">
-            These cookies enable enhanced functionality and personalization.
-          </Body>
+          <div className="space-y-6">
+            {/* Essential Cookies */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">[2.1] ESSENTIAL_COOKIES (REQUIRED)</h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                These cookies are necessary for the website to function and cannot be disabled.
+              </p>
+              <div className="border border-border bg-background p-4 overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 pr-4 text-muted-foreground">COOKIE_NAME</th>
+                      <th className="text-left py-2 pr-4 text-muted-foreground">PURPOSE</th>
+                      <th className="text-left py-2 text-muted-foreground">DURATION</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">next-auth.session-token</td>
+                      <td className="py-2 pr-4">User authentication</td>
+                      <td className="py-2">30 days</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">next-auth.csrf-token</td>
+                      <td className="py-2 pr-4">CSRF protection</td>
+                      <td className="py-2">Session</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4 text-foreground">__Secure-next-auth.callback-url</td>
+                      <td className="py-2 pr-4">OAuth callback</td>
+                      <td className="py-2">Session</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Cookie Name</TableHead>
-                  <TableHead>Purpose</TableHead>
-                  <TableHead>Duration</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">theme</TableCell>
-                  <TableCell>Remember your light/dark mode preference</TableCell>
-                  <TableCell>1 year</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">color-scheme</TableCell>
-                  <TableCell>Remember your chosen color scheme</TableCell>
-                  <TableCell>1 year</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-mono text-sm">locale</TableCell>
-                  <TableCell>Remember your language preference</TableCell>
-                  <TableCell>1 year</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+            {/* Functional Cookies */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">[2.2] FUNCTIONAL_COOKIES (OPTIONAL)</h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                These cookies enable enhanced functionality and personalization.
+              </p>
+              <div className="border border-border bg-background p-4 overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 pr-4 text-muted-foreground">COOKIE_NAME</th>
+                      <th className="text-left py-2 pr-4 text-muted-foreground">PURPOSE</th>
+                      <th className="text-left py-2 text-muted-foreground">DURATION</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">theme</td>
+                      <td className="py-2 pr-4">Light/dark mode preference</td>
+                      <td className="py-2">1 year</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">color-scheme</td>
+                      <td className="py-2 pr-4">Color scheme preference</td>
+                      <td className="py-2">1 year</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4 text-foreground">locale</td>
+                      <td className="py-2 pr-4">Language preference</td>
+                      <td className="py-2">1 year</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Analytics Cookies */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">[2.3] ANALYTICS_COOKIES (OPTIONAL)</h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                These cookies help us understand how visitors use our website.
+              </p>
+              <div className="border border-border bg-background p-4 overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 pr-4 text-muted-foreground">SERVICE</th>
+                      <th className="text-left py-2 pr-4 text-muted-foreground">PURPOSE</th>
+                      <th className="text-left py-2 text-muted-foreground">DURATION</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">Vercel Analytics</td>
+                      <td className="py-2 pr-4">Page views, performance (anonymized)</td>
+                      <td className="py-2">Session</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4 text-foreground">Custom Analytics</td>
+                      <td className="py-2 pr-4">Feature usage (anonymized)</td>
+                      <td className="py-2">90 days</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Third-Party Cookies */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">[2.4] THIRD_PARTY_COOKIES</h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                External services may set their own cookies:
+              </p>
+              <div className="border border-border bg-background p-4 overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 pr-4 text-muted-foreground">SERVICE</th>
+                      <th className="text-left py-2 pr-4 text-muted-foreground">PURPOSE</th>
+                      <th className="text-left py-2 text-muted-foreground">POLICY</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 text-foreground">Polar.sh</td>
+                      <td className="py-2 pr-4">Payment processing</td>
+                      <td className="py-2">
+                        <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                          VIEW_POLICY
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4 text-foreground">Google OAuth</td>
+                      <td className="py-2 pr-4">Authentication</td>
+                      <td className="py-2">
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                          VIEW_POLICY
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x30]</span>
+            <h2 className="text-lg font-bold">MANAGE_COOKIES</h2>
           </div>
 
-          <H3 className="mt-6 mb-3">2.3 Analytics Cookies (Optional)</H3>
-          <Body className="mb-4">
-            These cookies help us understand how visitors use our website.
-          </Body>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">[3.1] BROWSER_SETTINGS</h3>
+              <p className="text-xs text-muted-foreground mb-2">
+                Most browsers allow you to control cookies:
+              </p>
+              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+                <li>├─ View and delete cookies individually</li>
+                <li>├─ Block third-party cookies</li>
+                <li>├─ Block cookies from specific websites</li>
+                <li>└─ Delete all cookies on browser close</li>
+              </ul>
+              <p className="text-xs text-warning mt-2">
+                Note: Blocking essential cookies prevents login and core features.
+              </p>
+            </div>
 
-          <div className="mb-6 rounded-lg border border-border bg-card p-6">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Service</TableHead>
-                  <TableHead>Purpose</TableHead>
-                  <TableHead>Duration</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Vercel Analytics</TableCell>
-                  <TableCell>Page views, performance metrics (anonymized)</TableCell>
-                  <TableCell>Session</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Custom Analytics</TableCell>
-                  <TableCell>Feature usage tracking (anonymized)</TableCell>
-                  <TableCell>90 days</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+            <div>
+              <h3 className="text-sm font-semibold mb-2">[3.2] BROWSER_INSTRUCTIONS</h3>
+              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+                <li>├─ <span className="text-foreground">CHROME:</span> Settings → Privacy → Cookies</li>
+                <li>├─ <span className="text-foreground">FIREFOX:</span> Settings → Privacy → Cookies</li>
+                <li>├─ <span className="text-foreground">SAFARI:</span> Preferences → Privacy → Manage Data</li>
+                <li>└─ <span className="text-foreground">EDGE:</span> Settings → Cookies and permissions</li>
+              </ul>
+            </div>
 
-          <H3 className="mt-6 mb-3">2.4 Third-Party Cookies</H3>
-          <Body className="mb-4">
-            When you use certain features, third-party services may set their own cookies:
-          </Body>
-
-          <div className="mb-6 rounded-lg border border-border bg-card p-6">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Service</TableHead>
-                  <TableHead>Purpose</TableHead>
-                  <TableHead>Privacy Policy</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Polar.sh</TableCell>
-                  <TableCell>Payment processing, fraud detection</TableCell>
-                  <TableCell>
-                    <Link href="https://polar.sh/legal/privacy" target="_blank" rel="noopener noreferrer">
-                      View Policy
-                    </Link>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Google OAuth</TableCell>
-                  <TableCell>Third-party authentication (if enabled)</TableCell>
-                  <TableCell>
-                    <Link href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                      View Policy
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
+            <div>
+              <h3 className="text-sm font-semibold mb-2">[3.3] OPT_OUT_ANALYTICS</h3>
+              <p className="text-xs text-muted-foreground">
+                Opt-out via account settings or by enabling "Do Not Track" in your browser.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section>
-          <H2 className="mb-4">3. How to Manage Cookies</H2>
-
-          <H3 className="mt-6 mb-3">3.1 Browser Settings</H3>
-          <Body className="mb-4">
-            Most browsers allow you to control cookies through their settings. You can:
-          </Body>
-          <List className="mb-4">
-            <ListItem>View what cookies are stored and delete them individually</ListItem>
-            <ListItem>Block third-party cookies</ListItem>
-            <ListItem>Block all cookies from specific websites</ListItem>
-            <ListItem>Delete all cookies when you close your browser</ListItem>
-          </List>
-          <Body className="mb-4">
-            <Strong>Note:</Strong> Blocking essential cookies will prevent you from logging in and using core features of Fabrk.
-          </Body>
-
-          <H3 className="mt-6 mb-3">3.2 Browser-Specific Instructions</H3>
-          <List className="mb-4">
-            <ListItem><Strong>Chrome:</Strong> Settings → Privacy and security → Cookies and other site data</ListItem>
-            <ListItem><Strong>Firefox:</Strong> Settings → Privacy & Security → Cookies and Site Data</ListItem>
-            <ListItem><Strong>Safari:</Strong> Preferences → Privacy → Manage Website Data</ListItem>
-            <ListItem><Strong>Edge:</Strong> Settings → Cookies and site permissions → Cookies and data stored</ListItem>
-          </List>
-
-          <H3 className="mt-6 mb-3">3.3 Opt-Out of Analytics</H3>
-          <Body className="mb-4">
-            You can opt-out of analytics cookies through your account settings or by enabling "Do Not Track" in your browser.
-          </Body>
+        {/* Section 4 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x40]</span>
+            <h2 className="text-lg font-bold">OTHER_TRACKING</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-2">In addition to cookies, we may use:</p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store preferences and app state</li>
+            <li>├─ <span className="text-foreground">SESSION_STORAGE:</span> Temporary storage (cleared on tab close)</li>
+            <li>└─ <span className="text-foreground">WEB_BEACONS:</span> Small images for email tracking</li>
+          </ul>
         </section>
 
-        <section>
-          <H2 className="mb-4">4. Other Tracking Technologies</H2>
-          <Body className="mb-4">
-            In addition to cookies, we may use other tracking technologies:
-          </Body>
-          <List className="mb-4">
-            <ListItem><Strong>Local Storage:</Strong> Store preferences and app state in your browser</ListItem>
-            <ListItem><Strong>Session Storage:</Strong> Temporary storage cleared when you close the tab</ListItem>
-            <ListItem><Strong>Web Beacons:</Strong> Small transparent images used in emails to track opens</ListItem>
-          </List>
+        {/* Section 5-6 */}
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x50]</span>
+            <h2 className="text-lg font-bold">POLICY_UPDATES</h2>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            We may update this Cookie Policy. Changes will be posted with an updated "Last Updated" date.
+          </p>
         </section>
 
-        <section>
-          <H2 className="mb-4">5. Updates to This Policy</H2>
-          <Body className="mb-4">
-            We may update this Cookie Policy from time to time. We'll notify you of significant changes by updating the "Last Updated" date at the top of this page.
-          </Body>
-        </section>
-
-        <section>
-          <H2 className="mb-4">6. Questions?</H2>
-          <Body className="mb-4">
-            If you have questions about our use of cookies, please contact us:
-          </Body>
-          <List className="mb-4">
-            <ListItem>Email: support@fabrk.dev</ListItem>
-            <ListItem>Contact Form: <Link href="/contact">Contact Page</Link></ListItem>
-          </List>
+        <section className="border border-border bg-card p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-muted-foreground">[0x60]</span>
+            <h2 className="text-lg font-bold">QUESTIONS</h2>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">Questions about cookies?</p>
+          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+            <li>├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev</li>
+            <li>└─ <span className="text-foreground">FORM:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link></li>
+          </ul>
         </section>
       </div>
 
@@ -292,14 +316,14 @@ export default function CookiesPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="mt-12 rounded-lg border border-border bg-accent/30 p-6"
+        className="mt-12 border border-primary/30 bg-primary/5 p-6"
       >
-        <H3 className="mb-3">Managing Your Cookie Preferences</H3>
-        <Body className="mb-4">
-          When you first visit Fabrk, you'll see a cookie consent banner. You can change your preferences at any time through your account settings.
-        </Body>
-        <Link href="/settings" className="font-medium">
-          Cookie Settings →
+        <h3 className="text-sm font-semibold mb-2">[MANAGE_PREFERENCES]</h3>
+        <p className="text-xs text-muted-foreground mb-3">
+          You'll see a cookie consent banner on first visit. Change preferences anytime in account settings.
+        </p>
+        <Link href="/settings" className="text-xs text-primary hover:underline">
+          &gt; COOKIE_SETTINGS
         </Link>
       </motion.div>
 
@@ -309,18 +333,20 @@ export default function CookiesPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="mt-8 rounded-lg border border-border bg-card p-6"
+        className="mt-8 border border-border bg-card p-6"
       >
-        <Small className="block mb-4">
-          Related Legal Documents:
-        </Small>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/terms" className="text-sm font-medium">
-            Terms of Service
+        <span className="block mb-3 text-xs text-muted-foreground">
+          [ RELATED_DOCUMENTS ]
+        </span>
+        <div className="flex flex-wrap gap-4 text-xs">
+          <Link href="/terms" className="text-primary hover:underline">
+            &gt; TERMS_OF_SERVICE
           </Link>
-          <span className="text-muted-foreground">•</span>
-          <Link href="/privacy" className="text-sm font-medium">
-            Privacy Policy
+          <Link href="/privacy" className="text-primary hover:underline">
+            &gt; PRIVACY_POLICY
+          </Link>
+          <Link href="/refund" className="text-primary hover:underline">
+            &gt; REFUND_POLICY
           </Link>
         </div>
       </motion.div>
