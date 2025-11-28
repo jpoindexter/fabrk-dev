@@ -358,7 +358,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Troubleshooting</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Error: &quot;Port 3000 is already in use&quot;
             </summary>
@@ -371,7 +371,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Error: &quot;Cannot connect to database&quot;
             </summary>
@@ -385,7 +385,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Error: &quot;NEXTAUTH_SECRET is missing&quot;
             </summary>

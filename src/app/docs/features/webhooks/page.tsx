@@ -84,13 +84,14 @@ export default function WebhooksPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Creating Webhooks</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Register a webhook endpoint to receive events:
           </p>
-          <CodeBlock language="typescript" code={`// API Route: POST /api/v1/webhooks
+        </div>
+        <CodeBlock language="typescript" code={`// API Route: POST /api/v1/webhooks
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { generateWebhookSecret } from "@/lib/webhooks/server";
@@ -124,16 +125,16 @@ export async function POST(req: Request) {
     secret: webhook.secret, // Show once on creation
   });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Sending Webhooks</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Trigger webhook deliveries from your application:
           </p>
-          <CodeBlock language="json" code={`// src/lib/webhooks/server.ts
+        </div>
+        <CodeBlock language="json" code={`// src/lib/webhooks/server.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
 
@@ -206,16 +207,16 @@ await sendWebhook("user.created", {
   email: user.email,
   name: user.name,
 });`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Verifying Webhooks (Receiver Side)</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             When receiving webhooks, always verify the signature:
           </p>
-          <CodeBlock language="bash" code={`// In your webhook receiver endpoint
+        </div>
+        <CodeBlock language="bash" code={`// In your webhook receiver endpoint
 import crypto from "crypto";
 
 export async function POST(req: Request) {
@@ -247,16 +248,16 @@ export async function POST(req: Request) {
 
   return Response.json({ received: true });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Retry Logic</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Failed webhooks are automatically retried with exponential backoff:
           </p>
-          <CodeBlock language="typescript" code={`// Retry configuration
+        </div>
+        <CodeBlock language="typescript" code={`// Retry configuration
 const RETRY_CONFIG = {
   maxRetries: 5,
   initialDelay: 60,    // 1 minute
@@ -294,8 +295,7 @@ async function queueWebhookRetry(
     attempt: attempt + 1,
   }, { delay: delay * 1000 });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

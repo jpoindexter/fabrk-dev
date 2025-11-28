@@ -38,13 +38,14 @@ export default function BackgroundJobsPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Job model in Prisma schema:
           </p>
-          <CodeBlock language="prisma" code={`// prisma/schema.prisma
+        </div>
+        <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model Job {
   id          String   @id @default(cuid())
   queue       String   // "default", "email", "webhooks"
@@ -69,16 +70,16 @@ model Job {
   @@index([queue, status, runAt])
   @@index([status, runAt])
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Job Queue Service</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Core service for managing job queues:
           </p>
-          <CodeBlock language="typescript" code={`// src/lib/jobs/queue.ts
+        </div>
+        <CodeBlock language="typescript" code={`// src/lib/jobs/queue.ts
 import { prisma } from "@/lib/db";
 
 interface JobOptions {
@@ -191,16 +192,16 @@ export async function failJob(
     },
   });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Worker Implementation</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Create workers to process jobs:
           </p>
-          <CodeBlock language="bash" code={`// scripts/worker.ts
+        </div>
+        <CodeBlock language="bash" code={`// scripts/worker.ts
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 
 // Job handlers
@@ -270,16 +271,16 @@ function sleep(ms: number) {
 
 // Start worker
 processJobs(process.env.QUEUE || "default");`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Email Worker</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Dedicated worker for processing email queue:
           </p>
-          <CodeBlock language="bash" code={`// scripts/email-worker.ts
+        </div>
+        <CodeBlock language="bash" code={`// scripts/email-worker.ts
 import { Resend } from "resend";
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 import { WelcomeEmail } from "@/emails/welcome";
@@ -340,19 +341,21 @@ function sleep(ms: number) {
 }
 
 processEmailQueue();`} />
+        <div>
           <p className="mt-4 text-sm text-muted-foreground">
             Run the email worker with: <code>npm run email:dev</code>
           </p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Queueing Jobs</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Queue jobs from your API routes:
           </p>
-          <CodeBlock language="typescript" code={`// In API routes
+        </div>
+        <CodeBlock language="typescript" code={`// In API routes
 import { enqueueJob } from "@/lib/jobs/queue";
 
 // Queue an email
@@ -404,16 +407,16 @@ await enqueueJob(
     maxAttempts: 5,
   }
 );`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Running Workers</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Start workers for different queues:
           </p>
-          <CodeBlock language="bash" code={`# Development (with auto-restart)
+        </div>
+        <CodeBlock language="bash" code={`# Development (with auto-restart)
 npm run jobs:dev        # Default queue worker
 npm run email:dev       # Email queue worker
 
@@ -446,8 +449,7 @@ services:
     command: node scripts/worker.js
     environment:
       - QUEUE=webhooks`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

@@ -36,34 +36,37 @@ export default function AnalyticsPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Add your PostHog credentials to environment variables:
           </p>
-          <CodeBlock language="bash" code={`# .env.local
+        </div>
+        <CodeBlock language="bash" code={`# .env.local
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`} />
-          <p className="mb-4">
+        <div>
+          <p className="mb-4 text-muted-foreground">
             Enable analytics in your config:
           </p>
-          <CodeBlock language="typescript" code={`// src/config.js
+        </div>
+        <CodeBlock language="typescript" code={`// src/config.js
 module.exports = {
   features: {
     analytics: true, // Enable PostHog
   },
 };`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">PostHog Provider Setup</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Initialize PostHog in your application:
           </p>
-          <CodeBlock language="bash" code={`// src/components/providers/posthog-provider.tsx
+        </div>
+        <CodeBlock language="bash" code={`// src/components/providers/posthog-provider.tsx
 "use client";
 
 import posthog from "posthog-js";
@@ -98,16 +101,16 @@ export default function RootLayout({ children }) {
     </html>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Tracking Events</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Track custom events throughout your application:
           </p>
-          <CodeBlock language="tsx" code={`"use client";
+        </div>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
 
@@ -141,16 +144,16 @@ export function CheckoutButton({ plan, price }: Props) {
 // - settings_changed
 // - organization_created
 // - member_invited`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">User Identification</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Identify users after authentication to link their activity:
           </p>
-          <CodeBlock language="tsx" code={`"use client";
+        </div>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
 import { useSession } from "next-auth/react";
@@ -185,16 +188,16 @@ const handleLogout = () => {
   posthog.reset(); // Clear user identity
   signOut();
 };`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Page View Tracking</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Track page views with the Next.js router:
           </p>
-          <CodeBlock language="tsx" code={`"use client";
+        </div>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
@@ -219,16 +222,16 @@ export function PageViewTracker() {
 
   return null;
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Server-Side Tracking</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Track events from API routes and server actions:
           </p>
-          <CodeBlock language="bash" code={`// src/lib/analytics/server.ts
+        </div>
+        <CodeBlock language="bash" code={`// src/lib/analytics/server.ts
 import { PostHog } from "posthog-node";
 
 const posthogServer = new PostHog(
@@ -265,8 +268,7 @@ export async function POST(req: Request) {
 
   return Response.json({ success: true });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

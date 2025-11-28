@@ -38,13 +38,14 @@ export default function ApiKeysPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             API key model in Prisma schema:
           </p>
-          <CodeBlock language="prisma" code={`// prisma/schema.prisma
+        </div>
+        <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model ApiKey {
   id          String    @id @default(cuid())
   userId      String
@@ -65,16 +66,16 @@ model ApiKey {
   @@index([keyHash])
   @@index([userId])
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Key Generation</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Securely generate and hash API keys:
           </p>
-          <CodeBlock language="typescript" code={`// src/lib/api-keys.ts
+        </div>
+        <CodeBlock language="typescript" code={`// src/lib/api-keys.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
 
@@ -131,16 +132,16 @@ export const API_SCOPES = [
   "manage:billing",
   "admin",
 ] as const;`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Key Validation</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Validate API keys with timing-safe comparison:
           </p>
-          <CodeBlock language="typescript" code={`// src/lib/api-keys.ts
+        </div>
+        <CodeBlock language="typescript" code={`// src/lib/api-keys.ts
 import crypto from "crypto";
 
 export async function validateApiKey(key: string) {
@@ -215,16 +216,16 @@ export async function withApiKey(
 
   return { user: result.user, scopes: result.scopes };
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Using API Keys in Routes</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Protect your API routes with API key authentication:
           </p>
-          <CodeBlock language="typescript" code={`// src/app/api/v1/data/route.ts
+        </div>
+        <CodeBlock language="typescript" code={`// src/app/api/v1/data/route.ts
 import { withApiKey } from "@/lib/api-keys";
 
 export async function GET(req: Request) {
@@ -268,16 +269,16 @@ export async function POST(req: Request) {
 
   return Response.json({ data });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Rate Limiting</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Implement rate limiting per API key:
           </p>
-          <CodeBlock language="bash" code={`// src/lib/rate-limit.ts
+        </div>
+        <CodeBlock language="bash" code={`// src/lib/rate-limit.ts
 import { Redis } from "@upstash/redis";
 
 const redis = new Redis({
@@ -346,8 +347,7 @@ export async function GET(req: Request) {
 
   // Process request...
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

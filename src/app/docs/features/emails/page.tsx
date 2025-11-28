@@ -42,7 +42,10 @@ export default function EmailsPage() {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
-        <h3 className="text-xl font-medium mb-3">1. Set Up Resend</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+          <h3 className="text-xl font-medium">Set Up Resend</h3>
+        </div>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Add your Resend API key to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
@@ -53,20 +56,38 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"
 
 EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
-        <h3 className="text-xl font-medium mb-3">2. Configure Domain</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+          <h3 className="text-xl font-medium">Configure Domain</h3>
+        </div>
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Set up your sending domain in Resend dashboard:</p>
-            <ol className="list-decimal pl-6 space-y-2">
-              <li>Go to Resend Dashboard → Domains</li>
-              <li>Add your domain (e.g., yourdomain.com)</li>
-              <li>Add the DNS records (SPF, DKIM, DMARC)</li>
-              <li>Verify domain status</li>
-            </ol>
+            <div className="space-y-2">
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+                <p>Go to Resend Dashboard → Domains</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+                <p>Add your domain (e.g., yourdomain.com)</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+                <p>Add the DNS records (SPF, DKIM, DMARC)</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
+                <p>Verify domain status</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        <h3 className="text-xl font-medium mb-3">3. Start Email Worker</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+          <h3 className="text-xl font-medium">Start Email Worker</h3>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">For queued emails, run the worker:</p>

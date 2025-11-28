@@ -108,10 +108,8 @@ export default function ArchitecturePage() {
                 </p>
 
                 <div className="space-y-4">
-                    <div>
-                        <h3 className="text-lg font-medium">Mutation Flow (Server Actions)</h3>
-                        <p className="text-muted-foreground">Example of a typical server action flow:</p>
-                    </div>
+                    <h3 className="text-lg font-medium">Mutation Flow (Server Actions)</h3>
+                    <p className="text-muted-foreground">Example of a typical server action flow:</p>
                     <CodeBlock language="typescript" code={`// 1. Client invokes action
 const { execute, status } = useAction(updateUserProfile);
 

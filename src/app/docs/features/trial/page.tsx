@@ -64,28 +64,28 @@ export default function TrialPage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">How Fabrk Trials Work</h2>
         <div className="space-y-3">
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">1. User Starts Trial</h3>
             <p className="text-sm text-muted-foreground">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">2. Trial Banner Shows</h3>
             <p className="text-sm text-muted-foreground">
               While on trial, users see a banner showing how many days are left. This creates
               gentle urgency without being annoying.
             </p>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">3. Urgency Near End</h3>
             <p className="text-sm text-muted-foreground">
               When trial is almost over (last 3 days), the banner becomes more prominent.
               Users are prompted to subscribe before losing access.
             </p>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">4. Trial Expires</h3>
             <p className="text-sm text-muted-foreground">
               When trial ends, users can no longer access premium features. They see a message
@@ -305,7 +305,7 @@ const subscription = await stripe.subscriptions.create({
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?
             </summary>
@@ -317,7 +317,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               What happens to user data when trial expires?
             </summary>
@@ -329,7 +329,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Should I require a credit card for trials?
             </summary>
@@ -342,7 +342,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How do I extend someone&apos;s trial?
             </summary>

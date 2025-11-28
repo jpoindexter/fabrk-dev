@@ -16,12 +16,12 @@ export default function LaunchChecklistPage() {
                 </p>
             </div>
 
-            <Card className="border-green-200 bg-green-50 dark:bg-green-950/20 dark:border-green-900">
+            <Card className="border-primary/20 bg-card">
                 <CardContent className="p-6">
-                    <p className="text-green-800 dark:text-green-200 font-medium">
+                    <p className="text-primary font-medium">
                         Status: Ready for Launch 🟢
                     </p>
-                    <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                         Follow this checklist to verify your application before going live.
                     </p>
                 </CardContent>

@@ -36,13 +36,14 @@ export default function RealtimePage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Add your Pusher credentials to your environment variables:
           </p>
-          <CodeBlock language="bash" code={`# .env.local
+        </div>
+        <CodeBlock language="bash" code={`# .env.local
 PUSHER_APP_ID=your_app_id
 PUSHER_KEY=your_key
 PUSHER_SECRET=your_secret
@@ -51,19 +52,21 @@ PUSHER_CLUSTER=your_cluster
 # Client-side (exposed to browser)
 NEXT_PUBLIC_PUSHER_KEY=your_key
 NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
+        <div>
           <p className="text-sm text-muted-foreground">
             Get your credentials from the <a href="https://dashboard.pusher.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Pusher Dashboard</a>.
           </p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Server-Side Usage</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Use the server client to trigger events from your API routes:
           </p>
-          <CodeBlock language="bash" code={`// src/lib/pusher/server.ts
+        </div>
+        <CodeBlock language="bash" code={`// src/lib/pusher/server.ts
 import Pusher from "pusher";
 
 export const pusherServer = new Pusher({
@@ -96,16 +99,16 @@ await pusherServer.trigger(
     timestamp: new Date().toISOString(),
   }
 );`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Client-Side Usage</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Subscribe to channels and listen for events in your React components:
           </p>
-          <CodeBlock language="bash" code={`// src/lib/pusher/client.ts
+        </div>
+        <CodeBlock language="bash" code={`// src/lib/pusher/client.ts
 import PusherClient from "pusher-js";
 
 export const pusherClient = new PusherClient(
@@ -149,16 +152,16 @@ export function NotificationBell({ userId }: { userId: string }) {
     </button>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Presence Channels</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Track which members are online in an organization:
           </p>
-          <CodeBlock language="tsx" code={`// Client-side presence subscription
+        </div>
+        <CodeBlock language="tsx" code={`// Client-side presence subscription
 "use client";
 import { useEffect, useState } from "react";
 import { pusherClient } from "@/lib/pusher/client";
@@ -199,8 +202,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

@@ -19,7 +19,10 @@ export default function StripePaymentsTutorialPage() {
 
       {/* Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">1. Configure Stripe</h2>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+          <h2 className="text-2xl font-semibold">Configure Stripe</h2>
+        </div>
         <p className="text-muted-foreground">
           Add your Stripe API keys to <code className="rounded bg-muted px-1 py-0.5">.env.local</code>:
         </p>
@@ -31,31 +34,52 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`} />
 
       {/* Create Product */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">2. Create a Product</h2>
-        <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-          <li>
-            Go to{" "}
-            <a
-              href="https://dashboard.stripe.com/test/products"
-              className="text-primary hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Stripe Dashboard → Products
-            </a>
-          </li>
-          <li>Click "Add product"</li>
-          <li>Enter name, description, and price</li>
-          <li>Choose "One time" or "Recurring"</li>
-          <li>Copy the Price ID</li>
-        </ol>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+          <h2 className="text-2xl font-semibold">Create a Product</h2>
+        </div>
+        <div className="space-y-2">
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            <p className="text-muted-foreground">
+              Go to{" "}
+              <a
+                href="https://dashboard.stripe.com/test/products"
+                className="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Stripe Dashboard → Products
+              </a>
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            <p className="text-muted-foreground">Click "Add product"</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+            <p className="text-muted-foreground">Enter name, description, and price</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
+            <p className="text-muted-foreground">Choose "One time" or "Recurring"</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
+            <p className="text-muted-foreground">Copy the Price ID</p>
+          </div>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       </div>
 
       {/* Checkout Button */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">3. Create Checkout Button</h2>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+          <h2 className="text-2xl font-semibold">Create Checkout Button</h2>
+        </div>
         <p className="text-muted-foreground">
           Use the checkout API to create a payment session:
         </p>
@@ -101,7 +125,10 @@ export function CheckoutButton() {
 
       {/* Webhooks */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">4. Set Up Webhooks</h2>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
+          <h2 className="text-2xl font-semibold">Set Up Webhooks</h2>
+        </div>
         <p className="text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
         </p>
@@ -121,7 +148,10 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
 
       {/* Webhook Events */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">5. Handle Webhook Events</h2>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
+          <h2 className="text-2xl font-semibold">Handle Webhook Events</h2>
+        </div>
         <p className="text-muted-foreground">
           The webhook handler is at{" "}
           <code className="rounded bg-muted px-1 py-0.5">src/app/api/webhooks/stripe/route.ts</code>.
@@ -138,7 +168,10 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
 
       {/* Coupons */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">6. Promotion Codes</h2>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">6</span>
+          <h2 className="text-2xl font-semibold">Promotion Codes</h2>
+        </div>
         <p className="text-muted-foreground">
           Configure promotion codes in <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
         </p>

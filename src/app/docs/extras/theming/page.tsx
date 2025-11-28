@@ -134,6 +134,17 @@ export default function ThemingPage() {
               </div>
             </CardContent>
           </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#5c7f67] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Garden</div>
+                  <div className="text-xs text-muted-foreground">Green</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
           {/* Dark Themes */}
           <Card>
             <CardContent className="p-3">
@@ -438,8 +449,8 @@ export function MyNavbar() {
       {/* Credits */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Credits & Inspiration</h2>
-        <Card className="border-primary/20 bg-primary/5">
-          <CardContent className="p-6">
+        <Card>
+          <CardContent className="pt-6">
             <p className="text-muted-foreground">
               Fabrk's theme system is inspired by{" "}
               <a

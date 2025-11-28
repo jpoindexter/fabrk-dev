@@ -33,19 +33,34 @@ export default function DatabaseSetupPage() {
       {/* Supabase Setup (Recommended) */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Supabase Setup (Recommended)</h2>
-        <ol className="list-inside list-decimal space-y-3 text-muted-foreground">
-          <li>
-            Go to{" "}
-            <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              supabase.com
-            </a>{" "}
-            and create an account
-          </li>
-          <li>Click "New Project"</li>
-          <li>Set a strong database password</li>
-          <li>Choose a region close to your users</li>
-          <li>Wait for project to be ready (~2 minutes)</li>
-        </ol>
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            <p className="text-muted-foreground">
+              Go to{" "}
+              <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                supabase.com
+              </a>{" "}
+              and create an account
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            <p className="text-muted-foreground">Click "New Project"</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+            <p className="text-muted-foreground">Set a strong database password</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
+            <p className="text-muted-foreground">Choose a region close to your users</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
+            <p className="text-muted-foreground">Wait for project to be ready (~2 minutes)</p>
+          </div>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Get your connection string and add it to .env.local:</p>
@@ -67,16 +82,25 @@ DATABASE_URL="your-connection-string"`} />
       {/* Neon Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Neon Setup</h2>
-        <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-          <li>
-            Sign up at{" "}
-            <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              neon.tech
-            </a>
-          </li>
-          <li>Create a new project</li>
-          <li>Copy the connection string</li>
-        </ol>
+        <div className="space-y-2">
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            <p className="text-muted-foreground">
+              Sign up at{" "}
+              <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                neon.tech
+              </a>
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            <p className="text-muted-foreground">Create a new project</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+            <p className="text-muted-foreground">Copy the connection string</p>
+          </div>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Connection string examples:</p>
@@ -92,16 +116,25 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
       {/* Railway Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Railway Setup</h2>
-        <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-          <li>
-            Sign up at{" "}
-            <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              railway.app
-            </a>
-          </li>
-          <li>Create new project → Add PostgreSQL</li>
-          <li>Copy DATABASE_URL from Variables tab</li>
-        </ol>
+        <div className="space-y-2">
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+            <p className="text-muted-foreground">
+              Sign up at{" "}
+              <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                railway.app
+              </a>
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+            <p className="text-muted-foreground">Create new project → Add PostgreSQL</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+            <p className="text-muted-foreground">Copy DATABASE_URL from Variables tab</p>
+          </div>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Connection string format:</p>
@@ -330,27 +363,21 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
       {/* Performance Tips */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Performance Tips</h2>
-        <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+        <ul className="list-inside list-disc space-y-3 text-muted-foreground">
           <li>
-            <strong>Add indexes</strong> - Index frequently queried columns
-            <pre className="mt-1 rounded bg-muted p-2 text-sm">
-              <code>@@index([userId, createdAt])</code>
-            </pre>
+            <strong>Add indexes</strong> - Index frequently queried columns:{" "}
+            <code className="rounded bg-muted px-1">@@index([userId, createdAt])</code>
           </li>
           <li>
-            <strong>Use select</strong> - Only fetch needed fields
-            <pre className="mt-1 rounded bg-muted p-2 text-sm">
-              <code>prisma.user.findMany({"{"} select: {"{"} id: true, name: true {"}"} {"}"})</code>
-            </pre>
+            <strong>Use select</strong> - Only fetch needed fields:{" "}
+            <code className="rounded bg-muted px-1">prisma.user.findMany({"{"} select: {"{"} id: true, name: true {"}"} {"}"})</code>
           </li>
           <li>
-            <strong>Batch operations</strong> - Use createMany/updateMany
+            <strong>Batch operations</strong> - Use createMany/updateMany for multiple records
           </li>
           <li>
-            <strong>Enable logging</strong> - Debug slow queries
-            <pre className="mt-1 rounded bg-muted p-2 text-sm">
-              <code>new PrismaClient({"{"} log: ["query"] {"}"})</code>
-            </pre>
+            <strong>Enable logging</strong> - Debug slow queries:{" "}
+            <code className="rounded bg-muted px-1">new PrismaClient({"{"} log: ["query"] {"}"})</code>
           </li>
         </ul>
       </div>

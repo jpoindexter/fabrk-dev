@@ -42,7 +42,10 @@ export default function MagicLinksPage() {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
-        <h3 className="text-xl font-medium mb-3">1. Enable Magic Links</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+          <h3 className="text-xl font-medium">Enable Magic Links</h3>
+        </div>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Enable the feature in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
@@ -55,7 +58,10 @@ export default function MagicLinksPage() {
 };`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">2. Configure Email</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+          <h3 className="text-xl font-medium">Configure Email</h3>
+        </div>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Ensure email is configured in <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
@@ -65,7 +71,10 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">3. Token Settings</h3>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+          <h3 className="text-xl font-medium">Token Settings</h3>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Configure token expiration:</p>

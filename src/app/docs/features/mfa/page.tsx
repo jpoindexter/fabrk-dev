@@ -129,7 +129,7 @@ export default function MFAPage() {
         <h2 className="text-2xl font-semibold">How 2FA Works</h2>
 
         <div className="space-y-3">
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">Setting Up 2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User goes to Settings → Security</li>
@@ -141,7 +141,7 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">Logging In with 2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password as normal</li>
@@ -151,7 +151,7 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">Lost Phone? Use Backup Code</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>On the verification screen, click &quot;Use backup code&quot;</li>

@@ -141,7 +141,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           Here&apos;s what happens when a user interacts with your app:
         </p>
         <div className="space-y-3">
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">When a User Signs Up</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password on the signup form</li>
@@ -151,7 +151,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <li>User clicks the verification link to confirm their email</li>
             </ol>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">When a User Logs In</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password</li>
@@ -161,7 +161,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <li>User is redirected to the dashboard</li>
             </ol>
           </div>
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold mb-2">On Every Page Visit</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>Browser automatically sends the session cookie</li>

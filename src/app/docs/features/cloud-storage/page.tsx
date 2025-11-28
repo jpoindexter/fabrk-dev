@@ -365,7 +365,7 @@ export function FileUploader() {
       {/* Security */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Security Considerations</h2>
-        <Card>
+        <Card className="bg-card">
           <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
@@ -397,7 +397,7 @@ export function FileUploader() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How much does cloud storage cost?
             </summary>
@@ -413,7 +413,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               What&apos;s the maximum file size?
             </summary>
@@ -426,7 +426,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Can I use both R2 and S3?
             </summary>
@@ -439,7 +439,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How do I delete files?
             </summary>

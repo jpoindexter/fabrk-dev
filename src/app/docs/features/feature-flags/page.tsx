@@ -36,13 +36,14 @@ export default function FeatureFlagsPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Feature flag model in Prisma schema:
           </p>
-          <CodeBlock language="prisma" code={`// prisma/schema.prisma
+        </div>
+        <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model FeatureFlag {
   id          String   @id @default(cuid())
   key         String   @unique // "new-dashboard", "beta-api"
@@ -68,16 +69,16 @@ model FeatureFlag {
 
   @@index([key, environment])
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Feature Flag Service</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Core service for checking feature flags:
           </p>
-          <CodeBlock language="bash" code={`// src/lib/feature-flags.ts
+        </div>
+        <CodeBlock language="bash" code={`// src/lib/feature-flags.ts
 import { prisma } from "@/lib/db";
 import crypto from "crypto";
 
@@ -151,16 +152,16 @@ export async function getFeatureFlags(context: FlagContext = {}) {
 
   return result;
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Server-Side Usage</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Check feature flags in API routes and server components:
           </p>
-          <CodeBlock language="tsx" code={`// In API routes
+        </div>
+        <CodeBlock language="tsx" code={`// In API routes
 import { auth } from "@/lib/auth";
 import { isFeatureEnabled } from "@/lib/feature-flags";
 
@@ -206,16 +207,16 @@ export default async function DashboardPage() {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Client-Side Usage</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             Use feature flags in client components with a React hook:
           </p>
-          <CodeBlock language="tsx" code={`// src/hooks/use-feature-flags.ts
+        </div>
+        <CodeBlock language="tsx" code={`// src/hooks/use-feature-flags.ts
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -285,16 +286,16 @@ export function NewFeature() {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Admin Management</h2>
-          <p className="mb-4">
+          <p className="mb-4 text-muted-foreground">
             API routes for managing feature flags:
           </p>
-          <CodeBlock language="typescript" code={`// POST /api/admin/feature-flags
+        </div>
+        <CodeBlock language="typescript" code={`// POST /api/admin/feature-flags
 export async function POST(req: Request) {
   const session = await auth();
   if (session?.user?.role !== "admin") {
@@ -359,8 +360,7 @@ export async function POST(
 
   return Response.json({ flag: updated });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

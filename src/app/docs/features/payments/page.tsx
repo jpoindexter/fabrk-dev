@@ -26,13 +26,15 @@ export default function PaymentsPage() {
             When someone buys your product, several things happen behind the scenes. Fabrk uses
             Stripe to handle all of this securely:
           </p>
-          <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-            <li><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
-            <li><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
-            <li><strong>Stripe charges the card</strong> - Money goes to your Stripe account</li>
-            <li><strong>Stripe tells your app</strong> - Via a &quot;webhook&quot; notification</li>
-            <li><strong>Your app grants access</strong> - User can now use premium features</li>
-          </ol>
+          <div className="rounded-lg border bg-card p-4">
+            <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
+              <li><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
+              <li><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
+              <li><strong>Stripe charges the card</strong> - Money goes to your Stripe account</li>
+              <li><strong>Stripe tells your app</strong> - Via a &quot;webhook&quot; notification</li>
+              <li><strong>Your app grants access</strong> - User can now use premium features</li>
+            </ol>
+          </div>
           <p className="text-muted-foreground">
             The key benefit: You never handle sensitive credit card data. Stripe is PCI compliant
             and handles all the security complexity.
