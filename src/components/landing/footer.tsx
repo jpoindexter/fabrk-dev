@@ -9,7 +9,7 @@ import { H4, Small } from "@/components/ui/typography";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col lg:flex-row lg:items-start gap-12">
           {/* Left: Logo & Copyright Section */}
           <div className="lg:w-64 flex-shrink-0">
