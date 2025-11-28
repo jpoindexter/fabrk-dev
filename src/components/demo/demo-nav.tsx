@@ -33,7 +33,7 @@ export function DemoNav({
         {/* Right Side: Theme Controls + Back Button */}
         <div className="flex items-center gap-2">
           <ThemeDropdown />
-          <Button asChild className="font-mono text-xs">
+          <Button asChild className="rounded-none font-mono text-xs">
             <Link href={backButtonHref}>&gt; {backButtonText.toUpperCase()}</Link>
           </Button>
         </div>

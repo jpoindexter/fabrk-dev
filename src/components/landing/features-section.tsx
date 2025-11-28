@@ -67,7 +67,7 @@ function FeatureSection({ spec, title, description, features, reversed, children
         className="flex flex-col justify-center"
       >
         {/* Spec Label */}
-        <div className="mb-4 inline-block self-start border border-border px-3 py-1">
+        <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">&gt; [SPEC]: {spec}</span>
         </div>
 
@@ -183,7 +183,7 @@ function OrganizationPreview() {
             { name: "ACME_INC", role: "OWNER", members: 12 },
             { name: "STARTUP_CO", role: "ADMIN", members: 5 },
           ].map((org) => (
-            <div key={org.name} className="flex items-center justify-between border border-border p-3">
+            <div key={org.name} className="flex items-center justify-between border border-border bg-background p-3">
               <div className="flex items-center gap-3">
                 <Building2 className="size-4 text-muted-foreground" />
                 <div>
@@ -200,7 +200,7 @@ function OrganizationPreview() {
           <span className="mb-2 block font-mono text-xs text-muted-foreground">[ROLES]:</span>
           <div className="flex flex-wrap gap-2">
             {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
-              <span key={role} className="border border-border px-2 py-1 font-mono text-xs">
+              <span key={role} className="border border-border bg-card px-2 py-1 font-mono text-xs">
                 {role}
               </span>
             ))}
@@ -227,7 +227,7 @@ function BillingPreview() {
       <div className="p-6">
         <div className="mb-4 font-mono text-xs text-muted-foreground">[BILLING]:</div>
 
-        <div className="mb-4 flex items-center justify-between border border-border p-3">
+        <div className="mb-4 flex items-center justify-between border border-border bg-background p-3">
           <div>
             <span className="block font-mono text-xs">PLAN: PRO</span>
             <span className="font-mono text-xs text-muted-foreground">&gt; change_plan</span>
@@ -238,7 +238,7 @@ function BillingPreview() {
           </div>
         </div>
 
-        <div className="border border-border p-3">
+        <div className="border border-border bg-background p-3">
           <div className="mb-2 flex justify-between font-mono text-xs">
             <span className="text-muted-foreground">CYCLE: Nov 1 - Nov 30</span>
             <span>15 days remaining</span>
@@ -281,7 +281,7 @@ function DesignSystemPreview() {
             { icon: Layers, label: "COMPONENTS", value: "50+ SHADCN" },
             { icon: Palette, label: "STYLING", value: "TAILWIND CSS" },
           ].map((item) => (
-            <div key={item.label} className="flex items-center justify-between border border-border p-3">
+            <div key={item.label} className="flex items-center justify-between border border-border bg-background p-3">
               <div className="flex items-center gap-3">
                 <item.icon className="size-4 text-primary" />
                 <span className="font-mono text-xs">{item.label}</span>
@@ -310,7 +310,7 @@ function DesignSystemPreview() {
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="scroll-mt-16 border-t border-border bg-background px-6 py-20 lg:py-28">
+    <section id="features" className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -320,7 +320,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 lg:mb-24"
         >
-          <div className="mb-4 inline-block border border-border px-3 py-1">
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[DEEP_DIVE]: FEATURE_ANALYSIS</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">

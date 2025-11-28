@@ -33,7 +33,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-16 lg:py-24">
+    <section className="relative overflow-hidden px-6 py-16 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Terminal Content */}
@@ -45,7 +45,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="inline-block border border-border px-3 py-1 font-mono text-xs text-muted-foreground">
+              <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
                 [SYSTEM_INIT]: SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
@@ -71,7 +71,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8 border border-border p-4"
+              className="mb-8 border border-border bg-card p-4"
             >
               <div className="mb-3 font-mono text-xs text-muted-foreground">
                 [STATUS]:
@@ -99,10 +99,10 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-3 sm:flex-row"
             >
-              <PolarCheckoutButton className="font-mono text-sm">
+              <PolarCheckoutButton className="rounded-none font-mono text-sm">
                 &gt; EXECUTE: GET_FABRK
               </PolarCheckoutButton>
-              <Button variant="outline" asChild className="font-mono text-sm">
+              <Button variant="outline" asChild className="rounded-none font-mono text-sm">
                 <Link href="/demo">
                   &gt; VIEW: LIVE_DEMO
                 </Link>
@@ -122,7 +122,7 @@ export function HeroSection() {
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex items-center gap-1.5 border border-border px-2 py-1"
+                    className="flex items-center gap-1.5 border border-border bg-card px-2 py-1"
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
                     <span className="font-mono text-xs">{tech.name}</span>
@@ -165,19 +165,19 @@ export function HeroSection() {
 
                 {/* Dashboard Mock */}
                 <div className="grid gap-3">
-                  <div className="flex items-center justify-between border border-border p-3">
+                  <div className="flex items-center justify-between border border-border bg-background p-3">
                     <span className="font-mono text-xs">AUTH_MODULE</span>
                     <span className="font-mono text-xs text-success">ACTIVE</span>
                   </div>
-                  <div className="flex items-center justify-between border border-border p-3">
+                  <div className="flex items-center justify-between border border-border bg-background p-3">
                     <span className="font-mono text-xs">BILLING_MODULE</span>
                     <span className="font-mono text-xs text-success">ACTIVE</span>
                   </div>
-                  <div className="flex items-center justify-between border border-border p-3">
+                  <div className="flex items-center justify-between border border-border bg-background p-3">
                     <span className="font-mono text-xs">ORG_MODULE</span>
                     <span className="font-mono text-xs text-success">ACTIVE</span>
                   </div>
-                  <div className="flex items-center justify-between border border-border p-3">
+                  <div className="flex items-center justify-between border border-border bg-background p-3">
                     <span className="font-mono text-xs">EMAIL_MODULE</span>
                     <span className="font-mono text-xs text-success">ACTIVE</span>
                   </div>

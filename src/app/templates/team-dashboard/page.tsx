@@ -8,15 +8,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
   AlertDialog,
@@ -27,15 +19,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -55,8 +38,6 @@ import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 import {
   Users,
-  UserPlus,
-  Mail,
   Crown,
   Shield,
   Eye,
@@ -64,7 +45,6 @@ import {
   Trash2,
   Send,
   Clock,
-  Activity,
   Settings,
 } from "lucide-react";
 
@@ -174,13 +154,6 @@ const teamData = {
   ],
 };
 
-const roleColors: Record<string, "default" | "destructive" | "outline" | "secondary"> = {
-  owner: "default",
-  admin: "secondary",
-  member: "outline",
-  guest: "outline",
-};
-
 const roleIcons: Record<string, any> = {
   owner: Crown,
   admin: Shield,
@@ -237,403 +210,345 @@ export default function TeamDashboardTemplate() {
               Manage team members, roles, and permissions
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="font-mono text-xs rounded-none">
             <Settings className="mr-2 h-4 w-4" />
             &gt; ORG_SETTINGS
           </Button>
         </div>
 
         {/* Stats */}
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Organization</CardDescription>
-              <CardTitle className="text-2xl font-semibold">
-                {teamData.organization.name}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Badge className="font-semibold">{teamData.organization.plan}</Badge>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Team Size</CardDescription>
-              <CardTitle className="text-2xl font-semibold">
-                {teamData.members.length} /{" "}
-                {teamData.organization.memberLimit}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground font-semibold">
-                {teamData.organization.memberLimit - teamData.members.length}{" "}
-                seats available
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">
-                Pending Invites
-              </CardDescription>
-              <CardTitle className="text-2xl font-semibold">
-                {teamData.pendingInvitations.length}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground font-semibold">
-                Awaiting response
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Active Now</CardDescription>
-              <CardTitle className="text-2xl font-semibold">
-                {
-                  teamData.members.filter((m) => m.lastActive === "Just now")
-                    .length
-                }
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground font-semibold">
-                Online members
-              </p>
-            </CardContent>
-          </Card>
+        <div className="grid gap-4 md:grid-cols-4">
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ORGANIZATION]:</div>
+            <div className="text-2xl font-bold">{teamData.organization.name}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-2">
+              PLAN: <span className="text-primary">{teamData.organization.plan.toUpperCase()}</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[TEAM_SIZE]:</div>
+            <div className="text-2xl font-bold">
+              {teamData.members.length} / {teamData.organization.memberLimit}
+            </div>
+            <div className="font-mono text-xs text-muted-foreground mt-2">
+              STATUS: <span className="text-success">{teamData.organization.memberLimit - teamData.members.length}_SEATS_AVAILABLE</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[PENDING_INVITES]:</div>
+            <div className="text-2xl font-bold">{teamData.pendingInvitations.length}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-2">
+              STATUS: <span className="text-warning">AWAITING_RESPONSE</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ACTIVE_NOW]:</div>
+            <div className="text-2xl font-bold">
+              {teamData.members.filter((m) => m.lastActive === "Just now").length}
+            </div>
+            <div className="font-mono text-xs text-muted-foreground mt-2">
+              STATUS: <span className="text-success">ONLINE</span>
+            </div>
+          </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Main Content - Members */}
           <div className="lg:col-span-2 space-y-6">
             {/* Invite Section */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Invite Team Member</CardTitle>
-                <CardDescription>
-                  Send an invitation to join {teamData.organization.name}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">invite_member.sh</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-3">[INVITE_TEAM_MEMBER]:</div>
                 <div className="flex gap-3">
                   <Input
                     type="email"
                     placeholder="email@example.com"
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
-                    className="flex-1 font-semibold"
+                    className="rounded-none flex-1 font-mono text-xs"
                   />
                   <Select value={inviteRole} onValueChange={setInviteRole}>
-                    <SelectTrigger className="w-32 font-semibold">
+                    <SelectTrigger className="rounded-none w-32 font-mono text-xs">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="admin" className="font-semibold">Admin</SelectItem>
-                      <SelectItem value="member" className="font-semibold">Member</SelectItem>
-                      <SelectItem value="guest" className="font-semibold">Guest</SelectItem>
+                    <SelectContent className="rounded-none">
+                      <SelectItem value="admin" className="font-mono text-xs">ADMIN</SelectItem>
+                      <SelectItem value="member" className="font-mono text-xs">MEMBER</SelectItem>
+                      <SelectItem value="guest" className="font-mono text-xs">GUEST</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button onClick={handleInvite} className="font-semibold">
+                  <Button onClick={handleInvite} className="rounded-none font-mono text-xs">
                     <Send className="mr-2 h-4 w-4" />
-                    Invite
+                    &gt; SEND_INVITE
                   </Button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Members Table */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">
-                  Team Members ({teamData.members.length})
-                </CardTitle>
-                <CardDescription>
-                  All active members in your organization
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="rounded-md border border-border">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="font-semibold">Member</TableHead>
-                        <TableHead className="font-semibold">Role</TableHead>
-                        <TableHead className="font-semibold">Last Active</TableHead>
-                        <TableHead className="font-semibold">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {teamData.members.map((member) => {
-                        const RoleIcon = roleIcons[member.role];
-                        return (
-                          <TableRow key={member.id}>
-                            <TableCell>
-                              <div className="flex items-center gap-3">
-                                <Avatar className="h-10 w-10 border border-border">
-                                  <AvatarFallback className="bg-primary/10 font-semibold">
-                                    {member.name
-                                      .split(" ")
-                                      .map((n) => n[0])
-                                      .join("")}
-                                  </AvatarFallback>
-                                </Avatar>
-                                <div>
-                                  <p className="font-semibold">{member.name}</p>
-                                  <p className="text-sm text-muted-foreground">
-                                    {member.email}
-                                  </p>
-                                </div>
-                              </div>
-                            </TableCell>
-                            <TableCell>
-                              <Badge
-                                variant={roleColors[member.role]}
-                                className="gap-1 font-semibold capitalize w-24 justify-center"
-                              >
-                                <RoleIcon className="h-3 w-3" />
-                                {member.role}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground">
-                              {member.lastActive}
-                            </TableCell>
-                            <TableCell>
-                              <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button variant="ghost" size="sm">
-                                    <MoreHorizontal className="h-4 w-4" />
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent
-                                  align="end"
-                                  className="border border-border"
-                                >
-                                  <DropdownMenuLabel className="font-semibold">
-                                    Actions
-                                  </DropdownMenuLabel>
-                                  <DropdownMenuSeparator />
-                                  {member.role !== "owner" && (
-                                    <>
-                                      <DropdownMenuItem
-                                        onClick={() =>
-                                          handleRoleChange(member.id, "admin")
-                                        }
-                                        className="font-semibold"
-                                      >
-                                        Make Admin
-                                      </DropdownMenuItem>
-                                      <DropdownMenuItem
-                                        onClick={() =>
-                                          handleRoleChange(member.id, "member")
-                                        }
-                                        className="font-semibold"
-                                      >
-                                        Make Member
-                                      </DropdownMenuItem>
-                                      <DropdownMenuItem
-                                        onClick={() =>
-                                          handleRoleChange(member.id, "guest")
-                                        }
-                                        className="font-semibold"
-                                      >
-                                        Make Guest
-                                      </DropdownMenuItem>
-                                      <DropdownMenuSeparator />
-                                      <AlertDialog open={removeDialogOpen} onOpenChange={setRemoveDialogOpen}>
-                                        <AlertDialogTrigger asChild>
-                                          <DropdownMenuItem
-                                            onSelect={(e) => {
-                                              e.preventDefault();
-                                              setMemberToRemove(member.id);
-                                              setRemoveDialogOpen(true);
-                                            }}
-                                            className="font-semibold text-destructive"
-                                          >
-                                            <Trash2 className="mr-2 h-4 w-4" />
-                                            Remove
-                                          </DropdownMenuItem>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                          <AlertDialogTitle>Remove Member</AlertDialogTitle>
-                                          <AlertDialogDescription>
-                                            Are you sure you want to remove this member? They will lose access to the team.
-                                          </AlertDialogDescription>
-                                          <div className="flex gap-4 justify-end">
-                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                            <AlertDialogAction
-                                              onClick={handleRemoveMember}
-                                              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                                            >
-                                              Remove Member
-                                            </AlertDialogAction>
-                                          </div>
-                                        </AlertDialogContent>
-                                      </AlertDialog>
-                                    </>
-                                  )}
-                                  {member.role === "owner" && (
-                                    <DropdownMenuItem disabled className="font-semibold">
-                                      Owner cannot be changed
-                                    </DropdownMenuItem>
-                                  )}
-                                </DropdownMenuContent>
-                              </DropdownMenu>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    </TableBody>
-                  </Table>
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
                 </div>
-              </CardContent>
-            </Card>
+                <span className="font-mono text-xs text-muted-foreground">team_members.db</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-3">
+                  [TEAM_MEMBERS]: COUNT={teamData.members.length}
+                </div>
+                <div className="border border-border">
+                  {/* Table Header */}
+                  <div className="grid grid-cols-4 border-b border-border bg-muted/30 px-4 py-2 font-mono text-xs">
+                    <span className="text-muted-foreground">[MEMBER]</span>
+                    <span className="text-muted-foreground">[ROLE]</span>
+                    <span className="text-muted-foreground">[LAST_ACTIVE]</span>
+                    <span className="text-muted-foreground">[ACTIONS]</span>
+                  </div>
+                  {/* Table Body */}
+                  <div className="divide-y divide-border">
+                    {teamData.members.map((member) => {
+                      const RoleIcon = roleIcons[member.role];
+                      return (
+                        <div key={member.id} className="grid grid-cols-4 items-center px-4 py-3">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted font-mono text-xs">
+                              {member.name.split(" ").map((n) => n[0]).join("")}
+                            </div>
+                            <div>
+                              <p className="font-mono text-xs font-semibold">{member.name}</p>
+                              <p className="font-mono text-xs text-muted-foreground">{member.email}</p>
+                            </div>
+                          </div>
+                          <div>
+                            <span className="inline-flex items-center gap-1 border border-border px-2 py-0.5 font-mono text-xs">
+                              <RoleIcon className="h-3 w-3" />
+                              {member.role.toUpperCase()}
+                            </span>
+                          </div>
+                          <div className="font-mono text-xs text-muted-foreground">
+                            {member.lastActive}
+                          </div>
+                          <div>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end" className="rounded-none border border-border font-mono text-xs">
+                                <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                {member.role !== "owner" && (
+                                  <>
+                                    <DropdownMenuItem onClick={() => handleRoleChange(member.id, "admin")}>
+                                      &gt; SET_ROLE: ADMIN
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleRoleChange(member.id, "member")}>
+                                      &gt; SET_ROLE: MEMBER
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleRoleChange(member.id, "guest")}>
+                                      &gt; SET_ROLE: GUEST
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <AlertDialog open={removeDialogOpen} onOpenChange={setRemoveDialogOpen}>
+                                      <AlertDialogTrigger asChild>
+                                        <DropdownMenuItem
+                                          onSelect={(e) => {
+                                            e.preventDefault();
+                                            setMemberToRemove(member.id);
+                                            setRemoveDialogOpen(true);
+                                          }}
+                                          className="text-destructive"
+                                        >
+                                          <Trash2 className="mr-2 h-4 w-4" />
+                                          &gt; REMOVE_MEMBER
+                                        </DropdownMenuItem>
+                                      </AlertDialogTrigger>
+                                      <AlertDialogContent>
+                                        <AlertDialogTitle className="font-mono">[CONFIRM_REMOVAL]</AlertDialogTitle>
+                                        <AlertDialogDescription className="font-mono text-xs">
+                                          WARNING: This action will remove the member from the team. They will lose all access.
+                                        </AlertDialogDescription>
+                                        <div className="flex gap-4 justify-end">
+                                          <AlertDialogCancel className="font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
+                                          <AlertDialogAction
+                                            onClick={handleRemoveMember}
+                                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
+                                          >
+                                            &gt; CONFIRM_REMOVE
+                                          </AlertDialogAction>
+                                        </div>
+                                      </AlertDialogContent>
+                                    </AlertDialog>
+                                  </>
+                                )}
+                                {member.role === "owner" && (
+                                  <DropdownMenuItem disabled>
+                                    [LOCKED]: OWNER_ROLE
+                                  </DropdownMenuItem>
+                                )}
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Pending Invitations */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">
-                  Pending Invitations ({teamData.pendingInvitations.length})
-                </CardTitle>
-                <CardDescription>
-                  Invitations waiting for acceptance
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {teamData.pendingInvitations.map((invitation) => (
-                  <div
-                    key={invitation.id}
-                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Mail className="h-5 w-5 text-muted-foreground" />
-                      <div>
-                        <p className="font-semibold">{invitation.email}</p>
-                        <p className="text-sm text-muted-foreground">
-                          Invited by {invitation.sentBy} •{" "}
-                          {new Date(invitation.sentAt).toLocaleDateString()}
-                        </p>
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">pending_invites.log</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-3">
+                  [PENDING_INVITATIONS]: COUNT={teamData.pendingInvitations.length}
+                </div>
+                <div className="space-y-2">
+                  {teamData.pendingInvitations.map((invitation) => (
+                    <div
+                      key={invitation.id}
+                      className="flex items-center justify-between border border-border bg-muted/30 px-4 py-3"
+                    >
+                      <div className="font-mono text-xs">
+                        <span className="text-muted-foreground">EMAIL: </span>
+                        <span className="font-semibold">{invitation.email}</span>
+                        <span className="text-muted-foreground ml-4">SENT_BY: </span>
+                        <span>{invitation.sentBy}</span>
+                        <span className="text-muted-foreground ml-4">DATE: </span>
+                        <span>{new Date(invitation.sentAt).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="border border-border px-2 py-0.5 font-mono text-xs">
+                          ROLE: {invitation.role.toUpperCase()}
+                        </span>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleRevokeInvitation(invitation.id)}
+                          className="font-mono text-xs"
+                        >
+                          &gt; REVOKE
+                        </Button>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="font-semibold capitalize w-24 justify-center">
-                        {invitation.role}
-                      </Badge>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleRevokeInvitation(invitation.id)}
-                        className="font-semibold w-24"
-                      >
-                        Revoke
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Sidebar - Activity Feed */}
           <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <Activity className="h-5 w-5 text-primary" />
-                  <div>
-                    <CardTitle className="font-semibold">Activity Feed</CardTitle>
-                    <CardDescription>Recent team changes</CardDescription>
-                  </div>
+            {/* Activity Feed */}
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {teamData.activityFeed.map((activity) => (
-                  <div
-                    key={activity.id}
-                    className="flex gap-3 border-l-2 border-primary pl-3"
-                  >
-                    <Clock className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold">
-                        <span className="text-foreground">{activity.user}</span>{" "}
-                        {activity.type === "member_added" && "added"}
-                        {activity.type === "role_changed" && "changed role of"}
-                        {activity.type === "invitation_sent" && "invited"}
-                        {activity.type === "member_removed" && "removed"}{" "}
-                        <span className="text-foreground">{activity.target}</span>
-                      </p>
-                      {activity.details && (
-                        <p className="text-xs text-muted-foreground">
-                          {activity.details}
+                <span className="font-mono text-xs text-muted-foreground">activity.log</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-3">[ACTIVITY_FEED]:</div>
+                <div className="space-y-3">
+                  {teamData.activityFeed.map((activity) => (
+                    <div
+                      key={activity.id}
+                      className="flex gap-3 border-l-2 border-primary pl-3"
+                    >
+                      <Clock className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
+                      <div className="font-mono text-xs">
+                        <p>
+                          <span className="text-foreground">{activity.user}</span>{" "}
+                          <span className="text-muted-foreground">
+                            {activity.type === "member_added" && "ADDED"}
+                            {activity.type === "role_changed" && "CHANGED_ROLE"}
+                            {activity.type === "invitation_sent" && "INVITED"}
+                            {activity.type === "member_removed" && "REMOVED"}
+                          </span>{" "}
+                          <span className="text-foreground">{activity.target}</span>
                         </p>
-                      )}
-                      <p className="text-xs text-muted-foreground">
-                        {activity.timestamp}
-                      </p>
+                        {activity.details && (
+                          <p className="text-muted-foreground">{activity.details}</p>
+                        )}
+                        <p className="text-muted-foreground">{activity.timestamp}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* Role Permissions */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Role Permissions</CardTitle>
-                <CardDescription>
-                  What each role can do
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  {
-                    role: "owner",
-                    permissions: [
-                      "Full access",
-                      "Billing & plan",
-                      "Delete organization",
-                    ],
-                  },
-                  {
-                    role: "admin",
-                    permissions: [
-                      "Manage members",
-                      "Change settings",
-                      "View analytics",
-                    ],
-                  },
-                  {
-                    role: "member",
-                    permissions: [
-                      "Create projects",
-                      "Edit content",
-                      "View reports",
-                    ],
-                  },
-                  {
-                    role: "guest",
-                    permissions: ["View only", "Comment", "Limited access"],
-                  },
-                ].map((item) => {
-                  const RoleIcon = roleIcons[item.role];
-                  return (
-                    <div key={item.role} className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <RoleIcon className="h-4 w-4 text-primary" />
-                        <p className="font-semibold capitalize">{item.role}</p>
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">permissions.config</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-3">[ROLE_PERMISSIONS]:</div>
+                <div className="space-y-4 font-mono text-xs">
+                  {[
+                    {
+                      role: "owner",
+                      permissions: ["Full access", "Billing & plan", "Delete organization"],
+                    },
+                    {
+                      role: "admin",
+                      permissions: ["Manage members", "Change settings", "View analytics"],
+                    },
+                    {
+                      role: "member",
+                      permissions: ["Create projects", "Edit content", "View reports"],
+                    },
+                    {
+                      role: "guest",
+                      permissions: ["View only", "Comment", "Limited access"],
+                    },
+                  ].map((item) => {
+                    const RoleIcon = roleIcons[item.role];
+                    return (
+                      <div key={item.role}>
+                        <div className="flex items-center gap-2 mb-1">
+                          <RoleIcon className="h-3 w-3 text-primary" />
+                          <span className="font-semibold">{item.role.toUpperCase()}</span>
+                        </div>
+                        <div className="ml-5 space-y-0.5 text-muted-foreground">
+                          {item.permissions.map((perm, idx) => (
+                            <div key={idx}>&gt; {perm}</div>
+                          ))}
+                        </div>
                       </div>
-                      <ul className="ml-6 space-y-1 text-sm text-muted-foreground">
-                        {item.permissions.map((perm, idx) => (
-                          <li key={idx} className="font-semibold">
-                            • {perm}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })}
-              </CardContent>
-            </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

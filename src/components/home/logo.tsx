@@ -15,7 +15,7 @@ export function Logo({ size = 20, className = "" }: LogoProps = {}) {
   const height = (size / 28) * 40
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-brutal border-3 border-foreground bg-primary px-2 py-1 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1">
+    <div className="inline-flex items-center gap-2 border-3 border-foreground bg-primary px-2 py-1 shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}

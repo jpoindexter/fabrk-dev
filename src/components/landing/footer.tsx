@@ -30,7 +30,7 @@ const techStack = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border">
       {/* Tech Stack Bar */}
       <div className="border-b border-border px-4 sm:px-6 lg:px-8 py-6">
         <div className="mx-auto max-w-7xl">
@@ -39,7 +39,7 @@ export function Footer() {
             {techStack.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-1.5 border border-border px-2 py-1"
+                className="flex items-center gap-1.5 border border-border bg-card px-2 py-1"
               >
                 <SimpleIcon path={tech.path} className="size-3.5" />
                 <span className="font-mono text-xs">{tech.name}</span>
@@ -56,7 +56,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
-              <div className="mb-4 inline-block border border-border px-3 py-1">
+              <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
                 <span className="font-mono text-xs text-muted-foreground">[SYSTEM_INFO]</span>
               </div>
               <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
@@ -72,7 +72,7 @@ export function Footer() {
             </div>
 
             {/* Right: Nav Links in Terminal Box */}
-            <div className="border border-border">
+            <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-1.5">
                   <div className="size-2 rounded-full bg-destructive/50" />

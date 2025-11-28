@@ -70,7 +70,7 @@ export function HeroVideo({
             <Badge
               variant="outline"
               size="lg"
-              className="border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
+              className="rounded-none border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
             >
               Early Access - Join First 100 Launch Customers
             </Badge>
@@ -90,14 +90,14 @@ export function HeroVideo({
           <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="h-14 bg-card px-8 text-lg font-semibold text-foreground transition-all hover:bg-muted hover:scale-105"
+              className="rounded-none h-14 bg-card px-8 text-lg font-semibold text-foreground transition-all hover:bg-muted hover:scale-105"
               asChild
             >
               <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
             </Button>
             <Button
               size="lg"
-              className="h-14 border-2 border-foreground bg-transparent px-8 text-lg font-semibold text-foreground transition-all hover:bg-card hover:text-foreground"
+              className="rounded-none h-14 border-2 border-foreground bg-transparent px-8 text-lg font-semibold text-foreground transition-all hover:bg-card hover:text-foreground"
               asChild
             >
               <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -111,7 +111,7 @@ export function HeroVideo({
                 key={badge}
                 variant="outline"
                 size="md"
-                className="border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
+                className="rounded-none border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
               >
                 {badge}
               </Badge>

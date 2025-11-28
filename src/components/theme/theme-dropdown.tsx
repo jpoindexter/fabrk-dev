@@ -80,7 +80,7 @@ export function ThemeDropdown() {
 
     if (!mounted) {
         return (
-            <Button variant="ghost" size="sm" disabled>
+            <Button variant="ghost" size="sm" className="rounded-none" disabled>
                 <Palette className="h-4 w-4" />
             </Button>
         );
@@ -91,12 +91,12 @@ export function ThemeDropdown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-2">
+                <Button variant="ghost" size="sm" className="rounded-none gap-2">
                     <Palette className="h-4 w-4" />
                     <span className="hidden sm:inline">{currentThemeName}</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuContent align="end" className="rounded-none w-48">
                 {themes.map((theme) => (
                     <DropdownMenuItem
                         key={theme.id}

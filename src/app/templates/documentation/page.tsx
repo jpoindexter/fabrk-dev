@@ -242,7 +242,7 @@ export default function DocumentationLayoutTemplate() {
                           <button
                             onClick={() => hasContent && setActiveDoc(page.id)}
                             disabled={!hasContent}
-                            className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm transition-colors ${
+                            className={`flex w-full items-center justify-between px-3 py-2 text-left text-sm transition-colors ${
                               activeDoc === page.id
                                 ? "bg-primary text-primary-foreground font-bold"
                                 : hasContent
@@ -295,7 +295,7 @@ export default function DocumentationLayoutTemplate() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-none font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Edit this page on GitHub"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -320,7 +320,7 @@ export default function DocumentationLayoutTemplate() {
                 if (section.type === "code") {
                   return (
                     <div key={idx} className="not-prose my-6" role="region" aria-label={`Code example in ${section.language || "code"}`}>
-                      <div className="rounded-lg border-2 border-border overflow-hidden bg-card">
+                      <div className="border-2 border-border overflow-hidden bg-card">
                         <div className="flex items-center justify-between bg-muted px-4 py-2.5 border-b-2 border-border">
                           <Badge variant="secondary" className="font-mono text-xs font-bold" aria-label="Programming language">
                             {section.language || "code"}
@@ -329,7 +329,7 @@ export default function DocumentationLayoutTemplate() {
                             variant="ghost"
                             size="sm"
                             onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                            className="font-semibold h-8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            className="rounded-none font-semibold h-8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                             aria-label={copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"}
                           >
                             {copiedCode === `code-${idx}` ? (
@@ -369,14 +369,14 @@ export default function DocumentationLayoutTemplate() {
             <nav aria-label="Page navigation" className="flex items-center justify-between">
               <Button
                 variant="secondary"
-                className="font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="rounded-none font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label="Go to previous page: Installation"
               >
                 ← Previous: Installation
               </Button>
               <Button
                 variant="default"
-                className="font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="rounded-none font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label="Go to next page: Environment Setup"
               >
                 Next: Environment Setup →
@@ -394,7 +394,7 @@ export default function DocumentationLayoutTemplate() {
               <CardContent className="space-y-3">
                 <Button
                   variant="ghost"
-                  className="w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-none w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Ask question on GitHub Discussions"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -402,7 +402,7 @@ export default function DocumentationLayoutTemplate() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-none w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Report an issue on GitHub"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -410,7 +410,7 @@ export default function DocumentationLayoutTemplate() {
                 </Button>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-none w-full justify-start font-semibold focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Contact support team"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />

@@ -56,7 +56,7 @@ export function QualitySection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Badge variant="default" size="lg" className="mb-4 uppercase tracking-wide">
+            <Badge variant="default" size="lg" className="rounded-none mb-4 uppercase tracking-wide">
               Quality Assurance
             </Badge>
           </motion.span>
@@ -92,9 +92,9 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-8 transition-all hover:border-primary/50"
+                className="group border border-border bg-card p-8 transition-all hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
+                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-3">
                   {item.iconComponent === "testTube" ? (
                     <TestTube2 className="h-6 w-6 text-primary" />
                   ) : (
@@ -123,7 +123,7 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-border bg-card p-8"
+          className="mt-12 border border-border bg-card p-8"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0">

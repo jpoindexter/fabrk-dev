@@ -93,7 +93,7 @@ export function StickyCTABar({
               </Small>
               {showPrice && (
                 <div className="flex items-center gap-2">
-                  <Badge variant="default" size="sm">
+                  <Badge variant="default" size="sm" className="rounded-none">
                     {config.pricing.fabrk.display.current}
                   </Badge>
                   <Small className="text-muted-foreground line-through">
@@ -105,7 +105,7 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm">
+              <Button asChild size="sm" className="rounded-none">
                 <Link href={ctaHref}>
                   {ctaText}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -114,7 +114,7 @@ export function StickyCTABar({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="rounded-none h-8 w-8"
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >

@@ -97,7 +97,7 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="rounded-none">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageCircle className="h-5 w-5 text-primary" />
@@ -116,6 +116,7 @@ export default function ContactPage() {
                     </Label>
                     <Input
                       id="name"
+                      className="rounded-none"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -133,6 +134,7 @@ export default function ContactPage() {
                     <Input
                       id="email"
                       type="email"
+                      className="rounded-none"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -154,10 +156,10 @@ export default function ContactPage() {
                       }
                       required
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-none">
                         <SelectValue placeholder="Select a subject" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="rounded-none">
                         <SelectItem value="sales">Sales Inquiry</SelectItem>
                         <SelectItem value="support">Technical Support</SelectItem>
                         <SelectItem value="billing">Billing Question</SelectItem>
@@ -176,6 +178,7 @@ export default function ContactPage() {
                     </Label>
                     <Textarea
                       id="message"
+                      className="rounded-none"
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
@@ -191,7 +194,7 @@ export default function ContactPage() {
 
                   {/* Success Message */}
                   {status === "success" && (
-                    <Alert className="bg-success/10 border-success/20">
+                    <Alert className="rounded-none bg-success/10 border-success/20">
                       <CheckCircle2 className="h-4 w-4 text-success" />
                       <AlertDescription className="text-success">
                         Thank you! We've received your message and will respond within 24
@@ -202,7 +205,7 @@ export default function ContactPage() {
 
                   {/* Error Message */}
                   {status === "error" && (
-                    <Alert variant="destructive">
+                    <Alert variant="destructive" className="rounded-none">
                       <AlertDescription>{errorMessage}</AlertDescription>
                     </Alert>
                   )}
@@ -211,7 +214,7 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full"
+                    className="rounded-none w-full"
                     disabled={status === "loading"}
                   >
                     {status === "loading" ? (
@@ -238,10 +241,10 @@ export default function ContactPage() {
           {/* Contact Information Sidebar */}
           <div className="space-y-6">
             {/* Email */}
-            <Card>
+            <Card className="rounded-none">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+                  <div className="p-3 bg-primary/10 border-2 border-border">
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -261,10 +264,10 @@ export default function ContactPage() {
             </Card>
 
             {/* Response Time */}
-            <Card>
+            <Card className="rounded-none">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+                  <div className="p-3 bg-primary/10 border-2 border-border">
                     <MessageCircle className="h-6 w-6 text-primary" />
                   </div>
                   <div>
@@ -311,7 +314,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="refunds"
-                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Do you offer refunds?
@@ -334,7 +337,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="support"
-                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Is technical support included?
@@ -353,7 +356,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="client-projects"
-                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Can I use Fabrk for client projects?
@@ -372,7 +375,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="updates"
-                  className="rounded-lg border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
                     Do I get lifetime updates?

@@ -8,15 +8,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 import {
@@ -38,9 +29,6 @@ import {
 } from "recharts";
 import {
   TrendingUp,
-  BarChart3,
-  PieChart as PieChartIcon,
-  Activity,
   Download,
 } from "lucide-react";
 
@@ -94,11 +82,11 @@ const conversionFunnelData = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="rounded-lg border border-border bg-card p-3">
-        <p className="mb-1 font-semibold">{label}</p>
+      <div className="border border-border bg-card p-3 font-mono text-xs">
+        <p className="mb-1 font-bold">{label}</p>
         {payload.map((entry: any, index: number) => (
-          <p key={index} className="text-sm" style={{ color: entry.color }}>
-            <span className="font-semibold">{entry.name}:</span> ${entry.value.toLocaleString()}
+          <p key={index} style={{ color: entry.color }}>
+            <span className="font-bold">{entry.name}:</span> ${entry.value.toLocaleString()}
           </p>
         ))}
       </div>
@@ -108,12 +96,12 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function ChartLibraryTemplate() {
-  const [activeTab, setActiveTab] = useState<string>("line");
+  const [activeTab, setActiveTab] = useState<"line" | "area" | "bar" | "pie">("line");
 
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
+      <DemoNav backButtonText="Back" backButtonHref="/templates" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
@@ -130,277 +118,162 @@ export default function ChartLibraryTemplate() {
               Recharts visualization components for data-driven dashboards
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="rounded-none font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
             &gt; VIEW_DOCS
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Total Revenue</CardDescription>
-              <CardTitle className="text-3xl font-semibold">$91.9K</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-success">
-                <TrendingUp className="h-4 w-4" />
-                <span>+23.5%</span>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Active Users</CardDescription>
-              <CardTitle className="text-3xl font-semibold">12.5K</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-success">
-                <TrendingUp className="h-4 w-4" />
-                <span>+941%</span>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Conversion Rate</CardDescription>
-              <CardTitle className="text-3xl font-semibold">4.5%</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-success">
-                <TrendingUp className="h-4 w-4" />
-                <span>+0.8%</span>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Avg. Order Value</CardDescription>
-              <CardTitle className="text-3xl font-semibold">$89</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-1 text-sm font-semibold text-destructive">
-                <TrendingUp className="h-4 w-4 rotate-180" />
-                <span>-2.3%</span>
-              </div>
-            </CardContent>
-          </Card>
+        {/* Stats - Terminal Style */}
+        <div className="grid gap-4 md:grid-cols-4">
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[TOTAL_REVENUE]:</div>
+            <div className="text-3xl font-bold">$91.9K</div>
+            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+              <TrendingUp className="h-3 w-3" />
+              +23.5%
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ACTIVE_USERS]:</div>
+            <div className="text-3xl font-bold">12.5K</div>
+            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+              <TrendingUp className="h-3 w-3" />
+              +941%
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[CONVERSION_RATE]:</div>
+            <div className="text-3xl font-bold">4.5%</div>
+            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+              <TrendingUp className="h-3 w-3" />
+              +0.8%
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[AVG_ORDER_VALUE]:</div>
+            <div className="text-3xl font-bold">$89</div>
+            <div className="flex items-center gap-1 font-mono text-xs text-destructive mt-1">
+              <TrendingUp className="h-3 w-3 rotate-180" />
+              -2.3%
+            </div>
+          </div>
         </div>
 
-        {/* Chart Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="line" className="font-semibold">
-              Line Chart
-            </TabsTrigger>
-            <TabsTrigger value="area" className="font-semibold">
-              Area Chart
-            </TabsTrigger>
-            <TabsTrigger value="bar" className="font-semibold">
-              Bar Chart
-            </TabsTrigger>
-            <TabsTrigger value="pie" className="font-semibold">
-              Pie Chart
-            </TabsTrigger>
-          </TabsList>
+        {/* Chart Tabs - Terminal Style */}
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">charts.tsx</span>
+          </div>
 
-          {/* Line Chart */}
-          <TabsContent value="line" className="mt-6">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
+          {/* Tab Navigation */}
+          <div className="flex border-b border-border font-mono text-xs">
+            {(["line", "area", "bar", "pie"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 border-r border-border transition-colors ${
+                  activeTab === tab
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-muted"
+                }`}
+              >
+                [{tab.toUpperCase()}_CHART]
+              </button>
+            ))}
+          </div>
+
+          <div className="p-4">
+            {/* Line Chart */}
+            {activeTab === "line" && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <CardTitle className="font-semibold">
-                      Revenue Overview
-                    </CardTitle>
-                    <CardDescription>
-                      Monthly revenue, expenses, and profit (2024)
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[REVENUE_OVERVIEW]:</div>
+                    <div className="font-mono text-xs text-muted-foreground mt-1">Monthly revenue, expenses, and profit (2024)</div>
                   </div>
-                  <Badge className="font-semibold">Multi-Line</Badge>
+                  <span className="border border-border px-2 py-0.5 font-mono text-xs">MULTI_LINE</span>
                 </div>
-              </CardHeader>
-              <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
                   <LineChart data={revenueData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="month"
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                    />
-                    <YAxis
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                      tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`}
-                    />
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
+                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend
-                      wrapperStyle={{ fontWeight: "bold", fontSize: "14px" }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="revenue"
-                      stroke="hsl(var(--primary))"
-                      strokeWidth={3}
-                      dot={{ fill: "hsl(var(--primary))", r: 5 }}
-                      activeDot={{ r: 7 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="expenses"
-                      stroke="hsl(var(--destructive))"
-                      strokeWidth={3}
-                      dot={{ fill: "hsl(var(--destructive))", r: 5 }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="profit"
-                      stroke="hsl(142, 71%, 45%)"
-                      strokeWidth={3}
-                      dot={{ fill: "hsl(142, 71%, 45%)", r: 5 }}
-                    />
+                    <Legend wrapperStyle={{ fontSize: "12px" }} />
+                    <Line type="monotone" dataKey="revenue" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="expenses" stroke="hsl(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="profit" stroke="hsl(142, 71%, 45%)" strokeWidth={2} dot={{ r: 4 }} />
                   </LineChart>
                 </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+            )}
 
-          {/* Area Chart */}
-          <TabsContent value="area" className="mt-6">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
+            {/* Area Chart */}
+            {activeTab === "area" && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <CardTitle className="font-semibold">
-                      User Growth
-                    </CardTitle>
-                    <CardDescription>
-                      Total active users over time
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[USER_GROWTH]:</div>
+                    <div className="font-mono text-xs text-muted-foreground mt-1">Total active users over time</div>
                   </div>
-                  <Badge className="font-semibold">Gradient Fill</Badge>
+                  <span className="border border-border px-2 py-0.5 font-mono text-xs">GRADIENT_FILL</span>
                 </div>
-              </CardHeader>
-              <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
                   <AreaChart data={userGrowthData}>
                     <defs>
                       <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                          offset="5%"
-                          stopColor="hsl(var(--primary))"
-                          stopOpacity={0.8}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor="hsl(var(--primary))"
-                          stopOpacity={0}
-                        />
+                        <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="month"
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                    />
-                    <YAxis
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                      tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
-                    />
-                    <Tooltip
-                      contentStyle={{
-                        background: "hsl(var(--card))",
-                        border: "2px solid hsl(var(--border))",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                      }}
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="users"
-                      stroke="hsl(var(--primary))"
-                      strokeWidth={3}
-                      fillOpacity={1}
-                      fill="url(#colorUsers)"
-                    />
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
+                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                    <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
+                    <Area type="monotone" dataKey="users" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorUsers)" />
                   </AreaChart>
                 </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+            )}
 
-          {/* Bar Chart */}
-          <TabsContent value="bar" className="mt-6">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
+            {/* Bar Chart */}
+            {activeTab === "bar" && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <CardTitle className="font-semibold">
-                      Conversion Funnel
-                    </CardTitle>
-                    <CardDescription>
-                      User journey from visitor to retained customer
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[CONVERSION_FUNNEL]:</div>
+                    <div className="font-mono text-xs text-muted-foreground mt-1">User journey from visitor to retained customer</div>
                   </div>
-                  <Badge className="font-semibold">Horizontal Bars</Badge>
+                  <span className="border border-border px-2 py-0.5 font-mono text-xs">HORIZONTAL_BARS</span>
                 </div>
-              </CardHeader>
-              <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
                   <BarChart data={conversionFunnelData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      type="number"
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                      tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
-                    />
-                    <YAxis
-                      type="category"
-                      dataKey="stage"
-                      tick={{ fontWeight: "bold" }}
-                      tickLine={{ stroke: "hsl(var(--border))" }}
-                    />
-                    <Tooltip
-                      contentStyle={{
-                        background: "hsl(var(--card))",
-                        border: "2px solid hsl(var(--border))",
-                        borderRadius: "8px",
-                        fontWeight: "bold",
-                      }}
-                    />
-                    <Bar
-                      dataKey="count"
-                      fill="hsl(var(--primary))"
-                      radius={[0, 8, 8, 0]}
-                    />
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                    <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                    <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
+                    <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
+                    <Bar dataKey="count" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+            )}
 
-          {/* Pie Chart */}
-          <TabsContent value="pie" className="mt-6">
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
+            {/* Pie Chart */}
+            {activeTab === "pie" && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <CardTitle className="font-semibold">
-                      Traffic Sources
-                    </CardTitle>
-                    <CardDescription>
-                      Distribution of website visitors by source
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[TRAFFIC_SOURCES]:</div>
+                    <div className="font-mono text-xs text-muted-foreground mt-1">Distribution of website visitors by source</div>
                   </div>
-                  <Badge className="font-semibold">Donut Chart</Badge>
+                  <span className="border border-border px-2 py-0.5 font-mono text-xs">DONUT_CHART</span>
                 </div>
-              </CardHeader>
-              <CardContent>
                 <div className="flex items-center justify-between gap-8">
                   <ResponsiveContainer width="60%" height={400}>
                     <PieChart>
@@ -417,46 +290,31 @@ export default function ChartLibraryTemplate() {
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip
-                        contentStyle={{
-                          background: "hsl(var(--card))",
-                          border: "2px solid hsl(var(--border))",
-                          borderRadius: "8px",
-                          fontWeight: "bold",
-                        }}
-                      />
+                      <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
                     </PieChart>
                   </ResponsiveContainer>
 
                   <div className="flex-1 space-y-3">
                     {trafficSourceData.map((source, idx) => (
-                      <div key={idx} className="flex items-center justify-between">
+                      <div key={idx} className="flex items-center justify-between font-mono text-xs">
                         <div className="flex items-center gap-3">
-                          <div
-                            className="h-4 w-4 rounded border border-border"
-                            style={{ backgroundColor: source.color }}
-                          />
-                          <span className="font-semibold">{source.name}</span>
+                          <div className="h-3 w-3 border border-border" style={{ backgroundColor: source.color }} />
+                          <span>{source.name}</span>
                         </div>
                         <div className="text-right">
-                          <p className="font-semibold">{source.value.toLocaleString()}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {(
-                              (source.value /
-                                trafficSourceData.reduce((a, b) => a + b.value, 0)) *
-                              100
-                            ).toFixed(1)}
-                            %
-                          </p>
+                          <div>{source.value.toLocaleString()}</div>
+                          <div className="text-muted-foreground">
+                            {((source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">
@@ -468,21 +326,20 @@ export default function ChartLibraryTemplate() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-          <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar, Pie/Donut)</div>
               <div><span className="text-success">&gt;</span> Recharts library (npm install recharts)</div>
-              <div><span className="text-success">&gt;</span> Custom tooltips with neo-brutalism styling</div>
+              <div><span className="text-success">&gt;</span> Custom tooltips with terminal styling</div>
               <div><span className="text-success">&gt;</span> Gradient fills for area charts</div>
               <div><span className="text-success">&gt;</span> Responsive containers (adapts to screen size)</div>
               <div><span className="text-success">&gt;</span> Custom color schemes matching design system</div>
               <div><span className="text-success">&gt;</span> Formatted axes (K notation for large numbers)</div>
-              <div><span className="text-success">&gt;</span> Legend components with bold styling</div>
               <div><span className="text-success">&gt;</span> Tab navigation between chart types</div>
-              <div><span className="text-success">&gt;</span> Stat cards with trend indicators</div>
+              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
+            <div className="mt-3 font-mono text-xs text-muted-foreground">
               [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more.
             </div>
           </div>

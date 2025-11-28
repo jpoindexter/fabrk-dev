@@ -19,7 +19,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX, UserPlus } from "lucide-react";
+import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX, UserPlus, Shield, User, Users } from "lucide-react";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 
@@ -35,22 +35,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -184,14 +168,13 @@ const DataTableColumnHeader = ({
   title: string;
 }) => {
   return (
-    <Button
-      variant="ghost"
+    <button
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      className="font-semibold hover:bg-accent"
+      className="flex items-center gap-1 font-mono text-xs text-muted-foreground hover:text-foreground"
     >
-      {title}
-      <ArrowUpDown className="ml-2 h-4 w-4" />
-    </Button>
+      [{title.toUpperCase()}]
+      <ArrowUpDown className="h-3 w-3" />
+    </button>
   );
 };
 
@@ -204,6 +187,7 @@ const columns: ColumnDef<User>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
+        className="border-border"
       />
     ),
     cell: ({ row }) => (
@@ -211,6 +195,7 @@ const columns: ColumnDef<User>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
+        className="border-border"
       />
     ),
     enableSorting: false,
@@ -221,10 +206,10 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => (
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-primary/10 font-semibold text-primary">
-          {row.getValue<string>("name").charAt(0)}
+        <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted font-mono text-xs">
+          {row.getValue<string>("name").split(" ").map((n) => n[0]).join("")}
         </div>
-        <span className="font-semibold">{row.getValue("name")}</span>
+        <span className="rounded-none font-mono text-xs">{row.getValue("name")}</span>
       </div>
     ),
   },
@@ -232,7 +217,7 @@ const columns: ColumnDef<User>[] = [
     accessorKey: "email",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
     cell: ({ row }) => (
-      <span className="text-muted-foreground">{row.getValue("email")}</span>
+      <span className="font-mono text-xs text-muted-foreground">{row.getValue("email")}</span>
     ),
   },
   {
@@ -240,13 +225,17 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Role" />,
     cell: ({ row }) => {
       const role = row.getValue<string>("role");
+      const roleColors: Record<string, string> = {
+        ADMIN: "text-primary border-primary/50",
+        USER: "text-foreground border-border",
+        GUEST: "text-muted-foreground border-border",
+      };
+      const RoleIcon = role === "ADMIN" ? Shield : role === "USER" ? User : Users;
       return (
-        <Badge
-          variant={role === "ADMIN" ? "default" : "secondary"}
-          className="font-semibold min-w-[80px] justify-center"
-        >
+        <span className={`inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs ${roleColors[role]}`}>
+          <RoleIcon className="h-3 w-3" />
           {role}
-        </Badge>
+        </span>
       );
     },
   },
@@ -255,15 +244,16 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     cell: ({ row }) => {
       const status = row.getValue<string>("status");
-      const variants: Record<string, "default" | "secondary" | "outline"> = {
-        active: "default",
-        inactive: "secondary",
-        suspended: "outline",
+      const statusColors: Record<string, string> = {
+        active: "text-success",
+        inactive: "text-muted-foreground",
+        suspended: "text-destructive",
       };
       return (
-        <Badge variant={variants[status]} className="font-semibold capitalize w-24 justify-center">
-          {status}
-        </Badge>
+        <span className="rounded-none font-mono text-xs">
+          <span className="text-muted-foreground">STATUS:</span>{" "}
+          <span className={statusColors[status]}>{status.toUpperCase()}</span>
+        </span>
       );
     },
   },
@@ -272,13 +262,15 @@ const columns: ColumnDef<User>[] = [
     header: ({ column }) => <DataTableColumnHeader column={column} title="Plan" />,
     cell: ({ row }) => {
       const plan = row.getValue<string>("plan");
+      const planColors: Record<string, string> = {
+        Enterprise: "text-primary border-primary/50",
+        Pro: "text-warning border-warning/50",
+        Free: "text-muted-foreground border-border",
+      };
       return (
-        <Badge
-          variant={plan === "Enterprise" ? "default" : "outline"}
-          className="font-semibold min-w-[100px] justify-center"
-        >
-          {plan}
-        </Badge>
+        <span className={`border px-2 py-0.5 font-mono text-xs ${planColors[plan]}`}>
+          {plan.toUpperCase()}
+        </span>
       );
     },
   },
@@ -286,7 +278,7 @@ const columns: ColumnDef<User>[] = [
     accessorKey: "createdAt",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Created" />,
     cell: ({ row }) => (
-      <span className="text-sm text-muted-foreground">
+      <span className="font-mono text-xs text-muted-foreground">
         {new Date(row.getValue("createdAt")).toLocaleDateString()}
       </span>
     ),
@@ -295,7 +287,7 @@ const columns: ColumnDef<User>[] = [
     accessorKey: "lastLogin",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Last Login" />,
     cell: ({ row }) => (
-      <span className="text-sm text-muted-foreground">
+      <span className="font-mono text-xs text-muted-foreground">
         {row.getValue("lastLogin")}
       </span>
     ),
@@ -309,31 +301,30 @@ const columns: ColumnDef<User>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <button className="flex h-8 w-8 items-center justify-center border border-border hover:bg-muted">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
-            </Button>
+            </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="border border-border">
-            <DropdownMenuLabel className="font-semibold">Actions</DropdownMenuLabel>
+          <DropdownMenuContent align="end" className="rounded-none border border-border font-mono text-xs">
+            <DropdownMenuLabel className="text-muted-foreground">[ACTIONS]</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user.id)}
-              className="font-semibold"
             >
-              Copy user ID
+              &gt; COPY_ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="font-semibold">
-              <UserCog className="mr-2 h-4 w-4" />
-              Edit user
+            <DropdownMenuItem>
+              <UserCog className="mr-2 h-3 w-3" />
+              &gt; EDIT
             </DropdownMenuItem>
-            <DropdownMenuItem className="font-semibold">
-              <UserX className="mr-2 h-4 w-4" />
-              Suspend user
+            <DropdownMenuItem>
+              <UserX className="mr-2 h-3 w-3" />
+              &gt; SUSPEND
             </DropdownMenuItem>
-            <DropdownMenuItem className="font-semibold text-destructive">
-              <Trash2 className="mr-2 h-4 w-4" />
-              Delete user
+            <DropdownMenuItem className="text-destructive">
+              <Trash2 className="mr-2 h-3 w-3" />
+              &gt; DELETE
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -394,11 +385,14 @@ export default function UserManagementTemplate() {
   };
 
   const selectedCount = table.getFilteredSelectedRowModel().rows.length;
+  const activeCount = mockUsers.filter((u) => u.status === "active").length;
+  const adminCount = mockUsers.filter((u) => u.role === "ADMIN").length;
+  const enterpriseCount = mockUsers.filter((u) => u.plan === "Enterprise").length;
 
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
+      <DemoNav backButtonText="Back" backButtonHref="/templates" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
@@ -413,86 +407,87 @@ export default function UserManagementTemplate() {
               Manage users, roles, and permissions with TanStack Table
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="rounded-none font-mono text-xs">
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD_USER
           </Button>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Total Users</CardDescription>
-              <CardTitle className="text-3xl font-semibold">
-                {mockUsers.length}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Active Users</CardDescription>
-              <CardTitle className="text-3xl font-semibold">
-                {mockUsers.filter((u) => u.status === "active").length}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Admins</CardDescription>
-              <CardTitle className="text-3xl font-semibold">
-                {mockUsers.filter((u) => u.role === "ADMIN").length}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Enterprise</CardDescription>
-              <CardTitle className="text-3xl font-semibold">
-                {mockUsers.filter((u) => u.plan === "Enterprise").length}
-              </CardTitle>
-            </CardHeader>
-          </Card>
+        {/* Stats Cards - Terminal Style */}
+        <div className="grid gap-4 md:grid-cols-4">
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[TOTAL_USERS]:</div>
+            <div className="text-3xl font-bold">{mockUsers.length}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-1">
+              STATUS: <span className="text-success">INDEXED</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ACTIVE_USERS]:</div>
+            <div className="text-3xl font-bold">{activeCount}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-1">
+              RATE: <span className="text-success">{Math.round((activeCount / mockUsers.length) * 100)}%</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ADMINS]:</div>
+            <div className="text-3xl font-bold">{adminCount}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-1">
+              ROLE: <span className="text-primary">ELEVATED</span>
+            </div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[ENTERPRISE]:</div>
+            <div className="text-3xl font-bold">{enterpriseCount}</div>
+            <div className="font-mono text-xs text-muted-foreground mt-1">
+              PLAN: <span className="text-primary">PREMIUM</span>
+            </div>
+          </div>
         </div>
 
-        {/* Main Table Card */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle className="font-semibold">All Users</CardTitle>
-                <CardDescription>
-                  Search, filter, and manage your user base
-                </CardDescription>
-              </div>
-              <Button onClick={exportToCSV} variant="outline" className="font-semibold">
-                <Download className="mr-2 h-4 w-4" />
-                Export CSV
+        {/* Main Table Card - Terminal Style */}
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">users.db</span>
+            <div className="ml-auto">
+              <Button onClick={exportToCSV} variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+                <Download className="mr-2 h-3 w-3" />
+                &gt; EXPORT_CSV
               </Button>
             </div>
-          </CardHeader>
-          <CardContent>
+          </div>
+
+          <div className="p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-4">
+              [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={table.getFilteredRowModel().rows.length}
+            </div>
+
             {/* Toolbar */}
             <div className="mb-4 flex items-center justify-between gap-4">
               <div className="flex flex-1 items-center gap-2">
                 <div className="relative flex-1 max-w-sm">
                   <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    placeholder="Search by name or email..."
+                    placeholder="search_users..."
                     value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                       table.getColumn("name")?.setFilterValue(event.target.value)
                     }
-                    className="pl-10 font-semibold"
+                    className="rounded-none pl-10 font-mono text-xs"
                   />
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="font-semibold">
-                      Columns <ChevronDown className="ml-2 h-4 w-4" />
+                    <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+                      [COLUMNS] <ChevronDown className="ml-2 h-3 w-3" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="border border-border">
+                  <DropdownMenuContent align="end" className="rounded-none border border-border font-mono text-xs">
                     {table
                       .getAllColumns()
                       .filter((column) => column.getCanHide())
@@ -500,13 +495,12 @@ export default function UserManagementTemplate() {
                         return (
                           <DropdownMenuCheckboxItem
                             key={column.id}
-                            className="font-semibold capitalize"
                             checked={column.getIsVisible()}
                             onCheckedChange={(value) =>
                               column.toggleVisibility(!!value)
                             }
                           >
-                            {column.id}
+                            {column.id.toUpperCase()}
                           </DropdownMenuCheckboxItem>
                         );
                       })}
@@ -517,99 +511,105 @@ export default function UserManagementTemplate() {
               {/* Bulk Actions */}
               {selectedCount > 0 && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    {selectedCount} selected
+                  <span className="font-mono text-xs text-muted-foreground">
+                    SELECTED: {selectedCount}
                   </span>
-                  <Button variant="outline" size="sm" className="font-semibold">
-                    <UserCog className="mr-2 h-4 w-4" />
-                    Change Role
+                  <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+                    <UserCog className="mr-1 h-3 w-3" />
+                    &gt; ROLE
                   </Button>
-                  <Button variant="outline" size="sm" className="font-semibold">
-                    <UserX className="mr-2 h-4 w-4" />
-                    Suspend
+                  <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+                    <UserX className="mr-1 h-3 w-3" />
+                    &gt; SUSPEND
                   </Button>
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    className="font-semibold"
-                  >
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    Delete
+                  <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs h-7">
+                    <Trash2 className="mr-1 h-3 w-3" />
+                    &gt; DELETE
                   </Button>
                 </div>
               )}
             </div>
 
-            {/* Table */}
-            <div className="rounded-md border border-border">
-              <Table>
-                <TableHeader>
-                  {table.getHeaderGroups().map((headerGroup) => (
-                    <TableRow key={headerGroup.id}>
-                      {headerGroup.headers.map((header) => {
-                        return (
-                          <TableHead key={header.id}>
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext()
-                                )}
-                          </TableHead>
-                        );
-                      })}
-                    </TableRow>
-                  ))}
-                </TableHeader>
-                <TableBody>
-                  {table.getRowModel().rows?.length ? (
-                    table.getRowModel().rows.map((row) => (
-                      <TableRow
-                        key={row.id}
-                        data-state={row.getIsSelected() && "selected"}
+            {/* Terminal Table */}
+            <div className="border border-border">
+              {/* Table Header */}
+              <div className="border-b border-border bg-muted/30">
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <div key={headerGroup.id} className="flex items-center px-4 py-2">
+                    {headerGroup.headers.map((header) => (
+                      <div
+                        key={header.id}
+                        className="flex-1"
+                        style={{
+                          width: header.id === "select" ? 40 : header.id === "actions" ? 60 : undefined,
+                          flex: header.id === "select" || header.id === "actions" ? "0 0 auto" : 1,
+                        }}
                       >
-                        {row.getVisibleCells().map((cell) => (
-                          <TableCell key={cell.id}>
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
                             )}
-                          </TableCell>
-                        ))}
-                      </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell
-                        colSpan={columns.length}
-                        className="h-24 text-center"
-                      >
-                        <span className="text-muted-foreground">No users found.</span>
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              {/* Table Body */}
+              <div className="divide-y divide-border">
+                {table.getRowModel().rows?.length ? (
+                  table.getRowModel().rows.map((row) => (
+                    <div
+                      key={row.id}
+                      className={`flex items-center px-4 py-3 hover:bg-muted/30 ${
+                        row.getIsSelected() ? "bg-primary/5" : ""
+                      }`}
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <div
+                          key={cell.id}
+                          className="flex-1"
+                          style={{
+                            width: cell.column.id === "select" ? 40 : cell.column.id === "actions" ? 60 : undefined,
+                            flex: cell.column.id === "select" || cell.column.id === "actions" ? "0 0 auto" : 1,
+                          }}
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                ) : (
+                  <div className="px-4 py-8 text-center">
+                    <span className="font-mono text-xs text-muted-foreground">
+                      [NO_RESULTS]: Query returned 0 users
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Pagination */}
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-4 flex items-center justify-between font-mono text-xs">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-muted-foreground">
-                  Rows per page:
-                </span>
+                <span className="text-muted-foreground">ROWS_PER_PAGE:</span>
                 <Select
                   value={`${table.getState().pagination.pageSize}`}
                   onValueChange={(value) => {
                     table.setPageSize(Number(value));
                   }}
                 >
-                  <SelectTrigger className="h-8 w-[70px] font-semibold">
+                  <SelectTrigger className="rounded-none h-7 w-[70px] font-mono text-xs">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="min-w-[70px]">
+                  <SelectContent className="rounded-none min-w-[70px] font-mono text-xs">
                     {[10, 25, 50, 100].map((pageSize) => (
-                      <SelectItem key={pageSize} value={`${pageSize}`} className="font-semibold">
+                      <SelectItem key={pageSize} value={`${pageSize}`}>
                         {pageSize}
                       </SelectItem>
                     ))}
@@ -618,9 +618,8 @@ export default function UserManagementTemplate() {
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-muted-foreground">
-                  Page {table.getState().pagination.pageIndex + 1} of{" "}
-                  {table.getPageCount()}
+                <span className="text-muted-foreground">
+                  PAGE: {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
                 </span>
                 <div className="flex gap-1">
                   <Button
@@ -628,24 +627,24 @@ export default function UserManagementTemplate() {
                     size="sm"
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
-                    className="font-semibold"
+                    className="font-mono text-xs h-7"
                   >
-                    Previous
+                    &lt; PREV
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
-                    className="font-semibold"
+                    className="font-mono text-xs h-7"
                   >
-                    Next
+                    NEXT &gt;
                   </Button>
                 </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">
@@ -657,9 +656,9 @@ export default function UserManagementTemplate() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-          <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> TanStack Table v8 with sorting, filtering, pagination</div>
               <div><span className="text-success">&gt;</span> Bulk actions (select multiple users)</div>
               <div><span className="text-success">&gt;</span> Column visibility toggle</div>
@@ -669,9 +668,9 @@ export default function UserManagementTemplate() {
               <div><span className="text-success">&gt;</span> Status indicators (Active, Inactive, Suspended)</div>
               <div><span className="text-success">&gt;</span> Row actions menu (Edit, Suspend, Delete)</div>
               <div><span className="text-success">&gt;</span> Stats cards (Total, Active, Admins, Enterprise)</div>
-              <div><span className="text-success">&gt;</span> Responsive design with neo-brutalism styling</div>
+              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
+            <div className="mt-3 font-mono text-xs text-muted-foreground">
               [NOTE]: Replace mockUsers with your API data. Add API routes for edit/delete/suspend actions.
             </div>
           </div>

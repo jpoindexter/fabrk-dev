@@ -169,7 +169,7 @@ function FeatureCard({ icon: Icon, module, status, title, description, index }: 
 
 export function FeaturesShowcase() {
   return (
-    <section className="border-t border-border bg-background py-16 lg:py-24">
+    <section className="border-t border-border py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -179,7 +179,7 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="mb-4 inline-block border border-border px-3 py-1">
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[STACK_CONFIG]: INTELLIGENT_SAAS_STACK</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">

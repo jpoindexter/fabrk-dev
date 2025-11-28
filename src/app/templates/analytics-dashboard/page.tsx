@@ -6,26 +6,9 @@
 
 "use client";
 
-// Animation handled via CSS, no state needed
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 import {
@@ -35,18 +18,97 @@ import {
   DollarSign,
   Activity,
   Download,
-  Calendar,
   BarChart3,
 } from "lucide-react";
 
+// Mock data
+const metrics = [
+  {
+    id: "revenue",
+    title: "TOTAL_REVENUE",
+    value: "$45,231.89",
+    change: "+20.1%",
+    trend: "up",
+    icon: DollarSign,
+    status: "INCREASING",
+  },
+  {
+    id: "users",
+    title: "ACTIVE_USERS",
+    value: "2,350",
+    change: "+15.3%",
+    trend: "up",
+    icon: Users,
+    status: "GROWING",
+  },
+  {
+    id: "conversions",
+    title: "CONVERSIONS",
+    value: "12.5%",
+    change: "-2.4%",
+    trend: "down",
+    icon: Activity,
+    status: "DECLINING",
+  },
+  {
+    id: "growth",
+    title: "GROWTH_RATE",
+    value: "+28%",
+    change: "+8.2%",
+    trend: "up",
+    icon: TrendingUp,
+    status: "ACCELERATING",
+  },
+];
+
+const revenueData = [
+  { month: "JAN", revenue: 32000, height: 55 },
+  { month: "FEB", revenue: 42000, height: 70 },
+  { month: "MAR", revenue: 38000, height: 65 },
+  { month: "APR", revenue: 54000, height: 85 },
+  { month: "MAY", revenue: 57000, height: 90 },
+  { month: "JUN", revenue: 63000, height: 100 },
+];
+
+const activityData = [
+  { user: "John Doe", action: "Purchased Pro Plan", time: "2m ago", type: "PURCHASE" },
+  { user: "Jane Smith", action: "Signed up", time: "15m ago", type: "SIGNUP" },
+  { user: "Bob Wilson", action: "Upgraded account", time: "1h ago", type: "UPGRADE" },
+  { user: "Alice Brown", action: "Left feedback", time: "2h ago", type: "FEEDBACK" },
+  { user: "Charlie Davis", action: "Referred friend", time: "3h ago", type: "REFERRAL" },
+];
+
+const pageData = [
+  { page: "/landing", views: "12,453", bounce: "32%", conversion: "8.2%" },
+  { page: "/pricing", views: "8,932", bounce: "28%", conversion: "12.5%" },
+  { page: "/features", views: "6,721", bounce: "45%", conversion: "3.1%" },
+  { page: "/about", views: "4,562", bounce: "52%", conversion: "1.8%" },
+  { page: "/blog", views: "3,891", bounce: "38%", conversion: "4.2%" },
+];
+
+const trafficSources = [
+  { source: "Organic Search", percentage: 45 },
+  { source: "Direct", percentage: 30 },
+  { source: "Social Media", percentage: 15 },
+  { source: "Referral", percentage: 10 },
+];
+
+const deviceBreakdown = [
+  { device: "Desktop", percentage: 55 },
+  { device: "Mobile", percentage: 35 },
+  { device: "Tablet", percentage: 10 },
+];
+
 export default function AnalyticsDashboardTemplate() {
+  const [activeTab, setActiveTab] = useState<"overview" | "analytics" | "reports">("overview");
+
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
+      <DemoNav backButtonText="Back" backButtonHref="/templates" />
 
       {/* Page Content */}
-      <main className="container mx-auto max-w-7xl px-6 py-8 space-y-8">
+      <main className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
@@ -58,330 +120,262 @@ export default function AnalyticsDashboardTemplate() {
               Track revenue, users, conversions, and growth metrics
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="rounded-none font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
             &gt; EXPORT_DATA
           </Button>
         </div>
 
-        {/* Metric Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: "Total Revenue",
-              value: "$45,231.89",
-              change: "+20.1%",
-              trend: "up",
-              icon: DollarSign,
-              description: "from last month",
-            },
-            {
-              title: "Active Users",
-              value: "2,350",
-              change: "+15.3%",
-              trend: "up",
-              icon: Users,
-              description: "from last month",
-            },
-            {
-              title: "Conversions",
-              value: "12.5%",
-              change: "-2.4%",
-              trend: "down",
-              icon: Activity,
-              description: "from last month",
-            },
-            {
-              title: "Growth Rate",
-              value: "+28%",
-              change: "+8.2%",
-              trend: "up",
-              icon: TrendingUp,
-              description: "from last month",
-            },
-          ].map((metric, i) => (
-            <Card key={i}>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                  {metric.title}
-                </CardTitle>
+        {/* Metric Cards - Terminal Style */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {metrics.map((metric) => (
+            <div key={metric.id} className="border border-border bg-card p-4">
+              <div className="flex items-center justify-between mb-2">
+                <div className="font-mono text-xs text-muted-foreground">[{metric.title}]:</div>
                 <metric.icon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-semibold">{metric.value}</div>
-                <div className="flex items-center gap-2 pt-1">
-                  <Badge
-                    variant={metric.trend === "up" ? "default" : "outline"}
-                    className="text-xs font-medium"
-                  >
-                    {metric.trend === "up" ? (
-                      <TrendingUp className="mr-1 h-3 w-3" />
-                    ) : (
-                      <TrendingDown className="mr-1 h-3 w-3" />
-                    )}
-                    {metric.change}
-                  </Badge>
-                  <p className="text-xs text-muted-foreground">
-                    {metric.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="text-3xl font-bold">{metric.value}</div>
+              <div className="flex items-center gap-2 mt-2 font-mono text-xs">
+                <span className={metric.trend === "up" ? "text-success" : "text-destructive"}>
+                  {metric.trend === "up" ? <TrendingUp className="inline h-3 w-3 mr-1" /> : <TrendingDown className="inline h-3 w-3 mr-1" />}
+                  {metric.change}
+                </span>
+                <span className="text-muted-foreground">
+                  STATUS: <span className={metric.trend === "up" ? "text-success" : "text-destructive"}>{metric.status}</span>
+                </span>
+              </div>
+            </div>
           ))}
         </div>
 
         {/* Charts Section */}
-        <div className="grid gap-6 lg:grid-cols-7">
-          {/* Main Chart */}
-          <Card className="lg:col-span-4">
-            <CardHeader>
-              <CardTitle>Revenue Overview</CardTitle>
-              <CardDescription>
-                Monthly revenue for the last 6 months
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <div className="h-[300px] flex items-end justify-between gap-2 px-2">
-                    {[
-                      { month: "Jan", revenue: 32000, height: 55 },
-                      { month: "Feb", revenue: 42000, height: 70 },
-                      { month: "Mar", revenue: 38000, height: 65 },
-                      { month: "Apr", revenue: 54000, height: 85 },
-                      { month: "May", revenue: 57000, height: 90 },
-                      { month: "Jun", revenue: 63000, height: 100 },
-                    ].map((data, i) => (
-                      <div key={i} className="flex-1 flex flex-col items-center group h-full">
-                        <span className="text-xs font-semibold text-foreground opacity-0 group-hover:opacity-100 transition-opacity mb-1">
-                          ${(data.revenue / 1000).toFixed(0)}k
-                        </span>
-                        <div className="flex-1 flex items-end w-full">
-                          <div
-                            className="w-full bg-primary rounded-t-md hover:bg-primary/90 transition-colors"
-                            style={{
-                              height: `${data.height}%`,
-                              animation: `bar-grow 0.6s ease-out ${i * 100}ms both`,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between px-2 gap-2">
-                    {[
-                      { month: "Jan", revenue: 32000, height: 55 },
-                      { month: "Feb", revenue: 42000, height: 70 },
-                      { month: "Mar", revenue: 38000, height: 65 },
-                      { month: "Apr", revenue: 54000, height: 85 },
-                      { month: "May", revenue: 57000, height: 90 },
-                      { month: "Jun", revenue: 63000, height: 100 },
-                    ].map((data, i) => (
-                      <div key={i} className="flex-1 text-center">
-                        <span className="text-xs text-muted-foreground">{data.month}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="pt-4 border-t border-border">
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <p className="text-xs text-muted-foreground">Average</p>
-                      <p className="text-lg font-semibold">$47,667</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Highest</p>
-                      <p className="text-lg font-semibold">$63,000</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Growth</p>
-                      <p className="text-lg font-semibold text-green-600">+96.9%</p>
-                    </div>
-                  </div>
-                </div>
+        <div className="grid gap-4 lg:grid-cols-7">
+          {/* Revenue Chart - Terminal Style */}
+          <div className="lg:col-span-4 border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
               </div>
-            </CardContent>
-          </Card>
+              <span className="font-mono text-xs text-muted-foreground">revenue_chart.tsx</span>
+            </div>
+            <div className="p-4">
+              <div className="font-mono text-xs text-muted-foreground mb-4">
+                [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
+              </div>
 
-          {/* Recent Activity */}
-          <Card className="lg:col-span-3">
-            <CardHeader>
-              <CardTitle>Recent Activity</CardTitle>
-              <CardDescription>
-                Your latest user interactions
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {[
-                  { user: "John Doe", action: "Purchased Pro Plan", time: "2m ago" },
-                  { user: "Jane Smith", action: "Signed up", time: "15m ago" },
-                  { user: "Bob Wilson", action: "Upgraded account", time: "1h ago" },
-                  { user: "Alice Brown", action: "Left feedback", time: "2h ago" },
-                  { user: "Charlie Davis", action: "Referred friend", time: "3h ago" },
-                ].map((activity, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-sm font-semibold text-primary-foreground">
-                      {activity.user.split(" ").map((n) => n[0]).join("")}
+              {/* Bar Chart */}
+              <div className="h-[250px] flex items-end justify-between gap-2 border-b border-l border-border p-4 relative">
+                {/* Y-axis labels */}
+                <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs font-mono text-muted-foreground -translate-x-8">
+                  <span>$60k</span>
+                  <span>$40k</span>
+                  <span>$20k</span>
+                  <span>$0</span>
+                </div>
+
+                {revenueData.map((data, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center group h-full">
+                    <div className="flex-1 flex items-end w-full">
+                      <div
+                        className="w-full bg-primary hover:bg-primary/80 transition-colors"
+                        style={{
+                          height: `${data.height}%`,
+                        }}
+                      />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate">{activity.user}</p>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {activity.action}
-                      </p>
-                    </div>
-                    <span className="text-xs text-muted-foreground shrink-0">
-                      {activity.time}
-                    </span>
+                    <span className="font-mono text-xs text-muted-foreground mt-2">{data.month}</span>
                   </div>
                 ))}
               </div>
-            </CardContent>
-          </Card>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-border font-mono text-xs">
+                <div>
+                  <span className="text-muted-foreground">[AVG]:</span> <span className="text-foreground">$47,667</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">[MAX]:</span> <span className="text-foreground">$63,000</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">[GROWTH]:</span> <span className="text-success">+96.9%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Activity Feed - Terminal Style */}
+          <div className="lg:col-span-3 border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">activity_log.txt</span>
+            </div>
+            <div className="p-4">
+              <div className="font-mono text-xs text-muted-foreground mb-4">
+                [RECENT_ACTIVITY]: COUNT={activityData.length}
+              </div>
+
+              <div className="space-y-3">
+                {activityData.map((activity, i) => (
+                  <div key={i} className="flex items-center gap-3 font-mono text-xs">
+                    <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted">
+                      {activity.user.split(" ").map((n) => n[0]).join("")}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-foreground truncate">{activity.user}</span>
+                        <span className="border border-border px-1.5 py-0.5 text-muted-foreground">
+                          {activity.type}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground">{activity.action}</span>
+                    </div>
+                    <span className="text-muted-foreground shrink-0">{activity.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Tabs Section */}
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Top Performing Pages</CardTitle>
-                <CardDescription>
-                  Pages with the most traffic this month
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Page</TableHead>
-                      <TableHead>Views</TableHead>
-                      <TableHead>Bounce Rate</TableHead>
-                      <TableHead>Conversion</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {[
-                      { page: "/landing", views: "12,453", bounce: "32%", conversion: "8.2%" },
-                      { page: "/pricing", views: "8,932", bounce: "28%", conversion: "12.5%" },
-                      { page: "/features", views: "6,721", bounce: "45%", conversion: "3.1%" },
-                      { page: "/about", views: "4,562", bounce: "52%", conversion: "1.8%" },
-                      { page: "/blog", views: "3,891", bounce: "38%", conversion: "4.2%" },
-                    ].map((row, i) => (
-                      <TableRow key={i}>
-                        <TableCell className="font-medium">{row.page}</TableCell>
-                        <TableCell>{row.views}</TableCell>
-                        <TableCell>{row.bounce}</TableCell>
-                        <TableCell>
-                          <Badge variant="secondary" className="w-24 justify-center font-semibold">{row.conversion}</Badge>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="analytics" className="space-y-4">
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Traffic Sources</CardTitle>
-                  <CardDescription>Where your visitors come from</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {[
-                    { source: "Organic Search", percentage: 45 },
-                    { source: "Direct", percentage: 30 },
-                    { source: "Social Media", percentage: 15 },
-                    { source: "Referral", percentage: 10 },
-                  ].map((source, i) => (
-                    <div key={i} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium">{source.source}</span>
-                        <span className="text-muted-foreground">
-                          {source.percentage}%
-                        </span>
-                      </div>
-                      <Progress value={source.percentage} />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Device Breakdown</CardTitle>
-                  <CardDescription>Visitor devices and platforms</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {[
-                    { device: "Desktop", percentage: 55 },
-                    { device: "Mobile", percentage: 35 },
-                    { device: "Tablet", percentage: 10 },
-                  ].map((device, i) => (
-                    <div key={i} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium">{device.device}</span>
-                        <span className="text-muted-foreground">
-                          {device.percentage}%
-                        </span>
-                      </div>
-                      <Progress value={device.percentage} />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
+        {/* Tabs Section - Terminal Style */}
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
             </div>
-          </TabsContent>
+            <span className="font-mono text-xs text-muted-foreground">analytics_tabs.tsx</span>
+          </div>
 
-          <TabsContent value="reports">
-            <Card>
-              <CardHeader>
-                <CardTitle>Generate Reports</CardTitle>
-                <CardDescription>
-                  Export detailed analytics reports for your team
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
+          {/* Terminal Tab Navigation */}
+          <div className="flex border-b border-border font-mono text-xs">
+            {(["overview", "analytics", "reports"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 border-r border-border transition-colors ${
+                  activeTab === tab
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-muted"
+                }`}
+              >
+                [{tab.toUpperCase()}]
+              </button>
+            ))}
+          </div>
+
+          <div className="p-4">
+            {/* Overview Tab */}
+            {activeTab === "overview" && (
+              <div>
+                <div className="font-mono text-xs text-muted-foreground mb-4">
+                  [TOP_PAGES]: SORTED_BY=VIEWS
+                </div>
+
+                {/* Terminal Table */}
+                <div className="border border-border">
+                  <div className="grid grid-cols-4 border-b border-border bg-muted/30 px-4 py-2 font-mono text-xs">
+                    <span className="text-muted-foreground">[PAGE]</span>
+                    <span className="text-muted-foreground">[VIEWS]</span>
+                    <span className="text-muted-foreground">[BOUNCE]</span>
+                    <span className="text-muted-foreground">[CONVERSION]</span>
+                  </div>
+                  <div className="divide-y divide-border">
+                    {pageData.map((row, i) => (
+                      <div key={i} className="grid grid-cols-4 px-4 py-3 font-mono text-xs hover:bg-muted/30">
+                        <span className="text-foreground">{row.page}</span>
+                        <span className="text-muted-foreground">{row.views}</span>
+                        <span className="text-muted-foreground">{row.bounce}</span>
+                        <span className="border border-border px-2 py-0.5 text-center w-fit">{row.conversion}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Analytics Tab */}
+            {activeTab === "analytics" && (
+              <div className="grid gap-4 md:grid-cols-2">
+                {/* Traffic Sources */}
+                <div className="border border-border p-4">
+                  <div className="font-mono text-xs text-muted-foreground mb-4">
+                    [TRAFFIC_SOURCES]:
+                  </div>
+                  <div className="space-y-3">
+                    {trafficSources.map((source, i) => (
+                      <div key={i} className="space-y-1">
+                        <div className="flex items-center justify-between font-mono text-xs">
+                          <span className="text-foreground">{source.source}</span>
+                          <span className="text-muted-foreground">{source.percentage}%</span>
+                        </div>
+                        <Progress value={source.percentage} className="h-2" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Device Breakdown */}
+                <div className="border border-border p-4">
+                  <div className="font-mono text-xs text-muted-foreground mb-4">
+                    [DEVICE_BREAKDOWN]:
+                  </div>
+                  <div className="space-y-3">
+                    {deviceBreakdown.map((device, i) => (
+                      <div key={i} className="space-y-1">
+                        <div className="flex items-center justify-between font-mono text-xs">
+                          <span className="text-foreground">{device.device}</span>
+                          <span className="text-muted-foreground">{device.percentage}%</span>
+                        </div>
+                        <Progress value={device.percentage} className="h-2" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Reports Tab */}
+            {activeTab === "reports" && (
+              <div>
+                <div className="font-mono text-xs text-muted-foreground mb-4">
+                  [AVAILABLE_REPORTS]:
+                </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   {[
-                    { name: "Monthly Summary", desc: "Overview of all metrics" },
-                    { name: "User Behavior", desc: "Detailed user journey analysis" },
-                    { name: "Revenue Report", desc: "Financial performance breakdown" },
-                    { name: "Custom Report", desc: "Build your own report" },
+                    { name: "MONTHLY_SUMMARY", desc: "Overview of all metrics" },
+                    { name: "USER_BEHAVIOR", desc: "Detailed user journey analysis" },
+                    { name: "REVENUE_REPORT", desc: "Financial performance breakdown" },
+                    { name: "CUSTOM_REPORT", desc: "Build your own report" },
                   ].map((report, i) => (
-                    <div
-                      key={i}
-                      className="p-4 border border-border rounded-md transition-all cursor-pointer"
-                    >
-                      <div className="flex items-start justify-between mb-2">
+                    <div key={i} className="border border-border p-4">
+                      <div className="flex items-start justify-between mb-3">
                         <div>
-                          <h4 className="font-semibold">{report.name}</h4>
-                          <p className="text-sm text-muted-foreground">
+                          <div className="font-mono text-xs text-foreground">[{report.name}]</div>
+                          <div className="font-mono text-xs text-muted-foreground mt-1">
                             {report.desc}
-                          </p>
+                          </div>
                         </div>
-                        <BarChart3 className="h-5 w-5 text-muted-foreground" />
+                        <BarChart3 className="h-4 w-4 text-muted-foreground" />
                       </div>
-                      <Button size="sm" variant="outline" className="w-full mt-3">
-                        <Download className="mr-2 h-4 w-4" />
-                        Generate
+                      <Button size="sm" variant="outline" className="rounded-none w-full font-mono text-xs">
+                        <Download className="mr-2 h-3 w-3" />
+                        &gt; GENERATE
                       </Button>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* Template Features Card */}
         <div className="border border-border bg-card">
@@ -393,9 +387,9 @@ export default function AnalyticsDashboardTemplate() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-          <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> 4 key metric cards (revenue, users, conversions, growth)</div>
               <div><span className="text-success">&gt;</span> Revenue overview chart with 6-month data</div>
               <div><span className="text-success">&gt;</span> Recent activity feed with user avatars</div>
@@ -403,7 +397,8 @@ export default function AnalyticsDashboardTemplate() {
               <div><span className="text-success">&gt;</span> Top performing pages table with bounce rates</div>
               <div><span className="text-success">&gt;</span> Traffic sources breakdown with progress bars</div>
               <div><span className="text-success">&gt;</span> Device breakdown statistics</div>
-              <div><span className="text-success">&gt;</span> Report generation templates (Monthly, User Behavior, Revenue, Custom)</div>
+              <div><span className="text-success">&gt;</span> Report generation templates</div>
+              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
           </div>
         </div>

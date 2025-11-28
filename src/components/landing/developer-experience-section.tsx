@@ -63,7 +63,7 @@ export function DeveloperExperienceSection() {
     <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <Badge variant="default" size="lg" className="mb-4 uppercase tracking-wide">
+          <Badge variant="default" size="lg" className="rounded-none mb-4 uppercase tracking-wide">
             Built for Developers
           </Badge>
         </div>
@@ -87,9 +87,9 @@ export function DeveloperExperienceSection() {
             return (
               <div
                 key={feature.title}
-                className="group rounded-lg border border-border bg-card p-6 transition-all hover:border-primary/50"
+                className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
+                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-3">
                   {feature.icon ? (
                     <SimpleIcon path={feature.icon} className="h-6 w-6 text-primary" />
                   ) : IconComponent ? (

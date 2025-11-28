@@ -119,10 +119,10 @@ export function ExitIntentPopup({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="rounded-none max-w-md">
         <DialogHeader>
           <div className="mb-4 flex justify-center">
-            <div className="rounded-full bg-primary/10 p-3">
+            <div className="bg-primary/10 p-3">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
           </div>
@@ -133,7 +133,7 @@ export function ExitIntentPopup({
         </DialogHeader>
 
         {showPricing && (
-          <div className="my-4 rounded-lg border-2 border-border bg-card p-4">
+          <div className="my-4 border-2 border-border bg-card p-4">
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
                 <span className="text-3xl font-bold text-foreground">
@@ -153,14 +153,14 @@ export function ExitIntentPopup({
         <DialogFooter className="flex-col gap-2 sm:flex-col">
           <PolarCheckoutButton
             discountId={EXIT_INTENT_DISCOUNT_ID}
-            className="w-full"
+            className="rounded-none w-full"
           >
             Get Fabrk Now
           </PolarCheckoutButton>
           <Button
             onClick={handleClose}
             variant="ghost"
-            className="w-full"
+            className="rounded-none w-full"
             size="sm"
           >
             {secondaryCtaText}

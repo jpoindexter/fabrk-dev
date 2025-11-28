@@ -68,7 +68,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
             className="mb-4 inline-block"
           >
-            <Badge variant="default" size="lg" className="uppercase tracking-wide">
+            <Badge variant="default" size="lg" className="rounded-none uppercase tracking-wide">
               Enterprise-Grade Features
             </Badge>
           </motion.div>
@@ -104,9 +104,9 @@ export function EnterpriseFeaturesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-6 transition-all hover:border-primary/50"
+                className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary/10 p-3">
+                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-3">
                   {feature.icon === "users" ? (
                     <Users className="h-6 w-6 text-primary" />
                   ) : feature.icon === "lock" ? (
@@ -142,7 +142,7 @@ export function EnterpriseFeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-lg border border-border bg-card p-8 text-center"
+          className="mt-12 border border-border bg-card p-8 text-center"
         >
           <Body className="font-semibold">
             <Strong className="text-primary">$200,000+</Strong> worth of enterprise features, included out-of-the-box

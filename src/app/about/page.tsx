@@ -108,7 +108,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="default" size="lg" className="mb-6 uppercase tracking-wide">
+            <Badge variant="default" size="lg" className="rounded-none mb-6 uppercase tracking-wide">
               Our Story
             </Badge>
           </motion.span>
@@ -147,7 +147,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="inline-flex items-center justify-center rounded-full bg-primary/10 border-2 border-border p-4 mb-6"
+              className="inline-flex items-center justify-center bg-primary/10 border-2 border-border p-4 mb-6"
             >
               <Target className="h-12 w-12 text-primary" />
             </motion.div>
@@ -220,9 +220,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 viewport={{ once: true }}
-                className="group rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                className="group border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 border-2 border-border p-3">
+                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 border-2 border-border p-3">
                   <value.icon className="h-6 w-6 text-primary" />
                 </div>
                 <H3 className="mb-2">{value.title}</H3>
@@ -341,7 +341,7 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className="rounded-lg border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                  className="border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
                 >
                   <H3 className="mb-2">{item.title}</H3>
                   <Body>{item.description}</Body>
@@ -382,13 +382,13 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="flex flex-col gap-4 sm:flex-row sm:justify-center"
           >
-            <Button size="xl" className="text-lg" asChild>
+            <Button size="xl" className="rounded-none text-lg" asChild>
               <Link href="/#pricing">
                 Get Fabrk Now - {config.pricing.fabrk.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button variant="outline" size="xl" className="text-lg" asChild>
+            <Button variant="outline" size="xl" className="rounded-none text-lg" asChild>
               <Link href="/features">View All Features</Link>
             </Button>
           </motion.div>

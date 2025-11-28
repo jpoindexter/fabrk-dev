@@ -24,7 +24,7 @@ export function PricingSection() {
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 border-t border-border bg-background px-6 py-20 lg:py-28"
+      className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
         {/* Two Column Layout */}
@@ -37,7 +37,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <div className="mb-4 inline-block self-start border border-border px-3 py-1">
+            <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
               <span className="font-mono text-xs text-muted-foreground">[PRICING]: COMMERCIAL_TIER</span>
             </div>
 
@@ -56,7 +56,7 @@ export function PricingSection() {
               </p>
             </div>
 
-            <div className="border border-border p-4">
+            <div className="border border-border bg-card p-4">
               <span className="font-mono text-xs text-muted-foreground">[NOTE]: </span>
               <span className="font-mono text-xs text-foreground">
                 Fabrk is 40-70% more affordable than comparable Next.js starter kits.
@@ -128,7 +128,7 @@ export function PricingSection() {
                 </div>
 
                 {/* CTA Button */}
-                <PolarCheckoutButton className="w-full font-mono text-sm">
+                <PolarCheckoutButton className="rounded-none w-full font-mono text-sm">
                   &gt; EXECUTE: GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
               </div>
@@ -142,7 +142,7 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mt-4"
             >
-              <div className="border border-border p-3 text-center">
+              <div className="border border-border bg-card p-3 text-center">
                 <span className="font-mono text-xs text-muted-foreground">
                   [SECURE]: Checkout powered by Polar. All sales are final.
                 </span>

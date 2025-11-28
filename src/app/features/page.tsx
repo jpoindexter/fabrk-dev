@@ -227,10 +227,10 @@ function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CAT
         {/* Content Side */}
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-3">
-            <div className="rounded-lg bg-primary/10 p-3">
+            <div className="bg-primary/10 p-3">
               <Icon className="size-6 text-primary" />
             </div>
-            <Badge variant="secondary">{category.stats.value} {category.stats.label}</Badge>
+            <Badge variant="secondary" className="rounded-none">{category.stats.value} {category.stats.label}</Badge>
           </div>
 
           <div>
@@ -245,7 +245,7 @@ function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CAT
 
         {/* Features List Side */}
         <div className="flex-1 w-full">
-          <div className="rounded-xl border border-border bg-card p-6 lg:p-8">
+          <div className="border border-border bg-card p-6 lg:p-8">
             <H4 className="mb-4">What's Included</H4>
             <ul className="grid gap-3 sm:grid-cols-2">
               {category.features.map((feature, i) => (
@@ -277,7 +277,7 @@ export default function FeaturesPage() {
               transition={{ duration: 0.5 }}
               className="mb-6"
             >
-              <Badge variant="default" size="lg" className="uppercase tracking-wide">
+              <Badge variant="default" size="lg" className="rounded-none uppercase tracking-wide">
                 Complete SaaS Toolkit
               </Badge>
             </motion.div>
@@ -310,13 +310,13 @@ export default function FeaturesPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="rounded-none">
                 <Link href="/#pricing">
                   Get Fabrk Now
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="rounded-none">
                 <Link href="/docs">
                   Read Documentation
                 </Link>
@@ -341,7 +341,7 @@ export default function FeaturesPage() {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="text-center"
                 >
-                  <div className="inline-flex items-center justify-center rounded-lg bg-primary/10 p-2 mb-3">
+                  <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-3">
                     <Icon className="size-5 text-primary" />
                   </div>
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
@@ -363,7 +363,7 @@ export default function FeaturesPage() {
                 <Link
                   key={category.id}
                   href={`#${category.id}`}
-                  className="flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="flex items-center gap-2 whitespace-nowrap border border-border bg-card px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 >
                   <Icon className="size-4" />
                   {category.title.split(' ')[0]}
@@ -411,7 +411,7 @@ export default function FeaturesPage() {
             {TECH_STACK.map((tech, index) => (
               <div
                 key={tech.name}
-                className="rounded-lg border border-border bg-card p-4 text-center"
+                className="border border-border bg-card p-4 text-center"
               >
                 <Strong className="block">{tech.name}</Strong>
                 <Small className="text-muted-foreground">{tech.description}</Small>
@@ -443,7 +443,7 @@ export default function FeaturesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-xl border border-border bg-card p-6"
+              className="border border-border bg-card p-6"
             >
               <TestTube className="size-8 text-primary mb-4" />
               <H3 className="mb-2">130+ Tests</H3>
@@ -457,7 +457,7 @@ export default function FeaturesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-xl border border-border bg-card p-6"
+              className="border border-border bg-card p-6"
             >
               <Terminal className="size-8 text-primary mb-4" />
               <H3 className="mb-2">TypeScript Strict</H3>
@@ -471,7 +471,7 @@ export default function FeaturesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="rounded-xl border border-border bg-card p-6"
+              className="border border-border bg-card p-6"
             >
               <BookOpen className="size-8 text-primary mb-4" />
               <H3 className="mb-2">400KB Docs</H3>
@@ -501,13 +501,13 @@ export default function FeaturesPage() {
               fully tested, and production-ready.
             </Body>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="rounded-none">
                 <Link href="/#pricing">
                   Get Started Now
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="rounded-none">
                 <Link href="/templates">
                   View Templates
                 </Link>

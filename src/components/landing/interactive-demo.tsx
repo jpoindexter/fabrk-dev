@@ -39,16 +39,16 @@ export function InteractiveDemo() {
 
           {/* Tabbed Demo */}
           <Tabs defaultValue="team" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 gap-2">
+            <TabsList className="rounded-none grid w-full grid-cols-4 gap-2">
               {DEMO_ROUTES.map((route) => (
-                <TabsTrigger key={route.id} value={route.id} className="text-sm sm:text-base">
+                <TabsTrigger key={route.id} value={route.id} className="rounded-none text-sm sm:text-base">
                   {route.label}
                 </TabsTrigger>
               ))}
             </TabsList>
 
             {/* Demo Container */}
-            <div className="overflow-hidden rounded-lg border-2 border-border bg-card shadow-lg">
+            <div className="overflow-hidden border-2 border-border bg-card shadow-lg">
               {DEMO_ROUTES.map((route) => (
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe
@@ -67,7 +67,7 @@ export function InteractiveDemo() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-lg border border-border bg-card p-6"
+              className="border border-border bg-card p-6"
             >
               <p className="text-sm text-foreground">
                 <span className="font-semibold">💡 Fully Interactive:</span> All dashboards and tables are fully functional.

@@ -81,13 +81,13 @@ export function Navigation() {
             <Button
               variant="outline"
               asChild
-              className="font-mono text-xs"
+              className="rounded-none font-mono text-xs"
             >
               <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
             <Button
               asChild
-              className="font-mono text-xs"
+              className="rounded-none font-mono text-xs"
             >
               <Link href="#pricing" className="scroll-smooth">&gt; GET_STARTED</Link>
             </Button>
@@ -106,13 +106,13 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10"
+                className="rounded-none h-10 w-10"
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] p-6">
+            <SheetContent side="right" className="rounded-none w-[300px] p-6">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="mb-6 border-b border-border pb-4">
                 <span className="font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</span>
@@ -141,7 +141,7 @@ export function Navigation() {
                   <SheetClose asChild>
                     <Button
                       variant="outline"
-                      className="w-full font-mono text-xs"
+                      className="rounded-none w-full font-mono text-xs"
                       asChild
                     >
                       <Link href="/demo">&gt; VIEW_DEMO</Link>
@@ -149,7 +149,7 @@ export function Navigation() {
                   </SheetClose>
                   <SheetClose asChild>
                     <Button
-                      className="mt-3 w-full font-mono text-xs"
+                      className="rounded-none mt-3 w-full font-mono text-xs"
                       asChild
                     >
                       <Link href="#pricing">&gt; GET_STARTED</Link>
@@ -163,7 +163,7 @@ export function Navigation() {
           {/* Mobile CTA Button */}
           <Button
             asChild
-            className="font-mono text-xs md:hidden"
+            className="rounded-none font-mono text-xs md:hidden"
           >
             <Link href="#pricing" className="scroll-smooth">&gt; START</Link>
           </Button>

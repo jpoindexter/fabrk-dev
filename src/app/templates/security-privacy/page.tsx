@@ -8,17 +8,8 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   AlertDialog,
@@ -29,15 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 import {
@@ -52,7 +34,6 @@ import {
   AlertTriangle,
   Download,
   Eye,
-  EyeOff,
   Lock,
   Globe,
   FileText,
@@ -67,7 +48,6 @@ const securityData = {
     email: "john@example.com",
     emailVerified: true,
     twoFactorEnabled: false,
-    sessionVersion: 1,
     lastPasswordChange: "2024-09-15",
   },
   connectedAccounts: [
@@ -92,34 +72,10 @@ const securityData = {
     },
   ],
   auditLog: [
-    {
-      id: "log_001",
-      action: "Password changed",
-      timestamp: "2024-11-10 14:23",
-      ip: "192.168.1.1",
-      status: "success",
-    },
-    {
-      id: "log_002",
-      action: "Login",
-      timestamp: "2024-11-09 09:15",
-      ip: "192.168.1.1",
-      status: "success",
-    },
-    {
-      id: "log_003",
-      action: "Failed login attempt",
-      timestamp: "2024-11-08 22:45",
-      ip: "203.0.113.0",
-      status: "failed",
-    },
-    {
-      id: "log_004",
-      action: "OAuth connected (Google)",
-      timestamp: "2024-11-05 16:30",
-      ip: "192.168.1.1",
-      status: "success",
-    },
+    { id: "log_001", action: "Password changed", timestamp: "2024-11-10 14:23", ip: "192.168.1.1", status: "success" },
+    { id: "log_002", action: "Login", timestamp: "2024-11-09 09:15", ip: "192.168.1.1", status: "success" },
+    { id: "log_003", action: "Failed login attempt", timestamp: "2024-11-08 22:45", ip: "203.0.113.0", status: "failed" },
+    { id: "log_004", action: "OAuth connected (Google)", timestamp: "2024-11-05 16:30", ip: "192.168.1.1", status: "success" },
   ],
 };
 
@@ -137,9 +93,7 @@ const privacySettings = {
 };
 
 export default function SecurityPrivacyTemplate() {
-  const [activeTab, setActiveTab] = useState<
-    "security" | "privacy" | "audit" | "compliance"
-  >("security");
+  const [activeTab, setActiveTab] = useState<"security" | "privacy" | "audit" | "compliance">("security");
   const [privacy, setPrivacy] = useState(privacySettings);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
@@ -167,7 +121,7 @@ export default function SecurityPrivacyTemplate() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
+      <DemoNav backButtonText="Back" backButtonHref="/templates" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
@@ -184,572 +138,420 @@ export default function SecurityPrivacyTemplate() {
               Manage your account security, privacy settings, and data controls
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="rounded-none font-mono text-xs">
             <Settings className="mr-2 h-4 w-4" />
             &gt; VIEW_AUDIT_LOG
           </Button>
         </div>
 
-        {/* Security Score Card */}
-        <Card className="border border-primary">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-primary/10">
-                  <span className="text-2xl font-semibold text-primary">75%</span>
-                </div>
-                <div>
-                  <CardTitle className="font-semibold">Security Score</CardTitle>
-                  <CardDescription>
-                    Good security posture, but improvements recommended
-                  </CardDescription>
-                </div>
-              </div>
-              <Badge variant="secondary" className="font-semibold">
-                Medium Risk
-              </Badge>
+        {/* Security Score - Terminal Style */}
+        <div className="border border-primary bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
             </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-success" />
-                <span className="font-semibold">Email verified</span>
+            <span className="font-mono text-xs text-muted-foreground">security_score.json</span>
+            <span className="ml-auto border border-warning/50 px-2 py-0.5 font-mono text-xs text-warning">
+              MEDIUM_RISK
+            </span>
+          </div>
+          <div className="p-4">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="flex h-16 w-16 items-center justify-center border border-border bg-primary/10 font-mono text-xl font-bold text-primary">
+                75%
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div>
+                <div className="font-mono text-xs text-muted-foreground">[SECURITY_SCORE]:</div>
+                <div className="font-mono text-xs text-muted-foreground">Good security posture, but improvements recommended</div>
+              </div>
+            </div>
+            <div className="space-y-2 font-mono text-xs">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-success" />
+                <span>EMAIL_VERIFIED: TRUE</span>
+              </div>
+              <div className="flex items-center gap-2">
                 <XCircle className="h-4 w-4 text-destructive" />
-                <span className="font-semibold">Two-factor authentication disabled</span>
+                <span>TWO_FACTOR_AUTH: FALSE</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-success" />
-                <span className="font-semibold">
-                  Password changed 60 days ago (recommended: every 90 days)
+                <span>PASSWORD_CHANGED: 60_DAYS_AGO (recommended: every 90 days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tab Navigation - Terminal Style */}
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">security_nav.tsx</span>
+          </div>
+          <div className="flex border-b border-border font-mono text-xs">
+            {([
+              { id: "security" as const, label: "SECURITY", icon: Shield },
+              { id: "privacy" as const, label: "PRIVACY", icon: Lock },
+              { id: "audit" as const, label: "AUDIT_LOG", icon: Activity },
+              { id: "compliance" as const, label: "COMPLIANCE", icon: FileText },
+            ]).map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-2 border-r border-border transition-colors ${
+                  activeTab === tab.id
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-muted"
+                }`}
+              >
+                <tab.icon className="h-3 w-3" />
+                [{tab.label}]
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Security Tab */}
+        {activeTab === "security" && (
+          <div className="space-y-6">
+            {/* 2FA Section */}
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">two_factor.config</span>
+                <span className="ml-auto border border-destructive/50 px-2 py-0.5 font-mono text-xs text-destructive">
+                  DISABLED
                 </span>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="security" className="font-semibold">
-              <Shield className="mr-2 h-4 w-4" />
-              Security
-            </TabsTrigger>
-            <TabsTrigger value="privacy" className="font-semibold">
-              <Lock className="mr-2 h-4 w-4" />
-              Privacy
-            </TabsTrigger>
-            <TabsTrigger value="audit" className="font-semibold">
-              <Activity className="mr-2 h-4 w-4" />
-              Audit Log
-            </TabsTrigger>
-            <TabsTrigger value="compliance" className="font-semibold">
-              <FileText className="mr-2 h-4 w-4" />
-              Compliance
-            </TabsTrigger>
-          </TabsList>
-
-          {/* Security Tab */}
-          <TabsContent value="security" className="mt-6 space-y-6">
-            {/* Two-Factor Authentication */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-lg border border-border bg-primary/10 p-3">
-                      <Smartphone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <CardTitle className="font-semibold">
-                        Two-Factor Authentication
-                      </CardTitle>
-                      <CardDescription>
-                        Add an extra layer of security with TOTP
-                      </CardDescription>
-                    </div>
-                  </div>
-                  <Badge variant="secondary" className="gap-1 font-semibold">
-                    <XCircle className="h-3 w-3" />
-                    Disabled
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  Use an authenticator app like Google Authenticator or Authy to
-                  generate time-based codes.
-                </p>
-                <Button onClick={handleEnable2FA} className="font-semibold">
-                  <Shield className="mr-2 h-4 w-4" />
-                  Enable 2FA
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Connected Accounts */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg border border-border bg-primary/10 p-3">
-                    <Key className="h-6 w-6 text-primary" />
+              <div className="p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
+                    <Smartphone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-semibold">Connected Accounts</CardTitle>
-                    <CardDescription>
-                      OAuth providers linked to your account
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[TWO_FACTOR_AUTH]:</div>
+                    <div className="font-mono text-xs text-muted-foreground">Add an extra layer of security with TOTP</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {securityData.connectedAccounts.map((account, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
-                  >
-                    <div>
-                      <p className="font-semibold capitalize">{account.provider}</p>
-                      <p className="text-sm text-muted-foreground">
-                        Connected on{" "}
-                        {new Date(account.connectedAt).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <Button variant="outline" size="sm" className="font-semibold">
-                      <Trash2 className="mr-2 h-4 w-4" />
-                      Disconnect
-                    </Button>
-                  </div>
-                ))}
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" className="font-semibold">
-                    Connect Google
-                  </Button>
-                  <Button variant="outline" size="sm" className="font-semibold">
-                    Connect GitHub
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                <p className="mb-4 font-mono text-xs text-muted-foreground">
+                  Use an authenticator app like Google Authenticator or Authy to generate time-based codes.
+                </p>
+                <Button onClick={handleEnable2FA} className="rounded-none font-mono text-xs">
+                  <Shield className="mr-2 h-4 w-4" />
+                  &gt; ENABLE_2FA
+                </Button>
+              </div>
+            </div>
 
             {/* Active Sessions */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg border border-border bg-primary/10 p-3">
-                    <Clock className="h-6 w-6 text-primary" />
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">sessions.log</span>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
+                    <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-semibold">Active Sessions</CardTitle>
-                    <CardDescription>
-                      {securityData.activeSessions.length} active devices
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[ACTIVE_SESSIONS]: COUNT={securityData.activeSessions.length}</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {securityData.activeSessions.map((session) => (
-                  <div
-                    key={session.id}
-                    className="flex items-center justify-between rounded-lg border border-border bg-muted p-4"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <p className="font-semibold">{session.device}</p>
-                        {session.isCurrent && (
-                          <Badge className="font-semibold">Current</Badge>
-                        )}
+                <div className="space-y-3 font-mono text-xs">
+                  {securityData.activeSessions.map((session) => (
+                    <div key={session.id} className="flex items-center justify-between border border-border p-3">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span>{session.device}</span>
+                          {session.isCurrent && (
+                            <span className="border border-primary/50 px-1.5 py-0.5 text-primary">CURRENT</span>
+                          )}
+                        </div>
+                        <div className="text-muted-foreground">{session.location} • {session.ip}</div>
+                        <div className="text-muted-foreground">Last active: {session.lastActive}</div>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        {session.location} • {session.ip}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Last active: {session.lastActive}
-                      </p>
+                      {!session.isCurrent && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleRevokeSession(session.id)}
+                          className="rounded-none font-mono text-xs"
+                        >
+                          <LogOut className="mr-2 h-3 w-3" />
+                          &gt; REVOKE
+                        </Button>
+                      )}
                     </div>
-                    {!session.isCurrent && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => handleRevokeSession(session.id)}
-                        className="font-semibold"
-                      >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Revoke
-                      </Button>
-                    )}
-                  </div>
-                ))}
-                <Separator />
-                <Button variant="destructive" className="w-full font-semibold">
+                  ))}
+                </div>
+                <Button variant="destructive" className="rounded-none w-full mt-4 font-mono text-xs">
                   <LogOut className="mr-2 h-4 w-4" />
-                  Sign Out All Other Devices
+                  &gt; SIGN_OUT_ALL_OTHER_DEVICES
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Password */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg border border-border bg-primary/10 p-3">
-                    <Key className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <CardTitle className="font-semibold">Password</CardTitle>
-                    <CardDescription>
-                      Last changed on{" "}
-                      {new Date(
-                        securityData.user.lastPasswordChange
-                      ).toLocaleDateString()}
-                    </CardDescription>
-                  </div>
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
                 </div>
-              </CardHeader>
-              <CardContent>
-                <Button variant="outline" className="font-semibold">
-                  Change Password
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Privacy Tab */}
-          <TabsContent value="privacy" className="mt-6 space-y-6">
-            {/* Profile Privacy */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Profile & Activity</CardTitle>
-                <CardDescription>
-                  Control who can see your profile and activity
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  {
-                    key: "profileVisibility" as const,
-                    label: "Profile Visibility",
-                    description: "Allow your profile to be visible to other users",
-                  },
-                  {
-                    key: "activityTracking" as const,
-                    label: "Activity Tracking",
-                    description: "Track my activity to improve experience",
-                  },
-                  {
-                    key: "searchIndexing" as const,
-                    label: "Search Engine Indexing",
-                    description: "Allow search engines to index your profile",
-                  },
-                ].map((setting) => (
-                  <div
-                    key={setting.key}
-                    className="flex items-center justify-between rounded-lg border border-border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{setting.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {setting.description}
-                      </p>
-                    </div>
-                    <Switch
-                      checked={privacy[setting.key]}
-                      onCheckedChange={() => handlePrivacyToggle(setting.key)}
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Data Sharing */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Data Sharing</CardTitle>
-                <CardDescription>
-                  Manage how your data is used and shared
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  {
-                    key: "analyticsSharing" as const,
-                    label: "Analytics Sharing",
-                    description: "Share anonymous usage data to improve the product",
-                  },
-                  {
-                    key: "dataRetention" as const,
-                    label: "Data Retention",
-                    description: "Keep my data if I delete my account",
-                  },
-                ].map((setting) => (
-                  <div
-                    key={setting.key}
-                    className="flex items-center justify-between rounded-lg border border-border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{setting.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {setting.description}
-                      </p>
-                    </div>
-                    <Switch
-                      checked={privacy[setting.key]}
-                      onCheckedChange={() => handlePrivacyToggle(setting.key)}
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Cookie Preferences */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Cookie Preferences</CardTitle>
-                <CardDescription>
-                  Manage which cookies you allow
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  {
-                    key: "cookiesEssential" as const,
-                    label: "Essential Cookies",
-                    description: "Required for the site to function (cannot be disabled)",
-                    disabled: true,
-                  },
-                  {
-                    key: "cookiesAnalytics" as const,
-                    label: "Analytics Cookies",
-                    description: "Help us understand how you use the site",
-                    disabled: false,
-                  },
-                  {
-                    key: "cookiesMarketing" as const,
-                    label: "Marketing Cookies",
-                    description: "Used to show relevant ads",
-                    disabled: false,
-                  },
-                ].map((setting) => (
-                  <div
-                    key={setting.key}
-                    className="flex items-center justify-between rounded-lg border border-border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{setting.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {setting.description}
-                      </p>
-                    </div>
-                    <Switch
-                      checked={privacy[setting.key]}
-                      onCheckedChange={() => handlePrivacyToggle(setting.key)}
-                      disabled={setting.disabled}
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Communication Preferences */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-semibold">Email Preferences</CardTitle>
-                <CardDescription>
-                  Choose which emails you want to receive
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  {
-                    key: "marketingEmails" as const,
-                    label: "Marketing Emails",
-                    description: "Promotions, tips, and offers",
-                  },
-                  {
-                    key: "productUpdates" as const,
-                    label: "Product Updates",
-                    description: "New features and improvements",
-                  },
-                ].map((setting) => (
-                  <div
-                    key={setting.key}
-                    className="flex items-center justify-between rounded-lg border border-border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{setting.label}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {setting.description}
-                      </p>
-                    </div>
-                    <Switch
-                      checked={privacy[setting.key]}
-                      onCheckedChange={() => handlePrivacyToggle(setting.key)}
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Audit Log Tab */}
-          <TabsContent value="audit" className="mt-6">
-            <Card>
-              <CardHeader>
+                <span className="font-mono text-xs text-muted-foreground">password.config</span>
+              </div>
+              <div className="p-4">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="font-semibold">Security Audit Log</CardTitle>
-                    <CardDescription>
-                      Track all security-related events on your account
-                    </CardDescription>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
+                      <Key className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-muted-foreground">[PASSWORD]:</div>
+                      <div className="font-mono text-xs text-muted-foreground">
+                        Last changed: {new Date(securityData.user.lastPasswordChange).toLocaleDateString()}
+                      </div>
+                    </div>
                   </div>
-                  <Button variant="outline" size="sm" className="font-semibold">
-                    <Download className="mr-2 h-4 w-4" />
-                    Export Log
+                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                    &gt; CHANGE_PASSWORD
                   </Button>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="rounded-md border border-border">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="font-semibold">Action</TableHead>
-                        <TableHead className="font-semibold">Timestamp</TableHead>
-                        <TableHead className="font-semibold">IP Address</TableHead>
-                        <TableHead className="font-semibold">Status</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {securityData.auditLog.map((log) => (
-                        <TableRow key={log.id}>
-                          <TableCell className="font-semibold">{log.action}</TableCell>
-                          <TableCell>{log.timestamp}</TableCell>
-                          <TableCell className="font-mono text-sm">
-                            {log.ip}
-                          </TableCell>
-                          <TableCell>
-                            <Badge
-                              variant={
-                                log.status === "success" ? "default" : "outline"
-                              }
-                              className="font-semibold capitalize w-24 justify-center"
-                            >
-                              {log.status}
-                            </Badge>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+            </div>
+          </div>
+        )}
 
-          {/* Compliance Tab */}
-          <TabsContent value="compliance" className="mt-6 space-y-6">
-            {/* GDPR Controls */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg border border-border bg-primary/10 p-3">
-                    <Globe className="h-6 w-6 text-primary" />
+        {/* Privacy Tab */}
+        {activeTab === "privacy" && (
+          <div className="space-y-6">
+            {/* Profile Privacy */}
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">profile_privacy.config</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-4">[PROFILE_ACTIVITY]:</div>
+                <div className="space-y-3 font-mono text-xs">
+                  {[
+                    { key: "profileVisibility" as const, label: "PROFILE_VISIBILITY", desc: "Allow your profile to be visible to other users" },
+                    { key: "activityTracking" as const, label: "ACTIVITY_TRACKING", desc: "Track my activity to improve experience" },
+                    { key: "searchIndexing" as const, label: "SEARCH_INDEXING", desc: "Allow search engines to index your profile" },
+                  ].map((setting) => (
+                    <div key={setting.key} className="flex items-center justify-between border border-border p-3">
+                      <div>
+                        <div>[{setting.label}]:</div>
+                        <div className="text-muted-foreground">{setting.desc}</div>
+                      </div>
+                      <Switch
+                        checked={privacy[setting.key]}
+                        onCheckedChange={() => handlePrivacyToggle(setting.key)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Cookie Preferences */}
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">cookies.config</span>
+              </div>
+              <div className="p-4">
+                <div className="font-mono text-xs text-muted-foreground mb-4">[COOKIE_PREFERENCES]:</div>
+                <div className="space-y-3 font-mono text-xs">
+                  {[
+                    { key: "cookiesEssential" as const, label: "ESSENTIAL", desc: "Required for the site to function (cannot be disabled)", disabled: true },
+                    { key: "cookiesAnalytics" as const, label: "ANALYTICS", desc: "Help us understand how you use the site", disabled: false },
+                    { key: "cookiesMarketing" as const, label: "MARKETING", desc: "Used to show relevant ads", disabled: false },
+                  ].map((setting) => (
+                    <div key={setting.key} className="flex items-center justify-between border border-border p-3">
+                      <div>
+                        <div>[{setting.label}]:</div>
+                        <div className="text-muted-foreground">{setting.desc}</div>
+                      </div>
+                      <Switch
+                        checked={privacy[setting.key]}
+                        onCheckedChange={() => handlePrivacyToggle(setting.key)}
+                        disabled={setting.disabled}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Audit Log Tab */}
+        {activeTab === "audit" && (
+          <div className="border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">audit.log</span>
+              <Button variant="outline" size="sm" className="rounded-none ml-auto font-mono text-xs h-7">
+                <Download className="mr-2 h-3 w-3" />
+                &gt; EXPORT
+              </Button>
+            </div>
+            <div className="p-4">
+              <div className="font-mono text-xs text-muted-foreground mb-4">[SECURITY_AUDIT_LOG]: COUNT={securityData.auditLog.length}</div>
+
+              {/* Terminal Table */}
+              <div className="border border-border">
+                <div className="grid grid-cols-4 border-b border-border bg-muted/30 px-4 py-2 font-mono text-xs">
+                  <span className="text-muted-foreground">[ACTION]</span>
+                  <span className="text-muted-foreground">[TIMESTAMP]</span>
+                  <span className="text-muted-foreground">[IP_ADDRESS]</span>
+                  <span className="text-muted-foreground">[STATUS]</span>
+                </div>
+                <div className="divide-y divide-border">
+                  {securityData.auditLog.map((log) => (
+                    <div key={log.id} className="grid grid-cols-4 px-4 py-3 font-mono text-xs hover:bg-muted/30">
+                      <span>{log.action}</span>
+                      <span className="text-muted-foreground">{log.timestamp}</span>
+                      <span className="text-muted-foreground">{log.ip}</span>
+                      <span className={`border px-2 py-0.5 w-fit ${
+                        log.status === "success" ? "border-success/50 text-success" : "border-destructive/50 text-destructive"
+                      }`}>
+                        {log.status.toUpperCase()}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Compliance Tab */}
+        {activeTab === "compliance" && (
+          <div className="space-y-6">
+            {/* GDPR Rights */}
+            <div className="border border-border bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">gdpr_rights.tsx</span>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
+                    <Globe className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="font-semibold">GDPR Rights</CardTitle>
-                    <CardDescription>
-                      Exercise your data protection rights
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[GDPR_RIGHTS]:</div>
+                    <div className="font-mono text-xs text-muted-foreground">Exercise your data protection rights</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button
-                  variant="outline"
-                  className="w-full justify-start font-semibold"
-                  onClick={handleExportData}
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download My Data (GDPR Export)
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start font-semibold"
-                >
-                  <Eye className="mr-2 h-4 w-4" />
-                  Request Data Access Report
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start font-semibold"
-                >
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Privacy Policy
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start font-semibold"
-                >
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Terms of Service
-                </Button>
-              </CardContent>
-            </Card>
+                <div className="space-y-2">
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs" onClick={handleExportData}>
+                    <Download className="mr-2 h-4 w-4" />
+                    &gt; DOWNLOAD_MY_DATA (GDPR Export)
+                  </Button>
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                    <Eye className="mr-2 h-4 w-4" />
+                    &gt; REQUEST_DATA_ACCESS_REPORT
+                  </Button>
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                    <FileText className="mr-2 h-4 w-4" />
+                    &gt; VIEW_PRIVACY_POLICY
+                  </Button>
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                    <FileText className="mr-2 h-4 w-4" />
+                    &gt; VIEW_TERMS_OF_SERVICE
+                  </Button>
+                </div>
+              </div>
+            </div>
 
-            {/* Data Deletion */}
-            <Card className="border border-destructive">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg border border-border bg-destructive/10 p-3">
-                    <UserX className="h-6 w-6 text-destructive" />
+            {/* Danger Zone */}
+            <div className="border border-destructive bg-card">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2 rounded-full bg-destructive/50" />
+                  <div className="size-2 rounded-full bg-warning/50" />
+                  <div className="size-2 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">danger_zone.tsx</span>
+              </div>
+              <div className="p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center border border-border bg-destructive/10">
+                    <UserX className="h-5 w-5 text-destructive" />
                   </div>
                   <div>
-                    <CardTitle className="font-semibold">Danger Zone</CardTitle>
-                    <CardDescription>
-                      Irreversible actions - proceed with caution
-                    </CardDescription>
+                    <div className="font-mono text-xs text-muted-foreground">[DANGER_ZONE]:</div>
+                    <div className="font-mono text-xs text-muted-foreground">Irreversible actions - proceed with caution</div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Alert>
+                <Alert className="mb-4">
                   <AlertTriangle className="h-4 w-4" />
-                  <AlertDescription className="font-semibold">
-                    Deleting your account is permanent and cannot be undone. All your
-                    data will be permanently erased.
+                  <AlertDescription className="rounded-none font-mono text-xs">
+                    Deleting your account is permanent and cannot be undone. All your data will be permanently erased.
                   </AlertDescription>
                 </Alert>
                 <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                   <AlertDialogTrigger asChild>
-                    <Button
-                      variant="destructive"
-                      className="w-full font-semibold"
-                    >
+                    <Button variant="destructive" className="rounded-none w-full font-mono text-xs">
                       <Trash2 className="mr-2 h-4 w-4" />
-                      Delete My Account
+                      &gt; DELETE_MY_ACCOUNT
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
-                    <AlertDialogTitle>Delete Account</AlertDialogTitle>
-                    <AlertDialogDescription>
+                    <AlertDialogTitle className="font-mono">[DELETE_ACCOUNT]</AlertDialogTitle>
+                    <AlertDialogDescription className="rounded-none font-mono text-xs">
                       Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently erased.
                     </AlertDialogDescription>
                     <div className="flex gap-4 justify-end">
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={handleDeleteAccount}
-                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
                       >
-                        Delete Account
+                        &gt; DELETE_ACCOUNT
                       </AlertDialogAction>
                     </div>
                   </AlertDialogContent>
                 </AlertDialog>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">
@@ -761,21 +563,21 @@ export default function SecurityPrivacyTemplate() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-          <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> Security score dashboard with recommendations</div>
               <div><span className="text-success">&gt;</span> Two-factor authentication setup (TOTP placeholder)</div>
-              <div><span className="text-success">&gt;</span> OAuth account management (Google, GitHub)</div>
               <div><span className="text-success">&gt;</span> Active sessions viewer with device details and IP addresses</div>
               <div><span className="text-success">&gt;</span> Session revocation and bulk sign-out</div>
-              <div><span className="text-success">&gt;</span> Privacy controls (11 toggles for profile, cookies, emails)</div>
+              <div><span className="text-success">&gt;</span> Privacy controls (profile, cookies, emails)</div>
               <div><span className="text-success">&gt;</span> Security audit log with timestamps and status badges</div>
               <div><span className="text-success">&gt;</span> GDPR compliance (data export, access request, policies)</div>
               <div><span className="text-success">&gt;</span> Account deletion with confirmation modal</div>
               <div><span className="text-success">&gt;</span> 4-tab navigation (Security, Privacy, Audit Log, Compliance)</div>
+              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
+            <div className="mt-3 font-mono text-xs text-muted-foreground">
               [NOTE]: Integrate with src/components/security/. Add API routes for session management and 2FA.
             </div>
           </div>

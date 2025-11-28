@@ -8,16 +8,7 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
 import {
@@ -76,7 +67,7 @@ const emailTemplates = [
     name: "Welcome Email",
     description: "Sent after successful purchase with license key",
     icon: Mail,
-    category: "Onboarding",
+    category: "ONBOARDING",
     triggers: ["Purchase completed", "Account created"],
     variables: ["name", "licenseKey", "downloadUrl"],
     preview: generateWelcomeEmailHTML({
@@ -90,7 +81,7 @@ const emailTemplates = [
     name: "Email Verification",
     description: "Confirm email address for new accounts",
     icon: Shield,
-    category: "Authentication",
+    category: "AUTH",
     triggers: ["User registration"],
     variables: ["name", "verificationUrl"],
     preview: generateVerifyEmailHTML({
@@ -103,7 +94,7 @@ const emailTemplates = [
     name: "Password Reset",
     description: "Secure password reset link",
     icon: Key,
-    category: "Authentication",
+    category: "AUTH",
     triggers: ["Forgot password request"],
     variables: ["name", "resetUrl", "ipAddress"],
     preview: `<!DOCTYPE html>
@@ -137,7 +128,7 @@ const emailTemplates = [
                 </tr>
               </table>
               <div style="background-color: #FEE2E2; border: 1px solid: #DC2626; border-radius: 6px; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0; color: #991B1B; font-size: 14px;"><strong>⏱️ This link expires in 1 hour.</strong></p>
+                <p style="margin: 0; color: #991B1B; font-size: 14px;"><strong>This link expires in 1 hour.</strong></p>
               </div>
               <p style="margin: 0; color: #737373; font-size: 13px; line-height: 1.5;">
                 If you didn't request a password reset, please ignore this email or contact support if you have concerns.
@@ -161,7 +152,7 @@ const emailTemplates = [
     name: "Purchase Confirmation",
     description: "Order receipt and next steps",
     icon: CreditCard,
-    category: "Billing",
+    category: "BILLING",
     triggers: ["Payment succeeded"],
     variables: ["name", "amount", "orderId", "date"],
     preview: `<!DOCTYPE html>
@@ -234,7 +225,7 @@ const emailTemplates = [
     name: "Subscription Update",
     description: "Plan changes, renewals, and cancellations",
     icon: Bell,
-    category: "Billing",
+    category: "BILLING",
     triggers: ["Subscription updated", "Payment renewed"],
     variables: ["name", "plan", "status", "nextBillingDate"],
     preview: `<!DOCTYPE html>
@@ -310,9 +301,8 @@ export default function EmailTemplatesShowcase() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [selectedTemplate, setSelectedTemplate] = useState(emailTemplates[0]);
   const [copied, setCopied] = useState(false);
-  const [primaryColor, setPrimaryColor] = useState('271.5 81.3% 55.9%'); // Default purple
+  const [primaryColor, setPrimaryColor] = useState('271.5 81.3% 55.9%');
 
-  // Track theme changes
   useEffect(() => {
     const updatePrimaryColor = () => {
       const color = getComputedStyle(document.documentElement)
@@ -321,10 +311,8 @@ export default function EmailTemplatesShowcase() {
       if (color) setPrimaryColor(color);
     };
 
-    // Initial color
     updatePrimaryColor();
 
-    // Watch for theme changes (data-theme attribute changes)
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'data-theme') {
@@ -354,7 +342,7 @@ export default function EmailTemplatesShowcase() {
   return (
     <div className="min-h-screen bg-background">
       {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
+      <DemoNav backButtonText="Back" backButtonHref="/templates" />
 
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
@@ -371,194 +359,185 @@ export default function EmailTemplatesShowcase() {
               5 production-ready transactional email templates with HTML and text versions
             </p>
           </div>
-          <Button className="font-mono text-xs">
+          <Button className="rounded-none font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
             &gt; DOWNLOAD_ALL
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="grid gap-6 md:grid-cols-4">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Total Templates</CardDescription>
-              <CardTitle className="text-3xl font-semibold">5</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Categories</CardDescription>
-              <CardTitle className="text-3xl font-semibold">3</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Email Provider</CardDescription>
-              <CardTitle className="text-3xl font-semibold">Resend</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-3">
-              <CardDescription className="font-semibold">Compatibility</CardDescription>
-              <CardTitle className="text-3xl font-semibold">100%</CardTitle>
-            </CardHeader>
-          </Card>
+        {/* Stats - Terminal Style */}
+        <div className="grid gap-4 md:grid-cols-4">
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[TOTAL_TEMPLATES]:</div>
+            <div className="text-3xl font-bold">5</div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[CATEGORIES]:</div>
+            <div className="text-3xl font-bold">3</div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[EMAIL_PROVIDER]:</div>
+            <div className="text-3xl font-bold">Resend</div>
+          </div>
+          <div className="border border-border bg-card p-4">
+            <div className="font-mono text-xs text-muted-foreground mb-1">[COMPATIBILITY]:</div>
+            <div className="text-3xl font-bold">100%</div>
+          </div>
         </div>
 
         {/* Main Layout */}
         <div className="grid gap-6 lg:grid-cols-3">
-          {/* Template List */}
-          <Card className="lg:col-span-1">
-            <CardHeader>
-              <CardTitle className="font-semibold">Templates</CardTitle>
-              <CardDescription>
-                Click to preview each email template
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              {emailTemplates.map((template) => {
-                const Icon = template.icon;
-                return (
-                  <button
-                    key={template.id}
-                    onClick={() => setSelectedTemplate(template)}
-                    className={`w-full rounded-lg border border-border p-4 text-left transition-all ${
-                      selectedTemplate.id === template.id
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background hover:bg-muted"
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <Icon
-                        className={`mt-1 h-5 w-5 ${
-                          selectedTemplate.id === template.id
-                            ? "text-primary-foreground"
-                            : "text-primary"
-                        }`}
-                      />
-                      <div className="flex-1">
-                        <p className="font-semibold">{template.name}</p>
-                        <p
-                          className={`text-sm ${
-                            selectedTemplate.id === template.id
-                              ? "text-primary-foreground/80"
-                              : "text-muted-foreground"
-                          }`}
-                        >
-                          {template.description}
-                        </p>
-                        <Badge
-                          variant={
-                            selectedTemplate.id === template.id
-                              ? "secondary"
-                              : "outline"
-                          }
-                          className="mt-2 font-semibold"
-                        >
-                          {template.category}
-                        </Badge>
+          {/* Template List - Terminal Style */}
+          <div className="lg:col-span-1 border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">templates.json</span>
+            </div>
+            <div className="p-4">
+              <div className="font-mono text-xs text-muted-foreground mb-4">[AVAILABLE_TEMPLATES]:</div>
+              <div className="space-y-2">
+                {emailTemplates.map((template) => {
+                  const Icon = template.icon;
+                  return (
+                    <button
+                      key={template.id}
+                      onClick={() => setSelectedTemplate(template)}
+                      className={`w-full border p-3 text-left transition-all font-mono text-xs ${
+                        selectedTemplate.id === template.id
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:bg-muted"
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <Icon className={`mt-0.5 h-4 w-4 ${
+                          selectedTemplate.id === template.id ? "text-primary" : "text-muted-foreground"
+                        }`} />
+                        <div className="flex-1 min-w-0">
+                          <div className="font-bold">{template.name}</div>
+                          <div className="text-muted-foreground truncate">{template.description}</div>
+                          <div className="mt-1.5 inline-block border border-border px-1.5 py-0.5">
+                            {template.category}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </CardContent>
-          </Card>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
 
-          {/* Preview Area */}
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <div className="flex items-center justify-between">
+          {/* Preview Area - Terminal Style */}
+          <div className="lg:col-span-2 border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">{selectedTemplate.id}_email.html</span>
+              <div className="ml-auto flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  className="font-mono text-xs h-7"
+                >
+                  {copied ? <CheckCircle2 className="mr-1 h-3 w-3" /> : <Copy className="mr-1 h-3 w-3" />}
+                  {copied ? "COPIED" : "&gt; COPY"}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSendTest}
+                  className="font-mono text-xs h-7"
+                >
+                  <Send className="mr-1 h-3 w-3" />
+                  &gt; SEND_TEST
+                </Button>
+              </div>
+            </div>
+
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-4">
                 <div>
-                  <CardTitle className="font-semibold">
-                    {selectedTemplate.name}
-                  </CardTitle>
-                  <CardDescription>
-                    {selectedTemplate.description}
-                  </CardDescription>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleCopy}
-                    className="font-semibold"
-                  >
-                    {copied ? (
-                      <CheckCircle2 className="mr-2 h-4 w-4" />
-                    ) : (
-                      <Copy className="mr-2 h-4 w-4" />
-                    )}
-                    {copied ? "Copied!" : "Copy HTML"}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleSendTest}
-                    className="font-semibold"
-                  >
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Test
-                  </Button>
+                  <div className="font-mono text-xs text-muted-foreground">[{selectedTemplate.name.toUpperCase().replace(/ /g, "_")}]:</div>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">{selectedTemplate.description}</div>
                 </div>
               </div>
-            </CardHeader>
-            <CardContent>
-              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="preview" className="font-semibold">
-                    <Eye className="mr-2 h-4 w-4" />
-                    Preview
-                  </TabsTrigger>
-                  <TabsTrigger value="code" className="font-semibold">
-                    <Code className="mr-2 h-4 w-4" />
-                    HTML Code
-                  </TabsTrigger>
-                </TabsList>
 
-                <TabsContent value="preview" className="mt-6">
-                  <div className="rounded-lg border border-border bg-muted p-4">
-                    <iframe
-                      srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
-                      title={selectedTemplate.name}
-                      className="min-h-[1200px] w-[700px] mx-auto block rounded border border-border bg-white"
-                    />
-                  </div>
-                </TabsContent>
+              {/* Tab Navigation */}
+              <div className="flex border border-border mb-4 font-mono text-xs">
+                <button
+                  onClick={() => setActiveTab("preview")}
+                  className={`flex items-center gap-1 px-4 py-2 border-r border-border transition-colors ${
+                    activeTab === "preview"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  <Eye className="h-3 w-3" />
+                  [PREVIEW]
+                </button>
+                <button
+                  onClick={() => setActiveTab("code")}
+                  className={`flex items-center gap-1 px-4 py-2 transition-colors ${
+                    activeTab === "code"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  <Code className="h-3 w-3" />
+                  [HTML_CODE]
+                </button>
+              </div>
 
-                <TabsContent value="code" className="mt-6">
-                  <div className="max-h-[600px] overflow-auto">
-                    <CodeBlock code={selectedTemplate.preview} language="markup" />
-                  </div>
-                </TabsContent>
-              </Tabs>
+              {activeTab === "preview" && (
+                <div className="border border-border bg-muted p-4">
+                  <iframe
+                    srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
+                    title={selectedTemplate.name}
+                    className="min-h-[600px] w-full mx-auto block border border-border bg-white"
+                  />
+                </div>
+              )}
+
+              {activeTab === "code" && (
+                <div className="max-h-[600px] overflow-auto border border-border">
+                  <CodeBlock code={selectedTemplate.preview} language="markup" />
+                </div>
+              )}
 
               {/* Template Details */}
-              <div className="mt-6 space-y-4">
+              <div className="mt-4 pt-4 border-t border-border space-y-4 font-mono text-xs">
                 <div>
-                  <h4 className="mb-2 font-semibold">Trigger Events</h4>
+                  <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
                   <div className="flex flex-wrap gap-2">
                     {selectedTemplate.triggers.map((trigger, idx) => (
-                      <Badge key={idx} variant="outline" className="font-semibold">
+                      <span key={idx} className="border border-border px-2 py-0.5">
                         {trigger}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="mb-2 font-semibold">Variables</h4>
+                  <div className="text-muted-foreground mb-2">[VARIABLES]:</div>
                   <div className="flex flex-wrap gap-2">
                     {selectedTemplate.variables.map((variable, idx) => (
-                      <Badge key={idx} className="font-mono font-semibold">
+                      <span key={idx} className="border border-primary/50 px-2 py-0.5 text-primary">
                         {`{${variable}}`}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         {/* Implementation Note */}
@@ -571,9 +550,9 @@ export default function EmailTemplatesShowcase() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-          <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> 5 email templates (Welcome, Verification, Password Reset, Purchase, Subscription)</div>
               <div><span className="text-success">&gt;</span> Both HTML and plain text versions for all templates</div>
               <div><span className="text-success">&gt;</span> Mobile-responsive table-based layouts (works in all email clients)</div>
@@ -582,8 +561,9 @@ export default function EmailTemplatesShowcase() {
               <div><span className="text-success">&gt;</span> CTA buttons with proper link tracking</div>
               <div><span className="text-success">&gt;</span> Security notices and expiry warnings</div>
               <div><span className="text-success">&gt;</span> Resend integration ready (src/lib/email.ts)</div>
+              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
+            <div className="mt-3 font-mono text-xs text-muted-foreground">
               [NOTE]: All templates in src/emails/. Add your Resend API key to start sending emails.
             </div>
           </div>

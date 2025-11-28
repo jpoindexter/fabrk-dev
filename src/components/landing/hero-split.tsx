@@ -38,7 +38,7 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <Badge variant="default" size="lg">
+              <Badge variant="default" size="lg" className="rounded-none">
                 Early Access - Join First 100 Launch Customers
               </Badge>
             </div>
@@ -57,7 +57,7 @@ export function HeroSplit({
             <div className="mb-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="h-14 bg-primary px-8 text-lg font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                className="rounded-none h-14 bg-primary px-8 text-lg font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                 asChild
               >
                 <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
@@ -65,7 +65,7 @@ export function HeroSplit({
               <Button
                 size="lg"
                 variant="outline"
-                className="h-14 border-2 border-foreground px-8 text-lg font-semibold text-foreground transition-all hover:bg-foreground hover:text-background"
+                className="rounded-none h-14 border-2 border-foreground px-8 text-lg font-semibold text-foreground transition-all hover:bg-foreground hover:text-background"
                 asChild
               >
                 <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -79,7 +79,7 @@ export function HeroSplit({
                   key={badge}
                   variant="outline"
                   size="md"
-                  className="border-2 border-foreground shadow-[2px_2px_0px_0px_var(--foreground)]"
+                  className="rounded-none border-2 border-foreground shadow-[2px_2px_0px_0px_var(--foreground)]"
                 >
                   {badge}
                 </Badge>
@@ -94,20 +94,20 @@ export function HeroSplit({
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className="relative rounded-lg border-4 border-foreground bg-muted shadow-[8px_8px_0px_0px_var(--foreground)]">
+            <div className="relative border-4 border-foreground bg-muted shadow-[8px_8px_0px_0px_var(--foreground)]">
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
-                <div className="h-full w-full rounded border-2 border-border/20 bg-card p-4">
+                <div className="h-full w-full border-2 border-border/20 bg-card p-4">
                   {/* Header */}
                   <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-3">
                     <div className="flex items-center gap-3">
                       <div className="h-8 w-8 rounded-full border-2 border-foreground bg-primary"></div>
                       <div>
-                        <div className="h-3 w-24 rounded bg-black/20"></div>
-                        <div className="mt-1 h-2 w-16 rounded bg-black/10"></div>
+                        <div className="h-3 w-24 bg-black/20"></div>
+                        <div className="mt-1 h-2 w-16 bg-black/10"></div>
                       </div>
                     </div>
-                    <div className="h-8 w-8 rounded border-2 border-foreground bg-muted"></div>
+                    <div className="h-8 w-8 border-2 border-foreground bg-muted"></div>
                   </div>
 
                   {/* Stats Cards */}
@@ -115,23 +115,23 @@ export function HeroSplit({
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="rounded border-2 border-foreground bg-card p-3 shadow-[2px_2px_0px_0px_var(--foreground)]"
+                        className="border-2 border-foreground bg-card p-3 shadow-[2px_2px_0px_0px_var(--foreground)]"
                       >
-                        <div className="mb-2 h-2 w-12 rounded bg-black/10"></div>
-                        <div className="h-4 w-8 rounded bg-primary/20"></div>
+                        <div className="mb-2 h-2 w-12 bg-black/10"></div>
+                        <div className="h-4 w-8 bg-primary/20"></div>
                       </div>
                     ))}
                   </div>
 
                   {/* Data Table Preview */}
-                  <div className="rounded border-2 border-foreground bg-card">
+                  <div className="border-2 border-foreground bg-card">
                     <div className="border-b-2 border-foreground/10 p-2">
-                      <div className="h-3 w-20 rounded bg-black/20"></div>
+                      <div className="h-3 w-20 bg-black/20"></div>
                     </div>
                     <div className="space-y-2 p-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="flex gap-2">
-                          <div className="h-3 w-full rounded bg-black/5"></div>
+                          <div className="h-3 w-full bg-black/5"></div>
                         </div>
                       ))}
                     </div>

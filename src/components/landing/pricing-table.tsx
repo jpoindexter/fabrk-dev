@@ -189,7 +189,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           {plan.price}
                         </div>
                         {plan.highlighted && (
-                          <Badge variant="default" size="sm">
+                          <Badge variant="default" size="sm" className="rounded-none">
                             Best Value
                           </Badge>
                         )}
@@ -239,7 +239,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                       }`}
                     >
                       <Button
-                        className={`w-full ${
+                        className={`rounded-none w-full ${
                           plan.highlighted
                             ? "bg-primary text-primary-foreground hover:bg-primary/90"
                             : "border-2 border-foreground bg-card text-foreground hover:bg-foreground hover:text-background"

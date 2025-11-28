@@ -88,7 +88,7 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
               viewport={{ once: true }}
-              className="group rounded-lg border border-border bg-card p-6 transition-all hover:border-primary/50"
+              className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
             >
               <div className="mb-4 text-3xl font-normal text-muted-foreground/30">"</div>
               <Small className="block mb-6 text-muted-foreground">

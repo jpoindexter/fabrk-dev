@@ -131,7 +131,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="border border-border"
+      className="border border-border bg-card"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -167,7 +167,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-16 border-t border-border bg-background px-6 py-20 lg:py-28"
+      className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28"
     >
       <div className="mx-auto max-w-4xl">
         {/* Header */}
@@ -178,7 +178,7 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <div className="mb-4 inline-block border border-border px-3 py-1">
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[KNOWLEDGE_BASE]: QUERY_SYSTEM</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
