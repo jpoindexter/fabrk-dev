@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
+import { Mermaid } from "@/components/ui/mermaid";
 import Link from "next/link";
 
 export const metadata = {
@@ -24,7 +25,7 @@ export default function ArchitecturePage() {
                     Fabrk is built on the <strong>T3 Stack</strong> philosophy but extended for enterprise SaaS requirements.
                     It leverages Next.js 15 (App Router) for the full-stack framework, ensuring type safety from the database to the frontend.
                 </p>
-                <CodeBlock language="mermaid" code={`graph TD
+                <Mermaid chart={`graph TD
     subgraph Client
         Browser[Browser / Mobile]
     end
