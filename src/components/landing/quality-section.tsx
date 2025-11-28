@@ -66,7 +66,7 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4">
+            <H2 className="mb-4 font-mono">
               Built to Last, Tested to Ship
             </H2>
           </motion.div>
@@ -76,7 +76,7 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Body className="mx-auto max-w-2xl text-muted-foreground">
+            <Body className="mx-auto max-w-2xl font-mono text-muted-foreground">
               Every component is battle-tested with comprehensive coverage. No cutting corners,
               no technical debt. Production-ready from day one.
             </Body>

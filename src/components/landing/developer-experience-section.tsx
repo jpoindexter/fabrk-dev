@@ -68,10 +68,10 @@ export function DeveloperExperienceSection() {
           </Badge>
         </div>
 
-        <h2 className="mb-2 text-center text-3xl font-semibold text-foreground">
+        <h2 className="mb-2 text-center font-mono text-3xl font-semibold text-foreground">
           Developer Experience Matters
         </h2>
-        <p className="mb-16 text-center text-lg text-muted-foreground">
+        <p className="mb-16 text-center font-mono text-lg text-muted-foreground">
           Fast builds, clean code, zero friction. Ship features, not fight tooling.
         </p>
 
@@ -96,10 +96,10 @@ export function DeveloperExperienceSection() {
                     <IconComponent className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-foreground">
+                <h3 className="mb-3 font-mono text-lg font-semibold text-foreground">
                   {feature.title}
                 </h3>
-                <p className="text-sm font-normal leading-relaxed text-muted-foreground">
+                <p className="font-mono text-sm font-normal leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>

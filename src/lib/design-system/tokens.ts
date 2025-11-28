@@ -115,7 +115,7 @@ const shadows = {
 const typography = {
   fonts: {
     sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", '"Segoe UI"', "sans-serif"],
-    mono: ["var(--font-mono)", '"JetBrains Mono"', '"SFMono-Regular"', '"Fira Code"', "monospace"],
+    mono: ["var(--font-jetbrains-mono)", '"SFMono-Regular"', '"Fira Code"', "monospace"],
   },
   size: {
     xs: "0.75rem",

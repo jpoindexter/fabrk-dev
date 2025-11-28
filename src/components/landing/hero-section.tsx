@@ -59,7 +59,7 @@ export function HeroSection() {
               <h1 className="mb-2 font-mono text-sm text-muted-foreground">
                 FABRK_INIT:
               </h1>
-              <h2 className="mb-6 text-4xl font-bold tracking-tight lg:text-5xl">
+              <h2 className="mb-6 font-mono text-4xl font-bold tracking-tight lg:text-5xl">
                 Building your SaaS
                 <br />
                 <span className="text-primary">just got unfairly easy.</span>
@@ -76,7 +76,7 @@ export function HeroSection() {
               <div className="mb-3 font-mono text-xs text-muted-foreground">
                 [ [0x01] STATUS ]────────────────────────
               </div>
-              <p className="mb-4 text-muted-foreground">
+              <p className="mb-4 font-mono text-sm text-muted-foreground">
                 Why spend valuable time tackling auth, billing, emails, organizations,
                 invites and onboarding? Focus on your business and skip the noise.
               </p>

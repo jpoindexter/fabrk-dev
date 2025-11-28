@@ -126,8 +126,8 @@ export function ExitIntentPopup({
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <DialogTitle className="text-center text-2xl">{title}</DialogTitle>
-          <DialogDescription className="text-center text-base">
+          <DialogTitle className="text-center font-mono text-2xl">{title}</DialogTitle>
+          <DialogDescription className="text-center font-mono text-sm">
             {description}
           </DialogDescription>
         </DialogHeader>
@@ -136,14 +136,14 @@ export function ExitIntentPopup({
           <div className="my-4 border-2 border-border bg-card p-4">
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-3xl font-bold text-foreground">
+                <span className="font-mono text-3xl font-bold text-foreground">
                   $175
                 </span>
-                <span className="text-lg text-muted-foreground line-through">
+                <span className="font-mono text-lg text-muted-foreground line-through">
                   $299
                 </span>
               </div>
-              <Small className="block text-muted-foreground">
+              <Small className="block font-mono text-muted-foreground">
                 One-time payment. Lifetime access.
               </Small>
             </div>
@@ -153,14 +153,14 @@ export function ExitIntentPopup({
         <DialogFooter className="flex-col gap-2 sm:flex-col">
           <PolarCheckoutButton
             discountId={EXIT_INTENT_DISCOUNT_ID}
-            className="rounded-none w-full"
+            className="rounded-none w-full font-mono"
           >
-            Get Fabrk Now
+            &gt; GET_FABRK_NOW
           </PolarCheckoutButton>
           <Button
             onClick={handleClose}
             variant="ghost"
-            className="rounded-none w-full"
+            className="rounded-none w-full font-mono text-xs"
             size="sm"
           >
             {secondaryCtaText}
@@ -169,7 +169,7 @@ export function ExitIntentPopup({
 
         {/* 30-day guarantee badge */}
         <div className="mt-4 text-center">
-          <Small className="text-muted-foreground">
+          <Small className="font-mono text-muted-foreground">
             30-day money-back guarantee • No questions asked
           </Small>
         </div>

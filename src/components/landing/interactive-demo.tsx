@@ -29,10 +29,10 @@ export function InteractiveDemo() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="font-mono text-4xl font-bold tracking-tight sm:text-5xl">
               🎬 Live Demo: Explore Templates
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-lg text-muted-foreground">
               See production-ready dashboards, data tables, and settings pages. Click tabs to explore.
             </p>
           </div>

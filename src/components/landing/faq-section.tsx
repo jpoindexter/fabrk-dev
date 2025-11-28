@@ -181,7 +181,7 @@ export function FAQSection() {
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[ [0x60] KNOWLEDGE_BASE ] QUERY_SYSTEM │ FIB[13] ENTRIES</span>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
             Frequently Asked Questions
           </h2>
         </motion.div>

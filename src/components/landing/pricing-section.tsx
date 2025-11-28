@@ -42,14 +42,14 @@ export function PricingSection() {
             </div>
 
             <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
-            <h3 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
+            <h3 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
               One-time purchase.
               <br />
               <span className="text-muted-foreground">Unlimited projects.</span>
             </h3>
 
             <div className="mb-6 border-l-2 border-border pl-4">
-              <p className="text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Upon purchase, you can use the starter kits for personal and
                 commercial projects with no restrictions on the number of
                 developers or projects.

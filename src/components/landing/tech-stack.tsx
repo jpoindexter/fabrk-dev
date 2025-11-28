@@ -23,7 +23,7 @@ export function TechStack() {
   return (
     <section className="border-t border-border bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center text-2xl font-semibold text-foreground">
+        <h2 className="mb-12 text-center font-mono text-2xl font-semibold text-foreground">
           A Modern Stack You Can Trust.
         </h2>
 
@@ -37,7 +37,7 @@ export function TechStack() {
                 path={tech.path}
                 className="h-8 w-8 text-foreground transition-colors group-hover:text-primary"
               />
-              <span className="text-xs font-medium text-muted-foreground">
+              <span className="font-mono text-xs font-medium text-muted-foreground">
                 {tech.name}
               </span>
             </div>

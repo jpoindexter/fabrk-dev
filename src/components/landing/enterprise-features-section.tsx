@@ -78,7 +78,7 @@ export function EnterpriseFeaturesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4">
+            <H2 className="mb-4 font-mono">
               Built for Scale, Security, and Teams
             </H2>
           </motion.div>
@@ -88,7 +88,7 @@ export function EnterpriseFeaturesSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Body className="mx-auto max-w-2xl text-muted-foreground">
+            <Body className="mx-auto max-w-2xl font-mono text-muted-foreground">
               Production-ready enterprise features that would cost $10,000+ to build yourself.
               All included, fully tested, and ready to deploy.
             </Body>

@@ -64,7 +64,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4">
+            <H2 className="mb-4 font-mono">
               Loved by Developers
             </H2>
           </motion.div>
@@ -74,7 +74,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Body className="text-muted-foreground">
+            <Body className="font-mono text-muted-foreground">
               Early access customer feedback
             </Body>
           </motion.div>

@@ -72,7 +72,7 @@ function FeatureSection({ spec, title, description, features, reversed, children
         </div>
 
         {/* Title */}
-        <h3 className="mb-4 text-2xl font-bold">{title}</h3>
+        <h3 className="mb-4 font-mono text-2xl font-bold">{title}</h3>
 
         {/* Description */}
         <div className="mb-6 border-l-2 border-border pl-4">
@@ -323,7 +323,7 @@ export function FeaturesSection() {
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]</span>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
             Built for serious SaaS products
           </h2>
           <p className="max-w-2xl font-mono text-sm text-muted-foreground">

@@ -88,7 +88,7 @@ export function StickyCTABar({
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <Small className="text-center font-medium sm:text-left">
+              <Small className="text-center font-mono font-medium sm:text-left">
                 {message}
               </Small>
               {showPrice && (
@@ -96,7 +96,7 @@ export function StickyCTABar({
                   <Badge variant="default" size="sm" className="rounded-none">
                     {config.pricing.fabrk.display.current}
                   </Badge>
-                  <Small className="text-muted-foreground line-through">
+                  <Small className="font-mono text-muted-foreground line-through">
                     {config.pricing.fabrk.display.original}
                   </Small>
                 </div>
@@ -105,9 +105,9 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm" className="rounded-none">
+              <Button asChild size="sm" className="rounded-none font-mono">
                 <Link href={ctaHref}>
-                  {ctaText}
+                  &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
