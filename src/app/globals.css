@@ -57,7 +57,7 @@
 @theme {
   /* Font families */
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Border radius */
   --radius: 0.5rem;
