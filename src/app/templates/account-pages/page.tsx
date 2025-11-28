@@ -7,13 +7,15 @@
 
 import Link from "next/link";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 
 export default function AccountPagesPage() {
   const categoryTemplates = getTemplatesByCategory("account");
   const categoryInfo = getCategoryInfo("account");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative isolate min-h-screen bg-background">
+      <TerminalBackground />
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Category Header */}
         <section className="space-y-4">

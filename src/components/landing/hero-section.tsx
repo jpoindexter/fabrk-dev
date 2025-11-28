@@ -5,11 +5,12 @@
  */
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 import { DiscountCounter } from "@/components/polar/discount-counter";
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
   siNextdotjs,
@@ -20,6 +21,91 @@ import {
   siStripe,
   siResend,
 } from "simple-icons";
+
+// Animated counter for timing values
+function TimingCounter({ value, delay }: { value: number; delay: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: 800, bounce: 0 });
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => motionValue.set(value), delay * 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, motionValue, value, delay]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = `FIB[${Math.floor(latest)}]ms`;
+      }
+    });
+    return unsubscribe;
+  }, [springValue]);
+
+  return <span ref={ref}>FIB[0]ms</span>;
+}
+
+// Typewriter effect component
+function TypeWriter({
+  text,
+  delay = 0,
+  speed = 30,
+  showCursor = false
+}: {
+  text: string;
+  delay?: number;
+  speed?: number;
+  showCursor?: boolean;
+}) {
+  const [displayText, setDisplayText] = useState("");
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const startTimer = setTimeout(() => {
+      setStarted(true);
+    }, delay * 1000);
+
+    return () => clearTimeout(startTimer);
+  }, [isInView, delay]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= text.length) {
+        setDisplayText(text.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, speed);
+
+    return () => clearInterval(timer);
+  }, [started, text, speed]);
+
+  return (
+    <span ref={ref}>
+      {displayText}
+      {showCursor && displayText.length < text.length && (
+        <motion.span
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 0.8, repeat: Infinity }}
+          className="text-primary"
+        >
+          █
+        </motion.span>
+      )}
+    </span>
+  );
+}
 
 const techStack = [
   { name: "NEXT.JS", path: siNextdotjs.path },
@@ -141,13 +227,29 @@ export function HeroSection() {
             className="flex flex-col justify-center"
           >
             {/* Terminal Window Frame */}
-            <div className="border border-border bg-card">
+            <motion.div
+              className="border border-border bg-card"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               {/* Window Title Bar */}
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-1.5">
-                  <div className="size-3 rounded-full bg-destructive/50" />
-                  <div className="size-3 rounded-full bg-warning/50" />
-                  <div className="size-3 rounded-full bg-success/50" />
+                  <motion.div
+                    className="size-3 rounded-full bg-destructive/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                  />
+                  <motion.div
+                    className="size-3 rounded-full bg-warning/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+                  />
+                  <motion.div
+                    className="size-3 rounded-full bg-success/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+                  />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">
                   [0x03] fabrk_dashboard.exe │ PID:2584
@@ -157,44 +259,98 @@ export function HeroSection() {
               {/* Terminal Content */}
               <div className="p-6">
                 <div className="mb-6 font-mono text-xs text-muted-foreground">
-                  <div>│ &gt; Initializing Fabrk dashboard...</div>
-                  <div className="mt-1">│ &gt; Loading components... <span className="text-success">[OK]</span> FIB[21]ms</div>
-                  <div className="mt-1">│ &gt; Connecting services... <span className="text-success">[OK]</span> FIB[34]ms</div>
-                  <div className="mt-1">└─ System ready. Total: FIB[55]ms</div>
+                  <div>
+                    │ &gt; <TypeWriter text="Initializing Fabrk dashboard..." delay={0.5} speed={25} showCursor />
+                  </div>
+                  <div className="mt-1">
+                    │ &gt; <TypeWriter text="Loading components..." delay={1.5} speed={25} />{" "}
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.3 }}
+                      className="text-success"
+                    >
+                      [OK]
+                    </motion.span>{" "}
+                    <TimingCounter value={21} delay={2.3} />
+                  </div>
+                  <div className="mt-1">
+                    │ &gt; <TypeWriter text="Connecting services..." delay={2.6} speed={25} />{" "}
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 3.4 }}
+                      className="text-success"
+                    >
+                      [OK]
+                    </motion.span>{" "}
+                    <TimingCounter value={34} delay={3.4} />
+                  </div>
+                  <div className="mt-1">
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 3.7 }}
+                    >
+                      └─ System ready. Total: <TimingCounter value={55} delay={3.7} />
+                    </motion.span>
+                  </div>
                 </div>
 
                 {/* Dashboard Mock */}
                 <div className="grid gap-3">
-                  <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">│ [0x04] AUTH_MODULE</span>
-                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
-                  </div>
-                  <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">│ [0x05] BILLING_MODULE</span>
-                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
-                  </div>
-                  <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">│ [0x06] ORG_MODULE</span>
-                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
-                  </div>
-                  <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">└ [0x07] EMAIL_MODULE</span>
-                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
-                  </div>
+                  {[
+                    { id: "0x04", name: "AUTH_MODULE", prefix: "│" },
+                    { id: "0x05", name: "BILLING_MODULE", prefix: "│" },
+                    { id: "0x06", name: "ORG_MODULE", prefix: "│" },
+                    { id: "0x07", name: "EMAIL_MODULE", prefix: "└" },
+                  ].map((module, idx) => (
+                    <motion.div
+                      key={module.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 4.0 + idx * 0.2 }}
+                      whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
+                      className="flex items-center justify-between border border-border bg-background p-3 transition-colors"
+                    >
+                      <span className="font-mono text-xs">{module.prefix} [{module.id}] {module.name}</span>
+                      <motion.span
+                        className="font-mono text-xs text-success"
+                        animate={{ opacity: [1, 0.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
+                      >
+                        ■ ACTIVE
+                      </motion.span>
+                    </motion.div>
+                  ))}
                 </div>
 
                 {/* Blinking Cursor */}
                 <div className="mt-4 font-mono text-xs">
-                  <span className="text-muted-foreground">&gt; Ready for deployment</span>
-                  <span className="ml-1 inline-block animate-pulse text-primary">█</span>
+                  <span className="text-muted-foreground">
+                    &gt; <TypeWriter text="Ready for deployment" delay={4.8} speed={40} />
+                  </span>
+                  <motion.span
+                    className="ml-1 inline-block text-primary"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 0, 1] }}
+                    transition={{ delay: 5.6, duration: 1, repeat: Infinity }}
+                  >
+                    █
+                  </motion.span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Discount Counter Below */}
-            <div className="mt-6 flex justify-center">
+            <motion.div
+              className="mt-6 flex justify-center"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.5 }}
+            >
               <DiscountCounter />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

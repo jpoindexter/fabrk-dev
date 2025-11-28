@@ -18,6 +18,7 @@ import {
   Bell,
   Download,
 } from "lucide-react";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
 import { generateVerifyEmailHTML } from "@/emails/verify-email";
 
@@ -321,7 +322,8 @@ export default function EmailTemplatesShowcase() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative isolate min-h-screen bg-background">
+      <TerminalBackground />
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}

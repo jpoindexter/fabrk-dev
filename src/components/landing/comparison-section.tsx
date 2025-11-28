@@ -5,38 +5,72 @@
  */
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+
+// Animated counter component
+function AnimatedCounter({
+  value,
+  suffix = "",
+  duration = 1.5
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [isInView, motionValue, value]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = `${Math.floor(latest)}${suffix}`;
+      }
+    });
+    return unsubscribe;
+  }, [springValue, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
 
 export function ComparisonSection() {
   const features = [
     {
       name: "Authentication (Email + OAuth)",
-      manual: "20+ hours",
+      hours: 20,
       fabrk: "Ready in minutes",
     },
     {
       name: "Stripe Payments Integration",
-      manual: "15+ hours",
+      hours: 15,
       fabrk: "Pre-configured",
     },
     {
       name: "Database Schema + ORM",
-      manual: "10+ hours",
+      hours: 10,
       fabrk: "Integrated",
     },
     {
       name: "Multi-Tenancy",
-      manual: "25+ hours",
+      hours: 25,
       fabrk: "Built-in",
     },
     {
       name: "Design System",
-      manual: "30+ hours",
+      hours: 30,
       fabrk: "Included",
     },
     {
       name: "Advanced Features",
-      manual: "40+ hours",
+      hours: 40,
       fabrk: "Ready components",
     },
   ];
@@ -91,20 +125,27 @@ export function ComparisonSection() {
             </div>
 
             {/* Rows */}
-            <div className="space-y-2">
+            <div>
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{
+                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                    x: 2,
+                    transition: { duration: 0.2 }
+                  }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   viewport={{ once: true }}
-                  className="grid grid-cols-3 gap-4 border-b border-border py-3 font-mono text-xs"
+                  className="grid grid-cols-3 gap-4 border-b border-border py-3 px-3 -mx-3 font-mono text-xs cursor-default"
                 >
                   <div className="text-foreground">{feature.name}</div>
                   <div className="text-center">
                     <span className="text-destructive">✗</span>
-                    <span className="ml-2 text-muted-foreground">{feature.manual}</span>
+                    <span className="ml-2 text-muted-foreground">
+                      <AnimatedCounter value={feature.hours} suffix="+ hours" duration={1 + index * 0.2} />
+                    </span>
                   </div>
                   <div className="text-center">
                     <span className="text-success">✓</span>
@@ -123,7 +164,9 @@ export function ComparisonSection() {
               className="mt-4 grid grid-cols-3 gap-4 border-t-2 border-border pt-4 font-mono"
             >
               <div className="text-sm font-bold">TOTAL</div>
-              <div className="text-center text-sm font-bold text-destructive">140+ hours</div>
+              <div className="text-center text-sm font-bold text-destructive">
+                <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
+              </div>
               <div className="text-center text-sm font-bold text-success">Ready to Ship</div>
             </motion.div>
           </div>

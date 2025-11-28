@@ -29,6 +29,7 @@ import {
   TrendingUp,
   Download,
 } from "lucide-react";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 
 // Mock data
 const revenueData = [
@@ -97,7 +98,8 @@ export default function ChartLibraryTemplate() {
   const [activeTab, setActiveTab] = useState<"line" | "area" | "bar" | "pie">("line");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative isolate min-h-screen bg-background">
+      <TerminalBackground />
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}

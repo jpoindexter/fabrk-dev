@@ -34,6 +34,7 @@ import {
   X,
   Minus,
 } from "lucide-react";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 
 // Documentation structure
 const docsStructure = [
@@ -251,7 +252,8 @@ export default function DocumentationLayoutTemplate() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative isolate min-h-screen bg-background">
+      <TerminalBackground />
       {/* Page Content */}
       <div className="flex">
         {/* Sidebar */}

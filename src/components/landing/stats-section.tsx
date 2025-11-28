@@ -1,30 +1,76 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
+import { useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { H2, H3, Body, Small } from "@/components/ui/typography";
+
+// Animated counter component
+function AnimatedCounter({
+  value,
+  suffix = "",
+  prefix = "",
+  decimals = 0,
+  duration = 2
+}: {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  decimals?: number;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: duration * 1000, bounce: 0 });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [isInView, motionValue, value]);
+
+  useEffect(() => {
+    const unsubscribe = springValue.on("change", (latest) => {
+      if (ref.current) {
+        const formatted = decimals > 0
+          ? latest.toFixed(decimals)
+          : Math.floor(latest).toLocaleString();
+        ref.current.textContent = `${prefix}${formatted}${suffix}`;
+      }
+    });
+    return unsubscribe;
+  }, [springValue, suffix, prefix, decimals]);
+
+  return <span ref={ref}>{prefix}0{suffix}</span>;
+}
 
 export function StatsSection() {
   const stats = [
     {
-      value: "500+",
+      value: 500,
+      suffix: "+",
       label: "Developers",
       description: "Using Fabrk to ship faster",
       color: "bg-primary text-primary-foreground",
     },
     {
-      value: "1,000+",
+      value: 1000,
+      suffix: "+",
       label: "Projects Shipped",
       description: "Built with Fabrk boilerplate",
       color: "bg-accent text-accent-foreground",
     },
     {
-      value: "4.9/5",
+      value: 4.9,
+      suffix: "/5",
+      decimals: 1,
       label: "Average Rating",
       description: "From satisfied customers",
       color: "bg-secondary text-secondary-foreground",
     },
     {
-      value: "40hrs",
+      value: 40,
+      suffix: "hrs",
       label: "Time Saved",
       description: "Per project on average",
       color: "bg-primary text-primary-foreground",
@@ -77,7 +123,13 @@ export function StatsSection() {
               viewport={{ once: true }}
               className="group border border-border bg-card p-8 transition-all hover:border-primary/50"
             >
-              <div className="mb-2 text-4xl font-semibold text-foreground">{stat.value}</div>
+              <div className="mb-2 text-4xl font-semibold text-foreground font-mono">
+                <AnimatedCounter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals || 0}
+                />
+              </div>
               <H3 className="mb-2">{stat.label}</H3>
               <Small className="block text-muted-foreground">
                 {stat.description}

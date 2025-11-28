@@ -12,6 +12,7 @@ import {
   FileText,
   Palette,
 } from "lucide-react";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 
 const categories = [
   {
@@ -68,7 +69,8 @@ const categories = [
 
 export default function TemplatesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative isolate min-h-screen bg-background">
+      <TerminalBackground />
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Header */}
         <section className="space-y-4">

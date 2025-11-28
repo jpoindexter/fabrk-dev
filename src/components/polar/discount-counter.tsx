@@ -45,19 +45,19 @@ export function DiscountCounter() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="inline-flex items-center gap-2 border border-border bg-card px-4 py-2"
+      className="flex items-center justify-between gap-2 border border-border bg-card px-4 py-3 w-full"
     >
       <div className="flex items-center gap-2">
-        <span className="text-sm font-medium text-foreground">
+        <span className="font-mono text-sm font-medium text-foreground">
           {isAlmostGone ? '🔥' : '🎉'} Early Access Discount:
         </span>
-        <span className={`text-sm font-bold ${isAlmostGone ? 'text-destructive' : 'text-primary'}`}>
+        <span className={`font-mono text-sm font-bold ${isAlmostGone ? 'text-destructive' : 'text-primary'}`}>
           {usage.remaining} / {usage.total} left
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="h-2 w-24 overflow-hidden bg-muted">
+      <div className="h-2 flex-1 max-w-32 overflow-hidden bg-muted">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percentageUsed}%` }}

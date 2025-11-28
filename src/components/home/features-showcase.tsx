@@ -132,16 +132,29 @@ interface FeatureCardProps {
 function FeatureCard({ icon: Icon, module, status, title, description, index }: FeatureCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group border border-border bg-card transition-colors hover:border-primary/50"
+      transition={{
+        duration: 0.5,
+        delay: index * 0.08,
+        ease: [0.21, 0.47, 0.32, 0.98]
+      }}
+      whileHover={{
+        y: -4,
+        transition: { duration: 0.2 }
+      }}
+      className="group border border-border bg-card transition-colors hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
     >
       {/* Module Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
         <span className="font-mono text-xs text-muted-foreground">[ [0x{(index + 17).toString(16).toUpperCase().padStart(2, '0')}] {module} ]</span>
-        <Icon className="size-4 text-muted-foreground" />
+        <motion.div
+          whileHover={{ rotate: 12, scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400 }}
+        >
+          <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+        </motion.div>
       </div>
 
       {/* Content */}
@@ -149,19 +162,21 @@ function FeatureCard({ icon: Icon, module, status, title, description, index }: 
         {/* Status */}
         <div className="mb-3 font-mono text-xs">
           <span className="text-muted-foreground">STATUS: </span>
-          <span className="text-success">{status}</span>
+          <motion.span
+            className="text-success"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: index * 0.08 + 0.3 }}
+          >
+            {status}
+          </motion.span>
         </div>
 
         {/* Description */}
-        <div className="mb-4 font-mono text-xs">
+        <div className="font-mono text-xs">
           <span className="text-muted-foreground">DESC: </span>
           <span className="text-foreground">{description}</span>
         </div>
-
-        {/* Action */}
-        <button className="font-mono text-xs text-primary transition-colors hover:text-primary/80">
-          &gt; VIEW_DETAILS
-        </button>
       </div>
     </motion.div>
   );

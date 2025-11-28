@@ -5,7 +5,9 @@
  */
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import {
   Mail,
   Key,
@@ -104,53 +106,156 @@ function FeatureSection({ spec, title, description, features, reversed, children
 
 // Terminal-style mock UI components
 function AuthPreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [emailText, setEmailText] = useState("");
+  const [passwordDots, setPasswordDots] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const fullEmail = "user@example.com";
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    // Typing animation for email
+    let emailIndex = 0;
+    const emailTimer = setInterval(() => {
+      if (emailIndex <= fullEmail.length) {
+        setEmailText(fullEmail.slice(0, emailIndex));
+        emailIndex++;
+      } else {
+        clearInterval(emailTimer);
+        // Start password animation after email is done
+        let dotIndex = 0;
+        const dotTimer = setInterval(() => {
+          if (dotIndex <= 8) {
+            setPasswordDots(dotIndex);
+            dotIndex++;
+          } else {
+            clearInterval(dotTimer);
+          }
+        }, 100);
+      }
+    }, 80);
+
+    // Blinking cursor
+    const cursorTimer = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+
+    return () => {
+      clearInterval(emailTimer);
+      clearInterval(cursorTimer);
+    };
+  }, [isInView]);
+
   return (
-    <div className="w-full max-w-sm border border-border bg-card">
+    <div ref={ref} className="w-full max-w-sm border border-border bg-card">
       {/* Window Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <div className="size-2.5 rounded-full bg-destructive/50" />
-          <div className="size-2.5 rounded-full bg-warning/50" />
-          <div className="size-2.5 rounded-full bg-success/50" />
+          <motion.div
+            className="size-2.5 rounded-full bg-destructive/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-warning/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-success/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+          />
         </div>
         <span className="font-mono text-xs text-muted-foreground">auth_module.exe</span>
       </div>
 
       <div className="p-6">
-        <div className="mb-4 font-mono text-xs text-muted-foreground">[AUTH_FORM]:</div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          className="mb-4 font-mono text-xs text-muted-foreground"
+        >
+          [AUTH_FORM]:
+        </motion.div>
 
         <div className="space-y-4">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2 }}
+          >
             <span className="mb-1.5 block font-mono text-xs text-muted-foreground">EMAIL:</span>
             <div className="border border-border bg-background px-3 py-2">
-              <span className="font-mono text-xs text-muted-foreground">user@example.com</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {emailText}
+                {emailText.length < fullEmail.length && showCursor && (
+                  <span className="text-primary">|</span>
+                )}
+              </span>
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4 }}
+          >
             <span className="mb-1.5 block font-mono text-xs text-muted-foreground">PASSWORD:</span>
             <div className="border border-border bg-background px-3 py-2">
-              <span className="font-mono text-xs text-muted-foreground">••••••••</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {"•".repeat(passwordDots)}
+                {passwordDots < 8 && passwordDots > 0 && showCursor && (
+                  <span className="text-primary">|</span>
+                )}
+              </span>
+              {passwordDots === 0 && emailText.length >= fullEmail.length && showCursor && (
+                <span className="font-mono text-xs text-primary">|</span>
+              )}
             </div>
-          </div>
-          <div className="bg-primary px-4 py-2 text-center">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 1.8 }}
+            whileHover={{ scale: 1.02 }}
+            className="bg-primary px-4 py-2 text-center cursor-pointer"
+          >
             <span className="font-mono text-xs text-primary-foreground">&gt; AUTHENTICATE</span>
-          </div>
-          <div className="relative py-2">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 2 }}
+            className="relative py-2"
+          >
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center">
               <span className="bg-card px-2 font-mono text-xs text-muted-foreground">OR</span>
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="border border-border px-4 py-2 text-center">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 2.2 }}
+            className="grid grid-cols-2 gap-3"
+          >
+            <motion.div
+              whileHover={{ scale: 1.02, borderColor: "hsl(var(--primary))" }}
+              className="border border-border px-4 py-2 text-center cursor-pointer transition-colors"
+            >
               <span className="font-mono text-xs">GOOGLE</span>
-            </div>
-            <div className="border border-border px-4 py-2 text-center">
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.02, borderColor: "hsl(var(--primary))" }}
+              className="border border-border px-4 py-2 text-center cursor-pointer transition-colors"
+            >
               <span className="font-mono text-xs">MICROSOFT</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -158,150 +263,385 @@ function AuthPreview() {
 }
 
 function OrganizationPreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showStartup, setShowStartup] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    // After 2 seconds, animate the button click
+    const clickTimer = setTimeout(() => {
+      setButtonClicked(true);
+      // After button animation, show startup
+      setTimeout(() => {
+        setShowStartup(true);
+      }, 300);
+    }, 2000);
+
+    return () => clearTimeout(clickTimer);
+  }, [isInView]);
+
   return (
-    <div className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="w-full max-w-md border border-border bg-card">
       {/* Window Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <div className="size-2.5 rounded-full bg-destructive/50" />
-          <div className="size-2.5 rounded-full bg-warning/50" />
-          <div className="size-2.5 rounded-full bg-success/50" />
+          <motion.div
+            className="size-2.5 rounded-full bg-destructive/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-warning/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-success/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+          />
         </div>
         <span className="font-mono text-xs text-muted-foreground">org_manager.exe</span>
       </div>
 
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">
-          <span className="font-mono text-xs text-muted-foreground">[ORGANIZATIONS]:</span>
-          <button className="border border-primary px-2 py-1 font-mono text-xs text-primary">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            className="font-mono text-xs text-muted-foreground"
+          >
+            [ORGANIZATIONS]:
+          </motion.span>
+          <motion.button
+            className="border border-primary px-2 py-1 font-mono text-xs text-primary"
+            animate={buttonClicked ? {
+              scale: [1, 0.95, 1],
+              backgroundColor: ["transparent", "hsl(var(--primary))", "transparent"],
+              color: ["hsl(var(--primary))", "hsl(var(--primary-foreground))", "hsl(var(--primary))"]
+            } : {}}
+            transition={{ duration: 0.3 }}
+          >
             + ADD_ORG
-          </button>
+          </motion.button>
         </div>
 
         <div className="space-y-2">
-          {[
-            { name: "ACME_INC", role: "OWNER", members: 12 },
-            { name: "STARTUP_CO", role: "ADMIN", members: 5 },
-          ].map((org) => (
-            <div key={org.name} className="flex items-center justify-between border border-border bg-background p-3">
-              <div className="flex items-center gap-3">
-                <Building2 className="size-4 text-muted-foreground" />
-                <div>
-                  <span className="block font-mono text-xs">{org.name}</span>
-                  <span className="font-mono text-xs text-muted-foreground">{org.members} members</span>
-                </div>
+          {/* ACME_INC - always visible */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3 }}
+            className="flex items-center justify-between border border-border bg-background p-3"
+          >
+            <div className="flex items-center gap-3">
+              <Building2 className="size-4 text-muted-foreground" />
+              <div>
+                <span className="block font-mono text-xs">ACME_INC</span>
+                <span className="font-mono text-xs text-muted-foreground">12 members</span>
               </div>
-              <span className="font-mono text-xs text-success">{org.role}</span>
             </div>
-          ))}
+            <span className="font-mono text-xs text-success">OWNER</span>
+          </motion.div>
+
+          {/* STARTUP_CO - appears after button click */}
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={showStartup ? { opacity: 1, height: "auto", y: 0 } : {}}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="flex items-center justify-between border border-border bg-background p-3 overflow-hidden"
+          >
+            <div className="flex items-center gap-3">
+              <Building2 className="size-4 text-muted-foreground" />
+              <div>
+                <span className="block font-mono text-xs">STARTUP_CO</span>
+                <span className="font-mono text-xs text-muted-foreground">5 members</span>
+              </div>
+            </div>
+            <span className="font-mono text-xs text-success">ADMIN</span>
+          </motion.div>
         </div>
 
-        <div className="mt-4 border-t border-border pt-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.6 }}
+          className="mt-4 border-t border-border pt-4"
+        >
           <span className="mb-2 block font-mono text-xs text-muted-foreground">[ROLES]:</span>
           <div className="flex flex-wrap gap-2">
-            {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
-              <span key={role} className="border border-border bg-card px-2 py-1 font-mono text-xs">
+            {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role, idx) => (
+              <motion.span
+                key={role}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.8 + idx * 0.1 }}
+                className="border border-border bg-card px-2 py-1 font-mono text-xs"
+              >
                 {role}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 }
 
+// Animated counter for billing
+function BillingCounter({ value, prefix = "", suffix = "", delay = 0 }: { value: number; prefix?: string; suffix?: string; delay?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const timer = setTimeout(() => {
+      let current = 0;
+      const increment = value / 20;
+      const counter = setInterval(() => {
+        current += increment;
+        if (current >= value) {
+          setCount(value);
+          clearInterval(counter);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, 50);
+      return () => clearInterval(counter);
+    }, delay * 1000);
+
+    return () => clearTimeout(timer);
+  }, [isInView, value, delay]);
+
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+}
+
 function BillingPreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="w-full max-w-md border border-border bg-card">
       {/* Window Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <div className="size-2.5 rounded-full bg-destructive/50" />
-          <div className="size-2.5 rounded-full bg-warning/50" />
-          <div className="size-2.5 rounded-full bg-success/50" />
+          <motion.div
+            className="size-2.5 rounded-full bg-destructive/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-warning/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-success/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+          />
         </div>
         <span className="font-mono text-xs text-muted-foreground">billing_portal.exe</span>
       </div>
 
       <div className="p-6">
-        <div className="mb-4 font-mono text-xs text-muted-foreground">[BILLING]:</div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          className="mb-4 font-mono text-xs text-muted-foreground"
+        >
+          [BILLING]:
+        </motion.div>
 
-        <div className="mb-4 flex items-center justify-between border border-border bg-background p-3">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="mb-4 flex items-center justify-between border border-border bg-background p-3"
+        >
           <div>
             <span className="block font-mono text-xs">PLAN: PRO</span>
-            <span className="font-mono text-xs text-muted-foreground">&gt; change_plan</span>
+            <motion.span
+              className="font-mono text-xs text-muted-foreground"
+              whileHover={{ color: "hsl(var(--primary))", x: 2 }}
+            >
+              &gt; change_plan
+            </motion.span>
           </div>
           <div className="text-right">
-            <span className="block font-mono text-lg font-bold">$29</span>
+            <span className="block font-mono text-lg font-bold">
+              <BillingCounter value={29} prefix="$" delay={0.5} />
+            </span>
             <span className="font-mono text-xs text-muted-foreground">/month</span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="border border-border bg-background p-3">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4 }}
+          className="border border-border bg-background p-3"
+        >
           <div className="mb-2 flex justify-between font-mono text-xs">
             <span className="text-muted-foreground">CYCLE: Nov 1 - Nov 30</span>
-            <span>15 days remaining</span>
+            <span><BillingCounter value={15} delay={0.8} /> days remaining</span>
           </div>
-          <div className="border-t border-border pt-2">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.6 }}
+            className="border-t border-border pt-2"
+          >
             <div className="flex justify-between font-mono text-xs">
               <span className="text-muted-foreground">Pro Plan</span>
-              <span>$29.00</span>
+              <span>$<BillingCounter value={29} suffix=".00" delay={1} /></span>
             </div>
-            <div className="mt-2 flex justify-between border-t border-border pt-2 font-mono text-xs font-bold">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.8 }}
+              className="mt-2 flex justify-between border-t border-border pt-2 font-mono text-xs font-bold"
+            >
               <span>TOTAL</span>
-              <span>$29.00</span>
-            </div>
-          </div>
-        </div>
+              <motion.span
+                initial={{ scale: 1 }}
+                animate={isInView ? { scale: [1, 1.1, 1] } : {}}
+                transition={{ delay: 1.5, duration: 0.3 }}
+              >
+                $<BillingCounter value={29} suffix=".00" delay={1.2} />
+              </motion.span>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
 }
 
 function DesignSystemPreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [componentCount, setComponentCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const timer = setTimeout(() => {
+      let count = 0;
+      const counter = setInterval(() => {
+        count += 3;
+        if (count >= 50) {
+          setComponentCount(50);
+          clearInterval(counter);
+        } else {
+          setComponentCount(count);
+        }
+      }, 40);
+      return () => clearInterval(counter);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [isInView]);
+
+  const items = [
+    { icon: Moon, label: "THEMES", value: "LIGHT + DARK" },
+    { icon: Layers, label: "COMPONENTS", value: `${componentCount}+ SHADCN` },
+    { icon: Palette, label: "STYLING", value: "TAILWIND CSS" },
+  ];
+
+  const colors = [
+    { name: "PRIMARY", class: "bg-primary" },
+    { name: "SECONDARY", class: "bg-secondary" },
+    { name: "ACCENT", class: "bg-accent" },
+    { name: "MUTED", class: "bg-muted" },
+  ];
+
   return (
-    <div className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="w-full max-w-md border border-border bg-card">
       {/* Window Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <div className="size-2.5 rounded-full bg-destructive/50" />
-          <div className="size-2.5 rounded-full bg-warning/50" />
-          <div className="size-2.5 rounded-full bg-success/50" />
+          <motion.div
+            className="size-2.5 rounded-full bg-destructive/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-warning/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+          />
+          <motion.div
+            className="size-2.5 rounded-full bg-success/50"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+          />
         </div>
         <span className="font-mono text-xs text-muted-foreground">design_system.exe</span>
       </div>
 
       <div className="p-6">
-        <div className="mb-4 font-mono text-xs text-muted-foreground">[DESIGN_SYSTEM]:</div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          className="mb-4 font-mono text-xs text-muted-foreground"
+        >
+          [DESIGN_SYSTEM]:
+        </motion.div>
 
         <div className="space-y-3">
-          {[
-            { icon: Moon, label: "THEMES", value: "LIGHT + DARK" },
-            { icon: Layers, label: "COMPONENTS", value: "50+ SHADCN" },
-            { icon: Palette, label: "STYLING", value: "TAILWIND CSS" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center justify-between border border-border bg-background p-3">
+          {items.map((item, idx) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.2 + idx * 0.15 }}
+              whileHover={{ x: 4 }}
+              className="flex items-center justify-between border border-border bg-background p-3 cursor-pointer transition-colors hover:border-primary/50"
+            >
               <div className="flex items-center gap-3">
-                <item.icon className="size-4 text-primary" />
+                <motion.div
+                  animate={isInView ? { rotate: [0, 10, -10, 0] } : {}}
+                  transition={{ delay: 0.5 + idx * 0.15, duration: 0.5 }}
+                >
+                  <item.icon className="size-4 text-primary" />
+                </motion.div>
                 <span className="font-mono text-xs">{item.label}</span>
               </div>
               <span className="font-mono text-xs text-success">{item.value}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         <div className="mt-4 grid grid-cols-4 gap-2">
-          <div className="h-8 bg-primary" />
-          <div className="h-8 bg-secondary" />
-          <div className="h-8 bg-accent" />
-          <div className="h-8 bg-muted" />
+          {colors.map((color, idx) => (
+            <motion.div
+              key={color.name}
+              initial={{ scaleY: 0 }}
+              animate={isInView ? { scaleY: 1 } : {}}
+              transition={{ delay: 0.8 + idx * 0.1, duration: 0.3, ease: "easeOut" }}
+              style={{ originY: 1 }}
+              className={`h-8 ${color.class}`}
+            />
+          ))}
         </div>
-        <div className="mt-2 flex justify-between font-mono text-xs text-muted-foreground">
-          <span>PRIMARY</span>
-          <span>SECONDARY</span>
-          <span>ACCENT</span>
-          <span>MUTED</span>
+        <div className="mt-2 grid grid-cols-4 gap-2">
+          {colors.map((color, idx) => (
+            <motion.span
+              key={color.name}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 1.2 + idx * 0.1 }}
+              className="font-mono text-xs text-muted-foreground text-center"
+            >
+              {color.name}
+            </motion.span>
+          ))}
         </div>
       </div>
     </div>
