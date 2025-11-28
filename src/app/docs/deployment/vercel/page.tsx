@@ -34,10 +34,11 @@ export default function DeployVercelPage() {
       {/* One-Click Deploy */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">One-Click Deploy</h2>
-        <p className="text-muted-foreground">
-          The fastest way to deploy - click and configure:
-        </p>
-        <CodeBlock language="bash" code={`# Add this button to your README
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            The fastest way to deploy - click and configure:
+          </p>
+          <CodeBlock language="bash" code={`# Add this button to your README
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fabrk)
 
@@ -50,6 +51,7 @@ vercel
 # 2. Project name? your-app-name
 # 3. Directory? ./
 # 4. Override settings? No`} />
+        </div>
       </div>
 
       {/* Step-by-Step Deployment */}
@@ -80,10 +82,11 @@ vercel
       {/* Required Environment Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Required Environment Variables</h2>
-        <p className="text-muted-foreground">
-          Add these in Vercel Dashboard → Settings → Environment Variables:
-        </p>
-        <CodeBlock language="bash" code={`# Core (Required)
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            Add these in Vercel Dashboard → Settings → Environment Variables:
+          </p>
+          <CodeBlock language="bash" code={`# Core (Required)
 DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="https://your-domain.vercel.app"
 NEXTAUTH_SECRET="your-32-character-secret"
@@ -103,18 +106,20 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
 GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
 NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
-        <p className="text-sm text-muted-foreground">
-          <strong>Tip:</strong> Set different values for Preview and Production environments.
-        </p>
+          <p className="text-sm text-muted-foreground">
+            <strong>Tip:</strong> Set different values for Preview and Production environments.
+          </p>
+        </div>
       </div>
 
       {/* vercel.json Configuration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">vercel.json Configuration</h2>
-        <p className="text-muted-foreground">
-          Optional configuration for advanced settings:
-        </p>
-        <CodeBlock language="json" code={`// vercel.json
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            Optional configuration for advanced settings:
+          </p>
+          <CodeBlock language="json" code={`// vercel.json
 
 {
   "buildCommand": "prisma generate && next build",
@@ -146,6 +151,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
     }
   ]
 }`} />
+        </div>
       </div>
 
       {/* Custom Domain */}
@@ -159,7 +165,8 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
           <li>Add your domain (e.g., myapp.com)</li>
           <li>
             Add DNS records at your registrar:
-            <CodeBlock language="bash" code={`# For apex domain (myapp.com)
+            <div className="mt-2">
+              <CodeBlock language="bash" code={`# For apex domain (myapp.com)
 Type: A
 Name: @
 Value: 76.76.21.21
@@ -168,6 +175,7 @@ Value: 76.76.21.21
 Type: CNAME
 Name: www
 Value: cname.vercel-dns.com`} />
+            </div>
           </li>
           <li>Wait for DNS propagation (up to 48 hours)</li>
           <li>SSL certificate is automatically provisioned</li>
@@ -210,10 +218,11 @@ Value: cname.vercel-dns.com`} />
       {/* Preview Deployments */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Preview Deployments</h2>
-        <p className="text-muted-foreground">
-          Every PR gets a unique preview URL:
-        </p>
-        <CodeBlock language="bash" code={`# Preview URL format
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            Every PR gets a unique preview URL:
+          </p>
+          <CodeBlock language="bash" code={`# Preview URL format
 https://your-project-git-branch-name-your-team.vercel.app
 
 # Example
@@ -226,26 +235,27 @@ https://fabrk-git-feature-auth-acme.vercel.app
 # Use test Stripe keys for previews
 STRIPE_SECRET_KEY="sk_test_..."
 STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
+        </div>
       </div>
 
       {/* Deployment Troubleshooting */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Troubleshooting</h2>
         <div className="space-y-4">
-          <Card>
-            <CardContent className="p-4">
-              <h3 className="mb-2 font-semibold">Build fails with Prisma error</h3>
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-semibold">Build fails with Prisma error</h3>
               <p className="text-sm text-muted-foreground">
                 Add <code className="rounded bg-muted px-1 py-0.5">prisma generate</code> to build command:
               </p>
-              <CodeBlock language="json" code={`// package.json
+            </div>
+            <CodeBlock language="json" code={`// package.json
 {
   "scripts": {
     "build": "prisma generate && next build"
   }
 }`} />
-            </CardContent>
-          </Card>
+          </div>
 
           <Card>
             <CardContent className="p-4">
@@ -260,15 +270,15 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="p-4">
-              <h3 className="mb-2 font-semibold">Database connection timeout</h3>
+          <div className="space-y-4">
+            <div>
+              <h3 className="font-semibold">Database connection timeout</h3>
               <p className="text-sm text-muted-foreground">
                 Use connection pooling (like Supabase Pooler or PgBouncer):
               </p>
-              <CodeBlock language="bash" code={`DATABASE_URL="postgresql://...?pgbouncer=true&connection_limit=1"`} />
-            </CardContent>
-          </Card>
+            </div>
+            <CodeBlock language="bash" code={`DATABASE_URL="postgresql://...?pgbouncer=true&connection_limit=1"`} />
+          </div>
         </div>
       </div>
 

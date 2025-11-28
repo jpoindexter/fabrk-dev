@@ -208,9 +208,13 @@ export default function PaymentsPage() {
             </span>
             <h3 className="font-semibold">Add Keys to Your App</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Add these to your <code className="rounded bg-muted px-1">.env.local</code> file:
-          </p>
+        </div>
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground text-sm">
+              Add these to your <code className="rounded bg-muted px-1">.env.local</code> file:
+            </p>
+          </div>
           <CodeBlock language="bash" code={`# Stripe API Keys (test mode)
 STRIPE_SECRET_KEY="sk_test_your_secret_key"
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"
@@ -229,10 +233,13 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_your_enterprise_price"`} />
             </span>
             <h3 className="font-semibold">Set Up Webhooks (Local Testing)</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Install the Stripe CLI to test webhooks locally:
-          </p>
-          <CodeBlock language="bash" code={`# Install Stripe CLI (macOS)
+          <div className="space-y-4">
+            <div>
+              <p className="text-muted-foreground text-sm">
+                Install the Stripe CLI to test webhooks locally:
+              </p>
+            </div>
+            <CodeBlock language="bash" code={`# Install Stripe CLI (macOS)
 brew install stripe/stripe-cli/stripe
 
 # Login to Stripe
@@ -240,11 +247,14 @@ stripe login
 
 # Forward webhooks to your local app
 npm run stripe:listen`} />
-          <p className="text-sm text-muted-foreground mt-2">
-            This gives you a webhook secret starting with <code className="rounded bg-muted px-1">whsec_</code>.
-            Add it to your <code className="rounded bg-muted px-1">.env.local</code>:
-          </p>
-          <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"`} />
+            <div>
+              <p className="text-muted-foreground text-sm">
+                This gives you a webhook secret starting with <code className="rounded bg-muted px-1">whsec_</code>.
+                Add it to your <code className="rounded bg-muted px-1">.env.local</code>:
+              </p>
+            </div>
+            <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"`} />
+          </div>
         </div>
       </div>
 
@@ -286,15 +296,19 @@ npm run stripe:listen`} />
       {/* Code Reference */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Code Reference</h2>
-        <p className="text-muted-foreground">
-          Here&apos;s how to trigger checkout from your code:
-        </p>
-
-        <div className="space-y-2">
-          <h3 className="font-semibold">Checkout Button Component</h3>
-          <p className="text-sm text-muted-foreground">
-            Add this to any pricing card or button:
+        <div>
+          <p className="text-muted-foreground">
+            Here&apos;s how to trigger checkout from your code:
           </p>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold">Checkout Button Component</h3>
+            <p className="text-muted-foreground">
+              Add this to any pricing card or button:
+            </p>
+          </div>
           <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";
@@ -337,11 +351,13 @@ export function CheckoutButton({ priceId, planName }) {
 }`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">Customer Portal Link</h3>
-          <p className="text-sm text-muted-foreground">
-            Let users manage their own subscription:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">Customer Portal Link</h3>
+            <p className="text-muted-foreground">
+              Let users manage their own subscription:
+            </p>
+          </div>
           <CodeBlock language="tsx" code={`"use client";
 
 import { Button } from "@/components/ui/button";

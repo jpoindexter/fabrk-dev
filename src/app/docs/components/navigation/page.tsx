@@ -29,10 +29,11 @@ export default function NavigationComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Landing page navigation
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Landing page navigation
 import { Navigation } from "@/components/landing/navigation";
 
 // Breadcrumb navigation
@@ -66,14 +67,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Landing Navigation</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Landing Navigation</h3>
           <CodeBlock language="tsx" code={`import { Navigation } from "@/components/landing/navigation";
 
 export default function LandingPage() {
@@ -84,8 +84,10 @@ export default function LandingPage() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Breadcrumb</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Breadcrumb</h3>
           <CodeBlock language="tsx" code={`import {
   Breadcrumb,
   BreadcrumbItem,
@@ -114,8 +116,10 @@ export function PageBreadcrumb() {
     </Breadcrumb>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Dropdown Menu</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Dropdown Menu</h3>
           <CodeBlock language="tsx" code={`import {
   DropdownMenu,
   DropdownMenuContent,
@@ -144,8 +148,8 @@ export function UserMenu() {
     </DropdownMenu>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

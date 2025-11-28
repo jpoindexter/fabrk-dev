@@ -27,10 +27,11 @@ export default function FooterComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Landing page footer
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Landing page footer
 import { Footer } from "@/components/landing/footer";
 
 // Alternative footer location
@@ -41,14 +42,13 @@ import { Logo } from "@/components/home/logo";
 
 // Separator
 import { Separator } from "@/components/ui/separator";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Landing Page Footer</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Landing Page Footer</h3>
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
 
 export default function LandingPage() {
@@ -70,8 +70,10 @@ export default function LandingPage() {
 // - Social media links
 // - Copyright notice
 // - Newsletter signup (optional)`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Custom Footer</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Custom Footer</h3>
           <CodeBlock language="tsx" code={`import Link from "next/link";
 import { Logo } from "@/components/home/logo";
 import { Separator } from "@/components/ui/separator";
@@ -179,8 +181,10 @@ export function CustomFooter() {
     </footer>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Simple Footer</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Simple Footer</h3>
           <CodeBlock language="tsx" code={`import Link from "next/link";
 
 export function SimpleFooter() {
@@ -210,8 +214,8 @@ export function SimpleFooter() {
     </footer>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

@@ -28,11 +28,13 @@ export default function CSRFProtectionPage() {
 
       {/* Built-in Protection */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Built-in Protection</h2>
-        <p className="text-muted-foreground">
-          NextAuth v5 automatically protects all authentication routes with CSRF tokens.
-          No additional configuration is needed for login, logout, and registration forms.
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Built-in Protection</h2>
+          <p className="text-muted-foreground">
+            NextAuth v5 automatically protects all authentication routes with CSRF tokens.
+            No additional configuration is needed for login, logout, and registration forms.
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// CSRF protection is automatic for NextAuth routes:
 // - /api/auth/signin
 // - /api/auth/signout
@@ -44,10 +46,12 @@ export default function CSRFProtectionPage() {
 
       {/* Getting CSRF Token */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Getting CSRF Token</h2>
-        <p className="text-muted-foreground">
-          Retrieve the CSRF token for custom forms:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Getting CSRF Token</h2>
+          <p className="text-muted-foreground">
+            Retrieve the CSRF token for custom forms:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`"use client";
 
 import { getCsrfToken } from "next-auth/react";
@@ -78,10 +82,12 @@ export function SecureForm() {
 
       {/* Server-Side Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Server-Side Validation</h2>
-        <p className="text-muted-foreground">
-          Validate CSRF tokens in your API routes:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Server-Side Validation</h2>
+          <p className="text-muted-foreground">
+            Validate CSRF tokens in your API routes:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/csrf.ts
 
 import { cookies } from "next/headers";
@@ -128,10 +134,12 @@ export async function POST(request: NextRequest) {
 
       {/* Origin Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Origin Validation</h2>
-        <p className="text-muted-foreground">
-          Add origin validation as an additional security layer:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Origin Validation</h2>
+          <p className="text-muted-foreground">
+            Add origin validation as an additional security layer:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/security.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -176,10 +184,12 @@ export async function POST(request: NextRequest) {
 
       {/* SameSite Cookie Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">SameSite Cookie Configuration</h2>
-        <p className="text-muted-foreground">
-          Configure secure cookie settings in NextAuth:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">SameSite Cookie Configuration</h2>
+          <p className="text-muted-foreground">
+            Configure secure cookie settings in NextAuth:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/auth.ts
 
 import NextAuth from "next-auth";
@@ -212,10 +222,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       {/* Fetch Requests with CSRF */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Fetch Requests with CSRF</h2>
-        <p className="text-muted-foreground">
-          Include CSRF tokens in fetch requests:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Fetch Requests with CSRF</h2>
+          <p className="text-muted-foreground">
+            Include CSRF tokens in fetch requests:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`"use client";
 
 import { getCsrfToken } from "next-auth/react";

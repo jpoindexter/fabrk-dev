@@ -43,50 +43,51 @@ export default function MagicLinksPage() {
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
         <h3 className="text-xl font-medium mb-3">1. Enable Magic Links</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Enable the feature in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
-            <CodeBlock language="typescript" code={`export const config = {
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Enable the feature in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`export const config = {
   features: {
     magicLinks: true,
     // ...other features
   },
 };`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">2. Configure Email</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Ensure email is configured in <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <CodeBlock language="typescript" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Ensure email is configured in <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">3. Token Settings</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Configure token expiration:</p>
-            <CodeBlock language="typescript" code={`export const config = {
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Configure token expiration:</p>
+          </div>
+          <CodeBlock language="typescript" code={`export const config = {
   auth: {
     magicLinkExpiry: 24 * 60 * 60 * 1000, // 24 hours in ms
     // ...
   },
 };`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
 
         <h3 className="text-xl font-medium mb-3">Request Magic Link API</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Create the API endpoint at <code className="bg-muted px-2 py-1 rounded">/api/auth/magic-link</code>:</p>
-            <CodeBlock language="typescript" code={`// src/app/api/auth/magic-link/route.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Create the API endpoint at <code className="bg-muted px-2 py-1 rounded">/api/auth/magic-link</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/app/api/auth/magic-link/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { sendMagicLinkEmail } from "@/lib/email";
@@ -141,14 +142,14 @@ export async function POST(request: Request) {
     message: "Magic link sent to your email",
   });
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Verify Magic Link</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Handle link verification at <code className="bg-muted px-2 py-1 rounded">/api/auth/verify</code>:</p>
-            <CodeBlock language="bash" code={`// src/app/api/auth/verify/route.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Handle link verification at <code className="bg-muted px-2 py-1 rounded">/api/auth/verify</code>:</p>
+          </div>
+          <CodeBlock language="bash" code={`// src/app/api/auth/verify/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { cookies } from "next/headers";
@@ -217,14 +218,14 @@ export async function GET(request: Request) {
 
   return NextResponse.redirect(\`\${config.app.url}/dashboard\`);
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Magic Link Request Form</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Client-side form component:</p>
-            <CodeBlock language="json" code={`"use client";
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Client-side form component:</p>
+          </div>
+          <CodeBlock language="json" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -287,14 +288,14 @@ export function MagicLinkForm() {
     </form>
   );
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Magic Link Email Template</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Create the email template:</p>
-            <CodeBlock language="tsx" code={`// src/emails/MagicLinkEmail.tsx
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Create the email template:</p>
+          </div>
+          <CodeBlock language="tsx" code={`// src/emails/MagicLinkEmail.tsx
 import {
   Body,
   Button,
@@ -339,8 +340,7 @@ export default function MagicLinkEmail({
     </Html>
   );
 }`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">

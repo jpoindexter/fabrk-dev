@@ -27,10 +27,11 @@ export default function TestimonialsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Testimonials section
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Testimonials section
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 // Avatar components
@@ -39,14 +40,13 @@ import { AvatarGroup } from "@/components/ui/avatar-group";
 
 // Card for custom testimonials
 import { Card, CardContent } from "@/components/ui/card";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Testimonials Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Testimonials Section</h3>
           <CodeBlock language="tsx" code={`import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 export default function LandingPage() {
@@ -67,8 +67,10 @@ export default function LandingPage() {
 // - Quote text
 // - Name and role/company
 // - Scroll animations`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Custom Testimonial Card</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Custom Testimonial Card</h3>
           <CodeBlock language="tsx" code={`import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -120,8 +122,10 @@ export function TestimonialCard({
   company="TechStart"
   avatar="/avatars/sarah.jpg"
 />`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Avatar Group (Social Proof)</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Avatar Group (Social Proof)</h3>
           <CodeBlock language="tsx" code={`import { AvatarGroup } from "@/components/ui/avatar-group";
 
 export function SocialProof() {
@@ -141,8 +145,10 @@ export function SocialProof() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Testimonial Grid</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Testimonial Grid</h3>
           <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
 
 const testimonials = [
@@ -179,8 +185,8 @@ export function TestimonialGrid() {
     </section>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

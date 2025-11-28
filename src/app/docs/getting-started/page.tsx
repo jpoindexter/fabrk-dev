@@ -134,9 +134,11 @@ export default function GettingStartedPage() {
             5 minutes
           </span>
         </div>
-        <p className="text-muted-foreground">
-          Already know Next.js? Here&apos;s the fastest path to running Fabrk locally:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Already know Next.js? Here&apos;s the fastest path to running Fabrk locally:
+          </p>
+        </div>
         <CodeBlock
           language="bash"
           code={`# Clone, install, configure
@@ -168,9 +170,11 @@ npm run db:push && npm run dev`}
             </span>
             <h3 className="font-semibold">Check Your System</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            First, make sure you have Node.js installed. Open your terminal and run:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              First, make sure you have Node.js installed. Open your terminal and run:
+            </p>
+          </div>
           <CodeBlock language="bash" code="node --version" />
           <p className="text-sm text-muted-foreground">
             You need version 18.17 or higher. If you see an error or an older version,
@@ -186,10 +190,12 @@ npm run db:push && npm run dev`}
             </span>
             <h3 className="font-semibold">Download Fabrk</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Clone (copy) the Fabrk code to your computer. Replace &quot;my-saas&quot; with whatever
-            you want to name your project:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Clone (copy) the Fabrk code to your computer. Replace &quot;my-saas&quot; with whatever
+              you want to name your project:
+            </p>
+          </div>
           <CodeBlock
             language="bash"
             code={`git clone https://github.com/jpoindexter/fabrk-boilerplate.git my-saas
@@ -209,9 +215,11 @@ cd my-saas`}
             </span>
             <h3 className="font-semibold">Install Dependencies</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Fabrk uses many helpful libraries. This command downloads them all:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Fabrk uses many helpful libraries. This command downloads them all:
+            </p>
+          </div>
           <CodeBlock language="bash" code="npm install" />
           <p className="text-sm text-muted-foreground">
             <strong>What this does:</strong> Reads the <code className="rounded bg-muted px-1">package.json</code> file
@@ -227,10 +235,12 @@ cd my-saas`}
             </span>
             <h3 className="font-semibold">Create Your Configuration File</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Fabrk needs to know your database password, API keys, and other private settings.
-            These go in a special file that stays on your computer (never uploaded to GitHub):
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Fabrk needs to know your database password, API keys, and other private settings.
+              These go in a special file that stays on your computer (never uploaded to GitHub):
+            </p>
+          </div>
           <CodeBlock language="bash" code="cp .env.example .env.local" />
           <p className="text-sm text-muted-foreground">
             <strong>What this does:</strong> Creates a copy of the example settings file.
@@ -255,10 +265,12 @@ cd my-saas`}
             <li><a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Supabase</a> - Free tier, includes extra features</li>
             <li><a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Railway</a> - Simple setup, pay-as-you-go</li>
           </ul>
-          <p className="text-sm text-muted-foreground mt-2">
-            After creating a database, copy the connection string (looks like <code className="rounded bg-muted px-1">postgresql://user:pass@host/db</code>)
-            and add it to your <code className="rounded bg-muted px-1">.env.local</code> file:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground mt-2">
+              After creating a database, copy the connection string (looks like <code className="rounded bg-muted px-1">postgresql://user:pass@host/db</code>)
+              and add it to your <code className="rounded bg-muted-foreground px-1">.env.local</code> file:
+            </p>
+          </div>
           <CodeBlock
             language="bash"
             code='DATABASE_URL="postgresql://username:password@host:5432/database"'
@@ -273,9 +285,11 @@ cd my-saas`}
             </span>
             <h3 className="font-semibold">Configure Required Settings</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Open <code className="rounded bg-muted px-1">.env.local</code> in your code editor and add these required values:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Open <code className="rounded bg-muted px-1">.env.local</code> in your code editor and add these required values:
+            </p>
+          </div>
           <CodeBlock
             language="bash"
             code={`# Your database connection (from step 5)
@@ -287,9 +301,11 @@ NEXTAUTH_URL="http://localhost:3000"
 # A random secret for security (generate one below)
 NEXTAUTH_SECRET="paste-your-secret-here"`}
           />
-          <p className="text-sm text-muted-foreground">
-            Generate a secure secret with this command:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Generate a secure secret with this command:
+            </p>
+          </div>
           <CodeBlock language="bash" code="openssl rand -base64 32" />
           <p className="text-sm text-muted-foreground">
             Copy the output and paste it as your <code className="rounded bg-muted px-1">NEXTAUTH_SECRET</code>.
@@ -304,9 +320,11 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </span>
             <h3 className="font-semibold">Initialize the Database</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Now let&apos;s create the database tables that Fabrk needs:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              Now let&apos;s create the database tables that Fabrk needs:
+            </p>
+          </div>
           <CodeBlock language="bash" code="npm run db:push" />
           <p className="text-sm text-muted-foreground">
             <strong>What this does:</strong> Reads the database schema (structure) from Fabrk
@@ -322,9 +340,11 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </span>
             <h3 className="font-semibold">Start Your App</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
-            You&apos;re ready! Start the development server:
-          </p>
+          <div>
+            <p className="text-sm text-muted-foreground">
+              You&apos;re ready! Start the development server:
+            </p>
+          </div>
           <CodeBlock language="bash" code="npm run dev" />
           <p className="text-sm text-muted-foreground">
             Open <a href="http://localhost:3000" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">http://localhost:3000</a> in
@@ -342,8 +362,10 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             <summary className="cursor-pointer p-4 font-medium">
               Error: &quot;Port 3000 is already in use&quot;
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>Another application is using port 3000. Either close it, or run Fabrk on a different port:</p>
+            <div className="border-t p-4 text-sm text-muted-foreground space-y-3">
+              <div>
+                <p>Another application is using port 3000. Either close it, or run Fabrk on a different port:</p>
+              </div>
               <CodeBlock language="bash" code="npm run dev -- -p 3001" />
               <p className="mt-2">Then open <a href="http://localhost:3001" className="text-primary hover:underline">localhost:3001</a> instead.</p>
             </div>
@@ -367,8 +389,10 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             <summary className="cursor-pointer p-4 font-medium">
               Error: &quot;NEXTAUTH_SECRET is missing&quot;
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>You need to generate and add a secret. Run this command:</p>
+            <div className="border-t p-4 text-sm text-muted-foreground space-y-3">
+              <div>
+                <p>You need to generate and add a secret. Run this command:</p>
+              </div>
               <CodeBlock language="bash" code="openssl rand -base64 32" />
               <p className="mt-2">Copy the output and add it to your <code className="rounded bg-muted px-1">.env.local</code> file as <code className="rounded bg-muted px-1">NEXTAUTH_SECRET=&quot;your-secret&quot;</code></p>
             </div>

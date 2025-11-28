@@ -33,6 +33,9 @@ export default function TestingGuidePage() {
       {/* Running Tests */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Running Tests</h2>
+        <div>
+          <p className="text-muted-foreground">Available test commands:</p>
+        </div>
         <CodeBlock language="bash" code={`# Unit tests (Vitest)
 npm test                 # Run all unit tests
 npm run test:watch       # Watch mode
@@ -54,9 +57,11 @@ npm run test:all         # Run Vitest + Playwright`} />
       {/* Vitest Configuration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Vitest Configuration</h2>
-        <p className="text-muted-foreground">
-          Configuration in <code className="rounded bg-muted px-1 py-0.5">vitest.config.ts</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Configuration in <code className="rounded bg-muted px-1 py-0.5">vitest.config.ts</code>:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// vitest.config.ts
 
 import { defineConfig } from "vitest/config";
@@ -92,9 +97,11 @@ export default defineConfig({
       {/* Writing Unit Tests */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Writing Unit Tests</h2>
-        <p className="text-muted-foreground">
-          Test components, hooks, and utilities:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Test components, hooks, and utilities:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// tests/unit/components/button.test.tsx
 
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -130,6 +137,9 @@ describe("Button", () => {
       {/* Testing Hooks */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Testing Custom Hooks</h2>
+        <div>
+          <p className="text-muted-foreground">Example hook test with timer mocking:</p>
+        </div>
         <CodeBlock language="typescript" code={`// tests/unit/hooks/use-debounce.test.ts
 
 import { renderHook, act } from "@testing-library/react";
@@ -176,6 +186,9 @@ describe("useDebounce", () => {
       {/* Testing API Routes */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Testing API Routes</h2>
+        <div>
+          <p className="text-muted-foreground">Test API endpoints with mocked dependencies:</p>
+        </div>
         <CodeBlock language="typescript" code={`// tests/unit/api/users.test.ts
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
@@ -243,9 +256,11 @@ describe("POST /api/users", () => {
       {/* Playwright E2E Tests */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Playwright E2E Tests</h2>
-        <p className="text-muted-foreground">
-          Test complete user flows:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Test complete user flows:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// tests/e2e/auth.spec.ts
 
 import { test, expect } from "@playwright/test";
@@ -292,6 +307,9 @@ test.describe("Authentication", () => {
       {/* Playwright Configuration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Playwright Configuration</h2>
+        <div>
+          <p className="text-muted-foreground">Configure Playwright for E2E testing:</p>
+        </div>
         <CodeBlock language="typescript" code={`// playwright.config.ts
 
 import { defineConfig, devices } from "@playwright/test";
@@ -340,6 +358,9 @@ export default defineConfig({
       {/* Accessibility Testing */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Accessibility Testing</h2>
+        <div>
+          <p className="text-muted-foreground">Test for accessibility violations:</p>
+        </div>
         <CodeBlock language="typescript" code={`// tests/accessibility/home.spec.ts
 
 import { test, expect } from "@playwright/test";
@@ -375,6 +396,9 @@ test.describe("Accessibility", () => {
       {/* Test Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Test Setup File</h2>
+        <div>
+          <p className="text-muted-foreground">Configure test environment and mocks:</p>
+        </div>
         <CodeBlock language="typescript" code={`// tests/setup.ts
 
 import "@testing-library/jest-dom";
@@ -440,6 +464,9 @@ process.env.NEXTAUTH_SECRET = "test-secret-at-least-32-characters";`} />
       {/* CI Integration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">CI Integration</h2>
+        <div>
+          <p className="text-muted-foreground">GitHub Actions workflow for automated testing:</p>
+        </div>
         <CodeBlock language="yaml" code={`# .github/workflows/test.yml
 
 name: Tests

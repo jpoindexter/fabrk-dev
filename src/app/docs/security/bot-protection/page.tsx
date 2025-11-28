@@ -33,10 +33,12 @@ export default function BotProtectionPage() {
 
       {/* Honeypot Fields */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Honeypot Fields</h2>
-        <p className="text-muted-foreground">
-          Add invisible fields that bots will fill but humans won't:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Honeypot Fields</h2>
+          <p className="text-muted-foreground">
+            Add invisible fields that bots will fill but humans won't:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// Client-side form component
 "use client";
 
@@ -99,10 +101,12 @@ export async function POST(request: NextRequest) {
 
       {/* Time-based Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Time-based Validation</h2>
-        <p className="text-muted-foreground">
-          Reject submissions that are too fast (bots) or too slow (stale tokens):
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Time-based Validation</h2>
+          <p className="text-muted-foreground">
+            Reject submissions that are too fast (bots) or too slow (stale tokens):
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// Client-side: Add timestamp to form
 "use client";
 
@@ -162,10 +166,12 @@ export async function POST(request: NextRequest) {
 
       {/* User-Agent Analysis */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">User-Agent Analysis</h2>
-        <p className="text-muted-foreground">
-          Detect suspicious user agents:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">User-Agent Analysis</h2>
+          <p className="text-muted-foreground">
+            Detect suspicious user agents:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/bot-detection.ts
 
 const BOT_PATTERNS = [
@@ -242,10 +248,12 @@ export async function POST(request: NextRequest) {
 
       {/* Middleware Protection */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Middleware Protection</h2>
-        <p className="text-muted-foreground">
-          Add bot detection at the edge:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Middleware Protection</h2>
+          <p className="text-muted-foreground">
+            Add bot detection at the edge:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -306,10 +314,12 @@ export const config = {
 
       {/* Cloudflare Turnstile */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Cloudflare Turnstile (CAPTCHA)</h2>
-        <p className="text-muted-foreground">
-          Add Cloudflare Turnstile for strong bot protection:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Cloudflare Turnstile (CAPTCHA)</h2>
+          <p className="text-muted-foreground">
+            Add Cloudflare Turnstile for strong bot protection:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// npm install @marsidev/react-turnstile
 
 "use client";
@@ -376,7 +386,9 @@ export async function POST(request: NextRequest) {
 
       {/* Environment Variables */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Environment Variables</h2>
+        <div>
+          <h2 className="text-2xl font-semibold">Environment Variables</h2>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 
 # Cloudflare Turnstile (optional)

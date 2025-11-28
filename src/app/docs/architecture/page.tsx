@@ -107,8 +107,11 @@ export default function ArchitecturePage() {
                     while React Server Components (RSC) handle data fetching.
                 </p>
 
-                <div className="space-y-2">
-                    <h3 className="text-lg font-medium">Mutation Flow (Server Actions)</h3>
+                <div className="space-y-4">
+                    <div>
+                        <h3 className="text-lg font-medium">Mutation Flow (Server Actions)</h3>
+                        <p className="text-muted-foreground">Example of a typical server action flow:</p>
+                    </div>
                     <CodeBlock language="typescript" code={`// 1. Client invokes action
 const { execute, status } = useAction(updateUserProfile);
 
@@ -116,13 +119,13 @@ const { execute, status } = useAction(updateUserProfile);
 export const updateUserProfile = action(schema, async ({ input, ctx }) => {
   // 3. Authorization Check
   if (!ctx.session) throw new UnauthorizedError();
-  
+
   // 4. Database Operation
   const user = await prisma.user.update({...});
-  
+
   // 5. Revalidation
   revalidatePath('/dashboard/settings');
-  
+
   return user;
 });`} />
                 </div>

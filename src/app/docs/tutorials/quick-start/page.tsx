@@ -32,13 +32,15 @@ export default function QuickStartPage() {
       {/* Step 1 */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">1. Assemble the Landing Page</h2>
-        <p className="text-muted-foreground">
-          Fabrk uses a component-driven architecture. Instead of building from scratch,
-          compose your landing page using our pre-built, accessible sections.
-        </p>
-        <p className="text-muted-foreground">
-          Update <code className="rounded bg-muted px-1 py-0.5">src/app/page.tsx</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Fabrk uses a component-driven architecture. Instead of building from scratch,
+            compose your landing page using our pre-built, accessible sections.
+          </p>
+          <p className="text-muted-foreground">
+            Update <code className="rounded bg-muted px-1 py-0.5">src/app/page.tsx</code>:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesSection } from "@/components/landing/features-section";
@@ -58,8 +60,8 @@ export default function HomePage() {
     </div>
   );
 }`} />
-        <div className="rounded-md bg-blue-50 p-4 dark:bg-blue-950/30">
-          <p className="text-sm text-blue-800 dark:text-blue-200">
+        <div className="rounded-md bg-muted p-4">
+          <p className="text-sm text-foreground">
             <strong>Why this matters:</strong> These components are fully responsive, accessible (ARIA compliant),
             and optimized for Core Web Vitals out of the box.
           </p>
@@ -83,10 +85,12 @@ export default function HomePage() {
       {/* Step 3 */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">3. Configure Application Metadata</h2>
-        <p className="text-muted-foreground">
-          Fabrk centralizes configuration to avoid hardcoded values scattered across the codebase.
-          Open <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Fabrk centralizes configuration to avoid hardcoded values scattered across the codebase.
+            Open <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
+          </p>
+        </div>
         <CodeBlock language="javascript" code={`const config = {
   app: {
     name: "Acme Corp",
@@ -102,10 +106,12 @@ export default function HomePage() {
       {/* Step 4 (Optional) */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">4. Enable Lead Capture (Optional)</h2>
-        <p className="text-muted-foreground">
-          If you are launching a "Coming Soon" page, swap the primary CTA for the Waitlist component.
-          This saves emails directly to your database.
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            If you are launching a "Coming Soon" page, swap the primary CTA for the Waitlist component.
+            This saves emails directly to your database.
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// In hero-section.tsx
 import { WaitlistForm } from "@/components/waitlist-form";
 
@@ -116,9 +122,11 @@ import { WaitlistForm } from "@/components/waitlist-form";
       {/* Step 5 */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">5. Production Deployment</h2>
-        <p className="text-muted-foreground">
-          Fabrk is optimized for Vercel. Deploying is as simple as pushing your code.
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Fabrk is optimized for Vercel. Deploying is as simple as pushing your code.
+          </p>
+        </div>
         <CodeBlock language="bash" code={`git add .
 git commit -m "Initial MVP release"
 git push origin main`} />

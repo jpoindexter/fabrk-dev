@@ -41,10 +41,11 @@ export default function FormsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Basic inputs
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Basic inputs
 import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { InputSearch } from "@/components/ui/input-search";
@@ -76,14 +77,13 @@ import { TimePicker } from "@/components/ui/time-picker";
 import { Label } from "@/components/ui/label";
 import { FormError } from "@/components/ui/form-error";
 import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Basic Input</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Basic Input</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -99,8 +99,10 @@ export function BasicInput() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Password Input</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Password Input</h3>
           <CodeBlock language="tsx" code={`import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
 
@@ -116,8 +118,10 @@ export function PasswordInput() {
 // InputPassword includes:
 // - Eye icon toggle for show/hide password
 // - Accessible button for toggling`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Select</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Select</h3>
           <CodeBlock language="tsx" code={`import {
   Select,
   SelectContent,
@@ -145,8 +149,10 @@ export function SelectExample() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Checkbox and Switch</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Checkbox and Switch</h3>
           <CodeBlock language="tsx" code={`import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -168,8 +174,10 @@ export function ToggleInputs() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Date Picker</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Date Picker</h3>
           <CodeBlock language="tsx" code={`import { DatePicker } from "@/components/ui/date-picker";
 import { Label } from "@/components/ui/label";
 
@@ -183,8 +191,10 @@ export function DatePickerExample() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Complete Form</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Complete Form</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
@@ -227,8 +237,10 @@ export function SignupForm() {
     </form>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">OTP Input</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">OTP Input</h3>
           <CodeBlock language="tsx" code={`import { InputOTP } from "@/components/ui/input-otp";
 
 export function OTPInput() {
@@ -242,8 +254,8 @@ export function OTPInput() {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

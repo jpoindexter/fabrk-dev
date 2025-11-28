@@ -99,10 +99,13 @@ export default function TrialPage() {
       {/* Configuration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Configuration</h2>
-        <p className="text-muted-foreground">
-          Configure trial settings in <code className="rounded bg-muted px-1">src/config.js</code>:
-        </p>
-        <CodeBlock language="javascript" code={`// src/config.js
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">
+              Configure trial settings in <code className="rounded bg-muted px-1">src/config.js</code>:
+            </p>
+          </div>
+          <CodeBlock language="javascript" code={`// src/config.js
 
 export const config = {
   features: {
@@ -118,11 +121,12 @@ export const config = {
     trialRequiresCard: false,
   },
 };`} />
-        <p className="text-sm text-muted-foreground">
-          <strong>Tip:</strong> Requiring a credit card upfront reduces signups but increases
-          conversion rates. No-card trials get more signups but lower conversion. Test both
-          to see what works for your product.
-        </p>
+          <p className="text-sm text-muted-foreground">
+            <strong>Tip:</strong> Requiring a credit card upfront reduces signups but increases
+            conversion rates. No-card trials get more signups but lower conversion. Test both
+            to see what works for your product.
+          </p>
+        </div>
       </div>
 
       {/* Trial Banner */}
@@ -172,11 +176,13 @@ export const config = {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Code Reference</h2>
 
-        <div className="space-y-2">
-          <h3 className="font-semibold">Check if User is on Trial</h3>
-          <p className="text-sm text-muted-foreground">
-            Use these helpers to check trial status:
-          </p>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold">Check if User is on Trial</h3>
+            <p className="text-muted-foreground">
+              Use these helpers to check trial status:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`import {
   isOnTrial,
   getTrialDaysRemaining,
@@ -197,11 +203,13 @@ const expired = hasTrialExpired(user.trialEndsAt);
 const usedTrial = hasUsedTrial(user);`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">Protect Premium Features</h3>
-          <p className="text-sm text-muted-foreground">
-            Block access when trial expires:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">Protect Premium Features</h3>
+            <p className="text-muted-foreground">
+              Block access when trial expires:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`// In your API route
 import { auth } from "@/lib/auth";
 import { hasTrialExpired } from "@/lib/trial";
@@ -235,11 +243,13 @@ export async function GET() {
 }`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">Using the Trial Banner</h3>
-          <p className="text-sm text-muted-foreground">
-            Add the banner to your dashboard layout:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">Using the Trial Banner</h3>
+            <p className="text-muted-foreground">
+              Add the banner to your dashboard layout:
+            </p>
+          </div>
           <CodeBlock language="tsx" code={`import { TrialBanner } from "@/components/billing/trial-banner";
 
 export default function DashboardLayout({ children }) {
@@ -256,10 +266,13 @@ export default function DashboardLayout({ children }) {
       {/* Stripe Integration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Stripe Trial Integration</h2>
-        <p className="text-muted-foreground">
-          If you require credit card upfront, Stripe handles the trial automatically:
-        </p>
-        <CodeBlock language="typescript" code={`// Create subscription with trial period
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">
+              If you require credit card upfront, Stripe handles the trial automatically:
+            </p>
+          </div>
+          <CodeBlock language="typescript" code={`// Create subscription with trial period
 const subscription = await stripe.subscriptions.create({
   customer: customerId,
   items: [{ price: priceId }],
@@ -270,10 +283,11 @@ const subscription = await stripe.subscriptions.create({
     save_default_payment_method: "on_subscription",
   },
 });`} />
-        <p className="text-sm text-muted-foreground mt-2">
-          Stripe will automatically charge the customer when the trial ends. If payment fails,
-          you&apos;ll receive a webhook to handle the situation.
-        </p>
+          <p className="text-sm text-muted-foreground">
+            Stripe will automatically charge the customer when the trial ends. If payment fails,
+            you&apos;ll receive a webhook to handle the situation.
+          </p>
+        </div>
       </div>
 
       {/* Best Practices */}

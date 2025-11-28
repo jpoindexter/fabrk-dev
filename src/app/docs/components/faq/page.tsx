@@ -27,10 +27,11 @@ export default function FAQComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// FAQ section for landing pages
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// FAQ section for landing pages
 import { FAQSection } from "@/components/landing/faq-section";
 
 // Accordion for custom FAQs
@@ -47,14 +48,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">FAQ Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">FAQ Section</h3>
           <CodeBlock language="tsx" code={`import { FAQSection } from "@/components/landing/faq-section";
 
 export default function LandingPage() {
@@ -75,8 +75,10 @@ export default function LandingPage() {
 // - Accordion with common questions
 // - Smooth expand/collapse animations
 // - Keyboard accessible`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Custom Accordion FAQ</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Custom Accordion FAQ</h3>
           <CodeBlock language="tsx" code={`import {
   Accordion,
   AccordionContent,
@@ -118,8 +120,10 @@ export function CustomFAQ() {
     </section>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Multiple Open Items</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Multiple Open Items</h3>
           <CodeBlock language="tsx" code={`import {
   Accordion,
   AccordionContent,
@@ -142,8 +146,10 @@ export function MultipleFAQ() {
     </Accordion>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Collapsible Component</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Collapsible Component</h3>
           <CodeBlock language="tsx" code={`import {
   Collapsible,
   CollapsibleContent,
@@ -169,8 +175,10 @@ export function CollapsibleFAQ() {
     </Collapsible>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Hydration Note</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Hydration Note</h3>
           <CodeBlock language="tsx" code={`// To prevent hydration warnings with Radix UI components,
 // add suppressHydrationWarning prop:
 
@@ -181,8 +189,8 @@ export function CollapsibleFAQ() {
 >
   {/* items */}
 </Accordion>`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

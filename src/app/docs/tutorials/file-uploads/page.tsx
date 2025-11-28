@@ -34,9 +34,11 @@ export default function FileUploadsTutorialPage() {
       {/* Basic Dropzone */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Basic Dropzone Component</h2>
-        <p className="text-muted-foreground">
-          Create a reusable dropzone component with drag-and-drop support:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Create a reusable dropzone component with drag-and-drop support:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// src/components/ui/dropzone.tsx
 
 "use client";
@@ -173,9 +175,11 @@ export function Dropzone({
       {/* Image Uploader */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Image Uploader with Preview</h2>
-        <p className="text-muted-foreground">
-          Specialized image upload component with instant preview:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Specialized image upload component with instant preview:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// src/components/ui/image-uploader.tsx
 
 "use client";
@@ -303,9 +307,11 @@ export function ImageUploader({
       {/* Upload API Route */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Upload API Route</h2>
-        <p className="text-muted-foreground">
-          Create an API route to handle file uploads with validation:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Create an API route to handle file uploads with validation:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -409,9 +415,11 @@ export const config = {
       {/* Client-Side Upload */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Client-Side Upload Handler</h2>
-        <p className="text-muted-foreground">
-          Handle the upload in your component with progress tracking:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Handle the upload in your component with progress tracking:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";
@@ -513,9 +521,11 @@ export function FileUploadForm() {
       {/* Validation Options */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Validation Options</h2>
-        <p className="text-muted-foreground">
-          Common validation configurations for different use cases:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Common validation configurations for different use cases:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// Profile Avatar
 <ImageUploader
   maxSize={2 * 1024 * 1024}  // 2MB
@@ -559,9 +569,11 @@ export function FileUploadForm() {
       {/* Dependencies */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Dependencies</h2>
-        <p className="text-muted-foreground">
-          Install the required packages:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Install the required packages:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`npm install react-dropzone`} />
       </div>
 

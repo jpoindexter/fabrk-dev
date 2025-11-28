@@ -31,10 +31,11 @@ export default function ModalsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Dialog
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Dialog
 import {
   Dialog,
   DialogContent,
@@ -97,14 +98,13 @@ import {
 // Toast
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Dialog</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Dialog</h3>
           <CodeBlock language="tsx" code={`import {
   Dialog,
   DialogContent,
@@ -152,8 +152,10 @@ export function EditProfileDialog() {
     </Dialog>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Alert Dialog (Confirmation)</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Alert Dialog (Confirmation)</h3>
           <CodeBlock language="tsx" code={`import {
   AlertDialog,
   AlertDialogAction,
@@ -191,8 +193,10 @@ export function DeleteConfirmation() {
     </AlertDialog>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Sheet (Slide-out Panel)</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Sheet (Slide-out Panel)</h3>
           <CodeBlock language="tsx" code={`import {
   Sheet,
   SheetContent,
@@ -228,8 +232,10 @@ export function SettingsSheet() {
 <SheetContent side="left">
   {/* Content slides in from left */}
 </SheetContent>`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Popover</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Popover</h3>
           <CodeBlock language="tsx" code={`import {
   Popover,
   PopoverContent,
@@ -258,8 +264,10 @@ export function NotificationPopover() {
     </Popover>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Command Palette</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Command Palette</h3>
           <CodeBlock language="tsx" code={`import {
   CommandDialog,
   CommandEmpty,
@@ -298,8 +306,10 @@ export function CommandMenu() {
     </CommandDialog>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Toast Notifications</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Toast Notifications</h3>
           <CodeBlock language="tsx" code={`import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 
@@ -347,8 +357,8 @@ export default function Layout({ children }) {
     </>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

@@ -30,10 +30,11 @@ export default function ChartsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Donut chart
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Donut chart
 import { DonutChart } from "@/components/ui/donut-chart";
 
 // Gauge chart
@@ -50,20 +51,19 @@ import { StatCard } from "@/components/ui/stat-card";
 
 // Progress bar
 import { Progress } from "@/components/ui/progress";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Donut Chart</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Donut Chart</h3>
           <CodeBlock language="tsx" code={`import { DonutChart } from "@/components/ui/donut-chart";
 
 const data = [
   { name: "Desktop", value: 65, color: "hsl(var(--primary))" },
   { name: "Mobile", value: 25, color: "hsl(var(--secondary))" },
-  { name: "Tablet", value: 10, color: "hsl(var(--muted))" },
+  { name: "Tablet", value: 10, color: hsl(var(--muted))" },
 ];
 
 export function DeviceBreakdown() {
@@ -78,8 +78,10 @@ export function DeviceBreakdown() {
     </Card>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Gauge Chart</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Gauge Chart</h3>
           <CodeBlock language="tsx" code={`import { Gauge } from "@/components/ui/gauge";
 
 export function PerformanceGauge() {
@@ -104,8 +106,10 @@ export function PerformanceGauge() {
 // - Completion percentages
 // - Health indicators
 // - Goal tracking`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Analytics Chart</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Analytics Chart</h3>
           <CodeBlock language="tsx" code={`import { AnalyticsChart } from "@/components/analytics/analytics-chart";
 
 const chartData = [
@@ -137,8 +141,10 @@ export function RevenueChart() {
     </Card>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Funnel Visualizer</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Funnel Visualizer</h3>
           <CodeBlock language="tsx" code={`import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
 
 const funnelData = [
@@ -162,8 +168,10 @@ export function ConversionFunnel() {
     </Card>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Stats Dashboard</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Stats Dashboard</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity, TrendingUp } from "lucide-react";
 
@@ -201,8 +209,10 @@ export function StatsDashboard() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Progress with Label</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Progress with Label</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function StorageProgress() {
@@ -228,8 +238,10 @@ export function StorageProgress() {
     </Card>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Chart Color Tokens</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Chart Color Tokens</h3>
           <CodeBlock language="typescript" code={`// Always use CSS variables for chart colors to support theming
 
 const chartColors = {
@@ -242,8 +254,8 @@ const chartColors = {
 };
 
 // This ensures charts look correct in all 6 themes`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

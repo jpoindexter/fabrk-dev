@@ -43,15 +43,15 @@ export default function EmailsPage() {
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
         <h3 className="text-xl font-medium mb-3">1. Set Up Resend</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Add your Resend API key to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <CodeBlock language="bash" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Add your Resend API key to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+          </div>
+          <CodeBlock language="bash" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
 
 EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">2. Configure Domain</h3>
         <Card className="mb-6">
@@ -67,13 +67,13 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
         </Card>
 
         <h3 className="text-xl font-medium mb-3">3. Start Email Worker</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">For queued emails, run the worker:</p>
-            <CodeBlock language="bash" code={`npm run email:dev
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">For queued emails, run the worker:</p>
+          </div>
+          <CodeBlock language="bash" code={`npm run email:dev
 # Watches queue and sends emails with auto-restart`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">
@@ -133,10 +133,11 @@ export function generateWelcomeEmailHTML({
         <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
 
         <h3 className="text-xl font-medium mb-3">Direct Sending (Auth Emails)</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">For immediate delivery (verification, password reset):</p>
-            <CodeBlock language="typescript" code={`import { sendVerificationEmail, sendResetEmail } from "@/lib/email";
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">For immediate delivery (verification, password reset):</p>
+          </div>
+          <CodeBlock language="typescript" code={`import { sendVerificationEmail, sendResetEmail } from "@/lib/email";
 
 // Send verification email
 await sendVerificationEmail({
@@ -151,14 +152,14 @@ await sendResetEmail({
   name: user.name,
   resetUrl: \`\${config.app.url}/reset-password?token=\${token}\`,
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Queued Sending (Transactional)</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">For non-urgent emails (welcome, receipts):</p>
-            <CodeBlock language="typescript" code={`import { queueWelcomeEmail, queueConfirmationEmail } from "@/lib/email";
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">For non-urgent emails (welcome, receipts):</p>
+          </div>
+          <CodeBlock language="typescript" code={`import { queueWelcomeEmail, queueConfirmationEmail } from "@/lib/email";
 
 // Queue welcome email
 await queueWelcomeEmail({
@@ -175,14 +176,14 @@ await queueConfirmationEmail({
   productName: payment.productName,
   receiptUrl: payment.receiptUrl,
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Custom Email Sending</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Send any HTML content:</p>
-            <CodeBlock language="typescript" code={`import { Resend } from "resend";
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Send any HTML content:</p>
+          </div>
+          <CodeBlock language="typescript" code={`import { Resend } from "resend";
 import { env } from "@/lib/env";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
@@ -193,14 +194,14 @@ await resend.emails.send({
   subject: "Your Custom Subject",
   html: "<h1>Hello World</h1><p>This is a custom email.</p>",
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Batch Sending</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Send to multiple recipients:</p>
-            <CodeBlock language="typescript" code={`import { Resend } from "resend";
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Send to multiple recipients:</p>
+          </div>
+          <CodeBlock language="typescript" code={`import { Resend } from "resend";
 
 const resend = new Resend(env.server.RESEND_API_KEY);
 
@@ -213,8 +214,7 @@ const emails = users.map((user) => ({
 
 // Send up to 100 emails in one API call
 await resend.batch.send(emails);`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
 

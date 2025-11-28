@@ -33,10 +33,12 @@ export default function SecurityHeadersPage() {
 
       {/* Next.js Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next.js Configuration</h2>
-        <p className="text-muted-foreground">
-          Add security headers in <code className="rounded bg-muted px-1 py-0.5">next.config.js</code>:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Next.js Configuration</h2>
+          <p className="text-muted-foreground">
+            Add security headers in <code className="rounded bg-muted px-1 py-0.5">next.config.js</code>:
+          </p>
+        </div>
         <CodeBlock language="javascript" code={`// next.config.js
 
 /** @type {import('next').NextConfig} */
@@ -81,10 +83,12 @@ module.exports = nextConfig;`} />
 
       {/* Content Security Policy */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Content Security Policy</h2>
-        <p className="text-muted-foreground">
-          Configure a strict CSP to prevent XSS attacks:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Content Security Policy</h2>
+          <p className="text-muted-foreground">
+            Configure a strict CSP to prevent XSS attacks:
+          </p>
+        </div>
         <CodeBlock language="javascript" code={`// next.config.js
 
 const ContentSecurityPolicy = \`
@@ -122,10 +126,12 @@ const nextConfig = {
 
       {/* Nonce-based CSP */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Nonce-based CSP</h2>
-        <p className="text-muted-foreground">
-          Use nonces for stricter CSP without unsafe-inline:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Nonce-based CSP</h2>
+          <p className="text-muted-foreground">
+            Use nonces for stricter CSP without unsafe-inline:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -186,10 +192,12 @@ export default async function RootLayout({
 
       {/* HSTS Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">HSTS Configuration</h2>
-        <p className="text-muted-foreground">
-          Enforce HTTPS with Strict-Transport-Security:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">HSTS Configuration</h2>
+          <p className="text-muted-foreground">
+            Enforce HTTPS with Strict-Transport-Security:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`// HSTS Header Options
 
 // Standard (2 years)
@@ -213,10 +221,12 @@ export default async function RootLayout({
 
       {/* Permissions Policy */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Permissions Policy</h2>
-        <p className="text-muted-foreground">
-          Control browser feature access:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Permissions Policy</h2>
+          <p className="text-muted-foreground">
+            Control browser feature access:
+          </p>
+        </div>
         <CodeBlock language="javascript" code={`// Common Permissions Policy configurations
 
 // Minimal (most secure)
@@ -247,10 +257,12 @@ export default async function RootLayout({
 
       {/* Vercel Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Vercel Configuration</h2>
-        <p className="text-muted-foreground">
-          Alternative: Configure headers in vercel.json:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Vercel Configuration</h2>
+          <p className="text-muted-foreground">
+            Alternative: Configure headers in vercel.json:
+          </p>
+        </div>
         <CodeBlock language="json" code={`// vercel.json
 
 {
@@ -282,10 +294,12 @@ export default async function RootLayout({
 
       {/* Testing Headers */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Testing Headers</h2>
-        <p className="text-muted-foreground">
-          Verify your security headers are working:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Testing Headers</h2>
+          <p className="text-muted-foreground">
+            Verify your security headers are working:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# Test with curl
 curl -I https://yoursite.com
 

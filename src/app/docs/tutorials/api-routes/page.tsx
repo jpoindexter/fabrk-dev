@@ -28,9 +28,11 @@ export default function ApiRoutesTutorialPage() {
       {/* Basic Route */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Creating a Basic Route</h2>
-        <p className="text-muted-foreground">
-          Create a new file at <code className="rounded bg-muted px-1 py-0.5">src/app/api/hello/route.ts</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Create a new file at <code className="rounded bg-muted px-1 py-0.5">src/app/api/hello/route.ts</code>:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -46,9 +48,11 @@ export async function POST(request: Request) {
       {/* Protected Route */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Protected API Route</h2>
-        <p className="text-muted-foreground">
-          Add authentication to your route:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Add authentication to your route:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
@@ -77,9 +81,11 @@ export async function GET() {
       {/* Input Validation */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Input Validation with Zod</h2>
-        <p className="text-muted-foreground">
-          Always validate input with Zod schemas:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Always validate input with Zod schemas:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -115,9 +121,11 @@ export async function POST(request: Request) {
       {/* Database Access */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Database Access</h2>
-        <p className="text-muted-foreground">
-          Use Prisma to interact with your database:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Use Prisma to interact with your database:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
@@ -145,9 +153,11 @@ export async function GET() {
       {/* Error Handling Pattern */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Error Handling Pattern</h2>
-        <p className="text-muted-foreground">
-          Use this consistent error handling pattern:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Use this consistent error handling pattern:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { logger } from "@/lib/logger";
 import { NextResponse } from "next/server";
 

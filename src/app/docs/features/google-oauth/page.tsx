@@ -43,9 +43,8 @@ export default function GoogleOAuthPage() {
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
         <h3 className="text-xl font-medium mb-3">1. Create Google Cloud Project</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <ol className="list-decimal pl-6 space-y-2">
+        <div className="space-y-4 mb-6">
+          <ol className="list-decimal pl-6 space-y-2">
               <li>Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
               <li>Create a new project or select existing one</li>
               <li>Navigate to APIs & Services → OAuth consent screen</li>
@@ -59,13 +58,11 @@ export default function GoogleOAuthPage() {
               </li>
               <li>Add scopes: <code className="bg-muted px-1 rounded">email</code>, <code className="bg-muted px-1 rounded">profile</code>, <code className="bg-muted px-1 rounded">openid</code></li>
             </ol>
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">2. Create OAuth Credentials</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <ol className="list-decimal pl-6 space-y-2">
+        <div className="space-y-4 mb-6">
+          <ol className="list-decimal pl-6 space-y-2">
               <li>Go to APIs & Services → Credentials</li>
               <li>Click Create Credentials → OAuth client ID</li>
               <li>Application type: Web application</li>
@@ -83,30 +80,30 @@ export default function GoogleOAuthPage() {
               </li>
               <li>Copy the Client ID and Client Secret</li>
             </ol>
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">3. Set Environment Variables</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Add to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Add to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
-            <p className="mt-4 text-muted-foreground">
-              Google OAuth is automatically enabled when these variables are set.
-            </p>
-          </CardContent>
-        </Card>
+          <p className="mt-4 text-muted-foreground">
+            Google OAuth is automatically enabled when these variables are set.
+          </p>
+        </div>
       </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
 
         <h3 className="text-xl font-medium mb-3">Auth Configuration</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Google provider is configured in <code className="bg-muted px-2 py-1 rounded">src/lib/auth.ts</code>:</p>
-            <CodeBlock language="typescript" code={`// src/lib/auth.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Google provider is configured in <code className="bg-muted px-2 py-1 rounded">src/lib/auth.ts</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/lib/auth.ts
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { env } from "@/lib/env";
@@ -157,14 +154,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Sign-In Button</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Add Google sign-in to your login page:</p>
-            <CodeBlock language="tsx" code={`"use client";
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Add Google sign-in to your login page:</p>
+          </div>
+          <CodeBlock language="tsx" code={`"use client";
 
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -198,14 +195,14 @@ export function GoogleSignInButton() {
     </Button>
   );
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Conditional Rendering</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Show Google button only when configured:</p>
-            <CodeBlock language="tsx" code={`import { config } from "@/config";
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Show Google button only when configured:</p>
+          </div>
+          <CodeBlock language="tsx" code={`import { config } from "@/config";
 
 export function LoginForm() {
   return (
@@ -231,8 +228,7 @@ export function LoginForm() {
     </div>
   );
 }`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">

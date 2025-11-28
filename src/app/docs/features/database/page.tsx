@@ -9,20 +9,16 @@ export const metadata = {
 
 export default function DatabasePage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline text-sm">
-          ← Back to Documentation
-        </Link>
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <h1 className="text-4xl font-bold tracking-tight">Database with Prisma</h1>
+        <p className="text-lg text-muted-foreground">
+          Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
+        </p>
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">Database with Prisma</h1>
-      <p className="text-muted-foreground text-lg mb-8">
-        Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
-      </p>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Overview</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -39,26 +35,27 @@ export default function DatabasePage() {
         </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold">Configuration</h2>
 
-        <h3 className="text-xl font-medium mb-3">1. Set Database URL</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
-            <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">1. Set Database URL</h3>
+          <div>
+            <p className="text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+          </div>
+          <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
 # For production with connection pooling (e.g., Supabase):
 DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
 DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
-          </CardContent>
-        </Card>
+        </div>
 
-        <h3 className="text-xl font-medium mb-3">2. Initialize Database</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Push the schema to your database:</p>
-            <CodeBlock language="bash" code={`# Push schema changes (development)
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">2. Initialize Database</h3>
+          <div>
+            <p className="text-muted-foreground">Push the schema to your database:</p>
+          </div>
+          <CodeBlock language="bash" code={`# Push schema changes (development)
 npm run db:push
 
 # Generate Prisma Client
@@ -69,25 +66,24 @@ npm run db:seed
 
 # Reset and reseed
 npm run db:reset`} />
-          </CardContent>
-        </Card>
+        </div>
 
-        <h3 className="text-xl font-medium mb-3">3. Prisma Studio</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Browse and edit data with the visual GUI:</p>
-            <CodeBlock language="bash" code={`npm run db:studio
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">3. Prisma Studio</h3>
+          <div>
+            <p className="text-muted-foreground">Browse and edit data with the visual GUI:</p>
+          </div>
+          <CodeBlock language="bash" code={`npm run db:studio
 # Opens at http://localhost:5555`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Core Models</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Fabrk includes these pre-built models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
-            <CodeBlock language="prisma" code={`// Authentication
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Core Models</h2>
+        <div>
+          <p className="text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
+        </div>
+        <CodeBlock language="prisma" code={`// Authentication
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -144,18 +140,17 @@ model OrganizationMember {
 
   @@unique([userId, organizationId])
 }`} />
-          </CardContent>
-        </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold">Code Examples</h2>
 
-        <h3 className="text-xl font-medium mb-3">Database Client</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Use the singleton client from <code className="bg-muted px-2 py-1 rounded">src/lib/db/index.ts</code>:</p>
-            <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">Database Client</h3>
+          <div>
+            <p className="text-muted-foreground">Use the singleton client from <code className="bg-muted px-2 py-1 rounded">src/lib/db/index.ts</code>:</p>
+          </div>
+          <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
 
 // Find user by email
 const user = await prisma.user.findUnique({
@@ -181,14 +176,14 @@ const newUser = await prisma.user.create({
     },
   },
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
-        <h3 className="text-xl font-medium mb-3">API Route Queries</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Use Prisma in API routes:</p>
-            <CodeBlock language="typescript" code={`// src/app/api/v1/users/route.ts
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">API Route Queries</h3>
+          <div>
+            <p className="text-muted-foreground">Use Prisma in API routes:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/app/api/v1/users/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -212,14 +207,14 @@ export async function GET() {
 
   return NextResponse.json(user);
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
-        <h3 className="text-xl font-medium mb-3">Transactions</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Use transactions for atomic operations:</p>
-            <CodeBlock language="typescript" code={`// Transfer ownership atomically
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">Transactions</h3>
+          <div>
+            <p className="text-muted-foreground">Use transactions for atomic operations:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// Transfer ownership atomically
 const result = await prisma.$transaction(async (tx) => {
   // Remove current owner
   await tx.organizationMember.update({
@@ -244,14 +239,14 @@ const result = await prisma.$transaction(async (tx) => {
 
   return newOwner;
 });`} />
-          </CardContent>
-        </Card>
+        </div>
 
-        <h3 className="text-xl font-medium mb-3">Pagination</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Implement cursor-based pagination:</p>
-            <CodeBlock language="typescript" code={`const pageSize = 20;
+        <div className="space-y-4">
+          <h3 className="text-xl font-medium">Pagination</h3>
+          <div>
+            <p className="text-muted-foreground">Implement cursor-based pagination:</p>
+          </div>
+          <CodeBlock language="typescript" code={`const pageSize = 20;
 
 const users = await prisma.user.findMany({
   take: pageSize + 1, // Fetch one extra to check for next page
@@ -265,16 +260,15 @@ const data = hasNextPage ? users.slice(0, -1) : users;
 const nextCursor = hasNextPage ? data[data.length - 1].id : null;
 
 return { data, nextCursor, hasNextPage };`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Migrations</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">For production, use migrations instead of <code className="bg-muted px-2 py-1 rounded">db:push</code>:</p>
-            <CodeBlock language="bash" code={`# Create a new migration
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Migrations</h2>
+        <div>
+          <p className="text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-2 py-1 rounded">db:push</code>:</p>
+        </div>
+        <CodeBlock language="bash" code={`# Create a new migration
 npm run db:migrate -- --name add_user_preferences
 
 # Apply migrations in production
@@ -282,13 +276,10 @@ npx prisma migrate deploy
 
 # Check migration status
 npx prisma migrate status`} />
-          </CardContent>
-        </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
-
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Common Use Cases</h2>
         <div className="grid gap-4">
           <Card>
             <CardContent className="pt-6">
@@ -328,8 +319,8 @@ npx prisma migrate status`} />
         </div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Best Practices</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
@@ -344,6 +335,12 @@ npx prisma migrate status`} />
           </CardContent>
         </Card>
       </section>
+
+      <div className="pt-4">
+        <Link href="/docs" className="text-primary hover:underline">
+          &larr; Back to Documentation
+        </Link>
+      </div>
     </div>
   );
 }

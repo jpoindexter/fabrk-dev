@@ -27,10 +27,11 @@ export default function HeroComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Standard hero section
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Standard hero section
 import { HeroSection } from "@/components/landing/hero-section";
 
 // Split layout hero
@@ -38,14 +39,13 @@ import { HeroSplit } from "@/components/landing/hero-split";
 
 // Video hero
 import { HeroVideo } from "@/components/landing/hero-video";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Standard Hero Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Standard Hero Section</h3>
           <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 
 export default function LandingPage() {
@@ -56,8 +56,10 @@ export default function LandingPage() {
     </main>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Split Layout Hero</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Split Layout Hero</h3>
           <CodeBlock language="tsx" code={`import { HeroSplit } from "@/components/landing/hero-split";
 
 export default function LandingPage() {
@@ -72,8 +74,10 @@ export default function LandingPage() {
 // HeroSplit typically includes:
 // - Left side: Headline, description, CTA buttons
 // - Right side: Product screenshot, demo, or illustration`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Video Hero</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Video Hero</h3>
           <CodeBlock language="tsx" code={`import { HeroVideo } from "@/components/landing/hero-video";
 
 export default function LandingPage() {
@@ -89,23 +93,26 @@ export default function LandingPage() {
 // - Background video or play button for modal
 // - Overlay content with headline and CTAs
 // - Autoplay/loop options for background video`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">View Variations</h3>
-          <p className="text-muted-foreground mb-3">
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">View Variations</h3>
+          <p className="text-muted-foreground">
             Check out the variations page to see all hero styles side by side:
           </p>
           <CodeBlock language="tsx" code={`// Visit /variations to see all hero styles
 // Each variation is production-ready and copy-paste friendly`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Animation Pattern</h2>
-          <p className="text-muted-foreground mb-3">
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Animation Pattern</h2>
+          <p className="text-muted-foreground">
             All hero sections use Framer Motion for smooth entrance animations:
           </p>
-          <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
+        </div>
+        <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
 
 <motion.div
   initial={{ opacity: 0, y: 20 }}
@@ -114,8 +121,7 @@ export default function LandingPage() {
 >
   <h1>Your Headline</h1>
 </motion.div>`} />
-        </CardContent>
-      </Card>
+      </div>
     </div>
   );
 }

@@ -32,10 +32,11 @@ export default function EnvironmentVariablesPage() {
       {/* Required Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Required Variables</h2>
-        <p className="text-muted-foreground">
-          These must be set for the app to run:
-        </p>
-        <CodeBlock language="bash" code={`# .env.local
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            These must be set for the app to run:
+          </p>
+          <CodeBlock language="bash" code={`# .env.local
 
 # Database - PostgreSQL connection string
 DATABASE_URL="postgresql://user:password@host:5432/database"
@@ -49,12 +50,15 @@ NEXTAUTH_SECRET="your-32-character-secret-here"
 
 # App URL (used for links in emails, etc.)
 NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
+        </div>
       </div>
 
       {/* Authentication Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Authentication</h2>
-        <CodeBlock language="bash" code={`# Google OAuth (optional - enables Google login)
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Configure OAuth providers:</p>
+          <CodeBlock language="bash" code={`# Google OAuth (optional - enables Google login)
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-client-secret"
 
@@ -64,12 +68,15 @@ GOOGLE_CLIENT_SECRET="your-client-secret"
 # 3. Add redirect URI:
 #    - Dev: http://localhost:3000/api/auth/callback/google
 #    - Prod: https://your-domain.com/api/auth/callback/google`} />
+        </div>
       </div>
 
       {/* Email Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Email (Resend)</h2>
-        <CodeBlock language="bash" code={`# Resend API Key
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Configure email sending:</p>
+          <CodeBlock language="bash" code={`# Resend API Key
 RESEND_API_KEY="re_..."
 
 # From address (must be from verified domain)
@@ -80,12 +87,15 @@ EMAIL_FROM="noreply@your-domain.com"
 # 2. Verify your domain
 # 3. Create API key
 # 4. Add DNS records for domain verification`} />
+        </div>
       </div>
 
       {/* Stripe Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Stripe Payments</h2>
-        <CodeBlock language="bash" code={`# Stripe API Keys
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Configure payment processing:</p>
+          <CodeBlock language="bash" code={`# Stripe API Keys
 STRIPE_SECRET_KEY="sk_test_..."           # Server-side
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."  # Client-side
 
@@ -103,12 +113,15 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
 
 # Test webhook locally:
 # stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
+        </div>
       </div>
 
       {/* Analytics Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Analytics (Optional)</h2>
-        <CodeBlock language="bash" code={`# PostHog Analytics
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Track user behavior and metrics:</p>
+          <CodeBlock language="bash" code={`# PostHog Analytics
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 
@@ -119,12 +132,15 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 
 # Google Analytics (alternative)
 NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..."`} />
+        </div>
       </div>
 
       {/* Search Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Search - Algolia (Optional)</h2>
-        <CodeBlock language="bash" code={`# Algolia Search
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Add search functionality:</p>
+          <CodeBlock language="bash" code={`# Algolia Search
 NEXT_PUBLIC_ALGOLIA_APP_ID="your-app-id"
 NEXT_PUBLIC_ALGOLIA_SEARCH_KEY="your-search-key"
 ALGOLIA_ADMIN_KEY="your-admin-key"  # Server-side only
@@ -133,12 +149,15 @@ ALGOLIA_ADMIN_KEY="your-admin-key"  # Server-side only
 # 1. Sign up at https://algolia.com
 # 2. Create application
 # 3. Get API keys from API Keys section`} />
+        </div>
       </div>
 
       {/* CMS Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">CMS - Sanity (Optional)</h2>
-        <CodeBlock language="bash" code={`# Sanity CMS
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Manage content with headless CMS:</p>
+          <CodeBlock language="bash" code={`# Sanity CMS
 NEXT_PUBLIC_SANITY_PROJECT_ID="your-project-id"
 NEXT_PUBLIC_SANITY_DATASET="production"
 SANITY_API_TOKEN="sk..."  # Server-side only
@@ -147,12 +166,15 @@ SANITY_API_TOKEN="sk..."  # Server-side only
 # 1. Create project at https://sanity.io/manage
 # 2. Install Sanity CLI: npm install -g @sanity/cli
 # 3. Initialize: sanity init`} />
+        </div>
       </div>
 
       {/* Real-time Variables */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Real-time - Pusher (Optional)</h2>
-        <CodeBlock language="bash" code={`# Pusher Real-time
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Enable real-time features:</p>
+          <CodeBlock language="bash" code={`# Pusher Real-time
 PUSHER_APP_ID="your-app-id"
 PUSHER_SECRET="your-secret"
 NEXT_PUBLIC_PUSHER_KEY="your-key"
@@ -162,15 +184,17 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"
 # 1. Sign up at https://pusher.com
 # 2. Create a Channels app
 # 3. Get credentials from App Keys`} />
+        </div>
       </div>
 
       {/* Environment-Specific Configuration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Environment-Specific Configuration</h2>
-        <p className="text-muted-foreground">
-          Use different values for different environments:
-        </p>
-        <CodeBlock language="bash" code={`# Development (.env.local)
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            Use different values for different environments:
+          </p>
+          <CodeBlock language="bash" code={`# Development (.env.local)
 NODE_ENV="development"
 NEXTAUTH_URL="http://localhost:3000"
 STRIPE_SECRET_KEY="sk_test_..."
@@ -187,15 +211,17 @@ NODE_ENV="production"
 NEXTAUTH_URL="https://your-domain.com"
 STRIPE_SECRET_KEY="sk_live_..."  # Live keys!
 DATABASE_URL="postgresql://...production-db..."`} />
+        </div>
       </div>
 
       {/* Validation */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Environment Validation</h2>
-        <p className="text-muted-foreground">
-          All variables are validated at startup in <code className="rounded bg-muted px-1 py-0.5">src/lib/env.ts</code>:
-        </p>
-        <CodeBlock language="typescript" code={`// src/lib/env.ts
+        <div className="space-y-4">
+          <p className="text-muted-foreground">
+            All variables are validated at startup in <code className="rounded bg-muted px-1 py-0.5">src/lib/env.ts</code>:
+          </p>
+          <CodeBlock language="typescript" code={`// src/lib/env.ts
 
 import { z } from "zod";
 
@@ -225,6 +251,7 @@ import { env } from "@/lib/env";
 
 const dbUrl = env.server.DATABASE_URL;  // Type-safe!
 const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
+        </div>
       </div>
 
       {/* Security Best Practices */}
@@ -252,7 +279,9 @@ const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
       {/* Complete Example */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Complete Example</h2>
-        <CodeBlock language="bash" code={`# .env.local - Complete Development Setup
+        <div className="space-y-4">
+          <p className="text-muted-foreground">Full development environment setup:</p>
+          <CodeBlock language="bash" code={`# .env.local - Complete Development Setup
 
 # Core
 NODE_ENV="development"
@@ -285,6 +314,7 @@ PUSHER_APP_ID="..."
 PUSHER_SECRET="..."
 NEXT_PUBLIC_PUSHER_KEY="..."
 NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
+        </div>
       </div>
 
       {/* Next Steps */}

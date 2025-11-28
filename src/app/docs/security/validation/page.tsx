@@ -33,10 +33,12 @@ export default function SchemaValidationPage() {
 
       {/* Basic Zod Schema */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Basic Zod Schema</h2>
-        <p className="text-muted-foreground">
-          Define schemas to validate data:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Basic Zod Schema</h2>
+          <p className="text-muted-foreground">
+            Define schemas to validate data:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/validations/user.ts
 
 import { z } from "zod";
@@ -65,10 +67,12 @@ export type UserInput = z.infer<typeof userSchema>;`} />
 
       {/* API Route Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">API Route Validation</h2>
-        <p className="text-muted-foreground">
-          Validate request bodies in API routes:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">API Route Validation</h2>
+          <p className="text-muted-foreground">
+            Validate request bodies in API routes:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/users/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -115,10 +119,12 @@ export async function POST(request: NextRequest) {
 
       {/* Common Validation Patterns */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Common Validation Patterns</h2>
-        <p className="text-muted-foreground">
-          Reusable validation patterns for common fields:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Common Validation Patterns</h2>
+          <p className="text-muted-foreground">
+            Reusable validation patterns for common fields:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/validations/common.ts
 
 import { z } from "zod";
@@ -169,10 +175,12 @@ export const sortSchema = z.object({
 
       {/* Form Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Form Validation</h2>
-        <p className="text-muted-foreground">
-          Use schemas with react-hook-form:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Form Validation</h2>
+          <p className="text-muted-foreground">
+            Use schemas with react-hook-form:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`"use client";
 
 import { useForm } from "react-hook-form";
@@ -232,10 +240,12 @@ export function ContactForm() {
 
       {/* Query Parameter Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Query Parameter Validation</h2>
-        <p className="text-muted-foreground">
-          Validate URL search params:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Query Parameter Validation</h2>
+          <p className="text-muted-foreground">
+            Validate URL search params:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/items/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -273,10 +283,12 @@ export async function GET(request: NextRequest) {
 
       {/* Environment Variable Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Environment Variable Validation</h2>
-        <p className="text-muted-foreground">
-          Validate environment variables at startup:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Environment Variable Validation</h2>
+          <p className="text-muted-foreground">
+            Validate environment variables at startup:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/env.ts
 
 import { z } from "zod";
@@ -311,10 +323,12 @@ export const env = parsed.data;`} />
 
       {/* Custom Transformations */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Custom Transformations</h2>
-        <p className="text-muted-foreground">
-          Transform and sanitize data during validation:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Custom Transformations</h2>
+          <p className="text-muted-foreground">
+            Transform and sanitize data during validation:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { z } from "zod";
 
 const userInputSchema = z.object({

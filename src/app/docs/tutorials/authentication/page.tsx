@@ -113,9 +113,11 @@ export default function AuthenticationTutorialPage() {
             2 minutes
           </span>
         </div>
-        <p className="text-muted-foreground">
-          Authentication works out of the box. Just set these two environment variables:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Authentication works out of the box. Just set these two environment variables:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 
 # Where your app runs
@@ -252,11 +254,17 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <li><strong>Name:</strong> Anything (e.g., &quot;My SaaS Web Client&quot;)</li>
               <li><strong>Authorized redirect URIs:</strong></li>
             </ul>
-            <CodeBlock language="text" code={`http://localhost:3000/api/auth/callback/google`} />
-            <p className="text-sm text-muted-foreground mt-2">
-              For production, add your real domain too:
-            </p>
-            <CodeBlock language="text" code={`https://yourdomain.com/api/auth/callback/google`} />
+            <div className="space-y-4">
+              <div>
+                <CodeBlock language="text" code={`http://localhost:3000/api/auth/callback/google`} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  For production, add your real domain too:
+                </p>
+              </div>
+              <CodeBlock language="text" code={`https://yourdomain.com/api/auth/callback/google`} />
+            </div>
           </div>
 
           {/* Step 4 */}
@@ -267,18 +275,22 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               </span>
               <h3 className="font-semibold">Add Credentials to Your App</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Copy the Client ID and Client Secret from Google, then add them to your{" "}
-              <code className="rounded bg-muted px-1">.env.local</code> file:
-            </p>
-            <CodeBlock language="bash" code={`# .env.local
+            <div className="space-y-4">
+              <div>
+                <p className="text-muted-foreground">
+                  Copy the Client ID and Client Secret from Google, then add them to your{" "}
+                  <code className="rounded bg-muted px-1">.env.local</code> file:
+                </p>
+              </div>
+              <CodeBlock language="bash" code={`# .env.local
 
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-client-secret"`} />
-            <p className="text-sm text-muted-foreground">
-              Google login is now enabled! The &quot;Sign in with Google&quot; button will appear automatically
-              on your login page.
-            </p>
+              <p className="text-sm text-muted-foreground">
+                Google login is now enabled! The &quot;Sign in with Google&quot; button will appear automatically
+                on your login page.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -322,11 +334,13 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
         </p>
 
         {/* Check if user is logged in - API routes */}
-        <div className="space-y-2">
-          <h3 className="font-semibold">In API Routes (Server-Side)</h3>
-          <p className="text-sm text-muted-foreground">
-            Check if the user is logged in and get their info:
-          </p>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold">In API Routes (Server-Side)</h3>
+            <p className="text-muted-foreground">
+              Check if the user is logged in and get their info:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`// src/app/api/your-route/route.ts
 
 import { auth } from "@/lib/auth";
@@ -356,11 +370,13 @@ export async function GET() {
         </div>
 
         {/* Client-side auth */}
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">In React Components (Client-Side)</h3>
-          <p className="text-sm text-muted-foreground">
-            Show different content based on login status:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">In React Components (Client-Side)</h3>
+            <p className="text-muted-foreground">
+              Show different content based on login status:
+            </p>
+          </div>
           <CodeBlock language="tsx" code={`"use client";
 
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -396,11 +412,13 @@ export function UserStatus() {
         </div>
 
         {/* Server component */}
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">In Server Components</h3>
-          <p className="text-sm text-muted-foreground">
-            Check auth status in Next.js Server Components:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">In Server Components</h3>
+            <p className="text-muted-foreground">
+              Check auth status in Next.js Server Components:
+            </p>
+          </div>
           <CodeBlock language="tsx" code={`// No "use client" - this runs on the server
 
 import { auth } from "@/lib/auth";

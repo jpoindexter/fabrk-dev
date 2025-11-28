@@ -34,18 +34,20 @@ export default function EmailTemplatesTutorialPage() {
       {/* Basic Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Basic Setup</h2>
-        <p className="text-muted-foreground">
-          Configure your Resend API key to start sending emails. Sign up at{" "}
-          <a
-            href="https://resend.com"
-            className="text-primary hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            resend.com
-          </a>{" "}
-          and get your API key.
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Configure your Resend API key to start sending emails. Sign up at{" "}
+            <a
+              href="https://resend.com"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              resend.com
+            </a>{" "}
+            and get your API key.
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 
 RESEND_API_KEY="re_xxxxxxxxxxxx"
@@ -58,10 +60,12 @@ EMAIL_FROM="noreply@yourdomain.com"`} />
       {/* Email Service Functions */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Sending Emails</h2>
-        <p className="text-muted-foreground">
-          Use the email service functions from{" "}
-          <code className="rounded bg-muted px-1 py-0.5">src/lib/email.ts</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Use the email service functions from{" "}
+            <code className="rounded bg-muted px-1 py-0.5">src/lib/email.ts</code>:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import {
   sendEmail,
   sendWelcomeEmail,
@@ -99,10 +103,12 @@ await sendResetEmail(
       {/* Queue System */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Email Queue System</h2>
-        <p className="text-muted-foreground">
-          For non-critical emails (notifications, bulk), use the queue system for background sending
-          with automatic retries:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            For non-critical emails (notifications, bulk), use the queue system for background sending
+            with automatic retries:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import {
   queueEmail,
   queueWelcomeEmail,
@@ -136,10 +142,12 @@ await queueWelcomeEmail({
       {/* Creating Custom Templates */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Creating Custom Email Templates</h2>
-        <p className="text-muted-foreground">
-          Create HTML template functions in <code className="rounded bg-muted px-1 py-0.5">src/emails/</code>.
-          This approach keeps dependencies low and performance high.
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Create HTML template functions in <code className="rounded bg-muted px-1 py-0.5">src/emails/</code>.
+            This approach keeps dependencies low and performance high.
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/emails/invoice-html.ts
 
 interface InvoiceEmailProps {
@@ -195,9 +203,11 @@ export function generateInvoiceEmailHTML({
       {/* Sending Custom Templates */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Sending Custom HTML Emails</h2>
-        <p className="text-muted-foreground">
-          Generate the HTML and send it using Resend:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Generate the HTML and send it using Resend:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/send-invoice/route.ts
 
 import { Resend } from "resend";
@@ -257,9 +267,11 @@ export async function POST(request: Request) {
       {/* Organization Invites */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Organization Invites</h2>
-        <p className="text-muted-foreground">
-          Send beautiful organization invitation emails:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Send beautiful organization invitation emails:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { sendOrganizationInvite } from "@/lib/email";
 
 await sendOrganizationInvite("newmember@example.com", {

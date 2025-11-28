@@ -46,7 +46,11 @@ export default function DatabaseSetupPage() {
           <li>Choose a region close to your users</li>
           <li>Wait for project to be ready (~2 minutes)</li>
         </ol>
-        <CodeBlock language="bash" code={`# Get connection string from:
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Get your connection string and add it to .env.local:</p>
+          </div>
+          <CodeBlock language="bash" code={`# Get connection string from:
 # Project Settings → Database → Connection string
 
 # Direct connection (for migrations)
@@ -57,6 +61,7 @@ DATABASE_URL="postgresql://postgres.[PROJECT]:[PASSWORD]@aws-0-[REGION].pooler.s
 
 # Add to .env.local
 DATABASE_URL="your-connection-string"`} />
+        </div>
       </div>
 
       {/* Neon Setup */}
@@ -72,11 +77,16 @@ DATABASE_URL="your-connection-string"`} />
           <li>Create a new project</li>
           <li>Copy the connection string</li>
         </ol>
-        <CodeBlock language="bash" code={`# Neon connection string
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Connection string examples:</p>
+          </div>
+          <CodeBlock language="bash" code={`# Neon connection string
 DATABASE_URL="postgresql://[user]:[password]@[endpoint].neon.tech/[dbname]?sslmode=require"
 
 # Enable connection pooling
 DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname]?sslmode=require"`} />
+        </div>
       </div>
 
       {/* Railway Setup */}
@@ -92,8 +102,13 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
           <li>Create new project → Add PostgreSQL</li>
           <li>Copy DATABASE_URL from Variables tab</li>
         </ol>
-        <CodeBlock language="bash" code={`# Railway connection string
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Connection string format:</p>
+          </div>
+          <CodeBlock language="bash" code={`# Railway connection string
 DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`} />
+        </div>
       </div>
 
       {/* Initialize Database */}

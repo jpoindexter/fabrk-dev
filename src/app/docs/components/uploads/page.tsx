@@ -28,10 +28,11 @@ export default function UploadsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// File upload component
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// File upload component
 import { FileUpload } from "@/components/ui/file-upload";
 
 // Image dropzone with preview
@@ -42,14 +43,13 @@ import { CropperControls } from "@/components/ui/cropper-controls";
 
 // Avatar for profile images
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Basic File Upload</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Basic File Upload</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 
 export function DocumentUpload() {
@@ -76,8 +76,10 @@ export function DocumentUpload() {
     />
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Image Dropzone</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Image Dropzone</h3>
           <CodeBlock language="tsx" code={`import { ImageDropzone } from "@/components/ui/image-dropzone";
 import { useState } from "react";
 
@@ -117,8 +119,10 @@ export function ImageUpload() {
 // - File type validation
 // - Size limit enforcement
 // - Visual feedback on drag`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Avatar Upload</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Avatar Upload</h3>
           <CodeBlock language="tsx" code={`import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Camera } from "lucide-react";
@@ -179,8 +183,10 @@ export function AvatarUpload() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Multiple File Upload</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Multiple File Upload</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 import { useState } from "react";
 
@@ -225,8 +231,10 @@ export function MultipleFileUpload() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Upload with Progress</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Upload with Progress</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
@@ -277,8 +285,10 @@ export function UploadWithProgress() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">API Route for Upload</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">API Route for Upload</h3>
           <CodeBlock language="typescript" code={`// app/api/upload/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
@@ -306,8 +316,8 @@ export async function POST(request: NextRequest) {
     size: file.size,
   });
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

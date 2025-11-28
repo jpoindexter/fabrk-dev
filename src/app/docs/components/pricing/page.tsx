@@ -27,10 +27,11 @@ export default function PricingComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Pricing section for landing pages
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Pricing section for landing pages
 import { PricingSection } from "@/components/landing/pricing-section";
 
 // Detailed pricing table
@@ -38,14 +39,13 @@ import { PricingTable } from "@/components/landing/pricing-table";
 
 // Marketing comparison component
 import { PricingComparison } from "@/components/marketing/pricing-comparison";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Pricing Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Pricing Section</h3>
           <CodeBlock language="tsx" code={`import { PricingSection } from "@/components/landing/pricing-section";
 
 export default function LandingPage() {
@@ -65,8 +65,10 @@ export default function LandingPage() {
 // - Feature lists per tier
 // - CTA buttons with Stripe checkout integration
 // - Highlighted "popular" tier`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Pricing Table</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Pricing Table</h3>
           <CodeBlock language="tsx" code={`import { PricingTable } from "@/components/landing/pricing-table";
 
 export default function PricingPage() {
@@ -85,8 +87,10 @@ export default function PricingPage() {
 // PricingTable shows detailed feature comparison
 // Great for dedicated pricing pages
 // Includes checkmarks/X marks for feature availability`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Pricing Comparison</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Pricing Comparison</h3>
           <CodeBlock language="tsx" code={`import { PricingComparison } from "@/components/marketing/pricing-comparison";
 
 export default function PricingPage() {
@@ -101,8 +105,10 @@ export default function PricingPage() {
 // Side-by-side comparison of all features
 // Helps users choose the right plan
 // Scrollable on mobile devices`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Stripe Checkout Integration</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Stripe Checkout Integration</h3>
           <CodeBlock language="typescript" code={`// The pricing components integrate with Stripe checkout
 // Configure price IDs in src/config.js
 
@@ -129,8 +135,10 @@ export const config = {
 // The checkout API route handles session creation
 // POST /api/stripe/checkout
 // Returns checkout URL for redirect`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Custom Pricing Card</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Custom Pricing Card</h3>
           <CodeBlock language="tsx" code={`import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
@@ -168,8 +176,8 @@ export function PricingCard({
     </Card>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

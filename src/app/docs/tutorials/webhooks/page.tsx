@@ -34,9 +34,11 @@ export default function WebhooksTutorialPage() {
       {/* Available Events */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Available Webhook Events</h2>
-        <p className="text-muted-foreground">
-          Events are organized into 5 categories. Subscribe to specific events or entire categories:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Events are organized into 5 categories. Subscribe to specific events or entire categories:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// Organization Events
 org.member.invited    // Member invited to organization
 org.member.added      // Member added to organization
@@ -69,10 +71,12 @@ security.password_changed  // Password changed`} />
       {/* Triggering Webhooks */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Triggering Webhooks</h2>
-        <p className="text-muted-foreground">
-          Trigger webhooks from your application code using{" "}
-          <code className="rounded bg-muted px-1 py-0.5">src/lib/webhooks/server.ts</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Trigger webhooks from your application code using{" "}
+            <code className="rounded bg-muted px-1 py-0.5">src/lib/webhooks/server.ts</code>:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { triggerWebhook } from "@/lib/webhooks/server";
 import { WEBHOOK_EVENTS } from "@/lib/webhooks/events";
 
@@ -120,9 +124,11 @@ await triggerWebhook(
       {/* HMAC Signature Verification */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">HMAC-SHA256 Verification</h2>
-        <p className="text-muted-foreground">
-          All webhooks are signed with HMAC-SHA256. Recipients must verify the signature to ensure authenticity:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            All webhooks are signed with HMAC-SHA256. Recipients must verify the signature to ensure authenticity:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// Webhook receiver example (Node.js)
 
 import crypto from "crypto";
@@ -190,9 +196,11 @@ export async function POST(request: Request) {
       {/* Payload Structure */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Payload Structure</h2>
-        <p className="text-muted-foreground">
-          All webhook payloads follow this structure:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            All webhook payloads follow this structure:
+          </p>
+        </div>
         <CodeBlock language="json" code={`{
   "event": "payment.succeeded",
   "data": {
@@ -209,9 +217,11 @@ export async function POST(request: Request) {
       {/* Creating Webhooks API */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Creating Webhooks via API</h2>
-        <p className="text-muted-foreground">
-          Create an API endpoint for managing webhooks:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Create an API endpoint for managing webhooks:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/v1/webhooks/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -325,9 +335,11 @@ export async function GET(request: NextRequest) {
       {/* Monitoring Webhooks */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Monitoring & Statistics</h2>
-        <p className="text-muted-foreground">
-          Get webhook statistics for your organization:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Get webhook statistics for your organization:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import { getWebhookStats } from "@/lib/webhooks/server";
 
 const stats = await getWebhookStats(organizationId);
@@ -346,9 +358,11 @@ const stats = await getWebhookStats(organizationId);
       {/* Event Categories Helper */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Event Categories Helper</h2>
-        <p className="text-muted-foreground">
-          Use the events helper for UI and validation:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Use the events helper for UI and validation:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`import {
   getAllEvents,
   isValidEvent,
@@ -416,9 +430,11 @@ const description = EVENT_DESCRIPTIONS["payment.succeeded"];
       {/* Testing Webhooks */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Testing Webhooks</h2>
-        <p className="text-muted-foreground">
-          Use tools like ngrok to test webhooks locally:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Use tools like ngrok to test webhooks locally:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# Expose local server
 ngrok http 3000
 

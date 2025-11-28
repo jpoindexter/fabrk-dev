@@ -183,7 +183,8 @@ export default function CloudStoragePage() {
               </span>
               <h3 className="font-semibold">Add Environment Variables</h3>
             </div>
-            <CodeBlock language="bash" code={`# .env.local
+          </div>
+          <CodeBlock language="bash" code={`# .env.local
 
 # Cloudflare R2 Configuration
 CLOUDFLARE_R2_ACCESS_KEY_ID="your-access-key-id"
@@ -193,16 +194,17 @@ CLOUDFLARE_R2_ENDPOINT="https://your-account-id.r2.cloudflarestorage.com"
 
 # Optional: Public URL for the bucket
 CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`} />
-          </div>
         </div>
       </div>
 
       {/* Setup - S3 */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Setup: AWS S3</h2>
-        <p className="text-muted-foreground">
-          If you prefer S3 or already use AWS:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            If you prefer S3 or already use AWS:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 
 # AWS S3 Configuration
@@ -221,11 +223,13 @@ AWS_S3_REGION="us-east-1"`} />
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Code Reference</h2>
 
-        <div className="space-y-2">
-          <h3 className="font-semibold">Upload a File</h3>
-          <p className="text-sm text-muted-foreground">
-            Use the upload utility to store files:
-          </p>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold">Upload a File</h3>
+            <p className="text-sm text-muted-foreground">
+              Use the upload utility to store files:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
 
 // Check which provider is being used
@@ -248,11 +252,13 @@ if (result.success) {
 }`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">File Validation</h3>
-          <p className="text-sm text-muted-foreground">
-            Validate files before uploading:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">File Validation</h3>
+            <p className="text-sm text-muted-foreground">
+              Validate files before uploading:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`import { validateFile } from "@/lib/storage/uploads";
 
 // Validate file size and type
@@ -274,11 +280,13 @@ if (!validation.valid) {
 }`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">API Route Example</h3>
-          <p className="text-sm text-muted-foreground">
-            Handle file uploads in your API:
-          </p>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">API Route Example</h3>
+            <p className="text-sm text-muted-foreground">
+              Handle file uploads in your API:
+            </p>
+          </div>
           <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
 
 import { auth } from "@/lib/auth";
@@ -323,8 +331,10 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">Client-Side Upload Component</h3>
+        <div className="space-y-4 mt-6">
+          <div>
+            <h3 className="font-semibold">Client-Side Upload Component</h3>
+          </div>
           <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";

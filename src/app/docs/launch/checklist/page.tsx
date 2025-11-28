@@ -103,7 +103,9 @@ export default function LaunchChecklistPage() {
             {/* Useful Commands */}
             <section className="space-y-4">
                 <h2 className="text-2xl font-semibold">Useful Commands</h2>
-                <CodeBlock language="bash" code={`# Run full test suite
+                <div className="space-y-4">
+                    <p className="text-muted-foreground">Pre-launch verification commands:</p>
+                    <CodeBlock language="bash" code={`# Run full test suite
 npm run test:all
 
 # Check for TODOs
@@ -114,6 +116,7 @@ npm run build
 
 # Check types
 npm run type-check`} />
+                </div>
             </section>
         </div>
     );

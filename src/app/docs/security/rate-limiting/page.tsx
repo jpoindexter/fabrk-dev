@@ -33,10 +33,12 @@ export default function RateLimitingPage() {
 
       {/* Basic Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Basic Setup</h2>
-        <p className="text-muted-foreground">
-          Add rate limiting to any API route using the rate limiter middleware:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Basic Setup</h2>
+          <p className="text-muted-foreground">
+            Add rate limiting to any API route using the rate limiter middleware:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -72,10 +74,12 @@ export function rateLimit(ip: string, limit: number = 10) {
 
       {/* API Route Integration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">API Route Integration</h2>
-        <p className="text-muted-foreground">
-          Apply rate limiting to your API routes:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">API Route Integration</h2>
+          <p className="text-muted-foreground">
+            Apply rate limiting to your API routes:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/your-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -112,10 +116,12 @@ export async function POST(request: NextRequest) {
 
       {/* Different Limits per Endpoint */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Custom Limits per Endpoint</h2>
-        <p className="text-muted-foreground">
-          Configure different rate limits for different endpoints:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Custom Limits per Endpoint</h2>
+          <p className="text-muted-foreground">
+            Configure different rate limits for different endpoints:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -154,10 +160,12 @@ export const writeLimiter = new Ratelimit({
 
       {/* User-Based Rate Limiting */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">User-Based Rate Limiting</h2>
-        <p className="text-muted-foreground">
-          Rate limit by user ID instead of IP for authenticated endpoints:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">User-Based Rate Limiting</h2>
+          <p className="text-muted-foreground">
+            Rate limit by user ID instead of IP for authenticated endpoints:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/protected-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -196,10 +204,12 @@ export async function POST(request: NextRequest) {
 
       {/* Environment Variables */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Environment Variables</h2>
-        <p className="text-muted-foreground">
-          Configure Upstash Redis for production rate limiting:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Environment Variables</h2>
+          <p className="text-muted-foreground">
+            Configure Upstash Redis for production rate limiting:
+          </p>
+        </div>
         <CodeBlock language="bash" code={`# .env.local
 
 # Upstash Redis (get from https://upstash.com)

@@ -30,10 +30,11 @@ export default function FeaturesComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Main features section
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Main features section
 import { FeaturesSection } from "@/components/landing/features-section";
 
 // Enterprise features
@@ -50,14 +51,13 @@ import { TechStack } from "@/components/landing/tech-stack";
 
 // Comparison table
 import { ComparisonSection } from "@/components/landing/comparison-section";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Features Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Features Section</h3>
           <CodeBlock language="tsx" code={`import { FeaturesSection } from "@/components/landing/features-section";
 
 export default function LandingPage() {
@@ -73,8 +73,10 @@ export default function LandingPage() {
 // FeaturesSection displays a grid of feature cards
 // Each card has an icon, title, and description
 // Includes scroll animations via Framer Motion`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Enterprise Features</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Enterprise Features</h3>
           <CodeBlock language="tsx" code={`import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 
 export default function LandingPage() {
@@ -92,8 +94,10 @@ export default function LandingPage() {
 // - Compliance certifications
 // - Team collaboration tools
 // - Admin controls`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Tech Stack</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Tech Stack</h3>
           <CodeBlock language="tsx" code={`import { TechStack } from "@/components/landing/tech-stack";
 
 export default function LandingPage() {
@@ -112,8 +116,10 @@ export default function LandingPage() {
 // - Prisma, PostgreSQL
 // - Stripe, Resend
 // - Tailwind CSS, Radix UI`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Comparison Section</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Comparison Section</h3>
           <CodeBlock language="tsx" code={`import { ComparisonSection } from "@/components/landing/comparison-section";
 
 export default function LandingPage() {
@@ -129,8 +135,10 @@ export default function LandingPage() {
 // Shows feature comparison table
 // Compare your product vs competitors
 // Or compare different pricing tiers`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Complete Landing Page</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Complete Landing Page</h3>
           <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
@@ -149,8 +157,8 @@ export default function LandingPage() {
     </main>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

@@ -262,9 +262,11 @@ export default function ThemingPage() {
       {/* Theme Dropdown Component */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Theme Switcher Component</h2>
-        <p className="text-muted-foreground">
-          The <code className="rounded bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            The <code className="rounded bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function MyNavbar() {
@@ -279,6 +281,9 @@ export function MyNavbar() {
       {/* How It Works */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">How It Works</h2>
+        <div>
+          <p className="text-muted-foreground">Themes are applied via data-theme attribute:</p>
+        </div>
         <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
 <html data-theme="light">
   <!-- data-theme="light" sets the color palette -->
@@ -295,9 +300,11 @@ export function MyNavbar() {
       {/* CSS Implementation */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">CSS Implementation</h2>
-        <p className="text-muted-foreground">
-          Each DaisyUI theme defines CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Each DaisyUI theme defines CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
+          </p>
+        </div>
         <CodeBlock language="css" code={`/* Light (default) */
 [data-theme="light"] {
   --primary: 259 94% 51%;
@@ -327,9 +334,11 @@ export function MyNavbar() {
       {/* Using Theme Colors */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Using Theme Colors</h2>
-        <p className="text-muted-foreground">
-          Always use semantic color classes that adapt to the active theme:
-        </p>
+        <div>
+          <p className="text-muted-foreground">
+            Always use semantic color classes that adapt to the active theme:
+          </p>
+        </div>
         <CodeBlock language="tsx" code={`// ✅ GOOD - Theme-aware colors
 <button className="bg-primary text-primary-foreground">
   Matches active theme (light, synthwave, dracula, etc.)
@@ -358,7 +367,8 @@ export function MyNavbar() {
         <div className="space-y-3">
           <div>
             <h3 className="font-semibold mb-2">1. Add CSS in globals.css</h3>
-            <CodeBlock language="css" code={`/* Your Custom Theme */
+          </div>
+          <CodeBlock language="css" code={`/* Your Custom Theme */
 [data-theme="ocean"] {
   --primary: 199 89% 48%;
   --primary-foreground: 0 0% 100%;
@@ -367,16 +377,15 @@ export function MyNavbar() {
   --foreground: 199 10% 10%;
   /* Add all required CSS variables */
 }`} />
-          </div>
           <div>
             <h3 className="font-semibold mb-2">2. Add to theme-dropdown.tsx</h3>
-            <CodeBlock language="tsx" code={`const themes = [
+          </div>
+          <CodeBlock language="tsx" code={`const themes = [
   { id: "light", name: "Light", preview: "#ffffff" },
   { id: "dark", name: "Dark", preview: "#1d232a" },
   // ...existing DaisyUI themes...
   { id: "ocean", name: "Ocean", preview: "#0ea5e9" }, // Your custom theme
 ];`} />
-          </div>
         </div>
         <p className="text-sm text-muted-foreground mt-4">
           <strong>Note:</strong> The <code className="bg-muted px-1 rounded">ColorTheme</code> type is automatically inferred from the themes array, so no type changes needed.

@@ -33,10 +33,12 @@ export default function AuditLoggingPage() {
 
       {/* Database Schema */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Database Schema</h2>
-        <p className="text-muted-foreground">
-          The AuditLog model in Prisma:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Database Schema</h2>
+          <p className="text-muted-foreground">
+            The AuditLog model in Prisma:
+          </p>
+        </div>
         <CodeBlock language="prisma" code={`// prisma/schema.prisma
 
 model AuditLog {
@@ -75,10 +77,12 @@ model AuditLog {
 
       {/* Audit Service */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Audit Service</h2>
-        <p className="text-muted-foreground">
-          Create a service to log events:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Audit Service</h2>
+          <p className="text-muted-foreground">
+            Create a service to log events:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/audit.ts
 
 import { prisma } from "@/lib/db";
@@ -168,10 +172,12 @@ export async function createAuditLog(input: AuditLogInput) {
 
       {/* Usage Examples */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Usage Examples</h2>
-        <p className="text-muted-foreground">
-          Log events throughout your application:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Usage Examples</h2>
+          <p className="text-muted-foreground">
+            Log events throughout your application:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// Login event
 // src/app/api/auth/login/route.ts
 
@@ -243,10 +249,12 @@ await createAuditLog({
 
       {/* Querying Logs */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Querying Logs</h2>
-        <p className="text-muted-foreground">
-          API endpoint to search and filter audit logs:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Querying Logs</h2>
+          <p className="text-muted-foreground">
+            API endpoint to search and filter audit logs:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/app/api/admin/audit-logs/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
@@ -314,10 +322,12 @@ export async function GET(request: NextRequest) {
 
       {/* Log Retention */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Log Retention</h2>
-        <p className="text-muted-foreground">
-          Set up automatic cleanup of old logs:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Log Retention</h2>
+          <p className="text-muted-foreground">
+            Set up automatic cleanup of old logs:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// scripts/cleanup-audit-logs.ts
 
 import { prisma } from "@/lib/db";
@@ -356,10 +366,12 @@ cleanupAuditLogs()
 
       {/* Security Alerts */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Security Alerts</h2>
-        <p className="text-muted-foreground">
-          Send alerts for critical events:
-        </p>
+        <div>
+          <h2 className="text-2xl font-semibold">Security Alerts</h2>
+          <p className="text-muted-foreground">
+            Send alerts for critical events:
+          </p>
+        </div>
         <CodeBlock language="typescript" code={`// src/lib/audit.ts
 
 import { sendEmail } from "@/lib/email";

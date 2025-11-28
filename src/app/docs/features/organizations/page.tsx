@@ -42,10 +42,11 @@ export default function OrganizationsPage() {
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Core models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
-            <CodeBlock language="prisma" code={`enum OrgRole {
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Core models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
+          </div>
+          <CodeBlock language="prisma" code={`enum OrgRole {
   OWNER
   ADMIN
   MEMBER
@@ -97,8 +98,7 @@ model OrganizationInvite {
   @@index([email])
   @@index([token])
 }`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">
@@ -184,10 +184,11 @@ model OrganizationInvite {
         <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
 
         <h3 className="text-xl font-medium mb-3">Create Organization</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">API endpoint to create a new organization:</p>
-            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/route.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">API endpoint to create a new organization:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -262,14 +263,14 @@ export async function GET() {
 
   return NextResponse.json(organizations);
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Invite Members</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Send team invitations:</p>
-            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/route.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Send team invitations:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/route.ts
 import { nanoid } from "nanoid";
 import { sendInviteEmail } from "@/lib/email";
 
@@ -339,14 +340,14 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ success: true, invite });
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Accept Invitation</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Handle invite acceptance:</p>
-            <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/accept/route.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Handle invite acceptance:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/accept/route.ts
 export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -394,14 +395,14 @@ export async function POST(request: Request) {
     organization: invite.organization,
   });
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Permission Check Middleware</h3>
-        <Card className="mb-6">
-          <CardContent className="pt-6">
-            <p className="mb-4">Reusable permission checking:</p>
-            <CodeBlock language="typescript" code={`// src/lib/permissions.ts
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-muted-foreground">Reusable permission checking:</p>
+          </div>
+          <CodeBlock language="typescript" code={`// src/lib/permissions.ts
 import { prisma } from "@/lib/db";
 
 type Permission =
@@ -453,14 +454,14 @@ export async function DELETE(request: Request) {
 
   // Proceed with deletion...
 }`} />
-          </CardContent>
-        </Card>
+        </div>
 
         <h3 className="text-xl font-medium mb-3">Organization Context Hook</h3>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">Client-side organization context:</p>
-            <CodeBlock language="tsx" code={`// src/hooks/useOrganization.ts
+        <div className="space-y-4">
+          <div>
+            <p className="text-muted-foreground">Client-side organization context:</p>
+          </div>
+          <CodeBlock language="tsx" code={`// src/hooks/useOrganization.ts
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -525,8 +526,7 @@ function TeamPage() {
     </div>
   );
 }`} />
-          </CardContent>
-        </Card>
+        </div>
       </section>
 
       <section className="mb-12">

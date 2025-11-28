@@ -37,10 +37,11 @@ export default function DataDisplayComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Examples</h2>
-          <CodeBlock language="typescript" code={`// Table
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Examples</h2>
+        </div>
+        <CodeBlock language="typescript" code={`// Table
 import {
   Table,
   TableBody,
@@ -81,14 +82,13 @@ import { Pagination } from "@/components/ui/pagination";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Table</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Table</h3>
           <CodeBlock language="tsx" code={`import {
   Table,
   TableBody,
@@ -125,8 +125,10 @@ export function UsersTable() {
     </Table>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Card</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Card</h3>
           <CodeBlock language="tsx" code={`import {
   Card,
   CardContent,
@@ -155,8 +157,10 @@ export function ProfileCard() {
     </Card>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Badge Variants</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Badge Variants</h3>
           <CodeBlock language="tsx" code={`import { Badge } from "@/components/ui/badge";
 
 export function BadgeVariants() {
@@ -176,8 +180,10 @@ export function BadgeVariants() {
     {user.active ? "Active" : "Inactive"}
   </Badge>
 </TableCell>`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Stat Card</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Stat Card</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity } from "lucide-react";
 
@@ -204,8 +210,10 @@ export function DashboardStats() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Skeleton Loading</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Skeleton Loading</h3>
           <CodeBlock language="tsx" code={`import { Skeleton } from "@/components/ui/skeleton";
 
 export function TableSkeleton() {
@@ -223,8 +231,10 @@ export function TableSkeleton() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Empty State</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Empty State</h3>
           <CodeBlock language="tsx" code={`import { EmptyState } from "@/components/ui/empty-state";
 import { FileText } from "lucide-react";
 
@@ -241,8 +251,10 @@ export function NoDataState() {
     />
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Tooltip</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Tooltip</h3>
           <CodeBlock language="tsx" code={`import {
   Tooltip,
   TooltipContent,
@@ -265,8 +277,10 @@ export function TooltipExample() {
     </TooltipProvider>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Progress</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Progress</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function ProgressExample() {
@@ -280,8 +294,8 @@ export function ProgressExample() {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

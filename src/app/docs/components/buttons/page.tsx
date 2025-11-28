@@ -30,18 +30,18 @@ export default function ButtonsComponentsPage() {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Import Example</h2>
-          <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
-        </CardContent>
-      </Card>
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Import Example</h2>
+        </div>
+        <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
+      </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Usage Examples</h2>
+      <div className="space-y-8">
+        <h2 className="text-xl font-semibold">Usage Examples</h2>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Button Variants</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Button Variants</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
@@ -56,8 +56,10 @@ export function ButtonVariants() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Button Sizes</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Button Sizes</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
@@ -72,8 +74,10 @@ export function ButtonSizes() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Button with Icon</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Button with Icon</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight, Loader2 } from "lucide-react";
 
@@ -99,8 +103,10 @@ export function ButtonWithIcon() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Loading State</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Loading State</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -114,8 +120,10 @@ export function LoadingButton() {
     </Button>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Button as Link</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Button as Link</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -136,8 +144,10 @@ export function ButtonAsLink() {
     </>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Button Group</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Button Group</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
@@ -155,8 +165,10 @@ export function ButtonGroup() {
     </div>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Full Width Button</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Full Width Button</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function FullWidthButton() {
@@ -166,8 +178,10 @@ export function FullWidthButton() {
     </Button>
   );
 }`} />
+        </div>
 
-          <h3 className="text-lg font-medium mt-6 mb-3">Disabled State</h3>
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Disabled State</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function DisabledButton() {
@@ -178,8 +192,8 @@ export function DisabledButton() {
     </div>
   );
 }`} />
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

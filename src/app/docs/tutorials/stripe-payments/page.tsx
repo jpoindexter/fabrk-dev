@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Subscription Guide - Fabrk Docs",
@@ -22,16 +23,10 @@ export default function StripePaymentsTutorialPage() {
         <p className="text-muted-foreground">
           Add your Stripe API keys to <code className="rounded bg-muted px-1 py-0.5">.env.local</code>:
         </p>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>{`# Get from https://dashboard.stripe.com/test/apikeys
+        <CodeBlock language="bash" code={`# Get from https://dashboard.stripe.com/test/apikeys
 STRIPE_SECRET_KEY="sk_test_..."
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+STRIPE_WEBHOOK_SECRET="whsec_..."`} />
       </div>
 
       {/* Create Product */}
@@ -54,14 +49,8 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`}</code>
           <li>Choose "One time" or "Recurring"</li>
           <li>Copy the Price ID</li>
         </ol>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>{`# .env.local
-NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+        <CodeBlock language="bash" code={`# .env.local
+NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       </div>
 
       {/* Checkout Button */}
@@ -70,10 +59,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`}</code>
         <p className="text-muted-foreground">
           Use the checkout API to create a payment session:
         </p>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>{`"use client";
+        <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -110,10 +96,7 @@ export function CheckoutButton() {
       {loading ? "Loading..." : "Buy Now"}
     </Button>
   );
-}`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+}`} />
       </div>
 
       {/* Webhooks */}
@@ -122,30 +105,18 @@ export function CheckoutButton() {
         <p className="text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
         </p>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>{`# Install Stripe CLI
+        <CodeBlock language="bash" code={`# Install Stripe CLI
 brew install stripe/stripe-cli/stripe
 
 # Login
 stripe login
 
 # Forward webhooks
-stripe listen --forward-to localhost:3000/api/webhooks/stripe`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
         <p className="text-muted-foreground">
           For production, add your webhook endpoint in the Stripe Dashboard:
         </p>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>https://yourdomain.com/api/webhooks/stripe</code>
-            </pre>
-          </CardContent>
-        </Card>
+        <CodeBlock language="text" code={`https://yourdomain.com/api/webhooks/stripe`} />
       </div>
 
       {/* Webhook Events */}
@@ -171,10 +142,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`}</code>
         <p className="text-muted-foreground">
           Configure promotion codes in <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
         </p>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="overflow-x-auto text-sm text-foreground">
-              <code>{`// src/config.js
+        <CodeBlock language="javascript" code={`// src/config.js
 stripe: {
   coupons: {
     earlyAdopter: {
@@ -185,10 +153,7 @@ stripe: {
       // ...
     },
   },
-}`}</code>
-            </pre>
-          </CardContent>
-        </Card>
+}`} />
       </div>
 
       {/* Test Cards */}
