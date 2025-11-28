@@ -29,7 +29,7 @@ export function Navigation() {
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
+      <div className="flex h-16 w-full items-center px-4 sm:px-6">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}

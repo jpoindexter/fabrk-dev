@@ -9,7 +9,7 @@ import { H4, Small } from "@/components/ui/typography";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
-      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:flex-row lg:items-start">
+      <div className="flex w-full flex-col gap-12 px-4 sm:px-6 lg:flex-row lg:items-start">
         {/* Left: Logo & Copyright Section */}
           <div className="lg:w-64 flex-shrink-0">
             <Link href="/" className="inline-flex transition-opacity hover:opacity-80">
