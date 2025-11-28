@@ -1,143 +1,129 @@
-/* 💡 PRICING TIP: Update your pricing in src/config.js under the 'pricing' section.
- * The features list below should match what you're actually offering.
- * The PolarCheckoutButton handles the payment flow - see src/components/polar/ for customization.
+/**
+ * ✅ FABRK COMPONENT
+ * Pricing Section - Achromatic-style two-column layout
+ * Production-ready ✓
  */
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import config from "@/config";
 import { motion } from "framer-motion";
-import { H2, Body, Small, Strong } from "@/components/ui/typography";
+import { H2, H3, Body, Small } from "@/components/ui/typography";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 
 export function PricingSection() {
   const features = [
-    "Next.js 15 Boilerplate",
-    "Lifetime Updates",
-    "Unlimited Projects",
-    "Access to Private Discord",
-    "Full Source Code",
+    "All starter kits included",
+    "All features included",
+    "Lifetime access & updates",
+    "Unlimited projects and developers",
+    "Personal and commercial usage",
+    "Saves you 200+ hours",
   ];
 
   return (
     <section
       id="pricing"
-      className="scroll-mt-16 border-t border-border bg-background px-6 py-24"
+      className="scroll-mt-16 border-t border-border bg-background px-6 py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <H2 className="mb-2 text-center">
-            One Price. Unlimited Projects. Launch Now.
-          </H2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
-          <Body className="mb-16 text-center text-muted-foreground">
-            No subscriptions, no recurring fees. Pay once, use forever.
-          </Body>
-        </motion.div>
-
-        {/* Pricing Card */}
-        <div className="mx-auto mt-16 max-w-lg">
+        {/* Two Column Layout */}
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left Column - Description */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="rounded-lg border border-border bg-card p-10"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col justify-center"
           >
-            {/* Plan Name */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mb-6 text-center"
-            >
-              <Badge variant="default" size="lg" className="uppercase">
-                Lifetime Deal
-              </Badge>
-            </motion.div>
+            <Small className="mb-2 font-semibold uppercase tracking-wide text-primary">
+              Starter
+            </Small>
+            <H2 className="mb-4">
+              One-time purchase
+              <br />
+              <span className="text-muted-foreground">Unlimited projects</span>
+            </H2>
+            <Body className="mb-6 text-muted-foreground">
+              Upon purchase, you can use the starter kits for personal and
+              commercial projects with no restrictions on the number of
+              developers or projects.{" "}
+              <a href="/docs" className="text-primary underline underline-offset-4">
+                Click here to download the boilerplate
+              </a>
+              .
+            </Body>
+            <Body className="text-muted-foreground">
+              Fabrk is <strong>40-70% more affordable</strong> than comparable Next.js
+              starter kits. There's no catch, we believe the lower price is fair and
+              many shouldn't be hidden charges for basics.
+            </Body>
+          </motion.div>
 
-            {/* Scarcity Badge - Live Discount Counter */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mb-4 flex justify-center"
-            >
-              <DiscountCounter />
-            </motion.div>
-
-            {/* Price */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="mb-8 text-center"
-            >
-              <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="text-5xl font-semibold text-foreground">{config.pricing.fabrk.display.current}</span>
-                <span className="text-xl font-medium text-muted-foreground line-through">
-                  {config.pricing.fabrk.display.original}
-                </span>
+          {/* Right Column - Pricing Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="rounded-xl border border-border bg-card p-8">
+              {/* Discount Badge */}
+              <div className="mb-6">
+                <DiscountCounter />
               </div>
-              <Body className="text-muted-foreground">
-                Pay once, use forever. <Strong>$0 recurring fees.</Strong>
-              </Body>
-            </motion.div>
 
-            {/* Features List */}
-            <ul className="mb-8 space-y-3">
-              {features.map((feature, idx) => (
-                <motion.li
-                  key={feature}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.6 + idx * 0.05 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-3"
-                >
-                  <Check className="h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
-                  <Body>{feature}</Body>
-                </motion.li>
-              ))}
-            </ul>
+              {/* Price Display */}
+              <div className="mb-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-2xl font-medium text-muted-foreground line-through">
+                    {config.pricing.fabrk.display.original}
+                  </span>
+                  <span className="text-sm text-muted-foreground">→</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-5xl font-bold text-foreground">
+                    {config.pricing.fabrk.display.current}
+                  </span>
+                  <span className="text-muted-foreground">one-time payment</span>
+                </div>
+              </div>
 
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.85 }}
-              viewport={{ once: true }}
-            >
-              <PolarCheckoutButton className="w-full">
-                Buy Now & Ship Faster
+              {/* CTA Button */}
+              <PolarCheckoutButton className="mb-8 w-full gap-2">
+                Get Lifetime Access <ArrowRight className="size-4" />
               </PolarCheckoutButton>
-            </motion.div>
 
-            {/* Final Sale Notice */}
+              {/* Features List */}
+              <ul className="space-y-3">
+                {features.map((feature, idx) => (
+                  <motion.li
+                    key={feature}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.2 + idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3"
+                  >
+                    <Check className="mt-0.5 size-5 shrink-0 text-primary" strokeWidth={2} />
+                    <Small className="text-foreground">{feature}</Small>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Trust Badge */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
               viewport={{ once: true }}
+              className="mt-4 text-center"
             >
-              <Small className="block mt-6 text-center text-muted-foreground">
-                All sales are final. Digital product - no refunds after download.
+              <Small className="text-muted-foreground">
+                Secure checkout powered by Polar. All sales are final.
               </Small>
             </motion.div>
           </motion.div>

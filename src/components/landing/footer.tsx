@@ -1,13 +1,49 @@
-/* 💡 COPY TIP: Update your company name, copyright year, and footer links.
- * Add your social media links and any legal pages required for your region.
- * The tagline should reinforce your main value proposition.
+/**
+ * ✅ FABRK COMPONENT
+ * Footer - Clean footer with tech stack logos
+ * Production-ready ✓
  */
 import Link from "next/link";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
+import { SimpleIcon } from "@/components/ui/simple-icon";
+import {
+  siNextdotjs,
+  siReact,
+  siTailwindcss,
+  siPrisma,
+  siTypescript,
+  siStripe,
+  siResend,
+} from "simple-icons";
+
+const techStack = [
+  { name: "Next.js", path: siNextdotjs.path },
+  { name: "React", path: siReact.path },
+  { name: "TypeScript", path: siTypescript.path },
+  { name: "Tailwind", path: siTailwindcss.path },
+  { name: "Prisma", path: siPrisma.path },
+  { name: "Stripe", path: siStripe.path },
+  { name: "Resend", path: siResend.path },
+];
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
+      {/* Tech Stack Bar */}
+      <div className="border-b border-border px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
+          {techStack.map((tech) => (
+            <div
+              key={tech.name}
+              className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <SimpleIcon path={tech.path} className="size-5" />
+              <span className="text-sm font-medium">{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12">
@@ -41,10 +77,10 @@ export function Footer() {
                     Pricing
                   </Link>
                   <Link
-                    href="/demo"
+                    href="/docs"
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    Demo
+                    Documentation
                   </Link>
                 </nav>
               </div>
@@ -97,13 +133,12 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom: Copyright + Watermark */}
+      {/* Bottom: Copyright */}
       <div className="border-t border-border px-4 sm:px-6 lg:px-8 py-8 overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-sm text-muted-foreground">
-          <span>© 2025 Fabrk. All rights reserved.</span>
-          <span>Made with ❤️ by indie developers</span>
+          <span>© {new Date().getFullYear()} Fabrk. All rights reserved.</span>
+          <span>Built for indie hackers and startups</span>
         </div>
-
       </div>
     </footer>
   );

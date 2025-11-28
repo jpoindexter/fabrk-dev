@@ -1,20 +1,14 @@
 /**
  * ✅ FABRK COMPONENT
- * Home Page - ShipFast-inspired high-converting landing page
+ * Home Page - Clean, Achromatic-inspired landing page
  * Production-ready ✓
  */
 
 import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
-import { FeaturesSection } from "@/components/landing/features-section";
-import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
-import { QualitySection } from "@/components/landing/quality-section";
-import { StatsSection } from "@/components/landing/stats-section";
 import { FeaturesShowcase } from "@/components/home/features-showcase";
-import { WhatsIncludedBreakdown } from "@/components/home/whats-included-breakdown";
-import { ValueProposition } from "@/components/home/value-proposition";
+import { FeaturesSection } from "@/components/landing/features-section";
 import { PricingSection } from "@/components/landing/pricing-section";
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { ComparisonSection } from "@/components/landing/comparison-section";
 import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/landing/footer";
@@ -27,14 +21,8 @@ export default function HomePage() {
       <Navigation />
       <HeroSection />
       <FeaturesShowcase />
-      <WhatsIncludedBreakdown />
-      <ValueProposition />
       <FeaturesSection />
-      <EnterpriseFeaturesSection />
-      <QualitySection />
-      <StatsSection />
       <PricingSection />
-      <TestimonialsSection />
       <ComparisonSection />
       <FAQSection />
       <Footer />
