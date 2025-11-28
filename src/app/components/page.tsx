@@ -24,8 +24,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import ActivityTimelineDemo from "./activity-timeline-demo";
-import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X } from "lucide-react";
+import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Upload, User, X, UserCog, Trash2, MoreHorizontal } from "lucide-react";
 
 export default function ComponentsPage() {
   return (
@@ -373,6 +381,77 @@ export default function ComponentsPage() {
               </Tabs>
             </CardContent>
           </Card>
+        </section>
+
+        {/* Dropdown Menus Section */}
+        <section id="dropdown-menus" className="space-y-6">
+          <div>
+            <h2 className="text-3xl font-bold mb-2">Dropdown Menus</h2>
+            <p className="text-muted-foreground">Action menus with proper alignment</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Right-Aligned Menu (align=&quot;end&quot;)</CardTitle>
+                <CardDescription>For actions in table rows or right-side triggers</CardDescription>
+              </CardHeader>
+              <CardContent className="flex justify-end">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      <MoreHorizontal className="h-4 w-4" />
+                      <span className="sr-only">Open menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className="font-semibold">
+                      <UserCog className="mr-2 h-4 w-4" />
+                      Edit User
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="font-semibold">
+                      <Settings className="mr-2 h-4 w-4" />
+                      Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="text-destructive font-semibold">
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Left-Aligned Menu (align=&quot;start&quot;)</CardTitle>
+                <CardDescription>For sidebar menus or left-positioned actions</CardDescription>
+              </CardHeader>
+              <CardContent className="flex justify-start">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      Options
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48">
+                    <DropdownMenuLabel>Menu</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className="font-semibold">
+                      <User className="mr-2 h-4 w-4" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="font-semibold">
+                      <Settings className="mr-2 h-4 w-4" />
+                      Settings
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </CardContent>
+            </Card>
+          </div>
         </section>
 
         {/* Activity Timeline Section */}

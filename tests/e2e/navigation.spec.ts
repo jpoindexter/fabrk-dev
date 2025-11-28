@@ -19,20 +19,17 @@ test.describe('Navigation', () => {
   });
 
   test('should navigate to features page', async ({ page }) => {
-    // Find features link
-    const featuresLink = page.locator('a').filter({ hasText: /features/i }).first();
-    
-    if (await featuresLink.isVisible()) {
-      await featuresLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify we navigated to features page
-      expect(page.url()).toContain('/features');
-      
-      // Check page loaded
-      const pageTitle = page.locator('h1, h2').first();
-      await expect(pageTitle).toBeVisible();
-    }
+    // Navigate directly to features page (footer uses #features anchor, not /features)
+    await page.goto('/features');
+    await page.waitForLoadState('domcontentloaded');
+
+    // Verify we're on the features page
+    expect(page.url()).toContain('/features');
+
+    // Check page loaded with heading
+    const heading = page.locator('h1').first();
+    await expect(heading).toBeVisible();
+    await expect(heading).toContainText(/feature/i);
   });
 
   test('should navigate to components showcase', async ({ page }) => {
@@ -62,59 +59,75 @@ test.describe('Navigation', () => {
   });
 
   test('should navigate to contact page', async ({ page }) => {
-    // Find contact link
-    const contactLink = page.locator('a').filter({ hasText: /contact/i }).first();
-    
-    if (await contactLink.isVisible()) {
-      await contactLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify navigation
-      expect(page.url()).toContain('/contact');
-      
-      // Check contact form exists
-      const form = page.locator('form, [role="form"]').first();
-      await expect(form).toBeVisible();
-    }
+    // Find contact link in footer
+    const contactLink = page.locator('footer a').filter({ hasText: /contact/i }).first();
+
+    await expect(contactLink).toBeVisible();
+    await contactLink.click();
+
+    // Wait for navigation to complete
+    await page.waitForURL('**/contact');
+
+    // Verify navigation
+    expect(page.url()).toContain('/contact');
+
+    // Check page loaded with heading or content
+    const heading = page.locator('h1, h2').first();
+    await expect(heading).toBeVisible();
   });
 
   test('should navigate to about page', async ({ page }) => {
-    // Find about link
-    const aboutLink = page.locator('a').filter({ hasText: /about|company/i }).first();
-    
-    if (await aboutLink.isVisible()) {
-      await aboutLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify navigation
-      expect(page.url()).toContain('/about');
-    }
+    // Find about link in footer
+    const aboutLink = page.locator('footer a').filter({ hasText: /about/i }).first();
+
+    await expect(aboutLink).toBeVisible();
+    await aboutLink.click();
+
+    // Wait for navigation to complete
+    await page.waitForURL('**/about');
+
+    // Verify navigation
+    expect(page.url()).toContain('/about');
+
+    // Check page loaded with heading
+    const heading = page.locator('h1, h2').first();
+    await expect(heading).toBeVisible();
   });
 
   test('should navigate to privacy policy', async ({ page }) => {
-    // Find privacy link (usually in footer)
-    const privacyLink = page.locator('a').filter({ hasText: /privacy|policy/i }).first();
-    
-    if (await privacyLink.isVisible()) {
-      await privacyLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify navigation
-      expect(page.url()).toContain('/privacy');
-    }
+    // Find privacy link in footer
+    const privacyLink = page.locator('footer a').filter({ hasText: /privacy/i }).first();
+
+    await expect(privacyLink).toBeVisible();
+    await privacyLink.click();
+
+    // Wait for navigation to complete
+    await page.waitForURL('**/privacy');
+
+    // Verify navigation
+    expect(page.url()).toContain('/privacy');
+
+    // Check page loaded with heading
+    const heading = page.locator('h1, h2').first();
+    await expect(heading).toBeVisible();
   });
 
   test('should navigate to terms of service', async ({ page }) => {
-    // Find terms link
-    const termsLink = page.locator('a').filter({ hasText: /terms|tos|conditions/i }).first();
-    
-    if (await termsLink.isVisible()) {
-      await termsLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify navigation
-      expect(page.url()).toContain('/terms');
-    }
+    // Find terms link in footer
+    const termsLink = page.locator('footer a').filter({ hasText: /terms/i }).first();
+
+    await expect(termsLink).toBeVisible();
+    await termsLink.click();
+
+    // Wait for navigation to complete
+    await page.waitForURL('**/terms');
+
+    // Verify navigation
+    expect(page.url()).toContain('/terms');
+
+    // Check page loaded with heading
+    const heading = page.locator('h1, h2').first();
+    await expect(heading).toBeVisible();
   });
 
   test('should have working logo link', async ({ page }) => {
@@ -136,17 +149,16 @@ test.describe('Navigation', () => {
     // Check navigation exists on home
     const homeNav = page.locator('nav, header').first();
     await expect(homeNav).toBeVisible();
-    
-    // Navigate to another page
-    const featuresLink = page.locator('a').filter({ hasText: /features/i }).first();
-    if (await featuresLink.isVisible()) {
-      await featuresLink.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Check navigation still exists
-      const featurPageNav = page.locator('nav, header').first();
-      await expect(featurPageNav).toBeVisible();
-    }
+
+    // Navigate to about page (actual page, not anchor)
+    const aboutLink = page.locator('footer a').filter({ hasText: /about/i }).first();
+    await expect(aboutLink).toBeVisible();
+    await aboutLink.click();
+    await page.waitForLoadState('domcontentloaded');
+
+    // Check navigation still exists on about page
+    const aboutPageNav = page.locator('nav, header').first();
+    await expect(aboutPageNav).toBeVisible();
   });
 
   test('should navigate between variations', async ({ page }) => {
@@ -209,21 +221,24 @@ test.describe('Navigation', () => {
   test('should preserve scroll position on navigation back', async ({ page }) => {
     // Scroll down on home page
     await page.evaluate(() => window.scrollBy(0, 500));
-    const scrollBefore = await page.evaluate(() => window.scrollY);
-    
-    // Navigate to another page
-    const link = page.locator('a').filter({ hasText: /features/i }).first();
-    if (await link.isVisible()) {
-      await link.click();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Go back
-      await page.goBack();
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Check we're back on home
-      expect(page.url()).toBe('http://localhost:3000/');
-    }
+
+    // Navigate to about page (actual page navigation, not anchor link)
+    const aboutLink = page.locator('footer a').filter({ hasText: /about/i }).first();
+    await expect(aboutLink).toBeVisible();
+    await aboutLink.click();
+
+    // Wait for navigation to complete
+    await page.waitForURL('**/about');
+
+    // Verify we navigated away
+    expect(page.url()).toContain('/about');
+
+    // Go back
+    await page.goBack();
+    await page.waitForLoadState('domcontentloaded');
+
+    // Check we're back on home
+    expect(page.url()).toBe('http://localhost:3000/');
   });
 
   test('should have accessible navigation', async ({ page }) => {

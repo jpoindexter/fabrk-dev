@@ -13,10 +13,12 @@ test.describe('Two-Factor Authentication', () => {
     test('should navigate to security settings', async ({ page }) => {
       await page.goto('/settings/security');
       await page.waitForLoadState('domcontentloaded');
+      await page.waitForTimeout(500);
 
       // Check if we're on security settings or redirected to login
-      const isOnSettings = page.url().includes('settings') || page.url().includes('security');
-      const isOnAuth = page.url().includes('auth') || page.url().includes('signin');
+      const url = page.url();
+      const isOnSettings = url.includes('settings') && url.includes('security');
+      const isOnAuth = url.includes('login') || url.includes('signin') || url.includes('auth');
 
       // Either we reach settings or are redirected to auth
       expect(isOnSettings || isOnAuth).toBeTruthy();
