@@ -6,8 +6,6 @@
 "use client";
 
 import Link from "next/link";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AccountPagesPage() {
@@ -16,8 +14,6 @@ export default function AccountPagesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
-
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Category Header */}
         <section className="space-y-4">
@@ -124,8 +120,6 @@ export default function AccountPagesPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

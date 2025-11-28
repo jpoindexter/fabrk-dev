@@ -20,8 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   Shield,
   Smartphone,
@@ -102,27 +100,32 @@ export default function SecurityPrivacyTemplate() {
   };
 
   const handleEnable2FA = () => {
-    toast.info("2FA setup modal would open here with QR code");
+    toast.info("[2FA]: Setup modal would open here with QR code");
   };
 
   const handleRevokeSession = (sessionId: string) => {
-    toast.success(`Session revoked successfully`);
+    toast.success("[SESSION]: Revoked successfully");
   };
 
   const handleExportData = () => {
-    toast.success("Your data export has been started. You'll receive an email when it's ready.");
+    toast.success("[EXPORT]: Data export started. Check email when ready.");
+  };
+
+  const handleRequestAccess = () => {
+    toast.success("[ACCESS_REPORT]: Request submitted. You will receive a report within 30 days.");
+  };
+
+  const handleViewPolicy = (type: "privacy" | "terms") => {
+    toast.info(`[${type.toUpperCase()}]: Opening ${type === "privacy" ? "Privacy Policy" : "Terms of Service"}...`);
   };
 
   const handleDeleteAccount = () => {
-    toast.success("Account deletion process initiated. Check your email for confirmation.");
+    toast.success("[DELETE]: Account deletion initiated. Check email for confirmation.");
     setDeleteDialogOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -299,10 +302,12 @@ export default function SecurityPrivacyTemplate() {
                     </div>
                   ))}
                 </div>
-                <Button variant="destructive" className="rounded-none w-full mt-4 font-mono text-xs">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  &gt; SIGN_OUT_ALL_OTHER_DEVICES
-                </Button>
+                <div className="flex justify-end mt-4">
+                  <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs">
+                    <LogOut className="mr-2 h-3 w-3" />
+                    &gt; SIGN_OUT_ALL_OTHER_DEVICES
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -367,6 +372,7 @@ export default function SecurityPrivacyTemplate() {
                       <Switch
                         checked={privacy[setting.key]}
                         onCheckedChange={() => handlePrivacyToggle(setting.key)}
+                        className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                       />
                     </div>
                   ))}
@@ -401,6 +407,7 @@ export default function SecurityPrivacyTemplate() {
                         checked={privacy[setting.key]}
                         onCheckedChange={() => handlePrivacyToggle(setting.key)}
                         disabled={setting.disabled}
+                        className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                       />
                     </div>
                   ))}
@@ -483,15 +490,15 @@ export default function SecurityPrivacyTemplate() {
                     <Download className="mr-2 h-4 w-4" />
                     &gt; DOWNLOAD_MY_DATA (GDPR Export)
                   </Button>
-                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs" onClick={handleRequestAccess}>
                     <Eye className="mr-2 h-4 w-4" />
                     &gt; REQUEST_DATA_ACCESS_REPORT
                   </Button>
-                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs" onClick={() => handleViewPolicy("privacy")}>
                     <FileText className="mr-2 h-4 w-4" />
                     &gt; VIEW_PRIVACY_POLICY
                   </Button>
-                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs">
+                  <Button variant="outline" className="rounded-none w-full justify-start font-mono text-xs" onClick={() => handleViewPolicy("terms")}>
                     <FileText className="mr-2 h-4 w-4" />
                     &gt; VIEW_TERMS_OF_SERVICE
                   </Button>
@@ -519,29 +526,31 @@ export default function SecurityPrivacyTemplate() {
                     <div className="font-mono text-xs text-muted-foreground">Irreversible actions - proceed with caution</div>
                   </div>
                 </div>
-                <Alert className="mb-4">
+                <Alert className="mb-4 rounded-none flex items-center justify-center gap-2">
                   <AlertTriangle className="h-4 w-4" />
-                  <AlertDescription className="rounded-none font-mono text-xs">
-                    Deleting your account is permanent and cannot be undone. All your data will be permanently erased.
+                  <AlertDescription className="font-mono text-xs">
+                    [WARNING]: Deleting your account is permanent and cannot be undone. All your data will be permanently erased.
                   </AlertDescription>
                 </Alert>
                 <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="destructive" className="rounded-none w-full font-mono text-xs">
-                      <Trash2 className="mr-2 h-4 w-4" />
-                      &gt; DELETE_MY_ACCOUNT
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogTitle className="font-mono">[DELETE_ACCOUNT]</AlertDialogTitle>
-                    <AlertDialogDescription className="rounded-none font-mono text-xs">
+                  <div className="flex justify-end">
+                    <AlertDialogTrigger asChild>
+                      <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs">
+                        <Trash2 className="mr-2 h-3 w-3" />
+                        &gt; DELETE_MY_ACCOUNT
+                      </Button>
+                    </AlertDialogTrigger>
+                  </div>
+                  <AlertDialogContent className="rounded-none border border-destructive">
+                    <AlertDialogTitle className="font-mono text-sm text-destructive">[DELETE_ACCOUNT]:</AlertDialogTitle>
+                    <AlertDialogDescription className="font-mono text-xs">
                       Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently erased.
                     </AlertDialogDescription>
                     <div className="flex gap-4 justify-end">
                       <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={handleDeleteAccount}
-                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
+                        className="rounded-none bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
                       >
                         &gt; DELETE_ACCOUNT
                       </AlertDialogAction>
@@ -583,8 +592,6 @@ export default function SecurityPrivacyTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

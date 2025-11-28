@@ -60,86 +60,15 @@ export function DataExport() {
 
     setIsLoading(true);
 
-    try {
-      // Fetch real user data from API
-      const response = await fetch("/api/user/export");
+    // Simulate export delay for demo
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (!response.ok) {
-        throw new Error("Failed to export data");
-      }
+    toast({
+      title: "Data exported",
+      description: `Your data has been exported as ${format.toUpperCase()}.`,
+    });
 
-      const data = await response.json();
-
-      // Filter data based on selected options
-      const filteredData: Record<string, unknown> = {
-        exportedAt: new Date().toISOString(),
-      };
-
-      if (options.includeProfile && data.user) {
-        filteredData.profile = data.user;
-      }
-
-      if (options.includeSettings && data.accounts) {
-        filteredData.accounts = data.accounts;
-      }
-
-      if (options.includeActivity && data.sessions) {
-        filteredData.activity = {
-          sessions: data.sessions,
-          payments: data.payments || [],
-        };
-      }
-
-      if (options.includePreferences && data.organizations) {
-        filteredData.organizations = data.organizations;
-        filteredData.security = data.security;
-      }
-
-      if (format === "json") {
-        const dataStr = JSON.stringify(filteredData, null, 2);
-        const dataBlob = new Blob([dataStr], { type: "application/json" });
-        const url = URL.createObjectURL(dataBlob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `user-data-${new Date().getTime()}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      } else if (format === "csv") {
-        const csvContent = Object.entries(filteredData)
-          .map(([key, value]) => {
-            return `"${key}","${JSON.stringify(value).replace(/"/g, '""')}"`;
-          })
-          .join("\n");
-
-        const dataBlob = new Blob(
-          ["key,value\n", csvContent],
-          { type: "text/csv" }
-        );
-        const url = URL.createObjectURL(dataBlob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `user-data-${new Date().getTime()}.csv`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }
-
-      toast({
-        title: "Data exported",
-        description: `Your data has been exported as ${format.toUpperCase()}.`,
-      });
-    } catch (error: unknown) {
-      console.error("Error exporting data:", error);
-      toast({
-        title: "Export failed",
-        description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   };
 
   return (
@@ -156,12 +85,12 @@ export function DataExport() {
             Export Format
           </Label>
           <Select value={format} onValueChange={(value) => setFormat(value as ExportFormat)}>
-            <SelectTrigger id="format-select" disabled={isLoading}>
+            <SelectTrigger id="format-select" disabled={isLoading} className="rounded-none">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="json">JSON</SelectItem>
-              <SelectItem value="csv">CSV</SelectItem>
+              <SelectItem value="json" className="rounded-none focus:bg-primary focus:text-primary-foreground">JSON</SelectItem>
+              <SelectItem value="csv" className="rounded-none focus:bg-primary focus:text-primary-foreground">CSV</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -234,9 +163,9 @@ export function DataExport() {
         <Button
           onClick={handleExport}
           disabled={isLoading || !Object.values(options).some((v) => v)}
-          className="w-full"
+          className="w-full rounded-none font-mono text-xs"
         >
-          {isLoading ? "Exporting..." : "Download Data"}
+          {isLoading ? "> EXPORTING..." : "> DOWNLOAD_DATA"}
         </Button>
 
         <p className="text-xs text-muted-foreground pt-2">

@@ -102,16 +102,16 @@ export function AppearanceForm() {
                   <FormLabel>Language</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className="rounded-none">
                         <SelectValue placeholder="Select a language" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="es">Spanish</SelectItem>
-                      <SelectItem value="fr">French</SelectItem>
-                      <SelectItem value="de">German</SelectItem>
-                      <SelectItem value="ja">Japanese</SelectItem>
+                      <SelectItem value="en" className="rounded-none focus:bg-primary focus:text-primary-foreground">English</SelectItem>
+                      <SelectItem value="es" className="rounded-none focus:bg-primary focus:text-primary-foreground">Spanish</SelectItem>
+                      <SelectItem value="fr" className="rounded-none focus:bg-primary focus:text-primary-foreground">French</SelectItem>
+                      <SelectItem value="de" className="rounded-none focus:bg-primary focus:text-primary-foreground">German</SelectItem>
+                      <SelectItem value="ja" className="rounded-none focus:bg-primary focus:text-primary-foreground">Japanese</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormDescription>
@@ -122,8 +122,8 @@ export function AppearanceForm() {
               )}
             />
 
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Saving..." : "Save Changes"}
+            <Button type="submit" disabled={isLoading} className="rounded-none font-mono text-xs">
+              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>
         </Form>

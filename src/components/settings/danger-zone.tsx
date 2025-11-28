@@ -58,40 +58,16 @@ export function DangerZone() {
   const handleExportData = async () => {
     setIsLoading(true);
 
-    try {
-      // Fetch real user data from API
-      const response = await fetch("/api/user/export");
+    // Simulate export delay for demo
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (!response.ok) {
-        throw new Error("Failed to export data");
-      }
+    toast({
+      title: "Data exported",
+      description: "Your data has been exported successfully.",
+    });
 
-      // Get the blob directly from the response
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `user-data-${new Date().getTime()}.json`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-
-      toast({
-        title: "Data exported",
-        description: "Your data has been exported successfully.",
-      });
-
-      setExportDialogOpen(false);
-    } catch (error: unknown) {
-      console.error("Error exporting data:", error);
-      toast({
-        title: "Export failed",
-        description: error instanceof Error ? error.message : "Failed to export your data. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    setExportDialogOpen(false);
+    setIsLoading(false);
   };
 
   return (
@@ -112,8 +88,9 @@ export function DangerZone() {
             variant="outline"
             onClick={() => setExportDialogOpen(true)}
             disabled={isLoading}
+            className="rounded-none font-mono text-xs"
           >
-            Export Data
+            &gt; EXPORT_DATA
           </Button>
         </div>
 
@@ -123,64 +100,67 @@ export function DangerZone() {
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button
-                              variant="destructive"
+            variant="destructive"
             onClick={() => setDeleteDialogOpen(true)}
             disabled={isLoading}
+            className="rounded-none font-mono text-xs"
           >
-            Delete Account
+            &gt; DELETE_ACCOUNT
           </Button>
         </div>
       </CardContent>
 
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
-        <AlertDialogContent>
+        <AlertDialogContent className="rounded-none border border-border">
           <AlertDialogHeader>
-            <AlertDialogTitle>Export Your Data</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle className="font-mono text-sm">[EXPORT_DATA]:</AlertDialogTitle>
+            <AlertDialogDescription className="font-mono text-xs">
               You will receive a download of all your account data in JSON format. This includes your profile, settings, and activity history.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex gap-2 justify-end">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleExportData}
               disabled={isLoading}
+              className="rounded-none font-mono text-xs"
             >
-              {isLoading ? "Exporting..." : "Export"}
+              {isLoading ? "> EXPORTING..." : "> EXPORT"}
             </AlertDialogAction>
           </div>
         </AlertDialogContent>
       </AlertDialog>
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent className="max-w-md">
+        <AlertDialogContent className="max-w-md rounded-none border border-destructive">
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Account</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle className="font-mono text-sm text-destructive">[DELETE_ACCOUNT]:</AlertDialogTitle>
+            <AlertDialogDescription className="font-mono text-xs">
               This action cannot be undone. Your account and all data will be permanently deleted.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="space-y-4 my-4">
             <div>
-              <p className="text-sm font-medium mb-2">
-                Type <span className="font-mono bg-muted px-2 py-1 rounded">delete my account</span> to confirm:
+              <p className="text-xs font-mono mb-2">
+                Type <span className="font-mono bg-muted px-2 py-1">delete my account</span> to confirm:
               </p>
               <Input
                 placeholder="delete my account"
                 value={confirmText}
                 onChange={(e) => setConfirmText(e.target.value)}
                 disabled={isLoading}
+                className="rounded-none font-mono text-xs"
               />
             </div>
           </div>
           <div className="flex gap-2 justify-end">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteAccount}
               disabled={isLoading || confirmText !== "delete my account"}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              className="rounded-none font-mono text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              {isLoading ? "Deleting..." : "Delete Account"}
+              {isLoading ? "> DELETING..." : "> DELETE_ACCOUNT"}
             </AlertDialogAction>
           </div>
         </AlertDialogContent>

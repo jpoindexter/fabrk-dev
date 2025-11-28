@@ -17,7 +17,6 @@ import {
   SheetClose,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function Navigation() {
@@ -38,11 +37,10 @@ export function Navigation() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-3"
         >
-          <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-            <Logo size={28} />
-            <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
-              _CONSOLE
-            </span>
+          <Link href="/" className="flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
+            <span className="text-xs text-primary">&gt;</span>
+            <span className="text-sm font-bold tracking-tight">FABRK</span>
+            <span className="hidden text-xs text-muted-foreground sm:inline">_CONSOLE</span>
           </Link>
         </motion.div>
 

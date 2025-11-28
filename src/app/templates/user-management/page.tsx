@@ -20,8 +20,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX, UserPlus, Shield, User, Users } from "lucide-react";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -391,9 +389,6 @@ export default function UserManagementTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -495,6 +490,7 @@ export default function UserManagementTemplate() {
                         return (
                           <DropdownMenuCheckboxItem
                             key={column.id}
+                            className="rounded-none focus:bg-primary focus:text-primary-foreground"
                             checked={column.getIsVisible()}
                             onCheckedChange={(value) =>
                               column.toggleVisibility(!!value)
@@ -609,7 +605,7 @@ export default function UserManagementTemplate() {
                   </SelectTrigger>
                   <SelectContent className="rounded-none min-w-[70px] font-mono text-xs">
                     {[10, 25, 50, 100].map((pageSize) => (
-                      <SelectItem key={pageSize} value={`${pageSize}`}>
+                      <SelectItem key={pageSize} value={`${pageSize}`} className="rounded-none focus:bg-primary focus:text-primary-foreground">
                         {pageSize}
                       </SelectItem>
                     ))}
@@ -676,8 +672,6 @@ export default function UserManagementTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

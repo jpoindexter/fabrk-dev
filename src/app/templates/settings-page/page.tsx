@@ -16,8 +16,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   AlertTriangle,
   Bell,
@@ -35,9 +33,6 @@ export default function SettingsPageTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -236,21 +231,21 @@ export default function SettingsPageTemplate() {
                       <div>[PASSWORD]:</div>
                       <div className="text-muted-foreground">Last changed 3 months ago</div>
                     </div>
-                    <Button variant="outline" className="rounded-none font-mono text-xs">&gt; CHANGE</Button>
+                    <Button variant="outline" className="rounded-none font-mono text-xs w-24">&gt; CHANGE</Button>
                   </div>
                   <div className="flex items-center justify-between border border-border p-4 font-mono text-xs">
                     <div>
                       <div>[TWO_FACTOR_AUTH]:</div>
                       <div className="text-muted-foreground">Add an extra layer of security</div>
                     </div>
-                    <Button variant="outline" className="rounded-none font-mono text-xs">&gt; ENABLE</Button>
+                    <Button variant="outline" className="rounded-none font-mono text-xs w-24">&gt; ENABLE</Button>
                   </div>
                   <div className="flex items-center justify-between border border-border p-4 font-mono text-xs">
                     <div>
                       <div>[ACTIVE_SESSIONS]:</div>
                       <div className="text-muted-foreground">Manage devices and sessions</div>
                     </div>
-                    <Button variant="outline" className="rounded-none font-mono text-xs">&gt; VIEW</Button>
+                    <Button variant="outline" className="rounded-none font-mono text-xs w-24">&gt; VIEW</Button>
                   </div>
                 </div>
               </div>
@@ -443,8 +438,6 @@ export default function SettingsPageTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

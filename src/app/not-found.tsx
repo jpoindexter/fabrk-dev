@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Home, Search, ArrowLeft } from "lucide-react";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,48 +11,68 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 font-mono">
+      <TerminalBackground />
       <div className="mx-auto max-w-2xl text-center">
-        {/* 404 Illustration */}
+        {/* Terminal Header */}
+        <div className="mb-6 inline-block border-2 border-foreground/20 bg-foreground/5 px-3 py-1">
+          <span className="text-xs tracking-wider text-foreground/60">
+            [ [0x404] ERROR_PAGE ]
+          </span>
+        </div>
+
+        {/* 404 Display */}
         <div className="mb-8">
-          <h1 className="text-9xl font-bold text-foreground">404</h1>
-          <div className="mx-auto mt-4 h-1 w-24 bg-primary"></div>
+          <h1 className="text-8xl font-bold tracking-tighter text-foreground md:text-9xl">
+            404
+          </h1>
+          <div className="mx-auto mt-4 h-0.5 w-24 bg-foreground/20"></div>
         </div>
 
         {/* Error Message */}
-        <h2 className="mb-4 text-3xl font-bold text-foreground">
-          Page Not Found
+        <h2 className="mb-4 text-xl font-bold uppercase tracking-wider text-foreground">
+          PAGE_NOT_FOUND
         </h2>
-        <p className="mb-8 text-lg text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <p className="mb-2 text-sm text-foreground/60">
+          [ [0x01] STATUS ]---------------------------------
+        </p>
+        <p className="mb-8 text-foreground/80">
+          The requested resource could not be located on this server.
+          <br />
+          <span className="text-foreground/60">Path may have been moved or deleted.</span>
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Button asChild className="h-12 px-8">
+          <Button asChild className="h-12 rounded-none px-8 uppercase tracking-wider">
             <Link href="/">
-              <Home className="mr-2 h-4 w-4" />
-              Back to Home
+              <span className="mr-2 text-lg">▸</span>
+              RETURN_HOME
             </Link>
           </Button>
         </div>
 
         {/* Helpful Links */}
-        <div className="mt-12 border-t border-border/60 pt-8">
-          <p className="mb-4 text-sm font-semibold text-foreground">
-            Looking for something specific?
+        <div className="mt-12 border-t border-foreground/10 pt-8">
+          <p className="mb-4 text-xs uppercase tracking-wider text-foreground/60">
+            [ NAVIGATION_OPTIONS ]
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <Link href="/#features" className="text-primary hover:underline">
-              Features
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <Link href="/#features" className="text-foreground/70 transition-colors hover:text-primary">
+              &gt; FEATURES
             </Link>
-            <Link href="/#pricing" className="text-primary hover:underline">
-              Pricing
+            <Link href="/#pricing" className="text-foreground/70 transition-colors hover:text-primary">
+              &gt; PRICING
             </Link>
-            <Link href="/#faq" className="text-primary hover:underline">
-              FAQ
+            <Link href="/#faq" className="text-foreground/70 transition-colors hover:text-primary">
+              &gt; FAQ
             </Link>
           </div>
+        </div>
+
+        {/* Terminal Footer */}
+        <div className="mt-12 text-xs text-foreground/40">
+          <span className="animate-pulse">▊</span> System ready for input_
         </div>
       </div>
     </div>

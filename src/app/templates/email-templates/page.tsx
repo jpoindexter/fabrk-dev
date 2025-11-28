@@ -9,8 +9,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   Mail,
   Eye,
@@ -341,9 +339,6 @@ export default function EmailTemplatesShowcase() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -445,7 +440,7 @@ export default function EmailTemplatesShowcase() {
                   variant="outline"
                   size="sm"
                   onClick={handleCopy}
-                  className="font-mono text-xs h-7"
+                  className="rounded-none font-mono text-xs h-7"
                 >
                   {copied ? <CheckCircle2 className="mr-1 h-3 w-3" /> : <Copy className="mr-1 h-3 w-3" />}
                   {copied ? "COPIED" : "&gt; COPY"}
@@ -454,7 +449,7 @@ export default function EmailTemplatesShowcase() {
                   variant="outline"
                   size="sm"
                   onClick={handleSendTest}
-                  className="font-mono text-xs h-7"
+                  className="rounded-none font-mono text-xs h-7"
                 >
                   <Send className="mr-1 h-3 w-3" />
                   &gt; SEND_TEST
@@ -507,7 +502,7 @@ export default function EmailTemplatesShowcase() {
               )}
 
               {activeTab === "code" && (
-                <div className="max-h-[600px] overflow-auto border border-border">
+                <div className="max-h-[600px] overflow-auto border border-border [&>div]:rounded-none">
                   <CodeBlock code={selectedTemplate.preview} language="markup" />
                 </div>
               )}
@@ -569,8 +564,6 @@ export default function EmailTemplatesShowcase() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

@@ -97,7 +97,7 @@ export function NotificationsForm() {
               control={form.control}
               name="securityAlerts"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border border-border p-4">
+                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel>Security Alerts</FormLabel>
                     <FormDescription>
@@ -109,6 +109,7 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
+                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                     />
                   </FormControl>
                 </FormItem>
@@ -119,7 +120,7 @@ export function NotificationsForm() {
               control={form.control}
               name="productUpdates"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border border-border p-4">
+                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel>Product Updates</FormLabel>
                     <FormDescription>
@@ -131,6 +132,7 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
+                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                     />
                   </FormControl>
                 </FormItem>
@@ -141,7 +143,7 @@ export function NotificationsForm() {
               control={form.control}
               name="marketingEmails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border border-border p-4">
+                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel>Marketing Emails</FormLabel>
                     <FormDescription>
@@ -153,6 +155,7 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
+                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                     />
                   </FormControl>
                 </FormItem>
@@ -163,7 +166,7 @@ export function NotificationsForm() {
               control={form.control}
               name="weeklySummary"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border border-border p-4">
+                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel>Weekly Summary</FormLabel>
                     <FormDescription>
@@ -175,14 +178,15 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
+                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
 
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Saving..." : "Save Changes"}
+            <Button type="submit" disabled={isLoading} className="rounded-none font-mono text-xs">
+              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>
         </Form>

@@ -46,6 +46,22 @@
     color: oklch(var(--foreground));
   }
 
+  /* Dark overlay for alert dialogs - terminal style */
+  [data-slot="alert-dialog-overlay"] {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Sonner toast terminal styling */
+  [data-sonner-toast] {
+    border-radius: 0 !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.75rem !important;
+  }
+
+  [data-sonner-toast] [data-content] {
+    font-family: var(--font-mono) !important;
+  }
+
   /* Theme-aware text selection */
   ::selection {
     background-color: oklch(var(--primary));

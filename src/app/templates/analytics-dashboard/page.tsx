@@ -9,8 +9,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   TrendingUp,
   TrendingDown,
@@ -104,9 +102,6 @@ export default function AnalyticsDashboardTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -166,28 +161,37 @@ export default function AnalyticsDashboardTemplate() {
               </div>
 
               {/* Bar Chart */}
-              <div className="h-[250px] flex items-end justify-between gap-2 border-b border-l border-border p-4 relative">
+              <div className="relative pl-10">
                 {/* Y-axis labels */}
-                <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs font-mono text-muted-foreground -translate-x-8">
+                <div className="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-xs font-mono text-muted-foreground">
                   <span>$60k</span>
                   <span>$40k</span>
                   <span>$20k</span>
                   <span>$0</span>
                 </div>
 
-                {revenueData.map((data, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center group h-full">
-                    <div className="flex-1 flex items-end w-full">
+                {/* Chart area */}
+                <div className="h-[200px] flex items-end justify-between gap-2 border-b border-l border-border">
+                  {revenueData.map((data, i) => (
+                    <div key={i} className="flex-1 flex items-end justify-center h-full">
                       <div
-                        className="w-full bg-primary hover:bg-primary/80 transition-colors"
+                        className="w-full max-w-12 bg-primary hover:bg-primary/80 transition-colors"
                         style={{
                           height: `${data.height}%`,
                         }}
                       />
                     </div>
-                    <span className="font-mono text-xs text-muted-foreground mt-2">{data.month}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* X-axis labels */}
+                <div className="flex justify-between gap-2 mt-2">
+                  {revenueData.map((data, i) => (
+                    <div key={i} className="flex-1 text-center font-mono text-xs text-muted-foreground">
+                      {data.month}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Stats Row */}
@@ -403,8 +407,6 @@ export default function AnalyticsDashboardTemplate() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

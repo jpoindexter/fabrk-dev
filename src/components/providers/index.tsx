@@ -20,7 +20,16 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <SessionProvider>
       {children}
-      <Toaster position="top-right" richColors />
+      <Toaster
+        position="top-right"
+        richColors
+        toastOptions={{
+          className: "!rounded-none border border-border font-mono text-xs",
+          style: {
+            borderRadius: 0,
+          },
+        }}
+      />
     </SessionProvider>
   );
 }

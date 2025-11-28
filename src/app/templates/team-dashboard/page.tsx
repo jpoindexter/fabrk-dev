@@ -34,8 +34,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   Users,
   Crown,
@@ -194,9 +192,6 @@ export default function TeamDashboardTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/demo" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -280,9 +275,9 @@ export default function TeamDashboardTemplate() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="rounded-none">
-                      <SelectItem value="admin" className="font-mono text-xs">ADMIN</SelectItem>
-                      <SelectItem value="member" className="font-mono text-xs">MEMBER</SelectItem>
-                      <SelectItem value="guest" className="font-mono text-xs">GUEST</SelectItem>
+                      <SelectItem value="admin" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">ADMIN</SelectItem>
+                      <SelectItem value="member" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">MEMBER</SelectItem>
+                      <SelectItem value="guest" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">GUEST</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button onClick={handleInvite} className="rounded-none font-mono text-xs">
@@ -445,7 +440,7 @@ export default function TeamDashboardTemplate() {
                           variant="outline"
                           size="sm"
                           onClick={() => handleRevokeInvitation(invitation.id)}
-                          className="font-mono text-xs"
+                          className="rounded-none font-mono text-xs"
                         >
                           &gt; REVOKE
                         </Button>
@@ -582,8 +577,6 @@ export default function TeamDashboardTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

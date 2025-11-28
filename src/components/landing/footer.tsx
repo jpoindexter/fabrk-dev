@@ -4,7 +4,6 @@
  * Production-ready ✓
  */
 import Link from "next/link";
-import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
   siNextdotjs,
@@ -32,8 +31,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border">
       {/* Tech Stack Bar */}
-      <div className="border-b border-border px-4 sm:px-6 lg:px-8 py-6">
-        <div className="mx-auto max-w-7xl">
+      <div className="border-b border-border px-4 sm:px-6 py-6">
+        <div>
           <div className="mb-3 font-mono text-xs text-muted-foreground">[ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS</div>
           <div className="flex flex-wrap items-center gap-4">
             {techStack.map((tech) => (
@@ -51,18 +50,19 @@ export function Footer() {
       </div>
 
       {/* Main Content */}
-      <div className="px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mx-auto max-w-7xl">
+      <div className="px-4 sm:px-6 py-12">
+        <div>
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
               <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
                 <span className="font-mono text-xs text-muted-foreground">[ [0x71] SYSTEM_INFO ]</span>
               </div>
-              <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
-                <Logo size={32} />
+              <Link href="/" className="mb-4 flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
+                <span className="text-sm text-primary">&gt;</span>
+                <span className="text-xl font-bold tracking-tight">FABRK</span>
               </Link>
-              <p className="mt-4 max-w-xs font-mono text-sm text-muted-foreground">
+              <p className="max-w-xs font-mono text-sm text-muted-foreground">
                 │ [TAGLINE]: Ship your SaaS in days, not weeks.
               </p>
               <div className="mt-4 flex items-center gap-2">
@@ -158,8 +158,8 @@ export function Footer() {
       </div>
 
       {/* Bottom: Copyright + Social */}
-      <div className="border-t border-border px-4 sm:px-6 lg:px-8 py-6">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="border-t border-border px-4 sm:px-6 py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="font-mono text-xs text-muted-foreground">
             <span>[ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved</span>
           </div>

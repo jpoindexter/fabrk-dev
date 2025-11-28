@@ -8,8 +8,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   LineChart,
   Line,
@@ -64,11 +62,11 @@ const userGrowthData = [
 ];
 
 const trafficSourceData = [
-  { name: "Organic Search", value: 4200, color: "hsl(var(--primary))" },
-  { name: "Direct", value: 2800, color: "hsl(var(--secondary))" },
-  { name: "Social Media", value: 1900, color: "hsl(142, 71%, 45%)" },
-  { name: "Referral", value: 1200, color: "hsl(25, 95%, 53%)" },
-  { name: "Email", value: 800, color: "hsl(330, 81%, 60%)" },
+  { name: "Organic Search", value: 4200, color: "oklch(var(--success))" },
+  { name: "Direct", value: 2800, color: "oklch(var(--muted-foreground))" },
+  { name: "Social Media", value: 1900, color: "oklch(var(--primary))" },
+  { name: "Referral", value: 1200, color: "oklch(var(--warning))" },
+  { name: "Email", value: 800, color: "oklch(var(--destructive))" },
 ];
 
 const conversionFunnelData = [
@@ -100,9 +98,6 @@ export default function ChartLibraryTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -201,14 +196,14 @@ export default function ChartLibraryTemplate() {
                 </div>
                 <ResponsiveContainer width="100%" height={400}>
                   <LineChart data={revenueData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
-                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
                     <Tooltip content={<CustomTooltip />} />
                     <Legend wrapperStyle={{ fontSize: "12px" }} />
-                    <Line type="monotone" dataKey="revenue" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
-                    <Line type="monotone" dataKey="expenses" stroke="hsl(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
-                    <Line type="monotone" dataKey="profit" stroke="hsl(142, 71%, 45%)" strokeWidth={2} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="revenue" stroke="oklch(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="expenses" stroke="oklch(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
+                    <Line type="monotone" dataKey="profit" stroke="oklch(var(--success))" strokeWidth={2} dot={{ r: 4 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -222,21 +217,15 @@ export default function ChartLibraryTemplate() {
                     <div className="font-mono text-xs text-muted-foreground">[USER_GROWTH]:</div>
                     <div className="font-mono text-xs text-muted-foreground mt-1">Total active users over time</div>
                   </div>
-                  <span className="border border-border px-2 py-0.5 font-mono text-xs">GRADIENT_FILL</span>
+                  <span className="border border-border px-2 py-0.5 font-mono text-xs">SOLID_FILL</span>
                 </div>
                 <ResponsiveContainer width="100%" height={400}>
                   <AreaChart data={userGrowthData}>
-                    <defs>
-                      <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
-                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
-                    <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
-                    <Area type="monotone" dataKey="users" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorUsers)" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                    <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                    <Area type="monotone" dataKey="users" stroke="oklch(var(--primary))" strokeWidth={2} fillOpacity={0.3} fill="oklch(var(--primary))" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -254,11 +243,11 @@ export default function ChartLibraryTemplate() {
                 </div>
                 <ResponsiveContainer width="100%" height={400}>
                   <BarChart data={conversionFunnelData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                    <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
-                    <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "hsl(var(--border))" }} />
-                    <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
-                    <Bar dataKey="count" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                    <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                    <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                    <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                    <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -274,8 +263,8 @@ export default function ChartLibraryTemplate() {
                   </div>
                   <span className="border border-border px-2 py-0.5 font-mono text-xs">DONUT_CHART</span>
                 </div>
-                <div className="flex items-center justify-between gap-8">
-                  <ResponsiveContainer width="60%" height={400}>
+                <div className="flex items-center justify-center gap-12">
+                  <ResponsiveContainer width={400} height={400}>
                     <PieChart>
                       <Pie
                         data={trafficSourceData}
@@ -290,19 +279,17 @@ export default function ChartLibraryTemplate() {
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
-                      <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", fontSize: "12px" }} />
+                      <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
                     </PieChart>
                   </ResponsiveContainer>
 
-                  <div className="flex-1 space-y-3">
+                  <div className="space-y-4">
                     {trafficSourceData.map((source, idx) => (
-                      <div key={idx} className="flex items-center justify-between font-mono text-xs">
-                        <div className="flex items-center gap-3">
-                          <div className="h-3 w-3 border border-border" style={{ backgroundColor: source.color }} />
-                          <span>{source.name}</span>
-                        </div>
+                      <div key={idx} className="flex items-center gap-4 font-mono text-sm">
+                        <div className="h-4 w-4 border border-border" style={{ backgroundColor: source.color }} />
+                        <span className="w-32">{source.name}</span>
                         <div className="text-right">
-                          <div>{source.value.toLocaleString()}</div>
+                          <div className="font-bold">{source.value.toLocaleString()}</div>
                           <div className="text-muted-foreground">
                             {((source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
                           </div>
@@ -332,7 +319,7 @@ export default function ChartLibraryTemplate() {
               <div><span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar, Pie/Donut)</div>
               <div><span className="text-success">&gt;</span> Recharts library (npm install recharts)</div>
               <div><span className="text-success">&gt;</span> Custom tooltips with terminal styling</div>
-              <div><span className="text-success">&gt;</span> Gradient fills for area charts</div>
+              <div><span className="text-success">&gt;</span> Solid fills with theme colors</div>
               <div><span className="text-success">&gt;</span> Responsive containers (adapts to screen size)</div>
               <div><span className="text-success">&gt;</span> Custom color schemes matching design system</div>
               <div><span className="text-success">&gt;</span> Formatted axes (K notation for large numbers)</div>
@@ -345,8 +332,6 @@ export default function ChartLibraryTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

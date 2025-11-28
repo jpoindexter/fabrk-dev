@@ -9,8 +9,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { DemoNav } from "@/components/demo/demo-nav";
-import { Footer } from "@/components/landing/footer";
 import {
   CreditCard,
   Download,
@@ -169,9 +167,6 @@ export default function BillingDashboardTemplate() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Demo Navigation */}
-      <DemoNav backButtonText="Back" backButtonHref="/templates" />
-
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
@@ -393,7 +388,7 @@ export default function BillingDashboardTemplate() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setActiveTab("history")}
-                  className="ml-auto font-mono text-xs h-6"
+                  className="ml-auto font-mono text-xs h-6 rounded-none"
                 >
                   &gt; VIEW_ALL
                 </Button>
@@ -447,8 +442,8 @@ export default function BillingDashboardTemplate() {
         {activeTab === "plans" && (
           <div className="space-y-6">
             {/* Alert */}
-            <div className="border border-warning/50 bg-warning/5 p-4 font-mono text-xs">
-              <span className="text-warning">[WARNING]:</span> Changing your plan will take effect at the next billing cycle
+            <div className="border border-warning bg-warning/10 p-4 font-mono text-xs">
+              <span className="font-bold text-warning-foreground">[WARNING]:</span> <span className="text-foreground">Changing your plan will take effect at the next billing cycle</span>
             </div>
 
             {/* Plan Cards */}
@@ -456,7 +451,7 @@ export default function BillingDashboardTemplate() {
               {plans.map((plan) => (
                 <div
                   key={plan.name}
-                  className={`border bg-card ${plan.current ? "border-primary" : "border-border"}`}
+                  className={`border bg-card flex flex-col ${plan.current ? "border-primary" : "border-border"}`}
                 >
                   <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                     <div className="flex gap-1.5">
@@ -466,7 +461,7 @@ export default function BillingDashboardTemplate() {
                     </div>
                     <span className="font-mono text-xs text-muted-foreground">{plan.name.toLowerCase()}_plan.json</span>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-4">
                       <div className="font-mono text-xs text-muted-foreground">[{plan.name}]:</div>
                       {plan.current && (
@@ -481,7 +476,7 @@ export default function BillingDashboardTemplate() {
                       <span className="text-lg text-muted-foreground font-normal">/mo</span>
                     </div>
 
-                    <div className="border-t border-border pt-4 mb-4">
+                    <div className="border-t border-border pt-4 mb-4 flex-1">
                       <div className="font-mono text-xs text-muted-foreground mb-2">[FEATURES]:</div>
                       <div className="space-y-1">
                         {plan.features.map((feature, idx) => (
@@ -494,7 +489,7 @@ export default function BillingDashboardTemplate() {
                     </div>
 
                     <Button
-                      className="w-full font-mono text-xs"
+                      className="w-full font-mono text-xs rounded-none"
                       variant={plan.current ? "outline" : "default"}
                       disabled={plan.current}
                     >
@@ -616,8 +611,6 @@ export default function BillingDashboardTemplate() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
