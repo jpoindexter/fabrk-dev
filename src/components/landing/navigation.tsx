@@ -14,6 +14,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { LogoAlt as Logo } from "@/components/home/logo-alt";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
@@ -102,6 +103,7 @@ export function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-6">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <nav className="flex flex-col space-y-6">
                 {navLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
