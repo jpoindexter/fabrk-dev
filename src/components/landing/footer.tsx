@@ -15,11 +15,8 @@ export function Footer() {
             <Link href="/" className="inline-flex transition-opacity hover:opacity-80">
               <Logo size={28} />
             </Link>
-            <Small className="mt-4 block mb-6 text-muted-foreground">
-              Ship your SaaS in days, not weeks.
-            </Small>
-            <Small className="block text-muted-foreground">
-              © 2025 Fabrk. All rights reserved.
+            <Small className="mt-4 block text-muted-foreground">
+              Ship your SaaS in days, not weeks. © 2025 Fabrk.
             </Small>
           </div>
 
@@ -97,16 +94,10 @@ export function Footer() {
               >
                 Cookie Policy
               </Link>
+              <Small className="text-muted-foreground">
+                Made with ❤️ by indie developers
+              </Small>
             </nav>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex justify-center">
-            <Small className="text-muted-foreground">
-              Made with ❤️ by indie developers
-            </Small>
           </div>
         </div>
       </div>
