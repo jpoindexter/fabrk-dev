@@ -38,71 +38,220 @@ export default function ThemingPage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Available Color Themes (20)</h2>
         <p className="text-muted-foreground">
-          Includes Light, Dark, Cupcake, Bumblebee, Emerald, Corporate, Synthwave, Retro, Cyberpunk, Valentine, Halloween, Garden, Forest, Aqua, Lofi, Pastel, Fantasy, Wireframe, Black, Luxury, Dracula, and more.
+          All themes from{" "}
+          <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            DaisyUI
+          </a>
+          . Select any theme from the dropdown in the navbar to preview.
         </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Light Themes */}
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(262,83%,58%)] border-2 border-border" />
+                <div className="h-8 w-8 rounded-full bg-[#ffffff] border-2 border-border" />
                 <div>
-                  <div className="font-semibold">Purple</div>
+                  <div className="font-semibold text-sm">Light</div>
                   <div className="text-xs text-muted-foreground">Default</div>
                 </div>
               </div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(217,91%,60%)] border-2 border-border" />
+                <div className="h-8 w-8 rounded-full bg-[#65c3c8] border-2 border-border" />
                 <div>
-                  <div className="font-semibold">Ocean Blue</div>
+                  <div className="font-semibold text-sm">Cupcake</div>
+                  <div className="text-xs text-muted-foreground">Soft</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#e0a82e] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Bumblebee</div>
+                  <div className="text-xs text-muted-foreground">Yellow</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#66cc8a] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Emerald</div>
+                  <div className="text-xs text-muted-foreground">Green</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#4b6bfb] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Corporate</div>
+                  <div className="text-xs text-muted-foreground">Business</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#ef9995] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Retro</div>
+                  <div className="text-xs text-muted-foreground">Vintage</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#d1c1d7] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Pastel</div>
+                  <div className="text-xs text-muted-foreground">Soft</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#6e0b75] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Fantasy</div>
+                  <div className="text-xs text-muted-foreground">Purple</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          {/* Dark Themes */}
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#1d232a] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Dark</div>
+                  <div className="text-xs text-muted-foreground">Default dark</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#e779c1] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Synthwave</div>
+                  <div className="text-xs text-muted-foreground">Neon</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#ff7598] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Cyberpunk</div>
+                  <div className="text-xs text-muted-foreground">Futuristic</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#e96d7b] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Valentine</div>
+                  <div className="text-xs text-muted-foreground">Pink</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#ff7700] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Halloween</div>
+                  <div className="text-xs text-muted-foreground">Orange</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#1eb854] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Forest</div>
+                  <div className="text-xs text-muted-foreground">Nature</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#09ecf3] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Aqua</div>
+                  <div className="text-xs text-muted-foreground">Cyan</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#0d0d0d] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Lo-Fi</div>
+                  <div className="text-xs text-muted-foreground">Minimal</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#ff79c6] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Dracula</div>
+                  <div className="text-xs text-muted-foreground">Dark purple</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#8c0327] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Autumn</div>
+                  <div className="text-xs text-muted-foreground">Warm</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-3">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-full bg-[#1c4e80] border-2 border-border" />
+                <div>
+                  <div className="font-semibold text-sm">Business</div>
                   <div className="text-xs text-muted-foreground">Professional</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(142,76%,36%)] border-2 border-border" />
-                <div>
-                  <div className="font-semibold">Forest Green</div>
-                  <div className="text-xs text-muted-foreground">Natural</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(25,95%,53%)] border-2 border-border" />
-                <div>
-                  <div className="font-semibold">Sunset Orange</div>
-                  <div className="text-xs text-muted-foreground">Energetic</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(330,81%,60%)] border-2 border-border" />
-                <div>
-                  <div className="font-semibold">Hot Pink</div>
-                  <div className="text-xs text-muted-foreground">Bold</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[hsl(0,84%,60%)] border-2 border-border" />
-                <div>
-                  <div className="font-semibold">Ruby Red</div>
-                  <div className="text-xs text-muted-foreground">Powerful</div>
                 </div>
               </div>
             </CardContent>
@@ -130,15 +279,15 @@ export function MyNavbar() {
       {/* How It Works */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">How It Works</h2>
-        <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute + CSS variables -->
-<html data-theme="purple" class="dark">
-  <!-- data-theme="purple" sets the color palette -->
-  <!-- class="dark" enables dark mode -->
+        <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
+<html data-theme="light">
+  <!-- data-theme="light" sets the color palette -->
+  <!-- Options: light, dark, cupcake, synthwave, dracula, etc. -->
 </html>
 
 <!-- Theme is auto-loaded before React hydration (no flash) -->
 <script>
-  const theme = localStorage.getItem('theme') || 'purple';
+  const theme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', theme);
 </script>`} />
       </div>
@@ -147,26 +296,32 @@ export function MyNavbar() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">CSS Implementation</h2>
         <p className="text-muted-foreground">
-          Each theme defines custom CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
+          Each DaisyUI theme defines CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
         </p>
-        <CodeBlock language="css" code={`/* Purple (default) */
-[data-theme="purple"] {
-  --primary: 262.1 83.3% 57.8%;
-  --ring: 262.1 83.3% 57.8%;
+        <CodeBlock language="css" code={`/* Light (default) */
+[data-theme="light"] {
+  --primary: 259 94% 51%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 5% 96%;
+  /* ...more variables */
 }
 
-[data-theme="purple"].dark {
-  --primary: 263.4 70% 50.4%;
-  --ring: 263.4 70% 50.4%;
+/* Synthwave (dark neon theme) */
+[data-theme="synthwave"] {
+  --primary: 321 70% 69%;
+  --primary-foreground: 0 0% 100%;
+  --background: 259 20% 15%;
+  /* ...more variables */
 }
 
-/* Ocean Blue */
-[data-theme="blue"] {
-  --primary: 217.2 91.2% 59.8%;
-  --ring: 217.2 91.2% 59.8%;
+/* Dracula (dark purple theme) */
+[data-theme="dracula"] {
+  --primary: 326 100% 74%;
+  --background: 231 15% 18%;
+  /* ...more variables */
 }
 
-/* ...and 18 more DaisyUI-inspired themes */`} />
+/* ...and 17 more DaisyUI themes */`} />
       </div>
 
       {/* Using Theme Colors */}
@@ -177,7 +332,7 @@ export function MyNavbar() {
         </p>
         <CodeBlock language="tsx" code={`// ✅ GOOD - Theme-aware colors
 <button className="bg-primary text-primary-foreground">
-  Matches active theme (purple, blue, green, etc.)
+  Matches active theme (light, synthwave, dracula, etc.)
 </button>
 
 <div className="border-primary ring-primary">
@@ -198,43 +353,34 @@ export function MyNavbar() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Adding Custom Themes</h2>
         <p className="text-muted-foreground">
-          Add new themes in 3 steps:
+          Add your own DaisyUI-style themes in 2 steps:
         </p>
         <div className="space-y-3">
           <div>
             <h3 className="font-semibold mb-2">1. Add CSS in globals.css</h3>
             <CodeBlock language="css" code={`/* Your Custom Theme */
-[data-theme="teal"] {
-  --primary: 173 80% 40%;
-  --ring: 173 80% 40%;
-}
-
-[data-theme="teal"].dark {
-  --primary: 173 80% 45%;
-  --ring: 173 80% 45%;
+[data-theme="ocean"] {
+  --primary: 199 89% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 199 19% 90%;
+  --background: 0 0% 100%;
+  --foreground: 199 10% 10%;
+  /* Add all required CSS variables */
 }`} />
           </div>
           <div>
-            <h3 className="font-semibold mb-2">2. Add to ThemeDropdown.tsx</h3>
+            <h3 className="font-semibold mb-2">2. Add to theme-dropdown.tsx</h3>
             <CodeBlock language="tsx" code={`const themes = [
-  { id: "purple", name: "Purple", preview: "hsl(262, 83%, 58%)" },
-  { id: "blue", name: "Ocean Blue", preview: "hsl(217, 91%, 60%)" },
-  // ...existing themes...
-  { id: "teal", name: "Teal Dream", preview: "hsl(173, 80%, 40%)" },
+  { id: "light", name: "Light", preview: "#ffffff" },
+  { id: "dark", name: "Dark", preview: "#1d232a" },
+  // ...existing DaisyUI themes...
+  { id: "ocean", name: "Ocean", preview: "#0ea5e9" }, // Your custom theme
 ];`} />
           </div>
-          <div>
-            <h3 className="font-semibold mb-2">3. Update type definition</h3>
-            <CodeBlock language="tsx" code={`export type ColorTheme = 
-  | "purple" 
-  | "blue" 
-  | "green" 
-  | "orange" 
-  | "pink" 
-  | "red"
-  | "teal"; // Add your new theme`} />
-          </div>
         </div>
+        <p className="text-sm text-muted-foreground mt-4">
+          <strong>Note:</strong> The <code className="bg-muted px-1 rounded">ColorTheme</code> type is automatically inferred from the themes array, so no type changes needed.
+        </p>
       </div>
 
       {/* Best Practices */}
