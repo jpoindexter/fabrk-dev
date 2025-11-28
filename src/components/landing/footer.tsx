@@ -16,9 +16,6 @@ export function Footer() {
               <Logo size={28} />
             </Link>
             <Small className="mt-4 block text-muted-foreground">
-              Ship your SaaS in days, not weeks.
-            </Small>
-            <Small className="mt-2 block text-muted-foreground">
               © 2025 Fabrk. All rights reserved.
             </Small>
             <Small className="mt-2 block text-muted-foreground">
