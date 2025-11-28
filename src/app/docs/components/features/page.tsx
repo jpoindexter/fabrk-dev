@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Feature Sections - Fabrk Docs",
+  description: "Showcase product features with grid layouts, icons, and descriptions. Perfect for landing pages.",
+};
+
 export default function FeaturesComponentsPage() {
   return (
     <div className="space-y-8">

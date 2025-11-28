@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Deploy to Vercel - Fabrk Docs",
+  description: "Deploy your Fabrk app to Vercel with automatic SSL, CDN, and edge functions. Step-by-step guide included.",
+};
+
 export default function DeployVercelPage() {
   return (
     <div className="space-y-8">

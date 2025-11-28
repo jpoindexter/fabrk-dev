@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Stripe Payments - Fabrk Docs",
+  description: "Accept payments with Stripe. Set up subscriptions, one-time payments, webhooks, and customer portal integration.",
+};
+
 export default function PaymentsPage() {
   return (
     <div className="space-y-8">

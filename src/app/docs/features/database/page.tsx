@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Prisma Database - Fabrk Docs",
+  description: "Work with Prisma ORM in Fabrk. Schema design, migrations, queries, and best practices for your SaaS database.",
+};
+
 export default function DatabasePage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

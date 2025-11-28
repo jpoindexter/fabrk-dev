@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Database Setup - Fabrk Docs",
+  description: "Set up PostgreSQL for your Fabrk app. Connect to Supabase, PlanetScale, or any Postgres provider with Prisma ORM.",
+};
+
 export default function DatabaseSetupPage() {
   return (
     <div className="space-y-8">

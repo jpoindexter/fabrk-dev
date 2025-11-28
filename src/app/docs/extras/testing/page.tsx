@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Testing Guide - Fabrk Docs",
+  description: "Test your Fabrk app with Vitest and Playwright. 130+ tests included for unit, E2E, and accessibility testing.",
+};
+
 export default function TestingGuidePage() {
   return (
     <div className="space-y-8">

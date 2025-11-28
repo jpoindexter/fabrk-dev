@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Bot Protection - Fabrk Docs",
+  description: "Block malicious bots and scrapers. Honeypot fields, CAPTCHA integration, and user-agent filtering.",
+};
+
 export default function BotProtectionPage() {
   return (
     <div className="space-y-8">

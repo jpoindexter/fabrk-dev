@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Security Headers - Fabrk Docs",
+  description: "Configure HSTS, CSP, X-Frame-Options, and other security headers. Production-ready defaults included.",
+};
+
 export default function SecurityHeadersPage() {
   return (
     <div className="space-y-8">

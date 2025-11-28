@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Magic Link Auth - Fabrk Docs",
+  description: "Passwordless authentication with magic links. Let users sign in with just their email address.",
+};
+
 export default function MagicLinksPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

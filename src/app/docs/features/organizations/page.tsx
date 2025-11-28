@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Organizations & Teams - Fabrk Docs",
+  description: "Multi-tenant SaaS with organizations, team members, roles, and invitations. Full RBAC system included.",
+};
+
 export default function OrganizationsPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

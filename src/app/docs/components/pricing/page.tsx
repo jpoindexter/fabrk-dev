@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Pricing Tables - Fabrk Docs",
+  description: "Display pricing plans with feature lists and Stripe checkout integration. Monthly/yearly toggle included.",
+};
+
 export default function PricingComponentsPage() {
   return (
     <div className="space-y-8">

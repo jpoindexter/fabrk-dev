@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Hero Sections - Fabrk Docs",
+  description: "Landing page hero components with headlines, CTAs, and animated backgrounds. Multiple layouts included.",
+};
+
 export default function HeroComponentsPage() {
   return (
     <div className="space-y-8">

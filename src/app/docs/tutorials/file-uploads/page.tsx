@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "File Uploads - Fabrk Docs",
+  description: "Implement file uploads with drag-and-drop. Validation, progress indicators, and cloud storage integration.",
+};
+
 export default function FileUploadsTutorialPage() {
   return (
     <div className="space-y-8">

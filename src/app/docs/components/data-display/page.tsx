@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Data Display - Fabrk Docs",
+  description: "Tables, cards, badges, and lists for displaying data. Sortable, filterable, and paginated options.",
+};
+
 export default function DataDisplayComponentsPage() {
   return (
     <div className="space-y-8">

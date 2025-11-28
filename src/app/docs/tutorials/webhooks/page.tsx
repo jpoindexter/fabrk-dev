@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Webhooks Setup - Fabrk Docs",
+  description: "Build production webhooks with HMAC verification, automatic retries, and delivery tracking. 22 built-in event types.",
+};
+
 export default function WebhooksTutorialPage() {
   return (
     <div className="space-y-8">

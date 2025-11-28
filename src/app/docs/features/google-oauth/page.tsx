@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Google OAuth Setup - Fabrk Docs",
+  description: "Enable Google Sign-In for your SaaS. Step-by-step guide to configure Google OAuth with NextAuth v5.",
+};
+
 export default function GoogleOAuthPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

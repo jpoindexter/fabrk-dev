@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Form Components - Fabrk Docs",
+  description: "Form inputs, selects, checkboxes, and validation. React Hook Form integration with Zod schemas.",
+};
+
 export default function FormsComponentsPage() {
   return (
     <div className="space-y-8">

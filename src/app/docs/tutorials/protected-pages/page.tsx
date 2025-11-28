@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Protected Pages - Fabrk Docs",
+  description: "Secure pages with authentication. Middleware protection, role-based access, and redirect patterns.",
+};
+
 export default function ProtectedPagesTutorialPage() {
   return (
     <div className="space-y-8">

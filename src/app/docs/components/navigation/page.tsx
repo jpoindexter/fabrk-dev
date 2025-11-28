@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Navigation Components - Fabrk Docs",
+  description: "Build site navigation with header, mobile menu, and breadcrumb components. Responsive and accessible.",
+};
+
 export default function NavigationComponentsPage() {
   return (
     <div className="space-y-8">

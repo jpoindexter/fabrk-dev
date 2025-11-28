@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Button Components - Fabrk Docs",
+  description: "Button variants for primary, secondary, outline, ghost, and destructive actions. Multiple sizes and states.",
+};
+
 export default function ButtonsComponentsPage() {
   return (
     <div className="space-y-8">

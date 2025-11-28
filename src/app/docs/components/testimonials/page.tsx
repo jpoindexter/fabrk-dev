@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Testimonials - Fabrk Docs",
+  description: "Social proof components for customer reviews. Cards, carousels, and quote layouts for landing pages.",
+};
+
 export default function TestimonialsComponentsPage() {
   return (
     <div className="space-y-8">

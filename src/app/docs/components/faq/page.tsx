@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "FAQ Components - Fabrk Docs",
+  description: "Frequently asked questions with accordion-style expandable answers. SEO-friendly and accessible.",
+};
+
 export default function FAQComponentsPage() {
   return (
     <div className="space-y-8">

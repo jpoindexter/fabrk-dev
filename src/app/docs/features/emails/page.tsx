@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Email with Resend - Fabrk Docs",
+  description: "Send transactional emails with Resend. Welcome emails, password resets, notifications, and custom templates.",
+};
+
 export default function EmailsPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

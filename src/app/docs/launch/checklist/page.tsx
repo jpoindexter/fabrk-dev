@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Launch Checklist - Fabrk Docs",
+  description: "Ensure your Fabrk app is production-ready. Complete pre-launch checklist for code, payments, and marketing.",
+};
+
 export default function LaunchChecklistPage() {
     return (
         <div className="space-y-8">

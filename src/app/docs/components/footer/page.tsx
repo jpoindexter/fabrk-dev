@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Footer Components - Fabrk Docs",
+  description: "Site footer with navigation links, social icons, newsletter signup, and legal pages. Multiple layouts.",
+};
+
 export default function FooterComponentsPage() {
   return (
     <div className="space-y-8">

@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Multi-Factor Authentication - Fabrk Docs",
+  description: "Add 2FA to your SaaS with TOTP authenticator apps. Includes QR code setup, backup codes, and security best practices.",
+};
+
 export default function MFAPage() {
   return (
     <div className="space-y-8">

@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Schema Validation - Fabrk Docs",
+  description: "Validate API inputs with Zod schemas. Type-safe validation for forms, API routes, and environment variables.",
+};
+
 export default function SchemaValidationPage() {
   return (
     <div className="space-y-8">

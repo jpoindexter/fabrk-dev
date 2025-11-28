@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Free Trial System - Fabrk Docs",
+  description: "Offer free trials to convert more users. Configure trial length, show countdown banners, and integrate with Stripe billing.",
+};
+
 export default function TrialPage() {
   return (
     <div className="space-y-8">

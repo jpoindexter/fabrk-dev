@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Charts & Analytics - Fabrk Docs",
+  description: "Data visualization with line, bar, pie, and area charts. Recharts integration for dashboards.",
+};
+
 export default function ChartsComponentsPage() {
   return (
     <div className="space-y-8">

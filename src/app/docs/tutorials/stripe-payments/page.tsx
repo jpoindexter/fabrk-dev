@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 
+export const metadata = {
+  title: "Subscription Guide - Fabrk Docs",
+  description: "Build a complete subscription system with Stripe. Checkout, billing portal, plan upgrades, and webhook handling.",
+};
+
 export default function StripePaymentsTutorialPage() {
   return (
     <div className="space-y-8">

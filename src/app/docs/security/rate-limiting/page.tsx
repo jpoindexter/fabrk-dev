@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Rate Limiting - Fabrk Docs",
+  description: "Protect your API from abuse with rate limiting. Redis-backed limits per user, IP, or endpoint.",
+};
+
 export default function RateLimitingPage() {
   return (
     <div className="space-y-8">

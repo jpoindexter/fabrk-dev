@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Cookie Consent (GDPR) - Fabrk Docs",
+  description: "GDPR-compliant cookie banner with Google Consent Mode v2. Let users control tracking preferences.",
+};
+
 export default function CookieConsentPage() {
   return (
     <div className="space-y-8">

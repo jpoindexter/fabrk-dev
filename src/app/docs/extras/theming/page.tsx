@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Theming & Colors - Fabrk Docs",
+  description: "Customize your Fabrk app with 20 built-in color themes. Switch themes instantly or create your own brand colors.",
+};
+
 export default function ThemingPage() {
   return (
     <div className="space-y-8">

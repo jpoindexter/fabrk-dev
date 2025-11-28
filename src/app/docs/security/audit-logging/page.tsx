@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Audit Logging - Fabrk Docs",
+  description: "Track user actions for compliance. Immutable audit trail with 18+ event types and admin viewer.",
+};
+
 export default function AuditLoggingPage() {
   return (
     <div className="space-y-8">

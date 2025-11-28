@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Architecture Overview - Fabrk Docs",
+  description: "Understand Fabrk's enterprise-grade architecture. Next.js 15 App Router, Prisma ORM, NextAuth v5, and production-ready patterns.",
+};
+
 export default function ArchitecturePage() {
     return (
         <div className="space-y-8">

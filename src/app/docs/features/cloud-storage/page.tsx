@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Cloud Storage - Fabrk Docs",
+  description: "Store files with Cloudflare R2, AWS S3, or local storage. Automatic provider detection and signed URL generation.",
+};
+
 export default function CloudStoragePage() {
   return (
     <div className="space-y-8">

@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Environment Variables - Fabrk Docs",
+  description: "Configure all environment variables for Fabrk. Database, Stripe, auth providers, email, and optional integrations.",
+};
+
 export default function EnvironmentVariablesPage() {
   return (
     <div className="space-y-8">

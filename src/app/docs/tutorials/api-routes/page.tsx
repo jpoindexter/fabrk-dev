@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "API Routes - Fabrk Docs",
+  description: "Build API endpoints with Next.js App Router. Learn patterns for authentication, validation, and error handling.",
+};
+
 export default function ApiRoutesTutorialPage() {
   return (
     <div className="space-y-8">

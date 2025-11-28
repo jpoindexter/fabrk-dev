@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Authentication Guide - Fabrk Docs",
+  description: "Add user authentication to your SaaS with NextAuth v5. Supports Google OAuth, magic links, credentials, and session management.",
+};
+
 export default function AuthenticationTutorialPage() {
   return (
     <div className="space-y-8">

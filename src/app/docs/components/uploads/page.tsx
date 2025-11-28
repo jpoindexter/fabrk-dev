@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Upload Components - Fabrk Docs",
+  description: "File upload with drag-and-drop, image preview, cropping, and progress indicators. Cloud storage ready.",
+};
+
 export default function UploadsComponentsPage() {
   return (
     <div className="space-y-8">

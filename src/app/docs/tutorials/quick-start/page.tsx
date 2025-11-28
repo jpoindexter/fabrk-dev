@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Quick Start Guide - Fabrk Docs",
+  description: "Launch your MVP in minutes. Assemble a production-ready landing page with authentication, payments, and core SaaS features.",
+};
+
 export default function QuickStartPage() {
   return (
     <div className="space-y-8">

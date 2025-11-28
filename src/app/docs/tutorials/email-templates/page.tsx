@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Email Templates - Fabrk Docs",
+  description: "Create beautiful transactional emails. Pre-built templates for verification, password reset, and welcome emails.",
+};
+
 export default function EmailTemplatesTutorialPage() {
   return (
     <div className="space-y-8">

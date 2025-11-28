@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 
+export const metadata = {
+  title: "Modal Components - Fabrk Docs",
+  description: "Dialogs, sheets, popovers, and alerts. Accessible modals with focus management and keyboard navigation.",
+};
+
 export default function ModalsComponentsPage() {
   return (
     <div className="space-y-8">
