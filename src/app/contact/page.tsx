@@ -2,7 +2,7 @@
 
 /**
  * Contact Page
- * Contact form for sales, support, and general inquiries
+ * Contact form for sales, support, and general inquiries - Terminal Console Style
  */
 
 import { useState } from "react";
@@ -18,13 +18,6 @@ import { motion } from "framer-motion";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -42,15 +35,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  H2,
-  H3,
-  Body,
-  BodyMuted,
-  Small,
-  Link as TypographyLink,
-} from "@/components/ui/typography";
-import { Mail, MapPin, MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -90,64 +75,96 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-mono">
       <Navigation />
 
       <main className="container mx-auto max-w-7xl px-6 py-16">
+        {/* Page Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+            [ [0x00] CONTACT ] COMMUNICATION_INTERFACE
+          </span>
+          <h1 className="text-2xl font-bold lg:text-3xl mb-2">CONTACT_US</h1>
+          <p className="text-sm text-muted-foreground">
+            Send us a message and we'll respond within 24 hours
+          </p>
+        </motion.div>
+
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="rounded-none">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="border border-border bg-card"
+            >
+              {/* Terminal Header */}
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-3 rounded-full bg-destructive/50" />
+                  <div className="size-3 rounded-full bg-warning/50" />
+                  <div className="size-3 rounded-full bg-success/50" />
+                </div>
+                <span className="text-xs text-muted-foreground">
+                  [0x01] message_composer.exe │ PID:4096
+                </span>
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-6">
                   <MessageCircle className="h-5 w-5 text-primary" />
-                  Send us a message
-                </CardTitle>
-                <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
+                  <span className="text-sm font-semibold">[MESSAGE_FORM]</span>
+                </div>
+                <p className="text-xs text-muted-foreground mb-6">
+                  │ &gt; Fill out the form below and we'll get back to you as soon as possible.
+                </p>
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="name">
-                      Name <span className="text-destructive">*</span>
+                    <Label htmlFor="name" className="text-xs">
+                      NAME <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="name"
-                      className="rounded-none"
+                      className="rounded-none text-sm"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      placeholder="John Doe"
+                      placeholder="> Enter your name..."
                       required
                     />
                   </div>
 
                   {/* Email Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="email">
-                      Email <span className="text-destructive">*</span>
+                    <Label htmlFor="email" className="text-xs">
+                      EMAIL <span className="text-destructive">*</span>
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      className="rounded-none"
+                      className="rounded-none text-sm"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      placeholder="john@example.com"
+                      placeholder="> Enter your email..."
                       required
                     />
                   </div>
 
                   {/* Subject Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="subject">
-                      Subject <span className="text-destructive">*</span>
+                    <Label htmlFor="subject" className="text-xs">
+                      SUBJECT <span className="text-destructive">*</span>
                     </Label>
                     <Select
                       value={formData.subject}
@@ -156,34 +173,34 @@ export default function ContactPage() {
                       }
                       required
                     >
-                      <SelectTrigger className="rounded-none">
-                        <SelectValue placeholder="Select a subject" />
+                      <SelectTrigger className="rounded-none text-sm">
+                        <SelectValue placeholder="> Select a subject..." />
                       </SelectTrigger>
                       <SelectContent className="rounded-none">
-                        <SelectItem value="sales">Sales Inquiry</SelectItem>
-                        <SelectItem value="support">Technical Support</SelectItem>
-                        <SelectItem value="billing">Billing Question</SelectItem>
-                        <SelectItem value="feature">Feature Request</SelectItem>
-                        <SelectItem value="bug">Bug Report</SelectItem>
-                        <SelectItem value="partnership">Partnership Opportunity</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="sales">SALES_INQUIRY</SelectItem>
+                        <SelectItem value="support">TECHNICAL_SUPPORT</SelectItem>
+                        <SelectItem value="billing">BILLING_QUESTION</SelectItem>
+                        <SelectItem value="feature">FEATURE_REQUEST</SelectItem>
+                        <SelectItem value="bug">BUG_REPORT</SelectItem>
+                        <SelectItem value="partnership">PARTNERSHIP_OPPORTUNITY</SelectItem>
+                        <SelectItem value="other">OTHER</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   {/* Message Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="message">
-                      Message <span className="text-destructive">*</span>
+                    <Label htmlFor="message" className="text-xs">
+                      MESSAGE <span className="text-destructive">*</span>
                     </Label>
                     <Textarea
                       id="message"
-                      className="rounded-none"
+                      className="rounded-none text-sm"
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      placeholder="Tell us more about your inquiry..."
+                      placeholder="> Tell us more about your inquiry..."
                       rows={6}
                       required
                     />
@@ -194,19 +211,25 @@ export default function ContactPage() {
 
                   {/* Success Message */}
                   {status === "success" && (
-                    <Alert className="rounded-none bg-success/10 border-success/20">
+                    <Alert
+                      className="rounded-none bg-success/10 border-success/20"
+                      aria-live="polite"
+                    >
                       <CheckCircle2 className="h-4 w-4 text-success" />
-                      <AlertDescription className="text-success">
-                        Thank you! We've received your message and will respond within 24
-                        hours.
+                      <AlertDescription className="text-success text-xs">
+                        [OK] MESSAGE_SENT - We've received your message and will respond within 24 hours.
                       </AlertDescription>
                     </Alert>
                   )}
 
                   {/* Error Message */}
                   {status === "error" && (
-                    <Alert variant="destructive" className="rounded-none">
-                      <AlertDescription>{errorMessage}</AlertDescription>
+                    <Alert
+                      variant="destructive"
+                      className="rounded-none"
+                      aria-live="polite"
+                    >
+                      <AlertDescription className="text-xs">[ERROR] {errorMessage}</AlertDescription>
                     </Alert>
                   )}
 
@@ -214,15 +237,15 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="rounded-none w-full"
+                    className="rounded-none w-full text-xs"
                     disabled={status === "loading"}
                   >
                     {status === "loading" ? (
-                      "Sending..."
+                      "&gt; SENDING..."
                     ) : (
                       <>
                         <Send className="mr-2 h-4 w-4" />
-                        Send Message
+                        &gt; EXECUTE: SEND_MESSAGE
                       </>
                     )}
                   </Button>
@@ -230,56 +253,64 @@ export default function ContactPage() {
                   <p className="text-xs text-muted-foreground text-center">
                     By submitting this form, you agree to our{" "}
                     <Link href="/privacy" className="text-primary hover:underline">
-                      Privacy Policy
+                      PRIVACY_POLICY
                     </Link>
                   </p>
                 </form>
-              </CardContent>
-            </Card>
+              </div>
+            </motion.div>
           </div>
 
           {/* Contact Information Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Email */}
-            <Card className="rounded-none">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 border-2 border-border">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <H3 className="mb-1">Email Us</H3>
-                    <Small className="block mb-2">
-                      Prefer email? Send us a message directly:
-                    </Small>
-                    <TypographyLink
-                      href="mailto:support@fabrk.dev"
-                      className="text-sm"
-                    >
-                      support@fabrk.dev
-                    </TypographyLink>
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="border border-border bg-card p-6"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 border border-border">
+                  <Mail className="h-5 w-5 text-primary" />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <span className="text-xs text-muted-foreground">[0x02]</span>
+                  <h3 className="text-sm font-semibold mb-1">EMAIL_US</h3>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Prefer email? Send us a message directly:
+                  </p>
+                  <a
+                    href="mailto:support@fabrk.dev"
+                    className="text-xs text-primary hover:underline"
+                  >
+                    &gt; support@fabrk.dev
+                  </a>
+                </div>
+              </div>
+            </motion.div>
 
             {/* Response Time */}
-            <Card className="rounded-none">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 border-2 border-border">
-                    <MessageCircle className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <H3 className="mb-1">Response Time</H3>
-                    <Small>
-                      We typically respond within 24 hours during business days.
-                      For urgent issues, please mention "URGENT" in your subject.
-                    </Small>
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="border border-border bg-card p-6"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 border border-border">
+                  <MessageCircle className="h-5 w-5 text-primary" />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <span className="text-xs text-muted-foreground">[0x03]</span>
+                  <h3 className="text-sm font-semibold mb-1">RESPONSE_TIME</h3>
+                  <p className="text-xs text-muted-foreground">
+                    We typically respond within 24 hours during business days.
+                    For urgent issues, please mention "URGENT" in your subject.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
 
@@ -290,18 +321,15 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="text-center mb-8"
           >
-            <H2 className="mb-2 text-center">Frequently Asked Questions</H2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <BodyMuted className="mb-12 text-center">
+            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+              [ [0x04] FAQ ]
+            </span>
+            <h2 className="text-xl font-bold mb-2">FREQUENTLY_ASKED_QUESTIONS</h2>
+            <p className="text-sm text-muted-foreground">
               Everything you need to know
-            </BodyMuted>
+            </p>
           </motion.div>
 
           <div className="max-w-3xl mx-auto">
@@ -316,13 +344,13 @@ export default function ContactPage() {
                   value="refunds"
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
-                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
-                    Do you offer refunds?
+                  <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
+                    [Q] Do you offer refunds?
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 font-normal text-muted-foreground">
-                    No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
+                  <AccordionContent className="px-6 text-xs text-muted-foreground">
+                    [A] No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
                     <Link href="/refund" className="text-primary hover:underline">
-                      Refund Policy
+                      REFUND_POLICY
                     </Link>{" "}
                     for more details.
                   </AccordionContent>
@@ -339,11 +367,11 @@ export default function ContactPage() {
                   value="support"
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
-                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
-                    Is technical support included?
+                  <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
+                    [Q] Is technical support included?
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 font-normal text-muted-foreground">
-                    Yes, we provide email support for all license holders. Response time is typically within 24 hours.
+                  <AccordionContent className="px-6 text-xs text-muted-foreground">
+                    [A] Yes, we provide email support for all license holders. Response time is typically within 24 hours.
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>
@@ -358,11 +386,11 @@ export default function ContactPage() {
                   value="client-projects"
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
-                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
-                    Can I use Fabrk for client projects?
+                  <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
+                    [Q] Can I use Fabrk for client projects?
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 font-normal text-muted-foreground">
-                    Absolutely! Your license allows you to create unlimited projects for yourself or clients.
+                  <AccordionContent className="px-6 text-xs text-muted-foreground">
+                    [A] Absolutely! Your license allows you to create unlimited projects for yourself or clients.
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>
@@ -377,11 +405,11 @@ export default function ContactPage() {
                   value="updates"
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
-                  <AccordionTrigger className="px-6 text-left text-base font-semibold text-foreground hover:no-underline">
-                    Do I get lifetime updates?
+                  <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
+                    [Q] Do I get lifetime updates?
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 font-normal text-muted-foreground">
-                    Yes, all future updates and improvements are included at no additional cost.
+                  <AccordionContent className="px-6 text-xs text-muted-foreground">
+                    [A] Yes, all future updates and improvements are included at no additional cost.
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>

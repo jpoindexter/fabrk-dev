@@ -135,6 +135,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
         className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-muted/50"
       >
         <span className="font-mono text-sm">

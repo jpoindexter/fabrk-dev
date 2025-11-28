@@ -1,23 +1,12 @@
 /**
  * About Us Page
- * Company story, mission, and values
+ * Company story, mission, and values - Terminal Console Style
  */
 
 "use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  H1,
-  H2,
-  H3,
-  Body,
-  BodyMuted,
-  Lead,
-  Small,
-  Strong,
-} from "@/components/ui/typography";
 import config from "@/config";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
@@ -36,38 +25,44 @@ import {
 export default function AboutPage() {
   const values = [
     {
+      id: "0x01",
       icon: Rocket,
-      title: "Ship Fast",
+      title: "SHIP_FAST",
       description:
         "Time is your most valuable resource. Our boilerplate is designed to get you from idea to launch in record time, without compromising quality.",
     },
     {
+      id: "0x02",
       icon: Code,
-      title: "Clean Code",
+      title: "CLEAN_CODE",
       description:
         "We write code the way you would write it yourself. No over-engineering, no unnecessary abstractions. Just clean, maintainable TypeScript.",
     },
     {
+      id: "0x03",
       icon: Zap,
-      title: "Performance First",
+      title: "PERFORMANCE_FIRST",
       description:
         "Every line of code is optimized for speed. We use the latest Next.js features, server components, and best practices to ensure your app is lightning fast.",
     },
     {
+      id: "0x04",
       icon: Users,
-      title: "Developer Experience",
+      title: "DEVELOPER_EXPERIENCE",
       description:
         "We're developers too. We know what frustrates you, and we've built Fabrk to eliminate those pain points with great docs and thoughtful defaults.",
     },
     {
+      id: "0x05",
       icon: Heart,
-      title: "No Lock-In",
+      title: "NO_LOCK_IN",
       description:
         "You own the code. No proprietary frameworks, no vendor lock-in. Build on top of industry-standard tools and deploy anywhere.",
     },
     {
+      id: "0x06",
       icon: CheckCircle2,
-      title: "Production Ready",
+      title: "PRODUCTION_READY",
       description:
         "From security to error handling to performance optimization, every aspect is built with production deployments in mind.",
     },
@@ -75,65 +70,77 @@ export default function AboutPage() {
 
   const reasons = [
     {
-      title: "Save Weeks of Development",
+      id: "0x10",
+      title: "SAVE_WEEKS_OF_DEVELOPMENT",
       description:
         "What normally takes 2-4 weeks to build from scratch is ready in minutes. Focus on your unique features, not boilerplate.",
     },
     {
-      title: "Production-Grade Security",
+      id: "0x11",
+      title: "PRODUCTION_GRADE_SECURITY",
       description:
         "Security headers, rate limiting, token hashing, CSRF protection—all the security best practices implemented and tested.",
     },
     {
-      title: "Modern Tech Stack",
+      id: "0x12",
+      title: "MODERN_TECH_STACK",
       description:
         "Built on Next.js 15, TypeScript, Prisma, NextAuth v5, and Stripe. The tools you're already using or want to learn.",
     },
     {
-      title: "Lifetime Updates",
+      id: "0x13",
+      title: "LIFETIME_UPDATES",
       description:
         "One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-mono">
       <Navigation />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background px-6 py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <motion.span
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
+            className="mb-6"
           >
-            <Badge variant="default" size="lg" className="rounded-none mb-6 uppercase tracking-wide">
-              Our Story
-            </Badge>
-          </motion.span>
+            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+              [ [0x00] ABOUT ] FABRK_ORIGIN_STORY
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <H1 className="mb-6">
+            <h1 className="mb-2 text-sm text-muted-foreground">
+              FABRK_ABOUT:
+            </h1>
+            <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
               Built by Developers,
               <br />
               <span className="text-primary">For Developers</span>
-            </H1>
+            </h2>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="border border-border bg-card p-4 mx-auto max-w-2xl"
           >
-            <Lead className="mx-auto mb-12 max-w-2xl">
+            <div className="mb-2 text-xs text-muted-foreground">
+              [ [0x01] MISSION_STATEMENT ]────────────────────
+            </div>
+            <p className="text-sm text-muted-foreground">
               We're on a mission to eliminate the repetitive work that slows down every
               SaaS project, so you can focus on building features that matter.
-            </Lead>
+            </p>
           </motion.div>
         </div>
       </section>
@@ -147,7 +154,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="inline-flex items-center justify-center bg-primary/10 border-2 border-border p-4 mb-6"
+              className="inline-flex items-center justify-center bg-primary/10 border border-border p-4 mb-6"
             >
               <Target className="h-12 w-12 text-primary" />
             </motion.div>
@@ -158,7 +165,10 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <H2>Our Mission</H2>
+              <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+                [ [0x02] OUR_MISSION ]
+              </span>
+              <h2 className="text-2xl font-bold lg:text-3xl">OUR_MISSION</h2>
             </motion.div>
 
             <motion.div
@@ -166,25 +176,24 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              className="border border-border bg-card p-6 text-left"
             >
-              <Body>
+              <div className="text-xs text-muted-foreground mb-3">
+                │ &gt; Loading mission parameters...
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">
                 Every developer has experienced the frustration of rebuilding the same
                 authentication system, payment integration, and UI components for the
                 hundredth time. We created Fabrk to solve this problem once and for all.
-              </Body>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <Body>
-                Our mission is simple: <Strong>help you ship your SaaS product in days, not
-                months</Strong>. We handle the boring infrastructure so you can focus on the
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Our mission is simple: <span className="text-primary font-semibold">help you ship your SaaS product in days, not
+                months</span>. We handle the boring infrastructure so you can focus on the
                 innovation that makes your product unique.
-              </Body>
+              </p>
+              <div className="mt-3 text-xs text-success">
+                └─ Mission parameters loaded [OK]
+              </div>
             </motion.div>
           </div>
         </div>
@@ -200,7 +209,10 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <H2 className="mb-4">Our Values</H2>
+              <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+                [ [0x03] CORE_VALUES ]
+              </span>
+              <h2 className="text-2xl font-bold lg:text-3xl mb-4">CORE_VALUES</h2>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -208,11 +220,13 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <Lead>The principles that guide everything we build</Lead>
+              <p className="text-sm text-muted-foreground">
+                The principles that guide everything we build
+              </p>
             </motion.div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -220,13 +234,17 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 viewport={{ once: true }}
-                className="group border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
+                className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 border-2 border-border p-3">
-                  <value.icon className="h-6 w-6 text-primary" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="inline-flex items-center justify-center bg-primary/10 border border-border p-2">
+                    <value.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-xs text-muted-foreground">[{value.id}]</span>
                 </div>
-                <H3 className="mb-2">{value.title}</H3>
-                <Body>{value.description}</Body>
+                <h3 className="text-sm font-semibold mb-2">{value.title}</h3>
+                <p className="text-xs text-muted-foreground">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -244,7 +262,10 @@ export default function AboutPage() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <H2 className="mb-4">The Story Behind Fabrk</H2>
+                <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+                  [ [0x04] ORIGIN_STORY ]
+                </span>
+                <h2 className="text-2xl font-bold lg:text-3xl mb-4">THE_STORY_BEHIND_FABRK</h2>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -252,7 +273,9 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Lead>From frustration to solution</Lead>
+                <p className="text-sm text-muted-foreground">
+                  From frustration to solution
+                </p>
               </motion.div>
             </div>
 
@@ -261,50 +284,58 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="border border-border bg-card p-6"
             >
-              <Body>
-                Like many developers, we were tired of rebuilding the same infrastructure for
-                every new SaaS project. Authentication, payments, database setup, email
-                integration—it's the same story every time.
-              </Body>
+              <div className="text-xs text-muted-foreground mb-4">
+                │ &gt; Initializing story sequence...
+              </div>
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground">
+                  Like many developers, we were tired of rebuilding the same infrastructure for
+                  every new SaaS project. Authentication, payments, database setup, email
+                  integration—it's the same story every time.
+                </p>
 
-              <Body>
-                We looked at existing solutions, but they all had the same problems:
-              </Body>
+                <p className="text-sm text-muted-foreground">
+                  We looked at existing solutions, but they all had the same problems:
+                </p>
 
-              <ul className="space-y-3">
-                {[
-                  "Over-engineered with 1000+ files you'll never use",
-                  "Proprietary frameworks that lock you in",
-                  "Poor documentation and unclear architecture",
-                  "Bloated with features you don't need",
-                ].map((problem, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
-                  >
-                    <span className="mt-1 text-destructive font-bold">✗</span>
-                    <Body>{problem}</Body>
-                  </motion.li>
-                ))}
-              </ul>
+                <div className="space-y-2 pl-4 border-l border-border">
+                  {[
+                    "Over-engineered with 1000+ files you'll never use",
+                    "Proprietary frameworks that lock you in",
+                    "Poor documentation and unclear architecture",
+                    "Bloated with features you don't need",
+                  ].map((problem, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start gap-3 text-sm"
+                    >
+                      <span className="text-destructive font-bold">✗</span>
+                      <span className="text-muted-foreground">{problem}</span>
+                    </motion.div>
+                  ))}
+                </div>
 
-              <Body>
-                So we built Fabrk differently. We started with a 1000+ file codebase, then
-                ruthlessly cut it down to just the essentials. We removed every line of code
-                that didn't serve a clear purpose. We focused on clarity over cleverness.
-              </Body>
+                <p className="text-sm text-muted-foreground">
+                  So we built Fabrk differently. We started with a 1000+ file codebase, then
+                  ruthlessly cut it down to just the essentials. We removed every line of code
+                  that didn't serve a clear purpose. We focused on clarity over cleverness.
+                </p>
 
-              <Body>
-                The result? A boilerplate with ~160 files that includes everything you need
-                and nothing you don't. Clean TypeScript, modern Next.js, industry-standard
-                tools, and comprehensive documentation.
-              </Body>
+                <p className="text-sm text-muted-foreground">
+                  The result? A boilerplate with ~160 files that includes everything you need
+                  and nothing you don't. Clean TypeScript, modern Next.js, industry-standard
+                  tools, and comprehensive documentation.
+                </p>
+              </div>
+              <div className="mt-4 text-xs text-success">
+                └─ Story sequence complete [OK]
+              </div>
             </motion.div>
           </div>
         </div>
@@ -321,7 +352,10 @@ export default function AboutPage() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <H2 className="mb-4">Why Choose Fabrk?</H2>
+                <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+                  [ [0x05] WHY_FABRK ]
+                </span>
+                <h2 className="text-2xl font-bold lg:text-3xl mb-4">WHY_CHOOSE_FABRK</h2>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
@@ -329,11 +363,13 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <Lead>We're not just selling code, we're selling time</Lead>
+                <p className="text-sm text-muted-foreground">
+                  We're not just selling code, we're selling time
+                </p>
               </motion.div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {reasons.map((item, index) => (
                 <motion.div
                   key={index}
@@ -341,10 +377,14 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className="border border-border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50"
+                  whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
+                  className="border border-border bg-card p-4 transition-all hover:border-primary/50"
                 >
-                  <H3 className="mb-2">{item.title}</H3>
-                  <Body>{item.description}</Body>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs text-muted-foreground">[{item.id}]</span>
+                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground pl-12">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -361,7 +401,10 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <H2>Ready to Build Your SaaS?</H2>
+            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+              [ [0xFF] EXECUTE ]
+            </span>
+            <h2 className="text-2xl font-bold lg:text-3xl">READY_TO_BUILD_YOUR_SAAS</h2>
           </motion.div>
 
           <motion.div
@@ -369,10 +412,11 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
+            className="border border-border bg-card p-4 mx-auto max-w-2xl"
           >
-            <Lead className="mx-auto max-w-2xl">
+            <p className="text-sm text-muted-foreground">
               Join 500+ developers who are shipping faster with Fabrk.
-            </Lead>
+            </p>
           </motion.div>
 
           <motion.div
@@ -380,16 +424,16 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-4 sm:flex-row sm:justify-center"
+            className="flex flex-col gap-3 sm:flex-row sm:justify-center"
           >
-            <Button size="xl" className="rounded-none text-lg" asChild>
+            <Button size="lg" className="rounded-none text-xs" asChild>
               <Link href="/#pricing">
-                Get Fabrk Now - {config.pricing.fabrk.display.current}
+                &gt; EXECUTE: GET_FABRK - {config.pricing.fabrk.display.current}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button variant="outline" size="xl" className="rounded-none text-lg" asChild>
-              <Link href="/features">View All Features</Link>
+            <Button variant="outline" size="lg" className="rounded-none text-xs" asChild>
+              <Link href="/features">&gt; VIEW: ALL_FEATURES</Link>
             </Button>
           </motion.div>
 
@@ -398,10 +442,11 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
+            className="flex justify-center gap-4 text-xs text-muted-foreground"
           >
-            <Small className="block font-medium text-muted-foreground">
-              ✓ Instant access ✓ Lifetime updates ✓ 30-day money-back guarantee
-            </Small>
+            <span className="text-success">■ INSTANT_ACCESS</span>
+            <span className="text-success">■ LIFETIME_UPDATES</span>
+            <span className="text-success">■ 30_DAY_GUARANTEE</span>
           </motion.div>
         </div>
       </section>

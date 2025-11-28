@@ -264,7 +264,7 @@ function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CAT
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-mono">
       <Navigation />
 
       {/* Hero Section */}
@@ -277,9 +277,9 @@ export default function FeaturesPage() {
               transition={{ duration: 0.5 }}
               className="mb-6"
             >
-              <Badge variant="default" size="lg" className="rounded-none uppercase tracking-wide">
-                Complete SaaS Toolkit
-              </Badge>
+              <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+                [ [0x00] FEATURES ] COMPLETE_SAAS_TOOLKIT
+              </span>
             </motion.div>
 
             <motion.div
@@ -287,21 +287,28 @@ export default function FeaturesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <H1 className="mb-6">
-                Every Feature You Need,<br className="hidden sm:block" /> Already Built
-              </H1>
+              <h1 className="mb-2 text-sm text-muted-foreground">
+                FABRK_FEATURES:
+              </h1>
+              <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
+                Every Feature You Need,<br className="hidden sm:block" /> <span className="text-primary">Already Built</span>
+              </h2>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="border border-border bg-card p-4 mx-auto max-w-2xl"
             >
-              <Body className="mx-auto mb-8 max-w-2xl text-muted-foreground">
+              <div className="mb-2 text-xs text-muted-foreground">
+                [ [0x01] STATUS ]────────────────────────
+              </div>
+              <p className="text-sm text-muted-foreground">
                 Stop rebuilding the same features for every project. Fabrk includes authentication,
                 payments, database, real-time, multi-tenancy, admin dashboard, and more - all
                 production-tested and ready to deploy.
-              </Body>
+              </p>
             </motion.div>
 
             <motion.div
@@ -310,15 +317,15 @@ export default function FeaturesPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Button asChild size="lg" className="rounded-none">
+              <Button asChild size="lg" className="rounded-none text-xs">
                 <Link href="/#pricing">
-                  Get Fabrk Now
+                  &gt; EXECUTE: GET_FABRK
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-none">
+              <Button asChild variant="outline" size="lg" className="rounded-none text-xs">
                 <Link href="/docs">
-                  Read Documentation
+                  &gt; VIEW: DOCUMENTATION
                 </Link>
               </Button>
             </motion.div>
