@@ -46,6 +46,12 @@
     background-color: oklch(var(--background));
     color: oklch(var(--foreground));
   }
+
+  /* Theme-aware text selection */
+  ::selection {
+    background-color: oklch(var(--primary));
+    color: oklch(var(--primary-foreground));
+  }
 }
 
 @theme {
