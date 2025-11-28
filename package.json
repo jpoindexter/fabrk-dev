@@ -121,7 +121,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.65.0",
     "react-instantsearch": "^7.19.0",
-    "recharts": "^3.4.1",
+    "recharts": "^3.5.1",
     "resend": "^6.3.0",
     "sanity": "^4.19.0",
     "simple-icons": "^15.20.0",
