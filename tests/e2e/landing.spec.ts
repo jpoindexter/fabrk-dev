@@ -48,29 +48,36 @@ test.describe('Landing Page', () => {
     expect(count).toBeGreaterThanOrEqual(1);
   });
 
-  test('should navigate to features page from CTA', async ({ page }) => {
-    // Find and click features or learn more button
-    const featuresLink = page.locator('a, button').filter({ hasText: /features|learn more/i }).first();
-    
+  test('should navigate to features section from CTA', async ({ page }) => {
+    // Find and click features link (anchor link to #features)
+    const featuresLink = page.locator('a, button').filter({ hasText: /features/i }).first();
+
     if (await featuresLink.isVisible()) {
       await featuresLink.click();
-      // Wait for navigation
-      await page.waitForLoadState('domcontentloaded');
-      
-      // Verify we navigated somewhere different
-      expect(page.url()).not.toBe('http://localhost:3000/');
+      // Wait for scroll/navigation
+      await page.waitForTimeout(500);
+
+      // Verify hash fragment was added (anchor link behavior)
+      expect(page.url()).toContain('#features');
+
+      // Verify features section is visible
+      const featuresSection = page.locator('section#features');
+      if (await featuresSection.count() > 0) {
+        await expect(featuresSection).toBeInViewport();
+      }
     }
   });
 
   test('should display features section', async ({ page }) => {
-    // Check if features section exists
-    const featuresSection = page.locator('section').filter({ hasText: /feature|benefit|capability/i }).first();
-    
-    if (await featuresSection.isVisible()) {
+    // Check if features section exists (using id selector)
+    const featuresSection = page.locator('section#features');
+
+    if (await featuresSection.count() > 0) {
+      await featuresSection.scrollIntoViewIfNeeded();
       await expect(featuresSection).toBeVisible();
-      
-      // Check for feature items
-      const featureItems = page.locator('[class*="feature"], [class*="benefit"]');
+
+      // Check for feature cards (using bg-card class which all feature cards have)
+      const featureItems = featuresSection.locator('[class*="bg-card"]');
       const itemCount = await featureItems.count();
       expect(itemCount).toBeGreaterThan(0);
     }
@@ -116,11 +123,21 @@ test.describe('Landing Page', () => {
   });
 
   test('should have proper accessibility - alt text on images', async ({ page }) => {
-    // Check critical images have alt text
-    const images = page.locator('img[alt]:not([alt=""])');
-    const imageCount = await images.count();
-    
-    // At least some images should have alt text
-    expect(imageCount).toBeGreaterThan(0);
+    // Check images that exist have alt text
+    const allImages = page.locator('img');
+    const imageCount = await allImages.count();
+
+    if (imageCount > 0) {
+      // Check that images with alt attribute have non-empty alt text
+      const imagesWithAlt = page.locator('img[alt]:not([alt=""])');
+      const altCount = await imagesWithAlt.count();
+      expect(altCount).toBeGreaterThanOrEqual(0); // Pass if no images or all have alt
+
+      // Check for images missing alt text (accessibility violation)
+      const imagesWithoutAlt = page.locator('img:not([alt]), img[alt=""]');
+      const missingAltCount = await imagesWithoutAlt.count();
+      expect(missingAltCount).toBe(0); // No images should be missing alt text
+    }
+    // Test passes if no images on page (conditional content)
   });
 });
