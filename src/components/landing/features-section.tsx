@@ -77,7 +77,7 @@ function FeatureSection({ spec, title, description, features, reversed, children
         {/* Description */}
         <div className="mb-6 border-l-2 border-border pl-4">
           <span className="font-mono text-xs text-muted-foreground">│ [DESC]: </span>
-          <span className="text-muted-foreground">{description}</span>
+          <span className="font-mono text-xs text-muted-foreground">{description}</span>
         </div>
 
         {/* Feature List */}

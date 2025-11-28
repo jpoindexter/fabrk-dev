@@ -77,9 +77,26 @@ export default function TemplatesPage() {
           </div>
           <h1 className="text-4xl font-bold">Template Gallery</h1>
           <p className="font-mono text-sm text-muted-foreground max-w-2xl">
-            Choose a category to explore ready-to-use templates. Each template is copy-paste ready and fully customizable.
+            Choose a category to explore ready-to-use templates included with Fabrk.
           </p>
         </section>
+
+        {/* Preview Notice */}
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-primary/50" />
+              <div className="size-2 rounded-full bg-primary/30" />
+              <div className="size-2 rounded-full bg-primary/20" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">notice.md</span>
+          </div>
+          <div className="p-4">
+            <p className="font-mono text-xs text-muted-foreground">
+              <span className="text-primary">[INFO]:</span> These templates showcase how Fabrk's components can be styled and composed. All templates use the same base UI components from <span className="text-foreground">/components/ui</span> and are included when you purchase Fabrk.
+            </p>
+          </div>
+        </div>
 
         {/* Category Cards Grid */}
         <div className="grid md:grid-cols-2 gap-4">

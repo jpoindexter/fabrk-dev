@@ -153,7 +153,7 @@ export function ExitIntentPopup({
         <DialogFooter className="flex-col gap-2 sm:flex-col">
           <PolarCheckoutButton
             discountId={EXIT_INTENT_DISCOUNT_ID}
-            className="rounded-none w-full font-mono"
+            className="rounded-none w-full font-mono text-xs"
           >
             &gt; GET_FABRK_NOW
           </PolarCheckoutButton>

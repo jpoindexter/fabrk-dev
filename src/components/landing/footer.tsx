@@ -62,9 +62,6 @@ export function Footer() {
                 <span className="text-sm text-primary">&gt;</span>
                 <span className="text-xl font-bold tracking-tight">FABRK</span>
               </Link>
-              <p className="max-w-xs font-mono text-sm text-muted-foreground">
-                │ [TAGLINE]: Ship your SaaS in days, not weeks.
-              </p>
               <div className="mt-4 flex items-center gap-2">
                 <span className="font-mono text-xs text-muted-foreground">└─ [STATUS]:</span>
                 <span className="font-mono text-xs text-success">■ OPERATIONAL</span>

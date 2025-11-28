@@ -83,7 +83,6 @@ export function PolarCheckoutButton({
       onClick={handleCheckout}
       disabled={isLoading}
       className={className}
-      size="lg"
     >
       {isLoading ? (
         <>

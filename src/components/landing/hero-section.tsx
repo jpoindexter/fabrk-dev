@@ -59,7 +59,7 @@ export function HeroSection() {
               <h1 className="mb-2 font-mono text-sm text-muted-foreground">
                 FABRK_INIT:
               </h1>
-              <h2 className="mb-6 font-mono text-4xl font-bold tracking-tight lg:text-5xl">
+              <h2 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
                 Building your SaaS
                 <br />
                 <span className="text-primary">just got unfairly easy.</span>
@@ -99,10 +99,10 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-3 sm:flex-row"
             >
-              <PolarCheckoutButton className="rounded-none font-mono text-sm">
+              <PolarCheckoutButton className="rounded-none font-mono text-xs">
                 &gt; EXECUTE: GET_FABRK
               </PolarCheckoutButton>
-              <Button variant="outline" asChild className="rounded-none font-mono text-sm">
+              <Button variant="outline" asChild className="rounded-none font-mono text-xs">
                 <Link href="/demo">
                   &gt; VIEW: LIVE_DEMO
                 </Link>

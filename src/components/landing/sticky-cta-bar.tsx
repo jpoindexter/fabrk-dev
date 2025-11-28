@@ -105,10 +105,10 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm" className="rounded-none font-mono">
+              <Button asChild size="sm" className="rounded-none font-mono text-xs">
                 <Link href={ctaHref}>
                   &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-3 w-3" />
                 </Link>
               </Button>
               <Button

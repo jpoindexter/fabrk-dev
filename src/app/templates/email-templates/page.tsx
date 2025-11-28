@@ -11,10 +11,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Mail,
-  Eye,
-  Code,
-  Copy,
-  CheckCircle2,
   Send,
   Key,
   Shield,
@@ -24,7 +20,6 @@ import {
 } from "lucide-react";
 import { generateWelcomeEmailHTML } from "@/emails/welcome-html";
 import { generateVerifyEmailHTML } from "@/emails/verify-email";
-import { CodeBlock } from "@/components/ui/code-block";
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string, primaryColor: string): string {
@@ -102,40 +97,39 @@ const emailTemplates = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Your Password</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 0;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f4f4f5;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f5; padding: 40px 0;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px;">
           <tr>
-            <td style="padding: 40px; text-align: center; background-color: #000000;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">Fabrk</h1>
+            <td style="padding: 32px 32px 24px 32px; border-bottom: 1px solid #e4e4e7;">
+              <h1 style="margin: 0; color: #18181b; font-size: 24px; font-weight: 600;">Reset Your Password</h1>
             </td>
           </tr>
           <tr>
-            <td style="padding: 40px;">
-              <h2 style="margin: 0 0 16px 0; color: #171717; font-size: 24px; font-weight: 600;">Reset Your Password</h2>
-              <p style="margin: 0 0 24px 0; color: #525252; font-size: 16px; line-height: 1.5;">
+            <td style="padding: 32px;">
+              <p style="margin: 0 0 24px 0; color: #3f3f46; font-size: 16px; line-height: 1.6;">
                 We received a request to reset your password. Click the button below to create a new password.
               </p>
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td align="center" style="padding: 0 0 32px 0;">
-                    <a href="https://fabrk.ai/reset?token=abc123" style="display: inline-block; background-color: #DC2626; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 6px; font-size: 16px; font-weight: 600;">Reset Password</a>
+                  <td align="center" style="padding: 0 0 24px 0;">
+                    <a href="https://fabrk.ai/reset?token=abc123" style="display: inline-block; background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 14px 28px; font-size: 14px; font-weight: 600; border-radius: 6px;">Reset Password</a>
                   </td>
                 </tr>
               </table>
-              <div style="background-color: #FEE2E2; border: 1px solid: #DC2626; border-radius: 6px; padding: 16px; margin-bottom: 24px;">
-                <p style="margin: 0; color: #991B1B; font-size: 14px;"><strong>This link expires in 1 hour.</strong></p>
+              <div style="background-color: #fef3c7; border: 1px solid #fcd34d; border-radius: 6px; padding: 16px; margin-bottom: 24px;">
+                <p style="margin: 0; color: #92400e; font-size: 14px;"><strong>Note:</strong> This link expires in 1 hour.</p>
               </div>
-              <p style="margin: 0; color: #737373; font-size: 13px; line-height: 1.5;">
-                If you didn't request a password reset, please ignore this email or contact support if you have concerns.
+              <p style="margin: 0; color: #71717a; font-size: 14px; line-height: 1.5;">
+                If you didn't request this, please ignore this email or contact support.
               </p>
             </td>
           </tr>
           <tr>
-            <td style="padding: 24px 40px; background-color: #fafafa; text-align: center;">
-              <p style="margin: 0; color: #737373; font-size: 13px; line-height: 1.5;">© 2025 Fabrk. All rights reserved.</p>
+            <td style="padding: 24px 32px; border-top: 1px solid #e4e4e7; background-color: #fafafa; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #71717a; font-size: 12px; text-align: center;">© 2025 Fabrk. All rights reserved.</p>
             </td>
           </tr>
         </table>
@@ -160,55 +154,50 @@ const emailTemplates = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purchase Confirmed</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 0;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f4f4f5;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f5; padding: 40px 0;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px;">
           <tr>
-            <td style="padding: 40px; text-align: center; background-color: #000000;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">Fabrk</h1>
+            <td style="padding: 32px 32px 24px 32px; border-bottom: 1px solid #e4e4e7;">
+              <h1 style="margin: 0; color: #18181b; font-size: 24px; font-weight: 600;"><span style="color: #22c55e;">✓</span> Payment Successful</h1>
             </td>
           </tr>
           <tr>
-            <td style="padding: 40px;">
-              <div style="text-align: center; margin-bottom: 24px;">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background-color: #10B981; border-radius: 50%;">
-                  <span style="color: #ffffff; font-size: 40px; line-height: 1;">✓</span>
-                </div>
-              </div>
-              <h2 style="margin: 0 0 16px 0; color: #171717; font-size: 24px; font-weight: 600; text-align: center;">Payment Confirmed!</h2>
-              <p style="margin: 0 0 32px 0; color: #525252; font-size: 16px; line-height: 1.5; text-align: center;">
+            <td style="padding: 32px;">
+              <p style="margin: 0 0 24px 0; color: #3f3f46; font-size: 16px; line-height: 1.6;">
                 Thank you for your purchase. Your order has been confirmed.
               </p>
-              <div style="background-color: #fafafa; border: 1px solid #e5e5e5; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-                <table width="100%" cellpadding="8" cellspacing="0">
+              <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 6px; padding: 20px; margin-bottom: 24px;">
+                <p style="margin: 0 0 12px 0; color: #71717a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Order Details</p>
+                <table width="100%" cellpadding="6" cellspacing="0" style="font-size: 14px;">
                   <tr>
-                    <td style="color: #737373; font-size: 14px;">Order ID:</td>
-                    <td style="color: #171717; font-size: 14px; font-weight: 600; text-align: right;">#ORD-2024-001</td>
+                    <td style="color: #71717a;">Order ID</td>
+                    <td style="color: #18181b; text-align: right; font-family: 'Courier New', monospace;">#ORD-2024-001</td>
                   </tr>
                   <tr>
-                    <td style="color: #737373; font-size: 14px;">Date:</td>
-                    <td style="color: #171717; font-size: 14px; font-weight: 600; text-align: right;">November 12, 2024</td>
+                    <td style="color: #71717a;">Date</td>
+                    <td style="color: #18181b; text-align: right;">November 12, 2024</td>
                   </tr>
                   <tr>
-                    <td style="color: #737373; font-size: 14px;">Amount:</td>
-                    <td style="color: #171717; font-size: 18px; font-weight: 600; text-align: right;">$79.00</td>
+                    <td style="color: #71717a;">Amount</td>
+                    <td style="color: #18181b; font-size: 18px; font-weight: 600; text-align: right;">$79.00</td>
                   </tr>
                 </table>
               </div>
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="https://fabrk.ai/download" style="display: inline-block; background-color: #171717; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">Download Fabrk</a>
+                    <a href="https://fabrk.ai/download" style="display: inline-block; background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 14px 28px; font-size: 14px; font-weight: 600; border-radius: 6px;">Download Fabrk</a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td style="padding: 24px 40px; background-color: #fafafa; text-align: center;">
-              <p style="margin: 0; color: #737373; font-size: 13px; line-height: 1.5;">© 2025 Fabrk. All rights reserved.</p>
+            <td style="padding: 24px 32px; border-top: 1px solid #e4e4e7; background-color: #fafafa; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #71717a; font-size: 12px; text-align: center;">© 2025 Fabrk. All rights reserved.</p>
             </td>
           </tr>
         </table>
@@ -233,57 +222,59 @@ const emailTemplates = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Subscription Updated</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 0;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f4f4f5;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f5; padding: 40px 0;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px;">
           <tr>
-            <td style="padding: 40px; text-align: center; background-color: #000000;">
-              <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">Fabrk</h1>
+            <td style="padding: 32px 32px 24px 32px; border-bottom: 1px solid #e4e4e7;">
+              <h1 style="margin: 0; color: #18181b; font-size: 24px; font-weight: 600;">Subscription Updated</h1>
             </td>
           </tr>
           <tr>
-            <td style="padding: 40px;">
-              <h2 style="margin: 0 0 16px 0; color: #171717; font-size: 24px; font-weight: 600;">Subscription Updated</h2>
-              <p style="margin: 0 0 24px 0; color: #525252; font-size: 16px; line-height: 1.5;">
+            <td style="padding: 32px;">
+              <p style="margin: 0 0 24px 0; color: #3f3f46; font-size: 16px; line-height: 1.6;">
                 Your subscription plan has been successfully updated.
               </p>
-              <div style="background-color: #F0F9FF; border: 2px solid #0EA5E9; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-                <table width="100%" cellpadding="8" cellspacing="0">
+              <div style="background-color: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 6px; padding: 20px; margin-bottom: 24px;">
+                <p style="margin: 0 0 12px 0; color: #71717a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Plan Details</p>
+                <table width="100%" cellpadding="6" cellspacing="0" style="font-size: 14px;">
                   <tr>
-                    <td style="color: #0C4A6E; font-size: 14px; font-weight: 600;">New Plan:</td>
-                    <td style="color: #0C4A6E; font-size: 18px; font-weight: 700; text-align: right;">Professional</td>
+                    <td style="color: #71717a;">Plan</td>
+                    <td style="color: #18181b; font-weight: 600; text-align: right;">Professional</td>
                   </tr>
                   <tr>
-                    <td style="color: #0C4A6E; font-size: 14px; font-weight: 600;">Status:</td>
-                    <td style="color: #10B981; font-size: 14px; font-weight: 600; text-align: right;">Active</td>
+                    <td style="color: #71717a;">Status</td>
+                    <td style="text-align: right;"><span style="background-color: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500;">Active</span></td>
                   </tr>
                   <tr>
-                    <td style="color: #0C4A6E; font-size: 14px; font-weight: 600;">Next Billing:</td>
-                    <td style="color: #0C4A6E; font-size: 14px; font-weight: 600; text-align: right;">December 12, 2024</td>
+                    <td style="color: #71717a;">Next Billing</td>
+                    <td style="color: #18181b; text-align: right;">December 12, 2024</td>
                   </tr>
                 </table>
               </div>
-              <h3 style="margin: 0 0 16px 0; color: #171717; font-size: 18px; font-weight: 600;">What's New</h3>
-              <ul style="margin: 0 0 24px 0; padding-left: 20px; color: #525252; font-size: 15px; line-height: 1.8;">
-                <li>Unlimited projects</li>
-                <li>10 team members</li>
-                <li>Priority support</li>
-                <li>Advanced analytics</li>
-              </ul>
+              <div style="border-top: 1px solid #e4e4e7; padding-top: 24px; margin-bottom: 24px;">
+                <p style="margin: 0 0 16px 0; color: #18181b; font-size: 14px; font-weight: 600;">What's Included</p>
+                <table width="100%" cellpadding="0" cellspacing="0" style="color: #3f3f46; font-size: 14px; line-height: 1.8;">
+                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> Unlimited projects</td></tr>
+                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> 10 team members</td></tr>
+                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> Priority support</td></tr>
+                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> Advanced analytics</td></tr>
+                </table>
+              </div>
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center">
-                    <a href="https://fabrk.ai/billing" style="display: inline-block; background-color: #171717; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 6px; font-size: 16px; font-weight: 600;">Manage Subscription</a>
+                    <a href="https://fabrk.ai/billing" style="display: inline-block; background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 14px 28px; font-size: 14px; font-weight: 600; border-radius: 6px;">Manage Subscription</a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td style="padding: 24px 40px; background-color: #fafafa; text-align: center;">
-              <p style="margin: 0; color: #737373; font-size: 13px; line-height: 1.5;">© 2025 Fabrk. All rights reserved.</p>
+            <td style="padding: 24px 32px; border-top: 1px solid #e4e4e7; background-color: #fafafa; border-radius: 0 0 8px 8px;">
+              <p style="margin: 0; color: #71717a; font-size: 12px; text-align: center;">© 2025 Fabrk. All rights reserved.</p>
             </td>
           </tr>
         </table>
@@ -296,9 +287,7 @@ const emailTemplates = [
 ];
 
 export default function EmailTemplatesShowcase() {
-  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [selectedTemplate, setSelectedTemplate] = useState(emailTemplates[0]);
-  const [copied, setCopied] = useState(false);
   const [primaryColor, setPrimaryColor] = useState('271.5 81.3% 55.9%');
 
   useEffect(() => {
@@ -326,12 +315,6 @@ export default function EmailTemplatesShowcase() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(selectedTemplate.preview);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const handleSendTest = () => {
     toast.success(`Test email sent for: ${selectedTemplate.name}`);
@@ -435,16 +418,7 @@ export default function EmailTemplatesShowcase() {
                 <div className="size-2 rounded-full bg-success/50" />
               </div>
               <span className="font-mono text-xs text-muted-foreground">{selectedTemplate.id}_email.html</span>
-              <div className="ml-auto flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleCopy}
-                  className="rounded-none font-mono text-xs h-7"
-                >
-                  {copied ? <CheckCircle2 className="mr-1 h-3 w-3" /> : <Copy className="mr-1 h-3 w-3" />}
-                  {copied ? "COPIED" : "&gt; COPY"}
-                </Button>
+              <div className="ml-auto">
                 <Button
                   variant="outline"
                   size="sm"
@@ -465,47 +439,14 @@ export default function EmailTemplatesShowcase() {
                 </div>
               </div>
 
-              {/* Tab Navigation */}
-              <div className="flex border border-border mb-4 font-mono text-xs">
-                <button
-                  onClick={() => setActiveTab("preview")}
-                  className={`flex items-center gap-1 px-4 py-2 border-r border-border transition-colors ${
-                    activeTab === "preview"
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-muted"
-                  }`}
-                >
-                  <Eye className="h-3 w-3" />
-                  [PREVIEW]
-                </button>
-                <button
-                  onClick={() => setActiveTab("code")}
-                  className={`flex items-center gap-1 px-4 py-2 transition-colors ${
-                    activeTab === "code"
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-muted"
-                  }`}
-                >
-                  <Code className="h-3 w-3" />
-                  [HTML_CODE]
-                </button>
+              {/* Email Preview */}
+              <div className="border border-border bg-muted p-4">
+                <iframe
+                  srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
+                  title={selectedTemplate.name}
+                  className="min-h-[500px] w-full mx-auto block border border-border bg-white"
+                />
               </div>
-
-              {activeTab === "preview" && (
-                <div className="border border-border bg-muted p-4">
-                  <iframe
-                    srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
-                    title={selectedTemplate.name}
-                    className="min-h-[600px] w-full mx-auto block border border-border bg-white"
-                  />
-                </div>
-              )}
-
-              {activeTab === "code" && (
-                <div className="max-h-[600px] overflow-auto border border-border [&>div]:rounded-none">
-                  <CodeBlock code={selectedTemplate.preview} language="markup" />
-                </div>
-              )}
 
               {/* Template Details */}
               <div className="mt-4 pt-4 border-t border-border space-y-4 font-mono text-xs">

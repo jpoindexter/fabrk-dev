@@ -131,7 +131,7 @@ export function PricingSection() {
                 </div>
 
                 {/* CTA Button */}
-                <PolarCheckoutButton className="rounded-none w-full font-mono text-sm">
+                <PolarCheckoutButton className="rounded-none w-full font-mono text-xs">
                   &gt; EXECUTE: GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
               </div>
