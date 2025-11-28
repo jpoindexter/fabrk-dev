@@ -9,14 +9,13 @@ import { H4, Small } from "@/components/ui/typography";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-col lg:flex-row lg:items-start gap-12">
-          {/* Left: Logo & Copyright Section */}
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:flex-row lg:items-start">
+        {/* Left: Logo & Copyright Section */}
           <div className="lg:w-64 flex-shrink-0">
-            <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
+            <Link href="/" className="inline-flex transition-opacity hover:opacity-80">
               <Logo size={28} />
             </Link>
-            <Small className="block mb-6 text-muted-foreground">
+            <Small className="mt-4 block mb-6 text-muted-foreground">
               Ship your SaaS in days, not weeks.
             </Small>
             <Small className="block text-muted-foreground">
@@ -100,7 +99,6 @@ export function Footer() {
               </Link>
             </nav>
           </div>
-        </div>
         </div>
 
         {/* Bottom Bar */}
