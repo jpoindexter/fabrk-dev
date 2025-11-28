@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   BookOpen,
   Rocket,
@@ -168,33 +170,12 @@ export default function DocsLayout({
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-        <div className="flex h-14 items-center px-6">
-          <Link href="/" className="flex items-center gap-2 font-bold">
-            <span className="text-xl">Fabrk</span>
-          </Link>
-          <nav className="ml-6 flex items-center gap-4 text-sm">
-            <Link
-              href="/docs/getting-started"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Docs
-            </Link>
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Home
-            </Link>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background flex flex-col">
+      <DemoNav backButtonText="Home" backButtonHref="/" />
 
-      <div className="flex">
+      <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
+        <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
           <nav className="space-y-6 p-4">
             {navigation.map((section) => (
               <div key={section.title}>
@@ -252,6 +233,8 @@ export default function DocsLayout({
           </div>
         </main>
       </div>
+
+      <Footer />
     </div>
   );
 }
