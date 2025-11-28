@@ -38,6 +38,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   Shield,
   Smartphone,
@@ -792,6 +793,8 @@ export default function SecurityPrivacyTemplate() {
           </CardContent>
         </Card>
       </div>
+
+      <Footer />
     </div>
   );
 }

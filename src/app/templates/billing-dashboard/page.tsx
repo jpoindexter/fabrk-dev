@@ -27,6 +27,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   CreditCard,
   Download,
@@ -618,6 +619,8 @@ export default function BillingDashboardTemplate() {
           </CardContent>
         </Card>
       </div>
+
+      <Footer />
     </div>
   );
 }

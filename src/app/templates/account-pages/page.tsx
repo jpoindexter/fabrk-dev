@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import { ExternalLink } from "lucide-react";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
@@ -83,6 +84,8 @@ export default function AccountPagesPage() {
           </CardContent>
         </Card>
       </main>
+
+      <Footer />
     </div>
   );
 }

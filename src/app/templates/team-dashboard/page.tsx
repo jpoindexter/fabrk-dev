@@ -51,6 +51,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   Users,
   UserPlus,
@@ -678,6 +679,8 @@ export default function TeamDashboardTemplate() {
           </CardContent>
         </Card>
       </div>
+
+      <Footer />
     </div>
   );
 }

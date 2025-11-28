@@ -20,6 +20,7 @@ import {
 } from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown, Download, MoreHorizontal, Search, Trash2, UserCog, UserX, UserPlus } from "lucide-react";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -664,6 +665,8 @@ export default function UserManagementTemplate() {
           </CardContent>
         </Card>
       </div>
+
+      <Footer />
     </div>
   );
 }

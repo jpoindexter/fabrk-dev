@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   Search,
   ChevronRight,
@@ -467,6 +468,8 @@ export default function DocumentationLayoutTemplate() {
           </CardContent>
         </Card>
       </aside>
+
+      <Footer />
     </div>
   );
 }

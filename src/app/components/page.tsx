@@ -5,6 +5,7 @@
 
 import Link from "next/link";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   Card,
   CardContent,
@@ -459,6 +460,8 @@ export default function ComponentsPage() {
           <ActivityTimelineDemo />
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

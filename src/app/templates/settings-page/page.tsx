@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   AlertTriangle,
   Bell,
@@ -447,6 +448,8 @@ export default function SettingsPageTemplate() {
           </CardContent>
         </Card>
       </div>
+
+      <Footer />
     </div>
   );
 }

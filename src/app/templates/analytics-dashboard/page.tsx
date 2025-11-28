@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DemoNav } from "@/components/demo/demo-nav";
+import { Footer } from "@/components/landing/footer";
 import {
   TrendingUp,
   TrendingDown,
@@ -395,6 +396,8 @@ export default function AnalyticsDashboardTemplate() {
           </CardContent>
         </Card>
       </main>
+
+      <Footer />
     </div>
   );
 }
