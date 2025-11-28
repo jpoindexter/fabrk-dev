@@ -140,7 +140,7 @@ function FeatureCard({ icon: Icon, module, status, title, description, index }: 
     >
       {/* Module Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-2">
-        <span className="font-mono text-xs text-muted-foreground">┌─ [0x{(index + 17).toString(16).toUpperCase().padStart(2, '0')}] {module}</span>
+        <span className="font-mono text-xs text-muted-foreground">[ [0x{(index + 17).toString(16).toUpperCase().padStart(2, '0')}] {module} ]</span>
         <Icon className="size-4 text-muted-foreground" />
       </div>
 
@@ -180,7 +180,7 @@ export function FeaturesShowcase() {
           className="mb-12"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">┌─ [0x10] STACK_CONFIG FIB[89,144,233] MODULES</span>
+            <span className="font-mono text-xs text-muted-foreground">[ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Solid foundation.

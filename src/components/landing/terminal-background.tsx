@@ -108,7 +108,7 @@ export function TerminalBackground() {
 
       {/* Terminal box-drawing decorations */}
       <div className="absolute left-1/4 top-12 font-mono text-[10px] text-foreground/[0.025]">
-        ┌─ FIB[1,1,2,3,5,8,13,21,34,55,89,144,233,377,610]
+        [ FIB ] 1,1,2,3,5,8,13,21,34,55,89,144,233,377,610
       </div>
       <div className="absolute right-1/4 bottom-12 font-mono text-[10px] text-foreground/[0.025]">
         └─ FABRK_SYSTEM_v2.0 │ STATUS: OPERATIONAL

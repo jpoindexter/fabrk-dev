@@ -179,7 +179,7 @@ export function FAQSection() {
           className="mb-10"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">┌─ [0x60] KNOWLEDGE_BASE QUERY_SYSTEM │ FIB[13] ENTRIES</span>
+            <span className="font-mono text-xs text-muted-foreground">[ [0x60] KNOWLEDGE_BASE ] QUERY_SYSTEM │ FIB[13] ENTRIES</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Frequently Asked Questions
@@ -195,7 +195,7 @@ export function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [CATEGORIES]</div>
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[ CATEGORIES ]</div>
             <div className="flex flex-row gap-2 lg:flex-col lg:gap-1">
               {categories.map((category) => (
                 <button

@@ -46,7 +46,7 @@ export function HeroSection() {
               className="mb-6"
             >
               <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
-                ┌─ [0x00] SYSTEM_INIT SAAS_BOILERPLATE_v2.0
+                [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
 
@@ -74,7 +74,7 @@ export function HeroSection() {
               className="mb-8 border border-border bg-card p-4"
             >
               <div className="mb-3 font-mono text-xs text-muted-foreground">
-                ┌─ [0x01] STATUS ────────────────────────┐
+                [ [0x01] STATUS ]────────────────────────
               </div>
               <p className="mb-4 text-muted-foreground">
                 Why spend valuable time tackling auth, billing, emails, organizations,
@@ -116,7 +116,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="mb-3 font-mono text-xs text-muted-foreground">
-                ┌─ [0x02] POWERED_BY ─ FIB[1,1,2,3,5,8,13]
+                [ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]
               </div>
               <div className="flex flex-wrap gap-3">
                 {techStack.map((tech) => (
