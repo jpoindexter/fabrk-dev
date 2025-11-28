@@ -64,29 +64,41 @@ export default function TrialPage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">How Fabrk Trials Work</h2>
         <div className="space-y-3">
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold mb-2">1. User Starts Trial</h3>
+          <div className="rounded-lg border bg-muted p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+              <h3 className="font-semibold">User Starts Trial</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </div>
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold mb-2">2. Trial Banner Shows</h3>
+          <div className="rounded-lg border bg-muted p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+              <h3 className="font-semibold">Trial Banner Shows</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               While on trial, users see a banner showing how many days are left. This creates
               gentle urgency without being annoying.
             </p>
           </div>
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold mb-2">3. Urgency Near End</h3>
+          <div className="rounded-lg border bg-muted p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+              <h3 className="font-semibold">Urgency Near End</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               When trial is almost over (last 3 days), the banner becomes more prominent.
               Users are prompted to subscribe before losing access.
             </p>
           </div>
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold mb-2">4. Trial Expires</h3>
+          <div className="rounded-lg border bg-muted p-4">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
+              <h3 className="font-semibold">Trial Expires</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               When trial ends, users can no longer access premium features. They see a message
               encouraging them to subscribe. If you require credit card upfront, Stripe automatically
@@ -136,28 +148,28 @@ export const config = {
             <h3 className="font-semibold mb-3">Banner States</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <div className="h-3 w-3 rounded-full bg-green-600"></div>
                 <div>
                   <p className="text-sm font-medium">Plenty of time (8+ days)</p>
                   <p className="text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                <div className="h-3 w-3 rounded-full bg-yellow-600"></div>
                 <div>
                   <p className="text-sm font-medium">Running low (4-7 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                <div className="h-3 w-3 rounded-full bg-red-600"></div>
                 <div>
                   <p className="text-sm font-medium">Urgent (1-3 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-gray-500"></div>
+                <div className="h-3 w-3 rounded-full bg-gray-600"></div>
                 <div>
                   <p className="text-sm font-medium">Expired</p>
                   <p className="text-xs text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>
@@ -305,7 +317,7 @@ const subscription = await stripe.subscriptions.create({
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?
             </summary>
@@ -317,7 +329,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               What happens to user data when trial expires?
             </summary>
@@ -329,7 +341,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Should I require a credit card for trials?
             </summary>
@@ -342,7 +354,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How do I extend someone&apos;s trial?
             </summary>

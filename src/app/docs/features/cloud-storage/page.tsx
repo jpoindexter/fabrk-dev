@@ -40,7 +40,7 @@ export default function CloudStoragePage() {
           <h2 className="text-xl font-semibold text-foreground">Why Not Store Files Locally?</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-medium text-red-500">Local Storage Problems</h3>
+              <h3 className="font-medium text-destructive">Local Storage Problems</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Files lost when server restarts</li>
                 <li>Limited disk space</li>
@@ -49,7 +49,7 @@ export default function CloudStoragePage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-medium text-green-500">Cloud Storage Benefits</h3>
+              <h3 className="font-medium text-primary">Cloud Storage Benefits</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Files persist permanently</li>
                 <li>Virtually unlimited storage</li>
@@ -365,27 +365,27 @@ export function FileUploader() {
       {/* Security */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Security Considerations</h2>
-        <Card className="bg-card">
+        <Card className="bg-muted">
           <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">1.</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
                 <span><strong>Validate file types:</strong> Never trust the file extension. Check MIME type server-side to prevent malicious uploads.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">2.</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
                 <span><strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse and server crashes.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">3.</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
                 <span><strong>Use signed URLs:</strong> For private files, generate time-limited signed URLs instead of public links.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">4.</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
                 <span><strong>Organize by user/org:</strong> Store files in user or organization folders to enable access control.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">5.</span>
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
                 <span><strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded files in production.</span>
               </li>
             </ul>
@@ -397,7 +397,7 @@ export function FileUploader() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How much does cloud storage cost?
             </summary>
@@ -413,7 +413,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               What&apos;s the maximum file size?
             </summary>
@@ -426,7 +426,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Can I use both R2 and S3?
             </summary>
@@ -439,7 +439,7 @@ export function FileUploader() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-card">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How do I delete files?
             </summary>

@@ -38,38 +38,23 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`} />
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
           <h2 className="text-2xl font-semibold">Create a Product</h2>
         </div>
-        <div className="space-y-2">
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-            <p className="text-muted-foreground">
-              Go to{" "}
-              <a
-                href="https://dashboard.stripe.com/test/products"
-                className="text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Stripe Dashboard → Products
-              </a>
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-            <p className="text-muted-foreground">Click "Add product"</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-            <p className="text-muted-foreground">Enter name, description, and price</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
-            <p className="text-muted-foreground">Choose "One time" or "Recurring"</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
-            <p className="text-muted-foreground">Copy the Price ID</p>
-          </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+          <li>
+            Go to{" "}
+            <a
+              href="https://dashboard.stripe.com/test/products"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Stripe Dashboard → Products
+            </a>
+          </li>
+          <li>Click &quot;Add product&quot;</li>
+          <li>Enter name, description, and price</li>
+          <li>Choose &quot;One time&quot; or &quot;Recurring&quot;</li>
+          <li>Copy the Price ID</li>
+        </ol>
         <CodeBlock language="bash" code={`# .env.local
 NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       </div>

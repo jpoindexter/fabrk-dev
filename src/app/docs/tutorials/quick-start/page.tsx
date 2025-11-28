@@ -31,7 +31,10 @@ export default function QuickStartPage() {
 
       {/* Step 1 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">1. Assemble the Landing Page</h2>
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+          <h2 className="text-2xl font-semibold">Assemble the Landing Page</h2>
+        </div>
         <div>
           <p className="text-muted-foreground">
             Fabrk uses a component-driven architecture. Instead of building from scratch,
@@ -70,7 +73,10 @@ export default function HomePage() {
 
       {/* Step 2 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">2. Customize Content & Branding</h2>
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+          <h2 className="text-2xl font-semibold">Customize Content & Branding</h2>
+        </div>
         <p className="text-muted-foreground">
           Navigate to <code className="rounded bg-muted px-1 py-0.5">src/components/landing/</code> to customize each section.
           The components are built with Tailwind CSS, making them easy to style.
@@ -84,7 +90,10 @@ export default function HomePage() {
 
       {/* Step 3 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">3. Configure Application Metadata</h2>
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+          <h2 className="text-2xl font-semibold">Configure Application Metadata</h2>
+        </div>
         <div>
           <p className="text-muted-foreground">
             Fabrk centralizes configuration to avoid hardcoded values scattered across the codebase.
@@ -105,7 +114,10 @@ export default function HomePage() {
 
       {/* Step 4 (Optional) */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">4. Enable Lead Capture (Optional)</h2>
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
+          <h2 className="text-2xl font-semibold">Enable Lead Capture (Optional)</h2>
+        </div>
         <div>
           <p className="text-muted-foreground">
             If you are launching a "Coming Soon" page, swap the primary CTA for the Waitlist component.
@@ -121,7 +133,10 @@ import { WaitlistForm } from "@/components/waitlist-form";
 
       {/* Step 5 */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">5. Production Deployment</h2>
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">5</span>
+          <h2 className="text-2xl font-semibold">Production Deployment</h2>
+        </div>
         <div>
           <p className="text-muted-foreground">
             Fabrk is optimized for Vercel. Deploying is as simple as pushing your code.

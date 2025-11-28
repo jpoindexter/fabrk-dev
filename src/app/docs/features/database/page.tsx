@@ -39,7 +39,10 @@ export default function DatabasePage() {
         <h2 className="text-2xl font-semibold">Configuration</h2>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">1. Set Database URL</h3>
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+            <h3 className="text-xl font-medium">Set Database URL</h3>
+          </div>
           <div>
             <p className="text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
           </div>
@@ -51,7 +54,10 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">2. Initialize Database</h3>
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+            <h3 className="text-xl font-medium">Initialize Database</h3>
+          </div>
           <div>
             <p className="text-muted-foreground">Push the schema to your database:</p>
           </div>
@@ -69,7 +75,10 @@ npm run db:reset`} />
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">3. Prisma Studio</h3>
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+            <h3 className="text-xl font-medium">Prisma Studio</h3>
+          </div>
           <div>
             <p className="text-muted-foreground">Browse and edit data with the visual GUI:</p>
           </div>

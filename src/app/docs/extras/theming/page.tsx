@@ -377,7 +377,10 @@ export function MyNavbar() {
         </p>
         <div className="space-y-3">
           <div>
-            <h3 className="font-semibold mb-2">1. Add CSS in globals.css</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+              <h3 className="font-semibold">Add CSS in globals.css</h3>
+            </div>
           </div>
           <CodeBlock language="css" code={`/* Your Custom Theme */
 [data-theme="ocean"] {
@@ -389,7 +392,10 @@ export function MyNavbar() {
   /* Add all required CSS variables */
 }`} />
           <div>
-            <h3 className="font-semibold mb-2">2. Add to theme-dropdown.tsx</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+              <h3 className="font-semibold">Add to theme-dropdown.tsx</h3>
+            </div>
           </div>
           <CodeBlock language="tsx" code={`const themes = [
   { id: "light", name: "Light", preview: "#ffffff" },

@@ -129,7 +129,7 @@ export default function MFAPage() {
         <h2 className="text-2xl font-semibold">How 2FA Works</h2>
 
         <div className="space-y-3">
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">Setting Up 2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User goes to Settings → Security</li>
@@ -141,7 +141,7 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">Logging In with 2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password as normal</li>
@@ -151,7 +151,7 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">Lost Phone? Use Backup Code</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>On the verification screen, click &quot;Use backup code&quot;</li>
@@ -333,7 +333,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Which authenticator apps work?
             </summary>
@@ -351,7 +351,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               What if a user loses their phone?
             </summary>
@@ -367,7 +367,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               What if a user loses their phone AND backup codes?
             </summary>
@@ -386,7 +386,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Can I require 2FA for all users?
             </summary>
@@ -399,7 +399,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How are secrets stored?
             </summary>

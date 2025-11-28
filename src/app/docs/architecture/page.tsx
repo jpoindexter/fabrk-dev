@@ -24,9 +24,7 @@ export default function ArchitecturePage() {
                     Fabrk is built on the <strong>T3 Stack</strong> philosophy but extended for enterprise SaaS requirements.
                     It leverages Next.js 15 (App Router) for the full-stack framework, ensuring type safety from the database to the frontend.
                 </p>
-                <div className="my-6 overflow-hidden rounded-lg border bg-card p-6">
-                    <pre className="mermaid">
-                        {`graph TD
+                <CodeBlock language="mermaid" code={`graph TD
     subgraph Client
         Browser[Browser / Mobile]
     end
@@ -57,9 +55,7 @@ export default function ArchitecturePage() {
     Middleware --> App
     App --> API
     API --> DB
-    API --> Services`}
-                    </pre>
-                </div>
+    API --> Services`} />
             </section>
 
             {/* Core Components */}

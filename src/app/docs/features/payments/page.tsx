@@ -26,7 +26,7 @@ export default function PaymentsPage() {
             When someone buys your product, several things happen behind the scenes. Fabrk uses
             Stripe to handle all of this securely:
           </p>
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
               <li><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
               <li><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
@@ -369,7 +369,7 @@ export function ManageBillingButton() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How much does Stripe charge?
             </summary>
@@ -381,7 +381,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               When do I get my money?
             </summary>
@@ -393,7 +393,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               What happens if a payment fails?
             </summary>
@@ -405,7 +405,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How do I handle refunds?
             </summary>
@@ -417,7 +417,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Can customers pay in different currencies?
             </summary>

@@ -63,24 +63,12 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
         <Card className="mb-6">
           <CardContent className="pt-6">
             <p className="mb-4">Set up your sending domain in Resend dashboard:</p>
-            <div className="space-y-2">
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-                <p>Go to Resend Dashboard → Domains</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <p>Add your domain (e.g., yourdomain.com)</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-                <p>Add the DNS records (SPF, DKIM, DMARC)</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
-                <p>Verify domain status</p>
-              </div>
-            </div>
+            <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+              <li>Go to Resend Dashboard → Domains</li>
+              <li>Add your domain (e.g., yourdomain.com)</li>
+              <li>Add the DNS records (SPF, DKIM, DMARC)</li>
+              <li>Verify domain status</li>
+            </ol>
           </CardContent>
         </Card>
 

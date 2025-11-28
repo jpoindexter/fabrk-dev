@@ -63,28 +63,40 @@ export default function CookieConsentPage() {
         <h2 className="text-2xl font-semibold">How It Works</h2>
         <div className="space-y-3">
           <div className="rounded-lg border p-4">
-            <h3 className="font-semibold mb-2">1. First Visit</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+              <h3 className="font-semibold">First Visit</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner.
               All non-essential cookies are blocked until they make a choice.
             </p>
           </div>
           <div className="rounded-lg border p-4">
-            <h3 className="font-semibold mb-2">2. User Makes Choice</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+              <h3 className="font-semibold">User Makes Choice</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               Clicking the button opens a modal with three tabs: Consent (quick toggles),
               Details (see exactly which cookies), and About (their privacy rights).
             </p>
           </div>
           <div className="rounded-lg border p-4">
-            <h3 className="font-semibold mb-2">3. Choice Saved</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+              <h3 className="font-semibold">Choice Saved</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               Their preference is stored in localStorage for 1 year. Google Consent Mode
               is updated automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </div>
           <div className="rounded-lg border p-4">
-            <h3 className="font-semibold mb-2">4. Return Visits</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
+              <h3 className="font-semibold">Return Visits</h3>
+            </div>
             <p className="text-sm text-muted-foreground">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
@@ -100,7 +112,7 @@ export default function CookieConsentPage() {
           <CardContent className="p-6">
             <div className="space-y-4">
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-green-500 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-green-600 mt-1"></div>
                 <div>
                   <p className="font-medium">Necessary (Always On)</p>
                   <p className="text-sm text-muted-foreground">
@@ -110,7 +122,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-blue-500 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-blue-600 mt-1"></div>
                 <div>
                   <p className="font-medium">Preferences</p>
                   <p className="text-sm text-muted-foreground">
@@ -119,7 +131,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-yellow-500 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-yellow-600 mt-1"></div>
                 <div>
                   <p className="font-medium">Statistics</p>
                   <p className="text-sm text-muted-foreground">
@@ -129,7 +141,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-red-500 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-red-600 mt-1"></div>
                 <div>
                   <p className="font-medium">Marketing</p>
                   <p className="text-sm text-muted-foreground">

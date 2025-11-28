@@ -37,7 +37,10 @@ export default function SEOPage() {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
 
-        <h3 className="text-xl font-medium mb-3">1. Update Central Config</h3>
+        <div className="flex items-center gap-3 mb-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+          <h3 className="text-xl font-medium">Update Central Config</h3>
+        </div>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Edit <code className="bg-muted px-2 py-1 rounded">src/config.js</code> with your site details:</p>
@@ -54,7 +57,10 @@ export default function SEOPage() {
 };`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">2. Root Layout Metadata</h3>
+        <div className="flex items-center gap-3 mb-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+          <h3 className="text-xl font-medium">Root Layout Metadata</h3>
+        </div>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">The root layout exports metadata automatically:</p>
@@ -85,7 +91,10 @@ export const metadata = {
 };`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">3. Page-Specific Metadata</h3>
+        <div className="flex items-center gap-3 mb-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+          <h3 className="text-xl font-medium">Page-Specific Metadata</h3>
+        </div>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Override metadata for individual pages:</p>

@@ -46,83 +46,46 @@ export default function GoogleOAuthPage() {
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
           <h3 className="text-xl font-medium">Create Google Cloud Project</h3>
         </div>
-        <div className="space-y-4 mb-6">
-          <div className="space-y-2">
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-                <p>Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <p>Create a new project or select existing one</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-                <p>Navigate to APIs & Services → OAuth consent screen</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
-                <div>
-                  <p>Configure the consent screen:</p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li>User type: External</li>
-                    <li>App name: Your app name</li>
-                    <li>Support email: Your email</li>
-                    <li>Authorized domains: yourdomain.com</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
-                <p>Add scopes: <code className="bg-muted px-1 rounded">email</code>, <code className="bg-muted px-1 rounded">profile</code>, <code className="bg-muted px-1 rounded">openid</code></p>
-              </div>
-            </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
+          <li>Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
+          <li>Create a new project or select existing one</li>
+          <li>Navigate to APIs & Services → OAuth consent screen</li>
+          <li>
+            Configure the consent screen:
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>User type: External</li>
+              <li>App name: Your app name</li>
+              <li>Support email: Your email</li>
+              <li>Authorized domains: yourdomain.com</li>
+            </ul>
+          </li>
+          <li>Add scopes: <code className="bg-muted px-1 rounded">email</code>, <code className="bg-muted px-1 rounded">profile</code>, <code className="bg-muted px-1 rounded">openid</code></li>
+        </ol>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
           <h3 className="text-xl font-medium">Create OAuth Credentials</h3>
         </div>
-        <div className="space-y-4 mb-6">
-          <div className="space-y-2">
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-                <p>Go to APIs & Services → Credentials</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <p>Click Create Credentials → OAuth client ID</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-                <p>Application type: Web application</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
-                <div>
-                  <p>Add Authorized JavaScript origins:</p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li><code className="bg-muted px-1 rounded">http://localhost:3000</code> (development)</li>
-                    <li><code className="bg-muted px-1 rounded">https://yourdomain.com</code> (production)</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
-                <div>
-                  <p>Add Authorized redirect URIs:</p>
-                  <ul className="list-disc pl-6 mt-2 space-y-1">
-                    <li><code className="bg-muted px-1 rounded">http://localhost:3000/api/auth/callback/google</code></li>
-                    <li><code className="bg-muted px-1 rounded">https://yourdomain.com/api/auth/callback/google</code></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">6</span>
-                <p>Copy the Client ID and Client Secret</p>
-              </div>
-            </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
+          <li>Go to APIs & Services → Credentials</li>
+          <li>Click Create Credentials → OAuth client ID</li>
+          <li>Application type: Web application</li>
+          <li>
+            Add Authorized JavaScript origins:
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li><code className="bg-muted px-1 rounded">http://localhost:3000</code> (development)</li>
+              <li><code className="bg-muted px-1 rounded">https://yourdomain.com</code> (production)</li>
+            </ul>
+          </li>
+          <li>
+            Add Authorized redirect URIs:
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li><code className="bg-muted px-1 rounded">http://localhost:3000/api/auth/callback/google</code></li>
+              <li><code className="bg-muted px-1 rounded">https://yourdomain.com/api/auth/callback/google</code></li>
+            </ul>
+          </li>
+          <li>Copy the Client ID and Client Secret</li>
+        </ol>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>

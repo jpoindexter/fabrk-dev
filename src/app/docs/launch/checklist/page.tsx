@@ -29,7 +29,10 @@ export default function LaunchChecklistPage() {
 
             {/* 1. Pre-Launch Verification */}
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold">1. Pre-Launch Verification</h2>
+                <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
+                    <h2 className="text-2xl font-semibold">Pre-Launch Verification</h2>
+                </div>
                 <div className="space-y-4">
                     <h3 className="text-lg font-medium">Code Quality & Security</h3>
                     <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -52,7 +55,10 @@ export default function LaunchChecklistPage() {
 
             {/* 2. Stripe Setup */}
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold">2. Stripe & Payments Setup</h2>
+                <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
+                    <h2 className="text-2xl font-semibold">Stripe & Payments Setup</h2>
+                </div>
                 <div className="space-y-4">
                     <h3 className="text-lg font-medium">Product Configuration</h3>
                     <ul className="list-disc list-inside space-y-2 text-muted-foreground">
@@ -72,7 +78,10 @@ export default function LaunchChecklistPage() {
 
             {/* 3. Marketing Assets */}
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold">3. Marketing Assets</h2>
+                <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
+                    <h2 className="text-2xl font-semibold">Marketing Assets</h2>
+                </div>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     <li><strong>The Pitch:</strong> Prepare a 30-60s video for social media.</li>
                     <li><strong>The Walkthrough:</strong> Record a 3-5 min demo for the documentation/landing page.</li>
@@ -82,7 +91,10 @@ export default function LaunchChecklistPage() {
 
             {/* 4. Launch Day */}
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold">4. Launch Day Execution</h2>
+                <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
+                    <h2 className="text-2xl font-semibold">Launch Day Execution</h2>
+                </div>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     <li><strong>Distribution:</strong> Verify your GitHub repo invite system (if selling code) or app deployment.</li>
                     <li><strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, and LinkedIn posts.</li>
@@ -92,7 +104,10 @@ export default function LaunchChecklistPage() {
 
             {/* 5. Post-Launch */}
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold">5. Post-Launch Monitoring</h2>
+                <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">5</span>
+                    <h2 className="text-2xl font-semibold">Post-Launch Monitoring</h2>
+                </div>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                     <li><strong>Support:</strong> Monitor your support email continuously for 48 hours.</li>
                     <li><strong>Stripe:</strong> Watch for failed payments or disputes.</li>

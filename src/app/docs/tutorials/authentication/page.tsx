@@ -141,7 +141,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           Here&apos;s what happens when a user interacts with your app:
         </p>
         <div className="space-y-3">
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">When a User Signs Up</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password on the signup form</li>
@@ -151,7 +151,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <li>User clicks the verification link to confirm their email</li>
             </ol>
           </div>
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">When a User Logs In</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password</li>
@@ -161,7 +161,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <li>User is redirected to the dashboard</li>
             </ol>
           </div>
-          <div className="rounded-lg border bg-card p-4">
+          <div className="rounded-lg border bg-muted p-4">
             <h3 className="font-semibold mb-2">On Every Page Visit</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>Browser automatically sends the session cookie</li>
@@ -181,7 +181,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
         </p>
 
         {/* Analogy */}
-        <Card className="bg-muted/50">
+        <Card className="bg-muted">
           <CardContent className="p-4">
             <p className="text-sm text-muted-foreground">
               <strong>How Google login works:</strong> Think of it like a valet service. Instead
@@ -194,7 +194,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
 
         <div className="space-y-6 mt-4">
           {/* Step 1 */}
-          <div className="space-y-3 rounded-lg border p-4">
+          <div className="space-y-3 rounded-lg border bg-muted p-4">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 1
@@ -217,7 +217,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           </div>
 
           {/* Step 2 */}
-          <div className="space-y-3 rounded-lg border p-4">
+          <div className="space-y-3 rounded-lg border bg-muted p-4">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 2
@@ -303,19 +303,19 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
           these routes:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">
-          <div className="rounded border p-3">
+          <div className="rounded border bg-muted p-3">
             <code className="text-sm">/dashboard/*</code>
             <p className="text-xs text-muted-foreground">Main user dashboard</p>
           </div>
-          <div className="rounded border p-3">
+          <div className="rounded border bg-muted p-3">
             <code className="text-sm">/settings/*</code>
             <p className="text-xs text-muted-foreground">User settings pages</p>
           </div>
-          <div className="rounded border p-3">
+          <div className="rounded border bg-muted p-3">
             <code className="text-sm">/billing/*</code>
             <p className="text-xs text-muted-foreground">Payment and subscription pages</p>
           </div>
-          <div className="rounded border p-3">
+          <div className="rounded border bg-muted p-3">
             <code className="text-sm">/admin/*</code>
             <p className="text-xs text-muted-foreground">Admin-only pages</p>
           </div>
@@ -447,7 +447,7 @@ export default async function PrivatePage() {
           By default, Fabrk requires users to verify their email address. This ensures you can
           contact users and prevents fake signups.
         </p>
-        <div className="rounded-lg border p-4">
+        <div className="rounded-lg border bg-muted p-4">
           <h3 className="font-semibold mb-2">How It Works</h3>
           <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
             <li>User signs up with their email</li>
@@ -468,7 +468,7 @@ export default async function PrivatePage() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Questions</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How long do sessions last?
             </summary>
@@ -480,7 +480,7 @@ export default async function PrivatePage() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               How do I force a user to log out?
             </summary>
@@ -493,7 +493,7 @@ export default async function PrivatePage() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Are passwords stored securely?
             </summary>
@@ -505,7 +505,7 @@ export default async function PrivatePage() {
             </div>
           </details>
 
-          <details className="rounded-lg border">
+          <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
               Can I add other OAuth providers (GitHub, Twitter, etc.)?
             </summary>

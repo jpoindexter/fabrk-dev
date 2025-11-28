@@ -33,34 +33,19 @@ export default function DatabaseSetupPage() {
       {/* Supabase Setup (Recommended) */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Supabase Setup (Recommended)</h2>
-        <div className="space-y-3">
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-            <p className="text-muted-foreground">
-              Go to{" "}
-              <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-                supabase.com
-              </a>{" "}
-              and create an account
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-            <p className="text-muted-foreground">Click "New Project"</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-            <p className="text-muted-foreground">Set a strong database password</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
-            <p className="text-muted-foreground">Choose a region close to your users</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">5</span>
-            <p className="text-muted-foreground">Wait for project to be ready (~2 minutes)</p>
-          </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+          <li>
+            Go to{" "}
+            <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              supabase.com
+            </a>{" "}
+            and create an account
+          </li>
+          <li>Click &quot;New Project&quot;</li>
+          <li>Set a strong database password</li>
+          <li>Choose a region close to your users</li>
+          <li>Wait for project to be ready (~2 minutes)</li>
+        </ol>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Get your connection string and add it to .env.local:</p>
@@ -82,25 +67,16 @@ DATABASE_URL="your-connection-string"`} />
       {/* Neon Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Neon Setup</h2>
-        <div className="space-y-2">
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-            <p className="text-muted-foreground">
-              Sign up at{" "}
-              <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-                neon.tech
-              </a>
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-            <p className="text-muted-foreground">Create a new project</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-            <p className="text-muted-foreground">Copy the connection string</p>
-          </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+          <li>
+            Sign up at{" "}
+            <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              neon.tech
+            </a>
+          </li>
+          <li>Create a new project</li>
+          <li>Copy the connection string</li>
+        </ol>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Connection string examples:</p>
@@ -116,25 +92,16 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
       {/* Railway Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Railway Setup</h2>
-        <div className="space-y-2">
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-            <p className="text-muted-foreground">
-              Sign up at{" "}
-              <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-                railway.app
-              </a>
-            </p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-            <p className="text-muted-foreground">Create new project → Add PostgreSQL</p>
-          </div>
-          <div className="flex items-start gap-3">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-            <p className="text-muted-foreground">Copy DATABASE_URL from Variables tab</p>
-          </div>
-        </div>
+        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
+          <li>
+            Sign up at{" "}
+            <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+              railway.app
+            </a>
+          </li>
+          <li>Create new project → Add PostgreSQL</li>
+          <li>Copy DATABASE_URL from Variables tab</li>
+        </ol>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Connection string format:</p>
