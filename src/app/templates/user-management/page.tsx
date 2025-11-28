@@ -1,6 +1,7 @@
 /**
- * User Management Template
- * Complete admin interface for managing users with TanStack Table
+ * ✅ FABRK COMPONENT
+ * User Management Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -403,15 +404,18 @@ export default function UserManagementTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: USER_MANAGEMENT</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">User Management</h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Manage users, roles, and permissions with TanStack Table
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <UserPlus className="mr-2 h-4 w-4" />
-            Add User
+            &gt; ADD_USER
           </Button>
         </div>
 
@@ -644,26 +648,34 @@ export default function UserManagementTemplate() {
         </Card>
 
         {/* Implementation Note */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">📋 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">✓ TanStack Table v8 with sorting, filtering, pagination</li>
-              <li className="font-semibold">✓ Bulk actions (select multiple users)</li>
-              <li className="font-semibold">✓ Column visibility toggle</li>
-              <li className="font-semibold">✓ Search by name/email</li>
-              <li className="font-semibold">✓ Export to CSV functionality</li>
-              <li className="font-semibold">✓ Role badges (Admin, User, Guest)</li>
-              <li className="font-semibold">✓ Status indicators (Active, Inactive, Suspended)</li>
-              <li className="font-semibold">✓ Row actions menu (Edit, Suspend, Delete)</li>
-              <li className="font-semibold">✓ Stats cards (Total, Active, Admins, Enterprise)</li>
-              <li className="font-semibold">✓ Responsive design with neo-brutalism styling</li>
-            </ul>
-            <p className="mt-4 text-sm font-semibold text-muted-foreground">
-              Replace <code className="rounded bg-muted px-1 py-0.5">mockUsers</code> with your API data. Add API routes for edit/delete/suspend actions.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> TanStack Table v8 with sorting, filtering, pagination</div>
+              <div><span className="text-success">&gt;</span> Bulk actions (select multiple users)</div>
+              <div><span className="text-success">&gt;</span> Column visibility toggle</div>
+              <div><span className="text-success">&gt;</span> Search by name/email</div>
+              <div><span className="text-success">&gt;</span> Export to CSV functionality</div>
+              <div><span className="text-success">&gt;</span> Role badges (Admin, User, Guest)</div>
+              <div><span className="text-success">&gt;</span> Status indicators (Active, Inactive, Suspended)</div>
+              <div><span className="text-success">&gt;</span> Row actions menu (Edit, Suspend, Delete)</div>
+              <div><span className="text-success">&gt;</span> Stats cards (Total, Active, Admins, Enterprise)</div>
+              <div><span className="text-success">&gt;</span> Responsive design with neo-brutalism styling</div>
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              [NOTE]: Replace mockUsers with your API data. Add API routes for edit/delete/suspend actions.
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

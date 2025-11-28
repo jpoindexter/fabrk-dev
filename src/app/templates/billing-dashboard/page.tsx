@@ -1,6 +1,7 @@
 /**
- * Billing Dashboard Template
- * Complete billing interface with subscription, usage, payments, and invoices
+ * ✅ FABRK COMPONENT
+ * Billing Dashboard Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -212,17 +213,20 @@ export default function BillingDashboardTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: BILLING_DASHBOARD</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">
               Billing & Subscription
             </h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Manage your subscription, payments, and billing information
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <ArrowUpRight className="mr-2 h-4 w-4" />
-            Upgrade Plan
+            &gt; UPGRADE_PLAN
           </Button>
         </div>
 
@@ -574,50 +578,34 @@ export default function BillingDashboardTemplate() {
         )}
 
         {/* Implementation Note */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">💳 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">
-                ✓ 3-tab navigation (Overview, Plans & Pricing, Billing History)
-              </li>
-              <li className="font-semibold">
-                ✓ Current subscription card with plan details and features
-              </li>
-              <li className="font-semibold">
-                ✓ Usage metrics with progress bars (team, storage, API calls)
-              </li>
-              <li className="font-semibold">
-                ✓ Payment methods management (add, remove, set default)
-              </li>
-              <li className="font-semibold">
-                ✓ Recent invoices preview with download buttons
-              </li>
-              <li className="font-semibold">
-                ✓ Plan comparison cards (Free, Pro, Enterprise)
-              </li>
-              <li className="font-semibold">
-                ✓ Complete billing history table with status badges
-              </li>
-              <li className="font-semibold">
-                ✓ Upgrade prompts and CTAs throughout
-              </li>
-              <li className="font-semibold">
-                ✓ Stripe integration ready (add Stripe Customer Portal)
-              </li>
-              <li className="font-semibold">
-                ✓ Invoice PDF download functionality (placeholder)
-              </li>
-            </ul>
-            <p className="mt-4 text-sm font-semibold text-muted-foreground">
-              Connect to Stripe API for live data. See{" "}
-              <code className="rounded bg-muted px-1 py-0.5">
-                src/app/(dashboard)/billing/
-              </code>{" "}
-              for integration examples.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> 3-tab navigation (Overview, Plans & Pricing, Billing History)</div>
+              <div><span className="text-success">&gt;</span> Current subscription card with plan details and features</div>
+              <div><span className="text-success">&gt;</span> Usage metrics with progress bars (team, storage, API calls)</div>
+              <div><span className="text-success">&gt;</span> Payment methods management (add, remove, set default)</div>
+              <div><span className="text-success">&gt;</span> Recent invoices preview with download buttons</div>
+              <div><span className="text-success">&gt;</span> Plan comparison cards (Free, Pro, Enterprise)</div>
+              <div><span className="text-success">&gt;</span> Complete billing history table with status badges</div>
+              <div><span className="text-success">&gt;</span> Upgrade prompts and CTAs throughout</div>
+              <div><span className="text-success">&gt;</span> Stripe integration ready (add Stripe Customer Portal)</div>
+              <div><span className="text-success">&gt;</span> Invoice PDF download functionality (placeholder)</div>
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              [NOTE]: Connect to Stripe API for live data. See src/app/(dashboard)/billing/ for integration examples.
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

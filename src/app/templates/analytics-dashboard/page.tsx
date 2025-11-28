@@ -1,6 +1,7 @@
 /**
- * Analytics Dashboard Template
- * Complete dashboard with charts, metrics, and data visualization
+ * ✅ FABRK COMPONENT
+ * Analytics Dashboard Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -48,15 +49,18 @@ export default function AnalyticsDashboardTemplate() {
       <main className="container mx-auto max-w-7xl px-6 py-8 space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: ANALYTICS_DASHBOARD</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">Analytics Dashboard</h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Track revenue, users, conversions, and growth metrics
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
-            Export Data
+            &gt; EXPORT_DATA
           </Button>
         </div>
 
@@ -380,21 +384,29 @@ export default function AnalyticsDashboardTemplate() {
         </Tabs>
 
         {/* Template Features Card */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">📊 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">✓ 4 key metric cards (revenue, users, conversions, growth)</li>
-              <li className="font-semibold">✓ Revenue overview chart with 6-month data</li>
-              <li className="font-semibold">✓ Recent activity feed with user avatars</li>
-              <li className="font-semibold">✓ Tabbed analytics section (Overview, Analytics, Reports)</li>
-              <li className="font-semibold">✓ Top performing pages table with bounce rates</li>
-              <li className="font-semibold">✓ Traffic sources breakdown with progress bars</li>
-              <li className="font-semibold">✓ Device breakdown statistics</li>
-              <li className="font-semibold">✓ Report generation templates (Monthly, User Behavior, Revenue, Custom)</li>
-            </ul>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> 4 key metric cards (revenue, users, conversions, growth)</div>
+              <div><span className="text-success">&gt;</span> Revenue overview chart with 6-month data</div>
+              <div><span className="text-success">&gt;</span> Recent activity feed with user avatars</div>
+              <div><span className="text-success">&gt;</span> Tabbed analytics section (Overview, Analytics, Reports)</div>
+              <div><span className="text-success">&gt;</span> Top performing pages table with bounce rates</div>
+              <div><span className="text-success">&gt;</span> Traffic sources breakdown with progress bars</div>
+              <div><span className="text-success">&gt;</span> Device breakdown statistics</div>
+              <div><span className="text-success">&gt;</span> Report generation templates (Monthly, User Behavior, Revenue, Custom)</div>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />

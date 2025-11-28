@@ -1,6 +1,7 @@
 /**
- * Team Dashboard Template
- * Multi-tenancy team management with RBAC, invitations, and activity feed
+ * ✅ FABRK COMPONENT
+ * Team Dashboard Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -227,15 +228,18 @@ export default function TeamDashboardTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: TEAM_DASHBOARD</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">Team Dashboard</h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Manage team members, roles, and permissions
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <Settings className="mr-2 h-4 w-4" />
-            Organization Settings
+            &gt; ORG_SETTINGS
           </Button>
         </div>
 
@@ -634,50 +638,34 @@ export default function TeamDashboardTemplate() {
         </div>
 
         {/* Implementation Note */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">👥 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">
-                ✓ 4 stat cards (Organization, Team Size, Pending, Active)
-              </li>
-              <li className="font-semibold">
-                ✓ Invite team member form with email and role selector
-              </li>
-              <li className="font-semibold">
-                ✓ Team members table with avatars, roles, last active
-              </li>
-              <li className="font-semibold">
-                ✓ Role badges with icons (Owner, Admin, Member, Guest)
-              </li>
-              <li className="font-semibold">
-                ✓ Dropdown actions (change role, remove member)
-              </li>
-              <li className="font-semibold">
-                ✓ Pending invitations list with revoke functionality
-              </li>
-              <li className="font-semibold">
-                ✓ Activity feed with recent team changes
-              </li>
-              <li className="font-semibold">
-                ✓ Role permissions reference card
-              </li>
-              <li className="font-semibold">
-                ✓ RBAC system (Owner → Admin → Member → Guest)
-              </li>
-              <li className="font-semibold">
-                ✓ Multi-tenancy organization structure
-              </li>
-            </ul>
-            <p className="mt-4 text-sm font-semibold text-muted-foreground">
-              Add API routes for team management in{" "}
-              <code className="rounded bg-muted px-1 py-0.5">
-                src/app/api/teams/
-              </code>
-              . Create Team and TeamMember Prisma models.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> 4 stat cards (Organization, Team Size, Pending, Active)</div>
+              <div><span className="text-success">&gt;</span> Invite team member form with email and role selector</div>
+              <div><span className="text-success">&gt;</span> Team members table with avatars, roles, last active</div>
+              <div><span className="text-success">&gt;</span> Role badges with icons (Owner, Admin, Member, Guest)</div>
+              <div><span className="text-success">&gt;</span> Dropdown actions (change role, remove member)</div>
+              <div><span className="text-success">&gt;</span> Pending invitations list with revoke functionality</div>
+              <div><span className="text-success">&gt;</span> Activity feed with recent team changes</div>
+              <div><span className="text-success">&gt;</span> Role permissions reference card</div>
+              <div><span className="text-success">&gt;</span> RBAC system (Owner → Admin → Member → Guest)</div>
+              <div><span className="text-success">&gt;</span> Multi-tenancy organization structure</div>
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              [NOTE]: Add API routes in src/app/api/teams/. Create Team and TeamMember Prisma models.
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

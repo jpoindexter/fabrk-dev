@@ -1,6 +1,7 @@
 /**
- * Security & Privacy Template
- * Comprehensive security settings, privacy controls, and compliance features
+ * ✅ FABRK COMPONENT
+ * Security & Privacy Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -172,17 +173,20 @@ export default function SecurityPrivacyTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: SECURITY_PRIVACY</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">
               Security & Privacy
             </h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Manage your account security, privacy settings, and data controls
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <Settings className="mr-2 h-4 w-4" />
-            View Audit Log
+            &gt; VIEW_AUDIT_LOG
           </Button>
         </div>
 
@@ -748,50 +752,34 @@ export default function SecurityPrivacyTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">🔒 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">
-                ✓ Security score dashboard with recommendations
-              </li>
-              <li className="font-semibold">
-                ✓ Two-factor authentication setup (TOTP placeholder)
-              </li>
-              <li className="font-semibold">
-                ✓ OAuth account management (Google, GitHub)
-              </li>
-              <li className="font-semibold">
-                ✓ Active sessions viewer with device details and IP addresses
-              </li>
-              <li className="font-semibold">
-                ✓ Session revocation and bulk sign-out
-              </li>
-              <li className="font-semibold">
-                ✓ Privacy controls (11 toggles for profile, cookies, emails)
-              </li>
-              <li className="font-semibold">
-                ✓ Security audit log with timestamps and status badges
-              </li>
-              <li className="font-semibold">
-                ✓ GDPR compliance (data export, access request, policies)
-              </li>
-              <li className="font-semibold">
-                ✓ Account deletion with confirmation modal
-              </li>
-              <li className="font-semibold">
-                ✓ 4-tab navigation (Security, Privacy, Audit Log, Compliance)
-              </li>
-            </ul>
-            <p className="mt-4 text-sm font-semibold text-muted-foreground">
-              Integrate with existing security components in{" "}
-              <code className="rounded bg-muted px-1 py-0.5">
-                src/components/security/
-              </code>
-              . Add API routes for session management and 2FA.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> Security score dashboard with recommendations</div>
+              <div><span className="text-success">&gt;</span> Two-factor authentication setup (TOTP placeholder)</div>
+              <div><span className="text-success">&gt;</span> OAuth account management (Google, GitHub)</div>
+              <div><span className="text-success">&gt;</span> Active sessions viewer with device details and IP addresses</div>
+              <div><span className="text-success">&gt;</span> Session revocation and bulk sign-out</div>
+              <div><span className="text-success">&gt;</span> Privacy controls (11 toggles for profile, cookies, emails)</div>
+              <div><span className="text-success">&gt;</span> Security audit log with timestamps and status badges</div>
+              <div><span className="text-success">&gt;</span> GDPR compliance (data export, access request, policies)</div>
+              <div><span className="text-success">&gt;</span> Account deletion with confirmation modal</div>
+              <div><span className="text-success">&gt;</span> 4-tab navigation (Security, Privacy, Audit Log, Compliance)</div>
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              [NOTE]: Integrate with src/components/security/. Add API routes for session management and 2FA.
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

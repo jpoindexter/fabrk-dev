@@ -1,6 +1,7 @@
 /**
- * Chart Library Template
- * Comprehensive showcase of Recharts visualization components
+ * ✅ FABRK COMPONENT
+ * Chart Library Template - Terminal console style
+ * Production-ready ✓
  */
 
 "use client";
@@ -118,17 +119,20 @@ export default function ChartLibraryTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
+          <div className="space-y-2">
+            <div className="inline-block border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: CHART_LIBRARY</span>
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight">
               Chart Library
             </h1>
-            <p className="mt-2 text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Recharts visualization components for data-driven dashboards
             </p>
           </div>
-          <Button className="font-semibold">
+          <Button className="font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
-            View Docs
+            &gt; VIEW_DOCS
           </Button>
         </div>
 
@@ -455,48 +459,34 @@ export default function ChartLibraryTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <Card>
-          <CardContent className="pt-6">
-            <h4 className="mb-2 font-semibold">📊 Template Features</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li className="font-semibold">
-                ✓ 4 chart types (Line, Area, Bar, Pie/Donut)
-              </li>
-              <li className="font-semibold">
-                ✓ Recharts library ({" "}
-                <code className="rounded bg-muted px-1 py-0.5">npm install recharts</code>)
-              </li>
-              <li className="font-semibold">
-                ✓ Custom tooltips with neo-brutalism styling
-              </li>
-              <li className="font-semibold">
-                ✓ Gradient fills for area charts
-              </li>
-              <li className="font-semibold">
-                ✓ Responsive containers (adapts to screen size)
-              </li>
-              <li className="font-semibold">
-                ✓ Custom color schemes matching design system
-              </li>
-              <li className="font-semibold">
-                ✓ Formatted axes (K notation for large numbers)
-              </li>
-              <li className="font-semibold">
-                ✓ Legend components with bold styling
-              </li>
-              <li className="font-semibold">
-                ✓ Tab navigation between chart types
-              </li>
-              <li className="font-semibold">
-                ✓ Stat cards with trend indicators
-              </li>
-            </ul>
-            <p className="mt-4 text-sm font-semibold text-muted-foreground">
-              Replace mock data with your API. Recharts supports many more chart types:
-              Scatter, Radar, Composed, Treemap, and more.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+          </div>
+          <div className="p-6">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-2 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar, Pie/Donut)</div>
+              <div><span className="text-success">&gt;</span> Recharts library (npm install recharts)</div>
+              <div><span className="text-success">&gt;</span> Custom tooltips with neo-brutalism styling</div>
+              <div><span className="text-success">&gt;</span> Gradient fills for area charts</div>
+              <div><span className="text-success">&gt;</span> Responsive containers (adapts to screen size)</div>
+              <div><span className="text-success">&gt;</span> Custom color schemes matching design system</div>
+              <div><span className="text-success">&gt;</span> Formatted axes (K notation for large numbers)</div>
+              <div><span className="text-success">&gt;</span> Legend components with bold styling</div>
+              <div><span className="text-success">&gt;</span> Tab navigation between chart types</div>
+              <div><span className="text-success">&gt;</span> Stat cards with trend indicators</div>
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more.
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

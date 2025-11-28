@@ -1,6 +1,7 @@
 /**
- * UI Components Showcase
- * Interactive preview of all 100+ UI components with variants
+ * ✅ FABRK COMPONENT
+ * UI Components Showcase - Terminal console style
+ * Production-ready ✓
  */
 
 import Link from "next/link";
@@ -43,6 +44,17 @@ export default function ComponentsPage() {
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+        {/* Header */}
+        <section className="space-y-4">
+          <div className="inline-block border border-border px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[SHOWCASE]: UI_COMPONENTS</span>
+          </div>
+          <h1 className="text-4xl font-bold">UI Components</h1>
+          <p className="font-mono text-sm text-muted-foreground max-w-2xl">
+            100+ production-ready components with neo-brutalism styling. Copy-paste ready for your project.
+          </p>
+        </section>
+
         {/* Buttons Section */}
         <section id="buttons" className="space-y-6">
           <div>
