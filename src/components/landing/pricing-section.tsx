@@ -38,7 +38,7 @@ export function PricingSection() {
             className="flex flex-col justify-center"
           >
             <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
-              <span className="font-mono text-xs text-muted-foreground">┌─ [0x40] PRICING ─┐ COMMERCIAL_TIER │ FIB[144]</span>
+              <span className="font-mono text-xs text-muted-foreground">┌─ [0x40] PRICING COMMERCIAL_TIER │ FIB[144]</span>
             </div>
 
             <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
@@ -147,7 +147,7 @@ export function PricingSection() {
             >
               <div className="border border-border bg-card p-3 text-center">
                 <span className="font-mono text-xs text-muted-foreground">
-                  ┌─ [0x42] SECURE ─┐ Checkout powered by Polar │ All sales final
+                  ┌─ [0x42] SECURE Checkout powered by Polar │ All sales final
                 </span>
               </div>
             </motion.div>

@@ -53,7 +53,7 @@ export function ComparisonSection() {
           className="mb-12"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">┌─ [0x50] BUILD_VS_FABRK ─┐ TIME_TO_MARKET │ FIB[21,34,55,89]</span>
+            <span className="font-mono text-xs text-muted-foreground">┌─ [0x50] BUILD_VS_FABRK TIME_TO_MARKET │ FIB[21,34,55,89]</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Why build from scratch?
