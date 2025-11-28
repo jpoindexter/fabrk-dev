@@ -149,42 +149,35 @@ export default function CloudStoragePage() {
           R2 is the recommended provider due to zero egress fees. Here&apos;s how to set it up:
         </p>
 
-        <div className="space-y-3">
-          <div className="space-y-3 rounded-lg border p-4">
-            <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                1
-              </span>
-              <h3 className="font-semibold">Create R2 Bucket</h3>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              In Cloudflare Dashboard, go to &quot;R2 Object Storage&quot; → &quot;Create bucket&quot;.
-              Name it something like <code className="rounded bg-muted px-1">my-saas-uploads</code>.
-            </p>
-          </div>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            1
+          </span>
+          <h3 className="font-semibold">Create R2 Bucket</h3>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          In Cloudflare Dashboard, go to &quot;R2 Object Storage&quot; → &quot;Create bucket&quot;.
+          Name it something like <code className="rounded bg-muted px-1">my-saas-uploads</code>.
+        </p>
 
-          <div className="space-y-3 rounded-lg border p-4">
-            <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                2
-              </span>
-              <h3 className="font-semibold">Generate API Token</h3>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Go to &quot;R2 Object Storage&quot; → &quot;Manage R2 API Tokens&quot; → &quot;Create API Token&quot;.
-              Select &quot;Object Read &amp; Write&quot; permission and your bucket.
-            </p>
-          </div>
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            2
+          </span>
+          <h3 className="font-semibold">Generate API Token</h3>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Go to &quot;R2 Object Storage&quot; → &quot;Manage R2 API Tokens&quot; → &quot;Create API Token&quot;.
+          Select &quot;Object Read &amp; Write&quot; permission and your bucket.
+        </p>
 
-          <div className="space-y-3 rounded-lg border p-4">
-            <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                3
-              </span>
-              <h3 className="font-semibold">Add Environment Variables</h3>
-            </div>
-          </div>
-          <CodeBlock language="bash" code={`# .env.local
+        <div className="flex items-center gap-2">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            3
+          </span>
+          <h3 className="font-semibold">Add Environment Variables</h3>
+        </div>
+        <CodeBlock language="bash" code={`# .env.local
 
 # Cloudflare R2 Configuration
 CLOUDFLARE_R2_ACCESS_KEY_ID="your-access-key-id"
@@ -194,17 +187,14 @@ CLOUDFLARE_R2_ENDPOINT="https://your-account-id.r2.cloudflarestorage.com"
 
 # Optional: Public URL for the bucket
 CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`} />
-        </div>
       </div>
 
       {/* Setup - S3 */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Setup: AWS S3</h2>
-        <div>
-          <p className="text-muted-foreground">
-            If you prefer S3 or already use AWS:
-          </p>
-        </div>
+        <p className="text-muted-foreground">
+          If you prefer S3 or already use AWS:
+        </p>
         <CodeBlock language="bash" code={`# .env.local
 
 # AWS S3 Configuration
@@ -223,14 +213,11 @@ AWS_S3_REGION="us-east-1"`} />
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Code Reference</h2>
 
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-semibold">Upload a File</h3>
-            <p className="text-sm text-muted-foreground">
-              Use the upload utility to store files:
-            </p>
-          </div>
-          <CodeBlock language="typescript" code={`import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
+        <h3 className="font-semibold">Upload a File</h3>
+        <p className="text-sm text-muted-foreground">
+          Use the upload utility to store files:
+        </p>
+        <CodeBlock language="typescript" code={`import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
 
 // Check which provider is being used
 const provider = getStorageProvider();
@@ -250,16 +237,12 @@ if (result.success) {
 } else {
   console.log("Error:", result.error);
 }`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">File Validation</h3>
-            <p className="text-sm text-muted-foreground">
-              Validate files before uploading:
-            </p>
-          </div>
-          <CodeBlock language="typescript" code={`import { validateFile } from "@/lib/storage/uploads";
+        <h3 className="font-semibold mt-6">File Validation</h3>
+        <p className="text-sm text-muted-foreground">
+          Validate files before uploading:
+        </p>
+        <CodeBlock language="typescript" code={`import { validateFile } from "@/lib/storage/uploads";
 
 // Validate file size and type
 const validation = validateFile(file, {
@@ -278,16 +261,12 @@ if (!validation.valid) {
   // "File too large. Maximum size is 10MB"
   // "File type not allowed. Allowed: image/jpeg, image/png..."
 }`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">API Route Example</h3>
-            <p className="text-sm text-muted-foreground">
-              Handle file uploads in your API:
-            </p>
-          </div>
-          <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
+        <h3 className="font-semibold mt-6">API Route Example</h3>
+        <p className="text-sm text-muted-foreground">
+          Handle file uploads in your API:
+        </p>
+        <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
 
 import { auth } from "@/lib/auth";
 import { uploadFile } from "@/lib/storage/uploads";
@@ -329,13 +308,9 @@ export async function POST(request: Request) {
     message: "File uploaded successfully",
   });
 }`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">Client-Side Upload Component</h3>
-          </div>
-          <CodeBlock language="tsx" code={`"use client";
+        <h3 className="font-semibold mt-6">Client-Side Upload Component</h3>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -385,7 +360,6 @@ export function FileUploader() {
     </div>
   );
 }`} />
-        </div>
       </div>
 
       {/* Security */}

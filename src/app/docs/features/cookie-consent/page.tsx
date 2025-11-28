@@ -146,11 +146,9 @@ export default function CookieConsentPage() {
       {/* Setup */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Setup</h2>
-        <div>
-          <p className="text-muted-foreground">
-            The cookie consent component is already included in your layout. No setup required!
-          </p>
-        </div>
+        <p className="text-muted-foreground">
+          The cookie consent component is already included in your layout. No setup required!
+        </p>
         <CodeBlock language="tsx" code={`// Already in src/app/layout.tsx
 import { CookieConsent } from "@/components/cookie-consent";
 
@@ -169,12 +167,10 @@ export default function RootLayout({ children }) {
       {/* Google Tag Manager Integration */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Google Tag Manager Integration</h2>
-        <div>
-          <p className="text-muted-foreground">
-            The component automatically integrates with Google Consent Mode v2. Here&apos;s what happens
-            when a user makes their choice:
-          </p>
-        </div>
+        <p className="text-muted-foreground">
+          The component automatically integrates with Google Consent Mode v2. Here&apos;s what happens
+          when a user makes their choice:
+        </p>
         <CodeBlock language="typescript" code={`// Automatically called when user saves preferences
 gtag("consent", "update", {
   ad_storage: marketing ? "granted" : "denied",
@@ -200,14 +196,11 @@ dataLayer.push({
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Customization</h2>
 
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-semibold">Add/Remove Cookie Categories</h3>
-            <p className="text-muted-foreground">
-              Edit the categories in <code className="rounded bg-muted px-1">src/components/cookie-consent-tabs.tsx</code>:
-            </p>
-          </div>
-          <CodeBlock language="typescript" code={`// In DetailsTabContent function
+        <h3 className="font-semibold">Add/Remove Cookie Categories</h3>
+        <p className="text-muted-foreground">
+          Edit the categories in <code className="rounded bg-muted px-1">src/components/cookie-consent-tabs.tsx</code>:
+        </p>
+        <CodeBlock language="typescript" code={`// In DetailsTabContent function
 const categories: CookieCategory[] = [
   {
     id: "necessary",
@@ -225,32 +218,23 @@ const categories: CookieCategory[] = [
   },
   // Add more categories...
 ];`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">Change Consent Duration</h3>
-            <p className="text-muted-foreground">
-              By default, consent is valid for 1 year. Edit in <code className="rounded bg-muted px-1">src/components/cookie-consent.tsx</code>:
-            </p>
-          </div>
-          <CodeBlock language="typescript" code={`// In getInitialPreferences function
+        <h3 className="font-semibold mt-6">Change Consent Duration</h3>
+        <p className="text-muted-foreground">
+          By default, consent is valid for 1 year. Edit in <code className="rounded bg-muted px-1">src/components/cookie-consent.tsx</code>:
+        </p>
+        <CodeBlock language="typescript" code={`// In getInitialPreferences function
 const daysSinceConsent = Math.floor(
   (Date.now() - new Date(consentDate).getTime()) / (1000 * 60 * 60 * 24)
 );
 if (daysSinceConsent < 365) {  // Change 365 to your desired days
   return { preferences: JSON.parse(consent), showButton: false };
 }`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">Update Contact Email</h3>
-            <p className="text-muted-foreground">
-              The &quot;About&quot; tab shows your privacy contact email. Update it in the AboutTabContent component.
-            </p>
-          </div>
-        </div>
+        <h3 className="font-semibold mt-6">Update Contact Email</h3>
+        <p className="text-muted-foreground">
+          The &quot;About&quot; tab shows your privacy contact email. Update it in the AboutTabContent component.
+        </p>
       </div>
 
       {/* Data Export Feature */}

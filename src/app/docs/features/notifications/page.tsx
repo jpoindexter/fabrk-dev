@@ -37,13 +37,14 @@ export default function NotificationsPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
           <p className="mb-4">
             Notification model in Prisma schema:
           </p>
-          <CodeBlock language="prisma" code={`// prisma/schema.prisma
+        </div>
+        <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model Notification {
   id        String   @id @default(cuid())
   userId    String
@@ -62,16 +63,16 @@ model Notification {
   @@index([userId, read])
   @@index([userId, createdAt])
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Creating Notifications</h2>
           <p className="mb-4">
             Send notifications from anywhere in your application:
           </p>
-          <CodeBlock language="typescript" code={`// src/lib/notifications.ts
+        </div>
+        <CodeBlock language="typescript" code={`// src/lib/notifications.ts
 import { prisma } from "@/lib/db";
 import { pusherServer } from "@/lib/pusher/server";
 
@@ -127,16 +128,16 @@ await createNotification({
   title: "New team member",
   body: "John Doe joined your organization",
 });`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Bell Icon Component</h2>
           <p className="mb-4">
             The notification bell with real-time updates and dropdown:
           </p>
-          <CodeBlock language="tsx" code={`"use client";
+        </div>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
@@ -252,16 +253,16 @@ export function NotificationBell({ userId }: { userId: string }) {
     </DropdownMenu>
   );
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <div className="space-y-4 mb-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">API Routes</h2>
           <p className="mb-4">
             Notification management endpoints:
           </p>
-          <CodeBlock language="typescript" code={`// GET /api/v1/notifications
+        </div>
+        <CodeBlock language="typescript" code={`// GET /api/v1/notifications
 export async function GET(req: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -313,8 +314,7 @@ export async function POST(req: Request) {
 
   return Response.json({ success: true });
 }`} />
-        </CardContent>
-      </Card>
+      </div>
 
       <Card>
         <CardContent className="pt-6">

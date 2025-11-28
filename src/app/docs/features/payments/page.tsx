@@ -156,7 +156,7 @@ export default function PaymentsPage() {
         </p>
 
         {/* Step 1 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               1
@@ -170,7 +170,7 @@ export default function PaymentsPage() {
         </div>
 
         {/* Step 2 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               2
@@ -187,7 +187,7 @@ export default function PaymentsPage() {
         </div>
 
         {/* Step 3 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               3
@@ -201,20 +201,16 @@ export default function PaymentsPage() {
         </div>
 
         {/* Step 4 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               4
             </span>
             <h3 className="font-semibold">Add Keys to Your App</h3>
           </div>
-        </div>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground text-sm">
-              Add these to your <code className="rounded bg-muted px-1">.env.local</code> file:
-            </p>
-          </div>
+          <p className="text-muted-foreground text-sm">
+            Add these to your <code className="rounded bg-muted px-1">.env.local</code> file:
+          </p>
           <CodeBlock language="bash" code={`# Stripe API Keys (test mode)
 STRIPE_SECRET_KEY="sk_test_your_secret_key"
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your_publishable_key"
@@ -226,20 +222,17 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_your_enterprise_price"`} />
         </div>
 
         {/* Step 5 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               5
             </span>
             <h3 className="font-semibold">Set Up Webhooks (Local Testing)</h3>
           </div>
-          <div className="space-y-4">
-            <div>
-              <p className="text-muted-foreground text-sm">
-                Install the Stripe CLI to test webhooks locally:
-              </p>
-            </div>
-            <CodeBlock language="bash" code={`# Install Stripe CLI (macOS)
+          <p className="text-muted-foreground text-sm">
+            Install the Stripe CLI to test webhooks locally:
+          </p>
+          <CodeBlock language="bash" code={`# Install Stripe CLI (macOS)
 brew install stripe/stripe-cli/stripe
 
 # Login to Stripe
@@ -247,14 +240,11 @@ stripe login
 
 # Forward webhooks to your local app
 npm run stripe:listen`} />
-            <div>
-              <p className="text-muted-foreground text-sm">
-                This gives you a webhook secret starting with <code className="rounded bg-muted px-1">whsec_</code>.
-                Add it to your <code className="rounded bg-muted px-1">.env.local</code>:
-              </p>
-            </div>
-            <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"`} />
-          </div>
+          <p className="text-muted-foreground text-sm">
+            This gives you a webhook secret starting with <code className="rounded bg-muted px-1">whsec_</code>.
+            Add it to your <code className="rounded bg-muted px-1">.env.local</code>:
+          </p>
+          <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"`} />
         </div>
       </div>
 
@@ -302,14 +292,11 @@ npm run stripe:listen`} />
           </p>
         </div>
 
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-semibold">Checkout Button Component</h3>
-            <p className="text-muted-foreground">
-              Add this to any pricing card or button:
-            </p>
-          </div>
-          <CodeBlock language="tsx" code={`"use client";
+        <h3 className="font-semibold">Checkout Button Component</h3>
+        <p className="text-muted-foreground">
+          Add this to any pricing card or button:
+        </p>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -349,16 +336,12 @@ export function CheckoutButton({ priceId, planName }) {
     </Button>
   );
 }`} />
-        </div>
 
-        <div className="space-y-4 mt-6">
-          <div>
-            <h3 className="font-semibold">Customer Portal Link</h3>
-            <p className="text-muted-foreground">
-              Let users manage their own subscription:
-            </p>
-          </div>
-          <CodeBlock language="tsx" code={`"use client";
+        <h3 className="font-semibold mt-6">Customer Portal Link</h3>
+        <p className="text-muted-foreground">
+          Let users manage their own subscription:
+        </p>
+        <CodeBlock language="tsx" code={`"use client";
 
 import { Button } from "@/components/ui/button";
 
@@ -378,7 +361,6 @@ export function ManageBillingButton() {
     </Button>
   );
 }`} />
-        </div>
       </div>
 
       {/* Common Questions */}

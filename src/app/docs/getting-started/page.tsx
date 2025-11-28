@@ -163,7 +163,7 @@ npm run db:push && npm run dev`}
         </p>
 
         {/* Step 1 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               1
@@ -183,7 +183,7 @@ npm run db:push && npm run dev`}
         </div>
 
         {/* Step 2 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               2
@@ -208,7 +208,7 @@ cd my-saas`}
         </div>
 
         {/* Step 3 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               3
@@ -228,7 +228,7 @@ cd my-saas`}
         </div>
 
         {/* Step 4 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               4
@@ -249,7 +249,7 @@ cd my-saas`}
         </div>
 
         {/* Step 5 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               5
@@ -278,7 +278,7 @@ cd my-saas`}
         </div>
 
         {/* Step 6 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               6
@@ -313,7 +313,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
         </div>
 
         {/* Step 7 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               7
@@ -333,7 +333,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
         </div>
 
         {/* Step 8 */}
-        <div className="space-y-3 rounded-lg border p-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               8

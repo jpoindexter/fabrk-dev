@@ -27,6 +27,8 @@ const allowPatterns = [
   /src\/components\/theme\/theme-dropdown\.tsx$/,
   // Intentional hex colors: Email docs showing example email styling
   /src\/app\/docs\/features\/emails\/page\.tsx$/,
+  // Intentional hex colors: Theming docs showing theme previews
+  /src\/app\/docs\/extras\/theming\/page\.tsx$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;

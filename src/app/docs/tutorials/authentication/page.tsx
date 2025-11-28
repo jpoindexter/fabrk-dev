@@ -239,7 +239,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           </div>
 
           {/* Step 3 */}
-          <div className="space-y-3 rounded-lg border p-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 3
@@ -268,7 +268,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           </div>
 
           {/* Step 4 */}
-          <div className="space-y-3 rounded-lg border p-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 4
