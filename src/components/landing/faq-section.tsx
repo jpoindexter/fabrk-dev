@@ -138,8 +138,8 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
         className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-muted/50"
       >
         <span className="font-mono text-sm">
-          <span className="text-primary">&gt;</span>
-          <span className="ml-2 text-muted-foreground">QUERY:</span>
+          <span className="text-primary">├─</span>
+          <span className="ml-2 text-muted-foreground">[QUERY]:</span>
           <span className="ml-2 text-foreground">{question}</span>
         </span>
         <ChevronDown
@@ -151,7 +151,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       </button>
       {isOpen && (
         <div className="border-t border-border bg-muted/30 p-4">
-          <span className="font-mono text-xs text-muted-foreground">[RESPONSE]: </span>
+          <span className="font-mono text-xs text-muted-foreground">└─ [RESPONSE]: </span>
           <span className="font-mono text-xs text-foreground">{answer}</span>
         </div>
       )}
@@ -179,7 +179,7 @@ export function FAQSection() {
           className="mb-10"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[KNOWLEDGE_BASE]: QUERY_SYSTEM</span>
+            <span className="font-mono text-xs text-muted-foreground">┌─ [0x60] KNOWLEDGE_BASE ─┐ QUERY_SYSTEM │ FIB[13] ENTRIES</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Frequently Asked Questions
@@ -195,7 +195,7 @@ export function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="mb-3 font-mono text-xs text-muted-foreground">[CATEGORIES]:</div>
+            <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [CATEGORIES] ─┐</div>
             <div className="flex flex-row gap-2 lg:flex-col lg:gap-1">
               {categories.map((category) => (
                 <button

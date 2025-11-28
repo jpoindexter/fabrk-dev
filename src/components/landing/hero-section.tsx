@@ -46,7 +46,7 @@ export function HeroSection() {
               className="mb-6"
             >
               <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
-                [SYSTEM_INIT]: SAAS_BOILERPLATE_v2.0
+                ┌─ [0x00] SYSTEM_INIT ─┐ SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
 
@@ -74,7 +74,7 @@ export function HeroSection() {
               className="mb-8 border border-border bg-card p-4"
             >
               <div className="mb-3 font-mono text-xs text-muted-foreground">
-                [STATUS]:
+                ┌─ [0x01] STATUS ────────────────────────┐
               </div>
               <p className="mb-4 text-muted-foreground">
                 Why spend valuable time tackling auth, billing, emails, organizations,
@@ -116,7 +116,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="mb-3 font-mono text-xs text-muted-foreground">
-                [POWERED_BY]:
+                ┌─ [0x02] POWERED_BY ─ FIB[1,1,2,3,5,8,13] ─┐
               </div>
               <div className="flex flex-wrap gap-3">
                 {techStack.map((tech) => (
@@ -150,36 +150,36 @@ export function HeroSection() {
                   <div className="size-3 rounded-full bg-success/50" />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">
-                  fabrk_dashboard.exe
+                  [0x03] fabrk_dashboard.exe │ PID:2584
                 </span>
               </div>
 
               {/* Terminal Content */}
               <div className="p-6">
                 <div className="mb-6 font-mono text-xs text-muted-foreground">
-                  <div>&gt; Initializing Fabrk dashboard...</div>
-                  <div className="mt-1">&gt; Loading components... <span className="text-success">[DONE]</span></div>
-                  <div className="mt-1">&gt; Connecting services... <span className="text-success">[DONE]</span></div>
-                  <div className="mt-1">&gt; System ready.</div>
+                  <div>│ &gt; Initializing Fabrk dashboard...</div>
+                  <div className="mt-1">│ &gt; Loading components... <span className="text-success">[OK]</span> FIB[21]ms</div>
+                  <div className="mt-1">│ &gt; Connecting services... <span className="text-success">[OK]</span> FIB[34]ms</div>
+                  <div className="mt-1">└─ System ready. Total: FIB[55]ms</div>
                 </div>
 
                 {/* Dashboard Mock */}
                 <div className="grid gap-3">
                   <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">AUTH_MODULE</span>
-                    <span className="font-mono text-xs text-success">ACTIVE</span>
+                    <span className="font-mono text-xs">│ [0x04] AUTH_MODULE</span>
+                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
                   </div>
                   <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">BILLING_MODULE</span>
-                    <span className="font-mono text-xs text-success">ACTIVE</span>
+                    <span className="font-mono text-xs">│ [0x05] BILLING_MODULE</span>
+                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
                   </div>
                   <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">ORG_MODULE</span>
-                    <span className="font-mono text-xs text-success">ACTIVE</span>
+                    <span className="font-mono text-xs">│ [0x06] ORG_MODULE</span>
+                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
                   </div>
                   <div className="flex items-center justify-between border border-border bg-background p-3">
-                    <span className="font-mono text-xs">EMAIL_MODULE</span>
-                    <span className="font-mono text-xs text-success">ACTIVE</span>
+                    <span className="font-mono text-xs">└ [0x07] EMAIL_MODULE</span>
+                    <span className="font-mono text-xs text-success">■ ACTIVE</span>
                   </div>
                 </div>
 

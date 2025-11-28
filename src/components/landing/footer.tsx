@@ -34,7 +34,7 @@ export function Footer() {
       {/* Tech Stack Bar */}
       <div className="border-b border-border px-4 sm:px-6 lg:px-8 py-6">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-3 font-mono text-xs text-muted-foreground">[TECH_STACK]:</div>
+          <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [0x70] TECH_STACK ─┐ FIB[1,1,2,3,5,8,13] DEPS</div>
           <div className="flex flex-wrap items-center gap-4">
             {techStack.map((tech) => (
               <div
@@ -57,17 +57,17 @@ export function Footer() {
             {/* Left: Logo + Tagline */}
             <div>
               <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-                <span className="font-mono text-xs text-muted-foreground">[SYSTEM_INFO]</span>
+                <span className="font-mono text-xs text-muted-foreground">┌─ [0x71] SYSTEM_INFO ─┐</span>
               </div>
               <Link href="/" className="mb-4 inline-block transition-opacity hover:opacity-80">
                 <Logo size={32} />
               </Link>
               <p className="mt-4 max-w-xs font-mono text-sm text-muted-foreground">
-                [TAGLINE]: Ship your SaaS in days, not weeks.
+                │ [TAGLINE]: Ship your SaaS in days, not weeks.
               </p>
               <div className="mt-4 flex items-center gap-2">
-                <span className="font-mono text-xs text-muted-foreground">[STATUS]:</span>
-                <span className="font-mono text-xs text-success">OPERATIONAL</span>
+                <span className="font-mono text-xs text-muted-foreground">└─ [STATUS]:</span>
+                <span className="font-mono text-xs text-success">■ OPERATIONAL</span>
               </div>
             </div>
 
@@ -79,13 +79,13 @@ export function Footer() {
                   <div className="size-2 rounded-full bg-warning/50" />
                   <div className="size-2 rounded-full bg-success/50" />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">nav_links.exe</span>
+                <span className="font-mono text-xs text-muted-foreground">[0x72] nav_links.exe │ PID:1024</span>
               </div>
 
               <div className="grid grid-cols-3 divide-x divide-border">
                 {/* Product */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[PRODUCT]:</div>
+                  <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [PRODUCT] ─┐</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="#features"
@@ -110,7 +110,7 @@ export function Footer() {
 
                 {/* Company */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[COMPANY]:</div>
+                  <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [COMPANY] ─┐</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="/about"
@@ -129,7 +129,7 @@ export function Footer() {
 
                 {/* Legal */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[LEGAL]:</div>
+                  <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ [LEGAL] ─┐</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="/terms"
@@ -161,7 +161,7 @@ export function Footer() {
       <div className="border-t border-border px-4 sm:px-6 lg:px-8 py-6">
         <div className="mx-auto max-w-7xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="font-mono text-xs text-muted-foreground">
-            <span>[COPYRIGHT]: © {new Date().getFullYear()} Fabrk. All rights reserved.</span>
+            <span>┌─ [0x7F] COPYRIGHT ─┐ © {new Date().getFullYear()} Fabrk │ All rights reserved</span>
           </div>
           <div className="flex items-center gap-4">
             <a

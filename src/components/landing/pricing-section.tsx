@@ -38,7 +38,7 @@ export function PricingSection() {
             className="flex flex-col justify-center"
           >
             <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[PRICING]: COMMERCIAL_TIER</span>
+              <span className="font-mono text-xs text-muted-foreground">┌─ [0x40] PRICING ─┐ COMMERCIAL_TIER │ FIB[144]</span>
             </div>
 
             <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
@@ -57,11 +57,14 @@ export function PricingSection() {
             </div>
 
             <div className="border border-border bg-card p-4">
-              <span className="font-mono text-xs text-muted-foreground">[NOTE]: </span>
-              <span className="font-mono text-xs text-foreground">
-                Fabrk is 40-70% more affordable than comparable Next.js starter kits.
-                No hidden charges for basics.
+              <span className="font-mono text-xs text-muted-foreground">┌─ [NOTE] ────────────────────────────────────┐</span>
+              <span className="block mt-2 font-mono text-xs text-foreground">
+                │ Fabrk is 40-70% more affordable than comparable
               </span>
+              <span className="block font-mono text-xs text-foreground">
+                │ Next.js starter kits. No hidden charges.
+              </span>
+              <span className="block mt-2 font-mono text-xs text-muted-foreground">└─────────────────────────────────────────────┘</span>
             </div>
           </motion.div>
 
@@ -81,7 +84,7 @@ export function PricingSection() {
                   <div className="size-2.5 rounded-full bg-warning/50" />
                   <div className="size-2.5 rounded-full bg-success/50" />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">pricing_config.exe</span>
+                <span className="font-mono text-xs text-muted-foreground">[0x41] pricing_config.exe │ PID:3142</span>
               </div>
 
               <div className="p-6">
@@ -109,7 +112,7 @@ export function PricingSection() {
 
                 {/* Features List */}
                 <div className="mb-6">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">INCLUDES:</div>
+                  <div className="mb-3 font-mono text-xs text-muted-foreground">┌─ INCLUDES ─────────────────┐</div>
                   <div className="space-y-2">
                     {features.map((feature, idx) => (
                       <motion.div
@@ -144,7 +147,7 @@ export function PricingSection() {
             >
               <div className="border border-border bg-card p-3 text-center">
                 <span className="font-mono text-xs text-muted-foreground">
-                  [SECURE]: Checkout powered by Polar. All sales are final.
+                  ┌─ [0x42] SECURE ─┐ Checkout powered by Polar │ All sales final
                 </span>
               </div>
             </motion.div>

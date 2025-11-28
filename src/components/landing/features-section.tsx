@@ -35,7 +35,7 @@ function FeatureItem({ icon: Icon, title, description }: FeatureItemProps) {
         <Icon className="size-4 text-primary" />
       </div>
       <div>
-        <span className="font-mono text-xs font-semibold text-foreground">&gt; {title}</span>
+        <span className="font-mono text-xs font-semibold text-foreground">├─ {title}</span>
         <span className="ml-2 font-mono text-xs text-muted-foreground">{description}</span>
       </div>
     </div>
@@ -68,7 +68,7 @@ function FeatureSection({ spec, title, description, features, reversed, children
       >
         {/* Spec Label */}
         <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">&gt; [SPEC]: {spec}</span>
+          <span className="font-mono text-xs text-muted-foreground">┌─ [SPEC] ─┐ {spec}</span>
         </div>
 
         {/* Title */}
@@ -76,7 +76,7 @@ function FeatureSection({ spec, title, description, features, reversed, children
 
         {/* Description */}
         <div className="mb-6 border-l-2 border-border pl-4">
-          <span className="font-mono text-xs text-muted-foreground">[DESC]: </span>
+          <span className="font-mono text-xs text-muted-foreground">│ [DESC]: </span>
           <span className="text-muted-foreground">{description}</span>
         </div>
 
@@ -321,7 +321,7 @@ export function FeaturesSection() {
           className="mb-16 lg:mb-24"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[DEEP_DIVE]: FEATURE_ANALYSIS</span>
+            <span className="font-mono text-xs text-muted-foreground">┌─ [0x30] DEEP_DIVE ─┐ FEATURE_ANALYSIS │ FIB[377,610]</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Built for serious SaaS products

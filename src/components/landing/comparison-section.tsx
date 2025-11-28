@@ -53,7 +53,7 @@ export function ComparisonSection() {
           className="mb-12"
         >
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[BUILD_VS_FABRK]: TIME_TO_MARKET_ANALYSIS</span>
+            <span className="font-mono text-xs text-muted-foreground">┌─ [0x50] BUILD_VS_FABRK ─┐ TIME_TO_MARKET │ FIB[21,34,55,89]</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Why build from scratch?
@@ -78,7 +78,7 @@ export function ComparisonSection() {
               <div className="size-2.5 rounded-full bg-warning/50" />
               <div className="size-2.5 rounded-full bg-success/50" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">comparison_table.exe</span>
+            <span className="font-mono text-xs text-muted-foreground">[0x51] comparison_table.exe │ PID:4096</span>
           </div>
 
           {/* Table Content */}
@@ -139,7 +139,13 @@ export function ComparisonSection() {
         >
           <div className="border border-border bg-card p-4">
             <span className="font-mono text-xs text-muted-foreground">
-              [NOTE]: Start building your unique features on day one. Skip the boring boilerplate.
+              ┌─ [0x52] NOTE ─────────────────────────────────────────────────────┐
+            </span>
+            <span className="block mt-1 font-mono text-xs text-muted-foreground">
+              │ Start building your unique features on day one. Skip boilerplate.
+            </span>
+            <span className="block mt-1 font-mono text-xs text-muted-foreground">
+              └───────────────────────────────────────────────────────────────────┘
             </span>
           </div>
         </motion.div>
