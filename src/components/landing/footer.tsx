@@ -18,6 +18,9 @@ export function Footer() {
             <Small className="mt-4 block text-muted-foreground">
               Ship your SaaS in days, not weeks. © 2025 Fabrk.
             </Small>
+            <Small className="mt-2 block text-muted-foreground">
+              Made with ❤️ by indie developers
+            </Small>
           </div>
 
           {/* Center: Navigation Columns */}
@@ -94,9 +97,6 @@ export function Footer() {
               >
                 Cookie Policy
               </Link>
-              <Small className="text-muted-foreground">
-                Made with ❤️ by indie developers
-              </Small>
             </nav>
           </div>
         </div>
