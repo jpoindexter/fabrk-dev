@@ -1,31 +1,25 @@
 /**
  * ✅ FABRK COMPONENT
- * Feature Deep-Dives - Achromatic-style alternating layout sections
+ * Feature Deep-Dives - Terminal console [DEEP_DIVE] style
  * Production-ready ✓
  */
 "use client";
 
 import { motion } from "framer-motion";
-import { H2, H3, Body, Small } from "@/components/ui/typography";
 import {
-  Lock,
-  Users,
-  CreditCard,
-  Palette,
   Mail,
   Key,
   Shield,
   UserPlus,
-  Building2,
+  Users,
   ArrowLeftRight,
   Receipt,
   Gauge,
   DollarSign,
-  AlertCircle,
   Moon,
-  Smartphone,
-  Code2,
+  Palette,
   Layers,
+  Building2,
 } from "lucide-react";
 
 interface FeatureItemProps {
@@ -38,17 +32,18 @@ function FeatureItem({ icon: Icon, title, description }: FeatureItemProps) {
   return (
     <div className="flex gap-3">
       <div className="flex-shrink-0">
-        <Icon className="size-5 text-primary" />
+        <Icon className="size-4 text-primary" />
       </div>
       <div>
-        <Small className="font-semibold text-foreground">{title}</Small>
-        <Small className="block text-muted-foreground">{description}</Small>
+        <span className="font-mono text-xs font-semibold text-foreground">&gt; {title}</span>
+        <span className="ml-2 font-mono text-xs text-muted-foreground">{description}</span>
       </div>
     </div>
   );
 }
 
 interface FeatureSectionProps {
+  spec: string;
   title: string;
   description: string;
   features: Array<{
@@ -60,9 +55,9 @@ interface FeatureSectionProps {
   children?: React.ReactNode;
 }
 
-function FeatureSection({ title, description, features, reversed, children }: FeatureSectionProps) {
+function FeatureSection({ spec, title, description, features, reversed, children }: FeatureSectionProps) {
   return (
-    <div className={`grid gap-12 lg:grid-cols-2 lg:gap-16 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
+    <div className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
       {/* Text Content */}
       <motion.div
         initial={{ opacity: 0, x: reversed ? 20 : -20 }}
@@ -71,9 +66,22 @@ function FeatureSection({ title, description, features, reversed, children }: Fe
         transition={{ duration: 0.6 }}
         className="flex flex-col justify-center"
       >
-        <H3 className="mb-4 text-2xl">{title}</H3>
-        <Body className="mb-6 text-muted-foreground">{description}</Body>
-        <div className="space-y-4">
+        {/* Spec Label */}
+        <div className="mb-4 inline-block self-start border border-border px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">&gt; [SPEC]: {spec}</span>
+        </div>
+
+        {/* Title */}
+        <h3 className="mb-4 text-2xl font-bold">{title}</h3>
+
+        {/* Description */}
+        <div className="mb-6 border-l-2 border-border pl-4">
+          <span className="font-mono text-xs text-muted-foreground">[DESC]: </span>
+          <span className="text-muted-foreground">{description}</span>
+        </div>
+
+        {/* Feature List */}
+        <div className="space-y-3">
           {features.map((feature, i) => (
             <FeatureItem key={i} {...feature} />
           ))}
@@ -94,94 +102,109 @@ function FeatureSection({ title, description, features, reversed, children }: Fe
   );
 }
 
-// Mock UI components for visual representation
+// Terminal-style mock UI components
 function AuthPreview() {
   return (
-    <div className="w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-sm">
-      <H3 className="mb-1 text-lg">Sign in to your account</H3>
-      <Small className="mb-6 text-muted-foreground">Welcome back! Please sign in to continue.</Small>
+    <div className="w-full max-w-sm border border-border bg-card">
+      {/* Window Header */}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="flex gap-1.5">
+          <div className="size-2.5 rounded-full bg-destructive/50" />
+          <div className="size-2.5 rounded-full bg-warning/50" />
+          <div className="size-2.5 rounded-full bg-success/50" />
+        </div>
+        <span className="font-mono text-xs text-muted-foreground">auth_module.exe</span>
+      </div>
 
-      <div className="space-y-4">
-        <div>
-          <Small className="mb-1.5 block font-medium">Email</Small>
-          <div className="rounded-md border border-border bg-background px-3 py-2">
-            <Small className="text-muted-foreground">you@example.com</Small>
+      <div className="p-6">
+        <div className="mb-4 font-mono text-xs text-muted-foreground">[AUTH_FORM]:</div>
+
+        <div className="space-y-4">
+          <div>
+            <span className="mb-1.5 block font-mono text-xs text-muted-foreground">EMAIL:</span>
+            <div className="border border-border bg-background px-3 py-2">
+              <span className="font-mono text-xs text-muted-foreground">user@example.com</span>
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="mb-1.5 flex justify-between">
-            <Small className="font-medium">Password</Small>
-            <Small className="text-primary">Forgot password?</Small>
+          <div>
+            <span className="mb-1.5 block font-mono text-xs text-muted-foreground">PASSWORD:</span>
+            <div className="border border-border bg-background px-3 py-2">
+              <span className="font-mono text-xs text-muted-foreground">••••••••</span>
+            </div>
           </div>
-          <div className="rounded-md border border-border bg-background px-3 py-2">
-            <Small className="text-muted-foreground">••••••••</Small>
+          <div className="bg-primary px-4 py-2 text-center">
+            <span className="font-mono text-xs text-primary-foreground">&gt; AUTHENTICATE</span>
           </div>
-        </div>
-        <div className="rounded-md bg-primary px-4 py-2 text-center">
-          <Small className="font-medium text-primary-foreground">Sign in</Small>
-        </div>
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-border" />
+          <div className="relative py-2">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-card px-2 font-mono text-xs text-muted-foreground">OR</span>
+            </div>
           </div>
-          <div className="relative flex justify-center">
-            <Small className="bg-card px-2 text-muted-foreground">Or continue with</Small>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-md border border-border px-4 py-2 text-center">
-            <Small className="font-medium">Google</Small>
-          </div>
-          <div className="rounded-md border border-border px-4 py-2 text-center">
-            <Small className="font-medium">Microsoft</Small>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="border border-border px-4 py-2 text-center">
+              <span className="font-mono text-xs">GOOGLE</span>
+            </div>
+            <div className="border border-border px-4 py-2 text-center">
+              <span className="font-mono text-xs">MICROSOFT</span>
+            </div>
           </div>
         </div>
       </div>
-      <Small className="mt-4 block text-center text-muted-foreground">
-        Don't have an account? <span className="text-primary">Sign up</span>
-      </Small>
     </div>
   );
 }
 
 function OrganizationPreview() {
   return (
-    <div className="w-full max-w-md space-y-4">
-      <div className="rounded-lg border border-border bg-card p-4">
-        <div className="mb-3 flex items-center justify-between">
-          <H3 className="text-base">Organizations</H3>
-          <div className="rounded-md bg-primary px-3 py-1">
-            <Small className="font-medium text-primary-foreground">+ Add organization</Small>
-          </div>
+    <div className="w-full max-w-md border border-border bg-card">
+      {/* Window Header */}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="flex gap-1.5">
+          <div className="size-2.5 rounded-full bg-destructive/50" />
+          <div className="size-2.5 rounded-full bg-warning/50" />
+          <div className="size-2.5 rounded-full bg-success/50" />
         </div>
+        <span className="font-mono text-xs text-muted-foreground">org_manager.exe</span>
+      </div>
+
+      <div className="p-6">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="font-mono text-xs text-muted-foreground">[ORGANIZATIONS]:</span>
+          <button className="border border-primary px-2 py-1 font-mono text-xs text-primary">
+            + ADD_ORG
+          </button>
+        </div>
+
         <div className="space-y-2">
           {[
-            { name: "Acme Inc", role: "Owner", members: 12 },
-            { name: "Startup Co", role: "Admin", members: 5 },
+            { name: "ACME_INC", role: "OWNER", members: 12 },
+            { name: "STARTUP_CO", role: "ADMIN", members: 5 },
           ].map((org) => (
-            <div key={org.name} className="flex items-center justify-between rounded-md border border-border bg-background p-3">
+            <div key={org.name} className="flex items-center justify-between border border-border p-3">
               <div className="flex items-center gap-3">
-                <div className="flex size-8 items-center justify-center rounded-md bg-primary/10">
-                  <Building2 className="size-4 text-primary" />
-                </div>
+                <Building2 className="size-4 text-muted-foreground" />
                 <div>
-                  <Small className="font-medium">{org.name}</Small>
-                  <Small className="block text-muted-foreground">{org.members} members</Small>
+                  <span className="block font-mono text-xs">{org.name}</span>
+                  <span className="font-mono text-xs text-muted-foreground">{org.members} members</span>
                 </div>
               </div>
-              <Small className="text-muted-foreground">{org.role}</Small>
+              <span className="font-mono text-xs text-success">{org.role}</span>
             </div>
           ))}
         </div>
-      </div>
-      <div className="rounded-lg border border-border bg-card p-4">
-        <Small className="mb-3 block font-semibold">Roles</Small>
-        <div className="flex flex-wrap gap-2">
-          {["Owner", "Admin", "Member", "Guest"].map((role) => (
-            <div key={role} className="rounded-full border border-border px-3 py-1">
-              <Small>{role}</Small>
-            </div>
-          ))}
+
+        <div className="mt-4 border-t border-border pt-4">
+          <span className="mb-2 block font-mono text-xs text-muted-foreground">[ROLES]:</span>
+          <div className="flex flex-wrap gap-2">
+            {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
+              <span key={role} className="border border-border px-2 py-1 font-mono text-xs">
+                {role}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -190,46 +213,46 @@ function OrganizationPreview() {
 
 function BillingPreview() {
   return (
-    <div className="w-full max-w-md space-y-4">
-      <div className="rounded-lg border border-border bg-card p-4">
-        <Small className="mb-1 block font-semibold">Billing</Small>
-        <H3 className="mb-4 text-base">Subscription plan</H3>
-        <div className="mb-4 flex items-baseline justify-between rounded-md border border-border bg-background p-3">
+    <div className="w-full max-w-md border border-border bg-card">
+      {/* Window Header */}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="flex gap-1.5">
+          <div className="size-2.5 rounded-full bg-destructive/50" />
+          <div className="size-2.5 rounded-full bg-warning/50" />
+          <div className="size-2.5 rounded-full bg-success/50" />
+        </div>
+        <span className="font-mono text-xs text-muted-foreground">billing_portal.exe</span>
+      </div>
+
+      <div className="p-6">
+        <div className="mb-4 font-mono text-xs text-muted-foreground">[BILLING]:</div>
+
+        <div className="mb-4 flex items-center justify-between border border-border p-3">
           <div>
-            <Small className="font-semibold">Pro</Small>
-            <Small className="block text-muted-foreground">Change subscription</Small>
+            <span className="block font-mono text-xs">PLAN: PRO</span>
+            <span className="font-mono text-xs text-muted-foreground">&gt; change_plan</span>
           </div>
           <div className="text-right">
-            <div className="text-lg font-bold">$29</div>
-            <Small className="text-muted-foreground">/month</Small>
+            <span className="block font-mono text-lg font-bold">$29</span>
+            <span className="font-mono text-xs text-muted-foreground">/month</span>
           </div>
         </div>
-        <div className="rounded-md border border-border p-3">
-          <div className="mb-2 flex justify-between">
-            <Small className="text-muted-foreground">Current cycle (Nov 1 - Nov 30)</Small>
-            <Small>15 days remaining</Small>
+
+        <div className="border border-border p-3">
+          <div className="mb-2 flex justify-between font-mono text-xs">
+            <span className="text-muted-foreground">CYCLE: Nov 1 - Nov 30</span>
+            <span>15 days remaining</span>
           </div>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="pb-2 text-left font-medium">Item</th>
-                <th className="pb-2 text-right font-medium">Qty</th>
-                <th className="pb-2 text-right font-medium">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-1.5 text-muted-foreground">Pro Plan</td>
-                <td className="py-1.5 text-right">1</td>
-                <td className="py-1.5 text-right">$29.00</td>
-              </tr>
-              <tr className="border-t border-border font-medium">
-                <td className="pt-2">Projected costs</td>
-                <td></td>
-                <td className="pt-2 text-right">$29.00</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="border-t border-border pt-2">
+            <div className="flex justify-between font-mono text-xs">
+              <span className="text-muted-foreground">Pro Plan</span>
+              <span>$29.00</span>
+            </div>
+            <div className="mt-2 flex justify-between border-t border-border pt-2 font-mono text-xs font-bold">
+              <span>TOTAL</span>
+              <span>$29.00</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -238,46 +261,48 @@ function BillingPreview() {
 
 function DesignSystemPreview() {
   return (
-    <div className="w-full max-w-md space-y-4">
-      <div className="rounded-lg border border-border bg-card p-4">
-        <Small className="mb-3 block font-semibold">Design System</Small>
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <Moon className="size-5 text-primary" />
-            <div>
-              <Small className="font-medium">Light and Dark Themes</Small>
-              <Small className="block text-muted-foreground">Toggle with a switch button</Small>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Smartphone className="size-5 text-primary" />
-            <div>
-              <Small className="font-medium">Responsive Design</Small>
-              <Small className="block text-muted-foreground">Works on all screen sizes</Small>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Layers className="size-5 text-primary" />
-            <div>
-              <Small className="font-medium">Shadcn UI Components</Small>
-              <Small className="block text-muted-foreground">50+ accessible components</Small>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Code2 className="size-5 text-primary" />
-            <div>
-              <Small className="font-medium">Tailwind CSS</Small>
-              <Small className="block text-muted-foreground">Utility-first styling</Small>
-            </div>
-          </div>
+    <div className="w-full max-w-md border border-border bg-card">
+      {/* Window Header */}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="flex gap-1.5">
+          <div className="size-2.5 rounded-full bg-destructive/50" />
+          <div className="size-2.5 rounded-full bg-warning/50" />
+          <div className="size-2.5 rounded-full bg-success/50" />
         </div>
+        <span className="font-mono text-xs text-muted-foreground">design_system.exe</span>
       </div>
-      <div className="grid grid-cols-4 gap-2">
-        {["primary", "secondary", "accent", "muted"].map((color) => (
-          <div key={color} className={`rounded-md bg-${color} p-4`}>
-            <div className={`h-8 rounded bg-${color}`} style={{ backgroundColor: `var(--${color})` }} />
-          </div>
-        ))}
+
+      <div className="p-6">
+        <div className="mb-4 font-mono text-xs text-muted-foreground">[DESIGN_SYSTEM]:</div>
+
+        <div className="space-y-3">
+          {[
+            { icon: Moon, label: "THEMES", value: "LIGHT + DARK" },
+            { icon: Layers, label: "COMPONENTS", value: "50+ SHADCN" },
+            { icon: Palette, label: "STYLING", value: "TAILWIND CSS" },
+          ].map((item) => (
+            <div key={item.label} className="flex items-center justify-between border border-border p-3">
+              <div className="flex items-center gap-3">
+                <item.icon className="size-4 text-primary" />
+                <span className="font-mono text-xs">{item.label}</span>
+              </div>
+              <span className="font-mono text-xs text-success">{item.value}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-4 grid grid-cols-4 gap-2">
+          <div className="h-8 bg-primary" />
+          <div className="h-8 bg-secondary" />
+          <div className="h-8 bg-accent" />
+          <div className="h-8 bg-muted" />
+        </div>
+        <div className="mt-2 flex justify-between font-mono text-xs text-muted-foreground">
+          <span>PRIMARY</span>
+          <span>SECONDARY</span>
+          <span>ACCENT</span>
+          <span>MUTED</span>
+        </div>
       </div>
     </div>
   );
@@ -293,25 +318,31 @@ export function FeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center lg:mb-24"
+          className="mb-16 lg:mb-24"
         >
-          <H2 className="mb-4">Built for serious SaaS products</H2>
-          <Body className="mx-auto max-w-2xl text-muted-foreground">
+          <div className="mb-4 inline-block border border-border px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[DEEP_DIVE]: FEATURE_ANALYSIS</span>
+          </div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+            Built for serious SaaS products
+          </h2>
+          <p className="max-w-2xl font-mono text-sm text-muted-foreground">
             Includes many foundational and advanced components that cover a wide range of
             use-cases without sacrificing flexibility and design.
-          </Body>
+          </p>
         </motion.div>
 
         {/* Feature Sections */}
-        <div className="space-y-20 lg:space-y-32">
+        <div className="space-y-20 lg:space-y-28">
           {/* Authentication */}
           <FeatureSection
+            spec="AUTHENTICATION"
             title="Authentication"
             description="Full implementation including email/password, social sign-in, MFA, account linking and session management."
             features={[
-              { icon: Mail, title: "Email/Password", description: "Sign in using your email and password including verify email, change email, change password and forgot password flows." },
-              { icon: Key, title: "Social Sign-In", description: "Use Google or Microsoft login or configure additional providers like Facebook or GitHub." },
-              { icon: Shield, title: "Multi-Factor", description: "Add an extra layer of security with MFA/2FA using TOTP and your preferred authenticator app." },
+              { icon: Mail, title: "Email/Password", description: "Verify email, change password, forgot password flows." },
+              { icon: Key, title: "Social Sign-In", description: "Google, Microsoft, or configure additional providers." },
+              { icon: Shield, title: "Multi-Factor", description: "MFA/2FA using TOTP with authenticator apps." },
             ]}
           >
             <AuthPreview />
@@ -319,13 +350,14 @@ export function FeaturesSection() {
 
           {/* Multi-Tenancy */}
           <FeatureSection
+            spec="MULTI_TENANCY"
             title="Multi-Tenancy"
             description="Built-in support for organizations including member management, invitations and roles."
             reversed
             features={[
-              { icon: UserPlus, title: "Invitations", description: "Invite new members, assign roles and gate access to certain features based on the users' role." },
-              { icon: Users, title: "Roles", description: "Use the predefined membership roles or add your own and customize them as you wish." },
-              { icon: ArrowLeftRight, title: "Transfer Ownership", description: "Give ownership of an organization to other another member." },
+              { icon: UserPlus, title: "Invitations", description: "Invite members, assign roles and gate access." },
+              { icon: Users, title: "Roles", description: "Predefined membership roles or add your own." },
+              { icon: ArrowLeftRight, title: "Transfer Ownership", description: "Give ownership to another member." },
             ]}
           >
             <OrganizationPreview />
@@ -333,12 +365,13 @@ export function FeaturesSection() {
 
           {/* Billing & Payments */}
           <FeatureSection
+            spec="BILLING_PAYMENTS"
             title="Billing & Payments"
             description="Securely accept payments on your site and start selling to customers in no time."
             features={[
-              { icon: Receipt, title: "Billing Portal", description: "Give your users a billing portal where they can view their transactions and invoices, and manage their plans with ease." },
-              { icon: Gauge, title: "Restricted Access", description: "Gate access to certain features or content on your site until a user has upgraded to a higher tier." },
-              { icon: DollarSign, title: "Billing Granularity", description: "Choose if you want to charge per organization or per seat. Instead of subscriptions you can also charge based on usage." },
+              { icon: Receipt, title: "Billing Portal", description: "View transactions, invoices, manage plans." },
+              { icon: Gauge, title: "Restricted Access", description: "Gate features until user upgrades." },
+              { icon: DollarSign, title: "Billing Granularity", description: "Per org, per seat, or usage-based." },
             ]}
           >
             <BillingPreview />
@@ -346,13 +379,14 @@ export function FeaturesSection() {
 
           {/* Design System */}
           <FeatureSection
+            spec="DESIGN_SYSTEM"
             title="Design System"
-            description="Includes many foundational and advanced components that cover a wide range of use-cases without sacrificing flexibility and design."
+            description="Foundational and advanced components covering wide range of use-cases without sacrificing flexibility."
             reversed
             features={[
-              { icon: Moon, title: "Responsive Design", description: "We understand how challenging responsive design and UI/UX can be, so we made it easy. Open the app with your mobile phone to see for yourself or inspect using the dev console." },
-              { icon: Palette, title: "Light and Dark Themes", description: "Supports a beautiful dark theme that users can toggle with a switch button." },
-              { icon: Layers, title: "Shadcn UI and Tailwind CSS", description: "Based on the Shadcn UI, Tailwind CSS and Lucide icons libraries. Almost all LLMs and AI coding tools are trained on these." },
+              { icon: Moon, title: "Responsive Design", description: "Works on all screen sizes out of the box." },
+              { icon: Palette, title: "Light and Dark Themes", description: "Toggle with a switch button." },
+              { icon: Layers, title: "Shadcn UI + Tailwind", description: "50+ accessible components included." },
             ]}
           >
             <DesignSystemPreview />

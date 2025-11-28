@@ -1,184 +1,147 @@
+/**
+ * ✅ FABRK COMPONENT
+ * Comparison Section - Terminal console table style
+ * Production-ready ✓
+ */
 "use client";
 
-import { Check, X } from "lucide-react";
 import { motion } from "framer-motion";
-import { H2, Body, Small, Strong } from "@/components/ui/typography";
 
 export function ComparisonSection() {
   const features = [
     {
       name: "Authentication (Email + OAuth)",
-      manual: false,
-      fabrk: true,
-      time: "8 hours",
+      manual: "20+ hours",
+      fabrk: "Ready in minutes",
     },
     {
       name: "Stripe Payments Integration",
-      manual: false,
-      fabrk: true,
-      time: "12 hours",
+      manual: "15+ hours",
+      fabrk: "Pre-configured",
     },
     {
       name: "Database Schema + ORM",
-      manual: false,
-      fabrk: true,
-      time: "6 hours",
+      manual: "10+ hours",
+      fabrk: "Integrated",
     },
     {
-      name: "Email System (Templates + Sending)",
-      manual: false,
-      fabrk: true,
-      time: "4 hours",
+      name: "Multi-Tenancy",
+      manual: "25+ hours",
+      fabrk: "Built-in",
     },
     {
-      name: "25+ UI Components",
-      manual: false,
-      fabrk: true,
-      time: "20 hours",
+      name: "Design System",
+      manual: "30+ hours",
+      fabrk: "Included",
     },
     {
-      name: "TypeScript Configuration",
-      manual: false,
-      fabrk: true,
-      time: "3 hours",
-    },
-    {
-      name: "Dashboard Templates",
-      manual: false,
-      fabrk: true,
-      time: "8 hours",
-    },
-    {
-      name: "Dark Mode + Theme System",
-      manual: false,
-      fabrk: true,
-      time: "5 hours",
-    },
-    {
-      name: "Security Best Practices",
-      manual: false,
-      fabrk: true,
-      time: "4 hours",
-    },
-    {
-      name: "Production Deployment Config",
-      manual: false,
-      fabrk: true,
-      time: "3 hours",
+      name: "Advanced Features",
+      manual: "40+ hours",
+      fabrk: "Ready components",
     },
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-16 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <H2 className="mb-4">
-              Why Build From Scratch?
-            </H2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <Body className="text-muted-foreground">
-              See how much time and effort Fabrk saves you
-            </Body>
-          </motion.div>
-        </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="mb-4 inline-block border border-border px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[BUILD_VS_FABRK]: TIME_TO_MARKET_ANALYSIS</span>
+          </div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+            Why build from scratch?
+          </h2>
+          <p className="max-w-2xl font-mono text-sm text-muted-foreground">
+            See how much time and effort Fabrk saves you compared to manual setup.
+          </p>
+        </motion.div>
 
+        {/* Terminal Table */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="overflow-hidden rounded-lg border border-border bg-card"
+          className="border border-border bg-card"
         >
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border bg-muted">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">
-                  Feature
-                </th>
-                <th className="border-l border-border px-6 py-4 text-center text-sm font-semibold text-foreground">
-                  Manual Setup
-                </th>
-                <th className="border-l border-border px-6 py-4 text-center text-sm font-semibold text-primary">
-                  Fabrk
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+          {/* Table Header */}
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2.5 rounded-full bg-destructive/50" />
+              <div className="size-2.5 rounded-full bg-warning/50" />
+              <div className="size-2.5 rounded-full bg-success/50" />
+            </div>
+            <span className="font-mono text-xs text-muted-foreground">comparison_table.exe</span>
+          </div>
+
+          {/* Table Content */}
+          <div className="p-6">
+            {/* Column Headers */}
+            <div className="mb-4 grid grid-cols-3 gap-4 border-b border-border pb-4 font-mono text-xs">
+              <div className="text-muted-foreground">FEATURE</div>
+              <div className="text-center text-destructive">MANUAL_SETUP</div>
+              <div className="text-center text-success">FABRK</div>
+            </div>
+
+            {/* Rows */}
+            <div className="space-y-2">
               {features.map((feature, index) => (
-                <motion.tr
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.03 }}
+                  transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   viewport={{ once: true }}
-                  className="border-b border-border transition-colors hover:bg-muted/50"
+                  className="grid grid-cols-3 gap-4 border-b border-border py-3 font-mono text-xs"
                 >
-                  <td className="px-6 py-4">
-                    <Small className="block font-semibold">{feature.name}</Small>
-                    <Small className="block mt-1 text-muted-foreground">
-                      Time: {feature.time}
-                    </Small>
-                  </td>
-                  <td className="border-l border-border px-6 py-4 text-center">
-                    {feature.manual ? (
-                      <Check className="inline-block h-5 w-5 text-success" />
-                    ) : (
-                      <X className="inline-block h-5 w-5 text-destructive" />
-                    )}
-                  </td>
-                  <td className="border-l border-border px-6 py-4 text-center">
-                    {feature.fabrk ? (
-                      <Check className="inline-block h-5 w-5 text-primary" />
-                    ) : (
-                      <X className="inline-block h-5 w-5 text-destructive" />
-                    )}
-                  </td>
-                </motion.tr>
+                  <div className="text-foreground">{feature.name}</div>
+                  <div className="text-center">
+                    <span className="text-destructive">✗</span>
+                    <span className="ml-2 text-muted-foreground">{feature.manual}</span>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-success">✓</span>
+                    <span className="ml-2 text-foreground">{feature.fabrk}</span>
+                  </div>
+                </motion.div>
               ))}
-              <motion.tr
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.65 }}
-                viewport={{ once: true }}
-                className="border-t border-border"
-              >
-                <td className="px-6 py-4 text-sm font-semibold text-foreground">
-                  Total Time Investment
-                </td>
-                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-destructive">
-                  73+ hours
-                </td>
-                <td className="border-l border-border px-6 py-4 text-center text-base font-semibold text-primary">
-                  0 hours
-                </td>
-              </motion.tr>
-            </tbody>
-          </table>
+            </div>
+
+            {/* Total Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.65 }}
+              viewport={{ once: true }}
+              className="mt-4 grid grid-cols-3 gap-4 border-t-2 border-border pt-4 font-mono"
+            >
+              <div className="text-sm font-bold">TOTAL</div>
+              <div className="text-center text-sm font-bold text-destructive">140+ hours</div>
+              <div className="text-center text-sm font-bold text-success">Ready to Ship</div>
+            </motion.div>
+          </div>
         </motion.div>
 
+        {/* Footer Note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-8 text-center"
+          className="mt-6"
         >
-          <Small className="block text-muted-foreground">
-            Start building your unique features on day one. Skip the boring
-            boilerplate.
-          </Small>
+          <div className="border border-border p-4">
+            <span className="font-mono text-xs text-muted-foreground">
+              [NOTE]: Start building your unique features on day one. Skip the boring boilerplate.
+            </span>
+          </div>
         </motion.div>
       </div>
     </section>

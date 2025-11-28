@@ -636,3 +636,102 @@
   background-size: 200% 200%;
   animation: gradient-shift 15s ease infinite;
 }
+
+/* ============================================
+   TERMINAL CONSOLE STYLING
+   Retro terminal/console UI aesthetic
+   ============================================ */
+
+/* Terminal text utilities */
+.terminal-label {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.terminal-bracket {
+  color: oklch(var(--muted-foreground));
+}
+
+.terminal-bracket::before {
+  content: '[';
+}
+
+.terminal-bracket::after {
+  content: ']';
+}
+
+/* Terminal command prefix */
+.terminal-cmd::before {
+  content: '> ';
+  color: oklch(var(--primary));
+}
+
+/* Terminal status badge */
+.terminal-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid oklch(var(--border));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.terminal-status-ok {
+  color: oklch(var(--success));
+  border-color: oklch(var(--success) / 0.3);
+}
+
+/* Terminal border box */
+.terminal-box {
+  border: 1px solid oklch(var(--border));
+  position: relative;
+}
+
+.terminal-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: oklch(var(--border));
+}
+
+/* Terminal grid lines */
+.terminal-grid {
+  background-image:
+    linear-gradient(oklch(var(--border) / 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(var(--border) / 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Blinking cursor animation */
+@keyframes terminal-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-cursor::after {
+  content: '█';
+  animation: terminal-blink 1s step-end infinite;
+  color: oklch(var(--primary));
+}
+
+/* Terminal scanline effect (subtle) */
+.terminal-scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    oklch(var(--foreground) / 0.02) 2px,
+    oklch(var(--foreground) / 0.02) 4px
+  );
+  pointer-events: none;
+}

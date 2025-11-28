@@ -1,25 +1,24 @@
 /**
  * ✅ FABRK COMPONENT
- * Pricing Section - Achromatic-style two-column layout
+ * Pricing Section - Terminal console style card
  * Production-ready ✓
  */
 "use client";
 
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import config from "@/config";
 import { motion } from "framer-motion";
-import { H2, H3, Body, Small } from "@/components/ui/typography";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 
 export function PricingSection() {
   const features = [
-    "All starter kits included",
-    "All features included",
-    "Lifetime access & updates",
-    "Unlimited projects and developers",
-    "Personal and commercial usage",
-    "Saves you 200+ hours",
+    "ALL_STARTER_KITS",
+    "ALL_FEATURES",
+    "LIFETIME_ACCESS_UPDATES",
+    "UNLIMITED_PROJECTS",
+    "PERSONAL_COMMERCIAL_USAGE",
+    "SAVES_200_HOURS",
   ];
 
   return (
@@ -38,28 +37,32 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <Small className="mb-2 font-semibold uppercase tracking-wide text-primary">
-              Starter
-            </Small>
-            <H2 className="mb-4">
-              One-time purchase
+            <div className="mb-4 inline-block self-start border border-border px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[PRICING]: COMMERCIAL_TIER</span>
+            </div>
+
+            <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
+            <h3 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
+              One-time purchase.
               <br />
-              <span className="text-muted-foreground">Unlimited projects</span>
-            </H2>
-            <Body className="mb-6 text-muted-foreground">
-              Upon purchase, you can use the starter kits for personal and
-              commercial projects with no restrictions on the number of
-              developers or projects.{" "}
-              <a href="/docs" className="text-primary underline underline-offset-4">
-                Click here to download the boilerplate
-              </a>
-              .
-            </Body>
-            <Body className="text-muted-foreground">
-              Fabrk is <strong>40-70% more affordable</strong> than comparable Next.js
-              starter kits. There's no catch, we believe the lower price is fair and
-              many shouldn't be hidden charges for basics.
-            </Body>
+              <span className="text-muted-foreground">Unlimited projects.</span>
+            </h3>
+
+            <div className="mb-6 border-l-2 border-border pl-4">
+              <p className="text-muted-foreground">
+                Upon purchase, you can use the starter kits for personal and
+                commercial projects with no restrictions on the number of
+                developers or projects.
+              </p>
+            </div>
+
+            <div className="border border-border p-4">
+              <span className="font-mono text-xs text-muted-foreground">[NOTE]: </span>
+              <span className="font-mono text-xs text-foreground">
+                Fabrk is 40-70% more affordable than comparable Next.js starter kits.
+                No hidden charges for basics.
+              </span>
+            </div>
           </motion.div>
 
           {/* Right Column - Pricing Card */}
@@ -69,49 +72,66 @@ export function PricingSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="rounded-xl border border-border bg-card p-8">
-              {/* Discount Badge */}
-              <div className="mb-6">
-                <DiscountCounter />
+            {/* Terminal Card */}
+            <div className="border border-border bg-card">
+              {/* Window Header */}
+              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="flex gap-1.5">
+                  <div className="size-2.5 rounded-full bg-destructive/50" />
+                  <div className="size-2.5 rounded-full bg-warning/50" />
+                  <div className="size-2.5 rounded-full bg-success/50" />
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">pricing_config.exe</span>
               </div>
 
-              {/* Price Display */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-2xl font-medium text-muted-foreground line-through">
-                    {config.pricing.fabrk.display.original}
-                  </span>
-                  <span className="text-sm text-muted-foreground">→</span>
+              <div className="p-6">
+                {/* Discount Badge */}
+                <div className="mb-6">
+                  <DiscountCounter />
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-foreground">
-                    {config.pricing.fabrk.display.current}
-                  </span>
-                  <span className="text-muted-foreground">one-time payment</span>
+
+                {/* Price Display */}
+                <div className="mb-6 border border-border p-4">
+                  <div className="mb-2 font-mono text-xs text-muted-foreground">PRICE:</div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-lg text-muted-foreground line-through">
+                      {config.pricing.fabrk.display.original}
+                    </span>
+                    <span className="font-mono text-xs text-muted-foreground">→</span>
+                    <span className="font-mono text-4xl font-bold text-foreground">
+                      {config.pricing.fabrk.display.current}
+                    </span>
+                  </div>
+                  <div className="mt-2 font-mono text-xs text-muted-foreground">
+                    TERMS: SINGLE_PAYMENT
+                  </div>
                 </div>
+
+                {/* Features List */}
+                <div className="mb-6">
+                  <div className="mb-3 font-mono text-xs text-muted-foreground">INCLUDES:</div>
+                  <div className="space-y-2">
+                    {features.map((feature, idx) => (
+                      <motion.div
+                        key={feature}
+                        initial={{ opacity: 0, x: -8 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.2 + idx * 0.05 }}
+                        viewport={{ once: true }}
+                        className="font-mono text-xs"
+                      >
+                        <span className="text-success">&gt;</span>
+                        <span className="ml-2 text-foreground">{feature}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <PolarCheckoutButton className="w-full font-mono text-sm">
+                  &gt; EXECUTE: GET_LIFETIME_ACCESS
+                </PolarCheckoutButton>
               </div>
-
-              {/* CTA Button */}
-              <PolarCheckoutButton className="mb-8 w-full gap-2">
-                Get Lifetime Access <ArrowRight className="size-4" />
-              </PolarCheckoutButton>
-
-              {/* Features List */}
-              <ul className="space-y-3">
-                {features.map((feature, idx) => (
-                  <motion.li
-                    key={feature}
-                    initial={{ opacity: 0, x: -8 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 + idx * 0.05 }}
-                    viewport={{ once: true }}
-                    className="flex items-start gap-3"
-                  >
-                    <Check className="mt-0.5 size-5 shrink-0 text-primary" strokeWidth={2} />
-                    <Small className="text-foreground">{feature}</Small>
-                  </motion.li>
-                ))}
-              </ul>
             </div>
 
             {/* Trust Badge */}
@@ -120,11 +140,13 @@ export function PricingSection() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               viewport={{ once: true }}
-              className="mt-4 text-center"
+              className="mt-4"
             >
-              <Small className="text-muted-foreground">
-                Secure checkout powered by Polar. All sales are final.
-              </Small>
+              <div className="border border-border p-3 text-center">
+                <span className="font-mono text-xs text-muted-foreground">
+                  [SECURE]: Checkout powered by Polar. All sales are final.
+                </span>
+              </div>
             </motion.div>
           </motion.div>
         </div>

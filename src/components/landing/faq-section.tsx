@@ -1,19 +1,13 @@
 /**
  * ✅ FABRK COMPONENT
- * FAQ Section - Achromatic-style tabbed FAQ
+ * FAQ Section - Terminal console [KNOWLEDGE_BASE] style
  * Production-ready ✓
  */
 "use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { H2, Body, Small } from "@/components/ui/typography";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type FAQCategory = "general" | "technical" | "payment" | "license";
@@ -116,11 +110,54 @@ const faqs: FAQ[] = [
 ];
 
 const categories: { id: FAQCategory; label: string }[] = [
-  { id: "general", label: "General" },
-  { id: "technical", label: "Technical" },
-  { id: "payment", label: "Payment" },
-  { id: "license", label: "License" },
+  { id: "general", label: "GENERAL" },
+  { id: "technical", label: "TECHNICAL" },
+  { id: "payment", label: "PAYMENT" },
+  { id: "license", label: "LICENSE" },
 ];
+
+interface FAQItemProps {
+  question: string;
+  answer: string;
+  index: number;
+}
+
+function FAQItem({ question, answer, index }: FAQItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className="border border-border"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-muted/50"
+      >
+        <span className="font-mono text-sm">
+          <span className="text-primary">&gt;</span>
+          <span className="ml-2 text-muted-foreground">QUERY:</span>
+          <span className="ml-2 text-foreground">{question}</span>
+        </span>
+        <ChevronDown
+          className={cn(
+            "size-4 text-muted-foreground transition-transform",
+            isOpen && "rotate-180"
+          )}
+        />
+      </button>
+      {isOpen && (
+        <div className="border-t border-border bg-muted/30 p-4">
+          <span className="font-mono text-xs text-muted-foreground">[RESPONSE]: </span>
+          <span className="font-mono text-xs text-foreground">{answer}</span>
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 export function FAQSection() {
   const [activeCategory, setActiveCategory] = useState<FAQCategory>("general");
@@ -139,9 +176,14 @@ export function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
+          className="mb-10"
         >
-          <H2 className="mb-4">Frequently Asked Questions</H2>
+          <div className="mb-4 inline-block border border-border px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[KNOWLEDGE_BASE]: QUERY_SYSTEM</span>
+          </div>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+            Frequently Asked Questions
+          </h2>
         </motion.div>
 
         {/* Two Column Layout */}
@@ -152,22 +194,24 @@ export function FAQSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-row gap-2 lg:flex-col lg:gap-1"
           >
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={cn(
-                  "rounded-md px-4 py-2 text-left text-sm font-medium transition-colors",
-                  activeCategory === category.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                )}
-              >
-                {category.label}
-              </button>
-            ))}
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[CATEGORIES]:</div>
+            <div className="flex flex-row gap-2 lg:flex-col lg:gap-1">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={cn(
+                    "border px-4 py-2 text-left font-mono text-xs transition-colors",
+                    activeCategory === category.id
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                  )}
+                >
+                  &gt; {category.label}
+                </button>
+              ))}
+            </div>
           </motion.div>
 
           {/* FAQ List */}
@@ -176,23 +220,16 @@ export function FAQSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-2"
           >
-            <Accordion type="single" collapsible className="w-full">
-              {filteredFaqs.map((faq, index) => (
-                <AccordionItem
-                  key={`${activeCategory}-${index}`}
-                  value={`item-${index}`}
-                  className="border-b border-border"
-                >
-                  <AccordionTrigger className="py-4 text-left text-base font-medium text-foreground hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4 text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            {filteredFaqs.map((faq, index) => (
+              <FAQItem
+                key={`${activeCategory}-${index}`}
+                question={faq.question}
+                answer={faq.answer}
+                index={index}
+              />
+            ))}
           </motion.div>
         </div>
       </div>
