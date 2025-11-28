@@ -13,7 +13,7 @@ export default function ThemingPage() {
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Theming & Customization</h1>
         <p className="text-lg text-muted-foreground">
-          Choose from 6 professionally-designed color themes or create your own.
+          Choose from 20 professionally-designed color themes or create your own.
         </p>
       </div>
 
@@ -21,7 +21,11 @@ export default function ThemingPage() {
         <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">Theme System</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li><strong>6 Color Themes:</strong> Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red</li>
+            <li><strong>20 Color Themes:</strong> Inspired by{" "}
+              <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                DaisyUI's theme system
+              </a>
+            </li>
             <li><strong>Light/Dark Mode:</strong> Automatic dark mode with next-themes</li>
             <li><strong>Persistent:</strong> Theme choice saved to localStorage</li>
             <li><strong>No Flash:</strong> Pre-hydration loading prevents theme flash</li>
@@ -32,7 +36,10 @@ export default function ThemingPage() {
 
       {/* Available Themes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Available Color Themes (6)</h2>
+        <h2 className="text-2xl font-semibold">Available Color Themes (20)</h2>
+        <p className="text-muted-foreground">
+          Includes Light, Dark, Cupcake, Bumblebee, Emerald, Corporate, Synthwave, Retro, Cyberpunk, Valentine, Halloween, Garden, Forest, Aqua, Lofi, Pastel, Fantasy, Wireframe, Black, Luxury, Dracula, and more.
+        </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardContent className="p-4">
@@ -159,7 +166,7 @@ export function MyNavbar() {
   --ring: 217.2 91.2% 59.8%;
 }
 
-/* ...and 4 more themes */`} />
+/* ...and 18 more DaisyUI-inspired themes */`} />
       </div>
 
       {/* Using Theme Colors */}
@@ -269,6 +276,37 @@ export function MyNavbar() {
                 <strong>localStorage</strong> - Persists user theme preference (key: 'theme')
               </div>
             </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Credits */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Credits & Inspiration</h2>
+        <Card className="border-primary/20 bg-primary/5">
+          <CardContent className="p-6">
+            <p className="text-muted-foreground">
+              Fabrk's theme system is inspired by{" "}
+              <a
+                href="https://daisyui.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-semibold hover:underline"
+              >
+                DaisyUI
+              </a>
+              , a popular Tailwind CSS component library with an excellent theme system.
+              Check out their{" "}
+              <a
+                href="https://daisyui.com/docs/themes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                theme documentation
+              </a>
+              {" "}for more theme ideas and color inspiration.
+            </p>
           </CardContent>
         </Card>
       </div>
