@@ -18,13 +18,13 @@ export default function ApiKeysPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] API_KEYS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">API_KEYS</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting.
         </p>
       </div>
 
       <Card className="mb-8">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             The API keys system provides secure programmatic access to your application&apos;s API.
@@ -32,11 +32,11 @@ export default function ApiKeysPage() {
             using timing-safe comparison to prevent timing attacks.
           </p>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>256-bit keys:</strong> Cryptographically secure random generation</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>SHA-256 hashing:</strong> Only hashes stored in database</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Timing-safe validation:</strong> Prevents timing attacks</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Rate limiting:</strong> Protect against abuse</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Scoped permissions:</strong> Fine-grained access control</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>256-bit keys:</strong> Cryptographically secure random generation</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>SHA-256 hashing:</strong> Only hashes stored in database</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Timing-safe validation:</strong> Prevents timing attacks</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Rate limiting:</strong> Protect against abuse</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Scoped permissions:</strong> Fine-grained access control</li>
           </ul>
         </CardContent>
       </Card>
@@ -353,17 +353,17 @@ export async function GET(req: Request) {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">SECURITY_BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Never log full keys:</strong> Only log the prefix for debugging</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Show key once:</strong> Display the full key only at creation time</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Use HTTPS only:</strong> Never transmit keys over HTTP</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Implement expiration:</strong> Set reasonable expiration dates</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Allow revocation:</strong> Users should be able to revoke keys instantly</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Track usage:</strong> Log last used timestamps and access patterns</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Scope permissions:</strong> Follow principle of least privilege</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Rate limit aggressively:</strong> Protect against brute force and abuse</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Never log full keys:</strong> Only log the prefix for debugging</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Show key once:</strong> Display the full key only at creation time</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use HTTPS only:</strong> Never transmit keys over HTTP</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Implement expiration:</strong> Set reasonable expiration dates</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Allow revocation:</strong> Users should be able to revoke keys instantly</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Track usage:</strong> Log last used timestamps and access patterns</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Scope permissions:</strong> Follow principle of least privilege</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Rate limit aggressively:</strong> Protect against brute force and abuse</li>
           </ul>
         </CardContent>
       </Card>

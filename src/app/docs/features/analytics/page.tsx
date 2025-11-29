@@ -24,7 +24,7 @@ export default function AnalyticsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
             Fabrk integrates PostHog for comprehensive product analytics. Track user behavior,
@@ -288,7 +288,7 @@ export async function POST(req: Request) {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
           <div className="font-mono text-xs text-muted-foreground space-y-1">
             <div>├─ Use consistent naming: Follow a convention like <code className="bg-muted px-1 font-mono text-xs">object_action</code></div>

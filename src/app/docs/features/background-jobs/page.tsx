@@ -24,7 +24,7 @@ export default function BackgroundJobsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
             Background jobs allow you to offload time-consuming tasks from your API routes
@@ -467,7 +467,7 @@ services:
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
           <div className="font-mono text-xs text-muted-foreground space-y-1">
             <div>├─ Keep payloads small: Store IDs and fetch data in the worker</div>

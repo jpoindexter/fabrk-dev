@@ -14,15 +14,15 @@ export default function FAQComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FAQ_SECTION</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Frequently asked questions component with accordion-style answers.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">FAQSection</code> - Complete FAQ section with accordion</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Accordion</code> - Base accordion component for custom FAQs</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">Collapsible</code> - Simple collapsible content</li>
@@ -180,7 +180,7 @@ export function CollapsibleFAQ() {
         </Button>
       </CollapsibleTrigger>
       <CollapsibleContent className="pt-4">
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Additional details that are hidden by default...
         </p>
       </CollapsibleContent>

@@ -15,15 +15,15 @@ export default function WebhooksTutorialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] WEBHOOKS_SETUP</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">WEBHOOKS_SETUP</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Build a production-grade webhook system with 22 event types, HMAC-SHA256 verification, and automatic retries.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h3 className="mb-2 font-mono text-xs font-semibold">WHAT'S_INCLUDED</h3>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ 22 webhook event types across 5 categories</div>
             <div>├─ HMAC-SHA256 signature verification</div>
             <div>├─ Automatic retry with exponential backoff</div>
@@ -38,7 +38,7 @@ export default function WebhooksTutorialPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AVAILABLE_WEBHOOK_EVENTS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Events are organized into 5 categories. Subscribe to specific events or entire categories:
           </p>
         </div>
@@ -77,7 +77,7 @@ security.password_changed  // Password changed`} />
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TRIGGERING_WEBHOOKS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Trigger webhooks from your application code using{" "}
             <code className="bg-muted px-1 font-mono text-xs">src/lib/webhooks/server.ts</code>:
           </p>
@@ -119,7 +119,7 @@ await triggerWebhook(
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">HMAC_SHA256_VERIFICATION</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             All webhooks are signed with HMAC-SHA256. Recipients must verify the signature to ensure authenticity:
           </p>
         </div>
@@ -164,10 +164,10 @@ export async function POST(request: Request) {
       {/* Webhook Headers */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">WEBHOOK_HEADERS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Every webhook delivery includes these headers:
         </p>
-        <div className="space-y-1 font-mono text-sm text-muted-foreground">
+        <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Signature</code> - HMAC-SHA256 signature</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Event</code> - Event type (e.g., payment.succeeded)</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Delivery-ID</code> - Unique delivery ID</div>
@@ -181,7 +181,7 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PAYLOAD_STRUCTURE</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             All webhook payloads follow this structure:
           </p>
         </div>
@@ -203,12 +203,12 @@ export async function POST(request: Request) {
       {/* Retry Logic */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AUTOMATIC_RETRY_LOGIC</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Failed deliveries are automatically retried with exponential backoff:
         </p>
         <Card className="rounded-none">
-          <CardContent className="p-4">
-            <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <CardContent className="p-6">
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ <strong>Attempt 1:</strong> Immediate</div>
               <div>├─ <strong>Retry 1:</strong> After 1 minute</div>
               <div>├─ <strong>Retry 2:</strong> After 5 minutes</div>
@@ -227,8 +227,8 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SECURITY_BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
-            <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <CardContent className="p-6">
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ <strong>Always verify signatures</strong> - Never process unverified webhooks</div>
               <div>├─ <strong>Use timing-safe comparison</strong> - Prevents timing attacks</div>
               <div>├─ <strong>Store secrets securely</strong> - Use environment variables</div>
@@ -246,7 +246,7 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TESTING_WEBHOOKS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Use tools like ngrok to test webhooks locally:
           </p>
         </div>
@@ -279,7 +279,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-xs font-semibold">API_ROUTES</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   Build more API endpoints
@@ -289,7 +289,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
           </Link>
           <Link href="/docs/tutorials/stripe-payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-xs font-semibold">STRIPE_PAYMENTS</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   Trigger payment webhooks

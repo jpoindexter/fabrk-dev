@@ -14,13 +14,13 @@ export default function DataDisplayComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATA_DISPLAY</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Components for displaying data including tables, cards, badges, and more.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Table</code> - Data table with sorting and filtering</li>

@@ -27,7 +27,7 @@ export default function OrganizationsPage() {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-xs text-muted-foreground mb-4">
               Fabrk includes a complete multi-tenancy system for B2B SaaS applications:
             </p>
@@ -109,7 +109,7 @@ model OrganizationInvite {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">ROLE_PERMISSIONS</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="overflow-x-auto">
               <table className="w-full font-mono text-xs">
                 <thead>
@@ -549,7 +549,7 @@ function TeamPage() {
 
         <div className="grid gap-4">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">TEAM_WORKSPACES</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Each organization has its own workspace with projects, files, or data. Members see only their organization's content.
@@ -558,7 +558,7 @@ function TeamPage() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">PER_SEAT_BILLING</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Charge based on organization member count. Track seats in Stripe metadata and update on member changes.
@@ -567,7 +567,7 @@ function TeamPage() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">ADMIN_DASHBOARD</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Give admins a dashboard to manage members, view activity, and configure organization settings.
@@ -576,7 +576,7 @@ function TeamPage() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.
@@ -589,7 +589,7 @@ function TeamPage() {
       <section>
         <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="font-mono text-xs text-muted-foreground space-y-1">
               <div>├─ Always check permissions before any organization action</div>
               <div>├─ Use database transactions for multi-step operations</div>

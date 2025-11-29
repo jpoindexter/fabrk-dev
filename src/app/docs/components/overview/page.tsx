@@ -200,7 +200,7 @@ export default function ComponentsOverviewPage() {
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">
           UI_COMPONENTS_LIBRARY
         </h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; 100+ production-ready components built with Radix UI and Tailwind CSS.
         </p>
       </div>
@@ -261,7 +261,7 @@ export default function ComponentsOverviewPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">IMPORT_PATTERN</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <pre className="font-mono text-xs text-muted-foreground">
               {`// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
@@ -276,7 +276,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
       {/* Component Docs Links */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DETAILED_DOCUMENTATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; See individual component pages for usage examples and API reference:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">

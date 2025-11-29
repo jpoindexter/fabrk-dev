@@ -15,13 +15,13 @@ export default function AuditLoggingPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">AUDIT_LOGGING</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Track security-relevant events and user actions for compliance and debugging.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Database-backed audit log storage</li>
@@ -427,9 +427,9 @@ async function sendSecurityAlert(log: AuditLog) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">Schema Validation</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Validate all inputs with Zod
                 </p>
               </CardContent>
@@ -437,9 +437,9 @@ async function sendSecurityAlert(log: AuditLog) {
           </Link>
           <Link href="/docs/deployment/database">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">Database Setup</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Set up production database
                 </p>
               </CardContent>

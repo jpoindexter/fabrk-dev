@@ -18,13 +18,13 @@ export default function WebhooksPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">WEBHOOKS_SYSTEM</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff.
         </p>
       </div>
 
       <Card className="mb-8">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             The webhooks system allows your application to send HTTP callbacks to external services when
@@ -32,16 +32,16 @@ export default function WebhooksPage() {
             external workflows, and keeping systems in sync.
           </p>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>22 Event Types:</strong> User, payment, organization, and system events</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>HMAC-SHA256 Verification:</strong> Secure signature verification for all deliveries</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Automatic Retries:</strong> Exponential backoff with configurable retry limits</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Delivery Tracking:</strong> Full history of webhook deliveries and responses</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>22 Event Types:</strong> User, payment, organization, and system events</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>HMAC-SHA256 Verification:</strong> Secure signature verification for all deliveries</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Automatic Retries:</strong> Exponential backoff with configurable retry limits</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Delivery Tracking:</strong> Full history of webhook deliveries and responses</li>
           </ul>
         </CardContent>
       </Card>
 
       <Card className="mb-8">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">EVENT_TYPES</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Available webhook event types organized by category:
@@ -301,15 +301,15 @@ async function queueWebhookRetry(
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">SECURITY_BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
           </ul>
         </CardContent>
       </Card>

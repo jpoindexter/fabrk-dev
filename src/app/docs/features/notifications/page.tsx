@@ -18,11 +18,11 @@ export default function NotificationsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NOTIFICATIONS_SYSTEM</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
       </div>
 
       <Card className="mb-8">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             The notifications system combines real-time delivery via Pusher with database persistence
@@ -30,10 +30,10 @@ export default function NotificationsPage() {
             bell icon indicator and can manage their notification history.
           </p>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Real-time delivery:</strong> Instant push via Pusher</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Persistence:</strong> Stored in database for history</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Bell icon badge:</strong> Visual unread count indicator</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Read/Unread states:</strong> Mark individual or all as read</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Real-time delivery:</strong> Instant push via Pusher</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Persistence:</strong> Stored in database for history</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Bell icon badge:</strong> Visual unread count indicator</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Read/Unread states:</strong> Mark individual or all as read</li>
           </ul>
         </CardContent>
       </Card>
@@ -318,15 +318,15 @@ export async function POST(req: Request) {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Be selective:</strong> Only notify for important, actionable events</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Clear titles:</strong> Make notifications scannable at a glance</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Include links:</strong> Let users take action directly from the notification</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Allow preferences:</strong> Let users control which notifications they receive</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Be selective:</strong> Only notify for important, actionable events</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Clear titles:</strong> Make notifications scannable at a glance</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Include links:</strong> Let users take action directly from the notification</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Allow preferences:</strong> Let users control which notifications they receive</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
           </ul>
         </CardContent>
       </Card>

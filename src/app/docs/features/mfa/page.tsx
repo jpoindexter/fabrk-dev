@@ -16,7 +16,7 @@ export default function MFAPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MFA</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">MULTI_FACTOR_AUTHENTICATION</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Add an extra layer of security with authenticator apps and backup codes.
         </p>
       </div>
@@ -25,12 +25,12 @@ export default function MFAPage() {
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_TWO_FACTOR_AUTHENTICATION</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Two-factor authentication (2FA) adds an extra step to logging in. After entering your
             password, you also need to provide a code from your phone. Even if someone steals
             your password, they can&apos;t access your account without your phone.
           </p>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Think of it like a bank vault with two locks - you need both keys to get in. Your
             password is one key, the code from your phone is the other.
           </p>
@@ -67,58 +67,58 @@ export default function MFAPage() {
       {/* What's Included */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">WHATS_BUILT_IN</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk v1.1 includes a complete TOTP (Time-based One-Time Password) implementation:
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">QR_CODE_SETUP</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Users scan a QR code with their authenticator app. Works with Google
                 Authenticator, Authy, 1Password, and more.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">MANUAL_ENTRY</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Can&apos;t scan? Users can manually enter the secret key into their
                 authenticator app.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">6_DIGIT_CODES</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Standard TOTP codes that change every 30 seconds. RFC 6238 compliant.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">10_BACKUP_CODES</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 One-time use codes (XXXX-XXXX format) for account recovery if
                 phone is lost.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">ENABLE_DISABLE_TOGGLE</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Users can turn 2FA on or off from security settings with proper
                 verification.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">AUDIT_LOGGING</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 All 2FA events (setup, verification, disable) are logged for
                 security audits.
               </p>
@@ -169,11 +169,11 @@ export default function MFAPage() {
       {/* Configuration */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           2FA is already set up and ready to use. Users enable it from their security settings.
           No additional configuration required.
         </p>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Optionally customize the issuer name (shown in authenticator apps) in{" "}
           <code className="font-mono bg-muted px-1">src/config.js</code>:
         </p>
@@ -191,12 +191,12 @@ export const config = {
       {/* Security Settings UI */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">SECURITY_SETTINGS_PAGE</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk includes a pre-built security settings component at{" "}
           <code className="font-mono bg-muted px-1">/settings/security</code>:
         </p>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <h3 className="font-mono font-semibold mb-3">WHATS_INCLUDED</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -226,7 +226,7 @@ export const config = {
 
         <div className="space-y-2">
           <h3 className="font-mono font-semibold">USING_THE_MFA_LIBRARY</h3>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             The MFA functions are available in <code className="font-mono bg-muted px-1">src/lib/auth/mfa.ts</code>:
           </p>
           <CodeBlock language="typescript" code={`import {
@@ -263,7 +263,7 @@ const { valid, remainingCodes } = await verifyBackupCode(
 
         <div className="space-y-2 mt-6">
           <h3 className="font-mono font-semibold">CHECK_IF_USER_HAS_2FA_ENABLED</h3>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             In your API routes:
           </p>
           <CodeBlock language="typescript" code={`// Check if user has 2FA enabled
@@ -304,7 +304,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
         <h2 className="font-mono text-lg font-bold">ABOUT_BACKUP_CODES</h2>
         <Card className="bg-muted/50">
           <CardContent className="p-6 space-y-4">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Backup codes are essential for account recovery. They let users log in even if they
               lose access to their authenticator app (lost phone, new device, etc.).
             </p>
@@ -420,22 +420,22 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* Future Enhancements */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">FUTURE_ENHANCEMENTS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">SMS_VERIFICATION</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Text message codes as an alternative (requires Twilio integration).
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">WEBAUTHN_PASSKEYS</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Hardware security keys and biometric authentication (Touch ID, Face ID).
               </p>
             </CardContent>
@@ -449,9 +449,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">AUTHENTICATION_BASICS</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Learn about the core authentication system 2FA builds on.
                 </p>
               </CardContent>
@@ -459,9 +459,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           </Link>
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">SECURITY_HEADERS</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Learn about security headers and CSRF protection.
                 </p>
               </CardContent>

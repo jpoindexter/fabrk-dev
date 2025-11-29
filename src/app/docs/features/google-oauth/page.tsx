@@ -23,7 +23,7 @@ export default function GoogleOAuthPage() {
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk supports Google OAuth through NextAuth v5 with:
             </p>
@@ -234,7 +234,7 @@ export function LoginForm() {
 
         <div className="grid gap-3">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-1">Frictionless Onboarding</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Reduce signup friction with one-click Google sign-in. Users can start using your app in seconds without creating a password.
@@ -243,7 +243,7 @@ export function LoginForm() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-1">Account Linking</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Allow existing email/password users to link their Google account for faster future logins while keeping their existing data.
@@ -252,7 +252,7 @@ export function LoginForm() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-1">G Suite Organizations</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Perfect for B2B SaaS targeting companies using Google Workspace. Users sign in with their work Google accounts.
@@ -261,7 +261,7 @@ export function LoginForm() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-1">Profile Sync</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Automatically sync user profile photo and name from Google, reducing setup steps and improving UX.
@@ -274,7 +274,7 @@ export function LoginForm() {
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="space-y-3">
               <div>
                 <h4 className="font-mono text-xs font-semibold mb-1">Error: redirect_uri_mismatch</h4>
@@ -302,7 +302,7 @@ export function LoginForm() {
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Always offer email/password as an alternative to OAuth</li>
               <li>├─ Handle account linking for users who sign up with email first</li>

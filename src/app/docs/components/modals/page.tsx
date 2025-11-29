@@ -20,7 +20,7 @@ export default function ModalsComponentsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Dialog</code> - Modal dialog for forms and confirmations</li>
@@ -258,7 +258,7 @@ export function NotificationPopover() {
         <div className="space-y-4">
           <h4 className="font-medium">Notifications</h4>
           <div className="space-y-2">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               You have 3 unread messages
             </p>
           </div>

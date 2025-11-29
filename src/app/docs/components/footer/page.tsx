@@ -14,15 +14,15 @@ export default function FooterComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Footer components with links, branding, and legal information.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">Separator</code> - Visual divider</li>
@@ -172,7 +172,7 @@ export function CustomFooter() {
         <Separator className="my-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             © {new Date().getFullYear()} Fabrk. All rights reserved.
           </p>
           <div className="flex gap-4">
@@ -202,7 +202,7 @@ export function SimpleFooter() {
     <footer className="border-t border-border">
       <div className="container py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             © {new Date().getFullYear()} Your Company
           </p>
           <nav className="flex gap-6">

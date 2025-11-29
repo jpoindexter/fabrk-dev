@@ -15,13 +15,13 @@ export default function BotProtectionPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] BOT_PROTECTION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BOT_PROTECTION</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Detect and block automated bot traffic with multiple protection strategies.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h3 className="mb-2 font-mono font-semibold">What's Included</h3>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Honeypot fields for form protection</li>
@@ -405,9 +405,9 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/rate-limiting">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">Rate Limiting</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Limit requests per IP or user
                 </p>
               </CardContent>
@@ -415,9 +415,9 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
           </Link>
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">Audit Logging</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Log bot detection events
                 </p>
               </CardContent>

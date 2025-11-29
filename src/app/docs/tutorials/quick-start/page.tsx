@@ -15,14 +15,14 @@ export default function QuickStartPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x00] TUTORIALS ] QUICK_START</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">QUICK_START_LAUNCH_MVP</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Assemble a production-ready landing page and core features in minutes.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
-          <p className="font-mono text-sm text-muted-foreground">
+        <CardContent className="p-6">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             This guide assumes you have completed the{" "}
             <Link href="/docs/getting-started" className="text-primary hover:underline">
               Getting Started
@@ -39,11 +39,11 @@ export default function QuickStartPage() {
           <h2 className="font-mono text-lg font-bold">ASSEMBLE_LANDING_PAGE</h2>
         </div>
         <div className="space-y-2">
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Fabrk uses a component-driven architecture. Instead of building from scratch,
             compose your landing page using our pre-built, accessible sections.
           </p>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Update <code className="bg-muted px-1 font-mono text-xs">src/app/page.tsx</code>:
           </p>
         </div>
@@ -82,11 +82,11 @@ export default function HomePage() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
           <h2 className="font-mono text-lg font-bold">CUSTOMIZE_CONTENT_BRANDING</h2>
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Navigate to <code className="bg-muted px-1 font-mono text-xs">src/components/landing/</code> to customize each section.
           The components are built with Tailwind CSS, making them easy to style.
         </p>
-        <div className="space-y-1 font-mono text-sm text-muted-foreground">
+        <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">hero-section.tsx</code>: Update the H1, subheadline, and CTA.</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">features-section.tsx</code>: Highlight your product's unique value proposition.</div>
           <div>└─ <code className="bg-muted px-1 font-mono text-xs">pricing-section.tsx</code>: Define your pricing tiers (linked to Stripe).</div>
@@ -100,7 +100,7 @@ export default function HomePage() {
           <h2 className="font-mono text-lg font-bold">CONFIGURE_APP_METADATA</h2>
         </div>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Fabrk centralizes configuration to avoid hardcoded values scattered across the codebase.
             Open <code className="bg-muted px-1 font-mono text-xs">src/config.js</code>:
           </p>
@@ -126,7 +126,7 @@ export default function HomePage() {
           <h2 className="font-mono text-lg font-bold">ENABLE_LEAD_CAPTURE</h2>
         </div>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             If you are launching a "Coming Soon" page, swap the primary CTA for the Waitlist component.
             This saves emails directly to your database.
           </p>
@@ -147,7 +147,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
           <h2 className="font-mono text-lg font-bold">PRODUCTION_DEPLOYMENT</h2>
         </div>
         <div className="space-y-2">
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Fabrk is optimized for Vercel. Deploying is as simple as pushing your code.
           </p>
         </div>
@@ -156,7 +156,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
 git commit -m "Initial MVP release"
 git push origin main`} />
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Once connected to Vercel, your site will be live with automatic SSL, edge caching, and CI/CD.
         </p>
       </div>
@@ -167,7 +167,7 @@ git push origin main`} />
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-base font-semibold">Setup Authentication</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   Configure Google OAuth and secure sessions
@@ -177,7 +177,7 @@ git push origin main`} />
           </Link>
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-base font-semibold">Configure Payments</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   Connect Stripe for subscriptions

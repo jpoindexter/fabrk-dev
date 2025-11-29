@@ -22,7 +22,7 @@ export default function SEOPage() {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-xs text-muted-foreground mb-4">
               Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides:
             </p>
@@ -224,7 +224,7 @@ export default async function sitemap() {
 
         <div className="grid gap-4">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">LANDING_PAGE_SEO</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
@@ -233,7 +233,7 @@ export default async function sitemap() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">BLOG_POST_OPTIMIZATION</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
@@ -242,7 +242,7 @@ export default async function sitemap() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">PRODUCT_PAGES</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
@@ -251,7 +251,7 @@ export default async function sitemap() {
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">LOCALIZED_CONTENT</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
@@ -264,7 +264,7 @@ export default async function sitemap() {
       <section>
         <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="font-mono text-xs text-muted-foreground space-y-1">
               <div>├─ Keep titles under 60 characters for full display in search results</div>
               <div>├─ Write descriptions between 120-160 characters</div>

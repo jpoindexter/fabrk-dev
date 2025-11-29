@@ -27,7 +27,7 @@ export default function EmailsPage() {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-4">
               Fabrk uses Resend for email delivery with lightweight HTML templates. The system supports:
             </p>
@@ -62,7 +62,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
           <h3 className="font-mono text-base font-semibold">CONFIGURE_DOMAIN</h3>
         </div>
         <Card className="rounded-none mb-6">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-3">Set up your sending domain in Resend dashboard:</p>
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Go to Resend Dashboard → Domains</li>
@@ -141,7 +141,7 @@ export function generateWelcomeEmailHTML({
         <h3 className="font-mono text-base font-semibold mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-sm text-muted-foreground">For immediate delivery (verification, password reset):</p>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">For immediate delivery (verification, password reset):</p>
           </div>
         </div>
         <CodeBlock language="typescript" code={`import { sendVerificationEmail, sendResetEmail } from "@/lib/email";
@@ -163,7 +163,7 @@ await sendResetEmail({
         <h3 className="font-mono text-base font-semibold mb-3">QUEUED_SENDING_TRANSACTIONAL</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-sm text-muted-foreground">For non-urgent emails (welcome, receipts):</p>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">For non-urgent emails (welcome, receipts):</p>
           </div>
         </div>
         <CodeBlock language="typescript" code={`import { queueWelcomeEmail, queueConfirmationEmail } from "@/lib/email";
@@ -187,7 +187,7 @@ await queueConfirmationEmail({
         <h3 className="font-mono text-base font-semibold mb-3">CUSTOM_EMAIL_SENDING</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-sm text-muted-foreground">Send any HTML content:</p>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">Send any HTML content:</p>
           </div>
         </div>
         <CodeBlock language="typescript" code={`import { Resend } from "resend";
@@ -205,7 +205,7 @@ await resend.emails.send({
         <h3 className="font-mono text-base font-semibold mb-3">BATCH_SENDING</h3>
         <div className="space-y-4">
           <div>
-            <p className="font-mono text-sm text-muted-foreground">Send to multiple recipients:</p>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">Send to multiple recipients:</p>
           </div>
         </div>
         <CodeBlock language="typescript" code={`import { Resend } from "resend";
@@ -230,36 +230,36 @@ await resend.batch.send(emails);`} />
 
         <div className="grid gap-4">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-base font-semibold mb-2">User Onboarding Sequence</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Queue a series of welcome emails with delays: Day 1 welcome, Day 3 tips, Day 7 feature highlight. Use the job queue for scheduling.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-base font-semibold mb-2">Organization Invites</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Send branded invite emails with accept/decline links. Include inviter name and organization details for context.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-base font-semibold mb-2">Payment Receipts</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Automatic receipt emails triggered by Stripe webhooks. Include amount, product details, and link to invoice PDF.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-base font-semibold mb-2">Activity Notifications</h3>
-              <p className="font-mono text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Notify users of important events: new team member joined, project updated, comment received. Respect notification preferences.
               </p>
             </CardContent>
@@ -270,7 +270,7 @@ await resend.batch.send(emails);`} />
       <section>
         <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
               <li>Use direct send for auth emails, queue for everything else</li>
               <li>Always include unsubscribe links for marketing emails</li>

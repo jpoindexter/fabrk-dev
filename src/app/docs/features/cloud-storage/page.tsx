@@ -16,19 +16,19 @@ export default function CloudStoragePage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CLOUD_STORAGE</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Upload and store files securely with automatic provider detection.</p>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Upload and store files securely with automatic provider detection.</p>
       </div>
 
       {/* What is Cloud Storage - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_CLOUD_STORAGE</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Cloud storage lets you save files (images, documents, videos) on remote servers
             instead of your own. This is essential when users need to upload profile pictures,
             documents, or any other files.
           </p>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Think of it like Google Drive or Dropbox for your app - files are stored securely
             in the cloud and can be accessed from anywhere.
           </p>
@@ -65,13 +65,13 @@ export default function CloudStoragePage() {
       {/* How Fabrk Storage Works */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">HOW_FABRK_STORAGE_WORKS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk automatically detects which storage provider you have configured and uses it.
           This means you can start with local storage during development and switch to cloud
           in production without changing your code.
         </p>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <h3 className="font-mono font-semibold mb-3">PROVIDER_PRIORITY</h3>
             <div className="space-y-2">
               <div className="flex items-center gap-3 p-3 border">
@@ -105,7 +105,7 @@ export default function CloudStoragePage() {
         <h2 className="font-mono text-lg font-bold">CHOOSING_A_PROVIDER</h2>
         <div className="grid gap-4 sm:grid-cols-3">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">CLOUDFLARE_R2</h3>
               <p className="font-mono text-xs text-muted-foreground mb-2">Recommended</p>
               <ul className="text-sm text-muted-foreground space-y-1">
@@ -117,7 +117,7 @@ export default function CloudStoragePage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">AWS_S3</h3>
               <p className="font-mono text-xs text-muted-foreground mb-2">Industry Standard</p>
               <ul className="text-sm text-muted-foreground space-y-1">
@@ -129,7 +129,7 @@ export default function CloudStoragePage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono font-semibold">LOCAL_STORAGE</h3>
               <p className="font-mono text-xs text-muted-foreground mb-2">Development Only</p>
               <ul className="text-sm text-muted-foreground space-y-1">
@@ -146,7 +146,7 @@ export default function CloudStoragePage() {
       {/* Setup - R2 */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">SETUP_CLOUDFLARE_R2</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           R2 is the recommended provider due to zero egress fees. Here&apos;s how to set it up:
         </p>
 
@@ -156,7 +156,7 @@ export default function CloudStoragePage() {
           </span>
           <h3 className="font-mono font-semibold">CREATE_R2_BUCKET</h3>
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           In Cloudflare Dashboard, go to &quot;R2 Object Storage&quot; → &quot;Create bucket&quot;.
           Name it something like <code className="font-mono bg-muted px-1">my-saas-uploads</code>.
         </p>
@@ -167,7 +167,7 @@ export default function CloudStoragePage() {
           </span>
           <h3 className="font-mono font-semibold">GENERATE_API_TOKEN</h3>
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Go to &quot;R2 Object Storage&quot; → &quot;Manage R2 API Tokens&quot; → &quot;Create API Token&quot;.
           Select &quot;Object Read &amp; Write&quot; permission and your bucket.
         </p>
@@ -193,7 +193,7 @@ CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`} />
       {/* Setup - S3 */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">SETUP_AWS_S3</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           If you prefer S3 or already use AWS:
         </p>
         <CodeBlock language="bash" code={`# .env.local
@@ -203,7 +203,7 @@ AWS_S3_ACCESS_KEY_ID="your-access-key-id"
 AWS_S3_SECRET_ACCESS_KEY="your-secret-access-key"
 AWS_S3_BUCKET="my-saas-uploads"
 AWS_S3_REGION="us-east-1"`} />
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Note: Make sure your IAM user has <code className="font-mono bg-muted px-1">s3:PutObject</code>,
           <code className="font-mono bg-muted px-1 ml-1">s3:GetObject</code>, and
           <code className="font-mono bg-muted px-1 ml-1">s3:DeleteObject</code> permissions.
@@ -215,7 +215,7 @@ AWS_S3_REGION="us-east-1"`} />
         <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
 
         <h3 className="font-mono font-semibold">UPLOAD_A_FILE</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Use the upload utility to store files:
         </p>
         <CodeBlock language="typescript" code={`import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
@@ -240,7 +240,7 @@ if (result.success) {
 }`} />
 
         <h3 className="font-mono font-semibold mt-6">FILE_VALIDATION</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Validate files before uploading:
         </p>
         <CodeBlock language="typescript" code={`import { validateFile } from "@/lib/storage/uploads";
@@ -264,7 +264,7 @@ if (!validation.valid) {
 }`} />
 
         <h3 className="font-mono font-semibold mt-6">API_ROUTE_EXAMPLE</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Handle file uploads in your API:
         </p>
         <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
@@ -367,7 +367,7 @@ export function FileUploader() {
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">SECURITY_CONSIDERATIONS</h2>
         <Card className="bg-muted">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -461,9 +461,9 @@ export function FileUploader() {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">AUTHENTICATION</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Secure file uploads with user authentication.
                 </p>
               </CardContent>
@@ -471,9 +471,9 @@ export function FileUploader() {
           </Link>
           <Link href="/docs/features/organizations">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">ORGANIZATIONS</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Organize files by team with multi-tenancy.
                 </p>
               </CardContent>

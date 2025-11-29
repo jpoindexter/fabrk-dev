@@ -20,7 +20,7 @@ export default function FormsComponentsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Input</code> - Text input field</li>
@@ -251,7 +251,7 @@ export function OTPInput() {
     <div className="space-y-2">
       <Label>Verification Code</Label>
       <InputOTP maxLength={6} />
-      <p className="font-mono text-sm text-muted-foreground">
+      <p className="font-mono text-sm text-muted-foreground leading-relaxed">
         Enter the code sent to your email
       </p>
     </div>

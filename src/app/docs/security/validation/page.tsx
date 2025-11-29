@@ -15,13 +15,13 @@ export default function SchemaValidationPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] VALIDATION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SCHEMA_VALIDATION</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Validate all inputs with Zod schemas for type-safe, secure data handling.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h3 className="mb-2 font-semibold">What's Included</h3>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Type-safe validation with Zod</li>
@@ -38,7 +38,7 @@ export default function SchemaValidationPage() {
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">BASIC_ZOD_SCHEMA</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Define schemas to validate data:
           </p>
         </div>
@@ -72,7 +72,7 @@ export type UserInput = z.infer<typeof userSchema>;`} />
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">API_ROUTE_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate request bodies in API routes:
           </p>
         </div>
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">COMMON_VALIDATION_PATTERNS</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Reusable validation patterns for common fields:
           </p>
         </div>
@@ -180,7 +180,7 @@ export const sortSchema = z.object({
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">FORM_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Use schemas with react-hook-form:
           </p>
         </div>
@@ -245,7 +245,7 @@ export function ContactForm() {
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">QUERY_PARAMETER_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate URL search params:
           </p>
         </div>
@@ -288,7 +288,7 @@ export async function GET(request: NextRequest) {
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">ENVIRONMENT_VARIABLE_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate environment variables at startup:
           </p>
         </div>
@@ -328,7 +328,7 @@ export const env = parsed.data;`} />
       <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold">CUSTOM_TRANSFORMATIONS</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Transform and sanitize data during validation:
           </p>
         </div>
@@ -374,9 +374,9 @@ const userInputSchema = z.object({
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-semibold">Audit Logging</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Track all security-relevant events
                 </p>
               </CardContent>
@@ -384,9 +384,9 @@ const userInputSchema = z.object({
           </Link>
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-semibold">API Routes</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Build secure API endpoints
                 </p>
               </CardContent>

@@ -20,9 +20,9 @@ export default function PricingComponentsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingSection</code> - Complete pricing section with plan cards</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingTable</code> - Detailed pricing table with feature comparison</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">PricingComparison</code> - Side-by-side plan comparison</li>

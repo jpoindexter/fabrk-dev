@@ -16,7 +16,7 @@ export default function GettingStartedPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">GETTING_STARTED</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Everything you need to launch your SaaS, from first download to first customer.
         </p>
       </div>
@@ -45,7 +45,7 @@ export default function GettingStartedPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-3">
               <h3 className="font-mono text-base font-semibold text-foreground">&gt; GREAT_FIT</h3>
-              <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+              <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                 <li>├─ Developers building their first SaaS</li>
                 <li>├─ Founders who can code</li>
                 <li>├─ Agencies building client projects</li>
@@ -54,7 +54,7 @@ export default function GettingStartedPage() {
             </div>
             <div className="space-y-3">
               <h3 className="font-mono text-base font-semibold text-foreground">&gt; REQUIREMENTS</h3>
-              <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+              <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                 <li>├─ Basic JavaScript/TypeScript</li>
                 <li>├─ Familiarity with React</li>
                 <li>├─ Node.js installed</li>
@@ -68,7 +68,7 @@ export default function GettingStartedPage() {
       {/* What's Included */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">WHATS_INCLUDED</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk handles the essential features every SaaS needs:
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -81,7 +81,7 @@ export default function GettingStartedPage() {
             { title: "LANDING_PAGE", desc: "Professional marketing page with hero, pricing, FAQ. Multiple styles." },
           ].map((item) => (
             <Card key={item.title} className="rounded-none">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-base font-semibold mb-2">{item.title}</h3>
                 <p className="font-mono text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
               </CardContent>
@@ -98,7 +98,7 @@ export default function GettingStartedPage() {
             5_MIN
           </span>
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Already know Next.js? Here&apos;s the fastest path:
         </p>
         <div className="[&>div]:rounded-none">
@@ -121,7 +121,7 @@ npm run db:push && npm run dev`}
       {/* Step-by-Step Guide */}
       <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           New to this? Let&apos;s walk through each step.
         </p>
 
@@ -311,7 +311,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
       {/* Optional Setup */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">OPTIONAL_FEATURES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Enable more features by adding API keys to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -323,7 +323,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
           ].map((item) => (
             <Link key={item.title} href={item.href}>
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
-                <CardContent className="p-4">
+                <CardContent className="p-6">
                   <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
                   <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
                   <span className="font-mono text-xs text-primary">&gt; SETUP_GUIDE</span>
@@ -346,7 +346,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
           ].map((item) => (
             <Link key={item.title} href={item.href}>
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
-                <CardContent className="p-4">
+                <CardContent className="p-6">
                   <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
                   <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
                 </CardContent>

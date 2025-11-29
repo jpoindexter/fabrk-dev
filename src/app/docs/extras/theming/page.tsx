@@ -15,15 +15,15 @@ export default function ThemingPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">THEMING_AND_CUSTOMIZATION</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Choose from 20 professionally-designed color themes or create your own.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h3 className="mb-2 font-mono text-xs font-semibold">Theme System</h3>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>20 Color Themes:</strong> Inspired by{" "}
               <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 DaisyUI's theme system
@@ -40,7 +40,7 @@ export default function ThemingPage() {
       {/* Available Themes */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AVAILABLE_COLOR_THEMES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           All themes from{" "}
           <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             DaisyUI
@@ -50,7 +50,7 @@ export default function ThemingPage() {
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {/* Light Themes */}
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#ffffff] border-2 border-border" />
                 <div>
@@ -61,7 +61,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#65c3c8] border-2 border-border" />
                 <div>
@@ -72,7 +72,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#e0a82e] border-2 border-border" />
                 <div>
@@ -83,7 +83,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#66cc8a] border-2 border-border" />
                 <div>
@@ -94,7 +94,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#4b6bfb] border-2 border-border" />
                 <div>
@@ -105,7 +105,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#ef9995] border-2 border-border" />
                 <div>
@@ -116,7 +116,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#d1c1d7] border-2 border-border" />
                 <div>
@@ -127,7 +127,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#6e0b75] border-2 border-border" />
                 <div>
@@ -138,7 +138,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#5c7f67] border-2 border-border" />
                 <div>
@@ -150,7 +150,7 @@ export default function ThemingPage() {
           </Card>
           {/* Dark Themes */}
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#1d232a] border-2 border-border" />
                 <div>
@@ -161,7 +161,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#e779c1] border-2 border-border" />
                 <div>
@@ -172,7 +172,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#ff7598] border-2 border-border" />
                 <div>
@@ -183,7 +183,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#e96d7b] border-2 border-border" />
                 <div>
@@ -194,7 +194,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#ff7700] border-2 border-border" />
                 <div>
@@ -205,7 +205,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#1eb854] border-2 border-border" />
                 <div>
@@ -216,7 +216,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#09ecf3] border-2 border-border" />
                 <div>
@@ -227,7 +227,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#0d0d0d] border-2 border-border" />
                 <div>
@@ -238,7 +238,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#ff79c6] border-2 border-border" />
                 <div>
@@ -249,7 +249,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#8c0327] border-2 border-border" />
                 <div>
@@ -260,7 +260,7 @@ export default function ThemingPage() {
             </CardContent>
           </Card>
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <div className="flex items-center gap-2">
                 <div className="h-6 w-6 rounded-full bg-[#1c4e80] border-2 border-border" />
                 <div>
@@ -276,7 +276,7 @@ export default function ThemingPage() {
       {/* Theme Dropdown Component */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">THEME_SWITCHER_COMPONENT</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The <code className="bg-muted px-1 font-mono text-xs">ThemeDropdown</code> component provides a compact dropdown for navbar:
         </p>
         <div className="[&>div]:rounded-none">
@@ -295,7 +295,7 @@ export function MyNavbar() {
       {/* How It Works */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
-        <p className="font-mono text-sm text-muted-foreground">Themes are applied via data-theme attribute:</p>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">Themes are applied via data-theme attribute:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
 <html data-theme="light">
@@ -314,7 +314,7 @@ export function MyNavbar() {
       {/* CSS Implementation */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CSS_IMPLEMENTATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Each DaisyUI theme defines CSS variables in <code className="bg-muted px-1 font-mono text-xs">globals.css</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -348,7 +348,7 @@ export function MyNavbar() {
       {/* Using Theme Colors */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">USING_THEME_COLORS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Always use semantic color classes that adapt to the active theme:
         </p>
         <div className="[&>div]:rounded-none">
@@ -375,7 +375,7 @@ export function MyNavbar() {
       {/* Adding Custom Themes */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ADDING_CUSTOM_THEMES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Add your own DaisyUI-style themes in 2 steps:
         </p>
         <div className="space-y-3">
@@ -420,8 +420,8 @@ export function MyNavbar() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
-            <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <CardContent className="p-6">
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ <strong>DaisyUI theme system:</strong> 20 color themes with data-theme attribute (inspired by DaisyUI)</div>
               <div>├─ <strong>Use semantic colors:</strong> <code className="bg-muted px-1 font-mono">bg-primary</code> instead of <code className="bg-muted px-1 font-mono">bg-purple-500</code></div>
               <div>├─ <strong>Light and dark themes:</strong> Select from various light themes (Light, Cupcake, Fantasy) or dark themes (Dark, Dracula, Synthwave)</div>
@@ -437,8 +437,8 @@ export function MyNavbar() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ARCHITECTURE</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
-            <div className="space-y-1 font-mono text-sm text-muted-foreground">
+          <CardContent className="p-6">
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ <strong>ThemeDropdown</strong> - Navbar component for selecting from 20 DaisyUI-inspired color themes</div>
               <div>├─ <strong>ColorThemeSwitcher</strong> - Full-page grid showing all themes (for settings pages)</div>
               <div>├─ <strong>globals.css</strong> - Contains all 20 theme CSS variable definitions with [data-theme] selectors</div>
@@ -453,7 +453,7 @@ export function MyNavbar() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CREDITS_AND_INSPIRATION</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-xs text-muted-foreground">
               Fabrk's theme system is inspired by{" "}
               <a
@@ -486,7 +486,7 @@ export function MyNavbar() {
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/components">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-xs font-semibold">UI Components</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   All components use semantic colors and adapt to themes
@@ -496,7 +496,7 @@ export function MyNavbar() {
           </Link>
           <Link href="/docs/extras/testing">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono text-xs font-semibold">Testing</h3>
                 <p className="font-mono text-xs text-muted-foreground">
                   Test your app across different themes and modes

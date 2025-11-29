@@ -14,15 +14,15 @@ export default function TestimonialsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTIMONIALS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Social proof components to showcase customer reviews and testimonials.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar component</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">AvatarGroup</code> - Stacked avatar display</li>
@@ -99,7 +99,7 @@ export function TestimonialCard({
 }: TestimonialProps) {
   return (
     <Card className="rounded-none">
-      <CardContent className="p-4">
+      <CardContent className="p-6">
         <p className="text-muted-foreground italic mb-4">
           "{quote}"
         </p>
@@ -112,7 +112,7 @@ export function TestimonialCard({
           </Avatar>
           <div>
             <p className="font-semibold">{name}</p>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               {role} at {company}
             </p>
           </div>
@@ -149,7 +149,7 @@ export function SocialProof() {
   return (
     <div className="flex items-center gap-4">
       <AvatarGroup users={users} max={4} />
-      <p className="font-mono text-sm text-muted-foreground">
+      <p className="font-mono text-sm text-muted-foreground leading-relaxed">
         Trusted by 500+ developers
       </p>
     </div>

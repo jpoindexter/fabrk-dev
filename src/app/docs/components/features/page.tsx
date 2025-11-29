@@ -20,9 +20,9 @@ export default function FeaturesComponentsPage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">FeaturesSection</code> - Grid layout with feature cards</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">DeveloperExperienceSection</code> - Developer-focused features and benefits</li>

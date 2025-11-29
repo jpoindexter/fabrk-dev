@@ -18,23 +18,23 @@ export default function FeatureFlagsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_FLAGS</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
         </p>
       </div>
 
       <Card className="mb-8">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Feature flags allow you to control feature visibility without deploying new code.
             Use them for gradual rollouts, A/B testing, user targeting, and kill switches.
           </p>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Simple toggles:</strong> Enable/disable features globally</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Percentage rollouts:</strong> Roll out to a percentage of users</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>User targeting:</strong> Enable for specific users or groups</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Environment-based:</strong> Different flags per environment</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Simple toggles:</strong> Enable/disable features globally</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Percentage rollouts:</strong> Roll out to a percentage of users</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>User targeting:</strong> Enable for specific users or groups</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Environment-based:</strong> Different flags per environment</li>
           </ul>
         </CardContent>
       </Card>
@@ -366,16 +366,16 @@ export async function POST(
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground"><strong>Use descriptive keys:</strong> <code className="font-mono">new-checkout-flow</code> not <code className="font-mono">flag1</code></li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Add kill switches:</strong> Every major feature should have a flag</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Test both states:</strong> Ensure your app works with flag on and off</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Document flags:</strong> Keep a registry of active flags and their purpose</li>
-            <li className="font-mono text-sm text-muted-foreground"><strong>Use consistent hashing:</strong> Same user always gets same result for % rollouts</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use descriptive keys:</strong> <code className="font-mono">new-checkout-flow</code> not <code className="font-mono">flag1</code></li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Add kill switches:</strong> Every major feature should have a flag</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Test both states:</strong> Ensure your app works with flag on and off</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Document flags:</strong> Keep a registry of active flags and their purpose</li>
+            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use consistent hashing:</strong> Same user always gets same result for % rollouts</li>
           </ul>
         </CardContent>
       </Card>

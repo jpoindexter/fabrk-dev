@@ -16,7 +16,7 @@ export default function CookieConsentPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">COOKIE_CONSENT_GDPR</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; GDPR-compliant cookie banner with Google Consent Mode v2 integration.
         </p>
       </div>
@@ -25,11 +25,11 @@ export default function CookieConsentPage() {
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_THIS</h2>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             If your app has users in Europe, you&apos;re legally required to ask permission before
             tracking them with cookies. This component handles that for you.
           </p>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Think of it like asking guests if they want coffee before pouring. Some want it
             (marketing cookies), some don&apos;t (privacy-focused users). This lets them choose.
           </p>
@@ -70,7 +70,7 @@ export default function CookieConsentPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className="font-mono font-semibold">FIRST_VISIT</h3>
             </div>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner.
               All non-essential cookies are blocked until they make a choice.
             </p>
@@ -80,7 +80,7 @@ export default function CookieConsentPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className="font-mono font-semibold">USER_MAKES_CHOICE</h3>
             </div>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Clicking the button opens a modal with three tabs: Consent (quick toggles),
               Details (see exactly which cookies), and About (their privacy rights).
             </p>
@@ -90,7 +90,7 @@ export default function CookieConsentPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className="font-mono font-semibold">CHOICE_SAVED</h3>
             </div>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Their preference is stored in localStorage for 1 year. Google Consent Mode
               is updated automatically, enabling/disabling analytics and ads accordingly.
             </p>
@@ -100,7 +100,7 @@ export default function CookieConsentPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className="font-mono font-semibold">RETURN_VISITS</h3>
             </div>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
               preferences are applied immediately on page load.
             </p>
@@ -112,13 +112,13 @@ export default function CookieConsentPage() {
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">COOKIE_CATEGORIES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-muted/50">
                 <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
                 <div>
                   <p className="font-medium">Necessary (Always On)</p>
-                  <p className="font-mono text-sm text-muted-foreground">
+                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Essential for the site to work. Includes session cookies and consent storage.
                     Cannot be disabled.
                   </p>
@@ -128,7 +128,7 @@ export default function CookieConsentPage() {
                 <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
                 <div>
                   <p className="font-medium">Preferences</p>
-                  <p className="font-mono text-sm text-muted-foreground">
+                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Remember settings like theme (dark/light) and language. Off by default.
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export default function CookieConsentPage() {
                 <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
                 <div>
                   <p className="font-medium">Statistics</p>
-                  <p className="font-mono text-sm text-muted-foreground">
+                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Google Analytics and similar tools. Helps you understand how people use your app.
                     Off by default.
                   </p>
@@ -147,7 +147,7 @@ export default function CookieConsentPage() {
                 <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
                 <div>
                   <p className="font-medium">Marketing</p>
-                  <p className="font-mono text-sm text-muted-foreground">
+                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising.
                     Off by default.
                   </p>
@@ -161,7 +161,7 @@ export default function CookieConsentPage() {
       {/* Setup */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The cookie consent component is already included in your layout. No setup required!
         </p>
         <CodeBlock language="tsx" code={`// Already in src/app/layout.tsx
@@ -182,7 +182,7 @@ export default function RootLayout({ children }) {
       {/* Google Tag Manager Integration */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">GOOGLE_TAG_MANAGER_INTEGRATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The component automatically integrates with Google Consent Mode v2. Here&apos;s what happens
           when a user makes their choice:
         </p>
@@ -212,7 +212,7 @@ dataLayer.push({
         <h2 className="font-mono text-lg font-bold">CUSTOMIZATION</h2>
 
         <h3 className="font-mono font-semibold">ADD_REMOVE_COOKIE_CATEGORIES</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Edit the categories in <code className="bg-muted px-1 font-mono">src/components/cookie-consent-tabs.tsx</code>:
         </p>
         <CodeBlock language="typescript" code={`// In DetailsTabContent function
@@ -235,7 +235,7 @@ const categories: CookieCategory[] = [
 ];`} />
 
         <h3 className="font-mono font-semibold mt-6">CHANGE_CONSENT_DURATION</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           By default, consent is valid for 1 year. Edit in <code className="bg-muted px-1 font-mono">src/components/cookie-consent.tsx</code>:
         </p>
         <CodeBlock language="typescript" code={`// In getInitialPreferences function
@@ -247,7 +247,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 }`} />
 
         <h3 className="font-mono font-semibold mt-6">UPDATE_CONTACT_EMAIL</h3>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The &quot;About&quot; tab shows your privacy contact email. Update it in the AboutTabContent component.
         </p>
       </div>
@@ -255,12 +255,12 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Data Export Feature */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">DATA_EXPORT_GDPR_RIGHT_TO_ACCESS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The &quot;About&quot; tab includes a &quot;Download My Data&quot; button that lets logged-in users
           export their personal data. This helps with GDPR&apos;s &quot;right to access&quot; requirement.
         </p>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <h3 className="font-mono font-semibold mb-2">HOW_IT_WORKS</h3>
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>User clicks &quot;Download My Data&quot; button</li>
@@ -373,9 +373,9 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/analytics">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">ANALYTICS</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Set up PostHog analytics that respects consent.
                 </p>
               </CardContent>
@@ -383,9 +383,9 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           </Link>
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
+              <CardContent className="p-6">
                 <h3 className="font-mono font-semibold">SECURITY_HEADERS</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Configure CSP and other security headers.
                 </p>
               </CardContent>

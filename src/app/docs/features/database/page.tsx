@@ -23,7 +23,7 @@ export default function DatabasePage() {
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes:
             </p>
@@ -294,7 +294,7 @@ npx prisma migrate status`} />
         <h2 className="font-mono text-lg font-bold">COMMON_USE_CASES</h2>
         <div className="grid gap-3">
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">USER_PROFILE_UPDATES</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Update user data with validation. Use <code className="bg-muted px-1 font-mono">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
@@ -303,7 +303,7 @@ npx prisma migrate status`} />
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">SOFT_DELETES</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Add <code className="bg-muted px-1 font-mono">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 font-mono">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
@@ -312,7 +312,7 @@ npx prisma migrate status`} />
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">FULL_TEXT_SEARCH</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Use Prisma&apos;s full-text search with PostgreSQL: <code className="bg-muted px-1 font-mono">where: {'{'} name: {'{'} search: &quot;query&quot; {'}'} {'}'}</code> for searching user names or content.
@@ -321,7 +321,7 @@ npx prisma migrate status`} />
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-4">
+            <CardContent className="p-6">
               <h3 className="font-mono text-xs font-semibold mb-2">AGGREGATIONS</h3>
               <p className="font-mono text-xs text-muted-foreground">
                 Calculate totals with <code className="bg-muted px-1 font-mono">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
@@ -334,7 +334,7 @@ npx prisma migrate status`} />
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Always use the singleton client from <code className="bg-muted px-1 font-mono">@/lib/db</code></li>
               <li>├─ Use <code className="bg-muted px-1 font-mono">select</code> to fetch only needed fields</li>

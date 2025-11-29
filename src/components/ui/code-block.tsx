@@ -21,7 +21,7 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
 
   return (
     <div
-      className="not-prose my-6 border border-border overflow-hidden bg-card"
+      className="not-prose my-8 border border-border overflow-hidden bg-card"
       role="region"
       aria-label={`Code example in ${language}`}
     >

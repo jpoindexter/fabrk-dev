@@ -22,7 +22,7 @@ export default function RealtimePage() {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
             Fabrk integrates Pusher Channels to provide real-time communication between your server and clients.
@@ -214,7 +214,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
           <div className="font-mono text-xs text-muted-foreground space-y-1">
             <div>├─ Use private channels (<code className="bg-muted px-1 font-mono text-xs">private-</code>) for user-specific data</div>
