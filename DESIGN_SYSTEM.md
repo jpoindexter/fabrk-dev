@@ -2,6 +2,69 @@
 
 Complete style guide documenting ALL design tokens, styles, and inconsistencies across the Fabrk codebase.
 
+---
+
+## Industry Standards: Terminal UI Design
+
+Reference standards from CLI/terminal design best practices.
+
+### Typography Standards
+
+| Property | Industry Standard | Fabrk Implementation |
+|----------|------------------|---------------------|
+| Base Font Size | 14-16px | 14px (`text-sm`) |
+| Font Family | Monospace (JetBrains Mono, Fira Code, SF Mono) | JetBrains Mono |
+| Line Height | 1.4-1.6 (20-24px for 16px base) | 1.625 (`leading-relaxed`) |
+| Character Spacing | Normal to slightly expanded | `tracking-tight` for headings |
+| Min Readable Size | 12px (WCAG AA) | 12px (`text-xs`) for labels |
+
+### Color Standards (ANSI-Inspired)
+
+| Color | ANSI Name | Hex | Usage |
+|-------|-----------|-----|-------|
+| Red | Bright Red | `#ff6b6b` | Errors, destructive |
+| Green | Bright Green | `#51cf66` | Success, active |
+| Yellow | Bright Yellow | `#ffd43b` | Warnings, caution |
+| Blue | Bright Blue | `#4dabf7` | Info, links |
+| Magenta | Bright Magenta | `#cc5de8` | Accents |
+| Cyan | Bright Cyan | `#22b8cf` | Secondary info |
+| White | Bright White | `#f8f9fa` | Primary text (dark mode) |
+| Black | Black | `#212529` | Primary text (light mode) |
+
+### Spacing Standards
+
+| Pattern | Calculation | Example |
+|---------|-------------|---------|
+| Character-width | Font size × 0.6 | 14px → 8.4px unit |
+| Line-based | Line height × n | 20px × 2 = 40px |
+| Grid unit | 4px or 8px base | 8, 16, 24, 32px |
+
+### Border Standards
+
+| Property | Standard | Rationale |
+|----------|----------|-----------|
+| Radius | 0px (sharp) | Terminal aesthetic |
+| Width | 1-2px solid | Clear boundaries |
+| Color | Low contrast | `border-border` at 10-20% opacity |
+
+### Animation Standards
+
+| Effect | Duration | Easing | Usage |
+|--------|----------|--------|-------|
+| Cursor blink | 530ms | Step | Text input indicators |
+| Typing | 50-100ms/char | Linear | Typewriter effects |
+| Fade | 150-300ms | Ease-out | UI transitions |
+| Scale pulse | 1-2s | Ease-in-out | Status indicators |
+
+### Accessibility Standards
+
+| Requirement | Standard | Implementation |
+|-------------|----------|----------------|
+| Color contrast | 4.5:1 (AA) | `text-foreground` on `bg-background` |
+| Focus visible | 2px ring | `focus-visible:ring-2` |
+| Min touch target | 44×44px | `h-10 w-10` minimum |
+| Reduced motion | Respect prefers-reduced-motion | Use Framer Motion's `useReducedMotion` |
+
 **Pages Analyzed:** 83 pages from sitemaps
 - Marketing/Landing: 10 pages
 - Templates: 14 pages
