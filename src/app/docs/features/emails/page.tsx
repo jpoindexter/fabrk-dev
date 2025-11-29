@@ -21,7 +21,7 @@ export default function EmailsPage() {
         </p>
       </div>
 
-      <section>
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -39,7 +39,7 @@ export default function EmailsPage() {
         </Card>
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
@@ -81,7 +81,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 # Watches queue and sends emails with auto-restart`} />
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">EMAIL_TEMPLATES</h2>
         <p className="font-mono text-sm text-muted-foreground mb-3">
           Templates are in <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">src/emails/</code>. Pre-built templates include:
@@ -132,7 +132,7 @@ export function generateWelcomeEmailHTML({
 }`} />
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold text-foreground mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
@@ -222,7 +222,7 @@ await resend.batch.send(emails);`} />
 
 
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
@@ -264,7 +264,7 @@ await resend.batch.send(emails);`} />
         </div>
       </section>
 
-      <section>
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

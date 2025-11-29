@@ -21,7 +21,7 @@ export default function OrganizationsPage() {
         </p>
       </div>
 
-      <section>
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -40,7 +40,7 @@ export default function OrganizationsPage() {
         </Card>
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
         <div className="space-y-4">
           <div>
@@ -103,7 +103,7 @@ model OrganizationInvite {
         </div>
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ROLE_PERMISSIONS</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -182,7 +182,7 @@ model OrganizationInvite {
         </Card>
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold text-foreground mb-3">CREATE_ORGANIZATION</h3>
@@ -541,7 +541,7 @@ function TeamPage() {
         </div>
       </section>
 
-      <section className="mb-12">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
@@ -583,7 +583,7 @@ function TeamPage() {
         </div>
       </section>
 
-      <section>
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
