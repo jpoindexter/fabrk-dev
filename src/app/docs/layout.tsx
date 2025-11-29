@@ -157,13 +157,6 @@ const navigation = [
       { title: "LAUNCH_CHECKLIST", href: "/docs/launch/checklist", icon: Rocket },
     ],
   },
-  {
-    title: "[0xB0] RESOURCES",
-    items: [
-      { title: "GITHUB_REPO", href: "https://github.com/jpoindexter/fabrk-boilerplate", icon: ExternalLink, external: true },
-      { title: "SUPPORT", href: "/contact", icon: Mail },
-    ],
-  },
 ];
 
 // Helper to find which section contains the current path
