@@ -12,7 +12,7 @@ export default function TestingGuidePage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0xB0] EXTRAS ] TESTING</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] TESTING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTING_GUIDE</h1>
         <p className="font-mono text-sm text-muted-foreground">
@@ -23,7 +23,7 @@ export default function TestingGuidePage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-mono text-xs font-semibold">TEST_COVERAGE</h3>
-          <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div className="space-y-1 font-mono text-xs text-muted-foreground">
             <div>├─ 130+ total tests</div>
             <div>├─ Unit tests with Vitest</div>
             <div>├─ E2E tests with Playwright</div>
@@ -35,7 +35,7 @@ export default function TestingGuidePage() {
 
       {/* Running Tests */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">RUNNING_TESTS</h2>
+        <h2 className="font-mono text-lg font-bold">RUNNING_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground">Available test commands:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Unit tests (Vitest)
@@ -59,9 +59,9 @@ npm run test:all         # Run Vitest + Playwright`} />
 
       {/* Vitest Configuration */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">VITEST_CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold">VITEST_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground">
-          Configuration in <code className="bg-muted px-1 font-mono text-[10px]">vitest.config.ts</code>:
+          Configuration in <code className="bg-muted px-1 font-mono text-xs">vitest.config.ts</code>:
         </p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// vitest.config.ts
@@ -99,7 +99,7 @@ export default defineConfig({
 
       {/* Writing Unit Tests */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">WRITING_UNIT_TESTS</h2>
+        <h2 className="font-mono text-lg font-bold">WRITING_UNIT_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground">
           Test components, hooks, and utilities:
         </p>
@@ -139,7 +139,7 @@ describe("Button", () => {
 
       {/* Testing Hooks */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TESTING_CUSTOM_HOOKS</h2>
+        <h2 className="font-mono text-lg font-bold">TESTING_CUSTOM_HOOKS</h2>
         <p className="font-mono text-sm text-muted-foreground">Example hook test with timer mocking:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// tests/unit/hooks/use-debounce.test.ts
@@ -188,7 +188,7 @@ describe("useDebounce", () => {
 
       {/* Testing API Routes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TESTING_API_ROUTES</h2>
+        <h2 className="font-mono text-lg font-bold">TESTING_API_ROUTES</h2>
         <p className="font-mono text-sm text-muted-foreground">Test API endpoints with mocked dependencies:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// tests/unit/api/users.test.ts
@@ -258,7 +258,7 @@ describe("POST /api/users", () => {
 
       {/* Playwright E2E Tests */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">PLAYWRIGHT_E2E_TESTS</h2>
+        <h2 className="font-mono text-lg font-bold">PLAYWRIGHT_E2E_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground">
           Test complete user flows:
         </p>
@@ -309,7 +309,7 @@ test.describe("Authentication", () => {
 
       {/* Playwright Configuration */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">PLAYWRIGHT_CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold">PLAYWRIGHT_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground">Configure Playwright for E2E testing:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// playwright.config.ts
@@ -360,7 +360,7 @@ export default defineConfig({
 
       {/* Accessibility Testing */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">ACCESSIBILITY_TESTING</h2>
+        <h2 className="font-mono text-lg font-bold">ACCESSIBILITY_TESTING</h2>
         <p className="font-mono text-sm text-muted-foreground">Test for accessibility violations:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// tests/accessibility/home.spec.ts
@@ -398,7 +398,7 @@ test.describe("Accessibility", () => {
 
       {/* Test Setup */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TEST_SETUP_FILE</h2>
+        <h2 className="font-mono text-lg font-bold">TEST_SETUP_FILE</h2>
         <p className="font-mono text-sm text-muted-foreground">Configure test environment and mocks:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// tests/setup.ts
@@ -441,8 +441,8 @@ process.env.NEXTAUTH_SECRET = "test-secret-at-least-32-characters";`} />
 
       {/* Testing Best Practices */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TESTING_BEST_PRACTICES</h2>
-        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+        <h2 className="font-mono text-lg font-bold">TESTING_BEST_PRACTICES</h2>
+        <div className="space-y-1 font-mono text-xs text-muted-foreground">
           <div>├─ <strong>Test behavior, not implementation</strong> - Focus on what the user sees/does</div>
           <div>├─ <strong>Use data-testid sparingly</strong> - Prefer semantic queries (role, label)</div>
           <div>├─ <strong>Mock external services</strong> - Don't hit real APIs in unit tests</div>
@@ -454,7 +454,7 @@ process.env.NEXTAUTH_SECRET = "test-secret-at-least-32-characters";`} />
 
       {/* CI Integration */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">CI_INTEGRATION</h2>
+        <h2 className="font-mono text-lg font-bold">CI_INTEGRATION</h2>
         <p className="font-mono text-sm text-muted-foreground">GitHub Actions workflow for automated testing:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="yaml" code={`# .github/workflows/test.yml
@@ -501,13 +501,13 @@ jobs:
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">DEPLOY_TO_VERCEL</h3>
-                <p className="font-mono text-[10px] text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground">
                   Deploy your tested app to production
                 </p>
               </CardContent>
@@ -517,7 +517,7 @@ jobs:
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">SCHEMA_VALIDATION</h3>
-                <p className="font-mono text-[10px] text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground">
                   Validate inputs for better tests
                 </p>
               </CardContent>

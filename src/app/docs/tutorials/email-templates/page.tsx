@@ -36,7 +36,7 @@ export default function EmailTemplatesTutorialPage() {
 
       {/* Basic Setup */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">BASIC_SETUP</h2>
+        <h2 className="font-mono text-lg font-bold">BASIC_SETUP</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Configure your Resend API key to start sending emails. Sign up at{" "}
@@ -64,7 +64,7 @@ EMAIL_FROM="noreply@yourdomain.com"`} />
 
       {/* Email Service Functions */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">SENDING_EMAILS</h2>
+        <h2 className="font-mono text-lg font-bold">SENDING_EMAILS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Use the email service functions from{" "}
@@ -109,7 +109,7 @@ await sendResetEmail(
 
       {/* Queue System */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">EMAIL_QUEUE_SYSTEM</h2>
+        <h2 className="font-mono text-lg font-bold">EMAIL_QUEUE_SYSTEM</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             For non-critical emails (notifications, bulk), use the queue system for background sending
@@ -150,7 +150,7 @@ await queueWelcomeEmail({
 
       {/* Creating Custom Templates */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
+        <h2 className="font-mono text-lg font-bold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Create HTML template functions in <code className="bg-muted px-1 font-mono text-xs">src/emails/</code>.
@@ -213,7 +213,7 @@ export function generateInvoiceEmailHTML({
 
       {/* Sending Custom Templates */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">SENDING_CUSTOM_HTML_EMAILS</h2>
+        <h2 className="font-mono text-lg font-bold">SENDING_CUSTOM_HTML_EMAILS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Generate the HTML and send it using Resend:
@@ -264,7 +264,7 @@ export async function POST(request: Request) {
 
       {/* Email Types */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">EMAIL_TYPES</h2>
+        <h2 className="font-mono text-lg font-bold">EMAIL_TYPES</h2>
         <p className="font-mono text-sm text-muted-foreground">
           The queue system supports these email types for categorization:
         </p>
@@ -279,7 +279,7 @@ export async function POST(request: Request) {
 
       {/* Organization Invites */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">ORGANIZATION_INVITES</h2>
+        <h2 className="font-mono text-lg font-bold">ORGANIZATION_INVITES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Send beautiful organization invitation emails:
@@ -300,7 +300,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Best Practices */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
             <div className="space-y-1 font-mono text-xs text-muted-foreground">
@@ -317,7 +317,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">

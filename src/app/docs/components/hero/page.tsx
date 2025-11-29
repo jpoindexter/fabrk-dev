@@ -31,7 +31,7 @@ export default function HeroComponentsPage() {
       </Card>
 
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// Standard hero section
 import { HeroSection } from "@/components/landing/hero-section";
@@ -45,7 +45,7 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">STANDARD_HERO_SECTION</h3>
@@ -117,7 +117,7 @@ export default function LandingPage() {
       </div>
 
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">ANIMATION_PATTERN</h2>
+        <h2 className="font-mono text-lg font-bold">ANIMATION_PATTERN</h2>
         <p className="font-mono text-sm text-muted-foreground">
           All hero sections use Framer Motion for smooth entrance animations:
         </p>

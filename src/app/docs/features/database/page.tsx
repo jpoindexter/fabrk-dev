@@ -12,22 +12,22 @@ export default function DatabasePage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x10] FEATURES ] DATABASE</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x10] FEATURES ] DATABASE</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">DATABASE_PRISMA</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATABASE_PRISMA</h1>
         <p className="font-mono text-xs text-muted-foreground">
           &gt; Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
         </p>
       </div>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
             <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes:
             </p>
-            <ul className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <ul className="font-mono text-xs text-muted-foreground space-y-1">
               <li>├─ Pre-built models for users, organizations, payments, and more</li>
               <li>├─ Type-safe queries with full TypeScript support</li>
               <li>├─ Migration management for schema changes</li>
@@ -39,14 +39,14 @@ export default function DatabasePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
 
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">1</span>
+            <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
             <h3 className="font-mono text-xs font-semibold">SET_DATABASE_URL</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-1 font-mono text-[10px]">.env.local</code>:</p>
+          <p className="font-mono text-xs text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
@@ -58,7 +58,7 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
 
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">2</span>
+            <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
             <h3 className="font-mono text-xs font-semibold">INITIALIZE_DATABASE</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">Push the schema to your database:</p>
@@ -79,7 +79,7 @@ npm run db:reset`} />
 
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">3</span>
+            <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
             <h3 className="font-mono text-xs font-semibold">PRISMA_STUDIO</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">Browse and edit data with the visual GUI:</p>
@@ -91,8 +91,8 @@ npm run db:reset`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CORE_MODELS</h2>
-        <p className="font-mono text-xs text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-[10px]">prisma/schema.prisma</code>:</p>
+        <h2 className="font-mono text-lg font-bold">CORE_MODELS</h2>
+        <p className="font-mono text-xs text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="prisma" code={`// Authentication
 model User {
@@ -155,11 +155,11 @@ model OrganizationMember {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">CODE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">DATABASE_CLIENT</h3>
-          <p className="font-mono text-xs text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-[10px]">src/lib/db/index.ts</code>:</p>
+          <p className="font-mono text-xs text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-xs">src/lib/db/index.ts</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
 
@@ -276,8 +276,8 @@ return { data, nextCursor, hasNextPage };`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">MIGRATIONS</h2>
-        <p className="font-mono text-xs text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-[10px]">db:push</code>:</p>
+        <h2 className="font-mono text-lg font-bold">MIGRATIONS</h2>
+        <p className="font-mono text-xs text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-xs">db:push</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Create a new migration
 npm run db:migrate -- --name add_user_preferences
@@ -291,39 +291,39 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold">COMMON_USE_CASES</h2>
         <div className="grid gap-3">
           <Card className="rounded-none">
-            <CardContent className="p-3">
+            <CardContent className="p-4">
               <h3 className="font-mono text-xs font-semibold mb-2">USER_PROFILE_UPDATES</h3>
-              <p className="font-mono text-[10px] text-muted-foreground">
+              <p className="font-mono text-xs text-muted-foreground">
                 Update user data with validation. Use <code className="bg-muted px-1 font-mono">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-3">
+            <CardContent className="p-4">
               <h3 className="font-mono text-xs font-semibold mb-2">SOFT_DELETES</h3>
-              <p className="font-mono text-[10px] text-muted-foreground">
+              <p className="font-mono text-xs text-muted-foreground">
                 Add <code className="bg-muted px-1 font-mono">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 font-mono">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-3">
+            <CardContent className="p-4">
               <h3 className="font-mono text-xs font-semibold mb-2">FULL_TEXT_SEARCH</h3>
-              <p className="font-mono text-[10px] text-muted-foreground">
+              <p className="font-mono text-xs text-muted-foreground">
                 Use Prisma&apos;s full-text search with PostgreSQL: <code className="bg-muted px-1 font-mono">where: {'{'} name: {'{'} search: &quot;query&quot; {'}'} {'}'}</code> for searching user names or content.
               </p>
             </CardContent>
           </Card>
 
           <Card className="rounded-none">
-            <CardContent className="p-3">
+            <CardContent className="p-4">
               <h3 className="font-mono text-xs font-semibold mb-2">AGGREGATIONS</h3>
-              <p className="font-mono text-[10px] text-muted-foreground">
+              <p className="font-mono text-xs text-muted-foreground">
                 Calculate totals with <code className="bg-muted px-1 font-mono">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
               </p>
             </CardContent>
@@ -332,10 +332,10 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
-            <ul className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <ul className="font-mono text-xs text-muted-foreground space-y-1">
               <li>├─ Always use the singleton client from <code className="bg-muted px-1 font-mono">@/lib/db</code></li>
               <li>├─ Use <code className="bg-muted px-1 font-mono">select</code> to fetch only needed fields</li>
               <li>├─ Add indexes for frequently queried fields</li>

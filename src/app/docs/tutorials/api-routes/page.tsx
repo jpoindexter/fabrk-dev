@@ -28,7 +28,7 @@ export default function ApiRoutesTutorialPage() {
 
       {/* Basic Route */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">CREATING_A_BASIC_ROUTE</h2>
+        <h2 className="font-mono text-lg font-bold">CREATING_A_BASIC_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Create a new file at <code className="bg-muted px-1 font-mono text-xs">src/app/api/hello/route.ts</code>:
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
       {/* Protected Route */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">PROTECTED_API_ROUTE</h2>
+        <h2 className="font-mono text-lg font-bold">PROTECTED_API_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Add authentication to your route:
@@ -85,7 +85,7 @@ export async function GET() {
 
       {/* Input Validation */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">INPUT_VALIDATION_WITH_ZOD</h2>
+        <h2 className="font-mono text-lg font-bold">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Always validate input with Zod schemas:
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
 
       {/* Database Access */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">DATABASE_ACCESS</h2>
+        <h2 className="font-mono text-lg font-bold">DATABASE_ACCESS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Use Prisma to interact with your database:
@@ -161,7 +161,7 @@ export async function GET() {
 
       {/* Error Handling Pattern */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">ERROR_HANDLING_PATTERN</h2>
+        <h2 className="font-mono text-lg font-bold">ERROR_HANDLING_PATTERN</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Use this consistent error handling pattern:
@@ -193,7 +193,7 @@ export async function POST(request: Request) {
 
       {/* Status Codes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">HTTP_STATUS_CODES</h2>
+        <h2 className="font-mono text-lg font-bold">HTTP_STATUS_CODES</h2>
         <div className="space-y-1 font-mono text-xs text-muted-foreground">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">200</code> - Success</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">201</code> - Created</div>

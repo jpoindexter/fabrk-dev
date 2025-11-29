@@ -21,7 +21,7 @@ export default function FooterComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-lg font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
           <ul className="space-y-2 font-mono text-xs text-muted-foreground">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>
@@ -32,7 +32,7 @@ export default function FooterComponentsPage() {
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Landing page footer
@@ -50,7 +50,7 @@ import { Separator } from "@/components/ui/separator";`} />
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">LANDING_PAGE_FOOTER</h3>

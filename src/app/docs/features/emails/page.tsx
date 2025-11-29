@@ -25,7 +25,7 @@ export default function EmailsPage() {
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-semibold mb-4">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
         <Card>
           <CardContent className="p-4">
             <p className="text-sm text-muted-foreground mb-4">
@@ -43,7 +43,7 @@ export default function EmailsPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-semibold mb-4">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
@@ -89,7 +89,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-semibold mb-4">EMAIL_TEMPLATES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">EMAIL_TEMPLATES</h2>
         <div className="space-y-4 mb-6">
           <p className="mb-4">Templates are in <code className="font-mono bg-muted px-2 py-1">src/emails/</code>. Pre-built templates include:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -140,7 +140,7 @@ export function generateWelcomeEmailHTML({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-semibold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-lg font-medium mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
         <div className="space-y-4 mb-6">
@@ -230,7 +230,7 @@ await resend.batch.send(emails);`} />
 
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-semibold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
@@ -272,7 +272,7 @@ await resend.batch.send(emails);`} />
       </section>
 
       <section>
-        <h2 className="font-mono text-lg font-semibold mb-4">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="p-4">
             <ul className="list-disc pl-6 space-y-2">

@@ -21,7 +21,7 @@ export default function TestimonialsComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-lg font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
           <ul className="space-y-2 font-mono text-xs text-muted-foreground">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar component</li>
@@ -32,7 +32,7 @@ export default function TestimonialsComponentsPage() {
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Testimonials section
@@ -48,7 +48,7 @@ import { Card, CardContent } from "@/components/ui/card";`} />
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">TESTIMONIALS_SECTION</h3>

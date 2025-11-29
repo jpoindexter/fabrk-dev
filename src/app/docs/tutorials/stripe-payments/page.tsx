@@ -24,7 +24,7 @@ export default function StripePaymentsTutorialPage() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">1</span>
-          <h2 className="font-mono text-lg font-semibold">CONFIGURE_STRIPE</h2>
+          <h2 className="font-mono text-lg font-bold">CONFIGURE_STRIPE</h2>
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           Add your Stripe API keys to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:
@@ -41,7 +41,7 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`} />
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">2</span>
-          <h2 className="font-mono text-lg font-semibold">CREATE_A_PRODUCT</h2>
+          <h2 className="font-mono text-lg font-bold">CREATE_A_PRODUCT</h2>
         </div>
         <div className="space-y-1 font-mono text-xs text-muted-foreground">
           <div>├─ Go to{" "}
@@ -69,7 +69,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">3</span>
-          <h2 className="font-mono text-lg font-semibold">CREATE_CHECKOUT_BUTTON</h2>
+          <h2 className="font-mono text-lg font-bold">CREATE_CHECKOUT_BUTTON</h2>
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           Use the checkout API to create a payment session:
@@ -120,7 +120,7 @@ export function CheckoutButton() {
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">4</span>
-          <h2 className="font-mono text-lg font-semibold">SET_UP_WEBHOOKS</h2>
+          <h2 className="font-mono text-lg font-bold">SET_UP_WEBHOOKS</h2>
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
@@ -147,7 +147,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">5</span>
-          <h2 className="font-mono text-lg font-semibold">HANDLE_WEBHOOK_EVENTS</h2>
+          <h2 className="font-mono text-lg font-bold">HANDLE_WEBHOOK_EVENTS</h2>
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           The webhook handler is at{" "}
@@ -167,7 +167,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
       <div className="space-y-3">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">6</span>
-          <h2 className="font-mono text-lg font-semibold">PROMOTION_CODES</h2>
+          <h2 className="font-mono text-lg font-bold">PROMOTION_CODES</h2>
         </div>
         <p className="font-mono text-sm text-muted-foreground">
           Configure promotion codes in <code className="bg-muted px-1 font-mono text-xs">src/config.js</code>:
@@ -190,7 +190,7 @@ stripe: {
 
       {/* Test Cards */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TEST_CARDS</h2>
+        <h2 className="font-mono text-lg font-bold">TEST_CARDS</h2>
         <p className="font-mono text-sm text-muted-foreground">
           Use these test cards in development:
         </p>
@@ -203,7 +203,7 @@ stripe: {
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">

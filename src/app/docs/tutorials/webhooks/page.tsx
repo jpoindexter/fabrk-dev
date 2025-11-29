@@ -36,7 +36,7 @@ export default function WebhooksTutorialPage() {
 
       {/* Available Events */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">AVAILABLE_WEBHOOK_EVENTS</h2>
+        <h2 className="font-mono text-lg font-bold">AVAILABLE_WEBHOOK_EVENTS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Events are organized into 5 categories. Subscribe to specific events or entire categories:
@@ -75,7 +75,7 @@ security.password_changed  // Password changed`} />
 
       {/* Triggering Webhooks */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TRIGGERING_WEBHOOKS</h2>
+        <h2 className="font-mono text-lg font-bold">TRIGGERING_WEBHOOKS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Trigger webhooks from your application code using{" "}
@@ -117,7 +117,7 @@ await triggerWebhook(
 
       {/* HMAC Signature Verification */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">HMAC_SHA256_VERIFICATION</h2>
+        <h2 className="font-mono text-lg font-bold">HMAC_SHA256_VERIFICATION</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             All webhooks are signed with HMAC-SHA256. Recipients must verify the signature to ensure authenticity:
@@ -163,7 +163,7 @@ export async function POST(request: Request) {
 
       {/* Webhook Headers */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">WEBHOOK_HEADERS</h2>
+        <h2 className="font-mono text-lg font-bold">WEBHOOK_HEADERS</h2>
         <p className="font-mono text-sm text-muted-foreground">
           Every webhook delivery includes these headers:
         </p>
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
 
       {/* Payload Structure */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">PAYLOAD_STRUCTURE</h2>
+        <h2 className="font-mono text-lg font-bold">PAYLOAD_STRUCTURE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             All webhook payloads follow this structure:
@@ -202,7 +202,7 @@ export async function POST(request: Request) {
 
       {/* Retry Logic */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">AUTOMATIC_RETRY_LOGIC</h2>
+        <h2 className="font-mono text-lg font-bold">AUTOMATIC_RETRY_LOGIC</h2>
         <p className="font-mono text-sm text-muted-foreground">
           Failed deliveries are automatically retried with exponential backoff:
         </p>
@@ -225,7 +225,7 @@ export async function POST(request: Request) {
 
       {/* Security Best Practices */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">SECURITY_BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold">SECURITY_BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
             <div className="space-y-1 font-mono text-xs text-muted-foreground">
@@ -244,7 +244,7 @@ export async function POST(request: Request) {
 
       {/* Testing Webhooks */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">TESTING_WEBHOOKS</h2>
+        <h2 className="font-mono text-lg font-bold">TESTING_WEBHOOKS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground">
             Use tools like ngrok to test webhooks locally:
@@ -275,7 +275,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
