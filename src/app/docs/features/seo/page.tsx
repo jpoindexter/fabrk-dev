@@ -1,52 +1,32 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Search, Share2, FileText, Globe } from "lucide-react";
+
+export const metadata = {
+  title: "SEO Metadata - Fabrk Docs",
+  description: "Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.",
+};
 
 export default function SEOPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] SEO</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SEO_METADATA</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.
-        </p>
-      </div>
-
-      <section className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <p className="font-mono text-sm text-muted-foreground mb-4">
-              Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides:
-            </p>
-            <div className="font-mono text-sm text-muted-foreground space-y-1">
-              <div>├─ Automatic meta tag generation from centralized configuration</div>
-              <div>├─ OpenGraph and Twitter card support for social sharing</div>
-              <div>├─ JSON-LD structured data for rich search results</div>
-              <div>├─ Dynamic sitemap and robots.txt generation</div>
-              <div>└─ Canonical URL management</div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
-
-        <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-base font-semibold text-foreground">UPDATE_CENTRAL_CONFIG</h3>
-        </div>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">Edit <code className="bg-muted px-1 font-mono text-xs">src/config.js</code> with your site details:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`export const config = {
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Features"
+      title="SEO_Metadata"
+      description="Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility."
+      overview="Fabrk includes a complete SEO system built on Next.js 15's metadata API. The system provides automatic meta tag generation from centralized configuration, OpenGraph and Twitter card support for social sharing, JSON-LD structured data for rich search results, dynamic sitemap and robots.txt generation, and canonical URL management."
+      features={[
+        { icon: Search, title: "Auto Meta Tags", description: "Automatic meta tag generation from centralized configuration in src/config.js." },
+        { icon: Share2, title: "Social Cards", description: "OpenGraph and Twitter card support for beautiful social sharing previews." },
+        { icon: FileText, title: "Structured Data", description: "JSON-LD structured data for rich search results and knowledge panels." },
+        { icon: Globe, title: "Dynamic Sitemap", description: "Automatic sitemap.xml and robots.txt generation for search engine crawling." },
+      ]}
+      setup={[
+        {
+          title: "Update Central Config",
+          description: "Edit src/config.js with your site details",
+          code: `export const config = {
   app: {
     name: "Your SaaS Name",
     description: "Your compelling product description",
@@ -55,20 +35,13 @@ export default function SEOPage() {
     twitterHandle: "@yourusername",
   },
   // ...
-};`} />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-base font-semibold text-foreground">ROOT_LAYOUT_METADATA</h3>
-        </div>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">The root layout exports metadata automatically:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/app/layout.tsx
+};`,
+          language: "typescript",
+        },
+        {
+          title: "Root Layout Metadata",
+          description: "The root layout exports metadata automatically",
+          code: `// src/app/layout.tsx
 import { config } from "@/config";
 
 export const metadata = {
@@ -91,20 +64,13 @@ export const metadata = {
     description: config.app.description,
     creator: config.app.twitterHandle,
   },
-};`} />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-base font-semibold text-foreground">PAGE_SPECIFIC_METADATA</h3>
-        </div>
-        <div className="space-y-4">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">Override metadata for individual pages:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`// src/app/pricing/page.tsx
+};`,
+          language: "typescript",
+        },
+        {
+          title: "Page-Specific Metadata",
+          description: "Override metadata for individual pages",
+          code: `// src/app/pricing/page.tsx
 export const metadata = {
   title: "Pricing",
   description: "Simple, transparent pricing for teams of all sizes",
@@ -116,21 +82,15 @@ export const metadata = {
 
 export default function PricingPage() {
   return <div>...</div>;
-}`} />
-          </div>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
-
-        <h3 className="font-mono text-base font-semibold text-foreground mb-3">DYNAMIC_METADATA</h3>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">Generate metadata based on dynamic content:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/app/blog/[slug]/page.tsx
+}`,
+          language: "tsx",
+        },
+      ]}
+      usage={[
+        {
+          title: "Dynamic Metadata",
+          description: "Generate metadata based on dynamic content",
+          code: `// src/app/blog/[slug]/page.tsx
 import { prisma } from "@/lib/db";
 
 export async function generateMetadata({ params }) {
@@ -149,17 +109,13 @@ export async function generateMetadata({ params }) {
       publishedTime: post.createdAt,
     },
   };
-}`} />
-          </div>
-        </div>
-
-        <h3 className="font-mono text-base font-semibold text-foreground mb-3">JSON_LD_STRUCTURED_DATA</h3>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">Add structured data for rich search results:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/lib/seo/structured-data.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "JSON-LD Structured Data",
+          description: "Add structured data for rich search results",
+          code: `// src/lib/seo/structured-data.ts
 export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -180,17 +136,13 @@ export function generateOrganizationSchema() {
   dangerouslySetInnerHTML={{
     __html: JSON.stringify(generateOrganizationSchema()),
   }}
-/>`} />
-          </div>
-        </div>
-
-        <h3 className="font-mono text-base font-semibold text-foreground mb-3">SITEMAP_GENERATION</h3>
-        <div className="space-y-4">
-          <div>
-            <p className="font-mono text-sm text-muted-foreground">Automatic sitemap at <code className="bg-muted px-1 font-mono text-xs">/sitemap.xml</code>:</p>
-          </div>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/app/sitemap.ts
+/>`,
+          language: "typescript",
+        },
+        {
+          title: "Sitemap Generation",
+          description: "Automatic sitemap at /sitemap.xml",
+          code: `// src/app/sitemap.ts
 import { config } from "@/config";
 
 export default async function sitemap() {
@@ -211,69 +163,60 @@ export default async function sitemap() {
   }));
 
   return [...staticPages, ...postPages];
-}`} />
-          </div>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
-
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "API Keys", href: "/docs/features/api-keys" }}
+      next={{ title: "Cookie Consent", href: "/docs/features/cookie-consent" }}
+    >
+      {/* Common Use Cases Section */}
+      <DocsSection title="Common Use Cases">
         <div className="grid gap-4">
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground mb-2">LANDING_PAGE_SEO</h3>
-              <p className="font-mono text-sm text-muted-foreground">
-                Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
-              </p>
-            </CardContent>
-          </Card>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Landing Page SEO</h3>
+            <p className={docsTypography.body}>
+              Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
+            </p>
+          </DocsCard>
 
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground mb-2">BLOG_POST_OPTIMIZATION</h3>
-              <p className="font-mono text-sm text-muted-foreground">
-                Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
-              </p>
-            </CardContent>
-          </Card>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Blog Post Optimization</h3>
+            <p className={docsTypography.body}>
+              Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
+            </p>
+          </DocsCard>
 
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground mb-2">PRODUCT_PAGES</h3>
-              <p className="font-mono text-sm text-muted-foreground">
-                Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
-              </p>
-            </CardContent>
-          </Card>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Product Pages</h3>
+            <p className={docsTypography.body}>
+              Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
+            </p>
+          </DocsCard>
 
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground mb-2">LOCALIZED_CONTENT</h3>
-              <p className="font-mono text-sm text-muted-foreground">
-                Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
-              </p>
-            </CardContent>
-          </Card>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Localized Content</h3>
+            <p className={docsTypography.body}>
+              Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
+            </p>
+          </DocsCard>
         </div>
-      </section>
+      </DocsSection>
 
-      <section className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <div className="font-mono text-sm text-muted-foreground space-y-1">
-              <div>├─ Keep titles under 60 characters for full display in search results</div>
-              <div>├─ Write descriptions between 120-160 characters</div>
-              <div>├─ Use unique titles and descriptions for every page</div>
-              <div>├─ Include primary keyword near the beginning of titles</div>
-              <div>├─ Ensure OpenGraph images are at least 1200x630px</div>
-              <div>├─ Test structured data with Google's Rich Results Test</div>
-              <div>└─ Submit sitemap to Google Search Console</div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
-    </div>
+      {/* Best Practices Section */}
+      <DocsSection title="Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ Keep titles under 60 characters for full display in search results</li>
+            <li>├─ Write descriptions between 120-160 characters</li>
+            <li>├─ Use unique titles and descriptions for every page</li>
+            <li>├─ Include primary keyword near the beginning of titles</li>
+            <li>├─ Ensure OpenGraph images are at least 1200x630px</li>
+            <li>├─ Test structured data with Google's Rich Results Test</li>
+            <li>└─ Submit sitemap to Google Search Console</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

@@ -1,6 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography, docsSpacing } from "@/components/docs";
 import { CodeBlock } from "@/components/ui/code-block";
+import { Shield, Key, Smartphone, Lock } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Multi-Factor Authentication - Fabrk Docs",
@@ -9,175 +13,23 @@ export const metadata = {
 
 export default function MFAPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x20] FEATURES ] MFA</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">MULTI_FACTOR_AUTHENTICATION</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Add an extra layer of security with authenticator apps and backup codes.
-        </p>
-      </div>
-
-      {/* What is 2FA - Plain English */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_TWO_FACTOR_AUTHENTICATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Two-factor authentication (2FA) adds an extra step to logging in. After entering your
-            password, you also need to provide a code from your phone. Even if someone steals
-            your password, they can&apos;t access your account without your phone.
-          </p>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Think of it like a bank vault with two locks - you need both keys to get in. Your
-            password is one key, the code from your phone is the other.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Why You Need This */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHY_OFFER_2FA</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <h3 className="font-mono text-base font-semibold text-foreground">SECURITY_BENEFITS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>Protects against password theft</li>
-                <li>Stops credential stuffing attacks</li>
-                <li>Required for many compliance standards</li>
-                <li>Builds trust with security-conscious users</li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-mono text-base font-semibold text-foreground">BUSINESS_BENEFITS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>Enterprise customers often require it</li>
-                <li>Reduces account takeover support tickets</li>
-                <li>Differentiates you from competitors</li>
-                <li>Shows you take security seriously</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* What's Included */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">WHATS_BUILT_IN</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Fabrk v1.1 includes a complete TOTP (Time-based One-Time Password) implementation:
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">QR_CODE_SETUP</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Users scan a QR code with their authenticator app. Works with Google
-                Authenticator, Authy, 1Password, and more.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">MANUAL_ENTRY</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Can&apos;t scan? Users can manually enter the secret key into their
-                authenticator app.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">6_DIGIT_CODES</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Standard TOTP codes that change every 30 seconds. RFC 6238 compliant.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">10_BACKUP_CODES</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                One-time use codes (XXXX-XXXX format) for account recovery if
-                phone is lost.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">ENABLE_DISABLE_TOGGLE</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Users can turn 2FA on or off from security settings with proper
-                verification.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">AUDIT_LOGGING</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                All 2FA events (setup, verification, disable) are logged for
-                security audits.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* How It Works - User Flow */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">HOW_2FA_WORKS</h2>
-
-        <div className="space-y-4">
-          <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-base font-semibold text-foreground">SETTING_UP_2FA</h3>
-            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
-              <li>User goes to Settings → Security</li>
-              <li>Clicks &quot;Enable Two-Factor Authentication&quot;</li>
-              <li>Scans QR code with authenticator app (or enters secret manually)</li>
-              <li>Enters the 6-digit code from their app to verify setup</li>
-              <li>Receives 10 backup codes to save somewhere safe</li>
-              <li>2FA is now enabled on their account</li>
-            </ol>
-          </div>
-
-          <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-base font-semibold text-foreground">LOGGING_IN_WITH_2FA</h3>
-            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
-              <li>User enters email and password as normal</li>
-              <li>If 2FA is enabled, they&apos;re asked for a verification code</li>
-              <li>User opens authenticator app and enters the current code</li>
-              <li>If code is correct, they&apos;re logged in</li>
-            </ol>
-          </div>
-
-          <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-base font-semibold text-foreground">LOST_PHONE_USE_BACKUP_CODE</h3>
-            <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
-              <li>On the verification screen, click &quot;Use backup code&quot;</li>
-              <li>Enter one of the 10 backup codes (format: XXXX-XXXX)</li>
-              <li>That code is now used up and won&apos;t work again</li>
-              <li>After logging in, set up a new authenticator and generate new backup codes</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      {/* Configuration */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          2FA is already set up and ready to use. Users enable it from their security settings.
-          No additional configuration required.
-        </p>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Optionally customize the issuer name (shown in authenticator apps) in{" "}
-          <code className="font-mono bg-muted px-1">src/config.js</code>:
-        </p>
-        <CodeBlock language="javascript" code={`// src/config.js
+    <FeatureGuideTemplate
+      code="[0x20]"
+      category="Features"
+      title="Multi_Factor_Authentication"
+      description="Add an extra layer of security with authenticator apps and backup codes."
+      overview="Two-factor authentication (2FA) adds an extra step to logging in. After entering your password, you also need to provide a code from your phone. Even if someone steals your password, they can't access your account without your phone. Think of it like a bank vault with two locks - you need both keys to get in."
+      features={[
+        { icon: Smartphone, title: "QR Code Setup", description: "Users scan a QR code with their authenticator app. Works with Google Authenticator, Authy, 1Password, and more." },
+        { icon: Key, title: "6-Digit TOTP Codes", description: "Standard TOTP codes that change every 30 seconds. RFC 6238 compliant." },
+        { icon: Shield, title: "10 Backup Codes", description: "One-time use codes (XXXX-XXXX format) for account recovery if phone is lost." },
+        { icon: Lock, title: "Enable/Disable Toggle", description: "Users can turn 2FA on or off from security settings with proper verification." },
+      ]}
+      setup={[
+        {
+          title: "Configure MFA Issuer Name",
+          description: "Customize the issuer name (shown in authenticator apps) in src/config.js",
+          code: `// src/config.js
 
 export const config = {
   auth: {
@@ -185,51 +37,15 @@ export const config = {
     // "YourApp (user@example.com)"
     mfaIssuer: "YourApp",
   },
-};`} />
-      </div>
-
-      {/* Security Settings UI */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SECURITY_SETTINGS_PAGE</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Fabrk includes a pre-built security settings component at{" "}
-          <code className="font-mono bg-muted px-1">/settings/security</code>:
-        </p>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <h3 className="font-mono text-base font-semibold text-foreground">WHATS_INCLUDED</h3>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-start gap-2">
-                <span className="text-primary">•</span>
-                <span><strong>2FA Status:</strong> Shows whether 2FA is enabled or disabled</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">•</span>
-                <span><strong>Enable Button:</strong> Opens modal with QR code and setup instructions</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">•</span>
-                <span><strong>Disable Button:</strong> Requires verification before disabling</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary">•</span>
-                <span><strong>Backup Codes:</strong> Displayed once after setup (user must save them)</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Code Reference */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
-
-        <div className="space-y-2">
-          <h3 className="font-mono text-base font-semibold text-foreground">USING_THE_MFA_LIBRARY</h3>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            The MFA functions are available in <code className="font-mono bg-muted px-1">src/lib/auth/mfa.ts</code>:
-          </p>
-          <CodeBlock language="typescript" code={`import {
+};`,
+          language: "javascript",
+        },
+      ]}
+      usage={[
+        {
+          title: "Using the MFA Library",
+          description: "The MFA functions are available in src/lib/auth/mfa.ts",
+          code: `import {
   generateTOTPSecret,
   verifyTOTP,
   generateBackupCodes,
@@ -258,15 +74,13 @@ const hashedCodes = await Promise.all(
 const { valid, remainingCodes } = await verifyBackupCode(
   submittedCode,
   user.mfaBackupCodes
-);`} />
-        </div>
-
-        <div className="space-y-2 mt-6">
-          <h3 className="font-mono text-base font-semibold text-foreground">CHECK_IF_USER_HAS_2FA_ENABLED</h3>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            In your API routes:
-          </p>
-          <CodeBlock language="typescript" code={`// Check if user has 2FA enabled
+);`,
+          language: "typescript",
+        },
+        {
+          title: "Check if User Has 2FA Enabled",
+          description: "In your API routes",
+          code: `// Check if user has 2FA enabled
 const user = await prisma.user.findUnique({
   where: { id: session.user.id },
   select: {
@@ -295,73 +109,131 @@ export async function deleteAccount(userId: string, mfaCode: string) {
   }
 
   // Proceed with deletion
-}`} />
-        </div>
-      </div>
-
-      {/* Backup Codes */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ABOUT_BACKUP_CODES</h2>
-        <Card className="bg-muted/50">
-          <CardContent className="p-6 space-y-4">
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              Backup codes are essential for account recovery. They let users log in even if they
-              lose access to their authenticator app (lost phone, new device, etc.).
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <h3 className="font-mono text-base font-semibold text-foreground">FORMAT</h3>
-                <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                  <li>10 codes per user</li>
-                  <li>Format: XXXX-XXXX (8 characters)</li>
-                  <li>Each code works once only</li>
-                  <li>Shown only at setup time</li>
-                </ul>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-mono text-base font-semibold text-foreground">SECURITY</h3>
-                <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                  <li>Codes are hashed before storage</li>
-                  <li>Timing-safe comparison</li>
-                  <li>Used codes are removed</li>
-                  <li>Users should store securely</li>
-                </ul>
-              </div>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Magic Links", href: "/docs/features/magic-links" }}
+      next={{ title: "API Keys", href: "/docs/features/api-keys" }}
+    >
+      {/* Why Offer 2FA Section */}
+      <DocsSection title="Why Offer 2FA">
+        <DocsCard>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <h3 className={`uppercase ${docsTypography.h4}`}>Security Benefits</h3>
+              <ul className={`${docsTypography.body} space-y-1`}>
+                <li>• Protects against password theft</li>
+                <li>• Stops credential stuffing attacks</li>
+                <li>• Required for many compliance standards</li>
+                <li>• Builds trust with security-conscious users</li>
+              </ul>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <div className="space-y-2">
+              <h3 className={`uppercase ${docsTypography.h4}`}>Business Benefits</h3>
+              <ul className={`${docsTypography.body} space-y-1`}>
+                <li>• Enterprise customers often require it</li>
+                <li>• Reduces account takeover support tickets</li>
+                <li>• Differentiates you from competitors</li>
+                <li>• Shows you take security seriously</li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
 
-      {/* Common Questions */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
+      {/* How 2FA Works Section */}
+      <DocsSection title="How 2FA Works">
+        <div className="space-y-4">
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Setting Up 2FA</h3>
+            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+              <li>User goes to Settings → Security</li>
+              <li>Clicks &quot;Enable Two-Factor Authentication&quot;</li>
+              <li>Scans QR code with authenticator app (or enters secret manually)</li>
+              <li>Enters the 6-digit code from their app to verify setup</li>
+              <li>Receives 10 backup codes to save somewhere safe</li>
+              <li>2FA is now enabled on their account</li>
+            </ol>
+          </DocsCard>
+
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Logging In With 2FA</h3>
+            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+              <li>User enters email and password as normal</li>
+              <li>If 2FA is enabled, they&apos;re asked for a verification code</li>
+              <li>User opens authenticator app and enters the current code</li>
+              <li>If code is correct, they&apos;re logged in</li>
+            </ol>
+          </DocsCard>
+
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Lost Phone? Use Backup Code</h3>
+            <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
+              <li>On the verification screen, click &quot;Use backup code&quot;</li>
+              <li>Enter one of the 10 backup codes (format: XXXX-XXXX)</li>
+              <li>That code is now used up and won&apos;t work again</li>
+              <li>After logging in, set up a new authenticator and generate new backup codes</li>
+            </ol>
+          </DocsCard>
+        </div>
+      </DocsSection>
+
+      {/* About Backup Codes Section */}
+      <DocsSection title="About Backup Codes">
+        <DocsCard className="bg-muted/50">
+          <p className={`${docsTypography.body} mb-4`}>
+            Backup codes are essential for account recovery. They let users log in even if they
+            lose access to their authenticator app (lost phone, new device, etc.).
+          </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <h3 className={`uppercase ${docsTypography.h4}`}>Format</h3>
+              <ul className={`${docsTypography.body} space-y-1`}>
+                <li>• 10 codes per user</li>
+                <li>• Format: XXXX-XXXX (8 characters)</li>
+                <li>• Each code works once only</li>
+                <li>• Shown only at setup time</li>
+              </ul>
+            </div>
+            <div className="space-y-2">
+              <h3 className={`uppercase ${docsTypography.h4}`}>Security</h3>
+              <ul className={`${docsTypography.body} space-y-1`}>
+                <li>• Codes are hashed before storage</li>
+                <li>• Timing-safe comparison</li>
+                <li>• Used codes are removed</li>
+                <li>• Users should store securely</li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Common Questions Section */}
+      <DocsSection title="Common Questions">
         <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
-              WHICH_AUTHENTICATOR_APPS_WORK
+              Which authenticator apps work?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>
-                Any app that supports TOTP (RFC 6238) works. Popular options include:
-              </p>
+              <p>Any app that supports TOTP (RFC 6238) works. Popular options include:</p>
               <ul className="font-mono text-sm text-muted-foreground space-y-1 mt-2">
-                <li>Google Authenticator</li>
-                <li>Authy</li>
-                <li>1Password</li>
-                <li>Microsoft Authenticator</li>
-                <li>Bitwarden</li>
+                <li>• Google Authenticator</li>
+                <li>• Authy</li>
+                <li>• 1Password</li>
+                <li>• Microsoft Authenticator</li>
+                <li>• Bitwarden</li>
               </ul>
             </div>
           </details>
 
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
-              WHAT_IF_USER_LOSES_PHONE
+              What if user loses phone?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>
-                They can use one of their 10 backup codes to log in. After logging in, they should:
-              </p>
+              <p>They can use one of their 10 backup codes to log in. After logging in, they should:</p>
               <ol className="list-inside list-decimal mt-2">
                 <li>Disable 2FA</li>
                 <li>Set up a new authenticator on their new phone</li>
@@ -372,16 +244,14 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
-              WHAT_IF_USER_LOSES_PHONE_AND_BACKUP_CODES
+              What if user loses phone AND backup codes?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>
-                This is a worst-case scenario. You have a few options:
-              </p>
+              <p>This is a worst-case scenario. You have a few options:</p>
               <ul className="font-mono text-sm text-muted-foreground space-y-1 mt-2">
-                <li>Require identity verification (ID upload, video call)</li>
-                <li>Disable 2FA from admin panel after verification</li>
-                <li>Implement an account recovery flow with security questions</li>
+                <li>• Require identity verification (ID upload, video call)</li>
+                <li>• Disable 2FA from admin panel after verification</li>
+                <li>• Implement an account recovery flow with security questions</li>
               </ul>
               <p className="mt-2">
                 This is why it&apos;s important to tell users to save their backup codes securely!
@@ -391,7 +261,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
-              CAN_I_REQUIRE_2FA_FOR_ALL_USERS
+              Can I require 2FA for all users?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
@@ -404,7 +274,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
-              HOW_ARE_SECRETS_STORED
+              How are secrets stored?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
@@ -415,43 +285,37 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
         </div>
-      </div>
+      </DocsSection>
 
-      {/* Future Enhancements */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">FUTURE_ENHANCEMENTS</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+      {/* Future Enhancements Section */}
+      <DocsSection title="Future Enhancements">
+        <p className={`${docsTypography.body} mb-4`}>
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">SMS_VERIFICATION</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Text message codes as an alternative (requires Twilio integration).
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">WEBAUTHN_PASSKEYS</h3>
-              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                Hardware security keys and biometric authentication (Touch ID, Face ID).
-              </p>
-            </CardContent>
-          </Card>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>SMS Verification</h3>
+            <p className={docsTypography.body}>
+              Text message codes as an alternative (requires Twilio integration).
+            </p>
+          </DocsCard>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>WebAuthn/Passkeys</h3>
+            <p className={docsTypography.body}>
+              Hardware security keys and biometric authentication (Touch ID, Face ID).
+            </p>
+          </DocsCard>
         </div>
-      </div>
+      </DocsSection>
 
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">AUTHENTICATION_BASICS</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication Basics</h3>
+                <p className={docsTypography.body}>
                   Learn about the core authentication system 2FA builds on.
                 </p>
               </CardContent>
@@ -460,16 +324,15 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">SECURITY_HEADERS</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
+                <p className={docsTypography.body}>
                   Learn about security headers and CSRF protection.
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

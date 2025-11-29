@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography, docsSpacing } from "@/components/docs";
+import { Webhook, Shield, RefreshCw, FileText } from "lucide-react";
 
 export const metadata = {
   title: "Webhooks System - Fabrk Documentation",
@@ -9,90 +10,23 @@ export const metadata = {
 
 export default function WebhooksPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">WEBHOOKS_SYSTEM</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            The webhooks system allows your application to send HTTP callbacks to external services when
-            specific events occur. This is essential for integrating with third-party services, triggering
-            external workflows, and keeping systems in sync.
-          </p>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>22 Event Types:</strong> User, payment, organization, and system events</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>HMAC-SHA256 Verification:</strong> Secure signature verification for all deliveries</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Automatic Retries:</strong> Exponential backoff with configurable retry limits</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Delivery Tracking:</strong> Full history of webhook deliveries and responses</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">EVENT_TYPES</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Available webhook event types organized by category:
-          </p>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <h3 className="font-mono text-base font-semibold text-foreground">USER_EVENTS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-                <li>user.created</li>
-                <li>user.updated</li>
-                <li>user.deleted</li>
-                <li>user.email_verified</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-mono text-base font-semibold text-foreground">PAYMENT_EVENTS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-                <li>payment.completed</li>
-                <li>payment.failed</li>
-                <li>subscription.created</li>
-                <li>subscription.cancelled</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-mono text-base font-semibold text-foreground">ORGANIZATION_EVENTS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-                <li>organization.created</li>
-                <li>organization.updated</li>
-                <li>member.invited</li>
-                <li>member.joined</li>
-                <li>member.removed</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-mono text-base font-semibold text-foreground">SYSTEM_EVENTS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-                <li>webhook.test</li>
-                <li>api_key.created</li>
-                <li>api_key.revoked</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CREATING_WEBHOOKS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Register a webhook endpoint to receive events:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// API Route: POST /api/v1/webhooks
+    <FeatureGuideTemplate
+      code="[0x70]"
+      category="Features"
+      title="Webhooks_System"
+      description="Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff."
+      overview="The webhooks system allows your application to send HTTP callbacks to external services when specific events occur. This is essential for integrating with third-party services, triggering external workflows, and keeping systems in sync."
+      features={[
+        { icon: Webhook, title: "22 Event Types", description: "User, payment, organization, and system events" },
+        { icon: Shield, title: "HMAC-SHA256 Verification", description: "Secure signature verification for all deliveries" },
+        { icon: RefreshCw, title: "Automatic Retries", description: "Exponential backoff with configurable retry limits" },
+        { icon: FileText, title: "Delivery Tracking", description: "Full history of webhook deliveries and responses" },
+      ]}
+      usage={[
+        {
+          title: "Creating Webhooks",
+          description: "Register a webhook endpoint to receive events",
+          code: `// API Route: POST /api/v1/webhooks
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { generateWebhookSecret } from "@/lib/webhooks/server";
@@ -125,17 +59,13 @@ export async function POST(req: Request) {
     events: webhook.events,
     secret: webhook.secret, // Show once on creation
   });
-}`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">SENDING_WEBHOOKS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Trigger webhook deliveries from your application:
-          </p>
-        </div>
-        <CodeBlock language="json" code={`// src/lib/webhooks/server.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Sending Webhooks",
+          description: "Trigger webhook deliveries from your application",
+          code: `// src/lib/webhooks/server.ts
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
 
@@ -158,11 +88,7 @@ export async function sendWebhook(
   }
 }
 
-async function deliverWebhook(
-  webhook: Webhook,
-  event: string,
-  payload: Record<string, any>
-) {
+async function deliverWebhook(webhook, event, payload) {
   const body = JSON.stringify({
     event,
     payload,
@@ -175,49 +101,40 @@ async function deliverWebhook(
     .update(body)
     .digest("hex");
 
-  try {
-    const response = await fetch(webhook.url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Webhook-Signature": signature,
-        "X-Webhook-Event": event,
-      },
-      body,
-    });
+  const response = await fetch(webhook.url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Webhook-Signature": signature,
+      "X-Webhook-Event": event,
+    },
+    body,
+  });
 
-    // Log delivery
-    await prisma.webhookDelivery.create({
-      data: {
-        webhookId: webhook.id,
-        event,
-        payload,
-        statusCode: response.status,
-        success: response.ok,
-      },
-    });
-  } catch (error) {
-    // Queue for retry
-    await queueWebhookRetry(webhook.id, event, payload);
-  }
+  // Log delivery
+  await prisma.webhookDelivery.create({
+    data: {
+      webhookId: webhook.id,
+      event,
+      payload,
+      statusCode: response.status,
+      success: response.ok,
+    },
+  });
 }
 
-// Usage in your code
+// Usage
 await sendWebhook("user.created", {
   id: user.id,
   email: user.email,
   name: user.name,
-});`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">VERIFYING_WEBHOOKS_RECEIVER_SIDE</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            When receiving webhooks, always verify the signature:
-          </p>
-        </div>
-        <CodeBlock language="bash" code={`// In your webhook receiver endpoint
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Verifying Webhooks (Receiver Side)",
+          description: "When receiving webhooks, always verify the signature",
+          code: `// In your webhook receiver endpoint
 import crypto from "crypto";
 
 export async function POST(req: Request) {
@@ -248,17 +165,13 @@ export async function POST(req: Request) {
   console.log(\`Received \${event}:\`, data.payload);
 
   return Response.json({ received: true });
-}`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">RETRY_LOGIC</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Failed webhooks are automatically retried with exponential backoff:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// Retry configuration
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Retry Logic",
+          description: "Failed webhooks are automatically retried with exponential backoff",
+          code: `// Retry configuration
 const RETRY_CONFIG = {
   maxRetries: 5,
   initialDelay: 60,    // 1 minute
@@ -295,22 +208,73 @@ async function queueWebhookRetry(
     payload,
     attempt: attempt + 1,
   }, { delay: delay * 1000 });
-}`} />
-      </div>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Organizations", href: "/docs/features/organizations" }}
+      next={{ title: "Magic Links", href: "/docs/features/magic-links" }}
+    >
+      {/* Event Types Section */}
+      <DocsSection title="Event Types">
+        <DocsCard>
+          <p className={`${docsTypography.body} mb-4`}>
+            Available webhook event types organized by category:
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 className={`uppercase ${docsTypography.h4}`}>User Events</h3>
+              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+                <li>• user.created</li>
+                <li>• user.updated</li>
+                <li>• user.deleted</li>
+                <li>• user.email_verified</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className={`uppercase ${docsTypography.h4}`}>Payment Events</h3>
+              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+                <li>• payment.completed</li>
+                <li>• payment.failed</li>
+                <li>• subscription.created</li>
+                <li>• subscription.cancelled</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className={`uppercase ${docsTypography.h4}`}>Organization Events</h3>
+              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+                <li>• organization.created</li>
+                <li>• organization.updated</li>
+                <li>• member.invited</li>
+                <li>• member.joined</li>
+                <li>• member.removed</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className={`uppercase ${docsTypography.h4}`}>System Events</h3>
+              <ul className={`${docsTypography.body} space-y-1 mt-2`}>
+                <li>• webhook.test</li>
+                <li>• api_key.created</li>
+                <li>• api_key.revoked</li>
+              </ul>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
 
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">SECURITY_BEST_PRACTICES</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
+      {/* Security Best Practices Section */}
+      <DocsSection title="Security Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
+            <li>├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
+            <li>├─ <strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
+            <li>├─ <strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
+            <li>├─ <strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
+            <li>└─ <strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
           </ul>
-        </CardContent>
-      </Card>
-    </div>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
