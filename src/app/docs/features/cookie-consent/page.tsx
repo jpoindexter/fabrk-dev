@@ -1,6 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Cookie, Shield, Settings, Download } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Cookie Consent (GDPR) - Fabrk Docs",
@@ -9,162 +12,23 @@ export const metadata = {
 
 export default function CookieConsentPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">COOKIE_CONSENT_GDPR</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; GDPR-compliant cookie banner with Google Consent Mode v2 integration.
-        </p>
-      </div>
-
-      {/* What is Cookie Consent - Plain English */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_THIS</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            If your app has users in Europe, you&apos;re legally required to ask permission before
-            tracking them with cookies. This component handles that for you.
-          </p>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Think of it like asking guests if they want coffee before pouring. Some want it
-            (marketing cookies), some don&apos;t (privacy-focused users). This lets them choose.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Why You Need This */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHY_YOU_NEED_THIS</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <h3 className="font-mono text-base font-semibold text-foreground">LEGAL_COMPLIANCE</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>GDPR (Europe) requires explicit consent</li>
-                <li>CCPA (California) requires disclosure</li>
-                <li>Fines up to 4% of annual revenue for violations</li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-mono text-base font-semibold text-foreground">GOOGLE_REQUIREMENTS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>Consent Mode v2 required since March 2024</li>
-                <li>Needed for Google Ads remarketing</li>
-                <li>Analytics data may be limited without it</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* How It Works */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">HOW_IT_WORKS</h2>
-        <div className="space-y-4">
-          <div className="border border-border bg-card p-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
-              <h3 className="font-mono text-base font-semibold text-foreground">FIRST_VISIT</h3>
-            </div>
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner.
-              All non-essential cookies are blocked until they make a choice.
-            </p>
-          </div>
-          <div className="border border-border bg-card p-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
-              <h3 className="font-mono text-base font-semibold text-foreground">USER_MAKES_CHOICE</h3>
-            </div>
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              Clicking the button opens a modal with three tabs: Consent (quick toggles),
-              Details (see exactly which cookies), and About (their privacy rights).
-            </p>
-          </div>
-          <div className="border border-border bg-card p-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
-              <h3 className="font-mono text-base font-semibold text-foreground">CHOICE_SAVED</h3>
-            </div>
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              Their preference is stored in localStorage for 1 year. Google Consent Mode
-              is updated automatically, enabling/disabling analytics and ads accordingly.
-            </p>
-          </div>
-          <div className="border border-border bg-card p-4">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
-              <h3 className="font-mono text-base font-semibold text-foreground">RETURN_VISITS</h3>
-            </div>
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              The banner doesn&apos;t show again (unless they clear storage). Their saved
-              preferences are applied immediately on page load.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Cookie Categories */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">COOKIE_CATEGORIES</h2>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3 p-3 bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
-                <div>
-                  <p className="font-medium">Necessary (Always On)</p>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Essential for the site to work. Includes session cookies and consent storage.
-                    Cannot be disabled.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
-                <div>
-                  <p className="font-medium">Preferences</p>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Remember settings like theme (dark/light) and language. Off by default.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
-                <div>
-                  <p className="font-medium">Statistics</p>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Google Analytics and similar tools. Helps you understand how people use your app.
-                    Off by default.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
-                <div>
-                  <p className="font-medium">Marketing</p>
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising.
-                    Off by default.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Setup */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          The cookie consent component is already included in your layout. No setup required!
-        </p>
-        <CodeBlock language="tsx" code={`// Already in src/app/layout.tsx
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Features"
+      title="Cookie_Consent_GDPR"
+      description="GDPR-compliant cookie banner with Google Consent Mode v2 integration."
+      overview="If your app has users in Europe, you're legally required to ask permission before tracking them with cookies. This component handles that for you. Think of it like asking guests if they want coffee before pouring - some want it (marketing cookies), some don't (privacy-focused users). This lets them choose."
+      features={[
+        { icon: Shield, title: "Legal Compliance", description: "GDPR (Europe), CCPA (California), and other privacy regulations. Fines up to 4% of annual revenue for violations." },
+        { icon: Cookie, title: "Google Consent Mode v2", description: "Required since March 2024 for Google Ads remarketing and Analytics features." },
+        { icon: Settings, title: "Granular Control", description: "Four cookie categories: Necessary (always on), Preferences, Statistics, and Marketing." },
+        { icon: Download, title: "Data Export", description: "Built-in 'Download My Data' button for GDPR right to access compliance." },
+      ]}
+      setup={[
+        {
+          title: "Already Included",
+          description: "The cookie consent component is already in your layout. No setup required!",
+          code: `// Already in src/app/layout.tsx
 import { CookieConsent } from "@/components/cookie-consent";
 
 export default function RootLayout({ children }) {
@@ -176,17 +40,15 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}`} />
-      </div>
-
-      {/* Google Tag Manager Integration */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">GOOGLE_TAG_MANAGER_INTEGRATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          The component automatically integrates with Google Consent Mode v2. Here&apos;s what happens
-          when a user makes their choice:
-        </p>
-        <CodeBlock language="typescript" code={`// Automatically called when user saves preferences
+}`,
+          language: "tsx",
+        },
+      ]}
+      usage={[
+        {
+          title: "Google Tag Manager Integration",
+          description: "The component automatically integrates with Google Consent Mode v2",
+          code: `// Automatically called when user saves preferences
 gtag("consent", "update", {
   ad_storage: marketing ? "granted" : "denied",
   ad_user_data: marketing ? "granted" : "denied",
@@ -200,22 +62,13 @@ gtag("consent", "update", {
 dataLayer.push({
   event: "cookie_consent_update",
   cookie_consent: { necessary, preferences, statistics, marketing }
-});`} />
-        <p className="font-mono text-sm text-muted-foreground mt-2">
-          <strong>Note:</strong> Make sure your GTM container is configured to respect Consent Mode.
-          Tags should be set to fire only when the appropriate consent is granted.
-        </p>
-      </div>
-
-      {/* Customization */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CUSTOMIZATION</h2>
-
-        <h3 className="font-mono text-base font-semibold text-foreground">ADD_REMOVE_COOKIE_CATEGORIES</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Edit the categories in <code className="bg-muted px-1 font-mono">src/components/cookie-consent-tabs.tsx</code>:
-        </p>
-        <CodeBlock language="typescript" code={`// In DetailsTabContent function
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Add/Remove Cookie Categories",
+          description: "Edit the categories in src/components/cookie-consent-tabs.tsx",
+          code: `// In DetailsTabContent function
 const categories: CookieCategory[] = [
   {
     id: "necessary",
@@ -232,74 +85,117 @@ const categories: CookieCategory[] = [
     ],
   },
   // Add more categories...
-];`} />
-
-        <h3 className="font-mono font-semibold mt-6">CHANGE_CONSENT_DURATION</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          By default, consent is valid for 1 year. Edit in <code className="bg-muted px-1 font-mono">src/components/cookie-consent.tsx</code>:
-        </p>
-        <CodeBlock language="typescript" code={`// In getInitialPreferences function
+];`,
+          language: "typescript",
+        },
+        {
+          title: "Change Consent Duration",
+          description: "By default, consent is valid for 1 year. Edit in src/components/cookie-consent.tsx",
+          code: `// In getInitialPreferences function
 const daysSinceConsent = Math.floor(
   (Date.now() - new Date(consentDate).getTime()) / (1000 * 60 * 60 * 24)
 );
 if (daysSinceConsent < 365) {  // Change 365 to your desired days
   return { preferences: JSON.parse(consent), showButton: false };
-}`} />
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "SEO", href: "/docs/features/seo" }}
+      next={{ title: "Trial", href: "/docs/features/trial" }}
+    >
+      {/* How It Works Section */}
+      <DocsSection title="How It Works">
+        <div className="space-y-4">
+          <DocsCard>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
+              <h3 className={`uppercase ${docsTypography.h4}`}>First Visit</h3>
+            </div>
+            <p className={docsTypography.body}>
+              New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner.
+              All non-essential cookies are blocked until they make a choice.
+            </p>
+          </DocsCard>
+          <DocsCard>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
+              <h3 className={`uppercase ${docsTypography.h4}`}>User Makes Choice</h3>
+            </div>
+            <p className={docsTypography.body}>
+              Clicking the button opens a modal with three tabs: Consent (quick toggles),
+              Details (see exactly which cookies), and About (their privacy rights).
+            </p>
+          </DocsCard>
+          <DocsCard>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
+              <h3 className={`uppercase ${docsTypography.h4}`}>Choice Saved</h3>
+            </div>
+            <p className={docsTypography.body}>
+              Their preference is stored in localStorage for 1 year. Google Consent Mode
+              is updated automatically, enabling/disabling analytics and ads accordingly.
+            </p>
+          </DocsCard>
+          <DocsCard>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
+              <h3 className={`uppercase ${docsTypography.h4}`}>Return Visits</h3>
+            </div>
+            <p className={docsTypography.body}>
+              The banner doesn&apos;t show again (unless they clear storage). Their saved
+              preferences are applied immediately on page load.
+            </p>
+          </DocsCard>
+        </div>
+      </DocsSection>
 
-        <h3 className="font-mono font-semibold mt-6">UPDATE_CONTACT_EMAIL</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          The &quot;About&quot; tab shows your privacy contact email. Update it in the AboutTabContent component.
-        </p>
-      </div>
+      {/* Cookie Categories Section */}
+      <DocsSection title="Cookie Categories">
+        <DocsCard>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3 p-3 bg-muted/50">
+              <div className="h-3 w-3 rounded-full bg-green-500 mt-1"></div>
+              <div>
+                <p className="font-medium">Necessary (Always On)</p>
+                <p className={docsTypography.body}>
+                  Essential for the site to work. Includes session cookies and consent storage. Cannot be disabled.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-muted/50">
+              <div className="h-3 w-3 rounded-full bg-blue-500 mt-1"></div>
+              <div>
+                <p className="font-medium">Preferences</p>
+                <p className={docsTypography.body}>
+                  Remember settings like theme (dark/light) and language. Off by default.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-muted/50">
+              <div className="h-3 w-3 rounded-full bg-yellow-500 mt-1"></div>
+              <div>
+                <p className="font-medium">Statistics</p>
+                <p className={docsTypography.body}>
+                  Google Analytics and similar tools. Helps you understand how people use your app. Off by default.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 p-3 bg-muted/50">
+              <div className="h-3 w-3 rounded-full bg-red-500 mt-1"></div>
+              <div>
+                <p className="font-medium">Marketing</p>
+                <p className={docsTypography.body}>
+                  Facebook Pixel, Google Ads conversion tracking. Used for targeted advertising. Off by default.
+                </p>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
 
-      {/* Data Export Feature */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">DATA_EXPORT_GDPR_RIGHT_TO_ACCESS</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          The &quot;About&quot; tab includes a &quot;Download My Data&quot; button that lets logged-in users
-          export their personal data. This helps with GDPR&apos;s &quot;right to access&quot; requirement.
-        </p>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <h3 className="font-mono text-base font-semibold text-foreground">HOW_IT_WORKS</h3>
-            <ul className="font-mono text-sm text-muted-foreground space-y-1">
-              <li>User clicks &quot;Download My Data&quot; button</li>
-              <li>Request goes to <code className="bg-muted px-1 font-mono">/api/user/export</code></li>
-              <li>If logged in, returns JSON file with their data</li>
-              <li>If not logged in, shows &quot;Please log in&quot; message</li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Testing */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">TESTING</h2>
-        <Card className="rounded-none">
-          <CardContent className="p-6 space-y-4">
-            <h3 className="font-mono text-base font-semibold text-foreground">MANUAL_TESTING</h3>
-            <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
-              <li>Open your app in a private/incognito window</li>
-              <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
-              <li>Click it and test each action: Accept All, Reject All, Accept Selected</li>
-              <li>Refresh the page - banner should not reappear</li>
-              <li>Open DevTools → Application → Local Storage → look for <code className="bg-muted px-1 font-mono">cookie-consent</code></li>
-            </ol>
-
-            <h3 className="font-mono font-semibold mt-4">VERIFY_GTM_INTEGRATION</h3>
-            <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
-              <li>Open DevTools → Console</li>
-              <li>Type <code className="bg-muted px-1 font-mono">dataLayer</code> and press Enter</li>
-              <li>Look for <code className="bg-muted px-1 font-mono">cookie_consent_update</code> events</li>
-              <li>Check that consent states match your selections</li>
-            </ol>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Common Questions */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
+      {/* Common Questions Section */}
+      <DocsSection title="Common Questions">
         <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
@@ -334,21 +230,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
                 Yes! In <code className="bg-muted px-1 font-mono">cookie-consent.tsx</code>, find the button element and change the
-                Tailwind classes. It&apos;s currently <code className="bg-muted px-1 font-mono">bottom-6 right-6</code>. Change to
+                Tailwind classes. It&apos;s currently <code className="bg-muted px-1 font-mono">bottom-6 right-6</code>. Change to{" "}
                 <code className="bg-muted px-1 font-mono">bottom-6 left-6</code> for bottom-left, etc.
-              </p>
-            </div>
-          </details>
-
-          <details className="border border-border bg-card">
-            <summary className="cursor-pointer p-4 font-mono font-medium">
-              How do I re-show the consent banner?
-            </summary>
-            <div className="border-t border-border p-4 text-sm text-muted-foreground">
-              <p>
-                Users can clear their browser&apos;s localStorage, or you can add a &quot;Cookie Settings&quot;
-                link in your footer that opens the modal programmatically. The component exports
-                the necessary functions.
               </p>
             </div>
           </details>
@@ -365,17 +248,38 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </div>
           </details>
         </div>
-      </div>
+      </DocsSection>
 
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      {/* Testing Section */}
+      <DocsSection title="Testing">
+        <DocsCard>
+          <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Manual Testing</h3>
+          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+            <li>Open your app in a private/incognito window</li>
+            <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
+            <li>Click it and test each action: Accept All, Reject All, Accept Selected</li>
+            <li>Refresh the page - banner should not reappear</li>
+            <li>Open DevTools → Application → Local Storage → look for <code className="bg-muted px-1 font-mono">cookie-consent</code></li>
+          </ol>
+
+          <h3 className={`uppercase ${docsTypography.h4} mt-6 mb-2`}>Verify GTM Integration</h3>
+          <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
+            <li>Open DevTools → Console</li>
+            <li>Type <code className="bg-muted px-1 font-mono">dataLayer</code> and press Enter</li>
+            <li>Look for <code className="bg-muted px-1 font-mono">cookie_consent_update</code> events</li>
+            <li>Check that consent states match your selections</li>
+          </ol>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/analytics">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">ANALYTICS</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Analytics</h3>
+                <p className={docsTypography.body}>
                   Set up PostHog analytics that respects consent.
                 </p>
               </CardContent>
@@ -384,16 +288,15 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">SECURITY_HEADERS</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
+                <p className={docsTypography.body}>
                   Configure CSP and other security headers.
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

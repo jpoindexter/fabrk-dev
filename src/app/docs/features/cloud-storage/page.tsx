@@ -1,6 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Cloud, HardDrive, Shield, Zap } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Cloud Storage - Fabrk Docs",
@@ -9,176 +12,23 @@ export const metadata = {
 
 export default function CloudStoragePage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CLOUD_STORAGE</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Upload and store files securely with automatic provider detection.</p>
-      </div>
-
-      {/* What is Cloud Storage - Plain English */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_CLOUD_STORAGE</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Cloud storage lets you save files (images, documents, videos) on remote servers
-            instead of your own. This is essential when users need to upload profile pictures,
-            documents, or any other files.
-          </p>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Think of it like Google Drive or Dropbox for your app - files are stored securely
-            in the cloud and can be accessed from anywhere.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Why You Need This */}
-      <Card className="rounded-none">
-        <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-primary">WHY_NOT_STORE_FILES_LOCALLY</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-2">
-              <h3 className="font-mono font-medium text-destructive">LOCAL_STORAGE_PROBLEMS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>Files lost when server restarts</li>
-                <li>Limited disk space</li>
-                <li>Slow serving to global users</li>
-                <li>No backup or redundancy</li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-mono font-medium text-primary">CLOUD_STORAGE_BENEFITS</h3>
-              <ul className="font-mono text-sm text-muted-foreground space-y-1">
-                <li>Files persist permanently</li>
-                <li>Virtually unlimited storage</li>
-                <li>Global CDN for fast delivery</li>
-                <li>Automatic backups and redundancy</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* How Fabrk Storage Works */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">HOW_FABRK_STORAGE_WORKS</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Fabrk automatically detects which storage provider you have configured and uses it.
-          This means you can start with local storage during development and switch to cloud
-          in production without changing your code.
-        </p>
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <h3 className="font-mono text-base font-semibold text-foreground">PROVIDER_PRIORITY</h3>
-            <div className="space-y-2">
-              <div className="flex items-center gap-3 p-3 border">
-                <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
-                <div>
-                  <p className="font-medium">Cloudflare R2</p>
-                  <p className="font-mono text-sm text-muted-foreground">Used if R2 environment variables are set</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 border">
-                <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-bold text-primary-foreground">2</span>
-                <div>
-                  <p className="font-medium">AWS S3</p>
-                  <p className="font-mono text-sm text-muted-foreground">Used if only S3 environment variables are set</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-3 border">
-                <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-bold">3</span>
-                <div>
-                  <p className="font-medium">Local Storage</p>
-                  <p className="font-mono text-sm text-muted-foreground">Fallback when no cloud provider is configured</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Choosing a Provider */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CHOOSING_A_PROVIDER</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">CLOUDFLARE_R2</h3>
-              <p className="font-mono text-sm text-muted-foreground mb-2">Recommended</p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>No egress fees (huge savings)</li>
-                <li>S3-compatible API</li>
-                <li>Global edge network</li>
-                <li>Generous free tier</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">AWS_S3</h3>
-              <p className="font-mono text-sm text-muted-foreground mb-2">Industry Standard</p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>Most mature platform</li>
-                <li>Extensive documentation</li>
-                <li>Pay-per-use pricing</li>
-                <li>Egress fees apply</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="rounded-none">
-            <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold text-foreground">LOCAL_STORAGE</h3>
-              <p className="font-mono text-sm text-muted-foreground mb-2">Development Only</p>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>No setup required</li>
-                <li>Good for testing</li>
-                <li>Files in /uploads folder</li>
-                <li>Not for production</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Setup - R2 */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SETUP_CLOUDFLARE_R2</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          R2 is the recommended provider due to zero egress fees. Here&apos;s how to set it up:
-        </p>
-
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
-            1
-          </span>
-          <h3 className="font-mono text-base font-semibold text-foreground">CREATE_R2_BUCKET</h3>
-        </div>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          In Cloudflare Dashboard, go to &quot;R2 Object Storage&quot; → &quot;Create bucket&quot;.
-          Name it something like <code className="font-mono bg-muted px-1">my-saas-uploads</code>.
-        </p>
-
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
-            2
-          </span>
-          <h3 className="font-mono text-base font-semibold text-foreground">GENERATE_API_TOKEN</h3>
-        </div>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Go to &quot;R2 Object Storage&quot; → &quot;Manage R2 API Tokens&quot; → &quot;Create API Token&quot;.
-          Select &quot;Object Read &amp; Write&quot; permission and your bucket.
-        </p>
-
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
-            3
-          </span>
-          <h3 className="font-mono text-base font-semibold text-foreground">ADD_ENVIRONMENT_VARIABLES</h3>
-        </div>
-        <CodeBlock language="bash" code={`# .env.local
+    <FeatureGuideTemplate
+      code="[0x50]"
+      category="Features"
+      title="Cloud_Storage"
+      description="Upload and store files securely with automatic provider detection."
+      overview="Cloud storage lets you save files (images, documents, videos) on remote servers instead of your own. This is essential when users need to upload profile pictures, documents, or any other files. Think of it like Google Drive or Dropbox for your app - files are stored securely in the cloud and can be accessed from anywhere."
+      features={[
+        { icon: Cloud, title: "Multi-Provider", description: "Works with Cloudflare R2, AWS S3, or local storage automatically." },
+        { icon: Zap, title: "Zero Egress Fees", description: "R2 recommended for huge savings on bandwidth costs." },
+        { icon: HardDrive, title: "Unlimited Storage", description: "Virtually unlimited storage with cloud providers." },
+        { icon: Shield, title: "Secure Uploads", description: "File validation, signed URLs, and access control built-in." },
+      ]}
+      setup={[
+        {
+          title: "Setup Cloudflare R2 (Recommended)",
+          description: "R2 is the recommended provider due to zero egress fees",
+          code: `# .env.local
 
 # Cloudflare R2 Configuration
 CLOUDFLARE_R2_ACCESS_KEY_ID="your-access-key-id"
@@ -187,38 +37,27 @@ CLOUDFLARE_R2_BUCKET="my-saas-uploads"
 CLOUDFLARE_R2_ENDPOINT="https://your-account-id.r2.cloudflarestorage.com"
 
 # Optional: Public URL for the bucket
-CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`} />
-      </div>
-
-      {/* Setup - S3 */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SETUP_AWS_S3</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          If you prefer S3 or already use AWS:
-        </p>
-        <CodeBlock language="bash" code={`# .env.local
+CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`,
+          language: "bash",
+        },
+        {
+          title: "Setup AWS S3 (Alternative)",
+          description: "If you prefer S3 or already use AWS",
+          code: `# .env.local
 
 # AWS S3 Configuration
 AWS_S3_ACCESS_KEY_ID="your-access-key-id"
 AWS_S3_SECRET_ACCESS_KEY="your-secret-access-key"
 AWS_S3_BUCKET="my-saas-uploads"
-AWS_S3_REGION="us-east-1"`} />
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Note: Make sure your IAM user has <code className="font-mono bg-muted px-1">s3:PutObject</code>,
-          <code className="font-mono bg-muted px-1 ml-1">s3:GetObject</code>, and
-          <code className="font-mono bg-muted px-1 ml-1">s3:DeleteObject</code> permissions.
-        </p>
-      </div>
-
-      {/* Code Examples */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
-
-        <h3 className="font-mono text-base font-semibold text-foreground">UPLOAD_A_FILE</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Use the upload utility to store files:
-        </p>
-        <CodeBlock language="typescript" code={`import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
+AWS_S3_REGION="us-east-1"`,
+          language: "bash",
+        },
+      ]}
+      usage={[
+        {
+          title: "Upload a File",
+          description: "Use the upload utility to store files",
+          code: `import { uploadFile, getStorageProvider } from "@/lib/storage/uploads";
 
 // Check which provider is being used
 const provider = getStorageProvider();
@@ -237,13 +76,13 @@ if (result.success) {
   console.log("File key:", result.key);
 } else {
   console.log("Error:", result.error);
-}`} />
-
-        <h3 className="font-mono font-semibold mt-6">FILE_VALIDATION</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Validate files before uploading:
-        </p>
-        <CodeBlock language="typescript" code={`import { validateFile } from "@/lib/storage/uploads";
+}`,
+          language: "typescript",
+        },
+        {
+          title: "File Validation",
+          description: "Validate files before uploading",
+          code: `import { validateFile } from "@/lib/storage/uploads";
 
 // Validate file size and type
 const validation = validateFile(file, {
@@ -261,13 +100,13 @@ if (!validation.valid) {
   console.error(validation.error);
   // "File too large. Maximum size is 10MB"
   // "File type not allowed. Allowed: image/jpeg, image/png..."
-}`} />
-
-        <h3 className="font-mono font-semibold mt-6">API_ROUTE_EXAMPLE</h3>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Handle file uploads in your API:
-        </p>
-        <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "API Route Example",
+          description: "Handle file uploads in your API",
+          code: `// src/app/api/upload/route.ts
 
 import { auth } from "@/lib/auth";
 import { uploadFile } from "@/lib/storage/uploads";
@@ -308,10 +147,13 @@ export async function POST(request: Request) {
     url: result.url,
     message: "File uploaded successfully",
   });
-}`} />
-
-        <h3 className="font-mono font-semibold mt-6">CLIENT_SIDE_UPLOAD_COMPONENT</h3>
-        <CodeBlock language="tsx" code={`"use client";
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Client-Side Upload Component",
+          description: "React component for file uploads",
+          code: `"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -360,49 +202,119 @@ export function FileUploader() {
       {uploading && <p>Uploading...</p>}
     </div>
   );
-}`} />
-      </div>
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Feature Flags", href: "/docs/features/feature-flags" }}
+      next={{ title: "Authentication", href: "/docs/tutorials/authentication" }}
+    >
+      {/* Provider Priority Section */}
+      <DocsSection title="Provider Priority">
+        <DocsCard>
+          <p className={`${docsTypography.body} mb-4`}>
+            Fabrk automatically detects which storage provider you have configured and uses it.
+            This means you can start with local storage during development and switch to cloud
+            in production without changing your code.
+          </p>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 p-3 border border-border">
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
+              <div>
+                <p className="font-medium">Cloudflare R2</p>
+                <p className={docsTypography.body}>Used if R2 environment variables are set</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 border border-border">
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-bold text-primary-foreground">2</span>
+              <div>
+                <p className="font-medium">AWS S3</p>
+                <p className={docsTypography.body}>Used if only S3 environment variables are set</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 border border-border">
+              <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-bold">3</span>
+              <div>
+                <p className="font-medium">Local Storage</p>
+                <p className={docsTypography.body}>Fallback when no cloud provider is configured</p>
+              </div>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
 
-      {/* Security */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SECURITY_CONSIDERATIONS</h2>
-        <Card className="bg-muted">
-          <CardContent className="p-6">
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
-                <span><strong>Validate file types:</strong> Never trust the file extension. Check MIME type server-side to prevent malicious uploads.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <span><strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse and server crashes.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">3</span>
-                <span><strong>Use signed URLs:</strong> For private files, generate time-limited signed URLs instead of public links.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">4</span>
-                <span><strong>Organize by user/org:</strong> Store files in user or organization folders to enable access control.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">5</span>
-                <span><strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded files in production.</span>
-              </li>
+      {/* Provider Comparison Section */}
+      <DocsSection title="Choosing a Provider">
+        <div className="grid gap-4 sm:grid-cols-3">
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Cloudflare R2</h3>
+            <p className={`${docsTypography.body} mb-2`}>Recommended</p>
+            <ul className={`${docsTypography.body} space-y-1`}>
+              <li>• No egress fees (huge savings)</li>
+              <li>• S3-compatible API</li>
+              <li>• Global edge network</li>
+              <li>• Generous free tier</li>
             </ul>
-          </CardContent>
-        </Card>
-      </div>
+          </DocsCard>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>AWS S3</h3>
+            <p className={`${docsTypography.body} mb-2`}>Industry Standard</p>
+            <ul className={`${docsTypography.body} space-y-1`}>
+              <li>• Most mature platform</li>
+              <li>• Extensive documentation</li>
+              <li>• Pay-per-use pricing</li>
+              <li>• Egress fees apply</li>
+            </ul>
+          </DocsCard>
+          <DocsCard>
+            <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Local Storage</h3>
+            <p className={`${docsTypography.body} mb-2`}>Development Only</p>
+            <ul className={`${docsTypography.body} space-y-1`}>
+              <li>• No setup required</li>
+              <li>• Good for testing</li>
+              <li>• Files in /uploads folder</li>
+              <li>• Not for production</li>
+            </ul>
+          </DocsCard>
+        </div>
+      </DocsSection>
 
-      {/* Common Questions */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
+      {/* Security Considerations Section */}
+      <DocsSection title="Security Considerations">
+        <DocsCard className="bg-muted/50">
+          <ul className="space-y-4 text-sm">
+            <li className="flex items-start gap-2">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
+              <span><strong>Validate file types:</strong> Never trust the file extension. Check MIME type server-side to prevent malicious uploads.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">2</span>
+              <span><strong>Limit file sizes:</strong> Set reasonable limits to prevent storage abuse and server crashes.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">3</span>
+              <span><strong>Use signed URLs:</strong> For private files, generate time-limited signed URLs instead of public links.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">4</span>
+              <span><strong>Organize by user/org:</strong> Store files in user or organization folders to enable access control.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">5</span>
+              <span><strong>Scan for malware:</strong> Consider adding virus scanning for user-uploaded files in production.</span>
+            </li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Common Questions Section */}
+      <DocsSection title="Common Questions">
         <div className="space-y-4">
           <details className="border border-border bg-card">
-            <summary className="cursor-pointer p-4 font-medium">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
               How much does cloud storage cost?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
                 <strong>Cloudflare R2:</strong> $0.015/GB/month for storage, zero egress fees.
                 First 10GB free.
@@ -415,10 +327,10 @@ export function FileUploader() {
           </details>
 
           <details className="border border-border bg-card">
-            <summary className="cursor-pointer p-4 font-medium">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
               What&apos;s the maximum file size?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
                 By default, Fabrk validates files up to 10MB. You can change this in your upload
                 options. For larger files (videos, etc.), consider using direct-to-storage uploads
@@ -428,10 +340,10 @@ export function FileUploader() {
           </details>
 
           <details className="border border-border bg-card">
-            <summary className="cursor-pointer p-4 font-medium">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
               Can I use both R2 and S3?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
                 Fabrk uses one provider at a time based on which env vars are set. R2 takes
                 priority if both are configured. If you need multi-provider support, you&apos;d
@@ -441,29 +353,28 @@ export function FileUploader() {
           </details>
 
           <details className="border border-border bg-card">
-            <summary className="cursor-pointer p-4 font-medium">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
               How do I delete files?
             </summary>
-            <div className="border-t p-4 text-sm text-muted-foreground">
+            <div className="border-t border-border p-4 text-sm text-muted-foreground">
               <p>
-                Use the <code className="font-mono bg-muted px-1">deleteFile(key)</code> function
+                Use the <code className={docsTypography.code}>deleteFile(key)</code> function
                 from the storage module. The key is returned when you upload a file. Make sure
                 to also remove the file reference from your database.
               </p>
             </div>
           </details>
         </div>
-      </div>
+      </DocsSection>
 
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">AUTHENTICATION</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
+                <p className={docsTypography.body}>
                   Secure file uploads with user authentication.
                 </p>
               </CardContent>
@@ -472,16 +383,15 @@ export function FileUploader() {
           <Link href="/docs/features/organizations">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">ORGANIZATIONS</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Organizations</h3>
+                <p className={docsTypography.body}>
                   Organize files by team with multi-tenancy.
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Bell, Database, Zap, CheckCircle } from "lucide-react";
 
 export const metadata = {
   title: "Notifications System - Fabrk Documentation",
@@ -9,41 +10,23 @@ export const metadata = {
 
 export default function NotificationsPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NOTIFICATIONS_SYSTEM</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            The notifications system combines real-time delivery via Pusher with database persistence
-            for a complete notification experience. Users receive instant notifications with a visual
-            bell icon indicator and can manage their notification history.
-          </p>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Real-time delivery:</strong> Instant push via Pusher</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Persistence:</strong> Stored in database for history</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Bell icon badge:</strong> Visual unread count indicator</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Read/Unread states:</strong> Mark individual or all as read</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Notification model in Prisma schema:
-          </p>
-        </div>
-        <CodeBlock language="prisma" code={`// prisma/schema.prisma
+    <FeatureGuideTemplate
+      code="[0x40]"
+      category="Features"
+      title="Notifications_System"
+      description="Real-time notifications with database persistence, bell icon badge, and read/unread state management."
+      overview="The notifications system combines real-time delivery via Pusher with database persistence for a complete notification experience. Users receive instant notifications with a visual bell icon indicator and can manage their notification history."
+      features={[
+        { icon: Zap, title: "Real-time Delivery", description: "Instant push notifications via Pusher - users see updates immediately." },
+        { icon: Database, title: "Persistence", description: "All notifications stored in database for history and retrieval." },
+        { icon: Bell, title: "Bell Icon Badge", description: "Visual unread count indicator that updates in real-time." },
+        { icon: CheckCircle, title: "Read/Unread States", description: "Mark individual or all notifications as read with one click." },
+      ]}
+      usage={[
+        {
+          title: "Database Schema",
+          description: "Notification model in Prisma schema",
+          code: `// prisma/schema.prisma
 model Notification {
   id        String   @id @default(cuid())
   userId    String
@@ -61,17 +44,13 @@ model Notification {
 
   @@index([userId, read])
   @@index([userId, createdAt])
-}`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CREATING_NOTIFICATIONS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Send notifications from anywhere in your application:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/notifications.ts
+}`,
+          language: "prisma",
+        },
+        {
+          title: "Creating Notifications",
+          description: "Send notifications from anywhere in your application",
+          code: `// src/lib/notifications.ts
 import { prisma } from "@/lib/db";
 import { pusherServer } from "@/lib/pusher/server";
 
@@ -126,17 +105,13 @@ await createNotification({
   type: "info",
   title: "New team member",
   body: "John Doe joined your organization",
-});`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">BELL_ICON_COMPONENT</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            The notification bell with real-time updates and dropdown:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`"use client";
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Bell Icon Component",
+          description: "The notification bell with real-time updates and dropdown",
+          code: `"use client";
 
 import { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
@@ -194,12 +169,6 @@ export function NotificationBell({ userId }: { userId: string }) {
     setUnreadCount((prev) => Math.max(0, prev - 1));
   };
 
-  const markAllAsRead = async () => {
-    await fetch("/api/v1/notifications/read-all", { method: "POST" });
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
-    setUnreadCount(0);
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -212,56 +181,16 @@ export function NotificationBell({ userId }: { userId: string }) {
           )}
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-80">
-        <div className="flex items-center justify-between p-3 border-b">
-          <h3 className="font-semibold">Notifications</h3>
-          {unreadCount > 0 && (
-            <button
-              onClick={markAllAsRead}
-              className="text-xs text-primary hover:underline"
-            >
-              Mark all as read
-            </button>
-          )}
-        </div>
-        <div className="max-h-96 overflow-y-auto">
-          {notifications.length === 0 ? (
-            <p className="p-4 text-center text-muted-foreground">
-              No notifications
-            </p>
-          ) : (
-            notifications.map((notification) => (
-              <div
-                key={notification.id}
-                className={\`p-3 border-b hover:bg-muted cursor-pointer \${
-                  !notification.read ? "bg-primary/5" : ""
-                }\`}
-                onClick={() => markAsRead(notification.id)}
-              >
-                <p className="font-medium text-sm">{notification.title}</p>
-                {notification.body && (
-                  <p className="font-mono text-sm text-muted-foreground mt-1">
-                    {notification.body}
-                  </p>
-                )}
-              </div>
-            ))
-          )}
-        </div>
-      </DropdownMenuContent>
+      {/* Dropdown content... */}
     </DropdownMenu>
   );
-}`} />
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">API_ROUTES</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Notification management endpoints:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// GET /api/v1/notifications
+}`,
+          language: "tsx",
+        },
+        {
+          title: "API Routes",
+          description: "Notification management endpoints",
+          code: `// GET /api/v1/notifications
 export async function GET(req: Request) {
   const session = await auth();
   if (!session?.user) {
@@ -312,22 +241,26 @@ export async function POST(req: Request) {
   });
 
   return Response.json({ success: true });
-}`} />
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Be selective:</strong> Only notify for important, actionable events</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Clear titles:</strong> Make notifications scannable at a glance</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Include links:</strong> Let users take action directly from the notification</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Allow preferences:</strong> Let users control which notifications they receive</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Trial", href: "/docs/features/trial" }}
+      next={{ title: "Realtime", href: "/docs/features/realtime" }}
+    >
+      {/* Best Practices Section */}
+      <DocsSection title="Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ <strong>Be selective:</strong> Only notify for important, actionable events</li>
+            <li>├─ <strong>Clear titles:</strong> Make notifications scannable at a glance</li>
+            <li>├─ <strong>Include links:</strong> Let users take action directly from the notification</li>
+            <li>├─ <strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
+            <li>├─ <strong>Allow preferences:</strong> Let users control which notifications they receive</li>
+            <li>└─ <strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
           </ul>
-        </CardContent>
-      </Card>
-    </div>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

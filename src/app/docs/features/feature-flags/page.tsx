@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { ToggleLeft, Percent, Users, Settings } from "lucide-react";
 
 export const metadata = {
   title: "Feature Flags - Fabrk Documentation",
@@ -9,42 +10,23 @@ export const metadata = {
 
 export default function FeatureFlagsPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_FLAGS</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Feature flags allow you to control feature visibility without deploying new code.
-            Use them for gradual rollouts, A/B testing, user targeting, and kill switches.
-          </p>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Simple toggles:</strong> Enable/disable features globally</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Percentage rollouts:</strong> Roll out to a percentage of users</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>User targeting:</strong> Enable for specific users or groups</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Environment-based:</strong> Different flags per environment</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4 mb-8">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Feature flag model in Prisma schema:
-          </p>
-        </div>
-        <CodeBlock language="prisma" code={`// prisma/schema.prisma
+    <FeatureGuideTemplate
+      code="[0x70]"
+      category="Features"
+      title="Feature_Flags"
+      description="Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments."
+      overview="Feature flags allow you to control feature visibility without deploying new code. Use them for gradual rollouts, A/B testing, user targeting, and kill switches."
+      features={[
+        { icon: ToggleLeft, title: "Simple Toggles", description: "Enable/disable features globally with a single switch." },
+        { icon: Percent, title: "Percentage Rollouts", description: "Roll out to a percentage of users for gradual releases." },
+        { icon: Users, title: "User Targeting", description: "Enable for specific users, plans, or groups." },
+        { icon: Settings, title: "Environment-Based", description: "Different flags per environment (dev, staging, prod)." },
+      ]}
+      usage={[
+        {
+          title: "Database Schema",
+          description: "Feature flag model in Prisma schema",
+          code: `// prisma/schema.prisma
 model FeatureFlag {
   id          String   @id @default(cuid())
   key         String   @unique // "new-dashboard", "beta-api"
@@ -69,17 +51,13 @@ model FeatureFlag {
   updatedAt   DateTime @updatedAt
 
   @@index([key, environment])
-}`} />
-      </div>
-
-      <div className="space-y-4 mb-8">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">FEATURE_FLAG_SERVICE</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Core service for checking feature flags:
-          </p>
-        </div>
-        <CodeBlock language="bash" code={`// src/lib/feature-flags.ts
+}`,
+          language: "prisma",
+        },
+        {
+          title: "Feature Flag Service",
+          description: "Core service for checking feature flags",
+          code: `// src/lib/feature-flags.ts
 import { prisma } from "@/lib/db";
 import crypto from "crypto";
 
@@ -152,17 +130,13 @@ export async function getFeatureFlags(context: FlagContext = {}) {
   }
 
   return result;
-}`} />
-      </div>
-
-      <div className="space-y-4 mb-8">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">SERVER_SIDE_USAGE</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Check feature flags in API routes and server components:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`// In API routes
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Server-Side Usage",
+          description: "Check feature flags in API routes and server components",
+          code: `// In API routes
 import { auth } from "@/lib/auth";
 import { isFeatureEnabled } from "@/lib/feature-flags";
 
@@ -207,17 +181,13 @@ export default async function DashboardPage() {
       )}
     </div>
   );
-}`} />
-      </div>
-
-      <div className="space-y-4 mb-8">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CLIENT_SIDE_USAGE</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Use feature flags in client components with a React hook:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`// src/hooks/use-feature-flags.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Client-Side Usage",
+          description: "Use feature flags in client components with a React hook",
+          code: `// src/hooks/use-feature-flags.ts
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -286,17 +256,13 @@ export function NewFeature() {
       {/* Feature content */}
     </div>
   );
-}`} />
-      </div>
-
-      <div className="space-y-4 mb-8">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">ADMIN_MANAGEMENT</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            API routes for managing feature flags:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// POST /api/admin/feature-flags
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Admin Management",
+          description: "API routes for managing feature flags",
+          code: `// POST /api/admin/feature-flags
 export async function POST(req: Request) {
   const session = await auth();
   if (session?.user?.role !== "admin") {
@@ -360,23 +326,27 @@ export async function POST(
   });
 
   return Response.json({ flag: updated });
-}`} />
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use descriptive keys:</strong> <code className="font-mono">new-checkout-flow</code> not <code className="font-mono">flag1</code></li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Add kill switches:</strong> Every major feature should have a flag</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Test both states:</strong> Ensure your app works with flag on and off</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Document flags:</strong> Keep a registry of active flags and their purpose</li>
-            <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use consistent hashing:</strong> Same user always gets same result for % rollouts</li>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Analytics", href: "/docs/features/analytics" }}
+      next={{ title: "Cloud Storage", href: "/docs/features/cloud-storage" }}
+    >
+      {/* Best Practices Section */}
+      <DocsSection title="Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ <strong>Use descriptive keys:</strong> <code className={docsTypography.code}>new-checkout-flow</code> not <code className={docsTypography.code}>flag1</code></li>
+            <li>├─ <strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
+            <li>├─ <strong>Add kill switches:</strong> Every major feature should have a flag</li>
+            <li>├─ <strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>
+            <li>├─ <strong>Test both states:</strong> Ensure your app works with flag on and off</li>
+            <li>├─ <strong>Document flags:</strong> Keep a registry of active flags and their purpose</li>
+            <li>└─ <strong>Use consistent hashing:</strong> Same user always gets same result for % rollouts</li>
           </ul>
-        </CardContent>
-      </Card>
-    </div>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

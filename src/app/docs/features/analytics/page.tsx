@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { BarChart3, User, Video, ToggleLeft } from "lucide-react";
 
 export const metadata = {
   title: "Analytics with PostHog - Fabrk Documentation",
@@ -9,70 +10,44 @@ export const metadata = {
 
 export default function AnalyticsPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] ANALYTICS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">ANALYTICS_WITH_POSTHOG</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Product analytics, session recordings, and feature flags with PostHog integration.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Fabrk integrates PostHog for comprehensive product analytics. Track user behavior,
-            analyze conversion funnels, record sessions, and manage feature flags all in one platform.
-          </p>
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <div>├─ Event Tracking: Custom events with properties</div>
-            <div>├─ User Identification: Link anonymous and authenticated users</div>
-            <div>├─ Session Recording: Watch user sessions (optional)</div>
-            <div>└─ Feature Flags: A/B testing and gradual rollouts</div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Add your PostHog credentials to environment variables:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="bash" code={`# .env.local
+    <FeatureGuideTemplate
+      code="[0x70]"
+      category="Features"
+      title="Analytics_With_PostHog"
+      description="Product analytics, session recordings, and feature flags with PostHog integration."
+      overview="Fabrk integrates PostHog for comprehensive product analytics. Track user behavior, analyze conversion funnels, record sessions, and manage feature flags all in one platform."
+      features={[
+        { icon: BarChart3, title: "Event Tracking", description: "Custom events with properties for detailed analytics." },
+        { icon: User, title: "User Identification", description: "Link anonymous and authenticated users across sessions." },
+        { icon: Video, title: "Session Recording", description: "Watch user sessions to understand behavior (optional)." },
+        { icon: ToggleLeft, title: "Feature Flags", description: "A/B testing and gradual rollouts built-in." },
+      ]}
+      setup={[
+        {
+          title: "Configure PostHog Credentials",
+          description: "Add your PostHog credentials to environment variables",
+          code: `# .env.local
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`} />
-        </div>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Enable analytics in your config:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// src/config.js
+NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`,
+          language: "bash",
+        },
+        {
+          title: "Enable Analytics in Config",
+          description: "Enable analytics in your config",
+          code: `// src/config.js
 module.exports = {
   features: {
     analytics: true, // Enable PostHog
   },
-};`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">POSTHOG_PROVIDER_SETUP</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Initialize PostHog in your application:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="tsx" code={`// src/components/providers/posthog-provider.tsx
+};`,
+          language: "javascript",
+        },
+      ]}
+      usage={[
+        {
+          title: "PostHog Provider Setup",
+          description: "Initialize PostHog in your application",
+          code: `// src/components/providers/posthog-provider.tsx
 "use client";
 
 import posthog from "posthog-js";
@@ -106,19 +81,13 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">TRACKING_EVENTS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Track custom events throughout your application:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="tsx" code={`"use client";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Tracking Events",
+          description: "Track custom events throughout your application",
+          code: `"use client";
 
 import { usePostHog } from "posthog-js/react";
 
@@ -151,19 +120,13 @@ export function CheckoutButton({ plan, price }: Props) {
 // - feature_used
 // - settings_changed
 // - organization_created
-// - member_invited`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">USER_IDENTIFICATION</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Identify users after authentication to link their activity:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="tsx" code={`"use client";
+// - member_invited`,
+          language: "tsx",
+        },
+        {
+          title: "User Identification",
+          description: "Identify users after authentication to link their activity",
+          code: `"use client";
 
 import { usePostHog } from "posthog-js/react";
 import { useSession } from "next-auth/react";
@@ -197,19 +160,13 @@ export function UserIdentifier() {
 const handleLogout = () => {
   posthog.reset(); // Clear user identity
   signOut();
-};`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">PAGE_VIEW_TRACKING</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Track page views with the Next.js router:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="tsx" code={`"use client";
+};`,
+          language: "tsx",
+        },
+        {
+          title: "Page View Tracking",
+          description: "Track page views with the Next.js router",
+          code: `"use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
@@ -233,19 +190,13 @@ export function PageViewTracker() {
   }, [pathname, searchParams, posthog]);
 
   return null;
-}`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">SERVER_SIDE_TRACKING</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Track events from API routes and server actions:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// src/lib/analytics/server.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Server-Side Tracking",
+          description: "Track events from API routes and server actions",
+          code: `// src/lib/analytics/server.ts
 import { PostHog } from "posthog-node";
 
 const posthogServer = new PostHog(
@@ -281,23 +232,26 @@ export async function POST(req: Request) {
   });
 
   return Response.json({ success: true });
-}`} />
-        </div>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <div>├─ Use consistent naming: Follow a convention like <code className="bg-muted px-1 font-mono text-xs">object_action</code></div>
-            <div>├─ Don&apos;t over-track: Focus on meaningful events that inform decisions</div>
-            <div>├─ Include context: Add properties that help segment and analyze</div>
-            <div>├─ Respect privacy: Don&apos;t track PII unless necessary</div>
-            <div>├─ Test events: Verify events appear in PostHog dashboard</div>
-            <div>└─ Document events: Maintain a tracking plan for your team</div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Background Jobs", href: "/docs/features/background-jobs" }}
+      next={{ title: "Feature Flags", href: "/docs/features/feature-flags" }}
+    >
+      {/* Best Practices Section */}
+      <DocsSection title="Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ <strong>Use consistent naming:</strong> Follow a convention like <code className={docsTypography.code}>object_action</code></li>
+            <li>├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>
+            <li>├─ <strong>Include context:</strong> Add properties that help segment and analyze</li>
+            <li>├─ <strong>Respect privacy:</strong> Don&apos;t track PII unless necessary</li>
+            <li>├─ <strong>Test events:</strong> Verify events appear in PostHog dashboard</li>
+            <li>└─ <strong>Document events:</strong> Maintain a tracking plan for your team</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

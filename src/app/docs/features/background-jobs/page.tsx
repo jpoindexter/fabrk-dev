@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import Link from "next/link";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Clock, RefreshCw, Mail, Database } from "lucide-react";
 
 export const metadata = {
   title: "Background Jobs - Fabrk Documentation",
@@ -9,45 +10,23 @@ export const metadata = {
 
 export default function BackgroundJobsPage() {
   return (
-    <div className="space-y-16">
-      {/* Header */}
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] BACKGROUND_JOBS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BACKGROUND_JOBS</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Background jobs allow you to offload time-consuming tasks from your API routes
-            to dedicated workers. This improves response times and provides better reliability
-            with automatic retries and error handling.
-          </p>
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <div>├─ Job queues: Persistent queue with priority support</div>
-            <div>├─ Workers: Process jobs asynchronously</div>
-            <div>├─ Email worker: Dedicated email sending queue</div>
-            <div>├─ Retries: Automatic retry with exponential backoff</div>
-            <div>└─ Monitoring: Track job status and errors</div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Job model in Prisma schema:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="prisma" code={`// prisma/schema.prisma
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Features"
+      title="Background_Jobs"
+      description="Process time-consuming tasks asynchronously with job queues, workers, and the email worker system."
+      overview="Background jobs allow you to offload time-consuming tasks from your API routes to dedicated workers. This improves response times and provides better reliability with automatic retries and error handling."
+      features={[
+        { icon: Database, title: "Job Queues", description: "Persistent queue with priority support for organizing tasks." },
+        { icon: RefreshCw, title: "Workers", description: "Process jobs asynchronously with dedicated worker processes." },
+        { icon: Mail, title: "Email Worker", description: "Dedicated email sending queue with template support." },
+        { icon: Clock, title: "Retries", description: "Automatic retry with exponential backoff on failures." },
+      ]}
+      usage={[
+        {
+          title: "Database Schema",
+          description: "Job model in Prisma schema",
+          code: `// prisma/schema.prisma
 model Job {
   id          String   @id @default(cuid())
   queue       String   // "default", "email", "webhooks"
@@ -71,19 +50,13 @@ model Job {
 
   @@index([queue, status, runAt])
   @@index([status, runAt])
-}`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">JOB_QUEUE_SERVICE</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Core service for managing job queues:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// src/lib/jobs/queue.ts
+}`,
+          language: "prisma",
+        },
+        {
+          title: "Job Queue Service",
+          description: "Core service for managing job queues",
+          code: `// src/lib/jobs/queue.ts
 import { prisma } from "@/lib/db";
 
 interface JobOptions {
@@ -195,19 +168,13 @@ export async function failJob(
       error,
     },
   });
-}`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">WORKER_IMPLEMENTATION</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Create workers to process jobs:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// scripts/worker.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Worker Implementation",
+          description: "Create workers to process jobs",
+          code: `// scripts/worker.ts
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 
 // Job handlers
@@ -276,19 +243,13 @@ function sleep(ms: number) {
 }
 
 // Start worker
-processJobs(process.env.QUEUE || "default");`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">EMAIL_WORKER</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Dedicated worker for processing email queue:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// scripts/email-worker.ts
+processJobs(process.env.QUEUE || "default");`,
+          language: "typescript",
+        },
+        {
+          title: "Email Worker",
+          description: "Dedicated worker for processing email queue",
+          code: `// scripts/email-worker.ts
 import { Resend } from "resend";
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 import { WelcomeEmail } from "@/emails/welcome";
@@ -348,24 +309,13 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-processEmailQueue();`} />
-        </div>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground mt-4">
-            Run the email worker with: <code className="bg-muted px-1 font-mono text-xs">npm run email:dev</code>
-          </p>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">QUEUEING_JOBS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Queue jobs from your API routes:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// In API routes
+processEmailQueue();`,
+          language: "typescript",
+        },
+        {
+          title: "Queueing Jobs",
+          description: "Queue jobs from your API routes",
+          code: `// In API routes
 import { enqueueJob } from "@/lib/jobs/queue";
 
 // Queue an email
@@ -416,19 +366,13 @@ await enqueueJob(
     queue: "webhooks",
     maxAttempts: 5,
   }
-);`} />
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">RUNNING_WORKERS</h2>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            Start workers for different queues:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="bash" code={`# Development (with auto-restart)
+);`,
+          language: "typescript",
+        },
+        {
+          title: "Running Workers",
+          description: "Start workers for different queues",
+          code: `# Development (with auto-restart)
 npm run jobs:dev        # Default queue worker
 npm run email:dev       # Email queue worker
 
@@ -460,25 +404,28 @@ services:
     build: .
     command: node scripts/worker.js
     environment:
-      - QUEUE=webhooks`} />
-        </div>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <div>├─ Keep payloads small: Store IDs and fetch data in the worker</div>
-            <div>├─ Make jobs idempotent: Safe to retry without side effects</div>
-            <div>├─ Set appropriate retries: More for transient errors, fewer for permanent</div>
-            <div>├─ Monitor queue depth: Alert when jobs are backing up</div>
-            <div>├─ Use separate queues: Isolate critical jobs from bulk operations</div>
-            <div>├─ Log everything: Track job lifecycle for debugging</div>
-            <div>├─ Handle timeouts: Set reasonable timeouts for long-running jobs</div>
-            <div>└─ Clean up completed jobs: Archive or delete old jobs periodically</div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+      - QUEUE=webhooks`,
+          language: "bash",
+        },
+      ]}
+      previous={{ title: "Realtime", href: "/docs/features/realtime" }}
+      next={{ title: "Analytics", href: "/docs/features/analytics" }}
+    >
+      {/* Best Practices Section */}
+      <DocsSection title="Best Practices">
+        <DocsCard>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
+            <li>├─ <strong>Keep payloads small:</strong> Store IDs and fetch data in the worker</li>
+            <li>├─ <strong>Make jobs idempotent:</strong> Safe to retry without side effects</li>
+            <li>├─ <strong>Set appropriate retries:</strong> More for transient errors, fewer for permanent</li>
+            <li>├─ <strong>Monitor queue depth:</strong> Alert when jobs are backing up</li>
+            <li>├─ <strong>Use separate queues:</strong> Isolate critical jobs from bulk operations</li>
+            <li>├─ <strong>Log everything:</strong> Track job lifecycle for debugging</li>
+            <li>├─ <strong>Handle timeouts:</strong> Set reasonable timeouts for long-running jobs</li>
+            <li>└─ <strong>Clean up completed jobs:</strong> Archive or delete old jobs periodically</li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
