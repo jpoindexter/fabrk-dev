@@ -217,15 +217,7 @@ export default function DocsLayout({
 
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50 bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
-            </div>
-            <span className="font-mono text-xs text-muted-foreground">docs_nav.tsx</span>
-          </div>
+        <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
           <nav className="space-y-1 p-4">
             {navigation.map((section, sectionIndex) => {
               const isExpanded = expandedSections.has(sectionIndex);
