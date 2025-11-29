@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Shield, Lock, User, Eye } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Protected Pages - Fabrk Docs",
@@ -8,38 +12,23 @@ export const metadata = {
 
 export default function ProtectedPagesTutorialPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PROTECTED_PAGES</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Create pages that require authentication to access</p>
-      </div>
-
-      {/* How It Works */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">HOW_PROTECTION_WORKS</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Fabrk protects routes via middleware. The following routes automatically redirect
-          unauthenticated users to the home page:
-        </p>
-        <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code></div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/admin/*</code></div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/billing/*</code></div>
-          <div>└─ <code className="bg-muted px-1 font-mono text-xs">/settings/*</code></div>
-        </div>
-      </div>
-
-      {/* Creating a Protected Page */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CREATING_A_PROTECTED_PAGE</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Simply create your page under one of the protected directories:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`// src/app/(dashboard)/dashboard/my-feature/page.tsx
+    <FeatureGuideTemplate
+      code="[0x50]"
+      category="Tutorials"
+      title="Protected_Pages"
+      description="Create pages that require authentication to access."
+      overview="Middleware-based route protection with automatic redirects, role-based access control, and conditional UI rendering based on authentication state."
+      features={[
+        { icon: Shield, title: "Middleware", description: "Automatic route protection." },
+        { icon: Lock, title: "Role-Based", description: "USER, ADMIN, SUPER_ADMIN roles." },
+        { icon: User, title: "Session Hook", description: "Client-side auth state." },
+        { icon: Eye, title: "Conditional UI", description: "Show/hide based on auth." },
+      ]}
+      usage={[
+        {
+          title: "Creating a Protected Page",
+          description: "Create your page under a protected directory",
+          code: `// src/app/(dashboard)/dashboard/my-feature/page.tsx
 
 import { auth } from "@/lib/auth";
 
@@ -55,19 +44,13 @@ export default async function MyFeaturePage() {
       <p>Email: {user.email}</p>
     </div>
   );
-}`} />
-        </div>
-      </div>
-
-      {/* Adding New Protected Routes */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ADDING_NEW_PROTECTED_ROUTES</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          To protect additional routes, update the middleware at{" "}
-          <code className="bg-muted px-1 font-mono text-xs">src/middleware.ts</code>:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/middleware.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Adding New Protected Routes",
+          description: "Update middleware to protect additional routes",
+          code: `// src/middleware.ts
 
 // Find this section and add your routes:
 const isOnDashboard = pathnameWithoutLocale.startsWith('/dashboard');
@@ -76,18 +59,13 @@ const isOnBilling = pathnameWithoutLocale.startsWith('/billing');
 const isOnSettings = pathnameWithoutLocale.startsWith('/settings');
 const isOnMyFeature = pathnameWithoutLocale.startsWith('/my-feature'); // Add this
 
-const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings || isOnMyFeature;`} />
-        </div>
-      </div>
-
-      {/* Role-Based Access */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ROLE_BASED_ACCESS_CONTROL</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Restrict pages by user role:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`// src/app/(dashboard)/admin/page.tsx
+const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings || isOnMyFeature;`,
+          language: "typescript",
+        },
+        {
+          title: "Role-Based Access Control",
+          description: "Restrict pages by user role",
+          code: `// src/app/(dashboard)/admin/page.tsx
 
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -106,23 +84,13 @@ export default async function AdminPage() {
       {/* Admin-only content */}
     </div>
   );
-}`} />
-        </div>
-        <p className="font-mono text-sm text-muted-foreground">
-          Available roles: <code className="bg-muted px-1 font-mono text-xs">USER</code>,{" "}
-          <code className="bg-muted px-1 font-mono text-xs">ADMIN</code>,{" "}
-          <code className="bg-muted px-1 font-mono text-xs">SUPER_ADMIN</code>
-        </p>
-      </div>
-
-      {/* Client Component Protection */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CLIENT_COMPONENT_PROTECTION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          For client components, use the session hook:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`"use client";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Client Component Protection",
+          description: "Use the session hook for client components",
+          code: `"use client";
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -143,18 +111,13 @@ export function ProtectedClientComponent() {
       <p>Welcome, {session.user?.name}!</p>
     </div>
   );
-}`} />
-        </div>
-      </div>
-
-      {/* Conditional UI */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CONDITIONAL_UI_BASED_ON_AUTH</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Show different content based on authentication state:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`"use client";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Conditional UI Based on Auth",
+          description: "Show different content based on authentication state",
+          code: `"use client";
 
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -179,9 +142,60 @@ export function NavBar() {
       )}
     </nav>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "File Uploads", href: "/docs/tutorials/file-uploads" }}
+      next={{ title: "Webhooks", href: "/docs/tutorials/webhooks" }}
+    >
+      {/* Protected Routes */}
+      <DocsSection title="Auto-Protected Routes">
+        <DocsCard>
+          <p className={docsTypography.body}>
+            Fabrk protects these routes via middleware. Unauthenticated users are automatically redirected to the home page:
+          </p>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code></div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/admin/*</code></div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">/billing/*</code></div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">/settings/*</code></div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* User Roles */}
+      <DocsSection title="Available Roles">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">USER</code> - Default role for all users</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">ADMIN</code> - Administrative access</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">SUPER_ADMIN</code> - Full system access</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/tutorials/authentication">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
+                <p className={docsTypography.body}>Learn the full auth system</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/tutorials/api-routes">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
+                <p className={docsTypography.body}>Protect API endpoints</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

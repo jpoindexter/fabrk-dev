@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Upload, Image, Shield, FileCheck } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "File Uploads - Fabrk Docs",
@@ -9,52 +12,31 @@ export const metadata = {
 
 export default function FileUploadsTutorialPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x50] TUTORIALS ] FILE_UPLOADS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FILE_UPLOADS</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Implement secure file uploads with dropzone components, validation, and cloud storage integration.</p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">What's Included</h3>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ Drag-and-drop file upload components</div>
-            <div>├─ Image upload with preview and cropping</div>
-            <div>├─ File validation (size, type, count)</div>
-            <div>├─ Progress indicators and error handling</div>
-            <div>├─ Multiple file upload support</div>
-            <div>└─ Cloud storage integration ready</div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Dependencies */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">DEPENDENCIES</h2>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Install the required packages:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="bash" code={`npm install react-dropzone`} />
-        </div>
-      </div>
-
-      {/* Upload API Route */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">UPLOAD_API_ROUTE</h2>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Create an API route to handle file uploads with validation:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/app/api/upload/route.ts
+    <FeatureGuideTemplate
+      code="[0x50]"
+      category="Tutorials"
+      title="File_Uploads"
+      description="Implement secure file uploads with dropzone components, validation, and cloud storage integration."
+      overview="Drag-and-drop file upload components with image preview, file validation (size, type, count), progress indicators, error handling, multiple file support, and cloud storage integration."
+      features={[
+        { icon: Upload, title: "Drag & Drop", description: "Dropzone components for easy uploads." },
+        { icon: Image, title: "Image Preview", description: "Preview images before upload." },
+        { icon: Shield, title: "Validation", description: "File size, type, and count limits." },
+        { icon: FileCheck, title: "Progress", description: "Track upload progress in real-time." },
+      ]}
+      setup={[
+        {
+          title: "Install Dependencies",
+          description: "Install the required packages",
+          code: `npm install react-dropzone`,
+          language: "bash",
+        },
+      ]}
+      usage={[
+        {
+          title: "Upload API Route",
+          description: "Create an API route to handle file uploads with validation",
+          code: `// src/app/api/upload/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
@@ -118,15 +100,7 @@ export async function POST(request: NextRequest) {
     const filename = \`\${session.user.id}-\${timestamp}.\${extension}\`;
 
     // TODO: Upload to cloud storage (S3, Cloudflare R2, etc.)
-    // Example with S3:
-    // await s3.upload({
-    //   Bucket: process.env.AWS_BUCKET,
-    //   Key: \`uploads/\${filename}\`,
-    //   Body: buffer,
-    //   ContentType: file.type,
-    // });
 
-    // For now, return success with file info
     return NextResponse.json({
       success: true,
       file: {
@@ -134,7 +108,6 @@ export async function POST(request: NextRequest) {
         originalName: file.name,
         size: file.size,
         type: file.type,
-        // url: \`https://cdn.example.com/uploads/\${filename}\`,
       },
     });
   } catch (error) {
@@ -144,27 +117,13 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-// Configure for larger uploads
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};`} />
-        </div>
-      </div>
-
-      {/* Client-Side Upload */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CLIENT_SIDE_UPLOAD_HANDLER</h2>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Handle the upload in your component with progress tracking:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`"use client";
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Client-Side Upload Handler",
+          description: "Handle the upload in your component with progress tracking",
+          code: `"use client";
 
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
@@ -226,7 +185,7 @@ export function FileUploadForm() {
     <div className="space-y-4">
       <div
         {...getRootProps()}
-        className="border-2 border-dashed rounded-none p-6 text-center cursor-pointer transition-colors hover:border-primary/50"
+        className="border-2 border-dashed p-6 text-center cursor-pointer transition-colors hover:border-primary/50"
       >
         <input {...getInputProps()} />
         <p className="font-mono text-sm text-muted-foreground">
@@ -236,7 +195,7 @@ export function FileUploadForm() {
 
       {uploading && (
         <div className="space-y-2">
-          <div className="h-2 bg-muted rounded-none overflow-hidden">
+          <div className="h-2 bg-muted overflow-hidden">
             <div
               className="h-full bg-primary transition-all"
               style={{ width: \`\${progress}%\` }}
@@ -261,20 +220,13 @@ export function FileUploadForm() {
       </Button>
     </div>
   );
-}`} />
-        </div>
-      </div>
-
-      {/* Validation Options */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">VALIDATION_OPTIONS</h2>
-        <div>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Common validation configurations for different use cases:
-          </p>
-        </div>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`// Profile Avatar
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Validation Options",
+          description: "Common validation configurations for different use cases",
+          code: `// Profile Avatar
 <Dropzone
   maxFiles={1}
   maxSize={2 * 1024 * 1024}  // 2MB
@@ -301,36 +253,38 @@ export function FileUploadForm() {
   accept={{
     "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"],
   }}
-/>`} />
-        </div>
-      </div>
-
+/>`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "API Routes", href: "/docs/tutorials/api-routes" }}
+      next={{ title: "Protected Pages", href: "/docs/tutorials/protected-pages" }}
+    >
       {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">API Routes</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
+                <p className={docsTypography.body}>
                   Learn more about building API endpoints
                 </p>
               </CardContent>
             </Card>
           </Link>
           <Link href="/docs/tutorials/protected-pages">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Protected Pages</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Protected Pages</h3>
+                <p className={docsTypography.body}>
                   Protect upload routes with authentication
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
