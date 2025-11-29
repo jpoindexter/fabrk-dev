@@ -958,3 +958,44 @@
       oklch(var(--foreground) / 0.02) 4px);
   pointer-events: none;
 }
+
+/* ============================================
+   TYPOGRAPHY DESIGN SYSTEM
+   Industry-standard spacing and visual hierarchy
+   Based on 8-point grid system
+   ============================================ */
+
+/* Typography utility classes */
+.heading-section {
+  @apply font-mono text-lg font-bold text-primary;
+}
+
+.heading-subsection {
+  @apply font-mono text-base font-semibold text-foreground;
+}
+
+.body-text {
+  @apply font-mono text-sm text-muted-foreground leading-relaxed;
+}
+
+/* Docs-specific heading styles with proper spacing */
+.docs-h2 {
+  @apply font-mono text-lg font-bold text-primary mt-8 mb-4;
+}
+
+.docs-h3 {
+  @apply font-mono text-base font-semibold text-foreground mb-2;
+}
+
+.docs-body {
+  @apply font-mono text-sm text-muted-foreground leading-relaxed;
+}
+
+/* Section spacing utilities (8-point grid) */
+.section-spacing {
+  @apply space-y-4; /* 16px between heading and content */
+}
+
+.section-spacing-lg {
+  @apply space-y-16; /* 64px between major sections */
+}
