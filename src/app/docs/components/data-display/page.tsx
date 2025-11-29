@@ -10,36 +10,39 @@ export default function DataDisplayComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Data Display</h1>
-        <p className="mt-2 text-muted-foreground">
-          Components for displaying data including tables, cards, badges, and more.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">DATA_DISPLAY</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Components for displaying data including tables, cards, badges, and more.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Table</code> - Data table with sorting and filtering</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Card</code> - Content container with header and footer</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Badge</code> - Status indicators and labels</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">StatCard</code> - Statistics display card</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Avatar</code> - User avatar display</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Skeleton</code> - Loading placeholder</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">EmptyState</code> - Empty data placeholder</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">ActivityTimeline</code> - Timeline of events</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">NotificationList</code> - List of notifications</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Pagination</code> - Page navigation</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Progress</code> - Progress indicator</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Tooltip</code> - Hover information</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">HoverCard</code> - Preview on hover</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Table</code> - Data table with sorting and filtering</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Card</code> - Content container with header and footer</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Badge</code> - Status indicators and labels</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">StatCard</code> - Statistics display card</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Avatar</code> - User avatar display</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Skeleton</code> - Loading placeholder</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">EmptyState</code> - Empty data placeholder</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ActivityTimeline</code> - Timeline of events</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">NotificationList</code> - List of notifications</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Pagination</code> - Page navigation</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Progress</code> - Progress indicator</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Tooltip</code> - Hover information</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">HoverCard</code> - Preview on hover</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Table
 import {
@@ -85,10 +88,10 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Table</h3>
+          <h3 className="font-mono text-xl font-medium">TABLE</h3>
           <CodeBlock language="tsx" code={`import {
   Table,
   TableBody,
@@ -128,7 +131,7 @@ export function UsersTable() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Card</h3>
+          <h3 className="font-mono text-xl font-medium">CARD</h3>
           <CodeBlock language="tsx" code={`import {
   Card,
   CardContent,
@@ -160,7 +163,7 @@ export function ProfileCard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Badge Variants</h3>
+          <h3 className="font-mono text-xl font-medium">BADGE_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Badge } from "@/components/ui/badge";
 
 export function BadgeVariants() {
@@ -183,7 +186,7 @@ export function BadgeVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Stat Card</h3>
+          <h3 className="font-mono text-xl font-medium">STAT_CARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity } from "lucide-react";
 
@@ -213,7 +216,7 @@ export function DashboardStats() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Skeleton Loading</h3>
+          <h3 className="font-mono text-xl font-medium">SKELETON_LOADING</h3>
           <CodeBlock language="tsx" code={`import { Skeleton } from "@/components/ui/skeleton";
 
 export function TableSkeleton() {
@@ -234,7 +237,7 @@ export function TableSkeleton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Empty State</h3>
+          <h3 className="font-mono text-xl font-medium">EMPTY_STATE</h3>
           <CodeBlock language="tsx" code={`import { EmptyState } from "@/components/ui/empty-state";
 import { FileText } from "lucide-react";
 
@@ -254,7 +257,7 @@ export function NoDataState() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Tooltip</h3>
+          <h3 className="font-mono text-xl font-medium">TOOLTIP</h3>
           <CodeBlock language="tsx" code={`import {
   Tooltip,
   TooltipContent,
@@ -280,7 +283,7 @@ export function TooltipExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Progress</h3>
+          <h3 className="font-mono text-xl font-medium">PROGRESS</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function ProgressExample() {

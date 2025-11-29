@@ -11,9 +11,12 @@ export default function ThemingPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Theming & Customization</h1>
-        <p className="text-lg text-muted-foreground">
-          Choose from 20 professionally-designed color themes or create your own.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">THEMING_AND_CUSTOMIZATION</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Choose from 20 professionally-designed color themes or create your own.
         </p>
       </div>
 
@@ -36,7 +39,7 @@ export default function ThemingPage() {
 
       {/* Available Themes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Available Color Themes (20)</h2>
+        <h2 className="font-mono text-xl font-semibold">AVAILABLE_COLOR_THEMES</h2>
         <p className="text-muted-foreground">
           All themes from{" "}
           <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -272,10 +275,10 @@ export default function ThemingPage() {
 
       {/* Theme Dropdown Component */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Theme Switcher Component</h2>
+        <h2 className="font-mono text-xl font-semibold">THEME_SWITCHER_COMPONENT</h2>
         <div>
           <p className="text-muted-foreground">
-            The <code className="rounded bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
+            The <code className="font-mono bg-muted px-1 py-0.5">ThemeDropdown</code> component provides a compact dropdown for navbar:
           </p>
         </div>
         <CodeBlock language="tsx" code={`import { ThemeDropdown } from "@/components/theme/theme-dropdown";
@@ -291,7 +294,7 @@ export function MyNavbar() {
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">How It Works</h2>
+        <h2 className="font-mono text-xl font-semibold">HOW_IT_WORKS</h2>
         <div>
           <p className="text-muted-foreground">Themes are applied via data-theme attribute:</p>
         </div>
@@ -310,10 +313,10 @@ export function MyNavbar() {
 
       {/* CSS Implementation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">CSS Implementation</h2>
+        <h2 className="font-mono text-xl font-semibold">CSS_IMPLEMENTATION</h2>
         <div>
           <p className="text-muted-foreground">
-            Each DaisyUI theme defines CSS variables in <code className="rounded bg-muted px-1 py-0.5">globals.css</code>:
+            Each DaisyUI theme defines CSS variables in <code className="font-mono bg-muted px-1 py-0.5">globals.css</code>:
           </p>
         </div>
         <CodeBlock language="css" code={`/* Light (default) */
@@ -344,7 +347,7 @@ export function MyNavbar() {
 
       {/* Using Theme Colors */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Using Theme Colors</h2>
+        <h2 className="font-mono text-xl font-semibold">USING_THEME_COLORS</h2>
         <div>
           <p className="text-muted-foreground">
             Always use semantic color classes that adapt to the active theme:
@@ -371,15 +374,15 @@ export function MyNavbar() {
 
       {/* Adding Custom Themes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Adding Custom Themes</h2>
+        <h2 className="font-mono text-xl font-semibold">ADDING_CUSTOM_THEMES</h2>
         <p className="text-muted-foreground">
           Add your own DaisyUI-style themes in 2 steps:
         </p>
         <div className="space-y-3">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
-              <h3 className="font-semibold">Add CSS in globals.css</h3>
+              <span className="font-mono flex h-8 w-8 items-center justify-center bg-primary text-sm font-bold text-primary-foreground">1</span>
+              <h3 className="font-mono font-semibold">ADD_CSS_IN_GLOBALS</h3>
             </div>
           </div>
           <CodeBlock language="css" code={`/* Your Custom Theme */
@@ -393,8 +396,8 @@ export function MyNavbar() {
 }`} />
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
-              <h3 className="font-semibold">Add to theme-dropdown.tsx</h3>
+              <span className="font-mono flex h-8 w-8 items-center justify-center bg-primary text-sm font-bold text-primary-foreground">2</span>
+              <h3 className="font-mono font-semibold">ADD_TO_THEME_DROPDOWN</h3>
             </div>
           </div>
           <CodeBlock language="tsx" code={`const themes = [
@@ -405,18 +408,18 @@ export function MyNavbar() {
 ];`} />
         </div>
         <p className="text-sm text-muted-foreground mt-4">
-          <strong>Note:</strong> The <code className="bg-muted px-1 rounded">ColorTheme</code> type is automatically inferred from the themes array, so no type changes needed.
+          <strong>Note:</strong> The <code className="font-mono bg-muted px-1">ColorTheme</code> type is automatically inferred from the themes array, so no type changes needed.
         </p>
       </div>
 
       {/* Best Practices */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>DaisyUI theme system:</strong> 20 color themes with data-theme attribute (inspired by DaisyUI)</li>
-              <li><strong>Use semantic colors:</strong> <code className="bg-muted px-1 rounded">bg-primary</code> instead of <code className="bg-muted px-1 rounded">bg-purple-500</code></li>
+              <li><strong>Use semantic colors:</strong> <code className="font-mono bg-muted px-1">bg-primary</code> instead of <code className="font-mono bg-muted px-1">bg-purple-500</code></li>
               <li><strong>Light and dark themes:</strong> Select from various light themes (Light, Cupcake, Fantasy) or dark themes (Dark, Dracula, Synthwave)</li>
               <li><strong>Test across themes:</strong> Verify UI works across multiple light and dark theme variants</li>
               <li><strong>Default to Light theme:</strong> Clean, neutral starting point for most users</li>
@@ -428,7 +431,7 @@ export function MyNavbar() {
 
       {/* Architecture */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Architecture</h2>
+        <h2 className="font-mono text-xl font-semibold">ARCHITECTURE</h2>
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-3 text-sm">
@@ -454,7 +457,7 @@ export function MyNavbar() {
 
       {/* Credits */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Credits & Inspiration</h2>
+        <h2 className="font-mono text-xl font-semibold">CREDITS_AND_INSPIRATION</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="text-muted-foreground">
@@ -485,7 +488,7 @@ export function MyNavbar() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/components">
             <Card className="h-full transition-all hover:border-primary/50">

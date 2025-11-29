@@ -10,29 +10,32 @@ export default function FeaturesComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Features Sections</h1>
-        <p className="mt-2 text-muted-foreground">
-          Showcase your product features with beautiful grid and list layouts.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FEATURES</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FEATURE_SECTIONS</h1>
+        <p className="font-mono text-sm text-muted-foreground mt-2">
+          &gt; Showcase your product features with beautiful grid and list layouts.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">FeaturesSection</code> - Grid layout with feature cards</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">DeveloperExperienceSection</code> - Developer-focused features and benefits</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">QualitySection</code> - Quality metrics and standards</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">TechStack</code> - Technology stack showcase</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">ComparisonSection</code> - Feature comparison table</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FeaturesSection</code> - Grid layout with feature cards</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DeveloperExperienceSection</code> - Developer-focused features and benefits</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">QualitySection</code> - Quality metrics and standards</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">TechStack</code> - Technology stack showcase</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ComparisonSection</code> - Feature comparison table</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Main features section
 import { FeaturesSection } from "@/components/landing/features-section";
@@ -54,10 +57,10 @@ import { ComparisonSection } from "@/components/landing/comparison-section";`} /
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Features Section</h3>
+          <h3 className="font-mono text-xl font-medium">FEATURES_SECTION</h3>
           <CodeBlock language="tsx" code={`import { FeaturesSection } from "@/components/landing/features-section";
 
 export default function LandingPage() {
@@ -76,7 +79,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Enterprise Features</h3>
+          <h3 className="font-mono text-xl font-medium">ENTERPRISE_FEATURES</h3>
           <CodeBlock language="tsx" code={`import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 
 export default function LandingPage() {
@@ -97,7 +100,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Tech Stack</h3>
+          <h3 className="font-mono text-xl font-medium">TECH_STACK</h3>
           <CodeBlock language="tsx" code={`import { TechStack } from "@/components/landing/tech-stack";
 
 export default function LandingPage() {
@@ -119,7 +122,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Comparison Section</h3>
+          <h3 className="font-mono text-xl font-medium">COMPARISON_SECTION</h3>
           <CodeBlock language="tsx" code={`import { ComparisonSection } from "@/components/landing/comparison-section";
 
 export default function LandingPage() {
@@ -138,7 +141,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Complete Landing Page</h3>
+          <h3 className="font-mono text-xl font-medium">COMPLETE_LANDING_PAGE</h3>
           <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";

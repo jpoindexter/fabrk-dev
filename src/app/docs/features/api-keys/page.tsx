@@ -14,15 +14,18 @@ export default function ApiKeysPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">API Keys</h1>
-        <p className="text-lg text-muted-foreground">
-          Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] API_KEYS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">API_KEYS</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting.
         </p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             The API keys system provides secure programmatic access to your application&apos;s API.
             Keys are generated with cryptographic randomness, stored as hashes, and validated
@@ -40,7 +43,7 @@ export default function ApiKeysPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
           <p className="mb-4 text-muted-foreground">
             API key model in Prisma schema:
           </p>
@@ -70,7 +73,7 @@ model ApiKey {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Key Generation</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">KEY_GENERATION</h2>
           <p className="mb-4 text-muted-foreground">
             Securely generate and hash API keys:
           </p>
@@ -136,7 +139,7 @@ export const API_SCOPES = [
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Key Validation</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">KEY_VALIDATION</h2>
           <p className="mb-4 text-muted-foreground">
             Validate API keys with timing-safe comparison:
           </p>
@@ -220,7 +223,7 @@ export async function withApiKey(
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Using API Keys in Routes</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">USING_API_KEYS_IN_ROUTES</h2>
           <p className="mb-4 text-muted-foreground">
             Protect your API routes with API key authentication:
           </p>
@@ -273,7 +276,7 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Rate Limiting</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">RATE_LIMITING</h2>
           <p className="mb-4 text-muted-foreground">
             Implement rate limiting per API key:
           </p>
@@ -351,7 +354,7 @@ export async function GET(req: Request) {
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Security Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Never log full keys:</strong> Only log the prefix for debugging</li>
             <li><strong>Show key once:</strong> Display the full key only at creation time</li>

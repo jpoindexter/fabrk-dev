@@ -11,16 +11,19 @@ export default function BotProtectionPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Bot Protection</h1>
-        <p className="text-lg text-muted-foreground">
-          Detect and block automated bot traffic with multiple protection strategies.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] BOT_PROTECTION</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">BOT_PROTECTION</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Detect and block automated bot traffic with multiple protection strategies.
         </p>
       </div>
 
       <Card>
         <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+          <h3 className="mb-2 font-mono font-semibold">What's Included</h3>
+          <ul className="list-inside list-disc space-y-1 font-mono text-muted-foreground">
             <li>Honeypot fields for form protection</li>
             <li>Time-based form submission validation</li>
             <li>User-Agent analysis</li>
@@ -34,9 +37,9 @@ export default function BotProtectionPage() {
       {/* Honeypot Fields */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Honeypot Fields</h2>
-          <p className="text-muted-foreground">
-            Add invisible fields that bots will fill but humans won't:
+          <h2 className="font-mono text-xl font-semibold">HONEYPOT_FIELDS</h2>
+          <p className="font-mono text-muted-foreground">
+            &gt; Add invisible fields that bots will fill but humans won't:
           </p>
         </div>
         <CodeBlock language="tsx" code={`// Client-side form component
@@ -102,9 +105,9 @@ export async function POST(request: NextRequest) {
       {/* Time-based Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Time-based Validation</h2>
-          <p className="text-muted-foreground">
-            Reject submissions that are too fast (bots) or too slow (stale tokens):
+          <h2 className="font-mono text-xl font-semibold">TIME_BASED_VALIDATION</h2>
+          <p className="font-mono text-muted-foreground">
+            &gt; Reject submissions that are too fast (bots) or too slow (stale tokens):
           </p>
         </div>
         <CodeBlock language="tsx" code={`// Client-side: Add timestamp to form
@@ -167,9 +170,9 @@ export async function POST(request: NextRequest) {
       {/* User-Agent Analysis */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">User-Agent Analysis</h2>
-          <p className="text-muted-foreground">
-            Detect suspicious user agents:
+          <h2 className="font-mono text-xl font-semibold">USER_AGENT_ANALYSIS</h2>
+          <p className="font-mono text-muted-foreground">
+            &gt; Detect suspicious user agents:
           </p>
         </div>
         <CodeBlock language="typescript" code={`// src/lib/bot-detection.ts
@@ -249,9 +252,9 @@ export async function POST(request: NextRequest) {
       {/* Middleware Protection */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Middleware Protection</h2>
-          <p className="text-muted-foreground">
-            Add bot detection at the edge:
+          <h2 className="font-mono text-xl font-semibold">MIDDLEWARE_PROTECTION</h2>
+          <p className="font-mono text-muted-foreground">
+            &gt; Add bot detection at the edge:
           </p>
         </div>
         <CodeBlock language="typescript" code={`// src/middleware.ts
@@ -315,9 +318,9 @@ export const config = {
       {/* Cloudflare Turnstile */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Cloudflare Turnstile (CAPTCHA)</h2>
-          <p className="text-muted-foreground">
-            Add Cloudflare Turnstile for strong bot protection:
+          <h2 className="font-mono text-xl font-semibold">CLOUDFLARE_TURNSTILE_CAPTCHA</h2>
+          <p className="font-mono text-muted-foreground">
+            &gt; Add Cloudflare Turnstile for strong bot protection:
           </p>
         </div>
         <CodeBlock language="tsx" code={`// npm install @marsidev/react-turnstile
@@ -387,7 +390,7 @@ export async function POST(request: NextRequest) {
       {/* Environment Variables */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Environment Variables</h2>
+          <h2 className="font-mono text-xl font-semibold">ENVIRONMENT_VARIABLES</h2>
         </div>
         <CodeBlock language="bash" code={`# .env.local
 
@@ -398,13 +401,13 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/rate-limiting">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Rate Limiting</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-mono font-semibold">Rate Limiting</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Limit requests per IP or user
                 </p>
               </CardContent>
@@ -413,8 +416,8 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Audit Logging</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-mono font-semibold">Audit Logging</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Log bot detection events
                 </p>
               </CardContent>

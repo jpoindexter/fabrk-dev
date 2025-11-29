@@ -14,15 +14,16 @@ export default function RealtimePage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Real-Time with Pusher</h1>
-        <p className="text-lg text-muted-foreground">
-          Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] REALTIME</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">REALTIME_WITH_PUSHER</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels.</p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             Fabrk integrates Pusher Channels to provide real-time communication between your server and clients.
             This enables instant updates for notifications, live activity feeds, and presence tracking to show
@@ -38,7 +39,7 @@ export default function RealtimePage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
           <p className="mb-4 text-muted-foreground">
             Add your Pusher credentials to your environment variables:
           </p>
@@ -61,7 +62,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Server-Side Usage</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SERVER_SIDE_USAGE</h2>
           <p className="mb-4 text-muted-foreground">
             Use the server client to trigger events from your API routes:
           </p>
@@ -103,7 +104,7 @@ await pusherServer.trigger(
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Client-Side Usage</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CLIENT_SIDE_USAGE</h2>
           <p className="mb-4 text-muted-foreground">
             Subscribe to channels and listen for events in your React components:
           </p>
@@ -156,7 +157,7 @@ export function NotificationBell({ userId }: { userId: string }) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Presence Channels</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">PRESENCE_CHANNELS</h2>
           <p className="mb-4 text-muted-foreground">
             Track which members are online in an organization:
           </p>
@@ -206,10 +207,10 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Use private channels (<code>private-</code>) for user-specific data</li>
-            <li>Use presence channels (<code>presence-</code>) for tracking online status</li>
+            <li>Use private channels (<code className="font-mono">private-</code>) for user-specific data</li>
+            <li>Use presence channels (<code className="font-mono">presence-</code>) for tracking online status</li>
             <li>Always unsubscribe from channels when components unmount</li>
             <li>Handle connection errors gracefully with retry logic</li>
             <li>Batch events when possible to reduce message count</li>

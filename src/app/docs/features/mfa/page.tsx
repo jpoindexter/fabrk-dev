@@ -11,17 +11,20 @@ export default function MFAPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Two-Factor Authentication</h1>
-        <p className="text-lg text-muted-foreground">
-          Add an extra layer of security with authenticator apps and backup codes.
+      <div className="space-y-4">
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MFA</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">MULTI_FACTOR_AUTHENTICATION</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Add an extra layer of security with authenticator apps and backup codes.
         </p>
       </div>
 
       {/* What is 2FA - Plain English */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">What is Two-Factor Authentication?</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">WHAT_IS_TWO_FACTOR_AUTHENTICATION</h2>
           <p className="text-muted-foreground">
             Two-factor authentication (2FA) adds an extra step to logging in. After entering your
             password, you also need to provide a code from your phone. Even if someone steals
@@ -37,10 +40,10 @@ export default function MFAPage() {
       {/* Why You Need This */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Why Offer 2FA?</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">WHY_OFFER_2FA</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-medium">Security Benefits</h3>
+              <h3 className="font-mono font-medium">SECURITY_BENEFITS</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Protects against password theft</li>
                 <li>Stops credential stuffing attacks</li>
@@ -49,7 +52,7 @@ export default function MFAPage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-medium">Business Benefits</h3>
+              <h3 className="font-mono font-medium">BUSINESS_BENEFITS</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Enterprise customers often require it</li>
                 <li>Reduces account takeover support tickets</li>
@@ -63,14 +66,14 @@ export default function MFAPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">What&apos;s Built-In</h2>
+        <h2 className="font-mono text-xl font-semibold">WHATS_BUILT_IN</h2>
         <p className="text-muted-foreground">
           Fabrk v1.1 includes a complete TOTP (Time-based One-Time Password) implementation:
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">QR Code Setup</h3>
+              <h3 className="font-mono font-semibold">QR_CODE_SETUP</h3>
               <p className="text-sm text-muted-foreground">
                 Users scan a QR code with their authenticator app. Works with Google
                 Authenticator, Authy, 1Password, and more.
@@ -79,7 +82,7 @@ export default function MFAPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Manual Entry</h3>
+              <h3 className="font-mono font-semibold">MANUAL_ENTRY</h3>
               <p className="text-sm text-muted-foreground">
                 Can&apos;t scan? Users can manually enter the secret key into their
                 authenticator app.
@@ -88,7 +91,7 @@ export default function MFAPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">6-Digit Codes</h3>
+              <h3 className="font-mono font-semibold">6_DIGIT_CODES</h3>
               <p className="text-sm text-muted-foreground">
                 Standard TOTP codes that change every 30 seconds. RFC 6238 compliant.
               </p>
@@ -96,7 +99,7 @@ export default function MFAPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">10 Backup Codes</h3>
+              <h3 className="font-mono font-semibold">10_BACKUP_CODES</h3>
               <p className="text-sm text-muted-foreground">
                 One-time use codes (XXXX-XXXX format) for account recovery if
                 phone is lost.
@@ -105,7 +108,7 @@ export default function MFAPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Enable/Disable Toggle</h3>
+              <h3 className="font-mono font-semibold">ENABLE_DISABLE_TOGGLE</h3>
               <p className="text-sm text-muted-foreground">
                 Users can turn 2FA on or off from security settings with proper
                 verification.
@@ -114,7 +117,7 @@ export default function MFAPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Audit Logging</h3>
+              <h3 className="font-mono font-semibold">AUDIT_LOGGING</h3>
               <p className="text-sm text-muted-foreground">
                 All 2FA events (setup, verification, disable) are logged for
                 security audits.
@@ -126,11 +129,11 @@ export default function MFAPage() {
 
       {/* How It Works - User Flow */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">How 2FA Works</h2>
+        <h2 className="font-mono text-xl font-semibold">HOW_2FA_WORKS</h2>
 
         <div className="space-y-3">
-          <div className="rounded-lg border bg-muted p-4">
-            <h3 className="font-semibold mb-2">Setting Up 2FA</h3>
+          <div className="border border-border bg-card p-4">
+            <h3 className="font-mono font-semibold mb-2">SETTING_UP_2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User goes to Settings → Security</li>
               <li>Clicks &quot;Enable Two-Factor Authentication&quot;</li>
@@ -141,8 +144,8 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border bg-muted p-4">
-            <h3 className="font-semibold mb-2">Logging In with 2FA</h3>
+          <div className="border border-border bg-card p-4">
+            <h3 className="font-mono font-semibold mb-2">LOGGING_IN_WITH_2FA</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>User enters email and password as normal</li>
               <li>If 2FA is enabled, they&apos;re asked for a verification code</li>
@@ -151,8 +154,8 @@ export default function MFAPage() {
             </ol>
           </div>
 
-          <div className="rounded-lg border bg-muted p-4">
-            <h3 className="font-semibold mb-2">Lost Phone? Use Backup Code</h3>
+          <div className="border border-border bg-card p-4">
+            <h3 className="font-mono font-semibold mb-2">LOST_PHONE_USE_BACKUP_CODE</h3>
             <ol className="list-inside list-decimal space-y-1 text-sm text-muted-foreground">
               <li>On the verification screen, click &quot;Use backup code&quot;</li>
               <li>Enter one of the 10 backup codes (format: XXXX-XXXX)</li>
@@ -165,14 +168,14 @@ export default function MFAPage() {
 
       {/* Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold">CONFIGURATION</h2>
         <p className="text-muted-foreground">
           2FA is already set up and ready to use. Users enable it from their security settings.
           No additional configuration required.
         </p>
         <p className="text-muted-foreground">
           Optionally customize the issuer name (shown in authenticator apps) in{" "}
-          <code className="rounded bg-muted px-1">src/config.js</code>:
+          <code className="font-mono bg-muted px-1">src/config.js</code>:
         </p>
         <CodeBlock language="javascript" code={`// src/config.js
 
@@ -187,14 +190,14 @@ export const config = {
 
       {/* Security Settings UI */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Security Settings Page</h2>
+        <h2 className="font-mono text-xl font-semibold">SECURITY_SETTINGS_PAGE</h2>
         <p className="text-muted-foreground">
           Fabrk includes a pre-built security settings component at{" "}
-          <code className="rounded bg-muted px-1">/settings/security</code>:
+          <code className="font-mono bg-muted px-1">/settings/security</code>:
         </p>
         <Card>
           <CardContent className="p-6">
-            <h3 className="font-semibold mb-3">What&apos;s Included</h3>
+            <h3 className="font-mono font-semibold mb-3">WHATS_INCLUDED</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary">•</span>
@@ -219,12 +222,12 @@ export const config = {
 
       {/* Code Reference */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Code Reference</h2>
+        <h2 className="font-mono text-xl font-semibold">CODE_REFERENCE</h2>
 
         <div className="space-y-2">
-          <h3 className="font-semibold">Using the MFA Library</h3>
+          <h3 className="font-mono font-semibold">USING_THE_MFA_LIBRARY</h3>
           <p className="text-sm text-muted-foreground">
-            The MFA functions are available in <code className="rounded bg-muted px-1">src/lib/auth/mfa.ts</code>:
+            The MFA functions are available in <code className="font-mono bg-muted px-1">src/lib/auth/mfa.ts</code>:
           </p>
           <CodeBlock language="typescript" code={`import {
   generateTOTPSecret,
@@ -259,7 +262,7 @@ const { valid, remainingCodes } = await verifyBackupCode(
         </div>
 
         <div className="space-y-2 mt-6">
-          <h3 className="font-semibold">Check if User Has 2FA Enabled</h3>
+          <h3 className="font-mono font-semibold">CHECK_IF_USER_HAS_2FA_ENABLED</h3>
           <p className="text-sm text-muted-foreground">
             In your API routes:
           </p>
@@ -298,7 +301,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Backup Codes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">About Backup Codes</h2>
+        <h2 className="font-mono text-xl font-semibold">ABOUT_BACKUP_CODES</h2>
         <Card className="bg-muted/50">
           <CardContent className="p-6 space-y-4">
             <p className="text-muted-foreground">
@@ -307,7 +310,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <h3 className="font-medium">Format</h3>
+                <h3 className="font-mono font-medium">FORMAT</h3>
                 <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                   <li>10 codes per user</li>
                   <li>Format: XXXX-XXXX (8 characters)</li>
@@ -316,7 +319,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
                 </ul>
               </div>
               <div className="space-y-2">
-                <h3 className="font-medium">Security</h3>
+                <h3 className="font-mono font-medium">SECURITY</h3>
                 <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                   <li>Codes are hashed before storage</li>
                   <li>Timing-safe comparison</li>
@@ -331,11 +334,11 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Common Questions</h2>
+        <h2 className="font-mono text-xl font-semibold">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              Which authenticator apps work?
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
+              WHICH_AUTHENTICATOR_APPS_WORK
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
@@ -351,9 +354,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              What if a user loses their phone?
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
+              WHAT_IF_USER_LOSES_PHONE
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
@@ -367,9 +370,9 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              What if a user loses their phone AND backup codes?
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
+              WHAT_IF_USER_LOSES_PHONE_AND_BACKUP_CODES
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
@@ -386,26 +389,26 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              Can I require 2FA for all users?
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
+              CAN_I_REQUIRE_2FA_FOR_ALL_USERS
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
                 2FA is opt-in by default. To require it, you&apos;d add middleware that checks
-                if <code className="rounded bg-muted px-1">user.mfaEnabled</code> is true and
+                if <code className="font-mono bg-muted px-1">user.mfaEnabled</code> is true and
                 redirects users to set it up if not. This is common for enterprise/admin users.
               </p>
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              How are secrets stored?
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono font-medium">
+              HOW_ARE_SECRETS_STORED
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
-                TOTP secrets are encrypted before storage using your <code className="rounded bg-muted px-1">NEXTAUTH_SECRET</code>.
+                TOTP secrets are encrypted before storage using your <code className="font-mono bg-muted px-1">NEXTAUTH_SECRET</code>.
                 Backup codes are hashed with SHA-256. Even if your database is compromised,
                 attackers can&apos;t use the raw values.
               </p>
@@ -416,14 +419,14 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Future Enhancements */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Future Enhancements</h2>
+        <h2 className="font-mono text-xl font-semibold">FUTURE_ENHANCEMENTS</h2>
         <p className="text-muted-foreground">
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">SMS Verification</h3>
+              <h3 className="font-mono font-semibold">SMS_VERIFICATION</h3>
               <p className="text-sm text-muted-foreground">
                 Text message codes as an alternative (requires Twilio integration).
               </p>
@@ -431,7 +434,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">WebAuthn / Passkeys</h3>
+              <h3 className="font-mono font-semibold">WEBAUTHN_PASSKEYS</h3>
               <p className="text-sm text-muted-foreground">
                 Hardware security keys and biometric authentication (Touch ID, Face ID).
               </p>
@@ -442,12 +445,12 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Authentication Basics</h3>
+                <h3 className="font-mono font-semibold">AUTHENTICATION_BASICS</h3>
                 <p className="text-sm text-muted-foreground">
                   Learn about the core authentication system 2FA builds on.
                 </p>
@@ -457,7 +460,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Security Headers</h3>
+                <h3 className="font-mono font-semibold">SECURITY_HEADERS</h3>
                 <p className="text-sm text-muted-foreground">
                   Learn about security headers and CSRF protection.
                 </p>

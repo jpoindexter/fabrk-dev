@@ -11,13 +11,16 @@ export default function SEOPage() {
         </Link>
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">SEO & Metadata</h1>
-      <p className="text-muted-foreground text-lg mb-8">
-        Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.
+      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] SEO</span>
+      </div>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">SEO_METADATA</h1>
+      <p className="font-mono text-sm text-muted-foreground mb-8">
+        &gt; Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -35,15 +38,15 @@ export default function SEOPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
-          <h3 className="text-xl font-medium">Update Central Config</h3>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
+          <h3 className="font-mono text-xl font-medium">UPDATE_CENTRAL_CONFIG</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Edit <code className="bg-muted px-2 py-1 rounded">src/config.js</code> with your site details:</p>
+            <p className="text-muted-foreground">Edit <code className="bg-muted px-2 py-1 font-mono">src/config.js</code> with your site details:</p>
           </div>
           <CodeBlock language="typescript" code={`export const config = {
   app: {
@@ -58,8 +61,8 @@ export default function SEOPage() {
         </div>
 
         <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
-          <h3 className="text-xl font-medium">Root Layout Metadata</h3>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
+          <h3 className="font-mono text-xl font-medium">ROOT_LAYOUT_METADATA</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -92,8 +95,8 @@ export const metadata = {
         </div>
 
         <div className="flex items-center gap-3 mb-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
-          <h3 className="text-xl font-medium">Page-Specific Metadata</h3>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
+          <h3 className="font-mono text-xl font-medium">PAGE_SPECIFIC_METADATA</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -116,9 +119,9 @@ export default function PricingPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="text-xl font-medium mb-3">Dynamic Metadata</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">DYNAMIC_METADATA</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Generate metadata based on dynamic content:</p>
@@ -145,7 +148,7 @@ export async function generateMetadata({ params }) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">JSON-LD Structured Data</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">JSON_LD_STRUCTURED_DATA</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Add structured data for rich search results:</p>
@@ -174,10 +177,10 @@ export function generateOrganizationSchema() {
 />`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Sitemap Generation</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">SITEMAP_GENERATION</h3>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Automatic sitemap at <code className="bg-muted px-2 py-1 rounded">/sitemap.xml</code>:</p>
+            <p className="text-muted-foreground">Automatic sitemap at <code className="bg-muted px-2 py-1 font-mono">/sitemap.xml</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`// src/app/sitemap.ts
 import { config } from "@/config";
@@ -205,12 +208,12 @@ export default async function sitemap() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Landing Page SEO</h3>
+              <h3 className="font-mono font-semibold mb-2">LANDING_PAGE_SEO</h3>
               <p className="text-muted-foreground">
                 Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
               </p>
@@ -219,7 +222,7 @@ export default async function sitemap() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Blog Post Optimization</h3>
+              <h3 className="font-mono font-semibold mb-2">BLOG_POST_OPTIMIZATION</h3>
               <p className="text-muted-foreground">
                 Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
               </p>
@@ -228,7 +231,7 @@ export default async function sitemap() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Product Pages</h3>
+              <h3 className="font-mono font-semibold mb-2">PRODUCT_PAGES</h3>
               <p className="text-muted-foreground">
                 Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
               </p>
@@ -237,7 +240,7 @@ export default async function sitemap() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Localized Content</h3>
+              <h3 className="font-mono font-semibold mb-2">LOCALIZED_CONTENT</h3>
               <p className="text-muted-foreground">
                 Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
               </p>
@@ -247,7 +250,7 @@ export default async function sitemap() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">

@@ -12,21 +12,22 @@ export default function PaymentsPage() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Payments</h1>
-        <p className="text-lg text-muted-foreground">
-          Accept payments and manage subscriptions with Stripe.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] PAYMENTS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">STRIPE_PAYMENTS</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Accept payments and manage subscriptions with Stripe.</p>
       </div>
 
       {/* What Are Payments - Plain English */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">How Payments Work in Your SaaS</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">HOW_PAYMENTS_WORK</h2>
           <p className="text-muted-foreground">
             When someone buys your product, several things happen behind the scenes. Fabrk uses
             Stripe to handle all of this securely:
           </p>
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="border border-border bg-card p-4">
             <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
               <li><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
               <li><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
@@ -45,10 +46,10 @@ export default function PaymentsPage() {
       {/* Why You Need This */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Why Stripe?</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">WHY_STRIPE</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-medium">For You</h3>
+              <h3 className="font-mono font-medium">FOR_YOU</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>No need to handle credit card security</li>
                 <li>Instant access to payment data/analytics</li>
@@ -57,7 +58,7 @@ export default function PaymentsPage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-medium">For Your Customers</h3>
+              <h3 className="font-mono font-medium">FOR_YOUR_CUSTOMERS</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Trusted, familiar checkout experience</li>
                 <li>Apple Pay, Google Pay support</li>
@@ -71,11 +72,11 @@ export default function PaymentsPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">What&apos;s Built-In</h2>
+        <h2 className="font-mono text-xl font-semibold">WHATS_BUILT_IN</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">One-Time Payments</h3>
+              <h3 className="font-mono font-semibold">ONE_TIME_PAYMENTS</h3>
               <p className="text-sm text-muted-foreground">
                 Sell lifetime access or single products. Customer pays once, gets access forever.
               </p>
@@ -83,7 +84,7 @@ export default function PaymentsPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Subscriptions</h3>
+              <h3 className="font-mono font-semibold">SUBSCRIPTIONS</h3>
               <p className="text-sm text-muted-foreground">
                 Monthly or yearly recurring payments. Automatic billing and renewal.
               </p>
@@ -91,7 +92,7 @@ export default function PaymentsPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Free Trials</h3>
+              <h3 className="font-mono font-semibold">FREE_TRIALS</h3>
               <p className="text-sm text-muted-foreground">
                 Let users try before they buy. Converts to paid at trial end.
               </p>
@@ -99,7 +100,7 @@ export default function PaymentsPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Customer Portal</h3>
+              <h3 className="font-mono font-semibold">CUSTOMER_PORTAL</h3>
               <p className="text-sm text-muted-foreground">
                 Users manage their own billing - update card, change plan, cancel.
               </p>
@@ -107,7 +108,7 @@ export default function PaymentsPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Webhook Handling</h3>
+              <h3 className="font-mono font-semibold">WEBHOOK_HANDLING</h3>
               <p className="text-sm text-muted-foreground">
                 Your app reacts to payment events in real-time.
               </p>
@@ -115,7 +116,7 @@ export default function PaymentsPage() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold">Duplicate Protection</h3>
+              <h3 className="font-mono font-semibold">DUPLICATE_PROTECTION</h3>
               <p className="text-sm text-muted-foreground">
                 Prevents accidental double charges from page refreshes.
               </p>
@@ -127,7 +128,7 @@ export default function PaymentsPage() {
       {/* Understanding Webhooks */}
       <Card className="bg-muted/50">
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold">Understanding Webhooks</h2>
+          <h2 className="font-mono text-xl font-semibold">UNDERSTANDING_WEBHOOKS</h2>
           <p className="text-muted-foreground">
             <strong>Think of webhooks like a doorbell.</strong> When Stripe processes a payment,
             it &quot;rings your doorbell&quot; (sends a webhook) to let you know something happened.
@@ -138,9 +139,9 @@ export default function PaymentsPage() {
             which is inefficient and slow. With webhooks, Stripe tells you instantly.
           </p>
           <p className="text-sm text-muted-foreground">
-            Common webhook events: <code className="rounded bg-background px-1">checkout.session.completed</code> (someone paid),
-            <code className="rounded bg-background px-1 ml-1">customer.subscription.deleted</code> (someone cancelled),
-            <code className="rounded bg-background px-1 ml-1">invoice.payment_failed</code> (payment didn&apos;t go through).
+            Common webhook events: <code className="font-mono bg-background px-1">checkout.session.completed</code> (someone paid),
+            <code className="font-mono bg-background px-1 ml-1">customer.subscription.deleted</code> (someone cancelled),
+            <code className="font-mono bg-background px-1 ml-1">invoice.payment_failed</code> (payment didn&apos;t go through).
           </p>
         </CardContent>
       </Card>
@@ -148,7 +149,7 @@ export default function PaymentsPage() {
       {/* Quick Setup */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-semibold">Quick Setup</h2>
+          <h2 className="font-mono text-xl font-semibold">QUICK_SETUP</h2>
           <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             10 minutes
           </span>
@@ -160,10 +161,10 @@ export default function PaymentsPage() {
         {/* Step 1 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               1
             </span>
-            <h3 className="font-semibold">Create a Stripe Account</h3>
+            <h3 className="font-mono font-semibold">CREATE_STRIPE_ACCOUNT</h3>
           </div>
           <p className="text-sm text-muted-foreground">
             Go to <a href="https://dashboard.stripe.com/register" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">stripe.com</a> and
@@ -174,44 +175,44 @@ export default function PaymentsPage() {
         {/* Step 2 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               2
             </span>
-            <h3 className="font-semibold">Get Your API Keys</h3>
+            <h3 className="font-mono font-semibold">GET_API_KEYS</h3>
           </div>
           <p className="text-sm text-muted-foreground">
             In the Stripe Dashboard, go to &quot;Developers&quot; → &quot;API keys&quot;. Copy your test keys (we&apos;ll use live keys later).
           </p>
           <p className="text-xs text-muted-foreground mt-2">
-            <strong>Important:</strong> Test keys start with <code className="rounded bg-muted px-1">sk_test_</code> and <code className="rounded bg-muted px-1">pk_test_</code>.
-            Live keys start with <code className="rounded bg-muted px-1">sk_live_</code> and <code className="rounded bg-muted px-1">pk_live_</code>.
+            <strong>Important:</strong> Test keys start with <code className="font-mono bg-muted px-1">sk_test_</code> and <code className="font-mono bg-muted px-1">pk_test_</code>.
+            Live keys start with <code className="font-mono bg-muted px-1">sk_live_</code> and <code className="font-mono bg-muted px-1">pk_live_</code>.
           </p>
         </div>
 
         {/* Step 3 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               3
             </span>
-            <h3 className="font-semibold">Create Products in Stripe</h3>
+            <h3 className="font-mono font-semibold">CREATE_PRODUCTS</h3>
           </div>
           <p className="text-sm text-muted-foreground">
             Go to &quot;Products&quot; in Stripe Dashboard. Create products for each pricing tier (e.g., Starter, Pro, Enterprise).
-            Each product has a &quot;price ID&quot; that looks like <code className="rounded bg-muted px-1">price_1234567890</code>.
+            Each product has a &quot;price ID&quot; that looks like <code className="font-mono bg-muted px-1">price_1234567890</code>.
           </p>
         </div>
 
         {/* Step 4 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               4
             </span>
-            <h3 className="font-semibold">Add Keys to Your App</h3>
+            <h3 className="font-mono font-semibold">ADD_KEYS_TO_APP</h3>
           </div>
           <p className="text-muted-foreground text-sm">
-            Add these to your <code className="rounded bg-muted px-1">.env.local</code> file:
+            Add these to your <code className="font-mono bg-muted px-1">.env.local</code> file:
           </p>
           <CodeBlock language="bash" code={`# Stripe API Keys (test mode)
 STRIPE_SECRET_KEY="sk_test_your_secret_key"
@@ -226,10 +227,10 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_your_enterprise_price"`} />
         {/* Step 5 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               5
             </span>
-            <h3 className="font-semibold">Set Up Webhooks (Local Testing)</h3>
+            <h3 className="font-mono font-semibold">SETUP_WEBHOOKS</h3>
           </div>
           <p className="text-muted-foreground text-sm">
             Install the Stripe CLI to test webhooks locally:
@@ -243,8 +244,8 @@ stripe login
 # Forward webhooks to your local app
 npm run stripe:listen`} />
           <p className="text-muted-foreground text-sm">
-            This gives you a webhook secret starting with <code className="rounded bg-muted px-1">whsec_</code>.
-            Add it to your <code className="rounded bg-muted px-1">.env.local</code>:
+            This gives you a webhook secret starting with <code className="font-mono bg-muted px-1">whsec_</code>.
+            Add it to your <code className="font-mono bg-muted px-1">.env.local</code>:
           </p>
           <CodeBlock language="bash" code={`STRIPE_WEBHOOK_SECRET="whsec_your_webhook_secret"`} />
         </div>
@@ -252,30 +253,30 @@ npm run stripe:listen`} />
 
       {/* Testing Payments */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Testing Payments</h2>
+        <h2 className="font-mono text-xl font-semibold">TESTING_PAYMENTS</h2>
         <p className="text-muted-foreground">
           Always test payments before going live. Stripe provides test card numbers that simulate
           different scenarios without charging real money.
         </p>
         <Card>
           <CardContent className="p-6">
-            <h3 className="font-semibold mb-3">Test Card Numbers</h3>
+            <h3 className="font-mono font-semibold mb-3">TEST_CARD_NUMBERS</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between border-b pb-2">
                 <span className="text-muted-foreground">Successful payment</span>
-                <code className="rounded bg-muted px-2">4242 4242 4242 4242</code>
+                <code className="font-mono bg-muted px-2">4242 4242 4242 4242</code>
               </div>
               <div className="flex justify-between border-b pb-2">
                 <span className="text-muted-foreground">Card declined</span>
-                <code className="rounded bg-muted px-2">4000 0000 0000 0002</code>
+                <code className="font-mono bg-muted px-2">4000 0000 0000 0002</code>
               </div>
               <div className="flex justify-between border-b pb-2">
                 <span className="text-muted-foreground">Requires authentication</span>
-                <code className="rounded bg-muted px-2">4000 0025 0000 3155</code>
+                <code className="font-mono bg-muted px-2">4000 0025 0000 3155</code>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Insufficient funds</span>
-                <code className="rounded bg-muted px-2">4000 0000 0000 9995</code>
+                <code className="font-mono bg-muted px-2">4000 0000 0000 9995</code>
               </div>
             </div>
             <p className="text-xs text-muted-foreground mt-4">
@@ -287,14 +288,14 @@ npm run stripe:listen`} />
 
       {/* Code Reference */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Code Reference</h2>
+        <h2 className="font-mono text-xl font-semibold">CODE_REFERENCE</h2>
         <div>
           <p className="text-muted-foreground">
             Here&apos;s how to trigger checkout from your code:
           </p>
         </div>
 
-        <h3 className="font-semibold">Checkout Button Component</h3>
+        <h3 className="font-mono font-semibold">CHECKOUT_BUTTON_COMPONENT</h3>
         <p className="text-muted-foreground">
           Add this to any pricing card or button:
         </p>
@@ -339,7 +340,7 @@ export function CheckoutButton({ priceId, planName }) {
   );
 }`} />
 
-        <h3 className="font-semibold mt-6">Customer Portal Link</h3>
+        <h3 className="font-mono font-semibold mt-6">CUSTOMER_PORTAL_LINK</h3>
         <p className="text-muted-foreground">
           Let users manage their own subscription:
         </p>
@@ -367,9 +368,9 @@ export function ManageBillingButton() {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Common Questions</h2>
+        <h2 className="font-mono text-xl font-semibold">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How much does Stripe charge?
             </summary>
@@ -381,7 +382,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               When do I get my money?
             </summary>
@@ -393,7 +394,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               What happens if a payment fails?
             </summary>
@@ -405,7 +406,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How do I handle refunds?
             </summary>
@@ -417,7 +418,7 @@ export function ManageBillingButton() {
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Can customers pay in different currencies?
             </summary>
@@ -433,7 +434,7 @@ export function ManageBillingButton() {
 
       {/* Going Live */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Going Live Checklist</h2>
+        <h2 className="font-mono text-xl font-semibold">GOING_LIVE_CHECKLIST</h2>
         <Card>
           <CardContent className="p-6">
             <p className="text-muted-foreground mb-4">
@@ -471,12 +472,12 @@ export function ManageBillingButton() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Free Trials</h3>
+                <h3 className="font-mono font-semibold">FREE_TRIALS</h3>
                 <p className="text-sm text-muted-foreground">
                   Let users try your product before paying with trial periods.
                 </p>
@@ -486,7 +487,7 @@ export function ManageBillingButton() {
           <Link href="/docs/features/emails">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Transactional Emails</h3>
+                <h3 className="font-mono font-semibold">TRANSACTIONAL_EMAILS</h3>
                 <p className="text-sm text-muted-foreground">
                   Send purchase confirmations and invoices to customers.
                 </p>

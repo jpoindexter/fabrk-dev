@@ -133,8 +133,8 @@ export default function GettingStartedPage() {
       <div className="space-y-4">
         <div className="flex items-center gap-2">
           <h2 className="font-mono text-xl font-semibold">QUICK_START</h2>
-          <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
-            5 minutes
+          <span className="border border-primary bg-primary/10 px-2 py-0.5 font-mono text-xs font-medium text-primary">
+            [5_MIN]
           </span>
         </div>
         <div>
@@ -168,10 +168,10 @@ npm run db:push && npm run dev`}
         {/* Step 1 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               1
             </span>
-            <h3 className="font-semibold">Check Your System</h3>
+            <h3 className="font-mono font-semibold">CHECK_YOUR_SYSTEM</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -188,10 +188,10 @@ npm run db:push && npm run dev`}
         {/* Step 2 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               2
             </span>
-            <h3 className="font-semibold">Download Fabrk</h3>
+            <h3 className="font-mono font-semibold">DOWNLOAD_FABRK</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -213,10 +213,10 @@ cd my-saas`}
         {/* Step 3 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               3
             </span>
-            <h3 className="font-semibold">Install Dependencies</h3>
+            <h3 className="font-mono font-semibold">INSTALL_DEPENDENCIES</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -225,7 +225,7 @@ cd my-saas`}
           </div>
           <CodeBlock language="bash" code="npm install" />
           <p className="text-sm text-muted-foreground">
-            <strong>What this does:</strong> Reads the <code className="rounded bg-muted px-1">package.json</code> file
+            <strong>What this does:</strong> Reads the <code className="bg-muted px-1 font-mono">package.json</code> file
             and downloads all the required code libraries. Takes 1-2 minutes.
           </p>
         </div>
@@ -233,10 +233,10 @@ cd my-saas`}
         {/* Step 4 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               4
             </span>
-            <h3 className="font-semibold">Create Your Configuration File</h3>
+            <h3 className="font-mono font-semibold">CREATE_CONFIG_FILE</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -254,10 +254,10 @@ cd my-saas`}
         {/* Step 5 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               5
             </span>
-            <h3 className="font-semibold">Set Up Your Database</h3>
+            <h3 className="font-mono font-semibold">SETUP_DATABASE</h3>
           </div>
           <p className="text-sm text-muted-foreground">
             You need a PostgreSQL database to store user accounts, payments, and your app data.
@@ -270,8 +270,8 @@ cd my-saas`}
           </ul>
           <div>
             <p className="text-sm text-muted-foreground mt-2">
-              After creating a database, copy the connection string (looks like <code className="rounded bg-muted px-1">postgresql://user:pass@host/db</code>)
-              and add it to your <code className="rounded bg-muted-foreground px-1">.env.local</code> file:
+              After creating a database, copy the connection string (looks like <code className="bg-muted px-1 font-mono">postgresql://user:pass@host/db</code>)
+              and add it to your <code className="bg-muted px-1 font-mono">.env.local</code> file:
             </p>
           </div>
           <CodeBlock
@@ -283,14 +283,14 @@ cd my-saas`}
         {/* Step 6 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               6
             </span>
-            <h3 className="font-semibold">Configure Required Settings</h3>
+            <h3 className="font-mono font-semibold">CONFIGURE_SETTINGS</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
-              Open <code className="rounded bg-muted px-1">.env.local</code> in your code editor and add these required values:
+              Open <code className="bg-muted px-1 font-mono">.env.local</code> in your code editor and add these required values:
             </p>
           </div>
           <CodeBlock
@@ -311,17 +311,17 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
           </div>
           <CodeBlock language="bash" code="openssl rand -base64 32" />
           <p className="text-sm text-muted-foreground">
-            Copy the output and paste it as your <code className="rounded bg-muted px-1">NEXTAUTH_SECRET</code>.
+            Copy the output and paste it as your <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET</code>.
           </p>
         </div>
 
         {/* Step 7 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               7
             </span>
-            <h3 className="font-semibold">Initialize the Database</h3>
+            <h3 className="font-mono font-semibold">INITIALIZE_DATABASE</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -338,10 +338,10 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
         {/* Step 8 */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+            <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
               8
             </span>
-            <h3 className="font-semibold">Start Your App</h3>
+            <h3 className="font-mono font-semibold">START_YOUR_APP</h3>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">
@@ -361,9 +361,9 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
       <div className="space-y-4">
         <h2 className="font-mono text-xl font-semibold">TROUBLESHOOTING</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              Error: &quot;Port 3000 is already in use&quot;
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
+              [ERROR] PORT_3000_IN_USE
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground space-y-3">
               <div>
@@ -374,12 +374,12 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              Error: &quot;Cannot connect to database&quot;
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
+              [ERROR] CANNOT_CONNECT_DATABASE
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
-              <p>Check your <code className="rounded bg-muted px-1">DATABASE_URL</code> in <code className="rounded bg-muted px-1">.env.local</code>:</p>
+              <p>Check your <code className="bg-muted px-1 font-mono">DATABASE_URL</code> in <code className="bg-muted px-1 font-mono">.env.local</code>:</p>
               <ul className="list-inside list-disc mt-2 space-y-1">
                 <li>Make sure there are no extra spaces or quotes</li>
                 <li>Verify your database is running and accessible</li>
@@ -388,16 +388,16 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
-            <summary className="cursor-pointer p-4 font-medium">
-              Error: &quot;NEXTAUTH_SECRET is missing&quot;
+          <details className="border border-border bg-card">
+            <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
+              [ERROR] NEXTAUTH_SECRET_MISSING
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground space-y-3">
               <div>
                 <p>You need to generate and add a secret. Run this command:</p>
               </div>
               <CodeBlock language="bash" code="openssl rand -base64 32" />
-              <p className="mt-2">Copy the output and add it to your <code className="rounded bg-muted px-1">.env.local</code> file as <code className="rounded bg-muted px-1">NEXTAUTH_SECRET=&quot;your-secret&quot;</code></p>
+              <p className="mt-2">Copy the output and add it to your <code className="bg-muted px-1 font-mono">.env.local</code> file as <code className="bg-muted px-1 font-mono">NEXTAUTH_SECRET=&quot;your-secret&quot;</code></p>
             </div>
           </details>
         </div>
@@ -408,7 +408,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
         <h2 className="font-mono text-xl font-semibold">OPTIONAL_ENABLE_MORE_FEATURES</h2>
         <p className="text-muted-foreground">
           The basic setup above gets you running. When you&apos;re ready, enable these features
-          by adding their API keys to <code className="rounded bg-muted px-1">.env.local</code>:
+          by adding their API keys to <code className="bg-muted px-1 font-mono">.env.local</code>:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Card>

@@ -11,10 +11,11 @@ export default function FileUploadsTutorialPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">File Uploads</h1>
-        <p className="text-lg text-muted-foreground">
-          Implement secure file uploads with dropzone components, validation, and cloud storage integration.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] FILE_UPLOADS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FILE_UPLOADS</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Implement secure file uploads with dropzone components, validation, and cloud storage integration.</p>
       </div>
 
       <Card>
@@ -33,7 +34,7 @@ export default function FileUploadsTutorialPage() {
 
       {/* Basic Dropzone */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Basic Dropzone Component</h2>
+        <h2 className="font-mono text-xl font-semibold">BASIC_DROPZONE_COMPONENT</h2>
         <div>
           <p className="text-muted-foreground">
             Create a reusable dropzone component with drag-and-drop support:
@@ -174,7 +175,7 @@ export function Dropzone({
 
       {/* Image Uploader */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Image Uploader with Preview</h2>
+        <h2 className="font-mono text-xl font-semibold">IMAGE_UPLOADER_WITH_PREVIEW</h2>
         <div>
           <p className="text-muted-foreground">
             Specialized image upload component with instant preview:
@@ -306,7 +307,7 @@ export function ImageUploader({
 
       {/* Upload API Route */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Upload API Route</h2>
+        <h2 className="font-mono text-xl font-semibold">UPLOAD_API_ROUTE</h2>
         <div>
           <p className="text-muted-foreground">
             Create an API route to handle file uploads with validation:
@@ -414,7 +415,7 @@ export const config = {
 
       {/* Client-Side Upload */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Client-Side Upload Handler</h2>
+        <h2 className="font-mono text-xl font-semibold">CLIENT_SIDE_UPLOAD_HANDLER</h2>
         <div>
           <p className="text-muted-foreground">
             Handle the upload in your component with progress tracking:
@@ -520,7 +521,7 @@ export function FileUploadForm() {
 
       {/* Validation Options */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Validation Options</h2>
+        <h2 className="font-mono text-xl font-semibold">VALIDATION_OPTIONS</h2>
         <div>
           <p className="text-muted-foreground">
             Common validation configurations for different use cases:
@@ -568,7 +569,7 @@ export function FileUploadForm() {
 
       {/* Dependencies */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Dependencies</h2>
+        <h2 className="font-mono text-xl font-semibold">DEPENDENCIES</h2>
         <div>
           <p className="text-muted-foreground">
             Install the required packages:
@@ -579,7 +580,7 @@ export function FileUploadForm() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full transition-all hover:border-primary/50">

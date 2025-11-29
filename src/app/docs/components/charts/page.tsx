@@ -10,29 +10,32 @@ export default function ChartsComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Charts & Analytics</h1>
-        <p className="mt-2 text-muted-foreground">
-          Chart components for visualizing data and analytics.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">CHARTS_AND_ANALYTICS</h1>
+        <p className="font-mono text-sm text-muted-foreground mt-2">
+          &gt; Chart components for visualizing data and analytics.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">DonutChart</code> - Donut/pie chart for proportions</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Gauge</code> - Gauge chart for single values</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">AnalyticsChart</code> - Line/bar charts for trends</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">FunnelVisualizer</code> - Funnel chart for conversions</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">StatCard</code> - Stats with trend indicators</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Progress</code> - Linear progress indicator</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DonutChart</code> - Donut/pie chart for proportions</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Gauge</code> - Gauge chart for single values</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AnalyticsChart</code> - Line/bar charts for trends</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FunnelVisualizer</code> - Funnel chart for conversions</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">StatCard</code> - Stats with trend indicators</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Progress</code> - Linear progress indicator</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Donut chart
 import { DonutChart } from "@/components/ui/donut-chart";
@@ -54,10 +57,10 @@ import { Progress } from "@/components/ui/progress";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Donut Chart</h3>
+          <h3 className="font-mono text-xl font-medium">DONUT_CHART</h3>
           <CodeBlock language="tsx" code={`import { DonutChart } from "@/components/ui/donut-chart";
 
 const data = [
@@ -81,7 +84,7 @@ export function DeviceBreakdown() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Gauge Chart</h3>
+          <h3 className="font-mono text-xl font-medium">GAUGE_CHART</h3>
           <CodeBlock language="tsx" code={`import { Gauge } from "@/components/ui/gauge";
 
 export function PerformanceGauge() {
@@ -109,7 +112,7 @@ export function PerformanceGauge() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Analytics Chart</h3>
+          <h3 className="font-mono text-xl font-medium">ANALYTICS_CHART</h3>
           <CodeBlock language="tsx" code={`import { AnalyticsChart } from "@/components/analytics/analytics-chart";
 
 const chartData = [
@@ -144,7 +147,7 @@ export function RevenueChart() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Funnel Visualizer</h3>
+          <h3 className="font-mono text-xl font-medium">FUNNEL_VISUALIZER</h3>
           <CodeBlock language="tsx" code={`import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
 
 const funnelData = [
@@ -171,7 +174,7 @@ export function ConversionFunnel() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Stats Dashboard</h3>
+          <h3 className="font-mono text-xl font-medium">STATS_DASHBOARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity, TrendingUp } from "lucide-react";
 
@@ -212,7 +215,7 @@ export function StatsDashboard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Progress with Label</h3>
+          <h3 className="font-mono text-xl font-medium">PROGRESS_WITH_LABEL</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function StorageProgress() {
@@ -241,7 +244,7 @@ export function StorageProgress() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Chart Color Tokens</h3>
+          <h3 className="font-mono text-xl font-medium">CHART_COLOR_TOKENS</h3>
           <CodeBlock language="typescript" code={`// Always use CSS variables for chart colors to support theming
 
 const chartColors = {

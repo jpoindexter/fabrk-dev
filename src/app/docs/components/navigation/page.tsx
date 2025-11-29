@@ -10,28 +10,31 @@ export default function NavigationComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Navigation & Header</h1>
-        <p className="mt-2 text-muted-foreground">
-          Navigation components for building headers, menus, and site navigation.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">NAVIGATION_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Navigation components for building headers, menus, and site navigation.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Navigation</code> - Main site navigation with responsive mobile menu</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Breadcrumb</code> - Breadcrumb navigation for page hierarchy</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Sidebar</code> - Collapsible sidebar navigation</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Menubar</code> - Horizontal menu bar with dropdowns</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">DropdownMenu</code> - Dropdown menu for actions</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Navigation</code> - Main site navigation with responsive mobile menu</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Breadcrumb</code> - Breadcrumb navigation for page hierarchy</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Sidebar</code> - Collapsible sidebar navigation</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Menubar</code> - Horizontal menu bar with dropdowns</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DropdownMenu</code> - Dropdown menu for actions</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Landing page navigation
 import { Navigation } from "@/components/landing/navigation";
@@ -70,10 +73,10 @@ import {
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Landing Navigation</h3>
+          <h3 className="font-mono text-lg font-medium">LANDING_NAVIGATION</h3>
           <CodeBlock language="tsx" code={`import { Navigation } from "@/components/landing/navigation";
 
 export default function LandingPage() {
@@ -87,7 +90,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Breadcrumb</h3>
+          <h3 className="font-mono text-lg font-medium">BREADCRUMB</h3>
           <CodeBlock language="tsx" code={`import {
   Breadcrumb,
   BreadcrumbItem,
@@ -119,7 +122,7 @@ export function PageBreadcrumb() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Dropdown Menu</h3>
+          <h3 className="font-mono text-lg font-medium">DROPDOWN_MENU</h3>
           <CodeBlock language="tsx" code={`import {
   DropdownMenu,
   DropdownMenuContent,

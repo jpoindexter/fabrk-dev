@@ -14,15 +14,18 @@ export default function AnalyticsPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Analytics with PostHog</h1>
-        <p className="text-lg text-muted-foreground">
-          Product analytics, session recordings, and feature flags with PostHog integration.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] ANALYTICS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">ANALYTICS_WITH_POSTHOG</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Product analytics, session recordings, and feature flags with PostHog integration.
         </p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             Fabrk integrates PostHog for comprehensive product analytics. Track user behavior,
             analyze conversion funnels, record sessions, and manage feature flags all in one platform.
@@ -38,7 +41,7 @@ export default function AnalyticsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
           <p className="mb-4 text-muted-foreground">
             Add your PostHog credentials to environment variables:
           </p>
@@ -61,7 +64,7 @@ module.exports = {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">PostHog Provider Setup</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">POSTHOG_PROVIDER_SETUP</h2>
           <p className="mb-4 text-muted-foreground">
             Initialize PostHog in your application:
           </p>
@@ -105,7 +108,7 @@ export default function RootLayout({ children }) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Tracking Events</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">TRACKING_EVENTS</h2>
           <p className="mb-4 text-muted-foreground">
             Track custom events throughout your application:
           </p>
@@ -148,7 +151,7 @@ export function CheckoutButton({ plan, price }: Props) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">User Identification</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">USER_IDENTIFICATION</h2>
           <p className="mb-4 text-muted-foreground">
             Identify users after authentication to link their activity:
           </p>
@@ -192,7 +195,7 @@ const handleLogout = () => {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Page View Tracking</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">PAGE_VIEW_TRACKING</h2>
           <p className="mb-4 text-muted-foreground">
             Track page views with the Next.js router:
           </p>
@@ -226,7 +229,7 @@ export function PageViewTracker() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Server-Side Tracking</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SERVER_SIDE_TRACKING</h2>
           <p className="mb-4 text-muted-foreground">
             Track events from API routes and server actions:
           </p>
@@ -272,9 +275,9 @@ export async function POST(req: Request) {
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Use consistent naming:</strong> Follow a convention like <code>object_action</code></li>
+            <li><strong>Use consistent naming:</strong> Follow a convention like <code className="font-mono">object_action</code></li>
             <li><strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>
             <li><strong>Include context:</strong> Add properties that help segment and analyze</li>
             <li><strong>Respect privacy:</strong> Don&apos;t track PII unless necessary</li>

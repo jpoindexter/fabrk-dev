@@ -16,13 +16,16 @@ export default function MagicLinksPage() {
         </Link>
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">Magic Link Authentication</h1>
-      <p className="text-muted-foreground text-lg mb-8">
-        Passwordless authentication via email magic links for frictionless sign-in.
+      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MAGIC_LINKS</span>
+      </div>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">MAGIC_LINK_AUTH</h1>
+      <p className="font-mono text-sm text-muted-foreground mb-8">
+        &gt; Passwordless authentication via email magic links for frictionless sign-in.
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -40,15 +43,15 @@ export default function MagicLinksPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="text-xl font-medium">Enable Magic Links</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
+          <h3 className="font-mono text-xl font-medium">ENABLE_MAGIC_LINKS</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Enable the feature in <code className="bg-muted px-2 py-1 rounded">src/config.js</code>:</p>
+            <p className="text-muted-foreground">Enable the feature in <code className="font-mono bg-muted px-2 py-1">src/config.js</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`export const config = {
   features: {
@@ -59,12 +62,12 @@ export default function MagicLinksPage() {
         </div>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="text-xl font-medium">Configure Email</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
+          <h3 className="font-mono text-xl font-medium">CONFIGURE_EMAIL</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Ensure email is configured in <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+            <p className="text-muted-foreground">Ensure email is configured in <code className="font-mono bg-muted px-2 py-1">.env.local</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
@@ -72,8 +75,8 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
         </div>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="text-xl font-medium">Token Settings</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
+          <h3 className="font-mono text-xl font-medium">TOKEN_SETTINGS</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -89,12 +92,12 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="text-xl font-medium mb-3">Request Magic Link API</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">REQUEST_MAGIC_LINK_API</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Create the API endpoint at <code className="bg-muted px-2 py-1 rounded">/api/auth/magic-link</code>:</p>
+            <p className="text-muted-foreground">Create the API endpoint at <code className="font-mono bg-muted px-2 py-1">/api/auth/magic-link</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`// src/app/api/auth/magic-link/route.ts
 import { NextResponse } from "next/server";
@@ -153,10 +156,10 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Verify Magic Link</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">VERIFY_MAGIC_LINK</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Handle link verification at <code className="bg-muted px-2 py-1 rounded">/api/auth/verify</code>:</p>
+            <p className="text-muted-foreground">Handle link verification at <code className="font-mono bg-muted px-2 py-1">/api/auth/verify</code>:</p>
           </div>
           <CodeBlock language="bash" code={`// src/app/api/auth/verify/route.ts
 import { NextResponse } from "next/server";
@@ -229,7 +232,7 @@ export async function GET(request: Request) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Magic Link Request Form</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">MAGIC_LINK_REQUEST_FORM</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Client-side form component:</p>
@@ -299,7 +302,7 @@ export function MagicLinkForm() {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Magic Link Email Template</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">MAGIC_LINK_EMAIL_TEMPLATE</h3>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Create the email template:</p>
@@ -353,7 +356,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
@@ -395,7 +398,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Security Considerations</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_CONSIDERATIONS</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
@@ -410,7 +413,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">

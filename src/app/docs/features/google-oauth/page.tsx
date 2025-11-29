@@ -16,13 +16,16 @@ export default function GoogleOAuthPage() {
         </Link>
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">Google OAuth Setup</h1>
-      <p className="text-muted-foreground text-lg mb-8">
-        Enable one-click Google sign-in for your users with OAuth 2.0 integration.
+      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] GOOGLE_OAUTH</span>
+      </div>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">GOOGLE_OAUTH_SETUP</h1>
+      <p className="font-mono text-sm text-muted-foreground mb-8">
+        &gt; Enable one-click Google sign-in for your users with OAuth 2.0 integration.
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -40,11 +43,11 @@ export default function GoogleOAuthPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="text-xl font-medium">Create Google Cloud Project</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
+          <h3 className="font-mono text-xl font-medium">CREATE_GOOGLE_CLOUD_PROJECT</h3>
         </div>
         <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
           <li>Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
@@ -59,12 +62,12 @@ export default function GoogleOAuthPage() {
               <li>Authorized domains: yourdomain.com</li>
             </ul>
           </li>
-          <li>Add scopes: <code className="bg-muted px-1 rounded">email</code>, <code className="bg-muted px-1 rounded">profile</code>, <code className="bg-muted px-1 rounded">openid</code></li>
+          <li>Add scopes: <code className="font-mono bg-muted px-1">email</code>, <code className="font-mono bg-muted px-1">profile</code>, <code className="font-mono bg-muted px-1">openid</code></li>
         </ol>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="text-xl font-medium">Create OAuth Credentials</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
+          <h3 className="font-mono text-xl font-medium">CREATE_OAUTH_CREDENTIALS</h3>
         </div>
         <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
           <li>Go to APIs & Services → Credentials</li>
@@ -73,27 +76,27 @@ export default function GoogleOAuthPage() {
           <li>
             Add Authorized JavaScript origins:
             <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li><code className="bg-muted px-1 rounded">http://localhost:3000</code> (development)</li>
-              <li><code className="bg-muted px-1 rounded">https://yourdomain.com</code> (production)</li>
+              <li><code className="font-mono bg-muted px-1">http://localhost:3000</code> (development)</li>
+              <li><code className="font-mono bg-muted px-1">https://yourdomain.com</code> (production)</li>
             </ul>
           </li>
           <li>
             Add Authorized redirect URIs:
             <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li><code className="bg-muted px-1 rounded">http://localhost:3000/api/auth/callback/google</code></li>
-              <li><code className="bg-muted px-1 rounded">https://yourdomain.com/api/auth/callback/google</code></li>
+              <li><code className="font-mono bg-muted px-1">http://localhost:3000/api/auth/callback/google</code></li>
+              <li><code className="font-mono bg-muted px-1">https://yourdomain.com/api/auth/callback/google</code></li>
             </ul>
           </li>
           <li>Copy the Client ID and Client Secret</li>
         </ol>
 
         <div className="flex items-center gap-2 mb-3">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="text-xl font-medium">Set Environment Variables</h3>
+          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
+          <h3 className="font-mono text-xl font-medium">SET_ENVIRONMENT_VARIABLES</h3>
         </div>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Add to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+            <p className="text-muted-foreground">Add to <code className="font-mono bg-muted px-2 py-1">.env.local</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
@@ -104,12 +107,12 @@ GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="text-xl font-medium mb-3">Auth Configuration</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">AUTH_CONFIGURATION</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Google provider is configured in <code className="bg-muted px-2 py-1 rounded">src/lib/auth.ts</code>:</p>
+            <p className="text-muted-foreground">Google provider is configured in <code className="font-mono bg-muted px-2 py-1">src/lib/auth.ts</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`// src/lib/auth.ts
 import NextAuth from "next-auth";
@@ -164,7 +167,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 });`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Sign-In Button</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">SIGN_IN_BUTTON</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Add Google sign-in to your login page:</p>
@@ -205,7 +208,7 @@ export function GoogleSignInButton() {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Conditional Rendering</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">CONDITIONAL_RENDERING</h3>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Show Google button only when configured:</p>
@@ -240,7 +243,7 @@ export function LoginForm() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
@@ -282,7 +285,7 @@ export function LoginForm() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Troubleshooting</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">TROUBLESHOOTING</h2>
         <Card>
           <CardContent className="pt-6">
             <div className="space-y-4">
@@ -301,7 +304,7 @@ export function LoginForm() {
               <div>
                 <h4 className="font-medium mb-1">Button not appearing</h4>
                 <p className="text-muted-foreground text-sm">
-                  Check that <code className="bg-muted px-1 rounded">GOOGLE_CLIENT_ID</code> and <code className="bg-muted px-1 rounded">GOOGLE_CLIENT_SECRET</code> are set. Restart the dev server after adding env vars.
+                  Check that <code className="font-mono bg-muted px-1">GOOGLE_CLIENT_ID</code> and <code className="font-mono bg-muted px-1">GOOGLE_CLIENT_SECRET</code> are set. Restart the dev server after adding env vars.
                 </p>
               </div>
             </div>
@@ -310,7 +313,7 @@ export function LoginForm() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">

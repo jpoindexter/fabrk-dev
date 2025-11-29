@@ -6,15 +6,18 @@ export default function CSRFProtectionPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">CSRF Protection</h1>
-        <p className="text-lg text-muted-foreground">
-          Protect your forms and API endpoints from cross-site request forgery attacks.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">CSRF_PROTECTION</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Protect your forms and API endpoints from cross-site request forgery attacks.
         </p>
       </div>
 
       <Card>
         <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono font-semibold">What's Included</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
             <li>Automatic CSRF protection for NextAuth routes</li>
             <li>Double-submit cookie pattern</li>
@@ -29,7 +32,7 @@ export default function CSRFProtectionPage() {
       {/* Built-in Protection */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Built-in Protection</h2>
+          <h2 className="font-mono text-xl font-semibold">BUILT_IN_PROTECTION</h2>
           <p className="text-muted-foreground">
             NextAuth v5 automatically protects all authentication routes with CSRF tokens.
             No additional configuration is needed for login, logout, and registration forms.
@@ -47,7 +50,7 @@ export default function CSRFProtectionPage() {
       {/* Getting CSRF Token */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Getting CSRF Token</h2>
+          <h2 className="font-mono text-xl font-semibold">GETTING_CSRF_TOKEN</h2>
           <p className="text-muted-foreground">
             Retrieve the CSRF token for custom forms:
           </p>
@@ -83,7 +86,7 @@ export function SecureForm() {
       {/* Server-Side Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Server-Side Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">SERVER_SIDE_VALIDATION</h2>
           <p className="text-muted-foreground">
             Validate CSRF tokens in your API routes:
           </p>
@@ -135,7 +138,7 @@ export async function POST(request: NextRequest) {
       {/* Origin Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Origin Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">ORIGIN_VALIDATION</h2>
           <p className="text-muted-foreground">
             Add origin validation as an additional security layer:
           </p>
@@ -185,7 +188,7 @@ export async function POST(request: NextRequest) {
       {/* SameSite Cookie Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">SameSite Cookie Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold">SAMESITE_COOKIE_CONFIGURATION</h2>
           <p className="text-muted-foreground">
             Configure secure cookie settings in NextAuth:
           </p>
@@ -223,7 +226,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       {/* Fetch Requests with CSRF */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Fetch Requests with CSRF</h2>
+          <h2 className="font-mono text-xl font-semibold">FETCH_REQUESTS_WITH_CSRF</h2>
           <p className="text-muted-foreground">
             Include CSRF tokens in fetch requests:
           </p>
@@ -289,12 +292,12 @@ export function useSecureApi() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Security Headers</h3>
+                <h3 className="font-mono font-semibold">Security Headers</h3>
                 <p className="text-sm text-muted-foreground">
                   Configure HSTS, CSP, and other headers
                 </p>
@@ -304,7 +307,7 @@ export function useSecureApi() {
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Schema Validation</h3>
+                <h3 className="font-mono font-semibold">Schema Validation</h3>
                 <p className="text-sm text-muted-foreground">
                   Validate all inputs with Zod schemas
                 </p>

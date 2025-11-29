@@ -11,16 +11,19 @@ export default function AuditLoggingPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Audit Logging</h1>
-        <p className="text-lg text-muted-foreground">
-          Track security-relevant events and user actions for compliance and debugging.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">AUDIT_LOGGING</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Track security-relevant events and user actions for compliance and debugging.
         </p>
       </div>
 
       <Card>
         <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+          <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
+          <ul className="list-inside list-disc space-y-1 font-mono text-muted-foreground">
             <li>Database-backed audit log storage</li>
             <li>Pre-defined event types</li>
             <li>User and system action tracking</li>
@@ -34,8 +37,8 @@ export default function AuditLoggingPage() {
       {/* Database Schema */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Database Schema</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">DATABASE_SCHEMA</h2>
+          <p className="font-mono text-muted-foreground">
             The AuditLog model in Prisma:
           </p>
         </div>
@@ -78,8 +81,8 @@ model AuditLog {
       {/* Audit Service */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Audit Service</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">AUDIT_SERVICE</h2>
+          <p className="font-mono text-muted-foreground">
             Create a service to log events:
           </p>
         </div>
@@ -173,8 +176,8 @@ export async function createAuditLog(input: AuditLogInput) {
       {/* Usage Examples */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Usage Examples</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+          <p className="font-mono text-muted-foreground">
             Log events throughout your application:
           </p>
         </div>
@@ -250,8 +253,8 @@ await createAuditLog({
       {/* Querying Logs */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Querying Logs</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">QUERYING_LOGS</h2>
+          <p className="font-mono text-muted-foreground">
             API endpoint to search and filter audit logs:
           </p>
         </div>
@@ -323,8 +326,8 @@ export async function GET(request: NextRequest) {
       {/* Log Retention */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Log Retention</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">LOG_RETENTION</h2>
+          <p className="font-mono text-muted-foreground">
             Set up automatic cleanup of old logs:
           </p>
         </div>
@@ -367,8 +370,8 @@ cleanupAuditLogs()
       {/* Security Alerts */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Security Alerts</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-xl font-semibold">SECURITY_ALERTS</h2>
+          <p className="font-mono text-muted-foreground">
             Send alerts for critical events:
           </p>
         </div>
@@ -420,13 +423,13 @@ async function sendSecurityAlert(log: AuditLog) {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Schema Validation</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-mono font-semibold">Schema Validation</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Validate all inputs with Zod
                 </p>
               </CardContent>
@@ -435,8 +438,8 @@ async function sendSecurityAlert(log: AuditLog) {
           <Link href="/docs/deployment/database">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Database Setup</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-mono font-semibold">Database Setup</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Set up production database
                 </p>
               </CardContent>

@@ -10,26 +10,29 @@ export default function HeroComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Hero Sections</h1>
-        <p className="mt-2 text-muted-foreground">
-          Eye-catching hero sections for landing pages with various layouts and styles.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">HERO_SECTIONS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Eye-catching hero sections for landing pages with various layouts and styles.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">HeroSection</code> - Standard centered hero with headline, description, and CTAs</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">HeroSplit</code> - Split layout with content on left and image/demo on right</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">HeroVideo</code> - Hero section with background video or video modal</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">HeroSection</code> - Standard centered hero with headline, description, and CTAs</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">HeroSplit</code> - Split layout with content on left and image/demo on right</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">HeroVideo</code> - Hero section with background video or video modal</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Standard hero section
 import { HeroSection } from "@/components/landing/hero-section";
@@ -42,10 +45,10 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Standard Hero Section</h3>
+          <h3 className="font-mono text-lg font-medium">STANDARD_HERO_SECTION</h3>
           <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 
 export default function LandingPage() {
@@ -59,7 +62,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Split Layout Hero</h3>
+          <h3 className="font-mono text-lg font-medium">SPLIT_LAYOUT_HERO</h3>
           <CodeBlock language="tsx" code={`import { HeroSplit } from "@/components/landing/hero-split";
 
 export default function LandingPage() {
@@ -77,7 +80,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Video Hero</h3>
+          <h3 className="font-mono text-lg font-medium">VIDEO_HERO</h3>
           <CodeBlock language="tsx" code={`import { HeroVideo } from "@/components/landing/hero-video";
 
 export default function LandingPage() {
@@ -96,7 +99,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">View Variations</h3>
+          <h3 className="font-mono text-lg font-medium">VIEW_VARIATIONS</h3>
           <p className="text-muted-foreground">
             Check out the variations page to see all hero styles side by side:
           </p>
@@ -107,7 +110,7 @@ export default function LandingPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Animation Pattern</h2>
+          <h2 className="font-mono text-xl font-semibold">ANIMATION_PATTERN</h2>
           <p className="text-muted-foreground">
             All hero sections use Framer Motion for smooth entrance animations:
           </p>

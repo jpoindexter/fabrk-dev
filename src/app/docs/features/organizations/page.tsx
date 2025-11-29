@@ -16,13 +16,16 @@ export default function OrganizationsPage() {
         </Link>
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">Organizations & Teams</h1>
-      <p className="text-muted-foreground text-lg mb-8">
-        Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
+      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <span className="font-mono text-xs text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
+      </div>
+      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">ORGANIZATIONS_AND_TEAMS</h1>
+      <p className="font-mono text-sm text-muted-foreground mb-8">
+        &gt; Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -41,10 +44,10 @@ export default function OrganizationsPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Core models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
+            <p className="text-muted-foreground">Core models in <code className="bg-muted px-2 py-1 font-mono">prisma/schema.prisma</code>:</p>
           </div>
           <CodeBlock language="prisma" code={`enum OrgRole {
   OWNER
@@ -102,7 +105,7 @@ model OrganizationInvite {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Role Permissions</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">ROLE_PERMISSIONS</h2>
         <Card>
           <CardContent className="pt-6">
             <div className="overflow-x-auto">
@@ -181,9 +184,9 @@ model OrganizationInvite {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Code Examples</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="text-xl font-medium mb-3">Create Organization</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">CREATE_ORGANIZATION</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">API endpoint to create a new organization:</p>
@@ -265,7 +268,7 @@ export async function GET() {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Invite Members</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">INVITE_MEMBERS</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Send team invitations:</p>
@@ -342,7 +345,7 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Accept Invitation</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">ACCEPT_INVITATION</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Handle invite acceptance:</p>
@@ -397,7 +400,7 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Permission Check Middleware</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Reusable permission checking:</p>
@@ -456,7 +459,7 @@ export async function DELETE(request: Request) {
 }`} />
         </div>
 
-        <h3 className="text-xl font-medium mb-3">Organization Context Hook</h3>
+        <h3 className="font-mono text-xl font-medium mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Client-side organization context:</p>
@@ -530,12 +533,12 @@ function TeamPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Common Use Cases</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Team Workspaces</h3>
+              <h3 className="font-mono font-semibold mb-2">TEAM_WORKSPACES</h3>
               <p className="text-muted-foreground">
                 Each organization has its own workspace with projects, files, or data. Members see only their organization's content.
               </p>
@@ -544,7 +547,7 @@ function TeamPage() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Per-Seat Billing</h3>
+              <h3 className="font-mono font-semibold mb-2">PER_SEAT_BILLING</h3>
               <p className="text-muted-foreground">
                 Charge based on organization member count. Track seats in Stripe metadata and update on member changes.
               </p>
@@ -553,7 +556,7 @@ function TeamPage() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Admin Dashboard</h3>
+              <h3 className="font-mono font-semibold mb-2">ADMIN_DASHBOARD</h3>
               <p className="text-muted-foreground">
                 Give admins a dashboard to manage members, view activity, and configure organization settings.
               </p>
@@ -562,7 +565,7 @@ function TeamPage() {
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">SSO/SAML Integration</h3>
+              <h3 className="font-mono font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
               <p className="text-muted-foreground">
                 Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.
               </p>
@@ -572,13 +575,13 @@ function TeamPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
               <li>Always check permissions before any organization action</li>
               <li>Use database transactions for multi-step operations</li>
-              <li>Scope all queries by <code className="bg-muted px-1 rounded">organizationId</code></li>
+              <li>Scope all queries by <code className="bg-muted px-1 font-mono">organizationId</code></li>
               <li>Send email notifications for important events (invite, role change)</li>
               <li>Allow users to belong to multiple organizations</li>
               <li>Implement organization switching in the UI</li>

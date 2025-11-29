@@ -10,30 +10,31 @@ export default function ProtectedPagesTutorialPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Protected Pages</h1>
-        <p className="text-lg text-muted-foreground">
-          Create pages that require authentication to access.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">PROTECTED_PAGES</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Create pages that require authentication to access</p>
       </div>
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">How Protection Works</h2>
+        <h2 className="font-mono text-xl font-semibold">HOW_PROTECTION_WORKS</h2>
         <p className="text-muted-foreground">
           Fabrk protects routes via middleware. The following routes automatically redirect
           unauthenticated users to the home page:
         </p>
         <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li><code className="rounded bg-muted px-1 py-0.5">/dashboard/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/admin/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/billing/*</code></li>
-          <li><code className="rounded bg-muted px-1 py-0.5">/settings/*</code></li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">/dashboard/*</code></li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">/admin/*</code></li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">/billing/*</code></li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">/settings/*</code></li>
         </ul>
       </div>
 
       {/* Creating a Protected Page */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Creating a Protected Page</h2>
+        <h2 className="font-mono text-xl font-semibold">CREATING_A_PROTECTED_PAGE</h2>
         <p className="text-muted-foreground">
           Simply create your page under one of the protected directories:
         </p>
@@ -58,10 +59,10 @@ export default async function MyFeaturePage() {
 
       {/* Adding New Protected Routes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Adding New Protected Routes</h2>
+        <h2 className="font-mono text-xl font-semibold">ADDING_NEW_PROTECTED_ROUTES</h2>
         <p className="text-muted-foreground">
           To protect additional routes, update the middleware at{" "}
-          <code className="rounded bg-muted px-1 py-0.5">src/middleware.ts</code>:
+          <code className="bg-muted px-1 py-0.5 font-mono">src/middleware.ts</code>:
         </p>
         <CodeBlock language="typescript" code={`// src/middleware.ts
 
@@ -77,7 +78,7 @@ const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettin
 
       {/* Role-Based Access */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Role-Based Access Control</h2>
+        <h2 className="font-mono text-xl font-semibold">ROLE_BASED_ACCESS_CONTROL</h2>
         <p className="text-muted-foreground">
           Restrict pages by user role:
         </p>
@@ -102,15 +103,15 @@ export default async function AdminPage() {
   );
 }`} />
         <p className="text-sm text-muted-foreground">
-          Available roles: <code className="rounded bg-muted px-1 py-0.5">USER</code>,{" "}
-          <code className="rounded bg-muted px-1 py-0.5">ADMIN</code>,{" "}
-          <code className="rounded bg-muted px-1 py-0.5">SUPER_ADMIN</code>
+          Available roles: <code className="bg-muted px-1 py-0.5 font-mono">USER</code>,{" "}
+          <code className="bg-muted px-1 py-0.5 font-mono">ADMIN</code>,{" "}
+          <code className="bg-muted px-1 py-0.5 font-mono">SUPER_ADMIN</code>
         </p>
       </div>
 
       {/* Client Component Protection */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Client Component Protection</h2>
+        <h2 className="font-mono text-xl font-semibold">CLIENT_COMPONENT_PROTECTION</h2>
         <p className="text-muted-foreground">
           For client components, use the session hook:
         </p>
@@ -140,7 +141,7 @@ export function ProtectedClientComponent() {
 
       {/* Conditional UI */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Conditional UI Based on Auth</h2>
+        <h2 className="font-mono text-xl font-semibold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
         <p className="text-muted-foreground">
           Show different content based on authentication state:
         </p>

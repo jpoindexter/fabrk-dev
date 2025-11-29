@@ -13,7 +13,7 @@ export default function ButtonsComponentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">BUTTONS</h1>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">BUTTON_COMPONENTS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Button components with multiple variants, sizes, and states.
         </p>
@@ -23,12 +23,12 @@ export default function ButtonsComponentsPage() {
         <CardContent className="pt-6">
           <h2 className="font-mono text-lg font-semibold mb-4">AVAILABLE_VARIANTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">default</code> - Primary button with solid background</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">secondary</code> - Secondary style with muted background</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">outline</code> - Bordered button with transparent background</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">ghost</code> - Minimal button, background on hover</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">link</code> - Styled as a link</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">destructive</code> - For dangerous actions (delete, etc.)</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">default</code> - Primary button with solid background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">secondary</code> - Secondary style with muted background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">outline</code> - Bordered button with transparent background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ghost</code> - Minimal button, background on hover</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">link</code> - Styled as a link</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">destructive</code> - For dangerous actions (delete, etc.)</li>
           </ul>
         </CardContent>
       </Card>
@@ -44,7 +44,7 @@ export default function ButtonsComponentsPage() {
         <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Button Variants</h3>
+          <h3 className="font-mono text-xl font-medium">BUTTON_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
@@ -62,7 +62,7 @@ export function ButtonVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Button Sizes</h3>
+          <h3 className="font-mono text-xl font-medium">BUTTON_SIZES</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
@@ -80,7 +80,7 @@ export function ButtonSizes() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Button with Icon</h3>
+          <h3 className="font-mono text-xl font-medium">BUTTON_WITH_ICON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight, Loader2 } from "lucide-react";
 
@@ -109,7 +109,7 @@ export function ButtonWithIcon() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Loading State</h3>
+          <h3 className="font-mono text-xl font-medium">LOADING_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -126,7 +126,7 @@ export function LoadingButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Button as Link</h3>
+          <h3 className="font-mono text-xl font-medium">BUTTON_AS_LINK</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -150,7 +150,7 @@ export function ButtonAsLink() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Button Group</h3>
+          <h3 className="font-mono text-xl font-medium">BUTTON_GROUP</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
@@ -171,7 +171,7 @@ export function ButtonGroup() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Full Width Button</h3>
+          <h3 className="font-mono text-xl font-medium">FULL_WIDTH_BUTTON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function FullWidthButton() {
@@ -184,7 +184,7 @@ export function FullWidthButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Disabled State</h3>
+          <h3 className="font-mono text-xl font-medium">DISABLED_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function DisabledButton() {

@@ -10,26 +10,29 @@ export default function TestimonialsComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Testimonials</h1>
-        <p className="mt-2 text-muted-foreground">
-          Social proof components to showcase customer reviews and testimonials.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">TESTIMONIALS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Social proof components to showcase customer reviews and testimonials.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Avatar</code> - User avatar component</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">AvatarGroup</code> - Stacked avatar display</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Avatar</code> - User avatar component</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AvatarGroup</code> - Stacked avatar display</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Testimonials section
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -43,10 +46,10 @@ import { Card, CardContent } from "@/components/ui/card";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Testimonials Section</h3>
+          <h3 className="font-mono text-lg font-medium">TESTIMONIALS_SECTION</h3>
           <CodeBlock language="tsx" code={`import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 export default function LandingPage() {
@@ -70,7 +73,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Custom Testimonial Card</h3>
+          <h3 className="font-mono text-lg font-medium">CUSTOM_TESTIMONIAL_CARD</h3>
           <CodeBlock language="tsx" code={`import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -125,7 +128,7 @@ export function TestimonialCard({
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Avatar Group (Social Proof)</h3>
+          <h3 className="font-mono text-lg font-medium">AVATAR_GROUP_SOCIAL_PROOF</h3>
           <CodeBlock language="tsx" code={`import { AvatarGroup } from "@/components/ui/avatar-group";
 
 export function SocialProof() {
@@ -148,7 +151,7 @@ export function SocialProof() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Testimonial Grid</h3>
+          <h3 className="font-mono text-lg font-medium">TESTIMONIAL_GRID</h3>
           <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
 
 const testimonials = [

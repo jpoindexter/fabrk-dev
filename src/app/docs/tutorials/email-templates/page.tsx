@@ -11,9 +11,12 @@ export default function EmailTemplatesTutorialPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Email Templates</h1>
-        <p className="text-lg text-muted-foreground">
-          Create and send beautiful transactional emails with Resend and lightweight HTML templates.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">EMAIL_TEMPLATES</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Create and send beautiful transactional emails with Resend and lightweight HTML templates.
         </p>
       </div>
 
@@ -33,7 +36,7 @@ export default function EmailTemplatesTutorialPage() {
 
       {/* Basic Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Basic Setup</h2>
+        <h2 className="font-mono text-xl font-semibold">BASIC_SETUP</h2>
         <div>
           <p className="text-muted-foreground">
             Configure your Resend API key to start sending emails. Sign up at{" "}
@@ -59,11 +62,11 @@ EMAIL_FROM="noreply@yourdomain.com"`} />
 
       {/* Email Service Functions */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Sending Emails</h2>
+        <h2 className="font-mono text-xl font-semibold">SENDING_EMAILS</h2>
         <div>
           <p className="text-muted-foreground">
             Use the email service functions from{" "}
-            <code className="rounded bg-muted px-1 py-0.5">src/lib/email.ts</code>:
+            <code className="bg-muted px-1 py-0.5 font-mono">src/lib/email.ts</code>:
           </p>
         </div>
         <CodeBlock language="typescript" code={`import {
@@ -102,7 +105,7 @@ await sendResetEmail(
 
       {/* Queue System */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Email Queue System</h2>
+        <h2 className="font-mono text-xl font-semibold">EMAIL_QUEUE_SYSTEM</h2>
         <div>
           <p className="text-muted-foreground">
             For non-critical emails (notifications, bulk), use the queue system for background sending
@@ -135,16 +138,16 @@ await queueWelcomeEmail({
   purchaseId: "purchase_456"
 });`} />
         <p className="text-sm text-muted-foreground">
-          Run the email worker with <code className="rounded bg-muted px-1 py-0.5">npm run email:dev</code> to process queued emails.
+          Run the email worker with <code className="bg-muted px-1 py-0.5 font-mono">npm run email:dev</code> to process queued emails.
         </p>
       </div>
 
       {/* Creating Custom Templates */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Creating Custom Email Templates</h2>
+        <h2 className="font-mono text-xl font-semibold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
         <div>
           <p className="text-muted-foreground">
-            Create HTML template functions in <code className="rounded bg-muted px-1 py-0.5">src/emails/</code>.
+            Create HTML template functions in <code className="bg-muted px-1 py-0.5 font-mono">src/emails/</code>.
             This approach keeps dependencies low and performance high.
           </p>
         </div>
@@ -202,7 +205,7 @@ export function generateInvoiceEmailHTML({
 
       {/* Sending Custom Templates */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Sending Custom HTML Emails</h2>
+        <h2 className="font-mono text-xl font-semibold">SENDING_CUSTOM_HTML_EMAILS</h2>
         <div>
           <p className="text-muted-foreground">
             Generate the HTML and send it using Resend:
@@ -251,22 +254,22 @@ export async function POST(request: Request) {
 
       {/* Email Types */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Email Types</h2>
+        <h2 className="font-mono text-xl font-semibold">EMAIL_TYPES</h2>
         <p className="text-muted-foreground">
           The queue system supports these email types for categorization:
         </p>
         <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li><code className="rounded bg-muted px-1 py-0.5">WELCOME</code> - Post-purchase welcome emails</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">VERIFICATION</code> - Email verification</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">RESET</code> - Password reset</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">INVOICE</code> - Payment receipts</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">NOTIFICATION</code> - General notifications</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">WELCOME</code> - Post-purchase welcome emails</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">VERIFICATION</code> - Email verification</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">RESET</code> - Password reset</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">INVOICE</code> - Payment receipts</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">NOTIFICATION</code> - General notifications</li>
         </ul>
       </div>
 
       {/* Organization Invites */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Organization Invites</h2>
+        <h2 className="font-mono text-xl font-semibold">ORGANIZATION_INVITES</h2>
         <div>
           <p className="text-muted-foreground">
             Send beautiful organization invitation emails:
@@ -285,7 +288,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Best Practices */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="p-6">
             <ul className="list-inside list-disc space-y-2 text-muted-foreground">
@@ -314,7 +317,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">

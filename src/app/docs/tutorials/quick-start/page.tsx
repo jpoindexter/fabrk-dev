@@ -11,9 +11,12 @@ export default function QuickStartPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Quick Start: Launch Your MVP</h1>
-        <p className="text-lg text-muted-foreground">
-          Assemble a production-ready landing page and core features in minutes.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x00] TUTORIALS ] QUICK_START</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">QUICK_START_LAUNCH_MVP</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Assemble a production-ready landing page and core features in minutes.
         </p>
       </div>
 
@@ -32,8 +35,8 @@ export default function QuickStartPage() {
       {/* Step 1 */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
-          <h2 className="text-2xl font-semibold">Assemble the Landing Page</h2>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
+          <h2 className="font-mono text-xl font-semibold">ASSEMBLE_LANDING_PAGE</h2>
         </div>
         <div>
           <p className="text-muted-foreground">
@@ -41,7 +44,7 @@ export default function QuickStartPage() {
             compose your landing page using our pre-built, accessible sections.
           </p>
           <p className="text-muted-foreground">
-            Update <code className="rounded bg-muted px-1 py-0.5">src/app/page.tsx</code>:
+            Update <code className="bg-muted px-1 py-0.5 font-mono">src/app/page.tsx</code>:
           </p>
         </div>
         <CodeBlock language="typescript" code={`import { Navigation } from "@/components/landing/navigation";
@@ -63,9 +66,9 @@ export default function HomePage() {
     </div>
   );
 }`} />
-        <div className="rounded-md bg-muted p-4">
-          <p className="text-sm text-foreground">
-            <strong>Why this matters:</strong> These components are fully responsive, accessible (ARIA compliant),
+        <div className="border border-border bg-card p-4">
+          <p className="font-mono text-sm text-foreground">
+            <strong>&gt; NOTE:</strong> These components are fully responsive, accessible (ARIA compliant),
             and optimized for Core Web Vitals out of the box.
           </p>
         </div>
@@ -74,30 +77,30 @@ export default function HomePage() {
       {/* Step 2 */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
-          <h2 className="text-2xl font-semibold">Customize Content & Branding</h2>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
+          <h2 className="font-mono text-xl font-semibold">CUSTOMIZE_CONTENT_BRANDING</h2>
         </div>
         <p className="text-muted-foreground">
-          Navigate to <code className="rounded bg-muted px-1 py-0.5">src/components/landing/</code> to customize each section.
+          Navigate to <code className="bg-muted px-1 py-0.5 font-mono">src/components/landing/</code> to customize each section.
           The components are built with Tailwind CSS, making them easy to style.
         </p>
         <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-          <li><code className="rounded bg-muted px-1 py-0.5">hero-section.tsx</code>: Update the H1, subheadline, and CTA.</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">features-section.tsx</code>: Highlight your product's unique value proposition.</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">pricing-section.tsx</code>: Define your pricing tiers (linked to Stripe).</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">hero-section.tsx</code>: Update the H1, subheadline, and CTA.</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">features-section.tsx</code>: Highlight your product's unique value proposition.</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">pricing-section.tsx</code>: Define your pricing tiers (linked to Stripe).</li>
         </ul>
       </div>
 
       {/* Step 3 */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
-          <h2 className="text-2xl font-semibold">Configure Application Metadata</h2>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
+          <h2 className="font-mono text-xl font-semibold">CONFIGURE_APP_METADATA</h2>
         </div>
         <div>
           <p className="text-muted-foreground">
             Fabrk centralizes configuration to avoid hardcoded values scattered across the codebase.
-            Open <code className="rounded bg-muted px-1 py-0.5">src/config.js</code>:
+            Open <code className="bg-muted px-1 py-0.5 font-mono">src/config.js</code>:
           </p>
         </div>
         <CodeBlock language="javascript" code={`const config = {
@@ -115,8 +118,8 @@ export default function HomePage() {
       {/* Step 4 (Optional) */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
-          <h2 className="text-2xl font-semibold">Enable Lead Capture (Optional)</h2>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
+          <h2 className="font-mono text-xl font-semibold">ENABLE_LEAD_CAPTURE</h2>
         </div>
         <div>
           <p className="text-muted-foreground">
@@ -134,8 +137,8 @@ import { WaitlistForm } from "@/components/waitlist-form";
       {/* Step 5 */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">5</span>
-          <h2 className="text-2xl font-semibold">Production Deployment</h2>
+          <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">5</span>
+          <h2 className="font-mono text-xl font-semibold">PRODUCTION_DEPLOYMENT</h2>
         </div>
         <div>
           <p className="text-muted-foreground">
@@ -152,7 +155,7 @@ git push origin main`} />
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">

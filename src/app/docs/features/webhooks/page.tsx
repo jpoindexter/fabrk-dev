@@ -14,15 +14,18 @@ export default function WebhooksPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Webhooks System</h1>
-        <p className="text-lg text-muted-foreground">
-          Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">WEBHOOKS_SYSTEM</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff.
         </p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             The webhooks system allows your application to send HTTP callbacks to external services when
             specific events occur. This is essential for integrating with third-party services, triggering
@@ -39,13 +42,13 @@ export default function WebhooksPage() {
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Event Types</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">EVENT_TYPES</h2>
           <p className="mb-4">
             Available webhook event types organized by category:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <h3 className="font-semibold mb-2">User Events</h3>
+              <h3 className="font-mono font-semibold mb-2">USER_EVENTS</h3>
               <ul className="list-disc pl-6 space-y-1 text-sm">
                 <li>user.created</li>
                 <li>user.updated</li>
@@ -54,7 +57,7 @@ export default function WebhooksPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Payment Events</h3>
+              <h3 className="font-mono font-semibold mb-2">PAYMENT_EVENTS</h3>
               <ul className="list-disc pl-6 space-y-1 text-sm">
                 <li>payment.completed</li>
                 <li>payment.failed</li>
@@ -63,7 +66,7 @@ export default function WebhooksPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Organization Events</h3>
+              <h3 className="font-mono font-semibold mb-2">ORGANIZATION_EVENTS</h3>
               <ul className="list-disc pl-6 space-y-1 text-sm">
                 <li>organization.created</li>
                 <li>organization.updated</li>
@@ -73,7 +76,7 @@ export default function WebhooksPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">System Events</h3>
+              <h3 className="font-mono font-semibold mb-2">SYSTEM_EVENTS</h3>
               <ul className="list-disc pl-6 space-y-1 text-sm">
                 <li>webhook.test</li>
                 <li>api_key.created</li>
@@ -86,7 +89,7 @@ export default function WebhooksPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Creating Webhooks</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CREATING_WEBHOOKS</h2>
           <p className="mb-4 text-muted-foreground">
             Register a webhook endpoint to receive events:
           </p>
@@ -129,7 +132,7 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Sending Webhooks</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SENDING_WEBHOOKS</h2>
           <p className="mb-4 text-muted-foreground">
             Trigger webhook deliveries from your application:
           </p>
@@ -211,7 +214,7 @@ await sendWebhook("user.created", {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Verifying Webhooks (Receiver Side)</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">VERIFYING_WEBHOOKS_RECEIVER_SIDE</h2>
           <p className="mb-4 text-muted-foreground">
             When receiving webhooks, always verify the signature:
           </p>
@@ -252,7 +255,7 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Retry Logic</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">RETRY_LOGIC</h2>
           <p className="mb-4 text-muted-foreground">
             Failed webhooks are automatically retried with exponential backoff:
           </p>
@@ -299,7 +302,7 @@ async function queueWebhookRetry(
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Security Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
             <li><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>

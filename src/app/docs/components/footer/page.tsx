@@ -10,26 +10,29 @@ export default function FooterComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Footer</h1>
-        <p className="mt-2 text-muted-foreground">
-          Footer components with links, branding, and legal information.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FOOTER_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Footer components with links, branding, and legal information.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Components</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Footer</code> - Landing page footer with link columns</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Logo</code> - Brand logo component</li>
-            <li><code className="text-sm bg-muted px-1 py-0.5 rounded">Separator</code> - Visual divider</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Footer</code> - Landing page footer with link columns</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Logo</code> - Brand logo component</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Separator</code> - Visual divider</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Examples</h2>
+          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Landing page footer
 import { Footer } from "@/components/landing/footer";
@@ -45,10 +48,10 @@ import { Separator } from "@/components/ui/separator";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Landing Page Footer</h3>
+          <h3 className="font-mono text-lg font-medium">LANDING_PAGE_FOOTER</h3>
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
 
 export default function LandingPage() {
@@ -73,7 +76,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Custom Footer</h3>
+          <h3 className="font-mono text-lg font-medium">CUSTOM_FOOTER</h3>
           <CodeBlock language="tsx" code={`import Link from "next/link";
 import { Logo } from "@/components/home/logo";
 import { Separator } from "@/components/ui/separator";
@@ -184,7 +187,7 @@ export function CustomFooter() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Simple Footer</h3>
+          <h3 className="font-mono text-lg font-medium">SIMPLE_FOOTER</h3>
           <CodeBlock language="tsx" code={`import Link from "next/link";
 
 export function SimpleFooter() {

@@ -14,15 +14,16 @@ export default function NotificationsPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Notifications System</h1>
-        <p className="text-lg text-muted-foreground">
-          Real-time notifications with database persistence, bell icon badge, and read/unread state management.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">NOTIFICATIONS_SYSTEM</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             The notifications system combines real-time delivery via Pusher with database persistence
             for a complete notification experience. Users receive instant notifications with a visual
@@ -39,7 +40,7 @@ export default function NotificationsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
           <p className="mb-4">
             Notification model in Prisma schema:
           </p>
@@ -67,7 +68,7 @@ model Notification {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Creating Notifications</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CREATING_NOTIFICATIONS</h2>
           <p className="mb-4">
             Send notifications from anywhere in your application:
           </p>
@@ -132,7 +133,7 @@ await createNotification({
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Bell Icon Component</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BELL_ICON_COMPONENT</h2>
           <p className="mb-4">
             The notification bell with real-time updates and dropdown:
           </p>
@@ -257,7 +258,7 @@ export function NotificationBell({ userId }: { userId: string }) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">API Routes</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">API_ROUTES</h2>
           <p className="mb-4">
             Notification management endpoints:
           </p>
@@ -318,7 +319,7 @@ export async function POST(req: Request) {
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Be selective:</strong> Only notify for important, actionable events</li>
             <li><strong>Clear titles:</strong> Make notifications scannable at a glance</li>

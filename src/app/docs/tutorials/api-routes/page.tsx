@@ -10,27 +10,28 @@ export default function ApiRoutesTutorialPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">API Routes</h1>
-        <p className="text-lg text-muted-foreground">
-          Create API endpoints with Next.js App Router and learn Fabrk's patterns.
-        </p>
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">API_ROUTES</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>
       </div>
 
       <Card>
         <CardContent className="p-6">
           <p className="text-muted-foreground">
             Fabrk uses Next.js 15 App Router for API routes. All routes are in{" "}
-            <code className="rounded bg-muted px-1 py-0.5">src/app/api/</code>.
+            <code className="bg-muted px-1 py-0.5 font-mono">src/app/api/</code>.
           </p>
         </CardContent>
       </Card>
 
       {/* Basic Route */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Creating a Basic Route</h2>
+        <h2 className="font-mono text-xl font-semibold">CREATING_A_BASIC_ROUTE</h2>
         <div>
           <p className="text-muted-foreground">
-            Create a new file at <code className="rounded bg-muted px-1 py-0.5">src/app/api/hello/route.ts</code>:
+            Create a new file at <code className="bg-muted px-1 py-0.5 font-mono">src/app/api/hello/route.ts</code>:
           </p>
         </div>
         <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
@@ -47,7 +48,7 @@ export async function POST(request: Request) {
 
       {/* Protected Route */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Protected API Route</h2>
+        <h2 className="font-mono text-xl font-semibold">PROTECTED_API_ROUTE</h2>
         <div>
           <p className="text-muted-foreground">
             Add authentication to your route:
@@ -80,7 +81,7 @@ export async function GET() {
 
       {/* Input Validation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Input Validation with Zod</h2>
+        <h2 className="font-mono text-xl font-semibold">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
           <p className="text-muted-foreground">
             Always validate input with Zod schemas:
@@ -120,7 +121,7 @@ export async function POST(request: Request) {
 
       {/* Database Access */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Database Access</h2>
+        <h2 className="font-mono text-xl font-semibold">DATABASE_ACCESS</h2>
         <div>
           <p className="text-muted-foreground">
             Use Prisma to interact with your database:
@@ -152,7 +153,7 @@ export async function GET() {
 
       {/* Error Handling Pattern */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Error Handling Pattern</h2>
+        <h2 className="font-mono text-xl font-semibold">ERROR_HANDLING_PATTERN</h2>
         <div>
           <p className="text-muted-foreground">
             Use this consistent error handling pattern:
@@ -182,16 +183,16 @@ export async function POST(request: Request) {
 
       {/* Status Codes */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">HTTP Status Codes</h2>
+        <h2 className="font-mono text-xl font-semibold">HTTP_STATUS_CODES</h2>
         <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-          <li><code className="rounded bg-muted px-1 py-0.5">200</code> - Success</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">201</code> - Created</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">400</code> - Bad request (invalid input)</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">401</code> - Unauthorized (not logged in)</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">403</code> - Forbidden (no permission)</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">404</code> - Not found</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">422</code> - Validation error</li>
-          <li><code className="rounded bg-muted px-1 py-0.5">500</code> - Server error</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">200</code> - Success</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">201</code> - Created</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">400</code> - Bad request (invalid input)</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">401</code> - Unauthorized (not logged in)</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">403</code> - Forbidden (no permission)</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">404</code> - Not found</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">422</code> - Validation error</li>
+          <li><code className="bg-muted px-1 py-0.5 font-mono">500</code> - Server error</li>
         </ul>
       </div>
     </div>

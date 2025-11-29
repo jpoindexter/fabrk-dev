@@ -11,9 +11,12 @@ export default function SecurityHeadersPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Security Headers</h1>
-        <p className="text-lg text-muted-foreground">
-          Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] HEADERS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">SECURITY_HEADERS</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more.
         </p>
       </div>
 
@@ -34,9 +37,9 @@ export default function SecurityHeadersPage() {
       {/* Next.js Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Next.js Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold">NEXTJS_CONFIGURATION</h2>
           <p className="text-muted-foreground">
-            Add security headers in <code className="rounded bg-muted px-1 py-0.5">next.config.js</code>:
+            Add security headers in <code className="font-mono bg-muted px-1 py-0.5">next.config.js</code>:
           </p>
         </div>
         <CodeBlock language="javascript" code={`// next.config.js
@@ -84,7 +87,7 @@ module.exports = nextConfig;`} />
       {/* Content Security Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Content Security Policy</h2>
+          <h2 className="font-mono text-xl font-semibold">CONTENT_SECURITY_POLICY</h2>
           <p className="text-muted-foreground">
             Configure a strict CSP to prevent XSS attacks:
           </p>
@@ -127,7 +130,7 @@ const nextConfig = {
       {/* Nonce-based CSP */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Nonce-based CSP</h2>
+          <h2 className="font-mono text-xl font-semibold">NONCE_BASED_CSP</h2>
           <p className="text-muted-foreground">
             Use nonces for stricter CSP without unsafe-inline:
           </p>
@@ -193,7 +196,7 @@ export default async function RootLayout({
       {/* HSTS Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">HSTS Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold">HSTS_CONFIGURATION</h2>
           <p className="text-muted-foreground">
             Enforce HTTPS with Strict-Transport-Security:
           </p>
@@ -222,7 +225,7 @@ export default async function RootLayout({
       {/* Permissions Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Permissions Policy</h2>
+          <h2 className="font-mono text-xl font-semibold">PERMISSIONS_POLICY</h2>
           <p className="text-muted-foreground">
             Control browser feature access:
           </p>
@@ -258,7 +261,7 @@ export default async function RootLayout({
       {/* Vercel Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Vercel Configuration</h2>
+          <h2 className="font-mono text-xl font-semibold">VERCEL_CONFIGURATION</h2>
           <p className="text-muted-foreground">
             Alternative: Configure headers in vercel.json:
           </p>
@@ -295,7 +298,7 @@ export default async function RootLayout({
       {/* Testing Headers */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Testing Headers</h2>
+          <h2 className="font-mono text-xl font-semibold">TESTING_HEADERS</h2>
           <p className="text-muted-foreground">
             Verify your security headers are working:
           </p>
@@ -314,7 +317,7 @@ curl -I https://yoursite.com
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">

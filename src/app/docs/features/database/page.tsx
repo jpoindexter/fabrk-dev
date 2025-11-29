@@ -11,14 +11,17 @@ export default function DatabasePage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Database with Prisma</h1>
-        <p className="text-lg text-muted-foreground">
-          Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x10] FEATURES ] DATABASE</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">DATABASE_PRISMA</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
         </p>
       </div>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Overview</h2>
+        <h2 className="font-mono text-xl font-semibold">OVERVIEW</h2>
         <Card>
           <CardContent className="pt-6">
             <p className="mb-4">
@@ -36,15 +39,15 @@ export default function DatabasePage() {
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold">CONFIGURATION</h2>
 
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
-            <h3 className="text-xl font-medium">Set Database URL</h3>
+            <span className="flex h-8 w-8 items-center justify-center bg-primary text-sm font-mono font-bold text-primary-foreground">1</span>
+            <h3 className="font-mono text-xl font-medium">SET_DATABASE_URL</h3>
           </div>
           <div>
-            <p className="text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 rounded">.env.local</code>:</p>
+            <p className="text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-2 py-1 font-mono">.env.local</code>:</p>
           </div>
           <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
@@ -55,8 +58,8 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
 
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
-            <h3 className="text-xl font-medium">Initialize Database</h3>
+            <span className="flex h-8 w-8 items-center justify-center bg-primary text-sm font-mono font-bold text-primary-foreground">2</span>
+            <h3 className="font-mono text-xl font-medium">INITIALIZE_DATABASE</h3>
           </div>
           <div>
             <p className="text-muted-foreground">Push the schema to your database:</p>
@@ -76,8 +79,8 @@ npm run db:reset`} />
 
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
-            <h3 className="text-xl font-medium">Prisma Studio</h3>
+            <span className="flex h-8 w-8 items-center justify-center bg-primary text-sm font-mono font-bold text-primary-foreground">3</span>
+            <h3 className="font-mono text-xl font-medium">PRISMA_STUDIO</h3>
           </div>
           <div>
             <p className="text-muted-foreground">Browse and edit data with the visual GUI:</p>
@@ -88,9 +91,9 @@ npm run db:reset`} />
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Core Models</h2>
+        <h2 className="font-mono text-xl font-semibold">CORE_MODELS</h2>
         <div>
-          <p className="text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-2 py-1 rounded">prisma/schema.prisma</code>:</p>
+          <p className="text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-2 py-1 font-mono">prisma/schema.prisma</code>:</p>
         </div>
         <CodeBlock language="prisma" code={`// Authentication
 model User {
@@ -152,12 +155,12 @@ model OrganizationMember {
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">Code Examples</h2>
+        <h2 className="font-mono text-xl font-semibold">CODE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">Database Client</h3>
+          <h3 className="font-mono text-xl font-medium">DATABASE_CLIENT</h3>
           <div>
-            <p className="text-muted-foreground">Use the singleton client from <code className="bg-muted px-2 py-1 rounded">src/lib/db/index.ts</code>:</p>
+            <p className="text-muted-foreground">Use the singleton client from <code className="bg-muted px-2 py-1 font-mono">src/lib/db/index.ts</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
 
@@ -188,7 +191,7 @@ const newUser = await prisma.user.create({
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">API Route Queries</h3>
+          <h3 className="font-mono text-xl font-medium">API_ROUTE_QUERIES</h3>
           <div>
             <p className="text-muted-foreground">Use Prisma in API routes:</p>
           </div>
@@ -219,7 +222,7 @@ export async function GET() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">Transactions</h3>
+          <h3 className="font-mono text-xl font-medium">TRANSACTIONS</h3>
           <div>
             <p className="text-muted-foreground">Use transactions for atomic operations:</p>
           </div>
@@ -251,7 +254,7 @@ const result = await prisma.$transaction(async (tx) => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xl font-medium">Pagination</h3>
+          <h3 className="font-mono text-xl font-medium">PAGINATION</h3>
           <div>
             <p className="text-muted-foreground">Implement cursor-based pagination:</p>
           </div>
@@ -273,9 +276,9 @@ return { data, nextCursor, hasNextPage };`} />
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Migrations</h2>
+        <h2 className="font-mono text-xl font-semibold">MIGRATIONS</h2>
         <div>
-          <p className="text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-2 py-1 rounded">db:push</code>:</p>
+          <p className="text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-2 py-1 font-mono">db:push</code>:</p>
         </div>
         <CodeBlock language="bash" code={`# Create a new migration
 npm run db:migrate -- --name add_user_preferences
@@ -288,40 +291,40 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Common Use Cases</h2>
+        <h2 className="font-mono text-xl font-semibold">COMMON_USE_CASES</h2>
         <div className="grid gap-4">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">User Profile Updates</h3>
+              <h3 className="font-mono font-semibold mb-2">USER_PROFILE_UPDATES</h3>
               <p className="text-muted-foreground">
-                Update user data with validation. Use <code className="bg-muted px-1 rounded">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
+                Update user data with validation. Use <code className="bg-muted px-1 font-mono">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Soft Deletes</h3>
+              <h3 className="font-mono font-semibold mb-2">SOFT_DELETES</h3>
               <p className="text-muted-foreground">
-                Add <code className="bg-muted px-1 rounded">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 rounded">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
+                Add <code className="bg-muted px-1 font-mono">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 font-mono">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Full-Text Search</h3>
+              <h3 className="font-mono font-semibold mb-2">FULL_TEXT_SEARCH</h3>
               <p className="text-muted-foreground">
-                Use Prisma's full-text search with PostgreSQL: <code className="bg-muted px-1 rounded">where: {'{'} name: {'{'} search: "query" {'}'} {'}'}</code> for searching user names or content.
+                Use Prisma's full-text search with PostgreSQL: <code className="bg-muted px-1 font-mono">where: {'{'} name: {'{'} search: "query" {'}'} {'}'}</code> for searching user names or content.
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Aggregations</h3>
+              <h3 className="font-mono font-semibold mb-2">AGGREGATIONS</h3>
               <p className="text-muted-foreground">
-                Calculate totals with <code className="bg-muted px-1 rounded">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
+                Calculate totals with <code className="bg-muted px-1 font-mono">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
               </p>
             </CardContent>
           </Card>
@@ -329,16 +332,16 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="pt-6">
             <ul className="list-disc pl-6 space-y-2">
-              <li>Always use the singleton client from <code className="bg-muted px-1 rounded">@/lib/db</code></li>
-              <li>Use <code className="bg-muted px-1 rounded">select</code> to fetch only needed fields</li>
+              <li>Always use the singleton client from <code className="bg-muted px-1 font-mono">@/lib/db</code></li>
+              <li>Use <code className="bg-muted px-1 font-mono">select</code> to fetch only needed fields</li>
               <li>Add indexes for frequently queried fields</li>
               <li>Use transactions for multi-step operations</li>
-              <li>Never expose sensitive fields like <code className="bg-muted px-1 rounded">password</code> in API responses</li>
-              <li>Use migrations in production, <code className="bg-muted px-1 rounded">db:push</code> only in development</li>
+              <li>Never expose sensitive fields like <code className="bg-muted px-1 font-mono">password</code> in API responses</li>
+              <li>Use migrations in production, <code className="bg-muted px-1 font-mono">db:push</code> only in development</li>
               <li>Set up connection pooling for production (PgBouncer)</li>
             </ul>
           </CardContent>

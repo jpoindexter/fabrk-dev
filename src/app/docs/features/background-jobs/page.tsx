@@ -14,15 +14,18 @@ export default function BackgroundJobsPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Background Jobs</h1>
-        <p className="text-lg text-muted-foreground">
-          Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] BACKGROUND_JOBS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">BACKGROUND_JOBS</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
         </p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             Background jobs allow you to offload time-consuming tasks from your API routes
             to dedicated workers. This improves response times and provides better reliability
@@ -40,7 +43,7 @@ export default function BackgroundJobsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
           <p className="mb-4 text-muted-foreground">
             Job model in Prisma schema:
           </p>
@@ -74,7 +77,7 @@ model Job {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Job Queue Service</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">JOB_QUEUE_SERVICE</h2>
           <p className="mb-4 text-muted-foreground">
             Core service for managing job queues:
           </p>
@@ -196,7 +199,7 @@ export async function failJob(
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Worker Implementation</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">WORKER_IMPLEMENTATION</h2>
           <p className="mb-4 text-muted-foreground">
             Create workers to process jobs:
           </p>
@@ -275,7 +278,7 @@ processJobs(process.env.QUEUE || "default");`} />
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Email Worker</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">EMAIL_WORKER</h2>
           <p className="mb-4 text-muted-foreground">
             Dedicated worker for processing email queue:
           </p>
@@ -343,14 +346,14 @@ function sleep(ms: number) {
 processEmailQueue();`} />
         <div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Run the email worker with: <code>npm run email:dev</code>
+            Run the email worker with: <code className="font-mono">npm run email:dev</code>
           </p>
         </div>
       </div>
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Queueing Jobs</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">QUEUEING_JOBS</h2>
           <p className="mb-4 text-muted-foreground">
             Queue jobs from your API routes:
           </p>
@@ -411,7 +414,7 @@ await enqueueJob(
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Running Workers</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">RUNNING_WORKERS</h2>
           <p className="mb-4 text-muted-foreground">
             Start workers for different queues:
           </p>
@@ -453,7 +456,7 @@ services:
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Keep payloads small:</strong> Store IDs and fetch data in the worker</li>
             <li><strong>Make jobs idempotent:</strong> Safe to retry without side effects</li>

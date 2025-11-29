@@ -11,9 +11,12 @@ export default function SchemaValidationPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Schema Validation</h1>
-        <p className="text-lg text-muted-foreground">
-          Validate all inputs with Zod schemas for type-safe, secure data handling.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] VALIDATION</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">SCHEMA_VALIDATION</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Validate all inputs with Zod schemas for type-safe, secure data handling.
         </p>
       </div>
 
@@ -34,7 +37,7 @@ export default function SchemaValidationPage() {
       {/* Basic Zod Schema */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Basic Zod Schema</h2>
+          <h2 className="font-mono text-xl font-semibold">BASIC_ZOD_SCHEMA</h2>
           <p className="text-muted-foreground">
             Define schemas to validate data:
           </p>
@@ -68,7 +71,7 @@ export type UserInput = z.infer<typeof userSchema>;`} />
       {/* API Route Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">API Route Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">API_ROUTE_VALIDATION</h2>
           <p className="text-muted-foreground">
             Validate request bodies in API routes:
           </p>
@@ -120,7 +123,7 @@ export async function POST(request: NextRequest) {
       {/* Common Validation Patterns */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Common Validation Patterns</h2>
+          <h2 className="font-mono text-xl font-semibold">COMMON_VALIDATION_PATTERNS</h2>
           <p className="text-muted-foreground">
             Reusable validation patterns for common fields:
           </p>
@@ -176,7 +179,7 @@ export const sortSchema = z.object({
       {/* Form Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Form Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">FORM_VALIDATION</h2>
           <p className="text-muted-foreground">
             Use schemas with react-hook-form:
           </p>
@@ -241,7 +244,7 @@ export function ContactForm() {
       {/* Query Parameter Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Query Parameter Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">QUERY_PARAMETER_VALIDATION</h2>
           <p className="text-muted-foreground">
             Validate URL search params:
           </p>
@@ -284,7 +287,7 @@ export async function GET(request: NextRequest) {
       {/* Environment Variable Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Environment Variable Validation</h2>
+          <h2 className="font-mono text-xl font-semibold">ENVIRONMENT_VARIABLE_VALIDATION</h2>
           <p className="text-muted-foreground">
             Validate environment variables at startup:
           </p>
@@ -324,7 +327,7 @@ export const env = parsed.data;`} />
       {/* Custom Transformations */}
       <div className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold">Custom Transformations</h2>
+          <h2 className="font-mono text-xl font-semibold">CUSTOM_TRANSFORMATIONS</h2>
           <p className="text-muted-foreground">
             Transform and sanitize data during validation:
           </p>
@@ -367,7 +370,7 @@ const userInputSchema = z.object({
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">

@@ -12,16 +12,19 @@ export default function TrialPage() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Free Trials</h1>
-        <p className="text-lg text-muted-foreground">
-          Let users try your product before they buy with time-limited trials.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] TRIAL</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FREE_TRIAL_SYSTEM</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Let users try your product before they buy with time-limited trials.
         </p>
       </div>
 
       {/* What is a Trial - Plain English */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">What is a Free Trial?</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">WHAT_IS_A_FREE_TRIAL</h2>
           <p className="text-muted-foreground">
             A free trial lets potential customers use your product for a limited time before
             paying. It&apos;s like test-driving a car before buying it.
@@ -37,10 +40,10 @@ export default function TrialPage() {
       {/* Why Use Trials */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Why Offer Trials?</h2>
+          <h2 className="font-mono text-xl font-semibold text-foreground">WHY_OFFER_TRIALS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-medium">Benefits</h3>
+              <h3 className="font-mono font-medium">BENEFITS</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li>Lower barrier to signup (no credit card upfront)</li>
                 <li>Users experience value before paying</li>
@@ -49,7 +52,7 @@ export default function TrialPage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-medium">Common Trial Lengths</h3>
+              <h3 className="font-mono font-medium">COMMON_TRIAL_LENGTHS</h3>
               <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
                 <li><strong>7 days:</strong> Quick-value products</li>
                 <li><strong>14 days:</strong> Most SaaS (recommended)</li>
@@ -62,42 +65,42 @@ export default function TrialPage() {
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">How Fabrk Trials Work</h2>
+        <h2 className="font-mono text-xl font-semibold">HOW_FABRK_TRIALS_WORK</h2>
         <div className="space-y-3">
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">1</span>
-              <h3 className="font-semibold">User Starts Trial</h3>
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
+              <h3 className="font-mono font-semibold">USER_STARTS_TRIAL</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </div>
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">2</span>
-              <h3 className="font-semibold">Trial Banner Shows</h3>
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
+              <h3 className="font-mono font-semibold">TRIAL_BANNER_SHOWS</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               While on trial, users see a banner showing how many days are left. This creates
               gentle urgency without being annoying.
             </p>
           </div>
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">3</span>
-              <h3 className="font-semibold">Urgency Near End</h3>
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
+              <h3 className="font-mono font-semibold">URGENCY_NEAR_END</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               When trial is almost over (last 3 days), the banner becomes more prominent.
               Users are prompted to subscribe before losing access.
             </p>
           </div>
-          <div className="rounded-lg border bg-muted p-4">
+          <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">4</span>
-              <h3 className="font-semibold">Trial Expires</h3>
+              <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
+              <h3 className="font-mono font-semibold">TRIAL_EXPIRES</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               When trial ends, users can no longer access premium features. They see a message
@@ -110,9 +113,9 @@ export default function TrialPage() {
 
       {/* Configuration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Configuration</h2>
+        <h2 className="font-mono text-xl font-semibold">CONFIGURATION</h2>
         <p className="text-muted-foreground">
-          Configure trial settings in <code className="rounded bg-muted px-1">src/config.js</code>:
+          Configure trial settings in <code className="bg-muted px-1 font-mono">src/config.js</code>:
         </p>
         <CodeBlock language="javascript" code={`// src/config.js
 
@@ -139,36 +142,36 @@ export const config = {
 
       {/* Trial Banner */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Trial Banner</h2>
+        <h2 className="font-mono text-xl font-semibold">TRIAL_BANNER</h2>
         <p className="text-muted-foreground">
           Fabrk includes a trial banner component that automatically shows for trial users.
         </p>
         <Card>
           <CardContent className="p-6">
-            <h3 className="font-semibold mb-3">Banner States</h3>
+            <h3 className="font-mono font-semibold mb-3">BANNER_STATES</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-green-600"></div>
                 <div>
                   <p className="text-sm font-medium">Plenty of time (8+ days)</p>
                   <p className="text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-yellow-600"></div>
                 <div>
                   <p className="text-sm font-medium">Running low (4-7 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-red-600"></div>
                 <div>
                   <p className="text-sm font-medium">Urgent (1-3 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-gray-600"></div>
                 <div>
                   <p className="text-sm font-medium">Expired</p>
@@ -182,9 +185,9 @@ export const config = {
 
       {/* Code Examples */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Code Reference</h2>
+        <h2 className="font-mono text-xl font-semibold">CODE_REFERENCE</h2>
 
-        <h3 className="font-semibold">Check if User is on Trial</h3>
+        <h3 className="font-mono font-semibold">CHECK_IF_USER_IS_ON_TRIAL</h3>
         <p className="text-muted-foreground">
           Use these helpers to check trial status:
         </p>
@@ -207,7 +210,7 @@ const expired = hasTrialExpired(user.trialEndsAt);
 // Check if user already used their trial (prevents abuse)
 const usedTrial = hasUsedTrial(user);`} />
 
-        <h3 className="font-semibold mt-6">Protect Premium Features</h3>
+        <h3 className="font-mono font-semibold mt-6">PROTECT_PREMIUM_FEATURES</h3>
         <p className="text-muted-foreground">
           Block access when trial expires:
         </p>
@@ -243,7 +246,7 @@ export async function GET() {
   return NextResponse.json({ data: "..." });
 }`} />
 
-        <h3 className="font-semibold mt-6">Using the Trial Banner</h3>
+        <h3 className="font-mono font-semibold mt-6">USING_THE_TRIAL_BANNER</h3>
         <p className="text-muted-foreground">
           Add the banner to your dashboard layout:
         </p>
@@ -261,7 +264,7 @@ export default function DashboardLayout({ children }) {
 
       {/* Stripe Integration */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Stripe Trial Integration</h2>
+        <h2 className="font-mono text-xl font-semibold">STRIPE_TRIAL_INTEGRATION</h2>
         <p className="text-muted-foreground">
           If you require credit card upfront, Stripe handles the trial automatically:
         </p>
@@ -284,7 +287,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Best Practices */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Best Practices</h2>
+        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
         <Card>
           <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
@@ -315,9 +318,9 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Common Questions</h2>
+        <h2 className="font-mono text-xl font-semibold">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?
             </summary>
@@ -329,7 +332,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               What happens to user data when trial expires?
             </summary>
@@ -341,7 +344,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Should I require a credit card for trials?
             </summary>
@@ -354,13 +357,13 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="rounded-lg border bg-muted">
+          <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How do I extend someone&apos;s trial?
             </summary>
             <div className="border-t p-4 text-sm text-muted-foreground">
               <p>
-                Update the user&apos;s <code className="rounded bg-muted px-1">trialEndsAt</code> field
+                Update the user&apos;s <code className="bg-muted px-1 font-mono">trialEndsAt</code> field
                 in the database to a future date. You can also do this via Stripe if using their
                 trial system.
               </p>
@@ -371,12 +374,12 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Payments</h3>
+                <h3 className="font-mono font-semibold">PAYMENTS</h3>
                 <p className="text-sm text-muted-foreground">
                   Set up Stripe to handle trial-to-paid conversion.
                 </p>
@@ -386,7 +389,7 @@ const subscription = await stripe.subscriptions.create({
           <Link href="/docs/features/emails">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
-                <h3 className="font-semibold">Email Reminders</h3>
+                <h3 className="font-mono font-semibold">EMAIL_REMINDERS</h3>
                 <p className="text-sm text-muted-foreground">
                   Send trial reminder emails to increase conversion.
                 </p>

@@ -14,15 +14,18 @@ export default function FeatureFlagsPage() {
         <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
-        <h1 className="text-4xl font-bold mb-4">Feature Flags</h1>
-        <p className="text-lg text-muted-foreground">
-          Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FEATURE_FLAGS</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
         </p>
       </div>
 
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
           <p className="mb-4">
             Feature flags allow you to control feature visibility without deploying new code.
             Use them for gradual rollouts, A/B testing, user targeting, and kill switches.
@@ -38,7 +41,7 @@ export default function FeatureFlagsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Database Schema</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
           <p className="mb-4 text-muted-foreground">
             Feature flag model in Prisma schema:
           </p>
@@ -73,7 +76,7 @@ model FeatureFlag {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Feature Flag Service</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">FEATURE_FLAG_SERVICE</h2>
           <p className="mb-4 text-muted-foreground">
             Core service for checking feature flags:
           </p>
@@ -156,7 +159,7 @@ export async function getFeatureFlags(context: FlagContext = {}) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Server-Side Usage</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">SERVER_SIDE_USAGE</h2>
           <p className="mb-4 text-muted-foreground">
             Check feature flags in API routes and server components:
           </p>
@@ -211,7 +214,7 @@ export default async function DashboardPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Client-Side Usage</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">CLIENT_SIDE_USAGE</h2>
           <p className="mb-4 text-muted-foreground">
             Use feature flags in client components with a React hook:
           </p>
@@ -290,7 +293,7 @@ export function NewFeature() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="text-2xl font-semibold mb-4">Admin Management</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">ADMIN_MANAGEMENT</h2>
           <p className="mb-4 text-muted-foreground">
             API routes for managing feature flags:
           </p>
@@ -364,9 +367,9 @@ export async function POST(
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Use descriptive keys:</strong> <code>new-checkout-flow</code> not <code>flag1</code></li>
+            <li><strong>Use descriptive keys:</strong> <code className="font-mono">new-checkout-flow</code> not <code className="font-mono">flag1</code></li>
             <li><strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>
             <li><strong>Add kill switches:</strong> Every major feature should have a flag</li>
             <li><strong>Clean up old flags:</strong> Remove flags once features are fully rolled out</li>

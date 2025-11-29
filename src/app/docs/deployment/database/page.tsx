@@ -11,9 +11,12 @@ export default function DatabaseSetupPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Database Setup</h1>
-        <p className="text-lg text-muted-foreground">
-          Set up a production PostgreSQL database with Prisma ORM.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">DATABASE_SETUP</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Set up a production PostgreSQL database with Prisma ORM.
         </p>
       </div>
 
@@ -32,7 +35,7 @@ export default function DatabaseSetupPage() {
 
       {/* Supabase Setup (Recommended) */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Supabase Setup (Recommended)</h2>
+        <h2 className="font-mono text-xl font-semibold">SUPABASE_SETUP (Recommended)</h2>
         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
           <li>
             Go to{" "}
@@ -66,7 +69,7 @@ DATABASE_URL="your-connection-string"`} />
 
       {/* Neon Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Neon Setup</h2>
+        <h2 className="font-mono text-xl font-semibold">NEON_SETUP</h2>
         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
           <li>
             Sign up at{" "}
@@ -91,7 +94,7 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
 
       {/* Railway Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Railway Setup</h2>
+        <h2 className="font-mono text-xl font-semibold">RAILWAY_SETUP</h2>
         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
           <li>
             Sign up at{" "}
@@ -113,7 +116,7 @@ DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`
 
       {/* Initialize Database */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Initialize Database</h2>
+        <h2 className="font-mono text-xl font-semibold">INITIALIZE_DATABASE</h2>
         <p className="text-muted-foreground">
           After setting DATABASE_URL, run these commands:
         </p>
@@ -132,7 +135,7 @@ npm run db:studio`} />
 
       {/* Connection Pooling */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Connection Pooling</h2>
+        <h2 className="font-mono text-xl font-semibold">CONNECTION_POOLING</h2>
         <p className="text-muted-foreground">
           Essential for serverless deployments (Vercel):
         </p>
@@ -162,9 +165,9 @@ datasource db {
 
       {/* Prisma Schema */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Prisma Schema Overview</h2>
+        <h2 className="font-mono text-xl font-semibold">PRISMA_SCHEMA_OVERVIEW</h2>
         <p className="text-muted-foreground">
-          Key models in <code className="rounded bg-muted px-1 py-0.5">prisma/schema.prisma</code>:
+          Key models in <code className="font-mono bg-muted px-1 py-0.5">prisma/schema.prisma</code>:
         </p>
         <CodeBlock language="prisma" code={`// Core authentication
 model User {
@@ -221,7 +224,7 @@ model FeatureFlag {
 
       {/* Database Migrations */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Database Migrations</h2>
+        <h2 className="font-mono text-xl font-semibold">DATABASE_MIGRATIONS</h2>
         <p className="text-muted-foreground">
           Managing schema changes in production:
         </p>
@@ -246,7 +249,7 @@ npm run db:reset`} />
 
       {/* Seeding Data */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Seeding Data</h2>
+        <h2 className="font-mono text-xl font-semibold">SEEDING_DATA</h2>
         <p className="text-muted-foreground">
           Populate database with test data:
         </p>
@@ -301,7 +304,7 @@ npm run db:seed`} />
 
       {/* Backups */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Database Backups</h2>
+        <h2 className="font-mono text-xl font-semibold">DATABASE_BACKUPS</h2>
         <p className="text-muted-foreground">
           Each provider handles backups differently:
         </p>
@@ -329,29 +332,29 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
 
       {/* Performance Tips */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Performance Tips</h2>
+        <h2 className="font-mono text-xl font-semibold">PERFORMANCE_TIPS</h2>
         <ul className="list-inside list-disc space-y-3 text-muted-foreground">
           <li>
             <strong>Add indexes</strong> - Index frequently queried columns:{" "}
-            <code className="rounded bg-muted px-1">@@index([userId, createdAt])</code>
+            <code className="font-mono bg-muted px-1">@@index([userId, createdAt])</code>
           </li>
           <li>
             <strong>Use select</strong> - Only fetch needed fields:{" "}
-            <code className="rounded bg-muted px-1">prisma.user.findMany({"{"} select: {"{"} id: true, name: true {"}"} {"}"})</code>
+            <code className="font-mono bg-muted px-1">prisma.user.findMany({"{"} select: {"{"} id: true, name: true {"}"} {"}"})</code>
           </li>
           <li>
             <strong>Batch operations</strong> - Use createMany/updateMany for multiple records
           </li>
           <li>
             <strong>Enable logging</strong> - Debug slow queries:{" "}
-            <code className="rounded bg-muted px-1">new PrismaClient({"{"} log: ["query"] {"}"})</code>
+            <code className="font-mono bg-muted px-1">new PrismaClient({"{"} log: ["query"] {"}"})</code>
           </li>
         </ul>
       </div>
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Next Steps</h2>
+        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">
             <Card className="h-full transition-all hover:border-primary/50">
