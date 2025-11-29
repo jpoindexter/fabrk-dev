@@ -161,7 +161,7 @@ const navigation = [
     title: "[0xB0] RESOURCES",
     items: [
       { title: "GITHUB_REPO", href: "https://github.com/jpoindexter/fabrk-boilerplate", icon: ExternalLink, external: true },
-      { title: "SUPPORT", href: "mailto:support@fabrk.dev", icon: Mail, external: true },
+      { title: "SUPPORT", href: "/contact", icon: Mail },
     ],
   },
 ];
