@@ -12,8 +12,8 @@ interface LogoProps {
 export function LogoAlt({ size = 20, className = "" }: LogoProps = {}) {
   return (
     <div className="inline-flex items-center gap-3">
-      {/* Custom F Icon - Brutalist geometric design */}
-      <div className="relative h-10 w-10 -rotate-6 rounded-brutal border-4 border-foreground bg-primary shadow-brutal transition-all hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1 hover:rotate-0">
+      {/* Custom F Icon - Geometric design */}
+      <div className="relative h-10 w-10 -rotate-6 rounded-md border-2 border-foreground bg-primary shadow-sm transition-all hover:shadow hover:-translate-y-0.5 hover:rotate-0">
         <svg
           viewBox="0 0 40 40"
           fill="none"

@@ -338,7 +338,7 @@ export default function OrganizationSettingsPage() {
 
       {/* Danger Zone (Owner Only) */}
       {organization.role === "OWNER" && (
-        <Card className="rounded-md border border-destructive shadow-brutal">
+        <Card className="rounded-md border border-destructive shadow-sm">
           <CardHeader>
             <CardTitle className="text-destructive">Danger Zone</CardTitle>
             <CardDescription>
@@ -346,7 +346,7 @@ export default function OrganizationSettingsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-start justify-between rounded-brutal border border-destructive bg-destructive/10 p-4">
+            <div className="flex items-start justify-between rounded-md border border-destructive bg-destructive/10 p-4">
               <div className="flex-1">
                 <h4 className="font-medium">Delete Organization</h4>
                 <p className="mt-1 text-sm text-muted-foreground">

@@ -161,14 +161,14 @@ export function TeamActivityFeed({
                     <div key={activity.id} className="relative flex gap-4 group">
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
-                        <Avatar className="h-10 w-10 border-2 border-brutal shadow-brutal-sm">
+                        <Avatar className="h-10 w-10 border border-border shadow-sm">
                           <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
                             {getInitials(activity.user.name)}
                           </AvatarFallback>
                         </Avatar>
                         <div
                           className={cn(
-                            "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-brutal",
+                            "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border border-border",
                             config.bgColor
                           )}
                         >

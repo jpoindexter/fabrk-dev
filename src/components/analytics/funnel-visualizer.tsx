@@ -136,7 +136,7 @@ export function FunnelVisualizer({
         })}
 
         {/* Overall Conversion */}
-        <div className="pt-4 border-t-2 border-brutal">
+        <div className="pt-4 border-t border-border">
           <div className="flex items-center justify-between rounded-md bg-accent/50 p-4">
             <span className="text-sm font-medium text-foreground">Overall Conversion Rate</span>
             <span className="text-2xl font-black text-primary">

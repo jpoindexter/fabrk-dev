@@ -228,9 +228,9 @@ export function DashboardHeader() {
                       href="/admin"
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 rounded-brutal border-2 border-brutal px-4 py-3 text-sm font-medium transition-all",
+                        "flex items-center gap-3 rounded-md border border-border px-4 py-3 text-sm font-medium transition-all",
                         pathname.startsWith("/admin")
-                          ? "bg-primary text-primary-foreground shadow-brutal"
+                          ? "bg-primary text-primary-foreground shadow-sm"
                           : "bg-card hover:bg-accent hover:text-accent-foreground"
                       )}
                     >
