@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Square, PanelRight, MessageSquare, Command } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Modal Components - Fabrk Docs",
@@ -8,107 +12,23 @@ export const metadata = {
 
 export default function ModalsComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] MODALS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">MODAL_COMPONENTS</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
-          &gt; Modal components for dialogs, sheets, popovers, and alerts.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Dialog</code> - Modal dialog for forms and confirmations</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AlertDialog</code> - Confirmation dialog for destructive actions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Sheet</code> - Slide-out panel from edge of screen</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Popover</code> - Floating content triggered by button</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Command</code> - Command palette for search and actions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ContextMenu</code> - Right-click context menu</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Toast</code> - Notification toasts</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <CodeBlock language="typescript" code={`// Dialog
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
-// Alert Dialog
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
-// Sheet (slide-out panel)
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
-// Popover
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
-// Command palette
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-
-// Context menu
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-
-// Toast
-import { useToast } from "@/components/ui/use-toast";
-import { Toaster } from "@/components/ui/toaster";`} />
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">DIALOG</h3>
-          <CodeBlock language="tsx" code={`import {
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Modal_Components"
+      description="Modal components for dialogs, sheets, popovers, and alerts."
+      overview="7 overlay components including dialogs, alert dialogs, sheets, popovers, command palette, context menus, and toast notifications. All with focus management and keyboard navigation."
+      features={[
+        { icon: Square, title: "Dialog", description: "Modal dialogs for forms." },
+        { icon: PanelRight, title: "Sheet", description: "Slide-out side panels." },
+        { icon: MessageSquare, title: "Popover", description: "Floating triggered content." },
+        { icon: Command, title: "Command", description: "Searchable command palette." },
+      ]}
+      usage={[
+        {
+          title: "Dialog",
+          description: "Modal dialog for forms and confirmations",
+          code: `import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -131,21 +51,13 @@ export function EditProfileDialog() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
+            <Label htmlFor="name" className="text-right">Name</Label>
             <Input id="name" defaultValue="John Doe" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" defaultValue="@johndoe" className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
@@ -154,12 +66,13 @@ export function EditProfileDialog() {
       </DialogContent>
     </Dialog>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">ALERT_DIALOG_CONFIRMATION</h3>
-          <CodeBlock language="tsx" code={`import {
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Alert Dialog",
+          description: "Confirmation dialog for destructive actions",
+          code: `import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -188,19 +101,18 @@ export function DeleteConfirmation() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction className="bg-destructive">
-            Delete
-          </AlertDialogAction>
+          <AlertDialogAction className="bg-destructive">Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">SHEET_SLIDE_OUT_PANEL</h3>
-          <CodeBlock language="tsx" code={`import {
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Sheet (Slide-Out Panel)",
+          description: "Side panel that slides in from edge",
+          code: `import {
   Sheet,
   SheetContent,
   SheetDescription,
@@ -219,9 +131,7 @@ export function SettingsSheet() {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Settings</SheetTitle>
-          <SheetDescription>
-            Configure your preferences here.
-          </SheetDescription>
+          <SheetDescription>Configure your preferences here.</SheetDescription>
         </SheetHeader>
         <div className="py-4">
           {/* Settings content */}
@@ -234,44 +144,13 @@ export function SettingsSheet() {
 // Sheet sides: "top" | "right" | "bottom" | "left"
 <SheetContent side="left">
   {/* Content slides in from left */}
-</SheetContent>`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">POPOVER</h3>
-          <CodeBlock language="tsx" code={`import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-
-export function NotificationPopover() {
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="View notifications">
-          <Bell className="h-4 w-4" aria-hidden="true" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-80">
-        <div className="space-y-4">
-          <h4 className="font-medium">Notifications</h4>
-          <div className="space-y-2">
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-              You have 3 unread messages
-            </p>
-          </div>
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">COMMAND_PALETTE</h3>
-          <CodeBlock language="tsx" code={`import {
+</SheetContent>`,
+          language: "tsx",
+        },
+        {
+          title: "Command Palette",
+          description: "Searchable command menu (Cmd+K)",
+          code: `import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -308,12 +187,13 @@ export function CommandMenu() {
       </CommandList>
     </CommandDialog>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TOAST_NOTIFICATIONS</h3>
-          <CodeBlock language="tsx" code={`import { useToast } from "@/components/ui/use-toast";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Toast Notifications",
+          description: "Toast messages with useToast hook",
+          code: `import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 
 export function ToastExample() {
@@ -340,15 +220,6 @@ toast({
   variant: "destructive",
 });
 
-// With action
-toast({
-  title: "Event created",
-  description: "Your event has been scheduled.",
-  action: (
-    <ToastAction altText="Undo">Undo</ToastAction>
-  ),
-});
-
 // Don't forget to add Toaster to your layout
 import { Toaster } from "@/components/ui/toaster";
 
@@ -359,9 +230,49 @@ export default function Layout({ children }) {
       <Toaster />
     </>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Charts", href: "/docs/components/charts" }}
+      next={{ title: "Uploads", href: "/docs/components/uploads" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Dialog</code> - Modal dialog for forms and confirmations</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">AlertDialog</code> - Confirmation dialog for destructive actions</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Sheet</code> - Slide-out panel from edge of screen</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Popover</code> - Floating content triggered by button</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Command</code> - Command palette for search and actions</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">ContextMenu</code> - Right-click context menu</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">Toast</code> - Notification toasts</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/uploads">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Uploads</h3>
+                <p className={docsTypography.body}>File and image upload components</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/navigation">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Navigation</h3>
+                <p className={docsTypography.body}>Menus, tabs, breadcrumbs</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

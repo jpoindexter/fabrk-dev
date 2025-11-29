@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { MousePointer, Palette, Maximize, Loader } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Button Components - Fabrk Docs",
@@ -8,44 +12,23 @@ export const metadata = {
 
 export default function ButtonsComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BUTTON_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Button components with multiple variants, sizes, and states.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_VARIANTS</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">default</code> - Primary button with solid background</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">secondary</code> - Secondary style with muted background</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">outline</code> - Bordered button with transparent background</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ghost</code> - Minimal button, background on hover</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">link</code> - Styled as a link</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">destructive</code> - For dangerous actions (delete, etc.)</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLE</h2>
-        </div>
-        <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_VARIANTS</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Button_Components"
+      description="Button components with multiple variants, sizes, and states."
+      overview="6 button variants (default, secondary, outline, ghost, link, destructive), 4 sizes (sm, default, lg, icon), loading states, and icon support."
+      features={[
+        { icon: Palette, title: "6 Variants", description: "Default, secondary, outline, ghost, link, destructive." },
+        { icon: Maximize, title: "4 Sizes", description: "Small, default, large, icon." },
+        { icon: Loader, title: "Loading", description: "Built-in loading state." },
+        { icon: MousePointer, title: "asChild", description: "Render as link or custom element." },
+      ]}
+      usage={[
+        {
+          title: "Button Variants",
+          description: "All available button variants",
+          code: `import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
   return (
@@ -58,12 +41,13 @@ export function ButtonVariants() {
       <Button variant="destructive">Destructive</Button>
     </div>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_SIZES</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Button Sizes",
+          description: "Different button sizes",
+          code: `import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
   return (
@@ -76,13 +60,14 @@ export function ButtonSizes() {
       </Button>
     </div>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_WITH_ICON</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
-import { Mail, ArrowRight, Loader2 } from "lucide-react";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Button with Icon",
+          description: "Add icons before or after text",
+          code: `import { Button } from "@/components/ui/button";
+import { Mail, ArrowRight } from "lucide-react";
 
 export function ButtonWithIcon() {
   return (
@@ -105,12 +90,13 @@ export function ButtonWithIcon() {
       </Button>
     </div>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">LOADING_STATE</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Loading State",
+          description: "Show loading indicator during async operations",
+          code: `import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
 export function LoadingButton() {
@@ -122,12 +108,13 @@ export function LoadingButton() {
       {isLoading ? "Processing..." : "Submit"}
     </Button>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_AS_LINK</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Button as Link",
+          description: "Use asChild to render as a Next.js Link",
+          code: `import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function ButtonAsLink() {
@@ -146,12 +133,13 @@ export function ButtonAsLink() {
       </Button>
     </>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_GROUP</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Button Group",
+          description: "Create grouped buttons",
+          code: `import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
   return (
@@ -167,36 +155,48 @@ export function ButtonGroup() {
       </Button>
     </div>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Overview", href: "/docs/components/overview" }}
+      next={{ title: "Forms", href: "/docs/components/forms" }}
+    >
+      {/* Available Variants */}
+      <DocsSection title="Available Variants">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">default</code> - Primary button with solid background</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">secondary</code> - Secondary style with muted background</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">outline</code> - Bordered button with transparent background</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">ghost</code> - Minimal button, background on hover</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">link</code> - Styled as a link</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">destructive</code> - For dangerous actions (delete, etc.)</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/forms">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Forms</h3>
+                <p className={docsTypography.body}>Input components for forms</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/modals">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Modals</h3>
+                <p className={docsTypography.body}>Dialogs and overlays</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">FULL_WIDTH_BUTTON</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
-
-export function FullWidthButton() {
-  return (
-    <Button className="w-full">
-      Create Account
-    </Button>
-  );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">DISABLED_STATE</h3>
-          <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
-
-export function DisabledButton() {
-  return (
-    <div className="flex gap-4">
-      <Button disabled>Disabled</Button>
-      <Button variant="outline" disabled>Disabled Outline</Button>
-    </div>
-  );
-}`} />
-        </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
