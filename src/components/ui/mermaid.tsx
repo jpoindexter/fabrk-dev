@@ -8,6 +8,16 @@ interface MermaidProps {
   className?: string;
 }
 
+// Mermaid.js requires hex colors - these are fallbacks when CSS variables can't be read
+// They match the design system's dark theme colors
+const MERMAID_FALLBACK_COLORS = {
+  primary: "hsl(259 60% 60%)", // --primary
+  foreground: "hsl(0 0% 98%)", // --foreground (dark)
+  background: "hsl(254 15% 8%)", // --background (dark)
+  card: "hsl(254 20% 10%)", // --card (dark)
+  muted: "hsl(254 15% 20%)", // --muted (dark)
+} as const;
+
 function getThemeColors() {
   if (typeof window === "undefined") return null;
 
@@ -22,28 +32,45 @@ function getThemeColors() {
   };
 
   // For mermaid, we need hex colors, so we'll read from a canvas
-  const oklchToHex = (oklchValue: string): string => {
-    if (!oklchValue) return "#ec4899"; // fallback pink
+  const oklchToHex = (oklchValue: string, fallback: string): string => {
+    if (!oklchValue) return hslToHex(fallback);
     try {
       const canvas = document.createElement("canvas");
       canvas.width = 1;
       canvas.height = 1;
       const ctx = canvas.getContext("2d");
-      if (!ctx) return "#ec4899";
+      if (!ctx) return hslToHex(fallback);
       ctx.fillStyle = oklchValue;
       ctx.fillRect(0, 0, 1, 1);
       const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
       return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
     } catch {
-      return "#ec4899";
+      return hslToHex(fallback);
     }
   };
 
-  const primary = oklchToHex(getCssVar("--primary") || "");
-  const background = oklchToHex(getCssVar("--background") || "");
-  const card = oklchToHex(getCssVar("--card") || "");
-  const foreground = oklchToHex(getCssVar("--foreground") || "");
-  const muted = oklchToHex(getCssVar("--muted") || "");
+  // Convert HSL string to hex
+  function hslToHex(hsl: string): string {
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1;
+      canvas.height = 1;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return "#6366f1"; // fallback primary
+      ctx.fillStyle = hsl;
+      ctx.fillRect(0, 0, 1, 1);
+      const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+      return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+    } catch {
+      return "#6366f1"; // fallback primary
+    }
+  }
+
+  const primary = oklchToHex(getCssVar("--primary") || "", MERMAID_FALLBACK_COLORS.primary);
+  const background = oklchToHex(getCssVar("--background") || "", MERMAID_FALLBACK_COLORS.background);
+  const card = oklchToHex(getCssVar("--card") || "", MERMAID_FALLBACK_COLORS.card);
+  const foreground = oklchToHex(getCssVar("--foreground") || "", MERMAID_FALLBACK_COLORS.foreground);
+  const muted = oklchToHex(getCssVar("--muted") || "", MERMAID_FALLBACK_COLORS.muted);
 
   return { primary, background, card, foreground, muted };
 }
@@ -73,24 +100,31 @@ export function Mermaid({ chart, className }: MermaidProps) {
   useEffect(() => {
     const colors = getThemeColors();
 
+    // Default colors when running on server or colors not available
+    const defaultPrimary = "#6366f1";
+    const defaultForeground = "#fafafa";
+    const defaultBackground = "#0a0a0a";
+    const defaultCard = "#171717";
+    const defaultMuted = "#262626";
+
     mermaid.initialize({
       startOnLoad: false,
       theme: "base",
       themeVariables: {
-        primaryColor: colors?.primary || "#ec4899",
-        primaryTextColor: colors?.foreground || "#fff",
-        primaryBorderColor: colors?.primary || "#ec4899",
-        lineColor: colors?.primary || "#ec4899",
-        secondaryColor: colors?.muted || "#1e1e2e",
-        tertiaryColor: colors?.muted || "#1e1e2e",
-        background: colors?.background || "#0d0d0d",
-        mainBkg: colors?.card || "#1e1e2e",
-        secondBkg: colors?.card || "#1e1e2e",
-        nodeBorder: colors?.primary || "#ec4899",
-        clusterBkg: colors?.card || "#1e1e2e",
-        clusterBorder: colors?.primary || "#ec4899",
-        edgeLabelBackground: colors?.card || "#1e1e2e",
-        textColor: colors?.foreground || "#fff",
+        primaryColor: colors?.primary || defaultPrimary,
+        primaryTextColor: colors?.foreground || defaultForeground,
+        primaryBorderColor: colors?.primary || defaultPrimary,
+        lineColor: colors?.primary || defaultPrimary,
+        secondaryColor: colors?.muted || defaultMuted,
+        tertiaryColor: colors?.muted || defaultMuted,
+        background: colors?.background || defaultBackground,
+        mainBkg: colors?.card || defaultCard,
+        secondBkg: colors?.card || defaultCard,
+        nodeBorder: colors?.primary || defaultPrimary,
+        clusterBkg: colors?.card || defaultCard,
+        clusterBorder: colors?.primary || defaultPrimary,
+        edgeLabelBackground: colors?.card || defaultCard,
+        textColor: colors?.foreground || defaultForeground,
       },
       flowchart: {
         htmlLabels: true,
