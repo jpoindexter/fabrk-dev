@@ -114,7 +114,7 @@ export default function CookieConsentPage() {
         <Card>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-start gap-3 p-3 bg-muted/50">
                 <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
                 <div>
                   <p className="font-medium">Necessary (Always On)</p>
@@ -124,7 +124,7 @@ export default function CookieConsentPage() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-start gap-3 p-3 bg-muted/50">
                 <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
                 <div>
                   <p className="font-medium">Preferences</p>
@@ -133,7 +133,7 @@ export default function CookieConsentPage() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-start gap-3 p-3 bg-muted/50">
                 <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
                 <div>
                   <p className="font-medium">Statistics</p>
@@ -143,7 +143,7 @@ export default function CookieConsentPage() {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+              <div className="flex items-start gap-3 p-3 bg-muted/50">
                 <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
                 <div>
                   <p className="font-medium">Marketing</p>
