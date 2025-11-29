@@ -68,7 +68,7 @@ export default function ArchitecturePage() {
                 <div className="grid gap-2 md:grid-cols-2">
                     <Card className="rounded-none">
                         <CardContent className="p-6">
-                            <h3 className="font-mono text-base font-semibold mb-2">Authentication & Security</h3>
+                            <h3 className="font-mono text-base font-semibold text-foreground mb-2">Authentication & Security</h3>
                             <p className="font-mono text-sm text-muted-foreground mb-3">
                                 Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
                                 but can be database-persisted for strict session management.
@@ -83,7 +83,7 @@ export default function ArchitecturePage() {
 
                     <Card className="rounded-none">
                         <CardContent className="p-6">
-                            <h3 className="font-mono text-base font-semibold mb-2">Database Layer</h3>
+                            <h3 className="font-mono text-base font-semibold text-foreground mb-2">Database Layer</h3>
                             <p className="font-mono text-sm text-muted-foreground mb-3">
                                 Prisma ORM provides a type-safe interface to PostgreSQL.
                                 We use a "Service Layer" pattern to abstract database logic from UI components.
@@ -107,7 +107,7 @@ export default function ArchitecturePage() {
                 </p>
 
                 <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold">Mutation Flow (Server Actions)</h3>
+                    <h3 className="font-mono text-base font-semibold text-foreground">Mutation Flow (Server Actions)</h3>
                     <p className="font-mono text-sm text-muted-foreground leading-relaxed">Example of a typical server action flow:</p>
                     <div className="[&>div]:rounded-none">
                         <CodeBlock language="typescript" code={`// 1. Client invokes action

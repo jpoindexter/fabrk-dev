@@ -44,7 +44,7 @@ export default function ButtonsComponentsPage() {
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BUTTON_VARIANTS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
@@ -62,7 +62,7 @@ export function ButtonVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BUTTON_SIZES</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_SIZES</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
@@ -80,7 +80,7 @@ export function ButtonSizes() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BUTTON_WITH_ICON</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_WITH_ICON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight, Loader2 } from "lucide-react";
 
@@ -109,7 +109,7 @@ export function ButtonWithIcon() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">LOADING_STATE</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">LOADING_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -126,7 +126,7 @@ export function LoadingButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BUTTON_AS_LINK</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_AS_LINK</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -150,7 +150,7 @@ export function ButtonAsLink() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BUTTON_GROUP</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUTTON_GROUP</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
@@ -171,7 +171,7 @@ export function ButtonGroup() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">FULL_WIDTH_BUTTON</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">FULL_WIDTH_BUTTON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function FullWidthButton() {
@@ -184,7 +184,7 @@ export function FullWidthButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DISABLED_STATE</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DISABLED_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function DisabledButton() {

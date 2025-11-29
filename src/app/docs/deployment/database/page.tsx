@@ -22,7 +22,7 @@ export default function DatabaseSetupPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">Database Providers</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">Database Providers</h3>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ Supabase - Free tier, great DX (recommended)</li>
             <li>├─ Neon - Serverless PostgreSQL with branching</li>
@@ -338,7 +338,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
           <Link href="/docs/deployment/vercel">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Deploy to Vercel</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Deploy to Vercel</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Deploy with your database configured
                 </p>
@@ -348,7 +348,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
           <Link href="/docs/security/audit-logging">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Audit Logging</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Audit Logging</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Track database operations
                 </p>

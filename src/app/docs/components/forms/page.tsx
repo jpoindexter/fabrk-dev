@@ -86,7 +86,7 @@ import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BASIC_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BASIC_INPUT</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -105,7 +105,7 @@ export function BasicInput() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">PASSWORD_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">PASSWORD_INPUT</h3>
           <CodeBlock language="tsx" code={`import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
 
@@ -124,7 +124,7 @@ export function PasswordInput() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">SELECT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SELECT</h3>
           <CodeBlock language="tsx" code={`import {
   Select,
   SelectContent,
@@ -155,7 +155,7 @@ export function SelectExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">CHECKBOX_AND_SWITCH</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CHECKBOX_AND_SWITCH</h3>
           <CodeBlock language="tsx" code={`import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -180,7 +180,7 @@ export function ToggleInputs() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DATE_PICKER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DATE_PICKER</h3>
           <CodeBlock language="tsx" code={`import { DatePicker } from "@/components/ui/date-picker";
 import { Label } from "@/components/ui/label";
 
@@ -197,7 +197,7 @@ export function DatePickerExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">COMPLETE_FORM</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">COMPLETE_FORM</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
@@ -243,7 +243,7 @@ export function SignupForm() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">OTP_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">OTP_INPUT</h3>
           <CodeBlock language="tsx" code={`import { InputOTP } from "@/components/ui/input-otp";
 
 export function OTPInput() {

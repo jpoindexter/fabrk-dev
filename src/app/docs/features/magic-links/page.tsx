@@ -47,7 +47,7 @@ export default function MagicLinksPage() {
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-base font-semibold">ENABLE_MAGIC_LINKS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">ENABLE_MAGIC_LINKS</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -63,7 +63,7 @@ export default function MagicLinksPage() {
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-base font-semibold">CONFIGURE_EMAIL</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CONFIGURE_EMAIL</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -76,7 +76,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-base font-semibold">TOKEN_SETTINGS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">TOKEN_SETTINGS</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -94,7 +94,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-base font-semibold mb-3">REQUEST_MAGIC_LINK_API</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">REQUEST_MAGIC_LINK_API</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Create the API endpoint at <code className="font-mono bg-muted px-2 py-1">/api/auth/magic-link</code>:</p>
@@ -156,7 +156,7 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">VERIFY_MAGIC_LINK</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">VERIFY_MAGIC_LINK</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Handle link verification at <code className="font-mono bg-muted px-2 py-1">/api/auth/verify</code>:</p>
@@ -232,7 +232,7 @@ export async function GET(request: Request) {
 }`} />
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">MAGIC_LINK_REQUEST_FORM</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">MAGIC_LINK_REQUEST_FORM</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Client-side form component:</p>
@@ -274,7 +274,7 @@ export function MagicLinkForm() {
   if (sent) {
     return (
       <div className="text-center py-8">
-        <h3 className="font-mono text-base font-semibold mb-2">Check your email</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-2">Check your email</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           We sent a magic link to <strong>{email}</strong>
         </p>
@@ -302,7 +302,7 @@ export function MagicLinkForm() {
 }`} />
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">MAGIC_LINK_EMAIL_TEMPLATE</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">MAGIC_LINK_EMAIL_TEMPLATE</h3>
         <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Create the email template:</p>
@@ -361,7 +361,7 @@ export default function MagicLinkEmail({
         <div className="grid gap-4">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Passwordless Primary Auth</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Passwordless Primary Auth</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Use magic links as the primary authentication method. Great for apps where security matters but password fatigue is a concern.
               </p>
@@ -370,7 +370,7 @@ export default function MagicLinkEmail({
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Secondary Sign-In Option</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Secondary Sign-In Option</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Offer alongside password auth with "Forgot password? Sign in with email instead" for users who prefer passwordless.
               </p>
@@ -379,7 +379,7 @@ export default function MagicLinkEmail({
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Account Recovery</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Account Recovery</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Use magic links for account recovery when users forget their password, without requiring a separate password reset flow.
               </p>
@@ -388,7 +388,7 @@ export default function MagicLinkEmail({
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Invite-Based Onboarding</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Invite-Based Onboarding</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Send magic link invites to new team members. They click the link to join without setting up credentials first.
               </p>

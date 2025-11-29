@@ -168,7 +168,7 @@ git push origin main`} />
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Setup Authentication</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Setup Authentication</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Configure Google OAuth and secure sessions
                 </p>
@@ -178,7 +178,7 @@ git push origin main`} />
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Configure Payments</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Configure Payments</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Connect Stripe for subscriptions
                 </p>

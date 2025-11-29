@@ -17,7 +17,7 @@ export default function CSRFProtectionPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">What's Included</h3>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ Automatic CSRF protection for NextAuth routes</li>
             <li>├─ Double-submit cookie pattern</li>
@@ -297,7 +297,7 @@ export function useSecureApi() {
           <Link href="/docs/security/headers">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Security Headers</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Security Headers</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Configure HSTS, CSP, and other headers
                 </p>
@@ -307,7 +307,7 @@ export function useSecureApi() {
           <Link href="/docs/security/validation">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Schema Validation</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Schema Validation</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Validate all inputs with Zod schemas
                 </p>

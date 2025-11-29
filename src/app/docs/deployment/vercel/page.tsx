@@ -224,7 +224,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         <h2 className="font-mono text-lg font-bold text-primary">TROUBLESHOOTING</h2>
 
         <div className="space-y-2">
-          <h3 className="font-mono text-base font-semibold">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
           <p className="font-mono text-sm text-muted-foreground">
             Add <code className="bg-muted px-1 font-mono">prisma generate</code> to build command:
           </p>
@@ -252,7 +252,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         </Card>
 
         <div className="space-y-2">
-          <h3 className="font-mono text-base font-semibold">DATABASE_CONNECTION_TIMEOUT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DATABASE_CONNECTION_TIMEOUT</h3>
           <p className="font-mono text-sm text-muted-foreground">
             Use connection pooling (like Supabase Pooler or PgBouncer):
           </p>
@@ -269,7 +269,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
           <Link href="/docs/deployment/environment">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">ENVIRONMENT_VARIABLES</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">ENVIRONMENT_VARIABLES</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Complete environment setup guide
                 </p>
@@ -279,7 +279,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
           <Link href="/docs/deployment/database">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">DATABASE_SETUP</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">DATABASE_SETUP</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Set up production PostgreSQL
                 </p>

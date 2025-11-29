@@ -76,7 +76,7 @@ import {
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">LANDING_NAVIGATION</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">LANDING_NAVIGATION</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { Navigation } from "@/components/landing/navigation";
 
@@ -92,7 +92,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BREADCRUMB</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BREADCRUMB</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {
   Breadcrumb,
@@ -126,7 +126,7 @@ export function PageBreadcrumb() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DROPDOWN_MENU</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DROPDOWN_MENU</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {
   DropdownMenu,

@@ -44,7 +44,7 @@ export default function DatabasePage() {
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-            <h3 className="font-mono text-base font-semibold">SET_DATABASE_URL</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">SET_DATABASE_URL</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:</p>
           <div className="[&>div]:rounded-none">
@@ -59,7 +59,7 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-            <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">INITIALIZE_DATABASE</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">Push the schema to your database:</p>
           <div className="[&>div]:rounded-none">
@@ -80,7 +80,7 @@ npm run db:reset`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-            <h3 className="font-mono text-base font-semibold">PRISMA_STUDIO</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">PRISMA_STUDIO</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">Browse and edit data with the visual GUI:</p>
           <div className="[&>div]:rounded-none">
@@ -158,7 +158,7 @@ model OrganizationMember {
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DATABASE_CLIENT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DATABASE_CLIENT</h3>
           <p className="font-mono text-sm text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-xs">src/lib/db/index.ts</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
@@ -191,7 +191,7 @@ const newUser = await prisma.user.create({
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">API_ROUTE_QUERIES</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">API_ROUTE_QUERIES</h3>
           <p className="font-mono text-sm text-muted-foreground">Use Prisma in API routes:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`// src/app/api/v1/users/route.ts
@@ -222,7 +222,7 @@ export async function GET() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">TRANSACTIONS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">TRANSACTIONS</h3>
           <p className="font-mono text-sm text-muted-foreground">Use transactions for atomic operations:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`// Transfer ownership atomically
@@ -254,7 +254,7 @@ const result = await prisma.$transaction(async (tx) => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">PAGINATION</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">PAGINATION</h3>
           <p className="font-mono text-sm text-muted-foreground">Implement cursor-based pagination:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`const pageSize = 20;
@@ -295,7 +295,7 @@ npx prisma migrate status`} />
         <div className="grid gap-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">USER_PROFILE_UPDATES</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">USER_PROFILE_UPDATES</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Update user data with validation. Use <code className="bg-muted px-1 font-mono">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
               </p>
@@ -304,7 +304,7 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">SOFT_DELETES</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">SOFT_DELETES</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Add <code className="bg-muted px-1 font-mono">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 font-mono">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
               </p>
@@ -313,7 +313,7 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">FULL_TEXT_SEARCH</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">FULL_TEXT_SEARCH</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Use Prisma&apos;s full-text search with PostgreSQL: <code className="bg-muted px-1 font-mono">where: {'{'} name: {'{'} search: &quot;query&quot; {'}'} {'}'}</code> for searching user names or content.
               </p>
@@ -322,7 +322,7 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">AGGREGATIONS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">AGGREGATIONS</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Calculate totals with <code className="bg-muted px-1 font-mono">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
               </p>

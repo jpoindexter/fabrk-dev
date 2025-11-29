@@ -22,7 +22,7 @@ export default function EnvironmentVariablesPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">Key Points</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">Key Points</h3>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ All variables are validated at startup with Zod</li>
             <li>├─ Client-side variables must start with NEXT_PUBLIC_</li>
@@ -317,7 +317,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
           <Link href="/docs/deployment/database">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Database Setup</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Database Setup</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Set up production PostgreSQL
                 </p>
@@ -327,7 +327,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
           <Link href="/docs/deployment/vercel">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Deploy to Vercel</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Deploy to Vercel</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Deploy your configured app
                 </p>

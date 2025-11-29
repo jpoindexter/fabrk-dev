@@ -188,7 +188,7 @@ model OrganizationInvite {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-base font-semibold mb-3">CREATE_ORGANIZATION</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">CREATE_ORGANIZATION</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">API endpoint to create a new organization:</p>
@@ -272,7 +272,7 @@ export async function GET() {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">INVITE_MEMBERS</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">INVITE_MEMBERS</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Send team invitations:</p>
@@ -351,7 +351,7 @@ export async function POST(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">ACCEPT_INVITATION</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">ACCEPT_INVITATION</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Handle invite acceptance:</p>
@@ -408,7 +408,7 @@ export async function POST(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Reusable permission checking:</p>
@@ -469,7 +469,7 @@ export async function DELETE(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
         <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Client-side organization context:</p>
@@ -550,7 +550,7 @@ function TeamPage() {
         <div className="grid gap-4">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">TEAM_WORKSPACES</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">TEAM_WORKSPACES</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Each organization has its own workspace with projects, files, or data. Members see only their organization's content.
               </p>
@@ -559,7 +559,7 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">PER_SEAT_BILLING</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">PER_SEAT_BILLING</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Charge based on organization member count. Track seats in Stripe metadata and update on member changes.
               </p>
@@ -568,7 +568,7 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">ADMIN_DASHBOARD</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">ADMIN_DASHBOARD</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Give admins a dashboard to manage members, view activity, and configure organization settings.
               </p>
@@ -577,7 +577,7 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">SSO_SAML_INTEGRATION</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.
               </p>

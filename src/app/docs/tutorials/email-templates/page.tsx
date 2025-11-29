@@ -22,7 +22,7 @@ export default function EmailTemplatesTutorialPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">What's Included</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Resend API integration for reliable email delivery</div>
             <div>├─ Lightweight HTML templates for maximum performance</div>
@@ -322,7 +322,7 @@ await sendOrganizationInvite("newmember@example.com", {
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Authentication</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Authentication</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Set up email verification and password reset
                 </p>
@@ -332,7 +332,7 @@ await sendOrganizationInvite("newmember@example.com", {
           <Link href="/docs/tutorials/stripe-payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Stripe Payments</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Stripe Payments</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Send purchase confirmation emails
                 </p>

@@ -43,7 +43,7 @@ export default function GoogleOAuthPage() {
 
         <div className="flex items-center gap-2">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-base font-semibold">CREATE_GOOGLE_CLOUD_PROJECT</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CREATE_GOOGLE_CLOUD_PROJECT</h3>
         </div>
         <ol className="font-mono text-sm text-muted-foreground space-y-1 pl-6">
           <li>1. Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
@@ -62,7 +62,7 @@ export default function GoogleOAuthPage() {
 
         <div className="flex items-center gap-2 mt-4">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-base font-semibold">CREATE_OAUTH_CREDENTIALS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CREATE_OAUTH_CREDENTIALS</h3>
         </div>
         <ol className="font-mono text-sm text-muted-foreground space-y-1 pl-6">
           <li>1. Go to APIs &amp; Services → Credentials</li>
@@ -85,7 +85,7 @@ export default function GoogleOAuthPage() {
 
         <div className="flex items-center gap-2 mt-4">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-base font-semibold">SET_ENVIRONMENT_VARIABLES</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SET_ENVIRONMENT_VARIABLES</h3>
         </div>
         <div className="space-y-4">
           <p className="font-mono text-sm text-muted-foreground">Add to <code className="font-mono bg-muted px-1 text-xs">.env.local</code>:</p>
@@ -102,7 +102,7 @@ GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
       <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-base font-semibold">AUTH_CONFIGURATION</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground">AUTH_CONFIGURATION</h3>
         <p className="font-mono text-sm text-muted-foreground">Google provider is configured in <code className="font-mono bg-muted px-1 text-xs">src/lib/auth.ts</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/lib/auth.ts

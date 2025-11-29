@@ -47,7 +47,7 @@ export default function EmailsPage() {
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-base font-semibold">SET_UP_RESEND</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SET_UP_RESEND</h3>
         </div>
         <p className="font-mono text-sm text-muted-foreground mb-3">
           Add your Resend API key to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
@@ -59,7 +59,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
         <div className="flex items-center gap-2 mb-3 mt-6">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-base font-semibold">CONFIGURE_DOMAIN</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CONFIGURE_DOMAIN</h3>
         </div>
         <Card className="rounded-none mb-6">
           <CardContent className="p-6">
@@ -75,7 +75,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-base font-semibold">START_EMAIL_WORKER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">START_EMAIL_WORKER</h3>
         </div>
         <p className="font-mono text-sm text-muted-foreground mb-3">
           For queued emails, run the worker:
@@ -138,7 +138,7 @@ export function generateWelcomeEmailHTML({
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-base font-semibold mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">For immediate delivery (verification, password reset):</p>
@@ -160,7 +160,7 @@ await sendResetEmail({
   resetUrl: \`\${config.app.url}/reset-password?token=\${token}\`,
 });`} />
 
-        <h3 className="font-mono text-base font-semibold mb-3">QUEUED_SENDING_TRANSACTIONAL</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">QUEUED_SENDING_TRANSACTIONAL</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">For non-urgent emails (welcome, receipts):</p>
@@ -184,7 +184,7 @@ await queueConfirmationEmail({
   receiptUrl: payment.receiptUrl,
 });`} />
 
-        <h3 className="font-mono text-base font-semibold mb-3">CUSTOM_EMAIL_SENDING</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">CUSTOM_EMAIL_SENDING</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Send any HTML content:</p>
@@ -202,7 +202,7 @@ await resend.emails.send({
   html: "<h1>Hello World</h1><p>This is a custom email.</p>",
 });`} />
 
-        <h3 className="font-mono text-base font-semibold mb-3">BATCH_SENDING</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">BATCH_SENDING</h3>
         <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">Send to multiple recipients:</p>
@@ -231,7 +231,7 @@ await resend.batch.send(emails);`} />
         <div className="grid gap-4">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">User Onboarding Sequence</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">User Onboarding Sequence</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Queue a series of welcome emails with delays: Day 1 welcome, Day 3 tips, Day 7 feature highlight. Use the job queue for scheduling.
               </p>
@@ -240,7 +240,7 @@ await resend.batch.send(emails);`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Organization Invites</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Organization Invites</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Send branded invite emails with accept/decline links. Include inviter name and organization details for context.
               </p>
@@ -249,7 +249,7 @@ await resend.batch.send(emails);`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Payment Receipts</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Payment Receipts</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Automatic receipt emails triggered by Stripe webhooks. Include amount, product details, and link to invoice PDF.
               </p>
@@ -258,7 +258,7 @@ await resend.batch.send(emails);`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">Activity Notifications</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">Activity Notifications</h3>
               <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                 Notify users of important events: new team member joined, project updated, comment received. Respect notification preferences.
               </p>

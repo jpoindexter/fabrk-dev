@@ -22,7 +22,7 @@ export default function ThemingPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">Theme System</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">Theme System</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>20 Color Themes:</strong> Inspired by{" "}
               <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -382,7 +382,7 @@ export function MyNavbar() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-              <h3 className="font-mono text-base font-semibold">ADD_CSS_IN_GLOBALS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">ADD_CSS_IN_GLOBALS</h3>
             </div>
           </div>
           <div className="[&>div]:rounded-none">
@@ -399,7 +399,7 @@ export function MyNavbar() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-              <h3 className="font-mono text-base font-semibold">ADD_TO_THEME_DROPDOWN</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">ADD_TO_THEME_DROPDOWN</h3>
             </div>
           </div>
           <div className="[&>div]:rounded-none">
@@ -487,7 +487,7 @@ export function MyNavbar() {
           <Link href="/docs/components">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">UI Components</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">UI Components</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   All components use semantic colors and adapt to themes
                 </p>
@@ -497,7 +497,7 @@ export function MyNavbar() {
           <Link href="/docs/extras/testing">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Testing</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Testing</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Test your app across different themes and modes
                 </p>

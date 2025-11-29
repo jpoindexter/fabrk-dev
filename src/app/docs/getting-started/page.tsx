@@ -82,7 +82,7 @@ export default function GettingStartedPage() {
           ].map((item) => (
             <Card key={item.title} className="rounded-none">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold mb-2">{item.title}</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground mb-2">{item.title}</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </CardContent>
             </Card>
@@ -129,7 +129,7 @@ npm run db:push && npm run dev`}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
-            <h3 className="font-mono text-base font-semibold">CHECK_YOUR_SYSTEM</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">CHECK_YOUR_SYSTEM</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Make sure you have Node.js installed:
@@ -146,7 +146,7 @@ npm run db:push && npm run dev`}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
-            <h3 className="font-mono text-base font-semibold">DOWNLOAD_FABRK</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">DOWNLOAD_FABRK</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Clone the Fabrk code. Replace &quot;my-saas&quot; with your project name:
@@ -161,7 +161,7 @@ cd my-saas`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
-            <h3 className="font-mono text-base font-semibold">INSTALL_DEPENDENCIES</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">INSTALL_DEPENDENCIES</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Download all required libraries (1-2 min):
@@ -175,7 +175,7 @@ cd my-saas`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">4</span>
-            <h3 className="font-mono text-base font-semibold">CREATE_CONFIG_FILE</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">CREATE_CONFIG_FILE</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Create your private settings file:
@@ -189,7 +189,7 @@ cd my-saas`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">5</span>
-            <h3 className="font-mono text-base font-semibold">SETUP_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">SETUP_DATABASE</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             You need a PostgreSQL database. Easiest options:
@@ -211,7 +211,7 @@ cd my-saas`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">6</span>
-            <h3 className="font-mono text-base font-semibold">CONFIGURE_SETTINGS</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">CONFIGURE_SETTINGS</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Add required values to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
@@ -230,7 +230,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">7</span>
-            <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">INITIALIZE_DATABASE</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Create the database tables:
@@ -244,7 +244,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">8</span>
-            <h3 className="font-mono text-base font-semibold">START_YOUR_APP</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">START_YOUR_APP</h3>
           </div>
           <p className="font-mono text-sm text-muted-foreground">
             Start the development server:

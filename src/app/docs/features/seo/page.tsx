@@ -42,7 +42,7 @@ export default function SEOPage() {
 
         <div className="flex items-center gap-3 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-base font-semibold">UPDATE_CENTRAL_CONFIG</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">UPDATE_CENTRAL_CONFIG</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -64,7 +64,7 @@ export default function SEOPage() {
 
         <div className="flex items-center gap-3 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-base font-semibold">ROOT_LAYOUT_METADATA</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">ROOT_LAYOUT_METADATA</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -100,7 +100,7 @@ export const metadata = {
 
         <div className="flex items-center gap-3 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-base font-semibold">PAGE_SPECIFIC_METADATA</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">PAGE_SPECIFIC_METADATA</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -127,7 +127,7 @@ export default function PricingPage() {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-base font-semibold mb-3">DYNAMIC_METADATA</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">DYNAMIC_METADATA</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Generate metadata based on dynamic content:</p>
@@ -156,7 +156,7 @@ export async function generateMetadata({ params }) {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">JSON_LD_STRUCTURED_DATA</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">JSON_LD_STRUCTURED_DATA</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Add structured data for rich search results:</p>
@@ -187,7 +187,7 @@ export function generateOrganizationSchema() {
           </div>
         </div>
 
-        <h3 className="font-mono text-base font-semibold mb-3">SITEMAP_GENERATION</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground mb-3">SITEMAP_GENERATION</h3>
         <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Automatic sitemap at <code className="bg-muted px-1 font-mono text-xs">/sitemap.xml</code>:</p>
@@ -225,7 +225,7 @@ export default async function sitemap() {
         <div className="grid gap-4">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">LANDING_PAGE_SEO</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">LANDING_PAGE_SEO</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
               </p>
@@ -234,7 +234,7 @@ export default async function sitemap() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">BLOG_POST_OPTIMIZATION</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">BLOG_POST_OPTIMIZATION</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
               </p>
@@ -243,7 +243,7 @@ export default async function sitemap() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">PRODUCT_PAGES</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">PRODUCT_PAGES</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
               </p>
@@ -252,7 +252,7 @@ export default async function sitemap() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-base font-semibold mb-2">LOCALIZED_CONTENT</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground mb-2">LOCALIZED_CONTENT</h3>
               <p className="font-mono text-sm text-muted-foreground">
                 Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
               </p>

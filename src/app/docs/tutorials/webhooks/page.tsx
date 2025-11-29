@@ -22,7 +22,7 @@ export default function WebhooksTutorialPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">WHAT'S_INCLUDED</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">WHAT'S_INCLUDED</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ 22 webhook event types across 5 categories</div>
             <div>├─ HMAC-SHA256 signature verification</div>
@@ -280,7 +280,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">API_ROUTES</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">API_ROUTES</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Build more API endpoints
                 </p>
@@ -290,7 +290,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
           <Link href="/docs/tutorials/stripe-payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">STRIPE_PAYMENTS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">STRIPE_PAYMENTS</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Trigger payment webhooks
                 </p>

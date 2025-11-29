@@ -107,7 +107,7 @@ import { Toaster } from "@/components/ui/toaster";`} />
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DIALOG</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DIALOG</h3>
           <CodeBlock language="tsx" code={`import {
   Dialog,
   DialogContent,
@@ -158,7 +158,7 @@ export function EditProfileDialog() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">ALERT_DIALOG_CONFIRMATION</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">ALERT_DIALOG_CONFIRMATION</h3>
           <CodeBlock language="tsx" code={`import {
   AlertDialog,
   AlertDialogAction,
@@ -199,7 +199,7 @@ export function DeleteConfirmation() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">SHEET_SLIDE_OUT_PANEL</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SHEET_SLIDE_OUT_PANEL</h3>
           <CodeBlock language="tsx" code={`import {
   Sheet,
   SheetContent,
@@ -238,7 +238,7 @@ export function SettingsSheet() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">POPOVER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">POPOVER</h3>
           <CodeBlock language="tsx" code={`import {
   Popover,
   PopoverContent,
@@ -270,7 +270,7 @@ export function NotificationPopover() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">COMMAND_PALETTE</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">COMMAND_PALETTE</h3>
           <CodeBlock language="tsx" code={`import {
   CommandDialog,
   CommandEmpty,
@@ -312,7 +312,7 @@ export function CommandMenu() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">TOAST_NOTIFICATIONS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">TOAST_NOTIFICATIONS</h3>
           <CodeBlock language="tsx" code={`import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 

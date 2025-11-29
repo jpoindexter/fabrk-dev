@@ -208,7 +208,7 @@ stripe: {
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">PAYMENTS_FEATURE_GUIDE</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">PAYMENTS_FEATURE_GUIDE</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Advanced payment features and configuration
                 </p>
@@ -218,7 +218,7 @@ stripe: {
           <Link href="/docs/tutorials/webhooks">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">WEBHOOKS_SETUP</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">WEBHOOKS_SETUP</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Handle all webhook events
                 </p>

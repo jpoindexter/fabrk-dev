@@ -53,7 +53,7 @@ import { Separator } from "@/components/ui/separator";`} />
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">LANDING_PAGE_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">LANDING_PAGE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
 
@@ -80,7 +80,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">CUSTOM_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CUSTOM_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 import { Logo } from "@/components/home/logo";
@@ -193,7 +193,7 @@ export function CustomFooter() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">SIMPLE_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SIMPLE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 

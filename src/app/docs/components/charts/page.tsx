@@ -60,7 +60,7 @@ import { Progress } from "@/components/ui/progress";`} />
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">DONUT_CHART</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">DONUT_CHART</h3>
           <CodeBlock language="tsx" code={`import { DonutChart } from "@/components/ui/donut-chart";
 
 const data = [
@@ -84,7 +84,7 @@ export function DeviceBreakdown() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">GAUGE_CHART</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">GAUGE_CHART</h3>
           <CodeBlock language="tsx" code={`import { Gauge } from "@/components/ui/gauge";
 
 export function PerformanceGauge() {
@@ -112,7 +112,7 @@ export function PerformanceGauge() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">ANALYTICS_CHART</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">ANALYTICS_CHART</h3>
           <CodeBlock language="tsx" code={`import { AnalyticsChart } from "@/components/analytics/analytics-chart";
 
 const chartData = [
@@ -147,7 +147,7 @@ export function RevenueChart() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">FUNNEL_VISUALIZER</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">FUNNEL_VISUALIZER</h3>
           <CodeBlock language="tsx" code={`import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
 
 const funnelData = [
@@ -174,7 +174,7 @@ export function ConversionFunnel() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">STATS_DASHBOARD</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">STATS_DASHBOARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity, TrendingUp } from "lucide-react";
 
@@ -215,7 +215,7 @@ export function StatsDashboard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">PROGRESS_WITH_LABEL</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">PROGRESS_WITH_LABEL</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function StorageProgress() {
@@ -244,7 +244,7 @@ export function StorageProgress() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">CHART_COLOR_TOKENS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CHART_COLOR_TOKENS</h3>
           <CodeBlock language="typescript" code={`// Always use CSS variables for chart colors to support theming
 
 const chartColors = {

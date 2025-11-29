@@ -20,7 +20,7 @@ export default function FileUploadsTutorialPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">What's Included</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Drag-and-drop file upload components</div>
             <div>├─ Image upload with preview and cropping</div>
@@ -312,7 +312,7 @@ export function FileUploadForm() {
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">API Routes</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">API Routes</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Learn more about building API endpoints
                 </p>
@@ -322,7 +322,7 @@ export function FileUploadForm() {
           <Link href="/docs/tutorials/protected-pages">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold">Protected Pages</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Protected Pages</h3>
                 <p className="font-mono text-sm text-muted-foreground">
                   Protect upload routes with authentication
                 </p>

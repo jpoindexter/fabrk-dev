@@ -37,7 +37,7 @@ export default function LaunchChecklistPage() {
                     <h2 className="font-mono text-lg font-bold text-primary">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
                 <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold">CODE_QUALITY_AND_SECURITY</h3>
+                    <h3 className="font-mono text-base font-semibold text-foreground">CODE_QUALITY_AND_SECURITY</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Resolve TODOs:</strong> Search for `TODO` or `FIXME` in `src/` and resolve them.</div>
                         <div>├─ <strong>Configuration:</strong> Ensure all placeholders in `src/config.js` are replaced with real values.</div>
@@ -47,7 +47,7 @@ export default function LaunchChecklistPage() {
                         <div>└─ <strong>Build:</strong> Verify `npm run build` succeeds locally.</div>
                     </div>
 
-                    <h3 className="font-mono text-base font-semibold">LEGAL_AND_BUSINESS</h3>
+                    <h3 className="font-mono text-base font-semibold text-foreground">LEGAL_AND_BUSINESS</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Pricing:</strong> Confirm prices in `src/config.js` match your Stripe dashboard.</div>
                         <div>├─ <strong>Support:</strong> Verify `supportEmail` in config is active.</div>
@@ -63,14 +63,14 @@ export default function LaunchChecklistPage() {
                     <h2 className="font-mono text-lg font-bold text-primary">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
                 <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold">PRODUCT_CONFIGURATION</h3>
+                    <h3 className="font-mono text-base font-semibold text-foreground">PRODUCT_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Create products in Stripe Dashboard (Test & Production).</div>
                         <div>├─ Copy Price IDs to `.env` (e.g., `NEXT_PUBLIC_STRIPE_PRICE_PRO`).</div>
                         <div>└─ Create coupons if needed (e.g., EARLYBIRD).</div>
                     </div>
 
-                    <h3 className="font-mono text-base font-semibold">WEBHOOK_CONFIGURATION</h3>
+                    <h3 className="font-mono text-base font-semibold text-foreground">WEBHOOK_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Add endpoint: `https://your-domain.com/api/stripe/webhook`</div>
                         <div>├─ Select events: `checkout.session.completed`, `customer.subscription.*`, `payment_intent.*`</div>

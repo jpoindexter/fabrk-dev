@@ -91,7 +91,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">TABLE</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">TABLE</h3>
           <CodeBlock language="tsx" code={`import {
   Table,
   TableBody,
@@ -131,7 +131,7 @@ export function UsersTable() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">CARD</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CARD</h3>
           <CodeBlock language="tsx" code={`import {
   Card,
   CardContent,
@@ -163,7 +163,7 @@ export function ProfileCard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">BADGE_VARIANTS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">BADGE_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Badge } from "@/components/ui/badge";
 
 export function BadgeVariants() {
@@ -186,7 +186,7 @@ export function BadgeVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">STAT_CARD</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">STAT_CARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity } from "lucide-react";
 
@@ -216,7 +216,7 @@ export function DashboardStats() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">SKELETON_LOADING</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">SKELETON_LOADING</h3>
           <CodeBlock language="tsx" code={`import { Skeleton } from "@/components/ui/skeleton";
 
 export function TableSkeleton() {
@@ -237,7 +237,7 @@ export function TableSkeleton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">EMPTY_STATE</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">EMPTY_STATE</h3>
           <CodeBlock language="tsx" code={`import { EmptyState } from "@/components/ui/empty-state";
 import { FileText } from "lucide-react";
 
@@ -257,7 +257,7 @@ export function NoDataState() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">TOOLTIP</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">TOOLTIP</h3>
           <CodeBlock language="tsx" code={`import {
   Tooltip,
   TooltipContent,
@@ -283,7 +283,7 @@ export function TooltipExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold">PROGRESS</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">PROGRESS</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function ProgressExample() {
