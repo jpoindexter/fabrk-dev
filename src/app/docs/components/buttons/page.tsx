@@ -8,46 +8,43 @@ export const metadata = {
 
 export default function ButtonsComponentsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">BUTTON_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-3xl font-bold tracking-tight">BUTTON_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Button components with multiple variants, sizes, and states.
         </p>
       </div>
 
-      <Card className="rounded-none">
-        <CardContent className="p-4">
-          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_VARIANTS</h2>
-                    <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">default</code> - Primary button with solid background</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">secondary</code> - Secondary style with muted background</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">outline</code> - Bordered button with transparent background</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">ghost</code> - Minimal button, background on hover</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">link</code> - Styled as a link</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">destructive</code> - For dangerous actions (delete, etc.)</li>
+      <Card>
+        <CardContent className="pt-6">
+          <h2 className="font-mono text-lg font-semibold mb-4">AVAILABLE_VARIANTS</h2>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">default</code> - Primary button with solid background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">secondary</code> - Secondary style with muted background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">outline</code> - Bordered button with transparent background</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ghost</code> - Minimal button, background on hover</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">link</code> - Styled as a link</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">destructive</code> - For dangerous actions (delete, etc.)</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLE</h2>
+          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLE</h2>
         </div>
-        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
-        </div>
       </div>
 
-      <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+      <div className="space-y-8">
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BUTTON_VARIANTS</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">BUTTON_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
@@ -62,12 +59,10 @@ export function ButtonVariants() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BUTTON_SIZES</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">BUTTON_SIZES</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
@@ -82,12 +77,10 @@ export function ButtonSizes() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BUTTON_WITH_ICON</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">BUTTON_WITH_ICON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight, Loader2 } from "lucide-react";
 
@@ -113,12 +106,10 @@ export function ButtonWithIcon() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">LOADING_STATE</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">LOADING_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -132,12 +123,10 @@ export function LoadingButton() {
     </Button>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BUTTON_AS_LINK</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">BUTTON_AS_LINK</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -158,12 +147,10 @@ export function ButtonAsLink() {
     </>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BUTTON_GROUP</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">BUTTON_GROUP</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
@@ -181,12 +168,10 @@ export function ButtonGroup() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">FULL_WIDTH_BUTTON</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">FULL_WIDTH_BUTTON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function FullWidthButton() {
@@ -196,12 +181,10 @@ export function FullWidthButton() {
     </Button>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">DISABLED_STATE</h3>
-          <div className="[&>div]:rounded-none">
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl font-medium">DISABLED_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function DisabledButton() {

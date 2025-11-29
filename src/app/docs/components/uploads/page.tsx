@@ -8,34 +8,33 @@ export const metadata = {
 
 export default function UploadsComponentsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] UPLOADS</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] UPLOADS</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">FILE_UPLOADS</h1>
-        <p className="font-mono text-xs text-muted-foreground mt-2">
+        <h1 className="font-mono text-3xl font-bold tracking-tight">FILE_UPLOADS</h1>
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; File upload components including drag-and-drop, image preview, and cropping.
         </p>
       </div>
 
-      <Card className="rounded-none">
-        <CardContent className="p-4">
-          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-                    <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">FileUpload</code> - Basic file upload with button</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">ImageDropzone</code> - Drag-and-drop image upload with preview</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">CropperControls</code> - Image cropping controls</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Avatar</code> - Avatar with upload capability</li>
+      <Card>
+        <CardContent className="pt-6">
+          <h2 className="font-mono text-xl mb-4">AVAILABLE_COMPONENTS</h2>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FileUpload</code> - Basic file upload with button</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ImageDropzone</code> - Drag-and-drop image upload with preview</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">CropperControls</code> - Image cropping controls</li>
+            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Avatar</code> - Avatar with upload capability</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-xl">IMPORT_EXAMPLES</h2>
         </div>
-        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// File upload component
 import { FileUpload } from "@/components/ui/file-upload";
 
@@ -47,14 +46,13 @@ import { CropperControls } from "@/components/ui/cropper-controls";
 
 // Avatar for profile images
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";`} />
-        </div>
       </div>
 
-      <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+      <div className="space-y-8">
+        <h2 className="font-mono text-xl">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BASIC_FILE_UPLOAD</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">BASIC_FILE_UPLOAD</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 
 export function DocumentUpload() {
@@ -81,11 +79,10 @@ export function DocumentUpload() {
     />
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">IMAGE_DROPZONE</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">IMAGE_DROPZONE</h3>
           <CodeBlock language="tsx" code={`import { ImageDropzone } from "@/components/ui/image-dropzone";
 import { useState } from "react";
 
@@ -125,11 +122,10 @@ export function ImageUpload() {
 // - File type validation
 // - Size limit enforcement
 // - Visual feedback on drag`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">AVATAR_UPLOAD</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">AVATAR_UPLOAD</h3>
           <CodeBlock language="tsx" code={`import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Camera } from "lucide-react";
@@ -190,11 +186,10 @@ export function AvatarUpload() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">MULTIPLE_FILE_UPLOAD</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">MULTIPLE_FILE_UPLOAD</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 import { useState } from "react";
 
@@ -239,11 +234,10 @@ export function MultipleFileUpload() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">UPLOAD_WITH_PROGRESS</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">UPLOAD_WITH_PROGRESS</h3>
           <CodeBlock language="tsx" code={`import { FileUpload } from "@/components/ui/file-upload";
 import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
@@ -294,11 +288,10 @@ export function UploadWithProgress() {
     </div>
   );
 }`} />
-          </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">API_ROUTE_FOR_UPLOAD</h3>
+        <div className="space-y-4">
+          <h3 className="font-mono text-xl">API_ROUTE_FOR_UPLOAD</h3>
           <CodeBlock language="typescript" code={`// app/api/upload/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
