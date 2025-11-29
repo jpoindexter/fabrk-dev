@@ -35,7 +35,7 @@ export default function DatabaseSetupPage() {
 
       {/* Supabase Setup (Recommended) */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">SUPABASE_SETUP (Recommended)</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SUPABASE_SETUP (Recommended)</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Go to supabase.com and create an account</li>
           <li>2. Click "New Project"</li>
@@ -61,7 +61,7 @@ DATABASE_URL="your-connection-string"`} />
 
       {/* Neon Setup */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">NEON_SETUP</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEON_SETUP</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Sign up at neon.tech</li>
           <li>2. Create a new project</li>
@@ -79,7 +79,7 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
 
       {/* Railway Setup */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">RAILWAY_SETUP</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">RAILWAY_SETUP</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Sign up at railway.app</li>
           <li>2. Create new project → Add PostgreSQL</li>
@@ -94,7 +94,7 @@ DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`
 
       {/* Initialize Database */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">INITIALIZE_DATABASE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">INITIALIZE_DATABASE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           After setting DATABASE_URL, run these commands:
         </p>
@@ -115,7 +115,7 @@ npm run db:studio`} />
 
       {/* Connection Pooling */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CONNECTION_POOLING</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONNECTION_POOLING</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Essential for serverless deployments (Vercel):
         </p>
@@ -147,7 +147,7 @@ datasource db {
 
       {/* Prisma Schema */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">PRISMA_SCHEMA_OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">PRISMA_SCHEMA_OVERVIEW</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Key models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:
         </p>
@@ -208,7 +208,7 @@ model FeatureFlag {
 
       {/* Database Migrations */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">DATABASE_MIGRATIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">DATABASE_MIGRATIONS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Managing schema changes in production:
         </p>
@@ -235,7 +235,7 @@ npm run db:reset`} />
 
       {/* Seeding Data */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">SEEDING_DATA</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SEEDING_DATA</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Populate database with test data:
         </p>
@@ -292,7 +292,7 @@ npm run db:seed`} />
 
       {/* Backups */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">DATABASE_BACKUPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">DATABASE_BACKUPS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Each provider handles backups differently:
         </p>
@@ -322,7 +322,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
 
       {/* Performance Tips */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">PERFORMANCE_TIPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">PERFORMANCE_TIPS</h2>
         <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1">@@index([userId, createdAt])</code></li>
           <li>├─ Use select - Only fetch needed fields: <code className="bg-muted px-1">prisma.user.findMany({'{'} select: {'{'} id: true, name: true {'}'} {'}'})</code></li>
@@ -333,7 +333,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">

@@ -67,7 +67,7 @@ export default function GettingStartedPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">WHATS_INCLUDED</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">WHATS_INCLUDED</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk handles the essential features every SaaS needs:
         </p>
@@ -93,7 +93,7 @@ export default function GettingStartedPage() {
       {/* Quick Start */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <h2 className="font-mono text-lg font-bold">QUICK_START</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">QUICK_START</h2>
           <span className="border border-primary bg-primary/10 px-2 py-0.5 font-mono text-xs font-medium text-primary">
             5_MIN
           </span>
@@ -120,7 +120,7 @@ npm run db:push && npm run dev`}
 
       {/* Step-by-Step Guide */}
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_SETUP</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">STEP_BY_STEP_SETUP</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           New to this? Let&apos;s walk through each step.
         </p>
@@ -260,7 +260,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
 
       {/* Troubleshooting */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">TROUBLESHOOTING</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium hover:bg-muted/50">
@@ -310,7 +310,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
 
       {/* Optional Setup */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">OPTIONAL_FEATURES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">OPTIONAL_FEATURES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Enable more features by adding API keys to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
         </p>
@@ -336,7 +336,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
 
       {/* What's Next */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
             { title: "QUICK_START_TUTORIAL", desc: "Build your first feature in 10 min", href: "/docs/tutorials/quick-start" },

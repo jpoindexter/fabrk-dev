@@ -46,7 +46,7 @@ export default function FormsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Basic inputs
 import { Input } from "@/components/ui/input";
@@ -83,7 +83,7 @@ import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
       </div>
 
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">BASIC_INPUT</h3>

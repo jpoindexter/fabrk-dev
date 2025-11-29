@@ -34,7 +34,7 @@ export default function FileUploadsTutorialPage() {
 
       {/* Dependencies */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">DEPENDENCIES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">DEPENDENCIES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Install the required packages:
@@ -47,7 +47,7 @@ export default function FileUploadsTutorialPage() {
 
       {/* Upload API Route */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">UPLOAD_API_ROUTE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">UPLOAD_API_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Create an API route to handle file uploads with validation:
@@ -157,7 +157,7 @@ export const config = {
 
       {/* Client-Side Upload */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CLIENT_SIDE_UPLOAD_HANDLER</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CLIENT_SIDE_UPLOAD_HANDLER</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Handle the upload in your component with progress tracking:
@@ -267,7 +267,7 @@ export function FileUploadForm() {
 
       {/* Validation Options */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">VALIDATION_OPTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">VALIDATION_OPTIONS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Common validation configurations for different use cases:
@@ -307,7 +307,7 @@ export function FileUploadForm() {
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">

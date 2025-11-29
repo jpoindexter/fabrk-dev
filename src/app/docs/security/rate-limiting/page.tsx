@@ -37,7 +37,7 @@ export default function RateLimitingPage() {
       {/* Basic Setup */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">BASIC_SETUP</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">BASIC_SETUP</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Add rate limiting to any API route using the rate limiter middleware:
           </p>
@@ -78,7 +78,7 @@ export function rateLimit(ip: string, limit: number = 10) {
       {/* API Route Integration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">API_ROUTE_INTEGRATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">API_ROUTE_INTEGRATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Apply rate limiting to your API routes:
           </p>
@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
       {/* Different Limits per Endpoint */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">CUSTOM_LIMITS_PER_ENDPOINT</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">CUSTOM_LIMITS_PER_ENDPOINT</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Configure different rate limits for different endpoints:
           </p>
@@ -164,7 +164,7 @@ export const writeLimiter = new Ratelimit({
       {/* User-Based Rate Limiting */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">USER_BASED_RATE_LIMITING</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">USER_BASED_RATE_LIMITING</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Rate limit by user ID instead of IP for authenticated endpoints:
           </p>
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
       {/* Environment Variables */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">ENVIRONMENT_VARIABLES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VARIABLES</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Configure Upstash Redis for production rate limiting:
           </p>
@@ -222,7 +222,7 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/csrf">
             <Card className="h-full transition-all hover:border-primary/50">

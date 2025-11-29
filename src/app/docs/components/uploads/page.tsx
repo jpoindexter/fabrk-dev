@@ -33,7 +33,7 @@ export default function UploadsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// File upload component
 import { FileUpload } from "@/components/ui/file-upload";
@@ -49,7 +49,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";`} 
       </div>
 
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
           <h3 className="font-mono text-lg font-bold">BASIC_FILE_UPLOAD</h3>

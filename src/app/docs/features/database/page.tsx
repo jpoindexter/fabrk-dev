@@ -21,7 +21,7 @@ export default function DatabasePage() {
       </div>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-3">
@@ -39,7 +39,7 @@ export default function DatabasePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
 
         <div className="space-y-3">
           <div className="flex items-center gap-3">
@@ -91,7 +91,7 @@ npm run db:reset`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CORE_MODELS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CORE_MODELS</h2>
         <p className="font-mono text-sm text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="prisma" code={`// Authentication
@@ -155,7 +155,7 @@ model OrganizationMember {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-base font-semibold">DATABASE_CLIENT</h3>
@@ -276,7 +276,7 @@ return { data, nextCursor, hasNextPage };`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">MIGRATIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">MIGRATIONS</h2>
         <p className="font-mono text-sm text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-xs">db:push</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Create a new migration
@@ -291,7 +291,7 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
         <div className="grid gap-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
@@ -332,7 +332,7 @@ npx prisma migrate status`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1">

@@ -21,7 +21,7 @@ export default function GoogleOAuthPage() {
       </div>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-3">
@@ -39,7 +39,7 @@ export default function GoogleOAuthPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -100,7 +100,7 @@ GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold">AUTH_CONFIGURATION</h3>
         <p className="font-mono text-sm text-muted-foreground">Google provider is configured in <code className="font-mono bg-muted px-1 text-xs">src/lib/auth.ts</code>:</p>
@@ -230,7 +230,7 @@ export function LoginForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
 
         <div className="grid gap-3">
           <Card className="rounded-none">
@@ -272,7 +272,7 @@ export function LoginForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">TROUBLESHOOTING</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <div className="space-y-3">
@@ -300,7 +300,7 @@ export function LoginForm() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1">

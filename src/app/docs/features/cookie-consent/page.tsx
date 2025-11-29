@@ -63,7 +63,7 @@ export default function CookieConsentPage() {
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_IT_WORKS</h2>
         <div className="space-y-3">
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
@@ -110,7 +110,7 @@ export default function CookieConsentPage() {
 
       {/* Cookie Categories */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COOKIE_CATEGORIES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COOKIE_CATEGORIES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <div className="space-y-4">
@@ -160,7 +160,7 @@ export default function CookieConsentPage() {
 
       {/* Setup */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">SETUP</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SETUP</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The cookie consent component is already included in your layout. No setup required!
         </p>
@@ -181,7 +181,7 @@ export default function RootLayout({ children }) {
 
       {/* Google Tag Manager Integration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">GOOGLE_TAG_MANAGER_INTEGRATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">GOOGLE_TAG_MANAGER_INTEGRATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The component automatically integrates with Google Consent Mode v2. Here&apos;s what happens
           when a user makes their choice:
@@ -209,7 +209,7 @@ dataLayer.push({
 
       {/* Customization */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CUSTOMIZATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CUSTOMIZATION</h2>
 
         <h3 className="font-mono font-semibold">ADD_REMOVE_COOKIE_CATEGORIES</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -254,7 +254,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Data Export Feature */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">DATA_EXPORT_GDPR_RIGHT_TO_ACCESS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">DATA_EXPORT_GDPR_RIGHT_TO_ACCESS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The &quot;About&quot; tab includes a &quot;Download My Data&quot; button that lets logged-in users
           export their personal data. This helps with GDPR&apos;s &quot;right to access&quot; requirement.
@@ -274,7 +274,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Testing */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">TESTING</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">TESTING</h2>
         <Card className="rounded-none">
           <CardContent className="p-6 space-y-4">
             <h3 className="font-mono font-semibold">MANUAL_TESTING</h3>
@@ -299,7 +299,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
@@ -369,7 +369,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/analytics">
             <Card className="h-full transition-all hover:border-primary/50">

@@ -39,7 +39,7 @@ export default function ThemingPage() {
 
       {/* Available Themes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">AVAILABLE_COLOR_THEMES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COLOR_THEMES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           All themes from{" "}
           <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -275,7 +275,7 @@ export default function ThemingPage() {
 
       {/* Theme Dropdown Component */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">THEME_SWITCHER_COMPONENT</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">THEME_SWITCHER_COMPONENT</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The <code className="bg-muted px-1 font-mono text-xs">ThemeDropdown</code> component provides a compact dropdown for navbar:
         </p>
@@ -294,7 +294,7 @@ export function MyNavbar() {
 
       {/* How It Works */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_IT_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Themes are applied via data-theme attribute:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
@@ -313,7 +313,7 @@ export function MyNavbar() {
 
       {/* CSS Implementation */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CSS_IMPLEMENTATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CSS_IMPLEMENTATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Each DaisyUI theme defines CSS variables in <code className="bg-muted px-1 font-mono text-xs">globals.css</code>:
         </p>
@@ -347,7 +347,7 @@ export function MyNavbar() {
 
       {/* Using Theme Colors */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">USING_THEME_COLORS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USING_THEME_COLORS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Always use semantic color classes that adapt to the active theme:
         </p>
@@ -374,7 +374,7 @@ export function MyNavbar() {
 
       {/* Adding Custom Themes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">ADDING_CUSTOM_THEMES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ADDING_CUSTOM_THEMES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Add your own DaisyUI-style themes in 2 steps:
         </p>
@@ -418,7 +418,7 @@ export function MyNavbar() {
 
       {/* Best Practices */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -435,7 +435,7 @@ export function MyNavbar() {
 
       {/* Architecture */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">ARCHITECTURE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ARCHITECTURE</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -451,7 +451,7 @@ export function MyNavbar() {
 
       {/* Credits */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CREDITS_AND_INSPIRATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CREDITS_AND_INSPIRATION</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground">
@@ -482,7 +482,7 @@ export function MyNavbar() {
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/components">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">

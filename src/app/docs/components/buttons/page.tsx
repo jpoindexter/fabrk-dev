@@ -35,13 +35,13 @@ export default function ButtonsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLE</h2>
         </div>
         <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
       </div>
 
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">BUTTON_VARIANTS</h3>

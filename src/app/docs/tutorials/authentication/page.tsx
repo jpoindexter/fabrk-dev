@@ -52,7 +52,7 @@ export default function AuthenticationTutorialPage() {
 
       {/* What's Included */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">WHATS_ALREADY_BUILT</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">WHATS_ALREADY_BUILT</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk includes a complete authentication system. You don&apos;t need to build any of this:
         </p>
@@ -111,7 +111,7 @@ export default function AuthenticationTutorialPage() {
       {/* Quick Setup */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <h2 className="font-mono text-lg font-bold">QUICK_SETUP</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">QUICK_SETUP</h2>
           <span className="border border-primary bg-primary/10 px-2 py-0.5 font-mono text-xs font-medium text-primary">
             [2_MIN]
           </span>
@@ -141,7 +141,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
 
       {/* How Authentication Works - For learners */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_IT_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Here&apos;s what happens when a user interacts with your app:
         </p>
@@ -179,7 +179,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
 
       {/* Google OAuth - Step by Step */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">ADD_GOOGLE_LOGIN</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ADD_GOOGLE_LOGIN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Let users sign in with their Google account. This is convenient for users and often
           increases signup rates.
@@ -306,7 +306,7 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
 
       {/* Protecting Pages */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">PROTECTED_PAGES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">PROTECTED_PAGES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Some pages should only be visible to logged-in users. Fabrk automatically protects
           these routes:
@@ -337,7 +337,7 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
 
       {/* Code Examples - For developers */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Here&apos;s how to use authentication in your own code:
         </p>
@@ -457,7 +457,7 @@ export default async function PrivatePage() {
 
       {/* Email Verification */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">EMAIL_VERIFICATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">EMAIL_VERIFICATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           By default, Fabrk requires users to verify their email address. This ensures you can
           contact users and prevents fake signups.
@@ -481,7 +481,7 @@ export default async function PrivatePage() {
 
       {/* Common Questions */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-2">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono text-xs font-medium">
@@ -539,7 +539,7 @@ export default async function PrivatePage() {
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/mfa">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">

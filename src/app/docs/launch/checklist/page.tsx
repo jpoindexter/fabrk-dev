@@ -34,7 +34,7 @@ export default function LaunchChecklistPage() {
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-                    <h2 className="font-mono text-lg font-bold">PRE_LAUNCH_VERIFICATION</h2>
+                    <h2 className="font-mono text-lg font-bold text-primary">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
                 <div className="space-y-3">
                     <h3 className="font-mono text-base font-semibold">CODE_QUALITY_AND_SECURITY</h3>
@@ -60,7 +60,7 @@ export default function LaunchChecklistPage() {
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-                    <h2 className="font-mono text-lg font-bold">STRIPE_AND_PAYMENTS_SETUP</h2>
+                    <h2 className="font-mono text-lg font-bold text-primary">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
                 <div className="space-y-3">
                     <h3 className="font-mono text-base font-semibold">PRODUCT_CONFIGURATION</h3>
@@ -83,7 +83,7 @@ export default function LaunchChecklistPage() {
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-                    <h2 className="font-mono text-lg font-bold">MARKETING_ASSETS</h2>
+                    <h2 className="font-mono text-lg font-bold text-primary">MARKETING_ASSETS</h2>
                 </div>
                 <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                     <div>├─ <strong>The Pitch:</strong> Prepare a 30-60s video for social media.</div>
@@ -96,7 +96,7 @@ export default function LaunchChecklistPage() {
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">4</span>
-                    <h2 className="font-mono text-lg font-bold">LAUNCH_DAY_EXECUTION</h2>
+                    <h2 className="font-mono text-lg font-bold text-primary">LAUNCH_DAY_EXECUTION</h2>
                 </div>
                 <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                     <div>├─ <strong>Distribution:</strong> Verify your GitHub repo invite system (if selling code) or app deployment.</div>
@@ -109,7 +109,7 @@ export default function LaunchChecklistPage() {
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">5</span>
-                    <h2 className="font-mono text-lg font-bold">POST_LAUNCH_MONITORING</h2>
+                    <h2 className="font-mono text-lg font-bold text-primary">POST_LAUNCH_MONITORING</h2>
                 </div>
                 <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                     <div>├─ <strong>Support:</strong> Monitor your support email continuously for 48 hours.</div>
@@ -120,7 +120,7 @@ export default function LaunchChecklistPage() {
 
             {/* Useful Commands */}
             <section className="space-y-3">
-                <h2 className="font-mono text-lg font-bold">USEFUL_COMMANDS</h2>
+                <h2 className="font-mono text-lg font-bold text-primary">USEFUL_COMMANDS</h2>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">Pre-launch verification commands:</p>
                 <div className="[&>div]:rounded-none">
                     <CodeBlock language="bash" code={`# Run full test suite

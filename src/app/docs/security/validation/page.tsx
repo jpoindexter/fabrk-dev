@@ -37,7 +37,7 @@ export default function SchemaValidationPage() {
       {/* Basic Zod Schema */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">BASIC_ZOD_SCHEMA</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">BASIC_ZOD_SCHEMA</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Define schemas to validate data:
           </p>
@@ -71,7 +71,7 @@ export type UserInput = z.infer<typeof userSchema>;`} />
       {/* API Route Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">API_ROUTE_VALIDATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">API_ROUTE_VALIDATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate request bodies in API routes:
           </p>
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       {/* Common Validation Patterns */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">COMMON_VALIDATION_PATTERNS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">COMMON_VALIDATION_PATTERNS</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Reusable validation patterns for common fields:
           </p>
@@ -179,7 +179,7 @@ export const sortSchema = z.object({
       {/* Form Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">FORM_VALIDATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">FORM_VALIDATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Use schemas with react-hook-form:
           </p>
@@ -244,7 +244,7 @@ export function ContactForm() {
       {/* Query Parameter Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">QUERY_PARAMETER_VALIDATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">QUERY_PARAMETER_VALIDATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate URL search params:
           </p>
@@ -287,7 +287,7 @@ export async function GET(request: NextRequest) {
       {/* Environment Variable Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">ENVIRONMENT_VARIABLE_VALIDATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VARIABLE_VALIDATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Validate environment variables at startup:
           </p>
@@ -327,7 +327,7 @@ export const env = parsed.data;`} />
       {/* Custom Transformations */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">CUSTOM_TRANSFORMATIONS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">CUSTOM_TRANSFORMATIONS</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Transform and sanitize data during validation:
           </p>
@@ -370,7 +370,7 @@ const userInputSchema = z.object({
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">

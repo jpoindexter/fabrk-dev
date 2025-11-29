@@ -32,7 +32,7 @@ export default function FAQComponentsPage() {
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// FAQ section for landing pages
@@ -56,7 +56,7 @@ import {
       </div>
 
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-base font-semibold">FAQ_SECTION</h3>

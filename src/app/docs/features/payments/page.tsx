@@ -72,7 +72,7 @@ export default function PaymentsPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">WHATS_BUILT_IN</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">WHATS_BUILT_IN</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
@@ -128,7 +128,7 @@ export default function PaymentsPage() {
       {/* Understanding Webhooks */}
       <Card className="bg-muted/50">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold">UNDERSTANDING_WEBHOOKS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">UNDERSTANDING_WEBHOOKS</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             <strong>Think of webhooks like a doorbell.</strong> When Stripe processes a payment,
             it &quot;rings your doorbell&quot; (sends a webhook) to let you know something happened.
@@ -149,7 +149,7 @@ export default function PaymentsPage() {
       {/* Quick Setup */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <h2 className="font-mono text-lg font-bold">QUICK_SETUP</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">QUICK_SETUP</h2>
           <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             10 minutes
           </span>
@@ -253,7 +253,7 @@ npm run stripe:listen`} />
 
       {/* Testing Payments */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">TESTING_PAYMENTS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">TESTING_PAYMENTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Always test payments before going live. Stripe provides test card numbers that simulate
           different scenarios without charging real money.
@@ -288,7 +288,7 @@ npm run stripe:listen`} />
 
       {/* Code Reference */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Here&apos;s how to trigger checkout from your code:
@@ -368,7 +368,7 @@ export function ManageBillingButton() {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
@@ -434,7 +434,7 @@ export function ManageBillingButton() {
 
       {/* Going Live */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">GOING_LIVE_CHECKLIST</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">GOING_LIVE_CHECKLIST</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -472,7 +472,7 @@ export function ManageBillingButton() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
             <Card className="h-full transition-all hover:border-primary/50">

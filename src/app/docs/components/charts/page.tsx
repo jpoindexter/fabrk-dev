@@ -35,7 +35,7 @@ export default function ChartsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Donut chart
 import { DonutChart } from "@/components/ui/donut-chart";
@@ -57,7 +57,7 @@ import { Progress } from "@/components/ui/progress";`} />
       </div>
 
       <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">DONUT_CHART</h3>

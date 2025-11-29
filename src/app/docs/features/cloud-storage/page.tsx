@@ -64,7 +64,7 @@ export default function CloudStoragePage() {
 
       {/* How Fabrk Storage Works */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">HOW_FABRK_STORAGE_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_FABRK_STORAGE_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk automatically detects which storage provider you have configured and uses it.
           This means you can start with local storage during development and switch to cloud
@@ -102,7 +102,7 @@ export default function CloudStoragePage() {
 
       {/* Choosing a Provider */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CHOOSING_A_PROVIDER</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CHOOSING_A_PROVIDER</h2>
         <div className="grid gap-4 sm:grid-cols-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
@@ -145,7 +145,7 @@ export default function CloudStoragePage() {
 
       {/* Setup - R2 */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">SETUP_CLOUDFLARE_R2</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SETUP_CLOUDFLARE_R2</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           R2 is the recommended provider due to zero egress fees. Here&apos;s how to set it up:
         </p>
@@ -192,7 +192,7 @@ CLOUDFLARE_R2_PUBLIC_URL="https://uploads.yourdomain.com"`} />
 
       {/* Setup - S3 */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">SETUP_AWS_S3</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SETUP_AWS_S3</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           If you prefer S3 or already use AWS:
         </p>
@@ -212,7 +212,7 @@ AWS_S3_REGION="us-east-1"`} />
 
       {/* Code Examples */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
 
         <h3 className="font-mono font-semibold">UPLOAD_A_FILE</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -365,7 +365,7 @@ export function FileUploader() {
 
       {/* Security */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">SECURITY_CONSIDERATIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SECURITY_CONSIDERATIONS</h2>
         <Card className="bg-muted">
           <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
@@ -396,7 +396,7 @@ export function FileUploader() {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
@@ -457,7 +457,7 @@ export function FileUploader() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">

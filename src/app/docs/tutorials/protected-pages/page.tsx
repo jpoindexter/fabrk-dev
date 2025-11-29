@@ -19,7 +19,7 @@ export default function ProtectedPagesTutorialPage() {
 
       {/* How It Works */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">HOW_PROTECTION_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_PROTECTION_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk protects routes via middleware. The following routes automatically redirect
           unauthenticated users to the home page:
@@ -34,7 +34,7 @@ export default function ProtectedPagesTutorialPage() {
 
       {/* Creating a Protected Page */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CREATING_A_PROTECTED_PAGE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CREATING_A_PROTECTED_PAGE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Simply create your page under one of the protected directories:
         </p>
@@ -61,7 +61,7 @@ export default async function MyFeaturePage() {
 
       {/* Adding New Protected Routes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">ADDING_NEW_PROTECTED_ROUTES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ADDING_NEW_PROTECTED_ROUTES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           To protect additional routes, update the middleware at{" "}
           <code className="bg-muted px-1 font-mono text-xs">src/middleware.ts</code>:
@@ -82,7 +82,7 @@ const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettin
 
       {/* Role-Based Access */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">ROLE_BASED_ACCESS_CONTROL</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ROLE_BASED_ACCESS_CONTROL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Restrict pages by user role:
         </p>
@@ -117,7 +117,7 @@ export default async function AdminPage() {
 
       {/* Client Component Protection */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CLIENT_COMPONENT_PROTECTION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CLIENT_COMPONENT_PROTECTION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           For client components, use the session hook:
         </p>
@@ -149,7 +149,7 @@ export function ProtectedClientComponent() {
 
       {/* Conditional UI */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONDITIONAL_UI_BASED_ON_AUTH</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Show different content based on authentication state:
         </p>

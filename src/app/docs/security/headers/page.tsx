@@ -37,7 +37,7 @@ export default function SecurityHeadersPage() {
       {/* Next.js Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">NEXTJS_CONFIGURATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">NEXTJS_CONFIGURATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Add security headers in <code className="font-mono bg-muted px-1 py-0.5">next.config.js</code>:
           </p>
@@ -87,7 +87,7 @@ module.exports = nextConfig;`} />
       {/* Content Security Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">CONTENT_SECURITY_POLICY</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">CONTENT_SECURITY_POLICY</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Configure a strict CSP to prevent XSS attacks:
           </p>
@@ -130,7 +130,7 @@ const nextConfig = {
       {/* Nonce-based CSP */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">NONCE_BASED_CSP</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">NONCE_BASED_CSP</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Use nonces for stricter CSP without unsafe-inline:
           </p>
@@ -196,7 +196,7 @@ export default async function RootLayout({
       {/* HSTS Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">HSTS_CONFIGURATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">HSTS_CONFIGURATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Enforce HTTPS with Strict-Transport-Security:
           </p>
@@ -225,7 +225,7 @@ export default async function RootLayout({
       {/* Permissions Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">PERMISSIONS_POLICY</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">PERMISSIONS_POLICY</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Control browser feature access:
           </p>
@@ -261,7 +261,7 @@ export default async function RootLayout({
       {/* Vercel Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">VERCEL_CONFIGURATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">VERCEL_CONFIGURATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Alternative: Configure headers in vercel.json:
           </p>
@@ -298,7 +298,7 @@ export default async function RootLayout({
       {/* Testing Headers */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold">TESTING_HEADERS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">TESTING_HEADERS</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Verify your security headers are working:
           </p>
@@ -317,7 +317,7 @@ curl -I https://yoursite.com
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">

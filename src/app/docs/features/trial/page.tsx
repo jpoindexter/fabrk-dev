@@ -65,7 +65,7 @@ export default function TrialPage() {
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">HOW_FABRK_TRIALS_WORK</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_FABRK_TRIALS_WORK</h2>
         <div className="space-y-3">
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
@@ -113,7 +113,7 @@ export default function TrialPage() {
 
       {/* Configuration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Configure trial settings in <code className="bg-muted px-1 font-mono">src/config.js</code>:
         </p>
@@ -142,7 +142,7 @@ export const config = {
 
       {/* Trial Banner */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">TRIAL_BANNER</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">TRIAL_BANNER</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk includes a trial banner component that automatically shows for trial users.
         </p>
@@ -185,7 +185,7 @@ export const config = {
 
       {/* Code Examples */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
 
         <h3 className="font-mono font-semibold">CHECK_IF_USER_IS_ON_TRIAL</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -264,7 +264,7 @@ export default function DashboardLayout({ children }) {
 
       {/* Stripe Integration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">STRIPE_TRIAL_INTEGRATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">STRIPE_TRIAL_INTEGRATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           If you require credit card upfront, Stripe handles the trial automatically:
         </p>
@@ -287,7 +287,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Best Practices */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <ul className="space-y-3 text-sm">
@@ -318,7 +318,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
@@ -374,7 +374,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <Card className="h-full transition-all hover:border-primary/50">

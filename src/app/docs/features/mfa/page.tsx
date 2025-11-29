@@ -66,7 +66,7 @@ export default function MFAPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">WHATS_BUILT_IN</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">WHATS_BUILT_IN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk v1.1 includes a complete TOTP (Time-based One-Time Password) implementation:
         </p>
@@ -129,7 +129,7 @@ export default function MFAPage() {
 
       {/* How It Works - User Flow */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">HOW_2FA_WORKS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">HOW_2FA_WORKS</h2>
 
         <div className="space-y-3">
           <div className="border border-border bg-card p-4">
@@ -168,7 +168,7 @@ export default function MFAPage() {
 
       {/* Configuration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           2FA is already set up and ready to use. Users enable it from their security settings.
           No additional configuration required.
@@ -190,7 +190,7 @@ export const config = {
 
       {/* Security Settings UI */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">SECURITY_SETTINGS_PAGE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">SECURITY_SETTINGS_PAGE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk includes a pre-built security settings component at{" "}
           <code className="font-mono bg-muted px-1">/settings/security</code>:
@@ -222,7 +222,7 @@ export const config = {
 
       {/* Code Reference */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
 
         <div className="space-y-2">
           <h3 className="font-mono font-semibold">USING_THE_MFA_LIBRARY</h3>
@@ -301,7 +301,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Backup Codes */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">ABOUT_BACKUP_CODES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">ABOUT_BACKUP_CODES</h2>
         <Card className="bg-muted/50">
           <CardContent className="p-6 space-y-4">
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -334,7 +334,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
@@ -419,7 +419,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Future Enhancements */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">FUTURE_ENHANCEMENTS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">FUTURE_ENHANCEMENTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
@@ -445,7 +445,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">

@@ -233,7 +233,7 @@ export default function ComponentsOverviewPage() {
           <div key={category.name}>
             <div className="mb-3 flex items-center gap-2">
               <span className="font-mono text-sm text-muted-foreground">[{category.hex}]</span>
-              <h2 className="font-mono text-lg font-bold">{category.name}</h2>
+              <h2 className="font-mono text-lg font-bold text-primary">{category.name}</h2>
               <span className="font-mono text-sm text-muted-foreground">
                 ({category.components.length})
               </span>
@@ -259,7 +259,7 @@ export default function ComponentsOverviewPage() {
 
       {/* Import Example */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">IMPORT_PATTERN</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">IMPORT_PATTERN</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <pre className="font-mono text-sm text-muted-foreground">
@@ -275,7 +275,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
 
       {/* Component Docs Links */}
       <div className="space-y-3">
-        <h2 className="font-mono text-lg font-bold">DETAILED_DOCUMENTATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary">DETAILED_DOCUMENTATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; See individual component pages for usage examples and API reference:
         </p>
