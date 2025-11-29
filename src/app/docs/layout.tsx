@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
@@ -210,6 +210,31 @@ export default function DocsLayout({
     });
   };
 
+  // Table of Contents - extract headings from the page
+  const [tocHeadings, setTocHeadings] = useState<Array<{ id: string; text: string }>>([]);
+  const mainRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Small delay to ensure content is rendered
+    const timer = setTimeout(() => {
+      if (mainRef.current) {
+        const headings = mainRef.current.querySelectorAll("h2");
+        const items = Array.from(headings).map((heading) => {
+          // Create ID from heading text if not present
+          const text = heading.textContent || "";
+          const id = heading.id || text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+          if (!heading.id) {
+            heading.id = id;
+          }
+          return { id, text };
+        });
+        setTocHeadings(items);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-background font-mono flex flex-col relative">
       <TerminalBackground />
@@ -293,11 +318,39 @@ export default function DocsLayout({
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 px-6 py-8 lg:px-8">
+        <main ref={mainRef} className="flex-1 px-6 py-8 lg:px-8">
           <div className="mx-auto max-w-3xl">
             {children}
           </div>
         </main>
+
+        {/* Table of Contents (Right Sidebar) */}
+        <aside
+          className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-border xl:block overflow-y-auto bg-card"
+          aria-label="Table of contents"
+        >
+          <div className="p-4">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[ON_THIS_PAGE]:</div>
+            {tocHeadings.length > 0 ? (
+              <nav>
+                <ul className="space-y-2 font-mono text-xs">
+                  {tocHeadings.map((heading) => (
+                    <li key={heading.id}>
+                      <a
+                        href={`#${heading.id}`}
+                        className="block text-muted-foreground hover:text-foreground hover:bg-muted px-2 py-1 transition-colors"
+                      >
+                        &gt; {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ) : (
+              <p className="text-xs text-muted-foreground/50 px-2">No sections found</p>
+            )}
+          </div>
+        </aside>
       </div>
 
       <Footer />
