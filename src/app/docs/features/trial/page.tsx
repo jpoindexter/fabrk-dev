@@ -24,7 +24,7 @@ export default function TrialPage() {
       {/* What is a Trial - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_A_FREE_TRIAL</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_A_FREE_TRIAL</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             A free trial lets potential customers use your product for a limited time before
             paying. It&apos;s like test-driving a car before buying it.
@@ -40,7 +40,7 @@ export default function TrialPage() {
       {/* Why Use Trials */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_OFFER_TRIALS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_OFFER_TRIALS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">BENEFITS</h3>

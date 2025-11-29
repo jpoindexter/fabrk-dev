@@ -21,7 +21,7 @@ export default function ButtonsComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_VARIANTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">AVAILABLE_VARIANTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">default</code> - Primary button with solid background</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">secondary</code> - Secondary style with muted background</li>

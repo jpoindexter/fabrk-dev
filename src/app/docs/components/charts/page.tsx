@@ -21,7 +21,7 @@ export default function ChartsComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DonutChart</code> - Donut/pie chart for proportions</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Gauge</code> - Gauge chart for single values</li>

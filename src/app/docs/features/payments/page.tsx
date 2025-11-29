@@ -22,7 +22,7 @@ export default function PaymentsPage() {
       {/* What Are Payments - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">HOW_PAYMENTS_WORK</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">HOW_PAYMENTS_WORK</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             When someone buys your product, several things happen behind the scenes. Fabrk uses
             Stripe to handle all of this securely:
@@ -46,7 +46,7 @@ export default function PaymentsPage() {
       {/* Why You Need This */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_STRIPE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_STRIPE</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">FOR_YOU</h3>

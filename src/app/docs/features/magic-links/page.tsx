@@ -25,7 +25,7 @@ export default function MagicLinksPage() {
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -43,7 +43,7 @@ export default function MagicLinksPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -92,7 +92,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold mb-3">REQUEST_MAGIC_LINK_API</h3>
         <div className="space-y-4 mb-6">
@@ -356,7 +356,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card className="rounded-none">
@@ -398,7 +398,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">SECURITY_CONSIDERATIONS</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">SECURITY_CONSIDERATIONS</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
@@ -413,7 +413,7 @@ export default function MagicLinkEmail({
       </section>
 
       <section>
-        <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">

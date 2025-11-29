@@ -22,7 +22,7 @@ export default function CloudStoragePage() {
       {/* What is Cloud Storage - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_CLOUD_STORAGE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_CLOUD_STORAGE</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Cloud storage lets you save files (images, documents, videos) on remote servers
             instead of your own. This is essential when users need to upload profile pictures,
@@ -38,7 +38,7 @@ export default function CloudStoragePage() {
       {/* Why You Need This */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_NOT_STORE_FILES_LOCALLY</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_NOT_STORE_FILES_LOCALLY</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium text-destructive">LOCAL_STORAGE_PROBLEMS</h3>

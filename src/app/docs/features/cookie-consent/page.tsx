@@ -24,7 +24,7 @@ export default function CookieConsentPage() {
       {/* What is Cookie Consent - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_THIS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_THIS</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             If your app has users in Europe, you&apos;re legally required to ask permission before
             tracking them with cookies. This component handles that for you.
@@ -39,7 +39,7 @@ export default function CookieConsentPage() {
       {/* Why You Need This */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_YOU_NEED_THIS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_YOU_NEED_THIS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">LEGAL_COMPLIANCE</h3>

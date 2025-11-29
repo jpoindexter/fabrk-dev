@@ -23,7 +23,7 @@ export default function NotificationsPage() {
 
       <Card className="mb-8">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             The notifications system combines real-time delivery via Pusher with database persistence
             for a complete notification experience. Users receive instant notifications with a visual
@@ -40,7 +40,7 @@ export default function NotificationsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">DATABASE_SCHEMA</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Notification model in Prisma schema:
           </p>
@@ -68,7 +68,7 @@ model Notification {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold mb-4">CREATING_NOTIFICATIONS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">CREATING_NOTIFICATIONS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Send notifications from anywhere in your application:
           </p>
@@ -133,7 +133,7 @@ await createNotification({
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold mb-4">BELL_ICON_COMPONENT</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">BELL_ICON_COMPONENT</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             The notification bell with real-time updates and dropdown:
           </p>
@@ -258,7 +258,7 @@ export function NotificationBell({ userId }: { userId: string }) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold mb-4">API_ROUTES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">API_ROUTES</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Notification management endpoints:
           </p>
@@ -319,7 +319,7 @@ export async function POST(req: Request) {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-4">BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
             <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Be selective:</strong> Only notify for important, actionable events</li>
             <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Clear titles:</strong> Make notifications scannable at a glance</li>

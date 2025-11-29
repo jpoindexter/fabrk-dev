@@ -20,7 +20,7 @@ export default function SEOPage() {
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -38,7 +38,7 @@ export default function SEOPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-3 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
@@ -125,7 +125,7 @@ export default function PricingPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold mb-3">DYNAMIC_METADATA</h3>
         <div className="space-y-4 mb-6">
@@ -220,7 +220,7 @@ export default async function sitemap() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-lg font-bold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card className="rounded-none">
@@ -262,7 +262,7 @@ export default async function sitemap() {
       </section>
 
       <section>
-        <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-bold text-primary mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
             <div className="font-mono text-sm text-muted-foreground space-y-1">

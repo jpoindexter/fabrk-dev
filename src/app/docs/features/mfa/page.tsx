@@ -24,7 +24,7 @@ export default function MFAPage() {
       {/* What is 2FA - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_TWO_FACTOR_AUTHENTICATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_TWO_FACTOR_AUTHENTICATION</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Two-factor authentication (2FA) adds an extra step to logging in. After entering your
             password, you also need to provide a code from your phone. Even if someone steals
@@ -40,7 +40,7 @@ export default function MFAPage() {
       {/* Why You Need This */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_OFFER_2FA</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_OFFER_2FA</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">SECURITY_BENEFITS</h3>

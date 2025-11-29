@@ -24,7 +24,7 @@ export default function GettingStartedPage() {
       {/* What is Fabrk */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_FABRK?</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_FABRK?</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
@@ -41,7 +41,7 @@ export default function GettingStartedPage() {
       {/* Who is this for */}
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHO_IS_THIS_FOR?</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHO_IS_THIS_FOR?</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-4">
               <h3 className="font-mono text-base font-semibold text-foreground">&gt; GREAT_FIT</h3>

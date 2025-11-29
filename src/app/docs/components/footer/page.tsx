@@ -21,7 +21,7 @@ export default function FooterComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary mb-3">AVAILABLE_COMPONENTS</h2>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>

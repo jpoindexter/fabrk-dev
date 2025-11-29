@@ -24,7 +24,7 @@ export default function AuthenticationTutorialPage() {
       {/* What is Authentication - Plain English */}
       <Card className="rounded-none">
         <CardContent className="p-4 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_AUTHENTICATION?</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHAT_IS_AUTHENTICATION?</h2>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Authentication is how your app knows who someone is. When a user creates an account
             and logs in, your app gives them a &quot;pass&quot; (called a session) that proves their identity.
@@ -40,7 +40,7 @@ export default function AuthenticationTutorialPage() {
       {/* Why You Need This */}
       <Card className="rounded-none">
         <CardContent className="p-4 space-y-4">
-          <h2 className="font-mono text-lg font-bold text-foreground">WHY_YOU_NEED_THIS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">WHY_YOU_NEED_THIS</h2>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Personalization:</strong> Save user preferences, data, and history</div>
             <div>├─ <strong>Security:</strong> Keep private data private and prevent unauthorized access</div>
