@@ -15,7 +15,7 @@ export default function PaymentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] PAYMENTS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">STRIPE_PAYMENTS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">STRIPE_PAYMENTS</h1>
         <p className="font-mono text-sm text-muted-foreground">&gt; Accept payments and manage subscriptions with Stripe.</p>
       </div>
 

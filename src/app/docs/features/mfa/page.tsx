@@ -15,7 +15,7 @@ export default function MFAPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MFA</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">MULTI_FACTOR_AUTHENTICATION</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">MULTI_FACTOR_AUTHENTICATION</h1>
         <p className="font-mono text-sm text-muted-foreground">
           &gt; Add an extra layer of security with authenticator apps and backup codes.
         </p>

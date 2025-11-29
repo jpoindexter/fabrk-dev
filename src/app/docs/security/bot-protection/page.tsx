@@ -14,7 +14,7 @@ export default function BotProtectionPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] BOT_PROTECTION</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">BOT_PROTECTION</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BOT_PROTECTION</h1>
         <p className="font-mono text-sm text-muted-foreground">
           &gt; Detect and block automated bot traffic with multiple protection strategies.
         </p>

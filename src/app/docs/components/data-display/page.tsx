@@ -13,7 +13,7 @@ export default function DataDisplayComponentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">DATA_DISPLAY</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATA_DISPLAY</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Components for displaying data including tables, cards, badges, and more.
         </p>

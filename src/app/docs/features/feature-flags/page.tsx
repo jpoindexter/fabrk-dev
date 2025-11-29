@@ -17,7 +17,7 @@ export default function FeatureFlagsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">FEATURE_FLAGS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_FLAGS</h1>
         <p className="font-mono text-sm text-muted-foreground">
           &gt; Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
         </p>

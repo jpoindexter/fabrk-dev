@@ -15,7 +15,7 @@ export default function CloudStoragePage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">CLOUD_STORAGE</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CLOUD_STORAGE</h1>
         <p className="font-mono text-sm text-muted-foreground">&gt; Upload and store files securely with automatic provider detection.</p>
       </div>
 

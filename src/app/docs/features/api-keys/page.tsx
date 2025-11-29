@@ -17,7 +17,7 @@ export default function ApiKeysPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] API_KEYS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">API_KEYS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">API_KEYS</h1>
         <p className="font-mono text-sm text-muted-foreground">
           &gt; Secure API key generation with SHA-256 hashing, timing-safe comparison, and rate limiting.
         </p>

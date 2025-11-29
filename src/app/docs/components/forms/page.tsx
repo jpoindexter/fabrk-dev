@@ -13,7 +13,7 @@ export default function FormsComponentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FORMS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">FORM_COMPONENTS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FORM_COMPONENTS</h1>
         <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Form components including inputs, selects, checkboxes, and validation.
         </p>

@@ -13,7 +13,7 @@ export default function ChartsComponentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">CHARTS_AND_ANALYTICS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CHARTS_AND_ANALYTICS</h1>
         <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Chart components for visualizing data and analytics.
         </p>

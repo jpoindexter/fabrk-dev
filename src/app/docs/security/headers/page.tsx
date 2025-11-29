@@ -14,7 +14,7 @@ export default function SecurityHeadersPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] HEADERS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">SECURITY_HEADERS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SECURITY_HEADERS</h1>
         <p className="font-mono text-sm text-muted-foreground">
           &gt; Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more.
         </p>

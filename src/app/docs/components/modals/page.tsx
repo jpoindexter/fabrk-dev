@@ -13,7 +13,7 @@ export default function ModalsComponentsPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] MODALS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">MODAL_COMPONENTS</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">MODAL_COMPONENTS</h1>
         <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Modal components for dialogs, sheets, popovers, and alerts.
         </p>
@@ -21,7 +21,7 @@ export default function ModalsComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-xl mb-4">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Dialog</code> - Modal dialog for forms and confirmations</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AlertDialog</code> - Confirmation dialog for destructive actions</li>
@@ -36,7 +36,7 @@ export default function ModalsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Dialog
 import {
@@ -104,10 +104,10 @@ import { Toaster } from "@/components/ui/toaster";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="font-mono text-xl">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">DIALOG</h3>
+          <h3 className="font-mono text-base font-semibold">DIALOG</h3>
           <CodeBlock language="tsx" code={`import {
   Dialog,
   DialogContent,
@@ -158,7 +158,7 @@ export function EditProfileDialog() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">ALERT_DIALOG_CONFIRMATION</h3>
+          <h3 className="font-mono text-base font-semibold">ALERT_DIALOG_CONFIRMATION</h3>
           <CodeBlock language="tsx" code={`import {
   AlertDialog,
   AlertDialogAction,
@@ -199,7 +199,7 @@ export function DeleteConfirmation() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">SHEET_SLIDE_OUT_PANEL</h3>
+          <h3 className="font-mono text-base font-semibold">SHEET_SLIDE_OUT_PANEL</h3>
           <CodeBlock language="tsx" code={`import {
   Sheet,
   SheetContent,
@@ -238,7 +238,7 @@ export function SettingsSheet() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">POPOVER</h3>
+          <h3 className="font-mono text-base font-semibold">POPOVER</h3>
           <CodeBlock language="tsx" code={`import {
   Popover,
   PopoverContent,
@@ -270,7 +270,7 @@ export function NotificationPopover() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">COMMAND_PALETTE</h3>
+          <h3 className="font-mono text-base font-semibold">COMMAND_PALETTE</h3>
           <CodeBlock language="tsx" code={`import {
   CommandDialog,
   CommandEmpty,
@@ -312,7 +312,7 @@ export function CommandMenu() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg">TOAST_NOTIFICATIONS</h3>
+          <h3 className="font-mono text-base font-semibold">TOAST_NOTIFICATIONS</h3>
           <CodeBlock language="tsx" code={`import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 
