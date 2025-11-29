@@ -11,10 +11,10 @@ export default function HeroComponentsPage() {
     <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">HERO_SECTIONS</h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">HERO_SECTIONS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Eye-catching hero sections for landing pages with various layouts and styles.
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function HeroComponentsPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h2 className="font-mono text-xs font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div className="space-y-1 font-mono text-xs text-muted-foreground">
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSection</code> - Standard centered hero with headline, description, and CTAs</div>
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSplit</code> - Split layout with content on left and image/demo on right</div>
             <div>└─ <code className="bg-muted px-1 font-mono">HeroVideo</code> - Hero section with background video or video modal</div>
@@ -31,7 +31,7 @@ export default function HeroComponentsPage() {
       </Card>
 
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// Standard hero section
 import { HeroSection } from "@/components/landing/hero-section";
@@ -45,7 +45,7 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">STANDARD_HERO_SECTION</h3>
@@ -106,7 +106,7 @@ export default function LandingPage() {
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">VIEW_VARIATIONS</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Check out the variations page to see all hero styles side by side:
           </p>
           <div className="[&>div]:rounded-none">
@@ -117,8 +117,8 @@ export default function LandingPage() {
       </div>
 
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ANIMATION_PATTERN</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ANIMATION_PATTERN</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           All hero sections use Framer Motion for smooth entrance animations:
         </p>
         <div className="[&>div]:rounded-none">

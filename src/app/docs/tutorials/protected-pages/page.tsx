@@ -11,31 +11,31 @@ export default function ProtectedPagesTutorialPage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">PROTECTED_PAGES</h1>
-        <p className="font-mono text-xs text-muted-foreground">&gt; Create pages that require authentication to access</p>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PROTECTED_PAGES</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Create pages that require authentication to access</p>
       </div>
 
       {/* How It Works */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">HOW_PROTECTION_WORKS</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">HOW_PROTECTION_WORKS</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Fabrk protects routes via middleware. The following routes automatically redirect
           unauthenticated users to the home page:
         </p>
-        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/dashboard/*</code></div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/admin/*</code></div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/billing/*</code></div>
-          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">/settings/*</code></div>
+        <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code></div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/admin/*</code></div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">/billing/*</code></div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-xs">/settings/*</code></div>
         </div>
       </div>
 
       {/* Creating a Protected Page */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CREATING_A_PROTECTED_PAGE</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">CREATING_A_PROTECTED_PAGE</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Simply create your page under one of the protected directories:
         </p>
         <div className="[&>div]:rounded-none">
@@ -61,10 +61,10 @@ export default async function MyFeaturePage() {
 
       {/* Adding New Protected Routes */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ADDING_NEW_PROTECTED_ROUTES</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ADDING_NEW_PROTECTED_ROUTES</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           To protect additional routes, update the middleware at{" "}
-          <code className="bg-muted px-1 font-mono text-[10px]">src/middleware.ts</code>:
+          <code className="bg-muted px-1 font-mono text-xs">src/middleware.ts</code>:
         </p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/middleware.ts
@@ -82,8 +82,8 @@ const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettin
 
       {/* Role-Based Access */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ROLE_BASED_ACCESS_CONTROL</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ROLE_BASED_ACCESS_CONTROL</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Restrict pages by user role:
         </p>
         <div className="[&>div]:rounded-none">
@@ -108,17 +108,17 @@ export default async function AdminPage() {
   );
 }`} />
         </div>
-        <p className="font-mono text-[10px] text-muted-foreground">
-          Available roles: <code className="bg-muted px-1 font-mono text-[10px]">USER</code>,{" "}
-          <code className="bg-muted px-1 font-mono text-[10px]">ADMIN</code>,{" "}
-          <code className="bg-muted px-1 font-mono text-[10px]">SUPER_ADMIN</code>
+        <p className="font-mono text-xs text-muted-foreground">
+          Available roles: <code className="bg-muted px-1 font-mono text-xs">USER</code>,{" "}
+          <code className="bg-muted px-1 font-mono text-xs">ADMIN</code>,{" "}
+          <code className="bg-muted px-1 font-mono text-xs">SUPER_ADMIN</code>
         </p>
       </div>
 
       {/* Client Component Protection */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CLIENT_COMPONENT_PROTECTION</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">CLIENT_COMPONENT_PROTECTION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           For client components, use the session hook:
         </p>
         <div className="[&>div]:rounded-none">
@@ -149,8 +149,8 @@ export function ProtectedClientComponent() {
 
       {/* Conditional UI */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Show different content based on authentication state:
         </p>
         <div className="[&>div]:rounded-none">

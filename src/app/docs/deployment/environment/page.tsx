@@ -14,14 +14,14 @@ export default function EnvironmentVariablesPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-[10px] text-muted-foreground">[ [0x10] DEPLOYMENT ] ENVIRONMENT</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">ENVIRONMENT_VARIABLES</h1>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">ENVIRONMENT_VARIABLES</h1>
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Complete guide to configuring all environment variables for development and production.
         </p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-3">
+        <CardContent className="p-4">
           <h3 className="mb-2 font-mono text-xs font-semibold">Key Points</h3>
           <ul className="space-y-1 font-mono text-[10px] text-muted-foreground">
             <li>├─ All variables are validated at startup with Zod</li>
@@ -34,8 +34,8 @@ export default function EnvironmentVariablesPage() {
 
       {/* Required Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">REQUIRED_VARIABLES</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">REQUIRED_VARIABLES</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           These must be set for the app to run:
         </p>
         <div className="[&>div]:rounded-none">
@@ -58,8 +58,8 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
 
       {/* Authentication Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">AUTHENTICATION</h2>
-        <p className="font-mono text-xs text-muted-foreground">Configure OAuth providers:</p>
+        <h2 className="font-mono text-lg font-semibold">AUTHENTICATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">Configure OAuth providers:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Google OAuth (optional - enables Google login)
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
@@ -76,8 +76,8 @@ GOOGLE_CLIENT_SECRET="your-client-secret"
 
       {/* Email Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">EMAIL_RESEND</h2>
-        <p className="font-mono text-xs text-muted-foreground">Configure email sending:</p>
+        <h2 className="font-mono text-lg font-semibold">EMAIL_RESEND</h2>
+        <p className="font-mono text-sm text-muted-foreground">Configure email sending:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Resend API Key
 RESEND_API_KEY="re_..."
@@ -95,8 +95,8 @@ EMAIL_FROM="noreply@your-domain.com"
 
       {/* Stripe Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">STRIPE_PAYMENTS</h2>
-        <p className="font-mono text-xs text-muted-foreground">Configure payment processing:</p>
+        <h2 className="font-mono text-lg font-semibold">STRIPE_PAYMENTS</h2>
+        <p className="font-mono text-sm text-muted-foreground">Configure payment processing:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Stripe API Keys
 STRIPE_SECRET_KEY="sk_test_..."           # Server-side
@@ -121,8 +121,8 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
 
       {/* Analytics Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ANALYTICS_OPTIONAL</h2>
-        <p className="font-mono text-xs text-muted-foreground">Track user behavior and metrics:</p>
+        <h2 className="font-mono text-lg font-semibold">ANALYTICS_OPTIONAL</h2>
+        <p className="font-mono text-sm text-muted-foreground">Track user behavior and metrics:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# PostHog Analytics
 NEXT_PUBLIC_POSTHOG_KEY="phc_..."
@@ -140,8 +140,8 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..."`} />
 
       {/* Search Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">SEARCH_ALGOLIA_OPTIONAL</h2>
-        <p className="font-mono text-xs text-muted-foreground">Add search functionality:</p>
+        <h2 className="font-mono text-lg font-semibold">SEARCH_ALGOLIA_OPTIONAL</h2>
+        <p className="font-mono text-sm text-muted-foreground">Add search functionality:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Algolia Search
 NEXT_PUBLIC_ALGOLIA_APP_ID="your-app-id"
@@ -157,8 +157,8 @@ ALGOLIA_ADMIN_KEY="your-admin-key"  # Server-side only
 
       {/* CMS Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CMS_SANITY_OPTIONAL</h2>
-        <p className="font-mono text-xs text-muted-foreground">Manage content with headless CMS:</p>
+        <h2 className="font-mono text-lg font-semibold">CMS_SANITY_OPTIONAL</h2>
+        <p className="font-mono text-sm text-muted-foreground">Manage content with headless CMS:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Sanity CMS
 NEXT_PUBLIC_SANITY_PROJECT_ID="your-project-id"
@@ -174,8 +174,8 @@ SANITY_API_TOKEN="sk..."  # Server-side only
 
       {/* Real-time Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">REALTIME_PUSHER_OPTIONAL</h2>
-        <p className="font-mono text-xs text-muted-foreground">Enable real-time features:</p>
+        <h2 className="font-mono text-lg font-semibold">REALTIME_PUSHER_OPTIONAL</h2>
+        <p className="font-mono text-sm text-muted-foreground">Enable real-time features:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Pusher Real-time
 PUSHER_APP_ID="your-app-id"
@@ -192,8 +192,8 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"
 
       {/* Environment-Specific Configuration */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ENVIRONMENT_SPECIFIC_CONFIGURATION</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ENVIRONMENT_SPECIFIC_CONFIGURATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Use different values for different environments:
         </p>
         <div className="[&>div]:rounded-none">
@@ -219,8 +219,8 @@ DATABASE_URL="postgresql://...production-db..."`} />
 
       {/* Validation */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ENVIRONMENT_VALIDATION</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ENVIRONMENT_VALIDATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           All variables are validated at startup in <code className="bg-muted px-1 font-mono text-[10px]">src/lib/env.ts</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -259,7 +259,7 @@ const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
 
       {/* Security Best Practices */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">SECURITY_BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-semibold">SECURITY_BEST_PRACTICES</h2>
         <ul className="space-y-1 font-mono text-[10px] text-muted-foreground">
           <li>├─ Never commit secrets - Add .env.local to .gitignore</li>
           <li>├─ Rotate secrets regularly - Especially after team changes</li>
@@ -271,8 +271,8 @@ const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
 
       {/* Complete Example */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">COMPLETE_EXAMPLE</h2>
-        <p className="font-mono text-xs text-muted-foreground">Full development environment setup:</p>
+        <h2 className="font-mono text-lg font-semibold">COMPLETE_EXAMPLE</h2>
+        <p className="font-mono text-sm text-muted-foreground">Full development environment setup:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# .env.local - Complete Development Setup
 
@@ -312,11 +312,11 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/database">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">Database Setup</h3>
                 <p className="font-mono text-[10px] text-muted-foreground">
                   Set up production PostgreSQL
@@ -326,7 +326,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
           </Link>
           <Link href="/docs/deployment/vercel">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">Deploy to Vercel</h3>
                 <p className="font-mono text-[10px] text-muted-foreground">
                   Deploy your configured app

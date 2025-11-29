@@ -14,12 +14,12 @@ export default function DeployVercelPage() {
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-[10px] text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">DEPLOY_TO_VERCEL</h1>
-        <p className="font-mono text-xs text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DEPLOY_TO_VERCEL</h1>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
       </div>
 
       <Card className="rounded-none">
-        <CardContent className="p-3">
+        <CardContent className="p-4">
           <h3 className="font-mono mb-2 text-xs font-semibold">WHAT_YOU_WILL_GET</h3>
           <ul className="space-y-1 font-mono text-[10px] text-muted-foreground">
             <li>├─ Automatic HTTPS with custom domains</li>
@@ -34,8 +34,8 @@ export default function DeployVercelPage() {
 
       {/* One-Click Deploy */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">ONE_CLICK_DEPLOY</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">ONE_CLICK_DEPLOY</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           The fastest way to deploy - click and configure:
         </p>
         <div className="[&>div]:rounded-none">
@@ -57,7 +57,7 @@ vercel
 
       {/* Step-by-Step Deployment */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">STEP_BY_STEP_DEPLOYMENT</h2>
+        <h2 className="font-mono text-lg font-semibold">STEP_BY_STEP_DEPLOYMENT</h2>
         <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
           <li>1. Push to GitHub - Your code must be in a Git repository</li>
           <li>2. Connect to Vercel - Go to vercel.com/new</li>
@@ -69,8 +69,8 @@ vercel
 
       {/* Required Environment Variables */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">REQUIRED_ENVIRONMENT_VARIABLES</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">REQUIRED_ENVIRONMENT_VARIABLES</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Add these in Vercel Dashboard → Settings → Environment Variables:
         </p>
         <div className="[&>div]:rounded-none">
@@ -102,8 +102,8 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
 
       {/* vercel.json Configuration */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">VERCEL_JSON_CONFIGURATION</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">VERCEL_JSON_CONFIGURATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Optional configuration for advanced settings:
         </p>
         <div className="[&>div]:rounded-none">
@@ -144,8 +144,8 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
 
       {/* Custom Domain */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">CUSTOM_DOMAIN</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">CUSTOM_DOMAIN</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Connect your custom domain:
         </p>
         <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
@@ -172,8 +172,8 @@ Value: cname.vercel-dns.com`} />
 
       {/* Stripe Webhook Setup */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">STRIPE_WEBHOOK_SETUP</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">STRIPE_WEBHOOK_SETUP</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Configure Stripe webhooks for production:
         </p>
         <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
@@ -198,8 +198,8 @@ Value: cname.vercel-dns.com`} />
 
       {/* Preview Deployments */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">PREVIEW_DEPLOYMENTS</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">PREVIEW_DEPLOYMENTS</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Every PR gets a unique preview URL:
         </p>
         <div className="[&>div]:rounded-none">
@@ -221,7 +221,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
 
       {/* Deployment Troubleshooting */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">TROUBLESHOOTING</h2>
+        <h2 className="font-mono text-lg font-semibold">TROUBLESHOOTING</h2>
 
         <div className="space-y-2">
           <h3 className="font-mono text-xs font-semibold">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
@@ -239,7 +239,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         </div>
 
         <Card className="rounded-none">
-          <CardContent className="p-3">
+          <CardContent className="p-4">
             <h3 className="font-mono mb-2 text-xs font-semibold">ENVIRONMENT_VARIABLES_NOT_WORKING</h3>
             <p className="font-mono text-[10px] text-muted-foreground">
               1. Check variable is set for correct environment (Production/Preview/Development)
@@ -264,11 +264,11 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/environment">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">ENVIRONMENT_VARIABLES</h3>
                 <p className="font-mono text-[10px] text-muted-foreground">
                   Complete environment setup guide
@@ -278,7 +278,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
           </Link>
           <Link href="/docs/deployment/database">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">DATABASE_SETUP</h3>
                 <p className="font-mono text-[10px] text-muted-foreground">
                   Set up production PostgreSQL

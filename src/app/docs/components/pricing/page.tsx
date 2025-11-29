@@ -11,9 +11,9 @@ export default function PricingComponentsPage() {
     <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] PRICING</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] PRICING</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">PRICING_TABLES</h1>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PRICING_TABLES</h1>
         <p className="font-mono text-xs text-muted-foreground mt-2">
           &gt; Pricing components for displaying plans, features, and checkout integration.
         </p>
@@ -21,18 +21,18 @@ export default function PricingComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">PricingSection</code> - Complete pricing section with plan cards</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">PricingTable</code> - Detailed pricing table with feature comparison</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">PricingComparison</code> - Side-by-side plan comparison</li>
+          <h2 className="font-mono text-lg font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingSection</code> - Complete pricing section with plan cards</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingTable</code> - Detailed pricing table with feature comparison</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-xs">PricingComparison</code> - Side-by-side plan comparison</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Pricing section for landing pages
@@ -47,7 +47,7 @@ import { PricingComparison } from "@/components/marketing/pricing-comparison";`}
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">PRICING_SECTION</h3>

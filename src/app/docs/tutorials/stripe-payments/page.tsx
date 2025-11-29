@@ -12,10 +12,10 @@ export default function StripePaymentsTutorialPage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">STRIPE_PAYMENTS</h1>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">STRIPE_PAYMENTS</h1>
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Set up one-time payments and subscriptions with Stripe.
         </p>
       </div>
@@ -23,11 +23,11 @@ export default function StripePaymentsTutorialPage() {
       {/* Setup */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">1</span>
-          <h2 className="font-mono text-sm font-semibold">CONFIGURE_STRIPE</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">1</span>
+          <h2 className="font-mono text-lg font-semibold">CONFIGURE_STRIPE</h2>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
-          Add your Stripe API keys to <code className="bg-muted px-1 font-mono text-[10px]">.env.local</code>:
+        <p className="font-mono text-sm text-muted-foreground">
+          Add your Stripe API keys to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:
         </p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Get from https://dashboard.stripe.com/test/apikeys
@@ -40,10 +40,10 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`} />
       {/* Create Product */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">2</span>
-          <h2 className="font-mono text-sm font-semibold">CREATE_A_PRODUCT</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">2</span>
+          <h2 className="font-mono text-lg font-semibold">CREATE_A_PRODUCT</h2>
         </div>
-        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+        <div className="space-y-1 font-mono text-xs text-muted-foreground">
           <div>├─ Go to{" "}
             <a
               href="https://dashboard.stripe.com/test/products"
@@ -68,10 +68,10 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       {/* Checkout Button */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">3</span>
-          <h2 className="font-mono text-sm font-semibold">CREATE_CHECKOUT_BUTTON</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">3</span>
+          <h2 className="font-mono text-lg font-semibold">CREATE_CHECKOUT_BUTTON</h2>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Use the checkout API to create a payment session:
         </p>
         <div className="[&>div]:rounded-none">
@@ -119,10 +119,10 @@ export function CheckoutButton() {
       {/* Webhooks */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">4</span>
-          <h2 className="font-mono text-sm font-semibold">SET_UP_WEBHOOKS</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">4</span>
+          <h2 className="font-mono text-lg font-semibold">SET_UP_WEBHOOKS</h2>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
         </p>
         <div className="[&>div]:rounded-none">
@@ -135,7 +135,7 @@ stripe login
 # Forward webhooks
 stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           For production, add your webhook endpoint in the Stripe Dashboard:
         </p>
         <div className="[&>div]:rounded-none">
@@ -146,31 +146,31 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
       {/* Webhook Events */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">5</span>
-          <h2 className="font-mono text-sm font-semibold">HANDLE_WEBHOOK_EVENTS</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">5</span>
+          <h2 className="font-mono text-lg font-semibold">HANDLE_WEBHOOK_EVENTS</h2>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           The webhook handler is at{" "}
-          <code className="bg-muted px-1 font-mono text-[10px]">src/app/api/webhooks/stripe/route.ts</code>.
+          <code className="bg-muted px-1 font-mono text-xs">src/app/api/webhooks/stripe/route.ts</code>.
           Key events handled:
         </p>
-        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">checkout.session.completed</code> - Payment successful</div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">customer.subscription.created</code> - New subscription</div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">customer.subscription.updated</code> - Subscription changed</div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">customer.subscription.deleted</code> - Subscription cancelled</div>
-          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">invoice.payment_failed</code> - Payment failed</div>
+        <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">checkout.session.completed</code> - Payment successful</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">customer.subscription.created</code> - New subscription</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">customer.subscription.updated</code> - Subscription changed</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">customer.subscription.deleted</code> - Subscription cancelled</div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-xs">invoice.payment_failed</code> - Payment failed</div>
         </div>
       </div>
 
       {/* Coupons */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground font-mono">6</span>
-          <h2 className="font-mono text-sm font-semibold">PROMOTION_CODES</h2>
+          <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">6</span>
+          <h2 className="font-mono text-lg font-semibold">PROMOTION_CODES</h2>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
-          Configure promotion codes in <code className="bg-muted px-1 font-mono text-[10px]">src/config.js</code>:
+        <p className="font-mono text-sm text-muted-foreground">
+          Configure promotion codes in <code className="bg-muted px-1 font-mono text-xs">src/config.js</code>:
         </p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="javascript" code={`// src/config.js
@@ -190,26 +190,26 @@ stripe: {
 
       {/* Test Cards */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">TEST_CARDS</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">TEST_CARDS</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Use these test cards in development:
         </p>
-        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">4242 4242 4242 4242</code> - Successful payment</div>
-          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">4000 0000 0000 0002</code> - Declined</div>
-          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">4000 0000 0000 3220</code> - Requires 3D Secure</div>
+        <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">4242 4242 4242 4242</code> - Successful payment</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-xs">4000 0000 0000 0002</code> - Declined</div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-xs">4000 0000 0000 3220</code> - Requires 3D Secure</div>
         </div>
       </div>
 
       {/* Next Steps */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">PAYMENTS_FEATURE_GUIDE</h3>
-                <p className="font-mono text-[10px] text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground">
                   Advanced payment features and configuration
                 </p>
               </CardContent>
@@ -217,9 +217,9 @@ stripe: {
           </Link>
           <Link href="/docs/tutorials/webhooks">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
-              <CardContent className="p-3">
+              <CardContent className="p-4">
                 <h3 className="font-mono text-xs font-semibold">WEBHOOKS_SETUP</h3>
-                <p className="font-mono text-[10px] text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground">
                   Handle all webhook events
                 </p>
               </CardContent>

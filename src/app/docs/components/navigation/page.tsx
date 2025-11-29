@@ -11,10 +11,10 @@ export default function NavigationComponentsPage() {
     <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">NAVIGATION_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NAVIGATION_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Navigation components for building headers, menus, and site navigation.
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function NavigationComponentsPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h2 className="font-mono text-xs font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div className="space-y-1 font-mono text-xs text-muted-foreground">
             <div>├─ <code className="bg-muted px-1 font-mono">Navigation</code> - Main site navigation with responsive mobile menu</div>
             <div>├─ <code className="bg-muted px-1 font-mono">Breadcrumb</code> - Breadcrumb navigation for page hierarchy</div>
             <div>├─ <code className="bg-muted px-1 font-mono">Sidebar</code> - Collapsible sidebar navigation</div>
@@ -33,7 +33,7 @@ export default function NavigationComponentsPage() {
       </Card>
 
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// Landing page navigation
 import { Navigation } from "@/components/landing/navigation";
@@ -73,7 +73,7 @@ import {
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">LANDING_NAVIGATION</h3>

@@ -193,14 +193,14 @@ export default function ComponentsOverviewPage() {
       {/* Header */}
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">
+          <span className="font-mono text-xs text-muted-foreground">
             [ [0x60] COMPONENTS ] UI_LIBRARY │ {totalComponents} COMPONENTS
           </span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">
           UI_COMPONENTS_LIBRARY
         </h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; 100+ production-ready components built with Radix UI and Tailwind CSS.
         </p>
       </div>
@@ -208,21 +208,21 @@ export default function ComponentsOverviewPage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-2">
         <Card className="rounded-none">
-          <CardContent className="p-3 text-center">
+          <CardContent className="p-4 text-center">
             <div className="font-mono text-xl font-bold text-primary">{totalComponents}+</div>
-            <div className="font-mono text-[10px] text-muted-foreground">COMPONENTS</div>
+            <div className="font-mono text-xs text-muted-foreground">COMPONENTS</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
-          <CardContent className="p-3 text-center">
+          <CardContent className="p-4 text-center">
             <div className="font-mono text-xl font-bold text-primary">{componentCategories.length}</div>
-            <div className="font-mono text-[10px] text-muted-foreground">CATEGORIES</div>
+            <div className="font-mono text-xs text-muted-foreground">CATEGORIES</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
-          <CardContent className="p-3 text-center">
+          <CardContent className="p-4 text-center">
             <div className="font-mono text-xl font-bold text-primary">100%</div>
-            <div className="font-mono text-[10px] text-muted-foreground">TYPESCRIPT</div>
+            <div className="font-mono text-xs text-muted-foreground">TYPESCRIPT</div>
           </CardContent>
         </Card>
       </div>
@@ -232,9 +232,9 @@ export default function ComponentsOverviewPage() {
         {componentCategories.map((category) => (
           <div key={category.name}>
             <div className="mb-3 flex items-center gap-2">
-              <span className="font-mono text-[10px] text-muted-foreground">[{category.hex}]</span>
-              <h2 className="font-mono text-sm font-semibold">{category.name}</h2>
-              <span className="font-mono text-[10px] text-muted-foreground">
+              <span className="font-mono text-xs text-muted-foreground">[{category.hex}]</span>
+              <h2 className="font-mono text-lg font-semibold">{category.name}</h2>
+              <span className="font-mono text-xs text-muted-foreground">
                 ({category.components.length})
               </span>
             </div>
@@ -244,10 +244,10 @@ export default function ComponentsOverviewPage() {
                   key={component.name}
                   className="rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50"
                 >
-                  <div className="font-mono text-[10px] font-semibold text-foreground">
+                  <div className="font-mono text-xs font-semibold text-foreground">
                     {component.name}
                   </div>
-                  <div className="mt-1 font-mono text-[10px] text-muted-foreground">
+                  <div className="mt-1 font-mono text-xs text-muted-foreground">
                     {component.description}
                   </div>
                 </div>
@@ -259,10 +259,10 @@ export default function ComponentsOverviewPage() {
 
       {/* Import Example */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">IMPORT_PATTERN</h2>
+        <h2 className="font-mono text-lg font-semibold">IMPORT_PATTERN</h2>
         <Card className="rounded-none">
-          <CardContent className="p-3">
-            <pre className="font-mono text-[10px] text-muted-foreground">
+          <CardContent className="p-4">
+            <pre className="font-mono text-xs text-muted-foreground">
               {`// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -275,28 +275,28 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
 
       {/* Component Docs Links */}
       <div className="space-y-3">
-        <h2 className="font-mono text-sm font-semibold">DETAILED_DOCUMENTATION</h2>
-        <p className="font-mono text-xs text-muted-foreground">
+        <h2 className="font-mono text-lg font-semibold">DETAILED_DOCUMENTATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; See individual component pages for usage examples and API reference:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/components/buttons" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; BUTTONS</span>
+            <span className="font-mono text-xs">&gt; BUTTONS</span>
           </Link>
           <Link href="/docs/components/forms" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; FORMS_INPUTS</span>
+            <span className="font-mono text-xs">&gt; FORMS_INPUTS</span>
           </Link>
           <Link href="/docs/components/data-display" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; DATA_DISPLAY</span>
+            <span className="font-mono text-xs">&gt; DATA_DISPLAY</span>
           </Link>
           <Link href="/docs/components/charts" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; CHARTS_ANALYTICS</span>
+            <span className="font-mono text-xs">&gt; CHARTS_ANALYTICS</span>
           </Link>
           <Link href="/docs/components/modals" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; MODALS_DIALOGS</span>
+            <span className="font-mono text-xs">&gt; MODALS_DIALOGS</span>
           </Link>
           <Link href="/docs/components/uploads" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
-            <span className="font-mono text-[10px]">&gt; UPLOAD_COMPONENTS</span>
+            <span className="font-mono text-xs">&gt; UPLOAD_COMPONENTS</span>
           </Link>
         </div>
       </div>

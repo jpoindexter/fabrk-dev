@@ -11,28 +11,28 @@ export default function FAQComponentsPage() {
     <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">FAQ_SECTION</h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FAQ_SECTION</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Frequently asked questions component with accordion-style answers.
         </p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">FAQSection</code> - Complete FAQ section with accordion</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Accordion</code> - Base accordion component for custom FAQs</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Collapsible</code> - Simple collapsible content</li>
+          <h2 className="font-mono text-lg font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">FAQSection</code> - Complete FAQ section with accordion</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Accordion</code> - Base accordion component for custom FAQs</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-xs">Collapsible</code> - Simple collapsible content</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// FAQ section for landing pages
@@ -56,7 +56,7 @@ import {
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">FAQ_SECTION</h3>

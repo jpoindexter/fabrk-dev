@@ -11,28 +11,28 @@ export default function FooterComponentsPage() {
     <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
-        <h1 className="font-mono text-xl font-bold tracking-tight">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-xs text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Footer components with links, branding, and legal information.
         </p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Footer</code> - Landing page footer with link columns</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Logo</code> - Brand logo component</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Separator</code> - Visual divider</li>
+          <h2 className="font-mono text-lg font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-xs">Separator</code> - Visual divider</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLES</h2>
         </div>
         <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Landing page footer
@@ -50,7 +50,7 @@ import { Separator } from "@/components/ui/separator";`} />
       </div>
 
       <div className="space-y-6">
-        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">LANDING_PAGE_FOOTER</h3>

@@ -13,8 +13,8 @@ export default function LaunchChecklistPage() {
                 <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
                     <span className="font-mono text-[10px] text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
                 </div>
-                <h1 className="font-mono text-xl font-bold tracking-tight">LAUNCH_CHECKLIST</h1>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">LAUNCH_CHECKLIST</h1>
+                <p className="font-mono text-sm text-muted-foreground">
                     &gt; A comprehensive guide to ensuring your Fabrk application is production-ready.
                 </p>
             </div>
@@ -33,8 +33,8 @@ export default function LaunchChecklistPage() {
             {/* 1. Pre-Launch Verification */}
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">1</span>
-                    <h2 className="font-mono text-sm font-semibold">PRE_LAUNCH_VERIFICATION</h2>
+                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
+                    <h2 className="font-mono text-lg font-semibold">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
                 <div className="space-y-3">
                     <h3 className="font-mono text-xs font-semibold">CODE_QUALITY_AND_SECURITY</h3>
@@ -59,8 +59,8 @@ export default function LaunchChecklistPage() {
             {/* 2. Stripe Setup */}
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">2</span>
-                    <h2 className="font-mono text-sm font-semibold">STRIPE_AND_PAYMENTS_SETUP</h2>
+                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
+                    <h2 className="font-mono text-lg font-semibold">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
                 <div className="space-y-3">
                     <h3 className="font-mono text-xs font-semibold">PRODUCT_CONFIGURATION</h3>
@@ -82,8 +82,8 @@ export default function LaunchChecklistPage() {
             {/* 3. Marketing Assets */}
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">3</span>
-                    <h2 className="font-mono text-sm font-semibold">MARKETING_ASSETS</h2>
+                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
+                    <h2 className="font-mono text-lg font-semibold">MARKETING_ASSETS</h2>
                 </div>
                 <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
                     <div>├─ <strong>The Pitch:</strong> Prepare a 30-60s video for social media.</div>
@@ -95,8 +95,8 @@ export default function LaunchChecklistPage() {
             {/* 4. Launch Day */}
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">4</span>
-                    <h2 className="font-mono text-sm font-semibold">LAUNCH_DAY_EXECUTION</h2>
+                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">4</span>
+                    <h2 className="font-mono text-lg font-semibold">LAUNCH_DAY_EXECUTION</h2>
                 </div>
                 <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
                     <div>├─ <strong>Distribution:</strong> Verify your GitHub repo invite system (if selling code) or app deployment.</div>
@@ -108,8 +108,8 @@ export default function LaunchChecklistPage() {
             {/* 5. Post-Launch */}
             <section className="space-y-3">
                 <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-mono font-bold text-primary-foreground">5</span>
-                    <h2 className="font-mono text-sm font-semibold">POST_LAUNCH_MONITORING</h2>
+                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">5</span>
+                    <h2 className="font-mono text-lg font-semibold">POST_LAUNCH_MONITORING</h2>
                 </div>
                 <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
                     <div>├─ <strong>Support:</strong> Monitor your support email continuously for 48 hours.</div>
@@ -120,8 +120,8 @@ export default function LaunchChecklistPage() {
 
             {/* Useful Commands */}
             <section className="space-y-3">
-                <h2 className="font-mono text-sm font-semibold">USEFUL_COMMANDS</h2>
-                <p className="font-mono text-xs text-muted-foreground">Pre-launch verification commands:</p>
+                <h2 className="font-mono text-lg font-semibold">USEFUL_COMMANDS</h2>
+                <p className="font-mono text-sm text-muted-foreground">Pre-launch verification commands:</p>
                 <div className="[&>div]:rounded-none">
                     <CodeBlock language="bash" code={`# Run full test suite
 npm run test:all

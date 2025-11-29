@@ -19,16 +19,16 @@ export default function EmailsPage() {
       <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
         <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
       </div>
-      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">EMAIL_WITH_RESEND</h1>
+      <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">EMAIL_WITH_RESEND</h1>
       <p className="font-mono text-sm text-muted-foreground mb-8">
         &gt; Production-ready email system with React Email templates, queue-based sending, and beautiful transactional emails.
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">OVERVIEW</h2>
         <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">
+          <CardContent className="p-4">
+            <p className="text-sm text-muted-foreground mb-4">
               Fabrk uses Resend for email delivery with lightweight HTML templates. The system supports:
             </p>
             <ul className="list-disc pl-6 space-y-2">
@@ -43,11 +43,11 @@ export default function EmailsPage() {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-xl font-medium">SET_UP_RESEND</h3>
+          <h3 className="font-mono text-lg font-medium">SET_UP_RESEND</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
@@ -61,7 +61,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-xl font-medium">CONFIGURE_DOMAIN</h3>
+          <h3 className="font-mono text-lg font-medium">CONFIGURE_DOMAIN</h3>
         </div>
         <Card className="mb-6">
           <CardContent className="pt-6">
@@ -77,7 +77,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
         <div className="flex items-center gap-2 mb-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-xl font-medium">START_EMAIL_WORKER</h3>
+          <h3 className="font-mono text-lg font-medium">START_EMAIL_WORKER</h3>
         </div>
         <div className="space-y-4">
           <div>
@@ -89,7 +89,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">EMAIL_TEMPLATES</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">EMAIL_TEMPLATES</h2>
         <div className="space-y-4 mb-6">
           <p className="mb-4">Templates are in <code className="font-mono bg-muted px-2 py-1">src/emails/</code>. Pre-built templates include:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -140,9 +140,9 @@ export function generateWelcomeEmailHTML({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-xl font-medium mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
+        <h3 className="font-mono text-lg font-medium mb-3">DIRECT_SENDING_AUTH_EMAILS</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">For immediate delivery (verification, password reset):</p>
@@ -164,7 +164,7 @@ await sendResetEmail({
   resetUrl: \`\${config.app.url}/reset-password?token=\${token}\`,
 });`} />
 
-        <h3 className="font-mono text-xl font-medium mb-3">QUEUED_SENDING_TRANSACTIONAL</h3>
+        <h3 className="font-mono text-lg font-medium mb-3">QUEUED_SENDING_TRANSACTIONAL</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">For non-urgent emails (welcome, receipts):</p>
@@ -188,7 +188,7 @@ await queueConfirmationEmail({
   receiptUrl: payment.receiptUrl,
 });`} />
 
-        <h3 className="font-mono text-xl font-medium mb-3">CUSTOM_EMAIL_SENDING</h3>
+        <h3 className="font-mono text-lg font-medium mb-3">CUSTOM_EMAIL_SENDING</h3>
         <div className="space-y-4 mb-6">
           <div>
             <p className="text-muted-foreground">Send any HTML content:</p>
@@ -206,7 +206,7 @@ await resend.emails.send({
   html: "<h1>Hello World</h1><p>This is a custom email.</p>",
 });`} />
 
-        <h3 className="font-mono text-xl font-medium mb-3">BATCH_SENDING</h3>
+        <h3 className="font-mono text-lg font-medium mb-3">BATCH_SENDING</h3>
         <div className="space-y-4">
           <div>
             <p className="text-muted-foreground">Send to multiple recipients:</p>
@@ -230,11 +230,11 @@ await resend.batch.send(emails);`} />
 
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="p-4">
               <h3 className="font-semibold mb-2">User Onboarding Sequence</h3>
               <p className="text-muted-foreground">
                 Queue a series of welcome emails with delays: Day 1 welcome, Day 3 tips, Day 7 feature highlight. Use the job queue for scheduling.
@@ -243,7 +243,7 @@ await resend.batch.send(emails);`} />
           </Card>
 
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="p-4">
               <h3 className="font-semibold mb-2">Organization Invites</h3>
               <p className="text-muted-foreground">
                 Send branded invite emails with accept/decline links. Include inviter name and organization details for context.
@@ -252,7 +252,7 @@ await resend.batch.send(emails);`} />
           </Card>
 
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="p-4">
               <h3 className="font-semibold mb-2">Payment Receipts</h3>
               <p className="text-muted-foreground">
                 Automatic receipt emails triggered by Stripe webhooks. Include amount, product details, and link to invoice PDF.
@@ -261,7 +261,7 @@ await resend.batch.send(emails);`} />
           </Card>
 
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="p-4">
               <h3 className="font-semibold mb-2">Activity Notifications</h3>
               <p className="text-muted-foreground">
                 Notify users of important events: new team member joined, project updated, comment received. Respect notification preferences.
@@ -272,9 +272,9 @@ await resend.batch.send(emails);`} />
       </section>
 
       <section>
-        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
+        <h2 className="font-mono text-lg font-semibold mb-4">BEST_PRACTICES</h2>
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="p-4">
             <ul className="list-disc pl-6 space-y-2">
               <li>Use direct send for auth emails, queue for everything else</li>
               <li>Always include unsubscribe links for marketing emails</li>
