@@ -1,7 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import { Mermaid } from "@/components/ui/mermaid";
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Layers, Shield, Database, Workflow } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mermaid } from "@/components/ui/mermaid";
 
 export const metadata = {
   title: "Architecture Overview - Fabrk Docs",
@@ -9,28 +12,49 @@ export const metadata = {
 };
 
 export default function ArchitecturePage() {
-    return (
-        <div className="space-y-16">
-            {/* Header */}
-            <div className="space-y-4">
-                <div className="inline-block border border-border bg-card px-3 py-1">
-                    <span className="font-mono text-sm text-muted-foreground">[ [0x00] CORE ] ARCHITECTURE</span>
-                </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">System Architecture</h1>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    &gt; A deep dive into Fabrk's enterprise-grade stack and design patterns.
-                </p>
-            </div>
+  return (
+    <FeatureGuideTemplate
+      code="[0x00]"
+      category="Core"
+      title="Architecture"
+      description="A deep dive into Fabrk's enterprise-grade stack and design patterns."
+      overview="Built on the T3 Stack philosophy but extended for enterprise SaaS. Next.js 15 (App Router) ensures type safety from database to frontend. Scales from 0 to 1M+ users."
+      features={[
+        { icon: Layers, title: "App Router", description: "Next.js 15 RSC + Server Actions." },
+        { icon: Shield, title: "NextAuth v5", description: "JWT sessions, RBAC, 2FA." },
+        { icon: Database, title: "Prisma ORM", description: "Type-safe PostgreSQL queries." },
+        { icon: Workflow, title: "Service Layer", description: "Clean separation of concerns." },
+      ]}
+      usage={[
+        {
+          title: "Mutation Flow (Server Actions)",
+          description: "Example of a typical server action flow",
+          code: `// 1. Client invokes action
+const { execute, status } = useAction(updateUserProfile);
 
-            {/* High Level Overview */}
-            <section className="space-y-4">
-                <h2 className="font-mono text-lg font-bold text-primary">High-Level Overview</h2>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Fabrk is built on the <strong>T3 Stack</strong> philosophy but extended for enterprise SaaS requirements.
-                    It leverages Next.js 15 (App Router) for the full-stack framework, ensuring type safety from the database to the frontend.
-                </p>
-                <div className="mt-4">
-                <Mermaid chart={`graph TD
+// 2. Server Action (src/app/_actions/user.ts)
+export const updateUserProfile = action(schema, async ({ input, ctx }) => {
+  // 3. Authorization Check
+  if (!ctx.session) throw new UnauthorizedError();
+
+  // 4. Database Operation
+  const user = await prisma.user.update({...});
+
+  // 5. Revalidation
+  revalidatePath('/dashboard/settings');
+
+  return user;
+});`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Getting Started", href: "/docs/getting-started" }}
+      next={{ title: "Features", href: "/docs/features/database" }}
+    >
+      {/* Architecture Diagram */}
+      <DocsSection title="High-Level Overview">
+        <DocsCard>
+          <Mermaid chart={`graph TD
     subgraph Client
         Browser[Browser / Mobile]
     end
@@ -62,90 +86,91 @@ export default function ArchitecturePage() {
     App --> API
     API --> DB
     API --> Services`} />
-                </div>
-            </section>
+        </DocsCard>
+      </DocsSection>
 
-            {/* Core Components */}
-            <section className="space-y-4">
-                <h2 className="font-mono text-lg font-bold text-primary">Core Components</h2>
+      {/* Core Components */}
+      <DocsSection title="Core Components">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication & Security</h4>
+            <p className={`${docsTypography.body} mb-3`}>
+              Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
+              but can be database-persisted for strict session management.
+            </p>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Role-Based Access Control (RBAC)</div>
+              <div>├─ Middleware protection for routes</div>
+              <div>└─ CSRF & Rate Limiting pre-configured</div>
+            </div>
+          </DocsCard>
 
-                <div className="grid gap-2 md:grid-cols-2">
-                    <Card className="rounded-none">
-                        <CardContent className="p-6">
-                            <h3 className="font-mono text-base font-semibold text-foreground mb-2">Authentication & Security</h3>
-                            <p className="font-mono text-sm text-muted-foreground mb-3">
-                                Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
-                                but can be database-persisted for strict session management.
-                            </p>
-                            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                                <div>├─ Role-Based Access Control (RBAC)</div>
-                                <div>├─ Middleware protection for routes</div>
-                                <div>└─ CSRF & Rate Limiting pre-configured</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    <Card className="rounded-none">
-                        <CardContent className="p-6">
-                            <h3 className="font-mono text-base font-semibold text-foreground mb-2">Database Layer</h3>
-                            <p className="font-mono text-sm text-muted-foreground mb-3">
-                                Prisma ORM provides a type-safe interface to PostgreSQL.
-                                We use a "Service Layer" pattern to abstract database logic from UI components.
-                            </p>
-                            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                                <div>├─ Automated migrations</div>
-                                <div>├─ Connection pooling (ready for serverless)</div>
-                                <div>└─ Zod schema validation</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </section>
-
-            {/* Data Flow */}
-            <section className="space-y-4">
-                <h2 className="font-mono text-lg font-bold text-primary">Data Flow & Patterns</h2>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    We strictly follow unidirectional data flow. Server Actions are used for mutations,
-                    while React Server Components (RSC) handle data fetching.
-                </p>
-
-                <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold text-foreground">Mutation Flow (Server Actions)</h3>
-                    <p className="font-mono text-sm text-muted-foreground leading-relaxed">Example of a typical server action flow:</p>
-                    <div className="[&>div]:rounded-none">
-                        <CodeBlock language="typescript" code={`// 1. Client invokes action
-const { execute, status } = useAction(updateUserProfile);
-
-// 2. Server Action (src/app/_actions/user.ts)
-export const updateUserProfile = action(schema, async ({ input, ctx }) => {
-  // 3. Authorization Check
-  if (!ctx.session) throw new UnauthorizedError();
-
-  // 4. Database Operation
-  const user = await prisma.user.update({...});
-
-  // 5. Revalidation
-  revalidatePath('/dashboard/settings');
-
-  return user;
-});`} />
-                    </div>
-                </div>
-            </section>
-
-            {/* Scalability */}
-            <section className="space-y-4">
-                <h2 className="font-mono text-lg font-bold text-primary">Scalability Considerations</h2>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
-                </p>
-                <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                    <div>├─ <strong>Edge Caching:</strong> Static assets and ISR pages are cached at the edge.</div>
-                    <div>├─ <strong>Serverless Database:</strong> Compatible with Neon/Supabase for auto-scaling storage and compute.</div>
-                    <div>└─ <strong>Job Queues:</strong> Background jobs (emails, webhooks) are decoupled using Inngest or similar patterns (optional).</div>
-                </div>
-            </section>
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Database Layer</h4>
+            <p className={`${docsTypography.body} mb-3`}>
+              Prisma ORM provides a type-safe interface to PostgreSQL.
+              We use a "Service Layer" pattern to abstract database logic from UI components.
+            </p>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Automated migrations</div>
+              <div>├─ Connection pooling (serverless ready)</div>
+              <div>└─ Zod schema validation</div>
+            </div>
+          </DocsCard>
         </div>
-    );
+      </DocsSection>
+
+      {/* Data Flow */}
+      <DocsSection title="Data Flow & Patterns">
+        <DocsCard>
+          <p className={`${docsTypography.body} mb-3`}>
+            We strictly follow unidirectional data flow. Server Actions are used for mutations,
+            while React Server Components (RSC) handle data fetching.
+          </p>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ RSC for data fetching (no useEffect)</div>
+            <div>├─ Server Actions for mutations</div>
+            <div>├─ revalidatePath for cache invalidation</div>
+            <div>└─ Zod schemas for input validation</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Scalability */}
+      <DocsSection title="Scalability Considerations">
+        <DocsCard>
+          <p className={`${docsTypography.body} mb-3`}>
+            Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
+          </p>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <strong>Edge Caching:</strong> Static assets and ISR pages cached at the edge</div>
+            <div>├─ <strong>Serverless Database:</strong> Compatible with Neon/Supabase for auto-scaling</div>
+            <div>└─ <strong>Job Queues:</strong> Background jobs decoupled using Inngest (optional)</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/features/database">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database</h3>
+                <p className={docsTypography.body}>Prisma ORM and PostgreSQL setup</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/tutorials/authentication">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
+                <p className={docsTypography.body}>NextAuth.js v5 configuration</p>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
+  );
 }

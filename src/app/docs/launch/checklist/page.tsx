@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { CheckSquare, Code, CreditCard, Megaphone, Rocket } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Launch Checklist - Fabrk Docs",
@@ -7,123 +11,56 @@ export const metadata = {
 };
 
 export default function LaunchChecklistPage() {
-    return (
-        <div className="space-y-16">
-            <div className="space-y-4">
-                <div className="inline-block border border-border bg-card px-3 py-1">
-                    <span className="font-mono text-sm text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
-                </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">LAUNCH_CHECKLIST</h1>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    &gt; A comprehensive guide to ensuring your Fabrk application is production-ready.
-                </p>
-            </div>
-
-            <Card className="rounded-none border-primary/20 bg-card">
-                <CardContent className="p-6">
-                    <p className="text-primary font-mono font-medium text-xs">
-                        Status: Ready for Launch
-                    </p>
-                    <p className="font-mono text-sm text-muted-foreground mt-1">
-                        Follow this checklist to verify your application before going live.
-                    </p>
-                </CardContent>
-            </Card>
-
-            {/* 1. Pre-Launch Verification */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-                    <h2 className="font-mono text-lg font-bold text-primary">PRE_LAUNCH_VERIFICATION</h2>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold text-foreground">CODE_QUALITY_AND_SECURITY</h3>
-                    <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                        <div>├─ <strong>Resolve TODOs:</strong> Search for `TODO` or `FIXME` in `src/` and resolve them.</div>
-                        <div>├─ <strong>Configuration:</strong> Ensure all placeholders in `src/config.js` are replaced with real values.</div>
-                        <div>├─ <strong>Type Safety:</strong> Run `npm run type-check` to ensure no TypeScript errors.</div>
-                        <div>├─ <strong>Linting:</strong> Run `npm run lint` to catch potential issues.</div>
-                        <div>├─ <strong>Dependencies:</strong> Run `npm audit` to check for security vulnerabilities.</div>
-                        <div>└─ <strong>Build:</strong> Verify `npm run build` succeeds locally.</div>
-                    </div>
-
-                    <h3 className="font-mono text-base font-semibold text-foreground">LEGAL_AND_BUSINESS</h3>
-                    <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                        <div>├─ <strong>Pricing:</strong> Confirm prices in `src/config.js` match your Stripe dashboard.</div>
-                        <div>├─ <strong>Support:</strong> Verify `supportEmail` in config is active.</div>
-                        <div>└─ <strong>Terms:</strong> Ensure Terms of Service and Privacy Policy pages are accessible.</div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 2. Stripe Setup */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-                    <h2 className="font-mono text-lg font-bold text-primary">STRIPE_AND_PAYMENTS_SETUP</h2>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="font-mono text-base font-semibold text-foreground">PRODUCT_CONFIGURATION</h3>
-                    <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                        <div>├─ Create products in Stripe Dashboard (Test & Production).</div>
-                        <div>├─ Copy Price IDs to `.env` (e.g., `NEXT_PUBLIC_STRIPE_PRICE_PRO`).</div>
-                        <div>└─ Create coupons if needed (e.g., EARLYBIRD).</div>
-                    </div>
-
-                    <h3 className="font-mono text-base font-semibold text-foreground">WEBHOOK_CONFIGURATION</h3>
-                    <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                        <div>├─ Add endpoint: `https://your-domain.com/api/stripe/webhook`</div>
-                        <div>├─ Select events: `checkout.session.completed`, `customer.subscription.*`, `payment_intent.*`</div>
-                        <div>└─ Copy Signing Secret (`whsec_...`) to `STRIPE_WEBHOOK_SECRET` in `.env`.</div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 3. Marketing Assets */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-                    <h2 className="font-mono text-lg font-bold text-primary">MARKETING_ASSETS</h2>
-                </div>
-                <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                    <div>├─ <strong>The Pitch:</strong> Prepare a 30-60s video for social media.</div>
-                    <div>├─ <strong>The Walkthrough:</strong> Record a 3-5 min demo for the documentation/landing page.</div>
-                    <div>└─ <strong>Social Proof:</strong> Gather initial testimonials or beta user feedback.</div>
-                </div>
-            </section>
-
-            {/* 4. Launch Day */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">4</span>
-                    <h2 className="font-mono text-lg font-bold text-primary">LAUNCH_DAY_EXECUTION</h2>
-                </div>
-                <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                    <div>├─ <strong>Distribution:</strong> Verify your GitHub repo invite system (if selling code) or app deployment.</div>
-                    <div>├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, and LinkedIn posts.</div>
-                    <div>└─ <strong>Community:</strong> Post in relevant Discord servers and subreddits.</div>
-                </div>
-            </section>
-
-            {/* 5. Post-Launch */}
-            <section className="space-y-4">
-                <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">5</span>
-                    <h2 className="font-mono text-lg font-bold text-primary">POST_LAUNCH_MONITORING</h2>
-                </div>
-                <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-                    <div>├─ <strong>Support:</strong> Monitor your support email continuously for 48 hours.</div>
-                    <div>├─ <strong>Stripe:</strong> Watch for failed payments or disputes.</div>
-                    <div>└─ <strong>Errors:</strong> Check Vercel logs or Sentry for unhandled exceptions.</div>
-                </div>
-            </section>
-
-            {/* Useful Commands */}
-            <section className="space-y-4">
-                <h2 className="font-mono text-lg font-bold text-primary">USEFUL_COMMANDS</h2>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">Pre-launch verification commands:</p>
-                <div className="[&>div]:rounded-none">
-                    <CodeBlock language="bash" code={`# Run full test suite
+  return (
+    <FeatureGuideTemplate
+      code="[0xA0]"
+      category="Launch"
+      title="Launch_Checklist"
+      description="A comprehensive guide to ensuring your Fabrk application is production-ready."
+      overview="5-phase launch process: pre-launch verification, Stripe setup, marketing assets, launch day execution, and post-launch monitoring."
+      features={[
+        { icon: Code, title: "Code Quality", description: "TypeScript, linting, security." },
+        { icon: CreditCard, title: "Stripe Setup", description: "Products, webhooks, coupons." },
+        { icon: Megaphone, title: "Marketing", description: "Videos, demos, social proof." },
+        { icon: Rocket, title: "Launch Day", description: "Distribution, announcements." },
+      ]}
+      setup={[
+        {
+          title: "Resolve TODOs",
+          description: "Search for TODO or FIXME in src/ and resolve them",
+          code: `grep -r "TODO" src/`,
+          language: "bash",
+        },
+        {
+          title: "Verify Types",
+          description: "Ensure no TypeScript errors",
+          code: `npm run type-check`,
+          language: "bash",
+        },
+        {
+          title: "Run Linting",
+          description: "Catch potential issues",
+          code: `npm run lint`,
+          language: "bash",
+        },
+        {
+          title: "Check Dependencies",
+          description: "Audit for security vulnerabilities",
+          code: `npm audit`,
+          language: "bash",
+        },
+        {
+          title: "Build Locally",
+          description: "Verify production build succeeds",
+          code: `npm run build`,
+          language: "bash",
+        },
+      ]}
+      usage={[
+        {
+          title: "Useful Commands",
+          description: "Pre-launch verification commands",
+          code: `# Run full test suite
 npm run test:all
 
 # Check for TODOs
@@ -133,9 +70,114 @@ grep -r "TODO" src/
 npm run build
 
 # Check types
-npm run type-check`} />
-                </div>
-            </section>
+npm run type-check`,
+          language: "bash",
+        },
+      ]}
+      previous={{ title: "Theming", href: "/docs/extras/theming" }}
+      next={{ title: "Getting Started", href: "/docs/getting-started" }}
+    >
+      {/* Phase 1: Pre-Launch */}
+      <DocsSection title="Phase 1: Pre-Launch Verification">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Code Quality & Security</h4>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Resolve all TODO/FIXME comments</div>
+              <div>├─ Replace placeholders in src/config.js</div>
+              <div>├─ Run npm run type-check</div>
+              <div>├─ Run npm run lint</div>
+              <div>├─ Run npm audit</div>
+              <div>└─ Verify npm run build succeeds</div>
+            </div>
+          </DocsCard>
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Legal & Business</h4>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Prices match Stripe dashboard</div>
+              <div>├─ Support email is active</div>
+              <div>└─ Terms of Service & Privacy Policy accessible</div>
+            </div>
+          </DocsCard>
         </div>
-    );
+      </DocsSection>
+
+      {/* Phase 2: Stripe */}
+      <DocsSection title="Phase 2: Stripe & Payments Setup">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Product Configuration</h4>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Create products in Stripe (Test & Prod)</div>
+              <div>├─ Copy Price IDs to .env</div>
+              <div>└─ Create coupons if needed (e.g., EARLYBIRD)</div>
+            </div>
+          </DocsCard>
+          <DocsCard>
+            <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Webhook Configuration</h4>
+            <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+              <div>├─ Add endpoint: /api/stripe/webhook</div>
+              <div>├─ Select events: checkout.session.completed, etc.</div>
+              <div>└─ Copy Signing Secret to STRIPE_WEBHOOK_SECRET</div>
+            </div>
+          </DocsCard>
+        </div>
+      </DocsSection>
+
+      {/* Phase 3: Marketing */}
+      <DocsSection title="Phase 3: Marketing Assets">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <strong>The Pitch:</strong> 30-60s video for social media</div>
+            <div>├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing page</div>
+            <div>└─ <strong>Social Proof:</strong> Initial testimonials or beta feedback</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Phase 4: Launch Day */}
+      <DocsSection title="Phase 4: Launch Day Execution">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment</div>
+            <div>├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, LinkedIn</div>
+            <div>└─ <strong>Community:</strong> Post in Discord servers and subreddits</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Phase 5: Post-Launch */}
+      <DocsSection title="Phase 5: Post-Launch Monitoring">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <strong>Support:</strong> Monitor support email for 48 hours</div>
+            <div>├─ <strong>Stripe:</strong> Watch for failed payments or disputes</div>
+            <div>└─ <strong>Errors:</strong> Check Vercel logs or Sentry for exceptions</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/deployment/vercel">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
+                <p className={docsTypography.body}>Production deployment guide</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/tutorials/stripe-payments">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Payments</h3>
+                <p className={docsTypography.body}>Full Stripe integration guide</p>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
+  );
 }
