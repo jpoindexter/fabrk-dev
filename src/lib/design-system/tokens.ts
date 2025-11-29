@@ -1,8 +1,7 @@
 import { z } from "zod";
 
-// Lavender Neobrutalist Color Palette
-// Based on brutalist-redesign branch with light lavender background
-// and bold purple/orange/yellow feature cards
+// Design System Color Palette
+// Light lavender background with bold purple/orange/yellow feature cards
 const palette = {
   base: {
     // Light lavender background (oklch(93.46% 0.0304 254.32) approximated to HSL)
@@ -19,7 +18,7 @@ const palette = {
     popoverForeground: { light: "0 0% 0%", dark: "0 0% 98%" },
   },
   interactive: {
-    // Pure black borders for neobrutalist style
+    // Clean borders
     border: { light: "0 0% 0%", dark: "254 20% 30%" },
     input: { light: "0 0% 0%", dark: "254 20% 30%" },
     ring: { light: "259 60% 60%", dark: "259 60% 65%" },
@@ -95,8 +94,6 @@ const radius = {
   xl: "0.75rem",
   "2xl": "1rem",
   full: "9999px",
-  // Neobrutalist specific
-  brutal: "2px",
 } as const;
 
 const shadows = {
@@ -105,11 +102,6 @@ const shadows = {
   md: "0 4px 6px -1px rgba(0, 0, 0, 0.15)",
   lg: "0 10px 15px -3px rgba(0, 0, 0, 0.20)",
   xl: "0 20px 25px -5px rgba(0, 0, 0, 0.25)",
-  // Neobrutalist hard shadows
-  brutal: "4px 4px 0px 0px rgba(0, 0, 0, 1)",
-  "brutal-sm": "2px 2px 0px 0px rgba(0, 0, 0, 1)",
-  "brutal-lg": "8px 8px 0px 0px rgba(0, 0, 0, 1)",
-  "brutal-xl": "12px 12px 0px 0px rgba(0, 0, 0, 1)",
 } as const;
 
 const typography = {
@@ -136,7 +128,7 @@ const typography = {
     semibold: "600",
     bold: "700",
     extrabold: "800",
-    black: "900", // For neobrutalist headings
+    black: "900",
   },
   lineHeight: {
     tight: "1.25",
