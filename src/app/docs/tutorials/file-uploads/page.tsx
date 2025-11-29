@@ -33,7 +33,7 @@ export default function FileUploadsTutorialPage() {
       </Card>
 
       {/* Dependencies */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">DEPENDENCIES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -46,7 +46,7 @@ export default function FileUploadsTutorialPage() {
       </div>
 
       {/* Upload API Route */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">UPLOAD_API_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -156,7 +156,7 @@ export const config = {
       </div>
 
       {/* Client-Side Upload */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CLIENT_SIDE_UPLOAD_HANDLER</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -223,7 +223,7 @@ export function FileUploadForm() {
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       <div
         {...getRootProps()}
         className="border-2 border-dashed rounded-none p-6 text-center cursor-pointer transition-colors hover:border-primary/50"
@@ -266,7 +266,7 @@ export function FileUploadForm() {
       </div>
 
       {/* Validation Options */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">VALIDATION_OPTIONS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -306,7 +306,7 @@ export function FileUploadForm() {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">

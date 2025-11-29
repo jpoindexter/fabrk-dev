@@ -18,7 +18,7 @@ export default function ProtectedPagesTutorialPage() {
       </div>
 
       {/* How It Works */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">HOW_PROTECTION_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk protects routes via middleware. The following routes automatically redirect
@@ -33,7 +33,7 @@ export default function ProtectedPagesTutorialPage() {
       </div>
 
       {/* Creating a Protected Page */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CREATING_A_PROTECTED_PAGE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Simply create your page under one of the protected directories:
@@ -60,7 +60,7 @@ export default async function MyFeaturePage() {
       </div>
 
       {/* Adding New Protected Routes */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ADDING_NEW_PROTECTED_ROUTES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           To protect additional routes, update the middleware at{" "}
@@ -81,7 +81,7 @@ const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettin
       </div>
 
       {/* Role-Based Access */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ROLE_BASED_ACCESS_CONTROL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Restrict pages by user role:
@@ -116,7 +116,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Client Component Protection */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CLIENT_COMPONENT_PROTECTION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           For client components, use the session hook:
@@ -148,7 +148,7 @@ export function ProtectedClientComponent() {
       </div>
 
       {/* Conditional UI */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CONDITIONAL_UI_BASED_ON_AUTH</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Show different content based on authentication state:

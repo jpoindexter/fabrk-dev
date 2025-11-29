@@ -30,7 +30,7 @@ export default function FooterComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
@@ -52,7 +52,7 @@ import { Separator } from "@/components/ui/separator";`} />
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">LANDING_PAGE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
@@ -79,7 +79,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">CUSTOM_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
@@ -192,7 +192,7 @@ export function CustomFooter() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">SIMPLE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";

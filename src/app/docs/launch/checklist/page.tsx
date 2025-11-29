@@ -31,12 +31,12 @@ export default function LaunchChecklistPage() {
             </Card>
 
             {/* 1. Pre-Launch Verification */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
                     <h2 className="font-mono text-lg font-bold text-primary">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                     <h3 className="font-mono text-base font-semibold">CODE_QUALITY_AND_SECURITY</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Resolve TODOs:</strong> Search for `TODO` or `FIXME` in `src/` and resolve them.</div>
@@ -57,12 +57,12 @@ export default function LaunchChecklistPage() {
             </section>
 
             {/* 2. Stripe Setup */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
                     <h2 className="font-mono text-lg font-bold text-primary">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                     <h3 className="font-mono text-base font-semibold">PRODUCT_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Create products in Stripe Dashboard (Test & Production).</div>
@@ -80,7 +80,7 @@ export default function LaunchChecklistPage() {
             </section>
 
             {/* 3. Marketing Assets */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
                     <h2 className="font-mono text-lg font-bold text-primary">MARKETING_ASSETS</h2>
@@ -93,7 +93,7 @@ export default function LaunchChecklistPage() {
             </section>
 
             {/* 4. Launch Day */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">4</span>
                     <h2 className="font-mono text-lg font-bold text-primary">LAUNCH_DAY_EXECUTION</h2>
@@ -106,7 +106,7 @@ export default function LaunchChecklistPage() {
             </section>
 
             {/* 5. Post-Launch */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <div className="flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">5</span>
                     <h2 className="font-mono text-lg font-bold text-primary">POST_LAUNCH_MONITORING</h2>
@@ -119,7 +119,7 @@ export default function LaunchChecklistPage() {
             </section>
 
             {/* Useful Commands */}
-            <section className="space-y-3">
+            <section className="space-y-4">
                 <h2 className="font-mono text-lg font-bold text-primary">USEFUL_COMMANDS</h2>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">Pre-launch verification commands:</p>
                 <div className="[&>div]:rounded-none">

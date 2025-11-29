@@ -27,7 +27,7 @@ export default function ApiRoutesTutorialPage() {
       </Card>
 
       {/* Basic Route */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CREATING_A_BASIC_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Protected Route */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">PROTECTED_API_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -84,7 +84,7 @@ export async function GET() {
       </div>
 
       {/* Input Validation */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -126,7 +126,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Database Access */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">DATABASE_ACCESS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -160,7 +160,7 @@ export async function GET() {
       </div>
 
       {/* Error Handling Pattern */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ERROR_HANDLING_PATTERN</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -192,7 +192,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Status Codes */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">HTTP_STATUS_CODES</h2>
         <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">200</code> - Success</div>

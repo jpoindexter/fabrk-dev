@@ -34,7 +34,7 @@ export default function DatabaseSetupPage() {
       </Card>
 
       {/* Supabase Setup (Recommended) */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SUPABASE_SETUP (Recommended)</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Go to supabase.com and create an account</li>
@@ -60,7 +60,7 @@ DATABASE_URL="your-connection-string"`} />
       </div>
 
       {/* Neon Setup */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEON_SETUP</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Sign up at neon.tech</li>
@@ -78,7 +78,7 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
       </div>
 
       {/* Railway Setup */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">RAILWAY_SETUP</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Sign up at railway.app</li>
@@ -93,7 +93,7 @@ DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`
       </div>
 
       {/* Initialize Database */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">INITIALIZE_DATABASE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           After setting DATABASE_URL, run these commands:
@@ -114,7 +114,7 @@ npm run db:studio`} />
       </div>
 
       {/* Connection Pooling */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CONNECTION_POOLING</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Essential for serverless deployments (Vercel):
@@ -146,7 +146,7 @@ datasource db {
       </div>
 
       {/* Prisma Schema */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">PRISMA_SCHEMA_OVERVIEW</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Key models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:
@@ -207,7 +207,7 @@ model FeatureFlag {
       </div>
 
       {/* Database Migrations */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">DATABASE_MIGRATIONS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Managing schema changes in production:
@@ -234,7 +234,7 @@ npm run db:reset`} />
       </div>
 
       {/* Seeding Data */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SEEDING_DATA</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Populate database with test data:
@@ -291,7 +291,7 @@ npm run db:seed`} />
       </div>
 
       {/* Backups */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">DATABASE_BACKUPS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Each provider handles backups differently:
@@ -321,7 +321,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
       </div>
 
       {/* Performance Tips */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">PERFORMANCE_TIPS</h2>
         <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1">@@index([userId, createdAt])</code></li>
@@ -332,7 +332,7 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">

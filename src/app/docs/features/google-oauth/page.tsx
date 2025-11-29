@@ -20,7 +20,7 @@ export default function GoogleOAuthPage() {
         </p>
       </div>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -38,7 +38,7 @@ export default function GoogleOAuthPage() {
         </Card>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2">
@@ -87,7 +87,7 @@ export default function GoogleOAuthPage() {
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
           <h3 className="font-mono text-base font-semibold">SET_ENVIRONMENT_VARIABLES</h3>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <p className="font-mono text-sm text-muted-foreground">Add to <code className="font-mono bg-muted px-1 text-xs">.env.local</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
@@ -99,7 +99,7 @@ GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold">AUTH_CONFIGURATION</h3>
@@ -229,7 +229,7 @@ export function LoginForm() {
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
 
         <div className="grid gap-3">
@@ -271,11 +271,11 @@ export function LoginForm() {
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">TROUBLESHOOTING</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
                 <h4 className="font-mono text-base font-semibold mb-1">Error: redirect_uri_mismatch</h4>
                 <p className="font-mono text-sm text-muted-foreground">
@@ -299,7 +299,7 @@ export function LoginForm() {
         </Card>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

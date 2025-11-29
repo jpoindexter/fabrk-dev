@@ -369,7 +369,7 @@ export function ManageBillingButton() {
       {/* Common Questions */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How much does Stripe charge?

@@ -368,7 +368,7 @@ export function FileUploader() {
         <h2 className="font-mono text-lg font-bold text-primary">SECURITY_CONSIDERATIONS</h2>
         <Card className="bg-muted">
           <CardContent className="p-6">
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-2">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
                 <span><strong>Validate file types:</strong> Never trust the file extension. Check MIME type server-side to prevent malicious uploads.</span>
@@ -397,7 +397,7 @@ export function FileUploader() {
       {/* Common Questions */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How much does cloud storage cost?

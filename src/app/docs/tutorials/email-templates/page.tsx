@@ -35,7 +35,7 @@ export default function EmailTemplatesTutorialPage() {
       </Card>
 
       {/* Basic Setup */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BASIC_SETUP</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -63,7 +63,7 @@ EMAIL_FROM="noreply@yourdomain.com"`} />
       </div>
 
       {/* Email Service Functions */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SENDING_EMAILS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -108,7 +108,7 @@ await sendResetEmail(
       </div>
 
       {/* Queue System */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">EMAIL_QUEUE_SYSTEM</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -149,7 +149,7 @@ await queueWelcomeEmail({
       </div>
 
       {/* Creating Custom Templates */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -212,7 +212,7 @@ export function generateInvoiceEmailHTML({
       </div>
 
       {/* Sending Custom Templates */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SENDING_CUSTOM_HTML_EMAILS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -263,7 +263,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Email Types */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">EMAIL_TYPES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The queue system supports these email types for categorization:
@@ -278,7 +278,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Organization Invites */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ORGANIZATION_INVITES</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -299,7 +299,7 @@ await sendOrganizationInvite("newmember@example.com", {
       </div>
 
       {/* Best Practices */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -316,7 +316,7 @@ await sendOrganizationInvite("newmember@example.com", {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">

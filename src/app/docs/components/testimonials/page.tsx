@@ -30,7 +30,7 @@ export default function TestimonialsComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
@@ -50,7 +50,7 @@ import { Card, CardContent } from "@/components/ui/card";`} />
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">TESTIMONIALS_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -76,7 +76,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">CUSTOM_TESTIMONIAL_CARD</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Card, CardContent } from "@/components/ui/card";
@@ -133,7 +133,7 @@ export function TestimonialCard({
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">AVATAR_GROUP_SOCIAL_PROOF</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { AvatarGroup } from "@/components/ui/avatar-group";
@@ -158,7 +158,7 @@ export function SocialProof() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">TESTIMONIAL_GRID</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { motion } from "framer-motion";

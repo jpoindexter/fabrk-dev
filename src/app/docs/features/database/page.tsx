@@ -20,7 +20,7 @@ export default function DatabasePage() {
         </p>
       </div>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -38,10 +38,10 @@ export default function DatabasePage() {
         </Card>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
             <h3 className="font-mono text-base font-semibold">SET_DATABASE_URL</h3>
@@ -56,7 +56,7 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
             <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
@@ -77,7 +77,7 @@ npm run db:reset`} />
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
             <h3 className="font-mono text-base font-semibold">PRISMA_STUDIO</h3>
@@ -90,7 +90,7 @@ npm run db:reset`} />
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CORE_MODELS</h2>
         <p className="font-mono text-sm text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
         <div className="[&>div]:rounded-none">
@@ -154,10 +154,10 @@ model OrganizationMember {
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_EXAMPLES</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">DATABASE_CLIENT</h3>
           <p className="font-mono text-sm text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-xs">src/lib/db/index.ts</code>:</p>
           <div className="[&>div]:rounded-none">
@@ -190,7 +190,7 @@ const newUser = await prisma.user.create({
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">API_ROUTE_QUERIES</h3>
           <p className="font-mono text-sm text-muted-foreground">Use Prisma in API routes:</p>
           <div className="[&>div]:rounded-none">
@@ -221,7 +221,7 @@ export async function GET() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">TRANSACTIONS</h3>
           <p className="font-mono text-sm text-muted-foreground">Use transactions for atomic operations:</p>
           <div className="[&>div]:rounded-none">
@@ -253,7 +253,7 @@ const result = await prisma.$transaction(async (tx) => {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">PAGINATION</h3>
           <p className="font-mono text-sm text-muted-foreground">Implement cursor-based pagination:</p>
           <div className="[&>div]:rounded-none">
@@ -275,7 +275,7 @@ return { data, nextCursor, hasNextPage };`} />
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">MIGRATIONS</h2>
         <p className="font-mono text-sm text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-xs">db:push</code>:</p>
         <div className="[&>div]:rounded-none">
@@ -290,7 +290,7 @@ npx prisma migrate status`} />
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_USE_CASES</h2>
         <div className="grid gap-3">
           <Card className="rounded-none">
@@ -331,7 +331,7 @@ npx prisma migrate status`} />
         </div>
       </section>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

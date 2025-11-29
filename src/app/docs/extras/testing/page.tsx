@@ -34,7 +34,7 @@ export default function TestingGuidePage() {
       </Card>
 
       {/* Running Tests */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">RUNNING_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Available test commands:</p>
         <div className="[&>div]:rounded-none">
@@ -58,7 +58,7 @@ npm run test:all         # Run Vitest + Playwright`} />
       </div>
 
       {/* Vitest Configuration */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">VITEST_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Configuration in <code className="bg-muted px-1 font-mono text-xs">vitest.config.ts</code>:
@@ -98,7 +98,7 @@ export default defineConfig({
       </div>
 
       {/* Writing Unit Tests */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">WRITING_UNIT_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Test components, hooks, and utilities:
@@ -138,7 +138,7 @@ describe("Button", () => {
       </div>
 
       {/* Testing Hooks */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">TESTING_CUSTOM_HOOKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Example hook test with timer mocking:</p>
         <div className="[&>div]:rounded-none">
@@ -187,7 +187,7 @@ describe("useDebounce", () => {
       </div>
 
       {/* Testing API Routes */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">TESTING_API_ROUTES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Test API endpoints with mocked dependencies:</p>
         <div className="[&>div]:rounded-none">
@@ -257,7 +257,7 @@ describe("POST /api/users", () => {
       </div>
 
       {/* Playwright E2E Tests */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">PLAYWRIGHT_E2E_TESTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Test complete user flows:
@@ -308,7 +308,7 @@ test.describe("Authentication", () => {
       </div>
 
       {/* Playwright Configuration */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">PLAYWRIGHT_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Configure Playwright for E2E testing:</p>
         <div className="[&>div]:rounded-none">
@@ -359,7 +359,7 @@ export default defineConfig({
       </div>
 
       {/* Accessibility Testing */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ACCESSIBILITY_TESTING</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Test for accessibility violations:</p>
         <div className="[&>div]:rounded-none">
@@ -397,7 +397,7 @@ test.describe("Accessibility", () => {
       </div>
 
       {/* Test Setup */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">TEST_SETUP_FILE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Configure test environment and mocks:</p>
         <div className="[&>div]:rounded-none">
@@ -440,7 +440,7 @@ process.env.NEXTAUTH_SECRET = "test-secret-at-least-32-characters";`} />
       </div>
 
       {/* Testing Best Practices */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">TESTING_BEST_PRACTICES</h2>
         <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <div>├─ <strong>Test behavior, not implementation</strong> - Focus on what the user sees/does</div>
@@ -453,7 +453,7 @@ process.env.NEXTAUTH_SECRET = "test-secret-at-least-32-characters";`} />
       </div>
 
       {/* CI Integration */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CI_INTEGRATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">GitHub Actions workflow for automated testing:</p>
         <div className="[&>div]:rounded-none">
@@ -500,7 +500,7 @@ jobs:
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">

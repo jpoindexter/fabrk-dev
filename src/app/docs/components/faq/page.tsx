@@ -30,7 +30,7 @@ export default function FAQComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
@@ -58,7 +58,7 @@ import {
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">FAQ_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { FAQSection } from "@/components/landing/faq-section";
@@ -84,7 +84,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">CUSTOM_ACCORDION_FAQ</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
@@ -131,7 +131,7 @@ export function CustomFAQ() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">MULTIPLE_OPEN_ITEMS</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
@@ -159,7 +159,7 @@ export function MultipleFAQ() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">COLLAPSIBLE_COMPONENT</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
@@ -190,7 +190,7 @@ export function CollapsibleFAQ() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">HYDRATION_NOTE</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`// To prevent hydration warnings with Radix UI components,

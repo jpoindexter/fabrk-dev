@@ -30,7 +30,7 @@ export default function PricingComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
         </div>
@@ -49,7 +49,7 @@ import { PricingComparison } from "@/components/marketing/pricing-comparison";`}
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">PRICING_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingSection } from "@/components/landing/pricing-section";
@@ -74,7 +74,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">PRICING_TABLE</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingTable } from "@/components/landing/pricing-table";
@@ -98,7 +98,7 @@ export default function PricingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">PRICING_COMPARISON</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingComparison } from "@/components/marketing/pricing-comparison";
@@ -118,7 +118,7 @@ export default function PricingPage() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">STRIPE_CHECKOUT_INTEGRATION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// The pricing components integrate with Stripe checkout
@@ -150,7 +150,7 @@ export const config = {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <h3 className="font-mono text-base font-semibold">CUSTOM_PRICING_CARD</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

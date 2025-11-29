@@ -33,7 +33,7 @@ export default function EnvironmentVariablesPage() {
       </Card>
 
       {/* Required Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">REQUIRED_VARIABLES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           These must be set for the app to run:
@@ -57,7 +57,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
       </div>
 
       {/* Authentication Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">AUTHENTICATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Configure OAuth providers:</p>
         <div className="[&>div]:rounded-none">
@@ -75,7 +75,7 @@ GOOGLE_CLIENT_SECRET="your-client-secret"
       </div>
 
       {/* Email Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">EMAIL_RESEND</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Configure email sending:</p>
         <div className="[&>div]:rounded-none">
@@ -94,7 +94,7 @@ EMAIL_FROM="noreply@your-domain.com"
       </div>
 
       {/* Stripe Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">STRIPE_PAYMENTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Configure payment processing:</p>
         <div className="[&>div]:rounded-none">
@@ -120,7 +120,7 @@ NEXT_PUBLIC_STRIPE_PRICE_ENTERPRISE="price_..."
       </div>
 
       {/* Analytics Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ANALYTICS_OPTIONAL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Track user behavior and metrics:</p>
         <div className="[&>div]:rounded-none">
@@ -139,7 +139,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..."`} />
       </div>
 
       {/* Search Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SEARCH_ALGOLIA_OPTIONAL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Add search functionality:</p>
         <div className="[&>div]:rounded-none">
@@ -156,7 +156,7 @@ ALGOLIA_ADMIN_KEY="your-admin-key"  # Server-side only
       </div>
 
       {/* CMS Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CMS_SANITY_OPTIONAL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Manage content with headless CMS:</p>
         <div className="[&>div]:rounded-none">
@@ -173,7 +173,7 @@ SANITY_API_TOKEN="sk..."  # Server-side only
       </div>
 
       {/* Real-time Variables */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">REALTIME_PUSHER_OPTIONAL</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Enable real-time features:</p>
         <div className="[&>div]:rounded-none">
@@ -191,7 +191,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"
       </div>
 
       {/* Environment-Specific Configuration */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_SPECIFIC_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Use different values for different environments:
@@ -218,7 +218,7 @@ DATABASE_URL="postgresql://...production-db..."`} />
       </div>
 
       {/* Validation */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VALIDATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           All variables are validated at startup in <code className="bg-muted px-1 font-mono text-xs">src/lib/env.ts</code>:
@@ -258,7 +258,7 @@ const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
       </div>
 
       {/* Security Best Practices */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">SECURITY_BEST_PRACTICES</h2>
         <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>├─ Never commit secrets - Add .env.local to .gitignore</li>
@@ -270,7 +270,7 @@ const appUrl = env.client.NEXT_PUBLIC_APP_URL;`} />
       </div>
 
       {/* Complete Example */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMPLETE_EXAMPLE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Full development environment setup:</p>
         <div className="[&>div]:rounded-none">
@@ -311,7 +311,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER="us2"`} />
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/database">

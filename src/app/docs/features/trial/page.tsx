@@ -66,7 +66,7 @@ export default function TrialPage() {
       {/* How It Works */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">HOW_FABRK_TRIALS_WORK</h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
@@ -149,7 +149,7 @@ export const config = {
         <Card className="rounded-none">
           <CardContent className="p-6">
             <h3 className="font-mono font-semibold mb-3">BANNER_STATES</h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-success"></div>
                 <div>
@@ -290,7 +290,7 @@ const subscription = await stripe.subscriptions.create({
         <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">1.</span>
                 <span><strong>Email reminders:</strong> Send emails at trial midpoint, 3 days before, and 1 day before expiration.</span>
@@ -319,7 +319,7 @@ const subscription = await stripe.subscriptions.create({
       {/* Common Questions */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">COMMON_QUESTIONS</h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?

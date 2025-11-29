@@ -41,7 +41,7 @@ export default function BackgroundJobsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -77,7 +77,7 @@ model Job {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">JOB_QUEUE_SERVICE</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -201,7 +201,7 @@ export async function failJob(
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">WORKER_IMPLEMENTATION</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -282,7 +282,7 @@ processJobs(process.env.QUEUE || "default");`} />
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">EMAIL_WORKER</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -359,7 +359,7 @@ processEmailQueue();`} />
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">QUEUEING_JOBS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -422,7 +422,7 @@ await enqueueJob(
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">RUNNING_WORKERS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">

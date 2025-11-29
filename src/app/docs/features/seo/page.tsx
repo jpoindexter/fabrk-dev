@@ -44,7 +44,7 @@ export default function SEOPage() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
           <h3 className="font-mono text-base font-semibold">UPDATE_CENTRAL_CONFIG</h3>
         </div>
-        <div className="space-y-3 mb-6">
+        <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Edit <code className="bg-muted px-1 font-mono text-xs">src/config.js</code> with your site details:</p>
           </div>
@@ -66,7 +66,7 @@ export default function SEOPage() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
           <h3 className="font-mono text-base font-semibold">ROOT_LAYOUT_METADATA</h3>
         </div>
-        <div className="space-y-3 mb-6">
+        <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">The root layout exports metadata automatically:</p>
           </div>
@@ -102,7 +102,7 @@ export const metadata = {
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
           <h3 className="font-mono text-base font-semibold">PAGE_SPECIFIC_METADATA</h3>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Override metadata for individual pages:</p>
           </div>
@@ -128,7 +128,7 @@ export default function PricingPage() {
         <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
 
         <h3 className="font-mono text-base font-semibold mb-3">DYNAMIC_METADATA</h3>
-        <div className="space-y-3 mb-6">
+        <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Generate metadata based on dynamic content:</p>
           </div>
@@ -157,7 +157,7 @@ export async function generateMetadata({ params }) {
         </div>
 
         <h3 className="font-mono text-base font-semibold mb-3">JSON_LD_STRUCTURED_DATA</h3>
-        <div className="space-y-3 mb-6">
+        <div className="space-y-4 mb-6">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Add structured data for rich search results:</p>
           </div>
@@ -188,7 +188,7 @@ export function generateOrganizationSchema() {
         </div>
 
         <h3 className="font-mono text-base font-semibold mb-3">SITEMAP_GENERATION</h3>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div>
             <p className="font-mono text-sm text-muted-foreground">Automatic sitemap at <code className="bg-muted px-1 font-mono text-xs">/sitemap.xml</code>:</p>
           </div>
