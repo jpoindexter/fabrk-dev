@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Grid, Building2, Code2, Shield } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Feature Sections - Fabrk Docs",
@@ -8,63 +12,23 @@ export const metadata = {
 
 export default function FeaturesComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FEATURES</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_SECTIONS</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
-          &gt; Showcase your product features with beautiful grid and list layouts.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">FeaturesSection</code> - Grid layout with feature cards</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">DeveloperExperienceSection</code> - Developer-focused features and benefits</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">QualitySection</code> - Quality metrics and standards</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">TechStack</code> - Technology stack showcase</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-xs">ComparisonSection</code> - Feature comparison table</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// Main features section
-import { FeaturesSection } from "@/components/landing/features-section";
-
-// Enterprise features
-import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
-
-// Developer experience
-import { DeveloperExperienceSection } from "@/components/landing/developer-experience-section";
-
-// Quality metrics
-import { QualitySection } from "@/components/landing/quality-section";
-
-// Tech stack display
-import { TechStack } from "@/components/landing/tech-stack";
-
-// Comparison table
-import { ComparisonSection } from "@/components/landing/comparison-section";`} />
-        </div>
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">FEATURES_SECTION</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { FeaturesSection } from "@/components/landing/features-section";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Feature_Sections"
+      description="Showcase your product features with beautiful grid and list layouts."
+      overview="6 feature section components: grid layout, enterprise features, developer experience, quality metrics, tech stack showcase, and comparison tables."
+      features={[
+        { icon: Grid, title: "FeaturesSection", description: "Grid of feature cards." },
+        { icon: Building2, title: "Enterprise", description: "Enterprise-focused features." },
+        { icon: Code2, title: "DevExperience", description: "Developer-focused benefits." },
+        { icon: Shield, title: "Quality", description: "Quality metrics display." },
+      ]}
+      usage={[
+        {
+          title: "Features Section",
+          description: "Grid layout with feature cards",
+          code: `import { FeaturesSection } from "@/components/landing/features-section";
 
 export default function LandingPage() {
   return (
@@ -78,14 +42,13 @@ export default function LandingPage() {
 
 // FeaturesSection displays a grid of feature cards
 // Each card has an icon, title, and description
-// Includes scroll animations via Framer Motion`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">ENTERPRISE_FEATURES</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
+// Includes scroll animations via Framer Motion`,
+          language: "tsx",
+        },
+        {
+          title: "Enterprise Features",
+          description: "Enterprise-focused feature section",
+          code: `import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 
 export default function LandingPage() {
   return (
@@ -101,14 +64,13 @@ export default function LandingPage() {
 // - Security features
 // - Compliance certifications
 // - Team collaboration tools
-// - Admin controls`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TECH_STACK</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { TechStack } from "@/components/landing/tech-stack";
+// - Admin controls`,
+          language: "tsx",
+        },
+        {
+          title: "Tech Stack",
+          description: "Technology stack showcase",
+          code: `import { TechStack } from "@/components/landing/tech-stack";
 
 export default function LandingPage() {
   return (
@@ -125,35 +87,13 @@ export default function LandingPage() {
 // - Next.js, React, TypeScript
 // - Prisma, PostgreSQL
 // - Stripe, Resend
-// - Tailwind CSS, Radix UI`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">COMPARISON_SECTION</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { ComparisonSection } from "@/components/landing/comparison-section";
-
-export default function LandingPage() {
-  return (
-    <main>
-      <PricingSection />
-      <ComparisonSection />
-      {/* Other sections */}
-    </main>
-  );
-}
-
-// Shows feature comparison table
-// Compare your product vs competitors
-// Or compare different pricing tiers`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">COMPLETE_LANDING_PAGE</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
+// - Tailwind CSS, Radix UI`,
+          language: "tsx",
+        },
+        {
+          title: "Complete Landing Page",
+          description: "All feature sections together",
+          code: `import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 import { TechStack } from "@/components/landing/tech-stack";
@@ -170,10 +110,48 @@ export default function LandingPage() {
       {/* Pricing, Testimonials, FAQ, Footer */}
     </main>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Hero", href: "/docs/components/hero" }}
+      next={{ title: "Pricing", href: "/docs/components/pricing" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">FeaturesSection</code> - Grid layout with feature cards</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">DeveloperExperienceSection</code> - Developer-focused features and benefits</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">QualitySection</code> - Quality metrics and standards</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">TechStack</code> - Technology stack showcase</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">ComparisonSection</code> - Feature comparison table</div>
           </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/pricing">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Pricing</h3>
+                <p className={docsTypography.body}>Pricing table components</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/testimonials">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Testimonials</h3>
+                <p className={docsTypography.body}>Customer testimonials</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

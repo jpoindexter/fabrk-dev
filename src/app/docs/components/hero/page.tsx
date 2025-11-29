@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Sparkles, Split, Video, Zap } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Hero Sections - Fabrk Docs",
@@ -8,49 +12,23 @@ export const metadata = {
 
 export default function HeroComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">HERO_SECTIONS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Eye-catching hero sections for landing pages with various layouts and styles.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <code className="bg-muted px-1 font-mono">HeroSection</code> - Standard centered hero with headline, description, and CTAs</div>
-            <div>├─ <code className="bg-muted px-1 font-mono">HeroSplit</code> - Split layout with content on left and image/demo on right</div>
-            <div>└─ <code className="bg-muted px-1 font-mono">HeroVideo</code> - Hero section with background video or video modal</div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// Standard hero section
-import { HeroSection } from "@/components/landing/hero-section";
-
-// Split layout hero
-import { HeroSplit } from "@/components/landing/hero-split";
-
-// Video hero
-import { HeroVideo } from "@/components/landing/hero-video";`} />
-        </div>
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">STANDARD_HERO_SECTION</h3>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Hero_Sections"
+      description="Eye-catching hero sections for landing pages with various layouts and styles."
+      overview="3 hero layouts: centered standard hero, split layout with image/demo, and video background hero. All include Framer Motion animations."
+      features={[
+        { icon: Sparkles, title: "HeroSection", description: "Centered headline with CTAs." },
+        { icon: Split, title: "HeroSplit", description: "Content left, media right." },
+        { icon: Video, title: "HeroVideo", description: "Background video or modal." },
+        { icon: Zap, title: "Animated", description: "Framer Motion entrance effects." },
+      ]}
+      usage={[
+        {
+          title: "Standard Hero Section",
+          description: "Centered layout with headline and CTAs",
+          code: `import { HeroSection } from "@/components/landing/hero-section";
 
 export default function LandingPage() {
   return (
@@ -59,14 +37,13 @@ export default function LandingPage() {
       {/* Other sections */}
     </main>
   );
-}`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">SPLIT_LAYOUT_HERO</h3>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="tsx" code={`import { HeroSplit } from "@/components/landing/hero-split";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Split Layout Hero",
+          description: "Content on left, image/demo on right",
+          code: `import { HeroSplit } from "@/components/landing/hero-split";
 
 export default function LandingPage() {
   return (
@@ -79,14 +56,13 @@ export default function LandingPage() {
 
 // HeroSplit typically includes:
 // - Left side: Headline, description, CTA buttons
-// - Right side: Product screenshot, demo, or illustration`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">VIDEO_HERO</h3>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="tsx" code={`import { HeroVideo } from "@/components/landing/hero-video";
+// - Right side: Product screenshot, demo, or illustration`,
+          language: "tsx",
+        },
+        {
+          title: "Video Hero",
+          description: "Hero with background video or video modal",
+          code: `import { HeroVideo } from "@/components/landing/hero-video";
 
 export default function LandingPage() {
   return (
@@ -100,29 +76,13 @@ export default function LandingPage() {
 // HeroVideo features:
 // - Background video or play button for modal
 // - Overlay content with headline and CTAs
-// - Autoplay/loop options for background video`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">VIEW_VARIATIONS</h3>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Check out the variations page to see all hero styles side by side:
-          </p>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="tsx" code={`// Visit /variations to see all hero styles
-// Each variation is production-ready and copy-paste friendly`} />
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ANIMATION_PATTERN</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          All hero sections use Framer Motion for smooth entrance animations:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
+// - Autoplay/loop options for background video`,
+          language: "tsx",
+        },
+        {
+          title: "Animation Pattern",
+          description: "Framer Motion entrance animations",
+          code: `import { motion } from "framer-motion";
 
 <motion.div
   initial={{ opacity: 0, y: 20 }}
@@ -130,9 +90,45 @@ export default function LandingPage() {
   transition={{ duration: 0.6, delay: 0.1 }}
 >
   <h1>Your Headline</h1>
-</motion.div>`} />
+</motion.div>`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Navigation", href: "/docs/components/navigation" }}
+      next={{ title: "Features", href: "/docs/components/features" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">HeroSection</code> - Standard centered hero with headline, description, and CTAs</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">HeroSplit</code> - Split layout with content on left and image/demo on right</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">HeroVideo</code> - Hero section with background video or video modal</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/features">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Features</h3>
+                <p className={docsTypography.body}>Feature section layouts</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/variations">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Variations</h3>
+                <p className={docsTypography.body}>See all hero styles</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

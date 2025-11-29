@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Layout, Link as LinkIcon, Copyright, Layers } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Footer Components - Fabrk Docs",
@@ -8,54 +12,23 @@ export const metadata = {
 
 export default function FooterComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Footer components with links, branding, and legal information.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-xs">Separator</code> - Visual divider</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// Landing page footer
-import { Footer } from "@/components/landing/footer";
-
-// Alternative footer location
-import { Footer } from "@/components/home/footer";
-
-// Logo component
-import { Logo } from "@/components/home/logo";
-
-// Separator
-import { Separator } from "@/components/ui/separator";`} />
-        </div>
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">LANDING_PAGE_FOOTER</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Footer_Components"
+      description="Footer components with links, branding, and legal information."
+      overview="3 footer components: landing page footer with link columns, logo component, and separator. Includes social links and copyright."
+      features={[
+        { icon: Layout, title: "Footer", description: "Full footer with link columns." },
+        { icon: LinkIcon, title: "Logo", description: "Brand logo component." },
+        { icon: Layers, title: "Separator", description: "Visual divider element." },
+        { icon: Copyright, title: "Legal", description: "Copyright and legal links." },
+      ]}
+      usage={[
+        {
+          title: "Landing Page Footer",
+          description: "Full footer for landing pages",
+          code: `import { Footer } from "@/components/landing/footer";
 
 export default function LandingPage() {
   return (
@@ -75,14 +48,13 @@ export default function LandingPage() {
 // - Link columns (Product, Company, Legal, etc.)
 // - Social media links
 // - Copyright notice
-// - Newsletter signup (optional)`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">CUSTOM_FOOTER</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import Link from "next/link";
+// - Newsletter signup (optional)`,
+          language: "tsx",
+        },
+        {
+          title: "Custom Footer",
+          description: "Build your own footer with link columns",
+          code: `import Link from "next/link";
 import { Logo } from "@/components/home/logo";
 import { Separator } from "@/components/ui/separator";
 
@@ -91,18 +63,15 @@ const footerLinks = {
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
     { label: "Documentation", href: "/docs" },
-    { label: "Changelog", href: "/changelog" },
   ],
   company: [
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Refund Policy", href: "/refund" },
   ],
 };
 
@@ -111,98 +80,37 @@ export function CustomFooter() {
     <footer className="border-t border-border bg-muted/30">
       <div className="container py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo column */}
           <div className="col-span-2 md:col-span-1">
             <Logo />
             <p className="mt-4 text-sm text-muted-foreground">
-              Ship your SaaS faster with our production-ready boilerplate.
+              Ship your SaaS faster.
             </p>
           </div>
-
           {/* Link columns */}
-          <div>
-            <h3 className="font-semibold mb-3">Product</h3>
-            <ul className="space-y-2">
-              {footerLinks.product.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-3">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-3">Legal</h3>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
-
         <Separator className="my-8" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Fabrk. All rights reserved.
           </p>
-          <div className="flex gap-4">
-            {/* Social links */}
-            <a href="https://twitter.com" className="text-muted-foreground hover:text-foreground">
-              Twitter
-            </a>
-            <a href="https://github.com" className="text-muted-foreground hover:text-foreground">
-              GitHub
-            </a>
-          </div>
         </div>
       </div>
     </footer>
   );
-}`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">SIMPLE_FOOTER</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import Link from "next/link";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Simple Footer",
+          description: "Minimal footer with essentials",
+          code: `import Link from "next/link";
 
 export function SimpleFooter() {
   return (
     <footer className="border-t border-border">
       <div className="container py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Your Company
           </p>
           <nav className="flex gap-6">
@@ -223,10 +131,45 @@ export function SimpleFooter() {
       </div>
     </footer>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "FAQ", href: "/docs/components/faq" }}
+      next={{ title: "Overview", href: "/docs/components/overview" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">Separator</code> - Visual divider</div>
           </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/overview">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>All Components</h3>
+                <p className={docsTypography.body}>Full component library</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/tutorials/quick-start">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Quick Start</h3>
+                <p className={docsTypography.body}>Assemble landing page</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

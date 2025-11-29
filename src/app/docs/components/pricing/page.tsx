@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { CreditCard, LayoutGrid, Table, Check } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Pricing Tables - Fabrk Docs",
@@ -8,51 +12,23 @@ export const metadata = {
 
 export default function PricingComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] PRICING</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PRICING_TABLES</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
-          &gt; Pricing components for displaying plans, features, and checkout integration.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingSection</code> - Complete pricing section with plan cards</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">PricingTable</code> - Detailed pricing table with feature comparison</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-xs">PricingComparison</code> - Side-by-side plan comparison</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// Pricing section for landing pages
-import { PricingSection } from "@/components/landing/pricing-section";
-
-// Detailed pricing table
-import { PricingTable } from "@/components/landing/pricing-table";
-
-// Marketing comparison component
-import { PricingComparison } from "@/components/marketing/pricing-comparison";`} />
-        </div>
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">PRICING_SECTION</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { PricingSection } from "@/components/landing/pricing-section";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Pricing_Tables"
+      description="Pricing components for displaying plans, features, and checkout integration."
+      overview="3 pricing components: landing page pricing section, detailed pricing table, and side-by-side comparison. All include Stripe checkout integration."
+      features={[
+        { icon: CreditCard, title: "PricingSection", description: "Plan cards with CTAs." },
+        { icon: Table, title: "PricingTable", description: "Detailed feature comparison." },
+        { icon: LayoutGrid, title: "Comparison", description: "Side-by-side comparison." },
+        { icon: Check, title: "Stripe", description: "Checkout integration." },
+      ]}
+      usage={[
+        {
+          title: "Pricing Section",
+          description: "Landing page pricing with plan cards",
+          code: `import { PricingSection } from "@/components/landing/pricing-section";
 
 export default function LandingPage() {
   return (
@@ -70,14 +46,13 @@ export default function LandingPage() {
 // - Monthly/Annual toggle
 // - Feature lists per tier
 // - CTA buttons with Stripe checkout integration
-// - Highlighted "popular" tier`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">PRICING_TABLE</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { PricingTable } from "@/components/landing/pricing-table";
+// - Highlighted "popular" tier`,
+          language: "tsx",
+        },
+        {
+          title: "Pricing Table",
+          description: "Detailed feature comparison table",
+          code: `import { PricingTable } from "@/components/landing/pricing-table";
 
 export default function PricingPage() {
   return (
@@ -94,37 +69,14 @@ export default function PricingPage() {
 
 // PricingTable shows detailed feature comparison
 // Great for dedicated pricing pages
-// Includes checkmarks/X marks for feature availability`} />
-          </div>
-        </div>
+// Includes checkmarks/X marks for feature availability`,
+          language: "tsx",
+        },
+        {
+          title: "Stripe Checkout Integration",
+          description: "Configure price IDs for checkout",
+          code: `// Configure price IDs in src/config.js
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">PRICING_COMPARISON</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { PricingComparison } from "@/components/marketing/pricing-comparison";
-
-export default function PricingPage() {
-  return (
-    <main>
-      <PricingSection />
-      <PricingComparison />
-    </main>
-  );
-}
-
-// Side-by-side comparison of all features
-// Helps users choose the right plan
-// Scrollable on mobile devices`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">STRIPE_CHECKOUT_INTEGRATION</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// The pricing components integrate with Stripe checkout
-// Configure price IDs in src/config.js
-
-// config.js
 export const config = {
   stripe: {
     prices: {
@@ -146,14 +98,13 @@ export const config = {
 
 // The checkout API route handles session creation
 // POST /api/stripe/checkout
-// Returns checkout URL for redirect`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">CUSTOM_PRICING_CARD</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Returns checkout URL for redirect`,
+          language: "typescript",
+        },
+        {
+          title: "Custom Pricing Card",
+          description: "Build your own pricing card",
+          code: `import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
@@ -183,16 +134,49 @@ export function PricingCard({
             </li>
           ))}
         </ul>
-        <Button className="w-full mt-6">
-          Get Started
-        </Button>
+        <Button className="w-full mt-6">Get Started</Button>
       </CardContent>
     </Card>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Features", href: "/docs/components/features" }}
+      next={{ title: "Testimonials", href: "/docs/components/testimonials" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">PricingSection</code> - Complete pricing section with plan cards</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">PricingTable</code> - Detailed pricing table with feature comparison</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">PricingComparison</code> - Side-by-side plan comparison</div>
           </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/tutorials/stripe-payments">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Tutorial</h3>
+                <p className={docsTypography.body}>Full Stripe integration guide</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/testimonials">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Testimonials</h3>
+                <p className={docsTypography.body}>Customer testimonials</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

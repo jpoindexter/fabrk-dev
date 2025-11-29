@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Quote, User, Users, Star } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Testimonials - Fabrk Docs",
@@ -8,52 +12,23 @@ export const metadata = {
 
 export default function TestimonialsComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTIMONIALS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Social proof components to showcase customer reviews and testimonials.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
-            <li>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar component</li>
-            <li>└─ <code className="bg-muted px-1 font-mono text-xs">AvatarGroup</code> - Stacked avatar display</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <div className="[&>div]:rounded-none">
-        <CodeBlock language="typescript" code={`// Testimonials section
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
-
-// Avatar components
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { AvatarGroup } from "@/components/ui/avatar-group";
-
-// Card for custom testimonials
-import { Card, CardContent } from "@/components/ui/card";`} />
-        </div>
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TESTIMONIALS_SECTION</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { TestimonialsSection } from "@/components/landing/testimonials-section";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Testimonials"
+      description="Social proof components to showcase customer reviews and testimonials."
+      overview="3 testimonial components: testimonials section with grid layout, avatar component, and avatar group for social proof."
+      features={[
+        { icon: Quote, title: "TestimonialsSection", description: "Grid of testimonial cards." },
+        { icon: User, title: "Avatar", description: "User avatar component." },
+        { icon: Users, title: "AvatarGroup", description: "Stacked avatar display." },
+        { icon: Star, title: "Animated", description: "Framer Motion scroll effects." },
+      ]}
+      usage={[
+        {
+          title: "Testimonials Section",
+          description: "Grid of testimonial cards",
+          code: `import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
 export default function LandingPage() {
   return (
@@ -72,14 +47,13 @@ export default function LandingPage() {
 // - Customer avatars
 // - Quote text
 // - Name and role/company
-// - Scroll animations`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">CUSTOM_TESTIMONIAL_CARD</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { Card, CardContent } from "@/components/ui/card";
+// - Scroll animations`,
+          language: "tsx",
+        },
+        {
+          title: "Custom Testimonial Card",
+          description: "Build your own testimonial card",
+          code: `import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface TestimonialProps {
@@ -98,11 +72,9 @@ export function TestimonialCard({
   avatar
 }: TestimonialProps) {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardContent className="p-6">
-        <p className="text-muted-foreground italic mb-4">
-          "{quote}"
-        </p>
+        <p className="text-muted-foreground italic mb-4">"{quote}"</p>
         <div className="flex items-center gap-3">
           <Avatar>
             <AvatarImage src={avatar} alt={name} />
@@ -112,7 +84,7 @@ export function TestimonialCard({
           </Avatar>
           <div>
             <p className="font-semibold">{name}</p>
-            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground">
               {role} at {company}
             </p>
           </div>
@@ -120,23 +92,13 @@ export function TestimonialCard({
       </CardContent>
     </Card>
   );
-}
-
-// Usage
-<TestimonialCard
-  quote="This boilerplate saved us weeks of development time."
-  name="Sarah Chen"
-  role="CTO"
-  company="TechStart"
-  avatar="/avatars/sarah.jpg"
-/>`} />
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">AVATAR_GROUP_SOCIAL_PROOF</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { AvatarGroup } from "@/components/ui/avatar-group";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Avatar Group Social Proof",
+          description: "Stacked avatars with count",
+          code: `import { AvatarGroup } from "@/components/ui/avatar-group";
 
 export function SocialProof() {
   const users = [
@@ -149,57 +111,50 @@ export function SocialProof() {
   return (
     <div className="flex items-center gap-4">
       <AvatarGroup users={users} max={4} />
-      <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+      <p className="text-sm text-muted-foreground">
         Trusted by 500+ developers
       </p>
     </div>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Pricing", href: "/docs/components/pricing" }}
+      next={{ title: "FAQ", href: "/docs/components/faq" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">TestimonialsSection</code> - Grid of testimonial cards with avatars</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar component</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">AvatarGroup</code> - Stacked avatar display</div>
           </div>
-        </div>
+        </DocsCard>
+      </DocsSection>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TESTIMONIAL_GRID</h3>
-          <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
-
-const testimonials = [
-  {
-    quote: "Best investment for our startup.",
-    name: "Alex Johnson",
-    role: "Founder",
-    company: "LaunchFast",
-  },
-  // ... more testimonials
-];
-
-export function TestimonialGrid() {
-  return (
-    <section className="py-24">
-      <div className="container">
-        <h2 className="font-mono text-lg font-bold text-center mb-12">
-          What Our Customers Say
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <TestimonialCard {...testimonial} />
-            </motion.div>
-          ))}
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/faq">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>FAQ</h3>
+                <p className={docsTypography.body}>FAQ accordion section</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/footer">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Footer</h3>
+                <p className={docsTypography.body}>Site footer components</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      </div>
-    </section>
-  );
-}`} />
-          </div>
-        </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
