@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function AnalyticsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-6">
+    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-16">
       <div className="mb-8">
         <Link href="/docs" className="text-primary hover:underline font-mono text-xs mb-4 inline-block">
           &larr; Back to Documentation

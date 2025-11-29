@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function SEOPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl space-y-6">
+    <div className="container mx-auto px-4 py-12 max-w-4xl space-y-16">
       <div className="mb-8">
         <Link href="/docs" className="text-primary hover:underline font-mono text-xs">
           ← Back to Documentation
