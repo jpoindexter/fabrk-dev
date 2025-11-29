@@ -10,7 +10,7 @@ export default function CSRFProtectionPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CSRF_PROTECTION</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Protect your forms and API endpoints from cross-site request forgery attacks.
         </p>
       </div>
@@ -32,7 +32,7 @@ export default function CSRFProtectionPage() {
       {/* Built-in Protection */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BUILT_IN_PROTECTION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           NextAuth v5 automatically protects all authentication routes with CSRF tokens.
           No additional configuration is needed for login, logout, and registration forms.
         </p>
@@ -50,7 +50,7 @@ export default function CSRFProtectionPage() {
       {/* Getting CSRF Token */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">GETTING_CSRF_TOKEN</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Retrieve the CSRF token for custom forms:
         </p>
         <div className="[&>div]:rounded-none">
@@ -86,7 +86,7 @@ export function SecureForm() {
       {/* Server-Side Validation */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SERVER_SIDE_VALIDATION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Validate CSRF tokens in your API routes:
         </p>
         <div className="[&>div]:rounded-none">
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
       {/* Origin Validation */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ORIGIN_VALIDATION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add origin validation as an additional security layer:
         </p>
         <div className="[&>div]:rounded-none">
@@ -188,7 +188,7 @@ export async function POST(request: NextRequest) {
       {/* SameSite Cookie Configuration */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SAMESITE_COOKIE_CONFIGURATION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Configure secure cookie settings in NextAuth:
         </p>
         <div className="[&>div]:rounded-none">
@@ -226,7 +226,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       {/* Fetch Requests with CSRF */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">FETCH_REQUESTS_WITH_CSRF</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Include CSRF tokens in fetch requests:
         </p>
         <div className="[&>div]:rounded-none">

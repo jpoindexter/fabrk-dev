@@ -16,7 +16,7 @@ export default function GettingStartedPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">GETTING_STARTED</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Everything you need to launch your SaaS, from first download to first customer.
         </p>
       </div>
@@ -25,12 +25,12 @@ export default function GettingStartedPage() {
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_FABRK?</h2>
-          <p className="font-mono text-base text-muted-foreground leading-relaxed">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
             need to decorate and move in.
           </p>
-          <p className="font-mono text-base text-muted-foreground leading-relaxed">
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Instead of spending months building user accounts, payment processing, and email systems
             from scratch, Fabrk gives you all of that working on day one. You can focus on what makes
             your product unique.
@@ -68,7 +68,7 @@ export default function GettingStartedPage() {
       {/* What's Included */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">WHATS_INCLUDED</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Fabrk handles the essential features every SaaS needs:
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -98,7 +98,7 @@ export default function GettingStartedPage() {
             5_MIN
           </span>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Already know Next.js? Here&apos;s the fastest path:
         </p>
         <div className="[&>div]:rounded-none">
@@ -121,7 +121,7 @@ npm run db:push && npm run dev`}
       {/* Step-by-Step Guide */}
       <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_SETUP</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           New to this? Let&apos;s walk through each step.
         </p>
 
@@ -311,7 +311,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
       {/* Optional Setup */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">OPTIONAL_FEATURES</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Enable more features by adding API keys to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">

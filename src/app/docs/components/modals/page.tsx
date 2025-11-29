@@ -14,7 +14,7 @@ export default function ModalsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] MODALS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">MODAL_COMPONENTS</h1>
-        <p className="font-mono text-base text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Modal components for dialogs, sheets, popovers, and alerts.
         </p>
       </div>

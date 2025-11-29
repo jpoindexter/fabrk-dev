@@ -14,7 +14,7 @@ export default function LaunchChecklistPage() {
                     <span className="font-mono text-xs text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
                 </div>
                 <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">LAUNCH_CHECKLIST</h1>
-                <p className="font-mono text-base text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                     &gt; A comprehensive guide to ensuring your Fabrk application is production-ready.
                 </p>
             </div>
@@ -121,7 +121,7 @@ export default function LaunchChecklistPage() {
             {/* Useful Commands */}
             <section className="space-y-3">
                 <h2 className="font-mono text-lg font-bold">USEFUL_COMMANDS</h2>
-                <p className="font-mono text-base text-muted-foreground">Pre-launch verification commands:</p>
+                <p className="font-mono text-sm text-muted-foreground">Pre-launch verification commands:</p>
                 <div className="[&>div]:rounded-none">
                     <CodeBlock language="bash" code={`# Run full test suite
 npm run test:all

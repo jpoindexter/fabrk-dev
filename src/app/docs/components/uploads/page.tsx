@@ -14,7 +14,7 @@ export default function UploadsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] UPLOADS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">FILE_UPLOADS</h1>
-        <p className="font-mono text-base text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; File upload components including drag-and-drop, image preview, and cropping.
         </p>
       </div>

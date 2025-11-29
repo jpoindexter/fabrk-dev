@@ -14,7 +14,7 @@ export default function NavigationComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NAVIGATION_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-base text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Navigation components for building headers, menus, and site navigation.
         </p>
       </div>

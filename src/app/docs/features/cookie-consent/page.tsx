@@ -16,7 +16,7 @@ export default function CookieConsentPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">COOKIE_CONSENT_GDPR</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; GDPR-compliant cookie banner with Google Consent Mode v2 integration.
         </p>
       </div>

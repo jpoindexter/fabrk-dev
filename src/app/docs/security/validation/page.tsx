@@ -15,7 +15,7 @@ export default function SchemaValidationPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] VALIDATION</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">SCHEMA_VALIDATION</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Validate all inputs with Zod schemas for type-safe, secure data handling.
         </p>
       </div>

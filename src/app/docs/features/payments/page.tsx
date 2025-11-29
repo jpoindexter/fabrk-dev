@@ -16,7 +16,7 @@ export default function PaymentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] PAYMENTS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">STRIPE_PAYMENTS</h1>
-        <p className="font-mono text-base text-muted-foreground">&gt; Accept payments and manage subscriptions with Stripe.</p>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Accept payments and manage subscriptions with Stripe.</p>
       </div>
 
       {/* What Are Payments - Plain English */}

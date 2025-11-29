@@ -18,7 +18,7 @@ export default function NotificationsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">NOTIFICATIONS_SYSTEM</h1>
-        <p className="font-mono text-base text-muted-foreground">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
       </div>
 
       <Card className="mb-8">

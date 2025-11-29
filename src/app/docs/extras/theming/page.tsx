@@ -15,7 +15,7 @@ export default function ThemingPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">THEMING_AND_CUSTOMIZATION</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Choose from 20 professionally-designed color themes or create your own.
         </p>
       </div>
@@ -40,7 +40,7 @@ export default function ThemingPage() {
       {/* Available Themes */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AVAILABLE_COLOR_THEMES</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           All themes from{" "}
           <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
             DaisyUI
@@ -276,7 +276,7 @@ export default function ThemingPage() {
       {/* Theme Dropdown Component */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">THEME_SWITCHER_COMPONENT</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           The <code className="bg-muted px-1 font-mono text-xs">ThemeDropdown</code> component provides a compact dropdown for navbar:
         </p>
         <div className="[&>div]:rounded-none">
@@ -295,7 +295,7 @@ export function MyNavbar() {
       {/* How It Works */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
-        <p className="font-mono text-base text-muted-foreground">Themes are applied via data-theme attribute:</p>
+        <p className="font-mono text-sm text-muted-foreground">Themes are applied via data-theme attribute:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="html" code={`<!-- Themes work via data-theme attribute (DaisyUI pattern) -->
 <html data-theme="light">
@@ -314,7 +314,7 @@ export function MyNavbar() {
       {/* CSS Implementation */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CSS_IMPLEMENTATION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Each DaisyUI theme defines CSS variables in <code className="bg-muted px-1 font-mono text-xs">globals.css</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -348,7 +348,7 @@ export function MyNavbar() {
       {/* Using Theme Colors */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">USING_THEME_COLORS</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Always use semantic color classes that adapt to the active theme:
         </p>
         <div className="[&>div]:rounded-none">
@@ -375,7 +375,7 @@ export function MyNavbar() {
       {/* Adding Custom Themes */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ADDING_CUSTOM_THEMES</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add your own DaisyUI-style themes in 2 steps:
         </p>
         <div className="space-y-3">

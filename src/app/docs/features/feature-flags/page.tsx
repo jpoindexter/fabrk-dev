@@ -18,7 +18,7 @@ export default function FeatureFlagsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">FEATURE_FLAGS</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Control feature visibility with toggles, percentage rollouts, and user targeting for safe deployments.
         </p>
       </div>

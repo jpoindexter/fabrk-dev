@@ -15,7 +15,7 @@ export default function DatabaseSetupPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATABASE_SETUP</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Set up a production PostgreSQL database with Prisma ORM.
         </p>
       </div>
@@ -43,7 +43,7 @@ export default function DatabaseSetupPage() {
           <li>4. Choose a region close to your users</li>
           <li>5. Wait for project to be ready (~2 minutes)</li>
         </ol>
-        <p className="font-mono text-base text-muted-foreground">Get your connection string and add it to .env.local:</p>
+        <p className="font-mono text-sm text-muted-foreground">Get your connection string and add it to .env.local:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Get connection string from:
 # Project Settings → Database → Connection string
@@ -67,7 +67,7 @@ DATABASE_URL="your-connection-string"`} />
           <li>2. Create a new project</li>
           <li>3. Copy the connection string</li>
         </ol>
-        <p className="font-mono text-base text-muted-foreground">Connection string examples:</p>
+        <p className="font-mono text-sm text-muted-foreground">Connection string examples:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Neon connection string
 DATABASE_URL="postgresql://[user]:[password]@[endpoint].neon.tech/[dbname]?sslmode=require"
@@ -85,7 +85,7 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
           <li>2. Create new project → Add PostgreSQL</li>
           <li>3. Copy DATABASE_URL from Variables tab</li>
         </ol>
-        <p className="font-mono text-base text-muted-foreground">Connection string format:</p>
+        <p className="font-mono text-sm text-muted-foreground">Connection string format:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Railway connection string
 DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`} />
@@ -95,7 +95,7 @@ DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`
       {/* Initialize Database */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">INITIALIZE_DATABASE</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           After setting DATABASE_URL, run these commands:
         </p>
         <div className="[&>div]:rounded-none">
@@ -116,7 +116,7 @@ npm run db:studio`} />
       {/* Connection Pooling */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CONNECTION_POOLING</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Essential for serverless deployments (Vercel):
         </p>
         <div className="[&>div]:rounded-none">
@@ -148,7 +148,7 @@ datasource db {
       {/* Prisma Schema */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PRISMA_SCHEMA_OVERVIEW</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Key models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -209,7 +209,7 @@ model FeatureFlag {
       {/* Database Migrations */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DATABASE_MIGRATIONS</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Managing schema changes in production:
         </p>
         <div className="[&>div]:rounded-none">
@@ -236,7 +236,7 @@ npm run db:reset`} />
       {/* Seeding Data */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SEEDING_DATA</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Populate database with test data:
         </p>
         <div className="[&>div]:rounded-none">
@@ -293,7 +293,7 @@ npm run db:seed`} />
       {/* Backups */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DATABASE_BACKUPS</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Each provider handles backups differently:
         </p>
         <div className="[&>div]:rounded-none">

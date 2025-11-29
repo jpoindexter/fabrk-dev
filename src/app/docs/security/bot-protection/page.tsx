@@ -15,7 +15,7 @@ export default function BotProtectionPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] BOT_PROTECTION</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">BOT_PROTECTION</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Detect and block automated bot traffic with multiple protection strategies.
         </p>
       </div>
@@ -407,7 +407,7 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">Rate Limiting</h3>
-                <p className="font-mono text-base text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Limit requests per IP or user
                 </p>
               </CardContent>
@@ -417,7 +417,7 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">Audit Logging</h3>
-                <p className="font-mono text-base text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Log bot detection events
                 </p>
               </CardContent>

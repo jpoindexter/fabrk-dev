@@ -16,7 +16,7 @@ export default function TrialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] TRIAL</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">FREE_TRIAL_SYSTEM</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Let users try your product before they buy with time-limited trials.
         </p>
       </div>

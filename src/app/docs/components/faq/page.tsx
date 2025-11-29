@@ -14,7 +14,7 @@ export default function FAQComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FAQ_SECTION</h1>
-        <p className="mt-2 font-mono text-base text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Frequently asked questions component with accordion-style answers.
         </p>
       </div>

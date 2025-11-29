@@ -15,7 +15,7 @@ export default function DeployVercelPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DEPLOY_TO_VERCEL</h1>
-        <p className="font-mono text-base text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
       </div>
 
       <Card className="rounded-none">
@@ -35,7 +35,7 @@ export default function DeployVercelPage() {
       {/* One-Click Deploy */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ONE_CLICK_DEPLOY</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           The fastest way to deploy - click and configure:
         </p>
         <div className="[&>div]:rounded-none">
@@ -70,7 +70,7 @@ vercel
       {/* Required Environment Variables */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">REQUIRED_ENVIRONMENT_VARIABLES</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add these in Vercel Dashboard → Settings → Environment Variables:
         </p>
         <div className="[&>div]:rounded-none">
@@ -103,7 +103,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       {/* vercel.json Configuration */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">VERCEL_JSON_CONFIGURATION</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Optional configuration for advanced settings:
         </p>
         <div className="[&>div]:rounded-none">
@@ -145,7 +145,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       {/* Custom Domain */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CUSTOM_DOMAIN</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Connect your custom domain:
         </p>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground">
@@ -173,7 +173,7 @@ Value: cname.vercel-dns.com`} />
       {/* Stripe Webhook Setup */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">STRIPE_WEBHOOK_SETUP</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Configure Stripe webhooks for production:
         </p>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground">
@@ -199,7 +199,7 @@ Value: cname.vercel-dns.com`} />
       {/* Preview Deployments */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PREVIEW_DEPLOYMENTS</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Every PR gets a unique preview URL:
         </p>
         <div className="[&>div]:rounded-none">

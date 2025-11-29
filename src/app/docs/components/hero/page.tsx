@@ -14,7 +14,7 @@ export default function HeroComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">HERO_SECTIONS</h1>
-        <p className="mt-2 font-mono text-base text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Eye-catching hero sections for landing pages with various layouts and styles.
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function LandingPage() {
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">VIEW_VARIATIONS</h3>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Check out the variations page to see all hero styles side by side:
           </p>
           <div className="[&>div]:rounded-none">
@@ -118,7 +118,7 @@ export default function LandingPage() {
 
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ANIMATION_PATTERN</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           All hero sections use Framer Motion for smooth entrance animations:
         </p>
         <div className="[&>div]:rounded-none">

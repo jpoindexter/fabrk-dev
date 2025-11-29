@@ -15,7 +15,7 @@ export default function StripePaymentsTutorialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">STRIPE_PAYMENTS</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Set up one-time payments and subscriptions with Stripe.
         </p>
       </div>
@@ -26,7 +26,7 @@ export default function StripePaymentsTutorialPage() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">1</span>
           <h2 className="font-mono text-lg font-bold">CONFIGURE_STRIPE</h2>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add your Stripe API keys to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -71,7 +71,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">3</span>
           <h2 className="font-mono text-lg font-bold">CREATE_CHECKOUT_BUTTON</h2>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Use the checkout API to create a payment session:
         </p>
         <div className="[&>div]:rounded-none">
@@ -122,7 +122,7 @@ export function CheckoutButton() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">4</span>
           <h2 className="font-mono text-lg font-bold">SET_UP_WEBHOOKS</h2>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Webhooks handle payment confirmations. For local development:
         </p>
         <div className="[&>div]:rounded-none">
@@ -135,7 +135,7 @@ stripe login
 # Forward webhooks
 stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           For production, add your webhook endpoint in the Stripe Dashboard:
         </p>
         <div className="[&>div]:rounded-none">
@@ -149,7 +149,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">5</span>
           <h2 className="font-mono text-lg font-bold">HANDLE_WEBHOOK_EVENTS</h2>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           The webhook handler is at{" "}
           <code className="bg-muted px-1 font-mono text-xs">src/app/api/webhooks/stripe/route.ts</code>.
           Key events handled:
@@ -169,7 +169,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">6</span>
           <h2 className="font-mono text-lg font-bold">PROMOTION_CODES</h2>
         </div>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Configure promotion codes in <code className="bg-muted px-1 font-mono text-xs">src/config.js</code>:
         </p>
         <div className="[&>div]:rounded-none">
@@ -191,7 +191,7 @@ stripe: {
       {/* Test Cards */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TEST_CARDS</h2>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Use these test cards in development:
         </p>
         <div className="space-y-1 font-mono text-sm text-muted-foreground">

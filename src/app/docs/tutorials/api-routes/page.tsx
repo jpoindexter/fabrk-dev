@@ -14,12 +14,12 @@ export default function ApiRoutesTutorialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">API_ROUTES</h1>
-        <p className="font-mono text-base text-muted-foreground">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Fabrk uses Next.js 15 App Router for API routes. All routes are in{" "}
             <code className="bg-muted px-1 font-mono text-xs">src/app/api/</code>.
           </p>
@@ -30,7 +30,7 @@ export default function ApiRoutesTutorialPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CREATING_A_BASIC_ROUTE</h2>
         <div>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Create a new file at <code className="bg-muted px-1 font-mono text-xs">src/app/api/hello/route.ts</code>:
           </p>
         </div>
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PROTECTED_API_ROUTE</h2>
         <div>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Add authentication to your route:
           </p>
         </div>
@@ -87,7 +87,7 @@ export async function GET() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Always validate input with Zod schemas:
           </p>
         </div>
@@ -129,7 +129,7 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DATABASE_ACCESS</h2>
         <div>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Use Prisma to interact with your database:
           </p>
         </div>
@@ -163,7 +163,7 @@ export async function GET() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ERROR_HANDLING_PATTERN</h2>
         <div>
-          <p className="font-mono text-base text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Use this consistent error handling pattern:
           </p>
         </div>

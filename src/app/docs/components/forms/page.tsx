@@ -14,7 +14,7 @@ export default function FormsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FORMS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">FORM_COMPONENTS</h1>
-        <p className="font-mono text-base text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Form components including inputs, selects, checkboxes, and validation.
         </p>
       </div>

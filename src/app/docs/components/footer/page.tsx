@@ -14,7 +14,7 @@ export default function FooterComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-base text-muted-foreground">
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
           &gt; Footer components with links, branding, and legal information.
         </p>
       </div>

@@ -18,7 +18,7 @@ export default function WebhooksPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">WEBHOOKS_SYSTEM</h1>
-        <p className="font-mono text-base text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Production-grade webhook system with 22 event types, HMAC-SHA256 signature verification, and automatic retry with exponential backoff.
         </p>
       </div>

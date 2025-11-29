@@ -14,7 +14,7 @@ export default function ChartsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">CHARTS_AND_ANALYTICS</h1>
-        <p className="font-mono text-base text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Chart components for visualizing data and analytics.
         </p>
       </div>
