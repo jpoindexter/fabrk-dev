@@ -80,11 +80,14 @@ export function FeaturesSection() {
           viewport={{ once: true, margin: "-150px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Everything you need to ship production apps
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ]</span>
+          </div>
+          <h2 className="font-mono text-2xl font-bold sm:text-3xl">
+            EVERYTHING_YOU_NEED_TO_SHIP_PRODUCTION_APPS
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            More than just components—a complete system with automated quality enforcement, AI workflows, and industry-standard design tokens.
+          <p className="mx-auto mt-6 max-w-2xl font-mono text-sm text-muted-foreground">
+            &gt; More than just components—a complete system with automated quality enforcement, AI workflows, and industry-standard design tokens.
           </p>
         </motion.div>
 
@@ -101,11 +104,11 @@ export function FeaturesSection() {
                 className="group"
                 variants={featureCard}
               >
-                <div className="flex size-10 items-center justify-center rounded-lg bg-muted">
+                <div className="flex size-10 items-center justify-center bg-muted">
                   <Icon className="size-5 text-foreground" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-foreground">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="mt-4 font-mono text-sm font-semibold text-foreground">{feature.title.toUpperCase().replace(/ /g, '_')}</h3>
+                <p className="mt-2 font-mono text-xs text-muted-foreground">
                   {feature.description}
                 </p>
               </motion.div>

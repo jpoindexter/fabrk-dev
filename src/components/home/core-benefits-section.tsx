@@ -7,7 +7,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
 
@@ -54,32 +53,32 @@ export function CoreBenefitsSection() {
         {/* AI-First */}
         <motion.div className="mx-auto max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge variant="default" size="lg" className="inline-flex items-center gap-2 uppercase tracking-wide">
-              <Sparkles className="size-4" />
-              <span>AI-First</span>
-            </Badge>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Copy. Paste. Build.
+            <div className="mb-4 inline-flex items-center gap-2 border border-border bg-card px-3 py-1">
+              <Sparkles className="size-4 text-muted-foreground" />
+              <span className="font-mono text-xs text-muted-foreground">[ AI_FIRST ]</span>
+            </div>
+            <h2 className="mt-4 font-mono text-2xl font-bold sm:text-3xl">
+              COPY_PASTE_BUILD
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Click &quot;Copy Prompt&quot; on any component. Paste into v0, Bolt, or Cursor. Get
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; Click &quot;Copy Prompt&quot; on any component. Paste into v0, Bolt, or Cursor. Get
               production-ready code instantly.
             </p>
           </div>
 
-          <div className="mt-12 rounded-lg border border-border bg-card p-6">
+          <div className="mt-12 border border-border bg-card p-6">
             <div className="flex items-center justify-between border-b border-border pb-4">
-              <span className="font-mono text-sm text-muted-foreground">Button Component</span>
-              <Button size="sm" variant="outline" className="gap-2">
+              <span className="font-mono text-sm text-muted-foreground">BUTTON_COMPONENT</span>
+              <Button size="sm" variant="outline" className="gap-2 rounded-none font-mono text-xs">
                 <Copy className="size-4" />
-                Copy Prompt
+                &gt; COPY_PROMPT
               </Button>
             </div>
             <div className="mt-4 font-mono text-sm text-muted-foreground">
-              <p>→ Paste into your AI tool</p>
-              <p className="mt-2 text-primary">✓ Full component context via llms.txt</p>
-              <p className="mt-1 text-primary">✓ Design tokens included</p>
-              <p className="mt-1 text-primary">✓ Usage examples attached</p>
+              <p>&gt; Paste into your AI tool</p>
+              <p className="mt-2 text-primary">✓ FULL_COMPONENT_CONTEXT via llms.txt</p>
+              <p className="mt-1 text-primary">✓ DESIGN_TOKENS included</p>
+              <p className="mt-1 text-primary">✓ USAGE_EXAMPLES attached</p>
             </div>
           </div>
         </motion.div>
@@ -87,24 +86,24 @@ export function CoreBenefitsSection() {
         {/* Quality-First */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge variant="default" size="lg" className="inline-flex items-center gap-2 uppercase tracking-wide">
-              <Terminal className="size-4" />
-              <span>Quality-First</span>
-            </Badge>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Quality enforced automatically
+            <div className="mb-4 inline-flex items-center gap-2 border border-border bg-card px-3 py-1">
+              <Terminal className="size-4 text-muted-foreground" />
+              <span className="font-mono text-xs text-muted-foreground">[ QUALITY_FIRST ]</span>
+            </div>
+            <h2 className="mt-4 font-mono text-2xl font-bold sm:text-3xl">
+              QUALITY_ENFORCED_AUTOMATICALLY
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              11 quality checks run on every commit. No manual gatekeeping.
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; 11 quality checks run on every commit. No manual gatekeeping.
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-lg border border-border bg-card">
+          <div className="mt-12 overflow-hidden border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border bg-muted px-4 py-3">
-              <div className="size-3 rounded-full bg-destructive/100" />
-              <div className="size-3 rounded-full bg-accent/100" />
-              <div className="size-3 rounded-full bg-primary/100" />
-              <span className="ml-2 text-xs font-medium text-muted-foreground">Terminal</span>
+              <div className="size-3 bg-destructive/100" />
+              <div className="size-3 bg-accent/100" />
+              <div className="size-3 bg-primary/100" />
+              <span className="ml-2 font-mono text-xs text-muted-foreground">TERMINAL</span>
             </div>
             <div className="p-6 font-mono text-sm">
               <div className="mb-4 text-muted-foreground">
@@ -117,8 +116,8 @@ export function CoreBenefitsSection() {
                     className="flex items-center justify-between"
                     variants={checkItem}
                   >
-                    <span className="text-foreground">✓ {check}</span>
-                    <span className="text-primary">passed</span>
+                    <span className="text-foreground">✓ {check.toUpperCase().replace(/ /g, '_')}</span>
+                    <span className="text-primary">PASSED</span>
                   </motion.div>
                 ))}
                 <motion.div
@@ -126,7 +125,7 @@ export function CoreBenefitsSection() {
                   variants={checkItem}
                 >
                   <Check className="size-5 text-primary" />
-                  <span className="font-medium text-primary">[6/11 checks shown]</span>
+                  <span className="font-medium text-primary">[6/11 CHECKS_SHOWN]</span>
                 </motion.div>
               </motion.div>
             </div>
@@ -136,44 +135,44 @@ export function CoreBenefitsSection() {
         {/* Complete System */}
         <motion.div className="mx-auto mt-32 max-w-4xl" {...fadeInUp}>
           <div className="text-center">
-            <Badge variant="default" size="lg" className="uppercase tracking-wide">
-              Complete
-            </Badge>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Everything you need, nothing you don&apos;t
+            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[ COMPLETE ]</span>
+            </div>
+            <h2 className="mt-4 font-mono text-2xl font-bold sm:text-3xl">
+              EVERYTHING_YOU_NEED_NOTHING_YOU_DONT
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              More than a component library. A complete design system.
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; More than a component library. A complete design system.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            <div className="rounded-lg border border-border bg-card p-6">
-              <div className="text-4xl font-semibold text-foreground">169</div>
-              <div className="mt-2 text-sm font-medium text-foreground">Components</div>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <div className="border border-border bg-card p-6">
+              <div className="font-mono text-4xl font-bold text-foreground">169</div>
+              <div className="mt-2 font-mono text-sm font-semibold text-foreground">COMPONENTS</div>
+              <p className="mt-2 font-mono text-xs text-muted-foreground">
                 More than shadcn (50+) and UI Pub (~100)
               </p>
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6">
-              <div className="text-4xl font-semibold text-foreground">85%</div>
-              <div className="mt-2 text-sm font-medium text-foreground">Test Coverage</div>
-              <p className="mt-2 text-sm text-muted-foreground">130+ tests. Production-ready.</p>
+            <div className="border border-border bg-card p-6">
+              <div className="font-mono text-4xl font-bold text-foreground">85%</div>
+              <div className="mt-2 font-mono text-sm font-semibold text-foreground">TEST_COVERAGE</div>
+              <p className="mt-2 font-mono text-xs text-muted-foreground">130+ tests. Production-ready.</p>
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6">
-              <div className="text-4xl font-semibold text-foreground">100%</div>
-              <div className="mt-2 text-sm font-medium text-foreground">Type-Safe</div>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <div className="border border-border bg-card p-6">
+              <div className="font-mono text-4xl font-bold text-foreground">100%</div>
+              <div className="mt-2 font-mono text-sm font-semibold text-foreground">TYPE_SAFE</div>
+              <p className="mt-2 font-mono text-xs text-muted-foreground">
                 Strict TypeScript. Full IntelliSense.
               </p>
             </div>
 
-            <div className="rounded-lg border border-border bg-card p-6">
-              <div className="text-4xl font-semibold text-foreground">WCAG</div>
-              <div className="mt-2 text-sm font-medium text-foreground">2.1 AA</div>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <div className="border border-border bg-card p-6">
+              <div className="font-mono text-4xl font-bold text-foreground">WCAG</div>
+              <div className="mt-2 font-mono text-sm font-semibold text-foreground">2.1_AA</div>
+              <p className="mt-2 font-mono text-xs text-muted-foreground">
                 Accessibility built-in, not bolted-on.
               </p>
             </div>

@@ -7,8 +7,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
-import { H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
+import { Check } from "lucide-react";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 
@@ -144,21 +143,24 @@ export function ValueProposition() {
         >
           {/* Header */}
           <div className="text-center">
-            <H2 className="mb-4">The Real Cost of DIY</H2>
-            <Body className="mx-auto max-w-2xl">
-              Build it yourself or use Fabrk? Here's the financial breakdown.
-            </Body>
+            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[ [0x40] ROI_ANALYSIS ]</span>
+            </div>
+            <h2 className="mb-4 font-mono text-2xl font-bold">THE_REAL_COST_OF_DIY</h2>
+            <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; Build it yourself or use Fabrk? Here&apos;s the financial breakdown.
+            </p>
           </div>
 
           {/* Feature Comparison Table */}
-          <div className="overflow-x-auto rounded-lg border border-border bg-card">
-            <table className="w-full">
+          <div className="overflow-x-auto border border-border bg-card">
+            <table className="w-full font-mono">
               <thead>
                 <tr className="border-b border-border bg-muted">
-                  <th className="px-6 py-4 text-left font-semibold">Feature</th>
-                  <th className="px-6 py-4 text-center font-semibold">DIY Time</th>
-                  <th className="px-6 py-4 text-center font-semibold">DIY Cost</th>
-                  <th className="px-6 py-4 text-center font-semibold">Fabrk</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold">FEATURE</th>
+                  <th className="px-6 py-4 text-center text-xs font-semibold">DIY_TIME</th>
+                  <th className="px-6 py-4 text-center text-xs font-semibold">DIY_COST</th>
+                  <th className="px-6 py-4 text-center text-xs font-semibold">FABRK</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
@@ -172,14 +174,14 @@ export function ValueProposition() {
                     className="hover:bg-muted/30"
                   >
                     <td className="px-6 py-4">
-                      <Strong className="block">{item.feature}</Strong>
-                      <Small className="text-muted-foreground">{item.description}</Small>
+                      <span className="block text-xs font-semibold">{item.feature.toUpperCase().replace(/ /g, '_')}</span>
+                      <span className="text-xs text-muted-foreground">{item.description}</span>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Small className="text-foreground">{item.diy.time}</Small>
+                      <span className="text-xs text-foreground">{item.diy.time}</span>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <Small className="text-foreground">{item.diy.cost}</Small>
+                      <span className="text-xs text-foreground">{item.diy.cost}</span>
                     </td>
                     <td className="px-6 py-4 text-center">
                       <Check className="mx-auto size-5 text-success" />
@@ -196,32 +198,32 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-lg border border-border bg-card p-8"
+            className="border border-border bg-card p-8"
           >
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-3 font-mono">
               <div>
-                <div className="text-4xl font-bold text-primary">{Math.round(totalDIYTime)} days</div>
-                <Small className="block mt-2 text-muted-foreground">Total dev time for DIY</Small>
-                <Small className="block mt-1 text-muted-foreground">That's 2 months of development</Small>
+                <div className="text-3xl font-bold text-primary">{Math.round(totalDIYTime)} days</div>
+                <span className="block mt-2 text-xs text-muted-foreground">TOTAL_DEV_TIME_FOR_DIY</span>
+                <span className="block mt-1 text-xs text-muted-foreground">// 2 months of development</span>
               </div>
               <div>
-                <div className="text-4xl font-bold text-primary">
+                <div className="text-3xl font-bold text-primary">
                   ${Math.round(totalDIYCost / 1000)}K
                 </div>
-                <Small className="block mt-2 text-muted-foreground">Total cost for DIY</Small>
-                <Small className="block mt-1 text-muted-foreground">At $50-75/hr developer salary</Small>
+                <span className="block mt-2 text-xs text-muted-foreground">TOTAL_COST_FOR_DIY</span>
+                <span className="block mt-1 text-xs text-muted-foreground">// At $50-75/hr developer salary</span>
               </div>
               <div>
-                <div className="text-4xl font-bold text-primary">{Math.round(roi)}x ROI</div>
-                <Small className="block mt-2 text-muted-foreground">Return on $199 investment</Small>
-                <Small className="block mt-1 text-muted-foreground">Pays for itself in first week</Small>
+                <div className="text-3xl font-bold text-primary">{Math.round(roi)}x ROI</div>
+                <span className="block mt-2 text-xs text-muted-foreground">RETURN_ON_$199_INVESTMENT</span>
+                <span className="block mt-1 text-xs text-muted-foreground">// Pays for itself in first week</span>
               </div>
             </div>
           </motion.div>
 
           {/* Timeline Comparison */}
           <div>
-            <H3 className="mb-6">Timeline Comparison</H3>
+            <h3 className="mb-6 font-mono text-lg font-bold">TIMELINE_COMPARISON</h3>
             <div className="grid gap-6 md:grid-cols-2">
               {TIMELINE_COMPARISON.map((approach, idx) => (
                 <motion.div
@@ -230,17 +232,17 @@ export function ValueProposition() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="rounded-lg border border-border bg-card p-6"
+                  className="border border-border bg-card p-6"
                 >
                   <div className="mb-4 flex items-baseline justify-between">
-                    <H4>{approach.label}</H4>
-                    <span className="text-3xl font-bold text-primary">
+                    <h4 className="font-mono text-sm font-semibold">{approach.label.toUpperCase().replace(/ /g, '_')}</h4>
+                    <span className="font-mono text-3xl font-bold text-primary">
                       {approach.weeks} {approach.weeks === 1 ? "week" : "weeks"}
                     </span>
                   </div>
 
                   {/* Progress bar */}
-                  <div className="mb-4 h-2 overflow-hidden rounded-full bg-muted">
+                  <div className="mb-4 h-2 overflow-hidden bg-muted">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${(approach.weeks / 8) * 100}%` }}
@@ -253,8 +255,8 @@ export function ValueProposition() {
                   <ul className="space-y-2">
                     {approach.breakdown.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                        <Small className="text-muted-foreground">{item}</Small>
+                        <span className="mt-1.5 size-1.5 shrink-0 bg-primary" />
+                        <span className="font-mono text-xs text-muted-foreground">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -269,44 +271,44 @@ export function ValueProposition() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-lg border border-border bg-card p-8"
+            className="border border-border bg-card p-8"
           >
-            <H3 className="mb-4">Key Takeaways</H3>
+            <h3 className="mb-4 font-mono text-lg font-bold">KEY_TAKEAWAYS</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <Strong className="block">Ship 6 weeks faster</Strong>
-                  <Small className="block text-muted-foreground">
+                  <span className="block font-mono text-sm font-semibold">SHIP_6_WEEKS_FASTER</span>
+                  <span className="block font-mono text-xs text-muted-foreground">
                     Get to market faster, validate product-market fit sooner
-                  </Small>
+                  </span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <Strong className="block">Save $30K+ in dev costs</Strong>
-                  <Small className="block text-muted-foreground">
-                    $300 investment replaces months of expensive engineering
-                  </Small>
+                  <span className="block font-mono text-sm font-semibold">SAVE_$30K+_IN_DEV_COSTS</span>
+                  <span className="block font-mono text-xs text-muted-foreground">
+                    $199 investment replaces months of expensive engineering
+                  </span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <Strong className="block">Production-ready from day 1</Strong>
-                  <Small className="block text-muted-foreground">
-                    931+ tests, documentation, and security best practices included
-                  </Small>
+                  <span className="block font-mono text-sm font-semibold">PRODUCTION_READY_DAY_1</span>
+                  <span className="block font-mono text-xs text-muted-foreground">
+                    130+ tests, documentation, and security best practices included
+                  </span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Check className="mt-1 size-5 shrink-0 text-success" />
                 <div>
-                  <Strong className="block">Focus on your differentiation</Strong>
-                  <Small className="block text-muted-foreground">
+                  <span className="block font-mono text-sm font-semibold">FOCUS_ON_DIFFERENTIATION</span>
+                  <span className="block font-mono text-xs text-muted-foreground">
                     Use your dev time to build unique features, not boilerplate
-                  </Small>
+                  </span>
                 </div>
               </div>
             </div>
@@ -318,17 +320,17 @@ export function ValueProposition() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card p-8 text-center"
+            className="flex flex-col items-center justify-center gap-4 border border-border bg-card p-8 text-center"
           >
             <DiscountCounter />
             <div className="flex flex-col items-center gap-4 sm:flex-row">
               <div>
-                <Body className="font-semibold">Ready to ship faster?</Body>
-                <Small className="block text-muted-foreground">
+                <span className="block font-mono text-sm font-semibold">READY_TO_SHIP_FASTER?</span>
+                <span className="block font-mono text-xs text-muted-foreground">
                   Get Fabrk and save 6 weeks + $30K in dev costs
-                </Small>
+                </span>
               </div>
-              <PolarCheckoutButton>Get Started - $199</PolarCheckoutButton>
+              <PolarCheckoutButton>&gt; GET_STARTED - $199</PolarCheckoutButton>
             </div>
           </motion.div>
         </motion.div>

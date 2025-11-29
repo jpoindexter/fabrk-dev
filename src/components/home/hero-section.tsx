@@ -42,16 +42,16 @@ export function HeroSection() {
       <div className="container relative z-10 mx-auto flex flex-1 flex-col justify-center px-6 py-32 sm:px-8 lg:px-12 lg:py-40">
         <div className="mx-auto max-w-4xl text-center">
           {/* h1 rendered immediately for optimal LCP - no animation */}
-          <h1 className="text-balance text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            Build production apps at AI speed.
+          <h1 className="text-balance font-mono text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            BUILD_PRODUCTION_APPS_AT_AI_SPEED
           </h1>
           <motion.p
-            className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
+            className="mx-auto mt-6 max-w-2xl text-balance font-mono text-sm text-muted-foreground sm:text-base"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            100+ components. Automated quality. One price.
+            &gt; 100+ components. Automated quality. One price.
           </motion.p>
 
           <motion.div
@@ -64,9 +64,10 @@ export function HeroSection() {
               asChild
               variant="primaryCta"
               size="xl"
+              className="rounded-none font-mono"
             >
               <Link href="/pricing">
-                Get Fabrk Now - {config.pricing.fabrk.display.current}
+                &gt; GET_FABRK - {config.pricing.fabrk.display.current}
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -74,38 +75,40 @@ export function HeroSection() {
               asChild
               variant="outline"
               size="xl"
+              className="rounded-none font-mono"
             >
-              <Link href="/demo">View Live Demo</Link>
+              <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
             <Button
               asChild
               variant="ghost"
               size="xl"
+              className="rounded-none font-mono"
             >
-              <Link href="/components">Browse Components</Link>
+              <Link href="/components">&gt; BROWSE_COMPONENTS</Link>
             </Button>
           </motion.div>
 
           {/* Trust badges - inline style */}
           <motion.div
-            className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground"
+            className="mt-16 flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-muted-foreground"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="flex items-center gap-2">
               <span className="font-semibold text-foreground">87</span>
-              <span>Components</span>
+              <span>COMPONENTS</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="flex items-center gap-2">
               <span className="font-semibold text-foreground">85%</span>
-              <span>Test Coverage</span>
+              <span>TEST_COVERAGE</span>
             </div>
             <div className="h-4 w-px bg-border" />
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-foreground">WCAG 2.1 AA</span>
-              <span>Accessible</span>
+              <span className="font-semibold text-foreground">WCAG_2.1_AA</span>
+              <span>ACCESSIBLE</span>
             </div>
           </motion.div>
         </div>

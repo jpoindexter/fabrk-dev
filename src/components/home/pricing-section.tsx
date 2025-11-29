@@ -82,11 +82,14 @@ export function PricingSection() {
           viewport={{ once: true, margin: "-150px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Choose your plan
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[ [0x90] PRICING ]</span>
+          </div>
+          <h2 className="font-mono text-2xl font-bold sm:text-3xl">
+            CHOOSE_YOUR_PLAN
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            One-time payment. Lifetime updates. No subscriptions.
+          <p className="mx-auto mt-6 max-w-2xl font-mono text-sm text-muted-foreground">
+            &gt; ONE_TIME_PAYMENT. LIFETIME_UPDATES. NO_SUBSCRIPTIONS.
           </p>
         </motion.div>
 
@@ -94,24 +97,24 @@ export function PricingSection() {
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
-              className={`relative rounded-lg border bg-background p-8 ${
+              className={`relative border bg-background p-8 ${
                 plan.popular ? "border-foreground" : "border-border"
               }`}
               variants={pricingCard}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background">
-                    Most Popular
+                  <span className="bg-foreground px-3 py-1 font-mono text-xs font-medium text-background">
+                    [MOST_POPULAR]
                   </span>
                 </div>
               )}
               <div>
-                <h3 className="text-xl font-semibold text-foreground">{plan.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{plan.description}</p>
+                <h3 className="font-mono text-lg font-semibold text-foreground">{plan.name.toUpperCase()}</h3>
+                <p className="mt-2 font-mono text-xs text-muted-foreground">{plan.description}</p>
                 <div className="mt-6">
-                  <span className="text-4xl font-semibold text-foreground">{plan.price}</span>
-                  <span className="ml-2 text-sm text-muted-foreground">{plan.period}</span>
+                  <span className="font-mono text-4xl font-bold text-foreground">{plan.price}</span>
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">{plan.period.toUpperCase()}</span>
                 </div>
               </div>
               <ul className="mt-8 space-y-3">
@@ -120,16 +123,16 @@ export function PricingSection() {
                     <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center">
                       <Check className="size-4 text-foreground" />
                     </div>
-                    <span className="text-sm text-foreground">{feature}</span>
+                    <span className="font-mono text-xs text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
               <Button
-                className="mt-8 w-full"
+                className="mt-8 w-full rounded-none font-mono"
                 variant={plan.popular ? "primaryCta" : "secondaryCta"}
                 disabled={plan.price === "$0"}
               >
-                {plan.price === "$0" ? "Coming Soon" : "Get Fabrk Now"}
+                {plan.price === "$0" ? "&gt; COMING_SOON" : "&gt; GET_FABRK"}
               </Button>
             </motion.div>
           ))}

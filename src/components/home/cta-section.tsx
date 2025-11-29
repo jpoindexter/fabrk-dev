@@ -13,23 +13,26 @@ export function CTASection() {
   return (
     <section className="border-t border-border bg-background py-24 lg:py-32">
       <div className="container mx-auto max-w-4xl px-6 text-center sm:px-8 lg:px-12">
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x80] CTA ]</span>
+        </div>
         <motion.h2
-          className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+          className="font-mono text-2xl font-bold sm:text-3xl"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          Start building today
+          START_BUILDING_TODAY
         </motion.h2>
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
+          className="mx-auto mt-6 max-w-2xl font-mono text-sm text-muted-foreground"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          Join developers building next-gen products with Fabrk. Early supporter pricing ends soon.
+          &gt; Join developers building next-gen products with Fabrk. Early supporter pricing ends soon.
         </motion.p>
 
         <motion.div
@@ -41,21 +44,21 @@ export function CTASection() {
         >
           <a
             href="/pricing"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-3 text-base font-medium text-background transition-colors hover:bg-card"
+            className="inline-flex items-center justify-center gap-2 bg-foreground px-8 py-3 font-mono text-sm font-medium text-background transition-colors hover:bg-card"
           >
-            Get Early Access
+            &gt; GET_EARLY_ACCESS
             <ArrowRight className="size-5" />
           </a>
         </motion.div>
 
         <motion.p
-          className="mt-8 text-sm text-muted-foreground"
+          className="mt-8 font-mono text-xs text-muted-foreground"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          One-time payment • Lifetime updates • No subscriptions
+          // ONE_TIME_PAYMENT • LIFETIME_UPDATES • NO_SUBSCRIPTIONS
         </motion.p>
       </div>
     </section>

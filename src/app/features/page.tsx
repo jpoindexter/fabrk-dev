@@ -294,7 +294,7 @@ export default function FeaturesPage() {
                 FABRK_FEATURES:
               </h1>
               <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
-                Every Feature You Need,<br className="hidden sm:block" /> <span className="text-primary">Already Built</span>
+                EVERY_FEATURE_YOU_NEED<br className="hidden sm:block" /> <span className="text-primary">ALREADY_BUILT</span>
               </h2>
             </motion.div>
 

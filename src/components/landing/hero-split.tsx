@@ -1,10 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import config from "@/config";
 
 interface HeroSplitProps {
   headline?: string;
@@ -12,19 +9,15 @@ interface HeroSplitProps {
   ctaPrimary?: { text: string; href: string };
   ctaSecondary?: { text: string; href: string };
   trustBadges?: string[];
-  image?: string;
-  imageAlt?: string;
   imagePosition?: "left" | "right";
 }
 
 export function HeroSplit({
-  headline = "The Anti-Bloat Next.js Boilerplate",
-  subheadline = "161 files. Not 1000. Ship your SaaS in hours, not weeks.",
-  ctaPrimary = { text: "Get Fabrk", href: "#pricing" },
-  ctaSecondary = { text: "View Docs", href: "/docs" },
-  trustBadges = ["TypeScript Strict", "PostgreSQL + Prisma", "Next.js 15", "80+ Components"],
-  image = "/dashboard-preview.png",
-  imageAlt = "Fabrk Dashboard Preview",
+  headline = "THE_ANTI_BLOAT_NEXTJS_BOILERPLATE",
+  subheadline = "> 161_FILES_NOT_1000 // Ship your SaaS in hours, not weeks",
+  ctaPrimary = { text: "> GET_FABRK", href: "#pricing" },
+  ctaSecondary = { text: "> VIEW_DOCS", href: "/docs" },
+  trustBadges = ["TYPESCRIPT_STRICT", "POSTGRESQL_PRISMA", "NEXTJS_15", "80_PLUS_COMPONENTS"],
   imagePosition = "right",
 }: HeroSplitProps) {
   const contentOrder = imagePosition === "left" ? "lg:order-2" : "lg:order-1";
@@ -38,18 +31,18 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <Badge variant="default" size="lg" className="rounded-none">
-                Early Access - Join First 100 Launch Customers
-              </Badge>
+              <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+                [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
+              </span>
             </div>
 
             {/* Headline */}
-            <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            <h1 className="mb-6 font-mono text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
               {headline}
             </h1>
 
             {/* Subheadline */}
-            <p className="mb-8 text-lg leading-relaxed text-foreground sm:text-xl">
+            <p className="mb-8 font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
               {subheadline}
             </p>
 
@@ -57,7 +50,7 @@ export function HeroSplit({
             <div className="mb-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="rounded-none h-14 bg-primary px-8 text-lg font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                className="rounded-none h-12 bg-primary px-6 font-mono text-xs font-semibold text-primary-foreground transition-all hover:bg-primary/90"
                 asChild
               >
                 <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
@@ -65,7 +58,7 @@ export function HeroSplit({
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-none h-14 border-2 border-foreground px-8 text-lg font-semibold text-foreground transition-all hover:bg-foreground hover:text-background"
+                className="rounded-none h-12 border-2 border-foreground px-6 font-mono text-xs font-semibold text-foreground transition-all hover:bg-foreground hover:text-background"
                 asChild
               >
                 <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -73,22 +66,20 @@ export function HeroSplit({
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {trustBadges.map((badge) => (
-                <Badge
+                <span
                   key={badge}
-                  variant="outline"
-                  size="md"
-                  className="rounded-none border-2 border-foreground shadow-[2px_2px_0px_0px_var(--foreground)]"
+                  className="border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground"
                 >
-                  {badge}
-                </Badge>
+                  [{badge}]
+                </span>
               ))}
             </div>
 
             {/* Final Sale Notice */}
-            <p className="mt-6 text-sm text-muted-foreground">
-              All sales final • Lifetime v1.x updates
+            <p className="mt-6 font-mono text-xs text-muted-foreground">
+              // All sales final • Lifetime v1.x updates
             </p>
           </div>
 

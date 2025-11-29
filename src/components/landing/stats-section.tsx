@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { H2, H3, Body, Small } from "@/components/ui/typography";
 
 // Animated counter component
 function AnimatedCounter({
@@ -87,9 +86,12 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4 font-mono">
-              Trusted by Developers Worldwide
-            </H2>
+            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[ [0x30] METRICS ]</span>
+            </div>
+            <h2 className="mb-4 font-mono text-2xl font-bold">
+              TRUSTED_BY_DEVELOPERS_WORLDWIDE
+            </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -97,9 +99,9 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Body className="font-mono text-muted-foreground">
-              Join hundreds of developers shipping production-ready SaaS apps
-            </Body>
+            <p className="font-mono text-sm text-muted-foreground">
+              &gt; Join hundreds of developers shipping production-ready SaaS apps
+            </p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -107,9 +109,9 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Small className="block mt-2 text-muted-foreground">
+            <span className="block mt-2 font-mono text-xs text-muted-foreground">
               *Projected estimates based on early access users
-            </Small>
+            </span>
           </motion.div>
         </div>
 
@@ -130,10 +132,12 @@ export function StatsSection() {
                   decimals={stat.decimals || 0}
                 />
               </div>
-              <H3 className="mb-2">{stat.label}</H3>
-              <Small className="block text-muted-foreground">
+              <h3 className="mb-2 font-mono text-sm font-semibold">
+                {stat.label.toUpperCase().replace(/ /g, '_')}
+              </h3>
+              <span className="block font-mono text-xs text-muted-foreground">
                 {stat.description}
-              </Small>
+              </span>
             </motion.div>
           ))}
         </div>

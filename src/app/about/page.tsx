@@ -122,9 +122,9 @@ export default function AboutPage() {
               FABRK_ABOUT:
             </h1>
             <h2 className="mb-6 text-3xl font-bold tracking-tight lg:text-4xl">
-              Built by Developers,
+              BUILT_BY_DEVELOPERS
               <br />
-              <span className="text-primary">For Developers</span>
+              <span className="text-primary">FOR_DEVELOPERS</span>
             </h2>
           </motion.div>
 

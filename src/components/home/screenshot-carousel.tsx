@@ -94,11 +94,14 @@ export function ScreenshotCarousel() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              See it in action
+            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[ [0x50] PREVIEW ]</span>
+            </div>
+            <h2 className="font-mono text-2xl font-bold sm:text-3xl">
+              SEE_IT_IN_ACTION
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Explore all the features that make Fabrk production-ready
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; Explore all the features that make Fabrk production-ready
             </p>
           </div>
 
@@ -111,7 +114,7 @@ export function ScreenshotCarousel() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="relative overflow-hidden rounded-lg border border-border bg-card shadow-lg"
+              className="relative overflow-hidden border border-border bg-card shadow-lg"
             >
               <div className="aspect-video w-full overflow-hidden bg-muted">
                 <img
@@ -123,10 +126,10 @@ export function ScreenshotCarousel() {
 
               {/* Info Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent px-6 py-6 sm:px-8">
-                <h3 className="text-xl font-semibold text-foreground">
-                  {currentScreenshot.title}
+                <h3 className="font-mono text-lg font-semibold text-foreground">
+                  {currentScreenshot.title.toUpperCase().replace(/ /g, '_')}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 font-mono text-xs text-muted-foreground">
                   {currentScreenshot.description}
                 </p>
               </div>
@@ -140,7 +143,7 @@ export function ScreenshotCarousel() {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
+                    className={`h-2 transition-all duration-300 ${
                       index === currentIndex
                         ? "w-8 bg-primary"
                         : "w-2 bg-border hover:bg-muted-foreground"
@@ -155,6 +158,7 @@ export function ScreenshotCarousel() {
                 <Button
                   variant="outline"
                   size="sm"
+                  className="rounded-none font-mono"
                   onClick={prev}
                   aria-label="Previous screenshot"
                 >
@@ -163,6 +167,7 @@ export function ScreenshotCarousel() {
                 <Button
                   variant="outline"
                   size="sm"
+                  className="rounded-none font-mono"
                   onClick={next}
                   aria-label="Next screenshot"
                 >
@@ -172,8 +177,8 @@ export function ScreenshotCarousel() {
             </div>
 
             {/* Counter */}
-            <div className="text-center text-sm text-muted-foreground">
-              {currentIndex + 1} of {SCREENSHOTS.length}
+            <div className="text-center font-mono text-xs text-muted-foreground">
+              [{currentIndex + 1}/{SCREENSHOTS.length}]
             </div>
           </div>
         </motion.div>

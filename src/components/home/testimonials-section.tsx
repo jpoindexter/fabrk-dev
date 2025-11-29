@@ -56,7 +56,7 @@ function TestimonialCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="rounded-lg border border-border bg-card p-6"
+      className="border border-border bg-card p-6"
     >
       {/* Rating */}
       <div className="mb-4 flex gap-1">
@@ -71,7 +71,7 @@ function TestimonialCard({
 
       {/* Quote */}
       <blockquote className="mb-6">
-        <p className="text-foreground">"{quote}"</p>
+        <p className="font-mono text-sm text-foreground">"{quote}"</p>
       </blockquote>
 
       {/* Author */}
@@ -79,12 +79,12 @@ function TestimonialCard({
         <img
           src={image}
           alt={author}
-          className="size-12 rounded-full object-cover"
+          className="size-12 object-cover"
         />
         <div>
-          <p className="font-semibold text-foreground">{author}</p>
-          <p className="text-sm text-muted-foreground">
-            {role} at {company}
+          <p className="font-mono text-sm font-semibold text-foreground">{author.toUpperCase().replace(/ /g, '_')}</p>
+          <p className="font-mono text-xs text-muted-foreground">
+            {role} @ {company}
           </p>
         </div>
       </div>
@@ -105,11 +105,14 @@ export function TestimonialsSection() {
         >
           {/* Header */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-              Join early adopters building with Fabrk
+            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <span className="font-mono text-xs text-muted-foreground">[ [0x60] TESTIMONIALS ]</span>
+            </div>
+            <h2 className="font-mono text-2xl font-bold sm:text-3xl">
+              JOIN_EARLY_ADOPTERS_BUILDING_WITH_FABRK
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Production-ready Next.js boilerplate trusted by indie developers and agencies worldwide
+            <p className="mx-auto mt-4 max-w-2xl font-mono text-sm text-muted-foreground">
+              &gt; Production-ready Next.js boilerplate trusted by indie developers and agencies worldwide
             </p>
           </div>
 
@@ -128,10 +131,10 @@ export function TestimonialsSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-lg border border-border bg-muted/50 p-6 text-center sm:p-8"
+            className="border border-border bg-muted/50 p-6 text-center sm:p-8"
           >
-            <p className="text-sm text-muted-foreground">
-              Built by indie developers, for indie developers. Start shipping faster with 100+ production-ready components.
+            <p className="font-mono text-xs text-muted-foreground">
+              // Built by indie developers, for indie developers. Start shipping faster with 100+ production-ready components.
             </p>
           </motion.div>
         </motion.div>

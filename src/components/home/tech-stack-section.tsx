@@ -20,8 +20,11 @@ export function TechStackSection() {
     <section className="border-t border-border bg-background py-16 lg:py-20">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <motion.div className="text-center" {...fadeInUp}>
-          <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            Built with the tools you love
+          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+            <span className="font-mono text-xs text-muted-foreground">[ TECH_STACK ]</span>
+          </div>
+          <p className="font-mono text-sm text-muted-foreground">
+            &gt; BUILT_WITH_THE_TOOLS_YOU_LOVE
           </p>
 
           <div className="mx-auto mt-12 flex max-w-5xl flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16">
@@ -77,7 +80,7 @@ export function TechStackSection() {
                   </linearGradient>
                 </defs>
               </svg>
-              <span className="text-xs text-muted-foreground">Next.js</span>
+              <span className="font-mono text-xs text-muted-foreground">NEXTJS</span>
             </div>
 
             {/* React */}
@@ -119,7 +122,7 @@ export function TechStackSection() {
                   transform="rotate(-60 12 12)"
                 />
               </svg>
-              <span className="text-xs text-muted-foreground">React</span>
+              <span className="font-mono text-xs text-muted-foreground">REACT</span>
             </div>
 
             {/* TypeScript */}
@@ -140,7 +143,7 @@ export function TechStackSection() {
                   fill="white"
                 />
               </svg>
-              <span className="text-xs text-muted-foreground">TypeScript</span>
+              <span className="font-mono text-xs text-muted-foreground">TYPESCRIPT</span>
             </div>
 
             {/* Tailwind CSS */}
@@ -156,7 +159,7 @@ export function TechStackSection() {
                   fill="#06B6D4"
                 />
               </svg>
-              <span className="text-xs text-muted-foreground">Tailwind</span>
+              <span className="font-mono text-xs text-muted-foreground">TAILWIND</span>
             </div>
 
             {/* Radix UI */}
@@ -179,7 +182,7 @@ export function TechStackSection() {
                   className="text-foreground"
                 />
               </svg>
-              <span className="text-xs text-muted-foreground">Radix UI</span>
+              <span className="font-mono text-xs text-muted-foreground">RADIX_UI</span>
             </div>
 
             {/* Framer Motion */}
@@ -194,7 +197,7 @@ export function TechStackSection() {
                 <path d="M4 8H12L20 16H12H4V8Z" fill="#00AAFF" />
                 <path d="M4 16H12V24L4 16Z" fill="#88DDFF" />
               </svg>
-              <span className="text-xs text-muted-foreground">Framer</span>
+              <span className="font-mono text-xs text-muted-foreground">FRAMER</span>
             </div>
 
             {/* Vitest */}
@@ -208,7 +211,7 @@ export function TechStackSection() {
                 <path d="M14.5 2L20 12L14.5 22H9.5L4 12L9.5 2H14.5Z" fill="#729B1B" />
                 <path d="M14.5 6L17 12L14.5 18H9.5L7 12L9.5 6H14.5Z" fill="#FCC72B" />
               </svg>
-              <span className="text-xs text-muted-foreground">Vitest</span>
+              <span className="font-mono text-xs text-muted-foreground">VITEST</span>
             </div>
 
             {/* Playwright */}
@@ -228,7 +231,7 @@ export function TechStackSection() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-xs text-muted-foreground">Playwright</span>
+              <span className="font-mono text-xs text-muted-foreground">PLAYWRIGHT</span>
             </div>
 
             {/* shadcn/ui */}
@@ -236,7 +239,7 @@ export function TechStackSection() {
               <div className="flex size-12 items-center justify-center rounded-lg bg-foreground">
                 <span className="font-mono text-xl font-bold text-background">$</span>
               </div>
-              <span className="text-xs text-muted-foreground">shadcn/ui</span>
+              <span className="font-mono text-xs text-muted-foreground">SHADCN_UI</span>
             </div>
 
             {/* Vercel */}
@@ -249,7 +252,7 @@ export function TechStackSection() {
               >
                 <path d="M12 2L22 20H2L12 2Z" fill="black" />
               </svg>
-              <span className="text-xs text-muted-foreground">Vercel</span>
+              <span className="font-mono text-xs text-muted-foreground">VERCEL</span>
             </div>
           </div>
         </motion.div>
