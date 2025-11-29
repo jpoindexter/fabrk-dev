@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function CookieConsentPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       {/* Header */}
       <div className="space-y-4">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
@@ -64,7 +64,7 @@ export default function CookieConsentPage() {
       {/* How It Works */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
@@ -300,7 +300,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Common Questions */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono font-medium">
               Do I need this if I don&apos;t have EU users?

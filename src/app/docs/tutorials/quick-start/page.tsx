@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function QuickStartPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x00] TUTORIALS ] QUICK_START</span>
@@ -33,7 +33,7 @@ export default function QuickStartPage() {
       </Card>
 
       {/* Step 1 */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
           <h2 className="font-mono text-lg font-bold">ASSEMBLE_LANDING_PAGE</h2>
@@ -77,7 +77,7 @@ export default function HomePage() {
       </div>
 
       {/* Step 2 */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
           <h2 className="font-mono text-lg font-bold">CUSTOMIZE_CONTENT_BRANDING</h2>
@@ -94,7 +94,7 @@ export default function HomePage() {
       </div>
 
       {/* Step 3 */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
           <h2 className="font-mono text-lg font-bold">CONFIGURE_APP_METADATA</h2>
@@ -120,7 +120,7 @@ export default function HomePage() {
       </div>
 
       {/* Step 4 (Optional) */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">4</span>
           <h2 className="font-mono text-lg font-bold">ENABLE_LEAD_CAPTURE</h2>
@@ -141,7 +141,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
       </div>
 
       {/* Step 5 */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center gap-3">
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">5</span>
           <h2 className="font-mono text-lg font-bold">PRODUCTION_DEPLOYMENT</h2>
@@ -162,7 +162,7 @@ git push origin main`} />
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">

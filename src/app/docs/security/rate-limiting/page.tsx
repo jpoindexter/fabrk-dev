@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RateLimitingPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] RATE_LIMITING</span>

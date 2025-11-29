@@ -189,7 +189,7 @@ export default function ComponentsOverviewPage() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-16">
       {/* Header */}
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
@@ -228,7 +228,7 @@ export default function ComponentsOverviewPage() {
       </div>
 
       {/* Categories */}
-      <div className="space-y-6">
+      <div className="space-y-16">
         {componentCategories.map((category) => (
           <div key={category.name}>
             <div className="mb-3 flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function ComponentsOverviewPage() {
       </div>
 
       {/* Import Example */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">IMPORT_PATTERN</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -274,7 +274,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
       </div>
 
       {/* Component Docs Links */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">DETAILED_DOCUMENTATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; See individual component pages for usage examples and API reference:

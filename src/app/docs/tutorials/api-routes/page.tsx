@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ApiRoutesTutorialPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
@@ -27,7 +27,7 @@ export default function ApiRoutesTutorialPage() {
       </Card>
 
       {/* Basic Route */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">CREATING_A_BASIC_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Protected Route */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">PROTECTED_API_ROUTE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -84,7 +84,7 @@ export async function GET() {
       </div>
 
       {/* Input Validation */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -126,7 +126,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Database Access */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">DATABASE_ACCESS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -160,7 +160,7 @@ export async function GET() {
       </div>
 
       {/* Error Handling Pattern */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">ERROR_HANDLING_PATTERN</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -192,7 +192,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Status Codes */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">HTTP_STATUS_CODES</h2>
         <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">200</code> - Success</div>

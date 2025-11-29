@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function LaunchChecklistPage() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-16">
             <div className="space-y-2">
                 <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
                     <span className="font-mono text-xs text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
@@ -36,7 +36,7 @@ export default function LaunchChecklistPage() {
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
                     <h2 className="font-mono text-lg font-bold">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-6">
                     <h3 className="font-mono text-xs font-semibold">CODE_QUALITY_AND_SECURITY</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Resolve TODOs:</strong> Search for `TODO` or `FIXME` in `src/` and resolve them.</div>
@@ -62,7 +62,7 @@ export default function LaunchChecklistPage() {
                     <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
                     <h2 className="font-mono text-lg font-bold">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-6">
                     <h3 className="font-mono text-xs font-semibold">PRODUCT_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Create products in Stripe Dashboard (Test & Production).</div>

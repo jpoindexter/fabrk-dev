@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function ThemingPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
@@ -38,7 +38,7 @@ export default function ThemingPage() {
       </Card>
 
       {/* Available Themes */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">AVAILABLE_COLOR_THEMES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           All themes from{" "}
@@ -274,7 +274,7 @@ export default function ThemingPage() {
       </div>
 
       {/* Theme Dropdown Component */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">THEME_SWITCHER_COMPONENT</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The <code className="bg-muted px-1 font-mono text-xs">ThemeDropdown</code> component provides a compact dropdown for navbar:
@@ -293,7 +293,7 @@ export function MyNavbar() {
       </div>
 
       {/* How It Works */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">Themes are applied via data-theme attribute:</p>
         <div className="[&>div]:rounded-none">
@@ -312,7 +312,7 @@ export function MyNavbar() {
       </div>
 
       {/* CSS Implementation */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">CSS_IMPLEMENTATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Each DaisyUI theme defines CSS variables in <code className="bg-muted px-1 font-mono text-xs">globals.css</code>:
@@ -346,7 +346,7 @@ export function MyNavbar() {
       </div>
 
       {/* Using Theme Colors */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">USING_THEME_COLORS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Always use semantic color classes that adapt to the active theme:
@@ -373,12 +373,12 @@ export function MyNavbar() {
       </div>
 
       {/* Adding Custom Themes */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">ADDING_CUSTOM_THEMES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Add your own DaisyUI-style themes in 2 steps:
         </p>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -417,7 +417,7 @@ export function MyNavbar() {
       </div>
 
       {/* Best Practices */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -434,7 +434,7 @@ export function MyNavbar() {
       </div>
 
       {/* Architecture */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">ARCHITECTURE</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -450,7 +450,7 @@ export function MyNavbar() {
       </div>
 
       {/* Credits */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">CREDITS_AND_INSPIRATION</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -481,7 +481,7 @@ export function MyNavbar() {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-2 sm:grid-cols-2">
           <Link href="/docs/components">

@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function UploadsComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] UPLOADS</span>
@@ -48,7 +48,7 @@ import { CropperControls } from "@/components/ui/cropper-controls";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";`} />
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">

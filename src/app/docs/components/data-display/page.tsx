@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function DataDisplayComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
@@ -87,7 +87,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";`} />
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
@@ -221,7 +221,7 @@ export function DashboardStats() {
 
 export function TableSkeleton() {
   return (
-    <div className="space-y-3">
+    <div className="space-y-6">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="flex items-center space-x-4">
           <Skeleton className="h-12 w-12 rounded-full" />

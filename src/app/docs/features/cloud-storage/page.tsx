@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function CloudStoragePage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-16">
       {/* Header */}
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
@@ -397,7 +397,7 @@ export function FileUploader() {
       {/* Common Questions */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
               How much does cloud storage cost?

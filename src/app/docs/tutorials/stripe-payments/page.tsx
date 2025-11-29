@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function StripePaymentsTutorialPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
@@ -21,7 +21,7 @@ export default function StripePaymentsTutorialPage() {
       </div>
 
       {/* Setup */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">1</span>
           <h2 className="font-mono text-lg font-bold">CONFIGURE_STRIPE</h2>
@@ -38,7 +38,7 @@ STRIPE_WEBHOOK_SECRET="whsec_..."`} />
       </div>
 
       {/* Create Product */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">2</span>
           <h2 className="font-mono text-lg font-bold">CREATE_A_PRODUCT</h2>
@@ -66,7 +66,7 @@ NEXT_PUBLIC_STRIPE_PRICE_FABRK="price_your_price_id"`} />
       </div>
 
       {/* Checkout Button */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">3</span>
           <h2 className="font-mono text-lg font-bold">CREATE_CHECKOUT_BUTTON</h2>
@@ -117,7 +117,7 @@ export function CheckoutButton() {
       </div>
 
       {/* Webhooks */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">4</span>
           <h2 className="font-mono text-lg font-bold">SET_UP_WEBHOOKS</h2>
@@ -144,7 +144,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
       </div>
 
       {/* Webhook Events */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">5</span>
           <h2 className="font-mono text-lg font-bold">HANDLE_WEBHOOK_EVENTS</h2>
@@ -164,7 +164,7 @@ stripe listen --forward-to localhost:3000/api/webhooks/stripe`} />
       </div>
 
       {/* Coupons */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div className="flex items-center gap-2">
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground font-mono">6</span>
           <h2 className="font-mono text-lg font-bold">PROMOTION_CODES</h2>
@@ -189,7 +189,7 @@ stripe: {
       </div>
 
       {/* Test Cards */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">TEST_CARDS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Use these test cards in development:
@@ -202,7 +202,7 @@ stripe: {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-3">
+      <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">

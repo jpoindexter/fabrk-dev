@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ArchitecturePage() {
     return (
-        <div className="space-y-6">
+        <div className="space-y-16">
             <div className="space-y-2">
                 <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">System Architecture</h1>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -104,7 +104,7 @@ export default function ArchitecturePage() {
                     while React Server Components (RSC) handle data fetching.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-6">
                     <h3 className="font-mono text-xs font-semibold">Mutation Flow (Server Actions)</h3>
                     <p className="font-mono text-sm text-muted-foreground leading-relaxed">Example of a typical server action flow:</p>
                     <div className="[&>div]:rounded-none">

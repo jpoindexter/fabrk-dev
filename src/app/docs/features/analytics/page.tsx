@@ -39,7 +39,7 @@ export default function AnalyticsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -66,7 +66,7 @@ module.exports = {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">POSTHOG_PROVIDER_SETUP</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">TRACKING_EVENTS</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -157,7 +157,7 @@ export function CheckoutButton({ plan, price }: Props) {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">USER_IDENTIFICATION</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -203,7 +203,7 @@ const handleLogout = () => {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">PAGE_VIEW_TRACKING</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -239,7 +239,7 @@ export function PageViewTracker() {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-6">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">SERVER_SIDE_TRACKING</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">

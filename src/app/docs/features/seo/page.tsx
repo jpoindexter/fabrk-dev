@@ -102,7 +102,7 @@ export const metadata = {
           <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
           <h3 className="font-mono text-xs font-semibold">PAGE_SPECIFIC_METADATA</h3>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <div>
             <p className="font-mono text-xs text-muted-foreground">Override metadata for individual pages:</p>
           </div>
@@ -188,7 +188,7 @@ export function generateOrganizationSchema() {
         </div>
 
         <h3 className="font-mono text-xs font-semibold mb-3">SITEMAP_GENERATION</h3>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <div>
             <p className="font-mono text-xs text-muted-foreground">Automatic sitemap at <code className="bg-muted px-1 font-mono text-xs">/sitemap.xml</code>:</p>
           </div>
