@@ -19,10 +19,10 @@ export default function ChartsComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DonutChart</code> - Donut/pie chart for proportions</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Gauge</code> - Gauge chart for single values</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AnalyticsChart</code> - Line/bar charts for trends</li>
@@ -35,7 +35,7 @@ export default function ChartsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Donut chart
 import { DonutChart } from "@/components/ui/donut-chart";
@@ -57,10 +57,10 @@ import { Progress } from "@/components/ui/progress";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">DONUT_CHART</h3>
+          <h3 className="font-mono text-base font-semibold">DONUT_CHART</h3>
           <CodeBlock language="tsx" code={`import { DonutChart } from "@/components/ui/donut-chart";
 
 const data = [
@@ -71,7 +71,7 @@ const data = [
 
 export function DeviceBreakdown() {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Traffic by Device</CardTitle>
       </CardHeader>
@@ -84,12 +84,12 @@ export function DeviceBreakdown() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">GAUGE_CHART</h3>
+          <h3 className="font-mono text-base font-semibold">GAUGE_CHART</h3>
           <CodeBlock language="tsx" code={`import { Gauge } from "@/components/ui/gauge";
 
 export function PerformanceGauge() {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Performance Score</CardTitle>
       </CardHeader>
@@ -112,7 +112,7 @@ export function PerformanceGauge() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">ANALYTICS_CHART</h3>
+          <h3 className="font-mono text-base font-semibold">ANALYTICS_CHART</h3>
           <CodeBlock language="tsx" code={`import { AnalyticsChart } from "@/components/analytics/analytics-chart";
 
 const chartData = [
@@ -126,7 +126,7 @@ const chartData = [
 
 export function RevenueChart() {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Revenue Overview</CardTitle>
         <CardDescription>Monthly revenue and user growth</CardDescription>
@@ -147,7 +147,7 @@ export function RevenueChart() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">FUNNEL_VISUALIZER</h3>
+          <h3 className="font-mono text-base font-semibold">FUNNEL_VISUALIZER</h3>
           <CodeBlock language="tsx" code={`import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
 
 const funnelData = [
@@ -160,7 +160,7 @@ const funnelData = [
 
 export function ConversionFunnel() {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Conversion Funnel</CardTitle>
         <CardDescription>User journey from visitor to retention</CardDescription>
@@ -174,7 +174,7 @@ export function ConversionFunnel() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">STATS_DASHBOARD</h3>
+          <h3 className="font-mono text-base font-semibold">STATS_DASHBOARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity, TrendingUp } from "lucide-react";
 
@@ -215,7 +215,7 @@ export function StatsDashboard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">PROGRESS_WITH_LABEL</h3>
+          <h3 className="font-mono text-base font-semibold">PROGRESS_WITH_LABEL</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function StorageProgress() {
@@ -224,7 +224,7 @@ export function StorageProgress() {
   const percentage = (used / total) * 100;
 
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Storage</CardTitle>
       </CardHeader>
@@ -234,7 +234,7 @@ export function StorageProgress() {
           <span>{total} GB total</span>
         </div>
         <Progress value={percentage} />
-        <p className="text-xs text-muted-foreground">
+        <p className="font-mono text-xs text-muted-foreground">
           {percentage}% of storage used
         </p>
       </CardContent>
@@ -244,7 +244,7 @@ export function StorageProgress() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">CHART_COLOR_TOKENS</h3>
+          <h3 className="font-mono text-base font-semibold">CHART_COLOR_TOKENS</h3>
           <CodeBlock language="typescript" code={`// Always use CSS variables for chart colors to support theming
 
 const chartColors = {

@@ -19,10 +19,10 @@ export default function UploadsComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h2 className="font-mono text-xl mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FileUpload</code> - Basic file upload with button</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ImageDropzone</code> - Drag-and-drop image upload with preview</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">CropperControls</code> - Image cropping controls</li>
@@ -179,7 +179,7 @@ export function AvatarUpload() {
       />
       <div>
         <p className="font-medium">Profile Photo</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Click the camera icon to upload
         </p>
       </div>
@@ -280,7 +280,7 @@ export function UploadWithProgress() {
       {uploading && (
         <div className="space-y-2">
           <Progress value={progress} />
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="font-mono text-sm text-muted-foreground text-center">
             Uploading... {progress}%
           </p>
         </div>

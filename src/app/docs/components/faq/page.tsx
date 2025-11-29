@@ -180,7 +180,7 @@ export function CollapsibleFAQ() {
         </Button>
       </CollapsibleTrigger>
       <CollapsibleContent className="pt-4">
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Additional details that are hidden by default...
         </p>
       </CollapsibleContent>

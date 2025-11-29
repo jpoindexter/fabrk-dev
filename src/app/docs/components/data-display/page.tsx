@@ -19,10 +19,10 @@ export default function DataDisplayComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Table</code> - Data table with sorting and filtering</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Card</code> - Content container with header and footer</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Badge</code> - Status indicators and labels</li>
@@ -42,7 +42,7 @@ export default function DataDisplayComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Table
 import {
@@ -88,10 +88,10 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
       </div>
 
       <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">TABLE</h3>
+          <h3 className="font-mono text-base font-semibold">TABLE</h3>
           <CodeBlock language="tsx" code={`import {
   Table,
   TableBody,
@@ -131,7 +131,7 @@ export function UsersTable() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">CARD</h3>
+          <h3 className="font-mono text-base font-semibold">CARD</h3>
           <CodeBlock language="tsx" code={`import {
   Card,
   CardContent,
@@ -144,7 +144,7 @@ import { Button } from "@/components/ui/button";
 
 export function ProfileCard() {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
         <CardDescription>
@@ -163,7 +163,7 @@ export function ProfileCard() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BADGE_VARIANTS</h3>
+          <h3 className="font-mono text-base font-semibold">BADGE_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Badge } from "@/components/ui/badge";
 
 export function BadgeVariants() {
@@ -186,7 +186,7 @@ export function BadgeVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">STAT_CARD</h3>
+          <h3 className="font-mono text-base font-semibold">STAT_CARD</h3>
           <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity } from "lucide-react";
 
@@ -216,7 +216,7 @@ export function DashboardStats() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">SKELETON_LOADING</h3>
+          <h3 className="font-mono text-base font-semibold">SKELETON_LOADING</h3>
           <CodeBlock language="tsx" code={`import { Skeleton } from "@/components/ui/skeleton";
 
 export function TableSkeleton() {
@@ -237,7 +237,7 @@ export function TableSkeleton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">EMPTY_STATE</h3>
+          <h3 className="font-mono text-base font-semibold">EMPTY_STATE</h3>
           <CodeBlock language="tsx" code={`import { EmptyState } from "@/components/ui/empty-state";
 import { FileText } from "lucide-react";
 
@@ -257,7 +257,7 @@ export function NoDataState() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">TOOLTIP</h3>
+          <h3 className="font-mono text-base font-semibold">TOOLTIP</h3>
           <CodeBlock language="tsx" code={`import {
   Tooltip,
   TooltipContent,
@@ -283,7 +283,7 @@ export function TooltipExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">PROGRESS</h3>
+          <h3 className="font-mono text-base font-semibold">PROGRESS</h3>
           <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
 
 export function ProgressExample() {

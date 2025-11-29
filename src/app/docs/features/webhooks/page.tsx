@@ -24,32 +24,32 @@ export default function WebhooksPage() {
       </div>
 
       <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-          <p className="mb-4">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             The webhooks system allows your application to send HTTP callbacks to external services when
             specific events occur. This is essential for integrating with third-party services, triggering
             external workflows, and keeping systems in sync.
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>22 Event Types:</strong> User, payment, organization, and system events</li>
-            <li><strong>HMAC-SHA256 Verification:</strong> Secure signature verification for all deliveries</li>
-            <li><strong>Automatic Retries:</strong> Exponential backoff with configurable retry limits</li>
-            <li><strong>Delivery Tracking:</strong> Full history of webhook deliveries and responses</li>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>22 Event Types:</strong> User, payment, organization, and system events</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>HMAC-SHA256 Verification:</strong> Secure signature verification for all deliveries</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Automatic Retries:</strong> Exponential backoff with configurable retry limits</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Delivery Tracking:</strong> Full history of webhook deliveries and responses</li>
           </ul>
         </CardContent>
       </Card>
 
       <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">EVENT_TYPES</h2>
-          <p className="mb-4">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">EVENT_TYPES</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Available webhook event types organized by category:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <h3 className="font-mono font-semibold mb-2">USER_EVENTS</h3>
-              <ul className="list-disc pl-6 space-y-1 text-sm">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
                 <li>user.created</li>
                 <li>user.updated</li>
                 <li>user.deleted</li>
@@ -58,7 +58,7 @@ export default function WebhooksPage() {
             </div>
             <div>
               <h3 className="font-mono font-semibold mb-2">PAYMENT_EVENTS</h3>
-              <ul className="list-disc pl-6 space-y-1 text-sm">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
                 <li>payment.completed</li>
                 <li>payment.failed</li>
                 <li>subscription.created</li>
@@ -67,7 +67,7 @@ export default function WebhooksPage() {
             </div>
             <div>
               <h3 className="font-mono font-semibold mb-2">ORGANIZATION_EVENTS</h3>
-              <ul className="list-disc pl-6 space-y-1 text-sm">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
                 <li>organization.created</li>
                 <li>organization.updated</li>
                 <li>member.invited</li>
@@ -77,7 +77,7 @@ export default function WebhooksPage() {
             </div>
             <div>
               <h3 className="font-mono font-semibold mb-2">SYSTEM_EVENTS</h3>
-              <ul className="list-disc pl-6 space-y-1 text-sm">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
                 <li>webhook.test</li>
                 <li>api_key.created</li>
                 <li>api_key.revoked</li>
@@ -89,8 +89,8 @@ export default function WebhooksPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">CREATING_WEBHOOKS</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">CREATING_WEBHOOKS</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Register a webhook endpoint to receive events:
           </p>
         </div>
@@ -132,8 +132,8 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">SENDING_WEBHOOKS</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">SENDING_WEBHOOKS</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Trigger webhook deliveries from your application:
           </p>
         </div>
@@ -214,8 +214,8 @@ await sendWebhook("user.created", {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">VERIFYING_WEBHOOKS_RECEIVER_SIDE</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">VERIFYING_WEBHOOKS_RECEIVER_SIDE</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             When receiving webhooks, always verify the signature:
           </p>
         </div>
@@ -255,8 +255,8 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">RETRY_LOGIC</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">RETRY_LOGIC</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Failed webhooks are automatically retried with exponential backoff:
           </p>
         </div>
@@ -300,16 +300,16 @@ async function queueWebhookRetry(
 }`} />
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_BEST_PRACTICES</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
-            <li><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
-            <li><strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
-            <li><strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
-            <li><strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
-            <li><strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">SECURITY_BEST_PRACTICES</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Rotate secrets:</strong> Allow users to regenerate webhook secrets</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Validate payloads:</strong> Sanitize and validate all webhook payloads</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Set timeouts:</strong> Use short timeouts (5-10s) for webhook deliveries</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Log everything:</strong> Track all deliveries for debugging and audit</li>
           </ul>
         </CardContent>
       </Card>

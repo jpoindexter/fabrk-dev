@@ -19,10 +19,10 @@ export default function FormsComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_COMPONENTS</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Input</code> - Text input field</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputPassword</code> - Password input with toggle visibility</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputSearch</code> - Search input with icon</li>
@@ -46,7 +46,7 @@ export default function FormsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         </div>
         <CodeBlock language="typescript" code={`// Basic inputs
 import { Input } from "@/components/ui/input";
@@ -83,10 +83,10 @@ import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">BASIC_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold">BASIC_INPUT</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -105,7 +105,7 @@ export function BasicInput() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">PASSWORD_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold">PASSWORD_INPUT</h3>
           <CodeBlock language="tsx" code={`import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
 
@@ -124,7 +124,7 @@ export function PasswordInput() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">SELECT</h3>
+          <h3 className="font-mono text-base font-semibold">SELECT</h3>
           <CodeBlock language="tsx" code={`import {
   Select,
   SelectContent,
@@ -155,7 +155,7 @@ export function SelectExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">CHECKBOX_AND_SWITCH</h3>
+          <h3 className="font-mono text-base font-semibold">CHECKBOX_AND_SWITCH</h3>
           <CodeBlock language="tsx" code={`import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -180,7 +180,7 @@ export function ToggleInputs() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">DATE_PICKER</h3>
+          <h3 className="font-mono text-base font-semibold">DATE_PICKER</h3>
           <CodeBlock language="tsx" code={`import { DatePicker } from "@/components/ui/date-picker";
 import { Label } from "@/components/ui/label";
 
@@ -197,7 +197,7 @@ export function DatePickerExample() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">COMPLETE_FORM</h3>
+          <h3 className="font-mono text-base font-semibold">COMPLETE_FORM</h3>
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
@@ -243,7 +243,7 @@ export function SignupForm() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">OTP_INPUT</h3>
+          <h3 className="font-mono text-base font-semibold">OTP_INPUT</h3>
           <CodeBlock language="tsx" code={`import { InputOTP } from "@/components/ui/input-otp";
 
 export function OTPInput() {
@@ -251,7 +251,7 @@ export function OTPInput() {
     <div className="space-y-2">
       <Label>Verification Code</Label>
       <InputOTP maxLength={6} />
-      <p className="text-sm text-muted-foreground">
+      <p className="font-mono text-sm text-muted-foreground">
         Enter the code sent to your email
       </p>
     </div>

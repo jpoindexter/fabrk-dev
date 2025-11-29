@@ -19,10 +19,10 @@ export default function ButtonsComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h2 className="font-mono text-lg font-bold mb-4">AVAILABLE_VARIANTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">default</code> - Primary button with solid background</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">secondary</code> - Secondary style with muted background</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">outline</code> - Bordered button with transparent background</li>
@@ -44,7 +44,7 @@ export default function ButtonsComponentsPage() {
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BUTTON_VARIANTS</h3>
+          <h3 className="font-mono text-base font-semibold">BUTTON_VARIANTS</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonVariants() {
@@ -62,7 +62,7 @@ export function ButtonVariants() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BUTTON_SIZES</h3>
+          <h3 className="font-mono text-base font-semibold">BUTTON_SIZES</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonSizes() {
@@ -80,7 +80,7 @@ export function ButtonSizes() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BUTTON_WITH_ICON</h3>
+          <h3 className="font-mono text-base font-semibold">BUTTON_WITH_ICON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight, Loader2 } from "lucide-react";
 
@@ -109,7 +109,7 @@ export function ButtonWithIcon() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">LOADING_STATE</h3>
+          <h3 className="font-mono text-base font-semibold">LOADING_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -126,7 +126,7 @@ export function LoadingButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BUTTON_AS_LINK</h3>
+          <h3 className="font-mono text-base font-semibold">BUTTON_AS_LINK</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -150,7 +150,7 @@ export function ButtonAsLink() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">BUTTON_GROUP</h3>
+          <h3 className="font-mono text-base font-semibold">BUTTON_GROUP</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function ButtonGroup() {
@@ -171,7 +171,7 @@ export function ButtonGroup() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">FULL_WIDTH_BUTTON</h3>
+          <h3 className="font-mono text-base font-semibold">FULL_WIDTH_BUTTON</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function FullWidthButton() {
@@ -184,7 +184,7 @@ export function FullWidthButton() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-mono text-xl font-medium">DISABLED_STATE</h3>
+          <h3 className="font-mono text-base font-semibold">DISABLED_STATE</h3>
           <CodeBlock language="tsx" code={`import { Button } from "@/components/ui/button";
 
 export function DisabledButton() {

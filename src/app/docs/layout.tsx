@@ -348,7 +348,7 @@ export default function DocsLayout({
                 </ul>
               </nav>
             ) : (
-              <p className="text-xs text-muted-foreground/50 px-2">No sections found</p>
+              <p className="font-mono text-xs text-muted-foreground/50 px-2">No sections found</p>
             )}
           </div>
         </aside>

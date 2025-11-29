@@ -20,23 +20,23 @@ export default function PaymentsPage() {
       </div>
 
       {/* What Are Payments - Plain English */}
-      <Card>
+      <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-xl font-semibold text-foreground">HOW_PAYMENTS_WORK</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold text-foreground">HOW_PAYMENTS_WORK</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             When someone buys your product, several things happen behind the scenes. Fabrk uses
             Stripe to handle all of this securely:
           </p>
           <div className="border border-border bg-card p-4">
             <ol className="list-inside list-decimal space-y-2 text-muted-foreground">
-              <li><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
-              <li><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
-              <li><strong>Stripe charges the card</strong> - Money goes to your Stripe account</li>
-              <li><strong>Stripe tells your app</strong> - Via a &quot;webhook&quot; notification</li>
-              <li><strong>Your app grants access</strong> - User can now use premium features</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Customer clicks &quot;Buy&quot;</strong> - They&apos;re sent to a Stripe checkout page</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>They enter payment info</strong> - Stripe handles this (you never see their card number)</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Stripe charges the card</strong> - Money goes to your Stripe account</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Stripe tells your app</strong> - Via a &quot;webhook&quot; notification</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Your app grants access</strong> - User can now use premium features</li>
             </ol>
           </div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             The key benefit: You never handle sensitive credit card data. Stripe is PCI compliant
             and handles all the security complexity.
           </p>
@@ -44,13 +44,13 @@ export default function PaymentsPage() {
       </Card>
 
       {/* Why You Need This */}
-      <Card>
+      <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-xl font-semibold text-foreground">WHY_STRIPE</h2>
+          <h2 className="font-mono text-lg font-bold text-foreground">WHY_STRIPE</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">FOR_YOU</h3>
-              <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>No need to handle credit card security</li>
                 <li>Instant access to payment data/analytics</li>
                 <li>Automatic invoices and receipts</li>
@@ -59,7 +59,7 @@ export default function PaymentsPage() {
             </div>
             <div className="space-y-2">
               <h3 className="font-mono font-medium">FOR_YOUR_CUSTOMERS</h3>
-              <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>Trusted, familiar checkout experience</li>
                 <li>Apple Pay, Google Pay support</li>
                 <li>Self-serve subscription management</li>
@@ -72,52 +72,52 @@ export default function PaymentsPage() {
 
       {/* What's Included */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">WHATS_BUILT_IN</h2>
+        <h2 className="font-mono text-lg font-bold">WHATS_BUILT_IN</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">ONE_TIME_PAYMENTS</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Sell lifetime access or single products. Customer pays once, gets access forever.
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">SUBSCRIPTIONS</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Monthly or yearly recurring payments. Automatic billing and renewal.
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">FREE_TRIALS</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Let users try before they buy. Converts to paid at trial end.
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">CUSTOMER_PORTAL</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Users manage their own billing - update card, change plan, cancel.
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">WEBHOOK_HANDLING</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Your app reacts to payment events in real-time.
               </p>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="rounded-none">
             <CardContent className="p-4">
               <h3 className="font-mono font-semibold">DUPLICATE_PROTECTION</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Prevents accidental double charges from page refreshes.
               </p>
             </CardContent>
@@ -128,17 +128,17 @@ export default function PaymentsPage() {
       {/* Understanding Webhooks */}
       <Card className="bg-muted/50">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-xl font-semibold">UNDERSTANDING_WEBHOOKS</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">UNDERSTANDING_WEBHOOKS</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             <strong>Think of webhooks like a doorbell.</strong> When Stripe processes a payment,
             it &quot;rings your doorbell&quot; (sends a webhook) to let you know something happened.
             Your app answers the door and takes appropriate action.
           </p>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Without webhooks, you&apos;d have to constantly ask Stripe &quot;did anyone pay yet?&quot; -
             which is inefficient and slow. With webhooks, Stripe tells you instantly.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Common webhook events: <code className="font-mono bg-background px-1">checkout.session.completed</code> (someone paid),
             <code className="font-mono bg-background px-1 ml-1">customer.subscription.deleted</code> (someone cancelled),
             <code className="font-mono bg-background px-1 ml-1">invoice.payment_failed</code> (payment didn&apos;t go through).
@@ -149,12 +149,12 @@ export default function PaymentsPage() {
       {/* Quick Setup */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <h2 className="font-mono text-xl font-semibold">QUICK_SETUP</h2>
+          <h2 className="font-mono text-lg font-bold">QUICK_SETUP</h2>
           <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             10 minutes
           </span>
         </div>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Get Stripe working in your app with these steps:
         </p>
 
@@ -166,7 +166,7 @@ export default function PaymentsPage() {
             </span>
             <h3 className="font-mono font-semibold">CREATE_STRIPE_ACCOUNT</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Go to <a href="https://dashboard.stripe.com/register" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">stripe.com</a> and
             create an account. It&apos;s free to sign up. You won&apos;t pay anything until you process real payments.
           </p>
@@ -180,10 +180,10 @@ export default function PaymentsPage() {
             </span>
             <h3 className="font-mono font-semibold">GET_API_KEYS</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             In the Stripe Dashboard, go to &quot;Developers&quot; → &quot;API keys&quot;. Copy your test keys (we&apos;ll use live keys later).
           </p>
-          <p className="text-xs text-muted-foreground mt-2">
+          <p className="font-mono text-xs text-muted-foreground mt-2">
             <strong>Important:</strong> Test keys start with <code className="font-mono bg-muted px-1">sk_test_</code> and <code className="font-mono bg-muted px-1">pk_test_</code>.
             Live keys start with <code className="font-mono bg-muted px-1">sk_live_</code> and <code className="font-mono bg-muted px-1">pk_live_</code>.
           </p>
@@ -197,7 +197,7 @@ export default function PaymentsPage() {
             </span>
             <h3 className="font-mono font-semibold">CREATE_PRODUCTS</h3>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Go to &quot;Products&quot; in Stripe Dashboard. Create products for each pricing tier (e.g., Starter, Pro, Enterprise).
             Each product has a &quot;price ID&quot; that looks like <code className="font-mono bg-muted px-1">price_1234567890</code>.
           </p>
@@ -253,13 +253,13 @@ npm run stripe:listen`} />
 
       {/* Testing Payments */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">TESTING_PAYMENTS</h2>
-        <p className="text-muted-foreground">
+        <h2 className="font-mono text-lg font-bold">TESTING_PAYMENTS</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Always test payments before going live. Stripe provides test card numbers that simulate
           different scenarios without charging real money.
         </p>
-        <Card>
-          <CardContent className="p-6">
+        <Card className="rounded-none">
+          <CardContent className="p-4">
             <h3 className="font-mono font-semibold mb-3">TEST_CARD_NUMBERS</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between border-b pb-2">
@@ -279,7 +279,7 @@ npm run stripe:listen`} />
                 <code className="font-mono bg-muted px-2">4000 0000 0000 9995</code>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-4">
+            <p className="font-mono text-xs text-muted-foreground mt-4">
               Use any future expiration date, any 3-digit CVC, and any billing ZIP code.
             </p>
           </CardContent>
@@ -288,15 +288,15 @@ npm run stripe:listen`} />
 
       {/* Code Reference */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Here&apos;s how to trigger checkout from your code:
           </p>
         </div>
 
         <h3 className="font-mono font-semibold">CHECKOUT_BUTTON_COMPONENT</h3>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add this to any pricing card or button:
         </p>
         <CodeBlock language="tsx" code={`"use client";
@@ -341,7 +341,7 @@ export function CheckoutButton({ priceId, planName }) {
 }`} />
 
         <h3 className="font-mono font-semibold mt-6">CUSTOMER_PORTAL_LINK</h3>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Let users manage their own subscription:
         </p>
         <CodeBlock language="tsx" code={`"use client";
@@ -368,7 +368,7 @@ export function ManageBillingButton() {
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
@@ -434,10 +434,10 @@ export function ManageBillingButton() {
 
       {/* Going Live */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">GOING_LIVE_CHECKLIST</h2>
-        <Card>
-          <CardContent className="p-6">
-            <p className="text-muted-foreground mb-4">
+        <h2 className="font-mono text-lg font-bold">GOING_LIVE_CHECKLIST</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <p className="font-mono text-sm text-muted-foreground mb-4">
               Before accepting real payments:
             </p>
             <ul className="space-y-2 text-sm">
@@ -472,13 +472,13 @@ export function ManageBillingButton() {
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">FREE_TRIALS</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Let users try your product before paying with trial periods.
                 </p>
               </CardContent>
@@ -488,7 +488,7 @@ export function ManageBillingButton() {
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">TRANSACTIONAL_EMAILS</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Send purchase confirmations and invoices to customers.
                 </p>
               </CardContent>

@@ -209,19 +209,19 @@ export default function ComponentsOverviewPage() {
       <div className="grid grid-cols-3 gap-2">
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
-            <div className="font-mono text-xl font-bold text-primary">{totalComponents}+</div>
+            <div className="font-mono text-lg font-bold text-primary">{totalComponents}+</div>
             <div className="font-mono text-xs text-muted-foreground">COMPONENTS</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
-            <div className="font-mono text-xl font-bold text-primary">{componentCategories.length}</div>
+            <div className="font-mono text-lg font-bold text-primary">{componentCategories.length}</div>
             <div className="font-mono text-xs text-muted-foreground">CATEGORIES</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
-            <div className="font-mono text-xl font-bold text-primary">100%</div>
+            <div className="font-mono text-lg font-bold text-primary">100%</div>
             <div className="font-mono text-xs text-muted-foreground">TYPESCRIPT</div>
           </CardContent>
         </Card>

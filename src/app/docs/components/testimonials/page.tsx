@@ -98,8 +98,8 @@ export function TestimonialCard({
   avatar
 }: TestimonialProps) {
   return (
-    <Card>
-      <CardContent className="pt-6">
+    <Card className="rounded-none">
+      <CardContent className="p-4">
         <p className="text-muted-foreground italic mb-4">
           "{quote}"
         </p>
@@ -112,7 +112,7 @@ export function TestimonialCard({
           </Avatar>
           <div>
             <p className="font-semibold">{name}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               {role} at {company}
             </p>
           </div>
@@ -149,7 +149,7 @@ export function SocialProof() {
   return (
     <div className="flex items-center gap-4">
       <AvatarGroup users={users} max={4} />
-      <p className="text-sm text-muted-foreground">
+      <p className="font-mono text-sm text-muted-foreground">
         Trusted by 500+ developers
       </p>
     </div>

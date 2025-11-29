@@ -20,10 +20,10 @@ export default function BotProtectionPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h3 className="mb-2 font-mono font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 font-mono text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Honeypot fields for form protection</li>
             <li>Time-based form submission validation</li>
             <li>User-Agent analysis</li>
@@ -37,7 +37,7 @@ export default function BotProtectionPage() {
       {/* Honeypot Fields */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">HONEYPOT_FIELDS</h2>
+          <h2 className="font-mono text-lg font-bold">HONEYPOT_FIELDS</h2>
           <p className="font-mono text-muted-foreground">
             &gt; Add invisible fields that bots will fill but humans won't:
           </p>
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
       {/* Time-based Validation */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">TIME_BASED_VALIDATION</h2>
+          <h2 className="font-mono text-lg font-bold">TIME_BASED_VALIDATION</h2>
           <p className="font-mono text-muted-foreground">
             &gt; Reject submissions that are too fast (bots) or too slow (stale tokens):
           </p>
@@ -170,7 +170,7 @@ export async function POST(request: NextRequest) {
       {/* User-Agent Analysis */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">USER_AGENT_ANALYSIS</h2>
+          <h2 className="font-mono text-lg font-bold">USER_AGENT_ANALYSIS</h2>
           <p className="font-mono text-muted-foreground">
             &gt; Detect suspicious user agents:
           </p>
@@ -252,7 +252,7 @@ export async function POST(request: NextRequest) {
       {/* Middleware Protection */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">MIDDLEWARE_PROTECTION</h2>
+          <h2 className="font-mono text-lg font-bold">MIDDLEWARE_PROTECTION</h2>
           <p className="font-mono text-muted-foreground">
             &gt; Add bot detection at the edge:
           </p>
@@ -318,7 +318,7 @@ export const config = {
       {/* Cloudflare Turnstile */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">CLOUDFLARE_TURNSTILE_CAPTCHA</h2>
+          <h2 className="font-mono text-lg font-bold">CLOUDFLARE_TURNSTILE_CAPTCHA</h2>
           <p className="font-mono text-muted-foreground">
             &gt; Add Cloudflare Turnstile for strong bot protection:
           </p>
@@ -390,7 +390,7 @@ export async function POST(request: NextRequest) {
       {/* Environment Variables */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">ENVIRONMENT_VARIABLES</h2>
+          <h2 className="font-mono text-lg font-bold">ENVIRONMENT_VARIABLES</h2>
         </div>
         <CodeBlock language="bash" code={`# .env.local
 
@@ -401,7 +401,7 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/rate-limiting">
             <Card className="h-full transition-all hover:border-primary/50">

@@ -20,8 +20,8 @@ export default function SecurityHeadersPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h3 className="mb-2 font-semibold">What's Included</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
             <li>Strict-Transport-Security (HSTS)</li>
@@ -37,8 +37,8 @@ export default function SecurityHeadersPage() {
       {/* Next.js Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">NEXTJS_CONFIGURATION</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">NEXTJS_CONFIGURATION</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Add security headers in <code className="font-mono bg-muted px-1 py-0.5">next.config.js</code>:
           </p>
         </div>
@@ -87,8 +87,8 @@ module.exports = nextConfig;`} />
       {/* Content Security Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">CONTENT_SECURITY_POLICY</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">CONTENT_SECURITY_POLICY</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Configure a strict CSP to prevent XSS attacks:
           </p>
         </div>
@@ -130,8 +130,8 @@ const nextConfig = {
       {/* Nonce-based CSP */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">NONCE_BASED_CSP</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">NONCE_BASED_CSP</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Use nonces for stricter CSP without unsafe-inline:
           </p>
         </div>
@@ -196,8 +196,8 @@ export default async function RootLayout({
       {/* HSTS Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">HSTS_CONFIGURATION</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">HSTS_CONFIGURATION</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Enforce HTTPS with Strict-Transport-Security:
           </p>
         </div>
@@ -216,7 +216,7 @@ export default async function RootLayout({
 // - max-age: Time in seconds browser remembers HTTPS
 // - includeSubDomains: Apply to all subdomains
 // - preload: Allow browser vendors to hardcode`} />
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           <strong>Warning:</strong> Only use preload once you're certain all subdomains support HTTPS.
           It's difficult to remove from the preload list.
         </p>
@@ -225,8 +225,8 @@ export default async function RootLayout({
       {/* Permissions Policy */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">PERMISSIONS_POLICY</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">PERMISSIONS_POLICY</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Control browser feature access:
           </p>
         </div>
@@ -261,8 +261,8 @@ export default async function RootLayout({
       {/* Vercel Configuration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">VERCEL_CONFIGURATION</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">VERCEL_CONFIGURATION</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Alternative: Configure headers in vercel.json:
           </p>
         </div>
@@ -298,8 +298,8 @@ export default async function RootLayout({
       {/* Testing Headers */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">TESTING_HEADERS</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">TESTING_HEADERS</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Verify your security headers are working:
           </p>
         </div>
@@ -317,13 +317,13 @@ curl -I https://yoursite.com
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Schema Validation</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Validate all inputs with Zod schemas
                 </p>
               </CardContent>
@@ -333,7 +333,7 @@ curl -I https://yoursite.com
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-semibold">Deploy to Vercel</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Deploy with production security settings
                 </p>
               </CardContent>

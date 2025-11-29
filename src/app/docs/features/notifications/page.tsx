@@ -22,26 +22,26 @@ export default function NotificationsPage() {
       </div>
 
       <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-          <p className="mb-4">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             The notifications system combines real-time delivery via Pusher with database persistence
             for a complete notification experience. Users receive instant notifications with a visual
             bell icon indicator and can manage their notification history.
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Real-time delivery:</strong> Instant push via Pusher</li>
-            <li><strong>Persistence:</strong> Stored in database for history</li>
-            <li><strong>Bell icon badge:</strong> Visual unread count indicator</li>
-            <li><strong>Read/Unread states:</strong> Mark individual or all as read</li>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>Real-time delivery:</strong> Instant push via Pusher</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Persistence:</strong> Stored in database for history</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Bell icon badge:</strong> Visual unread count indicator</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Read/Unread states:</strong> Mark individual or all as read</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
-          <p className="mb-4">
+          <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Notification model in Prisma schema:
           </p>
         </div>
@@ -68,8 +68,8 @@ model Notification {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">CREATING_NOTIFICATIONS</h2>
-          <p className="mb-4">
+          <h2 className="font-mono text-lg font-bold mb-4">CREATING_NOTIFICATIONS</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Send notifications from anywhere in your application:
           </p>
         </div>
@@ -133,8 +133,8 @@ await createNotification({
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">BELL_ICON_COMPONENT</h2>
-          <p className="mb-4">
+          <h2 className="font-mono text-lg font-bold mb-4">BELL_ICON_COMPONENT</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             The notification bell with real-time updates and dropdown:
           </p>
         </div>
@@ -242,7 +242,7 @@ export function NotificationBell({ userId }: { userId: string }) {
               >
                 <p className="font-medium text-sm">{notification.title}</p>
                 {notification.body && (
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="font-mono text-xs text-muted-foreground mt-1">
                     {notification.body}
                   </p>
                 )}
@@ -258,8 +258,8 @@ export function NotificationBell({ userId }: { userId: string }) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">API_ROUTES</h2>
-          <p className="mb-4">
+          <h2 className="font-mono text-lg font-bold mb-4">API_ROUTES</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Notification management endpoints:
           </p>
         </div>
@@ -317,16 +317,16 @@ export async function POST(req: Request) {
 }`} />
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Be selective:</strong> Only notify for important, actionable events</li>
-            <li><strong>Clear titles:</strong> Make notifications scannable at a glance</li>
-            <li><strong>Include links:</strong> Let users take action directly from the notification</li>
-            <li><strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
-            <li><strong>Allow preferences:</strong> Let users control which notifications they receive</li>
-            <li><strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>Be selective:</strong> Only notify for important, actionable events</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Clear titles:</strong> Make notifications scannable at a glance</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Include links:</strong> Let users take action directly from the notification</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Cleanup old notifications:</strong> Archive or delete notifications older than 30 days</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Allow preferences:</strong> Let users control which notifications they receive</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Test thoroughly:</strong> Ensure real-time and persistence work together</li>
           </ul>
         </CardContent>
       </Card>

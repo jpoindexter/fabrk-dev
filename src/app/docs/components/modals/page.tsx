@@ -19,10 +19,10 @@ export default function ModalsComponentsPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h2 className="font-mono text-xl mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Dialog</code> - Modal dialog for forms and confirmations</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AlertDialog</code> - Confirmation dialog for destructive actions</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Sheet</code> - Slide-out panel from edge of screen</li>
@@ -258,7 +258,7 @@ export function NotificationPopover() {
         <div className="space-y-4">
           <h4 className="font-medium">Notifications</h4>
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               You have 3 unread messages
             </p>
           </div>

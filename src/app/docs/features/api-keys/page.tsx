@@ -24,27 +24,27 @@ export default function ApiKeysPage() {
       </div>
 
       <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-          <p className="mb-4">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             The API keys system provides secure programmatic access to your application&apos;s API.
             Keys are generated with cryptographic randomness, stored as hashes, and validated
             using timing-safe comparison to prevent timing attacks.
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>256-bit keys:</strong> Cryptographically secure random generation</li>
-            <li><strong>SHA-256 hashing:</strong> Only hashes stored in database</li>
-            <li><strong>Timing-safe validation:</strong> Prevents timing attacks</li>
-            <li><strong>Rate limiting:</strong> Protect against abuse</li>
-            <li><strong>Scoped permissions:</strong> Fine-grained access control</li>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>256-bit keys:</strong> Cryptographically secure random generation</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>SHA-256 hashing:</strong> Only hashes stored in database</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Timing-safe validation:</strong> Prevents timing attacks</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Rate limiting:</strong> Protect against abuse</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Scoped permissions:</strong> Fine-grained access control</li>
           </ul>
         </CardContent>
       </Card>
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             API key model in Prisma schema:
           </p>
         </div>
@@ -73,8 +73,8 @@ model ApiKey {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">KEY_GENERATION</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">KEY_GENERATION</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Securely generate and hash API keys:
           </p>
         </div>
@@ -139,8 +139,8 @@ export const API_SCOPES = [
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">KEY_VALIDATION</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">KEY_VALIDATION</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Validate API keys with timing-safe comparison:
           </p>
         </div>
@@ -223,8 +223,8 @@ export async function withApiKey(
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">USING_API_KEYS_IN_ROUTES</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">USING_API_KEYS_IN_ROUTES</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Protect your API routes with API key authentication:
           </p>
         </div>
@@ -276,8 +276,8 @@ export async function POST(req: Request) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">RATE_LIMITING</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold mb-4">RATE_LIMITING</h2>
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Implement rate limiting per API key:
           </p>
         </div>
@@ -352,18 +352,18 @@ export async function GET(req: Request) {
 }`} />
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_BEST_PRACTICES</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Never log full keys:</strong> Only log the prefix for debugging</li>
-            <li><strong>Show key once:</strong> Display the full key only at creation time</li>
-            <li><strong>Use HTTPS only:</strong> Never transmit keys over HTTP</li>
-            <li><strong>Implement expiration:</strong> Set reasonable expiration dates</li>
-            <li><strong>Allow revocation:</strong> Users should be able to revoke keys instantly</li>
-            <li><strong>Track usage:</strong> Log last used timestamps and access patterns</li>
-            <li><strong>Scope permissions:</strong> Follow principle of least privilege</li>
-            <li><strong>Rate limit aggressively:</strong> Protect against brute force and abuse</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-lg font-bold mb-4">SECURITY_BEST_PRACTICES</h2>
+          <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+            <li className="font-mono text-sm text-muted-foreground"><strong>Never log full keys:</strong> Only log the prefix for debugging</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Show key once:</strong> Display the full key only at creation time</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Use HTTPS only:</strong> Never transmit keys over HTTP</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Implement expiration:</strong> Set reasonable expiration dates</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Allow revocation:</strong> Users should be able to revoke keys instantly</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Track usage:</strong> Log last used timestamps and access patterns</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Scope permissions:</strong> Follow principle of least privilege</li>
+            <li className="font-mono text-sm text-muted-foreground"><strong>Rate limit aggressively:</strong> Protect against brute force and abuse</li>
           </ul>
         </CardContent>
       </Card>

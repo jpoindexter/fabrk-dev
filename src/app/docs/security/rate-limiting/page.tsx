@@ -20,8 +20,8 @@ export default function RateLimitingPage() {
         </p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
           <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
           <ul className="list-inside list-disc space-y-1 text-muted-foreground">
             <li>Token bucket algorithm for smooth rate limiting</li>
@@ -37,8 +37,8 @@ export default function RateLimitingPage() {
       {/* Basic Setup */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">BASIC_SETUP</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">BASIC_SETUP</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Add rate limiting to any API route using the rate limiter middleware:
           </p>
         </div>
@@ -78,8 +78,8 @@ export function rateLimit(ip: string, limit: number = 10) {
       {/* API Route Integration */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">API_ROUTE_INTEGRATION</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">API_ROUTE_INTEGRATION</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Apply rate limiting to your API routes:
           </p>
         </div>
@@ -120,8 +120,8 @@ export async function POST(request: NextRequest) {
       {/* Different Limits per Endpoint */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">CUSTOM_LIMITS_PER_ENDPOINT</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">CUSTOM_LIMITS_PER_ENDPOINT</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Configure different rate limits for different endpoints:
           </p>
         </div>
@@ -164,8 +164,8 @@ export const writeLimiter = new Ratelimit({
       {/* User-Based Rate Limiting */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">USER_BASED_RATE_LIMITING</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">USER_BASED_RATE_LIMITING</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Rate limit by user ID instead of IP for authenticated endpoints:
           </p>
         </div>
@@ -208,8 +208,8 @@ export async function POST(request: NextRequest) {
       {/* Environment Variables */}
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-xl font-semibold">ENVIRONMENT_VARIABLES</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold">ENVIRONMENT_VARIABLES</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             Configure Upstash Redis for production rate limiting:
           </p>
         </div>
@@ -222,13 +222,13 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/csrf">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">CSRF_PROTECTION</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Protect forms from cross-site request forgery
                 </p>
               </CardContent>
@@ -238,7 +238,7 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">BOT_PROTECTION</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Add bot detection to your endpoints
                 </p>
               </CardContent>

@@ -172,7 +172,7 @@ export function CustomFooter() {
         <Separator className="my-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             © {new Date().getFullYear()} Fabrk. All rights reserved.
           </p>
           <div className="flex gap-4">
@@ -202,7 +202,7 @@ export function SimpleFooter() {
     <footer className="border-t border-border">
       <div className="container py-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             © {new Date().getFullYear()} Your Company
           </p>
           <nav className="flex gap-6">

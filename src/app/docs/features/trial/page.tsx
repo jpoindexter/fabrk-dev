@@ -22,14 +22,14 @@ export default function TrialPage() {
       </div>
 
       {/* What is a Trial - Plain English */}
-      <Card>
+      <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-xl font-semibold text-foreground">WHAT_IS_A_FREE_TRIAL</h2>
-          <p className="text-muted-foreground">
+          <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_A_FREE_TRIAL</h2>
+          <p className="font-mono text-sm text-muted-foreground">
             A free trial lets potential customers use your product for a limited time before
             paying. It&apos;s like test-driving a car before buying it.
           </p>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             When the trial period ends, users either pay to continue or lose access to premium
             features. Fabrk&apos;s trial system integrates with Stripe so the conversion to paid
             happens automatically.
@@ -38,13 +38,13 @@ export default function TrialPage() {
       </Card>
 
       {/* Why Use Trials */}
-      <Card>
+      <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
-          <h2 className="font-mono text-xl font-semibold text-foreground">WHY_OFFER_TRIALS</h2>
+          <h2 className="font-mono text-lg font-bold text-foreground">WHY_OFFER_TRIALS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-mono font-medium">BENEFITS</h3>
-              <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>Lower barrier to signup (no credit card upfront)</li>
                 <li>Users experience value before paying</li>
                 <li>Higher conversion rates than &quot;buy now&quot; only</li>
@@ -53,10 +53,10 @@ export default function TrialPage() {
             </div>
             <div className="space-y-2">
               <h3 className="font-mono font-medium">COMMON_TRIAL_LENGTHS</h3>
-              <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
-                <li><strong>7 days:</strong> Quick-value products</li>
-                <li><strong>14 days:</strong> Most SaaS (recommended)</li>
-                <li><strong>30 days:</strong> Complex enterprise tools</li>
+              <ul className="font-mono text-sm text-muted-foreground space-y-1">
+                <li className="font-mono text-sm text-muted-foreground"><strong>7 days:</strong> Quick-value products</li>
+                <li className="font-mono text-sm text-muted-foreground"><strong>14 days:</strong> Most SaaS (recommended)</li>
+                <li className="font-mono text-sm text-muted-foreground"><strong>30 days:</strong> Complex enterprise tools</li>
               </ul>
             </div>
           </div>
@@ -65,14 +65,14 @@ export default function TrialPage() {
 
       {/* How It Works */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">HOW_FABRK_TRIALS_WORK</h2>
+        <h2 className="font-mono text-lg font-bold">HOW_FABRK_TRIALS_WORK</h2>
         <div className="space-y-3">
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className="font-mono font-semibold">USER_STARTS_TRIAL</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
               (no credit card required by default) and immediately get access to premium features.
             </p>
@@ -82,7 +82,7 @@ export default function TrialPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className="font-mono font-semibold">TRIAL_BANNER_SHOWS</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               While on trial, users see a banner showing how many days are left. This creates
               gentle urgency without being annoying.
             </p>
@@ -92,7 +92,7 @@ export default function TrialPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className="font-mono font-semibold">URGENCY_NEAR_END</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               When trial is almost over (last 3 days), the banner becomes more prominent.
               Users are prompted to subscribe before losing access.
             </p>
@@ -102,7 +102,7 @@ export default function TrialPage() {
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className="font-mono font-semibold">TRIAL_EXPIRES</h3>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               When trial ends, users can no longer access premium features. They see a message
               encouraging them to subscribe. If you require credit card upfront, Stripe automatically
               starts charging.
@@ -113,8 +113,8 @@ export default function TrialPage() {
 
       {/* Configuration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CONFIGURATION</h2>
-        <p className="text-muted-foreground">
+        <h2 className="font-mono text-lg font-bold">CONFIGURATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Configure trial settings in <code className="bg-muted px-1 font-mono">src/config.js</code>:
         </p>
         <CodeBlock language="javascript" code={`// src/config.js
@@ -133,7 +133,7 @@ export const config = {
     trialRequiresCard: false,
   },
 };`} />
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           <strong>Tip:</strong> Requiring a credit card upfront reduces signups but increases
           conversion rates. No-card trials get more signups but lower conversion. Test both
           to see what works for your product.
@@ -142,40 +142,40 @@ export const config = {
 
       {/* Trial Banner */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">TRIAL_BANNER</h2>
-        <p className="text-muted-foreground">
+        <h2 className="font-mono text-lg font-bold">TRIAL_BANNER</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           Fabrk includes a trial banner component that automatically shows for trial users.
         </p>
-        <Card>
-          <CardContent className="p-6">
+        <Card className="rounded-none">
+          <CardContent className="p-4">
             <h3 className="font-mono font-semibold mb-3">BANNER_STATES</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-success"></div>
                 <div>
                   <p className="text-sm font-medium">Plenty of time (8+ days)</p>
-                  <p className="text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
+                  <p className="font-mono text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-warning"></div>
                 <div>
                   <p className="text-sm font-medium">Running low (4-7 days)</p>
-                  <p className="text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
+                  <p className="font-mono text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-destructive"></div>
                 <div>
                   <p className="text-sm font-medium">Urgent (1-3 days)</p>
-                  <p className="text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
+                  <p className="font-mono text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-muted-foreground"></div>
                 <div>
                   <p className="text-sm font-medium">Expired</p>
-                  <p className="text-xs text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>
+                  <p className="font-mono text-xs text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>
                 </div>
               </div>
             </div>
@@ -185,10 +185,10 @@ export const config = {
 
       {/* Code Examples */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CODE_REFERENCE</h2>
+        <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
 
         <h3 className="font-mono font-semibold">CHECK_IF_USER_IS_ON_TRIAL</h3>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Use these helpers to check trial status:
         </p>
         <CodeBlock language="typescript" code={`import {
@@ -211,7 +211,7 @@ const expired = hasTrialExpired(user.trialEndsAt);
 const usedTrial = hasUsedTrial(user);`} />
 
         <h3 className="font-mono font-semibold mt-6">PROTECT_PREMIUM_FEATURES</h3>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Block access when trial expires:
         </p>
         <CodeBlock language="typescript" code={`// In your API route
@@ -247,7 +247,7 @@ export async function GET() {
 }`} />
 
         <h3 className="font-mono font-semibold mt-6">USING_THE_TRIAL_BANNER</h3>
-        <p className="text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Add the banner to your dashboard layout:
         </p>
         <CodeBlock language="tsx" code={`import { TrialBanner } from "@/components/billing/trial-banner";
@@ -264,8 +264,8 @@ export default function DashboardLayout({ children }) {
 
       {/* Stripe Integration */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">STRIPE_TRIAL_INTEGRATION</h2>
-        <p className="text-muted-foreground">
+        <h2 className="font-mono text-lg font-bold">STRIPE_TRIAL_INTEGRATION</h2>
+        <p className="font-mono text-sm text-muted-foreground">
           If you require credit card upfront, Stripe handles the trial automatically:
         </p>
         <CodeBlock language="typescript" code={`// Create subscription with trial period
@@ -279,7 +279,7 @@ const subscription = await stripe.subscriptions.create({
     save_default_payment_method: "on_subscription",
   },
 });`} />
-        <p className="text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Stripe will automatically charge the customer when the trial ends. If payment fails,
           you&apos;ll receive a webhook to handle the situation.
         </p>
@@ -287,9 +287,9 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Best Practices */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
-        <Card>
-          <CardContent className="p-6">
+        <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">1.</span>
@@ -318,7 +318,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Common Questions */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">COMMON_QUESTIONS</h2>
+        <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
         <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-medium">
@@ -374,13 +374,13 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Next Steps */}
       <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+        <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/payments">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">PAYMENTS</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Set up Stripe to handle trial-to-paid conversion.
                 </p>
               </CardContent>
@@ -390,7 +390,7 @@ const subscription = await stripe.subscriptions.create({
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">EMAIL_REMINDERS</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   Send trial reminder emails to increase conversion.
                 </p>
               </CardContent>

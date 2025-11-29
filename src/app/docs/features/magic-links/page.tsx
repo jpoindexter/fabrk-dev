@@ -25,33 +25,33 @@ export default function MagicLinksPage() {
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">
+        <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <p className="font-mono text-sm text-muted-foreground mb-4">
               Magic links provide passwordless authentication by sending a unique, time-limited link to the user's email. Features include:
             </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>One-click sign-in from email</li>
-              <li>No password to remember or manage</li>
-              <li>Automatic email verification</li>
-              <li>Time-limited tokens (24 hours default)</li>
-              <li>Single-use links for security</li>
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+              <li>├─ One-click sign-in from email</li>
+              <li>├─ No password to remember or manage</li>
+              <li>├─ Automatic email verification</li>
+              <li>├─ Time-limited tokens (24 hours default)</li>
+              <li>└─ Single-use links for security</li>
             </ul>
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-xl font-medium">ENABLE_MAGIC_LINKS</h3>
+          <h3 className="font-mono text-base font-semibold">ENABLE_MAGIC_LINKS</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Enable the feature in <code className="font-mono bg-muted px-2 py-1">src/config.js</code>:</p>
+            <p className="font-mono text-sm text-muted-foreground">Enable the feature in <code className="font-mono bg-muted px-2 py-1">src/config.js</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`export const config = {
   features: {
@@ -63,11 +63,11 @@ export default function MagicLinksPage() {
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-xl font-medium">CONFIGURE_EMAIL</h3>
+          <h3 className="font-mono text-base font-semibold">CONFIGURE_EMAIL</h3>
         </div>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Ensure email is configured in <code className="font-mono bg-muted px-2 py-1">.env.local</code>:</p>
+            <p className="font-mono text-sm text-muted-foreground">Ensure email is configured in <code className="font-mono bg-muted px-2 py-1">.env.local</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="Your App <noreply@yourdomain.com>"
@@ -76,11 +76,11 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
 
         <div className="flex items-center gap-2 mb-3">
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-xl font-medium">TOKEN_SETTINGS</h3>
+          <h3 className="font-mono text-base font-semibold">TOKEN_SETTINGS</h3>
         </div>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Configure token expiration:</p>
+            <p className="font-mono text-sm text-muted-foreground">Configure token expiration:</p>
           </div>
           <CodeBlock language="typescript" code={`export const config = {
   auth: {
@@ -92,12 +92,12 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"`} />
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-xl font-medium mb-3">REQUEST_MAGIC_LINK_API</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">REQUEST_MAGIC_LINK_API</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Create the API endpoint at <code className="font-mono bg-muted px-2 py-1">/api/auth/magic-link</code>:</p>
+            <p className="font-mono text-sm text-muted-foreground">Create the API endpoint at <code className="font-mono bg-muted px-2 py-1">/api/auth/magic-link</code>:</p>
           </div>
           <CodeBlock language="typescript" code={`// src/app/api/auth/magic-link/route.ts
 import { NextResponse } from "next/server";
@@ -156,10 +156,10 @@ export async function POST(request: Request) {
 }`} />
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">VERIFY_MAGIC_LINK</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">VERIFY_MAGIC_LINK</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Handle link verification at <code className="font-mono bg-muted px-2 py-1">/api/auth/verify</code>:</p>
+            <p className="font-mono text-sm text-muted-foreground">Handle link verification at <code className="font-mono bg-muted px-2 py-1">/api/auth/verify</code>:</p>
           </div>
           <CodeBlock language="bash" code={`// src/app/api/auth/verify/route.ts
 import { NextResponse } from "next/server";
@@ -232,10 +232,10 @@ export async function GET(request: Request) {
 }`} />
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">MAGIC_LINK_REQUEST_FORM</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">MAGIC_LINK_REQUEST_FORM</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Client-side form component:</p>
+            <p className="font-mono text-sm text-muted-foreground">Client-side form component:</p>
           </div>
           <CodeBlock language="json" code={`"use client";
 
@@ -274,11 +274,11 @@ export function MagicLinkForm() {
   if (sent) {
     return (
       <div className="text-center py-8">
-        <h3 className="text-lg font-semibold mb-2">Check your email</h3>
-        <p className="text-muted-foreground">
+        <h3 className="font-mono text-base font-semibold mb-2">Check your email</h3>
+        <p className="font-mono text-sm text-muted-foreground">
           We sent a magic link to <strong>{email}</strong>
         </p>
-        <p className="text-sm text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           Click the link in the email to sign in.
         </p>
       </div>
@@ -302,10 +302,10 @@ export function MagicLinkForm() {
 }`} />
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">MAGIC_LINK_EMAIL_TEMPLATE</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">MAGIC_LINK_EMAIL_TEMPLATE</h3>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Create the email template:</p>
+            <p className="font-mono text-sm text-muted-foreground">Create the email template:</p>
           </div>
           <CodeBlock language="tsx" code={`// src/emails/MagicLinkEmail.tsx
 import {
@@ -356,40 +356,40 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-lg font-bold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Passwordless Primary Auth</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-4">
+              <h3 className="font-mono text-base font-semibold mb-2">Passwordless Primary Auth</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Use magic links as the primary authentication method. Great for apps where security matters but password fatigue is a concern.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Secondary Sign-In Option</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-4">
+              <h3 className="font-mono text-base font-semibold mb-2">Secondary Sign-In Option</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Offer alongside password auth with "Forgot password? Sign in with email instead" for users who prefer passwordless.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Account Recovery</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-4">
+              <h3 className="font-mono text-base font-semibold mb-2">Account Recovery</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Use magic links for account recovery when users forget their password, without requiring a separate password reset flow.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Invite-Based Onboarding</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-4">
+              <h3 className="font-mono text-base font-semibold mb-2">Invite-Based Onboarding</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Send magic link invites to new team members. They click the link to join without setting up credentials first.
               </p>
             </CardContent>
@@ -398,25 +398,25 @@ export default function MagicLinkEmail({
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">SECURITY_CONSIDERATIONS</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Single-use tokens:</strong> Delete tokens after verification</li>
-              <li><strong>Short expiry:</strong> 24 hours or less recommended</li>
-              <li><strong>Secure generation:</strong> Use cryptographically secure random tokens</li>
-              <li><strong>Rate limiting:</strong> Prevent abuse by limiting requests per email</li>
-              <li><strong>HTTPS only:</strong> Magic links should only work over HTTPS in production</li>
+        <h2 className="font-mono text-lg font-bold mb-4">SECURITY_CONSIDERATIONS</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
+              <li className="font-mono text-sm text-muted-foreground"><strong>Single-use tokens:</strong> Delete tokens after verification</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Short expiry:</strong> 24 hours or less recommended</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Secure generation:</strong> Use cryptographically secure random tokens</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>Rate limiting:</strong> Prevent abuse by limiting requests per email</li>
+              <li className="font-mono text-sm text-muted-foreground"><strong>HTTPS only:</strong> Magic links should only work over HTTPS in production</li>
             </ul>
           </CardContent>
         </Card>
       </section>
 
       <section>
-        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <ul className="list-disc pl-6 space-y-2">
+        <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
               <li>Show clear confirmation after sending the link</li>
               <li>Include a resend option after 60 seconds</li>
               <li>Tell users to check spam folder</li>
