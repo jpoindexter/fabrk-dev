@@ -53,7 +53,7 @@ export const pages: SearchRecord[] = [
   {
     objectID: 'page-variations',
     title: 'Landing Page Variations',
-    description: '4 landing page designs: Neo-Brutalism, Modern, SaaS, Startup',
+    description: '4 landing page designs: Terminal, Modern, SaaS, Startup',
     url: '/variations',
     category: 'Marketing',
     type: 'page',
