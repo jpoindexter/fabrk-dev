@@ -17,7 +17,7 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
             style={{
               ...style,
               backgroundColor: "transparent",
-              fontFamily: "var(--font-jetbrains-mono), 'Fira Code', 'Consolas', monospace",
+              fontFamily: "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace",
             }}
           >
             {tokens.map((line, i) => (
