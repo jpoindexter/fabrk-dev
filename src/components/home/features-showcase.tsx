@@ -197,8 +197,8 @@ export function FeaturesShowcase() {
           <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
             <span className="font-mono text-xs text-muted-foreground">[ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES</span>
           </div>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
-            Solid foundation.
+          <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">
+            SOLID_FOUNDATION
           </h2>
           <p className="max-w-2xl font-mono text-sm text-muted-foreground">
             Everything you need to build a production-ready SaaS. Authentication, payments,
