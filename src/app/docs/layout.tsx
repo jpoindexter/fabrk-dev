@@ -172,7 +172,7 @@ export default function DocsLayout({
 
   return (
     <div className="min-h-screen bg-background font-mono flex flex-col">
-      <DemoNav backButtonText="&gt; HOME" backButtonHref="/" />
+      <DemoNav backButtonText="HOME" backButtonHref="/" suffix="DOCS" />
 
       <div className="flex flex-1">
         {/* Sidebar */}
