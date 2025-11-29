@@ -12,7 +12,7 @@ export default function DatabaseSetupPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATABASE_SETUP</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -22,7 +22,7 @@ export default function DatabaseSetupPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">Database Providers</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">Database Providers</h3>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ Supabase - Free tier, great DX (recommended)</li>
             <li>├─ Neon - Serverless PostgreSQL with branching</li>
@@ -338,8 +338,8 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
           <Link href="/docs/deployment/vercel">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Deploy to Vercel</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Deploy to Vercel</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Deploy with your database configured
                 </p>
               </CardContent>
@@ -348,8 +348,8 @@ pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
           <Link href="/docs/security/audit-logging">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Audit Logging</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Audit Logging</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Track database operations
                 </p>
               </CardContent>

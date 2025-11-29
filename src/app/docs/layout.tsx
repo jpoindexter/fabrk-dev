@@ -318,7 +318,7 @@ export default function DocsLayout({
           aria-label="Table of contents"
         >
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[ON_THIS_PAGE]:</div>
+            <div className="mb-4 font-mono text-sm text-muted-foreground">[ON_THIS_PAGE]:</div>
             {tocHeadings.length > 0 ? (
               <nav>
                 <ul className="space-y-2 font-mono text-xs">
@@ -336,7 +336,7 @@ export default function DocsLayout({
                 </ul>
               </nav>
             ) : (
-              <p className="font-mono text-xs text-muted-foreground/50 px-2">No sections found</p>
+              <p className="font-mono text-sm text-muted-foreground/50 px-2">No sections found</p>
             )}
           </div>
         </aside>

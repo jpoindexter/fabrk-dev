@@ -11,10 +11,10 @@ export default function PricingComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] PRICING</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] PRICING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PRICING_TABLES</h1>
-        <p className="font-mono text-xs text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Pricing components for displaying plans, features, and checkout integration.
         </p>
       </div>
@@ -50,7 +50,7 @@ import { PricingComparison } from "@/components/marketing/pricing-comparison";`}
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">PRICING_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">PRICING_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingSection } from "@/components/landing/pricing-section";
 
@@ -75,7 +75,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">PRICING_TABLE</h3>
+          <h3 className="font-mono text-base font-semibold">PRICING_TABLE</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingTable } from "@/components/landing/pricing-table";
 
@@ -99,7 +99,7 @@ export default function PricingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">PRICING_COMPARISON</h3>
+          <h3 className="font-mono text-base font-semibold">PRICING_COMPARISON</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { PricingComparison } from "@/components/marketing/pricing-comparison";
 
@@ -119,7 +119,7 @@ export default function PricingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">STRIPE_CHECKOUT_INTEGRATION</h3>
+          <h3 className="font-mono text-base font-semibold">STRIPE_CHECKOUT_INTEGRATION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// The pricing components integrate with Stripe checkout
 // Configure price IDs in src/config.js
@@ -151,7 +151,7 @@ export const config = {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">CUSTOM_PRICING_CARD</h3>
+          <h3 className="font-mono text-base font-semibold">CUSTOM_PRICING_CARD</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

@@ -11,7 +11,7 @@ export default function ButtonsComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BUTTON_COMPONENTS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">

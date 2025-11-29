@@ -13,7 +13,7 @@ export default function PaymentsPage() {
       {/* Header */}
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] PAYMENTS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x30] FEATURES ] PAYMENTS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">STRIPE_PAYMENTS</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Accept payments and manage subscriptions with Stripe.</p>
@@ -183,7 +183,7 @@ export default function PaymentsPage() {
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             In the Stripe Dashboard, go to &quot;Developers&quot; → &quot;API keys&quot;. Copy your test keys (we&apos;ll use live keys later).
           </p>
-          <p className="font-mono text-xs text-muted-foreground mt-2">
+          <p className="font-mono text-sm text-muted-foreground mt-2">
             <strong>Important:</strong> Test keys start with <code className="font-mono bg-muted px-1">sk_test_</code> and <code className="font-mono bg-muted px-1">pk_test_</code>.
             Live keys start with <code className="font-mono bg-muted px-1">sk_live_</code> and <code className="font-mono bg-muted px-1">pk_live_</code>.
           </p>
@@ -279,7 +279,7 @@ npm run stripe:listen`} />
                 <code className="font-mono bg-muted px-2">4000 0000 0000 9995</code>
               </div>
             </div>
-            <p className="font-mono text-xs text-muted-foreground mt-4">
+            <p className="font-mono text-sm text-muted-foreground mt-4">
               Use any future expiration date, any 3-digit CVC, and any billing ZIP code.
             </p>
           </CardContent>

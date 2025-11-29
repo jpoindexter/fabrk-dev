@@ -15,7 +15,7 @@ export default function WebhooksPage() {
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">WEBHOOKS_SYSTEM</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">

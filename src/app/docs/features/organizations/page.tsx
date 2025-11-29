@@ -17,10 +17,10 @@ export default function OrganizationsPage() {
       </div>
 
       <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-xs text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
+        <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
       </div>
       <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">ORGANIZATIONS_AND_TEAMS</h1>
-      <p className="font-mono text-xs text-muted-foreground mb-8">
+      <p className="font-mono text-sm text-muted-foreground mb-8">
         &gt; Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
       </p>
 
@@ -28,10 +28,10 @@ export default function OrganizationsPage() {
         <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <p className="font-mono text-xs text-muted-foreground mb-4">
+            <p className="font-mono text-sm text-muted-foreground mb-4">
               Fabrk includes a complete multi-tenancy system for B2B SaaS applications:
             </p>
-            <div className="font-mono text-xs text-muted-foreground space-y-1">
+            <div className="font-mono text-sm text-muted-foreground space-y-1">
               <div>├─ Organization creation and management</div>
               <div>├─ Role-based access control (Owner, Admin, Member, Guest)</div>
               <div>├─ Email-based team invitations</div>
@@ -47,7 +47,7 @@ export default function OrganizationsPage() {
         <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
         <div className="space-y-4">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">Core models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
+            <p className="font-mono text-sm text-muted-foreground">Core models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="prisma" code={`enum OrgRole {
@@ -188,10 +188,10 @@ model OrganizationInvite {
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-xs font-semibold mb-3">CREATE_ORGANIZATION</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">CREATE_ORGANIZATION</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">API endpoint to create a new organization:</p>
+            <p className="font-mono text-sm text-muted-foreground">API endpoint to create a new organization:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/route.ts
@@ -272,10 +272,10 @@ export async function GET() {
           </div>
         </div>
 
-        <h3 className="font-mono text-xs font-semibold mb-3">INVITE_MEMBERS</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">INVITE_MEMBERS</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">Send team invitations:</p>
+            <p className="font-mono text-sm text-muted-foreground">Send team invitations:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/route.ts
@@ -351,10 +351,10 @@ export async function POST(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-xs font-semibold mb-3">ACCEPT_INVITATION</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">ACCEPT_INVITATION</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">Handle invite acceptance:</p>
+            <p className="font-mono text-sm text-muted-foreground">Handle invite acceptance:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/accept/route.ts
@@ -408,10 +408,10 @@ export async function POST(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-xs font-semibold mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">Reusable permission checking:</p>
+            <p className="font-mono text-sm text-muted-foreground">Reusable permission checking:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/lib/permissions.ts
@@ -469,10 +469,10 @@ export async function DELETE(request: Request) {
           </div>
         </div>
 
-        <h3 className="font-mono text-xs font-semibold mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
+        <h3 className="font-mono text-base font-semibold mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
         <div className="space-y-4">
           <div>
-            <p className="font-mono text-xs text-muted-foreground">Client-side organization context:</p>
+            <p className="font-mono text-sm text-muted-foreground">Client-side organization context:</p>
           </div>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`// src/hooks/useOrganization.ts
@@ -550,8 +550,8 @@ function TeamPage() {
         <div className="grid gap-4">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">TEAM_WORKSPACES</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">TEAM_WORKSPACES</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Each organization has its own workspace with projects, files, or data. Members see only their organization's content.
               </p>
             </CardContent>
@@ -559,8 +559,8 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">PER_SEAT_BILLING</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">PER_SEAT_BILLING</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Charge based on organization member count. Track seats in Stripe metadata and update on member changes.
               </p>
             </CardContent>
@@ -568,8 +568,8 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">ADMIN_DASHBOARD</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">ADMIN_DASHBOARD</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Give admins a dashboard to manage members, view activity, and configure organization settings.
               </p>
             </CardContent>
@@ -577,8 +577,8 @@ function TeamPage() {
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.
               </p>
             </CardContent>
@@ -590,7 +590,7 @@ function TeamPage() {
         <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <div className="font-mono text-xs text-muted-foreground space-y-1">
+            <div className="font-mono text-sm text-muted-foreground space-y-1">
               <div>├─ Always check permissions before any organization action</div>
               <div>├─ Use database transactions for multi-step operations</div>
               <div>├─ Scope all queries by <code className="bg-muted px-1 font-mono text-xs">organizationId</code></div>

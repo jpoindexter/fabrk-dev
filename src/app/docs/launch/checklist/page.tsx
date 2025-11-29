@@ -11,7 +11,7 @@ export default function LaunchChecklistPage() {
         <div className="space-y-16">
             <div className="space-y-2">
                 <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-                    <span className="font-mono text-xs text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
+                    <span className="font-mono text-sm text-muted-foreground">[ [0xA0] LAUNCH ] CHECKLIST</span>
                 </div>
                 <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">LAUNCH_CHECKLIST</h1>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -24,7 +24,7 @@ export default function LaunchChecklistPage() {
                     <p className="text-primary font-mono font-medium text-xs">
                         Status: Ready for Launch
                     </p>
-                    <p className="font-mono text-xs text-muted-foreground mt-1">
+                    <p className="font-mono text-sm text-muted-foreground mt-1">
                         Follow this checklist to verify your application before going live.
                     </p>
                 </CardContent>
@@ -37,7 +37,7 @@ export default function LaunchChecklistPage() {
                     <h2 className="font-mono text-lg font-bold">PRE_LAUNCH_VERIFICATION</h2>
                 </div>
                 <div className="space-y-3">
-                    <h3 className="font-mono text-xs font-semibold">CODE_QUALITY_AND_SECURITY</h3>
+                    <h3 className="font-mono text-base font-semibold">CODE_QUALITY_AND_SECURITY</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Resolve TODOs:</strong> Search for `TODO` or `FIXME` in `src/` and resolve them.</div>
                         <div>├─ <strong>Configuration:</strong> Ensure all placeholders in `src/config.js` are replaced with real values.</div>
@@ -47,7 +47,7 @@ export default function LaunchChecklistPage() {
                         <div>└─ <strong>Build:</strong> Verify `npm run build` succeeds locally.</div>
                     </div>
 
-                    <h3 className="font-mono text-xs font-semibold">LEGAL_AND_BUSINESS</h3>
+                    <h3 className="font-mono text-base font-semibold">LEGAL_AND_BUSINESS</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ <strong>Pricing:</strong> Confirm prices in `src/config.js` match your Stripe dashboard.</div>
                         <div>├─ <strong>Support:</strong> Verify `supportEmail` in config is active.</div>
@@ -63,14 +63,14 @@ export default function LaunchChecklistPage() {
                     <h2 className="font-mono text-lg font-bold">STRIPE_AND_PAYMENTS_SETUP</h2>
                 </div>
                 <div className="space-y-3">
-                    <h3 className="font-mono text-xs font-semibold">PRODUCT_CONFIGURATION</h3>
+                    <h3 className="font-mono text-base font-semibold">PRODUCT_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Create products in Stripe Dashboard (Test & Production).</div>
                         <div>├─ Copy Price IDs to `.env` (e.g., `NEXT_PUBLIC_STRIPE_PRICE_PRO`).</div>
                         <div>└─ Create coupons if needed (e.g., EARLYBIRD).</div>
                     </div>
 
-                    <h3 className="font-mono text-xs font-semibold">WEBHOOK_CONFIGURATION</h3>
+                    <h3 className="font-mono text-base font-semibold">WEBHOOK_CONFIGURATION</h3>
                     <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                         <div>├─ Add endpoint: `https://your-domain.com/api/stripe/webhook`</div>
                         <div>├─ Select events: `checkout.session.completed`, `customer.subscription.*`, `payment_intent.*`</div>

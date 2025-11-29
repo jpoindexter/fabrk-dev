@@ -12,7 +12,7 @@ export default function FileUploadsTutorialPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] FILE_UPLOADS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x50] TUTORIALS ] FILE_UPLOADS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FILE_UPLOADS</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Implement secure file uploads with dropzone components, validation, and cloud storage integration.</p>
@@ -20,7 +20,7 @@ export default function FileUploadsTutorialPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Drag-and-drop file upload components</div>
             <div>├─ Image upload with preview and cropping</div>
@@ -229,7 +229,7 @@ export function FileUploadForm() {
         className="border-2 border-dashed rounded-none p-6 text-center cursor-pointer transition-colors hover:border-primary/50"
       >
         <input {...getInputProps()} />
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           {isDragActive ? "Drop files here..." : "Drag & drop files or click to browse"}
         </p>
       </div>
@@ -242,7 +242,7 @@ export function FileUploadForm() {
               style={{ width: \`\${progress}%\` }}
             />
           </div>
-          <p className="font-mono text-xs text-muted-foreground text-center">
+          <p className="font-mono text-sm text-muted-foreground text-center">
             Uploading... {Math.round(progress)}%
           </p>
         </div>
@@ -312,8 +312,8 @@ export function FileUploadForm() {
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">API Routes</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">API Routes</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Learn more about building API endpoints
                 </p>
               </CardContent>
@@ -322,8 +322,8 @@ export function FileUploadForm() {
           <Link href="/docs/tutorials/protected-pages">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Protected Pages</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Protected Pages</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Protect upload routes with authentication
                 </p>
               </CardContent>

@@ -13,7 +13,7 @@ export default function TrialPage() {
       {/* Header */}
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x30] FEATURES ] TRIAL</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x30] FEATURES ] TRIAL</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FREE_TRIAL_SYSTEM</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -154,28 +154,28 @@ export const config = {
                 <div className="h-3 w-3 rounded-full bg-success"></div>
                 <div>
                   <p className="text-sm font-medium">Plenty of time (8+ days)</p>
-                  <p className="font-mono text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
+                  <p className="font-mono text-sm text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-warning"></div>
                 <div>
                   <p className="text-sm font-medium">Running low (4-7 days)</p>
-                  <p className="font-mono text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
+                  <p className="font-mono text-sm text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-destructive"></div>
                 <div>
                   <p className="text-sm font-medium">Urgent (1-3 days)</p>
-                  <p className="font-mono text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
+                  <p className="font-mono text-sm text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-muted-foreground"></div>
                 <div>
                   <p className="text-sm font-medium">Expired</p>
-                  <p className="font-mono text-xs text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>
+                  <p className="font-mono text-sm text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>
                 </div>
               </div>
             </div>

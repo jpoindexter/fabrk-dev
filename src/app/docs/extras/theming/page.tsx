@@ -12,7 +12,7 @@ export default function ThemingPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0xB0] EXTRAS ] THEMING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">THEMING_AND_CUSTOMIZATION</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -22,7 +22,7 @@ export default function ThemingPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">Theme System</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">Theme System</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>20 Color Themes:</strong> Inspired by{" "}
               <a href="https://daisyui.com/docs/themes/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -55,7 +55,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#ffffff] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Light</div>
-                  <div className="font-mono text-xs text-muted-foreground">Default</div>
+                  <div className="font-mono text-sm text-muted-foreground">Default</div>
                 </div>
               </div>
             </CardContent>
@@ -66,7 +66,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#65c3c8] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Cupcake</div>
-                  <div className="font-mono text-xs text-muted-foreground">Soft</div>
+                  <div className="font-mono text-sm text-muted-foreground">Soft</div>
                 </div>
               </div>
             </CardContent>
@@ -77,7 +77,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#e0a82e] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Bumblebee</div>
-                  <div className="font-mono text-xs text-muted-foreground">Yellow</div>
+                  <div className="font-mono text-sm text-muted-foreground">Yellow</div>
                 </div>
               </div>
             </CardContent>
@@ -88,7 +88,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#66cc8a] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Emerald</div>
-                  <div className="font-mono text-xs text-muted-foreground">Green</div>
+                  <div className="font-mono text-sm text-muted-foreground">Green</div>
                 </div>
               </div>
             </CardContent>
@@ -99,7 +99,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#4b6bfb] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Corporate</div>
-                  <div className="font-mono text-xs text-muted-foreground">Business</div>
+                  <div className="font-mono text-sm text-muted-foreground">Business</div>
                 </div>
               </div>
             </CardContent>
@@ -110,7 +110,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#ef9995] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Retro</div>
-                  <div className="font-mono text-xs text-muted-foreground">Vintage</div>
+                  <div className="font-mono text-sm text-muted-foreground">Vintage</div>
                 </div>
               </div>
             </CardContent>
@@ -121,7 +121,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#d1c1d7] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Pastel</div>
-                  <div className="font-mono text-xs text-muted-foreground">Soft</div>
+                  <div className="font-mono text-sm text-muted-foreground">Soft</div>
                 </div>
               </div>
             </CardContent>
@@ -132,7 +132,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#6e0b75] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Fantasy</div>
-                  <div className="font-mono text-xs text-muted-foreground">Purple</div>
+                  <div className="font-mono text-sm text-muted-foreground">Purple</div>
                 </div>
               </div>
             </CardContent>
@@ -143,7 +143,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#5c7f67] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Garden</div>
-                  <div className="font-mono text-xs text-muted-foreground">Green</div>
+                  <div className="font-mono text-sm text-muted-foreground">Green</div>
                 </div>
               </div>
             </CardContent>
@@ -155,7 +155,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#1d232a] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Dark</div>
-                  <div className="font-mono text-xs text-muted-foreground">Default dark</div>
+                  <div className="font-mono text-sm text-muted-foreground">Default dark</div>
                 </div>
               </div>
             </CardContent>
@@ -166,7 +166,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#e779c1] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Synthwave</div>
-                  <div className="font-mono text-xs text-muted-foreground">Neon</div>
+                  <div className="font-mono text-sm text-muted-foreground">Neon</div>
                 </div>
               </div>
             </CardContent>
@@ -177,7 +177,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#ff7598] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Cyberpunk</div>
-                  <div className="font-mono text-xs text-muted-foreground">Futuristic</div>
+                  <div className="font-mono text-sm text-muted-foreground">Futuristic</div>
                 </div>
               </div>
             </CardContent>
@@ -188,7 +188,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#e96d7b] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Valentine</div>
-                  <div className="font-mono text-xs text-muted-foreground">Pink</div>
+                  <div className="font-mono text-sm text-muted-foreground">Pink</div>
                 </div>
               </div>
             </CardContent>
@@ -199,7 +199,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#ff7700] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Halloween</div>
-                  <div className="font-mono text-xs text-muted-foreground">Orange</div>
+                  <div className="font-mono text-sm text-muted-foreground">Orange</div>
                 </div>
               </div>
             </CardContent>
@@ -210,7 +210,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#1eb854] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Forest</div>
-                  <div className="font-mono text-xs text-muted-foreground">Nature</div>
+                  <div className="font-mono text-sm text-muted-foreground">Nature</div>
                 </div>
               </div>
             </CardContent>
@@ -221,7 +221,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#09ecf3] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Aqua</div>
-                  <div className="font-mono text-xs text-muted-foreground">Cyan</div>
+                  <div className="font-mono text-sm text-muted-foreground">Cyan</div>
                 </div>
               </div>
             </CardContent>
@@ -232,7 +232,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#0d0d0d] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Lo-Fi</div>
-                  <div className="font-mono text-xs text-muted-foreground">Minimal</div>
+                  <div className="font-mono text-sm text-muted-foreground">Minimal</div>
                 </div>
               </div>
             </CardContent>
@@ -243,7 +243,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#ff79c6] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Dracula</div>
-                  <div className="font-mono text-xs text-muted-foreground">Dark purple</div>
+                  <div className="font-mono text-sm text-muted-foreground">Dark purple</div>
                 </div>
               </div>
             </CardContent>
@@ -254,7 +254,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#8c0327] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Autumn</div>
-                  <div className="font-mono text-xs text-muted-foreground">Warm</div>
+                  <div className="font-mono text-sm text-muted-foreground">Warm</div>
                 </div>
               </div>
             </CardContent>
@@ -265,7 +265,7 @@ export default function ThemingPage() {
                 <div className="h-6 w-6 rounded-full bg-[#1c4e80] border-2 border-border" />
                 <div>
                   <div className="font-mono font-semibold text-xs">Business</div>
-                  <div className="font-mono text-xs text-muted-foreground">Professional</div>
+                  <div className="font-mono text-sm text-muted-foreground">Professional</div>
                 </div>
               </div>
             </CardContent>
@@ -382,7 +382,7 @@ export function MyNavbar() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-              <h3 className="font-mono text-xs font-semibold">ADD_CSS_IN_GLOBALS</h3>
+              <h3 className="font-mono text-base font-semibold">ADD_CSS_IN_GLOBALS</h3>
             </div>
           </div>
           <div className="[&>div]:rounded-none">
@@ -399,7 +399,7 @@ export function MyNavbar() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-              <h3 className="font-mono text-xs font-semibold">ADD_TO_THEME_DROPDOWN</h3>
+              <h3 className="font-mono text-base font-semibold">ADD_TO_THEME_DROPDOWN</h3>
             </div>
           </div>
           <div className="[&>div]:rounded-none">
@@ -411,7 +411,7 @@ export function MyNavbar() {
 ];`} />
           </div>
         </div>
-        <p className="font-mono text-xs text-muted-foreground mt-3">
+        <p className="font-mono text-sm text-muted-foreground mt-3">
           <strong>Note:</strong> The <code className="bg-muted px-1 font-mono">ColorTheme</code> type is automatically inferred from the themes array, so no type changes needed.
         </p>
       </div>
@@ -454,7 +454,7 @@ export function MyNavbar() {
         <h2 className="font-mono text-lg font-bold">CREDITS_AND_INSPIRATION</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Fabrk's theme system is inspired by{" "}
               <a
                 href="https://daisyui.com"
@@ -487,8 +487,8 @@ export function MyNavbar() {
           <Link href="/docs/components">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">UI Components</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">UI Components</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   All components use semantic colors and adapt to themes
                 </p>
               </CardContent>
@@ -497,8 +497,8 @@ export function MyNavbar() {
           <Link href="/docs/extras/testing">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Testing</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Testing</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Test your app across different themes and modes
                 </p>
               </CardContent>

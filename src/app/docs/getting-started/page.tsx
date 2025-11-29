@@ -13,7 +13,7 @@ export default function GettingStartedPage() {
       {/* Header */}
       <div className="space-y-4">
         <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">GETTING_STARTED</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ export default function GettingStartedPage() {
             <Card key={item.title} className="rounded-none">
               <CardContent className="p-6">
                 <h3 className="font-mono text-base font-semibold mb-2">{item.title}</h3>
-                <p className="font-mono text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="font-mono text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </CardContent>
             </Card>
           ))}
@@ -113,7 +113,7 @@ cp .env.example .env.local
 npm run db:push && npm run dev`}
           />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Open <a href="http://localhost:3000" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">localhost:3000</a> and you&apos;re running.
         </p>
       </div>
@@ -131,13 +131,13 @@ npm run db:push && npm run dev`}
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
             <h3 className="font-mono text-base font-semibold">CHECK_YOUR_SYSTEM</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Make sure you have Node.js installed:
           </p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code="node --version" />
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Need v18.17+. Download from <a href="https://nodejs.org" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">nodejs.org</a>.
           </p>
         </div>
@@ -148,7 +148,7 @@ npm run db:push && npm run dev`}
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
             <h3 className="font-mono text-base font-semibold">DOWNLOAD_FABRK</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Clone the Fabrk code. Replace &quot;my-saas&quot; with your project name:
           </p>
           <div className="[&>div]:rounded-none">
@@ -163,7 +163,7 @@ cd my-saas`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
             <h3 className="font-mono text-base font-semibold">INSTALL_DEPENDENCIES</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Download all required libraries (1-2 min):
           </p>
           <div className="[&>div]:rounded-none">
@@ -177,7 +177,7 @@ cd my-saas`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">4</span>
             <h3 className="font-mono text-base font-semibold">CREATE_CONFIG_FILE</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Create your private settings file:
           </p>
           <div className="[&>div]:rounded-none">
@@ -191,7 +191,7 @@ cd my-saas`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">5</span>
             <h3 className="font-mono text-base font-semibold">SETUP_DATABASE</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             You need a PostgreSQL database. Easiest options:
           </p>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
@@ -199,7 +199,7 @@ cd my-saas`} />
             <li>├─ <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Supabase</a> - Free tier, extra features</li>
             <li>└─ <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Railway</a> - Simple, pay-as-you-go</li>
           </ul>
-          <p className="font-mono text-xs text-muted-foreground mt-3">
+          <p className="font-mono text-sm text-muted-foreground mt-3">
             Add connection string to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
           </p>
           <div className="[&>div]:rounded-none">
@@ -213,7 +213,7 @@ cd my-saas`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">6</span>
             <h3 className="font-mono text-base font-semibold">CONFIGURE_SETTINGS</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Add required values to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
           </p>
           <div className="[&>div]:rounded-none">
@@ -221,7 +221,7 @@ cd my-saas`} />
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="paste-your-secret-here"`} />
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Generate secret: <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">openssl rand -base64 32</code>
           </p>
         </div>
@@ -232,7 +232,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">7</span>
             <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Create the database tables:
           </p>
           <div className="[&>div]:rounded-none">
@@ -246,13 +246,13 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">8</span>
             <h3 className="font-mono text-base font-semibold">START_YOUR_APP</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Start the development server:
           </p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code="npm run dev" />
           </div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Open <a href="http://localhost:3000" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">localhost:3000</a> - you should see the Fabrk landing page.
           </p>
         </div>
@@ -269,7 +269,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
               <span className="ml-2">PORT_3000_IN_USE</span>
             </summary>
             <div className="border-t border-border p-4 space-y-3">
-              <p className="font-mono text-xs text-muted-foreground">Run on different port:</p>
+              <p className="font-mono text-sm text-muted-foreground">Run on different port:</p>
               <div className="[&>div]:rounded-none">
                 <CodeBlock language="bash" code="npm run dev -- -p 3001" />
               </div>
@@ -299,7 +299,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
               <span className="ml-2">NEXTAUTH_SECRET_MISSING</span>
             </summary>
             <div className="border-t border-border p-4 space-y-3">
-              <p className="font-mono text-xs text-muted-foreground">Generate and add secret:</p>
+              <p className="font-mono text-sm text-muted-foreground">Generate and add secret:</p>
               <div className="[&>div]:rounded-none">
                 <CodeBlock language="bash" code="openssl rand -base64 32" />
               </div>
@@ -325,7 +325,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
                 <CardContent className="p-6">
                   <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
-                  <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
+                  <p className="font-mono text-sm text-muted-foreground">{item.desc}</p>
                   <span className="font-mono text-xs text-primary">&gt; SETUP_GUIDE</span>
                 </CardContent>
               </Card>
@@ -348,7 +348,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
                 <CardContent className="p-6">
                   <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
-                  <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
+                  <p className="font-mono text-sm text-muted-foreground">{item.desc}</p>
                 </CardContent>
               </Card>
             </Link>

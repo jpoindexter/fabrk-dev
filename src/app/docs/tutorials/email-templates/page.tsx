@@ -12,7 +12,7 @@ export default function EmailTemplatesTutorialPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">EMAIL_TEMPLATES</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -22,7 +22,7 @@ export default function EmailTemplatesTutorialPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Resend API integration for reliable email delivery</div>
             <div>├─ Lightweight HTML templates for maximum performance</div>
@@ -57,7 +57,7 @@ export default function EmailTemplatesTutorialPage() {
 RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="noreply@yourdomain.com"`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Without a Resend API key, emails will be logged to the console in development mode.
         </p>
       </div>
@@ -143,7 +143,7 @@ await queueWelcomeEmail({
   purchaseId: "purchase_456"
 });`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Run the email worker with <code className="bg-muted px-1 font-mono text-xs">npm run email:dev</code> to process queued emails.
         </p>
       </div>
@@ -322,8 +322,8 @@ await sendOrganizationInvite("newmember@example.com", {
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Authentication</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Authentication</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Set up email verification and password reset
                 </p>
               </CardContent>
@@ -332,8 +332,8 @@ await sendOrganizationInvite("newmember@example.com", {
           <Link href="/docs/tutorials/stripe-payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Stripe Payments</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Stripe Payments</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Send purchase confirmation emails
                 </p>
               </CardContent>

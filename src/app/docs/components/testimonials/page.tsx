@@ -11,7 +11,7 @@ export default function TestimonialsComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTIMONIALS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -51,7 +51,7 @@ import { Card, CardContent } from "@/components/ui/card";`} />
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">TESTIMONIALS_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">TESTIMONIALS_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { TestimonialsSection } from "@/components/landing/testimonials-section";
 
@@ -77,7 +77,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">CUSTOM_TESTIMONIAL_CARD</h3>
+          <h3 className="font-mono text-base font-semibold">CUSTOM_TESTIMONIAL_CARD</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -134,7 +134,7 @@ export function TestimonialCard({
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">AVATAR_GROUP_SOCIAL_PROOF</h3>
+          <h3 className="font-mono text-base font-semibold">AVATAR_GROUP_SOCIAL_PROOF</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { AvatarGroup } from "@/components/ui/avatar-group";
 
@@ -159,7 +159,7 @@ export function SocialProof() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">TESTIMONIAL_GRID</h3>
+          <h3 className="font-mono text-base font-semibold">TESTIMONIAL_GRID</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { motion } from "framer-motion";
 

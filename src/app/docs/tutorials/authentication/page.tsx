@@ -13,7 +13,7 @@ export default function AuthenticationTutorialPage() {
       {/* Header */}
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x20] TUTORIALS ] AUTHENTICATION</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x20] TUTORIALS ] AUTHENTICATION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">USER_AUTHENTICATION</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -59,48 +59,48 @@ export default function AuthenticationTutorialPage() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Email/Password</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Email/Password</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Traditional signup with encrypted passwords. Industry-standard bcrypt hashing.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Google Login</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Google Login</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 One-click signup with Google accounts. No passwords to remember.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Email Verification</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Email Verification</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Confirm users own their email address before full access.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Password Reset</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Password Reset</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Secure &quot;forgot password&quot; flow with expiring tokens.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Two-Factor Auth</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Two-Factor Auth</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Optional 2FA with authenticator apps for extra security.
               </p>
             </CardContent>
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold">Protected Routes</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold">Protected Routes</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Automatically block unauthenticated users from private pages.
               </p>
             </CardContent>
@@ -130,10 +130,10 @@ NEXTAUTH_URL="http://localhost:3000"
 # A random secret for encrypting sessions (generate one below)
 NEXTAUTH_SECRET="your-32-character-secret"`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Generate a secret by running: <code className="bg-muted px-1 font-mono text-xs">openssl rand -base64 32</code>
         </p>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           That&apos;s it! Users can now sign up and log in with email/password. Google login requires
           additional setup below.
         </p>
@@ -147,7 +147,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
         </p>
         <div className="space-y-2">
           <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-xs font-semibold mb-2">WHEN_USER_SIGNS_UP</h3>
+            <h3 className="font-mono text-base font-semibold mb-2">WHEN_USER_SIGNS_UP</h3>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ User enters email and password on the signup form</div>
               <div>├─ Password is encrypted (never stored as plain text)</div>
@@ -157,7 +157,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
             </div>
           </div>
           <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-xs font-semibold mb-2">WHEN_USER_LOGS_IN</h3>
+            <h3 className="font-mono text-base font-semibold mb-2">WHEN_USER_LOGS_IN</h3>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ User enters email and password</div>
               <div>├─ System checks if the password matches</div>
@@ -167,7 +167,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
             </div>
           </div>
           <div className="border border-border bg-card p-4">
-            <h3 className="font-mono text-xs font-semibold mb-2">ON_EVERY_PAGE_VISIT</h3>
+            <h3 className="font-mono text-base font-semibold mb-2">ON_EVERY_PAGE_VISIT</h3>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Browser automatically sends the session cookie</div>
               <div>├─ Server verifies the token is valid</div>
@@ -188,7 +188,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
         {/* Analogy */}
         <Card className="rounded-none bg-muted">
           <CardContent className="p-6">
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               <strong>How Google login works:</strong> Think of it like a valet service. Instead
               of giving your app your password (car keys), you let Google (the valet) verify
               who you are and vouch for you. Google tells your app &quot;yes, this person is who
@@ -204,9 +204,9 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 1
               </span>
-              <h3 className="font-mono text-xs font-semibold">CREATE_GOOGLE_CLOUD_PROJECT</h3>
+              <h3 className="font-mono text-base font-semibold">CREATE_GOOGLE_CLOUD_PROJECT</h3>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Go to the{" "}
               <a
                 href="https://console.cloud.google.com/"
@@ -227,9 +227,9 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 2
               </span>
-              <h3 className="font-mono text-xs font-semibold">CONFIGURE_OAUTH_CONSENT</h3>
+              <h3 className="font-mono text-base font-semibold">CONFIGURE_OAUTH_CONSENT</h3>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Go to &quot;APIs &amp; Services&quot; → &quot;OAuth consent screen&quot;. This is the screen users see
               when signing in with Google. Choose &quot;External&quot; (for public apps), then fill in:
             </p>
@@ -238,7 +238,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <div>├─ <strong>User support email:</strong> Your email</div>
               <div>└─ <strong>Developer contact:</strong> Your email</div>
             </div>
-            <p className="font-mono text-xs text-muted-foreground mt-2">
+            <p className="font-mono text-sm text-muted-foreground mt-2">
               Skip the scopes page (defaults are fine) and save.
             </p>
           </div>
@@ -249,9 +249,9 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 3
               </span>
-              <h3 className="font-mono text-xs font-semibold">CREATE_OAUTH_CREDENTIALS</h3>
+              <h3 className="font-mono text-base font-semibold">CREATE_OAUTH_CREDENTIALS</h3>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Go to &quot;APIs &amp; Services&quot; → &quot;Credentials&quot; → &quot;Create Credentials&quot; → &quot;OAuth client ID&quot;.
             </p>
             <div className="space-y-1 font-mono text-sm text-muted-foreground mt-2">
@@ -264,7 +264,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
                 <CodeBlock language="text" code={`http://localhost:3000/api/auth/callback/google`} />
               </div>
               <div>
-                <p className="font-mono text-xs text-muted-foreground">
+                <p className="font-mono text-sm text-muted-foreground">
                   For production, add your real domain too:
                 </p>
               </div>
@@ -280,7 +280,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 4
               </span>
-              <h3 className="font-mono text-xs font-semibold">ADD_CREDENTIALS_TO_APP</h3>
+              <h3 className="font-mono text-base font-semibold">ADD_CREDENTIALS_TO_APP</h3>
             </div>
             <div className="space-y-3">
               <div>
@@ -295,7 +295,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-client-secret"`} />
               </div>
-              <p className="font-mono text-xs text-muted-foreground">
+              <p className="font-mono text-sm text-muted-foreground">
                 Google login is now enabled! The &quot;Sign in with Google&quot; button will appear automatically
                 on your login page.
               </p>
@@ -314,22 +314,22 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
         <div className="grid gap-2 sm:grid-cols-2">
           <div className="border border-border bg-card p-4">
             <code className="font-mono text-xs">/dashboard/*</code>
-            <p className="font-mono text-xs text-muted-foreground">Main user dashboard</p>
+            <p className="font-mono text-sm text-muted-foreground">Main user dashboard</p>
           </div>
           <div className="border border-border bg-card p-4">
             <code className="font-mono text-xs">/settings/*</code>
-            <p className="font-mono text-xs text-muted-foreground">User settings pages</p>
+            <p className="font-mono text-sm text-muted-foreground">User settings pages</p>
           </div>
           <div className="border border-border bg-card p-4">
             <code className="font-mono text-xs">/billing/*</code>
-            <p className="font-mono text-xs text-muted-foreground">Payment and subscription pages</p>
+            <p className="font-mono text-sm text-muted-foreground">Payment and subscription pages</p>
           </div>
           <div className="border border-border bg-card p-4">
             <code className="font-mono text-xs">/admin/*</code>
-            <p className="font-mono text-xs text-muted-foreground">Admin-only pages</p>
+            <p className="font-mono text-sm text-muted-foreground">Admin-only pages</p>
           </div>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           If someone tries to visit these pages without being logged in, they&apos;re automatically
           sent to the login page.
         </p>
@@ -345,7 +345,7 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
         {/* Check if user is logged in - API routes */}
         <div className="space-y-3">
           <div>
-            <h3 className="font-mono text-xs font-semibold">IN_API_ROUTES</h3>
+            <h3 className="font-mono text-base font-semibold">IN_API_ROUTES</h3>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Check if the user is logged in and get their info:
             </p>
@@ -383,7 +383,7 @@ export async function GET() {
         {/* Client-side auth */}
         <div className="space-y-3 mt-4">
           <div>
-            <h3 className="font-mono text-xs font-semibold">IN_REACT_COMPONENTS</h3>
+            <h3 className="font-mono text-base font-semibold">IN_REACT_COMPONENTS</h3>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Show different content based on login status:
             </p>
@@ -427,7 +427,7 @@ export function UserStatus() {
         {/* Server component */}
         <div className="space-y-3 mt-4">
           <div>
-            <h3 className="font-mono text-xs font-semibold">IN_SERVER_COMPONENTS</h3>
+            <h3 className="font-mono text-base font-semibold">IN_SERVER_COMPONENTS</h3>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Check auth status in Next.js Server Components:
             </p>
@@ -463,7 +463,7 @@ export default async function PrivatePage() {
           contact users and prevents fake signups.
         </p>
         <div className="border border-border bg-card p-4">
-          <h3 className="font-mono text-xs font-semibold mb-2">HOW_IT_WORKS</h3>
+          <h3 className="font-mono text-base font-semibold mb-2">HOW_IT_WORKS</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ User signs up with their email</div>
             <div>├─ They receive an email with a special link</div>
@@ -471,7 +471,7 @@ export default async function PrivatePage() {
             <div>└─ They can now fully use your app</div>
           </div>
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           <strong>Want to disable verification?</strong> In{" "}
           <code className="bg-muted px-1 font-mono text-xs">src/config.js</code>, set{" "}
           <code className="bg-muted px-1 font-mono text-xs">emailVerification: false</code>. Not recommended
@@ -487,7 +487,7 @@ export default async function PrivatePage() {
             <summary className="cursor-pointer p-4 font-mono text-xs font-medium">
               [FAQ] SESSION_DURATION?
             </summary>
-            <div className="border-t p-4 font-mono text-xs text-muted-foreground">
+            <div className="border-t p-4 font-mono text-sm text-muted-foreground">
               <p>
                 Sessions last 30 days by default. After 30 days, users need to log in again.
                 You can change this in <code className="bg-muted px-1 font-mono text-xs">src/lib/auth.ts</code>.
@@ -499,7 +499,7 @@ export default async function PrivatePage() {
             <summary className="cursor-pointer p-4 font-mono text-xs font-medium">
               [FAQ] FORCE_USER_LOGOUT?
             </summary>
-            <div className="border-t p-4 font-mono text-xs text-muted-foreground">
+            <div className="border-t p-4 font-mono text-sm text-muted-foreground">
               <p>
                 Increment the user&apos;s <code className="bg-muted px-1 font-mono text-xs">sessionVersion</code> in
                 the database. This instantly invalidates all their sessions. Useful for security
@@ -512,7 +512,7 @@ export default async function PrivatePage() {
             <summary className="cursor-pointer p-4 font-mono text-xs font-medium">
               [FAQ] PASSWORD_SECURITY?
             </summary>
-            <div className="border-t p-4 font-mono text-xs text-muted-foreground">
+            <div className="border-t p-4 font-mono text-sm text-muted-foreground">
               <p>
                 Yes. Passwords are hashed using bcrypt with 12 rounds. Even if your database
                 is compromised, attackers can&apos;t see the original passwords.
@@ -524,7 +524,7 @@ export default async function PrivatePage() {
             <summary className="cursor-pointer p-4 font-mono text-xs font-medium">
               [FAQ] ADD_OTHER_OAUTH_PROVIDERS?
             </summary>
-            <div className="border-t p-4 font-mono text-xs text-muted-foreground">
+            <div className="border-t p-4 font-mono text-sm text-muted-foreground">
               <p>
                 Yes! NextAuth supports 50+ providers. Add them in{" "}
                 <code className="bg-muted px-1 font-mono text-xs">src/lib/auth.ts</code>. See the{" "}
@@ -544,8 +544,8 @@ export default async function PrivatePage() {
           <Link href="/docs/features/mfa">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Two-Factor Authentication</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Two-Factor Authentication</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Add extra security with authenticator apps like Google Authenticator.
                 </p>
               </CardContent>
@@ -554,8 +554,8 @@ export default async function PrivatePage() {
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Set Up Payments</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Set Up Payments</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Accept payments from your authenticated users.
                 </p>
               </CardContent>

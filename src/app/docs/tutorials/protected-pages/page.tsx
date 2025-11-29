@@ -11,7 +11,7 @@ export default function ProtectedPagesTutorialPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">PROTECTED_PAGES</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Create pages that require authentication to access</p>
@@ -108,7 +108,7 @@ export default async function AdminPage() {
   );
 }`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Available roles: <code className="bg-muted px-1 font-mono text-xs">USER</code>,{" "}
           <code className="bg-muted px-1 font-mono text-xs">ADMIN</code>,{" "}
           <code className="bg-muted px-1 font-mono text-xs">SUPER_ADMIN</code>

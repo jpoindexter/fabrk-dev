@@ -193,7 +193,7 @@ export default function ComponentsOverviewPage() {
       {/* Header */}
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className="font-mono text-sm text-muted-foreground">
             [ [0x60] COMPONENTS ] UI_LIBRARY │ {totalComponents} COMPONENTS
           </span>
         </div>
@@ -210,19 +210,19 @@ export default function ComponentsOverviewPage() {
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
             <div className="font-mono text-lg font-bold text-primary">{totalComponents}+</div>
-            <div className="font-mono text-xs text-muted-foreground">COMPONENTS</div>
+            <div className="font-mono text-sm text-muted-foreground">COMPONENTS</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
             <div className="font-mono text-lg font-bold text-primary">{componentCategories.length}</div>
-            <div className="font-mono text-xs text-muted-foreground">CATEGORIES</div>
+            <div className="font-mono text-sm text-muted-foreground">CATEGORIES</div>
           </CardContent>
         </Card>
         <Card className="rounded-none">
           <CardContent className="p-4 text-center">
             <div className="font-mono text-lg font-bold text-primary">100%</div>
-            <div className="font-mono text-xs text-muted-foreground">TYPESCRIPT</div>
+            <div className="font-mono text-sm text-muted-foreground">TYPESCRIPT</div>
           </CardContent>
         </Card>
       </div>
@@ -232,9 +232,9 @@ export default function ComponentsOverviewPage() {
         {componentCategories.map((category) => (
           <div key={category.name}>
             <div className="mb-3 flex items-center gap-2">
-              <span className="font-mono text-xs text-muted-foreground">[{category.hex}]</span>
+              <span className="font-mono text-sm text-muted-foreground">[{category.hex}]</span>
               <h2 className="font-mono text-lg font-bold">{category.name}</h2>
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-sm text-muted-foreground">
                 ({category.components.length})
               </span>
             </div>
@@ -244,10 +244,10 @@ export default function ComponentsOverviewPage() {
                   key={component.name}
                   className="rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50"
                 >
-                  <div className="font-mono text-xs font-semibold text-foreground">
+                  <div className="font-mono text-base font-semibold text-foreground">
                     {component.name}
                   </div>
-                  <div className="mt-1 font-mono text-xs text-muted-foreground">
+                  <div className="mt-1 font-mono text-sm text-muted-foreground">
                     {component.description}
                   </div>
                 </div>
@@ -262,7 +262,7 @@ export default function ComponentsOverviewPage() {
         <h2 className="font-mono text-lg font-bold">IMPORT_PATTERN</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <pre className="font-mono text-xs text-muted-foreground">
+            <pre className="font-mono text-sm text-muted-foreground">
               {`// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

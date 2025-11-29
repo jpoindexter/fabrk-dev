@@ -11,7 +11,7 @@ export default function FooterComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -53,7 +53,7 @@ import { Separator } from "@/components/ui/separator";`} />
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">LANDING_PAGE_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold">LANDING_PAGE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
 
@@ -80,7 +80,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">CUSTOM_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold">CUSTOM_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 import { Logo } from "@/components/home/logo";
@@ -193,7 +193,7 @@ export function CustomFooter() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">SIMPLE_FOOTER</h3>
+          <h3 className="font-mono text-base font-semibold">SIMPLE_FOOTER</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 

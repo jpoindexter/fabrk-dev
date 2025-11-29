@@ -12,7 +12,7 @@ export default function StripePaymentsTutorialPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x30] TUTORIALS ] STRIPE_PAYMENTS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">STRIPE_PAYMENTS</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -208,8 +208,8 @@ stripe: {
           <Link href="/docs/features/payments">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">PAYMENTS_FEATURE_GUIDE</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">PAYMENTS_FEATURE_GUIDE</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Advanced payment features and configuration
                 </p>
               </CardContent>
@@ -218,8 +218,8 @@ stripe: {
           <Link href="/docs/tutorials/webhooks">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">WEBHOOKS_SETUP</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">WEBHOOKS_SETUP</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Handle all webhook events
                 </p>
               </CardContent>

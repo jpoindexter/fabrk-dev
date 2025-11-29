@@ -13,7 +13,7 @@ export default function CloudStoragePage() {
       {/* Header */}
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CLOUD_STORAGE</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Upload and store files securely with automatic provider detection.</p>
@@ -78,21 +78,21 @@ export default function CloudStoragePage() {
                 <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
                 <div>
                   <p className="font-medium">Cloudflare R2</p>
-                  <p className="font-mono text-xs text-muted-foreground">Used if R2 environment variables are set</p>
+                  <p className="font-mono text-sm text-muted-foreground">Used if R2 environment variables are set</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border">
                 <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-bold text-primary-foreground">2</span>
                 <div>
                   <p className="font-medium">AWS S3</p>
-                  <p className="font-mono text-xs text-muted-foreground">Used if only S3 environment variables are set</p>
+                  <p className="font-mono text-sm text-muted-foreground">Used if only S3 environment variables are set</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border">
                 <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-bold">3</span>
                 <div>
                   <p className="font-medium">Local Storage</p>
-                  <p className="font-mono text-xs text-muted-foreground">Fallback when no cloud provider is configured</p>
+                  <p className="font-mono text-sm text-muted-foreground">Fallback when no cloud provider is configured</p>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function CloudStoragePage() {
           <Card className="rounded-none">
             <CardContent className="p-6">
               <h3 className="font-mono font-semibold">CLOUDFLARE_R2</h3>
-              <p className="font-mono text-xs text-muted-foreground mb-2">Recommended</p>
+              <p className="font-mono text-sm text-muted-foreground mb-2">Recommended</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>No egress fees (huge savings)</li>
                 <li>S3-compatible API</li>
@@ -119,7 +119,7 @@ export default function CloudStoragePage() {
           <Card className="rounded-none">
             <CardContent className="p-6">
               <h3 className="font-mono font-semibold">AWS_S3</h3>
-              <p className="font-mono text-xs text-muted-foreground mb-2">Industry Standard</p>
+              <p className="font-mono text-sm text-muted-foreground mb-2">Industry Standard</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>Most mature platform</li>
                 <li>Extensive documentation</li>
@@ -131,7 +131,7 @@ export default function CloudStoragePage() {
           <Card className="rounded-none">
             <CardContent className="p-6">
               <h3 className="font-mono font-semibold">LOCAL_STORAGE</h3>
-              <p className="font-mono text-xs text-muted-foreground mb-2">Development Only</p>
+              <p className="font-mono text-sm text-muted-foreground mb-2">Development Only</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>No setup required</li>
                 <li>Good for testing</li>

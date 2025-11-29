@@ -15,7 +15,7 @@ export default function NotificationsPage() {
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NOTIFICATIONS_SYSTEM</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
@@ -242,7 +242,7 @@ export function NotificationBell({ userId }: { userId: string }) {
               >
                 <p className="font-medium text-sm">{notification.title}</p>
                 {notification.body && (
-                  <p className="font-mono text-xs text-muted-foreground mt-1">
+                  <p className="font-mono text-sm text-muted-foreground mt-1">
                     {notification.body}
                   </p>
                 )}

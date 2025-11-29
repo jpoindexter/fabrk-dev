@@ -12,7 +12,7 @@ export default function AuditLoggingPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">AUDIT_LOGGING</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">

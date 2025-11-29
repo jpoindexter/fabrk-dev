@@ -11,7 +11,7 @@ export default function HeroComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">HERO_SECTIONS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -48,7 +48,7 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">STANDARD_HERO_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">STANDARD_HERO_SECTION</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 
@@ -64,7 +64,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">SPLIT_LAYOUT_HERO</h3>
+          <h3 className="font-mono text-base font-semibold">SPLIT_LAYOUT_HERO</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroSplit } from "@/components/landing/hero-split";
 
@@ -84,7 +84,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">VIDEO_HERO</h3>
+          <h3 className="font-mono text-base font-semibold">VIDEO_HERO</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroVideo } from "@/components/landing/hero-video";
 
@@ -105,7 +105,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">VIEW_VARIATIONS</h3>
+          <h3 className="font-mono text-base font-semibold">VIEW_VARIATIONS</h3>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Check out the variations page to see all hero styles side by side:
           </p>

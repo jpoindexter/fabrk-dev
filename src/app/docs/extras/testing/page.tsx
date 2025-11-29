@@ -12,7 +12,7 @@ export default function TestingGuidePage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0xB0] EXTRAS ] TESTING</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0xB0] EXTRAS ] TESTING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTING_GUIDE</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -22,7 +22,7 @@ export default function TestingGuidePage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">TEST_COVERAGE</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">TEST_COVERAGE</h3>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ 130+ total tests</div>
             <div>├─ Unit tests with Vitest</div>
@@ -506,8 +506,8 @@ jobs:
           <Link href="/docs/deployment/vercel">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">DEPLOY_TO_VERCEL</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">DEPLOY_TO_VERCEL</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Deploy your tested app to production
                 </p>
               </CardContent>
@@ -516,8 +516,8 @@ jobs:
           <Link href="/docs/security/validation">
             <Card className="rounded-none h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">SCHEMA_VALIDATION</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">SCHEMA_VALIDATION</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Validate inputs for better tests
                 </p>
               </CardContent>

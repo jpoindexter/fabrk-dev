@@ -11,7 +11,7 @@ export default function ChartsComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CHARTS_AND_ANALYTICS</h1>
         <p className="font-mono text-sm text-muted-foreground mt-2">
@@ -234,7 +234,7 @@ export function StorageProgress() {
           <span>{total} GB total</span>
         </div>
         <Progress value={percentage} />
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           {percentage}% of storage used
         </p>
       </CardContent>

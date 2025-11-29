@@ -11,10 +11,10 @@ export default function FeaturesComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FEATURES</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FEATURES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_SECTIONS</h1>
-        <p className="font-mono text-xs text-muted-foreground mt-2">
+        <p className="font-mono text-sm text-muted-foreground mt-2">
           &gt; Showcase your product features with beautiful grid and list layouts.
         </p>
       </div>
@@ -62,7 +62,7 @@ import { ComparisonSection } from "@/components/landing/comparison-section";`} /
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">FEATURES_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">FEATURES_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { FeaturesSection } from "@/components/landing/features-section";
 
@@ -83,7 +83,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">ENTERPRISE_FEATURES</h3>
+          <h3 className="font-mono text-base font-semibold">ENTERPRISE_FEATURES</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { EnterpriseFeaturesSection } from "@/components/landing/enterprise-features-section";
 
@@ -106,7 +106,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">TECH_STACK</h3>
+          <h3 className="font-mono text-base font-semibold">TECH_STACK</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { TechStack } from "@/components/landing/tech-stack";
 
@@ -130,7 +130,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">COMPARISON_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">COMPARISON_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { ComparisonSection } from "@/components/landing/comparison-section";
 
@@ -151,7 +151,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">COMPLETE_LANDING_PAGE</h3>
+          <h3 className="font-mono text-base font-semibold">COMPLETE_LANDING_PAGE</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesSection } from "@/components/landing/features-section";

@@ -15,21 +15,21 @@ export default function RealtimePage() {
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ FEATURES ] REALTIME</span>
+          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] REALTIME</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">REALTIME_WITH_PUSHER</h1>
-        <p className="font-mono text-xs text-muted-foreground">&gt; Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels.</p>
+        <p className="font-mono text-sm text-muted-foreground">&gt; Build real-time features like notifications, presence tracking, and activity feeds using Pusher Channels.</p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Fabrk integrates Pusher Channels to provide real-time communication between your server and clients.
             This enables instant updates for notifications, live activity feeds, and presence tracking to show
             who&apos;s online in your organization.
           </p>
-          <div className="font-mono text-xs text-muted-foreground space-y-1">
+          <div className="font-mono text-sm text-muted-foreground space-y-1">
             <div>├─ Notifications: Real-time bell icon updates with badge counts</div>
             <div>├─ Activity Feed: Live organization events and updates</div>
             <div>└─ Presence Tracking: Show online members in real-time</div>
@@ -40,7 +40,7 @@ export default function RealtimePage() {
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Add your Pusher credentials to your environment variables:
           </p>
         </div>
@@ -56,7 +56,7 @@ NEXT_PUBLIC_PUSHER_KEY=your_key
 NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
         </div>
         <div>
-          <p className="font-mono text-xs text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Get your credentials from the <a href="https://dashboard.pusher.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Pusher Dashboard</a>.
           </p>
         </div>
@@ -65,7 +65,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">SERVER_SIDE_USAGE</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Use the server client to trigger events from your API routes:
           </p>
         </div>
@@ -109,7 +109,7 @@ await pusherServer.trigger(
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">CLIENT_SIDE_USAGE</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Subscribe to channels and listen for events in your React components:
           </p>
         </div>
@@ -164,7 +164,7 @@ export function NotificationBell({ userId }: { userId: string }) {
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">PRESENCE_CHANNELS</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Track which members are online in an organization:
           </p>
         </div>
@@ -216,7 +216,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
       <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
-          <div className="font-mono text-xs text-muted-foreground space-y-1">
+          <div className="font-mono text-sm text-muted-foreground space-y-1">
             <div>├─ Use private channels (<code className="bg-muted px-1 font-mono text-xs">private-</code>) for user-specific data</div>
             <div>├─ Use presence channels (<code className="bg-muted px-1 font-mono text-xs">presence-</code>) for tracking online status</div>
             <div>├─ Always unsubscribe from channels when components unmount</div>

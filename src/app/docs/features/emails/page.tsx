@@ -17,7 +17,7 @@ export default function EmailsPage() {
       </div>
 
       <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
+        <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
       </div>
       <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">EMAIL_WITH_RESEND</h1>
       <p className="font-mono text-sm text-muted-foreground mb-8">
@@ -49,7 +49,7 @@ export default function EmailsPage() {
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
           <h3 className="font-mono text-base font-semibold">SET_UP_RESEND</h3>
         </div>
-        <p className="font-mono text-xs text-muted-foreground mb-3">
+        <p className="font-mono text-sm text-muted-foreground mb-3">
           Add your Resend API key to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
         </p>
         <CodeBlock language="bash" code={`RESEND_API_KEY="re_xxxxxxxxxxxx"
@@ -77,7 +77,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
           <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
           <h3 className="font-mono text-base font-semibold">START_EMAIL_WORKER</h3>
         </div>
-        <p className="font-mono text-xs text-muted-foreground mb-3">
+        <p className="font-mono text-sm text-muted-foreground mb-3">
           For queued emails, run the worker:
         </p>
         <CodeBlock language="bash" code={`npm run email:dev
@@ -86,7 +86,7 @@ EMAIL_FROM="Your App <noreply@yourdomain.com>"`} />
 
       <section className="mb-12">
         <h2 className="font-mono text-lg font-bold mb-4">EMAIL_TEMPLATES</h2>
-        <p className="font-mono text-xs text-muted-foreground mb-3">
+        <p className="font-mono text-sm text-muted-foreground mb-3">
           Templates are in <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">src/emails/</code>. Pre-built templates include:
         </p>
         <ul className="font-mono text-sm text-muted-foreground space-y-1 mb-6">

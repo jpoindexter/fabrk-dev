@@ -11,7 +11,7 @@ export default function NavigationComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] NAVIGATION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NAVIGATION_COMPONENTS</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -76,7 +76,7 @@ import {
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">LANDING_NAVIGATION</h3>
+          <h3 className="font-mono text-base font-semibold">LANDING_NAVIGATION</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { Navigation } from "@/components/landing/navigation";
 
@@ -92,7 +92,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">BREADCRUMB</h3>
+          <h3 className="font-mono text-base font-semibold">BREADCRUMB</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {
   Breadcrumb,
@@ -126,7 +126,7 @@ export function PageBreadcrumb() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">DROPDOWN_MENU</h3>
+          <h3 className="font-mono text-base font-semibold">DROPDOWN_MENU</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {
   DropdownMenu,

@@ -7,7 +7,7 @@ export default function CSRFProtectionPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CSRF_PROTECTION</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -17,7 +17,7 @@ export default function CSRFProtectionPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
+          <h3 className="mb-2 font-mono text-base font-semibold">What's Included</h3>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ Automatic CSRF protection for NextAuth routes</li>
             <li>├─ Double-submit cookie pattern</li>
@@ -297,8 +297,8 @@ export function useSecureApi() {
           <Link href="/docs/security/headers">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Security Headers</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Security Headers</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Configure HSTS, CSP, and other headers
                 </p>
               </CardContent>
@@ -307,8 +307,8 @@ export function useSecureApi() {
           <Link href="/docs/security/validation">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">Schema Validation</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">Schema Validation</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Validate all inputs with Zod schemas
                 </p>
               </CardContent>

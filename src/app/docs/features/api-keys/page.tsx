@@ -15,7 +15,7 @@ export default function ApiKeysPage() {
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] API_KEYS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] API_KEYS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">API_KEYS</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">

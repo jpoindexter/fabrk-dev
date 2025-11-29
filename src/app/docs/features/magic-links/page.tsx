@@ -17,7 +17,7 @@ export default function MagicLinksPage() {
       </div>
 
       <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MAGIC_LINKS</span>
+        <span className="font-mono text-sm text-muted-foreground">[ [0x20] FEATURES ] MAGIC_LINKS</span>
       </div>
       <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">MAGIC_LINK_AUTH</h1>
       <p className="font-mono text-sm text-muted-foreground mb-8">

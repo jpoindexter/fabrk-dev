@@ -12,7 +12,7 @@ export default function DeployVercelPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DEPLOY_TO_VERCEL</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
@@ -95,7 +95,7 @@ GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
 NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
         </div>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           Tip: Set different values for Preview and Production environments.
         </p>
       </div>
@@ -224,8 +224,8 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
 
         <div className="space-y-2">
-          <h3 className="font-mono text-xs font-semibold">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h3 className="font-mono text-base font-semibold">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
+          <p className="font-mono text-sm text-muted-foreground">
             Add <code className="bg-muted px-1 font-mono">prisma generate</code> to build command:
           </p>
           <div className="[&>div]:rounded-none">
@@ -241,7 +241,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         <Card className="rounded-none">
           <CardContent className="p-6">
             <h3 className="font-mono mb-2 text-xs font-semibold">ENVIRONMENT_VARIABLES_NOT_WORKING</h3>
-            <p className="font-mono text-xs text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               1. Check variable is set for correct environment (Production/Preview/Development)
               <br />
               2. Client-side variables must start with <code className="bg-muted px-1 font-mono">NEXT_PUBLIC_</code>
@@ -252,8 +252,8 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
         </Card>
 
         <div className="space-y-2">
-          <h3 className="font-mono text-xs font-semibold">DATABASE_CONNECTION_TIMEOUT</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h3 className="font-mono text-base font-semibold">DATABASE_CONNECTION_TIMEOUT</h3>
+          <p className="font-mono text-sm text-muted-foreground">
             Use connection pooling (like Supabase Pooler or PgBouncer):
           </p>
           <div className="[&>div]:rounded-none">
@@ -269,8 +269,8 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
           <Link href="/docs/deployment/environment">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">ENVIRONMENT_VARIABLES</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">ENVIRONMENT_VARIABLES</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Complete environment setup guide
                 </p>
               </CardContent>
@@ -279,8 +279,8 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
           <Link href="/docs/deployment/database">
             <Card className="h-full rounded-none transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-xs font-semibold">DATABASE_SETUP</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-mono text-base font-semibold">DATABASE_SETUP</h3>
+                <p className="font-mono text-sm text-muted-foreground">
                   Set up production PostgreSQL
                 </p>
               </CardContent>

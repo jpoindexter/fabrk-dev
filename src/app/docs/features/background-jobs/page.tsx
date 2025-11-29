@@ -15,10 +15,10 @@ export default function BackgroundJobsPage() {
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ FEATURES ] BACKGROUND_JOBS</span>
+          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] BACKGROUND_JOBS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">BACKGROUND_JOBS</h1>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
         </p>
       </div>
@@ -26,12 +26,12 @@ export default function BackgroundJobsPage() {
       <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">OVERVIEW</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Background jobs allow you to offload time-consuming tasks from your API routes
             to dedicated workers. This improves response times and provides better reliability
             with automatic retries and error handling.
           </p>
-          <div className="font-mono text-xs text-muted-foreground space-y-1">
+          <div className="font-mono text-sm text-muted-foreground space-y-1">
             <div>├─ Job queues: Persistent queue with priority support</div>
             <div>├─ Workers: Process jobs asynchronously</div>
             <div>├─ Email worker: Dedicated email sending queue</div>
@@ -44,7 +44,7 @@ export default function BackgroundJobsPage() {
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">DATABASE_SCHEMA</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Job model in Prisma schema:
           </p>
         </div>
@@ -80,7 +80,7 @@ model Job {
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">JOB_QUEUE_SERVICE</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Core service for managing job queues:
           </p>
         </div>
@@ -204,7 +204,7 @@ export async function failJob(
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">WORKER_IMPLEMENTATION</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Create workers to process jobs:
           </p>
         </div>
@@ -285,7 +285,7 @@ processJobs(process.env.QUEUE || "default");`} />
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">EMAIL_WORKER</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Dedicated worker for processing email queue:
           </p>
         </div>
@@ -353,7 +353,7 @@ function sleep(ms: number) {
 processEmailQueue();`} />
         </div>
         <div>
-          <p className="font-mono text-xs text-muted-foreground mt-4">
+          <p className="font-mono text-sm text-muted-foreground mt-4">
             Run the email worker with: <code className="bg-muted px-1 font-mono text-xs">npm run email:dev</code>
           </p>
         </div>
@@ -362,7 +362,7 @@ processEmailQueue();`} />
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">QUEUEING_JOBS</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Queue jobs from your API routes:
           </p>
         </div>
@@ -425,7 +425,7 @@ await enqueueJob(
       <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">RUNNING_WORKERS</h2>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <p className="font-mono text-sm text-muted-foreground mb-4">
             Start workers for different queues:
           </p>
         </div>
@@ -469,7 +469,7 @@ services:
       <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold mb-4">BEST_PRACTICES</h2>
-          <div className="font-mono text-xs text-muted-foreground space-y-1">
+          <div className="font-mono text-sm text-muted-foreground space-y-1">
             <div>├─ Keep payloads small: Store IDs and fetch data in the worker</div>
             <div>├─ Make jobs idempotent: Safe to retry without side effects</div>
             <div>├─ Set appropriate retries: More for transient errors, fewer for permanent</div>

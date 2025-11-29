@@ -11,7 +11,7 @@ export default function ApiRoutesTutorialPage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">API_ROUTES</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>

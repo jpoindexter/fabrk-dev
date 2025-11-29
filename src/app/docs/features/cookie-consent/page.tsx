@@ -13,7 +13,7 @@ export default function CookieConsentPage() {
       {/* Header */}
       <div className="space-y-4">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">COOKIE_CONSENT_GDPR</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">

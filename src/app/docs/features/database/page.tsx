@@ -12,10 +12,10 @@ export default function DatabasePage() {
     <div className="space-y-16">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x10] FEATURES ] DATABASE</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x10] FEATURES ] DATABASE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATABASE_PRISMA</h1>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground">
           &gt; Type-safe database access with Prisma ORM, including models, queries, migrations, and best practices for PostgreSQL.
         </p>
       </div>
@@ -24,7 +24,7 @@ export default function DatabasePage() {
         <h2 className="font-mono text-lg font-bold">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <p className="font-mono text-xs text-muted-foreground mb-3">
+            <p className="font-mono text-sm text-muted-foreground mb-3">
               Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes:
             </p>
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
@@ -44,9 +44,9 @@ export default function DatabasePage() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">1</span>
-            <h3 className="font-mono text-xs font-semibold">SET_DATABASE_URL</h3>
+            <h3 className="font-mono text-base font-semibold">SET_DATABASE_URL</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:</p>
+          <p className="font-mono text-sm text-muted-foreground">Add your PostgreSQL connection string to <code className="bg-muted px-1 font-mono text-xs">.env.local</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code={`DATABASE_URL="postgresql://user:password@localhost:5432/fabrk?schema=public"
 
@@ -59,9 +59,9 @@ DIRECT_URL="postgresql://user:password@host:5432/postgres"`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">2</span>
-            <h3 className="font-mono text-xs font-semibold">INITIALIZE_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">Push the schema to your database:</p>
+          <p className="font-mono text-sm text-muted-foreground">Push the schema to your database:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code={`# Push schema changes (development)
 npm run db:push
@@ -80,9 +80,9 @@ npm run db:reset`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary text-xs font-mono font-bold text-primary-foreground">3</span>
-            <h3 className="font-mono text-xs font-semibold">PRISMA_STUDIO</h3>
+            <h3 className="font-mono text-base font-semibold">PRISMA_STUDIO</h3>
           </div>
-          <p className="font-mono text-xs text-muted-foreground">Browse and edit data with the visual GUI:</p>
+          <p className="font-mono text-sm text-muted-foreground">Browse and edit data with the visual GUI:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="bash" code={`npm run db:studio
 # Opens at http://localhost:5555`} />
@@ -92,7 +92,7 @@ npm run db:reset`} />
 
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CORE_MODELS</h2>
-        <p className="font-mono text-xs text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
+        <p className="font-mono text-sm text-muted-foreground">Fabrk includes these pre-built models in <code className="bg-muted px-1 font-mono text-xs">prisma/schema.prisma</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="prisma" code={`// Authentication
 model User {
@@ -158,8 +158,8 @@ model OrganizationMember {
         <h2 className="font-mono text-lg font-bold">CODE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">DATABASE_CLIENT</h3>
-          <p className="font-mono text-xs text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-xs">src/lib/db/index.ts</code>:</p>
+          <h3 className="font-mono text-base font-semibold">DATABASE_CLIENT</h3>
+          <p className="font-mono text-sm text-muted-foreground">Use the singleton client from <code className="bg-muted px-1 font-mono text-xs">src/lib/db/index.ts</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`import { prisma } from "@/lib/db";
 
@@ -191,8 +191,8 @@ const newUser = await prisma.user.create({
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">API_ROUTE_QUERIES</h3>
-          <p className="font-mono text-xs text-muted-foreground">Use Prisma in API routes:</p>
+          <h3 className="font-mono text-base font-semibold">API_ROUTE_QUERIES</h3>
+          <p className="font-mono text-sm text-muted-foreground">Use Prisma in API routes:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`// src/app/api/v1/users/route.ts
 import { NextResponse } from "next/server";
@@ -222,8 +222,8 @@ export async function GET() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">TRANSACTIONS</h3>
-          <p className="font-mono text-xs text-muted-foreground">Use transactions for atomic operations:</p>
+          <h3 className="font-mono text-base font-semibold">TRANSACTIONS</h3>
+          <p className="font-mono text-sm text-muted-foreground">Use transactions for atomic operations:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`// Transfer ownership atomically
 const result = await prisma.$transaction(async (tx) => {
@@ -254,8 +254,8 @@ const result = await prisma.$transaction(async (tx) => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">PAGINATION</h3>
-          <p className="font-mono text-xs text-muted-foreground">Implement cursor-based pagination:</p>
+          <h3 className="font-mono text-base font-semibold">PAGINATION</h3>
+          <p className="font-mono text-sm text-muted-foreground">Implement cursor-based pagination:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`const pageSize = 20;
 
@@ -277,7 +277,7 @@ return { data, nextCursor, hasNextPage };`} />
 
       <section className="space-y-3">
         <h2 className="font-mono text-lg font-bold">MIGRATIONS</h2>
-        <p className="font-mono text-xs text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-xs">db:push</code>:</p>
+        <p className="font-mono text-sm text-muted-foreground">For production, use migrations instead of <code className="bg-muted px-1 font-mono text-xs">db:push</code>:</p>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Create a new migration
 npm run db:migrate -- --name add_user_preferences
@@ -295,8 +295,8 @@ npx prisma migrate status`} />
         <div className="grid gap-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">USER_PROFILE_UPDATES</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">USER_PROFILE_UPDATES</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Update user data with validation. Use <code className="bg-muted px-1 font-mono">select</code> to return only needed fields and avoid exposing sensitive data like passwords.
               </p>
             </CardContent>
@@ -304,8 +304,8 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">SOFT_DELETES</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">SOFT_DELETES</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Add <code className="bg-muted px-1 font-mono">deletedAt DateTime?</code> field to models and filter with <code className="bg-muted px-1 font-mono">where: {'{'} deletedAt: null {'}'}</code> for recoverable deletes.
               </p>
             </CardContent>
@@ -313,8 +313,8 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">FULL_TEXT_SEARCH</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">FULL_TEXT_SEARCH</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Use Prisma&apos;s full-text search with PostgreSQL: <code className="bg-muted px-1 font-mono">where: {'{'} name: {'{'} search: &quot;query&quot; {'}'} {'}'}</code> for searching user names or content.
               </p>
             </CardContent>
@@ -322,8 +322,8 @@ npx prisma migrate status`} />
 
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono text-xs font-semibold mb-2">AGGREGATIONS</h3>
-              <p className="font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold mb-2">AGGREGATIONS</h3>
+              <p className="font-mono text-sm text-muted-foreground">
                 Calculate totals with <code className="bg-muted px-1 font-mono">prisma.payment.aggregate({'{'} _sum: {'{'} amount: true {'}'} {'}'})</code> for dashboards and reports.
               </p>
             </CardContent>

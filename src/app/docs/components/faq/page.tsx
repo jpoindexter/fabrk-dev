@@ -11,7 +11,7 @@ export default function FAQComponentsPage() {
     <div className="space-y-16">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
+          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FAQ_SECTION</h1>
         <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
@@ -59,7 +59,7 @@ import {
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">FAQ_SECTION</h3>
+          <h3 className="font-mono text-base font-semibold">FAQ_SECTION</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { FAQSection } from "@/components/landing/faq-section";
 
@@ -85,7 +85,7 @@ export default function LandingPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">CUSTOM_ACCORDION_FAQ</h3>
+          <h3 className="font-mono text-base font-semibold">CUSTOM_ACCORDION_FAQ</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Accordion,
@@ -132,7 +132,7 @@ export function CustomFAQ() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">MULTIPLE_OPEN_ITEMS</h3>
+          <h3 className="font-mono text-base font-semibold">MULTIPLE_OPEN_ITEMS</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Accordion,
@@ -160,7 +160,7 @@ export function MultipleFAQ() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">COLLAPSIBLE_COMPONENT</h3>
+          <h3 className="font-mono text-base font-semibold">COLLAPSIBLE_COMPONENT</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Collapsible,
@@ -191,7 +191,7 @@ export function CollapsibleFAQ() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-mono text-xs font-semibold">HYDRATION_NOTE</h3>
+          <h3 className="font-mono text-base font-semibold">HYDRATION_NOTE</h3>
           <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`// To prevent hydration warnings with Radix UI components,
 // add suppressHydrationWarning prop:
