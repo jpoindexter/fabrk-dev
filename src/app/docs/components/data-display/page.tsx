@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Table, LayoutDashboard, Tag, User } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Data Display - Fabrk Docs",
@@ -8,91 +12,23 @@ export const metadata = {
 
 export default function DataDisplayComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATA_DISPLAY</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Components for displaying data including tables, cards, badges, and more.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Table</code> - Data table with sorting and filtering</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Card</code> - Content container with header and footer</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Badge</code> - Status indicators and labels</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">StatCard</code> - Statistics display card</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Avatar</code> - User avatar display</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Skeleton</code> - Loading placeholder</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">EmptyState</code> - Empty data placeholder</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ActivityTimeline</code> - Timeline of events</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">NotificationList</code> - List of notifications</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Pagination</code> - Page navigation</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Progress</code> - Progress indicator</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Tooltip</code> - Hover information</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">HoverCard</code> - Preview on hover</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <CodeBlock language="typescript" code={`// Table
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-// Card
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-// Badge
-import { Badge } from "@/components/ui/badge";
-
-// Stat card
-import { StatCard } from "@/components/ui/stat-card";
-
-// Avatar
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-// Loading states
-import { Skeleton } from "@/components/ui/skeleton";
-import { EmptyState } from "@/components/ui/empty-state";
-
-// Other displays
-import { ActivityTimeline } from "@/components/ui/activity-timeline";
-import { NotificationList } from "@/components/ui/notification-list";
-import { Pagination } from "@/components/ui/pagination";
-import { Progress } from "@/components/ui/progress";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";`} />
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TABLE</h3>
-          <CodeBlock language="tsx" code={`import {
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Data_Display"
+      description="Components for displaying data including tables, cards, badges, and more."
+      overview="13+ data display components including tables, cards, badges, stat cards, avatars, skeletons, empty states, and tooltips."
+      features={[
+        { icon: Table, title: "Table", description: "Data tables with sorting/filtering." },
+        { icon: LayoutDashboard, title: "Cards", description: "Content containers with sections." },
+        { icon: Tag, title: "Badge", description: "Status indicators and labels." },
+        { icon: User, title: "Avatar", description: "User avatars with fallbacks." },
+      ]}
+      usage={[
+        {
+          title: "Table",
+          description: "Display data in a table format",
+          code: `import {
   Table,
   TableBody,
   TableCell,
@@ -127,12 +63,13 @@ export function UsersTable() {
       </TableBody>
     </Table>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">CARD</h3>
-          <CodeBlock language="tsx" code={`import {
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Card",
+          description: "Content container with header, body, footer",
+          code: `import {
   Card,
   CardContent,
   CardDescription,
@@ -144,12 +81,10 @@ import { Button } from "@/components/ui/button";
 
 export function ProfileCard() {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
-        <CardDescription>
-          Manage your account settings and preferences.
-        </CardDescription>
+        <CardDescription>Manage your account settings.</CardDescription>
       </CardHeader>
       <CardContent>
         <p>Your profile information will appear here.</p>
@@ -159,12 +94,13 @@ export function ProfileCard() {
       </CardFooter>
     </Card>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">BADGE_VARIANTS</h3>
-          <CodeBlock language="tsx" code={`import { Badge } from "@/components/ui/badge";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Badge Variants",
+          description: "Status indicators and labels",
+          code: `import { Badge } from "@/components/ui/badge";
 
 export function BadgeVariants() {
   return (
@@ -182,12 +118,13 @@ export function BadgeVariants() {
   <Badge variant={user.active ? "default" : "secondary"}>
     {user.active ? "Active" : "Inactive"}
   </Badge>
-</TableCell>`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">STAT_CARD</h3>
-          <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
+</TableCell>`,
+          language: "tsx",
+        },
+        {
+          title: "Stat Card",
+          description: "Statistics display with trends",
+          code: `import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity } from "lucide-react";
 
 export function DashboardStats() {
@@ -212,12 +149,13 @@ export function DashboardStats() {
       />
     </div>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">SKELETON_LOADING</h3>
-          <CodeBlock language="tsx" code={`import { Skeleton } from "@/components/ui/skeleton";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Skeleton Loading",
+          description: "Loading placeholders",
+          code: `import { Skeleton } from "@/components/ui/skeleton";
 
 export function TableSkeleton() {
   return (
@@ -233,12 +171,13 @@ export function TableSkeleton() {
       ))}
     </div>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">EMPTY_STATE</h3>
-          <CodeBlock language="tsx" code={`import { EmptyState } from "@/components/ui/empty-state";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Empty State",
+          description: "Placeholder when no data exists",
+          code: `import { EmptyState } from "@/components/ui/empty-state";
 import { FileText } from "lucide-react";
 
 export function NoDataState() {
@@ -253,52 +192,52 @@ export function NoDataState() {
       }}
     />
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Forms", href: "/docs/components/forms" }}
+      next={{ title: "Charts", href: "/docs/components/charts" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Table</code> - Data table with sorting and filtering</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Card</code> - Content container with header and footer</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Badge</code> - Status indicators and labels</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">StatCard</code> - Statistics display card</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar display</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Skeleton</code> - Loading placeholder</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">EmptyState</code> - Empty data placeholder</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Progress</code> - Progress indicator</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Tooltip</code> - Hover information</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">HoverCard</code> - Preview on hover</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/charts">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Charts</h3>
+                <p className={docsTypography.body}>Data visualization components</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/navigation">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Navigation</h3>
+                <p className={docsTypography.body}>Menus and breadcrumbs</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">TOOLTIP</h3>
-          <CodeBlock language="tsx" code={`import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
-
-export function TooltipExample() {
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline">Hover me</Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>This is helpful information</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">PROGRESS</h3>
-          <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
-
-export function ProgressExample() {
-  return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span>Storage used</span>
-        <span>75%</span>
-      </div>
-      <Progress value={75} />
-    </div>
-  );
-}`} />
-        </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

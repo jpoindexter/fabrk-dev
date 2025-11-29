@@ -1,5 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { PieChart, Gauge, TrendingUp, BarChart3 } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Charts & Analytics - Fabrk Docs",
@@ -8,70 +12,33 @@ export const metadata = {
 
 export default function ChartsComponentsPage() {
   return (
-    <div className="space-y-16">
-      <div>
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] CHARTS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CHARTS_AND_ANALYTICS</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
-          &gt; Chart components for visualizing data and analytics.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DonutChart</code> - Donut/pie chart for proportions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Gauge</code> - Gauge chart for single values</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AnalyticsChart</code> - Line/bar charts for trends</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FunnelVisualizer</code> - Funnel chart for conversions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">StatCard</code> - Stats with trend indicators</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Progress</code> - Linear progress indicator</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">IMPORT_EXAMPLES</h2>
-        </div>
-        <CodeBlock language="typescript" code={`// Donut chart
-import { DonutChart } from "@/components/ui/donut-chart";
-
-// Gauge chart
-import { Gauge } from "@/components/ui/gauge";
-
-// Analytics charts
-import { AnalyticsChart } from "@/components/analytics/analytics-chart";
-
-// Funnel visualization
-import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
-
-// Stat card with trends
-import { StatCard } from "@/components/ui/stat-card";
-
-// Progress bar
-import { Progress } from "@/components/ui/progress";`} />
-      </div>
-
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">DONUT_CHART</h3>
-          <CodeBlock language="tsx" code={`import { DonutChart } from "@/components/ui/donut-chart";
+    <FeatureGuideTemplate
+      code="[0x60]"
+      category="Components"
+      title="Charts_And_Analytics"
+      description="Chart components for visualizing data and analytics."
+      overview="6 chart components including donut/pie charts, gauges, line/bar charts, funnel visualizers, stat cards with trends, and progress bars."
+      features={[
+        { icon: PieChart, title: "Donut", description: "Proportional data display." },
+        { icon: Gauge, title: "Gauge", description: "Single value indicators." },
+        { icon: TrendingUp, title: "Analytics", description: "Line/bar trend charts." },
+        { icon: BarChart3, title: "Funnel", description: "Conversion funnels." },
+      ]}
+      usage={[
+        {
+          title: "Donut Chart",
+          description: "Display proportional data",
+          code: `import { DonutChart } from "@/components/ui/donut-chart";
 
 const data = [
   { name: "Desktop", value: 65, color: "hsl(var(--primary))" },
   { name: "Mobile", value: 25, color: "hsl(var(--secondary))" },
-  { name: "Tablet", value: 10, color: hsl(var(--muted))" },
+  { name: "Tablet", value: 10, color: "hsl(var(--muted))" },
 ];
 
 export function DeviceBreakdown() {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardHeader>
         <CardTitle>Traffic by Device</CardTitle>
       </CardHeader>
@@ -80,16 +47,17 @@ export function DeviceBreakdown() {
       </CardContent>
     </Card>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">GAUGE_CHART</h3>
-          <CodeBlock language="tsx" code={`import { Gauge } from "@/components/ui/gauge";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Gauge Chart",
+          description: "Display single values like scores",
+          code: `import { Gauge } from "@/components/ui/gauge";
 
 export function PerformanceGauge() {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardHeader>
         <CardTitle>Performance Score</CardTitle>
       </CardHeader>
@@ -108,12 +76,13 @@ export function PerformanceGauge() {
 // - Performance scores
 // - Completion percentages
 // - Health indicators
-// - Goal tracking`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">ANALYTICS_CHART</h3>
-          <CodeBlock language="tsx" code={`import { AnalyticsChart } from "@/components/analytics/analytics-chart";
+// - Goal tracking`,
+          language: "tsx",
+        },
+        {
+          title: "Analytics Chart",
+          description: "Line and bar charts for trends",
+          code: `import { AnalyticsChart } from "@/components/analytics/analytics-chart";
 
 const chartData = [
   { date: "Jan", users: 400, revenue: 2400 },
@@ -126,7 +95,7 @@ const chartData = [
 
 export function RevenueChart() {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardHeader>
         <CardTitle>Revenue Overview</CardTitle>
         <CardDescription>Monthly revenue and user growth</CardDescription>
@@ -143,12 +112,13 @@ export function RevenueChart() {
       </CardContent>
     </Card>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">FUNNEL_VISUALIZER</h3>
-          <CodeBlock language="tsx" code={`import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Funnel Visualizer",
+          description: "Conversion funnel charts",
+          code: `import { FunnelVisualizer } from "@/components/analytics/funnel-visualizer";
 
 const funnelData = [
   { stage: "Visitors", value: 10000 },
@@ -160,7 +130,7 @@ const funnelData = [
 
 export function ConversionFunnel() {
   return (
-    <Card className="rounded-none">
+    <Card>
       <CardHeader>
         <CardTitle>Conversion Funnel</CardTitle>
         <CardDescription>User journey from visitor to retention</CardDescription>
@@ -170,12 +140,13 @@ export function ConversionFunnel() {
       </CardContent>
     </Card>
   );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">STATS_DASHBOARD</h3>
-          <CodeBlock language="tsx" code={`import { StatCard } from "@/components/ui/stat-card";
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Stats Dashboard",
+          description: "Stat cards with trend indicators",
+          code: `import { StatCard } from "@/components/ui/stat-card";
 import { Users, DollarSign, Activity, TrendingUp } from "lucide-react";
 
 export function StatsDashboard() {
@@ -211,54 +182,62 @@ export function StatsDashboard() {
       />
     </div>
   );
-}`} />
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Data Display", href: "/docs/components/data-display" }}
+      next={{ title: "Modals", href: "/docs/components/modals" }}
+    >
+      {/* Available Components */}
+      <DocsSection title="Available Components">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">DonutChart</code> - Donut/pie chart for proportions</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Gauge</code> - Gauge chart for single values</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">AnalyticsChart</code> - Line/bar charts for trends</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">FunnelVisualizer</code> - Funnel chart for conversions</div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">StatCard</code> - Stats with trend indicators</div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">Progress</code> - Linear progress indicator</div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Chart Colors */}
+      <DocsSection title="Chart Color Tokens">
+        <DocsCard>
+          <p className={docsTypography.body}>Always use CSS variables for chart colors to support theming:</p>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">hsl(var(--primary))</code></div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">hsl(var(--secondary))</code></div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">hsl(var(--accent))</code></div>
+            <div>├─ <code className="bg-muted px-1 font-mono text-xs">hsl(var(--muted))</code></div>
+            <div>└─ <code className="bg-muted px-1 font-mono text-xs">hsl(var(--destructive))</code></div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      {/* Next Steps */}
+      <DocsSection title="Next Steps">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/docs/components/modals">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Modals</h3>
+                <p className={docsTypography.body}>Dialogs and overlays</p>
+              </CardContent>
+            </Card>
+          </Link>
+          <Link href="/docs/components/data-display">
+            <Card className="h-full transition-all hover:border-primary/50">
+              <CardContent className="p-6">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Data Display</h3>
+                <p className={docsTypography.body}>Tables and cards</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">PROGRESS_WITH_LABEL</h3>
-          <CodeBlock language="tsx" code={`import { Progress } from "@/components/ui/progress";
-
-export function StorageProgress() {
-  const used = 7.5;
-  const total = 10;
-  const percentage = (used / total) * 100;
-
-  return (
-    <Card className="rounded-none">
-      <CardHeader>
-        <CardTitle>Storage</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-2">
-        <div className="flex justify-between text-sm">
-          <span>{used} GB used</span>
-          <span>{total} GB total</span>
-        </div>
-        <Progress value={percentage} />
-        <p className="font-mono text-sm text-muted-foreground">
-          {percentage}% of storage used
-        </p>
-      </CardContent>
-    </Card>
-  );
-}`} />
-        </div>
-
-        <div className="space-y-4">
-          <h3 className="font-mono text-base font-semibold text-foreground">CHART_COLOR_TOKENS</h3>
-          <CodeBlock language="typescript" code={`// Always use CSS variables for chart colors to support theming
-
-const chartColors = {
-  primary: "hsl(var(--primary))",
-  secondary: "hsl(var(--secondary))",
-  accent: "hsl(var(--accent))",
-  muted: "hsl(var(--muted))",
-  destructive: "hsl(var(--destructive))",
-  success: "hsl(var(--success))",
-};
-
-// This ensures charts look correct in all 6 themes`} />
-        </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
