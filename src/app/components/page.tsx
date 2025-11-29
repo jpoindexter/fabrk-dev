@@ -115,11 +115,11 @@ export default function ComponentsPage() {
                 Download
                 <Download className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="icon">
-                <Heart className="h-4 w-4" />
+              <Button size="icon" aria-label="Like">
+                <Heart className="h-4 w-4" aria-hidden="true" />
               </Button>
-              <Button size="icon" variant="outline">
-                <Settings className="h-4 w-4" />
+              <Button size="icon" variant="outline" aria-label="Settings">
+                <Settings className="h-4 w-4" aria-hidden="true" />
               </Button>
             </CardContent>
           </Card>

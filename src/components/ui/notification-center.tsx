@@ -215,18 +215,18 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
               <button
                 onClick={handleMarkAsRead}
                 className="p-1 rounded-md hover:bg-muted transition-colors"
-                title="Mark as read"
+                aria-label="Mark as read"
               >
-                <Check className="h-4 w-4 text-success" />
+                <Check className="h-4 w-4 text-success" aria-hidden="true" />
               </button>
             )}
             {onDelete && (
               <button
                 onClick={handleDelete}
                 className="p-1 rounded-md hover:bg-muted transition-colors"
-                title="Delete"
+                aria-label="Delete notification"
               >
-                <X className="h-4 w-4 text-destructive" />
+                <X className="h-4 w-4 text-destructive" aria-hidden="true" />
               </button>
             )}
           </div>

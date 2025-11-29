@@ -176,11 +176,11 @@ export default function CreateWebhookPage() {
                     )}
                   </button>
                 </div>
-                <Button onClick={copySecret} variant="outline" size="icon">
+                <Button onClick={copySecret} variant="outline" size="icon" aria-label={secretCopied ? "Copied" : "Copy secret"}>
                   {secretCopied ? (
-                    <Check className="h-4 w-4" />
+                    <Check className="h-4 w-4" aria-hidden="true" />
                   ) : (
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-4 w-4" aria-hidden="true" />
                   )}
                 </Button>
               </div>

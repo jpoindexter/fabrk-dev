@@ -228,8 +228,9 @@ export default function FeatureFlagsDbPage() {
                       setFlagToDelete(flag.id);
                       setDeleteDialogOpen(true);
                     }}
+                    aria-label="Delete feature flag"
                   >
-                    <Trash2 className="h-4 w-4 text-destructive" />
+                    <Trash2 className="h-4 w-4 text-destructive" aria-hidden="true" />
                   </Button>
                 </div>
               </div>

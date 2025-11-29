@@ -250,8 +250,8 @@ export function NotificationPopover() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Bell className="h-4 w-4" />
+        <Button variant="outline" size="icon" aria-label="View notifications">
+          <Bell className="h-4 w-4" aria-hidden="true" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">

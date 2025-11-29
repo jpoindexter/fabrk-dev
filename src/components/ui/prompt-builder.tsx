@@ -194,8 +194,9 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                             variant="ghost"
                             size="icon"
                             onClick={() => removeVariable(variable.id)}
+                            aria-label="Remove variable"
                           >
-                            <X className="size-4" />
+                            <X className="size-4" aria-hidden="true" />
                           </Button>
                         </div>
                         {variable.type === "select" && variable.options ? (

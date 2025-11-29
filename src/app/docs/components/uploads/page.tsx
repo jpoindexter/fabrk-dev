@@ -166,8 +166,9 @@ export function AvatarUpload() {
           variant="outline"
           className="absolute bottom-0 right-0 h-8 w-8 rounded-full"
           onClick={() => inputRef.current?.click()}
+          aria-label="Upload profile photo"
         >
-          <Camera className="h-4 w-4" />
+          <Camera className="h-4 w-4" aria-hidden="true" />
         </Button>
       </div>
       <input
