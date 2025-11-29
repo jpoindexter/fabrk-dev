@@ -85,7 +85,7 @@ export function HeroSplit({
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className="relative border-4 border-foreground bg-muted shadow-[8px_8px_0px_0px_var(--foreground)]">
+            <div className="relative border-2 border-foreground bg-muted shadow">
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
                 <div className="h-full w-full border-2 border-border/20 bg-card p-4">
@@ -106,7 +106,7 @@ export function HeroSplit({
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="border-2 border-foreground bg-card p-3 shadow-[2px_2px_0px_0px_var(--foreground)]"
+                        className="border border-foreground bg-card p-3 shadow-sm"
                       >
                         <div className="mb-2 h-2 w-12 bg-foreground/10"></div>
                         <div className="h-4 w-8 bg-primary/20"></div>
