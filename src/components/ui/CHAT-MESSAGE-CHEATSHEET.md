@@ -223,15 +223,15 @@ text-primary-foreground
 /* Accents */
 text-muted-foreground  /* timestamps */
 text-primary           /* read status */
-border-brutal          /* borders */
+border-border          /* borders */
 ```
 
 ### Classes
 ```css
-rounded-brutal         /* 8px radius */
-border-2 border-brutal /* 2px border */
-shadow-brutal          /* 2px shadow */
-shadow-brutal-lg       /* 4px shadow (hover) */
+rounded-md             /* standard radius */
+border border-border   /* 1px border */
+shadow-sm              /* subtle shadow */
+shadow                 /* shadow (hover) */
 ```
 
 ---

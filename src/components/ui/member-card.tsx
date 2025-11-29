@@ -150,7 +150,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             <div className="flex items-center gap-2">
               <h4 className="font-semibold text-sm text-foreground truncate">{member.name}</h4>
               {member.status === "online" && (
-                <Badge variant="accent" className="text-[10px] px-2 py-0">
+                <Badge variant="accent" className="text-xs px-2 py-0">
                   Online
                 </Badge>
               )}
@@ -242,7 +242,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             <div className="flex items-center justify-center gap-2">
               <h3 className="font-semibold text-lg text-foreground">{member.name}</h3>
               {member.status === "online" && (
-                <Badge variant="accent" className="text-[10px] px-2 py-0.5">
+                <Badge variant="accent" className="text-xs px-2 py-0.5">
                   Online
                 </Badge>
               )}
@@ -259,7 +259,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
           {member.skills && member.skills.length > 0 && (
             <div className="flex flex-wrap gap-2 justify-center">
               {member.skills.map((skill, index) => (
-                <Badge key={index} variant="secondary" className="text-[10px] px-2 py-1">
+                <Badge key={index} variant="secondary" className="text-xs px-2 py-1">
                   {skill}
                 </Badge>
               ))}

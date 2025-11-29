@@ -70,14 +70,14 @@ export default function SimpleChat() {
         {/* Messages */}
         <div className="h-[400px] space-y-2 overflow-y-auto p-4">
           {messages.map((msg, i) => (
-            <div key={i} className="rounded-brutal border-2 border-brutal bg-primary p-3 text-primary-foreground shadow-brutal">
+            <div key={i} className="rounded-md border border-border bg-primary p-3 text-primary-foreground shadow-sm">
               {msg}
             </div>
           ))}
         </div>
 
         {/* Input */}
-        <div className="border-t-2 border-brutal p-4">
+        <div className="border-t border-border p-4">
           <ChatInput
             value={message}
             onChange={setMessage}

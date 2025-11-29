@@ -12,7 +12,7 @@ A visual role selection component with hierarchical roles, permission display, a
 - **Confirmation dialog** for role changes
 - **Disabled roles** support
 - **Two variants**: cards (grid) and list (vertical)
-- **Neobrutalism styling** with theme support
+- **Vanilla design** with theme support
 
 ## Basic Usage
 
@@ -258,11 +258,11 @@ export default function WorkspaceAccessControl() {
 
 ## Styling
 
-The component uses Fabrk's neobrutalism design tokens and is fully theme-responsive:
+The component uses Fabrk's vanilla design tokens and is fully theme-responsive:
 
-- **Border**: `border-2 border-brutal`
-- **Shadows**: `shadow-brutal`, `shadow-brutal-lg`
-- **Radius**: `rounded-brutal`
+- **Border**: `border border-border`
+- **Shadows**: `shadow-sm`, `shadow`
+- **Radius**: `rounded-md`
 - **Colors**: Uses theme variables (`primary`, `accent`, `card`, etc.)
 - **Hover effects**: Shadow elevation and transform
 - **Active state**: Primary border and background tint

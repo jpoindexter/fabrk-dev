@@ -9,7 +9,7 @@ A lightweight, feature-rich markdown editor with live preview for the Fabrk boil
 - **Live preview**: Real-time HTML rendering as you type
 - **Lightweight**: No heavy dependencies (no react-markdown, remark, etc.)
 - **Theme-responsive**: Uses design tokens for automatic theme support
-- **Neobrutalism styling**: Consistent with Fabrk design system
+- **Vanilla design**: Consistent with Fabrk design system
 - **Flexible modes**: Editor-only, preview-only, or combined view
 - **Controlled component**: Standard value/onChange pattern
 
@@ -233,8 +233,8 @@ The component uses a simple regex-based parser (`parseMarkdown` function) that:
 All colors use design tokens:
 - `--primary` for links and accents
 - `--muted` for code backgrounds
-- `--border-brutal` for borders
-- `--shadow-brutal` for shadows
+- `--border` for borders
+- Standard shadows via `shadow-sm`, `shadow`
 
 This ensures the component automatically adapts to theme changes.
 
@@ -330,7 +330,7 @@ html = html.replace(/~~(.+?)~~/g, '<del class="line-through">$1</del>');
 html = html.replace(/^>\s+(.+)$/gm, '<blockquote class="border-l-4 border-primary pl-4 italic">$1</blockquote>');
 
 // Example: Add horizontal rules
-html = html.replace(/^---$/gm, '<hr class="my-8 border-t-2 border-brutal" />');
+html = html.replace(/^---$/gm, '<hr class="my-8 border-t-2 border-border" />');
 ```
 
 ## Limitations
@@ -351,14 +351,14 @@ npm install react-markdown remark-gfm
 
 ## Design System Compliance
 
-The component follows Fabrk design patterns:
+The component follows Fabrk vanilla design patterns:
 
-- **2px borders** with `border-brutal` token
-- **Hard shadows** using `shadow-brutal` utilities
-- **8px border radius** via `rounded-brutal`
+- **1px borders** with `border border-border` token
+- **Subtle shadows** using `shadow-sm`, `shadow` utilities
+- **Standard border radius** via `rounded-md`
 - **Theme tokens** for all colors (no hardcoded values)
 - **Typography scale** matches global design system
-- **Transition timing** uses `transition-brutal` (150ms)
+- **Standard transitions** (150ms)
 
 ## Browser Support
 

@@ -71,9 +71,9 @@ const NotificationBadge = React.forwardRef<
 
     // Size styles
     const sizeStyles = {
-      sm: dot ? "h-2 w-2" : "h-4 w-4 text-[8px] min-w-4",
-      md: dot ? "h-2 w-2" : "h-5 w-5 text-[10px] min-w-5",
-      lg: dot ? "h-3 w-3" : "h-6 w-6 text-[11px] min-w-6",
+      sm: dot ? "h-2 w-2" : "h-4 w-4 text-xs min-w-4",
+      md: dot ? "h-2 w-2" : "h-5 w-5 text-xs min-w-5",
+      lg: dot ? "h-3 w-3" : "h-6 w-6 text-xs min-w-6",
     };
 
     // Custom offset transform - always apply transform

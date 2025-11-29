@@ -151,12 +151,12 @@
 
 ## Actual HTML/CSS Styling
 
-### Neobrutalism Design Tokens
+### Vanilla Design Tokens
 ```css
 /* Container */
-border: 2px solid var(--border);      /* Black border in light mode */
-border-radius: 8px;                   /* rounded-brutal */
-box-shadow: 2px 2px 0px var(--border); /* Hard shadow */
+border: 1px solid var(--border);      /* Standard border */
+border-radius: 6px;                   /* rounded-md */
+box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* shadow-sm */
 background: var(--card);              /* White in light, dark in dark mode */
 padding: 8px;                         /* p-2 */
 gap: 8px;                             /* gap-2 */
@@ -170,20 +170,18 @@ min-height: 24px;
 max-height: 120px;                    /* 5 lines max */
 
 /* Buttons */
-border: 2px solid var(--border);
-border-radius: 8px;
+border: 1px solid var(--border);
+border-radius: 6px;
 background: var(--primary);           /* Theme color */
 color: var(--primary-foreground);     /* Contrasting text */
-box-shadow: 2px 2px 0px var(--border);
+box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 transition: all 150ms ease-out;
 
 /* Button Hover */
-box-shadow: 3px 3px 0px var(--border); /* Grows on hover */
-transform: translate(-1px, -1px);      /* Moves up-left */
+box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); /* Subtle elevation on hover */
 
 /* Button Active */
-box-shadow: 1px 1px 0px var(--border); /* Shrinks on click */
-transform: translate(1px, 1px);        /* Moves down-right */
+box-shadow: none;                     /* Flat on click */
 ```
 
 ## Color Schemes (Theme-Responsive)
@@ -310,18 +308,16 @@ Animation: Infinite loop, staggered by 0.15s
 ### Button Press Animation
 ```
 Hover:
-  Before:  shadow-brutal      (2px 2px 0px)
+  Before:  shadow-sm          (subtle shadow)
            translate(0, 0)
 
-  After:   shadow-brutal-lg   (3px 3px 0px)
-           translate(-1px, -1px)
+  After:   shadow             (elevated shadow)
+           translate(0, 0)
 
 Active (Click):
-  Before:  shadow-brutal-lg   (3px 3px 0px)
-           translate(-1px, -1px)
+  Before:  shadow             (elevated shadow)
 
-  After:   shadow-brutal-sm   (1px 1px 0px)
-           translate(1px, 1px)
+  After:   shadow-sm          (subtle shadow)
 
 Duration: 150ms ease-out
 ```
@@ -379,20 +375,20 @@ Bundle Impact:
 
   <!-- File Previews -->
   <div class="flex flex-wrap gap-2 px-3">
-    <span class="inline-flex items-center justify-center rounded-brutal
-                 border-2 border-brutal px-3 py-1 text-xs font-bold
-                 bg-background text-foreground shadow-brutal">
+    <span class="inline-flex items-center justify-center rounded-md
+                 border border-border px-3 py-1 text-xs font-medium
+                 bg-background text-foreground shadow-sm">
       <svg>...</svg>
       <span class="max-w-[150px] truncate text-xs">document.pdf</span>
-      <button class="ml-1 rounded-brutal-sm p-0.5">
+      <button class="ml-1 rounded-sm p-0.5">
         <svg>...</svg>
       </button>
     </span>
   </div>
 
   <!-- Input Container -->
-  <div class="relative flex items-end gap-2 rounded-brutal border-2
-              border-brutal bg-card p-2 shadow-brutal">
+  <div class="relative flex items-end gap-2 rounded-md border
+              border-border bg-card p-2 shadow-sm">
     <button>📎</button>
     <textarea></textarea>
     <button>😀</button>
@@ -403,24 +399,24 @@ Bundle Impact:
 
 ### Computed Styles (Input Container)
 ```css
-.rounded-brutal {
-  border-radius: 8px;
+.rounded-md {
+  border-radius: 6px;
 }
 
-.border-2 {
-  border-width: 2px;
+.border {
+  border-width: 1px;
 }
 
-.border-brutal {
-  border-color: oklch(0% 0 0);  /* Black in light mode */
+.border-border {
+  border-color: var(--border);
 }
 
-.shadow-brutal {
-  box-shadow: 2px 2px 0px 0px oklch(0% 0 0);
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .bg-card {
-  background-color: oklch(100% 0 0);  /* White in light mode */
+  background-color: var(--card);
 }
 
 .p-2 {

@@ -1,6 +1,6 @@
 # CommentThread Component
 
-A fully-featured, nested comment system with likes, replies, editing, and deletion. Built with neobrutalism styling and optimistic UI updates.
+A fully-featured, nested comment system with likes, replies, editing, and deletion. Built with vanilla styling and optimistic UI updates.
 
 ## Features
 
@@ -14,7 +14,7 @@ A fully-featured, nested comment system with likes, replies, editing, and deleti
 - **Show/Hide Replies** - Collapsible nested threads
 - **Empty State** - Friendly message when no comments exist
 - **Keyboard Accessible** - Full keyboard navigation support
-- **Neobrutalism Design** - Matches Fabrk's design system
+- **Vanilla Design** - Matches Fabrk's design system
 
 ## Installation
 
@@ -214,11 +214,11 @@ interface Comment {
 
 ## Styling
 
-The component uses Fabrk's neobrutalism design system:
+The component uses Fabrk's vanilla design system:
 
-- **Borders** - 2px solid borders (`border-2 border-brutal`)
-- **Shadows** - Hard shadows (`shadow-brutal`)
-- **Rounded Corners** - `rounded-brutal` class
+- **Borders** - Standard borders (`border border-border`)
+- **Shadows** - Subtle shadows (`shadow-sm`, `shadow`)
+- **Rounded Corners** - `rounded-md` class
 - **Colors** - Uses design tokens (`text-primary`, `bg-card`, etc.)
 - **Indentation** - 32px (`ml-8`) per nesting level
 
@@ -233,8 +233,8 @@ The component uses Fabrk's neobrutalism design system:
 
 Individual elements can be styled by targeting these classes:
 - `.group` - Comment wrapper (hover target)
-- `.border-brutal` - Comment card
-- `.shadow-brutal` - Shadow effect
+- `.border-border` - Comment card
+- `.shadow-sm` - Shadow effect
 
 ## Empty State
 

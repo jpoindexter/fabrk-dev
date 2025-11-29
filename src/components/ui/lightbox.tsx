@@ -159,7 +159,7 @@ export function Lightbox({
       aria-modal="true"
       aria-label="Lightbox"
       className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm",
+        "fixed inset-0 z-50 flex items-center justify-center bg-foreground/95 backdrop-blur-sm",
         "animate-in fade-in duration-200",
         className
       )}
@@ -280,14 +280,14 @@ export function Lightbox({
 
       {/* Caption */}
       {currentItem.caption && (
-        <div className="absolute bottom-0 left-0 right-0 z-50 bg-black/80 px-6 py-4 text-center backdrop-blur-sm">
+        <div className="absolute bottom-0 left-0 right-0 z-50 bg-foreground/80 px-6 py-4 text-center backdrop-blur-sm">
           <p className="text-sm text-foreground">{currentItem.caption}</p>
         </div>
       )}
 
       {/* Thumbnail strip */}
       {showThumbnails && hasMultipleItems && (
-        <div className="absolute bottom-0 left-0 right-0 z-50 flex justify-center gap-2 bg-black/80 p-4 backdrop-blur-sm">
+        <div className="absolute bottom-0 left-0 right-0 z-50 flex justify-center gap-2 bg-foreground/80 p-4 backdrop-blur-sm">
           <div className="flex gap-2 overflow-x-auto">
             {items.map((item, index) => (
               <button

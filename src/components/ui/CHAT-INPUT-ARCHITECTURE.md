@@ -21,7 +21,7 @@
 │  └────────────────────────────────────────────────────────┘    │
 │                                                                   │
 │  ┌────────────────────────────────────────────────────────┐    │
-│  │ Main Input Container (2px border, shadow-brutal)        │    │
+│  │ Main Input Container (1px border, shadow-sm)            │    │
 │  │                                                          │    │
 │  │  ┌──┐  ┌────────────────────────────────┐  ┌──┐ ┌──┐  │    │
 │  │  │📎│  │  Auto-growing Textarea         │  │😀│ │▶ │  │    │
@@ -54,7 +54,7 @@ ChatInput
 │       ├── File Name (truncated)
 │       └── Remove Button (X icon)
 │
-├── Input Container (Card-like with border-brutal)
+├── Input Container (Card-like with border-border)
 │   ├── Attach Button (icon-sm)
 │   │   └── Paperclip Icon
 │   │
@@ -193,16 +193,16 @@ Design Tokens Used:
 │   ├── text-foreground          (Text)
 │   ├── text-muted-foreground    (Placeholder, hints)
 │   ├── text-primary-foreground  (Send button text)
-│   └── border-brutal            (Border color)
+│   └── border-border            (Border color)
 │
 ├── Borders
-│   ├── border-2                 (2px thickness)
-│   ├── border-brutal            (Color token)
-│   └── rounded-brutal           (8px radius)
+│   ├── border                   (1px thickness)
+│   ├── border-border            (Color token)
+│   └── rounded-md               (standard radius)
 │
 ├── Shadows
-│   ├── shadow-brutal            (2px 2px 0px)
-│   └── shadow-brutal-lg         (3px 3px 0px on hover)
+│   ├── shadow-sm                (subtle shadow)
+│   └── shadow                   (hover shadow)
 │
 └── Spacing
     ├── p-2                      (Container padding)

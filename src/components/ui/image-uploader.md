@@ -13,7 +13,7 @@ A production-ready image uploader component with drag-and-drop, preview, and val
 - ✅ Progress indicators during upload
 - ✅ Error state with validation messages
 - ✅ Disabled state
-- ✅ Neobrutalism design (2px borders, hard shadows)
+- ✅ Vanilla design (1px borders, subtle shadows)
 - ✅ Theme-responsive using design tokens
 - ✅ Controlled/uncontrolled component support
 - ✅ TypeScript interfaces
@@ -128,11 +128,11 @@ Validation errors are displayed in a red-bordered error box above the previews.
 
 ## Design System Integration
 
-The component follows the Fabrk neobrutalism design system:
+The component follows the Fabrk vanilla design system:
 
-- **Borders**: 2px solid using `border-brutal` token
-- **Shadows**: Hard shadows with `shadow-brutal` utilities
-- **Radius**: 8px using `rounded-brutal` class
+- **Borders**: 1px solid using `border-border` token
+- **Shadows**: Subtle shadows with `shadow-sm`, `shadow` utilities
+- **Radius**: Standard using `rounded-md` class
 - **Colors**: Theme-responsive using design tokens:
   - `--primary` for active/hover states
   - `--destructive` for remove buttons and errors

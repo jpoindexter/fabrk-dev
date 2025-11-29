@@ -68,7 +68,7 @@ export function Banner({
       {onDismiss && (
         <button
           onClick={onDismiss}
-          className="flex-shrink-0 rounded-md p-1 hover:bg-black/10 transition-colors"
+          className="flex-shrink-0 rounded-md p-1 hover:bg-muted transition-colors"
           aria-label="Dismiss"
         >
           <X className="h-4 w-4" />

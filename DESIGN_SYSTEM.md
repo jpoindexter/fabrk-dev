@@ -4,6 +4,43 @@ Complete style guide documenting ALL design tokens, styles, and inconsistencies 
 
 ---
 
+## Design System Overview
+
+This boilerplate has **TWO distinct design contexts**:
+
+### 1. Base UI Components (`/src/components/ui/*`)
+**Style: VANILLA / GENERIC** - Like DaisyUI, Shadcn, or Radix
+- **Purpose**: Provide clean, customizable components for users
+- **Philosophy**: NOT opinionated - users can easily theme/style
+- **Borders**: `border border-border` (1px standard)
+- **Radius**: `rounded-md` (standard), `rounded-lg` (cards)
+- **Shadows**: `shadow-sm`, `shadow` (subtle)
+- **Font**: Sans-serif default, `font-mono` ONLY for code components
+- **Colors**: Semantic tokens only (`bg-card`, `bg-muted`, `text-foreground`)
+
+### 2. Marketing/Landing Pages (`/src/components/landing/*`, `/src/app/docs/*`)
+**Style: TERMINAL / HACKER AESTHETIC**
+- **Purpose**: Showcase the boilerplate's personality
+- **Philosophy**: Highly opinionated terminal UI style
+- **Borders**: `border border-border` (1px), `rounded-none`
+- **Radius**: Sharp corners (`rounded-none`) except dots (`rounded-full`)
+- **Shadows**: Framer Motion scale effects instead
+- **Font**: `font-mono` for everything (JetBrains Mono)
+- **Colors**: Same semantic tokens + ANSI-inspired status colors
+
+### Key Distinction
+
+| Property | Base UI (Vanilla) | Marketing (Terminal) |
+|----------|-------------------|---------------------|
+| Font | Sans-serif (system) | `font-mono` |
+| Border radius | `rounded-md` / `rounded-lg` | `rounded-none` |
+| Border width | `border` (1px) | `border` (1px) |
+| Shadows | `shadow-sm` | Framer Motion scale |
+| Text transform | Normal | UPPER_SNAKE_CASE |
+| Decorations | None | Hex prefixes `[0xHEX]`, tree symbols `├─` |
+
+---
+
 ## Industry Standards: Terminal UI Design
 
 Reference standards from CLI/terminal design best practices.
@@ -475,13 +512,18 @@ All colors use **OKLCH** format: `lightness% chroma hue`
 | Error | `border-destructive focus-visible:ring-destructive` |
 | Disabled | `disabled:cursor-not-allowed disabled:opacity-50` |
 
-### Shadows (Neobrutalism)
+### Shadows
 
+**Base UI (Vanilla):**
 | Class | Usage |
 |-------|-------|
-| `shadow-[2px_2px_0px_0px_var(--foreground)]` | Small shadow |
-| `shadow-[4px_4px_0px_0px_var(--foreground)]` | Medium shadow |
-| `shadow-[8px_8px_0px_0px_var(--foreground)]` | Large shadow |
+| `shadow-sm` | Subtle elevation |
+| `shadow` | Standard elevation |
+| `shadow-md` | Medium elevation |
+| `shadow-lg` | High elevation (modals) |
+
+**Marketing (Terminal):**
+Uses Framer Motion scale effects instead of CSS shadows for interaction feedback.
 
 ---
 
@@ -731,9 +773,23 @@ flex-col lg:flex-row-reverse
 
 ## 14. Design Rules
 
-### Core Principles
+### Base UI Components (Vanilla)
 
-1. **Font**: Use `font-mono` for terminal/marketing, sans for dashboard
+Rules for `/src/components/ui/*`:
+
+1. **Font**: Sans-serif default, `font-mono` ONLY for code components
+2. **Corners**: `rounded-md` (standard), `rounded-lg` (cards), `rounded-full` (avatars)
+3. **Borders**: `border border-border` (1px, subtle)
+4. **Shadows**: `shadow-sm`, `shadow` (subtle, not hard)
+5. **Colors**: Semantic tokens only - never raw colors like `bg-black`, `text-white`
+6. **Transitions**: `transition-colors` for hover states
+7. **Focus**: `focus-visible:ring-2 focus-visible:ring-primary`
+
+### Marketing/Landing Pages (Terminal)
+
+Rules for `/src/components/landing/*` and `/src/app/docs/*`:
+
+1. **Font**: Use `font-mono` for everything
 2. **Corners**: Use `rounded-none` for terminal aesthetic (except traffic light dots)
 3. **Headings**: UPPER_SNAKE_CASE for terminal style
 4. **Lists**: Tree-style with `├─` and `└─` characters
@@ -744,11 +800,12 @@ flex-col lg:flex-row-reverse
 9. **Spacing**: Use consistent spacing scale (2, 3, 4, 6, 8)
 10. **Code blocks**: Wrap with `[&>div]:rounded-none`
 
-### Component Library Rules
+### Component Usage Rules
 
-- **NEVER modify** files in `/src/components/ui/*`
-- Use `className` overrides instead (e.g., `<Card className="rounded-none">`)
-- Use CSS child selectors for nested overrides (e.g., `[&>div]:rounded-none`)
+- Base UI components CAN be modified for naming/token consistency
+- When using base UI in marketing, add terminal styling via `className`
+- Example: `<Card className="rounded-none font-mono">`
+- Use CSS child selectors for nested overrides: `[&>div]:rounded-none`
 
 ### Naming Conventions
 
