@@ -49,24 +49,23 @@ import {
 
 const navigation = [
   {
-    title: "[0x00] START_HERE",
+    title: "[01] START",
     items: [
+      { title: "QUICK_START", href: "/docs/tutorials/quick-start", icon: Rocket },
       { title: "GETTING_STARTED", href: "/docs/getting-started", icon: BookOpen },
       { title: "ARCHITECTURE", href: "/docs/architecture", icon: Blocks },
-      { title: "QUICK_START", href: "/docs/tutorials/quick-start", icon: Rocket },
     ],
   },
   {
-    title: "[0x10] FOUNDATION",
+    title: "[02] SETUP",
     items: [
       { title: "ENV_VARIABLES", href: "/docs/deployment/environment", icon: Settings },
       { title: "DATABASE_SETUP", href: "/docs/deployment/database", icon: Database },
       { title: "DATABASE_PRISMA", href: "/docs/features/database", icon: Database },
-      { title: "THEMING", href: "/docs/extras/theming", icon: Palette },
     ],
   },
   {
-    title: "[0x20] AUTHENTICATION",
+    title: "[03] AUTHENTICATION",
     items: [
       { title: "AUTH_OVERVIEW", href: "/docs/tutorials/authentication", icon: Lock },
       { title: "GOOGLE_OAUTH", href: "/docs/features/google-oauth", icon: Key },
@@ -75,7 +74,7 @@ const navigation = [
     ],
   },
   {
-    title: "[0x30] PAYMENTS",
+    title: "[04] PAYMENTS",
     items: [
       { title: "STRIPE_SETUP", href: "/docs/features/payments", icon: CreditCard },
       { title: "FREE_TRIALS", href: "/docs/features/trial", icon: Clock },
@@ -83,7 +82,7 @@ const navigation = [
     ],
   },
   {
-    title: "[0x40] EMAILS",
+    title: "[05] EMAILS",
     items: [
       { title: "RESEND_SETUP", href: "/docs/features/emails", icon: Mail },
       { title: "EMAIL_TEMPLATES", href: "/docs/tutorials/email-templates", icon: Mail },
@@ -91,7 +90,7 @@ const navigation = [
     ],
   },
   {
-    title: "[0x50] CORE_BLOCKS",
+    title: "[06] CORE_FEATURES",
     items: [
       { title: "API_ROUTES", href: "/docs/tutorials/api-routes", icon: FileCode },
       { title: "PROTECTED_PAGES", href: "/docs/tutorials/protected-pages", icon: Shield },
@@ -101,59 +100,55 @@ const navigation = [
     ],
   },
   {
-    title: "[0x60] COMPONENTS",
+    title: "[07] COMPONENTS",
     items: [
       { title: "UI_LIBRARY_100+", href: "/docs/components/overview", icon: Blocks },
-      { title: "NAVIGATION_HEADER", href: "/docs/components/navigation", icon: Layout },
+      { title: "NAVIGATION", href: "/docs/components/navigation", icon: Layout },
       { title: "HERO_SECTIONS", href: "/docs/components/hero", icon: Blocks },
-      { title: "FEATURES_SECTIONS", href: "/docs/components/features", icon: Blocks },
-      { title: "PRICING_TABLES", href: "/docs/components/pricing", icon: CreditCard },
+      { title: "FEATURES", href: "/docs/components/features", icon: Blocks },
+      { title: "PRICING", href: "/docs/components/pricing", icon: CreditCard },
       { title: "TESTIMONIALS", href: "/docs/components/testimonials", icon: MessageSquare },
       { title: "FAQ", href: "/docs/components/faq", icon: MessageSquare },
       { title: "FOOTER", href: "/docs/components/footer", icon: Layout },
       { title: "BUTTONS", href: "/docs/components/buttons", icon: MousePointer },
-      { title: "FORMS_INPUTS", href: "/docs/components/forms", icon: FormInput },
+      { title: "FORMS", href: "/docs/components/forms", icon: FormInput },
       { title: "DATA_DISPLAY", href: "/docs/components/data-display", icon: Table },
-      { title: "CHARTS_ANALYTICS", href: "/docs/components/charts", icon: LineChart },
-      { title: "MODALS_DIALOGS", href: "/docs/components/modals", icon: MessageSquare },
-      { title: "UPLOAD_COMPONENTS", href: "/docs/components/uploads", icon: Image },
+      { title: "CHARTS", href: "/docs/components/charts", icon: LineChart },
+      { title: "MODALS", href: "/docs/components/modals", icon: MessageSquare },
+      { title: "UPLOADS", href: "/docs/components/uploads", icon: Image },
     ],
   },
   {
-    title: "[0x70] ADVANCED",
-    items: [
-      { title: "ORGANIZATIONS_TEAMS", href: "/docs/features/organizations", icon: Users },
-      { title: "REALTIME_PUSHER", href: "/docs/features/realtime", icon: Bell },
-      { title: "BACKGROUND_JOBS", href: "/docs/features/background-jobs", icon: Clock },
-      { title: "ANALYTICS", href: "/docs/features/analytics", icon: BarChart3 },
-      { title: "SEO_METADATA", href: "/docs/features/seo", icon: Globe },
-      { title: "API_KEYS", href: "/docs/features/api-keys", icon: Key },
-      { title: "FEATURE_FLAGS", href: "/docs/features/feature-flags", icon: Flag },
-      { title: "WEBHOOKS_OUTGOING", href: "/docs/features/webhooks", icon: Webhook },
-    ],
-  },
-  {
-    title: "[0x80] SECURITY",
+    title: "[08] SECURITY",
     items: [
       { title: "COOKIE_CONSENT", href: "/docs/features/cookie-consent", icon: Cookie },
       { title: "RATE_LIMITING", href: "/docs/security/rate-limiting", icon: AlertTriangle },
       { title: "CSRF_PROTECTION", href: "/docs/security/csrf", icon: Shield },
       { title: "SECURITY_HEADERS", href: "/docs/security/headers", icon: ShieldCheck },
-      { title: "SCHEMA_VALIDATION", href: "/docs/security/validation", icon: ScrollText },
+      { title: "VALIDATION", href: "/docs/security/validation", icon: ScrollText },
       { title: "BOT_PROTECTION", href: "/docs/security/bot-protection", icon: Bot },
       { title: "AUDIT_LOGGING", href: "/docs/security/audit-logging", icon: ScrollText },
     ],
   },
   {
-    title: "[0x90] DEPLOYMENT",
+    title: "[09] ADVANCED",
     items: [
-      { title: "DEPLOY_VERCEL", href: "/docs/deployment/vercel", icon: Cloud },
-      { title: "TESTING_GUIDE", href: "/docs/extras/testing", icon: TestTube },
+      { title: "ORGANIZATIONS", href: "/docs/features/organizations", icon: Users },
+      { title: "REALTIME", href: "/docs/features/realtime", icon: Bell },
+      { title: "BACKGROUND_JOBS", href: "/docs/features/background-jobs", icon: Clock },
+      { title: "ANALYTICS", href: "/docs/features/analytics", icon: BarChart3 },
+      { title: "SEO", href: "/docs/features/seo", icon: Globe },
+      { title: "API_KEYS", href: "/docs/features/api-keys", icon: Key },
+      { title: "FEATURE_FLAGS", href: "/docs/features/feature-flags", icon: Flag },
+      { title: "WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
+      { title: "THEMING", href: "/docs/extras/theming", icon: Palette },
     ],
   },
   {
-    title: "[0xA0] LAUNCH",
+    title: "[10] DEPLOY",
     items: [
+      { title: "TESTING", href: "/docs/extras/testing", icon: TestTube },
+      { title: "VERCEL", href: "/docs/deployment/vercel", icon: Cloud },
       { title: "LAUNCH_CHECKLIST", href: "/docs/launch/checklist", icon: Rocket },
     ],
   },
