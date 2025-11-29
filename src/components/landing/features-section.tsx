@@ -594,7 +594,7 @@ export function FeaturesSection() {
             <span className="font-mono text-xs text-muted-foreground">[ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]</span>
           </div>
           <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
-            Built for serious SaaS products
+            BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
           <p className="max-w-2xl font-mono text-sm text-muted-foreground">
             Includes many foundational and advanced components that cover a wide range of

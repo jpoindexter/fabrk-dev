@@ -46,118 +46,119 @@ import {
 
 const navigation = [
   {
-    title: "Start Here",
+    title: "[0x00] START_HERE",
     items: [
-      { title: "Getting Started", href: "/docs/getting-started", icon: BookOpen },
-      { title: "Architecture", href: "/docs/architecture", icon: Blocks },
-      { title: "Quick Start", href: "/docs/tutorials/quick-start", icon: Rocket },
+      { title: "GETTING_STARTED", href: "/docs/getting-started", icon: BookOpen },
+      { title: "ARCHITECTURE", href: "/docs/architecture", icon: Blocks },
+      { title: "QUICK_START", href: "/docs/tutorials/quick-start", icon: Rocket },
     ],
   },
   {
-    title: "Foundation Setup",
+    title: "[0x10] FOUNDATION",
     items: [
-      { title: "Environment Variables", href: "/docs/deployment/environment", icon: Settings },
-      { title: "Database Setup", href: "/docs/deployment/database", icon: Database },
-      { title: "Database (Prisma)", href: "/docs/features/database", icon: Database },
-      { title: "Theming", href: "/docs/extras/theming", icon: Palette },
+      { title: "ENV_VARIABLES", href: "/docs/deployment/environment", icon: Settings },
+      { title: "DATABASE_SETUP", href: "/docs/deployment/database", icon: Database },
+      { title: "DATABASE_PRISMA", href: "/docs/features/database", icon: Database },
+      { title: "THEMING", href: "/docs/extras/theming", icon: Palette },
     ],
   },
   {
-    title: "Authentication",
+    title: "[0x20] AUTHENTICATION",
     items: [
-      { title: "Auth Overview", href: "/docs/tutorials/authentication", icon: Lock },
-      { title: "Google OAuth", href: "/docs/features/google-oauth", icon: Key },
-      { title: "Magic Links", href: "/docs/features/magic-links", icon: Zap },
-      { title: "Multi-Factor Auth", href: "/docs/features/mfa", icon: ShieldCheck },
+      { title: "AUTH_OVERVIEW", href: "/docs/tutorials/authentication", icon: Lock },
+      { title: "GOOGLE_OAUTH", href: "/docs/features/google-oauth", icon: Key },
+      { title: "MAGIC_LINKS", href: "/docs/features/magic-links", icon: Zap },
+      { title: "MULTI_FACTOR_AUTH", href: "/docs/features/mfa", icon: ShieldCheck },
     ],
   },
   {
-    title: "Payments",
+    title: "[0x30] PAYMENTS",
     items: [
-      { title: "Stripe Setup", href: "/docs/features/payments", icon: CreditCard },
-      { title: "Free Trials", href: "/docs/features/trial", icon: Clock },
-      { title: "Subscription Guide", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
+      { title: "STRIPE_SETUP", href: "/docs/features/payments", icon: CreditCard },
+      { title: "FREE_TRIALS", href: "/docs/features/trial", icon: Clock },
+      { title: "SUBSCRIPTION_GUIDE", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
     ],
   },
   {
-    title: "Emails & Notifications",
+    title: "[0x40] EMAILS",
     items: [
-      { title: "Resend Setup", href: "/docs/features/emails", icon: Mail },
-      { title: "Email Templates", href: "/docs/tutorials/email-templates", icon: Mail },
-      { title: "Notifications", href: "/docs/features/notifications", icon: Bell },
+      { title: "RESEND_SETUP", href: "/docs/features/emails", icon: Mail },
+      { title: "EMAIL_TEMPLATES", href: "/docs/tutorials/email-templates", icon: Mail },
+      { title: "NOTIFICATIONS", href: "/docs/features/notifications", icon: Bell },
     ],
   },
   {
-    title: "Core Building Blocks",
+    title: "[0x50] CORE_BLOCKS",
     items: [
-      { title: "API Routes", href: "/docs/tutorials/api-routes", icon: FileCode },
-      { title: "Protected Pages", href: "/docs/tutorials/protected-pages", icon: Shield },
-      { title: "Cloud Storage", href: "/docs/features/cloud-storage", icon: Cloud },
-      { title: "File Uploads", href: "/docs/tutorials/file-uploads", icon: Upload },
-      { title: "Webhooks Setup", href: "/docs/tutorials/webhooks", icon: Webhook },
+      { title: "API_ROUTES", href: "/docs/tutorials/api-routes", icon: FileCode },
+      { title: "PROTECTED_PAGES", href: "/docs/tutorials/protected-pages", icon: Shield },
+      { title: "CLOUD_STORAGE", href: "/docs/features/cloud-storage", icon: Cloud },
+      { title: "FILE_UPLOADS", href: "/docs/tutorials/file-uploads", icon: Upload },
+      { title: "WEBHOOKS_SETUP", href: "/docs/tutorials/webhooks", icon: Webhook },
     ],
   },
   {
-    title: "Components Library",
+    title: "[0x60] COMPONENTS",
     items: [
-      { title: "Navigation & Header", href: "/docs/components/navigation", icon: Layout },
-      { title: "Hero Sections", href: "/docs/components/hero", icon: Blocks },
-      { title: "Features Sections", href: "/docs/components/features", icon: Blocks },
-      { title: "Pricing Tables", href: "/docs/components/pricing", icon: CreditCard },
-      { title: "Testimonials", href: "/docs/components/testimonials", icon: MessageSquare },
+      { title: "UI_LIBRARY_100+", href: "/docs/components/overview", icon: Blocks },
+      { title: "NAVIGATION_HEADER", href: "/docs/components/navigation", icon: Layout },
+      { title: "HERO_SECTIONS", href: "/docs/components/hero", icon: Blocks },
+      { title: "FEATURES_SECTIONS", href: "/docs/components/features", icon: Blocks },
+      { title: "PRICING_TABLES", href: "/docs/components/pricing", icon: CreditCard },
+      { title: "TESTIMONIALS", href: "/docs/components/testimonials", icon: MessageSquare },
       { title: "FAQ", href: "/docs/components/faq", icon: MessageSquare },
-      { title: "Footer", href: "/docs/components/footer", icon: Layout },
-      { title: "Buttons", href: "/docs/components/buttons", icon: MousePointer },
-      { title: "Forms & Inputs", href: "/docs/components/forms", icon: FormInput },
-      { title: "Data Display", href: "/docs/components/data-display", icon: Table },
-      { title: "Charts & Analytics", href: "/docs/components/charts", icon: LineChart },
-      { title: "Modals & Dialogs", href: "/docs/components/modals", icon: MessageSquare },
-      { title: "Upload Components", href: "/docs/components/uploads", icon: Image },
+      { title: "FOOTER", href: "/docs/components/footer", icon: Layout },
+      { title: "BUTTONS", href: "/docs/components/buttons", icon: MousePointer },
+      { title: "FORMS_INPUTS", href: "/docs/components/forms", icon: FormInput },
+      { title: "DATA_DISPLAY", href: "/docs/components/data-display", icon: Table },
+      { title: "CHARTS_ANALYTICS", href: "/docs/components/charts", icon: LineChart },
+      { title: "MODALS_DIALOGS", href: "/docs/components/modals", icon: MessageSquare },
+      { title: "UPLOAD_COMPONENTS", href: "/docs/components/uploads", icon: Image },
     ],
   },
   {
-    title: "Advanced Features",
+    title: "[0x70] ADVANCED",
     items: [
-      { title: "Organizations & Teams", href: "/docs/features/organizations", icon: Users },
-      { title: "Real-Time (Pusher)", href: "/docs/features/realtime", icon: Bell },
-      { title: "Background Jobs", href: "/docs/features/background-jobs", icon: Clock },
-      { title: "Analytics", href: "/docs/features/analytics", icon: BarChart3 },
-      { title: "SEO & Metadata", href: "/docs/features/seo", icon: Globe },
-      { title: "API Keys", href: "/docs/features/api-keys", icon: Key },
-      { title: "Feature Flags", href: "/docs/features/feature-flags", icon: Flag },
-      { title: "Webhooks (Outgoing)", href: "/docs/features/webhooks", icon: Webhook },
+      { title: "ORGANIZATIONS_TEAMS", href: "/docs/features/organizations", icon: Users },
+      { title: "REALTIME_PUSHER", href: "/docs/features/realtime", icon: Bell },
+      { title: "BACKGROUND_JOBS", href: "/docs/features/background-jobs", icon: Clock },
+      { title: "ANALYTICS", href: "/docs/features/analytics", icon: BarChart3 },
+      { title: "SEO_METADATA", href: "/docs/features/seo", icon: Globe },
+      { title: "API_KEYS", href: "/docs/features/api-keys", icon: Key },
+      { title: "FEATURE_FLAGS", href: "/docs/features/feature-flags", icon: Flag },
+      { title: "WEBHOOKS_OUTGOING", href: "/docs/features/webhooks", icon: Webhook },
     ],
   },
   {
-    title: "Security & Privacy",
+    title: "[0x80] SECURITY",
     items: [
-      { title: "Cookie Consent", href: "/docs/features/cookie-consent", icon: Cookie },
-      { title: "Rate Limiting", href: "/docs/security/rate-limiting", icon: AlertTriangle },
-      { title: "CSRF Protection", href: "/docs/security/csrf", icon: Shield },
-      { title: "Security Headers", href: "/docs/security/headers", icon: ShieldCheck },
-      { title: "Schema Validation", href: "/docs/security/validation", icon: ScrollText },
-      { title: "Bot Protection", href: "/docs/security/bot-protection", icon: Bot },
-      { title: "Audit Logging", href: "/docs/security/audit-logging", icon: ScrollText },
+      { title: "COOKIE_CONSENT", href: "/docs/features/cookie-consent", icon: Cookie },
+      { title: "RATE_LIMITING", href: "/docs/security/rate-limiting", icon: AlertTriangle },
+      { title: "CSRF_PROTECTION", href: "/docs/security/csrf", icon: Shield },
+      { title: "SECURITY_HEADERS", href: "/docs/security/headers", icon: ShieldCheck },
+      { title: "SCHEMA_VALIDATION", href: "/docs/security/validation", icon: ScrollText },
+      { title: "BOT_PROTECTION", href: "/docs/security/bot-protection", icon: Bot },
+      { title: "AUDIT_LOGGING", href: "/docs/security/audit-logging", icon: ScrollText },
     ],
   },
   {
-    title: "Deployment",
+    title: "[0x90] DEPLOYMENT",
     items: [
-      { title: "Deploy to Vercel", href: "/docs/deployment/vercel", icon: Cloud },
-      { title: "Testing Guide", href: "/docs/extras/testing", icon: TestTube },
+      { title: "DEPLOY_VERCEL", href: "/docs/deployment/vercel", icon: Cloud },
+      { title: "TESTING_GUIDE", href: "/docs/extras/testing", icon: TestTube },
     ],
   },
   {
-    title: "Launch",
+    title: "[0xA0] LAUNCH",
     items: [
-      { title: "Launch Checklist", href: "/docs/launch/checklist", icon: Rocket },
+      { title: "LAUNCH_CHECKLIST", href: "/docs/launch/checklist", icon: Rocket },
     ],
   },
   {
-    title: "Resources",
+    title: "[0xB0] RESOURCES",
     items: [
-      { title: "GitHub Repository", href: "https://github.com/jpoindexter/fabrk-boilerplate", icon: ExternalLink, external: true },
-      { title: "Support", href: "mailto:support@fabrk.dev", icon: Mail, external: true },
+      { title: "GITHUB_REPO", href: "https://github.com/jpoindexter/fabrk-boilerplate", icon: ExternalLink, external: true },
+      { title: "SUPPORT", href: "mailto:support@fabrk.dev", icon: Mail, external: true },
     ],
   },
 ];
@@ -170,16 +171,16 @@ export default function DocsLayout({
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <DemoNav backButtonText="Home" backButtonHref="/" />
+    <div className="min-h-screen bg-background font-mono flex flex-col">
+      <DemoNav backButtonText="&gt; HOME" backButtonHref="/" />
 
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
+        <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
           <nav className="space-y-6 p-4">
             {navigation.map((section) => (
               <div key={section.title}>
-                <h4 className="mb-2 px-2 text-sm font-semibold text-foreground">
+                <h4 className="mb-2 px-2 text-xs font-semibold text-muted-foreground">
                   {section.title}
                 </h4>
                 <div className="space-y-1">
@@ -195,9 +196,9 @@ export default function DocsLayout({
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                          className="flex items-center gap-2 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         >
-                          <Icon className="h-4 w-4" />
+                          <Icon className="h-3.5 w-3.5" />
                           {item.title}
                           <ExternalLink className="ml-auto h-3 w-3" />
                         </a>
@@ -209,13 +210,13 @@ export default function DocsLayout({
                         key={item.href}
                         href={item.href}
                         className={cn(
-                          "flex items-center gap-2 rounded-md px-2 py-1.5 text-base transition-colors",
+                          "flex items-center gap-2 px-2 py-1.5 text-xs transition-colors",
                           isActive
                             ? "bg-primary text-primary-foreground"
                             : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         )}
                       >
-                        <Icon className="h-4 w-4" />
+                        <Icon className="h-3.5 w-3.5" />
                         {item.title}
                       </Link>
                     );

@@ -90,7 +90,7 @@ export function ComparisonSection() {
             <span className="font-mono text-xs text-muted-foreground">[ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]</span>
           </div>
           <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
-            Why build from scratch?
+            WHY_BUILD_FROM_SCRATCH?
           </h2>
           <p className="max-w-2xl font-mono text-sm text-muted-foreground">
             See how much time and effort Fabrk saves you compared to manual setup.

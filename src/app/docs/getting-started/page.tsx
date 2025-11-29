@@ -12,16 +12,19 @@ export default function GettingStartedPage() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Getting Started</h1>
-        <p className="text-lg text-muted-foreground">
-          Everything you need to launch your SaaS, from first download to first customer.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">GETTING_STARTED</h1>
+        <p className="font-mono text-sm text-muted-foreground">
+          &gt; Everything you need to launch your SaaS, from first download to first customer.
         </p>
       </div>
 
       {/* What is Fabrk - Plain English */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">What is Fabrk?</h2>
+          <h2 className="font-mono text-lg font-semibold text-foreground">WHAT_IS_FABRK?</h2>
           <p className="text-muted-foreground">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
@@ -38,7 +41,7 @@ export default function GettingStartedPage() {
       {/* Who is this for */}
       <Card>
         <CardContent className="p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-foreground">Who is This For?</h2>
+          <h2 className="font-mono text-lg font-semibold text-foreground">WHO_IS_THIS_FOR?</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className="font-medium">Great Fit</h3>
@@ -64,7 +67,7 @@ export default function GettingStartedPage() {
 
       {/* What's Included - Plain English */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">What&apos;s Included</h2>
+        <h2 className="font-mono text-xl font-semibold">WHATS_INCLUDED</h2>
         <p className="text-muted-foreground">
           Fabrk handles the essential features every SaaS needs, so you don&apos;t have to build them:
         </p>
@@ -129,7 +132,7 @@ export default function GettingStartedPage() {
       {/* Quick Start - For busy developers */}
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-semibold">Quick Start</h2>
+          <h2 className="font-mono text-xl font-semibold">QUICK_START</h2>
           <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
             5 minutes
           </span>
@@ -157,7 +160,7 @@ npm run db:push && npm run dev`}
 
       {/* Step-by-Step Guide - For learners */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-semibold">Step-by-Step Setup</h2>
+        <h2 className="font-mono text-xl font-semibold">STEP_BY_STEP_SETUP</h2>
         <p className="text-muted-foreground">
           New to this? No problem. Let&apos;s walk through each step with explanations.
         </p>
@@ -356,7 +359,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
 
       {/* Troubleshooting */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Troubleshooting</h2>
+        <h2 className="font-mono text-xl font-semibold">TROUBLESHOOTING</h2>
         <div className="space-y-3">
           <details className="rounded-lg border bg-muted">
             <summary className="cursor-pointer p-4 font-medium">
@@ -402,7 +405,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
 
       {/* Optional Setup */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Optional: Enable More Features</h2>
+        <h2 className="font-mono text-xl font-semibold">OPTIONAL_ENABLE_MORE_FEATURES</h2>
         <p className="text-muted-foreground">
           The basic setup above gets you running. When you&apos;re ready, enable these features
           by adding their API keys to <code className="rounded bg-muted px-1">.env.local</code>:
@@ -457,7 +460,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`}
 
       {/* What's Next */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">What&apos;s Next?</h2>
+        <h2 className="font-mono text-xl font-semibold">WHATS_NEXT?</h2>
         <p className="text-muted-foreground">
           Now that Fabrk is running, choose your path:
         </p>

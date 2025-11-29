@@ -10,15 +10,18 @@ export default function ButtonsComponentsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Buttons</h1>
-        <p className="mt-2 text-muted-foreground">
-          Button components with multiple variants, sizes, and states.
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
+        </div>
+        <h1 className="font-mono text-3xl font-bold tracking-tight">BUTTONS</h1>
+        <p className="mt-2 font-mono text-sm text-muted-foreground">
+          &gt; Button components with multiple variants, sizes, and states.
         </p>
       </div>
 
       <Card>
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4">Available Variants</h2>
+          <h2 className="font-mono text-lg font-semibold mb-4">AVAILABLE_VARIANTS</h2>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
             <li><code className="text-sm bg-muted px-1 py-0.5 rounded">default</code> - Primary button with solid background</li>
             <li><code className="text-sm bg-muted px-1 py-0.5 rounded">secondary</code> - Secondary style with muted background</li>
@@ -32,13 +35,13 @@ export default function ButtonsComponentsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold">Import Example</h2>
+          <h2 className="font-mono text-lg font-semibold">IMPORT_EXAMPLE</h2>
         </div>
         <CodeBlock language="typescript" code={`import { Button } from "@/components/ui/button";`} />
       </div>
 
       <div className="space-y-8">
-        <h2 className="text-xl font-semibold">Usage Examples</h2>
+        <h2 className="font-mono text-lg font-semibold">USAGE_EXAMPLES</h2>
 
         <div className="space-y-4">
           <h3 className="text-lg font-medium">Button Variants</h3>

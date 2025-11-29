@@ -345,7 +345,7 @@ export default function ContactPage() {
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
-                    [Q] Do you offer refunds?
+                    [Q] DO_YOU_OFFER_REFUNDS?
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-xs text-muted-foreground">
                     [A] No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code. Please review our{" "}
@@ -368,7 +368,7 @@ export default function ContactPage() {
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
-                    [Q] Is technical support included?
+                    [Q] IS_TECHNICAL_SUPPORT_INCLUDED?
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-xs text-muted-foreground">
                     [A] Yes, we provide email support for all license holders. Response time is typically within 24 hours.
@@ -387,7 +387,7 @@ export default function ContactPage() {
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
-                    [Q] Can I use Fabrk for client projects?
+                    [Q] CAN_I_USE_FABRK_FOR_CLIENT_PROJECTS?
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-xs text-muted-foreground">
                     [A] Absolutely! Your license allows you to create unlimited projects for yourself or clients.
@@ -406,7 +406,7 @@ export default function ContactPage() {
                   className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
-                    [Q] Do I get lifetime updates?
+                    [Q] DO_I_GET_LIFETIME_UPDATES?
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-xs text-muted-foreground">
                     [A] Yes, all future updates and improvements are included at no additional cost.

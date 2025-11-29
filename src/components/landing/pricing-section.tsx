@@ -43,9 +43,9 @@ export function PricingSection() {
 
             <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
             <h3 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
-              One-time purchase.
+              ONE_TIME_PURCHASE.
               <br />
-              <span className="text-muted-foreground">Unlimited projects.</span>
+              <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
             </h3>
 
             <div className="mb-6 border-l-2 border-border pl-4">

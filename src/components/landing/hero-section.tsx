@@ -225,9 +225,9 @@ export function HeroSection() {
                 FABRK_INIT:
               </h1>
               <h2 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
-                Building your SaaS
+                BUILDING_YOUR_SAAS
                 <br />
-                <span className="text-primary">just got unfairly easy.</span>
+                <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>
               </h2>
             </motion.div>
 
