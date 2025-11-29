@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import {
   BookOpen,
   Rocket,
@@ -210,7 +211,8 @@ export default function DocsLayout({
   };
 
   return (
-    <div className="min-h-screen bg-background font-mono flex flex-col">
+    <div className="min-h-screen bg-background font-mono flex flex-col relative">
+      <TerminalBackground />
       <DemoNav backButtonText="HOME" backButtonHref="/" suffix="DOCS" />
 
       <div className="flex flex-1">

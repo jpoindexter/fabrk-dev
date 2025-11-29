@@ -17,6 +17,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -75,7 +76,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-mono">
+    <div className="min-h-screen bg-background font-mono relative">
+      <TerminalBackground />
       <Navigation />
 
       <main className="container mx-auto max-w-7xl px-6 py-16">

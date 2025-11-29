@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import config from "@/config";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import { motion } from "framer-motion";
 import {
   Rocket,
@@ -96,7 +97,8 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background font-mono">
+    <div className="min-h-screen bg-background font-mono relative">
+      <TerminalBackground />
       <Navigation />
 
       {/* Hero Section */}
