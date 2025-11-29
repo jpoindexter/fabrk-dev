@@ -1,7 +1,8 @@
 # DOCS PAGE STYLE AUDIT
 
-**Total Pages:** 55
+**Total Pages:** 55 (source files) / 41 (crawled)
 **Generated:** 2025-11-29
+**Data Source:** fabrk_3.json crawl + source code analysis
 
 ---
 
@@ -206,3 +207,29 @@ These pages use `mb-4` on badge instead of proper header wrapper:
 4. **Add `leading-relaxed`** to all description paragraphs
 5. **Standardize H2**: Use `font-mono text-lg font-bold text-primary` (no mb-4)
 6. **Standardize H3**: Use `font-mono text-base font-semibold text-foreground`
+
+---
+
+## CRAWL DATA ANALYSIS (from fabrk_3.json)
+
+### H2 Deviations (34 pages)
+- 33 pages have `mb-4` that shouldn't be there
+- 1 page (/docs/components) uses completely different style
+
+### H3 Deviations (49 instances across docs)
+| Pattern | Count |
+|---------|-------|
+| `font-mono font-semibold mb-2 text-base text-foreground` | 11 |
+| `font-mono font-semibold` | 10 |
+| `font-medium font-mono` | 8 |
+| `font-mono font-semibold mb-2` | 6 |
+| `font-semibold` | 4 |
+| Other variants | 10 |
+
+### P (Description) Deviations (38 instances)
+| Pattern | Count | Issue |
+|---------|-------|-------|
+| `font-mono mb-4 text-muted-foreground text-sm` | 18 | Has mb-4, missing leading-relaxed |
+| `font-mono text-muted-foreground text-sm` | 7 | Missing leading-relaxed |
+| `font-mono text-muted-foreground` | 4 | Missing text-sm and leading-relaxed |
+| Other variants | 9 | Various issues |
