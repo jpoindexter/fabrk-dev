@@ -21,7 +21,7 @@ export default function HeroComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-xs font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
           <div className="space-y-1 font-mono text-sm text-muted-foreground">
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSection</code> - Standard centered hero with headline, description, and CTAs</div>
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSplit</code> - Split layout with content on left and image/demo on right</div>

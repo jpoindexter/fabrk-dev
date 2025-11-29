@@ -23,7 +23,7 @@ export default function SecurityHeadersPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Strict-Transport-Security (HSTS)</li>
             <li>Content-Security-Policy (CSP)</li>
             <li>X-Frame-Options</li>

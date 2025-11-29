@@ -177,7 +177,7 @@ export function TestimonialGrid() {
   return (
     <section className="py-24">
       <div className="container">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="font-mono text-lg font-bold text-center mb-12">
           What Our Customers Say
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

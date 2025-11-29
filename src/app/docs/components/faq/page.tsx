@@ -113,7 +113,7 @@ export function CustomFAQ() {
   return (
     <section className="py-24">
       <div className="container max-w-3xl">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="font-mono text-lg font-bold text-center mb-8">
           Frequently Asked Questions
         </h2>
         <Accordion type="single" collapsible className="w-full">

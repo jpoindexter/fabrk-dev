@@ -23,7 +23,7 @@ export default function RateLimitingPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Token bucket algorithm for smooth rate limiting</li>
             <li>Configurable limits per endpoint</li>
             <li>IP-based and user-based rate limiting</li>

@@ -21,7 +21,7 @@ export default function NavigationComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-4">
-          <h2 className="font-mono text-xs font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
           <div className="space-y-1 font-mono text-sm text-muted-foreground">
             <div>├─ <code className="bg-muted px-1 font-mono">Navigation</code> - Main site navigation with responsive mobile menu</div>
             <div>├─ <code className="bg-muted px-1 font-mono">Breadcrumb</code> - Breadcrumb navigation for page hierarchy</div>

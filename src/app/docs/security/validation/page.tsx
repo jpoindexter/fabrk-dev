@@ -23,7 +23,7 @@ export default function SchemaValidationPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Type-safe validation with Zod</li>
             <li>API request/response validation</li>
             <li>Form validation schemas</li>
