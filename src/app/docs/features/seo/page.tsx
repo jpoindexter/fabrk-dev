@@ -4,22 +4,19 @@ import Link from "next/link";
 
 export default function SEOPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl space-y-16">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline font-mono text-xs">
-          ← Back to Documentation
-        </Link>
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] SEO</span>
+        </div>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SEO_METADATA</h1>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          &gt; Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.
+        </p>
       </div>
 
-      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] SEO</span>
-      </div>
-      <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">SEO_METADATA</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
-        &gt; Comprehensive SEO configuration including meta tags, OpenGraph, Twitter cards, and structured data for optimal search engine visibility.
-      </p>
-
-      <section className="mb-12">
+      <section>
         <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

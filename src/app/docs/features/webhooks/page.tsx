@@ -9,12 +9,10 @@ export const metadata = {
 
 export default function WebhooksPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
-          &larr; Back to Documentation
-        </Link>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] WEBHOOKS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">WEBHOOKS_SYSTEM</h1>
@@ -23,7 +21,7 @@ export default function WebhooksPage() {
         </p>
       </div>
 
-      <Card className="mb-8">
+      <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -40,7 +38,7 @@ export default function WebhooksPage() {
         </CardContent>
       </Card>
 
-      <Card className="mb-8">
+      <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold text-primary mb-4">EVENT_TYPES</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -87,7 +85,7 @@ export default function WebhooksPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">CREATING_WEBHOOKS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -130,7 +128,7 @@ export async function POST(req: Request) {
 }`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">SENDING_WEBHOOKS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -212,7 +210,7 @@ await sendWebhook("user.created", {
 });`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">VERIFYING_WEBHOOKS_RECEIVER_SIDE</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -253,7 +251,7 @@ export async function POST(req: Request) {
 }`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">RETRY_LOGIC</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">

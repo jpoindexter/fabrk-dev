@@ -9,16 +9,14 @@ export const metadata = {
 
 export default function AnalyticsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-16">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline font-mono text-xs mb-4 inline-block">
-          &larr; Back to Documentation
-        </Link>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] ANALYTICS</span>
         </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">ANALYTICS_WITH_POSTHOG</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">ANALYTICS_WITH_POSTHOG</h1>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Product analytics, session recordings, and feature flags with PostHog integration.
         </p>
       </div>

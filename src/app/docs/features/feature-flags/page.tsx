@@ -9,12 +9,10 @@ export const metadata = {
 
 export default function FeatureFlagsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
-          &larr; Back to Documentation
-        </Link>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x70] FEATURES ] FEATURE_FLAGS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_FLAGS</h1>
@@ -23,7 +21,7 @@ export default function FeatureFlagsPage() {
         </p>
       </div>
 
-      <Card className="mb-8">
+      <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">

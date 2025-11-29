@@ -9,19 +9,17 @@ export const metadata = {
 
 export default function NotificationsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
-          &larr; Back to Documentation
-        </Link>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] NOTIFICATIONS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">NOTIFICATIONS_SYSTEM</h1>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Real-time notifications with database persistence, bell icon badge, and read/unread state management.</p>
       </div>
 
-      <Card className="mb-8">
+      <Card className="rounded-none">
         <CardContent className="p-6">
           <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -38,7 +36,7 @@ export default function NotificationsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">DATABASE_SCHEMA</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -66,7 +64,7 @@ model Notification {
 }`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">CREATING_NOTIFICATIONS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -131,7 +129,7 @@ await createNotification({
 });`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">BELL_ICON_COMPONENT</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -256,7 +254,7 @@ export function NotificationBell({ userId }: { userId: string }) {
 }`} />
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-4">
         <div>
           <h2 className="font-mono text-lg font-bold text-primary mb-4">API_ROUTES</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">

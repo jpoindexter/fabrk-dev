@@ -482,12 +482,6 @@ export function FileUploader() {
         </div>
       </div>
 
-      {/* Back to docs link */}
-      <div className="pt-4">
-        <Link href="/docs" className="text-primary hover:underline">
-          ← Back to Documentation
-        </Link>
-      </div>
     </div>
   );
 }

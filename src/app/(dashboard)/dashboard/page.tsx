@@ -298,7 +298,7 @@ export default function DashboardPage() {
         {/* Recent Activity */}
         <Card className="col-span-4">
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
+            <CardTitle as="h2">Recent Activity</CardTitle>
             <CardDescription>
               Your recent account activity and actions
             </CardDescription>
@@ -334,7 +334,7 @@ export default function DashboardPage() {
         {/* Quick Actions */}
         <Card className="col-span-3">
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
+            <CardTitle as="h2">Quick Actions</CardTitle>
             <CardDescription>
               Common tasks and shortcuts
             </CardDescription>
@@ -381,7 +381,7 @@ export default function DashboardPage() {
       {/* Account Status */}
       <Card>
         <CardHeader>
-          <CardTitle>Account Status</CardTitle>
+          <CardTitle as="h2">Account Status</CardTitle>
           <CardDescription>
             Current account information and status
           </CardDescription>

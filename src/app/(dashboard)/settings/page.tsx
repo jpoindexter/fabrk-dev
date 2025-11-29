@@ -101,7 +101,7 @@ export default function SettingsPage() {
                       />
                     </div>
                     <div>
-                      <CardTitle>{section.title}</CardTitle>
+                      <CardTitle as="h2">{section.title}</CardTitle>
                       <CardDescription>{section.description}</CardDescription>
                     </div>
                   </div>

@@ -102,8 +102,8 @@ export default function SettingsPageTemplate() {
                     <Palette className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[APPEARANCE]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Customize the look and feel of the application</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[APPEARANCE]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Customize the look and feel of the application</p>
                   </div>
                 </div>
                 <AppearanceForm />
@@ -126,8 +126,8 @@ export default function SettingsPageTemplate() {
                     <Settings className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[QUICK_ACTIONS]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Frequently used settings and shortcuts</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[QUICK_ACTIONS]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Frequently used settings and shortcuts</p>
                   </div>
                 </div>
                 <div className="grid gap-3 md:grid-cols-2">
@@ -172,8 +172,8 @@ export default function SettingsPageTemplate() {
                     <User className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[PROFILE_INFORMATION]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Update your personal details and profile settings</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[PROFILE_INFORMATION]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Update your personal details and profile settings</p>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -223,8 +223,8 @@ export default function SettingsPageTemplate() {
                     <Shield className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[ACCOUNT_SECURITY]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Manage password and authentication methods</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[ACCOUNT_SECURITY]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Manage password and authentication methods</p>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -274,8 +274,8 @@ export default function SettingsPageTemplate() {
                     <Bell className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[NOTIFICATIONS]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Manage your notification preferences</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[NOTIFICATIONS]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Manage your notification preferences</p>
                   </div>
                 </div>
                 <NotificationsForm />
@@ -298,8 +298,8 @@ export default function SettingsPageTemplate() {
                     <Lock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[PRIVACY]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Control your data sharing and privacy settings</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[PRIVACY]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Control your data sharing and privacy settings</p>
                   </div>
                 </div>
                 <PrivacyForm />
@@ -322,8 +322,8 @@ export default function SettingsPageTemplate() {
                     <Download className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[DATA_EXPORT]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Download a copy of your data</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[DATA_EXPORT]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Download a copy of your data</p>
                   </div>
                 </div>
                 <DataExportSection />
@@ -351,8 +351,8 @@ export default function SettingsPageTemplate() {
                     <CreditCard className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[SUBSCRIPTION_BILLING]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Manage your subscription plan and payment methods</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[SUBSCRIPTION_BILLING]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Manage your subscription plan and payment methods</p>
                   </div>
                 </div>
                 <div className="border border-border p-4 mb-4">
@@ -399,8 +399,8 @@ export default function SettingsPageTemplate() {
                     <AlertTriangle className="h-5 w-5 text-destructive" />
                   </div>
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground">[DANGER_ZONE]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Irreversible and destructive actions</div>
+                    <h2 className="font-mono text-xs text-muted-foreground">[DANGER_ZONE]:</h2>
+                    <p className="font-mono text-xs text-muted-foreground">Irreversible and destructive actions</p>
                   </div>
                 </div>
                 <DangerZone />

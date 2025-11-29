@@ -316,11 +316,6 @@ export function LoginForm() {
         </Card>
       </section>
 
-      <div className="pt-4">
-        <Link href="/docs" className="font-mono text-xs text-primary hover:underline">
-          &larr; Back to Documentation
-        </Link>
-      </div>
     </div>
   );
 }

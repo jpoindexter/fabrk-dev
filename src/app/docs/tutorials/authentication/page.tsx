@@ -564,12 +564,6 @@ export default async function PrivatePage() {
         </div>
       </div>
 
-      {/* Back to docs link */}
-      <div className="pt-4">
-        <Link href="/docs" className="font-mono text-xs text-primary hover:underline">
-          ← Back to Documentation
-        </Link>
-      </div>
     </div>
   );
 }

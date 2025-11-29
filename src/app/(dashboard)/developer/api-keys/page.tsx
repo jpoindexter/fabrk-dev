@@ -489,7 +489,7 @@ export default function ApiKeysPage() {
       <div className="grid md:grid-cols-2 gap-6 mt-8">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
+            <CardTitle as="h2" className="text-lg flex items-center gap-2">
               <Code className="h-5 w-5" />
               Getting Started
             </CardTitle>
@@ -511,7 +511,7 @@ export default function ApiKeysPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
+            <CardTitle as="h2" className="text-lg flex items-center gap-2">
               <AlertTriangle className="h-5 w-5" />
               Security Best Practices
             </CardTitle>

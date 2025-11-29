@@ -64,10 +64,10 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0x10]</span>
             <h2 className="text-lg font-bold">AGREEMENT_TO_TERMS</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-3">
+          <p className="text-sm text-muted-foreground mb-3">
             By accessing, purchasing, or using Fabrk ("Service", "Product", "we", "us", or "our"), you ("Buyer", "User", "you") agree to be bound by these Terms of Service ("Terms").
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             Fabrk is a product offered by THEFT BV, a company registered in the Netherlands (KVK: 81705344, VAT: NL862188726B01). These Terms constitute a legal agreement between you and THEFT BV.
           </p>
         </section>
@@ -78,17 +78,17 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0x20]</span>
             <h2 className="text-lg font-bold">DESCRIPTION_OF_SERVICE</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Fabrk is an enterprise-grade Next.js 15 SaaS boilerplate providing 100 production-ready components, authentication, payment processing, database integration, multi-tenancy, and more.
           </p>
 
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[2.1] PERPETUAL_LICENSE_GRANT</h3>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 Upon successful payment of €299 per developer seat, we grant you a non-exclusive, non-transferable, perpetual license to:
               </p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Access and download the complete Fabrk source code</li>
                 <li>├─ Use the source code for unlimited commercial and personal projects</li>
                 <li>├─ Modify, customize, and extend the code for your own use</li>
@@ -100,10 +100,10 @@ export default function TermsPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[2.1.1] PER_SEAT_LICENSE</h3>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 One license permits one natural person (developer) to access and use the Fabrk source code. For teams:
               </p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Purchase one license per developer with code access</li>
                 <li>├─ Licenses may be reassigned permanently</li>
                 <li>└─ May not be used concurrently by multiple individuals</li>
@@ -112,8 +112,8 @@ export default function TermsPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[2.2] LICENSE_RESTRICTIONS</h3>
-              <p className="text-xs text-muted-foreground mb-2">You are expressly PROHIBITED from:</p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <p className="text-sm text-muted-foreground mb-2">You are expressly PROHIBITED from:</p>
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ <span className="text-destructive">✗</span> Reselling, redistributing, or sharing the source code</li>
                 <li>├─ <span className="text-destructive">✗</span> Creating derivative boilerplate products for sale</li>
                 <li>├─ <span className="text-destructive">✗</span> Claiming the code as your own original creation</li>
@@ -138,7 +138,7 @@ export default function TermsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[3.1] ACCOUNT_SECURITY</h3>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Provide accurate, current information during registration</li>
                 <li>├─ Maintain security of your account credentials</li>
                 <li>├─ Notify us immediately of unauthorized access</li>
@@ -149,15 +149,15 @@ export default function TermsPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[3.2] ACCOUNT_TERMINATION</h3>
-              <p className="text-xs text-muted-foreground mb-2">We may terminate your account for:</p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <p className="text-sm text-muted-foreground mb-2">We may terminate your account for:</p>
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Violation of these Terms</li>
                 <li>├─ Fraudulent or illegal activity</li>
                 <li>├─ Sharing or redistributing source code</li>
                 <li>├─ Bad faith chargebacks</li>
                 <li>└─ Security threats or unauthorized access attempts</li>
               </ul>
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 Termination does not entitle you to a refund under any circumstances.
               </p>
             </div>
@@ -174,14 +174,14 @@ export default function TermsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[4.1] PRICING</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Current price: <span className="text-foreground font-semibold">€299 per developer seat</span> (one-time payment, lifetime license, no recurring fees).
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[4.2] PAYMENT_PROCESSING</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Payments processed via Polar and/or Stripe. By completing purchase, you authorize the charge and acknowledge this is a final sale of a digital product with no refunds.
               </p>
             </div>
@@ -207,21 +207,21 @@ export default function TermsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[5.1] FABRK_IP</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 All source code, components, templates, documentation remain exclusive property of Fabrk. Your purchase grants a license to use, not ownership.
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[5.2] YOUR_CONTENT</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 You retain full ownership of applications and products you create using Fabrk as a foundation. We claim no rights to your custom applications.
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[5.3] THIRD_PARTY_DEPS</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Fabrk uses open-source libraries (Next.js, React, Prisma, etc.) subject to their own licenses. You are responsible for compliance.
               </p>
             </div>
@@ -234,8 +234,8 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0x60]</span>
             <h2 className="text-lg font-bold">PROHIBITED_USES</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-2">You agree NOT to use Fabrk to:</p>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <p className="text-sm text-muted-foreground mb-2">You agree NOT to use Fabrk to:</p>
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-destructive">✗</span> Violate any laws or regulations</li>
             <li>├─ <span className="text-destructive">✗</span> Infringe intellectual property rights</li>
             <li>├─ <span className="text-destructive">✗</span> Transmit malware or harmful code</li>
@@ -257,17 +257,17 @@ export default function TermsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[7.1] AS_IS_BASIS</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 FABRK IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, INCLUDING MERCHANTABILITY, FITNESS FOR PURPOSE, NON-INFRINGEMENT, OR ERROR-FREE OPERATION.
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[7.2] LIMITATION_OF_LIABILITY</h3>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 FABRK SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING:
               </p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Loss of profits, revenue, data, or business</li>
                 <li>├─ Damages from errors, bugs, or security vulnerabilities</li>
                 <li>├─ Damages from third-party services</li>
@@ -286,10 +286,10 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0x80]</span>
             <h2 className="text-lg font-bold">UPDATES_VERSIONING</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-3">
+          <p className="text-sm text-muted-foreground mb-3">
             Your perpetual license includes lifetime access to all v1.x updates (bug fixes, security patches, new components, documentation).
           </p>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ Updates delivered via GitHub repository access</li>
             <li>├─ Major versions (v2.0+) may be separate products</li>
             <li>└─ No guarantee of indefinite maintenance</li>
@@ -302,7 +302,7 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0x90]</span>
             <h2 className="text-lg font-bold">INDEMNIFICATION</h2>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             You agree to indemnify and hold harmless Fabrk from claims arising from your use, violations of these Terms, violations of rights, and applications you build.
           </p>
         </section>
@@ -312,10 +312,10 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0xA0]</span>
             <h2 className="text-lg font-bold">GOVERNING_LAW</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-2">
+          <p className="text-sm text-muted-foreground mb-2">
             These Terms are governed by the laws of the Netherlands. Disputes shall be resolved in the courts of Apeldoorn, Netherlands.
           </p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             EU consumers retain all mandatory rights under EU consumer protection law.
           </p>
         </section>
@@ -326,7 +326,7 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0xB0]</span>
             <h2 className="text-lg font-bold">TERMS_CHANGES</h2>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             We may modify these Terms at any time. Material changes will be communicated with 30 days' notice. Continued use constitutes acceptance.
           </p>
         </section>
@@ -336,8 +336,8 @@ export default function TermsPage() {
             <span className="text-xs text-muted-foreground">[0xC0]</span>
             <h2 className="text-lg font-bold">CONTACT_INFO</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-3">Questions about these Terms?</p>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <p className="text-sm text-muted-foreground mb-3">Questions about these Terms?</p>
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">LEGAL:</span> legal@fabrk.dev</li>
             <li>├─ <span className="text-foreground">SUPPORT:</span> support@fabrk.dev</li>
             <li>└─ <span className="text-foreground">FORM:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link></li>

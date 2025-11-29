@@ -9,22 +9,19 @@ export const metadata = {
 
 export default function EmailsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline text-sm">
-          ← Back to Documentation
-        </Link>
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
+        </div>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">EMAIL_WITH_RESEND</h1>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          &gt; Production-ready email system with React Email templates, queue-based sending, and beautiful transactional emails.
+        </p>
       </div>
 
-      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-sm text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
-      </div>
-      <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">EMAIL_WITH_RESEND</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
-        &gt; Production-ready email system with React Email templates, queue-based sending, and beautiful transactional emails.
-      </p>
-
-      <section className="mb-12">
+      <section>
         <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

@@ -103,7 +103,7 @@ export default function ProfilePage() {
       {/* Avatar & Basic Info */}
       <Card>
         <CardHeader>
-          <CardTitle>Profile Picture</CardTitle>
+          <CardTitle as="h2">Profile Picture</CardTitle>
           <CardDescription>
             Update your profile picture and personal details
           </CardDescription>
@@ -197,7 +197,7 @@ export default function ProfilePage() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>Profile Details</CardTitle>
+              <CardTitle as="h2">Profile Details</CardTitle>
               <CardDescription>
                 Update your bio and social links
               </CardDescription>

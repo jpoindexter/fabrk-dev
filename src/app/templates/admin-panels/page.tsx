@@ -24,7 +24,7 @@ export default function AdminPanelsPage() {
           </div>
           <div className="flex items-center gap-3">
             {categoryInfo && <categoryInfo.icon className="h-6 w-6 text-primary" />}
-            <h2 className="text-3xl font-bold">Admin Panels</h2>
+            <h1 className="text-3xl font-bold">Admin Panels</h1>
             <span className="border border-border px-2 py-0.5 font-mono text-xs">
               COUNT: {categoryTemplates.length}
             </span>

@@ -394,12 +394,6 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         </div>
       </div>
 
-      {/* Back to docs link */}
-      <div className="pt-4">
-        <Link href="/docs" className="text-primary hover:underline">
-          &larr; Back to Documentation
-        </Link>
-      </div>
     </div>
   );
 }

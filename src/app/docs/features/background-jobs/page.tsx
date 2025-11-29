@@ -9,16 +9,14 @@ export const metadata = {
 
 export default function BackgroundJobsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-16">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline font-mono text-xs mb-4 inline-block">
-          &larr; Back to Documentation
-        </Link>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] BACKGROUND_JOBS</span>
         </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">BACKGROUND_JOBS</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BACKGROUND_JOBS</h1>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
         </p>
       </div>

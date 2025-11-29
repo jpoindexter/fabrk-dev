@@ -88,7 +88,7 @@ export default function AccountPage() {
             <TabsContent value="profile" className="mt-0 space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Profile Information</CardTitle>
+                  <CardTitle as="h2">Profile Information</CardTitle>
                   <CardDescription>
                     Update your personal details and profile picture
                   </CardDescription>
@@ -102,7 +102,7 @@ export default function AccountPage() {
             <TabsContent value="security" className="mt-0 space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Security Settings</CardTitle>
+                  <CardTitle as="h2">Security Settings</CardTitle>
                   <CardDescription>Manage your password and security preferences</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -114,7 +114,7 @@ export default function AccountPage() {
             <TabsContent value="billing" className="mt-0 space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Billing & Subscription</CardTitle>
+                  <CardTitle as="h2">Billing & Subscription</CardTitle>
                   <CardDescription>
                     Manage your subscription plan and payment methods
                   </CardDescription>
@@ -128,7 +128,7 @@ export default function AccountPage() {
             <TabsContent value="api-keys" className="mt-0 space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>API Keys</CardTitle>
+                  <CardTitle as="h2">API Keys</CardTitle>
                   <CardDescription>
                     Create and manage API keys for programmatic access
                   </CardDescription>
@@ -142,7 +142,7 @@ export default function AccountPage() {
             <TabsContent value="sessions" className="mt-0 space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Active Sessions</CardTitle>
+                  <CardTitle as="h2">Active Sessions</CardTitle>
                   <CardDescription>
                     View and manage your active sessions across devices
                   </CardDescription>

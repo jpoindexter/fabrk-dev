@@ -9,22 +9,19 @@ export const metadata = {
 
 export default function OrganizationsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline font-mono text-xs">
-          ← Back to Documentation
-        </Link>
+    <div className="space-y-16">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
+        </div>
+        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">ORGANIZATIONS_AND_TEAMS</h1>
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          &gt; Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
+        </p>
       </div>
 
-      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-sm text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
-      </div>
-      <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">ORGANIZATIONS_AND_TEAMS</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
-        &gt; Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
-      </p>
-
-      <section className="mb-12">
+      <section>
         <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">

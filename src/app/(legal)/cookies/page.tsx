@@ -64,12 +64,12 @@ export default function CookiesPage() {
             <span className="text-xs text-muted-foreground">[0x10]</span>
             <h2 className="text-lg font-bold">WHAT_ARE_COOKIES</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently and provide information to website owners.
           </p>
 
           <h3 className="text-sm font-semibold mb-2">[1.1] COOKIE_TYPES</h3>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">SESSION:</span> Temporary, expire when browser closes</li>
             <li>├─ <span className="text-foreground">PERSISTENT:</span> Remain until expiry or deletion</li>
             <li>├─ <span className="text-foreground">FIRST_PARTY:</span> Set by Fabrk directly</li>
@@ -88,7 +88,7 @@ export default function CookiesPage() {
             {/* Essential Cookies */}
             <div>
               <h3 className="text-sm font-semibold mb-3">[2.1] ESSENTIAL_COOKIES (REQUIRED)</h3>
-              <p className="text-xs text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 These cookies are necessary for the website to function and cannot be disabled.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -124,7 +124,7 @@ export default function CookiesPage() {
             {/* Functional Cookies */}
             <div>
               <h3 className="text-sm font-semibold mb-3">[2.2] FUNCTIONAL_COOKIES (OPTIONAL)</h3>
-              <p className="text-xs text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 These cookies enable enhanced functionality and personalization.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -160,7 +160,7 @@ export default function CookiesPage() {
             {/* Analytics Cookies */}
             <div>
               <h3 className="text-sm font-semibold mb-3">[2.3] ANALYTICS_COOKIES (OPTIONAL)</h3>
-              <p className="text-xs text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 These cookies help us understand how visitors use our website.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -191,7 +191,7 @@ export default function CookiesPage() {
             {/* Third-Party Cookies */}
             <div>
               <h3 className="text-sm font-semibold mb-3">[2.4] THIRD_PARTY_COOKIES</h3>
-              <p className="text-xs text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 External services may set their own cookies:
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -239,10 +239,10 @@ export default function CookiesPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">[3.1] BROWSER_SETTINGS</h3>
-              <p className="text-xs text-muted-foreground mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 Most browsers allow you to control cookies:
               </p>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ View and delete cookies individually</li>
                 <li>├─ Block third-party cookies</li>
                 <li>├─ Block cookies from specific websites</li>
@@ -255,7 +255,7 @@ export default function CookiesPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[3.2] BROWSER_INSTRUCTIONS</h3>
-              <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+              <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ <span className="text-foreground">CHROME:</span> Settings → Privacy → Cookies</li>
                 <li>├─ <span className="text-foreground">FIREFOX:</span> Settings → Privacy → Cookies</li>
                 <li>├─ <span className="text-foreground">SAFARI:</span> Preferences → Privacy → Manage Data</li>
@@ -265,7 +265,7 @@ export default function CookiesPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[3.3] OPT_OUT_ANALYTICS</h3>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 Opt-out via account settings or by enabling "Do Not Track" in your browser.
               </p>
             </div>
@@ -278,8 +278,8 @@ export default function CookiesPage() {
             <span className="text-xs text-muted-foreground">[0x40]</span>
             <h2 className="text-lg font-bold">OTHER_TRACKING</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-2">In addition to cookies, we may use:</p>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <p className="text-sm text-muted-foreground mb-2">In addition to cookies, we may use:</p>
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">LOCAL_STORAGE:</span> Store preferences and app state</li>
             <li>├─ <span className="text-foreground">SESSION_STORAGE:</span> Temporary storage (cleared on tab close)</li>
             <li>└─ <span className="text-foreground">WEB_BEACONS:</span> Small images for email tracking</li>
@@ -292,7 +292,7 @@ export default function CookiesPage() {
             <span className="text-xs text-muted-foreground">[0x50]</span>
             <h2 className="text-lg font-bold">POLICY_UPDATES</h2>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             We may update this Cookie Policy. Changes will be posted with an updated "Last Updated" date.
           </p>
         </section>
@@ -302,8 +302,8 @@ export default function CookiesPage() {
             <span className="text-xs text-muted-foreground">[0x60]</span>
             <h2 className="text-lg font-bold">QUESTIONS</h2>
           </div>
-          <p className="text-xs text-muted-foreground mb-3">Questions about cookies?</p>
-          <ul className="space-y-1 text-xs text-muted-foreground pl-4">
+          <p className="text-sm text-muted-foreground mb-3">Questions about cookies?</p>
+          <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev</li>
             <li>└─ <span className="text-foreground">FORM:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link></li>
           </ul>
@@ -319,7 +319,7 @@ export default function CookiesPage() {
         className="mt-12 border border-primary/30 bg-primary/5 p-6"
       >
         <h3 className="text-sm font-semibold mb-2">[MANAGE_PREFERENCES]</h3>
-        <p className="text-xs text-muted-foreground mb-3">
+        <p className="text-sm text-muted-foreground mb-3">
           You'll see a cookie consent banner on first visit. Change preferences anytime in account settings.
         </p>
         <Link href="/settings" className="text-xs text-primary hover:underline">
