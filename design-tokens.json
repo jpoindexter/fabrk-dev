@@ -1,0 +1,457 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "fabrk": {
+    "typography": {
+      "fontFamily": {
+        "mono": {
+          "$value": "var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+          "$type": "fontFamily",
+          "$description": "Terminal/code aesthetic - primary font for Fabrk marketing"
+        },
+        "sans": {
+          "$value": "var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+          "$type": "fontFamily",
+          "$description": "Sans-serif - used for base UI components"
+        }
+      },
+      "fontSize": {
+        "xs": { "$value": "0.75rem", "$type": "dimension", "$description": "12px" },
+        "sm": { "$value": "0.875rem", "$type": "dimension", "$description": "14px" },
+        "base": { "$value": "1rem", "$type": "dimension", "$description": "16px" },
+        "lg": { "$value": "1.125rem", "$type": "dimension", "$description": "18px" },
+        "xl": { "$value": "1.25rem", "$type": "dimension", "$description": "20px" },
+        "2xl": { "$value": "1.5rem", "$type": "dimension", "$description": "24px" },
+        "3xl": { "$value": "1.875rem", "$type": "dimension", "$description": "30px" },
+        "4xl": { "$value": "2.25rem", "$type": "dimension", "$description": "36px" }
+      },
+      "fontWeight": {
+        "normal": { "$value": "400", "$type": "fontWeight" },
+        "medium": { "$value": "500", "$type": "fontWeight" },
+        "semibold": { "$value": "600", "$type": "fontWeight" },
+        "bold": { "$value": "700", "$type": "fontWeight" }
+      },
+      "lineHeight": {
+        "tight": { "$value": "1.25", "$type": "number" },
+        "normal": { "$value": "1.5", "$type": "number" },
+        "relaxed": { "$value": "1.625", "$type": "number" }
+      },
+      "letterSpacing": {
+        "tighter": { "$value": "-0.05em", "$type": "dimension" },
+        "tight": { "$value": "-0.025em", "$type": "dimension" },
+        "normal": { "$value": "0", "$type": "dimension" }
+      }
+    },
+    "color": {
+      "$description": "Semantic color palette - references CSS variables",
+      "primary": { "$value": "var(--primary)", "$type": "color" },
+      "secondary": { "$value": "var(--secondary)", "$type": "color" },
+      "accent": { "$value": "var(--accent)", "$type": "color" },
+      "destructive": { "$value": "var(--destructive)", "$type": "color" },
+      "success": { "$value": "var(--success)", "$type": "color" },
+      "warning": { "$value": "var(--warning)", "$type": "color" },
+      "info": { "$value": "var(--info)", "$type": "color" },
+      "muted": { "$value": "var(--muted)", "$type": "color" },
+      "background": { "$value": "var(--background)", "$type": "color" },
+      "foreground": { "$value": "var(--foreground)", "$type": "color" },
+      "card": { "$value": "var(--card)", "$type": "color" },
+      "border": { "$value": "var(--border)", "$type": "color" }
+    },
+    "opacity": {
+      "$description": "Opacity scale for backgrounds, overlays, disabled states",
+      "5": { "$value": "0.05", "$type": "number", "$description": "Subtle backgrounds" },
+      "10": { "$value": "0.10", "$type": "number", "$description": "Light backgrounds" },
+      "20": { "$value": "0.20", "$type": "number", "$description": "Medium backgrounds" },
+      "30": { "$value": "0.30", "$type": "number", "$description": "Overlays" },
+      "50": { "$value": "0.50", "$type": "number", "$description": "Disabled states" },
+      "70": { "$value": "0.70", "$type": "number", "$description": "Modal overlays" },
+      "100": { "$value": "1", "$type": "number", "$description": "Full opacity" }
+    },
+    "spacing": {
+      "0": { "$value": "0", "$type": "dimension" },
+      "1": { "$value": "0.25rem", "$type": "dimension", "$description": "4px" },
+      "2": { "$value": "0.5rem", "$type": "dimension", "$description": "8px" },
+      "3": { "$value": "0.75rem", "$type": "dimension", "$description": "12px" },
+      "4": { "$value": "1rem", "$type": "dimension", "$description": "16px" },
+      "6": { "$value": "1.5rem", "$type": "dimension", "$description": "24px" },
+      "8": { "$value": "2rem", "$type": "dimension", "$description": "32px" },
+      "12": { "$value": "3rem", "$type": "dimension", "$description": "48px" },
+      "16": { "$value": "4rem", "$type": "dimension", "$description": "64px" }
+    },
+    "borderRadius": {
+      "none": { "$value": "0", "$type": "dimension" },
+      "sm": { "$value": "0.125rem", "$type": "dimension", "$description": "2px" },
+      "base": { "$value": "0.5rem", "$type": "dimension", "$description": "8px" },
+      "lg": { "$value": "0.75rem", "$type": "dimension", "$description": "12px" },
+      "full": { "$value": "9999px", "$type": "dimension", "$description": "Circular" }
+    },
+    "borderWidth": {
+      "none": { "$value": "0", "$type": "dimension" },
+      "thin": { "$value": "1px", "$type": "dimension", "$description": "Default borders" },
+      "medium": { "$value": "2px", "$type": "dimension", "$description": "Emphasis borders" },
+      "thick": { "$value": "4px", "$type": "dimension", "$description": "Heavy emphasis" }
+    },
+    "shadow": {
+      "$description": "Elevation system for depth hierarchy",
+      "none": { "$value": "none", "$type": "shadow" },
+      "sm": {
+        "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "$type": "shadow",
+        "$description": "Subtle elevation - cards, inputs"
+      },
+      "base": {
+        "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "$type": "shadow",
+        "$description": "Default elevation - dropdowns"
+      },
+      "md": {
+        "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "$type": "shadow",
+        "$description": "Medium elevation - popovers"
+      },
+      "lg": {
+        "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "$type": "shadow",
+        "$description": "High elevation - modals"
+      },
+      "xl": {
+        "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "$type": "shadow",
+        "$description": "Highest elevation - notifications"
+      }
+    },
+    "zIndex": {
+      "$description": "Layering system for stacking contexts",
+      "hide": { "$value": "-1", "$type": "number", "$description": "Hidden elements, backgrounds" },
+      "base": { "$value": "0", "$type": "number", "$description": "Default stacking" },
+      "raised": { "$value": "10", "$type": "number", "$description": "Slightly elevated elements" },
+      "dropdown": { "$value": "20", "$type": "number", "$description": "Dropdowns, selects" },
+      "sticky": { "$value": "30", "$type": "number", "$description": "Sticky headers, sidebars" },
+      "overlay": { "$value": "40", "$type": "number", "$description": "Backdrop overlays" },
+      "modal": { "$value": "50", "$type": "number", "$description": "Modals, dialogs" },
+      "popover": { "$value": "60", "$type": "number", "$description": "Popovers, tooltips" },
+      "toast": { "$value": "70", "$type": "number", "$description": "Toast notifications" },
+      "skipLink": { "$value": "100", "$type": "number", "$description": "Skip link (highest)" }
+    },
+    "duration": {
+      "$description": "Transition duration scale",
+      "instant": { "$value": "0ms", "$type": "duration" },
+      "fast": { "$value": "100ms", "$type": "duration", "$description": "Micro-interactions" },
+      "normal": { "$value": "200ms", "$type": "duration", "$description": "Default transitions" },
+      "slow": { "$value": "300ms", "$type": "duration", "$description": "Complex animations" },
+      "slower": { "$value": "500ms", "$type": "duration", "$description": "Page transitions" }
+    },
+    "easing": {
+      "$description": "Timing functions for animations",
+      "linear": { "$value": "linear", "$type": "cubicBezier" },
+      "ease": { "$value": "ease", "$type": "cubicBezier" },
+      "easeIn": { "$value": "cubic-bezier(0.4, 0, 1, 1)", "$type": "cubicBezier", "$description": "Accelerate" },
+      "easeOut": { "$value": "cubic-bezier(0, 0, 0.2, 1)", "$type": "cubicBezier", "$description": "Decelerate" },
+      "easeInOut": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)", "$type": "cubicBezier", "$description": "Default" },
+      "spring": { "$value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)", "$type": "cubicBezier", "$description": "Bouncy" }
+    },
+    "breakpoint": {
+      "$description": "Responsive breakpoints (mobile-first)",
+      "sm": { "$value": "640px", "$type": "dimension", "$description": "Small tablets" },
+      "md": { "$value": "768px", "$type": "dimension", "$description": "Tablets" },
+      "lg": { "$value": "1024px", "$type": "dimension", "$description": "Laptops" },
+      "xl": { "$value": "1280px", "$type": "dimension", "$description": "Desktops" },
+      "2xl": { "$value": "1536px", "$type": "dimension", "$description": "Large screens" }
+    },
+    "container": {
+      "$description": "Max-width containers",
+      "sm": { "$value": "640px", "$type": "dimension" },
+      "md": { "$value": "768px", "$type": "dimension" },
+      "lg": { "$value": "1024px", "$type": "dimension" },
+      "xl": { "$value": "1280px", "$type": "dimension" },
+      "prose": { "$value": "65ch", "$type": "dimension", "$description": "Optimal reading width" }
+    },
+    "iconSize": {
+      "$description": "Icon sizing scale",
+      "xs": { "$value": "12px", "$type": "dimension", "$description": "Inline icons" },
+      "sm": { "$value": "16px", "$type": "dimension", "$description": "Small icons" },
+      "md": { "$value": "20px", "$type": "dimension", "$description": "Default icons" },
+      "lg": { "$value": "24px", "$type": "dimension", "$description": "Large icons" },
+      "xl": { "$value": "32px", "$type": "dimension", "$description": "Feature icons" }
+    },
+    "grid": {
+      "$description": "Grid layout system",
+      "columns": {
+        "1": { "$value": "1", "$type": "number" },
+        "2": { "$value": "2", "$type": "number" },
+        "3": { "$value": "3", "$type": "number" },
+        "4": { "$value": "4", "$type": "number" },
+        "6": { "$value": "6", "$type": "number" },
+        "12": { "$value": "12", "$type": "number" }
+      },
+      "gap": {
+        "sm": { "$value": "0.5rem", "$type": "dimension", "$description": "gap-2" },
+        "md": { "$value": "1rem", "$type": "dimension", "$description": "gap-4" },
+        "lg": { "$value": "1.5rem", "$type": "dimension", "$description": "gap-6" },
+        "xl": { "$value": "2rem", "$type": "dimension", "$description": "gap-8" }
+      }
+    },
+    "component": {
+      "$description": "BASE UI COMPONENTS - Vanilla/neutral design, NO terminal styling. Used for dashboard, app UI.",
+      "button": {
+        "text": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}",
+            "fontWeight": "{fabrk.typography.fontWeight.medium}"
+          },
+          "$type": "typography",
+          "$description": "Button text - text-sm font-medium (sans-serif)"
+        },
+        "padding": {
+          "sm": { "$value": "0.5rem 0.75rem", "$type": "dimension", "$description": "px-3 py-2" },
+          "default": { "$value": "0.5rem 1rem", "$type": "dimension", "$description": "px-4 py-2" },
+          "lg": { "$value": "0.5rem 1.5rem", "$type": "dimension", "$description": "px-6 py-2" }
+        },
+        "borderRadius": {
+          "$value": "{fabrk.borderRadius.base}",
+          "$type": "dimension",
+          "$description": "Default rounded corners"
+        }
+      },
+      "input": {
+        "text": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}"
+          },
+          "$type": "typography",
+          "$description": "Input text - text-sm (sans-serif)"
+        },
+        "padding": { "$value": "0.5rem 0.75rem", "$type": "dimension", "$description": "px-3 py-2" },
+        "height": { "$value": "2.5rem", "$type": "dimension", "$description": "h-10" },
+        "borderRadius": { "$value": "{fabrk.borderRadius.base}", "$type": "dimension" }
+      },
+      "label": {
+        "text": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}",
+            "fontWeight": "{fabrk.typography.fontWeight.medium}"
+          },
+          "$type": "typography",
+          "$description": "Form label - text-sm font-medium (sans-serif)"
+        }
+      },
+      "card": {
+        "title": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.base}",
+            "fontWeight": "{fabrk.typography.fontWeight.semibold}"
+          },
+          "$type": "typography",
+          "$description": "Card title - text-base font-semibold (sans-serif)"
+        },
+        "description": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}"
+          },
+          "$type": "typography",
+          "$description": "Card description - text-sm text-muted-foreground (sans-serif)"
+        },
+        "padding": { "$value": "{fabrk.spacing.6}", "$type": "dimension", "$description": "p-6" },
+        "borderRadius": { "$value": "{fabrk.borderRadius.lg}", "$type": "dimension", "$description": "rounded-lg" }
+      },
+      "table": {
+        "header": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.xs}",
+            "fontWeight": "{fabrk.typography.fontWeight.medium}"
+          },
+          "$type": "typography",
+          "$description": "Table header - text-xs font-medium (sans-serif)"
+        },
+        "cell": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}"
+          },
+          "$type": "typography",
+          "$description": "Table cell - text-sm (sans-serif)"
+        }
+      },
+      "badge": {
+        "text": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.xs}",
+            "fontWeight": "{fabrk.typography.fontWeight.medium}"
+          },
+          "$type": "typography",
+          "$description": "Badge text - text-xs font-medium (sans-serif)"
+        },
+        "padding": { "$value": "0.125rem 0.5rem", "$type": "dimension", "$description": "px-2 py-0.5" },
+        "borderRadius": { "$value": "{fabrk.borderRadius.base}", "$type": "dimension" }
+      },
+      "dialog": {
+        "title": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.lg}",
+            "fontWeight": "{fabrk.typography.fontWeight.semibold}"
+          },
+          "$type": "typography",
+          "$description": "Dialog title - text-lg font-semibold (sans-serif)"
+        },
+        "description": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.sans}",
+            "fontSize": "{fabrk.typography.fontSize.sm}"
+          },
+          "$type": "typography",
+          "$description": "Dialog description - text-sm text-muted-foreground (sans-serif)"
+        }
+      }
+    },
+    "marketing": {
+      "$description": "MARKETING SITE - Terminal style with font-mono. Used for Homepage, Docs, Templates, Legal, Landing pages.",
+      "heading": {
+        "h1": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.mono}",
+            "fontSize": "{fabrk.typography.fontSize.2xl}",
+            "fontWeight": "{fabrk.typography.fontWeight.bold}",
+            "letterSpacing": "{fabrk.typography.letterSpacing.tight}"
+          },
+          "$type": "typography",
+          "$description": "Page title - font-mono text-2xl font-bold tracking-tight lg:text-3xl"
+        },
+        "h2": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.mono}",
+            "fontSize": "{fabrk.typography.fontSize.lg}",
+            "fontWeight": "{fabrk.typography.fontWeight.bold}"
+          },
+          "$type": "typography",
+          "$description": "Section heading - font-mono text-lg font-bold text-primary"
+        },
+        "h3": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.mono}",
+            "fontSize": "{fabrk.typography.fontSize.base}",
+            "fontWeight": "{fabrk.typography.fontWeight.semibold}"
+          },
+          "$type": "typography",
+          "$description": "Subsection heading - font-mono text-base font-semibold text-foreground"
+        }
+      },
+      "body": {
+        "default": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.mono}",
+            "fontSize": "{fabrk.typography.fontSize.sm}",
+            "lineHeight": "{fabrk.typography.lineHeight.relaxed}"
+          },
+          "$type": "typography",
+          "$description": "Body text - font-mono text-sm text-muted-foreground leading-relaxed"
+        },
+        "small": {
+          "$value": {
+            "fontFamily": "{fabrk.typography.fontFamily.mono}",
+            "fontSize": "{fabrk.typography.fontSize.xs}"
+          },
+          "$type": "typography",
+          "$description": "Small text - font-mono text-xs text-muted-foreground"
+        }
+      },
+      "badge": {
+        "$value": {
+          "fontFamily": "{fabrk.typography.fontFamily.mono}",
+          "fontSize": "{fabrk.typography.fontSize.sm}",
+          "padding": "0.25rem 0.75rem",
+          "borderRadius": "0"
+        },
+        "$type": "typography",
+        "$description": "Terminal badge - font-mono text-sm px-3 py-1 border rounded-none with [ ] brackets"
+      },
+      "card": {
+        "borderRadius": { "$value": "0", "$type": "dimension", "$description": "rounded-none (terminal style)" },
+        "padding": { "$value": "{fabrk.spacing.6}", "$type": "dimension", "$description": "p-6" }
+      },
+      "layout": {
+        "pageSpacing": { "$value": "{fabrk.spacing.16}", "$type": "dimension", "$description": "space-y-16" },
+        "sectionSpacing": { "$value": "{fabrk.spacing.4}", "$type": "dimension", "$description": "space-y-4" }
+      },
+      "patterns": {
+        "$description": "Terminal aesthetic patterns",
+        "badge": "[ CATEGORY ] LABEL",
+        "prefix": "> ",
+        "labels": "UPPERCASE_WITH_UNDERSCORES",
+        "treeList": "├─ item\n└─ last item"
+      }
+    },
+    "accessibility": {
+      "$description": "WCAG 2.1 AA Compliance Standards",
+      "typography": {
+        "minBodySize": {
+          "$value": "0.875rem",
+          "$type": "dimension",
+          "$description": "14px minimum for body text (WCAG SC 1.4.4)"
+        },
+        "minLineHeight": {
+          "$value": "1.5",
+          "$type": "number",
+          "$description": "1.5 minimum for readability (WCAG SC 1.4.12)"
+        },
+        "minParagraphSpacing": {
+          "$value": "2em",
+          "$type": "dimension",
+          "$description": "2x font size for paragraph spacing (WCAG SC 1.4.12)"
+        }
+      },
+      "contrast": {
+        "normalText": {
+          "$value": "4.5",
+          "$type": "number",
+          "$description": "4.5:1 minimum for normal text (<18px)"
+        },
+        "largeText": {
+          "$value": "3",
+          "$type": "number",
+          "$description": "3:1 minimum for large text (18px+ or 14px bold)"
+        },
+        "uiComponents": {
+          "$value": "3",
+          "$type": "number",
+          "$description": "3:1 minimum for UI components and focus indicators"
+        }
+      },
+      "focus": {
+        "ringWidth": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Focus ring width"
+        },
+        "ringOffset": {
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Focus ring offset from element"
+        }
+      },
+      "touch": {
+        "minTargetSize": {
+          "$value": "44px",
+          "$type": "dimension",
+          "$description": "44x44px minimum touch target (WCAG SC 2.5.5)"
+        }
+      }
+    },
+    "darkMode": {
+      "$description": "Dark mode color overrides",
+      "background": { "$value": "oklch(0.145 0 0)", "$type": "color" },
+      "foreground": { "$value": "oklch(0.985 0 0)", "$type": "color" },
+      "card": { "$value": "oklch(0.205 0 0)", "$type": "color" },
+      "border": { "$value": "oklch(0.3 0 0)", "$type": "color" },
+      "muted": { "$value": "oklch(0.269 0 0)", "$type": "color" },
+      "mutedForeground": { "$value": "oklch(0.708 0 0)", "$type": "color" },
+      "shadowOpacity": { "$value": "0.3", "$type": "number", "$description": "Lighter shadows in dark mode" }
+    }
+  }
+}

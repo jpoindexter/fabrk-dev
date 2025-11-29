@@ -999,3 +999,93 @@
 .section-spacing-lg {
   @apply space-y-16; /* 64px between major sections */
 }
+
+/* ============================================
+   ACCESSIBILITY UTILITIES (WCAG 2.1 AA)
+   ============================================ */
+
+/* Screen Reader Only - Hide visually but keep accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Not Screen Reader Only - reverse sr-only */
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip Link - visible on focus for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: oklch(var(--background));
+  color: oklch(var(--foreground));
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  border: 1px solid oklch(var(--border));
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support - disable animations for users who prefer */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: more) {
+  :root {
+    --border: 0% 0 0;
+    --ring: 0% 0 0;
+  }
+
+  * {
+    border-color: oklch(0% 0 0) !important;
+  }
+
+  .skip-link,
+  button,
+  a {
+    outline-width: 3px !important;
+  }
+}
+
+/* Focus Visible - enhanced focus indicators */
+.focus-visible-enhanced:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px oklch(var(--ring) / 0.2);
+}
