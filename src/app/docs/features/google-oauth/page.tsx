@@ -10,12 +10,13 @@ export const metadata = {
 export default function GoogleOAuthPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x20] FEATURES ] GOOGLE_OAUTH</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">GOOGLE_OAUTH_SETUP</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           &gt; Enable one-click Google sign-in for your users with OAuth 2.0 integration.
         </p>
       </div>
