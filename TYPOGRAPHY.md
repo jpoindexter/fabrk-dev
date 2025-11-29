@@ -2,18 +2,135 @@
 
 Complete per-page breakdown of all typography styles across 81 pages.
 
+**Last Scan:** 2025-11-29
+
 ---
 
 ## Table of Contents
 
-1. [Landing/Home Page](#landinghome-page)
-2. [Marketing Pages](#marketing-pages)
-3. [Legal Pages](#legal-pages)
-4. [Documentation Pages](#documentation-pages)
-5. [Dashboard Pages](#dashboard-pages)
-6. [Template Pages](#template-pages)
-7. [Components Page](#components-page)
-8. [Inconsistencies Summary](#inconsistencies-summary)
+1. [Accessibility Scan Results](#accessibility-scan-results)
+2. [Landing/Home Page](#landinghome-page)
+3. [Marketing Pages](#marketing-pages)
+4. [Legal Pages](#legal-pages)
+5. [Documentation Pages](#documentation-pages)
+6. [Dashboard Pages](#dashboard-pages)
+7. [Template Pages](#template-pages)
+8. [Components Page](#components-page)
+9. [Inconsistencies Summary](#inconsistencies-summary)
+
+---
+
+## Accessibility Scan Results
+
+### WCAG 2.1 Compliance Summary
+
+| Check | Status | Count | WCAG Criterion |
+|-------|--------|-------|----------------|
+| Pages Missing H1 | FAIL | 4 | 2.4.6 Headings |
+| Multiple H1 per Page | FAIL | 1 | Best Practice |
+| Skipped Heading Levels | FAIL | 6 | 1.3.1 Info/Relationships |
+| Generic Link Text | PASS | 0 | 2.4.4 Link Purpose |
+| Short Link Text (<3 chars) | WARN | 65 | 2.4.4 Link Purpose |
+| Line Height >= 1.5x | PASS | 424 uses | 1.4.12 Text Spacing |
+
+### Heading Structure Issues
+
+#### Pages Missing H1 (4 pages)
+```
+/templates/dashboards
+/templates/admin-panels
+/templates/account-pages
+/templates/marketing
+```
+
+#### Multiple H1 Tags (1 page)
+```
+/components - 2 h1 tags
+```
+
+#### Skipped Heading Levels (6 pages)
+WCAG 1.3.1 requires heading levels to be sequential (h1 -> h2 -> h3, not h1 -> h3)
+
+| Page | Levels Used |
+|------|-------------|
+| /templates/settings-page | h1, h3 (missing h2) |
+| /settings | h1, h3 (missing h2) |
+| /dashboard | h1, h3 (missing h2) |
+| /developer/api-keys | h1, h3 (missing h2) |
+| /profile | h1, h3 (missing h2) |
+| /account | h1, h3 (missing h2) |
+
+### Text Size Accessibility
+
+#### text-xs Usage (12px) - Potential Issues
+WCAG SC 1.4.4 requires text to be resizable to 200%
+
+| Page | text-xs Count | Issue |
+|------|---------------|-------|
+| `/terms` | 38 | Body text too small |
+| `/privacy` | 32 | Body text too small |
+| `/cookies` | 20 | Body text too small |
+| `/refund` | 30 | Body text too small |
+| `/contact` | 22 | Body text too small |
+| `/features` | 19 | Body text too small |
+| `/about` | 18 | Body text too small |
+
+**Recommendation:** Change body text from `text-xs` (12px) to `text-sm` (14px) for WCAG compliance.
+
+### ALL CAPS Headings Analysis
+
+**Total:** 725 ALL CAPS headings across site
+**Unique Patterns:** 549
+
+Screen readers may spell out ALL CAPS text letter-by-letter. Consider using CSS `text-transform: uppercase` instead of literal caps.
+
+Most Common:
+| Pattern | Count |
+|---------|-------|
+| NEXT_STEPS | 24 |
+| BEST_PRACTICES | 14 |
+| OVERVIEW | 13 |
+| CONFIGURATION | 9 |
+| PAYMENTS | 7 |
+| CODE_EXAMPLES | 6 |
+| COMMON_USE_CASES | 6 |
+| DATABASE_SCHEMA | 6 |
+
+### Underscore-Style Headings
+
+**Total:** 649 headings with underscores (terminal aesthetic)
+**Unique Patterns:** 515
+
+While underscores match the terminal aesthetic, they may affect screen reader pronunciation.
+
+### Link Text Issues
+
+#### Short Link Text (<3 chars)
+| Text | Count | Issue |
+|------|-------|-------|
+| "X" | 65 | Twitter/X links - consider "X (Twitter)" for clarity |
+
+### Color Contrast Summary
+
+| Color Class | Usage Count |
+|-------------|-------------|
+| `text-muted-foreground` | 1,669 |
+| `text-primary` | 653 |
+| `text-foreground` | 385 |
+
+**Note:** `text-muted-foreground` on dark backgrounds should maintain 4.5:1 contrast ratio per WCAG 1.4.3.
+
+### Overall Statistics
+
+```
+Total Pages Scanned:        81
+Total Headings Analyzed:    900
+Total Links Analyzed:       2,061
+Underscore Headings:        649
+ALL CAPS Headings:          725
+text-xs Body Usage:         976 instances (accessibility concern)
+leading-relaxed Usage:      424 instances (WCAG compliant)
+```
 
 ---
 
