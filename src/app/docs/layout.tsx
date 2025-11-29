@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { DemoNav } from "@/components/demo/demo-nav";
 import { Footer } from "@/components/landing/footer";
@@ -42,6 +43,7 @@ import {
   ShieldCheck,
   AlertTriangle,
   Cookie,
+  ChevronRight,
 } from "lucide-react";
 
 const navigation = [
@@ -163,12 +165,49 @@ const navigation = [
   },
 ];
 
+// Helper to find which section contains the current path
+function findActiveSectionIndex(pathname: string): number {
+  return navigation.findIndex((section) =>
+    section.items.some((item) => pathname === item.href)
+  );
+}
+
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const activeSectionIndex = findActiveSectionIndex(pathname);
+
+  // Initialize expanded sections - only the active section is expanded by default
+  const [expandedSections, setExpandedSections] = useState<Set<number>>(() => {
+    const initial = new Set<number>();
+    if (activeSectionIndex >= 0) {
+      initial.add(activeSectionIndex);
+    }
+    return initial;
+  });
+
+  // Update expanded sections when pathname changes
+  useEffect(() => {
+    const newActiveIndex = findActiveSectionIndex(pathname);
+    if (newActiveIndex >= 0 && !expandedSections.has(newActiveIndex)) {
+      setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
+    }
+  }, [pathname]);
+
+  const toggleSection = (index: number) => {
+    setExpandedSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background font-mono flex flex-col">
@@ -177,53 +216,77 @@ export default function DocsLayout({
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-border md:block overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-primary/50">
-          <nav className="space-y-6 p-4">
-            {navigation.map((section) => (
-              <div key={section.title}>
-                <h4 className="mb-2 px-2 text-xs font-semibold text-muted-foreground">
-                  {section.title}
-                </h4>
-                <div className="space-y-1">
-                  {section.items.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = pathname === item.href;
-                    const isExternal = 'external' in item && item.external;
+          <nav className="space-y-1 p-4">
+            {navigation.map((section, sectionIndex) => {
+              const isExpanded = expandedSections.has(sectionIndex);
+              const hasActiveItem = section.items.some((item) => pathname === item.href);
 
-                    if (isExternal) {
-                      return (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                        >
-                          <Icon className="h-3.5 w-3.5" />
-                          {item.title}
-                          <ExternalLink className="ml-auto h-3 w-3" />
-                        </a>
-                      );
-                    }
+              return (
+                <div key={section.title}>
+                  {/* Collapsible Section Header */}
+                  <button
+                    onClick={() => toggleSection(sectionIndex)}
+                    className={cn(
+                      "flex w-full items-center gap-2 px-2 py-1.5 text-xs font-semibold transition-colors",
+                      hasActiveItem
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <ChevronRight
+                      className={cn(
+                        "h-3 w-3 transition-transform",
+                        isExpanded && "rotate-90"
+                      )}
+                    />
+                    {section.title}
+                  </button>
 
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className={cn(
-                          "flex items-center gap-2 px-2 py-1.5 text-xs transition-colors",
-                          isActive
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        )}
-                      >
-                        <Icon className="h-3.5 w-3.5" />
-                        {item.title}
-                      </Link>
-                    );
-                  })}
+                  {/* Collapsible Items */}
+                  {isExpanded && (
+                    <div className="ml-3 border-l border-border pl-2 space-y-0.5">
+                      {section.items.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = pathname === item.href;
+                        const isExternal = 'external' in item && item.external;
+
+                        if (isExternal) {
+                          return (
+                            <a
+                              key={item.href}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                            >
+                              <Icon className="h-3 w-3" />
+                              {item.title}
+                              <ExternalLink className="ml-auto h-2.5 w-2.5" />
+                            </a>
+                          );
+                        }
+
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className={cn(
+                              "flex items-center gap-2 px-2 py-1 text-xs transition-colors",
+                              isActive
+                                ? "bg-primary text-primary-foreground"
+                                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                            )}
+                          >
+                            <Icon className="h-3 w-3" />
+                            {item.title}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </nav>
         </aside>
 
