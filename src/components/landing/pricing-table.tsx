@@ -152,7 +152,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 border-b-4 border-r-4 border-foreground bg-muted px-6 py-4 text-left">
+                  <th className="sticky left-0 z-10 border-b-2 border-r-2 border-foreground bg-muted px-6 py-4 text-left">
                     <span className="text-sm font-semibold text-muted-foreground">
                       Features
                     </span>
@@ -160,7 +160,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`border-b-4 border-l-4 border-foreground px-6 py-4 ${
+                      className={`border-b-2 border-l-2 border-foreground px-6 py-4 ${
                         plan.highlighted ? "bg-primary text-primary-foreground" : "bg-muted"
                       }`}
                     >
@@ -206,7 +206,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     key={key}
                     className="bg-card"
                   >
-                    <td className="sticky left-0 z-10 border-r-4 border-foreground bg-inherit px-6 py-4">
+                    <td className="sticky left-0 z-10 border-r-2 border-foreground bg-inherit px-6 py-4">
                       <span className="text-sm font-semibold text-foreground">
                         {label}
                       </span>
@@ -214,7 +214,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     {plans.map((plan) => (
                       <td
                         key={`${plan.name}-${key}`}
-                        className={`border-l-4 border-foreground px-6 py-4 text-center ${
+                        className={`border-l-2 border-foreground px-6 py-4 text-center ${
                           plan.highlighted ? "" : ""
                         }`}
                       >
@@ -229,12 +229,12 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
               {/* CTA Row */}
               <tfoot>
-                <tr className="border-t-4 border-foreground">
-                  <td className="sticky left-0 z-10 border-r-4 border-foreground bg-card px-6 py-6"></td>
+                <tr className="border-t-2 border-foreground">
+                  <td className="sticky left-0 z-10 border-r-2 border-foreground bg-card px-6 py-6"></td>
                   {plans.map((plan) => (
                     <td
                       key={`cta-${plan.name}`}
-                      className={`border-l-4 border-foreground px-6 py-6 ${
+                      className={`border-l-2 border-foreground px-6 py-6 ${
                         plan.highlighted ? "" : "bg-card"
                       }`}
                     >
