@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Shield, FileCheck, Code, Settings } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Schema Validation - Fabrk Docs",
@@ -9,40 +12,23 @@ export const metadata = {
 
 export default function SchemaValidationPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] VALIDATION</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SCHEMA_VALIDATION</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Validate all inputs with Zod schemas for type-safe, secure data handling.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>Type-safe validation with Zod</li>
-            <li>API request/response validation</li>
-            <li>Form validation schemas</li>
-            <li>Environment variable validation</li>
-            <li>Custom error messages</li>
-            <li>TypeScript inference from schemas</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Basic Zod Schema */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">BASIC_ZOD_SCHEMA</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Define schemas to validate data:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/validations/user.ts
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="Schema_Validation"
+      description="Validate all inputs with Zod schemas for type-safe, secure data handling."
+      overview="Schema validation ensures all data entering your application is properly validated and typed. Zod provides runtime validation with automatic TypeScript type inference."
+      features={[
+        { icon: Shield, title: "Type-Safe", description: "Full TypeScript inference from your schemas." },
+        { icon: FileCheck, title: "API Validation", description: "Validate request and response bodies." },
+        { icon: Code, title: "Form Validation", description: "Works with react-hook-form out of the box." },
+        { icon: Settings, title: "Env Validation", description: "Validate environment variables at startup." },
+      ]}
+      usage={[
+        {
+          title: "Basic Zod Schema",
+          description: "Define schemas to validate data",
+          code: `// src/lib/validations/user.ts
 
 import { z } from "zod";
 
@@ -65,18 +51,13 @@ export const userSchema = z.object({
 });
 
 // Infer TypeScript type from schema
-export type UserInput = z.infer<typeof userSchema>;`} />
-      </div>
-
-      {/* API Route Validation */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">API_ROUTE_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Validate request bodies in API routes:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/app/api/users/route.ts
+export type UserInput = z.infer<typeof userSchema>;`,
+          language: "typescript",
+        },
+        {
+          title: "API Route Validation",
+          description: "Validate request bodies in API routes",
+          code: `// src/app/api/users/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -117,18 +98,13 @@ export async function POST(request: NextRequest) {
       { status: 400 }
     );
   }
-}`} />
-      </div>
-
-      {/* Common Validation Patterns */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">COMMON_VALIDATION_PATTERNS</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Reusable validation patterns for common fields:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/validations/common.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Common Validation Patterns",
+          description: "Reusable validation patterns for common fields",
+          code: `// src/lib/validations/common.ts
 
 import { z } from "zod";
 
@@ -173,18 +149,13 @@ export const paginationSchema = z.object({
 export const sortSchema = z.object({
   sortBy: z.string().optional(),
   order: z.enum(["asc", "desc"]).default("desc"),
-});`} />
-      </div>
-
-      {/* Form Validation */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">FORM_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Use schemas with react-hook-form:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`"use client";
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Form Validation",
+          description: "Use schemas with react-hook-form",
+          code: `"use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -238,18 +209,13 @@ export function ContactForm() {
       <button type="submit">Send</button>
     </form>
   );
-}`} />
-      </div>
-
-      {/* Query Parameter Validation */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">QUERY_PARAMETER_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Validate URL search params:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/app/api/items/route.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Query Parameter Validation",
+          description: "Validate URL search params",
+          code: `// src/app/api/items/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -281,18 +247,13 @@ export async function GET(request: NextRequest) {
 
   // Use validated params for database query
   // ...
-}`} />
-      </div>
-
-      {/* Environment Variable Validation */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VARIABLE_VALIDATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Validate environment variables at startup:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/env.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Environment Variable Validation",
+          description: "Validate environment variables at startup",
+          code: `// src/lib/env.ts
 
 import { z } from "zod";
 
@@ -321,18 +282,13 @@ if (!parsed.success) {
   throw new Error("Invalid environment variables");
 }
 
-export const env = parsed.data;`} />
-      </div>
-
-      {/* Custom Transformations */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CUSTOM_TRANSFORMATIONS</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Transform and sanitize data during validation:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`import { z } from "zod";
+export const env = parsed.data;`,
+          language: "typescript",
+        },
+        {
+          title: "Custom Transformations",
+          description: "Transform and sanitize data during validation",
+          code: `import { z } from "zod";
 
 const userInputSchema = z.object({
   // Trim and lowercase email
@@ -365,18 +321,21 @@ const userInputSchema = z.object({
   tags: z
     .string()
     .transform((val) => val.split(",").map((s) => s.trim())),
-});`} />
-      </div>
-
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+});`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Security Headers", href: "/docs/security/headers" }}
+      next={{ title: "Bot Protection", href: "/docs/security/bot-protection" }}
+    >
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-semibold">Audit Logging</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Audit Logging</h3>
+                <p className={docsTypography.body}>
                   Track all security-relevant events
                 </p>
               </CardContent>
@@ -385,15 +344,15 @@ const userInputSchema = z.object({
           <Link href="/docs/tutorials/api-routes">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-semibold">API Routes</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
+                <p className={docsTypography.body}>
                   Build secure API endpoints
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Gauge, User, Server, Zap } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Rate Limiting - Fabrk Docs",
@@ -9,40 +12,35 @@ export const metadata = {
 
 export default function RateLimitingPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] RATE_LIMITING</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">RATE_LIMITING</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Protect your API endpoints from abuse with configurable rate limiting middleware.
-        </p>
-      </div>
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="Rate_Limiting"
+      description="Protect your API endpoints from abuse with configurable rate limiting middleware."
+      overview="Rate limiting prevents abuse by limiting how many requests a user or IP can make in a given time period. This protects against DDoS attacks, brute force attempts, and API abuse."
+      features={[
+        { icon: Gauge, title: "Token Bucket", description: "Smooth rate limiting with token bucket algorithm." },
+        { icon: Server, title: "Per Endpoint", description: "Configure different limits for different endpoints." },
+        { icon: User, title: "User-Based", description: "Rate limit by user ID for authenticated endpoints." },
+        { icon: Zap, title: "Redis Support", description: "Redis support for distributed systems." },
+      ]}
+      setup={[
+        {
+          title: "Environment Variables",
+          description: "Configure Upstash Redis for production rate limiting",
+          code: `# .env.local
 
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="font-mono text-base font-semibold text-foreground">WHAT'S_INCLUDED</h3>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>Token bucket algorithm for smooth rate limiting</li>
-            <li>Configurable limits per endpoint</li>
-            <li>IP-based and user-based rate limiting</li>
-            <li>Redis support for distributed systems</li>
-            <li>Customizable response headers</li>
-            <li>Bypass rules for trusted IPs</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Basic Setup */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">BASIC_SETUP</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Add rate limiting to any API route using the rate limiter middleware:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/rate-limit.ts
+# Upstash Redis (get from https://upstash.com)
+UPSTASH_REDIS_REST_URL="https://your-redis.upstash.io"
+UPSTASH_REDIS_REST_TOKEN="your-redis-token"`,
+          language: "bash",
+        },
+      ]}
+      usage={[
+        {
+          title: "Basic Setup",
+          description: "Add rate limiting to any API route using the rate limiter middleware",
+          code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
@@ -72,18 +70,13 @@ export function rateLimit(ip: string, limit: number = 10) {
 
   tokenCache.set(ip, tokenCount + 1);
   return { success: true, remaining: limit - tokenCount - 1 };
-}`} />
-      </div>
-
-      {/* API Route Integration */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">API_ROUTE_INTEGRATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Apply rate limiting to your API routes:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/app/api/your-route/route.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "API Route Integration",
+          description: "Apply rate limiting to your API routes",
+          code: `// src/app/api/your-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { ratelimit } from "@/lib/rate-limit";
@@ -114,18 +107,13 @@ export async function POST(request: NextRequest) {
 
   // Process request normally
   return NextResponse.json({ success: true });
-}`} />
-      </div>
-
-      {/* Different Limits per Endpoint */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CUSTOM_LIMITS_PER_ENDPOINT</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Configure different rate limits for different endpoints:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/rate-limit.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Custom Limits per Endpoint",
+          description: "Configure different rate limits for different endpoints",
+          code: `// src/lib/rate-limit.ts
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
@@ -158,18 +146,13 @@ export const writeLimiter = new Ratelimit({
   redis,
   limiter: Ratelimit.slidingWindow(20, "60 s"), // 20 per minute
   prefix: "ratelimit:write",
-});`} />
-      </div>
-
-      {/* User-Based Rate Limiting */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">USER_BASED_RATE_LIMITING</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Rate limit by user ID instead of IP for authenticated endpoints:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/app/api/protected-route/route.ts
+});`,
+          language: "typescript",
+        },
+        {
+          title: "User-Based Rate Limiting",
+          description: "Rate limit by user ID instead of IP for authenticated endpoints",
+          code: `// src/app/api/protected-route/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
@@ -202,33 +185,21 @@ export async function POST(request: NextRequest) {
     success: true,
     remaining
   });
-}`} />
-      </div>
-
-      {/* Environment Variables */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VARIABLES</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Configure Upstash Redis for production rate limiting:
-          </p>
-        </div>
-        <CodeBlock language="bash" code={`# .env.local
-
-# Upstash Redis (get from https://upstash.com)
-UPSTASH_REDIS_REST_URL="https://your-redis.upstash.io"
-UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
-      </div>
-
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Bot Protection", href: "/docs/security/bot-protection" }}
+      next={{ title: "Audit Logging", href: "/docs/security/audit-logging" }}
+    >
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/csrf">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">CSRF_PROTECTION</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>CSRF Protection</h3>
+                <p className={docsTypography.body}>
                   Protect forms from cross-site request forgery
                 </p>
               </CardContent>
@@ -237,15 +208,15 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
           <Link href="/docs/security/bot-protection">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">BOT_PROTECTION</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Bot Protection</h3>
+                <p className={docsTypography.body}>
                   Add bot detection to your endpoints
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

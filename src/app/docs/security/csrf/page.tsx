@@ -1,60 +1,46 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Shield, Key, Lock, Cookie } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
+
+export const metadata = {
+  title: "CSRF Protection - Fabrk Docs",
+  description: "Protect your forms and API endpoints from cross-site request forgery attacks.",
+};
 
 export default function CSRFProtectionPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CSRF_PROTECTION</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Protect your forms and API endpoints from cross-site request forgery attacks.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-mono text-base font-semibold text-foreground">What's Included</h3>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ Automatic CSRF protection for NextAuth routes</li>
-            <li>├─ Double-submit cookie pattern</li>
-            <li>├─ Per-session token generation</li>
-            <li>├─ Custom form protection utilities</li>
-            <li>├─ SameSite cookie configuration</li>
-            <li>└─ Origin validation middleware</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Built-in Protection */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">BUILT_IN_PROTECTION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          NextAuth v5 automatically protects all authentication routes with CSRF tokens.
-          No additional configuration is needed for login, logout, and registration forms.
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// CSRF protection is automatic for NextAuth routes:
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="CSRF_Protection"
+      description="Protect your forms and API endpoints from cross-site request forgery attacks."
+      overview="CSRF protection prevents attackers from tricking users into performing unwanted actions on your site. NextAuth v5 automatically protects all authentication routes with CSRF tokens."
+      features={[
+        { icon: Shield, title: "Auto Protection", description: "Automatic CSRF protection for NextAuth routes." },
+        { icon: Cookie, title: "Double Submit", description: "Double-submit cookie pattern for verification." },
+        { icon: Key, title: "Per-Session Tokens", description: "Unique tokens generated per session." },
+        { icon: Lock, title: "Origin Validation", description: "Origin validation middleware for extra security." },
+      ]}
+      usage={[
+        {
+          title: "Built-in Protection",
+          description: "NextAuth v5 automatically protects all authentication routes with CSRF tokens",
+          code: `// CSRF protection is automatic for NextAuth routes:
 // - /api/auth/signin
 // - /api/auth/signout
 // - /api/auth/callback/*
 // - /api/auth/session
 
-// The middleware in src/middleware.ts handles validation`} />
-        </div>
-      </div>
-
-      {/* Getting CSRF Token */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">GETTING_CSRF_TOKEN</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Retrieve the CSRF token for custom forms:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`"use client";
+// The middleware in src/middleware.ts handles validation`,
+          language: "typescript",
+        },
+        {
+          title: "Getting CSRF Token",
+          description: "Retrieve the CSRF token for custom forms",
+          code: `"use client";
 
 import { getCsrfToken } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -79,18 +65,13 @@ export function SecureForm() {
       <button type="submit">Submit</button>
     </form>
   );
-}`} />
-        </div>
-      </div>
-
-      {/* Server-Side Validation */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SERVER_SIDE_VALIDATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Validate CSRF tokens in your API routes:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/lib/csrf.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Server-Side Validation",
+          description: "Validate CSRF tokens in your API routes",
+          code: `// src/lib/csrf.ts
 
 import { cookies } from "next/headers";
 import { createHash } from "crypto";
@@ -131,18 +112,13 @@ export async function POST(request: NextRequest) {
 
   // Process secure action
   return NextResponse.json({ success: true });
-}`} />
-        </div>
-      </div>
-
-      {/* Origin Validation */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ORIGIN_VALIDATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Add origin validation as an additional security layer:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/lib/security.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Origin Validation",
+          description: "Add origin validation as an additional security layer",
+          code: `// src/lib/security.ts
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -181,18 +157,13 @@ export async function POST(request: NextRequest) {
   }
 
   // Process request
-}`} />
-        </div>
-      </div>
-
-      {/* SameSite Cookie Configuration */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">SAMESITE_COOKIE_CONFIGURATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Configure secure cookie settings in NextAuth:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="typescript" code={`// src/lib/auth.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "SameSite Cookie Configuration",
+          description: "Configure secure cookie settings in NextAuth",
+          code: `// src/lib/auth.ts
 
 import NextAuth from "next-auth";
 
@@ -219,18 +190,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     },
   },
-});`} />
-        </div>
-      </div>
-
-      {/* Fetch Requests with CSRF */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">FETCH_REQUESTS_WITH_CSRF</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Include CSRF tokens in fetch requests:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="tsx" code={`"use client";
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Fetch Requests with CSRF",
+          description: "Include CSRF tokens in fetch requests",
+          code: `"use client";
 
 import { getCsrfToken } from "next-auth/react";
 
@@ -286,36 +252,38 @@ export function useSecureApi() {
   }, []);
 
   return { call, loading, error };
-}`} />
-        </div>
-      </div>
-
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+}`,
+          language: "tsx",
+        },
+      ]}
+      previous={{ title: "Rate Limiting", href: "/docs/security/rate-limiting" }}
+      next={{ title: "Security Headers", href: "/docs/security/headers" }}
+    >
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/headers">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Security Headers</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
+                <p className={docsTypography.body}>
                   Configure HSTS, CSP, and other headers
                 </p>
               </CardContent>
             </Card>
           </Link>
           <Link href="/docs/security/validation">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Schema Validation</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
+                <p className={docsTypography.body}>
                   Validate all inputs with Zod schemas
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

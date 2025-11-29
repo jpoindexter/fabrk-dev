@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Shield, Lock, Globe, FileCode } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Security Headers - Fabrk Docs",
@@ -9,40 +12,23 @@ export const metadata = {
 
 export default function SecurityHeadersPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] HEADERS</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SECURITY_HEADERS</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>Strict-Transport-Security (HSTS)</li>
-            <li>Content-Security-Policy (CSP)</li>
-            <li>X-Frame-Options</li>
-            <li>X-Content-Type-Options</li>
-            <li>Referrer-Policy</li>
-            <li>Permissions-Policy</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Next.js Configuration */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">NEXTJS_CONFIGURATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Add security headers in <code className="font-mono bg-muted px-1 py-0.5">next.config.js</code>:
-          </p>
-        </div>
-        <CodeBlock language="javascript" code={`// next.config.js
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="Security_Headers"
+      description="Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more."
+      overview="Security headers protect your application from common web vulnerabilities like XSS, clickjacking, and man-in-the-middle attacks. Fabrk includes production-ready defaults you can customize."
+      features={[
+        { icon: Lock, title: "HSTS", description: "Strict-Transport-Security enforces HTTPS connections." },
+        { icon: Shield, title: "CSP", description: "Content-Security-Policy prevents XSS attacks." },
+        { icon: Globe, title: "X-Frame-Options", description: "Prevents clickjacking by controlling iframe embedding." },
+        { icon: FileCode, title: "Permissions Policy", description: "Control browser feature access like camera and mic." },
+      ]}
+      usage={[
+        {
+          title: "Next.js Configuration",
+          description: "Add security headers in next.config.js",
+          code: `// next.config.js
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -81,18 +67,13 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;`} />
-      </div>
-
-      {/* Content Security Policy */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CONTENT_SECURITY_POLICY</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Configure a strict CSP to prevent XSS attacks:
-          </p>
-        </div>
-        <CodeBlock language="javascript" code={`// next.config.js
+module.exports = nextConfig;`,
+          language: "javascript",
+        },
+        {
+          title: "Content Security Policy",
+          description: "Configure a strict CSP to prevent XSS attacks",
+          code: `// next.config.js
 
 const ContentSecurityPolicy = \`
   default-src 'self';
@@ -124,18 +105,13 @@ const nextConfig = {
       },
     ];
   },
-};`} />
-      </div>
-
-      {/* Nonce-based CSP */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">NONCE_BASED_CSP</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Use nonces for stricter CSP without unsafe-inline:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/middleware.ts
+};`,
+          language: "javascript",
+        },
+        {
+          title: "Nonce-based CSP",
+          description: "Use nonces for stricter CSP without unsafe-inline",
+          code: `// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -190,18 +166,13 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}`} />
-      </div>
-
-      {/* HSTS Configuration */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">HSTS_CONFIGURATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Enforce HTTPS with Strict-Transport-Security:
-          </p>
-        </div>
-        <CodeBlock language="bash" code={`// HSTS Header Options
+}`,
+          language: "typescript",
+        },
+        {
+          title: "HSTS Configuration",
+          description: "Enforce HTTPS with Strict-Transport-Security",
+          code: `// HSTS Header Options
 
 // Standard (2 years)
 "max-age=63072000; includeSubDomains"
@@ -215,22 +186,13 @@ export default async function RootLayout({
 // Parameters:
 // - max-age: Time in seconds browser remembers HTTPS
 // - includeSubDomains: Apply to all subdomains
-// - preload: Allow browser vendors to hardcode`} />
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          <strong>Warning:</strong> Only use preload once you're certain all subdomains support HTTPS.
-          It's difficult to remove from the preload list.
-        </p>
-      </div>
-
-      {/* Permissions Policy */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">PERMISSIONS_POLICY</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Control browser feature access:
-          </p>
-        </div>
-        <CodeBlock language="javascript" code={`// Common Permissions Policy configurations
+// - preload: Allow browser vendors to hardcode`,
+          language: "bash",
+        },
+        {
+          title: "Permissions Policy",
+          description: "Control browser feature access",
+          code: `// Common Permissions Policy configurations
 
 // Minimal (most secure)
 {
@@ -255,18 +217,13 @@ export default async function RootLayout({
 // display-capture, encrypted-media, fullscreen, geolocation,
 // gyroscope, keyboard-map, magnetometer, microphone, midi,
 // payment, picture-in-picture, publickey-credentials-get,
-// screen-wake-lock, sync-xhr, usb, web-share, xr-spatial-tracking`} />
-      </div>
-
-      {/* Vercel Configuration */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">VERCEL_CONFIGURATION</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Alternative: Configure headers in vercel.json:
-          </p>
-        </div>
-        <CodeBlock language="json" code={`// vercel.json
+// screen-wake-lock, sync-xhr, usb, web-share, xr-spatial-tracking`,
+          language: "javascript",
+        },
+        {
+          title: "Vercel Configuration",
+          description: "Alternative: Configure headers in vercel.json",
+          code: `// vercel.json
 
 {
   "headers": [
@@ -292,18 +249,13 @@ export default async function RootLayout({
       ]
     }
   ]
-}`} />
-      </div>
-
-      {/* Testing Headers */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">TESTING_HEADERS</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-            Verify your security headers are working:
-          </p>
-        </div>
-        <CodeBlock language="bash" code={`# Test with curl
+}`,
+          language: "json",
+        },
+        {
+          title: "Testing Headers",
+          description: "Verify your security headers are working",
+          code: `# Test with curl
 curl -I https://yoursite.com
 
 # Online tools
@@ -312,18 +264,31 @@ curl -I https://yoursite.com
 # - https://csp-evaluator.withgoogle.com
 
 # Browser DevTools
-# Network tab → Select request → Headers tab`} />
-      </div>
+# Network tab → Select request → Headers tab`,
+          language: "bash",
+        },
+      ]}
+      previous={{ title: "CSRF Protection", href: "/docs/security/csrf" }}
+      next={{ title: "Schema Validation", href: "/docs/security/validation" }}
+    >
+      {/* HSTS Warning */}
+      <DocsSection title="Important Notes">
+        <DocsCard className="bg-muted/50">
+          <p className={docsTypography.body}>
+            <strong>Warning:</strong> Only use the HSTS preload directive once you&apos;re certain all subdomains support HTTPS.
+            It&apos;s difficult to remove from the preload list once submitted.
+          </p>
+        </DocsCard>
+      </DocsSection>
 
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-semibold">Schema Validation</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
+                <p className={docsTypography.body}>
                   Validate all inputs with Zod schemas
                 </p>
               </CardContent>
@@ -332,15 +297,15 @@ curl -I https://yoursite.com
           <Link href="/docs/deployment/vercel">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-semibold">Deploy to Vercel</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
+                <p className={docsTypography.body}>
                   Deploy with production security settings
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

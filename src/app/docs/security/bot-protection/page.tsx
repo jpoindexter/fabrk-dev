@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Bot, Clock, Shield, Fingerprint } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Bot Protection - Fabrk Docs",
@@ -9,40 +12,23 @@ export const metadata = {
 
 export default function BotProtectionPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] BOT_PROTECTION</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">BOT_PROTECTION</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Detect and block automated bot traffic with multiple protection strategies.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="font-mono text-base font-semibold text-foreground">What's Included</h3>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>Honeypot fields for form protection</li>
-            <li>Time-based form submission validation</li>
-            <li>User-Agent analysis</li>
-            <li>Vercel Edge protection integration</li>
-            <li>Custom bot detection middleware</li>
-            <li>CAPTCHA integration (optional)</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Honeypot Fields */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">HONEYPOT_FIELDS</h2>
-          <p className="font-mono text-muted-foreground">
-            &gt; Add invisible fields that bots will fill but humans won't:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`// Client-side form component
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="Bot_Protection"
+      description="Detect and block automated bot traffic with multiple protection strategies."
+      overview="Bot protection prevents automated attacks on your forms and APIs. Use honeypot fields, timing validation, user-agent analysis, and CAPTCHA to block bots while keeping the experience smooth for real users."
+      features={[
+        { icon: Bot, title: "Honeypot Fields", description: "Invisible fields that bots fill but humans don't." },
+        { icon: Clock, title: "Time Validation", description: "Reject submissions that are too fast or too slow." },
+        { icon: Fingerprint, title: "User-Agent Analysis", description: "Detect suspicious user agents and patterns." },
+        { icon: Shield, title: "CAPTCHA Integration", description: "Optional Cloudflare Turnstile for strong protection." },
+      ]}
+      usage={[
+        {
+          title: "Honeypot Fields",
+          description: "Add invisible fields that bots will fill but humans won't",
+          code: `// Client-side form component
 "use client";
 
 export function ContactForm() {
@@ -99,18 +85,13 @@ export async function POST(request: NextRequest) {
   const email = body.get("email");
 
   // ...
-}`} />
-      </div>
-
-      {/* Time-based Validation */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">TIME_BASED_VALIDATION</h2>
-          <p className="font-mono text-muted-foreground">
-            &gt; Reject submissions that are too fast (bots) or too slow (stale tokens):
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`// Client-side: Add timestamp to form
+}`,
+          language: "tsx",
+        },
+        {
+          title: "Time-based Validation",
+          description: "Reject submissions that are too fast (bots) or too slow (stale tokens)",
+          code: `// Client-side: Add timestamp to form
 "use client";
 
 import { useEffect, useState } from "react";
@@ -164,18 +145,13 @@ export async function POST(request: NextRequest) {
   }
 
   // Process legitimate submission
-}`} />
-      </div>
-
-      {/* User-Agent Analysis */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">USER_AGENT_ANALYSIS</h2>
-          <p className="font-mono text-muted-foreground">
-            &gt; Detect suspicious user agents:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/bot-detection.ts
+}`,
+          language: "tsx",
+        },
+        {
+          title: "User-Agent Analysis",
+          description: "Detect suspicious user agents",
+          code: `// src/lib/bot-detection.ts
 
 const BOT_PATTERNS = [
   /bot/i,
@@ -246,18 +222,13 @@ export async function POST(request: NextRequest) {
   }
 
   // Continue processing
-}`} />
-      </div>
-
-      {/* Middleware Protection */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">MIDDLEWARE_PROTECTION</h2>
-          <p className="font-mono text-muted-foreground">
-            &gt; Add bot detection at the edge:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/middleware.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Middleware Protection",
+          description: "Add bot detection at the edge",
+          code: `// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -312,18 +283,13 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/api/:path*"],
-};`} />
-      </div>
-
-      {/* Cloudflare Turnstile */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">CLOUDFLARE_TURNSTILE_CAPTCHA</h2>
-          <p className="font-mono text-muted-foreground">
-            &gt; Add Cloudflare Turnstile for strong bot protection:
-          </p>
-        </div>
-        <CodeBlock language="tsx" code={`// npm install @marsidev/react-turnstile
+};`,
+          language: "typescript",
+        },
+        {
+          title: "Cloudflare Turnstile CAPTCHA",
+          description: "Add Cloudflare Turnstile for strong bot protection",
+          code: `// npm install @marsidev/react-turnstile
 
 "use client";
 
@@ -384,30 +350,33 @@ export async function POST(request: NextRequest) {
   }
 
   // Process submission
-}`} />
-      </div>
-
-      {/* Environment Variables */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">ENVIRONMENT_VARIABLES</h2>
-        </div>
-        <CodeBlock language="bash" code={`# .env.local
+}`,
+          language: "tsx",
+        },
+      ]}
+      setup={[
+        {
+          title: "Environment Variables",
+          description: "Configure Cloudflare Turnstile (optional)",
+          code: `# .env.local
 
 # Cloudflare Turnstile (optional)
 NEXT_PUBLIC_TURNSTILE_SITE_KEY="your-site-key"
-TURNSTILE_SECRET_KEY="your-secret-key"`} />
-      </div>
-
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+TURNSTILE_SECRET_KEY="your-secret-key"`,
+          language: "bash",
+        },
+      ]}
+      previous={{ title: "Schema Validation", href: "/docs/security/validation" }}
+      next={{ title: "Rate Limiting", href: "/docs/security/rate-limiting" }}
+    >
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/rate-limiting">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Rate Limiting</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Rate Limiting</h3>
+                <p className={docsTypography.body}>
                   Limit requests per IP or user
                 </p>
               </CardContent>
@@ -416,15 +385,15 @@ TURNSTILE_SECRET_KEY="your-secret-key"`} />
           <Link href="/docs/security/audit-logging">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Audit Logging</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Audit Logging</h3>
+                <p className={docsTypography.body}>
                   Log bot detection events
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }

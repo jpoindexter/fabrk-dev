@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { FileText, Search, Bell, Database } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Audit Logging - Fabrk Docs",
@@ -9,40 +12,23 @@ export const metadata = {
 
 export default function AuditLoggingPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">AUDIT_LOGGING</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          &gt; Track security-relevant events and user actions for compliance and debugging.
-        </p>
-      </div>
-
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="font-mono text-base font-semibold text-foreground">WHAT'S_INCLUDED</h3>
-          <ul className="font-mono text-sm text-muted-foreground space-y-1">
-            <li>Database-backed audit log storage</li>
-            <li>Pre-defined event types</li>
-            <li>User and system action tracking</li>
-            <li>IP address and user agent logging</li>
-            <li>Searchable and filterable logs</li>
-            <li>Retention policies</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Database Schema */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
-          <p className="font-mono text-muted-foreground">
-            The AuditLog model in Prisma:
-          </p>
-        </div>
-        <CodeBlock language="prisma" code={`// prisma/schema.prisma
+    <FeatureGuideTemplate
+      code="[0x80]"
+      category="Security"
+      title="Audit_Logging"
+      description="Track security-relevant events and user actions for compliance and debugging."
+      overview="Audit logging creates an immutable record of security-relevant events. Track logins, payments, admin actions, and more for compliance requirements and security investigations."
+      features={[
+        { icon: Database, title: "Persistent Storage", description: "Database-backed audit log storage." },
+        { icon: FileText, title: "Event Types", description: "18+ pre-defined security event types." },
+        { icon: Search, title: "Searchable", description: "Filter by user, action, category, and date." },
+        { icon: Bell, title: "Alerts", description: "Send alerts for critical security events." },
+      ]}
+      usage={[
+        {
+          title: "Database Schema",
+          description: "The AuditLog model in Prisma",
+          code: `// prisma/schema.prisma
 
 model AuditLog {
   id          String   @id @default(cuid())
@@ -75,18 +61,13 @@ model AuditLog {
   @@index([action])
   @@index([category])
   @@index([createdAt])
-}`} />
-      </div>
-
-      {/* Audit Service */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">AUDIT_SERVICE</h2>
-          <p className="font-mono text-muted-foreground">
-            Create a service to log events:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/audit.ts
+}`,
+          language: "prisma",
+        },
+        {
+          title: "Audit Service",
+          description: "Create a service to log events",
+          code: `// src/lib/audit.ts
 
 import { prisma } from "@/lib/db";
 import { NextRequest } from "next/server";
@@ -170,18 +151,13 @@ export async function createAuditLog(input: AuditLogInput) {
       errorMessage,
     },
   });
-}`} />
-      </div>
-
-      {/* Usage Examples */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">USAGE_EXAMPLES</h2>
-          <p className="font-mono text-muted-foreground">
-            Log events throughout your application:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// Login event
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Usage Examples",
+          description: "Log events throughout your application",
+          code: `// Login event
 // src/app/api/auth/login/route.ts
 
 import { createAuditLog } from "@/lib/audit";
@@ -247,18 +223,13 @@ await createAuditLog({
     reason: "Customer support request",
   },
   request,
-});`} />
-      </div>
-
-      {/* Querying Logs */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">QUERYING_LOGS</h2>
-          <p className="font-mono text-muted-foreground">
-            API endpoint to search and filter audit logs:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/app/api/admin/audit-logs/route.ts
+});`,
+          language: "typescript",
+        },
+        {
+          title: "Querying Logs",
+          description: "API endpoint to search and filter audit logs",
+          code: `// src/app/api/admin/audit-logs/route.ts
 
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
@@ -320,18 +291,13 @@ export async function GET(request: NextRequest) {
       pages: Math.ceil(total / limit),
     },
   });
-}`} />
-      </div>
-
-      {/* Log Retention */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">LOG_RETENTION</h2>
-          <p className="font-mono text-muted-foreground">
-            Set up automatic cleanup of old logs:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// scripts/cleanup-audit-logs.ts
+}`,
+          language: "typescript",
+        },
+        {
+          title: "Log Retention",
+          description: "Set up automatic cleanup of old logs",
+          code: `// scripts/cleanup-audit-logs.ts
 
 import { prisma } from "@/lib/db";
 
@@ -364,18 +330,13 @@ cleanupAuditLogs()
   .finally(() => prisma.$disconnect());
 
 // Run as cron job:
-// 0 0 * * * npx ts-node scripts/cleanup-audit-logs.ts`} />
-      </div>
-
-      {/* Security Alerts */}
-      <div className="space-y-4">
-        <div>
-          <h2 className="font-mono text-lg font-bold text-primary">SECURITY_ALERTS</h2>
-          <p className="font-mono text-muted-foreground">
-            Send alerts for critical events:
-          </p>
-        </div>
-        <CodeBlock language="typescript" code={`// src/lib/audit.ts
+// 0 0 * * * npx ts-node scripts/cleanup-audit-logs.ts`,
+          language: "typescript",
+        },
+        {
+          title: "Security Alerts",
+          description: "Send alerts for critical events",
+          code: `// src/lib/audit.ts
 
 import { sendEmail } from "@/lib/email";
 
@@ -418,18 +379,21 @@ async function sendSecurityAlert(log: AuditLog) {
       \`,
     });
   }
-}`} />
-      </div>
-
-      {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+}`,
+          language: "typescript",
+        },
+      ]}
+      previous={{ title: "Rate Limiting", href: "/docs/security/rate-limiting" }}
+      next={{ title: "CSRF Protection", href: "/docs/security/csrf" }}
+    >
+      {/* Next Steps Section */}
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Schema Validation</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
+                <p className={docsTypography.body}>
                   Validate all inputs with Zod
                 </p>
               </CardContent>
@@ -438,15 +402,15 @@ async function sendSecurityAlert(log: AuditLog) {
           <Link href="/docs/deployment/database">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">Database Setup</h3>
-                <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database Setup</h3>
+                <p className={docsTypography.body}>
                   Set up production database
                 </p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
