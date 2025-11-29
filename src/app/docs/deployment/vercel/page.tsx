@@ -1,6 +1,9 @@
+import { FeatureGuideTemplate } from "@/components/docs";
+import { DocsSection, DocsCard } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
+import { Rocket, Globe, Lock, Layers } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
 
 export const metadata = {
   title: "Deploy to Vercel - Fabrk Docs",
@@ -9,38 +12,49 @@ export const metadata = {
 
 export default function DeployVercelPage() {
   return (
-    <div className="space-y-16">
-      <div className="space-y-4">
-        <div className="inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-sm text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
-        </div>
-        <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DEPLOY_TO_VERCEL</h1>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
-      </div>
+    <FeatureGuideTemplate
+      code="[0x90]"
+      category="Deployment"
+      title="Deploy_To_Vercel"
+      description="Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions."
+      overview="Complete Vercel deployment with automatic HTTPS, global CDN, preview deployments for PRs, and environment variable management."
+      features={[
+        { icon: Lock, title: "Auto HTTPS", description: "SSL with custom domains." },
+        { icon: Globe, title: "Global CDN", description: "Static assets worldwide." },
+        { icon: Layers, title: "Preview URLs", description: "Every PR gets a URL." },
+        { icon: Rocket, title: "Edge Functions", description: "Middleware at the edge." },
+      ]}
+      setup={[
+        {
+          title: "Push to GitHub",
+          description: "Your code must be in a Git repository",
+        },
+        {
+          title: "Connect to Vercel",
+          description: "Go to vercel.com/new and import your repository",
+        },
+        {
+          title: "Configure Environment",
+          description: "Add required environment variables",
+          code: `# Core (Required)
+DATABASE_URL="postgresql://..."
+NEXTAUTH_URL="https://your-domain.vercel.app"
+NEXTAUTH_SECRET="your-32-character-secret"
 
-      <Card className="rounded-none">
-        <CardContent className="p-6">
-          <h3 className="font-mono mb-2 text-xs font-semibold">WHAT_YOU_WILL_GET</h3>
-          <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <li>├─ Automatic HTTPS with custom domains</li>
-            <li>├─ Global CDN for static assets</li>
-            <li>├─ Edge functions for middleware</li>
-            <li>├─ Preview deployments for PRs</li>
-            <li>├─ Environment variable management</li>
-            <li>└─ Web analytics and monitoring</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* One-Click Deploy */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">ONE_CLICK_DEPLOY</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          The fastest way to deploy - click and configure:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="bash" code={`# Add this button to your README
-
+# Generate NEXTAUTH_SECRET with:
+openssl rand -base64 32`,
+          language: "bash",
+        },
+        {
+          title: "Deploy",
+          description: "Click deploy and wait ~2 minutes",
+        },
+      ]}
+      usage={[
+        {
+          title: "One-Click Deploy",
+          description: "Fastest way to deploy",
+          code: `# Add this button to your README
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fabrk)
 
 # Or use the Vercel CLI
@@ -51,36 +65,16 @@ vercel
 # 1. Link to existing project? No
 # 2. Project name? your-app-name
 # 3. Directory? ./
-# 4. Override settings? No`} />
-        </div>
-      </div>
-
-      {/* Step-by-Step Deployment */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">STEP_BY_STEP_DEPLOYMENT</h2>
-        <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-          <li>1. Push to GitHub - Your code must be in a Git repository</li>
-          <li>2. Connect to Vercel - Go to vercel.com/new</li>
-          <li>3. Import repository - Select your GitHub repo</li>
-          <li>4. Configure project - Set environment variables</li>
-          <li>5. Deploy - Click deploy and wait ~2 minutes</li>
-        </ol>
-      </div>
-
-      {/* Required Environment Variables */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">REQUIRED_ENVIRONMENT_VARIABLES</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Add these in Vercel Dashboard → Settings → Environment Variables:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="bash" code={`# Core (Required)
+# 4. Override settings? No`,
+          language: "bash",
+        },
+        {
+          title: "Required Environment Variables",
+          description: "Add in Vercel Dashboard → Settings → Environment Variables",
+          code: `# Core (Required)
 DATABASE_URL="postgresql://..."
 NEXTAUTH_URL="https://your-domain.vercel.app"
 NEXTAUTH_SECRET="your-32-character-secret"
-
-# Generate NEXTAUTH_SECRET with:
-openssl rand -base64 32
 
 # Email (Required for auth)
 RESEND_API_KEY="re_..."
@@ -93,22 +87,13 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_..."
 # Optional
 GOOGLE_CLIENT_ID="..."
 GOOGLE_CLIENT_SECRET="..."
-NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
-        </div>
-        <p className="font-mono text-sm text-muted-foreground">
-          Tip: Set different values for Preview and Production environments.
-        </p>
-      </div>
-
-      {/* vercel.json Configuration */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">VERCEL_JSON_CONFIGURATION</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Optional configuration for advanced settings:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="json" code={`// vercel.json
-
+NEXT_PUBLIC_APP_URL="https://your-domain.com"`,
+          language: "bash",
+        },
+        {
+          title: "vercel.json Configuration",
+          description: "Optional advanced settings",
+          code: `// vercel.json
 {
   "buildCommand": "prisma generate && next build",
   "framework": "nextjs",
@@ -117,44 +102,26 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
   ],
   "crons": [
-    {
-      "path": "/api/cron/cleanup",
-      "schedule": "0 0 * * *"
-    }
+    { "path": "/api/cron/cleanup", "schedule": "0 0 * * *" }
   ]
-}`} />
-        </div>
-      </div>
+}`,
+          language: "json",
+        },
+        {
+          title: "Custom Domain",
+          description: "Connect your custom domain",
+          code: `# 1. Go to Project Settings → Domains
+# 2. Add your domain (e.g., myapp.com)
+# 3. Add DNS records at your registrar:
 
-      {/* Custom Domain */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">CUSTOM_DOMAIN</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Connect your custom domain:
-        </p>
-        <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-          <li>1. Go to Project Settings → Domains</li>
-          <li>2. Add your domain (e.g., myapp.com)</li>
-          <li>3. Add DNS records at your registrar:</li>
-        </ol>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="bash" code={`# For apex domain (myapp.com)
+# For apex domain (myapp.com)
 Type: A
 Name: @
 Value: 76.76.21.21
@@ -162,48 +129,33 @@ Value: 76.76.21.21
 # For www subdomain
 Type: CNAME
 Name: www
-Value: cname.vercel-dns.com`} />
-        </div>
-        <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed" start={4}>
-          <li>4. Wait for DNS propagation (up to 48 hours)</li>
-          <li>5. SSL certificate is automatically provisioned</li>
-        </ol>
-      </div>
+Value: cname.vercel-dns.com
 
-      {/* Stripe Webhook Setup */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">STRIPE_WEBHOOK_SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Configure Stripe webhooks for production:
-        </p>
-        <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-          <li>1. Go to Stripe Dashboard → Webhooks</li>
-          <li>2. Click "Add endpoint"</li>
-          <li>3. Enter URL: <code className="bg-muted px-1 font-mono">https://your-domain.com/api/webhooks/stripe</code></li>
-          <li>4. Select events:</li>
-        </ol>
-        <ul className="ml-4 space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-          <li>├─ checkout.session.completed</li>
-          <li>├─ customer.subscription.created</li>
-          <li>├─ customer.subscription.updated</li>
-          <li>├─ customer.subscription.deleted</li>
-          <li>├─ invoice.paid</li>
-          <li>└─ invoice.payment_failed</li>
-        </ul>
-        <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed" start={5}>
-          <li>5. Copy the webhook signing secret</li>
-          <li>6. Add it as <code className="bg-muted px-1 font-mono">STRIPE_WEBHOOK_SECRET</code> in Vercel</li>
-        </ol>
-      </div>
-
-      {/* Preview Deployments */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">PREVIEW_DEPLOYMENTS</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          Every PR gets a unique preview URL:
-        </p>
-        <div className="[&>div]:rounded-none">
-          <CodeBlock language="bash" code={`# Preview URL format
+# 4. Wait for DNS propagation (up to 48 hours)
+# 5. SSL certificate is automatically provisioned`,
+          language: "bash",
+        },
+        {
+          title: "Stripe Webhook Setup",
+          description: "Configure production webhooks",
+          code: `# 1. Go to Stripe Dashboard → Webhooks
+# 2. Click "Add endpoint"
+# 3. Enter URL: https://your-domain.com/api/webhooks/stripe
+# 4. Select events:
+#    - checkout.session.completed
+#    - customer.subscription.created
+#    - customer.subscription.updated
+#    - customer.subscription.deleted
+#    - invoice.paid
+#    - invoice.payment_failed
+# 5. Copy the webhook signing secret
+# 6. Add it as STRIPE_WEBHOOK_SECRET in Vercel`,
+          language: "bash",
+        },
+        {
+          title: "Preview Deployments",
+          description: "Every PR gets a unique preview URL",
+          code: `# Preview URL format
 https://your-project-git-branch-name-your-team.vercel.app
 
 # Example
@@ -215,79 +167,68 @@ https://fabrk-git-feature-auth-acme.vercel.app
 
 # Use test Stripe keys for previews
 STRIPE_SECRET_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
-        </div>
-      </div>
-
-      {/* Deployment Troubleshooting */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">TROUBLESHOOTING</h2>
-
-        <div className="space-y-2">
-          <h3 className="font-mono text-base font-semibold text-foreground">BUILD_FAILS_WITH_PRISMA_ERROR</h3>
-          <p className="font-mono text-sm text-muted-foreground">
-            Add <code className="bg-muted px-1 font-mono">prisma generate</code> to build command:
-          </p>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="json" code={`// package.json
-{
-  "scripts": {
-    "build": "prisma generate && next build"
-  }
-}`} />
+STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
+          language: "bash",
+        },
+      ]}
+      previous={{ title: "Database", href: "/docs/deployment/database" }}
+      next={{ title: "Environment", href: "/docs/deployment/environment" }}
+    >
+      {/* What You Get */}
+      <DocsSection title="What You Get">
+        <DocsCard>
+          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
+            <div>├─ Automatic HTTPS with custom domains</div>
+            <div>├─ Global CDN for static assets</div>
+            <div>├─ Edge functions for middleware</div>
+            <div>├─ Preview deployments for PRs</div>
+            <div>├─ Environment variable management</div>
+            <div>└─ Web analytics and monitoring</div>
           </div>
-        </div>
+        </DocsCard>
+      </DocsSection>
 
-        <Card className="rounded-none">
-          <CardContent className="p-6">
-            <h3 className="font-mono mb-2 text-xs font-semibold">ENVIRONMENT_VARIABLES_NOT_WORKING</h3>
-            <p className="font-mono text-sm text-muted-foreground">
-              1. Check variable is set for correct environment (Production/Preview/Development)
-              <br />
-              2. Client-side variables must start with <code className="bg-muted px-1 font-mono">NEXT_PUBLIC_</code>
-              <br />
-              3. Redeploy after adding variables
-            </p>
-          </CardContent>
-        </Card>
-
-        <div className="space-y-2">
-          <h3 className="font-mono text-base font-semibold text-foreground">DATABASE_CONNECTION_TIMEOUT</h3>
-          <p className="font-mono text-sm text-muted-foreground">
-            Use connection pooling (like Supabase Pooler or PgBouncer):
-          </p>
-          <div className="[&>div]:rounded-none">
-            <CodeBlock language="bash" code={`DATABASE_URL="postgresql://...?pgbouncer=true&connection_limit=1"`} />
+      {/* Troubleshooting */}
+      <DocsSection title="Troubleshooting">
+        <DocsCard>
+          <div className="space-y-4">
+            <div>
+              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Build Fails with Prisma Error</h4>
+              <p className={docsTypography.body}>Add <code className="bg-muted px-1 font-mono text-xs">prisma generate</code> to build command in package.json</p>
+            </div>
+            <div>
+              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Environment Variables Not Working</h4>
+              <p className={docsTypography.body}>1. Check correct environment (Prod/Preview/Dev)<br/>2. Client-side vars need NEXT_PUBLIC_ prefix<br/>3. Redeploy after adding variables</p>
+            </div>
+            <div>
+              <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Database Connection Timeout</h4>
+              <p className={docsTypography.body}>Use connection pooling (Supabase Pooler or PgBouncer)</p>
+            </div>
           </div>
-        </div>
-      </div>
+        </DocsCard>
+      </DocsSection>
 
       {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-bold text-primary">NEXT_STEPS</h2>
+      <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/environment">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">ENVIRONMENT_VARIABLES</h3>
-                <p className="font-mono text-sm text-muted-foreground">
-                  Complete environment setup guide
-                </p>
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Environment Variables</h3>
+                <p className={docsTypography.body}>Complete environment setup guide</p>
               </CardContent>
             </Card>
           </Link>
           <Link href="/docs/deployment/database">
-            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+            <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono text-base font-semibold text-foreground">DATABASE_SETUP</h3>
-                <p className="font-mono text-sm text-muted-foreground">
-                  Set up production PostgreSQL
-                </p>
+                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database Setup</h3>
+                <p className={docsTypography.body}>Set up production PostgreSQL</p>
               </CardContent>
             </Card>
           </Link>
         </div>
-      </div>
-    </div>
+      </DocsSection>
+    </FeatureGuideTemplate>
   );
 }
