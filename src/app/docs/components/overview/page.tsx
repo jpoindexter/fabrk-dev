@@ -280,22 +280,22 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
           &gt; See individual component pages for usage examples and API reference:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">
-          <Link href="/docs/components/buttons" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/buttons" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; BUTTONS</span>
           </Link>
-          <Link href="/docs/components/forms" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/forms" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; FORMS_INPUTS</span>
           </Link>
-          <Link href="/docs/components/data-display" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/data-display" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; DATA_DISPLAY</span>
           </Link>
-          <Link href="/docs/components/charts" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/charts" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; CHARTS_ANALYTICS</span>
           </Link>
-          <Link href="/docs/components/modals" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/modals" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; MODALS_DIALOGS</span>
           </Link>
-          <Link href="/docs/components/uploads" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+          <Link href="/docs/components/uploads" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50">
             <span className="font-mono text-[10px]">&gt; UPLOAD_COMPONENTS</span>
           </Link>
         </div>

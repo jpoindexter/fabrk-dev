@@ -78,7 +78,7 @@ export function ShowcaseNav() {
                 <div
                   className={cn(
                     "p-4 rounded-lg border-2 transition-all",
-                    "hover:border-primary hover:shadow-brutal-sm",
+                    "hover:border-primary/50 hover:shadow-brutal-sm",
                     isActive
                       ? "border-primary bg-primary/10 shadow-brutal-sm"
                       : "border-border bg-background"

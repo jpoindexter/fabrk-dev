@@ -80,9 +80,21 @@ export function PricingSection() {
               {/* Window Header */}
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-1.5">
-                  <div className="size-2.5 rounded-full bg-destructive/50" />
-                  <div className="size-2.5 rounded-full bg-warning/50" />
-                  <div className="size-2.5 rounded-full bg-success/50" />
+                  <motion.div
+                    className="size-2.5 rounded-full bg-destructive/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                  />
+                  <motion.div
+                    className="size-2.5 rounded-full bg-warning/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+                  />
+                  <motion.div
+                    className="size-2.5 rounded-full bg-success/50"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+                  />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">[0x41] pricing_config.exe │ PID:3142</span>
               </div>

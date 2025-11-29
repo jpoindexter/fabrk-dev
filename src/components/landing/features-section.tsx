@@ -215,10 +215,10 @@ function AuthPreview() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary">
+            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary/50">
               <span className="font-mono text-xs">GOOGLE</span>
             </div>
-            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary">
+            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary/50">
               <span className="font-mono text-xs">MICROSOFT</span>
             </div>
           </div>

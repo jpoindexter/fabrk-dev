@@ -315,17 +315,17 @@ export function HeroSection() {
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-1.5">
                   <motion.div
-                    className="size-3 rounded-full bg-destructive/50"
+                    className="size-2.5 rounded-full bg-destructive/50"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0 }}
                   />
                   <motion.div
-                    className="size-3 rounded-full bg-warning/50"
+                    className="size-2.5 rounded-full bg-warning/50"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
                   />
                   <motion.div
-                    className="size-3 rounded-full bg-success/50"
+                    className="size-2.5 rounded-full bg-success/50"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
                   />
