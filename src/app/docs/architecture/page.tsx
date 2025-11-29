@@ -19,12 +19,13 @@ export default function ArchitecturePage() {
             </div>
 
             {/* High Level Overview */}
-            <section className="space-y-3">
+            <section className="space-y-6">
                 <h2 className="font-mono text-lg font-bold">High-Level Overview</h2>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Fabrk is built on the <strong>T3 Stack</strong> philosophy but extended for enterprise SaaS requirements.
                     It leverages Next.js 15 (App Router) for the full-stack framework, ensuring type safety from the database to the frontend.
                 </p>
+                <div className="mt-4">
                 <Mermaid chart={`graph TD
     subgraph Client
         Browser[Browser / Mobile]
@@ -57,10 +58,11 @@ export default function ArchitecturePage() {
     App --> API
     API --> DB
     API --> Services`} />
+                </div>
             </section>
 
             {/* Core Components */}
-            <section className="space-y-3">
+            <section className="space-y-6">
                 <h2 className="font-mono text-lg font-bold">Core Components</h2>
 
                 <div className="grid gap-2 md:grid-cols-2">
@@ -97,7 +99,7 @@ export default function ArchitecturePage() {
             </section>
 
             {/* Data Flow */}
-            <section className="space-y-3">
+            <section className="space-y-6">
                 <h2 className="font-mono text-lg font-bold">Data Flow & Patterns</h2>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     We strictly follow unidirectional data flow. Server Actions are used for mutations,
@@ -129,7 +131,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
             </section>
 
             {/* Scalability */}
-            <section className="space-y-3">
+            <section className="space-y-6">
                 <h2 className="font-mono text-lg font-bold">Scalability Considerations</h2>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                     Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
