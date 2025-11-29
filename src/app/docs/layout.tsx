@@ -326,7 +326,7 @@ export default function DocsLayout({
 
         {/* Table of Contents (Right Sidebar) */}
         <aside
-          className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-border xl:block overflow-y-auto bg-card"
+          className="sticky top-16 hidden h-[calc(100vh-4rem)] w-72 shrink-0 border-l border-border xl:block overflow-y-auto bg-card"
           aria-label="Table of contents"
         >
           <div className="p-4">
@@ -338,9 +338,10 @@ export default function DocsLayout({
                     <li key={heading.id}>
                       <a
                         href={`#${heading.id}`}
-                        className="block text-muted-foreground hover:text-foreground hover:bg-muted px-2 py-1 transition-colors"
+                        className="flex items-start gap-1 text-muted-foreground hover:text-foreground hover:bg-muted px-2 py-1 transition-colors"
                       >
-                        &gt; {heading.text}
+                        <span className="shrink-0">&gt;</span>
+                        <span className="break-words">{heading.text}</span>
                       </a>
                     </li>
                   ))}
