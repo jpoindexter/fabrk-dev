@@ -192,7 +192,7 @@ export default function ComponentsOverviewPage() {
     <div className="space-y-16">
       {/* Header */}
       <div>
-        <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">
             [ [0x60] COMPONENTS ] UI_LIBRARY │ {totalComponents} COMPONENTS
           </span>

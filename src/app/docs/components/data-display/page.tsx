@@ -10,7 +10,7 @@ export default function DataDisplayComponentsPage() {
   return (
     <div className="space-y-16">
       <div>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DATA_DISPLAY</h1>
@@ -21,7 +21,7 @@ export default function DataDisplayComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Table</code> - Data table with sorting and filtering</li>
             <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Card</code> - Content container with header and footer</li>

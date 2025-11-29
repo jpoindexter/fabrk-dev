@@ -11,10 +11,14 @@ export const metadata = {
 export default function ArchitecturePage() {
     return (
         <div className="space-y-16">
-            <div className="space-y-2">
+            {/* Header */}
+            <div className="space-y-4">
+                <div className="inline-block border border-border bg-card px-3 py-1">
+                    <span className="font-mono text-sm text-muted-foreground">[ [0x00] CORE ] ARCHITECTURE</span>
+                </div>
                 <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">System Architecture</h1>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-                    A deep dive into Fabrk's enterprise-grade stack and design patterns.
+                    &gt; A deep dive into Fabrk's enterprise-grade stack and design patterns.
                 </p>
             </div>
 

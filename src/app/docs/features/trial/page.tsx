@@ -11,8 +11,8 @@ export default function TrialPage() {
   return (
     <div className="space-y-16">
       {/* Header */}
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x30] FEATURES ] TRIAL</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FREE_TRIAL_SYSTEM</h1>
@@ -43,7 +43,7 @@ export default function TrialPage() {
           <h2 className="font-mono text-lg font-bold text-primary">WHY_OFFER_TRIALS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-mono font-medium">BENEFITS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">BENEFITS</h3>
               <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>Lower barrier to signup (no credit card upfront)</li>
                 <li>Users experience value before paying</li>
@@ -52,7 +52,7 @@ export default function TrialPage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-mono font-medium">COMMON_TRIAL_LENGTHS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">COMMON_TRIAL_LENGTHS</h3>
               <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>7 days:</strong> Quick-value products</li>
                 <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>14 days:</strong> Most SaaS (recommended)</li>
@@ -70,7 +70,7 @@ export default function TrialPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
-              <h3 className="font-mono font-semibold">USER_STARTS_TRIAL</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">USER_STARTS_TRIAL</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               User clicks &quot;Start Free Trial&quot; on your pricing page. They create an account
@@ -80,7 +80,7 @@ export default function TrialPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
-              <h3 className="font-mono font-semibold">TRIAL_BANNER_SHOWS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">TRIAL_BANNER_SHOWS</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               While on trial, users see a banner showing how many days are left. This creates
@@ -90,7 +90,7 @@ export default function TrialPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
-              <h3 className="font-mono font-semibold">URGENCY_NEAR_END</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">URGENCY_NEAR_END</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               When trial is almost over (last 3 days), the banner becomes more prominent.
@@ -100,7 +100,7 @@ export default function TrialPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
-              <h3 className="font-mono font-semibold">TRIAL_EXPIRES</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">TRIAL_EXPIRES</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               When trial ends, users can no longer access premium features. They see a message
@@ -148,7 +148,7 @@ export const config = {
         </p>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <h3 className="font-mono font-semibold mb-3">BANNER_STATES</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">BANNER_STATES</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
                 <div className="h-3 w-3 rounded-full bg-success"></div>
@@ -187,7 +187,7 @@ export const config = {
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
 
-        <h3 className="font-mono font-semibold">CHECK_IF_USER_IS_ON_TRIAL</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground">CHECK_IF_USER_IS_ON_TRIAL</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Use these helpers to check trial status:
         </p>
@@ -379,7 +379,7 @@ const subscription = await stripe.subscriptions.create({
           <Link href="/docs/features/payments">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">PAYMENTS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">PAYMENTS</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Set up Stripe to handle trial-to-paid conversion.
                 </p>
@@ -389,7 +389,7 @@ const subscription = await stripe.subscriptions.create({
           <Link href="/docs/features/emails">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">EMAIL_REMINDERS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">EMAIL_REMINDERS</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Send trial reminder emails to increase conversion.
                 </p>

@@ -23,7 +23,7 @@ export default function AnalyticsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Fabrk integrates PostHog for comprehensive product analytics. Track user behavior,
             analyze conversion funnels, record sessions, and manage feature flags all in one platform.
@@ -39,7 +39,7 @@ export default function AnalyticsPage() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">CONFIGURATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">CONFIGURATION</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Add your PostHog credentials to environment variables:
           </p>
@@ -66,7 +66,7 @@ module.exports = {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">POSTHOG_PROVIDER_SETUP</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">POSTHOG_PROVIDER_SETUP</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Initialize PostHog in your application:
           </p>
@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">TRACKING_EVENTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">TRACKING_EVENTS</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Track custom events throughout your application:
           </p>
@@ -157,7 +157,7 @@ export function CheckoutButton({ plan, price }: Props) {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">USER_IDENTIFICATION</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">USER_IDENTIFICATION</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Identify users after authentication to link their activity:
           </p>
@@ -203,7 +203,7 @@ const handleLogout = () => {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">PAGE_VIEW_TRACKING</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">PAGE_VIEW_TRACKING</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Track page views with the Next.js router:
           </p>
@@ -239,7 +239,7 @@ export function PageViewTracker() {
 
       <div className="space-y-4">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">SERVER_SIDE_TRACKING</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">SERVER_SIDE_TRACKING</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Track events from API routes and server actions:
           </p>
@@ -287,7 +287,7 @@ export async function POST(req: Request) {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">BEST_PRACTICES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
           <div className="font-mono text-sm text-muted-foreground space-y-1">
             <div>├─ Use consistent naming: Follow a convention like <code className="bg-muted px-1 font-mono text-xs">object_action</code></div>
             <div>├─ Don&apos;t over-track: Focus on meaningful events that inform decisions</div>

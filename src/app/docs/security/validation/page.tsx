@@ -10,8 +10,8 @@ export const metadata = {
 export default function SchemaValidationPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] VALIDATION</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">SCHEMA_VALIDATION</h1>

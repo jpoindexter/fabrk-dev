@@ -10,7 +10,7 @@ export default function FeaturesComponentsPage() {
   return (
     <div className="space-y-16">
       <div>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x60] COMPONENTS ] FEATURES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FEATURE_SECTIONS</h1>
@@ -21,7 +21,7 @@ export default function FeaturesComponentsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-3">AVAILABLE_COMPONENTS</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">AVAILABLE_COMPONENTS</h2>
           <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">FeaturesSection</code> - Grid layout with feature cards</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">EnterpriseFeaturesSection</code> - Enterprise-focused features with icons</li>

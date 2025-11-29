@@ -12,7 +12,7 @@ export default function CookieConsentPage() {
     <div className="space-y-16">
       {/* Header */}
       <div className="space-y-4">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x80] FEATURES ] COOKIE_CONSENT</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">COOKIE_CONSENT_GDPR</h1>
@@ -42,7 +42,7 @@ export default function CookieConsentPage() {
           <h2 className="font-mono text-lg font-bold text-primary">WHY_YOU_NEED_THIS</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <h3 className="font-mono font-medium">LEGAL_COMPLIANCE</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">LEGAL_COMPLIANCE</h3>
               <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>GDPR (Europe) requires explicit consent</li>
                 <li>CCPA (California) requires disclosure</li>
@@ -50,7 +50,7 @@ export default function CookieConsentPage() {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="font-mono font-medium">GOOGLE_REQUIREMENTS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">GOOGLE_REQUIREMENTS</h3>
               <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>Consent Mode v2 required since March 2024</li>
                 <li>Needed for Google Ads remarketing</li>
@@ -68,7 +68,7 @@ export default function CookieConsentPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
-              <h3 className="font-mono font-semibold">FIRST_VISIT</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">FIRST_VISIT</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               New visitors see a &quot;Cookie Settings&quot; button in the bottom-right corner.
@@ -78,7 +78,7 @@ export default function CookieConsentPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
-              <h3 className="font-mono font-semibold">USER_MAKES_CHOICE</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">USER_MAKES_CHOICE</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Clicking the button opens a modal with three tabs: Consent (quick toggles),
@@ -88,7 +88,7 @@ export default function CookieConsentPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
-              <h3 className="font-mono font-semibold">CHOICE_SAVED</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">CHOICE_SAVED</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               Their preference is stored in localStorage for 1 year. Google Consent Mode
@@ -98,7 +98,7 @@ export default function CookieConsentPage() {
           <div className="border border-border bg-card p-4">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
-              <h3 className="font-mono font-semibold">RETURN_VISITS</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">RETURN_VISITS</h3>
             </div>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
               The banner doesn&apos;t show again (unless they clear storage). Their saved
@@ -211,7 +211,7 @@ dataLayer.push({
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CUSTOMIZATION</h2>
 
-        <h3 className="font-mono font-semibold">ADD_REMOVE_COOKIE_CATEGORIES</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground">ADD_REMOVE_COOKIE_CATEGORIES</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Edit the categories in <code className="bg-muted px-1 font-mono">src/components/cookie-consent-tabs.tsx</code>:
         </p>
@@ -261,7 +261,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         </p>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <h3 className="font-mono font-semibold mb-2">HOW_IT_WORKS</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">HOW_IT_WORKS</h3>
             <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>User clicks &quot;Download My Data&quot; button</li>
               <li>Request goes to <code className="bg-muted px-1 font-mono">/api/user/export</code></li>
@@ -277,7 +277,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <h2 className="font-mono text-lg font-bold text-primary">TESTING</h2>
         <Card className="rounded-none">
           <CardContent className="p-6 space-y-4">
-            <h3 className="font-mono font-semibold">MANUAL_TESTING</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">MANUAL_TESTING</h3>
             <ol className="list-inside list-decimal space-y-2 text-sm text-muted-foreground">
               <li>Open your app in a private/incognito window</li>
               <li>You should see the &quot;Cookie Settings&quot; button (bottom-right)</li>
@@ -374,7 +374,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           <Link href="/docs/features/analytics">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">ANALYTICS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">ANALYTICS</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Set up PostHog analytics that respects consent.
                 </p>
@@ -384,7 +384,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           <Link href="/docs/security/headers">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">SECURITY_HEADERS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">SECURITY_HEADERS</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Configure CSP and other security headers.
                 </p>

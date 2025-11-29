@@ -5,8 +5,8 @@ import { CodeBlock } from "@/components/ui/code-block";
 export default function CSRFProtectionPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] CSRF</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CSRF_PROTECTION</h1>

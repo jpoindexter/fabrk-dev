@@ -11,8 +11,8 @@ export default function CloudStoragePage() {
   return (
     <div className="space-y-16">
       {/* Header */}
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">CLOUD_STORAGE</h1>
@@ -72,7 +72,7 @@ export default function CloudStoragePage() {
         </p>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <h3 className="font-mono font-semibold mb-3">PROVIDER_PRIORITY</h3>
+            <h3 className="font-mono text-base font-semibold text-foreground">PROVIDER_PRIORITY</h3>
             <div className="space-y-2">
               <div className="flex items-center gap-3 p-3 border">
                 <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -106,7 +106,7 @@ export default function CloudStoragePage() {
         <div className="grid gap-4 sm:grid-cols-3">
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono font-semibold">CLOUDFLARE_R2</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">CLOUDFLARE_R2</h3>
               <p className="font-mono text-sm text-muted-foreground mb-2">Recommended</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>No egress fees (huge savings)</li>
@@ -118,7 +118,7 @@ export default function CloudStoragePage() {
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono font-semibold">AWS_S3</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">AWS_S3</h3>
               <p className="font-mono text-sm text-muted-foreground mb-2">Industry Standard</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>Most mature platform</li>
@@ -130,7 +130,7 @@ export default function CloudStoragePage() {
           </Card>
           <Card className="rounded-none">
             <CardContent className="p-6">
-              <h3 className="font-mono font-semibold">LOCAL_STORAGE</h3>
+              <h3 className="font-mono text-base font-semibold text-foreground">LOCAL_STORAGE</h3>
               <p className="font-mono text-sm text-muted-foreground mb-2">Development Only</p>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>No setup required</li>
@@ -154,7 +154,7 @@ export default function CloudStoragePage() {
           <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
             1
           </span>
-          <h3 className="font-mono font-semibold">CREATE_R2_BUCKET</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">CREATE_R2_BUCKET</h3>
         </div>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           In Cloudflare Dashboard, go to &quot;R2 Object Storage&quot; → &quot;Create bucket&quot;.
@@ -165,7 +165,7 @@ export default function CloudStoragePage() {
           <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
             2
           </span>
-          <h3 className="font-mono font-semibold">GENERATE_API_TOKEN</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">GENERATE_API_TOKEN</h3>
         </div>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Go to &quot;R2 Object Storage&quot; → &quot;Manage R2 API Tokens&quot; → &quot;Create API Token&quot;.
@@ -176,7 +176,7 @@ export default function CloudStoragePage() {
           <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">
             3
           </span>
-          <h3 className="font-mono font-semibold">ADD_ENVIRONMENT_VARIABLES</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">ADD_ENVIRONMENT_VARIABLES</h3>
         </div>
         <CodeBlock language="bash" code={`# .env.local
 
@@ -214,7 +214,7 @@ AWS_S3_REGION="us-east-1"`} />
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold text-primary">CODE_REFERENCE</h2>
 
-        <h3 className="font-mono font-semibold">UPLOAD_A_FILE</h3>
+        <h3 className="font-mono text-base font-semibold text-foreground">UPLOAD_A_FILE</h3>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Use the upload utility to store files:
         </p>
@@ -462,7 +462,7 @@ export function FileUploader() {
           <Link href="/docs/tutorials/authentication">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">AUTHENTICATION</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">AUTHENTICATION</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Secure file uploads with user authentication.
                 </p>
@@ -472,7 +472,7 @@ export function FileUploader() {
           <Link href="/docs/features/organizations">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">ORGANIZATIONS</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">ORGANIZATIONS</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Organize files by team with multi-tenancy.
                 </p>

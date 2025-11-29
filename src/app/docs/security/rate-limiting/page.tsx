@@ -10,8 +10,8 @@ export const metadata = {
 export default function RateLimitingPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] RATE_LIMITING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">RATE_LIMITING</h1>
@@ -22,7 +22,7 @@ export default function RateLimitingPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">WHAT'S_INCLUDED</h3>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Token bucket algorithm for smooth rate limiting</li>
             <li>Configurable limits per endpoint</li>
@@ -227,7 +227,7 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
           <Link href="/docs/security/csrf">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">CSRF_PROTECTION</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">CSRF_PROTECTION</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Protect forms from cross-site request forgery
                 </p>
@@ -237,7 +237,7 @@ UPSTASH_REDIS_REST_TOKEN="your-redis-token"`} />
           <Link href="/docs/security/bot-protection">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">BOT_PROTECTION</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">BOT_PROTECTION</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Add bot detection to your endpoints
                 </p>

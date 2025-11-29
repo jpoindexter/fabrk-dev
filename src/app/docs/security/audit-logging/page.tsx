@@ -10,8 +10,8 @@ export const metadata = {
 export default function AuditLoggingPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">AUDIT_LOGGING</h1>
@@ -22,7 +22,7 @@ export default function AuditLoggingPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h3 className="mb-2 font-mono font-semibold">WHAT'S_INCLUDED</h3>
+          <h3 className="font-mono text-base font-semibold text-foreground">WHAT'S_INCLUDED</h3>
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>Database-backed audit log storage</li>
             <li>Pre-defined event types</li>
@@ -428,7 +428,7 @@ async function sendSecurityAlert(log: AuditLog) {
           <Link href="/docs/security/validation">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">Schema Validation</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Schema Validation</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Validate all inputs with Zod
                 </p>
@@ -438,7 +438,7 @@ async function sendSecurityAlert(log: AuditLog) {
           <Link href="/docs/deployment/database">
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-6">
-                <h3 className="font-mono font-semibold">Database Setup</h3>
+                <h3 className="font-mono text-base font-semibold text-foreground">Database Setup</h3>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Set up production database
                 </p>

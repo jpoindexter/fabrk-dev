@@ -23,7 +23,7 @@ export default function FeatureFlagsPage() {
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">OVERVIEW</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">OVERVIEW</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Feature flags allow you to control feature visibility without deploying new code.
             Use them for gradual rollouts, A/B testing, user targeting, and kill switches.
@@ -39,7 +39,7 @@ export default function FeatureFlagsPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">DATABASE_SCHEMA</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">DATABASE_SCHEMA</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Feature flag model in Prisma schema:
           </p>
@@ -74,7 +74,7 @@ model FeatureFlag {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">FEATURE_FLAG_SERVICE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">FEATURE_FLAG_SERVICE</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Core service for checking feature flags:
           </p>
@@ -157,7 +157,7 @@ export async function getFeatureFlags(context: FlagContext = {}) {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">SERVER_SIDE_USAGE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">SERVER_SIDE_USAGE</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Check feature flags in API routes and server components:
           </p>
@@ -212,7 +212,7 @@ export default async function DashboardPage() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">CLIENT_SIDE_USAGE</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">CLIENT_SIDE_USAGE</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             Use feature flags in client components with a React hook:
           </p>
@@ -291,7 +291,7 @@ export function NewFeature() {
 
       <div className="space-y-4 mb-8">
         <div>
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">ADMIN_MANAGEMENT</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">ADMIN_MANAGEMENT</h2>
           <p className="font-mono text-sm text-muted-foreground mb-4">
             API routes for managing feature flags:
           </p>
@@ -365,7 +365,7 @@ export async function POST(
 
       <Card className="rounded-none">
         <CardContent className="p-6">
-          <h2 className="font-mono text-lg font-bold text-primary mb-4">BEST_PRACTICES</h2>
+          <h2 className="font-mono text-lg font-bold text-primary">BEST_PRACTICES</h2>
           <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4">
             <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Use descriptive keys:</strong> <code className="font-mono">new-checkout-flow</code> not <code className="font-mono">flag1</code></li>
             <li className="font-mono text-sm text-muted-foreground leading-relaxed"><strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>

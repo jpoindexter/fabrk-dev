@@ -10,8 +10,8 @@ export const metadata = {
 export default function EnvironmentVariablesPage() {
   return (
     <div className="space-y-16">
-      <div className="space-y-2">
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+      <div className="space-y-4">
+        <div className="inline-block border border-border bg-card px-3 py-1">
           <span className="font-mono text-sm text-muted-foreground">[ [0x10] DEPLOYMENT ] ENVIRONMENT</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">ENVIRONMENT_VARIABLES</h1>
