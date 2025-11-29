@@ -20,7 +20,7 @@ interface BannerProps {
 }
 
 const variantStyles: Record<BannerVariant, string> = {
-  info: "bg-info/10 border-blue-500 text-blue-900",
+  info: "bg-info/10 border-info text-info-foreground",
   success: "bg-success/10 border-success text-success-foreground",
   warning: "bg-warning/10 border-warning text-warning-foreground",
   error: "bg-destructive/10 border-destructive text-destructive-foreground",

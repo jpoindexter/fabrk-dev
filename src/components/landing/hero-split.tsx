@@ -94,8 +94,8 @@ export function HeroSplit({
                     <div className="flex items-center gap-3">
                       <div className="h-8 w-8 rounded-full border-2 border-foreground bg-primary"></div>
                       <div>
-                        <div className="h-3 w-24 bg-black/20"></div>
-                        <div className="mt-1 h-2 w-16 bg-black/10"></div>
+                        <div className="h-3 w-24 bg-foreground/20"></div>
+                        <div className="mt-1 h-2 w-16 bg-foreground/10"></div>
                       </div>
                     </div>
                     <div className="h-8 w-8 border-2 border-foreground bg-muted"></div>
@@ -108,7 +108,7 @@ export function HeroSplit({
                         key={i}
                         className="border-2 border-foreground bg-card p-3 shadow-[2px_2px_0px_0px_var(--foreground)]"
                       >
-                        <div className="mb-2 h-2 w-12 bg-black/10"></div>
+                        <div className="mb-2 h-2 w-12 bg-foreground/10"></div>
                         <div className="h-4 w-8 bg-primary/20"></div>
                       </div>
                     ))}
@@ -117,12 +117,12 @@ export function HeroSplit({
                   {/* Data Table Preview */}
                   <div className="border-2 border-foreground bg-card">
                     <div className="border-b-2 border-foreground/10 p-2">
-                      <div className="h-3 w-20 bg-black/20"></div>
+                      <div className="h-3 w-20 bg-foreground/20"></div>
                     </div>
                     <div className="space-y-2 p-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="flex gap-2">
-                          <div className="h-3 w-full bg-black/5"></div>
+                          <div className="h-3 w-full bg-foreground/5"></div>
                         </div>
                       ))}
                     </div>

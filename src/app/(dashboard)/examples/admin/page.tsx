@@ -116,8 +116,8 @@ const columns: ColumnDef<User>[] = [
           <span
             className={`rounded-full px-2 py-1 text-xs font-semibold ${
               role === "ADMIN"
-                ? "bg-primary/20 text-purple-800"
-                : "bg-gray-100 text-gray-800"
+                ? "bg-primary/20 text-primary"
+                : "bg-muted text-muted-foreground"
             }`}
           >
             {role}
@@ -140,7 +140,7 @@ const columns: ColumnDef<User>[] = [
             status === "active"
               ? "bg-success/20 text-success-foreground"
               : status === "pending"
-              ? "bg-warning/20 text-yellow-800"
+              ? "bg-warning/20 text-warning-foreground"
               : "bg-destructive/20 text-destructive-foreground"
           }`}
         >
@@ -212,17 +212,17 @@ export default function AdminPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Total Users</p>
           <p className="text-3xl font-bold text-foreground">{users.length}</p>
         </div>
-        <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Active Users</p>
           <p className="text-3xl font-bold text-success">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
-        <div className="rounded-lg border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Admins</p>
           <p className="text-3xl font-bold text-primary">
             {users.filter((u) => u.role === "ADMIN").length}

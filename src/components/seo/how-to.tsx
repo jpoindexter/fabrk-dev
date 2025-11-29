@@ -95,7 +95,7 @@ export function HowTo({
                   <img
                     src={step.image}
                     alt={step.name}
-                    className="mt-4 rounded-lg border border-gray-200"
+                    className="mt-4 rounded-lg border border-border"
                   />
                 )}
               </div>

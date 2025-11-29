@@ -233,11 +233,11 @@ export default async function AnalyticsPage() {
         <p className="text-sm text-muted-foreground">
           <span className="font-semibold text-foreground">📊 Implementation Note:</span>{" "}
           This is a demo analytics page with mock data. Replace{" "}
-          <code className="rounded bg-black/10 px-1 py-0.5 text-xs">
+          <code className="rounded bg-muted px-1 py-0.5 text-xs">
             mockAnalytics
           </code>{" "}
           with real data from your database. For charts, install Recharts:{" "}
-          <code className="rounded bg-black/10 px-1 py-0.5 text-xs">
+          <code className="rounded bg-muted px-1 py-0.5 text-xs">
             npm install recharts
           </code>
         </p>

@@ -651,7 +651,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
           {setupStep === "qr" && (
             <div className="space-y-4">
-              <div className="flex justify-center p-4 bg-white rounded-lg">
+              <div className="flex justify-center p-4 bg-card rounded-lg">
                 <QRCodeSVG value={qrCodeUri} size={200} />
               </div>
               <div className="space-y-2">

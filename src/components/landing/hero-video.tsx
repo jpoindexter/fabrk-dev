@@ -46,7 +46,7 @@ export function HeroVideo({
             </video>
             {/* Dark overlay for readability */}
             <div
-              className="absolute inset-0 bg-black opacity-60"
+              className="absolute inset-0 bg-foreground/60"
               data-overlay-opacity={overlayOpacity}
             ></div>
           </>
@@ -54,7 +54,7 @@ export function HeroVideo({
           /* Animated gradient fallback */
           <div className="h-full w-full animate-gradient-shift bg-gradient-to-br from-primary via-primary/80 to-primary">
             <div
-              className="absolute inset-0 bg-black opacity-50"
+              className="absolute inset-0 bg-foreground/50"
             ></div>
           </div>
         )}

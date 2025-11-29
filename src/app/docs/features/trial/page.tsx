@@ -151,28 +151,28 @@ export const config = {
             <h3 className="font-mono font-semibold mb-3">BANNER_STATES</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
-                <div className="h-3 w-3 rounded-full bg-green-600"></div>
+                <div className="h-3 w-3 rounded-full bg-success"></div>
                 <div>
                   <p className="text-sm font-medium">Plenty of time (8+ days)</p>
                   <p className="text-xs text-muted-foreground">&quot;You have 12 days left in your trial&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
-                <div className="h-3 w-3 rounded-full bg-yellow-600"></div>
+                <div className="h-3 w-3 rounded-full bg-warning"></div>
                 <div>
                   <p className="text-sm font-medium">Running low (4-7 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;5 days left - Subscribe to keep access&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
-                <div className="h-3 w-3 rounded-full bg-red-600"></div>
+                <div className="h-3 w-3 rounded-full bg-destructive"></div>
                 <div>
                   <p className="text-sm font-medium">Urgent (1-3 days)</p>
                   <p className="text-xs text-muted-foreground">&quot;Trial ends tomorrow! Subscribe now&quot;</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 border border-border bg-card">
-                <div className="h-3 w-3 rounded-full bg-gray-600"></div>
+                <div className="h-3 w-3 rounded-full bg-muted-foreground"></div>
                 <div>
                   <p className="text-sm font-medium">Expired</p>
                   <p className="text-xs text-muted-foreground">&quot;Your trial has ended. Subscribe to continue&quot;</p>

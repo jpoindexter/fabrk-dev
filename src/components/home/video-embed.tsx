@@ -80,7 +80,7 @@ export function VideoEmbed({ className, showTitle = true }: VideoEmbedProps) {
         {!isPlaying ? (
           // Thumbnail with play button
           <div
-            className="group relative aspect-video w-full cursor-pointer overflow-hidden bg-black"
+            className="group relative aspect-video w-full cursor-pointer overflow-hidden bg-foreground"
             onClick={() => setIsPlaying(true)}
             role="button"
             tabIndex={0}
@@ -98,14 +98,14 @@ export function VideoEmbed({ className, showTitle = true }: VideoEmbedProps) {
             />
 
             {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-all duration-300 group-hover:bg-black/40">
+            <div className="absolute inset-0 flex items-center justify-center bg-foreground/30 transition-all duration-300 group-hover:bg-foreground/40">
               <div className="rounded-full bg-primary p-4 transition-transform duration-300 group-hover:scale-110">
                 <Play className="size-8 fill-foreground text-foreground" />
               </div>
             </div>
 
             {/* Video duration (optional) */}
-            <div className="absolute bottom-4 right-4 rounded bg-black/80 px-2 py-1 text-xs font-semibold text-foreground">
+            <div className="absolute bottom-4 right-4 rounded bg-foreground/80 px-2 py-1 text-xs font-semibold text-background">
               1:00
             </div>
           </div>

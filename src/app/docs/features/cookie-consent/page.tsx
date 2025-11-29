@@ -115,7 +115,7 @@ export default function CookieConsentPage() {
           <CardContent className="p-6">
             <div className="space-y-4">
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-green-600 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
                 <div>
                   <p className="font-medium">Necessary (Always On)</p>
                   <p className="text-sm text-muted-foreground">
@@ -125,7 +125,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-blue-600 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
                 <div>
                   <p className="font-medium">Preferences</p>
                   <p className="text-sm text-muted-foreground">
@@ -134,7 +134,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-yellow-600 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
                 <div>
                   <p className="font-medium">Statistics</p>
                   <p className="text-sm text-muted-foreground">
@@ -144,7 +144,7 @@ export default function CookieConsentPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
-                <div className="h-3 w-3 rounded-full bg-red-600 mt-1"></div>
+                <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
                 <div>
                   <p className="font-medium">Marketing</p>
                   <p className="text-sm text-muted-foreground">

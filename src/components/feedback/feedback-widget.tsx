@@ -129,7 +129,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
                     className={`h-6 w-6 ${
                       num <= rating
                         ? "fill-yellow-400 text-yellow-400"
-                        : "text-gray-300"
+                        : "text-muted-foreground/50"
                     }`}
                   />
                 </button>

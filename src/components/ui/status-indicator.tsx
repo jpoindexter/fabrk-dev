@@ -15,7 +15,7 @@ interface StatusIndicatorProps {
 
 const statusColors: Record<Status, string> = {
   online: "bg-success",
-  offline: "bg-gray-400",
+  offline: "bg-muted-foreground",
   busy: "bg-destructive",
   away: "bg-warning",
   idle: "bg-warning",

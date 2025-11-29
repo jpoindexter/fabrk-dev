@@ -54,7 +54,7 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
           <h2 className="mb-2 text-3xl font-bold text-foreground">{title}</h2>
         )}
         {description && (
-          <p className="mb-8 text-lg text-gray-600">{description}</p>
+          <p className="mb-8 text-lg text-muted-foreground">{description}</p>
         )}
 
         <div className="space-y-4">
@@ -73,15 +73,15 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
                 </h3>
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 flex-shrink-0 text-gray-600 transition-transform",
+                    "h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform",
                     openIndex === index && "rotate-180"
                   )}
                 />
               </button>
 
               {openIndex === index && (
-                <div className="border-t border-gray-200 p-6 pt-4">
-                  <p className="text-gray-700">{faq.answer}</p>
+                <div className="border-t border-border p-6 pt-4">
+                  <p className="text-foreground">{faq.answer}</p>
                 </div>
               )}
             </div>

@@ -124,7 +124,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
         ))}
       </div>
 
-      <div className="flex justify-between text-xs text-gray-600">
+      <div className="flex justify-between text-xs text-muted-foreground">
         <span>Not likely</span>
         <span>Very likely</span>
       </div>
