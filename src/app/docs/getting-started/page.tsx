@@ -119,11 +119,13 @@ npm run db:push && npm run dev`}
       </div>
 
       {/* Step-by-Step Guide */}
-      <div className="space-y-16">
-        <h2 className="font-mono text-lg font-bold text-primary">STEP_BY_STEP_SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground leading-relaxed">
-          New to this? Let&apos;s walk through each step.
-        </p>
+      <div className="space-y-10">
+        <div className="space-y-4">
+          <h2 className="font-mono text-lg font-bold text-primary">STEP_BY_STEP_SETUP</h2>
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+            New to this? Let&apos;s walk through each step.
+          </p>
+        </div>
 
         {/* Step 1 */}
         <div className="space-y-4">
