@@ -9,50 +9,42 @@ export const metadata = {
 
 export default function DatabaseSetupPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x10] DEPLOYMENT ] DATABASE</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">DATABASE_SETUP</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight">DATABASE_SETUP</h1>
+        <p className="font-mono text-xs text-muted-foreground">
           &gt; Set up a production PostgreSQL database with Prisma ORM.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">Database Providers</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li><strong>Supabase</strong> - Free tier, great DX (recommended)</li>
-            <li><strong>Neon</strong> - Serverless PostgreSQL with branching</li>
-            <li><strong>Railway</strong> - Simple and affordable</li>
-            <li><strong>PlanetScale</strong> - MySQL alternative</li>
-            <li><strong>AWS RDS</strong> - Enterprise-grade</li>
+      <Card className="rounded-none">
+        <CardContent className="p-3">
+          <h3 className="mb-2 font-mono text-xs font-semibold">Database Providers</h3>
+          <ul className="space-y-1 font-mono text-[10px] text-muted-foreground">
+            <li>├─ Supabase - Free tier, great DX (recommended)</li>
+            <li>├─ Neon - Serverless PostgreSQL with branching</li>
+            <li>├─ Railway - Simple and affordable</li>
+            <li>├─ PlanetScale - MySQL alternative</li>
+            <li>└─ AWS RDS - Enterprise-grade</li>
           </ul>
         </CardContent>
       </Card>
 
       {/* Supabase Setup (Recommended) */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">SUPABASE_SETUP (Recommended)</h2>
-        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-          <li>
-            Go to{" "}
-            <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              supabase.com
-            </a>{" "}
-            and create an account
-          </li>
-          <li>Click &quot;New Project&quot;</li>
-          <li>Set a strong database password</li>
-          <li>Choose a region close to your users</li>
-          <li>Wait for project to be ready (~2 minutes)</li>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">SUPABASE_SETUP (Recommended)</h2>
+        <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <li>1. Go to supabase.com and create an account</li>
+          <li>2. Click "New Project"</li>
+          <li>3. Set a strong database password</li>
+          <li>4. Choose a region close to your users</li>
+          <li>5. Wait for project to be ready (~2 minutes)</li>
         </ol>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground">Get your connection string and add it to .env.local:</p>
-          </div>
+        <p className="font-mono text-xs text-muted-foreground">Get your connection string and add it to .env.local:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Get connection string from:
 # Project Settings → Database → Connection string
 
@@ -68,22 +60,15 @@ DATABASE_URL="your-connection-string"`} />
       </div>
 
       {/* Neon Setup */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEON_SETUP</h2>
-        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-          <li>
-            Sign up at{" "}
-            <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              neon.tech
-            </a>
-          </li>
-          <li>Create a new project</li>
-          <li>Copy the connection string</li>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">NEON_SETUP</h2>
+        <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <li>1. Sign up at neon.tech</li>
+          <li>2. Create a new project</li>
+          <li>3. Copy the connection string</li>
         </ol>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground">Connection string examples:</p>
-          </div>
+        <p className="font-mono text-xs text-muted-foreground">Connection string examples:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Neon connection string
 DATABASE_URL="postgresql://[user]:[password]@[endpoint].neon.tech/[dbname]?sslmode=require"
 
@@ -93,34 +78,28 @@ DATABASE_URL="postgresql://[user]:[password]@[endpoint]-pooler.neon.tech/[dbname
       </div>
 
       {/* Railway Setup */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">RAILWAY_SETUP</h2>
-        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-          <li>
-            Sign up at{" "}
-            <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-              railway.app
-            </a>
-          </li>
-          <li>Create new project → Add PostgreSQL</li>
-          <li>Copy DATABASE_URL from Variables tab</li>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">RAILWAY_SETUP</h2>
+        <ol className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <li>1. Sign up at railway.app</li>
+          <li>2. Create new project → Add PostgreSQL</li>
+          <li>3. Copy DATABASE_URL from Variables tab</li>
         </ol>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground">Connection string format:</p>
-          </div>
+        <p className="font-mono text-xs text-muted-foreground">Connection string format:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="bash" code={`# Railway connection string
 DATABASE_URL="postgresql://postgres:[password]@[host].railway.app:5432/railway"`} />
         </div>
       </div>
 
       {/* Initialize Database */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">INITIALIZE_DATABASE</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">INITIALIZE_DATABASE</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           After setting DATABASE_URL, run these commands:
         </p>
-        <CodeBlock language="bash" code={`# Push schema to database
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="bash" code={`# Push schema to database
 npm run db:push
 
 # Or create a migration
@@ -131,15 +110,17 @@ npm run db:seed
 
 # Open Prisma Studio to view data
 npm run db:studio`} />
+        </div>
       </div>
 
       {/* Connection Pooling */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CONNECTION_POOLING</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CONNECTION_POOLING</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Essential for serverless deployments (Vercel):
         </p>
-        <CodeBlock language="bash" code={`# Why pooling matters:
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="bash" code={`# Why pooling matters:
 # - Serverless functions create new connections per request
 # - PostgreSQL has connection limits (~100 by default)
 # - Without pooling, you'll hit limits under load
@@ -161,15 +142,17 @@ datasource db {
   // For Supabase pooling
   directUrl = env("DIRECT_URL")
 }`} />
+        </div>
       </div>
 
       {/* Prisma Schema */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">PRISMA_SCHEMA_OVERVIEW</h2>
-        <p className="text-muted-foreground">
-          Key models in <code className="font-mono bg-muted px-1 py-0.5">prisma/schema.prisma</code>:
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">PRISMA_SCHEMA_OVERVIEW</h2>
+        <p className="font-mono text-xs text-muted-foreground">
+          Key models in <code className="bg-muted px-1 font-mono text-[10px]">prisma/schema.prisma</code>:
         </p>
-        <CodeBlock language="prisma" code={`// Core authentication
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="prisma" code={`// Core authentication
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
@@ -220,15 +203,17 @@ model FeatureFlag {
   enabled     Boolean   @default(false)
   rolloutPercentage Int @default(0)
 }`} />
+        </div>
       </div>
 
       {/* Database Migrations */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">DATABASE_MIGRATIONS</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">DATABASE_MIGRATIONS</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Managing schema changes in production:
         </p>
-        <CodeBlock language="bash" code={`# Development - Quick iterations
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="bash" code={`# Development - Quick iterations
 npm run db:push  # Pushes schema changes directly
 
 # Production - Use migrations
@@ -245,15 +230,17 @@ npx prisma migrate status
 
 # Reset database (DANGER - deletes all data)
 npm run db:reset`} />
+        </div>
       </div>
 
       {/* Seeding Data */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">SEEDING_DATA</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">SEEDING_DATA</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Populate database with test data:
         </p>
-        <CodeBlock language="typescript" code={`// prisma/seed.ts
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`// prisma/seed.ts
 
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
@@ -300,15 +287,17 @@ main()
 
 # Run seeding
 npm run db:seed`} />
+        </div>
       </div>
 
       {/* Backups */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">DATABASE_BACKUPS</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">DATABASE_BACKUPS</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Each provider handles backups differently:
         </p>
-        <CodeBlock language="bash" code={`# Supabase
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="bash" code={`# Supabase
 # - Automatic daily backups (Pro plan)
 # - Point-in-time recovery (Pro plan)
 # - Download backups from Dashboard
@@ -328,49 +317,39 @@ psql $DATABASE_URL < backup.sql
 DATE=$(date +%Y%m%d)
 pg_dump $DATABASE_URL | gzip > "backup-$DATE.sql.gz"
 # Upload to S3, etc.`} />
+        </div>
       </div>
 
       {/* Performance Tips */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">PERFORMANCE_TIPS</h2>
-        <ul className="list-inside list-disc space-y-3 text-muted-foreground">
-          <li>
-            <strong>Add indexes</strong> - Index frequently queried columns:{" "}
-            <code className="font-mono bg-muted px-1">@@index([userId, createdAt])</code>
-          </li>
-          <li>
-            <strong>Use select</strong> - Only fetch needed fields:{" "}
-            <code className="font-mono bg-muted px-1">prisma.user.findMany({"{"} select: {"{"} id: true, name: true {"}"} {"}"})</code>
-          </li>
-          <li>
-            <strong>Batch operations</strong> - Use createMany/updateMany for multiple records
-          </li>
-          <li>
-            <strong>Enable logging</strong> - Debug slow queries:{" "}
-            <code className="font-mono bg-muted px-1">new PrismaClient({"{"} log: ["query"] {"}"})</code>
-          </li>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">PERFORMANCE_TIPS</h2>
+        <ul className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <li>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1">@@index([userId, createdAt])</code></li>
+          <li>├─ Use select - Only fetch needed fields: <code className="bg-muted px-1">prisma.user.findMany({'{'} select: {'{'} id: true, name: true {'}'} {'}'})</code></li>
+          <li>├─ Batch operations - Use createMany/updateMany for multiple records</li>
+          <li>└─ Enable logging - Debug slow queries: <code className="bg-muted px-1">new PrismaClient({'{'} log: ["query"] {'}'})</code></li>
         </ul>
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">Deploy to Vercel</h3>
-                <p className="text-sm text-muted-foreground">
+            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+              <CardContent className="p-3">
+                <h3 className="font-mono text-xs font-semibold">Deploy to Vercel</h3>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   Deploy with your database configured
                 </p>
               </CardContent>
             </Card>
           </Link>
           <Link href="/docs/security/audit-logging">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">Audit Logging</h3>
-                <p className="text-sm text-muted-foreground">
+            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+              <CardContent className="p-3">
+                <h3 className="font-mono text-xs font-semibold">Audit Logging</h3>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   Track database operations
                 </p>
               </CardContent>

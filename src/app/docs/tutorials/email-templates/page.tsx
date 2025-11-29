@@ -9,36 +9,36 @@ export const metadata = {
 
 export default function EmailTemplatesTutorialPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">EMAIL_TEMPLATES</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight">EMAIL_TEMPLATES</h1>
+        <p className="font-mono text-xs text-muted-foreground">
           &gt; Create and send beautiful transactional emails with Resend and lightweight HTML templates.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
-          <h3 className="mb-2 font-semibold">What's Included</h3>
-          <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-            <li>Resend API integration for reliable email delivery</li>
-            <li>Lightweight HTML templates for maximum performance</li>
-            <li>Direct sending for immediate emails (auth)</li>
-            <li>Queue system for background sending (notifications)</li>
-            <li>Pre-built templates (welcome, verification, reset)</li>
-            <li>Email tracking and delivery status</li>
-          </ul>
+      <Card className="rounded-none">
+        <CardContent className="p-3">
+          <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
+          <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+            <div>├─ Resend API integration for reliable email delivery</div>
+            <div>├─ Lightweight HTML templates for maximum performance</div>
+            <div>├─ Direct sending for immediate emails (auth)</div>
+            <div>├─ Queue system for background sending (notifications)</div>
+            <div>├─ Pre-built templates (welcome, verification, reset)</div>
+            <div>└─ Email tracking and delivery status</div>
+          </div>
         </CardContent>
       </Card>
 
       {/* Basic Setup */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">BASIC_SETUP</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">BASIC_SETUP</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Configure your Resend API key to start sending emails. Sign up at{" "}
             <a
               href="https://resend.com"
@@ -51,25 +51,28 @@ export default function EmailTemplatesTutorialPage() {
             and get your API key.
           </p>
         </div>
-        <CodeBlock language="bash" code={`# .env.local
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="bash" code={`# .env.local
 
 RESEND_API_KEY="re_xxxxxxxxxxxx"
 EMAIL_FROM="noreply@yourdomain.com"`} />
-        <p className="text-sm text-muted-foreground">
+        </div>
+        <p className="font-mono text-[10px] text-muted-foreground">
           Without a Resend API key, emails will be logged to the console in development mode.
         </p>
       </div>
 
       {/* Email Service Functions */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">SENDING_EMAILS</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">SENDING_EMAILS</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Use the email service functions from{" "}
-            <code className="bg-muted px-1 py-0.5 font-mono">src/lib/email.ts</code>:
+            <code className="bg-muted px-1 font-mono text-[10px]">src/lib/email.ts</code>:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import {
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import {
   sendEmail,
   sendWelcomeEmail,
   sendVerificationEmail,
@@ -101,18 +104,20 @@ await sendResetEmail(
   "user@example.com",
   "reset-token-xyz"
 );`} />
+        </div>
       </div>
 
       {/* Queue System */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">EMAIL_QUEUE_SYSTEM</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">EMAIL_QUEUE_SYSTEM</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             For non-critical emails (notifications, bulk), use the queue system for background sending
             with automatic retries:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import {
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import {
   queueEmail,
   queueWelcomeEmail,
   queueVerificationEmail
@@ -137,21 +142,23 @@ await queueWelcomeEmail({
   githubUsername: "johndoe",
   purchaseId: "purchase_456"
 });`} />
-        <p className="text-sm text-muted-foreground">
-          Run the email worker with <code className="bg-muted px-1 py-0.5 font-mono">npm run email:dev</code> to process queued emails.
+        </div>
+        <p className="font-mono text-[10px] text-muted-foreground">
+          Run the email worker with <code className="bg-muted px-1 font-mono text-[10px]">npm run email:dev</code> to process queued emails.
         </p>
       </div>
 
       {/* Creating Custom Templates */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
         <div>
-          <p className="text-muted-foreground">
-            Create HTML template functions in <code className="bg-muted px-1 py-0.5 font-mono">src/emails/</code>.
+          <p className="font-mono text-xs text-muted-foreground">
+            Create HTML template functions in <code className="bg-muted px-1 font-mono text-[10px]">src/emails/</code>.
             This approach keeps dependencies low and performance high.
           </p>
         </div>
-        <CodeBlock language="typescript" code={`// src/emails/invoice-html.ts
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`// src/emails/invoice-html.ts
 
 interface InvoiceEmailProps {
   customerName: string;
@@ -171,13 +178,13 @@ export function generateInvoiceEmailHTML({
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.5; }
     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .button { 
-      display: inline-block; 
-      padding: 12px 24px; 
-      background-color: #6366f1; 
-      color: white; 
-      text-decoration: none; 
-      border-radius: 6px; 
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #6366f1;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
     }
   </style>
 </head>
@@ -186,13 +193,13 @@ export function generateInvoiceEmailHTML({
     <h1>Invoice Paid</h1>
     <p>Hi \${customerName},</p>
     <p>Your payment of \$\${amount.toFixed(2)} was successful.</p>
-    
+
     <div style="margin: 24px 0;">
       <a href="\${invoiceUrl}" class="button">View Invoice</a>
     </div>
-    
+
     <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;" />
-    
+
     <p style="color: #6b7280; font-size: 14px;">
       Thanks for your business!
     </p>
@@ -201,17 +208,19 @@ export function generateInvoiceEmailHTML({
 </html>
   \`.trim();
 }`} />
+        </div>
       </div>
 
       {/* Sending Custom Templates */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">SENDING_CUSTOM_HTML_EMAILS</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">SENDING_CUSTOM_HTML_EMAILS</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Generate the HTML and send it using Resend:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`// src/app/api/send-invoice/route.ts
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`// src/app/api/send-invoice/route.ts
 
 import { Resend } from "resend";
 import { generateInvoiceEmailHTML } from "@/emails/invoice-html";
@@ -250,32 +259,34 @@ export async function POST(request: Request) {
     );
   }
 }`} />
+        </div>
       </div>
 
       {/* Email Types */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">EMAIL_TYPES</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">EMAIL_TYPES</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           The queue system supports these email types for categorization:
         </p>
-        <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li><code className="bg-muted px-1 py-0.5 font-mono">WELCOME</code> - Post-purchase welcome emails</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">VERIFICATION</code> - Email verification</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">RESET</code> - Password reset</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">INVOICE</code> - Payment receipts</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">NOTIFICATION</code> - General notifications</li>
-        </ul>
+        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">WELCOME</code> - Post-purchase welcome emails</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">VERIFICATION</code> - Email verification</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">RESET</code> - Password reset</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">INVOICE</code> - Payment receipts</div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">NOTIFICATION</code> - General notifications</div>
+        </div>
       </div>
 
       {/* Organization Invites */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">ORGANIZATION_INVITES</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">ORGANIZATION_INVITES</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Send beautiful organization invitation emails:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { sendOrganizationInvite } from "@/lib/email";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { sendOrganizationInvite } from "@/lib/email";
 
 await sendOrganizationInvite("newmember@example.com", {
   organizationName: "Acme Corp",
@@ -284,56 +295,45 @@ await sendOrganizationInvite("newmember@example.com", {
   token: "invite-token-abc",
   expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 });`} />
+        </div>
       </div>
 
       {/* Best Practices */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">BEST_PRACTICES</h2>
-        <Card>
-          <CardContent className="p-6">
-            <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-              <li>
-                <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)
-              </li>
-              <li>
-                <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails
-              </li>
-              <li>
-                <strong>Track user/purchase IDs</strong> for email analytics and debugging
-              </li>
-              <li>
-                <strong>Set appropriate maxAttempts</strong> - 3 for important emails, 1 for notifications
-              </li>
-              <li>
-                <strong>Test templates locally</strong> - without RESEND_API_KEY, emails log to console
-              </li>
-              <li>
-                <strong>Verify domain</strong> in Resend dashboard for better deliverability
-              </li>
-            </ul>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">BEST_PRACTICES</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-3">
+            <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+              <div>├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)</div>
+              <div>├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails</div>
+              <div>├─ <strong>Track user/purchase IDs</strong> for email analytics and debugging</div>
+              <div>├─ <strong>Set appropriate maxAttempts</strong> - 3 for important emails, 1 for notifications</div>
+              <div>├─ <strong>Test templates locally</strong> - without RESEND_API_KEY, emails log to console</div>
+              <div>└─ <strong>Verify domain</strong> in Resend dashboard for better deliverability</div>
+            </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">NEXT_STEPS</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">Authentication</h3>
-                <p className="text-sm text-muted-foreground">
+            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+              <CardContent className="p-3">
+                <h3 className="font-mono text-xs font-semibold">Authentication</h3>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   Set up email verification and password reset
                 </p>
               </CardContent>
             </Card>
           </Link>
           <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className="font-semibold">Stripe Payments</h3>
-                <p className="text-sm text-muted-foreground">
+            <Card className="h-full rounded-none transition-all hover:border-primary/50">
+              <CardContent className="p-3">
+                <h3 className="font-mono text-xs font-semibold">Stripe Payments</h3>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   Send purchase confirmation emails
                 </p>
               </CardContent>

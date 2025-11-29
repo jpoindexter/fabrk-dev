@@ -8,32 +8,33 @@ export const metadata = {
 
 export default function FAQComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] FAQ</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">FAQ_SECTION</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight">FAQ_SECTION</h1>
+        <p className="mt-2 font-mono text-xs text-muted-foreground">
           &gt; Frequently asked questions component with accordion-style answers.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FAQSection</code> - Complete FAQ section with accordion</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Accordion</code> - Base accordion component for custom FAQs</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Collapsible</code> - Simple collapsible content</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">FAQSection</code> - Complete FAQ section with accordion</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Accordion</code> - Base accordion component for custom FAQs</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Collapsible</code> - Simple collapsible content</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// FAQ section for landing pages
 import { FAQSection } from "@/components/landing/faq-section";
 
@@ -51,13 +52,15 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";`} />
+        </div>
       </div>
 
-      <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+      <div className="space-y-6">
+        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">FAQ_SECTION</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">FAQ_SECTION</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { FAQSection } from "@/components/landing/faq-section";
 
 export default function LandingPage() {
@@ -78,10 +81,12 @@ export default function LandingPage() {
 // - Accordion with common questions
 // - Smooth expand/collapse animations
 // - Keyboard accessible`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">CUSTOM_ACCORDION_FAQ</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">CUSTOM_ACCORDION_FAQ</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Accordion,
   AccordionContent,
@@ -123,10 +128,12 @@ export function CustomFAQ() {
     </section>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">MULTIPLE_OPEN_ITEMS</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">MULTIPLE_OPEN_ITEMS</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Accordion,
   AccordionContent,
@@ -149,10 +156,12 @@ export function MultipleFAQ() {
     </Accordion>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">COLLAPSIBLE_COMPONENT</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">COLLAPSIBLE_COMPONENT</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Collapsible,
   CollapsibleContent,
@@ -178,10 +187,12 @@ export function CollapsibleFAQ() {
     </Collapsible>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">HYDRATION_NOTE</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">HYDRATION_NOTE</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`// To prevent hydration warnings with Radix UI components,
 // add suppressHydrationWarning prop:
 
@@ -192,6 +203,7 @@ export function CollapsibleFAQ() {
 >
   {/* items */}
 </Accordion>`} />
+          </div>
         </div>
       </div>
     </div>

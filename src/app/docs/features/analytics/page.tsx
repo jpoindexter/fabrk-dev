@@ -9,67 +9,72 @@ export const metadata = {
 
 export default function AnalyticsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
+    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-6">
       <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
+        <Link href="/docs" className="text-primary hover:underline font-mono text-[10px] mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] ANALYTICS</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ FEATURES ] ANALYTICS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">ANALYTICS_WITH_POSTHOG</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight mb-4">ANALYTICS_WITH_POSTHOG</h1>
+        <p className="font-mono text-xs text-muted-foreground">
           &gt; Product analytics, session recordings, and feature flags with PostHog integration.
         </p>
       </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-          <p className="mb-4">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-4">OVERVIEW</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Fabrk integrates PostHog for comprehensive product analytics. Track user behavior,
             analyze conversion funnels, record sessions, and manage feature flags all in one platform.
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Event Tracking:</strong> Custom events with properties</li>
-            <li><strong>User Identification:</strong> Link anonymous and authenticated users</li>
-            <li><strong>Session Recording:</strong> Watch user sessions (optional)</li>
-            <li><strong>Feature Flags:</strong> A/B testing and gradual rollouts</li>
-          </ul>
+          <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <div>├─ Event Tracking: Custom events with properties</div>
+            <div>├─ User Identification: Link anonymous and authenticated users</div>
+            <div>├─ Session Recording: Watch user sessions (optional)</div>
+            <div>└─ Feature Flags: A/B testing and gradual rollouts</div>
+          </div>
         </CardContent>
       </Card>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">CONFIGURATION</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Add your PostHog credentials to environment variables:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="bash" code={`# .env.local
 NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`} />
+        </div>
         <div>
-          <p className="mb-4 text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Enable analytics in your config:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// src/config.js
 module.exports = {
   features: {
     analytics: true, // Enable PostHog
   },
 };`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">POSTHOG_PROVIDER_SETUP</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">POSTHOG_PROVIDER_SETUP</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Initialize PostHog in your application:
           </p>
         </div>
-        <CodeBlock language="bash" code={`// src/components/providers/posthog-provider.tsx
+        <div className="[&>div]:rounded-none">
+        <CodeBlock language="tsx" code={`// src/components/providers/posthog-provider.tsx
 "use client";
 
 import posthog from "posthog-js";
@@ -104,15 +109,17 @@ export default function RootLayout({ children }) {
     </html>
   );
 }`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">TRACKING_EVENTS</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">TRACKING_EVENTS</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Track custom events throughout your application:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -147,15 +154,17 @@ export function CheckoutButton({ plan, price }: Props) {
 // - settings_changed
 // - organization_created
 // - member_invited`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">USER_IDENTIFICATION</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">USER_IDENTIFICATION</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Identify users after authentication to link their activity:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="tsx" code={`"use client";
 
 import { usePostHog } from "posthog-js/react";
@@ -191,15 +200,17 @@ const handleLogout = () => {
   posthog.reset(); // Clear user identity
   signOut();
 };`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">PAGE_VIEW_TRACKING</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">PAGE_VIEW_TRACKING</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Track page views with the Next.js router:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="tsx" code={`"use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
@@ -225,16 +236,18 @@ export function PageViewTracker() {
 
   return null;
 }`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">SERVER_SIDE_TRACKING</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">SERVER_SIDE_TRACKING</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Track events from API routes and server actions:
           </p>
         </div>
-        <CodeBlock language="bash" code={`// src/lib/analytics/server.ts
+        <div className="[&>div]:rounded-none">
+        <CodeBlock language="typescript" code={`// src/lib/analytics/server.ts
 import { PostHog } from "posthog-node";
 
 const posthogServer = new PostHog(
@@ -271,19 +284,20 @@ export async function POST(req: Request) {
 
   return Response.json({ success: true });
 }`} />
+        </div>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Use consistent naming:</strong> Follow a convention like <code className="font-mono">object_action</code></li>
-            <li><strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>
-            <li><strong>Include context:</strong> Add properties that help segment and analyze</li>
-            <li><strong>Respect privacy:</strong> Don&apos;t track PII unless necessary</li>
-            <li><strong>Test events:</strong> Verify events appear in PostHog dashboard</li>
-            <li><strong>Document events:</strong> Maintain a tracking plan for your team</li>
-          </ul>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-4">BEST_PRACTICES</h2>
+          <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <div>├─ Use consistent naming: Follow a convention like <code className="bg-muted px-1 font-mono text-[10px]">object_action</code></div>
+            <div>├─ Don&apos;t over-track: Focus on meaningful events that inform decisions</div>
+            <div>├─ Include context: Add properties that help segment and analyze</div>
+            <div>├─ Respect privacy: Don&apos;t track PII unless necessary</div>
+            <div>├─ Test events: Verify events appear in PostHog dashboard</div>
+            <div>└─ Document events: Maintain a tracking plan for your team</div>
+          </div>
         </CardContent>
       </Card>
     </div>

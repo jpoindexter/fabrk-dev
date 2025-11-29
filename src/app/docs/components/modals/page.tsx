@@ -8,36 +8,37 @@ export const metadata = {
 
 export default function ModalsComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] MODALS</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] MODALS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">MODAL_COMPONENTS</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
+        <h1 className="font-mono text-xl font-bold tracking-tight">MODAL_COMPONENTS</h1>
+        <p className="font-mono text-xs text-muted-foreground mt-2">
           &gt; Modal components for dialogs, sheets, popovers, and alerts.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Dialog</code> - Modal dialog for forms and confirmations</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">AlertDialog</code> - Confirmation dialog for destructive actions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Sheet</code> - Slide-out panel from edge of screen</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Popover</code> - Floating content triggered by button</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Command</code> - Command palette for search and actions</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">ContextMenu</code> - Right-click context menu</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Toast</code> - Notification toasts</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+                    <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Dialog</code> - Modal dialog for forms and confirmations</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">AlertDialog</code> - Confirmation dialog for destructive actions</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Sheet</code> - Slide-out panel from edge of screen</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Popover</code> - Floating content triggered by button</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Command</code> - Command palette for search and actions</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">ContextMenu</code> - Right-click context menu</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Toast</code> - Notification toasts</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Dialog
 import {
   Dialog,
@@ -101,12 +102,13 @@ import {
 // Toast
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";`} />
+        </div>
       </div>
 
-      <div className="space-y-8">
-        <h2 className="font-mono text-xl">USAGE_EXAMPLES</h2>
+      <div className="space-y-6">
+        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">DIALOG</h3>
           <CodeBlock language="tsx" code={`import {
   Dialog,
@@ -155,9 +157,10 @@ export function EditProfileDialog() {
     </Dialog>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">ALERT_DIALOG_CONFIRMATION</h3>
           <CodeBlock language="tsx" code={`import {
   AlertDialog,
@@ -196,9 +199,10 @@ export function DeleteConfirmation() {
     </AlertDialog>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">SHEET_SLIDE_OUT_PANEL</h3>
           <CodeBlock language="tsx" code={`import {
   Sheet,
@@ -235,9 +239,10 @@ export function SettingsSheet() {
 <SheetContent side="left">
   {/* Content slides in from left */}
 </SheetContent>`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">POPOVER</h3>
           <CodeBlock language="tsx" code={`import {
   Popover,
@@ -267,9 +272,10 @@ export function NotificationPopover() {
     </Popover>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">COMMAND_PALETTE</h3>
           <CodeBlock language="tsx" code={`import {
   CommandDialog,
@@ -309,9 +315,10 @@ export function CommandMenu() {
     </CommandDialog>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <h3 className="font-mono text-lg">TOAST_NOTIFICATIONS</h3>
           <CodeBlock language="tsx" code={`import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";

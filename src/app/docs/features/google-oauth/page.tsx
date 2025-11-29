@@ -9,111 +9,102 @@ export const metadata = {
 
 export default function GoogleOAuthPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline text-sm">
-          ← Back to Documentation
-        </Link>
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x20] FEATURES ] GOOGLE_OAUTH</span>
+        </div>
+        <h1 className="font-mono text-xl font-bold tracking-tight">GOOGLE_OAUTH_SETUP</h1>
+        <p className="font-mono text-xs text-muted-foreground">
+          &gt; Enable one-click Google sign-in for your users with OAuth 2.0 integration.
+        </p>
       </div>
 
-      <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] GOOGLE_OAUTH</span>
-      </div>
-      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">GOOGLE_OAUTH_SETUP</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
-        &gt; Enable one-click Google sign-in for your users with OAuth 2.0 integration.
-      </p>
-
-      <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">OVERVIEW</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk supports Google OAuth through NextAuth v5 with:
             </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>One-click sign-in with Google accounts</li>
-              <li>Automatic account linking for existing email users</li>
-              <li>Profile photo and name sync from Google</li>
-              <li>Conditional enabling based on environment variables</li>
-              <li>Secure token handling with JWT sessions</li>
+            <ul className="font-mono text-[10px] text-muted-foreground space-y-1">
+              <li>├─ One-click sign-in with Google accounts</li>
+              <li>├─ Automatic account linking for existing email users</li>
+              <li>├─ Profile photo and name sync from Google</li>
+              <li>├─ Conditional enabling based on environment variables</li>
+              <li>└─ Secure token handling with JWT sessions</li>
             </ul>
           </CardContent>
         </Card>
       </section>
 
-      <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CONFIGURATION</h2>
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CONFIGURATION</h2>
 
-        <div className="flex items-center gap-2 mb-3">
-          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
-          <h3 className="font-mono text-xl font-medium">CREATE_GOOGLE_CLOUD_PROJECT</h3>
+        <div className="flex items-center gap-2">
+          <span className="font-mono flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground">1</span>
+          <h3 className="font-mono text-xs font-semibold">CREATE_GOOGLE_CLOUD_PROJECT</h3>
         </div>
-        <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
-          <li>Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
-          <li>Create a new project or select existing one</li>
-          <li>Navigate to APIs & Services → OAuth consent screen</li>
-          <li>
-            Configure the consent screen:
-            <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li>User type: External</li>
-              <li>App name: Your app name</li>
-              <li>Support email: Your email</li>
-              <li>Authorized domains: yourdomain.com</li>
+        <ol className="font-mono text-[10px] text-muted-foreground space-y-1 pl-6">
+          <li>1. Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
+          <li>2. Create a new project or select existing one</li>
+          <li>3. Navigate to APIs &amp; Services → OAuth consent screen</li>
+          <li>4. Configure the consent screen:
+            <ul className="font-mono text-[10px] text-muted-foreground space-y-1 pl-4 mt-1">
+              <li>├─ User type: External</li>
+              <li>├─ App name: Your app name</li>
+              <li>├─ Support email: Your email</li>
+              <li>└─ Authorized domains: yourdomain.com</li>
             </ul>
           </li>
-          <li>Add scopes: <code className="font-mono bg-muted px-1">email</code>, <code className="font-mono bg-muted px-1">profile</code>, <code className="font-mono bg-muted px-1">openid</code></li>
+          <li>5. Add scopes: <code className="font-mono bg-muted px-1">email</code>, <code className="font-mono bg-muted px-1">profile</code>, <code className="font-mono bg-muted px-1">openid</code></li>
         </ol>
 
-        <div className="flex items-center gap-2 mb-3">
-          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
-          <h3 className="font-mono text-xl font-medium">CREATE_OAUTH_CREDENTIALS</h3>
+        <div className="flex items-center gap-2 mt-4">
+          <span className="font-mono flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground">2</span>
+          <h3 className="font-mono text-xs font-semibold">CREATE_OAUTH_CREDENTIALS</h3>
         </div>
-        <ol className="list-decimal pl-6 space-y-3 mb-6 text-muted-foreground">
-          <li>Go to APIs & Services → Credentials</li>
-          <li>Click Create Credentials → OAuth client ID</li>
-          <li>Application type: Web application</li>
-          <li>
-            Add Authorized JavaScript origins:
-            <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li><code className="font-mono bg-muted px-1">http://localhost:3000</code> (development)</li>
-              <li><code className="font-mono bg-muted px-1">https://yourdomain.com</code> (production)</li>
+        <ol className="font-mono text-[10px] text-muted-foreground space-y-1 pl-6">
+          <li>1. Go to APIs &amp; Services → Credentials</li>
+          <li>2. Click Create Credentials → OAuth client ID</li>
+          <li>3. Application type: Web application</li>
+          <li>4. Add Authorized JavaScript origins:
+            <ul className="font-mono text-[10px] text-muted-foreground space-y-1 pl-4 mt-1">
+              <li>├─ <code className="font-mono bg-muted px-1">http://localhost:3000</code> (development)</li>
+              <li>└─ <code className="font-mono bg-muted px-1">https://yourdomain.com</code> (production)</li>
             </ul>
           </li>
-          <li>
-            Add Authorized redirect URIs:
-            <ul className="list-disc pl-6 mt-2 space-y-1">
-              <li><code className="font-mono bg-muted px-1">http://localhost:3000/api/auth/callback/google</code></li>
-              <li><code className="font-mono bg-muted px-1">https://yourdomain.com/api/auth/callback/google</code></li>
+          <li>5. Add Authorized redirect URIs:
+            <ul className="font-mono text-[10px] text-muted-foreground space-y-1 pl-4 mt-1">
+              <li>├─ <code className="font-mono bg-muted px-1">http://localhost:3000/api/auth/callback/google</code></li>
+              <li>└─ <code className="font-mono bg-muted px-1">https://yourdomain.com/api/auth/callback/google</code></li>
             </ul>
           </li>
-          <li>Copy the Client ID and Client Secret</li>
+          <li>6. Copy the Client ID and Client Secret</li>
         </ol>
 
-        <div className="flex items-center gap-2 mb-3">
-          <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
-          <h3 className="font-mono text-xl font-medium">SET_ENVIRONMENT_VARIABLES</h3>
+        <div className="flex items-center gap-2 mt-4">
+          <span className="font-mono flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground">3</span>
+          <h3 className="font-mono text-xs font-semibold">SET_ENVIRONMENT_VARIABLES</h3>
         </div>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground">Add to <code className="font-mono bg-muted px-2 py-1">.env.local</code>:</p>
-          </div>
-          <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
+        <div className="space-y-3">
+          <p className="font-mono text-xs text-muted-foreground">Add to <code className="font-mono bg-muted px-1 text-[10px]">.env.local</code>:</p>
+          <div className="[&>div]:rounded-none">
+            <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="GOCSPX-xxxxxxxxxxxx"`} />
-          <p className="mt-4 text-muted-foreground">
+          </div>
+          <p className="font-mono text-xs text-muted-foreground">
             Google OAuth is automatically enabled when these variables are set.
           </p>
         </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-xl font-medium mb-3">AUTH_CONFIGURATION</h3>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="text-muted-foreground">Google provider is configured in <code className="font-mono bg-muted px-2 py-1">src/lib/auth.ts</code>:</p>
-          </div>
+        <h3 className="font-mono text-xs font-semibold">AUTH_CONFIGURATION</h3>
+        <p className="font-mono text-xs text-muted-foreground">Google provider is configured in <code className="font-mono bg-muted px-1 text-[10px]">src/lib/auth.ts</code>:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/lib/auth.ts
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
@@ -167,11 +158,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 });`} />
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">SIGN_IN_BUTTON</h3>
-        <div className="space-y-4 mb-6">
-          <div>
-            <p className="text-muted-foreground">Add Google sign-in to your login page:</p>
-          </div>
+        <h3 className="font-mono text-xs font-semibold mt-4">SIGN_IN_BUTTON</h3>
+        <p className="font-mono text-xs text-muted-foreground">Add Google sign-in to your login page:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`"use client";
 
 import { signIn } from "next-auth/react";
@@ -208,11 +197,9 @@ export function GoogleSignInButton() {
 }`} />
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">CONDITIONAL_RENDERING</h3>
-        <div className="space-y-4">
-          <div>
-            <p className="text-muted-foreground">Show Google button only when configured:</p>
-          </div>
+        <h3 className="font-mono text-xs font-semibold mt-4">CONDITIONAL_RENDERING</h3>
+        <p className="font-mono text-xs text-muted-foreground">Show Google button only when configured:</p>
+        <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { config } from "@/config";
 
 export function LoginForm() {
@@ -242,41 +229,41 @@ export function LoginForm() {
         </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">COMMON_USE_CASES</h2>
 
-        <div className="grid gap-4">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Frictionless Onboarding</h3>
-              <p className="text-muted-foreground">
+        <div className="grid gap-3">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-1">Frictionless Onboarding</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Reduce signup friction with one-click Google sign-in. Users can start using your app in seconds without creating a password.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Account Linking</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-1">Account Linking</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Allow existing email/password users to link their Google account for faster future logins while keeping their existing data.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">G Suite Organizations</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-1">G Suite Organizations</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Perfect for B2B SaaS targeting companies using Google Workspace. Users sign in with their work Google accounts.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-semibold mb-2">Profile Sync</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-1">Profile Sync</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Automatically sync user profile photo and name from Google, reducing setup steps and improving UX.
               </p>
             </CardContent>
@@ -284,26 +271,26 @@ export function LoginForm() {
         </div>
       </section>
 
-      <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">TROUBLESHOOTING</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <div className="space-y-4">
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">TROUBLESHOOTING</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <div className="space-y-3">
               <div>
-                <h4 className="font-medium mb-1">Error: redirect_uri_mismatch</h4>
-                <p className="text-muted-foreground text-sm">
-                  The callback URL doesn't match what's configured in Google Cloud Console. Ensure your redirect URI exactly matches, including protocol (http vs https).
+                <h4 className="font-mono text-xs font-semibold mb-1">Error: redirect_uri_mismatch</h4>
+                <p className="font-mono text-[10px] text-muted-foreground">
+                  The callback URL doesn&apos;t match what&apos;s configured in Google Cloud Console. Ensure your redirect URI exactly matches, including protocol (http vs https).
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-1">Error: access_denied</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-mono text-xs font-semibold mb-1">Error: access_denied</h4>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   User denied access or app is in testing mode with unverified users. Add test users in OAuth consent screen or publish the app.
                 </p>
               </div>
               <div>
-                <h4 className="font-medium mb-1">Button not appearing</h4>
-                <p className="text-muted-foreground text-sm">
+                <h4 className="font-mono text-xs font-semibold mb-1">Button not appearing</h4>
+                <p className="font-mono text-[10px] text-muted-foreground">
                   Check that <code className="font-mono bg-muted px-1">GOOGLE_CLIENT_ID</code> and <code className="font-mono bg-muted px-1">GOOGLE_CLIENT_SECRET</code> are set. Restart the dev server after adding env vars.
                 </p>
               </div>
@@ -312,22 +299,28 @@ export function LoginForm() {
         </Card>
       </section>
 
-      <section>
-        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Always offer email/password as an alternative to OAuth</li>
-              <li>Handle account linking for users who sign up with email first</li>
-              <li>Request minimal scopes (email, profile, openid)</li>
-              <li>Store refresh tokens securely if you need offline access</li>
-              <li>Publish your app for production (removes 100 user limit)</li>
-              <li>Add your privacy policy and terms links to consent screen</li>
-              <li>Test with multiple Google accounts during development</li>
+      <section className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">BEST_PRACTICES</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <ul className="font-mono text-[10px] text-muted-foreground space-y-1">
+              <li>├─ Always offer email/password as an alternative to OAuth</li>
+              <li>├─ Handle account linking for users who sign up with email first</li>
+              <li>├─ Request minimal scopes (email, profile, openid)</li>
+              <li>├─ Store refresh tokens securely if you need offline access</li>
+              <li>├─ Publish your app for production (removes 100 user limit)</li>
+              <li>├─ Add your privacy policy and terms links to consent screen</li>
+              <li>└─ Test with multiple Google accounts during development</li>
             </ul>
           </CardContent>
         </Card>
       </section>
+
+      <div className="pt-4">
+        <Link href="/docs" className="font-mono text-xs text-primary hover:underline">
+          &larr; Back to Documentation
+        </Link>
+      </div>
     </div>
   );
 }

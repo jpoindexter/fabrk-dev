@@ -189,52 +189,52 @@ export default function ComponentsOverviewPage() {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
       <div>
-        <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">
+        <div className="mb-4 inline-block border border-border bg-card px-2 py-1">
+          <span className="font-mono text-[10px] text-muted-foreground">
             [ [0x60] COMPONENTS ] UI_LIBRARY │ {totalComponents} COMPONENTS
           </span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">
+        <h1 className="font-mono text-xl font-bold tracking-tight">
           UI_COMPONENTS_LIBRARY
         </h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-xs text-muted-foreground">
           &gt; 100+ production-ready components built with Radix UI and Tailwind CSS.
         </p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
-        <Card>
-          <CardContent className="p-4 text-center">
-            <div className="font-mono text-2xl font-bold text-primary">{totalComponents}+</div>
-            <div className="font-mono text-xs text-muted-foreground">COMPONENTS</div>
+      <div className="grid grid-cols-3 gap-2">
+        <Card className="rounded-none">
+          <CardContent className="p-3 text-center">
+            <div className="font-mono text-xl font-bold text-primary">{totalComponents}+</div>
+            <div className="font-mono text-[10px] text-muted-foreground">COMPONENTS</div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="p-4 text-center">
-            <div className="font-mono text-2xl font-bold text-primary">{componentCategories.length}</div>
-            <div className="font-mono text-xs text-muted-foreground">CATEGORIES</div>
+        <Card className="rounded-none">
+          <CardContent className="p-3 text-center">
+            <div className="font-mono text-xl font-bold text-primary">{componentCategories.length}</div>
+            <div className="font-mono text-[10px] text-muted-foreground">CATEGORIES</div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="p-4 text-center">
-            <div className="font-mono text-2xl font-bold text-primary">100%</div>
-            <div className="font-mono text-xs text-muted-foreground">TYPESCRIPT</div>
+        <Card className="rounded-none">
+          <CardContent className="p-3 text-center">
+            <div className="font-mono text-xl font-bold text-primary">100%</div>
+            <div className="font-mono text-[10px] text-muted-foreground">TYPESCRIPT</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Categories */}
-      <div className="space-y-8">
+      <div className="space-y-6">
         {componentCategories.map((category) => (
           <div key={category.name}>
-            <div className="mb-4 flex items-center gap-2">
-              <span className="font-mono text-xs text-muted-foreground">[{category.hex}]</span>
-              <h2 className="font-mono text-lg font-semibold">{category.name}</h2>
-              <span className="font-mono text-xs text-muted-foreground">
+            <div className="mb-3 flex items-center gap-2">
+              <span className="font-mono text-[10px] text-muted-foreground">[{category.hex}]</span>
+              <h2 className="font-mono text-sm font-semibold">{category.name}</h2>
+              <span className="font-mono text-[10px] text-muted-foreground">
                 ({category.components.length})
               </span>
             </div>
@@ -242,12 +242,12 @@ export default function ComponentsOverviewPage() {
               {category.components.map((component) => (
                 <div
                   key={component.name}
-                  className="border border-border bg-card p-3 transition-colors hover:border-primary/50"
+                  className="rounded-none border border-border bg-card p-2 transition-colors hover:border-primary/50"
                 >
-                  <div className="font-mono text-xs font-semibold text-foreground">
+                  <div className="font-mono text-[10px] font-semibold text-foreground">
                     {component.name}
                   </div>
-                  <div className="mt-1 font-mono text-xs text-muted-foreground">
+                  <div className="mt-1 font-mono text-[10px] text-muted-foreground">
                     {component.description}
                   </div>
                 </div>
@@ -258,11 +258,11 @@ export default function ComponentsOverviewPage() {
       </div>
 
       {/* Import Example */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-semibold">IMPORT_PATTERN</h2>
-        <Card>
-          <CardContent className="p-4">
-            <pre className="font-mono text-xs text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">IMPORT_PATTERN</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-3">
+            <pre className="font-mono text-[10px] text-muted-foreground">
               {`// Import any component from @/components/ui/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -274,36 +274,36 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
       </div>
 
       {/* Component Docs Links */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-lg font-semibold">DETAILED_DOCUMENTATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">DETAILED_DOCUMENTATION</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           &gt; See individual component pages for usage examples and API reference:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">
-          <Link href="/docs/components/buttons" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; BUTTONS</span>
+          <Link href="/docs/components/buttons" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; BUTTONS</span>
           </Link>
-          <Link href="/docs/components/forms" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; FORMS_INPUTS</span>
+          <Link href="/docs/components/forms" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; FORMS_INPUTS</span>
           </Link>
-          <Link href="/docs/components/data-display" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; DATA_DISPLAY</span>
+          <Link href="/docs/components/data-display" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; DATA_DISPLAY</span>
           </Link>
-          <Link href="/docs/components/charts" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; CHARTS_ANALYTICS</span>
+          <Link href="/docs/components/charts" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; CHARTS_ANALYTICS</span>
           </Link>
-          <Link href="/docs/components/modals" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; MODALS_DIALOGS</span>
+          <Link href="/docs/components/modals" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; MODALS_DIALOGS</span>
           </Link>
-          <Link href="/docs/components/uploads" className="block border border-border bg-card p-3 transition-colors hover:border-primary">
-            <span className="font-mono text-xs">&gt; UPLOAD_COMPONENTS</span>
+          <Link href="/docs/components/uploads" className="block rounded-none border border-border bg-card p-2 transition-colors hover:border-primary">
+            <span className="font-mono text-[10px]">&gt; UPLOAD_COMPONENTS</span>
           </Link>
         </div>
       </div>
 
       {/* Back link */}
-      <div className="pt-4">
-        <Link href="/docs/getting-started" className="font-mono text-sm text-primary hover:underline">
+      <div className="pt-3">
+        <Link href="/docs/getting-started" className="font-mono text-xs text-primary hover:underline">
           &lt;─ BACK_TO_DOCS
         </Link>
       </div>

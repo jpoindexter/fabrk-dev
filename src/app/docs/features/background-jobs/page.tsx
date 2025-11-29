@@ -9,45 +9,46 @@ export const metadata = {
 
 export default function BackgroundJobsPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
+    <div className="container mx-auto py-10 px-4 max-w-4xl space-y-6">
       <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline mb-4 inline-block">
+        <Link href="/docs" className="text-primary hover:underline font-mono text-[10px] mb-4 inline-block">
           &larr; Back to Documentation
         </Link>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x70] FEATURES ] BACKGROUND_JOBS</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ FEATURES ] BACKGROUND_JOBS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">BACKGROUND_JOBS</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight mb-4">BACKGROUND_JOBS</h1>
+        <p className="font-mono text-xs text-muted-foreground">
           &gt; Process time-consuming tasks asynchronously with job queues, workers, and the email worker system.
         </p>
       </div>
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-          <p className="mb-4">
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-4">OVERVIEW</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Background jobs allow you to offload time-consuming tasks from your API routes
             to dedicated workers. This improves response times and provides better reliability
             with automatic retries and error handling.
           </p>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Job queues:</strong> Persistent queue with priority support</li>
-            <li><strong>Workers:</strong> Process jobs asynchronously</li>
-            <li><strong>Email worker:</strong> Dedicated email sending queue</li>
-            <li><strong>Retries:</strong> Automatic retry with exponential backoff</li>
-            <li><strong>Monitoring:</strong> Track job status and errors</li>
-          </ul>
+          <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <div>├─ Job queues: Persistent queue with priority support</div>
+            <div>├─ Workers: Process jobs asynchronously</div>
+            <div>├─ Email worker: Dedicated email sending queue</div>
+            <div>├─ Retries: Automatic retry with exponential backoff</div>
+            <div>└─ Monitoring: Track job status and errors</div>
+          </div>
         </CardContent>
       </Card>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">DATABASE_SCHEMA</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Job model in Prisma schema:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="prisma" code={`// prisma/schema.prisma
 model Job {
   id          String   @id @default(cuid())
@@ -73,15 +74,17 @@ model Job {
   @@index([queue, status, runAt])
   @@index([status, runAt])
 }`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">JOB_QUEUE_SERVICE</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">JOB_QUEUE_SERVICE</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Core service for managing job queues:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// src/lib/jobs/queue.ts
 import { prisma } from "@/lib/db";
 
@@ -195,16 +198,18 @@ export async function failJob(
     },
   });
 }`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">WORKER_IMPLEMENTATION</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">WORKER_IMPLEMENTATION</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Create workers to process jobs:
           </p>
         </div>
-        <CodeBlock language="bash" code={`// scripts/worker.ts
+        <div className="[&>div]:rounded-none">
+        <CodeBlock language="typescript" code={`// scripts/worker.ts
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 
 // Job handlers
@@ -274,16 +279,18 @@ function sleep(ms: number) {
 
 // Start worker
 processJobs(process.env.QUEUE || "default");`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">EMAIL_WORKER</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">EMAIL_WORKER</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Dedicated worker for processing email queue:
           </p>
         </div>
-        <CodeBlock language="bash" code={`// scripts/email-worker.ts
+        <div className="[&>div]:rounded-none">
+        <CodeBlock language="typescript" code={`// scripts/email-worker.ts
 import { Resend } from "resend";
 import { getNextJob, completeJob, failJob } from "@/lib/jobs/queue";
 import { WelcomeEmail } from "@/emails/welcome";
@@ -344,20 +351,22 @@ function sleep(ms: number) {
 }
 
 processEmailQueue();`} />
+        </div>
         <div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Run the email worker with: <code className="font-mono">npm run email:dev</code>
+          <p className="font-mono text-[10px] text-muted-foreground mt-4">
+            Run the email worker with: <code className="bg-muted px-1 font-mono text-[10px]">npm run email:dev</code>
           </p>
         </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">QUEUEING_JOBS</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">QUEUEING_JOBS</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Queue jobs from your API routes:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// In API routes
 import { enqueueJob } from "@/lib/jobs/queue";
 
@@ -410,15 +419,17 @@ await enqueueJob(
     maxAttempts: 5,
   }
 );`} />
+        </div>
       </div>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold mb-4">RUNNING_WORKERS</h2>
-          <p className="mb-4 text-muted-foreground">
+          <h2 className="font-mono text-sm font-semibold mb-4">RUNNING_WORKERS</h2>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Start workers for different queues:
           </p>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="bash" code={`# Development (with auto-restart)
 npm run jobs:dev        # Default queue worker
 npm run email:dev       # Email queue worker
@@ -452,21 +463,22 @@ services:
     command: node scripts/worker.js
     environment:
       - QUEUE=webhooks`} />
+        </div>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><strong>Keep payloads small:</strong> Store IDs and fetch data in the worker</li>
-            <li><strong>Make jobs idempotent:</strong> Safe to retry without side effects</li>
-            <li><strong>Set appropriate retries:</strong> More for transient errors, fewer for permanent</li>
-            <li><strong>Monitor queue depth:</strong> Alert when jobs are backing up</li>
-            <li><strong>Use separate queues:</strong> Isolate critical jobs from bulk operations</li>
-            <li><strong>Log everything:</strong> Track job lifecycle for debugging</li>
-            <li><strong>Handle timeouts:</strong> Set reasonable timeouts for long-running jobs</li>
-            <li><strong>Clean up completed jobs:</strong> Archive or delete old jobs periodically</li>
-          </ul>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-4">BEST_PRACTICES</h2>
+          <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+            <div>├─ Keep payloads small: Store IDs and fetch data in the worker</div>
+            <div>├─ Make jobs idempotent: Safe to retry without side effects</div>
+            <div>├─ Set appropriate retries: More for transient errors, fewer for permanent</div>
+            <div>├─ Monitor queue depth: Alert when jobs are backing up</div>
+            <div>├─ Use separate queues: Isolate critical jobs from bulk operations</div>
+            <div>├─ Log everything: Track job lifecycle for debugging</div>
+            <div>├─ Handle timeouts: Set reasonable timeouts for long-running jobs</div>
+            <div>└─ Clean up completed jobs: Archive or delete old jobs periodically</div>
+          </div>
         </CardContent>
       </Card>
     </div>

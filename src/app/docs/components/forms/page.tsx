@@ -8,46 +8,47 @@ export const metadata = {
 
 export default function FormsComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FORMS</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] FORMS</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">FORM_COMPONENTS</h1>
-        <p className="font-mono text-sm text-muted-foreground mt-2">
+        <h1 className="font-mono text-xl font-bold tracking-tight">FORM_COMPONENTS</h1>
+        <p className="font-mono text-xs text-muted-foreground mt-2">
           &gt; Form components including inputs, selects, checkboxes, and validation.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Input</code> - Text input field</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputPassword</code> - Password input with toggle visibility</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputSearch</code> - Search input with icon</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputNumber</code> - Number input with increment/decrement</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputOTP</code> - One-time password input</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">InputColor</code> - Color picker input</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Select</code> - Dropdown select</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">MultiSelect</code> - Multiple selection dropdown</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Combobox</code> - Searchable select with autocomplete</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Checkbox</code> - Checkbox input</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Switch</code> - Toggle switch</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DatePicker</code> - Date selection</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">DateRangePicker</code> - Date range selection</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">TimePicker</code> - Time selection</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Label</code> - Form label</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">FormError</code> - Error message display</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">MultiStepForm</code> - Multi-step form wizard</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+                    <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Input</code> - Text input field</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">InputPassword</code> - Password input with toggle visibility</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">InputSearch</code> - Search input with icon</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">InputNumber</code> - Number input with increment/decrement</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">InputOTP</code> - One-time password input</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">InputColor</code> - Color picker input</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Select</code> - Dropdown select</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">MultiSelect</code> - Multiple selection dropdown</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Combobox</code> - Searchable select with autocomplete</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Checkbox</code> - Checkbox input</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Switch</code> - Toggle switch</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">DatePicker</code> - Date selection</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">DateRangePicker</code> - Date range selection</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">TimePicker</code> - Time selection</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Label</code> - Form label</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">FormError</code> - Error message display</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">MultiStepForm</code> - Multi-step form wizard</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Basic inputs
 import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
@@ -80,13 +81,15 @@ import { TimePicker } from "@/components/ui/time-picker";
 import { Label } from "@/components/ui/label";
 import { FormError } from "@/components/ui/form-error";
 import { MultiStepForm } from "@/components/ui/multi-step-form";`} />
+        </div>
       </div>
 
-      <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+      <div className="space-y-6">
+        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">BASIC_INPUT</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">BASIC_INPUT</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -102,10 +105,12 @@ export function BasicInput() {
     </div>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">PASSWORD_INPUT</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">PASSWORD_INPUT</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
 
@@ -121,10 +126,12 @@ export function PasswordInput() {
 // InputPassword includes:
 // - Eye icon toggle for show/hide password
 // - Accessible button for toggling`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">SELECT</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">SELECT</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import {
   Select,
   SelectContent,
@@ -152,10 +159,12 @@ export function SelectExample() {
     </div>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">CHECKBOX_AND_SWITCH</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">CHECKBOX_AND_SWITCH</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -177,10 +186,12 @@ export function ToggleInputs() {
     </div>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">DATE_PICKER</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">DATE_PICKER</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { DatePicker } from "@/components/ui/date-picker";
 import { Label } from "@/components/ui/label";
 
@@ -194,10 +205,12 @@ export function DatePickerExample() {
     </div>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">COMPLETE_FORM</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">COMPLETE_FORM</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
@@ -240,10 +253,12 @@ export function SignupForm() {
     </form>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">OTP_INPUT</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">OTP_INPUT</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { InputOTP } from "@/components/ui/input-otp";
 
 export function OTPInput() {

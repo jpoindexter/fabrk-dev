@@ -11,44 +11,45 @@ export default function OrganizationsPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       <div className="mb-8">
-        <Link href="/docs" className="text-primary hover:underline text-sm">
+        <Link href="/docs" className="text-primary hover:underline font-mono text-[10px]">
           ← Back to Documentation
         </Link>
       </div>
 
       <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-        <span className="font-mono text-xs text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
+        <span className="font-mono text-[10px] text-muted-foreground">[ FEATURES ] ORGANIZATIONS</span>
       </div>
-      <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">ORGANIZATIONS_AND_TEAMS</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
+      <h1 className="font-mono text-xl font-bold tracking-tight mb-4">ORGANIZATIONS_AND_TEAMS</h1>
+      <p className="font-mono text-xs text-muted-foreground mb-8">
         &gt; Multi-tenancy support with role-based access control (RBAC), team invitations, and organization management.
       </p>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">OVERVIEW</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="mb-4">
+        <h2 className="font-mono text-sm font-semibold mb-4">OVERVIEW</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <p className="font-mono text-xs text-muted-foreground mb-4">
               Fabrk includes a complete multi-tenancy system for B2B SaaS applications:
             </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Organization creation and management</li>
-              <li>Role-based access control (Owner, Admin, Member, Guest)</li>
-              <li>Email-based team invitations</li>
-              <li>Organization-scoped data isolation</li>
-              <li>Member management and role changes</li>
-              <li>Organization settings and branding</li>
-            </ul>
+            <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+              <div>├─ Organization creation and management</div>
+              <div>├─ Role-based access control (Owner, Admin, Member, Guest)</div>
+              <div>├─ Email-based team invitations</div>
+              <div>├─ Organization-scoped data isolation</div>
+              <div>├─ Member management and role changes</div>
+              <div>└─ Organization settings and branding</div>
+            </div>
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">DATABASE_SCHEMA</h2>
+        <h2 className="font-mono text-sm font-semibold mb-4">DATABASE_SCHEMA</h2>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Core models in <code className="bg-muted px-2 py-1 font-mono">prisma/schema.prisma</code>:</p>
+            <p className="font-mono text-xs text-muted-foreground">Core models in <code className="bg-muted px-1 font-mono text-[10px]">prisma/schema.prisma</code>:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="prisma" code={`enum OrgRole {
   OWNER
   ADMIN
@@ -101,15 +102,16 @@ model OrganizationInvite {
   @@index([email])
   @@index([token])
 }`} />
+          </div>
         </div>
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">ROLE_PERMISSIONS</h2>
-        <Card>
-          <CardContent className="pt-6">
+        <h2 className="font-mono text-sm font-semibold mb-4">ROLE_PERMISSIONS</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full font-mono text-[10px]">
                 <thead>
                   <tr className="border-b">
                     <th className="text-left py-2">Permission</th>
@@ -184,13 +186,14 @@ model OrganizationInvite {
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">CODE_EXAMPLES</h2>
+        <h2 className="font-mono text-sm font-semibold mb-4">CODE_EXAMPLES</h2>
 
-        <h3 className="font-mono text-xl font-medium mb-3">CREATE_ORGANIZATION</h3>
+        <h3 className="font-mono text-xs font-semibold mb-3">CREATE_ORGANIZATION</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">API endpoint to create a new organization:</p>
+            <p className="font-mono text-xs text-muted-foreground">API endpoint to create a new organization:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
@@ -266,13 +269,15 @@ export async function GET() {
 
   return NextResponse.json(organizations);
 }`} />
+          </div>
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">INVITE_MEMBERS</h3>
+        <h3 className="font-mono text-xs font-semibold mb-3">INVITE_MEMBERS</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Send team invitations:</p>
+            <p className="font-mono text-xs text-muted-foreground">Send team invitations:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/route.ts
 import { nanoid } from "nanoid";
 import { sendInviteEmail } from "@/lib/email";
@@ -343,13 +348,15 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ success: true, invite });
 }`} />
+          </div>
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">ACCEPT_INVITATION</h3>
+        <h3 className="font-mono text-xs font-semibold mb-3">ACCEPT_INVITATION</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Handle invite acceptance:</p>
+            <p className="font-mono text-xs text-muted-foreground">Handle invite acceptance:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/app/api/v1/organizations/invite/accept/route.ts
 export async function POST(request: Request) {
   const session = await auth();
@@ -398,13 +405,15 @@ export async function POST(request: Request) {
     organization: invite.organization,
   });
 }`} />
+          </div>
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
+        <h3 className="font-mono text-xs font-semibold mb-3">PERMISSION_CHECK_MIDDLEWARE</h3>
         <div className="space-y-4 mb-6">
           <div>
-            <p className="text-muted-foreground">Reusable permission checking:</p>
+            <p className="font-mono text-xs text-muted-foreground">Reusable permission checking:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// src/lib/permissions.ts
 import { prisma } from "@/lib/db";
 
@@ -457,13 +466,15 @@ export async function DELETE(request: Request) {
 
   // Proceed with deletion...
 }`} />
+          </div>
         </div>
 
-        <h3 className="font-mono text-xl font-medium mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
+        <h3 className="font-mono text-xs font-semibold mb-3">ORGANIZATION_CONTEXT_HOOK</h3>
         <div className="space-y-4">
           <div>
-            <p className="text-muted-foreground">Client-side organization context:</p>
+            <p className="font-mono text-xs text-muted-foreground">Client-side organization context:</p>
           </div>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`// src/hooks/useOrganization.ts
 "use client";
 
@@ -529,44 +540,45 @@ function TeamPage() {
     </div>
   );
 }`} />
+          </div>
         </div>
       </section>
 
       <section className="mb-12">
-        <h2 className="font-mono text-xl font-semibold mb-4">COMMON_USE_CASES</h2>
+        <h2 className="font-mono text-sm font-semibold mb-4">COMMON_USE_CASES</h2>
 
         <div className="grid gap-4">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-mono font-semibold mb-2">TEAM_WORKSPACES</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-2">TEAM_WORKSPACES</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Each organization has its own workspace with projects, files, or data. Members see only their organization's content.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-mono font-semibold mb-2">PER_SEAT_BILLING</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-2">PER_SEAT_BILLING</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Charge based on organization member count. Track seats in Stripe metadata and update on member changes.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-mono font-semibold mb-2">ADMIN_DASHBOARD</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-2">ADMIN_DASHBOARD</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Give admins a dashboard to manage members, view activity, and configure organization settings.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="font-mono font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
-              <p className="text-muted-foreground">
+          <Card className="rounded-none">
+            <CardContent className="p-3">
+              <h3 className="font-mono text-xs font-semibold mb-2">SSO_SAML_INTEGRATION</h3>
+              <p className="font-mono text-[10px] text-muted-foreground">
                 Enterprise organizations can configure their own identity provider. Members auto-join on first SSO login.
               </p>
             </CardContent>
@@ -575,20 +587,20 @@ function TeamPage() {
       </section>
 
       <section>
-        <h2 className="font-mono text-xl font-semibold mb-4">BEST_PRACTICES</h2>
-        <Card>
-          <CardContent className="pt-6">
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Always check permissions before any organization action</li>
-              <li>Use database transactions for multi-step operations</li>
-              <li>Scope all queries by <code className="bg-muted px-1 font-mono">organizationId</code></li>
-              <li>Send email notifications for important events (invite, role change)</li>
-              <li>Allow users to belong to multiple organizations</li>
-              <li>Implement organization switching in the UI</li>
-              <li>Log audit trail for compliance (member changes, permission changes)</li>
-              <li>Handle organization deletion carefully (soft delete recommended)</li>
-              <li>Prevent owners from removing themselves without transferring ownership</li>
-            </ul>
+        <h2 className="font-mono text-sm font-semibold mb-4">BEST_PRACTICES</h2>
+        <Card className="rounded-none">
+          <CardContent className="p-4">
+            <div className="font-mono text-[10px] text-muted-foreground space-y-1">
+              <div>├─ Always check permissions before any organization action</div>
+              <div>├─ Use database transactions for multi-step operations</div>
+              <div>├─ Scope all queries by <code className="bg-muted px-1 font-mono text-[10px]">organizationId</code></div>
+              <div>├─ Send email notifications for important events (invite, role change)</div>
+              <div>├─ Allow users to belong to multiple organizations</div>
+              <div>├─ Implement organization switching in the UI</div>
+              <div>├─ Log audit trail for compliance (member changes, permission changes)</div>
+              <div>├─ Handle organization deletion carefully (soft delete recommended)</div>
+              <div>└─ Prevent owners from removing themselves without transferring ownership</div>
+            </div>
           </CardContent>
         </Card>
       </section>

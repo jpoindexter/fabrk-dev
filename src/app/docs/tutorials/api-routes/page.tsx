@@ -8,33 +8,34 @@ export const metadata = {
 
 export default function ApiRoutesTutorialPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x50] TUTORIALS ] API_ROUTES</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">API_ROUTES</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>
+        <h1 className="font-mono text-xl font-bold tracking-tight">API_ROUTES</h1>
+        <p className="font-mono text-xs text-muted-foreground">&gt; Create API endpoints with Next.js App Router and learn Fabrk's patterns.</p>
       </div>
 
-      <Card>
-        <CardContent className="p-6">
-          <p className="text-muted-foreground">
+      <Card className="rounded-none">
+        <CardContent className="p-3">
+          <p className="font-mono text-xs text-muted-foreground">
             Fabrk uses Next.js 15 App Router for API routes. All routes are in{" "}
-            <code className="bg-muted px-1 py-0.5 font-mono">src/app/api/</code>.
+            <code className="bg-muted px-1 font-mono text-[10px]">src/app/api/</code>.
           </p>
         </CardContent>
       </Card>
 
       {/* Basic Route */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CREATING_A_BASIC_ROUTE</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CREATING_A_BASIC_ROUTE</h2>
         <div>
-          <p className="text-muted-foreground">
-            Create a new file at <code className="bg-muted px-1 py-0.5 font-mono">src/app/api/hello/route.ts</code>:
+          <p className="font-mono text-xs text-muted-foreground">
+            Create a new file at <code className="bg-muted px-1 font-mono text-[10px]">src/app/api/hello/route.ts</code>:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json({ message: "Hello World" });
@@ -44,17 +45,19 @@ export async function POST(request: Request) {
   const body = await request.json();
   return NextResponse.json({ received: body });
 }`} />
+        </div>
       </div>
 
       {/* Protected Route */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">PROTECTED_API_ROUTE</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">PROTECTED_API_ROUTE</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Add authentication to your route:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { auth } from "@/lib/auth";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -77,17 +80,19 @@ export async function GET() {
     message: "You are authenticated!"
   });
 }`} />
+        </div>
       </div>
 
       {/* Input Validation */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">INPUT_VALIDATION_WITH_ZOD</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">INPUT_VALIDATION_WITH_ZOD</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Always validate input with Zod schemas:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const createUserSchema = z.object({
@@ -117,17 +122,19 @@ export async function POST(request: Request) {
     );
   }
 }`} />
+        </div>
       </div>
 
       {/* Database Access */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">DATABASE_ACCESS</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">DATABASE_ACCESS</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Use Prisma to interact with your database:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { prisma } from "@/lib/prisma";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 
@@ -149,17 +156,19 @@ export async function GET() {
 
   return NextResponse.json({ user });
 }`} />
+        </div>
       </div>
 
       {/* Error Handling Pattern */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">ERROR_HANDLING_PATTERN</h2>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">ERROR_HANDLING_PATTERN</h2>
         <div>
-          <p className="text-muted-foreground">
+          <p className="font-mono text-xs text-muted-foreground">
             Use this consistent error handling pattern:
           </p>
         </div>
-        <CodeBlock language="typescript" code={`import { logger } from "@/lib/logger";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`import { logger } from "@/lib/logger";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -179,21 +188,22 @@ export async function POST(request: Request) {
     );
   }
 }`} />
+        </div>
       </div>
 
       {/* Status Codes */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">HTTP_STATUS_CODES</h2>
-        <ul className="list-inside list-disc space-y-2 text-muted-foreground">
-          <li><code className="bg-muted px-1 py-0.5 font-mono">200</code> - Success</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">201</code> - Created</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">400</code> - Bad request (invalid input)</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">401</code> - Unauthorized (not logged in)</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">403</code> - Forbidden (no permission)</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">404</code> - Not found</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">422</code> - Validation error</li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">500</code> - Server error</li>
-        </ul>
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">HTTP_STATUS_CODES</h2>
+        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">200</code> - Success</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">201</code> - Created</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">400</code> - Bad request (invalid input)</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">401</code> - Unauthorized (not logged in)</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">403</code> - Forbidden (no permission)</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">404</code> - Not found</div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">422</code> - Validation error</div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">500</code> - Server error</div>
+        </div>
       </div>
     </div>
   );

@@ -8,32 +8,33 @@ export const metadata = {
 
 export default function FooterComponentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <h1 className="font-mono text-xl font-bold tracking-tight">FOOTER_COMPONENTS</h1>
+        <p className="mt-2 font-mono text-xs text-muted-foreground">
           &gt; Footer components with links, branding, and legal information.
         </p>
       </div>
 
-      <Card>
-        <CardContent className="pt-6">
-          <h2 className="font-mono text-xl font-semibold mb-4">AVAILABLE_COMPONENTS</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Footer</code> - Landing page footer with link columns</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Logo</code> - Brand logo component</li>
-            <li><code className="font-mono text-sm bg-muted px-1 py-0.5">Separator</code> - Visual divider</li>
+      <Card className="rounded-none">
+        <CardContent className="p-4">
+          <h2 className="font-mono text-sm font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
+          <ul className="space-y-2 font-mono text-[10px] text-muted-foreground">
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Footer</code> - Landing page footer with link columns</li>
+            <li>├─ <code className="bg-muted px-1 font-mono text-[10px]">Logo</code> - Brand logo component</li>
+            <li>└─ <code className="bg-muted px-1 font-mono text-[10px]">Separator</code> - Visual divider</li>
           </ul>
         </CardContent>
       </Card>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div>
-          <h2 className="font-mono text-xl font-semibold">IMPORT_EXAMPLES</h2>
+          <h2 className="font-mono text-sm font-semibold">IMPORT_EXAMPLES</h2>
         </div>
+        <div className="[&>div]:rounded-none">
         <CodeBlock language="typescript" code={`// Landing page footer
 import { Footer } from "@/components/landing/footer";
 
@@ -45,13 +46,15 @@ import { Logo } from "@/components/home/logo";
 
 // Separator
 import { Separator } from "@/components/ui/separator";`} />
+        </div>
       </div>
 
-      <div className="space-y-8">
-        <h2 className="font-mono text-xl font-semibold">USAGE_EXAMPLES</h2>
+      <div className="space-y-6">
+        <h2 className="font-mono text-sm font-semibold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">LANDING_PAGE_FOOTER</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">LANDING_PAGE_FOOTER</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import { Footer } from "@/components/landing/footer";
 
 export default function LandingPage() {
@@ -73,10 +76,12 @@ export default function LandingPage() {
 // - Social media links
 // - Copyright notice
 // - Newsletter signup (optional)`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">CUSTOM_FOOTER</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">CUSTOM_FOOTER</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 import { Logo } from "@/components/home/logo";
 import { Separator } from "@/components/ui/separator";
@@ -184,10 +189,12 @@ export function CustomFooter() {
     </footer>
   );
 }`} />
+          </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="font-mono text-lg font-medium">SIMPLE_FOOTER</h3>
+        <div className="space-y-3">
+          <h3 className="font-mono text-xs font-semibold">SIMPLE_FOOTER</h3>
+          <div className="[&>div]:rounded-none">
           <CodeBlock language="tsx" code={`import Link from "next/link";
 
 export function SimpleFooter() {
@@ -217,6 +224,7 @@ export function SimpleFooter() {
     </footer>
   );
 }`} />
+          </div>
         </div>
       </div>
     </div>

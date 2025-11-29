@@ -8,37 +8,38 @@ export const metadata = {
 
 export default function ProtectedPagesTutorialPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="space-y-2">
         <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
+          <span className="font-mono text-[10px] text-muted-foreground">[ [0x50] TUTORIALS ] PROTECTED_PAGES</span>
         </div>
-        <h1 className="font-mono text-3xl font-bold tracking-tight">PROTECTED_PAGES</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Create pages that require authentication to access</p>
+        <h1 className="font-mono text-xl font-bold tracking-tight">PROTECTED_PAGES</h1>
+        <p className="font-mono text-xs text-muted-foreground">&gt; Create pages that require authentication to access</p>
       </div>
 
       {/* How It Works */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">HOW_PROTECTION_WORKS</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">HOW_PROTECTION_WORKS</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Fabrk protects routes via middleware. The following routes automatically redirect
           unauthenticated users to the home page:
         </p>
-        <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          <li><code className="bg-muted px-1 py-0.5 font-mono">/dashboard/*</code></li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">/admin/*</code></li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">/billing/*</code></li>
-          <li><code className="bg-muted px-1 py-0.5 font-mono">/settings/*</code></li>
-        </ul>
+        <div className="space-y-1 font-mono text-[10px] text-muted-foreground">
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/dashboard/*</code></div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/admin/*</code></div>
+          <div>├─ <code className="bg-muted px-1 font-mono text-[10px]">/billing/*</code></div>
+          <div>└─ <code className="bg-muted px-1 font-mono text-[10px]">/settings/*</code></div>
+        </div>
       </div>
 
       {/* Creating a Protected Page */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CREATING_A_PROTECTED_PAGE</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CREATING_A_PROTECTED_PAGE</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Simply create your page under one of the protected directories:
         </p>
-        <CodeBlock language="tsx" code={`// src/app/(dashboard)/dashboard/my-feature/page.tsx
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="tsx" code={`// src/app/(dashboard)/dashboard/my-feature/page.tsx
 
 import { auth } from "@/lib/auth";
 
@@ -55,16 +56,18 @@ export default async function MyFeaturePage() {
     </div>
   );
 }`} />
+        </div>
       </div>
 
       {/* Adding New Protected Routes */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">ADDING_NEW_PROTECTED_ROUTES</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">ADDING_NEW_PROTECTED_ROUTES</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           To protect additional routes, update the middleware at{" "}
-          <code className="bg-muted px-1 py-0.5 font-mono">src/middleware.ts</code>:
+          <code className="bg-muted px-1 font-mono text-[10px]">src/middleware.ts</code>:
         </p>
-        <CodeBlock language="typescript" code={`// src/middleware.ts
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="typescript" code={`// src/middleware.ts
 
 // Find this section and add your routes:
 const isOnDashboard = pathnameWithoutLocale.startsWith('/dashboard');
@@ -74,15 +77,17 @@ const isOnSettings = pathnameWithoutLocale.startsWith('/settings');
 const isOnMyFeature = pathnameWithoutLocale.startsWith('/my-feature'); // Add this
 
 const isProtectedRoute = isOnDashboard || isOnAdmin || isOnBilling || isOnSettings || isOnMyFeature;`} />
+        </div>
       </div>
 
       {/* Role-Based Access */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">ROLE_BASED_ACCESS_CONTROL</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">ROLE_BASED_ACCESS_CONTROL</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Restrict pages by user role:
         </p>
-        <CodeBlock language="tsx" code={`// src/app/(dashboard)/admin/page.tsx
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="tsx" code={`// src/app/(dashboard)/admin/page.tsx
 
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -102,20 +107,22 @@ export default async function AdminPage() {
     </div>
   );
 }`} />
-        <p className="text-sm text-muted-foreground">
-          Available roles: <code className="bg-muted px-1 py-0.5 font-mono">USER</code>,{" "}
-          <code className="bg-muted px-1 py-0.5 font-mono">ADMIN</code>,{" "}
-          <code className="bg-muted px-1 py-0.5 font-mono">SUPER_ADMIN</code>
+        </div>
+        <p className="font-mono text-[10px] text-muted-foreground">
+          Available roles: <code className="bg-muted px-1 font-mono text-[10px]">USER</code>,{" "}
+          <code className="bg-muted px-1 font-mono text-[10px]">ADMIN</code>,{" "}
+          <code className="bg-muted px-1 font-mono text-[10px]">SUPER_ADMIN</code>
         </p>
       </div>
 
       {/* Client Component Protection */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CLIENT_COMPONENT_PROTECTION</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CLIENT_COMPONENT_PROTECTION</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           For client components, use the session hook:
         </p>
-        <CodeBlock language="tsx" code={`"use client";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="tsx" code={`"use client";
 
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -137,15 +144,17 @@ export function ProtectedClientComponent() {
     </div>
   );
 }`} />
+        </div>
       </div>
 
       {/* Conditional UI */}
-      <div className="space-y-4">
-        <h2 className="font-mono text-xl font-semibold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
-        <p className="text-muted-foreground">
+      <div className="space-y-3">
+        <h2 className="font-mono text-sm font-semibold">CONDITIONAL_UI_BASED_ON_AUTH</h2>
+        <p className="font-mono text-xs text-muted-foreground">
           Show different content based on authentication state:
         </p>
-        <CodeBlock language="tsx" code={`"use client";
+        <div className="[&>div]:rounded-none">
+          <CodeBlock language="tsx" code={`"use client";
 
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -171,6 +180,7 @@ export function NavBar() {
     </nav>
   );
 }`} />
+        </div>
       </div>
     </div>
   );
