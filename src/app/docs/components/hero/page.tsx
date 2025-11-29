@@ -14,7 +14,7 @@ export default function HeroComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] HERO</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">HERO_SECTIONS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; Eye-catching hero sections for landing pages with various layouts and styles.
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function HeroComponentsPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h2 className="font-mono text-xs font-semibold mb-3">AVAILABLE_COMPONENTS</h2>
-          <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div className="space-y-1 font-mono text-sm text-muted-foreground">
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSection</code> - Standard centered hero with headline, description, and CTAs</div>
             <div>├─ <code className="bg-muted px-1 font-mono">HeroSplit</code> - Split layout with content on left and image/demo on right</div>
             <div>└─ <code className="bg-muted px-1 font-mono">HeroVideo</code> - Hero section with background video or video modal</div>
@@ -106,7 +106,7 @@ export default function LandingPage() {
 
         <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">VIEW_VARIATIONS</h3>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Check out the variations page to see all hero styles side by side:
           </p>
           <div className="[&>div]:rounded-none">
@@ -118,7 +118,7 @@ export default function LandingPage() {
 
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ANIMATION_PATTERN</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           All hero sections use Framer Motion for smooth entrance animations:
         </p>
         <div className="[&>div]:rounded-none">

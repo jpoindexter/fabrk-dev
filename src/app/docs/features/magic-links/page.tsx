@@ -20,7 +20,7 @@ export default function MagicLinksPage() {
         <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MAGIC_LINKS</span>
       </div>
       <h1 className="font-mono text-3xl font-bold tracking-tight mb-4">MAGIC_LINK_AUTH</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
+      <p className="font-mono text-base text-muted-foreground mb-8">
         &gt; Passwordless authentication via email magic links for frictionless sign-in.
       </p>
 

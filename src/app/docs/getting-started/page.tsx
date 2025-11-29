@@ -16,7 +16,7 @@ export default function GettingStartedPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x00] DOCS ] GETTING_STARTED</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">GETTING_STARTED</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Everything you need to launch your SaaS, from first download to first customer.
         </p>
       </div>
@@ -25,12 +25,12 @@ export default function GettingStartedPage() {
       <Card className="rounded-none">
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHAT_IS_FABRK?</h2>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          <p className="font-mono text-base text-muted-foreground leading-relaxed">
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
             need to decorate and move in.
           </p>
-          <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+          <p className="font-mono text-base text-muted-foreground leading-relaxed">
             Instead of spending months building user accounts, payment processing, and email systems
             from scratch, Fabrk gives you all of that working on day one. You can focus on what makes
             your product unique.
@@ -44,8 +44,8 @@ export default function GettingStartedPage() {
           <h2 className="font-mono text-lg font-bold text-foreground">WHO_IS_THIS_FOR?</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-3">
-              <h3 className="font-mono text-sm font-semibold text-foreground">&gt; GREAT_FIT</h3>
-              <ul className="space-y-1 font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold text-foreground">&gt; GREAT_FIT</h3>
+              <ul className="space-y-1 font-mono text-sm text-muted-foreground">
                 <li>├─ Developers building their first SaaS</li>
                 <li>├─ Founders who can code</li>
                 <li>├─ Agencies building client projects</li>
@@ -53,8 +53,8 @@ export default function GettingStartedPage() {
               </ul>
             </div>
             <div className="space-y-3">
-              <h3 className="font-mono text-sm font-semibold text-foreground">&gt; REQUIREMENTS</h3>
-              <ul className="space-y-1 font-mono text-xs text-muted-foreground">
+              <h3 className="font-mono text-base font-semibold text-foreground">&gt; REQUIREMENTS</h3>
+              <ul className="space-y-1 font-mono text-sm text-muted-foreground">
                 <li>├─ Basic JavaScript/TypeScript</li>
                 <li>├─ Familiarity with React</li>
                 <li>├─ Node.js installed</li>
@@ -68,7 +68,7 @@ export default function GettingStartedPage() {
       {/* What's Included */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">WHATS_INCLUDED</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Fabrk handles the essential features every SaaS needs:
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -82,7 +82,7 @@ export default function GettingStartedPage() {
           ].map((item) => (
             <Card key={item.title} className="rounded-none">
               <CardContent className="p-4">
-                <h3 className="font-mono text-sm font-semibold mb-2">{item.title}</h3>
+                <h3 className="font-mono text-base font-semibold mb-2">{item.title}</h3>
                 <p className="font-mono text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
               </CardContent>
             </Card>
@@ -98,7 +98,7 @@ export default function GettingStartedPage() {
             5_MIN
           </span>
         </div>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Already know Next.js? Here&apos;s the fastest path:
         </p>
         <div className="[&>div]:rounded-none">
@@ -121,7 +121,7 @@ npm run db:push && npm run dev`}
       {/* Step-by-Step Guide */}
       <div className="space-y-6">
         <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           New to this? Let&apos;s walk through each step.
         </p>
 
@@ -129,7 +129,7 @@ npm run db:push && npm run dev`}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
-            <h3 className="font-mono text-sm font-semibold">CHECK_YOUR_SYSTEM</h3>
+            <h3 className="font-mono text-base font-semibold">CHECK_YOUR_SYSTEM</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Make sure you have Node.js installed:
@@ -146,7 +146,7 @@ npm run db:push && npm run dev`}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
-            <h3 className="font-mono text-sm font-semibold">DOWNLOAD_FABRK</h3>
+            <h3 className="font-mono text-base font-semibold">DOWNLOAD_FABRK</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Clone the Fabrk code. Replace &quot;my-saas&quot; with your project name:
@@ -161,7 +161,7 @@ cd my-saas`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
-            <h3 className="font-mono text-sm font-semibold">INSTALL_DEPENDENCIES</h3>
+            <h3 className="font-mono text-base font-semibold">INSTALL_DEPENDENCIES</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Download all required libraries (1-2 min):
@@ -175,7 +175,7 @@ cd my-saas`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">4</span>
-            <h3 className="font-mono text-sm font-semibold">CREATE_CONFIG_FILE</h3>
+            <h3 className="font-mono text-base font-semibold">CREATE_CONFIG_FILE</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Create your private settings file:
@@ -189,12 +189,12 @@ cd my-saas`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">5</span>
-            <h3 className="font-mono text-sm font-semibold">SETUP_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold">SETUP_DATABASE</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             You need a PostgreSQL database. Easiest options:
           </p>
-          <ul className="font-mono text-xs text-muted-foreground space-y-1">
+          <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <a href="https://neon.tech" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Neon</a> - Free tier, serverless</li>
             <li>├─ <a href="https://supabase.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Supabase</a> - Free tier, extra features</li>
             <li>└─ <a href="https://railway.app" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Railway</a> - Simple, pay-as-you-go</li>
@@ -211,7 +211,7 @@ cd my-saas`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">6</span>
-            <h3 className="font-mono text-sm font-semibold">CONFIGURE_SETTINGS</h3>
+            <h3 className="font-mono text-base font-semibold">CONFIGURE_SETTINGS</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Add required values to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
@@ -230,7 +230,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">7</span>
-            <h3 className="font-mono text-sm font-semibold">INITIALIZE_DATABASE</h3>
+            <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Create the database tables:
@@ -244,7 +244,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">8</span>
-            <h3 className="font-mono text-sm font-semibold">START_YOUR_APP</h3>
+            <h3 className="font-mono text-base font-semibold">START_YOUR_APP</h3>
           </div>
           <p className="font-mono text-xs text-muted-foreground">
             Start the development server:
@@ -283,7 +283,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
               <span className="ml-2">CANNOT_CONNECT_DATABASE</span>
             </summary>
             <div className="border-t border-border p-4">
-              <ul className="font-mono text-xs text-muted-foreground space-y-1">
+              <ul className="font-mono text-sm text-muted-foreground space-y-1">
                 <li>├─ Check DATABASE_URL in .env.local</li>
                 <li>├─ No extra spaces or quotes</li>
                 <li>├─ Database is running</li>
@@ -311,7 +311,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
       {/* Optional Setup */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">OPTIONAL_FEATURES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Enable more features by adding API keys to <code className="bg-muted px-1.5 py-0.5 font-mono text-xs">.env.local</code>:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -324,7 +324,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
             <Link key={item.title} href={item.href}>
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
                 <CardContent className="p-4">
-                  <h3 className="font-mono text-sm font-semibold mb-1">{item.title}</h3>
+                  <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
                   <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
                   <span className="font-mono text-xs text-primary">&gt; SETUP_GUIDE</span>
                 </CardContent>
@@ -347,7 +347,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
             <Link key={item.title} href={item.href}>
               <Card className="rounded-none h-full transition-all hover:border-primary/50">
                 <CardContent className="p-4">
-                  <h3 className="font-mono text-sm font-semibold mb-1">{item.title}</h3>
+                  <h3 className="font-mono text-base font-semibold mb-1">{item.title}</h3>
                   <p className="font-mono text-xs text-muted-foreground">{item.desc}</p>
                 </CardContent>
               </Card>

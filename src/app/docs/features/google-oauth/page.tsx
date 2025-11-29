@@ -27,7 +27,7 @@ export default function GoogleOAuthPage() {
             <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk supports Google OAuth through NextAuth v5 with:
             </p>
-            <ul className="font-mono text-xs text-muted-foreground space-y-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ One-click sign-in with Google accounts</li>
               <li>├─ Automatic account linking for existing email users</li>
               <li>├─ Profile photo and name sync from Google</li>
@@ -45,12 +45,12 @@ export default function GoogleOAuthPage() {
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">1</span>
           <h3 className="font-mono text-xs font-semibold">CREATE_GOOGLE_CLOUD_PROJECT</h3>
         </div>
-        <ol className="font-mono text-xs text-muted-foreground space-y-1 pl-6">
+        <ol className="font-mono text-sm text-muted-foreground space-y-1 pl-6">
           <li>1. Go to <a href="https://console.cloud.google.com" className="text-primary hover:underline">Google Cloud Console</a></li>
           <li>2. Create a new project or select existing one</li>
           <li>3. Navigate to APIs &amp; Services → OAuth consent screen</li>
           <li>4. Configure the consent screen:
-            <ul className="font-mono text-xs text-muted-foreground space-y-1 pl-4 mt-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4 mt-1">
               <li>├─ User type: External</li>
               <li>├─ App name: Your app name</li>
               <li>├─ Support email: Your email</li>
@@ -64,18 +64,18 @@ export default function GoogleOAuthPage() {
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">2</span>
           <h3 className="font-mono text-xs font-semibold">CREATE_OAUTH_CREDENTIALS</h3>
         </div>
-        <ol className="font-mono text-xs text-muted-foreground space-y-1 pl-6">
+        <ol className="font-mono text-sm text-muted-foreground space-y-1 pl-6">
           <li>1. Go to APIs &amp; Services → Credentials</li>
           <li>2. Click Create Credentials → OAuth client ID</li>
           <li>3. Application type: Web application</li>
           <li>4. Add Authorized JavaScript origins:
-            <ul className="font-mono text-xs text-muted-foreground space-y-1 pl-4 mt-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4 mt-1">
               <li>├─ <code className="font-mono bg-muted px-1">http://localhost:3000</code> (development)</li>
               <li>└─ <code className="font-mono bg-muted px-1">https://yourdomain.com</code> (production)</li>
             </ul>
           </li>
           <li>5. Add Authorized redirect URIs:
-            <ul className="font-mono text-xs text-muted-foreground space-y-1 pl-4 mt-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1 pl-4 mt-1">
               <li>├─ <code className="font-mono bg-muted px-1">http://localhost:3000/api/auth/callback/google</code></li>
               <li>└─ <code className="font-mono bg-muted px-1">https://yourdomain.com/api/auth/callback/google</code></li>
             </ul>
@@ -303,7 +303,7 @@ export function LoginForm() {
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
-            <ul className="font-mono text-xs text-muted-foreground space-y-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Always offer email/password as an alternative to OAuth</li>
               <li>├─ Handle account linking for users who sign up with email first</li>
               <li>├─ Request minimal scopes (email, profile, openid)</li>

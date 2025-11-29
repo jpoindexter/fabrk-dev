@@ -20,7 +20,7 @@ export default function EmailsPage() {
         <span className="font-mono text-xs text-muted-foreground">[ [0x40] FEATURES ] EMAILS</span>
       </div>
       <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl mb-4">EMAIL_WITH_RESEND</h1>
-      <p className="font-mono text-sm text-muted-foreground mb-8">
+      <p className="font-mono text-base text-muted-foreground mb-8">
         &gt; Production-ready email system with React Email templates, queue-based sending, and beautiful transactional emails.
       </p>
 

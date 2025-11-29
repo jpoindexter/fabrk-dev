@@ -16,7 +16,7 @@ export default function CloudStoragePage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] FEATURES ] CLOUD_STORAGE</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">CLOUD_STORAGE</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Upload and store files securely with automatic provider detection.</p>
+        <p className="font-mono text-base text-muted-foreground">&gt; Upload and store files securely with automatic provider detection.</p>
       </div>
 
       {/* What is Cloud Storage - Plain English */}

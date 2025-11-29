@@ -14,7 +14,7 @@ export default function DataDisplayComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] DATA_DISPLAY</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">DATA_DISPLAY</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; Components for displaying data including tables, cards, badges, and more.
         </p>
       </div>

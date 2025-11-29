@@ -14,7 +14,7 @@ export default function FooterComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] FOOTER</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FOOTER_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; Footer components with links, branding, and legal information.
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function FooterComponentsPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Footer</code> - Landing page footer with link columns</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Logo</code> - Brand logo component</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">Separator</code> - Visual divider</li>

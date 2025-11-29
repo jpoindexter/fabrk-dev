@@ -13,7 +13,7 @@ export default function ArchitecturePage() {
         <div className="space-y-6">
             <div className="space-y-2">
                 <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">System Architecture</h1>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                     A deep dive into Fabrk's enterprise-grade stack and design patterns.
                 </p>
             </div>
@@ -21,7 +21,7 @@ export default function ArchitecturePage() {
             {/* High Level Overview */}
             <section className="space-y-3">
                 <h2 className="font-mono text-lg font-bold">High-Level Overview</h2>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                     Fabrk is built on the <strong>T3 Stack</strong> philosophy but extended for enterprise SaaS requirements.
                     It leverages Next.js 15 (App Router) for the full-stack framework, ensuring type safety from the database to the frontend.
                 </p>
@@ -71,7 +71,7 @@ export default function ArchitecturePage() {
                                 Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
                                 but can be database-persisted for strict session management.
                             </p>
-                            <div className="space-y-1 font-mono text-xs text-muted-foreground">
+                            <div className="space-y-1 font-mono text-sm text-muted-foreground">
                                 <div>├─ Role-Based Access Control (RBAC)</div>
                                 <div>├─ Middleware protection for routes</div>
                                 <div>└─ CSRF & Rate Limiting pre-configured</div>
@@ -86,7 +86,7 @@ export default function ArchitecturePage() {
                                 Prisma ORM provides a type-safe interface to PostgreSQL.
                                 We use a "Service Layer" pattern to abstract database logic from UI components.
                             </p>
-                            <div className="space-y-1 font-mono text-xs text-muted-foreground">
+                            <div className="space-y-1 font-mono text-sm text-muted-foreground">
                                 <div>├─ Automated migrations</div>
                                 <div>├─ Connection pooling (ready for serverless)</div>
                                 <div>└─ Zod schema validation</div>
@@ -99,14 +99,14 @@ export default function ArchitecturePage() {
             {/* Data Flow */}
             <section className="space-y-3">
                 <h2 className="font-mono text-lg font-bold">Data Flow & Patterns</h2>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                     We strictly follow unidirectional data flow. Server Actions are used for mutations,
                     while React Server Components (RSC) handle data fetching.
                 </p>
 
                 <div className="space-y-3">
                     <h3 className="font-mono text-xs font-semibold">Mutation Flow (Server Actions)</h3>
-                    <p className="font-mono text-sm text-muted-foreground">Example of a typical server action flow:</p>
+                    <p className="font-mono text-base text-muted-foreground">Example of a typical server action flow:</p>
                     <div className="[&>div]:rounded-none">
                         <CodeBlock language="typescript" code={`// 1. Client invokes action
 const { execute, status } = useAction(updateUserProfile);
@@ -131,10 +131,10 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
             {/* Scalability */}
             <section className="space-y-3">
                 <h2 className="font-mono text-lg font-bold">Scalability Considerations</h2>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                     Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
                 </p>
-                <div className="space-y-1 font-mono text-xs text-muted-foreground">
+                <div className="space-y-1 font-mono text-sm text-muted-foreground">
                     <div>├─ <strong>Edge Caching:</strong> Static assets and ISR pages are cached at the edge.</div>
                     <div>├─ <strong>Serverless Database:</strong> Compatible with Neon/Supabase for auto-scaling storage and compute.</div>
                     <div>└─ <strong>Job Queues:</strong> Background jobs (emails, webhooks) are decoupled using Inngest or similar patterns (optional).</div>

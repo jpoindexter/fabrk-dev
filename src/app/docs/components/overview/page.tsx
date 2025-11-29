@@ -200,7 +200,7 @@ export default function ComponentsOverviewPage() {
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">
           UI_COMPONENTS_LIBRARY
         </h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; 100+ production-ready components built with Radix UI and Tailwind CSS.
         </p>
       </div>
@@ -276,7 +276,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`}
       {/* Component Docs Links */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DETAILED_DOCUMENTATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; See individual component pages for usage examples and API reference:
         </p>
         <div className="grid gap-2 sm:grid-cols-2">

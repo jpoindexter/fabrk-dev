@@ -15,7 +15,7 @@ export default function AuditLoggingPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] AUDIT_LOGGING</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">AUDIT_LOGGING</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Track security-relevant events and user actions for compliance and debugging.
         </p>
       </div>
@@ -429,7 +429,7 @@ async function sendSecurityAlert(log: AuditLog) {
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">Schema Validation</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                   Validate all inputs with Zod
                 </p>
               </CardContent>
@@ -439,7 +439,7 @@ async function sendSecurityAlert(log: AuditLog) {
             <Card className="h-full transition-all hover:border-primary/50">
               <CardContent className="p-4">
                 <h3 className="font-mono font-semibold">Database Setup</h3>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-mono text-base text-muted-foreground">
                   Set up production database
                 </p>
               </CardContent>

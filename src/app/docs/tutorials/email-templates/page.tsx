@@ -15,7 +15,7 @@ export default function EmailTemplatesTutorialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x40] TUTORIALS ] EMAIL_TEMPLATES</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">EMAIL_TEMPLATES</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Create and send beautiful transactional emails with Resend and lightweight HTML templates.
         </p>
       </div>
@@ -23,7 +23,7 @@ export default function EmailTemplatesTutorialPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
-          <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div className="space-y-1 font-mono text-sm text-muted-foreground">
             <div>├─ Resend API integration for reliable email delivery</div>
             <div>├─ Lightweight HTML templates for maximum performance</div>
             <div>├─ Direct sending for immediate emails (auth)</div>
@@ -38,7 +38,7 @@ export default function EmailTemplatesTutorialPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BASIC_SETUP</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Configure your Resend API key to start sending emails. Sign up at{" "}
             <a
               href="https://resend.com"
@@ -66,7 +66,7 @@ EMAIL_FROM="noreply@yourdomain.com"`} />
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SENDING_EMAILS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Use the email service functions from{" "}
             <code className="bg-muted px-1 font-mono text-xs">src/lib/email.ts</code>:
           </p>
@@ -111,7 +111,7 @@ await sendResetEmail(
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">EMAIL_QUEUE_SYSTEM</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             For non-critical emails (notifications, bulk), use the queue system for background sending
             with automatic retries:
           </p>
@@ -152,7 +152,7 @@ await queueWelcomeEmail({
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CREATING_CUSTOM_EMAIL_TEMPLATES</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Create HTML template functions in <code className="bg-muted px-1 font-mono text-xs">src/emails/</code>.
             This approach keeps dependencies low and performance high.
           </p>
@@ -215,7 +215,7 @@ export function generateInvoiceEmailHTML({
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SENDING_CUSTOM_HTML_EMAILS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Generate the HTML and send it using Resend:
           </p>
         </div>
@@ -265,10 +265,10 @@ export async function POST(request: Request) {
       {/* Email Types */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">EMAIL_TYPES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           The queue system supports these email types for categorization:
         </p>
-        <div className="space-y-1 font-mono text-xs text-muted-foreground">
+        <div className="space-y-1 font-mono text-sm text-muted-foreground">
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">WELCOME</code> - Post-purchase welcome emails</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">VERIFICATION</code> - Email verification</div>
           <div>├─ <code className="bg-muted px-1 font-mono text-xs">RESET</code> - Password reset</div>
@@ -281,7 +281,7 @@ export async function POST(request: Request) {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ORGANIZATION_INVITES</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Send beautiful organization invitation emails:
           </p>
         </div>
@@ -303,7 +303,7 @@ await sendOrganizationInvite("newmember@example.com", {
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
-            <div className="space-y-1 font-mono text-xs text-muted-foreground">
+            <div className="space-y-1 font-mono text-sm text-muted-foreground">
               <div>├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)</div>
               <div>├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails</div>
               <div>├─ <strong>Track user/purchase IDs</strong> for email analytics and debugging</div>

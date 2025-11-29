@@ -15,13 +15,13 @@ export default function DeployVercelPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x90] DEPLOYMENT ] VERCEL</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">DEPLOY_TO_VERCEL</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
+        <p className="font-mono text-base text-muted-foreground">&gt; Deploy your Fabrk application to Vercel with automatic SSL, CDN, and edge functions.</p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="font-mono mb-2 text-xs font-semibold">WHAT_YOU_WILL_GET</h3>
-          <ul className="space-y-1 font-mono text-xs text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
             <li>├─ Automatic HTTPS with custom domains</li>
             <li>├─ Global CDN for static assets</li>
             <li>├─ Edge functions for middleware</li>
@@ -35,7 +35,7 @@ export default function DeployVercelPage() {
       {/* One-Click Deploy */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ONE_CLICK_DEPLOY</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           The fastest way to deploy - click and configure:
         </p>
         <div className="[&>div]:rounded-none">
@@ -58,7 +58,7 @@ vercel
       {/* Step-by-Step Deployment */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_DEPLOYMENT</h2>
-        <ol className="space-y-1 font-mono text-xs text-muted-foreground">
+        <ol className="space-y-1 font-mono text-sm text-muted-foreground">
           <li>1. Push to GitHub - Your code must be in a Git repository</li>
           <li>2. Connect to Vercel - Go to vercel.com/new</li>
           <li>3. Import repository - Select your GitHub repo</li>
@@ -70,7 +70,7 @@ vercel
       {/* Required Environment Variables */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">REQUIRED_ENVIRONMENT_VARIABLES</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Add these in Vercel Dashboard → Settings → Environment Variables:
         </p>
         <div className="[&>div]:rounded-none">
@@ -103,7 +103,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       {/* vercel.json Configuration */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">VERCEL_JSON_CONFIGURATION</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Optional configuration for advanced settings:
         </p>
         <div className="[&>div]:rounded-none">
@@ -145,10 +145,10 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       {/* Custom Domain */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CUSTOM_DOMAIN</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Connect your custom domain:
         </p>
-        <ol className="space-y-1 font-mono text-xs text-muted-foreground">
+        <ol className="space-y-1 font-mono text-sm text-muted-foreground">
           <li>1. Go to Project Settings → Domains</li>
           <li>2. Add your domain (e.g., myapp.com)</li>
           <li>3. Add DNS records at your registrar:</li>
@@ -164,7 +164,7 @@ Type: CNAME
 Name: www
 Value: cname.vercel-dns.com`} />
         </div>
-        <ol className="space-y-1 font-mono text-xs text-muted-foreground" start={4}>
+        <ol className="space-y-1 font-mono text-sm text-muted-foreground" start={4}>
           <li>4. Wait for DNS propagation (up to 48 hours)</li>
           <li>5. SSL certificate is automatically provisioned</li>
         </ol>
@@ -173,16 +173,16 @@ Value: cname.vercel-dns.com`} />
       {/* Stripe Webhook Setup */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">STRIPE_WEBHOOK_SETUP</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Configure Stripe webhooks for production:
         </p>
-        <ol className="space-y-1 font-mono text-xs text-muted-foreground">
+        <ol className="space-y-1 font-mono text-sm text-muted-foreground">
           <li>1. Go to Stripe Dashboard → Webhooks</li>
           <li>2. Click "Add endpoint"</li>
           <li>3. Enter URL: <code className="bg-muted px-1 font-mono">https://your-domain.com/api/webhooks/stripe</code></li>
           <li>4. Select events:</li>
         </ol>
-        <ul className="ml-4 space-y-1 font-mono text-xs text-muted-foreground">
+        <ul className="ml-4 space-y-1 font-mono text-sm text-muted-foreground">
           <li>├─ checkout.session.completed</li>
           <li>├─ customer.subscription.created</li>
           <li>├─ customer.subscription.updated</li>
@@ -190,7 +190,7 @@ Value: cname.vercel-dns.com`} />
           <li>├─ invoice.paid</li>
           <li>└─ invoice.payment_failed</li>
         </ul>
-        <ol className="space-y-1 font-mono text-xs text-muted-foreground" start={5}>
+        <ol className="space-y-1 font-mono text-sm text-muted-foreground" start={5}>
           <li>5. Copy the webhook signing secret</li>
           <li>6. Add it as <code className="bg-muted px-1 font-mono">STRIPE_WEBHOOK_SECRET</code> in Vercel</li>
         </ol>
@@ -199,7 +199,7 @@ Value: cname.vercel-dns.com`} />
       {/* Preview Deployments */}
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PREVIEW_DEPLOYMENTS</h2>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           Every PR gets a unique preview URL:
         </p>
         <div className="[&>div]:rounded-none">

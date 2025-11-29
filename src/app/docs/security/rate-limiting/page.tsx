@@ -15,7 +15,7 @@ export default function RateLimitingPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] RATE_LIMITING</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">RATE_LIMITING</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Protect your API endpoints from abuse with configurable rate limiting middleware.
         </p>
       </div>

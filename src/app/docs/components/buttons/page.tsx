@@ -14,7 +14,7 @@ export default function ButtonsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] BUTTONS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">BUTTON_COMPONENTS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; Button components with multiple variants, sizes, and states.
         </p>
       </div>

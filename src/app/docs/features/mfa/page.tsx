@@ -16,7 +16,7 @@ export default function MFAPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x20] FEATURES ] MFA</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">MULTI_FACTOR_AUTHENTICATION</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Add an extra layer of security with authenticator apps and backup codes.
         </p>
       </div>

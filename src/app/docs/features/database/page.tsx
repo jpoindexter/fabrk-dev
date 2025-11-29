@@ -27,7 +27,7 @@ export default function DatabasePage() {
             <p className="font-mono text-xs text-muted-foreground mb-3">
               Fabrk uses Prisma ORM with PostgreSQL for type-safe database operations. The system includes:
             </p>
-            <ul className="font-mono text-xs text-muted-foreground space-y-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Pre-built models for users, organizations, payments, and more</li>
               <li>├─ Type-safe queries with full TypeScript support</li>
               <li>├─ Migration management for schema changes</li>
@@ -335,7 +335,7 @@ npx prisma migrate status`} />
         <h2 className="font-mono text-lg font-bold">BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-4">
-            <ul className="font-mono text-xs text-muted-foreground space-y-1">
+            <ul className="font-mono text-sm text-muted-foreground space-y-1">
               <li>├─ Always use the singleton client from <code className="bg-muted px-1 font-mono">@/lib/db</code></li>
               <li>├─ Use <code className="bg-muted px-1 font-mono">select</code> to fetch only needed fields</li>
               <li>├─ Add indexes for frequently queried fields</li>

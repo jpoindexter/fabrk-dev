@@ -15,7 +15,7 @@ export default function SecurityHeadersPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x80] SECURITY ] HEADERS</span>
         </div>
         <h1 className="font-mono text-3xl font-bold tracking-tight">SECURITY_HEADERS</h1>
-        <p className="font-mono text-sm text-muted-foreground">
+        <p className="font-mono text-base text-muted-foreground">
           &gt; Configure HTTP security headers including HSTS, CSP, X-Frame-Options, and more.
         </p>
       </div>

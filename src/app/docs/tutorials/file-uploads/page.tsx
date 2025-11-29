@@ -15,13 +15,13 @@ export default function FileUploadsTutorialPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x50] TUTORIALS ] FILE_UPLOADS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">FILE_UPLOADS</h1>
-        <p className="font-mono text-sm text-muted-foreground">&gt; Implement secure file uploads with dropzone components, validation, and cloud storage integration.</p>
+        <p className="font-mono text-base text-muted-foreground">&gt; Implement secure file uploads with dropzone components, validation, and cloud storage integration.</p>
       </div>
 
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h3 className="mb-2 font-mono text-xs font-semibold">What's Included</h3>
-          <div className="space-y-1 font-mono text-xs text-muted-foreground">
+          <div className="space-y-1 font-mono text-sm text-muted-foreground">
             <div>├─ Drag-and-drop file upload components</div>
             <div>├─ Image upload with preview and cropping</div>
             <div>├─ File validation (size, type, count)</div>
@@ -36,7 +36,7 @@ export default function FileUploadsTutorialPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">DEPENDENCIES</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Install the required packages:
           </p>
         </div>
@@ -49,7 +49,7 @@ export default function FileUploadsTutorialPage() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">UPLOAD_API_ROUTE</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Create an API route to handle file uploads with validation:
           </p>
         </div>
@@ -159,7 +159,7 @@ export const config = {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CLIENT_SIDE_UPLOAD_HANDLER</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Handle the upload in your component with progress tracking:
           </p>
         </div>
@@ -269,7 +269,7 @@ export function FileUploadForm() {
       <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">VALIDATION_OPTIONS</h2>
         <div>
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="font-mono text-base text-muted-foreground">
             Common validation configurations for different use cases:
           </p>
         </div>

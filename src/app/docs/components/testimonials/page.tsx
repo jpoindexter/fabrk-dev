@@ -14,7 +14,7 @@ export default function TestimonialsComponentsPage() {
           <span className="font-mono text-xs text-muted-foreground">[ [0x60] COMPONENTS ] TESTIMONIALS</span>
         </div>
         <h1 className="font-mono text-2xl font-bold tracking-tight lg:text-3xl">TESTIMONIALS</h1>
-        <p className="mt-2 font-mono text-sm text-muted-foreground">
+        <p className="mt-2 font-mono text-base text-muted-foreground">
           &gt; Social proof components to showcase customer reviews and testimonials.
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function TestimonialsComponentsPage() {
       <Card className="rounded-none">
         <CardContent className="p-4">
           <h2 className="font-mono text-lg font-bold mb-3">AVAILABLE_COMPONENTS</h2>
-          <ul className="space-y-2 font-mono text-xs text-muted-foreground">
+          <ul className="space-y-1 font-mono text-sm text-muted-foreground">
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">TestimonialsSection</code> - Grid of testimonial cards with avatars</li>
             <li>├─ <code className="bg-muted px-1 font-mono text-xs">Avatar</code> - User avatar component</li>
             <li>└─ <code className="bg-muted px-1 font-mono text-xs">AvatarGroup</code> - Stacked avatar display</li>
