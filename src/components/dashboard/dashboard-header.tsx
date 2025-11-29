@@ -65,7 +65,7 @@ export function DashboardHeader() {
   const isAdmin = false; // No admin for showcase
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-brutal bg-background shadow-brutal">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/dashboard" className="flex items-center gap-2">
@@ -123,7 +123,7 @@ export function DashboardHeader() {
                 className="relative h-10 w-10 rounded-full"
                 aria-label="User menu"
               >
-                <Avatar className="h-10 w-10 border-2 border-brutal">
+                <Avatar className="h-10 w-10 border border-border">
                   <AvatarImage src={mockUser.image || ""} alt={mockUser.name} />
                   <AvatarFallback className="bg-primary text-primary-foreground font-bold">
                     {userInitials}
@@ -133,7 +133,7 @@ export function DashboardHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="w-56 rounded-brutal border-2 border-brutal shadow-brutal-lg"
+              className="w-56 rounded-md border border-border shadow"
             >
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
@@ -212,9 +212,9 @@ export function DashboardHeader() {
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "flex items-center gap-3 rounded-brutal border-2 border-brutal px-4 py-3 text-sm font-medium transition-all",
+                          "flex items-center gap-3 rounded-md border border-border px-4 py-3 text-sm font-medium transition-all",
                           isActive
-                            ? "bg-primary text-primary-foreground shadow-brutal"
+                            ? "bg-primary text-primary-foreground shadow-sm"
                             : "bg-card hover:bg-accent hover:text-accent-foreground"
                         )}
                       >

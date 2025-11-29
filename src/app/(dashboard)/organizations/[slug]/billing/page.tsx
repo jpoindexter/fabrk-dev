@@ -198,7 +198,7 @@ export default function OrganizationBillingPage() {
 
   if (!organization) {
     return (
-      <Card className="rounded-brutal border-2 border-brutal">
+      <Card className="rounded-md border border-border">
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>
@@ -218,7 +218,7 @@ export default function OrganizationBillingPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="rounded-brutal border-2 border-brutal bg-primary p-2">
+          <div className="rounded-md border border-border bg-primary p-2">
             <CreditCard className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
@@ -231,7 +231,7 @@ export default function OrganizationBillingPage() {
       </div>
 
       {/* Current Plan */}
-      <Card className="rounded-brutal border-2 border-brutal shadow-brutal">
+      <Card className="rounded-md border border-border shadow-sm">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -274,7 +274,7 @@ export default function OrganizationBillingPage() {
               <Separator />
 
               <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+                <div className="rounded-md border border-border bg-card p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     Billing Period
@@ -284,7 +284,7 @@ export default function OrganizationBillingPage() {
                   </p>
                 </div>
 
-                <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+                <div className="rounded-md border border-border bg-card p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <DollarSign className="h-4 w-4" />
                     Next Payment
@@ -294,7 +294,7 @@ export default function OrganizationBillingPage() {
                   </p>
                 </div>
 
-                <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+                <div className="rounded-md border border-border bg-card p-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4" />
                     Status
@@ -304,7 +304,7 @@ export default function OrganizationBillingPage() {
               </div>
 
               {subscription.cancelAtPeriodEnd && (
-                <div className="rounded-brutal border-2 border-brutal border-destructive bg-destructive/10 p-4">
+                <div className="rounded-md border border-border border-destructive bg-destructive/10 p-4">
                   <div className="flex items-start gap-3">
                     <AlertTriangle className="h-5 w-5 text-destructive" />
                     <div>
@@ -339,7 +339,7 @@ export default function OrganizationBillingPage() {
 
       {/* Usage Stats */}
       {usage && (
-        <Card className="rounded-brutal border-2 border-brutal shadow-brutal">
+        <Card className="rounded-md border border-border shadow-sm">
           <CardHeader>
             <CardTitle>Usage This Month</CardTitle>
             <CardDescription>
@@ -393,7 +393,7 @@ export default function OrganizationBillingPage() {
 
       {/* Invoices */}
       {invoices.length > 0 && (
-        <Card className="rounded-brutal border-2 border-brutal shadow-brutal">
+        <Card className="rounded-md border border-border shadow-sm">
           <CardHeader>
             <CardTitle>Billing History</CardTitle>
             <CardDescription>

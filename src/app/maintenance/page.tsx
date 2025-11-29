@@ -92,7 +92,7 @@ export default function MaintenancePage() {
         </div>
 
         {/* Support */}
-        <div className="mt-12 border-t border-black/10 pt-8">
+        <div className="mt-12 border-t border-border pt-8">
           <p className="mb-2 text-sm text-muted-foreground">
             Need urgent assistance?
           </p>

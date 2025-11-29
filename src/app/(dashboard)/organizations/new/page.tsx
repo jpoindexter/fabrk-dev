@@ -178,9 +178,9 @@ export default function CreateOrganizationPage() {
         {[1, 2].map((s) => (
           <React.Fragment key={s}>
             <div
-              className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-brutal font-bold transition-all ${
+              className={`flex h-10 w-10 items-center justify-center rounded-full border border-border font-bold transition-all ${
                 step >= s
-                  ? "bg-primary text-primary-foreground shadow-brutal"
+                  ? "bg-primary text-primary-foreground shadow-sm"
                   : "bg-card text-muted-foreground"
               }`}
             >
@@ -199,10 +199,10 @@ export default function CreateOrganizationPage() {
 
       {/* Step 1: Organization Details */}
       {step === 1 && (
-        <Card className="rounded-brutal border-2 border-brutal shadow-brutal-lg">
+        <Card className="rounded-md border border-border shadow">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-brutal border-2 border-brutal bg-primary p-2">
+              <div className="rounded-md border border-border bg-primary p-2">
                 <Building2 className="h-6 w-6 text-primary-foreground" />
               </div>
               <div>
@@ -228,7 +228,7 @@ export default function CreateOrganizationPage() {
                       <FormControl>
                         <Input
                           placeholder="Acme Inc."
-                          className="rounded-brutal border-2 border-brutal"
+                          className="rounded-md border border-border"
                           {...field}
                         />
                       </FormControl>
@@ -249,7 +249,7 @@ export default function CreateOrganizationPage() {
                       <FormControl>
                         <Input
                           placeholder="acme-inc"
-                          className="rounded-brutal border-2 border-brutal"
+                          className="rounded-md border border-border"
                           {...field}
                         />
                       </FormControl>
@@ -270,7 +270,7 @@ export default function CreateOrganizationPage() {
                       <FormControl>
                         <Textarea
                           placeholder="What does your organization do?"
-                          className="rounded-brutal border-2 border-brutal"
+                          className="rounded-md border border-border"
                           rows={3}
                           {...field}
                         />
@@ -302,10 +302,10 @@ export default function CreateOrganizationPage() {
 
       {/* Step 2: Invite Members */}
       {step === 2 && (
-        <Card className="rounded-brutal border-2 border-brutal shadow-brutal-lg">
+        <Card className="rounded-md border border-border shadow">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-brutal border-2 border-brutal bg-primary p-2">
+              <div className="rounded-md border border-border bg-primary p-2">
                 <Mail className="h-6 w-6 text-primary-foreground" />
               </div>
               <div>
@@ -331,7 +331,7 @@ export default function CreateOrganizationPage() {
                       <FormControl>
                         <Textarea
                           placeholder="john@example.com&#10;jane@example.com&#10;alex@example.com"
-                          className="rounded-brutal border-2 border-brutal font-mono text-sm"
+                          className="rounded-md border border-border font-mono text-sm"
                           rows={5}
                           {...field}
                         />
@@ -355,11 +355,11 @@ export default function CreateOrganizationPage() {
                         defaultValue={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger className="rounded-brutal border-2 border-brutal">
+                          <SelectTrigger className="rounded-md border border-border">
                             <SelectValue placeholder="Select a role" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="rounded-brutal border-2 border-brutal">
+                        <SelectContent className="rounded-md border border-border">
                           <SelectItem value="MEMBER">
                             <div className="flex items-center gap-2">
                               <Badge variant="secondary">MEMBER</Badge>
@@ -394,7 +394,7 @@ export default function CreateOrganizationPage() {
                   )}
                 />
 
-                <div className="rounded-brutal border-2 border-brutal bg-muted p-4">
+                <div className="rounded-md border border-border bg-muted p-4">
                   <h4 className="mb-2 font-medium">Role Permissions:</h4>
                   <ul className="space-y-1 text-sm text-muted-foreground">
                     <li>• <strong>OWNER</strong>: Full control (assigned to creator)</li>
@@ -436,9 +436,9 @@ export default function CreateOrganizationPage() {
 
       {/* Success State */}
       {step === 3 && (
-        <Card className="rounded-brutal border-2 border-brutal shadow-brutal-lg">
+        <Card className="rounded-md border border-border shadow">
           <CardContent className="flex flex-col items-center justify-center py-12">
-            <div className="rounded-full border-2 border-brutal bg-success p-4 shadow-brutal-lg">
+            <div className="rounded-full border border-border bg-success p-4 shadow">
               <Check className="h-8 w-8 text-success-foreground" />
             </div>
             <h3 className="mt-4 text-2xl font-bold">All Set!</h3>

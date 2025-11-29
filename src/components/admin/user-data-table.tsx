@@ -335,11 +335,11 @@ export function UserDataTable({
       </div>
 
       {/* Table */}
-      <div className="rounded-brutal border-2 border-brutal">
+      <div className="rounded-md border border-border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-b-2 border-brutal">
+              <TableRow key={headerGroup.id} className="border-b border-border">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="font-black text-foreground">
@@ -361,7 +361,7 @@ export function UserDataTable({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="border-b border-brutal"
+                  className="border-b border-border"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

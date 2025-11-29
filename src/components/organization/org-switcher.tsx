@@ -93,7 +93,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 rounded-brutal border-2 border-brutal bg-card px-3 py-2">
+      <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2">
         <Building2 className="h-4 w-4 text-muted-foreground" />
         <span className="text-sm text-muted-foreground">Loading...</span>
       </div>
@@ -123,7 +123,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           aria-expanded={open}
           aria-label="Select organization"
           className={cn(
-            "w-[200px] justify-between gap-2 rounded-brutal border-2 border-brutal shadow-brutal hover:shadow-brutal-lg transition-all",
+            "w-[200px] justify-between gap-2 rounded-md border border-border shadow-sm hover:shadow transition-all",
             className
           )}
         >
@@ -144,7 +144,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-[200px] rounded-brutal border-2 border-brutal shadow-brutal-lg"
+        className="w-[200px] rounded-md border border-border shadow"
       >
         <DropdownMenuLabel className="text-xs text-muted-foreground">
           Your Organizations

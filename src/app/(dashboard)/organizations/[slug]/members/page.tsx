@@ -245,7 +245,7 @@ export default function OrganizationMembersPage() {
 
   if (!organization) {
     return (
-      <Card className="rounded-brutal border-2 border-brutal">
+      <Card className="rounded-md border border-border">
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>
@@ -265,7 +265,7 @@ export default function OrganizationMembersPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="rounded-brutal border-2 border-brutal bg-primary p-2">
+          <div className="rounded-md border border-border bg-primary p-2">
             <Users className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
@@ -284,7 +284,7 @@ export default function OrganizationMembersPage() {
                 Invite Member
               </Button>
             </DialogTrigger>
-            <DialogContent className="rounded-brutal border-2 border-brutal">
+            <DialogContent className="rounded-md border border-border">
               <DialogHeader>
                 <DialogTitle>Invite Team Member</DialogTitle>
                 <DialogDescription>
@@ -300,7 +300,7 @@ export default function OrganizationMembersPage() {
                     placeholder="john@example.com"
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
-                    className="rounded-brutal border-2 border-brutal"
+                    className="rounded-md border border-border"
                   />
                 </div>
                 <div className="space-y-2">
@@ -308,11 +308,11 @@ export default function OrganizationMembersPage() {
                   <Select value={inviteRole} onValueChange={(val: any) => setInviteRole(val)}>
                     <SelectTrigger
                       id="role"
-                      className="rounded-brutal border-2 border-brutal"
+                      className="rounded-md border border-border"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-brutal border-2 border-brutal">
+                    <SelectContent className="rounded-md border border-border">
                       <SelectItem value="MEMBER">Member</SelectItem>
                       <SelectItem value="ADMIN">Admin</SelectItem>
                       <SelectItem value="GUEST">Guest</SelectItem>
@@ -336,7 +336,7 @@ export default function OrganizationMembersPage() {
       </div>
 
       {/* Members Table */}
-      <Card className="rounded-brutal border-2 border-brutal shadow-brutal">
+      <Card className="rounded-md border border-border shadow-sm">
         <CardHeader>
           <CardTitle>Members ({members.length})</CardTitle>
           <CardDescription>
@@ -363,7 +363,7 @@ export default function OrganizationMembersPage() {
                   <TableRow key={member.id}>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <Avatar className="h-8 w-8 border-2 border-brutal">
+                        <Avatar className="h-8 w-8 border border-border">
                           <AvatarImage src={member.user.image || ""} />
                           <AvatarFallback className="text-xs">
                             {member.user.name
@@ -410,7 +410,7 @@ export default function OrganizationMembersPage() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent
                             align="end"
-                            className="rounded-brutal border-2 border-brutal"
+                            className="rounded-md border border-border"
                           >
                             <DropdownMenuLabel>Manage Member</DropdownMenuLabel>
                             <DropdownMenuSeparator />
@@ -456,7 +456,7 @@ export default function OrganizationMembersPage() {
       </Card>
 
       {/* Role Permissions Info */}
-      <Card className="rounded-brutal border-2 border-brutal">
+      <Card className="rounded-md border border-border">
         <CardHeader>
           <CardTitle>Role Permissions</CardTitle>
           <CardDescription>
@@ -465,7 +465,7 @@ export default function OrganizationMembersPage() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+            <div className="rounded-md border border-border bg-card p-4">
               <div className="mb-2 flex items-center gap-2">
                 <Crown className="h-5 w-5 text-primary" />
                 <Badge variant="default">OWNER</Badge>
@@ -474,7 +474,7 @@ export default function OrganizationMembersPage() {
                 Full control over organization, including deletion and ownership transfer.
               </p>
             </div>
-            <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+            <div className="rounded-md border border-border bg-card p-4">
               <div className="mb-2 flex items-center gap-2">
                 <Shield className="h-5 w-5 text-primary" />
                 <Badge variant="secondary">ADMIN</Badge>
@@ -483,7 +483,7 @@ export default function OrganizationMembersPage() {
                 Can manage members, settings, and billing. Cannot delete organization.
               </p>
             </div>
-            <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+            <div className="rounded-md border border-border bg-card p-4">
               <div className="mb-2 flex items-center gap-2">
                 <UserCheck className="h-5 w-5 text-primary" />
                 <Badge variant="outline">MEMBER</Badge>
@@ -492,7 +492,7 @@ export default function OrganizationMembersPage() {
                 Standard access to organization resources and features.
               </p>
             </div>
-            <div className="rounded-brutal border-2 border-brutal bg-card p-4">
+            <div className="rounded-md border border-border bg-card p-4">
               <div className="mb-2 flex items-center gap-2">
                 <UserX className="h-5 w-5 text-primary" />
                 <Badge variant="outline">GUEST</Badge>

@@ -88,7 +88,7 @@ export function AdminMetricsCard({
                   <div className="flex items-center gap-2">
                     <div
                       className={cn(
-                        "flex items-center gap-1 rounded-brutal border-brutal px-2 py-0.5 text-xs font-bold",
+                        "flex items-center gap-1 rounded-md border-border px-2 py-0.5 text-xs font-bold",
                         isPositive && "border-primary bg-primary/10 text-primary",
                         isNegative && "border-destructive bg-destructive/10 text-destructive",
                         isNeutral && "border-border bg-muted text-muted-foreground"
@@ -107,7 +107,7 @@ export function AdminMetricsCard({
           {icon && (
             <div
               className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-brutal border-2 border-brutal",
+                "flex h-12 w-12 items-center justify-center rounded-md border border-border",
                 iconWrapperStyles[variant],
                 iconClassName
               )}

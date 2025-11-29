@@ -77,12 +77,12 @@ export function PricingComparison({
           <Card
             key={plan.id}
             className={cn(
-              "relative overflow-hidden transition-all duration-200 hover:shadow-brutal-lg",
-              plan.popular && "ring-2 ring-primary shadow-brutal-lg"
+              "relative overflow-hidden transition-all duration-200 hover:shadow",
+              plan.popular && "ring-2 ring-primary shadow"
             )}
           >
             {plan.popular && (
-              <div className="absolute -right-12 top-6 rotate-45 bg-primary px-12 py-1 text-xs font-bold text-primary-foreground shadow-brutal">
+              <div className="absolute -right-12 top-6 rotate-45 bg-primary px-12 py-1 text-xs font-bold text-primary-foreground shadow-sm">
                 Popular
               </div>
             )}
@@ -125,11 +125,11 @@ export function PricingComparison({
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="rounded-brutal border-2 border-brutal overflow-hidden">
+      <div className="rounded-md border border-border overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b-2 border-brutal bg-muted">
+              <tr className="border-b border-border bg-muted">
                 <th className="p-4 text-left">
                   <span className="text-sm font-black text-foreground">Features</span>
                 </th>
@@ -146,7 +146,7 @@ export function PricingComparison({
                   {categories.map((category, categoryIndex) => (
                     <React.Fragment key={category || "uncategorized"}>
                       {/* Category Header */}
-                      <tr className="border-t-2 border-brutal">
+                      <tr className="border-t border-border">
                         <td colSpan={plans.length + 1} className="p-3">
                           <span className="text-xs font-black text-foreground uppercase tracking-wide">
                             {category || "Other Features"}
@@ -157,7 +157,7 @@ export function PricingComparison({
                       {getFeaturesByCategory(category).map((feature, featureIndex) => (
                         <tr
                           key={`${category}-${featureIndex}`}
-                          className="border-t border-brutal hover:bg-muted/50 transition-colors"
+                          className="border-t border-border hover:bg-muted/50 transition-colors"
                         >
                           <td className="p-4">
                             <span className="text-sm text-foreground">{feature.name}</span>
@@ -177,7 +177,7 @@ export function PricingComparison({
                   {features.map((feature, index) => (
                     <tr
                       key={index}
-                      className="border-t border-brutal hover:bg-accent/5 transition-colors"
+                      className="border-t border-border hover:bg-accent/5 transition-colors"
                     >
                       <td className="p-4">
                         <span className="text-sm text-foreground">{feature.name}</span>
@@ -197,7 +197,7 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className="rounded-brutal border-2 border-brutal bg-card p-6 text-center">
+      <div className="rounded-md border border-border bg-card p-6 text-center">
         <h3 className="text-xl font-black text-foreground mb-2">Need help choosing?</h3>
         <p className="text-sm text-muted-foreground mb-4">
           Contact our team for personalized recommendations

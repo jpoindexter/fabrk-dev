@@ -93,7 +93,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="flex items-center gap-2">
           <Select defaultValue="7">
-            <SelectTrigger className="w-[140px] rounded-md border-2 border-black py-2 text-sm font-semibold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+            <SelectTrigger className="w-[140px] rounded-md border border-border py-2 text-sm font-semibold shadow-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -115,10 +115,10 @@ export default async function AnalyticsPage() {
           return (
             <Card
               key={stat.label}
-              className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none"
+              className="border border-border p-6 shadow-sm"
             >
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-primary/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-primary/10">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <div
@@ -147,8 +147,8 @@ export default async function AnalyticsPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
+        <Card className="border border-border p-6 shadow-sm">
+          <div className="mb-4 flex items-center justify-between border-b border-border pb-4">
             <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
             <button className="text-sm font-semibold text-primary hover:underline">
               View All
@@ -158,7 +158,7 @@ export default async function AnalyticsPage() {
             {mockAnalytics.recentActivity.map((activity, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded border-2 border-black/10 bg-muted p-3"
+                className="flex items-center justify-between rounded-md border border-border bg-muted p-3"
               >
                 <div>
                   <p className="text-sm font-semibold text-foreground">
@@ -173,8 +173,8 @@ export default async function AnalyticsPage() {
         </Card>
 
         {/* Top Pages */}
-        <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <div className="mb-4 flex items-center justify-between border-b-2 border-black/10 pb-4">
+        <Card className="border border-border p-6 shadow-sm">
+          <div className="mb-4 flex items-center justify-between border-b border-border pb-4">
             <h3 className="text-xl font-bold text-foreground">Top Pages</h3>
             <button className="text-sm font-semibold text-primary hover:underline">
               View All
@@ -184,7 +184,7 @@ export default async function AnalyticsPage() {
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded border-2 border-black/10 bg-muted p-3"
+                className="flex items-center justify-between rounded-md border border-border bg-muted p-3"
               >
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-foreground">
@@ -208,14 +208,14 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Chart Placeholder */}
-      <Card className="border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-        <div className="mb-4 border-b-2 border-black/10 pb-4">
+      <Card className="border border-border p-6 shadow-sm">
+        <div className="mb-4 border-b border-border pb-4">
           <h3 className="text-xl font-bold text-foreground">Revenue Over Time</h3>
           <p className="text-sm text-muted-foreground">
             Monthly recurring revenue trend
           </p>
         </div>
-        <div className="flex h-64 items-center justify-center rounded border-2 border-dashed border-black/20 bg-muted">
+        <div className="flex h-64 items-center justify-center rounded-md border border-dashed border-border bg-muted">
           <div className="text-center">
             <TrendingUp className="mx-auto mb-2 h-12 w-12 text-primary/50" />
             <p className="text-sm font-semibold text-muted-foreground">

@@ -131,7 +131,7 @@ export function HeroSplit({
               </div>
 
               {/* File Count Badge */}
-              <div className="absolute -bottom-4 -right-4 rounded-full border-4 border-foreground bg-primary px-6 py-3 shadow-[4px_4px_0px_0px_var(--foreground)]">
+              <div className="absolute -bottom-4 -right-4 rounded-full border-2 border-foreground bg-primary px-6 py-3 shadow-sm">
                 <p className="text-sm font-bold text-primary-foreground">161 Files</p>
               </div>
             </div>

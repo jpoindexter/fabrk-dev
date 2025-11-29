@@ -91,7 +91,7 @@ export function FunnelVisualizer({
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-2">
                     <div
-                      className="h-3 w-3 rounded-full border-2 border-brutal"
+                      className="h-3 w-3 rounded-full border border-border"
                       style={{ backgroundColor: color }}
                     />
                     <span className="text-sm font-bold text-foreground">{stage.name}</span>
@@ -113,7 +113,7 @@ export function FunnelVisualizer({
               {/* Funnel Bar */}
               <div className="relative">
                 <div
-                  className="h-12 rounded-brutal border-2 border-brutal transition-all duration-500 ease-out shadow-brutal"
+                  className="h-12 rounded-md border border-border transition-all duration-500 ease-out shadow-sm"
                   style={{
                     width: `${widthPercentage}%`,
                     backgroundColor: color,
@@ -137,7 +137,7 @@ export function FunnelVisualizer({
 
         {/* Overall Conversion */}
         <div className="pt-4 border-t-2 border-brutal">
-          <div className="flex items-center justify-between rounded-brutal bg-accent/50 p-4">
+          <div className="flex items-center justify-between rounded-md bg-accent/50 p-4">
             <span className="text-sm font-medium text-foreground">Overall Conversion Rate</span>
             <span className="text-2xl font-black text-primary">
               {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%
