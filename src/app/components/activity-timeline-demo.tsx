@@ -364,7 +364,7 @@ export default function ActivityTimelineDemo() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-bold">✓</span>
-              <span><strong>Neobrutalism Design:</strong> Bold borders, hard shadows, brutal aesthetic</span>
+              <span><strong>Modern Design:</strong> Clean borders, subtle shadows, polished aesthetic</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary font-bold">✓</span>

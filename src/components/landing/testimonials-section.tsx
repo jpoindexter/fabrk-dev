@@ -24,7 +24,7 @@ export function TestimonialsSection() {
       color: "bg-accent text-accent-foreground",
     },
     {
-      quote: "The neo-brutalism design is perfect for my SaaS. Customers love the bold aesthetic and everything is accessible out of the box. Worth every penny.",
+      quote: "The clean, modern design is perfect for my SaaS. Customers love the polished aesthetic and everything is accessible out of the box. Worth every penny.",
       author: "Emily Rodriguez",
       role: "Product Designer",
       initials: "ER",

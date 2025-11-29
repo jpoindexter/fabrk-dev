@@ -4,7 +4,7 @@
  * - Side-by-side editor and preview
  * - Toolbar with common formatting shortcuts
  * - Lightweight markdown parsing (no dependencies)
- * - Theme-responsive with neobrutalism styling
+ * - Theme-responsive styling
  *
  * @example
  * ```tsx

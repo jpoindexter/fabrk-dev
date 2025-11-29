@@ -58,7 +58,7 @@ export default function ComponentsPage() {
               [ STATUS ]────────────────────────
             </div>
             <p className="text-xs text-muted-foreground">
-              100+ production-ready components with neo-brutalism styling. Copy-paste ready for your project.
+              100+ production-ready components with clean, modern styling. Copy-paste ready for your project.
             </p>
           </div>
         </section>
@@ -68,7 +68,7 @@ export default function ComponentsPage() {
           <div>
             <span className="text-xs text-muted-foreground">[0x10]</span>
             <h2 className="text-2xl font-bold tracking-tight">BUTTONS</h2>
-            <p className="text-xs text-muted-foreground">&gt; Interactive elements with neo-brutalism press effects</p>
+            <p className="text-xs text-muted-foreground">&gt; Interactive elements with smooth press effects</p>
           </div>
 
           <Card>
@@ -142,7 +142,7 @@ export default function ComponentsPage() {
           <div>
             <span className="text-xs text-muted-foreground">[0x20]</span>
             <h2 className="text-2xl font-bold tracking-tight">FORM_COMPONENTS</h2>
-            <p className="text-xs text-muted-foreground">&gt; Input elements with brutal borders and focus states</p>
+            <p className="text-xs text-muted-foreground">&gt; Input elements with clean borders and focus states</p>
           </div>
 
           <Card>
@@ -252,7 +252,7 @@ export default function ComponentsPage() {
           <div>
             <span className="text-xs text-muted-foreground">[0x30]</span>
             <h2 className="text-2xl font-bold tracking-tight">CARDS</h2>
-            <p className="text-xs text-muted-foreground">&gt; Content containers with brutal shadows</p>
+            <p className="text-xs text-muted-foreground">&gt; Content containers with subtle shadows</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

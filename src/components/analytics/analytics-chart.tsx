@@ -103,8 +103,8 @@ export function AnalyticsChart({
               <Tooltip
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
-                  border: "2px solid hsl(var(--border))",
-                  borderRadius: "var(--radius-brutal)",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "var(--radius)",
                 }}
               />
               {showLegend && <Legend />}
@@ -140,8 +140,8 @@ export function AnalyticsChart({
               <Tooltip
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
-                  border: "2px solid hsl(var(--border))",
-                  borderRadius: "var(--radius-brutal)",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "var(--radius)",
                 }}
               />
               {showLegend && <Legend />}
@@ -169,8 +169,8 @@ export function AnalyticsChart({
               <Tooltip
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
-                  border: "2px solid hsl(var(--border))",
-                  borderRadius: "var(--radius-brutal)",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "var(--radius)",
                 }}
               />
               {showLegend && <Legend />}
@@ -210,8 +210,8 @@ export function AnalyticsChart({
               <Tooltip
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
-                  border: "2px solid hsl(var(--border))",
-                  borderRadius: "var(--radius-brutal)",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "var(--radius)",
                 }}
               />
               {showLegend && <Legend />}
