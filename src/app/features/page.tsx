@@ -11,11 +11,8 @@ import Link from "next/link";
 import { Navigation } from "@/components/landing/navigation";
 import { Footer } from "@/components/landing/footer";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { H1, H2, H3, H4, Body, Small, Strong } from "@/components/ui/typography";
 import {
   ArrowRight,
-  Check,
   Lock,
   CreditCard,
   Database,
@@ -213,6 +210,7 @@ const TECH_STACK = [
 function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CATEGORIES[0]; index: number }) {
   const Icon = category.icon;
   const isEven = index % 2 === 0;
+  const hexIndex = (index + 1).toString(16).toUpperCase().padStart(2, '0');
 
   return (
     <motion.div
@@ -230,28 +228,33 @@ function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CAT
             <div className="bg-primary/10 p-3">
               <Icon className="size-6 text-primary" />
             </div>
-            <Badge variant="secondary" className="rounded-none">{category.stats.value} {category.stats.label}</Badge>
+            <span className="border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+              [{category.stats.value}] {category.stats.label.toUpperCase().replace(/ /g, '_')}
+            </span>
           </div>
 
           <div>
-            <H2 className="mb-2">{category.title}</H2>
-            <Body className="text-primary font-medium">{category.tagline}</Body>
+            <span className="text-xs text-muted-foreground">[0x{hexIndex}]</span>
+            <h2 className="text-2xl font-bold tracking-tight">{category.title.toUpperCase().replace(/ /g, '_').replace(/&/g, 'AND')}</h2>
+            <span className="text-sm text-primary font-medium">&gt; {category.tagline}</span>
           </div>
 
-          <Body className="text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             {category.description}
-          </Body>
+          </p>
         </div>
 
         {/* Features List Side */}
         <div className="flex-1 w-full">
           <div className="border border-border bg-card p-6 lg:p-8">
-            <H4 className="mb-4">What's Included</H4>
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <div className="mb-4 text-xs text-muted-foreground">
+              [ INCLUDED ]────────────────────────
+            </div>
+            <ul className="space-y-2">
               {category.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check className="size-5 text-primary flex-shrink-0 mt-0.5" />
-                  <Small className="text-muted-foreground">{feature}</Small>
+                <li key={i} className="flex items-start gap-3 text-xs text-muted-foreground">
+                  <span className="text-primary flex-shrink-0">{i === category.features.length - 1 ? '└─' : '├─'}</span>
+                  <span>{feature}</span>
                 </li>
               ))}
             </ul>
@@ -336,6 +339,9 @@ export default function FeaturesPage() {
       {/* Quick Stats */}
       <section className="border-b border-border bg-muted/30 py-12">
         <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="mb-6 text-xs text-muted-foreground">
+            [ [0x02] STATS ]────────────────────────
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {COMPONENT_STATS.map((stat, index) => {
               const Icon = stat.icon;
@@ -346,13 +352,13 @@ export default function FeaturesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="text-center"
+                  className="text-center border border-border bg-card p-4"
                 >
                   <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-3">
                     <Icon className="size-5 text-primary" />
                   </div>
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <Small className="text-muted-foreground">{stat.label}</Small>
+                  <span className="text-xs text-muted-foreground">{stat.label.toUpperCase().replace(/ /g, '_')}</span>
                 </motion.div>
               );
             })}
@@ -402,10 +408,11 @@ export default function FeaturesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <H2 className="mb-4">Modern Tech Stack</H2>
-            <Body className="text-muted-foreground">
+            <span className="text-xs text-muted-foreground">[0x10]</span>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">TECH_STACK</h2>
+            <p className="text-sm text-muted-foreground">
               Built with the latest technologies. No legacy code, no outdated dependencies.
-            </Body>
+            </p>
           </motion.div>
 
           <motion.div
@@ -420,8 +427,8 @@ export default function FeaturesPage() {
                 key={tech.name}
                 className="border border-border bg-card p-4 text-center"
               >
-                <Strong className="block">{tech.name}</Strong>
-                <Small className="text-muted-foreground">{tech.description}</Small>
+                <span className="block text-sm font-bold">{tech.name}</span>
+                <span className="text-xs text-muted-foreground">{tech.description}</span>
               </div>
             ))}
           </motion.div>
@@ -438,10 +445,11 @@ export default function FeaturesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <H2 className="mb-4">Production Quality</H2>
-            <Body className="text-muted-foreground">
+            <span className="text-xs text-muted-foreground">[0x20]</span>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">PRODUCTION_QUALITY</h2>
+            <p className="text-sm text-muted-foreground">
               Not just boilerplate. Enterprise-grade code with comprehensive testing.
-            </Body>
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -453,10 +461,10 @@ export default function FeaturesPage() {
               className="border border-border bg-card p-6"
             >
               <TestTube className="size-8 text-primary mb-4" />
-              <H3 className="mb-2">130+ Tests</H3>
-              <Small className="block text-muted-foreground">
+              <h3 className="text-lg font-bold mb-2">130+_TESTS</h3>
+              <span className="block text-xs text-muted-foreground">
                 Vitest unit tests and Playwright E2E tests. Every critical flow tested.
-              </Small>
+              </span>
             </motion.div>
 
             <motion.div
@@ -467,10 +475,10 @@ export default function FeaturesPage() {
               className="border border-border bg-card p-6"
             >
               <Terminal className="size-8 text-primary mb-4" />
-              <H3 className="mb-2">TypeScript Strict</H3>
-              <Small className="block text-muted-foreground">
+              <h3 className="text-lg font-bold mb-2">TYPESCRIPT_STRICT</h3>
+              <span className="block text-xs text-muted-foreground">
                 100% TypeScript with strict mode. No any types. Full type safety.
-              </Small>
+              </span>
             </motion.div>
 
             <motion.div
@@ -481,10 +489,10 @@ export default function FeaturesPage() {
               className="border border-border bg-card p-6"
             >
               <BookOpen className="size-8 text-primary mb-4" />
-              <H3 className="mb-2">400KB Docs</H3>
-              <Small className="block text-muted-foreground">
+              <h3 className="text-lg font-bold mb-2">400KB_DOCS</h3>
+              <span className="block text-xs text-muted-foreground">
                 24 comprehensive guides covering every feature. No guesswork.
-              </Small>
+              </span>
             </motion.div>
           </div>
         </div>
@@ -500,23 +508,24 @@ export default function FeaturesPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <H1 className="mb-4">
-              Ready to Ship?
-            </H1>
-            <Body className="mx-auto mb-8 max-w-xl text-muted-foreground">
+            <span className="text-xs text-muted-foreground">[0x30]</span>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">
+              READY_TO_SHIP?
+            </h2>
+            <p className="mx-auto mb-8 max-w-xl text-sm text-muted-foreground">
               Get Fabrk and launch your SaaS in days, not months. All features included,
               fully tested, and production-ready.
-            </Body>
+            </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="rounded-none">
+              <Button asChild size="lg" className="rounded-none text-xs">
                 <Link href="/#pricing">
-                  Get Started Now
+                  &gt; EXECUTE: GET_STARTED
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-none">
+              <Button asChild variant="outline" size="lg" className="rounded-none text-xs">
                 <Link href="/templates">
-                  View Templates
+                  &gt; VIEW: TEMPLATES
                 </Link>
               </Button>
             </div>

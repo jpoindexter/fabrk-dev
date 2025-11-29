@@ -10,7 +10,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 import { DiscountCounter } from "@/components/polar/discount-counter";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { SimpleIcon } from "@/components/ui/simple-icon";
 import {
   siNextdotjs,
@@ -21,32 +21,6 @@ import {
   siStripe,
   siResend,
 } from "simple-icons";
-
-// Animated counter for timing values
-function TimingCounter({ value, delay }: { value: number; delay: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: 800, bounce: 0 });
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => motionValue.set(value), delay * 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, motionValue, value, delay]);
-
-  useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
-      if (ref.current) {
-        ref.current.textContent = `FIB[${Math.floor(latest)}]ms`;
-      }
-    });
-    return unsubscribe;
-  }, [springValue]);
-
-  return <span ref={ref}>FIB[0]ms</span>;
-}
 
 // Typewriter effect component
 function TypeWriter({
@@ -116,6 +90,118 @@ const techStack = [
   { name: "STRIPE", path: siStripe.path },
   { name: "RESEND", path: siResend.path },
 ];
+
+const modules = [
+  { id: "0x04", name: "AUTH_MODULE", prefix: "│" },
+  { id: "0x05", name: "BILLING_MODULE", prefix: "│" },
+  { id: "0x06", name: "ORG_MODULE", prefix: "│" },
+  { id: "0x07", name: "EMAIL_MODULE", prefix: "└" },
+];
+
+// Terminal content with sequential module activation
+function TerminalContent() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const [activeModules, setActiveModules] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    // Activate modules one at a time as each line types
+    const timers = [
+      setTimeout(() => setActiveModules([0]), 1800),        // After line 1 types
+      setTimeout(() => setActiveModules([0, 1]), 3200),     // After line 2 types
+      setTimeout(() => setActiveModules([0, 1, 2]), 4600),  // After line 3 types
+      setTimeout(() => setActiveModules([0, 1, 2, 3]), 5500), // After line 4 types
+    ];
+
+    return () => timers.forEach(clearTimeout);
+  }, [isInView]);
+
+  return (
+    <div ref={ref} className="p-6">
+      <div className="mb-6 font-mono text-xs text-muted-foreground min-h-[88px]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          │ &gt; <TypeWriter text="Initializing Fabrk dashboard..." delay={0.5} speed={25} showCursor />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: 1.8 }}
+          className="mt-1"
+        >
+          │ &gt; <TypeWriter text="Loading components... [OK] FIB[21]ms" delay={1.8} speed={25} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: 3.2 }}
+          className="mt-1"
+        >
+          │ &gt; <TypeWriter text="Connecting services... [OK] FIB[34]ms" delay={3.2} speed={25} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: 4.6 }}
+          className="mt-1"
+        >
+          └─ <TypeWriter text="System ready. Total: FIB[55]ms" delay={4.6} speed={25} />
+        </motion.div>
+      </div>
+
+      {/* Dashboard Mock - Always visible, status changes */}
+      <div className="grid gap-3">
+        {modules.map((module, idx) => {
+          const isActive = activeModules.includes(idx);
+          return (
+            <div
+              key={module.id}
+              className="flex items-center justify-between border border-border bg-background p-3 transition-colors hover:bg-muted"
+            >
+              <span className="font-mono text-xs">{module.prefix} [{module.id}] {module.name}</span>
+              {isActive ? (
+                <span className="font-mono text-xs text-success">■ ACTIVE</span>
+              ) : (
+                <motion.span
+                  className="font-mono text-xs text-destructive"
+                  animate={{ opacity: [1, 0.4, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  ■ INACTIVE
+                </motion.span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Blinking Cursor */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ delay: 5.8 }}
+        className="mt-4 font-mono text-xs"
+      >
+        <span className="text-muted-foreground">
+          &gt; <TypeWriter text="Ready for deployment" delay={5.8} speed={40} />
+        </span>
+        <motion.span
+          className="ml-1 inline-block text-primary"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 0, 1] }}
+          transition={{ delay: 6.6, duration: 1, repeat: Infinity }}
+        >
+          █
+        </motion.span>
+      </motion.div>
+    </div>
+  );
+}
 
 export function HeroSection() {
   return (
@@ -257,89 +343,7 @@ export function HeroSection() {
               </div>
 
               {/* Terminal Content */}
-              <div className="p-6">
-                <div className="mb-6 font-mono text-xs text-muted-foreground">
-                  <div>
-                    │ &gt; <TypeWriter text="Initializing Fabrk dashboard..." delay={0.5} speed={25} showCursor />
-                  </div>
-                  <div className="mt-1">
-                    │ &gt; <TypeWriter text="Loading components..." delay={1.5} speed={25} />{" "}
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 2.3 }}
-                      className="text-success"
-                    >
-                      [OK]
-                    </motion.span>{" "}
-                    <TimingCounter value={21} delay={2.3} />
-                  </div>
-                  <div className="mt-1">
-                    │ &gt; <TypeWriter text="Connecting services..." delay={2.6} speed={25} />{" "}
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 3.4 }}
-                      className="text-success"
-                    >
-                      [OK]
-                    </motion.span>{" "}
-                    <TimingCounter value={34} delay={3.4} />
-                  </div>
-                  <div className="mt-1">
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 3.7 }}
-                    >
-                      └─ System ready. Total: <TimingCounter value={55} delay={3.7} />
-                    </motion.span>
-                  </div>
-                </div>
-
-                {/* Dashboard Mock */}
-                <div className="grid gap-3">
-                  {[
-                    { id: "0x04", name: "AUTH_MODULE", prefix: "│" },
-                    { id: "0x05", name: "BILLING_MODULE", prefix: "│" },
-                    { id: "0x06", name: "ORG_MODULE", prefix: "│" },
-                    { id: "0x07", name: "EMAIL_MODULE", prefix: "└" },
-                  ].map((module, idx) => (
-                    <motion.div
-                      key={module.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 4.0 + idx * 0.2 }}
-                      whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
-                      className="flex items-center justify-between border border-border bg-background p-3 transition-colors"
-                    >
-                      <span className="font-mono text-xs">{module.prefix} [{module.id}] {module.name}</span>
-                      <motion.span
-                        className="font-mono text-xs text-success"
-                        animate={{ opacity: [1, 0.5, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: idx * 0.3 }}
-                      >
-                        ■ ACTIVE
-                      </motion.span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Blinking Cursor */}
-                <div className="mt-4 font-mono text-xs">
-                  <span className="text-muted-foreground">
-                    &gt; <TypeWriter text="Ready for deployment" delay={4.8} speed={40} />
-                  </span>
-                  <motion.span
-                    className="ml-1 inline-block text-primary"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0, 1] }}
-                    transition={{ delay: 5.6, duration: 1, repeat: Infinity }}
-                  >
-                    █
-                  </motion.span>
-                </div>
-              </div>
+              <TerminalContent />
             </motion.div>
 
             {/* Discount Counter Below */}

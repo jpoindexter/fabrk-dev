@@ -11,7 +11,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Sparkles } from "lucide-react";
-import { Small } from "@/components/ui/typography";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 
 /* 💡 EXIT INTENT TIP: This popup offers an extra discount to visitors about to leave.
@@ -143,9 +142,9 @@ export function ExitIntentPopup({
                   $299
                 </span>
               </div>
-              <Small className="block font-mono text-muted-foreground">
+              <span className="block text-xs text-muted-foreground">
                 One-time payment. Lifetime access.
-              </Small>
+              </span>
             </div>
           </div>
         )}
@@ -169,9 +168,9 @@ export function ExitIntentPopup({
 
         {/* 30-day guarantee badge */}
         <div className="mt-4 text-center">
-          <Small className="font-mono text-muted-foreground">
+          <span className="text-xs text-muted-foreground">
             30-day money-back guarantee • No questions asked
-          </Small>
+          </span>
         </div>
       </DialogContent>
     </Dialog>

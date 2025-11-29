@@ -1,5 +1,4 @@
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Badge } from "@/components/ui/badge";
 import {
   siTypescript,
   siPrisma,
@@ -60,19 +59,22 @@ export function DeveloperExperienceSection() {
   ];
 
   return (
-    <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24">
+    <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <Badge variant="default" size="lg" className="rounded-none mb-4 uppercase tracking-wide">
-            Built for Developers
-          </Badge>
+          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+            [ BUILT_FOR_DEVELOPERS ]
+          </span>
         </div>
 
-        <h2 className="mb-2 text-center font-mono text-3xl font-semibold text-foreground">
-          Developer Experience Matters
-        </h2>
-        <p className="mb-16 text-center font-mono text-lg text-muted-foreground">
-          Fast builds, clean code, zero friction. Ship features, not fight tooling.
+        <div className="text-center">
+          <span className="text-xs text-muted-foreground">[0x00]</span>
+          <h2 className="mb-2 text-2xl font-bold tracking-tight">
+            DEVELOPER_EXPERIENCE_MATTERS
+          </h2>
+        </div>
+        <p className="mb-16 text-center text-sm text-muted-foreground">
+          &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
         </p>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -96,10 +98,10 @@ export function DeveloperExperienceSection() {
                     <IconComponent className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="mb-3 font-mono text-lg font-semibold text-foreground">
-                  {feature.title}
+                <h3 className="mb-3 text-sm font-bold">
+                  {feature.title.toUpperCase().replace(/ /g, '_')}
                 </h3>
-                <p className="font-mono text-sm font-normal leading-relaxed text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
               </div>

@@ -39,27 +39,36 @@ import { ArrowRight, Bell, Check, Download, Heart, Mail, Search, Settings, Uploa
 
 export default function ComponentsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-mono">
       {/* Demo Navigation */}
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Header */}
         <section className="space-y-4">
-          <div className="inline-block border border-border px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[SHOWCASE]: UI_COMPONENTS</span>
+          <div className="inline-block border border-border bg-card px-3 py-1">
+            <span className="text-xs text-muted-foreground">[ [0x00] SHOWCASE ] UI_COMPONENTS</span>
           </div>
-          <h1 className="text-4xl font-bold">UI Components</h1>
-          <p className="font-mono text-sm text-muted-foreground max-w-2xl">
-            100+ production-ready components with neo-brutalism styling. Copy-paste ready for your project.
-          </p>
+          <div>
+            <span className="text-sm text-muted-foreground">FABRK_COMPONENTS:</span>
+            <h1 className="text-3xl font-bold tracking-tight">UI_COMPONENTS</h1>
+          </div>
+          <div className="border border-border bg-card p-4 max-w-2xl">
+            <div className="mb-2 text-xs text-muted-foreground">
+              [ STATUS ]────────────────────────
+            </div>
+            <p className="text-xs text-muted-foreground">
+              100+ production-ready components with neo-brutalism styling. Copy-paste ready for your project.
+            </p>
+          </div>
         </section>
 
         {/* Buttons Section */}
         <section id="buttons" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Buttons</h2>
-            <p className="text-muted-foreground">Interactive elements with neo-brutalism press effects</p>
+            <span className="text-xs text-muted-foreground">[0x10]</span>
+            <h2 className="text-2xl font-bold tracking-tight">BUTTONS</h2>
+            <p className="text-xs text-muted-foreground">&gt; Interactive elements with neo-brutalism press effects</p>
           </div>
 
           <Card>
@@ -131,8 +140,9 @@ export default function ComponentsPage() {
         {/* Forms Section */}
         <section id="forms" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Form Components</h2>
-            <p className="text-muted-foreground">Input elements with brutal borders and focus states</p>
+            <span className="text-xs text-muted-foreground">[0x20]</span>
+            <h2 className="text-2xl font-bold tracking-tight">FORM_COMPONENTS</h2>
+            <p className="text-xs text-muted-foreground">&gt; Input elements with brutal borders and focus states</p>
           </div>
 
           <Card>
@@ -240,8 +250,9 @@ export default function ComponentsPage() {
         {/* Cards Section */}
         <section id="cards" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Cards</h2>
-            <p className="text-muted-foreground">Content containers with brutal shadows</p>
+            <span className="text-xs text-muted-foreground">[0x30]</span>
+            <h2 className="text-2xl font-bold tracking-tight">CARDS</h2>
+            <p className="text-xs text-muted-foreground">&gt; Content containers with brutal shadows</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -278,8 +289,9 @@ export default function ComponentsPage() {
         {/* Typography Section */}
         <section id="typography" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Typography</h2>
-            <p className="text-muted-foreground">Text styles and formatting</p>
+            <span className="text-xs text-muted-foreground">[0x40]</span>
+            <h2 className="text-2xl font-bold tracking-tight">TYPOGRAPHY</h2>
+            <p className="text-xs text-muted-foreground">&gt; Text styles and formatting</p>
           </div>
 
           <Card>
@@ -312,8 +324,9 @@ export default function ComponentsPage() {
         {/* Feedback Section */}
         <section id="feedback" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Feedback</h2>
-            <p className="text-muted-foreground">Alerts, badges, and status indicators</p>
+            <span className="text-xs text-muted-foreground">[0x50]</span>
+            <h2 className="text-2xl font-bold tracking-tight">FEEDBACK</h2>
+            <p className="text-xs text-muted-foreground">&gt; Alerts, badges, and status indicators</p>
           </div>
 
           <Card>
@@ -357,8 +370,9 @@ export default function ComponentsPage() {
         {/* Navigation Section */}
         <section id="navigation" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Navigation</h2>
-            <p className="text-muted-foreground">Tabs and navigation elements</p>
+            <span className="text-xs text-muted-foreground">[0x60]</span>
+            <h2 className="text-2xl font-bold tracking-tight">NAVIGATION</h2>
+            <p className="text-xs text-muted-foreground">&gt; Tabs and navigation elements</p>
           </div>
 
           <Card>
@@ -399,8 +413,9 @@ export default function ComponentsPage() {
         {/* Dropdown Menus Section */}
         <section id="dropdown-menus" className="space-y-6">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Dropdown Menus</h2>
-            <p className="text-muted-foreground">Action menus with proper alignment</p>
+            <span className="text-xs text-muted-foreground">[0x70]</span>
+            <h2 className="text-2xl font-bold tracking-tight">DROPDOWN_MENUS</h2>
+            <p className="text-xs text-muted-foreground">&gt; Action menus with proper alignment</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

@@ -28,12 +28,13 @@ export function InteractiveDemo() {
           className="space-y-8"
         >
           {/* Header */}
-          <div className="text-center">
-            <h2 className="font-mono text-4xl font-bold tracking-tight sm:text-5xl">
-              🎬 Live Demo: Explore Templates
+          <div className="text-center font-mono">
+            <span className="text-xs text-muted-foreground">[0x00]</span>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">
+              LIVE_DEMO_EXPLORE_TEMPLATES
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl font-mono text-lg text-muted-foreground">
-              See production-ready dashboards, data tables, and settings pages. Click tabs to explore.
+            <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+              &gt; See production-ready dashboards, data tables, and settings pages. Click tabs to explore.
             </p>
           </div>
 
@@ -67,10 +68,11 @@ export function InteractiveDemo() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="border border-border bg-card p-6"
+              className="border border-border bg-card p-6 font-mono"
             >
-              <p className="text-sm text-foreground">
-                <span className="font-semibold">💡 Fully Interactive:</span> All dashboards and tables are fully functional.
+              <div className="text-xs text-muted-foreground mb-2">[ INFO ]</div>
+              <p className="text-xs text-foreground">
+                <span className="font-semibold text-primary">[FULLY_INTERACTIVE]</span> All dashboards and tables are fully functional.
                 Sort columns, filter data, toggle settings, and explore the full UX. These are the exact templates
                 included in Fabrk.
               </p>

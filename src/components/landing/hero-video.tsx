@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { useState, useEffect } from "react";
-import config from "@/config";
+import { useState } from "react";
 
 interface HeroVideoProps {
   headline?: string;
@@ -67,60 +65,54 @@ export function HeroVideo({
         <div className="mx-auto max-w-4xl text-center">
           {/* Early Access Badge */}
           <div className="mb-8">
-            <Badge
-              variant="outline"
-              size="lg"
-              className="rounded-none border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
-            >
-              Early Access - Join First 100 Launch Customers
-            </Badge>
+            <span className="inline-block border-2 border-foreground/30 bg-foreground/10 px-4 py-2 text-sm text-foreground backdrop-blur-sm font-mono">
+              [ EARLY_ACCESS ] JOIN_FIRST_100_CUSTOMERS
+            </span>
           </div>
 
           {/* Headline */}
-          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl font-mono">
             {headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-foreground/90 sm:text-xl">
-            {subheadline}
+          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-foreground/90 sm:text-xl font-mono">
+            &gt; {subheadline}
           </p>
 
           {/* CTAs */}
           <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="rounded-none h-14 bg-card px-8 text-lg font-semibold text-foreground transition-all hover:bg-muted hover:scale-105"
+              className="rounded-none h-14 bg-card px-8 text-sm font-semibold text-foreground transition-all hover:bg-muted hover:scale-105 font-mono"
               asChild
             >
-              <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
+              <Link href={ctaPrimary.href}>&gt; EXECUTE: {ctaPrimary.text.toUpperCase().replace(/ /g, '_')}</Link>
             </Button>
             <Button
               size="lg"
-              className="rounded-none h-14 border-2 border-foreground bg-transparent px-8 text-lg font-semibold text-foreground transition-all hover:bg-card hover:text-foreground"
+              className="rounded-none h-14 border-2 border-foreground bg-transparent px-8 text-sm font-semibold text-foreground transition-all hover:bg-card hover:text-foreground font-mono"
               asChild
             >
-              <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
+              <Link href={ctaSecondary.href}>&gt; VIEW: {ctaSecondary.text.toUpperCase().replace(/ /g, '_')}</Link>
             </Button>
           </div>
 
           {/* Trust Badges */}
-          <div className="mb-8 flex flex-wrap justify-center gap-3">
+          <div className="mb-8 flex flex-wrap justify-center gap-3 font-mono">
             {trustBadges.map((badge) => (
-              <Badge
+              <span
                 key={badge}
-                variant="outline"
-                size="md"
-                className="rounded-none border-2 border-foreground/30 bg-foreground/10 text-foreground backdrop-blur-sm"
+                className="border-2 border-foreground/30 bg-foreground/10 px-3 py-1 text-xs text-foreground backdrop-blur-sm"
               >
-                {badge}
-              </Badge>
+                [{badge.toUpperCase().replace(/ /g, '_')}]
+              </span>
             ))}
           </div>
 
           {/* Final Sale Notice */}
-          <p className="text-sm text-foreground/80">
-            All sales final • Lifetime v1.x updates
+          <p className="text-xs text-foreground/80 font-mono">
+            ALL_SALES_FINAL • LIFETIME_V1.X_UPDATES
           </p>
         </div>
       </div>

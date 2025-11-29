@@ -3,11 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import config from "@/config";
-import { Small } from "@/components/ui/typography";
 
 interface StickyCTABarProps {
   /**
@@ -83,22 +81,22 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="border-t-2 border-border bg-card/95 backdrop-blur-sm">
+      <div className="border-t-2 border-border bg-card/95 backdrop-blur-sm font-mono">
         <div className="mx-auto max-w-7xl px-4 py-3">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <Small className="text-center font-mono font-medium sm:text-left">
+              <span className="text-center text-xs font-medium sm:text-left">
                 {message}
-              </Small>
+              </span>
               {showPrice && (
                 <div className="flex items-center gap-2">
-                  <Badge variant="default" size="sm" className="rounded-none">
+                  <span className="border border-primary bg-primary px-2 py-0.5 text-xs text-primary-foreground">
                     {config.pricing.fabrk.display.current}
-                  </Badge>
-                  <Small className="font-mono text-muted-foreground line-through">
+                  </span>
+                  <span className="text-xs text-muted-foreground line-through">
                     {config.pricing.fabrk.display.original}
-                  </Small>
+                  </span>
                 </div>
               )}
             </div>

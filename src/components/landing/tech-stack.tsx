@@ -21,11 +21,14 @@ export function TechStack() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 text-center font-mono text-2xl font-semibold text-foreground">
-          A Modern Stack You Can Trust.
-        </h2>
+        <div className="text-center mb-12">
+          <span className="text-xs text-muted-foreground">[0x00]</span>
+          <h2 className="text-2xl font-bold tracking-tight">
+            A_MODERN_STACK_YOU_CAN_TRUST
+          </h2>
+        </div>
 
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-7">
           {technologies.map((tech) => (
@@ -37,8 +40,8 @@ export function TechStack() {
                 path={tech.path}
                 className="h-8 w-8 text-foreground transition-colors group-hover:text-primary"
               />
-              <span className="font-mono text-xs font-medium text-muted-foreground">
-                {tech.name}
+              <span className="text-xs font-medium text-muted-foreground">
+                [{tech.name.toUpperCase().replace(/ /g, '_').replace(/\./g, '')}]
               </span>
             </div>
           ))}

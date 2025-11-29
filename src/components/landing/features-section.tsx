@@ -173,22 +173,14 @@ function AuthPreview() {
       </div>
 
       <div className="p-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          className="mb-4 font-mono text-xs text-muted-foreground"
-        >
+        <div className="mb-4 font-mono text-xs text-muted-foreground">
           [AUTH_FORM]:
-        </motion.div>
+        </div>
 
         <div className="space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 }}
-          >
+          <div>
             <span className="mb-1.5 block font-mono text-xs text-muted-foreground">EMAIL:</span>
-            <div className="border border-border bg-background px-3 py-2">
+            <div className="border border-border bg-background px-3 py-2 min-h-[36px] flex items-center">
               <span className="font-mono text-xs text-muted-foreground">
                 {emailText}
                 {emailText.length < fullEmail.length && showCursor && (
@@ -196,14 +188,10 @@ function AuthPreview() {
                 )}
               </span>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4 }}
-          >
+          </div>
+          <div>
             <span className="mb-1.5 block font-mono text-xs text-muted-foreground">PASSWORD:</span>
-            <div className="border border-border bg-background px-3 py-2">
+            <div className="border border-border bg-background px-3 py-2 min-h-[36px] flex items-center">
               <span className="font-mono text-xs text-muted-foreground">
                 {"•".repeat(passwordDots)}
                 {passwordDots < 8 && passwordDots > 0 && showCursor && (
@@ -214,48 +202,26 @@ function AuthPreview() {
                 <span className="font-mono text-xs text-primary">|</span>
               )}
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 1.8 }}
-            whileHover={{ scale: 1.02 }}
-            className="bg-primary px-4 py-2 text-center cursor-pointer"
-          >
+          </div>
+          <div className="bg-primary px-4 py-2 text-center cursor-pointer hover:opacity-90 transition-opacity">
             <span className="font-mono text-xs text-primary-foreground">&gt; AUTHENTICATE</span>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 2 }}
-            className="relative py-2"
-          >
+          </div>
+          <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center">
               <span className="bg-card px-2 font-mono text-xs text-muted-foreground">OR</span>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 2.2 }}
-            className="grid grid-cols-2 gap-3"
-          >
-            <motion.div
-              whileHover={{ scale: 1.02, borderColor: "hsl(var(--primary))" }}
-              className="border border-border px-4 py-2 text-center cursor-pointer transition-colors"
-            >
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary">
               <span className="font-mono text-xs">GOOGLE</span>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.02, borderColor: "hsl(var(--primary))" }}
-              className="border border-border px-4 py-2 text-center cursor-pointer transition-colors"
-            >
+            </div>
+            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary">
               <span className="font-mono text-xs">MICROSOFT</span>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -288,55 +254,27 @@ function OrganizationPreview() {
       {/* Window Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <motion.div
-            className="size-2.5 rounded-full bg-destructive/50"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <motion.div
-            className="size-2.5 rounded-full bg-warning/50"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
-          />
-          <motion.div
-            className="size-2.5 rounded-full bg-success/50"
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
-          />
+          <div className="size-2.5 rounded-full bg-destructive/50" />
+          <div className="size-2.5 rounded-full bg-warning/50" />
+          <div className="size-2.5 rounded-full bg-success/50" />
         </div>
         <span className="font-mono text-xs text-muted-foreground">org_manager.exe</span>
       </div>
 
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            className="font-mono text-xs text-muted-foreground"
-          >
+          <span className="font-mono text-xs text-muted-foreground">
             [ORGANIZATIONS]:
-          </motion.span>
-          <motion.button
-            className="border border-primary px-2 py-1 font-mono text-xs text-primary"
-            animate={buttonClicked ? {
-              scale: [1, 0.95, 1],
-              backgroundColor: ["transparent", "hsl(var(--primary))", "transparent"],
-              color: ["hsl(var(--primary))", "hsl(var(--primary-foreground))", "hsl(var(--primary))"]
-            } : {}}
-            transition={{ duration: 0.3 }}
-          >
+          </span>
+          <button className="border border-primary px-2 py-1 font-mono text-xs text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
             + ADD_ORG
-          </motion.button>
+          </button>
         </div>
 
-        <div className="space-y-2">
+        {/* Fixed height container to prevent layout shift */}
+        <div className="space-y-2 min-h-[116px]">
           {/* ACME_INC - always visible */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3 }}
-            className="flex items-center justify-between border border-border bg-background p-3"
-          >
+          <div className="flex items-center justify-between border border-border bg-background p-3">
             <div className="flex items-center gap-3">
               <Building2 className="size-4 text-muted-foreground" />
               <div>
@@ -345,14 +283,14 @@ function OrganizationPreview() {
               </div>
             </div>
             <span className="font-mono text-xs text-success">OWNER</span>
-          </motion.div>
+          </div>
 
           {/* STARTUP_CO - appears after button click */}
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -10 }}
-            animate={showStartup ? { opacity: 1, height: "auto", y: 0 } : {}}
+            initial={{ opacity: 0, x: -20 }}
+            animate={showStartup ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex items-center justify-between border border-border bg-background p-3 overflow-hidden"
+            className="flex items-center justify-between border border-border bg-background p-3"
           >
             <div className="flex items-center gap-3">
               <Building2 className="size-4 text-muted-foreground" />
@@ -365,27 +303,19 @@ function OrganizationPreview() {
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
-          className="mt-4 border-t border-border pt-4"
-        >
+        <div className="mt-4 border-t border-border pt-4">
           <span className="mb-2 block font-mono text-xs text-muted-foreground">[ROLES]:</span>
           <div className="flex flex-wrap gap-2">
-            {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role, idx) => (
-              <motion.span
+            {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
+              <span
                 key={role}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.8 + idx * 0.1 }}
                 className="border border-border bg-card px-2 py-1 font-mono text-xs"
               >
                 {role}
-              </motion.span>
+              </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

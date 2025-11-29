@@ -1,7 +1,6 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import { Badge } from "@/components/ui/badge";
 import {
   siTypescript,
   siStorybook,
@@ -10,7 +9,6 @@ import {
 } from "simple-icons";
 import { CheckCircle2, TestTube2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { H2, H3, Body, Small, Strong } from "@/components/ui/typography";
 
 export function QualitySection() {
   const qualityMetrics = [
@@ -47,7 +45,7 @@ export function QualitySection() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.span
@@ -55,10 +53,9 @@ export function QualitySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4"
           >
-            <Badge variant="default" size="lg" className="rounded-none mb-4 uppercase tracking-wide">
-              Quality Assurance
-            </Badge>
+            [ QUALITY_ASSURANCE ]
           </motion.span>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -66,9 +63,10 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4 font-mono">
-              Built to Last, Tested to Ship
-            </H2>
+            <span className="text-xs text-muted-foreground">[0x00]</span>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">
+              BUILT_TO_LAST_TESTED_TO_SHIP
+            </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -76,10 +74,10 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Body className="mx-auto max-w-2xl font-mono text-muted-foreground">
-              Every component is battle-tested with comprehensive coverage. No cutting corners,
+            <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+              &gt; Every component is battle-tested with comprehensive coverage. No cutting corners,
               no technical debt. Production-ready from day one.
-            </Body>
+            </p>
           </motion.div>
         </div>
 
@@ -102,16 +100,16 @@ export function QualitySection() {
                   )}
                 </div>
                 <div className="mb-3">
-                  <div className="text-4xl font-bold text-foreground">
+                  <div className="text-3xl font-bold text-foreground">
                     {item.metric}
                   </div>
-                  <H3 className="mt-1">
-                    {item.label}
-                  </H3>
+                  <h3 className="text-lg font-bold mt-1">
+                    {item.label.toUpperCase().replace(/ /g, '_')}
+                  </h3>
                 </div>
-                <Small className="block text-muted-foreground">
+                <span className="block text-xs text-muted-foreground">
                   {item.description}
-                </Small>
+                </span>
               </motion.div>
             );
           })}
@@ -130,14 +128,14 @@ export function QualitySection() {
               <CheckCircle2 className="h-8 w-8 text-primary" />
             </div>
             <div>
-              <H3 className="mb-2">
-                Quality Guarantee
-              </H3>
-              <Body className="text-muted-foreground">
+              <h3 className="text-lg font-bold mb-2">
+                QUALITY_GUARANTEE
+              </h3>
+              <p className="text-sm text-muted-foreground">
                 Unlike other boilerplates that ship untested code, every Fabrk component is
                 rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
                 You're not inheriting technical debt—you're getting production-grade infrastructure.
-              </Body>
+              </p>
             </div>
           </div>
         </motion.div>

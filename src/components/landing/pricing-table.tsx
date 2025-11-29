@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Check, X } from "lucide-react";
 
 interface PricingPlan {
@@ -133,15 +132,16 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
   };
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24" id="pricing">
+    <section className="border-t border-border bg-background px-6 py-24 font-mono" id="pricing">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Compare & Choose
+          <span className="text-xs text-muted-foreground">[0x00]</span>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
+            COMPARE_AND_CHOOSE
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            See how Fabrk stacks up against the competition. Same features, 60-77% cheaper.
+          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+            &gt; See how Fabrk stacks up against the competition. Same features, 60-77% cheaper.
           </p>
         </div>
 
@@ -189,9 +189,9 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           {plan.price}
                         </div>
                         {plan.highlighted && (
-                          <Badge variant="default" size="sm" className="rounded-none">
-                            Best Value
-                          </Badge>
+                          <span className="inline-block border border-primary-foreground/30 bg-primary-foreground/10 px-2 py-0.5 text-xs text-primary-foreground">
+                            [BEST_VALUE]
+                          </span>
                         )}
                       </div>
                     </th>
@@ -260,15 +260,15 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
         {/* Savings Highlight */}
         <div className="mt-8 text-center">
-          <p className="text-lg font-semibold text-primary">
-            💰 Save 60-77% with Fabrk • Same features, better stack
+          <p className="text-sm font-semibold text-primary">
+            [SAVINGS] SAVE_60-77%_WITH_FABRK • SAME_FEATURES_BETTER_STACK
           </p>
         </div>
 
         {/* Final Sale Notice */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            All sales final • Digital product • Lifetime v1.x updates included
+          <p className="text-xs text-muted-foreground">
+            ALL_SALES_FINAL • DIGITAL_PRODUCT • LIFETIME_V1.X_UPDATES_INCLUDED
           </p>
         </div>
       </div>

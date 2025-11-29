@@ -6,7 +6,6 @@
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
-import { H2, Body, Small, Strong } from "@/components/ui/typography";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -55,7 +54,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-t border-border bg-background px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -64,9 +63,10 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <H2 className="mb-4 font-mono">
-              Loved by Developers
-            </H2>
+            <span className="text-xs text-muted-foreground">[0x00]</span>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">
+              LOVED_BY_DEVELOPERS
+            </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -74,9 +74,9 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Body className="font-mono text-muted-foreground">
-              Early access customer feedback
-            </Body>
+            <p className="text-sm text-muted-foreground">
+              &gt; Early access customer feedback
+            </p>
           </motion.div>
         </div>
 
@@ -90,23 +90,23 @@ export function TestimonialsSection() {
               viewport={{ once: true }}
               className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
             >
-              <div className="mb-4 text-3xl font-normal text-muted-foreground/30">"</div>
-              <Small className="block mb-6 text-muted-foreground">
-                {testimonial.quote}
-              </Small>
+              <div className="mb-2 text-xs text-muted-foreground">[0x{(index + 1).toString(16).toUpperCase().padStart(2, '0')}]</div>
+              <span className="block mb-6 text-xs text-muted-foreground">
+                "{testimonial.quote}"
+              </span>
               <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10">
-                  <AvatarFallback className="bg-primary/10 text-primary text-sm font-medium">
+                <Avatar className="h-10 w-10 rounded-none">
+                  <AvatarFallback className="bg-primary/10 text-primary text-xs font-medium rounded-none">
                     {testimonial.initials}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <Small className="block font-semibold">
-                    {testimonial.author}
-                  </Small>
-                  <Small className="block text-muted-foreground">
+                  <span className="block text-xs font-semibold">
+                    {testimonial.author.toUpperCase().replace(/ /g, '_')}
+                  </span>
+                  <span className="block text-xs text-muted-foreground">
                     {testimonial.role}
-                  </Small>
+                  </span>
                 </div>
               </div>
             </motion.div>
