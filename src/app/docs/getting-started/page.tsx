@@ -43,7 +43,7 @@ export default function GettingStartedPage() {
         <CardContent className="p-6 space-y-4">
           <h2 className="font-mono text-lg font-bold text-foreground">WHO_IS_THIS_FOR?</h2>
           <div className="grid gap-6 sm:grid-cols-2">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <h3 className="font-mono text-base font-semibold text-foreground">&gt; GREAT_FIT</h3>
               <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                 <li>├─ Developers building their first SaaS</li>
@@ -52,7 +52,7 @@ export default function GettingStartedPage() {
                 <li>└─ Anyone who values shipping fast</li>
               </ul>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-3">
               <h3 className="font-mono text-base font-semibold text-foreground">&gt; REQUIREMENTS</h3>
               <ul className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
                 <li>├─ Basic JavaScript/TypeScript</li>
@@ -126,7 +126,7 @@ npm run db:push && npm run dev`}
         </p>
 
         {/* Step 1 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">1</span>
             <h3 className="font-mono text-base font-semibold">CHECK_YOUR_SYSTEM</h3>
@@ -143,7 +143,7 @@ npm run db:push && npm run dev`}
         </div>
 
         {/* Step 2 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">2</span>
             <h3 className="font-mono text-base font-semibold">DOWNLOAD_FABRK</h3>
@@ -158,7 +158,7 @@ cd my-saas`} />
         </div>
 
         {/* Step 3 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">3</span>
             <h3 className="font-mono text-base font-semibold">INSTALL_DEPENDENCIES</h3>
@@ -172,7 +172,7 @@ cd my-saas`} />
         </div>
 
         {/* Step 4 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">4</span>
             <h3 className="font-mono text-base font-semibold">CREATE_CONFIG_FILE</h3>
@@ -186,7 +186,7 @@ cd my-saas`} />
         </div>
 
         {/* Step 5 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">5</span>
             <h3 className="font-mono text-base font-semibold">SETUP_DATABASE</h3>
@@ -208,7 +208,7 @@ cd my-saas`} />
         </div>
 
         {/* Step 6 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">6</span>
             <h3 className="font-mono text-base font-semibold">CONFIGURE_SETTINGS</h3>
@@ -227,7 +227,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         </div>
 
         {/* Step 7 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">7</span>
             <h3 className="font-mono text-base font-semibold">INITIALIZE_DATABASE</h3>
@@ -241,7 +241,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
         </div>
 
         {/* Step 8 */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">8</span>
             <h3 className="font-mono text-base font-semibold">START_YOUR_APP</h3>
@@ -261,7 +261,7 @@ NEXTAUTH_SECRET="paste-your-secret-here"`} />
       {/* Troubleshooting */}
       <div className="space-y-4">
         <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
-        <div className="space-y-6">
+        <div className="space-y-3">
           <details className="border border-border bg-card">
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium hover:bg-muted/50">
               <span className="text-primary">├─</span>

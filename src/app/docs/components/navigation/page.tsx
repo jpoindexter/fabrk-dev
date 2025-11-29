@@ -32,7 +32,7 @@ export default function NavigationComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// Landing page navigation
@@ -75,7 +75,7 @@ import {
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">LANDING_NAVIGATION</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { Navigation } from "@/components/landing/navigation";
@@ -91,7 +91,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">BREADCRUMB</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {
@@ -125,7 +125,7 @@ export function PageBreadcrumb() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">DROPDOWN_MENU</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import {

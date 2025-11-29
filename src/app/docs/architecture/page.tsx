@@ -106,7 +106,7 @@ export default function ArchitecturePage() {
                     while React Server Components (RSC) handle data fetching.
                 </p>
 
-                <div className="space-y-6">
+                <div className="space-y-3">
                     <h3 className="font-mono text-xs font-semibold">Mutation Flow (Server Actions)</h3>
                     <p className="font-mono text-sm text-muted-foreground leading-relaxed">Example of a typical server action flow:</p>
                     <div className="[&>div]:rounded-none">

@@ -87,7 +87,7 @@ export default function GoogleOAuthPage() {
           <span className="font-mono flex h-6 w-6 items-center justify-center bg-primary text-xs font-bold text-primary-foreground">3</span>
           <h3 className="font-mono text-xs font-semibold">SET_ENVIRONMENT_VARIABLES</h3>
         </div>
-        <div className="space-y-6">
+        <div className="space-y-3">
           <p className="font-mono text-xs text-muted-foreground">Add to <code className="font-mono bg-muted px-1 text-xs">.env.local</code>:</p>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="typescript" code={`GOOGLE_CLIENT_ID="xxxxxxxxxxxx.apps.googleusercontent.com"
@@ -275,7 +275,7 @@ export function LoginForm() {
         <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
-            <div className="space-y-6">
+            <div className="space-y-3">
               <div>
                 <h4 className="font-mono text-xs font-semibold mb-1">Error: redirect_uri_mismatch</h4>
                 <p className="font-mono text-xs text-muted-foreground">

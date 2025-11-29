@@ -51,7 +51,7 @@ export default function AuthenticationTutorialPage() {
       </Card>
 
       {/* What's Included */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">WHATS_ALREADY_BUILT</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Fabrk includes a complete authentication system. You don&apos;t need to build any of this:
@@ -109,7 +109,7 @@ export default function AuthenticationTutorialPage() {
       </div>
 
       {/* Quick Setup */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <div className="flex items-center gap-2">
           <h2 className="font-mono text-lg font-bold">QUICK_SETUP</h2>
           <span className="border border-primary bg-primary/10 px-2 py-0.5 font-mono text-xs font-medium text-primary">
@@ -140,7 +140,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
       </div>
 
       {/* How Authentication Works - For learners */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">HOW_IT_WORKS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Here&apos;s what happens when a user interacts with your app:
@@ -178,7 +178,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
       </div>
 
       {/* Google OAuth - Step by Step */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ADD_GOOGLE_LOGIN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Let users sign in with their Google account. This is convenient for users and often
@@ -244,7 +244,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           </div>
 
           {/* Step 3 */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 3
@@ -259,7 +259,7 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
               <div>├─ <strong>Name:</strong> Anything (e.g., &quot;My SaaS Web Client&quot;)</div>
               <div>└─ <strong>Authorized redirect URIs:</strong></div>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-3">
               <div className="[&>div]:rounded-none">
                 <CodeBlock language="text" code={`http://localhost:3000/api/auth/callback/google`} />
               </div>
@@ -275,14 +275,14 @@ NEXTAUTH_SECRET="your-32-character-secret"`} />
           </div>
 
           {/* Step 4 */}
-          <div className="space-y-6">
+          <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center bg-primary font-mono text-xs font-bold text-primary-foreground">
                 4
               </span>
               <h3 className="font-mono text-xs font-semibold">ADD_CREDENTIALS_TO_APP</h3>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-3">
               <div>
                 <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                   Copy the Client ID and Client Secret from Google, then add them to your{" "}
@@ -305,7 +305,7 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
       </div>
 
       {/* Protecting Pages */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PROTECTED_PAGES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Some pages should only be visible to logged-in users. Fabrk automatically protects
@@ -336,14 +336,14 @@ GOOGLE_CLIENT_SECRET="your-client-secret"`} />
       </div>
 
       {/* Code Examples - For developers */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CODE_REFERENCE</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Here&apos;s how to use authentication in your own code:
         </p>
 
         {/* Check if user is logged in - API routes */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           <div>
             <h3 className="font-mono text-xs font-semibold">IN_API_ROUTES</h3>
             <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -456,7 +456,7 @@ export default async function PrivatePage() {
       </div>
 
       {/* Email Verification */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">EMAIL_VERIFICATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           By default, Fabrk requires users to verify their email address. This ensures you can
@@ -480,7 +480,7 @@ export default async function PrivatePage() {
       </div>
 
       {/* Common Questions */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">COMMON_QUESTIONS</h2>
         <div className="space-y-2">
           <details className="border border-border bg-card">
@@ -538,7 +538,7 @@ export default async function PrivatePage() {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/mfa">

@@ -30,7 +30,7 @@ export default function HeroComponentsPage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">IMPORT_EXAMPLES</h2>
         <div className="[&>div]:rounded-none">
           <CodeBlock language="typescript" code={`// Standard hero section
@@ -47,7 +47,7 @@ import { HeroVideo } from "@/components/landing/hero-video";`} />
       <div className="space-y-16">
         <h2 className="font-mono text-lg font-bold">USAGE_EXAMPLES</h2>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">STANDARD_HERO_SECTION</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroSection } from "@/components/landing/hero-section";
@@ -63,7 +63,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">SPLIT_LAYOUT_HERO</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroSplit } from "@/components/landing/hero-split";
@@ -83,7 +83,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">VIDEO_HERO</h3>
           <div className="[&>div]:rounded-none">
             <CodeBlock language="tsx" code={`import { HeroVideo } from "@/components/landing/hero-video";
@@ -104,7 +104,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-3">
           <h3 className="font-mono text-xs font-semibold">VIEW_VARIATIONS</h3>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
             Check out the variations page to see all hero styles side by side:
@@ -116,7 +116,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ANIMATION_PATTERN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           All hero sections use Framer Motion for smooth entrance animations:

@@ -35,7 +35,7 @@ export default function WebhooksTutorialPage() {
       </Card>
 
       {/* Available Events */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AVAILABLE_WEBHOOK_EVENTS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -74,7 +74,7 @@ security.password_changed  // Password changed`} />
       </div>
 
       {/* Triggering Webhooks */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TRIGGERING_WEBHOOKS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -116,7 +116,7 @@ await triggerWebhook(
       </div>
 
       {/* HMAC Signature Verification */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">HMAC_SHA256_VERIFICATION</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -162,7 +162,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Webhook Headers */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">WEBHOOK_HEADERS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Every webhook delivery includes these headers:
@@ -178,7 +178,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Payload Structure */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PAYLOAD_STRUCTURE</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -201,7 +201,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Retry Logic */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">AUTOMATIC_RETRY_LOGIC</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Failed deliveries are automatically retried with exponential backoff:
@@ -224,7 +224,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Security Best Practices */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SECURITY_BEST_PRACTICES</h2>
         <Card className="rounded-none">
           <CardContent className="p-6">
@@ -243,7 +243,7 @@ export async function POST(request: Request) {
       </div>
 
       {/* Testing Webhooks */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TESTING_WEBHOOKS</h2>
         <div>
           <p className="font-mono text-sm text-muted-foreground leading-relaxed">
@@ -274,7 +274,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/tutorials/api-routes">

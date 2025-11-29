@@ -33,7 +33,7 @@ export default function DeployVercelPage() {
       </Card>
 
       {/* One-Click Deploy */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ONE_CLICK_DEPLOY</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           The fastest way to deploy - click and configure:
@@ -56,7 +56,7 @@ vercel
       </div>
 
       {/* Step-by-Step Deployment */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">STEP_BY_STEP_DEPLOYMENT</h2>
         <ol className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
           <li>1. Push to GitHub - Your code must be in a Git repository</li>
@@ -68,7 +68,7 @@ vercel
       </div>
 
       {/* Required Environment Variables */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">REQUIRED_ENVIRONMENT_VARIABLES</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Add these in Vercel Dashboard → Settings → Environment Variables:
@@ -101,7 +101,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       </div>
 
       {/* vercel.json Configuration */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">VERCEL_JSON_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Optional configuration for advanced settings:
@@ -143,7 +143,7 @@ NEXT_PUBLIC_APP_URL="https://your-domain.com"`} />
       </div>
 
       {/* Custom Domain */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">CUSTOM_DOMAIN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Connect your custom domain:
@@ -171,7 +171,7 @@ Value: cname.vercel-dns.com`} />
       </div>
 
       {/* Stripe Webhook Setup */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">STRIPE_WEBHOOK_SETUP</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Configure Stripe webhooks for production:
@@ -197,7 +197,7 @@ Value: cname.vercel-dns.com`} />
       </div>
 
       {/* Preview Deployments */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">PREVIEW_DEPLOYMENTS</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Every PR gets a unique preview URL:
@@ -220,7 +220,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
       </div>
 
       {/* Deployment Troubleshooting */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">TROUBLESHOOTING</h2>
 
         <div className="space-y-2">
@@ -263,7 +263,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`} />
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/deployment/environment">

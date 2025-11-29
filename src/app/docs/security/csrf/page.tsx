@@ -30,7 +30,7 @@ export default function CSRFProtectionPage() {
       </Card>
 
       {/* Built-in Protection */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">BUILT_IN_PROTECTION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           NextAuth v5 automatically protects all authentication routes with CSRF tokens.
@@ -48,7 +48,7 @@ export default function CSRFProtectionPage() {
       </div>
 
       {/* Getting CSRF Token */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">GETTING_CSRF_TOKEN</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Retrieve the CSRF token for custom forms:
@@ -84,7 +84,7 @@ export function SecureForm() {
       </div>
 
       {/* Server-Side Validation */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SERVER_SIDE_VALIDATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Validate CSRF tokens in your API routes:
@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
       </div>
 
       {/* Origin Validation */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">ORIGIN_VALIDATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Add origin validation as an additional security layer:
@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
       </div>
 
       {/* SameSite Cookie Configuration */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">SAMESITE_COOKIE_CONFIGURATION</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Configure secure cookie settings in NextAuth:
@@ -224,7 +224,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       </div>
 
       {/* Fetch Requests with CSRF */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">FETCH_REQUESTS_WITH_CSRF</h2>
         <p className="font-mono text-sm text-muted-foreground leading-relaxed">
           Include CSRF tokens in fetch requests:
@@ -291,7 +291,7 @@ export function useSecureApi() {
       </div>
 
       {/* Next Steps */}
-      <div className="space-y-6">
+      <div className="space-y-3">
         <h2 className="font-mono text-lg font-bold">NEXT_STEPS</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/security/headers">

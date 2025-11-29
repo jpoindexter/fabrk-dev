@@ -37,7 +37,7 @@ export default function RealtimePage() {
         </CardContent>
       </Card>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">CONFIGURATION</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -62,7 +62,7 @@ NEXT_PUBLIC_PUSHER_CLUSTER=your_cluster`} />
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">SERVER_SIDE_USAGE</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -106,7 +106,7 @@ await pusherServer.trigger(
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">CLIENT_SIDE_USAGE</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
@@ -161,7 +161,7 @@ export function NotificationBell({ userId }: { userId: string }) {
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-3">
         <div>
           <h2 className="font-mono text-lg font-bold mb-4">PRESENCE_CHANNELS</h2>
           <p className="font-mono text-xs text-muted-foreground mb-4">
