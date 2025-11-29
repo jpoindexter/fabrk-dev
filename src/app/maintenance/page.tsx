@@ -71,7 +71,7 @@ export default function MaintenancePage() {
         </div>
 
         {/* What We're Doing */}
-        <div className="rounded-lg border-2 border-border/60 bg-card p-6 text-left">
+        <div className="rounded-lg border border-border/60 bg-card p-6 text-left">
           <h2 className="mb-4 text-lg font-semibold text-foreground">
             What we're working on:
           </h2>

@@ -167,7 +167,7 @@ export function BackupCodesModal({
               {codes.map((code, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 bg-background border-2 border-border rounded-lg"
+                  className="flex items-center justify-between p-3 bg-background border border-border rounded-lg"
                 >
                   <span className="font-mono text-sm font-medium">{code}</span>
                   <Button

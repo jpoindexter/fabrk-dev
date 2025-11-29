@@ -49,7 +49,7 @@ export function InteractiveDemo() {
             </TabsList>
 
             {/* Demo Container */}
-            <div className="overflow-hidden border-2 border-border bg-card shadow-lg">
+            <div className="overflow-hidden border border-border bg-card shadow-lg">
               {DEMO_ROUTES.map((route) => (
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe

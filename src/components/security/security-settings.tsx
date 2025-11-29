@@ -338,7 +338,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+              <div className="p-3 rounded-lg bg-primary/10 border border-border">
                 <Smartphone className="h-6 w-6 text-primary" />
               </div>
               <div>
@@ -399,7 +399,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+            <div className="p-3 rounded-lg bg-primary/10 border border-border">
               <Key className="h-6 w-6 text-primary" />
             </div>
             <div>
@@ -420,7 +420,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
               {connectedAccounts.map((account, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between p-4 border-2 border-border rounded-lg"
+                  className="flex items-center justify-between p-4 border border-border rounded-lg"
                 >
                   <div className="flex items-center gap-3">
                     <Badge variant="outline" className="capitalize">
@@ -464,7 +464,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+            <div className="p-3 rounded-lg bg-primary/10 border border-border">
               <Clock className="h-6 w-6 text-primary" />
             </div>
             <div>
@@ -482,7 +482,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
 
           {/* Placeholder for active sessions - would require Session model */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-4 border-2 border-border rounded-lg">
+            <div className="flex items-center justify-between p-4 border border-border rounded-lg">
               <div>
                 <p className="font-medium text-sm">Current Session</p>
                 <p className="text-xs text-muted-foreground">
@@ -517,7 +517,7 @@ export function SecuritySettings({ user, connectedAccounts }: SecuritySettingsPr
       <Card>
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+            <div className="p-3 rounded-lg bg-primary/10 border border-border">
               <Key className="h-6 w-6 text-primary" />
             </div>
             <div>

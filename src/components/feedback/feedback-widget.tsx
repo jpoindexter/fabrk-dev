@@ -65,7 +65,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 rounded-lg border-2 border-border bg-card">
+    <div className="fixed bottom-6 right-6 w-96 rounded-lg border border-border bg-card">
       <div className="flex items-center justify-between border-b border-border p-4">
         <h3 className="font-semibold text-foreground">Send Feedback</h3>
         <button

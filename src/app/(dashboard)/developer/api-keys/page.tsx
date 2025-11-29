@@ -370,7 +370,7 @@ export default function ApiKeysPage() {
               Make sure to copy your API key now. You won't be able to see it again!
             </p>
             <div className="flex items-center gap-2">
-              <code className="flex-1 p-2 bg-background rounded border-2 border-border text-sm font-mono break-all">
+              <code className="flex-1 p-2 bg-background rounded border border-border text-sm font-mono break-all">
                 {createdKey}
               </code>
               <Button
@@ -418,7 +418,7 @@ export default function ApiKeysPage() {
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-start gap-6">
-                      <div className="p-3 rounded-lg bg-primary/10 border-2 border-border">
+                      <div className="p-3 rounded-lg bg-primary/10 border border-border">
                         <Key className="h-6 w-6 text-primary" />
                       </div>
                       <div>
@@ -466,7 +466,7 @@ export default function ApiKeysPage() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <code className="flex-1 p-2 bg-muted rounded border-2 border-border text-sm font-mono">
+                    <code className="flex-1 p-2 bg-muted rounded border border-border text-sm font-mono">
                       {maskKey(apiKey.keyPrefix)}
                     </code>
                     <Button
@@ -496,12 +496,12 @@ export default function ApiKeysPage() {
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-2">
             <p>Include your API key in the Authorization header:</p>
-            <code className="block p-3 bg-muted rounded border-2 border-border font-mono text-xs">
+            <code className="block p-3 bg-muted rounded border border-border font-mono text-xs">
               Authorization: Bearer YOUR_API_KEY
             </code>
             <div className="pt-2">
               <p className="font-semibold mb-2">Example (cURL):</p>
-              <code className="block p-3 bg-muted rounded border-2 border-border font-mono text-xs whitespace-pre-wrap">
+              <code className="block p-3 bg-muted rounded border border-border font-mono text-xs whitespace-pre-wrap">
 {`curl https://yourdomain.com/api/v1/organizations/${organizationId || "{org_id}"} \\
   -H "Authorization: Bearer sk_live_..."`}
               </code>
