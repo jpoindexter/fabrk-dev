@@ -8,7 +8,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { TerminalBackground } from "@/components/landing/terminal-background";
 import { Button } from "@/components/ui/button";
@@ -270,7 +270,7 @@ export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-background font-mono relative">
       <TerminalBackground />
-      <Navigation />
+      <SiteNavigation />
 
       {/* Hero Section */}
       <section className="border-b border-border bg-background py-20 lg:py-28">

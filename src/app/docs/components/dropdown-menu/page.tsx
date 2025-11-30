@@ -27,6 +27,7 @@ export default function DropdownMenuPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.18]"
       title="Dropdown Menu"
       description="Displays a menu to the user—such as a set of actions or functions—triggered by a button."
       mainPreview={{
@@ -62,7 +63,7 @@ import { Button } from "@/components/ui/button";
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`,
-        component: (
+        preview: (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline">Open Menu</Button>
@@ -115,7 +116,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
     </DropdownMenuCheckboxItem>
   </DropdownMenuContent>
 </DropdownMenu>`,
-          component: (
+          preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">View Options</Button>
@@ -158,7 +159,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
     </DropdownMenuRadioGroup>
   </DropdownMenuContent>
 </DropdownMenu>`,
-          component: (
+          preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">Position: {position}</Button>
@@ -215,7 +216,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
     </DropdownMenuSub>
   </DropdownMenuContent>
 </DropdownMenu>`,
-          component: (
+          preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">Actions</Button>
@@ -282,7 +283,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
     </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`,
-          component: (
+          preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">Keyboard Shortcuts</Button>
@@ -358,11 +359,11 @@ const [showActivityBar, setShowActivityBar] = useState(false);
         "Supports typeahead - type to focus menu items",
         "Screen readers announce menu state and selected items",
       ]}
-      previousPage={{
+      previous={{
         title: "Tabs",
         href: "/docs/components/tabs",
       }}
-      nextPage={{
+      next={{
         title: "Breadcrumb",
         href: "/docs/components/breadcrumb",
       }}

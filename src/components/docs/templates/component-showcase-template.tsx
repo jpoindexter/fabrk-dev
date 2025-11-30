@@ -116,7 +116,7 @@ export function ComponentShowcaseTemplate({
       {/* Installation */}
       {installCommand && (
         <DocsSection title="Installation">
-          <DocsCard>
+          <DocsCard title="INSTALL">
             <CodeBlock code={installCommand} language="bash" />
           </DocsCard>
         </DocsSection>
@@ -125,7 +125,7 @@ export function ComponentShowcaseTemplate({
       {/* Import */}
       {importCode && (
         <DocsSection title="Import">
-          <DocsCard>
+          <DocsCard title="IMPORT">
             <CodeBlock code={importCode} language="typescript" />
           </DocsCard>
         </DocsSection>

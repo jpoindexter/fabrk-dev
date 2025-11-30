@@ -36,9 +36,9 @@ export default function ComboboxPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.12]"
       title="Combobox"
       description="A searchable dropdown component that combines an input field with a list of options, providing autocomplete functionality."
-      component="combobox"
       mainPreview={{
         code: `const frameworks = [
   { value: "next", label: "Next.js" },
@@ -194,12 +194,12 @@ export default function ComboboxPage() {
         "Search input is automatically focused when popover opens",
         "Selected option is visually indicated with checkmark icon",
       ]}
-      previousComponent={{
-        name: "Input OTP",
+      previous={{
+        title: "Input OTP",
         href: "/docs/components/input-otp",
       }}
-      nextComponent={{
-        name: "Multi Select",
+      next={{
+        title: "Multi Select",
         href: "/docs/components/multi-select",
       }}
     />

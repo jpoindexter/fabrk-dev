@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
 import { FeaturesShowcase } from "@/components/home/features-showcase";
 import { FeaturesSection } from "@/components/landing/features-section";
@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <div className="relative isolate min-h-screen">
       <TerminalBackground />
-      <Navigation />
+      <SiteNavigation />
       <HeroSection />
       <FeaturesShowcase />
       <FeaturesSection />

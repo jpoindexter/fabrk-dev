@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection } from "@/components/docs";
+import { DocsSection, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Rocket, Layout, Settings, Upload } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Quick Start Guide - Fabrk Docs",
@@ -88,26 +86,16 @@ git push origin main`,
     >
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Setup Authentication</h3>
-                <p className={docsTypography.body}>
-                  Configure Google OAuth and secure sessions
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Configure Payments</h3>
-                <p className={docsTypography.body}>
-                  Connect Stripe for subscriptions
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Setup Authentication"
+            description="Configure Google OAuth and secure sessions"
+          />
+          <DocsLinkCard
+            href="/docs/features/payments"
+            title="Configure Payments"
+            description="Connect Stripe for subscriptions"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

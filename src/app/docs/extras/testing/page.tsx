@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { TestTube, Play, Accessibility, Workflow } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Testing Guide - Fabrk Docs",
@@ -220,7 +218,7 @@ jobs:
     >
       {/* Test Coverage */}
       <DocsSection title="Test Coverage">
-        <DocsCard>
+        <DocsCard title="COVERAGE">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ 130+ total tests</div>
             <div>├─ Unit tests with Vitest</div>
@@ -233,7 +231,7 @@ jobs:
 
       {/* Best Practices */}
       <DocsSection title="Testing Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Test behavior, not implementation</strong> - Focus on user experience</div>
             <div>├─ <strong>Use data-testid sparingly</strong> - Prefer semantic queries</div>
@@ -248,22 +246,16 @@ jobs:
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
-                <p className={docsTypography.body}>Deploy your tested app to production</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/validation">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
-                <p className={docsTypography.body}>Validate inputs for better tests</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/deployment/vercel"
+            title="Deploy to Vercel"
+            description="Deploy your tested app to production"
+          />
+          <DocsLinkCard
+            href="/docs/security/validation"
+            title="Schema Validation"
+            description="Validate inputs for better tests"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

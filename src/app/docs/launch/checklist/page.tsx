@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { CheckSquare, Code, CreditCard, Megaphone, Rocket } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Launch Checklist - Fabrk Docs",
@@ -80,7 +78,7 @@ npm run type-check`,
       {/* Phase 1: Pre-Launch */}
       <DocsSection title="Phase 1: Pre-Launch Verification">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard>
+          <DocsCard title="CODE_QUALITY">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Code Quality & Security</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Resolve all TODO/FIXME comments</div>
@@ -91,7 +89,7 @@ npm run type-check`,
               <div>└─ Verify npm run build succeeds</div>
             </div>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="LEGAL_BUSINESS">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Legal & Business</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Prices match Stripe dashboard</div>
@@ -105,7 +103,7 @@ npm run type-check`,
       {/* Phase 2: Stripe */}
       <DocsSection title="Phase 2: Stripe & Payments Setup">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard>
+          <DocsCard title="PRODUCT_CONFIG">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Product Configuration</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Create products in Stripe (Test & Prod)</div>
@@ -113,7 +111,7 @@ npm run type-check`,
               <div>└─ Create coupons if needed (e.g., EARLYBIRD)</div>
             </div>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="WEBHOOK_CONFIG">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Webhook Configuration</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Add endpoint: /api/stripe/webhook</div>
@@ -126,7 +124,7 @@ npm run type-check`,
 
       {/* Phase 3: Marketing */}
       <DocsSection title="Phase 3: Marketing Assets">
-        <DocsCard>
+        <DocsCard title="MARKETING">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>The Pitch:</strong> 30-60s video for social media</div>
             <div>├─ <strong>The Walkthrough:</strong> 3-5 min demo for docs/landing page</div>
@@ -137,7 +135,7 @@ npm run type-check`,
 
       {/* Phase 4: Launch Day */}
       <DocsSection title="Phase 4: Launch Day Execution">
-        <DocsCard>
+        <DocsCard title="LAUNCH_DAY">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Distribution:</strong> Verify GitHub invite system or app deployment</div>
             <div>├─ <strong>Announcement:</strong> Schedule Product Hunt, Twitter/X, LinkedIn</div>
@@ -148,7 +146,7 @@ npm run type-check`,
 
       {/* Phase 5: Post-Launch */}
       <DocsSection title="Phase 5: Post-Launch Monitoring">
-        <DocsCard>
+        <DocsCard title="POST_LAUNCH">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Support:</strong> Monitor support email for 48 hours</div>
             <div>├─ <strong>Stripe:</strong> Watch for failed payments or disputes</div>
@@ -160,22 +158,16 @@ npm run type-check`,
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
-                <p className={docsTypography.body}>Production deployment guide</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Payments</h3>
-                <p className={docsTypography.body}>Full Stripe integration guide</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/deployment/vercel"
+            title="Deploy to Vercel"
+            description="Production deployment guide"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/stripe-payments"
+            title="Stripe Payments"
+            description="Full Stripe integration guide"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import config from "@/config";
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { TerminalBackground } from "@/components/landing/terminal-background";
 import { motion } from "framer-motion";
@@ -99,7 +99,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background font-mono relative">
       <TerminalBackground />
-      <Navigation />
+      <SiteNavigation />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background px-6 py-24">

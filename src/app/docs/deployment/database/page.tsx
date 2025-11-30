@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Database, Cloud, Server, Zap } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Database Setup - Fabrk Docs",
@@ -209,7 +207,7 @@ psql $DATABASE_URL < backup.sql`,
     >
       {/* Database Providers */}
       <DocsSection title="Database Providers">
-        <DocsCard>
+        <DocsCard title="PROVIDERS">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">Supabase</code> - Free tier, great DX (recommended)</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">Neon</code> - Serverless PostgreSQL with branching</div>
@@ -222,7 +220,7 @@ psql $DATABASE_URL < backup.sql`,
 
       {/* Performance Tips */}
       <DocsSection title="Performance Tips">
-        <DocsCard>
+        <DocsCard title="PERFORMANCE">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Add indexes - Index frequently queried columns: <code className="bg-muted px-1 font-mono text-xs">@@index([userId, createdAt])</code></div>
             <div>├─ Use select - Only fetch needed fields</div>
@@ -235,22 +233,16 @@ psql $DATABASE_URL < backup.sql`,
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
-                <p className={docsTypography.body}>Deploy with your database configured</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/audit-logging">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Audit Logging</h3>
-                <p className={docsTypography.body}>Track database operations</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/deployment/vercel"
+            title="Deploy to Vercel"
+            description="Deploy with your database configured"
+          />
+          <DocsLinkCard
+            href="/docs/security/audit-logging"
+            title="Audit Logging"
+            description="Track database operations"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

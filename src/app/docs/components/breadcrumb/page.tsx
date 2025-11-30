@@ -19,9 +19,10 @@ import {
 import { ChevronRight, Slash } from "lucide-react";
 import Link from "next/link";
 
-export default function BreadcrumbPage() {
+export default function BreadcrumbDocsPage() {
   return (
     <ComponentShowcaseTemplate
+      code="[UI.20]"
       title="Breadcrumb"
       description="Displays the path to the current resource using a hierarchy of links."
       mainPreview={{
@@ -49,7 +50,7 @@ export default function BreadcrumbPage() {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
-        component: (
+        preview: (
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -92,7 +93,7 @@ export default function BreadcrumbPage() {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
-          component: (
+          preview: (
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -138,7 +139,7 @@ export default function BreadcrumbPage() {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
-          component: (
+          preview: (
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -200,7 +201,7 @@ export default function BreadcrumbPage() {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
-          component: (
+          preview: (
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -257,7 +258,7 @@ export default function BreadcrumbPage() {
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>`,
-          component: (
+          preview: (
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -300,11 +301,11 @@ export default function BreadcrumbPage() {
         "Separators are hidden from screen readers with aria-hidden='true'",
         "Provides clear navigation hierarchy for screen reader users",
       ]}
-      previousPage={{
+      previous={{
         title: "Dropdown Menu",
         href: "/docs/components/dropdown-menu",
       }}
-      nextPage={{
+      next={{
         title: "Pagination",
         href: "/docs/components/pagination",
       }}

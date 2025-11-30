@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
-import { Copy, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Copy, Check } from "lucide-react";
 
 interface CodeBlockProps {
   code: string;
@@ -19,44 +18,28 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Add $ prompt for bash/shell commands
+  const isShell = language === "bash" || language === "sh" || language === "shell";
+
   return (
     <div
-      className="not-prose my-8 border border-border overflow-hidden bg-card"
+      className="not-prose relative group"
       role="region"
       aria-label={`Code example in ${language}`}
     >
-      <div className="flex items-center justify-between bg-muted px-4 py-2 border-b border-border">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="size-2 rounded-full bg-destructive/50" />
-            <div className="size-2 rounded-full bg-warning/50" />
-            <div className="size-2 rounded-full bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            {language}
-          </span>
-        </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleCopy}
-          className="rounded-none font-mono text-xs h-7"
-          aria-label={copied ? "Code copied" : "Copy code to clipboard"}
-        >
-          {copied ? (
-            <>
-              <CheckCircle2 className="mr-1 h-3 w-3" aria-hidden="true" />
-              COPIED
-            </>
-          ) : (
-            <>
-              <Copy className="mr-1 h-3 w-3" aria-hidden="true" />
-              &gt; COPY
-            </>
-          )}
-        </Button>
-      </div>
-      <div className="bg-zinc-950">
+      {/* Copy button - appears on hover */}
+      <button
+        onClick={handleCopy}
+        className="absolute right-2 top-2 z-10 p-1.5 font-mono text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity hover:text-foreground"
+        aria-label={copied ? "Code copied" : "Copy code to clipboard"}
+      >
+        {copied ? (
+          <Check className="h-4 w-4 text-success" aria-hidden="true" />
+        ) : (
+          <Copy className="h-4 w-4" aria-hidden="true" />
+        )}
+      </button>
+      <div className="bg-zinc-900 rounded-none">
         <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
@@ -71,6 +54,13 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
             >
               {tokens.map((line, i) => (
                 <div key={i} {...getLineProps({ line })}>
+                  {/* Add $ prompt for shell commands */}
+                  {isShell && i === 0 && (
+                    <span className="text-primary select-none mr-2">$</span>
+                  )}
+                  {isShell && i > 0 && tokens[i].length > 0 && tokens[i][0].content.trim() !== "" && (
+                    <span className="text-primary select-none mr-2">$</span>
+                  )}
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token })} />
                   ))}

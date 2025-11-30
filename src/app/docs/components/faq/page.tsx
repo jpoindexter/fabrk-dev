@@ -1,34 +1,92 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
-import { HelpCircle, ChevronDown, Layers, Accessibility } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
 
-export const metadata = {
-  title: "FAQ Components - Fabrk Docs",
-  description: "Frequently asked questions with accordion-style expandable answers. SEO-friendly and accessible.",
-};
+import { ComponentShowcaseTemplate } from "@/components/docs";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function FAQComponentsPage() {
+// Simplified FAQ Demo
+function FAQDemo() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const faqs = [
+    { q: "What is included in the boilerplate?", a: "Auth, payments, email, database, and 100+ UI components." },
+    { q: "Do I need to pay for updates?", a: "No, all updates are included with your one-time purchase." },
+    { q: "Can I use this for client projects?", a: "Yes, unlimited personal and client projects with a single license." },
+  ];
+
   return (
-    <FeatureGuideTemplate
-      code="[0x60]"
-      category="Components"
-      title="FAQ_Section"
-      description="Frequently asked questions component with accordion-style answers."
-      overview="3 FAQ components: complete FAQ section, base accordion component, and simple collapsible. All keyboard accessible."
-      features={[
-        { icon: HelpCircle, title: "FAQSection", description: "Complete FAQ with accordion." },
-        { icon: ChevronDown, title: "Accordion", description: "Expandable content sections." },
-        { icon: Layers, title: "Collapsible", description: "Simple collapsible content." },
-        { icon: Accessibility, title: "Accessible", description: "Keyboard navigation support." },
-      ]}
-      usage={[
-        {
-          title: "FAQ Section",
-          description: "Complete FAQ section for landing pages",
-          code: `import { FAQSection } from "@/components/landing/faq-section";
+    <section className="w-full border border-border bg-background p-6">
+      <div className="mb-6">
+        <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+          [ [0x50] KNOWLEDGE_BASE ] FAQ
+        </span>
+        <h2 className="mt-4 font-mono text-xl font-bold">FREQUENTLY_ASKED_QUESTIONS</h2>
+      </div>
+      <div className="space-y-2">
+        {faqs.map((faq, i) => (
+          <div key={i} className="border border-border bg-card">
+            <button
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-muted/50"
+            >
+              <span className="font-mono text-sm">
+                <span className="text-primary">├─</span>
+                <span className="ml-2 text-muted-foreground">[QUERY]:</span>
+                <span className="ml-2">{faq.q}</span>
+              </span>
+              <ChevronDown className={cn("h-4 w-4 transition-transform", openIndex === i && "rotate-180")} />
+            </button>
+            {openIndex === i && (
+              <div className="border-t border-border bg-muted/30 p-4">
+                <span className="font-mono text-xs text-muted-foreground">└─ [RESPONSE]: </span>
+                <span className="font-mono text-xs">{faq.a}</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// Category Tabs Demo
+function FAQCategoriesDemo() {
+  const [active, setActive] = useState("general");
+  const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
+
+  return (
+    <div className="w-full border border-border bg-background p-4">
+      <div className="mb-3 font-mono text-xs text-muted-foreground">[ CATEGORIES ]</div>
+      <div className="flex flex-wrap gap-2">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActive(cat.toLowerCase())}
+            className={cn(
+              "border px-3 py-1.5 font-mono text-xs transition-colors",
+              active === cat.toLowerCase()
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-card text-muted-foreground hover:border-primary/50"
+            )}
+          >
+            &gt; {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function FAQPage() {
+  return (
+    <ComponentShowcaseTemplate
+      code="[LC.06]"
+      title="FAQ Section"
+      description="Accordion-style FAQ with expandable answers and category filtering."
+      mainPreview={{
+        preview: <FAQDemo />,
+        code: `import { FAQSection } from "@/components/landing/faq-section";
 
 export default function LandingPage() {
   return (
@@ -41,154 +99,85 @@ export default function LandingPage() {
       <Footer />
     </main>
   );
-}
+}`,
+      }}
+      variants={[
+        {
+          title: "Category Tabs",
+          description: "Filter FAQs by category",
+          preview: <FAQCategoriesDemo />,
+          code: `const [activeCategory, setActiveCategory] = useState("general");
+const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
 
-// FAQSection includes:
-// - Section title and description
-// - Accordion with common questions
-// - Smooth expand/collapse animations
-// - Keyboard accessible`,
-          language: "tsx",
+<div className="flex gap-2">
+  {categories.map((cat) => (
+    <button
+      key={cat}
+      onClick={() => setActiveCategory(cat.toLowerCase())}
+      className={cn(
+        "px-3 py-1.5 border",
+        activeCategory === cat.toLowerCase()
+          ? "bg-primary text-primary-foreground"
+          : "bg-card"
+      )}
+    >
+      {cat}
+    </button>
+  ))}
+</div>`,
         },
         {
-          title: "Custom Accordion FAQ",
-          description: "Build your own FAQ with accordion",
-          code: `import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    question: "What is included in the boilerplate?",
-    answer: "Authentication, payments, email, database, and 100+ UI components."
-  },
-  {
-    question: "Do I need to pay for updates?",
-    answer: "No, all updates are included with your one-time purchase."
-  },
-  {
-    question: "Can I use this for client projects?",
-    answer: "Yes, unlimited personal and client projects with a single license."
-  },
-];
-
-export function CustomFAQ() {
-  return (
-    <section className="py-24">
-      <div className="container max-w-3xl">
-        <h2 className="text-2xl font-bold text-center mb-8">
-          Frequently Asked Questions
-        </h2>
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={\`item-\${index}\`}>
-              <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>{faq.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
-  );
-}`,
-          language: "tsx",
+          title: "Single FAQ Item",
+          description: "Individual expandable question",
+          preview: (
+            <div className="w-full max-w-lg border border-border bg-card">
+              <button className="flex w-full items-center justify-between p-4 text-left">
+                <span className="font-mono text-sm">
+                  <span className="text-primary">├─</span>
+                  <span className="ml-2 text-muted-foreground">[QUERY]:</span>
+                  <span className="ml-2">What payment methods do you accept?</span>
+                </span>
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            </div>
+          ),
+          code: `<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>What payment methods?</AccordionTrigger>
+    <AccordionContent>
+      We accept all major credit cards via Stripe.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`,
+        },
+      ]}
+      props={[
+        {
+          name: "faqs",
+          type: "{ question: string; answer: string; category?: string }[]",
+          description: "Array of FAQ items",
         },
         {
-          title: "Multiple Open Items",
-          description: "Allow multiple items open at once",
-          code: `import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-// Allow multiple items to be open simultaneously
-export function MultipleFAQ() {
-  return (
-    <Accordion type="multiple" className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>First Question</AccordionTrigger>
-        <AccordionContent>First answer...</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Second Question</AccordionTrigger>
-        <AccordionContent>Second answer...</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  );
-}`,
-          language: "tsx",
+          name: "showCategories",
+          type: "boolean",
+          description: "Show category filter tabs",
+          default: "true",
         },
         {
-          title: "Collapsible Component",
-          description: "Simple collapsible for custom triggers",
-          code: `import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
-
-export function CollapsibleFAQ() {
-  return (
-    <Collapsible>
-      <CollapsibleTrigger asChild>
-        <Button variant="ghost" className="w-full justify-between">
-          Show more details
-          <ChevronDown className="h-4 w-4" />
-        </Button>
-      </CollapsibleTrigger>
-      <CollapsibleContent className="pt-4">
-        <p className="text-sm text-muted-foreground">
-          Additional details that are hidden by default...
-        </p>
-      </CollapsibleContent>
-    </Collapsible>
-  );
-}`,
-          language: "tsx",
+          name: "defaultOpen",
+          type: "number",
+          description: "Index of initially open item",
+          default: "undefined",
         },
+      ]}
+      accessibility={[
+        "Accordion uses proper ARIA expanded states",
+        "Keyboard navigation with Enter/Space to toggle",
+        "Focus visible indicators on interactive elements",
+        "Screen readers announce open/closed states",
       ]}
       previous={{ title: "Testimonials", href: "/docs/components/testimonials" }}
       next={{ title: "Footer", href: "/docs/components/footer" }}
-    >
-      {/* Available Components */}
-      <DocsSection title="Available Components">
-        <DocsCard>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">FAQSection</code> - Complete FAQ section with accordion</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Accordion</code> - Base accordion component for custom FAQs</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">Collapsible</code> - Simple collapsible content</div>
-          </div>
-        </DocsCard>
-      </DocsSection>
-
-      {/* Next Steps */}
-      <DocsSection title="Next Steps">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/components/footer">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Footer</h3>
-                <p className={docsTypography.body}>Site footer components</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/overview">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>All Components</h3>
-                <p className={docsTypography.body}>Full component library</p>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
-      </DocsSection>
-    </FeatureGuideTemplate>
+    />
   );
 }

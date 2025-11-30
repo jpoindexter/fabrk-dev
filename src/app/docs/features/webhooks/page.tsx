@@ -217,7 +217,7 @@ async function queueWebhookRetry(
     >
       {/* Event Types Section */}
       <DocsSection title="Event Types">
-        <DocsCard>
+        <DocsCard title="EVENT_TYPES">
           <p className={`${docsTypography.body} mb-4`}>
             Available webhook event types organized by category:
           </p>
@@ -264,7 +264,7 @@ async function queueWebhookRetry(
 
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
-        <DocsCard>
+        <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Always verify signatures:</strong> Use HMAC-SHA256 with timing-safe comparison</li>
             <li>├─ <strong>Use HTTPS only:</strong> Never send webhooks to HTTP endpoints</li>

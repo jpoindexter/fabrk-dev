@@ -11,9 +11,9 @@ export default function InputOTPPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.11]"
       title="Input OTP"
       description="A one-time password input component with individual character slots and automatic focus management."
-      component="input-otp"
       mainPreview={{
         code: `<InputOTP maxLength={4} value={value} onChange={setValue}>
   <InputOTPGroup>
@@ -187,12 +187,12 @@ export default function InputOTPPage() {
         "Paste support - automatically distributes characters across slots",
         "Screen readers announce each character slot individually",
       ]}
-      previousComponent={{
-        name: "Input Number",
+      previous={{
+        title: "Input Number",
         href: "/docs/components/input-number",
       }}
-      nextComponent={{
-        name: "Combobox",
+      next={{
+        title: "Combobox",
         href: "/docs/components/combobox",
       }}
     />

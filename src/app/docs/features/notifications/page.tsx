@@ -250,7 +250,7 @@ export async function POST(req: Request) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Be selective:</strong> Only notify for important, actionable events</li>
             <li>├─ <strong>Clear titles:</strong> Make notifications scannable at a glance</li>

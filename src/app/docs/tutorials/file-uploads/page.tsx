@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection } from "@/components/docs";
+import { DocsSection, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Upload, Image, Shield, FileCheck } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "File Uploads - Fabrk Docs",
@@ -27,8 +25,27 @@ export default function FileUploadsTutorialPage() {
       setup={[
         {
           title: "Install Dependencies",
-          description: "Install the required packages",
-          code: `npm install react-dropzone`,
+          description: "Install the required packages for uploads and S3/R2 storage",
+          code: `npm install react-dropzone @aws-sdk/client-s3`,
+          language: "bash",
+        },
+        {
+          title: "Configure Environment Variables",
+          description: "Add cloud storage credentials to your .env.local",
+          code: `# For AWS S3
+AWS_REGION="us-east-1"
+AWS_ACCESS_KEY_ID="your-access-key"
+AWS_SECRET_ACCESS_KEY="your-secret-key"
+S3_BUCKET="your-bucket-name"
+S3_PUBLIC_URL="https://your-bucket.s3.amazonaws.com"
+
+# For Cloudflare R2 (S3-compatible)
+AWS_REGION="auto"
+S3_ENDPOINT="https://<account-id>.r2.cloudflarestorage.com"
+AWS_ACCESS_KEY_ID="your-r2-access-key"
+AWS_SECRET_ACCESS_KEY="your-r2-secret-key"
+S3_BUCKET="your-bucket-name"
+S3_PUBLIC_URL="https://pub-xxx.r2.dev"`,
           language: "bash",
         },
       ]}
@@ -99,7 +116,26 @@ export async function POST(request: NextRequest) {
     const extension = file.name.split(".").pop();
     const filename = \`\${session.user.id}-\${timestamp}.\${extension}\`;
 
-    // TODO: Upload to cloud storage (S3, Cloudflare R2, etc.)
+    // Upload to S3/R2 (using AWS SDK v3)
+    const { S3Client, PutObjectCommand } = await import("@aws-sdk/client-s3");
+
+    const s3 = new S3Client({
+      region: process.env.AWS_REGION || "auto",
+      endpoint: process.env.S3_ENDPOINT, // For R2: https://<account>.r2.cloudflarestorage.com
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
+
+    await s3.send(new PutObjectCommand({
+      Bucket: process.env.S3_BUCKET!,
+      Key: \`uploads/\${filename}\`,
+      Body: buffer,
+      ContentType: file.type,
+    }));
+
+    const fileUrl = \`\${process.env.S3_PUBLIC_URL}/uploads/\${filename}\`;
 
     return NextResponse.json({
       success: true,
@@ -108,6 +144,7 @@ export async function POST(request: NextRequest) {
         originalName: file.name,
         size: file.size,
         type: file.type,
+        url: fileUrl,
       },
     });
   } catch (error) {
@@ -263,26 +300,16 @@ export function FileUploadForm() {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/api-routes">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
-                <p className={docsTypography.body}>
-                  Learn more about building API endpoints
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/protected-pages">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Protected Pages</h3>
-                <p className={docsTypography.body}>
-                  Protect upload routes with authentication
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/api-routes"
+            title="API Routes"
+            description="Learn more about building API endpoints"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/protected-pages"
+            title="Protected Pages"
+            description="Protect upload routes with authentication"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

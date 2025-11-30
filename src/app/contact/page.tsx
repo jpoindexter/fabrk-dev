@@ -15,7 +15,7 @@ declare global {
 }
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { TerminalBackground } from "@/components/landing/terminal-background";
 import { Button } from "@/components/ui/button";
@@ -51,11 +51,20 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      // In a real implementation, this would send to an API endpoint
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
 
       // Track contact form submission in GTM
       window.dataLayer = window.dataLayer || [];
@@ -71,14 +80,15 @@ export default function ContactPage() {
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error: unknown) {
       setStatus("error");
-      setErrorMessage("Failed to send message. Please try again or email us directly.");
+      const message = error instanceof Error ? error.message : "Failed to send message";
+      setErrorMessage(`${message}. Please try again or email us directly at support@fabrk.dev`);
     }
   };
 
   return (
     <div className="min-h-screen bg-background font-mono relative">
       <TerminalBackground />
-      <Navigation />
+      <SiteNavigation />
 
       <main className="container mx-auto max-w-7xl px-6 py-16">
         {/* Page Header */}

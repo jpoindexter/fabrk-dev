@@ -56,7 +56,7 @@ export default function SidebarPage() {
       importCode={`import { Sidebar, type SidebarItem } from "@/components/ui/sidebar"`}
       mainPreview={{
         preview: (
-          <div className="h-96 flex border rounded-lg overflow-hidden">
+          <div className="h-96 flex border border-border overflow-hidden">
             <Sidebar items={basicItems} />
             <div className="flex-1 p-6 bg-muted/20">
               <p className="text-sm text-muted-foreground">Main content area</p>
@@ -76,7 +76,7 @@ export default function SidebarPage() {
           title: "With Badges",
           description: "Sidebar items with notification badges.",
           preview: (
-            <div className="h-96 flex border rounded-lg overflow-hidden">
+            <div className="h-96 flex border border-border overflow-hidden">
               <Sidebar items={itemsWithBadges} />
               <div className="flex-1 p-6 bg-muted/20">
                 <p className="text-sm text-muted-foreground">Main content area</p>
@@ -101,7 +101,7 @@ export default function SidebarPage() {
           title: "Nested Items",
           description: "Sidebar with expandable nested menu items.",
           preview: (
-            <div className="h-96 flex border rounded-lg overflow-hidden">
+            <div className="h-96 flex border border-border overflow-hidden">
               <Sidebar items={nestedItems} />
               <div className="flex-1 p-6 bg-muted/20">
                 <p className="text-sm text-muted-foreground">Main content area</p>
@@ -138,7 +138,7 @@ export default function SidebarPage() {
           title: "Collapsed by Default",
           description: "Sidebar that starts in collapsed state.",
           preview: (
-            <div className="h-96 flex border rounded-lg overflow-hidden">
+            <div className="h-96 flex border border-border overflow-hidden">
               <Sidebar items={basicItems} defaultCollapsed={true} />
               <div className="flex-1 p-6 bg-muted/20">
                 <p className="text-sm text-muted-foreground">Main content area</p>
@@ -151,7 +151,7 @@ export default function SidebarPage() {
           title: "With Click Handler",
           description: "Sidebar with custom onClick handler for items.",
           preview: (
-            <div className="h-96 flex border rounded-lg overflow-hidden">
+            <div className="h-96 flex border border-border overflow-hidden">
               <Sidebar
                 items={basicItems}
                 onItemClick={(item) => console.log("Clicked:", item.label)}

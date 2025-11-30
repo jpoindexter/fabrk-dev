@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Mail, Send, Clock, Users } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Email Templates - Fabrk Docs",
@@ -178,7 +176,7 @@ await sendOrganizationInvite("newmember@example.com", {
     >
       {/* Email Types */}
       <DocsSection title="Email Types">
-        <DocsCard>
+        <DocsCard title="EMAIL_TYPES">
           <p className={docsTypography.body}>The queue system supports these email types for categorization:</p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">WELCOME</code> - Post-purchase welcome emails</div>
@@ -192,7 +190,7 @@ await sendOrganizationInvite("newmember@example.com", {
 
       {/* Best Practices */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Use direct sending</strong> for time-sensitive emails (auth, password reset)</div>
             <div>├─ <strong>Use queuing</strong> for bulk emails, notifications, and post-purchase emails</div>
@@ -207,26 +205,16 @@ await sendOrganizationInvite("newmember@example.com", {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
-                <p className={docsTypography.body}>
-                  Set up email verification and password reset
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Payments</h3>
-                <p className={docsTypography.body}>
-                  Send purchase confirmation emails
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Authentication"
+            description="Set up email verification and password reset"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/stripe-payments"
+            title="Stripe Payments"
+            description="Send purchase confirmation emails"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

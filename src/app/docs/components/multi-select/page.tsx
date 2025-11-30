@@ -38,9 +38,9 @@ export default function MultiSelectPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.13]"
       title="Multi Select"
       description="A multi-select dropdown component that allows users to select multiple options with badge display and search functionality."
-      component="multi-select"
       mainPreview={{
         code: `const frameworks = [
   { value: "next", label: "Next.js" },
@@ -220,12 +220,12 @@ export default function MultiSelectPage() {
         "Keyboard navigation with Arrow Up/Down through options",
         "Enter key toggles selection of highlighted option",
       ]}
-      previousComponent={{
-        name: "Combobox",
+      previous={{
+        title: "Combobox",
         href: "/docs/components/combobox",
       }}
-      nextComponent={{
-        name: "Date Picker",
+      next={{
+        title: "Date Picker",
         href: "/docs/components/date-picker",
       }}
     />

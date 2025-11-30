@@ -13,3 +13,4 @@ export { DocsCallout } from "./docs-callout";
 export { DocsPreview } from "./docs-preview";
 export { DocsPropsTable } from "./docs-props-table";
 export { DocsNavFooter } from "./docs-nav-footer";
+export { DocsLinkCard } from "./docs-link-card";

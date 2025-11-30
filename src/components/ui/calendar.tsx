@@ -18,6 +18,7 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
+      data-slot="calendar"
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
@@ -55,7 +56,7 @@ function Calendar({
           "day-outside text-muted-foreground opacity-50  aria-selected:bg-primary/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
         day_disabled: "text-muted-foreground opacity-50",
         day_range_middle:
-          "aria-selected:bg-primary/10 aria-selected:text-accent-foreground",
+          "aria-selected:bg-primary/10 aria-selected:text-primary-foreground",
         day_hidden: "invisible",
         ...classNames,
       }}

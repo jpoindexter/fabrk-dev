@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { FileText, Search, Bell, Database } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Audit Logging - Fabrk Docs",
@@ -389,26 +387,16 @@ async function sendSecurityAlert(log: AuditLog) {
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/validation">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
-                <p className={docsTypography.body}>
-                  Validate all inputs with Zod
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/deployment/database">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database Setup</h3>
-                <p className={docsTypography.body}>
-                  Set up production database
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/validation"
+            title="Schema Validation"
+            description="Validate all inputs with Zod"
+          />
+          <DocsLinkCard
+            href="/docs/deployment/database"
+            title="Database Setup"
+            description="Set up production database"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

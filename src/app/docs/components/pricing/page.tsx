@@ -1,34 +1,113 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
-import { CreditCard, LayoutGrid, Table, Check } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
 
-export const metadata = {
-  title: "Pricing Tables - Fabrk Docs",
-  description: "Display pricing plans with feature lists and Stripe checkout integration. Monthly/yearly toggle included.",
-};
+import { ComponentShowcaseTemplate } from "@/components/docs";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
-export default function PricingComponentsPage() {
+// Simplified Pricing Demo
+function PricingDemo() {
+  const plans = [
+    {
+      name: "STARTER",
+      price: "$0",
+      period: "/month",
+      features: ["5 Projects", "Basic Support", "1GB Storage"],
+      cta: "GET_STARTED",
+      popular: false,
+    },
+    {
+      name: "PRO",
+      price: "$29",
+      period: "/month",
+      features: ["Unlimited Projects", "Priority Support", "100GB Storage", "API Access"],
+      cta: "UPGRADE_NOW",
+      popular: true,
+    },
+    {
+      name: "ENTERPRISE",
+      price: "Custom",
+      period: "",
+      features: ["Custom Solutions", "24/7 Support", "Unlimited Storage", "SLA"],
+      cta: "CONTACT_SALES",
+      popular: false,
+    },
+  ];
+
   return (
-    <FeatureGuideTemplate
-      code="[0x60]"
-      category="Components"
-      title="Pricing_Tables"
-      description="Pricing components for displaying plans, features, and checkout integration."
-      overview="3 pricing components: landing page pricing section, detailed pricing table, and side-by-side comparison. All include Stripe checkout integration."
-      features={[
-        { icon: CreditCard, title: "PricingSection", description: "Plan cards with CTAs." },
-        { icon: Table, title: "PricingTable", description: "Detailed feature comparison." },
-        { icon: LayoutGrid, title: "Comparison", description: "Side-by-side comparison." },
-        { icon: Check, title: "Stripe", description: "Checkout integration." },
-      ]}
-      usage={[
-        {
-          title: "Pricing Section",
-          description: "Landing page pricing with plan cards",
-          code: `import { PricingSection } from "@/components/landing/pricing-section";
+    <section className="w-full border border-border bg-background p-6">
+      <div className="mb-6 text-center">
+        <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+          [ [0x30] PRICING ] SELECT_PLAN
+        </span>
+        <h2 className="mt-4 font-mono text-xl font-bold">CHOOSE_YOUR_PLAN</h2>
+      </div>
+      <div className="grid gap-4 md:grid-cols-3">
+        {plans.map((plan) => (
+          <div
+            key={plan.name}
+            className={`border bg-card p-6 ${plan.popular ? "border-primary" : "border-border"}`}
+          >
+            {plan.popular && (
+              <span className="mb-2 inline-block font-mono text-xs text-primary">[POPULAR]</span>
+            )}
+            <div className="mb-4">
+              <span className="font-mono text-xs text-muted-foreground">{plan.name}</span>
+              <div className="mt-1 font-mono text-2xl font-bold">
+                {plan.price}<span className="text-sm text-muted-foreground">{plan.period}</span>
+              </div>
+            </div>
+            <ul className="mb-6 space-y-2">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                  <Check className="h-3 w-3 text-success" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Button
+              className="w-full rounded-none font-mono text-xs"
+              variant={plan.popular ? "default" : "outline"}
+            >
+              &gt; {plan.cta}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// Single Pricing Card
+function PricingCardDemo() {
+  return (
+    <div className="w-full max-w-sm border border-primary bg-card p-6">
+      <span className="mb-2 inline-block font-mono text-xs text-primary">[RECOMMENDED]</span>
+      <div className="mb-4">
+        <span className="font-mono text-xs text-muted-foreground">LIFETIME</span>
+        <div className="mt-1 font-mono text-3xl font-bold">
+          $299<span className="text-sm text-muted-foreground"> one-time</span>
+        </div>
+      </div>
+      <ul className="mb-6 space-y-2">
+        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Full source code</li>
+        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Lifetime updates</li>
+        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Discord community</li>
+        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Unlimited projects</li>
+      </ul>
+      <Button className="w-full rounded-none font-mono text-xs">&gt; GET_ACCESS</Button>
+    </div>
+  );
+}
+
+export default function PricingPage() {
+  return (
+    <ComponentShowcaseTemplate
+      code="[LC.04]"
+      title="Pricing Section"
+      description="Pricing tables with plan comparison, feature lists, and Stripe checkout integration."
+      mainPreview={{
+        preview: <PricingDemo />,
+        code: `import { PricingSection } from "@/components/landing/pricing-section";
 
 export default function LandingPage() {
   return (
@@ -39,144 +118,78 @@ export default function LandingPage() {
       {/* Other sections */}
     </main>
   );
-}
-
-// PricingSection includes:
-// - Multiple pricing tiers (Free, Pro, Enterprise)
-// - Monthly/Annual toggle
-// - Feature lists per tier
-// - CTA buttons with Stripe checkout integration
-// - Highlighted "popular" tier`,
-          language: "tsx",
-        },
-        {
-          title: "Pricing Table",
-          description: "Detailed feature comparison table",
-          code: `import { PricingTable } from "@/components/landing/pricing-table";
-
-export default function PricingPage() {
-  return (
-    <main>
-      <div className="container py-12">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Choose Your Plan
-        </h1>
-        <PricingTable />
-      </div>
-    </main>
-  );
-}
-
-// PricingTable shows detailed feature comparison
-// Great for dedicated pricing pages
-// Includes checkmarks/X marks for feature availability`,
-          language: "tsx",
-        },
-        {
-          title: "Stripe Checkout Integration",
-          description: "Configure price IDs for checkout",
-          code: `// Configure price IDs in src/config.js
-
-export const config = {
-  stripe: {
-    prices: {
-      starter: {
-        monthly: "price_xxx",
-        yearly: "price_xxx",
-      },
-      pro: {
-        monthly: "price_xxx",
-        yearly: "price_xxx",
-      },
-      enterprise: {
-        monthly: "price_xxx",
-        yearly: "price_xxx",
-      },
-    },
-  },
-};
-
-// The checkout API route handles session creation
-// POST /api/stripe/checkout
-// Returns checkout URL for redirect`,
-          language: "typescript",
-        },
-        {
-          title: "Custom Pricing Card",
-          description: "Build your own pricing card",
-          code: `import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-
-export function PricingCard({
-  name,
-  price,
-  features,
-  popular
-}: {
-  name: string;
-  price: string;
-  features: string[];
-  popular?: boolean;
-}) {
-  return (
-    <Card className={popular ? "border-primary" : ""}>
-      <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <div className="text-3xl font-bold">{price}</div>
-      </CardHeader>
-      <CardContent>
-        <ul className="space-y-2">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2">
-              <Check className="h-4 w-4 text-primary" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <Button className="w-full mt-6">Get Started</Button>
-      </CardContent>
-    </Card>
-  );
 }`,
-          language: "tsx",
+      }}
+      variants={[
+        {
+          title: "Single Pricing Card",
+          description: "Highlighted plan card for one-time purchase",
+          preview: <PricingCardDemo />,
+          code: `<Card className="border-primary">
+  <CardHeader>
+    <Badge>RECOMMENDED</Badge>
+    <CardTitle>LIFETIME</CardTitle>
+    <div className="text-3xl font-bold">$299</div>
+  </CardHeader>
+  <CardContent>
+    <ul className="space-y-2">
+      <li><Check /> Full source code</li>
+      <li><Check /> Lifetime updates</li>
+    </ul>
+    <Button className="w-full">Get Access</Button>
+  </CardContent>
+</Card>`,
         },
+        {
+          title: "Price Toggle",
+          description: "Monthly/yearly toggle for subscriptions",
+          preview: (
+            <div className="flex items-center justify-center gap-2 rounded-none border border-border bg-card p-2">
+              <Button variant="default" size="sm" className="rounded-none font-mono text-xs">MONTHLY</Button>
+              <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">YEARLY</Button>
+              <span className="font-mono text-xs text-success">[-20%]</span>
+            </div>
+          ),
+          code: `const [yearly, setYearly] = useState(false);
+
+<div className="flex items-center gap-2">
+  <Button
+    variant={!yearly ? "default" : "ghost"}
+    onClick={() => setYearly(false)}
+  >
+    Monthly
+  </Button>
+  <Button
+    variant={yearly ? "default" : "ghost"}
+    onClick={() => setYearly(true)}
+  >
+    Yearly
+  </Button>
+  {yearly && <Badge>Save 20%</Badge>}
+</div>`,
+        },
+      ]}
+      props={[
+        {
+          name: "plans",
+          type: "{ name: string; price: string; features: string[]; popular?: boolean }[]",
+          description: "Array of pricing plans to display",
+        },
+        {
+          name: "showToggle",
+          type: "boolean",
+          description: "Show monthly/yearly toggle",
+          default: "true",
+        },
+      ]}
+      accessibility={[
+        "Feature lists use proper list semantics",
+        "Popular plan is visually distinct with border",
+        "CTA buttons are clearly labeled",
+        "Price information is readable by screen readers",
       ]}
       previous={{ title: "Features", href: "/docs/components/features" }}
       next={{ title: "Testimonials", href: "/docs/components/testimonials" }}
-    >
-      {/* Available Components */}
-      <DocsSection title="Available Components">
-        <DocsCard>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">PricingSection</code> - Complete pricing section with plan cards</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">PricingTable</code> - Detailed pricing table with feature comparison</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">PricingComparison</code> - Side-by-side plan comparison</div>
-          </div>
-        </DocsCard>
-      </DocsSection>
-
-      {/* Next Steps */}
-      <DocsSection title="Next Steps">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Tutorial</h3>
-                <p className={docsTypography.body}>Full Stripe integration guide</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/testimonials">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Testimonials</h3>
-                <p className={docsTypography.body}>Customer testimonials</p>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
-      </DocsSection>
-    </FeatureGuideTemplate>
+    />
   );
 }

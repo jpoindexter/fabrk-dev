@@ -95,7 +95,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "flex h-10 w-full rounded-lg border border-input bg-background px-3 py-3 text-sm",
+              "flex h-10 w-full rounded-md border border-input bg-background px-3 py-3 text-sm",
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
               "file:border-0 file:bg-background/0 file:text-sm file:font-medium",
@@ -142,7 +142,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
           <div
             id="autocomplete-list"
             role="listbox"
-            className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-lg border border-border bg-popover dark:border-border dark:bg-background"
+            className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-md border border-border bg-popover dark:border-border dark:bg-background"
           >
             {filtered.length > 0 ? (
               filtered.map((option, i) => {
@@ -172,10 +172,10 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                     tabIndex={0}
                     className={cn(
                       "cursor-pointer px-3 py-3 text-sm outline-none",
-                      "hover:bg-accent hover:text-accent-foreground",
-                      "dark:text-muted-foreground dark:hover:bg-background dark:hover:text-foreground",
+                      "hover:bg-primary hover:text-primary-foreground",
+                      "dark:text-muted-foreground dark:hover:bg-primary dark:hover:text-primary-foreground",
                       i === highlightedIndex &&
-                        "bg-accent text-accent-foreground dark:bg-background dark:text-background"
+                        "bg-primary text-primary-foreground"
                     )}
                   >
                     {label}

@@ -1089,3 +1089,150 @@
   outline-offset: 2px;
   box-shadow: 0 0 0 4px oklch(var(--ring) / 0.2);
 }
+
+/* ============================================
+   TERMINAL PREVIEW OVERRIDES
+   Force terminal style (rounded-none) on all UI components
+   within docs/marketing site previews
+   ============================================ */
+
+.terminal-preview,
+.terminal-preview * {
+  border-radius: 0 !important;
+}
+
+/* Specific component overrides for terminal preview */
+.terminal-preview button,
+.terminal-preview [data-slot="button"],
+.terminal-preview input,
+.terminal-preview [data-slot="input"],
+.terminal-preview textarea,
+.terminal-preview select,
+.terminal-preview [data-slot="select-trigger"],
+.terminal-preview [data-slot="select-content"],
+.terminal-preview [data-slot="card"],
+.terminal-preview [data-slot="dialog-content"],
+.terminal-preview [data-slot="alert-dialog-content"],
+.terminal-preview [data-slot="popover-content"],
+.terminal-preview [data-slot="dropdown-menu-content"],
+.terminal-preview [data-slot="tooltip-content"],
+.terminal-preview [data-slot="sheet-content"],
+.terminal-preview [data-slot="command"],
+.terminal-preview [data-slot="tabs-list"],
+.terminal-preview [data-slot="tabs-trigger"],
+.terminal-preview [data-slot="badge"],
+.terminal-preview [data-slot="avatar"],
+.terminal-preview [data-slot="avatar-fallback"],
+.terminal-preview [data-slot="skeleton"],
+.terminal-preview [data-slot="switch"],
+.terminal-preview [data-slot="checkbox"],
+.terminal-preview [data-slot="radio"],
+.terminal-preview [data-slot="slider-thumb"],
+.terminal-preview [data-slot="progress"],
+.terminal-preview [data-slot="alert"],
+.terminal-preview [data-slot="calendar"],
+.terminal-preview [data-slot="dropzone"],
+.terminal-preview [data-slot="file-upload"],
+.terminal-preview [role="combobox"],
+.terminal-preview [role="listbox"],
+.terminal-preview [role="option"],
+.terminal-preview [role="menuitem"],
+.terminal-preview [role="dialog"],
+.terminal-preview [role="alertdialog"],
+.terminal-preview kbd {
+  border-radius: 0 !important;
+}
+
+/* Override any inline border-radius styles */
+.terminal-preview [style*="border-radius"] {
+  border-radius: 0 !important;
+}
+
+/* Ensure monospace font in terminal previews */
+.terminal-preview {
+  font-family: var(--font-mono);
+}
+
+/* Input/textarea styling for terminal previews - match contact page */
+.terminal-preview input,
+.terminal-preview textarea,
+.terminal-preview [data-slot="input"] input,
+.terminal-preview [data-slot="select-trigger"] {
+  background-color: oklch(var(--card)) !important;
+  border: 1px solid oklch(var(--border)) !important;
+}
+
+/* Ensure dropzone has proper background */
+.terminal-preview [data-slot="dropzone"] {
+  background-color: oklch(var(--card)) !important;
+}
+
+/* ============================================
+   DOCS SITE GLOBAL DIALOG OVERRIDES
+   Dialogs/sheets render in portals outside .terminal-preview
+   so we need to target them globally on docs pages
+   ============================================ */
+
+/* Target dialogs on docs pages - they render in portals */
+body:has(.terminal-preview) [data-slot="dialog-content"],
+body:has(.terminal-preview) [data-slot="alert-dialog-content"],
+body:has(.terminal-preview) [data-slot="sheet-content"],
+body:has(.terminal-preview) [data-slot="popover-content"],
+body:has(.terminal-preview) [data-slot="dropdown-menu-content"],
+body:has(.terminal-preview) [data-slot="select-content"],
+body:has(.terminal-preview) [data-slot="tooltip-content"],
+body:has(.terminal-preview) [data-slot="command"],
+body:has(.terminal-preview) [role="dialog"],
+body:has(.terminal-preview) [role="alertdialog"] {
+  border-radius: 0 !important;
+}
+
+/* Also target all children within these portaled elements */
+body:has(.terminal-preview) [data-slot="dialog-content"] *,
+body:has(.terminal-preview) [data-slot="alert-dialog-content"] *,
+body:has(.terminal-preview) [data-slot="sheet-content"] *,
+body:has(.terminal-preview) [data-slot="popover-content"] *,
+body:has(.terminal-preview) [data-slot="dropdown-menu-content"] *,
+body:has(.terminal-preview) [data-slot="select-content"] *,
+body:has(.terminal-preview) [role="dialog"] *,
+body:has(.terminal-preview) [role="alertdialog"] * {
+  border-radius: 0 !important;
+}
+
+/* Terminal font styling for dialogs on docs pages */
+body:has(.terminal-preview) [data-slot="dialog-content"],
+body:has(.terminal-preview) [data-slot="alert-dialog-content"],
+body:has(.terminal-preview) [data-slot="sheet-content"],
+body:has(.terminal-preview) [role="dialog"],
+body:has(.terminal-preview) [role="alertdialog"] {
+  font-family: var(--font-mono) !important;
+}
+
+/* Dialog title - terminal style */
+body:has(.terminal-preview) [data-slot="dialog-title"],
+body:has(.terminal-preview) [data-slot="alert-dialog-title"] {
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+}
+
+/* Dialog description - terminal style */
+body:has(.terminal-preview) [data-slot="dialog-description"],
+body:has(.terminal-preview) [data-slot="alert-dialog-description"] {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  color: oklch(var(--muted-foreground)) !important;
+}
+
+/* Dialog inputs - terminal style */
+body:has(.terminal-preview) [data-slot="dialog-content"] input,
+body:has(.terminal-preview) [data-slot="dialog-content"] textarea,
+body:has(.terminal-preview) [data-slot="alert-dialog-content"] input,
+body:has(.terminal-preview) [data-slot="alert-dialog-content"] textarea {
+  background-color: oklch(var(--card)) !important;
+  border: 1px solid oklch(var(--border)) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+}

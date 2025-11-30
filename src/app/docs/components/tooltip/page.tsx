@@ -111,7 +111,7 @@ export default function TooltipPage() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>
-                    Save <kbd className="ml-1 rounded bg-muted px-1 text-xs">⌘S</kbd>
+                    Save <kbd className="ml-1 bg-muted border border-border px-1 text-xs">⌘S</kbd>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -126,7 +126,7 @@ export default function TooltipPage() {
     </TooltipTrigger>
     <TooltipContent>
       <p>
-        Save <kbd className="ml-1 rounded bg-muted px-1">⌘S</kbd>
+        Save <kbd className="ml-1 bg-muted border border-border px-1">⌘S</kbd>
       </p>
     </TooltipContent>
   </Tooltip>

@@ -16,6 +16,7 @@ import {
 export default function PaginationPage() {
   return (
     <ComponentShowcaseTemplate
+      code="[UI.21]"
       title="Pagination"
       description="Navigation for paginated content with numbered pages and next/previous controls."
       mainPreview={{
@@ -47,7 +48,7 @@ export default function PaginationPage() {
     </PaginationItem>
   </PaginationContent>
 </Pagination>`,
-        component: (
+        preview: (
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -98,7 +99,7 @@ export default function PaginationPage() {
     </PaginationItem>
   </PaginationContent>
 </Pagination>`,
-          component: (
+          preview: (
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -156,7 +157,7 @@ export default function PaginationPage() {
     </PaginationItem>
   </PaginationContent>
 </Pagination>`,
-          component: (
+          preview: (
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -202,7 +203,7 @@ export default function PaginationPage() {
     </PaginationItem>
   </PaginationContent>
 </Pagination>`,
-          component: (
+          preview: (
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -252,7 +253,7 @@ export default function PaginationPage() {
     </PaginationItem>
   </PaginationContent>
 </Pagination>`,
-          component: (
+          preview: (
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -312,11 +313,11 @@ export default function PaginationPage() {
         "Ellipsis is hidden from screen readers with aria-hidden",
         "Keyboard navigable with Tab key",
       ]}
-      previousPage={{
+      previous={{
         title: "Breadcrumb",
         href: "/docs/components/breadcrumb",
       }}
-      nextPage={{
+      next={{
         title: "Components",
         href: "/docs/components",
       }}

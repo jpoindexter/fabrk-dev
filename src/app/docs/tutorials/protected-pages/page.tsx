@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Shield, Lock, User, Eye } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Protected Pages - Fabrk Docs",
@@ -151,7 +149,7 @@ export function NavBar() {
     >
       {/* Protected Routes */}
       <DocsSection title="Auto-Protected Routes">
-        <DocsCard>
+        <DocsCard title="PROTECTED_ROUTES">
           <p className={docsTypography.body}>
             Fabrk protects these routes via middleware. Unauthenticated users are automatically redirected to the home page:
           </p>
@@ -166,7 +164,7 @@ export function NavBar() {
 
       {/* User Roles */}
       <DocsSection title="Available Roles">
-        <DocsCard>
+        <DocsCard title="USER_ROLES">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">USER</code> - Default role for all users</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">ADMIN</code> - Administrative access</div>
@@ -178,22 +176,16 @@ export function NavBar() {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
-                <p className={docsTypography.body}>Learn the full auth system</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/api-routes">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
-                <p className={docsTypography.body}>Protect API endpoints</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Authentication"
+            description="Learn the full auth system"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/api-routes"
+            title="API Routes"
+            description="Protect API endpoints"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

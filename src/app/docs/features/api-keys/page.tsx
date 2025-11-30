@@ -320,7 +320,7 @@ export async function GET(req: Request) {
     >
       {/* Security Best Practices Section */}
       <DocsSection title="Security Best Practices">
-        <DocsCard>
+        <DocsCard title="SECURITY_BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Never log full keys:</strong> Only log the prefix for debugging</li>
             <li>├─ <strong>Show key once:</strong> Display the full key only at creation time</li>

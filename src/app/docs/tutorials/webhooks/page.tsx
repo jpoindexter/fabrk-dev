@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Webhook, Shield, RefreshCw, Bell } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Webhooks Setup - Fabrk Docs",
@@ -91,7 +89,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
       next={{ title: "API Routes", href: "/docs/tutorials/api-routes" }}
     >
       <DocsSection title="Webhook Headers">
-        <DocsCard>
+        <DocsCard title="HEADERS">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Signature</code> - HMAC-SHA256 signature</div>
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">X-Webhook-Event</code> - Event type</div>
@@ -103,7 +101,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
       </DocsSection>
 
       <DocsSection title="Retry Schedule">
-        <DocsCard>
+        <DocsCard title="RETRY_SCHEDULE">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Attempt 1:</strong> Immediate</div>
             <div>├─ <strong>Retry 1:</strong> After 1 minute</div>
@@ -117,22 +115,16 @@ curl -X POST http://localhost:3000/api/test-webhook \\
 
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/api-routes">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
-                <p className={docsTypography.body}>Build more API endpoints</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/stripe-payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Stripe Payments</h3>
-                <p className={docsTypography.body}>Trigger payment webhooks</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/api-routes"
+            title="API Routes"
+            description="Build more API endpoints"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/stripe-payments"
+            title="Stripe Payments"
+            description="Trigger payment webhooks"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

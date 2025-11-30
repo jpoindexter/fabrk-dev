@@ -33,7 +33,7 @@ export default function CropperPage() {
                 <img
                   src={croppedImage}
                   alt="Cropped result"
-                  className="max-w-xs rounded-lg border"
+                  className="max-w-xs border border-border"
                 />
               </div>
             )}

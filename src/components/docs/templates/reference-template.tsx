@@ -120,7 +120,7 @@ export function ReferenceTemplate({
       {/* Overview */}
       {overview && (
         <DocsSection title="Overview">
-          <DocsCard>
+          <DocsCard code={code} title="STATUS">
             <p className={docsTypography.body}>{overview}</p>
           </DocsCard>
         </DocsSection>
@@ -129,7 +129,7 @@ export function ReferenceTemplate({
       {/* Type Definition */}
       {typeDefinition && (
         <DocsSection title="Type Definition">
-          <DocsCard>
+          <DocsCard title="TYPE_DEF">
             <CodeBlock code={typeDefinition} language="typescript" />
           </DocsCard>
         </DocsSection>
@@ -147,7 +147,7 @@ export function ReferenceTemplate({
         <DocsSection title="Methods">
           <div className={docsSpacing.sectionItems}>
             {methods.map((method, index) => (
-              <DocsCard key={index}>
+              <DocsCard key={index} title={`METHOD_${(index + 1).toString().padStart(2, '0')}`}>
                 <h3 className={`font-mono ${docsTypography.h4}`}>{method.name}</h3>
                 <p className={docsTypography.body}>{method.description}</p>
                 <div className="mt-4">
@@ -211,8 +211,7 @@ export function ReferenceTemplate({
         <DocsSection title="Examples">
           <div className={docsSpacing.sectionItems}>
             {examples.map((example, index) => (
-              <DocsCard key={index}>
-                <h3 className={`uppercase ${docsTypography.h4}`}>{example.title}</h3>
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}
@@ -226,7 +225,7 @@ export function ReferenceTemplate({
       {/* Related Links */}
       {relatedLinks && relatedLinks.length > 0 && (
         <DocsSection title="Related">
-          <DocsCard>
+          <DocsCard title="RELATED_LINKS">
             <ul className="space-y-3">
               {relatedLinks.map((link, index) => (
                 <li key={index}>

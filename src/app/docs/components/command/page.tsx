@@ -44,7 +44,7 @@ export default function CommandPage() {
 } from "@/components/ui/command"`}
       mainPreview={{
         preview: (
-          <Command className="rounded-lg border shadow-md max-w-md">
+          <Command className="border border-border max-w-md">
             <CommandInput placeholder="Type a command or search..." />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
@@ -83,7 +83,7 @@ export default function CommandPage() {
             </CommandList>
           </Command>
         ),
-        code: `<Command className="rounded-lg border shadow-md">
+        code: `<Command className="border border-border">
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
@@ -137,7 +137,7 @@ export default function CommandPage() {
               </p>
               <button
                 onClick={() => setOpen(true)}
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                className="inline-flex items-center justify-center text-sm font-medium font-mono border border-border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
               >
                 Open Command Menu
               </button>
@@ -201,7 +201,7 @@ return (
           title: "With Multiple Groups",
           description: "Command menu with multiple organized groups.",
           preview: (
-            <Command className="rounded-lg border shadow-md max-w-md">
+            <Command className="border border-border max-w-md">
               <CommandInput placeholder="Search..." />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
@@ -241,7 +241,7 @@ return (
               </CommandList>
             </Command>
           ),
-          code: `<Command className="rounded-lg border shadow-md">
+          code: `<Command className="border border-border">
   <CommandInput placeholder="Search..." />
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
@@ -279,7 +279,7 @@ return (
           title: "Simple Search",
           description: "Minimal command menu for basic search functionality.",
           preview: (
-            <Command className="rounded-lg border shadow-md max-w-md">
+            <Command className="border border-border max-w-md">
               <CommandInput placeholder="Search files..." />
               <CommandList>
                 <CommandEmpty>No files found.</CommandEmpty>
@@ -292,7 +292,7 @@ return (
               </CommandList>
             </Command>
           ),
-          code: `<Command className="rounded-lg border shadow-md">
+          code: `<Command className="border border-border">
   <CommandInput placeholder="Search files..." />
   <CommandList>
     <CommandEmpty>No files found.</CommandEmpty>

@@ -603,7 +603,7 @@ npm run docs:api
 
 - [Component Showcase](../templates/README.md)
 - [Storybook Stories](../../src/components/ui/)
-- [Design System Guide](../DESIGN_SYSTEM.md)
+- [Design System Guide](../08-design/DESIGN_SYSTEM.md)
 - [Contributing Guide](../CONTRIBUTING.md)
 
 ## Support

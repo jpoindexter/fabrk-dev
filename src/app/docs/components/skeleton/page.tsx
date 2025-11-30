@@ -67,7 +67,7 @@ export default function SkeletonPage() {
           description: "Circular skeleton for avatar placeholders",
           preview: (
             <div className="flex items-center space-x-4">
-              <Skeleton className="h-12 w-12 rounded-full" />
+              <Skeleton className="h-12 w-12 rounded-none" />
               <div className="space-y-2">
                 <Skeleton className="h-4 w-[200px]" />
                 <Skeleton className="h-4 w-[150px]" />
@@ -75,7 +75,7 @@ export default function SkeletonPage() {
             </div>
           ),
           code: `<div className="flex items-center space-x-4">
-  <Skeleton className="h-12 w-12 rounded-full" />
+  <Skeleton className="h-12 w-12 rounded-none" />
   <div className="space-y-2">
     <Skeleton className="h-4 w-[200px]" />
     <Skeleton className="h-4 w-[150px]" />
@@ -89,7 +89,7 @@ export default function SkeletonPage() {
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center space-x-4">
-                  <Skeleton className="h-12 w-12 rounded-md" />
+                  <Skeleton className="h-12 w-12 rounded-none" />
                   <div className="space-y-2 flex-1">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-3/4" />
@@ -101,7 +101,7 @@ export default function SkeletonPage() {
           code: `<div className="space-y-4">
   {[1, 2, 3].map((i) => (
     <div key={i} className="flex items-center space-x-4">
-      <Skeleton className="h-12 w-12 rounded-md" />
+      <Skeleton className="h-12 w-12 rounded-none" />
       <div className="space-y-2 flex-1">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
@@ -115,7 +115,7 @@ export default function SkeletonPage() {
           description: "Rectangle skeleton for image placeholders",
           preview: (
             <div className="space-y-4">
-              <Skeleton className="h-[200px] w-full rounded-lg" />
+              <Skeleton className="h-[200px] w-full rounded-none" />
               <div className="space-y-2">
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-4/5" />
@@ -123,7 +123,7 @@ export default function SkeletonPage() {
             </div>
           ),
           code: `<div className="space-y-4">
-  <Skeleton className="h-[200px] w-full rounded-lg" />
+  <Skeleton className="h-[200px] w-full rounded-none" />
   <div className="space-y-2">
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-4/5" />
@@ -182,7 +182,7 @@ export default function SkeletonPage() {
         {
           name: "className",
           type: "string",
-          description: "CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*), height (h-*), and border radius (rounded-*)",
+          description: "CSS classes for sizing and styling the skeleton. Use Tailwind utilities for width (w-*) and height (h-*)",
         },
         {
           name: "...props",
@@ -196,7 +196,7 @@ export default function SkeletonPage() {
         "Consider adding aria-busy='true' or aria-label='Loading content' to parent containers when using skeletons",
         "For screen readers, ensure the actual content has proper loading states with appropriate ARIA live regions",
         "The skeleton should match the layout of the actual content to prevent layout shift",
-        "Use appropriate border radius classes (rounded-full for avatars, rounded-lg for images) to match final content",
+        "Use rounded-none for terminal-style design consistency",
       ]}
       previous={{ title: "Avatar", href: "/docs/components/avatar" }}
       next={{ title: "Form Components", href: "/docs/components" }}

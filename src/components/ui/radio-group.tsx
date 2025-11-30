@@ -11,6 +11,7 @@ const RadioGroup = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Root
+      data-slot="radio-group"
       className={cn("grid gap-2", className)}
       {...props}
       ref={ref}
@@ -26,6 +27,7 @@ const RadioGroupItem = React.forwardRef<
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
+      data-slot="radio-group-item"
       className={cn(
         "aspect-square h-5 w-5 rounded-full border text-primary ring-offset-background transition-colors",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",

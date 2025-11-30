@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { TerminalBackground } from "@/components/landing/terminal-background";
-import { TemplatesNav } from "@/components/demo/templates-nav";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import {
   templatesNavigation,
@@ -20,7 +20,7 @@ export default function TemplatesLayout({
 
   return (
     <div className="min-h-screen bg-background flex flex-col font-mono">
-      <TemplatesNav />
+      <SiteNavigation />
 
       <div className="flex flex-1">
         {/* Sidebar */}

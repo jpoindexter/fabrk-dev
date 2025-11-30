@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { CreditCard, Webhook, Gift, TestTube } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Subscription Guide - Fabrk Docs",
@@ -128,7 +126,7 @@ stripe: {
     >
       {/* Webhook Events */}
       <DocsSection title="Webhook Events">
-        <DocsCard>
+        <DocsCard title="WEBHOOK_EVENTS">
           <p className={docsTypography.body}>
             The webhook handler is at <code className="bg-muted px-1 font-mono text-xs">src/app/api/webhooks/stripe/route.ts</code>.
             Key events handled:
@@ -145,7 +143,7 @@ stripe: {
 
       {/* Test Cards */}
       <DocsSection title="Test Cards">
-        <DocsCard>
+        <DocsCard title="TEST_CARDS">
           <p className={docsTypography.body}>Use these test cards in development:</p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">4242 4242 4242 4242</code> - Successful payment</div>
@@ -158,26 +156,16 @@ stripe: {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Payments Feature Guide</h3>
-                <p className={docsTypography.body}>
-                  Advanced payment features and configuration
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/webhooks">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Webhooks Setup</h3>
-                <p className={docsTypography.body}>
-                  Handle all webhook events
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/payments"
+            title="Payments Feature Guide"
+            description="Advanced payment features and configuration"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/webhooks"
+            title="Webhooks Setup"
+            description="Handle all webhook events"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

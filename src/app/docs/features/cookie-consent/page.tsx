@@ -1,14 +1,78 @@
+"use client";
+
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Cookie, Shield, Settings, Download } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 
-export const metadata = {
-  title: "Cookie Consent (GDPR) - Fabrk Docs",
-  description: "GDPR-compliant cookie banner with Google Consent Mode v2. Let users control tracking preferences.",
-};
+// Terminal-styled cookie consent preview
+function CookieConsentDemo() {
+  const [preferences, setPreferences] = useState({
+    necessary: true,
+    preferences: false,
+    statistics: false,
+    marketing: false,
+  });
+
+  return (
+    <div className="w-full max-w-md border border-border bg-card">
+      {/* Terminal Header */}
+      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="flex gap-1.5">
+          <div className="size-2 rounded-full bg-destructive/50" />
+          <div className="size-2 rounded-full bg-warning/50" />
+          <div className="size-2 rounded-full bg-success/50" />
+        </div>
+        <span className="font-mono text-xs text-muted-foreground">cookie_consent.exe</span>
+      </div>
+
+      <div className="p-4 space-y-4">
+        <div className="flex items-center gap-2">
+          <Cookie className="h-4 w-4 text-primary" />
+          <span className="font-mono text-xs font-semibold">[COOKIE_PREFERENCES]</span>
+        </div>
+
+        <p className="font-mono text-xs text-muted-foreground">
+          &gt; We use cookies to enhance your experience. Select your preferences:
+        </p>
+
+        <div className="space-y-2">
+          {[
+            { key: "necessary", label: "NECESSARY", locked: true },
+            { key: "preferences", label: "PREFERENCES", locked: false },
+            { key: "statistics", label: "STATISTICS", locked: false },
+            { key: "marketing", label: "MARKETING", locked: false },
+          ].map((item) => (
+            <div key={item.key} className="flex items-center justify-between border border-border bg-background p-2">
+              <span className="font-mono text-xs">{item.label}</span>
+              <button
+                onClick={() => !item.locked && setPreferences(p => ({ ...p, [item.key]: !p[item.key as keyof typeof p] }))}
+                className={`font-mono text-xs px-2 py-0.5 border ${
+                  preferences[item.key as keyof typeof preferences]
+                    ? "border-success text-success"
+                    : "border-border text-muted-foreground"
+                } ${item.locked ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:border-primary"}`}
+                disabled={item.locked}
+              >
+                {preferences[item.key as keyof typeof preferences] ? "[ON]" : "[OFF]"}
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-2">
+          <button className="flex-1 border border-border bg-background px-3 py-1.5 font-mono text-xs hover:border-primary">
+            &gt; REJECT_ALL
+          </button>
+          <button className="flex-1 border border-primary bg-primary px-3 py-1.5 font-mono text-xs text-primary-foreground">
+            &gt; ACCEPT_ALL
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function CookieConsentPage() {
   return (
@@ -104,10 +168,23 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       previous={{ title: "SEO", href: "/docs/features/seo" }}
       next={{ title: "Trial", href: "/docs/features/trial" }}
     >
+      {/* Component Preview */}
+      <DocsSection title="Preview">
+        <DocsPreview
+          title="Cookie Consent"
+          description="Interactive cookie preference modal"
+          preview={<CookieConsentDemo />}
+          code={`import { CookieConsent } from "@/components/cookie-consent";
+
+// Already included in layout.tsx
+<CookieConsent />`}
+        />
+      </DocsSection>
+
       {/* How It Works Section */}
       <DocsSection title="How It Works">
         <div className="space-y-4">
-          <DocsCard>
+          <DocsCard title="STEP_01">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>First Visit</h3>
@@ -117,7 +194,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               All non-essential cookies are blocked until they make a choice.
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_02">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>User Makes Choice</h3>
@@ -127,7 +204,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               Details (see exactly which cookies), and About (their privacy rights).
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_03">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Choice Saved</h3>
@@ -137,7 +214,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               is updated automatically, enabling/disabling analytics and ads accordingly.
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_04">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Return Visits</h3>
@@ -152,7 +229,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Cookie Categories Section */}
       <DocsSection title="Cookie Categories">
-        <DocsCard>
+        <DocsCard title="COOKIE_CATEGORIES">
           <div className="space-y-4">
             <div className="flex items-start gap-3 p-3 bg-muted/50">
               <div className="h-3 w-3 rounded-full bg-green-500 mt-1"></div>
@@ -252,7 +329,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
 
       {/* Testing Section */}
       <DocsSection title="Testing">
-        <DocsCard>
+        <DocsCard title="TESTING_GUIDE">
           <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Manual Testing</h3>
           <ol className={`list-inside list-decimal ${docsTypography.body} space-y-2`}>
             <li>Open your app in a private/incognito window</li>
@@ -275,26 +352,16 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/analytics">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Analytics</h3>
-                <p className={docsTypography.body}>
-                  Set up PostHog analytics that respects consent.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/headers">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
-                <p className={docsTypography.body}>
-                  Configure CSP and other security headers.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/analytics"
+            title="Analytics"
+            description="Set up PostHog analytics that respects consent."
+          />
+          <DocsLinkCard
+            href="/docs/security/headers"
+            title="Security Headers"
+            description="Configure CSP and other security headers."
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

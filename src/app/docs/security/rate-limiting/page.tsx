@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Gauge, User, Server, Zap } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Rate Limiting - Fabrk Docs",
@@ -195,26 +193,16 @@ export async function POST(request: NextRequest) {
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/csrf">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>CSRF Protection</h3>
-                <p className={docsTypography.body}>
-                  Protect forms from cross-site request forgery
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/bot-protection">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Bot Protection</h3>
-                <p className={docsTypography.body}>
-                  Add bot detection to your endpoints
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/csrf"
+            title="CSRF Protection"
+            description="Protect forms from cross-site request forgery"
+          />
+          <DocsLinkCard
+            href="/docs/security/bot-protection"
+            title="Bot Protection"
+            description="Add bot detection to your endpoints"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

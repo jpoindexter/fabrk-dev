@@ -11,8 +11,8 @@
  * 2. Or rename this file to replace the default
  */
 
+import { SiteNavigation } from "@/components/navigation";
 import {
-  Navigation,
   HeroSection,
   ComparisonSection,
   FeaturesSection,
@@ -24,7 +24,7 @@ import {
 export default function AlternativeLandingPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <SiteNavigation />
       <HeroSection />
 
       {/* Comparison Section - Shows competitive advantages early */}

@@ -26,6 +26,7 @@ export {
   DocsPreview,
   DocsPropsTable,
   DocsNavFooter,
+  DocsLinkCard,
 } from "./blocks";
 
 // Page Templates
@@ -36,3 +37,6 @@ export {
   ReferenceTemplate,
   GettingStartedTemplate,
 } from "./templates";
+
+// Navigation
+export { DocsNav } from "./docs-nav";

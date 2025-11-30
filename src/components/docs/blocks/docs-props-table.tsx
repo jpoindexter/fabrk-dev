@@ -28,6 +28,12 @@ interface DocsPropsTableProps {
 export function DocsPropsTable({ props }: DocsPropsTableProps) {
   return (
     <div className="border border-border rounded-none overflow-hidden">
+      {/* Terminal Header */}
+      <div className="border-b border-border px-4 py-2 bg-card">
+        <span className="font-mono text-xs text-muted-foreground">
+          [ [0x00] API_REFERENCE ]
+        </span>
+      </div>
       <Table>
         <TableHeader>
           <TableRow>

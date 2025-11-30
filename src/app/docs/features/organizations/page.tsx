@@ -184,7 +184,7 @@ export async function checkPermission(
     >
       {/* Database Schema Section */}
       <DocsSection title="Database Schema">
-        <DocsCard>
+        <DocsCard title="DATABASE_SCHEMA">
           <p className={docsTypography.body}>
             Core models in <code className={docsTypography.code}>prisma/schema.prisma</code>:
           </p>
@@ -245,7 +245,7 @@ model OrganizationInvite {
 
       {/* Role Permissions Section */}
       <DocsSection title="Role Permissions">
-        <DocsCard>
+        <DocsCard title="ROLE_PERMISSIONS">
           <div className="overflow-x-auto">
             <table className="w-full font-mono text-xs">
               <thead>
@@ -315,7 +315,7 @@ model OrganizationInvite {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ Always check permissions before any organization action</li>
             <li>├─ Use database transactions for multi-step operations</li>

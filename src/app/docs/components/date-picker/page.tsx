@@ -11,9 +11,9 @@ export default function DatePickerPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.08]"
       title="Date Picker"
       description="A date picker component that combines a calendar popover with a formatted date display button."
-      component="date-picker"
       mainPreview={{
         code: `<DatePicker
   date={date}
@@ -126,12 +126,12 @@ export default function DatePickerPage() {
         "Calendar auto-focuses on open for immediate keyboard interaction",
         "Screen readers announce selected date and calendar navigation",
       ]}
-      previousComponent={{
-        name: "Multi Select",
+      previous={{
+        title: "Multi Select",
         href: "/docs/components/multi-select",
       }}
-      nextComponent={{
-        name: "Time Picker",
+      next={{
+        title: "Time Picker",
         href: "/docs/components/time-picker",
       }}
     />

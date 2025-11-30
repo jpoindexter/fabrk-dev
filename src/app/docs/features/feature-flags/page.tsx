@@ -174,7 +174,7 @@ export default async function DashboardPage() {
     <div>
       <h1>Dashboard</h1>
       {showBetaFeatures && (
-        <div className="bg-primary/10 p-4 rounded-md">
+        <div className="bg-primary/10 p-4 border border-border">
           <h2>Beta Features</h2>
           {/* Beta content */}
         </div>
@@ -251,7 +251,7 @@ export function NewFeature() {
   if (!enabled) return null;
 
   return (
-    <div className="bg-success/10 p-4 rounded-md">
+    <div className="bg-success/10 p-4 border border-border">
       <h3>New Feature Available!</h3>
       {/* Feature content */}
     </div>
@@ -335,7 +335,7 @@ export async function POST(
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Use descriptive keys:</strong> <code className={docsTypography.code}>new-checkout-flow</code> not <code className={docsTypography.code}>flag1</code></li>
             <li>├─ <strong>Start at 0%:</strong> Begin rollouts at 0% and gradually increase</li>

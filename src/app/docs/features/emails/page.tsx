@@ -167,7 +167,7 @@ await resend.batch.send(emails);`,
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ Use direct send for auth emails, queue for everything else</li>
             <li>├─ Always include unsubscribe links for marketing emails</li>

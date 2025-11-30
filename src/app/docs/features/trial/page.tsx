@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Clock, CreditCard, Bell, TrendingUp } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Free Trial System - Fabrk Docs",
@@ -145,7 +143,7 @@ const subscription = await stripe.subscriptions.create({
       {/* How Trials Work Section */}
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">
-          <DocsCard>
+          <DocsCard title="STEP_01">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>User Starts Trial</h3>
@@ -155,7 +153,7 @@ const subscription = await stripe.subscriptions.create({
               (no credit card required by default) and immediately get access to premium features.
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_02">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Trial Banner Shows</h3>
@@ -165,7 +163,7 @@ const subscription = await stripe.subscriptions.create({
               gentle urgency without being annoying.
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_03">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Urgency Near End</h3>
@@ -175,7 +173,7 @@ const subscription = await stripe.subscriptions.create({
               Users are prompted to subscribe before losing access.
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="STEP_04">
             <div className="flex items-center gap-3 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Trial Expires</h3>
@@ -191,7 +189,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Banner States Section */}
       <DocsSection title="Trial Banner States">
-        <DocsCard>
+        <DocsCard title="BANNER_STATES">
           <div className="space-y-4">
             <div className="flex items-center gap-3 p-3 border border-border bg-card">
               <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -227,7 +225,7 @@ const subscription = await stripe.subscriptions.create({
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className={`${docsTypography.body} space-y-4`}>
             <li className="flex items-start gap-2">
               <span className="text-primary font-bold">1.</span>
@@ -311,26 +309,16 @@ const subscription = await stripe.subscriptions.create({
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Payments</h3>
-                <p className={docsTypography.body}>
-                  Set up Stripe to handle trial-to-paid conversion.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/emails">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Email Reminders</h3>
-                <p className={docsTypography.body}>
-                  Send trial reminder emails to increase conversion.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/payments"
+            title="Payments"
+            description="Set up Stripe to handle trial-to-paid conversion."
+          />
+          <DocsLinkCard
+            href="/docs/features/emails"
+            title="Email Reminders"
+            description="Send trial reminder emails to increase conversion."
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

@@ -11,9 +11,9 @@ export default function InputNumberPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.10]"
       title="Input Number"
       description="A number input component with optional stepper controls, min/max validation, and precision support."
-      component="input-number"
       mainPreview={{
         code: `<InputNumber
   value={value}
@@ -174,12 +174,12 @@ export default function InputNumberPage() {
         "Arrow Up/Down keys increment/decrement the value",
         "Stepper buttons are disabled when min/max limits are reached",
       ]}
-      previousComponent={{
-        name: "Input Search",
+      previous={{
+        title: "Input Search",
         href: "/docs/components/input-search",
       }}
-      nextComponent={{
-        name: "Input OTP",
+      next={{
+        title: "Input OTP",
         href: "/docs/components/input-otp",
       }}
     />

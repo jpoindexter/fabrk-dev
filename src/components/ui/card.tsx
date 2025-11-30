@@ -38,7 +38,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Vercel minimal styles - Border only, no shadow
-        "rounded-lg border bg-card text-card-foreground",
+        "rounded-md border bg-card text-card-foreground",
 
         // Subtle transition
         "transition-colors",

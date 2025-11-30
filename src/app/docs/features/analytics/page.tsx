@@ -241,7 +241,7 @@ export async function POST(req: Request) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Use consistent naming:</strong> Follow a convention like <code className={docsTypography.code}>object_action</code></li>
             <li>├─ <strong>Don&apos;t over-track:</strong> Focus on meaningful events that inform decisions</li>

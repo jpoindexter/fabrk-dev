@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Shield, FileCheck, Code, Settings } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Schema Validation - Fabrk Docs",
@@ -331,26 +329,16 @@ const userInputSchema = z.object({
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/audit-logging">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Audit Logging</h3>
-                <p className={docsTypography.body}>
-                  Track all security-relevant events
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/api-routes">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>API Routes</h3>
-                <p className={docsTypography.body}>
-                  Build secure API endpoints
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/audit-logging"
+            title="Audit Logging"
+            description="Track all security-relevant events"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/api-routes"
+            title="API Routes"
+            description="Build secure API endpoints"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

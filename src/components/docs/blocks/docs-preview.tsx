@@ -23,6 +23,8 @@ interface DocsPreviewProps {
   code: string;
   /** Code language */
   language?: string;
+  /** Hex code like "01", "0A" - defaults to "00" */
+  hexCode?: string;
   /** Optional className */
   className?: string;
 }
@@ -33,9 +35,11 @@ export function DocsPreview({
   preview,
   code,
   language = "tsx",
+  hexCode = "00",
   className,
 }: DocsPreviewProps) {
   const [copied, setCopied] = useState(false);
+  const headerTitle = title.toUpperCase().replace(/\s+/g, '_');
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(code);
@@ -46,24 +50,28 @@ export function DocsPreview({
   return (
     <div className={cn("border border-border rounded-none", className)}>
       {/* Header */}
-      <div className="border-b border-border px-4 py-3">
-        <h3 className={`uppercase ${docsTypography.h4}`}>{title}</h3>
+      <div className="border-b border-border px-4 py-2">
+        <span className="font-mono text-xs text-muted-foreground">
+          [ [0x{hexCode}] {headerTitle} ]
+        </span>
         {description && (
           <p className={`mt-1 ${docsTypography.caption}`}>{description}</p>
         )}
       </div>
 
       {/* Live Preview */}
-      <div className="bg-background p-6 flex items-center justify-center min-h-[120px]">
-        {preview}
+      <div className="terminal-preview bg-background p-6 flex items-center justify-center min-h-[120px]">
+        <div className="w-full flex items-center justify-center">
+          {preview}
+        </div>
       </div>
 
       {/* Code Block */}
-      <div className="border-t border-border relative">
+      <div className="border-t border-border relative p-4">
         <Button
           variant="ghost"
           size="sm"
-          className="absolute right-2 top-2 h-8 px-2"
+          className="absolute right-6 top-6 h-8 px-2 z-10"
           onClick={copyToClipboard}
           aria-label={copied ? "Copied" : "Copy code"}
         >

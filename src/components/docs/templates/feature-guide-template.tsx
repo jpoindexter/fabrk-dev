@@ -19,6 +19,10 @@ interface Feature {
   icon: LucideIcon;
   title: string;
   description: string;
+  /** Optional module code like "AUTH", "BILLING" */
+  module?: string;
+  /** Optional status like "SECURE", "ACTIVE" */
+  status?: string;
 }
 
 interface Step {
@@ -119,8 +123,8 @@ export function FeatureGuideTemplate({
 
       {/* Overview */}
       <DocsSection title="Overview">
-        <DocsCard>
-          <p className={docsTypography.body}>{overview}</p>
+        <DocsCard code={code} title="STATUS">
+          <p>{overview}</p>
         </DocsCard>
       </DocsSection>
 
@@ -143,10 +147,9 @@ export function FeatureGuideTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usage.map((example, index) => (
-              <DocsCard key={index}>
-                <h3 className={`uppercase ${docsTypography.h3}`}>{example.title}</h3>
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
-                  <p className={docsTypography.body}>{example.description}</p>
+                  <p className="mb-3">{example.description}</p>
                 )}
                 <CodeBlock code={example.code} language={example.language || "typescript"} />
               </DocsCard>
@@ -158,7 +161,7 @@ export function FeatureGuideTemplate({
       {/* Configuration */}
       {configuration && configuration.length > 0 && (
         <DocsSection title="Configuration">
-          <DocsCard>
+          <DocsCard title="CONFIG_OPTIONS">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -198,9 +201,9 @@ export function FeatureGuideTemplate({
         <DocsSection title="Troubleshooting">
           <div className={docsSpacing.sectionItems}>
             {troubleshooting.map((item, index) => (
-              <DocsCard key={index}>
-                <h3 className={`uppercase ${docsTypography.h4}`}>{item.problem}</h3>
-                <p className={docsTypography.body}>{item.solution}</p>
+              <DocsCard key={index} title={`ERROR_${(index + 1).toString().padStart(2, '0')}`}>
+                <p className="text-foreground font-semibold mb-2">{item.problem}</p>
+                <p>{item.solution}</p>
               </DocsCard>
             ))}
           </div>

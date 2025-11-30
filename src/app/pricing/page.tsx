@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 import { Metadata } from "next";
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { FAQSection } from "@/components/landing/faq-section";
@@ -20,7 +20,7 @@ export default function PricingPage() {
   return (
     <div className="relative min-h-screen bg-background font-mono">
       <TerminalBackground />
-      <Navigation />
+      <SiteNavigation />
 
       <main>
         {/* Page Header */}

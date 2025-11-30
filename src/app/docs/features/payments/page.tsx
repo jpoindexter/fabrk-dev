@@ -144,7 +144,7 @@ export function ManageBillingButton() {
     >
       {/* Why Stripe Section */}
       <DocsSection title="Why Stripe">
-        <DocsCard>
+        <DocsCard title="WHY_STRIPE">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className={`uppercase ${docsTypography.h4}`}>For You</h3>
@@ -173,7 +173,7 @@ export function ManageBillingButton() {
         <DocsCallout variant="info" title="Think of webhooks like a doorbell">
           When Stripe processes a payment, it &quot;rings your doorbell&quot; (sends a webhook) to let you know something happened. Your app answers the door and takes appropriate action. Without webhooks, you&apos;d have to constantly ask Stripe &quot;did anyone pay yet?&quot; - which is inefficient and slow. With webhooks, Stripe tells you instantly.
         </DocsCallout>
-        <DocsCard>
+        <DocsCard title="WEBHOOK_EVENTS">
           <p className={docsTypography.body}>
             Common webhook events: <code className={docsTypography.code}>checkout.session.completed</code> (someone paid),
             <code className={`${docsTypography.code} ml-1`}>customer.subscription.deleted</code> (someone cancelled),
@@ -184,7 +184,7 @@ export function ManageBillingButton() {
 
       {/* Testing Payments */}
       <DocsSection title="Testing Payments">
-        <DocsCard>
+        <DocsCard title="TEST_CARDS">
           <p className={docsTypography.body}>
             Always test payments before going live. Stripe provides test card numbers that simulate different scenarios without charging real money.
           </p>
@@ -265,7 +265,7 @@ export function ManageBillingButton() {
 
       {/* Going Live Checklist */}
       <DocsSection title="Going Live Checklist">
-        <DocsCard>
+        <DocsCard title="GOING_LIVE">
           <p className={`${docsTypography.body} mb-4`}>Before accepting real payments:</p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
@@ -300,7 +300,7 @@ export function ManageBillingButton() {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard className="h-full transition-all hover:border-primary/50">
+            <DocsCard title="FREE_TRIALS" className="h-full transition-all hover:border-primary/50">
               <h3 className={`uppercase ${docsTypography.h4}`}>Free Trials</h3>
               <p className={docsTypography.body}>
                 Let users try your product before paying with trial periods.

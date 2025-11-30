@@ -1,38 +1,74 @@
 /**
- * DocsFeatureList - Grid of features with icons
- * For displaying feature highlights in documentation
+ * DocsFeatureList - Terminal-style feature cards
+ * Matches the home page FeaturesShowcase design
  */
 
 import { LucideIcon } from "lucide-react";
-import { DocsCard } from "./docs-card";
-import { docsTypography } from "../typography";
-import { docsSpacing } from "../spacing";
 
 interface Feature {
   icon: LucideIcon;
   title: string;
   description: string;
+  /** Optional module code like "AUTH", "BILLING" */
+  module?: string;
+  /** Optional status like "SECURE", "ACTIVE" */
+  status?: string;
 }
 
 interface DocsFeatureListProps {
   /** Array of features to display */
   features: Feature[];
-  /** Number of columns (2 or 3) */
-  columns?: 2 | 3;
+  /** Number of columns (2, 3, or 4) */
+  columns?: 2 | 3 | 4;
+  /** Starting hex index for module codes */
+  startIndex?: number;
 }
 
-export function DocsFeatureList({ features, columns = 3 }: DocsFeatureListProps) {
-  const gridCols = columns === 2 ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3";
+export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsFeatureListProps) {
+  const gridCols = columns === 2
+    ? "md:grid-cols-2"
+    : columns === 4
+      ? "sm:grid-cols-2 lg:grid-cols-4"
+      : "md:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <div className={`grid ${docsSpacing.featureGrid} ${gridCols}`}>
-      {features.map((feature, index) => (
-        <DocsCard key={index}>
-          <feature.icon className="h-5 w-5 text-primary" aria-hidden="true" />
-          <h3 className={`mt-2 uppercase ${docsTypography.h4}`}>{feature.title}</h3>
-          <p className={`mt-1 ${docsTypography.caption}`}>{feature.description}</p>
-        </DocsCard>
-      ))}
+    <div className={`grid gap-4 ${gridCols}`}>
+      {features.map((feature, index) => {
+        const Icon = feature.icon;
+        const hexCode = (startIndex + index).toString(16).toUpperCase().padStart(2, '0');
+        const module = feature.module || feature.title.toUpperCase().replace(/[\s-]+/g, '_').slice(0, 12);
+        const status = feature.status || "READY";
+
+        return (
+          <div
+            key={index}
+            className="group border border-border bg-card transition-colors hover:border-primary/50"
+          >
+            {/* Module Header */}
+            <div className="flex items-center justify-between border-b border-border px-4 py-2">
+              <span className="font-mono text-xs text-muted-foreground">
+                [ [0x{hexCode}] {module} ]
+              </span>
+              <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+            </div>
+
+            {/* Content */}
+            <div className="p-4">
+              {/* Status */}
+              <div className="mb-3 font-mono text-xs">
+                <span className="text-muted-foreground">STATUS: </span>
+                <span className="text-success">{status}</span>
+              </div>
+
+              {/* Description */}
+              <div className="font-mono text-xs">
+                <span className="text-muted-foreground">DESC: </span>
+                <span className="text-foreground">{feature.description}</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

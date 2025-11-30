@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Cloud, HardDrive, Shield, Zap } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Cloud Storage - Fabrk Docs",
@@ -211,7 +209,7 @@ export function FileUploader() {
     >
       {/* Provider Priority Section */}
       <DocsSection title="Provider Priority">
-        <DocsCard>
+        <DocsCard title="PROVIDER_PRIORITY">
           <p className={`${docsTypography.body} mb-4`}>
             Fabrk automatically detects which storage provider you have configured and uses it.
             This means you can start with local storage during development and switch to cloud
@@ -246,7 +244,7 @@ export function FileUploader() {
       {/* Provider Comparison Section */}
       <DocsSection title="Choosing a Provider">
         <div className="grid gap-4 sm:grid-cols-3">
-          <DocsCard>
+          <DocsCard title="CLOUDFLARE_R2">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Cloudflare R2</h3>
             <p className={`${docsTypography.body} mb-2`}>Recommended</p>
             <ul className={`${docsTypography.body} space-y-1`}>
@@ -256,7 +254,7 @@ export function FileUploader() {
               <li>• Generous free tier</li>
             </ul>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="AWS_S3">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>AWS S3</h3>
             <p className={`${docsTypography.body} mb-2`}>Industry Standard</p>
             <ul className={`${docsTypography.body} space-y-1`}>
@@ -266,7 +264,7 @@ export function FileUploader() {
               <li>• Egress fees apply</li>
             </ul>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="LOCAL_STORAGE">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Local Storage</h3>
             <p className={`${docsTypography.body} mb-2`}>Development Only</p>
             <ul className={`${docsTypography.body} space-y-1`}>
@@ -281,7 +279,7 @@ export function FileUploader() {
 
       {/* Security Considerations Section */}
       <DocsSection title="Security Considerations">
-        <DocsCard className="bg-muted/50">
+        <DocsCard title="SECURITY" className="bg-muted/50">
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-2">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
@@ -370,26 +368,16 @@ export function FileUploader() {
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
-                <p className={docsTypography.body}>
-                  Secure file uploads with user authentication.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/organizations">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Organizations</h3>
-                <p className={docsTypography.body}>
-                  Organize files by team with multi-tenancy.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Authentication"
+            description="Secure file uploads with user authentication."
+          />
+          <DocsLinkCard
+            href="/docs/features/organizations"
+            title="Organizations"
+            description="Organize files by team with multi-tenancy."
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

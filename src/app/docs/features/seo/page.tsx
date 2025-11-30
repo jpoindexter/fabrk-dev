@@ -173,28 +173,28 @@ export default async function sitemap() {
       {/* Common Use Cases Section */}
       <DocsSection title="Common Use Cases">
         <div className="grid gap-4">
-          <DocsCard>
+          <DocsCard title="LANDING_PAGE_SEO">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Landing Page SEO</h3>
             <p className={docsTypography.body}>
               Configure meta tags for your homepage with compelling title and description that matches your value proposition. Include OpenGraph image (1200x630px recommended).
             </p>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="BLOG_POST_SEO">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Blog Post Optimization</h3>
             <p className={docsTypography.body}>
               Use dynamic metadata generation to automatically pull title, description, and featured image from your CMS or database for each blog post.
             </p>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="PRODUCT_PAGES">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Product Pages</h3>
             <p className={docsTypography.body}>
               Add Product schema structured data for e-commerce features, including price, availability, and reviews for rich snippets in search results.
             </p>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="LOCALIZED_CONTENT">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Localized Content</h3>
             <p className={docsTypography.body}>
               Use hreflang tags and locale-specific metadata for international SEO. Fabrk's i18n system automatically handles alternate language links.
@@ -205,7 +205,7 @@ export default async function sitemap() {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="SEO_BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ Keep titles under 60 characters for full display in search results</li>
             <li>├─ Write descriptions between 120-160 characters</li>

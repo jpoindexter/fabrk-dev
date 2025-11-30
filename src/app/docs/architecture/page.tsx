@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Layers, Shield, Database, Workflow } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { Mermaid } from "@/components/ui/mermaid";
 
 export const metadata = {
@@ -53,7 +51,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
     >
       {/* Architecture Diagram */}
       <DocsSection title="High-Level Overview">
-        <DocsCard>
+        <DocsCard title="SYSTEM_DIAGRAM">
           <Mermaid chart={`graph TD
     subgraph Client
         Browser[Browser / Mobile]
@@ -92,7 +90,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Core Components */}
       <DocsSection title="Core Components">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard>
+          <DocsCard title="AUTH_SECURITY">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication & Security</h4>
             <p className={`${docsTypography.body} mb-3`}>
               Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
@@ -105,7 +103,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
             </div>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="DATABASE_LAYER">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Database Layer</h4>
             <p className={`${docsTypography.body} mb-3`}>
               Prisma ORM provides a type-safe interface to PostgreSQL.
@@ -122,7 +120,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
       {/* Data Flow */}
       <DocsSection title="Data Flow & Patterns">
-        <DocsCard>
+        <DocsCard title="DATA_FLOW">
           <p className={`${docsTypography.body} mb-3`}>
             We strictly follow unidirectional data flow. Server Actions are used for mutations,
             while React Server Components (RSC) handle data fetching.
@@ -138,7 +136,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
       {/* Scalability */}
       <DocsSection title="Scalability Considerations">
-        <DocsCard>
+        <DocsCard title="SCALABILITY">
           <p className={`${docsTypography.body} mb-3`}>
             Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
           </p>
@@ -153,22 +151,16 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/database">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database</h3>
-                <p className={docsTypography.body}>Prisma ORM and PostgreSQL setup</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication</h3>
-                <p className={docsTypography.body}>NextAuth.js v5 configuration</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/database"
+            title="Database"
+            description="Prisma ORM and PostgreSQL setup"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Authentication"
+            description="NextAuth.js v5 configuration"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

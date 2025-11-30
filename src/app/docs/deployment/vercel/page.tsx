@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Rocket, Globe, Lock, Layers } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Deploy to Vercel - Fabrk Docs",
@@ -176,7 +174,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
     >
       {/* What You Get */}
       <DocsSection title="What You Get">
-        <DocsCard>
+        <DocsCard title="FEATURES">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Automatic HTTPS with custom domains</div>
             <div>├─ Global CDN for static assets</div>
@@ -190,7 +188,7 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
 
       {/* Troubleshooting */}
       <DocsSection title="Troubleshooting">
-        <DocsCard>
+        <DocsCard title="TROUBLESHOOTING">
           <div className="space-y-4">
             <div>
               <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Build Fails with Prisma Error</h4>
@@ -211,22 +209,16 @@ STRIPE_WEBHOOK_SECRET="whsec_test_..."`,
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/deployment/environment">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Environment Variables</h3>
-                <p className={docsTypography.body}>Complete environment setup guide</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/deployment/database">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database Setup</h3>
-                <p className={docsTypography.body}>Set up production PostgreSQL</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/deployment/environment"
+            title="Environment Variables"
+            description="Complete environment setup guide"
+          />
+          <DocsLinkCard
+            href="/docs/deployment/database"
+            title="Database Setup"
+            description="Set up production PostgreSQL"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

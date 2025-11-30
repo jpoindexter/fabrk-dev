@@ -11,9 +11,9 @@ export default function TimePickerPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.09]"
       title="Time Picker"
       description="A time picker component with hour and minute controls, supporting both 12-hour and 24-hour formats."
-      component="time-picker"
       mainPreview={{
         code: `<TimePicker
   time={time}
@@ -153,12 +153,12 @@ export default function TimePickerPage() {
         "Labels clearly identify hours, minutes, and period controls",
         "Keyboard accessible - Tab through controls, Enter to apply",
       ]}
-      previousComponent={{
-        name: "Date Picker",
+      previous={{
+        title: "Date Picker",
         href: "/docs/components/date-picker",
       }}
-      nextComponent={{
-        name: "Select",
+      next={{
+        title: "Select",
         href: "/docs/components/select",
       }}
     />

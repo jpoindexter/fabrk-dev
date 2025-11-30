@@ -1,34 +1,73 @@
-import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
-import { Menu, ChevronRight, PanelLeft, MoreVertical } from "lucide-react";
+"use client";
+
+import { ComponentShowcaseTemplate } from "@/components/docs";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
-export const metadata = {
-  title: "Navigation Components - Fabrk Docs",
-  description: "Build site navigation with header, mobile menu, and breadcrumb components. Responsive and accessible.",
-};
-
-export default function NavigationComponentsPage() {
+// Simplified Navigation Demo for docs
+function NavigationDemo() {
   return (
-    <FeatureGuideTemplate
-      code="[0x60]"
-      category="Components"
-      title="Navigation_Components"
-      description="Navigation components for building headers, menus, and site navigation."
-      overview="5 navigation components including responsive header navigation, breadcrumbs, collapsible sidebar, menubar, and dropdown menus."
-      features={[
-        { icon: Menu, title: "Navigation", description: "Responsive header with mobile menu." },
-        { icon: ChevronRight, title: "Breadcrumb", description: "Page hierarchy navigation." },
-        { icon: PanelLeft, title: "Sidebar", description: "Collapsible side navigation." },
-        { icon: MoreVertical, title: "Dropdown", description: "Dropdown action menus." },
-      ]}
-      usage={[
-        {
-          title: "Landing Navigation",
-          description: "Pre-built responsive navigation for landing pages",
-          code: `import { Navigation } from "@/components/landing/navigation";
+    <nav className="w-full border border-border bg-background">
+      <div className="flex h-14 items-center px-4">
+        {/* Logo */}
+        <Link href="#" className="flex items-center gap-1.5 font-mono">
+          <span className="text-xs text-primary">&gt;</span>
+          <span className="text-sm font-bold">FABRK</span>
+          <span className="text-xs text-muted-foreground">_CONSOLE</span>
+        </Link>
+
+        <div className="flex-1" />
+
+        {/* Desktop Nav */}
+        <div className="hidden items-center gap-4 md:flex">
+          <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
+          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">FEATURES</Link>
+          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">PRICING</Link>
+          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">DOCS</Link>
+          <div className="h-4 w-px bg-border" />
+          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+            &gt; VIEW_DEMO
+          </Button>
+          <Button size="sm" className="rounded-none font-mono text-xs">
+            &gt; GET_STARTED
+          </Button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="flex md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-none">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="rounded-none w-[280px]">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <div className="flex flex-col gap-4 pt-8">
+                <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
+                <Link href="#" className="font-mono text-sm">&gt; FEATURES</Link>
+                <Link href="#" className="font-mono text-sm">&gt; PRICING</Link>
+                <Link href="#" className="font-mono text-sm">&gt; DOCS</Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default function NavigationPage() {
+  return (
+    <ComponentShowcaseTemplate
+      code="[LC.01]"
+      title="Navigation"
+      description="Responsive navigation component with terminal-style branding, desktop links, and mobile sheet menu."
+      mainPreview={{
+        preview: <NavigationDemo />,
+        code: `import { Navigation } from "@/components/landing/navigation";
 
 export default function LandingPage() {
   return (
@@ -38,112 +77,58 @@ export default function LandingPage() {
     </div>
   );
 }`,
-          language: "tsx",
-        },
+      }}
+      variants={[
         {
-          title: "Breadcrumb",
-          description: "Show page hierarchy navigation",
-          code: `import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-
-export function PageBreadcrumb() {
-  return (
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>Navigation</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-  );
-}`,
-          language: "tsx",
-        },
-        {
-          title: "Dropdown Menu",
-          description: "Action menu triggered by button",
-          code: `import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-
-export function UserMenu() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">My Account</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}`,
-          language: "tsx",
+          title: "Mobile Menu Open",
+          description: "Sheet-based mobile navigation",
+          preview: (
+            <div className="w-full border border-border bg-card p-4">
+              <div className="mb-3 font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</div>
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
+                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; FEATURES</Link>
+                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; PRICING</Link>
+                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; DOCS</Link>
+                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; FAQ</Link>
+                <div className="border-t border-border pt-4">
+                  <Button className="w-full rounded-none font-mono text-xs">&gt; GET_STARTED</Button>
+                </div>
+              </div>
+            </div>
+          ),
+          code: `<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="ghost" size="icon">
+      <Menu className="h-5 w-5" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent side="right">
+    <nav className="flex flex-col gap-4">
+      <Link href="#features">FEATURES</Link>
+      <Link href="#pricing">PRICING</Link>
+      <Link href="/docs">DOCS</Link>
+    </nav>
+  </SheetContent>
+</Sheet>`,
         },
       ]}
-      previous={{ title: "Uploads", href: "/docs/components/uploads" }}
+      props={[
+        {
+          name: "navLinks",
+          type: "{ label: string; href: string }[]",
+          description: "Array of navigation links to display",
+          default: "Built-in links",
+        },
+      ]}
+      accessibility={[
+        "Mobile menu button has aria-label for screen readers",
+        "Sheet has proper focus management when opened",
+        "All links are keyboard accessible",
+        "Skip to content link available for keyboard users",
+      ]}
+      previous={{ title: "Overview", href: "/docs/components/overview" }}
       next={{ title: "Hero", href: "/docs/components/hero" }}
-    >
-      {/* Available Components */}
-      <DocsSection title="Available Components">
-        <DocsCard>
-          <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Navigation</code> - Main site navigation with responsive mobile menu</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Breadcrumb</code> - Breadcrumb navigation for page hierarchy</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Sidebar</code> - Collapsible sidebar navigation</div>
-            <div>├─ <code className="bg-muted px-1 font-mono text-xs">Menubar</code> - Horizontal menu bar with dropdowns</div>
-            <div>└─ <code className="bg-muted px-1 font-mono text-xs">DropdownMenu</code> - Dropdown menu for actions</div>
-          </div>
-        </DocsCard>
-      </DocsSection>
-
-      {/* Next Steps */}
-      <DocsSection title="Next Steps">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/components/hero">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Hero</h3>
-                <p className={docsTypography.body}>Landing page hero sections</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/footer">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Footer</h3>
-                <p className={docsTypography.body}>Site footer components</p>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
-      </DocsSection>
-    </FeatureGuideTemplate>
+    />
   );
 }

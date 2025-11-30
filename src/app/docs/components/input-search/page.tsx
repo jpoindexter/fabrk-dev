@@ -17,9 +17,9 @@ export default function InputSearchPage() {
 
   return (
     <ComponentShowcaseTemplate
+      code="[UI.15]"
       title="Input Search"
       description="A search input component with built-in search icon, optional clear button, and loading state support."
-      component="input-search"
       mainPreview={{
         code: `<InputSearch
   value={searchValue}
@@ -147,12 +147,12 @@ export default function InputSearchPage() {
         "Supports all standard input keyboard interactions",
         "Loading state is visually indicated with spinner animation",
       ]}
-      previousComponent={{
-        name: "Input",
+      previous={{
+        title: "Input",
         href: "/docs/components/input",
       }}
-      nextComponent={{
-        name: "Input Number",
+      next={{
+        title: "Input Number",
         href: "/docs/components/input-number",
       }}
     />

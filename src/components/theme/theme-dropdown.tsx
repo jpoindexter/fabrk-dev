@@ -101,7 +101,7 @@ export function ThemeDropdown() {
                     <DropdownMenuItem
                         key={theme.id}
                         onClick={() => handleChange(theme.id)}
-                        className={cn("font-semibold", currentTheme === theme.id && "bg-accent")}
+                        className={cn("font-semibold", currentTheme === theme.id && "bg-primary text-primary-foreground")}
                     >
                         <div
                             className="mr-2 h-4 w-4 rounded-full border"

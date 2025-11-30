@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Shield, Lock, Globe, FileCode } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Security Headers - Fabrk Docs",
@@ -284,26 +282,16 @@ curl -I https://yoursite.com
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/validation">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
-                <p className={docsTypography.body}>
-                  Validate all inputs with Zod schemas
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
-                <p className={docsTypography.body}>
-                  Deploy with production security settings
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/validation"
+            title="Schema Validation"
+            description="Validate all inputs with Zod schemas"
+          />
+          <DocsLinkCard
+            href="/docs/deployment/vercel"
+            title="Deploy to Vercel"
+            description="Deploy with production security settings"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

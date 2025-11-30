@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 export default function TabsPage() {
   return (
     <ComponentShowcaseTemplate
+      code="[UI.17]"
       title="Tabs"
       description="A set of layered sections of content—known as tab panels—that are displayed one at a time."
       mainPreview={{
@@ -29,7 +30,7 @@ export default function TabsPage() {
     Change your password here.
   </TabsContent>
 </Tabs>`,
-        component: (
+        preview: (
           <Tabs defaultValue="account" className="w-[400px]">
             <TabsList>
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -94,7 +95,7 @@ export default function TabsPage() {
     </Card>
   </TabsContent>
 </Tabs>`,
-          component: (
+          preview: (
             <Tabs defaultValue="overview" className="w-full">
               <TabsList>
                 <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -162,7 +163,7 @@ export default function TabsPage() {
     Another enabled tab.
   </TabsContent>
 </Tabs>`,
-          component: (
+          preview: (
             <Tabs defaultValue="enabled" className="w-[400px]">
               <TabsList>
                 <TabsTrigger value="enabled">Enabled</TabsTrigger>
@@ -194,7 +195,7 @@ export default function TabsPage() {
   <TabsContent value="tab2">Content for tab 2</TabsContent>
   <TabsContent value="tab3">Content for tab 3</TabsContent>
 </Tabs>`,
-          component: (
+          preview: (
             <Tabs defaultValue="tab1" className="w-full">
               <TabsList className="w-full">
                 <TabsTrigger value="tab1" className="flex-1">Tab 1</TabsTrigger>
@@ -234,7 +235,7 @@ export default function TabsPage() {
     </TabsContent>
   </div>
 </Tabs>`,
-          component: (
+          preview: (
             <Tabs defaultValue="tab1" orientation="vertical" className="flex gap-4">
               <TabsList className="flex-col h-auto">
                 <TabsTrigger value="tab1" className="w-full justify-start">
@@ -297,11 +298,11 @@ export default function TabsPage() {
         "Automatically manages aria-selected and aria-controls attributes",
         "TabsContent is hidden with display: none when inactive, properly removing from tab order",
       ]}
-      previousPage={{
+      previous={{
         title: "Navigation Components",
         href: "/docs/components#navigation",
       }}
-      nextPage={{
+      next={{
         title: "Dropdown Menu",
         href: "/docs/components/dropdown-menu",
       }}

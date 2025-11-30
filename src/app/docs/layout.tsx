@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { DemoNav } from "@/components/demo/demo-nav";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { TerminalBackground } from "@/components/landing/terminal-background";
 import {
@@ -110,12 +110,12 @@ const navigation = [
       { title: "TESTIMONIALS", href: "/docs/components/testimonials", icon: MessageSquare },
       { title: "FAQ", href: "/docs/components/faq", icon: MessageSquare },
       { title: "FOOTER", href: "/docs/components/footer", icon: Layout },
-      { title: "BUTTONS", href: "/docs/components/buttons", icon: MousePointer },
-      { title: "FORMS", href: "/docs/components/forms", icon: FormInput },
-      { title: "DATA_DISPLAY", href: "/docs/components/data-display", icon: Table },
-      { title: "CHARTS", href: "/docs/components/charts", icon: LineChart },
-      { title: "MODALS", href: "/docs/components/modals", icon: MessageSquare },
-      { title: "UPLOADS", href: "/docs/components/uploads", icon: Image },
+      { title: "BUTTON", href: "/docs/components/button", icon: MousePointer },
+      { title: "INPUT", href: "/docs/components/input", icon: FormInput },
+      { title: "TABLE", href: "/docs/components/table", icon: Table },
+      { title: "DONUT_CHART", href: "/docs/components/donut-chart", icon: LineChart },
+      { title: "DIALOG", href: "/docs/components/dialog", icon: MessageSquare },
+      { title: "FILE_UPLOAD", href: "/docs/components/file-upload", icon: Image },
     ],
   },
   {
@@ -226,7 +226,7 @@ export default function DocsLayout({
   return (
     <div className="min-h-screen bg-background font-mono flex flex-col relative">
       <TerminalBackground />
-      <DemoNav backButtonText="HOME" backButtonHref="/" suffix="DOCS" />
+      <SiteNavigation />
 
       <div className="flex flex-1">
         {/* Sidebar */}

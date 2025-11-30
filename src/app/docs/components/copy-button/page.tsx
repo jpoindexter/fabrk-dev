@@ -14,12 +14,12 @@ export default function CopyButtonPage() {
       mainPreview={{
         preview: (
           <div className="flex items-center gap-2">
-            <code className="bg-muted px-2 py-1 rounded text-sm">npm install fabrk</code>
+            <code className="bg-muted px-2 py-1 font-mono text-sm">npm install fabrk</code>
             <CopyButton value="npm install fabrk" />
           </div>
         ),
         code: `<div className="flex items-center gap-2">
-  <code className="bg-muted px-2 py-1 rounded text-sm">npm install fabrk</code>
+  <code className="bg-muted px-2 py-1 font-mono text-sm">npm install fabrk</code>
   <CopyButton value="npm install fabrk" />
 </div>`,
       }}
@@ -46,12 +46,12 @@ export default function CopyButtonPage() {
           title: "With Code Block",
           description: "Common pattern with inline code.",
           preview: (
-            <div className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-2">
+            <div className="flex items-center gap-2 bg-muted/50 border border-border px-3 py-2">
               <code className="text-sm font-mono flex-1">const x = 42;</code>
               <CopyButton value="const x = 42;" />
             </div>
           ),
-          code: `<div className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-2">
+          code: `<div className="flex items-center gap-2 bg-muted/50 border border-border px-3 py-2">
   <code className="text-sm font-mono flex-1">const x = 42;</code>
   <CopyButton value="const x = 42;" />
 </div>`,

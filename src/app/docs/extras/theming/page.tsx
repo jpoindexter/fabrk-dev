@@ -1,9 +1,8 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
-import { Palette, Sun, Moon, Sparkles } from "lucide-react";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { Palette, Sun, Moon, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Theming & Colors - Fabrk Docs",
@@ -128,7 +127,7 @@ const themes = [
     >
       {/* Theme System */}
       <DocsSection title="Theme System">
-        <DocsCard>
+        <DocsCard title="THEME_SYSTEM">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>20 Color Themes:</strong> Inspired by DaisyUI's theme system</div>
             <div>├─ <strong>Light/Dark Mode:</strong> Automatic dark mode with next-themes</div>
@@ -176,7 +175,7 @@ const themes = [
 
       {/* Best Practices */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Use semantic colors:</strong> bg-primary instead of bg-purple-500</div>
             <div>├─ <strong>Test across themes:</strong> Verify UI works in light and dark variants</div>
@@ -188,7 +187,7 @@ const themes = [
 
       {/* Architecture */}
       <DocsSection title="Architecture">
-        <DocsCard>
+        <DocsCard title="ARCHITECTURE">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>ThemeDropdown</strong> - Navbar component for theme selection</div>
             <div>├─ <strong>ColorThemeSwitcher</strong> - Full-page grid for settings</div>
@@ -202,22 +201,16 @@ const themes = [
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/components/overview">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>UI Components</h3>
-                <p className={docsTypography.body}>All components use semantic colors</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/extras/testing">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Testing</h3>
-                <p className={docsTypography.body}>Test across different themes</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/components/overview"
+            title="UI Components"
+            description="All components use semantic colors"
+          />
+          <DocsLinkCard
+            href="/docs/extras/testing"
+            title="Testing"
+            description="Test across different themes"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

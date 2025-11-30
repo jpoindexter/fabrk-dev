@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Shield, Key, Lock, Cookie } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "CSRF Protection - Fabrk Docs",
@@ -262,26 +260,16 @@ export function useSecureApi() {
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/headers">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
-                <p className={docsTypography.body}>
-                  Configure HSTS, CSP, and other headers
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/validation">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Schema Validation</h3>
-                <p className={docsTypography.body}>
-                  Validate all inputs with Zod schemas
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/headers"
+            title="Security Headers"
+            description="Configure HSTS, CSP, and other headers"
+          />
+          <DocsLinkCard
+            href="/docs/security/validation"
+            title="Schema Validation"
+            description="Validate all inputs with Zod schemas"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

@@ -185,7 +185,7 @@ export function MagicLinkForm() {
     >
       {/* Security Considerations Section */}
       <DocsSection title="Security Considerations">
-        <DocsCard>
+        <DocsCard title="SECURITY">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ <strong>Single-use tokens:</strong> Delete tokens after verification</li>
             <li>├─ <strong>Short expiry:</strong> 24 hours or less recommended</li>
@@ -198,7 +198,7 @@ export function MagicLinkForm() {
 
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ Show clear confirmation after sending the link</li>
             <li>├─ Include a resend option after 60 seconds</li>

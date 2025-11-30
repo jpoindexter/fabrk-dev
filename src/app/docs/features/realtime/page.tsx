@@ -178,7 +178,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
     >
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
-        <DocsCard>
+        <DocsCard title="BEST_PRACTICES">
           <ul className="font-mono text-sm text-muted-foreground space-y-1">
             <li>├─ Use private channels (<code className={docsTypography.code}>private-</code>) for user-specific data</li>
             <li>├─ Use presence channels (<code className={docsTypography.code}>presence-</code>) for tracking online status</li>

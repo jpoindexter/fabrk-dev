@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Rocket, User, CreditCard, Mail, Database, Shield } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Getting Started - Fabrk Docs",
@@ -113,7 +111,7 @@ npm run db:push && npm run dev`,
     >
       {/* What is Fabrk */}
       <DocsSection title="What Is Fabrk?">
-        <DocsCard>
+        <DocsCard title="OVERVIEW">
           <p className={`${docsTypography.body} mb-3`}>
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
@@ -130,7 +128,7 @@ npm run db:push && npm run dev`,
       {/* Who is this for */}
       <DocsSection title="Who Is This For?">
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard>
+          <DocsCard title="GREAT_FIT">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Great Fit</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Developers building their first SaaS</div>
@@ -139,7 +137,7 @@ npm run db:push && npm run dev`,
               <div>└─ Anyone who values shipping fast</div>
             </div>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="REQUIREMENTS">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Requirements</h4>
             <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
               <div>├─ Basic JavaScript/TypeScript</div>
@@ -153,7 +151,7 @@ npm run db:push && npm run dev`,
 
       {/* Troubleshooting */}
       <DocsSection title="Troubleshooting">
-        <DocsCard>
+        <DocsCard title="TROUBLESHOOTING">
           <div className="space-y-4">
             <div>
               <h4 className={`uppercase ${docsTypography.h4} mb-1`}>Port 3000 In Use</h4>
@@ -174,60 +172,42 @@ npm run db:push && npm run dev`,
       {/* Optional Features */}
       <DocsSection title="Optional Features">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Payments</h3>
-                <p className={docsTypography.body}>Accept credit cards via Stripe</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/emails">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Email</h3>
-                <p className={docsTypography.body}>Send transactional emails</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Google Login</h3>
-                <p className={docsTypography.body}>Sign in with Google</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/cloud-storage">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>File Storage</h3>
-                <p className={docsTypography.body}>Upload files to cloud</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/payments"
+            title="Payments"
+            description="Accept credit cards via Stripe"
+          />
+          <DocsLinkCard
+            href="/docs/features/emails"
+            title="Email"
+            description="Send transactional emails"
+          />
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Google Login"
+            description="Sign in with Google"
+          />
+          <DocsLinkCard
+            href="/docs/features/cloud-storage"
+            title="File Storage"
+            description="Upload files to cloud"
+          />
         </div>
       </DocsSection>
 
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/quick-start">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Quick Start Tutorial</h3>
-                <p className={docsTypography.body}>Build your first feature in 10 min</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/architecture">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Architecture</h3>
-                <p className={docsTypography.body}>Learn how the pieces fit together</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/quick-start"
+            title="Quick Start Tutorial"
+            description="Build your first feature in 10 min"
+          />
+          <DocsLinkCard
+            href="/docs/architecture"
+            title="Architecture"
+            description="Learn how the pieces fit together"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

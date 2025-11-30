@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/landing/navigation";
+import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 
 export default function LegalLayout({
@@ -8,7 +8,7 @@ export default function LegalLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <SiteNavigation />
       {children}
       <Footer />
     </div>

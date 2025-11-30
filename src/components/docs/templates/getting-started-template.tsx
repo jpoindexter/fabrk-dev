@@ -122,7 +122,7 @@ export function GettingStartedTemplate({
       {/* Introduction */}
       {introduction && (
         <DocsSection title="Introduction">
-          <DocsCard>
+          <DocsCard code={code} title="STATUS">
             <p className={docsTypography.body}>{introduction}</p>
           </DocsCard>
         </DocsSection>
@@ -138,7 +138,7 @@ export function GettingStartedTemplate({
       {/* Requirements */}
       {requirements && requirements.length > 0 && (
         <DocsSection title="Requirements">
-          <DocsCard>
+          <DocsCard title="REQUIREMENTS">
             <ul className="space-y-3">
               {requirements.map((req, index) => (
                 <li key={index} className="flex items-start gap-3">

@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Bot, Clock, Shield, Fingerprint } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Bot Protection - Fabrk Docs",
@@ -372,26 +370,16 @@ TURNSTILE_SECRET_KEY="your-secret-key"`,
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/security/rate-limiting">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Rate Limiting</h3>
-                <p className={docsTypography.body}>
-                  Limit requests per IP or user
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/audit-logging">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Audit Logging</h3>
-                <p className={docsTypography.body}>
-                  Log bot detection events
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/security/rate-limiting"
+            title="Rate Limiting"
+            description="Limit requests per IP or user"
+          />
+          <DocsLinkCard
+            href="/docs/security/audit-logging"
+            title="Audit Logging"
+            description="Log bot detection events"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

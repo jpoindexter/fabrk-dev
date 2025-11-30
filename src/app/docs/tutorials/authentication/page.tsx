@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Key, Mail, Shield, Lock, User, UserCheck } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Authentication Guide - Fabrk Docs",
@@ -142,7 +140,7 @@ export default async function PrivatePage() {
     >
       {/* What is Authentication */}
       <DocsSection title="What is Authentication?">
-        <DocsCard>
+        <DocsCard title="AUTHENTICATION">
           <p className={docsTypography.body}>
             Authentication is how your app knows who someone is. When a user creates an account
             and logs in, your app gives them a &quot;pass&quot; (called a session) that proves their identity.
@@ -157,7 +155,7 @@ export default async function PrivatePage() {
 
       {/* Auth Flow */}
       <DocsSection title="How It Works">
-        <DocsCard>
+        <DocsCard title="SIGNUP_FLOW">
           <p className={`${docsTypography.label} mb-2`}>When User Signs Up</p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ User enters email and password on the signup form</div>
@@ -167,7 +165,7 @@ export default async function PrivatePage() {
             <div>└─ User clicks the verification link to confirm their email</div>
           </div>
         </DocsCard>
-        <DocsCard>
+        <DocsCard title="LOGIN_FLOW">
           <p className={`${docsTypography.label} mb-2`}>When User Logs In</p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ User enters email and password</div>
@@ -181,7 +179,7 @@ export default async function PrivatePage() {
 
       {/* Google OAuth Setup */}
       <DocsSection title="Add Google Login">
-        <DocsCard>
+        <DocsCard title="GOOGLE_OAUTH">
           <p className={docsTypography.body}>
             Let users sign in with their Google account. This is convenient for users and often increases signup rates.
           </p>
@@ -192,7 +190,7 @@ export default async function PrivatePage() {
             <div><strong>Step 4:</strong> Add redirect URI: <code className="bg-muted px-1 font-mono text-xs">http://localhost:3000/api/auth/callback/google</code></div>
           </div>
         </DocsCard>
-        <DocsCard>
+        <DocsCard title="CONFIGURATION">
           <p className={`${docsTypography.label} mb-2`}>Add to .env.local</p>
           <div className="font-mono text-sm text-muted-foreground">
             <code>GOOGLE_CLIENT_ID=&quot;your-client-id.apps.googleusercontent.com&quot;</code><br/>
@@ -203,7 +201,7 @@ export default async function PrivatePage() {
 
       {/* Protected Routes */}
       <DocsSection title="Protected Routes">
-        <DocsCard>
+        <DocsCard title="PROTECTED_ROUTES">
           <p className={docsTypography.body}>Fabrk automatically protects these routes:</p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed mt-2">
             <div>├─ <code className="bg-muted px-1 font-mono text-xs">/dashboard/*</code> - Main user dashboard</div>
@@ -216,7 +214,7 @@ export default async function PrivatePage() {
 
       {/* FAQ */}
       <DocsSection title="Common Questions">
-        <DocsCard>
+        <DocsCard title="FAQ">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ <strong>Session duration?</strong> 30 days by default. Change in src/lib/auth.ts</div>
             <div>├─ <strong>Force logout?</strong> Increment user&apos;s sessionVersion in database</div>
@@ -229,22 +227,16 @@ export default async function PrivatePage() {
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/features/mfa">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Two-Factor Auth</h3>
-                <p className={docsTypography.body}>Add extra security with authenticator apps</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/features/payments">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Set Up Payments</h3>
-                <p className={docsTypography.body}>Accept payments from authenticated users</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/features/mfa"
+            title="Two-Factor Auth"
+            description="Add extra security with authenticator apps"
+          />
+          <DocsLinkCard
+            href="/docs/features/payments"
+            title="Set Up Payments"
+            description="Accept payments from authenticated users"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

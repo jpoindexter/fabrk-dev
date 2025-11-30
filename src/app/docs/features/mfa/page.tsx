@@ -1,10 +1,8 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography, docsSpacing } from "@/components/docs";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Shield, Key, Smartphone, Lock } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Multi-Factor Authentication - Fabrk Docs",
@@ -118,7 +116,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
     >
       {/* Why Offer 2FA Section */}
       <DocsSection title="Why Offer 2FA">
-        <DocsCard>
+        <DocsCard title="WHY_2FA">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
               <h3 className={`uppercase ${docsTypography.h4}`}>Security Benefits</h3>
@@ -145,7 +143,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* How 2FA Works Section */}
       <DocsSection title="How 2FA Works">
         <div className="space-y-4">
-          <DocsCard>
+          <DocsCard title="SETUP_2FA">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Setting Up 2FA</h3>
             <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
               <li>User goes to Settings → Security</li>
@@ -157,7 +155,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </ol>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="LOGIN_WITH_2FA">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Logging In With 2FA</h3>
             <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
               <li>User enters email and password as normal</li>
@@ -167,7 +165,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
             </ol>
           </DocsCard>
 
-          <DocsCard>
+          <DocsCard title="BACKUP_CODES">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Lost Phone? Use Backup Code</h3>
             <ol className={`list-inside list-decimal ${docsTypography.body} space-y-1`}>
               <li>On the verification screen, click &quot;Use backup code&quot;</li>
@@ -181,7 +179,7 @@ export async function deleteAccount(userId: string, mfaCode: string) {
 
       {/* About Backup Codes Section */}
       <DocsSection title="About Backup Codes">
-        <DocsCard className="bg-muted/50">
+        <DocsCard title="BACKUP_INFO" className="bg-muted/50">
           <p className={`${docsTypography.body} mb-4`}>
             Backup codes are essential for account recovery. They let users log in even if they
             lose access to their authenticator app (lost phone, new device, etc.).
@@ -293,13 +291,13 @@ export async function deleteAccount(userId: string, mfaCode: string) {
           The current implementation covers TOTP (authenticator apps). Future versions may include:
         </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <DocsCard>
+          <DocsCard title="SMS_VERIFICATION">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>SMS Verification</h3>
             <p className={docsTypography.body}>
               Text message codes as an alternative (requires Twilio integration).
             </p>
           </DocsCard>
-          <DocsCard>
+          <DocsCard title="WEBAUTHN_PASSKEYS">
             <h3 className={`uppercase ${docsTypography.h4} mb-2`}>WebAuthn/Passkeys</h3>
             <p className={docsTypography.body}>
               Hardware security keys and biometric authentication (Touch ID, Face ID).
@@ -311,26 +309,16 @@ export async function deleteAccount(userId: string, mfaCode: string) {
       {/* Next Steps Section */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/tutorials/authentication">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication Basics</h3>
-                <p className={docsTypography.body}>
-                  Learn about the core authentication system 2FA builds on.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/security/headers">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Security Headers</h3>
-                <p className={docsTypography.body}>
-                  Learn about security headers and CSRF protection.
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/tutorials/authentication"
+            title="Authentication Basics"
+            description="Learn about the core authentication system 2FA builds on."
+          />
+          <DocsLinkCard
+            href="/docs/security/headers"
+            title="Security Headers"
+            description="Learn about security headers and CSRF protection."
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>

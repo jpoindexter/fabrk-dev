@@ -3,7 +3,6 @@
  * Used by: /docs/tutorials/* (guide-style content)
  */
 
-import { LucideIcon, Clock, BarChart } from "lucide-react";
 import { DocsHeader } from "../blocks/docs-header";
 import { DocsSection } from "../blocks/docs-section";
 import { DocsCard } from "../blocks/docs-card";
@@ -11,7 +10,6 @@ import { DocsStepList } from "../blocks/docs-step-list";
 import { DocsCallout } from "../blocks/docs-callout";
 import { DocsNavFooter } from "../blocks/docs-nav-footer";
 import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography } from "../typography";
 import { docsSpacing } from "../spacing";
 
 interface Prerequisite {
@@ -112,22 +110,20 @@ export function TutorialTemplate({
       )}
 
       {/* Tutorial Meta */}
-      <DocsCard>
+      <DocsCard code={code} title="TUTORIAL_INFO">
         <div className="flex flex-wrap gap-6">
           {difficulty && (
             <div className="flex items-center gap-2">
-              <BarChart className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-              <span className={docsTypography.label}>Difficulty:</span>
-              <span className={`font-mono text-sm capitalize ${difficultyColors[difficulty]}`}>
+              <span className="text-muted-foreground">Difficulty:</span>
+              <span className={`font-mono text-sm uppercase ${difficultyColors[difficulty]}`}>
                 {difficulty}
               </span>
             </div>
           )}
           {timeEstimate && (
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-              <span className={docsTypography.label}>Time:</span>
-              <span className={docsTypography.body}>{timeEstimate}</span>
+              <span className="text-muted-foreground">Time:</span>
+              <span className="text-primary">{timeEstimate}</span>
             </div>
           )}
         </div>
@@ -136,11 +132,11 @@ export function TutorialTemplate({
       {/* Learning Objectives */}
       {learningObjectives && learningObjectives.length > 0 && (
         <DocsSection title="What You'll Learn">
-          <DocsCard>
-            <ul className="list-disc list-inside space-y-2">
+          <DocsCard title="OBJECTIVES">
+            <ul className="space-y-2">
               {learningObjectives.map((objective, index) => (
-                <li key={index} className={docsTypography.body}>
-                  {objective}
+                <li key={index}>
+                  <span className="text-primary">├─</span> {objective}
                 </li>
               ))}
             </ul>
@@ -151,13 +147,14 @@ export function TutorialTemplate({
       {/* Prerequisites */}
       {prerequisites && prerequisites.length > 0 && (
         <DocsSection title="Prerequisites">
-          <DocsCard>
-            <ul className="list-disc list-inside space-y-2">
+          <DocsCard title="REQUIREMENTS">
+            <ul className="space-y-2">
               {prerequisites.map((prereq, index) => (
-                <li key={index} className={docsTypography.body}>
-                  <span className="font-semibold">{prereq.title}</span>
+                <li key={index}>
+                  <span className="text-primary">├─</span>{" "}
+                  <span className="text-foreground">{prereq.title}</span>
                   {prereq.description && (
-                    <span className="text-muted-foreground"> - {prereq.description}</span>
+                    <span> - {prereq.description}</span>
                   )}
                 </li>
               ))}
@@ -174,9 +171,9 @@ export function TutorialTemplate({
       {/* Final Result */}
       {resultCode && (
         <DocsSection title="Final Result">
-          <DocsCard>
+          <DocsCard title="OUTPUT">
             {resultDescription && (
-              <p className={docsTypography.body}>{resultDescription}</p>
+              <p className="mb-3">{resultDescription}</p>
             )}
             <CodeBlock code={resultCode} language={resultLanguage} />
           </DocsCard>
@@ -186,11 +183,11 @@ export function TutorialTemplate({
       {/* Next Steps */}
       {nextSteps && nextSteps.length > 0 && (
         <DocsSection title="Next Steps">
-          <DocsCard>
-            <ul className="list-disc list-inside space-y-2">
+          <DocsCard title="CONTINUE">
+            <ul className="space-y-2">
               {nextSteps.map((step, index) => (
-                <li key={index} className={docsTypography.body}>
-                  {step}
+                <li key={index}>
+                  <span className="text-primary">├─</span> {step}
                 </li>
               ))}
             </ul>

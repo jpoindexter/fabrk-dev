@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
+import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
 import { Settings, Key, Shield, CheckCircle } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "Environment Variables - Fabrk Docs",
@@ -229,7 +227,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
     >
       {/* Key Points */}
       <DocsSection title="Key Points">
-        <DocsCard>
+        <DocsCard title="KEY_POINTS">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ All variables are validated at startup with Zod</div>
             <div>├─ Client-side variables must start with NEXT_PUBLIC_</div>
@@ -241,7 +239,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
 
       {/* Security Best Practices */}
       <DocsSection title="Security Best Practices">
-        <DocsCard>
+        <DocsCard title="SECURITY">
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>├─ Never commit secrets - Add .env.local to .gitignore</div>
             <div>├─ Rotate secrets regularly - Especially after team changes</div>
@@ -255,22 +253,16 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
       {/* Next Steps */}
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
-          <Link href="/docs/deployment/database">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Database Setup</h3>
-                <p className={docsTypography.body}>Set up production PostgreSQL</p>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/deployment/vercel">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-6">
-                <h3 className={`uppercase ${docsTypography.h4} mb-2`}>Deploy to Vercel</h3>
-                <p className={docsTypography.body}>Deploy your configured app</p>
-              </CardContent>
-            </Card>
-          </Link>
+          <DocsLinkCard
+            href="/docs/deployment/database"
+            title="Database Setup"
+            description="Set up production PostgreSQL"
+          />
+          <DocsLinkCard
+            href="/docs/deployment/vercel"
+            title="Deploy to Vercel"
+            description="Deploy your configured app"
+          />
         </div>
       </DocsSection>
     </FeatureGuideTemplate>
