@@ -144,9 +144,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
         <DocsSection key={category.name} title={category.name}>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {category.components.map((component) => (
-              <div
+              <Link
                 key={component.name}
-                className="border border-border bg-card p-2 transition-colors hover:border-primary/50"
+                href={`/docs/components/${component.name}`}
+                className="block border border-border bg-card p-2 transition-colors hover:border-primary/50 hover:bg-accent/5"
               >
                 <div className="font-mono text-base font-semibold text-foreground">
                   {component.name}
@@ -154,7 +155,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
                 <div className="mt-1 font-mono text-sm text-muted-foreground">
                   {component.description}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </DocsSection>
