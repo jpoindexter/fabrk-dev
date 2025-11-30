@@ -1,9 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
-import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography } from "@/components/docs";
+import { DocsSection } from "@/components/docs";
 import { Component, Layers, Code, Palette } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata = {
   title: "UI Components Overview - Fabrk Docs",
@@ -137,7 +135,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
         },
       ]}
       previous={{ title: "Getting Started", href: "/docs/getting-started" }}
-      next={{ title: "Buttons", href: "/docs/components/buttons" }}
+      next={{ title: "Button", href: "/docs/components/button" }}
     >
       {/* Component Categories */}
       {componentCategories.map((category) => (
@@ -160,54 +158,6 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
           </div>
         </DocsSection>
       ))}
-
-      {/* Documentation Links */}
-      <DocsSection title="Detailed Documentation">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Link href="/docs/components/buttons">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Buttons</h3>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/forms">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Forms</h3>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/data-display">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Data Display</h3>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/charts">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Charts</h3>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/modals">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Modals</h3>
-              </CardContent>
-            </Card>
-          </Link>
-          <Link href="/docs/components/uploads">
-            <Card className="h-full transition-all hover:border-primary/50">
-              <CardContent className="p-4">
-                <h3 className={`uppercase ${docsTypography.h4}`}>Uploads</h3>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
-      </DocsSection>
     </FeatureGuideTemplate>
   );
 }
