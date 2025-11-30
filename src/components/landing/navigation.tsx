@@ -24,6 +24,7 @@ export function Navigation() {
   const navLinks = [
     { label: "FEATURES", href: "#features" },
     { label: "PRICING", href: "#pricing" },
+    { label: "DOCS", href: "/docs" },
     { label: "FAQ", href: "#faq" },
   ];
 
