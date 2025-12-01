@@ -529,15 +529,17 @@ export default function BillingDashboardTemplate() {
                   <div className="size-2 rounded-full bg-success/50" />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">billing_history.log</span>
-                <Button variant="outline" size="sm" className="rounded-none ml-auto font-mono text-xs h-7">
-                  <Download className="mr-2 h-3 w-3" />
-                  &gt; EXPORT_ALL
-                </Button>
               </div>
 
               <div className="p-4">
-                <div className="font-mono text-xs text-muted-foreground mb-4">
-                  [BILLING_HISTORY]: COUNT={payments.length}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="font-mono text-xs text-muted-foreground">
+                    [BILLING_HISTORY]: COUNT={payments.length}
+                  </div>
+                  <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+                    <Download className="mr-2 h-3 w-3" />
+                    &gt; EXPORT_ALL
+                  </Button>
                 </div>
 
                 {/* Terminal Table */}

@@ -6,20 +6,11 @@
 
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import {
-  Search,
   ChevronRight,
   Copy,
   CheckCircle2,
@@ -27,12 +18,7 @@ import {
   Rocket,
   Code,
   Settings,
-  Shield,
-  CreditCard,
   ExternalLink,
-  Menu,
-  X,
-  Minus,
 } from "lucide-react";
 
 // Documentation structure
@@ -168,41 +154,6 @@ Now that you're set up, explore these guides:
 export default function DocumentationLayoutTemplate() {
   const [activeDoc, setActiveDoc] = useState("quick-start");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [showFeatures, setShowFeatures] = useState(true);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const dragRef = useRef<HTMLDivElement>(null);
-  const dragStartPos = useRef({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return;
-      const dx = e.clientX - dragStartPos.current.x;
-      const dy = e.clientY - dragStartPos.current.y;
-      setPosition((prev) => ({ x: prev.x + dx, y: prev.y + dy }));
-      dragStartPos.current = { x: e.clientX, y: e.clientY };
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-    }
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [isDragging]);
-
-  const handleDragStart = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    dragStartPos.current = { x: e.clientX, y: e.clientY };
-  };
 
   const handleCopyCode = (code: string, id: string) => {
     navigator.clipboard.writeText(code);
@@ -255,7 +206,7 @@ export default function DocumentationLayoutTemplate() {
       {/* Page Content */}
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 border-r border-border bg-card">
+        <aside className="w-64 border-r border-b border-border bg-card">
           <nav className="space-y-6 p-4">
             {docsStructure.map((section, idx) => {
               const Icon = section.icon;
@@ -470,7 +421,7 @@ export default function DocumentationLayoutTemplate() {
 
         {/* Table of Contents (Right Sidebar) */}
         <aside
-          className="hidden w-64 border-l border-border bg-card xl:block"
+          className="hidden w-64 border-l border-b border-border bg-card xl:block"
           aria-label="Table of contents"
         >
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -508,72 +459,32 @@ export default function DocumentationLayoutTemplate() {
         </aside>
       </div>
 
-      {/* Implementation Note (Fixed at bottom) - Draggable */}
-      {showFeatures && (
-        <aside
-          ref={dragRef}
-          className="fixed bottom-4 right-4 max-w-sm z-50"
-          aria-label="Template features"
-          style={{
-            transform: `translate(${position.x}px, ${position.y}px)`,
-          }}
-        >
-          <div className="border border-border bg-card shadow-lg">
-            <div
-              role="group"
-              aria-label="Draggable header"
-              className="flex items-center gap-2 border-b border-border px-4 py-2 cursor-move select-none"
-              onMouseDown={handleDragStart}
-            >
-              <div className="flex gap-1.5">
-                <button
-                  onClick={() => setShowFeatures(false)}
-                  className="size-2 rounded-full bg-destructive/50 hover:bg-destructive transition-colors"
-                  aria-label="Close"
-                />
-                <button
-                  onClick={() => setIsMinimized(!isMinimized)}
-                  className="size-2 rounded-full bg-warning/50 hover:bg-warning transition-colors"
-                  aria-label={isMinimized ? "Expand" : "Minimize"}
-                />
-                <div className="size-2 rounded-full bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">features.md</span>
-              <div className="ml-auto flex items-center gap-1">
-                <button
-                  onClick={() => setIsMinimized(!isMinimized)}
-                  className="font-mono text-xs text-muted-foreground hover:text-foreground p-0.5"
-                  aria-label={isMinimized ? "Expand" : "Minimize"}
-                >
-                  <Minus className="h-3 w-3" />
-                </button>
-                <button
-                  onClick={() => setShowFeatures(false)}
-                  className="font-mono text-xs text-muted-foreground hover:text-foreground p-0.5"
-                  aria-label="Close"
-                >
-                  <X className="h-3 w-3" />
-                </button>
-              </div>
+      {/* Implementation Note */}
+      <div className="container mx-auto max-w-7xl px-6 py-8">
+        <div className="border border-border bg-card">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
             </div>
-            {!isMinimized && (
-              <div className="p-4">
-                <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
-                <div className="space-y-1.5 font-mono text-xs" role="list">
-                  <div><span className="text-success">&gt;</span> WCAG 2.1 AA compliant</div>
-                  <div><span className="text-success">&gt;</span> 3-column layout (sidebar, content, TOC)</div>
-                  <div><span className="text-success">&gt;</span> Semantic HTML structure</div>
-                  <div><span className="text-success">&gt;</span> Keyboard navigation support</div>
-                  <div><span className="text-success">&gt;</span> Code blocks with copy functionality</div>
-                  <div><span className="text-success">&gt;</span> Focus indicators on all interactive elements</div>
-                  <div><span className="text-success">&gt;</span> Proper heading hierarchy (h1→h2)</div>
-                  <div><span className="text-success">&gt;</span> ARIA labels for screen readers</div>
-                </div>
-              </div>
-            )}
+            <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
-        </aside>
-      )}
+          <div className="p-4">
+            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="space-y-1.5 font-mono text-xs">
+              <div><span className="text-success">&gt;</span> WCAG 2.1 AA compliant</div>
+              <div><span className="text-success">&gt;</span> 3-column layout (sidebar, content, TOC)</div>
+              <div><span className="text-success">&gt;</span> Semantic HTML structure</div>
+              <div><span className="text-success">&gt;</span> Keyboard navigation support</div>
+              <div><span className="text-success">&gt;</span> Code blocks with copy functionality</div>
+              <div><span className="text-success">&gt;</span> Focus indicators on all interactive elements</div>
+              <div><span className="text-success">&gt;</span> Proper heading hierarchy (h1→h2)</div>
+              <div><span className="text-success">&gt;</span> ARIA labels for screen readers</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

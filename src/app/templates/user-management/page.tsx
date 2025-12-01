@@ -449,17 +449,17 @@ export default function UserManagementTemplate() {
               <div className="size-2 rounded-full bg-success/50" />
             </div>
             <span className="font-mono text-xs text-muted-foreground">users.db</span>
-            <div className="ml-auto">
+          </div>
+
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-4">
+              <div className="font-mono text-xs text-muted-foreground">
+                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={table.getFilteredRowModel().rows.length}
+              </div>
               <Button onClick={exportToCSV} variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
                 <Download className="mr-2 h-3 w-3" />
                 &gt; EXPORT_CSV
               </Button>
-            </div>
-          </div>
-
-          <div className="p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-4">
-              [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={table.getFilteredRowModel().rows.length}
             </div>
 
             {/* Toolbar */}
