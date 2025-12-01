@@ -76,11 +76,12 @@ import { logger } from "@/lib/logger";
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe/client";
 import { env } from "@/lib/env";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: NextRequest) {
+async function portalHandler(req: NextRequest) {
   try {
     const session = await auth();
 
@@ -112,3 +113,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to create portal session" }, { status: 500 });
   }
 }
+
+export const POST = withCsrfProtection(portalHandler);

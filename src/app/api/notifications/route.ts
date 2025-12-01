@@ -9,6 +9,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { triggerNotification } from "@/lib/pusher/server";
 import { logger } from "@/lib/logger";
+import { withCsrfProtection } from "@/lib/security/csrf";
 
 /**
  * GET /api/notifications
@@ -51,7 +52,7 @@ export async function GET(req: NextRequest) {
  * Create a new notification (internal use - not exposed to clients)
  * Should be called from server-side code only
  */
-export async function POST(req: NextRequest) {
+async function createNotificationHandler(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -99,3 +100,5 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export const POST = withCsrfProtection(createNotificationHandler);

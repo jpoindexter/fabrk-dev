@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
+import { withCsrfProtection } from "@/lib/security/csrf";
 import { z } from "zod";
 
 const markReadSchema = z.object({
@@ -14,7 +15,7 @@ const markReadSchema = z.object({
   all: z.boolean().optional(),
 });
 
-export async function POST(req: NextRequest) {
+async function markReadHandler(req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -83,3 +84,5 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export const POST = withCsrfProtection(markReadHandler);
