@@ -92,7 +92,7 @@ export function HeroSplit({
                   {/* Header */}
                   <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full border-2 border-foreground bg-primary"></div>
+                      <div className="h-8 w-8 rounded-none border-2 border-foreground bg-primary"></div>
                       <div>
                         <div className="h-3 w-24 bg-foreground/20"></div>
                         <div className="mt-1 h-2 w-16 bg-foreground/10"></div>
@@ -131,14 +131,14 @@ export function HeroSplit({
               </div>
 
               {/* File Count Badge */}
-              <div className="absolute -bottom-4 -right-4 rounded-full border-2 border-foreground bg-primary px-6 py-3 shadow-sm">
-                <p className="text-sm font-bold text-primary-foreground">161 Files</p>
+              <div className="absolute -bottom-4 -right-4 rounded-none border-2 border-foreground bg-primary px-6 py-3 shadow-sm">
+                <p className="font-mono text-xs font-bold text-primary-foreground">[161_FILES]</p>
               </div>
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute -left-8 top-8 -z-10 h-32 w-32 rounded-full bg-primary/10"></div>
-            <div className="absolute -bottom-8 -right-8 -z-10 h-24 w-24 rounded-full bg-accent/10"></div>
+            <div className="absolute -left-8 top-8 -z-10 h-32 w-32 rounded-none bg-primary/10"></div>
+            <div className="absolute -bottom-8 -right-8 -z-10 h-24 w-24 rounded-none bg-accent/10"></div>
           </div>
         </div>
       </div>
