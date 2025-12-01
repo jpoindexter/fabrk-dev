@@ -126,24 +126,24 @@ export default function AvatarPage() {
           preview: (
             <div className="flex gap-4">
               <Avatar>
-                <AvatarFallback className="bg-blue-500 text-white">AB</AvatarFallback>
+                <AvatarFallback className="bg-primary text-primary-foreground">AB</AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-green-500 text-white">CD</AvatarFallback>
+                <AvatarFallback className="bg-success text-success-foreground">CD</AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-purple-500 text-white">EF</AvatarFallback>
+                <AvatarFallback className="bg-secondary text-secondary-foreground">EF</AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-orange-500 text-white">GH</AvatarFallback>
+                <AvatarFallback className="bg-warning text-warning-foreground">GH</AvatarFallback>
               </Avatar>
             </div>
           ),
           code: `<Avatar>
-  <AvatarFallback className="bg-blue-500 text-white">AB</AvatarFallback>
+  <AvatarFallback className="bg-primary text-primary-foreground">AB</AvatarFallback>
 </Avatar>
 <Avatar>
-  <AvatarFallback className="bg-green-500 text-white">CD</AvatarFallback>
+  <AvatarFallback className="bg-success text-success-foreground">CD</AvatarFallback>
 </Avatar>`,
         },
         {
@@ -156,20 +156,20 @@ export default function AvatarPage() {
                   <AvatarImage src="https://github.com/shadcn.png" alt="Online User" />
                   <AvatarFallback>ON</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-green-500" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-success" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarImage src="https://github.com/vercel.png" alt="Busy User" />
                   <AvatarFallback>BS</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-yellow-500" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-warning" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarFallback>OF</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-gray-400" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-muted-foreground" />
               </div>
             </div>
           ),
@@ -178,7 +178,7 @@ export default function AvatarPage() {
     <AvatarImage src="..." alt="Online User" />
     <AvatarFallback>ON</AvatarFallback>
   </Avatar>
-  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-green-500" />
+  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-success" />
 </div>`,
         },
       ]}

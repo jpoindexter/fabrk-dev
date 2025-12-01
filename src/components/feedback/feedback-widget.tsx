@@ -128,7 +128,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
                   <Star
                     className={`h-6 w-6 ${
                       num <= rating
-                        ? "fill-yellow-400 text-yellow-400"
+                        ? "fill-warning text-warning"
                         : "text-muted-foreground/50"
                     }`}
                   />

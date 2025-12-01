@@ -68,9 +68,9 @@ interface TutorialTemplateProps {
 }
 
 const difficultyColors = {
-  beginner: "text-green-500",
-  intermediate: "text-yellow-500",
-  advanced: "text-red-500",
+  beginner: "text-success",
+  intermediate: "text-warning",
+  advanced: "text-destructive",
 };
 
 export function TutorialTemplate({

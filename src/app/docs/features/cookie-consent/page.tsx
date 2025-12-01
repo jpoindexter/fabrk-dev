@@ -232,7 +232,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <DocsCard title="COOKIE_CATEGORIES">
           <div className="space-y-4">
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-green-500 mt-1"></div>
+              <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
                 <p className={docsTypography.body}>
@@ -241,7 +241,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-blue-500 mt-1"></div>
+              <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
               <div>
                 <p className="font-medium">Preferences</p>
                 <p className={docsTypography.body}>
@@ -250,7 +250,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-yellow-500 mt-1"></div>
+              <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
               <div>
                 <p className="font-medium">Statistics</p>
                 <p className={docsTypography.body}>
@@ -259,7 +259,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-red-500 mt-1"></div>
+              <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
               <div>
                 <p className="font-medium">Marketing</p>
                 <p className={docsTypography.body}>

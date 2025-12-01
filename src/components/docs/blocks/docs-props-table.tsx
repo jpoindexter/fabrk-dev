@@ -48,7 +48,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
             <TableRow key={prop.name}>
               <TableCell className="font-mono text-sm">
                 {prop.name}
-                {prop.required && <span className="text-red-500 ml-1">*</span>}
+                {prop.required && <span className="text-destructive ml-1">*</span>}
               </TableCell>
               <TableCell>
                 <code className={docsTypography.code}>{prop.type}</code>
