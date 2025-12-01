@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ToastPage() {
-  const { toast } = useToast();
+  const { toast, success, error, info, warning } = useToast();
 
   return (
     <ComponentShowcaseTemplate
@@ -86,7 +86,6 @@ import { Toaster } from "@/components/ui/toaster"`}
           preview: (
             <Button
               onClick={() => {
-                const { success } = useToast();
                 success("Success", "Your changes have been saved.");
               }}
             >
@@ -103,7 +102,6 @@ success("Success", "Your changes have been saved.");`,
             <Button
               variant="destructive"
               onClick={() => {
-                const { error } = useToast();
                 error("Error", "Something went wrong. Please try again.");
               }}
             >
@@ -149,7 +147,6 @@ error("Error", "Something went wrong. Please try again.");`,
               <Button
                 variant="outline"
                 onClick={() => {
-                  const { info } = useToast();
                   info("Info", "This is informational.");
                 }}
               >
@@ -158,7 +155,6 @@ error("Error", "Something went wrong. Please try again.");`,
               <Button
                 variant="outline"
                 onClick={() => {
-                  const { warning } = useToast();
                   warning("Warning", "Please be careful.");
                 }}
               >

@@ -36,7 +36,7 @@ export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsF
       {features.map((feature, index) => {
         const Icon = feature.icon;
         const hexCode = (startIndex + index).toString(16).toUpperCase().padStart(2, '0');
-        const module = feature.module || feature.title.toUpperCase().replace(/[\s-]+/g, '_').slice(0, 12);
+        const moduleCode = feature.module || feature.title.toUpperCase().replace(/[\s-]+/g, '_').slice(0, 12);
         const status = feature.status || "READY";
 
         return (
@@ -47,7 +47,7 @@ export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsF
             {/* Module Header */}
             <div className="flex items-center justify-between border-b border-border px-4 py-2">
               <span className="font-mono text-xs text-muted-foreground">
-                [ [0x{hexCode}] {module} ]
+                [ [0x{hexCode}] {moduleCode} ]
               </span>
               <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
             </div>

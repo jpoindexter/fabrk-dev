@@ -77,7 +77,12 @@ function getThemeColors() {
 
 export function Mermaid({ chart, className }: MermaidProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useState<string | null>(null);
+  const [theme, setTheme] = useState<string | null>(() => {
+    if (typeof document !== "undefined") {
+      return document.documentElement.getAttribute("data-theme");
+    }
+    return null;
+  });
 
   // Listen for theme changes
   useEffect(() => {
@@ -90,9 +95,6 @@ export function Mermaid({ chart, className }: MermaidProps) {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
-
-    // Set initial theme
-    setTheme(document.documentElement.getAttribute("data-theme"));
 
     return () => observer.disconnect();
   }, []);

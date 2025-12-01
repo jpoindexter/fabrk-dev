@@ -3,8 +3,8 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 
 // Import custom design system rules
-import noHardcodedColors from "./eslint-rules/no-hardcoded-colors.js";
-import noInlineStyles from "./eslint-rules/no-inline-styles.js";
+import noHardcodedColors from "./config/eslint-rules/no-hardcoded-colors.mjs";
+import noInlineStyles from "./config/eslint-rules/no-inline-styles.mjs";
 
 
 const sanitizePlugin = (plugin) => {

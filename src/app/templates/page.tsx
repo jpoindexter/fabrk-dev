@@ -84,18 +84,18 @@ export default function TemplatesPage() {
         </section>
 
         {/* Preview Notice */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border border-destructive bg-card">
+          <div className="flex items-center gap-2 border-b border-destructive/50 px-4 py-2">
             <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-primary/50" />
-              <div className="size-2 rounded-full bg-primary/30" />
-              <div className="size-2 rounded-full bg-primary/20" />
+              <div className="size-2 rounded-full bg-destructive" />
+              <div className="size-2 rounded-full bg-destructive/60" />
+              <div className="size-2 rounded-full bg-destructive/30" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">notice.md</span>
+            <span className="font-mono text-xs text-destructive">notice.md</span>
           </div>
           <div className="p-4">
             <p className="font-mono text-xs text-muted-foreground">
-              <span className="text-primary">[INFO]:</span> These templates showcase how Fabrk's components can be styled and composed. All templates use the same base UI components from <span className="text-foreground">/components/ui</span> and are included when you purchase Fabrk.
+              <span className="text-destructive">[NOTE]:</span> These templates showcase how Fabrk's components can be styled and composed. All templates use the same base UI components from <span className="text-foreground">/components/ui</span> and are included when you purchase Fabrk.
             </p>
           </div>
         </div>

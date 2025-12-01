@@ -182,7 +182,10 @@ export default function DocsLayout({
   useEffect(() => {
     const newActiveIndex = findActiveSectionIndex(pathname);
     if (newActiveIndex >= 0 && !expandedSections.has(newActiveIndex)) {
-      setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
+      // Wrap in setTimeout to avoid synchronous state update warning
+      setTimeout(() => {
+        setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
+      }, 0);
     }
   }, [pathname]);
 

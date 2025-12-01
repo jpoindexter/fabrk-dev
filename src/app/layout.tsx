@@ -15,6 +15,7 @@ import { PostHogPageView } from "@/components/analytics/posthog-pageview";
 import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
+import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -190,6 +191,18 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-T47RSZPP');`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateProductSchema()),
           }}
         />
       </head>

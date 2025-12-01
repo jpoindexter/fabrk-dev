@@ -7,6 +7,7 @@
     "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
     "dev:restart": "npm run dev",
     "build": "prisma generate && next build",
+    "build:prod": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "npm run scan:hex && ESLINT_USE_FLAT_CONFIG=true eslint src",
     "scan:hex": "node scripts/utilities/scan-stray-hex.mjs",

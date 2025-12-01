@@ -17,7 +17,7 @@ describe("Button Component", () => {
             { name: "destructive", class: "bg-destructive" },
             { name: "outline", class: "border-foreground/20" },
             { name: "secondary", class: "bg-secondary" },
-            { name: "ghost", class: "hover:bg-accent" },
+            { name: "ghost", class: "hover:bg-foreground/10" },
             { name: "link", class: "text-primary underline-offset-4" },
         ] as const;
 

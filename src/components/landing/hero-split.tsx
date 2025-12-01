@@ -79,7 +79,7 @@ export function HeroSplit({
 
             {/* Final Sale Notice */}
             <p className="mt-6 font-mono text-xs text-muted-foreground">
-              // All sales final • Lifetime v1.x updates
+              {"// All sales final • Lifetime v1.x updates"}
             </p>
           </div>
 

@@ -522,6 +522,8 @@ export default function DocumentationLayoutTemplate() {
         >
           <div className="border border-border bg-card shadow-lg">
             <div
+              role="group"
+              aria-label="Draggable header"
               className="flex items-center gap-2 border-b border-border px-4 py-2 cursor-move select-none"
               onMouseDown={handleDragStart}
             >

@@ -31,6 +31,8 @@ const allowPatterns = [
   /src\/app\/docs\/extras\/theming\/page\.tsx$/,
   // Intentional hex colors: Mermaid.js requires hex colors for diagram theming
   /src\/components\/ui\/mermaid\.tsx$/,
+  // Intentional hex colors: Contact form API route uses inline styles for emails
+  /src\/app\/api\/contact\/route\.ts$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;

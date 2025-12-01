@@ -158,19 +158,21 @@ export default function SecurityPrivacyTemplate() {
               <div className="size-2 rounded-full bg-success/50" />
             </div>
             <span className="font-mono text-xs text-muted-foreground">security_score.json</span>
-            <span className="ml-auto border border-warning/50 px-2 py-0.5 font-mono text-xs text-warning">
-              MEDIUM_RISK
-            </span>
           </div>
           <div className="p-4">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="flex h-16 w-16 items-center justify-center border border-border bg-primary/10 font-mono text-xl font-bold text-primary">
-                75%
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center border border-border bg-primary/10 font-mono text-xl font-bold text-primary">
+                  75%
+                </div>
+                <div>
+                  <div className="font-mono text-xs text-muted-foreground">[SECURITY_SCORE]:</div>
+                  <div className="font-mono text-xs text-muted-foreground">Good security posture, but improvements recommended</div>
+                </div>
               </div>
-              <div>
-                <div className="font-mono text-xs text-muted-foreground">[SECURITY_SCORE]:</div>
-                <div className="font-mono text-xs text-muted-foreground">Good security posture, but improvements recommended</div>
-              </div>
+              <span className="border border-warning/50 px-2 py-0.5 font-mono text-xs text-warning">
+                MEDIUM_RISK
+              </span>
             </div>
             <div className="space-y-2 font-mono text-xs">
               <div className="flex items-center gap-2">
@@ -199,7 +201,7 @@ export default function SecurityPrivacyTemplate() {
             </div>
             <span className="font-mono text-xs text-muted-foreground">security_nav.tsx</span>
           </div>
-          <div className="flex border-b border-border font-mono text-xs">
+          <div className="flex font-mono text-xs">
             {([
               { id: "security" as const, label: "SECURITY", icon: Shield },
               { id: "privacy" as const, label: "PRIVACY", icon: Lock },
@@ -234,19 +236,21 @@ export default function SecurityPrivacyTemplate() {
                   <div className="size-2 rounded-full bg-success/50" />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">two_factor.config</span>
-                <span className="ml-auto border border-destructive/50 px-2 py-0.5 font-mono text-xs text-destructive">
-                  DISABLED
-                </span>
               </div>
               <div className="p-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
-                    <Smartphone className="h-5 w-5 text-primary" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
+                      <Smartphone className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-muted-foreground">[TWO_FACTOR_AUTH]:</div>
+                      <div className="font-mono text-xs text-muted-foreground">Add an extra layer of security with TOTP</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">[TWO_FACTOR_AUTH]:</div>
-                    <div className="font-mono text-xs text-muted-foreground">Add an extra layer of security with TOTP</div>
-                  </div>
+                  <span className="border border-destructive/50 px-2 py-0.5 font-mono text-xs text-destructive">
+                    DISABLED
+                  </span>
                 </div>
                 <p className="mb-4 font-mono text-xs text-muted-foreground">
                   Use an authenticator app like Google Authenticator or Authy to generate time-based codes.
@@ -429,13 +433,15 @@ export default function SecurityPrivacyTemplate() {
                 <div className="size-2 rounded-full bg-success/50" />
               </div>
               <span className="font-mono text-xs text-muted-foreground">audit.log</span>
-              <Button variant="outline" size="sm" className="rounded-none ml-auto font-mono text-xs h-7">
-                <Download className="mr-2 h-3 w-3" />
-                &gt; EXPORT
-              </Button>
             </div>
             <div className="p-4">
-              <div className="font-mono text-xs text-muted-foreground mb-4">[SECURITY_AUDIT_LOG]: COUNT={securityData.auditLog.length}</div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="font-mono text-xs text-muted-foreground">[SECURITY_AUDIT_LOG]: COUNT={securityData.auditLog.length}</div>
+                <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+                  <Download className="mr-2 h-3 w-3" />
+                  &gt; EXPORT
+                </Button>
+              </div>
 
               {/* Terminal Table */}
               <div className="border border-border">
