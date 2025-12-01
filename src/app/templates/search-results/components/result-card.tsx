@@ -49,7 +49,7 @@ export function ResultCard({ result }: ResultCardProps) {
             {result.tags.slice(0, 3).map((tag) => (
               <Badge
                 key={tag}
-                className="rounded-none font-mono text-[10px] bg-muted text-muted-foreground border-border"
+                variant="outline" className="rounded-none font-mono text-[10px] border-border"
               >
                 {tag}
               </Badge>
