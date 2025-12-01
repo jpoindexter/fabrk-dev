@@ -77,7 +77,7 @@ export function ShowcaseNav() {
               <Link key={page.href} href={page.href} className="block">
                 <div
                   className={cn(
-                    "p-4 rounded-lg border-2 transition-all",
+                    "p-4 rounded-none border-2 transition-all",
                     "hover:border-primary/50 hover:shadow-sm",
                     isActive
                       ? "border-primary bg-primary/10 shadow-sm"

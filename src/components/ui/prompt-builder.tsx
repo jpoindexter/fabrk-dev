@@ -81,7 +81,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
     };
 
     return (
-      <div data-slot="prompt-builder" ref={ref} className={cn("space-y-6 rounded-lg border p-6", className)} {...props}>
+      <div data-slot="prompt-builder" ref={ref} className={cn("space-y-6 rounded-none border p-6", className)} {...props}>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="editor">Editor</TabsTrigger>
@@ -181,7 +181,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                     variables.map((variable) => (
                       <div
                         key={variable.id}
-                        className={`space-y-2 rounded-lg border p-3`}
+                        className={`space-y-2 rounded-none border p-3`}
                       >
                         <div className="flex items-center justify-between">
                           <Input
@@ -242,7 +242,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
               <div className={`space-y-2`}>
                 <Label>Processed Prompt</Label>
                 <ScrollArea
-                  className={`h-96 rounded-lg border bg-card `}
+                  className={`h-96 rounded-none border bg-card `}
                 >
                   <pre className={`"text-sm" whitespace-pre-wrap font-mono`}>{processPrompt()}</pre>
                 </ScrollArea>

@@ -40,7 +40,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
   };
 
   return (
-    <div className="rounded-lg border border-border bg-muted/30 p-6">
+    <div className="rounded-none border border-border bg-muted/30 p-6">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <AlertCircle className="h-5 w-5 text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
@@ -63,7 +63,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
           const isNearLimit = percentage >= 80;
 
           return (
-            <div key={resource} className="rounded-lg bg-background p-4 dark:bg-muted">
+            <div key={resource} className="rounded-none bg-background p-4 dark:bg-muted">
               <div className="mb-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-muted-foreground" />
@@ -95,7 +95,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         })}
       </div>
 
-      <div className="mt-4 rounded-lg bg-primary p-4 dark:bg-primary/30">
+      <div className="mt-4 rounded-none bg-primary p-4 dark:bg-primary/30">
         <p className="text-sm text-primary dark:text-primary">
           💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources and unlock premium
           features like OAuth, payments, and email integration.

@@ -308,7 +308,7 @@ export default function WebhookDetailPage() {
                 {deliveries.map((delivery) => (
                   <div
                     key={delivery.id}
-                    className="border rounded-lg p-4 space-y-2"
+                    className="border rounded-none p-4 space-y-2"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">

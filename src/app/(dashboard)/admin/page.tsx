@@ -202,7 +202,7 @@ export default function AdminPage() {
           <CardContent className="space-y-2">
             <a
               href="/admin/users"
-              className="block rounded-lg border p-3 hover:bg-muted"
+              className="block rounded-none border p-3 hover:bg-muted"
             >
               <div className="font-semibold">Manage Users</div>
               <div className="text-sm text-muted-foreground">
@@ -211,7 +211,7 @@ export default function AdminPage() {
             </a>
             <a
               href="/admin/feature-flags"
-              className="block rounded-lg border p-3 hover:bg-muted"
+              className="block rounded-none border p-3 hover:bg-muted"
             >
               <div className="font-semibold">Feature Flags</div>
               <div className="text-sm text-muted-foreground">
@@ -220,7 +220,7 @@ export default function AdminPage() {
             </a>
             <a
               href="/admin/security"
-              className="block rounded-lg border p-3 hover:bg-muted"
+              className="block rounded-none border p-3 hover:bg-muted"
             >
               <div className="font-semibold">Security Logs</div>
               <div className="text-sm text-muted-foreground">

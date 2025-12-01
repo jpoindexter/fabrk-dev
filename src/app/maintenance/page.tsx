@@ -38,7 +38,7 @@ export default function MaintenancePage() {
         </p>
 
         {/* Estimated Time */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-lg bg-warning/10 px-6 py-3">
+        <div className="mb-8 inline-flex items-center gap-2 rounded-none bg-warning/10 px-6 py-3">
           <Clock className="h-5 w-5 text-warning" />
           <span className="text-sm font-medium text-warning-foreground">
             Estimated downtime: 30 minutes
@@ -71,7 +71,7 @@ export default function MaintenancePage() {
         </div>
 
         {/* What We're Doing */}
-        <div className="rounded-lg border border-border/60 bg-card p-6 text-left">
+        <div className="rounded-none border border-border/60 bg-card p-6 text-left">
           <h2 className="mb-4 text-lg font-semibold text-foreground">
             What we're working on:
           </h2>

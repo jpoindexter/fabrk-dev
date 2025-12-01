@@ -167,7 +167,7 @@ export default function AccountPage() {
                       key={tab.value}
                       onClick={() => setActiveTab(tab.value)}
                       className={cn(
-                        "flex w-full items-start gap-6 rounded-lg p-6 text-left transition-colors",
+                        "flex w-full items-start gap-6 rounded-none p-6 text-left transition-colors",
                         "hover:bg-accent hover:text-accent-foreground",
                         activeTab === tab.value && "bg-accent"
                       )}

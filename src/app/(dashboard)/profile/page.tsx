@@ -151,7 +151,7 @@ export default function ProfilePage() {
 
           {/* Account Info */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex items-center gap-3 rounded-lg border p-3">
+            <div className="flex items-center gap-3 rounded-none border p-3">
               <Mail className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Email</p>
@@ -161,7 +161,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border p-3">
+            <div className="flex items-center gap-3 rounded-none border p-3">
               <User className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Account Type</p>
@@ -169,7 +169,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border p-3">
+            <div className="flex items-center gap-3 rounded-none border p-3">
               <Calendar className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Member Since</p>
@@ -179,7 +179,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border p-3">
+            <div className="flex items-center gap-3 rounded-none border p-3">
               <Shield className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Security</p>

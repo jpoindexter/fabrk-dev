@@ -35,14 +35,14 @@ export default function PurchaseSuccessPage() {
         </div>
 
         {/* What's Next */}
-        <div className="bg-card border border-border rounded-lg p-8 mb-8">
+        <div className="bg-card border border-border rounded-none p-8 mb-8">
           <h2 className="text-2xl font-bold mb-6">What's Next?</h2>
 
           <div className="space-y-6">
             {/* Email */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-lg bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-3">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function PurchaseSuccessPage() {
             {/* Download */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-lg bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-3">
                   <Download className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function PurchaseSuccessPage() {
             {/* Setup */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-lg bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-3">
                   <Github className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function PurchaseSuccessPage() {
         </div>
 
         {/* Need Help */}
-        <div className="bg-muted/50 rounded-lg p-6 mb-8">
+        <div className="bg-muted/50 rounded-none p-6 mb-8">
           <h3 className="font-semibold mb-2">Need Help?</h3>
           <p className="text-sm text-muted-foreground mb-4">
             Check the comprehensive documentation included in your download, or reach out

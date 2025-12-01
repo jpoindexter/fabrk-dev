@@ -90,7 +90,7 @@ export default function SettingsPage() {
                 <CardHeader>
                   <div className="flex items-center gap-6">
                     <div
-                      className={`rounded-lg p-2 ${
+                      className={`rounded-none p-2 ${
                         section.isDanger ? "bg-destructive/10" : "bg-primary/10"
                       }`}
                     >

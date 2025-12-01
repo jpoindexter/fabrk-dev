@@ -208,7 +208,7 @@ export default function PaymentMethodsPage() {
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
-                    <div className="p-3 rounded-lg bg-primary/10 border border-border">
+                    <div className="p-3 rounded-none bg-primary/10 border border-border">
                       {getCardIcon(method.brand)}
                     </div>
                     <div>

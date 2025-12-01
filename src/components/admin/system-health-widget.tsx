@@ -139,7 +139,7 @@ export function SystemHealthWidget({
               <div
                 key={i}
                 className={cn(
-                  "h-2 flex-1 rounded-sm",
+                  "h-2 flex-1 rounded-none",
                   i < Math.floor((avgResponseTime / 1000) * 10)
                     ? responseTimeStatus === "healthy"
                       ? "bg-primary"
@@ -179,7 +179,7 @@ export function SystemHealthWidget({
         </div>
 
         {/* Requests Per Minute */}
-        <div className="rounded-md border border-border bg-accent/50 p-3">
+        <div className="rounded-none border border-border bg-accent/50 p-3">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-muted-foreground">Requests/min</span>
             <span className="text-xl font-black text-foreground">

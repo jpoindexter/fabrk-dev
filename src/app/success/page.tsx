@@ -69,7 +69,7 @@ function SuccessContent() {
           </div>
 
           {/* Check your email banner */}
-          <div className="space-y-3 rounded-lg border border-border bg-primary/10 p-6">
+          <div className="space-y-3 rounded-none border border-border bg-primary/10 p-6">
             <div className="flex items-center justify-center gap-3">
               <Mail className="h-6 w-6 text-foreground" />
               <h3 className="text-lg font-semibold">Check Your Email</h3>
@@ -80,7 +80,7 @@ function SuccessContent() {
           </div>
 
           {/* What's in the email */}
-          <div className="space-y-4 rounded-lg border border-border bg-muted p-6">
+          <div className="space-y-4 rounded-none border border-border bg-muted p-6">
             <h3 className="text-lg font-semibold">What's in Your Email:</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
@@ -111,7 +111,7 @@ function SuccessContent() {
           </div>
 
           {/* GitHub Access */}
-          <div className="space-y-4 rounded-lg border border-border bg-secondary/20 p-6">
+          <div className="space-y-4 rounded-none border border-border bg-secondary/20 p-6">
             <div className="flex items-center justify-center gap-2">
               <Package className="h-5 w-5 text-foreground" />
               <h3 className="font-semibold">Access Your Repository</h3>

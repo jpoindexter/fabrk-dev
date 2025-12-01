@@ -166,7 +166,7 @@ export function ApiKeysSection() {
       </CardHeader>
       <CardContent>
         {apiKeys.length === 0 ? (
-          <div className="rounded-lg border border-dashed p-8 text-center">
+          <div className="rounded-none border border-dashed p-8 text-center">
             <p className="text-sm text-muted-foreground mb-4">
               No API keys yet. Generate one to get started.
             </p>
@@ -176,7 +176,7 @@ export function ApiKeysSection() {
             {apiKeys.map((apiKey) => (
               <div
                 key={apiKey.id}
-                className="rounded-lg border p-4 space-y-3"
+                className="rounded-none border p-4 space-y-3"
               >
                 <div className="flex items-start justify-between">
                   <div>

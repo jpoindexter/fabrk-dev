@@ -163,11 +163,11 @@ export function BackupCodesModal({
               </AlertDescription>
             </Alert>
 
-            <div className="grid grid-cols-2 gap-3 p-4 bg-muted rounded-lg">
+            <div className="grid grid-cols-2 gap-3 p-4 bg-muted rounded-none">
               {codes.map((code, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 bg-background border border-border rounded-lg"
+                  className="flex items-center justify-between p-3 bg-background border border-border rounded-none"
                 >
                   <span className="font-mono text-sm font-medium">{code}</span>
                   <Button

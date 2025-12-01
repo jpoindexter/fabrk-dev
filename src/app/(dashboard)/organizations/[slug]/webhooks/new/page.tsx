@@ -189,7 +189,7 @@ export default function CreateWebhookPage() {
               </p>
             </div>
 
-            <div className="bg-muted p-4 rounded-lg">
+            <div className="bg-muted p-4 rounded-none">
               <p className="text-sm font-medium mb-2">Signature Verification Example</p>
               <pre className="text-xs overflow-x-auto">
                 {`const crypto = require('crypto');

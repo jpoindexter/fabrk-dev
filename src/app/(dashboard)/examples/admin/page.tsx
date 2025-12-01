@@ -212,17 +212,17 @@ export default function AdminPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+        <div className="rounded-none border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Total Users</p>
           <p className="text-3xl font-bold text-foreground">{users.length}</p>
         </div>
-        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+        <div className="rounded-none border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Active Users</p>
           <p className="text-3xl font-bold text-success">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
-        <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+        <div className="rounded-none border border-border bg-card p-6 shadow-sm">
           <p className="text-sm font-medium text-muted-foreground">Admins</p>
           <p className="text-3xl font-bold text-primary">
             {users.filter((u) => u.role === "ADMIN").length}

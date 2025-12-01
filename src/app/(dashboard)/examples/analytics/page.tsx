@@ -229,7 +229,7 @@ export default async function AnalyticsPage() {
       </Card>
 
       {/* Implementation Note */}
-      <div className="rounded-lg border-2 border-primary bg-primary/5 p-4">
+      <div className="rounded-none border-2 border-primary bg-primary/5 p-4">
         <p className="text-sm text-muted-foreground">
           <span className="font-semibold text-foreground">📊 Implementation Note:</span>{" "}
           This is a demo analytics page with mock data. Replace{" "}

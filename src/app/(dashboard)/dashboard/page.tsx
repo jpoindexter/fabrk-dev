@@ -310,7 +310,7 @@ export default function DashboardPage() {
                 return (
                   <div
                     key={activity.id}
-                    className="flex items-center gap-6 rounded-lg border p-3"
+                    className="flex items-center gap-6 rounded-none border p-3"
                   >
                     <div className="rounded-full bg-secondary p-2">
                       <Icon className="h-4 w-4" />
@@ -388,7 +388,7 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="flex items-center gap-3 rounded-lg border p-4">
+            <div className="flex items-center gap-3 rounded-none border p-4">
               <Shield className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Security</p>
@@ -409,7 +409,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border p-4">
+            <div className="flex items-center gap-3 rounded-none border p-4">
               <Users className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Account Type</p>
@@ -419,7 +419,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-lg border p-4">
+            <div className="flex items-center gap-3 rounded-none border p-4">
               <Activity className="h-5 w-5 text-muted-foreground" />
               <div>
                 <p className="text-sm font-medium">Status</p>
