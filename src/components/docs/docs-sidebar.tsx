@@ -120,6 +120,7 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
             const hasActiveItem = section.items.some((item) => pathname === item.href) || pathname === section.href;
             const sectionKey = section.id || section.title;
             const displayTitle = formatSectionTitle ? formatSectionTitle(section.title, sectionIndex) : section.title;
+            const isLastSection = sectionIndex === navigation.length - 1;
 
             return (
               <div key={sectionKey}>
@@ -183,6 +184,11 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
                       );
                     })}
                   </div>
+                )}
+
+                {/* Horizontal divider between sections */}
+                {!isLastSection && (
+                  <div className="my-3 border-t border-border" />
                 )}
               </div>
             );
