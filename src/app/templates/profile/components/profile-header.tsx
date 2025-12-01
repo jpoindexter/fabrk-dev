@@ -50,8 +50,8 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
 
       <div className="p-6">
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Avatar Section - spans full height */}
-          <div className="flex-shrink-0">
+          {/* Avatar Section */}
+          <div className="flex-shrink-0 flex flex-col gap-4">
             <Avatar className="h-40 w-40 border-2 border-border rounded-none shadow-none">
               <AvatarImage src={user.avatar || undefined} />
               <AvatarFallback className="rounded-none bg-muted text-3xl font-mono">
@@ -61,6 +61,10 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                   .join("")}
               </AvatarFallback>
             </Avatar>
+            <Button className="rounded-none font-mono text-xs w-full">
+              <Edit className="mr-1 h-3 w-3" />
+              &gt; EDIT_PROFILE
+            </Button>
           </div>
 
           {/* Info Section - stacked vertically */}
@@ -92,14 +96,6 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
 
             {/* Bio */}
             <p className="font-mono text-sm text-muted-foreground">{user.bio}</p>
-
-            {/* Action Button */}
-            <div>
-              <Button className="rounded-none font-mono text-xs">
-                <Edit className="mr-1 h-3 w-3" />
-                &gt; EDIT_PROFILE
-              </Button>
-            </div>
           </div>
         </div>
       </div>
