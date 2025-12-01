@@ -29,12 +29,12 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
       <div className="p-4">
         <div className="flex gap-2">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10 pointer-events-none" />
             <Input
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search components, templates, hooks..."
-              className="pl-10 rounded-none font-mono text-sm"
+              className="pl-9 rounded-none font-mono text-sm"
             />
           </div>
           <Button className="rounded-none font-mono text-xs">
