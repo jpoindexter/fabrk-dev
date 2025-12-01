@@ -163,7 +163,7 @@ export function NotificationCenter() {
           {unreadCount > 0 && (
             <Badge
               variant="destructive"
-              className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
+              className="absolute -top-1 -right-1 h-5 w-5 rounded-none p-0 flex items-center justify-center text-xs"
             >
               {unreadCount > 9 ? "9+" : unreadCount}
             </Badge>
@@ -224,7 +224,7 @@ export function NotificationCenter() {
                       {notification.title}
                     </p>
                     {!notification.read && (
-                      <div className="h-2 w-2 bg-primary rounded-full flex-shrink-0 mt-1" />
+                      <div className="h-2 w-2 bg-primary rounded-none flex-shrink-0 mt-1" />
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground mt-1 line-clamp-2">

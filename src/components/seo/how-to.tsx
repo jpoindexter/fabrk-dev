@@ -81,7 +81,7 @@ export function HowTo({
         <ol className="space-y-6">
           {steps.map((step, index) => (
             <li key={index} className="flex gap-4">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-info text-info-foreground font-semibold">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-none bg-info text-info-foreground font-semibold">
                 {index + 1}
               </div>
 
@@ -95,7 +95,7 @@ export function HowTo({
                   <img
                     src={step.image}
                     alt={step.name}
-                    className="mt-4 rounded-lg border border-border"
+                    className="mt-4 rounded-none border border-border"
                   />
                 )}
               </div>
