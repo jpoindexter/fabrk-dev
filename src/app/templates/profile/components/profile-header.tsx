@@ -87,7 +87,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="text-2xl font-semibold">{user.name}</h2>
-                <Badge className="rounded-none font-mono text-xs bg-primary/20 text-primary border-primary/50">
+                <Badge className="rounded-none font-mono text-xs">
                   {user.role}
                 </Badge>
               </div>
