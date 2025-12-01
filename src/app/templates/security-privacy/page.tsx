@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -91,7 +92,7 @@ const privacySettings = {
 };
 
 export default function SecurityPrivacyTemplate() {
-  const [activeTab, setActiveTab] = useState<"security" | "privacy" | "audit" | "compliance">("security");
+  const [activeTab, setActiveTab] = useState("security");
   const [privacy, setPrivacy] = useState(privacySettings);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
@@ -190,41 +191,37 @@ export default function SecurityPrivacyTemplate() {
         </div>
 
         {/* Tab Navigation - Terminal Style */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <div className="border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">security_nav.tsx</span>
             </div>
-            <span className="font-mono text-xs text-muted-foreground">security_nav.tsx</span>
+            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+              {([
+                { id: "security", label: "SECURITY", icon: Shield },
+                { id: "privacy", label: "PRIVACY", icon: Lock },
+                { id: "audit", label: "AUDIT_LOG", icon: Activity },
+                { id: "compliance", label: "COMPLIANCE", icon: FileText },
+              ]).map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className="flex items-center gap-2 px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted"
+                >
+                  <tab.icon className="h-3 w-3" />
+                  [{tab.label}]
+                </TabsTrigger>
+              ))}
+            </TabsList>
           </div>
-          <div className="flex font-mono text-xs">
-            {([
-              { id: "security" as const, label: "SECURITY", icon: Shield },
-              { id: "privacy" as const, label: "PRIVACY", icon: Lock },
-              { id: "audit" as const, label: "AUDIT_LOG", icon: Activity },
-              { id: "compliance" as const, label: "COMPLIANCE", icon: FileText },
-            ]).map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 border-r border-border transition-colors ${
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                <tab.icon className="h-3 w-3" />
-                [{tab.label}]
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Security Tab */}
-        {activeTab === "security" && (
-          <div className="space-y-6">
+          {/* Security Tab */}
+          <TabsContent value="security" className="mt-6 space-y-6">
             {/* 2FA Section */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -344,12 +341,10 @@ export default function SecurityPrivacyTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Privacy Tab */}
-        {activeTab === "privacy" && (
-          <div className="space-y-6">
+          {/* Privacy Tab */}
+          <TabsContent value="privacy" className="mt-6 space-y-6">
             {/* Profile Privacy */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -418,12 +413,11 @@ export default function SecurityPrivacyTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Audit Log Tab */}
-        {activeTab === "audit" && (
-          <div className="border border-border bg-card">
+          {/* Audit Log Tab */}
+          <TabsContent value="audit" className="mt-6">
+            <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
               <div className="flex gap-1.5">
                 <div className="size-2 rounded-full bg-destructive/50" />
@@ -465,12 +459,11 @@ export default function SecurityPrivacyTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+            </div>
+          </TabsContent>
 
-        {/* Compliance Tab */}
-        {activeTab === "compliance" && (
-          <div className="space-y-6">
+          {/* Compliance Tab */}
+          <TabsContent value="compliance" className="mt-6 space-y-6">
             {/* GDPR Rights */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -565,8 +558,8 @@ export default function SecurityPrivacyTemplate() {
                 </AlertDialog>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
+        </Tabs>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">

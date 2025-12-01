@@ -9,13 +9,23 @@ import {
   Shield,
   Palette,
   Lock,
+  DollarSign,
+  Rocket,
+  AlertTriangle,
+  Bell,
+  User,
+  Inbox,
+  Newspaper,
+  Search,
+  Layers,
+  Layout,
 } from "lucide-react";
 
 export interface Template {
   id: string;
   name: string;
   description: string;
-  category: "dashboard" | "admin" | "account" | "marketing" | "auth";
+  category: "dashboard" | "admin" | "account" | "marketing" | "auth" | "ux" | "patterns";
   icon: React.ElementType;
   badge?: string;
   href: string;
@@ -144,6 +154,102 @@ export const templates: Template[] = [
     href: "/templates/authentication/two-factor",
     features: ["Code input", "Auto-focus", "Resend code", "Fallback options"],
   },
+  // Marketing - New templates
+  {
+    id: "pricing-page",
+    name: "Pricing Page",
+    description: "3-tier pricing with comparison table and FAQ accordion",
+    category: "marketing",
+    icon: DollarSign,
+    badge: "New",
+    href: "/templates/pricing-page",
+    features: ["Monthly/yearly toggle", "Feature comparison", "FAQ section", "Popular badge"],
+  },
+  {
+    id: "blog",
+    name: "Blog",
+    description: "Blog listing with featured posts, categories, and pagination",
+    category: "marketing",
+    icon: Newspaper,
+    href: "/templates/blog",
+    features: ["Featured hero", "Category filter", "Post cards", "Pagination"],
+  },
+  {
+    id: "landing-variations",
+    name: "Landing Variations",
+    description: "3 hero section variations for different use cases",
+    category: "marketing",
+    icon: Layout,
+    href: "/templates/landing-variations",
+    features: ["Centered hero", "Split layout", "Minimal hero", "Interactive preview"],
+  },
+  // User Experience - New templates
+  {
+    id: "onboarding",
+    name: "Onboarding Flow",
+    description: "Multi-step wizard with progress tracking",
+    category: "ux",
+    icon: Rocket,
+    badge: "New",
+    href: "/templates/onboarding",
+    features: ["Step indicator", "Progress bar", "Form validation", "5-step wizard"],
+  },
+  {
+    id: "profile",
+    name: "Profile Page",
+    description: "User profile with stats, activity feed, and badges",
+    category: "ux",
+    icon: User,
+    href: "/templates/profile",
+    features: ["Avatar card", "Stats display", "Activity feed", "Projects tab"],
+  },
+  {
+    id: "notifications",
+    name: "Notifications Center",
+    description: "Notification management with filtering and actions",
+    category: "ux",
+    icon: Bell,
+    href: "/templates/notifications",
+    features: ["All/Unread tabs", "Mark as read", "5 notification types", "Delete actions"],
+  },
+  {
+    id: "search-results",
+    name: "Search Results",
+    description: "Search interface with filters, sorting, and pagination",
+    category: "ux",
+    icon: Search,
+    href: "/templates/search-results",
+    features: ["Filter sidebar", "Sort options", "Grid/list view", "Pagination"],
+  },
+  // Patterns - New templates
+  {
+    id: "error-pages",
+    name: "Error Pages",
+    description: "404, 500, and maintenance error pages",
+    category: "patterns",
+    icon: AlertTriangle,
+    badge: "New",
+    href: "/templates/error-pages",
+    features: ["404 not found", "500 server error", "503 maintenance", "Terminal output"],
+  },
+  {
+    id: "empty-states",
+    name: "Empty States",
+    description: "8 common empty state patterns with actions",
+    category: "patterns",
+    icon: Inbox,
+    href: "/templates/empty-states",
+    features: ["No data", "First-time user", "Search no results", "Error state"],
+  },
+  {
+    id: "modals",
+    name: "Modal Patterns",
+    description: "Dialog, alert, sheet, and popover examples",
+    category: "patterns",
+    icon: Layers,
+    href: "/templates/modals",
+    features: ["Confirmation dialog", "Form modal", "Side sheet", "Popover"],
+  },
 ];
 
 export const categories = [
@@ -152,6 +258,8 @@ export const categories = [
   { id: "admin", name: "Admin Panels", icon: Settings },
   { id: "account", name: "Account Pages", icon: Users },
   { id: "marketing", name: "Marketing", icon: FileText },
+  { id: "ux", name: "User Experience", icon: User },
+  { id: "patterns", name: "Patterns", icon: Layers },
   { id: "components", name: "Components", icon: Palette, href: "/components" },
 ];
 

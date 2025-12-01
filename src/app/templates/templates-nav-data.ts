@@ -9,6 +9,16 @@ import {
   Mail,
   LayoutDashboard,
   Lock,
+  DollarSign,
+  Rocket,
+  AlertTriangle,
+  Bell,
+  User,
+  Inbox,
+  Newspaper,
+  Search,
+  Layers,
+  Layout,
 } from "lucide-react";
 
 export interface TemplateNavItem {
@@ -77,6 +87,32 @@ export const templatesNavigation: TemplateNavSection[] = [
     items: [
       { title: "Documentation", href: "/templates/documentation", icon: FileText },
       { title: "Email Templates", href: "/templates/email-templates", icon: Mail },
+      { title: "Pricing Page", href: "/templates/pricing-page", icon: DollarSign },
+      { title: "Blog", href: "/templates/blog", icon: Newspaper },
+      { title: "Landing Variations", href: "/templates/landing-variations", icon: Layout },
+    ],
+  },
+  {
+    title: "User Experience",
+    id: "user-experience",
+    href: "/templates/user-experience",
+    icon: User,
+    items: [
+      { title: "Onboarding", href: "/templates/onboarding", icon: Rocket },
+      { title: "Profile Page", href: "/templates/profile", icon: User },
+      { title: "Notifications", href: "/templates/notifications", icon: Bell },
+      { title: "Search Results", href: "/templates/search-results", icon: Search },
+    ],
+  },
+  {
+    title: "Patterns",
+    id: "patterns",
+    href: "/templates/patterns",
+    icon: Layers,
+    items: [
+      { title: "Error Pages", href: "/templates/error-pages", icon: AlertTriangle },
+      { title: "Empty States", href: "/templates/empty-states", icon: Inbox },
+      { title: "Modal Patterns", href: "/templates/modals", icon: Layers },
     ],
   },
 ];

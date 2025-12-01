@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   LineChart,
   Line,
@@ -94,7 +95,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function ChartLibraryTemplate() {
-  const [activeTab, setActiveTab] = useState<"line" | "area" | "bar" | "pie">("line");
+  const [activeTab, setActiveTab] = useState("line");
 
   return (
  <div >
@@ -156,152 +157,148 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Chart Tabs - Terminal Style */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <div className="border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">charts.tsx</span>
             </div>
-            <span className="font-mono text-xs text-muted-foreground">charts.tsx</span>
+
+            {/* Tab Navigation */}
+            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+              {(["line", "area", "bar", "pie"] as const).map((tab) => (
+                <TabsTrigger
+                  key={tab}
+                  value={tab}
+                  className="px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted"
+                >
+                  [{tab.toUpperCase()}_CHART]
+                </TabsTrigger>
+              ))}
+            </TabsList>
           </div>
 
-          {/* Tab Navigation */}
-          <div className="flex border-b border-border font-mono text-xs">
-            {(["line", "area", "bar", "pie"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 border-r border-border transition-colors ${
-                  activeTab === tab
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                [{tab.toUpperCase()}_CHART]
-              </button>
-            ))}
-          </div>
-
-          <div className="p-4">
-            {/* Line Chart */}
-            {activeTab === "line" && (
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">[REVENUE_OVERVIEW]:</div>
-                    <div className="font-mono text-xs text-muted-foreground mt-1">Monthly revenue, expenses, and profit (2024)</div>
-                  </div>
-                  <span className="border border-border px-2 py-0.5 font-mono text-xs">MULTI_LINE</span>
+          {/* Line Chart */}
+          <TabsContent value="line" className="mt-0">
+            <div className="border border-border border-t-0 bg-card p-4">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="font-mono text-xs text-muted-foreground">[REVENUE_OVERVIEW]:</div>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">Monthly revenue, expenses, and profit (2024)</div>
                 </div>
-                <ResponsiveContainer width="100%" height={400}>
-                  <LineChart data={revenueData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Legend wrapperStyle={{ fontSize: "12px" }} />
-                    <Line type="monotone" dataKey="revenue" stroke="oklch(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
-                    <Line type="monotone" dataKey="expenses" stroke="oklch(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
-                    <Line type="monotone" dataKey="profit" stroke="oklch(var(--success))" strokeWidth={2} dot={{ r: 4 }} />
-                  </LineChart>
-                </ResponsiveContainer>
+                <span className="border border-border px-2 py-0.5 font-mono text-xs">MULTI_LINE</span>
               </div>
-            )}
+              <ResponsiveContainer width="100%" height={400}>
+                <LineChart data={revenueData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                  <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                  <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend wrapperStyle={{ fontSize: "12px" }} />
+                  <Line type="monotone" dataKey="revenue" stroke="oklch(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="expenses" stroke="oklch(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="profit" stroke="oklch(var(--success))" strokeWidth={2} dot={{ r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </TabsContent>
 
-            {/* Area Chart */}
-            {activeTab === "area" && (
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">[USER_GROWTH]:</div>
-                    <div className="font-mono text-xs text-muted-foreground mt-1">Total active users over time</div>
-                  </div>
-                  <span className="border border-border px-2 py-0.5 font-mono text-xs">SOLID_FILL</span>
+          {/* Area Chart */}
+          <TabsContent value="area" className="mt-0">
+            <div className="border border-border border-t-0 bg-card p-4">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="font-mono text-xs text-muted-foreground">[USER_GROWTH]:</div>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">Total active users over time</div>
                 </div>
-                <ResponsiveContainer width="100%" height={400}>
-                  <AreaChart data={userGrowthData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                    <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                    <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                <span className="border border-border px-2 py-0.5 font-mono text-xs">SOLID_FILL</span>
+              </div>
+              <ResponsiveContainer width="100%" height={400}>
+                <AreaChart data={userGrowthData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                  <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                  <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                  <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                  <Area type="monotone" dataKey="users" stroke="oklch(var(--primary))" strokeWidth={2} fillOpacity={0.3} fill="oklch(var(--primary))" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </TabsContent>
+
+          {/* Bar Chart */}
+          <TabsContent value="bar" className="mt-0">
+            <div className="border border-border border-t-0 bg-card p-4">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="font-mono text-xs text-muted-foreground">[CONVERSION_FUNNEL]:</div>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">User journey from visitor to retained customer</div>
+                </div>
+                <span className="border border-border px-2 py-0.5 font-mono text-xs">HORIZONTAL_BARS</span>
+              </div>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={conversionFunnelData} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
+                  <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
+                  <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
+                  <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                  <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </TabsContent>
+
+          {/* Pie Chart */}
+          <TabsContent value="pie" className="mt-0">
+            <div className="border border-border border-t-0 bg-card p-4">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="font-mono text-xs text-muted-foreground">[TRAFFIC_SOURCES]:</div>
+                  <div className="font-mono text-xs text-muted-foreground mt-1">Distribution of website visitors by source</div>
+                </div>
+                <span className="border border-border px-2 py-0.5 font-mono text-xs">DONUT_CHART</span>
+              </div>
+              <div className="flex items-center justify-center gap-12">
+                <ResponsiveContainer width={400} height={400}>
+                  <PieChart>
+                    <Pie
+                      data={trafficSourceData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={80}
+                      outerRadius={140}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {trafficSourceData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
                     <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
-                    <Area type="monotone" dataKey="users" stroke="oklch(var(--primary))" strokeWidth={2} fillOpacity={0.3} fill="oklch(var(--primary))" />
-                  </AreaChart>
+                  </PieChart>
                 </ResponsiveContainer>
-              </div>
-            )}
 
-            {/* Bar Chart */}
-            {activeTab === "bar" && (
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">[CONVERSION_FUNNEL]:</div>
-                    <div className="font-mono text-xs text-muted-foreground mt-1">User journey from visitor to retained customer</div>
-                  </div>
-                  <span className="border border-border px-2 py-0.5 font-mono text-xs">HORIZONTAL_BARS</span>
-                </div>
-                <ResponsiveContainer width="100%" height={400}>
-                  <BarChart data={conversionFunnelData} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                    <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
-                    <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                    <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
-                    <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-
-            {/* Pie Chart */}
-            {activeTab === "pie" && (
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="font-mono text-xs text-muted-foreground">[TRAFFIC_SOURCES]:</div>
-                    <div className="font-mono text-xs text-muted-foreground mt-1">Distribution of website visitors by source</div>
-                  </div>
-                  <span className="border border-border px-2 py-0.5 font-mono text-xs">DONUT_CHART</span>
-                </div>
-                <div className="flex items-center justify-center gap-12">
-                  <ResponsiveContainer width={400} height={400}>
-                    <PieChart>
-                      <Pie
-                        data={trafficSourceData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={80}
-                        outerRadius={140}
-                        paddingAngle={5}
-                        dataKey="value"
-                      >
-                        {trafficSourceData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
-                        ))}
-                      </Pie>
-                      <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
-                    </PieChart>
-                  </ResponsiveContainer>
-
-                  <div className="space-y-4">
-                    {trafficSourceData.map((source, idx) => (
-                      <div key={idx} className="flex items-center gap-4 font-mono text-sm">
-                        <div className="h-4 w-4 border border-border" style={{ backgroundColor: source.color }} />
-                        <span className="w-32">{source.name}</span>
-                        <div className="text-right">
-                          <div className="font-bold">{source.value.toLocaleString()}</div>
-                          <div className="text-muted-foreground">
-                            {((source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
-                          </div>
+                <div className="space-y-4">
+                  {trafficSourceData.map((source, idx) => (
+                    <div key={idx} className="flex items-center gap-4 font-mono text-sm">
+                      <div className="h-4 w-4 border border-border" style={{ backgroundColor: source.color }} />
+                      <span className="w-32">{source.name}</span>
+                      <div className="text-right">
+                        <div className="font-bold">{source.value.toLocaleString()}</div>
+                        <div className="text-muted-foreground">
+                          {((source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
-          </div>
-        </div>
+            </div>
+          </TabsContent>
+        </Tabs>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">

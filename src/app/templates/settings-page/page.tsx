@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   AlertTriangle,
   Bell,
@@ -29,7 +30,7 @@ import {
 } from "lucide-react";
 
 export default function SettingsPageTemplate() {
-  const [activeTab, setActiveTab] = useState<"general" | "account" | "privacy" | "billing">("general");
+  const [activeTab, setActiveTab] = useState("general");
 
   return (
  <div >
@@ -49,41 +50,37 @@ export default function SettingsPageTemplate() {
         </div>
 
         {/* Tab Navigation - Terminal Style */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <div className="border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">settings_nav.tsx</span>
             </div>
-            <span className="font-mono text-xs text-muted-foreground">settings_nav.tsx</span>
+            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+              {([
+                { id: "general", label: "GENERAL", icon: Settings },
+                { id: "account", label: "ACCOUNT", icon: User },
+                { id: "privacy", label: "PRIVACY", icon: Lock },
+                { id: "billing", label: "BILLING", icon: CreditCard },
+              ]).map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className="flex items-center gap-2 px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted"
+                >
+                  <tab.icon className="h-3 w-3" />
+                  [{tab.label}]
+                </TabsTrigger>
+              ))}
+            </TabsList>
           </div>
-          <div className="flex border-b border-border font-mono text-xs">
-            {([
-              { id: "general" as const, label: "GENERAL", icon: Settings },
-              { id: "account" as const, label: "ACCOUNT", icon: User },
-              { id: "privacy" as const, label: "PRIVACY", icon: Lock },
-              { id: "billing" as const, label: "BILLING", icon: CreditCard },
-            ]).map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 border-r border-border transition-colors ${
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                <tab.icon className="h-3 w-3" />
-                [{tab.label}]
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* General Tab */}
-        {activeTab === "general" && (
-          <div className="space-y-6">
+          {/* General Tab */}
+          <TabsContent value="general" className="mt-6 space-y-6">
             {/* Appearance Section */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -148,12 +145,10 @@ export default function SettingsPageTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Account Tab */}
-        {activeTab === "account" && (
-          <div className="space-y-6">
+          {/* Account Tab */}
+          <TabsContent value="account" className="mt-6 space-y-6">
             {/* Profile Information */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -250,12 +245,10 @@ export default function SettingsPageTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Privacy Tab */}
-        {activeTab === "privacy" && (
-          <div className="space-y-6">
+          {/* Privacy Tab */}
+          <TabsContent value="privacy" className="mt-6 space-y-6">
             {/* Notifications */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -327,12 +320,10 @@ export default function SettingsPageTemplate() {
                 <DataExportSection />
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Billing Tab */}
-        {activeTab === "billing" && (
-          <div className="space-y-6">
+          {/* Billing Tab */}
+          <TabsContent value="billing" className="mt-6 space-y-6">
             {/* Subscription */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -404,8 +395,8 @@ export default function SettingsPageTemplate() {
                 <DangerZone />
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
+        </Tabs>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">

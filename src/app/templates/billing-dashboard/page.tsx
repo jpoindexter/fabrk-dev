@@ -9,6 +9,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   CreditCard,
   Download,
@@ -137,7 +138,7 @@ const plans = [
 ];
 
 export default function BillingDashboardTemplate() {
-  const [activeTab, setActiveTab] = useState<"overview" | "plans" | "history">("overview");
+  const [activeTab, setActiveTab] = useState("overview");
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
@@ -189,35 +190,31 @@ export default function BillingDashboardTemplate() {
         </div>
 
         {/* Terminal Tab Navigation */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <div className="border border-border bg-card">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="flex gap-1.5">
+                <div className="size-2 rounded-full bg-destructive/50" />
+                <div className="size-2 rounded-full bg-warning/50" />
+                <div className="size-2 rounded-full bg-success/50" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground">billing_nav.tsx</span>
             </div>
-            <span className="font-mono text-xs text-muted-foreground">billing_nav.tsx</span>
+            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+              {(["overview", "plans", "history"] as const).map((tab) => (
+                <TabsTrigger
+                  key={tab}
+                  value={tab}
+                  className="px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted"
+                >
+                  [{tab.toUpperCase()}]
+                </TabsTrigger>
+              ))}
+            </TabsList>
           </div>
-          <div className="flex border-b border-border font-mono text-xs">
-            {(["overview", "plans", "history"] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 border-r border-border transition-colors ${
-                  activeTab === tab
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
-                }`}
-              >
-                [{tab.toUpperCase()}]
-              </button>
-            ))}
-          </div>
-        </div>
 
-        {/* Overview Tab */}
-        {activeTab === "overview" && (
-          <div className="space-y-6">
+          {/* Overview Tab */}
+          <TabsContent value="overview" className="mt-6 space-y-6">
             {/* Current Plan - Terminal Style */}
             <div className="border border-primary bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
@@ -227,14 +224,16 @@ export default function BillingDashboardTemplate() {
                   <div className="size-2 rounded-full bg-success/50" />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">subscription.config</span>
-                <span className="ml-auto border border-success/50 px-2 py-0.5 font-mono text-xs text-success">
-                  ACTIVE
-                </span>
               </div>
               <div className="p-4">
                 <div className="flex items-start justify-between">
                   <div>
-                    <div className="font-mono text-xs text-muted-foreground mb-2">[CURRENT_PLAN]:</div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-mono text-xs text-muted-foreground">[CURRENT_PLAN]:</span>
+                      <span className="border border-success/50 px-2 py-0.5 font-mono text-xs text-success">
+                        ACTIVE
+                      </span>
+                    </div>
                     <div className="flex items-center gap-3 mb-2">
                       <Star className="h-5 w-5 text-primary" />
                       <span className="text-2xl font-bold">{subscription.plan}</span>
@@ -435,12 +434,10 @@ export default function BillingDashboardTemplate() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* Plans Tab */}
-        {activeTab === "plans" && (
-          <div className="space-y-6">
+          {/* Plans Tab */}
+          <TabsContent value="plans" className="mt-6 space-y-6">
             {/* Alert */}
             <div className="border border-warning bg-warning/10 p-4 font-mono text-xs">
               <span className="font-bold text-warning-foreground">[WARNING]:</span> <span className="text-foreground">Changing your plan will take effect at the next billing cycle</span>
@@ -515,12 +512,10 @@ export default function BillingDashboardTemplate() {
                 </Button>
               </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
 
-        {/* History Tab */}
-        {activeTab === "history" && (
-          <div className="space-y-6">
+          {/* History Tab */}
+          <TabsContent value="history" className="mt-6 space-y-6">
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-1.5">
@@ -581,8 +576,8 @@ export default function BillingDashboardTemplate() {
             <div className="border border-border bg-card p-4 font-mono text-xs">
               <span className="text-muted-foreground">[INFO]:</span> All invoices are automatically emailed to your registered email address. Contact support if you need assistance.
             </div>
-          </div>
-        )}
+          </TabsContent>
+        </Tabs>
 
         {/* Implementation Note */}
         <div className="border border-border bg-card">
