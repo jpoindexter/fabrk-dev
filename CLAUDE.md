@@ -203,6 +203,130 @@ npm run scan:hex
 ### Environment validation errors
 Check error message, add/fix var in `.env.local`. See `/docs/ENV-VALIDATION.md`.
 
+## Design System Rules
+
+### 🔒 ABSOLUTE RULES - NEVER VIOLATE
+
+1. **NEVER modify `src/components/ui/*`** - These are locked base components
+2. **NEVER use hardcoded colors** - Always use design tokens
+3. **ALWAYS use UI components** - Never raw HTML for buttons, inputs, cards, etc.
+
+### Color Tokens (from globals.css)
+
+```css
+/* Use these tokens, NEVER hex values */
+--background          /* Page backgrounds */
+--foreground          /* Primary text */
+--card                /* Card backgrounds */
+--card-foreground     /* Card text */
+--primary             /* Brand color, CTAs */
+--primary-foreground  /* Text on primary */
+--secondary           /* Secondary actions */
+--muted               /* Subtle backgrounds */
+--muted-foreground    /* Secondary text */
+--accent              /* Highlights */
+--destructive         /* Errors, danger */
+--border              /* All borders */
+--success             /* Success states */
+--warning             /* Warning states */
+```
+
+```tsx
+// ✅ CORRECT
+className="bg-background text-foreground border-border"
+className="bg-primary text-primary-foreground"
+className="text-muted-foreground hover:text-foreground"
+
+// ❌ WRONG - NEVER DO THIS
+className="bg-white text-black border-gray-200"
+className="bg-purple-600 text-white"
+style={{ color: '#8b5cf6' }}
+```
+
+### Component Usage
+
+Always import from `@/components/ui/`:
+
+```tsx
+// ✅ CORRECT
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+
+// ❌ WRONG - raw HTML
+<button className="...">Click</button>
+<div className="rounded border p-4">Card</div>
+<input className="..." />
+```
+
+### Terminal Console Aesthetic (Templates Section)
+
+All templates use this consistent style:
+
+```tsx
+// Labels
+<span className="font-mono text-xs text-muted-foreground">[LABEL]: VALUE</span>
+
+// Section headers
+<div className="font-mono text-xs text-muted-foreground">[SECTION_NAME]:</div>
+
+// Terminal window header (traffic lights)
+<div className="flex items-center gap-2 border-b border-border px-4 py-2">
+  <div className="flex gap-1.5">
+    <div className="size-2 rounded-full bg-destructive/50" />
+    <div className="size-2 rounded-full bg-warning/50" />
+    <div className="size-2 rounded-full bg-success/50" />
+  </div>
+  <span className="font-mono text-xs text-muted-foreground">filename.tsx</span>
+</div>
+
+// Action text
+<span className="font-mono text-xs text-primary">&gt; ACTION_NAME</span>
+
+// Feature lists
+<div><span className="text-success">&gt;</span> Feature description</div>
+```
+
+### Spacing & Layout Conventions
+
+```tsx
+// Standard page container
+<div className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+
+// Card structure
+<div className="border border-border bg-card">
+  <div className="border-b border-border px-4 py-2">Header</div>
+  <div className="p-4">Content</div>
+</div>
+
+// Grid layouts
+<div className="grid md:grid-cols-2 gap-4">
+<div className="grid md:grid-cols-3 gap-6">
+```
+
+### Typography
+
+```tsx
+// Headings
+<h1 className="text-4xl font-bold">           // Page titles
+<h2 className="text-lg font-semibold">        // Section titles
+<h3 className="font-mono text-xs font-bold">  // Terminal-style headers
+
+// Body text
+<p className="font-mono text-sm text-muted-foreground">  // Descriptions
+<span className="font-mono text-xs">                     // Labels, metadata
+```
+
+### When Creating New Components
+
+1. Check if a similar component exists in `src/components/ui/`
+2. If yes, USE IT - don't recreate
+3. If no, create in appropriate folder (`landing/`, `dashboard/`, `docs/`)
+4. Follow existing patterns in that folder
+5. Use design tokens exclusively
+6. Run `npm run scan:hex` before committing
+
 ## Philosophy
 
 1. **Simplicity** - Clean, understandable code
