@@ -352,7 +352,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="refunds"
-                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-sm"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
                     [Q] DO_YOU_OFFER_REFUNDS?
@@ -375,7 +375,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="support"
-                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-sm"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
                     [Q] IS_TECHNICAL_SUPPORT_INCLUDED?
@@ -394,7 +394,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="client-projects"
-                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-sm"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
                     [Q] CAN_I_USE_FABRK_FOR_CLIENT_PROJECTS?
@@ -413,7 +413,7 @@ export default function ContactPage() {
               >
                 <AccordionItem
                   value="updates"
-                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-md"
+                  className="rounded-none border border-border bg-card transition-all data-[state=open]:shadow-sm"
                 >
                   <AccordionTrigger className="px-6 text-left text-sm font-semibold text-foreground hover:no-underline">
                     [Q] DO_I_GET_LIFETIME_UPDATES?

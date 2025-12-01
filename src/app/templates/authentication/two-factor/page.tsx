@@ -48,7 +48,7 @@ export default function TwoFactorTemplate() {
           </div>
           
           <div className="flex min-h-[500px] flex-col items-center justify-center p-4 sm:p-8 bg-background/50">
-            <div className="w-full max-w-[380px] space-y-6 border border-border bg-background p-6 shadow-lg">
+            <div className="w-full max-w-[380px] space-y-6 border border-border bg-background p-6 shadow-sm">
               {/* Header */}
               <div className="flex flex-col space-y-2 text-center">
                 <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center border border-border bg-card">

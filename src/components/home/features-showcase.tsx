@@ -144,7 +144,7 @@ function FeatureCard({ icon: Icon, module, status, title, description, index }: 
         y: -4,
         transition: { duration: 0.2 }
       }}
-      className="group border border-border bg-card transition-colors hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
+      className="group border border-border bg-card transition-colors hover:border-primary/50 hover:shadow-sm"
     >
       {/* Module Header */}
       <div className="flex items-center justify-between border-b border-border px-4 py-2">

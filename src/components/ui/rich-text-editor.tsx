@@ -296,7 +296,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           className={`
             w-full overflow-y-auto rounded-md border bg-background p-4 text-foreground
             outline-none transition-all
-            ${isFocused ? "shadow-md" : "shadow-sm"}
+            ${isFocused ? "shadow-sm" : "shadow-sm"}
             ${readOnly ? "cursor-default bg-muted/50" : "cursor-text"}
             prose prose-sm max-w-none
             prose-headings:font-semibold prose-headings:text-foreground
