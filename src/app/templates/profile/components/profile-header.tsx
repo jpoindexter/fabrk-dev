@@ -61,8 +61,8 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                   .join("")}
               </AvatarFallback>
             </Avatar>
-            <Button className="rounded-none font-mono text-xs w-full">
-              <Edit className="mr-1 h-3 w-3" />
+            <Button className="rounded-none font-mono text-xs w-40 whitespace-normal h-auto py-2">
+              <Edit className="mr-1 h-3 w-3 flex-shrink-0" />
               &gt; EDIT_PROFILE
             </Button>
           </div>
