@@ -14,12 +14,10 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/landing/footer";
 import { StickyCTABar } from "@/components/landing/sticky-cta-bar";
 import { ExitIntentPopup } from "@/components/landing/exit-intent-popup";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 export default function HomePage() {
   return (
-    <div className="relative isolate min-h-screen">
-      <TerminalBackground />
+    <div>
       <SiteNavigation />
       <HeroSection />
       <FeaturesShowcase />

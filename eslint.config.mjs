@@ -1,6 +1,7 @@
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
+import tailwindV4 from "eslint-plugin-tailwind-v4";
 
 // Import custom design system rules
 import noHardcodedColors from "./config/eslint-rules/no-hardcoded-colors.mjs";
@@ -20,14 +21,6 @@ const sanitizeCompatConfig = (config) => {
   );
   return { ...config, plugins: sanitizedPlugins };
 };
-
-let tailwindFlatConfigs = [];
-try {
-  const tailwindcss = await import("eslint-plugin-tailwindcss");
-  tailwindFlatConfigs = tailwindcss.default?.configs?.["flat/recommended"] ?? tailwindcss.configs?.["flat/recommended"] ?? [];
-} catch (error) {
-  console.warn("⚠️  eslint-plugin-tailwindcss unavailable; skipping Tailwind lint presets.");
-}
 
 let nextFlatConfigs = [];
 try {
@@ -71,7 +64,7 @@ const eslintConfig = [{
     "*.generated.js",
     "**/generated-sources.ts", // Auto-generated component sources
   ],
-}, ...nextFlatConfigs, ...tailwindFlatConfigs, {
+}, ...nextFlatConfigs, {
   files: ["**/*.ts", "**/*.tsx"],
   languageOptions: {
     parser: tsparser,
@@ -85,14 +78,7 @@ const eslintConfig = [{
   },
   plugins: {
     ...(hasTypescriptEslintFromNext ? {} : { "@typescript-eslint": tseslint }),
-    // Design system plugin temporarily disabled due to ESLint flat config scoping issues
-    // The PR manually removes hardcoded styles - rules not needed for validation
-    // "design-system": {
-    //   rules: {
-    //     "no-hardcoded-colors": noHardcodedColors,
-    //     "no-inline-styles": noInlineStyles,
-    //   },
-    // },
+    "tailwind-v4": tailwindV4,
     ...(hasJsxA11yFromNext ? {} : { "jsx-a11y": jsxA11y }),
   },
   rules: {
@@ -105,18 +91,13 @@ const eslintConfig = [{
     "@next/next/no-img-element": "off",
     "@typescript-eslint/ban-ts-comment": "off",
 
-    // Design system rules temporarily disabled (ESLint flat config scoping issues)
-    // 'design-system/no-hardcoded-colors': 'error',
-    // 'design-system/no-inline-styles': 'error',
-
     // Low-priority aesthetic/tooling rules (disabled for productivity)
     'react/no-unescaped-entities': 'off', // Aesthetic only, doesn't affect functionality
     'react/display-name': 'off', // Dev tooling only, doesn't affect production
     '@next/next/no-html-link-for-pages': 'off', // Minor performance optimization
 
-    // Tailwind rules - OFF for Rails compliance (0 warnings required)
-    'tailwindcss/no-arbitrary-value': 'off',
-    'tailwindcss/no-custom-classname': 'off',
+    // Tailwind v4 rules
+    // "tailwind-v4/no-undefined-classes": "error", 
   },
 }, {
   files: ["**/*.{js,jsx,ts,tsx}"],
@@ -191,6 +172,14 @@ const eslintConfig = [{
 //   ],
 //   rules: {
 //     'design-system/no-inline-styles': 'off'
+//   }
+// }, {
+//   settings: {
+//     tailwindcss: {
+//       config: "src/app/globals.css",
+//       callees: ["cn", "cva"],
+//       classRegex: "^class(Name)?$"
+//     }
 //   }
 }];
 

@@ -40,7 +40,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 // User type definition
 type User = {
@@ -389,8 +388,7 @@ export default function UserManagementTemplate() {
   const enterpriseCount = mockUsers.filter((u) => u.plan === "Enterprise").length;
 
   return (
-    <div className="relative isolate min-h-screen bg-background">
-      <TerminalBackground />
+ <div >
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}

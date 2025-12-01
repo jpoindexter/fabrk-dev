@@ -161,6 +161,7 @@
     "daisyui": "^5.5.5",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.1",
+    "eslint-plugin-tailwind-v4": "^1.0.15",
     "jsdom": "^27.2.0",
     "postcss": "^8",
     "prettier": "^3.1.1",

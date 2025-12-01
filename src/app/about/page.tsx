@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import config from "@/config";
 import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 import { motion } from "framer-motion";
 import {
   Rocket,
@@ -97,12 +96,11 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background font-mono relative">
-      <TerminalBackground />
+ <div className=" font-mono ">
       <SiteNavigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background px-6 py-24">
+ <section className=" overflow-hidden px-6 py-24">
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

@@ -7,15 +7,13 @@
 
 import Link from "next/link";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 export default function MarketingPage() {
   const categoryTemplates = getTemplatesByCategory("marketing");
   const categoryInfo = getCategoryInfo("marketing");
 
   return (
-    <div className="relative isolate min-h-screen bg-background">
-      <TerminalBackground />
+ <div >
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Category Header */}
         <section className="space-y-4">

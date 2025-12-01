@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -268,8 +267,7 @@ function FeatureCategoryCard({ category, index }: { category: typeof FEATURE_CAT
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-background font-mono relative">
-      <TerminalBackground />
+ <div className=" font-mono ">
       <SiteNavigation />
 
       {/* Hero Section */}

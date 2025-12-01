@@ -39,7 +39,6 @@ import {
   Activity,
   Settings,
 } from "lucide-react";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 // Mock data
 const securityData = {
@@ -126,8 +125,7 @@ export default function SecurityPrivacyTemplate() {
   };
 
   return (
-    <div className="relative isolate min-h-screen bg-background">
-      <TerminalBackground />
+ <div >
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}

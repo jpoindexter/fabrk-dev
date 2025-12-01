@@ -16,6 +16,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
+import { TerminalBackground } from "@/components/landing/terminal-background";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -240,8 +241,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               Skip to footer
             </a>
           </div>
-          <div className="relative flex min-h-screen flex-col bg-background">
-            <main id="main-content" className="flex-1 bg-background">
+          <div className="relative flex min-h-screen flex-col bg-background isolate">
+            <TerminalBackground />
+            <main id="main-content" className="flex-1">
               <Suspense>
                 {children}
               </Suspense>

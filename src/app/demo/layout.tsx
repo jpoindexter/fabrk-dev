@@ -1,5 +1,3 @@
-import { TerminalBackground } from "@/components/landing/terminal-background";
-
 export default function DemoLayout({
   children,
 }: {
@@ -7,7 +5,6 @@ export default function DemoLayout({
 }) {
   return (
     <div className="font-mono">
-      <TerminalBackground />
       {children}
     </div>
   );

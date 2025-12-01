@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,8 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 font-mono">
-      <TerminalBackground />
+ <div className="flex flex-col items-center justify-center px-6 font-mono">
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
         <div className="mb-6 inline-block border-2 border-foreground/20 bg-foreground/5 px-3 py-1">

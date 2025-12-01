@@ -29,7 +29,7 @@ const techStack = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-background">
       {/* Tech Stack Bar */}
       <div className="border-b border-border px-4 sm:px-6 py-6">
         <div>

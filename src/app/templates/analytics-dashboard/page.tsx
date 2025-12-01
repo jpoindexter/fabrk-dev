@@ -18,7 +18,6 @@ import {
   Download,
   BarChart3,
 } from "lucide-react";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 // Mock data
 const metrics = [
@@ -102,8 +101,7 @@ export default function AnalyticsDashboardTemplate() {
   const [activeTab, setActiveTab] = useState<"overview" | "analytics" | "reports">("overview");
 
   return (
-    <div className="relative isolate min-h-screen bg-background">
-      <TerminalBackground />
+ <div >
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}

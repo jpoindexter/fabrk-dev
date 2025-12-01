@@ -8,7 +8,6 @@ import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { FAQSection } from "@/components/landing/faq-section";
-import { TerminalBackground } from "@/components/landing/terminal-background";
 
 export const metadata: Metadata = {
   title: "Pricing - Fabrk",
@@ -18,8 +17,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="relative min-h-screen bg-background font-mono">
-      <TerminalBackground />
+ <div className=" font-mono">
       <SiteNavigation />
 
       <main>
