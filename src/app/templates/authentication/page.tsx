@@ -6,7 +6,7 @@
 "use client";
 
 import Link from "next/link";
-import { getCategoryInfo, getTemplatesByCategory } from "../../template-data";
+import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AuthenticationPage() {
   const categoryTemplates = getTemplatesByCategory("auth");

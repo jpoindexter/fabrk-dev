@@ -7,11 +7,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Mail,
-  Send,
   Key,
   Shield,
   CreditCard,
@@ -287,8 +285,10 @@ const emailTemplates = [
 ];
 
 export default function EmailTemplatesShowcase() {
-  const [selectedTemplate, setSelectedTemplate] = useState(emailTemplates[0]);
+  const [activeTab, setActiveTab] = useState(emailTemplates[0].id);
   const [primaryColor, setPrimaryColor] = useState('271.5 81.3% 55.9%');
+
+  const selectedTemplate = emailTemplates.find(t => t.id === activeTab) || emailTemplates[0];
 
   useEffect(() => {
     const updatePrimaryColor = () => {
@@ -315,10 +315,6 @@ export default function EmailTemplatesShowcase() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleSendTest = () => {
-    toast.success(`Test email sent for: ${selectedTemplate.name}`);
-  };
 
   return (
  <div >
@@ -363,113 +359,83 @@ export default function EmailTemplatesShowcase() {
           </div>
         </div>
 
-        {/* Main Layout */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Template List - Terminal Style */}
-          <div className="lg:col-span-1 border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
-                <div className="size-2 rounded-full bg-destructive/50" />
-                <div className="size-2 rounded-full bg-warning/50" />
-                <div className="size-2 rounded-full bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">templates.json</span>
+        {/* Main Layout - Tabbed Interface */}
+        <div className="border border-border bg-card">
+          {/* Tab Header */}
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="flex gap-1.5">
+              <div className="size-2 rounded-full bg-destructive/50" />
+              <div className="size-2 rounded-full bg-warning/50" />
+              <div className="size-2 rounded-full bg-success/50" />
             </div>
-            <div className="p-4">
-              <div className="font-mono text-xs text-muted-foreground mb-4">[AVAILABLE_TEMPLATES]:</div>
-              <div className="space-y-2">
-                {emailTemplates.map((template) => {
-                  const Icon = template.icon;
-                  return (
-                    <button
-                      key={template.id}
-                      onClick={() => setSelectedTemplate(template)}
-                      className={`w-full border p-3 text-left transition-all font-mono text-xs ${
-                        selectedTemplate.id === template.id
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:bg-muted"
-                      }`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <Icon className={`mt-0.5 h-4 w-4 ${
-                          selectedTemplate.id === template.id ? "text-primary" : "text-muted-foreground"
-                        }`} />
-                        <div className="flex-1 min-w-0">
-                          <div className="font-bold">{template.name}</div>
-                          <div className="text-muted-foreground truncate">{template.description}</div>
-                          <div className="mt-1.5 inline-block border border-border px-1.5 py-0.5">
-                            {template.category}
-                          </div>
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            <span className="font-mono text-xs text-muted-foreground">{selectedTemplate.id}_email.html</span>
           </div>
 
-          {/* Preview Area - Terminal Style */}
-          <div className="lg:col-span-2 border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
-                <div className="size-2 rounded-full bg-destructive/50" />
-                <div className="size-2 rounded-full bg-warning/50" />
-                <div className="size-2 rounded-full bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">{selectedTemplate.id}_email.html</span>
-              <div className="ml-auto">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSendTest}
-                  className="rounded-none font-mono text-xs h-7"
+          {/* Tabs */}
+          <div className="flex border-b border-border overflow-x-auto">
+            {emailTemplates.map((template) => {
+              const Icon = template.icon;
+              return (
+                <button
+                  key={template.id}
+                  onClick={() => setActiveTab(template.id)}
+                  className={`flex items-center gap-2 px-4 py-2 border-r border-border transition-colors font-mono text-xs whitespace-nowrap ${
+                    activeTab === template.id
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
                 >
-                  <Send className="mr-1 h-3 w-3" />
-                  &gt; SEND_TEST
-                </Button>
+                  <Icon className="h-3 w-3" />
+                  [{template.name.toUpperCase().replace(/ /g, "_")}]
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Content Area */}
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h2 className="font-mono text-lg font-bold">{selectedTemplate.name}</h2>
+                  <span className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                    {selectedTemplate.category}
+                  </span>
+                </div>
+                <p className="font-mono text-sm text-muted-foreground">{selectedTemplate.description}</p>
               </div>
             </div>
 
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <div className="font-mono text-xs text-muted-foreground">[{selectedTemplate.name.toUpperCase().replace(/ /g, "_")}]:</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">{selectedTemplate.description}</div>
+            {/* Email Preview */}
+            <div className="border border-border bg-muted p-8 rounded-none mb-6">
+              <iframe
+                srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
+                title={selectedTemplate.name}
+                className="min-h-[600px] w-full max-w-[600px] mx-auto block border border-border bg-white shadow-sm"
+              />
+            </div>
+
+            {/* Template Details */}
+            <div className="grid md:grid-cols-2 gap-6 border-t border-border pt-6 font-mono text-xs">
+              <div>
+                <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
+                <div className="flex flex-wrap gap-2">
+                  {selectedTemplate.triggers.map((trigger, idx) => (
+                    <span key={idx} className="border border-border bg-muted/30 px-2 py-1">
+                      &gt; {trigger}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Email Preview */}
-              <div className="border border-border bg-muted p-4">
-                <iframe
-                  srcDoc={injectScrollbarStyles(selectedTemplate.preview, primaryColor)}
-                  title={selectedTemplate.name}
-                  className="min-h-[500px] w-full mx-auto block border border-border bg-white"
-                />
-              </div>
-
-              {/* Template Details */}
-              <div className="mt-4 pt-4 border-t border-border space-y-4 font-mono text-xs">
-                <div>
-                  <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedTemplate.triggers.map((trigger, idx) => (
-                      <span key={idx} className="border border-border px-2 py-0.5">
-                        {trigger}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-muted-foreground mb-2">[VARIABLES]:</div>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedTemplate.variables.map((variable, idx) => (
-                      <span key={idx} className="border border-primary/50 px-2 py-0.5 text-primary">
-                        {`{${variable}}`}
-                      </span>
-                    ))}
-                  </div>
+              <div>
+                <div className="text-muted-foreground mb-2">[VARIABLES]:</div>
+                <div className="flex flex-wrap gap-2">
+                  {selectedTemplate.variables.map((variable, idx) => (
+                    <span key={idx} className="border border-primary/30 bg-primary/5 px-2 py-1 text-primary">
+                      {`{${variable}}`}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
