@@ -71,9 +71,9 @@ export function DangerZone() {
   };
 
   return (
-    <Card className="border-destructive">
+    <Card className="rounded-none border-destructive">
       <CardHeader>
-        <CardTitle className="text-destructive">Danger Zone</CardTitle>
+        <CardTitle className="font-mono text-xs text-destructive">[DANGER_ZONE]:</CardTitle>
         <CardDescription>
           Irreversible and destructive actions.
         </CardDescription>

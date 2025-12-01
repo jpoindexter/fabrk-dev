@@ -72,17 +72,17 @@ export function DataExport() {
   };
 
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
-        <CardTitle>Export Your Data</CardTitle>
+        <CardTitle className="font-mono text-xs">[EXPORT_DATA]:</CardTitle>
         <CardDescription>
           Download a copy of your account data in your preferred format.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-3">
-          <Label htmlFor="format-select" className="text-base font-medium">
-            Export Format
+          <Label htmlFor="format-select" className="font-mono text-xs">
+            [FORMAT]:
           </Label>
           <Select value={format} onValueChange={(value) => setFormat(value as ExportFormat)}>
             <SelectTrigger id="format-select" disabled={isLoading} className="rounded-none">
@@ -96,7 +96,7 @@ export function DataExport() {
         </div>
 
         <div className="border-t pt-4 space-y-3">
-          <Label className="text-base font-medium">Data to Include</Label>
+          <Label className="font-mono text-xs">[DATA_TO_INCLUDE]:</Label>
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -104,10 +104,11 @@ export function DataExport() {
                 checked={options.includeProfile}
                 onCheckedChange={() => handleOptionChange("includeProfile")}
                 disabled={isLoading}
+                className="rounded-none"
               />
               <Label
                 htmlFor="profile"
-                className="font-normal cursor-pointer flex-1"
+                className="font-mono text-xs font-normal cursor-pointer flex-1"
               >
                 Profile Information
               </Label>
@@ -119,10 +120,11 @@ export function DataExport() {
                 checked={options.includeSettings}
                 onCheckedChange={() => handleOptionChange("includeSettings")}
                 disabled={isLoading}
+                className="rounded-none"
               />
               <Label
                 htmlFor="settings"
-                className="font-normal cursor-pointer flex-1"
+                className="font-mono text-xs font-normal cursor-pointer flex-1"
               >
                 Settings & Preferences
               </Label>
@@ -134,10 +136,11 @@ export function DataExport() {
                 checked={options.includeActivity}
                 onCheckedChange={() => handleOptionChange("includeActivity")}
                 disabled={isLoading}
+                className="rounded-none"
               />
               <Label
                 htmlFor="activity"
-                className="font-normal cursor-pointer flex-1"
+                className="font-mono text-xs font-normal cursor-pointer flex-1"
               >
                 Activity History
               </Label>
@@ -149,10 +152,11 @@ export function DataExport() {
                 checked={options.includePreferences}
                 onCheckedChange={() => handleOptionChange("includePreferences")}
                 disabled={isLoading}
+                className="rounded-none"
               />
               <Label
                 htmlFor="preferences"
-                className="font-normal cursor-pointer flex-1"
+                className="font-mono text-xs font-normal cursor-pointer flex-1"
               >
                 User Preferences
               </Label>

@@ -84,9 +84,9 @@ export function AppearanceForm() {
   }
 
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
-        <CardTitle>Appearance</CardTitle>
+        <CardTitle className="font-mono text-xs">[APPEARANCE]:</CardTitle>
         <CardDescription>
           Customize your language preference. Use the theme dropdown in the navigation bar to change color themes.
         </CardDescription>
@@ -99,7 +99,7 @@ export function AppearanceForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Language</FormLabel>
+                  <FormLabel className="font-mono text-xs">[LANGUAGE]:</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="rounded-none">

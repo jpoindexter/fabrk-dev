@@ -83,9 +83,9 @@ export function PrivacyForm() {
   }
 
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
-        <CardTitle>Privacy</CardTitle>
+        <CardTitle className="font-mono text-xs">[PRIVACY]:</CardTitle>
         <CardDescription>
           Control your privacy settings and how your data is handled.
         </CardDescription>
@@ -99,7 +99,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Profile Visibility</FormLabel>
+                    <FormLabel className="font-mono text-xs">[PROFILE_VISIBILITY]:</FormLabel>
                     <FormDescription>
                       Allow your profile to be visible to other users.
                     </FormDescription>
@@ -122,7 +122,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Activity Tracking</FormLabel>
+                    <FormLabel className="font-mono text-xs">[ACTIVITY_TRACKING]:</FormLabel>
                     <FormDescription>
                       Allow us to track your activity to improve your experience.
                     </FormDescription>
@@ -145,7 +145,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Analytics Sharing</FormLabel>
+                    <FormLabel className="font-mono text-xs">[ANALYTICS_SHARING]:</FormLabel>
                     <FormDescription>
                       Share anonymous usage data to help us improve the product.
                     </FormDescription>
@@ -168,7 +168,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Search Engine Indexing</FormLabel>
+                    <FormLabel className="font-mono text-xs">[SEARCH_INDEXING]:</FormLabel>
                     <FormDescription>
                       Allow search engines to index your profile.
                     </FormDescription>
@@ -191,7 +191,7 @@ export function PrivacyForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Data Retention</FormLabel>
+                    <FormLabel className="font-mono text-xs">[DATA_RETENTION]:</FormLabel>
                     <FormDescription>
                       Keep my account data if I delete my account.
                     </FormDescription>

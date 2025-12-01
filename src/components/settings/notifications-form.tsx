@@ -83,9 +83,9 @@ export function NotificationsForm() {
   }
 
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardHeader>
-        <CardTitle>Notifications</CardTitle>
+        <CardTitle className="font-mono text-xs">[NOTIFICATIONS]:</CardTitle>
         <CardDescription>
           Manage how and when you receive email notifications.
         </CardDescription>
@@ -99,7 +99,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Security Alerts</FormLabel>
+                    <FormLabel className="font-mono text-xs">[SECURITY_ALERTS]:</FormLabel>
                     <FormDescription>
                       Receive alerts for suspicious activity and security events.
                     </FormDescription>
@@ -122,7 +122,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Product Updates</FormLabel>
+                    <FormLabel className="font-mono text-xs">[PRODUCT_UPDATES]:</FormLabel>
                     <FormDescription>
                       Get notified about new features and improvements.
                     </FormDescription>
@@ -145,7 +145,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Marketing Emails</FormLabel>
+                    <FormLabel className="font-mono text-xs">[MARKETING_EMAILS]:</FormLabel>
                     <FormDescription>
                       Receive promotional emails and special offers.
                     </FormDescription>
@@ -168,7 +168,7 @@ export function NotificationsForm() {
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel>Weekly Summary</FormLabel>
+                    <FormLabel className="font-mono text-xs">[WEEKLY_SUMMARY]:</FormLabel>
                     <FormDescription>
                       Get a weekly digest of your account activity.
                     </FormDescription>
