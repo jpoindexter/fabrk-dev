@@ -7,19 +7,7 @@
 
 import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
-import { useSession } from "next-auth/react";
-import {
-  Users,
-  Mail,
-  MoreVertical,
-  Shield,
-  Trash2,
-  Crown,
-  UserCheck,
-  UserX,
-  Loader2,
-  Plus,
-} from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,40 +19,14 @@ import {
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { MembersPageHeader } from "./components/members-page-header";
+import { MemberTableRow } from "./components/member-table-row";
+import { RolePermissionsCard } from "./components/role-permissions-card";
 
 interface Member {
   id: string;
@@ -89,13 +51,9 @@ interface Organization {
 export default function OrganizationMembersPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
   const [loading, setLoading] = React.useState(true);
   const [organization, setOrganization] = React.useState<Organization | null>(null);
   const [members, setMembers] = React.useState<Member[]>([]);
-  const [inviting, setInviting] = React.useState(false);
-  const [inviteEmail, setInviteEmail] = React.useState("");
-  const [inviteRole, setInviteRole] = React.useState<"ADMIN" | "MEMBER" | "GUEST">("MEMBER");
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -125,37 +83,6 @@ export default function OrganizationMembersPage() {
       fetchData();
     }
   }, [params.slug]);
-
-  const handleInvite = async () => {
-    if (!organization || !inviteEmail) return;
-
-    setInviting(true);
-    try {
-      const response = await fetch("/api/organizations/invite", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          organizationId: organization.id,
-          email: inviteEmail,
-          role: inviteRole,
-        }),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Failed to send invitation");
-      }
-
-      toast.success(`Invitation sent to ${inviteEmail}`);
-      setInviteEmail("");
-      setInviteRole("MEMBER");
-    } catch (error: unknown) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to send invitation";
-      toast.error(errorMessage);
-    } finally {
-      setInviting(false);
-    }
-  };
 
   const handleRemoveMember = async (memberId: string) => {
     if (!organization) return;
@@ -205,36 +132,6 @@ export default function OrganizationMembersPage() {
     }
   };
 
-  const getRoleBadgeVariant = (role: string) => {
-    switch (role) {
-      case "OWNER":
-        return "default";
-      case "ADMIN":
-        return "secondary";
-      case "MEMBER":
-        return "outline";
-      case "GUEST":
-        return "outline";
-      default:
-        return "outline";
-    }
-  };
-
-  const getRoleIcon = (role: string) => {
-    switch (role) {
-      case "OWNER":
-        return <Crown className="h-3 w-3" />;
-      case "ADMIN":
-        return <Shield className="h-3 w-3" />;
-      case "MEMBER":
-        return <UserCheck className="h-3 w-3" />;
-      case "GUEST":
-        return <UserX className="h-3 w-3" />;
-      default:
-        return null;
-    }
-  };
-
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -263,77 +160,11 @@ export default function OrganizationMembersPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="rounded-md border border-border bg-primary p-2">
-            <Users className="h-6 w-6 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold">Team Members</h1>
-            <p className="text-muted-foreground">
-              Manage members and roles for {organization.name}
-            </p>
-          </div>
-        </div>
-
-        {isOwnerOrAdmin && (
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button>
-                <Plus className="mr-2 h-4 w-4" />
-                Invite Member
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="rounded-md border border-border">
-              <DialogHeader>
-                <DialogTitle>Invite Team Member</DialogTitle>
-                <DialogDescription>
-                  Send an invitation to join {organization.name}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4 py-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    value={inviteEmail}
-                    onChange={(e) => setInviteEmail(e.target.value)}
-                    className="rounded-md border border-border"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="role">Role</Label>
-                  <Select value={inviteRole} onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}>
-                    <SelectTrigger
-                      id="role"
-                      className="rounded-md border border-border"
-                    >
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="rounded-md border border-border">
-                      <SelectItem value="MEMBER">Member</SelectItem>
-                      <SelectItem value="ADMIN">Admin</SelectItem>
-                      <SelectItem value="GUEST">Guest</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <DialogFooter>
-                <Button
-                  onClick={handleInvite}
-                  disabled={!inviteEmail || inviting}
-                >
-                  {inviting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  <Mail className="mr-2 h-4 w-4" />
-                  Send Invitation
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-        )}
-      </div>
+      <MembersPageHeader
+        organizationId={organization.id}
+        organizationName={organization.name}
+        isOwnerOrAdmin={isOwnerOrAdmin}
+      />
 
       {/* Members Table */}
       <Card className="rounded-md border border-border shadow-sm">
@@ -355,155 +186,22 @@ export default function OrganizationMembersPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {members.map((member) => {
-                const isCurrentUser = member.userId === session?.user?.id;
-                const canManage = isOwnerOrAdmin && !isCurrentUser && member.role !== "OWNER";
-
-                return (
-                  <TableRow key={member.id}>
-                    <TableCell>
-                      <div className="flex items-center gap-3">
-                        <Avatar className="h-8 w-8 border border-border">
-                          <AvatarImage src={member.user.image || ""} />
-                          <AvatarFallback className="text-xs">
-                            {member.user.name
-                              ?.split(" ")
-                              .map((n) => n[0])
-                              .join("")
-                              .toUpperCase() || "U"}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium">{member.user.name}</p>
-                          {isCurrentUser && (
-                            <span className="text-xs text-muted-foreground">(You)</span>
-                          )}
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <span className="text-sm text-muted-foreground">
-                        {member.user.email}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      <Badge
-                        variant={getRoleBadgeVariant(member.role)}
-                        className="gap-1 w-24 justify-center"
-                      >
-                        {getRoleIcon(member.role)}
-                        {member.role}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <span className="text-sm text-muted-foreground">
-                        {new Date(member.joinedAt).toLocaleDateString()}
-                      </span>
-                    </TableCell>
-                    <TableCell>
-                      {canManage && (
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon" aria-label="Manage member options">
-                              <MoreVertical className="h-4 w-4" aria-hidden="true" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent
-                            align="end"
-                            className="rounded-md border border-border"
-                          >
-                            <DropdownMenuLabel>Manage Member</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem
-                              onClick={() => handleUpdateRole(member.id, "ADMIN")}
-                              disabled={member.role === "ADMIN"}
-                            >
-                              <Shield className="mr-2 h-4 w-4" />
-                              Make Admin
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => handleUpdateRole(member.id, "MEMBER")}
-                              disabled={member.role === "MEMBER"}
-                            >
-                              <UserCheck className="mr-2 h-4 w-4" />
-                              Make Member
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => handleUpdateRole(member.id, "GUEST")}
-                              disabled={member.role === "GUEST"}
-                            >
-                              <UserX className="mr-2 h-4 w-4" />
-                              Make Guest
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem
-                              onClick={() => handleRemoveMember(member.id)}
-                              className="text-destructive focus:text-destructive"
-                            >
-                              <Trash2 className="mr-2 h-4 w-4" />
-                              Remove Member
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {members.map((member) => (
+                <MemberTableRow
+                  key={member.id}
+                  member={member}
+                  isOwnerOrAdmin={isOwnerOrAdmin}
+                  onUpdateRole={handleUpdateRole}
+                  onRemoveMember={handleRemoveMember}
+                />
+              ))}
             </TableBody>
           </Table>
         </CardContent>
       </Card>
 
       {/* Role Permissions Info */}
-      <Card className="rounded-md border border-border">
-        <CardHeader>
-          <CardTitle>Role Permissions</CardTitle>
-          <CardDescription>
-            Understanding member roles and their access levels
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-md border border-border bg-card p-4">
-              <div className="mb-2 flex items-center gap-2">
-                <Crown className="h-5 w-5 text-primary" />
-                <Badge variant="default">OWNER</Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Full control over organization, including deletion and ownership transfer.
-              </p>
-            </div>
-            <div className="rounded-md border border-border bg-card p-4">
-              <div className="mb-2 flex items-center gap-2">
-                <Shield className="h-5 w-5 text-primary" />
-                <Badge variant="secondary">ADMIN</Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Can manage members, settings, and billing. Cannot delete organization.
-              </p>
-            </div>
-            <div className="rounded-md border border-border bg-card p-4">
-              <div className="mb-2 flex items-center gap-2">
-                <UserCheck className="h-5 w-5 text-primary" />
-                <Badge variant="outline">MEMBER</Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Standard access to organization resources and features.
-              </p>
-            </div>
-            <div className="rounded-md border border-border bg-card p-4">
-              <div className="mb-2 flex items-center gap-2">
-                <UserX className="h-5 w-5 text-primary" />
-                <Badge variant="outline">GUEST</Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Limited read-only access to specific resources.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      <RolePermissionsCard />
     </div>
   );
 }
