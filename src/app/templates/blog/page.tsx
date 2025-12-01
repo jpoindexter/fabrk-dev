@@ -137,7 +137,7 @@ export default function BlogTemplate() {
               <span className="font-mono text-xs text-muted-foreground">
                 featured.tsx
               </span>
-              <Badge className="ml-auto rounded-none font-mono text-xs bg-primary/20 text-primary border-primary/50">
+              <Badge variant="default" className="ml-auto rounded-none font-mono text-xs">
                 FEATURED
               </Badge>
             </div>
@@ -153,7 +153,7 @@ export default function BlogTemplate() {
 
                 {/* Content */}
                 <div className="flex flex-col justify-center space-y-4">
-                  <Badge className="w-fit rounded-none font-mono text-xs bg-muted text-muted-foreground">
+                  <Badge variant="outline" className="w-fit rounded-none font-mono text-xs">
                     {featuredPost.category.toUpperCase()}
                   </Badge>
 
@@ -249,7 +249,7 @@ export default function BlogTemplate() {
               </div>
 
               <div className="p-4 space-y-3">
-                <Badge className="rounded-none font-mono text-xs bg-muted text-muted-foreground">
+                <Badge variant="outline" className="rounded-none font-mono text-xs">
                   {post.category.toUpperCase()}
                 </Badge>
 

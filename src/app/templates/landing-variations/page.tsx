@@ -107,7 +107,7 @@ export default function LandingVariationsTemplate() {
               </div>
               <div className="p-8 bg-gradient-to-b from-muted/30 to-transparent">
                 <div className="max-w-3xl mx-auto text-center space-y-6">
-                  <Badge className="rounded-none font-mono text-xs bg-primary/20 text-primary border-primary/50">
+                  <Badge variant="secondary" className="rounded-none font-mono text-xs">
                     <Sparkles className="mr-1 h-3 w-3" />
                     NEW: VERSION 2.0 RELEASED
                   </Badge>
@@ -172,7 +172,7 @@ export default function LandingVariationsTemplate() {
               <div className="p-8 bg-gradient-to-b from-muted/30 to-transparent">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-6">
-                    <Badge className="rounded-none font-mono text-xs bg-success/20 text-success border-success/50">
+                    <Badge variant="secondary" className="rounded-none font-mono text-xs">
                       <Zap className="mr-1 h-3 w-3" />
                       TRUSTED BY 10,000+ DEVELOPERS
                     </Badge>

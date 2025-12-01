@@ -50,7 +50,7 @@ export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps)
           </button>
         </div>
         {isYearly && (
-          <Badge className="rounded-none font-mono text-xs bg-success/20 text-success border-success/50">
+          <Badge variant="secondary" className="rounded-none font-mono text-xs">
             SAVE 17%
           </Badge>
         )}

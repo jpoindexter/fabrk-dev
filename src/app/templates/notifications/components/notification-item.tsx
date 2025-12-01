@@ -51,7 +51,7 @@ export function NotificationItem({
               {notification.title}
             </span>
             {!notification.read && (
-              <Badge className="rounded-none font-mono text-[10px] bg-primary/20 text-primary border-primary/50 px-1 h-4">
+              <Badge variant="default" size="sm" className="rounded-none font-mono text-[10px] px-1 h-4">
                 NEW
               </Badge>
             )}
