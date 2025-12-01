@@ -168,7 +168,7 @@ async function AnalyticsDashboard() {
                       {Array.from({ length: count }, (_, i) => (
                         <div
                           key={i}
-                          className="h-4 w-2 rounded-sm bg-primary"
+                          className="h-4 w-2 rounded-none bg-primary"
                         />
                       ))}
                     </div>
