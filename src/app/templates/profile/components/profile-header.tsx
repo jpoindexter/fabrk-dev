@@ -14,7 +14,6 @@ import {
   Calendar,
   Link as LinkIcon,
   Edit,
-  Settings,
 } from "lucide-react";
 
 interface UserStats {
@@ -55,16 +54,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
         </span>
       </div>
 
-      <div className="p-6 relative">
-        {/* Settings gear - top right */}
-        <Button
-          variant="outline"
-          size="sm"
-          className="absolute top-4 right-4 rounded-none font-mono text-xs"
-        >
-          <Settings className="h-3 w-3" />
-        </Button>
-
+      <div className="p-6">
         <div className="flex flex-col md:flex-row gap-6">
           {/* Avatar Section */}
           <div className="flex flex-col items-center md:items-start gap-4">
