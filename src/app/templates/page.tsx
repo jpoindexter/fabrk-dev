@@ -11,6 +11,7 @@ import {
   Users,
   FileText,
   Palette,
+  Lock,
 } from "lucide-react";
 
 const categories = [
@@ -22,6 +23,16 @@ const categories = [
     icon: LayoutDashboard,
     href: "/templates/dashboards",
     count: 3,
+    status: "READY",
+  },
+  {
+    id: "auth",
+    module: "AUTHENTICATION",
+    name: "Authentication",
+    description: "Sign in, sign up, and password recovery flows",
+    icon: Lock,
+    href: "/templates/authentication",
+    count: 4,
     status: "READY",
   },
   {

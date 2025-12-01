@@ -8,13 +8,14 @@ import {
   CreditCard,
   Shield,
   Palette,
+  Lock,
 } from "lucide-react";
 
 export interface Template {
   id: string;
   name: string;
   description: string;
-  category: "dashboard" | "admin" | "account" | "marketing";
+  category: "dashboard" | "admin" | "account" | "marketing" | "auth";
   icon: React.ElementType;
   badge?: string;
   href: string;
@@ -106,10 +107,48 @@ export const templates: Template[] = [
     href: "/templates/chart-library",
     features: ["Line charts", "Area charts", "Bar charts", "Pie/Donut charts"],
   },
+  {
+    id: "sign-in",
+    name: "Sign In",
+    description: "Login page with social auth, email/password, and magic links",
+    category: "auth",
+    icon: Lock,
+    badge: "Essential",
+    href: "/templates/authentication/sign-in",
+    features: ["Email/Password", "Social Auth", "Remember Me", "Validation"],
+  },
+  {
+    id: "sign-up",
+    name: "Sign Up",
+    description: "Registration page with form validation and social providers",
+    category: "auth",
+    icon: Users,
+    href: "/templates/authentication/sign-up",
+    features: ["Form Validation", "Password Strength", "Social Auth", "Terms check"],
+  },
+  {
+    id: "forgot-password",
+    name: "Forgot Password",
+    description: "Password recovery flow with email verification",
+    category: "auth",
+    icon: Shield,
+    href: "/templates/authentication/forgot-password",
+    features: ["Email input", "Success state", "Resend timer", "Secure flow"],
+  },
+  {
+    id: "two-factor",
+    name: "Two-Factor Auth",
+    description: "2FA verification screen with code input",
+    category: "auth",
+    icon: Lock,
+    href: "/templates/authentication/two-factor",
+    features: ["Code input", "Auto-focus", "Resend code", "Fallback options"],
+  },
 ];
 
 export const categories = [
   { id: "dashboard", name: "Dashboards", icon: LayoutDashboard },
+  { id: "auth", name: "Authentication", icon: Lock },
   { id: "admin", name: "Admin Panels", icon: Settings },
   { id: "account", name: "Account Pages", icon: Users },
   { id: "marketing", name: "Marketing", icon: FileText },

@@ -8,6 +8,7 @@ import {
   FileText,
   Mail,
   LayoutDashboard,
+  Lock,
 } from "lucide-react";
 
 export interface TemplateNavItem {
@@ -34,6 +35,18 @@ export const templatesNavigation: TemplateNavSection[] = [
       { title: "Analytics Dashboard", href: "/templates/analytics-dashboard", icon: BarChart3 },
       { title: "Team Dashboard", href: "/templates/team-dashboard", icon: Users },
       { title: "Chart Library", href: "/templates/chart-library", icon: LineChart },
+    ],
+  },
+  {
+    title: "Authentication",
+    id: "authentication",
+    href: "/templates/authentication",
+    icon: Lock,
+    items: [
+      { title: "Sign In", href: "/templates/authentication/sign-in", icon: Lock },
+      { title: "Sign Up", href: "/templates/authentication/sign-up", icon: Users },
+      { title: "Forgot Password", href: "/templates/authentication/forgot-password", icon: Shield },
+      { title: "Two-Factor Auth", href: "/templates/authentication/two-factor", icon: Lock },
     ],
   },
   {

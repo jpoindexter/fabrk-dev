@@ -10,7 +10,7 @@
 *   **Language:** TypeScript 5 (Strict Mode)
 *   **Database:** PostgreSQL (via Prisma ORM)
 *   **Authentication:** NextAuth v5 (Credentials + OAuth)
-*   **Styling:** Tailwind CSS, Radix UI, Lucide React
+*   **Styling:** Tailwind CSS v4 (CSS-first config), Radix UI, Lucide React; ESLint with `eslint-plugin-tailwind-v4` for linting.
 *   **Payments:** Stripe
 *   **Email:** Resend
 *   **Testing:** Vitest (Unit/Integration), Playwright (E2E)
@@ -53,6 +53,7 @@ The following commands are available via `npm`:
         *   Components: `PascalCase` (e.g., `UserProfile`)
         *   Functions: `camelCase` (e.g., `getUserProfile`)
     *   **Styling:** Use Tailwind CSS utility classes. Follow the design tokens defined in `globals.css`.
+    *   **Base UI Components:** **DO NOT EDIT** files in `src/components/ui/`. These are standardized primitives. Customization should be done via props, `className` overrides, or global CSS adjustments.
 
 *   **Testing:**
     *   Write unit tests for logic-heavy components and utility functions.
@@ -65,11 +66,12 @@ The following commands are available via `npm`:
 *   **Database Schema:** The `prisma/schema.prisma` file defines the data model, including `User`, `Organization`, `Payment`, `Subscription`, and `Team` entities.
 *   **API Routes:** API endpoints are located in `src/app/api`. They typically use Next.js Route Handlers.
 *   **Design System:** The UI is built on top of Radix UI primitives and styled with Tailwind CSS. It follows a "Neobrutalist" aesthetic by default but supports multiple themes.
+*   **Global Terminal Background:** The `TerminalBackground` component (a subtle grid pattern) is implemented globally in `src/app/layout.tsx` to provide a consistent visual texture across the entire application. Pages and layouts are configured to be transparent where the background should be visible.
 
 ## Key Configuration Files
 
 *   `next.config.ts`: Next.js configuration.
 *   `package.json`: Project dependencies and scripts.
 *   `prisma/schema.prisma`: Database schema definition.
-*   `tailwind.config.ts`: Tailwind CSS configuration.
+*   **Tailwind CSS Configuration:** `src/app/globals.css` (CSS-first configuration for Tailwind v4). Note: A `tailwind.config.js` or `tailwind.config.ts` file is not used for v4.
 *   `.env.example`: Template for environment variables.
