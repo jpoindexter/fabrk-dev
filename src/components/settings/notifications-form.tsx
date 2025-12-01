@@ -86,7 +86,7 @@ export function NotificationsForm() {
     <Card className="rounded-none">
       <CardHeader>
         <CardTitle className="font-mono text-xs">[NOTIFICATIONS]:</CardTitle>
-        <CardDescription>
+        <CardDescription className="font-mono text-xs">
           Manage how and when you receive email notifications.
         </CardDescription>
       </CardHeader>
@@ -100,7 +100,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[SECURITY_ALERTS]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Receive alerts for suspicious activity and security events.
                     </FormDescription>
                   </div>
@@ -123,7 +123,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[PRODUCT_UPDATES]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Get notified about new features and improvements.
                     </FormDescription>
                   </div>
@@ -146,7 +146,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[MARKETING_EMAILS]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Receive promotional emails and special offers.
                     </FormDescription>
                   </div>
@@ -169,7 +169,7 @@ export function NotificationsForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[WEEKLY_SUMMARY]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Get a weekly digest of your account activity.
                     </FormDescription>
                   </div>

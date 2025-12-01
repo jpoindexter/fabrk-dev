@@ -87,7 +87,7 @@ export function AppearanceForm() {
     <Card className="rounded-none">
       <CardHeader>
         <CardTitle className="font-mono text-xs">[APPEARANCE]:</CardTitle>
-        <CardDescription>
+        <CardDescription className="font-mono text-xs">
           Customize your language preference. Use the theme dropdown in the navigation bar to change color themes.
         </CardDescription>
       </CardHeader>
@@ -114,7 +114,7 @@ export function AppearanceForm() {
                       <SelectItem value="ja" className="rounded-none focus:bg-primary focus:text-primary-foreground">Japanese</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription>
+                  <FormDescription className="font-mono text-xs">
                     Select your preferred language for the interface.
                   </FormDescription>
                   <FormMessage />

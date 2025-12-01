@@ -74,14 +74,14 @@ export function DangerZone() {
     <Card className="rounded-none border-destructive">
       <CardHeader>
         <CardTitle className="font-mono text-xs text-destructive">[DANGER_ZONE]:</CardTitle>
-        <CardDescription>
+        <CardDescription className="font-mono text-xs">
           Irreversible and destructive actions.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="border-t pt-4">
-          <h3 className="font-semibold mb-2">Export Your Data</h3>
-          <p className="text-sm text-muted-foreground mb-4">
+          <h3 className="font-mono text-xs mb-2">[EXPORT_YOUR_DATA]:</h3>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Download a copy of your account data in JSON format.
           </p>
           <Button
@@ -95,8 +95,8 @@ export function DangerZone() {
         </div>
 
         <div className="border-t pt-4">
-          <h3 className="font-semibold text-destructive mb-2">Delete Account</h3>
-          <p className="text-sm text-muted-foreground mb-4">
+          <h3 className="font-mono text-xs text-destructive mb-2">[DELETE_ACCOUNT]:</h3>
+          <p className="font-mono text-xs text-muted-foreground mb-4">
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button

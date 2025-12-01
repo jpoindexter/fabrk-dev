@@ -75,7 +75,7 @@ export function DataExport() {
     <Card className="rounded-none">
       <CardHeader>
         <CardTitle className="font-mono text-xs">[EXPORT_DATA]:</CardTitle>
-        <CardDescription>
+        <CardDescription className="font-mono text-xs">
           Download a copy of your account data in your preferred format.
         </CardDescription>
       </CardHeader>
@@ -172,7 +172,7 @@ export function DataExport() {
           {isLoading ? "> EXPORTING..." : "> DOWNLOAD_DATA"}
         </Button>
 
-        <p className="text-xs text-muted-foreground pt-2">
+        <p className="font-mono text-xs text-muted-foreground pt-2">
           Your data is encrypted and will be deleted from our servers after download.
         </p>
       </CardContent>

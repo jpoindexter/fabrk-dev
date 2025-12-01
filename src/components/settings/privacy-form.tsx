@@ -86,7 +86,7 @@ export function PrivacyForm() {
     <Card className="rounded-none">
       <CardHeader>
         <CardTitle className="font-mono text-xs">[PRIVACY]:</CardTitle>
-        <CardDescription>
+        <CardDescription className="font-mono text-xs">
           Control your privacy settings and how your data is handled.
         </CardDescription>
       </CardHeader>
@@ -100,7 +100,7 @@ export function PrivacyForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[PROFILE_VISIBILITY]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Allow your profile to be visible to other users.
                     </FormDescription>
                   </div>
@@ -123,7 +123,7 @@ export function PrivacyForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[ACTIVITY_TRACKING]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Allow us to track your activity to improve your experience.
                     </FormDescription>
                   </div>
@@ -146,7 +146,7 @@ export function PrivacyForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[ANALYTICS_SHARING]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Share anonymous usage data to help us improve the product.
                     </FormDescription>
                   </div>
@@ -169,7 +169,7 @@ export function PrivacyForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[SEARCH_INDEXING]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Allow search engines to index your profile.
                     </FormDescription>
                   </div>
@@ -192,7 +192,7 @@ export function PrivacyForm() {
                 <FormItem className="flex flex-row items-center justify-between border border-border p-4">
                   <div className="space-y-0.5">
                     <FormLabel className="font-mono text-xs">[DATA_RETENTION]:</FormLabel>
-                    <FormDescription>
+                    <FormDescription className="font-mono text-xs">
                       Keep my account data if I delete my account.
                     </FormDescription>
                   </div>
