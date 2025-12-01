@@ -21,6 +21,24 @@ import {
 
 const errorPages = [
   {
+    id: "error",
+    code: "ERR",
+    title: "Something Went Wrong",
+    description: "We're sorry, but something unexpected happened. This error has been logged and we're looking into it.",
+    icon: AlertTriangle,
+    terminal: [
+      "$ process.run --component=App",
+      "STATUS: EXCEPTION_CAUGHT",
+      "TYPE: RuntimeError",
+      "",
+      "ERROR: Unexpected application error",
+      "DIGEST: err_1921274745",
+      "LOGGED: true",
+      "TIMESTAMP: 2024-11-12T14:23:45Z",
+    ],
+    actions: ["TRY_AGAIN", "GO_HOME"],
+  },
+  {
     id: "404",
     code: "404",
     title: "Page Not Found",
@@ -77,7 +95,7 @@ const errorPages = [
 ];
 
 export default function ErrorPagesTemplate() {
-  const [activeError, setActiveError] = useState("404");
+  const [activeError, setActiveError] = useState("error");
 
   const currentError = errorPages.find((e) => e.id === activeError) || errorPages[0];
 
@@ -93,7 +111,7 @@ export default function ErrorPagesTemplate() {
           </div>
           <h1 className="text-4xl font-semibold tracking-tight">Error Pages</h1>
           <p className="font-mono text-sm text-muted-foreground">
-            Terminal-styled error pages for 404, 500, and maintenance states
+            Terminal-styled error pages for generic errors, 404, 500, and maintenance states
           </p>
         </div>
 
@@ -302,6 +320,7 @@ export default function ErrorPagesTemplate() {
                     [USE_CASE]:
                   </div>
                   <div className="font-mono text-xs mt-1">
+                    {error.id === "error" && "React errors, unexpected exceptions"}
                     {error.id === "404" && "Invalid routes, deleted content"}
                     {error.id === "500" && "Server crashes, API failures"}
                     {error.id === "503" && "Planned downtime, updates"}
@@ -330,8 +349,7 @@ export default function ErrorPagesTemplate() {
             </div>
             <div className="space-y-1.5 font-mono text-xs">
               <div>
-                <span className="text-success">&gt;</span> 404, 500, 503 error
-                templates
+                <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
               </div>
               <div>
                 <span className="text-success">&gt;</span> Terminal-style error

@@ -117,7 +117,7 @@ export default function EmptyStatesTemplate() {
           {emptyStates.map((state) => {
             const Icon = state.icon;
             return (
-              <div key={state.id} className="border border-border bg-card">
+              <div key={state.id} className="border border-border bg-card flex flex-col">
                 <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                   <div className="flex gap-1.5">
                     <div className="size-2 rounded-full bg-destructive/50" />
@@ -129,9 +129,9 @@ export default function EmptyStatesTemplate() {
                   </span>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 h-full flex flex-col">
                   {/* Empty State Content */}
-                  <div className="text-center space-y-4">
+                  <div className="text-center flex flex-col flex-1">
                     {/* Icon */}
                     <div
                       className={`w-16 h-16 mx-auto border flex items-center justify-center ${
@@ -150,7 +150,7 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Title & Description */}
-                    <div>
+                    <div className="mt-4">
                       <h3 className="text-lg font-semibold mb-1">{state.title}</h3>
                       <p className="font-mono text-xs text-muted-foreground">
                         {state.description}
@@ -158,7 +158,7 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <div className="border border-border bg-zinc-950 text-left">
+                    <div className="border border-border bg-zinc-950 text-left mt-4">
                       <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1.5">
                         <div className="flex gap-1.5">
                           <div className="size-2 rounded-full bg-destructive/50" />
@@ -189,8 +189,8 @@ export default function EmptyStatesTemplate() {
                       </div>
                     </div>
 
-                    {/* Actions */}
-                    <div className="flex items-center justify-center gap-2">
+                    {/* Actions - pushed to bottom */}
+                    <div className="flex items-center justify-center gap-2 mt-auto pt-4">
                       {state.actions.map((action, idx) => {
                         const ActionIcon = action.icon;
                         return (
