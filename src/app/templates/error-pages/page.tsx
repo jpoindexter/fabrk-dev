@@ -22,7 +22,7 @@ import {
 const errorPages = [
   {
     id: "error",
-    code: "ERR",
+    code: "EROR",
     title: "Something Went Wrong",
     description: "We're sorry, but something unexpected happened. This error has been logged and we're looking into it.",
     icon: AlertTriangle,
