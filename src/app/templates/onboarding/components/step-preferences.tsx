@@ -45,7 +45,6 @@ export function StepPreferences({
               onCheckedChange={(checked) =>
                 onEmailUpdatesChange(checked as boolean)
               }
-              className="rounded-none"
             />
           </div>
 
@@ -61,7 +60,6 @@ export function StepPreferences({
               onCheckedChange={(checked) =>
                 onProductTipsChange(checked as boolean)
               }
-              className="rounded-none"
             />
           </div>
         </div>

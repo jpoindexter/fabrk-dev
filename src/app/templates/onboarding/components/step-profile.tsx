@@ -65,7 +65,7 @@ export function StepProfile({
                 <SelectItem
                   key={role.value}
                   value={role.value}
-                  className="font-mono text-sm"
+                  className="font-mono text-sm text-left"
                 >
                   {role.label}
                 </SelectItem>

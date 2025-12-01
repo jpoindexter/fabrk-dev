@@ -96,7 +96,6 @@ export function StepWorkspace({
                   id={useCase.id}
                   checked={selectedUseCases.includes(useCase.id)}
                   onCheckedChange={() => onToggleUseCase(useCase.id)}
-                  className="rounded-none"
                 />
                 <label
                   htmlFor={useCase.id}
