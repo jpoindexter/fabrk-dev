@@ -55,7 +55,16 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
         </span>
       </div>
 
-      <div className="p-6">
+      <div className="p-6 relative">
+        {/* Settings gear - top right */}
+        <Button
+          variant="outline"
+          size="sm"
+          className="absolute top-4 right-4 rounded-none font-mono text-xs"
+        >
+          <Settings className="h-3 w-3" />
+        </Button>
+
         <div className="flex flex-col md:flex-row gap-6">
           {/* Avatar Section */}
           <div className="flex flex-col items-center md:items-start gap-4">
@@ -68,18 +77,10 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                   .join("")}
               </AvatarFallback>
             </Avatar>
-            <div className="flex gap-2">
-              <Button className="rounded-none font-mono text-xs">
-                <Edit className="mr-1 h-3 w-3" />
-                &gt; EDIT_PROFILE
-              </Button>
-              <Button
-                variant="outline"
-                className="rounded-none font-mono text-xs"
-              >
-                <Settings className="h-3 w-3" />
-              </Button>
-            </div>
+            <Button className="rounded-none font-mono text-xs">
+              <Edit className="mr-1 h-3 w-3" />
+              &gt; EDIT_PROFILE
+            </Button>
           </div>
 
           {/* Info Section */}
