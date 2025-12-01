@@ -52,7 +52,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
         <div className="flex flex-col md:flex-row gap-6">
           {/* Avatar Section - spans full height */}
           <div className="flex-shrink-0">
-            <Avatar className="h-40 w-40 border-2 border-border rounded-none">
+            <Avatar className="h-40 w-40 border-2 border-border rounded-none shadow-none">
               <AvatarImage src={user.avatar || undefined} />
               <AvatarFallback className="rounded-none bg-muted text-3xl font-mono">
                 {user.name
