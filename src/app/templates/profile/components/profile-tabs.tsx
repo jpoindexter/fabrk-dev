@@ -109,7 +109,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                         <span className="font-mono text-sm font-medium text-primary">
                           {project.name}
                         </span>
-                        <Badge variant="secondary" className="rounded-none font-mono text-[10px]">
+                        <Badge className="rounded-none font-mono text-[10px] bg-muted text-muted-foreground border-border">
                           {project.language}
                         </Badge>
                       </div>

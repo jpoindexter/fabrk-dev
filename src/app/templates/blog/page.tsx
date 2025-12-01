@@ -153,7 +153,7 @@ export default function BlogTemplate() {
 
                 {/* Content */}
                 <div className="flex flex-col justify-center space-y-4">
-                  <Badge variant="secondary" className="w-fit rounded-none font-mono text-xs">
+                  <Badge className="w-fit rounded-none font-mono text-xs bg-muted text-muted-foreground border-border">
                     {featuredPost.category.toUpperCase()}
                   </Badge>
 
@@ -249,7 +249,7 @@ export default function BlogTemplate() {
               </div>
 
               <div className="p-4 space-y-3">
-                <Badge variant="secondary" className="rounded-none font-mono text-xs">
+                <Badge className="rounded-none font-mono text-xs bg-muted text-muted-foreground border-border">
                   {post.category.toUpperCase()}
                 </Badge>
 
