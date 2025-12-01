@@ -55,7 +55,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
       </div>
 
       <div className="p-6">
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-6 md:items-end">
           {/* Avatar Section */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <Avatar className="h-32 w-32 border-2 border-border rounded-none">
@@ -114,7 +114,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-6 pt-2">
+            <div className="flex gap-6">
               {Object.entries(user.stats).map(([key, value]) => (
                 <div key={key} className="text-center">
                   <div className="text-xl font-bold">{value}</div>
