@@ -90,12 +90,12 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           </div>
         </div>
 
-        {/* Stats - bottom row */}
-        <div className="flex gap-8 mt-6 pt-6 border-t border-border">
-          {Object.entries(user.stats).map(([key, value]) => (
-            <div key={key} className="flex items-center gap-2">
+        {/* Stats - bottom row in boxes */}
+        <div className="flex mt-6 pt-6 border-t border-border">
+          {Object.entries(user.stats).map(([key, value], index) => (
+            <div key={key} className={`text-center px-4 py-2 border border-border ${index > 0 ? 'border-l-0' : ''}`}>
               <div className="text-xl font-bold">{value}</div>
-              <div className="font-mono text-xs text-muted-foreground uppercase">
+              <div className="font-mono text-[10px] text-muted-foreground uppercase">
                 {key}
               </div>
             </div>
