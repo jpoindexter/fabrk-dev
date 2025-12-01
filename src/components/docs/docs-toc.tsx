@@ -63,7 +63,7 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
                     className="flex items-start gap-1 text-muted-foreground hover:text-foreground hover:bg-muted px-2 py-1 transition-colors"
                   >
                     <span className="shrink-0">&gt;</span>
-                    <span className="break-words">{heading.text}</span>
+                    <span className="wrap-break-word">{heading.text}</span>
                   </a>
                 </li>
               ))}

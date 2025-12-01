@@ -43,7 +43,7 @@ export default function Error({
             <p className="mb-2 text-sm font-semibold text-destructive">
               Error Details (Development Only):
             </p>
-            <p className="font-mono text-xs text-destructive break-words">
+            <p className="font-mono text-xs text-destructive wrap-break-word">
               {error.message}
             </p>
             {error.digest && (
