@@ -1,4 +1,4 @@
-# Comprehensive Site Audit - Design System & Architecture v5.3
+# Comprehensive Site Audit - Design System & Architecture v5.5
 ## Zero-Tolerance Full-Stack Compliance Check
 
 Perform an exhaustive audit with zero tolerance for gaps.
@@ -3339,9 +3339,312 @@ const result = await sanityClient.fetch(`*[_type == "post"]`);
 
 ---
 
-## 37. CSS ARCHITECTURE
+## 37. COMPLETE COMPONENT CATALOG
 
-### 37.1 Tailwind v4 Structure
+### 37.1 UI Components (106 total - `src/components/ui/`)
+
+**Core Form Components:**
+| Component | File | Terminal Styling Required |
+|-----------|------|---------------------------|
+| Button | `button.tsx` | `rounded-none font-mono text-xs` |
+| Input | `input.tsx` | `rounded-none font-mono text-xs` |
+| Textarea | `textarea.tsx` | `rounded-none font-mono text-xs` |
+| Select | `select.tsx` | `rounded-none font-mono text-xs` |
+| Checkbox | `checkbox.tsx` | `rounded-none` |
+| Switch | `switch.tsx` | `rounded-none` |
+| Radio Group | `radio-group.tsx` | `rounded-none` |
+| Slider | `slider.tsx` | `rounded-none` |
+| Label | `label.tsx` | `font-mono text-xs` |
+| Form | `form.tsx` | Uses FormField pattern |
+| Form Error | `form-error.tsx` | `font-mono text-xs text-destructive` |
+| Field | `field.tsx` | Wrapper for form fields |
+
+**Input Variants:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Input Password | `input-password.tsx` | Password with toggle visibility |
+| Input Number | `input-number.tsx` | Numeric input with +/- buttons |
+| Input Search | `input-search.tsx` | Search input with icon |
+| Input Color | `input-color.tsx` | Color picker input |
+| Input OTP | `input-otp.tsx` | One-time password input |
+| Input Group | `input-group.tsx` | Input with addons |
+| Autocomplete | `autocomplete.tsx` | Search with suggestions |
+| Combobox | `combobox.tsx` | Searchable select |
+| Multi Select | `multi-select.tsx` | Multiple selection |
+
+**Date/Time Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Calendar | `calendar.tsx` | Date selection calendar |
+| Date Picker | `date-picker.tsx` | Single date picker |
+| Date Range Picker | `date-range-picker.tsx` | Date range selection |
+| Time Picker | `time-picker.tsx` | Time selection |
+| DateTime Picker | `datetime-picker.tsx` | Combined date & time |
+
+**Layout Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Card | `card.tsx` | Content container - `rounded-none` |
+| Container | `container.tsx` | Page width container |
+| Section | `section.tsx` | Page section wrapper |
+| Grid | `grid.tsx` | CSS Grid wrapper |
+| Stack | `stack.tsx` | Flex stack layout |
+| Separator | `separator.tsx` | Visual divider |
+| Aspect Ratio | `aspect-ratio.tsx` | Fixed aspect container |
+| Page Wrapper | `page-wrapper.tsx` | Full page layout |
+| Scroll Area | `scroll-area.tsx` | Custom scrollbar area |
+
+**Navigation Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Tabs | `tabs.tsx` | Tab navigation |
+| Accordion | `accordion.tsx` | Expandable sections |
+| Breadcrumb | `breadcrumb.tsx` | Path navigation |
+| Navigation Menu | `navigation-menu.tsx` | Main navigation |
+| Dropdown Menu | `dropdown-menu.tsx` | Action dropdown |
+| Context Menu | `context-menu.tsx` | Right-click menu |
+| Menubar | `menubar.tsx` | Horizontal menu bar |
+| Sidebar | `sidebar.tsx` | Side navigation |
+| Pagination | `pagination.tsx` | Page navigation |
+| Collapsible | `collapsible.tsx` | Collapsible content |
+
+**Feedback Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Alert | `alert.tsx` | Status messages |
+| Alert Dialog | `alert-dialog.tsx` | Confirmation dialogs |
+| Banner | `banner.tsx` | Full-width notifications |
+| Toast | `toast.tsx` | Ephemeral notifications |
+| Toaster | `toaster.tsx` | Toast container (Sonner) |
+| Badge | `badge.tsx` | Status/count indicators |
+| Progress | `progress.tsx` | Progress bar |
+| Skeleton | `skeleton.tsx` | Loading placeholders |
+| Loading | `loading.tsx` | Loading spinner |
+| Empty State | `empty-state.tsx` | No data placeholder |
+
+**Overlay Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Dialog | `dialog.tsx` | Modal dialogs |
+| Sheet | `sheet.tsx` | Side panel |
+| Popover | `popover.tsx` | Floating content |
+| Tooltip | `tooltip.tsx` | Hover hints |
+| Hover Card | `hover-card.tsx` | Preview on hover |
+| Command | `command.tsx` | Command palette (⌘K) |
+| Lightbox | `lightbox.tsx` | Image gallery viewer |
+
+**Data Display Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Table | `table.tsx` | Data table |
+| Data Table | `data-table/` | Full-featured table (TanStack) |
+| Data Table Header | `data-table-header.tsx` | Table column header |
+| Avatar | `avatar.tsx` | User avatar |
+| Avatar Group | `avatar-group.tsx` | Stacked avatars |
+| Member Card | `member-card.tsx` | Team member display |
+| KPI Card | `kpi-card.tsx` | Metric display with trend |
+| Stat Card | `stat-card.tsx` | Alias for KPI Card |
+| Status Indicator | `status-indicator.tsx` | Online/offline/busy status |
+| Notification Badge | `notification-badge.tsx` | Count badge |
+| Notification List | `notification-list.tsx` | Notification items |
+| Notification Center | `notification-center.tsx` | Full notification panel |
+
+**Chart Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Gauge | `gauge.tsx` | Circular gauge chart |
+| Donut Chart | `donut-chart.tsx` | Donut/pie chart |
+| Pie Chart | `pie-chart.tsx` | Pie chart |
+| Sparkline | `sparkline.tsx` | Inline mini chart |
+| Funnel Chart | `funnel-chart.tsx` | Funnel visualization |
+| Heatmap | `heatmap.tsx` | Heat map grid |
+
+**Content Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Typography | `typography.tsx` | Text components (H1-H4, P, etc.) |
+| Code Block | `code-block.tsx` | Syntax highlighted code |
+| Markdown Viewer | `markdown-viewer.tsx` | Render markdown |
+| Markdown Editor | `markdown-editor.tsx` | Edit markdown |
+| Rich Text Editor | `rich-text-editor.tsx` | WYSIWYG editor |
+| Mermaid | `mermaid.tsx` | Mermaid diagram renderer |
+| Activity Timeline | `activity-timeline.tsx` | Event timeline |
+
+**Media Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Image Uploader | `image-uploader.tsx` | Image upload |
+| Image Dropzone | `image-dropzone.tsx` | Drag & drop images |
+| File Upload | `file-upload.tsx` | General file upload |
+| Cropper | `cropper.tsx` | Image cropping |
+| Cropper Controls | `cropper-controls.tsx` | Cropping controls |
+
+**Utility Components:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| Copy Button | `copy-button.tsx` | Copy to clipboard |
+| Color Picker | `color-picker.tsx` | Color selection |
+| Rating | `rating.tsx` | Star rating input |
+| Password Strength | `password-strength.tsx` | Password meter |
+| Role Selector | `role-selector.tsx` | Role/permission picker |
+| Invite Form | `invite-form.tsx` | User invitation form |
+| Multi Step Form | `multi-step-form.tsx` | Wizard-style form |
+| Prompt Builder | `prompt-builder.tsx` | AI prompt builder |
+| Code Generator | `code-generator.tsx` | Code generation UI |
+| Simple Icon | `simple-icon.tsx` | Icon wrapper |
+
+### 37.2 Feature Components (108 total)
+
+**Auth Components (`src/components/auth/`):**
+- `password-strength.tsx` - Password validation meter
+- `reset-status.tsx` - Password reset status
+- `signup-success.tsx` - Registration success
+
+**Account Components (`src/components/account/`):**
+- `profile-form.tsx` - User profile editing
+- `security-form.tsx` - Password/2FA settings
+- `billing-section.tsx` - Billing management
+- `sessions-section.tsx` - Active sessions
+- `api-keys-section.tsx` - API key management
+
+**Admin Components (`src/components/admin/`):**
+- `user-management-table.tsx` - User admin table
+- `feature-flags-manager.tsx` - Feature flag admin
+
+**Analytics Components (`src/components/analytics/`):**
+- `posthog-pageview.tsx` - Page view tracking
+- `purchase-tracker.tsx` - Purchase event tracking
+
+**Billing Components (`src/components/billing/`):**
+- `trial-banner.tsx` - Trial status banner
+
+**Dashboard Components (`src/components/dashboard/`):**
+- `purchase-status.tsx` - Purchase status display
+- `tier-badge.tsx` - Subscription tier badge
+- `usage-limits.tsx` - Usage meter/limits
+- `purchase-status/license-card.tsx` - License display
+- `purchase-status/access-card.tsx` - Access info
+- `purchase-status/resources-card.tsx` - Resources list
+
+**Feature Flags (`src/components/feature-flags/`):**
+- `feature-gate.tsx` - Conditional feature wrapper
+
+**Feedback Components (`src/components/feedback/`):**
+- Feedback collection forms
+
+**Landing Components (`src/components/landing/`):**
+- `terminal-background.tsx` - Animated background
+- Hero sections, feature sections, etc.
+
+**Navigation Components (`src/components/navigation/`):**
+- Header, footer, mobile menu
+
+**Notifications (`src/components/notifications/`):**
+- Notification bell, dropdown
+
+**Organization Components (`src/components/organization/`):**
+- Team management, member lists, invites
+
+**Pricing Components (`src/components/pricing/`):**
+- `checkout-button.tsx` - Purchase button
+
+**Providers (`src/components/providers/`):**
+- `analytics-provider.tsx` - Analytics context
+- Root providers wrapper
+
+**Security Components (`src/components/security/`):**
+- `nonce-script.tsx` - CSP nonce scripts
+- `client-schema-script.tsx` - Client-side JSON-LD
+- `schema-script.tsx` - Server-side JSON-LD
+
+**SEO Components (`src/components/seo/`):**
+- Schema markup components
+
+**Settings Components (`src/components/settings/`):**
+- `language-form.tsx` - Language preferences
+- `privacy-form.tsx` - Privacy/cookie settings
+- `notifications-form.tsx` - Notification preferences
+- `appearance-form.tsx` - Theme/appearance settings
+- `data-export.tsx` - GDPR data export
+- `danger-zone.tsx` - Account deletion
+
+**Theme Components (`src/components/theme/`):**
+- `color-theme-switcher.tsx` - Theme toggle
+
+### 37.3 Component Patterns Checklist
+
+**Every UI Component MUST have:**
+```tsx
+// 1. Terminal styling (where applicable)
+className="rounded-none font-mono text-xs"
+
+// 2. data-slot attribute for CSS targeting
+data-slot="button"
+
+// 3. cn() for class merging
+className={cn("base-classes", className)}
+
+// 4. forwardRef for ref forwarding
+const Component = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+
+// 5. displayName for debugging
+Component.displayName = "Component";
+
+// 6. Proper TypeScript interface
+interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "destructive";
+}
+```
+
+**Terminal Label Format:**
+```tsx
+// Cards, sections, forms use bracket notation
+<CardTitle className="font-mono text-xs">[SECTION_NAME]:</CardTitle>
+<h3 className="font-mono text-xs">[LABEL_NAME]:</h3>
+
+// Buttons use > PREFIX format
+<Button className="rounded-none font-mono text-xs">> ACTION_NAME</Button>
+```
+
+### 37.4 Component Directory Structure
+```
+src/components/
+├── ui/                    # 106 base UI components (LOCKED)
+│   ├── data-table/        # Data table subcomponents
+│   └── file-upload/       # File upload subcomponents
+├── account/               # Account/profile components
+├── activity/              # Activity feeds
+├── admin/                 # Admin panel components
+├── analytics/             # Analytics tracking
+├── auth/                  # Authentication flows
+├── billing/               # Billing/subscription
+├── dashboard/             # Dashboard widgets
+├── demo/                  # Demo/showcase components
+├── developer/             # Developer tools
+├── docs/                  # Documentation layout
+├── feature-flags/         # Feature gating
+├── feedback/              # User feedback
+├── home/                  # Homepage sections
+├── landing/               # Landing page sections
+├── marketing/             # Marketing components
+├── navigation/            # Nav/header/footer
+├── notifications/         # Notification UI
+├── organization/          # Team/org management
+├── polar/                 # Polar.sh integration
+├── pricing/               # Pricing tables
+├── providers/             # React context providers
+├── security/              # Security components
+├── seo/                   # SEO/schema components
+├── settings/              # Settings forms
+├── showcase/              # Component showcase
+└── theme/                 # Theme switcher
+```
+
+---
+
+## 38. CSS ARCHITECTURE
+
+### 38.1 Tailwind v4 Structure
 ```css
 /* globals.css structure */
 @import "tailwindcss";
@@ -3364,19 +3667,19 @@ const result = await sanityClient.fetch(`*[_type == "post"]`);
 [data-theme="purple"] { ... }
 ```
 
-### 37.2 Color Format (OKLCH)
+### 38.2 Color Format (OKLCH)
 ```css
 --primary: 70.28% 0.1753 295.36;  /* lightness chroma hue */
 ```
 
-### 37.3 Data Attribute Selectors
+### 38.3 Data Attribute Selectors
 ```css
 [data-slot="button"] { ... }
 [data-state="active"] { ... }
 [data-sonner-toast] { ... }
 ```
 
-### 37.4 Terminal Preview Forcing
+### 38.4 Terminal Preview Forcing
 ```css
 .terminal-preview [data-slot="button"],
 .terminal-preview [data-slot="input"],
@@ -3385,7 +3688,7 @@ const result = await sanityClient.fetch(`*[_type == "post"]`);
 }
 ```
 
-### 37.5 DaisyUI Theme System
+### 38.5 DaisyUI Theme System
 ```tsx
 // Theme is set via data-theme attribute on html/body
 <html data-theme="default">
@@ -3400,7 +3703,7 @@ const result = await sanityClient.fetch(`*[_type == "post"]`);
 document.documentElement.setAttribute("data-theme", "purple");
 ```
 
-### 37.6 Custom Keyframes
+### 38.6 Custom Keyframes
 ```css
 /* Defined in globals.css */
 @keyframes bar-grow { ... }
@@ -3414,19 +3717,19 @@ document.documentElement.setAttribute("data-theme", "purple");
 
 ---
 
-## 38. TESTING
+## 39. TESTING
 
-### 38.1 Test Files
+### 39.1 Test Files
 - Unit tests: `*.test.ts(x)` - colocated with components
 - E2E tests: `tests/e2e/*.spec.ts`
 - Stories: `*.stories.tsx` - for Storybook
 
-### 38.2 Test Requirements
+### 39.2 Test Requirements
 - [ ] All utility functions have unit tests
 - [ ] Critical user flows have E2E tests
 - [ ] Components with complex logic have tests
 
-### 38.3 Test Pattern
+### 39.3 Test Pattern
 ```tsx
 import { render, screen } from "@testing-library/react";
 import { Button } from "./button";
@@ -3441,7 +3744,7 @@ describe("Button", () => {
 
 ---
 
-## 39. FILES TO AUDIT
+## 40. FILES TO AUDIT
 
 ### Priority 1: Base UI (foundation)
 ```
@@ -3531,9 +3834,9 @@ src/app/loading.tsx
 
 ---
 
-## 40. OUTPUT FORMAT
+## 41. OUTPUT FORMAT
 
-### 40.1 Issue Format
+### 41.1 Issue Format
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ ISSUE #001                                         ┃
@@ -3552,7 +3855,7 @@ src/app/loading.tsx
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-### 40.2 Summary Tables
+### 41.2 Summary Tables
 
 **Table 1: File Size Violations**
 | # | Severity | File | Lines | Action |
@@ -3590,7 +3893,7 @@ src/app/loading.tsx
 | # | File | Line | Issue | Fix |
 |---|------|------|-------|-----|
 
-### 40.3 Metrics Dashboard
+### 41.3 Metrics Dashboard
 ```
 ╔════════════════════════════════════════════════════════════════╗
 ║                    AUDIT COMPLETE - METRICS                     ║
@@ -3608,7 +3911,7 @@ src/app/loading.tsx
 
 ---
 
-## 41. EXECUTION PROTOCOL
+## 42. EXECUTION PROTOCOL
 
 ### Phase 1: PRE-FLIGHT ✈️
 ```bash
@@ -3666,7 +3969,7 @@ git reset --hard [SAVED_SHA]
 
 ---
 
-## 42. EXCEPTIONS REGISTRY
+## 43. EXCEPTIONS REGISTRY
 
 | Exception | Where | Reason |
 |-----------|-------|--------|
@@ -3682,7 +3985,7 @@ git reset --hard [SAVED_SHA]
 
 ---
 
-## 43. QUICK REFERENCE CHEAT SHEET
+## 44. QUICK REFERENCE CHEAT SHEET
 
 ### Terminal Styling Checklist
 ```tsx
@@ -3737,12 +4040,14 @@ import { toast } from "sonner";
 - "execute"
 - Or similar clear instruction
 
-**VERSION:** 5.4
-**TOTAL RULES:** 650+
-**TOTAL PATTERNS:** 300+
-**TOTAL COMPONENTS TRACKED:** 75+
+**VERSION:** 5.5
+**TOTAL RULES:** 700+
+**TOTAL PATTERNS:** 350+
+**TOTAL UI COMPONENTS:** 106
+**TOTAL FEATURE COMPONENTS:** 108
+**TOTAL COMPONENTS TRACKED:** 214
 **TOTAL HOOKS DOCUMENTED:** 35+
 **TOTAL UTILITIES DOCUMENTED:** 90+
 **TOTAL LIB MODULES:** 20+
-**TOTAL SECTIONS:** 43
+**TOTAL SECTIONS:** 44
 **ZERO TOLERANCE FOR GAPS**
