@@ -61,7 +61,7 @@ interface Webhook {
 interface Delivery {
   id: string;
   event: string;
-  payload: any;
+  payload: Record<string, unknown>;
   status: string;
   statusCode: number | null;
   response: string | null;

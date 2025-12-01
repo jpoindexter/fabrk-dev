@@ -305,7 +305,7 @@ export default function OrganizationMembersPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="role">Role</Label>
-                  <Select value={inviteRole} onValueChange={(val: any) => setInviteRole(val)}>
+                  <Select value={inviteRole} onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}>
                     <SelectTrigger
                       id="role"
                       className="rounded-md border border-border"
