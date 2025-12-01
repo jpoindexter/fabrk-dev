@@ -8,13 +8,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Mail,
-  MapPin,
-  Calendar,
-  Link as LinkIcon,
-  Edit,
-} from "lucide-react";
+import { Edit } from "lucide-react";
 
 interface UserStats {
   projects: number;
@@ -55,26 +49,23 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
       </div>
 
       <div className="p-6">
-        <div className="flex flex-col md:flex-row gap-6 md:items-end">
-          {/* Avatar Section */}
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <Avatar className="h-32 w-32 border-2 border-border rounded-none">
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Avatar Section - spans full height */}
+          <div className="flex-shrink-0">
+            <Avatar className="h-40 w-40 border-2 border-border rounded-none">
               <AvatarImage src={user.avatar || undefined} />
-              <AvatarFallback className="rounded-none bg-muted text-2xl font-mono">
+              <AvatarFallback className="rounded-none bg-muted text-3xl font-mono">
                 {user.name
                   .split(" ")
                   .map((n) => n[0])
                   .join("")}
               </AvatarFallback>
             </Avatar>
-            <Button className="rounded-none font-mono text-xs">
-              <Edit className="mr-1 h-3 w-3" />
-              &gt; EDIT_PROFILE
-            </Button>
           </div>
 
-          {/* Info Section */}
-          <div className="flex-1 space-y-4">
+          {/* Info Section - stacked vertically */}
+          <div className="flex-1 flex flex-col gap-4">
+            {/* Name + Email */}
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="text-2xl font-semibold">{user.name}</h2>
@@ -83,46 +74,31 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                 </Badge>
               </div>
               <div className="font-mono text-sm text-muted-foreground">
-                @{user.username}
-              </div>
-            </div>
-
-            <p className="font-mono text-sm">{user.bio}</p>
-
-            <div className="flex flex-wrap gap-4 font-mono text-xs text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Mail className="h-3 w-3" />
                 {user.email}
               </div>
-              <div className="flex items-center gap-1">
-                <MapPin className="h-3 w-3" />
-                {user.location}
-              </div>
-              <div className="flex items-center gap-1">
-                <LinkIcon className="h-3 w-3" />
-                <a
-                  href={user.website}
-                  className="text-primary hover:underline"
-                >
-                  {user.website.replace("https://", "")}
-                </a>
-              </div>
-              <div className="flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
-                Joined {user.joinDate}
-              </div>
             </div>
 
-            {/* Stats */}
-            <div className="flex gap-6">
+            {/* Stats - boxed row */}
+            <div className="flex">
               {Object.entries(user.stats).map(([key, value]) => (
-                <div key={key} className="text-center">
+                <div key={key} className="text-center px-4 py-2 border border-border first:border-r-0 [&:nth-child(2)]:border-r-0 [&:nth-child(3)]:border-r-0">
                   <div className="text-xl font-bold">{value}</div>
-                  <div className="font-mono text-xs text-muted-foreground uppercase">
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase">
                     {key}
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bio */}
+            <p className="font-mono text-sm text-muted-foreground">{user.bio}</p>
+
+            {/* Action Button */}
+            <div>
+              <Button className="rounded-none font-mono text-xs">
+                <Edit className="mr-1 h-3 w-3" />
+                &gt; EDIT_PROFILE
+              </Button>
             </div>
           </div>
         </div>
