@@ -103,7 +103,7 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className="rounded-md border border-border bg-card p-3 shadow-sm">
+            <div className="rounded-none border border-border bg-card p-3 shadow-sm">
               <p className="text-sm font-bold text-foreground mb-2">
                 {payload[0].payload.period}
               </p>
@@ -148,14 +148,14 @@ export function RevenueChart({
       <CardContent className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-md border border-border bg-card p-4">
+          <div className="rounded-none border border-border bg-card p-4">
             <p className="text-xs font-medium text-muted-foreground mb-1">Current MRR</p>
             <p className="text-2xl font-black text-foreground">
               {formatCompactCurrency(latestMRR)}
             </p>
           </div>
           {showArr && (
-            <div className="rounded-md border border-border bg-accent/50 p-4">
+            <div className="rounded-none border border-border bg-accent/50 p-4">
               <p className="text-xs font-medium text-muted-foreground mb-1">Projected ARR</p>
               <p className="text-2xl font-black text-foreground">
                 {formatCompactCurrency(latestARR)}
@@ -197,7 +197,7 @@ export function RevenueChart({
         </div>
 
         {/* Chart */}
-        <div className="rounded-md border border-border p-4 bg-card">
+        <div className="rounded-none border border-border p-4 bg-card">
           <ResponsiveContainer width="100%" height={300}>
             {chartType === "area" ? (
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

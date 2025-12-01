@@ -22,7 +22,7 @@ export function ConsentTabContent({
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <div className="flex items-center justify-between rounded-lg border bg-muted p-4">
+        <div className="flex items-center justify-between rounded-none border bg-muted p-4">
           <div className="flex-1">
             <h4 className="text-base font-semibold leading-tight text-foreground">Necessary Cookies</h4>
             <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground">
@@ -32,7 +32,7 @@ export function ConsentTabContent({
           <Switch checked={true} disabled />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg border p-4">
+        <div className="flex items-center justify-between rounded-none border p-4">
           <div className="flex-1">
             <h4 className="text-base font-semibold leading-tight text-foreground">Preference Cookies</h4>
             <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground">
@@ -45,7 +45,7 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg border p-4">
+        <div className="flex items-center justify-between rounded-none border p-4">
           <div className="flex-1">
             <h4 className="text-base font-semibold leading-tight text-foreground">Statistics Cookies</h4>
             <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground">
@@ -58,7 +58,7 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-lg border p-4">
+        <div className="flex items-center justify-between rounded-none border p-4">
           <div className="flex-1">
             <h4 className="text-base font-semibold leading-tight text-foreground">Marketing Cookies</h4>
             <p className="mt-1 text-sm font-normal leading-relaxed text-muted-foreground">
@@ -179,7 +179,7 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
           </div>
           <div className="ml-6 space-y-2">
             {category.cookies.map((cookie) => (
-              <div key={cookie.name} className="rounded-lg border bg-muted p-3">
+              <div key={cookie.name} className="rounded-none border bg-muted p-3">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-semibold">{cookie.name}</span>
                   <span className="text-xs font-normal text-muted-foreground">{cookie.duration}</span>
@@ -297,7 +297,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
           </Button>
         </div>
 
-        <div className="rounded-lg border bg-primary/10 p-4">
+        <div className="rounded-none border bg-primary/10 p-4">
           <div className="flex items-start space-x-3">
             <Shield className="mt-0.5 size-5 text-primary" />
             <div>

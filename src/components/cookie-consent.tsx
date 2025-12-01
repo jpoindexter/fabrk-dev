@@ -197,7 +197,7 @@ export function CookieConsent() {
       {showButton && !showModal && (
         <button
           onClick={openModal}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-lg border bg-background px-4 py-3 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-none border bg-background px-4 py-3 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
@@ -218,14 +218,14 @@ export function CookieConsent() {
           />
           <div className="flex min-h-full items-center justify-center p-4">
             <div
-              className={`relative w-full max-w-2xl rounded-lg border bg-background transition-all duration-300 ${
+              className={`relative w-full max-w-2xl rounded-none border bg-background transition-all duration-300 ${
                 isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
               }`}
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg border bg-muted p-2">
+                  <div className="rounded-none border bg-muted p-2">
                     <Cookie className="size-6" />
                   </div>
                   <div>
@@ -237,7 +237,7 @@ export function CookieConsent() {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="rounded-md p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="rounded-none p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring"
                   aria-label="Close"
                 >
                   <X className="size-4" />
