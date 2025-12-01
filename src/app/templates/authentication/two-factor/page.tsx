@@ -76,8 +76,8 @@ export default function TwoFactorTemplate() {
                     </InputOTP>
                   </div>
 
-                  <Button className="w-full font-mono text-xs uppercase" type="submit">
-                    &gt; Verify
+                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                    &gt; VERIFY
                   </Button>
                 </form>
 

@@ -62,7 +62,7 @@ export default function SignInTemplate() {
               <div className="grid gap-6">
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="font-mono text-xs">[EMAIL]:</Label>
                     <Input
                       id="email"
                       placeholder="name@example.com"
@@ -70,11 +70,12 @@ export default function SignInTemplate() {
                       autoCapitalize="none"
                       autoComplete="email"
                       autoCorrect="off"
+                      className="rounded-none font-mono text-xs"
                     />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="password">Password</Label>
+                      <Label htmlFor="password" className="font-mono text-xs">[PASSWORD]:</Label>
                       <Link
                         href="/templates/authentication/forgot-password"
                         className="text-xs text-primary hover:underline"
@@ -87,21 +88,22 @@ export default function SignInTemplate() {
                       type="password"
                       placeholder="••••••••"
                       autoComplete="current-password"
+                      className="rounded-none font-mono text-xs"
                     />
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="remember" />
+                    <Checkbox id="remember" className="rounded-none" />
                     <Label
                       htmlFor="remember"
-                      className="text-xs font-normal text-muted-foreground"
+                      className="font-mono text-xs font-normal text-muted-foreground"
                     >
                       Remember me for 30 days
                     </Label>
                   </div>
 
-                  <Button className="w-full font-mono text-xs uppercase" type="submit">
-                    &gt; Sign In
+                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                    &gt; SIGN_IN
                   </Button>
                 </form>
 
@@ -117,12 +119,12 @@ export default function SignInTemplate() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="font-mono text-xs">
+                  <Button variant="outline" className="rounded-none font-mono text-xs">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Button>
-                              <Button variant="outline" className="font-mono text-xs">
-                                <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
+                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                                   <path
                                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                                     className="fill-blue-600"
@@ -140,9 +142,10 @@ export default function SignInTemplate() {
                                     className="fill-red-600"
                                   />
                                   <path d="M1 1h22v22H1z" fill="none" />
-                                </svg>
-                                Google
-                              </Button>                </div>
+                    </svg>
+                    Google
+                  </Button>
+                </div>
               </div>
 
               <p className="px-8 text-center text-sm text-muted-foreground">

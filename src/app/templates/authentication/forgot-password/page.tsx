@@ -61,7 +61,7 @@ export default function ForgotPasswordTemplate() {
               <div className="grid gap-6">
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="font-mono text-xs">[EMAIL]:</Label>
                     <Input
                       id="email"
                       placeholder="name@example.com"
@@ -70,11 +70,12 @@ export default function ForgotPasswordTemplate() {
                       autoComplete="email"
                       autoCorrect="off"
                       required
+                      className="rounded-none font-mono text-xs"
                     />
                   </div>
 
-                  <Button className="w-full font-mono text-xs uppercase" type="submit">
-                    &gt; Send Reset Link
+                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                    &gt; SEND_RESET_LINK
                   </Button>
                 </form>
 
