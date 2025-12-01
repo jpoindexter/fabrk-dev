@@ -78,7 +78,7 @@ export function StepWorkspace({
                 <SelectItem
                   key={size.value}
                   value={size.value}
-                  className="font-mono text-sm"
+                  className="font-mono text-sm text-left"
                 >
                   {size.label}
                 </SelectItem>
