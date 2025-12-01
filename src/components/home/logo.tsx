@@ -22,8 +22,7 @@ export function Logo({ size = 20, className = "" }: LogoProps = {}) {
         height={height}
         viewBox="0 0 28 40"
         fill="none"
-        className={`${className} flex-shrink-0 text-primary-foreground`}
-        style={{ display: 'block' }}
+        className={`${className} flex-shrink-0 block text-primary-foreground`}
         aria-label="Fabrk Logo"
       >
         {/* F - Sharp geometric shapes */}

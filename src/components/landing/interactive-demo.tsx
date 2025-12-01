@@ -54,8 +54,7 @@ export function InteractiveDemo() {
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe
                     src={route.path}
-                    className="w-full border-0"
-                    style={{ height: "700px" }}
+                    className="w-full h-[700px] border-0"
                     title={route.label}
                   />
                 </TabsContent>
