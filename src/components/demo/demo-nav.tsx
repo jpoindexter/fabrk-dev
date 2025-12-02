@@ -21,13 +21,16 @@ export function DemoNav({
   suffix = "DEMO",
 }: DemoNavProps = {}) {
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo/Home Link - Terminal Style */}
-        <Link href="/" className="flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
-          <span className="text-xs text-primary">&gt;</span>
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+        >
+          <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-bold tracking-tight">FABRK</span>
-          <span className="hidden text-xs text-muted-foreground sm:inline">_{suffix}</span>
+          <span className="text-muted-foreground hidden text-xs sm:inline">_{suffix}</span>
         </Link>
 
         {/* Right Side: Theme Controls + Back Button */}

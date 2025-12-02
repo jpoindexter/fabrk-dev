@@ -11,13 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
@@ -85,28 +79,25 @@ export default function ProfilePage() {
     }
   };
 
-  const userInitials = session?.user?.name
-    ?.split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase() || "U";
+  const userInitials =
+    session?.user?.name
+      ?.split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase() || "U";
 
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-4xl font-semibold tracking-tight">Profile</h1>
-        <p className="text-muted-foreground">
-          Manage your personal information
-        </p>
+        <p className="text-muted-foreground">Manage your personal information</p>
       </div>
 
       {/* Avatar & Basic Info */}
       <Card>
         <CardHeader>
           <CardTitle as="h2">Profile Picture</CardTitle>
-          <CardDescription>
-            Update your profile picture and personal details
-          </CardDescription>
+          <CardDescription>Update your profile picture and personal details</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Avatar Upload */}
@@ -114,15 +105,13 @@ export default function ProfilePage() {
             <div className="relative">
               <Avatar className="h-24 w-24">
                 <AvatarImage src={session?.user?.image || ""} />
-                <AvatarFallback className="text-2xl">
-                  {userInitials}
-                </AvatarFallback>
+                <AvatarFallback className="text-2xl">{userInitials}</AvatarFallback>
               </Avatar>
               <label
                 htmlFor="avatar-upload"
-                className="absolute bottom-0 right-0 rounded-none bg-primary p-2 cursor-pointer hover:bg-primary/90 transition"
+                className="bg-primary hover:bg-primary/90 absolute right-0 bottom-0 cursor-pointer rounded-none p-2 transition"
               >
-                <Camera className="h-4 w-4 text-primary-foreground" />
+                <Camera className="text-primary-foreground h-4 w-4" />
                 <input
                   id="avatar-upload"
                   type="file"
@@ -135,55 +124,45 @@ export default function ProfilePage() {
 
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">{session?.user?.name}</h3>
-              <p className="text-sm text-muted-foreground">
-                {session?.user?.email}
-              </p>
+              <p className="text-muted-foreground text-sm">{session?.user?.email}</p>
               <div className="flex gap-2">
-                <Badge variant="secondary">
-                  {(session?.user as any)?.role || "USER"}
-                </Badge>
-                <Badge variant="outline">
-                  {(session?.user as any)?.tier || "FREE"}
-                </Badge>
+                <Badge variant="secondary">{(session?.user as any)?.role || "USER"}</Badge>
+                <Badge variant="outline">{(session?.user as any)?.tier || "FREE"}</Badge>
               </div>
             </div>
           </div>
 
           {/* Account Info */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex items-center gap-3 rounded-none border p-3">
-              <Mail className="h-5 w-5 text-muted-foreground" />
+            <div className="flex items-center gap-4 rounded-none border p-4">
+              <Mail className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">
-                  {session?.user?.email}
-                </p>
+                <p className="text-muted-foreground text-sm">{session?.user?.email}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-none border p-3">
-              <User className="h-5 w-5 text-muted-foreground" />
+            <div className="flex items-center gap-4 rounded-none border p-4">
+              <User className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Account Type</p>
-                <p className="text-sm text-muted-foreground">Personal</p>
+                <p className="text-muted-foreground text-sm">Personal</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-none border p-3">
-              <Calendar className="h-5 w-5 text-muted-foreground" />
+            <div className="flex items-center gap-4 rounded-none border p-4">
+              <Calendar className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Member Since</p>
-                <p className="text-sm text-muted-foreground">
-                  {new Date().toLocaleDateString()}
-                </p>
+                <p className="text-muted-foreground text-sm">{new Date().toLocaleDateString()}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-none border p-3">
-              <Shield className="h-5 w-5 text-muted-foreground" />
+            <div className="flex items-center gap-4 rounded-none border p-4">
+              <Shield className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Security</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   2FA {(session?.user as any)?.mfaEnabled ? "Enabled" : "Disabled"}
                 </p>
               </div>
@@ -198,13 +177,9 @@ export default function ProfilePage() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle as="h2">Profile Details</CardTitle>
-              <CardDescription>
-                Update your bio and social links
-              </CardDescription>
+              <CardDescription>Update your bio and social links</CardDescription>
             </div>
-            {!isEditing && (
-              <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>
-            )}
+            {!isEditing && <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>}
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -213,9 +188,7 @@ export default function ProfilePage() {
             <Input
               id="name"
               value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               disabled={!isEditing}
             />
           </div>
@@ -226,9 +199,7 @@ export default function ProfilePage() {
               id="bio"
               placeholder="Tell us about yourself..."
               value={formData.bio}
-              onChange={(e) =>
-                setFormData({ ...formData, bio: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               disabled={!isEditing}
               rows={4}
             />
@@ -242,9 +213,7 @@ export default function ProfilePage() {
                 type="url"
                 placeholder="https://example.com"
                 value={formData.website}
-                onChange={(e) =>
-                  setFormData({ ...formData, website: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                 disabled={!isEditing}
               />
             </div>
@@ -255,9 +224,7 @@ export default function ProfilePage() {
                 id="twitter"
                 placeholder="@username"
                 value={formData.twitter}
-                onChange={(e) =>
-                  setFormData({ ...formData, twitter: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
                 disabled={!isEditing}
               />
             </div>
@@ -268,16 +235,14 @@ export default function ProfilePage() {
                 id="github"
                 placeholder="username"
                 value={formData.github}
-                onChange={(e) =>
-                  setFormData({ ...formData, github: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, github: e.target.value })}
                 disabled={!isEditing}
               />
             </div>
           </div>
 
           {isEditing && (
-            <div className="flex justify-end gap-3">
+            <div className="flex justify-end gap-4">
               <Button
                 variant="outline"
                 onClick={() => {

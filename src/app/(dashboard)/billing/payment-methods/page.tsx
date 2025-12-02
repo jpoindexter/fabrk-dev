@@ -8,13 +8,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -27,14 +21,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {
-  CreditCard,
-  Plus,
-  Trash2,
-  CheckCircle2,
-  ArrowLeft,
-  Shield,
-} from "lucide-react";
+import { CreditCard, Plus, Trash2, CheckCircle2, ArrowLeft, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function PaymentMethodsPage() {
@@ -46,15 +33,17 @@ export default function PaymentMethodsPage() {
   // Payment methods list - initially empty
   // In a full implementation, fetch from GET /api/stripe/payment-methods endpoint
   // which would call stripe.paymentMethods.list({ customer: customerId })
-  const [paymentMethods] = useState<Array<{
-    id: string;
-    type: string;
-    brand: string;
-    last4: string;
-    expMonth: number;
-    expYear: number;
-    isDefault: boolean;
-  }>>([]);
+  const [paymentMethods] = useState<
+    Array<{
+      id: string;
+      type: string;
+      brand: string;
+      last4: string;
+      expMonth: number;
+      expYear: number;
+      isDefault: boolean;
+    }>
+  >([]);
 
   const handleAddPaymentMethod = async () => {
     setIsLoading(true);
@@ -75,10 +64,7 @@ export default function PaymentMethodsPage() {
       // Redirect to Stripe Checkout
       window.location.href = url;
     } catch (error: unknown) {
-      showError(
-        "Error",
-        error instanceof Error ? error.message : "Failed to add payment method"
-      );
+      showError("Error", error instanceof Error ? error.message : "Failed to add payment method");
     } finally {
       setIsLoading(false);
     }
@@ -98,10 +84,7 @@ export default function PaymentMethodsPage() {
         throw new Error(data.error || "Failed to set default payment method");
       }
 
-      success(
-        "Success",
-        "Default payment method updated successfully"
-      );
+      success("Success", "Default payment method updated successfully");
 
       // Reload to update UI
       window.location.reload();
@@ -129,10 +112,7 @@ export default function PaymentMethodsPage() {
         throw new Error(data.error || "Failed to delete payment method");
       }
 
-      success(
-        "Success",
-        "Payment method removed successfully"
-      );
+      success("Success", "Payment method removed successfully");
 
       // Reload to update UI
       window.location.reload();
@@ -163,7 +143,7 @@ export default function PaymentMethodsPage() {
         </Link>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-semibold tracking-tight mb-2">Payment Methods</h1>
+            <h1 className="mb-2 text-4xl font-semibold tracking-tight">Payment Methods</h1>
             <p className="text-muted-foreground text-lg">
               Manage your payment methods and billing information
             </p>
@@ -179,8 +159,8 @@ export default function PaymentMethodsPage() {
       <Alert className="mb-6">
         <Shield className="h-4 w-4" />
         <AlertDescription>
-          All payment information is securely processed by Stripe. We never store your
-          complete card details.
+          All payment information is securely processed by Stripe. We never store your complete card
+          details.
         </AlertDescription>
       </Alert>
 
@@ -188,11 +168,11 @@ export default function PaymentMethodsPage() {
       <div className="space-y-4">
         {paymentMethods.length === 0 ? (
           <Card>
-            <CardContent className="pt-6 text-center space-y-4">
-              <CreditCard className="h-12 w-12 mx-auto text-muted-foreground" />
+            <CardContent className="space-y-4 pt-6 text-center">
+              <CreditCard className="text-muted-foreground mx-auto h-12 w-12" />
               <div>
-                <h3 className="font-semibold mb-1">No payment methods</h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <h3 className="mb-1 font-semibold">No payment methods</h3>
+                <p className="text-muted-foreground mb-4 text-sm">
                   Add a payment method to subscribe to plans and make purchases
                 </p>
                 <Button onClick={handleAddPaymentMethod}>
@@ -208,22 +188,22 @@ export default function PaymentMethodsPage() {
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
-                    <div className="p-3 rounded-none bg-primary/10 border border-border">
+                    <div className="bg-primary/10 border-border rounded-none border p-4">
                       {getCardIcon(method.brand)}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="mb-1 flex items-center gap-2">
                         <p className="font-semibold capitalize">
                           {method.brand} •••• {method.last4}
                         </p>
                         {method.isDefault && (
                           <Badge variant="default" className="text-xs">
-                            <CheckCircle2 className="h-3 w-3 mr-1" />
+                            <CheckCircle2 className="mr-1 h-3 w-3" />
                             Default
                           </Badge>
                         )}
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Expires {method.expMonth}/{method.expYear}
                       </p>
                     </div>
@@ -259,14 +239,14 @@ export default function PaymentMethodsPage() {
       </div>
 
       {/* Information Cards */}
-      <div className="grid md:grid-cols-2 gap-6 mt-8">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Secure Processing</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            All payments are processed securely through Stripe. Your payment information
-            is encrypted and we never have access to your full card details.
+          <CardContent className="text-muted-foreground text-sm">
+            All payments are processed securely through Stripe. Your payment information is
+            encrypted and we never have access to your full card details.
           </CardContent>
         </Card>
 
@@ -274,9 +254,9 @@ export default function PaymentMethodsPage() {
           <CardHeader>
             <CardTitle className="text-lg">Automatic Billing</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Your default payment method will be charged automatically for subscriptions
-            and recurring payments. You'll receive a receipt after each transaction.
+          <CardContent className="text-muted-foreground text-sm">
+            Your default payment method will be charged automatically for subscriptions and
+            recurring payments. You'll receive a receipt after each transaction.
           </CardContent>
         </Card>
       </div>
@@ -287,7 +267,8 @@ export default function PaymentMethodsPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Remove Payment Method?</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently remove this payment method from your account. You can add it again later if needed.
+              This will permanently remove this payment method from your account. You can add it
+              again later if needed.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

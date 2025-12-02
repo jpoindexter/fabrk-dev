@@ -84,16 +84,14 @@ export default async function AnalyticsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            Analytics
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <h1 className="text-foreground text-3xl font-bold tracking-tight">Analytics</h1>
+          <p className="text-muted-foreground mt-2 text-sm">
             Track your SaaS performance and growth metrics
           </p>
         </div>
         <div className="flex items-center gap-2">
           <Select defaultValue="7">
-            <SelectTrigger className="w-[140px] rounded-none border border-border py-2 text-sm font-semibold shadow-sm">
+            <SelectTrigger className="border-border w-[140px] rounded-none border py-2 text-sm font-semibold shadow-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -113,13 +111,10 @@ export default async function AnalyticsPage() {
           const isPositive = stat.trend === "up";
 
           return (
-            <Card
-              key={stat.label}
-              className="border border-border p-6 shadow-sm"
-            >
+            <Card key={stat.label} className="border-border border p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-border bg-primary/10">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="border-border bg-primary/10 flex h-12 w-12 items-center justify-center rounded-none border">
+                  <Icon className="text-primary h-6 w-6" />
                 </div>
                 <div
                   className={`flex items-center gap-1 text-sm font-semibold ${
@@ -135,10 +130,8 @@ export default async function AnalyticsPage() {
                 </div>
               </div>
               <div className="mt-4">
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-                <p className="mt-1 text-3xl font-bold text-foreground">
-                  {stat.value}
-                </p>
+                <p className="text-muted-foreground text-sm">{stat.label}</p>
+                <p className="text-foreground mt-1 text-3xl font-bold">{stat.value}</p>
               </div>
             </Card>
           );
@@ -147,56 +140,46 @@ export default async function AnalyticsPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <Card className="border border-border p-6 shadow-sm">
-          <div className="mb-4 flex items-center justify-between border-b border-border pb-4">
-            <h3 className="text-xl font-bold text-foreground">Recent Activity</h3>
-            <button className="text-sm font-semibold text-primary hover:underline">
-              View All
-            </button>
+        <Card className="border-border border p-6 shadow-sm">
+          <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
+            <h3 className="text-foreground text-xl font-bold">Recent Activity</h3>
+            <button className="text-primary text-sm font-semibold hover:underline">View All</button>
           </div>
           <div className="space-y-4">
             {mockAnalytics.recentActivity.map((activity, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded-none border border-border bg-muted p-3"
+                className="border-border bg-muted flex items-center justify-between rounded-none border p-4"
               >
                 <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    {activity.action}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{activity.user}</p>
+                  <p className="text-foreground text-sm font-semibold">{activity.action}</p>
+                  <p className="text-muted-foreground text-xs">{activity.user}</p>
                 </div>
-                <p className="text-xs text-muted-foreground">{activity.time}</p>
+                <p className="text-muted-foreground text-xs">{activity.time}</p>
               </div>
             ))}
           </div>
         </Card>
 
         {/* Top Pages */}
-        <Card className="border border-border p-6 shadow-sm">
-          <div className="mb-4 flex items-center justify-between border-b border-border pb-4">
-            <h3 className="text-xl font-bold text-foreground">Top Pages</h3>
-            <button className="text-sm font-semibold text-primary hover:underline">
-              View All
-            </button>
+        <Card className="border-border border p-6 shadow-sm">
+          <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
+            <h3 className="text-foreground text-xl font-bold">Top Pages</h3>
+            <button className="text-primary text-sm font-semibold hover:underline">View All</button>
           </div>
           <div className="space-y-3">
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded-none border border-border bg-muted p-3"
+                className="border-border bg-muted flex items-center justify-between rounded-none border p-4"
               >
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-foreground">
-                    {page.path}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{page.views} views</p>
+                  <p className="text-foreground text-sm font-semibold">{page.path}</p>
+                  <p className="text-muted-foreground text-xs">{page.views} views</p>
                 </div>
                 <div
                   className={`text-sm font-semibold ${
-                    page.change.startsWith("+")
-                      ? "text-success"
-                      : "text-destructive"
+                    page.change.startsWith("+") ? "text-success" : "text-destructive"
                   }`}
                 >
                   {page.change}
@@ -208,20 +191,16 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Chart Placeholder */}
-      <Card className="border border-border p-6 shadow-sm">
-        <div className="mb-4 border-b border-border pb-4">
-          <h3 className="text-xl font-bold text-foreground">Revenue Over Time</h3>
-          <p className="text-sm text-muted-foreground">
-            Monthly recurring revenue trend
-          </p>
+      <Card className="border-border border p-6 shadow-sm">
+        <div className="border-border mb-4 border-b pb-4">
+          <h3 className="text-foreground text-xl font-bold">Revenue Over Time</h3>
+          <p className="text-muted-foreground text-sm">Monthly recurring revenue trend</p>
         </div>
-        <div className="flex h-64 items-center justify-center rounded-none border border-dashed border-border bg-muted">
+        <div className="border-border bg-muted flex h-64 items-center justify-center rounded-none border border-dashed">
           <div className="text-center">
-            <TrendingUp className="mx-auto mb-2 h-12 w-12 text-primary/50" />
-            <p className="text-sm font-semibold text-muted-foreground">
-              Chart component goes here
-            </p>
-            <p className="text-xs text-muted-foreground/80">
+            <TrendingUp className="text-primary/50 mx-auto mb-2 h-12 w-12" />
+            <p className="text-muted-foreground text-sm font-semibold">Chart component goes here</p>
+            <p className="text-muted-foreground/80 text-xs">
               Integrate Recharts, Chart.js, or your preferred library
             </p>
           </div>
@@ -229,17 +208,13 @@ export default async function AnalyticsPage() {
       </Card>
 
       {/* Implementation Note */}
-      <div className="rounded-none border-2 border-primary bg-primary/5 p-4">
-        <p className="text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">📊 Implementation Note:</span>{" "}
-          This is a demo analytics page with mock data. Replace{" "}
-          <code className="rounded bg-muted px-1 py-0.5 text-xs">
-            mockAnalytics
-          </code>{" "}
-          with real data from your database. For charts, install Recharts:{" "}
-          <code className="rounded bg-muted px-1 py-0.5 text-xs">
-            npm install recharts
-          </code>
+      <div className="border-primary bg-primary/5 rounded-none border-2 p-4">
+        <p className="text-muted-foreground text-sm">
+          <span className="text-foreground font-semibold">📊 Implementation Note:</span> This is a
+          demo analytics page with mock data. Replace{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">mockAnalytics</code> with real data
+          from your database. For charts, install Recharts:{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs">npm install recharts</code>
         </p>
       </div>
     </div>

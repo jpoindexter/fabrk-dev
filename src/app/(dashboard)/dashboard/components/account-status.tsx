@@ -5,13 +5,7 @@
 
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Users, Activity } from "lucide-react";
 
@@ -25,28 +19,24 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
     <Card>
       <CardHeader>
         <CardTitle as="h2">Account Status</CardTitle>
-        <CardDescription>
-          Current account information and status
-        </CardDescription>
+        <CardDescription>Current account information and status</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="flex items-center gap-3 rounded-none border p-4">
-            <Shield className="h-5 w-5 text-muted-foreground" />
+          <div className="flex items-center gap-4 rounded-none border p-4">
+            <Shield className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Security</p>
-              <div className="flex items-center gap-2 mt-1">
-                <Badge
-                  variant={mfaEnabled ? "default" : "secondary"}
-                >
+              <div className="mt-1 flex items-center gap-2">
+                <Badge variant={mfaEnabled ? "default" : "secondary"}>
                   2FA {mfaEnabled ? "Enabled" : "Disabled"}
                 </Badge>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-none border p-4">
-            <Users className="h-5 w-5 text-muted-foreground" />
+          <div className="flex items-center gap-4 rounded-none border p-4">
+            <Users className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Account Type</p>
               <Badge variant="outline" className="mt-1">
@@ -55,13 +45,11 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-none border p-4">
-            <Activity className="h-5 w-5 text-muted-foreground" />
+          <div className="flex items-center gap-4 rounded-none border p-4">
+            <Activity className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Status</p>
-              <Badge className="mt-1 bg-success text-success-foreground">
-                Active
-              </Badge>
+              <Badge className="bg-success text-success-foreground mt-1">Active</Badge>
             </div>
           </div>
         </div>
