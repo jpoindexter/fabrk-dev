@@ -1,6 +1,23 @@
 # Audit Execution Protocol
 
-Enterprise-grade process for running a comprehensive design system audit.
+Enterprise-grade process for running a comprehensive design system, accessibility (WCAG 2.1 AA), and UX heuristics audit.
+
+---
+
+## Audit Scope
+
+This audit covers:
+
+| Domain | Standards | Priority |
+|--------|-----------|----------|
+| **Accessibility** | WCAG 2.1 Level AA | CRITICAL |
+| **Design System** | Terminal aesthetic, design tokens | CRITICAL |
+| **UX Heuristics** | Nielsen's 10 principles | HIGH |
+| **Visual Design** | Gestalt, hierarchy, typography | HIGH |
+| **Inclusive Design** | Microsoft's 4 principles | HIGH |
+| **Interaction Design** | Touch targets, transitions | MEDIUM |
+| **Code Quality** | TypeScript, ESLint | MEDIUM |
+| **Security** | OWASP, env validation | CRITICAL |
 
 ---
 
@@ -10,13 +27,15 @@ Enterprise-grade process for running a comprehensive design system audit.
 |-------|------|----------|--------|
 | 1 | Pre-Flight | 5 min | Verify environment |
 | 2 | Automated Scan | 10 min | Run tooling |
-| 3 | Manual Review | 30-60 min | Deep inspection |
-| 4 | Report | 10 min | Generate findings |
-| 5 | Present | 5 min | Show to user |
-| 6 | Await Approval | - | User decision |
-| 7 | Fix | Varies | Apply changes |
-| 8 | Verify | 10 min | Confirm fixes |
-| 9 | Commit | 2 min | Save changes |
+| 3 | WCAG Audit | 20-30 min | Accessibility review |
+| 4 | Design System Audit | 20-30 min | Visual/UX review |
+| 5 | Manual Review | 15-20 min | Deep inspection |
+| 6 | Report | 10 min | Generate findings |
+| 7 | Present | 5 min | Show to user |
+| 8 | Await Approval | - | User decision |
+| 9 | Fix | Varies | Apply changes |
+| 10 | Verify | 10 min | Confirm fixes |
+| 11 | Commit | 2 min | Save changes |
 
 ---
 
@@ -100,7 +119,269 @@ find src -name "*.tsx" -exec wc -l {} + | sort -n | awk '$1 > 200 {print}'
 
 ---
 
-## Phase 3: Manual Review
+## Phase 3: WCAG 2.1 AA Audit
+
+Comprehensive accessibility review following WCAG 2.1 Level AA guidelines.
+
+### 3.1 Perceivable (WCAG 1.x)
+
+#### Non-text Content (1.1.1)
+```bash
+# Find images without alt
+grep -rn "<img\|<Image" src/ --include="*.tsx" | grep -v "alt="
+
+# Find icon buttons without aria-label
+grep -rn 'size="icon"' src/ --include="*.tsx" | grep -v "aria-label"
+
+# Find SVGs without accessible names
+grep -rn "<svg" src/ --include="*.tsx" | grep -v "aria-label\|aria-labelledby\|role="
+```
+
+Checklist:
+- [ ] All `<Image>` and `<img>` have descriptive `alt` text
+- [ ] Decorative images have `alt=""`
+- [ ] Icon-only buttons have `aria-label`
+- [ ] SVGs have `role="img"` and accessible name
+
+#### Color Contrast (1.4.3)
+```bash
+# Check for hardcoded colors that may fail contrast
+npm run scan:hex
+
+# Use Lighthouse for automated contrast checking
+# Chrome DevTools > Lighthouse > Accessibility
+```
+
+Checklist:
+- [ ] Normal text: 4.5:1 contrast ratio
+- [ ] Large text (18px+): 3:1 contrast ratio
+- [ ] UI components: 3:1 contrast ratio
+- [ ] Run Lighthouse accessibility audit
+
+#### Text Resize (1.4.4)
+```bash
+# Check for fixed pixel font sizes
+grep -rn "fontSize:" src/ --include="*.tsx" | grep "px"
+grep -rn "font-\[" src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] No fixed pixel font sizes
+- [ ] Text scales to 200% without loss of content
+- [ ] Test at Chrome DevTools zoom 200%
+
+### 3.2 Operable (WCAG 2.x)
+
+#### Keyboard Accessible (2.1.1)
+```bash
+# Find click handlers without keyboard
+grep -rn "onClick" src/ --include="*.tsx" | grep "<div\|<span" | grep -v "role=\|tabIndex\|onKeyDown"
+```
+
+Checklist:
+- [ ] Tab through entire page
+- [ ] All interactive elements focusable
+- [ ] No keyboard traps
+- [ ] ESC closes all modals/popovers
+- [ ] Enter/Space activates buttons
+
+#### Focus Visible (2.4.7)
+```bash
+# Find outline removal without alternative
+grep -rn "outline-none\|outline-0" src/ --include="*.tsx" | grep -v "focus-visible"
+```
+
+Checklist:
+- [ ] All interactive elements have visible focus
+- [ ] Focus indicator is clearly visible (3:1 contrast)
+- [ ] No `outline-none` without `focus-visible` replacement
+
+#### Bypass Blocks (2.4.1)
+```bash
+# Check for skip links
+grep -rn "skip" src/app/layout.tsx
+grep -rn 'id="main-content"' src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] Skip link present
+- [ ] Landmark regions defined (header, nav, main, footer)
+- [ ] Headings create logical outline
+
+### 3.3 Understandable (WCAG 3.x)
+
+#### Error Identification (3.3.1)
+```bash
+# Check for aria-invalid usage
+grep -rn "aria-invalid" src/ --include="*.tsx"
+
+# Check for error message patterns
+grep -rn 'role="alert"' src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] Form errors identified with `aria-invalid`
+- [ ] Error messages associated with inputs via `aria-describedby`
+- [ ] Errors announced via `role="alert"`
+
+#### Labels (3.3.2)
+```bash
+# Find inputs without labels
+grep -rn "<Input\|<input" src/ --include="*.tsx" | grep -v "id=\|aria-label"
+grep -rn "<Label" src/ --include="*.tsx" | grep -v "htmlFor"
+```
+
+Checklist:
+- [ ] All form inputs have visible labels
+- [ ] Labels associated via `htmlFor`/`id`
+- [ ] Required fields indicated
+
+### 3.4 Robust (WCAG 4.x)
+
+#### Parsing (4.1.1)
+```bash
+npm run lint
+npm run type-check
+```
+
+Checklist:
+- [ ] No duplicate IDs
+- [ ] Valid HTML nesting
+- [ ] All elements properly closed
+
+### 3.5 Screen Reader Testing
+
+Manual tests with VoiceOver (Mac), NVDA (Windows), or axe DevTools:
+
+- [ ] Page title announced
+- [ ] Navigation landmarks navigable
+- [ ] Form labels read correctly
+- [ ] Error messages announced
+- [ ] Dynamic content announced
+
+---
+
+## Phase 4: Design System Audit
+
+Visual design, UX heuristics, and design token compliance.
+
+### 4.1 Color & Theme Audit
+
+```bash
+# Hardcoded colors
+npm run scan:hex
+grep -rE "(bg|text|border)-(red|blue|green|gray|slate|purple)-\d+" src/ --include="*.tsx"
+grep -rn "bg-white\|text-white\|bg-black\|text-black" src/ --include="*.tsx"
+grep -rn "#[0-9a-fA-F]{3,8}" src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] No hardcoded hex colors
+- [ ] No Tailwind color palette classes
+- [ ] All colors use design tokens
+- [ ] Theme switching works (light/dark)
+- [ ] Test 3-4 DaisyUI themes
+
+### 4.2 Shape & Border Audit
+
+```bash
+# Rounded corner violations
+grep -rE "rounded-(sm|md|lg|xl|2xl|3xl)" src/app src/components --include="*.tsx"
+
+# Shadow violations
+grep -rE "shadow-(md|lg|xl|2xl)" src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] All components use `rounded-none`
+- [ ] Only traffic light dots use `rounded-full`
+- [ ] Only `shadow-sm` or terminal hard shadow used
+- [ ] No `shadow-md/lg/xl/2xl`
+
+### 4.3 Typography Audit
+
+```bash
+# Check for terminal styling
+grep -rn "<Button" src/ --include="*.tsx" | grep -v "font-mono"
+grep -rn "\[.*\]:" src/ --include="*.tsx"  # Label format
+```
+
+Checklist:
+- [ ] All buttons use `font-mono text-xs`
+- [ ] Buttons use `> ACTION` format
+- [ ] Labels use `[LABEL]:` format
+- [ ] Status messages use `[TYPE]: Message` format
+- [ ] Typography hierarchy consistent
+
+### 4.4 Spacing Audit
+
+```bash
+# Non-grid spacing values
+grep -rE "(p|m|gap|space)-(3|5|7|9|11|13|14|15)" src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] All spacing uses 8-point grid
+- [ ] No odd spacing values (p-3, m-5, gap-7)
+- [ ] Consistent padding patterns
+- [ ] Proper container margins
+
+### 4.5 Interaction Audit
+
+```bash
+# Hover without transition
+grep -rn "hover:" src/ --include="*.tsx" | grep -v "transition"
+
+# Slow transitions
+grep -rn "duration-500\|duration-700\|duration-1000" src/ --include="*.tsx"
+```
+
+Checklist:
+- [ ] All hover states have transitions
+- [ ] No transitions > 300ms
+- [ ] Click targets ≥ 44px
+- [ ] Loading states present
+- [ ] Disabled states visible
+
+### 4.6 UX Heuristics Check
+
+Manual review against Nielsen's 10:
+
+| # | Heuristic | Check | Pass? |
+|---|-----------|-------|-------|
+| 1 | System Status | Loading states, progress indicators | ☐ |
+| 2 | Real World Match | Natural language, familiar icons | ☐ |
+| 3 | User Control | Cancel buttons, undo, back navigation | ☐ |
+| 4 | Consistency | Design tokens, component patterns | ☐ |
+| 5 | Error Prevention | Validation, confirmation dialogs | ☐ |
+| 6 | Recognition | Visible options, breadcrumbs | ☐ |
+| 7 | Flexibility | Shortcuts, progressive disclosure | ☐ |
+| 8 | Minimalist | Essential info, visual hierarchy | ☐ |
+| 9 | Error Recovery | Clear messages, recovery actions | ☐ |
+| 10 | Help | Tooltips, documentation | ☐ |
+
+### 4.7 Responsive Audit
+
+```bash
+# Non-responsive grids
+grep -rn "grid-cols-[3-6]" src/ --include="*.tsx" | grep -v "md:\|lg:\|sm:"
+
+# Non-responsive text
+grep -rn "text-[3-5]xl" src/ --include="*.tsx" | grep -v "md:\|lg:\|sm:"
+```
+
+Checklist:
+- [ ] Test at 320px (mobile)
+- [ ] Test at 768px (tablet)
+- [ ] Test at 1024px (desktop)
+- [ ] Test at 1440px (large)
+- [ ] No horizontal scrolling
+- [ ] All grids responsive
+- [ ] Large text scales down
+
+---
+
+## Phase 5: Manual Review
 
 Systematic inspection following file priority order.
 

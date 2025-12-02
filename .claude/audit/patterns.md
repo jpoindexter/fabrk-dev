@@ -275,8 +275,195 @@ npm run type-check  # TypeScript errors
 
 ---
 
+## 12. Spacing Violations (MEDIUM)
+
+```bash
+# Non-standard spacing (should use 4px/8px multiples)
+(p|m|gap|space)-(3|5|7|9|11|13|14|15)(?![0-9])
+
+# Missing container
+<div(?![^>]*container)(?=[^>]*max-w-)
+
+# Inconsistent section spacing
+space-y-(?!2|4|6|8|12|16)
+
+# Raw pixel values in spacing
+(padding|margin|gap):\s*\d+px
+
+# Missing responsive spacing
+(p|m)-\d+(?!.*md:)(?=.*<div.*className)
+```
+
+---
+
+## 13. Animation & Transition Violations (MEDIUM)
+
+```bash
+# Missing transition on interactive elements
+(hover:|focus:)(?![^"]*transition)
+
+# Animation without reduced-motion
+animate-(?!none)(?![^"]*motion-safe)
+@keyframes(?![\s\S]*prefers-reduced-motion)
+
+# Framer Motion without accessibility
+<motion\.(?![^>]*whileHover|animate)
+
+# Long transitions (> 300ms can feel sluggish)
+duration-(?:500|700|1000)
+
+# Missing transition-colors on hover:bg
+hover:bg-(?![^"]*transition)
+```
+
+---
+
+## 14. Theme & CSS Variable Violations (HIGH)
+
+```bash
+# Direct color values in style attribute
+style=\{[^}]*color:\s*["'][^var]
+style=\{[^}]*background:\s*["'][^var]
+
+# Missing dark mode variant
+bg-(?!background|card|muted|primary|secondary|destructive|success|warning|info|popover|accent)(?![^"]*dark:)
+
+# CSS variable without oklch
+var\(--(?!font|radius|sidebar)[^)]+\)(?!.*oklch)
+
+# Theme-unaware classes
+\[&\[data-theme\]\]
+```
+
+---
+
+## 15. Responsive Design Violations (HIGH)
+
+```bash
+# Fixed widths without responsive
+w-\[\d+px\](?![^"]*md:|lg:)
+
+# Text size without responsive consideration
+text-(3xl|4xl|5xl)(?![^"]*md:|sm:)
+
+# Hidden on mobile without alternative
+hidden(?![^"]*md:block|lg:block)
+
+# Grid columns without responsive
+grid-cols-(?:3|4|5|6)(?![^"]*md:|lg:|sm:)
+
+# Missing mobile-first approach
+md:flex(?!.*flex)
+lg:grid(?!.*grid)
+```
+
+---
+
+## 16. Import & Module Violations (LOW)
+
+```bash
+# Wrong import order (React should be first)
+^import(?!.*react).*\n.*import.*react
+
+# Circular import risk (importing from parent)
+from\s+["']\.\./\.\./
+
+# Missing type import
+import\s+\{[^}]*Type[^}]*\}(?!.*type)
+
+# Wildcard imports (avoid)
+import\s+\*\s+as
+
+# Deep imports (prefer barrel exports)
+from\s+["']@/components/ui/[^/]+/[^/]+["']
+```
+
+---
+
+## 17. Framer Motion Patterns (MEDIUM)
+
+```bash
+# Missing AnimatePresence for exit animations
+<motion\.(?![^>]*exit=).*animate=
+
+# Animation without initial state
+<motion\.(?![^>]*initial=).*animate=
+
+# Heavy animations (many properties)
+animate=\{[^}]*x:[^}]*y:[^}]*scale:[^}]*rotate:
+
+# Missing layout animation for list reordering
+\.map\(.*<motion\.(?![^>]*layout)
+```
+
+---
+
+## 18. Radix UI Pattern Violations (HIGH)
+
+```bash
+# Missing asChild for composition
+<(Button|Link)(?=[^>]*href=)(?![^>]*asChild)
+
+# Dialog without proper structure
+<Dialog(?![\s\S]*DialogContent)
+
+# Select without placeholder
+<Select(?![\s\S]*placeholder)
+
+# Tabs without defaultValue
+<Tabs(?![^>]*defaultValue)
+
+# Missing onOpenChange for controlled overlays
+<(Dialog|Sheet|Popover)(?![^>]*onOpenChange)
+```
+
+---
+
+## Quick Scan: All Categories
+
+```bash
+# CRITICAL: Run these first
+grep -rE "#[0-9a-fA-F]{3,8}|shadow-(md|lg|xl)|process\.env\.|dangerouslySetInnerHTML" src/ --include="*.tsx" | head -20
+
+# HIGH: Run these second
+grep -rE "rounded-(sm|md|lg|xl)|outline-none(?!.*focus)|<img(?!.*alt=)" src/ --include="*.tsx" | head -20
+
+# MEDIUM: Run these third
+grep -rE "console\.(log|error)|TODO|FIXME|: any(?!.*//)" src/ --include="*.tsx" | head -20
+
+# Comprehensive single command
+grep -rE "(bg|text)-(red|blue|gray|white|black)-|rounded-(md|lg)|shadow-(md|lg)|console\.log|@ts-ignore" src/ --include="*.tsx" --include="*.ts" | wc -l
+```
+
+---
+
 ## Pattern Testing
 
 Test patterns at: https://regex101.com/
 
 Always verify patterns don't have false positives before running bulk fixes.
+
+---
+
+## Pattern Categories Summary
+
+| # | Category | Severity | Count |
+|---|----------|----------|-------|
+| 1 | Colors | CRITICAL | 5 patterns |
+| 2 | Shapes | HIGH | 4 patterns |
+| 3 | Typography | HIGH | 3 patterns |
+| 4 | Components | HIGH | 4 patterns |
+| 5 | Accessibility | CRITICAL | 9 patterns |
+| 6 | Templates | HIGH | 4 patterns |
+| 7 | Code Quality | MEDIUM | 5 patterns |
+| 8 | Security | CRITICAL | 5 patterns |
+| 9 | Performance | MEDIUM | 5 patterns |
+| 10 | Modularity | MEDIUM | 4 patterns |
+| 11 | Enterprise | HIGH | 4 patterns |
+| 12 | Spacing | MEDIUM | 5 patterns |
+| 13 | Animation | MEDIUM | 5 patterns |
+| 14 | Theme/CSS | HIGH | 4 patterns |
+| 15 | Responsive | HIGH | 5 patterns |
+| 16 | Imports | LOW | 5 patterns |
+| 17 | Framer Motion | MEDIUM | 4 patterns |
+| 18 | Radix UI | HIGH | 5 patterns |

@@ -273,6 +273,98 @@ Verdict: [PASS/FAIL]
 
 ---
 
+## 14. Spacing Violations
+
+| # | Severity | File | Line | Current | Fix |
+|---|----------|------|------|---------|-----|
+| 1 | 🟡 MED | hero.tsx | 23 | `p-3` | `p-2` or `p-4` |
+| 2 | 🟡 MED | card.tsx | 45 | `gap-5` | `gap-4` or `gap-6` |
+| 3 | 🟡 MED | form.tsx | 67 | `space-y-7` | `space-y-6` or `space-y-8` |
+| | | | | | |
+
+**Rule:** Use 8-point grid (p-1, p-2, p-4, p-6, p-8, p-12, p-16)
+
+---
+
+## 15. Animation & Transition Violations
+
+| # | Severity | File | Line | Issue | Fix |
+|---|----------|------|------|-------|-----|
+| 1 | 🟡 MED | button.tsx | 15 | `hover:bg-muted` missing transition | Add `transition-colors duration-200` |
+| 2 | 🟡 MED | card.tsx | 28 | `duration-500` too slow | Use `duration-200` or `duration-300` |
+| 3 | 🟠 HIGH | modal.tsx | 45 | Animation without reduced-motion | Add `motion-reduce:` or `motion-safe:` |
+| | | | | | |
+
+---
+
+## 16. Responsive Design Violations
+
+| # | Severity | File | Line | Issue | Fix |
+|---|----------|------|------|-------|-----|
+| 1 | 🟠 HIGH | grid.tsx | 12 | `grid-cols-4` not responsive | `grid-cols-1 md:grid-cols-2 lg:grid-cols-4` |
+| 2 | 🟠 HIGH | hero.tsx | 34 | `text-5xl` not responsive | `text-2xl md:text-4xl lg:text-5xl` |
+| 3 | 🟠 HIGH | sidebar.tsx | 56 | `w-[300px]` breaks mobile | `w-full md:w-[300px]` |
+| 4 | 🟡 MED | nav.tsx | 23 | `hidden md:flex` no mobile alt | Add mobile nav alternative |
+| | | | | | |
+
+---
+
+## 17. Theme Compliance
+
+### Token Usage Audit
+
+| Category | Total | Using Tokens | Hardcoded | Score |
+|----------|-------|--------------|-----------|-------|
+| Backgrounds | XX | XX | XX | XX% |
+| Text colors | XX | XX | XX | XX% |
+| Border colors | XX | XX | XX | XX% |
+| **TOTAL** | XX | XX | XX | XX% |
+
+### Theme Switching Test
+
+| Theme | Landing | Dashboard | Docs | Templates | Score |
+|-------|---------|-----------|------|-----------|-------|
+| Light | ✅/❌ | ✅/❌ | ✅/❌ | ✅/❌ | X/4 |
+| Dark | ✅/❌ | ✅/❌ | ✅/❌ | ✅/❌ | X/4 |
+| Synthwave | ✅/❌ | ✅/❌ | ✅/❌ | ✅/❌ | X/4 |
+| Dracula | ✅/❌ | ✅/❌ | ✅/❌ | ✅/❌ | X/4 |
+
+---
+
+## 18. Icon Violations
+
+| # | Severity | File | Line | Issue | Fix |
+|---|----------|------|------|-------|-----|
+| 1 | 🔴 CRIT | button.tsx | 45 | Icon button missing `aria-label` | Add `aria-label="Close"` |
+| 2 | 🟡 MED | nav.tsx | 23 | Icon size inconsistent | Use `h-5 w-5` for nav icons |
+| 3 | 🟡 MED | card.tsx | 67 | Decorative icon missing `aria-hidden` | Add `aria-hidden="true"` |
+| | | | | | |
+
+---
+
+## 19. Radix UI Violations
+
+| # | Severity | File | Line | Component | Issue | Fix |
+|---|----------|------|------|-----------|-------|-----|
+| 1 | 🟠 HIGH | link.tsx | 12 | Button+Link | Missing `asChild` | Add `asChild` to Button |
+| 2 | 🟠 HIGH | dialog.tsx | 34 | Dialog | Missing `onOpenChange` | Add controlled state |
+| 3 | 🟡 MED | select.tsx | 56 | Select | Missing `placeholder` | Add placeholder prop |
+| 4 | 🟡 MED | tabs.tsx | 78 | Tabs | Missing `defaultValue` | Add defaultValue prop |
+| | | | | | | |
+
+---
+
+## 20. Framer Motion Violations
+
+| # | Severity | File | Line | Issue | Fix |
+|---|----------|------|------|-------|-----|
+| 1 | 🟡 MED | hero.tsx | 45 | `animate` without `initial` | Add `initial` prop |
+| 2 | 🟡 MED | modal.tsx | 67 | Exit animation without AnimatePresence | Wrap in AnimatePresence |
+| 3 | 🟡 MED | list.tsx | 89 | Mapped items without `layout` | Add `layout` prop for reorder |
+| | | | | | |
+
+---
+
 ## Performance Metrics (Optional)
 
 | Metric | Target | Actual | Status |
@@ -281,3 +373,109 @@ Verdict: [PASS/FAIL]
 | First Input Delay | < 100ms | XXms | ✅/❌ |
 | Cumulative Layout Shift | < 0.1 | X.XX | ✅/❌ |
 | Bundle Size (gzipped) | < 100KB | XXKB | ✅/❌ |
+
+---
+
+## Quick Fix Recipes
+
+### Batch Rounded Corner Fix
+
+```bash
+# Preview files with violations
+grep -rn "rounded-lg\|rounded-md\|rounded-sm\|rounded-xl" src/app src/components --include="*.tsx"
+
+# Count violations
+grep -rE "rounded-(sm|md|lg|xl|2xl|3xl)" src/ --include="*.tsx" | wc -l
+```
+
+### Batch Spacing Fix
+
+```bash
+# Find non-grid spacing
+grep -rE "(p|m|gap|space)-(3|5|7|9|11)" src/ --include="*.tsx"
+
+# Common replacements:
+# p-3 → p-2 or p-4
+# p-5 → p-4 or p-6
+# gap-3 → gap-2 or gap-4
+```
+
+### Batch Transition Fix
+
+```bash
+# Find hover without transition
+grep -rn "hover:" src/ --include="*.tsx" | grep -v "transition"
+
+# Add transition-colors duration-200 before hover:
+```
+
+### Batch Responsive Fix
+
+```bash
+# Find non-responsive grids
+grep -rn "grid-cols-[3-6]" src/ --include="*.tsx" | grep -v "md:\|lg:\|sm:"
+
+# Find non-responsive text
+grep -rn "text-[3-5]xl" src/ --include="*.tsx" | grep -v "md:\|lg:\|sm:"
+```
+
+---
+
+## Summary Report Template (Copy-Paste)
+
+```
+════════════════════════════════════════════════════════════════════════
+                         DESIGN SYSTEM AUDIT
+                          [DATE] [TIME]
+════════════════════════════════════════════════════════════════════════
+
+EXECUTIVE SUMMARY
+─────────────────
+Files Scanned:    XXX
+Lines of Code:    X,XXX
+Compliance Score: XX.X%
+Verdict:          [PASS/NEEDS_WORK/FAIL]
+
+ISSUES BY SEVERITY
+──────────────────
+🔴 Critical:  XX  (must fix immediately)
+🟠 High:      XX  (must fix before release)
+🟡 Medium:    XX  (should fix soon)
+🔵 Low:       XX  (nice to fix)
+─────────────────
+Total:        XX
+
+TOP ISSUES
+──────────
+1. [SEVERITY] file:line - Issue description
+2. [SEVERITY] file:line - Issue description
+3. [SEVERITY] file:line - Issue description
+4. [SEVERITY] file:line - Issue description
+5. [SEVERITY] file:line - Issue description
+
+CATEGORY BREAKDOWN
+──────────────────
+Colors:        XX violations
+Shapes:        XX violations
+Typography:    XX violations
+Accessibility: XX violations
+Spacing:       XX violations
+Animation:     XX violations
+Responsive:    XX violations
+Security:      XX violations
+Code Quality:  XX violations
+Documentation: XX violations
+
+RECOMMENDED FIX ORDER
+─────────────────────
+1. Security issues (Critical)
+2. Accessibility issues (Critical)
+3. Design system colors (Critical)
+4. Rounded corners (High)
+5. Responsive design (High)
+6. Spacing alignment (Medium)
+7. Animation timing (Medium)
+8. Code quality (Medium)
+
+════════════════════════════════════════════════════════════════════════
+```
