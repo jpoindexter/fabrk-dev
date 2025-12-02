@@ -41,7 +41,7 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
       data-size={size}
       role="group"
       className={cn(
-        "group/input-group shadow-xs relative flex w-full items-center rounded-none border border-input outline-none transition-[color,box-shadow] dark:bg-input/30",
+        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-none border shadow-xs transition-[color,box-shadow] outline-none",
         "h-9 has-[>textarea]:h-auto",
 
         // Variants based on alignment.
@@ -51,7 +51,7 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
 
         // Focus state.
-        "has-[[data-slot=input-group-control]:focus-visible]:ring-1 has-[[data-slot=input-group-control]:focus-visible]:ring-ring",
+        "has-[[data-slot=input-group-control]:focus-visible]:ring-ring has-[[data-slot=input-group-control]:focus-visible]:ring-1",
 
         // Error state.
         "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
@@ -118,7 +118,7 @@ const inputGroupButtonVariants = cva("flex items-center gap-2 font-mono text-xs 
   variants: {
     size: {
       xs: "h-6 gap-1 rounded-none px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-      sm: "h-8 gap-1.5 rounded-none px-2.5 has-[>svg]:px-2.5",
+      sm: "h-8 gap-2 rounded-none px-2.5 has-[>svg]:px-2.5",
       // Industry standard: Minimal padding p-1 for icon buttons
       "icon-xs": "size-6 rounded-none p-1 has-[>svg]:p-1",
       "icon-sm": "size-8 p-1 has-[>svg]:p-1",
@@ -155,7 +155,7 @@ function InputGroupText({ className, asChild = false, ...props }: InputGroupText
     <Comp
       data-slot="input-group-text"
       className={cn(
-        "flex items-center gap-2 font-mono text-xs text-muted-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+        "text-muted-foreground flex items-center gap-2 font-mono text-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -202,7 +202,7 @@ function InputGroupSeparator({
       data-slot="input-group-separator"
       orientation={orientation}
       className={cn(
-        "relative !m-0 self-stretch bg-input data-[orientation=vertical]:h-auto",
+        "bg-input relative !m-0 self-stretch data-[orientation=vertical]:h-auto",
         className
       )}
       {...props}

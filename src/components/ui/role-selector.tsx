@@ -43,36 +43,21 @@ const DEFAULT_ROLES: Role[] = [
     name: "Owner",
     description: "Full system access with billing and deletion rights",
     icon: Crown,
-    permissions: [
-      "All permissions",
-      "Delete workspace",
-      "Manage billing",
-      "Transfer ownership",
-    ],
+    permissions: ["All permissions", "Delete workspace", "Manage billing", "Transfer ownership"],
   },
   {
     id: "admin",
     name: "Admin",
     description: "Manage team members and workspace settings",
     icon: Shield,
-    permissions: [
-      "Manage members",
-      "Edit settings",
-      "Create projects",
-      "View analytics",
-    ],
+    permissions: ["Manage members", "Edit settings", "Create projects", "View analytics"],
   },
   {
     id: "member",
     name: "Member",
     description: "Create and edit content with standard access",
     icon: User,
-    permissions: [
-      "Create content",
-      "Edit own content",
-      "Comment",
-      "View projects",
-    ],
+    permissions: ["Create content", "Edit own content", "Comment", "View projects"],
   },
   {
     id: "guest",
@@ -94,12 +79,8 @@ export function RoleSelector({
   variant = "cards",
   className,
 }: RoleSelectorProps) {
-  const [selectedValue, setSelectedValue] = React.useState<
-    string | string[] | undefined
-  >(value);
-  const [pendingValue, setPendingValue] = React.useState<
-    string | string[] | undefined
-  >(undefined);
+  const [selectedValue, setSelectedValue] = React.useState<string | string[] | undefined>(value);
+  const [pendingValue, setPendingValue] = React.useState<string | string[] | undefined>(undefined);
   const [showDialog, setShowDialog] = React.useState(false);
 
   const isSelected = (roleId: string): boolean => {
@@ -166,23 +147,22 @@ export function RoleSelector({
               onClick={() => handleRoleClick(role.id, role.disabled)}
               disabled={role.disabled}
               className={cn(
-                "group relative flex items-start gap-4 rounded-none border bg-card p-4 text-left shadow-sm transition-all",
-                selected &&
-                  "border-primary bg-primary/5 shadow-sm",
-                !selected && !role.disabled && "hover:shadow-sm hover:opacity-90",
+                "group bg-card relative flex items-start gap-4 rounded-none border p-4 text-left shadow-sm transition-all",
+                selected && "border-primary bg-primary/5 shadow-sm",
+                !selected && !role.disabled && "hover:opacity-90 hover:shadow-sm",
                 role.disabled && "cursor-not-allowed opacity-50"
               )}
             >
               {selected && (
-                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-none border bg-primary shadow-sm">
-                  <Check className="h-3 w-3 text-primary-foreground" />
+                <div className="bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none border shadow-sm">
+                  <Check className="text-primary-foreground h-3 w-3" />
                 </div>
               )}
 
               {Icon && (
                 <div
                   className={cn(
-                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-none border bg-background shadow-sm",
+                    "bg-background flex h-10 w-10 shrink-0 items-center justify-center rounded-none border shadow-sm",
                     selected && "bg-primary text-primary-foreground"
                   )}
                 >
@@ -192,17 +172,13 @@ export function RoleSelector({
 
               <div className="flex-1 space-y-2">
                 <div className="flex items-center gap-2">
-                  <h4 className="font-semibold text-foreground">{role.name}</h4>
-                  {isCurrent && (
-                    <Badge variant="secondary">Current</Badge>
-                  )}
+                  <h4 className="text-foreground font-semibold">{role.name}</h4>
+                  {isCurrent && <Badge variant="secondary">Current</Badge>}
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  {role.description}
-                </p>
+                <p className="text-muted-foreground text-sm">{role.description}</p>
 
                 {showPermissions && role.permissions.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  <div className="flex flex-wrap gap-2 pt-1">
                     {role.permissions.map((permission, idx) => (
                       <Badge key={idx} variant="neutral" className="text-xs">
                         {permission}
@@ -221,17 +197,13 @@ export function RoleSelector({
               <AlertDialogHeader>
                 <AlertDialogTitle>Confirm Role Change</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Are you sure you want to change the role? This will update
-                  access permissions immediately.
+                  Are you sure you want to change the role? This will update access permissions
+                  immediately.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel onClick={handleCancel}>
-                  Cancel
-                </AlertDialogCancel>
-                <AlertDialogAction onClick={handleConfirm}>
-                  Confirm
-                </AlertDialogAction>
+                <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -253,23 +225,22 @@ export function RoleSelector({
             onClick={() => handleRoleClick(role.id, role.disabled)}
             disabled={role.disabled}
             className={cn(
-              "group relative flex flex-col items-center rounded-none border bg-card p-6 text-center shadow-sm transition-all",
-              selected &&
-                "border-primary bg-primary/5 shadow-sm",
-              !selected && !role.disabled && "hover:shadow-sm hover:opacity-90",
+              "group bg-card relative flex flex-col items-center rounded-none border p-6 text-center shadow-sm transition-all",
+              selected && "border-primary bg-primary/5 shadow-sm",
+              !selected && !role.disabled && "hover:opacity-90 hover:shadow-sm",
               role.disabled && "cursor-not-allowed opacity-50"
             )}
           >
             {selected && (
-              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-none border bg-primary shadow-sm">
-                <Check className="h-4 w-4 text-primary-foreground" />
+              <div className="bg-primary absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-none border shadow-sm">
+                <Check className="text-primary-foreground h-4 w-4" />
               </div>
             )}
 
             {Icon && (
               <div
                 className={cn(
-                  "mb-4 flex h-16 w-16 items-center justify-center rounded-none border bg-background shadow-sm transition-all",
+                  "bg-background mb-4 flex h-16 w-16 items-center justify-center rounded-none border shadow-sm transition-all",
                   selected && "bg-primary text-primary-foreground shadow-sm"
                 )}
               >
@@ -279,17 +250,13 @@ export function RoleSelector({
 
             <div className="space-y-2">
               <div className="flex flex-col items-center gap-2">
-                <h4 className="font-semibold text-foreground">{role.name}</h4>
-                {isCurrent && (
-                  <Badge variant="secondary">Current</Badge>
-                )}
+                <h4 className="text-foreground font-semibold">{role.name}</h4>
+                {isCurrent && <Badge variant="secondary">Current</Badge>}
               </div>
-              <p className="text-sm text-muted-foreground">
-                {role.description}
-              </p>
+              <p className="text-muted-foreground text-sm">{role.description}</p>
 
               {showPermissions && role.permissions.length > 0 && (
-                <div className="flex flex-wrap justify-center gap-1.5 pt-2">
+                <div className="flex flex-wrap justify-center gap-2 pt-2">
                   {role.permissions.map((permission, idx) => (
                     <Badge key={idx} variant="neutral" className="text-xs">
                       {permission}
@@ -308,17 +275,13 @@ export function RoleSelector({
             <AlertDialogHeader>
               <AlertDialogTitle>Confirm Role Change</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to change the role? This will update
-                access permissions immediately.
+                Are you sure you want to change the role? This will update access permissions
+                immediately.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={handleCancel}>
-                Cancel
-              </AlertDialogCancel>
-              <AlertDialogAction onClick={handleConfirm}>
-                Confirm
-              </AlertDialogAction>
+              <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

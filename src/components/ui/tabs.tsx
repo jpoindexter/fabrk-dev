@@ -4,10 +4,7 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-function Tabs({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Root>) {
+function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
@@ -18,16 +15,13 @@ function Tabs({
   );
 }
 
-function TabsList({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.List>) {
+function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) {
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-none border bg-muted p-1 text-foreground",
-        className,
+        "bg-muted text-foreground inline-flex h-10 items-center justify-center rounded-none border p-1",
+        className
       )}
       suppressHydrationWarning
       {...props}
@@ -35,16 +29,13 @@ function TabsList({
   );
 }
 
-function TabsTrigger({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-none px-3 py-1 gap-1.5 font-mono text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground",
-        className,
+        "focus-visible:ring-primary text-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground inline-flex items-center justify-center gap-2 rounded-none px-3 py-1 font-mono text-xs font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        className
       )}
       suppressHydrationWarning
       {...props}
@@ -52,16 +43,13 @@ function TabsTrigger({
   );
 }
 
-function TabsContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Content>) {
+function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
       className={cn(
-        "mt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-        className,
+        "focus-visible:ring-primary mt-4 focus-visible:ring-2 focus-visible:outline-none",
+        className
       )}
       suppressHydrationWarning
       {...props}

@@ -76,15 +76,15 @@ export const Tags: Story = {
 export const WithDot: Story = {
   render: () => (
     <div className="flex gap-2">
-      <Badge variant="outline" className="gap-1.5">
+      <Badge variant="outline" className="gap-2">
         <span className="bg-success h-2 w-2 rounded-none" />
         ONLINE
       </Badge>
-      <Badge variant="outline" className="gap-1.5">
+      <Badge variant="outline" className="gap-2">
         <span className="bg-warning h-2 w-2 rounded-none" />
         AWAY
       </Badge>
-      <Badge variant="outline" className="gap-1.5">
+      <Badge variant="outline" className="gap-2">
         <span className="bg-destructive h-2 w-2 rounded-none" />
         OFFLINE
       </Badge>
