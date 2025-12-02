@@ -7,7 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Need | Do This |
 |------|---------|
 | Design system rules | See `DESIGN_SYSTEM.md` |
-| Full audit checklist | See `AUDIT_PROMPT.md` |
+| Run an audit | See `.claude/audit/protocol.md` |
+| Find violations (regex) | See `.claude/audit/patterns.md` |
+| What to check | See `.claude/audit/rules.md` |
+| Which files first | See `.claude/audit/files.md` |
+| Report format | See `.claude/audit/output.md` |
 | Add memory | Type `# your instruction here` |
 
 ---
@@ -114,7 +118,7 @@ src/
 - **`src/lib/env.ts`** - Environment validation with Zod
 - **`src/lib/auth.ts`** - NextAuth v5 with JWT sessions (30-day)
 - **`DESIGN_SYSTEM.md`** - Complete design system specification
-- **`AUDIT_PROMPT.md`** - Compliance audit checklist
+- **`.claude/audit/`** - Modular audit files (protocol, patterns, rules, output)
 
 ---
 
@@ -335,6 +339,11 @@ When adding features: "Does this help ship faster?" If no, delete it.
 ## Resources
 
 - `DESIGN_SYSTEM.md` - Complete design system specification
-- `AUDIT_PROMPT.md` - Compliance audit checklist
+- `.claude/audit/` - Modular audit documentation:
+  - `protocol.md` - Execution steps
+  - `patterns.md` - Regex patterns for violations
+  - `rules.md` - Compliance rules
+  - `files.md` - File priority order
+  - `output.md` - Report format
 - `src/app/globals.css` - CSS variables and utilities
 - `/docs/components/overview` - Component documentation

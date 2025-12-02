@@ -83,7 +83,7 @@ backups/
 *.swp
 *.swo
 *~
-.claude/settings.local.json
+
 # Keep .cursorrules in git
 
 # OS
@@ -197,7 +197,8 @@ docs-screenshot-generation.log
 screenshot-generation.log
 
 # Claude Code local config
-.claude/
+.claude/settings.local.json
+!.claude/audit/
 
 # Agent workflows (local development)
 .agent/
