@@ -159,11 +159,14 @@ function findPageByHref(pathname: string): {
 
   // Check for component subpages (e.g., /docs/components/button)
   if (pathname.startsWith("/docs/components/")) {
-    const componentsSection = docsNavigation.find(s => s.id === "components");
+    const componentsSection = docsNavigation.find((s) => s.id === "components");
     const pageName = pathname.split("/").pop() || "";
     return {
       section: componentsSection || null,
-      page: { title: pageName.charAt(0).toUpperCase() + pageName.slice(1).replace(/-/g, " "), href: pathname },
+      page: {
+        title: pageName.charAt(0).toUpperCase() + pageName.slice(1).replace(/-/g, " "),
+        href: pathname,
+      },
     };
   }
 
@@ -176,25 +179,26 @@ export function DocsNav() {
   const isRoot = pathname === "/docs";
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo/Home Link - Terminal Style */}
-        <Link href="/" className="flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
-          <span className="text-xs text-primary">&gt;</span>
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+        >
+          <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-bold tracking-tight">FABRK</span>
-          <span className="hidden text-xs text-muted-foreground sm:inline">_DOCS</span>
+          <span className="text-muted-foreground hidden text-xs sm:inline">_DOCS</span>
         </Link>
 
         {/* Breadcrumbs - Center */}
-        <div className="flex-1 flex justify-center">
+        <div className="flex flex-1 justify-center">
           <Breadcrumb>
             <BreadcrumbList className="font-mono text-xs">
               {/* Root docs level */}
               {isRoot && (
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-foreground">
-                    DOCS
-                  </BreadcrumbPage>
+                  <BreadcrumbPage className="text-foreground">DOCS</BreadcrumbPage>
                 </BreadcrumbItem>
               )}
 
@@ -211,7 +215,10 @@ export function DocsNav() {
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link href={section.href} className="text-muted-foreground hover:text-foreground">
+                      <Link
+                        href={section.href}
+                        className="text-muted-foreground hover:text-foreground"
+                      >
                         {toTerminalCase(section.title)}
                       </Link>
                     </BreadcrumbLink>

@@ -21,45 +21,37 @@ export function StepPreferences({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">Preferences</h2>
-        <p className="font-mono text-xs text-muted-foreground">
-          Customize your experience
-        </p>
+        <h2 className="mb-1 text-xl font-semibold">Preferences</h2>
+        <p className="text-muted-foreground font-mono text-xs">Customize your experience</p>
       </div>
 
       <div className="space-y-4">
-        <div className="font-mono text-xs text-muted-foreground">
-          [NOTIFICATION_SETTINGS]:
-        </div>
+        <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_SETTINGS]:</div>
 
         <div className="space-y-3">
-          <div className="flex items-center justify-between border border-border p-3">
+          <div className="border-border flex items-center justify-between border p-4">
             <div>
               <div className="font-mono text-sm">Email Updates</div>
-              <div className="font-mono text-xs text-muted-foreground">
+              <div className="text-muted-foreground font-mono text-xs">
                 Product news and announcements
               </div>
             </div>
             <Checkbox
               checked={emailUpdates}
-              onCheckedChange={(checked) =>
-                onEmailUpdatesChange(checked as boolean)
-              }
+              onCheckedChange={(checked) => onEmailUpdatesChange(checked as boolean)}
             />
           </div>
 
-          <div className="flex items-center justify-between border border-border p-3">
+          <div className="border-border flex items-center justify-between border p-4">
             <div>
               <div className="font-mono text-sm">Product Tips</div>
-              <div className="font-mono text-xs text-muted-foreground">
+              <div className="text-muted-foreground font-mono text-xs">
                 Helpful tips to get the most out of Fabrk
               </div>
             </div>
             <Checkbox
               checked={productTips}
-              onCheckedChange={(checked) =>
-                onProductTipsChange(checked as boolean)
-              }
+              onCheckedChange={(checked) => onProductTipsChange(checked as boolean)}
             />
           </div>
         </div>
