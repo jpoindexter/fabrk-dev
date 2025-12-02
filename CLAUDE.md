@@ -511,3 +511,140 @@ grep -r "<input " src/app src/components/landing src/components/dashboard --incl
 ```
 
 **Full specification: See `AUDIT_PROMPT.md` for complete rules on all patterns.**
+
+---
+
+## 📄 DOCUMENTATION PAGE TEMPLATES - MANDATORY
+
+**CRITICAL: ALL documentation pages in `src/app/docs/` MUST use the appropriate template.**
+
+### Available Templates
+
+| Template | Use For | Location |
+|----------|---------|----------|
+| `ComponentShowcaseTemplate` | UI component docs (`/docs/components/*`) | `@/components/docs/templates/component-showcase-template` |
+| `FeatureGuideTemplate` | Feature guides (`/docs/features/*`) | `@/components/docs/templates/feature-guide-template` |
+| `TutorialTemplate` | Step-by-step tutorials (`/docs/tutorials/*`) | `@/components/docs/templates/tutorial-template` |
+| `ReferenceTemplate` | API/SDK references | `@/components/docs/templates/reference-template` |
+| `GettingStartedTemplate` | Onboarding pages | `@/components/docs/templates/getting-started-template` |
+
+### Rules for Documentation Pages
+
+1. **NEVER create raw documentation pages** - Always use a template
+2. **NEVER use `<DocsCard>` without a `title` prop** - Every card needs a terminal header
+3. **NEVER wrap preview components in extra divs** - Templates handle styling
+4. **ALWAYS include `previous` and `next` navigation props**
+
+### Creating New Component Documentation
+
+```tsx
+// src/app/docs/components/my-component/page.tsx
+import { ComponentShowcaseTemplate } from "@/components/docs/templates/component-showcase-template";
+import { MyComponent } from "@/components/ui/my-component";
+
+export default function MyComponentPage() {
+  return (
+    <ComponentShowcaseTemplate
+      code="[UI.XX]"
+      title="MyComponent"
+      description="Brief description of the component"
+      importCode={`import { MyComponent } from "@/components/ui/my-component"`}
+      mainPreview={{
+        preview: <MyComponent />,  // Direct component - NO wrapper divs!
+        code: `<MyComponent />`,
+      }}
+      variants={[
+        {
+          title: "Variant Name",
+          preview: <MyComponent variant="secondary" />,
+          code: `<MyComponent variant="secondary" />`,
+        },
+      ]}
+      props={[
+        { name: "variant", type: '"default" | "secondary"', default: '"default"', description: "Visual variant" },
+      ]}
+      accessibility={[
+        "Uses semantic HTML",
+        "Supports keyboard navigation",
+      ]}
+      previous={{ title: "PrevComponent", href: "/docs/components/prev" }}
+      next={{ title: "NextComponent", href: "/docs/components/next" }}
+    />
+  );
+}
+```
+
+### Creating New Feature Documentation
+
+```tsx
+// src/app/docs/features/my-feature/page.tsx
+import { FeatureGuideTemplate } from "@/components/docs/templates/feature-guide-template";
+
+export default function MyFeaturePage() {
+  return (
+    <FeatureGuideTemplate
+      code="[FT.XX]"
+      title="My Feature"
+      description="What this feature does"
+      status={{ label: "Stable", variant: "success" }}
+      keyFeatures={[
+        { title: "Feature 1", description: "Description" },
+      ]}
+      requirements={["Requirement 1"]}
+      setupSteps={[
+        { title: "Step 1", code: "npm install something" },
+      ]}
+      examples={[
+        { title: "Basic Usage", code: "// code here", language: "typescript" },
+      ]}
+      previous={{ title: "Prev", href: "/docs/features/prev" }}
+      next={{ title: "Next", href: "/docs/features/next" }}
+    />
+  );
+}
+```
+
+### DocsCard Title Requirements
+
+**Every `<DocsCard>` MUST have a `title` prop:**
+
+```tsx
+// ✅ CORRECT
+<DocsCard title="SECTION_NAME">
+  <p>Content here</p>
+</DocsCard>
+
+<DocsCard title="WARNING" className="bg-muted/50">
+  <p>Warning message</p>
+</DocsCard>
+
+// ❌ WRONG - Missing title = no terminal header
+<DocsCard>
+  <h3>Section Name</h3>
+  <p>Content here</p>
+</DocsCard>
+```
+
+### Audit Checklist for Documentation
+
+When auditing or creating docs pages:
+
+```bash
+# Check all DocsCard have titles
+grep -rn "<DocsCard" src/app/docs | grep -v "title="
+
+# Check all pages use templates
+grep -rL "Template" src/app/docs/**/page.tsx
+
+# Verify no wrapper divs in previews
+grep -rn "preview:" src/app/docs --include="*.tsx" -A 2 | grep "className="
+```
+
+### Pre-commit Validation
+
+Before committing any docs changes:
+
+1. `npm run type-check` - TypeScript validation
+2. Verify every `<DocsCard>` has a `title` prop
+3. Verify page uses appropriate template
+4. Verify `previous` and `next` navigation links are correct
