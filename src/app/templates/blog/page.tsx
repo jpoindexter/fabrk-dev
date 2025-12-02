@@ -119,9 +119,9 @@ export default function BlogTemplate() {
           <div className="border-border bg-card border">
             <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-full" />
-                <div className="bg-warning/50 size-2 rounded-full" />
-                <div className="bg-success/50 size-2 rounded-full" />
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
               </div>
               <span className="text-muted-foreground font-mono text-xs">featured.tsx</span>
               <Badge variant="default" className="ml-auto rounded-none font-mono text-xs">
@@ -186,9 +186,9 @@ export default function BlogTemplate() {
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-full" />
-              <div className="bg-warning/50 size-2 rounded-full" />
-              <div className="bg-success/50 size-2 rounded-full" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
             <span className="text-muted-foreground font-mono text-xs">categories.tsx</span>
           </div>
@@ -216,9 +216,9 @@ export default function BlogTemplate() {
             <div key={post.id} className="border-border bg-card group border">
               <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                 <div className="flex gap-2">
-                  <div className="bg-destructive/50 size-2 rounded-full" />
-                  <div className="bg-warning/50 size-2 rounded-full" />
-                  <div className="bg-success/50 size-2 rounded-full" />
+                  <div className="bg-destructive/50 size-2 rounded-none" />
+                  <div className="bg-warning/50 size-2 rounded-none" />
+                  <div className="bg-success/50 size-2 rounded-none" />
                 </div>
                 <span className="text-muted-foreground font-mono text-xs">post_{post.id}.tsx</span>
               </div>
@@ -259,9 +259,9 @@ export default function BlogTemplate() {
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-full" />
-              <div className="bg-warning/50 size-2 rounded-full" />
-              <div className="bg-success/50 size-2 rounded-full" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
             <span className="text-muted-foreground font-mono text-xs">pagination.tsx</span>
           </div>
@@ -313,9 +313,9 @@ export default function BlogTemplate() {
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-full" />
-              <div className="bg-warning/50 size-2 rounded-full" />
-              <div className="bg-success/50 size-2 rounded-full" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
             <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>

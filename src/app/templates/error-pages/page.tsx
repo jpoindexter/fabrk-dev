@@ -120,9 +120,9 @@ export default function ErrorPagesTemplate() {
           <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
               <div className="flex gap-2">
-                <div className="size-2 rounded-full bg-destructive/50" />
-                <div className="size-2 rounded-full bg-warning/50" />
-                <div className="size-2 rounded-full bg-success/50" />
+                <div className="size-2 rounded-none bg-destructive/50" />
+                <div className="size-2 rounded-none bg-warning/50" />
+                <div className="size-2 rounded-none bg-success/50" />
               </div>
               <span className="font-mono text-xs text-muted-foreground">
                 error_types.tsx
@@ -150,9 +150,9 @@ export default function ErrorPagesTemplate() {
                 <div className="border border-border bg-card">
                   <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                     <div className="flex gap-2">
-                      <div className="size-2 rounded-full bg-destructive/50" />
-                      <div className="size-2 rounded-full bg-warning/50" />
-                      <div className="size-2 rounded-full bg-success/50" />
+                      <div className="size-2 rounded-none bg-destructive/50" />
+                      <div className="size-2 rounded-none bg-warning/50" />
+                      <div className="size-2 rounded-none bg-success/50" />
                     </div>
                     <span className="font-mono text-xs text-muted-foreground">
                       error_{error.code}.tsx
@@ -206,9 +206,9 @@ export default function ErrorPagesTemplate() {
                       <div className="border border-border bg-card text-left">
                         <div className="flex items-center gap-2 border-b border-border/50 px-4 py-1.5">
                           <div className="flex gap-2">
-                            <div className="size-2 rounded-full bg-destructive/50" />
-                            <div className="size-2 rounded-full bg-warning/50" />
-                            <div className="size-2 rounded-full bg-success/50" />
+                            <div className="size-2 rounded-none bg-destructive/50" />
+                            <div className="size-2 rounded-none bg-warning/50" />
+                            <div className="size-2 rounded-none bg-success/50" />
                           </div>
                           <span className="font-mono text-xs text-muted-foreground">
                             terminal
@@ -294,9 +294,9 @@ export default function ErrorPagesTemplate() {
               <div key={error.id} className="border border-border bg-card">
                 <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                   <div className="flex gap-2">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
+                    <div className="size-2 rounded-none bg-destructive/50" />
+                    <div className="size-2 rounded-none bg-warning/50" />
+                    <div className="size-2 rounded-none bg-success/50" />
                   </div>
                   <span className="font-mono text-xs text-muted-foreground">
                     {error.code}.tsx
@@ -335,9 +335,9 @@ export default function ErrorPagesTemplate() {
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-full bg-destructive/50" />
-              <div className="size-2 rounded-full bg-warning/50" />
-              <div className="size-2 rounded-full bg-success/50" />
+              <div className="size-2 rounded-none bg-destructive/50" />
+              <div className="size-2 rounded-none bg-warning/50" />
+              <div className="size-2 rounded-none bg-success/50" />
             </div>
             <span className="font-mono text-xs text-muted-foreground">
               features.md
