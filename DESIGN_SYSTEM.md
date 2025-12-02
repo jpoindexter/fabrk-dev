@@ -482,7 +482,7 @@ The design system is built with accessibility as a core requirement.
 ## Resources
 
 - `src/app/globals.css` - CSS variables and utility classes
-- `AUDIT_PROMPT.md` - Full compliance checklist
+- `.claude/audit/` - Design system audit framework
 - `CLAUDE.md` - Quick reference for Claude Code
 - `/docs/components/*` - Component documentation
 - `/docs/components/overview` - Full component listing
