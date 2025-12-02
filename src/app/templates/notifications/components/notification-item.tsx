@@ -89,7 +89,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
 
       {/* Read indicator */}
       {!notification.read && (
-        <span className="bg-primary absolute top-2 right-2 size-2 rounded-full" />
+        <span className="bg-primary absolute top-2 right-2 size-2 rounded-none" />
       )}
     </div>
   );

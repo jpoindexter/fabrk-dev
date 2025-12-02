@@ -205,9 +205,9 @@ function Example() {
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
                 <div className="flex gap-2">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
+                  <div className="size-2 rounded-none bg-destructive/50" />
+                  <div className="size-2 rounded-none bg-warning/50" />
+                  <div className="size-2 rounded-none bg-success/50" />
                 </div>
                 <span className="text-xs text-muted-foreground">validation.ts</span>
               </div>

@@ -72,9 +72,9 @@ export function Footer() {
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
                 <div className="flex gap-2">
-                  <div className="size-2.5 rounded-full bg-destructive/50" />
-                  <div className="size-2.5 rounded-full bg-warning/50" />
-                  <div className="size-2.5 rounded-full bg-success/50" />
+                  <div className="size-2.5 rounded-none bg-destructive/50" />
+                  <div className="size-2.5 rounded-none bg-warning/50" />
+                  <div className="size-2.5 rounded-none bg-success/50" />
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">[0x72] nav_links.exe │ PID:1024</span>
               </div>

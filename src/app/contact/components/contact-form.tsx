@@ -91,9 +91,9 @@ export function ContactForm() {
       {/* Terminal Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-2">
-          <div className="size-3 rounded-full bg-destructive/50" />
-          <div className="size-3 rounded-full bg-warning/50" />
-          <div className="size-3 rounded-full bg-success/50" />
+          <div className="size-3 rounded-none bg-destructive/50" />
+          <div className="size-3 rounded-none bg-warning/50" />
+          <div className="size-3 rounded-none bg-success/50" />
         </div>
         <span className="text-xs text-muted-foreground">
           [0x01] message_composer.exe │ PID:4096

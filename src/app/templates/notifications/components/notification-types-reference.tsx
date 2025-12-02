@@ -22,9 +22,9 @@ export function NotificationTypesReference() {
           <div key={item.type} className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-1.5">
               <div className="flex gap-1">
-                <div className="size-1.5 rounded-full bg-destructive/50" />
-                <div className="size-1.5 rounded-full bg-warning/50" />
-                <div className="size-1.5 rounded-full bg-success/50" />
+                <div className="size-1.5 rounded-none bg-destructive/50" />
+                <div className="size-1.5 rounded-none bg-warning/50" />
+                <div className="size-1.5 rounded-none bg-success/50" />
               </div>
               <span className="font-mono text-xs text-muted-foreground">
                 {item.type}.tsx

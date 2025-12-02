@@ -138,7 +138,7 @@ export const PAGINATION = {
 
 export const SCROLL = {
   // Scrollbar styling for scrollable containers
-  containerClass: "scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full",
+  containerClass: "scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none",
   description: "Styled scrollbar for overflow-x-auto containers (pricing table, data tables)",
 
   // Apply to: pricing-table, data-table containers

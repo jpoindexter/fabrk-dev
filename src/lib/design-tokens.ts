@@ -73,7 +73,7 @@ export const tokens = {
     sm: "rounded-sm",
     md: "rounded-md",
     lg: "rounded-lg",
-    full: "rounded-full", // Only for Traffic Light window controls
+    full: "rounded-full", // DEPRECATED: Terminal style uses rounded-none everywhere
   },
   shadows: {
     none: "shadow-none",

@@ -16,7 +16,7 @@ export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
     <Card className="rounded-none border border-border shadow">
       <CardContent className="flex flex-col items-center justify-center py-12">
-        <div className="rounded-full border border-border bg-success p-4 shadow">
+        <div className="rounded-none border border-border bg-success p-4 shadow">
           <Check className="h-8 w-8 text-success-foreground" />
         </div>
         <h3 className="mt-4 text-2xl font-bold">All Set!</h3>

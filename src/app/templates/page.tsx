@@ -95,9 +95,9 @@ export default function TemplatesPage() {
       <div className="border border-destructive bg-card">
         <div className="flex items-center gap-2 border-b border-destructive/50 px-4 py-2">
           <div className="flex gap-2">
-            <div className="size-2 rounded-full bg-destructive" />
-            <div className="size-2 rounded-full bg-destructive/60" />
-            <div className="size-2 rounded-full bg-destructive/30" />
+            <div className="size-2 rounded-none bg-destructive" />
+            <div className="size-2 rounded-none bg-destructive/60" />
+            <div className="size-2 rounded-none bg-destructive/30" />
           </div>
           <span className="font-mono text-xs text-destructive">notice.md</span>
         </div>
