@@ -1,12 +1,7 @@
 "use client";
 
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import {
-  siTypescript,
-  siStorybook,
-  siVitest,
-  siGithubactions,
-} from "simple-icons";
+import { siTypescript, siStorybook, siVitest, siGithubactions } from "simple-icons";
 import { CheckCircle2, TestTube2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -45,7 +40,7 @@ export function QualitySection() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24 font-mono">
+    <section className="border-border bg-background border-t px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.span
@@ -53,7 +48,7 @@ export function QualitySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4"
+            className="border-border bg-card text-muted-foreground mb-4 inline-block border px-3 py-1 text-xs"
           >
             [ QUALITY_ASSURANCE ]
           </motion.span>
@@ -63,10 +58,8 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="text-xs text-muted-foreground">[0x00]</span>
-            <h2 className="text-2xl font-bold tracking-tight mb-4">
-              BUILT_TO_LAST_TESTED_TO_SHIP
-            </h2>
+            <span className="text-muted-foreground text-xs">[0x00]</span>
+            <h2 className="mb-4 text-2xl font-bold tracking-tight">BUILT_TO_LAST_TESTED_TO_SHIP</h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -74,7 +67,7 @@ export function QualitySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
               &gt; Every component is battle-tested with comprehensive coverage. No cutting corners,
               no technical debt. Production-ready from day one.
             </p>
@@ -90,26 +83,22 @@ export function QualitySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group border border-border bg-card p-8 transition-all hover:border-primary/50"
+                className="group border-border bg-card hover:border-primary/50 border p-8 transition-all"
               >
-                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-3">
+                <div className="bg-primary/10 mb-4 inline-flex items-center justify-center p-4">
                   {item.iconComponent === "testTube" ? (
-                    <TestTube2 className="h-6 w-6 text-primary" />
+                    <TestTube2 className="text-primary h-6 w-6" />
                   ) : (
-                    <SimpleIcon path={item.icon!} className="h-6 w-6 text-primary" />
+                    <SimpleIcon path={item.icon!} className="text-primary h-6 w-6" />
                   )}
                 </div>
                 <div className="mb-3">
-                  <div className="text-3xl font-bold text-foreground">
-                    {item.metric}
-                  </div>
-                  <h3 className="text-lg font-bold mt-1">
-                    {item.label.toUpperCase().replace(/ /g, '_')}
+                  <div className="text-foreground text-3xl font-bold">{item.metric}</div>
+                  <h3 className="mt-1 text-lg font-bold">
+                    {item.label.toUpperCase().replace(/ /g, "_")}
                   </h3>
                 </div>
-                <span className="block text-xs text-muted-foreground">
-                  {item.description}
-                </span>
+                <span className="text-muted-foreground block text-xs">{item.description}</span>
               </motion.div>
             );
           })}
@@ -121,20 +110,18 @@ export function QualitySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 border border-border bg-card p-8"
+          className="border-border bg-card mt-12 border p-8"
         >
           <div className="flex items-start gap-4">
             <div className="shrink-0">
-              <CheckCircle2 className="h-8 w-8 text-primary" />
+              <CheckCircle2 className="text-primary h-8 w-8" />
             </div>
             <div>
-              <h3 className="text-lg font-bold mb-2">
-                QUALITY_GUARANTEE
-              </h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-2 text-lg font-bold">QUALITY_GUARANTEE</h3>
+              <p className="text-muted-foreground text-sm">
                 Unlike other boilerplates that ship untested code, every Fabrk component is
-                rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
-                You're not inheriting technical debt—you're getting production-grade infrastructure.
+                rigorously tested, documented in Storybook, and validated by CI/CD pipelines. You're
+                not inheriting technical debt—you're getting production-grade infrastructure.
               </p>
             </div>
           </div>

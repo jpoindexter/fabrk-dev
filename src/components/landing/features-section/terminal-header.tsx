@@ -15,31 +15,31 @@ export function TerminalHeader({ title, animated = false }: TerminalHeaderProps)
   const DotComponent = animated ? motion.div : "div";
 
   return (
-    <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-      <div className="flex gap-1.5">
+    <div className="border-border flex items-center gap-2 border-b px-4 py-2">
+      <div className="flex gap-2">
         <DotComponent
-          className="size-2.5 rounded-full bg-destructive/50"
+          className="bg-destructive/50 size-2.5 rounded-full"
           {...(animated && {
             animate: { scale: [1, 1.2, 1] },
-            transition: { duration: 2, repeat: Infinity }
+            transition: { duration: 2, repeat: Infinity },
           })}
         />
         <DotComponent
-          className="size-2.5 rounded-full bg-warning/50"
+          className="bg-warning/50 size-2.5 rounded-full"
           {...(animated && {
             animate: { scale: [1, 1.2, 1] },
-            transition: { duration: 2, repeat: Infinity, delay: 0.2 }
+            transition: { duration: 2, repeat: Infinity, delay: 0.2 },
           })}
         />
         <DotComponent
-          className="size-2.5 rounded-full bg-success/50"
+          className="bg-success/50 size-2.5 rounded-full"
           {...(animated && {
             animate: { scale: [1, 1.2, 1] },
-            transition: { duration: 2, repeat: Infinity, delay: 0.4 }
+            transition: { duration: 2, repeat: Infinity, delay: 0.4 },
           })}
         />
       </div>
-      <span className="font-mono text-xs text-muted-foreground">{title}</span>
+      <span className="text-muted-foreground font-mono text-xs">{title}</span>
     </div>
   );
 }

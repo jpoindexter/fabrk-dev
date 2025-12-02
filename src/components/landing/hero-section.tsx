@@ -178,7 +178,7 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="border-success/30 bg-success/10 mt-3 border p-3"
+        className="border-success/30 bg-success/10 mt-3 border p-4"
       >
         <div className="text-success">▲ Ready</div>
         <div className="text-muted-foreground mt-1">
@@ -292,7 +292,7 @@ export function HeroSection() {
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="border-border bg-card flex items-center gap-1.5 border px-2 py-1"
+                    className="border-border bg-card flex items-center gap-2 border px-2 py-1"
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
                     <span className="font-mono text-xs">{tech.name}</span>
@@ -318,7 +318,7 @@ export function HeroSection() {
             >
               {/* Window Title Bar */}
               <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <motion.div
                     className="bg-destructive/50 size-2.5 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}

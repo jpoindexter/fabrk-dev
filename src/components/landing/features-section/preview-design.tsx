@@ -48,14 +48,14 @@ export function DesignSystemPreview() {
   ];
 
   return (
-    <div ref={ref} className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="border-border bg-card w-full max-w-md border">
       <TerminalHeader title="design_system.exe" animated />
 
       <div className="p-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          className="mb-4 font-mono text-xs text-muted-foreground"
+          className="text-muted-foreground mb-4 font-mono text-xs"
         >
           [DESIGN_SYSTEM]:
         </motion.div>
@@ -68,18 +68,18 @@ export function DesignSystemPreview() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2 + idx * 0.15 }}
               whileHover={{ x: 4 }}
-              className="flex items-center justify-between border border-border bg-background p-3 cursor-pointer transition-colors hover:border-primary/50"
+              className="border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <motion.div
                   animate={isInView ? { rotate: [0, 10, -10, 0] } : {}}
                   transition={{ delay: 0.5 + idx * 0.15, duration: 0.5 }}
                 >
-                  <item.icon className="size-4 text-primary" />
+                  <item.icon className="text-primary size-4" />
                 </motion.div>
                 <span className="font-mono text-xs">{item.label}</span>
               </div>
-              <span className="font-mono text-xs text-success">{item.value}</span>
+              <span className="text-success font-mono text-xs">{item.value}</span>
             </motion.div>
           ))}
         </div>
@@ -103,7 +103,7 @@ export function DesignSystemPreview() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1.2 + idx * 0.1 }}
-              className="font-mono text-xs text-muted-foreground text-center"
+              className="text-muted-foreground text-center font-mono text-xs"
             >
               {color.name}
             </motion.span>

@@ -10,13 +10,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
 
 export function Navigation() {
@@ -29,7 +23,7 @@ export function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="flex h-16 w-full items-center px-4 sm:px-6">
         {/* Logo with Terminal Style */}
         <motion.div
@@ -38,10 +32,13 @@ export function Navigation() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-4"
         >
-          <Link href="/" className="flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
-            <span className="text-xs text-primary">&gt;</span>
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+          >
+            <span className="text-primary text-xs">&gt;</span>
             <span className="text-sm font-bold tracking-tight">FABRK</span>
-            <span className="hidden text-xs text-muted-foreground sm:inline">_CONSOLE</span>
+            <span className="text-muted-foreground hidden text-xs sm:inline">_CONSOLE</span>
           </Link>
         </motion.div>
 
@@ -57,13 +54,13 @@ export function Navigation() {
         >
           {/* Navigation Links with [NAVIGATE]: prefix */}
           <div className="flex items-center gap-1">
-            <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
+            <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
             <div className="flex items-center">
               {navLinks.map((link, index) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-muted-foreground hover:text-foreground px-3 py-1 font-mono text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -72,23 +69,18 @@ export function Navigation() {
           </div>
 
           {/* Vertical Separator */}
-          <div className="h-6 w-px bg-border" />
+          <div className="bg-border h-6 w-px" />
 
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
-            <Button
-              variant="outline"
-              asChild
-              className="rounded-none font-mono text-xs"
-            >
+            <Button variant="outline" asChild className="rounded-none font-mono text-xs">
               <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
-            <Button
-              asChild
-              className="rounded-none font-mono text-xs"
-            >
-              <Link href="#pricing" className="scroll-smooth">&gt; GET_STARTED</Link>
+            <Button asChild className="rounded-none font-mono text-xs">
+              <Link href="#pricing" className="scroll-smooth">
+                &gt; GET_STARTED
+              </Link>
             </Button>
           </div>
         </motion.div>
@@ -105,52 +97,53 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-none h-10 w-10"
+                className="h-10 w-10 rounded-none"
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="rounded-none w-[300px] p-6">
+            <SheetContent side="right" className="w-[300px] rounded-none p-6">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <div className="mb-6 border-b border-border pb-4">
-                <span className="font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</span>
+              <div className="border-border mb-6 border-b pb-4">
+                <span className="text-muted-foreground font-mono text-xs">[SYSTEM_MENU]</span>
               </div>
               <nav className="flex flex-col space-y-4">
-                <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
+                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
                 {navLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
                     <Link
                       href={link.href}
-                      className="font-mono text-sm text-foreground transition-colors hover:text-primary"
+                      className="text-foreground hover:text-primary font-mono text-sm transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       &gt; {link.label}
                     </Link>
                   </SheetClose>
                 ))}
-                <div className="border-t border-border pt-6">
-                  <span className="mb-3 block font-mono text-xs text-muted-foreground">[THEME]:</span>
+                <div className="border-border border-t pt-6">
+                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                    [THEME]:
+                  </span>
                   <div className="mb-4 flex items-center gap-2">
                     <ThemeDropdown />
                   </div>
                 </div>
-                <div className="border-t border-border pt-6">
-                  <span className="mb-3 block font-mono text-xs text-muted-foreground">[ACTIONS]:</span>
+                <div className="border-border border-t pt-6">
+                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                    [ACTIONS]:
+                  </span>
                   <SheetClose asChild>
                     <Button
                       variant="outline"
-                      className="rounded-none w-full font-mono text-xs"
+                      className="w-full rounded-none font-mono text-xs"
                       asChild
                     >
                       <Link href="/demo">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button
-                      className="rounded-none mt-3 w-full font-mono text-xs"
-                      asChild
-                    >
+                    <Button className="mt-3 w-full rounded-none font-mono text-xs" asChild>
                       <Link href="#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>
@@ -160,11 +153,10 @@ export function Navigation() {
           </Sheet>
 
           {/* Mobile CTA Button */}
-          <Button
-            asChild
-            className="rounded-none font-mono text-xs md:hidden"
-          >
-            <Link href="#pricing" className="scroll-smooth">&gt; START</Link>
+          <Button asChild className="rounded-none font-mono text-xs md:hidden">
+            <Link href="#pricing" className="scroll-smooth">
+              &gt; START
+            </Link>
           </Button>
         </motion.div>
       </div>

@@ -77,24 +77,22 @@ export function StickyCTABar({
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-40 transform transition-transform duration-300",
+        "fixed right-0 bottom-0 left-0 z-40 transform transition-transform duration-300",
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="border-t-2 border-border bg-card/95 backdrop-blur-sm font-mono">
+      <div className="border-border bg-card/95 border-t-2 font-mono backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-3">
-          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-              <span className="text-center text-xs font-medium sm:text-left">
-                {message}
-              </span>
+              <span className="text-center text-xs font-medium sm:text-left">{message}</span>
               {showPrice && (
                 <div className="flex items-center gap-2">
-                  <span className="border border-primary bg-primary px-2 py-0.5 text-xs text-primary-foreground">
+                  <span className="border-primary bg-primary text-primary-foreground border px-2 py-0.5 text-xs">
                     {config.pricing.fabrk.display.current}
                   </span>
-                  <span className="text-xs text-muted-foreground line-through">
+                  <span className="text-muted-foreground text-xs line-through">
                     {config.pricing.fabrk.display.original}
                   </span>
                 </div>
@@ -112,7 +110,7 @@ export function StickyCTABar({
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-none h-8 w-8"
+                className="h-8 w-8 rounded-none"
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >

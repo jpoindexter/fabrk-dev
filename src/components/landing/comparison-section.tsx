@@ -12,7 +12,7 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 function AnimatedCounter({
   value,
   suffix = "",
-  duration = 1.5
+  duration = 1.5,
 }: {
   value: number;
   suffix?: string;
@@ -76,7 +76,7 @@ export function ComparisonSection() {
   ];
 
   return (
-    <section className="border-t border-border px-6 py-20 lg:py-28">
+    <section className="border-border border-t px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
@@ -86,13 +86,15 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]</span>
+          <div className="border-border bg-card mb-4 inline-block border px-3 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]
+            </span>
           </div>
           <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
             WHY_BUILD_FROM_SCRATCH?
           </h2>
-          <p className="max-w-2xl font-mono text-sm text-muted-foreground">
+          <p className="text-muted-foreground max-w-2xl font-mono text-sm">
             See how much time and effort Fabrk saves you compared to manual setup.
           </p>
         </motion.div>
@@ -103,25 +105,27 @@ export function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="border border-border bg-card"
+          className="border-border bg-card border"
         >
           {/* Table Header */}
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
-              <div className="size-2.5 rounded-full bg-destructive/50" />
-              <div className="size-2.5 rounded-full bg-warning/50" />
-              <div className="size-2.5 rounded-full bg-success/50" />
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
+            <div className="flex gap-2">
+              <div className="bg-destructive/50 size-2.5 rounded-full" />
+              <div className="bg-warning/50 size-2.5 rounded-full" />
+              <div className="bg-success/50 size-2.5 rounded-full" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">[0x51] comparison_table.exe │ PID:4096</span>
+            <span className="text-muted-foreground font-mono text-xs">
+              [0x51] comparison_table.exe │ PID:4096
+            </span>
           </div>
 
           {/* Table Content */}
           <div className="p-6">
             {/* Column Headers */}
-            <div className="mb-4 grid grid-cols-3 gap-4 border-b border-border pb-4 font-mono text-xs">
+            <div className="border-border mb-4 grid grid-cols-3 gap-4 border-b pb-4 font-mono text-xs">
               <div className="text-muted-foreground">FEATURE</div>
-              <div className="text-center text-destructive">MANUAL_SETUP</div>
-              <div className="text-center text-success">FABRK</div>
+              <div className="text-destructive text-center">MANUAL_SETUP</div>
+              <div className="text-success text-center">FABRK</div>
             </div>
 
             {/* Rows */}
@@ -134,22 +138,26 @@ export function ComparisonSection() {
                   whileHover={{
                     backgroundColor: "rgba(0, 0, 0, 0.04)",
                     x: 2,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   viewport={{ once: true }}
-                  className="grid grid-cols-3 gap-4 border-b border-border py-3 px-3 -mx-3 font-mono text-xs cursor-default"
+                  className="border-border -mx-3 grid cursor-default grid-cols-3 gap-4 border-b px-3 py-3 font-mono text-xs"
                 >
                   <div className="text-foreground">{feature.name}</div>
                   <div className="text-center">
                     <span className="text-destructive">✗</span>
-                    <span className="ml-2 text-muted-foreground">
-                      <AnimatedCounter value={feature.hours} suffix="+ hours" duration={1 + index * 0.2} />
+                    <span className="text-muted-foreground ml-2">
+                      <AnimatedCounter
+                        value={feature.hours}
+                        suffix="+ hours"
+                        duration={1 + index * 0.2}
+                      />
                     </span>
                   </div>
                   <div className="text-center">
                     <span className="text-success">✓</span>
-                    <span className="ml-2 text-foreground">{feature.fabrk}</span>
+                    <span className="text-foreground ml-2">{feature.fabrk}</span>
                   </div>
                 </motion.div>
               ))}
@@ -161,13 +169,13 @@ export function ComparisonSection() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.65 }}
               viewport={{ once: true }}
-              className="mt-4 grid grid-cols-3 gap-4 border-t-2 border-border pt-4 font-mono"
+              className="border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4 font-mono"
             >
               <div className="text-sm font-bold">TOTAL</div>
-              <div className="text-center text-sm font-bold text-destructive">
+              <div className="text-destructive text-center text-sm font-bold">
                 <AnimatedCounter value={140} suffix="+ hours" duration={2.5} />
               </div>
-              <div className="text-center text-sm font-bold text-success">Ready to Ship</div>
+              <div className="text-success text-center text-sm font-bold">Ready to Ship</div>
             </motion.div>
           </div>
         </motion.div>
@@ -180,14 +188,14 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mt-6"
         >
-          <div className="border border-border bg-card p-4">
-            <span className="font-mono text-xs text-muted-foreground">
+          <div className="border-border bg-card border p-4">
+            <span className="text-muted-foreground font-mono text-xs">
               [ [0x52] NOTE ]─────────────────────────────────────────────────────
             </span>
-            <span className="block mt-1 font-mono text-xs text-muted-foreground">
+            <span className="text-muted-foreground mt-1 block font-mono text-xs">
               │ Start building your unique features on day one. Skip boilerplate.
             </span>
-            <span className="block mt-1 font-mono text-xs text-muted-foreground">
+            <span className="text-muted-foreground mt-1 block font-mono text-xs">
               └───────────────────────────────────────────────────────────────────┘
             </span>
           </div>

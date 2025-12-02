@@ -21,27 +21,25 @@ export function TechStack() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24 font-mono">
+    <section className="border-border bg-background border-t px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-12">
-          <span className="text-xs text-muted-foreground">[0x00]</span>
-          <h2 className="text-2xl font-bold tracking-tight">
-            A_MODERN_STACK_YOU_CAN_TRUST
-          </h2>
+        <div className="mb-12 text-center">
+          <span className="text-muted-foreground text-xs">[0x00]</span>
+          <h2 className="text-2xl font-bold tracking-tight">A_MODERN_STACK_YOU_CAN_TRUST</h2>
         </div>
 
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-7">
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="group flex flex-col items-center justify-center gap-3 border border-border bg-card p-6 transition-all hover:border-primary/50"
+              className="group border-border bg-card hover:border-primary/50 flex flex-col items-center justify-center gap-4 border p-6 transition-all"
             >
               <SimpleIcon
                 path={tech.path}
-                className="h-8 w-8 text-foreground transition-colors group-hover:text-primary"
+                className="text-foreground group-hover:text-primary h-8 w-8 transition-colors"
               />
-              <span className="text-xs font-medium text-muted-foreground">
-                [{tech.name.toUpperCase().replace(/ /g, '_').replace(/\./g, '')}]
+              <span className="text-muted-foreground text-xs font-medium">
+                [{tech.name.toUpperCase().replace(/ /g, "_").replace(/\./g, "")}]
               </span>
             </div>
           ))}
