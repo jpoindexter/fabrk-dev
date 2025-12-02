@@ -117,7 +117,7 @@ export function NotificationBell({ userId }: { userId: string }) {
     <button className="relative">
       <BellIcon />
       {unreadCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-destructive text-white rounded-full text-xs px-1">
+        <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-full text-xs px-1">
           {unreadCount}
         </span>
       )}
