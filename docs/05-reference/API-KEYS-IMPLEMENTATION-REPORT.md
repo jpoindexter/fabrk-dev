@@ -38,7 +38,7 @@ Added ApiKey model with:
 1. **`generator.ts`** (73 lines)
    - `generateApiKey()` - Creates secure 256-bit keys
    - `isValidApiKeyFormat()` - Validates key format
-   - Prefix: `sk_live_` or `sk_test_`
+   - Prefix: `sk_live_YOUR_KEY_HERE` or `sk_test_`
    - Returns: key, prefix, hash
 
 2. **`hasher.ts`** (33 lines)
@@ -140,7 +140,7 @@ model ApiKey {
   organizationId String
   userId         String    // Creator
   name           String
-  keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_abc1")
+  keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_YOUR_KEY_HERE")
   keyHash        String    @unique // SHA-256 hash of full key
   permissions    String[]  // Array of permissions (read, write, admin)
   lastUsedAt     DateTime?
@@ -181,7 +181,7 @@ List all API keys for an organization.
   {
     "id": "key_abc123",
     "name": "Production API",
-    "keyPrefix": "sk_live_A1b2",
+    "keyPrefix": "sk_live_YOUR_KEY_HERE",
     "permissions": ["read", "write"],
     "lastUsedAt": "2024-11-14T12:30:00.000Z",
     "expiresAt": null,
@@ -213,11 +213,11 @@ Create a new API key.
 {
   "id": "key_abc123",
   "name": "Production API",
-  "keyPrefix": "sk_live_A1b2",
+  "keyPrefix": "sk_live_YOUR_KEY_HERE",
   "permissions": ["read", "write"],
   "expiresAt": null,
   "createdAt": "2024-11-14T10:00:00.000Z",
-  "key": "sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4"
+  "key": "sk_live_YOUR_KEY_HERE"
 }
 ```
 
@@ -326,7 +326,7 @@ Invite a new member.
 **Algorithm:** Cryptographically secure random bytes
 **Entropy:** 256 bits (32 bytes)
 **Encoding:** Base64url (URL-safe)
-**Format:** `sk_live_<43-character-string>`
+**Format:** `sk_live_YOUR_KEY_HERE<43-character-string>`
 
 ```typescript
 const randomBytes = crypto.randomBytes(32);
@@ -335,7 +335,7 @@ const randomString = randomBytes
   .replace(/\+/g, "-")
   .replace(/\//g, "_")
   .replace(/=/g, "");
-const key = `sk_live_${randomString}`;
+const key = `sk_live_YOUR_KEY_HERE${randomString}`;
 ```
 
 ### 2. Key Hashing
@@ -430,7 +430,7 @@ All API key operations logged to `AuditLog` table:
    ```bash
    # Test valid key
    curl http://localhost:3000/api/v1/members \
-     -H "Authorization: Bearer sk_live_..."
+     -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..."
 
    # Test invalid key
    curl http://localhost:3000/api/v1/members \
@@ -440,7 +440,7 @@ All API key operations logged to `AuditLog` table:
    # Test missing permission
    # Create key with only 'read' permission, then:
    curl -X POST http://localhost:3000/api/v1/members/invite \
-     -H "Authorization: Bearer sk_live_..." \
+     -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..." \
      -H "Content-Type: application/json" \
      -d '{"email": "test@example.com", "role": "MEMBER"}'
    # Should return 403

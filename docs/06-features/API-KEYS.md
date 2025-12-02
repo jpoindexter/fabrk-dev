@@ -26,7 +26,7 @@ model ApiKey {
   organizationId String
   userId         String    // Creator
   name           String
-  keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_abc1")
+  keyPrefix      String    @unique // First 12 chars (e.g., "sk_live_YOUR_KEY_HERE")
   keyHash        String    @unique // SHA-256 hash of full key
   permissions    String[]  // Array of permissions (read, write, admin)
   lastUsedAt     DateTime?
@@ -40,19 +40,19 @@ model ApiKey {
 
 ### API Key Format
 
-**Live Keys:** `sk_live_<43-character-base64url-string>`
+**Live Keys:** `sk_live_YOUR_KEY_HERE<43-character-base64url-string>`
 **Test Keys:** `sk_test_<43-character-base64url-string>`
 
-Example: `sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4`
+Example: `sk_live_YOUR_KEY_HERE`
 
-**Display Prefix:** First 12 characters (e.g., `sk_live_A1b2`)
+**Display Prefix:** First 12 characters (e.g., `sk_live_YOUR_KEY_HERE`)
 
 ### Security Implementation
 
 1. **Key Generation** (`lib/api-keys/generator.ts`):
    - Uses `crypto.randomBytes(32)` for 256-bit entropy
    - Converts to base64url (URL-safe)
-   - Prefixes with `sk_live_` or `sk_test_`
+   - Prefixes with `sk_live_YOUR_KEY_HERE` or `sk_test_`
 
 2. **Key Hashing** (`lib/api-keys/hasher.ts`):
    - SHA-256 hash stored in database
@@ -116,11 +116,11 @@ Content-Type: application/json
 {
   "id": "key_abc123",
   "name": "Production API",
-  "keyPrefix": "sk_live_A1b2",
+  "keyPrefix": "sk_live_YOUR_KEY_HERE",
   "permissions": ["read", "write"],
   "expiresAt": "2025-12-31T23:59:59.000Z",
   "createdAt": "2024-11-14T10:00:00.000Z",
-  "key": "sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4"
+  "key": "sk_live_YOUR_KEY_HERE"
 }
 ```
 
@@ -138,7 +138,7 @@ GET /api/api-keys?organizationId=org_123
   {
     "id": "key_abc123",
     "name": "Production API",
-    "keyPrefix": "sk_live_A1b2",
+    "keyPrefix": "sk_live_YOUR_KEY_HERE",
     "permissions": ["read", "write"],
     "lastUsedAt": "2024-11-14T12:30:00.000Z",
     "expiresAt": null,
@@ -187,7 +187,7 @@ Include the API key in the `Authorization` header with `Bearer` prefix:
 
 ```bash
 curl https://yourdomain.com/api/v1/organizations/org_123 \
-  -H "Authorization: Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4"
+  -H "Authorization: Bearer sk_live_YOUR_KEY_HERE"
 ```
 
 ### JavaScript Example
@@ -195,7 +195,7 @@ curl https://yourdomain.com/api/v1/organizations/org_123 \
 ```javascript
 const response = await fetch('https://yourdomain.com/api/v1/members', {
   headers: {
-    'Authorization': 'Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4',
+    'Authorization': 'Bearer sk_live_YOUR_KEY_HERE',
     'Content-Type': 'application/json'
   }
 });
@@ -209,7 +209,7 @@ const members = await response.json();
 import requests
 
 headers = {
-    'Authorization': 'Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4',
+    'Authorization': 'Bearer sk_live_YOUR_KEY_HERE',
     'Content-Type': 'application/json'
 }
 
@@ -289,7 +289,7 @@ Get organization details.
 **Example:**
 ```bash
 curl https://yourdomain.com/api/v1/organizations/org_123 \
-  -H "Authorization: Bearer sk_live_..."
+  -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..."
 ```
 
 **Response:**
@@ -318,7 +318,7 @@ List organization members.
 **Example:**
 ```bash
 curl https://yourdomain.com/api/v1/members \
-  -H "Authorization: Bearer sk_live_..."
+  -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..."
 ```
 
 **Response:**
@@ -349,7 +349,7 @@ Invite a new member to the organization.
 **Example:**
 ```bash
 curl -X POST https://yourdomain.com/api/v1/members/invite \
-  -H "Authorization: Bearer sk_live_..." \
+  -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..." \
   -H "Content-Type: application/json" \
   -d '{
     "email": "newuser@example.com",
@@ -531,7 +531,7 @@ Invalid permissions:
 3. **Test API Endpoint:**
    ```bash
    curl http://localhost:3000/api/v1/members \
-     -H "Authorization: Bearer sk_live_..."
+     -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..."
    ```
 
 4. **Test Invalid Key:**
@@ -546,7 +546,7 @@ Invalid permissions:
    - Try to call POST endpoint
    ```bash
    curl -X POST http://localhost:3000/api/v1/members/invite \
-     -H "Authorization: Bearer sk_live_..." \
+     -H "Authorization: Bearer sk_live_YOUR_KEY_HERE..." \
      -H "Content-Type: application/json" \
      -d '{"email": "test@example.com", "role": "MEMBER"}'
    # Should return 403
@@ -570,7 +570,7 @@ Invalid permissions:
 ### Keys Not Working
 
 1. **Check key format:**
-   - Must start with `sk_live_` or `sk_test_`
+   - Must start with `sk_live_YOUR_KEY_HERE` or `sk_test_`
    - Must be ~50+ characters
    - Base64url encoded (no special chars)
 
