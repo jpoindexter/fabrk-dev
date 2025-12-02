@@ -78,9 +78,7 @@ export function ExitIntentPopup({
     const exitIntentShown = localStorage.getItem("exit-intent-shown");
     if (exitIntentShown) {
       const shownDate = new Date(exitIntentShown);
-      const expiryDate = new Date(
-        shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000
-      );
+      const expiryDate = new Date(shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000);
       if (new Date() < expiryDate) {
         // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
         setHasShown(true);
@@ -118,11 +116,11 @@ export function ExitIntentPopup({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="rounded-none max-w-md">
+      <DialogContent className="max-w-md rounded-none">
         <DialogHeader>
           <div className="mb-4 flex justify-center">
-            <div className="bg-primary/10 p-3">
-              <Sparkles className="h-8 w-8 text-primary" />
+            <div className="bg-primary/10 p-4">
+              <Sparkles className="text-primary h-8 w-8" />
             </div>
           </div>
           <DialogTitle className="text-center font-mono text-2xl">{title}</DialogTitle>
@@ -132,17 +130,13 @@ export function ExitIntentPopup({
         </DialogHeader>
 
         {showPricing && (
-          <div className="my-4 border border-border bg-card p-4">
+          <div className="border-border bg-card my-4 border p-4">
             <div className="text-center">
-              <div className="mb-2 flex items-center justify-center gap-3">
-                <span className="font-mono text-3xl font-bold text-foreground">
-                  $175
-                </span>
-                <span className="font-mono text-lg text-muted-foreground line-through">
-                  $299
-                </span>
+              <div className="mb-2 flex items-center justify-center gap-4">
+                <span className="text-foreground font-mono text-3xl font-bold">$175</span>
+                <span className="text-muted-foreground font-mono text-lg line-through">$299</span>
               </div>
-              <span className="block text-xs text-muted-foreground">
+              <span className="text-muted-foreground block text-xs">
                 One-time payment. Lifetime access.
               </span>
             </div>
@@ -152,14 +146,14 @@ export function ExitIntentPopup({
         <DialogFooter className="flex-col gap-2 sm:flex-col">
           <PolarCheckoutButton
             discountId={EXIT_INTENT_DISCOUNT_ID}
-            className="rounded-none w-full font-mono text-xs"
+            className="w-full rounded-none font-mono text-xs"
           >
             &gt; GET_FABRK_NOW
           </PolarCheckoutButton>
           <Button
             onClick={handleClose}
             variant="ghost"
-            className="rounded-none w-full font-mono text-xs"
+            className="w-full rounded-none font-mono text-xs"
             size="sm"
           >
             {secondaryCtaText}
@@ -168,7 +162,7 @@ export function ExitIntentPopup({
 
         {/* 30-day guarantee badge */}
         <div className="mt-4 text-center">
-          <span className="text-xs text-muted-foreground">
+          <span className="text-muted-foreground text-xs">
             30-day money-back guarantee • No questions asked
           </span>
         </div>

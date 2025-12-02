@@ -13,7 +13,7 @@ function BillingCounter({
   value,
   prefix = "",
   suffix = "",
-  delay = 0
+  delay = 0,
 }: {
   value: number;
   prefix?: string;
@@ -45,7 +45,13 @@ function BillingCounter({
     return () => clearTimeout(timer);
   }, [isInView, value, delay]);
 
-  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  );
 }
 
 export function BillingPreview() {
@@ -53,14 +59,14 @@ export function BillingPreview() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="border-border bg-card w-full max-w-md border">
       <TerminalHeader title="billing_portal.exe" animated />
 
       <div className="p-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          className="mb-4 font-mono text-xs text-muted-foreground"
+          className="text-muted-foreground mb-4 font-mono text-xs"
         >
           [BILLING]:
         </motion.div>
@@ -69,12 +75,12 @@ export function BillingPreview() {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="mb-4 flex items-center justify-between border border-border bg-background p-3"
+          className="border-border bg-background mb-4 flex items-center justify-between border p-4"
         >
           <div>
             <span className="block font-mono text-xs">PLAN: PRO</span>
             <motion.span
-              className="font-mono text-xs text-muted-foreground"
+              className="text-muted-foreground font-mono text-xs"
               whileHover={{ color: "hsl(var(--primary))", x: 2 }}
             >
               &gt; change_plan
@@ -84,7 +90,7 @@ export function BillingPreview() {
             <span className="block font-mono text-lg font-bold">
               <BillingCounter value={29} prefix="$" delay={0.5} />
             </span>
-            <span className="font-mono text-xs text-muted-foreground">/month</span>
+            <span className="text-muted-foreground font-mono text-xs">/month</span>
           </div>
         </motion.div>
 
@@ -92,27 +98,31 @@ export function BillingPreview() {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4 }}
-          className="border border-border bg-background p-3"
+          className="border-border bg-background border p-4"
         >
           <div className="mb-2 flex justify-between font-mono text-xs">
             <span className="text-muted-foreground">CYCLE: Nov 1 - Nov 30</span>
-            <span><BillingCounter value={15} delay={0.8} /> days remaining</span>
+            <span>
+              <BillingCounter value={15} delay={0.8} /> days remaining
+            </span>
           </div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.6 }}
-            className="border-t border-border pt-2"
+            className="border-border border-t pt-2"
           >
             <div className="flex justify-between font-mono text-xs">
               <span className="text-muted-foreground">Pro Plan</span>
-              <span>$<BillingCounter value={29} suffix=".00" delay={1} /></span>
+              <span>
+                $<BillingCounter value={29} suffix=".00" delay={1} />
+              </span>
             </div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.8 }}
-              className="mt-2 flex justify-between border-t border-border pt-2 font-mono text-xs font-bold"
+              className="border-border mt-2 flex justify-between border-t pt-2 font-mono text-xs font-bold"
             >
               <span>TOTAL</span>
               <motion.span

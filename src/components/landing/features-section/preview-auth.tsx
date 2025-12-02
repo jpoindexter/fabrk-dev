@@ -42,7 +42,7 @@ export function AuthPreview() {
 
     // Blinking cursor
     const cursorTimer = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 530);
 
     return () => {
@@ -52,19 +52,17 @@ export function AuthPreview() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="w-full max-w-sm border border-border bg-card">
+    <div ref={ref} className="border-border bg-card w-full max-w-sm border">
       <TerminalHeader title="auth_module.exe" animated />
 
       <div className="p-6">
-        <div className="mb-4 font-mono text-xs text-muted-foreground">
-          [AUTH_FORM]:
-        </div>
+        <div className="text-muted-foreground mb-4 font-mono text-xs">[AUTH_FORM]:</div>
 
         <div className="space-y-4">
           <div>
-            <span className="mb-1.5 block font-mono text-xs text-muted-foreground">EMAIL:</span>
-            <div className="border border-border bg-background px-3 py-2 min-h-[36px] flex items-center">
-              <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-muted-foreground mb-1.5 block font-mono text-xs">EMAIL:</span>
+            <div className="border-border bg-background flex min-h-[36px] items-center border px-3 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
                 {emailText}
                 {emailText.length < fullEmail.length && showCursor && (
                   <span className="text-primary">|</span>
@@ -73,35 +71,35 @@ export function AuthPreview() {
             </div>
           </div>
           <div>
-            <span className="mb-1.5 block font-mono text-xs text-muted-foreground">PASSWORD:</span>
-            <div className="border border-border bg-background px-3 py-2 min-h-[36px] flex items-center">
-              <span className="font-mono text-xs text-muted-foreground">
+            <span className="text-muted-foreground mb-1.5 block font-mono text-xs">PASSWORD:</span>
+            <div className="border-border bg-background flex min-h-[36px] items-center border px-3 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
                 {"•".repeat(passwordDots)}
                 {passwordDots < 8 && passwordDots > 0 && showCursor && (
                   <span className="text-primary">|</span>
                 )}
               </span>
               {passwordDots === 0 && emailText.length >= fullEmail.length && showCursor && (
-                <span className="font-mono text-xs text-primary">|</span>
+                <span className="text-primary font-mono text-xs">|</span>
               )}
             </div>
           </div>
-          <div className="bg-primary px-4 py-2 text-center cursor-pointer hover:opacity-90 transition-opacity">
-            <span className="font-mono text-xs text-primary-foreground">&gt; AUTHENTICATE</span>
+          <div className="bg-primary cursor-pointer px-4 py-2 text-center transition-opacity hover:opacity-90">
+            <span className="text-primary-foreground font-mono text-xs">&gt; AUTHENTICATE</span>
           </div>
           <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border" />
+              <div className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-card px-2 font-mono text-xs text-muted-foreground">OR</span>
+              <span className="bg-card text-muted-foreground px-2 font-mono text-xs">OR</span>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary/50">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center transition-colors">
               <span className="font-mono text-xs">GOOGLE</span>
             </div>
-            <div className="border border-border px-4 py-2 text-center cursor-pointer transition-colors hover:border-primary/50">
+            <div className="border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center transition-colors">
               <span className="font-mono text-xs">MICROSOFT</span>
             </div>
           </div>

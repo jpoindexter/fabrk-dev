@@ -27,7 +27,7 @@ function TypeWriter({
   text,
   delay = 0,
   speed = 30,
-  showCursor = false
+  showCursor = false,
 }: {
   text: string;
   delay?: number;
@@ -101,11 +101,11 @@ function TerminalContent() {
     if (!isInView) return;
 
     const timers = [
-      setTimeout(() => setStep(1), 2000),  // Clone done
-      setTimeout(() => setStep(2), 3200),  // cd done, show npm install
-      setTimeout(() => setStep(3), 5500),  // npm install done
-      setTimeout(() => setStep(4), 6500),  // show npm run dev
-      setTimeout(() => setStep(5), 8000),  // server ready
+      setTimeout(() => setStep(1), 2000), // Clone done
+      setTimeout(() => setStep(2), 3200), // cd done, show npm install
+      setTimeout(() => setStep(3), 5500), // npm install done
+      setTimeout(() => setStep(4), 6500), // show npm run dev
+      setTimeout(() => setStep(5), 8000), // server ready
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -115,13 +115,19 @@ function TerminalContent() {
     <div ref={ref} className="p-6 font-mono text-xs">
       {/* git clone */}
       <div className="text-muted-foreground">
-        <span className="text-success">~</span> <TypeWriter text="git clone https://github.com/you/fabrk my-saas" delay={0.3} speed={30} showCursor />
+        <span className="text-success">~</span>{" "}
+        <TypeWriter
+          text="git clone https://github.com/you/fabrk my-saas"
+          delay={0.3}
+          speed={30}
+          showCursor
+        />
       </div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 1 ? 1 : 0 }}
-        className="mt-1 text-muted-foreground"
+        className="text-muted-foreground mt-1"
       >
         Cloning into &apos;my-saas&apos;... <span className="text-success">done</span>
       </motion.div>
@@ -130,15 +136,16 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 2 ? 1 : 0 }}
-        className="mt-3 text-muted-foreground"
+        className="text-muted-foreground mt-3"
       >
-        <span className="text-success">~</span> <span className="text-foreground">cd my-saas && npm install</span>
+        <span className="text-success">~</span>{" "}
+        <span className="text-foreground">cd my-saas && npm install</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 2 && step < 3 ? 1 : 0 }}
-        className="mt-1 text-muted-foreground"
+        className="text-muted-foreground mt-1"
       >
         <motion.span
           animate={{ opacity: [1, 0.3, 1] }}
@@ -151,28 +158,30 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 3 ? 1 : 0 }}
-        className="mt-1 text-muted-foreground"
+        className="text-muted-foreground mt-1"
       >
-        added <span className="text-foreground">847</span> packages in <span className="text-foreground">12s</span>
+        added <span className="text-foreground">847</span> packages in{" "}
+        <span className="text-foreground">12s</span>
       </motion.div>
 
       {/* npm run dev */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className="mt-3 text-muted-foreground"
+        className="text-muted-foreground mt-3"
       >
-        <span className="text-success">~/my-saas</span> <span className="text-foreground">npm run dev</span>
+        <span className="text-success">~/my-saas</span>{" "}
+        <span className="text-foreground">npm run dev</span>
       </motion.div>
 
       {/* Server ready */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="mt-3 border border-success/30 bg-success/10 p-3"
+        className="border-success/30 bg-success/10 mt-3 border p-3"
       >
         <div className="text-success">▲ Ready</div>
-        <div className="mt-1 text-muted-foreground">
+        <div className="text-muted-foreground mt-1">
           Local: <span className="text-primary">http://localhost:3000</span>
         </div>
       </motion.div>
@@ -181,11 +190,11 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="mt-3 text-muted-foreground"
+        className="text-muted-foreground mt-3"
       >
         <span className="text-success">~/my-saas</span>{" "}
         <motion.span
-          className="inline-block text-primary"
+          className="text-primary inline-block"
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
         >
@@ -210,7 +219,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+              <span className="border-border bg-card text-muted-foreground inline-block border px-3 py-1 font-mono text-xs">
                 [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
@@ -221,9 +230,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="mb-2 font-mono text-sm text-muted-foreground">
-                FABRK_INIT:
-              </h1>
+              <h1 className="text-muted-foreground mb-2 font-mono text-sm">FABRK_INIT:</h1>
               <h2 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
                 BUILDING_YOUR_SAAS
                 <br />
@@ -236,14 +243,14 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8 border border-border bg-card p-4"
+              className="border-border bg-card mb-8 border p-4"
             >
-              <div className="mb-3 font-mono text-xs text-muted-foreground">
+              <div className="text-muted-foreground mb-3 font-mono text-xs">
                 [ [0x01] STATUS ]────────────────────────
               </div>
-              <p className="mb-4 font-mono text-sm text-muted-foreground">
-                Why spend valuable time tackling auth, billing, emails, organizations,
-                invites and onboarding? Focus on your business and skip the noise.
+              <p className="text-muted-foreground mb-4 font-mono text-sm">
+                Why spend valuable time tackling auth, billing, emails, organizations, invites and
+                onboarding? Focus on your business and skip the noise.
               </p>
               <div className="flex flex-wrap gap-4 font-mono text-sm">
                 <span>
@@ -262,15 +269,13 @@ export function HeroSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-8 flex flex-col gap-3 sm:flex-row"
+              className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
               <PolarCheckoutButton className="rounded-none font-mono text-xs">
                 &gt; EXECUTE: GET_FABRK
               </PolarCheckoutButton>
               <Button variant="outline" asChild className="rounded-none font-mono text-xs">
-                <Link href="/demo">
-                  &gt; VIEW: LIVE_DEMO
-                </Link>
+                <Link href="/demo">&gt; VIEW: LIVE_DEMO</Link>
               </Button>
             </motion.div>
 
@@ -280,18 +285,18 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="mb-3 font-mono text-xs text-muted-foreground">
+              <div className="text-muted-foreground mb-3 font-mono text-xs">
                 [ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex items-center gap-1.5 border border-border bg-card px-2 py-1"
+                    className="border-border bg-card flex items-center gap-1.5 border px-2 py-1"
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
                     <span className="font-mono text-xs">{tech.name}</span>
-                    <span className="font-mono text-xs text-success">[OK]</span>
+                    <span className="text-success font-mono text-xs">[OK]</span>
                   </div>
                 ))}
               </div>
@@ -307,30 +312,30 @@ export function HeroSection() {
           >
             {/* Terminal Window Frame */}
             <motion.div
-              className="border border-border bg-card"
+              className="border-border bg-card border"
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {/* Window Title Bar */}
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                 <div className="flex gap-1.5">
                   <motion.div
-                    className="size-2.5 rounded-full bg-destructive/50"
+                    className="bg-destructive/50 size-2.5 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0 }}
                   />
                   <motion.div
-                    className="size-2.5 rounded-full bg-warning/50"
+                    className="bg-warning/50 size-2.5 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
                   />
                   <motion.div
-                    className="size-2.5 rounded-full bg-success/50"
+                    className="bg-success/50 size-2.5 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
                   />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="text-muted-foreground font-mono text-xs">
                   terminal — ~/projects
                 </span>
               </div>

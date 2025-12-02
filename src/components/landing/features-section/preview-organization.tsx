@@ -29,31 +29,29 @@ export function OrganizationPreview() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="w-full max-w-md border border-border bg-card">
+    <div ref={ref} className="border-border bg-card w-full max-w-md border">
       <TerminalHeader title="org_manager.exe" />
 
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">
-          <span className="font-mono text-xs text-muted-foreground">
-            [ORGANIZATIONS]:
-          </span>
-          <button className="border border-primary px-2 py-1 font-mono text-xs text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
+          <span className="text-muted-foreground font-mono text-xs">[ORGANIZATIONS]:</span>
+          <button className="border-primary text-primary hover:bg-primary hover:text-primary-foreground border px-2 py-1 font-mono text-xs transition-colors">
             + ADD_ORG
           </button>
         </div>
 
         {/* Fixed height container to prevent layout shift */}
-        <div className="space-y-2 min-h-[116px]">
+        <div className="min-h-[116px] space-y-2">
           {/* ACME_INC - always visible */}
-          <div className="flex items-center justify-between border border-border bg-background p-3">
-            <div className="flex items-center gap-3">
-              <Building2 className="size-4 text-muted-foreground" />
+          <div className="border-border bg-background flex items-center justify-between border p-4">
+            <div className="flex items-center gap-4">
+              <Building2 className="text-muted-foreground size-4" />
               <div>
                 <span className="block font-mono text-xs">ACME_INC</span>
-                <span className="font-mono text-xs text-muted-foreground">12 members</span>
+                <span className="text-muted-foreground font-mono text-xs">12 members</span>
               </div>
             </div>
-            <span className="font-mono text-xs text-success">OWNER</span>
+            <span className="text-success font-mono text-xs">OWNER</span>
           </div>
 
           {/* STARTUP_CO - appears after button click */}
@@ -61,27 +59,24 @@ export function OrganizationPreview() {
             initial={{ opacity: 0, x: -20 }}
             animate={showStartup ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex items-center justify-between border border-border bg-background p-3"
+            className="border-border bg-background flex items-center justify-between border p-4"
           >
-            <div className="flex items-center gap-3">
-              <Building2 className="size-4 text-muted-foreground" />
+            <div className="flex items-center gap-4">
+              <Building2 className="text-muted-foreground size-4" />
               <div>
                 <span className="block font-mono text-xs">STARTUP_CO</span>
-                <span className="font-mono text-xs text-muted-foreground">5 members</span>
+                <span className="text-muted-foreground font-mono text-xs">5 members</span>
               </div>
             </div>
-            <span className="font-mono text-xs text-success">ADMIN</span>
+            <span className="text-success font-mono text-xs">ADMIN</span>
           </motion.div>
         </div>
 
-        <div className="mt-4 border-t border-border pt-4">
-          <span className="mb-2 block font-mono text-xs text-muted-foreground">[ROLES]:</span>
+        <div className="border-border mt-4 border-t pt-4">
+          <span className="text-muted-foreground mb-2 block font-mono text-xs">[ROLES]:</span>
           <div className="flex flex-wrap gap-2">
             {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
-              <span
-                key={role}
-                className="border border-border bg-card px-2 py-1 font-mono text-xs"
-              >
+              <span key={role} className="border-border bg-card border px-2 py-1 font-mono text-xs">
                 {role}
               </span>
             ))}

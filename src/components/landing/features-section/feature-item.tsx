@@ -11,13 +11,13 @@ interface FeatureItemProps {
 
 export function FeatureItem({ icon: Icon, title, description }: FeatureItemProps) {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-4">
       <div className="flex-shrink-0">
-        <Icon className="size-4 text-primary" />
+        <Icon className="text-primary size-4" />
       </div>
       <div>
-        <span className="font-mono text-xs font-semibold text-foreground">├─ {title}</span>
-        <span className="ml-2 font-mono text-xs text-muted-foreground">{description}</span>
+        <span className="text-foreground font-mono text-xs font-semibold">├─ {title}</span>
+        <span className="text-muted-foreground ml-2 font-mono text-xs">{description}</span>
       </div>
     </div>
   );
