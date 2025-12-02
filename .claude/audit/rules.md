@@ -15,6 +15,9 @@ Quick reference and index to all design system compliance rules.
 | [`spacing.md`](spacing.md) | 8-point grid, padding, margins, gaps, layout patterns |
 | [`interaction.md`](interaction.md) | Hover, focus, active, disabled, loading states, transitions |
 | [`components.md`](components.md) | Form, button, card, dialog, tab, Radix UI patterns |
+| [`responsive.md`](responsive.md) | Mobile-first, breakpoints, grids, navigation patterns |
+| [`animation.md`](animation.md) | Framer Motion, CSS transitions, reduced motion, performance |
+| [`enterprise.md`](enterprise.md) | Error boundaries, Suspense, data fetching, performance patterns |
 
 ---
 

@@ -66,6 +66,9 @@ For quick checks: **"quick audit"** or **"check compliance"**
 | [`spacing.md`](spacing.md) | 8-point grid, padding, margins, gaps, layouts |
 | [`interaction.md`](interaction.md) | Hover, focus, active, disabled, loading, transitions |
 | [`components.md`](components.md) | Form, button, card, dialog, tabs, Radix UI patterns |
+| [`responsive.md`](responsive.md) | Mobile-first, breakpoints, grids, navigation, reflow |
+| [`animation.md`](animation.md) | Framer Motion, CSS transitions, reduced motion |
+| [`enterprise.md`](enterprise.md) | Error boundaries, Suspense, data fetching, performance |
 
 ---
 
