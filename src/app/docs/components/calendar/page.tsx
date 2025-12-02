@@ -20,7 +20,7 @@ export default function CalendarPage() {
             mode="single"
             selected={date}
             onSelect={setDate}
-            className="rounded-md border"
+            className="rounded-none border border-border"
           />
         ),
         code: `const [date, setDate] = useState<Date | undefined>(new Date());
@@ -29,7 +29,7 @@ export default function CalendarPage() {
   mode="single"
   selected={date}
   onSelect={setDate}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
       }}
       variants={[
@@ -41,7 +41,7 @@ export default function CalendarPage() {
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `const [date, setDate] = useState<Date>();
@@ -50,7 +50,7 @@ export default function CalendarPage() {
   mode="single"
   selected={date}
   onSelect={setDate}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -60,7 +60,7 @@ export default function CalendarPage() {
             <Calendar
               mode="range"
               numberOfMonths={2}
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `const [range, setRange] = useState<DateRange>();
@@ -70,14 +70,14 @@ export default function CalendarPage() {
   selected={range}
   onSelect={setRange}
   numberOfMonths={2}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
           title: "Multiple Dates",
           description: "Select multiple individual dates.",
           preview: (
-            <Calendar mode="multiple" className="rounded-md border" />
+            <Calendar mode="multiple" className="rounded-none border border-border" />
           ),
           code: `const [dates, setDates] = useState<Date[]>();
 
@@ -85,7 +85,7 @@ export default function CalendarPage() {
   mode="multiple"
   selected={dates}
   onSelect={setDates}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -95,13 +95,13 @@ export default function CalendarPage() {
             <Calendar
               mode="single"
               showOutsideDays={false}
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `<Calendar
   mode="single"
   showOutsideDays={false}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -113,7 +113,7 @@ export default function CalendarPage() {
               disabled={(date) =>
                 date < new Date() || date < new Date("1900-01-01")
               }
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `<Calendar
@@ -121,7 +121,7 @@ export default function CalendarPage() {
   disabled={(date) =>
     date < new Date() || date < new Date("1900-01-01")
   }
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -131,13 +131,13 @@ export default function CalendarPage() {
             <Calendar
               mode="single"
               numberOfMonths={2}
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `<Calendar
   mode="single"
   numberOfMonths={2}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -147,13 +147,13 @@ export default function CalendarPage() {
             <Calendar
               mode="single"
               defaultMonth={new Date(2024, 0)}
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `<Calendar
   mode="single"
   defaultMonth={new Date(2024, 0)}
-  className="rounded-md border"
+  className="rounded-none border border-border"
 />`,
         },
         {
@@ -181,7 +181,7 @@ export default function CalendarPage() {
                   </p>
                 </div>
               }
-              className="rounded-md border"
+              className="rounded-none border border-border"
             />
           ),
           code: `<Calendar

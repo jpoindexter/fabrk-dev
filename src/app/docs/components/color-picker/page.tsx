@@ -109,7 +109,7 @@ export default function ColorPickerPage() {
                     <span className="text-primary">{color}</span>
                   </div>
                   <div
-                    className="h-12 rounded-md border border-border"
+                    className="h-12 rounded-none border border-border"
                     style={{ backgroundColor: color }}
                   />
                 </div>

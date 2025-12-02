@@ -65,7 +65,7 @@ export default function ContextMenuPage() {
           </ContextMenu>
         ),
         code: `<ContextMenu>
-  <ContextMenuTrigger className="border rounded-md p-4">
+  <ContextMenuTrigger className="rounded-none border border-border p-4">
     Right click here
   </ContextMenuTrigger>
   <ContextMenuContent className="w-64">

@@ -115,7 +115,7 @@ export default function AutocompletePage() {
                 options={frameworks}
                 placeholder="Select a framework..."
               />
-              <div className="rounded-md border border-border bg-card p-3">
+              <div className="rounded-none border border-border bg-card p-3">
                 <span className="font-mono text-xs text-muted-foreground">
                   [SELECTED]: Use onValueChange callback
                 </span>
