@@ -2,13 +2,14 @@
  * Terminal Stoplights Component
  * Centralized macOS-style window control dots
  *
- * The shape (square vs round) is controlled by a single CSS class in globals.css:
- * `.terminal-dot { @apply size-2 rounded-none; }`
- *
- * To make all stoplights round, change `rounded-none` to `rounded-full`
+ * To toggle between square/round stoplights, change `rounded-none` to `rounded-full`
+ * in the dotBase constant below.
  */
 
 import { cn } from "@/lib/utils";
+
+// TOGGLE: Change rounded-none to rounded-full for circular stoplights
+const dotBase = "rounded-none";
 
 interface TerminalStoplightsProps {
   className?: string;
@@ -29,10 +30,10 @@ export function TerminalStoplights({
   const dotSize = sizeClasses[size];
 
   return (
-    <div className={cn("terminal-stoplights", className)}>
-      <div className={cn("terminal-dot bg-destructive/50", dotSize)} />
-      <div className={cn("terminal-dot bg-warning/50", dotSize)} />
-      <div className={cn("terminal-dot bg-success/50", dotSize)} />
+    <div className={cn("flex gap-2", className)}>
+      <div className={cn(dotBase, dotSize, "bg-destructive/50")} />
+      <div className={cn(dotBase, dotSize, "bg-warning/50")} />
+      <div className={cn(dotBase, dotSize, "bg-success/50")} />
     </div>
   );
 }
@@ -55,7 +56,12 @@ export function TerminalHeader({
   size = "sm",
 }: TerminalHeaderProps) {
   return (
-    <div className={cn("terminal-header", className)}>
+    <div
+      className={cn(
+        "flex items-center gap-2 border-b border-border px-4 py-2",
+        className
+      )}
+    >
       <TerminalStoplights size={size} />
       {filename && (
         <span className="font-mono text-xs text-muted-foreground">

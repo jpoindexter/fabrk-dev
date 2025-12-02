@@ -1347,17 +1347,17 @@ body:has(.terminal-preview) [data-slot="alert-dialog-content"] textarea {
     @apply size-2 rounded-none;
   }
 
-  /* Stoplight color variants */
+  /* Stoplight color variants - inline the base styles to avoid self-reference */
   .terminal-dot-close {
-    @apply terminal-dot bg-destructive/50;
+    @apply size-2 rounded-none bg-destructive/50;
   }
 
   .terminal-dot-minimize {
-    @apply terminal-dot bg-warning/50;
+    @apply size-2 rounded-none bg-warning/50;
   }
 
   .terminal-dot-maximize {
-    @apply terminal-dot bg-success/50;
+    @apply size-2 rounded-none bg-success/50;
   }
 
   /* Terminal window header with stoplights */
