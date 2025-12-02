@@ -4,6 +4,10 @@
 Perform an exhaustive audit with zero tolerance for gaps.
 Check EVERY file, EVERY line, EVERY component, EVERY pattern.
 
+> **Related Documentation:**
+> - `DESIGN_SYSTEM.md` - Formal design system specification (colors, typography, spacing, terminal aesthetic)
+> - `CLAUDE.md` - Quick reference for Claude Code
+
 ---
 
 # QUICK SEARCH PATTERNS (Regex)
