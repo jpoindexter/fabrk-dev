@@ -310,7 +310,7 @@ export default function InputGroupPage() {
         "Disabled state prevents all interactions",
         "ARIA attributes properly managed on input element",
       ]}
-      previous={{ title: "Input Color", href: "/docs/components/input-color" }}
+      previous={{ title: "Input", href: "/docs/components/input" }}
       next={{ title: "Input Number", href: "/docs/components/input-number" }}
     />
   );

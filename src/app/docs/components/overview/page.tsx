@@ -26,7 +26,6 @@ const componentCategories = [
       { name: "form", description: "Form with validation" },
       { name: "form-error", description: "Error message component" },
       { name: "input", description: "Basic text input field" },
-      { name: "input-color", description: "Color input field" },
       { name: "input-group", description: "Grouped inputs with addons" },
       { name: "input-number", description: "Numeric input with controls" },
       { name: "input-otp", description: "One-time password input" },

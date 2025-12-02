@@ -114,7 +114,6 @@ const navigation: NavSection[] = [
       { title: "FORM", href: "/docs/components/form", icon: FormInput },
       { title: "FORM_ERROR", href: "/docs/components/form-error", icon: FormInput },
       { title: "INPUT", href: "/docs/components/input", icon: FormInput },
-      { title: "INPUT_COLOR", href: "/docs/components/input-color", icon: FormInput },
       { title: "INPUT_GROUP", href: "/docs/components/input-group", icon: FormInput },
       { title: "INPUT_NUMBER", href: "/docs/components/input-number", icon: FormInput },
       { title: "INPUT_OTP", href: "/docs/components/input-otp", icon: FormInput },
