@@ -38,7 +38,7 @@ export function Footer() {
             {techStack.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-1.5 border border-border bg-card px-2 py-1"
+                className="flex items-center gap-2 border border-border bg-card px-2 py-1"
               >
                 <SimpleIcon path={tech.path} className="size-3.5" />
                 <span className="font-mono text-xs">{tech.name}</span>
@@ -58,7 +58,7 @@ export function Footer() {
               <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
                 <span className="font-mono text-xs text-muted-foreground">[ [0x71] SYSTEM_INFO ]</span>
               </div>
-              <Link href="/" className="mb-4 flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
+              <Link href="/" className="mb-4 flex items-center gap-2 transition-opacity hover:opacity-80 font-mono">
                 <span className="text-sm text-primary">&gt;</span>
                 <span className="text-xl font-bold tracking-tight">FABRK</span>
               </Link>
@@ -71,7 +71,7 @@ export function Footer() {
             {/* Right: Nav Links in Terminal Box */}
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="size-2.5 rounded-full bg-destructive/50" />
                   <div className="size-2.5 rounded-full bg-warning/50" />
                   <div className="size-2.5 rounded-full bg-success/50" />

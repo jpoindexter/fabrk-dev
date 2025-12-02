@@ -79,7 +79,7 @@ export function PricingSection() {
             <div className="border border-border bg-card">
               {/* Window Header */}
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <motion.div
                     className="size-2.5 rounded-full bg-destructive/50"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -108,7 +108,7 @@ export function PricingSection() {
                 {/* Price Display */}
                 <div className="mb-6 border border-border p-4">
                   <div className="mb-2 font-mono text-xs text-muted-foreground">PRICE:</div>
-                  <div className="flex items-baseline gap-3">
+                  <div className="flex items-baseline gap-4">
                     <span className="font-mono text-lg text-muted-foreground line-through">
                       {config.pricing.fabrk.display.original}
                     </span>
@@ -157,7 +157,7 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mt-4"
             >
-              <div className="border border-border bg-card p-3 text-center">
+              <div className="border border-border bg-card p-4 text-center">
                 <span className="font-mono text-xs text-muted-foreground">
                   [ [0x42] SECURE ] Checkout powered by Polar │ All sales final
                 </span>

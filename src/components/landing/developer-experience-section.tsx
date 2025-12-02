@@ -91,7 +91,7 @@ export function DeveloperExperienceSection() {
                 key={feature.title}
                 className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
               >
-                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-3">
+                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-4">
                   {feature.icon ? (
                     <SimpleIcon path={feature.icon} className="h-6 w-6 text-primary" />
                   ) : IconComponent ? (
