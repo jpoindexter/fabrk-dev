@@ -126,9 +126,9 @@ const InputColor = React.forwardRef<HTMLInputElement, InputColorProps>(
           <PopoverContent className="w-64" align="start">
             <div className={`space-y-3`}>
               <div className={`grid grid-cols-5 gap-2`}>
-                {presetColors.map((color) => (
+                {presetColors.map((color, index) => (
                   <button
-                    key={color}
+                    key={`${color}-${index}`}
                     type="button"
                     style={{ "--preset-color": color } as React.CSSProperties}
                     className={cn(
