@@ -37,7 +37,7 @@ curl -X POST http://localhost:3000/api/api-keys \
 **Response:**
 ```json
 {
-  "key": "sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4"
+  "key": "sk_live_YOUR_KEY_HERE"
 }
 ```
 
@@ -49,7 +49,7 @@ curl -X POST http://localhost:3000/api/api-keys \
 
 ```bash
 curl http://localhost:3000/api/v1/members \
-  -H "Authorization: Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4"
+  -H "Authorization: Bearer sk_live_YOUR_KEY_HERE"
 ```
 
 ### JavaScript
@@ -57,7 +57,7 @@ curl http://localhost:3000/api/v1/members \
 ```javascript
 const response = await fetch('/api/v1/members', {
   headers: {
-    'Authorization': 'Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4'
+    'Authorization': 'Bearer sk_live_YOUR_KEY_HERE'
   }
 });
 
@@ -71,7 +71,7 @@ console.log(members);
 import requests
 
 headers = {
-    'Authorization': 'Bearer sk_live_A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4'
+    'Authorization': 'Bearer sk_live_YOUR_KEY_HERE'
 }
 
 response = requests.get('http://localhost:3000/api/v1/members', headers=headers)
@@ -154,7 +154,7 @@ curl -X PATCH http://localhost:3000/api/api-keys/key_abc123 \
 1. **Never commit keys to git**
    ```bash
    # .env.local
-   API_KEY=sk_live_...
+   API_KEY=sk_live_YOUR_KEY_HERE...
    ```
 
 2. **Rotate keys regularly**
@@ -174,7 +174,7 @@ curl -X PATCH http://localhost:3000/api/api-keys/key_abc123 \
 
 ### 401 Unauthorized
 - Check key is valid
-- Verify format: `sk_live_...`
+- Verify format: `sk_live_YOUR_KEY_HERE...`
 - Ensure key hasn't expired
 - Check Authorization header format
 
