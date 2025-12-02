@@ -19,11 +19,8 @@
 |------|---------|
 | Sync to official repo | `./scripts/sync-to-official.sh` |
 | Design system rules | See `DESIGN_SYSTEM.md` |
-| Run an audit | See `.claude/audit/protocol.md` |
-| Find violations (regex) | See `.claude/audit/patterns.md` |
-| What to check | See `.claude/audit/rules.md` |
-| Which files first | See `.claude/audit/files.md` |
-| Report format | See `.claude/audit/output.md` |
+| Run full audit | See `.claude/audit/README.md` |
+| Pre-commit checks | Automatic via Husky (see below) |
 | Add memory | Type `# your instruction here` |
 
 ---
@@ -75,10 +72,11 @@ npm run dev              # Start dev server (auto-kills port 3000)
 npm run build            # Production build
 npm run type-check       # TypeScript validation
 
-# Code Quality
+# Code Quality (automated on commit)
 npm run lint             # ESLint + hex color scan
 npm run scan:hex         # Detect hardcoded colors
 npm run format           # Prettier format
+npm run audit:staged     # Design system audit (runs on commit)
 
 # Database
 npm run db:push          # Push schema changes
@@ -133,7 +131,9 @@ src/
 - **`src/lib/env.ts`** - Environment validation with Zod
 - **`src/lib/auth.ts`** - NextAuth v5 with JWT sessions (30-day)
 - **`DESIGN_SYSTEM.md`** - Complete design system specification
-- **`.claude/audit/`** - Modular audit files (protocol, patterns, rules, output)
+- **`.claude/audit/`** - 58 modular audit files (see Resources)
+- **`.husky/pre-commit`** - Git hook entry point
+- **`scripts/utilities/pre-commit-audit.mjs`** - Design system pattern checker
 
 ---
 
@@ -313,20 +313,25 @@ try {
 
 ---
 
-## Pre-Commit Checklist
+## Pre-Commit Hooks (Automatic)
 
-```bash
-npm run type-check      # TypeScript
-npm run lint            # ESLint
-npm run scan:hex        # No hardcoded colors
-```
+Git commits automatically run these checks via **Husky + lint-staged**:
 
-Manual checks:
-- [ ] Buttons use `> ACTION_NAME` format
-- [ ] All elements use `rounded-none`
-- [ ] All colors use design tokens
-- [ ] DocsCard components have `title` prop
-- [ ] No wrapper divs in documentation previews
+| Check | Blocks Commit? |
+|-------|----------------|
+| TypeScript (`tsc --noEmit`) | ✅ |
+| ESLint + auto-fix | ✅ |
+| Prettier formatting | ✅ |
+| `console.log` statements | ✅ |
+| `target="_blank"` without noopener | ✅ |
+| `rounded-sm/md/lg/xl` (use `rounded-none`) | ✅ |
+| `shadow-md/lg/xl` (use `shadow-sm`) | ✅ |
+| `bg/text-white/black` (use tokens) | ✅ |
+| `process.env` direct access | ✅ |
+| Missing `aria-label` on icon buttons | ⚠️ Warning |
+| `<img>` without `alt` | ⚠️ Warning |
+
+**Bypass (emergency only):** `git commit --no-verify`
 
 ---
 
@@ -416,12 +421,25 @@ When adding features: "Does this help ship faster?" If no, delete it.
 
 ## Resources
 
+### Design System
 - `DESIGN_SYSTEM.md` - Complete design system specification
-- `.claude/audit/` - Modular audit documentation:
-  - `protocol.md` - Execution steps
-  - `patterns.md` - Regex patterns for violations
-  - `rules.md` - Compliance rules
-  - `files.md` - File priority order
-  - `output.md` - Report format
 - `src/app/globals.css` - CSS variables and utilities
 - `/docs/components/overview` - Component documentation
+
+### Audit Framework (58 files in `.claude/audit/`)
+
+| Category | Files | Coverage |
+|----------|-------|----------|
+| **Core** | `README.md`, `protocol.md`, `rules.md`, `files.md`, `output.md` | Entry points |
+| **Patterns** | `patterns.md`, `patterns-critical.md`, `patterns-medium.md` | Regex for violations |
+| **Accessibility** | `accessibility.md`, `a11y-*.md` (4 files) | WCAG 2.1 AA |
+| **Colors** | `colors.md`, `colors-*.md` | Design tokens, contrast |
+| **Typography** | `typography.md`, `typography-*.md` | Font scale, patterns |
+| **Spacing** | `spacing.md`, `spacing-*.md` | 8-point grid |
+| **Components** | `components.md`, `components-*.md` (5 files) | Forms, buttons, cards, validation, empty states |
+| **Animation** | `animation.md`, `animation-*.md` | Framer Motion, CSS |
+| **Responsive** | `responsive.md`, `responsive-*.md` | Mobile-first, breakpoints |
+| **Enterprise** | `enterprise.md`, `enterprise-*.md` | Error boundaries, data fetching |
+| **Extended** | `seo-metadata.md`, `react-patterns.md`, `nextjs-patterns.md`, `performance-metrics.md`, `testing-coverage.md`, `component-api.md`, `browser-compatibility.md` | SEO, React, Next.js, Core Web Vitals |
+
+**Run audit:** Say "run audit" or see `.claude/audit/README.md`
