@@ -264,7 +264,7 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
       >
         <div
           ref={containerRef}
-          className="relative h-96 w-full overflow-hidden rounded-none border border-border bg-card"
+          className="relative h-96 w-full overflow-hidden rounded-md border border-border bg-card"
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}

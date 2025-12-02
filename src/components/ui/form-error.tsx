@@ -41,7 +41,7 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "rounded-none border border-destructive/50 bg-destructive/15 p-6",
+          "rounded-md border border-destructive/50 bg-destructive/15 p-6",
           "dark:border-destructive/50 dark:bg-destructive/15",
           className
         )}

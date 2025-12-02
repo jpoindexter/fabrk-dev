@@ -174,7 +174,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             }
           }}
           className={cn(
-            "relative cursor-pointer rounded-none border border-dashed p-6 text-center transition-colors",
+            "relative cursor-pointer rounded-md border border-dashed p-6 text-center transition-colors",
             isDragging
               ? "border-primary bg-primary/5"
               : "border-muted-foreground/25 hover:border-muted-foreground/50",
@@ -204,7 +204,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             {files.map((file, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-3 rounded-none border p-3`}
+                className={`flex items-center gap-3 rounded-md border p-3`}
               >
                 {preview && previews[index] ? (
                   <img
