@@ -45,13 +45,27 @@ For quick checks: **"quick audit"** or **"check compliance"**
 
 ## File Reference
 
+### Core Audit Files
+
 | File | Purpose | When to Use |
 |------|---------|-------------|
+| [`rules.md`](rules.md) | Quick reference index | Overview of all rules |
 | [`patterns.md`](patterns.md) | Regex patterns for violations | Quick searches, automated scans |
-| [`rules.md`](rules.md) | What constitutes compliance | Understanding requirements |
 | [`files.md`](files.md) | File priority order | Knowing what to audit first |
 | [`output.md`](output.md) | Report format templates | Generating audit reports |
 | [`protocol.md`](protocol.md) | Step-by-step execution | Running a full audit |
+
+### Design System Rules (Modular)
+
+| File | Contents |
+|------|----------|
+| [`accessibility.md`](accessibility.md) | WCAG 2.1 AA, keyboard, screen readers, ARIA, focus |
+| [`design-principles.md`](design-principles.md) | UX heuristics, Gestalt, cognitive load, inclusive design |
+| [`colors.md`](colors.md) | Design tokens, allowed/banned colors, contrast, theming |
+| [`typography.md`](typography.md) | Font scale, weights, terminal patterns, responsive type |
+| [`spacing.md`](spacing.md) | 8-point grid, padding, margins, gaps, layouts |
+| [`interaction.md`](interaction.md) | Hover, focus, active, disabled, loading, transitions |
+| [`components.md`](components.md) | Form, button, card, dialog, tabs, Radix UI patterns |
 
 ---
 
