@@ -20,8 +20,13 @@ Enterprise-grade process for design system, accessibility, and UX heuristics aud
 |--------|-----------|----------|
 | **Accessibility** | WCAG 2.1 Level AA | CRITICAL |
 | **Design System** | Terminal aesthetic, tokens | CRITICAL |
-| **UX Heuristics** | Nielsen's 10 principles | HIGH |
-| **Security** | OWASP, env validation | CRITICAL |
+| **Security** | OWASP, env validation, XSS | CRITICAL |
+| **SEO/Metadata** | Open Graph, JSON-LD | HIGH |
+| **React Patterns** | Hooks, keys, state | HIGH |
+| **Next.js Patterns** | Server/Client, hydration | HIGH |
+| **Performance** | Core Web Vitals | HIGH |
+| **Testing** | Coverage thresholds | MEDIUM |
+| **Component API** | Prop consistency | MEDIUM |
 
 ---
 

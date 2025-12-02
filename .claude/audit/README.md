@@ -63,6 +63,20 @@ For quick checks: **"quick audit"** or **"check compliance"**
 | [`enterprise.md`](enterprise.md) | Error boundaries, Suspense |
 | [`design-principles.md`](design-principles.md) | UX heuristics, cognitive |
 
+### Extended Audit Rules (NEW)
+
+| File | Contents |
+|------|----------|
+| [`seo-metadata.md`](seo-metadata.md) | SEO, Open Graph, JSON-LD, next/image |
+| [`react-patterns.md`](react-patterns.md) | useEffect, useCallback, keys, state |
+| [`nextjs-patterns.md`](nextjs-patterns.md) | Server/Client, hydration, Suspense |
+| [`performance-metrics.md`](performance-metrics.md) | Core Web Vitals, bundle size |
+| [`testing-coverage.md`](testing-coverage.md) | Coverage thresholds, critical paths |
+| [`components-validation.md`](components-validation.md) | Form validation, error handling |
+| [`component-api.md`](component-api.md) | Prop naming, variants, consistency |
+| [`components-empty-states.md`](components-empty-states.md) | Empty, loading, error states |
+| [`browser-compatibility.md`](browser-compatibility.md) | Browser support, feature detection |
+
 ---
 
 ## Quick Commands

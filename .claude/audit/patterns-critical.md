@@ -80,6 +80,45 @@ innerHTML\s*=
 
 # Exposed secrets
 (api[_-]?key|secret|password|token|auth)["\s]*[:=]["\s]*["\'][^"\']+["\']
+
+# External links without noopener (XSS risk)
+target="_blank"(?![^>]*rel="noopener)
+
+# Missing DOMPurify on user content
+dangerouslySetInnerHTML=\{\{__html:\s*(?!DOMPurify)
+
+# API error responses leaking internals
+return.*json.*error.*stack|return.*json.*error.*message.*Error
+
+# Raw user input in URLs
+href=\{`.*\$\{(?!encodeURIComponent)
+src=\{`.*\$\{(?!encodeURIComponent)
+
+# console.log in production code
+console\.(log|debug|info)\(
+
+# Unvalidated redirects
+redirect\(\s*(?!\/|http)
+window\.location\s*=\s*(?!["']\/)
+```
+
+### Security Quick Commands
+
+```bash
+# External links without rel="noopener noreferrer"
+grep -rE 'target="_blank"' src --include="*.tsx" | grep -v 'rel="noopener'
+
+# dangerouslySetInnerHTML without sanitization
+grep -rE 'dangerouslySetInnerHTML' src --include="*.tsx" | grep -v 'DOMPurify\|sanitize'
+
+# Console logs (should be removed in production)
+grep -rE 'console\.(log|debug|info)\(' src --include="*.tsx" | grep -v '// DEBUG'
+
+# Direct process.env access (use env.ts wrapper)
+grep -rE 'process\.env\.' src --include="*.tsx" | grep -v 'NODE_ENV'
+
+# Unencoded user input in URLs
+grep -rE 'href=\{`|src=\{`' src --include="*.tsx" | grep -v 'encodeURIComponent'
 ```
 
 ---
