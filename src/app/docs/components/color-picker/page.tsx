@@ -6,18 +6,16 @@ import { useState } from "react";
 
 export default function ColorPickerPage() {
   const [color, setColor] = useState("#8b5cf6");
-  const [brandColors, setBrandColors] = useState({
-    primary: "#8b5cf6",
-    secondary: "#ec4899",
-    accent: "#06b6d4",
-  });
+  const [compactColor, setCompactColor] = useState("#22C55E");
+  const [swatchColor, setSwatchColor] = useState("#3B82F6");
+  const [inlineColor, setInlineColor] = useState("#EC4899");
 
   return (
     <ComponentShowcaseTemplate
       code="[UI.56]"
       category="Components"
       title="Color Picker"
-      description="A Chrome-style color picker with saturation/hue selector, HEX/RGB inputs, and preset swatches."
+      description="A Chrome-style color picker with multiple variants: default, compact, inline, and swatch."
       importCode={`import { ColorPicker } from "@/components/ui/color-picker"`}
       mainPreview={{
         preview: (
@@ -37,7 +35,7 @@ export default function ColorPickerPage() {
       variants={[
         {
           title: "Default",
-          description: "Full-featured color picker with all controls.",
+          description: "Full-featured picker with HEX/RGB inputs and presets.",
           preview: (
             <ColorPicker
               color={color}
@@ -45,9 +43,61 @@ export default function ColorPickerPage() {
               className="w-full max-w-sm"
             />
           ),
-          code: `const [color, setColor] = useState("#8b5cf6");
-
-<ColorPicker
+          code: `<ColorPicker
+  color={color}
+  onChange={setColor}
+/>`,
+        },
+        {
+          title: "Compact",
+          description: "Smaller trigger button with simplified popover.",
+          preview: (
+            <ColorPicker
+              variant="compact"
+              color={compactColor}
+              onChange={setCompactColor}
+            />
+          ),
+          code: `<ColorPicker
+  variant="compact"
+  color={color}
+  onChange={setColor}
+/>`,
+        },
+        {
+          title: "Swatch",
+          description: "Just a color swatch that opens the picker on click.",
+          preview: (
+            <div className="flex items-center gap-4">
+              <ColorPicker
+                variant="swatch"
+                color={swatchColor}
+                onChange={setSwatchColor}
+              />
+              <span className="font-mono text-xs text-muted-foreground">
+                {swatchColor.toUpperCase()}
+              </span>
+            </div>
+          ),
+          code: `<ColorPicker
+  variant="swatch"
+  color={color}
+  onChange={setColor}
+/>`,
+        },
+        {
+          title: "Inline",
+          description: "Always visible picker - no popover, embedded directly.",
+          preview: (
+            <ColorPicker
+              variant="inline"
+              color={inlineColor}
+              onChange={setInlineColor}
+              className="w-full max-w-[240px]"
+            />
+          ),
+          code: `<ColorPicker
+  variant="inline"
   color={color}
   onChange={setColor}
 />`,
@@ -57,13 +107,13 @@ export default function ColorPickerPage() {
           description: "Hide the preset color swatches.",
           preview: (
             <ColorPicker
-              color="#3B82F6"
+              color="#F97316"
               showPresets={false}
               className="w-full max-w-sm"
             />
           ),
           code: `<ColorPicker
-  color="#3B82F6"
+  color="#F97316"
   showPresets={false}
 />`,
         },
@@ -97,129 +147,52 @@ export default function ColorPickerPage() {
 />`,
         },
         {
+          title: "Swatch Palette",
+          description: "Multiple swatch pickers for a color palette builder.",
+          preview: (
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <ColorPicker variant="swatch" color="#8b5cf6" />
+                <ColorPicker variant="swatch" color="#ec4899" />
+                <ColorPicker variant="swatch" color="#06b6d4" />
+                <ColorPicker variant="swatch" color="#22c55e" />
+                <ColorPicker variant="swatch" color="#f59e0b" />
+              </div>
+              <div className="font-mono text-xs text-muted-foreground">
+                [PALETTE]: Click any swatch to edit
+              </div>
+            </div>
+          ),
+          code: `<div className="flex gap-3">
+  <ColorPicker variant="swatch" color="#8b5cf6" />
+  <ColorPicker variant="swatch" color="#ec4899" />
+  <ColorPicker variant="swatch" color="#06b6d4" />
+  <ColorPicker variant="swatch" color="#22c55e" />
+  <ColorPicker variant="swatch" color="#f59e0b" />
+</div>`,
+        },
+        {
           title: "Disabled",
           description: "Disabled state prevents interaction.",
           preview: (
-            <ColorPicker
-              color="#6366f1"
-              disabled
-              className="w-full max-w-sm"
-            />
-          ),
-          code: `<ColorPicker
-  color="#6366f1"
-  disabled
-/>`,
-        },
-        {
-          title: "Brand Colors",
-          description: "Use multiple pickers for a brand color palette.",
-          preview: (
-            <div className="space-y-3 w-full max-w-sm">
-              <div className="space-y-2">
-                <label className="font-mono text-xs text-muted-foreground">
-                  [PRIMARY]:
-                </label>
-                <ColorPicker
-                  color={brandColors.primary}
-                  onChange={(c) =>
-                    setBrandColors((prev) => ({ ...prev, primary: c }))
-                  }
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="font-mono text-xs text-muted-foreground">
-                  [SECONDARY]:
-                </label>
-                <ColorPicker
-                  color={brandColors.secondary}
-                  onChange={(c) =>
-                    setBrandColors((prev) => ({ ...prev, secondary: c }))
-                  }
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="font-mono text-xs text-muted-foreground">
-                  [ACCENT]:
-                </label>
-                <ColorPicker
-                  color={brandColors.accent}
-                  onChange={(c) =>
-                    setBrandColors((prev) => ({ ...prev, accent: c }))
-                  }
-                />
-              </div>
+            <div className="flex items-center gap-4">
+              <ColorPicker color="#6366f1" disabled className="w-48" />
+              <ColorPicker variant="compact" color="#6366f1" disabled />
+              <ColorPicker variant="swatch" color="#6366f1" disabled />
             </div>
           ),
-          code: `const [brandColors, setBrandColors] = useState({
-  primary: "#8b5cf6",
-  secondary: "#ec4899",
-  accent: "#06b6d4",
-});
-
-<div className="space-y-3">
-  <div>
-    <label>Primary</label>
-    <ColorPicker
-      color={brandColors.primary}
-      onChange={(c) => setBrandColors(prev => ({ ...prev, primary: c }))}
-    />
-  </div>
-  <div>
-    <label>Secondary</label>
-    <ColorPicker
-      color={brandColors.secondary}
-      onChange={(c) => setBrandColors(prev => ({ ...prev, secondary: c }))}
-    />
-  </div>
-  <div>
-    <label>Accent</label>
-    <ColorPicker
-      color={brandColors.accent}
-      onChange={(c) => setBrandColors(prev => ({ ...prev, accent: c }))}
-    />
-  </div>
-</div>`,
-        },
-        {
-          title: "Live Preview",
-          description: "Show the selected color in context.",
-          preview: (
-            <div className="space-y-4 w-full max-w-sm">
-              <ColorPicker color={color} onChange={setColor} />
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">preview.tsx</span>
-                </div>
-                <div className="p-3 space-y-2">
-                  <div>
-                    <span className="text-muted-foreground">[HEX]:</span>{" "}
-                    <span className="text-primary">{color.toUpperCase()}</span>
-                  </div>
-                  <div
-                    className="h-16 rounded-none border border-border"
-                    style={{ backgroundColor: color }}
-                  />
-                </div>
-              </div>
-            </div>
-          ),
-          code: `const [color, setColor] = useState("#8b5cf6");
-
-<ColorPicker color={color} onChange={setColor} />
-
-<div className="preview-box">
-  <div>HEX: {color.toUpperCase()}</div>
-  <div style={{ backgroundColor: color }} />
-</div>`,
+          code: `<ColorPicker color="#6366f1" disabled />
+<ColorPicker variant="compact" color="#6366f1" disabled />
+<ColorPicker variant="swatch" color="#6366f1" disabled />`,
         },
       ]}
       props={[
+        {
+          name: "variant",
+          type: '"default" | "compact" | "inline" | "swatch"',
+          default: '"default"',
+          description: "Visual variant of the color picker.",
+        },
         {
           name: "color",
           type: "string",
@@ -260,7 +233,7 @@ export default function ColorPickerPage() {
           name: "className",
           type: "string",
           default: "undefined",
-          description: "Additional CSS classes for the trigger button.",
+          description: "Additional CSS classes.",
         },
       ]}
       accessibility={[

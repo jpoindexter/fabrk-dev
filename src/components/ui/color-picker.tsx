@@ -11,6 +11,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+type ColorPickerVariant = "default" | "compact" | "inline" | "swatch";
+
 interface ColorPickerProps {
   color?: string;
   onChange?: (color: string) => void;
@@ -19,6 +21,7 @@ interface ColorPickerProps {
   className?: string;
   showPresets?: boolean;
   presets?: string[];
+  variant?: ColorPickerVariant;
 }
 
 const defaultPresets = [
@@ -73,6 +76,7 @@ export function ColorPicker({
   className,
   showPresets = true,
   presets = defaultPresets,
+  variant = "default",
 }: ColorPickerProps) {
   const [localColor, setLocalColor] = React.useState(color);
   const [rgb, setRgb] = React.useState(() => hexToRgb(color) || { r: 0, g: 0, b: 0 });
@@ -100,6 +104,173 @@ export function ColorPicker({
     onChange?.(newHex);
   };
 
+  // Inline variant - always visible, no popover
+  if (variant === "inline") {
+    return (
+      <div className={cn("border border-border bg-card", className)}>
+        <div className="p-3 [&_.react-colorful]:w-full [&_.react-colorful]:h-[150px] [&_.react-colorful__saturation]:rounded-none [&_.react-colorful__hue]:rounded-none [&_.react-colorful__hue]:h-[12px] [&_.react-colorful__pointer]:w-[14px] [&_.react-colorful__pointer]:h-[14px]">
+          <HexColorPicker color={localColor} onChange={handleColorChange} />
+        </div>
+        <div className="border-t border-border p-3">
+          <div className="flex gap-3">
+            <div
+              className="h-[72px] w-[72px] shrink-0 rounded-none border border-border"
+              style={{ backgroundColor: localColor }}
+            />
+            <div className="flex-1 space-y-2">
+              <div className="flex items-center gap-2">
+                <label className="font-mono text-[10px] text-muted-foreground w-6">HEX</label>
+                <HexColorInput
+                  color={localColor}
+                  onChange={handleColorChange}
+                  prefixed
+                  className="flex-1 h-6 px-2 font-mono text-xs bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <label className="font-mono text-[10px] text-muted-foreground w-6">RGB</label>
+                <div className="flex-1 flex gap-1">
+                  <input type="number" min="0" max="255" value={rgb.r} onChange={(e) => handleRgbChange("r", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
+                  <input type="number" min="0" max="255" value={rgb.g} onChange={(e) => handleRgbChange("g", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
+                  <input type="number" min="0" max="255" value={rgb.b} onChange={(e) => handleRgbChange("b", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {showPresets && (
+          <div className="border-t border-border p-3">
+            <div className="grid grid-cols-9 gap-1.5">
+              {presets.map((presetColor, index) => (
+                <button
+                  key={`${presetColor}-${index}`}
+                  type="button"
+                  className={cn(
+                    "h-5 w-5 rounded-none border cursor-pointer transition-all hover:scale-110",
+                    presetColor.toUpperCase() === localColor.toUpperCase()
+                      ? "border-primary ring-1 ring-primary"
+                      : "border-border hover:border-foreground"
+                  )}
+                  style={{ backgroundColor: presetColor }}
+                  onClick={() => handleColorChange(presetColor)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Swatch variant - just a color swatch button
+  if (variant === "swatch") {
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            disabled={disabled}
+            className={cn(
+              "h-8 w-8 rounded-none border border-border cursor-pointer transition-all hover:scale-105 hover:border-foreground disabled:opacity-50 disabled:cursor-not-allowed",
+              className
+            )}
+            style={{ backgroundColor: localColor }}
+            aria-label={`Color: ${localColor}`}
+          />
+        </PopoverTrigger>
+        <PopoverContent className="w-[240px] p-0 rounded-none" align="start">
+          <div className="p-3 [&_.react-colorful]:w-full [&_.react-colorful]:h-[150px] [&_.react-colorful__saturation]:rounded-none [&_.react-colorful__hue]:rounded-none [&_.react-colorful__hue]:h-[12px] [&_.react-colorful__pointer]:w-[14px] [&_.react-colorful__pointer]:h-[14px]">
+            <HexColorPicker color={localColor} onChange={handleColorChange} />
+          </div>
+          <div className="border-t border-border p-3">
+            <HexColorInput
+              color={localColor}
+              onChange={handleColorChange}
+              prefixed
+              className="w-full h-8 px-2 font-mono text-sm text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
+            />
+          </div>
+          {showPresets && (
+            <div className="border-t border-border p-3">
+              <div className="grid grid-cols-9 gap-1.5">
+                {presets.map((presetColor, index) => (
+                  <button
+                    key={`${presetColor}-${index}`}
+                    type="button"
+                    className={cn(
+                      "h-5 w-5 rounded-none border cursor-pointer transition-all hover:scale-110",
+                      presetColor.toUpperCase() === localColor.toUpperCase()
+                        ? "border-primary ring-1 ring-primary"
+                        : "border-border hover:border-foreground"
+                    )}
+                    style={{ backgroundColor: presetColor }}
+                    onClick={() => handleColorChange(presetColor)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  // Compact variant - smaller trigger, simplified popover
+  if (variant === "compact") {
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className={cn("h-8 px-2 gap-1.5", className)}
+            disabled={disabled}
+          >
+            <div
+              className="h-4 w-4 rounded-none border border-border"
+              style={{ backgroundColor: localColor }}
+            />
+            <span className="font-mono text-xs">{localColor.toUpperCase()}</span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[200px] p-0 rounded-none" align="start">
+          <div className="p-2 [&_.react-colorful]:w-full [&_.react-colorful]:h-[120px] [&_.react-colorful__saturation]:rounded-none [&_.react-colorful__hue]:rounded-none [&_.react-colorful__hue]:h-[10px] [&_.react-colorful__pointer]:w-[12px] [&_.react-colorful__pointer]:h-[12px]">
+            <HexColorPicker color={localColor} onChange={handleColorChange} />
+          </div>
+          <div className="border-t border-border p-2">
+            <HexColorInput
+              color={localColor}
+              onChange={handleColorChange}
+              prefixed
+              className="w-full h-7 px-2 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
+            />
+          </div>
+          {showPresets && (
+            <div className="border-t border-border p-2">
+              <div className="grid grid-cols-9 gap-1">
+                {presets.slice(0, 18).map((presetColor, index) => (
+                  <button
+                    key={`${presetColor}-${index}`}
+                    type="button"
+                    className={cn(
+                      "h-4 w-4 rounded-none border cursor-pointer transition-all hover:scale-110",
+                      presetColor.toUpperCase() === localColor.toUpperCase()
+                        ? "border-primary ring-1 ring-primary"
+                        : "border-border hover:border-foreground"
+                    )}
+                    style={{ backgroundColor: presetColor }}
+                    onClick={() => handleColorChange(presetColor)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  // Default variant
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -126,27 +297,18 @@ export function ColorPicker({
       </PopoverTrigger>
       <PopoverContent className="w-[240px] p-0 rounded-none" align="start">
         <div className="space-y-0">
-          {/* Color Picker */}
           <div className="p-3 [&_.react-colorful]:w-full [&_.react-colorful]:h-[150px] [&_.react-colorful__saturation]:rounded-none [&_.react-colorful__hue]:rounded-none [&_.react-colorful__hue]:h-[12px] [&_.react-colorful__pointer]:w-[14px] [&_.react-colorful__pointer]:h-[14px]">
             <HexColorPicker color={localColor} onChange={handleColorChange} />
           </div>
-
-          {/* Color Preview & Inputs */}
           <div className="border-t border-border p-3">
             <div className="flex gap-3">
-              {/* Color Preview */}
               <div
                 className="h-[72px] w-[72px] shrink-0 rounded-none border border-border"
                 style={{ backgroundColor: localColor }}
               />
-
-              {/* Input Fields */}
               <div className="flex-1 space-y-2">
-                {/* HEX Input */}
                 <div className="flex items-center gap-2">
-                  <label className="font-mono text-[10px] text-muted-foreground w-6">
-                    HEX
-                  </label>
+                  <label className="font-mono text-[10px] text-muted-foreground w-6">HEX</label>
                   <HexColorInput
                     color={localColor}
                     onChange={handleColorChange}
@@ -154,44 +316,17 @@ export function ColorPicker({
                     className="flex-1 h-6 px-2 font-mono text-xs bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
-
-                {/* RGB Inputs */}
                 <div className="flex items-center gap-2">
-                  <label className="font-mono text-[10px] text-muted-foreground w-6">
-                    RGB
-                  </label>
+                  <label className="font-mono text-[10px] text-muted-foreground w-6">RGB</label>
                   <div className="flex-1 flex gap-1">
-                    <input
-                      type="number"
-                      min="0"
-                      max="255"
-                      value={rgb.r}
-                      onChange={(e) => handleRgbChange("r", e.target.value)}
-                      className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
-                    />
-                    <input
-                      type="number"
-                      min="0"
-                      max="255"
-                      value={rgb.g}
-                      onChange={(e) => handleRgbChange("g", e.target.value)}
-                      className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
-                    />
-                    <input
-                      type="number"
-                      min="0"
-                      max="255"
-                      value={rgb.b}
-                      onChange={(e) => handleRgbChange("b", e.target.value)}
-                      className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary"
-                    />
+                    <input type="number" min="0" max="255" value={rgb.r} onChange={(e) => handleRgbChange("r", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
+                    <input type="number" min="0" max="255" value={rgb.g} onChange={(e) => handleRgbChange("g", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
+                    <input type="number" min="0" max="255" value={rgb.b} onChange={(e) => handleRgbChange("b", e.target.value)} className="w-full h-6 px-1 font-mono text-xs text-center bg-background border border-border rounded-none focus:outline-none focus:ring-1 focus:ring-primary" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Preset Colors */}
           {showPresets && (
             <div className="border-t border-border p-3">
               <div className="grid grid-cols-9 gap-1.5">
