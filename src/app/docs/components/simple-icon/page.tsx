@@ -144,15 +144,15 @@ import { siReact } from "simple-icons"`}
             <div className="flex items-center gap-4">
               <SimpleIcon path={siReact.path} className="h-10 w-10 text-primary" title="Primary" />
               <SimpleIcon path={siNextdotjs.path} className="h-10 w-10 text-foreground" title="Foreground" />
-              <SimpleIcon path={siTypescript.path} className="h-10 w-10 text-blue-500" title="Blue" />
-              <SimpleIcon path={siTailwindcss.path} className="h-10 w-10 text-cyan-500" title="Cyan" />
+              <SimpleIcon path={siTypescript.path} className="h-10 w-10 text-info" title="Info" />
+              <SimpleIcon path={siTailwindcss.path} className="h-10 w-10 text-success" title="Success" />
             </div>
           ),
           code: `<div className="flex items-center gap-4">
   <SimpleIcon path={siReact.path} className="h-10 w-10 text-primary" />
   <SimpleIcon path={siNextdotjs.path} className="h-10 w-10 text-foreground" />
-  <SimpleIcon path={siTypescript.path} className="h-10 w-10 text-blue-500" />
-  <SimpleIcon path={siTailwindcss.path} className="h-10 w-10 text-cyan-500" />
+  <SimpleIcon path={siTypescript.path} className="h-10 w-10 text-info" />
+  <SimpleIcon path={siTailwindcss.path} className="h-10 w-10 text-success" />
 </div>`,
         },
         {

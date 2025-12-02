@@ -59,7 +59,7 @@ export function PurchaseTracker({
       },
     });
 
-    console.log('[Analytics] Purchase tracked:', { checkoutId, value, currency });
+    // Analytics event tracked via gtag
   }, [searchParams, value, currency, itemName]);
 
   // This component renders nothing

@@ -39,7 +39,7 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
-      <div className="bg-black rounded-none">
+      <div className="bg-card rounded-none">
         <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre
