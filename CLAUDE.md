@@ -334,3 +334,180 @@ All templates use this consistent style:
 3. **Ship-first** - Production-ready from day one
 
 When adding features: "Does this help ship faster?" If no, delete it.
+
+---
+
+## 🚨 STRICT DESIGN SYSTEM ENFORCEMENT
+
+**CRITICAL: Read `AUDIT_PROMPT.md` for the complete design system specification.**
+
+Before writing ANY code, internalize these rules. Violations are NOT acceptable.
+
+### Quick Reference - Terminal Design System
+
+#### Shape & Corners
+```tsx
+// ✅ REQUIRED: rounded-none on ALL elements
+<Button className="rounded-none font-mono text-xs">
+<Card className="rounded-none">
+<Input className="rounded-none">
+
+// ❌ BANNED (except in src/components/ui/)
+rounded-sm, rounded-lg, rounded-xl, rounded-2xl, rounded-3xl
+
+// ⚠️ EXCEPTION: Traffic light dots ONLY
+<div className="size-2 rounded-full bg-destructive/50" />
+```
+
+#### Typography - MUST Use
+```tsx
+// Page title
+<h1 className="text-4xl font-semibold tracking-tight">
+
+// Section heading
+<h2 className="text-2xl font-semibold tracking-tight">
+
+// Card/form labels - ALWAYS this format
+<span className="font-mono text-xs text-muted-foreground">[LABEL]:</span>
+
+// Body text
+<p className="font-mono text-sm">
+
+// Helper/caption text
+<span className="font-mono text-xs text-muted-foreground">
+
+// Error text
+<p className="font-mono text-xs text-destructive">[ERROR]: Message</p>
+
+// Success text
+<p className="font-mono text-xs text-success">[SUCCESS]: Message</p>
+```
+
+#### Button Text Format - MANDATORY
+```tsx
+// ✅ CORRECT - uppercase, underscores, leading >
+<Button className="rounded-none font-mono text-xs">> SUBMIT</Button>
+<Button className="rounded-none font-mono text-xs">> SAVE_CHANGES</Button>
+<Button className="rounded-none font-mono text-xs">> DELETE_ACCOUNT</Button>
+
+// Loading states
+<Button loading className="rounded-none font-mono text-xs">> LOADING...</Button>
+
+// ❌ WRONG
+<Button>Submit</Button>
+<Button>Save Changes</Button>
+```
+
+#### Terminal Card Pattern - USE EVERYWHERE
+```tsx
+// Single-line header format: [ [0xXX] TITLE ]
+<div className="border border-border bg-card">
+  <div className="border-b border-border px-4 py-2">
+    <span className="font-mono text-xs text-muted-foreground">
+      [ [0x00] SECTION_TITLE ]
+    </span>
+  </div>
+  <div className="p-4">
+    {content}
+  </div>
+</div>
+```
+
+#### Color Tokens - ONLY THESE ALLOWED
+```tsx
+// Backgrounds
+bg-background, bg-card, bg-muted, bg-popover, bg-primary, bg-secondary, bg-accent, bg-destructive
+
+// Foregrounds
+text-foreground, text-card-foreground, text-muted-foreground, text-primary-foreground
+text-destructive, text-success, text-warning
+
+// Borders
+border-border, border-primary, border-destructive
+
+// ❌ BANNED - Will break theme switching
+bg-white, bg-black, bg-gray-*, bg-slate-*, bg-purple-*, text-gray-*, border-gray-*
+#hexvalues, rgb(), hsl(), oklch() without var()
+```
+
+#### Shadows - RESTRICTED
+```tsx
+// ✅ ALLOWED
+shadow-sm
+shadow-[4px_4px_0px_0px_var(--border)]  // Terminal hard shadow
+
+// ❌ BANNED
+shadow-md, shadow-lg, shadow-xl, shadow-2xl
+```
+
+### Documentation Pages Pattern
+
+When creating component documentation (`src/app/docs/components/*/page.tsx`):
+
+```tsx
+// ✅ CORRECT - Component renders directly, NO wrapper divs
+<ComponentShowcaseTemplate
+  code="[UI.XX]"
+  title="ComponentName"
+  description="Description here"
+  importCode={`import { Component } from "@/components/ui/component"`}
+  mainPreview={{
+    preview: <Component />,  // Direct component, no wrapper!
+    code: `<Component />`,
+  }}
+  variants={[
+    {
+      title: "Variant Name",
+      description: "Description",
+      preview: <Component variant="x" />,  // Direct component!
+      code: `<Component variant="x" />`,
+    },
+  ]}
+  props={[...]}
+  accessibility={[...]}
+  previous={{ title: "Prev", href: "/docs/components/prev" }}
+  next={{ title: "Next", href: "/docs/components/next" }}
+/>
+
+// ❌ WRONG - Extra wrapper divs duplicate DocsPreview styling
+mainPreview={{
+  preview: (
+    <div className="border border-border bg-card p-4">  // NO!
+      <Component />
+    </div>
+  ),
+}}
+```
+
+### Before Committing Checklist
+
+```bash
+# Run these before EVERY commit
+npm run type-check      # TypeScript
+npm run lint            # ESLint
+npm run scan:hex        # No hardcoded colors
+
+# Manually verify
+- [ ] All buttons use "> ACTION_NAME" format
+- [ ] All elements use rounded-none (except traffic dots)
+- [ ] All colors use design tokens
+- [ ] All cards use terminal pattern with single-line header
+- [ ] No duplicate wrapper divs in documentation previews
+```
+
+### Regex Patterns to Search for Violations
+
+```bash
+# Find banned rounded corners
+grep -r "rounded-\(sm\|lg\|xl\|2xl\|3xl\)" src/app src/components --include="*.tsx"
+
+# Find hardcoded colors
+grep -r "#[0-9a-fA-F]\{3,8\}" src/ --include="*.tsx"
+grep -r "bg-\(gray\|slate\|purple\|blue\|red\)-" src/ --include="*.tsx"
+
+# Find raw HTML elements
+grep -r "<button " src/app src/components/landing src/components/dashboard --include="*.tsx"
+grep -r "<input " src/app src/components/landing src/components/dashboard --include="*.tsx"
+```
+
+**Full specification: See `AUDIT_PROMPT.md` for complete rules on all patterns.**
