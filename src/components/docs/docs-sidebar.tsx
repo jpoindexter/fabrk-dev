@@ -17,12 +17,18 @@ export interface NavItem {
   external?: boolean;
 }
 
+export interface NavSubSection {
+  title: string;
+  items: NavItem[];
+}
+
 export interface NavSection {
   title: string;
   id?: string;
   href?: string;
   icon?: LucideIcon;
   items: NavItem[];
+  subSections?: NavSubSection[];
 }
 
 interface DocsSidebarProps {
@@ -37,7 +43,16 @@ interface DocsSidebarProps {
 // Helper to find which section contains the current path
 function findActiveSectionIndex(pathname: string, navigation: NavSection[]): number {
   return navigation.findIndex((section) =>
-    section.items.some((item) => pathname === item.href) || pathname === section.href
+    section.items.some((item) => pathname === item.href) ||
+    pathname === section.href ||
+    section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href))
+  );
+}
+
+// Helper to find which sub-section contains the current path
+function findActiveSubSectionIndex(pathname: string, subSections: NavSubSection[]): number {
+  return subSections.findIndex((sub) =>
+    sub.items.some((item) => pathname === item.href)
   );
 }
 
@@ -54,16 +69,48 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
     return initial;
   });
 
+  // Track expanded sub-sections: key = "sectionIndex-subSectionIndex"
+  const [expandedSubSections, setExpandedSubSections] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    // Auto-expand sub-section containing active item
+    if (activeSectionIndex >= 0) {
+      const section = navigation[activeSectionIndex];
+      if (section.subSections) {
+        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
+        if (activeSubIndex >= 0) {
+          initial.add(`${activeSectionIndex}-${activeSubIndex}`);
+        }
+      }
+    }
+    return initial;
+  });
+
   // Sidebar collapse state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Update expanded sections when pathname changes
   useEffect(() => {
     const newActiveIndex = findActiveSectionIndex(pathname, navigation);
-    if (newActiveIndex >= 0 && !expandedSections.has(newActiveIndex)) {
-      setTimeout(() => {
-        setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
-      }, 0);
+    if (newActiveIndex >= 0) {
+      // Expand parent section
+      if (!expandedSections.has(newActiveIndex)) {
+        setTimeout(() => {
+          setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
+        }, 0);
+      }
+      // Expand sub-section containing active item
+      const section = navigation[newActiveIndex];
+      if (section.subSections) {
+        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
+        if (activeSubIndex >= 0) {
+          const subKey = `${newActiveIndex}-${activeSubIndex}`;
+          if (!expandedSubSections.has(subKey)) {
+            setTimeout(() => {
+              setExpandedSubSections((prev) => new Set([...prev, subKey]));
+            }, 0);
+          }
+        }
+      }
     }
   }, [pathname, navigation]);
 
@@ -74,6 +121,19 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
         next.delete(index);
       } else {
         next.add(index);
+      }
+      return next;
+    });
+  };
+
+  const toggleSubSection = (sectionIndex: number, subSectionIndex: number) => {
+    const key = `${sectionIndex}-${subSectionIndex}`;
+    setExpandedSubSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
       }
       return next;
     });
@@ -117,18 +177,20 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
 
           {navigation.map((section, sectionIndex) => {
             const isExpanded = expandedSections.has(sectionIndex);
-            const hasActiveItem = section.items.some((item) => pathname === item.href) || pathname === section.href;
+            const hasActiveItem =
+              section.items.some((item) => pathname === item.href) ||
+              pathname === section.href ||
+              section.subSections?.some((sub) => sub.items.some((item) => pathname === item.href));
             const sectionKey = section.id || section.title;
             const displayTitle = formatSectionTitle ? formatSectionTitle(section.title, sectionIndex) : section.title;
-            const isLastSection = sectionIndex === navigation.length - 1;
 
             return (
-              <div key={sectionKey}>
+              <div key={sectionKey} className={cn(sectionIndex > 0 && "mt-2")}>
                 {/* Collapsible Section Header */}
                 <button
                   onClick={() => toggleSection(sectionIndex)}
                   className={cn(
-                    "flex w-full items-center gap-2 px-2 py-1.5 text-xs font-semibold transition-colors",
+                    "flex w-full items-center gap-2 py-1.5 text-xs font-semibold transition-colors",
                     hasActiveItem
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -136,16 +198,17 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
                 >
                   <ChevronRight
                     className={cn(
-                      "h-3 w-3 transition-transform",
+                      "h-3 w-3 shrink-0 transition-transform",
                       isExpanded && "rotate-90"
                     )}
                   />
                   {displayTitle}
                 </button>
 
-                {/* Collapsible Items */}
+                {/* Collapsible Items with connector line */}
                 {isExpanded && (
-                  <div className="ml-3 border-l border-border pl-2 space-y-0.5">
+                  <div className="relative ml-[7px] pl-4 space-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-1 before:w-px before:bg-border">
+                    {/* Direct items */}
                     {section.items.map((item) => {
                       const Icon = item.icon;
                       const isActive = pathname === item.href;
@@ -183,13 +246,66 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
                         </Link>
                       );
                     })}
+
+                    {/* Sub-sections (nested collapsible groups) */}
+                    {section.subSections?.map((subSection, subIndex) => {
+                      const subKey = `${sectionIndex}-${subIndex}`;
+                      const isSubExpanded = expandedSubSections.has(subKey);
+                      const hasActiveSubItem = subSection.items.some((item) => pathname === item.href);
+
+                      return (
+                        <div key={subSection.title} className="mt-1">
+                          {/* Sub-section header */}
+                          <button
+                            onClick={() => toggleSubSection(sectionIndex, subIndex)}
+                            className={cn(
+                              "flex w-full items-center gap-2 py-1 text-xs font-medium transition-colors",
+                              hasActiveSubItem
+                                ? "text-primary"
+                                : "text-muted-foreground hover:text-foreground"
+                            )}
+                          >
+                            <ChevronRight
+                              className={cn(
+                                "h-2.5 w-2.5 shrink-0 transition-transform",
+                                isSubExpanded && "rotate-90"
+                              )}
+                            />
+                            {subSection.title}
+                          </button>
+
+                          {/* Sub-section items */}
+                          {isSubExpanded && (
+                            <div className="relative ml-[5px] pl-3 space-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-1 before:w-px before:bg-border/50">
+                              {subSection.items.map((item) => {
+                                const Icon = item.icon;
+                                const isActive = pathname === item.href;
+                                const itemDisplayTitle = formatItemTitle ? formatItemTitle(item.title) : item.title;
+
+                                return (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={cn(
+                                      "flex items-center gap-2 px-2 py-0.5 text-xs transition-colors",
+                                      isActive
+                                        ? "bg-primary text-primary-foreground"
+                                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                                    )}
+                                  >
+                                    <Icon className="h-3 w-3 shrink-0" />
+                                    {itemDisplayTitle}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
 
-                {/* Horizontal divider between sections */}
-                {!isLastSection && (
-                  <div className="my-3 border-t border-border" />
-                )}
               </div>
             );
           })}
