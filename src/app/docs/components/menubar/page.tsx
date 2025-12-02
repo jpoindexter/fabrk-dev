@@ -328,7 +328,7 @@ const [showUrls, setShowUrls] = useState(false);
           title: "Terminal Style",
           description: "Menubar with terminal-style design matching Fabrk theme.",
           preview: (
-            <Menubar className="rounded-none border border-border bg-card">
+            <Menubar className="rounded-none">
               <MenubarMenu>
                 <MenubarTrigger className="font-mono text-xs">&gt; FILE</MenubarTrigger>
                 <MenubarContent className="rounded-none">

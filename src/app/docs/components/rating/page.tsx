@@ -138,8 +138,8 @@ export default function RatingPage() {
           title: "Terminal Style",
           description: "Rating with terminal-themed container",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4">
-              <div className="mb-2 font-mono text-xs text-muted-foreground">
+            <div className="space-y-2">
+              <div className="font-mono text-xs text-muted-foreground">
                 [FEEDBACK_RATING]:
               </div>
               <div className="flex items-center gap-4">
@@ -150,7 +150,7 @@ export default function RatingPage() {
               </div>
             </div>
           ),
-          code: `<div className="rounded-none border border-border bg-card p-4">
+          code: `<div className="space-y-2">
   <div className="font-mono text-xs text-muted-foreground">
     [FEEDBACK_RATING]:
   </div>

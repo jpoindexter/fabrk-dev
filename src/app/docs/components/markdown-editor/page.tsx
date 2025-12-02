@@ -107,44 +107,20 @@ export default function MarkdownEditorPage() {
 />`,
         },
         {
-          title: "Terminal Style",
-          description: "Markdown editor with terminal-style wrapper.",
+          title: "Custom Height",
+          description: "Adjust the minimum height of the editor panes.",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">README.md</span>
-              </div>
-              <div className="p-4">
-                <MarkdownEditor
-                  value="# Documentation\n\nWrite your docs here..."
-                  onChange={() => {}}
-                  minHeight={200}
-                />
-              </div>
-            </div>
+            <MarkdownEditor
+              value="# Compact Editor\n\nSmaller height for inline editing scenarios."
+              onChange={() => {}}
+              minHeight={150}
+            />
           ),
-          code: `<div className="rounded-none border border-border bg-card">
-  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
-      <div className="size-2 rounded-full bg-destructive/50" />
-      <div className="size-2 rounded-full bg-warning/50" />
-      <div className="size-2 rounded-full bg-success/50" />
-    </div>
-    <span className="font-mono text-xs text-muted-foreground">README.md</span>
-  </div>
-  <div className="p-4">
-    <MarkdownEditor
-      value={content}
-      onChange={setContent}
-      minHeight={200}
-    />
-  </div>
-</div>`,
+          code: `<MarkdownEditor
+  value={content}
+  onChange={setContent}
+  minHeight={150}
+/>`,
         },
       ]}
       props={[

@@ -41,23 +41,18 @@ export default function LightboxPage() {
       importCode={`import { Lightbox, type LightboxItem } from "@/components/ui/lightbox"`}
       mainPreview={{
         preview: (
-          <div className="rounded-none border border-border bg-card p-6 font-mono">
-            <div className="space-y-4">
-              <div className="font-mono text-xs text-muted-foreground">
-                [DEMO]: Click to open lightbox
-              </div>
-              <Button onClick={() => setIsOpen(true)}>
-                Open Lightbox Gallery
-              </Button>
-              <Lightbox
-                items={sampleImages}
-                currentIndex={currentIndex}
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-                onNavigate={setCurrentIndex}
-              />
-            </div>
-          </div>
+          <>
+            <Button onClick={() => setIsOpen(true)}>
+              Open Lightbox Gallery
+            </Button>
+            <Lightbox
+              items={sampleImages}
+              currentIndex={currentIndex}
+              isOpen={isOpen}
+              onClose={() => setIsOpen(false)}
+              onNavigate={setCurrentIndex}
+            />
+          </>
         ),
         code: `const [isOpen, setIsOpen] = useState(false);
 const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,11 +89,9 @@ const items: LightboxItem[] = [
           title: "Single Image",
           description: "Lightbox displaying a single image.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-6 font-mono">
-              <Button onClick={() => { setCurrentIndex(0); setIsOpen(true); }}>
-                View Single Image
-              </Button>
-            </div>
+            <Button onClick={() => { setCurrentIndex(0); setIsOpen(true); }}>
+              View Single Image
+            </Button>
           ),
           code: `const singleImage: LightboxItem[] = [
   {
@@ -119,7 +112,7 @@ const items: LightboxItem[] = [
           title: "With Thumbnails",
           description: "Lightbox with thumbnail navigation strip.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-6 font-mono">
+            <>
               <Button onClick={() => { setWithThumbnails(true); setIsOpen(true); }}>
                 Open with Thumbnails
               </Button>
@@ -131,7 +124,7 @@ const items: LightboxItem[] = [
                 onNavigate={setCurrentIndex}
                 showThumbnails
               />
-            </div>
+            </>
           ),
           code: `<Lightbox
   items={items}
@@ -146,7 +139,7 @@ const items: LightboxItem[] = [
           title: "Without Zoom",
           description: "Lightbox with zoom controls disabled.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-6 font-mono">
+            <>
               <Button onClick={() => { setWithoutZoom(true); setIsOpen(true); }}>
                 Open without Zoom
               </Button>
@@ -158,7 +151,7 @@ const items: LightboxItem[] = [
                 onNavigate={setCurrentIndex}
                 enableZoom={false}
               />
-            </div>
+            </>
           ),
           code: `<Lightbox
   items={items}
@@ -173,10 +166,8 @@ const items: LightboxItem[] = [
           title: "With Video",
           description: "Lightbox supporting video playback.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-6 font-mono">
-              <div className="font-mono text-xs text-muted-foreground">
-                [INFO]: Video support with auto-play
-              </div>
+            <div className="font-mono text-xs text-muted-foreground">
+              Video support with auto-play
             </div>
           ),
           code: `const mediaItems: LightboxItem[] = [

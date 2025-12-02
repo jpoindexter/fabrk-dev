@@ -17,7 +17,7 @@ export default function GridPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                className="p-4 font-mono text-sm text-muted-foreground"
               >
                 Item {i}
               </div>
@@ -39,7 +39,7 @@ export default function GridPage() {
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -61,7 +61,7 @@ export default function GridPage() {
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -80,7 +80,7 @@ export default function GridPage() {
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -99,7 +99,7 @@ export default function GridPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -118,18 +118,18 @@ export default function GridPage() {
           preview: (
             <Grid cols={3} gap={4}>
               <GridItem colSpan={2}>
-                <div className="rounded-none border border-border bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
+                <div className="bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
                   Spans 2 columns
                 </div>
               </GridItem>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
               <GridItem colSpan={2}>
-                <div className="rounded-none border border-border bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
+                <div className="bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
                   Spans 2 columns
                 </div>
               </GridItem>
@@ -146,20 +146,20 @@ export default function GridPage() {
           preview: (
             <Grid cols={3} gap={4}>
               <GridItem rowSpan={2}>
-                <div className="flex h-full items-center justify-center rounded-none border border-border bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
+                <div className="flex h-full items-center justify-center bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
                   Spans 2 rows
                 </div>
               </GridItem>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 Item
               </div>
             </Grid>
@@ -178,20 +178,20 @@ export default function GridPage() {
           preview: (
             <Grid cols={4} gap={4}>
               <GridItem colSpan={2} rowSpan={2}>
-                <div className="flex h-full items-center justify-center rounded-none border border-border bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
+                <div className="flex h-full items-center justify-center bg-primary/10 p-4 font-mono text-sm text-muted-foreground">
                   2x2
                 </div>
               </GridItem>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 1
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 2
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 3
               </div>
-              <div className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground">
+              <div className="p-4 font-mono text-sm text-muted-foreground">
                 4
               </div>
             </Grid>

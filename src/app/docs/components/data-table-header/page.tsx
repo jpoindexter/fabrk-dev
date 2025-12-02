@@ -71,49 +71,40 @@ export default function DataTableHeaderPage() {
       importCode={`import { DataTableColumnHeader } from "@/components/ui/data-table-header"`}
       mainPreview={{
         preview: (
-          <div className="rounded-none border border-border bg-card">
-            <div className="border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
-                <div className="size-2 rounded-full bg-destructive/50" />
-                <div className="size-2 rounded-full bg-warning/50" />
-                <div className="size-2 rounded-full bg-success/50" />
-              </div>
-            </div>
-            <div className="overflow-auto">
-              <table className="w-full">
-                <thead>
-                  {table.getHeaderGroups().map((headerGroup) => (
-                    <tr key={headerGroup.id} className="border-b border-border">
-                      {headerGroup.headers.map((header) => (
-                        <th
-                          key={header.id}
-                          className="px-4 py-3 text-left font-medium"
-                        >
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                        </th>
-                      ))}
-                    </tr>
-                  ))}
-                </thead>
-                <tbody>
-                  {table.getRowModel().rows.map((row) => (
-                    <tr key={row.id} className="border-b border-border">
-                      {row.getVisibleCells().map((cell) => (
-                        <td key={cell.id} className="px-4 py-3">
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          <div className="overflow-auto">
+            <table className="w-full">
+              <thead>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id} className="border-b border-border">
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        className="px-4 py-3 text-left font-medium"
+                      >
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map((row) => (
+                  <tr key={row.id} className="border-b border-border">
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className="px-4 py-3">
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         ),
         code: `import { DataTableColumnHeader } from "@/components/ui/data-table-header";
@@ -140,7 +131,7 @@ const table = useReactTable({
           title: "Sortable Header",
           description: "Click to toggle between ascending, descending, and unsorted",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 space-y-2">
+            <div className="space-y-2">
               <span className="font-mono text-xs text-muted-foreground">
                 [INTERACTIVE]: Click headers to sort
               </span>
@@ -176,13 +167,11 @@ const table = useReactTable({
           title: "Unsorted State",
           description: "Shows arrows up-down icon when not sorted",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4">
-              <div className="flex items-center gap-2">
-                <DataTableColumnHeader
-                  column={table.getColumn("name")!}
-                  title="Project Name"
-                />
-              </div>
+            <div className="flex items-center gap-2">
+              <DataTableColumnHeader
+                column={table.getColumn("name")!}
+                title="Project Name"
+              />
             </div>
           ),
           code: `// Default state shows unsorted icon
@@ -192,7 +181,7 @@ const table = useReactTable({
           title: "Sorted Ascending",
           description: "Shows up arrow when sorted A-Z or 0-9",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 space-y-2">
+            <div className="space-y-2">
               <span className="font-mono text-xs text-muted-foreground">
                 [STATE]: Ascending sort
               </span>
@@ -209,7 +198,7 @@ const table = useReactTable({
           title: "Sorted Descending",
           description: "Shows down arrow when sorted Z-A or 9-0",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 space-y-2">
+            <div className="space-y-2">
               <span className="font-mono text-xs text-muted-foreground">
                 [STATE]: Descending sort
               </span>
@@ -226,9 +215,7 @@ const table = useReactTable({
           title: "Non-Sortable Column",
           description: "Renders as plain text when column cannot be sorted",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4">
-              <div className="font-mono text-sm">Actions</div>
-            </div>
+            <div className="font-mono text-sm">Actions</div>
           ),
           code: `// When column.getCanSort() === false
 // Renders without button or icons`,

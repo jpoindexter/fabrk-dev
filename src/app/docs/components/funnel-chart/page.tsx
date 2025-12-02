@@ -98,11 +98,9 @@ export default function FunnelChartPage() {
           description: "Interactive stages with click callbacks",
           preview: (
             <div className="space-y-4">
-              <div className="rounded-none border border-border bg-card p-4">
-                <span className="font-mono text-xs text-muted-foreground">
-                  [INTERACTIVE]: Click on funnel stages
-                </span>
-              </div>
+              <span className="font-mono text-xs text-muted-foreground">
+                [INTERACTIVE]: Click on funnel stages
+              </span>
               <FunnelChart
                 data={salesFunnel}
                 height={300}
@@ -160,11 +158,9 @@ export default function FunnelChartPage() {
           description: "Stages scale on hover for emphasis",
           preview: (
             <div className="space-y-4">
-              <div className="rounded-none border border-border bg-card p-4">
-                <span className="font-mono text-xs text-muted-foreground">
-                  [HOVER]: Hover over stages to see scale effect
-                </span>
-              </div>
+              <span className="font-mono text-xs text-muted-foreground">
+                [HOVER]: Hover over stages to see scale effect
+              </span>
               <FunnelChart data={simpleFunnel} height={250} />
             </div>
           ),

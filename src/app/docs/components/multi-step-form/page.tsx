@@ -94,7 +94,7 @@ export default function MultiStepFormPage() {
               onNext={() => setStep2((s) => Math.min(s + 1, 3))}
               onPrev={() => setStep2((s) => Math.max(s - 1, 0))}
             >
-              <div className="rounded-none border border-border bg-card p-4">
+              <div className="p-4">
                 <span className="font-mono text-xs text-muted-foreground">
                   [STEP {step2 + 1}]: Content for this step
                 </span>
@@ -132,7 +132,7 @@ export default function MultiStepFormPage() {
               onNext={() => setStep3((s) => Math.min(s + 1, 1))}
               onPrev={() => setStep3((s) => Math.max(s - 1, 0))}
             >
-              <div className="rounded-none border border-border bg-card p-6">
+              <div className="p-6">
                 <div className="font-mono text-xs text-primary">
                   &gt; {step3 === 0 ? "CONFIGURE_SETTINGS" : "CONFIRM_CHANGES"}
                 </div>

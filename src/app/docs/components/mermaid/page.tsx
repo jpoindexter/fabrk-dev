@@ -57,12 +57,12 @@ export default function MermaidPage() {
       importCode={`import { Mermaid } from "@/components/ui/mermaid"`}
       mainPreview={{
         preview: (
-          <div className="rounded-none border border-border bg-card p-4 font-mono">
+          <>
             <div className="mb-2 font-mono text-xs text-muted-foreground">
               [DIAGRAM]: Flowchart Example
             </div>
             <Mermaid chart={flowchartExample} />
-          </div>
+          </>
         ),
         code: `const flowchart = \`graph TD
     A[Start] --> B{Is it working?}
@@ -78,12 +78,12 @@ export default function MermaidPage() {
           title: "Sequence Diagram",
           description: "Visualize interactions between different participants.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: API Communication Flow
               </div>
               <Mermaid chart={sequenceExample} />
-            </div>
+            </>
           ),
           code: `const sequence = \`sequenceDiagram
     participant User
@@ -100,12 +100,12 @@ export default function MermaidPage() {
           title: "Class Diagram",
           description: "Show class structure and relationships.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: User Class Hierarchy
               </div>
               <Mermaid chart={classExample} />
-            </div>
+            </>
           ),
           code: `const classDiagram = \`classDiagram
     class User {
@@ -126,12 +126,12 @@ export default function MermaidPage() {
           title: "Gantt Chart",
           description: "Display project timelines and schedules.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: Project Timeline
               </div>
               <Mermaid chart={ganttExample} />
-            </div>
+            </>
           ),
           code: `const gantt = \`gantt
     title Project Timeline
@@ -149,12 +149,12 @@ export default function MermaidPage() {
           title: "Pie Chart",
           description: "Display proportional data with pie charts.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: Project Completion Status
               </div>
               <Mermaid chart={pieExample} />
-            </div>
+            </>
           ),
           code: `const pie = \`pie title Project Completion
     "Completed" : 65
@@ -167,7 +167,7 @@ export default function MermaidPage() {
           title: "State Diagram",
           description: "Show state transitions and workflows.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: Order State Machine
               </div>
@@ -181,7 +181,7 @@ export default function MermaidPage() {
     Processing --> Cancelled
     Cancelled --> [*]`}
               />
-            </div>
+            </>
           ),
           code: `const state = \`stateDiagram-v2
     [*] --> Pending
@@ -198,7 +198,7 @@ export default function MermaidPage() {
           title: "Entity Relationship",
           description: "Database entity relationships and schemas.",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4 font-mono">
+            <>
               <div className="mb-2 font-mono text-xs text-muted-foreground">
                 [DIAGRAM]: Database Schema
               </div>
@@ -222,7 +222,7 @@ export default function MermaidPage() {
         float price
     }`}
               />
-            </div>
+            </>
           ),
           code: `const er = \`erDiagram
     USER ||--o{ ORDER : places

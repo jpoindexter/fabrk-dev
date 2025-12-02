@@ -128,38 +128,15 @@ export default function RichTextEditorPage() {
           title: "Terminal Style",
           description: "Editor with terminal-themed container",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">
-                  content.html
-                </span>
-              </div>
-              <div className="p-4">
-                <RichTextEditor
-                  value="<p><strong>Terminal-styled</strong> rich text editor</p>"
-                  onChange={() => {}}
-                  className="border-none"
-                />
-              </div>
-            </div>
+            <RichTextEditor
+              value="<p><strong>Terminal-styled</strong> rich text editor</p>"
+              onChange={() => {}}
+            />
           ),
-          code: `<div className="rounded-none border border-border bg-card">
-  <div className="border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
-      <div className="size-2 rounded-full bg-destructive/50" />
-      <div className="size-2 rounded-full bg-warning/50" />
-      <div className="size-2 rounded-full bg-success/50" />
-    </div>
-  </div>
-  <div className="p-4">
-    <RichTextEditor value={content} onChange={setContent} />
-  </div>
-</div>`,
+          code: `<RichTextEditor
+  value={content}
+  onChange={setContent}
+/>`,
         },
       ]}
       props={[

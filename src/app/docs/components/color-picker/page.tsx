@@ -131,25 +131,15 @@ export default function ColorPickerPage() {
           title: "Picker Tab",
           description: "Visual color picker with gradient selector.",
           preview: (
-            <div className="rounded-none border border-border bg-card font-mono text-xs">
-              <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="text-muted-foreground">picker.mode</span>
+            <div className="p-3 space-y-1 font-mono text-xs text-muted-foreground">
+              <div>
+                <span className="text-success">&gt;</span> Visual gradient selector
               </div>
-              <div className="p-3 space-y-1 text-muted-foreground">
-                <div>
-                  <span className="text-success">&gt;</span> Visual gradient selector
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> Click to pick any color
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> 18 preset color swatches
-                </div>
+              <div>
+                <span className="text-success">&gt;</span> Click to pick any color
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> 18 preset color swatches
               </div>
             </div>
           ),
@@ -164,25 +154,15 @@ export default function ColorPickerPage() {
           title: "Input Tab",
           description: "Manual HEX color code input with preview.",
           preview: (
-            <div className="rounded-none border border-border bg-card font-mono text-xs">
-              <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="text-muted-foreground">input.mode</span>
+            <div className="p-3 space-y-1 font-mono text-xs text-muted-foreground">
+              <div>
+                <span className="text-success">&gt;</span> Direct HEX input (#000000)
               </div>
-              <div className="p-3 space-y-1 text-muted-foreground">
-                <div>
-                  <span className="text-success">&gt;</span> Direct HEX input (#000000)
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> Live color preview
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> Validates HEX format
-                </div>
+              <div>
+                <span className="text-success">&gt;</span> Live color preview
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Validates HEX format
               </div>
             </div>
           ),

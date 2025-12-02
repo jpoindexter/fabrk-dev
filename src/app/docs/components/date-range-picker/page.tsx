@@ -114,35 +114,25 @@ import { DateRange } from "react-day-picker";`}
                 dateRange={dateRange}
                 onDateRangeChange={setDateRange}
               />
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
+              <div className="space-y-1 text-muted-foreground font-mono text-xs">
+                {dateRange?.from && (
+                  <div>
+                    <span className="text-success">&gt;</span> From:{" "}
+                    {dateRange.from.toLocaleDateString()}
                   </div>
-                  <span className="text-muted-foreground">range.state</span>
-                </div>
-                <div className="p-3 space-y-1 text-muted-foreground">
-                  {dateRange?.from && (
-                    <div>
-                      <span className="text-success">&gt;</span> From:{" "}
-                      {dateRange.from.toLocaleDateString()}
-                    </div>
-                  )}
-                  {dateRange?.to && (
-                    <div>
-                      <span className="text-success">&gt;</span> To:{" "}
-                      {dateRange.to.toLocaleDateString()}
-                    </div>
-                  )}
-                  {!dateRange?.from && !dateRange?.to && (
-                    <div>
-                      <span className="text-muted-foreground">&gt;</span> No
-                      range selected
-                    </div>
-                  )}
-                </div>
+                )}
+                {dateRange?.to && (
+                  <div>
+                    <span className="text-success">&gt;</span> To:{" "}
+                    {dateRange.to.toLocaleDateString()}
+                  </div>
+                )}
+                {!dateRange?.from && !dateRange?.to && (
+                  <div>
+                    <span className="text-muted-foreground">&gt;</span> No range
+                    selected
+                  </div>
+                )}
               </div>
             </div>
           ),
@@ -164,23 +154,11 @@ import { DateRange } from "react-day-picker";`}
           title: "Analytics Dashboard",
           description: "Common use case for filtering analytics data.",
           preview: (
-            <div className="space-y-3 w-full max-w-sm">
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">analytics.tsx</span>
-                </div>
-                <div className="p-3 space-y-2">
-                  <div className="text-muted-foreground">
-                    <span className="text-primary">&gt;</span> FILTER_BY_RANGE
-                  </div>
-                  <DateRangePicker placeholder="Select date range..." />
-                </div>
+            <div className="space-y-2 w-full max-w-sm">
+              <div className="text-muted-foreground font-mono text-xs">
+                <span className="text-primary">&gt;</span> FILTER_BY_RANGE
               </div>
+              <DateRangePicker placeholder="Select date range..." />
             </div>
           ),
           code: `// Common use case: Analytics dashboard date filter
@@ -214,29 +192,17 @@ import { DateRange } from "react-day-picker";`}
           title: "Report Generator",
           description: "Select time period for generating reports.",
           preview: (
-            <div className="space-y-3 w-full max-w-sm">
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">reports.tsx</span>
-                </div>
-                <div className="p-3 space-y-2">
-                  <div className="text-muted-foreground">
-                    <span className="text-primary">&gt;</span> REPORT_PERIOD
-                  </div>
-                  <DateRangePicker
-                    placeholder="Select reporting period"
-                    dateRange={{
-                      from: new Date(2024, 0, 1),
-                      to: new Date(2024, 2, 31),
-                    }}
-                  />
-                </div>
+            <div className="space-y-2 w-full max-w-sm">
+              <div className="text-muted-foreground font-mono text-xs">
+                <span className="text-primary">&gt;</span> REPORT_PERIOD
               </div>
+              <DateRangePicker
+                placeholder="Select reporting period"
+                dateRange={{
+                  from: new Date(2024, 0, 1),
+                  to: new Date(2024, 2, 31),
+                }}
+              />
             </div>
           ),
           code: `// Report generator with default Q1 range

@@ -160,40 +160,29 @@ export default function CalendarPage() {
           title: "Footer Content",
           description: "Add custom footer content below the calendar.",
           preview: (
-            <div className="rounded-none border border-border bg-card font-mono text-xs">
-              <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              footer={
+                <div className="mt-2 pt-2 border-t border-border">
+                  <p className="font-mono text-xs text-muted-foreground">
+                    {date ? (
+                      <>
+                        <span className="text-primary">&gt;</span> Selected:{" "}
+                        {date.toLocaleDateString()}
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-muted-foreground">&gt;</span>{" "}
+                        No date selected
+                      </>
+                    )}
+                  </p>
                 </div>
-                <span className="text-muted-foreground">calendar.tsx</span>
-              </div>
-              <div className="p-3">
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  footer={
-                    <div className="mt-2 pt-2 border-t border-border">
-                      <p className="text-xs text-muted-foreground">
-                        {date ? (
-                          <>
-                            <span className="text-primary">&gt;</span> Selected:{" "}
-                            {date.toLocaleDateString()}
-                          </>
-                        ) : (
-                          <>
-                            <span className="text-muted-foreground">&gt;</span>{" "}
-                            No date selected
-                          </>
-                        )}
-                      </p>
-                    </div>
-                  }
-                />
-              </div>
-            </div>
+              }
+              className="rounded-md border"
+            />
           ),
           code: `<Calendar
   mode="single"

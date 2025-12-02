@@ -150,7 +150,7 @@ function Example() {
           title: "Form Structure",
           description: "Basic structure of a form with FormItem components.",
           preview: (
-            <div className="space-y-4 rounded-none border border-border bg-card p-4 font-mono text-sm">
+            <div className="space-y-4 p-4 font-mono text-sm">
               <div className="text-muted-foreground">
                 <span className="text-primary">&gt;</span> Form Component Structure
               </div>
@@ -202,7 +202,7 @@ function Example() {
           title: "Validation Example",
           description: "Form with comprehensive validation rules.",
           preview: (
-            <div className="space-y-3 rounded-none border border-border bg-card p-4 font-mono text-sm">
+            <div className="space-y-3 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
                 <div className="flex gap-1.5">
                   <div className="size-2 rounded-full bg-destructive/50" />

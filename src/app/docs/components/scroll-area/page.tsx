@@ -13,7 +13,7 @@ export default function ScrollAreaPage() {
       importCode={`import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"`}
       mainPreview={{
         preview: (
-          <ScrollArea className="h-48 w-full rounded-none border border-border bg-card">
+          <ScrollArea className="h-48 w-full">
             <div className="p-4">
               {Array.from({ length: 20 }).map((_, i) => (
                 <div
@@ -39,12 +39,12 @@ export default function ScrollAreaPage() {
           title: "Vertical Scroll",
           description: "Default vertical scrolling behavior.",
           preview: (
-            <ScrollArea className="h-48 w-full rounded-none border border-border bg-card">
+            <ScrollArea className="h-48 w-full">
               <div className="p-4 space-y-2">
                 {Array.from({ length: 15 }).map((_, i) => (
                   <div
                     key={i}
-                    className="rounded-none border border-border bg-background p-2 font-mono text-xs text-muted-foreground"
+                    className="bg-background p-2 font-mono text-xs text-muted-foreground"
                   >
                     Scrollable item {i + 1}
                   </div>
@@ -60,12 +60,12 @@ export default function ScrollAreaPage() {
           title: "Horizontal Scroll",
           description: "Horizontal scrolling with custom scrollbar.",
           preview: (
-            <ScrollArea className="w-full rounded-none border border-border bg-card">
+            <ScrollArea className="w-full">
               <div className="flex gap-4 p-4">
                 {Array.from({ length: 20 }).map((_, i) => (
                   <div
                     key={i}
-                    className="flex h-24 w-32 shrink-0 items-center justify-center rounded-none border border-border bg-background font-mono text-sm text-muted-foreground"
+                    className="flex h-24 w-32 shrink-0 items-center justify-center bg-background font-mono text-sm text-muted-foreground"
                   >
                     {i + 1}
                   </div>
@@ -87,7 +87,7 @@ export default function ScrollAreaPage() {
           title: "Both Directions",
           description: "Enable both horizontal and vertical scrolling.",
           preview: (
-            <ScrollArea className="h-48 w-full rounded-none border border-border bg-card">
+            <ScrollArea className="h-48 w-full">
               <div className="w-[800px] p-4">
                 {Array.from({ length: 15 }).map((_, i) => (
                   <div
@@ -110,7 +110,7 @@ export default function ScrollAreaPage() {
           title: "Code Block",
           description: "Perfect for scrollable code snippets.",
           preview: (
-            <ScrollArea className="h-48 w-full rounded-none border border-border bg-card">
+            <ScrollArea className="h-48 w-full">
               <pre className="p-4 font-mono text-xs">
                 <code className="text-muted-foreground">
                   {`function example() {
@@ -144,12 +144,12 @@ export default function ScrollAreaPage() {
           title: "Chat Messages",
           description: "Scrollable chat or message history.",
           preview: (
-            <ScrollArea className="h-48 w-full rounded-none border border-border bg-card">
+            <ScrollArea className="h-48 w-full">
               <div className="space-y-4 p-4">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div key={i} className="space-y-1">
                     <div className="font-mono text-xs font-bold text-primary">User {i + 1}</div>
-                    <div className="rounded-none border border-border bg-background p-2 font-mono text-xs text-muted-foreground">
+                    <div className="bg-background p-2 font-mono text-xs text-muted-foreground">
                       This is a message in the chat
                     </div>
                   </div>

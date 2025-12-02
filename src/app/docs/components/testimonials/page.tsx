@@ -27,7 +27,7 @@ function TestimonialsDemo() {
   ];
 
   return (
-    <section className="w-full border border-border bg-background p-6 font-mono">
+    <section className="w-full font-mono">
       <div className="mb-6 text-center">
         <span className="text-xs text-muted-foreground">[0x40]</span>
         <h2 className="mt-2 text-xl font-bold">LOVED_BY_DEVELOPERS</h2>
@@ -59,7 +59,7 @@ function TestimonialsDemo() {
 // Single Testimonial Card
 function TestimonialCardDemo() {
   return (
-    <div className="w-full max-w-md border border-border bg-card p-6 font-mono">
+    <div className="w-full max-w-md font-mono">
       <div className="mb-2 text-xs text-muted-foreground">[0x01]</div>
       <p className="mb-6 text-sm text-muted-foreground">
         &quot;This boilerplate helped me launch my SaaS in just 3 days. The authentication and payment

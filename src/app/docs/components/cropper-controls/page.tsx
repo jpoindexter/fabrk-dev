@@ -26,7 +26,7 @@ export default function CropperControlsPage() {
       importCode={`import { CropperControls } from "@/components/ui/cropper-controls"`}
       mainPreview={{
         preview: (
-          <div className="max-w-md rounded-none border border-border bg-card p-4 font-mono">
+          <div className="max-w-md">
             <CropperControls
               zoom={zoom}
               rotation={rotation}
@@ -67,7 +67,7 @@ const handleCrop = () => {
           title: "Default Controls",
           description: "Standard zoom and rotation controls with default range.",
           preview: (
-            <div className="max-w-md rounded-none border border-border bg-card p-4 font-mono">
+            <div className="max-w-md">
               <CropperControls
                 zoom={1}
                 rotation={0}
@@ -95,7 +95,7 @@ const handleCrop = () => {
           title: "Extended Zoom Range",
           description: "Controls with wider zoom range for more flexibility.",
           preview: (
-            <div className="max-w-md rounded-none border border-border bg-card p-4 font-mono">
+            <div className="max-w-md">
               <CropperControls
                 zoom={1}
                 rotation={0}
@@ -123,7 +123,7 @@ const handleCrop = () => {
           title: "With Active State",
           description: "Controls showing active zoom and rotation values.",
           preview: (
-            <div className="max-w-md rounded-none border border-border bg-card p-4 font-mono">
+            <div className="max-w-md">
               <CropperControls
                 zoom={2.5}
                 rotation={45}

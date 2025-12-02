@@ -133,7 +133,7 @@ export default function NotificationCenterPage() {
           title: "Notification Types",
           description: "Different notification types with appropriate icons",
           preview: (
-            <div className="w-full max-w-md space-y-3 rounded-none border border-border bg-card p-4">
+            <div className="w-full max-w-md space-y-3">
               <div className="font-mono text-xs text-muted-foreground">[NOTIFICATION_TYPES]</div>
               <div className="space-y-2">
                 {[
@@ -166,8 +166,8 @@ const notification: Notification = {
           title: "With Action Buttons",
           description: "Notifications can include actionable buttons",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card p-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[ACTION_EXAMPLE]</div>
+            <div className="w-full max-w-md space-y-2">
+              <div className="font-mono text-xs text-muted-foreground">[ACTION_EXAMPLE]</div>
               <div className="space-y-2">
                 <div className="font-semibold text-sm">Storage almost full</div>
                 <p className="text-sm text-muted-foreground">
@@ -197,7 +197,7 @@ const notification: Notification = {
           title: "Grouped by Date",
           description: "Automatically groups notifications by Today, Yesterday, This Week, Older",
           preview: (
-            <div className="w-full max-w-md space-y-3 rounded-none border border-border bg-card p-4">
+            <div className="w-full max-w-md space-y-3">
               <div className="font-mono text-xs text-muted-foreground">[DATE_GROUPS]</div>
               {["Today", "Yesterday", "This Week", "Older"].map((group) => (
                 <div key={group} className="space-y-2">
@@ -220,7 +220,7 @@ const notification: Notification = {
           title: "Empty State",
           description: "Friendly empty state when no notifications exist",
           preview: (
-            <div className="flex flex-col items-center justify-center rounded-none border border-border bg-card py-12 px-4">
+            <div className="flex flex-col items-center justify-center py-12 px-4">
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
                 <span className="font-mono text-2xl text-muted-foreground">0</span>
               </div>
@@ -239,8 +239,8 @@ const notification: Notification = {
           title: "Auto Mark as Read",
           description: "Automatically mark notifications as read when clicked",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card p-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="w-full max-w-md space-y-2">
+              <div className="font-mono text-xs text-muted-foreground">
                 [AUTO_READ_ENABLED]
               </div>
               <p className="text-sm text-muted-foreground">
@@ -258,8 +258,8 @@ const notification: Notification = {
           title: "Custom Max Height",
           description: "Control the maximum height of the notification list",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card p-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="w-full max-w-md space-y-2">
+              <div className="font-mono text-xs text-muted-foreground">
                 [MAX_HEIGHT]: 400px
               </div>
               <p className="text-sm text-muted-foreground">

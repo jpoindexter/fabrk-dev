@@ -88,7 +88,7 @@ export default function SeparatorPage() {
           title: "In List",
           description: "Separator between list items.",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card">
+            <div className="w-full max-w-md">
               <div className="p-4 font-mono text-sm text-muted-foreground">
                 <span className="text-primary">&gt;</span> Item 1
               </div>

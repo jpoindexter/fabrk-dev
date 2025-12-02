@@ -18,7 +18,7 @@ export default function StackPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                className="p-4 font-mono text-sm text-muted-foreground"
               >
                 <span className="text-primary">&gt;</span> Item {i}
               </div>
@@ -40,7 +40,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-full rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="w-full p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -61,7 +61,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -82,7 +82,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -102,7 +102,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -122,7 +122,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-full rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="w-full p-4 font-mono text-sm text-muted-foreground"
                 >
                   <span className="text-primary">&gt;</span> Item {i}
                 </div>
@@ -143,7 +143,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   {i}
                 </div>
@@ -163,7 +163,7 @@ export default function StackPage() {
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>
@@ -185,7 +185,7 @@ export default function StackPage() {
               {[1, 2].map((i) => (
                 <div
                   key={i}
-                  className="rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="p-4 font-mono text-sm text-muted-foreground"
                 >
                   Full width item {i}
                 </div>
@@ -205,7 +205,7 @@ export default function StackPage() {
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="w-full rounded-none border border-border bg-card p-4 font-mono text-sm text-muted-foreground"
+                  className="w-full p-4 font-mono text-sm text-muted-foreground"
                 >
                   Item {i}
                 </div>

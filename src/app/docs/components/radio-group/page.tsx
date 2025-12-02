@@ -192,8 +192,8 @@ export default function RadioGroupPage() {
           title: "Terminal Style",
           description: "Radio group with terminal-themed styling",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4">
-              <div className="mb-2 font-mono text-xs text-muted-foreground">
+            <div className="space-y-2">
+              <div className="font-mono text-xs text-muted-foreground">
                 [SELECT_OPTION]:
               </div>
               <RadioGroup defaultValue="option1">
@@ -218,7 +218,7 @@ export default function RadioGroupPage() {
               </RadioGroup>
             </div>
           ),
-          code: `<div className="rounded-none border border-border bg-card p-4">
+          code: `<div className="space-y-2">
   <div className="font-mono text-xs text-muted-foreground">
     [SELECT_OPTION]:
   </div>

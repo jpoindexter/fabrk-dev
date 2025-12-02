@@ -193,46 +193,28 @@ export default function PromptBuilderPage() {
 />`,
         },
         {
-          title: "Terminal Style",
-          description: "Prompt builder with terminal-style wrapper.",
+          title: "With All Features",
+          description: "Prompt builder with templates, save functionality, and variable management.",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">prompt-builder</span>
-              </div>
-              <div className="p-4">
-                <PromptBuilder
-                  templates={sampleTemplates}
-                  showTemplates
-                  onBuild={handleBuild}
-                  onCopyPrompt={handleCopy}
-                />
-              </div>
-            </div>
+            <PromptBuilder
+              templates={sampleTemplates}
+              showTemplates
+              showVariables
+              showPreview
+              onBuild={handleBuild}
+              onSaveTemplate={handleSave}
+              onCopyPrompt={handleCopy}
+            />
           ),
-          code: `<div className="rounded-none border border-border bg-card">
-  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
-      <div className="size-2 rounded-full bg-destructive/50" />
-      <div className="size-2 rounded-full bg-warning/50" />
-      <div className="size-2 rounded-full bg-success/50" />
-    </div>
-    <span className="font-mono text-xs text-muted-foreground">prompt-builder</span>
-  </div>
-  <div className="p-4">
-    <PromptBuilder
-      templates={templates}
-      showTemplates
-      onBuild={handleBuild}
-      onCopyPrompt={handleCopy}
-    />
-  </div>
-</div>`,
+          code: `<PromptBuilder
+  templates={templates}
+  showTemplates
+  showVariables
+  showPreview
+  onBuild={handleBuild}
+  onSaveTemplate={handleSave}
+  onCopyPrompt={handleCopy}
+/>`,
         },
       ]}
       props={[

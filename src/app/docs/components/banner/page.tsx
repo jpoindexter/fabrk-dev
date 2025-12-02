@@ -111,7 +111,7 @@ export default function BannerPage() {
               System maintenance will occur on Sunday at 2:00 AM EST.
             </Banner>
           ) : (
-            <div className="rounded-none border border-border bg-card p-6 text-center">
+            <div className="p-6 text-center">
               <span className="font-mono text-xs text-muted-foreground">
                 [DISMISSED]: Click "Dismissable" variant again to see
               </span>

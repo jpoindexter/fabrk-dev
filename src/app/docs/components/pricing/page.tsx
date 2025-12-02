@@ -144,7 +144,7 @@ export default function LandingPage() {
           title: "Price Toggle",
           description: "Monthly/yearly toggle for subscriptions",
           preview: (
-            <div className="flex items-center justify-center gap-2 rounded-none border border-border bg-card p-2">
+            <div className="flex items-center justify-center gap-2 p-2">
               <Button variant="default" size="sm" className="rounded-none font-mono text-xs">MONTHLY</Button>
               <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">YEARLY</Button>
               <span className="font-mono text-xs text-success">[-20%]</span>

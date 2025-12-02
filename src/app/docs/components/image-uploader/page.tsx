@@ -23,15 +23,13 @@ export default function ImageUploaderPage() {
       importCode={`import { ImageUploader } from "@/components/ui/image-uploader"`}
       mainPreview={{
         preview: (
-          <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-            <ImageUploader
-              value={files}
-              onChange={setFiles}
-              maxFiles={5}
-              maxSize={5 * 1024 * 1024}
-              showPreview
-            />
-          </div>
+          <ImageUploader
+            value={files}
+            onChange={setFiles}
+            maxFiles={5}
+            maxSize={5 * 1024 * 1024}
+            showPreview
+          />
         ),
         code: `const [files, setFiles] = useState<File[]>([]);
 
@@ -48,15 +46,13 @@ export default function ImageUploaderPage() {
           title: "Single Image Upload",
           description: "Upload a single image with preview.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={singleFile}
-                onChange={setSingleFile}
-                maxFiles={1}
-                maxSize={5 * 1024 * 1024}
-                showPreview
-              />
-            </div>
+            <ImageUploader
+              value={singleFile}
+              onChange={setSingleFile}
+              maxFiles={1}
+              maxSize={5 * 1024 * 1024}
+              showPreview
+            />
           ),
           code: `<ImageUploader
   value={singleFile}
@@ -70,15 +66,13 @@ export default function ImageUploaderPage() {
           title: "Multiple Images",
           description: "Upload up to 10 images with grid preview.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={[]}
-                onChange={() => {}}
-                maxFiles={10}
-                maxSize={10 * 1024 * 1024}
-                showPreview
-              />
-            </div>
+            <ImageUploader
+              value={[]}
+              onChange={() => {}}
+              maxFiles={10}
+              maxSize={10 * 1024 * 1024}
+              showPreview
+            />
           ),
           code: `<ImageUploader
   value={files}
@@ -92,15 +86,13 @@ export default function ImageUploaderPage() {
           title: "With Upload Handler",
           description: "Image uploader with server upload functionality.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={[]}
-                onChange={() => {}}
-                onUpload={handleUpload}
-                maxFiles={3}
-                showPreview
-              />
-            </div>
+            <ImageUploader
+              value={[]}
+              onChange={() => {}}
+              onUpload={handleUpload}
+              maxFiles={3}
+              showPreview
+            />
           ),
           code: `const handleUpload = async (files: File[]) => {
   const formData = new FormData();
@@ -120,15 +112,13 @@ export default function ImageUploaderPage() {
           title: "Custom File Types",
           description: "Accept specific image formats.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={[]}
-                onChange={() => {}}
-                accept="image/png,image/webp"
-                maxFiles={5}
-                showPreview
-              />
-            </div>
+            <ImageUploader
+              value={[]}
+              onChange={() => {}}
+              accept="image/png,image/webp"
+              maxFiles={5}
+              showPreview
+            />
           ),
           code: `<ImageUploader
   value={files}
@@ -142,14 +132,12 @@ export default function ImageUploaderPage() {
           title: "Without Preview",
           description: "Upload images without showing preview grid.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={[]}
-                onChange={() => {}}
-                maxFiles={5}
-                showPreview={false}
-              />
-            </div>
+            <ImageUploader
+              value={[]}
+              onChange={() => {}}
+              maxFiles={5}
+              showPreview={false}
+            />
           ),
           code: `<ImageUploader
   value={files}
@@ -162,14 +150,12 @@ export default function ImageUploaderPage() {
           title: "Disabled State",
           description: "Uploader in disabled state.",
           preview: (
-            <div className="max-w-2xl rounded-none border border-border bg-card p-4 font-mono">
-              <ImageUploader
-                value={[]}
-                onChange={() => {}}
-                disabled
-                showPreview
-              />
-            </div>
+            <ImageUploader
+              value={[]}
+              onChange={() => {}}
+              disabled
+              showPreview
+            />
           ),
           code: `<ImageUploader
   value={files}

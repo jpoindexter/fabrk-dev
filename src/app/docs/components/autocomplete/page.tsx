@@ -199,7 +199,7 @@ export default function AutocompletePage() {
                 options={frameworks}
                 placeholder="Try arrow keys..."
               />
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
+              <div className="font-mono text-xs">
                 <div className="border-b border-border px-3 py-2 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="size-2 rounded-full bg-destructive/50" />

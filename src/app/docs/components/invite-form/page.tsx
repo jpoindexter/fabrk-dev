@@ -124,33 +124,13 @@ export default function InviteFormPage() {
           title: "Terminal Style",
           description: "Invite form with terminal-style wrapper.",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">team/invite</span>
-              </div>
-              <div className="p-4">
-                <InviteForm allowMultiple showMessage onSubmit={mockSubmit} />
-              </div>
-            </div>
+            <InviteForm allowMultiple showMessage onSubmit={mockSubmit} />
           ),
-          code: `<div className="rounded-none border border-border bg-card">
-  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
-      <div className="size-2 rounded-full bg-destructive/50" />
-      <div className="size-2 rounded-full bg-warning/50" />
-      <div className="size-2 rounded-full bg-success/50" />
-    </div>
-    <span className="font-mono text-xs text-muted-foreground">team/invite</span>
-  </div>
-  <div className="p-4">
-    <InviteForm allowMultiple showMessage onSubmit={sendInvitation} />
-  </div>
-</div>`,
+          code: `<InviteForm
+  allowMultiple
+  showMessage
+  onSubmit={sendInvitation}
+/>`,
         },
       ]}
       props={[

@@ -92,27 +92,17 @@ export default function InputColorPage() {
           title: "Design Token Colors",
           description: "Using CSS design tokens as preset colors.",
           preview: (
-            <div className="space-y-3 rounded-none border border-border bg-card p-4 font-mono text-sm">
-              <div className="flex items-center gap-2 border-b border-border pb-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="text-xs text-muted-foreground">preset-colors.ts</span>
-              </div>
-              <div className="space-y-1 text-xs">
-                <div className="text-muted-foreground">
-                  <span className="text-primary">const</span> presets{" "}
-                  <span className="text-primary">=</span> [
-                </div>
-                <div className="pl-4 text-success">"hsl(var(--primary))",</div>
-                <div className="pl-4 text-destructive">"hsl(var(--destructive))",</div>
-                <div className="pl-4 text-warning">"hsl(var(--warning))",</div>
-                <div className="pl-4 text-muted-foreground">"hsl(var(--success))",</div>
-                <div className="text-muted-foreground">];</div>
-              </div>
-            </div>
+            <InputColor
+              defaultValue="hsl(var(--primary))"
+              presetColors={[
+                "hsl(var(--primary))",
+                "hsl(var(--destructive))",
+                "hsl(var(--warning))",
+                "hsl(var(--success))",
+                "hsl(var(--foreground))",
+                "hsl(var(--background))",
+              ]}
+            />
           ),
           code: `const presetColors = [
   "hsl(var(--primary))",

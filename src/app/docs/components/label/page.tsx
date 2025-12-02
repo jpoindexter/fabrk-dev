@@ -116,7 +116,7 @@ export default function LabelPage() {
           title: "Typography Styles",
           description: "Label following design system typography tokens.",
           preview: (
-            <div className="space-y-3 rounded-none border border-border bg-card p-4 font-mono text-sm">
+            <div className="space-y-3 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
                 <div className="flex gap-1.5">
                   <div className="size-2 rounded-full bg-destructive/50" />
@@ -153,7 +153,7 @@ tracking-normal      // Letter spacing`,
           title: "UX Heuristic - Error Prevention",
           description: "Required indicator prevents user errors.",
           preview: (
-            <div className="space-y-3 rounded-none border border-border bg-card p-4 font-mono text-sm">
+            <div className="space-y-3 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
                 <div className="flex gap-1.5">
                   <div className="size-2 rounded-full bg-destructive/50" />

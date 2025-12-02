@@ -120,7 +120,7 @@ export default function PageWrapperPage() {
           preview: (
             <div className="h-64 w-full">
               <PageWrapper>
-                <div className="rounded-none border border-border bg-card p-6 font-mono text-sm text-muted-foreground">
+                <div className="font-mono text-sm text-muted-foreground">
                   <span className="text-primary">&gt;</span> Simple content block
                 </div>
               </PageWrapper>

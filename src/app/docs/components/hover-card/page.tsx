@@ -244,7 +244,7 @@ export default function HoverCardPage() {
                   &gt; HOVER_INFO
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 rounded-none border border-border bg-card">
+              <HoverCardContent className="w-80 rounded-none">
                 <div className="space-y-3">
                   <div className="font-mono text-xs text-muted-foreground">
                     [SYSTEM_INFO]:

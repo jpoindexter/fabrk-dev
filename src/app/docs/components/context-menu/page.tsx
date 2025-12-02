@@ -39,7 +39,7 @@ export default function ContextMenuPage() {
       mainPreview={{
         preview: (
           <ContextMenu>
-            <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+            <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
               Right click here
             </ContextMenuTrigger>
             <ContextMenuContent className="w-64 rounded-none">
@@ -90,7 +90,7 @@ export default function ContextMenuPage() {
           description: "Context menu with checkbox items for toggling options.",
           preview: (
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
                 Right click for options
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64 rounded-none">
@@ -141,7 +141,7 @@ const [showUrls, setShowUrls] = useState(false);
           description: "Context menu with radio items for selecting one option.",
           preview: (
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
                 Right click to select
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64 rounded-none">
@@ -181,7 +181,7 @@ const [showUrls, setShowUrls] = useState(false);
           description: "Context menu with nested submenus.",
           preview: (
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
                 Right click for submenu
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64 rounded-none">
@@ -223,7 +223,7 @@ const [showUrls, setShowUrls] = useState(false);
           description: "Context menu with grouped items using labels.",
           preview: (
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
                 Right click for grouped menu
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64 rounded-none">
@@ -266,7 +266,7 @@ const [showUrls, setShowUrls] = useState(false);
           description: "Context menu with disabled menu items.",
           preview: (
             <ContextMenu>
-              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-none border border-border bg-card text-sm">
+              <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center text-sm">
                 Right click (some disabled)
               </ContextMenuTrigger>
               <ContextMenuContent className="w-64 rounded-none">

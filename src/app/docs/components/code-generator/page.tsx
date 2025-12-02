@@ -95,39 +95,15 @@ export default function CodeGeneratorPage() {
           title: "Terminal Style",
           description: "Code generator with terminal-style output formatting.",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">code-generator.tsx</span>
-              </div>
-              <div className="p-4">
-                <CodeGenerator
-                  onGenerate={mockGenerate}
-                  placeholder="Enter AI prompt here..."
-                />
-              </div>
-            </div>
+            <CodeGenerator
+              onGenerate={mockGenerate}
+              placeholder="Enter AI prompt here..."
+            />
           ),
-          code: `<div className="rounded-none border border-border bg-card">
-  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
-      <div className="size-2 rounded-full bg-destructive/50" />
-      <div className="size-2 rounded-full bg-warning/50" />
-      <div className="size-2 rounded-full bg-success/50" />
-    </div>
-    <span className="font-mono text-xs text-muted-foreground">code-generator.tsx</span>
-  </div>
-  <div className="p-4">
-    <CodeGenerator
-      onGenerate={generateCode}
-      placeholder="Enter AI prompt here..."
-    />
-  </div>
-</div>`,
+          code: `<CodeGenerator
+  onGenerate={generateCode}
+  placeholder="Enter AI prompt here..."
+/>`,
         },
       ]}
       props={[

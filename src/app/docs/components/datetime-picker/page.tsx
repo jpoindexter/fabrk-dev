@@ -101,34 +101,24 @@ export default function DateTimePickerPage() {
                 dateTime={dateTime}
                 onDateTimeChange={setDateTime}
               />
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">datetime.state</span>
-                </div>
-                <div className="p-3 space-y-1 text-muted-foreground">
-                  {dateTime ? (
-                    <>
-                      <div>
-                        <span className="text-success">&gt;</span> Date:{" "}
-                        {dateTime.toLocaleDateString()}
-                      </div>
-                      <div>
-                        <span className="text-success">&gt;</span> Time:{" "}
-                        {dateTime.toLocaleTimeString()}
-                      </div>
-                    </>
-                  ) : (
+              <div className="space-y-1 text-muted-foreground font-mono text-xs">
+                {dateTime ? (
+                  <>
                     <div>
-                      <span className="text-muted-foreground">&gt;</span> No
-                      datetime selected
+                      <span className="text-success">&gt;</span> Date:{" "}
+                      {dateTime.toLocaleDateString()}
                     </div>
-                  )}
-                </div>
+                    <div>
+                      <span className="text-success">&gt;</span> Time:{" "}
+                      {dateTime.toLocaleTimeString()}
+                    </div>
+                  </>
+                ) : (
+                  <div>
+                    <span className="text-muted-foreground">&gt;</span> No
+                    datetime selected
+                  </div>
+                )}
               </div>
             </div>
           ),
@@ -150,31 +140,20 @@ export default function DateTimePickerPage() {
           title: "Time Controls",
           description: "Increment/decrement buttons for precise time selection.",
           preview: (
-            <div className="rounded-none border border-border bg-card font-mono text-xs w-full max-w-sm">
-              <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="size-2 rounded-full bg-destructive/50" />
-                  <div className="size-2 rounded-full bg-warning/50" />
-                  <div className="size-2 rounded-full bg-success/50" />
-                </div>
-                <span className="text-muted-foreground">time.controls</span>
+            <div className="space-y-1 text-muted-foreground font-mono text-xs w-full max-w-sm">
+              <div>
+                <span className="text-success">&gt;</span> +/- buttons for hours
               </div>
-              <div className="p-3 space-y-1 text-muted-foreground">
-                <div>
-                  <span className="text-success">&gt;</span> +/- buttons for
-                  hours
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> +/- buttons for
-                  minutes
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> Direct number input
-                </div>
-                <div>
-                  <span className="text-success">&gt;</span> AM/PM toggle (12h
-                  mode)
-                </div>
+              <div>
+                <span className="text-success">&gt;</span> +/- buttons for
+                minutes
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Direct number input
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> AM/PM toggle (12h
+                mode)
               </div>
             </div>
           ),
@@ -190,23 +169,11 @@ export default function DateTimePickerPage() {
           title: "Meeting Scheduler",
           description: "Common use case for scheduling meetings.",
           preview: (
-            <div className="space-y-3 w-full max-w-sm">
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">meeting.tsx</span>
-                </div>
-                <div className="p-3 space-y-2">
-                  <div className="text-muted-foreground">
-                    <span className="text-primary">&gt;</span> SCHEDULE_MEETING
-                  </div>
-                  <DateTimePicker placeholder="Pick meeting time" />
-                </div>
+            <div className="space-y-2 w-full max-w-sm">
+              <div className="text-muted-foreground font-mono text-xs">
+                <span className="text-primary">&gt;</span> SCHEDULE_MEETING
               </div>
+              <DateTimePicker placeholder="Pick meeting time" />
             </div>
           ),
           code: `// Meeting scheduler example
@@ -263,26 +230,14 @@ export default function DateTimePickerPage() {
           title: "Deadline Picker",
           description: "Set deadlines with specific date and time.",
           preview: (
-            <div className="space-y-3 w-full max-w-sm">
-              <div className="rounded-none border border-border bg-card font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="size-2 rounded-full bg-destructive/50" />
-                    <div className="size-2 rounded-full bg-warning/50" />
-                    <div className="size-2 rounded-full bg-success/50" />
-                  </div>
-                  <span className="text-muted-foreground">deadline.tsx</span>
-                </div>
-                <div className="p-3 space-y-2">
-                  <div className="text-muted-foreground">
-                    <span className="text-destructive">&gt;</span> DUE_BY
-                  </div>
-                  <DateTimePicker
-                    placeholder="Set task deadline"
-                    dateTime={new Date(2024, 6, 20, 17, 0)}
-                  />
-                </div>
+            <div className="space-y-2 w-full max-w-sm">
+              <div className="text-muted-foreground font-mono text-xs">
+                <span className="text-destructive">&gt;</span> DUE_BY
               </div>
+              <DateTimePicker
+                placeholder="Set task deadline"
+                dateTime={new Date(2024, 6, 20, 17, 0)}
+              />
             </div>
           ),
           code: `// Task deadline picker

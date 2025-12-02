@@ -98,38 +98,36 @@ function App() {
           title: "Toast Components",
           description: "Building blocks for creating toast notifications",
           preview: (
-            <div className="w-full max-w-md space-y-4">
-              <div className="rounded-none border border-border bg-card p-4">
-                <div className="mb-3 font-mono text-xs text-muted-foreground">[COMPONENTS]</div>
-                <div className="space-y-2 font-mono text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastProvider</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">Toast</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastTitle</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastDescription</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastAction</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastClose</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-primary">&gt;</span>
-                    <span className="text-muted-foreground">ToastViewport</span>
-                  </div>
+            <div className="space-y-4">
+              <div className="mb-3 font-mono text-xs text-muted-foreground">[COMPONENTS]</div>
+              <div className="space-y-2 font-mono text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastProvider</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">Toast</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastTitle</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastDescription</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastAction</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastClose</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-primary">&gt;</span>
+                  <span className="text-muted-foreground">ToastViewport</span>
                 </div>
               </div>
             </div>
@@ -246,7 +244,7 @@ function App() {
           title: "Toast Provider Setup",
           description: "Provider wraps your app to manage toasts",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card p-4">
+            <div className="space-y-4">
               <div className="mb-3 font-mono text-xs text-muted-foreground">[SETUP]</div>
               <div className="space-y-2 font-mono text-sm">
                 <div className="text-muted-foreground">1. Wrap app in ToastProvider</div>
@@ -276,7 +274,7 @@ export default function RootLayout({ children }) {
           title: "Viewport Positioning",
           description: "ToastViewport controls where toasts appear",
           preview: (
-            <div className="w-full max-w-md rounded-none border border-border bg-card p-4">
+            <div className="space-y-4">
               <div className="mb-3 font-mono text-xs text-muted-foreground">[POSITION]</div>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <div>&gt; Top-right on mobile</div>

@@ -181,31 +181,29 @@ export default function SliderPage() {
           title: "Terminal Style",
           description: "Slider with terminal-themed container",
           preview: (
-            <div className="rounded-none border border-border bg-card p-4">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">
+            <div className="space-y-4">
+              <div className="font-mono text-xs text-muted-foreground">
                 [CONFIGURATION]:
               </div>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-muted-foreground">
-                      THRESHOLD:
-                    </span>
-                    <span className="font-mono text-xs text-primary">
-                      &gt; {value1[0]}%
-                    </span>
-                  </div>
-                  <Slider
-                    value={value1}
-                    onValueChange={setValue1}
-                    max={100}
-                    step={1}
-                  />
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs text-muted-foreground">
+                    THRESHOLD:
+                  </span>
+                  <span className="font-mono text-xs text-primary">
+                    &gt; {value1[0]}%
+                  </span>
                 </div>
+                <Slider
+                  value={value1}
+                  onValueChange={setValue1}
+                  max={100}
+                  step={1}
+                />
               </div>
             </div>
           ),
-          code: `<div className="rounded-none border border-border bg-card p-4">
+          code: `<div className="space-y-4">
   <div className="font-mono text-xs text-muted-foreground">
     [CONFIGURATION]:
   </div>

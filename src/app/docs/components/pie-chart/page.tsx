@@ -32,12 +32,7 @@ export default function PieChartPage() {
       description="Interactive pie chart visualization component with legend, hover effects, and donut variant support."
       importCode={`import { PieChart, PieChartDataItem } from "@/components/ui/pie-chart";`}
       mainPreview={{
-        preview: (
-          <div className="border border-border bg-card p-6 font-mono">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[DATA_VIZ]: DISTRIBUTION_CHART</div>
-            <PieChart data={sampleData} />
-          </div>
-        ),
+        preview: <PieChart data={sampleData} />,
         code: `const data: PieChartDataItem[] = [
   { label: "React", value: 45 },
   { label: "TypeScript", value: 30 },
@@ -51,12 +46,7 @@ export default function PieChartPage() {
         {
           title: "Donut Chart",
           description: "Hollow center variant for modern look",
-          preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[VARIANT]: DONUT_CHART</div>
-              <PieChart data={revenueData} innerRadius={60} />
-            </div>
-          ),
+          preview: <PieChart data={revenueData} innerRadius={60} />,
           code: `<PieChart
   data={data}
   innerRadius={60}
@@ -66,14 +56,11 @@ export default function PieChartPage() {
           title: "With Labels on Segments",
           description: "Display labels directly on pie segments",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[DISPLAY]: LABELS_ON_CHART</div>
-              <PieChart
-                data={revenueData}
-                showLabels={true}
-                showLegend={false}
-              />
-            </div>
+            <PieChart
+              data={revenueData}
+              showLabels={true}
+              showLegend={false}
+            />
           ),
           code: `<PieChart
   data={data}
@@ -85,13 +72,10 @@ export default function PieChartPage() {
           title: "Without Percentages",
           description: "Hide percentage values in legend",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[DISPLAY]: NO_PERCENTAGES</div>
-              <PieChart
-                data={trafficData}
-                showPercentages={false}
-              />
-            </div>
+            <PieChart
+              data={trafficData}
+              showPercentages={false}
+            />
           ),
           code: `<PieChart
   data={data}
@@ -102,12 +86,9 @@ export default function PieChartPage() {
           title: "Custom Size",
           description: "Adjust chart diameter",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[SIZE]: CUSTOM_DIMENSIONS</div>
-              <div className="grid gap-6 md:grid-cols-2">
-                <PieChart data={sampleData} size={200} />
-                <PieChart data={sampleData} size={250} innerRadius={70} />
-              </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              <PieChart data={sampleData} size={200} />
+              <PieChart data={sampleData} size={250} innerRadius={70} />
             </div>
           ),
           code: `<PieChart data={data} size={200} />
@@ -117,17 +98,14 @@ export default function PieChartPage() {
           title: "Custom Colors",
           description: "Override default color scheme",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[THEME]: CUSTOM_COLORS</div>
-              <PieChart
-                data={[
-                  { label: "Success", value: 40, color: "hsl(var(--success))" },
-                  { label: "Warning", value: 30, color: "hsl(var(--warning))" },
-                  { label: "Destructive", value: 20, color: "hsl(var(--destructive))" },
-                  { label: "Primary", value: 10, color: "hsl(var(--primary))" },
-                ]}
-              />
-            </div>
+            <PieChart
+              data={[
+                { label: "Success", value: 40, color: "hsl(var(--success))" },
+                { label: "Warning", value: 30, color: "hsl(var(--warning))" },
+                { label: "Destructive", value: 20, color: "hsl(var(--destructive))" },
+                { label: "Primary", value: 10, color: "hsl(var(--primary))" },
+              ]}
+            />
           ),
           code: `<PieChart
   data={[
@@ -142,13 +120,10 @@ export default function PieChartPage() {
           title: "Interactive with Click Handler",
           description: "Handle segment clicks for drill-down",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[INTERACTIVE]: CLICK_ENABLED</div>
-              <PieChart
-                data={revenueData}
-                onSegmentClick={(item, index) => alert(`${item.label}: ${item.value} (${((item.value / revenueData.reduce((sum, i) => sum + i.value, 0)) * 100).toFixed(1)}%)`)}
-              />
-            </div>
+            <PieChart
+              data={revenueData}
+              onSegmentClick={(item, index) => alert(`${item.label}: ${item.value} (${((item.value / revenueData.reduce((sum, i) => sum + i.value, 0)) * 100).toFixed(1)}%)`)}
+            />
           ),
           code: `<PieChart
   data={data}

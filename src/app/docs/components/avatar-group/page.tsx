@@ -100,13 +100,11 @@ export default function AvatarGroupPage() {
           title: "Hover Interaction",
           description: "Avatars scale up on hover for better visibility",
           preview: (
-            <div className="rounded-none border border-border bg-card p-6">
-              <div className="space-y-2">
-                <span className="font-mono text-xs text-muted-foreground">
-                  [HOVER]: Hover over avatars to see scale effect
-                </span>
-                <AvatarGroup avatars={users} />
-              </div>
+            <div className="space-y-2">
+              <span className="font-mono text-xs text-muted-foreground">
+                [HOVER]: Hover over avatars to see scale effect
+              </span>
+              <AvatarGroup avatars={users} />
             </div>
           ),
           code: `// Hover effects built-in

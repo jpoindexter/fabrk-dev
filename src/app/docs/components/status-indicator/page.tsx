@@ -14,12 +14,7 @@ export default function StatusIndicatorPage() {
       description="Simple status dot component with color-coded states and optional label for displaying user presence."
       importCode={`import { StatusIndicator, Status } from "@/components/ui/status-indicator";`}
       mainPreview={{
-        preview: (
-          <div className="border border-border bg-card p-6 font-mono">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[STATUS]: USER_PRESENCE</div>
-            <StatusIndicator status="online" label="Alex Chen" />
-          </div>
-        ),
+        preview: <StatusIndicator status="online" label="Alex Chen" />,
         code: `<StatusIndicator status="online" label="Alex Chen" />`,
       }}
       variants={[
@@ -27,13 +22,10 @@ export default function StatusIndicatorPage() {
           title: "All States",
           description: "Display all available status states",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[STATES]: ALL_OPTIONS</div>
-              <div className="space-y-3">
-                {statuses.map((status) => (
-                  <StatusIndicator key={status} status={status} label="" />
-                ))}
-              </div>
+            <div className="space-y-3">
+              {statuses.map((status) => (
+                <StatusIndicator key={status} status={status} label="" />
+              ))}
             </div>
           ),
           code: `<StatusIndicator status="online" label="" />
@@ -46,13 +38,10 @@ export default function StatusIndicatorPage() {
           title: "With Pulse Animation",
           description: "Add pulsing animation for online status",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[ANIMATION]: PULSE_ENABLED</div>
-              <div className="space-y-3">
-                <StatusIndicator status="online" label="Active Now" showPulse={true} />
-                <StatusIndicator status="busy" label="In a Meeting" />
-                <StatusIndicator status="away" label="Away from Keyboard" />
-              </div>
+            <div className="space-y-3">
+              <StatusIndicator status="online" label="Active Now" showPulse={true} />
+              <StatusIndicator status="busy" label="In a Meeting" />
+              <StatusIndicator status="away" label="Away from Keyboard" />
             </div>
           ),
           code: `<StatusIndicator status="online" label="Active Now" showPulse={true} />
@@ -63,13 +52,10 @@ export default function StatusIndicatorPage() {
           title: "Different Sizes",
           description: "Small, medium, and large indicator sizes",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[SIZE]: VARIANTS</div>
-              <div className="space-y-4">
-                <StatusIndicator status="online" label="Small" size="sm" />
-                <StatusIndicator status="online" label="Medium (default)" size="md" />
-                <StatusIndicator status="online" label="Large" size="lg" />
-              </div>
+            <div className="space-y-4">
+              <StatusIndicator status="online" label="Small" size="sm" />
+              <StatusIndicator status="online" label="Medium (default)" size="md" />
+              <StatusIndicator status="online" label="Large" size="lg" />
             </div>
           ),
           code: `<StatusIndicator status="online" label="Small" size="sm" />
@@ -80,13 +66,10 @@ export default function StatusIndicatorPage() {
           title: "Without Labels",
           description: "Compact dot-only indicators",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[DISPLAY]: MINIMAL_MODE</div>
-              <div className="flex items-center gap-3">
-                {statuses.map((status) => (
-                  <StatusIndicator key={status} status={status} />
-                ))}
-              </div>
+            <div className="flex items-center gap-3">
+              {statuses.map((status) => (
+                <StatusIndicator key={status} status={status} />
+              ))}
             </div>
           ),
           code: `<div className="flex items-center gap-3">
@@ -101,39 +84,36 @@ export default function StatusIndicatorPage() {
           title: "In User Lists",
           description: "Status indicators with user information",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[USERS]: TEAM_STATUS</div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 border-b border-border pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-mono text-xs">
-                    AC
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-mono text-sm font-semibold">Alex Chen</div>
-                    <div className="font-mono text-xs text-muted-foreground">Senior Developer</div>
-                  </div>
-                  <StatusIndicator status="online" showPulse={true} />
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 border-b border-border pb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-mono text-xs">
+                  AC
                 </div>
-                <div className="flex items-center gap-3 border-b border-border pb-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-secondary-foreground font-mono text-xs">
-                    SM
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-mono text-sm font-semibold">Sarah Miller</div>
-                    <div className="font-mono text-xs text-muted-foreground">Product Manager</div>
-                  </div>
-                  <StatusIndicator status="busy" />
+                <div className="flex-1">
+                  <div className="font-mono text-sm font-semibold">Alex Chen</div>
+                  <div className="font-mono text-xs text-muted-foreground">Senior Developer</div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground font-mono text-xs">
-                    MJ
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-mono text-sm font-semibold">Marcus Johnson</div>
-                    <div className="font-mono text-xs text-muted-foreground">UX Designer</div>
-                  </div>
-                  <StatusIndicator status="away" />
+                <StatusIndicator status="online" showPulse={true} />
+              </div>
+              <div className="flex items-center gap-3 border-b border-border pb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-secondary-foreground font-mono text-xs">
+                  SM
                 </div>
+                <div className="flex-1">
+                  <div className="font-mono text-sm font-semibold">Sarah Miller</div>
+                  <div className="font-mono text-xs text-muted-foreground">Product Manager</div>
+                </div>
+                <StatusIndicator status="busy" />
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground font-mono text-xs">
+                  MJ
+                </div>
+                <div className="flex-1">
+                  <div className="font-mono text-sm font-semibold">Marcus Johnson</div>
+                  <div className="font-mono text-xs text-muted-foreground">UX Designer</div>
+                </div>
+                <StatusIndicator status="away" />
               </div>
             </div>
           ),

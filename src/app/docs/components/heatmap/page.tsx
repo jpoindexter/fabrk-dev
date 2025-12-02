@@ -57,12 +57,7 @@ export default function HeatmapPage() {
       description="A data visualization component that displays values in a grid with color-coded cells based on intensity."
       importCode={`import { Heatmap, HeatmapDataItem } from "@/components/ui/heatmap";`}
       mainPreview={{
-        preview: (
-          <div className="border border-border bg-card p-6 font-mono">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">[DATA_VIZ]: ACTIVITY_HEATMAP</div>
-            <Heatmap data={weeklyData} />
-          </div>
-        ),
+        preview: <Heatmap data={weeklyData} />,
         code: `const data: HeatmapDataItem[] = [
   { x: "Mon", y: "Week 1", value: 12 },
   { x: "Tue", y: "Week 1", value: 18 },
@@ -76,12 +71,7 @@ export default function HeatmapPage() {
         {
           title: "With Values Displayed",
           description: "Show numeric values inside each cell",
-          preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[DISPLAY]: VALUES_VISIBLE</div>
-              <Heatmap data={compactData} showValues={true} cellSize={60} />
-            </div>
-          ),
+          preview: <Heatmap data={compactData} showValues={true} cellSize={60} />,
           code: `<Heatmap
   data={data}
   showValues={true}
@@ -91,12 +81,7 @@ export default function HeatmapPage() {
         {
           title: "Without Labels",
           description: "Hide axis labels for a cleaner look",
-          preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[DISPLAY]: LABELS_HIDDEN</div>
-              <Heatmap data={compactData} showLabels={false} />
-            </div>
-          ),
+          preview: <Heatmap data={compactData} showLabels={false} />,
           code: `<Heatmap
   data={data}
   showLabels={false}
@@ -105,12 +90,7 @@ export default function HeatmapPage() {
         {
           title: "Custom Cell Size",
           description: "Adjust the size of heatmap cells",
-          preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[SIZE]: CUSTOM_DIMENSIONS</div>
-              <Heatmap data={compactData} cellSize={50} gap={4} />
-            </div>
-          ),
+          preview: <Heatmap data={compactData} cellSize={50} gap={4} />,
           code: `<Heatmap
   data={data}
   cellSize={50}
@@ -121,19 +101,16 @@ export default function HeatmapPage() {
           title: "Custom Color Scale",
           description: "Use custom colors for intensity gradient",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[THEME]: CUSTOM_GRADIENT</div>
-              <Heatmap
-                data={compactData}
-                colorScale={[
-                  "hsl(var(--muted))",
-                  "oklch(80% 0.15 160)",
-                  "oklch(70% 0.20 160)",
-                  "oklch(60% 0.25 160)",
-                  "oklch(50% 0.30 160)",
-                ]}
-              />
-            </div>
+            <Heatmap
+              data={compactData}
+              colorScale={[
+                "hsl(var(--muted))",
+                "oklch(80% 0.15 160)",
+                "oklch(70% 0.20 160)",
+                "oklch(60% 0.25 160)",
+                "oklch(50% 0.30 160)",
+              ]}
+            />
           ),
           code: `<Heatmap
   data={data}
@@ -150,14 +127,11 @@ export default function HeatmapPage() {
           title: "Interactive with Click Handler",
           description: "Handle cell clicks for drill-down functionality",
           preview: (
-            <div className="border border-border bg-card p-6 font-mono">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[INTERACTIVE]: CLICK_ENABLED</div>
-              <Heatmap
-                data={monthlyData}
-                cellSize={45}
-                onCellClick={(item) => alert(`${item.y} × ${item.x}: ${item.value}`)}
-              />
-            </div>
+            <Heatmap
+              data={monthlyData}
+              cellSize={45}
+              onCellClick={(item) => alert(`${item.y} × ${item.x}: ${item.value}`)}
+            />
           ),
           code: `<Heatmap
   data={data}
