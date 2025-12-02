@@ -79,8 +79,8 @@ Fabrk uses a **private GitHub repository** model:
 - All configuration files (tsconfig.json, next.config.ts, etc.)
 
 ✅ **Code Examples:**
-- 8 copy-paste templates (marketing, dashboards, auth, settings)
-- Storybook stories for all 87 components
+- 28 copy-paste templates (marketing, dashboards, auth, settings)
+- Storybook stories for all 234 components
 - Example Stripe setup
 - Example email templates
 

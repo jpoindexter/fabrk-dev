@@ -119,7 +119,7 @@ export default function LandingVariationsTemplate() {
                   </h2>
 
                   <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
-                    Ship your SaaS in days, not months. 87 components, authentication,
+                    Ship your SaaS in days, not months. 234 components, authentication,
                     payments, and everything you need to launch.
                   </p>
 

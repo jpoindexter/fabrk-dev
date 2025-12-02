@@ -3,7 +3,7 @@
 ## The Problem
 
 **Current State**: 190+ TypeScript files, 32 UI components, over-engineered architecture  
-**Target State**: ~40 essential files, ~10 components, ShipFast-style simplicity
+**Target State**: ~40 essential files, ~10 components, pragmatic simplicity
 
 ## Why ShipFast Wins
 
@@ -54,7 +54,7 @@ rm -rf docs/                          # Move to README.md
 **Target**: `src/lib/email.ts` (100 lines max)
 
 ```javascript
-// src/lib/email.ts - ShipFast style
+// src/lib/email.ts - pragmatic style
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -240,7 +240,7 @@ Before keeping ANY file/feature, ask:
 ### Phase 2: Consolidate (2 hours)
 - [ ] Merge email system into src/lib/email.ts (100 lines)
 - [ ] Merge Stripe logic into src/lib/stripe.ts (150 lines)
-- [ ] Create single config.js (ShipFast style)
+- [ ] Create single config.js (pragmatic style)
 - [ ] Flatten API routes (5 routes max)
 - [ ] Replace React Email with plain HTML
 

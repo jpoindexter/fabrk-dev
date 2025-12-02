@@ -13,7 +13,7 @@
 **"Stop rebuilding the same SaaS features. Start shipping."**
 
 ### Key Differentiators
-1. **Most Complete** - 87 components vs competitors' 40-60
+1. **Most Complete** - 234 components vs competitors' 40-60
 2. **Production-Ready** - 1,500+ tests, security hardened, real features
 3. **One-Time Payment** - No subscriptions, unlimited projects
 4. **Lifetime Updates** - Stay current with Next.js releases
@@ -51,7 +51,7 @@ can focus on what makes YOUR product unique."
 **[FEATURES - 0:26-0:45]**
 ```
 Visual: Quick showcase - components animating, pricing tables, dashboards
-Voiceover: "87 production-ready components. Complete authentication
+Voiceover: "234 production-ready components. Complete authentication
 with 2FA. Stripe payments and subscriptions. Multi-tenant architecture.
 Real-time notifications. 6 languages. 1,500 tests. And it's all
 TypeScript strict mode with Next.js 15."
@@ -112,7 +112,7 @@ Text on screen:
 
 3/8: Not just components. Real features:
 
-     🎨 6 color themes that actually work
+     🎨 20 color themes that actually work
      🌍 6 languages (next-intl built-in)
      ⚡ Framer Motion animations
      📧 Email templates + queue system
@@ -219,7 +219,7 @@ rebuilding the same features every single time:
 So I built Fabrk - a Next.js 15 boilerplate with everything you need:
 
 **What's Included:**
-- 87 production-ready components
+- 234 production-ready components
 - Complete auth system (NextAuth v5 + MFA)
 - Stripe payments & subscription billing
 - Multi-tenancy with role-based access control
@@ -251,7 +251,7 @@ Would love feedback from the community!
 
 #### r/nextjs
 ```
-Title: Built a Next.js 15 boilerplate with 87 components, auth,
+Title: Built a Next.js 15 boilerplate with 234 components, auth,
        payments, and everything else you need for SaaS
 
 Hey r/nextjs!
@@ -273,7 +273,7 @@ boilerplate.
 - next-intl (i18n)
 
 **What's Included:**
-- 87 components (25 Radix UI primitives + custom SaaS components)
+- 234 components (25 Radix UI primitives + custom SaaS components)
 - Complete auth (credentials + OAuth + 2FA)
 - Stripe integration (checkout, subscriptions, webhooks)
 - Multi-tenant architecture
@@ -283,7 +283,7 @@ boilerplate.
 - Storybook (95% coverage)
 
 **Features I'm Proud Of:**
-- 6 color themes that actually work (no hardcoded colors)
+- 20 color themes that actually work (no hardcoded colors)
 - Proper internationalization (6 languages)
 - Copy-paste ready templates for pricing, hero sections, dashboards
 - Production-grade security (rate limiting, CSRF, audit logs)
@@ -318,7 +318,7 @@ project. Same bugs. Same integration headaches. Same wasted time.
 So I built Fabrk - a Next.js 15 boilerplate with everything you
 need to launch a SaaS product fast.
 
-87 components. Complete auth. Stripe integration. Multi-tenancy.
+234 components. Complete auth. Stripe integration. Multi-tenancy.
 Real-time features. 1,500+ tests. All production-ready.
 
 $299 one-time. Unlimited projects. Lifetime updates.
@@ -470,7 +470,7 @@ If you're still rebuilding authentication, payments, and user
 management for every project, you're burning time and money.
 
 Fabrk gives you:
-✅ 87 production-ready components
+✅ 234 production-ready components
 ✅ Complete auth + 2FA
 ✅ Stripe integration
 ✅ Multi-tenancy
@@ -497,7 +497,7 @@ P.S. Questions? Reply to this email. I read every response.
 **Fabrk - Ship your Next.js SaaS in days, not months**
 
 ### Tagline
-**Production-ready Next.js 15 boilerplate with auth, payments, and 87 components**
+**Production-ready Next.js 15 boilerplate with auth, payments, and 234 components**
 
 ### Description
 ```
@@ -533,7 +533,7 @@ with everything you need to launch fast.
 ✨ DEVELOPER EXPERIENCE
 • 1,500+ tests (Vitest + Playwright) - 80% pass rate
 • 95% Storybook coverage
-• 6 color themes (theme switching works)
+• 20 color themes (theme switching works)
 • 6 languages (next-intl i18n)
 • Full TypeScript strict mode
 • 400KB comprehensive documentation

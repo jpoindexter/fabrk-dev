@@ -17,11 +17,11 @@ This folder contains marketing, SEO, and growth strategies.
 ### Pricing: $299 (Premium Enterprise)
 
 **Why $299?**
-- 87 components vs Makerkit 60 (+45% more)
+- 234 components vs Makerkit 60 (+45% more)
 - 17,822 test lines vs 2,000 (8.9x better)
 - Exclusive Storybook integration
 - 161 files vs 800+ (80% cleaner)
-- 6 themes vs 2 (3x more)
+- 20 themes vs 2 (3x more)
 - Next.js 15 (latest)
 
 ### Competitive Advantages

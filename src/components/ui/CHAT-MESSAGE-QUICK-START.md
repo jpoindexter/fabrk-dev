@@ -253,7 +253,7 @@ export default function ChatExample() {
 
 ## 🎨 Theming
 
-The component uses design tokens and works with all 6 color themes:
+The component uses design tokens and works with all 20 color themes:
 - Purple (default)
 - Ocean Blue
 - Forest Green

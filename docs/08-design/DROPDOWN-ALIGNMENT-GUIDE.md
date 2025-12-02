@@ -462,7 +462,7 @@ Use this checklist when implementing new dropdown menus:
 - [ ] Scrolling works if menu is taller than viewport
 
 ### Theme Testing
-- [ ] Works with all 6 color themes
+- [ ] Works with all 20 color themes
 - [ ] No hardcoded colors (uses design tokens only)
 - [ ] Focus states are visible in all themes
 - [ ] Hover states are clear

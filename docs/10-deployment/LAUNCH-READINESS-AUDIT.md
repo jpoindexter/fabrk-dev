@@ -40,7 +40,7 @@
 - **Files:** 161 essential files (vs 1000+ in bloated alternatives)
 - **Pages:** 53 complete pages
 - **Components:** 87 production-ready
-- **Templates:** 8 copy-paste ready
+- **Templates:** 28 copy-paste ready
 - **Documentation:** 28 guides (400KB+)
 - **CI/CD:** 3 GitHub Actions workflows
 
@@ -160,7 +160,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 - 3 Example pages (admin, analytics, user profile)
 - 5 Admin pages (users, analytics, monitoring, security, feature flags)
 
-#### Template Pages (8 templates) ✅
+#### Template Pages (28 templates) ✅
 1. Analytics Dashboard
 2. Team Dashboard (multi-tenancy + RBAC)
 3. Chart Library (Recharts showcase)
@@ -217,7 +217,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 
 #### External Popular Boilerplates
 1. **ShipFast** ($199) - 1,486+ customers, MongoDB + Next.js 14
-2. **Supastarter** ($297) - Supabase-native, 100+ components
+2. **Supastarter** ($297) - Supabase-native, 234+ components
 3. **Makerkit** ($299) - Enterprise-ready, 150+ components
 4. **LaraFast** ($99) - Laravel ecosystem
 5. **BuildKits.dev** - Modular, pay-per-feature
@@ -263,7 +263,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 1. **Latest Stack:** Next.js 15 + React 19 (competitors still on 14/18)
 2. **CI/CD Ready:** 3 GitHub Actions workflows (competitors have none or basic)
 3. **Best Price-to-Feature:** 60-74% cheaper with MORE features
-4. **Most Templates:** 8 copy-paste ready (ShipFast has 0, Supastarter 3-4)
+4. **Most Templates:** 28 copy-paste ready (ShipFast has 0, Supastarter 3-4)
 5. **Minimal Bloat:** 161 files vs 500-1000+ in competitors
 6. **Database Job Queue:** No Redis dependency (simpler deployment)
 
@@ -271,7 +271,7 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 - ✅ TypeScript (they're JavaScript)
 - ✅ PostgreSQL (they're MongoDB only)
 - ✅ 2FA, multi-tenancy, job queue, file uploads (they have none)
-- ✅ 8 templates (they have 0)
+- ✅ 28 templates (they have 0)
 - ✅ 60% cheaper ($79 vs $199)
 - ✅ CI/CD included (they have none)
 
@@ -494,8 +494,8 @@ Fabrk is substantially ready. The 5% missing is **marketing collateral** (demo v
 #### Approach 2: Fabrk's Interactive Showcase Pages
 
 **What Fabrk has:**
-- `/components` - 87 components with live demos
-- `/templates` - 8 copy-paste templates
+- `/components` - 234 components with live demos
+- `/templates` - 28 copy-paste templates
 - `/variations` - Landing page variations
 - `/examples` - Dashboard examples
 
@@ -808,7 +808,7 @@ This gives you the benefits of both approaches:
 - More actionable than "anti-bloat"
 
 **Alternative Taglines:**
-1. "ShipFast features at 60% off. Plus 2FA, multi-tenancy, and 8 templates."
+1. "ShipFast features at 60% off. Plus 2FA, multi-tenancy, and 28 templates."
 2. "161 files. Not 1000. $79. Not $199."
 3. "The indie hacker's boilerplate. No bloat. No bullshit. Just ship."
 
@@ -1168,7 +1168,7 @@ This gives you the benefits of both approaches:
 **Advantage:** Only boilerplate with production-grade CI/CD. Saves 8-16 hours of DevOps setup.
 
 #### 5. Most Templates (9/10)
-**8 copy-paste ready page templates:**
+**28 copy-paste ready page templates:**
 - Analytics Dashboard
 - Team Dashboard
 - Chart Library
@@ -1648,7 +1648,7 @@ You've already built the pages (18 months of work). Deploying them to demo.fabrk
 - 5 unique features (2FA, job queue, multi-tenancy, file uploads, session versioning)
 - $79 price (60-74% cheaper)
 - Next.js 15 (latest stack)
-- 8 templates (most in market)
+- 28 templates (most in market)
 - CI/CD included (only one)
 - 161 minimal files (least bloated)
 

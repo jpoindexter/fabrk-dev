@@ -50,7 +50,7 @@ Solo founders, indie hackers, and agencies who want to skip months of infrastruc
 
 **Fabrk: Premium Next.js 15 SaaS Boilerplate**
 
-Launch production SaaS in days with 87 components, authentication, Stripe payments, multi-tenancy, real-time features, and 1,500+ tests.
+Launch production SaaS in days with 234 components, authentication, Stripe payments, multi-tenancy, real-time features, and 1,500+ tests.
 
 **Includes:**
 - NextAuth v5 (email + Google OAuth)
@@ -115,7 +115,7 @@ Stop rebuilding authentication and payments. Start with a production-ready found
 ## FAQ (Short answers for Polar.sh)
 
 **Q: What exactly do I get?**
-A: Complete Next.js 15 codebase with authentication, payments, multi-tenancy, 87 components, tests, and docs. Full source code, no limits.
+A: Complete Next.js 15 codebase with authentication, payments, multi-tenancy, 234 components, tests, and docs. Full source code, no limits.
 
 **Q: Can I use this for client projects?**
 A: Yes! Use on unlimited personal and client projects. No per-project fees.

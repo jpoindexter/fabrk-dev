@@ -10,7 +10,7 @@
 **Subject Lines** (test these):
 - "Fabrk is live - ship your SaaS in 48 hours"
 - "I built the SaaS boilerplate I wish existed"
-- "87 components, 8 templates, one price"
+- "234 components, 28 templates, one price"
 
 ```
 Subject: Fabrk is live - ship your SaaS in 48 hours
@@ -23,7 +23,7 @@ It's the SaaS boilerplate I wish existed when I started building.
 
 **What's inside:**
 - 87 production-ready UI components
-- 8 copy-paste page templates
+- 28 copy-paste page templates
 - NextAuth v5 (OAuth + email/password + MFA)
 - Stripe payments with webhooks
 - Prisma + PostgreSQL
@@ -51,7 +51,7 @@ P.S. There's a 30-day money-back guarantee. If it's not for you, full refund, no
 **Send**: Day 2-3
 **Subject Lines**:
 - "What's actually inside Fabrk"
-- "The 87 components that save you weeks"
+- "The 234 components that save you weeks"
 - "Here's everything you get with Fabrk"
 
 ```
@@ -180,8 +180,8 @@ Quick heads up: the launch pricing for Fabrk ends [DATE].
 After that, the price goes up to $399.
 
 **What you get at $299:**
-- 87 production-ready components
-- 8 copy-paste page templates
+- 234 production-ready components
+- 28 copy-paste page templates
 - Complete auth system (OAuth, MFA, sessions)
 - Stripe integration (checkout, webhooks, portal)
 - Database schema with 18+ models

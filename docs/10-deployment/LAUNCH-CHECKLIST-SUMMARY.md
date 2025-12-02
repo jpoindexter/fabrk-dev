@@ -27,7 +27,7 @@
 
 ### Documentation 📚
 - [ ] All 46 components documented
-- [ ] All 8 templates have usage guides
+- [ ] All 28 templates have usage guides
 - [ ] API reference complete
 - [ ] Storybook stories for all components
 - [ ] Installation instructions verified from scratch

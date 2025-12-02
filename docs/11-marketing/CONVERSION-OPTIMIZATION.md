@@ -97,7 +97,7 @@ Purchase Completed (0.9-4%)
 People fear losing more than they desire gaining.
 
 **Framing for gain:**
-> "Get 87 components for $79"
+> "Get 234 components for $79"
 
 **Framing for loss (more effective):**
 > "Don't waste 46 hours building what's already done. Save $2,300 in dev time."
@@ -175,7 +175,7 @@ Enterprise:   $299
 > "From idea to launched SaaS in 72 hours"
 
 **3. Number-Specific:**
-> "87 production-ready components for Next.js 15"
+> "234 production-ready components for Next.js 15"
 
 **4. Question (pain point):**
 > "Tired of over-engineered boilerplates with 1000+ files?"
@@ -198,7 +198,7 @@ Enterprise:   $299
 | Feature (What) | Benefit (Why it matters) |
 |----------------|--------------------------|
 | TypeScript strict mode | Catch bugs before production, ship with confidence |
-| 87 components | Save 46 hours of dev time, focus on unique features |
+| 234 components | Save 46 hours of dev time, focus on unique features |
 | PostgreSQL + Prisma | Scale to millions of users without rewriting database layer |
 | Stripe integration | Start making money on day 1, no payment integration headaches |
 | NextAuth v5 | Secure auth out of the box, sleep well at night |
@@ -240,7 +240,7 @@ Not weeks of boilerplate      ← 24px, regular
 
 [Get Started - $79] ← Purple button, prominent
 
-87 components. TypeScript. Next.js 15. ← 18px, muted
+234 components. TypeScript. Next.js 15. ← 18px, muted
 ```
 
 ### 2. Color Psychology
@@ -526,7 +526,7 @@ Starter: $49
 └─ 1 project
 
 Professional: $99 ← Most Popular (⭐️ Highlighted)
-├─ 87 components
+├─ 234 components
 ├─ Priority support
 ├─ Unlimited projects
 └─ Discord access

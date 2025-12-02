@@ -13,7 +13,7 @@ Complete API, architecture, and technical reference documentation.
 - **[Security Implementation](./SECURITY.md)** - Security features & best practices
 
 ## Component Library
-- **[Component Showcase](../02-components/)** - All 87 production-ready components
+- **[Component Showcase](../02-components/)** - All 234 production-ready components
 - **[Design System](../02-components/DESIGN-SYSTEM.md)** - Design tokens, themes, patterns
 
 ---

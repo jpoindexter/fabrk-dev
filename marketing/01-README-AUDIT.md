@@ -8,7 +8,7 @@ Before marketing, verify all claims in the README and landing page are accurate.
 ## Claims to Verify
 
 ### Component Count
-**Claimed**: 87 components
+**Claimed**: 234 components
 
 **How to verify**:
 ```bash

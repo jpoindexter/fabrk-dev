@@ -19,7 +19,7 @@ This guide walks you through setting up your Fabrk boilerplate product in Stripe
    - **Name:** `Fabrk Boilerplate` (or `Fabrk - SaaS Boilerplate`)
    - **Description:**
      ```
-     Premium SaaS boilerplate with 87 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.
+     Premium SaaS boilerplate with 234 production-ready components, authentication, Stripe payments, and everything needed to launch immediately.
      ```
    - **Image:** Upload your Fabrk logo
 

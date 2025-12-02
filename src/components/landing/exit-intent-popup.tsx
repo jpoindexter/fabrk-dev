@@ -64,7 +64,7 @@ interface ExitIntentPopupProps {
 
 export function ExitIntentPopup({
   title = "Wait! Before You Go...",
-  description = "Get Fabrk and launch your SaaS 10x faster. 100 components, authentication, payments, and more.",
+  description = "Get Fabrk and launch your SaaS 10x faster. 234 components, authentication, payments, and more.",
   secondaryCtaText = "No thanks, I'll build from scratch",
   showPricing = true,
   delay = 300,

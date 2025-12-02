@@ -174,7 +174,7 @@ The landing page components override Button's brutal styling:
 ## ROOT CAUSES
 
 ### 1. Landing Page Created Before Theme
-The landing page components (`src/components/landing/*`) appear to have been created with a generic blue/white ShipFast-style theme BEFORE the neo-brutalism theme was applied. They never got updated.
+The landing page components (`src/components/landing/*`) appear to have been created with a generic blue/white pragmatic theme BEFORE the neo-brutalism theme was applied. They never got updated.
 
 ### 2. Form Components Not Updated
 Input, Select, and Textarea components were not updated with brutal styling when Button and Card were updated.

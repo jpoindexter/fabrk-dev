@@ -1,6 +1,6 @@
 # Fabrk Premium - Documentation Index
 
-**Fabrk Premium:** $299 | 87 Components | 8 Templates | 6 Themes
+**Fabrk Premium:** $299 | 87 Components | 28 Templates | 6 Themes
 
 Complete index of all documentation organized into numbered sections for easy navigation.
 
@@ -26,7 +26,7 @@ docs/
 ### New Developer
 1. [01-getting-started/QUICK-START.md](./01-getting-started/QUICK-START.md) - Setup in 5 minutes
 2. [01-getting-started/README.md](./01-getting-started/README.md) - Project overview
-3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 87 components
+3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 234 components
 
 ### Preparing for Launch
 1. [05-deployment/V1-BLOCKER-FIXES.md](./05-deployment/V1-BLOCKER-FIXES.md) - ⚠️ Critical pre-launch fixes
@@ -60,7 +60,7 @@ docs/
 **Path:** `docs/02-components/`
 
 **Contents:**
-- **COMPONENTS-INVENTORY.md** - All 87 components listed
+- **COMPONENTS-INVENTORY.md** - All 234 components listed
 - **COMPONENT-BEST-PRACTICES.md** - Design patterns
 - **CHARTS-GUIDE.md** - Recharts integration
 - **LANDING-PAGE-VARIATIONS.md** - 4 landing page styles
@@ -148,11 +148,11 @@ docs/
 **Pricing: $299 (Premium Enterprise)**
 
 **Why $299?**
-- 87 components vs Makerkit 60 (+45%)
+- 234 components vs Makerkit 60 (+45%)
 - Complete testing suite
 - Exclusive Storybook integration
 - 156 files vs 800+ (80% cleaner)
-- 6 themes vs 2 (3x more)
+- 20 themes vs 2 (3x more)
 - Next.js 15 (latest)
 
 ---
@@ -206,9 +206,9 @@ docs/
 ## 📊 Project Statistics
 
 ### Components & Templates
-- **87 components** - Production-ready UI library
-- **8 templates** - Copy-paste layouts
-- **6 themes** - OKLCH color variations
+- **234 components** - Production-ready UI library
+- **28 templates** - Copy-paste layouts
+- **20 themes** - OKLCH color variations
 - **82 Storybook stories** - Visual documentation
 
 ### Testing & Quality

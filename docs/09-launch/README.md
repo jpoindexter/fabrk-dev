@@ -138,7 +138,7 @@ A: Have a rollback plan. See LAUNCH-CHECKLIST.md "Rollback Plan" section.
 A: Via GitHub private repository. See DISTRIBUTION-SETUP.md for complete setup.
 
 **Q: What's included in the launch?**
-A: Full source code, 87 components, complete documentation, 72 test files, all examples.
+A: Full source code, 234 components, complete documentation, 72 test files, all examples.
 
 **Q: Can customers extend/customize?**
 A: Yes! Code is copy-paste friendly. Customers should customize, not extend.

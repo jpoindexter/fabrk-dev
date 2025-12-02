@@ -64,7 +64,7 @@ Work through each phase in order. Check off items as you complete them.
 Use these verified numbers in your copy:
 
 - **Components**: 87 production-ready UI components
-- **Templates**: 8 copy-paste page templates
+- **Templates**: 28 copy-paste page templates
 - **Themes**: 20 DaisyUI themes
 - **Time Saved**: 73+ hours
 - **Price**: $299 (one-time, lifetime)

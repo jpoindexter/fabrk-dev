@@ -11,11 +11,11 @@ Update these in `src/lib/metadata.ts` and individual page files:
 ```typescript
 export const metadata: Metadata = {
   title: "Fabrk - Ship SaaS in Days, Not Months | 87 Components",
-  description: "Production-ready Next.js 15 SaaS boilerplate with 87 components, authentication, payments, and complete documentation. Launch in 2 weeks instead of 2 months. $299 one-time.",
+  description: "Production-ready Next.js 15 SaaS boilerplate with 234 components, authentication, payments, and complete documentation. Launch in 2 weeks instead of 2 months. $299 one-time.",
   keywords: ["SaaS boilerplate", "Next.js template", "TypeScript", "Stripe", "NextAuth"],
   og: {
     title: "Fabrk - The Complete SaaS Boilerplate",
-    description: "87 production-ready components + auth + payments. Ship SaaS faster.",
+    description: "234 production-ready components + auth + payments. Ship SaaS faster.",
     image: "https://fabrk.dev/og-image.png",
     url: "https://fabrk.dev",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 ```typescript
 export const metadata: Metadata = {
   title: "Features - Fabrk SaaS Boilerplate",
-  description: "87 production-ready components, NextAuth v5, Stripe integration, PostgreSQL + Prisma, Resend emails, real-time with Pusher, multi-tenancy, and more.",
+  description: "234 production-ready components, NextAuth v5, Stripe integration, PostgreSQL + Prisma, Resend emails, real-time with Pusher, multi-tenancy, and more.",
 };
 ```
 
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 ```typescript
 export const metadata: Metadata = {
   title: "Components - 87 Production-Ready UI Components",
-  description: "Explore all 87 production-ready components with Storybook integration, TypeScript, and accessibility features. 95% Storybook coverage.",
+  description: "Explore all 234 production-ready components with Storybook integration, TypeScript, and accessibility features. 95% Storybook coverage.",
 };
 ```
 
@@ -91,7 +91,7 @@ export const productSchema = {
   "@type": "Product",
   name: "Fabrk",
   image: "https://fabrk.dev/og-image.png",
-  description: "87 components + auth + payments + multi-tenancy",
+  description: "234 components + auth + payments + multi-tenancy",
   brand: {
     "@type": "Brand",
     name: "Fabrk",
@@ -299,7 +299,7 @@ All pages have canonical URL (no duplicates):
 - [ ] Smashing Magazine (professional dev)
 
 Topics:
-- "We built 87 components—here's what we learned"
+- "We built 234 components—here's what we learned"
 - "Why test coverage matters for boilerplate code"
 - "The complete guide to production-ready SaaS"
 
@@ -332,7 +332,7 @@ Link between pages:
 - Testimonials → Case studies
 
 Use anchor text with keywords:
-- ✅ "87 production-ready components"
+- ✅ "234 production-ready components"
 - ✅ "SaaS boilerplate with payments"
 - ✅ "NextAuth integration"
 - ❌ "click here"

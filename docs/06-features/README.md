@@ -15,7 +15,7 @@ This folder contains documentation for all Fabrk features and integrations.
 
 ## Quick Links
 
-- [Feature Inventory](./FEATURES-INVENTORY.md) - See all 87 components and features
+- [Feature Inventory](./FEATURES-INVENTORY.md) - See all 234 components and features
 - [Enterprise Setup](./ENTERPRISE-FEATURES-SETUP.md) - Premium features
 - [Accessibility](./ACCESSIBILITY.md) - WCAG compliance guide
 - [Internationalization](./I18N-IMPLEMENTATION.md) - Multi-language support

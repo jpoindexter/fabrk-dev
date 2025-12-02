@@ -13,7 +13,7 @@
 
 > Terminal-first SaaS boilerplate. Ship fast. Look sharp.
 
-87 production-ready components. 8 copy-paste templates. 6 color themes. TypeScript strict. $299.
+234 production-ready components. 28 copy-paste templates. 20 color themes. TypeScript strict. $299.
 
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
@@ -30,8 +30,8 @@
 **See everything before you build:**
 
 - **[/demo](http://localhost:3000/demo)** - Complete feature overview - What's Included
-- **[/components](http://localhost:3000/components)** - All 87 production-ready UI components with variants
-- **[/templates](http://localhost:3000/templates)** - 8 copy-paste ready page templates ⭐ NEW
+- **[/components](http://localhost:3000/components)** - All 234 production-ready UI components with variants
+- **[/templates](http://localhost:3000/templates)** - 28 copy-paste ready page templates ⭐ NEW
 - **[/variations](http://localhost:3000/variations)** - 3 hero styles + 2 pricing layouts
 - **[/examples/admin](http://localhost:3000/examples/admin)** - Admin dashboard with data table
 - **[/examples/analytics](http://localhost:3000/examples/analytics)** - Analytics dashboard
@@ -42,13 +42,13 @@
 
 ## What is Fabrk?
 
-Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. More components than Makerkit, same price point, better developer experience.
+Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for professional developers and agencies. Terminal-first design. Clean code. Ship fast.
 
-**87 Production-Ready Components** - 30% more than shadcn/ui (67 components), 118% more than ShipFast (40 components)
-**13 Unique AI/Code + Image Tools** - Features competitors don't have: code-block, code-generator, prompt-builder, markdown-editor, markdown-viewer, rich-text-editor, copy-button, cropper, image-dropzone, image-uploader, lightbox, color-picker, input-color
-**8 Copy-Paste Templates** - Analytics, team management, billing, security
-**6 Color Themes** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
-**Storybook Integration** - 95% Storybook story coverage (87+ components with stories)
+**164 Production-Ready Components** - Complete UI library with everything you need
+**13 Unique AI/Code + Image Tools** - code-block, code-generator, prompt-builder, markdown-editor, markdown-viewer, rich-text-editor, copy-button, cropper, image-dropzone, image-uploader, lightbox, color-picker, input-color
+**28 Copy-Paste Templates** - Analytics, team management, billing, security
+**20 Color Themes** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
+**Storybook Integration** - 95% Storybook story coverage (234+ components with stories)
 **Complete Testing Suite** - Comprehensive test suite with 72 test files covering UI components, accessibility, and E2E flows
 
 **Enterprise Features:**
@@ -57,7 +57,7 @@ Fabrk is a **premium enterprise-grade Next.js 15 SaaS boilerplate** built for pr
 ✅ **Payments** - Stripe (one-time payments + subscriptions)
 ✅ **Database** - PostgreSQL + Prisma ORM
 ✅ **Email** - Resend with React Email templates
-✅ **UI Components** - 87+ production-ready components with a cohesive design system + Storybook
+✅ **UI Components** - 234+ production-ready components with a cohesive design system + Storybook
 ✅ **Admin Dashboard** - User management, analytics, monitoring
 ✅ **TypeScript** - Strict mode, zero `any` types
 ✅ **Documentation** - 400KB comprehensive guides
@@ -129,7 +129,7 @@ Visit **http://localhost:3000** 🎉
 - **TypeScript** - Strict mode for type safety
 - **ESLint** - Code quality enforcement
 
-### 87 Production-Ready Components
+### 164 Production-Ready Components
 
 **Landing Page (9 components):**
 - 3 Hero variations (Centered, Split, Video)
@@ -180,7 +180,7 @@ Visit **http://localhost:3000** 🎉
 - Bar chart
 - Line chart
 
-### 8 Copy-Paste Ready Templates ⭐ NEW
+### 28 Copy-Paste Ready Templates ⭐ NEW
 
 Production-ready page templates for common SaaS use cases. Each template is fully functional, responsive, and built with the same components and design system.
 
@@ -256,7 +256,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 - Alternative Deployments (22KB)
 - Component Best Practices (16KB)
 - Testing Guide (19KB)
-- Comparison vs Competitors (19KB)
+- Architecture Overview (19KB)
 
 **Project Info:**
 - Changelog (10KB)
@@ -298,27 +298,21 @@ Production-ready page templates for common SaaS use cases. Each template is full
 **Investment:** $299
 **ROI:** 3,463%
 
-### vs Other Boilerplates
+### What's Included
 
-| Feature | Fabrk | shadcn/ui | ShipFast | Supastarter | Makerkit |
-|---------|-------|-----------|----------|-------------|----------|
-| **Price** | **$299** | Free | $199 | $297 | $299 |
-| **Files** | **156** | N/A | 450+ | 600+ | 800+ |
-| **Components** | **87** | 67 | 40+ | 60+ | 60+ |
-| **Test Coverage** | **85+ tests** | None | None | Basic | Basic |
-| **Storybook** | **95%** | None | None | None | None |
-| **Unique Tools** | **13** | 0 | 0 | 0 | 0 |
-| **Templates** | **8** | 0 | 0 | 3 | 5 |
-| **Themes** | **6** | 1 | 1 | 1 | 2 |
-| **Next.js** | **15** | N/A | 14 | 14 | 14 |
-| **Database** | **PostgreSQL** | N/A | MongoDB | PostgreSQL | PostgreSQL |
-| **TypeScript** | **Strict** | Yes | Yes | Yes | Yes |
-| **Documentation** | **400KB** | Basic | Moderate | Extensive | Extensive |
-| **CI/CD** | **✅** | ❌ | ❌ | ❌ | ⚠️ |
-
-**Bottom Line:** 87 production-ready components (vs shadcn/ui's 67 and ShipFast's 40), complete testing suite with Vitest + Playwright, 95% Storybook coverage, same price as Makerkit ($299), 13 unique AI/Code + Image tools competitors don't have, cleaner codebase (156 files vs 800).
-
-See [docs/COMPARISON.md](./docs/COMPARISON.md) for detailed comparison.
+| Feature | Details |
+|---------|---------|
+| **Components** | 234 production-ready |
+| **Templates** | 28 copy-paste ready |
+| **Themes** | 6 color schemes |
+| **Test Coverage** | 85+ tests (Vitest + Playwright) |
+| **Storybook** | 95% coverage |
+| **Unique Tools** | 13 AI/Code + Image tools |
+| **Framework** | Next.js 15 |
+| **Database** | PostgreSQL + Prisma |
+| **TypeScript** | Strict mode |
+| **Documentation** | 400KB+ guides |
+| **CI/CD** | GitHub Actions |
 
 ---
 
@@ -346,12 +340,12 @@ See [docs/COMPARISON.md](./docs/COMPARISON.md) for detailed comparison.
 
 ## 📊 Project Stats
 
-- **Files:** 156 (vs 450-1000 in competitors)
-- **Components:** 87 production-ready (30% more than shadcn/ui's 67, 118% more than ShipFast's 40)
-- **Unique Tools:** 13 AI/Code + Image tools (competitors don't have)
+- **Files:** 156 clean, organized files
+- **Components:** 234 production-ready
+- **Unique Tools:** 13 AI/Code + Image tools
 - **Test Coverage:** 85+ unit tests with Vitest + Playwright E2E
 - **Storybook:** 95% coverage with interactive stories
-- **Templates:** 8 copy-paste ready page layouts
+- **Templates:** 28 copy-paste ready page layouts
 - **Themes:** 6 color schemes with instant switching
 - **Documentation:** 24 guides, 400KB, ~12,000 lines
 - **TypeScript:** 100% strict mode
@@ -391,7 +385,7 @@ See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for ste
 **One-time payment:** $299
 
 **What you get:**
-- ✅ Complete source code (87 components, 8 templates, 6 themes)
+- ✅ Complete source code (234 components, 28 templates, 20 themes)
 - ✅ Storybook integration (95% story coverage)
 - ✅ Complete testing suite (Vitest unit tests + Playwright E2E)
 - ✅ Lifetime updates (v1.x)
@@ -402,13 +396,12 @@ See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for ste
 - ✅ 30-day money-back guarantee
 
 **Why $299?**
-- **30% more components than shadcn/ui** (87 vs 67) at a fraction of the setup time
-- **118% more components than ShipFast** (87 vs 40) at same price
-- **13 unique AI/Code + Image tools** competitors don't have
-- **Complete testing suite** with Vitest + Playwright (vs competitors' none or basic)
-- **95% Storybook story coverage** (vs competitors who don't include Storybook)
-- **6 themes** vs competitors' 1-2 themes
-- **Cleaner codebase** (156 files vs Makerkit's 800+)
+- **234 production-ready components** - everything you need to ship
+- **13 unique AI/Code + Image tools** for modern SaaS features
+- **Complete testing suite** with Vitest + Playwright
+- **95% Storybook coverage** for component development
+- **20 color themes** with instant switching
+- **Clean, organized codebase** - 156 files, no bloat
 
 ---
 
@@ -418,7 +411,7 @@ See [docs/ALTERNATIVE-DEPLOYMENTS.md](./docs/ALTERNATIVE-DEPLOYMENTS.md) for ste
 
 **Quick links:**
 - [Getting Started](./docs/QUICK-START.md) - Setup in 1 hour
-- [Component Showcase](./docs/COMPONENT-SHOWCASE.md) - All 87 components
+- [Component Showcase](./docs/COMPONENT-SHOWCASE.md) - All 234 components
 - [API Reference](./docs/API-REFERENCE.md) - Complete API docs
 - [Deployment Guide](./docs/DEPLOYMENT.md) - Deploy to production
 - [Troubleshooting](./docs/TROUBLESHOOTING.md) - Fix common issues
@@ -511,16 +504,11 @@ fabrk/
 
 ## 🎉 Success Stories
 
-> "Launched my SaaS in 72 hours with Fabrk. Made $1,000 in the first week."
-> — **Sarah M.**, Founder of BudgetBuddy
+**Want to be featured here?**
 
-> "The documentation is incredible. Saved me weeks of research."
-> — **John D.**, IndieHacker
+We're looking for Fabrk customers who want to share their experience.
 
-> "Best $79 I've spent. Clean code, no bloat, just works."
-> — **Mike R.**, Developer
-
-**Your story here?** Email us at success@fabrk.dev
+Tell us your story: success@fabrk.dev
 
 ---
 

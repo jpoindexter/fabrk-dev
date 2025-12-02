@@ -147,7 +147,7 @@ import { FAQSection } from "@/components/seo";
 const faqs = [
   {
     question: "What is included in Fabrk?",
-    answer: "Fabrk includes authentication, payments, database, email, and 87 production-ready components."
+    answer: "Fabrk includes authentication, payments, database, email, and 234 production-ready components."
   },
   {
     question: "How long does it take to deploy?",
@@ -193,7 +193,7 @@ Featured snippets love structured data:
 2. **Payments** - Stripe subscriptions + one-time
 3. **Database** - Prisma + PostgreSQL
 4. **Email** - React Email + Resend
-5. **Components** - 87 production-ready components
+5. **Components** - 234 production-ready components
 ```
 
 ### AEO Checklist
@@ -273,7 +273,7 @@ const content = generateCitableFormat({
   keyPoints: [
     "Built with Next.js 15 and TypeScript",
     "Includes Stripe integration",
-    "87 production-ready components"
+    "234 production-ready components"
   ],
   facts: [
     { claim: "Saves 216 hours of development time", source: "Internal analysis" },

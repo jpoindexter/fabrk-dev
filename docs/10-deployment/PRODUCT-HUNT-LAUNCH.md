@@ -48,12 +48,12 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 
 **Product Hunt tagline** (60 characters max):
 ```
-"Ship SaaS in days, not months. 87 production-ready components."
+"Ship SaaS in days, not months. 234 production-ready components."
 ```
 
 Alternative ideas:
 - "The complete Next.js 15 SaaS boilerplate"
-- "87 components + payments + auth + docs. Launch ready."
+- "234 components + payments + auth + docs. Launch ready."
 - "3x faster to launch with production-ready code"
 
 ### 4. Create Gallery (T-7 days)
@@ -95,7 +95,7 @@ This is wasteful. Your customers don't care about your auth form; they care abou
 ## The Solution
 
 Fabrk is production-ready SaaS boilerplate with:
-- ✅ 87 production-ready components
+- ✅ 234 production-ready components
 - ✅ Authentication (NextAuth v5)
 - ✅ Payments (Stripe)
 - ✅ Email system (Resend)
@@ -129,18 +129,18 @@ Fabrk is production-ready SaaS boilerplate with:
 ## Why This Matters
 
 **For indie hackers**: Launch in 1 week instead of 2 months
-**For agencies**: 87 components = no UI building
+**For agencies**: 234 components = no UI building
 **For teams**: Production-ready = fewer bugs
 **For everyone**: $299 investment, save thousands in dev time
 
 ## By The Numbers
 
 - **156 files** vs competitors' 450-1000
-- **87 components** vs shadcn/ui's 67 (30% more)
+- **234 components** vs shadcn/ui's 67 (30% more)
 - **95% documented** with Storybook
 - **64% test coverage** with 931+ tests
 - **400KB docs** with 24 guides
-- **6 color themes** for instant branding
+- **20 color themes** for instant branding
 - **$299 one-time** price
 
 ## Real Results
@@ -256,7 +256,7 @@ TL;DR: 87 production components + auth + payments + docs. Ship SaaS in days.
 Mention when relevant:
 - "Built by indie developers, for indie developers"
 - "Production-ready = tested, documented, no bugs"
-- "87 components saves 3-4 weeks of dev time"
+- "234 components saves 3-4 weeks of dev time"
 - "Same price as Makerkit, 45% more components"
 - "Lifetime access, infinite projects"
 
@@ -295,7 +295,7 @@ Open to feedback on how to improve this. What would be most helpful?
 ```
 🚀 We just shipped Fabrk on Product Hunt!
 
-87 production-ready components + auth + payments + docs.
+234 production-ready components + auth + payments + docs.
 Ship your SaaS in days, not months.
 
 $299. Lifetime access. Made by indie devs, for indie devs.

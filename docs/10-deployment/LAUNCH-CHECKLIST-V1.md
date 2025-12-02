@@ -66,7 +66,7 @@
 
 - [ ] **Manual testing**
   - [ ] Test all 46 components in Storybook: `npm run storybook`
-  - [ ] Test all 8 templates in browser
+  - [ ] Test all 28 templates in browser
   - [ ] Test all 6 theme variations
   - [ ] Test on mobile devices (iOS Safari, Android Chrome)
   - [ ] Test dark mode toggle
@@ -136,7 +136,7 @@
 - [ ] **README.md polish**
   - [ ] Hero section compelling (see template below)
   - [ ] Quick start guide accurate (test from scratch)
-  - [ ] Feature list complete (46 components, 8 templates, 6 themes)
+  - [ ] Feature list complete (46 components, 28 templates, 20 themes)
   - [ ] Tech stack documented
   - [ ] Installation steps verified
   - [ ] Links working (GitHub, Discord, support email)
@@ -516,12 +516,12 @@
 ```markdown
 # Fabrk Component Library v1.0.0
 
-We're excited to announce the initial release of **Fabrk**, a production-ready Next.js 15 SaaS boilerplate with 46 fully-tested components, 8 templates, and 6 theme variations.
+We're excited to announce the initial release of **Fabrk**, a production-ready Next.js 15 SaaS boilerplate with 46 fully-tested components, 28 templates, and 6 theme variations.
 
 ## Highlights
 
 - **46 Production-Ready Components** - All tested with 100% coverage
-- **8 Copy-Paste Templates** - Analytics, Team Dashboard, User Management, and more
+- **28 Copy-Paste Templates** - Analytics, Team Dashboard, User Management, and more
 - **6 Theme Variations** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
 - **17,822 Lines of Test Code** - Vitest + Playwright + Accessibility tests
 - **100% TypeScript** - Strict mode, zero `any` types
@@ -653,7 +653,7 @@ Check it out: https://github.com/yourusername/fabrk
 ---
 title: Introducing Fabrk v1.0 - Production-Ready Next.js SaaS Boilerplate
 published: true
-description: 46 fully-tested components, 8 templates, 6 themes. 161 files, not 1000.
+description: 46 fully-tested components, 28 templates, 20 themes. 161 files, not 1000.
 tags: nextjs, react, typescript, opensource
 cover_image: https://yourdomain.com/images/fabrk-cover.png
 ---
@@ -678,7 +678,7 @@ Every component is:
 
 [Component breakdown with code examples]
 
-### 8 Copy-Paste Templates
+### 28 Copy-Paste Templates
 
 [Template showcase with screenshots]
 
@@ -691,8 +691,8 @@ Every component is:
 - **17,822 lines** of test code
 - **100% coverage** on all components
 - **46 components** fully tested
-- **8 templates** ready to use
-- **6 themes** to choose from
+- **28 templates** ready to use
+- **20 themes** to choose from
 
 ## Tech Stack
 
@@ -760,7 +760,7 @@ Fabrk is a production-ready Next.js 15 SaaS boilerplate with everything you need
 
 🎯 What's Included
 ✅ 46 fully-tested components
-✅ 8 copy-paste ready templates
+✅ 28 copy-paste ready templates
 ✅ 6 theme variations
 ✅ Authentication (NextAuth v5)
 ✅ Payments (Stripe)
@@ -820,7 +820,7 @@ I got tired of boilerplates with 1000+ files where 80% are unnecessary. Fabrk ha
 - 17,822 lines of test code (100% coverage)
 - TypeScript strict mode (zero `any` types)
 - Next.js 15, NextAuth v5, Stripe, PostgreSQL
-- 8 copy-paste templates (analytics, user management, billing, etc.)
+- 28 copy-paste templates (analytics, user management, billing, etc.)
 - 6 theme variations (OKLCH colors for accessibility)
 
 **Tech stack:**
@@ -856,7 +856,7 @@ After [X months] of development and testing, Fabrk is ready for production use.
 
 **What's Included:**
 • 46 production-ready components (100% tested)
-• 8 copy-paste templates
+• 28 copy-paste templates
 • 6 theme variations
 • Next.js 15, TypeScript, NextAuth v5, Stripe
 • 17,822 lines of test code

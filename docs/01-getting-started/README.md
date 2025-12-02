@@ -2,7 +2,7 @@
 
 Complete guide to all Fabrk documentation. Start here to find what you need.
 
-**Fabrk Premium:** $299 | 87 Components | 8 Templates | 6 Themes | 17,822 Test Lines | Storybook Integrated
+**Fabrk Premium:** $299 | 87 Components | 28 Templates | 6 Themes | 17,822 Test Lines | Storybook Integrated
 
 ---
 
@@ -270,7 +270,7 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 **Product Stats:**
 - **87 Components** (more than Makerkit's 60)
-- **8 Templates** (Analytics, Team, Charts, User Management, Settings, Billing, Security, Emails)
+- **28 Templates** (Analytics, Team, Charts, User Management, Settings, Billing, Security, Emails)
 - **6 Themes** (Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red)
 - **17,822 Test Lines** (Vitest + Playwright + Storybook)
 - **Storybook Integration** (Interactive component development)

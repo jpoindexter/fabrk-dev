@@ -301,7 +301,7 @@ Configured in `next.config.ts`: HSTS, X-Frame-Options, CSP, X-Content-Type-Optio
 - [ ] Replace React Email with plain HTML templates (like ShipFast uses Mailgun)
 - [ ] Combine all Stripe logic into `src/lib/stripe.ts` (one file, ~150 lines)
 - [ ] Flatten `src/app/api/auth/` - 3 routes max (register, verify, reset-password)
-- [ ] Convert `src/config.js` to ShipFast style - ALL settings in one file
+- [ ] Convert `src/config.js` to pragmatic style - ALL settings in one file
 
 ### 3. Component Philosophy
 ```javascript

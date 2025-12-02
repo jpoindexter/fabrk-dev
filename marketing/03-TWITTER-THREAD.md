@@ -10,7 +10,7 @@ Post each tweet separately as a thread. Start with Tweet 1, then reply with Twee
 ```
 I spent 6 months building the SaaS boilerplate I wish existed.
 
-87 components. 8 templates. Everything you need to ship fast.
+234 components. 28 templates. Everything you need to ship fast.
 
 Here's what's inside Fabrk:
 
@@ -40,8 +40,8 @@ So I built Fabrk.
 
 A complete Next.js 15 boilerplate with:
 
-✓ 87 production-ready components
-✓ 8 copy-paste page templates
+✓ 234 production-ready components
+✓ 28 copy-paste page templates
 ✓ Auth, payments, database, email
 ✓ 20 beautiful themes
 
@@ -173,8 +173,8 @@ Here's the SaaS boilerplate I wish existed years ago:
 
 ### Hook B (Numbers)
 ```
-87 components.
-8 templates.
+234 components.
+28 templates.
 20 themes.
 73+ hours saved.
 

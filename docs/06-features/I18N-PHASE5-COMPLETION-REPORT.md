@@ -476,7 +476,7 @@ The following components contain hardcoded strings and should be updated in futu
    - `src/app/(dashboard)/billing/page.tsx` - Billing information
    - `src/app/(dashboard)/organizations/*/page.tsx` - Organization pages (4 pages)
 
-3. **Template Pages** (8 templates)
+3. **Template Pages** (28 templates)
    - `src/app/templates/analytics-dashboard/page.tsx`
    - `src/app/templates/billing-dashboard/page.tsx`
    - `src/app/templates/settings-page/page.tsx`
@@ -768,7 +768,7 @@ export async function generateMetadata({ params: { locale } }) {
 1. **Translate Remaining Components**
    - Landing page sections (hero, features, pricing)
    - Dashboard pages (settings, billing)
-   - Template pages (8 templates)
+   - Template pages (28 templates)
    - Estimated: 150-200 translation keys
 
 2. **Add Metadata Translations**

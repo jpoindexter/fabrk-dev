@@ -46,7 +46,7 @@ Fabrk is different:
 • TypeScript strict mode (no `any` types)
 • PostgreSQL (portable, scalable)
 • Next.js 15 + React 19 (latest)
-• 87 production-ready components
+• 234 production-ready components
 
 Everything you need. Nothing you don't.
 ```
@@ -85,7 +85,7 @@ Production quality:
 • 95% Storybook coverage
 • 400KB+ documentation
 • WCAG 2.1 AA accessibility
-• 6 color themes
+• 20 color themes
 • Mobile responsive
 
 Not a starter template. A production-ready foundation.
@@ -133,7 +133,7 @@ Every boilerplate I tried had 1000+ files I couldn't understand. I spent more ti
 - Auth (NextAuth v5 + Google OAuth + Magic Links)
 - Payments (Stripe one-time & subscriptions)
 - Email (Resend + React Email)
-- 87 production-ready components
+- 234 production-ready components
 - Admin dashboard
 - Multi-tenancy + Role-based access
 - Webhooks + API keys
@@ -169,7 +169,7 @@ Show HN: Fabrk – Next.js 15 SaaS boilerplate (161 files, TypeScript strict)
 I built this because I was frustrated with bloated boilerplates that have 1000+ files you can't understand.
 
 Fabrk includes:
-- 87 production-ready components
+- 234 production-ready components
 - NextAuth v5 + Stripe integration
 - PostgreSQL with Prisma (not MongoDB)
 - TypeScript strict mode (no `any` types)
@@ -201,7 +201,7 @@ https://fabrk.dev
 
 ### Short Description (260 chars)
 ```
-The anti-bloat Next.js 15 boilerplate. 87 production-ready components, TypeScript strict mode, PostgreSQL, NextAuth v5, Stripe payments, and multi-tenancy. Everything you need to launch your SaaS - nothing you don't. One-time purchase, unlimited projects.
+The anti-bloat Next.js 15 boilerplate. 234 production-ready components, TypeScript strict mode, PostgreSQL, NextAuth v5, Stripe payments, and multi-tenancy. Everything you need to launch your SaaS - nothing you don't. One-time purchase, unlimited projects.
 ```
 
 ### Maker's First Comment
@@ -216,7 +216,7 @@ Every starter kit I tried had 1000+ files. I spent more time understanding their
 ✅ TypeScript strict mode (no `any`)
 ✅ PostgreSQL (not MongoDB lock-in)
 ✅ Next.js 15 + React 19
-✅ 87 production-ready components
+✅ 234 production-ready components
 
 Everything is documented, tested, and ready for production.
 
@@ -260,7 +260,7 @@ Happy to answer any questions! What would you want to see in a boilerplate like 
 - Browser: Component library (7 sec)
 
 **[0:45-1:00] FEATURES**
-> "87 components. Stripe payments. NextAuth v5. PostgreSQL. Real-time notifications. Admin dashboard. All production-ready."
+> "234 components. Stripe payments. NextAuth v5. PostgreSQL. Real-time notifications. Admin dashboard. All production-ready."
 
 **[1:00-1:15] SOCIAL PROOF**
 > "TypeScript strict mode. 130 tests. 95% Storybook coverage. 400KB of documentation."

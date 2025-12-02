@@ -8,7 +8,7 @@
 
 ### Post Template
 
-**Title**: I built a Next.js SaaS boilerplate with 87 components and 8 templates
+**Title**: I built a Next.js SaaS boilerplate with 234 components and 28 templates
 
 ```
 Hey IH!
@@ -28,7 +28,7 @@ It was driving me crazy. So I packaged everything into one boilerplate.
 **What's Inside**
 
 - 87 production-ready UI components
-- 8 copy-paste page templates (dashboards, settings, billing)
+- 28 copy-paste page templates (dashboards, settings, billing)
 - NextAuth v5 with OAuth + email/password + MFA
 - Stripe integration (checkout, webhooks, customer portal)
 - Prisma + PostgreSQL
@@ -76,7 +76,7 @@ Would love to hear your thoughts! Happy to answer any questions.
 
 ### Reddit Post Template
 
-**Title**: [LAUNCH] I built a Next.js SaaS boilerplate with 87 components - saves 73+ hours per project
+**Title**: [LAUNCH] I built a Next.js SaaS boilerplate with 234 components - saves 73+ hours per project
 
 ```
 Hey everyone,
@@ -156,7 +156,7 @@ After the 5th time, I decided to build a reusable foundation.
 
 ## Component Architecture
 
-I built 87 components using these principles:
+I built 234 components using these principles:
 
 ### 1. Composition over Configuration
 
@@ -282,7 +282,7 @@ Demo available. Happy to answer any questions!
 
 ### Post Template
 
-**Title**: Show HN: Fabrk - Next.js SaaS boilerplate with 87 components
+**Title**: Show HN: Fabrk - Next.js SaaS boilerplate with 234 components
 
 ```
 I built Fabrk, a production-ready Next.js 15 boilerplate for SaaS applications.

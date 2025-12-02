@@ -132,7 +132,7 @@ A comprehensive, production-ready chat message component system built for the Fa
 - [x] Hard shadows (shadow-brutal, shadow-brutal-lg)
 - [x] Rounded-brutal borders (8px)
 - [x] Theme-responsive colors (all design tokens)
-- [x] Works with all 6 color themes
+- [x] Works with all 20 color themes
 - [x] Dark mode support
 
 ## Props Interface

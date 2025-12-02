@@ -200,7 +200,7 @@ Strategy: Create "Best Next.js SaaS Boilerplates in 2025" comparison post
 
 2. **Meta description:** Compelling, includes keyword
    ```html
-   <meta name="description" content="Launch your SaaS in hours with Fabrk. 87 production-ready components for Next.js 15. TypeScript, Stripe, Auth built-in. $79 one-time." />
+   <meta name="description" content="Launch your SaaS in hours with Fabrk. 234 production-ready components for Next.js 15. TypeScript, Stripe, Auth built-in. $79 one-time." />
    ```
 
 3. **H1 tag:** Clear, includes keyword
@@ -659,7 +659,7 @@ Break-even conversion rate: 8/300 clicks = 2.7%
 
 **Option A: Freemium (Offer basic version free)**
 - Free: 10 components
-- Paid: 87 components + updates
+- Paid: 234 components + updates
 
 **Option B: Free Tools (Build complementary free product)**
 - Free tool: "SaaS Idea Validator"

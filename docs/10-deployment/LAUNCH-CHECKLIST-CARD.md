@@ -20,7 +20,7 @@
 - [ ] LICENSE verified (MIT)
 - [ ] CONTRIBUTING.md created
 - [ ] All 46 components documented
-- [ ] All 8 templates have guides
+- [ ] All 28 templates have guides
 
 ### Repository 🏗️
 - [ ] GitHub release draft ready

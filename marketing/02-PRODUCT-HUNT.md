@@ -43,7 +43,7 @@ Ship your SaaS in 48 hours, not 4 weeks
 
 Alternative options:
 - `The complete Next.js SaaS starter kit`
-- `87 components. 8 templates. One price.`
+- `234 components. 28 templates. One price.`
 - `Stop rebuilding auth and payments from scratch`
 
 ### Description (260 characters max)
@@ -74,7 +74,7 @@ After building 5+ SaaS products, I realized I was copying the same code between 
 
 What's inside:
 - 87 production-ready UI components
-- 8 copy-paste page templates (dashboards, settings, billing)
+- 28 copy-paste page templates (dashboards, settings, billing)
 - NextAuth v5 with OAuth + email/password
 - Stripe payments with webhooks
 - Prisma + PostgreSQL

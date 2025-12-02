@@ -2,7 +2,7 @@
 
 ## 🎯 Mission Accomplished
 
-Transformed Fabrk from an **over-engineered enterprise template** into a **ShipFast-style boilerplate**.
+Transformed Fabrk from an **over-engineered enterprise template** into a **pragmatic boilerplate**.
 
 ## 📊 The Numbers
 
@@ -90,7 +90,7 @@ docs/
 └── 03-deployment/ (3 files)
 ```
 
-**After**: 1 simple README.md (ShipFast style)
+**After**: 1 simple README.md (pragmatic style)
 
 ## ✨ What We Kept (The Essentials)
 

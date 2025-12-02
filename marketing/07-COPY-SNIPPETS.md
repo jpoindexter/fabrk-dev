@@ -11,7 +11,7 @@ Ship your SaaS in 48 hours, not 4 weeks
 ```
 
 ```
-87 components. 8 templates. One price.
+234 components. 28 templates. One price.
 ```
 
 ```
@@ -31,7 +31,7 @@ Everything you need to ship fast
 ## One-Liners
 
 ```
-A production-ready Next.js 15 boilerplate with 87 components, 8 page templates, and everything you need to launch your SaaS.
+A production-ready Next.js 15 boilerplate with 234 components, 8 page templates, and everything you need to launch your SaaS.
 ```
 
 ```
@@ -49,7 +49,7 @@ No more spending weeks on auth, payments, and dashboards. Start building YOUR fe
 ### Short (Bullet Points)
 ```
 - 87 production-ready UI components
-- 8 copy-paste page templates
+- 28 copy-paste page templates
 - NextAuth v5 + Stripe + Prisma
 - 20 beautiful themes
 - One-time $299, unlimited projects
@@ -58,7 +58,7 @@ No more spending weeks on auth, payments, and dashboards. Start building YOUR fe
 ### Medium (With Context)
 ```
 **Components:** 87 production-ready UI components (tables, charts, forms, modals, and more)
-**Templates:** 8 copy-paste page templates (dashboards, settings, billing, admin)
+**Templates:** 28 copy-paste page templates (dashboards, settings, billing, admin)
 **Auth:** NextAuth v5 with OAuth, email/password, and MFA
 **Payments:** Stripe checkout, webhooks, and customer portal
 **Database:** Prisma ORM with PostgreSQL
@@ -209,13 +209,13 @@ Claim Your License →
 ```
 Fabrk is live - ship your SaaS in 48 hours
 I built the SaaS boilerplate I wish existed
-87 components, 8 templates, one price
+234 components, 28 templates, one price
 ```
 
 ### Follow-up
 ```
 What's actually inside Fabrk
-The 87 components that save you weeks
+The 234 components that save you weeks
 Here's everything you get
 ```
 
@@ -287,7 +287,7 @@ Absolutely. The license allows unlimited projects - personal, commercial, client
 
 ### Short Bio
 ```
-Fabrk - The complete Next.js SaaS starter kit. 87 components, 8 templates, everything you need to ship fast.
+Fabrk - The complete Next.js SaaS starter kit. 234 components, 28 templates, everything you need to ship fast.
 ```
 
 ### Medium Bio

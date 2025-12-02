@@ -30,7 +30,7 @@
 
 ## Project Overview
 
-**Fabrk** is a Next.js 15 SaaS boilerplate with 100+ production-ready components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 15 SaaS boilerplate with 234 production-ready components, terminal-inspired design, and full-stack features.
 
 **Tech Stack:** Next.js 15 (App Router, React 19) • TypeScript strict • NextAuth v5 • Polar.sh • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 + DaisyUI (20 themes)
 

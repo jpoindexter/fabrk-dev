@@ -65,7 +65,7 @@ All notable changes to Fabrk will be documented in this file.
 
 ### Added
 - 87 production-ready UI components
-- 8 copy-paste page templates
+- 28 copy-paste page templates
 - NextAuth v5 authentication
 - Stripe payment integration
 - PostgreSQL + Prisma database

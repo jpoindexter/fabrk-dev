@@ -1,6 +1,6 @@
 # Fabrk Design System
 
-> Terminal-inspired, accessibility-first design system with 100+ components
+> Terminal-inspired, accessibility-first design system with 234+ components
 
 ## Table of Contents
 
@@ -355,7 +355,7 @@ From `globals.css`:
 
 ## Components
 
-100+ components organized by category. See `/docs/components/overview` for full documentation.
+234+ components organized by category. See `/docs/components/overview` for full documentation.
 
 ### Form Inputs (34)
 Accordion, Autocomplete, Calendar, Checkbox, Color Picker, Combobox, Date Picker, Date Range Picker, Datetime Picker, Field, Form, Form Error, Input, Input Group, Input Number, Input OTP, Input Password, Input Search, Label, Multi Select, Multi Step Form, Password Strength, Radio Group, Rating, Rich Text Editor, Select, Slider, Switch, Textarea, Time Picker

@@ -87,7 +87,7 @@ This guide provides a comprehensive script and production checklist for creating
 
 **Show**:
 - Theme dropdown menu
-- Switch between all 6 themes:
+- Switch between all 20 themes:
   - Purple (default)
   - Ocean Blue
   - Forest Green
@@ -315,7 +315,7 @@ export function MyComponent() {
 
 ### Shot 8: Theme Switching (15 seconds)
 - Open theme switcher dropdown
-- Switch through all 6 themes
+- Switch through all 20 themes
 - Show component adapting in real-time
 
 ### Shot 9: Template Gallery (24 seconds)

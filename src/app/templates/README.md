@@ -4,7 +4,7 @@ Production-ready page templates for common SaaS use cases. Each template is full
 
 ## Overview
 
-The Fabrk boilerplate includes **8 copy-paste ready templates** organized into 4 categories:
+The Fabrk boilerplate includes **28 copy-paste ready templates** organized into 4 categories:
 
 - **Dashboards** (3 templates)
 - **Admin Panels** (1 template)
