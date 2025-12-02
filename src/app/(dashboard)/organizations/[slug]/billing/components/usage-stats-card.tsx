@@ -19,7 +19,7 @@ interface UsageStatsCardProps {
 
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
-    <Card className="rounded-md border border-border shadow-sm">
+    <Card className="rounded-none border border-border shadow-sm">
       <CardHeader>
         <CardTitle>Usage This Month</CardTitle>
         <CardDescription>

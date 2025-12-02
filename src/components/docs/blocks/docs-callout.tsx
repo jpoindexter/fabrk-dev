@@ -69,7 +69,7 @@ export function DocsCallout({
   return (
     <div
       className={cn(
-        "border border-border",
+        "border border-border bg-card",
         className
       )}
     >

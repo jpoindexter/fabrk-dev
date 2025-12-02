@@ -41,9 +41,9 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="flex items-center gap-3 rounded-md border bg-card p-3 shadow-sm">
+      <div className="flex items-center gap-3 rounded-none border bg-card p-3 shadow-sm">
         <div className="relative">
-          <div className="h-10 w-10 animate-pulse rounded-full bg-muted" />
+          <div className="h-10 w-10 animate-pulse rounded-none bg-muted" />
         </div>
         <div className="flex-1 space-y-2">
           <div className="h-4 w-32 animate-pulse rounded bg-muted" />
@@ -55,10 +55,10 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
   }
 
   return (
-    <div className="rounded-md border bg-card p-6 shadow-sm">
+    <div className="rounded-none border bg-card p-6 shadow-sm">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
-          <div className="h-20 w-20 animate-pulse rounded-full bg-muted" />
+          <div className="h-20 w-20 animate-pulse rounded-none bg-muted" />
         </div>
         <div className="w-full space-y-2">
           <div className="h-5 w-3/4 animate-pulse rounded bg-muted mx-auto" />
@@ -67,8 +67,8 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
           <div className="h-3 w-5/6 animate-pulse rounded bg-muted" />
         </div>
         <div className="flex gap-2">
-          <div className="h-9 w-20 animate-pulse rounded-md bg-muted" />
-          <div className="h-9 w-20 animate-pulse rounded-md bg-muted" />
+          <div className="h-9 w-20 animate-pulse rounded-none bg-muted" />
+          <div className="h-9 w-20 animate-pulse rounded-none bg-muted" />
         </div>
       </div>
     </div>
@@ -126,7 +126,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "flex items-center gap-3 rounded-md border bg-card p-3 shadow-sm transition-all hover:shadow-md hover:opacity-90",
+            "flex items-center gap-3 rounded-none border bg-card p-3 shadow-sm transition-all hover:shadow-sm hover:opacity-90",
             className
           )}
           {...props}
@@ -139,7 +139,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-0 right-0 h-3 w-3 rounded-full border border-card",
+                  "absolute bottom-0 right-0 h-3 w-3 rounded-none border border-card",
                   getStatusColor(member.status)
                 )}
               />
@@ -217,7 +217,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-md border bg-card p-6 shadow-sm transition-all hover:shadow-md hover:opacity-90",
+          "rounded-none border bg-card p-6 shadow-sm transition-all hover:shadow-sm hover:opacity-90",
           className
         )}
         {...props}
@@ -231,7 +231,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-1 right-1 h-4 w-4 rounded-full border border-card",
+                  "absolute bottom-1 right-1 h-4 w-4 rounded-none border border-card",
                   getStatusColor(member.status)
                 )}
               />

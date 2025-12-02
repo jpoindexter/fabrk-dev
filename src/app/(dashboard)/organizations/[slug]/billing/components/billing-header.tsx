@@ -14,7 +14,7 @@ export function BillingHeader({ organization }: BillingHeaderProps) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="rounded-md border border-border bg-primary p-2">
+        <div className="rounded-none border border-border bg-primary p-2">
           <CreditCard className="h-6 w-6 text-primary-foreground" />
         </div>
         <div>

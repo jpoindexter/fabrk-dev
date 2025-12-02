@@ -47,7 +47,7 @@ export function StatusIndicator({
       <div className="relative flex items-center justify-center">
         <div
           className={cn(
-            "rounded-full",
+            "rounded-none",
             sizeMap[size],
             statusColors[status]
           )}
@@ -55,7 +55,7 @@ export function StatusIndicator({
         {showPulse && status === "online" && (
           <div
             className={cn(
-              "absolute rounded-full animate-ping",
+              "absolute rounded-none animate-ping",
               sizeMap[size],
               statusColors[status],
               "opacity-75"
@@ -64,7 +64,7 @@ export function StatusIndicator({
         )}
       </div>
       {label !== undefined && (
-        <span className="text-sm text-muted-foreground">
+        <span className="font-mono text-xs text-muted-foreground">
           {label || statusLabels[status]}
         </span>
       )}

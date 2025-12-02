@@ -120,7 +120,7 @@ export default function ProfilePage() {
               </Avatar>
               <label
                 htmlFor="avatar-upload"
-                className="absolute bottom-0 right-0 rounded-full bg-primary p-2 cursor-pointer hover:bg-primary/90 transition"
+                className="absolute bottom-0 right-0 rounded-none bg-primary p-2 cursor-pointer hover:bg-primary/90 transition"
               >
                 <Camera className="h-4 w-4 text-primary-foreground" />
                 <input

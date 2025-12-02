@@ -78,7 +78,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
                 key={activity.id}
                 className="flex items-center gap-6 rounded-none border p-3"
               >
-                <div className="rounded-full bg-secondary p-2">
+                <div className="rounded-none bg-secondary p-2">
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">

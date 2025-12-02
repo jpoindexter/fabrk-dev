@@ -38,12 +38,12 @@
 
 ## Critical Rules
 
-### 1. NEVER modify `src/components/ui/*`
+### 1. Terminal Style EVERYWHERE
 
-These are locked base components (shadcn/ui vanilla). If modification seems required:
-1. STOP and ASK the user
-2. SUGGEST alternatives
-3. Only proceed if user explicitly says "modify base UI"
+All components use terminal aesthetic:
+- `rounded-none` on all elements
+- `font-mono` for UI text
+- Design tokens only (no hardcoded colors)
 
 ### 2. NEVER hardcode colors
 

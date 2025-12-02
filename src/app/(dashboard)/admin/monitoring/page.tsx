@@ -185,7 +185,7 @@ export default function AdminMonitoringPage() {
             <CardDescription>Errors sorted by occurrence count</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border">
+            <div className="rounded-none border">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -237,7 +237,7 @@ export default function AdminMonitoringPage() {
             <CardDescription>Last 20 error events</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border">
+            <div className="rounded-none border">
               <Table>
                 <TableHeader>
                   <TableRow>

@@ -104,7 +104,7 @@ export function ThemeDropdown() {
                         className={cn("font-semibold", currentTheme === theme.id && "bg-primary text-primary-foreground")}
                     >
                         <div
-                            className="mr-2 h-4 w-4 rounded-full border"
+                            className="mr-2 h-4 w-4 rounded-none border"
                             style={{ backgroundColor: theme.preview }}
                         />
                         {theme.name}

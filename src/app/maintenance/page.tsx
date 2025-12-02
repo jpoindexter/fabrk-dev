@@ -23,7 +23,7 @@ export default function MaintenancePage() {
       <div className="mx-auto max-w-2xl text-center">
         {/* Maintenance Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="rounded-full bg-warning/20 p-6">
+          <div className="rounded-none bg-warning/20 p-6">
             <Wrench className="h-16 w-16 text-warning" />
           </div>
         </div>

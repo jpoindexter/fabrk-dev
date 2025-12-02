@@ -139,7 +139,7 @@ export function MemberTableRow({
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="rounded-md border border-border"
+              className="rounded-none border border-border"
             >
               <DropdownMenuLabel>Manage Member</DropdownMenuLabel>
               <DropdownMenuSeparator />

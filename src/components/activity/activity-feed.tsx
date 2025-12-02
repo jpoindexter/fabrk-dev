@@ -211,7 +211,7 @@ export function ActivityFeed({
                 return (
                   <div
                     key={activity.id}
-                    className="flex items-start gap-3 p-3 rounded-none border hover:bg-accent/50 transition-colors"
+                    className="flex items-start gap-3 p-3 rounded-none border hover:bg-primary/50 transition-colors"
                   >
                     <Avatar className="h-10 w-10">
                       <AvatarFallback>

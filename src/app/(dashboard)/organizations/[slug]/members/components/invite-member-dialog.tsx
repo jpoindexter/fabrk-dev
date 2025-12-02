@@ -80,7 +80,7 @@ export function InviteMemberDialog({
           Invite Member
         </Button>
       </DialogTrigger>
-      <DialogContent className="rounded-md border border-border">
+      <DialogContent className="rounded-none border border-border">
         <DialogHeader>
           <DialogTitle>Invite Team Member</DialogTitle>
           <DialogDescription>
@@ -96,7 +96,7 @@ export function InviteMemberDialog({
               placeholder="john@example.com"
               value={inviteEmail}
               onChange={(e) => setInviteEmail(e.target.value)}
-              className="rounded-md border border-border"
+              className="rounded-none border border-border"
             />
           </div>
           <div className="space-y-2">
@@ -104,11 +104,11 @@ export function InviteMemberDialog({
             <Select value={inviteRole} onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}>
               <SelectTrigger
                 id="role"
-                className="rounded-md border border-border"
+                className="rounded-none border border-border"
               >
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-md border border-border">
+              <SelectContent className="rounded-none border border-border">
                 <SelectItem value="MEMBER">Member</SelectItem>
                 <SelectItem value="ADMIN">Admin</SelectItem>
                 <SelectItem value="GUEST">Guest</SelectItem>

@@ -79,7 +79,7 @@ const columns: ColumnDef<User>[] = [
       if (!row) return null;
       return (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
+          <div className="flex h-8 w-8 items-center justify-center rounded-none bg-primary/10">
             <User className="h-4 w-4 text-primary" />
           </div>
           <span className="font-medium text-foreground">{row.getValue("name")}</span>
@@ -114,7 +114,7 @@ const columns: ColumnDef<User>[] = [
         <div className="flex items-center gap-2">
           <Shield className="h-4 w-4 text-muted-foreground" />
           <span
-            className={`rounded-full px-2 py-1 text-xs font-semibold ${
+            className={`rounded-none px-2 py-1 text-xs font-semibold ${
               role === "ADMIN"
                 ? "bg-primary/20 text-primary"
                 : "bg-muted text-muted-foreground"
@@ -136,7 +136,7 @@ const columns: ColumnDef<User>[] = [
       const status = row.getValue("status") as string;
       return (
         <span
-          className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+          className={`inline-flex rounded-none px-3 py-1 text-xs font-semibold ${
             status === "active"
               ? "bg-success/20 text-success-foreground"
               : status === "pending"

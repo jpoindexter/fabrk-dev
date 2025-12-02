@@ -142,7 +142,7 @@ export default function OrganizationMembersPage() {
 
   if (!organization) {
     return (
-      <Card className="rounded-md border border-border">
+      <Card className="rounded-none border border-border">
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>
@@ -167,7 +167,7 @@ export default function OrganizationMembersPage() {
       />
 
       {/* Members Table */}
-      <Card className="rounded-md border border-border shadow-sm">
+      <Card className="rounded-none border border-border shadow-sm">
         <CardHeader>
           <CardTitle>Members ({members.length})</CardTitle>
           <CardDescription>

@@ -242,7 +242,7 @@ export function Lightbox({
 
       {/* Image counter */}
       {hasMultipleItems && (
-        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-md border border-border bg-card px-3 py-1 text-sm font-semibold text-foreground">
+        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-none border border-border bg-card px-3 py-1 text-sm font-semibold text-foreground">
           {currentIndex + 1} / {items.length}
         </div>
       )}
@@ -294,7 +294,7 @@ export function Lightbox({
                 key={index}
                 onClick={() => handleThumbnailClick(index)}
                 className={cn(
-                  "h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all",
+                  "h-16 w-16 flex-shrink-0 overflow-hidden rounded-none border-2 transition-all",
                   index === currentIndex
                     ? "border-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
                     : "border-foreground/50 opacity-60 hover:opacity-100"

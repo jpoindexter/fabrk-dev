@@ -19,9 +19,7 @@ const componentCategories = [
       { name: "checkbox", description: "Checkbox toggle" },
       { name: "color-picker", description: "Color selection with preview" },
       { name: "combobox", description: "Searchable select" },
-      { name: "date-picker", description: "Date selection" },
-      { name: "date-range-picker", description: "Date range selection" },
-      { name: "datetime-picker", description: "Date and time selection" },
+      { name: "date-picker", description: "Date, range, time selection" },
       { name: "field", description: "Form field wrapper" },
       { name: "form", description: "Form with validation" },
       { name: "form-error", description: "Error message component" },
@@ -226,7 +224,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
               <Link
                 key={component.name}
                 href={`/docs/components/${component.name}`}
-                className="block border border-border bg-card p-2 transition-colors hover:border-primary/50 hover:bg-accent/5"
+                className="block border border-border bg-card p-2 transition-colors hover:border-primary/50 hover:bg-primary/5"
               >
                 <div className="font-mono text-base font-semibold text-foreground">
                   {component.name}

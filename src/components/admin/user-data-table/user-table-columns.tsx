@@ -70,7 +70,7 @@ export function createUserColumns({
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-8 px-2 hover:bg-accent"
+            className="h-8 px-2 hover:bg-primary hover:text-primary-foreground"
           >
             User
             <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -144,7 +144,7 @@ export function createUserColumns({
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-8 px-2 hover:bg-accent"
+            className="h-8 px-2 hover:bg-primary hover:text-primary-foreground"
           >
             Created
             <ArrowUpDown className="ml-2 h-4 w-4" />

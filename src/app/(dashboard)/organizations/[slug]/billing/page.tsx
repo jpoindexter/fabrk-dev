@@ -108,7 +108,7 @@ export default function OrganizationBillingPage() {
 
   if (!organization) {
     return (
-      <Card className="rounded-md border border-border">
+      <Card className="rounded-none border border-border">
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>

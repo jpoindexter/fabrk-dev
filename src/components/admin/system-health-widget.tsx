@@ -190,7 +190,7 @@ export function SystemHealthWidget({
       </CardContent>
 
       {/* Background decoration */}
-      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-none bg-primary/5 blur-3xl" />
     </Card>
   );
 }

@@ -166,15 +166,15 @@ export function RoleSelector({
               onClick={() => handleRoleClick(role.id, role.disabled)}
               disabled={role.disabled}
               className={cn(
-                "group relative flex items-start gap-4 rounded-md border bg-card p-4 text-left shadow-sm transition-all",
+                "group relative flex items-start gap-4 rounded-none border bg-card p-4 text-left shadow-sm transition-all",
                 selected &&
-                  "border-primary bg-primary/5 shadow-md",
-                !selected && !role.disabled && "hover:shadow-md hover:opacity-90",
+                  "border-primary bg-primary/5 shadow-sm",
+                !selected && !role.disabled && "hover:shadow-sm hover:opacity-90",
                 role.disabled && "cursor-not-allowed opacity-50"
               )}
             >
               {selected && (
-                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-md border bg-primary shadow-sm">
+                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-none border bg-primary shadow-sm">
                   <Check className="h-3 w-3 text-primary-foreground" />
                 </div>
               )}
@@ -182,7 +182,7 @@ export function RoleSelector({
               {Icon && (
                 <div
                   className={cn(
-                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-md border bg-background shadow-sm",
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-none border bg-background shadow-sm",
                     selected && "bg-primary text-primary-foreground"
                   )}
                 >
@@ -253,15 +253,15 @@ export function RoleSelector({
             onClick={() => handleRoleClick(role.id, role.disabled)}
             disabled={role.disabled}
             className={cn(
-              "group relative flex flex-col items-center rounded-md border bg-card p-6 text-center shadow-sm transition-all",
+              "group relative flex flex-col items-center rounded-none border bg-card p-6 text-center shadow-sm transition-all",
               selected &&
-                "border-primary bg-primary/5 shadow-md",
-              !selected && !role.disabled && "hover:shadow-md hover:opacity-90",
+                "border-primary bg-primary/5 shadow-sm",
+              !selected && !role.disabled && "hover:shadow-sm hover:opacity-90",
               role.disabled && "cursor-not-allowed opacity-50"
             )}
           >
             {selected && (
-              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-md border bg-primary shadow-sm">
+              <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-none border bg-primary shadow-sm">
                 <Check className="h-4 w-4 text-primary-foreground" />
               </div>
             )}
@@ -269,8 +269,8 @@ export function RoleSelector({
             {Icon && (
               <div
                 className={cn(
-                  "mb-4 flex h-16 w-16 items-center justify-center rounded-md border bg-background shadow-sm transition-all",
-                  selected && "bg-primary text-primary-foreground shadow-md"
+                  "mb-4 flex h-16 w-16 items-center justify-center rounded-none border bg-background shadow-sm transition-all",
+                  selected && "bg-primary text-primary-foreground shadow-sm"
                 )}
               >
                 <Icon className="h-8 w-8" />

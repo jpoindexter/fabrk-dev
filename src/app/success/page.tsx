@@ -59,7 +59,7 @@ function SuccessContent() {
         <CardContent className="space-y-6 p-8">
           {/* Success Icon & Header */}
           <div className="space-y-4 text-center">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-none bg-primary">
               <CheckCircle className="h-12 w-12 text-primary-foreground" />
             </div>
             <h1 className="text-4xl font-bold">Purchase Successful!</h1>
@@ -84,7 +84,7 @@ function SuccessContent() {
             <h3 className="text-lg font-semibold">What's in Your Email:</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   1
                 </span>
                 <span>
@@ -92,7 +92,7 @@ function SuccessContent() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   2
                 </span>
                 <span>
@@ -100,7 +100,7 @@ function SuccessContent() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   3
                 </span>
                 <span>
@@ -150,7 +150,7 @@ function SuccessContent() {
               </Button>
             ) : (
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                <div className="h-4 w-4 animate-spin rounded-none border-2 border-primary border-t-transparent" />
                 <span>Sending email...</span>
               </div>
             )}

@@ -203,18 +203,18 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Terminal Output */}
-                      <div className="border border-border bg-zinc-950 text-left">
+                      <div className="border border-border bg-card text-left">
                         <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1.5">
                           <div className="flex gap-1.5">
                             <div className="size-2 rounded-full bg-destructive/50" />
                             <div className="size-2 rounded-full bg-warning/50" />
                             <div className="size-2 rounded-full bg-success/50" />
                           </div>
-                          <span className="font-mono text-[10px] text-zinc-500">
+                          <span className="font-mono text-[10px] text-muted-foreground">
                             terminal
                           </span>
                         </div>
-                        <div className="p-3 font-mono text-xs text-zinc-300 space-y-0.5">
+                        <div className="p-3 font-mono text-xs text-foreground space-y-0.5">
                           {error.terminal.map((line, idx) => (
                             <div
                               key={idx}

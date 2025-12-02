@@ -73,7 +73,7 @@ export function DataTable<TData, TValue>({
         searchKey={searchKey}
         searchPlaceholder={searchPlaceholder}
       />
-      <div className="overflow-x-auto rounded-lg border border-border bg-card shadow-sm scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full">
+      <div className="overflow-x-auto rounded-none border border-border bg-card shadow-sm scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none">
         <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -119,7 +119,7 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-sm text-muted-foreground">No results found.</p>
+                    <p className="font-mono text-xs text-muted-foreground">No results found.</p>
                     {searchKey && !!table.getColumn(searchKey)?.getFilterValue() && (
                       <button
                         onClick={() => table.getColumn(searchKey)?.setFilterValue("")}

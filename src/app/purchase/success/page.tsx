@@ -19,7 +19,7 @@ export default function PurchaseSuccessPage() {
       <div className="max-w-2xl w-full">
         {/* Success Icon */}
         <div className="flex justify-center mb-8">
-          <div className="rounded-full bg-success/10 p-6">
+          <div className="rounded-none bg-success/10 p-6">
             <CheckCircle className="h-16 w-16 text-success" />
           </div>
         </div>

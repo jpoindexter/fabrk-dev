@@ -73,7 +73,7 @@ export default function AccountPage() {
                 value={tab.value}
                 className={cn(
                   "flex flex-col items-center gap-2 px-3 py-3 data-[state=active]:bg-background",
-                  "transition-colors hover:bg-accent hover:text-accent-foreground"
+                  "transition-colors hover:bg-primary hover:text-primary-foreground"
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -168,8 +168,8 @@ export default function AccountPage() {
                       onClick={() => setActiveTab(tab.value)}
                       className={cn(
                         "flex w-full items-start gap-6 rounded-none p-6 text-left transition-colors",
-                        "hover:bg-accent hover:text-accent-foreground",
-                        activeTab === tab.value && "bg-accent"
+                        "hover:bg-primary hover:text-primary-foreground",
+                        activeTab === tab.value && "bg-primary text-primary-foreground"
                       )}
                     >
                       <Icon className="mt-0.5 size-5" />

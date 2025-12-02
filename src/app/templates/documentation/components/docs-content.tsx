@@ -144,9 +144,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                         )}
                       </Button>
                     </div>
-                    <div className="bg-zinc-950">
+                    <div className="bg-card">
                       <pre className="overflow-auto p-4 m-0 text-xs leading-relaxed" tabIndex={0}>
-                        <code className="font-mono text-zinc-100">{section.content}</code>
+                        <code className="font-mono text-foreground">{section.content}</code>
                       </pre>
                     </div>
                   </div>

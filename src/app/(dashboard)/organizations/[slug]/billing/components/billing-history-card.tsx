@@ -33,7 +33,7 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
   }
 
   return (
-    <Card className="rounded-md border border-border shadow-sm">
+    <Card className="rounded-none border border-border shadow-sm">
       <CardHeader>
         <CardTitle>Billing History</CardTitle>
         <CardDescription>

@@ -73,7 +73,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
           <div
             className={cn(
               sizeClasses[size],
-              "flex items-center justify-center rounded-full border bg-card text-xs font-medium",
+              "flex items-center justify-center rounded-none border bg-card text-xs font-medium",
               overlap && "ring-2 ring-background"
             )}
             aria-label={`${remainingCount} more ${remainingCount === 1 ? "person" : "people"}`}

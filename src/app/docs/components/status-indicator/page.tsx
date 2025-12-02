@@ -86,7 +86,7 @@ export default function StatusIndicatorPage() {
           preview: (
             <div className="space-y-3">
               <div className="flex items-center gap-3 border-b border-border pb-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-mono text-xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-none bg-primary text-primary-foreground font-mono text-xs">
                   AC
                 </div>
                 <div className="flex-1">
@@ -96,7 +96,7 @@ export default function StatusIndicatorPage() {
                 <StatusIndicator status="online" showPulse={true} />
               </div>
               <div className="flex items-center gap-3 border-b border-border pb-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-secondary-foreground font-mono text-xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-none bg-secondary text-secondary-foreground font-mono text-xs">
                   SM
                 </div>
                 <div className="flex-1">
@@ -106,7 +106,7 @@ export default function StatusIndicatorPage() {
                 <StatusIndicator status="busy" />
               </div>
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-accent-foreground font-mono text-xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-none bg-accent text-accent-foreground font-mono text-xs">
                   MJ
                 </div>
                 <div className="flex-1">

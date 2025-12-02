@@ -38,7 +38,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Vercel minimal styles - Border only, no shadow
-        "rounded-md border bg-card text-card-foreground",
+        "rounded-none border bg-card text-card-foreground",
 
         // Subtle transition
         "transition-colors",
@@ -76,8 +76,8 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       data-slot="card-title"
       ref={ref}
       className={cn(
-        // Vercel typography - semibold for headings
-        "text-[20px] leading-[1.2] font-semibold tracking-[-0.018em]",
+        // Terminal typography - semibold for headings
+        "font-mono text-base font-semibold",
         "text-card-foreground",
 
         // Dark mode
@@ -97,8 +97,8 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
       data-slot="card-description"
       ref={ref}
       className={cn(
-        // Vercel typography - normal weight for body text
-        "text-[14px] leading-[1.5] font-normal tracking-[-0.003em]",
+        // Terminal typography - normal weight for body text
+        "font-mono text-xs font-normal",
         "text-muted-foreground",
 
         // Dark mode

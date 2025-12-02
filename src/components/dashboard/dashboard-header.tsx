@@ -215,7 +215,7 @@ export function DashboardHeader() {
                           "flex items-center gap-3 rounded-none border border-border px-4 py-3 text-sm font-medium transition-all",
                           isActive
                             ? "bg-primary text-primary-foreground shadow-sm"
-                            : "bg-card hover:bg-accent hover:text-accent-foreground"
+                            : "bg-card hover:bg-primary hover:text-primary-foreground"
                         )}
                       >
                         <Icon className="h-5 w-5" />
@@ -231,7 +231,7 @@ export function DashboardHeader() {
                         "flex items-center gap-3 rounded-none border border-border px-4 py-3 text-sm font-medium transition-all",
                         pathname.startsWith("/admin")
                           ? "bg-primary text-primary-foreground shadow-sm"
-                          : "bg-card hover:bg-accent hover:text-accent-foreground"
+                          : "bg-card hover:bg-primary hover:text-primary-foreground"
                       )}
                     >
                       <Shield className="h-5 w-5" />

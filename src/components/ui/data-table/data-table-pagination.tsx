@@ -61,14 +61,14 @@ function DataTablePaginationInner<TData>(
       aria-label="Table pagination"
     >
       <div className={`flex items-center space-x-2`}>
-        <p className={`"text-sm" text-muted-foreground dark:text-muted-foreground`}>
+        <p className="font-mono text-xs text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </p>
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className={`flex items-center space-x-2`}>
-          <p className={`"text-sm" font-medium`}>Rows per page</p>
+          <p className="font-mono text-xs font-medium">Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {
@@ -87,7 +87,7 @@ function DataTablePaginationInner<TData>(
             </SelectContent>
           </Select>
         </div>
-        <div className={`"text-sm" flex w-24 items-center justify-center font-medium`}>
+        <div className="font-mono text-xs flex w-24 items-center justify-center font-medium">
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <div className={`flex items-center space-x-2`}>

@@ -183,7 +183,7 @@ export function PieChart({
               }}
             >
               <div
-                className="w-3 h-3 rounded-sm border"
+                className="w-3 h-3 rounded-none border"
                 style={{ backgroundColor: segment.color }}
               />
               <span className="text-xs font-medium">

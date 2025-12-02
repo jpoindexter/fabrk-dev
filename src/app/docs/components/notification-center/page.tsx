@@ -221,7 +221,7 @@ const notification: Notification = {
           description: "Friendly empty state when no notifications exist",
           preview: (
             <div className="flex flex-col items-center justify-center py-12 px-4">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-none bg-muted">
                 <span className="font-mono text-2xl text-muted-foreground">0</span>
               </div>
               <p className="mb-1 font-semibold text-foreground">You're all caught up!</p>

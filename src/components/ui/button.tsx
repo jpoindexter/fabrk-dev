@@ -16,7 +16,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none font-mono text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -31,19 +31,19 @@ const buttonVariants = cva(
         ghost: "text-foreground hover:bg-foreground/10 hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Consistent high-emphasis CTA styles used across marketing, demo, and variation pages
-        // Industry standard: All button variants use rounded-md for consistency
+        // Industry standard: All button variants use rounded-none for consistency
         primaryCta:
-          "bg-primary text-primary-foreground hover:bg-primary/90 rounded-md text-base px-6 py-3",
+          "bg-primary text-primary-foreground hover:bg-primary/90 rounded-none text-base px-6 py-3",
         secondaryCta:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md text-base px-6 py-3",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-none text-base px-6 py-3",
         ghostOnDark:
-          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-md text-base px-6 py-3",
+          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-none text-base px-6 py-3",
       },
       size: {
         default: "h-8 px-3 py-1.5",
-        sm: "h-7 rounded-md px-2 text-xs",
-        lg: "h-9 rounded-md px-6",
-        xl: "h-12 rounded-md px-8 text-lg",
+        sm: "h-7 rounded-none px-2 text-xs",
+        lg: "h-9 rounded-none px-6",
+        xl: "h-12 rounded-none px-8 text-lg",
         icon: "h-10 w-10",
       },
     },

@@ -56,7 +56,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-info text-info-foreground transition-all hover:scale-110 hover:bg-info/80"
+        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-none bg-info text-info-foreground transition-all hover:scale-110 hover:bg-info/80"
         aria-label="Give feedback"
       >
         <MessageCircle className="h-6 w-6" />

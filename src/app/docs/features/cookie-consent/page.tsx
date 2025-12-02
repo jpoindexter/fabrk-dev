@@ -20,9 +20,9 @@ function CookieConsentDemo() {
       {/* Terminal Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
         <div className="flex gap-1.5">
-          <div className="size-2 rounded-full bg-destructive/50" />
-          <div className="size-2 rounded-full bg-warning/50" />
-          <div className="size-2 rounded-full bg-success/50" />
+          <div className="size-2 rounded-none bg-destructive/50" />
+          <div className="size-2 rounded-none bg-warning/50" />
+          <div className="size-2 rounded-none bg-success/50" />
         </div>
         <span className="font-mono text-xs text-muted-foreground">cookie_consent.exe</span>
       </div>
@@ -232,7 +232,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
         <DocsCard title="COOKIE_CATEGORIES">
           <div className="space-y-4">
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-success mt-1"></div>
+              <div className="h-3 w-3 rounded-none bg-success mt-1"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
                 <p className={docsTypography.body}>
@@ -241,7 +241,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-info mt-1"></div>
+              <div className="h-3 w-3 rounded-none bg-info mt-1"></div>
               <div>
                 <p className="font-medium">Preferences</p>
                 <p className={docsTypography.body}>
@@ -250,7 +250,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-warning mt-1"></div>
+              <div className="h-3 w-3 rounded-none bg-warning mt-1"></div>
               <div>
                 <p className="font-medium">Statistics</p>
                 <p className={docsTypography.body}>
@@ -259,7 +259,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-muted/50">
-              <div className="h-3 w-3 rounded-full bg-destructive mt-1"></div>
+              <div className="h-3 w-3 rounded-none bg-destructive mt-1"></div>
               <div>
                 <p className="font-medium">Marketing</p>
                 <p className={docsTypography.body}>

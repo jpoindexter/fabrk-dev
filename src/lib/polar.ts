@@ -11,9 +11,12 @@
 
 import { Polar } from '@polar-sh/sdk';
 
-// Initialize Polar client
+// Check if Polar is configured
+export const isPolarConfigured = () => !!process.env.POLAR_ACCESS_TOKEN;
+
+// Initialize Polar client (only if configured)
 export const polar = new Polar({
-  accessToken: process.env.POLAR_ACCESS_TOKEN,
+  accessToken: process.env.POLAR_ACCESS_TOKEN || 'not-configured',
 });
 
 // Product configuration

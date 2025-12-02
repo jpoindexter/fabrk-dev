@@ -14,7 +14,7 @@ interface SuccessStepProps {
 
 export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
-    <Card className="rounded-md border border-border shadow">
+    <Card className="rounded-none border border-border shadow">
       <CardContent className="flex flex-col items-center justify-center py-12">
         <div className="rounded-full border border-border bg-success p-4 shadow">
           <Check className="h-8 w-8 text-success-foreground" />

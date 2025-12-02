@@ -27,7 +27,7 @@ interface DocsPropsTableProps {
 
 export function DocsPropsTable({ props }: DocsPropsTableProps) {
   return (
-    <div className="border border-border rounded-none overflow-hidden">
+    <div className="border border-border rounded-none overflow-hidden bg-card">
       {/* Terminal Header */}
       <div className="border-b border-border px-4 py-2 bg-card">
         <span className="font-mono text-xs text-muted-foreground">
@@ -46,7 +46,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
         <TableBody>
           {props.map((prop) => (
             <TableRow key={prop.name}>
-              <TableCell className="font-mono text-sm">
+              <TableCell className="font-mono text-xs">
                 {prop.name}
                 {prop.required && <span className="text-destructive ml-1">*</span>}
               </TableCell>

@@ -108,8 +108,6 @@ const navigation: NavSection[] = [
           { title: "COLOR_PICKER", href: "/docs/components/color-picker", icon: FormInput },
           { title: "COMBOBOX", href: "/docs/components/combobox", icon: FormInput },
           { title: "DATE_PICKER", href: "/docs/components/date-picker", icon: FormInput },
-          { title: "DATE_RANGE_PICKER", href: "/docs/components/date-range-picker", icon: FormInput },
-          { title: "DATETIME_PICKER", href: "/docs/components/datetime-picker", icon: FormInput },
           { title: "FIELD", href: "/docs/components/field", icon: FormInput },
           { title: "FORM", href: "/docs/components/form", icon: FormInput },
           { title: "FORM_ERROR", href: "/docs/components/form-error", icon: FormInput },

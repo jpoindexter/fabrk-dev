@@ -327,7 +327,7 @@ export const AccessibilityFeatures: StoryObj = {
       <H2 className="mb-4">WCAG AA Compliance</H2>
 
       <div className="space-y-4">
-        <div className="p-4 rounded-lg border border-border bg-card">
+        <div className="p-4 rounded-none border border-border bg-card">
           <H4 className="mb-2">Color Contrast Ratios</H4>
           <Body className="mb-2">
             All typography components use design tokens that ensure proper contrast:
@@ -345,7 +345,7 @@ export const AccessibilityFeatures: StoryObj = {
           </List>
         </div>
 
-        <div className="p-4 rounded-lg border border-border bg-card">
+        <div className="p-4 rounded-none border border-border bg-card">
           <H4 className="mb-2">Semantic HTML</H4>
           <Body className="mb-2">
             All components render proper semantic HTML elements:
@@ -358,7 +358,7 @@ export const AccessibilityFeatures: StoryObj = {
           </List>
         </div>
 
-        <div className="p-4 rounded-lg border border-border bg-card">
+        <div className="p-4 rounded-none border border-border bg-card">
           <H4 className="mb-2">Readability Standards</H4>
           <Body className="mb-2">Typography follows industry best practices:</Body>
           <List>

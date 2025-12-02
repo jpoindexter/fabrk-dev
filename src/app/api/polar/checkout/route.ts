@@ -4,10 +4,20 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createCheckoutSession } from '@/lib/polar';
+import { createCheckoutSession, isPolarConfigured } from '@/lib/polar';
 import { logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
+  // Return mock checkout when Polar isn't configured (dev mode)
+  if (!isPolarConfigured()) {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    return NextResponse.json({
+      checkoutUrl: `${baseUrl}/purchase/success?mock=true`,
+      checkoutId: 'mock-checkout-id',
+      _mock: true,
+    });
+  }
+
   try {
     const body = await request.json();
     const { customerEmail, discountId, metadata } = body;

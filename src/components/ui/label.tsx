@@ -26,8 +26,8 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         data-slot="label"
         ref={ref}
         className={cn(
-          // Using typography tokens - matches componentTypography.label
-          "text-[14px] font-semibold leading-[1.4] tracking-normal",
+          // Terminal typography
+          "font-mono text-xs font-semibold",
           "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
           "transition-colors duration-200",
           error && "text-destructive",

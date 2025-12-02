@@ -46,10 +46,10 @@ export function OrganizationDetailsStep({
   onCancel,
 }: OrganizationDetailsStepProps) {
   return (
-    <Card className="rounded-md border border-border shadow">
+    <Card className="rounded-none border border-border shadow">
       <CardHeader>
         <div className="flex items-center gap-3">
-          <div className="rounded-md border border-border bg-primary p-2">
+          <div className="rounded-none border border-border bg-primary p-2">
             <Building2 className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
@@ -75,7 +75,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="Acme Inc."
-                      className="rounded-md border border-border"
+                      className="rounded-none border border-border"
                       {...field}
                     />
                   </FormControl>
@@ -96,7 +96,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="acme-inc"
-                      className="rounded-md border border-border"
+                      className="rounded-none border border-border"
                       {...field}
                     />
                   </FormControl>
@@ -117,7 +117,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Textarea
                       placeholder="What does your organization do?"
-                      className="rounded-md border border-border"
+                      className="rounded-none border border-border"
                       rows={3}
                       {...field}
                     />

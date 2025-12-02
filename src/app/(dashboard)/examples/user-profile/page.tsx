@@ -106,15 +106,15 @@ export default async function UserProfilePage() {
             <div className="flex flex-col items-center text-center">
               {/* Avatar */}
               <div className="relative">
-                <div className="h-32 w-32 overflow-hidden rounded-full border border-border shadow-sm">
+                <div className="h-32 w-32 overflow-hidden rounded-none border border-border shadow-sm">
                   <img
                     src={mockUserProfile.avatar}
                     alt={mockUserProfile.name}
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="absolute bottom-0 right-0 rounded-full border-2 border-background bg-success p-1">
-                  <div className="h-3 w-3 rounded-full bg-success"></div>
+                <div className="absolute bottom-0 right-0 rounded-none border-2 border-background bg-success p-1">
+                  <div className="h-3 w-3 rounded-none bg-success"></div>
                 </div>
               </div>
 
@@ -122,7 +122,7 @@ export default async function UserProfilePage() {
               <h2 className="mt-4 text-2xl font-bold text-foreground">
                 {mockUserProfile.name}
               </h2>
-              <span className="mt-1 inline-block rounded-full border border-border bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+              <span className="mt-1 inline-block rounded-none border border-border bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                 {mockUserProfile.role}
               </span>
 
@@ -258,7 +258,7 @@ export default async function UserProfilePage() {
                           {project.name}
                         </h4>
                         <span
-                          className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
+                          className={`inline-block rounded-none px-2 py-0.5 text-xs font-semibold ${
                             project.status === "Live"
                               ? "bg-success/20 text-success"
                               : project.status === "In Development"
@@ -300,7 +300,7 @@ export default async function UserProfilePage() {
             <div className="space-y-4">
               {mockUserProfile.activity.map((activity, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border bg-primary/10">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-none border border-border bg-primary/10">
                     <User className="h-5 w-5 text-primary" />
                   </div>
                   <div className="flex-1">

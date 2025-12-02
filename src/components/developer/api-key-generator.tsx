@@ -168,7 +168,7 @@ export function ApiKeyGenerator({
             </div>
 
             {/* Security Notice */}
-            <div className="rounded-md border border-border bg-warning/10 p-3">
+            <div className="rounded-none border border-border bg-warning/10 p-3">
               <div className="flex gap-2">
                 <AlertTriangle className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
                 <div className="flex-1 space-y-1">
@@ -227,7 +227,7 @@ export function ApiKeyGenerator({
             {/* No API Key State */}
             <div className="py-8 text-center space-y-4">
               <div className="flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-md border border-border bg-primary/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-border bg-primary/10">
                   <Key className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -251,7 +251,7 @@ export function ApiKeyGenerator({
         {apiKey && (
           <div className="space-y-2">
             <p className="text-xs font-bold text-foreground">Usage Example:</p>
-            <div className="rounded-md border border-border bg-muted/50 p-3 font-mono text-xs">
+            <div className="rounded-none border border-border bg-muted/50 p-3 font-mono text-xs">
               <div className="text-muted-foreground">curl -H "Authorization: Bearer {prefix}..."</div>
             </div>
           </div>

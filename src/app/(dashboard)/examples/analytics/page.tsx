@@ -93,7 +93,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="flex items-center gap-2">
           <Select defaultValue="7">
-            <SelectTrigger className="w-[140px] rounded-md border border-border py-2 text-sm font-semibold shadow-sm">
+            <SelectTrigger className="w-[140px] rounded-none border border-border py-2 text-sm font-semibold shadow-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -118,7 +118,7 @@ export default async function AnalyticsPage() {
               className="border border-border p-6 shadow-sm"
             >
               <div className="flex items-center justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-primary/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-border bg-primary/10">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <div
@@ -158,7 +158,7 @@ export default async function AnalyticsPage() {
             {mockAnalytics.recentActivity.map((activity, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded-md border border-border bg-muted p-3"
+                className="flex items-center justify-between rounded-none border border-border bg-muted p-3"
               >
                 <div>
                   <p className="text-sm font-semibold text-foreground">
@@ -184,7 +184,7 @@ export default async function AnalyticsPage() {
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded-md border border-border bg-muted p-3"
+                className="flex items-center justify-between rounded-none border border-border bg-muted p-3"
               >
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-foreground">
@@ -215,7 +215,7 @@ export default async function AnalyticsPage() {
             Monthly recurring revenue trend
           </p>
         </div>
-        <div className="flex h-64 items-center justify-center rounded-md border border-dashed border-border bg-muted">
+        <div className="flex h-64 items-center justify-center rounded-none border border-dashed border-border bg-muted">
           <div className="text-center">
             <TrendingUp className="mx-auto mb-2 h-12 w-12 text-primary/50" />
             <p className="text-sm font-semibold text-muted-foreground">

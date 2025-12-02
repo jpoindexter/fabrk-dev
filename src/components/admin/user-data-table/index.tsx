@@ -96,7 +96,7 @@ export function UserDataTable({
       />
 
       {/* Table */}
-      <div className="rounded-md border border-border">
+      <div className="rounded-none border border-border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

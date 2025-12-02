@@ -54,10 +54,10 @@ export function InviteMembersStep({
   onSkip,
 }: InviteMembersStepProps) {
   return (
-    <Card className="rounded-md border border-border shadow">
+    <Card className="rounded-none border border-border shadow">
       <CardHeader>
         <div className="flex items-center gap-3">
-          <div className="rounded-md border border-border bg-primary p-2">
+          <div className="rounded-none border border-border bg-primary p-2">
             <Mail className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
@@ -83,7 +83,7 @@ export function InviteMembersStep({
                   <FormControl>
                     <Textarea
                       placeholder="john@example.com&#10;jane@example.com&#10;alex@example.com"
-                      className="rounded-md border border-border font-mono text-sm"
+                      className="rounded-none border border-border font-mono text-sm"
                       rows={5}
                       {...field}
                     />
@@ -107,11 +107,11 @@ export function InviteMembersStep({
                     defaultValue={field.value}
                   >
                     <FormControl>
-                      <SelectTrigger className="rounded-md border border-border">
+                      <SelectTrigger className="rounded-none border border-border">
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent className="rounded-md border border-border">
+                    <SelectContent className="rounded-none border border-border">
                       <SelectItem value="MEMBER">
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary">MEMBER</Badge>
@@ -146,7 +146,7 @@ export function InviteMembersStep({
               )}
             />
 
-            <div className="rounded-md border border-border bg-muted p-4">
+            <div className="rounded-none border border-border bg-muted p-4">
               <h4 className="mb-2 font-medium">Role Permissions:</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• <strong>OWNER</strong>: Full control (assigned to creator)</li>

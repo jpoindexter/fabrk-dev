@@ -58,7 +58,7 @@ export function DocsStepList({ steps, variant = "card" }: DocsStepListProps) {
             {/* Content */}
             <div className="p-4">
               {step.description && (
-                <p className="font-mono text-sm text-muted-foreground mb-4">
+                <p className="font-mono text-xs text-muted-foreground mb-4">
                   <span className="text-muted-foreground">DESC: </span>
                   <span className="text-foreground">{step.description}</span>
                 </p>

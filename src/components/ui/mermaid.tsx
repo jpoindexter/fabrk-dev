@@ -154,7 +154,7 @@ export function Mermaid({ chart, className }: MermaidProps) {
   return (
     <div
       ref={containerRef}
-      className={`overflow-x-auto border border-border bg-zinc-900 p-6 ${className || ""}`}
+      className={`overflow-x-auto border border-border bg-card p-6 ${className || ""}`}
     />
   );
 }

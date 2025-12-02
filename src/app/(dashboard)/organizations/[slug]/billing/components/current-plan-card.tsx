@@ -42,7 +42,7 @@ export function CurrentPlanCard({
   onUpgrade,
 }: CurrentPlanCardProps) {
   return (
-    <Card className="rounded-md border border-border shadow-sm">
+    <Card className="rounded-none border border-border shadow-sm">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
@@ -85,7 +85,7 @@ export function CurrentPlanCard({
             <Separator />
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-md border border-border bg-card p-4">
+              <div className="rounded-none border border-border bg-card p-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="h-4 w-4" />
                   Billing Period
@@ -95,7 +95,7 @@ export function CurrentPlanCard({
                 </p>
               </div>
 
-              <div className="rounded-md border border-border bg-card p-4">
+              <div className="rounded-none border border-border bg-card p-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <DollarSign className="h-4 w-4" />
                   Next Payment
@@ -105,7 +105,7 @@ export function CurrentPlanCard({
                 </p>
               </div>
 
-              <div className="rounded-md border border-border bg-card p-4">
+              <div className="rounded-none border border-border bg-card p-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4" />
                   Status
@@ -115,7 +115,7 @@ export function CurrentPlanCard({
             </div>
 
             {subscription.cancelAtPeriodEnd && (
-              <div className="rounded-md border border-border border-destructive bg-destructive/10 p-4">
+              <div className="rounded-none border border-border border-destructive bg-destructive/10 p-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="h-5 w-5 text-destructive" />
                   <div>

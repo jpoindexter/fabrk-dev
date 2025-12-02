@@ -193,7 +193,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
       </div>
 
       {/* Table */}
-      <div className="rounded-md border">
+      <div className="rounded-none border">
         <Table>
           <TableHeader>
             <TableRow>

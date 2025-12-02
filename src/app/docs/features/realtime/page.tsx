@@ -117,7 +117,7 @@ export function NotificationBell({ userId }: { userId: string }) {
     <button className="relative">
       <BellIcon />
       {unreadCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-full text-xs px-1">
+        <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-none text-xs px-1">
           {unreadCount}
         </span>
       )}
@@ -164,7 +164,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
           key={member.id}
           src={member.avatar}
           alt={member.name}
-          className="w-8 h-8 rounded-full border-2 border-background"
+          className="w-8 h-8 rounded-none border-2 border-background"
         />
       ))}
     </div>

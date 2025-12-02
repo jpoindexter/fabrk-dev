@@ -187,7 +187,7 @@ export default function OrganizationSettingsPage() {
 
   if (!organization) {
     return (
-      <Card className="rounded-md border border-border">
+      <Card className="rounded-none border border-border">
         <CardContent className="py-12">
           <div className="text-center">
             <AlertTriangle className="mx-auto h-12 w-12 text-destructive" />
@@ -207,7 +207,7 @@ export default function OrganizationSettingsPage() {
     <div className="mx-auto max-w-4xl space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <div className="rounded-md border border-border bg-primary p-2">
+        <div className="rounded-none border border-border bg-primary p-2">
           <SettingsIcon className="h-6 w-6 text-primary-foreground" />
         </div>
         <div>
@@ -219,7 +219,7 @@ export default function OrganizationSettingsPage() {
       </div>
 
       {/* General Settings */}
-      <Card className="rounded-md border border-border shadow-sm">
+      <Card className="rounded-none border border-border shadow-sm">
         <CardHeader>
           <CardTitle>General Information</CardTitle>
           <CardDescription>
@@ -238,7 +238,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="Acme Inc."
-                        className="rounded-md border border-border"
+                        className="rounded-none border border-border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -260,7 +260,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="acme-inc"
-                        className="rounded-md border border-border"
+                        className="rounded-none border border-border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -282,7 +282,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Textarea
                         placeholder="What does your organization do?"
-                        className="rounded-md border border-border"
+                        className="rounded-none border border-border"
                         rows={3}
                         disabled={!isOwnerOrAdmin}
                         {...field}
@@ -302,7 +302,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="https://example.com/logo.png"
-                        className="rounded-md border border-border"
+                        className="rounded-none border border-border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -338,7 +338,7 @@ export default function OrganizationSettingsPage() {
 
       {/* Danger Zone (Owner Only) */}
       {organization.role === "OWNER" && (
-        <Card className="rounded-md border border-destructive shadow-sm">
+        <Card className="rounded-none border border-destructive shadow-sm">
           <CardHeader>
             <CardTitle className="text-destructive">Danger Zone</CardTitle>
             <CardDescription>
@@ -346,7 +346,7 @@ export default function OrganizationSettingsPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-start justify-between rounded-md border border-destructive bg-destructive/10 p-4">
+            <div className="flex items-start justify-between rounded-none border border-destructive bg-destructive/10 p-4">
               <div className="flex-1">
                 <h4 className="font-medium">Delete Organization</h4>
                 <p className="mt-1 text-sm text-muted-foreground">
@@ -361,7 +361,7 @@ export default function OrganizationSettingsPage() {
                     Delete
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className="rounded-md border border-border">
+                <AlertDialogContent className="rounded-none border border-border">
                   <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2">
                       <AlertTriangle className="h-5 w-5 text-destructive" />

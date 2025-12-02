@@ -156,20 +156,20 @@ export default function AvatarPage() {
                   <AvatarImage src="https://github.com/shadcn.png" alt="Online User" />
                   <AvatarFallback>ON</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-success" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-success" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarImage src="https://github.com/vercel.png" alt="Busy User" />
                   <AvatarFallback>BS</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-warning" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-warning" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarFallback>OF</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-muted-foreground" />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-muted-foreground" />
               </div>
             </div>
           ),
@@ -178,7 +178,7 @@ export default function AvatarPage() {
     <AvatarImage src="..." alt="Online User" />
     <AvatarFallback>ON</AvatarFallback>
   </Avatar>
-  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-background bg-success" />
+  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-success" />
 </div>`,
         },
       ]}

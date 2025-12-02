@@ -99,7 +99,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="/docs"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -114,7 +114,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="/docs/components"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -173,7 +173,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -188,7 +188,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -210,7 +210,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">Blog</div>

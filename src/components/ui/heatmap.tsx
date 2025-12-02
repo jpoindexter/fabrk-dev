@@ -109,7 +109,7 @@ export function Heatmap({
                     return (
                       <div
                         key={String(xLabel)}
-                        className="rounded-sm border bg-muted"
+                        className="rounded-none border bg-muted"
                         style={{ width: cellSize, height: cellSize }}
                       />
                     );
@@ -122,8 +122,8 @@ export function Heatmap({
                       tabIndex={0}
                       aria-label={`${cellData.y} × ${cellData.x}: ${cellData.value}`}
                       className={cn(
-                        "rounded-sm border flex items-center justify-center cursor-pointer transition-all",
-                        isHovered && "scale-110 shadow-md"
+                        "rounded-none border flex items-center justify-center cursor-pointer transition-all",
+                        isHovered && "scale-110 shadow-sm"
                       )}
                       style={{
                         width: cellSize,
@@ -155,7 +155,7 @@ export function Heatmap({
       </div>
 
       {hoveredCell && (
-        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border rounded-md bg-card shadow-md">
+        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border rounded-none bg-card shadow-sm">
           <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}
           </p>

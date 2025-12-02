@@ -159,7 +159,7 @@ const themes = [
               <CardContent className="p-4">
                 <div className="flex items-center gap-2">
                   <div
-                    className="h-6 w-6 rounded-full border-2 border-border"
+                    className="h-6 w-6 rounded-none border-2 border-border"
                     style={{ backgroundColor: theme.color }}
                   />
                   <div>

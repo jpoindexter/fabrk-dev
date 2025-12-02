@@ -63,7 +63,7 @@ export const MultiStepForm = React.forwardRef<HTMLDivElement, MultiStepFormProps
             <div key={i} className="flex items-center">
               <div
                 className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium",
+                  "flex h-8 w-8 items-center justify-center rounded-none font-mono text-xs font-medium",
                   i <= currentStep ? "bg-primary text-primary-foreground" : "bg-card border border-border",
                   ""
                 )}

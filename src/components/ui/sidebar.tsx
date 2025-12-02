@@ -63,8 +63,8 @@ export function Sidebar({
         <button
           onClick={() => handleItemClick(item)}
           className={cn(
-            "w-full flex items-center gap-2 px-3 py-2 text-left text-sm transition-all rounded-md",
-            "hover:bg-accent hover:text-accent-foreground",
+            "w-full flex items-center gap-2 px-3 py-2 text-left font-mono text-xs transition-all rounded-none",
+            "hover:bg-primary hover:text-primary-foreground",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             depth > 0 && "ml-4"
           )}
@@ -77,7 +77,7 @@ export function Sidebar({
             <>
               <span className="flex-1 font-medium">{item.label}</span>
               {item.badge && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+                <span className="flex h-5 w-5 items-center justify-center rounded-none bg-primary text-xs font-semibold text-primary-foreground">
                   {item.badge}
                 </span>
               )}

@@ -67,6 +67,94 @@
     background-color: oklch(var(--primary));
     color: oklch(var(--primary-foreground));
   }
+
+  /* ============================================
+     REACT-DAY-PICKER OVERRIDES
+     Terminal aesthetic - sharp corners, design tokens
+     ============================================ */
+
+  /* Reset all react-day-picker CSS custom properties */
+  [data-slot="calendar"] {
+    --rdp-accent-color: oklch(var(--primary)) !important;
+    --rdp-accent-background-color: oklch(var(--primary)) !important;
+    --rdp-day_button-border-radius: 0 !important;
+    --rdp-day_button-height: 2.25rem !important;
+    --rdp-day_button-width: 2.25rem !important;
+    --rdp-selected-border: none !important;
+    --rdp-disabled-opacity: 0.5 !important;
+    --rdp-outside-opacity: 0.5 !important;
+    --rdp-today-color: oklch(var(--foreground)) !important;
+    --rdp-range_start-color: oklch(var(--primary-foreground)) !important;
+    --rdp-range_start-background: oklch(var(--primary)) !important;
+    --rdp-range_end-color: oklch(var(--primary-foreground)) !important;
+    --rdp-range_end-background: oklch(var(--primary)) !important;
+    --rdp-range_middle-color: oklch(var(--foreground)) !important;
+    --rdp-range_middle-background: oklch(var(--muted)) !important;
+  }
+
+  /* Terminal aesthetic: Sharp corners on ALL elements */
+  [data-slot="calendar"] * {
+    border-radius: 0 !important;
+  }
+
+  /* Selected day - use primary color */
+  [data-slot="calendar"] .rdp-selected .rdp-day_button,
+  [data-slot="calendar"] .rdp-day_button[aria-selected="true"],
+  [data-slot="calendar"] [aria-selected="true"] > .rdp-day_button {
+    background-color: oklch(var(--primary)) !important;
+    color: oklch(var(--primary-foreground)) !important;
+  }
+
+  /* Today - use muted background */
+  [data-slot="calendar"] .rdp-today .rdp-day_button,
+  [data-slot="calendar"] .rdp-day_button[data-today="true"] {
+    background-color: oklch(var(--muted)) !important;
+    color: oklch(var(--foreground)) !important;
+    font-weight: 600 !important;
+  }
+
+  /* Today that is also selected - primary takes precedence */
+  [data-slot="calendar"] .rdp-today.rdp-selected .rdp-day_button,
+  [data-slot="calendar"] .rdp-today [aria-selected="true"] > .rdp-day_button {
+    background-color: oklch(var(--primary)) !important;
+    color: oklch(var(--primary-foreground)) !important;
+  }
+
+  /* Range selection - middle days */
+  [data-slot="calendar"] .rdp-range_middle .rdp-day_button,
+  [data-slot="calendar"] .rdp-day_button.rdp-range_middle {
+    background-color: oklch(var(--muted)) !important;
+    color: oklch(var(--foreground)) !important;
+  }
+
+  /* Range start and end */
+  [data-slot="calendar"] .rdp-range_start .rdp-day_button,
+  [data-slot="calendar"] .rdp-range_end .rdp-day_button {
+    background-color: oklch(var(--primary)) !important;
+    color: oklch(var(--primary-foreground)) !important;
+  }
+
+  /* Day button hover */
+  [data-slot="calendar"] .rdp-day_button:hover:not([aria-selected="true"]) {
+    background-color: oklch(var(--muted)) !important;
+    color: oklch(var(--foreground)) !important;
+  }
+
+  /* Weekday headers - terminal style */
+  [data-slot="calendar"] .rdp-weekday {
+    color: oklch(var(--muted-foreground)) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+  }
+
+  /* Caption/month label - terminal style */
+  [data-slot="calendar"] .rdp-caption_label,
+  [data-slot="calendar"] .rdp-month_caption {
+    font-family: var(--font-mono) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+  }
 }
 
 @theme {

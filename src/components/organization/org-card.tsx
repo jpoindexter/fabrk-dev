@@ -84,7 +84,7 @@ export function OrgCard({
       <CardContent className="p-6">
         {/* Active indicator */}
         {isActive && (
-          <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary shadow-sm">
+          <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none bg-primary shadow-sm">
             <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
           </div>
         )}
@@ -92,7 +92,7 @@ export function OrgCard({
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
           <div className="flex items-start gap-4 flex-1 min-w-0">
-            <Avatar className="h-12 w-12 rounded-md border border-border shadow-sm">
+            <Avatar className="h-12 w-12 rounded-none border border-border shadow-sm">
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (

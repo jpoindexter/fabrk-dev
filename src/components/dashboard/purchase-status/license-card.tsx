@@ -26,7 +26,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="rounded-md bg-muted p-6 font-mono text-sm dark:bg-muted">
+          <div className="rounded-none bg-muted p-6 font-mono text-sm dark:bg-muted">
             {licenseKey}
           </div>
           <Button

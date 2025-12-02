@@ -44,7 +44,7 @@ export function Banner({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-md border-l-4 p-4",
+        "flex items-start gap-3 rounded-none border-l-4 p-4",
         variantStyles[variant],
         className
       )}
@@ -53,7 +53,7 @@ export function Banner({
       <div className="flex-shrink-0">{variantIcons[variant]}</div>
       <div className="flex-1">
         {title && <p className="font-semibold mb-1">{title}</p>}
-        <div className="text-sm">{children}</div>
+        <div className="font-mono text-xs">{children}</div>
       </div>
       {action && (
         <Button
@@ -68,7 +68,7 @@ export function Banner({
       {onDismiss && (
         <button
           onClick={onDismiss}
-          className="flex-shrink-0 rounded-md p-1 hover:bg-muted transition-colors"
+          className="flex-shrink-0 rounded-none p-1 hover:bg-muted transition-colors"
           aria-label="Dismiss"
         >
           <X className="h-4 w-4" />

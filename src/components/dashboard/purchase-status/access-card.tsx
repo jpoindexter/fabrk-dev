@@ -23,7 +23,7 @@ export function AccessCard({
       <Card className="border-destructive dark:border-destructive">
         <CardHeader>
           <CardTitle className={`flex items-center gap-2`}>
-            <div className="size-2 rounded-full bg-destructive dark:bg-destructive" />
+            <div className="size-2 rounded-none bg-destructive dark:bg-destructive" />
             No Access
           </CardTitle>
           <CardDescription>Purchase required to access Fabrk</CardDescription>

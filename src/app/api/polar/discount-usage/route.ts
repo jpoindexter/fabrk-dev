@@ -4,10 +4,20 @@
  */
 
 import { NextResponse } from 'next/server';
-import { polar, FABRK_DISCOUNT_ID } from '@/lib/polar';
+import { polar, FABRK_DISCOUNT_ID, isPolarConfigured } from '@/lib/polar';
 import { logger } from '@/lib/logger';
 
 export async function GET() {
+  // Return mock data when Polar isn't configured (dev mode)
+  if (!isPolarConfigured()) {
+    return NextResponse.json({
+      used: 42,
+      total: 1000,
+      remaining: 958,
+      _mock: true,
+    });
+  }
+
   try {
     const discount = await polar.discounts.get({
       id: FABRK_DISCOUNT_ID,

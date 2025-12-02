@@ -59,7 +59,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
           {[...Array(3)].map((_, i) => (
             <div key={i} className={`animate-pulse  `}>
               <div className={`flex gap-6 `}>
-                <div className={`"h-8 w-8" rounded-full border border-border bg-card`} />
+                <div className={`"h-8 w-8" rounded-none border border-border bg-card`} />
                 <div className={`flex-1 space-y-2 `}>
                   <div className="h-4 w-3/4 rounded border border-border bg-card" />
                   <div className="h-3 w-1/2 rounded border border-border bg-card" />
@@ -107,9 +107,9 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                 key={notification.id}
                 className={cn(
                   "cursor-pointer p-6 transition-all duration-200",
-                  "hover:translate-x-1 hover:bg-accent/50",
+                  "hover:translate-x-1 hover:bg-primary/50",
                   "focus-within:ring-2 focus-within:ring-ring focus-visible:outline-none",
-                  !notification.read && "bg-accent/10 dark:bg-accent/5",
+                  !notification.read && "bg-primary/10 dark:bg-primary/5",
                   ""
                 )}
                 onClick={() => onMarkAsRead?.(notification.id)}
@@ -125,7 +125,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
               >
                 <div className={`flex gap-6 `}>
                   <div
-                    className={`"h-8 w-8" flex items-center justify-center rounded-full border border-border bg-card transition-transform hover:scale-110`}
+                    className={`"h-8 w-8" flex items-center justify-center rounded-none border border-border bg-card transition-transform hover:scale-110`}
                   >
                     {getIcon(notification.type)}
                   </div>

@@ -168,7 +168,7 @@ export function TeamActivityFeed({
                         </Avatar>
                         <div
                           className={cn(
-                            "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border border-border",
+                            "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-none border border-border",
                             config.bgColor
                           )}
                         >

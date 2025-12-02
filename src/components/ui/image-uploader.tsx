@@ -196,7 +196,7 @@ export function ImageUploader({
           }
         }}
         className={cn(
-          "relative flex flex-col items-center justify-center rounded-md border-2 border-dashed bg-muted/20 px-6 py-8 transition-all cursor-pointer",
+          "relative flex flex-col items-center justify-center rounded-none border-2 border-dashed bg-muted/20 px-6 py-8 transition-all cursor-pointer",
           isDragging && "border-primary bg-primary/10",
           error && "border-destructive bg-destructive/10",
           disabled && "opacity-50 cursor-not-allowed",
@@ -236,7 +236,7 @@ export function ImageUploader({
 
       {/* Error Message */}
       {error && (
-        <div className="rounded-md border border-destructive bg-destructive/10 px-4 py-3">
+        <div className="rounded-none border border-destructive bg-destructive/10 px-4 py-3">
           <p className="text-sm font-medium text-destructive">{error}</p>
         </div>
       )}
@@ -247,7 +247,7 @@ export function ImageUploader({
           {files.map((file, index) => (
             <div
               key={`${file.name}-${index}`}
-              className="group relative aspect-square overflow-hidden rounded-md border bg-muted shadow-sm"
+              className="group relative aspect-square overflow-hidden rounded-none border bg-muted shadow-sm"
             >
               {file.preview ? (
                 <img
@@ -269,7 +269,7 @@ export function ImageUploader({
                 }}
                 disabled={disabled}
                 className={cn(
-                  "absolute right-2 top-2 rounded-md border bg-destructive p-1 text-destructive-foreground shadow-sm opacity-0 transition-all",
+                  "absolute right-2 top-2 rounded-none border bg-destructive p-1 text-destructive-foreground shadow-sm opacity-0 transition-all",
                   "group-hover:opacity-100 hover:scale-110 active:scale-95",
                   disabled && "cursor-not-allowed opacity-50"
                 )}

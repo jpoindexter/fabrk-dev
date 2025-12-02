@@ -137,7 +137,7 @@ export default function CommandPage() {
               </p>
               <button
                 onClick={() => setOpen(true)}
-                className="inline-flex items-center justify-center text-sm font-medium font-mono border border-border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                className="inline-flex items-center justify-center text-sm font-medium font-mono border border-border bg-background hover:bg-primary hover:text-primary-foreground h-10 px-4 py-2"
               >
                 Open Command Menu
               </button>

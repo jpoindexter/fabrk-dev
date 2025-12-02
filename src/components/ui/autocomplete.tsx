@@ -95,10 +95,10 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "flex h-10 w-full rounded-md border border-input bg-background px-3 py-3 text-sm",
+              "flex h-10 w-full rounded-none border border-input bg-background px-3 py-3 font-mono text-xs",
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
-              "file:border-0 file:bg-background/0 file:text-sm file:font-medium",
+              "file:border-0 file:bg-background/0 file:font-mono file:text-xs file:font-medium",
               "placeholder:text-muted-foreground dark:placeholder:text-muted-foreground",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               "dark:focus-visible:ring-primary dark:focus-visible:ring-offset-background",
@@ -142,7 +142,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
           <div
             id="autocomplete-list"
             role="listbox"
-            className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-md border border-border bg-popover dark:border-border dark:bg-background"
+            className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-none border border-border bg-popover dark:border-border dark:bg-background"
           >
             {filtered.length > 0 ? (
               filtered.map((option, i) => {
@@ -171,7 +171,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                     }}
                     tabIndex={0}
                     className={cn(
-                      "cursor-pointer px-3 py-3 text-sm outline-none",
+                      "cursor-pointer px-3 py-3 font-mono text-xs outline-none",
                       "hover:bg-primary hover:text-primary-foreground",
                       "dark:text-muted-foreground dark:hover:bg-primary dark:hover:text-primary-foreground",
                       i === highlightedIndex &&

@@ -111,7 +111,7 @@ export function StatsCards({ stats, loading }: StatsCardsProps) {
         customContent={
           stats && (
             <div className="mt-2">
-              <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
+              <div className="h-2 w-full bg-secondary rounded-none overflow-hidden">
                 <div
                   className="h-full bg-primary transition-all duration-300"
                   data-storage-percent={(stats.storageUsed / stats.storageLimit) * 100}

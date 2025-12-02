@@ -85,7 +85,7 @@ const NotificationBadge = React.forwardRef<
         {shouldShow && (
           <span
             className={cn(
-              "absolute z-10 flex items-center justify-center border font-semibold shadow-sm transition-all duration-150 rounded-full tabular-nums",
+              "absolute z-10 flex items-center justify-center border font-semibold shadow-sm transition-all duration-150 rounded-none tabular-nums",
               variantStyles[variant],
               positionStyles[position],
               sizeStyles[size],

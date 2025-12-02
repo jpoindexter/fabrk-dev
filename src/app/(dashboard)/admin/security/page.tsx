@@ -180,7 +180,7 @@ export default function AdminSecurityPage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border">
+          <div className="rounded-none border">
             <Table>
               <TableHeader>
                 <TableRow>

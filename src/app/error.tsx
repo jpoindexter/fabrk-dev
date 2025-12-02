@@ -23,7 +23,7 @@ export default function Error({
       <div className="mx-auto max-w-2xl text-center">
         {/* Error Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="rounded-full bg-destructive/10 p-6">
+          <div className="rounded-none bg-destructive/10 p-6">
             <AlertTriangle className="h-16 w-16 text-destructive" />
           </div>
         </div>

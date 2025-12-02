@@ -125,7 +125,7 @@ export function PricingComparison({
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="rounded-md border border-border overflow-hidden">
+      <div className="rounded-none border border-border overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -177,7 +177,7 @@ export function PricingComparison({
                   {features.map((feature, index) => (
                     <tr
                       key={index}
-                      className="border-t border-border hover:bg-accent/5 transition-colors"
+                      className="border-t border-border hover:bg-primary/5 transition-colors"
                     >
                       <td className="p-4">
                         <span className="text-sm text-foreground">{feature.name}</span>
@@ -197,7 +197,7 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className="rounded-md border border-border bg-card p-6 text-center">
+      <div className="rounded-none border border-border bg-card p-6 text-center">
         <h3 className="text-xl font-black text-foreground mb-2">Need help choosing?</h3>
         <p className="text-sm text-muted-foreground mb-4">
           Contact our team for personalized recommendations

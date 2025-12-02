@@ -172,7 +172,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
       {/* Icon */}
       <div
         className={cn(
-          "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-md border shadow-sm",
+          "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-none border shadow-sm",
           config.color
         )}
       >
@@ -233,7 +233,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
 
         {/* Expanded Content */}
         {!compact && (isExpanded || (!hasExpandableContent && event.description)) && (
-          <div className="rounded-md border bg-card p-4 shadow-sm">
+          <div className="rounded-none border bg-card p-4 shadow-sm">
             {event.description && (
               <p className="text-sm text-muted-foreground">
                 {event.description}
@@ -329,7 +329,7 @@ export function ActivityTimeline({
     return (
       <div
         className={cn(
-          "rounded-md border bg-muted p-8 text-center shadow-sm",
+          "rounded-none border bg-muted p-8 text-center shadow-sm",
           className
         )}
       >
@@ -385,7 +385,7 @@ export function ActivityTimeline({
 
       {/* Timeline */}
       {filteredEvents.length === 0 ? (
-        <div className="rounded-md border bg-muted p-8 text-center shadow-sm">
+        <div className="rounded-none border bg-muted p-8 text-center shadow-sm">
           <p className="text-sm text-muted-foreground">
             No events match the selected filters
           </p>
@@ -393,7 +393,7 @@ export function ActivityTimeline({
       ) : groupByDate ? (
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
-            <h4 className="rounded-md bg-muted px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <h4 className="rounded-none bg-muted px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {dateGroup}
             </h4>
             <div className="pl-2">

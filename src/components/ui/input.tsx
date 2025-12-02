@@ -35,14 +35,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           disabled={disabled || loading}
           className={cn(
-            // Vercel minimal styles
-            "flex h-8 w-full rounded-md border bg-background px-3 py-2 text-[14px] font-normal leading-[1.5] transition-colors",
+            // Terminal styles
+            "flex h-8 w-full rounded-none border bg-background px-3 py-2 font-mono text-xs font-normal transition-colors",
 
             // Vercel focus state - thin ring
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
 
             // File input styles
-            "file:border-0 file:bg-transparent file:text-[14px] file:font-normal file:text-foreground",
+            "file:border-0 file:bg-transparent file:font-mono file:text-xs file:font-normal file:text-foreground",
 
             // Placeholder styles
             "placeholder:text-muted-foreground placeholder:font-normal",

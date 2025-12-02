@@ -137,7 +137,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
               </div>
             </div>
             <pre
-              className={`overflow-x-auto rounded-md border border-border bg-card `}
+              className={`overflow-x-auto rounded-none border border-border bg-card `}
             >
               <code className={`language-${language}`}>{generatedCode}</code>
             </pre>

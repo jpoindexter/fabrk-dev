@@ -85,7 +85,7 @@ export function ColorPicker({
     return (
       <div
         className={cn(
-          "inline-block rounded-[4px] bg-white p-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)]",
+          "inline-block rounded-none bg-card p-0 border border-border",
           className
         )}
       >
@@ -103,7 +103,7 @@ export function ColorPicker({
             type="button"
             disabled={disabled}
             className={cn(
-              "h-[28px] w-[28px] cursor-pointer rounded-[3px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)] transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50",
+              "h-7 w-7 cursor-pointer rounded-none border border-border transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50",
               className
             )}
             style={{ backgroundColor: localColor }}
@@ -111,7 +111,7 @@ export function ColorPicker({
           />
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto rounded-[4px] border-none bg-white p-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+          className="w-auto rounded-none border border-border bg-card p-0"
           align="start"
         >
           <SketchPicker />
@@ -132,7 +132,7 @@ export function ColorPicker({
             disabled={disabled}
           >
             <div
-              className="h-4 w-4 rounded-[2px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]"
+              className="h-4 w-4 rounded-none border border-border"
               style={{ backgroundColor: localColor }}
             />
             <span className="font-mono text-xs">
@@ -141,7 +141,7 @@ export function ColorPicker({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto rounded-[4px] border-none bg-white p-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+          className="w-auto rounded-none border border-border bg-card p-0"
           align="start"
         >
           <SketchPicker width={200} />
@@ -165,7 +165,7 @@ export function ColorPicker({
         >
           <div className="flex w-full items-center gap-2">
             <div
-              className="h-4 w-4 rounded-[2px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]"
+              className="h-4 w-4 rounded-none border border-border"
               style={{ backgroundColor: localColor }}
             />
             <Paintbrush className="h-4 w-4" />
@@ -176,7 +176,7 @@ export function ColorPicker({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-auto rounded-[4px] border-none bg-white p-0 shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+        className="w-auto rounded-none border border-border bg-card p-0"
         align="start"
       >
         <SketchPicker />
