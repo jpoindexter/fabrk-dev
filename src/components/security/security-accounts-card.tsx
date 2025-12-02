@@ -6,13 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Key, Trash2 } from "lucide-react";
@@ -36,9 +30,9 @@ export function SecurityAccountsCard({
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center gap-3">
-          <div className="p-3 rounded-none bg-primary/10 border border-border">
-            <Key className="h-6 w-6 text-primary" />
+        <div className="flex items-center gap-4">
+          <div className="bg-primary/10 border-border rounded-none border p-4">
+            <Key className="text-primary h-6 w-6" />
           </div>
           <div>
             <CardTitle>Connected Accounts</CardTitle>
@@ -50,7 +44,7 @@ export function SecurityAccountsCard({
       </CardHeader>
       <CardContent className="space-y-4">
         {connectedAccounts.length === 0 ? (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             No connected accounts. You can link Google or GitHub for faster sign-in.
           </p>
         ) : (
@@ -58,15 +52,13 @@ export function SecurityAccountsCard({
             {connectedAccounts.map((account, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-4 border border-border rounded-none"
+                className="border-border flex items-center justify-between rounded-none border p-4"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <Badge variant="outline" className="capitalize">
                     {account.provider}
                   </Badge>
-                  <span className="text-sm text-muted-foreground">
-                    Connected
-                  </span>
+                  <span className="text-muted-foreground text-sm">Connected</span>
                 </div>
                 <Button
                   variant="ghost"
@@ -74,7 +66,7 @@ export function SecurityAccountsCard({
                   onClick={() => onDisconnect(account.provider)}
                   disabled={disconnectingProvider === account.provider}
                 >
-                  <Trash2 className="h-4 w-4 mr-2" />
+                  <Trash2 className="mr-2 h-4 w-4" />
                   {disconnectingProvider === account.provider ? "Disconnecting..." : "Disconnect"}
                 </Button>
               </div>
@@ -84,7 +76,7 @@ export function SecurityAccountsCard({
 
         <Separator />
 
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <Button variant="outline" size="sm">
             Connect Google
           </Button>

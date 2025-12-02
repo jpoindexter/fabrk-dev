@@ -10,15 +10,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Palette,
-  Sparkles,
-  Users,
-  BarChart3,
-  Home,
-  ChevronRight,
-  MonitorPlay,
-} from "lucide-react";
+import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight, MonitorPlay } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const showcasePages = [
@@ -56,9 +48,9 @@ export function ShowcaseNav() {
   const pathname = usePathname();
 
   return (
-    <Card className="bg-gradient-to-r from-primary/5 to-secondary/5">
+    <Card className="from-primary/5 to-secondary/5 bg-gradient-to-r">
       <CardContent className="pt-6 pb-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h3 className="text-lg font-bold">Showcase Pages</h3>
           <Link href="/">
             <Button variant="outline" size="sm">
@@ -68,7 +60,7 @@ export function ShowcaseNav() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {showcasePages.map((page) => {
             const Icon = page.icon;
             const isActive = pathname === page.href;
@@ -77,40 +69,32 @@ export function ShowcaseNav() {
               <Link key={page.href} href={page.href} className="block">
                 <div
                   className={cn(
-                    "p-4 rounded-none border-2 transition-all",
+                    "rounded-none border-2 p-4 transition-all",
                     "hover:border-primary/50 hover:shadow-sm",
                     isActive
                       ? "border-primary bg-primary/10 shadow-sm"
                       : "border-border bg-background"
                   )}
                 >
-                  <div className="flex items-start justify-between mb-2">
+                  <div className="mb-2 flex items-start justify-between">
                     <Icon
-                      className={cn(
-                        "h-5 w-5",
-                        isActive ? "text-primary" : "text-muted-foreground"
-                      )}
+                      className={cn("h-5 w-5", isActive ? "text-primary" : "text-muted-foreground")}
                     />
-                    <Badge
-                      variant={isActive ? "default" : "outline"}
-                      className="text-xs"
-                    >
+                    <Badge variant={isActive ? "default" : "outline"} className="text-xs">
                       {page.badge}
                     </Badge>
                   </div>
                   <h4
                     className={cn(
-                      "font-semibold text-sm mb-1",
+                      "mb-1 text-sm font-semibold",
                       isActive ? "text-primary" : "text-foreground"
                     )}
                   >
                     {page.title}
                   </h4>
-                  <p className="text-xs text-muted-foreground">
-                    {page.description}
-                  </p>
+                  <p className="text-muted-foreground text-xs">{page.description}</p>
                   {isActive && (
-                    <div className="mt-2 flex items-center text-xs text-primary">
+                    <div className="text-primary mt-2 flex items-center text-xs">
                       <span>Current page</span>
                       <ChevronRight className="ml-1 h-3 w-3" />
                     </div>

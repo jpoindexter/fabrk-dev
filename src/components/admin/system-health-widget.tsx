@@ -11,7 +11,14 @@
 "use client";
 
 import * as React from "react";
-import { Activity, AlertTriangle, CheckCircle2, Clock, TrendingDown, TrendingUp } from "lucide-react";
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle2,
+  Clock,
+  TrendingDown,
+  TrendingUp,
+} from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -66,12 +73,11 @@ export function SystemHealthWidget({
   const responseTimeStatus = getResponseTimeStatus(avgResponseTime);
   const errorRateStatus = getErrorRateStatus(errorRate);
 
-  const overallStatus =
-    [uptimeStatus, responseTimeStatus, errorRateStatus].includes("critical")
-      ? "critical"
-      : [uptimeStatus, responseTimeStatus, errorRateStatus].includes("warning")
-        ? "warning"
-        : "healthy";
+  const overallStatus = [uptimeStatus, responseTimeStatus, errorRateStatus].includes("critical")
+    ? "critical"
+    : [uptimeStatus, responseTimeStatus, errorRateStatus].includes("warning")
+      ? "warning"
+      : "healthy";
 
   const StatusIcon = overallStatus === "healthy" ? CheckCircle2 : AlertTriangle;
 
@@ -79,8 +85,8 @@ export function SystemHealthWidget({
     <Card className={cn("relative overflow-hidden", className)}>
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-black flex items-center gap-2">
-            <Activity className="h-4 w-4 text-primary" />
+          <CardTitle className="flex items-center gap-2 text-base font-black">
+            <Activity className="text-primary h-4 w-4" />
             System Health
           </CardTitle>
           <Badge
@@ -91,7 +97,7 @@ export function SystemHealthWidget({
             {overallStatus.toUpperCase()}
           </Badge>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-muted-foreground text-xs">
           Last updated: {lastUpdated.toLocaleTimeString()}
         </p>
       </CardHeader>
@@ -101,14 +107,12 @@ export function SystemHealthWidget({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-foreground">Uptime</span>
+              <CheckCircle2 className="text-muted-foreground h-4 w-4" />
+              <span className="text-foreground text-sm font-medium">Uptime</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-black text-foreground">{uptime}%</span>
-              {uptime >= 99.9 && (
-                <TrendingUp className="h-4 w-4 text-primary" />
-              )}
+              <span className="text-foreground text-lg font-black">{uptime}%</span>
+              {uptime >= 99.9 && <TrendingUp className="text-primary h-4 w-4" />}
             </div>
           </div>
           <Progress
@@ -126,12 +130,12 @@ export function SystemHealthWidget({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-foreground">Avg Response Time</span>
+              <Clock className="text-muted-foreground h-4 w-4" />
+              <span className="text-foreground text-sm font-medium">Avg Response Time</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-black text-foreground">{avgResponseTime}ms</span>
-              <TrendingDown className="h-4 w-4 text-primary" />
+              <span className="text-foreground text-lg font-black">{avgResponseTime}ms</span>
+              <TrendingDown className="text-primary h-4 w-4" />
             </div>
           </div>
           <div className="flex gap-1">
@@ -157,14 +161,12 @@ export function SystemHealthWidget({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-medium text-foreground">Error Rate</span>
+              <AlertTriangle className="text-muted-foreground h-4 w-4" />
+              <span className="text-foreground text-sm font-medium">Error Rate</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-black text-foreground">{errorRate}%</span>
-              {errorRate <= 0.5 && (
-                <TrendingDown className="h-4 w-4 text-primary" />
-              )}
+              <span className="text-foreground text-lg font-black">{errorRate}%</span>
+              {errorRate <= 0.5 && <TrendingDown className="text-primary h-4 w-4" />}
             </div>
           </div>
           <Progress
@@ -179,10 +181,10 @@ export function SystemHealthWidget({
         </div>
 
         {/* Requests Per Minute */}
-        <div className="rounded-none border border-border bg-accent/50 p-3">
+        <div className="border-border bg-accent/50 rounded-none border p-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Requests/min</span>
-            <span className="text-xl font-black text-foreground">
+            <span className="text-muted-foreground text-sm font-medium">Requests/min</span>
+            <span className="text-foreground text-xl font-black">
               {requestsPerMinute.toLocaleString()}
             </span>
           </div>
@@ -190,7 +192,7 @@ export function SystemHealthWidget({
       </CardContent>
 
       {/* Background decoration */}
-      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-none bg-primary/5 blur-3xl" />
+      <div className="bg-primary/5 absolute -top-8 -right-8 h-32 w-32 rounded-none blur-3xl" />
     </Card>
   );
 }

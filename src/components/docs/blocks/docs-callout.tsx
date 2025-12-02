@@ -21,7 +21,14 @@ interface DocsCalloutProps {
 
 const variantConfig: Record<
   CalloutVariant,
-  { icon: typeof Info; borderColor: string; bgColor: string; iconColor: string; label: string; hexCode: string }
+  {
+    icon: typeof Info;
+    borderColor: string;
+    bgColor: string;
+    iconColor: string;
+    label: string;
+    hexCode: string;
+  }
 > = {
   info: {
     icon: Info,
@@ -57,35 +64,23 @@ const variantConfig: Record<
   },
 };
 
-export function DocsCallout({
-  variant = "info",
-  title,
-  children,
-  className,
-}: DocsCalloutProps) {
+export function DocsCallout({ variant = "info", title, children, className }: DocsCalloutProps) {
   const config = variantConfig[variant];
   const Icon = config.icon;
 
   return (
-    <div
-      className={cn(
-        "border border-border bg-card",
-        className
-      )}
-    >
+    <div className={cn("border-border bg-card border", className)}>
       {/* Terminal Header */}
-      <div className={cn("border-b border-border px-4 py-2", config.bgColor)}>
+      <div className={cn("border-border border-b px-4 py-2", config.bgColor)}>
         <span className={cn("font-mono text-xs", config.iconColor)}>
           [ [0x{config.hexCode}] {config.label} ]
         </span>
       </div>
       <div className={cn("p-4", config.bgColor)}>
-        <div className="flex items-start gap-3">
-          <Icon className={cn("h-5 w-5 shrink-0 mt-0.5", config.iconColor)} aria-hidden="true" />
+        <div className="flex items-start gap-4">
+          <Icon className={cn("mt-0.5 h-5 w-5 shrink-0", config.iconColor)} aria-hidden="true" />
           <div className="space-y-1">
-            {title && (
-              <p className={`font-bold uppercase ${docsTypography.h4}`}>{title}</p>
-            )}
+            {title && <p className={`font-bold uppercase ${docsTypography.h4}`}>{title}</p>}
             <div className={docsTypography.body}>{children}</div>
           </div>
         </div>

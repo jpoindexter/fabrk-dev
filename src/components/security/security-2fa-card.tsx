@@ -6,20 +6,9 @@
  */
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Shield,
-  Smartphone,
-  CheckCircle2,
-  XCircle,
-} from "lucide-react";
+import { Shield, Smartphone, CheckCircle2, XCircle } from "lucide-react";
 
 interface Security2FACardProps {
   twoFactorEnabled: boolean;
@@ -42,15 +31,13 @@ export function Security2FACard({
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-3 rounded-none bg-primary/10 border border-border">
-              <Smartphone className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-4">
+            <div className="bg-primary/10 border-border rounded-none border p-4">
+              <Smartphone className="text-primary h-6 w-6" />
             </div>
             <div>
               <CardTitle>Two-Factor Authentication</CardTitle>
-              <CardDescription>
-                Add an extra layer of security to your account
-              </CardDescription>
+              <CardDescription>Add an extra layer of security to your account</CardDescription>
             </div>
           </div>
           {twoFactorEnabled ? (
@@ -67,26 +54,22 @@ export function Security2FACard({
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          Two-factor authentication (2FA) adds an additional layer of security by requiring
-          a second form of verification when you sign in.
+        <p className="text-muted-foreground text-sm">
+          Two-factor authentication (2FA) adds an additional layer of security by requiring a second
+          form of verification when you sign in.
         </p>
 
         {twoFactorEnabled ? (
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-sm">
-              <CheckCircle2 className="h-4 w-4 text-success" />
+              <CheckCircle2 className="text-success h-4 w-4" />
               <span>2FA is currently protecting your account</span>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button variant="outline" onClick={onViewBackupCodes}>
                 View Backup Codes
               </Button>
-              <Button
-                variant="destructive"
-                onClick={onDisable2FA}
-                disabled={isDisabling2FA}
-              >
+              <Button variant="destructive" onClick={onDisable2FA} disabled={isDisabling2FA}>
                 {isDisabling2FA ? "Disabling..." : "Disable 2FA"}
               </Button>
             </div>
