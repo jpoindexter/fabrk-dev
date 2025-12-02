@@ -6,6 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | Need | Do This |
 |------|---------|
+| Sync to official repo | `./scripts/sync-to-official.sh` |
 | Design system rules | See `DESIGN_SYSTEM.md` |
 | Run an audit | See `.claude/audit/protocol.md` |
 | Find violations (regex) | See `.claude/audit/patterns.md` |
@@ -77,6 +78,9 @@ npm run db:reset         # Reset and reseed
 # Testing
 npm test                 # Vitest unit tests
 npm run test:e2e         # Playwright E2E tests
+
+# Sync to Official Repo
+./scripts/sync-to-official.sh    # Sync boilerplate to customer repo
 ```
 
 ---
@@ -323,6 +327,69 @@ Manual checks:
 | Prisma out of sync | `npm run db:push` |
 | Hardcoded colors | `npm run scan:hex` |
 | Env validation errors | Check `.env.local`, see `/docs/ENV-VALIDATION.md` |
+
+---
+
+## Dual Repo Architecture
+
+This project uses a **two-repo model** to separate the product (boilerplate) from the marketing site.
+
+### Repos
+
+| Repo | Purpose | URL |
+|------|---------|-----|
+| `Fabrk_plate` | Development repo (you are here) | Private |
+| `fabrk-official` | Customer-facing boilerplate | https://github.com/Theft-SUDO/fabrk-official |
+
+### What Goes Where
+
+**Boilerplate (syncs to official):**
+- `src/components/ui/*` - Base UI components
+- `src/app/templates/*` - Template library
+- `src/app/(dashboard)/*` - Dashboard system
+- `src/app/docs/*` - Documentation
+- `src/app/api/*` - API routes
+- `src/lib/*` - Libraries
+- Config files, prisma, public assets
+
+**Marketing (stays private):**
+- `src/app/page.tsx` - Your landing page
+- `src/app/about/*`, `contact/*`, `features/*`, `pricing/*`, `purchase/*`, `success/*`
+- `src/components/landing/*` - Your landing components
+- `src/components/home/*`, `marketing/*`
+- `/marketing/*` - Launch assets
+- `.claude/*`, `.internal/*` - Internal docs
+
+### Sync Workflow
+
+```bash
+# After making boilerplate changes:
+./scripts/sync-to-official.sh
+
+# Then in official repo:
+cd ../fabrk-official
+git add -A && git commit -m "Sync updates"
+git push
+```
+
+The sync script (`scripts/sync-to-official.sh`):
+1. Excludes all marketing/private files
+2. Copies boilerplate placeholder landing page
+3. Creates empty `src/components/landing/` for customers
+
+### Adding Boilerplate vs Marketing Files
+
+When creating new files, ask:
+- **Is this for customers?** → Goes to boilerplate, will sync
+- **Is this for YOUR Fabrk marketing?** → Add to exclude list in sync script
+
+To exclude new marketing files, edit `scripts/sync-to-official.sh`:
+```bash
+EXCLUDE_PATTERNS=(
+    # ... existing patterns
+    "src/app/your-new-marketing-page/"
+)
+```
 
 ---
 

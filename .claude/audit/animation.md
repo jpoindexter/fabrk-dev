@@ -4,500 +4,69 @@ Framer Motion patterns, CSS transitions, and reduced motion accessibility.
 
 ---
 
-## Transition Timing
+## Quick Reference
 
-### Duration Guidelines
+| Topic | File |
+|-------|------|
+| CSS Transitions | [`animation-css.md`](animation-css.md) |
+| Framer Motion | [`animation-framer.md`](animation-framer.md) |
+
+---
+
+## Duration Guidelines
 
 | Duration | Use | Tailwind |
 |----------|-----|----------|
-| 75ms | Micro-feedback (color shifts) | `duration-75` |
+| 75ms | Micro-feedback | `duration-75` |
 | 100ms | Quick feedback | `duration-100` |
 | 150ms | Hover states | `duration-150` |
-| 200ms | Standard transitions | `duration-200` |
-| 300ms | Complex animations | `duration-300` |
+| 200ms | Standard | `duration-200` |
+| 300ms | Complex | `duration-300` |
 
-### BANNED Durations
-
-```tsx
-// ❌ Too slow - feels sluggish
-duration-500
-duration-700
-duration-1000
-
-// These should be avoided unless for special cases
-// (page transitions, modals, etc.)
-```
+**BANNED**: `duration-500`, `duration-700`, `duration-1000`
 
 ---
 
-## CSS Transitions
+## Critical Rules
 
-### Required on Interactive Elements
-
-```tsx
-// ALL hover states MUST have transitions
-<Button className="hover:bg-primary/90 transition-colors duration-200">
-
-// Cards with hover
-<Card className="hover:border-primary transition-colors duration-200">
-
-// Links
-<a className="text-primary hover:underline transition-colors duration-200">
-
-// List items
-<li className="hover:bg-muted transition-colors duration-200">
-
-// Tabs (CRITICAL for contrast)
-<TabsTrigger className="hover:text-foreground transition-colors duration-200">
-```
-
-### Transition Properties
+### 1. All Hover States Need Transitions
 
 ```tsx
-// Color only (most common)
-className="transition-colors"
-
-// All properties
-className="transition-all"
-
-// Transform only (scale, translate)
-className="transition-transform"
-
-// Opacity only
-className="transition-opacity"
-
-// Multiple specific properties
-className="transition-[color,background-color,border-color]"
-```
-
-### BANNED: Hover Without Transition
-
-```tsx
-// ❌ WRONG: Instant state change
-<Button className="hover:bg-muted">  // Missing transition
-
-// ✅ CORRECT: Smooth transition
+// ✅ CORRECT
 <Button className="hover:bg-muted transition-colors duration-200">
+
+// ❌ WRONG
+<Button className="hover:bg-muted">
 ```
 
----
-
-## Easing Functions
-
-| Easing | Use | Tailwind |
-|--------|-----|----------|
-| `ease-out` | Entry animations | Default |
-| `ease-in` | Exit animations | `ease-in` |
-| `ease-in-out` | State changes | `ease-in-out` |
-| `linear` | Continuous (loaders) | `ease-linear` |
+### 2. Framer Motion Requires Pairs
 
 ```tsx
-// Entry animation (ease-out is default)
-className="transition-all duration-300 ease-out"
+// ✅ CORRECT: initial + animate
+<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
 
-// Exit animation
-className="transition-all duration-200 ease-in"
-
-// Toggle states
-className="transition-all duration-200 ease-in-out"
-
-// Loading spinner
-className="animate-spin ease-linear"
-```
-
----
-
-## Framer Motion
-
-### Basic Animation Pattern
-
-```tsx
-// REQUIRED: initial + animate together
-<motion.div
-  initial={{ opacity: 0, y: 12 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.3 }}
->
-  Content
-</motion.div>
-```
-
-### whileInView (Scroll Animations)
-
-```tsx
-// Animate when element enters viewport
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}  // Only animate once
->
-  Content appears on scroll
-</motion.div>
-```
-
-### Exit Animations (AnimatePresence Required)
-
-```tsx
-// REQUIRED: Wrap with AnimatePresence for exit animations
+// ✅ CORRECT: exit needs AnimatePresence
 <AnimatePresence>
-  {isVisible && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      Content
-    </motion.div>
-  )}
+  {show && <motion.div exit={{ opacity: 0 }}>}
 </AnimatePresence>
-
-// ❌ WRONG: Exit without AnimatePresence
-{isVisible && (
-  <motion.div exit={{ opacity: 0 }}>  // Exit won't work!
-    Content
-  </motion.div>
-)}
 ```
 
-### Layout Animations
+### 3. Reduced Motion is Required
 
 ```tsx
-// REQUIRED: layout prop for list reordering
-{items.map((item) => (
-  <motion.div key={item.id} layout>
-    {item.content}
-  </motion.div>
-))}
-
-// Layout with animation
-<motion.div layout transition={{ duration: 0.3 }}>
-  Content that resizes
-</motion.div>
-```
-
-### Staggered Children
-
-```tsx
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1  // 100ms between each child
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
-<motion.ul
-  variants={container}
-  initial="hidden"
-  animate="show"
->
-  {items.map((i) => (
-    <motion.li key={i.id} variants={item}>
-      {i.content}
-    </motion.li>
-  ))}
-</motion.ul>
-```
-
-### Hover & Tap Animations
-
-```tsx
-// Scale on hover
-<motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  transition={{ duration: 0.2 }}
->
-  Click me
-</motion.button>
-
-// Subtle lift on hover
-<motion.div
-  whileHover={{ y: -4 }}
-  transition={{ duration: 0.2 }}
->
-  Hoverable card
-</motion.div>
-```
-
----
-
-## Common Animation Patterns
-
-### Fade In Up (Most Common)
-
-```tsx
-initial={{ opacity: 0, y: 12 }}
-animate={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.6 }}
-```
-
-### Fade In Scale
-
-```tsx
-initial={{ opacity: 0, scale: 0.95 }}
-animate={{ opacity: 1, scale: 1 }}
-transition={{ duration: 0.3 }}
-```
-
-### Slide In From Side
-
-```tsx
-// From left
-initial={{ opacity: 0, x: -20 }}
-animate={{ opacity: 1, x: 0 }}
-
-// From right
-initial={{ opacity: 0, x: 20 }}
-animate={{ opacity: 1, x: 0 }}
-```
-
-### Modal/Dialog Animation
-
-```tsx
-// Overlay
-initial={{ opacity: 0 }}
-animate={{ opacity: 1 }}
-exit={{ opacity: 0 }}
-transition={{ duration: 0.2 }}
-
-// Content
-initial={{ opacity: 0, scale: 0.95, y: 10 }}
-animate={{ opacity: 1, scale: 1, y: 0 }}
-exit={{ opacity: 0, scale: 0.95, y: 10 }}
-transition={{ duration: 0.2 }}
-```
-
-### Accordion/Collapse
-
-```tsx
-<motion.div
-  initial={false}
-  animate={{
-    height: isOpen ? "auto" : 0,
-    opacity: isOpen ? 1 : 0
-  }}
-  transition={{ duration: 0.3 }}
-  style={{ overflow: "hidden" }}
->
-  Collapsible content
-</motion.div>
-```
-
----
-
-## Reduced Motion (CRITICAL)
-
-### Accessibility Requirement
-
-Users with vestibular disorders can be affected by motion. WCAG requires respecting `prefers-reduced-motion`.
-
-### Tailwind Utilities
-
-```tsx
-// Only animate if motion is OK
-className="motion-safe:animate-fadeIn"
-
-// Remove animation if reduced motion preferred
-className="motion-reduce:animate-none"
-className="motion-reduce:transform-none"
-className="motion-reduce:transition-none"
-```
-
-### Framer Motion Reduced Motion
-
-```tsx
-// Hook for reduced motion
-import { useReducedMotion } from "framer-motion";
-
-function Component() {
-  const shouldReduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-    >
-      Content
-    </motion.div>
-  );
-}
-```
-
-### CSS Media Query
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-```
-
-### Patterns to Flag
-
-```tsx
-// ❌ BANNED: Animation without reduced-motion consideration
-className="animate-bounce"  // Missing motion-safe:
-className="animate-pulse"   // Need motion-safe: prefix
-
 // ✅ CORRECT
 className="motion-safe:animate-bounce"
-className="motion-safe:animate-pulse motion-reduce:animate-none"
+
+// ❌ WRONG
+className="animate-bounce"
 ```
 
 ---
 
-## Loading Animations
-
-### Spinner
-
-```tsx
-<Loader2 className="h-4 w-4 animate-spin" />
-
-// With reduced motion
-<Loader2 className="h-4 w-4 motion-safe:animate-spin" />
-```
-
-### Skeleton Pulse
-
-```tsx
-<Skeleton className="h-4 w-full animate-pulse" />
-
-// Already respects reduced motion via CSS
-```
-
-### Progress Bar
-
-```tsx
-<div className="w-full bg-muted h-2 rounded-none overflow-hidden">
-  <motion.div
-    className="bg-primary h-full"
-    initial={{ width: 0 }}
-    animate={{ width: `${progress}%` }}
-    transition={{ duration: 0.3 }}
-  />
-</div>
-```
-
----
-
-## Performance Guidelines
-
-### Animate Transform Properties
-
-```tsx
-// ✅ GOOD: GPU-accelerated (cheap)
-transform: translateX(), translateY(), scale(), rotate()
-opacity
-
-// ❌ AVOID: Triggers layout (expensive)
-width, height, top, left, margin, padding
-```
-
-### Will-Change Hint
-
-```tsx
-// For heavy animations, hint to browser
-className="will-change-transform"
-
-// Remove after animation
-// Don't use will-change on everything (counterproductive)
-```
-
-### Avoid Layout Thrashing
-
-```tsx
-// ❌ BAD: Animating width causes layout recalculation
-animate={{ width: "100%" }}
-
-// ✅ GOOD: Transform doesn't trigger layout
-animate={{ scaleX: 1 }}  // Scale from 0 to 1
-```
-
----
-
-## Tailwind Animations
-
-### Built-in Animations
-
-```tsx
-animate-spin      // Continuous rotation
-animate-ping      // Ping/pulse effect
-animate-pulse     // Subtle fade pulse
-animate-bounce    // Bouncing effect
-animate-none      // Disable animation
-```
-
-### Custom Animations (globals.css)
-
-```css
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.4s ease-out;
-}
-```
-
----
-
-## Quick Reference Checklist
-
-### Before Every Commit
+## Quick Checklist
 
 - [ ] All hover states have `transition-colors`
 - [ ] No transitions > 300ms (except page/modal)
-- [ ] Framer Motion: `initial` + `animate` paired
-- [ ] Exit animations wrapped in `AnimatePresence`
-- [ ] List reordering has `layout` prop
-- [ ] All animations have `motion-safe:` or `motion-reduce:` consideration
-- [ ] Loading spinners use `animate-spin`
-
-### Animation Property Reference
-
-| Property | Duration | Easing |
-|----------|----------|--------|
-| Hover color | 150-200ms | ease-out |
-| Button press | 100-150ms | ease-out |
-| Modal enter | 200-300ms | ease-out |
-| Modal exit | 150-200ms | ease-in |
-| Scroll reveal | 400-600ms | ease-out |
-| Accordion | 200-300ms | ease-in-out |
-
-### Framer Motion Checklist
-
-- [ ] `initial` present when using `animate`
-- [ ] `AnimatePresence` wraps conditional renders with `exit`
-- [ ] `viewport={{ once: true }}` for scroll animations
-- [ ] `layout` prop on items that reorder
-- [ ] Stagger uses `variants` pattern
-- [ ] Reduced motion checked with `useReducedMotion`
+- [ ] Framer: `initial` + `animate` paired
+- [ ] Exit animations use `AnimatePresence`
+- [ ] All animations have `motion-safe:` prefix
