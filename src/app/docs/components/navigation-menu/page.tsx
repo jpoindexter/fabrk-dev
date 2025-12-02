@@ -80,7 +80,7 @@ export default function NavigationMenuPage() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <ul className="grid gap-4 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
@@ -99,7 +99,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="/docs"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -114,7 +114,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="/docs/components"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -142,7 +142,7 @@ export default function NavigationMenuPage() {
     <NavigationMenuItem>
       <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+        <ul className="grid gap-4 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
           <li className="row-span-3">
             <NavigationMenuLink asChild>
               <a className="flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-sm" href="/">
@@ -169,11 +169,11 @@ export default function NavigationMenuPage() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                    <ul className="grid w-[400px] gap-4 p-4 md:w-[500px] md:grid-cols-2">
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -188,7 +188,7 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">
@@ -206,11 +206,11 @@ export default function NavigationMenuPage() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
+                    <ul className="grid w-[400px] gap-4 p-4">
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
                             href="#"
                           >
                             <div className="text-sm font-medium leading-none">Blog</div>
@@ -231,7 +231,7 @@ export default function NavigationMenuPage() {
     <NavigationMenuItem>
       <NavigationMenuTrigger>Products</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+        <ul className="grid w-[400px] gap-4 p-4 md:w-[500px] md:grid-cols-2">
           {/* Product items... */}
         </ul>
       </NavigationMenuContent>
@@ -239,7 +239,7 @@ export default function NavigationMenuPage() {
     <NavigationMenuItem>
       <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-[400px] gap-3 p-4">
+        <ul className="grid w-[400px] gap-4 p-4">
           {/* Resource items... */}
         </ul>
       </NavigationMenuContent>

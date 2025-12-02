@@ -179,7 +179,7 @@ import { siReact } from "simple-icons"`}
           preview: (
             <div className="rounded-none border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="size-2 rounded-full bg-destructive/50" />
                   <div className="size-2 rounded-full bg-warning/50" />
                   <div className="size-2 rounded-full bg-success/50" />
@@ -187,7 +187,7 @@ import { siReact } from "simple-icons"`}
                 <span className="font-mono text-xs text-muted-foreground">tech-stack</span>
               </div>
               <div className="p-4">
-                <div className="font-mono text-xs text-muted-foreground mb-3">[STACK]:</div>
+                <div className="font-mono text-xs text-muted-foreground mb-4">[STACK]:</div>
                 <div className="flex gap-4">
                   {techStack.map(({ name, icon }) => (
                     <div key={name} className="flex flex-col items-center gap-2">
@@ -201,7 +201,7 @@ import { siReact } from "simple-icons"`}
           ),
           code: `<div className="rounded-none border border-border bg-card">
   <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-1.5">
+    <div className="flex gap-2">
       <div className="size-2 rounded-full bg-destructive/50" />
       <div className="size-2 rounded-full bg-warning/50" />
       <div className="size-2 rounded-full bg-success/50" />
@@ -209,7 +209,7 @@ import { siReact } from "simple-icons"`}
     <span className="font-mono text-xs text-muted-foreground">tech-stack</span>
   </div>
   <div className="p-4">
-    <div className="font-mono text-xs text-muted-foreground mb-3">[STACK]:</div>
+    <div className="font-mono text-xs text-muted-foreground mb-4">[STACK]:</div>
     <div className="flex gap-4">
       {techStack.map(({ name, icon }) => (
         <div key={name} className="flex flex-col items-center gap-2">

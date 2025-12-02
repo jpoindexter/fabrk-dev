@@ -82,7 +82,7 @@ export default function TemplatesPage() {
     <div className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
       {/* Header */}
       <section className="space-y-4">
-        <div className="inline-block border border-border px-3 py-1">
+        <div className="inline-block border border-border px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[TEMPLATE_GALLERY]: BROWSE_TEMPLATES</span>
         </div>
         <h1 className="text-4xl font-bold">Template Gallery</h1>
@@ -94,7 +94,7 @@ export default function TemplatesPage() {
       {/* Preview Notice */}
       <div className="border border-destructive bg-card">
         <div className="flex items-center gap-2 border-b border-destructive/50 px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive" />
             <div className="size-2 rounded-full bg-destructive/60" />
             <div className="size-2 rounded-full bg-destructive/30" />
@@ -122,7 +122,7 @@ export default function TemplatesPage() {
               {/* Card Content */}
               <div className="p-4">
                 {/* Status & Count */}
-                <div className="mb-3 flex items-center justify-between font-mono text-xs">
+                <div className="mb-4 flex items-center justify-between font-mono text-xs">
                   <div>
                     <span className="text-muted-foreground">STATUS: </span>
                     <span className="text-success">{category.status}</span>

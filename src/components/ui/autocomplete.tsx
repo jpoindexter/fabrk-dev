@@ -95,7 +95,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "flex h-10 w-full rounded-none border border-input bg-background px-3 py-3 font-mono text-xs",
+              "flex h-10 w-full rounded-none border border-input bg-background px-4 py-4 font-mono text-xs",
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
               "file:border-0 file:bg-background/0 file:font-mono file:text-xs file:font-medium",
@@ -171,7 +171,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                     }}
                     tabIndex={0}
                     className={cn(
-                      "cursor-pointer px-3 py-3 font-mono text-xs outline-none",
+                      "cursor-pointer px-4 py-4 font-mono text-xs outline-none",
                       "hover:bg-primary hover:text-primary-foreground",
                       "dark:text-muted-foreground dark:hover:bg-primary dark:hover:text-primary-foreground",
                       i === highlightedIndex &&

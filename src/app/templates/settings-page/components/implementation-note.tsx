@@ -10,7 +10,7 @@ export function ImplementationNote() {
   return (
     <TerminalWindow filename="features.md">
       <div className="p-4">
-        <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+        <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
         <div className="space-y-1.5 font-mono text-xs">
           <div><span className="text-success">&gt;</span> 4-tab navigation (General, Account, Privacy, Billing)</div>
           <div><span className="text-success">&gt;</span> Appearance settings (theme, font size, layout)</div>
@@ -24,7 +24,7 @@ export function ImplementationNote() {
           <div><span className="text-success">&gt;</span> Danger zone (account deletion)</div>
           <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
         </div>
-        <div className="mt-3 font-mono text-xs text-muted-foreground">
+        <div className="mt-4 font-mono text-xs text-muted-foreground">
           [NOTE]: Form components in src/components/settings/. Connect to your API for save functionality.
         </div>
       </div>

@@ -95,7 +95,7 @@ export function ApiKeysList({
           <CardContent className="pt-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-start gap-6">
-                <div className="p-3 rounded-none bg-primary/10 border border-border">
+                <div className="p-4 rounded-none bg-primary/10 border border-border">
                   <Key className="h-6 w-6 text-primary" />
                 </div>
                 <div>

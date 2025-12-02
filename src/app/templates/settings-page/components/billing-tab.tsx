@@ -32,17 +32,17 @@ export function BillingTab() {
                 <div className="text-xl font-bold">$29/month</div>
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button variant="outline" className="rounded-none flex-1 font-mono text-xs">&gt; CHANGE_PLAN</Button>
               <Button variant="outline" className="rounded-none flex-1 font-mono text-xs">&gt; VIEW_INVOICES</Button>
             </div>
           </div>
           <div>
-            <div className="font-mono text-xs text-muted-foreground mb-3">[PAYMENT_METHODS]:</div>
+            <div className="font-mono text-xs text-muted-foreground mb-4">[PAYMENT_METHODS]:</div>
             <div className="text-center py-4 font-mono text-xs text-muted-foreground border border-border">
               No payment methods added yet. Use Stripe Customer Portal to manage payment methods.
             </div>
-            <Button variant="outline" className="rounded-none w-full mt-3 font-mono text-xs">
+            <Button variant="outline" className="rounded-none w-full mt-4 font-mono text-xs">
               &gt; ADD_PAYMENT_METHOD
             </Button>
           </div>

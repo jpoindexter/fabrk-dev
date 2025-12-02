@@ -40,7 +40,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
     <main className="flex-1 p-8">
       <div className="mx-auto max-w-4xl space-y-6">
         {/* Template Label */}
-        <div className="inline-block border border-border px-3 py-1">
+        <div className="inline-block border border-border px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">
             [TEMPLATE]: DOCUMENTATION
           </span>
@@ -59,7 +59,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
 
         {/* Page Header */}
         <header>
-          <h1 className="text-4xl font-semibold tracking-tight mb-3 text-foreground">
+          <h1 className="text-4xl font-semibold tracking-tight mb-4 text-foreground">
             {currentDoc.title}
           </h1>
           <p className="font-mono text-sm text-muted-foreground mb-4">
@@ -92,7 +92,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               return (
                 <h2
                   key={idx}
-                  className="font-mono text-sm font-bold mt-8 mb-3 text-foreground scroll-mt-20"
+                  className="font-mono text-sm font-bold mt-8 mb-4 text-foreground scroll-mt-20"
                   id={section.content.toLowerCase().replace(/\s+/g, "-")}
                 >
                   [{section.content.toUpperCase().replace(/ /g, "_")}]:
@@ -111,7 +111,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   <div className="border border-border overflow-hidden bg-card">
                     <div className="flex items-center justify-between bg-muted px-4 py-2 border-b border-border">
                       <div className="flex items-center gap-2">
-                        <div className="flex gap-1.5">
+                        <div className="flex gap-2">
                           <div className="size-2 rounded-full bg-destructive/50" />
                           <div className="size-2 rounded-full bg-warning/50" />
                           <div className="size-2 rounded-full bg-success/50" />
@@ -185,7 +185,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         {/* Help Section */}
         <div className="mt-12 border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />

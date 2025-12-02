@@ -18,7 +18,7 @@ function FAQDemo() {
   return (
     <section className="w-full border border-border bg-background p-6">
       <div className="mb-6">
-        <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+        <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
           [ [0x50] KNOWLEDGE_BASE ] FAQ
         </span>
         <h2 className="mt-4 font-mono text-xl font-bold">FREQUENTLY_ASKED_QUESTIONS</h2>
@@ -57,14 +57,14 @@ function FAQCategoriesDemo() {
 
   return (
     <div className="w-full border border-border bg-background p-4">
-      <div className="mb-3 font-mono text-xs text-muted-foreground">[ CATEGORIES ]</div>
+      <div className="mb-4 font-mono text-xs text-muted-foreground">[ CATEGORIES ]</div>
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActive(cat.toLowerCase())}
             className={cn(
-              "border px-3 py-1.5 font-mono text-xs transition-colors",
+              "border px-4 py-1.5 font-mono text-xs transition-colors",
               active === cat.toLowerCase()
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border bg-card text-muted-foreground hover:border-primary/50"
@@ -115,7 +115,7 @@ const categories = ["GENERAL", "TECHNICAL", "PAYMENT", "LICENSE"];
       key={cat}
       onClick={() => setActiveCategory(cat.toLowerCase())}
       className={cn(
-        "px-3 py-1.5 border",
+        "px-4 py-1.5 border",
         activeCategory === cat.toLowerCase()
           ? "bg-primary text-primary-foreground"
           : "bg-card"

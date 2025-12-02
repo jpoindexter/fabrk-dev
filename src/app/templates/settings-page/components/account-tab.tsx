@@ -46,7 +46,7 @@ export function AccountTab() {
               <Label htmlFor="bio" className="rounded-none font-mono text-xs">[BIO]:</Label>
               <Textarea id="bio" placeholder="Tell us about yourself..." rows={4} className="rounded-none font-mono text-xs" />
             </div>
-            <div className="flex justify-end gap-3">
+            <div className="flex justify-end gap-4">
               <Button variant="outline" className="rounded-none font-mono text-xs">&gt; CANCEL</Button>
               <Button className="rounded-none font-mono text-xs">&gt; SAVE_CHANGES</Button>
             </div>
@@ -62,7 +62,7 @@ export function AccountTab() {
             title="ACCOUNT_SECURITY"
             description="Manage password and authentication methods"
           />
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex items-center justify-between border border-border p-4 font-mono text-xs">
               <div>
                 <div>[PASSWORD]:</div>

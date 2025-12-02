@@ -22,7 +22,7 @@ export function FaqSection() {
         viewport={{ once: true }}
         className="text-center mb-8"
       >
-        <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+        <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
           [ [0x04] FAQ ]
         </span>
         <h2 className="text-xl font-bold mb-2">FREQUENTLY_ASKED_QUESTIONS</h2>
@@ -32,7 +32,7 @@ export function FaqSection() {
       </motion.div>
 
       <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full space-y-3">
+        <Accordion type="single" collapsible className="w-full space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}

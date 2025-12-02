@@ -226,7 +226,7 @@ export function ReferenceTemplate({
       {relatedLinks && relatedLinks.length > 0 && (
         <DocsSection title="Related">
           <DocsCard title="RELATED_LINKS">
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {relatedLinks.map((link, index) => (
                 <li key={index}>
                   <a

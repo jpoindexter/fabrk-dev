@@ -23,7 +23,7 @@ export function ButtonsSection() {
           <CardDescription>All available button styles</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-4">
             <Button>Default</Button>
             <Button variant="destructive">Destructive</Button>
             <Button variant="outline">Outline</Button>
@@ -39,7 +39,7 @@ export function ButtonsSection() {
           <CardTitle>Button Sizes</CardTitle>
           <CardDescription>Different size options</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap items-center gap-3">
+        <CardContent className="flex flex-wrap items-center gap-4">
           <Button size="sm">Small</Button>
           <Button size="default">Default</Button>
           <Button size="lg">Large</Button>
@@ -52,7 +52,7 @@ export function ButtonsSection() {
           <CardTitle>Button with Icons</CardTitle>
           <CardDescription>Buttons with leading and trailing icons</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
+        <CardContent className="flex flex-wrap gap-4">
           <Button>
             <Mail className="mr-2 h-4 w-4" />
             Email
@@ -75,7 +75,7 @@ export function ButtonsSection() {
           <CardTitle>Button States</CardTitle>
           <CardDescription>Loading and disabled states</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
+        <CardContent className="flex flex-wrap gap-4">
           <Button loading loadingText="Saving...">Loading</Button>
           <Button disabled>Disabled</Button>
           <Button variant="outline" disabled>Disabled Outline</Button>

@@ -236,7 +236,7 @@ export function ImageUploader({
 
       {/* Error Message */}
       {error && (
-        <div className="rounded-none border border-destructive bg-destructive/10 px-4 py-3">
+        <div className="rounded-none border border-destructive bg-destructive/10 px-4 py-4">
           <p className="text-sm font-medium text-destructive">{error}</p>
         </div>
       )}

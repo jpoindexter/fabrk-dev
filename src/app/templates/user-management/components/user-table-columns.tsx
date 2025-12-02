@@ -43,7 +43,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "name",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Name" />,
     cell: ({ row }) => (
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted font-mono text-xs">
           {row.getValue<string>("name").split(" ").map((n) => n[0]).join("")}
         </div>

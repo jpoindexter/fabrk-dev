@@ -23,10 +23,10 @@ function FooterDemo() {
       <div className="grid gap-6 p-6 lg:grid-cols-[1fr_auto]">
         {/* Logo & Status */}
         <div>
-          <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+          <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
             [ SYSTEM_INFO ]
           </span>
-          <Link href="#" className="mt-3 flex items-center gap-1.5 font-mono">
+          <Link href="#" className="mt-4 flex items-center gap-2 font-mono">
             <span className="text-primary">&gt;</span>
             <span className="text-lg font-bold">FABRK</span>
           </Link>
@@ -39,7 +39,7 @@ function FooterDemo() {
         {/* Nav Links */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -47,21 +47,21 @@ function FooterDemo() {
             <span className="font-mono text-xs text-muted-foreground">nav_links.exe</span>
           </div>
           <div className="grid grid-cols-3 divide-x divide-border">
-            <div className="p-3">
+            <div className="p-4">
               <div className="mb-2 font-mono text-xs text-muted-foreground">[ PRODUCT ]</div>
               <div className="flex flex-col gap-1">
                 <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; FEATURES</Link>
                 <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; PRICING</Link>
               </div>
             </div>
-            <div className="p-3">
+            <div className="p-4">
               <div className="mb-2 font-mono text-xs text-muted-foreground">[ COMPANY ]</div>
               <div className="flex flex-col gap-1">
                 <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; ABOUT</Link>
                 <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; CONTACT</Link>
               </div>
             </div>
-            <div className="p-3">
+            <div className="p-4">
               <div className="mb-2 font-mono text-xs text-muted-foreground">[ LEGAL ]</div>
               <div className="flex flex-col gap-1">
                 <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; TERMS</Link>
@@ -143,23 +143,23 @@ export default function LandingPage() {
           description: "Footer social media buttons",
           preview: (
             <div className="flex gap-2">
-              <Link href="#" className="flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
                 X
               </Link>
-              <Link href="#" className="flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
                 GitHub
               </Link>
-              <Link href="#" className="flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
                 Discord
               </Link>
             </div>
           ),
           code: `<div className="flex gap-2">
-  <a href="https://x.com" className="border px-3 py-1.5">
+  <a href="https://x.com" className="border px-4 py-1.5">
     <XIcon className="h-4 w-4" />
     X
   </a>
-  <a href="https://github.com" className="border px-3 py-1.5">
+  <a href="https://github.com" className="border px-4 py-1.5">
     <GithubIcon className="h-4 w-4" />
     GitHub
   </a>

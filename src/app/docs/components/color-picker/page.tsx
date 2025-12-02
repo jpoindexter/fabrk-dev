@@ -150,8 +150,8 @@ export default function ColorPickerPage() {
           title: "Swatch Palette",
           description: "Multiple swatch pickers for a color palette builder.",
           preview: (
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
                 <ColorPicker variant="swatch" color="#8b5cf6" />
                 <ColorPicker variant="swatch" color="#ec4899" />
                 <ColorPicker variant="swatch" color="#06b6d4" />
@@ -163,7 +163,7 @@ export default function ColorPickerPage() {
               </div>
             </div>
           ),
-          code: `<div className="flex gap-3">
+          code: `<div className="flex gap-4">
   <ColorPicker variant="swatch" color="#8b5cf6" />
   <ColorPicker variant="swatch" color="#ec4899" />
   <ColorPicker variant="swatch" color="#06b6d4" />

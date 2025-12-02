@@ -159,8 +159,8 @@ export async function deleteUserData(
  */
 export async function anonymizeUserData(userId: string): Promise<void> {
   // Replace personal data with anonymized values
-  const anonymizedEmail = `user-${userId}@anonymized.local`;
-  const anonymizedName = `User ${userId.substring(0, 8)}`;
+  const _anonymizedEmail = `user-${userId}@anonymized.local`;
+  const _anonymizedName = `User ${userId.substring(0, 8)}`;
 
   // In production:
   // await prisma.user.update({
@@ -191,7 +191,7 @@ export async function recordConsent(consent: Omit<ConsentRecord, "consentDate">)
 /**
  * Check if user has given consent
  */
-export async function hasConsent(userId: string, consentType: string): Promise<boolean> {
+export async function hasConsent(_userId: string, _consentType: string): Promise<boolean> {
   // In production, check database
   // const consent = await prisma.consent.findFirst({
   //   where: { userId, consentType },
@@ -216,7 +216,7 @@ export async function revokeConsent(userId: string, consentType: string): Promis
 /**
  * Get all consents for user
  */
-export async function getUserConsents(userId: string): Promise<ConsentRecord[]> {
+export async function getUserConsents(_userId: string): Promise<ConsentRecord[]> {
   // In production:
   // return await prisma.consent.findMany({
   //   where: { userId },

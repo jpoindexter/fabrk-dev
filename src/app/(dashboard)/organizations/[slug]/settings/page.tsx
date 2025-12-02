@@ -206,7 +206,7 @@ export default function OrganizationSettingsPage() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <div className="rounded-none border border-border bg-primary p-2">
           <SettingsIcon className="h-6 w-6 text-primary-foreground" />
         </div>

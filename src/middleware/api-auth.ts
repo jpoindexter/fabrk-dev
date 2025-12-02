@@ -29,7 +29,7 @@ export async function authenticateApiKey(request: NextRequest): Promise<Validate
     }
 
     return await validateApiKey(apiKey);
-  } catch (error: unknown) {
+  } catch {
     return null;
   }
 }

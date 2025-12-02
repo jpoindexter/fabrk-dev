@@ -62,7 +62,7 @@ export function DeveloperExperienceSection() {
     <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24 font-mono">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
             [ BUILT_FOR_DEVELOPERS ]
           </span>
         </div>
@@ -98,7 +98,7 @@ export function DeveloperExperienceSection() {
                     <IconComponent className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="mb-3 text-sm font-bold">
+                <h3 className="mb-4 text-sm font-bold">
                   {feature.title.toUpperCase().replace(/ /g, '_')}
                 </h3>
                 <p className="text-xs leading-relaxed text-muted-foreground">

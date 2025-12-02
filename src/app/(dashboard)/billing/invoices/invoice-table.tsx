@@ -31,17 +31,6 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const { success, error } = useToast();
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "succeeded":
-        return <CheckCircle2 className="h-4 w-4 text-success" />;
-      case "failed":
-        return <XCircle className="h-4 w-4 text-destructive" />;
-      default:
-        return <Clock className="h-4 w-4 text-warning" />;
-    }
-  };
-
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "succeeded":

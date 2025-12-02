@@ -21,7 +21,7 @@ export function AboutCTA() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
             [ [0xFF] EXECUTE ]
           </span>
           <h2 className="text-2xl font-bold lg:text-3xl">READY_TO_BUILD_YOUR_SAAS</h2>
@@ -44,7 +44,7 @@ export function AboutCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex flex-col gap-3 sm:flex-row sm:justify-center"
+          className="flex flex-col gap-4 sm:flex-row sm:justify-center"
         >
           <Button size="lg" className="rounded-none text-xs" asChild>
             <Link href="/#pricing">

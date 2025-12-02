@@ -190,7 +190,7 @@ export async function triggerWebhook(
     Promise.all(deliveryPromises).catch(() => {
       // Silently handle errors
     });
-  } catch (error: unknown) {
+  } catch {
     // Silently handle errors
   }
 }
@@ -306,7 +306,7 @@ export async function deliverWebhook(
         },
       });
     }
-  } catch (error: unknown) {
+  } catch {
     // Silently handle errors
   }
 }
@@ -435,7 +435,7 @@ export async function retryWebhookDelivery(deliveryId: string): Promise<void> {
         },
       });
     }
-  } catch (error: unknown) {
+  } catch {
     // Silently handle errors
   }
 }

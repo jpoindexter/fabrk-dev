@@ -76,7 +76,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
             return (
               <div
                 key={activity.id}
-                className="flex items-center gap-6 rounded-none border p-3"
+                className="flex items-center gap-6 rounded-none border p-4"
               >
                 <div className="rounded-none bg-secondary p-2">
                   <Icon className="h-4 w-4" />

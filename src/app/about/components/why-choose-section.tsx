@@ -52,7 +52,7 @@ export function WhyChooseSection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+              <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
                 [ [0x05] WHY_FABRK ]
               </span>
               <h2 className="text-2xl font-bold lg:text-3xl mb-4">WHY_CHOOSE_FABRK</h2>
@@ -69,7 +69,7 @@ export function WhyChooseSection() {
             </motion.div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {reasons.map((item, index) => (
               <motion.div
                 key={index}

@@ -19,7 +19,7 @@ function CookieConsentDemo() {
     <div className="w-full max-w-md border border-border bg-card">
       {/* Terminal Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-none bg-destructive/50" />
           <div className="size-2 rounded-none bg-warning/50" />
           <div className="size-2 rounded-none bg-success/50" />
@@ -62,10 +62,10 @@ function CookieConsentDemo() {
         </div>
 
         <div className="flex gap-2">
-          <button className="flex-1 border border-border bg-background px-3 py-1.5 font-mono text-xs hover:border-primary">
+          <button className="flex-1 border border-border bg-background px-4 py-1.5 font-mono text-xs hover:border-primary">
             &gt; REJECT_ALL
           </button>
-          <button className="flex-1 border border-primary bg-primary px-3 py-1.5 font-mono text-xs text-primary-foreground">
+          <button className="flex-1 border border-primary bg-primary px-4 py-1.5 font-mono text-xs text-primary-foreground">
             &gt; ACCEPT_ALL
           </button>
         </div>
@@ -185,7 +185,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       <DocsSection title="How It Works">
         <div className="space-y-4">
           <DocsCard title="STEP_01">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>First Visit</h3>
             </div>
@@ -195,7 +195,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>User Makes Choice</h3>
             </div>
@@ -205,7 +205,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Choice Saved</h3>
             </div>
@@ -215,7 +215,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Return Visits</h3>
             </div>
@@ -231,7 +231,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       <DocsSection title="Cookie Categories">
         <DocsCard title="COOKIE_CATEGORIES">
           <div className="space-y-4">
-            <div className="flex items-start gap-3 p-3 bg-muted/50">
+            <div className="flex items-start gap-4 p-4 bg-muted/50">
               <div className="h-3 w-3 rounded-none bg-success mt-1"></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
@@ -240,7 +240,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3 bg-muted/50">
+            <div className="flex items-start gap-4 p-4 bg-muted/50">
               <div className="h-3 w-3 rounded-none bg-info mt-1"></div>
               <div>
                 <p className="font-medium">Preferences</p>
@@ -249,7 +249,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3 bg-muted/50">
+            <div className="flex items-start gap-4 p-4 bg-muted/50">
               <div className="h-3 w-3 rounded-none bg-warning mt-1"></div>
               <div>
                 <p className="font-medium">Statistics</p>
@@ -258,7 +258,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3 p-3 bg-muted/50">
+            <div className="flex items-start gap-4 p-4 bg-muted/50">
               <div className="h-3 w-3 rounded-none bg-destructive mt-1"></div>
               <div>
                 <p className="font-medium">Marketing</p>

@@ -37,7 +37,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
+            <div className="mb-4 inline-block self-start border border-border bg-card px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">[ [0x40] PRICING ] COMMERCIAL_TIER │ FIB[144]</span>
             </div>
 
@@ -124,7 +124,7 @@ export function PricingSection() {
 
                 {/* Features List */}
                 <div className="mb-6">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[ INCLUDES ]─────────────────────</div>
+                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ INCLUDES ]─────────────────────</div>
                   <div className="space-y-2">
                     {features.map((feature, idx) => (
                       <motion.div

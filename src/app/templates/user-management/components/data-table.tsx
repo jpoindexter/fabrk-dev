@@ -44,7 +44,7 @@ export function DataTable({ table }: DataTableProps) {
           table.getRowModel().rows.map((row) => (
             <div
               key={row.id}
-              className={`flex items-center px-4 py-3 hover:bg-muted/30 ${
+              className={`flex items-center px-4 py-4 hover:bg-muted/30 ${
                 row.getIsSelected() ? "bg-primary/5" : ""
               }`}
             >

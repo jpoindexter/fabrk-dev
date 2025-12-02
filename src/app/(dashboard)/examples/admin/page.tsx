@@ -136,7 +136,7 @@ const columns: ColumnDef<User>[] = [
       const status = row.getValue("status") as string;
       return (
         <span
-          className={`inline-flex rounded-none px-3 py-1 text-xs font-semibold ${
+          className={`inline-flex rounded-none px-4 py-1 text-xs font-semibold ${
             status === "active"
               ? "bg-success/20 text-success-foreground"
               : status === "pending"

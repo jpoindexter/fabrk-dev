@@ -48,7 +48,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 lg:mb-24"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">[ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]</span>
           </div>
           <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">

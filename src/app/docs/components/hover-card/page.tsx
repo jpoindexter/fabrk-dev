@@ -124,7 +124,7 @@ export default function HoverCardPage() {
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="w-80 rounded-none">
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <h4 className="font-mono text-sm font-semibold">San Francisco, CA</h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
@@ -149,7 +149,7 @@ export default function HoverCardPage() {
     <Button variant="outline">View Location</Button>
   </HoverCardTrigger>
   <HoverCardContent className="w-80">
-    <div className="space-y-3">
+    <div className="space-y-4">
       <h4 className="text-sm font-semibold">San Francisco, CA</h4>
       <div className="space-y-2">
         <div className="flex items-center gap-2">
@@ -245,11 +245,11 @@ export default function HoverCardPage() {
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="w-80 rounded-none">
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="font-mono text-xs text-muted-foreground">
                     [SYSTEM_INFO]:
                   </div>
-                  <div className="border border-border bg-muted/30 p-3">
+                  <div className="border border-border bg-muted/30 p-4">
                     <div className="mb-2 font-mono text-xs text-muted-foreground">
                       [ [0x00] STATUS ]
                     </div>
@@ -279,9 +279,9 @@ export default function HoverCardPage() {
     </Button>
   </HoverCardTrigger>
   <HoverCardContent className="w-80 rounded-none">
-    <div className="space-y-3">
+    <div className="space-y-4">
       <div className="font-mono text-xs">[SYSTEM_INFO]:</div>
-      <div className="border bg-muted/30 p-3">
+      <div className="border bg-muted/30 p-4">
         <div className="font-mono text-xs">
           <div>Version: <span className="text-primary">2.0.1</span></div>
           <div>Status: <span className="text-success">ACTIVE</span></div>

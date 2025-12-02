@@ -72,7 +72,7 @@ export function MembersTable({ members }: MembersTableProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -80,7 +80,7 @@ export function MembersTable({ members }: MembersTableProps) {
         <span className="font-mono text-xs text-muted-foreground">team_members.db</span>
       </div>
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-3">
+        <div className="font-mono text-xs text-muted-foreground mb-4">
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
         <div className="border border-border">
@@ -96,8 +96,8 @@ export function MembersTable({ members }: MembersTableProps) {
             {members.map((member) => {
               const RoleIcon = roleIcons[member.role];
               return (
-                <div key={member.id} className="grid grid-cols-4 items-center px-4 py-3">
-                  <div className="flex items-center gap-3">
+                <div key={member.id} className="grid grid-cols-4 items-center px-4 py-4">
+                  <div className="flex items-center gap-4">
                     <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted font-mono text-xs">
                       {member.name.split(" ").map((n) => n[0]).join("")}
                     </div>

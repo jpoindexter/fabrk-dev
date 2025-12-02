@@ -17,7 +17,7 @@ export function ContactSidebar() {
         className="border border-border bg-card p-6"
       >
         <div className="flex items-start gap-4">
-          <div className="p-3 bg-primary/10 border border-border">
+          <div className="p-4 bg-primary/10 border border-border">
             <Mail className="h-5 w-5 text-primary" />
           </div>
           <div>
@@ -44,7 +44,7 @@ export function ContactSidebar() {
         className="border border-border bg-card p-6"
       >
         <div className="flex items-start gap-4">
-          <div className="p-3 bg-primary/10 border border-border">
+          <div className="p-4 bg-primary/10 border border-border">
             <MessageCircle className="h-5 w-5 text-primary" />
           </div>
           <div>

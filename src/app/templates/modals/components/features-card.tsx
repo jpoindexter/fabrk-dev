@@ -7,7 +7,7 @@ export function FeaturesCard() {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -17,7 +17,7 @@ export function FeaturesCard() {
         </span>
       </div>
       <div className="p-4">
-        <div className="mb-3 font-mono text-xs text-muted-foreground">
+        <div className="mb-4 font-mono text-xs text-muted-foreground">
           [TEMPLATE_FEATURES]:
         </div>
         <div className="space-y-1.5 font-mono text-xs">
@@ -46,7 +46,7 @@ export function FeaturesCard() {
             labels
           </div>
         </div>
-        <div className="mt-3 font-mono text-xs text-muted-foreground">
+        <div className="mt-4 font-mono text-xs text-muted-foreground">
           [NOTE]: All patterns use Radix UI primitives for accessibility.
         </div>
       </div>

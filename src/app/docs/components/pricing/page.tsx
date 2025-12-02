@@ -36,7 +36,7 @@ function PricingDemo() {
   return (
     <section className="w-full border border-border bg-background p-6">
       <div className="mb-6 text-center">
-        <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+        <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
           [ [0x30] PRICING ] SELECT_PLAN
         </span>
         <h2 className="mt-4 font-mono text-xl font-bold">CHOOSE_YOUR_PLAN</h2>

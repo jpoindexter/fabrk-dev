@@ -92,7 +92,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsCard title="AUTH_SECURITY">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Authentication & Security</h4>
-            <p className={`${docsTypography.body} mb-3`}>
+            <p className={`${docsTypography.body} mb-4`}>
               Built on NextAuth.js v5. Sessions are stateless (JWT) by default for edge compatibility,
               but can be database-persisted for strict session management.
             </p>
@@ -105,7 +105,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
           <DocsCard title="DATABASE_LAYER">
             <h4 className={`uppercase ${docsTypography.h4} mb-2`}>Database Layer</h4>
-            <p className={`${docsTypography.body} mb-3`}>
+            <p className={`${docsTypography.body} mb-4`}>
               Prisma ORM provides a type-safe interface to PostgreSQL.
               We use a "Service Layer" pattern to abstract database logic from UI components.
             </p>
@@ -121,7 +121,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Data Flow */}
       <DocsSection title="Data Flow & Patterns">
         <DocsCard title="DATA_FLOW">
-          <p className={`${docsTypography.body} mb-3`}>
+          <p className={`${docsTypography.body} mb-4`}>
             We strictly follow unidirectional data flow. Server Actions are used for mutations,
             while React Server Components (RSC) handle data fetching.
           </p>
@@ -137,7 +137,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Scalability */}
       <DocsSection title="Scalability Considerations">
         <DocsCard title="SCALABILITY">
-          <p className={`${docsTypography.body} mb-3`}>
+          <p className={`${docsTypography.body} mb-4`}>
             Fabrk is designed to scale from 0 to 1M+ users without major refactoring.
           </p>
           <div className="space-y-1 font-mono text-sm text-muted-foreground leading-relaxed">

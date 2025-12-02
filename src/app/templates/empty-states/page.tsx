@@ -101,7 +101,7 @@ export default function EmptyStatesTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-3 py-1">
+          <div className="inline-block border border-border px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">
               [TEMPLATE]: EMPTY_STATES
             </span>
@@ -119,7 +119,7 @@ export default function EmptyStatesTemplate() {
             return (
               <div key={state.id} className="border border-border bg-card flex flex-col">
                 <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                  <div className="flex gap-1.5">
+                  <div className="flex gap-2">
                     <div className="size-2 rounded-full bg-destructive/50" />
                     <div className="size-2 rounded-full bg-warning/50" />
                     <div className="size-2 rounded-full bg-success/50" />
@@ -159,8 +159,8 @@ export default function EmptyStatesTemplate() {
 
                     {/* Terminal Output */}
                     <div className="border border-border bg-card text-left mt-4">
-                      <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1.5">
-                        <div className="flex gap-1.5">
+                      <div className="flex items-center gap-2 border-b border-border/50 px-4 py-1.5">
+                        <div className="flex gap-2">
                           <div className="size-2 rounded-full bg-destructive/50" />
                           <div className="size-2 rounded-full bg-warning/50" />
                           <div className="size-2 rounded-full bg-success/50" />
@@ -169,7 +169,7 @@ export default function EmptyStatesTemplate() {
                           terminal
                         </span>
                       </div>
-                      <div className="p-3 font-mono text-xs text-foreground space-y-0.5">
+                      <div className="p-4 font-mono text-xs text-foreground space-y-0.5">
                         {state.terminal.map((line, idx) => (
                           <div
                             key={idx}
@@ -215,7 +215,7 @@ export default function EmptyStatesTemplate() {
         {/* Use Cases Reference */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -225,7 +225,7 @@ export default function EmptyStatesTemplate() {
             </span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">
               [WHEN_TO_USE]:
             </div>
             <div className="grid md:grid-cols-2 gap-4 font-mono text-xs">
@@ -260,7 +260,7 @@ export default function EmptyStatesTemplate() {
         {/* Features Card */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -270,7 +270,7 @@ export default function EmptyStatesTemplate() {
             </span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">
               [TEMPLATE_FEATURES]:
             </div>
             <div className="space-y-1.5 font-mono text-xs">
@@ -293,7 +293,7 @@ export default function EmptyStatesTemplate() {
                 <span className="text-success">&gt;</span> Search result fallback
               </div>
             </div>
-            <div className="mt-3 font-mono text-xs text-muted-foreground">
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
               [NOTE]: Customize icons, copy, and actions based on your specific use case.
             </div>
           </div>

@@ -69,8 +69,8 @@ function SuccessContent() {
           </div>
 
           {/* Check your email banner */}
-          <div className="space-y-3 rounded-none border border-border bg-primary/10 p-6">
-            <div className="flex items-center justify-center gap-3">
+          <div className="space-y-4 rounded-none border border-border bg-primary/10 p-6">
+            <div className="flex items-center justify-center gap-4">
               <Mail className="h-6 w-6 text-foreground" />
               <h3 className="text-lg font-semibold">Check Your Email</h3>
             </div>
@@ -82,8 +82,8 @@ function SuccessContent() {
           {/* What's in the email */}
           <div className="space-y-4 rounded-none border border-border bg-muted p-6">
             <h3 className="text-lg font-semibold">What's in Your Email:</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-3">
+            <ul className="space-y-4 text-muted-foreground">
+              <li className="flex items-start gap-4">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   1
                 </span>
@@ -91,7 +91,7 @@ function SuccessContent() {
                   <strong className="text-foreground">GitHub Repository Access</strong> - You've been invited to the private Fabrk repository
                 </span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-4">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   2
                 </span>
@@ -99,7 +99,7 @@ function SuccessContent() {
                   <strong className="text-foreground">Magic Link</strong> - Click to instantly access your dashboard (valid for 7 days)
                 </span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-4">
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-none bg-primary text-sm font-medium text-primary-foreground">
                   3
                 </span>
@@ -119,7 +119,7 @@ function SuccessContent() {
             <p className="text-center text-sm text-muted-foreground">
               Check your email for the GitHub invitation. Once accepted, you'll have full access to clone and download the boilerplate.
             </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Button asChild size="lg" className="w-full">
                 <a href="https://github.com/notifications" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-2 h-4 w-4" />
@@ -137,7 +137,7 @@ function SuccessContent() {
 
           {/* Email not received */}
           <div className="py-4 text-center">
-            <p className="mb-3 text-sm text-muted-foreground">
+            <p className="mb-4 text-sm text-muted-foreground">
               Didn't receive the email? Check your spam folder.
             </p>
             {!isResending ? (
@@ -157,7 +157,7 @@ function SuccessContent() {
           </div>
 
           {/* Alternative action */}
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <Button asChild variant="outline" className="flex-1">
               <Link href="/">
                 Return Home

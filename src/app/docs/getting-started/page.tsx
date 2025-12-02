@@ -112,7 +112,7 @@ npm run db:push && npm run dev`,
       {/* What is Fabrk */}
       <DocsSection title="What Is Fabrk?">
         <DocsCard title="OVERVIEW">
-          <p className={`${docsTypography.body} mb-3`}>
+          <p className={`${docsTypography.body} mb-4`}>
             Fabrk is a ready-to-use foundation for building software businesses. Think of it like
             buying a house that already has the plumbing, electrical, and HVAC installed - you just
             need to decorate and move in.

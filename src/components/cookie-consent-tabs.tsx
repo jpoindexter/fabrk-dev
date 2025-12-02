@@ -171,7 +171,7 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
   return (
     <div className="space-y-6">
       {categories.map((category) => (
-        <div key={category.id} className="space-y-3">
+        <div key={category.id} className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h4 className="text-foreground text-base leading-tight font-semibold">
@@ -304,7 +304,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
             size="sm"
             onClick={handleDataExport}
             disabled={isExporting}
-            className="mt-3"
+            className="mt-4"
           >
             <Download className="mr-2 size-4" />
             {isExporting ? "Exporting..." : "Download My Data"}
@@ -312,7 +312,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
         </div>
 
         <div className="bg-primary/10 rounded-none border p-4">
-          <div className="flex items-start space-x-3">
+          <div className="flex items-start space-x-4">
             <Shield className="text-primary mt-0.5 size-5" />
             <div>
               <h4 className="text-primary font-semibold">GDPR Compliant</h4>

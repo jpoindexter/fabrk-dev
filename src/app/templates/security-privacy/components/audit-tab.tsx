@@ -21,7 +21,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -47,7 +47,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
           </div>
           <div className="divide-y divide-border">
             {auditLog.map((log) => (
-              <div key={log.id} className="grid grid-cols-4 px-4 py-3 font-mono text-xs hover:bg-muted/30">
+              <div key={log.id} className="grid grid-cols-4 px-4 py-4 font-mono text-xs hover:bg-muted/30">
                 <span>{log.action}</span>
                 <span className="text-muted-foreground">{log.timestamp}</span>
                 <span className="text-muted-foreground">{log.ip}</span>

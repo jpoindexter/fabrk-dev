@@ -34,7 +34,7 @@ export function SecurityTab({
       {/* 2FA Section */}
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -43,7 +43,7 @@ export function SecurityTab({
         </div>
         <div className="p-4">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
                 <Smartphone className="h-5 w-5 text-primary" />
               </div>
@@ -73,7 +73,7 @@ export function SecurityTab({
       {/* Active Sessions */}
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -81,7 +81,7 @@ export function SecurityTab({
           <span className="font-mono text-xs text-muted-foreground">sessions.log</span>
         </div>
         <div className="p-4">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-4 mb-4">
             <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
               <Clock className="h-5 w-5 text-primary" />
             </div>
@@ -89,9 +89,9 @@ export function SecurityTab({
               <div className="font-mono text-xs text-muted-foreground">[ACTIVE_SESSIONS]: COUNT={activeSessions.length}</div>
             </div>
           </div>
-          <div className="space-y-3 font-mono text-xs">
+          <div className="space-y-4 font-mono text-xs">
             {activeSessions.map((session) => (
-              <div key={session.id} className="flex items-center justify-between border border-border p-3">
+              <div key={session.id} className="flex items-center justify-between border border-border p-4">
                 <div>
                   <div className="flex items-center gap-2">
                     <span>{session.device}</span>
@@ -128,7 +128,7 @@ export function SecurityTab({
       {/* Password */}
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -137,7 +137,7 @@ export function SecurityTab({
         </div>
         <div className="p-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
                 <Key className="h-5 w-5 text-primary" />
               </div>

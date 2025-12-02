@@ -49,7 +49,7 @@ export function ComplianceTab({
       {/* GDPR Rights */}
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -57,7 +57,7 @@ export function ComplianceTab({
           <span className="font-mono text-xs text-muted-foreground">gdpr_rights.tsx</span>
         </div>
         <div className="p-4">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-4 mb-4">
             <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
               <Globe className="h-5 w-5 text-primary" />
             </div>
@@ -90,7 +90,7 @@ export function ComplianceTab({
       {/* Danger Zone */}
       <div className="border border-destructive bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -98,7 +98,7 @@ export function ComplianceTab({
           <span className="font-mono text-xs text-muted-foreground">danger_zone.tsx</span>
         </div>
         <div className="p-4">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-4 mb-4">
             <div className="flex h-10 w-10 items-center justify-center border border-border bg-destructive/10">
               <UserX className="h-5 w-5 text-destructive" />
             </div>

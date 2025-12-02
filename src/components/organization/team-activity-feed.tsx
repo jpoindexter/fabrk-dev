@@ -128,7 +128,7 @@ export function TeamActivityFeed({
 
   return (
     <Card className={cn("overflow-hidden", className)}>
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-black flex items-center gap-2">
             <Activity className="h-4 w-4 text-primary" />

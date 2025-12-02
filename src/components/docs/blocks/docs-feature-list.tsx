@@ -55,7 +55,7 @@ export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsF
             {/* Content */}
             <div className="p-4">
               {/* Status */}
-              <div className="mb-3 font-mono text-xs">
+              <div className="mb-4 font-mono text-xs">
                 <span className="text-muted-foreground">STATUS: </span>
                 <span className="text-success">{status}</span>
               </div>

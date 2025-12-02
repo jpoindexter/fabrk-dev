@@ -12,7 +12,7 @@ function NavigationDemo() {
     <nav className="w-full border border-border bg-background">
       <div className="flex h-14 items-center px-4">
         {/* Logo */}
-        <Link href="#" className="flex items-center gap-1.5 font-mono">
+        <Link href="#" className="flex items-center gap-2 font-mono">
           <span className="text-xs text-primary">&gt;</span>
           <span className="text-sm font-bold">FABRK</span>
           <span className="text-xs text-muted-foreground">_CONSOLE</span>
@@ -84,8 +84,8 @@ export default function LandingPage() {
           description: "Sheet-based mobile navigation",
           preview: (
             <div className="w-full border border-border bg-card p-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</div>
-              <div className="flex flex-col gap-3">
+              <div className="mb-4 font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</div>
+              <div className="flex flex-col gap-4">
                 <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
                 <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; FEATURES</Link>
                 <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; PRICING</Link>

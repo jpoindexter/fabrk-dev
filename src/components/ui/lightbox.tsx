@@ -242,7 +242,7 @@ export function Lightbox({
 
       {/* Image counter */}
       {hasMultipleItems && (
-        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-none border border-border bg-card px-3 py-1 text-sm font-semibold text-foreground">
+        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-none border border-border bg-card px-4 py-1 text-sm font-semibold text-foreground">
           {currentIndex + 1} / {items.length}
         </div>
       )}

@@ -73,7 +73,7 @@ export function DocsStepList({ steps, variant = "card" }: DocsStepListProps) {
                 />
               )}
               {!step.code && step.tip && (
-                <p className="font-mono text-xs text-muted-foreground border-l-2 border-primary/50 pl-3">
+                <p className="font-mono text-xs text-muted-foreground border-l-2 border-primary/50 pl-4">
                   <span className="font-bold uppercase text-primary">Tip:</span> {step.tip}
                 </p>
               )}

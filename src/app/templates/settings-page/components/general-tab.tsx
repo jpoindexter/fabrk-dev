@@ -33,7 +33,7 @@ export function GeneralTab() {
             title="QUICK_ACTIONS"
             description="Frequently used settings and shortcuts"
           />
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             <Button variant="outline" className="rounded-none justify-start font-mono text-xs">
               <Shield className="mr-2 h-4 w-4" />
               &gt; SECURITY_SETTINGS

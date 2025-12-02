@@ -220,8 +220,6 @@ export function generateHowToSchema(data: {
   totalTime?: string;
   estimatedCost?: string;
 }) {
-  const baseUrl = siteConfig.url;
-
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -268,8 +266,6 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
  * Enhances trust signals for SEO and GEO
  */
 export function generateReviewSchema(reviews: Review[], productName?: string) {
-  const baseUrl = siteConfig.url;
-
   return {
     "@context": "https://schema.org",
     "@type": "Product",

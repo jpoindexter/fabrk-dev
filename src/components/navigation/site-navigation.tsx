@@ -90,7 +90,7 @@ export function SiteNavigation() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-1 font-mono text-sm transition-colors ${
+                    className={`px-4 py-1 font-mono text-sm transition-colors ${
                       isActive
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -168,7 +168,7 @@ export function SiteNavigation() {
                   );
                 })}
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -176,7 +176,7 @@ export function SiteNavigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
@@ -189,7 +189,7 @@ export function SiteNavigation() {
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button className="mt-3 w-full rounded-none font-mono text-xs" asChild>
+                    <Button className="mt-4 w-full rounded-none font-mono text-xs" asChild>
                       <Link href="/#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>

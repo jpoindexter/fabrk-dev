@@ -139,7 +139,7 @@ export function GettingStartedTemplate({
       {requirements && requirements.length > 0 && (
         <DocsSection title="Requirements">
           <DocsCard title="REQUIREMENTS">
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {requirements.map((req, index) => (
                 <li key={index} className="flex items-start gap-4">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-border bg-muted font-mono text-xs">

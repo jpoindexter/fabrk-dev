@@ -102,10 +102,10 @@ export function sanitizeHTML(html: string): string {
   // For production, use a library like DOMPurify
   // This is a basic implementation
   const allowedTags = ["p", "br", "strong", "em", "u", "a", "ul", "ol", "li"];
-  const allowedAttributes = { a: ["href", "title"] };
+  const _allowedAttributes = { a: ["href", "title"] };
 
   // Simple tag whitelist (use DOMPurify in production)
-  return html.replace(/<(\w+)([^>]*)>/g, (match, tag, attrs) => {
+  return html.replace(/<(\w+)([^>]*)>/g, (match, tag, _attrs) => {
     if (!allowedTags.includes(tag.toLowerCase())) {
       return "";
     }
@@ -256,11 +256,11 @@ export function sanitizeFilename(filename: string): string {
 /**
  * Validate JSON
  */
-export function validateJSON(input: string): { valid: boolean; data?: any; error?: string } {
+export function validateJSON(input: string): { valid: boolean; data?: unknown; error?: string } {
   try {
     const data = JSON.parse(input);
     return { valid: true, data };
-  } catch (error: unknown) {
+  } catch {
     return { valid: false, error: "Invalid JSON" };
   }
 }

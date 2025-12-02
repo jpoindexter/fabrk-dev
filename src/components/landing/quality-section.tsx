@@ -48,7 +48,7 @@ export function QualitySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="border-border bg-card text-muted-foreground mb-4 inline-block border px-3 py-1 text-xs"
+            className="border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs"
           >
             [ QUALITY_ASSURANCE ]
           </motion.span>
@@ -92,7 +92,7 @@ export function QualitySection() {
                     <SimpleIcon path={item.icon!} className="text-primary h-6 w-6" />
                   )}
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                   <div className="text-foreground text-3xl font-bold">{item.metric}</div>
                   <h3 className="mt-1 text-lg font-bold">
                     {item.label.toUpperCase().replace(/ /g, "_")}

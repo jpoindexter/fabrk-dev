@@ -170,7 +170,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         )}
 
         {/* Avatar or icon */}
-        <div className="flex-shrink-0 ml-3">
+        <div className="flex-shrink-0 ml-4">
           {notification.avatar ? (
             <Avatar className="h-10 w-10">
               <AvatarImage src={notification.avatar} alt={notification.title} />
@@ -335,7 +335,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div className="sticky top-0 bg-muted px-3 py-1.5 rounded-none mb-2 z-10">
+                      <div className="sticky top-0 bg-muted px-4 py-1.5 rounded-none mb-2 z-10">
                         <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                           {group}
                         </span>

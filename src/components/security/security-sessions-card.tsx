@@ -39,7 +39,7 @@ export function SecuritySessionsCard({
         <p className="text-muted-foreground text-sm">Session version: {sessionVersion}</p>
 
         {/* Placeholder for active sessions - would require Session model */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="border-border flex items-center justify-between rounded-none border p-4">
             <div>
               <p className="text-sm font-medium">Current Session</p>
@@ -51,7 +51,7 @@ export function SecuritySessionsCard({
 
         <Separator />
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <Button
             variant="destructive"
             onClick={onInvalidateSessions}

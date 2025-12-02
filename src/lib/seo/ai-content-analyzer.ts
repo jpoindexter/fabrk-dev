@@ -54,7 +54,7 @@ export function analyzeContentComprehensive(
   } = options;
 
   const analysis = analyzeContent(content);
-  const seoScore = scoreContent(content, targetKeywords);
+  const _seoScore = scoreContent(content, targetKeywords);
 
   const scores = {
     seo: calculateSEOScore(analysis, targetKeywords),

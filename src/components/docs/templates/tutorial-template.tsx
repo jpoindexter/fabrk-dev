@@ -173,7 +173,7 @@ export function TutorialTemplate({
         <DocsSection title="Final Result">
           <DocsCard title="OUTPUT">
             {resultDescription && (
-              <p className="mb-3">{resultDescription}</p>
+              <p className="mb-4">{resultDescription}</p>
             )}
             <CodeBlock code={resultCode} language={resultLanguage} />
           </DocsCard>

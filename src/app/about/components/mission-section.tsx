@@ -29,7 +29,7 @@ export function MissionSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+            <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
               [ [0x02] OUR_MISSION ]
             </span>
             <h2 className="text-2xl font-bold lg:text-3xl">OUR_MISSION</h2>
@@ -42,7 +42,7 @@ export function MissionSection() {
             viewport={{ once: true }}
             className="border border-border bg-card p-6 text-left"
           >
-            <div className="text-xs text-muted-foreground mb-3">
+            <div className="text-xs text-muted-foreground mb-4">
               │ &gt; Loading mission parameters...
             </div>
             <p className="text-sm text-muted-foreground mb-4">
@@ -55,7 +55,7 @@ export function MissionSection() {
               months</span>. We handle the boring infrastructure so you can focus on the
               innovation that makes your product unique.
             </p>
-            <div className="mt-3 text-xs text-success">
+            <div className="mt-4 text-xs text-success">
               └─ Mission parameters loaded [OK]
             </div>
           </motion.div>

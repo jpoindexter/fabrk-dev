@@ -13,7 +13,7 @@ export default function NotFound() {
  <div className="flex flex-col items-center justify-center px-6 font-mono">
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
-        <div className="mb-6 inline-block border-2 border-foreground/20 bg-foreground/5 px-3 py-1">
+        <div className="mb-6 inline-block border-2 border-foreground/20 bg-foreground/5 px-4 py-1">
           <span className="text-xs tracking-wider text-foreground/60">
             [ [0x404] ERROR_PAGE ]
           </span>

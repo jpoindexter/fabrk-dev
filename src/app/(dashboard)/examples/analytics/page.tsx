@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/select";
 import {
   TrendingUp,
-  TrendingDown,
   Users,
   DollarSign,
   Activity,
@@ -167,7 +166,7 @@ export default async function AnalyticsPage() {
             <h3 className="text-foreground text-xl font-bold">Top Pages</h3>
             <button className="text-primary text-sm font-semibold hover:underline">View All</button>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}

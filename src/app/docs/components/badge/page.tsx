@@ -132,7 +132,7 @@ export default function BadgePage() {
           title: "Size Variants Combined",
           description: "Different sizes across all variants",
           preview: (
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex flex-wrap gap-2 items-center">
                 <Badge variant="default" size="sm">Small</Badge>
                 <Badge variant="secondary" size="sm">Small</Badge>

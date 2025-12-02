@@ -72,7 +72,7 @@ export default function AccountPage() {
                 key={tab.value}
                 value={tab.value}
                 className={cn(
-                  "flex flex-col items-center gap-2 px-3 py-3 data-[state=active]:bg-background",
+                  "flex flex-col items-center gap-2 px-4 py-4 data-[state=active]:bg-background",
                   "transition-colors hover:bg-primary hover:text-primary-foreground"
                 )}
               >
@@ -156,7 +156,7 @@ export default function AccountPage() {
 
           <div className="space-y-4">
             <Card>
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4">
                 <CardTitle className="text-base">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -186,7 +186,7 @@ export default function AccountPage() {
             </Card>
 
             <Card>
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4">
                 <CardTitle className="text-base">Account Status</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -214,7 +214,7 @@ export default function AccountPage() {
             </Card>
 
             <Card>
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4">
                 <CardTitle className="text-base">Need Help?</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">

@@ -119,7 +119,7 @@ export default async function UserProfilePage() {
               <h2 className="mt-4 text-2xl font-bold text-foreground">
                 {mockUserProfile.name}
               </h2>
-              <span className="mt-1 inline-block rounded-none border border-border bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+              <span className="mt-1 inline-block rounded-none border border-border bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
                 {mockUserProfile.role}
               </span>
 
@@ -155,26 +155,26 @@ export default async function UserProfilePage() {
           {/* Contact Info */}
           <Card className="border border-border p-6 shadow-sm">
             <h3 className="mb-4 text-lg font-bold text-foreground">Contact Info</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
                 <Mail className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
                   {mockUserProfile.email}
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <Calendar className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
                   Joined {mockUserProfile.joinedDate}
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <MapPin className="h-4 w-4 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
                   {mockUserProfile.location}
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <LinkIcon className="h-4 w-4 text-muted-foreground" />
                 <a
                   href={`https://${mockUserProfile.website}`}
@@ -191,10 +191,10 @@ export default async function UserProfilePage() {
           {/* Social Links */}
           <Card className="border border-border p-6 shadow-sm">
             <h3 className="mb-4 text-lg font-bold text-foreground">Social Links</h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <a
                 href={`https://twitter.com/${mockUserProfile.social.twitter.slice(1)}`}
-                className="flex items-center gap-3 rounded border border-border bg-muted p-3 transition-colors hover:bg-primary/5"
+                className="flex items-center gap-4 rounded border border-border bg-muted p-4 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -205,7 +205,7 @@ export default async function UserProfilePage() {
               </a>
               <a
                 href={`https://github.com/${mockUserProfile.social.github}`}
-                className="flex items-center gap-3 rounded border border-border bg-muted p-3 transition-colors hover:bg-primary/5"
+                className="flex items-center gap-4 rounded border border-border bg-muted p-4 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -216,7 +216,7 @@ export default async function UserProfilePage() {
               </a>
               <a
                 href={`https://linkedin.com/in/${mockUserProfile.social.linkedin}`}
-                className="flex items-center gap-3 rounded border border-border bg-muted p-3 transition-colors hover:bg-primary/5"
+                className="flex items-center gap-4 rounded border border-border bg-muted p-4 transition-colors hover:bg-primary/5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -269,7 +269,7 @@ export default async function UserProfilePage() {
                       <p className="mt-1 text-sm text-muted-foreground">
                         {project.description}
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <div className="mt-4 flex flex-wrap gap-2">
                         {project.tech.map((tech) => (
                           <span
                             key={tech}

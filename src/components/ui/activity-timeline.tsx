@@ -241,7 +241,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
             )}
 
             {event.metadata && Object.keys(event.metadata).length > 0 && (
-              <div className="mt-3 space-y-1">
+              <div className="mt-4 space-y-1">
                 {Object.entries(event.metadata).map(([key, value]) => (
                   <div
                     key={key}
@@ -393,7 +393,7 @@ export function ActivityTimeline({
       ) : groupByDate ? (
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
-            <h4 className="rounded-none bg-muted px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <h4 className="rounded-none bg-muted px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {dateGroup}
             </h4>
             <div className="pl-2">

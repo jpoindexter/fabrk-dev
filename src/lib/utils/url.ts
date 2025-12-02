@@ -20,7 +20,7 @@ export function parseQueryString(queryString: string): Record<string, string> {
  * Build query string from object
  * @example buildQueryString({ foo: "bar", baz: "qux" }) // "foo=bar&baz=qux"
  */
-export function buildQueryString(params: Record<string, any>): string {
+export function buildQueryString(params: Record<string, unknown>): string {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     if (value !== null && value !== undefined) {
@@ -35,7 +35,7 @@ export function buildQueryString(params: Record<string, any>): string {
  * @example addQueryParams("https://example.com", { foo: "bar" })
  * // "https://example.com?foo=bar"
  */
-export function addQueryParams(url: string, params: Record<string, any>): string {
+export function addQueryParams(url: string, params: Record<string, unknown>): string {
   const urlObj = new URL(url);
   Object.entries(params).forEach(([key, value]) => {
     if (value !== null && value !== undefined) {

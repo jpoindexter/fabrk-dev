@@ -24,7 +24,7 @@ export default function PricingPage() {
         {/* Page Header */}
         <section className="border-b border-border px-6 py-16 lg:py-20">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+            <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">
                 [ [0x00] PRICING ] COMMERCIAL_LICENSE
               </span>

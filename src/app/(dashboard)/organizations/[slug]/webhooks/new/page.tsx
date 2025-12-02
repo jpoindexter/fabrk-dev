@@ -209,7 +209,7 @@ if (signature === expected) {
               </pre>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <Button
                 onClick={() => router.push(`/organizations/${params.slug}/webhooks`)}
                 className="flex-1"
@@ -279,7 +279,7 @@ if (signature === expected) {
             <CardContent className="space-y-6">
               {Object.entries(EVENT_CATEGORIES).map(([category, events]) => (
                 <div key={category}>
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center justify-between mb-4">
                     <h4 className="font-medium capitalize">{category}</h4>
                     <Button
                       type="button"
@@ -292,9 +292,9 @@ if (signature === expected) {
                         : "Select All"}
                     </Button>
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {events.map((event) => (
-                      <div key={event} className="flex items-start space-x-3">
+                      <div key={event} className="flex items-start space-x-4">
                         <Checkbox
                           id={event}
                           checked={selectedEvents.includes(event)}
@@ -319,7 +319,7 @@ if (signature === expected) {
             </CardContent>
           </Card>
 
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <Button
               type="button"
               variant="outline"

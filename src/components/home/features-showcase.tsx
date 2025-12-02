@@ -160,7 +160,7 @@ function FeatureCard({ icon: Icon, module, status, title, description, index }: 
       {/* Content */}
       <div className="p-4">
         {/* Status */}
-        <div className="mb-3 font-mono text-xs">
+        <div className="mb-4 font-mono text-xs">
           <span className="text-muted-foreground">STATUS: </span>
           <motion.span
             className="text-success"
@@ -194,7 +194,7 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+          <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">[ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES</span>
           </div>
           <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">

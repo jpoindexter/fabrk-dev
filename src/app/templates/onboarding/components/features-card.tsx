@@ -10,7 +10,7 @@ export function FeaturesCard() {
     <div className="border border-border bg-card">
       <TerminalHeader filename="features.md" />
       <div className="p-4">
-        <div className="mb-3 font-mono text-xs text-muted-foreground">
+        <div className="mb-4 font-mono text-xs text-muted-foreground">
           [TEMPLATE_FEATURES]:
         </div>
         <div className="space-y-1.5 font-mono text-xs">
@@ -38,7 +38,7 @@ export function FeaturesCard() {
             <span className="text-success">&gt;</span> Terminal console aesthetic
           </div>
         </div>
-        <div className="mt-3 font-mono text-xs text-muted-foreground">
+        <div className="mt-4 font-mono text-xs text-muted-foreground">
           [NOTE]: Connect to your API to persist onboarding data.
         </div>
       </div>

@@ -70,7 +70,7 @@ export function AdminMetricsCard({
     <Card className={cn("relative overflow-hidden", variantStyles[variant], className)}>
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
-          <div className="flex-1 space-y-3">
+          <div className="flex-1 space-y-4">
             <p className="text-sm font-medium text-muted-foreground">{title}</p>
 
             {loading ? (

@@ -30,7 +30,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
           [RECENT_ACTIVITY]: COUNT={activities.length}
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           {activities.map((activity, i) => (
             <div key={i} className="flex items-center gap-4 font-mono text-xs">
               <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border">

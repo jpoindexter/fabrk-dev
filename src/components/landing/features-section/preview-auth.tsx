@@ -61,7 +61,7 @@ export function AuthPreview() {
         <div className="space-y-4">
           <div>
             <span className="text-muted-foreground mb-1.5 block font-mono text-xs">EMAIL:</span>
-            <div className="border-border bg-background flex min-h-[36px] items-center border px-3 py-2">
+            <div className="border-border bg-background flex min-h-[36px] items-center border px-4 py-2">
               <span className="text-muted-foreground font-mono text-xs">
                 {emailText}
                 {emailText.length < fullEmail.length && showCursor && (
@@ -72,7 +72,7 @@ export function AuthPreview() {
           </div>
           <div>
             <span className="text-muted-foreground mb-1.5 block font-mono text-xs">PASSWORD:</span>
-            <div className="border-border bg-background flex min-h-[36px] items-center border px-3 py-2">
+            <div className="border-border bg-background flex min-h-[36px] items-center border px-4 py-2">
               <span className="text-muted-foreground font-mono text-xs">
                 {"•".repeat(passwordDots)}
                 {passwordDots < 8 && passwordDots > 0 && showCursor && (

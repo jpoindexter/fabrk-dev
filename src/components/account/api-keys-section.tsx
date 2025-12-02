@@ -176,7 +176,7 @@ export function ApiKeysSection() {
             {apiKeys.map((apiKey) => (
               <div
                 key={apiKey.id}
-                className="rounded-none border p-4 space-y-3"
+                className="rounded-none border p-4 space-y-4"
               >
                 <div className="flex items-start justify-between">
                   <div>

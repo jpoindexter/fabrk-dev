@@ -27,7 +27,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -35,14 +35,14 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
         <span className="font-mono text-xs text-muted-foreground">pending_invites.log</span>
       </div>
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-3">
+        <div className="font-mono text-xs text-muted-foreground mb-4">
           [PENDING_INVITATIONS]: COUNT={invitations.length}
         </div>
         <div className="space-y-2">
           {invitations.map((invitation) => (
             <div
               key={invitation.id}
-              className="flex items-center justify-between border border-border bg-muted/30 px-4 py-3"
+              className="flex items-center justify-between border border-border bg-muted/30 px-4 py-4"
             >
               <div className="font-mono text-xs">
                 <span className="text-muted-foreground">EMAIL: </span>
@@ -52,7 +52,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
                 <span className="text-muted-foreground ml-4">DATE: </span>
                 <span>{new Date(invitation.sentAt).toLocaleDateString()}</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <span className="border border-border px-2 py-0.5 font-mono text-xs">
                   ROLE: {invitation.role.toUpperCase()}
                 </span>

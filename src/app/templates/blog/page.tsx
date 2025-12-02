@@ -105,7 +105,7 @@ export default function BlogTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="border-border inline-block border px-3 py-1">
+          <div className="border-border inline-block border px-4 py-1">
             <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
           </div>
           <h1 className="text-4xl font-semibold tracking-tight">Blog</h1>
@@ -118,7 +118,7 @@ export default function BlogTemplate() {
         {featuredPost && activeCategory === "all" && (
           <div className="border-border bg-card border">
             <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 <div className="bg-destructive/50 size-2 rounded-full" />
                 <div className="bg-warning/50 size-2 rounded-full" />
                 <div className="bg-success/50 size-2 rounded-full" />
@@ -185,7 +185,7 @@ export default function BlogTemplate() {
         {/* Categories */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="bg-destructive/50 size-2 rounded-full" />
               <div className="bg-warning/50 size-2 rounded-full" />
               <div className="bg-success/50 size-2 rounded-full" />
@@ -215,7 +215,7 @@ export default function BlogTemplate() {
           {regularPosts.map((post) => (
             <div key={post.id} className="border-border bg-card group border">
               <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="bg-destructive/50 size-2 rounded-full" />
                   <div className="bg-warning/50 size-2 rounded-full" />
                   <div className="bg-success/50 size-2 rounded-full" />
@@ -228,7 +228,7 @@ export default function BlogTemplate() {
                 <span className="text-muted-foreground font-mono text-xs">[THUMBNAIL]</span>
               </div>
 
-              <div className="space-y-3 p-4">
+              <div className="space-y-4 p-4">
                 <Badge variant="outline" className="border-border rounded-none font-mono text-xs">
                   {post.category.toUpperCase()}
                 </Badge>
@@ -258,7 +258,7 @@ export default function BlogTemplate() {
         {/* Pagination */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="bg-destructive/50 size-2 rounded-full" />
               <div className="bg-warning/50 size-2 rounded-full" />
               <div className="bg-success/50 size-2 rounded-full" />
@@ -312,7 +312,7 @@ export default function BlogTemplate() {
         {/* Features Card */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="bg-destructive/50 size-2 rounded-full" />
               <div className="bg-warning/50 size-2 rounded-full" />
               <div className="bg-success/50 size-2 rounded-full" />
@@ -320,7 +320,7 @@ export default function BlogTemplate() {
             <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="text-muted-foreground mb-3 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div>
                 <span className="text-success">&gt;</span> Featured post hero section
@@ -341,7 +341,7 @@ export default function BlogTemplate() {
                 <span className="text-success">&gt;</span> Terminal-styled card headers
               </div>
             </div>
-            <div className="text-muted-foreground mt-3 font-mono text-xs">
+            <div className="text-muted-foreground mt-4 font-mono text-xs">
               [NOTE]: Connect to your CMS (MDX, Contentful, Sanity) for dynamic content.
             </div>
           </div>

@@ -79,7 +79,7 @@ export default function DataTableHeaderPage() {
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
-                        className="px-4 py-3 text-left font-medium"
+                        className="px-4 py-4 text-left font-medium"
                       >
                         {flexRender(
                           header.column.columnDef.header,
@@ -94,7 +94,7 @@ export default function DataTableHeaderPage() {
                 {table.getRowModel().rows.map((row) => (
                   <tr key={row.id} className="border-b border-border">
                     {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className="px-4 py-3">
+                      <td key={cell.id} className="px-4 py-4">
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()

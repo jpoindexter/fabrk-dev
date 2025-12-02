@@ -86,7 +86,7 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="border-border bg-card mb-4 inline-block border px-3 py-1">
+          <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
             <span className="text-muted-foreground font-mono text-xs">
               [ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]
             </span>
@@ -142,7 +142,7 @@ export function ComparisonSection() {
                   }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   viewport={{ once: true }}
-                  className="border-border -mx-3 grid cursor-default grid-cols-3 gap-4 border-b px-3 py-3 font-mono text-xs"
+                  className="border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 font-mono text-xs"
                 >
                   <div className="text-foreground">{feature.name}</div>
                   <div className="text-center">

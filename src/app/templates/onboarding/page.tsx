@@ -72,7 +72,7 @@ export default function OnboardingTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-3 py-1">
+          <div className="inline-block border border-border px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">
               [TEMPLATE]: ONBOARDING_FLOW
             </span>

@@ -19,7 +19,7 @@ const badgeVariants = cva(
       size: {
         // Industry standard: Minimum py-1.5 (6px) for touch-friendly spacing
         sm: "px-2 py-2 font-mono text-xs font-semibold [&>svg]:size-3",
-        md: "px-3 py-2 font-mono text-xs font-medium [&>svg]:size-3",
+        md: "px-4 py-2 font-mono text-xs font-medium [&>svg]:size-3",
         lg: "px-4 py-2 font-mono text-xs font-semibold [&>svg]:size-4",
       },
     },

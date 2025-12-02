@@ -104,7 +104,7 @@ export default function ErrorPagesTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-3 py-1">
+          <div className="inline-block border border-border px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">
               [TEMPLATE]: ERROR_PAGES
             </span>
@@ -119,7 +119,7 @@ export default function ErrorPagesTemplate() {
         <Tabs value={activeError} onValueChange={setActiveError}>
           <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 <div className="size-2 rounded-full bg-destructive/50" />
                 <div className="size-2 rounded-full bg-warning/50" />
                 <div className="size-2 rounded-full bg-success/50" />
@@ -149,7 +149,7 @@ export default function ErrorPagesTemplate() {
               <TabsContent key={error.id} value={error.id} className="mt-6">
                 <div className="border border-border bg-card">
                   <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                    <div className="flex gap-1.5">
+                    <div className="flex gap-2">
                       <div className="size-2 rounded-full bg-destructive/50" />
                       <div className="size-2 rounded-full bg-warning/50" />
                       <div className="size-2 rounded-full bg-success/50" />
@@ -204,8 +204,8 @@ export default function ErrorPagesTemplate() {
 
                       {/* Terminal Output */}
                       <div className="border border-border bg-card text-left">
-                        <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1.5">
-                          <div className="flex gap-1.5">
+                        <div className="flex items-center gap-2 border-b border-border/50 px-4 py-1.5">
+                          <div className="flex gap-2">
                             <div className="size-2 rounded-full bg-destructive/50" />
                             <div className="size-2 rounded-full bg-warning/50" />
                             <div className="size-2 rounded-full bg-success/50" />
@@ -214,7 +214,7 @@ export default function ErrorPagesTemplate() {
                             terminal
                           </span>
                         </div>
-                        <div className="p-3 font-mono text-xs text-foreground space-y-0.5">
+                        <div className="p-4 font-mono text-xs text-foreground space-y-0.5">
                           {error.terminal.map((line, idx) => (
                             <div
                               key={idx}
@@ -235,7 +235,7 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Actions */}
-                      <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center justify-center gap-4">
                         {error.actions.includes("GO_HOME") && (
                           <Button className="rounded-none font-mono text-xs">
                             <Home className="h-3 w-3 mr-1" />
@@ -293,7 +293,7 @@ export default function ErrorPagesTemplate() {
             return (
               <div key={error.id} className="border border-border bg-card">
                 <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                  <div className="flex gap-1.5">
+                  <div className="flex gap-2">
                     <div className="size-2 rounded-full bg-destructive/50" />
                     <div className="size-2 rounded-full bg-warning/50" />
                     <div className="size-2 rounded-full bg-success/50" />
@@ -313,7 +313,7 @@ export default function ErrorPagesTemplate() {
                       {error.code} - {error.title}
                     </span>
                   </div>
-                  <p className="font-mono text-xs text-muted-foreground mb-3">
+                  <p className="font-mono text-xs text-muted-foreground mb-4">
                     {error.description}
                   </p>
                   <div className="font-mono text-xs text-muted-foreground">
@@ -334,7 +334,7 @@ export default function ErrorPagesTemplate() {
         {/* Features Card */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -344,7 +344,7 @@ export default function ErrorPagesTemplate() {
             </span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">
               [TEMPLATE_FEATURES]:
             </div>
             <div className="space-y-1.5 font-mono text-xs">
@@ -372,7 +372,7 @@ export default function ErrorPagesTemplate() {
                 ETA
               </div>
             </div>
-            <div className="mt-3 font-mono text-xs text-muted-foreground">
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
               [NOTE]: Copy these to app/not-found.tsx, app/error.tsx, and
               app/maintenance/page.tsx
             </div>

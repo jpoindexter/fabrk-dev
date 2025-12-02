@@ -115,7 +115,7 @@ export default function AutocompletePage() {
                 options={frameworks}
                 placeholder="Select a framework..."
               />
-              <div className="rounded-none border border-border bg-card p-3">
+              <div className="rounded-none border border-border bg-card p-4">
                 <span className="font-mono text-xs text-muted-foreground">
                   [SELECTED]: Use onValueChange callback
                 </span>
@@ -200,15 +200,15 @@ export default function AutocompletePage() {
                 placeholder="Try arrow keys..."
               />
               <div className="font-mono text-xs">
-                <div className="border-b border-border px-3 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
+                <div className="border-b border-border px-4 py-2 flex items-center gap-2">
+                  <div className="flex gap-2">
                     <div className="size-2 rounded-full bg-destructive/50" />
                     <div className="size-2 rounded-full bg-warning/50" />
                     <div className="size-2 rounded-full bg-success/50" />
                   </div>
                   <span className="text-muted-foreground">keyboard.help</span>
                 </div>
-                <div className="p-3 space-y-1 text-muted-foreground">
+                <div className="p-4 space-y-1 text-muted-foreground">
                   <div>
                     <span className="text-success">&gt;</span> ↓/↑ Navigate
                     options

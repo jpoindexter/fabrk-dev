@@ -35,7 +35,7 @@ export function FeatureSectionLayout({
         className="flex flex-col justify-center"
       >
         {/* Spec Label */}
-        <div className="mb-4 inline-block self-start border border-border bg-card px-3 py-1">
+        <div className="mb-4 inline-block self-start border border-border bg-card px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[ SPEC ] {spec}</span>
         </div>
 
@@ -49,7 +49,7 @@ export function FeatureSectionLayout({
         </div>
 
         {/* Feature List */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           {features.map((feature, i) => (
             <FeatureItem key={i} {...feature} />
           ))}

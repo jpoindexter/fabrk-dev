@@ -24,7 +24,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -44,7 +44,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               value={`faq-${idx}`}
               className="border border-border"
             >
-              <AccordionTrigger className="px-4 py-3 hover:bg-muted/30 hover:no-underline font-normal [&>svg]:text-muted-foreground">
+              <AccordionTrigger className="px-4 py-4 hover:bg-muted/30 hover:no-underline font-normal [&>svg]:text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <HelpCircle className="h-4 w-4 text-primary" />
                   <span className="font-mono text-xs">{faq.question}</span>

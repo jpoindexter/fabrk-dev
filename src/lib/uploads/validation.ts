@@ -503,7 +503,7 @@ export async function validateImageDimensions(
     }
 
     return { valid: true };
-  } catch (error: unknown) {
+  } catch {
     return {
       valid: false,
       error: "Failed to validate image dimensions",

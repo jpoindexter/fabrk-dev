@@ -81,7 +81,7 @@ const conversionFunnelData = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="border border-border bg-card p-3 font-mono text-xs">
+      <div className="border border-border bg-card p-4 font-mono text-xs">
         <p className="mb-1 font-bold">{label}</p>
         {payload.map((entry: any, index: number) => (
           <p key={index} style={{ color: entry.color }}>
@@ -104,7 +104,7 @@ export default function ChartLibraryTemplate() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-3 py-1">
+            <div className="inline-block border border-border px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: CHART_LIBRARY</span>
             </div>
             <h1 className="text-4xl font-semibold tracking-tight">
@@ -160,7 +160,7 @@ export default function ChartLibraryTemplate() {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 <div className="size-2 rounded-full bg-destructive/50" />
                 <div className="size-2 rounded-full bg-warning/50" />
                 <div className="size-2 rounded-full bg-success/50" />
@@ -303,7 +303,7 @@ export default function ChartLibraryTemplate() {
         {/* Implementation Note */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -311,7 +311,7 @@ export default function ChartLibraryTemplate() {
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar, Pie/Donut)</div>
               <div><span className="text-success">&gt;</span> Recharts library (npm install recharts)</div>
@@ -323,7 +323,7 @@ export default function ChartLibraryTemplate() {
               <div><span className="text-success">&gt;</span> Tab navigation between chart types</div>
               <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
             </div>
-            <div className="mt-3 font-mono text-xs text-muted-foreground">
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
               [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more.
             </div>
           </div>

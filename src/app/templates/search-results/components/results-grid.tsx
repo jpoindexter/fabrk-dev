@@ -26,7 +26,7 @@ export function ResultsGrid({ results, viewMode }: ResultsGridProps) {
       className={
         viewMode === "grid"
           ? "grid md:grid-cols-2 gap-4"
-          : "space-y-3"
+          : "space-y-4"
       }
     >
       {results.map((result) => (

@@ -106,7 +106,7 @@ export function SessionsSection() {
                 <tbody>
                   {sessions.map((session) => (
                     <tr key={session.id} className="border-b last:border-b-0">
-                      <td className="py-3 px-2">
+                      <td className="py-4 px-2">
                         <div>
                           <p className="font-medium">{session.device}</p>
                           {session.isCurrent && (
@@ -114,10 +114,10 @@ export function SessionsSection() {
                           )}
                         </div>
                       </td>
-                      <td className="py-3 px-2">{session.browser}</td>
-                      <td className="py-3 px-2 font-mono text-xs">{session.ip}</td>
-                      <td className="py-3 px-2">{session.lastActive}</td>
-                      <td className="py-3 px-2">
+                      <td className="py-4 px-2">{session.browser}</td>
+                      <td className="py-4 px-2 font-mono text-xs">{session.ip}</td>
+                      <td className="py-4 px-2">{session.lastActive}</td>
+                      <td className="py-4 px-2">
                         <Button
                           variant="ghost"
                           size="sm"

@@ -23,7 +23,7 @@ interface ResultCardProps {
 export function ResultCard({ result }: ResultCardProps) {
   return (
     <div className="border border-border bg-card hover:bg-muted/30 transition-colors">
-      <div className="flex items-center gap-2 border-b border-border px-3 py-1.5">
+      <div className="flex items-center gap-2 border-b border-border px-4 py-1.5">
         <div className="flex gap-1">
           <div className="size-1.5 rounded-full bg-destructive/50" />
           <div className="size-1.5 rounded-full bg-warning/50" />
@@ -41,7 +41,7 @@ export function ResultCard({ result }: ResultCardProps) {
             {result.rating}
           </div>
         </div>
-        <p className="font-mono text-xs text-muted-foreground mb-3">
+        <p className="font-mono text-xs text-muted-foreground mb-4">
           {result.description}
         </p>
         <div className="flex items-center justify-between">

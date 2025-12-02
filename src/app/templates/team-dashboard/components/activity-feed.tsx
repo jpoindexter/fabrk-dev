@@ -22,7 +22,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -30,12 +30,12 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
         <span className="font-mono text-xs text-muted-foreground">activity.log</span>
       </div>
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-3">[ACTIVITY_FEED]:</div>
-        <div className="space-y-3">
+        <div className="font-mono text-xs text-muted-foreground mb-4">[ACTIVITY_FEED]:</div>
+        <div className="space-y-4">
           {activities.map((activity) => (
             <div
               key={activity.id}
-              className="flex gap-3 border-l-2 border-primary pl-3"
+              className="flex gap-4 border-l-2 border-primary pl-4"
             >
               <Clock className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
               <div className="font-mono text-xs">

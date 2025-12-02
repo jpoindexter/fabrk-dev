@@ -33,7 +33,7 @@ export function Footer() {
       {/* Tech Stack Bar */}
       <div className="border-b border-border px-4 sm:px-6 py-6">
         <div>
-          <div className="mb-3 font-mono text-xs text-muted-foreground">[ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS</div>
+          <div className="mb-4 font-mono text-xs text-muted-foreground">[ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS</div>
           <div className="flex flex-wrap items-center gap-4">
             {techStack.map((tech) => (
               <div
@@ -55,7 +55,7 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
-              <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+              <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
                 <span className="font-mono text-xs text-muted-foreground">[ [0x71] SYSTEM_INFO ]</span>
               </div>
               <Link href="/" className="mb-4 flex items-center gap-2 transition-opacity hover:opacity-80 font-mono">
@@ -82,7 +82,7 @@ export function Footer() {
               <div className="grid grid-cols-3 divide-x divide-border">
                 {/* Product */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[ PRODUCT ]</div>
+                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ PRODUCT ]</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="#features"
@@ -107,7 +107,7 @@ export function Footer() {
 
                 {/* Company */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[ COMPANY ]</div>
+                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ COMPANY ]</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="/about"
@@ -126,7 +126,7 @@ export function Footer() {
 
                 {/* Legal */}
                 <div className="p-4">
-                  <div className="mb-3 font-mono text-xs text-muted-foreground">[ LEGAL ]</div>
+                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ LEGAL ]</div>
                   <nav className="flex flex-col gap-2">
                     <Link
                       href="/terms"
@@ -165,7 +165,7 @@ export function Footer() {
               href="https://x.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+              className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
             >
               <SimpleIcon path={siX.path} className="size-3.5" />
               <span>X</span>
@@ -174,7 +174,7 @@ export function Footer() {
               href="https://github.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+              className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
             >
               <SimpleIcon path={siGithub.path} className="size-3.5" />
               <span>GitHub</span>

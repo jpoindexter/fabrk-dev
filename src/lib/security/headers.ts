@@ -146,7 +146,7 @@ export function applySecurityHeaders(
 /**
  * Security headers middleware
  */
-export function securityHeadersMiddleware(req: NextRequest): NextResponse {
+export function securityHeadersMiddleware(_req: NextRequest): NextResponse {
   const response = NextResponse.next();
   const isDevelopment = process.env.NODE_ENV === "development";
 

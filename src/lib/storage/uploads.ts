@@ -31,10 +31,15 @@ import * as path from "path";
 import { logger } from "@/lib/logger";
 
 // AWS SDK imports are optional (loaded dynamically)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let S3Client: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let PutObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let GetObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let DeleteObjectCommand: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let getSignedUrl: any;
 
 // Storage provider type
@@ -107,6 +112,7 @@ async function initializeS3Client() {
 }
 
 // Lazy-loaded S3 client
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let s3ClientPromise: Promise<any> | null = null;
 async function getS3Client() {
   if (!s3ClientPromise) {
@@ -512,7 +518,7 @@ export async function optimizeImage(
     }
 
     return await image.toBuffer();
-  } catch (error: unknown) {
+  } catch {
     // If sharp not installed, return original
     return buffer;
   }

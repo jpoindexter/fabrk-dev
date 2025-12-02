@@ -149,7 +149,7 @@ export function FeatureGuideTemplate({
             {usage.map((example, index) => (
               <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
-                  <p className="mb-3">{example.description}</p>
+                  <p className="mb-4">{example.description}</p>
                 )}
                 <CodeBlock code={example.code} language={example.language || "typescript"} />
               </DocsCard>

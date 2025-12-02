@@ -17,7 +17,7 @@ function FeaturesDemo() {
   return (
     <section className="w-full border border-border bg-background p-6">
       <div className="mb-6">
-        <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+        <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
           [ [0x20] FEATURES ] CORE_MODULES
         </span>
         <h2 className="mt-4 font-mono text-xl font-bold">WHAT&apos;S_INCLUDED</h2>
@@ -25,7 +25,7 @@ function FeaturesDemo() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
           <div key={feature.title} className="border border-border bg-card p-4 transition-colors hover:border-primary/50">
-            <div className="mb-3 flex items-center gap-2">
+            <div className="mb-4 flex items-center gap-2">
               <feature.icon className="h-4 w-4 text-primary" />
               <span className="font-mono text-xs font-bold">{feature.title}</span>
             </div>
@@ -50,9 +50,9 @@ function TechStackDemo() {
   return (
     <div className="w-full border border-border bg-background p-6">
       <div className="mb-4 font-mono text-xs text-muted-foreground">[ TECH_STACK ] DEPENDENCIES</div>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-4">
         {tech.map((t) => (
-          <div key={t.name} className="flex items-center gap-2 border border-border bg-card px-3 py-1.5">
+          <div key={t.name} className="flex items-center gap-2 border border-border bg-card px-4 py-1.5">
             <span className="font-mono text-xs">{t.name}</span>
             <span className="font-mono text-xs text-success">[{t.status}]</span>
           </div>
@@ -98,7 +98,7 @@ export default function LandingPage() {
           description: "Individual feature card component",
           preview: (
             <div className="max-w-sm border border-border bg-card p-4 transition-colors hover:border-primary/50">
-              <div className="mb-3 flex items-center gap-2">
+              <div className="mb-4 flex items-center gap-2">
                 <Shield className="h-4 w-4 text-primary" />
                 <span className="font-mono text-xs font-bold">AUTHENTICATION</span>
               </div>
@@ -108,7 +108,7 @@ export default function LandingPage() {
             </div>
           ),
           code: `<div className="border border-border bg-card p-4 hover:border-primary/50">
-  <div className="flex items-center gap-2 mb-3">
+  <div className="flex items-center gap-2 mb-4">
     <Shield className="h-4 w-4 text-primary" />
     <span className="font-mono text-xs font-bold">AUTHENTICATION</span>
   </div>

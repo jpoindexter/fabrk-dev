@@ -38,7 +38,7 @@ function TestimonialsDemo() {
           <div key={i} className="border border-border bg-card p-4 transition-all hover:border-primary/50">
             <div className="mb-2 text-xs text-muted-foreground">[0x0{i + 1}]</div>
             <p className="mb-4 text-xs text-muted-foreground">&quot;{t.quote}&quot;</p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Avatar className="h-8 w-8 rounded-none">
                 <AvatarFallback className="rounded-none bg-primary/10 text-xs text-primary">
                   {t.initials}
@@ -65,7 +65,7 @@ function TestimonialCardDemo() {
         &quot;This boilerplate helped me launch my SaaS in just 3 days. The authentication and payment
         integration worked perfectly from day one.&quot;
       </p>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <Avatar className="h-10 w-10 rounded-none">
           <AvatarFallback className="rounded-none bg-primary/10 text-primary">JD</AvatarFallback>
         </Avatar>
@@ -109,7 +109,7 @@ export default function LandingPage() {
   <p className="text-muted-foreground mb-4">
     "Great product, highly recommend!"
   </p>
-  <div className="flex items-center gap-3">
+  <div className="flex items-center gap-4">
     <Avatar>
       <AvatarFallback>JD</AvatarFallback>
     </Avatar>

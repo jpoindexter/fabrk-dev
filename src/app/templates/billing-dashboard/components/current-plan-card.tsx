@@ -25,7 +25,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
   return (
     <div className="border border-primary bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -41,7 +41,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
                 ACTIVE
               </span>
             </div>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <Star className="h-5 w-5 text-primary" />
               <span className="text-2xl font-bold">{subscription.plan}</span>
             </div>
@@ -61,7 +61,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
         </div>
 
         <div className="mt-4 pt-4 border-t border-border">
-          <div className="font-mono text-xs text-muted-foreground mb-3">[FEATURES]:</div>
+          <div className="font-mono text-xs text-muted-foreground mb-4">[FEATURES]:</div>
           <div className="grid grid-cols-2 gap-2">
             {subscription.features.map((feature, idx) => (
               <div key={idx} className="flex items-center gap-2 font-mono text-xs">

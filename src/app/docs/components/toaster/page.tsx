@@ -99,7 +99,7 @@ function App() {
           description: "Building blocks for creating toast notifications",
           preview: (
             <div className="space-y-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[COMPONENTS]</div>
+              <div className="mb-4 font-mono text-xs text-muted-foreground">[COMPONENTS]</div>
               <div className="space-y-2 font-mono text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-primary">&gt;</span>
@@ -199,7 +199,7 @@ function App() {
                   Your file has been moved to trash.
                 </div>
               </div>
-              <button className="inline-flex h-8 shrink-0 items-center justify-center rounded-none border border-border bg-background px-3 text-sm font-medium">
+              <button className="inline-flex h-8 shrink-0 items-center justify-center rounded-none border border-border bg-background px-4 text-sm font-medium">
                 Undo
               </button>
             </div>
@@ -245,7 +245,7 @@ function App() {
           description: "Provider wraps your app to manage toasts",
           preview: (
             <div className="space-y-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[SETUP]</div>
+              <div className="mb-4 font-mono text-xs text-muted-foreground">[SETUP]</div>
               <div className="space-y-2 font-mono text-sm">
                 <div className="text-muted-foreground">1. Wrap app in ToastProvider</div>
                 <div className="text-muted-foreground">2. Add ToastViewport component</div>
@@ -275,7 +275,7 @@ export default function RootLayout({ children }) {
           description: "ToastViewport controls where toasts appear",
           preview: (
             <div className="space-y-4">
-              <div className="mb-3 font-mono text-xs text-muted-foreground">[POSITION]</div>
+              <div className="mb-4 font-mono text-xs text-muted-foreground">[POSITION]</div>
               <div className="space-y-2 font-mono text-sm text-muted-foreground">
                 <div>&gt; Top-right on mobile</div>
                 <div>&gt; Bottom-right on desktop</div>

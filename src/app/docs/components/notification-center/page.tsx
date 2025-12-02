@@ -133,7 +133,7 @@ export default function NotificationCenterPage() {
           title: "Notification Types",
           description: "Different notification types with appropriate icons",
           preview: (
-            <div className="w-full max-w-md space-y-3">
+            <div className="w-full max-w-md space-y-4">
               <div className="font-mono text-xs text-muted-foreground">[NOTIFICATION_TYPES]</div>
               <div className="space-y-2">
                 {[
@@ -173,7 +173,7 @@ const notification: Notification = {
                 <p className="text-sm text-muted-foreground">
                   You've used 90% of your storage quota.
                 </p>
-                <button className="mt-2 h-7 rounded-none border border-border bg-background px-3 text-xs font-medium transition-colors hover:bg-secondary">
+                <button className="mt-2 h-7 rounded-none border border-border bg-background px-4 text-xs font-medium transition-colors hover:bg-secondary">
                   &gt; UPGRADE
                 </button>
               </div>
@@ -197,11 +197,11 @@ const notification: Notification = {
           title: "Grouped by Date",
           description: "Automatically groups notifications by Today, Yesterday, This Week, Older",
           preview: (
-            <div className="w-full max-w-md space-y-3">
+            <div className="w-full max-w-md space-y-4">
               <div className="font-mono text-xs text-muted-foreground">[DATE_GROUPS]</div>
               {["Today", "Yesterday", "This Week", "Older"].map((group) => (
                 <div key={group} className="space-y-2">
-                  <div className="rounded-none bg-muted px-3 py-1.5">
+                  <div className="rounded-none bg-muted px-4 py-1.5">
                     <span className="font-mono text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       {group}
                     </span>

@@ -56,7 +56,7 @@ export function InviteMembersStep({
   return (
     <Card className="rounded-none border border-border shadow">
       <CardHeader>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div className="rounded-none border border-border bg-primary p-2">
             <Mail className="h-6 w-6 text-primary-foreground" />
           </div>

@@ -48,7 +48,7 @@ export function SecurityAccountsCard({
             No connected accounts. You can link Google or GitHub for faster sign-in.
           </p>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {connectedAccounts.map((account, i) => (
               <div
                 key={i}

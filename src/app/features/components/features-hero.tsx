@@ -22,7 +22,7 @@ export function FeaturesHero() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
               [ [0x00] FEATURES ] COMPLETE_SAAS_TOOLKIT
             </span>
           </motion.div>

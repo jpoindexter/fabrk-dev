@@ -161,7 +161,7 @@ export default function AdminMonitoringPage() {
               {Object.entries(perfStats.averages).map(([name, value]) => (
                 <div
                   key={name}
-                  className="flex items-center justify-between rounded-none border p-3"
+                  className="flex items-center justify-between rounded-none border p-4"
                 >
                   <div>
                     <div className="text-sm font-medium capitalize">

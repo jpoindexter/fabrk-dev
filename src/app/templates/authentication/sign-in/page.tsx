@@ -24,7 +24,7 @@ export default function SignInTemplate() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-3 py-1">
+            <div className="inline-block border border-border px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: SIGN_IN</span>
             </div>
             <h1 className="text-4xl font-semibold tracking-tight">Sign In</h1>
@@ -37,7 +37,7 @@ export default function SignInTemplate() {
         {/* Template Preview */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -164,7 +164,7 @@ export default function SignInTemplate() {
         {/* Template Features Card */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -172,7 +172,7 @@ export default function SignInTemplate() {
             <span className="font-mono text-xs text-muted-foreground">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div><span className="text-success">&gt;</span> Centered card layout with shadow</div>
               <div><span className="text-success">&gt;</span> Email/Password and Social Auth providers</div>

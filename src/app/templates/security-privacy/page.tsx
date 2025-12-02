@@ -107,7 +107,7 @@ export default function SecurityPrivacyTemplate() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-3 py-1">
+            <div className="inline-block border border-border px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: SECURITY_PRIVACY</span>
             </div>
             <h1 className="text-4xl font-semibold tracking-tight">
@@ -130,7 +130,7 @@ export default function SecurityPrivacyTemplate() {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 <div className="size-2 rounded-full bg-destructive/50" />
                 <div className="size-2 rounded-full bg-warning/50" />
                 <div className="size-2 rounded-full bg-success/50" />

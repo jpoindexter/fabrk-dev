@@ -6,7 +6,7 @@
 export function NotificationsHeader() {
   return (
     <div className="space-y-2">
-      <div className="inline-block border border-border px-3 py-1">
+      <div className="inline-block border border-border px-4 py-1">
         <span className="font-mono text-xs text-muted-foreground">
           [TEMPLATE]: NOTIFICATIONS_CENTER
         </span>

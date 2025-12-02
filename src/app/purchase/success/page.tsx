@@ -42,7 +42,7 @@ export default function PurchaseSuccessPage() {
             {/* Email */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-none bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-4">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function PurchaseSuccessPage() {
             {/* Download */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-none bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-4">
                   <Download className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function PurchaseSuccessPage() {
             {/* Setup */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="rounded-none bg-primary/10 p-3">
+                <div className="rounded-none bg-primary/10 p-4">
                   <Github className="h-6 w-6 text-primary" />
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function PurchaseSuccessPage() {
             Check the comprehensive documentation included in your download, or reach out
             if you have any questions.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <Button asChild variant="outline" size="sm">
               <Link href="mailto:support@fabrk.dev">
                 Email Support

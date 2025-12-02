@@ -31,7 +31,7 @@ export function BillingHistoryTable({
     <>
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />
@@ -62,7 +62,7 @@ export function BillingHistoryTable({
               {payments.map((payment) => {
                 const status = getStatusText(payment.status);
                 return (
-                  <div key={payment.id} className="grid grid-cols-5 px-4 py-3 font-mono text-xs hover:bg-muted/30 items-center">
+                  <div key={payment.id} className="grid grid-cols-5 px-4 py-4 font-mono text-xs hover:bg-muted/30 items-center">
                     <span>{formatDate(payment.date)}</span>
                     <span className="col-span-2 text-muted-foreground">{payment.description}</span>
                     <span>{formatCurrency(payment.amount)}</span>

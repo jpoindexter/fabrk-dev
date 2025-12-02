@@ -55,7 +55,7 @@ function FieldLegend({
       data-slot="field-legend"
       data-variant={variant}
       className={cn(
-        "mb-3 font-medium",
+        "mb-4 font-medium",
         "data-[variant=legend]:text-base",
         "data-[variant=label]:font-mono data-[variant=label]:text-xs",
         className
@@ -71,7 +71,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-group"
       className={cn(
-        "group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-4 [&>[data-slot=field-group]]:gap-4",
+        "group/field-group @container/field-group flex w-full flex-col gap-8 data-[slot=checkbox-group]:gap-4 [&>[data-slot=field-group]]:gap-4",
         className
       )}
       {...props}

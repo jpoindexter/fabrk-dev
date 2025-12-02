@@ -21,7 +21,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft,
-  Download,
   FileText,
   CheckCircle2,
   XCircle,
@@ -50,17 +49,6 @@ export default async function InvoicesPage() {
     },
     take: 50, // Show last 50 payments
   });
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "succeeded":
-        return <CheckCircle2 className="h-4 w-4 text-success" />;
-      case "failed":
-        return <XCircle className="h-4 w-4 text-destructive" />;
-      default:
-        return <Clock className="h-4 w-4 text-warning" />;
-    }
-  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {

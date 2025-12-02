@@ -20,7 +20,7 @@ export function DocsHeader({ code, category, title, description }: DocsHeaderPro
   return (
     <div>
       {/* Terminal-style badge */}
-      <div className="inline-block border border-border bg-card px-3 py-1">
+      <div className="inline-block border border-border bg-card px-4 py-1">
         <span className={docsTypography.badge}>
           [ {code} <span className="uppercase">{category}</span> ]{" "}
           <span className="uppercase">{title}</span>

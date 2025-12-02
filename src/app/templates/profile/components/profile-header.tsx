@@ -38,7 +38,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -64,7 +64,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           </div>
 
           {/* Info Section */}
-          <div className="flex-1 flex flex-col gap-3">
+          <div className="flex-1 flex flex-col gap-4">
             {/* Name + Buttons row */}
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-2xl font-semibold">{user.name}</h2>

@@ -60,7 +60,7 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground px-3 py-1 font-mono text-sm transition-colors"
+                  className="text-muted-foreground hover:text-foreground px-4 py-1 font-mono text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -122,7 +122,7 @@ export function Navigation() {
                   </SheetClose>
                 ))}
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -130,7 +130,7 @@ export function Navigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-3 block font-mono text-xs">
+                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
@@ -143,7 +143,7 @@ export function Navigation() {
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button className="mt-3 w-full rounded-none font-mono text-xs" asChild>
+                    <Button className="mt-4 w-full rounded-none font-mono text-xs" asChild>
                       <Link href="#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>

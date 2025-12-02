@@ -19,7 +19,7 @@ export default function CookiesPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
             [ [0x00] LEGAL ] COOKIE_POLICY
           </span>
         </motion.div>
@@ -87,8 +87,8 @@ export default function CookiesPage() {
           <div className="space-y-6">
             {/* Essential Cookies */}
             <div>
-              <h3 className="text-sm font-semibold mb-3">[2.1] ESSENTIAL_COOKIES (REQUIRED)</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h3 className="text-sm font-semibold mb-4">[2.1] ESSENTIAL_COOKIES (REQUIRED)</h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 These cookies are necessary for the website to function and cannot be disabled.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -123,8 +123,8 @@ export default function CookiesPage() {
 
             {/* Functional Cookies */}
             <div>
-              <h3 className="text-sm font-semibold mb-3">[2.2] FUNCTIONAL_COOKIES (OPTIONAL)</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h3 className="text-sm font-semibold mb-4">[2.2] FUNCTIONAL_COOKIES (OPTIONAL)</h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 These cookies enable enhanced functionality and personalization.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -159,8 +159,8 @@ export default function CookiesPage() {
 
             {/* Analytics Cookies */}
             <div>
-              <h3 className="text-sm font-semibold mb-3">[2.3] ANALYTICS_COOKIES (OPTIONAL)</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h3 className="text-sm font-semibold mb-4">[2.3] ANALYTICS_COOKIES (OPTIONAL)</h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 These cookies help us understand how visitors use our website.
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -190,8 +190,8 @@ export default function CookiesPage() {
 
             {/* Third-Party Cookies */}
             <div>
-              <h3 className="text-sm font-semibold mb-3">[2.4] THIRD_PARTY_COOKIES</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h3 className="text-sm font-semibold mb-4">[2.4] THIRD_PARTY_COOKIES</h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 External services may set their own cookies:
               </p>
               <div className="border border-border bg-background p-4 overflow-x-auto">
@@ -302,7 +302,7 @@ export default function CookiesPage() {
             <span className="text-xs text-muted-foreground">[0x60]</span>
             <h2 className="text-lg font-bold">QUESTIONS</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">Questions about cookies?</p>
+          <p className="text-sm text-muted-foreground mb-4">Questions about cookies?</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">EMAIL:</span> support@fabrk.dev</li>
             <li>└─ <span className="text-foreground">FORM:</span> <Link href="/contact" className="text-primary hover:underline">/contact</Link></li>
@@ -319,7 +319,7 @@ export default function CookiesPage() {
         className="mt-12 border border-primary/30 bg-primary/5 p-6"
       >
         <h3 className="text-sm font-semibold mb-2">[MANAGE_PREFERENCES]</h3>
-        <p className="text-sm text-muted-foreground mb-3">
+        <p className="text-sm text-muted-foreground mb-4">
           You'll see a cookie consent banner on first visit. Change preferences anytime in account settings.
         </p>
         <Link href="/settings" className="text-xs text-primary hover:underline">
@@ -335,7 +335,7 @@ export default function CookiesPage() {
         viewport={{ once: true }}
         className="mt-8 border border-border bg-card p-6"
       >
-        <span className="block mb-3 text-xs text-muted-foreground">
+        <span className="block mb-4 text-xs text-muted-foreground">
           [ RELATED_DOCUMENTS ]
         </span>
         <div className="flex flex-wrap gap-4 text-xs">

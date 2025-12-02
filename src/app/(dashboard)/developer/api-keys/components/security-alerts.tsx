@@ -37,7 +37,7 @@ export function SecurityAlerts({
             <p className="font-semibold text-success mb-2">
               API Key Created Successfully!
             </p>
-            <p className="text-sm mb-3">
+            <p className="text-sm mb-4">
               Make sure to copy your API key now. You won't be able to see it again!
             </p>
             <div className="flex items-center gap-2">

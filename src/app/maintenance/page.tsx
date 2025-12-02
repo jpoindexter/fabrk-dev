@@ -38,7 +38,7 @@ export default function MaintenancePage() {
         </p>
 
         {/* Estimated Time */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-none bg-warning/10 px-6 py-3">
+        <div className="mb-8 inline-flex items-center gap-2 rounded-none bg-warning/10 px-6 py-4">
           <Clock className="h-5 w-5 text-warning" />
           <span className="text-sm font-medium text-warning-foreground">
             Estimated downtime: 30 minutes

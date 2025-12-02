@@ -45,7 +45,7 @@ export default async function AdminLayout({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block rounded-none px-3 py-2 text-sm font-medium transition-colors hover:bg-muted",
+                  "block rounded-none px-4 py-2 text-sm font-medium transition-colors hover:bg-muted",
                   "text-muted-foreground hover:text-foreground"
                 )}
               >

@@ -216,21 +216,21 @@ export function FileUploader() {
             in production without changing your code.
           </p>
           <div className="space-y-2">
-            <div className="flex items-center gap-3 p-3 border border-border">
+            <div className="flex items-center gap-4 p-4 border border-border">
               <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary text-xs font-bold text-primary-foreground">1</span>
               <div>
                 <p className="font-medium">Cloudflare R2</p>
                 <p className={docsTypography.body}>Used if R2 environment variables are set</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border border-border">
+            <div className="flex items-center gap-4 p-4 border border-border">
               <span className="flex h-6 w-6 items-center justify-center font-mono bg-primary/70 text-xs font-bold text-primary-foreground">2</span>
               <div>
                 <p className="font-medium">AWS S3</p>
                 <p className={docsTypography.body}>Used if only S3 environment variables are set</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border border-border">
+            <div className="flex items-center gap-4 p-4 border border-border">
               <span className="flex h-6 w-6 items-center justify-center font-mono bg-muted text-xs font-bold">3</span>
               <div>
                 <p className="font-medium">Local Storage</p>

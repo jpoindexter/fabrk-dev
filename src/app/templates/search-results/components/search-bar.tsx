@@ -17,7 +17,7 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -34,7 +34,7 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search components, templates, hooks..."
-              className="pl-9 rounded-none font-mono text-sm"
+              className="pl-8 rounded-none font-mono text-sm"
             />
           </div>
           <Button className="rounded-none font-mono text-xs">

@@ -172,7 +172,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
               </div>
 
               <ScrollArea className="h-96">
-                <div className={`space-y-3 pr-4`}>
+                <div className={`space-y-4 pr-4`}>
                   {variables.length === 0 ? (
                     <p className={`"text-sm" py-8 text-center text-muted-foreground`}>
                       No variables defined. Add variables or extract them from your prompt.

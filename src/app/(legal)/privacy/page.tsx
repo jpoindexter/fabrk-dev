@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
             [ [0x00] LEGAL ] PRIVACY_POLICY
           </span>
         </motion.div>
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-semibold mb-2">[1.1] INFORMATION_YOU_PROVIDE</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-4">
                 When you use Fabrk, we collect information you provide directly:
               </p>
               <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[1.2] AUTO_COLLECTED_INFO</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-4">
                 We automatically collect certain information when you use our Service:
               </p>
               <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[1.3] THIRD_PARTY_DATA</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-4">
                 If you authenticate via OAuth (Google, GitHub), we receive:
               </p>
               <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0x20]</span>
             <h2 className="text-lg font-bold">HOW_WE_USE_YOUR_INFO</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">We use collected information for:</p>
+          <p className="text-sm text-muted-foreground mb-4">We use collected information for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">SERVICE_PROVISION:</span> Account creation, authentication, service delivery</li>
             <li>├─ <span className="text-foreground">PAYMENT_PROCESSING:</span> Billing, invoices, subscription management</li>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0x30]</span>
             <h2 className="text-lg font-bold">LEGAL_BASIS_GDPR</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">Under GDPR, we process your data based on:</p>
+          <p className="text-sm text-muted-foreground mb-4">Under GDPR, we process your data based on:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">CONTRACT:</span> Processing necessary to provide the Service you purchased</li>
             <li>├─ <span className="text-foreground">CONSENT:</span> You've given explicit consent (e.g., marketing emails)</li>
@@ -149,7 +149,7 @@ export default function PrivacyPage() {
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-semibold mb-2">[4.1] SERVICE_PROVIDERS</h3>
-              <p className="text-sm text-muted-foreground mb-3">We share data with trusted third parties:</p>
+              <p className="text-sm text-muted-foreground mb-4">We share data with trusted third parties:</p>
               <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ <span className="text-foreground">STRIPE:</span> Payment processing (PCI-DSS compliant)</li>
                 <li>├─ <span className="text-foreground">RESEND:</span> Transactional email delivery</li>
@@ -161,7 +161,7 @@ export default function PrivacyPage() {
 
             <div>
               <h3 className="text-sm font-semibold mb-2">[4.2] LEGAL_REQUIREMENTS</h3>
-              <p className="text-sm text-muted-foreground mb-3">We may disclose data if required by law:</p>
+              <p className="text-sm text-muted-foreground mb-4">We may disclose data if required by law:</p>
               <ul className="space-y-1 text-sm text-muted-foreground pl-4">
                 <li>├─ Valid legal process (subpoenas, court orders)</li>
                 <li>├─ Enforcement of our Terms of Service</li>
@@ -184,7 +184,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0x50]</span>
             <h2 className="text-lg font-bold">DATA_SECURITY</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">We implement industry-standard security measures:</p>
+          <p className="text-sm text-muted-foreground mb-4">We implement industry-standard security measures:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">ENCRYPTION:</span> TLS 1.3 in transit, AES-256 at rest</li>
             <li>├─ <span className="text-foreground">AUTH:</span> Bcrypt password hashing (12 rounds)</li>
@@ -201,7 +201,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0x60]</span>
             <h2 className="text-lg font-bold">DATA_RETENTION</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">We retain your data for:</p>
+          <p className="text-sm text-muted-foreground mb-4">We retain your data for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">ACTIVE_ACCOUNTS:</span> Duration + 30 days after deletion</li>
             <li>├─ <span className="text-foreground">PAYMENT_RECORDS:</span> 7 years (required by tax law)</li>
@@ -267,13 +267,13 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0x80]</span>
             <h2 className="text-lg font-bold">COOKIES_AND_TRACKING</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">We use cookies for:</p>
+          <p className="text-sm text-muted-foreground mb-4">We use cookies for:</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">ESSENTIAL:</span> Authentication, session management (required)</li>
             <li>├─ <span className="text-foreground">PREFERENCE:</span> Remember your settings (theme, language)</li>
             <li>└─ <span className="text-foreground">ANALYTICS:</span> Understand usage patterns (optional)</li>
           </ul>
-          <p className="text-sm text-muted-foreground mt-3">
+          <p className="text-sm text-muted-foreground mt-4">
             See our <Link href="/cookies" className="text-primary hover:underline">COOKIE_POLICY</Link> for details.
           </p>
         </section>
@@ -295,7 +295,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0xA0]</span>
             <h2 className="text-lg font-bold">INTERNATIONAL_DATA_TRANSFERS</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">
+          <p className="text-sm text-muted-foreground mb-4">
             Your data may be processed in countries outside your own. We ensure adequate protection through:
           </p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
@@ -322,7 +322,7 @@ export default function PrivacyPage() {
             <span className="text-xs text-muted-foreground">[0xC0]</span>
             <h2 className="text-lg font-bold">CONTACT_US</h2>
           </div>
-          <p className="text-sm text-muted-foreground mb-3">Privacy questions or concerns?</p>
+          <p className="text-sm text-muted-foreground mb-4">Privacy questions or concerns?</p>
           <ul className="space-y-1 text-sm text-muted-foreground pl-4">
             <li>├─ <span className="text-foreground">EMAIL:</span> privacy@fabrk.dev</li>
             <li>├─ <span className="text-foreground">DPO:</span> dpo@fabrk.dev</li>
@@ -339,7 +339,7 @@ export default function PrivacyPage() {
         viewport={{ once: true }}
         className="mt-12 border border-border bg-card p-6"
       >
-        <span className="block mb-3 text-xs text-muted-foreground">
+        <span className="block mb-4 text-xs text-muted-foreground">
           [ RELATED_DOCUMENTS ]
         </span>
         <div className="flex flex-wrap gap-4 text-xs">

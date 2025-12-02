@@ -43,7 +43,7 @@ export function FiltersSidebar({
     <div className="w-full md:w-64 shrink-0 space-y-4">
       <div className="border border-border bg-card">
         <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-1.5">
+          <div className="flex gap-2">
             <div className="size-2 rounded-full bg-destructive/50" />
             <div className="size-2 rounded-full bg-warning/50" />
             <div className="size-2 rounded-full bg-success/50" />

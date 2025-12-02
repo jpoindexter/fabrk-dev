@@ -82,7 +82,7 @@ export function StickyCTABar({
       )}
     >
       <div className="border-border bg-card/95 border-t-2 font-mono backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-3">
+        <div className="mx-auto max-w-7xl px-4 py-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
             <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">

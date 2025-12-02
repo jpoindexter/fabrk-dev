@@ -17,10 +17,10 @@ export default function AuthenticationPage() {
       <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
         {/* Category Header */}
         <section className="space-y-4">
-          <div className="inline-block border border-border px-3 py-1">
+          <div className="inline-block border border-border px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">[CATEGORY]: AUTHENTICATION</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {categoryInfo && <categoryInfo.icon className="h-6 w-6 text-primary" />}
             <h1 className="text-3xl font-bold">Authentication</h1>
             <span className="border border-border px-2 py-0.5 font-mono text-xs">
@@ -45,7 +45,7 @@ export default function AuthenticationPage() {
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div className="mb-3 flex items-center justify-between font-mono text-xs">
+                  <div className="mb-4 flex items-center justify-between font-mono text-xs">
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -99,7 +99,7 @@ export default function AuthenticationPage() {
         {/* Template Features Card */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />

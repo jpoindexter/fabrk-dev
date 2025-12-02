@@ -105,7 +105,7 @@ export function HeroVideo({
             {trustBadges.map((badge) => (
               <span
                 key={badge}
-                className="border-foreground/30 bg-foreground/10 text-foreground border-2 px-3 py-1 text-xs backdrop-blur-sm"
+                className="border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm"
               >
                 [{badge.toUpperCase().replace(/ /g, "_")}]
               </span>

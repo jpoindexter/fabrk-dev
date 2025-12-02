@@ -86,7 +86,7 @@ export default function MemberCardPage() {
           preview: (
             <div className="border border-border bg-background p-6 font-mono">
               <div className="mb-4 font-mono text-xs text-muted-foreground">[LAYOUT]: COMPACT_MODE</div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {teamMembers.map((member) => (
                   <MemberCard
                     key={member.id}

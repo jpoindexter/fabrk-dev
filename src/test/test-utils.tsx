@@ -32,6 +32,7 @@ export const mockAdminSession = {
 // Custom render with providers
 interface ProvidersProps {
   children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   session?: any;
 }
 
@@ -40,6 +41,7 @@ function Providers({ children, session }: ProvidersProps) {
 }
 
 interface CustomRenderOptions extends Omit<RenderOptions, "wrapper"> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   session?: any;
 }
 
@@ -58,6 +60,7 @@ export function renderWithProviders(
 }
 
 // Mock API response
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mockApiResponse(data: any, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -66,6 +69,7 @@ export function mockApiResponse(data: any, status = 200) {
 }
 
 // Mock fetch
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function mockFetch(response: any, status = 200) {
   global.fetch = vi.fn(() =>
     Promise.resolve(mockApiResponse(response, status))
@@ -166,6 +170,7 @@ export function createTestPayment(overrides = {}) {
 }
 
 // Assert API response
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function expectApiResponse(response: Response, expectedData: any) {
   expect(response.status).toBe(200);
   return response.json().then((data) => {

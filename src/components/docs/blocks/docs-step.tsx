@@ -33,7 +33,7 @@ export function DocsStep({
   children,
 }: DocsStepProps) {
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {/* Step title */}
       <h3 className={`uppercase ${docsTypography.h3}`}>{title}</h3>
 
@@ -49,7 +49,7 @@ export function DocsStep({
 
       {/* Tip */}
       {tip && (
-        <p className={`border-l-2 border-primary/50 pl-3 ${docsTypography.caption}`}>
+        <p className={`border-l-2 border-primary/50 pl-4 ${docsTypography.caption}`}>
           <span className="font-bold uppercase text-primary">Tip:</span> {tip}
         </p>
       )}

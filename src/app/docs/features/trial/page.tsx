@@ -144,7 +144,7 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="How Fabrk Trials Work">
         <div className="space-y-4">
           <DocsCard title="STEP_01">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">1</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>User Starts Trial</h3>
             </div>
@@ -154,7 +154,7 @@ const subscription = await stripe.subscriptions.create({
             </p>
           </DocsCard>
           <DocsCard title="STEP_02">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">2</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Trial Banner Shows</h3>
             </div>
@@ -164,7 +164,7 @@ const subscription = await stripe.subscriptions.create({
             </p>
           </DocsCard>
           <DocsCard title="STEP_03">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">3</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Urgency Near End</h3>
             </div>
@@ -174,7 +174,7 @@ const subscription = await stripe.subscriptions.create({
             </p>
           </DocsCard>
           <DocsCard title="STEP_04">
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-2">
               <span className="flex h-8 w-8 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">4</span>
               <h3 className={`uppercase ${docsTypography.h4}`}>Trial Expires</h3>
             </div>
@@ -191,28 +191,28 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="Trial Banner States">
         <DocsCard title="BANNER_STATES">
           <div className="space-y-4">
-            <div className="flex items-center gap-3 p-3 border border-border bg-card">
+            <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-success"></div>
               <div>
                 <p className="text-sm font-medium">Plenty of time (8+ days)</p>
                 <p className={docsTypography.body}>&quot;You have 12 days left in your trial&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border border-border bg-card">
+            <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-warning"></div>
               <div>
                 <p className="text-sm font-medium">Running low (4-7 days)</p>
                 <p className={docsTypography.body}>&quot;5 days left - Subscribe to keep access&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border border-border bg-card">
+            <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-destructive"></div>
               <div>
                 <p className="text-sm font-medium">Urgent (1-3 days)</p>
                 <p className={docsTypography.body}>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border border-border bg-card">
+            <div className="flex items-center gap-4 p-4 border border-border bg-card">
               <div className="h-3 w-3 rounded-none bg-muted-foreground"></div>
               <div>
                 <p className="text-sm font-medium">Expired</p>

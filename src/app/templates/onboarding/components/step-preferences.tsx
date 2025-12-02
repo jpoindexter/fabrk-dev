@@ -28,7 +28,7 @@ export function StepPreferences({
       <div className="space-y-4">
         <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_SETTINGS]:</div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="border-border flex items-center justify-between border p-4">
             <div>
               <div className="font-mono text-sm">Email Updates</div>

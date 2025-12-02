@@ -86,7 +86,7 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="mb-4 inline-block border border-border bg-card px-3 py-1">
+            <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
               <span className="font-mono text-xs text-muted-foreground">[ [0x30] METRICS ]</span>
             </div>
             <h2 className="mb-4 font-mono text-2xl font-bold">

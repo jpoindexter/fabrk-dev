@@ -42,7 +42,7 @@ export function UserTableToolbar({
             onChange={(event) =>
               table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="pl-9"
+            className="pl-8"
           />
         </div>
         {selectedRows.length > 0 && onBulkDelete && (

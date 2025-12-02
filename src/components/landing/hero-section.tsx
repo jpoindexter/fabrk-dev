@@ -136,7 +136,7 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 2 ? 1 : 0 }}
-        className="text-muted-foreground mt-3"
+        className="text-muted-foreground mt-4"
       >
         <span className="text-success">~</span>{" "}
         <span className="text-foreground">cd my-saas && npm install</span>
@@ -168,7 +168,7 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 4 ? 1 : 0 }}
-        className="text-muted-foreground mt-3"
+        className="text-muted-foreground mt-4"
       >
         <span className="text-success">~/my-saas</span>{" "}
         <span className="text-foreground">npm run dev</span>
@@ -178,7 +178,7 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="border-success/30 bg-success/10 mt-3 border p-4"
+        className="border-success/30 bg-success/10 mt-4 border p-4"
       >
         <div className="text-success">▲ Ready</div>
         <div className="text-muted-foreground mt-1">
@@ -190,7 +190,7 @@ function TerminalContent() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="text-muted-foreground mt-3"
+        className="text-muted-foreground mt-4"
       >
         <span className="text-success">~/my-saas</span>{" "}
         <motion.span
@@ -219,7 +219,7 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="border-border bg-card text-muted-foreground inline-block border px-3 py-1 font-mono text-xs">
+              <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
                 [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
@@ -245,7 +245,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="border-border bg-card mb-8 border p-4"
             >
-              <div className="text-muted-foreground mb-3 font-mono text-xs">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
                 [ [0x01] STATUS ]────────────────────────
               </div>
               <p className="text-muted-foreground mb-4 font-mono text-sm">
@@ -285,7 +285,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="text-muted-foreground mb-3 font-mono text-xs">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">
                 [ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]
               </div>
               <div className="flex flex-wrap gap-4">

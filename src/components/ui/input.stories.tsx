@@ -73,15 +73,15 @@ export const WithIcons: Story = {
     <div className="flex w-80 flex-col gap-4">
       <div className="relative">
         <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-        <Input className="pl-9" placeholder="Search..." />
+        <Input className="pl-8" placeholder="Search..." />
       </div>
       <div className="relative">
         <Mail className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-        <Input className="pl-9" type="email" placeholder="Email address" />
+        <Input className="pl-8" type="email" placeholder="Email address" />
       </div>
       <div className="relative">
         <Lock className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-        <Input className="pl-9" type="password" placeholder="Password" />
+        <Input className="pl-8" type="password" placeholder="Password" />
       </div>
     </div>
   ),

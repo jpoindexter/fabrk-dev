@@ -32,7 +32,7 @@ export function RecentInvoicesCard({
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -56,9 +56,9 @@ export function RecentInvoicesCard({
             return (
               <div
                 key={payment.id}
-                className="flex items-center justify-between border border-border p-3 font-mono text-xs"
+                className="flex items-center justify-between border border-border p-4 font-mono text-xs"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   {payment.status === "succeeded" ? (
                     <CheckCircle2 className="h-4 w-4 text-success" />
                   ) : payment.status === "failed" ? (
@@ -71,7 +71,7 @@ export function RecentInvoicesCard({
                     <div className="text-muted-foreground">{formatDate(payment.date)}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <span>{formatCurrency(payment.amount)}</span>
                   <span className={`border px-2 py-0.5 ${status.color} ${
                     payment.status === "succeeded" ? "border-success/50" :

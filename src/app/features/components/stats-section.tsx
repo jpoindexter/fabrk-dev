@@ -28,7 +28,7 @@ export function StatsSection() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="text-center border border-border bg-card p-4"
               >
-                <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-3">
+                <div className="inline-flex items-center justify-center bg-primary/10 p-2 mb-4">
                   <Icon className="size-5 text-primary" />
                 </div>
                 <div className="text-2xl font-bold text-foreground">{stat.value}</div>

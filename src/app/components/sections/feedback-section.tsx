@@ -23,7 +23,7 @@ export function FeedbackSection() {
           <CardTitle>Badges</CardTitle>
           <CardDescription>Status and category indicators</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
+        <CardContent className="flex flex-wrap gap-4">
           <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
           <Badge variant="accent">Accent</Badge>

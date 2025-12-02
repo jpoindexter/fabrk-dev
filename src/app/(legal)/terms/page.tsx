@@ -19,7 +19,7 @@ export default function TermsPage() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="border-border bg-card text-muted-foreground inline-block border px-3 py-1 text-xs">
+          <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs">
             [ [0x00] LEGAL ] TERMS_OF_SERVICE
           </span>
         </motion.div>
@@ -64,7 +64,7 @@ export default function TermsPage() {
             <span className="text-muted-foreground text-xs">[0x10]</span>
             <h2 className="text-lg font-bold">AGREEMENT_TO_TERMS</h2>
           </div>
-          <p className="text-muted-foreground mb-3 text-sm">
+          <p className="text-muted-foreground mb-4 text-sm">
             By accessing, purchasing, or using Fabrk ("Service", "Product", "we", "us", or "our"),
             you ("Buyer", "User", "you") agree to be bound by these Terms of Service ("Terms").
           </p>
@@ -343,7 +343,7 @@ export default function TermsPage() {
             <span className="text-muted-foreground text-xs">[0x80]</span>
             <h2 className="text-lg font-bold">UPDATES_VERSIONING</h2>
           </div>
-          <p className="text-muted-foreground mb-3 text-sm">
+          <p className="text-muted-foreground mb-4 text-sm">
             Your perpetual license includes lifetime access to all v1.x updates (bug fixes, security
             patches, new components, documentation).
           </p>
@@ -397,7 +397,7 @@ export default function TermsPage() {
             <span className="text-muted-foreground text-xs">[0xC0]</span>
             <h2 className="text-lg font-bold">CONTACT_INFO</h2>
           </div>
-          <p className="text-muted-foreground mb-3 text-sm">Questions about these Terms?</p>
+          <p className="text-muted-foreground mb-4 text-sm">Questions about these Terms?</p>
           <ul className="text-muted-foreground space-y-1 pl-4 text-sm">
             <li>
               ├─ <span className="text-foreground">LEGAL:</span> legal@fabrk.dev
@@ -423,7 +423,7 @@ export default function TermsPage() {
         viewport={{ once: true }}
         className="border-border bg-card mt-12 border p-6"
       >
-        <span className="text-muted-foreground mb-3 block text-xs">[ RELATED_DOCUMENTS ]</span>
+        <span className="text-muted-foreground mb-4 block text-xs">[ RELATED_DOCUMENTS ]</span>
         <div className="flex flex-wrap gap-4 text-xs">
           <Link href="/privacy" className="text-primary hover:underline">
             &gt; PRIVACY_POLICY

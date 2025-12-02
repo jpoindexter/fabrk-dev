@@ -213,7 +213,7 @@ export const CompleteExample: StoryObj = {
         <Strong>maximum accessibility</Strong> and proper theme compatibility.
       </Body>
 
-      <H3 className="mt-6 mb-3">Installation</H3>
+      <H3 className="mt-6 mb-4">Installation</H3>
       <Body className="mb-4">
         Import the typography components you need from the centralized module:
       </Body>
@@ -221,7 +221,7 @@ export const CompleteExample: StoryObj = {
         <Code>import {"{ H1, H2, Body, List }"} from "@/components/ui/typography";</Code>
       </Body>
 
-      <H3 className="mt-6 mb-3">Key Features</H3>
+      <H3 className="mt-6 mb-4">Key Features</H3>
       <List className="mb-4">
         <ListItem>Consistent sizing and spacing across all pages</ListItem>
         <ListItem>WCAG AA compliant with 7:1+ contrast ratios</ListItem>
@@ -230,7 +230,7 @@ export const CompleteExample: StoryObj = {
         <ListItem>Comprehensive JSDoc documentation</ListItem>
       </List>
 
-      <H3 className="mt-6 mb-3">Best Practices</H3>
+      <H3 className="mt-6 mb-4">Best Practices</H3>
       <List ordered className="mb-4">
         <ListItem>
           Always use <Code>text-foreground</Code> for maximum accessibility in body text

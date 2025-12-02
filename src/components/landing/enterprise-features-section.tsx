@@ -66,7 +66,7 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
             className="mb-4 inline-block"
           >
-            <span className="border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            <span className="border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
               [ ENTERPRISE_GRADE_FEATURES ]
             </span>
           </motion.div>
@@ -124,7 +124,7 @@ export function EnterpriseFeaturesSection() {
                     <BarChart className="h-6 w-6 text-primary" />
                   ) : null}
                 </div>
-                <h3 className="text-sm font-bold mb-3">
+                <h3 className="text-sm font-bold mb-4">
                   {feature.title.toUpperCase().replace(/ /g, '_').replace(/\+/g, '_AND_')}
                 </h3>
                 <span className="block text-xs text-muted-foreground">

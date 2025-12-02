@@ -22,12 +22,12 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>Include your API key in the Authorization header:</p>
-          <code className="block p-3 bg-muted rounded border border-border font-mono text-xs">
+          <code className="block p-4 bg-muted rounded border border-border font-mono text-xs">
             Authorization: Bearer YOUR_API_KEY
           </code>
           <div className="pt-2">
             <p className="font-semibold mb-2">Example (cURL):</p>
-            <code className="block p-3 bg-muted rounded border border-border font-mono text-xs whitespace-pre-wrap">
+            <code className="block p-4 bg-muted rounded border border-border font-mono text-xs whitespace-pre-wrap">
               {`curl https://yourdomain.com/api/v1/organizations/${organizationId || "{org_id}"} \\
   -H "Authorization: Bearer sk_live_..."`}
             </code>

@@ -7,7 +7,7 @@
 export function PageHeader() {
   return (
     <section className="space-y-4">
-      <div className="inline-block border border-border bg-card px-3 py-1">
+      <div className="inline-block border border-border bg-card px-4 py-1">
         <span className="text-xs text-muted-foreground">[ [0x00] SHOWCASE ] UI_COMPONENTS</span>
       </div>
       <div>

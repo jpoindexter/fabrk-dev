@@ -30,14 +30,14 @@ const buttonVariants = cva(
         // Consistent high-emphasis CTA styles used across marketing, demo, and variation pages
         // Industry standard: All button variants use rounded-none for consistency
         primaryCta:
-          "bg-primary text-primary-foreground hover:bg-primary/90 rounded-none text-base px-6 py-3",
+          "bg-primary text-primary-foreground hover:bg-primary/90 rounded-none text-base px-6 py-4",
         secondaryCta:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-none text-base px-6 py-3",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-none text-base px-6 py-4",
         ghostOnDark:
-          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-none text-base px-6 py-3",
+          "border border-foreground/30 bg-transparent text-foreground hover:bg-foreground/10 rounded-none text-base px-6 py-4",
       },
       size: {
-        default: "h-8 px-3 py-1.5",
+        default: "h-8 px-4 py-1.5",
         sm: "h-7 rounded-none px-2 text-xs",
         lg: "h-9 rounded-none px-6",
         xl: "h-12 rounded-none px-8 text-lg",

@@ -61,7 +61,7 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
       <Button
         variant="ghost"
         size="sm"
-        className="-ml-3 h-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:bg-accent dark:bg-accent"
+        className="-ml-4 h-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:bg-accent dark:bg-accent"
         onClick={() => column.toggleSorting(isSorted === "asc")}
         aria-label={`Sort by ${title} ${isSorted === "asc" ? "descending" : isSorted === "desc" ? "ascending" : ""}`}
       >

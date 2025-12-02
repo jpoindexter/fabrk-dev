@@ -85,7 +85,7 @@ export function AnalyticsTabs({
               {pageData.map((row, i) => (
                 <div
                   key={i}
-                  className="hover:bg-muted/30 grid grid-cols-4 px-4 py-3 font-mono text-xs"
+                  className="hover:bg-muted/30 grid grid-cols-4 px-4 py-4 font-mono text-xs"
                 >
                   <span className="text-foreground">{row.page}</span>
                   <span className="text-muted-foreground">{row.views}</span>
@@ -107,7 +107,7 @@ export function AnalyticsTabs({
             {/* Traffic Sources */}
             <div className="border-border border p-4">
               <div className="text-muted-foreground mb-4 font-mono text-xs">[TRAFFIC_SOURCES]:</div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {trafficSources.map((source, i) => (
                   <div key={i} className="space-y-1">
                     <div className="flex items-center justify-between font-mono text-xs">
@@ -125,7 +125,7 @@ export function AnalyticsTabs({
               <div className="text-muted-foreground mb-4 font-mono text-xs">
                 [DEVICE_BREAKDOWN]:
               </div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {deviceBreakdown.map((device, i) => (
                   <div key={i} className="space-y-1">
                     <div className="flex items-center justify-between font-mono text-xs">
@@ -153,7 +153,7 @@ export function AnalyticsTabs({
               { name: "CUSTOM_REPORT", desc: "Build your own report" },
             ].map((report, i) => (
               <div key={i} className="border-border border p-4">
-                <div className="mb-3 flex items-start justify-between">
+                <div className="mb-4 flex items-start justify-between">
                   <div>
                     <div className="text-foreground font-mono text-xs">[{report.name}]</div>
                     <div className="text-muted-foreground mt-1 font-mono text-xs">

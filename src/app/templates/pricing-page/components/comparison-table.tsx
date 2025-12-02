@@ -31,7 +31,7 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -50,14 +50,14 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
           <table className="w-full font-mono text-xs">
             <thead>
               <tr className="border-b border-border bg-muted/30">
-                <th className="text-left px-4 py-3 text-muted-foreground">
+                <th className="text-left px-4 py-4 text-muted-foreground">
                   [FEATURE]
                 </th>
-                <th className="text-center px-4 py-3 text-muted-foreground">
+                <th className="text-center px-4 py-4 text-muted-foreground">
                   STARTER
                 </th>
-                <th className="text-center px-4 py-3 text-primary">PRO</th>
-                <th className="text-center px-4 py-3 text-muted-foreground">
+                <th className="text-center px-4 py-4 text-primary">PRO</th>
+                <th className="text-center px-4 py-4 text-muted-foreground">
                   ENTERPRISE
                 </th>
               </tr>
@@ -65,14 +65,14 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
             <tbody className="divide-y divide-border">
               {features.map((feature, idx) => (
                 <tr key={idx} className="hover:bg-muted/30">
-                  <td className="px-4 py-3">{feature.name}</td>
-                  <td className="text-center px-4 py-3">
+                  <td className="px-4 py-4">{feature.name}</td>
+                  <td className="text-center px-4 py-4">
                     {renderCell(feature.starter)}
                   </td>
-                  <td className="text-center px-4 py-3">
+                  <td className="text-center px-4 py-4">
                     {renderCell(feature.pro)}
                   </td>
-                  <td className="text-center px-4 py-3">
+                  <td className="text-center px-4 py-4">
                     {renderCell(feature.enterprise)}
                   </td>
                 </tr>

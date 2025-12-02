@@ -52,7 +52,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
         ref={ref}
         role="group"
         aria-label={ariaLabel}
-        className={cn("flex items-center", overlap ? "-space-x-3" : "space-x-2", className)}
+        className={cn("flex items-center", overlap ? "-space-x-4" : "space-x-2", className)}
         {...props}
       >
         {displayAvatars.map((avatar, index) => (

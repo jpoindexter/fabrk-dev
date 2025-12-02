@@ -13,7 +13,7 @@ interface PricingHeaderProps {
 export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps) {
   return (
     <div className="text-center space-y-4">
-      <div className="inline-block border border-border px-3 py-1">
+      <div className="inline-block border border-border px-4 py-1">
         <span className="font-mono text-xs text-muted-foreground">
           [TEMPLATE]: PRICING_PAGE
         </span>

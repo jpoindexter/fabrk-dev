@@ -276,7 +276,7 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
 
                           {/* Sub-section items */}
                           {isSubExpanded && (
-                            <div className="relative ml-[5px] pl-3 space-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-1 before:w-px before:bg-border/50">
+                            <div className="relative ml-[5px] pl-4 space-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-1 before:w-px before:bg-border/50">
                               {subSection.items.map((item) => {
                                 const Icon = item.icon;
                                 const isActive = pathname === item.href;

@@ -63,7 +63,7 @@ export function Sidebar({
         <button
           onClick={() => handleItemClick(item)}
           className={cn(
-            "w-full flex items-center gap-2 px-3 py-2 text-left font-mono text-xs transition-all rounded-none",
+            "w-full flex items-center gap-2 px-4 py-2 text-left font-mono text-xs transition-all rounded-none",
             "hover:bg-primary hover:text-primary-foreground",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             depth > 0 && "ml-4"

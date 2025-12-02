@@ -79,7 +79,7 @@ export function ValuesSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+            <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
               [ [0x03] CORE_VALUES ]
             </span>
             <h2 className="text-2xl font-bold lg:text-3xl mb-4">CORE_VALUES</h2>
@@ -107,7 +107,7 @@ export function ValuesSection() {
               whileHover={{ x: 4, backgroundColor: "hsl(var(--muted))" }}
               className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-4 mb-4">
                 <div className="inline-flex items-center justify-center bg-primary/10 border border-border p-2">
                   <value.icon className="h-5 w-5 text-primary" />
                 </div>

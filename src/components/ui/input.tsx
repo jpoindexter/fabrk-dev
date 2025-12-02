@@ -36,7 +36,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled || loading}
           className={cn(
             // Terminal styles
-            "flex h-8 w-full rounded-none border bg-background px-3 py-2 font-mono text-xs font-normal transition-colors",
+            "flex h-8 w-full rounded-none border bg-background px-4 py-2 font-mono text-xs font-normal transition-colors",
 
             // Vercel focus state - thin ring
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",

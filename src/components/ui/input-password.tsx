@@ -39,7 +39,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
             type="button"
             variant="ghost"
             size="sm"
-            className={`absolute right-0 top-0 h-full px-3 py-1 hover:bg-background/0`}
+            className={`absolute right-0 top-0 h-full px-4 py-1 hover:bg-background/0`}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             tabIndex={-1}

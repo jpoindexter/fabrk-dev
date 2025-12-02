@@ -80,7 +80,7 @@ export function DataExport() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div className="space-y-3">
+        <div className="space-y-4">
           <Label htmlFor="format-select" className="font-mono text-xs">
             [FORMAT]:
           </Label>
@@ -95,9 +95,9 @@ export function DataExport() {
           </Select>
         </div>
 
-        <div className="border-t pt-4 space-y-3">
+        <div className="border-t pt-4 space-y-4">
           <Label className="font-mono text-xs">[DATA_TO_INCLUDE]:</Label>
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Checkbox
                 id="profile"

@@ -31,7 +31,7 @@ export function DeliveryItem({
   return (
     <div className="border rounded-none p-4 space-y-2">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           {getStatusIcon(delivery.status)}
           <div>
             <p className="font-mono text-sm font-medium">
@@ -88,7 +88,7 @@ export function DeliveryItem({
         <div className="pt-4 space-y-4 border-t">
           <div>
             <Label className="text-xs">Payload</Label>
-            <pre className="mt-2 p-3 bg-muted rounded text-xs overflow-x-auto">
+            <pre className="mt-2 p-4 bg-muted rounded text-xs overflow-x-auto">
               {JSON.stringify(delivery.payload, null, 2)}
             </pre>
           </div>
@@ -96,7 +96,7 @@ export function DeliveryItem({
           {delivery.response && (
             <div>
               <Label className="text-xs">Response</Label>
-              <pre className="mt-2 p-3 bg-muted rounded text-xs overflow-x-auto">
+              <pre className="mt-2 p-4 bg-muted rounded text-xs overflow-x-auto">
                 {delivery.response}
               </pre>
             </div>

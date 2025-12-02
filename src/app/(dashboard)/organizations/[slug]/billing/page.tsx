@@ -21,7 +21,7 @@ import { BillingHistoryCard } from "./components/billing-history-card";
 export default function OrganizationBillingPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
+  const { data: _session } = useSession();
   const [loading, setLoading] = React.useState(true);
   const [organization, setOrganization] = React.useState<Organization | null>(null);
   const [subscription, setSubscription] = React.useState<Subscription | null>(null);
@@ -87,7 +87,7 @@ export default function OrganizationBillingPage() {
 
       const data = await response.json();
       window.location.href = data.url;
-    } catch (error: unknown) {
+    } catch {
       toast.error("Failed to open billing portal");
       setLoadingPortal(false);
     }

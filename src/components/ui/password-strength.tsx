@@ -215,7 +215,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
             type="button"
             variant="ghost"
             size="icon"
-            className={`absolute right-0 top-0 h-full px-3 hover:bg-background/0`}
+            className={`absolute right-0 top-0 h-full px-4 hover:bg-background/0`}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             aria-label={showPassword ? "Hide password" : "Show password"}

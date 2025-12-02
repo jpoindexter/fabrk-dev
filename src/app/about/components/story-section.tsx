@@ -26,7 +26,7 @@ export function StorySection() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block border border-border bg-card px-3 py-1 text-xs text-muted-foreground mb-4">
+              <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
                 [ [0x04] ORIGIN_STORY ]
               </span>
               <h2 className="text-2xl font-bold lg:text-3xl mb-4">THE_STORY_BEHIND_FABRK</h2>
@@ -72,7 +72,7 @@ export function StorySection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-3 text-sm"
+                    className="flex items-start gap-4 text-sm"
                   >
                     <span className="text-destructive font-bold">✗</span>
                     <span className="text-muted-foreground">{problem}</span>

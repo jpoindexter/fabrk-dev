@@ -32,7 +32,7 @@ export function InviteSection() {
   return (
     <div className="border border-border bg-card">
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           <div className="size-2 rounded-full bg-destructive/50" />
           <div className="size-2 rounded-full bg-warning/50" />
           <div className="size-2 rounded-full bg-success/50" />
@@ -40,8 +40,8 @@ export function InviteSection() {
         <span className="font-mono text-xs text-muted-foreground">invite_member.sh</span>
       </div>
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-3">[INVITE_TEAM_MEMBER]:</div>
-        <div className="flex gap-3">
+        <div className="font-mono text-xs text-muted-foreground mb-4">[INVITE_TEAM_MEMBER]:</div>
+        <div className="flex gap-4">
           <Input
             type="email"
             placeholder="email@example.com"

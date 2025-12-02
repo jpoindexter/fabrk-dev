@@ -34,7 +34,6 @@ interface CurrentPlanCardProps {
 }
 
 export function CurrentPlanCard({
-  organization,
   subscription,
   isOwnerOrAdmin,
   loadingPortal,
@@ -116,7 +115,7 @@ export function CurrentPlanCard({
 
             {subscription.cancelAtPeriodEnd && (
               <div className="rounded-none border border-border border-destructive bg-destructive/10 p-4">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-4">
                   <AlertTriangle className="h-5 w-5 text-destructive" />
                   <div>
                     <h4 className="font-medium text-destructive">Subscription Ending</h4>

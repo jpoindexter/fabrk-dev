@@ -26,7 +26,8 @@ interface RateLimitStore {
 }
 
 // In-memory store (use Redis/Upstash in production)
-const limitStore = new Map<string, RateLimitStore>();
+// Exported for testing purposes
+export const limitStore = new Map<string, RateLimitStore>();
 
 /**
  * Rate limit check

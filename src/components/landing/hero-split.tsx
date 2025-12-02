@@ -31,7 +31,7 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <span className="inline-block border border-border bg-card px-3 py-1 font-mono text-xs text-muted-foreground">
+              <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
                 [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
               </span>
             </div>
@@ -90,7 +90,7 @@ export function HeroSplit({
               <div className="aspect-4/3 p-6">
                 <div className="h-full w-full border-2 border-border/20 bg-card p-4">
                   {/* Header */}
-                  <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-3">
+                  <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-4">
                     <div className="flex items-center gap-2">
                       <div className="h-8 w-8 rounded-none border-2 border-foreground bg-primary"></div>
                       <div>
@@ -131,7 +131,7 @@ export function HeroSplit({
               </div>
 
               {/* File Count Badge */}
-              <div className="absolute -bottom-4 -right-4 rounded-none border-2 border-foreground bg-primary px-6 py-3 shadow-sm">
+              <div className="absolute -bottom-4 -right-4 rounded-none border-2 border-foreground bg-primary px-6 py-4 shadow-sm">
                 <p className="font-mono text-xs font-bold text-primary-foreground">[161_FILES]</p>
               </div>
             </div>

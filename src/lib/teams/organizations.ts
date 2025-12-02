@@ -242,7 +242,7 @@ export async function getOrganizationSettings(organizationId: string) {
 export async function updateOrganizationSettings(
   organizationId: string,
   userId: string,
-  settings: Record<string, any>
+  settings: Record<string, unknown>
 ): Promise<void> {
   // Import hasOrganizationRole to avoid circular dependency
   const { hasOrganizationRole } = await import("./members");
@@ -259,6 +259,7 @@ export async function updateOrganizationSettings(
 
   await prisma.organization.update({
     where: { id: organizationId },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: { settings: settings as any },
   });
 }

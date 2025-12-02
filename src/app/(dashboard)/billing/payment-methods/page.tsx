@@ -8,7 +8,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -26,7 +26,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function PaymentMethodsPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast, error: showError, success } = useToast();
+  const { error: showError, success } = useToast();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [methodToDelete, setMethodToDelete] = useState<string | null>(null);
 
@@ -126,7 +126,7 @@ export default function PaymentMethodsPage() {
     }
   };
 
-  const getCardIcon = (brand: string) => {
+  const getCardIcon = () => {
     // In real implementation, use actual card brand icons
     return <CreditCard className="h-6 w-6" />;
   };
@@ -189,7 +189,7 @@ export default function PaymentMethodsPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
                     <div className="bg-primary/10 border-border rounded-none border p-4">
-                      {getCardIcon(method.brand)}
+                      {getCardIcon()}
                     </div>
                     <div>
                       <div className="mb-1 flex items-center gap-2">

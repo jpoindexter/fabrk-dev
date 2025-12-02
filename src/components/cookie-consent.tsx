@@ -197,7 +197,7 @@ export function CookieConsent() {
       {showButton && !showModal && (
         <button
           onClick={openModal}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-none border bg-background px-4 py-3 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-none border bg-background px-4 py-4 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
@@ -250,7 +250,7 @@ export function CookieConsent() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`flex-1 px-6 py-3 text-sm font-medium transition-colors ${
+                    className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
                       activeTab === tab
                         ? "border-b-2 border-primary text-primary"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"

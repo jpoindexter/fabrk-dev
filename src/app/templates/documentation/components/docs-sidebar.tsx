@@ -20,7 +20,7 @@ export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
           const Icon = section.icon;
           return (
             <div key={idx}>
-              <div className="mb-3 flex items-center gap-2">
+              <div className="mb-4 flex items-center gap-2">
                 <Icon className="h-4 w-4 text-primary" />
                 <h3 className="font-mono text-xs font-bold">
                   [{section.section.toUpperCase().replace(/ /g, "_")}]:
@@ -34,7 +34,7 @@ export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
                       <button
                         onClick={() => hasContent && onDocChange(page.id)}
                         disabled={!hasContent}
-                        className={`flex w-full items-center justify-between px-3 py-2 text-left font-mono text-xs transition-colors ${
+                        className={`flex w-full items-center justify-between px-4 py-2 text-left font-mono text-xs transition-colors ${
                           activeDoc === page.id
                             ? "bg-primary text-primary-foreground"
                             : hasContent

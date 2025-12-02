@@ -10,7 +10,7 @@ export function DashboardHeader() {
   return (
     <div className="flex items-center justify-between">
       <div className="space-y-2">
-        <div className="inline-block border border-border px-3 py-1">
+        <div className="inline-block border border-border px-4 py-1">
           <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: TEAM_DASHBOARD</span>
         </div>
         <h1 className="text-4xl font-semibold tracking-tight">Team Dashboard</h1>

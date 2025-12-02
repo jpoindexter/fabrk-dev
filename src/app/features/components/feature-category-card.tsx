@@ -31,11 +31,11 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
       <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}>
         {/* Content Side */}
         <div className="flex-1 space-y-6">
-          <div className="inline-flex items-center gap-3">
-            <div className="bg-primary/10 p-3">
+          <div className="inline-flex items-center gap-4">
+            <div className="bg-primary/10 p-4">
               <Icon className="size-6 text-primary" />
             </div>
-            <span className="border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+            <span className="border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
               [{category.stats.value}] {category.stats.label.toUpperCase().replace(/ /g, '_')}
             </span>
           </div>
@@ -59,7 +59,7 @@ export function FeatureCategoryCard({ category, index }: FeatureCategoryCardProp
             </div>
             <ul className="space-y-2">
               {category.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-3 text-xs text-muted-foreground">
+                <li key={i} className="flex items-start gap-4 text-xs text-muted-foreground">
                   <span className="text-primary flex-shrink-0">{i === category.features.length - 1 ? '└─' : '├─'}</span>
                   <span>{feature}</span>
                 </li>

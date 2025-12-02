@@ -49,7 +49,7 @@ export default function LandingVariationsTemplate() {
       <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-3 py-1">
+          <div className="inline-block border border-border px-4 py-1">
             <span className="font-mono text-xs text-muted-foreground">
               [TEMPLATE]: LANDING_VARIATIONS
             </span>
@@ -66,7 +66,7 @@ export default function LandingVariationsTemplate() {
         <Tabs value={activeVariation} onValueChange={setActiveVariation}>
           <div className="border border-border bg-card">
             <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-1.5">
+              <div className="flex gap-2">
                 <div className="size-2 rounded-full bg-destructive/50" />
                 <div className="size-2 rounded-full bg-warning/50" />
                 <div className="size-2 rounded-full bg-success/50" />
@@ -80,7 +80,7 @@ export default function LandingVariationsTemplate() {
                 <TabsTrigger
                   key={variation.id}
                   value={variation.id}
-                  className="flex-1 px-4 py-3 border-r border-border last:border-r-0 rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="flex-1 px-4 py-4 border-r border-border last:border-r-0 rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
                 >
                   [{variation.name.toUpperCase().replace(" ", "_")}]
                 </TabsTrigger>
@@ -96,7 +96,7 @@ export default function LandingVariationsTemplate() {
           <TabsContent value="centered" className="mt-6">
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="size-2 rounded-full bg-destructive/50" />
                   <div className="size-2 rounded-full bg-warning/50" />
                   <div className="size-2 rounded-full bg-success/50" />
@@ -160,7 +160,7 @@ export default function LandingVariationsTemplate() {
           <TabsContent value="split" className="mt-6">
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="size-2 rounded-full bg-destructive/50" />
                   <div className="size-2 rounded-full bg-warning/50" />
                   <div className="size-2 rounded-full bg-success/50" />
@@ -188,7 +188,7 @@ export default function LandingVariationsTemplate() {
                       the box.
                     </p>
 
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {[
                         { icon: Shield, text: "Enterprise-grade security" },
                         { icon: Rocket, text: "Deploy in minutes" },
@@ -232,7 +232,7 @@ export default function LandingVariationsTemplate() {
           <TabsContent value="minimal" className="mt-6">
             <div className="border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-1.5">
+                <div className="flex gap-2">
                   <div className="size-2 rounded-full bg-destructive/50" />
                   <div className="size-2 rounded-full bg-warning/50" />
                   <div className="size-2 rounded-full bg-success/50" />
@@ -304,7 +304,7 @@ export default function LandingVariationsTemplate() {
               }`}
               onClick={() => setActiveVariation(variation.id)}
             >
-              <div className="flex items-center gap-2 border-b border-border px-3 py-1.5">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-1.5">
                 <div className="flex gap-1">
                   <div className="size-1.5 rounded-full bg-destructive/50" />
                   <div className="size-1.5 rounded-full bg-warning/50" />
@@ -319,7 +319,7 @@ export default function LandingVariationsTemplate() {
                 <p className="font-mono text-xs text-muted-foreground">
                   {variation.description}
                 </p>
-                <div className="mt-3 font-mono text-xs">
+                <div className="mt-4 font-mono text-xs">
                   [BEST_FOR]:{" "}
                   {variation.id === "centered" && "Product launches, SaaS"}
                   {variation.id === "split" && "Feature showcases, B2B"}
@@ -333,7 +333,7 @@ export default function LandingVariationsTemplate() {
         {/* Features Card */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-1.5">
+            <div className="flex gap-2">
               <div className="size-2 rounded-full bg-destructive/50" />
               <div className="size-2 rounded-full bg-warning/50" />
               <div className="size-2 rounded-full bg-success/50" />
@@ -343,7 +343,7 @@ export default function LandingVariationsTemplate() {
             </span>
           </div>
           <div className="p-4">
-            <div className="mb-3 font-mono text-xs text-muted-foreground">
+            <div className="mb-4 font-mono text-xs text-muted-foreground">
               [TEMPLATE_FEATURES]:
             </div>
             <div className="space-y-1.5 font-mono text-xs">
@@ -369,7 +369,7 @@ export default function LandingVariationsTemplate() {
                 <span className="text-success">&gt;</span> Responsive layouts
               </div>
             </div>
-            <div className="mt-3 font-mono text-xs text-muted-foreground">
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
               [NOTE]: Mix and match elements from each variation to create your
               perfect landing page.
             </div>
