@@ -1,6 +1,6 @@
 /**
  * DocsPreview - Live component preview with code
- * Critical for component showcase pages (shadcn/ui style)
+ * Terminal-style card with single-line header
  */
 
 "use client";
@@ -9,13 +9,12 @@ import { useState } from "react";
 import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography } from "../typography";
 import { cn } from "@/lib/utils";
 
 interface DocsPreviewProps {
   /** Preview title */
   title: string;
-  /** Preview description (optional) */
+  /** Preview description (optional, not displayed in header) */
   description?: string;
   /** Live component to render */
   preview: React.ReactNode;
@@ -31,7 +30,6 @@ interface DocsPreviewProps {
 
 export function DocsPreview({
   title,
-  description,
   preview,
   code,
   language = "tsx",
@@ -48,26 +46,23 @@ export function DocsPreview({
   };
 
   return (
-    <div className={cn("border border-border rounded-none bg-card", className)}>
-      {/* Header */}
+    <div className={cn("border border-border bg-card", className)}>
+      {/* Header - single line only */}
       <div className="border-b border-border bg-card px-4 py-2">
         <span className="font-mono text-xs text-muted-foreground">
           [ [0x{hexCode}] {headerTitle} ]
         </span>
-        {description && (
-          <p className={`mt-1 ${docsTypography.caption}`}>{description}</p>
-        )}
       </div>
 
       {/* Live Preview */}
-      <div className="terminal-preview bg-background p-6 flex items-center justify-center min-h-[120px]">
+      <div className="terminal-preview bg-card p-6 flex items-center justify-center min-h-[120px]">
         <div className="w-full flex items-center justify-center">
           {preview}
         </div>
       </div>
 
       {/* Code Block */}
-      <div className="border-t border-border relative p-4">
+      <div className="border-t border-border bg-card relative p-4">
         <Button
           variant="ghost"
           size="sm"
