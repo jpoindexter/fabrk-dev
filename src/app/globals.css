@@ -160,7 +160,9 @@
 @theme {
   /* Font families */
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 
   /* Border radius */
   --radius: 0.5rem;
@@ -230,6 +232,11 @@
   --chart-3: 45% 0.08 220;
   --chart-4: 75% 0.15 85;
   --chart-5: 70% 0.18 45;
+  --chart-6: 65% 0.22 295;
+  --chart-7: 70% 0.2 340;
+  --chart-8: 70% 0.15 60;
+  --chart-9: 65% 0.15 160;
+  --status-away: 75% 0.15 60;
 }
 
 /* ============================================
@@ -959,16 +966,16 @@
 }
 
 .terminal-bracket::before {
-  content: '[';
+  content: "[";
 }
 
 .terminal-bracket::after {
-  content: ']';
+  content: "]";
 }
 
 /* Terminal command prefix */
 .terminal-cmd::before {
-  content: '> ';
+  content: "> ";
   color: oklch(var(--primary));
 }
 
@@ -994,7 +1001,7 @@
 }
 
 .terminal-box::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -1px;
   left: 1rem;
@@ -1013,7 +1020,6 @@
 
 /* Blinking cursor animation */
 @keyframes terminal-blink {
-
   0%,
   50% {
     opacity: 1;
@@ -1026,24 +1032,26 @@
 }
 
 .terminal-cursor::after {
-  content: '█';
+  content: "█";
   animation: terminal-blink 1s step-end infinite;
   color: oklch(var(--primary));
 }
 
 /* Terminal scanline effect (subtle) */
 .terminal-scanlines::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(0deg,
-      transparent,
-      transparent 2px,
-      oklch(var(--foreground) / 0.02) 2px,
-      oklch(var(--foreground) / 0.02) 4px);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    oklch(var(--foreground) / 0.02) 2px,
+    oklch(var(--foreground) / 0.02) 4px
+  );
   pointer-events: none;
 }
 
@@ -1055,28 +1063,28 @@
 
 /* Typography utility classes */
 .heading-section {
-  @apply font-mono text-lg font-bold text-primary;
+  @apply text-primary font-mono text-lg font-bold;
 }
 
 .heading-subsection {
-  @apply font-mono text-base font-semibold text-foreground;
+  @apply text-foreground font-mono text-base font-semibold;
 }
 
 .body-text {
-  @apply font-mono text-sm text-muted-foreground leading-relaxed;
+  @apply text-muted-foreground font-mono text-sm leading-relaxed;
 }
 
 /* Docs-specific heading styles with proper spacing */
 .docs-h2 {
-  @apply font-mono text-lg font-bold text-primary mt-8 mb-4;
+  @apply text-primary mt-8 mb-4 font-mono text-lg font-bold;
 }
 
 .docs-h3 {
-  @apply font-mono text-base font-semibold text-foreground mb-2;
+  @apply text-foreground mb-2 font-mono text-base font-semibold;
 }
 
 .docs-body {
-  @apply font-mono text-sm text-muted-foreground leading-relaxed;
+  @apply text-muted-foreground font-mono text-sm leading-relaxed;
 }
 
 /* Section spacing utilities (8-point grid) */

@@ -1,12 +1,11 @@
-/**
- * FABRK COMPONENT
- * Individual notification item
- */
-
-import { Button } from "@/components/ui/button";
+import { type Notification } from "./notification-types"; // Correct import path
 import { Badge } from "@/components/ui/badge";
-import { Check, Trash2 } from "lucide-react";
-import { Notification, getTypeIcon, getTypeColor } from "./notification-types";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Check, Trash2 } from "lucide-react"; // Import Lucide icons used directly in NotificationItem
+import Link from "next/link";
+import { useMemo } from "react";
+import { getTypeIcon, getTypeColor } from "./notification-types"; // Import getTypeIcon and getTypeColor
 
 interface NotificationItemProps {
   notification: Notification;
@@ -14,91 +13,84 @@ interface NotificationItemProps {
   onDelete: (id: string) => void;
 }
 
-export function NotificationItem({
-  notification,
-  onMarkAsRead,
-  onDelete,
-}: NotificationItemProps) {
-  const Icon = getTypeIcon(notification.type);
-  const colorClass = getTypeColor(notification.type);
+export function NotificationItem({ notification, onMarkAsRead, onDelete }: NotificationItemProps) {
+  // Use useMemo to ensure Icon and colorClass are stable across renders
+  const { Icon, colorClass } = useMemo(
+    () => ({
+      Icon: getTypeIcon(notification.type),
+      colorClass: getTypeColor(notification.type),
+    }),
+    [notification.type]
+  );
 
   return (
     <div
-      className={`border border-border p-4 transition-colors hover:bg-muted/30 ${
-        !notification.read ? "bg-primary/5" : ""
-      }`}
+      className={cn(
+        "border-border bg-card relative flex w-full items-start gap-3 rounded-none border p-4 shadow-sm transition-colors",
+        !notification.read && "bg-primary/5 hover:bg-primary/10"
+      )}
     >
-      <div className="flex items-start gap-3">
-        {/* Icon */}
-        <div
-          className={`p-2 border border-border ${
-            notification.type === "error"
-              ? "bg-destructive/10"
-              : notification.type === "warning"
-                ? "bg-warning/10"
-                : notification.type === "success"
-                  ? "bg-success/10"
-                  : "bg-muted/30"
-          }`}
-        >
-          <Icon className={`h-4 w-4 ${colorClass}`} />
-        </div>
+      {/* Icon */}
+      <div
+        className={`border-border bg-background flex size-8 flex-shrink-0 items-center justify-center rounded-none border ${colorClass}`}
+      >
+        <Icon className={`h-4 w-4 ${colorClass}`} />
+      </div>
 
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-sm font-medium">
-              {notification.title}
-            </span>
-            {!notification.read && (
-              <Badge variant="default" size="sm" className="rounded-none font-mono text-[10px] px-1 h-4">
-                NEW
-              </Badge>
-            )}
-          </div>
-          <p className="font-mono text-xs text-muted-foreground mb-2">
-            {notification.message}
-          </p>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[10px] text-muted-foreground">
-              {notification.timestamp}
-            </span>
-            {notification.actionUrl && (
-              <Button
-                variant="link"
-                size="sm"
-                className="h-auto p-0 font-mono text-[10px] text-primary"
-              >
-                &gt; VIEW_DETAILS
-              </Button>
-            )}
-          </div>
+      {/* Content */}
+      <div className="flex-1">
+        <div className="flex items-center justify-between">
+          <Badge
+            variant="outline"
+            className="border-border rounded-none px-2 py-0.5 font-mono text-xs uppercase"
+          >
+            {notification.type.replace(/_/g, " ")}
+          </Badge>
+          <span className="text-muted-foreground font-mono text-xs">{notification.timestamp}</span>
         </div>
+        <h4 className="text-foreground mt-2 font-mono text-sm font-semibold">
+          {notification.title}
+        </h4>
+        <p className="text-muted-foreground mt-1 font-mono text-xs">{notification.message}</p>
+
+        {notification.actionUrl && (
+          <Button
+            variant="link"
+            size="sm"
+            asChild
+            className="mt-2 rounded-none px-0 font-mono text-xs font-semibold"
+          >
+            <Link href={notification.actionUrl}>VIEW_DETAILS</Link>
+          </Button>
+        )}
 
         {/* Actions */}
-        <div className="flex items-center gap-1">
+        <div className="mt-4 flex gap-2">
           {!notification.read && (
             <Button
-              variant="ghost"
+              variant="outline"
               size="sm"
+              className="rounded-none font-mono text-xs"
               onClick={() => onMarkAsRead(notification.id)}
-              className="h-7 w-7 p-0 rounded-none"
-              title="Mark as read"
             >
-              <Check className="h-3 w-3" />
+              <Check className="mr-2 size-3" /> Mark as Read
             </Button>
           )}
           <Button
-            variant="ghost"
+            variant="destructive"
             size="sm"
+            className="rounded-none font-mono text-xs"
             onClick={() => onDelete(notification.id)}
-            className="h-7 w-7 p-0 rounded-none text-destructive hover:text-destructive"
-            title="Delete"
           >
-            <Trash2 className="h-3 w-3" />
+            <Trash2 className="mr-2 size-3" /> Delete
           </Button>
         </div>
       </div>
+
+      {/* Read indicator */}
+      {!notification.read && (
+        <span className="bg-primary absolute top-2 right-2 size-2 rounded-full" />
+      )}
     </div>
   );
 }

@@ -101,21 +101,29 @@ Convert the Markdown checklists into a `compliance.json` file that a custom lint
 
 ## Storybook Implementation Plan
 
-Installing Storybook allows you to visualize the 90+ components in isolation, which is crucial for a "Premium" boilerplate.
+**Current Status:** 10 / 109 Components Covered (~9%)
+
+You currently have Stories for basic primitives (`button`, `card`, `input`), but are missing them for 90% of your library.
+
+### Do you need it for *every* component?
+**No.** You do not need stories for simple wrappers like `separator.tsx` or `skeleton.tsx`.
+
+**Recommendation:** Prioritize "Complex Interactive" components. These add the most value to buyers who want to see how they work in isolation.
+
+### Priority List (Top 20 to Build Next)
+1.  `data-table` (Critical for SaaS)
+2.  `file-upload` (Complex states: loading, error, success)
+3.  `multi-step-form`
+4.  `command` (Command palette)
+5.  `calendar` / `date-picker`
+6.  `toast` / `toaster`
+7.  `sheet` / `sidebar`
+8.  `navigation-menu`
+9.  `dropdown-menu`
+10. `popover`
 
 ### Time Estimate
-*   **Installation:** 1 Hour (Setup & Config).
-*   **Story Generation:** 30-40 Hours (Manual) / 4-6 Hours (AI-Assisted).
+*   **Priority Set (20 Components):** 4-5 Hours (AI-Assisted).
+*   **Full Library (100+ Components):** 40+ Hours.
 
-### Steps to "100%"
-1.  **Install:**
-    ```bash
-    npx storybook@latest init
-    ```
-2.  **Configure:**
-    Update `.storybook/preview.tsx` to import `src/app/globals.css` so Tailwind v4 works.
-3.  **Automate:**
-    Use a script to loop through `src/components/ui/*.tsx` and generate a basic `*.stories.tsx` file for each.
-    *   *Example Prompt:* "Write a Storybook story for this component with 'Default', 'Error', and 'Loading' states."
-
-**Recommendation:** Do not delay launch for Storybook. Launch with the "Preview" pages you already have, and add Storybook as a "v1.1 Update" to keep momentum.
+**Verdict:** Do not delay launch for 100% coverage. Build the "Priority List" above to show off your best work, then launch. The rest is "nice to have."

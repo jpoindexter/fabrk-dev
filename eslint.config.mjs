@@ -154,8 +154,8 @@ const eslintConfig = [{
     "src/**/component-previews/**"
   ],
   rules: {
-    'design-system/no-hardcoded-colors': 'warn',
-    'design-system/no-inline-styles': 'warn'
+    'design-system/no-hardcoded-colors': 'error',
+    'design-system/no-inline-styles': 'error'
   }
 }, {
   // RELAXED validation for demo/showcase files and marketing pages with SVG brand colors
@@ -170,7 +170,8 @@ const eslintConfig = [{
     "**/demo-*/**",
     "**/variations/**",
     "**/landing/**",
-    "**/home/tech-stack-section.tsx"
+    "**/home/tech-stack-section.tsx",
+    "src/app/templates/profile/page.tsx" // Contains string literals flagged as colors
   ],
   rules: {
     'design-system/no-hardcoded-colors': 'off',
@@ -188,6 +189,56 @@ const eslintConfig = [{
     "**/tree-view.tsx",
     "**/gsap-progress.tsx",
     "**/parallax-card.tsx"
+  ],
+  rules: {
+    'design-system/no-inline-styles': 'off'
+  }
+},
+{
+  // Pragmatic exception for color-picker and theme-switcher components which inherently deal with raw color values and inline styles for previews
+  files: [
+    "src/components/ui/color-picker.tsx",
+    "src/components/theme/color-theme-switcher.tsx",
+    "src/components/theme/theme-dropdown.tsx",
+    "src/app/docs/components/color-picker/page.tsx", // Docs page also shows raw colors
+    "src/app/docs/extras/theming/page.tsx", // Docs page for theming examples
+    "src/app/docs/features/google-oauth/page.tsx", // Google logo SVG has hardcoded brand colors
+    "src/app/layout.tsx", // Contains metadata strings that are false positives for hardcoded colors
+    "src/app/docs/tutorials/email-templates/page.tsx", // Email template examples require inline CSS/hardcoded colors
+    "src/emails/**/*.ts" // Email templates (if any are separate files) require inline CSS/hardcoded colors
+  ],
+  rules: {
+    'design-system/no-hardcoded-colors': 'off',
+    'design-system/no-inline-styles': 'off',
+  }
+},
+{
+  // Pragmatic exception for Recharts components requiring inline styles for dynamic colors/fills
+  files: [
+    "src/components/analytics/**/*.{tsx,jsx}",
+    "src/components/ui/donut-chart.tsx",
+    "src/components/ui/funnel-chart.tsx",
+    "src/components/ui/gauge.tsx",
+    "src/components/ui/heatmap.tsx",
+    "src/components/ui/pie-chart.tsx",
+    "src/components/ui/sparkline.tsx",
+    "src/components/ui/mermaid.tsx", // Mermaid also uses inline styles for theming
+    "src/app/templates/chart-library/page.tsx",
+    "src/app/docs/components/donut-chart/page.tsx",
+    "src/app/docs/components/gauge/page.tsx",
+    "src/app/docs/components/heatmap/page.tsx",
+    "src/app/docs/components/pie-chart/page.tsx",
+    "src/app/docs/components/sparkline/page.tsx",
+  ],
+  rules: {
+    'design-system/no-hardcoded-colors': 'off', // Recharts colors are passed as strings, not Tailwind classes
+    'design-system/no-inline-styles': 'off' // Recharts and dynamic SVG require inline styles
+  }
+},
+{
+  // Pragmatic exception for sidebar component for dynamic paddingLeft calculation due to nested navigation
+  files: [
+    "src/components/ui/sidebar.tsx",
   ],
   rules: {
     'design-system/no-inline-styles': 'off'

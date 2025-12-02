@@ -13,7 +13,7 @@ import { env } from "@/lib/env";
 if (!env.server.STRIPE_SECRET_KEY) {
   throw new Error(
     "STRIPE_SECRET_KEY environment variable is required. " +
-    "Please set it in your .env.local file or environment configuration."
+      "Please set it in your .env.local file or environment configuration."
   );
 }
 
@@ -156,7 +156,7 @@ export async function storeCheckoutSession(
  * @example
  * ```typescript
  * if (await isWebhookProcessed(event.id)) {
- *   console.log("Event already processed, skipping");
+ *   // Event already processed, skipping
  *   return;
  * }
  * ```
@@ -177,7 +177,7 @@ export async function isWebhookProcessed(eventId: string): Promise<boolean> {
  * @example
  * ```typescript
  * await markWebhookProcessed(event.id);
- * console.log("Event marked as processed");
+ * // Event marked as processed
  * ```
  */
 export async function markWebhookProcessed(eventId: string): Promise<void> {

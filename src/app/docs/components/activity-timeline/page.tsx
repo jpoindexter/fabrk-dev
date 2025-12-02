@@ -3,120 +3,120 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { ActivityTimeline } from "@/components/ui/activity-timeline";
 
+const sampleEvents = [
+  {
+    id: "1",
+    type: "created" as const,
+    user: { name: "Alice Johnson", avatar: "" },
+    title: "Created new project",
+    description: "Initialized repository and project structure",
+    timestamp: new Date(Date.now() - 3600000),
+    metadata: { project_name: "Web App", status: "active" },
+  },
+  {
+    id: "2",
+    type: "commented" as const,
+    user: { name: "Bob Smith", avatar: "" },
+    title: "Added comment on issue #42",
+    timestamp: new Date(Date.now() - 7200000),
+  },
+  {
+    id: "3",
+    type: "updated" as const,
+    user: { name: "Carol White", avatar: "" },
+    title: "Updated documentation",
+    description: "Rewrote API reference section with new examples",
+    timestamp: new Date(Date.now() - 86400000),
+  },
+];
+
+const compactEvents = [
+  {
+    id: "1",
+    type: "created" as const,
+    user: { name: "User A", avatar: "" },
+    title: "Created task",
+    timestamp: new Date(Date.now() - 3600000),
+  },
+  {
+    id: "2",
+    type: "updated" as const,
+    user: { name: "User B", avatar: "" },
+    title: "Updated status",
+    timestamp: new Date(Date.now() - 7200000),
+  },
+];
+
+const groupedEvents = [
+  {
+    id: "1",
+    type: "created" as const,
+    user: { name: "Alice Johnson", avatar: "" },
+    title: "Created project",
+    timestamp: new Date(Date.now() - 3600000),
+  },
+  {
+    id: "2",
+    type: "commented" as const,
+    user: { name: "Bob Smith", avatar: "" },
+    title: "Added comment",
+    timestamp: new Date(Date.now() - 86400000),
+  },
+  {
+    id: "3",
+    type: "status_changed" as const,
+    user: { name: "Carol White", avatar: "" },
+    title: "Changed status to In Progress",
+    timestamp: new Date(Date.now() - 172800000),
+  },
+];
+
+const allEventTypes = [
+  {
+    id: "1",
+    type: "created" as const,
+    user: { name: "Alice Johnson", avatar: "" },
+    title: "Created document",
+    timestamp: new Date(Date.now() - 3600000),
+  },
+  {
+    id: "2",
+    type: "updated" as const,
+    user: { name: "Bob Smith", avatar: "" },
+    title: "Updated settings",
+    timestamp: new Date(Date.now() - 7200000),
+  },
+  {
+    id: "3",
+    type: "commented" as const,
+    user: { name: "Carol White", avatar: "" },
+    title: "Left a comment",
+    timestamp: new Date(Date.now() - 10800000),
+  },
+  {
+    id: "4",
+    type: "status_changed" as const,
+    user: { name: "David Lee", avatar: "" },
+    title: "Changed status",
+    timestamp: new Date(Date.now() - 14400000),
+  },
+  {
+    id: "5",
+    type: "assigned" as const,
+    user: { name: "Eve Martinez", avatar: "" },
+    title: "Assigned to team",
+    timestamp: new Date(Date.now() - 18000000),
+  },
+  {
+    id: "6",
+    type: "deleted" as const,
+    user: { name: "Frank Wilson", avatar: "" },
+    title: "Deleted old files",
+    timestamp: new Date(Date.now() - 21600000),
+  },
+];
+
 export default function ActivityTimelinePage() {
-  const sampleEvents = [
-    {
-      id: "1",
-      type: "created" as const,
-      user: { name: "Alice Johnson", avatar: "" },
-      title: "Created new project",
-      description: "Initialized repository and project structure",
-      timestamp: new Date(Date.now() - 3600000),
-      metadata: { project_name: "Web App", status: "active" },
-    },
-    {
-      id: "2",
-      type: "commented" as const,
-      user: { name: "Bob Smith", avatar: "" },
-      title: "Added comment on issue #42",
-      timestamp: new Date(Date.now() - 7200000),
-    },
-    {
-      id: "3",
-      type: "updated" as const,
-      user: { name: "Carol White", avatar: "" },
-      title: "Updated documentation",
-      description: "Rewrote API reference section with new examples",
-      timestamp: new Date(Date.now() - 86400000),
-    },
-  ];
-
-  const compactEvents = [
-    {
-      id: "1",
-      type: "created" as const,
-      user: { name: "User A", avatar: "" },
-      title: "Created task",
-      timestamp: new Date(Date.now() - 3600000),
-    },
-    {
-      id: "2",
-      type: "updated" as const,
-      user: { name: "User B", avatar: "" },
-      title: "Updated status",
-      timestamp: new Date(Date.now() - 7200000),
-    },
-  ];
-
-  const groupedEvents = [
-    {
-      id: "1",
-      type: "created" as const,
-      user: { name: "Alice Johnson", avatar: "" },
-      title: "Created project",
-      timestamp: new Date(Date.now() - 3600000),
-    },
-    {
-      id: "2",
-      type: "commented" as const,
-      user: { name: "Bob Smith", avatar: "" },
-      title: "Added comment",
-      timestamp: new Date(Date.now() - 86400000),
-    },
-    {
-      id: "3",
-      type: "status_changed" as const,
-      user: { name: "Carol White", avatar: "" },
-      title: "Changed status to In Progress",
-      timestamp: new Date(Date.now() - 172800000),
-    },
-  ];
-
-  const allEventTypes = [
-    {
-      id: "1",
-      type: "created" as const,
-      user: { name: "Alice Johnson", avatar: "" },
-      title: "Created document",
-      timestamp: new Date(Date.now() - 3600000),
-    },
-    {
-      id: "2",
-      type: "updated" as const,
-      user: { name: "Bob Smith", avatar: "" },
-      title: "Updated settings",
-      timestamp: new Date(Date.now() - 7200000),
-    },
-    {
-      id: "3",
-      type: "commented" as const,
-      user: { name: "Carol White", avatar: "" },
-      title: "Left a comment",
-      timestamp: new Date(Date.now() - 10800000),
-    },
-    {
-      id: "4",
-      type: "status_changed" as const,
-      user: { name: "David Lee", avatar: "" },
-      title: "Changed status",
-      timestamp: new Date(Date.now() - 14400000),
-    },
-    {
-      id: "5",
-      type: "assigned" as const,
-      user: { name: "Eve Martinez", avatar: "" },
-      title: "Assigned to team",
-      timestamp: new Date(Date.now() - 18000000),
-    },
-    {
-      id: "6",
-      type: "deleted" as const,
-      user: { name: "Frank Wilson", avatar: "" },
-      title: "Deleted old files",
-      timestamp: new Date(Date.now() - 21600000),
-    },
-  ];
-
   return (
     <ComponentShowcaseTemplate
       code="[UI.80]"

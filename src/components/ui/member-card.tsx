@@ -41,34 +41,34 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="flex items-center gap-3 rounded-none border bg-card p-3 shadow-sm">
+      <div className="bg-card flex items-center gap-3 rounded-none border p-3 shadow-sm">
         <div className="relative">
-          <div className="h-10 w-10 animate-pulse rounded-none bg-muted" />
+          <div className="bg-muted h-10 w-10 animate-pulse rounded-none" />
         </div>
         <div className="flex-1 space-y-2">
-          <div className="h-4 w-32 animate-pulse rounded bg-muted" />
-          <div className="h-3 w-24 animate-pulse rounded bg-muted" />
+          <div className="bg-muted h-4 w-32 animate-pulse rounded" />
+          <div className="bg-muted h-3 w-24 animate-pulse rounded" />
         </div>
-        <div className="h-8 w-8 animate-pulse rounded bg-muted" />
+        <div className="bg-muted h-8 w-8 animate-pulse rounded" />
       </div>
     );
   }
 
   return (
-    <div className="rounded-none border bg-card p-6 shadow-sm">
+    <div className="bg-card rounded-none border p-6 shadow-sm">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
-          <div className="h-20 w-20 animate-pulse rounded-none bg-muted" />
+          <div className="bg-muted h-20 w-20 animate-pulse rounded-none" />
         </div>
         <div className="w-full space-y-2">
-          <div className="h-5 w-3/4 animate-pulse rounded bg-muted mx-auto" />
-          <div className="h-4 w-1/2 animate-pulse rounded bg-muted mx-auto" />
-          <div className="h-3 w-full animate-pulse rounded bg-muted" />
-          <div className="h-3 w-5/6 animate-pulse rounded bg-muted" />
+          <div className="bg-muted mx-auto h-5 w-3/4 animate-pulse rounded" />
+          <div className="bg-muted mx-auto h-4 w-1/2 animate-pulse rounded" />
+          <div className="bg-muted h-3 w-full animate-pulse rounded" />
+          <div className="bg-muted h-3 w-5/6 animate-pulse rounded" />
         </div>
         <div className="flex gap-2">
-          <div className="h-9 w-20 animate-pulse rounded-none bg-muted" />
-          <div className="h-9 w-20 animate-pulse rounded-none bg-muted" />
+          <div className="bg-muted h-9 w-20 animate-pulse rounded-none" />
+          <div className="bg-muted h-9 w-20 animate-pulse rounded-none" />
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@ const getStatusColor = (status?: "online" | "away" | "offline") => {
     case "online":
       return "bg-accent";
     case "away":
-      return "bg-[oklch(75%_0.15_60)]";
+      return "bg-[oklch(var(--status-away))]";
     case "offline":
       return "bg-muted";
     default:
@@ -126,7 +126,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "flex items-center gap-3 rounded-none border bg-card p-3 shadow-sm transition-all hover:shadow-sm hover:opacity-90",
+            "bg-card flex items-center gap-3 rounded-none border p-3 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
             className
           )}
           {...props}
@@ -139,23 +139,23 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-0 right-0 h-3 w-3 rounded-none border border-card",
+                  "border-card absolute right-0 bottom-0 h-3 w-3 rounded-none border",
                   getStatusColor(member.status)
                 )}
               />
             )}
           </div>
 
-          <div className="flex-1 min-w-0">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-semibold text-sm text-foreground truncate">{member.name}</h4>
+              <h4 className="text-foreground truncate text-sm font-semibold">{member.name}</h4>
               {member.status === "online" && (
-                <Badge variant="accent" className="text-xs px-2 py-0">
+                <Badge variant="accent" className="px-2 py-0 text-xs">
                   Online
                 </Badge>
               )}
             </div>
-            <p className="text-xs text-muted-foreground truncate">{member.role}</p>
+            <p className="text-muted-foreground truncate text-xs">{member.role}</p>
           </div>
 
           <div className="flex items-center gap-1">
@@ -217,7 +217,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-none border bg-card p-6 shadow-sm transition-all hover:shadow-sm hover:opacity-90",
+          "bg-card rounded-none border p-6 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
           className
         )}
         {...props}
@@ -231,42 +231,42 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "absolute bottom-1 right-1 h-4 w-4 rounded-none border border-card",
+                  "border-card absolute right-1 bottom-1 h-4 w-4 rounded-none border",
                   getStatusColor(member.status)
                 )}
               />
             )}
           </div>
 
-          <div className="text-center w-full space-y-1">
+          <div className="w-full space-y-1 text-center">
             <div className="flex items-center justify-center gap-2">
-              <h3 className="font-semibold text-lg text-foreground">{member.name}</h3>
+              <h3 className="text-foreground text-lg font-semibold">{member.name}</h3>
               {member.status === "online" && (
-                <Badge variant="accent" className="text-xs px-2 py-0.5">
+                <Badge variant="accent" className="px-2 py-0.5 text-xs">
                   Online
                 </Badge>
               )}
             </div>
-            <p className="text-sm font-medium text-primary">{member.role}</p>
-            {member.bio && <p className="text-sm text-muted-foreground mt-2">{member.bio}</p>}
+            <p className="text-primary text-sm font-medium">{member.role}</p>
+            {member.bio && <p className="text-muted-foreground mt-2 text-sm">{member.bio}</p>}
             {member.memberSince && (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Member since {formatMemberSince(member.memberSince)}
               </p>
             )}
           </div>
 
           {member.skills && member.skills.length > 0 && (
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap justify-center gap-2">
               {member.skills.map((skill, index) => (
-                <Badge key={index} variant="secondary" className="text-xs px-2 py-1">
+                <Badge key={index} variant="secondary" className="px-2 py-1 text-xs">
                   {skill}
                 </Badge>
               ))}
             </div>
           )}
 
-          <div className="flex gap-2 w-full">
+          <div className="flex w-full gap-2">
             {onEmail && (
               <Button
                 variant="outline"

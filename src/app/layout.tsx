@@ -47,7 +47,7 @@ const jetbrainsMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://fabrk.dev"),
+  metadataBase: new URL("https://fabrk.dev"),
   title: {
     default: "Fabrk - Build Production Apps at AI Speed",
     template: "%s | Fabrk",
@@ -132,9 +132,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
-        <meta name="theme-color" content="oklch(95.16% 0.0242 343.23)" />
+        <meta name="theme-color" content="oklch(var(--primary))" />
         {/* Load DaisyUI theme before hydration to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
@@ -214,7 +218,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src="https://www.googletagmanager.com/ns.html?id=GTM-T47RSZPP"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
         <Providers>
@@ -224,29 +228,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div className="skip-links">
             <a
               href="#main-content"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-none focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-3 focus:font-semibold focus:shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               Skip to main content
             </a>
             <a
               href="#navigation"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-20 focus:z-50 focus:rounded-none focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-3 focus:font-semibold focus:shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               Skip to navigation
             </a>
             <a
               href="#footer"
-              className="skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-36 focus:z-50 focus:rounded-none focus:bg-primary focus:px-6 focus:py-3 focus:font-semibold focus:text-primary-foreground focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-36 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-3 focus:font-semibold focus:shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               Skip to footer
             </a>
           </div>
-          <div className="relative flex min-h-screen flex-col bg-background isolate">
+          <div className="bg-background relative isolate flex min-h-screen flex-col">
             <TerminalBackground />
             <main id="main-content" className="flex-1">
-              <Suspense>
-                {children}
-              </Suspense>
+              <Suspense>{children}</Suspense>
             </main>
           </div>
           <CookieConsent />

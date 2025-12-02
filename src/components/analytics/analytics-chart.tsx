@@ -60,10 +60,10 @@ interface AnalyticsChartProps {
 const DEFAULT_COLORS = [
   "hsl(var(--primary))",
   "hsl(var(--accent))",
-  "oklch(65% 0.22 295)",
-  "oklch(70% 0.20 340)",
-  "oklch(70% 0.15 60)",
-  "oklch(65% 0.15 160)",
+  "oklch(var(--chart-6))",
+  "oklch(var(--chart-7))",
+  "oklch(var(--chart-8))",
+  "oklch(var(--chart-9))",
 ];
 
 export function AnalyticsChart({
@@ -93,11 +93,11 @@ export function AnalyticsChart({
               {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <YAxis
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <Tooltip
@@ -130,11 +130,11 @@ export function AnalyticsChart({
               {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <YAxis
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <Tooltip
@@ -146,7 +146,12 @@ export function AnalyticsChart({
               />
               {showLegend && <Legend />}
               {yKeys.map((key, index) => (
-                <Bar key={key} dataKey={key} fill={colors[index % colors.length]} radius={[4, 4, 0, 0]} />
+                <Bar
+                  key={key}
+                  dataKey={key}
+                  fill={colors[index % colors.length]}
+                  radius={[4, 4, 0, 0]}
+                />
               ))}
             </BarChart>
           </ResponsiveContainer>
@@ -159,11 +164,11 @@ export function AnalyticsChart({
               {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
               <XAxis
                 dataKey={xKey}
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <YAxis
-                className="text-xs text-muted-foreground"
+                className="text-muted-foreground text-xs"
                 tick={{ fill: "hsl(var(--muted-foreground))" }}
               />
               <Tooltip
@@ -229,7 +234,7 @@ export function AnalyticsChart({
       {(title || description) && (
         <CardHeader className="pb-4">
           {title && <CardTitle className="text-base font-black">{title}</CardTitle>}
-          {description && <p className="text-sm text-muted-foreground">{description}</p>}
+          {description && <p className="text-muted-foreground text-sm">{description}</p>}
         </CardHeader>
       )}
       <CardContent className="pb-6">{renderChart()}</CardContent>

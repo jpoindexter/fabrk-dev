@@ -4,14 +4,15 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-none border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-1.5",
+  "inline-flex items-center justify-center rounded-none border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-1.5 uppercase",
   {
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground border-primary hover:bg-primary/90",
         secondary: "bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/90",
         accent: "bg-accent text-accent-foreground border-accent hover:bg-accent/90",
-        destructive: "bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90",
+        destructive:
+          "bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90",
         neutral: "bg-background text-foreground border-foreground hover:bg-muted",
         outline: "bg-transparent border-foreground text-foreground hover:bg-foreground/10",
       },
@@ -26,7 +27,7 @@ const badgeVariants = cva(
       variant: "default",
       size: "md",
     },
-  },
+  }
 );
 
 function Badge({

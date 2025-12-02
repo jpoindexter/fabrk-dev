@@ -1,5 +1,4 @@
 const colorPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/;
-const functionPattern = /(rgb|rgba|hsl|hsla)\(/i;
 const allowedDirectories = ["/emails/", "/public/", "/sample_landing/"];
 
 function isAllowedFile(filename) {
@@ -8,8 +7,21 @@ function isAllowedFile(filename) {
 
 function literalContainsColor(node) {
   if (typeof node.value !== "string") return false;
-  if (!colorPattern.test(node.value) && !functionPattern.test(node.value)) return false;
-  return true;
+
+  // Check for hex codes
+  if (colorPattern.test(node.value)) return true;
+
+  // Check for function colors (rgb, rgba, hsl, hsla, oklch)
+  const functionMatch = node.value.match(/(rgb|rgba|hsl|hsla|oklch)\(/i);
+  if (functionMatch) {
+    // If it's a color function, ensure it does NOT contain 'var('
+    // This allows hsl(var(--primary)) but flags hsl(123, 45%, 67%)
+    if (!node.value.includes('var(')) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function report(context, node) {
@@ -41,13 +53,13 @@ export default {
       },
       TemplateElement(node) {
         const value = node.value?.raw ?? "";
-        if ((colorPattern.test(value) || functionPattern.test(value)) && !isAllowedFile(filename)) {
+        if (literalContainsColor({ value })) { // Pass value as a pseudo-node
           report(context, node);
         }
       },
       JSXAttribute(node) {
         if (node.value && node.value.type === "Literal" && typeof node.value.value === "string") {
-          if (colorPattern.test(node.value.value) || functionPattern.test(node.value.value)) {
+          if (literalContainsColor(node.value)) { // Pass node.value as a pseudo-node
             report(context, node);
           }
         }

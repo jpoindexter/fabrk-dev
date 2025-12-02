@@ -38,10 +38,10 @@ interface FunnelVisualizerProps {
 
 const DEFAULT_COLORS = [
   "hsl(var(--primary))",
-  "oklch(65% 0.22 295)",
-  "oklch(70% 0.20 340)",
-  "oklch(70% 0.15 60)",
-  "oklch(65% 0.15 160)",
+  "oklch(var(--chart-6))",
+  "oklch(var(--chart-7))",
+  "oklch(var(--chart-8))",
+  "oklch(var(--chart-9))",
 ];
 
 export function FunnelVisualizer({
@@ -68,7 +68,7 @@ export function FunnelVisualizer({
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="text-base font-black">{title}</CardTitle>
-            {description && <p className="text-sm text-muted-foreground mt-1">{description}</p>}
+            {description && <p className="text-muted-foreground mt-1 text-sm">{description}</p>}
           </div>
           <Badge variant="outline" className="font-medium">
             {stages.length} Stages
@@ -88,24 +88,21 @@ export function FunnelVisualizer({
             <div key={index} className="space-y-2">
               {/* Stage Header */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className="h-3 w-3 rounded-none border border-border"
+                      className="border-border h-3 w-3 rounded-none border"
                       style={{ backgroundColor: color }}
                     />
-                    <span className="text-sm font-bold text-foreground">{stage.name}</span>
+                    <span className="text-foreground text-sm font-bold">{stage.name}</span>
                   </div>
                   {index > 0 && (
-                    <Badge
-                      variant="secondary"
-                      className="text-xs font-medium"
-                    >
+                    <Badge variant="secondary" className="text-xs font-medium">
                       {conversionRate}% conversion
                     </Badge>
                   )}
                 </div>
-                <span className="text-lg font-black text-foreground">
+                <span className="text-foreground text-lg font-black">
                   {stage.value.toLocaleString()}
                 </span>
               </div>
@@ -113,7 +110,7 @@ export function FunnelVisualizer({
               {/* Funnel Bar */}
               <div className="relative">
                 <div
-                  className="h-12 rounded-none border border-border transition-all duration-500 ease-out shadow-sm"
+                  className="border-border h-12 rounded-none border shadow-sm transition-all duration-500 ease-out"
                   style={{
                     width: `${widthPercentage}%`,
                     backgroundColor: color,
@@ -124,8 +121,8 @@ export function FunnelVisualizer({
 
               {/* Drop-off indicator */}
               {index > 0 && previousValue && (
-                <div className="flex items-center gap-2 text-xs text-muted-foreground pl-1">
-                  <TrendingDown className="h-3 w-3 text-destructive" />
+                <div className="text-muted-foreground flex items-center gap-2 pl-2 text-xs">
+                  <TrendingDown className="text-destructive h-3 w-3" />
                   <span>
                     {(previousValue - stage.value).toLocaleString()} drop-off ({dropOff}%)
                   </span>
@@ -136,10 +133,10 @@ export function FunnelVisualizer({
         })}
 
         {/* Overall Conversion */}
-        <div className="pt-4 border-t border-border">
-          <div className="flex items-center justify-between rounded-none bg-accent/50 p-4">
-            <span className="text-sm font-medium text-foreground">Overall Conversion Rate</span>
-            <span className="text-2xl font-black text-primary">
+        <div className="border-border border-t pt-4">
+          <div className="bg-accent/50 flex items-center justify-between rounded-none p-4">
+            <span className="text-foreground text-sm font-medium">Overall Conversion Rate</span>
+            <span className="text-primary text-2xl font-black">
               {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%
             </span>
           </div>

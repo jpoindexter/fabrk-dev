@@ -103,7 +103,7 @@ All styled with Tailwind CSS, fully accessible (ARIA), and production-ready:
 7. **Status Badge** - Status indicators
 8. **Empty State** - No data placeholder
 
-#### Forms & Inputs (10)
+#### Forms & Inputs (14)
 1. **Login Form** - Email/password login
 2. **Register Form** - User registration
 3. **Forgot Password Form** - Password reset
@@ -111,9 +111,13 @@ All styled with Tailwind CSS, fully accessible (ARIA), and production-ready:
 5. **Profile Form** - User profile editor
 6. **Settings Form** - App settings
 7. **Search Input** - Search with icon
-8. **File Upload** - File uploader (coming soon)
-9. **Rich Text Editor** - WYSIWYG editor (coming soon)
-10. **Form Validation** - Zod integration
+8. **File Upload** - File uploader with drag-drop
+9. **Rich Text Editor** - WYSIWYG editor (HTML5)
+10. **Multi-step Form** - Wizard-style form
+11. **Command Palette** - Global command menu (⌘K)
+12. **Form Validation** - Zod integration
+13. **Cropper** - Image cropping utility
+14. **Color Picker** - Hex/RGB color selector
 
 #### Marketing & SEO (11)
 1. **FAQ Section** - Accordion FAQs
@@ -276,10 +280,7 @@ All templates are HTML-based, mobile-responsive, and production-ready:
 
 Based on common SaaS needs, here's what we'll add:
 
-### Additional UI Components (20+)
-- [ ] File Upload Widget with drag-drop
-- [ ] Image Cropper
-- [ ] Rich Text Editor (Tiptap)
+### Additional UI Components (15+)
 - [ ] Code Editor (Monaco)
 - [ ] Chart Components (Recharts)
 - [ ] Kanban Board
@@ -288,9 +289,6 @@ Based on common SaaS needs, here's what we'll add:
 - [ ] Markdown Renderer
 - [ ] Video Player
 - [ ] Audio Recorder
-- [ ] Color Picker
-- [ ] Command Palette (⌘K)
-- [ ] Multi-step Forms
 - [ ] Stepper Component
 - [ ] Rating Component
 - [ ] Comment Thread
