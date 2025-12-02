@@ -17,13 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
-import {
-  AlertTriangle,
-  Copy,
-  Check,
-  RefreshCw,
-  Download,
-} from "lucide-react";
+import { AlertTriangle, Copy, Check, RefreshCw, Download } from "lucide-react";
 
 interface BackupCodesModalProps {
   open: boolean;
@@ -31,11 +25,7 @@ interface BackupCodesModalProps {
   onRegenerate?: () => Promise<string[]>;
 }
 
-export function BackupCodesModal({
-  open,
-  onOpenChange,
-  onRegenerate,
-}: BackupCodesModalProps) {
+export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCodesModalProps) {
   const [codes, setCodes] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -58,10 +48,7 @@ export function BackupCodesModal({
       const data = await response.json();
       setCodes(data.backupCodes);
     } catch (error: unknown) {
-      showError(
-        "Error",
-        error instanceof Error ? error.message : "Failed to fetch backup codes"
-      );
+      showError("Error", error instanceof Error ? error.message : "Failed to fetch backup codes");
     } finally {
       setIsLoading(false);
     }
@@ -150,24 +137,24 @@ export function BackupCodesModal({
 
         {isLoading ? (
           <div className="py-8 text-center">
-            <div className="animate-spin rounded-none h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-sm text-muted-foreground">Loading backup codes...</p>
+            <div className="border-primary mx-auto mb-4 h-8 w-8 animate-spin rounded-none border-b-2"></div>
+            <p className="text-muted-foreground text-sm">Loading backup codes...</p>
           </div>
         ) : codes.length > 0 ? (
           <div className="space-y-4">
             <Alert>
               <AlertTriangle className="h-4 w-4" />
               <AlertDescription>
-                Store these codes in a secure location. Do not share them with anyone. Each code
-                can only be used once.
+                Store these codes in a secure location. Do not share them with anyone. Each code can
+                only be used once.
               </AlertDescription>
             </Alert>
 
-            <div className="grid grid-cols-2 gap-3 p-4 bg-muted rounded-none">
+            <div className="bg-muted grid grid-cols-2 gap-4 rounded-none p-4">
               {codes.map((code, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 bg-background border border-border rounded-none"
+                  className="bg-background border-border flex items-center justify-between rounded-none border p-4"
                 >
                   <span className="font-mono text-sm font-medium">{code}</span>
                   <Button
@@ -177,7 +164,7 @@ export function BackupCodesModal({
                     className="h-8 w-8 p-0"
                   >
                     {copiedIndex === index ? (
-                      <Check className="h-4 w-4 text-success" />
+                      <Check className="text-success h-4 w-4" />
                     ) : (
                       <Copy className="h-4 w-4" />
                     )}
@@ -208,7 +195,7 @@ export function BackupCodesModal({
           </div>
         ) : (
           <div className="py-8 text-center">
-            <p className="text-sm text-muted-foreground">No backup codes available</p>
+            <p className="text-muted-foreground text-sm">No backup codes available</p>
           </div>
         )}
 

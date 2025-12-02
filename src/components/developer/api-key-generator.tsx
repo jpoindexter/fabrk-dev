@@ -96,12 +96,12 @@ export function ApiKeyGenerator({
     <Card className={cn("overflow-hidden", className)}>
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-black flex items-center gap-2">
-            <Key className="h-4 w-4 text-primary" />
+          <CardTitle className="flex items-center gap-2 text-base font-black">
+            <Key className="text-primary h-4 w-4" />
             API Key
           </CardTitle>
           {apiKey && (
-            <Badge variant="outline" className="font-medium text-xs">
+            <Badge variant="outline" className="text-xs font-medium">
               Active
             </Badge>
           )}
@@ -121,7 +121,7 @@ export function ApiKeyGenerator({
                     readOnly
                     className="pr-24 font-mono text-sm"
                   />
-                  <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
+                  <div className="absolute top-1/2 right-2 flex -translate-y-1/2 gap-1">
                     <Button
                       variant="ghost"
                       size="sm"
@@ -129,11 +129,7 @@ export function ApiKeyGenerator({
                       className="h-7 w-7 p-0"
                       aria-label={isVisible ? "Hide API key" : "Show API key"}
                     >
-                      {isVisible ? (
-                        <EyeOff className="h-4 w-4" />
-                      ) : (
-                        <Eye className="h-4 w-4" />
-                      )}
+                      {isVisible ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </Button>
                     <Button
                       variant="ghost"
@@ -143,7 +139,7 @@ export function ApiKeyGenerator({
                       aria-label="Copy API key"
                     >
                       {copied ? (
-                        <Check className="h-4 w-4 text-primary" />
+                        <Check className="text-primary h-4 w-4" />
                       ) : (
                         <Copy className="h-4 w-4" />
                       )}
@@ -153,7 +149,7 @@ export function ApiKeyGenerator({
               </div>
 
               {/* Metadata */}
-              <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+              <div className="text-muted-foreground flex flex-wrap gap-4 text-xs">
                 {createdAt && (
                   <div>
                     Created: <span className="font-medium">{formatDate(createdAt)}</span>
@@ -168,12 +164,12 @@ export function ApiKeyGenerator({
             </div>
 
             {/* Security Notice */}
-            <div className="rounded-none border border-border bg-warning/10 p-3">
+            <div className="border-border bg-warning/10 rounded-none border p-4">
               <div className="flex gap-2">
-                <AlertTriangle className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
+                <AlertTriangle className="text-warning mt-0.5 h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 space-y-1">
-                  <p className="text-xs font-bold text-foreground">Keep this secret!</p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-foreground text-xs font-bold">Keep this secret!</p>
+                  <p className="text-muted-foreground text-xs">
                     Never share your API key or commit it to version control. Anyone with this key
                     can access your account.
                   </p>
@@ -225,15 +221,15 @@ export function ApiKeyGenerator({
         ) : (
           <>
             {/* No API Key State */}
-            <div className="py-8 text-center space-y-4">
+            <div className="space-y-4 py-8 text-center">
               <div className="flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-border bg-primary/10">
-                  <Key className="h-6 w-6 text-primary" />
+                <div className="border-border bg-primary/10 flex h-12 w-12 items-center justify-center rounded-none border">
+                  <Key className="text-primary h-6 w-6" />
                 </div>
               </div>
               <div className="space-y-1">
-                <p className="font-bold text-foreground">No API key generated</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-foreground font-bold">No API key generated</p>
+                <p className="text-muted-foreground text-sm">
                   Generate an API key to start using the API
                 </p>
               </div>
@@ -250,9 +246,11 @@ export function ApiKeyGenerator({
         {/* Usage Example */}
         {apiKey && (
           <div className="space-y-2">
-            <p className="text-xs font-bold text-foreground">Usage Example:</p>
-            <div className="rounded-none border border-border bg-muted/50 p-3 font-mono text-xs">
-              <div className="text-muted-foreground">curl -H "Authorization: Bearer {prefix}..."</div>
+            <p className="text-foreground text-xs font-bold">Usage Example:</p>
+            <div className="border-border bg-muted/50 rounded-none border p-4 font-mono text-xs">
+              <div className="text-muted-foreground">
+                curl -H "Authorization: Bearer {prefix}..."
+              </div>
             </div>
           </div>
         )}

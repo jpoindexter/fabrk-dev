@@ -70,7 +70,7 @@ export function createUserColumns({
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-8 px-2 hover:bg-primary hover:text-primary-foreground"
+            className="hover:bg-primary hover:text-primary-foreground h-8 px-2"
           >
             User
             <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -87,15 +87,15 @@ export function createUserColumns({
           .toUpperCase();
 
         return (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Avatar className="h-8 w-8">
               <AvatarFallback className="bg-primary text-primary-foreground text-xs">
                 {initials}
               </AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <span className="font-medium text-foreground">{name}</span>
-              <span className="text-xs text-muted-foreground">{email}</span>
+              <span className="text-foreground font-medium">{name}</span>
+              <span className="text-muted-foreground text-xs">{email}</span>
             </div>
           </div>
         );
@@ -107,10 +107,7 @@ export function createUserColumns({
       cell: ({ row }) => {
         const role = row.getValue("role") as string;
         return (
-          <Badge
-            variant={role === "ADMIN" ? "default" : "secondary"}
-            className="font-medium"
-          >
+          <Badge variant={role === "ADMIN" ? "default" : "secondary"} className="font-medium">
             {role}
           </Badge>
         );
@@ -124,11 +121,7 @@ export function createUserColumns({
         return (
           <Badge
             variant={
-              status === "ACTIVE"
-                ? "default"
-                : status === "SUSPENDED"
-                  ? "accent"
-                  : "secondary"
+              status === "ACTIVE" ? "default" : status === "SUSPENDED" ? "accent" : "secondary"
             }
             className="font-medium"
           >
@@ -144,7 +137,7 @@ export function createUserColumns({
           <Button
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-            className="h-8 px-2 hover:bg-primary hover:text-primary-foreground"
+            className="hover:bg-primary hover:text-primary-foreground h-8 px-2"
           >
             Created
             <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -154,7 +147,7 @@ export function createUserColumns({
       cell: ({ row }) => {
         const date = row.getValue("createdAt") as Date;
         return (
-          <span className="text-sm text-muted-foreground">
+          <span className="text-muted-foreground text-sm">
             {new Date(date).toLocaleDateString()}
           </span>
         );
@@ -165,9 +158,9 @@ export function createUserColumns({
       header: "Last Login",
       cell: ({ row }) => {
         const date = row.getValue("lastLogin") as Date | undefined;
-        if (!date) return <span className="text-xs text-muted-foreground">Never</span>;
+        if (!date) return <span className="text-muted-foreground text-xs">Never</span>;
         return (
-          <span className="text-sm text-muted-foreground">
+          <span className="text-muted-foreground text-sm">
             {new Date(date).toLocaleDateString()}
           </span>
         );
