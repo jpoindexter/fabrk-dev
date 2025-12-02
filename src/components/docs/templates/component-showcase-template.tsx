@@ -172,8 +172,7 @@ export function ComponentShowcaseTemplate({
         <DocsSection title="Usage">
           <div className={docsSpacing.sectionItems}>
             {usageExamples.map((example, index) => (
-              <DocsCard key={index}>
-                <h3 className={`uppercase ${docsTypography.h4}`}>{example.title}</h3>
+              <DocsCard key={index} title={example.title.toUpperCase().replace(/\s+/g, '_')}>
                 {example.description && (
                   <p className={docsTypography.body}>{example.description}</p>
                 )}
@@ -187,7 +186,7 @@ export function ComponentShowcaseTemplate({
       {/* Accessibility */}
       {accessibility && accessibility.length > 0 && (
         <DocsSection title="Accessibility">
-          <DocsCard>
+          <DocsCard title="A11Y">
             <ul className="list-disc list-inside space-y-2">
               {accessibility.map((note, index) => (
                 <li key={index} className={docsTypography.body}>

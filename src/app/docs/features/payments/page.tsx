@@ -308,8 +308,7 @@ export function ManageBillingButton() {
             </DocsCard>
           </Link>
           <Link href="/docs/features/emails">
-            <DocsCard className="h-full transition-all hover:border-primary/50">
-              <h3 className={`uppercase ${docsTypography.h4}`}>Transactional Emails</h3>
+            <DocsCard title="TRANSACTIONAL_EMAILS" className="h-full transition-all hover:border-primary/50">
               <p className={docsTypography.body}>
                 Send purchase confirmations and invoices to customers.
               </p>

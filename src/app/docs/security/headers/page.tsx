@@ -271,9 +271,9 @@ curl -I https://yoursite.com
     >
       {/* HSTS Warning */}
       <DocsSection title="Important Notes">
-        <DocsCard className="bg-muted/50">
+        <DocsCard title="WARNING" className="bg-muted/50">
           <p className={docsTypography.body}>
-            <strong>Warning:</strong> Only use the HSTS preload directive once you&apos;re certain all subdomains support HTTPS.
+            Only use the HSTS preload directive once you&apos;re certain all subdomains support HTTPS.
             It&apos;s difficult to remove from the preload list once submitted.
           </p>
         </DocsCard>
