@@ -33,6 +33,17 @@ const allowPatterns = [
   /src\/components\/ui\/mermaid\.tsx$/,
   // Intentional hex colors: Contact form API route uses inline styles for emails
   /src\/app\/api\/contact\/route\.ts$/,
+  // Intentional hex colors: Color picker docs demonstrate hex color selection
+  /src\/app\/docs\/components\/color-picker\/page\.tsx$/,
+  // Intentional hex colors: Form docs show validation example with hex pattern
+  /src\/app\/docs\/components\/form\/page\.tsx$/,
+  // Intentional hex colors: Email templates require inline styles for email client compatibility
+  /src\/app\/templates\/email-templates\//,
+  // Intentional hex colors: All email files need inline styles for email client compatibility
+  /src\/lib\/email\//,
+  /email-.*\.ts$/,
+  // Intentional hex colors: Profile template with placeholder demo ID
+  /src\/app\/templates\/profile\/page\.tsx$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;

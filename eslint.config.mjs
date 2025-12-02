@@ -7,6 +7,14 @@ import tailwindV4 from "eslint-plugin-tailwind-v4";
 import noHardcodedColors from "./config/eslint-rules/no-hardcoded-colors.mjs";
 import noInlineStyles from "./config/eslint-rules/no-inline-styles.mjs";
 
+// Create design-system plugin from custom rules
+const designSystemPlugin = {
+  rules: {
+    "no-hardcoded-colors": noHardcodedColors,
+    "no-inline-styles": noInlineStyles,
+  },
+};
+
 
 const sanitizePlugin = (plugin) => {
   if (!plugin || typeof plugin !== "object") return plugin;
@@ -80,16 +88,23 @@ const eslintConfig = [{
     ...(hasTypescriptEslintFromNext ? {} : { "@typescript-eslint": tseslint }),
     "tailwind-v4": tailwindV4,
     ...(hasJsxA11yFromNext ? {} : { "jsx-a11y": jsxA11y }),
+    "design-system": designSystemPlugin,
   },
   rules: {
-    // Existing rules
+    // Complexity rules (kept off for productivity)
     "max-lines": "off",
     "max-lines-per-function": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "@next/next/no-img-element": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
+
+    // TypeScript strictness (enabled as warnings to catch issues)
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+    "@typescript-eslint/ban-ts-comment": "warn",
+
+    // React strictness
+    "react-hooks/exhaustive-deps": "warn",
+
+    // Next.js strictness
+    "@next/next/no-img-element": "warn",
 
     // Low-priority aesthetic/tooling rules (disabled for productivity)
     'react/no-unescaped-entities': 'off', // Aesthetic only, doesn't affect functionality
@@ -97,7 +112,7 @@ const eslintConfig = [{
     '@next/next/no-html-link-for-pages': 'off', // Minor performance optimization
 
     // Tailwind v4 rules
-    // "tailwind-v4/no-undefined-classes": "error", 
+    // "tailwind-v4/no-undefined-classes": "error",
   },
 }, {
   files: ["**/*.{js,jsx,ts,tsx}"],
@@ -121,66 +136,67 @@ const eslintConfig = [{
     "max-lines": "off",
     "max-lines-per-function": "off",
   },
-// Design system rule overrides temporarily disabled (ESLint flat config scoping issues)
-// }, {
-//   // STRICT validation for production files
-//   files: [
-//     "src/components/**/*.{tsx,jsx}",
-//     "src/app/**/*.{tsx,jsx}",
-//     "!src/**/showcase/**",
-//     "!src/**/examples/**",
-//     "!src/**/*.demo.{tsx,jsx}",
-//     "!src/**/*.stories.{tsx,jsx}",
-//     "!src/**/component-previews/**"
-//   ],
-//   rules: {
-//     'design-system/no-hardcoded-colors': 'error',
-//     'design-system/no-inline-styles': 'error'
-//   }
-// }, {
-//   // RELAXED validation for demo/showcase files and marketing pages with SVG brand colors
-//   files: [
-//     "**/examples/**",
-//     "**/showcase/**",
-//     "**/*.stories.tsx",
-//     "**/*.demo.tsx",
-//     "**/*.backup.tsx",
-//     "**/component-previews/**",
-//     "**/demo/**",
-//     "**/demo-*/**",
-//     "**/variations/**", // Landing page variations
-//     "**/landing/**", // Landing page components
-//     "**/home/tech-stack-section.tsx" // SVG brand logos (React, TypeScript, etc.)
-//   ],
-//   rules: {
-//     'design-system/no-hardcoded-colors': 'off',
-//     'design-system/no-inline-styles': 'off',
-//     'tailwindcss/no-arbitrary-value': 'off',
-//     'react-hooks/rules-of-hooks': 'off', // Stories use render() functions with hooks
-//     'react/no-unescaped-entities': 'off', // Stories contain demo text with quotes
-//     'jsx-a11y/alt-text': 'off' // Demo/backup files may have placeholder images
-//   }
-// }, {
-//   // Allow CSS variables in specific components (dynamic styles/animations)
-//   files: [
-//     "**/carousel.tsx",
-//     "**/progress.tsx",
-//     "**/slider.tsx",
-//     "**/tree-view.tsx",
-//     "**/gsap-progress.tsx", // GSAP animations with complex gradients
-//     "**/parallax-card.tsx" // 3D transforms with rotateX/rotateY
-//   ],
-//   rules: {
-//     'design-system/no-inline-styles': 'off'
-//   }
-// }, {
-//   settings: {
-//     tailwindcss: {
-//       config: "src/app/globals.css",
-//       callees: ["cn", "cva"],
-//       classRegex: "^class(Name)?$"
-//     }
-//   }
+// Design system enforcement - ENABLED
+}, {
+  // STRICT validation for production files
+  files: [
+    "src/components/**/*.{tsx,jsx}",
+    "src/app/**/*.{tsx,jsx}",
+  ],
+  ignores: [
+    "src/**/showcase/**",
+    "src/**/examples/**",
+    "src/**/*.demo.{tsx,jsx}",
+    "src/**/*.stories.{tsx,jsx}",
+    "src/**/component-previews/**"
+  ],
+  rules: {
+    'design-system/no-hardcoded-colors': 'warn',
+    'design-system/no-inline-styles': 'warn'
+  }
+}, {
+  // RELAXED validation for demo/showcase files and marketing pages with SVG brand colors
+  files: [
+    "**/examples/**",
+    "**/showcase/**",
+    "**/*.stories.tsx",
+    "**/*.demo.tsx",
+    "**/*.backup.tsx",
+    "**/component-previews/**",
+    "**/demo/**",
+    "**/demo-*/**",
+    "**/variations/**",
+    "**/landing/**",
+    "**/home/tech-stack-section.tsx"
+  ],
+  rules: {
+    'design-system/no-hardcoded-colors': 'off',
+    'design-system/no-inline-styles': 'off',
+    'react-hooks/rules-of-hooks': 'off',
+    'react/no-unescaped-entities': 'off',
+    'jsx-a11y/alt-text': 'off'
+  }
+}, {
+  // Allow CSS variables in specific components (dynamic styles/animations)
+  files: [
+    "**/carousel.tsx",
+    "**/progress.tsx",
+    "**/slider.tsx",
+    "**/tree-view.tsx",
+    "**/gsap-progress.tsx",
+    "**/parallax-card.tsx"
+  ],
+  rules: {
+    'design-system/no-inline-styles': 'off'
+  }
+}, {
+  settings: {
+    tailwindcss: {
+      config: "src/app/globals.css",
+      callees: ["cn", "cva"],
+      classRegex: "^class(Name)?$"
+    }
+  }
 }];
 
 export default eslintConfig;
