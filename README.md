@@ -1,6 +1,17 @@
-# Fabrk - Next.js 15 SaaS Boilerplate
+```
+███████████   █████████   ███████████  ███████████   █████   ████
+░░███░░░░░░█  ███░░░░░███ ░░███░░░░░███░░███░░░░░███ ░░███   ███░
+ ░███   █ ░  ░███    ░███  ░███    ░███ ░███    ░███  ░███  ███
+ ░███████    ░███████████  ░██████████  ░██████████   ░███████
+ ░███░░░█    ░███░░░░░███  ░███░░░░░███ ░███░░░░░███  ░███░░███
+ ░███  ░     ░███    ░███  ░███    ░███ ░███    ░███  ░███ ░░███
+ █████       █████   █████ ███████████  █████   █████ █████ ░░████
+░░░░░       ░░░░░   ░░░░░ ░░░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░
+```
 
-**Premium Enterprise Next.js Boilerplate for Professional SaaS.**
+# Fabrk
+
+> Terminal-first SaaS boilerplate. Ship fast. Look sharp.
 
 87 production-ready components. 8 copy-paste templates. 6 color themes. TypeScript strict. $299.
 
