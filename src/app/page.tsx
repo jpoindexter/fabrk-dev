@@ -14,11 +14,10 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { Footer } from "@/components/landing/footer";
 import { StickyCTABar } from "@/components/landing/sticky-cta-bar";
 import { ExitIntentPopup } from "@/components/landing/exit-intent-popup";
-import { TerminalPreviewWrapper } from "@/components/docs/terminal-preview-wrapper";
 
 export default function HomePage() {
   return (
-    <TerminalPreviewWrapper>
+    <div>
       <SiteNavigation />
       <HeroSection />
       <FeaturesShowcase />
@@ -36,6 +35,6 @@ export default function HomePage() {
         description="Get Fabrk and launch your SaaS 10x faster. 100 components, authentication, payments, and more."
         ctaText="Get Fabrk Now"
       />
-    </TerminalPreviewWrapper>
+    </div>
   );
 }
