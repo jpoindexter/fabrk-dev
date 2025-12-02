@@ -150,7 +150,7 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         tabIndex={0}
         aria-label={notification.title}
         className={cn(
-          "relative flex gap-3 p-3 rounded-none border border-transparent transition-all",
+          "relative flex gap-4 p-4 rounded-none border border-transparent transition-all",
           "hover:border hover:bg-muted/50 hover:shadow-sm cursor-pointer",
           !notification.read && "bg-primary/5"
         )}

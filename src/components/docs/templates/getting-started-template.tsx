@@ -141,7 +141,7 @@ export function GettingStartedTemplate({
           <DocsCard title="REQUIREMENTS">
             <ul className="space-y-3">
               {requirements.map((req, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="flex items-start gap-4">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-border bg-muted font-mono text-xs">
                     {index + 1}
                   </span>
@@ -191,7 +191,7 @@ export function GettingStartedTemplate({
                 href={link.href}
                 className="group block border border-border p-4 hover:border-primary transition-colors"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   {link.icon && (
                     <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary" aria-hidden="true" />
                   )}

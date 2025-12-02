@@ -168,7 +168,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
     const isPreviewVisible = !editorOnly && (previewOnly || showPreview);
 
     return (
-      <div ref={ref} className={cn("flex flex-col gap-3", className)}>
+      <div ref={ref} className={cn("flex flex-col gap-4", className)}>
         {/* Toolbar */}
         {!previewOnly && !disabled && (
           <div className="flex items-center gap-2 p-2 rounded-none border bg-card shadow-sm">
@@ -218,7 +218,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
         {/* Editor and Preview */}
         <div
           className={cn(
-            "grid gap-3",
+            "grid gap-4",
             isEditorVisible && isPreviewVisible ? "grid-cols-2" : "grid-cols-1"
           )}
         >

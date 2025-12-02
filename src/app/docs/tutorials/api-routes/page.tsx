@@ -86,7 +86,7 @@ export async function POST(request: Request) {
     // Use validated data
     return NextResponse.json({ user: validated });
 
-  } catch (error) {
+  } catch (_) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Validation failed", details: error.errors },
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
     const result = await someOperation();
     return NextResponse.json({ data: result });
 
-  } catch (error) {
+  } catch (_) {
     logger.error("Operation failed:", {
       error: error instanceof Error ? error.message : "Unknown error",
     });

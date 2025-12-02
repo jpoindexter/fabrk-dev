@@ -212,7 +212,7 @@ export function DashboardHeader() {
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "flex items-center gap-3 rounded-none border border-border px-4 py-3 text-sm font-medium transition-all",
+                          "flex items-center gap-4 rounded-none border border-border px-4 py-4 text-sm font-medium transition-all",
                           isActive
                             ? "bg-primary text-primary-foreground shadow-sm"
                             : "bg-card hover:bg-primary hover:text-primary-foreground"
@@ -228,7 +228,7 @@ export function DashboardHeader() {
                       href="/admin"
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 rounded-none border border-border px-4 py-3 text-sm font-medium transition-all",
+                        "flex items-center gap-4 rounded-none border border-border px-4 py-4 text-sm font-medium transition-all",
                         pathname.startsWith("/admin")
                           ? "bg-primary text-primary-foreground shadow-sm"
                           : "bg-card hover:bg-primary hover:text-primary-foreground"

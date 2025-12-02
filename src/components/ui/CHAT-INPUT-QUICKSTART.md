@@ -113,7 +113,7 @@ export default function ApiChat() {
       if (response.ok) {
         setMessage("");
       }
-    } catch (error) {
+    } catch (_) {
       console.error("Failed to send:", error);
     } finally {
       setLoading(false);
@@ -238,7 +238,7 @@ export async function POST(req: NextRequest) {
     // await prisma.message.create({ data: { text: message } });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (_) {
     return NextResponse.json(
       { error: "Failed to send message" },
       { status: 500 }

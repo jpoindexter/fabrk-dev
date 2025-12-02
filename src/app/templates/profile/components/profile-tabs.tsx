@@ -86,7 +86,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                     </div>
                     <div className="flex-1">
                       <div className="font-mono text-sm">{item.title}</div>
-                      <div className="font-mono text-[10px] text-muted-foreground">
+                      <div className="font-mono text-xs text-muted-foreground">
                         {item.timestamp}
                       </div>
                     </div>
@@ -109,7 +109,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                         <span className="font-mono text-sm font-medium text-primary">
                           {project.name}
                         </span>
-                        <Badge variant="outline" className="rounded-none font-mono text-[10px] border-border">
+                        <Badge variant="outline" className="rounded-none font-mono text-xs border-border">
                           {project.language}
                         </Badge>
                       </div>
@@ -122,7 +122,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                       {project.stars}
                     </div>
                   </div>
-                  <div className="font-mono text-[10px] text-muted-foreground mt-2">
+                  <div className="font-mono text-xs text-muted-foreground mt-2">
                     Updated {project.updated}
                   </div>
                 </div>

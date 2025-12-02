@@ -22,7 +22,7 @@ const createWebhookSchema = z.object({
   events: z.array(z.string()).min(1, "At least one event is required"),
 });
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
 
@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = new URL(_req.url);
     const organizationId = searchParams.get("organizationId");
 
     if (!organizationId) {

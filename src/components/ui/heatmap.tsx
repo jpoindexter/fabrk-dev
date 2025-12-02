@@ -155,7 +155,7 @@ export function Heatmap({
       </div>
 
       {hoveredCell && (
-        <div className="absolute bottom-0 left-0 right-0 mt-4 p-3 border rounded-none bg-card shadow-sm">
+        <div className="absolute bottom-0 left-0 right-0 mt-4 p-4 border rounded-none bg-card shadow-sm">
           <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}
           </p>

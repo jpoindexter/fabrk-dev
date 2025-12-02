@@ -181,7 +181,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                     variables.map((variable) => (
                       <div
                         key={variable.id}
-                        className={`space-y-2 rounded-none border p-3`}
+                        className={`space-y-2 rounded-none border p-4`}
                       >
                         <div className="flex items-center justify-between">
                           <Input

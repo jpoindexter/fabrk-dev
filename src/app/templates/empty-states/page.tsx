@@ -165,7 +165,7 @@ export default function EmptyStatesTemplate() {
                           <div className="size-2 rounded-full bg-warning/50" />
                           <div className="size-2 rounded-full bg-success/50" />
                         </div>
-                        <span className="font-mono text-[10px] text-muted-foreground">
+                        <span className="font-mono text-xs text-muted-foreground">
                           terminal
                         </span>
                       </div>

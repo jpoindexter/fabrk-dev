@@ -154,7 +154,7 @@ export function RoleSelector({
 
   if (variant === "list") {
     return (
-      <div className={cn("flex flex-col gap-3", className)}>
+      <div className={cn("flex flex-col gap-4", className)}>
         {roles.map((role) => {
           const Icon = role.icon;
           const selected = isSelected(role.id);

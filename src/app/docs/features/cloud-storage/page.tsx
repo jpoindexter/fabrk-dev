@@ -59,7 +59,7 @@ AWS_S3_REGION="us-east-1"`,
 
 // Check which provider is being used
 const provider = getStorageProvider();
-console.log("Using storage:", provider); // "r2", "s3", or "local"
+
 
 // Upload a file
 const result = await uploadFile(file, {
@@ -70,10 +70,10 @@ const result = await uploadFile(file, {
 });
 
 if (result.success) {
-  console.log("File URL:", result.url);
-  console.log("File key:", result.key);
+
+
 } else {
-  console.log("Error:", result.error);
+
 }`,
           language: "typescript",
         },
@@ -182,7 +182,7 @@ export function FileUploader() {
       }
 
       alert("Uploaded! URL: " + data.url);
-    } catch (error) {
+    } catch (_) {
       alert("Upload failed");
     } finally {
       setUploading(false);

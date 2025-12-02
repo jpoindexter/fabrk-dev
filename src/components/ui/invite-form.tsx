@@ -318,14 +318,14 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
 
           {/* Submit Error */}
           {errors.submit && (
-            <div className="rounded-none border border-destructive bg-destructive/10 p-3">
+            <div className="rounded-none border border-destructive bg-destructive/10 p-4">
               <p className="text-sm font-normal text-destructive">{errors.submit}</p>
             </div>
           )}
 
           {/* Success Message */}
           {showSuccess && (
-            <div className="rounded-none border border-primary bg-primary/10 p-3 flex items-center gap-2">
+            <div className="rounded-none border border-primary bg-primary/10 p-4 flex items-center gap-2">
               <Check className="h-4 w-4 text-primary" />
               <p className="text-sm font-normal text-primary">
                 Invitation{allowMultiple && "s"} sent successfully!

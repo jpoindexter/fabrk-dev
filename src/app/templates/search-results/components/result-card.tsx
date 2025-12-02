@@ -29,7 +29,7 @@ export function ResultCard({ result }: ResultCardProps) {
           <div className="size-1.5 rounded-full bg-warning/50" />
           <div className="size-1.5 rounded-full bg-success/50" />
         </div>
-        <span className="font-mono text-[10px] text-muted-foreground">
+        <span className="font-mono text-xs text-muted-foreground">
           result_{result.id}.tsx
         </span>
       </div>
@@ -49,13 +49,13 @@ export function ResultCard({ result }: ResultCardProps) {
             {result.tags.slice(0, 3).map((tag) => (
               <Badge
                 key={tag}
-                variant="outline" className="rounded-none font-mono text-[10px] border-border"
+                variant="outline" className="rounded-none font-mono text-xs border-border"
               >
                 {tag}
               </Badge>
             ))}
           </div>
-          <div className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground">
+          <div className="flex items-center gap-1 font-mono text-xs text-muted-foreground">
             <Clock className="h-3 w-3" />
             {result.updated}
           </div>

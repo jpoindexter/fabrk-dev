@@ -203,7 +203,7 @@ export function NotificationCenter() {
             {notifications.map((notification) => (
               <DropdownMenuItem
                 key={notification.id}
-                className={`flex items-start gap-3 p-3 cursor-pointer ${
+                className={`flex items-start gap-4 p-4 cursor-pointer ${
                   !notification.read ? "bg-accent/50" : ""
                 }`}
                 onClick={() => {

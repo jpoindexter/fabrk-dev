@@ -92,6 +92,7 @@ export function HowTo({
                 <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={step.image}
                     alt={step.name}

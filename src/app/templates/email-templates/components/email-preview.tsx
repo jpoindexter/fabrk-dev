@@ -62,7 +62,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h2 className="font-mono text-lg font-bold">{template.name}</h2>
-                <span className="border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                <span className="border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground">
                   {template.category}
                 </span>
               </div>

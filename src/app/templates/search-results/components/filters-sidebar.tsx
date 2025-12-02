@@ -65,7 +65,7 @@ export function FiltersSidebar({
                 variant="ghost"
                 size="sm"
                 onClick={onClearFilters}
-                className="h-6 px-2 font-mono text-[10px] text-muted-foreground"
+                className="h-6 px-2 font-mono text-xs text-muted-foreground"
               >
                 <X className="h-3 w-3 mr-1" />
                 CLEAR
@@ -90,7 +90,7 @@ export function FiltersSidebar({
                   }`}
                 >
                   <span>{category.label}</span>
-                  <span className="text-[10px]">({category.count})</span>
+                  <span className="text-xs">({category.count})</span>
                 </button>
               ))}
             </div>

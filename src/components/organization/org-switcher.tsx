@@ -128,11 +128,8 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           )}
         >
           {currentOrg?.logo ? (
-            <img
-              src={currentOrg.logo}
-              alt={currentOrg.name}
-              className="h-5 w-5 rounded"
-            />
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={currentOrg.logo} alt={currentOrg.name} className="h-5 w-5 rounded" />
           ) : (
             <Building2 className="h-4 w-4 text-muted-foreground" />
           )}
@@ -158,11 +155,8 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           >
             <div className="flex w-full items-center gap-2">
               {org.logo ? (
-                <img
-                  src={org.logo}
-                  alt={org.name}
-                  className="h-5 w-5 rounded"
-                />
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img src={org.logo} alt={org.name} className="h-5 w-5 rounded" />
               ) : (
                 <Building2 className="h-4 w-4 text-muted-foreground" />
               )}

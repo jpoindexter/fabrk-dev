@@ -300,13 +300,12 @@ export async function uploadFile(options: UploadOptions): Promise<{
   if (STORAGE_PROVIDER !== "local") {
     try {
       url = await uploadToCloud(buffer, key, mimeType, visibility, options.metadata);
-    } catch (error) {
-      logger.warn("Cloud upload failed, falling back to local storage", { error });
-      url = await uploadToLocalStorage(buffer, key, mimeType);
-      actualProvider = "local";
-    }
-  } else {
-    url = await uploadToLocalStorage(buffer, key, mimeType);
+                } catch (error: unknown) {
+                  logger.warn("Cloud upload failed, falling back to local storage", { error });
+                  url = await uploadToLocalStorage(buffer, key, mimeType);
+                  actualProvider = "local";
+                }
+              } else {    url = await uploadToLocalStorage(buffer, key, mimeType);
   }
 
   // Save to database
@@ -417,11 +416,10 @@ export async function deleteFile(fileId: string, userId: string): Promise<void> 
     try {
       await fs.unlink(filePath);
       logger.info("Deleted local file", { key: upload.key });
-    } catch (error) {
-      logger.warn("Failed to delete local file", { key: upload.key, error });
-    }
-  } else {
-    // Delete from cloud storage
+                } catch (error: unknown) {
+                  logger.warn("Failed to delete local file", { key: upload.key, error });
+                }
+              } else {    // Delete from cloud storage
     const s3Client = await getS3Client();
     if (s3Client) {
       await s3Client.send(

@@ -103,7 +103,7 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className="rounded-none border border-border bg-card p-3 shadow-sm">
+            <div className="rounded-none border border-border bg-card p-4 shadow-sm">
               <p className="text-sm font-bold text-foreground mb-2">
                 {payload[0].payload.period}
               </p>

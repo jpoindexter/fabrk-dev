@@ -250,6 +250,7 @@ export function Lightbox({
       {/* Main content */}
       <div className="relative flex h-full w-full items-center justify-center p-16">
         {currentItem.type === "image" ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             ref={imageRef}
             src={currentItem.src}
@@ -302,6 +303,7 @@ export function Lightbox({
                 aria-label={`View image ${index + 1}`}
               >
                 {item.type === "image" ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={item.thumbnail || item.src}
                     alt={item.alt || `Thumbnail ${index + 1}`}

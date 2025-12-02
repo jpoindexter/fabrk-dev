@@ -204,9 +204,10 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             {files.map((file, index) => (
               <div
                 key={index}
-                className={`flex items-center gap-3 rounded-none border p-3`}
+                className={`flex items-center gap-4 rounded-none border p-4`}
               >
                 {preview && previews[index] ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={previews[index]}
                     alt={`Preview of ${file.name}`}

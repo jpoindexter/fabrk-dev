@@ -56,7 +56,7 @@ export function ProgressSection({
                 <Icon className="h-4 w-4" />
               </div>
               <span
-                className={`font-mono text-[10px] ${
+                className={`font-mono text-xs ${
                   isActive
                     ? "text-primary"
                     : isCompleted

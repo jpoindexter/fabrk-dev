@@ -278,7 +278,7 @@ export default function LandingVariationsTemplate() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center gap-6 font-mono text-[10px] text-muted-foreground">
+                  <div className="flex items-center justify-center gap-6 font-mono text-xs text-muted-foreground">
                     <span className="border border-border px-2 py-1">VERCEL</span>
                     <span className="border border-border px-2 py-1">STRIPE</span>
                     <span className="border border-border px-2 py-1">PRISMA</span>
@@ -310,7 +310,7 @@ export default function LandingVariationsTemplate() {
                   <div className="size-1.5 rounded-full bg-warning/50" />
                   <div className="size-1.5 rounded-full bg-success/50" />
                 </div>
-                <span className="font-mono text-[10px] text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   {variation.id}.tsx
                 </span>
               </div>
@@ -319,7 +319,7 @@ export default function LandingVariationsTemplate() {
                 <p className="font-mono text-xs text-muted-foreground">
                   {variation.description}
                 </p>
-                <div className="mt-3 font-mono text-[10px]">
+                <div className="mt-3 font-mono text-xs">
                   [BEST_FOR]:{" "}
                   {variation.id === "centered" && "Product launches, SaaS"}
                   {variation.id === "split" && "Feature showcases, B2B"}

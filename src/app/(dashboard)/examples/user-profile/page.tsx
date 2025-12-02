@@ -107,11 +107,8 @@ export default async function UserProfilePage() {
               {/* Avatar */}
               <div className="relative">
                 <div className="h-32 w-32 overflow-hidden rounded-none border border-border shadow-sm">
-                  <img
-                    src={mockUserProfile.avatar}
-                    alt={mockUserProfile.name}
-                    className="h-full w-full object-cover"
-                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={mockUserProfile.avatar} alt={mockUserProfile.name} className="h-full w-full object-cover" />
                 </div>
                 <div className="absolute bottom-0 right-0 rounded-none border-2 border-background bg-success p-1">
                   <div className="h-3 w-3 rounded-none bg-success"></div>

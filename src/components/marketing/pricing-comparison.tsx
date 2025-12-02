@@ -147,7 +147,7 @@ export function PricingComparison({
                     <React.Fragment key={category || "uncategorized"}>
                       {/* Category Header */}
                       <tr className="border-t border-border">
-                        <td colSpan={plans.length + 1} className="p-3">
+                        <td colSpan={plans.length + 1} className="p-4">
                           <span className="text-xs font-black text-foreground uppercase tracking-wide">
                             {category || "Other Features"}
                           </span>

@@ -183,7 +183,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                 );
               })
             ) : (
-              <div className={`"text-sm" p-3 text-muted-foreground dark:text-muted-foreground`}>
+              <div className={`"text-sm" p-4 text-muted-foreground dark:text-muted-foreground`}>
                 {emptyMessage}
               </div>
             )}

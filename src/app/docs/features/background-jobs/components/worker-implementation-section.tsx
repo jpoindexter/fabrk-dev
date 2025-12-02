@@ -33,7 +33,7 @@ const handlers: Record<string, (payload: any) => Promise<any>> = {
 };
 
 async function processJobs(queue: string = "default") {
-  console.log(\`Worker started for queue: \${queue}\`);
+
 
   while (true) {
     const job = await getNextJob(queue);
@@ -44,7 +44,7 @@ async function processJobs(queue: string = "default") {
       continue;
     }
 
-    console.log(\`Processing job \${job.id}: \${job.type}\`);
+
 
     try {
       const handler = handlers[job.type];
@@ -56,8 +56,8 @@ async function processJobs(queue: string = "default") {
       const result = await handler(job.payload);
       await completeJob(job.id, result);
 
-      console.log(\`Completed job \${job.id}\`);
-    } catch (error) {
+
+    } catch (_) {
       const message = error instanceof Error ? error.message : "Unknown error";
       await failJob(job.id, message);
 

@@ -9,14 +9,14 @@ import { authorizeChannel } from "@/lib/pusher/server";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await req.text();
+    const body = await _req.text();
     const params = new URLSearchParams(body);
     const socketId = params.get("socket_id");
     const channel = params.get("channel_name");

@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Users, CreditCard, AlertTriangle, Activity, Building } from "lucide-react";
+import { Users, CreditCard, Activity, Building } from "lucide-react";
 
 async function getStats() {
   const [

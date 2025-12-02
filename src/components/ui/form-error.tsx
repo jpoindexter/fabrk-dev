@@ -46,7 +46,7 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
           className
         )}
       >
-        <div className={`flex gap-3`}>
+        <div className={`flex gap-4`}>
           <AlertCircle
             className={`"h-5 w-5" mt-0.5 shrink-0 text-destructive dark:text-destructive`}
           />

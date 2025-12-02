@@ -91,7 +91,7 @@ export function HeroSplit({
                 <div className="h-full w-full border-2 border-border/20 bg-card p-4">
                   {/* Header */}
                   <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-3">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <div className="h-8 w-8 rounded-none border-2 border-foreground bg-primary"></div>
                       <div>
                         <div className="h-3 w-24 bg-foreground/20"></div>
@@ -102,11 +102,11 @@ export function HeroSplit({
                   </div>
 
                   {/* Stats Cards */}
-                  <div className="mb-4 grid grid-cols-3 gap-3">
+                  <div className="mb-4 grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="border border-foreground bg-card p-3 shadow-sm"
+                        className="border border-foreground bg-card p-2 shadow-sm"
                       >
                         <div className="mb-2 h-2 w-12 bg-foreground/10"></div>
                         <div className="h-4 w-8 bg-primary/20"></div>

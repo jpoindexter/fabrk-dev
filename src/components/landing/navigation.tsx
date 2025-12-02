@@ -36,7 +36,7 @@ export function Navigation() {
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-4"
         >
           <Link href="/" className="flex items-center gap-1.5 transition-opacity hover:opacity-80 font-mono">
             <span className="text-xs text-primary">&gt;</span>

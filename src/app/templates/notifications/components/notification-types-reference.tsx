@@ -26,14 +26,14 @@ export function NotificationTypesReference() {
                 <div className="size-1.5 rounded-full bg-warning/50" />
                 <div className="size-1.5 rounded-full bg-success/50" />
               </div>
-              <span className="font-mono text-[10px] text-muted-foreground">
+              <span className="font-mono text-xs text-muted-foreground">
                 {item.type}.tsx
               </span>
             </div>
             <div className="p-3 text-center">
               <Icon className={`h-6 w-6 mx-auto mb-2 text-${item.color}`} />
               <div className="font-mono text-xs font-medium">{item.label}</div>
-              <div className="font-mono text-[10px] text-muted-foreground mt-1">
+              <div className="font-mono text-xs text-muted-foreground mt-1">
                 [{item.type.toUpperCase()}]
               </div>
             </div>

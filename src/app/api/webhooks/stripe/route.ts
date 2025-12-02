@@ -38,11 +38,11 @@ import { logger } from "@/lib/logger";
  * Redirect all webhook requests to the improved endpoint
  * The /api/stripe/webhook endpoint has better idempotency handling
  */
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   logger.info("Redirecting webhook from /api/webhooks/stripe to /api/stripe/webhook");
 
   // Get the base URL
-  const url = new URL(req.url);
+  const url = new URL(_req.url);
   const baseUrl = `${url.protocol}//${url.host}`;
 
   // Redirect to the improved endpoint

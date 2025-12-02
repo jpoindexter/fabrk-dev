@@ -278,6 +278,7 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
             aria-label="Drag to reposition image"
           />
           {imageUrl && (
+            /* eslint-disable-next-line @next/next/no-img-element */
             <img
               ref={imageRef}
               src={imageUrl}

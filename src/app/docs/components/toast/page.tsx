@@ -122,7 +122,7 @@ error("Error", "Something went wrong. Please try again.");`,
                   description: "File moved to trash.",
                   action: {
                     label: "Undo",
-                    onClick: () => console.log("Undo clicked"),
+                    onClick: () => {},
                   },
                 });
               }}
@@ -135,7 +135,7 @@ error("Error", "Something went wrong. Please try again.");`,
   description: "File moved to trash.",
   action: {
     label: "Undo",
-    onClick: () => console.log("Undo clicked"),
+    onClick: () => {},
   },
 });`,
         },
@@ -264,7 +264,7 @@ async function handleSubmit() {
       title: "Success",
       description: "Data saved successfully.",
     });
-  } catch (error) {
+  } catch (_) {
     toast({
       variant: "destructive",
       title: "Error",

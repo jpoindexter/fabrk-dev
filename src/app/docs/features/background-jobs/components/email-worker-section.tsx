@@ -18,7 +18,7 @@ const emailTemplates: Record<string, React.ComponentType<any>> = {
 };
 
 async function processEmailQueue() {
-  console.log("Email worker started");
+
 
   while (true) {
     const job = await getNextJob("email");
@@ -49,8 +49,8 @@ async function processEmailQueue() {
       }
 
       await completeJob(job.id, { emailId: data?.id });
-      console.log(\`Email sent to \${to}\`);
-    } catch (error) {
+
+    } catch (_) {
       const message = error instanceof Error ? error.message : "Unknown error";
       await failJob(job.id, message);
       console.error(\`Failed to send email: \${message}\`);

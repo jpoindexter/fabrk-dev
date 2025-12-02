@@ -10,7 +10,7 @@ import { logger } from "@/lib/logger";
  * List all API keys for the user's organization
  * Returns keys without full key value (only prefix)
  */
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const session = await auth();
     if (!session?.user?.id) {
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Get organization ID from query params
-    const { searchParams } = new URL(req.url);
+    const { searchParams } = new URL(_req.url);
     const organizationId = searchParams.get("organizationId");
 
     if (!organizationId) {

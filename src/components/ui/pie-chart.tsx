@@ -159,7 +159,7 @@ export function PieChart({
       </svg>
 
       {showLegend && (
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap gap-4 justify-center">
           {segments.map((segment, index) => (
             <div
               key={index}

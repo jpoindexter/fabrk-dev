@@ -69,7 +69,7 @@ export function CheckoutButton() {
       if (url) {
         window.location.href = url;
       }
-    } catch (error) {
+    } catch (_) {
       console.error("Checkout error:", error);
     } finally {
       setLoading(false);

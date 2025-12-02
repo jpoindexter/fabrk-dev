@@ -15,7 +15,7 @@ import {
 import { logFeatureFlagChange } from '@/lib/audit/logger';
 import { logger } from '@/lib/logger';
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     // Check authentication
     const session = await auth();

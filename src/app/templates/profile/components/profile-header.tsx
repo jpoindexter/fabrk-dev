@@ -95,7 +95,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           {Object.entries(user.stats).map(([key, value], index) => (
             <div key={key} className={`text-center px-4 py-2 border border-border ${index > 0 ? 'border-l-0' : ''}`}>
               <div className="text-xl font-bold">{value}</div>
-              <div className="font-mono text-[10px] text-muted-foreground uppercase">
+              <div className="font-mono text-xs text-muted-foreground uppercase">
                 {key}
               </div>
             </div>

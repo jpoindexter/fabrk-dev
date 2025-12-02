@@ -145,7 +145,7 @@ export function MagicLinkForm() {
       }
 
       setSent(true);
-    } catch (error) {
+    } catch (_) {
       alert("Failed to send magic link. Please try again.");
     } finally {
       setLoading(false);

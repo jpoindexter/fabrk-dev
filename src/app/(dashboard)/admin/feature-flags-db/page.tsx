@@ -65,7 +65,7 @@ export default function FeatureFlagsDbPage() {
       const res = await fetch('/api/admin/feature-flags');
       const data = await res.json();
       setFlags(data.flags || []);
-    } catch (error: unknown) {
+    } catch (_) {
       toast.error('Failed to fetch feature flags');
     } finally {
       setLoading(false);
@@ -84,8 +84,8 @@ export default function FeatureFlagsDbPage() {
 
       toast.success(`Feature flag ${enabled ? 'enabled' : 'disabled'}`);
       fetchFlags();
-    } catch (error: unknown) {
-      toast.error('Failed to update feature flag');
+    } catch (_) {
+      toast.error('Failed to update');
     }
   };
 
@@ -100,7 +100,7 @@ export default function FeatureFlagsDbPage() {
       if (!res.ok) throw new Error('Failed to update');
 
       fetchFlags();
-    } catch (error: unknown) {
+    } catch (_) {
       toast.error('Failed to update rollout percentage');
     }
   };
@@ -119,7 +119,7 @@ export default function FeatureFlagsDbPage() {
       setNewFlag({ name: '', description: '', enabled: false, rolloutPercentage: 0 });
       setShowCreateForm(false);
       fetchFlags();
-    } catch (error: unknown) {
+    } catch (_) {
       toast.error('Failed to create feature flag');
     }
   };
@@ -138,7 +138,7 @@ export default function FeatureFlagsDbPage() {
 
       toast.success('Feature flag deleted');
       fetchFlags();
-    } catch (error: unknown) {
+    } catch (_) {
       toast.error('Failed to delete feature flag');
     } finally {
       setFlagToDelete(null);

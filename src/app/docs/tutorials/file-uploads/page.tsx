@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
         url: fileUrl,
       },
     });
-  } catch (error) {
+  } catch (_) {
     console.error("Upload error:", error);
     return NextResponse.json(
       { error: "Upload failed" },

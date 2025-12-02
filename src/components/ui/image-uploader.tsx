@@ -250,6 +250,7 @@ export function ImageUploader({
               className="group relative aspect-square overflow-hidden rounded-none border bg-muted shadow-sm"
             >
               {file.preview ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={file.preview}
                   alt={file.name}

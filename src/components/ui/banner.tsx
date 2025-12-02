@@ -44,7 +44,7 @@ export function Banner({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 rounded-none border-l-4 p-4",
+        "flex items-start gap-4 rounded-none border-l-4 p-4",
         variantStyles[variant],
         className
       )}

@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     // ...
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (_) {
     return NextResponse.json(
       { error: "Invalid JSON body" },
       { status: 400 }
@@ -178,7 +178,7 @@ export function ContactForm() {
 
   const onSubmit = (data: ContactForm) => {
     // data is fully validated and typed
-    console.log(data);
+    // Process validated data
   };
 
   return (

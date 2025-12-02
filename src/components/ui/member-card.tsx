@@ -41,7 +41,7 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="bg-card flex items-center gap-3 rounded-none border p-3 shadow-sm">
+      <div className="bg-card flex items-center gap-4 rounded-none border p-4 shadow-sm">
         <div className="relative">
           <div className="bg-muted h-10 w-10 animate-pulse rounded-none" />
         </div>
@@ -126,7 +126,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "bg-card flex items-center gap-3 rounded-none border p-3 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
+            "bg-card flex items-center gap-4 rounded-none border p-4 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
             className
           )}
           {...props}
