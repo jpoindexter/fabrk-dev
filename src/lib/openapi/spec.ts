@@ -36,9 +36,12 @@ export const openAPISpec = {
     { name: "User", description: "User management endpoints" },
     { name: "Organizations", description: "Organization management" },
     { name: "Members", description: "Organization member management" },
-    { name: "Payments", description: "Payment and subscription endpoints" },
+    { name: "Billing", description: "Billing, subscriptions, and invoices" },
+    { name: "Payments", description: "Payment and checkout endpoints" },
     { name: "Webhooks", description: "Webhook management" },
     { name: "Notifications", description: "User notifications" },
+    { name: "API Keys", description: "API key management" },
+    { name: "Contact", description: "Contact form" },
     { name: "Admin", description: "Admin-only endpoints" },
   ],
   paths: {
@@ -582,6 +585,751 @@ export const openAPISpec = {
         },
       },
     },
+    "/api/api-keys/{id}": {
+      delete: {
+        tags: ["API Keys"],
+        summary: "Revoke API key",
+        description: "Revokes an API key",
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+        responses: {
+          "200": {
+            description: "API key revoked",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "404": { $ref: "#/components/responses/NotFound" },
+        },
+      },
+    },
+    "/api/user/settings": {
+      get: {
+        tags: ["User"],
+        summary: "Get user settings",
+        description: "Returns user preferences and settings",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "User settings",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/UserSettings" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+      patch: {
+        tags: ["User"],
+        summary: "Update user settings",
+        description: "Updates user preferences and settings",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          content: {
+            "application/json": {
+              schema: { $ref: "#/components/schemas/UserSettings" },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Updated settings",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/UserSettings" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/user/password": {
+      post: {
+        tags: ["User"],
+        summary: "Change password",
+        description: "Changes the user password (requires current password)",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["currentPassword", "newPassword"],
+                properties: {
+                  currentPassword: { type: "string", format: "password" },
+                  newPassword: { type: "string", format: "password", minLength: 8 },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Password changed successfully",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "400": { $ref: "#/components/responses/BadRequest" },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/user/2fa/setup": {
+      post: {
+        tags: ["User"],
+        summary: "Setup 2FA",
+        description: "Initiates two-factor authentication setup",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "2FA setup initiated",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    secret: { type: "string" },
+                    qrCode: { type: "string", format: "uri" },
+                    backupCodes: { type: "array", items: { type: "string" } },
+                  },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/user/2fa/verify": {
+      post: {
+        tags: ["User"],
+        summary: "Verify 2FA",
+        description: "Verifies 2FA code and completes setup",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["code"],
+                properties: {
+                  code: { type: "string", pattern: "^[0-9]{6}$" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "2FA verified",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "400": { $ref: "#/components/responses/BadRequest" },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/user/sessions/invalidate-all": {
+      post: {
+        tags: ["User"],
+        summary: "Invalidate all sessions",
+        description: "Signs out from all devices",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "All sessions invalidated",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    success: { type: "boolean" },
+                    sessionsInvalidated: { type: "integer" },
+                  },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/user/trial": {
+      post: {
+        tags: ["User"],
+        summary: "Start trial",
+        description: "Starts a trial period for the user",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "Trial started",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    success: { type: "boolean" },
+                    trialEndsAt: { type: "string", format: "date-time" },
+                  },
+                },
+              },
+            },
+          },
+          "400": { $ref: "#/components/responses/BadRequest" },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/organizations/{id}/members": {
+      get: {
+        tags: ["Members"],
+        summary: "List organization members",
+        description: "Returns all members of an organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+        responses: {
+          "200": {
+            description: "List of members",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "array",
+                  items: { $ref: "#/components/schemas/OrganizationMember" },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/{id}/members/{memberId}": {
+      patch: {
+        tags: ["Members"],
+        summary: "Update member role",
+        description: "Updates a member's role in the organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          { name: "id", in: "path", required: true, schema: { type: "string" } },
+          { name: "memberId", in: "path", required: true, schema: { type: "string" } },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["role"],
+                properties: {
+                  role: { type: "string", enum: ["ADMIN", "MEMBER", "GUEST"] },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Member updated",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/OrganizationMember" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+      delete: {
+        tags: ["Members"],
+        summary: "Remove member",
+        description: "Removes a member from the organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          { name: "id", in: "path", required: true, schema: { type: "string" } },
+          { name: "memberId", in: "path", required: true, schema: { type: "string" } },
+        ],
+        responses: {
+          "200": {
+            description: "Member removed",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/invite": {
+      post: {
+        tags: ["Members"],
+        summary: "Send organization invite",
+        description: "Sends an invitation email to join an organization",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["organizationId", "email"],
+                properties: {
+                  organizationId: { type: "string" },
+                  email: { type: "string", format: "email" },
+                  role: { type: "string", enum: ["ADMIN", "MEMBER"], default: "MEMBER" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Invite sent",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/OrganizationInvite" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/invites/accept": {
+      post: {
+        tags: ["Members"],
+        summary: "Accept organization invite",
+        description: "Accepts an invitation to join an organization",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["token"],
+                properties: {
+                  token: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Invite accepted",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/OrganizationMember" },
+              },
+            },
+          },
+          "400": { $ref: "#/components/responses/BadRequest" },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/organizations/{id}/billing/subscription": {
+      get: {
+        tags: ["Billing"],
+        summary: "Get subscription",
+        description: "Returns the current subscription for an organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+        responses: {
+          "200": {
+            description: "Subscription details",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/Subscription" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/{id}/billing/invoices": {
+      get: {
+        tags: ["Billing"],
+        summary: "List invoices",
+        description: "Returns invoices for an organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          { name: "id", in: "path", required: true, schema: { type: "string" } },
+          { name: "limit", in: "query", schema: { type: "integer", default: 10 } },
+        ],
+        responses: {
+          "200": {
+            description: "List of invoices",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "array",
+                  items: { $ref: "#/components/schemas/Invoice" },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/{id}/billing/usage": {
+      get: {
+        tags: ["Billing"],
+        summary: "Get usage",
+        description: "Returns usage metrics for an organization",
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+        responses: {
+          "200": {
+            description: "Usage metrics",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/UsageMetrics" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/organizations/{id}/billing/portal": {
+      post: {
+        tags: ["Billing"],
+        summary: "Create billing portal session",
+        description: "Creates a session to access the billing portal",
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: "id", in: "path", required: true, schema: { type: "string" } }],
+        responses: {
+          "200": {
+            description: "Portal session created",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    url: { type: "string", format: "uri" },
+                  },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/polar/checkout": {
+      post: {
+        tags: ["Payments"],
+        summary: "Create checkout session",
+        description: "Creates a Polar checkout session for payment",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["productId"],
+                properties: {
+                  productId: { type: "string" },
+                  successUrl: { type: "string", format: "uri" },
+                  cancelUrl: { type: "string", format: "uri" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Checkout session created",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    checkoutUrl: { type: "string", format: "uri" },
+                    sessionId: { type: "string" },
+                  },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+        },
+      },
+    },
+    "/api/contact": {
+      post: {
+        tags: ["Contact"],
+        summary: "Send contact message",
+        description: "Sends a contact form message",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["name", "email", "message"],
+                properties: {
+                  name: { type: "string" },
+                  email: { type: "string", format: "email" },
+                  subject: { type: "string" },
+                  message: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Message sent",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "400": { $ref: "#/components/responses/BadRequest" },
+          "429": {
+            description: "Too many requests",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/Error" },
+              },
+            },
+          },
+        },
+      },
+    },
+    "/api/admin/stats": {
+      get: {
+        tags: ["Admin"],
+        summary: "Get admin statistics",
+        description: "Returns platform-wide statistics (Admin only)",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "Admin statistics",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/AdminStats" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/admin/users/role": {
+      patch: {
+        tags: ["Admin"],
+        summary: "Update user role",
+        description: "Updates a user's role (Admin only)",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["userId", "role"],
+                properties: {
+                  userId: { type: "string" },
+                  role: { type: "string", enum: ["USER", "ADMIN", "SUPER_ADMIN"] },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Role updated",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/User" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/admin/users/suspend": {
+      post: {
+        tags: ["Admin"],
+        summary: "Suspend user",
+        description: "Suspends a user account (Admin only)",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["userId"],
+                properties: {
+                  userId: { type: "string" },
+                  reason: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "User suspended",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/admin/users/delete": {
+      delete: {
+        tags: ["Admin"],
+        summary: "Delete user",
+        description: "Permanently deletes a user account (Admin only)",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["userId"],
+                properties: {
+                  userId: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "User deleted",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: { success: { type: "boolean" } },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
+    "/api/admin/feature-flags": {
+      get: {
+        tags: ["Admin"],
+        summary: "List feature flags",
+        description: "Returns all feature flags (Admin only)",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          "200": {
+            description: "List of feature flags",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "array",
+                  items: { $ref: "#/components/schemas/FeatureFlag" },
+                },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+      patch: {
+        tags: ["Admin"],
+        summary: "Update feature flag",
+        description: "Updates a feature flag (Admin only)",
+        security: [{ bearerAuth: [] }],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["key"],
+                properties: {
+                  key: { type: "string" },
+                  enabled: { type: "boolean" },
+                  rolloutPercentage: { type: "integer", minimum: 0, maximum: 100 },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
+            description: "Feature flag updated",
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/FeatureFlag" },
+              },
+            },
+          },
+          "401": { $ref: "#/components/responses/Unauthorized" },
+          "403": { $ref: "#/components/responses/Forbidden" },
+        },
+      },
+    },
   },
   components: {
     securitySchemes: {
@@ -700,6 +1448,89 @@ export const openAPISpec = {
           resourceId: { type: "string", nullable: true },
           metadata: { type: "object", nullable: true },
           createdAt: { type: "string", format: "date-time" },
+        },
+      },
+      UserSettings: {
+        type: "object",
+        properties: {
+          theme: { type: "string", enum: ["light", "dark", "system"] },
+          emailNotifications: { type: "boolean" },
+          pushNotifications: { type: "boolean" },
+          marketingEmails: { type: "boolean" },
+          timezone: { type: "string" },
+          language: { type: "string" },
+        },
+      },
+      Subscription: {
+        type: "object",
+        properties: {
+          id: { type: "string" },
+          status: { type: "string", enum: ["active", "canceled", "past_due", "trialing"] },
+          plan: { type: "string" },
+          currentPeriodStart: { type: "string", format: "date-time" },
+          currentPeriodEnd: { type: "string", format: "date-time" },
+          cancelAtPeriodEnd: { type: "boolean" },
+        },
+      },
+      Invoice: {
+        type: "object",
+        properties: {
+          id: { type: "string" },
+          number: { type: "string" },
+          amount: { type: "integer", description: "Amount in cents" },
+          status: { type: "string", enum: ["draft", "open", "paid", "void", "uncollectible"] },
+          paidAt: { type: "string", format: "date-time", nullable: true },
+          dueDate: { type: "string", format: "date-time" },
+          pdfUrl: { type: "string", format: "uri", nullable: true },
+          createdAt: { type: "string", format: "date-time" },
+        },
+      },
+      UsageMetrics: {
+        type: "object",
+        properties: {
+          period: {
+            type: "object",
+            properties: {
+              start: { type: "string", format: "date-time" },
+              end: { type: "string", format: "date-time" },
+            },
+          },
+          apiCalls: { type: "integer" },
+          storage: { type: "integer", description: "Bytes used" },
+          members: { type: "integer" },
+          limits: {
+            type: "object",
+            properties: {
+              apiCalls: { type: "integer" },
+              storage: { type: "integer" },
+              members: { type: "integer" },
+            },
+          },
+        },
+      },
+      AdminStats: {
+        type: "object",
+        properties: {
+          totalUsers: { type: "integer" },
+          activeUsers: { type: "integer" },
+          totalOrganizations: { type: "integer" },
+          totalRevenue: { type: "integer", description: "Revenue in cents" },
+          mrr: { type: "integer", description: "Monthly recurring revenue in cents" },
+          churnRate: { type: "number" },
+          signupsToday: { type: "integer" },
+          signupsThisWeek: { type: "integer" },
+          signupsThisMonth: { type: "integer" },
+        },
+      },
+      FeatureFlag: {
+        type: "object",
+        properties: {
+          key: { type: "string" },
+          enabled: { type: "boolean" },
+          description: { type: "string" },
+          rolloutPercentage: { type: "integer", minimum: 0, maximum: 100 },
+          environments: { type: "array", items: { type: "string" } },
+          updatedAt: { type: "string", format: "date-time" },
         },
       },
       Error: {
