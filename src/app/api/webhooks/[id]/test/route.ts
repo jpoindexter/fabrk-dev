@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { deliverWebhook } from "@/lib/webhooks";
@@ -17,11 +18,26 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export const POST = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const POST = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
+    // Rate limit: strict (10 requests/minute) for webhook testing
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many test requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const { id } = await context.params;
     const session = await auth();
 
@@ -34,10 +50,7 @@ export const POST = withCsrfProtection(async (
     });
 
     if (!webhook) {
-      return NextResponse.json(
-        { error: "Webhook not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Webhook not found" }, { status: 404 });
     }
 
     // Verify user has ADMIN role
@@ -73,9 +86,6 @@ export const POST = withCsrfProtection(async (
     });
   } catch (error: unknown) {
     logger.error("Failed to send test webhook:", error);
-    return NextResponse.json(
-      { error: "Failed to send test webhook" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to send test webhook" }, { status: 500 });
   }
 });

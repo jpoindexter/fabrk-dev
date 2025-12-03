@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hasOrganizationRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { generateWebhookSecret } from "@/lib/webhooks";
@@ -34,18 +35,11 @@ export async function GET(_req: NextRequest) {
     const organizationId = searchParams.get("organizationId");
 
     if (!organizationId) {
-      return NextResponse.json(
-        { error: "Organization ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Organization ID is required" }, { status: 400 });
     }
 
     // Verify user is member of organization
-    const isMember = await hasOrganizationRole(
-      organizationId,
-      session.user.id,
-      OrgRole.MEMBER
-    );
+    const isMember = await hasOrganizationRole(organizationId, session.user.id, OrgRole.MEMBER);
 
     if (!isMember) {
       return NextResponse.json(
@@ -81,15 +75,30 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json(safeWebhooks);
   } catch (error: unknown) {
     logger.error("Failed to fetch webhooks:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch webhooks" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch webhooks" }, { status: 500 });
   }
 }
 
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: strict (10 requests/minute) for webhook creation
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -100,11 +109,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     const { organizationId, url, events } = createWebhookSchema.parse(body);
 
     // Verify user has ADMIN role
-    const canCreate = await hasOrganizationRole(
-      organizationId,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canCreate = await hasOrganizationRole(organizationId, session.user.id, OrgRole.ADMIN);
 
     if (!canCreate) {
       return NextResponse.json(
@@ -123,10 +128,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
         );
       }
     } catch {
-      return NextResponse.json(
-        { error: "Invalid webhook URL" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid webhook URL" }, { status: 400 });
     }
 
     // Validate events
@@ -174,16 +176,10 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid input", details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid input", details: error.issues }, { status: 400 });
     }
 
     logger.error("Failed to create webhook:", error);
-    return NextResponse.json(
-      { error: "Failed to create webhook" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to create webhook" }, { status: 500 });
   }
 });

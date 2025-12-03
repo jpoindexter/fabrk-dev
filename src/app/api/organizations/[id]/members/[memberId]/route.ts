@@ -7,11 +7,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { withCsrfProtection } from "@/lib/security/csrf";
-import {
-  hasOrganizationRole,
-  removeMember,
-  updateMemberRole,
-} from "@/lib/teams/organizations";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
+import { hasOrganizationRole, removeMember, updateMemberRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
 import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
@@ -22,27 +19,35 @@ interface RouteContext {
   params: Promise<{ id: string; memberId: string }>;
 }
 
-export const PATCH = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
+    // Rate limit: strict (10 requests/minute) for member role updates
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const { id, memberId } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Verify user has permission (must be OWNER or ADMIN)
-    const canUpdate = await hasOrganizationRole(
-      id,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canUpdate = await hasOrganizationRole(id, session.user.id, OrgRole.ADMIN);
 
     if (!canUpdate) {
       return NextResponse.json(
@@ -55,18 +60,10 @@ export const PATCH = withCsrfProtection(async (
     const { role } = body;
 
     if (!role || !["OWNER", "ADMIN", "MEMBER", "GUEST"].includes(role)) {
-      return NextResponse.json(
-        { error: "Invalid role" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
-    await updateMemberRole(
-      id,
-      memberId,
-      role as OrgRole,
-      session.user.id
-    );
+    await updateMemberRole(id, memberId, role as OrgRole, session.user.id);
 
     // Get organization and member details for notifications
     try {
@@ -87,12 +84,7 @@ export const PATCH = withCsrfProtection(async (
 
       if (org && member) {
         // Notify user about role change
-        await notifyRoleChanged(
-          member.userId,
-          org.name,
-          role,
-          id
-        );
+        await notifyRoleChanged(member.userId, org.name, role, id);
 
         // Create activity event
         await createOrgActivity(id, {
@@ -128,40 +120,42 @@ export const PATCH = withCsrfProtection(async (
     logger.error("Failed to update member role:", errorMessage);
 
     if (errorMessage.includes("permission")) {
-      return NextResponse.json(
-        { error: errorMessage },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: errorMessage }, { status: 403 });
     }
 
-    return NextResponse.json(
-      { error: "Failed to update member role" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to update member role" }, { status: 500 });
   }
 });
 
-export const DELETE = withCsrfProtection(async (
-  req: NextRequest,
-  context: RouteContext
-) => {
+export const DELETE = withCsrfProtection(async (req: NextRequest, context: RouteContext) => {
   try {
+    // Rate limit: strict (10 requests/minute) for member removal
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const { id, memberId } = await context.params;
     const session = await auth();
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Verify user has permission (must be OWNER or ADMIN)
-    const canRemove = await hasOrganizationRole(
-      id,
-      session.user.id,
-      OrgRole.ADMIN
-    );
+    const canRemove = await hasOrganizationRole(id, session.user.id, OrgRole.ADMIN);
 
     if (!canRemove) {
       return NextResponse.json(
@@ -217,15 +211,9 @@ export const DELETE = withCsrfProtection(async (
     logger.error("Failed to remove member:", errorMessage);
 
     if (errorMessage.includes("permission") || errorMessage.includes("owner")) {
-      return NextResponse.json(
-        { error: errorMessage },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: errorMessage }, { status: 403 });
     }
 
-    return NextResponse.json(
-      { error: "Failed to remove member" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to remove member" }, { status: 500 });
   }
 });
