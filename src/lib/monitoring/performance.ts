@@ -255,7 +255,7 @@ export function usePerformanceTracker(componentName: string) {
 /**
  * API call performance wrapper
  */
-export async function trackAPIPerformance<T>(
+export async function trackAPIPerformance(
   endpoint: string,
   method: string,
   fn: () => Promise<Response>

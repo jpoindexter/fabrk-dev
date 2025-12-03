@@ -202,7 +202,7 @@ export async function checkRepositoryAccess(
     });
 
     return true;
-  } catch (error: unknown) {
+  } catch {
     return false;
   }
 }

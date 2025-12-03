@@ -20,7 +20,7 @@ interface PendingInvitationsProps {
 }
 
 export function PendingInvitations({ invitations }: PendingInvitationsProps) {
-  const handleRevokeInvitation = (invitationId: string) => {
+  const handleRevokeInvitation = (_invitationId: string) => {
     toast.success(`Invitation revoked successfully`);
   };
 

@@ -1,6 +1,5 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { CodeBlock } from "@/components/ui/code-block";
 import { docsTypography, docsSpacing } from "@/components/docs";
 import Link from "next/link";
 import { CreditCard, RefreshCw, Clock, Users, Bell, Shield } from "lucide-react";

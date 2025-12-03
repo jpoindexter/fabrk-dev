@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 export default function RichTextEditorPage() {
   const [content1, setContent1] = useState("<p>Start typing...</p>");
   const [content2, setContent2] = useState("<p>Minimal editor with basic formatting</p>");
-  const [content3, setContent3] = useState("<p>This is read-only content that cannot be edited.</p>");
+  const [content3, _setContent3] = useState("<p>This is read-only content that cannot be edited.</p>");
 
   return (
     <ComponentShowcaseTemplate

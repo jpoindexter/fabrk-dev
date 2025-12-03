@@ -1,6 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
 import { Webhook, Shield, RefreshCw, FileText } from "lucide-react";
 
 export const metadata = {

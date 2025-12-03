@@ -97,7 +97,7 @@ const errorPages = [
 export default function ErrorPagesTemplate() {
   const [activeError, setActiveError] = useState("error");
 
-  const currentError = errorPages.find((e) => e.id === activeError) || errorPages[0];
+  const _currentError = errorPages.find((e) => e.id === activeError) || errorPages[0];
 
   return (
     <div>

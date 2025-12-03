@@ -122,7 +122,7 @@ export default function PieChartPage() {
           preview: (
             <PieChart
               data={revenueData}
-              onSegmentClick={(item, index) => alert(`${item.label}: ${item.value} (${((item.value / revenueData.reduce((sum, i) => sum + i.value, 0)) * 100).toFixed(1)}%)`)}
+              onSegmentClick={(item, _index) => alert(`${item.label}: ${item.value} (${((item.value / revenueData.reduce((sum, i) => sum + i.value, 0)) * 100).toFixed(1)}%)`)}
             />
           ),
           code: `<PieChart

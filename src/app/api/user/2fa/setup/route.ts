@@ -19,7 +19,7 @@ import { AuditLog } from "@/lib/security/audit-log";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { logger } from "@/lib/logger";
 
-export const POST = withCsrfProtection(async (req: NextRequest) => {
+export const POST = withCsrfProtection(async (_req: NextRequest) => {
   try {
     const session = await auth();
 

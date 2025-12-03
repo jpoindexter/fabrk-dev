@@ -53,7 +53,7 @@ const planColors = {
 };
 
 export function OrgCard({
-  id,
+  id: _id,
   name,
   logo,
   memberCount,

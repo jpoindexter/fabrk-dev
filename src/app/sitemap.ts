@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { siteConfig } from "@/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXTAUTH_URL || "https://fabrk.dev";

@@ -5,9 +5,9 @@ import { CodeGenerator } from "@/components/ui/code-generator";
 import { useState } from "react";
 
 export default function CodeGeneratorPage() {
-  const [code1] = useState("");
-  const [code2] = useState("");
-  const [code3] = useState("");
+  const [_code1] = useState("");
+  const [_code2] = useState("");
+  const [_code3] = useState("");
 
   const mockGenerate = async (prompt: string): Promise<string> => {
     await new Promise((resolve) => setTimeout(resolve, 1000));

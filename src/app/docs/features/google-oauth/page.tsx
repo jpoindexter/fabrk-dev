@@ -1,7 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
-import { MousePointer, Link2, Image, Settings, Shield } from "lucide-react";
+import { MousePointer, Link2, Image, Settings } from "lucide-react";
 
 export const metadata = {
   title: "Google OAuth Setup - Fabrk Docs",

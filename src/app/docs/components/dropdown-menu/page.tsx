@@ -17,7 +17,7 @@ import {
   DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Settings, User, LogOut, Mail, MessageSquare, PlusCircle, UserPlus, Cloud, Github, Keyboard } from "lucide-react";
+import { Settings, User, LogOut, Mail, MessageSquare, PlusCircle, UserPlus, Keyboard } from "lucide-react";
 import { useState } from "react";
 
 export default function DropdownMenuPage() {

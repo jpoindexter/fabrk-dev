@@ -145,7 +145,7 @@ export const PATCH = withCsrfProtection(async (
           );
         }
         updateData.url = url;
-      } catch (_) {
+      } catch {
         return NextResponse.json(
           { error: "Invalid webhook URL" },
           { status: 400 }

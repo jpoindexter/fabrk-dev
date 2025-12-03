@@ -5,7 +5,7 @@
  * Generate, view, and revoke API keys for programmatic access
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { ApiKeyHeader } from "./components/api-key-header";
 import { CreateKeyForm } from "./components/create-key-form";
@@ -66,14 +66,7 @@ export default function ApiKeysPage() {
     fetchOrganization();
   }, [error]);
 
-  // Fetch API keys when organization is loaded
-  useEffect(() => {
-    if (organizationId) {
-      fetchApiKeys();
-    }
-  }, [organizationId]);
-
-  const fetchApiKeys = async () => {
+  const fetchApiKeys = useCallback(async () => {
     if (!organizationId) return;
 
     try {
@@ -92,7 +85,14 @@ export default function ApiKeysPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [organizationId, error]);
+
+  // Fetch API keys when organization is loaded
+  useEffect(() => {
+    if (organizationId) {
+      fetchApiKeys();
+    }
+  }, [organizationId, fetchApiKeys]);
 
   const handleCreateKey = async () => {
     if (!organizationId) {

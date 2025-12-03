@@ -39,7 +39,7 @@ try {
   openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   });
-} catch (error: unknown) {
+} catch {
   // OpenAI SDK is optional - silent skip for optional dependencies
 }
 
@@ -48,7 +48,7 @@ try {
   anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
   });
-} catch (error: unknown) {
+} catch {
   // Anthropic SDK is optional - silent skip for optional dependencies
 }
 

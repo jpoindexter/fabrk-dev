@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function TokenExpired() {
-  const styles = {
+  const _styles = {
     textAlign: "center" as const,
     padding: "3rem",
   };
@@ -36,7 +36,7 @@ export function TokenExpired() {
 
 export function ResetSuccess() {
   const router = useRouter();
-  const styles = {
+  const _styles = {
     textAlign: "center" as const,
     padding: "3rem",
   };

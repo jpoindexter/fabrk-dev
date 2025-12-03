@@ -29,7 +29,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
   const [codes, setCodes] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  const { toast, error: showError, success } = useToast();
+  const { error: showError, success } = useToast();
 
   // Fetch codes when modal opens
   const fetchCodes = async () => {
@@ -85,7 +85,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
       setTimeout(() => setCopiedIndex(null), 2000);
 
       success("Copied", "Backup code copied to clipboard");
-    } catch (error: unknown) {
+    } catch {
       showError("Error", "Failed to copy to clipboard");
     }
   };
@@ -96,7 +96,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
       await navigator.clipboard.writeText(allCodes);
 
       success("Copied", "All backup codes copied to clipboard");
-    } catch (error: unknown) {
+    } catch {
       showError("Error", "Failed to copy to clipboard");
     }
   };

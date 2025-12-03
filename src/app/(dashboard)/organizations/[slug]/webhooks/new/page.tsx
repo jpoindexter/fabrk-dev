@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { getAllEvents, EVENT_CATEGORIES, EVENT_DESCRIPTIONS } from "@/lib/webhooks/events";
+import { EVENT_CATEGORIES, EVENT_DESCRIPTIONS } from "@/lib/webhooks/events";
 
 interface Organization {
   id: string;
@@ -32,7 +32,7 @@ interface Organization {
 export default function CreateWebhookPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
+  useSession(); // Auth check
   const [loading, setLoading] = React.useState(true);
   const [creating, setCreating] = React.useState(false);
   const [organization, setOrganization] = React.useState<Organization | null>(null);

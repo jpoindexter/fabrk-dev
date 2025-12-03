@@ -2,7 +2,6 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Autocomplete, AutocompleteOption } from "@/components/ui/autocomplete";
-import { useState } from "react";
 
 export default function AutocompletePage() {
   const frameworks = [

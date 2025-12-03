@@ -5,7 +5,6 @@
  */
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import config from "@/config";
 import { motion } from "framer-motion";
 import { DiscountCounter } from "@/components/polar/discount-counter";

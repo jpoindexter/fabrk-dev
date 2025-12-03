@@ -80,7 +80,7 @@ export default function SecurityPrivacyTemplate() {
     toast.info("[2FA]: Setup modal would open here with QR code");
   };
 
-  const handleRevokeSession = (sessionId: string) => {
+  const handleRevokeSession = (_sessionId: string) => {
     toast.success("[SESSION]: Revoked successfully");
   };
 

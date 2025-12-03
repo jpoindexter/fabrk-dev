@@ -73,7 +73,8 @@ export function RevenueChart({
     return (((latest - previous) / previous) * 100).toFixed(1);
   };
 
-  const totalRevenue = calculateTotalRevenue();
+  // totalRevenue is calculated but used only in derived stats
+  calculateTotalRevenue();
   const growthRate = calculateGrowthRate();
   const latestMRR = data[data.length - 1]?.mrr || 0;
   const latestARR = latestMRR * 12;

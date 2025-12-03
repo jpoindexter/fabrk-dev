@@ -13,7 +13,6 @@ import {
   Home,
   Settings,
   CreditCard,
-  Users,
   Code,
   LogOut,
   User,

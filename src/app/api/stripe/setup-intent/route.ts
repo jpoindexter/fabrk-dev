@@ -108,7 +108,7 @@ import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { getOrCreateCustomer, stripe } from "@/lib/stripe/client";
 import { NextRequest, NextResponse } from "next/server";
 
-async function setupIntentHandler(req: NextRequest) {
+async function setupIntentHandler(_req: NextRequest) {
   try {
     const session = await auth();
 

@@ -25,7 +25,7 @@ export function HeroVideo({
   videoPoster,
   overlayOpacity = 0.6,
 }: HeroVideoProps) {
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [_videoLoaded, setVideoLoaded] = useState(false);
 
   return (
     <section className="relative overflow-hidden">

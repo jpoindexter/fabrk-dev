@@ -13,7 +13,7 @@ import { handleGitHubAccessGrant } from "./github-access";
 import { createHash } from "crypto";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const _stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-10-29.clover",
 });
 
@@ -38,8 +38,8 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     }
 
     // Extract metadata
-    const { userId, product, tier } = session.metadata || {};
-    const isGuestPurchase = userId === "guest";
+    const { userId, product: _product, tier } = session.metadata || {};
+    const _isGuestPurchase = userId === "guest";
 
     // Get or create customer ID
     const customerId =

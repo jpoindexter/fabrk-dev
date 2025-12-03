@@ -17,7 +17,6 @@ import {
   Power,
   PowerOff,
   TestTube,
-  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -60,7 +59,7 @@ interface Organization {
 export default function OrganizationWebhooksPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
+  useSession(); // Auth check
   const [loading, setLoading] = React.useState(true);
   const [organization, setOrganization] = React.useState<Organization | null>(null);
   const [webhooks, setWebhooks] = React.useState<WebhookItem[]>([]);

@@ -151,7 +151,7 @@ async function checkoutHandler(req: NextRequest) {
       return NextResponse.json({ error: "Invalid price ID" }, { status: 400 });
     }
 
-    const [tierName, product] = matchedProduct;
+    const [tierName, _product] = matchedProduct;
 
     // If user is authenticated, link to their account
     let customerId: string | undefined;

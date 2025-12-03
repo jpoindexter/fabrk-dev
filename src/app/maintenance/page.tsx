@@ -1,6 +1,4 @@
-import { Wrench, Clock, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Wrench, Clock } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -92,7 +92,7 @@ export function ApiKeysSection() {
         title: "API key copied",
         description: "The API key has been copied to your clipboard.",
       });
-    } catch (error: unknown) {
+    } catch {
       toast({
         title: "Failed to copy",
         description: "Please try again or copy manually.",

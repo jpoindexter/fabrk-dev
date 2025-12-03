@@ -24,7 +24,7 @@ interface DocsStepProps {
 }
 
 export function DocsStep({
-  number,
+  number: _number,
   title,
   description,
   code,

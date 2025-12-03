@@ -8,7 +8,7 @@
 import { Button } from "./button";
 import { Label } from "./label";
 import { Slider } from "./slider";
-import { RotateCw, ZoomIn, ZoomOut, Undo } from "lucide-react";
+import { RotateCw, ZoomIn, Undo } from "lucide-react";
 import * as React from "react";
 
 export interface CropperControlsProps {

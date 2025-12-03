@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Button } from "@/components/ui/button";
-import { Loader2, Mail, ArrowRight, Download, Trash2 } from "lucide-react";
+import { Mail, ArrowRight, Download } from "lucide-react";
 
 export default function ButtonPage() {
   return (

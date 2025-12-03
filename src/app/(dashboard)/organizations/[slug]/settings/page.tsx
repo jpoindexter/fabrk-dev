@@ -12,12 +12,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import {
-  Building2,
   Save,
   Trash2,
   AlertTriangle,
   Loader2,
-  Upload,
   Settings as SettingsIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -50,7 +48,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 
 const settingsSchema = z.object({
@@ -77,7 +74,7 @@ interface Organization {
 export default function OrganizationSettingsPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
+  useSession(); // Auth check
   const [loading, setLoading] = React.useState(true);
   const [saving, setSaving] = React.useState(false);
   const [deleting, setDeleting] = React.useState(false);

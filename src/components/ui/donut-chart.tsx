@@ -29,7 +29,7 @@ export function DonutChart({
 }: DonutChartProps) {
   const radius = size / 2 - 10;
   const innerRadius = radius - thickness;
-  const total = data.reduce((sum, item) => sum + item.value, 0);
+  const _total = data.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className={cn("relative", className)}>

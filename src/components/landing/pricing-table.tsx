@@ -201,7 +201,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
               {/* Feature Rows */}
               <tbody>
-                {Object.entries(featureLabels).map(([key, label], index) => (
+                {Object.entries(featureLabels).map(([key, label], _index) => (
                   <tr
                     key={key}
                     className="bg-card"

@@ -5,7 +5,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import PusherClient from "pusher-js";
 import { useSession } from "next-auth/react";
 import { logger } from "@/lib/logger";

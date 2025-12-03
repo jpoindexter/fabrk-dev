@@ -23,8 +23,6 @@ import {
   ArrowLeft,
   FileText,
   CheckCircle2,
-  XCircle,
-  Clock,
 } from "lucide-react";
 import { InvoicesClient } from "./invoices-client";
 

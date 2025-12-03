@@ -122,7 +122,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
           { status: 400 }
         );
       }
-    } catch (error: unknown) {
+    } catch {
       return NextResponse.json(
         { error: "Invalid webhook URL" },
         { status: 400 }

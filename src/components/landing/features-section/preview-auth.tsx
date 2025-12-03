@@ -5,7 +5,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { TerminalHeader } from "./terminal-header";
 
 export function AuthPreview() {

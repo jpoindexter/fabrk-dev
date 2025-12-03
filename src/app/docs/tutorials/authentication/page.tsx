@@ -1,7 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
-import { Key, Mail, Shield, Lock, User, UserCheck } from "lucide-react";
+import { Mail, Shield, Lock, User } from "lucide-react";
 
 export const metadata = {
   title: "Authentication Guide - Fabrk Docs",

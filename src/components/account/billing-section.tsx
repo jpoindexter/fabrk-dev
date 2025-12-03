@@ -55,7 +55,7 @@ export function BillingSection() {
 
       const { url } = await response.json();
       window.location.href = url;
-    } catch (error: unknown) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to open billing portal. Please try again.",

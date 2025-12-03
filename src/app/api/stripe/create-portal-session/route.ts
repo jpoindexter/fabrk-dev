@@ -112,7 +112,7 @@ import { withRateLimit } from "@/lib/rate-limit/middleware";
 import { stripe } from "@/lib/stripe/client";
 import { NextRequest, NextResponse } from "next/server";
 
-async function createPortalSessionHandler(req: NextRequest) {
+async function createPortalSessionHandler(_req: NextRequest) {
   try {
     const session = await auth();
 

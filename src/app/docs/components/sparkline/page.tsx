@@ -7,7 +7,7 @@ export default function SparklinePage() {
   const sampleData = [4, 8, 5, 10, 7, 12, 8, 15, 11, 14];
   const revenueData = [120, 140, 130, 170, 150, 190, 160, 200, 180, 220];
   const usersData = [45, 52, 48, 60, 55, 70, 65, 75, 72, 80];
-  const ordersData = [10, 15, 12, 20, 18, 25, 22, 30, 28, 35];
+  const _ordersData = [10, 15, 12, 20, 18, 25, 22, 30, 28, 35];
 
   return (
     <ComponentShowcaseTemplate

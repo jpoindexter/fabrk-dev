@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export function useCheckout() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const _router = useRouter();
 
   const createCheckoutSession = async (priceId: string) => {
     setIsLoading(true);

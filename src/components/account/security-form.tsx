@@ -85,7 +85,7 @@ export function SecurityForm() {
       });
 
       form.reset();
-    } catch (error: unknown) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to update password. Please try again.",

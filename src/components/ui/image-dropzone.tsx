@@ -73,6 +73,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
       return () => {
         previews.forEach((url) => URL.revokeObjectURL(url));
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- Cleanup uses current previews value
     }, [files, preview]);
 
     const validateFile = (file: File): string | null => {

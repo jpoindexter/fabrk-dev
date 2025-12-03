@@ -84,7 +84,7 @@ function NotificationCenterDemo() {
 }
 
 export default function NotificationCenterPage() {
-  const [basicNotifications, setBasicNotifications] = useState<Notification[]>(
+  const [_basicNotifications, _setBasicNotifications] = useState<Notification[]>(
     createNotifications().slice(0, 3)
   );
 

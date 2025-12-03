@@ -104,7 +104,7 @@ export default function FunnelChartPage() {
               <FunnelChart
                 data={salesFunnel}
                 height={300}
-                onStageClick={(stage, index) =>
+                onStageClick={(stage, _index) =>
                   alert(`Clicked: ${stage.label} (${stage.value})`)
                 }
               />

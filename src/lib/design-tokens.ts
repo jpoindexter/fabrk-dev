@@ -85,7 +85,7 @@ export const tokens = {
 } as const;
 
 // Helper to enforce design token usage in runtime (if needed)
-export function validateToken(token: string) {
+export function validateToken(_token: string) {
   // Logic to validate if a class string uses valid tokens
   return true;
 }

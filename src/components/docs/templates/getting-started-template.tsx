@@ -11,7 +11,6 @@ import { DocsStepList } from "../blocks/docs-step-list";
 import { DocsFeatureList } from "../blocks/docs-feature-list";
 import { DocsCallout } from "../blocks/docs-callout";
 import { DocsNavFooter } from "../blocks/docs-nav-footer";
-import { CodeBlock } from "@/components/ui/code-block";
 import { docsTypography } from "../typography";
 import { docsSpacing } from "../spacing";
 

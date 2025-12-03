@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { RoleSelector, Role, DEFAULT_ROLES } from "@/components/ui/role-selector";
 import { useState } from "react";
-import { Crown, Shield, User, Eye, Code, Palette } from "lucide-react";
+import { Code, Palette } from "lucide-react";
 import { toast } from "sonner";
 
 export default function RoleSelectorPage() {

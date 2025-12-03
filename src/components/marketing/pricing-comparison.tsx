@@ -14,8 +14,7 @@ import * as React from "react";
 import { Check, X, Crown, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export interface PricingPlan {
@@ -143,7 +142,7 @@ export function PricingComparison({
             <tbody>
               {showCategories ? (
                 <>
-                  {categories.map((category, categoryIndex) => (
+                  {categories.map((category, _categoryIndex) => (
                     <React.Fragment key={category || "uncategorized"}>
                       {/* Category Header */}
                       <tr className="border-t border-border">

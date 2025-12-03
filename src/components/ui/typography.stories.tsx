@@ -306,7 +306,6 @@ export const ResponsiveBehavior: StoryObj = {
 // =============================================================================
 
 export const AccessibilityFeatures: StoryObj = {
-  name: "Accessibility Features",
   render: () => (
     <div className="max-w-4xl space-y-6">
       <H2 className="mb-4">WCAG AA Compliance</H2>

@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight, MonitorPlay } from "lucide-react";
+import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const showcasePages = [

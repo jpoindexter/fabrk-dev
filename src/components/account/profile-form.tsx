@@ -38,7 +38,7 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export function ProfileForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const { toast, success, error } = useToast();
+  const { success, error } = useToast();
   const { data: session } = useSession();
 
   const form = useForm<ProfileFormValues>({

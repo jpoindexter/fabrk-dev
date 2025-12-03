@@ -55,7 +55,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         } else {
           setCurrentOrg(data.organizations[0] || null);
         }
-      } catch (error: unknown) {
+      } catch {
         setOrganizations([]);
       } finally {
         setLoading(false);
@@ -81,7 +81,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
       // Refresh the page to update context
       router.refresh();
-    } catch (error: unknown) {
+    } catch {
       // Silently handle errors
     }
   };

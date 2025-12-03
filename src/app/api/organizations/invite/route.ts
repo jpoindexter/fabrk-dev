@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { withCsrfProtection } from "@/lib/security/csrf";
-import { inviteToOrganization, hasOrganizationRole, getOrganizationBySlug } from "@/lib/teams/organizations";
+import { inviteToOrganization, hasOrganizationRole } from "@/lib/teams/organizations";
 import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";

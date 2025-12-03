@@ -10,12 +10,12 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 
 export function SignupSuccessMessage({ email }: { email: string }) {
-  const successStyles = {
+  const _successStyles = {
     textAlign: "center" as const,
     padding: "3rem",
   };
 
-  const iconStyles = {
+  const _iconStyles = {
     width: "64px",
     height: "64px",
     margin: "0 auto",

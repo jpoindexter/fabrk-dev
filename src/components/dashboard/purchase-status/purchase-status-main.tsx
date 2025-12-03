@@ -16,7 +16,7 @@ import { ResourcesCard } from "./resources-card";
 
 export function PurchaseStatus({ user, purchase, className = "" }: PurchaseStatusProps) {
   const [isGeneratingDownload, setIsGeneratingDownload] = useState(false);
-  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [_downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const [copiedLicense, setCopiedLicense] = useState(false);
 
   const hasAccess = user.tier === "complete" || purchase?.status === "completed";

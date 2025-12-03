@@ -4,7 +4,6 @@
  */
 
 import { DocsStep } from "./docs-step";
-import { DocsCard } from "./docs-card";
 import { docsSpacing } from "../spacing";
 
 interface Step {

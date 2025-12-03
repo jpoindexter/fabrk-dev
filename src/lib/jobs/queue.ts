@@ -148,7 +148,7 @@ export async function cancelJob(jobId: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error: unknown) {
+  } catch {
     return false;
   }
 }
@@ -181,7 +181,7 @@ export async function retryJob(jobId: string): Promise<boolean> {
     });
 
     return true;
-  } catch (error: unknown) {
+  } catch {
     return false;
   }
 }

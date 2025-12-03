@@ -1,7 +1,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard } from "@/components/docs";
 import { CodeBlock } from "@/components/ui/code-block";
-import { docsTypography, docsSpacing } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
 import { Users, CreditCard, LayoutDashboard, Shield } from "lucide-react";
 
 export const metadata = {

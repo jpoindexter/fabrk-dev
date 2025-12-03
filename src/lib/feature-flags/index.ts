@@ -107,8 +107,8 @@ export function isFeatureEnabled(
 
   // Check environment
   if (flag.environments && context?.environment) {
-    const validEnvironments: Array<"development" | "production" | "staging"> = ["development", "production", "staging"];
-    if (!flag.environments.includes(context.environment as typeof validEnvironments[number])) {
+    const _validEnvironments: Array<"development" | "production" | "staging"> = ["development", "production", "staging"];
+    if (!flag.environments.includes(context.environment as typeof _validEnvironments[number])) {
       return false;
     }
   }

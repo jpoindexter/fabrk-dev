@@ -129,7 +129,7 @@ interface FeatureCardProps {
   index: number;
 }
 
-function FeatureCard({ icon: Icon, module, status, title, description, index }: FeatureCardProps) {
+function FeatureCard({ icon: Icon, module, status, title: _title, description, index }: FeatureCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}

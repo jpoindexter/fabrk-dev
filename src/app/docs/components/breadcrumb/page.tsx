@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronRight, Slash } from "lucide-react";
+import { Slash } from "lucide-react";
 import Link from "next/link";
 
 export default function BreadcrumbDocsPage() {

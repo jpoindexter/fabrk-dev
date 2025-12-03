@@ -6,7 +6,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Bell, Check, CheckCheck, X } from "lucide-react";
+import { Bell, CheckCheck } from "lucide-react";
 import { useNotifications } from "@/lib/pusher/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -60,7 +60,7 @@ export function NotificationCenter() {
         })));
         setUnreadCount(data.filter((n) => !n.read).length);
       }
-    } catch (error: unknown) {
+    } catch {
       // Silently handle errors
     } finally {
       setLoading(false);
@@ -108,7 +108,7 @@ export function NotificationCenter() {
         );
         setUnreadCount((prev) => Math.max(0, prev - 1));
       }
-    } catch (error: unknown) {
+    } catch {
       // Silently handle errors
     }
   };
@@ -128,7 +128,7 @@ export function NotificationCenter() {
         );
         setUnreadCount(0);
       }
-    } catch (error: unknown) {
+    } catch {
       // Silently handle errors
     }
   };

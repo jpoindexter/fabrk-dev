@@ -2,8 +2,6 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import {
-  Toaster,
-  ToastAction,
   ToastTitle,
   ToastDescription,
   ToastClose,

@@ -131,7 +131,7 @@ export default function CreateOrganizationPage() {
       await Promise.all(promises);
       toast.success(`Sent ${emailList.length} invitation(s)!`);
       router.push("/dashboard");
-    } catch (error: unknown) {
+    } catch {
       toast.error("Failed to send some invitations");
     } finally {
       setLoading(false);

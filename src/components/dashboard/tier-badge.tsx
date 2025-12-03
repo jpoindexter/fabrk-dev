@@ -25,7 +25,7 @@ export function TierBadge({ tier, showIcon = true, size = "md" }: TierBadgeProps
   const variant = TIER_BADGES[tierName] || TIER_BADGES.trial;
   const Icon = tierIcons[tierName] || Zap;
 
-  const sizeClasses = {
+  const _sizeClasses = {
     sm: "text-xs px-2 py-0.5",
     md: "text-sm px-2.5 py-4",
     lg: "text-base px-4 py-4.5",

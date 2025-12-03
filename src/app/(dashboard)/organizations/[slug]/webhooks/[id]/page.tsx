@@ -18,7 +18,7 @@ import { DeliveryHistoryCard } from "./components/delivery-history-card";
 export default function WebhookDetailPage() {
   const router = useRouter();
   const params = useParams();
-  const { data: session } = useSession();
+  useSession(); // Auth check
   const [loading, setLoading] = React.useState(true);
   const [webhook, setWebhook] = React.useState<Webhook | null>(null);
   const [deliveries, setDeliveries] = React.useState<Delivery[]>([]);

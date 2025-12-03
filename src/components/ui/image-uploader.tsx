@@ -53,7 +53,7 @@ export function ImageUploader({
   className,
   multiple: externalMultiple,
   uploading: externalUploading,
-  progress: externalProgress,
+  progress: _externalProgress,
   error: externalError,
 }: ImageUploaderProps) {
   const [files, setFiles] = React.useState<FileWithPreview[]>(value);

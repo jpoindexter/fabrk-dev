@@ -283,7 +283,7 @@ export async function verifyHCaptcha(token: string): Promise<CaptchaVerification
  */
 export async function verifyRecaptcha(
   token: string,
-  action: string
+  _action: string
 ): Promise<CaptchaVerification> {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 

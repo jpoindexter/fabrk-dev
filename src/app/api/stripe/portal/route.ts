@@ -81,7 +81,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-async function portalHandler(req: NextRequest) {
+async function portalHandler(_req: NextRequest) {
   try {
     const session = await auth();
 

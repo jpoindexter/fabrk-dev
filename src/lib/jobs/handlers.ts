@@ -91,7 +91,7 @@ registerJobHandler<{
   const { grantRepositoryAccess } = await import("@/lib/github");
   const { prisma } = await import("@/lib/prisma");
   const { logger } = await import("@/lib/logger");
-  const { queueEmail } = await import("@/lib/email");
+  const { queueEmail: _queueEmail } = await import("@/lib/email");
 
   try {
     logger.info("Processing GitHub access grant job", {

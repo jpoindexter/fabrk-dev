@@ -153,7 +153,7 @@ export function TeamActivityFeed({
                 {/* Timeline line */}
                 <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-border" />
 
-                {activities.map((activity, index) => {
+                {activities.map((activity, _index) => {
                   const config = activityConfig[activity.type];
                   const Icon = config.icon;
 

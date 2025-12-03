@@ -131,7 +131,7 @@ export default function DonutChartPage() {
                 size={280}
                 thickness={50}
                 showLegend={true}
-                onSegmentClick={(item, index) => {
+                onSegmentClick={(item, _index) => {
                   setSelectedSegment(item.label);
                 }}
               />

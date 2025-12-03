@@ -8,7 +8,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Tabs } from "@/components/ui/tabs";
 import { Download } from "lucide-react";
 import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";

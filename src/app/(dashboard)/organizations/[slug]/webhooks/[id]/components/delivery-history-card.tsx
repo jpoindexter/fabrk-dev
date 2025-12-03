@@ -27,7 +27,7 @@ interface DeliveryHistoryCardProps {
 
 export function DeliveryHistoryCard({
   deliveries,
-  webhookId,
+  webhookId: _webhookId,
   onRefresh,
 }: DeliveryHistoryCardProps) {
   const [expandedDelivery, setExpandedDelivery] = React.useState<string | null>(null);

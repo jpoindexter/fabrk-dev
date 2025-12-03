@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar, Settings, User, Info } from "lucide-react";
+import { Settings, Info } from "lucide-react";
 
 export default function PopoverPage() {
   return (
