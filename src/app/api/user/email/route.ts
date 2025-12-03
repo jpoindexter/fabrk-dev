@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { sendVerificationEmail } from "@/lib/email";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { z } from "zod";
 import crypto from "crypto";
 import { logger } from "@/lib/logger";
@@ -18,6 +19,24 @@ const emailSchema = z.object({
 
 export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: auth (5 requests/15 min) for email changes
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.auth);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many email change attempts. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -33,10 +52,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     });
 
     if (existingUser) {
-      return NextResponse.json(
-        { error: "Email is already in use" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Email is already in use" }, { status: 400 });
     }
 
     // Generate verification token (this is sent in the email)
@@ -70,8 +86,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({
       success: true,
-      message:
-        "Email updated successfully. Please verify your new email address.",
+      message: "Email updated successfully. Please verify your new email address.",
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
@@ -82,9 +97,6 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     }
 
     logger.error("[Email Change] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to change email" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to change email" }, { status: 500 });
   }
 });

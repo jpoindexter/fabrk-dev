@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { z } from "zod";
 import { logger } from "@/lib/logger";
 
@@ -21,6 +22,24 @@ const profileSchema = z.object({
 
 export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: api (60 requests/minute) for profile updates
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.api);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -37,10 +56,7 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
       });
 
       if (existingUser) {
-        return NextResponse.json(
-          { error: "Email is already in use" },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: "Email is already in use" }, { status: 400 });
       }
     }
 
@@ -62,16 +78,10 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     return NextResponse.json({ user });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid input", details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid input", details: error.issues }, { status: 400 });
     }
 
     logger.error("[Profile Update] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to update profile" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to update profile" }, { status: 500 });
   }
 });
