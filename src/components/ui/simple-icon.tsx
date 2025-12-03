@@ -18,9 +18,12 @@ interface SimpleIconProps {
 }
 
 export function SimpleIcon({ path, className, title }: SimpleIconProps) {
+  // If no title provided, icon is decorative - hide from screen readers
+  // If title provided, announce the icon with that title
   return (
     <svg
-      role="img"
+      role={title ? "img" : "presentation"}
+      aria-hidden={!title}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"

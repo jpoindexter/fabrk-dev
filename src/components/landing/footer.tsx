@@ -29,20 +29,22 @@ const techStack = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer id="footer" className="border-border bg-background border-t">
       {/* Tech Stack Bar */}
-      <div className="border-b border-border px-4 sm:px-6 py-6">
+      <div className="border-border border-b px-4 py-6 sm:px-6">
         <div>
-          <div className="mb-4 font-mono text-xs text-muted-foreground">[ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS</div>
+          <div className="text-muted-foreground mb-4 font-mono text-xs">
+            [ [0x70] TECH_STACK ] FIB[1,1,2,3,5,8,13] DEPS
+          </div>
           <div className="flex flex-wrap items-center gap-4">
             {techStack.map((tech) => (
               <div
                 key={tech.name}
-                className="flex items-center gap-2 border border-border bg-card px-2 py-1"
+                className="border-border bg-card flex items-center gap-2 border px-2 py-1"
               >
                 <SimpleIcon path={tech.path} className="size-3.5" />
                 <span className="font-mono text-xs">{tech.name}</span>
-                <span className="font-mono text-xs text-success">[OK]</span>
+                <span className="text-success font-mono text-xs">[OK]</span>
               </div>
             ))}
           </div>
@@ -50,55 +52,62 @@ export function Footer() {
       </div>
 
       {/* Main Content */}
-      <div className="px-4 sm:px-6 py-12">
+      <div className="px-4 py-12 sm:px-6">
         <div>
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
             {/* Left: Logo + Tagline */}
             <div>
-              <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-                <span className="font-mono text-xs text-muted-foreground">[ [0x71] SYSTEM_INFO ]</span>
+              <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [0x71] SYSTEM_INFO ]
+                </span>
               </div>
-              <Link href="/" className="mb-4 flex items-center gap-2 transition-opacity hover:opacity-80 font-mono">
-                <span className="text-sm text-primary">&gt;</span>
+              <Link
+                href="/"
+                className="mb-4 flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+              >
+                <span className="text-primary text-sm">&gt;</span>
                 <span className="text-xl font-bold tracking-tight">FABRK</span>
               </Link>
               <div className="mt-4 flex items-center gap-2">
-                <span className="font-mono text-xs text-muted-foreground">└─ [STATUS]:</span>
-                <span className="font-mono text-xs text-success">■ OPERATIONAL</span>
+                <span className="text-muted-foreground font-mono text-xs">└─ [STATUS]:</span>
+                <span className="text-success font-mono text-xs">■ OPERATIONAL</span>
               </div>
             </div>
 
             {/* Right: Nav Links in Terminal Box */}
-            <div className="border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="border-border bg-card border">
+              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                 <div className="flex gap-2">
-                  <div className="size-2.5 rounded-none bg-destructive/50" />
-                  <div className="size-2.5 rounded-none bg-warning/50" />
-                  <div className="size-2.5 rounded-none bg-success/50" />
+                  <div className="bg-destructive/50 size-2.5 rounded-none" />
+                  <div className="bg-warning/50 size-2.5 rounded-none" />
+                  <div className="bg-success/50 size-2.5 rounded-none" />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">[0x72] nav_links.exe │ PID:1024</span>
+                <span className="text-muted-foreground font-mono text-xs">
+                  [0x72] nav_links.exe │ PID:1024
+                </span>
               </div>
 
-              <div className="grid grid-cols-3 divide-x divide-border">
+              <div className="divide-border grid grid-cols-3 divide-x">
                 {/* Product */}
                 <div className="p-4">
-                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ PRODUCT ]</div>
-                  <nav className="flex flex-col gap-2">
+                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ PRODUCT ]</div>
+                  <nav aria-label="Product links" className="flex flex-col gap-2">
                     <Link
                       href="#features"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; FEATURES
                     </Link>
                     <Link
                       href="#pricing"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; PRICING
                     </Link>
                     <Link
                       href="/docs"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; DOCS
                     </Link>
@@ -107,17 +116,17 @@ export function Footer() {
 
                 {/* Company */}
                 <div className="p-4">
-                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ COMPANY ]</div>
-                  <nav className="flex flex-col gap-2">
+                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ COMPANY ]</div>
+                  <nav aria-label="Company links" className="flex flex-col gap-2">
                     <Link
                       href="/about"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; ABOUT
                     </Link>
                     <Link
                       href="/contact"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; CONTACT
                     </Link>
@@ -126,23 +135,23 @@ export function Footer() {
 
                 {/* Legal */}
                 <div className="p-4">
-                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ LEGAL ]</div>
-                  <nav className="flex flex-col gap-2">
+                  <div className="text-muted-foreground mb-4 font-mono text-xs">[ LEGAL ]</div>
+                  <nav aria-label="Legal links" className="flex flex-col gap-2">
                     <Link
                       href="/terms"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; TERMS
                     </Link>
                     <Link
                       href="/privacy"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; PRIVACY
                     </Link>
                     <Link
                       href="/cookies"
-                      className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground font-mono text-xs transition-colors"
                     >
                       &gt; COOKIES
                     </Link>
@@ -155,17 +164,19 @@ export function Footer() {
       </div>
 
       {/* Bottom: Copyright + Social */}
-      <div className="border-t border-border px-4 sm:px-6 py-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="font-mono text-xs text-muted-foreground">
-            <span>[ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved</span>
+      <div className="border-border border-t px-4 py-6 sm:px-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-muted-foreground font-mono text-xs">
+            <span>
+              [ [0x7F] COPYRIGHT ] © {new Date().getFullYear()} Fabrk │ All rights reserved
+            </span>
           </div>
           <div className="flex items-center gap-4">
             <a
               href="https://x.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs transition-colors"
             >
               <SimpleIcon path={siX.path} className="size-3.5" />
               <span>X</span>
@@ -174,7 +185,7 @@ export function Footer() {
               href="https://github.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs transition-colors"
             >
               <SimpleIcon path={siGithub.path} className="size-3.5" />
               <span>GitHub</span>
