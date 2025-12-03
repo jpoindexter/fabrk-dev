@@ -10,7 +10,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
@@ -18,9 +24,11 @@ export function FormsSection() {
   return (
     <section id="forms" className="space-y-6">
       <div>
-        <span className="text-xs text-muted-foreground">[0x20]</span>
+        <span className="text-muted-foreground text-xs">[0x20]</span>
         <h2 className="text-2xl font-bold tracking-tight">FORM_COMPONENTS</h2>
-        <p className="text-xs text-muted-foreground">&gt; Input elements with clean borders and focus states</p>
+        <p className="text-muted-foreground text-xs">
+          &gt; Input elements with clean borders and focus states
+        </p>
       </div>
 
       <Card>
@@ -28,7 +36,7 @@ export function FormsSection() {
           <CardTitle>Input Fields</CardTitle>
           <CardDescription>Text inputs with different types</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4 max-w-md">
+        <CardContent className="max-w-md space-y-4">
           <div className="space-y-2">
             <Label htmlFor="text">Text Input</Label>
             <Input id="text" placeholder="Enter text..." />
@@ -53,8 +61,9 @@ export function FormsSection() {
           <CardTitle>Textarea</CardTitle>
           <CardDescription>Multi-line text input</CardDescription>
         </CardHeader>
-        <CardContent className="max-w-md">
-          <Textarea placeholder="Type your message here..." rows={4} />
+        <CardContent className="max-w-md space-y-2">
+          <Label htmlFor="message-textarea">Message</Label>
+          <Textarea id="message-textarea" placeholder="Type your message here..." rows={4} />
         </CardContent>
       </Card>
 
@@ -63,9 +72,10 @@ export function FormsSection() {
           <CardTitle>Select</CardTitle>
           <CardDescription>Dropdown selection</CardDescription>
         </CardHeader>
-        <CardContent className="max-w-md">
+        <CardContent className="max-w-md space-y-2">
+          <Label htmlFor="select-option">Select Option</Label>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger id="select-option" aria-label="Select an option">
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>

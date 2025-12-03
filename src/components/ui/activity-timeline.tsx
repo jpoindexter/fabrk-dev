@@ -27,13 +27,7 @@ import {
 
 export interface TimelineEvent {
   id: string;
-  type:
-    | "created"
-    | "updated"
-    | "commented"
-    | "status_changed"
-    | "assigned"
-    | "deleted";
+  type: "created" | "updated" | "commented" | "status_changed" | "assigned" | "deleted";
   user: {
     name: string;
     avatar?: string;
@@ -163,10 +157,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
     <div className="relative flex gap-4 pb-8">
       {/* Timeline Line */}
       {!isLast && (
-        <div
-          className="absolute left-[19px] top-10 h-full w-0.5 bg-border"
-          aria-hidden="true"
-        />
+        <div className="bg-border absolute top-10 left-[19px] h-full w-0.5" aria-hidden="true" />
       )}
 
       {/* Icon */}
@@ -176,29 +167,24 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
           config.color
         )}
       >
-        <Icon className="h-5 w-5 text-primary-foreground" />
+        <Icon className="text-primary-foreground h-5 w-5" />
       </div>
 
       {/* Content */}
       <div className="flex-1 space-y-2 pt-1">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 space-y-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <p className="font-semibold text-foreground">{event.title}</p>
-              <Badge
-                variant="outline"
-                className="text-xs"
-              >
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-foreground font-semibold">{event.title}</p>
+              <Badge variant="outline" className="text-xs">
                 {config.label}
               </Badge>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Avatar className="h-5 w-5 border">
                 <AvatarImage src={event.user.avatar} alt={event.user.name} />
-                <AvatarFallback className="text-xs">
-                  {getInitials(event.user.name)}
-                </AvatarFallback>
+                <AvatarFallback className="text-xs">{getInitials(event.user.name)}</AvatarFallback>
               </Avatar>
               <span>{event.user.name}</span>
               <span>•</span>
@@ -221,11 +207,13 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
               size="sm"
               onClick={() => setIsExpanded(!isExpanded)}
               className="shrink-0"
+              aria-label={isExpanded ? "Collapse details" : "Expand details"}
+              aria-expanded={isExpanded}
             >
               {isExpanded ? (
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-4 w-4" aria-hidden="true" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
               )}
             </Button>
           )}
@@ -233,29 +221,24 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
 
         {/* Expanded Content */}
         {!compact && (isExpanded || (!hasExpandableContent && event.description)) && (
-          <div className="rounded-none border bg-card p-4 shadow-sm">
+          <div className="bg-card rounded-none border p-4 shadow-sm">
             {event.description && (
-              <p className="text-sm text-muted-foreground">
-                {event.description}
-              </p>
+              <p className="text-muted-foreground text-sm">{event.description}</p>
             )}
 
             {event.metadata && Object.keys(event.metadata).length > 0 && (
               <div className="mt-4 space-y-1">
                 {Object.entries(event.metadata).map(([key, value]) => (
-                  <div
-                    key={key}
-                    className="flex items-center gap-2 text-xs"
-                  >
-                    <span className="font-medium text-foreground capitalize">
+                  <div key={key} className="flex items-center gap-2 text-xs">
+                    <span className="text-foreground font-medium capitalize">
                       {key.replace(/_/g, " ")}:
                     </span>
                     <span className="text-muted-foreground">
                       {typeof value === "boolean" ? (
                         value ? (
-                          <Check className="h-3 w-3 text-primary" />
+                          <Check className="text-primary h-3 w-3" />
                         ) : (
-                          <X className="h-3 w-3 text-destructive" />
+                          <X className="text-destructive h-3 w-3" />
                         )
                       ) : (
                         String(value)
@@ -327,13 +310,8 @@ export function ActivityTimeline({
 
   if (events.length === 0) {
     return (
-      <div
-        className={cn(
-          "rounded-none border bg-muted p-8 text-center shadow-sm",
-          className
-        )}
-      >
-        <p className="text-sm text-muted-foreground">No activity yet</p>
+      <div className={cn("bg-muted rounded-none border p-8 text-center shadow-sm", className)}>
+        <p className="text-muted-foreground text-sm">No activity yet</p>
       </div>
     );
   }
@@ -343,9 +321,7 @@ export function ActivityTimeline({
       {/* Filters */}
       {showFilters && (
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-foreground">
-            Activity Timeline
-          </h3>
+          <h3 className="text-foreground text-sm font-semibold">Activity Timeline</h3>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm" className="h-10 gap-2">
@@ -364,11 +340,9 @@ export function ActivityTimeline({
                   <DropdownMenuCheckboxItem
                     key={type}
                     checked={selectedTypes.has(type as TimelineEvent["type"])}
-                    onCheckedChange={() =>
-                      toggleEventType(type as TimelineEvent["type"])
-                    }
+                    onCheckedChange={() => toggleEventType(type as TimelineEvent["type"])}
                   >
-                    <div className="flex items-center gap-2 flex-1">
+                    <div className="flex flex-1 items-center gap-2">
                       <Icon className={cn("h-4 w-4", config.textColor)} />
                       <span>{config.label}</span>
                       <Badge variant="outline" className="ml-auto">
@@ -385,15 +359,13 @@ export function ActivityTimeline({
 
       {/* Timeline */}
       {filteredEvents.length === 0 ? (
-        <div className="rounded-none border bg-muted p-8 text-center shadow-sm">
-          <p className="text-sm text-muted-foreground">
-            No events match the selected filters
-          </p>
+        <div className="bg-muted rounded-none border p-8 text-center shadow-sm">
+          <p className="text-muted-foreground text-sm">No events match the selected filters</p>
         </div>
       ) : groupByDate ? (
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
-            <h4 className="rounded-none bg-muted px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <h4 className="bg-muted text-muted-foreground rounded-none px-4 py-2 text-xs font-semibold tracking-wide uppercase">
               {dateGroup}
             </h4>
             <div className="pl-2">
