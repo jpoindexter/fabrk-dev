@@ -160,6 +160,7 @@ export function DocsSidebar({
             onClick={() => setSidebarCollapsed(false)}
             className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-1.5 transition-colors"
             title="Expand sidebar"
+            aria-label="Expand sidebar"
           >
             <PanelLeft className="h-4 w-4" />
           </button>
@@ -176,6 +177,7 @@ export function DocsSidebar({
               onClick={() => setSidebarCollapsed(true)}
               className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-1 transition-colors"
               title="Collapse sidebar"
+              aria-label="Collapse sidebar"
             >
               <PanelLeftClose className="h-3.5 w-3.5" />
             </button>
