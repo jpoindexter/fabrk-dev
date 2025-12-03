@@ -41,7 +41,7 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
       data-size={size}
       role="group"
       className={cn(
-        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-none border shadow-xs transition-[color,box-shadow] outline-none",
+        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-none border shadow-xs transition-[color,box-shadow] focus-visible:outline-none",
         "h-9 has-[>textarea]:h-auto",
 
         // Variants based on alignment.

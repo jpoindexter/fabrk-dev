@@ -322,7 +322,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           onInput={handleInput}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`bg-background text-foreground w-full overflow-y-auto rounded-none border p-4 transition-all outline-none ${isFocused ? "shadow-sm" : "shadow-sm"} ${readOnly ? "bg-muted/50 cursor-default" : "cursor-text"} prose prose-sm prose-headings:font-semibold prose-headings:text-foreground prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-em:italic prose-em:text-foreground prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-foreground max-w-none`}
+          className={`bg-background text-foreground w-full overflow-y-auto rounded-none border p-4 transition-all focus-visible:outline-none ${isFocused ? "shadow-sm" : "shadow-sm"} ${readOnly ? "bg-muted/50 cursor-default" : "cursor-text"} prose prose-sm prose-headings:font-semibold prose-headings:text-foreground prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-em:italic prose-em:text-foreground prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-foreground max-w-none`}
           style={{
             minHeight,
             maxHeight,

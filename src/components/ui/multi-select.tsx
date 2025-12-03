@@ -13,11 +13,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export interface MultiSelectOption {
   label: string;
@@ -62,9 +58,7 @@ export function MultiSelect({
     }
   };
 
-  const selectedOptions = options.filter((option) =>
-    selected.includes(option.value)
-  );
+  const selectedOptions = options.filter((option) => selected.includes(option.value));
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -83,14 +77,10 @@ export function MultiSelect({
           <div className="flex flex-wrap gap-1">
             {selected.length > 0 ? (
               selectedOptions.map((option) => (
-                <Badge
-                  key={option.value}
-                  variant="secondary"
-                  className="mr-1 mb-1"
-                >
+                <Badge key={option.value} variant="secondary" className="mr-1 mb-1">
                   {option.label}
                   <button
-                    className="ml-1 rounded-none outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    className="ring-offset-background focus-visible:ring-ring ml-1 rounded-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         handleUnselect(option.value);
@@ -102,7 +92,7 @@ export function MultiSelect({
                     }}
                     onClick={() => handleUnselect(option.value)}
                   >
-                    <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                    <X className="text-muted-foreground hover:text-foreground h-3 w-3" />
                   </button>
                 </Badge>
               ))
@@ -122,13 +112,10 @@ export function MultiSelect({
               {options.map((option) => {
                 const isSelected = selected.includes(option.value);
                 return (
-                  <CommandItem
-                    key={option.value}
-                    onSelect={() => handleSelect(option.value)}
-                  >
+                  <CommandItem key={option.value} onSelect={() => handleSelect(option.value)}>
                     <div
                       className={cn(
-                        "mr-2 flex h-4 w-4 items-center justify-center rounded-none border border-primary",
+                        "border-primary mr-2 flex h-4 w-4 items-center justify-center rounded-none border",
                         isSelected
                           ? "bg-primary text-primary-foreground"
                           : "opacity-50 [&_svg]:invisible"

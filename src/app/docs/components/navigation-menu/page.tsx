@@ -83,13 +83,11 @@ export default function NavigationMenuPage() {
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <a
-                            className="flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-sm"
+                            className="from-muted/50 to-muted focus-visible:ring-ring flex h-full w-full flex-col justify-end bg-gradient-to-b p-6 no-underline select-none focus-visible:ring-2 focus-visible:outline-none"
                             href="/"
                           >
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              Introduction
-                            </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
+                            <div className="mt-4 mb-2 text-lg font-medium">Introduction</div>
+                            <p className="text-muted-foreground text-sm leading-tight">
                               Get started with our comprehensive documentation.
                             </p>
                           </a>
@@ -98,13 +96,11 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground block space-y-1 p-4 leading-none no-underline transition-colors select-none focus-visible:outline-none"
                             href="/docs"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              Installation
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <div className="text-sm leading-none font-medium">Installation</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                               How to install and configure the library.
                             </p>
                           </a>
@@ -113,13 +109,11 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground block space-y-1 p-4 leading-none no-underline transition-colors select-none focus-visible:outline-none"
                             href="/docs/components"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              Components
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <div className="text-sm leading-none font-medium">Components</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                               Browse our collection of components.
                             </p>
                           </a>
@@ -144,7 +138,7 @@ export default function NavigationMenuPage() {
         <ul className="grid gap-4 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
           <li className="row-span-3">
             <NavigationMenuLink asChild>
-              <a className="flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-sm" href="/">
+              <a className="flex h-full w-full select-none flex-col justify-end bg-gradient-to-b from-muted/50 to-muted p-6 no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href="/">
                 <div className="mb-2 mt-4 text-lg font-medium">Introduction</div>
                 <p className="text-sm leading-tight text-muted-foreground">
                   Get started with our comprehensive documentation.
@@ -172,13 +166,11 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground block space-y-1 p-4 leading-none no-underline transition-colors select-none focus-visible:outline-none"
                             href="#"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              Product A
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <div className="text-sm leading-none font-medium">Product A</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                               Description of product A
                             </p>
                           </a>
@@ -187,13 +179,11 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground block space-y-1 p-4 leading-none no-underline transition-colors select-none focus-visible:outline-none"
                             href="#"
                           >
-                            <div className="text-sm font-medium leading-none">
-                              Product B
-                            </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <div className="text-sm leading-none font-medium">Product B</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                               Description of product B
                             </p>
                           </a>
@@ -209,11 +199,11 @@ export default function NavigationMenuPage() {
                       <li>
                         <NavigationMenuLink asChild>
                           <a
-                            className="block select-none space-y-1 p-4 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                            className="hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground block space-y-1 p-4 leading-none no-underline transition-colors select-none focus-visible:outline-none"
                             href="#"
                           >
-                            <div className="text-sm font-medium leading-none">Blog</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <div className="text-sm leading-none font-medium">Blog</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
                               Read our latest articles
                             </p>
                           </a>
