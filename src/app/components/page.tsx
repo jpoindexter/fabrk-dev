@@ -18,11 +18,11 @@ import { DropdownSection } from "./sections/dropdown-section";
 
 export default function ComponentsPage() {
   return (
-    <div className="min-h-screen bg-background font-mono">
+    <div className="bg-background min-h-screen font-mono">
       {/* Demo Navigation */}
       <DemoNav backButtonText="Back" backButtonHref="/demo" />
 
-      <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+      <div className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
         {/* Header */}
         <PageHeader />
 
@@ -51,7 +51,7 @@ export default function ComponentsPage() {
         <section id="activity-timeline" className="space-y-6">
           <ActivityTimelineDemo />
         </section>
-      </main>
+      </div>
 
       <Footer />
     </div>
