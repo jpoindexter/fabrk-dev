@@ -9,7 +9,6 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { createOrganization } from "@/lib/teams/organizations";
 import { trackOrgCreated } from "@/lib/analytics/events";
-import { logOrgCreated } from "@/lib/audit/logger";
 import { logger } from "@/lib/logger";
 import { z } from "zod";
 
@@ -64,9 +63,6 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     await trackOrgCreated(session.user.id, organization.id, organization.name, {
       slug: organization.slug,
     });
-
-    // Log in audit trail
-    await logOrgCreated(session.user.id, organization.id, organization.name);
 
     return NextResponse.json({
       success: true,

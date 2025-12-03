@@ -10,9 +10,7 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hasOrganizationRole, removeMember, updateMemberRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
-import { notifyRoleChanged, createOrgActivity } from "@/lib/notifications";
 import { prisma } from "@/lib/prisma";
-import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 import { logger } from "@/lib/logger";
 
 interface RouteContext {
@@ -64,52 +62,6 @@ export const PATCH = withCsrfProtection(async (req: NextRequest, context: RouteC
     }
 
     await updateMemberRole(id, memberId, role as OrgRole, session.user.id);
-
-    // Get organization and member details for notifications
-    try {
-      const [org, member] = await Promise.all([
-        prisma.organization.findUnique({
-          where: { id },
-          select: { name: true },
-        }),
-        prisma.organizationMember.findUnique({
-          where: { id: memberId },
-          include: {
-            user: {
-              select: { id: true, name: true, email: true },
-            },
-          },
-        }),
-      ]);
-
-      if (org && member) {
-        // Notify user about role change
-        await notifyRoleChanged(member.userId, org.name, role, id);
-
-        // Create activity event
-        await createOrgActivity(id, {
-          type: "role_changed",
-          description: `role was changed to ${role}`,
-          userId: member.userId,
-          userName: member.user.name || member.user.email || "User",
-        });
-
-        // Trigger webhook
-        await triggerWebhook(id, WEBHOOK_EVENTS.ORG_MEMBER_ROLE_CHANGED, {
-          userId: member.userId,
-          userEmail: member.user.email,
-          userName: member.user.name,
-          newRole: role,
-          changedBy: {
-            id: session.user.id,
-            email: session.user.email,
-            name: session.user.name,
-          },
-        });
-      }
-    } catch (notifyError: unknown) {
-      logger.error("Failed to send notifications:", notifyError);
-    }
 
     return NextResponse.json({
       success: true,
@@ -164,43 +116,7 @@ export const DELETE = withCsrfProtection(async (req: NextRequest, context: Route
       );
     }
 
-    // Get member details before removing
-    const member = await prisma.organizationMember.findUnique({
-      where: { id: memberId },
-      include: {
-        user: {
-          select: { id: true, name: true, email: true },
-        },
-      },
-    });
-
     await removeMember(id, memberId, session.user.id);
-
-    // Create activity event for member removal
-    if (member) {
-      try {
-        await createOrgActivity(id, {
-          type: "member_removed",
-          description: `was removed from the organization`,
-          userId: member.userId,
-          userName: member.user.name || member.user.email || "User",
-        });
-
-        // Trigger webhook
-        await triggerWebhook(id, WEBHOOK_EVENTS.ORG_MEMBER_REMOVED, {
-          userId: member.userId,
-          userEmail: member.user.email,
-          userName: member.user.name,
-          removedBy: {
-            id: session.user.id,
-            email: session.user.email,
-            name: session.user.name,
-          },
-        });
-      } catch (activityError: unknown) {
-        logger.error("Failed to create activity:", activityError);
-      }
-    }
 
     return NextResponse.json({
       success: true,

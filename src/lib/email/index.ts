@@ -1,7 +1,6 @@
 /* 💡 EMAIL TIP: Get your Resend API key from https://resend.com/api-keys
  * Update FROM_EMAIL below with your verified domain (e.g., hello@yourdomain.com).
  * In development, emails are logged to console instead of being sent.
- * Queue functions (queueEmail, etc.) store emails in DB for background processing.
  */
 
 /**
@@ -11,11 +10,7 @@
  * - email-core.ts - Core sending functionality
  * - email-auth.ts - Verification and reset emails
  * - email-welcome.ts - Post-purchase welcome emails
- * - email-queue.ts - Queue base function
- * - email-queue-auth.ts - Queued auth emails
- * - email-queue-welcome.ts - Queued welcome and confirmation emails
  * - email-organization.ts - Team invitation emails
- * - email-notifications.ts - GitHub access failed and notifications
  */
 
 // Core exports
@@ -25,12 +20,6 @@ export { sendEmail, FROM_EMAIL, APP_NAME, APP_URL, resend } from "./email-core";
 export { sendVerificationEmail, sendResetEmail } from "./email-auth";
 export { sendWelcomeEmail } from "./email-welcome";
 export { sendOrganizationInvite } from "./email-organization";
-
-// Queue functions
-export { queueEmail } from "./email-queue";
-export { queueVerificationEmail, queueResetEmail } from "./email-queue-auth";
-export { queueWelcomeEmail, queueConfirmationEmail } from "./email-queue-welcome";
-export { queueGitHubAccessFailedEmail } from "./email-notifications";
 
 // Email service object for backwards compatibility
 import { sendWelcomeEmail } from "./email-welcome";

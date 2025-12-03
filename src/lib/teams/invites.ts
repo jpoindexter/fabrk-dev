@@ -5,7 +5,6 @@
 
 import { prisma } from "@/lib/prisma";
 import * as crypto from "crypto";
-import { enqueueJob } from "@/lib/jobs/queue";
 import type { OrgRole } from "./types";
 
 /**
@@ -89,31 +88,7 @@ export async function inviteToOrganization(data: {
     },
   });
 
-  // Send invite email (via job queue)
-  const org = await prisma.organization.findUnique({
-    where: { id: data.organizationId },
-  });
-
-  const inviter = await prisma.user.findUnique({
-    where: { id: data.invitedBy },
-  });
-
-  if (org && inviter) {
-    await enqueueJob({
-      type: "email.send",
-      payload: {
-        to: data.email,
-        subject: `You've been invited to join ${org.name}`,
-        html: `
-          <h1>You've been invited!</h1>
-          <p>${inviter.name || inviter.email} has invited you to join ${org.name}.</p>
-          <p>Click the link below to accept the invitation:</p>
-          <a href="${process.env.NEXTAUTH_URL}/invite/${token}">Accept Invitation</a>
-          <p>This invitation expires in 7 days.</p>
-        `,
-      },
-    });
-  }
+  // Email is sent by the API route via sendOrganizationInvite
 
   return {
     id: invite.id,

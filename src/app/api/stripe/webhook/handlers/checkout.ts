@@ -7,9 +7,8 @@
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 import { generateLicenseKey } from "@/lib/license";
-import { queueWelcomeEmail } from "@/lib/email";
+import { sendWelcomeEmail } from "@/lib/email";
 import { generateSecureToken, getTokenExpiration } from "@/lib/tokens";
-import { handleGitHubAccessGrant } from "./github-access";
 import { createHash } from "crypto";
 import Stripe from "stripe";
 
@@ -68,10 +67,6 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
       },
     });
 
-    // Queue GitHub repository access grant job (if enabled)
-    // This handles retry logic for transient GitHub API failures
-    const githubResult = await handleGitHubAccessGrant(session);
-
     logger.info("User upserted", { userId: user.id, email: customerEmail });
 
     // Create payment record
@@ -103,29 +98,15 @@ export async function handleCheckoutCompleted(event: Stripe.Event) {
     });
 
     // Build magic link URL with plain token (sent via email)
-    const magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
+    const _magicLink = `${process.env.NEXT_PUBLIC_APP_URL}/magic-signin?token=${magicLinkToken}&email=${encodeURIComponent(customerEmail)}`;
 
-    // Queue welcome email with license key and magic link
-    // Note: GitHub access is handled asynchronously via job queue
-    await queueWelcomeEmail({
-      to: customerEmail,
-      name: user.name || "Customer",
-      licenseKey,
-      magicLink,
-      userId: user.id,
-      // GitHub info will be communicated separately once job completes
-      githubRepoUrl: null,
-      githubUsername: githubResult.githubUsername || null,
-    });
+    // Send welcome email with license key
+    await sendWelcomeEmail(customerEmail, user.name || "Customer", licenseKey);
 
     logger.info("Purchase processed successfully", {
       userId: user.id,
       email: customerEmail,
       tier,
-      githubJobQueued: githubResult.success,
-      githubJobId: githubResult.jobId,
-      githubUsername: githubResult.githubUsername,
-      githubError: githubResult.error,
     });
   } catch (error: unknown) {
     logger.error("Error processing checkout.session.completed", error);

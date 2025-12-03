@@ -11,8 +11,6 @@ import { inviteToOrganization, hasOrganizationRole } from "@/lib/teams/organizat
 import { sendOrganizationInvite } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { OrgRole } from "@prisma/client";
-import { createOrgActivity } from "@/lib/notifications";
-import { triggerWebhook, WEBHOOK_EVENTS } from "@/lib/webhooks";
 import { logger } from "@/lib/logger";
 import { z } from "zod";
 
@@ -91,35 +89,6 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     } catch (emailError: unknown) {
       logger.error("Failed to send invitation email:", emailError);
       // Don't fail the request if email fails - invitation is already created
-    }
-
-    // Create real-time activity notification
-    try {
-      await createOrgActivity(organizationId, {
-        type: "member_invited",
-        description: `invited ${email} to join`,
-        userId: session.user.id,
-        userName: session.user.name || session.user.email || "User",
-      });
-    } catch (activityError: unknown) {
-      logger.error("Failed to create activity:", activityError);
-    }
-
-    // Trigger webhook
-    try {
-      await triggerWebhook(organizationId, WEBHOOK_EVENTS.ORG_MEMBER_INVITED, {
-        email,
-        role: inviteRole,
-        invitedBy: {
-          id: session.user.id,
-          email: session.user.email,
-          name: session.user.name,
-        },
-        inviteId: invite.id,
-        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
-      });
-    } catch (webhookError: unknown) {
-      logger.error("Failed to trigger webhook:", webhookError);
     }
 
     return NextResponse.json({

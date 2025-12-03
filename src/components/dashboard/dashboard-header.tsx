@@ -34,7 +34,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { OrgSwitcher } from "@/components/organization/org-switcher";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { NotificationCenter } from "@/components/notifications/notification-center";
 
 export function DashboardHeader() {
   const pathname = usePathname();
@@ -110,9 +109,6 @@ export function DashboardHeader() {
           <div className="hidden lg:block">
             <OrgSwitcher />
           </div>
-
-          {/* Notification Center */}
-          <NotificationCenter />
 
           {/* User Menu */}
           <DropdownMenu>

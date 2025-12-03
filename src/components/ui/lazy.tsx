@@ -6,30 +6,17 @@
  *
  * @example
  * ```tsx
- * import { LazyMermaid, LazyRichTextEditor } from "@/components/ui/lazy";
+ * import { LazyRichTextEditor } from "@/components/ui/lazy";
  *
  * // Optionally show loading state
  * <Suspense fallback={<div>Loading...</div>}>
- *   <LazyMermaid chart={chartDefinition} />
+ *   <LazyRichTextEditor value={value} onChange={onChange} />
  * </Suspense>
  * ```
  */
 
 import * as React from "react";
 import dynamic from "next/dynamic";
-
-/**
- * Lazy-loaded Mermaid diagram renderer
- * ~500KB bundle impact when loaded
- */
-export const LazyMermaid = dynamic(() => import("./mermaid").then((mod) => mod.Mermaid), {
-  ssr: false,
-  loading: () => (
-    <div className="bg-muted flex h-32 items-center justify-center rounded-none border">
-      <span className="text-muted-foreground font-mono text-xs">Loading diagram...</span>
-    </div>
-  ),
-});
 
 /**
  * Lazy-loaded Rich Text Editor
