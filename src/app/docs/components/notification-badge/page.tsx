@@ -17,7 +17,7 @@ export default function NotificationBadgePage() {
       mainPreview={{
         preview: (
           <NotificationBadge count={5}>
-            <Button variant="outline" size="icon" className="rounded-none">
+            <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications">
               <Bell className="h-5 w-5" />
             </Button>
           </NotificationBadge>
@@ -35,17 +35,17 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3}>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={25}>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Shopping cart">
                   <ShoppingCart className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={150} max={99}>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Messages">
                   <MessageSquare className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -75,22 +75,22 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3} variant="primary">
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Primary notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={5} variant="destructive">
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Error notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={2} variant="success">
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Success notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={7} variant="warning">
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Warning notifications">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -224,12 +224,12 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={3} pulse>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications with pulse">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge dot variant="destructive" pulse>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail with pulse">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
@@ -253,12 +253,12 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={0} showZero>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Notifications showing zero">
                   <Bell className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
               <NotificationBadge count={0}>
-                <Button variant="outline" size="icon" className="rounded-none">
+                <Button variant="outline" size="icon" className="rounded-none" aria-label="Mail hidden when zero">
                   <Mail className="h-5 w-5" />
                 </Button>
               </NotificationBadge>
