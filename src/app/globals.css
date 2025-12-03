@@ -216,9 +216,9 @@
   --muted-foreground: 40% 0 0;
   --accent: 96% 0 0;
   --accent-foreground: 0% 0 0;
-  --destructive: 71% 0.194 13.428;
+  --destructive: 55% 0.22 13.428;
   --destructive-foreground: 100% 0 0;
-  --success: 76% 0.177 163.223;
+  --success: 45% 0.15 163.223;
   --success-foreground: 100% 0 0;
   --warning: 82% 0.189 84.429;
   --warning-foreground: 0% 0 0;
@@ -260,10 +260,10 @@
   /* primary */
   --primary-foreground: 100% 0.02 320;
   /* primary-content */
-  --secondary: 69.71% 0.329 342.55;
-  /* secondary */
-  --secondary-foreground: 98.71% 0.0106 342.55;
-  /* secondary-content */
+  --secondary: 55% 0.25 342.55;
+  /* secondary - darkened for WCAG AA contrast */
+  --secondary-foreground: 100% 0 0;
+  /* secondary-content - white for contrast */
   --accent: 76.76% 0.184 183.61;
   /* accent */
   --accent-foreground: 15.35% 0.0368 183.61;
@@ -1349,20 +1349,20 @@ body:has(.terminal-preview) [data-slot="alert-dialog-content"] textarea {
 
   /* Stoplight color variants - inline the base styles to avoid self-reference */
   .terminal-dot-close {
-    @apply size-2 rounded-none bg-destructive/50;
+    @apply bg-destructive/50 size-2 rounded-none;
   }
 
   .terminal-dot-minimize {
-    @apply size-2 rounded-none bg-warning/50;
+    @apply bg-warning/50 size-2 rounded-none;
   }
 
   .terminal-dot-maximize {
-    @apply size-2 rounded-none bg-success/50;
+    @apply bg-success/50 size-2 rounded-none;
   }
 
   /* Terminal window header with stoplights */
   .terminal-header {
-    @apply flex items-center gap-2 border-b border-border px-4 py-2;
+    @apply border-border flex items-center gap-2 border-b px-4 py-2;
   }
 
   .terminal-stoplights {
