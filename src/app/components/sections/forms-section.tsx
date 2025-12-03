@@ -94,7 +94,7 @@ export function FormsSection() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-2">
-            <Checkbox id="terms" />
+            <Checkbox id="terms" aria-label="Accept terms and conditions" />
             <Label htmlFor="terms">Accept terms and conditions</Label>
           </div>
 
@@ -124,11 +124,11 @@ export function FormsSection() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-2">
-            <Switch id="switch1" />
+            <Switch id="switch1" aria-label="Enable notifications" />
             <Label htmlFor="switch1">Enable notifications</Label>
           </div>
           <div className="flex items-center space-x-2">
-            <Switch id="switch2" defaultChecked />
+            <Switch id="switch2" defaultChecked aria-label="Auto-save enabled" />
             <Label htmlFor="switch2">Auto-save enabled</Label>
           </div>
         </CardContent>

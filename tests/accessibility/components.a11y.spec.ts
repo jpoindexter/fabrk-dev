@@ -772,9 +772,12 @@ test.describe('Component Accessibility Tests - WCAG 2.1 AA', () => {
     expect(results.critical.length).toBe(0);
 
     // Alerts should have role="alert" or "status"
-    const alerts = page.locator('[role="alert"], [role="status"]');
+    // Exclude Next.js route announcer which is intentionally empty until navigation
+    const alerts = page.locator(
+      '[role="alert"]:not(#__next-route-announcer__), [role="status"]:not(#__next-route-announcer__)'
+    );
 
-    if (await alerts.count() > 0) {
+    if ((await alerts.count()) > 0) {
       for (let i = 0; i < Math.min(3, await alerts.count()); i++) {
         const alert = alerts.nth(i);
 
