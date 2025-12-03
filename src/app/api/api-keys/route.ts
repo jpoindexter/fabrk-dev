@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { generateApiKey } from "@/lib/api-keys/generator";
 import { logger } from "@/lib/logger";
 
@@ -22,10 +23,7 @@ export async function GET(_req: NextRequest) {
     const organizationId = searchParams.get("organizationId");
 
     if (!organizationId) {
-      return NextResponse.json(
-        { error: "Organization ID is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Organization ID is required" }, { status: 400 });
     }
 
     // Verify user is a member of the organization
@@ -66,10 +64,7 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json(apiKeys);
   } catch (error: unknown) {
     logger.error("Error fetching API keys:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch API keys" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch API keys" }, { status: 500 });
   }
 }
 
@@ -80,6 +75,24 @@ export async function GET(_req: NextRequest) {
  */
 export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: strict (10 requests/minute) for API key creation
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
     if (!session?.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -183,9 +196,6 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
     });
   } catch (error: unknown) {
     logger.error("Error creating API key:", error);
-    return NextResponse.json(
-      { error: "Failed to create API key" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to create API key" }, { status: 500 });
   }
 });
