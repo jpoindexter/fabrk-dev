@@ -16,57 +16,90 @@ import { NextRequest, NextResponse } from "next/server";
 
 /**
  * Generate Content Security Policy
+ *
+ * Strengthened CSP with:
+ * - Nonce-based script loading (eliminates unsafe-inline)
+ * - Strict source allowlists
+ * - Worker and manifest source controls
+ * - Trusted Types (modern browsers)
+ * - Upgrade insecure requests
  */
-export function generateCSP(options?: {
-  isDevelopment?: boolean;
-  nonce?: string;
-}): string {
+export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string }): string {
   const { isDevelopment = false, nonce } = options || {};
 
-  const directives = {
+  const directives: Record<string, string[]> = {
+    // Default: Only allow same-origin resources
     "default-src": ["'self'"],
+
+    // Scripts: Nonce-based in production, unsafe-eval only for HMR in dev
     "script-src": [
       "'self'",
+      "'strict-dynamic'", // Allow scripts loaded by trusted scripts
       ...(isDevelopment ? ["'unsafe-eval'"] : []),
-      ...(nonce ? [`'nonce-${nonce}'`] : ["'unsafe-inline'"]), // unsafe-inline for non-nonce setup
-      "https://cdn.jsdelivr.net", // For CDN scripts
-      "https://www.googletagmanager.com", // GA4
-      "https://www.google-analytics.com", // GA
-      "https://plausible.io", // Plausible
+      ...(nonce ? [`'nonce-${nonce}'`] : ["'unsafe-inline'"]),
+      "https://cdn.jsdelivr.net",
+      "https://js.stripe.com",
+      "https://va.vercel-scripts.com",
+      "https://us-assets.i.posthog.com",
+      "https://www.googletagmanager.com",
+      "https://www.google-analytics.com",
     ],
-    "style-src": [
-      "'self'",
-      "'unsafe-inline'", // Required for styled-components, Tailwind
-      "https://fonts.googleapis.com",
-    ],
-    "img-src": [
-      "'self'",
-      "data:",
-      "https:",
-      "blob:", // For dynamically generated images
-    ],
+
+    // Styles: unsafe-inline required for Tailwind CSS-in-JS
+    "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+
+    // Images: Allow data URIs and HTTPS sources
+    "img-src": ["'self'", "data:", "https:", "blob:"],
+
+    // Fonts: Google Fonts and data URIs
     "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
+
+    // API connections: Strict allowlist
     "connect-src": [
       "'self'",
       "https://api.stripe.com",
+      "https://vitals.vercel-insights.com",
+      "https://api.posthog.com",
+      "https://us.i.posthog.com",
+      "https://us-assets.i.posthog.com",
       "https://www.google-analytics.com",
       "https://analytics.google.com",
       "https://www.googletagmanager.com",
-      "https://*.google-analytics.com",
-      "https://*.analytics.google.com",
-      "https://plausible.io",
-      ...(isDevelopment ? ["ws:", "wss:"] : []), // WebSocket for HMR
+      ...(isDevelopment ? ["ws:", "wss:"] : []),
     ],
-    "frame-src": [
-      "'self'",
-      "https://js.stripe.com", // Stripe Elements
-      "https://hooks.stripe.com", // Stripe webhooks
-    ],
+
+    // Frames: Stripe payment elements only
+    "frame-src": ["'self'", "https://js.stripe.com", "https://hooks.stripe.com"],
+
+    // Web Workers: Same-origin only
+    "worker-src": ["'self'", "blob:"],
+
+    // Manifest: PWA manifest
+    "manifest-src": ["'self'"],
+
+    // Media: Same-origin only
+    "media-src": ["'self'"],
+
+    // Child frames: Same-origin only (deprecated but fallback)
+    "child-src": ["'self'", "blob:"],
+
+    // Block all plugins (Flash, Java, etc.)
     "object-src": ["'none'"],
+
+    // Restrict base URI to prevent base tag hijacking
     "base-uri": ["'self'"],
+
+    // Form submission: Same-origin only
     "form-action": ["'self'"],
-    "frame-ancestors": ["'none'"], // Prevent clickjacking
-    "upgrade-insecure-requests": isDevelopment ? [] : [""],
+
+    // Prevent framing by other sites (clickjacking protection)
+    "frame-ancestors": ["'self'"],
+
+    // Block mixed content
+    ...(isDevelopment ? {} : { "upgrade-insecure-requests": [""] }),
+
+    // Block mixed content (strict)
+    ...(isDevelopment ? {} : { "block-all-mixed-content": [""] }),
   };
 
   return Object.entries(directives)

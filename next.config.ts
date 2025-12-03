@@ -33,27 +33,44 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
+      // Default: Only allow same-origin resources
       "default-src 'self'; " +
-      // Scripts: Nonce-based CSP for production (middleware injects unique nonce per request)
+      // Scripts: Nonce-based CSP for production with strict-dynamic
       // Development: Keep 'unsafe-inline' and 'unsafe-eval' for HMR
-      // Production: Remove unsafe directives, rely on nonce from middleware
+      // Production: Nonce from middleware + strict-dynamic for trusted script chains
       (process.env.NODE_ENV === "production"
-        ? "script-src 'self' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; "
+        ? "script-src 'self' 'strict-dynamic' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; "
         : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; ") +
-      // Styles: Allow self and inline styles for Tailwind/styled components
-      // Note: 'unsafe-inline' required for Tailwind CSS and CSS-in-JS
+      // Styles: 'unsafe-inline' required for Tailwind CSS-in-JS
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      // Images: Data URIs, HTTPS sources, and blobs for dynamic images
       "img-src 'self' data: https: blob:; " +
+      // Fonts: Google Fonts and data URIs
       "font-src 'self' data: https://fonts.gstatic.com; " +
+      // API connections: Strict allowlist of trusted endpoints
       "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com " +
-      "https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com https://api.openai.com https://api.anthropic.com " +
+      "https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com " +
       "https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; " +
+      // Frames: Stripe payment elements only
       "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
+      // Clickjacking protection
       "frame-ancestors 'self'; " +
+      // Base URI restriction
       "base-uri 'self'; " +
+      // Form submission restriction
       "form-action 'self'; " +
+      // Block all plugins
       "object-src 'none'; " +
-      "upgrade-insecure-requests;",
+      // Web Workers
+      "worker-src 'self' blob:; " +
+      // PWA manifest
+      "manifest-src 'self'; " +
+      // Media files
+      "media-src 'self'; " +
+      // Child frames (deprecated fallback)
+      "child-src 'self' blob:; " +
+      // Block mixed content (production only)
+      (process.env.NODE_ENV === "production" ? "upgrade-insecure-requests; block-all-mixed-content;" : ""),
   },
 ];
 
