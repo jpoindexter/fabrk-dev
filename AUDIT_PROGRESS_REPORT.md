@@ -91,15 +91,19 @@ This report summarizes the progress and key findings of the comprehensive system
 4. Add CCPA "Do Not Sell My Info" link
 
 ### Phase 5: Comprehensive Design System & Accessibility Audit
-* **Status:** ✅ Unblocked (Previously Blocked)
+* **Status:** ✅ Significant Progress
 * **Resolution:**
   1. Fixed `playwright.config.ts` - enabled `webServer` configuration
   2. Fixed `components.a11y.spec.ts` - corrected import from `axe-playwright` to `@axe-core/playwright`
-* **Test Results:** Tests now run successfully and detect real accessibility violations
-* **Sample Violations Found:**
-  - 8 `button-name` violations (buttons missing discernible text)
-  - Components missing `aria-label` attributes
-* **Next Steps:** Run full accessibility test suite and fix violations
+* **Test Results:** 31 of 58 accessibility tests now passing
+* **Key Fixes Applied:**
+  - ✅ `button-name` violations - Added aria-labels to all icon-only buttons
+  - ✅ `color-contrast` violations - Darkened destructive, success, secondary colors for WCAG AA
+  - ✅ `landmark-no-duplicate-main` - Fixed nested main element in components page
+  - ✅ `landmark-unique` - Added unique aria-labels to all navigation elements
+  - ✅ `skip-link` - Added id="footer" for skip link target
+  - ✅ `svg-img-alt` - Added role="presentation" for decorative icons
+* **Remaining:** 27 tests related to specific component behaviors (dropdown menus, calendars)
 
 ### Phase 6: Detailed Integration Audit
 * **Status:** ✅ Verified
@@ -336,6 +340,15 @@ This report summarizes the progress and key findings of the comprehensive system
 | `src/lib/security/headers.ts` | Strengthened CSP with additional directives | CSP hardening (GAP-003) |
 | `next.config.ts` | Added worker-src, manifest-src, block-all-mixed-content | CSP hardening (GAP-003) |
 | `src/lib/openapi/spec.ts` | Expanded to 40+ endpoints (User, Billing, Admin, etc.) | API documentation (GAP-021) |
+| `src/components/theme/theme-dropdown.tsx` | Added aria-labels to loading and trigger buttons | Accessibility fix |
+| `src/components/docs/docs-sidebar.tsx` | Added aria-labels to expand/collapse sidebar buttons | Accessibility fix |
+| `src/components/ui/activity-timeline.tsx` | Added aria-label and aria-expanded to expand button | Accessibility fix |
+| `src/app/components/sections/forms-section.tsx` | Added Label and aria-label to Select, id to Textarea | Accessibility fix |
+| `src/app/globals.css` | Darkened destructive (55%), success (45%), secondary (55%) for WCAG contrast | Color contrast fix |
+| `src/app/components/page.tsx` | Changed nested `<main>` to `<div>` to fix duplicate landmark | Landmark fix |
+| `src/components/demo/demo-nav.tsx` | Added aria-label="Demo navigation" for unique landmark | Landmark fix |
+| `src/components/landing/footer.tsx` | Added id="footer" for skip link, aria-labels to nav sections | Accessibility fix |
+| `src/components/ui/simple-icon.tsx` | Use role="presentation" for decorative icons, aria-hidden when no title | SVG accessibility fix |
 
 ---
 
@@ -402,7 +415,7 @@ This report summarizes the progress and key findings of the comprehensive system
 **Phases Completed:** 14 of 27 (52%)
 **Critical Issues Found:** 6
 **Gaps Resolved:** 28/29 (97%)
-**Fixes Applied:** 32
+**Fixes Applied:** 42
 
 ### Critical Issues - Resolution Status:
 1. **GDPR Consent Tracking** - ✅ Fixed: Added Consent model to Prisma schema
