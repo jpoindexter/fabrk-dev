@@ -7,20 +7,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { sendEmail } from "@/lib/email";
 import { logger } from "@/lib/logger";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 
 // Validation schema for contact form
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   email: z.string().email("Invalid email address"),
-  subject: z.enum([
-    "sales",
-    "support",
-    "billing",
-    "feature",
-    "bug",
-    "partnership",
-    "other",
-  ]),
+  subject: z.enum(["sales", "support", "billing", "feature", "bug", "partnership", "other"]),
   message: z.string().min(10, "Message must be at least 10 characters").max(5000),
 });
 
@@ -37,6 +30,24 @@ const subjectLabels: Record<string, string> = {
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: strict (10 requests/minute) for contact form
+    const identifier = getClientIdentifier(request);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many messages. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const body = await request.json();
 
     // Validate input

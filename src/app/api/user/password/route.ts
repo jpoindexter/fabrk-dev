@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hash, compare } from "bcryptjs";
 import { z } from "zod";
 import { logger } from "@/lib/logger";
@@ -18,6 +19,24 @@ const passwordSchema = z.object({
 
 export const PATCH = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: auth (5 requests/15 min) for password changes
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.auth);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many password change attempts. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
@@ -41,16 +60,10 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
     }
 
     // Verify current password
-    const isValid = await compare(
-      validatedData.currentPassword,
-      user.password
-    );
+    const isValid = await compare(validatedData.currentPassword, user.password);
 
     if (!isValid) {
-      return NextResponse.json(
-        { error: "Current password is incorrect" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Current password is incorrect" }, { status: 400 });
     }
 
     // Hash new password
@@ -70,20 +83,15 @@ export const PATCH = withCsrfProtection(async (req: NextRequest) => {
 
     return NextResponse.json({
       success: true,
-      message: "Password updated successfully. All other sessions have been logged out for security.",
+      message:
+        "Password updated successfully. All other sessions have been logged out for security.",
     });
   } catch (error: unknown) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid input", details: error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid input", details: error.issues }, { status: 400 });
     }
 
     logger.error("[Password Change] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to change password" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to change password" }, { status: 500 });
   }
 });
