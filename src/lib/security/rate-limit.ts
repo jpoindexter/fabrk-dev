@@ -167,44 +167,150 @@ export const RateLimiters = {
 };
 
 /**
+ * Redis client singleton for rate limiting
+ * Caches the client instance to avoid creating new connections on each request
+ */
+let redisClient: unknown = null;
+let ratelimitInstances = new Map<string, unknown>();
+
+/**
+ * Get or create Redis client singleton
+ */
+function getRedisClient(): unknown {
+  if (redisClient) return redisClient;
+
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+
+  try {
+    const upstashRedis = require("@upstash/redis");
+    const { Redis } = upstashRedis;
+
+    redisClient = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    });
+
+    return redisClient;
+  } catch {
+    logger.warn("[Rate Limit] @upstash/redis not installed, using in-memory rate limiting");
+    return null;
+  }
+}
+
+/**
+ * Get or create Ratelimit instance for a specific config
+ */
+function getRatelimitInstance(config: RateLimitConfig): unknown {
+  const redis = getRedisClient();
+  if (!redis) return null;
+
+  const key = `${config.maxRequests}:${config.interval}`;
+  if (ratelimitInstances.has(key)) {
+    return ratelimitInstances.get(key);
+  }
+
+  try {
+    const upstashRatelimit = require("@upstash/ratelimit");
+    const { Ratelimit } = upstashRatelimit;
+
+    const instance = new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(config.maxRequests, `${config.interval}ms`),
+      analytics: true,
+      prefix: "ratelimit",
+    });
+
+    ratelimitInstances.set(key, instance);
+    return instance;
+  } catch {
+    logger.warn("[Rate Limit] @upstash/ratelimit not installed, using in-memory rate limiting");
+    return null;
+  }
+}
+
+/**
+ * Check if Redis rate limiting is available
+ */
+export function isRedisAvailable(): boolean {
+  return getRedisClient() !== null;
+}
+
+/**
  * Upstash Redis rate limiting (production)
  * Requires: @upstash/redis and @upstash/ratelimit
+ *
+ * Features:
+ * - Singleton Redis client (connection reuse)
+ * - Cached Ratelimit instances per config
+ * - Automatic fallback to in-memory on error
+ * - Sliding window algorithm
  */
 export async function checkRateLimitRedis(
   identifier: string,
   config: RateLimitConfig
 ): Promise<{ success: boolean; limit: number; remaining: number; reset: number }> {
-  // Check if Upstash is configured
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  const ratelimit = getRatelimitInstance(config);
+
+  if (!ratelimit) {
     // Fall back to in-memory
     return checkRateLimit(identifier, config);
   }
 
   try {
-    // Lazy require to avoid errors if @upstash/ratelimit not installed
-    const upstashRatelimit = require("@upstash/ratelimit");
-    const upstashRedis = require("@upstash/redis");
-    const { Ratelimit } = upstashRatelimit;
-    const { Redis } = upstashRedis;
-
-    const redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
-    });
-
-    const ratelimit = new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(config.maxRequests, `${config.interval}ms`),
-      analytics: true,
-    });
-
-    const { success, limit, remaining, reset } = await ratelimit.limit(identifier);
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import from @upstash/ratelimit
+    const { success, limit, remaining, reset } = await (ratelimit as any).limit(identifier);
     return { success, limit, remaining, reset };
   } catch (error: unknown) {
     logger.error("[Rate Limit] Upstash error, falling back to in-memory", error);
     return checkRateLimit(identifier, config);
   }
+}
+
+/**
+ * Smart rate limit check - automatically uses Redis if available
+ */
+export async function checkRateLimitAuto(
+  identifier: string,
+  config: RateLimitConfig
+): Promise<{ success: boolean; limit: number; remaining: number; reset: number }> {
+  if (isRedisAvailable()) {
+    return checkRateLimitRedis(identifier, config);
+  }
+  return checkRateLimit(identifier, config);
+}
+
+/**
+ * Rate limit middleware factory with automatic Redis detection
+ */
+export function rateLimitAuto(config: RateLimitConfig) {
+  return async (req: NextRequest): Promise<NextResponse | null> => {
+    const identifier = getClientIdentifier(req);
+    const result = await checkRateLimitAuto(identifier, config);
+
+    if (!result.success) {
+      return new NextResponse(
+        JSON.stringify({
+          error: "Too many requests",
+          message: "You have exceeded the rate limit. Please try again later.",
+          retryAfter: Math.ceil((result.reset - Date.now()) / 1000),
+        }),
+        {
+          status: 429,
+          headers: {
+            "Content-Type": "application/json",
+            "X-RateLimit-Limit": result.limit.toString(),
+            "X-RateLimit-Remaining": result.remaining.toString(),
+            "X-RateLimit-Reset": result.reset.toString(),
+            "Retry-After": Math.ceil((result.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
+    return null; // Allow request
+  };
 }
 
 /**
