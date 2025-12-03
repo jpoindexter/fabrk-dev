@@ -101,6 +101,7 @@ export function RevenueChart({
   // Memoize tooltip component to prevent recreation on every render (industry-standard pattern)
   const CustomTooltip = React.useMemo(
     () =>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Recharts TooltipContentProps is complex
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (

@@ -8,6 +8,7 @@ import {
   getSortedRowModel,
   ColumnDef,
   flexRender,
+  SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
@@ -51,7 +52,7 @@ export default function DataTableHeaderPage() {
     },
   ];
 
-  const [sorting, setSorting] = useState<any[]>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,

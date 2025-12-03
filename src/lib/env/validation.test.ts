@@ -22,7 +22,7 @@ describe('Environment Variable Validation', () => {
 
   describe('Required Variables', () => {
     it('should fail when DATABASE_URL is missing', () => {
-      (process.env as any).DATABASE_URL = undefined;
+      (process.env as { DATABASE_URL?: string }).DATABASE_URL = undefined;
       const result = validateEnv();
       expect(result.valid).toBe(false);
       expect(result.errors.some(e => e.variable === 'DATABASE_URL')).toBe(true);

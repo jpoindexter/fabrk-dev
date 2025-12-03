@@ -32,7 +32,7 @@ interface AuditLogOptions {
   action: AuditAction;
   resource?: string;
   resourceId?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
 }
@@ -72,7 +72,7 @@ export async function getAuditLogs(options: {
   limit?: number;
   offset?: number;
 }) {
-  const where: any = {};
+  const where: { userId?: string; action?: AuditAction; resource?: string } = {};
 
   if (options.userId) {
     where.userId = options.userId;
@@ -118,7 +118,7 @@ export async function logOrgCreated(
   userId: string,
   orgId: string,
   orgName: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   await logAudit({
     userId,
@@ -133,7 +133,7 @@ export async function logOrgDeleted(
   userId: string,
   orgId: string,
   orgName: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   await logAudit({
     userId,
@@ -148,7 +148,7 @@ export async function logMemberRemoved(
   userId: string,
   orgId: string,
   removedUserId: string,
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   await logAudit({
     userId,
@@ -163,7 +163,7 @@ export async function logUserImpersonation(
   adminUserId: string,
   targetUserId: string,
   action: 'started' | 'ended',
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   await logAudit({
     userId: adminUserId,
@@ -178,7 +178,7 @@ export async function logFeatureFlagChange(
   userId: string,
   flagId: string,
   action: 'created' | 'updated' | 'deleted',
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 ) {
   const auditAction =
     action === 'created'

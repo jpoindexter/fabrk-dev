@@ -31,7 +31,7 @@ export function usePageTracking() {
 export function useTrackClick(
   buttonName: string,
   location: string,
-  additionalProps?: Record<string, any>
+  additionalProps?: Record<string, unknown>
 ) {
   return useCallback(() => {
     trackEvent("button_clicked", {

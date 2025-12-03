@@ -29,9 +29,13 @@
  */
 
 // Dynamic imports for optional dependencies (type safety not available until SDK installed)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import requires any until SDK installed
 let OpenAI: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import requires any until SDK installed
 let Anthropic: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import instance
 let openai: any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Dynamic import instance
 let anthropic: any;
 
 try {

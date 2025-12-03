@@ -35,7 +35,7 @@ export interface Notification {
   expiresAt?: Date;
   actionUrl?: string;
   actionLabel?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface ToastNotification {

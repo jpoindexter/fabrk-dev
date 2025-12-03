@@ -137,4 +137,4 @@ export const DataTablePagination = React.forwardRef(DataTablePaginationInner) as
   props: DataTablePaginationProps<TData> & { ref?: React.ForwardedRef<HTMLElement> }
 ) => ReturnType<typeof DataTablePaginationInner>;
 
-(DataTablePagination as any).displayName = "DataTablePagination";
+(DataTablePagination as unknown as { displayName: string }).displayName = "DataTablePagination";

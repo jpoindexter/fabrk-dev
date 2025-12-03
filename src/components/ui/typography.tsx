@@ -308,6 +308,7 @@ export const List = React.forwardRef<
   const Component = ordered ? "ol" : "ul";
   return (
     <Component
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Union ref type requires any
       ref={ref as any}
       className={cn(
         "ml-6 space-y-2 text-base leading-relaxed text-foreground",

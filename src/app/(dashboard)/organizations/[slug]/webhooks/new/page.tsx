@@ -42,11 +42,7 @@ export default function CreateWebhookPage() {
   const [secretVisible, setSecretVisible] = React.useState(false);
   const [secretCopied, setSecretCopied] = React.useState(false);
 
-  React.useEffect(() => {
-    fetchOrganization();
-  }, [params.slug]);
-
-  async function fetchOrganization() {
+  const fetchOrganization = React.useCallback(async () => {
     try {
       const response = await fetch(`/api/organizations/${params.slug}`);
       if (!response.ok) throw new Error("Failed to fetch organization");
@@ -59,7 +55,11 @@ export default function CreateWebhookPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [params.slug, router]);
+
+  React.useEffect(() => {
+    fetchOrganization();
+  }, [fetchOrganization]);
 
   async function createWebhook(e: React.FormEvent) {
     e.preventDefault();
@@ -285,7 +285,7 @@ if (signature === expected) {
                       type="button"
                       variant="outline"
                       size="sm"
-                      onClick={() => selectAllEvents(category as any)}
+                      onClick={() => selectAllEvents(category as keyof typeof EVENT_CATEGORIES)}
                     >
                       {events.every((e) => selectedEvents.includes(e))
                         ? "Deselect All"

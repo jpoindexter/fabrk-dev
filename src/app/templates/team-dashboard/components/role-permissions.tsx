@@ -3,9 +3,9 @@
  * Role Permissions - Display role permissions reference
  */
 
-import { Users, Crown, Shield, Eye } from "lucide-react";
+import { Users, Crown, Shield, Eye, type LucideIcon } from "lucide-react";
 
-const roleIcons: Record<string, any> = {
+const roleIcons: Record<string, LucideIcon> = {
   owner: Crown,
   admin: Shield,
   member: Users,

@@ -67,8 +67,8 @@ export async function GET(
           amount: price?.unit_amount || 0,
           interval: price?.recurring?.interval || "month",
         },
-        currentPeriodEnd: new Date((subscription as any).current_period_end * 1000).toISOString(),
-        cancelAtPeriodEnd: (subscription as any).cancel_at_period_end,
+        currentPeriodEnd: new Date((subscription as unknown as { current_period_end: number }).current_period_end * 1000).toISOString(),
+        cancelAtPeriodEnd: (subscription as unknown as { cancel_at_period_end: boolean }).cancel_at_period_end,
       },
     });
   } catch (error: unknown) {

@@ -11,7 +11,7 @@ export interface Feedback {
   category: FeedbackCategory;
   message: string;
   rating?: number; // 1-5
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   status: FeedbackStatus;
   createdAt: Date;
   respondedAt?: Date;

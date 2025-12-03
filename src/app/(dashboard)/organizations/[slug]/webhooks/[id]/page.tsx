@@ -23,12 +23,7 @@ export default function WebhookDetailPage() {
   const [webhook, setWebhook] = React.useState<Webhook | null>(null);
   const [deliveries, setDeliveries] = React.useState<Delivery[]>([]);
 
-  React.useEffect(() => {
-    fetchWebhook();
-    fetchDeliveries();
-  }, [params.id]);
-
-  async function fetchWebhook() {
+  const fetchWebhook = React.useCallback(async () => {
     try {
       const response = await fetch(`/api/webhooks/${params.id}`);
       if (!response.ok) throw new Error("Failed to fetch webhook");
@@ -41,9 +36,9 @@ export default function WebhookDetailPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [params.id, router]);
 
-  async function fetchDeliveries() {
+  const fetchDeliveries = React.useCallback(async () => {
     try {
       const response = await fetch(`/api/webhooks/${params.id}/deliveries?limit=50`);
       if (!response.ok) throw new Error("Failed to fetch deliveries");
@@ -52,7 +47,12 @@ export default function WebhookDetailPage() {
     } catch (error: unknown) {
       console.error("Error fetching deliveries:", error);
     }
-  }
+  }, [params.id]);
+
+  React.useEffect(() => {
+    fetchWebhook();
+    fetchDeliveries();
+  }, [fetchWebhook, fetchDeliveries]);
 
   if (loading) {
     return (

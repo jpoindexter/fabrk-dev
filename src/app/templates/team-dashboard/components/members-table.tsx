@@ -30,6 +30,7 @@ import {
   Eye,
   MoreHorizontal,
   Trash2,
+  type LucideIcon,
 } from "lucide-react";
 
 interface Member {
@@ -46,7 +47,7 @@ interface MembersTableProps {
   members: Member[];
 }
 
-const roleIcons: Record<string, any> = {
+const roleIcons: Record<string, LucideIcon> = {
   owner: Crown,
   admin: Shield,
   member: Users,

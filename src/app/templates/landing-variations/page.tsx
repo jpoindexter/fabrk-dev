@@ -297,12 +297,15 @@ export default function LandingVariationsTemplate() {
           {heroVariations.map((variation) => (
             <div
               key={variation.id}
+              role="button"
+              tabIndex={0}
               className={`border bg-card cursor-pointer transition-colors ${
                 activeVariation === variation.id
                   ? "border-primary"
                   : "border-border hover:border-primary/50"
               }`}
               onClick={() => setActiveVariation(variation.id)}
+              onKeyDown={(e) => e.key === "Enter" && setActiveVariation(variation.id)}
             >
               <div className="flex items-center gap-2 border-b border-border px-4 py-1.5">
                 <div className="flex gap-1">

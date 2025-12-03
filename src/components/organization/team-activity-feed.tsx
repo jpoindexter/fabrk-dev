@@ -51,7 +51,7 @@ export interface TeamActivity {
   action: string;
   target?: string;
   timestamp: Date;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 interface TeamActivityFeedProps {

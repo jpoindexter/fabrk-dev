@@ -129,7 +129,7 @@ export function validateCsrfMiddleware(req: NextRequest): {
  * });
  * ```
  */
-export function withCsrfProtection<T extends any[]>(
+export function withCsrfProtection<T extends unknown[]>(
   handler: (req: NextRequest, ...args: T) => Promise<NextResponse>
 ): (req: NextRequest, ...args: T) => Promise<NextResponse> {
   return async (req: NextRequest, ...args: T): Promise<NextResponse> => {

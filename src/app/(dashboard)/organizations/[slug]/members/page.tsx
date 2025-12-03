@@ -122,7 +122,7 @@ export default function OrganizationMembersPage() {
 
       setMembers((prev) =>
         prev.map((m) =>
-          m.id === memberId ? { ...m, role: newRole as any } : m
+          m.id === memberId ? { ...m, role: newRole as Member["role"] } : m
         )
       );
       toast.success("Member role updated successfully");

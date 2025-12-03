@@ -78,12 +78,19 @@ const conversionFunnelData = [
   { stage: "Retained", count: 380 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+// Recharts tooltip props type
+interface TooltipPayload {
+  name: string;
+  value: number;
+  color: string;
+}
+
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string }) => {
   if (active && payload && payload.length) {
     return (
       <div className="border border-border bg-card p-4 font-mono text-xs">
         <p className="mb-1 font-bold">{label}</p>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry: TooltipPayload, index: number) => (
           <p key={index} style={{ color: entry.color }}>
             <span className="font-bold">{entry.name}:</span> ${entry.value.toLocaleString()}
           </p>

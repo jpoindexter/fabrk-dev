@@ -376,6 +376,16 @@ const clientSchema = z.object({
   // ============================================================================
   NEXT_PUBLIC_POSTHOG_KEY: z.string().optional(),
   NEXT_PUBLIC_POSTHOG_HOST: z.string().url().optional().default('https://app.posthog.com'),
+
+  // ============================================================================
+  // GOOGLE ANALYTICS
+  // ============================================================================
+  NEXT_PUBLIC_GA4_MEASUREMENT_ID: z.string().optional(),
+
+  // ============================================================================
+  // PLAUSIBLE ANALYTICS
+  // ============================================================================
+  NEXT_PUBLIC_PLAUSIBLE_DOMAIN: z.string().optional(),
 });
 
 /**

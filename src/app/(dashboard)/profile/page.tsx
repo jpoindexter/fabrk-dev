@@ -126,8 +126,8 @@ export default function ProfilePage() {
               <h3 className="text-lg font-semibold">{session?.user?.name}</h3>
               <p className="text-muted-foreground text-sm">{session?.user?.email}</p>
               <div className="flex gap-2">
-                <Badge variant="secondary">{(session?.user as any)?.role || "USER"}</Badge>
-                <Badge variant="outline">{(session?.user as any)?.tier || "FREE"}</Badge>
+                <Badge variant="secondary">{(session?.user as { role?: string })?.role || "USER"}</Badge>
+                <Badge variant="outline">{(session?.user as { tier?: string })?.tier || "FREE"}</Badge>
               </div>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function ProfilePage() {
               <div>
                 <p className="text-sm font-medium">Security</p>
                 <p className="text-muted-foreground text-sm">
-                  2FA {(session?.user as any)?.mfaEnabled ? "Enabled" : "Disabled"}
+                  2FA {(session?.user as { mfaEnabled?: boolean })?.mfaEnabled ? "Enabled" : "Disabled"}
                 </p>
               </div>
             </div>

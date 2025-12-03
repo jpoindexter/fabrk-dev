@@ -66,17 +66,7 @@ export default function OrganizationWebhooksPage() {
   const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
   const [webhookToDelete, setWebhookToDelete] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    fetchOrganization();
-  }, [params.slug]);
-
-  React.useEffect(() => {
-    if (organization) {
-      fetchWebhooks();
-    }
-  }, [organization]);
-
-  async function fetchOrganization() {
+  const fetchOrganization = React.useCallback(async () => {
     try {
       const response = await fetch(`/api/organizations/${params.slug}`);
       if (!response.ok) throw new Error("Failed to fetch organization");
@@ -87,14 +77,12 @@ export default function OrganizationWebhooksPage() {
       toast.error("Failed to load organization");
       router.push("/organizations");
     }
-  }
+  }, [params.slug, router]);
 
-  async function fetchWebhooks() {
-    if (!organization) return;
-
+  const fetchWebhooks = React.useCallback(async (orgId: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/webhooks?organizationId=${organization.id}`);
+      const response = await fetch(`/api/webhooks?organizationId=${orgId}`);
       if (!response.ok) throw new Error("Failed to fetch webhooks");
       const data = await response.json();
       setWebhooks(data);
@@ -104,7 +92,17 @@ export default function OrganizationWebhooksPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
+
+  React.useEffect(() => {
+    fetchOrganization();
+  }, [fetchOrganization]);
+
+  React.useEffect(() => {
+    if (organization) {
+      fetchWebhooks(organization.id);
+    }
+  }, [organization, fetchWebhooks]);
 
   async function toggleWebhook(webhookId: string, enabled: boolean) {
     try {
@@ -117,7 +115,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to update webhook");
 
       toast.success(enabled ? "Webhook enabled" : "Webhook disabled");
-      fetchWebhooks();
+      if (organization) fetchWebhooks(organization.id);
     } catch (error: unknown) {
       console.error("Error toggling webhook:", error);
       toast.error("Failed to update webhook");
@@ -137,7 +135,7 @@ export default function OrganizationWebhooksPage() {
       if (!response.ok) throw new Error("Failed to delete webhook");
 
       toast.success("Webhook deleted successfully");
-      fetchWebhooks();
+      if (organization) fetchWebhooks(organization.id);
     } catch (error: unknown) {
       console.error("Error deleting webhook:", error);
       toast.error("Failed to delete webhook");

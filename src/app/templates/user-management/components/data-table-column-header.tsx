@@ -3,12 +3,13 @@
  */
 
 import { ArrowUpDown } from "lucide-react";
+import type { Column } from "@tanstack/react-table";
 
-export function DataTableColumnHeader({
+export function DataTableColumnHeader<TData>({
   column,
   title,
 }: {
-  column: any;
+  column: Column<TData, unknown>;
   title: string;
 }) {
   return (

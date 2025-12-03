@@ -89,26 +89,26 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Update expanded sections when pathname changes
+  // Note: We intentionally read expandedSections/expandedSubSections to check if already expanded
+  // but don't want to re-run when they change (would cause infinite loop)
   useEffect(() => {
     const newActiveIndex = findActiveSectionIndex(pathname, navigation);
     if (newActiveIndex >= 0) {
-      // Expand parent section
-      if (!expandedSections.has(newActiveIndex)) {
-        setTimeout(() => {
-          setExpandedSections((prev) => new Set([...prev, newActiveIndex]));
-        }, 0);
-      }
+      // Expand parent section (use functional update to avoid dependency)
+      setExpandedSections((prev) => {
+        if (prev.has(newActiveIndex)) return prev;
+        return new Set([...prev, newActiveIndex]);
+      });
       // Expand sub-section containing active item
       const section = navigation[newActiveIndex];
       if (section.subSections) {
         const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
         if (activeSubIndex >= 0) {
           const subKey = `${newActiveIndex}-${activeSubIndex}`;
-          if (!expandedSubSections.has(subKey)) {
-            setTimeout(() => {
-              setExpandedSubSections((prev) => new Set([...prev, subKey]));
-            }, 0);
-          }
+          setExpandedSubSections((prev) => {
+            if (prev.has(subKey)) return prev;
+            return new Set([...prev, subKey]);
+          });
         }
       }
     }
@@ -219,8 +219,7 @@ export function DocsSidebar({ navigation, className, formatSectionTitle, formatI
                           <a
                             key={item.href}
                             href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target="_blank" rel="noopener noreferrer"
                             className="flex items-center gap-2 px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                           >
                             <Icon className="h-3 w-3" />

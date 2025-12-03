@@ -11,7 +11,7 @@ interface User {
   projectCount?: number;
   apiCalls?: number;
   storageUsed?: number;
-  [key: string]: any;
+  [key: string]: string | number | boolean | Date | undefined;
 }
 
 /**

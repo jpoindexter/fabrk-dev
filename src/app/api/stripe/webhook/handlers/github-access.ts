@@ -44,7 +44,7 @@ export async function handleGitHubAccessGrant(
 
     // Extract GitHub username from custom fields
     // Stripe sends custom_fields as an array: [{ key: "github_username", type: "text", text: { value: "..." } }]
-    const customFields = (session as any).custom_fields || [];
+    const customFields = (session as { custom_fields?: Array<{ key: string; text?: { value: string } }> }).custom_fields || [];
     const githubField = customFields.find(
       (field: { key: string }) => field.key === "github_username"
     );
