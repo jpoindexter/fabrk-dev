@@ -69,11 +69,11 @@ export default function ButtonPage() {
           title: "Icon Only",
           description: "A compact button containing only an icon.",
           preview: (
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="Download">
               <Download className="h-4 w-4" />
             </Button>
           ),
-          code: `<Button variant="outline" size="icon">
+          code: `<Button variant="outline" size="icon" aria-label="Download">
   <Download className="h-4 w-4" />
 </Button>`,
         },
