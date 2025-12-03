@@ -143,10 +143,10 @@ This report summarizes the progress and key findings of the comprehensive system
 | Authentication | 79% | 49/62 routes use `await auth()` |
 | Zod Validation | 24% | 15 routes (all critical mutations) |
 | CSRF Protection | 50% | 31 routes protected |
-| Rate Limiting | 16% | 10 routes (payment endpoints) |
+| Rate Limiting | 35% | 22 routes (security, payment, mutations) |
 
 **Weaknesses:**
-- ❌ No CORS configuration (blocks external client-side API access)
+- ✅ ~~No CORS configuration~~ - Implemented for `/api/v1/*` routes
 - ⚠️ Inconsistent versioning (only 5% use `/api/v1/` prefix)
 - ⚠️ Limited pagination (only 1 route implements full pagination response)
 - ⚠️ Minimal API documentation (only Stripe routes have OpenAPI docs)
@@ -364,6 +364,18 @@ This report summarizes the progress and key findings of the comprehensive system
 | `src/app/api/v1/members/route.ts` | Added OPTIONS export for CORS preflight | CORS support |
 | `src/app/api/v1/members/invite/route.ts` | Added OPTIONS export for CORS preflight | CORS support |
 | `src/app/api/v1/organizations/[id]/route.ts` | Added OPTIONS export for CORS preflight | CORS support |
+| `src/app/api/user/password/route.ts` | Added auth rate limiting (5/15min) | Rate limiting |
+| `src/app/api/user/delete/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/contact/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/organizations/create/route.ts` | Added api rate limiting (60/min) | Rate limiting |
+| `src/app/api/organizations/invite/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/user/2fa/setup/route.ts` | Added auth rate limiting (5/15min) | Rate limiting |
+| `src/app/api/user/2fa/verify/route.ts` | Added auth rate limiting (5/15min) | Rate limiting |
+| `src/app/api/user/sessions/invalidate-all/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/user/export/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/organizations/invites/accept/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/polar/checkout/route.ts` | Added strict rate limiting (10/min) | Rate limiting |
+| `src/app/api/api-keys/route.ts` | Added strict rate limiting (10/min) for POST | Rate limiting |
 
 ---
 
@@ -376,7 +388,7 @@ This report summarizes the progress and key findings of the comprehensive system
 4. **Implement Data Cleanup:** Add automated retention cleanup script
 
 ### Medium Priority
-5. **Expand Rate Limiting:** Add rate limiting to all mutation endpoints
+5. **Expand Rate Limiting:** ✅ Extended to 22 routes (35% coverage)
 6. **Add Soft Delete Support:** Implement `deletedAt` field for users
 7. **Generate OpenAPI Spec:** Document public API endpoints
 8. **Run Full Lighthouse Audit:** Execute `npm run lighthouse` with fixed config
@@ -430,7 +442,7 @@ This report summarizes the progress and key findings of the comprehensive system
 **Phases Completed:** 14 of 27 (52%)
 **Critical Issues Found:** 6
 **Gaps Resolved:** 29/29 (100%)
-**Fixes Applied:** 55
+**Fixes Applied:** 67
 
 ### Critical Issues - Resolution Status:
 1. **GDPR Consent Tracking** - ✅ Fixed: Added Consent model to Prisma schema
