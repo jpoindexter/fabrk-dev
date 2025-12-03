@@ -42,7 +42,8 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     data-slot="select-trigger"
     className={cn(
-      "flex h-8 w-full items-center justify-between rounded-none border bg-background px-4 py-2 font-mono text-xs ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 transition-colors",
+      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
+      "bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between rounded-none border px-4 font-mono text-xs transition-colors focus:ring-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1",
       className
     )}
     {...props}
@@ -108,7 +109,7 @@ const SelectContent = React.forwardRef<
       ref={ref}
       data-slot="select-content"
       className={cn(
-        "relative z-50 max-h-96 min-w-32 overflow-hidden rounded-none border bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-32 overflow-hidden rounded-none border",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className
@@ -173,7 +174,8 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pl-8 pr-2 font-mono text-xs outline-none hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
       className
     )}
     {...props}
@@ -197,15 +199,13 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 font-mono text-xs font-medium", className)}
+    className={cn("py-1.5 pr-2 pl-8 font-mono text-xs font-medium", className)}
     {...props}
   />
 ));
 SelectLabel.displayName = "SelectLabel";
 
-export type SelectSeparatorProps = React.ComponentPropsWithoutRef<
-  typeof SelectPrimitive.Separator
->;
+export type SelectSeparatorProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>;
 
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
@@ -213,7 +213,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-border", className)}
+    className={cn("bg-border -mx-1 my-1 h-px", className)}
     {...props}
   />
 ));
