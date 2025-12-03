@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import DOMPurify from "isomorphic-dompurify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -66,21 +67,50 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
   ) => {
     const editorRef = React.useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = React.useState(false);
-    const [currentFormat, setCurrentFormat] = React.useState<
-      Record<string, boolean>
-    >({});
+    const [currentFormat, setCurrentFormat] = React.useState<Record<string, boolean>>({});
     const [isLinkDialogOpen, setIsLinkDialogOpen] = React.useState(false);
     const [linkUrl, setLinkUrl] = React.useState("");
 
     // Merge refs
     React.useImperativeHandle(ref, () => editorRef.current as HTMLDivElement);
 
+    // SECURITY: Sanitize content to prevent XSS attacks
+    const sanitizedValue = React.useMemo(() => {
+      return DOMPurify.sanitize(value, {
+        ALLOWED_TAGS: [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "p",
+          "br",
+          "strong",
+          "em",
+          "u",
+          "s",
+          "b",
+          "i",
+          "a",
+          "ul",
+          "ol",
+          "li",
+          "blockquote",
+          "div",
+          "span",
+        ],
+        ALLOWED_ATTR: ["href", "target", "rel", "class", "style"],
+        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+      });
+    }, [value]);
+
     // Set initial content
     React.useEffect(() => {
-      if (editorRef.current && value !== editorRef.current.innerHTML) {
-        editorRef.current.innerHTML = value;
+      if (editorRef.current && sanitizedValue !== editorRef.current.innerHTML) {
+        editorRef.current.innerHTML = sanitizedValue;
       }
-    }, [value]);
+    }, [sanitizedValue]);
 
     // Handle content changes
     const handleInput = () => {
@@ -258,7 +288,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       <div className={`w-full ${className}`}>
         {/* Toolbar */}
         {!readOnly && (
-          <div className="mb-2 flex flex-wrap gap-1 rounded-none border bg-card p-2 shadow-sm">
+          <div className="bg-card mb-2 flex flex-wrap gap-1 rounded-none border p-2 shadow-sm">
             {toolbarButtons.map((tool, index) => (
               <Button
                 key={index}
@@ -293,22 +323,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           onInput={handleInput}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`
-            w-full overflow-y-auto rounded-none border bg-background p-4 text-foreground
-            outline-none transition-all
-            ${isFocused ? "shadow-sm" : "shadow-sm"}
-            ${readOnly ? "cursor-default bg-muted/50" : "cursor-text"}
-            prose prose-sm max-w-none
-            prose-headings:font-semibold prose-headings:text-foreground
-            prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-            prose-p:text-foreground prose-p:leading-relaxed
-            prose-a:text-primary prose-a:underline
-            prose-strong:font-semibold prose-strong:text-foreground
-            prose-em:italic prose-em:text-foreground
-            prose-ul:list-disc prose-ul:pl-6
-            prose-ol:list-decimal prose-ol:pl-6
-            prose-li:text-foreground
-          `}
+          className={`bg-background text-foreground w-full overflow-y-auto rounded-none border p-4 transition-all outline-none ${isFocused ? "shadow-sm" : "shadow-sm"} ${readOnly ? "bg-muted/50 cursor-default" : "cursor-text"} prose prose-sm prose-headings:font-semibold prose-headings:text-foreground prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-em:italic prose-em:text-foreground prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-foreground max-w-none`}
           style={{
             minHeight,
             maxHeight,
@@ -317,15 +332,12 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           suppressContentEditableWarning
         />
 
-
         {/* Link Dialog */}
         <Dialog open={isLinkDialogOpen} onOpenChange={setIsLinkDialogOpen}>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Insert Link</DialogTitle>
-              <DialogDescription>
-                Enter the URL you want to link to.
-              </DialogDescription>
+              <DialogDescription>Enter the URL you want to link to.</DialogDescription>
             </DialogHeader>
             <div className="py-4">
               <Input
@@ -344,10 +356,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
               />
             </div>
             <DialogFooter>
-              <Button
-                variant="outline"
-                onClick={() => setIsLinkDialogOpen(false)}
-              >
+              <Button variant="outline" onClick={() => setIsLinkDialogOpen(false)}>
                 Cancel
               </Button>
               <Button onClick={handleInsertLink} disabled={!linkUrl}>
