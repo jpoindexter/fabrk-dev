@@ -9,24 +9,30 @@ import Link from "next/link";
 // Simplified Navigation Demo for docs
 function NavigationDemo() {
   return (
-    <nav className="w-full border border-border bg-background">
+    <nav className="border-border bg-background w-full border">
       <div className="flex h-14 items-center px-4">
         {/* Logo */}
         <Link href="#" className="flex items-center gap-2 font-mono">
-          <span className="text-xs text-primary">&gt;</span>
+          <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-bold">FABRK</span>
-          <span className="text-xs text-muted-foreground">_CONSOLE</span>
+          <span className="text-muted-foreground text-xs">_CONSOLE</span>
         </Link>
 
         <div className="flex-1" />
 
         {/* Desktop Nav */}
         <div className="hidden items-center gap-4 md:flex">
-          <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">FEATURES</Link>
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">PRICING</Link>
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">DOCS</Link>
-          <div className="h-4 w-px bg-border" />
+          <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            FEATURES
+          </Link>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            PRICING
+          </Link>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            DOCS
+          </Link>
+          <div className="bg-border h-4 w-px" />
           <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
             &gt; VIEW_DEMO
           </Button>
@@ -39,17 +45,28 @@ function NavigationDemo() {
         <div className="flex md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-none">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-none"
+                aria-label="Open navigation menu"
+              >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="rounded-none w-[280px]">
+            <SheetContent side="right" className="w-[280px] rounded-none">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col gap-4 pt-8">
-                <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
-                <Link href="#" className="font-mono text-sm">&gt; FEATURES</Link>
-                <Link href="#" className="font-mono text-sm">&gt; PRICING</Link>
-                <Link href="#" className="font-mono text-sm">&gt; DOCS</Link>
+                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+                <Link href="#" className="font-mono text-sm">
+                  &gt; FEATURES
+                </Link>
+                <Link href="#" className="font-mono text-sm">
+                  &gt; PRICING
+                </Link>
+                <Link href="#" className="font-mono text-sm">
+                  &gt; DOCS
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
@@ -83,16 +100,26 @@ export default function LandingPage() {
           title: "Mobile Menu Open",
           description: "Sheet-based mobile navigation",
           preview: (
-            <div className="w-full border border-border bg-card p-4">
-              <div className="mb-4 font-mono text-xs text-muted-foreground">[SYSTEM_MENU]</div>
+            <div className="border-border bg-card w-full border p-4">
+              <div className="text-muted-foreground mb-4 font-mono text-xs">[SYSTEM_MENU]</div>
               <div className="flex flex-col gap-4">
-                <span className="font-mono text-xs text-muted-foreground">[NAVIGATE]:</span>
-                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; FEATURES</Link>
-                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; PRICING</Link>
-                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; DOCS</Link>
-                <Link href="#" className="font-mono text-sm text-foreground hover:text-primary">&gt; FAQ</Link>
-                <div className="border-t border-border pt-4">
-                  <Button className="w-full rounded-none font-mono text-xs">&gt; GET_STARTED</Button>
+                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
+                  &gt; FEATURES
+                </Link>
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
+                  &gt; PRICING
+                </Link>
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
+                  &gt; DOCS
+                </Link>
+                <Link href="#" className="text-foreground hover:text-primary font-mono text-sm">
+                  &gt; FAQ
+                </Link>
+                <div className="border-border border-t pt-4">
+                  <Button className="w-full rounded-none font-mono text-xs">
+                    &gt; GET_STARTED
+                  </Button>
                 </div>
               </div>
             </div>

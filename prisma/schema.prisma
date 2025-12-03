@@ -44,6 +44,10 @@ model User {
   // User preferences and settings
   settings Json? // Privacy, notifications, language, appearance preferences
 
+  // Soft delete support (GDPR compliance)
+  deletedAt    DateTime? // Null = active, set = soft deleted
+  anonymizedAt DateTime? // When PII was anonymized
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -58,8 +62,10 @@ model User {
   auditLogs           AuditLog[]
   notifications       Notification[]
   apiKeys             ApiKey[]
+  consents            Consent[]
 
   @@index([email])
+  @@index([deletedAt]) // For filtering active users
 }
 
 model Account {
@@ -497,4 +503,40 @@ model WebhookDelivery {
   @@index([status, nextRetryAt])
   @@index([createdAt])
   @@index([webhookId, createdAt]) // Composite index for webhook delivery history queries
+}
+
+// ===========================
+// GDPR CONSENT TRACKING
+// ===========================
+
+model Consent {
+  id           String    @id @default(cuid())
+  userId       String
+  consentType  ConsentType
+  consentGiven Boolean
+  consentDate  DateTime  @default(now())
+  ipAddress    String?   // IP at time of consent (for audit)
+  userAgent    String?   // Browser/device info
+  withdrawnAt  DateTime? // When consent was revoked (null = active)
+  metadata     Json?     // Additional context (source, campaign, etc.)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, consentType]) // One consent record per type per user
+  @@index([userId])
+  @@index([consentType])
+  @@index([consentDate])
+  @@index([userId, consentType, withdrawnAt]) // For checking active consents
+}
+
+enum ConsentType {
+  MARKETING        // Marketing emails and communications
+  ANALYTICS        // Analytics and tracking
+  COOKIES          // Cookie usage beyond necessary
+  THIRD_PARTY      // Sharing with third parties
+  PROFILING        // User profiling and personalization
+  TERMS_OF_SERVICE // ToS acceptance
+  PRIVACY_POLICY   // Privacy policy acceptance
 }

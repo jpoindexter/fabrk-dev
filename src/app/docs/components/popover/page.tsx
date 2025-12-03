@@ -23,10 +23,8 @@ export default function PopoverPage() {
             </PopoverTrigger>
             <PopoverContent>
               <div className="space-y-2">
-                <h4 className="font-medium leading-none">Dimensions</h4>
-                <p className="text-sm text-muted-foreground">
-                  Set the dimensions for the layer.
-                </p>
+                <h4 className="leading-none font-medium">Dimensions</h4>
+                <p className="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
               </div>
             </PopoverContent>
           </Popover>
@@ -60,10 +58,8 @@ export default function PopoverPage() {
               <PopoverContent>
                 <div className="grid gap-4">
                   <div className="space-y-2">
-                    <h4 className="font-medium leading-none">Settings</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Configure your preferences.
-                    </p>
+                    <h4 className="leading-none font-medium">Settings</h4>
+                    <p className="text-muted-foreground text-sm">Configure your preferences.</p>
                   </div>
                   <div className="grid gap-2">
                     <div className="grid grid-cols-3 items-center gap-4">
@@ -108,7 +104,7 @@ export default function PopoverPage() {
               <PopoverContent align="start">
                 <div className="space-y-2">
                   <h4 className="font-medium">Aligned to Start</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     This popover is aligned to the start of the trigger.
                   </p>
                 </div>
@@ -138,7 +134,7 @@ export default function PopoverPage() {
               <PopoverContent align="end">
                 <div className="space-y-2">
                   <h4 className="font-medium">Aligned to End</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     This popover is aligned to the end of the trigger.
                   </p>
                 </div>
@@ -163,14 +159,14 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" aria-label="Show more information">
                   <Info className="h-4 w-4" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent>
                 <div className="space-y-2">
                   <h4 className="font-medium">Information</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     This is additional information shown in a popover.
                   </p>
                 </div>
@@ -179,7 +175,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="ghost" size="icon">
+    <Button variant="ghost" size="icon" aria-label="Show more information">
       <Info className="h-4 w-4" />
     </Button>
   </PopoverTrigger>
@@ -202,9 +198,9 @@ export default function PopoverPage() {
               <PopoverContent className="w-96">
                 <div className="space-y-2">
                   <h4 className="font-medium">Custom Width</h4>
-                  <p className="text-sm text-muted-foreground">
-                    This popover has a custom width of 384px (w-96). You can adjust the width
-                    using Tailwind classes.
+                  <p className="text-muted-foreground text-sm">
+                    This popover has a custom width of 384px (w-96). You can adjust the width using
+                    Tailwind classes.
                   </p>
                 </div>
               </PopoverContent>

@@ -105,13 +105,13 @@ export default function TooltipPage() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" aria-label="Save">
                     <Save className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>
-                    Save <kbd className="ml-1 bg-muted border border-border px-1 text-xs">⌘S</kbd>
+                    Save <kbd className="bg-muted border-border ml-1 border px-1 text-xs">⌘S</kbd>
                   </p>
                 </TooltipContent>
               </Tooltip>
@@ -120,7 +120,7 @@ export default function TooltipPage() {
           code: `<TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
-      <Button variant="ghost" size="icon">
+      <Button variant="ghost" size="icon" aria-label="Save">
         <Save className="h-4 w-4" />
       </Button>
     </TooltipTrigger>
@@ -228,13 +228,15 @@ export default function TooltipPage() {
           name: "delayDuration",
           type: "number",
           default: "700",
-          description: "The duration from when the mouse enters a tooltip trigger until the tooltip opens (in ms). Set on TooltipProvider.",
+          description:
+            "The duration from when the mouse enters a tooltip trigger until the tooltip opens (in ms). Set on TooltipProvider.",
         },
         {
           name: "skipDelayDuration",
           type: "number",
           default: "300",
-          description: "How long a user has to enter another trigger without delay after closing a tooltip (in ms). Set on TooltipProvider.",
+          description:
+            "How long a user has to enter another trigger without delay after closing a tooltip (in ms). Set on TooltipProvider.",
         },
         {
           name: "open",

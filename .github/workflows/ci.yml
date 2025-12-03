@@ -40,6 +40,68 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit
 
+  env-validation:
+    name: Environment Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: setup
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check required CI environment variables
+        run: |
+          echo "## Environment Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          MISSING_VARS=""
+
+          # Check critical secrets exist (without exposing values)
+          if [ -z "${{ secrets.NEXTAUTH_SECRET || '' }}" ]; then
+            echo "⚠️ NEXTAUTH_SECRET not configured (using test value)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ NEXTAUTH_SECRET configured" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ -z "${{ secrets.DATABASE_URL || '' }}" ]; then
+            echo "⚠️ DATABASE_URL not configured (using test database)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ DATABASE_URL configured" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check optional but recommended secrets
+          if [ -z "${{ secrets.LHCI_GITHUB_APP_TOKEN || '' }}" ]; then
+            echo "ℹ️ LHCI_GITHUB_APP_TOKEN not configured (Lighthouse comments disabled)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ LHCI_GITHUB_APP_TOKEN configured" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Environment validation complete." >> $GITHUB_STEP_SUMMARY
+
+      - name: Validate .env.example completeness
+        run: |
+          if [ -f ".env.example" ]; then
+            echo "Checking .env.example..."
+
+            # Count environment variables
+            VAR_COUNT=$(grep -c "^[A-Z]" .env.example || echo "0")
+            echo "Found $VAR_COUNT environment variables in .env.example"
+
+            # Check for common required variables
+            REQUIRED_VARS="DATABASE_URL AUTH_SECRET NEXTAUTH_URL"
+            for var in $REQUIRED_VARS; do
+              if grep -q "^$var" .env.example; then
+                echo "✓ $var documented"
+              else
+                echo "⚠ $var missing from .env.example"
+              fi
+            done
+          else
+            echo "Warning: .env.example not found"
+          fi
+
   lint:
     name: Lint & Format Check
     runs-on: ubuntu-latest
