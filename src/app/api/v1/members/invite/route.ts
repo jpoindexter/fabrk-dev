@@ -4,6 +4,10 @@ import { prisma } from "@/lib/prisma";
 import { sendOrganizationInvite } from "@/lib/email";
 import crypto from "crypto";
 import { logger } from "@/lib/logger";
+import { handleCorsPreFlight } from "@/lib/security/cors";
+
+// Handle CORS preflight requests
+export const OPTIONS = handleCorsPreFlight;
 
 /**
  * POST /api/v1/members/invite
@@ -17,10 +21,7 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
 
     // Validate required fields
     if (!email) {
-      return NextResponse.json(
-        { error: "Email is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
     // Validate role
@@ -60,10 +61,7 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
     });
 
     if (existingInvite) {
-      return NextResponse.json(
-        { error: "User already has a pending invite" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "User already has a pending invite" }, { status: 400 });
     }
 
     // Generate invite token
@@ -116,9 +114,6 @@ export const POST = requirePermission("write", async (req: NextRequest, apiKey) 
     });
   } catch (error: unknown) {
     logger.error("Error creating invite:", error);
-    return NextResponse.json(
-      { error: "Failed to create invite" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to create invite" }, { status: 500 });
   }
 });

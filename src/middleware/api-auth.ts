@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateApiKey, extractApiKeyFromHeader, type ValidatedApiKey } from "@/lib/api-keys/auth";
+import { getCorsHeaders, handleCorsPreFlight } from "@/lib/security/cors";
 
 /**
  * API Key Authentication Middleware
  * Use in API routes that require API key authentication
+ *
+ * For /api/v1/* routes, CORS headers are automatically added.
  */
 
 /**
@@ -13,6 +16,26 @@ import { validateApiKey, extractApiKeyFromHeader, type ValidatedApiKey } from "@
 export type RouteContext = {
   params: Promise<Record<string, string | string[]>>;
 };
+
+/**
+ * Check if request is to a v1 API route (requires CORS)
+ */
+function isV1Route(request: NextRequest): boolean {
+  return request.nextUrl.pathname.startsWith("/api/v1/");
+}
+
+/**
+ * Add CORS headers to response if it's a v1 route
+ */
+function addCorsHeadersIfNeeded(request: NextRequest, response: NextResponse): NextResponse {
+  if (isV1Route(request)) {
+    const corsHeaders = getCorsHeaders(request);
+    corsHeaders.forEach((value, key) => {
+      response.headers.set(key, value);
+    });
+  }
+  return response;
+}
 
 /**
  * Authenticate request using API key from Authorization header
@@ -37,23 +60,32 @@ export async function authenticateApiKey(request: NextRequest): Promise<Validate
 /**
  * Middleware wrapper to require API key authentication
  * Returns 401 if no valid API key is provided
+ * For /api/v1/* routes, handles CORS preflight and adds CORS headers
  * @param handler - Route handler function
  * @returns Wrapped handler with authentication
  */
 export function requireApiKey(
-  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: RouteContext) => Promise<NextResponse>
+  handler: (
+    req: NextRequest,
+    apiKey: ValidatedApiKey,
+    context?: RouteContext
+  ) => Promise<NextResponse>
 ) {
   return async (req: NextRequest, context?: RouteContext) => {
+    // Handle CORS preflight for v1 routes
+    if (req.method === "OPTIONS" && isV1Route(req)) {
+      return handleCorsPreFlight(req);
+    }
+
     const apiKey = await authenticateApiKey(req);
 
     if (!apiKey) {
-      return NextResponse.json(
-        { error: "Invalid or missing API key" },
-        { status: 401 }
-      );
+      const response = NextResponse.json({ error: "Invalid or missing API key" }, { status: 401 });
+      return addCorsHeadersIfNeeded(req, response);
     }
 
-    return handler(req, apiKey, context);
+    const response = await handler(req, apiKey, context);
+    return addCorsHeadersIfNeeded(req, response);
   };
 }
 
@@ -66,7 +98,11 @@ export function requireApiKey(
  */
 export function requirePermission(
   permission: string,
-  handler: (req: NextRequest, apiKey: ValidatedApiKey, context?: RouteContext) => Promise<NextResponse>
+  handler: (
+    req: NextRequest,
+    apiKey: ValidatedApiKey,
+    context?: RouteContext
+  ) => Promise<NextResponse>
 ) {
   return requireApiKey(async (req, apiKey, context) => {
     if (!apiKey.permissions.includes(permission)) {

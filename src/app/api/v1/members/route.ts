@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/middleware/api-auth";
 import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
+import { handleCorsPreFlight } from "@/lib/security/cors";
+
+// Handle CORS preflight requests
+export const OPTIONS = handleCorsPreFlight;
 
 /**
  * GET /api/v1/members
@@ -31,9 +35,6 @@ export const GET = requirePermission("read", async (req: NextRequest, apiKey) =>
     return NextResponse.json(members);
   } catch (error: unknown) {
     logger.error("Error fetching members:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch members" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch members" }, { status: 500 });
   }
 });
