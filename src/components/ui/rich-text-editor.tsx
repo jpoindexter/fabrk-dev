@@ -154,19 +154,18 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       setCurrentFormat(formats);
     };
 
-    // Handle selection change
-    const handleSelectionChange = React.useCallback(() => {
-      if (document.activeElement === editorRef.current) {
-        updateFormatState();
-      }
-    }, []);
-
     React.useEffect(() => {
+      const handleSelectionChange = () => {
+        if (document.activeElement === editorRef.current) {
+          updateFormatState();
+        }
+      };
+
       document.addEventListener("selectionchange", handleSelectionChange);
       return () => {
         document.removeEventListener("selectionchange", handleSelectionChange);
       };
-    }, [handleSelectionChange]);
+    }, []);
 
     // Toolbar configurations
     const fullToolbar: ToolbarButton[] = [

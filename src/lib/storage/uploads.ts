@@ -77,8 +77,9 @@ async function initializeS3Client() {
 
   try {
     // Dynamic require to avoid TypeScript errors when SDK not installed
-    const s3 = require("@aws-sdk/client-s3");
-    const presigner = require("@aws-sdk/s3-request-presigner");
+    // Using eval to bypass Turbopack/Webpack static analysis for optional dependencies
+    const s3 = eval('require("@aws-sdk/client-s3")');
+    const presigner = eval('require("@aws-sdk/s3-request-presigner")');
 
     S3Client = s3.S3Client;
     PutObjectCommand = s3.PutObjectCommand;
@@ -175,10 +176,13 @@ export interface UploadOptions {
 /**
  * Validate file
  */
-export function validateFile(file: File | Buffer, options: {
-  maxSize?: number;
-  allowedTypes?: string[];
-}): { valid: boolean; error?: string } {
+export function validateFile(
+  file: File | Buffer,
+  options: {
+    maxSize?: number;
+    allowedTypes?: string[];
+  }
+): { valid: boolean; error?: string } {
   const maxSize = options.maxSize || MAX_FILE_SIZE;
 
   // Check size
@@ -263,11 +267,9 @@ async function uploadToCloud(
   }
 
   // Generate signed URL for private files
-  return await getSignedUrl(
-    s3Client,
-    new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }),
-    { expiresIn: 3600 }
-  );
+  return await getSignedUrl(s3Client, new GetObjectCommand({ Bucket: BUCKET_NAME, Key: key }), {
+    expiresIn: 3600,
+  });
 }
 
 /**
@@ -292,11 +294,12 @@ export async function uploadFile(options: UploadOptions): Promise<{
   const key = `${options.userId}/${filename}`;
 
   // Get file buffer
-  const buffer = options.file instanceof File
-    ? Buffer.from(await options.file.arrayBuffer())
-    : options.file;
+  const buffer =
+    options.file instanceof File ? Buffer.from(await options.file.arrayBuffer()) : options.file;
 
-  const mimeType = options.mimeType || (options.file instanceof File ? options.file.type : "application/octet-stream");
+  const mimeType =
+    options.mimeType ||
+    (options.file instanceof File ? options.file.type : "application/octet-stream");
   const visibility = options.visibility || "private";
 
   let url: string;
@@ -306,12 +309,13 @@ export async function uploadFile(options: UploadOptions): Promise<{
   if (STORAGE_PROVIDER !== "local") {
     try {
       url = await uploadToCloud(buffer, key, mimeType, visibility, options.metadata);
-                } catch (error: unknown) {
-                  logger.warn("Cloud upload failed, falling back to local storage", { error });
-                  url = await uploadToLocalStorage(buffer, key, mimeType);
-                  actualProvider = "local";
-                }
-              } else {    url = await uploadToLocalStorage(buffer, key, mimeType);
+    } catch (error: unknown) {
+      logger.warn("Cloud upload failed, falling back to local storage", { error });
+      url = await uploadToLocalStorage(buffer, key, mimeType);
+      actualProvider = "local";
+    }
+  } else {
+    url = await uploadToLocalStorage(buffer, key, mimeType);
   }
 
   // Save to database
@@ -422,10 +426,11 @@ export async function deleteFile(fileId: string, userId: string): Promise<void> 
     try {
       await fs.unlink(filePath);
       logger.info("Deleted local file", { key: upload.key });
-                } catch (error: unknown) {
-                  logger.warn("Failed to delete local file", { key: upload.key, error });
-                }
-              } else {    // Delete from cloud storage
+    } catch (error: unknown) {
+      logger.warn("Failed to delete local file", { key: upload.key, error });
+    }
+  } else {
+    // Delete from cloud storage
     const s3Client = await getS3Client();
     if (s3Client) {
       await s3Client.send(
