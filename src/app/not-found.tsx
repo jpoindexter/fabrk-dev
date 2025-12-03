@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
- <div className="flex flex-col items-center justify-center px-6 font-mono">
+    <div className="flex min-h-screen flex-col items-center justify-center px-6 font-mono">
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
         <div className="mb-6 inline-block border-2 border-foreground/20 bg-foreground/5 px-4 py-1">
