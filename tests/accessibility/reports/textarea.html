@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Report - Textarea</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+      padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .status {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      background: #22c55e;
+      color: white;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .violations, .incomplete, .passes {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .violation-item, .incomplete-item {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      border-radius: 4px;
+    }
+    .incomplete-item {
+      background: #fefce8;
+      border-left-color: #eab308;
+    }
+    .violation-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .impact {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+    }
+    .impact.critical { background: #dc2626; color: white; }
+    .impact.serious { background: #f97316; color: white; }
+    .impact.moderate { background: #eab308; color: white; }
+    .impact.minor { background: #3b82f6; color: white; }
+    .violation-title { font-weight: 600; font-size: 1.125rem; }
+    .violation-description {
+      color: #4b5563;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+    .wcag-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .wcag-tag {
+      padding: 0.125rem 0.5rem;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .node {
+      background: white;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+      border: 1px solid #e5e7eb;
+    }
+    .node-html {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      background: #f3f4f6;
+      padding: 0.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-bottom: 0.5rem;
+    }
+    .node-target {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    .node-issue {
+      color: #dc2626;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .help-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .help-link:hover { text-decoration: underline; }
+    .timestamp {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Accessibility Report: Textarea</h1>
+      <span class="status">PASSED</span>
+      <p class="timestamp">Generated: 12/3/2025, 7:42:05 PM</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" style="color: #ef4444;">0</div>
+        <div class="stat-label">Violations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color: #eab308;">1</div>
+        <div class="stat-label">Incomplete</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color: #22c55e;">43</div>
+        <div class="stat-label">Passes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color: #3b82f6;">98%</div>
+        <div class="stat-label">Pass Rate</div>
+      </div>
+    </div>
+
+    
+
+    
+      <div class="incomplete">
+        <h2>⚠️ Incomplete (1)</h2>
+        <p style="margin-bottom: 1rem; color: #6b7280;">These checks could not be completed automatically and require manual verification.</p>
+        
+          <div class="incomplete-item">
+            <div class="violation-header">
+              <span class="violation-title">1. color-contrast</span>
+            </div>
+            <p class="violation-description">Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</p>
+            <strong>Affected Elements (11):</strong>
+            
+              <div class="node">
+                <div class="node-html">&lt;textarea data-slot="textarea" class="flex min-h-20 w-full..." id="message-textarea" placeholder="Type your message he..." rows="4"&gt;</div>
+                <div class="node-target"><strong>Target:</strong> #message-textarea</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(1) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(2) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(3) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(4) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(5) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(6) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(7) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(8) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(9) > .text-primary.font-bold</div>
+              </div>
+            
+              <div class="node">
+                <div class="node-html">&lt;span class="text-primary font-bold"&gt;✓&lt;/span&gt;</div>
+                <div class="node-target"><strong>Target:</strong> li:nth-child(10) > .text-primary.font-bold</div>
+              </div>
+            
+            <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" class="help-link">Learn more →</a>
+          </div>
+        
+      </div>
+    
+
+    
+      <div class="passes">
+        <h2>✅ Passed Checks (43)</h2>
+        <ul style="list-style: none;">
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-allowed-attr</strong> - Ensure an element's role supports its ARIA attributes
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-allowed-role</strong> - Ensure role attribute has an appropriate value for the element
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-conditional-attr</strong> - Ensure ARIA attributes are used as described in the specification of the element's role
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-deprecated-role</strong> - Ensure elements do not use deprecated roles
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-hidden-body</strong> - Ensure aria-hidden="true" is not present on the document body.
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-hidden-focus</strong> - Ensure aria-hidden elements are not focusable nor contain focusable elements
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-prohibited-attr</strong> - Ensure ARIA attributes are not prohibited for an element's role
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-required-attr</strong> - Ensure elements with ARIA roles have all required ARIA attributes
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-required-children</strong> - Ensure elements with an ARIA role that require child roles contain them
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-required-parent</strong> - Ensure elements with an ARIA role that require parent roles are contained by them
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-roles</strong> - Ensure all elements with a role attribute use a valid value
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-valid-attr-value</strong> - Ensure all ARIA attributes have valid values
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>aria-valid-attr</strong> - Ensure attributes that begin with aria- are valid ARIA attributes
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>avoid-inline-spacing</strong> - Ensure that text spacing set through style attributes can be adjusted with custom stylesheets
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>button-name</strong> - Ensure buttons have discernible text
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>bypass</strong> - Ensure each page has at least one mechanism for a user to bypass navigation and jump straight to the content
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>color-contrast</strong> - Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>document-title</strong> - Ensure each HTML document contains a non-empty <title> element
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>duplicate-id-aria</strong> - Ensure every id attribute value used in ARIA and in labels is unique
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>empty-heading</strong> - Ensure headings have discernible text
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>form-field-multiple-labels</strong> - Ensure form field does not have multiple label elements
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>heading-order</strong> - Ensure the order of headings is semantically correct
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>html-has-lang</strong> - Ensure every HTML document has a lang attribute
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>html-lang-valid</strong> - Ensure the lang attribute of the <html> element has a valid value
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>image-alt</strong> - Ensure <img> elements have alternative text or a role of none or presentation
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>image-redundant-alt</strong> - Ensure image alternative is not repeated as text
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>label-title-only</strong> - Ensure that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>label</strong> - Ensure every form element has a label
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>landmark-main-is-top-level</strong> - Ensure the main landmark is at top level
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>landmark-no-duplicate-contentinfo</strong> - Ensure the document has at most one contentinfo landmark
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>landmark-no-duplicate-main</strong> - Ensure the document has at most one main landmark
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>landmark-one-main</strong> - Ensure the document has a main landmark
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>landmark-unique</strong> - Ensure landmarks are unique
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>link-name</strong> - Ensure links have discernible text
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>list</strong> - Ensure that lists are structured correctly
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>listitem</strong> - Ensure <li> elements are used semantically
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>meta-viewport-large</strong> - Ensure <meta name="viewport"> can scale a significant amount
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>meta-viewport</strong> - Ensure <meta name="viewport"> does not disable text scaling and zooming
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>nested-interactive</strong> - Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>page-has-heading-one</strong> - Ensure that the page, or at least one of its frames contains a level-one heading
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>region</strong> - Ensure all page content is contained by landmarks
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>skip-link</strong> - Ensure all skip links have a focusable target
+            </li>
+          
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>tabindex</strong> - Ensure tabindex attribute values are not greater than 0
+            </li>
+          
+        </ul>
+      </div>
+    
+  </div>
+</body>
+</html>
