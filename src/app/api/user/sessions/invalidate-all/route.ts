@@ -11,17 +11,33 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { logger } from "@/lib/logger";
 
-export const POST = withCsrfProtection(async (_req: NextRequest) => {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: strict (10 requests/minute) for session invalidation
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Get current user data
@@ -35,10 +51,7 @@ export const POST = withCsrfProtection(async (_req: NextRequest) => {
     });
 
     if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     // Get count of active sessions before invalidation
@@ -79,9 +92,6 @@ export const POST = withCsrfProtection(async (_req: NextRequest) => {
     });
   } catch (error: unknown) {
     logger.error("[Session Invalidation] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to invalidate sessions" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to invalidate sessions" }, { status: 500 });
   }
 });

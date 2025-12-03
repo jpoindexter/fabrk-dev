@@ -12,22 +12,38 @@ import {
   generateTOTPSecret,
   generateTOTPUri,
   generateBackupCodes,
-  hashBackupCode
+  hashBackupCode,
 } from "@/lib/auth/mfa";
 import { prisma } from "@/lib/prisma";
 import { AuditLog } from "@/lib/security/audit-log";
 import { withCsrfProtection } from "@/lib/security/csrf";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { logger } from "@/lib/logger";
 
-export const POST = withCsrfProtection(async (_req: NextRequest) => {
+export const POST = withCsrfProtection(async (req: NextRequest) => {
   try {
+    // Rate limit: auth (5 requests/15 min) for 2FA setup
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.auth);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many 2FA setup attempts. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id || !session?.user?.email) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Check if user already has an unverified MFA device
@@ -92,9 +108,6 @@ export const POST = withCsrfProtection(async (_req: NextRequest) => {
     });
   } catch (error: unknown) {
     logger.error("[2FA Setup] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to setup 2FA" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to setup 2FA" }, { status: 500 });
   }
 });

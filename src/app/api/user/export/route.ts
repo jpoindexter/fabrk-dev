@@ -4,13 +4,32 @@
  * GDPR-compliant data export
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { logger } from "@/lib/logger";
 
-export async function GET(_req: Request) {
+export async function GET(req: NextRequest) {
   try {
+    // Rate limit: strict (10 requests/minute) for data export
+    const identifier = getClientIdentifier(req);
+    const rateLimit = await checkRateLimitAuto(identifier, RateLimiters.strict);
+
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many export requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": rateLimit.limit.toString(),
+            "X-RateLimit-Remaining": rateLimit.remaining.toString(),
+            "Retry-After": Math.ceil((rateLimit.reset - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const session = await auth();
 
     if (!session?.user?.id) {
@@ -96,9 +115,6 @@ export async function GET(_req: Request) {
     });
   } catch (error: unknown) {
     logger.error("[Data Export] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to export data" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to export data" }, { status: 500 });
   }
 }
