@@ -12,7 +12,7 @@
  */
 
 import { test, expect } from '@playwright/test';
-import AxeBuilder from 'axe-playwright';
+import { AxeBuilder } from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import {
@@ -38,7 +38,7 @@ async function testComponentAccessibility(
   selector?: string
 ) {
   // Run axe accessibility scan
-  const axeBuilder = new AxeBuilder({ page })
+  const axeBuilder = new AxeBuilder({ page: page })
     .withTags(axeConfig.runOnly!.values as string[]);
 
   // If selector provided, scan only that component

@@ -20,7 +20,7 @@ module.exports = {
         'http://localhost:3000/components',
         'http://localhost:3000/templates',
         'http://localhost:3000/features',
-        'http://localhost:3000/variations/modern',
+        'http://localhost:3000/docs',
       ],
 
       // Test configuration
