@@ -47,7 +47,7 @@ const CRITICAL_PATTERNS = [
     name: 'banned shadows',
     pattern: /shadow-(sm|md|lg|xl|2xl|inner)\b/,
     message: 'Terminal aesthetic = no shadows. Use shadow-none or remove shadow class.',
-    exceptions: ['slider.tsx', 'switch.tsx', 'command.tsx', 'navigation-menu.tsx', 'menubar.tsx'],
+    exceptions: [], // All components should use Visual Mode System, no exceptions
   },
   {
     name: 'colored dots pattern',
