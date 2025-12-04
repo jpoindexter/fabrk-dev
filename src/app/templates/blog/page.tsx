@@ -10,7 +10,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from "lucide-react";
+import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 const categories = [
@@ -92,11 +93,16 @@ const mockPosts = [
 export default function BlogTemplate() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts =
-    activeCategory === "all"
-      ? mockPosts
-      : mockPosts.filter((post) => post.category === activeCategory);
+  const filteredPosts = mockPosts.filter((post) => {
+    const matchesCategory = activeCategory === "all" || post.category === activeCategory;
+    const matchesSearch =
+      searchQuery === "" ||
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   const featuredPost = mockPosts.find((post) => post.featured);
   const regularPosts = filteredPosts.filter((post) => !post.featured);
@@ -105,14 +111,28 @@ export default function BlogTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-2">
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
+            </div>
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">Blog</h1>
+            <p className="text-muted-foreground font-mono text-sm">
+              Articles, tutorials, and updates from the team
+            </p>
           </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Blog</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Articles, tutorials, and updates from the team
-          </p>
+
+          {/* Search */}
+          <div className="relative w-full md:w-72">
+            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+            <Input
+              type="search"
+              placeholder="Search articles..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="rounded-none pl-10 font-mono text-xs"
+            />
+          </div>
         </div>
 
         {/* Featured Post */}
