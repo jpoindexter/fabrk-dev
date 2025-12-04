@@ -25,63 +25,51 @@ test.describe("Component Showcase Visual Regression", () => {
   });
 
   test("buttons section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "BUTTONS" }).first();
+    const section = page.locator("section#buttons");
     await expect(section).toBeVisible();
     await expect(section).toHaveScreenshot("buttons-section.png");
   });
 
-  test("form inputs section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "FORM_INPUTS" }).first();
+  test("inputs section", async ({ page }) => {
+    const section = page.locator("section#inputs");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("form-inputs-section.png");
+    await expect(section).toHaveScreenshot("inputs-section.png");
   });
 
-  test("selection controls section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "SELECTION_CONTROLS" }).first();
+  test("data display section", async ({ page }) => {
+    const section = page.locator("section#display");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("selection-controls-section.png");
+    await expect(section).toHaveScreenshot("display-section.png");
   });
 
-  test("badges section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "BADGES" }).first();
+  test("charts section", async ({ page }) => {
+    const section = page.locator("section#charts");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("badges-section.png");
+    await expect(section).toHaveScreenshot("charts-section.png");
   });
 
-  test("alerts section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "ALERTS" }).first();
+  test("feedback section", async ({ page }) => {
+    const section = page.locator("section#feedback");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("alerts-section.png");
+    await expect(section).toHaveScreenshot("feedback-section.png");
   });
 
-  test("cards section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "CARDS" }).first();
+  test("overlays section", async ({ page }) => {
+    const section = page.locator("section#overlays");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("cards-section.png");
+    await expect(section).toHaveScreenshot("overlays-section.png");
   });
 
-  test("tabs section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "TABS" }).first();
+  test("navigation section", async ({ page }) => {
+    const section = page.locator("section#navigation");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("tabs-section.png");
+    await expect(section).toHaveScreenshot("navigation-section.png");
   });
 
-  test("accordion section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "ACCORDION" }).first();
+  test("layout section", async ({ page }) => {
+    const section = page.locator("section#layout");
     await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("accordion-section.png");
-  });
-
-  test("table section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "TABLE" }).first();
-    await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("table-section.png");
-  });
-
-  test("window controls section", async ({ page }) => {
-    const section = page.locator("section").filter({ hasText: "WINDOW_CONTROLS" }).first();
-    await expect(section).toBeVisible();
-    await expect(section).toHaveScreenshot("window-controls-section.png");
+    await expect(section).toHaveScreenshot("layout-section.png");
   });
 });
 
@@ -129,8 +117,8 @@ test.describe("Visual Consistency Checks", () => {
     await page.goto("/component-showcase");
     await page.waitForLoadState("networkidle");
 
-    // Navigate to window controls section
-    const section = page.locator("section").filter({ hasText: "WINDOW_CONTROLS" }).first();
+    // Navigate to layout section which contains window controls
+    const section = page.locator("section#layout");
     await section.scrollIntoViewIfNeeded();
 
     // Take screenshot to verify squares vs circles
