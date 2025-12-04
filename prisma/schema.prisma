@@ -63,6 +63,7 @@ model User {
   notifications       Notification[]
   apiKeys             ApiKey[]
   consents            Consent[]
+  blogPosts           BlogPost[]
 
   @@index([email])
   @@index([deletedAt]) // For filtering active users
@@ -539,4 +540,58 @@ enum ConsentType {
   PROFILING        // User profiling and personalization
   TERMS_OF_SERVICE // ToS acceptance
   PRIVACY_POLICY   // Privacy policy acceptance
+}
+
+// ===========================
+// BLOG
+// ===========================
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String?
+  content     String    @db.Text
+  featured    Boolean   @default(false)
+  published   Boolean   @default(false)
+
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  categoryId  String?
+  category    BlogCategory? @relation(fields: [categoryId], references: [id])
+
+  featuredImage String?
+  readTime    Int? // Estimated read time in minutes
+
+  // SEO fields
+  seoTitle       String?
+  seoDescription String?
+
+  // Analytics
+  viewCount   Int       @default(0)
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  publishedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([published])
+  @@index([featured])
+  @@index([createdAt])
+  @@index([publishedAt])
+}
+
+model BlogCategory {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  description String?
+
+  posts BlogPost[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

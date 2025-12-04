@@ -61,6 +61,7 @@ const docsNavigation = [
     href: "/docs/features/payments",
     items: [
       { title: "Stripe Setup", href: "/docs/features/payments" },
+      { title: "Lemon Squeezy", href: "/docs/features/lemonsqueezy" },
       { title: "Free Trials", href: "/docs/features/trial" },
       { title: "Subscription Guide", href: "/docs/tutorials/stripe-payments" },
     ],
@@ -122,6 +123,9 @@ const docsNavigation = [
     href: "/docs/features/organizations",
     items: [
       { title: "Organizations", href: "/docs/features/organizations" },
+      { title: "User Impersonation", href: "/docs/features/impersonation" },
+      { title: "Blog System", href: "/docs/features/blog" },
+      { title: "i18n", href: "/docs/features/i18n" },
       { title: "Realtime", href: "/docs/features/realtime" },
       { title: "Background Jobs", href: "/docs/features/background-jobs" },
       { title: "Analytics", href: "/docs/features/analytics" },
