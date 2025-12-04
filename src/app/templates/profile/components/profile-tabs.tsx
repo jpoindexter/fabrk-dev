@@ -10,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { TerminalCardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, Star, GitBranch, LucideIcon } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ActivityItem {
   id: string;
@@ -42,17 +44,25 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
 
       <div className="p-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="border-border h-auto rounded-none border bg-transparent p-0">
+          <TabsList className={cn("border-border h-auto border bg-transparent p-0", mode.radius)}>
             <TabsTrigger
               value="activity"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-none px-4 py-2 font-mono text-xs"
+              className={cn(
+                "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
+                mode.radius,
+                mode.font
+              )}
             >
               <Activity className="mr-1 h-3 w-3" />
               [ACTIVITY]
             </TabsTrigger>
             <TabsTrigger
               value="projects"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-none px-4 py-2 font-mono text-xs"
+              className={cn(
+                "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
+                mode.radius,
+                mode.font
+              )}
             >
               <GitBranch className="mr-1 h-3 w-3" />
               [PROJECTS]

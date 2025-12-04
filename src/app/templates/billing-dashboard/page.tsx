@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ArrowUpRight } from "lucide-react";
 import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Extracted components
 import { CurrentPlanCard } from "./components/current-plan-card";
@@ -179,12 +181,18 @@ export default function BillingDashboardTemplate() {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TerminalCard>
             <TerminalCardHeader code="0x00" title="BILLING_NAVIGATION" />
-            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+            <TabsList
+              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+            >
               {(["overview", "plans", "history"] as const).map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground rounded-none border-r px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   [{tab.toUpperCase()}]
                 </TabsTrigger>

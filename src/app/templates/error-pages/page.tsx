@@ -25,6 +25,8 @@ import {
   ArrowLeft,
   AlertTriangle,
 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const errorPages = [
   {
@@ -121,12 +123,18 @@ export default function ErrorPagesTemplate() {
         <Tabs value={activeError} onValueChange={setActiveError}>
           <TerminalCard>
             <TerminalCardHeader code="0x00" title="ERROR_TYPES" />
-            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+            <TabsList
+              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+            >
               {errorPages.map((error) => (
                 <TabsTrigger
                   key={error.id}
                   value={error.id}
-                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   <error.icon className="h-3 w-3" />[{error.code}]
                 </TabsTrigger>

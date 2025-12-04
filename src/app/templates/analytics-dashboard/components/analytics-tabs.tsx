@@ -8,6 +8,8 @@ import { TerminalCardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Download, BarChart3 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export interface PageData {
   page: string;
@@ -47,12 +49,18 @@ export function AnalyticsTabs({
         <TerminalCardHeader code="0x00" title="ANALYTICS_TABS" />
 
         {/* Terminal Tab Navigation */}
-        <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+        <TabsList
+          className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+        >
           {(["overview", "analytics", "reports"] as const).map((tab) => (
             <TabsTrigger
               key={tab}
               value={tab}
-              className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground rounded-none border-r px-4 py-2 font-mono text-xs"
+              className={cn(
+                "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground border-r px-4 py-2 text-xs",
+                mode.radius,
+                mode.font
+              )}
             >
               [{tab.toUpperCase()}]
             </TabsTrigger>

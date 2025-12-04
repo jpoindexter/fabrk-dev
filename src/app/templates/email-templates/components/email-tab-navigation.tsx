@@ -5,6 +5,8 @@
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
 import { TerminalCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface EmailTabNavigationProps {
   templates: EmailTemplate[];
@@ -12,16 +14,25 @@ interface EmailTabNavigationProps {
 
 export function EmailTabNavigation({ templates }: EmailTabNavigationProps) {
   return (
-    <div className="border-border bg-card border">
+    <div className={cn("border-border bg-card border", mode.radius)}>
       <TerminalCardHeader code="0x00" title="EMAIL_TABS" />
-      <TabsList className="h-auto w-full justify-start overflow-x-auto rounded-none border-0 bg-transparent p-0">
+      <TabsList
+        className={cn(
+          "h-auto w-full justify-start overflow-x-auto border-0 bg-transparent p-0",
+          mode.radius
+        )}
+      >
         {templates.map((template) => {
           const Icon = template.icon;
           return (
             <TabsTrigger
               key={template.id}
               value={template.id}
-              className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs whitespace-nowrap"
+              className={cn(
+                "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs whitespace-nowrap",
+                mode.radius,
+                mode.font
+              )}
             >
               <Icon className="h-3 w-3" />[{template.name.toUpperCase().replace(/ /g, "_")}]
             </TabsTrigger>

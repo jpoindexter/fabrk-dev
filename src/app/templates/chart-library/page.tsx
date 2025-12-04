@@ -33,6 +33,8 @@ import {
   Legend,
 } from "recharts";
 import { TrendingUp, Download } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock data
 const revenueData = [
@@ -174,12 +176,18 @@ export default function ChartLibraryTemplate() {
             <TerminalCardHeader code="0x00" title="CHART_NAVIGATION" />
 
             {/* Tab Navigation */}
-            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+            <TabsList
+              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+            >
               {(["line", "area", "bar", "pie"] as const).map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground rounded-none border-r px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   [{tab.toUpperCase()}_CHART]
                 </TabsTrigger>

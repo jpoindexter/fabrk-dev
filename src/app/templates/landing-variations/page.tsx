@@ -17,6 +17,8 @@ import {
   TemplatePageHeader,
   TerminalFeaturesCard,
 } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Play,
@@ -64,12 +66,18 @@ export default function LandingVariationsTemplate() {
         <Tabs value={activeVariation} onValueChange={setActiveVariation}>
           <TerminalCard>
             <TerminalCardHeader code="0x00" title="VARIATION_SELECTOR" />
-            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+            <TabsList
+              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+            >
               {heroVariations.map((variation) => (
                 <TabsTrigger
                   key={variation.id}
                   value={variation.id}
-                  className="border-border data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:border-b-primary data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:hover:text-foreground flex-1 rounded-none border-r px-4 py-3 font-mono text-xs last:border-r-0 data-[state=active]:border-b-2"
+                  className={cn(
+                    "border-border data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:border-b-primary data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:hover:text-foreground flex-1 border-r px-4 py-3 text-xs last:border-r-0 data-[state=active]:border-b-2",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   [{variation.name.toUpperCase().replace(" ", "_")}]
                 </TabsTrigger>

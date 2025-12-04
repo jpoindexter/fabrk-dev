@@ -15,6 +15,8 @@ import { AccountTab } from "./components/account-tab";
 import { PrivacyTab } from "./components/privacy-tab";
 import { BillingTab } from "./components/billing-tab";
 import { ImplementationNote } from "./components/implementation-note";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const TAB_ITEMS = [
   { id: "general", label: "GENERAL", icon: Settings },
@@ -42,12 +44,18 @@ export default function SettingsPageTemplate() {
                 [ [0x00] SETTINGS_NAVIGATION ]
               </span>
             </div>
-            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+            <TabsList
+              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
+            >
               {TAB_ITEMS.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   <tab.icon className="h-3 w-3" />[{tab.label}]
                 </TabsTrigger>

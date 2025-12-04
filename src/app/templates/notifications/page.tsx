@@ -16,6 +16,8 @@ import { NotificationsActionsBar } from "./components/notifications-actions-bar"
 import { NotificationsList } from "./components/notifications-list";
 import { NotificationTypesReference } from "./components/notification-types-reference";
 import { FeaturesCard } from "./components/features-card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function NotificationsTemplate() {
   const [notifications, setNotifications] = useState<Notification[]>(initialNotifications);
@@ -74,16 +76,26 @@ export default function NotificationsTemplate() {
 
             {/* Tabs */}
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="border-border h-auto rounded-none border bg-transparent p-0">
+              <TabsList
+                className={cn("border-border h-auto border bg-transparent p-0", mode.radius)}
+              >
                 <TabsTrigger
                   value="all"
-                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-none px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   [ALL]
                 </TabsTrigger>
                 <TabsTrigger
                   value="unread"
-                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-none px-4 py-2 font-mono text-xs"
+                  className={cn(
+                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
+                    mode.radius,
+                    mode.font
+                  )}
                 >
                   [UNREAD] ({unreadCount})
                 </TabsTrigger>
