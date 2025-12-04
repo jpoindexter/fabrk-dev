@@ -31,6 +31,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
@@ -61,22 +62,22 @@ function DataTableColumnHeaderInner<TData = unknown, TValue = unknown>(
       <Button
         variant="ghost"
         size="sm"
-        className="-ml-4 h-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:bg-accent dark:bg-accent"
+        className="focus-visible:ring-ring data-[state=open]:bg-accent dark:bg-accent -ml-4 h-8 focus-visible:ring-2 focus-visible:outline-none"
         onClick={() => column.toggleSorting(isSorted === "asc")}
         aria-label={`Sort by ${title} ${isSorted === "asc" ? "descending" : isSorted === "desc" ? "ascending" : ""}`}
       >
         <span>{title}</span>
         {isSorted === "desc" ? (
           <ArrowDown
-            className={`"h-4 w-4" ml-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-4 w-4" focus-visible:ring-ring ml-2 focus-visible:ring-2 focus-visible:outline-none`}
           />
         ) : isSorted === "asc" ? (
           <ArrowUp
-            className={`"h-4 w-4" ml-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-4 w-4" focus-visible:ring-ring ml-2 focus-visible:ring-2 focus-visible:outline-none`}
           />
         ) : (
           <ArrowUpDown
-            className={`"h-4 w-4" ml-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-4 w-4" focus-visible:ring-ring ml-2 focus-visible:ring-2 focus-visible:outline-none`}
           />
         )}
       </Button>

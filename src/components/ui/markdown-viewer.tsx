@@ -13,6 +13,7 @@
 
 "use client";
 
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 import DOMPurify from "isomorphic-dompurify";
@@ -30,11 +31,32 @@ export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerPro
     const sanitizedContent = React.useMemo(() => {
       return DOMPurify.sanitize(content, {
         ALLOWED_TAGS: [
-          "h1", "h2", "h3", "h4", "h5", "h6",
-          "p", "br", "strong", "em", "u", "s",
-          "a", "ul", "ol", "li", "blockquote",
-          "code", "pre", "img", "table", "thead",
-          "tbody", "tr", "th", "td"
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "p",
+          "br",
+          "strong",
+          "em",
+          "u",
+          "s",
+          "a",
+          "ul",
+          "ol",
+          "li",
+          "blockquote",
+          "code",
+          "pre",
+          "img",
+          "table",
+          "thead",
+          "tbody",
+          "tr",
+          "th",
+          "td",
         ],
         ALLOWED_ATTR: ["href", "src", "alt", "title", "class"],
         ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
@@ -48,9 +70,9 @@ export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerPro
           ref={ref}
           className={cn("animate-pulse space-y-6", className, "")}
         >
-          <div className="h-4 w-3/4 rounded border border-border bg-card" />
-          <div className="h-4 w-full rounded border border-border bg-card" />
-          <div className="h-4 w-5/6 rounded border border-border bg-card" />
+          <div className={cn("border-border bg-card h-4 w-3/4 border", mode.radius)} />
+          <div className={cn("border-border bg-card h-4 w-full border", mode.radius)} />
+          <div className={cn("border-border bg-card h-4 w-5/6 border", mode.radius)} />
         </div>
       );
     }
@@ -62,7 +84,7 @@ export const MarkdownViewer = React.forwardRef<HTMLDivElement, MarkdownViewerPro
     return (
       <div
         ref={ref}
-        className={cn("prose prose-sm max-w-none dark:prose-invert", className, "")}
+        className={cn("prose prose-sm dark:prose-invert max-w-none", className, "")}
         role="article"
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         {...props}

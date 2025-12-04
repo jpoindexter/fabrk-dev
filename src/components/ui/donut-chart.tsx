@@ -3,6 +3,7 @@
 import * as React from "react";
 import { PieChart, PieChartDataItem } from "./pie-chart";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface DonutChartProps {
   data: PieChartDataItem[];
@@ -44,7 +45,7 @@ export function DonutChart({
       />
       {centerContent && (
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none"
+          className="pointer-events-none absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center"
           style={{
             width: innerRadius * 2,
             height: innerRadius * 2,
@@ -88,13 +89,11 @@ export function MetricDonutChart({
       showLegend={showLegend}
       onSegmentClick={onSegmentClick}
       centerContent={
-        <div className="text-center px-4">
-          <p className="text-3xl font-semibold leading-none mb-1">{metric.value}</p>
-          <p className="text-xs font-medium text-muted-foreground">{metric.label}</p>
+        <div className="px-4 text-center">
+          <p className="mb-1 text-3xl leading-none font-semibold">{metric.value}</p>
+          <p className="text-muted-foreground text-xs font-medium">{metric.label}</p>
           {metric.sublabel && (
-            <p className="text-xs text-muted-foreground mt-0.5">
-              {metric.sublabel}
-            </p>
+            <p className="text-muted-foreground mt-0.5 text-xs">{metric.sublabel}</p>
           )}
         </div>
       }
@@ -140,15 +139,11 @@ export function ProgressDonutChart({
       thickness={thickness}
       showLegend={false}
       centerContent={
-        <div className="text-center px-4">
+        <div className="px-4 text-center">
           {showPercentage && (
-            <p className="text-3xl font-semibold leading-none mb-1">
-              {percentage.toFixed(0)}%
-            </p>
+            <p className="mb-1 text-3xl leading-none font-semibold">{percentage.toFixed(0)}%</p>
           )}
-          {label && (
-            <p className="text-xs font-medium text-muted-foreground">{label}</p>
-          )}
+          {label && <p className="text-muted-foreground text-xs font-medium">{label}</p>}
         </div>
       }
       className={className}

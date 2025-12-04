@@ -5,6 +5,7 @@
 
 "use client";
 
+import { mode } from "@/lib/design-system";
 import { Button } from "./button";
 import { Label } from "./label";
 import { Slider } from "./slider";
@@ -23,19 +24,7 @@ export interface CropperControlsProps {
 }
 
 export const CropperControls = React.forwardRef<HTMLDivElement, CropperControlsProps>(
-  (
-    {
-      zoom,
-      rotation,
-      minZoom,
-      maxZoom,
-      onZoomChange,
-      onRotationChange,
-      onReset,
-      onCrop,
-    },
-    ref
-  ) => {
+  ({ zoom, rotation, minZoom, maxZoom, onZoomChange, onRotationChange, onReset, onCrop }, ref) => {
     return (
       <div data-slot="cropper-controls" ref={ref} className="space-y-4 pt-4">
         {/* Zoom Control */}
@@ -45,7 +34,7 @@ export const CropperControls = React.forwardRef<HTMLDivElement, CropperControlsP
               <ZoomIn className="h-4 w-4" />
               Zoom
             </Label>
-            <span className="text-sm text-muted-foreground">{Math.round(zoom * 100)}%</span>
+            <span className="text-muted-foreground text-sm">{Math.round(zoom * 100)}%</span>
           </div>
           <Slider
             value={[zoom]}
@@ -64,7 +53,7 @@ export const CropperControls = React.forwardRef<HTMLDivElement, CropperControlsP
               <RotateCw className="h-4 w-4" />
               Rotation
             </Label>
-            <span className="text-sm text-muted-foreground">{rotation}°</span>
+            <span className="text-muted-foreground text-sm">{rotation}°</span>
           </div>
           <Slider
             value={[rotation]}

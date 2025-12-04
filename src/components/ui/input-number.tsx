@@ -12,6 +12,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
@@ -130,12 +131,12 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
           {...props}
         />
         {showControls && (
-          <div className="absolute right-1 top-1 flex h-[calc(100%-8px)] flex-col">
+          <div className="absolute top-1 right-1 flex h-[calc(100%-8px)] flex-col">
             <Button
               type="button"
               variant="ghost"
               size="icon"
-              className="h-4 w-6 rounded-b-none p-0"
+              className={cn("h-4 w-6 p-0", mode.radius === "rounded-none" ? "rounded-b-none" : "")}
               onClick={increment}
               disabled={disabled || (max !== undefined && value !== undefined && value >= max)}
               tabIndex={-1}
@@ -147,7 +148,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
               type="button"
               variant="ghost"
               size="icon"
-              className="h-4 w-6 rounded-t-none p-0"
+              className={cn("h-4 w-6 p-0", mode.radius === "rounded-none" ? "rounded-t-none" : "")}
               onClick={decrement}
               disabled={disabled || (min !== undefined && value !== undefined && value <= min)}
               tabIndex={-1}

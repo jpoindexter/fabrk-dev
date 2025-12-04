@@ -9,6 +9,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { ButtonProps, buttonVariants } from "@/components/ui/button";
 

@@ -15,6 +15,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import * as React from "react";
@@ -215,7 +216,7 @@ const PasswordStrength = React.forwardRef<HTMLInputElement, PasswordStrengthProp
             type="button"
             variant="ghost"
             size="icon"
-            className={`absolute right-0 top-0 h-full px-4 hover:bg-background/0`}
+            className={`hover:bg-background/0 absolute top-0 right-0 h-full px-4`}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             aria-label={showPassword ? "Hide password" : "Show password"}

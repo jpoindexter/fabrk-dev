@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 
 /**
  * Typography Component Library
@@ -35,21 +36,20 @@ import { cn } from "@/lib/utils";
  * <H1 className="text-center">Centered Hero Title</H1>
  * ```
  */
-export const H1 = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h1
-    ref={ref}
-    className={cn(
-      "text-4xl font-bold leading-tight text-foreground sm:text-5xl md:text-5xl lg:text-6xl",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </h1>
-));
+export const H1 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, children, ...props }, ref) => (
+    <h1
+      ref={ref}
+      className={cn(
+        "text-foreground text-4xl leading-tight font-bold sm:text-5xl md:text-5xl lg:text-6xl",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </h1>
+  )
+);
 H1.displayName = "H1";
 
 /**
@@ -67,21 +67,20 @@ H1.displayName = "H1";
  * <H2 className="mb-8">Section Title</H2>
  * ```
  */
-export const H2 = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h2
-    ref={ref}
-    className={cn(
-      "text-3xl font-bold leading-tight text-foreground sm:text-3xl md:text-4xl",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </h2>
-));
+export const H2 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, children, ...props }, ref) => (
+    <h2
+      ref={ref}
+      className={cn(
+        "text-foreground text-3xl leading-tight font-bold sm:text-3xl md:text-4xl",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </h2>
+  )
+);
 H2.displayName = "H2";
 
 /**
@@ -99,21 +98,17 @@ H2.displayName = "H2";
  * <H3 className="mt-6">Subsection Title</H3>
  * ```
  */
-export const H3 = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn(
-      "text-xl font-semibold leading-tight text-foreground",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </h3>
-));
+export const H3 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, children, ...props }, ref) => (
+    <h3
+      ref={ref}
+      className={cn("text-foreground text-xl leading-tight font-semibold", className)}
+      {...props}
+    >
+      {children}
+    </h3>
+  )
+);
 H3.displayName = "H3";
 
 /**
@@ -131,21 +126,17 @@ H3.displayName = "H3";
  * <H4 className="mb-2">Component Label</H4>
  * ```
  */
-export const H4 = React.forwardRef<
-  HTMLHeadingElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h4
-    ref={ref}
-    className={cn(
-      "text-lg font-semibold leading-tight text-foreground",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </h4>
-));
+export const H4 = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, children, ...props }, ref) => (
+    <h4
+      ref={ref}
+      className={cn("text-foreground text-lg leading-tight font-semibold", className)}
+      {...props}
+    >
+      {children}
+    </h4>
+  )
+);
 H4.displayName = "H4";
 
 // =============================================================================
@@ -173,10 +164,7 @@ export const Body = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn(
-      "text-base font-normal leading-relaxed text-foreground",
-      className
-    )}
+    className={cn("text-foreground text-base leading-relaxed font-normal", className)}
     {...props}
   />
 ));
@@ -203,10 +191,7 @@ export const BodyMuted = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn(
-      "text-base font-normal leading-relaxed text-muted-foreground",
-      className
-    )}
+    className={cn("text-muted-foreground text-base leading-relaxed font-normal", className)}
     {...props}
   />
 ));
@@ -233,10 +218,7 @@ export const Lead = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn(
-      "text-lg font-normal leading-relaxed text-foreground",
-      className
-    )}
+    className={cn("text-foreground text-lg leading-relaxed font-normal", className)}
     {...props}
   />
 ));
@@ -257,19 +239,15 @@ Lead.displayName = "Lead";
  * <Small className="text-destructive">Error message</Small>
  * ```
  */
-export const Small = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->(({ className, ...props }, ref) => (
-  <small
-    ref={ref}
-    className={cn(
-      "text-sm font-normal leading-relaxed text-muted-foreground",
-      className
-    )}
-    {...props}
-  />
-));
+export const Small = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <small
+      ref={ref}
+      className={cn("text-muted-foreground text-sm leading-relaxed font-normal", className)}
+      {...props}
+    />
+  )
+);
 Small.displayName = "Small";
 
 // =============================================================================
@@ -301,24 +279,23 @@ export interface ListProps extends React.HTMLAttributes<HTMLUListElement> {
   ordered?: boolean;
 }
 
-export const List = React.forwardRef<
-  HTMLUListElement | HTMLOListElement,
-  ListProps
->(({ className, ordered = false, ...props }, ref) => {
-  const Component = ordered ? "ol" : "ul";
-  return (
-    <Component
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Union ref type requires any
-      ref={ref as any}
-      className={cn(
-        "ml-6 space-y-2 text-base leading-relaxed text-foreground",
-        ordered ? "list-decimal" : "list-disc",
-        className
-      )}
-      {...props}
-    />
-  );
-});
+export const List = React.forwardRef<HTMLUListElement | HTMLOListElement, ListProps>(
+  ({ className, ordered = false, ...props }, ref) => {
+    const Component = ordered ? "ol" : "ul";
+    return (
+      <Component
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Union ref type requires any
+        ref={ref as any}
+        className={cn(
+          "text-foreground ml-6 space-y-2 text-base leading-relaxed",
+          ordered ? "list-decimal" : "list-disc",
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 List.displayName = "List";
 
 /**
@@ -336,16 +313,11 @@ List.displayName = "List";
  * </List>
  * ```
  */
-export const ListItem = React.forwardRef<
-  HTMLLIElement,
-  React.HTMLAttributes<HTMLLIElement>
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn("leading-relaxed", className)}
-    {...props}
-  />
-));
+export const ListItem = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement>>(
+  ({ className, ...props }, ref) => (
+    <li ref={ref} className={cn("leading-relaxed", className)} {...props} />
+  )
+);
 ListItem.displayName = "ListItem";
 
 // =============================================================================
@@ -363,16 +335,11 @@ ListItem.displayName = "ListItem";
  * <Body>This is <Strong>important</Strong> information.</Body>
  * ```
  */
-export const Strong = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->(({ className, ...props }, ref) => (
-  <strong
-    ref={ref}
-    className={cn("font-semibold", className)}
-    {...props}
-  />
-));
+export const Strong = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <strong ref={ref} className={cn("font-semibold", className)} {...props} />
+  )
+);
 Strong.displayName = "Strong";
 
 /**
@@ -389,19 +356,15 @@ Strong.displayName = "Strong";
  * <Body>Run <Code>npm install</Code> to get started.</Body>
  * ```
  */
-export const Code = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->(({ className, ...props }, ref) => (
-  <code
-    ref={ref}
-    className={cn(
-      "rounded bg-muted px-1.5 py-0.5 font-mono text-sm",
-      className
-    )}
-    {...props}
-  />
-));
+export const Code = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  ({ className, ...props }, ref) => (
+    <code
+      ref={ref}
+      className={cn("bg-muted rounded px-1.5 py-0.5 font-mono text-sm", className)}
+      {...props}
+    />
+  )
+);
 Code.displayName = "Code";
 
 /**
@@ -425,10 +388,7 @@ export const Link = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <a
     ref={ref}
-    className={cn(
-      "text-primary underline-offset-4 hover:underline",
-      className
-    )}
+    className={cn("text-primary underline-offset-4 hover:underline", className)}
     {...props}
   />
 ));

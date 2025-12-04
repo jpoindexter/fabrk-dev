@@ -9,18 +9,12 @@
  * ```
  */
 
-
-
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Check, Copy } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";
 import { Button } from "./button";
-
-
-
-
-
 
 export interface CopyButtonProps {
   value: string;
@@ -47,7 +41,8 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
     };
 
     return (
-      <Button data-slot="copy-button"
+      <Button
+        data-slot="copy-button"
         ref={ref}
         size={size}
         variant={variant}

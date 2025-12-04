@@ -14,6 +14,7 @@
 "use client";
 
 import { Toast, ToastProvider } from "@/components/ui/toast";
+import { mode } from "@/lib/design-system/visual-mode";
 import * as React from "react";
 
 // Types
@@ -62,13 +63,23 @@ export const ToastAction = ({ children, altText, ...props }: ToastActionInnerPro
 );
 ToastAction.displayName = "ToastAction";
 
-export const ToastTitle = ({ children }: ToastContentProps) => <div data-slot="toast-title" className="font-medium">{children}</div>;
+export const ToastTitle = ({ children }: ToastContentProps) => (
+  <div data-slot="toast-title" className="font-medium">
+    {children}
+  </div>
+);
 ToastTitle.displayName = "ToastTitle";
 export const ToastDescription = ({ children }: ToastContentProps) => (
-  <div data-slot="toast-description" className={`"text-sm" opacity-90 dark:text-muted-foreground`}>{children}</div>
+  <div data-slot="toast-description" className={`"text-sm" dark:text-muted-foreground opacity-90`}>
+    {children}
+  </div>
 );
 ToastDescription.displayName = "ToastDescription";
-export const ToastClose = () => <button data-slot="toast-close" aria-label="Close">×</button>;
+export const ToastClose = () => (
+  <button data-slot="toast-close" aria-label="Close">
+    ×
+  </button>
+);
 ToastClose.displayName = "ToastClose";
 export const ToastViewport = () => <div data-slot="toast-viewport" />;
 ToastViewport.displayName = "ToastViewport";

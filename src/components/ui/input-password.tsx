@@ -12,6 +12,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { Eye, EyeOff } from "lucide-react";
 import * as React from "react";
@@ -39,7 +40,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
             type="button"
             variant="ghost"
             size="sm"
-            className={`absolute right-0 top-0 h-full px-4 py-1 hover:bg-background/0`}
+            className={`hover:bg-background/0 absolute top-0 right-0 h-full px-4 py-1`}
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
             tabIndex={-1}

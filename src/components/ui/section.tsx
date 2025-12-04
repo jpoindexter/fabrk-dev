@@ -8,6 +8,7 @@
  * ```
  */
 
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
@@ -146,7 +147,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
         {...props}
       >
         {subtitle && (
-          <p className={`"text-sm" font-medium uppercase tracking-wide text-muted-foreground`}>
+          <p className={`"text-sm" text-muted-foreground font-medium tracking-wide uppercase`}>
             {subtitle}
           </p>
         )}
@@ -154,7 +155,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
           <h2 className={`text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl`}>{title}</h2>
         )}
         {description && (
-          <p className={`"text-lg" mx-auto max-w-3xl text-muted-foreground`}>{description}</p>
+          <p className={`"text-lg" text-muted-foreground mx-auto max-w-3xl`}>{description}</p>
         )}
         {children}
       </Component>

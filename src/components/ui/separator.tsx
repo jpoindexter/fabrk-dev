@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 interface SeparatorProps extends React.ComponentProps<"div"> {
@@ -20,7 +21,7 @@ export function Separator({
       role={decorative ? "none" : "separator"}
       {...(!decorative && { "aria-orientation": orientation })}
       className={cn(
-        "shrink-0 bg-border",
+        "bg-border shrink-0",
         orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
         className
       )}

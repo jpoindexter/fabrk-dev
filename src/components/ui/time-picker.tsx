@@ -3,13 +3,10 @@
 import * as React from "react";
 import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Label } from "@/components/ui/label";
 
 interface TimePickerProps {
@@ -106,12 +103,7 @@ export function TimePicker({
           <div className="flex items-center justify-center space-x-2">
             {/* Hours */}
             <div className="flex flex-col items-center space-y-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={incrementHours}
-                className="h-8 w-8 p-0"
-              >
+              <Button variant="outline" size="sm" onClick={incrementHours} className="h-8 w-8 p-0">
                 +
               </Button>
               <Input
@@ -125,19 +117,14 @@ export function TimePicker({
                     setHours(e.target.value);
                   }
                 }}
-                className="w-16 text-center font-semibold text-lg"
+                className="w-16 text-center text-lg font-semibold"
                 min={use24Hour ? "0" : "1"}
                 max={use24Hour ? "23" : "12"}
               />
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={decrementHours}
-                className="h-8 w-8 p-0"
-              >
+              <Button variant="outline" size="sm" onClick={decrementHours} className="h-8 w-8 p-0">
                 -
               </Button>
-              <Label className="text-xs text-muted-foreground">Hours</Label>
+              <Label className="text-muted-foreground text-xs">Hours</Label>
             </div>
 
             <span className="text-2xl font-bold">:</span>
@@ -161,7 +148,7 @@ export function TimePicker({
                     setMinutes(e.target.value);
                   }
                 }}
-                className="w-16 text-center font-semibold text-lg"
+                className="w-16 text-center text-lg font-semibold"
                 min="0"
                 max="59"
               />
@@ -173,7 +160,7 @@ export function TimePicker({
               >
                 -
               </Button>
-              <Label className="text-xs text-muted-foreground">Minutes</Label>
+              <Label className="text-muted-foreground text-xs">Minutes</Label>
             </div>
 
             {/* AM/PM Toggle (only for 12-hour format) */}
@@ -187,7 +174,7 @@ export function TimePicker({
                 >
                   {period}
                 </Button>
-                <Label className="text-xs text-muted-foreground">Period</Label>
+                <Label className="text-muted-foreground text-xs">Period</Label>
               </div>
             )}
           </div>

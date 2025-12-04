@@ -10,6 +10,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 
 interface SimpleIconProps {
   path: string;
