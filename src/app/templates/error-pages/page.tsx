@@ -152,8 +152,8 @@ export default function ErrorPagesTemplate() {
               "503": "0x03",
             };
             return (
-              <TabsContent key={error.id} value={error.id} className="mt-6">
-                <TerminalCard>
+              <TabsContent key={error.id} value={error.id} className="mt-0">
+                <TerminalCard className="border-t-0">
                   <TerminalCardHeader
                     code={codeMap[error.id] || "0x00"}
                     title={`ERROR_${error.code}`}

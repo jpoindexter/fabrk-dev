@@ -40,7 +40,7 @@ export function ComplianceTab({
   return (
     <div className="space-y-6">
       {/* GDPR Rights */}
-      <div className="border-border bg-card border">
+      <div className="border-border bg-card border border-t-0">
         <TerminalCardHeader code="0x00" title="GDPR_RIGHTS" />
         <div className="p-4">
           <div className="mb-4 flex items-center gap-4">

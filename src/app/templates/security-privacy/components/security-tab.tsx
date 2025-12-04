@@ -33,7 +33,7 @@ export function SecurityTab({
   return (
     <div className="space-y-6">
       {/* 2FA Section */}
-      <div className="border-border bg-card border">
+      <div className="border-border bg-card border border-t-0">
         <TerminalCardHeader code="0x00" title="TWO_FACTOR" />
         <div className="p-4">
           <div className="mb-4 flex items-center justify-between">

@@ -21,7 +21,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
   return (
     <>
       {/* Alert */}
-      <div className="border-warning bg-warning/10 border p-4 font-mono text-xs">
+      <div className="border-warning bg-warning/10 border border-t-0 p-4 font-mono text-xs">
         <span className="text-warning-foreground font-bold">[WARNING]:</span>{" "}
         <span className="text-foreground">
           Changing your plan will take effect at the next billing cycle

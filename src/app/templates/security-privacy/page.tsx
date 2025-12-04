@@ -178,7 +178,7 @@ export default function SecurityPrivacyTemplate() {
           </TerminalCard>
 
           {/* Tab Contents */}
-          <TabsContent value="security" className="mt-6">
+          <TabsContent value="security" className="mt-0">
             <SecurityTab
               twoFactorEnabled={securityData.user.twoFactorEnabled}
               lastPasswordChange={securityData.user.lastPasswordChange}
@@ -188,15 +188,15 @@ export default function SecurityPrivacyTemplate() {
             />
           </TabsContent>
 
-          <TabsContent value="privacy" className="mt-6">
+          <TabsContent value="privacy" className="mt-0">
             <PrivacyTab privacy={privacy} onToggle={handlePrivacyToggle} />
           </TabsContent>
 
-          <TabsContent value="audit" className="mt-6">
+          <TabsContent value="audit" className="mt-0">
             <AuditTab auditLog={securityData.auditLog} />
           </TabsContent>
 
-          <TabsContent value="compliance" className="mt-6">
+          <TabsContent value="compliance" className="mt-0">
             <ComplianceTab
               onExportData={handleExportData}
               onRequestAccess={handleRequestAccess}

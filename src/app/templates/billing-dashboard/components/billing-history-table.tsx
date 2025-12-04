@@ -30,7 +30,7 @@ export function BillingHistoryTable({
 }: BillingHistoryTableProps) {
   return (
     <>
-      <div className="border-border bg-card border">
+      <div className="border-border bg-card border border-t-0">
         <TerminalCardHeader code="0x00" title="BILLING_HISTORY" />
 
         <div className="p-4">
