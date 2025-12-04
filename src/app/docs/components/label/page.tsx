@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
+import { WindowControls } from "@/components/ui/window-controls";
 import { formatLabel } from "@/lib/design-system";
 
 export default function LabelPage() {
@@ -119,11 +120,7 @@ export default function LabelPage() {
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
-                <div className="flex gap-2">
-                  <div className="size-2 rounded-none bg-destructive/50" />
-                  <div className="size-2 rounded-none bg-warning/50" />
-                  <div className="size-2 rounded-none bg-success/50" />
-                </div>
+                <WindowControls size="sm" />
                 <span className="text-xs text-muted-foreground">label-typography.css</span>
               </div>
               <div className="space-y-1 text-xs">
@@ -156,11 +153,7 @@ tracking-normal      // Letter spacing`,
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
-                <div className="flex gap-2">
-                  <div className="size-2 rounded-none bg-destructive/50" />
-                  <div className="size-2 rounded-none bg-warning/50" />
-                  <div className="size-2 rounded-none bg-success/50" />
-                </div>
+                <WindowControls size="sm" />
                 <span className="text-xs text-muted-foreground">ux-heuristic-5.md</span>
               </div>
               <div className="space-y-2 text-xs">

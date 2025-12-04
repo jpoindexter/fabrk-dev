@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Autocomplete, AutocompleteOption } from "@/components/ui/autocomplete";
+import { WindowControls } from "@/components/ui/window-controls";
 
 export default function AutocompletePage() {
   const frameworks = [
@@ -200,11 +201,7 @@ export default function AutocompletePage() {
               />
               <div className="font-mono text-xs">
                 <div className="border-b border-border px-4 py-2 flex items-center gap-2">
-                  <div className="flex gap-2">
-                    <div className="size-2 rounded-none bg-destructive/50" />
-                    <div className="size-2 rounded-none bg-warning/50" />
-                    <div className="size-2 rounded-none bg-success/50" />
-                  </div>
+                  <WindowControls size="sm" />
                   <span className="text-muted-foreground">keyboard.help</span>
                 </div>
                 <div className="p-4 space-y-1 text-muted-foreground">

@@ -16,23 +16,27 @@ const dotBase = mode.radius;
 interface WindowControlsProps {
   className?: string;
   /** Size variant - defaults to "sm" (size-2) */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
+  /** Enable pulsing animation */
+  animated?: boolean;
 }
 
 const sizeClasses = {
+  xs: "size-1.5",
   sm: "size-2",
   md: "size-3",
   lg: "size-4",
 };
 
-export function WindowControls({ className, size = "sm" }: WindowControlsProps) {
+export function WindowControls({ className, size = "sm", animated = false }: WindowControlsProps) {
   const dotSize = sizeClasses[size];
+  const animationClass = animated ? "animate-pulse" : "";
 
   return (
     <div className={cn("flex gap-2", className)}>
-      <div className={cn(dotBase, dotSize, "bg-destructive/50")} />
-      <div className={cn(dotBase, dotSize, "bg-warning/50")} />
-      <div className={cn(dotBase, dotSize, "bg-success/50")} />
+      <div className={cn(dotBase, dotSize, "bg-destructive/50", animationClass)} style={animated ? { animationDelay: "0ms" } : undefined} />
+      <div className={cn(dotBase, dotSize, "bg-warning/50", animationClass)} style={animated ? { animationDelay: "200ms" } : undefined} />
+      <div className={cn(dotBase, dotSize, "bg-success/50", animationClass)} style={animated ? { animationDelay: "400ms" } : undefined} />
     </div>
   );
 }
@@ -45,13 +49,14 @@ interface WindowHeaderProps {
   filename?: string;
   className?: string;
   children?: React.ReactNode;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
+  animated?: boolean;
 }
 
-export function WindowHeader({ filename, className, children, size = "sm" }: WindowHeaderProps) {
+export function WindowHeader({ filename, className, children, size = "sm", animated = false }: WindowHeaderProps) {
   return (
     <div className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}>
-      <WindowControls size={size} />
+      <WindowControls size={size} animated={animated} />
       {filename && (
         <span className={cn("text-muted-foreground text-xs", mode.font)}>{filename}</span>
       )}

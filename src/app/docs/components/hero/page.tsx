@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Button } from "@/components/ui/button";
+import { WindowControls } from "@/components/ui/window-controls";
 
 // Simplified Hero Demo for docs
 function HeroDemo() {
@@ -38,11 +39,7 @@ function HeroDemo() {
         {/* Right Column - Terminal */}
         <div className="border border-border bg-card">
           <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-2">
-              <div className="size-2.5 rounded-none bg-destructive/50" />
-              <div className="size-2.5 rounded-none bg-warning/50" />
-              <div className="size-2.5 rounded-none bg-success/50" />
-            </div>
+            <WindowControls size="sm" />
             <span className="font-mono text-xs text-muted-foreground">terminal — ~/projects</span>
           </div>
           <div className="p-4 font-mono text-xs">
@@ -131,11 +128,7 @@ export default function LandingPage() {
           preview: (
             <div className="w-full max-w-md border border-border bg-card">
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="size-2.5 rounded-none bg-destructive/50" />
-                  <div className="size-2.5 rounded-none bg-warning/50" />
-                  <div className="size-2.5 rounded-none bg-success/50" />
-                </div>
+                <WindowControls size="sm" />
                 <span className="font-mono text-xs text-muted-foreground">terminal</span>
               </div>
               <div className="p-4 font-mono text-xs">
@@ -145,14 +138,12 @@ export default function LandingPage() {
               </div>
             </div>
           ),
-          code: `// Terminal window with traffic light dots
+          code: `import { WindowControls } from "@/components/ui/window-controls";
+
+// Terminal window with window control dots
 <div className="border border-border bg-card">
   <div className="flex items-center gap-2 border-b px-4 py-2">
-    <div className="flex gap-2">
-      <div className="size-2.5 rounded-none bg-destructive/50" />
-      <div className="size-2.5 rounded-none bg-warning/50" />
-      <div className="size-2.5 rounded-none bg-success/50" />
-    </div>
+    <WindowControls size="sm" />
     <span className="font-mono text-xs">terminal</span>
   </div>
   <div className="p-4 font-mono text-xs">

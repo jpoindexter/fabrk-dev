@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { FormError, commonErrors } from "@/components/ui/form-error";
+import { WindowControls } from "@/components/ui/window-controls";
 import { useState } from "react";
 
 export default function FormErrorPage() {
@@ -119,11 +120,7 @@ export default function FormErrorPage() {
           preview: (
             <div className="space-y-4 p-4 font-mono text-sm">
               <div className="flex items-center gap-2 border-b border-border pb-2">
-                <div className="flex gap-2">
-                  <div className="size-2 rounded-none bg-destructive/50" />
-                  <div className="size-2 rounded-none bg-warning/50" />
-                  <div className="size-2 rounded-none bg-success/50" />
-                </div>
+                <WindowControls size="sm" />
                 <span className="text-xs text-muted-foreground">error-formula.md</span>
               </div>
               <div className="space-y-4 text-xs">

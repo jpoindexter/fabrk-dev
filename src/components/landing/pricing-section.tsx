@@ -9,6 +9,7 @@ import config from "@/config";
 import { motion } from "framer-motion";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
+import { WindowControls } from "@/components/ui/window-controls";
 import { cn } from "@/lib/utils";
 import { mode } from "@/lib/design-system";
 
@@ -87,23 +88,7 @@ export function PricingSection() {
             <div className={cn("border-border bg-card border", mode.radius)}>
               {/* Window Header */}
               <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-2">
-                  <motion.div
-                    className={cn("bg-destructive/50 size-2.5", mode.radius)}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0 }}
-                  />
-                  <motion.div
-                    className={cn("bg-warning/50 size-2.5", mode.radius)}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
-                  />
-                  <motion.div
-                    className={cn("bg-success/50 size-2.5", mode.radius)}
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
-                  />
-                </div>
+                <WindowControls size="sm" animated />
                 <span className={cn("text-muted-foreground text-xs", mode.font)}>
                   [0x41] pricing_config.exe │ PID:3142
                 </span>

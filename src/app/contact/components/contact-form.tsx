@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { WindowControls } from "@/components/ui/window-controls";
 import { MessageCircle, Send, CheckCircle2 } from "lucide-react";
 
 // Extend Window interface for dataLayer
@@ -90,11 +91,7 @@ export function ContactForm() {
     >
       {/* Terminal Header */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-3 rounded-none bg-destructive/50" />
-          <div className="size-3 rounded-none bg-warning/50" />
-          <div className="size-3 rounded-none bg-success/50" />
-        </div>
+        <WindowControls size="md" />
         <span className="text-xs text-muted-foreground">
           [0x01] message_composer.exe │ PID:4096
         </span>
