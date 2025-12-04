@@ -6,7 +6,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,17 +28,11 @@ export default function SignInTemplate() {
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: SIGN_IN</span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Sign In</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Login page with social auth, email/password, and magic links
-            </p>
-          </div>
-        </div>
+        <TemplatePageHeader
+          badge="SIGN_IN"
+          title="Sign In"
+          description="Login page with social auth, email/password, and magic links"
+        />
 
         {/* Template Preview */}
         <TerminalCard>

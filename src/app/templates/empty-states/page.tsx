@@ -7,7 +7,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalFeaturesCard } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import {
   FileQuestion,
   Search,
@@ -116,17 +121,11 @@ export default function EmptyStatesTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: EMPTY_STATES
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Empty States</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Helpful empty state patterns for various scenarios
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="EMPTY_STATES"
+          title="Empty States"
+          description="Helpful empty state patterns for various scenarios"
+        />
 
         {/* Empty State Grid */}
         <div className="grid gap-6 md:grid-cols-2">

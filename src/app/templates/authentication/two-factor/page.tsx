@@ -6,7 +6,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 
@@ -21,19 +26,11 @@ export default function TwoFactorTemplate() {
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: TWO_FACTOR
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Two-Factor Auth</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              2FA verification screen with code input
-            </p>
-          </div>
-        </div>
+        <TemplatePageHeader
+          badge="TWO_FACTOR"
+          title="Two-Factor Auth"
+          description="2FA verification screen with code input"
+        />
 
         {/* Template Preview */}
         <TerminalCard>
@@ -100,26 +97,15 @@ export default function TwoFactorTemplate() {
         </TerminalCard>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> OTP input field with 6-digit slots
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Auto-focus and keyboard navigation
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Resend code functionality
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Fallback option to return to login
-              </div>
-            </div>
-          </div>
-        </TerminalCard>
+        <TerminalFeaturesCard
+          code="0x01"
+          features={[
+            "OTP input field with 6-digit slots",
+            "Auto-focus and keyboard navigation",
+            "Resend code functionality",
+            "Fallback option to return to login",
+          ]}
+        />
       </main>
     </div>
   );

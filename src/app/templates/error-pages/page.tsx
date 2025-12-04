@@ -8,7 +8,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TerminalFeaturesCard } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   FileQuestion,
@@ -105,15 +110,11 @@ export default function ErrorPagesTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: ERROR_PAGES</span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Error Pages</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Terminal-styled error pages for generic errors, 404, 500, and maintenance states
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="ERROR_PAGES"
+          title="Error Pages"
+          description="Terminal-styled error pages for generic errors, 404, 500, and maintenance states"
+        />
 
         {/* Error Type Selector with Tabs */}
         <Tabs value={activeError} onValueChange={setActiveError}>

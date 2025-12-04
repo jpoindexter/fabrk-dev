@@ -6,7 +6,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,17 +28,11 @@ export default function SignUpTemplate() {
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: SIGN_UP</span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Sign Up</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Registration page with form validation and social providers
-            </p>
-          </div>
-        </div>
+        <TemplatePageHeader
+          badge="SIGN_UP"
+          title="Sign Up"
+          description="Registration page with form validation and social providers"
+        />
 
         {/* Template Preview */}
         <TerminalCard>
@@ -190,29 +189,16 @@ export default function SignUpTemplate() {
         </TerminalCard>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> Multi-step registration form layout
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terms of Service checkbox validation
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Password strength indicator support
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Social sign-up integration
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Mobile-responsive card design
-              </div>
-            </div>
-          </div>
-        </TerminalCard>
+        <TerminalFeaturesCard
+          code="0x01"
+          features={[
+            "Multi-step registration form layout",
+            "Terms of Service checkbox validation",
+            "Password strength indicator support",
+            "Social sign-up integration",
+            "Mobile-responsive card design",
+          ]}
+        />
       </main>
     </div>
   );

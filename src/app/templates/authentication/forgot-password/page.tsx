@@ -6,7 +6,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ShieldQuestion } from "lucide-react";
@@ -22,19 +27,11 @@ export default function ForgotPasswordTemplate() {
       {/* Page Content */}
       <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: FORGOT_PASSWORD
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Forgot Password</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Password recovery flow with email verification
-            </p>
-          </div>
-        </div>
+        <TemplatePageHeader
+          badge="FORGOT_PASSWORD"
+          title="Forgot Password"
+          description="Password recovery flow with email verification"
+        />
 
         {/* Template Preview */}
         <TerminalCard>
@@ -92,26 +89,15 @@ export default function ForgotPasswordTemplate() {
         </TerminalCard>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> Clean, focused recovery form
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Clear user instructions and feedback
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Easy navigation back to login
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Email validation pre-configured
-              </div>
-            </div>
-          </div>
-        </TerminalCard>
+        <TerminalFeaturesCard
+          code="0x01"
+          features={[
+            "Clean, focused recovery form",
+            "Clear user instructions and feedback",
+            "Easy navigation back to login",
+            "Email validation pre-configured",
+          ]}
+        />
       </main>
     </div>
   );

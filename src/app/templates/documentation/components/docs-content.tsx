@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { TerminalBadge } from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
 
@@ -35,9 +36,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
     <main className="flex-1 p-8">
       <div className="mx-auto max-w-4xl space-y-6">
         {/* Template Label */}
-        <div className="border-border inline-block border px-4 py-1">
-          <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: DOCUMENTATION</span>
-        </div>
+        <TerminalBadge>DOCUMENTATION</TerminalBadge>
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs">

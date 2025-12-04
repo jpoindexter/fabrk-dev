@@ -4,6 +4,7 @@
  */
 
 import { Badge } from "@/components/ui/badge";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 interface PricingHeaderProps {
   isYearly: boolean;
@@ -13,15 +14,11 @@ interface PricingHeaderProps {
 export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps) {
   return (
     <div className="space-y-4">
-      <div className="border-border inline-block border px-4 py-1">
-        <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: PRICING_PAGE</span>
-      </div>
-      <h1 className="font-mono text-4xl font-semibold tracking-tight">
-        Simple, Transparent Pricing
-      </h1>
-      <p className="text-muted-foreground max-w-xl font-mono text-sm">
-        Choose the plan that fits your needs. All plans include a 14-day free trial.
-      </p>
+      <TemplatePageHeader
+        badge="PRICING_PAGE"
+        title="Simple, Transparent Pricing"
+        description="Choose the plan that fits your needs. All plans include a 14-day free trial."
+      />
 
       {/* Billing Toggle - Terminal Style */}
       <div className="flex items-center justify-center gap-2 pt-4">
