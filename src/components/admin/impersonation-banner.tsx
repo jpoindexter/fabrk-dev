@@ -36,7 +36,7 @@ export function ImpersonationBanner() {
       const res = await fetch("/api/admin/users/impersonate");
       const data = await res.json();
       setStatus(data);
-    } catch (error) {
+    } catch {
       setStatus({ isImpersonating: false });
     }
   }

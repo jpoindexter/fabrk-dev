@@ -1,6 +1,6 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsCallout } from "@/components/docs";
-import { docsTypography, docsSpacing } from "@/components/docs";
+import { docsTypography } from "@/components/docs";
 import Link from "next/link";
 import { FileText, Tag, Search, Eye, Calendar, Edit, Code } from "lucide-react";
 

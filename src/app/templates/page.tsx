@@ -5,14 +5,7 @@
  */
 
 import Link from "next/link";
-import {
-  LayoutDashboard,
-  Settings,
-  Users,
-  FileText,
-  Palette,
-  Lock,
-} from "lucide-react";
+import { LayoutDashboard, Settings, Users, FileText, Palette, Lock } from "lucide-react";
 
 const categories = [
   {
@@ -79,44 +72,31 @@ const categories = [
 
 export default function TemplatesPage() {
   return (
-    <div className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+    <div className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
       {/* Header */}
       <section className="space-y-4">
-        <div className="inline-block border border-border px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[TEMPLATE_GALLERY]: BROWSE_TEMPLATES</span>
+        <div className="border-border inline-block border px-4 py-1">
+          <span className="text-muted-foreground font-mono text-xs">
+            [TEMPLATE_GALLERY]: BROWSE_TEMPLATES
+          </span>
         </div>
         <h1 className="text-4xl font-bold">Template Gallery</h1>
-        <p className="font-mono text-sm text-muted-foreground max-w-2xl">
+        <p className="text-muted-foreground max-w-2xl font-mono text-sm">
           Choose a category to explore ready-to-use templates included with Fabrk.
         </p>
       </section>
 
-      {/* Preview Notice */}
-      <div className="border border-destructive bg-card">
-        <div className="flex items-center gap-2 border-b border-destructive/50 px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive" />
-            <div className="size-2 rounded-none bg-destructive/60" />
-            <div className="size-2 rounded-none bg-destructive/30" />
-          </div>
-          <span className="font-mono text-xs text-destructive">notice.md</span>
-        </div>
-        <div className="p-4">
-          <p className="font-mono text-xs text-muted-foreground">
-            <span className="text-destructive">[NOTE]:</span> These templates showcase how Fabrk's components can be styled and composed. All templates use the same base UI components from <span className="text-foreground">/components/ui</span> and are included when you purchase Fabrk.
-          </p>
-        </div>
-      </div>
-
       {/* Category Cards Grid */}
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid gap-4 md:grid-cols-2">
         {categories.map((category) => (
           <Link key={category.id} href={category.href}>
-            <div className="group border border-border bg-card transition-colors hover:border-primary/50">
+            <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
               {/* Card Header */}
-              <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                <span className="font-mono text-xs text-muted-foreground">[MODULE]: {category.module}</span>
-                <category.icon className="size-4 text-muted-foreground" />
+              <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [MODULE]: {category.module}
+                </span>
+                <category.icon className="text-muted-foreground size-4" />
               </div>
 
               {/* Card Content */}
@@ -128,7 +108,7 @@ export default function TemplatesPage() {
                     <span className="text-success">{category.status}</span>
                   </div>
                   {category.count && (
-                    <div className="border border-border px-2 py-0.5">
+                    <div className="border-border border px-2 py-0.5">
                       <span className="text-muted-foreground">COUNT: </span>
                       <span className="text-foreground">{category.count}</span>
                     </div>
@@ -146,10 +126,10 @@ export default function TemplatesPage() {
 
                 {/* Action */}
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-primary transition-colors group-hover:text-primary/80">
+                  <span className="text-primary group-hover:text-primary/80 font-mono text-xs transition-colors">
                     &gt; BROWSE_TEMPLATES
                   </span>
-                  <span className="font-mono text-xs text-muted-foreground group-hover:translate-x-1 transition-transform">
+                  <span className="text-muted-foreground font-mono text-xs transition-transform group-hover:translate-x-1">
                     →
                   </span>
                 </div>

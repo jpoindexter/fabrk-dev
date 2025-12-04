@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth, signIn } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { withCsrfProtection } from "@/lib/security/csrf";
 import { logger } from "@/lib/logger";
@@ -183,7 +183,7 @@ export async function GET() {
       targetUser,
       startedAt: impersonationData.startedAt,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ isImpersonating: false });
   }
 }

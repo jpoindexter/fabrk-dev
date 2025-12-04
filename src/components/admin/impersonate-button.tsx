@@ -58,7 +58,7 @@ export function ImpersonateButton({
 
       // Redirect to dashboard as the impersonated user
       window.location.href = data.redirect || "/dashboard";
-    } catch (err) {
+    } catch {
       setError("Network error. Please try again.");
     } finally {
       setLoading(false);

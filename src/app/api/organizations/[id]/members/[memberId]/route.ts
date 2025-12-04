@@ -10,7 +10,6 @@ import { withCsrfProtection } from "@/lib/security/csrf";
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from "@/lib/security/rate-limit";
 import { hasOrganizationRole, removeMember, updateMemberRole } from "@/lib/teams/organizations";
 import { OrgRole } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
 import { logger } from "@/lib/logger";
 
 interface RouteContext {

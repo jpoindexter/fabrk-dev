@@ -47,7 +47,7 @@ function Callout({
 // Code block with terminal styling
 function CodeBlock({
   children,
-  language,
+  language: _language,
   filename,
 }: {
   children: string;

@@ -103,7 +103,7 @@ export async function handleOrderCreated(payload: LemonSqueezyWebhookPayload): P
   try {
     const customerEmail = attributes.user_email;
     const userId = meta.custom_data?.user_id;
-    const isGuestPurchase = !userId || userId === "guest";
+    const _isGuestPurchase = !userId || userId === "guest";
 
     // Generate license key
     const licenseKey = generateLicenseKey();
@@ -161,7 +161,7 @@ export async function handleOrderCreated(payload: LemonSqueezyWebhookPayload): P
 export async function handleSubscriptionCreated(
   payload: LemonSqueezyWebhookPayload
 ): Promise<void> {
-  const { data, meta } = payload;
+  const { data, meta: _meta } = payload;
   const attributes = data.attributes;
 
   logger.info("Processing Lemon Squeezy subscription_created", {
