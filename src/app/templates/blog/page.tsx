@@ -111,28 +111,14 @@ export default function BlogTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Blog</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Articles, tutorials, and updates from the team
-            </p>
+        <div className="space-y-2">
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
           </div>
-
-          {/* Search */}
-          <div className="relative w-full md:w-72">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-            <Input
-              type="search"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="rounded-none pl-10 font-mono text-xs"
-            />
-          </div>
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Blog</h1>
+          <p className="text-muted-foreground font-mono text-sm">
+            Articles, tutorials, and updates from the team
+          </p>
         </div>
 
         {/* Featured Post */}
@@ -207,21 +193,35 @@ export default function BlogTemplate() {
           </div>
         )}
 
-        {/* Category Filters - Industry standard horizontal pills */}
-        <div className="flex flex-wrap items-center gap-2">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-4 py-2 font-mono text-xs transition-all ${
-                activeCategory === category.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
+        {/* Category Filters + Search - Industry standard horizontal layout */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-4 py-2 font-mono text-xs transition-all ${
+                  activeCategory === category.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Search */}
+          <div className="relative w-full sm:w-64">
+            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+            <Input
+              type="search"
+              placeholder="Search articles..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="rounded-none pl-10 font-mono text-xs"
+            />
+          </div>
         </div>
 
         {/* Blog Grid */}
@@ -245,16 +245,19 @@ export default function BlogTemplate() {
                   <span className="text-muted-foreground font-mono text-xs">[THUMBNAIL]</span>
                 </div>
 
-                <div className="space-y-4 p-4">
-                  <Badge variant="outline" className="border-border rounded-none font-mono text-xs">
+                <div className="flex h-[180px] flex-col p-4">
+                  <Badge
+                    variant="outline"
+                    className="border-border mb-3 w-fit rounded-none font-mono text-xs"
+                  >
                     {post.category.toUpperCase()}
                   </Badge>
 
-                  <h3 className="group-hover:text-primary font-mono text-lg font-semibold transition-colors">
+                  <h3 className="group-hover:text-primary mb-3 line-clamp-2 font-mono text-lg font-semibold transition-colors">
                     {post.title}
                   </h3>
 
-                  <p className="text-muted-foreground line-clamp-2 font-mono text-xs">
+                  <p className="text-muted-foreground mb-auto line-clamp-2 font-mono text-xs">
                     {post.excerpt}
                   </p>
 
