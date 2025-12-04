@@ -196,7 +196,7 @@ export default function ChartLibraryTemplate() {
           </TerminalCard>
 
           {/* Line Chart */}
-          <TabsContent value="line" className="mt-0">
+          <TabsContent value="line" className="mt-6">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -251,7 +251,7 @@ export default function ChartLibraryTemplate() {
           </TabsContent>
 
           {/* Area Chart */}
-          <TabsContent value="area" className="mt-0">
+          <TabsContent value="area" className="mt-6">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -298,7 +298,7 @@ export default function ChartLibraryTemplate() {
           </TabsContent>
 
           {/* Bar Chart */}
-          <TabsContent value="bar" className="mt-0">
+          <TabsContent value="bar" className="mt-6">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -342,7 +342,7 @@ export default function ChartLibraryTemplate() {
           </TabsContent>
 
           {/* Pie Chart */}
-          <TabsContent value="pie" className="mt-0">
+          <TabsContent value="pie" className="mt-6">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
