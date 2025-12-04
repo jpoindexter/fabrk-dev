@@ -23,7 +23,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
   return (
     <div className="space-y-6">
       {/* Profile Privacy */}
-      <div className="border-border bg-card border border-t-0">
+      <div className="border-border bg-card border">
         <TerminalCardHeader code="0x00" title="PROFILE_PRIVACY" />
         <div className="p-4">
           <div className="text-muted-foreground mb-4 font-mono text-xs">[PROFILE_ACTIVITY]:</div>

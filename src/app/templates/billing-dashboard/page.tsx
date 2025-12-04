@@ -201,7 +201,7 @@ export default function BillingDashboardTemplate() {
           </TerminalCard>
 
           {/* Overview Tab */}
-          <TabsContent value="overview" className="mt-0 space-y-6">
+          <TabsContent value="overview" className="mt-6 space-y-6">
             <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
             {/* Usage Stats and Payment Methods Grid */}
@@ -220,12 +220,12 @@ export default function BillingDashboardTemplate() {
           </TabsContent>
 
           {/* Plans Tab */}
-          <TabsContent value="plans" className="mt-0 space-y-6">
+          <TabsContent value="plans" className="mt-6 space-y-6">
             <PlanCards plans={plans} />
           </TabsContent>
 
           {/* History Tab */}
-          <TabsContent value="history" className="mt-0 space-y-6">
+          <TabsContent value="history" className="mt-6 space-y-6">
             <BillingHistoryTable
               payments={payments}
               formatDate={formatDate}

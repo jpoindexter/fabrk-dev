@@ -90,8 +90,8 @@ export default function LandingVariationsTemplate() {
 
           {/* Hero Previews */}
           {/* Centered Hero */}
-          <TabsContent value="centered" className="mt-0">
-            <TerminalCard className="border-t-0">
+          <TabsContent value="centered" className="mt-6">
+            <TerminalCard>
               <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-3xl space-y-6 text-center">
@@ -142,8 +142,8 @@ export default function LandingVariationsTemplate() {
           </TabsContent>
 
           {/* Split Hero */}
-          <TabsContent value="split" className="mt-0">
-            <TerminalCard className="border-t-0">
+          <TabsContent value="split" className="mt-6">
+            <TerminalCard>
               <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="grid items-center gap-12 md:grid-cols-2">
@@ -198,8 +198,8 @@ export default function LandingVariationsTemplate() {
           </TabsContent>
 
           {/* Minimal Hero */}
-          <TabsContent value="minimal" className="mt-0">
-            <TerminalCard className="border-t-0">
+          <TabsContent value="minimal" className="mt-6">
+            <TerminalCard>
               <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">

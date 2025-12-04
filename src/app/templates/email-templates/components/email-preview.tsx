@@ -45,8 +45,8 @@ interface EmailPreviewProps {
 
 export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
   return (
-    <TabsContent value={template.id} className="mt-0">
-      <div className="border-border bg-card border border-t-0">
+    <TabsContent value={template.id} className="mt-6">
+      <div className="border-border bg-card border">
         {/* Tab Header */}
         <TerminalCardHeader code="0x00" title="EMAIL_PREVIEW" />
 

@@ -20,7 +20,7 @@ interface AuditTabProps {
 
 export function AuditTab({ auditLog }: AuditTabProps) {
   return (
-    <div className="border-border bg-card border border-t-0">
+    <div className="border-border bg-card border">
       <TerminalCardHeader code="0x00" title="AUDIT" />
       <div className="p-4">
         <div className="mb-4 flex items-center justify-between">
