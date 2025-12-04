@@ -38,6 +38,10 @@ import {
   ShieldCheck,
   AlertTriangle,
   Cookie,
+  CircleDollarSign,
+  FileText,
+  UserCog,
+  Languages,
 } from "lucide-react";
 
 const navigation: NavSection[] = [
@@ -70,6 +74,8 @@ const navigation: NavSection[] = [
     title: "[04] PAYMENTS",
     items: [
       { title: "STRIPE_SETUP", href: "/docs/features/payments", icon: CreditCard },
+      { title: "POLAR.SH", href: "/docs/features/polar", icon: CircleDollarSign },
+      { title: "LEMON_SQUEEZY", href: "/docs/features/lemonsqueezy", icon: CircleDollarSign },
       { title: "FREE_TRIALS", href: "/docs/features/trial", icon: Clock },
       { title: "SUBSCRIPTION_GUIDE", href: "/docs/tutorials/stripe-payments", icon: CreditCard },
     ],
@@ -94,9 +100,7 @@ const navigation: NavSection[] = [
   },
   {
     title: "[07] COMPONENTS",
-    items: [
-      { title: "UI_LIBRARY_100+", href: "/docs/components/overview", icon: Blocks },
-    ],
+    items: [{ title: "UI_LIBRARY_100+", href: "/docs/components/overview", icon: Blocks }],
     subSections: [
       {
         title: "[07.1] FORM_INPUTS",
@@ -120,7 +124,11 @@ const navigation: NavSection[] = [
           { title: "LABEL", href: "/docs/components/label", icon: FormInput },
           { title: "MULTI_SELECT", href: "/docs/components/multi-select", icon: FormInput },
           { title: "MULTI_STEP_FORM", href: "/docs/components/multi-step-form", icon: FormInput },
-          { title: "PASSWORD_STRENGTH", href: "/docs/components/password-strength", icon: FormInput },
+          {
+            title: "PASSWORD_STRENGTH",
+            href: "/docs/components/password-strength",
+            icon: FormInput,
+          },
           { title: "RADIO_GROUP", href: "/docs/components/radio-group", icon: FormInput },
           { title: "RATING", href: "/docs/components/rating", icon: FormInput },
           { title: "RICH_TEXT_EDITOR", href: "/docs/components/rich-text-editor", icon: FormInput },
@@ -217,7 +225,11 @@ const navigation: NavSection[] = [
           { title: "ALERT", href: "/docs/components/alert", icon: Bell },
           { title: "LOADING", href: "/docs/components/loading", icon: Bell },
           { title: "NOTIFICATION_BADGE", href: "/docs/components/notification-badge", icon: Bell },
-          { title: "NOTIFICATION_CENTER", href: "/docs/components/notification-center", icon: Bell },
+          {
+            title: "NOTIFICATION_CENTER",
+            href: "/docs/components/notification-center",
+            icon: Bell,
+          },
           { title: "NOTIFICATION_LIST", href: "/docs/components/notification-list", icon: Bell },
           { title: "TOAST", href: "/docs/components/toast", icon: Bell },
           { title: "TOASTER", href: "/docs/components/toaster", icon: Bell },
@@ -283,6 +295,9 @@ const navigation: NavSection[] = [
       { title: "API_KEYS", href: "/docs/features/api-keys", icon: Key },
       { title: "FEATURE_FLAGS", href: "/docs/features/feature-flags", icon: Flag },
       { title: "WEBHOOKS", href: "/docs/features/webhooks", icon: Webhook },
+      { title: "BLOG_SYSTEM", href: "/docs/features/blog", icon: FileText },
+      { title: "I18N", href: "/docs/features/i18n", icon: Languages },
+      { title: "USER_IMPERSONATION", href: "/docs/features/impersonation", icon: UserCog },
       { title: "THEMING", href: "/docs/extras/theming", icon: Palette },
     ],
   },
@@ -296,11 +311,7 @@ const navigation: NavSection[] = [
   },
 ];
 
-export default function DocsLayoutPage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DocsLayoutPage({ children }: { children: React.ReactNode }) {
   return (
     <DocsLayout navigation={navigation} showToc={true}>
       {children}

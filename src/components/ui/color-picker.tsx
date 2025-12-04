@@ -79,7 +79,7 @@ export function ColorPicker({
   // Inline variant - always visible, no popover
   if (variant === "inline") {
     return (
-      <div className={cn("bg-card border-border inline-block rounded-none border p-0", className)}>
+      <div className={cn("bg-card border-border w-fit rounded-none border p-0", className)}>
         <SketchPicker />
       </div>
     );

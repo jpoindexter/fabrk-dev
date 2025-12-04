@@ -18,13 +18,7 @@ export default function ColorPickerPage() {
       description="A Chrome-style color picker with multiple variants: default, compact, inline, and swatch."
       importCode={`import { ColorPicker } from "@/components/ui/color-picker"`}
       mainPreview={{
-        preview: (
-          <ColorPicker
-            color={color}
-            onChange={setColor}
-            className="w-full max-w-sm"
-          />
-        ),
+        preview: <ColorPicker color={color} onChange={setColor} className="w-full max-w-sm" />,
         code: `const [color, setColor] = useState("#8b5cf6");
 
 <ColorPicker
@@ -36,13 +30,7 @@ export default function ColorPickerPage() {
         {
           title: "Default",
           description: "Full-featured picker with HEX/RGB inputs and presets.",
-          preview: (
-            <ColorPicker
-              color={color}
-              onChange={setColor}
-              className="w-full max-w-sm"
-            />
-          ),
+          preview: <ColorPicker color={color} onChange={setColor} className="w-full max-w-sm" />,
           code: `<ColorPicker
   color={color}
   onChange={setColor}
@@ -52,11 +40,7 @@ export default function ColorPickerPage() {
           title: "Compact",
           description: "Smaller trigger button with simplified popover.",
           preview: (
-            <ColorPicker
-              variant="compact"
-              color={compactColor}
-              onChange={setCompactColor}
-            />
+            <ColorPicker variant="compact" color={compactColor} onChange={setCompactColor} />
           ),
           code: `<ColorPicker
   variant="compact"
@@ -69,12 +53,8 @@ export default function ColorPickerPage() {
           description: "Just a color swatch that opens the picker on click.",
           preview: (
             <div className="flex items-center gap-4">
-              <ColorPicker
-                variant="swatch"
-                color={swatchColor}
-                onChange={setSwatchColor}
-              />
-              <span className="font-mono text-xs text-muted-foreground">
+              <ColorPicker variant="swatch" color={swatchColor} onChange={setSwatchColor} />
+              <span className="text-muted-foreground font-mono text-xs">
                 {swatchColor.toUpperCase()}
               </span>
             </div>
@@ -88,14 +68,7 @@ export default function ColorPickerPage() {
         {
           title: "Inline",
           description: "Always visible picker - no popover, embedded directly.",
-          preview: (
-            <ColorPicker
-              variant="inline"
-              color={inlineColor}
-              onChange={setInlineColor}
-              className="w-full max-w-[240px]"
-            />
-          ),
+          preview: <ColorPicker variant="inline" color={inlineColor} onChange={setInlineColor} />,
           code: `<ColorPicker
   variant="inline"
   color={color}
@@ -105,13 +78,7 @@ export default function ColorPickerPage() {
         {
           title: "Without Presets",
           description: "Hide the preset color swatches.",
-          preview: (
-            <ColorPicker
-              color="#F97316"
-              showPresets={false}
-              className="w-full max-w-sm"
-            />
-          ),
+          preview: <ColorPicker color="#F97316" showPresets={false} className="w-full max-w-sm" />,
           code: `<ColorPicker
   color="#F97316"
   showPresets={false}
@@ -158,7 +125,7 @@ export default function ColorPickerPage() {
                 <ColorPicker variant="swatch" color="#22c55e" />
                 <ColorPicker variant="swatch" color="#f59e0b" />
               </div>
-              <div className="font-mono text-xs text-muted-foreground">
+              <div className="text-muted-foreground font-mono text-xs">
                 [PALETTE]: Click any swatch to edit
               </div>
             </div>
