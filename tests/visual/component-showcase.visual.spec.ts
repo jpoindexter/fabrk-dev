@@ -165,7 +165,7 @@ test.describe("Marketing Pages Visual Check", () => {
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(500);
 
-    const pricingSection = page.locator("#pricing");
+    const pricingSection = page.locator("#pricing").first();
     await expect(pricingSection).toBeVisible();
     await expect(pricingSection).toHaveScreenshot("pricing-section.png");
   });
