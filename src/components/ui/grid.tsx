@@ -9,7 +9,6 @@
  */
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 

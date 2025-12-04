@@ -10,7 +10,6 @@
  */
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
 import { Check, Copy } from "lucide-react";
 import * as React from "react";
 import { useState } from "react";

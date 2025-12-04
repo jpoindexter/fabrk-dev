@@ -14,7 +14,6 @@
 "use client";
 
 import { Toast, ToastProvider } from "@/components/ui/toast";
-import { mode } from "@/lib/design-system/visual-mode";
 import * as React from "react";
 
 // Types

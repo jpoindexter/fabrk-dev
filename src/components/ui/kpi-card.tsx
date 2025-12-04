@@ -10,7 +10,6 @@
 
 "use client";
 
-import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 import * as React from "react";

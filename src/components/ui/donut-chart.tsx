@@ -3,7 +3,6 @@
 import * as React from "react";
 import { PieChart, PieChartDataItem } from "./pie-chart";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
 
 interface DonutChartProps {
   data: PieChartDataItem[];

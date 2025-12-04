@@ -10,7 +10,6 @@
  * ```
  */
 
-import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 interface PageWrapperProps {

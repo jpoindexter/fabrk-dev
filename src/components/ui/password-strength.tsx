@@ -15,7 +15,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import * as React from "react";

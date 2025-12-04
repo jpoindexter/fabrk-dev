@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
 
 /**
  * Typography Component Library

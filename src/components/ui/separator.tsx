@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 interface SeparatorProps extends React.ComponentProps<"div"> {

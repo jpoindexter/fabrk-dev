@@ -5,7 +5,6 @@
 
 "use client";
 
-import { mode } from "@/lib/design-system";
 import { Button } from "./button";
 import { Label } from "./label";
 import { Slider } from "./slider";

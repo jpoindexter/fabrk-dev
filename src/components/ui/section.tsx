@@ -8,7 +8,6 @@
  * ```
  */
 
-import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
