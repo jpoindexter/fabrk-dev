@@ -25,13 +25,8 @@ interface SideSheetProps {
 export function SideSheet({ open, onOpenChange }: SideSheetProps) {
   return (
     <div className="border-border bg-card border">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <div className="flex gap-2">
-          <div className="bg-destructive/50 size-2 rounded-none" />
-          <div className="bg-warning/50 size-2 rounded-none" />
-          <div className="bg-success/50 size-2 rounded-none" />
-        </div>
-        <span className="text-muted-foreground font-mono text-xs">side_sheet.tsx</span>
+      <div className="border-border border-b px-4 py-2">
+        <span className="text-muted-foreground font-mono text-xs">[ [0x00] SIDE_SHEET ]</span>
       </div>
       <div className="p-6">
         <div className="mb-4">

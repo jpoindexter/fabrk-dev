@@ -38,13 +38,13 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Vercel minimal styles - Border only, no shadow
-        "rounded-none border bg-card text-card-foreground",
+        "bg-card text-card-foreground rounded-none border",
 
         // Subtle transition
         "transition-colors",
 
         // Focus-within state - thin ring for accessibility
-        "focus-within:ring-2 focus-within:ring-primary",
+        "focus-within:ring-primary focus-within:ring-2",
 
         className
       )}
@@ -61,7 +61,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       ref={ref}
       className={cn(
         // Base styles - 8px spacing system
-        "flex flex-col space-y-2 p-6",  // 16px gap (2 × 8px), 24px padding (3 × 8px)
+        "flex flex-col space-y-2 p-6", // 16px gap (2 × 8px), 24px padding (3 × 8px)
         className
       )}
       {...props}
@@ -119,7 +119,7 @@ const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
       ref={ref}
       className={cn(
         // Base styles - 8px spacing system
-        "px-6 pb-6 pt-0",  // 24px horizontal/bottom padding (3 × 8px), 0 top padding
+        "px-6 pt-0 pb-6", // 24px horizontal/bottom padding (3 × 8px), 0 top padding
         className
       )}
       {...props}
@@ -135,7 +135,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       ref={ref}
       className={cn(
         // Base styles - 8px spacing system
-        "flex items-center px-6 pb-6 pt-0",  // 24px horizontal/bottom padding (3 × 8px), 0 top padding
+        "flex items-center px-6 pt-0 pb-6", // 24px horizontal/bottom padding (3 × 8px), 0 top padding
         className
       )}
       {...props}
@@ -144,4 +144,69 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
 );
 CardFooter.displayName = "CardFooter";
 
-export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
+/**
+ * Terminal-style card header with hex code prefix
+ * Used across all template pages for consistent terminal aesthetic
+ *
+ * @example
+ * ```tsx
+ * <TerminalCard>
+ *   <TerminalCardHeader code="0x00" title="SECTION_TITLE" />
+ *   <CardContent>...</CardContent>
+ * </TerminalCard>
+ * ```
+ */
+export type TerminalCardHeaderProps = {
+  /** Hex code displayed in brackets (e.g., "0x00", "0x01") */
+  code?: string;
+  /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
+  title: string;
+  /** Optional className for additional styling */
+  className?: string;
+};
+
+const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderProps>(
+  ({ code = "0x00", title, className }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-card-header"
+      className={cn("border-border border-b px-4 py-2", className)}
+    >
+      <span className="text-muted-foreground font-mono text-xs">
+        [ [{code}] {title} ]
+      </span>
+    </div>
+  )
+);
+TerminalCardHeader.displayName = "TerminalCardHeader";
+
+/**
+ * Terminal-style card container
+ * Wrapper for cards that use the terminal aesthetic
+ */
+export type TerminalCardProps = React.HTMLAttributes<HTMLDivElement>;
+
+const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
+  ({ className, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-card"
+      className={cn("border-border bg-card border", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+);
+TerminalCard.displayName = "TerminalCard";
+
+export {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  TerminalCard,
+  TerminalCardHeader,
+};

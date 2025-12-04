@@ -99,16 +99,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 >
                   <div className="border-border bg-card overflow-hidden border">
                     <div className="bg-muted border-border flex items-center justify-between border-b px-4 py-2">
-                      <div className="flex items-center gap-2">
-                        <div className="flex gap-2">
-                          <div className="bg-destructive/50 size-2 rounded-none" />
-                          <div className="bg-warning/50 size-2 rounded-none" />
-                          <div className="bg-success/50 size-2 rounded-none" />
-                        </div>
-                        <span className="text-muted-foreground font-mono text-xs">
-                          {section.language || "code"}
-                        </span>
-                      </div>
+                      <span className="text-muted-foreground font-mono text-xs">
+                        [ [0x00] {(section.language || "code").toUpperCase()} ]
+                      </span>
                       <Button
                         variant="ghost"
                         size="sm"
@@ -171,13 +164,8 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
 
         {/* Help Section */}
         <div className="border-border bg-card mt-12 border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">help.tsx</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">[ [0x00] NEED_HELP ]</span>
           </div>
           <div className="p-4">
             <div className="text-muted-foreground mb-1 font-mono text-xs">[NEED_HELP]:</div>

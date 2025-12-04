@@ -124,13 +124,10 @@ export default function BlogTemplate() {
         {/* Featured Post */}
         {featuredPost && activeCategory === "all" && (
           <div className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-none" />
-                <div className="bg-warning/50 size-2 rounded-none" />
-                <div className="bg-success/50 size-2 rounded-none" />
-              </div>
-              <span className="text-muted-foreground font-mono text-xs">featured.tsx</span>
+            <div className="border-border border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
+                [ [0x00] FEATURED_POST ]
+              </span>
             </div>
 
             <div className="p-6">
@@ -227,14 +224,9 @@ export default function BlogTemplate() {
           {regularPosts.map((post) => (
             <Link key={post.id} href="/templates/blog/post">
               <div className="border-border bg-card hover:border-primary/50 group border transition-colors">
-                <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                  <div className="flex gap-2">
-                    <div className="bg-destructive/50 size-2 rounded-none" />
-                    <div className="bg-warning/50 size-2 rounded-none" />
-                    <div className="bg-success/50 size-2 rounded-none" />
-                  </div>
+                <div className="border-border border-b px-4 py-2">
                   <span className="text-muted-foreground font-mono text-xs">
-                    post_{post.id}.tsx
+                    [ [0x0{post.id}] POST_{post.id} ]
                   </span>
                 </div>
 
@@ -276,13 +268,8 @@ export default function BlogTemplate() {
 
         {/* Pagination */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">pagination.tsx</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">[ [0x0A] PAGINATION ]</span>
           </div>
           <div className="p-4">
             <div className="flex items-center justify-between">
@@ -330,13 +317,10 @@ export default function BlogTemplate() {
 
         {/* Features Card */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x0B] TEMPLATE_FEATURES ]
+            </span>
           </div>
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>

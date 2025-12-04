@@ -117,13 +117,10 @@ export default function ErrorPagesTemplate() {
         {/* Error Type Selector with Tabs */}
         <Tabs value={activeError} onValueChange={setActiveError}>
           <div className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-none" />
-                <div className="bg-warning/50 size-2 rounded-none" />
-                <div className="bg-success/50 size-2 rounded-none" />
-              </div>
-              <span className="text-muted-foreground font-mono text-xs">error_types.tsx</span>
+            <div className="border-border border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
+                [ [0x00] ERROR_TYPES ]
+              </span>
             </div>
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {errorPages.map((error) => (
@@ -144,14 +141,17 @@ export default function ErrorPagesTemplate() {
             return (
               <TabsContent key={error.id} value={error.id} className="mt-6">
                 <div className="border-border bg-card border">
-                  <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                    <div className="flex gap-2">
-                      <div className="bg-destructive/50 size-2 rounded-none" />
-                      <div className="bg-warning/50 size-2 rounded-none" />
-                      <div className="bg-success/50 size-2 rounded-none" />
-                    </div>
+                  <div className="border-border border-b px-4 py-2">
                     <span className="text-muted-foreground font-mono text-xs">
-                      error_{error.code}.tsx
+                      [ [0x0
+                      {error.id === "error"
+                        ? "0"
+                        : error.id === "404"
+                          ? "1"
+                          : error.id === "500"
+                            ? "2"
+                            : "3"}
+                      ] ERROR_{error.code} ]
                     </span>
                   </div>
 
@@ -274,13 +274,18 @@ export default function ErrorPagesTemplate() {
             const ErrorIcon = error.icon;
             return (
               <div key={error.id} className="border-border bg-card border">
-                <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                  <div className="flex gap-2">
-                    <div className="bg-destructive/50 size-2 rounded-none" />
-                    <div className="bg-warning/50 size-2 rounded-none" />
-                    <div className="bg-success/50 size-2 rounded-none" />
-                  </div>
-                  <span className="text-muted-foreground font-mono text-xs">{error.code}.tsx</span>
+                <div className="border-border border-b px-4 py-2">
+                  <span className="text-muted-foreground font-mono text-xs">
+                    [ [0x0
+                    {error.id === "error"
+                      ? "4"
+                      : error.id === "404"
+                        ? "5"
+                        : error.id === "500"
+                          ? "6"
+                          : "7"}
+                    ] {error.code}_EXAMPLE ]
+                  </span>
                 </div>
                 <div className="p-4">
                   <div className="mb-2 flex items-center gap-2">
@@ -311,13 +316,10 @@ export default function ErrorPagesTemplate() {
 
         {/* Features Card */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x08] TEMPLATE_FEATURES ]
+            </span>
           </div>
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
