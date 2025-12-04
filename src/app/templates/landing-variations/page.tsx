@@ -74,7 +74,7 @@ export default function LandingVariationsTemplate() {
                   key={variation.id}
                   value={variation.id}
                   className={cn(
-                    "border-border data-[state=active]:bg-muted data-[state=active]:text-foreground data-[state=active]:border-b-primary data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted/50 data-[state=inactive]:hover:text-foreground flex-1 border-r px-4 py-3 text-xs last:border-r-0 data-[state=active]:border-b-2",
+                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex-1 border-r px-4 py-2 text-xs last:border-r-0",
                     mode.radius,
                     mode.font
                   )}
