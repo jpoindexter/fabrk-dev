@@ -120,7 +120,7 @@ export default function HoverCardPage() {
             <HoverCard>
               <HoverCardTrigger asChild>
                 <Button variant="outline" className="rounded-none font-mono text-xs">
-                  View Location
+                  &gt; VIEW_LOCATION
                 </Button>
               </HoverCardTrigger>
               <HoverCardContent className="w-80 rounded-none">
@@ -146,7 +146,7 @@ export default function HoverCardPage() {
           ),
           code: `<HoverCard>
   <HoverCardTrigger asChild>
-    <Button variant="outline">View Location</Button>
+    <Button variant="outline">&gt; VIEW_LOCATION</Button>
   </HoverCardTrigger>
   <HoverCardContent className="w-80">
     <div className="space-y-4">

@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function TextareaPage() {
   return (
@@ -28,12 +29,12 @@ export default function TextareaPage() {
           description: "Textarea with an associated label.",
           preview: (
             <div className="grid gap-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">{formatLabel("Message")}</Label>
               <Textarea id="message" placeholder="Type your message here" />
             </div>
           ),
           code: `<div className="grid gap-2">
-  <Label htmlFor="message">Message</Label>
+  <Label htmlFor="message">[MESSAGE]:</Label>
   <Textarea id="message" placeholder="Type your message here" />
 </div>`,
         },

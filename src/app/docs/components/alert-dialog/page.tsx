@@ -36,7 +36,7 @@ export default function AlertDialogPage() {
         preview: (
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="outline">Show Alert</Button>
+              <Button variant="outline">&gt; SHOW_ALERT</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
@@ -47,15 +47,15 @@ export default function AlertDialogPage() {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
+                <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
+                <AlertDialogAction>&gt; CONTINUE</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
         ),
         code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="outline">Show Alert</Button>
+    <Button variant="outline">&gt; SHOW_ALERT</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -65,8 +65,8 @@ export default function AlertDialogPage() {
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
+      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
+      <AlertDialogAction>&gt; CONTINUE</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
@@ -78,7 +78,7 @@ export default function AlertDialogPage() {
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="destructive">Delete Item</Button>
+                <Button variant="destructive">&gt; DELETE_ITEM</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -88,9 +88,9 @@ export default function AlertDialogPage() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
                   <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-                    Delete
+                    &gt; DELETE
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
@@ -98,7 +98,7 @@ export default function AlertDialogPage() {
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="destructive">Delete Item</Button>
+    <Button variant="destructive">&gt; DELETE_ITEM</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -108,9 +108,9 @@ export default function AlertDialogPage() {
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
       <AlertDialogAction className="bg-destructive">
-        Delete
+        &gt; DELETE
       </AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
@@ -122,7 +122,7 @@ export default function AlertDialogPage() {
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="secondary">Show Notice</Button>
+                <Button variant="secondary">&gt; SHOW_NOTICE</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -133,14 +133,14 @@ export default function AlertDialogPage() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogAction>OK</AlertDialogAction>
+                  <AlertDialogAction>&gt; OK</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="secondary">Show Notice</Button>
+    <Button variant="secondary">&gt; SHOW_NOTICE</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -150,7 +150,7 @@ export default function AlertDialogPage() {
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogAction>OK</AlertDialogAction>
+      <AlertDialogAction>&gt; OK</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
@@ -161,7 +161,7 @@ export default function AlertDialogPage() {
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline">Proceed with Caution</Button>
+                <Button variant="outline">&gt; PROCEED_WITH_CAUTION</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -171,15 +171,15 @@ export default function AlertDialogPage() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Go Back</AlertDialogCancel>
-                  <AlertDialogAction>I Understand</AlertDialogAction>
+                  <AlertDialogCancel>&gt; GO_BACK</AlertDialogCancel>
+                  <AlertDialogAction>&gt; I_UNDERSTAND</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="outline">Proceed with Caution</Button>
+    <Button variant="outline">&gt; PROCEED_WITH_CAUTION</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -189,8 +189,8 @@ export default function AlertDialogPage() {
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Go Back</AlertDialogCancel>
-      <AlertDialogAction>I Understand</AlertDialogAction>
+      <AlertDialogCancel>&gt; GO_BACK</AlertDialogCancel>
+      <AlertDialogAction>&gt; I_UNDERSTAND</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
@@ -201,7 +201,7 @@ export default function AlertDialogPage() {
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button>Controlled Alert</Button>
+                <Button>&gt; CONTROLLED_ALERT</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -211,8 +211,8 @@ export default function AlertDialogPage() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>Continue</AlertDialogAction>
+                  <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
+                  <AlertDialogAction>&gt; CONTINUE</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -221,15 +221,15 @@ export default function AlertDialogPage() {
 
 <AlertDialog open={open} onOpenChange={setOpen}>
   <AlertDialogTrigger asChild>
-    <Button>Controlled Alert</Button>
+    <Button>&gt; CONTROLLED_ALERT</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Controlled State</AlertDialogTitle>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
+      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
+      <AlertDialogAction>&gt; CONTINUE</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
@@ -240,7 +240,7 @@ export default function AlertDialogPage() {
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="ghost">Custom Actions</Button>
+                <Button variant="ghost">&gt; CUSTOM_ACTIONS</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -250,15 +250,15 @@ export default function AlertDialogPage() {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Not now</AlertDialogCancel>
-                  <AlertDialogAction className="bg-primary">Subscribe</AlertDialogAction>
+                  <AlertDialogCancel>&gt; NOT_NOW</AlertDialogCancel>
+                  <AlertDialogAction className="bg-primary">&gt; SUBSCRIBE</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="ghost">Custom Actions</Button>
+    <Button variant="ghost">&gt; CUSTOM_ACTIONS</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -268,8 +268,8 @@ export default function AlertDialogPage() {
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Not now</AlertDialogCancel>
-      <AlertDialogAction>Subscribe</AlertDialogAction>
+      <AlertDialogCancel>&gt; NOT_NOW</AlertDialogCancel>
+      <AlertDialogAction>&gt; SUBSCRIBE</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,

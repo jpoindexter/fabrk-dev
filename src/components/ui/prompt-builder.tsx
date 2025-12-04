@@ -25,7 +25,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode, formatLabel } from "@/lib/design-system";
 import { Copy, FileText, Hash, Plus, Save, Variable, X } from "lucide-react";
 import * as React from "react";
 import { PromptBuilderProps, PromptTemplate, usePromptBuilder } from "./prompt-builder-logic";
@@ -98,7 +98,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
           <TabsContent value="editor" className={`space-y-6`}>
             {showTemplates && templates.length > 0 && (
               <div className={`space-y-2`}>
-                <Label>Load Template</Label>
+                <Label>{formatLabel("Load Template")}</Label>
                 <Select
                   value={selectedTemplate || ""}
                   onValueChange={(value) =>
@@ -129,7 +129,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
 
             <div className={`space-y-2`}>
               <div className="flex items-center justify-between">
-                <Label>Prompt Content</Label>
+                <Label>{formatLabel("Prompt Content")}</Label>
                 <Button variant="ghost" size="sm" onClick={extractVariables} className="text-xs">
                   <Variable className="mr-1 size-3" />
                   Extract Variables
@@ -165,7 +165,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
           {showVariables && (
             <TabsContent value="variables" className={`space-y-6`}>
               <div className="flex items-center justify-between">
-                <Label>Variables</Label>
+                <Label>{formatLabel("Variables")}</Label>
                 <Button
                   variant="outline"
                   size="sm"
@@ -243,7 +243,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
           {showPreview && (
             <TabsContent value="preview" className={`space-y-6`}>
               <div className={`space-y-2`}>
-                <Label>Processed Prompt</Label>
+                <Label>{formatLabel("Processed Prompt")}</Label>
                 <ScrollArea className={cn("bg-card h-96 border", mode.radius)}>
                   <pre className={cn("text-sm whitespace-pre-wrap", mode.font)}>
                     {processPrompt()}

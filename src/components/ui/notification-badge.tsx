@@ -5,7 +5,7 @@
  * @example
  * ```tsx
  * <NotificationBadge count={5}>
- *   <Button>Notifications</Button>
+ *   <Button>&gt; NOTIFICATIONS</Button>
  * </NotificationBadge>
  * ```
  */

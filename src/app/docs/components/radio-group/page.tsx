@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 import { useState } from "react";
 
 export default function RadioGroupPage() {
@@ -23,19 +24,19 @@ export default function RadioGroupPage() {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option1" id="r1" />
               <Label htmlFor="r1" className="font-mono text-sm">
-                Default Option
+                {formatLabel("Default Option")}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option2" id="r2" />
               <Label htmlFor="r2" className="font-mono text-sm">
-                Alternative Option
+                {formatLabel("Alternative Option")}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option3" id="r3" />
               <Label htmlFor="r3" className="font-mono text-sm">
-                Another Option
+                {formatLabel("Another Option")}
               </Label>
             </div>
           </RadioGroup>
@@ -43,11 +44,11 @@ export default function RadioGroupPage() {
         code: `<RadioGroup value={value} onValueChange={setValue}>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="option1" id="r1" />
-    <Label htmlFor="r1">Default Option</Label>
+    <Label htmlFor="r1">[DEFAULT_OPTION]:</Label>
   </div>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="option2" id="r2" />
-    <Label htmlFor="r2">Alternative Option</Label>
+    <Label htmlFor="r2">[ALTERNATIVE_OPTION]:</Label>
   </div>
 </RadioGroup>`,
       }}
@@ -64,19 +65,19 @@ export default function RadioGroupPage() {
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="sm" id="h1" />
                 <Label htmlFor="h1" className="font-mono text-xs">
-                  [SMALL]
+                  {formatLabel("Small")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="md" id="h2" />
                 <Label htmlFor="h2" className="font-mono text-xs">
-                  [MEDIUM]
+                  {formatLabel("Medium")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="lg" id="h3" />
                 <Label htmlFor="h3" className="font-mono text-xs">
-                  [LARGE]
+                  {formatLabel("Large")}
                 </Label>
               </div>
             </RadioGroup>
@@ -88,7 +89,7 @@ export default function RadioGroupPage() {
 >
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="sm" id="h1" />
-    <Label htmlFor="h1">Small</Label>
+    <Label htmlFor="h1">[SMALL]:</Label>
   </div>
   {/* More items... */}
 </RadioGroup>`,
@@ -102,7 +103,7 @@ export default function RadioGroupPage() {
                 <RadioGroupItem value="card" id="d1" className="mt-1" />
                 <div className="space-y-1">
                   <Label htmlFor="d1" className="font-mono text-sm font-semibold">
-                    Card Payment
+                    {formatLabel("Card Payment")}
                   </Label>
                   <p className="font-mono text-xs text-muted-foreground">
                     Pay with credit or debit card
@@ -113,7 +114,7 @@ export default function RadioGroupPage() {
                 <RadioGroupItem value="bank" id="d2" className="mt-1" />
                 <div className="space-y-1">
                   <Label htmlFor="d2" className="font-mono text-sm font-semibold">
-                    Bank Transfer
+                    {formatLabel("Bank Transfer")}
                   </Label>
                   <p className="font-mono text-xs text-muted-foreground">
                     Direct bank account transfer
@@ -124,7 +125,7 @@ export default function RadioGroupPage() {
                 <RadioGroupItem value="crypto" id="d3" className="mt-1" />
                 <div className="space-y-1">
                   <Label htmlFor="d3" className="font-mono text-sm font-semibold">
-                    Cryptocurrency
+                    {formatLabel("Cryptocurrency")}
                   </Label>
                   <p className="font-mono text-xs text-muted-foreground">
                     Pay with Bitcoin or Ethereum
@@ -137,7 +138,7 @@ export default function RadioGroupPage() {
   <div className="flex items-start space-x-2">
     <RadioGroupItem value="card" id="d1" className="mt-1" />
     <div className="space-y-1">
-      <Label htmlFor="d1">Card Payment</Label>
+      <Label htmlFor="d1">[CARD_PAYMENT]:</Label>
       <p className="text-sm text-muted-foreground">
         Pay with credit or debit card
       </p>
@@ -154,7 +155,7 @@ export default function RadioGroupPage() {
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="enabled" id="e1" />
                 <Label htmlFor="e1" className="font-mono text-sm">
-                  Enabled Option
+                  {formatLabel("Enabled Option")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
@@ -163,7 +164,7 @@ export default function RadioGroupPage() {
                   htmlFor="e2"
                   className="font-mono text-sm text-muted-foreground"
                 >
-                  Disabled Option
+                  {formatLabel("Disabled Option")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
@@ -172,7 +173,7 @@ export default function RadioGroupPage() {
                   htmlFor="e3"
                   className="font-mono text-sm text-muted-foreground"
                 >
-                  Also Disabled
+                  {formatLabel("Also Disabled")}
                 </Label>
               </div>
             </RadioGroup>
@@ -180,11 +181,11 @@ export default function RadioGroupPage() {
           code: `<RadioGroup defaultValue="enabled">
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="enabled" id="e1" />
-    <Label htmlFor="e1">Enabled Option</Label>
+    <Label htmlFor="e1">[ENABLED_OPTION]:</Label>
   </div>
   <div className="flex items-center space-x-2">
     <RadioGroupItem value="disabled" id="e2" disabled />
-    <Label htmlFor="e2">Disabled Option</Label>
+    <Label htmlFor="e2">[DISABLED_OPTION]:</Label>
   </div>
 </RadioGroup>`,
         },

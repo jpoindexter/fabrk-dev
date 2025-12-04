@@ -32,6 +32,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { formatLabel } from '@/lib/design-system';
 
 interface FeatureFlag {
   id: string;
@@ -158,7 +159,7 @@ export default function FeatureFlagsDbPage() {
         </div>
         <Button onClick={() => setShowCreateForm(!showCreateForm)}>
           <Plus className="mr-2 h-4 w-4" />
-          New Flag
+          &gt; NEW_FLAG
         </Button>
       </div>
 
@@ -169,7 +170,7 @@ export default function FeatureFlagsDbPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label>Flag Name</Label>
+              <Label>{formatLabel('Flag Name')}</Label>
               <Input
                 value={newFlag.name}
                 onChange={(e) => setNewFlag({ ...newFlag, name: e.target.value })}
@@ -177,7 +178,7 @@ export default function FeatureFlagsDbPage() {
               />
             </div>
             <div>
-              <Label>Description</Label>
+              <Label>{formatLabel('Description')}</Label>
               <Textarea
                 value={newFlag.description}
                 onChange={(e) => setNewFlag({ ...newFlag, description: e.target.value })}
@@ -189,12 +190,12 @@ export default function FeatureFlagsDbPage() {
                 checked={newFlag.enabled}
                 onCheckedChange={(checked) => setNewFlag({ ...newFlag, enabled: checked })}
               />
-              <Label>Enable immediately</Label>
+              <Label>{formatLabel('Enable immediately')}</Label>
             </div>
             <div className="flex gap-2">
-              <Button onClick={handleCreate}>Create</Button>
+              <Button onClick={handleCreate}>&gt; CREATE</Button>
               <Button variant="outline" onClick={() => setShowCreateForm(false)}>
-                Cancel
+                &gt; CANCEL
               </Button>
             </div>
           </CardContent>
@@ -218,7 +219,7 @@ export default function FeatureFlagsDbPage() {
                       onCheckedChange={(checked) => handleToggle(flag.id, checked)}
                     />
                     <Label htmlFor={`toggle-${flag.id}`} className="cursor-pointer">
-                      {flag.enabled ? 'Enabled' : 'Disabled'}
+                      {formatLabel(flag.enabled ? 'Enabled' : 'Disabled')}
                     </Label>
                   </div>
                   <Button
@@ -238,7 +239,7 @@ export default function FeatureFlagsDbPage() {
             <CardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label>Rollout Percentage</Label>
+                  <Label>{formatLabel('Rollout Percentage')}</Label>
                   <Badge variant="outline">{flag.rolloutPercentage}%</Badge>
                 </div>
                 <Slider
@@ -272,12 +273,12 @@ export default function FeatureFlagsDbPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmDelete}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              Delete Flag
+              &gt; DELETE_FLAG
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

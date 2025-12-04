@@ -39,8 +39,8 @@ export function CardsSection() {
               Cards can contain any content including forms and buttons.
             </p>
             <div className="flex gap-2">
-              <Button size="sm">Action</Button>
-              <Button size="sm" variant="outline">Cancel</Button>
+              <Button size="sm">&gt; ACTION</Button>
+              <Button size="sm" variant="outline">&gt; CANCEL</Button>
             </div>
           </CardContent>
         </Card>

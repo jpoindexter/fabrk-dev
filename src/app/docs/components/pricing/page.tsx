@@ -136,7 +136,7 @@ export default function LandingPage() {
       <li><Check /> Full source code</li>
       <li><Check /> Lifetime updates</li>
     </ul>
-    <Button className="w-full">Get Access</Button>
+    <Button className="w-full">&gt; GET_ACCESS</Button>
   </CardContent>
 </Card>`,
         },
@@ -145,8 +145,8 @@ export default function LandingPage() {
           description: "Monthly/yearly toggle for subscriptions",
           preview: (
             <div className="flex items-center justify-center gap-2 p-2">
-              <Button variant="default" size="sm" className="rounded-none font-mono text-xs">MONTHLY</Button>
-              <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">YEARLY</Button>
+              <Button variant="default" size="sm" className="rounded-none font-mono text-xs">&gt; MONTHLY</Button>
+              <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">&gt; YEARLY</Button>
               <span className="font-mono text-xs text-success">[-20%]</span>
             </div>
           ),
@@ -157,13 +157,13 @@ export default function LandingPage() {
     variant={!yearly ? "default" : "ghost"}
     onClick={() => setYearly(false)}
   >
-    Monthly
+    &gt; MONTHLY
   </Button>
   <Button
     variant={yearly ? "default" : "ghost"}
     onClick={() => setYearly(true)}
   >
-    Yearly
+    &gt; YEARLY
   </Button>
   {yearly && <Badge>Save 20%</Badge>}
 </div>`,

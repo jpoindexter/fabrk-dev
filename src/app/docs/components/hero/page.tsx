@@ -122,7 +122,7 @@ export default function LandingPage() {
 <HeroSplit
   title="Ship faster with Fabrk"
   description="Production-ready Next.js boilerplate"
-  cta={{ label: "Get Started", href: "#pricing" }}
+  cta={{ label: "> GET_STARTED", href: "#pricing" }}
 />`,
         },
         {

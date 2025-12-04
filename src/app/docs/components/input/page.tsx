@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function InputPage() {
   return (
@@ -28,12 +29,12 @@ export default function InputPage() {
           description: "Input with an associated label.",
           preview: (
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{formatLabel("Email")}</Label>
               <Input id="email" type="email" placeholder="m@example.com" />
             </div>
           ),
           code: `<div className="grid gap-2">
-  <Label htmlFor="email">Email</Label>
+  <Label htmlFor="email">[EMAIL]:</Label>
   <Input id="email" type="email" placeholder="m@example.com" />
 </div>`,
         },

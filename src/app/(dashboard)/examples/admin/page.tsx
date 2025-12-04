@@ -199,7 +199,7 @@ export default function AdminPage() {
           <h1 className="text-foreground text-3xl font-bold">User Management</h1>
           <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
-        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Add User</Button>
+        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">&gt; ADD_USER</Button>
       </div>
 
       {/* Stats Cards */}

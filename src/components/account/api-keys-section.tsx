@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { mode } from "@/lib/design-system/visual-mode";
+import { formatLabel } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 interface ApiKey {
@@ -118,7 +119,7 @@ export function ApiKeysSection() {
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button>Generate New Key</Button>
+              <Button>&gt; GENERATE_NEW_KEY</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -130,7 +131,7 @@ export function ApiKeysSection() {
               </DialogHeader>
               <div className="space-y-4 py-4">
                 <div className="space-y-2">
-                  <Label htmlFor="key-name">Key Name</Label>
+                  <Label htmlFor="key-name">{formatLabel("Key Name")}</Label>
                   <Input
                     id="key-name"
                     placeholder="e.g., Production API"
@@ -148,10 +149,10 @@ export function ApiKeysSection() {
                   onClick={() => setIsDialogOpen(false)}
                   disabled={isGenerating}
                 >
-                  Cancel
+                  &gt; CANCEL
                 </Button>
                 <Button onClick={handleGenerateKey} disabled={isGenerating}>
-                  {isGenerating ? "Generating..." : "Generate Key"}
+                  {isGenerating ? "&gt; GENERATING..." : "&gt; GENERATE_KEY"}
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -185,7 +186,7 @@ export function ApiKeysSection() {
                       onClick={() => handleCopyKey(apiKey.key)}
                       className="shrink-0"
                     >
-                      Copy
+                      &gt; COPY
                     </Button>
                   </div>
                 </div>
@@ -196,7 +197,7 @@ export function ApiKeysSection() {
                     size="sm"
                     onClick={() => handleDeleteKey(apiKey.id)}
                   >
-                    Delete
+                    &gt; DELETE
                   </Button>
                 </div>
               </div>

@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function SelectPage() {
   return (
@@ -56,7 +57,7 @@ export default function SelectPage() {
           description: "Select with an associated label.",
           preview: (
             <div className="grid gap-2">
-              <Label htmlFor="framework">Framework</Label>
+              <Label htmlFor="framework">{formatLabel("Framework")}</Label>
               <Select>
                 <SelectTrigger id="framework" className="w-[200px]">
                   <SelectValue placeholder="Select framework" />
@@ -70,7 +71,7 @@ export default function SelectPage() {
             </div>
           ),
           code: `<div className="grid gap-2">
-  <Label htmlFor="framework">Framework</Label>
+  <Label htmlFor="framework">[FRAMEWORK]:</Label>
   <Select>
     <SelectTrigger id="framework" className="w-[200px]">
       <SelectValue placeholder="Select framework" />

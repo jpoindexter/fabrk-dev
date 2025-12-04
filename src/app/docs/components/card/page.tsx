@@ -22,7 +22,7 @@ export default function CardPage() {
               <p className="text-sm">This is the card content area where you can place any content.</p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline">Action</Button>
+              <Button variant="outline">&gt; ACTION</Button>
             </CardFooter>
           </Card>
         ),
@@ -35,7 +35,7 @@ export default function CardPage() {
     <p className="text-sm">This is the card content area where you can place any content.</p>
   </CardContent>
   <CardFooter>
-    <Button variant="outline">Action</Button>
+    <Button variant="outline">&gt; ACTION</Button>
   </CardFooter>
 </Card>`,
       }}
@@ -66,8 +66,8 @@ export default function CardPage() {
                 <CardDescription>Are you sure you want to proceed?</CardDescription>
               </CardHeader>
               <CardFooter className="gap-2">
-                <Button variant="outline">Cancel</Button>
-                <Button>Confirm</Button>
+                <Button variant="outline">&gt; CANCEL</Button>
+                <Button>&gt; CONFIRM</Button>
               </CardFooter>
             </Card>
           ),
@@ -77,8 +77,8 @@ export default function CardPage() {
     <CardDescription>Are you sure you want to proceed?</CardDescription>
   </CardHeader>
   <CardFooter className="gap-2">
-    <Button variant="outline">Cancel</Button>
-    <Button>Confirm</Button>
+    <Button variant="outline">&gt; CANCEL</Button>
+    <Button>&gt; CONFIRM</Button>
   </CardFooter>
 </Card>`,
         },

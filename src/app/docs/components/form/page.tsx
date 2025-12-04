@@ -64,7 +64,7 @@ function BasicFormExample() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">&gt; SUBMIT</Button>
       </form>
     </Form>
   );
@@ -139,7 +139,7 @@ function Example() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">&gt; SUBMIT</Button>
       </form>
     </Form>
   );

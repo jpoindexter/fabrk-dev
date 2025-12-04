@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { InputPassword } from "@/components/ui/input-password";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function InputPasswordPage() {
   return (
@@ -28,12 +29,12 @@ export default function InputPasswordPage() {
           description: "Password input with an associated label.",
           preview: (
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{formatLabel("Password")}</Label>
               <InputPassword id="password" placeholder="Enter your password" />
             </div>
           ),
           code: `<div className="grid gap-2">
-  <Label htmlFor="password">Password</Label>
+  <Label htmlFor="password">{formatLabel("Password")}</Label>
   <InputPassword id="password" placeholder="Enter your password" />
 </div>`,
         },

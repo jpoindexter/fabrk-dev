@@ -23,7 +23,7 @@
 import * as React from "react";
 import { X, Send, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode, formatLabel } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -196,7 +196,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
           {/* Email Input */}
           <div className="space-y-2">
             <Label htmlFor="email" required>
-              Email Address{allowMultiple && "es"}
+              {formatLabel(`Email Address${allowMultiple ? "es" : ""}`)}
             </Label>
             <Input
               id="email"
@@ -242,7 +242,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
           {/* Role Selection */}
           <div className="space-y-2">
             <Label htmlFor="role" required>
-              Role
+              {formatLabel("Role")}
             </Label>
             <Select value={role} onValueChange={setRole} disabled={isSubmitting}>
               <SelectTrigger id="role">
@@ -261,7 +261,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
           {/* Optional Message */}
           {showMessage && (
             <div className="space-y-2">
-              <Label htmlFor="message">Custom Message (Optional)</Label>
+              <Label htmlFor="message">{formatLabel("Custom Message (Optional)")}</Label>
               <Textarea
                 id="message"
                 value={message}
@@ -276,7 +276,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
           {/* Optional Permissions */}
           {showPermissions && (
             <div className="space-y-2">
-              <Label>Permissions (Optional)</Label>
+              <Label>{formatLabel("Permissions (Optional)")}</Label>
               <div className="space-y-2">
                 {defaultPermissions.map((perm) => (
                   <div key={perm.id} className="flex items-center space-x-2">
@@ -298,7 +298,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
           {/* Optional Expiration */}
           {showExpiration && (
             <div className="space-y-2">
-              <Label htmlFor="expires">Expiration Date (Optional)</Label>
+              <Label htmlFor="expires">{formatLabel("Expiration Date (Optional)")}</Label>
               <Input
                 id="expires"
                 type="date"

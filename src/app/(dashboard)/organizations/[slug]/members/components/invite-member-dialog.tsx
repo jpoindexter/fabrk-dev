@@ -27,7 +27,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { mode } from "@/lib/design-system";
+import { mode, formatLabel } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 interface InviteMemberDialogProps {
@@ -86,7 +86,7 @@ export function InviteMemberDialog({ organizationId, organizationName }: InviteM
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email">{formatLabel("Email Address")}</Label>
             <Input
               id="email"
               type="email"
@@ -97,7 +97,7 @@ export function InviteMemberDialog({ organizationId, organizationName }: InviteM
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="role">Role</Label>
+            <Label htmlFor="role">{formatLabel("Role")}</Label>
             <Select
               value={inviteRole}
               onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}

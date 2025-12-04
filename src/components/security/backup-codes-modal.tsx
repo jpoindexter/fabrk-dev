@@ -186,11 +186,11 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
             <div className="flex gap-2">
               <Button variant="outline" onClick={handleCopyAll} className="flex-1">
                 <Copy className="mr-2 h-4 w-4" />
-                Copy All
+                &gt; COPY_ALL
               </Button>
               <Button variant="outline" onClick={handleDownload} className="flex-1">
                 <Download className="mr-2 h-4 w-4" />
-                Download
+                &gt; DOWNLOAD
               </Button>
               <Button
                 variant="outline"
@@ -199,7 +199,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
                 className="flex-1"
               >
                 <RefreshCw className="mr-2 h-4 w-4" />
-                Regenerate
+                &gt; REGENERATE
               </Button>
             </div>
           </div>
@@ -210,7 +210,7 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
         )}
 
         <DialogFooter>
-          <Button onClick={() => onOpenChange(false)}>Close</Button>
+          <Button onClick={() => onOpenChange(false)}>&gt; CLOSE</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

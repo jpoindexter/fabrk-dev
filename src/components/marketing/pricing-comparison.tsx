@@ -202,7 +202,7 @@ export function PricingComparison({
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>
-        <Button variant="outline">Contact Sales</Button>
+        <Button variant="outline">&gt; CONTACT_SALES</Button>
       </div>
     </div>
   );

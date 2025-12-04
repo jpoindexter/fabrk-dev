@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { formatLabel } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -123,7 +124,7 @@ export function TimePicker({
               <Button variant="outline" size="sm" onClick={decrementHours} className="h-8 w-8 p-0">
                 -
               </Button>
-              <Label className="text-muted-foreground text-xs">Hours</Label>
+              <Label className="text-muted-foreground text-xs">{formatLabel("Hours")}</Label>
             </div>
 
             <span className="text-2xl font-bold">:</span>
@@ -159,7 +160,7 @@ export function TimePicker({
               >
                 -
               </Button>
-              <Label className="text-muted-foreground text-xs">Minutes</Label>
+              <Label className="text-muted-foreground text-xs">{formatLabel("Minutes")}</Label>
             </div>
 
             {/* AM/PM Toggle (only for 12-hour format) */}
@@ -173,7 +174,7 @@ export function TimePicker({
                 >
                   {period}
                 </Button>
-                <Label className="text-muted-foreground text-xs">Period</Label>
+                <Label className="text-muted-foreground text-xs">{formatLabel("Period")}</Label>
               </div>
             )}
           </div>

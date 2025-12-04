@@ -43,7 +43,7 @@ import { Button } from "@/components/ui/button";
 
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Open Menu</Button>
+    <Button variant="outline">&gt; OPEN_MENU</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent align="end" className="w-56">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -66,7 +66,7 @@ import { Button } from "@/components/ui/button";
         preview: (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">Open Menu</Button>
+              <Button variant="outline">&gt; OPEN_MENU</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -97,7 +97,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
 
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">View Options</Button>
+    <Button variant="outline">&gt; VIEW_OPTIONS</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -119,7 +119,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">View Options</Button>
+                <Button variant="outline">&gt; VIEW_OPTIONS</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -147,7 +147,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
 
 <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Position: {position}</Button>
+    <Button variant="outline">&gt; POSITION: {position}</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
@@ -162,7 +162,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">Position: {position}</Button>
+                <Button variant="outline">&gt; POSITION: {position}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
@@ -181,7 +181,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           description: "Nested menu items for hierarchical navigation",
           code: `<DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Actions</Button>
+    <Button variant="outline">&gt; ACTIONS</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuItem className="font-semibold">
@@ -219,7 +219,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">Actions</Button>
+                <Button variant="outline">&gt; ACTIONS</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuItem className="font-semibold">
@@ -261,7 +261,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           description: "Display keyboard shortcuts alongside menu items",
           code: `<DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="outline">Keyboard Shortcuts</Button>
+    <Button variant="outline">&gt; KEYBOARD_SHORTCUTS</Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-56">
     <DropdownMenuLabel>Commands</DropdownMenuLabel>
@@ -286,7 +286,7 @@ const [showActivityBar, setShowActivityBar] = useState(false);
           preview: (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">Keyboard Shortcuts</Button>
+                <Button variant="outline">&gt; KEYBOARD_SHORTCUTS</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Commands</DropdownMenuLabel>

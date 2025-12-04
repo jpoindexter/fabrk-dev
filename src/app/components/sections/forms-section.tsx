@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { formatLabel } from "@/lib/design-system";
 
 export function FormsSection() {
   return (
@@ -38,19 +39,19 @@ export function FormsSection() {
         </CardHeader>
         <CardContent className="max-w-md space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="text">Text Input</Label>
+            <Label htmlFor="text">{formatLabel("Text Input")}</Label>
             <Input id="text" placeholder="Enter text..." />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{formatLabel("Email")}</Label>
             <Input id="email" type="email" placeholder="name@example.com" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{formatLabel("Password")}</Label>
             <Input id="password" type="password" placeholder="••••••••" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="disabled">Disabled</Label>
+            <Label htmlFor="disabled">{formatLabel("Disabled")}</Label>
             <Input id="disabled" placeholder="Disabled input" disabled />
           </div>
         </CardContent>
@@ -62,7 +63,7 @@ export function FormsSection() {
           <CardDescription>Multi-line text input</CardDescription>
         </CardHeader>
         <CardContent className="max-w-md space-y-2">
-          <Label htmlFor="message-textarea">Message</Label>
+          <Label htmlFor="message-textarea">{formatLabel("Message")}</Label>
           <Textarea id="message-textarea" placeholder="Type your message here..." rows={4} />
         </CardContent>
       </Card>
@@ -73,7 +74,7 @@ export function FormsSection() {
           <CardDescription>Dropdown selection</CardDescription>
         </CardHeader>
         <CardContent className="max-w-md space-y-2">
-          <Label htmlFor="select-option">Select Option</Label>
+          <Label htmlFor="select-option">{formatLabel("Select Option")}</Label>
           <Select>
             <SelectTrigger id="select-option" aria-label="Select an option">
               <SelectValue placeholder="Select an option" />
@@ -95,7 +96,7 @@ export function FormsSection() {
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-2">
             <Checkbox id="terms" aria-label="Accept terms and conditions" />
-            <Label htmlFor="terms">Accept terms and conditions</Label>
+            <Label htmlFor="terms">{formatLabel("Accept terms")}</Label>
           </div>
 
           <Separator />
@@ -103,15 +104,15 @@ export function FormsSection() {
           <RadioGroup defaultValue="option1">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option1" id="option1" />
-              <Label htmlFor="option1">Option 1</Label>
+              <Label htmlFor="option1">{formatLabel("Option 1")}</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option2" id="option2" />
-              <Label htmlFor="option2">Option 2</Label>
+              <Label htmlFor="option2">{formatLabel("Option 2")}</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="option3" id="option3" />
-              <Label htmlFor="option3">Option 3</Label>
+              <Label htmlFor="option3">{formatLabel("Option 3")}</Label>
             </div>
           </RadioGroup>
         </CardContent>
@@ -125,11 +126,11 @@ export function FormsSection() {
         <CardContent className="space-y-4">
           <div className="flex items-center space-x-2">
             <Switch id="switch1" aria-label="Enable notifications" />
-            <Label htmlFor="switch1">Enable notifications</Label>
+            <Label htmlFor="switch1">{formatLabel("Enable notifications")}</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Switch id="switch2" defaultChecked aria-label="Auto-save enabled" />
-            <Label htmlFor="switch2">Auto-save enabled</Label>
+            <Label htmlFor="switch2">{formatLabel("Auto-save enabled")}</Label>
           </div>
         </CardContent>
       </Card>

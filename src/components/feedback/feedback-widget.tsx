@@ -20,6 +20,7 @@ import { MessageCircle, X, Star } from "lucide-react";
 import type { FeedbackType } from "@/lib/feedback";
 
 import { mode } from "@/lib/design-system/visual-mode";
+import { formatLabel } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 interface FeedbackWidgetProps {
   onSubmit: (feedback: { type: FeedbackType; message: string; rating?: number }) => void;
@@ -87,7 +88,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       ) : (
         <form onSubmit={handleSubmit} className="p-4">
           <div className="mb-4">
-            <Label htmlFor="feedback-type">Feedback Type</Label>
+            <Label htmlFor="feedback-type">{formatLabel("Feedback Type")}</Label>
             <Select value={type} onValueChange={(v) => setType(v as FeedbackType)}>
               <SelectTrigger id="feedback-type">
                 <SelectValue />
@@ -104,7 +105,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
           </div>
 
           <div className="mb-4">
-            <Label htmlFor="feedback-message">Your Feedback</Label>
+            <Label htmlFor="feedback-message">{formatLabel("Your Feedback")}</Label>
             <Textarea
               id="feedback-message"
               value={message}
@@ -116,7 +117,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
           </div>
 
           <div className="mb-4">
-            <Label>Rating (optional)</Label>
+            <Label>{formatLabel("Rating (optional)")}</Label>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((num) => (
                 <button

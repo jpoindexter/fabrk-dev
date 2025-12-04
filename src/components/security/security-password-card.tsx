@@ -28,7 +28,7 @@ export function SecurityPasswordCard() {
         </div>
       </CardHeader>
       <CardContent>
-        <Button variant="outline">Change Password</Button>
+        <Button variant="outline">&gt; CHANGE_PASSWORD</Button>
       </CardContent>
     </Card>
   );

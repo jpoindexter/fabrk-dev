@@ -13,56 +13,56 @@ export default function ButtonPage() {
       description="Displays a button or a component that looks like a button."
       importCode={`import { Button } from "@/components/ui/button"`}
       mainPreview={{
-        preview: <Button>Click me</Button>,
-        code: `<Button>Click me</Button>`,
+        preview: <Button>&gt; CLICK_ME</Button>,
+        code: `<Button>> CLICK_ME</Button>`,
       }}
       variants={[
         {
           title: "Default",
           description: "The default button style with primary colors.",
-          preview: <Button variant="default">Default</Button>,
-          code: `<Button variant="default">Default</Button>`,
+          preview: <Button variant="default">&gt; DEFAULT</Button>,
+          code: `<Button variant="default">> DEFAULT</Button>`,
         },
         {
           title: "Secondary",
           description: "A secondary button for less prominent actions.",
-          preview: <Button variant="secondary">Secondary</Button>,
-          code: `<Button variant="secondary">Secondary</Button>`,
+          preview: <Button variant="secondary">&gt; SECONDARY</Button>,
+          code: `<Button variant="secondary">> SECONDARY</Button>`,
         },
         {
           title: "Outline",
           description: "A button with an outline border.",
-          preview: <Button variant="outline">Outline</Button>,
-          code: `<Button variant="outline">Outline</Button>`,
+          preview: <Button variant="outline">&gt; OUTLINE</Button>,
+          code: `<Button variant="outline">> OUTLINE</Button>`,
         },
         {
           title: "Ghost",
           description: "A transparent button that appears on hover.",
-          preview: <Button variant="ghost">Ghost</Button>,
-          code: `<Button variant="ghost">Ghost</Button>`,
+          preview: <Button variant="ghost">&gt; GHOST</Button>,
+          code: `<Button variant="ghost">> GHOST</Button>`,
         },
         {
           title: "Link",
           description: "A button that looks like a text link.",
-          preview: <Button variant="link">Link</Button>,
-          code: `<Button variant="link">Link</Button>`,
+          preview: <Button variant="link">&gt; LINK</Button>,
+          code: `<Button variant="link">> LINK</Button>`,
         },
         {
           title: "Destructive",
           description: "A button for destructive actions like delete.",
-          preview: <Button variant="destructive">Delete</Button>,
-          code: `<Button variant="destructive">Delete</Button>`,
+          preview: <Button variant="destructive">&gt; DELETE</Button>,
+          code: `<Button variant="destructive">> DELETE</Button>`,
         },
         {
           title: "With Icon",
           description: "Button with an icon for enhanced context.",
           preview: (
             <Button>
-              <Mail className="mr-2 h-4 w-4" /> Login with Email
+              <Mail className="mr-2 h-4 w-4" /> &gt; LOGIN_WITH_EMAIL
             </Button>
           ),
           code: `<Button>
-  <Mail className="mr-2 h-4 w-4" /> Login with Email
+  <Mail className="mr-2 h-4 w-4" /> > LOGIN_WITH_EMAIL
 </Button>`,
         },
         {
@@ -80,43 +80,43 @@ export default function ButtonPage() {
         {
           title: "Loading",
           description: "Button in loading state with spinner and text.",
-          preview: <Button loading>Loading...</Button>,
-          code: `<Button loading>Loading...</Button>`,
+          preview: <Button loading>&gt; LOADING...</Button>,
+          code: `<Button loading>> LOADING...</Button>`,
         },
         {
           title: "Disabled",
           description: "A disabled button that cannot be clicked.",
-          preview: <Button disabled>Disabled</Button>,
-          code: `<Button disabled>Disabled</Button>`,
+          preview: <Button disabled>&gt; DISABLED</Button>,
+          code: `<Button disabled>> DISABLED</Button>`,
         },
         {
           title: "Small",
           description: "A smaller button for compact UI areas.",
-          preview: <Button size="sm">Small</Button>,
-          code: `<Button size="sm">Small</Button>`,
+          preview: <Button size="sm">&gt; SMALL</Button>,
+          code: `<Button size="sm">> SMALL</Button>`,
         },
         {
           title: "Large",
           description: "A larger button for prominent actions.",
-          preview: <Button size="lg">Large</Button>,
-          code: `<Button size="lg">Large</Button>`,
+          preview: <Button size="lg">&gt; LARGE</Button>,
+          code: `<Button size="lg">> LARGE</Button>`,
         },
         {
           title: "Extra Large",
           description: "An extra large button for CTAs.",
-          preview: <Button size="xl">Extra Large</Button>,
-          code: `<Button size="xl">Extra Large</Button>`,
+          preview: <Button size="xl">&gt; EXTRA_LARGE</Button>,
+          code: `<Button size="xl">> EXTRA_LARGE</Button>`,
         },
         {
           title: "Primary CTA",
           description: "High-emphasis call-to-action button.",
           preview: (
             <Button variant="primaryCta">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              &gt; GET_STARTED <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           ),
           code: `<Button variant="primaryCta">
-  Get Started <ArrowRight className="ml-2 h-4 w-4" />
+  > GET_STARTED <ArrowRight className="ml-2 h-4 w-4" />
 </Button>`,
         },
       ]}

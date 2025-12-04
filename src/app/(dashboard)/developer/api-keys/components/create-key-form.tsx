@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2 } from "lucide-react";
+import { formatLabel } from "@/lib/design-system";
 
 interface CreateKeyFormProps {
   newKeyName: string;
@@ -29,7 +30,7 @@ export function CreateKeyForm({
   return (
     <div className="space-y-4 pt-4">
       <div className="space-y-2">
-        <Label htmlFor="keyName">API Key Name</Label>
+        <Label htmlFor="keyName">{formatLabel("API Key Name")}</Label>
         <Input
           id="keyName"
           value={newKeyName}
@@ -39,7 +40,7 @@ export function CreateKeyForm({
       </div>
 
       <div className="space-y-2">
-        <Label>Permissions</Label>
+        <Label>{formatLabel("Permissions")}</Label>
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
             <Checkbox
@@ -48,7 +49,7 @@ export function CreateKeyForm({
               onCheckedChange={() => onTogglePermission("read")}
             />
             <Label htmlFor="read" className="cursor-pointer">
-              Read - View organization data
+              {formatLabel("Read - View organization data")}
             </Label>
           </div>
           <div className="flex items-center space-x-2">
@@ -58,7 +59,7 @@ export function CreateKeyForm({
               onCheckedChange={() => onTogglePermission("write")}
             />
             <Label htmlFor="write" className="cursor-pointer">
-              Write - Create and update resources
+              {formatLabel("Write - Create and update resources")}
             </Label>
           </div>
           <div className="flex items-center space-x-2">
@@ -68,7 +69,7 @@ export function CreateKeyForm({
               onCheckedChange={() => onTogglePermission("admin")}
             />
             <Label htmlFor="admin" className="cursor-pointer text-destructive">
-              Admin - Full admin access (dangerous)
+              {formatLabel("Admin - Full admin access (dangerous)")}
             </Label>
           </div>
         </div>

@@ -24,12 +24,12 @@ export function ButtonsSection() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-4">
-            <Button>Default</Button>
-            <Button variant="destructive">Destructive</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="link">Link</Button>
+            <Button>&gt; DEFAULT</Button>
+            <Button variant="destructive">&gt; DESTRUCTIVE</Button>
+            <Button variant="outline">&gt; OUTLINE</Button>
+            <Button variant="secondary">&gt; SECONDARY</Button>
+            <Button variant="ghost">&gt; GHOST</Button>
+            <Button variant="link">&gt; LINK</Button>
           </div>
         </CardContent>
       </Card>
@@ -40,10 +40,10 @@ export function ButtonsSection() {
           <CardDescription>Different size options</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap items-center gap-4">
-          <Button size="sm">Small</Button>
-          <Button size="default">Default</Button>
-          <Button size="lg">Large</Button>
-          <Button size="xl">Extra Large</Button>
+          <Button size="sm">&gt; SMALL</Button>
+          <Button size="default">&gt; DEFAULT</Button>
+          <Button size="lg">&gt; LARGE</Button>
+          <Button size="xl">&gt; EXTRA_LARGE</Button>
         </CardContent>
       </Card>
 
@@ -55,10 +55,10 @@ export function ButtonsSection() {
         <CardContent className="flex flex-wrap gap-4">
           <Button>
             <Mail className="mr-2 h-4 w-4" />
-            Email
+            &gt; EMAIL
           </Button>
           <Button>
-            Download
+            &gt; DOWNLOAD
             <Download className="ml-2 h-4 w-4" />
           </Button>
           <Button size="icon" aria-label="Like">
@@ -76,9 +76,9 @@ export function ButtonsSection() {
           <CardDescription>Loading and disabled states</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-4">
-          <Button loading loadingText="Saving...">Loading</Button>
-          <Button disabled>Disabled</Button>
-          <Button variant="outline" disabled>Disabled Outline</Button>
+          <Button loading loadingText="SAVING...">&gt; LOADING</Button>
+          <Button disabled>&gt; DISABLED</Button>
+          <Button variant="outline" disabled>&gt; DISABLED_OUTLINE</Button>
         </CardContent>
       </Card>
     </section>

@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
+import { formatLabel } from "@/lib/design-system";
 
 export default function LabelPage() {
   return (
@@ -17,11 +18,11 @@ export default function LabelPage() {
       mainPreview={{
         preview: (
           <div className="space-y-2">
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email">{formatLabel("Email Address")}</Label>
             <Input id="email" type="email" placeholder="you@example.com" />
           </div>
         ),
-        code: `<Label htmlFor="email">Email Address</Label>
+        code: `<Label htmlFor="email">{formatLabel("Email Address")}</Label>
 <Input id="email" type="email" placeholder="you@example.com" />`,
       }}
       variants={[
@@ -31,13 +32,13 @@ export default function LabelPage() {
           preview: (
             <div className="space-y-2">
               <Label htmlFor="username" required>
-                Username
+                {formatLabel("Username")}
               </Label>
               <Input id="username" placeholder="Enter username" />
             </div>
           ),
           code: `<Label htmlFor="username" required>
-  Username
+  {formatLabel("Username")}
 </Label>
 <Input id="username" placeholder="Enter username" />`,
         },
@@ -47,7 +48,7 @@ export default function LabelPage() {
           preview: (
             <div className="space-y-2">
               <Label htmlFor="password" required error>
-                Password
+                {formatLabel("Password")}
               </Label>
               <Input
                 id="password"
@@ -61,7 +62,7 @@ export default function LabelPage() {
             </div>
           ),
           code: `<Label htmlFor="password" required error>
-  Password
+  {formatLabel("Password")}
 </Label>
 <Input
   id="password"
@@ -78,12 +79,12 @@ export default function LabelPage() {
           preview: (
             <div className="flex items-center gap-2">
               <Checkbox id="terms" />
-              <Label htmlFor="terms">Accept terms and conditions</Label>
+              <Label htmlFor="terms">{formatLabel("Accept terms and conditions")}</Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">
   <Checkbox id="terms" />
-  <Label htmlFor="terms">Accept terms and conditions</Label>
+  <Label htmlFor="terms">{formatLabel("Accept terms and conditions")}</Label>
 </div>`,
         },
         {
@@ -91,12 +92,12 @@ export default function LabelPage() {
           description: "Label for toggle switch control.",
           preview: (
             <div className="flex items-center justify-between">
-              <Label htmlFor="notifications">Email Notifications</Label>
+              <Label htmlFor="notifications">{formatLabel("Email Notifications")}</Label>
               <Switch id="notifications" />
             </div>
           ),
           code: `<div className="flex items-center justify-between">
-  <Label htmlFor="notifications">Email Notifications</Label>
+  <Label htmlFor="notifications">{formatLabel("Email Notifications")}</Label>
   <Switch id="notifications" />
 </div>`,
         },
@@ -105,11 +106,11 @@ export default function LabelPage() {
           description: "Label with disabled peer input.",
           preview: (
             <div className="space-y-2">
-              <Label htmlFor="disabled">Disabled Field</Label>
+              <Label htmlFor="disabled">{formatLabel("Disabled Field")}</Label>
               <Input id="disabled" placeholder="Cannot edit" disabled />
             </div>
           ),
-          code: `<Label htmlFor="disabled">Disabled Field</Label>
+          code: `<Label htmlFor="disabled">{formatLabel("Disabled Field")}</Label>
 <Input id="disabled" placeholder="Cannot edit" disabled />`,
         },
         {

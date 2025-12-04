@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function CheckboxPage() {
   return (
@@ -16,12 +17,12 @@ export default function CheckboxPage() {
         preview: (
           <div className="flex items-center gap-2">
             <Checkbox id="terms" />
-            <Label htmlFor="terms">Accept terms and conditions</Label>
+            <Label htmlFor="terms">{formatLabel("Accept terms and conditions")}</Label>
           </div>
         ),
         code: `<div className="flex items-center gap-2">
   <Checkbox id="terms" />
-  <Label htmlFor="terms">Accept terms and conditions</Label>
+  <Label htmlFor="terms">[ACCEPT_TERMS_AND_CONDITIONS]:</Label>
 </div>`,
       }}
       variants={[
@@ -43,12 +44,12 @@ export default function CheckboxPage() {
           preview: (
             <div className="flex items-center gap-2">
               <Checkbox id="newsletter" />
-              <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+              <Label htmlFor="newsletter">{formatLabel("Subscribe to newsletter")}</Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">
   <Checkbox id="newsletter" />
-  <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+  <Label htmlFor="newsletter">[SUBSCRIBE_TO_NEWSLETTER]:</Label>
 </div>`,
         },
         {
@@ -70,30 +71,30 @@ export default function CheckboxPage() {
             <div className="grid gap-2">
               <div className="flex items-center gap-2">
                 <Checkbox id="option1" defaultChecked />
-                <Label htmlFor="option1">Option 1</Label>
+                <Label htmlFor="option1">{formatLabel("Option 1")}</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="option2" />
-                <Label htmlFor="option2">Option 2</Label>
+                <Label htmlFor="option2">{formatLabel("Option 2")}</Label>
               </div>
               <div className="flex items-center gap-2">
                 <Checkbox id="option3" />
-                <Label htmlFor="option3">Option 3</Label>
+                <Label htmlFor="option3">{formatLabel("Option 3")}</Label>
               </div>
             </div>
           ),
           code: `<div className="grid gap-2">
   <div className="flex items-center gap-2">
     <Checkbox id="option1" defaultChecked />
-    <Label htmlFor="option1">Option 1</Label>
+    <Label htmlFor="option1">[OPTION_1]:</Label>
   </div>
   <div className="flex items-center gap-2">
     <Checkbox id="option2" />
-    <Label htmlFor="option2">Option 2</Label>
+    <Label htmlFor="option2">[OPTION_2]:</Label>
   </div>
   <div className="flex items-center gap-2">
     <Checkbox id="option3" />
-    <Label htmlFor="option3">Option 3</Label>
+    <Label htmlFor="option3">[OPTION_3]:</Label>
   </div>
 </div>`,
         },

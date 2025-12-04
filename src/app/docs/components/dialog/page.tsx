@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function DialogPage() {
   return (
@@ -34,7 +35,7 @@ export default function DialogPage() {
         preview: (
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="outline">Open Dialog</Button>
+              <Button variant="outline">&gt; OPEN_DIALOG</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -48,7 +49,7 @@ export default function DialogPage() {
         ),
         code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="outline">Open Dialog</Button>
+    <Button variant="outline">&gt; OPEN_DIALOG</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -67,7 +68,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button>Edit Profile</Button>
+                <Button>&gt; EDIT_PROFILE</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -79,26 +80,26 @@ export default function DialogPage() {
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="name" className="text-right">
-                      Name
+                      {formatLabel("Name")}
                     </Label>
                     <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="username" className="text-right">
-                      Username
+                      {formatLabel("Username")}
                     </Label>
                     <Input id="username" defaultValue="@peduarte" className="col-span-3" />
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button type="submit">Save changes</Button>
+                  <Button type="submit">&gt; SAVE_CHANGES</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button>Edit Profile</Button>
+    <Button>&gt; EDIT_PROFILE</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -110,13 +111,19 @@ export default function DialogPage() {
     <div className="grid gap-4 py-4">
       <div className="grid grid-cols-4 items-center gap-4">
         <Label htmlFor="name" className="text-right">
-          Name
+          {formatLabel("Name")}
         </Label>
         <Input id="name" className="col-span-3" />
       </div>
+      <div className="grid grid-cols-4 items-center gap-4">
+        <Label htmlFor="username" className="text-right">
+          {formatLabel("Username")}
+        </Label>
+        <Input id="username" className="col-span-3" />
+      </div>
     </div>
     <DialogFooter>
-      <Button type="submit">Save changes</Button>
+      <Button type="submit">&gt; SAVE_CHANGES</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>`,
@@ -127,7 +134,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="destructive">Delete Account</Button>
+                <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -138,15 +145,15 @@ export default function DialogPage() {
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                  <Button variant="outline">Cancel</Button>
-                  <Button variant="destructive">Delete Account</Button>
+                  <Button variant="outline">&gt; CANCEL</Button>
+                  <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="destructive">Delete Account</Button>
+    <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -156,8 +163,8 @@ export default function DialogPage() {
       </DialogDescription>
     </DialogHeader>
     <DialogFooter>
-      <Button variant="outline">Cancel</Button>
-      <Button variant="destructive">Delete</Button>
+      <Button variant="outline">&gt; CANCEL</Button>
+      <Button variant="destructive">&gt; DELETE_ACCOUNT</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>`,
@@ -168,7 +175,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline">Wide Dialog</Button>
+                <Button variant="outline">&gt; WIDE_DIALOG</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px]">
                 <DialogHeader>
@@ -182,7 +189,7 @@ export default function DialogPage() {
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="outline">Wide Dialog</Button>
+    <Button variant="outline">&gt; WIDE_DIALOG</Button>
   </DialogTrigger>
   <DialogContent className="sm:max-w-[600px]">
     <DialogHeader>
@@ -200,7 +207,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary">Controlled Dialog</Button>
+                <Button variant="secondary">&gt; CONTROLLED_DIALOG</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -217,7 +224,7 @@ export default function DialogPage() {
 
 <Dialog open={open} onOpenChange={setOpen}>
   <DialogTrigger asChild>
-    <Button>Open</Button>
+    <Button>&gt; OPEN</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -232,7 +239,7 @@ export default function DialogPage() {
           preview: (
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="ghost">Simple Dialog</Button>
+                <Button variant="ghost">&gt; SIMPLE_DIALOG</Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
@@ -248,7 +255,7 @@ export default function DialogPage() {
           ),
           code: `<Dialog>
   <DialogTrigger asChild>
-    <Button variant="ghost">Simple Dialog</Button>
+    <Button variant="ghost">&gt; SIMPLE_DIALOG</Button>
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>

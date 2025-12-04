@@ -3,7 +3,7 @@
 import * as React from "react";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode, formatButtonText } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 
 interface EmptyStateProps {
@@ -31,7 +31,7 @@ export function EmptyState({ icon: Icon, title, description, action, className }
           {description}
         </p>
       )}
-      {action && <Button onClick={action.onClick}>{action.label}</Button>}
+      {action && <Button onClick={action.onClick}>{formatButtonText(action.label)}</Button>}
     </div>
   );
 }

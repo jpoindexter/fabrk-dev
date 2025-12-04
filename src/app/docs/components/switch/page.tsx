@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { formatLabel } from "@/lib/design-system";
 
 export default function SwitchPage() {
   return (
@@ -16,12 +17,12 @@ export default function SwitchPage() {
         preview: (
           <div className="flex items-center gap-2">
             <Switch id="notifications" />
-            <Label htmlFor="notifications">Enable notifications</Label>
+            <Label htmlFor="notifications">{formatLabel("Enable notifications")}</Label>
           </div>
         ),
         code: `<div className="flex items-center gap-2">
   <Switch id="notifications" />
-  <Label htmlFor="notifications">Enable notifications</Label>
+  <Label htmlFor="notifications">[ENABLE_NOTIFICATIONS]:</Label>
 </div>`,
       }}
       variants={[
@@ -43,12 +44,12 @@ export default function SwitchPage() {
           preview: (
             <div className="flex items-center gap-2">
               <Switch id="dark-mode" />
-              <Label htmlFor="dark-mode">Dark mode</Label>
+              <Label htmlFor="dark-mode">{formatLabel("Dark mode")}</Label>
             </div>
           ),
           code: `<div className="flex items-center gap-2">
   <Switch id="dark-mode" />
-  <Label htmlFor="dark-mode">Dark mode</Label>
+  <Label htmlFor="dark-mode">[DARK_MODE]:</Label>
 </div>`,
         },
         {
@@ -69,30 +70,30 @@ export default function SwitchPage() {
           preview: (
             <div className="grid gap-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="emails">Email notifications</Label>
+                <Label htmlFor="emails">{formatLabel("Email notifications")}</Label>
                 <Switch id="emails" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="push">Push notifications</Label>
+                <Label htmlFor="push">{formatLabel("Push notifications")}</Label>
                 <Switch id="push" />
               </div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="sms">SMS notifications</Label>
+                <Label htmlFor="sms">{formatLabel("SMS notifications")}</Label>
                 <Switch id="sms" disabled />
               </div>
             </div>
           ),
           code: `<div className="grid gap-4">
   <div className="flex items-center justify-between">
-    <Label htmlFor="emails">Email notifications</Label>
+    <Label htmlFor="emails">[EMAIL_NOTIFICATIONS]:</Label>
     <Switch id="emails" defaultChecked />
   </div>
   <div className="flex items-center justify-between">
-    <Label htmlFor="push">Push notifications</Label>
+    <Label htmlFor="push">[PUSH_NOTIFICATIONS]:</Label>
     <Switch id="push" />
   </div>
   <div className="flex items-center justify-between">
-    <Label htmlFor="sms">SMS notifications</Label>
+    <Label htmlFor="sms">[SMS_NOTIFICATIONS]:</Label>
     <Switch id="sms" disabled />
   </div>
 </div>`,

@@ -102,9 +102,9 @@ export const MultiStepForm = React.forwardRef<HTMLDivElement, MultiStepFormProps
         <div className="min-h-48">{children}</div>
         <div className="flex justify-between">
           <Button onClick={onPrev} disabled={currentStep === 0} variant="outline">
-            Previous
+            &gt; PREVIOUS
           </Button>
-          <Button onClick={onNext}>{currentStep === steps.length - 1 ? "Finish" : "Next"}</Button>
+          <Button onClick={onNext}>{currentStep === steps.length - 1 ? "&gt; FINISH" : "&gt; NEXT"}</Button>
         </div>
       </div>
     );

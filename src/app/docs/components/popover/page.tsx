@@ -6,6 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Settings, Info } from "lucide-react";
+import { formatLabel } from "@/lib/design-system";
 
 export default function PopoverPage() {
   return (
@@ -19,7 +20,7 @@ export default function PopoverPage() {
         preview: (
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline">Open Popover</Button>
+              <Button variant="outline">&gt; OPEN_POPOVER</Button>
             </PopoverTrigger>
             <PopoverContent>
               <div className="space-y-2">
@@ -31,7 +32,7 @@ export default function PopoverPage() {
         ),
         code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Open Popover</Button>
+    <Button variant="outline">&gt; OPEN_POPOVER</Button>
   </PopoverTrigger>
   <PopoverContent>
     <div className="space-y-2">
@@ -52,7 +53,7 @@ export default function PopoverPage() {
               <PopoverTrigger asChild>
                 <Button>
                   <Settings className="mr-2 h-4 w-4" />
-                  Settings
+                  &gt; SETTINGS
                 </Button>
               </PopoverTrigger>
               <PopoverContent>
@@ -63,11 +64,11 @@ export default function PopoverPage() {
                   </div>
                   <div className="grid gap-2">
                     <div className="grid grid-cols-3 items-center gap-4">
-                      <Label htmlFor="width">Width</Label>
+                      <Label htmlFor="width">{formatLabel("Width")}</Label>
                       <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
                     </div>
                     <div className="grid grid-cols-3 items-center gap-4">
-                      <Label htmlFor="height">Height</Label>
+                      <Label htmlFor="height">{formatLabel("Height")}</Label>
                       <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
                     </div>
                   </div>
@@ -79,15 +80,17 @@ export default function PopoverPage() {
   <PopoverTrigger asChild>
     <Button>
       <Settings className="mr-2 h-4 w-4" />
-      Settings
+      &gt; SETTINGS
     </Button>
   </PopoverTrigger>
   <PopoverContent>
     <div className="grid gap-4">
       <h4 className="font-medium">Settings</h4>
       <div className="grid gap-2">
-        <Label htmlFor="width">Width</Label>
+        <Label htmlFor="width">{formatLabel("Width")}</Label>
         <Input id="width" defaultValue="100%" />
+        <Label htmlFor="height">{formatLabel("Height")}</Label>
+        <Input id="height" defaultValue="25px" />
       </div>
     </div>
   </PopoverContent>
@@ -99,7 +102,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">Align Start</Button>
+                <Button variant="outline">&gt; ALIGN_START</Button>
               </PopoverTrigger>
               <PopoverContent align="start">
                 <div className="space-y-2">
@@ -113,7 +116,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Align Start</Button>
+    <Button variant="outline">&gt; ALIGN_START</Button>
   </PopoverTrigger>
   <PopoverContent align="start">
     <div className="space-y-2">
@@ -129,7 +132,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="secondary">Align End</Button>
+                <Button variant="secondary">&gt; ALIGN_END</Button>
               </PopoverTrigger>
               <PopoverContent align="end">
                 <div className="space-y-2">
@@ -143,7 +146,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="secondary">Align End</Button>
+    <Button variant="secondary">&gt; ALIGN_END</Button>
   </PopoverTrigger>
   <PopoverContent align="end">
     <div className="space-y-2">
@@ -193,7 +196,7 @@ export default function PopoverPage() {
           preview: (
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">Wide Popover</Button>
+                <Button variant="outline">&gt; WIDE_POPOVER</Button>
               </PopoverTrigger>
               <PopoverContent className="w-96">
                 <div className="space-y-2">
@@ -208,7 +211,7 @@ export default function PopoverPage() {
           ),
           code: `<Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Wide Popover</Button>
+    <Button variant="outline">&gt; WIDE_POPOVER</Button>
   </PopoverTrigger>
   <PopoverContent className="w-96">
     <div className="space-y-2">

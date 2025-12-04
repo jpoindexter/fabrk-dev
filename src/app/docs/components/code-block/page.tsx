@@ -64,7 +64,7 @@ export function TodoList() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && addTodo()}
         />
-        <Button onClick={addTodo}>Add</Button>
+        <Button onClick={addTodo}>&gt; ADD</Button>
       </div>
       <ul>
         {todos.map((todo) => (

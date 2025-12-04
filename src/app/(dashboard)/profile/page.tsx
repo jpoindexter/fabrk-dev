@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
 import { toast } from "sonner";
-import { mode } from "@/lib/design-system";
+import { mode, formatLabel } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
 export default function ProfilePage() {
@@ -189,12 +189,12 @@ export default function ProfilePage() {
               <CardTitle as="h2">Profile Details</CardTitle>
               <CardDescription>Update your bio and social links</CardDescription>
             </div>
-            {!isEditing && <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>}
+            {!isEditing && <Button onClick={() => setIsEditing(true)}>&gt; EDIT_PROFILE</Button>}
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Display Name</Label>
+            <Label htmlFor="name">{formatLabel("Display Name")}</Label>
             <Input
               id="name"
               value={formData.name}
@@ -204,7 +204,7 @@ export default function ProfilePage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="bio">Bio</Label>
+            <Label htmlFor="bio">{formatLabel("Bio")}</Label>
             <Textarea
               id="bio"
               placeholder="Tell us about yourself..."
@@ -217,7 +217,7 @@ export default function ProfilePage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="website">Website</Label>
+              <Label htmlFor="website">{formatLabel("Website")}</Label>
               <Input
                 id="website"
                 type="url"
@@ -229,7 +229,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="twitter">Twitter</Label>
+              <Label htmlFor="twitter">{formatLabel("Twitter")}</Label>
               <Input
                 id="twitter"
                 placeholder="@username"
@@ -240,7 +240,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="github">GitHub</Label>
+              <Label htmlFor="github">{formatLabel("GitHub")}</Label>
               <Input
                 id="github"
                 placeholder="username"
@@ -260,10 +260,10 @@ export default function ProfilePage() {
                   // Reset form
                 }}
               >
-                Cancel
+                &gt; CANCEL
               </Button>
               <Button onClick={handleSave} disabled={isSaving}>
-                {isSaving ? "Saving..." : "Save Changes"}
+                {isSaving ? "&gt; SAVING..." : "&gt; SAVE_CHANGES"}
               </Button>
             </div>
           )}
