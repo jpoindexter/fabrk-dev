@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Shield, Lock, Activity, FileText, Settings } from "lucide-react";
 import { TemplatePageHeader } from "@/components/ui/card";
 import { SecurityScore } from "./components/security-score";
@@ -155,7 +155,7 @@ export default function SecurityPrivacyTemplate() {
         <SecurityScore user={securityData.user} />
 
         {/* Tab Navigation */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="SECURITY_NAVIGATION"
           tabs={tabs}
@@ -163,7 +163,7 @@ export default function SecurityPrivacyTemplate() {
           onValueChange={setActiveTab}
         >
           {/* Tab Contents */}
-          <TerminalTabsContent value="security">
+          <StyledTabsContent value="security">
             <SecurityTab
               twoFactorEnabled={securityData.user.twoFactorEnabled}
               lastPasswordChange={securityData.user.lastPasswordChange}
@@ -171,25 +171,25 @@ export default function SecurityPrivacyTemplate() {
               onEnable2FA={handleEnable2FA}
               onRevokeSession={handleRevokeSession}
             />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="privacy">
+          <StyledTabsContent value="privacy">
             <PrivacyTab privacy={privacy} onToggle={handlePrivacyToggle} />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="audit">
+          <StyledTabsContent value="audit">
             <AuditTab auditLog={securityData.auditLog} />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="compliance">
+          <StyledTabsContent value="compliance">
             <ComplianceTab
               onExportData={handleExportData}
               onRequestAccess={handleRequestAccess}
               onViewPolicy={handleViewPolicy}
               onDeleteAccount={handleDeleteAccount}
             />
-          </TerminalTabsContent>
-        </TerminalTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* Implementation Note */}
         <ImplementationNote />

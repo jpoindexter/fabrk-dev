@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { ArrowUpRight } from "lucide-react";
 import { TemplatePageHeader } from "@/components/ui/card";
 
@@ -182,7 +182,7 @@ export default function BillingDashboardTemplate() {
         </div>
 
         {/* Terminal Tab Navigation */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="BILLING_NAVIGATION"
           tabs={tabs}
@@ -190,7 +190,7 @@ export default function BillingDashboardTemplate() {
           onValueChange={setActiveTab}
         >
           {/* Overview Tab */}
-          <TerminalTabsContent value="overview">
+          <StyledTabsContent value="overview">
             <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
             {/* Usage Stats and Payment Methods Grid */}
@@ -206,23 +206,23 @@ export default function BillingDashboardTemplate() {
               getStatusText={getStatusText}
               onViewAll={() => setActiveTab("history")}
             />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Plans Tab */}
-          <TerminalTabsContent value="plans">
+          <StyledTabsContent value="plans">
             <PlanCards plans={plans} />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* History Tab */}
-          <TerminalTabsContent value="history">
+          <StyledTabsContent value="history">
             <BillingHistoryTable
               payments={payments}
               formatDate={formatDate}
               formatCurrency={formatCurrency}
               getStatusText={getStatusText}
             />
-          </TerminalTabsContent>
-        </TerminalTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* Implementation Note */}
         <TemplateFeaturesCard />

@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
   TerminalCard,
   TerminalCardHeader,
@@ -74,7 +74,7 @@ export default function LandingVariationsTemplate() {
         />
 
         {/* Variation Selector */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="VARIATION_SELECTOR"
           tabs={tabs}
@@ -84,7 +84,7 @@ export default function LandingVariationsTemplate() {
         >
           {/* Hero Previews */}
           {/* Centered Hero */}
-          <TerminalTabsContent value="centered">
+          <StyledTabsContent value="centered">
             <TerminalCard>
               <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -133,10 +133,10 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Split Hero */}
-          <TerminalTabsContent value="split">
+          <StyledTabsContent value="split">
             <TerminalCard>
               <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -189,10 +189,10 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Minimal Hero */}
-          <TerminalTabsContent value="minimal">
+          <StyledTabsContent value="minimal">
             <TerminalCard>
               <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -238,8 +238,8 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TerminalTabsContent>
-        </TerminalTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* Quick Reference Grid */}
         <div className="grid gap-4 md:grid-cols-3">

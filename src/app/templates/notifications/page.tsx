@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Bell } from "lucide-react";
 import { Notification, initialNotifications } from "./components/notification-types";
 import { NotificationsHeader } from "./components/notifications-header";
@@ -78,7 +78,7 @@ export default function NotificationsTemplate() {
             />
 
             {/* Tabs */}
-            <TerminalTabs
+            <StyledTabs
               code="0x01"
               title="FILTER"
               tabs={tabs}
@@ -90,23 +90,23 @@ export default function NotificationsTemplate() {
                   : `${notifications.length} total notifications`
               }
             >
-              <TerminalTabsContent value="all">
+              <StyledTabsContent value="all">
                 <NotificationsList
                   notifications={filteredNotifications}
                   activeTab={activeTab}
                   onMarkAsRead={markAsRead}
                   onDelete={deleteNotification}
                 />
-              </TerminalTabsContent>
-              <TerminalTabsContent value="unread">
+              </StyledTabsContent>
+              <StyledTabsContent value="unread">
                 <NotificationsList
                   notifications={filteredNotifications}
                   activeTab={activeTab}
                   onMarkAsRead={markAsRead}
                   onDelete={deleteNotification}
                 />
-              </TerminalTabsContent>
-            </TerminalTabs>
+              </StyledTabsContent>
+            </StyledTabs>
           </div>
         </div>
 

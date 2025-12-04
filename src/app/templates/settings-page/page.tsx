@@ -7,7 +7,7 @@
 "use client";
 
 import { useState } from "react";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Settings, User, Lock, CreditCard } from "lucide-react";
 import { SettingsHeader } from "./components/settings-header";
 import { GeneralTab } from "./components/general-tab";
@@ -34,7 +34,7 @@ export default function SettingsPageTemplate() {
         <SettingsHeader />
 
         {/* Tabs Container */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="SETTINGS_NAVIGATION"
           tabs={tabs}
@@ -42,22 +42,22 @@ export default function SettingsPageTemplate() {
           onValueChange={setActiveTab}
         >
           {/* Tab Content */}
-          <TerminalTabsContent value="general">
+          <StyledTabsContent value="general">
             <GeneralTab />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="account">
+          <StyledTabsContent value="account">
             <AccountTab />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="privacy">
+          <StyledTabsContent value="privacy">
             <PrivacyTab />
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
-          <TerminalTabsContent value="billing">
+          <StyledTabsContent value="billing">
             <BillingTab />
-          </TerminalTabsContent>
-        </TerminalTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* Implementation Note */}
         <ImplementationNote />

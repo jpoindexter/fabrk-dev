@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Download, BarChart3 } from "lucide-react";
 
 export interface PageData {
@@ -47,7 +47,7 @@ export function AnalyticsTabs({
   ];
 
   return (
-    <TerminalTabs
+    <StyledTabs
       code="0x00"
       title="ANALYTICS_TABS"
       tabs={tabs}
@@ -55,7 +55,7 @@ export function AnalyticsTabs({
       onValueChange={onTabChange}
     >
       {/* Overview Tab */}
-      <TerminalTabsContent value="overview">
+      <StyledTabsContent value="overview">
         <div className="border-border bg-card border border-t-0 p-4">
           <div className="text-muted-foreground mb-4 font-mono text-xs">
             [TOP_PAGES]: SORTED_BY=VIEWS
@@ -86,10 +86,10 @@ export function AnalyticsTabs({
             </div>
           </div>
         </div>
-      </TerminalTabsContent>
+      </StyledTabsContent>
 
       {/* Analytics Tab */}
-      <TerminalTabsContent value="analytics">
+      <StyledTabsContent value="analytics">
         <div className="border-border bg-card border border-t-0 p-4">
           <div className="grid gap-4 md:grid-cols-2">
             {/* Traffic Sources */}
@@ -127,10 +127,10 @@ export function AnalyticsTabs({
             </div>
           </div>
         </div>
-      </TerminalTabsContent>
+      </StyledTabsContent>
 
       {/* Reports Tab */}
-      <TerminalTabsContent value="reports">
+      <StyledTabsContent value="reports">
         <div className="border-border bg-card border border-t-0 p-4">
           <div className="text-muted-foreground mb-4 font-mono text-xs">[AVAILABLE_REPORTS]:</div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -162,7 +162,7 @@ export function AnalyticsTabs({
             ))}
           </div>
         </div>
-      </TerminalTabsContent>
-    </TerminalTabs>
+      </StyledTabsContent>
+    </StyledTabs>
   );
 }

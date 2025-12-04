@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Activity, Star, GitBranch, LucideIcon } from "lucide-react";
 
 interface ActivityItem {
@@ -41,14 +41,14 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
   const [activeTab, setActiveTab] = useState("activity");
 
   return (
-    <TerminalTabs
+    <StyledTabs
       code="0x00"
       title="CONTENT"
       tabs={tabs}
       value={activeTab}
       onValueChange={setActiveTab}
     >
-      <TerminalTabsContent value="activity">
+      <StyledTabsContent value="activity">
         <div className="space-y-2">
           {activity.map((item) => {
             const Icon = item.icon;
@@ -68,9 +68,9 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
             );
           })}
         </div>
-      </TerminalTabsContent>
+      </StyledTabsContent>
 
-      <TerminalTabsContent value="projects">
+      <StyledTabsContent value="projects">
         <div className="space-y-2">
           {projects.map((project) => (
             <div
@@ -103,7 +103,7 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
             </div>
           ))}
         </div>
-      </TerminalTabsContent>
-    </TerminalTabs>
+      </StyledTabsContent>
+    </StyledTabs>
   );
 }

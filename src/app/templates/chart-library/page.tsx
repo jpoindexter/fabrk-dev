@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { TemplatePageHeader, TerminalFeaturesCard } from "@/components/ui/card";
 import {
   LineChart,
@@ -171,7 +171,7 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Chart Tabs - Terminal Style */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="CHART_NAVIGATION"
           tabs={tabs}
@@ -179,7 +179,7 @@ export default function ChartLibraryTemplate() {
           onValueChange={setActiveTab}
         >
           {/* Line Chart */}
-          <TerminalTabsContent value="line">
+          <StyledTabsContent value="line">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -231,10 +231,10 @@ export default function ChartLibraryTemplate() {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Area Chart */}
-          <TerminalTabsContent value="area">
+          <StyledTabsContent value="area">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -278,10 +278,10 @@ export default function ChartLibraryTemplate() {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Bar Chart */}
-          <TerminalTabsContent value="bar">
+          <StyledTabsContent value="bar">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -322,10 +322,10 @@ export default function ChartLibraryTemplate() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-          </TerminalTabsContent>
+          </StyledTabsContent>
 
           {/* Pie Chart */}
-          <TerminalTabsContent value="pie">
+          <StyledTabsContent value="pie">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -387,8 +387,8 @@ export default function ChartLibraryTemplate() {
                 </div>
               </div>
             </div>
-          </TerminalTabsContent>
-        </TerminalTabs>
+          </StyledTabsContent>
+        </StyledTabs>
 
         {/* Implementation Note */}
         <TerminalFeaturesCard

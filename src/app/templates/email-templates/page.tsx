@@ -7,7 +7,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { EmailFeatures } from "./components/email-features";
@@ -94,7 +94,7 @@ export default function EmailTemplatesShowcase() {
         <EmailStats />
 
         {/* Terminal Tab Navigation */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="EMAIL_TABS"
           tabs={tabs}
@@ -103,7 +103,7 @@ export default function EmailTemplatesShowcase() {
         >
           {/* Email Previews */}
           {emailTemplates.map((template) => (
-            <TerminalTabsContent key={template.id} value={template.id}>
+            <StyledTabsContent key={template.id} value={template.id}>
               <div className="border-border bg-card border">
                 {/* Content Area */}
                 <div className="p-6">
@@ -159,9 +159,9 @@ export default function EmailTemplatesShowcase() {
                   </div>
                 </div>
               </div>
-            </TerminalTabsContent>
+            </StyledTabsContent>
           ))}
-        </TerminalTabs>
+        </StyledTabs>
 
         {/* Implementation Note */}
         <EmailFeatures />

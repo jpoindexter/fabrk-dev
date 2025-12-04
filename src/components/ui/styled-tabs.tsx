@@ -1,12 +1,13 @@
 /**
- * TerminalTabs - Standardized terminal-style tabs component
+ * StyledTabs - Standardized tabs component with card header
  *
  * This component enforces consistent tab styling across all templates.
+ * Automatically adapts to the current visual mode (terminal/standard/minimal).
  * Use this instead of manually styling Tabs/TabsList/TabsTrigger.
  *
  * @example
  * ```tsx
- * <TerminalTabs
+ * <StyledTabs
  *   code="0x00"
  *   title="NAVIGATION"
  *   tabs={[
@@ -16,9 +17,9 @@
  *   value={activeTab}
  *   onValueChange={setActiveTab}
  * >
- *   <TerminalTabsContent value="tab1">Content 1</TerminalTabsContent>
- *   <TerminalTabsContent value="tab2">Content 2</TerminalTabsContent>
- * </TerminalTabs>
+ *   <StyledTabsContent value="tab1">Content 1</StyledTabsContent>
+ *   <StyledTabsContent value="tab2">Content 2</StyledTabsContent>
+ * </StyledTabs>
  * ```
  */
 
@@ -31,19 +32,19 @@ import { cn } from "@/lib/utils";
 import { mode } from "@/lib/design-system";
 import { LucideIcon } from "lucide-react";
 
-export interface TerminalTab {
+export interface StyledTab {
   id: string;
   label: string;
   icon?: LucideIcon;
 }
 
-export interface TerminalTabsProps {
-  /** Terminal header code (e.g., "0x00") */
+export interface StyledTabsProps {
+  /** Header code (e.g., "0x00") */
   code: string;
-  /** Terminal header title (e.g., "NAVIGATION") */
+  /** Header title (e.g., "NAVIGATION") */
   title: string;
   /** Array of tab definitions */
-  tabs: TerminalTab[];
+  tabs: StyledTab[];
   /** Currently active tab id */
   value: string;
   /** Callback when tab changes */
@@ -56,7 +57,7 @@ export interface TerminalTabsProps {
   description?: string | ((activeTab: string) => string);
 }
 
-export function TerminalTabs({
+export function StyledTabs({
   code,
   title,
   tabs,
@@ -65,7 +66,7 @@ export function TerminalTabs({
   children,
   className,
   description,
-}: TerminalTabsProps) {
+}: StyledTabsProps) {
   const descriptionText = typeof description === "function" ? description(value) : description;
 
   return (
@@ -106,17 +107,17 @@ export function TerminalTabs({
   );
 }
 
-export interface TerminalTabsContentProps {
+export interface StyledTabsContentProps {
   value: string;
   children: React.ReactNode;
   className?: string;
 }
 
 /**
- * Content panel for TerminalTabs
+ * Content panel for StyledTabs
  * Automatically applies floating spacing (mt-6)
  */
-export function TerminalTabsContent({ value, children, className }: TerminalTabsContentProps) {
+export function StyledTabsContent({ value, children, className }: StyledTabsContentProps) {
   return (
     <TabsContent value={value} className={cn("mt-6", className)}>
       {children}
@@ -124,4 +125,4 @@ export function TerminalTabsContent({ value, children, className }: TerminalTabs
   );
 }
 
-export { TerminalTabs as default };
+export { StyledTabs as default };

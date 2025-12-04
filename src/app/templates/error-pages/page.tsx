@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
   TerminalCard,
   TerminalCardHeader,
@@ -124,7 +124,7 @@ export default function ErrorPagesTemplate() {
         />
 
         {/* Error Type Selector with Tabs */}
-        <TerminalTabs
+        <StyledTabs
           code="0x00"
           title="ERROR_TYPES"
           tabs={tabs}
@@ -141,7 +141,7 @@ export default function ErrorPagesTemplate() {
               "503": "0x03",
             };
             return (
-              <TerminalTabsContent key={error.id} value={error.id}>
+              <StyledTabsContent key={error.id} value={error.id}>
                 <TerminalCard>
                   <TerminalCardHeader
                     code={codeMap[error.id] || "0x00"}
@@ -246,10 +246,10 @@ export default function ErrorPagesTemplate() {
                     </div>
                   </div>
                 </TerminalCard>
-              </TerminalTabsContent>
+              </StyledTabsContent>
             );
           })}
-        </TerminalTabs>
+        </StyledTabs>
 
         {/* Usage Examples */}
         <div className="grid gap-4 md:grid-cols-3">
