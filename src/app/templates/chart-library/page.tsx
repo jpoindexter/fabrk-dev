@@ -8,13 +8,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  TerminalCard,
-  TerminalCardHeader,
-  TemplatePageHeader,
-  TerminalFeaturesCard,
-} from "@/components/ui/card";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
+import { TemplatePageHeader, TerminalFeaturesCard } from "@/components/ui/card";
 import {
   LineChart,
   Line,
@@ -33,8 +28,6 @@ import {
   Legend,
 } from "recharts";
 import { TrendingUp, Download } from "lucide-react";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 // Mock data
 const revenueData = [
@@ -117,6 +110,13 @@ const CustomTooltip = ({
 export default function ChartLibraryTemplate() {
   const [activeTab, setActiveTab] = useState("line");
 
+  const tabs = [
+    { id: "line", label: "LINE_CHART" },
+    { id: "area", label: "AREA_CHART" },
+    { id: "bar", label: "BAR_CHART" },
+    { id: "pie", label: "PIE_CHART" },
+  ];
+
   return (
     <div>
       {/* Page Content */}
@@ -171,32 +171,15 @@ export default function ChartLibraryTemplate() {
         </div>
 
         {/* Chart Tabs - Terminal Style */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="CHART_NAVIGATION" />
-
-            {/* Tab Navigation */}
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {(["line", "area", "bar", "pie"] as const).map((tab) => (
-                <TabsTrigger
-                  key={tab}
-                  value={tab}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground border-r px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [{tab.toUpperCase()}_CHART]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </TerminalCard>
-
+        <TerminalTabs
+          code="0x00"
+          title="CHART_NAVIGATION"
+          tabs={tabs}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        >
           {/* Line Chart */}
-          <TabsContent value="line" className="mt-6">
+          <TerminalTabsContent value="line">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -248,10 +231,10 @@ export default function ChartLibraryTemplate() {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Area Chart */}
-          <TabsContent value="area" className="mt-6">
+          <TerminalTabsContent value="area">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -295,10 +278,10 @@ export default function ChartLibraryTemplate() {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Bar Chart */}
-          <TabsContent value="bar" className="mt-6">
+          <TerminalTabsContent value="bar">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -339,10 +322,10 @@ export default function ChartLibraryTemplate() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Pie Chart */}
-          <TabsContent value="pie" className="mt-6">
+          <TerminalTabsContent value="pie">
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
@@ -404,8 +387,8 @@ export default function ChartLibraryTemplate() {
                 </div>
               </div>
             </div>
-          </TabsContent>
-        </Tabs>
+          </TerminalTabsContent>
+        </TerminalTabs>
 
         {/* Implementation Note */}
         <TerminalFeaturesCard

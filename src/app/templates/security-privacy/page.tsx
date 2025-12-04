@@ -9,17 +9,15 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import { Shield, Lock, Activity, FileText, Settings } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
+import { TemplatePageHeader } from "@/components/ui/card";
 import { SecurityScore } from "./components/security-score";
 import { SecurityTab } from "./components/security-tab";
 import { PrivacyTab } from "./components/privacy-tab";
 import { AuditTab } from "./components/audit-tab";
 import { ComplianceTab } from "./components/compliance-tab";
 import { ImplementationNote } from "./components/implementation-note";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 // Mock data
 const securityData = {
@@ -99,6 +97,13 @@ export default function SecurityPrivacyTemplate() {
   const [activeTab, setActiveTab] = useState("security");
   const [privacy, setPrivacy] = useState(privacySettings);
 
+  const tabs = [
+    { id: "security", label: "SECURITY", icon: Shield },
+    { id: "privacy", label: "PRIVACY", icon: Lock },
+    { id: "audit", label: "AUDIT_LOG", icon: Activity },
+    { id: "compliance", label: "COMPLIANCE", icon: FileText },
+  ];
+
   const handlePrivacyToggle = (key: keyof typeof privacySettings) => {
     setPrivacy((prev) => ({ ...prev, [key]: !prev[key] }));
   };
@@ -150,35 +155,15 @@ export default function SecurityPrivacyTemplate() {
         <SecurityScore user={securityData.user} />
 
         {/* Tab Navigation */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="SECURITY_NAVIGATION" />
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {[
-                { id: "security", label: "SECURITY", icon: Shield },
-                { id: "privacy", label: "PRIVACY", icon: Lock },
-                { id: "audit", label: "AUDIT_LOG", icon: Activity },
-                { id: "compliance", label: "COMPLIANCE", icon: FileText },
-              ].map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  <tab.icon className="h-3 w-3" />[{tab.label}]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </TerminalCard>
-
+        <TerminalTabs
+          code="0x00"
+          title="SECURITY_NAVIGATION"
+          tabs={tabs}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        >
           {/* Tab Contents */}
-          <TabsContent value="security" className="mt-6">
+          <TerminalTabsContent value="security">
             <SecurityTab
               twoFactorEnabled={securityData.user.twoFactorEnabled}
               lastPasswordChange={securityData.user.lastPasswordChange}
@@ -186,25 +171,25 @@ export default function SecurityPrivacyTemplate() {
               onEnable2FA={handleEnable2FA}
               onRevokeSession={handleRevokeSession}
             />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="privacy" className="mt-6">
+          <TerminalTabsContent value="privacy">
             <PrivacyTab privacy={privacy} onToggle={handlePrivacyToggle} />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="audit" className="mt-6">
+          <TerminalTabsContent value="audit">
             <AuditTab auditLog={securityData.auditLog} />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="compliance" className="mt-6">
+          <TerminalTabsContent value="compliance">
             <ComplianceTab
               onExportData={handleExportData}
               onRequestAccess={handleRequestAccess}
               onViewPolicy={handleViewPolicy}
               onDeleteAccount={handleDeleteAccount}
             />
-          </TabsContent>
-        </Tabs>
+          </TerminalTabsContent>
+        </TerminalTabs>
 
         {/* Implementation Note */}
         <ImplementationNote />

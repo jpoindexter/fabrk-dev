@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import { Bell } from "lucide-react";
 import { Notification, initialNotifications } from "./components/notification-types";
 import { NotificationsHeader } from "./components/notifications-header";
@@ -16,8 +16,11 @@ import { NotificationsActionsBar } from "./components/notifications-actions-bar"
 import { NotificationsList } from "./components/notifications-list";
 import { NotificationTypesReference } from "./components/notification-types-reference";
 import { FeaturesCard } from "./components/features-card";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
+
+const tabs = [
+  { id: "all", label: "ALL" },
+  { id: "unread", label: "UNREAD" },
+];
 
 export default function NotificationsTemplate() {
   const [notifications, setNotifications] = useState<Notification[]>(initialNotifications);
@@ -75,41 +78,35 @@ export default function NotificationsTemplate() {
             />
 
             {/* Tabs */}
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList
-                className={cn("border-border h-auto border bg-transparent p-0", mode.radius)}
-              >
-                <TabsTrigger
-                  value="all"
-                  className={cn(
-                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [ALL]
-                </TabsTrigger>
-                <TabsTrigger
-                  value="unread"
-                  className={cn(
-                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [UNREAD] ({unreadCount})
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value={activeTab} className="mt-4">
+            <TerminalTabs
+              code="0x01"
+              title="FILTER"
+              tabs={tabs}
+              value={activeTab}
+              onValueChange={setActiveTab}
+              description={(tab) =>
+                tab === "unread"
+                  ? `${unreadCount} unread notifications`
+                  : `${notifications.length} total notifications`
+              }
+            >
+              <TerminalTabsContent value="all">
                 <NotificationsList
                   notifications={filteredNotifications}
                   activeTab={activeTab}
                   onMarkAsRead={markAsRead}
                   onDelete={deleteNotification}
                 />
-              </TabsContent>
-            </Tabs>
+              </TerminalTabsContent>
+              <TerminalTabsContent value="unread">
+                <NotificationsList
+                  notifications={filteredNotifications}
+                  activeTab={activeTab}
+                  onMarkAsRead={markAsRead}
+                  onDelete={deleteNotification}
+                />
+              </TerminalTabsContent>
+            </TerminalTabs>
           </div>
         </div>
 

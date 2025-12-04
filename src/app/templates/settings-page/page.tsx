@@ -7,7 +7,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import { Settings, User, Lock, CreditCard } from "lucide-react";
 import { SettingsHeader } from "./components/settings-header";
 import { GeneralTab } from "./components/general-tab";
@@ -15,15 +15,13 @@ import { AccountTab } from "./components/account-tab";
 import { PrivacyTab } from "./components/privacy-tab";
 import { BillingTab } from "./components/billing-tab";
 import { ImplementationNote } from "./components/implementation-note";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
-const TAB_ITEMS = [
+const tabs = [
   { id: "general", label: "GENERAL", icon: Settings },
   { id: "account", label: "ACCOUNT", icon: User },
   { id: "privacy", label: "PRIVACY", icon: Lock },
   { id: "billing", label: "BILLING", icon: CreditCard },
-] as const;
+];
 
 export default function SettingsPageTemplate() {
   const [activeTab, setActiveTab] = useState("general");
@@ -36,50 +34,30 @@ export default function SettingsPageTemplate() {
         <SettingsHeader />
 
         {/* Tabs Container */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          {/* Tab Navigation - Terminal Style */}
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] SETTINGS_NAVIGATION ]
-              </span>
-            </div>
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {TAB_ITEMS.map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  <tab.icon className="h-3 w-3" />[{tab.label}]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
-
+        <TerminalTabs
+          code="0x00"
+          title="SETTINGS_NAVIGATION"
+          tabs={tabs}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        >
           {/* Tab Content */}
-          <TabsContent value="general">
+          <TerminalTabsContent value="general">
             <GeneralTab />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="account">
+          <TerminalTabsContent value="account">
             <AccountTab />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="privacy">
+          <TerminalTabsContent value="privacy">
             <PrivacyTab />
-          </TabsContent>
+          </TerminalTabsContent>
 
-          <TabsContent value="billing">
+          <TerminalTabsContent value="billing">
             <BillingTab />
-          </TabsContent>
-        </Tabs>
+          </TerminalTabsContent>
+        </TerminalTabs>
 
         {/* Implementation Note */}
         <ImplementationNote />

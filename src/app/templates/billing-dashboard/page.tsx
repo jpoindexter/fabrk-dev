@@ -8,11 +8,9 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import { ArrowUpRight } from "lucide-react";
-import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 // Extracted components
 import { CurrentPlanCard } from "./components/current-plan-card";
@@ -131,6 +129,12 @@ const plans = [
   },
 ];
 
+const tabs = [
+  { id: "overview", label: "OVERVIEW" },
+  { id: "plans", label: "PLANS" },
+  { id: "history", label: "HISTORY" },
+];
+
 export default function BillingDashboardTemplate() {
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -178,30 +182,15 @@ export default function BillingDashboardTemplate() {
         </div>
 
         {/* Terminal Tab Navigation */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="BILLING_NAVIGATION" />
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {(["overview", "plans", "history"] as const).map((tab) => (
-                <TabsTrigger
-                  key={tab}
-                  value={tab}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground border-r px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [{tab.toUpperCase()}]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </TerminalCard>
-
+        <TerminalTabs
+          code="0x00"
+          title="BILLING_NAVIGATION"
+          tabs={tabs}
+          value={activeTab}
+          onValueChange={setActiveTab}
+        >
           {/* Overview Tab */}
-          <TabsContent value="overview" className="mt-6 space-y-6">
+          <TerminalTabsContent value="overview">
             <CurrentPlanCard subscription={subscription} formatDate={formatDate} />
 
             {/* Usage Stats and Payment Methods Grid */}
@@ -217,23 +206,23 @@ export default function BillingDashboardTemplate() {
               getStatusText={getStatusText}
               onViewAll={() => setActiveTab("history")}
             />
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Plans Tab */}
-          <TabsContent value="plans" className="mt-6 space-y-6">
+          <TerminalTabsContent value="plans">
             <PlanCards plans={plans} />
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* History Tab */}
-          <TabsContent value="history" className="mt-6 space-y-6">
+          <TerminalTabsContent value="history">
             <BillingHistoryTable
               payments={payments}
               formatDate={formatDate}
               formatCurrency={formatCurrency}
               getStatusText={getStatusText}
             />
-          </TabsContent>
-        </Tabs>
+          </TerminalTabsContent>
+        </TerminalTabs>
 
         {/* Implementation Note */}
         <TemplateFeaturesCard />

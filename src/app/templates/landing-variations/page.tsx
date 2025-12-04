@@ -10,15 +10,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import {
   TerminalCard,
   TerminalCardHeader,
   TemplatePageHeader,
   TerminalFeaturesCard,
 } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Play,
@@ -52,6 +50,19 @@ const heroVariations = [
 export default function LandingVariationsTemplate() {
   const [activeVariation, setActiveVariation] = useState("centered");
 
+  const tabs = heroVariations.map((v) => ({
+    id: v.id,
+    label: v.name.toUpperCase().replace(" ", "_"),
+  }));
+
+  const tabDescriptions = heroVariations.reduce(
+    (acc, v) => {
+      acc[v.id] = v.description;
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+
   return (
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
@@ -63,34 +74,17 @@ export default function LandingVariationsTemplate() {
         />
 
         {/* Variation Selector */}
-        <Tabs value={activeVariation} onValueChange={setActiveVariation}>
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="VARIATION_SELECTOR" />
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {heroVariations.map((variation) => (
-                <TabsTrigger
-                  key={variation.id}
-                  value={variation.id}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex-1 border-r px-4 py-2 text-xs last:border-r-0",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  [{variation.name.toUpperCase().replace(" ", "_")}]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            <div className="text-muted-foreground border-border border-t p-4 font-mono text-xs">
-              [SELECTED]: {heroVariations.find((v) => v.id === activeVariation)?.description}
-            </div>
-          </TerminalCard>
-
+        <TerminalTabs
+          code="0x00"
+          title="VARIATION_SELECTOR"
+          tabs={tabs}
+          value={activeVariation}
+          onValueChange={setActiveVariation}
+          description={(tab) => tabDescriptions[tab]}
+        >
           {/* Hero Previews */}
           {/* Centered Hero */}
-          <TabsContent value="centered" className="mt-6">
+          <TerminalTabsContent value="centered">
             <TerminalCard>
               <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -139,10 +133,10 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Split Hero */}
-          <TabsContent value="split" className="mt-6">
+          <TerminalTabsContent value="split">
             <TerminalCard>
               <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -195,10 +189,10 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TabsContent>
+          </TerminalTabsContent>
 
           {/* Minimal Hero */}
-          <TabsContent value="minimal" className="mt-6">
+          <TerminalTabsContent value="minimal">
             <TerminalCard>
               <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
@@ -244,8 +238,8 @@ export default function LandingVariationsTemplate() {
                 </div>
               </div>
             </TerminalCard>
-          </TabsContent>
-        </Tabs>
+          </TerminalTabsContent>
+        </TerminalTabs>
 
         {/* Quick Reference Grid */}
         <div className="grid gap-4 md:grid-cols-3">

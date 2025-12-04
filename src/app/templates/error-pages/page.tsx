@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { TerminalTabs, TerminalTabsContent } from "@/components/ui/terminal-tabs";
 import {
   TerminalCard,
   TerminalCardHeader,
@@ -15,7 +16,6 @@ import {
   TerminalFeaturesCard,
   TerminalOutput,
 } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   FileQuestion,
   ServerCrash,
@@ -25,8 +25,6 @@ import {
   ArrowLeft,
   AlertTriangle,
 } from "lucide-react";
-import { mode } from "@/lib/design-system";
-import { cn } from "@/lib/utils";
 
 const errorPages = [
   {
@@ -109,6 +107,12 @@ export default function ErrorPagesTemplate() {
 
   const _currentError = errorPages.find((e) => e.id === activeError) || errorPages[0];
 
+  const tabs = errorPages.map((error) => ({
+    id: error.id,
+    label: error.code,
+    icon: error.icon,
+  }));
+
   return (
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
@@ -120,28 +124,13 @@ export default function ErrorPagesTemplate() {
         />
 
         {/* Error Type Selector with Tabs */}
-        <Tabs value={activeError} onValueChange={setActiveError}>
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="ERROR_TYPES" />
-            <TabsList
-              className={cn("h-auto w-full justify-start border-0 bg-transparent p-0", mode.radius)}
-            >
-              {errorPages.map((error) => (
-                <TabsTrigger
-                  key={error.id}
-                  value={error.id}
-                  className={cn(
-                    "border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 border-r px-4 py-2 text-xs",
-                    mode.radius,
-                    mode.font
-                  )}
-                >
-                  <error.icon className="h-3 w-3" />[{error.code}]
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </TerminalCard>
-
+        <TerminalTabs
+          code="0x00"
+          title="ERROR_TYPES"
+          tabs={tabs}
+          value={activeError}
+          onValueChange={setActiveError}
+        >
           {/* Error Preview */}
           {errorPages.map((error) => {
             const Icon = error.icon;
@@ -152,7 +141,7 @@ export default function ErrorPagesTemplate() {
               "503": "0x03",
             };
             return (
-              <TabsContent key={error.id} value={error.id} className="mt-6">
+              <TerminalTabsContent key={error.id} value={error.id}>
                 <TerminalCard>
                   <TerminalCardHeader
                     code={codeMap[error.id] || "0x00"}
@@ -257,10 +246,10 @@ export default function ErrorPagesTemplate() {
                     </div>
                   </div>
                 </TerminalCard>
-              </TabsContent>
+              </TerminalTabsContent>
             );
           })}
-        </Tabs>
+        </TerminalTabs>
 
         {/* Usage Examples */}
         <div className="grid gap-4 md:grid-cols-3">
