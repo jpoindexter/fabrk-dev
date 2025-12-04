@@ -95,12 +95,12 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "flex h-10 w-full rounded-none border border-input bg-background px-4 py-4 font-mono text-xs",
+              "border-input bg-background flex h-10 w-full rounded-none border px-4 py-4 font-mono text-xs",
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
-              "file:border-0 file:bg-background/0 file:font-mono file:text-xs file:font-medium",
+              "file:bg-background/0 file:border-0 file:font-mono file:text-xs file:font-medium",
               "placeholder:text-muted-foreground dark:placeholder:text-muted-foreground",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
               "dark:focus-visible:ring-primary dark:focus-visible:ring-offset-background",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "pr-8"
@@ -134,7 +134,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             }}
           />
           <ChevronDown
-            className={`"h-4 w-4" pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 opacity-60`}
+            className={`"h-4 w-4" pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 opacity-60`}
           />
         </div>
 
@@ -142,7 +142,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
           <div
             id="autocomplete-list"
             role="listbox"
-            className="absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-none border border-border bg-popover dark:border-border dark:bg-background"
+            className="border-border bg-popover dark:border-border dark:bg-background absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-none border"
           >
             {filtered.length > 0 ? (
               filtered.map((option, i) => {
@@ -171,11 +171,10 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                     }}
                     tabIndex={0}
                     className={cn(
-                      "cursor-pointer px-4 py-4 font-mono text-xs outline-none",
+                      "cursor-pointer px-4 py-4 font-mono text-xs focus-visible:outline-none",
                       "hover:bg-primary hover:text-primary-foreground",
                       "dark:text-muted-foreground dark:hover:bg-primary dark:hover:text-primary-foreground",
-                      i === highlightedIndex &&
-                        "bg-primary text-primary-foreground"
+                      i === highlightedIndex && "bg-primary text-primary-foreground"
                     )}
                   >
                     {label}
@@ -183,7 +182,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                 );
               })
             ) : (
-              <div className={`"text-sm" p-4 text-muted-foreground dark:text-muted-foreground`}>
+              <div className={`"text-sm" text-muted-foreground dark:text-muted-foreground p-4`}>
                 {emptyMessage}
               </div>
             )}

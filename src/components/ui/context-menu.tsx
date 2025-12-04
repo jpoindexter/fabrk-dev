@@ -29,7 +29,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors outline-none select-none sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-1.5",
       inset && "pl-8",
       className
     )}
@@ -85,7 +85,7 @@ const ContextMenuItem = React.forwardRef<
     data-slot="context-menu-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors outline-none select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
       inset && "pl-8",
       className
     )}
@@ -102,7 +102,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors outline-none select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
       className
     )}
     checked={checked}
@@ -126,7 +126,7 @@ const ContextMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors outline-none select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
       className
     )}
     {...props}

@@ -43,7 +43,7 @@ const SelectTrigger = React.forwardRef<
     data-slot="select-trigger"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
-      "bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between rounded-none border px-4 font-mono text-xs transition-colors focus:ring-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1",
+      "bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between rounded-none border px-4 font-mono text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1",
       className
     )}
     {...props}
@@ -175,7 +175,7 @@ const SelectItem = React.forwardRef<
     data-slot="select-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
       className
     )}
     {...props}
