@@ -456,6 +456,42 @@ const TerminalFeaturesCard = React.forwardRef<HTMLDivElement, TerminalFeaturesCa
 );
 TerminalFeaturesCard.displayName = "TerminalFeaturesCard";
 
+/**
+ * Terminal-style output window
+ * Used for displaying terminal/CLI output with a simple header
+ * No macOS-style colored dots - uses terminal aesthetic
+ *
+ * @example
+ * ```tsx
+ * <TerminalOutput title="terminal">
+ *   <div>$ command</div>
+ *   <div>output line</div>
+ * </TerminalOutput>
+ * ```
+ */
+export type TerminalOutputProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Title shown in header. Defaults to "terminal" */
+  title?: string;
+  children: React.ReactNode;
+};
+
+const TerminalOutput = React.forwardRef<HTMLDivElement, TerminalOutputProps>(
+  ({ title = "terminal", children, className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-output"
+      className={cn("border-border bg-card border text-left", className)}
+      {...props}
+    >
+      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
+        <span className="text-muted-foreground font-mono text-xs">[ {title} ]</span>
+      </div>
+      <div className="text-foreground space-y-0.5 p-4 font-mono text-xs">{children}</div>
+    </div>
+  )
+);
+TerminalOutput.displayName = "TerminalOutput";
+
 export {
   Card,
   CardContent,
@@ -472,4 +508,5 @@ export {
   TerminalBadge,
   TemplatePageHeader,
   TerminalFeaturesCard,
+  TerminalOutput,
 };

@@ -12,6 +12,7 @@ import {
   TerminalCardHeader,
   TemplatePageHeader,
   TerminalFeaturesCard,
+  TerminalOutput,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -165,34 +166,24 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <div className="border-border bg-card mt-4 border text-left">
-                      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
-                        <div className="flex gap-2">
-                          <div className="bg-destructive/50 size-2 rounded-none" />
-                          <div className="bg-warning/50 size-2 rounded-none" />
-                          <div className="bg-success/50 size-2 rounded-none" />
+                    <TerminalOutput className="mt-4">
+                      {state.terminal.map((line, idx) => (
+                        <div
+                          key={idx}
+                          className={
+                            line.startsWith("ERROR")
+                              ? "text-destructive"
+                              : line.startsWith("$")
+                                ? "text-success"
+                                : line.startsWith("HINT")
+                                  ? "text-warning"
+                                  : ""
+                          }
+                        >
+                          {line}
                         </div>
-                        <span className="text-muted-foreground font-mono text-xs">terminal</span>
-                      </div>
-                      <div className="text-foreground space-y-0.5 p-4 font-mono text-xs">
-                        {state.terminal.map((line, idx) => (
-                          <div
-                            key={idx}
-                            className={
-                              line.startsWith("ERROR")
-                                ? "text-destructive"
-                                : line.startsWith("$")
-                                  ? "text-success"
-                                  : line.startsWith("HINT")
-                                    ? "text-warning"
-                                    : ""
-                            }
-                          >
-                            {line}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                      ))}
+                    </TerminalOutput>
 
                     {/* Actions - pushed to bottom */}
                     <div className="mt-auto flex items-center justify-center gap-2 pt-4">
