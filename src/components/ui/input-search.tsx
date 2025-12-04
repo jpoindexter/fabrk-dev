@@ -2,16 +2,15 @@
 
 /**
  * ✅ FABRK COMPONENT
- * Search input component.
+ * Search input component with icon.
  *
  * @example
  * ```tsx
- * <input-search />
+ * <InputSearch placeholder="Search..." value={query} onValueChange={setQuery} />
  * ```
  */
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Loader2, Search, X } from "lucide-react";
 import * as React from "react";
@@ -46,18 +45,25 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
 
     return (
       <div data-slot="input-search" className="relative">
-        <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
-        <Input
+        <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
+        <input
           ref={ref}
           type="search"
           value={value}
           onChange={(e) => onValueChange?.(e.target.value)}
-          className={cn("pl-8", (showClearButton || loading) && "pr-8", className)}
           disabled={disabled}
+          className={cn(
+            "border-border bg-background flex h-8 w-full rounded-none border py-2 pr-4 pl-10 font-mono text-xs transition-colors",
+            "placeholder:text-muted-foreground",
+            "focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none",
+            "disabled:cursor-not-allowed disabled:opacity-50",
+            (showClearButton || loading) && "pr-10",
+            className
+          )}
           {...props}
         />
         {loading ? (
-          <div className="absolute top-2.5 right-2.5">
+          <div className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2">
             <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
           </div>
         ) : (
@@ -67,12 +73,12 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
               type="button"
               variant="ghost"
               size="sm"
-              className={`hover:bg-background/0 absolute top-0 right-0 h-full px-4 py-1`}
+              className="absolute top-1/2 right-1 h-6 w-6 -translate-y-1/2 p-0 hover:bg-transparent"
               onClick={handleClear}
               disabled={disabled}
               aria-label="Clear search"
             >
-              <X className="text-muted-foreground h-4 w-4" />
+              <X className="text-muted-foreground h-3 w-3" />
             </Button>
           )
         )}
