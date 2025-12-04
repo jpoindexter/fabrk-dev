@@ -95,7 +95,7 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "border-input bg-background flex h-10 w-full rounded-none border px-4 py-4 font-mono text-xs",
+              "border-input bg-background flex h-8 w-full rounded-none border px-4 py-2 font-mono text-xs",
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
               "file:bg-background/0 file:border-0 file:font-mono file:text-xs file:font-medium",

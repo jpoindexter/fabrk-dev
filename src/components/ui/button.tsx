@@ -39,7 +39,7 @@ const buttonVariants = cva(
       size: {
         // WCAG 2.1 AA: min-h-[44px] ensures adequate touch target on mobile
         default: "min-h-[44px] px-4 py-1.5 sm:min-h-0 sm:h-8",
-        sm: "min-h-[44px] min-w-[44px] rounded-none px-2 text-xs sm:min-h-0 sm:min-w-0 sm:h-7",
+        sm: "min-h-[44px] min-w-[44px] rounded-none px-2 text-xs sm:min-h-0 sm:min-w-0 sm:h-8",
         lg: "min-h-[44px] rounded-none px-6 sm:min-h-0 sm:h-9",
         xl: "min-h-[44px] rounded-none px-8 text-lg sm:min-h-0 sm:h-12",
         icon: "min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 sm:h-10 sm:w-10",
