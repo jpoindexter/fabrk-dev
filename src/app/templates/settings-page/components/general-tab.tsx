@@ -7,14 +7,14 @@
 import { AppearanceForm } from "@/components/settings/appearance-form";
 import { Button } from "@/components/ui/button";
 import { Shield, CreditCard, Bell, Download, Palette, Settings } from "lucide-react";
-import { TerminalWindow } from "./terminal-window";
+import { CodeWindow } from "./code-window";
 import { SectionHeader } from "./section-header";
 
 export function GeneralTab() {
   return (
     <div className="mt-6 space-y-6">
       {/* Appearance Section */}
-      <TerminalWindow filename="appearance.config">
+      <CodeWindow filename="appearance.config">
         <div className="p-4">
           <SectionHeader
             icon={Palette}
@@ -23,10 +23,10 @@ export function GeneralTab() {
           />
           <AppearanceForm />
         </div>
-      </TerminalWindow>
+      </CodeWindow>
 
       {/* Quick Actions */}
-      <TerminalWindow filename="quick_actions.tsx">
+      <CodeWindow filename="quick_actions.tsx">
         <div className="p-4">
           <SectionHeader
             icon={Settings}
@@ -34,25 +34,25 @@ export function GeneralTab() {
             description="Frequently used settings and shortcuts"
           />
           <div className="grid gap-4 md:grid-cols-2">
-            <Button variant="outline" className="rounded-none justify-start font-mono text-xs">
+            <Button variant="outline" className="justify-start rounded-none font-mono text-xs">
               <Shield className="mr-2 h-4 w-4" />
               &gt; SECURITY_SETTINGS
             </Button>
-            <Button variant="outline" className="rounded-none justify-start font-mono text-xs">
+            <Button variant="outline" className="justify-start rounded-none font-mono text-xs">
               <CreditCard className="mr-2 h-4 w-4" />
               &gt; BILLING_SETTINGS
             </Button>
-            <Button variant="outline" className="rounded-none justify-start font-mono text-xs">
+            <Button variant="outline" className="justify-start rounded-none font-mono text-xs">
               <Bell className="mr-2 h-4 w-4" />
               &gt; NOTIFICATION_PREFS
             </Button>
-            <Button variant="outline" className="rounded-none justify-start font-mono text-xs">
+            <Button variant="outline" className="justify-start rounded-none font-mono text-xs">
               <Download className="mr-2 h-4 w-4" />
               &gt; EXPORT_MY_DATA
             </Button>
           </div>
         </div>
-      </TerminalWindow>
+      </CodeWindow>
     </div>
   );
 }

@@ -34,7 +34,7 @@ export const Default: Story = {
         <DialogHeader>
           <DialogTitle className="font-mono">[ DIALOG_TITLE ]</DialogTitle>
           <DialogDescription>
-            This is a dialog description with terminal-style typography.
+            This is a dialog description with sharp-style typography.
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">

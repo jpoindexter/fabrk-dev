@@ -92,7 +92,7 @@ const techStack = [
 ];
 
 // Terminal content showing git clone flow
-function TerminalContent() {
+function HeroCodeDemo() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const [step, setStep] = useState(0);
@@ -324,7 +324,7 @@ export function HeroSection() {
               </div>
 
               {/* Terminal Content */}
-              <TerminalContent />
+              <HeroCodeDemo />
             </motion.div>
 
             {/* Discount Counter Below */}

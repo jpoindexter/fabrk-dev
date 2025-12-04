@@ -151,8 +151,8 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
 CardFooter.displayName = "CardFooter";
 
 /**
- * Terminal-style card header with hex code prefix
- * Used across all template pages for consistent terminal aesthetic
+ * Sharp-style card header with hex code prefix
+ * Used across all template pages for consistent sharp aesthetic
  *
  * @example
  * ```tsx
@@ -175,7 +175,7 @@ const StyledCardHeader = React.forwardRef<HTMLDivElement, StyledCardHeaderProps>
   ({ code = "0x00", title, className }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-card-header"
+      data-slot="styled-card-header"
       className={cn("border-border border-b px-4 py-2", className)}
     >
       <span className={cn("text-muted-foreground text-xs", mode.font)}>
@@ -187,8 +187,8 @@ const StyledCardHeader = React.forwardRef<HTMLDivElement, StyledCardHeaderProps>
 StyledCardHeader.displayName = "StyledCardHeader";
 
 /**
- * Terminal-style card container
- * Wrapper for cards that use the terminal aesthetic
+ * Styled card container
+ * Wrapper for cards that use the sharp aesthetic
  */
 export type StyledCardProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -196,7 +196,7 @@ const StyledCard = React.forwardRef<HTMLDivElement, StyledCardProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-card"
+      data-slot="styled-card"
       className={cn("border-border bg-card border", className)}
       {...props}
     >
@@ -207,27 +207,27 @@ const StyledCard = React.forwardRef<HTMLDivElement, StyledCardProps>(
 StyledCard.displayName = "StyledCard";
 
 /**
- * Terminal-style label with brackets
+ * Bracketed label with brackets
  * Used for [LABEL]: patterns throughout templates
  *
  * @example
  * ```tsx
- * <TerminalLabel>TEMPLATE_FEATURES</TerminalLabel>
+ * <StyledLabel>TEMPLATE_FEATURES</StyledLabel>
  * // Renders: [TEMPLATE_FEATURES]:
  * ```
  */
-export type TerminalLabelProps = React.HTMLAttributes<HTMLDivElement> & {
+export type StyledLabelProps = React.HTMLAttributes<HTMLDivElement> & {
   /** The label text (will be wrapped in brackets with colon) */
   children: React.ReactNode;
   /** Whether to show the colon after the brackets */
   showColon?: boolean;
 };
 
-const TerminalLabel = React.forwardRef<HTMLDivElement, TerminalLabelProps>(
+const StyledLabel = React.forwardRef<HTMLDivElement, StyledLabelProps>(
   ({ children, showColon = true, className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-label"
+      data-slot="styled-label"
       className={cn("text-muted-foreground text-xs", mode.font, className)}
       {...props}
     >
@@ -235,25 +235,25 @@ const TerminalLabel = React.forwardRef<HTMLDivElement, TerminalLabelProps>(
     </div>
   )
 );
-TerminalLabel.displayName = "TerminalLabel";
+StyledLabel.displayName = "StyledLabel";
 
 /**
- * Terminal-style feature list item with > prefix
+ * Feature list item with > prefix
  * Used for listing features in template cards
  *
  * @example
  * ```tsx
- * <TerminalFeatureItem>Multi-step form wizard</TerminalFeatureItem>
+ * <FeatureItem>Multi-step form wizard</FeatureItem>
  * // Renders: > Multi-step form wizard
  * ```
  */
-export type TerminalFeatureItemProps = React.HTMLAttributes<HTMLDivElement> & {
+export type FeatureItemProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   /** Icon to use before text. Defaults to ">" */
   icon?: "arrow" | "check" | "dot";
 };
 
-const TerminalFeatureItem = React.forwardRef<HTMLDivElement, TerminalFeatureItemProps>(
+const FeatureItem = React.forwardRef<HTMLDivElement, FeatureItemProps>(
   ({ children, icon = "arrow", className, ...props }, ref) => {
     const iconMap = {
       arrow: ">",
@@ -264,7 +264,7 @@ const TerminalFeatureItem = React.forwardRef<HTMLDivElement, TerminalFeatureItem
     return (
       <div
         ref={ref}
-        data-slot="terminal-feature-item"
+        data-slot="feature-item"
         className={cn("text-xs", mode.font, className)}
         {...props}
       >
@@ -273,27 +273,27 @@ const TerminalFeatureItem = React.forwardRef<HTMLDivElement, TerminalFeatureItem
     );
   }
 );
-TerminalFeatureItem.displayName = "TerminalFeatureItem";
+FeatureItem.displayName = "FeatureItem";
 
 /**
- * Terminal-style feature list container
- * Wraps multiple TerminalFeatureItem components
+ * Feature list container
+ * Wraps multiple FeatureItem components
  *
  * @example
  * ```tsx
- * <TerminalFeatureList>
- *   <TerminalFeatureItem>Feature 1</TerminalFeatureItem>
- *   <TerminalFeatureItem>Feature 2</TerminalFeatureItem>
- * </TerminalFeatureList>
+ * <FeatureList>
+ *   <FeatureItem>Feature 1</FeatureItem>
+ *   <FeatureItem>Feature 2</FeatureItem>
+ * </FeatureList>
  * ```
  */
-export type TerminalFeatureListProps = React.HTMLAttributes<HTMLDivElement>;
+export type FeatureListProps = React.HTMLAttributes<HTMLDivElement>;
 
-const TerminalFeatureList = React.forwardRef<HTMLDivElement, TerminalFeatureListProps>(
+const FeatureList = React.forwardRef<HTMLDivElement, FeatureListProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-feature-list"
+      data-slot="feature-list"
       className={cn("space-y-1.5 text-xs", mode.font, className)}
       {...props}
     >
@@ -301,29 +301,29 @@ const TerminalFeatureList = React.forwardRef<HTMLDivElement, TerminalFeatureList
     </div>
   )
 );
-TerminalFeatureList.displayName = "TerminalFeatureList";
+FeatureList.displayName = "FeatureList";
 
 /**
- * Terminal-style note/info text
+ * Note/info text
  * Used for [NOTE]: patterns at the bottom of feature cards
  *
  * @example
  * ```tsx
- * <TerminalNote>Connect to your API to persist data.</TerminalNote>
+ * <InfoNote>Connect to your API to persist data.</InfoNote>
  * // Renders: [NOTE]: Connect to your API to persist data.
  * ```
  */
-export type TerminalNoteProps = React.HTMLAttributes<HTMLDivElement> & {
+export type InfoNoteProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   /** Label text. Defaults to "NOTE" */
   label?: string;
 };
 
-const TerminalNote = React.forwardRef<HTMLDivElement, TerminalNoteProps>(
+const InfoNote = React.forwardRef<HTMLDivElement, InfoNoteProps>(
   ({ children, label = "NOTE", className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-note"
+      data-slot="info-note"
       className={cn("text-muted-foreground mt-4 text-xs", mode.font, className)}
       {...props}
     >
@@ -331,29 +331,29 @@ const TerminalNote = React.forwardRef<HTMLDivElement, TerminalNoteProps>(
     </div>
   )
 );
-TerminalNote.displayName = "TerminalNote";
+InfoNote.displayName = "InfoNote";
 
 /**
- * Terminal-style page badge
+ * Page badge
  * Used for [TEMPLATE]: NAME badges at top of template pages
  *
  * @example
  * ```tsx
- * <TerminalBadge>SIGN_IN</TerminalBadge>
+ * <PageBadge>SIGN_IN</PageBadge>
  * // Renders: [TEMPLATE]: SIGN_IN
  * ```
  */
-export type TerminalBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
+export type PageBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   /** Prefix label. Defaults to "TEMPLATE" */
   prefix?: string;
 };
 
-const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
+const PageBadge = React.forwardRef<HTMLDivElement, PageBadgeProps>(
   ({ children, prefix = "TEMPLATE", className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-badge"
+      data-slot="page-badge"
       className={cn("border-border inline-block border px-4 py-1", mode.radius, className)}
       {...props}
     >
@@ -363,7 +363,7 @@ const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
     </div>
   )
 );
-TerminalBadge.displayName = "TerminalBadge";
+PageBadge.displayName = "PageBadge";
 
 /**
  * Template page header component
@@ -397,7 +397,7 @@ const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderPr
       className={cn("space-y-2", className)}
       {...props}
     >
-      <TerminalBadge prefix={badgePrefix}>{badge}</TerminalBadge>
+      <PageBadge prefix={badgePrefix}>{badge}</PageBadge>
       <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
       {description && (
         <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
@@ -408,7 +408,7 @@ const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderPr
 TemplatePageHeader.displayName = "TemplatePageHeader";
 
 /**
- * Terminal-style features card with header and feature list
+ * Features card with header and feature list
  * Complete card component for template feature documentation
  *
  * @example
@@ -449,15 +449,15 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
     <StyledCard ref={ref} className={className} {...props}>
       <StyledCardHeader code={code} title={title} />
       <div className="p-4">
-        <TerminalLabel className="mb-4">{title}</TerminalLabel>
-        <TerminalFeatureList>
+        <StyledLabel className="mb-4">{title}</StyledLabel>
+        <FeatureList>
           {features.map((feature, index) => (
-            <TerminalFeatureItem key={index} icon={featureIcon}>
+            <FeatureItem key={index} icon={featureIcon}>
               {feature}
-            </TerminalFeatureItem>
+            </FeatureItem>
           ))}
-        </TerminalFeatureList>
-        {note && <TerminalNote>{note}</TerminalNote>}
+        </FeatureList>
+        {note && <InfoNote>{note}</InfoNote>}
       </div>
     </StyledCard>
   )
@@ -465,29 +465,29 @@ const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
 FeaturesCard.displayName = "FeaturesCard";
 
 /**
- * Terminal-style output window
- * Used for displaying terminal/CLI output with a simple header
- * No macOS-style colored dots - uses terminal aesthetic
+ * Code output window
+ * Used for displaying code/CLI output with a simple header
+ * No macOS-style colored dots - uses sharp aesthetic
  *
  * @example
  * ```tsx
- * <TerminalOutput title="terminal">
+ * <CodeOutput title="bracketed">
  *   <div>$ command</div>
  *   <div>output line</div>
- * </TerminalOutput>
+ * </CodeOutput>
  * ```
  */
-export type TerminalOutputProps = React.HTMLAttributes<HTMLDivElement> & {
-  /** Title shown in header. Defaults to "terminal" */
+export type CodeOutputProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Title shown in header. Defaults to "bracketed" */
   title?: string;
   children: React.ReactNode;
 };
 
-const TerminalOutput = React.forwardRef<HTMLDivElement, TerminalOutputProps>(
-  ({ title = "terminal", children, className, ...props }, ref) => (
+const CodeOutput = React.forwardRef<HTMLDivElement, CodeOutputProps>(
+  ({ title = "bracketed", children, className, ...props }, ref) => (
     <div
       ref={ref}
-      data-slot="terminal-output"
+      data-slot="code-output"
       className={cn("border-border bg-card border text-left", mode.radius, className)}
       {...props}
     >
@@ -498,7 +498,7 @@ const TerminalOutput = React.forwardRef<HTMLDivElement, TerminalOutputProps>(
     </div>
   )
 );
-TerminalOutput.displayName = "TerminalOutput";
+CodeOutput.displayName = "CodeOutput";
 
 export {
   Card,
@@ -509,12 +509,12 @@ export {
   CardTitle,
   StyledCard,
   StyledCardHeader,
-  TerminalLabel,
-  TerminalFeatureItem,
-  TerminalFeatureList,
-  TerminalNote,
-  TerminalBadge,
+  StyledLabel,
+  FeatureItem,
+  FeatureList,
+  InfoNote,
+  PageBadge,
   TemplatePageHeader,
   FeaturesCard,
-  TerminalOutput,
+  CodeOutput,
 };

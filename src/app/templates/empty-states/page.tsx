@@ -12,7 +12,7 @@ import {
   StyledCardHeader,
   TemplatePageHeader,
   FeaturesCard,
-  TerminalOutput,
+  CodeOutput,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -166,7 +166,7 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Terminal Output */}
-                    <TerminalOutput className="mt-4">
+                    <CodeOutput className="mt-4">
                       {state.terminal.map((line, idx) => (
                         <div
                           key={idx}
@@ -183,7 +183,7 @@ export default function EmptyStatesTemplate() {
                           {line}
                         </div>
                       ))}
-                    </TerminalOutput>
+                    </CodeOutput>
 
                     {/* Actions - pushed to bottom */}
                     <div className="mt-auto flex items-center justify-center gap-2 pt-4">

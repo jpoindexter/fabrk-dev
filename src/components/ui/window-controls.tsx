@@ -1,9 +1,9 @@
 /**
- * Terminal Stoplights Component
+ * Window Controls Component
  * Centralized macOS-style window control dots
  *
- * To toggle between square/round stoplights, change `rounded-none` to `rounded-full`
- * in the dotBase constant below.
+ * To toggle between square/round controls, change the mode in visual-mode.ts
+ * Radius is controlled by mode.radius for dynamic switching.
  */
 
 import { cn } from "@/lib/utils";
@@ -13,7 +13,7 @@ import { mode } from "@/lib/design-system";
 // Now uses mode.radius for dynamic switching
 const dotBase = mode.radius;
 
-interface TerminalStoplightsProps {
+interface WindowControlsProps {
   className?: string;
   /** Size variant - defaults to "sm" (size-2) */
   size?: "sm" | "md" | "lg";
@@ -25,7 +25,7 @@ const sizeClasses = {
   lg: "size-4",
 };
 
-export function TerminalStoplights({ className, size = "sm" }: TerminalStoplightsProps) {
+export function WindowControls({ className, size = "sm" }: WindowControlsProps) {
   const dotSize = sizeClasses[size];
 
   return (
@@ -38,25 +38,20 @@ export function TerminalStoplights({ className, size = "sm" }: TerminalStoplight
 }
 
 /**
- * Terminal Header Component
- * Complete header with stoplights and optional filename
+ * Window Header Component
+ * Complete header with control dots and optional filename
  */
-interface TerminalHeaderProps {
+interface WindowHeaderProps {
   filename?: string;
   className?: string;
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg";
 }
 
-export function TerminalHeader({
-  filename,
-  className,
-  children,
-  size = "sm",
-}: TerminalHeaderProps) {
+export function WindowHeader({ filename, className, children, size = "sm" }: WindowHeaderProps) {
   return (
     <div className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}>
-      <TerminalStoplights size={size} />
+      <WindowControls size={size} />
       {filename && (
         <span className={cn("text-muted-foreground text-xs", mode.font)}>{filename}</span>
       )}

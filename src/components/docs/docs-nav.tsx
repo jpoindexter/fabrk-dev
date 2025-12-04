@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 // Convert to TERMINAL_CASE
-function toTerminalCase(str: string): string {
+function toDisplayCase(str: string): string {
   return str.toUpperCase().replace(/[\s-]+/g, "_");
 }
 
@@ -223,14 +223,14 @@ export function DocsNav() {
                         href={section.href}
                         className="text-muted-foreground hover:text-foreground"
                       >
-                        {toTerminalCase(section.title)}
+                        {toDisplayCase(section.title)}
                       </Link>
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbPage className="text-foreground">
-                      {toTerminalCase(page.title)}
+                      {toDisplayCase(page.title)}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>
@@ -249,7 +249,7 @@ export function DocsNav() {
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbPage className="text-foreground">
-                      {toTerminalCase(pathname.split("/").pop() || "")}
+                      {toDisplayCase(pathname.split("/").pop() || "")}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>

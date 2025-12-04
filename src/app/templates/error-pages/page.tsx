@@ -14,7 +14,7 @@ import {
   StyledCardHeader,
   TemplatePageHeader,
   FeaturesCard,
-  TerminalOutput,
+  CodeOutput,
 } from "@/components/ui/card";
 import {
   FileQuestion,
@@ -186,7 +186,7 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Terminal Output */}
-                      <TerminalOutput>
+                      <CodeOutput>
                         {error.terminal.map((line, idx) => (
                           <div
                             key={idx}
@@ -203,7 +203,7 @@ export default function ErrorPagesTemplate() {
                             {line}
                           </div>
                         ))}
-                      </TerminalOutput>
+                      </CodeOutput>
 
                       {/* Actions */}
                       <div className="flex items-center justify-center gap-4">

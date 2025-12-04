@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Moon, Layers, Palette } from "lucide-react";
-import { TerminalHeader } from "./terminal-header";
+import { PreviewHeader } from "./preview-header";
 
 export function DesignSystemPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export function DesignSystemPreview() {
 
   return (
     <div ref={ref} className="border-border bg-card w-full max-w-md border">
-      <TerminalHeader title="design_system.exe" animated />
+      <PreviewHeader title="design_system.exe" animated />
 
       <div className="p-6">
         <motion.div

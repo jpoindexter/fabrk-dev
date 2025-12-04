@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { TerminalHeader } from "./terminal-header";
+import { PreviewHeader } from "./preview-header";
 
 // Animated counter for billing
 function BillingCounter({
@@ -60,7 +60,7 @@ export function BillingPreview() {
 
   return (
     <div ref={ref} className="border-border bg-card w-full max-w-md border">
-      <TerminalHeader title="billing_portal.exe" animated />
+      <PreviewHeader title="billing_portal.exe" animated />
 
       <div className="p-6">
         <motion.div

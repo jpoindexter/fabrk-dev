@@ -33,7 +33,7 @@ export {
   formatButtonText,
   formatCardTitle,
   getCardHeaderClasses,
-  isTerminalMode,
+  isSharpMode,
   hasRoundedCorners,
 } from "./visual-mode";
 

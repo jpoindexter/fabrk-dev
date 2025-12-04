@@ -8,14 +8,14 @@ import { DataExportSection } from "@/components/settings/data-export";
 import { NotificationsForm } from "@/components/settings/notifications-form";
 import { PrivacyForm } from "@/components/settings/privacy-form";
 import { Bell, Lock, Download } from "lucide-react";
-import { TerminalWindow } from "./terminal-window";
+import { CodeWindow } from "./code-window";
 import { SectionHeader } from "./section-header";
 
 export function PrivacyTab() {
   return (
     <div className="mt-6 space-y-6">
       {/* Notifications */}
-      <TerminalWindow filename="notifications.config">
+      <CodeWindow filename="notifications.config">
         <div className="p-4">
           <SectionHeader
             icon={Bell}
@@ -24,10 +24,10 @@ export function PrivacyTab() {
           />
           <NotificationsForm />
         </div>
-      </TerminalWindow>
+      </CodeWindow>
 
       {/* Privacy */}
-      <TerminalWindow filename="privacy.config">
+      <CodeWindow filename="privacy.config">
         <div className="p-4">
           <SectionHeader
             icon={Lock}
@@ -36,10 +36,10 @@ export function PrivacyTab() {
           />
           <PrivacyForm />
         </div>
-      </TerminalWindow>
+      </CodeWindow>
 
       {/* Data Export */}
-      <TerminalWindow filename="data_export.tsx">
+      <CodeWindow filename="data_export.tsx">
         <div className="p-4">
           <SectionHeader
             icon={Download}
@@ -48,7 +48,7 @@ export function PrivacyTab() {
           />
           <DataExportSection />
         </div>
-      </TerminalWindow>
+      </CodeWindow>
     </div>
   );
 }

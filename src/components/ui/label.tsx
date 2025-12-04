@@ -27,7 +27,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         data-slot="label"
         ref={ref}
         className={cn(
-          // Terminal typography
+          // Sharp mode typography
           "text-xs font-semibold",
           mode.font,
           "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",

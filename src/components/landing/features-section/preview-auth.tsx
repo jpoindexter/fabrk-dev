@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import { TerminalHeader } from "./terminal-header";
+import { PreviewHeader } from "./preview-header";
 
 export function AuthPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -53,7 +53,7 @@ export function AuthPreview() {
 
   return (
     <div ref={ref} className="border-border bg-card w-full max-w-sm border">
-      <TerminalHeader title="auth_module.exe" animated />
+      <PreviewHeader title="auth_module.exe" animated />
 
       <div className="p-6">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[AUTH_FORM]:</div>

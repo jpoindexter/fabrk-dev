@@ -64,9 +64,7 @@ export const templatesNavigation: TemplateNavSection[] = [
     id: "admin-panels",
     href: "/templates/admin-panels",
     icon: Settings,
-    items: [
-      { title: "User Management", href: "/templates/user-management", icon: Users },
-    ],
+    items: [{ title: "User Management", href: "/templates/user-management", icon: Users }],
   },
   {
     title: "Account Pages",
@@ -137,6 +135,6 @@ export function findTemplateByHref(href: string): {
 }
 
 // Convert title to terminal-style format (UPPER_SNAKE_CASE)
-export function toTerminalCase(str: string): string {
+export function toDisplayCase(str: string): string {
   return str.toUpperCase().replace(/\s+/g, "_").replace(/&/g, "");
 }

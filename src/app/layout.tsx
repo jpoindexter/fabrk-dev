@@ -16,7 +16,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { GeistSans } from "geist/font/sans";
 import localFont from "next/font/local";
 import { generateOrganizationSchema, generateProductSchema } from "@/lib/metadata";
-import { TerminalBackground } from "@/components/landing/terminal-background";
+import { AnimatedBackground } from "@/components/landing/animated-background";
 import "./globals.css";
 
 const jetbrainsMono = localFont({
@@ -246,7 +246,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </a>
           </div>
           <div className="bg-background relative isolate flex min-h-screen flex-col">
-            <TerminalBackground />
+            <AnimatedBackground />
             <main id="main-content" className="flex-1">
               <Suspense>{children}</Suspense>
             </main>

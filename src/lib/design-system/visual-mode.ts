@@ -9,18 +9,18 @@
  * - Shadows (none vs subtle)
  * - Button prefixes ("> " vs none)
  * - Label format (brackets vs plain)
- * - Card headers (terminal vs simple)
+ * - Card headers (bracketed vs simple)
  * - Text transform (uppercase vs normal)
  *
  * @example
  * // In visual-mode.ts, change this line:
- * export const CURRENT_MODE: VisualMode = "terminal";
+ * export const CURRENT_MODE: VisualMode = "sharp";
  * // to:
  * export const CURRENT_MODE: VisualMode = "standard";
  * // → Entire site switches to rounded ShadCN style
  */
 
-export type VisualMode = "terminal" | "standard" | "minimal";
+export type VisualMode = "sharp" | "standard" | "minimal";
 
 export interface VisualModeConfig {
   /** Border radius class - applied to cards, buttons, inputs, etc. */
@@ -33,8 +33,8 @@ export interface VisualModeConfig {
   buttonPrefix: string;
   /** Label format - "brackets" = [LABEL]: or "plain" = Label */
   labelFormat: "brackets" | "plain";
-  /** Card header style - "terminal" = [ [0x00] TITLE ] or "simple" = Title */
-  cardHeader: "terminal" | "simple" | "minimal";
+  /** Card header style - "bracketed" = [ [0x00] TITLE ] or "simple" = Title */
+  cardHeader: "bracketed" | "simple" | "minimal";
   /** Text transform for labels/buttons */
   textTransform: "uppercase" | "normal";
   /** Input styling */
@@ -46,18 +46,18 @@ export interface VisualModeConfig {
 /**
  * Visual mode configurations
  *
- * terminal: Sharp corners, monospace font, command-line aesthetic
- * standard: Rounded corners, sans-serif, ShadCN/modern SaaS style
+ * sharp: Sharp corners, monospace font, angular aesthetic
+ * standard: Rounded corners, sans-serif, modern SaaS style
  * minimal: Subtle rounded corners, clean and minimal
  */
 export const visualModes: Record<VisualMode, VisualModeConfig> = {
-  terminal: {
+  sharp: {
     radius: "rounded-none",
     font: "font-mono",
     shadow: "",
     buttonPrefix: "> ",
     labelFormat: "brackets",
-    cardHeader: "terminal",
+    cardHeader: "bracketed",
     textTransform: "uppercase",
     inputStyle: "rounded-none border-border",
     borderWidth: "border",
@@ -94,11 +94,11 @@ export const visualModes: Record<VisualMode, VisualModeConfig> = {
  * Current visual mode for the entire application.
  *
  * Change this value to switch the entire site's aesthetic:
- * - "terminal" → Sharp corners, monospace, command-line style
+ * - "sharp" → Sharp corners, monospace, angular style
  * - "standard" → Rounded corners, sans-serif, modern SaaS style
  * - "minimal" → Subtle rounded corners, clean and minimal
  */
-export const CURRENT_MODE: VisualMode = "terminal";
+export const CURRENT_MODE: VisualMode = "sharp";
 
 // ============================================================================
 // EXPORTS
@@ -110,7 +110,7 @@ export const mode = visualModes[CURRENT_MODE];
 /**
  * Format a label according to current mode
  * @example
- * formatLabel("Email") // terminal: "[EMAIL]:" | standard: "Email"
+ * formatLabel("Email") // sharp: "[EMAIL]:" | standard: "Email"
  */
 export function formatLabel(label: string): string {
   if (mode.labelFormat === "brackets") {
@@ -122,7 +122,7 @@ export function formatLabel(label: string): string {
 /**
  * Format button text according to current mode
  * @example
- * formatButtonText("Submit") // terminal: "> SUBMIT" | standard: "Submit"
+ * formatButtonText("Submit") // sharp: "> SUBMIT" | standard: "Submit"
  */
 export function formatButtonText(text: string): string {
   if (mode.textTransform === "uppercase") {
@@ -135,7 +135,7 @@ export function formatButtonText(text: string): string {
  * Get card header classes for current mode
  */
 export function getCardHeaderClasses(): string {
-  if (mode.cardHeader === "terminal") {
+  if (mode.cardHeader === "bracketed") {
     return "font-mono text-xs text-muted-foreground";
   }
   if (mode.cardHeader === "simple") {
@@ -147,10 +147,10 @@ export function getCardHeaderClasses(): string {
 /**
  * Format card title according to current mode
  * @example
- * formatCardTitle("Settings", "00") // terminal: "[ [0x00] SETTINGS ]" | standard: "Settings"
+ * formatCardTitle("Settings", "00") // sharp: "[ [0x00] SETTINGS ]" | standard: "Settings"
  */
 export function formatCardTitle(title: string, code?: string): string {
-  if (mode.cardHeader === "terminal") {
+  if (mode.cardHeader === "bracketed") {
     const hexCode = code ? `[0x${code}] ` : "";
     return `[ ${hexCode}${title.toUpperCase()} ]`;
   }
@@ -158,15 +158,15 @@ export function formatCardTitle(title: string, code?: string): string {
 }
 
 /**
- * Check if current mode is terminal
+ * Check if current mode is sharp (angular)
  */
-export function isTerminalMode(): boolean {
-  return CURRENT_MODE === "terminal";
+export function isSharpMode(): boolean {
+  return CURRENT_MODE === "sharp";
 }
 
 /**
  * Check if current mode uses rounded corners
  */
 export function hasRoundedCorners(): boolean {
-  return CURRENT_MODE !== "terminal";
+  return CURRENT_MODE !== "sharp";
 }

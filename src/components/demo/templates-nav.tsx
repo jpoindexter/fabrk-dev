@@ -28,7 +28,7 @@ import { Menu } from "lucide-react";
 import {
   templatesNavigation,
   findTemplateByHref,
-  toTerminalCase,
+  toDisplayCase,
 } from "@/app/templates/templates-nav-data";
 
 export function TemplatesNav() {
@@ -75,7 +75,7 @@ export function TemplatesNav() {
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbPage className="text-foreground">
-                      {toTerminalCase(section.title)}
+                      {toDisplayCase(section.title)}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>
@@ -101,14 +101,14 @@ export function TemplatesNav() {
                         href={section.href}
                         className="text-muted-foreground hover:text-foreground"
                       >
-                        {toTerminalCase(section.title)}
+                        {toDisplayCase(section.title)}
                       </Link>
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator>/</BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbPage className="text-foreground">
-                      {toTerminalCase(template.title)}
+                      {toDisplayCase(template.title)}
                     </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>
@@ -142,7 +142,7 @@ export function TemplatesNav() {
               {templatesNavigation.map((navSection) => (
                 <DropdownMenuItem key={navSection.id} asChild>
                   <Link href={navSection.href} className="text-xs">
-                    &gt; {toTerminalCase(navSection.title)}
+                    &gt; {toDisplayCase(navSection.title)}
                   </Link>
                 </DropdownMenuItem>
               ))}

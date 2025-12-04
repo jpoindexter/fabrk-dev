@@ -45,7 +45,7 @@ export const SimpleCard: Story = {
   ),
 };
 
-export const WithTerminalHeader: Story = {
+export const WithWindowHeader: Story = {
   render: () => (
     <Card className="w-[400px]">
       <div className="border-border bg-muted/50 border-b px-4 py-2">

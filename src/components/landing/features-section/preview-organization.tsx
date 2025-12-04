@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2 } from "lucide-react";
-import { TerminalHeader } from "./terminal-header";
+import { PreviewHeader } from "./preview-header";
 
 export function OrganizationPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ export function OrganizationPreview() {
 
   return (
     <div ref={ref} className="border-border bg-card w-full max-w-md border">
-      <TerminalHeader title="org_manager.exe" />
+      <PreviewHeader title="org_manager.exe" />
 
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">

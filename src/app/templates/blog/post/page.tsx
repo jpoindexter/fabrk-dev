@@ -9,7 +9,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { StyledCard, StyledCardHeader, TerminalBadge } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader, PageBadge } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
@@ -127,7 +127,7 @@ export default function BlogPostTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Template Badge */}
         <div className="mb-8">
-          <TerminalBadge>BLOG_POST</TerminalBadge>
+          <PageBadge>BLOG_POST</PageBadge>
         </div>
 
         {/* Back Link */}
