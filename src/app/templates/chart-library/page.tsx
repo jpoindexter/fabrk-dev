@@ -10,6 +10,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
+import {
   LineChart,
   Line,
   AreaChart,
@@ -115,17 +121,11 @@ export default function ChartLibraryTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: CHART_LIBRARY
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Chart Library</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Recharts visualization components for data-driven dashboards
-            </p>
-          </div>
+          <TemplatePageHeader
+            badge="CHART_LIBRARY"
+            title="Chart Library"
+            description="Recharts visualization components for data-driven dashboards"
+          />
           <Button className="rounded-none font-mono text-xs">
             <Download className="mr-2 h-4 w-4" />
             &gt; VIEW_DOCS
@@ -170,12 +170,8 @@ export default function ChartLibraryTemplate() {
 
         {/* Chart Tabs - Terminal Style */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] CHART_NAVIGATION ]
-              </span>
-            </div>
+          <TerminalCard>
+            <TerminalCardHeader code="0x00" title="CHART_NAVIGATION" />
 
             {/* Tab Navigation */}
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
@@ -189,7 +185,7 @@ export default function ChartLibraryTemplate() {
                 </TabsTrigger>
               ))}
             </TabsList>
-          </div>
+          </TerminalCard>
 
           {/* Line Chart */}
           <TabsContent value="line" className="mt-0">
@@ -404,53 +400,21 @@ export default function ChartLibraryTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x01] TEMPLATE_FEATURES ]
-            </span>
-          </div>
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar,
-                Pie/Donut)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Recharts library (npm install recharts)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Custom tooltips with terminal styling
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Solid fills with theme colors
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive containers (adapts to screen
-                size)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Custom color schemes matching design
-                system
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Formatted axes (K notation for large
-                numbers)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Tab navigation between chart types
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal console aesthetic
-              </div>
-            </div>
-            <div className="text-muted-foreground mt-4 font-mono text-xs">
-              [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed,
-              Treemap, and more.
-            </div>
-          </div>
-        </div>
+        <TerminalFeaturesCard
+          code="0x01"
+          features={[
+            "4 chart types (Line, Area, Bar, Pie/Donut)",
+            "Recharts library (npm install recharts)",
+            "Custom tooltips with terminal styling",
+            "Solid fills with theme colors",
+            "Responsive containers (adapts to screen size)",
+            "Custom color schemes matching design system",
+            "Formatted axes (K notation for large numbers)",
+            "Tab navigation between chart types",
+            "Terminal console aesthetic",
+          ]}
+          note="Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more."
+        />
       </div>
     </div>
   );

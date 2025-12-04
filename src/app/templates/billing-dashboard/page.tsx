@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ArrowUpRight } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
 
 // Extracted components
 import { CurrentPlanCard } from "./components/current-plan-card";
@@ -163,19 +164,11 @@ export default function BillingDashboardTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: BILLING_DASHBOARD
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">
-              Billing & Subscription
-            </h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Manage your subscription, payments, and billing information
-            </p>
-          </div>
+          <TemplatePageHeader
+            badge="BILLING_DASHBOARD"
+            title="Billing & Subscription"
+            description="Manage your subscription, payments, and billing information"
+          />
           <Button className="rounded-none font-mono text-xs">
             <ArrowUpRight className="mr-2 h-4 w-4" />
             &gt; UPGRADE_PLAN
@@ -184,12 +177,8 @@ export default function BillingDashboardTemplate() {
 
         {/* Terminal Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] BILLING_NAVIGATION ]
-              </span>
-            </div>
+          <TerminalCard>
+            <TerminalCardHeader code="0x00" title="BILLING_NAVIGATION" />
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {(["overview", "plans", "history"] as const).map((tab) => (
                 <TabsTrigger
@@ -201,7 +190,7 @@ export default function BillingDashboardTemplate() {
                 </TabsTrigger>
               ))}
             </TabsList>
-          </div>
+          </TerminalCard>
 
           {/* Overview Tab */}
           <TabsContent value="overview" className="mt-6 space-y-6">
