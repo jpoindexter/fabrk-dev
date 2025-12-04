@@ -46,6 +46,8 @@
     "lighthouse": "./scripts/lighthouse-audit.sh",
     "lighthouse:ci": "lhci autorun",
     "audit:staged": "node scripts/utilities/pre-commit-audit.mjs",
+    "audit:design": "node scripts/utilities/design-system-audit.mjs",
+    "audit:design:json": "node scripts/utilities/design-system-audit.mjs --json",
     "prepare": "husky"
   },
   "lint-staged": {
