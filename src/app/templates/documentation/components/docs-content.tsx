@@ -13,6 +13,8 @@ import { Separator } from "@/components/ui/separator";
 import { PageBadge } from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface DocsContentProps {
   currentDoc: {
@@ -39,7 +41,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         <PageBadge>DOCUMENTATION</PageBadge>
 
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs">
+        <nav aria-label="Breadcrumb" className={cn(mode.font, "flex items-center gap-2 text-xs")}>
           <span className="text-muted-foreground">Docs</span>
           <ChevronRight className="text-muted-foreground h-3 w-3" aria-hidden="true" />
           <span className="text-muted-foreground">Getting Started</span>
@@ -51,18 +53,22 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
 
         {/* Page Header */}
         <header>
-          <h1 className="text-foreground mb-4 font-mono text-4xl font-semibold tracking-tight">
+          <h1
+            className={cn(mode.font, "text-foreground mb-4 text-4xl font-semibold tracking-tight")}
+          >
             {currentDoc.title}
           </h1>
-          <p className="text-muted-foreground mb-4 font-mono text-sm">{currentDoc.description}</p>
+          <p className={cn(mode.font, "text-muted-foreground mb-4 text-sm")}>
+            {currentDoc.description}
+          </p>
           <div className="flex items-center gap-4">
-            <Badge variant="outline" className="rounded-none font-mono text-xs">
+            <Badge variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
               <time dateTime={currentDoc.lastUpdated}>Last updated: {currentDoc.lastUpdated}</time>
             </Badge>
             <Button
               variant="ghost"
               size="sm"
-              className="rounded-none font-mono text-xs"
+              className={cn(mode.radius, mode.font, "text-xs")}
               aria-label="Edit this page on GitHub"
             >
               <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -80,7 +86,10 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               return (
                 <h2
                   key={idx}
-                  className="text-foreground mt-8 mb-4 scroll-mt-20 font-mono text-sm font-bold"
+                  className={cn(
+                    mode.font,
+                    "text-foreground mt-8 mb-4 scroll-mt-20 text-sm font-bold"
+                  )}
                   id={section.content.toLowerCase().replace(/\s+/g, "-")}
                 >
                   [{section.content.toUpperCase().replace(/ /g, "_")}]:
@@ -98,14 +107,14 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                 >
                   <div className="border-border bg-card overflow-hidden border">
                     <div className="bg-muted border-border flex items-center justify-between border-b px-4 py-2">
-                      <span className="text-muted-foreground font-mono text-xs">
+                      <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                         [ [0x00] {(section.language || "code").toUpperCase()} ]
                       </span>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                        className="h-7 rounded-none font-mono text-xs"
+                        className={cn(mode.radius, mode.font, "h-7 text-xs")}
                         aria-label={
                           copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"
                         }
@@ -125,7 +134,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                     </div>
                     <div className="bg-card">
                       <pre className="m-0 overflow-auto p-4 text-xs leading-relaxed" tabIndex={0}>
-                        <code className="text-foreground font-mono">{section.content}</code>
+                        <code className={cn(mode.font, "text-foreground")}>{section.content}</code>
                       </pre>
                     </div>
                   </div>
@@ -134,7 +143,10 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
             }
 
             return (
-              <p key={idx} className="text-muted-foreground font-mono text-xs leading-relaxed">
+              <p
+                key={idx}
+                className={cn(mode.font, "text-muted-foreground text-xs leading-relaxed")}
+              >
                 {section.content}
               </p>
             );
@@ -147,14 +159,14 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         <nav aria-label="Page navigation" className="flex items-center justify-between">
           <Button
             variant="outline"
-            className="rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "text-xs")}
             aria-label="Go to previous page: Installation"
           >
             &lt; PREVIOUS: INSTALLATION
           </Button>
           <Button
             variant="default"
-            className="rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "text-xs")}
             aria-label="Go to next page: Environment Setup"
           >
             NEXT: ENVIRONMENT_SETUP &gt;
@@ -164,17 +176,19 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         {/* Help Section */}
         <div className="border-border bg-card mt-12 border">
           <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">[ [0x00] NEED_HELP ]</span>
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+              [ [0x00] NEED_HELP ]
+            </span>
           </div>
           <div className="p-4">
-            <div className="text-muted-foreground mb-1 font-mono text-xs">[NEED_HELP]:</div>
-            <div className="text-muted-foreground mb-4 font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[NEED_HELP]:</div>
+            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
               Can't find what you're looking for?
             </div>
             <div className="space-y-2">
               <Button
                 variant="outline"
-                className="w-full justify-start rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
                 aria-label="Ask question on GitHub Discussions"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -182,7 +196,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className="w-full justify-start rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
                 aria-label="Report an issue on GitHub"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -190,7 +204,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className="w-full justify-start rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
                 aria-label="Contact support team"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />

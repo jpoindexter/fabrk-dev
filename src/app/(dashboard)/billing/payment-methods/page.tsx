@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { CreditCard, Plus, Trash2, CheckCircle2, ArrowLeft, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function PaymentMethodsPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -188,7 +190,7 @@ export default function PaymentMethodsPage() {
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-6">
-                    <div className="bg-primary/10 border-border rounded-none border p-4">
+                    <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
                       {getCardIcon()}
                     </div>
                     <div>

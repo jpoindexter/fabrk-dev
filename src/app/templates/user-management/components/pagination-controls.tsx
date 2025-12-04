@@ -13,6 +13,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { User } from "./types";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface PaginationControlsProps {
   table: Table<User>;
@@ -20,7 +22,7 @@ interface PaginationControlsProps {
 
 export function PaginationControls({ table }: PaginationControlsProps) {
   return (
-    <div className="mt-4 flex items-center justify-between font-mono text-xs">
+    <div className={cn(mode.font, "mt-4 flex items-center justify-between text-xs")}>
       <div className="flex items-center gap-2">
         <span className="text-muted-foreground">ROWS_PER_PAGE:</span>
         <Select
@@ -29,12 +31,16 @@ export function PaginationControls({ table }: PaginationControlsProps) {
             table.setPageSize(Number(value));
           }}
         >
-          <SelectTrigger className="rounded-none h-7 w-[70px] font-mono text-xs">
+          <SelectTrigger className={cn(mode.radius, mode.font, "h-7 w-[70px] text-xs")}>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="rounded-none min-w-[70px] font-mono text-xs">
+          <SelectContent className={cn(mode.radius, mode.font, "min-w-[70px] text-xs")}>
             {[10, 25, 50, 100].map((pageSize) => (
-              <SelectItem key={pageSize} value={`${pageSize}`} className="rounded-none focus:bg-primary focus:text-primary-foreground">
+              <SelectItem
+                key={pageSize}
+                value={`${pageSize}`}
+                className={cn(mode.radius, "focus:bg-primary focus:text-primary-foreground")}
+              >
                 {pageSize}
               </SelectItem>
             ))}
@@ -52,7 +58,7 @@ export function PaginationControls({ table }: PaginationControlsProps) {
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="font-mono text-xs h-7"
+            className={cn(mode.font, "h-7 text-xs")}
           >
             &lt; PREV
           </Button>
@@ -61,7 +67,7 @@ export function PaginationControls({ table }: PaginationControlsProps) {
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="font-mono text-xs h-7"
+            className={cn(mode.font, "h-7 text-xs")}
           >
             NEXT &gt;
           </Button>

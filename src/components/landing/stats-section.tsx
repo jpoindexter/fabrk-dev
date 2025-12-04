@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 // Animated counter component
 function AnimatedCounter({
@@ -9,7 +11,7 @@ function AnimatedCounter({
   suffix = "",
   prefix = "",
   decimals = 0,
-  duration = 2
+  duration = 2,
 }: {
   value: number;
   suffix?: string;
@@ -31,16 +33,19 @@ function AnimatedCounter({
   useEffect(() => {
     const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
-        const formatted = decimals > 0
-          ? latest.toFixed(decimals)
-          : Math.floor(latest).toLocaleString();
+        const formatted =
+          decimals > 0 ? latest.toFixed(decimals) : Math.floor(latest).toLocaleString();
         ref.current.textContent = `${prefix}${formatted}${suffix}`;
       }
     });
     return unsubscribe;
   }, [springValue, suffix, prefix, decimals]);
 
-  return <span ref={ref}>{prefix}0{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {prefix}0{suffix}
+    </span>
+  );
 }
 
 export function StatsSection() {
@@ -77,7 +82,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24">
+    <section className="border-border bg-background border-t px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -86,10 +91,17 @@ export function StatsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[ [0x30] METRICS ]</span>
+            <div
+              className={cn(
+                "border-border bg-card mb-4 inline-block border px-4 py-1",
+                mode.radius
+              )}
+            >
+              <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                [ [0x30] METRICS ]
+              </span>
             </div>
-            <h2 className="mb-4 font-mono text-2xl font-bold">
+            <h2 className={cn("mb-4 text-2xl font-bold", mode.font)}>
               TRUSTED_BY_DEVELOPERS_WORLDWIDE
             </h2>
           </motion.div>
@@ -99,7 +111,7 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className={cn("text-muted-foreground text-sm", mode.font)}>
               &gt; Join hundreds of developers shipping production-ready SaaS apps
             </p>
           </motion.div>
@@ -109,7 +121,7 @@ export function StatsSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="block mt-2 font-mono text-xs text-muted-foreground">
+            <span className={cn("text-muted-foreground mt-2 block text-xs", mode.font)}>
               *Projected estimates based on early access users
             </span>
           </motion.div>
@@ -123,19 +135,22 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               viewport={{ once: true }}
-              className="group border border-border bg-card p-8 transition-all hover:border-primary/50"
+              className={cn(
+                "group border-border bg-card hover:border-primary/50 border p-8 transition-all",
+                mode.radius
+              )}
             >
-              <div className="mb-2 text-4xl font-semibold text-foreground font-mono">
+              <div className={cn("text-foreground mb-2 text-4xl font-semibold", mode.font)}>
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
                   decimals={stat.decimals || 0}
                 />
               </div>
-              <h3 className="mb-2 font-mono text-sm font-semibold">
-                {stat.label.toUpperCase().replace(/ /g, '_')}
+              <h3 className={cn("mb-2 text-sm font-semibold", mode.font)}>
+                {stat.label.toUpperCase().replace(/ /g, "_")}
               </h3>
-              <span className="block font-mono text-xs text-muted-foreground">
+              <span className={cn("text-muted-foreground block text-xs", mode.font)}>
                 {stat.description}
               </span>
             </motion.div>

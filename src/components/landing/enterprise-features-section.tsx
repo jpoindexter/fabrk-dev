@@ -2,6 +2,8 @@
 
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [
@@ -56,7 +58,7 @@ export function EnterpriseFeaturesSection() {
   ];
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24 font-mono">
+    <section className={cn("border-border bg-background border-t px-6 py-24", mode.font)}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -66,7 +68,12 @@ export function EnterpriseFeaturesSection() {
             viewport={{ once: true }}
             className="mb-4 inline-block"
           >
-            <span className="border border-border bg-card px-4 py-1 text-xs text-muted-foreground">
+            <span
+              className={cn(
+                "border-border bg-card text-muted-foreground border px-4 py-1 text-xs",
+                mode.radius
+              )}
+            >
               [ ENTERPRISE_GRADE_FEATURES ]
             </span>
           </motion.div>
@@ -76,8 +83,8 @@ export function EnterpriseFeaturesSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="text-xs text-muted-foreground">[0x00]</span>
-            <h2 className="text-2xl font-bold tracking-tight mb-4">
+            <span className="text-muted-foreground text-xs">[0x00]</span>
+            <h2 className="mb-4 text-2xl font-bold tracking-tight">
               BUILT_FOR_SCALE_SECURITY_AND_TEAMS
             </h2>
           </motion.div>
@@ -87,7 +94,7 @@ export function EnterpriseFeaturesSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
               &gt; Production-ready enterprise features that would cost $10,000+ to build yourself.
               All included, fully tested, and ready to deploy.
             </p>
@@ -103,33 +110,39 @@ export function EnterpriseFeaturesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                 viewport={{ once: true }}
-                className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
+                className={cn(
+                  "group border-border bg-card hover:border-primary/50 border p-6 transition-all",
+                  mode.radius
+                )}
               >
-                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-4">
+                <div
+                  className={cn(
+                    "bg-primary/10 mb-4 inline-flex items-center justify-center p-4",
+                    mode.radius
+                  )}
+                >
                   {feature.icon === "users" ? (
-                    <Users className="h-6 w-6 text-primary" />
+                    <Users className="text-primary h-6 w-6" />
                   ) : feature.icon === "lock" ? (
-                    <Lock className="h-6 w-6 text-primary" />
+                    <Lock className="text-primary h-6 w-6" />
                   ) : feature.icon === "shield" ? (
-                    <Shield className="h-6 w-6 text-primary" />
+                    <Shield className="text-primary h-6 w-6" />
                   ) : feature.icon === "webhook" ? (
-                    <Webhook className="h-6 w-6 text-primary" />
+                    <Webhook className="text-primary h-6 w-6" />
                   ) : feature.icon === "key" ? (
-                    <Key className="h-6 w-6 text-primary" />
+                    <Key className="text-primary h-6 w-6" />
                   ) : feature.icon === "radio" ? (
-                    <Radio className="h-6 w-6 text-primary" />
+                    <Radio className="text-primary h-6 w-6" />
                   ) : feature.icon === "server" ? (
-                    <Server className="h-6 w-6 text-primary" />
+                    <Server className="text-primary h-6 w-6" />
                   ) : feature.icon === "barchart" ? (
-                    <BarChart className="h-6 w-6 text-primary" />
+                    <BarChart className="text-primary h-6 w-6" />
                   ) : null}
                 </div>
-                <h3 className="text-sm font-bold mb-4">
-                  {feature.title.toUpperCase().replace(/ /g, '_').replace(/\+/g, '_AND_')}
+                <h3 className="mb-4 text-sm font-bold">
+                  {feature.title.toUpperCase().replace(/ /g, "_").replace(/\+/g, "_AND_")}
                 </h3>
-                <span className="block text-xs text-muted-foreground">
-                  {feature.description}
-                </span>
+                <span className="text-muted-foreground block text-xs">{feature.description}</span>
               </motion.div>
             );
           })}
@@ -141,13 +154,15 @@ export function EnterpriseFeaturesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           viewport={{ once: true }}
-          className="mt-12 border border-border bg-card p-8 text-center"
+          className={cn("border-border bg-card mt-12 border p-8 text-center", mode.radius)}
         >
           <p className="text-sm font-semibold">
-            <span className="text-primary">$200,000+</span> worth of enterprise features, included out-of-the-box
+            <span className="text-primary">$200,000+</span> worth of enterprise features, included
+            out-of-the-box
           </p>
-          <span className="block mt-2 text-xs text-muted-foreground">
-            These features would take 6-12 months to build yourself. We've done the hard work so you can focus on your product.
+          <span className="text-muted-foreground mt-2 block text-xs">
+            These features would take 6-12 months to build yourself. We've done the hard work so you
+            can focus on your product.
           </span>
         </motion.div>
       </div>

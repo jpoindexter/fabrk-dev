@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const adminNavItems = [
   { href: "/admin", label: "Overview" },
@@ -17,11 +18,7 @@ const adminNavItems = [
   { href: "/admin/monitoring", label: "Monitoring" },
 ];
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
 
   // Redirect if not admin
@@ -31,7 +28,7 @@ export default async function AdminLayout({
 
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="border-b bg-muted/40">
+      <div className="bg-muted/40 border-b">
         <div className="container flex h-14 items-center">
           <h1 className="text-lg font-semibold">Admin Panel</h1>
         </div>
@@ -45,8 +42,9 @@ export default async function AdminLayout({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block rounded-none px-4 py-2 text-sm font-medium transition-colors hover:bg-muted",
-                  "text-muted-foreground hover:text-foreground"
+                  "hover:bg-muted block px-4 py-2 text-sm font-medium transition-colors",
+                  "text-muted-foreground hover:text-foreground",
+                  mode.radius
                 )}
               >
                 {item.label}
@@ -55,9 +53,7 @@ export default async function AdminLayout({
           </nav>
         </aside>
 
-        <main className="flex w-full flex-col overflow-hidden py-6">
-          {children}
-        </main>
+        <main className="flex w-full flex-col overflow-hidden py-6">{children}</main>
       </div>
     </div>
   );

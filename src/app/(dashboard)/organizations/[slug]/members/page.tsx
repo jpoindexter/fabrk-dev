@@ -15,6 +15,8 @@ import { toast } from "sonner";
 import { MembersPageHeader } from "./components/members-page-header";
 import { MemberTableRow } from "./components/member-table-row";
 import { RolePermissionsCard } from "./components/role-permissions-card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Member {
   id: string;
@@ -128,7 +130,7 @@ export default function OrganizationMembersPage() {
 
   if (!organization) {
     return (
-      <Card className="border-border rounded-none border">
+      <Card className={cn("border-border border", mode.radius)}>
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>
@@ -153,7 +155,7 @@ export default function OrganizationMembersPage() {
       />
 
       {/* Members Table */}
-      <Card className="border-border rounded-none border">
+      <Card className={cn("border-border border", mode.radius)}>
         <CardHeader>
           <CardTitle>Members ({members.length})</CardTitle>
           <CardDescription>View and manage all members of your organization</CardDescription>

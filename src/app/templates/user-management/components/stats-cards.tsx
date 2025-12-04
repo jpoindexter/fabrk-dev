@@ -3,6 +3,8 @@
  */
 
 import type { User } from "./types";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface StatsCardsProps {
   users: User[];
@@ -15,31 +17,32 @@ export function StatsCards({ users }: StatsCardsProps) {
 
   return (
     <div className="grid gap-4 md:grid-cols-4">
-      <div className="border border-border bg-card p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-1">[TOTAL_USERS]:</div>
+      <div className="border-border bg-card border p-4">
+        <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[TOTAL_USERS]:</div>
         <div className="text-3xl font-bold">{users.length}</div>
-        <div className="font-mono text-xs text-muted-foreground mt-1">
+        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           STATUS: <span className="text-success">INDEXED</span>
         </div>
       </div>
-      <div className="border border-border bg-card p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-1">[ACTIVE_USERS]:</div>
+      <div className="border-border bg-card border p-4">
+        <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ACTIVE_USERS]:</div>
         <div className="text-3xl font-bold">{activeCount}</div>
-        <div className="font-mono text-xs text-muted-foreground mt-1">
-          RATE: <span className="text-success">{Math.round((activeCount / users.length) * 100)}%</span>
+        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
+          RATE:{" "}
+          <span className="text-success">{Math.round((activeCount / users.length) * 100)}%</span>
         </div>
       </div>
-      <div className="border border-border bg-card p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-1">[ADMINS]:</div>
+      <div className="border-border bg-card border p-4">
+        <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ADMINS]:</div>
         <div className="text-3xl font-bold">{adminCount}</div>
-        <div className="font-mono text-xs text-muted-foreground mt-1">
+        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           ROLE: <span className="text-primary">ELEVATED</span>
         </div>
       </div>
-      <div className="border border-border bg-card p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-1">[ENTERPRISE]:</div>
+      <div className="border-border bg-card border p-4">
+        <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>[ENTERPRISE]:</div>
         <div className="text-3xl font-bold">{enterpriseCount}</div>
-        <div className="font-mono text-xs text-muted-foreground mt-1">
+        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           PLAN: <span className="text-primary">PREMIUM</span>
         </div>
       </div>

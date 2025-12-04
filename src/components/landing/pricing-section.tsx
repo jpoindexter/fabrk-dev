@@ -9,6 +9,8 @@ import config from "@/config";
 import { motion } from "framer-motion";
 import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function PricingSection() {
   const features = [
@@ -21,10 +23,7 @@ export function PricingSection() {
   ];
 
   return (
-    <section
-      id="pricing"
-      className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28"
-    >
+    <section id="pricing" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -36,34 +35,44 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <div className="mb-4 inline-block self-start border border-border bg-card px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[ [0x40] PRICING ] COMMERCIAL_TIER │ FIB[144]</span>
+            <div
+              className={cn(
+                "border-border bg-card mb-4 inline-block self-start border px-4 py-1",
+                mode.radius
+              )}
+            >
+              <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                [ [0x40] PRICING ] COMMERCIAL_TIER │ FIB[144]
+              </span>
             </div>
 
-            <h2 className="mb-2 font-mono text-sm text-primary">FABRK_STARTER</h2>
-            <h3 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+            <h2 className={cn("text-primary mb-2 text-sm", mode.font)}>FABRK_STARTER</h2>
+            <h3 className={cn("mb-6 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
               ONE_TIME_PURCHASE.
               <br />
               <span className="text-muted-foreground">UNLIMITED_PROJECTS.</span>
             </h3>
 
-            <div className="mb-6 border-l-2 border-border pl-4">
-              <p className="font-mono text-sm text-muted-foreground">
-                Upon purchase, you can use the starter kits for personal and
-                commercial projects with no restrictions on the number of
-                developers or projects.
+            <div className="border-border mb-6 border-l-2 pl-4">
+              <p className={cn("text-muted-foreground text-sm", mode.font)}>
+                Upon purchase, you can use the starter kits for personal and commercial projects
+                with no restrictions on the number of developers or projects.
               </p>
             </div>
 
-            <div className="border border-border bg-card p-4">
-              <span className="font-mono text-xs text-muted-foreground">[ NOTE ]─────────────────────────────────────</span>
-              <span className="block mt-2 font-mono text-xs text-foreground">
+            <div className={cn("border-border bg-card border p-4", mode.radius)}>
+              <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                [ NOTE ]─────────────────────────────────────
+              </span>
+              <span className={cn("text-foreground mt-2 block text-xs", mode.font)}>
                 │ Fabrk is 40-70% more affordable than comparable
               </span>
-              <span className="block font-mono text-xs text-foreground">
+              <span className={cn("text-foreground block text-xs", mode.font)}>
                 │ Next.js starter kits. No hidden charges.
               </span>
-              <span className="block mt-2 font-mono text-xs text-muted-foreground">└─────────────────────────────────────────────┘</span>
+              <span className={cn("text-muted-foreground mt-2 block text-xs", mode.font)}>
+                └─────────────────────────────────────────────┘
+              </span>
             </div>
           </motion.div>
 
@@ -75,27 +84,29 @@ export function PricingSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {/* Terminal Card */}
-            <div className="border border-border bg-card">
+            <div className={cn("border-border bg-card border", mode.radius)}>
               {/* Window Header */}
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                 <div className="flex gap-2">
                   <motion.div
-                    className="size-2.5 rounded-none bg-destructive/50"
+                    className={cn("bg-destructive/50 size-2.5", mode.radius)}
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0 }}
                   />
                   <motion.div
-                    className="size-2.5 rounded-none bg-warning/50"
+                    className={cn("bg-warning/50 size-2.5", mode.radius)}
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
                   />
                   <motion.div
-                    className="size-2.5 rounded-none bg-success/50"
+                    className={cn("bg-success/50 size-2.5", mode.radius)}
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
                   />
                 </div>
-                <span className="font-mono text-xs text-muted-foreground">[0x41] pricing_config.exe │ PID:3142</span>
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                  [0x41] pricing_config.exe │ PID:3142
+                </span>
               </div>
 
               <div className="p-6">
@@ -105,25 +116,27 @@ export function PricingSection() {
                 </div>
 
                 {/* Price Display */}
-                <div className="mb-6 border border-border p-4">
-                  <div className="mb-2 font-mono text-xs text-muted-foreground">PRICE:</div>
+                <div className={cn("border-border mb-6 border p-4", mode.radius)}>
+                  <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>PRICE:</div>
                   <div className="flex items-baseline gap-4">
-                    <span className="font-mono text-lg text-muted-foreground line-through">
+                    <span className={cn("text-muted-foreground text-lg line-through", mode.font)}>
                       {config.pricing.fabrk.display.original}
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground">→</span>
-                    <span className="font-mono text-4xl font-bold text-foreground">
+                    <span className={cn("text-muted-foreground text-xs", mode.font)}>→</span>
+                    <span className={cn("text-foreground text-4xl font-bold", mode.font)}>
                       {config.pricing.fabrk.display.current}
                     </span>
                   </div>
-                  <div className="mt-2 font-mono text-xs text-muted-foreground">
+                  <div className={cn("text-muted-foreground mt-2 text-xs", mode.font)}>
                     TERMS: SINGLE_PAYMENT
                   </div>
                 </div>
 
                 {/* Features List */}
                 <div className="mb-6">
-                  <div className="mb-4 font-mono text-xs text-muted-foreground">[ INCLUDES ]─────────────────────</div>
+                  <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+                    [ INCLUDES ]─────────────────────
+                  </div>
                   <div className="space-y-2">
                     {features.map((feature, idx) => (
                       <motion.div
@@ -132,17 +145,17 @@ export function PricingSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: 0.2 + idx * 0.05 }}
                         viewport={{ once: true }}
-                        className="font-mono text-xs"
+                        className={cn("text-xs", mode.font)}
                       >
                         <span className="text-success">&gt;</span>
-                        <span className="ml-2 text-foreground">{feature}</span>
+                        <span className="text-foreground ml-2">{feature}</span>
                       </motion.div>
                     ))}
                   </div>
                 </div>
 
                 {/* CTA Button */}
-                <PolarCheckoutButton className="rounded-none w-full font-mono text-xs">
+                <PolarCheckoutButton className={cn("w-full text-xs", mode.radius, mode.font)}>
                   &gt; EXECUTE: GET_LIFETIME_ACCESS
                 </PolarCheckoutButton>
               </div>
@@ -156,8 +169,8 @@ export function PricingSection() {
               viewport={{ once: true }}
               className="mt-4"
             >
-              <div className="border border-border bg-card p-4 text-center">
-                <span className="font-mono text-xs text-muted-foreground">
+              <div className={cn("border-border bg-card border p-4 text-center", mode.radius)}>
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
                   [ [0x42] SECURE ] Checkout powered by Polar │ All sales final
                 </span>
               </div>

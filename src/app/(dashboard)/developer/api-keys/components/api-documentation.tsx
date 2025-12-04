@@ -5,6 +5,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, AlertTriangle } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ApiDocumentationProps {
   organizationId: string | null;
@@ -12,22 +14,29 @@ interface ApiDocumentationProps {
 
 export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
   return (
-    <div className="grid md:grid-cols-2 gap-6 mt-8">
+    <div className="mt-8 grid gap-6 md:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle as="h2" className="text-lg flex items-center gap-2">
+          <CardTitle as="h2" className="flex items-center gap-2 text-lg">
             <Code className="h-5 w-5" />
             Getting Started
           </CardTitle>
         </CardHeader>
-        <CardContent className="text-sm text-muted-foreground space-y-2">
+        <CardContent className="text-muted-foreground space-y-2 text-sm">
           <p>Include your API key in the Authorization header:</p>
-          <code className="block p-4 bg-muted rounded border border-border font-mono text-xs">
+          <code
+            className={cn("bg-muted border-border block rounded border p-4 text-xs", mode.font)}
+          >
             Authorization: Bearer YOUR_API_KEY
           </code>
           <div className="pt-2">
-            <p className="font-semibold mb-2">Example (cURL):</p>
-            <code className="block p-4 bg-muted rounded border border-border font-mono text-xs whitespace-pre-wrap">
+            <p className="mb-2 font-semibold">Example (cURL):</p>
+            <code
+              className={cn(
+                "bg-muted border-border block rounded border p-4 text-xs whitespace-pre-wrap",
+                mode.font
+              )}
+            >
               {`curl https://yourdomain.com/api/v1/organizations/${organizationId || "{org_id}"} \\
   -H "Authorization: Bearer sk_live_..."`}
             </code>
@@ -37,13 +46,13 @@ export function ApiDocumentation({ organizationId }: ApiDocumentationProps) {
 
       <Card>
         <CardHeader>
-          <CardTitle as="h2" className="text-lg flex items-center gap-2">
+          <CardTitle as="h2" className="flex items-center gap-2 text-lg">
             <AlertTriangle className="h-5 w-5" />
             Security Best Practices
           </CardTitle>
         </CardHeader>
-        <CardContent className="text-sm text-muted-foreground">
-          <ul className="list-disc list-inside space-y-1">
+        <CardContent className="text-muted-foreground text-sm">
+          <ul className="list-inside list-disc space-y-1">
             <li>Never commit API keys to version control</li>
             <li>Rotate keys regularly</li>
             <li>Use environment variables</li>

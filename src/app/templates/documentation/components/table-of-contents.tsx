@@ -5,6 +5,8 @@
  */
 
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function TableOfContents() {
   const headings = [
@@ -23,9 +25,9 @@ export function TableOfContents() {
     >
       <StyledCardHeader code="0x00" title="TOC" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[ON_THIS_PAGE]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[ON_THIS_PAGE]:</div>
         <nav>
-          <ul className="space-y-2 font-mono text-xs">
+          <ul className={cn(mode.font, "space-y-2 text-xs")}>
             {headings.map((heading, idx) => (
               <li key={idx}>
                 <a

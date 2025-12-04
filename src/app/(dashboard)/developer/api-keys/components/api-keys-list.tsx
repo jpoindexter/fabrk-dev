@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Key, Copy, Trash2, Loader2 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ApiKey {
   id: string;
@@ -67,7 +69,7 @@ export function ApiKeysList({
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
       </div>
     );
   }
@@ -75,11 +77,11 @@ export function ApiKeysList({
   if (apiKeys.length === 0) {
     return (
       <Card>
-        <CardContent className="pt-6 text-center space-y-4">
-          <Key className="h-12 w-12 mx-auto text-muted-foreground" />
+        <CardContent className="space-y-4 pt-6 text-center">
+          <Key className="text-muted-foreground mx-auto h-12 w-12" />
           <div>
-            <h3 className="font-semibold mb-1">No API keys yet</h3>
-            <p className="text-sm text-muted-foreground mb-4">
+            <h3 className="mb-1 font-semibold">No API keys yet</h3>
+            <p className="text-muted-foreground mb-4 text-sm">
               Create an API key to start making programmatic requests
             </p>
           </div>
@@ -93,13 +95,13 @@ export function ApiKeysList({
       {apiKeys.map((apiKey) => (
         <Card key={apiKey.id}>
           <CardContent className="pt-6">
-            <div className="flex items-start justify-between mb-4">
+            <div className="mb-4 flex items-start justify-between">
               <div className="flex items-start gap-6">
-                <div className="p-4 rounded-none bg-primary/10 border border-border">
-                  <Key className="h-6 w-6 text-primary" />
+                <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
+                  <Key className="text-primary h-6 w-6" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <div className="mb-1 flex flex-wrap items-center gap-2">
                     <h3 className="font-semibold">{apiKey.name}</h3>
                     {apiKey.permissions.map((permission) => (
                       <Badge
@@ -111,11 +113,11 @@ export function ApiKeysList({
                       </Badge>
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Created {formatDate(apiKey.createdAt)} by{" "}
                     {apiKey.user.name || apiKey.user.email}
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Last used {formatDate(apiKey.lastUsedAt)}
                   </p>
                 </div>
@@ -128,12 +130,12 @@ export function ApiKeysList({
               >
                 {isRevoking === apiKey.id ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Revoking...
                   </>
                 ) : (
                   <>
-                    <Trash2 className="h-4 w-4 mr-2" />
+                    <Trash2 className="mr-2 h-4 w-4" />
                     Revoke
                   </>
                 )}
@@ -141,7 +143,12 @@ export function ApiKeysList({
             </div>
 
             <div className="flex items-center gap-2">
-              <code className="flex-1 p-2 bg-muted rounded border border-border text-sm font-mono">
+              <code
+                className={cn(
+                  "bg-muted border-border flex-1 rounded border p-2 text-sm",
+                  mode.font
+                )}
+              >
                 {maskKey(apiKey.keyPrefix)}
               </code>
               <Button

@@ -5,6 +5,8 @@
 
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface FormData {
   fullName: string;
@@ -24,15 +26,17 @@ export function StepComplete({ formData }: StepCompleteProps) {
         <CheckCircle2 className="text-success h-8 w-8" />
       </div>
       <div>
-        <h2 className="mb-2 font-mono text-2xl font-semibold">You're All Set!</h2>
-        <p className="text-muted-foreground font-mono text-sm">
+        <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold")}>You're All Set!</h2>
+        <p className={cn(mode.font, "text-muted-foreground text-sm")}>
           Your account is ready. Let's start building something amazing.
         </p>
       </div>
 
       <div className="border-border border p-4 text-left">
-        <div className="text-muted-foreground mb-2 font-mono text-xs">[ACCOUNT_SUMMARY]:</div>
-        <div className="space-y-1.5 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+          [ACCOUNT_SUMMARY]:
+        </div>
+        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
           <div>
             <span className="text-muted-foreground">NAME:</span> {formData.fullName || "Not set"}
           </div>
@@ -50,7 +54,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
         </div>
       </div>
 
-      <Button className="rounded-none font-mono text-xs">&gt; GO_TO_DASHBOARD</Button>
+      <Button className={cn(mode.radius, mode.font, "text-xs")}>&gt; GO_TO_DASHBOARD</Button>
     </div>
   );
 }

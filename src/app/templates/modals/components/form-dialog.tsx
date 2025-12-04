@@ -19,6 +19,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface FormDialogProps {
   open: boolean;
@@ -29,43 +31,45 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
   return (
     <div className="border-border bg-card border">
       <div className="border-border border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">[ [0x00] FORM_DIALOG ]</span>
+        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+          [ [0x00] FORM_DIALOG ]
+        </span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="mb-1 font-mono font-semibold">Form Dialog</h3>
-          <p className="text-muted-foreground font-mono text-xs">
+          <h3 className={cn(mode.font, "mb-1 font-semibold")}>Form Dialog</h3>
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
             Modal form for creating or editing items
           </p>
         </div>
 
         <Dialog open={open} onOpenChange={onOpenChange}>
           <DialogTrigger asChild>
-            <Button className="rounded-none font-mono text-xs">
+            <Button className={cn(mode.radius, mode.font, "text-xs")}>
               <Plus className="mr-1 h-3 w-3" />
               &gt; CREATE_PROJECT
             </Button>
           </DialogTrigger>
-          <DialogContent className="border-border rounded-none">
+          <DialogContent className={cn(mode.radius, "border-border")}>
             <DialogHeader>
-              <DialogTitle className="font-mono">[NEW_PROJECT]</DialogTitle>
-              <DialogDescription className="font-mono text-sm">
+              <DialogTitle className={cn(mode.font)}>[NEW_PROJECT]</DialogTitle>
+              <DialogDescription className={cn(mode.font, "text-sm")}>
                 Create a new project to organize your work.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label className="font-mono text-xs">[PROJECT_NAME]:</Label>
+                <Label className={cn(mode.font, "text-xs")}>[PROJECT_NAME]:</Label>
                 <Input
                   placeholder="my-awesome-project"
-                  className="rounded-none font-mono text-sm"
+                  className={cn(mode.radius, mode.font, "text-sm")}
                 />
               </div>
               <div className="space-y-2">
-                <Label className="font-mono text-xs">[DESCRIPTION]:</Label>
+                <Label className={cn(mode.font, "text-xs")}>[DESCRIPTION]:</Label>
                 <Textarea
                   placeholder="Describe your project..."
-                  className="resize-none rounded-none font-mono text-sm"
+                  className={cn(mode.radius, mode.font, "resize-none text-sm")}
                   rows={3}
                 />
               </div>
@@ -74,13 +78,13 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
               <Button
                 variant="outline"
                 onClick={() => onOpenChange(false)}
-                className="rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "text-xs")}
               >
                 &gt; CANCEL
               </Button>
               <Button
                 onClick={() => onOpenChange(false)}
-                className="rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "text-xs")}
               >
                 &gt; CREATE
               </Button>
@@ -88,7 +92,7 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
           </DialogContent>
         </Dialog>
 
-        <div className="text-muted-foreground mt-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [USE_CASE]: Create, edit, quick forms, settings
         </div>
       </div>

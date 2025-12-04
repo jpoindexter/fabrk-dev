@@ -5,6 +5,8 @@
 import { useMemo } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface SecurityScoreProps {
   user: {
@@ -30,21 +32,30 @@ export function SecurityScore({ user }: SecurityScoreProps) {
       <div className="p-4">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border font-mono text-xl font-bold">
+            <div
+              className={cn(
+                mode.font,
+                "border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-bold"
+              )}
+            >
               75%
             </div>
             <div>
-              <div className="text-muted-foreground font-mono text-xs">[SECURITY_SCORE]:</div>
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                [SECURITY_SCORE]:
+              </div>
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 Good security posture, but improvements recommended
               </div>
             </div>
           </div>
-          <span className="border-warning/50 text-warning border px-2 py-0.5 font-mono text-xs">
+          <span
+            className={cn(mode.font, "border-warning/50 text-warning border px-2 py-0.5 text-xs")}
+          >
             MEDIUM_RISK
           </span>
         </div>
-        <div className="space-y-2 font-mono text-xs">
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div className="flex items-center gap-2">
             {user.emailVerified ? (
               <CheckCircle2 className="text-success h-4 w-4" />

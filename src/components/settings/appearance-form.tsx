@@ -5,13 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -29,6 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const appearanceFormSchema = z.object({
   language: z.enum(["en", "es", "fr", "de", "ja"]),
@@ -62,9 +58,7 @@ export function AppearanceForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          result.error || "Failed to update appearance settings"
-        );
+        throw new Error(result.error || "Failed to update appearance settings");
       }
 
       toast({
@@ -84,11 +78,12 @@ export function AppearanceForm() {
   }
 
   return (
-    <Card className="rounded-none">
+    <Card className={mode.radius}>
       <CardHeader>
-        <CardTitle className="font-mono text-xs">[APPEARANCE]:</CardTitle>
-        <CardDescription className="font-mono text-xs">
-          Customize your language preference. Use the theme dropdown in the navigation bar to change color themes.
+        <CardTitle className={cn(mode.font, "text-xs")}>[APPEARANCE]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
+          Customize your language preference. Use the theme dropdown in the navigation bar to change
+          color themes.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -99,22 +94,62 @@ export function AppearanceForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-mono text-xs">[LANGUAGE]:</FormLabel>
+                  <FormLabel className={cn(mode.font, "text-xs")}>[LANGUAGE]:</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="rounded-none">
+                      <SelectTrigger className={mode.radius}>
                         <SelectValue placeholder="Select a language" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="en" className="rounded-none focus:bg-primary focus:text-primary-foreground">English</SelectItem>
-                      <SelectItem value="es" className="rounded-none focus:bg-primary focus:text-primary-foreground">Spanish</SelectItem>
-                      <SelectItem value="fr" className="rounded-none focus:bg-primary focus:text-primary-foreground">French</SelectItem>
-                      <SelectItem value="de" className="rounded-none focus:bg-primary focus:text-primary-foreground">German</SelectItem>
-                      <SelectItem value="ja" className="rounded-none focus:bg-primary focus:text-primary-foreground">Japanese</SelectItem>
+                      <SelectItem
+                        value="en"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        English
+                      </SelectItem>
+                      <SelectItem
+                        value="es"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Spanish
+                      </SelectItem>
+                      <SelectItem
+                        value="fr"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        French
+                      </SelectItem>
+                      <SelectItem
+                        value="de"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        German
+                      </SelectItem>
+                      <SelectItem
+                        value="ja"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Japanese
+                      </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription className="font-mono text-xs">
+                  <FormDescription className={cn(mode.font, "text-xs")}>
                     Select your preferred language for the interface.
                   </FormDescription>
                   <FormMessage />
@@ -122,7 +157,11 @@ export function AppearanceForm() {
               )}
             />
 
-            <Button type="submit" disabled={isLoading} className="rounded-none font-mono text-xs">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className={cn(mode.radius, mode.font, "text-xs")}
+            >
               {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>

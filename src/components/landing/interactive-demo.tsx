@@ -8,6 +8,8 @@
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const DEMO_ROUTES = [
   { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },
@@ -28,7 +30,7 @@ export function InteractiveDemo() {
           className="space-y-8"
         >
           {/* Header */}
-          <div className="text-center font-mono">
+          <div className={cn("text-center", mode.font)}>
             <span className="text-muted-foreground text-xs">[0x00]</span>
             <h2 className="mb-4 text-2xl font-bold tracking-tight">LIVE_DEMO_EXPLORE_TEMPLATES</h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
@@ -39,12 +41,12 @@ export function InteractiveDemo() {
 
           {/* Tabbed Demo */}
           <Tabs defaultValue="team" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 gap-2 rounded-none">
+            <TabsList className={cn("grid w-full grid-cols-4 gap-2", mode.radius)}>
               {DEMO_ROUTES.map((route) => (
                 <TabsTrigger
                   key={route.id}
                   value={route.id}
-                  className="rounded-none text-sm sm:text-base"
+                  className={cn("text-sm sm:text-base", mode.radius)}
                 >
                   {route.label}
                 </TabsTrigger>
@@ -52,7 +54,7 @@ export function InteractiveDemo() {
             </TabsList>
 
             {/* Demo Container */}
-            <div className="border-border bg-card overflow-hidden border">
+            <div className={cn("border-border bg-card overflow-hidden border", mode.radius)}>
               {DEMO_ROUTES.map((route) => (
                 <TabsContent key={route.id} value={route.id} className="m-0">
                   <iframe
@@ -70,7 +72,7 @@ export function InteractiveDemo() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="border-border bg-card border p-6 font-mono"
+              className={cn("border-border bg-card border p-6", mode.radius, mode.font)}
             >
               <div className="text-muted-foreground mb-2 text-xs">[ INFO ]</div>
               <p className="text-foreground text-xs">

@@ -5,13 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -29,6 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const languageFormSchema = z.object({
   language: z.enum(["en", "es", "fr", "de", "ja", "zh", "pt", "ko"]),
@@ -72,9 +68,7 @@ export function LanguageForm() {
     } catch (err: unknown) {
       error(
         "Error",
-        err instanceof Error
-          ? err.message
-          : "Failed to update language settings. Please try again."
+        err instanceof Error ? err.message : "Failed to update language settings. Please try again."
       );
     } finally {
       setIsLoading(false);
@@ -82,10 +76,10 @@ export function LanguageForm() {
   }
 
   return (
-    <Card>
+    <Card className={mode.radius}>
       <CardHeader>
-        <CardTitle>Language</CardTitle>
-        <CardDescription>
+        <CardTitle className={cn(mode.font, "text-xs")}>[LANGUAGE]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
           Select your preferred language for the interface.
         </CardDescription>
       </CardHeader>
@@ -97,25 +91,89 @@ export function LanguageForm() {
               name="language"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Interface Language</FormLabel>
+                  <FormLabel className={cn(mode.font, "text-xs")}>[INTERFACE_LANGUAGE]:</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className={mode.radius}>
                         <SelectValue placeholder="Select a language" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="es">Español (Spanish)</SelectItem>
-                      <SelectItem value="fr">Français (French)</SelectItem>
-                      <SelectItem value="de">Deutsch (German)</SelectItem>
-                      <SelectItem value="ja">日本語 (Japanese)</SelectItem>
-                      <SelectItem value="zh">中文 (Chinese)</SelectItem>
-                      <SelectItem value="pt">Português (Portuguese)</SelectItem>
-                      <SelectItem value="ko">한국어 (Korean)</SelectItem>
+                      <SelectItem
+                        value="en"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        English
+                      </SelectItem>
+                      <SelectItem
+                        value="es"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Español (Spanish)
+                      </SelectItem>
+                      <SelectItem
+                        value="fr"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Français (French)
+                      </SelectItem>
+                      <SelectItem
+                        value="de"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Deutsch (German)
+                      </SelectItem>
+                      <SelectItem
+                        value="ja"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        日本語 (Japanese)
+                      </SelectItem>
+                      <SelectItem
+                        value="zh"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        中文 (Chinese)
+                      </SelectItem>
+                      <SelectItem
+                        value="pt"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        Português (Portuguese)
+                      </SelectItem>
+                      <SelectItem
+                        value="ko"
+                        className={cn(
+                          mode.radius,
+                          "focus:bg-primary focus:text-primary-foreground"
+                        )}
+                      >
+                        한국어 (Korean)
+                      </SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription>
+                  <FormDescription className={cn(mode.font, "text-xs")}>
                     This will change the language of all interface text.
                   </FormDescription>
                   <FormMessage />
@@ -123,8 +181,12 @@ export function LanguageForm() {
               )}
             />
 
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Saving..." : "Save Changes"}
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className={cn(mode.radius, mode.font, "text-xs")}
+            >
+              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>
         </Form>

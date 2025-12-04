@@ -7,6 +7,8 @@ import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface FilterCategory {
   id: string;
@@ -48,7 +50,7 @@ export function FiltersSidebar({
         <div className="space-y-4 p-4">
           {/* Filter Header */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 font-mono text-xs">
+            <div className={cn(mode.font, "flex items-center gap-2 text-xs")}>
               <Filter className="h-3 w-3" />
               [FILTERS]
             </div>
@@ -57,7 +59,7 @@ export function FiltersSidebar({
                 variant="ghost"
                 size="sm"
                 onClick={onClearFilters}
-                className="text-muted-foreground h-6 px-2 font-mono text-xs"
+                className={cn(mode.font, "text-muted-foreground h-6 px-2 text-xs")}
               >
                 <X className="mr-1 h-3 w-3" />
                 CLEAR
@@ -67,7 +69,7 @@ export function FiltersSidebar({
 
           {/* Category Filter */}
           <div className="space-y-2">
-            <div className="text-muted-foreground font-mono text-xs">[CATEGORY]:</div>
+            <div className={cn(mode.font, "text-muted-foreground text-xs")}>[CATEGORY]:</div>
             <div className="space-y-1">
               {categories.map((category) => (
                 <button
@@ -88,7 +90,7 @@ export function FiltersSidebar({
 
           {/* Tags Filter */}
           <div className="space-y-2">
-            <div className="text-muted-foreground font-mono text-xs">[TAGS]:</div>
+            <div className={cn(mode.font, "text-muted-foreground text-xs")}>[TAGS]:</div>
             <div className="space-y-1">
               {tags.map((tag) => (
                 <div key={tag.id} className="flex items-center gap-2 px-2 py-1">
@@ -96,9 +98,9 @@ export function FiltersSidebar({
                     id={tag.id}
                     checked={selectedTags.includes(tag.id)}
                     onCheckedChange={() => onTagToggle(tag.id)}
-                    className="rounded-none"
+                    className={cn(mode.radius)}
                   />
-                  <label htmlFor={tag.id} className="cursor-pointer font-mono text-xs">
+                  <label htmlFor={tag.id} className={cn(mode.font, "cursor-pointer text-xs")}>
                     {tag.label}
                   </label>
                 </div>

@@ -6,6 +6,8 @@
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Payment {
   id: string;
@@ -38,13 +40,13 @@ export function RecentInvoicesCard({
           variant="ghost"
           size="sm"
           onClick={onViewAll}
-          className="ml-auto h-6 rounded-none font-mono text-xs"
+          className={cn(mode.radius, mode.font, "ml-auto h-6 text-xs")}
         >
           &gt; VIEW_ALL
         </Button>
       </div>
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_INVOICES]: LIMIT=3
         </div>
 
@@ -54,7 +56,10 @@ export function RecentInvoicesCard({
             return (
               <div
                 key={payment.id}
-                className="border-border flex items-center justify-between border p-4 font-mono text-xs"
+                className={cn(
+                  mode.font,
+                  "border-border flex items-center justify-between border p-4 text-xs"
+                )}
               >
                 <div className="flex items-center gap-4">
                   {payment.status === "succeeded" ? (

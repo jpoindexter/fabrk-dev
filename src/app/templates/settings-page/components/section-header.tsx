@@ -5,6 +5,8 @@
  */
 
 import { type LucideIcon } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   icon: LucideIcon;
@@ -13,15 +15,22 @@ interface SectionHeaderProps {
   iconBgClass?: string;
 }
 
-export function SectionHeader({ icon: Icon, title, description, iconBgClass = "bg-primary/10" }: SectionHeaderProps) {
+export function SectionHeader({
+  icon: Icon,
+  title,
+  description,
+  iconBgClass = "bg-primary/10",
+}: SectionHeaderProps) {
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <div className={`flex h-10 w-10 items-center justify-center border border-border ${iconBgClass}`}>
-        <Icon className="h-5 w-5 text-primary" />
+    <div className="mb-4 flex items-center gap-4">
+      <div
+        className={`border-border flex h-10 w-10 items-center justify-center border ${iconBgClass}`}
+      >
+        <Icon className="text-primary h-5 w-5" />
       </div>
       <div>
-        <h2 className="font-mono text-xs text-muted-foreground">[{title}]:</h2>
-        <p className="font-mono text-xs text-muted-foreground">{description}</p>
+        <h2 className={cn(mode.font, "text-muted-foreground text-xs")}>[{title}]:</h2>
+        <p className={cn(mode.font, "text-muted-foreground text-xs")}>{description}</p>
       </div>
     </div>
   );

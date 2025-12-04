@@ -5,6 +5,8 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface NavigationControlsProps {
   currentStep: number;
@@ -12,25 +14,21 @@ interface NavigationControlsProps {
   onNext: () => void;
 }
 
-export function NavigationControls({
-  currentStep,
-  onBack,
-  onNext,
-}: NavigationControlsProps) {
+export function NavigationControls({ currentStep, onBack, onNext }: NavigationControlsProps) {
   return (
-    <div className="flex items-center justify-between border-t border-border px-6 py-4">
+    <div className="border-border flex items-center justify-between border-t px-6 py-4">
       <Button
         variant="outline"
         onClick={onBack}
         disabled={currentStep === 1}
-        className="rounded-none font-mono text-xs"
+        className={cn(mode.radius, mode.font, "text-xs")}
       >
-        <ArrowLeft className="h-3 w-3 mr-1" />
+        <ArrowLeft className="mr-1 h-3 w-3" />
         BACK
       </Button>
-      <Button onClick={onNext} className="rounded-none font-mono text-xs">
+      <Button onClick={onNext} className={cn(mode.radius, mode.font, "text-xs")}>
         {currentStep === 4 ? "COMPLETE" : "NEXT"}
-        <ArrowRight className="h-3 w-3 ml-1" />
+        <ArrowRight className="ml-1 h-3 w-3" />
       </Button>
     </div>
   );

@@ -27,16 +27,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface InviteMemberDialogProps {
   organizationId: string;
   organizationName: string;
 }
 
-export function InviteMemberDialog({
-  organizationId,
-  organizationName,
-}: InviteMemberDialogProps) {
+export function InviteMemberDialog({ organizationId, organizationName }: InviteMemberDialogProps) {
   const [inviting, setInviting] = React.useState(false);
   const [inviteEmail, setInviteEmail] = React.useState("");
   const [inviteRole, setInviteRole] = React.useState<"ADMIN" | "MEMBER" | "GUEST">("MEMBER");
@@ -80,12 +79,10 @@ export function InviteMemberDialog({
           Invite Member
         </Button>
       </DialogTrigger>
-      <DialogContent className="rounded-none border border-border">
+      <DialogContent className={cn("border-border border", mode.radius)}>
         <DialogHeader>
           <DialogTitle>Invite Team Member</DialogTitle>
-          <DialogDescription>
-            Send an invitation to join {organizationName}
-          </DialogDescription>
+          <DialogDescription>Send an invitation to join {organizationName}</DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
@@ -96,19 +93,19 @@ export function InviteMemberDialog({
               placeholder="john@example.com"
               value={inviteEmail}
               onChange={(e) => setInviteEmail(e.target.value)}
-              className="rounded-none border border-border"
+              className={cn("border-border border", mode.radius)}
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="role">Role</Label>
-            <Select value={inviteRole} onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}>
-              <SelectTrigger
-                id="role"
-                className="rounded-none border border-border"
-              >
+            <Select
+              value={inviteRole}
+              onValueChange={(val) => setInviteRole(val as "ADMIN" | "MEMBER" | "GUEST")}
+            >
+              <SelectTrigger id="role" className={cn("border-border border", mode.radius)}>
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-none border border-border">
+              <SelectContent className={cn("border-border border", mode.radius)}>
                 <SelectItem value="MEMBER">Member</SelectItem>
                 <SelectItem value="ADMIN">Admin</SelectItem>
                 <SelectItem value="GUEST">Guest</SelectItem>
@@ -117,10 +114,7 @@ export function InviteMemberDialog({
           </div>
         </div>
         <DialogFooter>
-          <Button
-            onClick={handleInvite}
-            disabled={!inviteEmail || inviting}
-          >
+          <Button onClick={handleInvite} disabled={!inviteEmail || inviting}>
             {inviting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             <Mail className="mr-2 h-4 w-4" />
             Send Invitation

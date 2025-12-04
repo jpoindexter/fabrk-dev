@@ -8,6 +8,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Moon, Layers, Palette } from "lucide-react";
 import { PreviewHeader } from "./preview-header";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function DesignSystemPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,14 +50,14 @@ export function DesignSystemPreview() {
   ];
 
   return (
-    <div ref={ref} className="border-border bg-card w-full max-w-md border">
+    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-md border")}>
       <PreviewHeader title="design_system.exe" animated />
 
       <div className="p-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          className="text-muted-foreground mb-4 font-mono text-xs"
+          className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}
         >
           [DESIGN_SYSTEM]:
         </motion.div>
@@ -68,7 +70,10 @@ export function DesignSystemPreview() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2 + idx * 0.15 }}
               whileHover={{ x: 4 }}
-              className="border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors"
+              className={cn(
+                mode.radius,
+                "border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors"
+              )}
             >
               <div className="flex items-center gap-4">
                 <motion.div
@@ -77,9 +82,9 @@ export function DesignSystemPreview() {
                 >
                   <item.icon className="text-primary size-4" />
                 </motion.div>
-                <span className="font-mono text-xs">{item.label}</span>
+                <span className={cn(mode.font, "text-xs")}>{item.label}</span>
               </div>
-              <span className="text-success font-mono text-xs">{item.value}</span>
+              <span className={cn(mode.font, "text-success text-xs")}>{item.value}</span>
             </motion.div>
           ))}
         </div>
@@ -92,7 +97,7 @@ export function DesignSystemPreview() {
               animate={isInView ? { scaleY: 1 } : {}}
               transition={{ delay: 0.8 + idx * 0.1, duration: 0.3, ease: "easeOut" }}
               style={{ originY: 1 }}
-              className={`h-8 ${color.class}`}
+              className={cn(mode.radius, `h-8 ${color.class}`)}
             />
           ))}
         </div>
@@ -103,7 +108,7 @@ export function DesignSystemPreview() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1.2 + idx * 0.1 }}
-              className="text-muted-foreground text-center font-mono text-xs"
+              className={cn(mode.font, "text-muted-foreground text-center text-xs")}
             >
               {color.name}
             </motion.span>

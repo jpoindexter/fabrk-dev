@@ -7,13 +7,7 @@ import * as React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Building2, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -25,6 +19,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface OrganizationFormData {
   name: string;
@@ -46,26 +42,21 @@ export function OrganizationDetailsStep({
   onCancel,
 }: OrganizationDetailsStepProps) {
   return (
-    <Card className="rounded-none border border-border shadow">
+    <Card className={cn("border-border border shadow", mode.radius)}>
       <CardHeader>
         <div className="flex items-center gap-4">
-          <div className="rounded-none border border-border bg-primary p-2">
-            <Building2 className="h-6 w-6 text-primary-foreground" />
+          <div className={cn("border-border bg-primary border p-2", mode.radius)}>
+            <Building2 className="text-primary-foreground h-6 w-6" />
           </div>
           <div>
             <CardTitle>Create Organization</CardTitle>
-            <CardDescription>
-              Set up your organization's basic information
-            </CardDescription>
+            <CardDescription>Set up your organization's basic information</CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="name"
@@ -75,13 +66,11 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="Acme Inc."
-                      className="rounded-none border border-border"
+                      className={cn("border-border border", mode.radius)}
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription>
-                    The public name of your organization
-                  </FormDescription>
+                  <FormDescription>The public name of your organization</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -96,7 +85,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="acme-inc"
-                      className="rounded-none border border-border"
+                      className={cn("border-border border", mode.radius)}
                       {...field}
                     />
                   </FormControl>
@@ -117,7 +106,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Textarea
                       placeholder="What does your organization do?"
-                      className="rounded-none border border-border"
+                      className={cn("border-border border", mode.radius)}
                       rows={3}
                       {...field}
                     />
@@ -128,11 +117,7 @@ export function OrganizationDetailsStep({
             />
 
             <div className="flex justify-end gap-2 pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onCancel}
-              >
+              <Button type="button" variant="outline" onClick={onCancel}>
                 Cancel
               </Button>
               <Button type="submit" disabled={loading}>

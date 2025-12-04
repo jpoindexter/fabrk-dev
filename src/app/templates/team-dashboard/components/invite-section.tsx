@@ -16,6 +16,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Send } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function InviteSection() {
   const [inviteEmail, setInviteEmail] = useState("");
@@ -34,41 +36,55 @@ export function InviteSection() {
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="INVITE_MEMBER" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[INVITE_TEAM_MEMBER]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [INVITE_TEAM_MEMBER]:
+        </div>
         <div className="flex gap-4">
           <Input
             type="email"
             placeholder="email@example.com"
             value={inviteEmail}
             onChange={(e) => setInviteEmail(e.target.value)}
-            className="flex-1 rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "flex-1 text-xs")}
           />
           <Select value={inviteRole} onValueChange={setInviteRole}>
-            <SelectTrigger className="w-32 rounded-none font-mono text-xs">
+            <SelectTrigger className={cn(mode.radius, mode.font, "w-32 text-xs")}>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="rounded-none">
+            <SelectContent className={cn(mode.radius)}>
               <SelectItem
                 value="admin"
-                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "focus:bg-primary focus:text-primary-foreground text-xs"
+                )}
               >
                 ADMIN
               </SelectItem>
               <SelectItem
                 value="member"
-                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "focus:bg-primary focus:text-primary-foreground text-xs"
+                )}
               >
                 MEMBER
               </SelectItem>
               <SelectItem
                 value="guest"
-                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "focus:bg-primary focus:text-primary-foreground text-xs"
+                )}
               >
                 GUEST
               </SelectItem>
             </SelectContent>
           </Select>
-          <Button onClick={handleInvite} className="rounded-none font-mono text-xs">
+          <Button onClick={handleInvite} className={cn(mode.radius, mode.font, "text-xs")}>
             <Send className="mr-2 h-4 w-4" />
             &gt; SEND_INVITE
           </Button>

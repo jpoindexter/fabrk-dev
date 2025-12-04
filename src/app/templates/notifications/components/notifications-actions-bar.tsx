@@ -5,6 +5,8 @@
 
 import { Button } from "@/components/ui/button";
 import { CheckCheck, Archive, Settings } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface NotificationsActionsBarProps {
   totalNotifications: number;
@@ -20,8 +22,8 @@ export function NotificationsActionsBar({
   onClearAll,
 }: NotificationsActionsBarProps) {
   return (
-    <div className="flex items-center justify-between mb-4">
-      <div className="font-mono text-xs text-muted-foreground">
+    <div className="mb-4 flex items-center justify-between">
+      <div className={cn(mode.font, "text-muted-foreground text-xs")}>
         [NOTIFICATIONS]: TOTAL={totalNotifications} | UNREAD={unreadCount}
       </div>
       <div className="flex items-center gap-2">
@@ -30,7 +32,7 @@ export function NotificationsActionsBar({
           size="sm"
           onClick={onMarkAllAsRead}
           disabled={unreadCount === 0}
-          className="rounded-none font-mono text-xs h-7"
+          className={cn(mode.radius, mode.font, "h-7 text-xs")}
         >
           <CheckCheck className="mr-1 h-3 w-3" />
           &gt; MARK_ALL_READ
@@ -40,16 +42,12 @@ export function NotificationsActionsBar({
           size="sm"
           onClick={onClearAll}
           disabled={totalNotifications === 0}
-          className="rounded-none font-mono text-xs h-7"
+          className={cn(mode.radius, mode.font, "h-7 text-xs")}
         >
           <Archive className="mr-1 h-3 w-3" />
           &gt; CLEAR_ALL
         </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="rounded-none font-mono text-xs h-7"
-        >
+        <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "h-7 text-xs")}>
           <Settings className="mr-1 h-3 w-3" />
           &gt; SETTINGS
         </Button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import config from "@/config";
 
 interface StickyCTABarProps {
@@ -81,7 +82,13 @@ export function StickyCTABar({
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="border-border bg-card/95 border-t-2 font-mono backdrop-blur-sm">
+      <div
+        className={cn(
+          mode.radius,
+          mode.font,
+          "border-border bg-card/95 border-t-2 backdrop-blur-sm"
+        )}
+      >
         <div className="mx-auto max-w-7xl px-4 py-4">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             {/* Message */}
@@ -89,7 +96,12 @@ export function StickyCTABar({
               <span className="text-center text-xs font-medium sm:text-left">{message}</span>
               {showPrice && (
                 <div className="flex items-center gap-2">
-                  <span className="border-primary bg-primary text-primary-foreground border px-2 py-0.5 text-xs">
+                  <span
+                    className={cn(
+                      mode.radius,
+                      "border-primary bg-primary text-primary-foreground border px-2 py-0.5 text-xs"
+                    )}
+                  >
                     {config.pricing.fabrk.display.current}
                   </span>
                   <span className="text-muted-foreground text-xs line-through">
@@ -101,7 +113,7 @@ export function StickyCTABar({
 
             {/* CTA + Dismiss */}
             <div className="flex items-center gap-2">
-              <Button asChild size="sm" className="rounded-none font-mono text-xs">
+              <Button asChild size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
                 <Link href={ctaHref}>
                   &gt; {ctaText.toUpperCase().replace(/ /g, "_")}
                   <ArrowRight className="ml-2 h-3 w-3" />
@@ -110,7 +122,7 @@ export function StickyCTABar({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 rounded-none"
+                className={cn(mode.radius, "h-8 w-8")}
                 onClick={handleDismiss}
                 aria-label="Dismiss"
               >

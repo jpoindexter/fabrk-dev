@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/card";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Two-Factor Auth Template - Fabrk",
@@ -43,7 +45,7 @@ export default function TwoFactorTemplate() {
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
                   <ShieldCheck className="text-primary h-5 w-5" />
                 </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight">
+                <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
                   Two-factor authentication
                 </h1>
                 <p className="text-muted-foreground text-sm">
@@ -68,7 +70,7 @@ export default function TwoFactorTemplate() {
                     </InputOTP>
                   </div>
 
-                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                  <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
                     &gt; VERIFY
                   </Button>
                 </form>

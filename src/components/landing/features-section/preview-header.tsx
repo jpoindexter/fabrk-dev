@@ -4,6 +4,9 @@
  */
 "use client";
 
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
+
 interface PreviewHeaderProps {
   title: string;
   animated?: boolean;
@@ -12,7 +15,7 @@ interface PreviewHeaderProps {
 export function PreviewHeader({ title }: PreviewHeaderProps) {
   return (
     <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-      <span className="text-muted-foreground font-mono text-xs">[ {title} ]</span>
+      <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ {title} ]</span>
     </div>
   );
 }

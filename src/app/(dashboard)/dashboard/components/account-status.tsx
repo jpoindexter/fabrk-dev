@@ -8,6 +8,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Users, Activity } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface AccountStatusProps {
   mfaEnabled?: boolean;
@@ -23,7 +25,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
       </CardHeader>
       <CardContent>
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="flex items-center gap-4 rounded-none border p-4">
+          <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Shield className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Security</p>
@@ -35,7 +37,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 rounded-none border p-4">
+          <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Users className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Account Type</p>
@@ -45,7 +47,7 @@ export function AccountStatus({ mfaEnabled, userTier }: AccountStatusProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 rounded-none border p-4">
+          <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
             <Activity className="text-muted-foreground h-5 w-5" />
             <div>
               <p className="text-sm font-medium">Status</p>

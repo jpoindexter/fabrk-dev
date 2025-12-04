@@ -5,6 +5,8 @@
 
 import { StyledCardHeader } from "@/components/ui/card";
 import { Users, Crown, Shield, Eye, type LucideIcon } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const roleIcons: Record<string, LucideIcon> = {
   owner: Crown,
@@ -37,8 +39,10 @@ export function RolePermissions() {
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="PERMISSIONS" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[ROLE_PERMISSIONS]:</div>
-        <div className="space-y-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [ROLE_PERMISSIONS]:
+        </div>
+        <div className={cn(mode.font, "space-y-4 text-xs")}>
           {rolePermissions.map((item) => {
             const RoleIcon = roleIcons[item.role];
             return (

@@ -7,6 +7,8 @@ import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface SearchBarProps {
   searchQuery: string;
@@ -26,12 +28,12 @@ export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchB
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search components, templates, hooks..."
-              className="rounded-none pl-8 font-mono text-sm"
+              className={cn(mode.radius, mode.font, "pl-8 text-sm")}
             />
           </div>
-          <Button className="rounded-none font-mono text-xs">&gt; SEARCH</Button>
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>&gt; SEARCH</Button>
         </div>
-        <div className="text-muted-foreground mt-2 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-2 text-xs")}>
           [QUERY]: &quot;{searchQuery}&quot; | RESULTS: {resultsCount} | TIME: 0.042s
         </div>
       </div>

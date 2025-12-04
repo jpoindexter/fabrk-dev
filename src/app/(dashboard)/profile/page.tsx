@@ -16,6 +16,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
 import { toast } from "sonner";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -109,7 +111,10 @@ export default function ProfilePage() {
               </Avatar>
               <label
                 htmlFor="avatar-upload"
-                className="bg-primary hover:bg-primary/90 absolute right-0 bottom-0 cursor-pointer rounded-none p-2 transition"
+                className={cn(
+                  "bg-primary hover:bg-primary/90 absolute right-0 bottom-0 cursor-pointer p-2 transition",
+                  mode.radius
+                )}
               >
                 <Camera className="text-primary-foreground h-4 w-4" />
                 <input
@@ -126,15 +131,19 @@ export default function ProfilePage() {
               <h3 className="text-lg font-semibold">{session?.user?.name}</h3>
               <p className="text-muted-foreground text-sm">{session?.user?.email}</p>
               <div className="flex gap-2">
-                <Badge variant="secondary">{(session?.user as { role?: string })?.role || "USER"}</Badge>
-                <Badge variant="outline">{(session?.user as { tier?: string })?.tier || "FREE"}</Badge>
+                <Badge variant="secondary">
+                  {(session?.user as { role?: string })?.role || "USER"}
+                </Badge>
+                <Badge variant="outline">
+                  {(session?.user as { tier?: string })?.tier || "FREE"}
+                </Badge>
               </div>
             </div>
           </div>
 
           {/* Account Info */}
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex items-center gap-4 rounded-none border p-4">
+            <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
               <Mail className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Email</p>
@@ -142,7 +151,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 rounded-none border p-4">
+            <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
               <User className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Account Type</p>
@@ -150,7 +159,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 rounded-none border p-4">
+            <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
               <Calendar className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Member Since</p>
@@ -158,12 +167,13 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 rounded-none border p-4">
+            <div className={cn("flex items-center gap-4 border p-4", mode.radius)}>
               <Shield className="text-muted-foreground h-5 w-5" />
               <div>
                 <p className="text-sm font-medium">Security</p>
                 <p className="text-muted-foreground text-sm">
-                  2FA {(session?.user as { mfaEnabled?: boolean })?.mfaEnabled ? "Enabled" : "Disabled"}
+                  2FA{" "}
+                  {(session?.user as { mfaEnabled?: boolean })?.mfaEnabled ? "Enabled" : "Disabled"}
                 </p>
               </div>
             </div>

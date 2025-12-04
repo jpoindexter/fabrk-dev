@@ -3,13 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -19,12 +13,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  FileText,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowLeft, FileText, CheckCircle2 } from "lucide-react";
 import { InvoicesClient } from "./invoices-client";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Invoices | Fabrk",
@@ -84,20 +76,18 @@ export default async function InvoicesPage() {
             Back to Billing
           </Button>
         </Link>
-        <h1 className="text-4xl font-semibold tracking-tight mb-2">Invoices & Receipts</h1>
-        <p className="text-muted-foreground text-lg">
-          View and download your payment history
-        </p>
+        <h1 className="mb-2 text-4xl font-semibold tracking-tight">Invoices & Receipts</h1>
+        <p className="text-muted-foreground text-lg">View and download your payment history</p>
       </div>
 
       {/* Invoices Table */}
       {payments.length === 0 ? (
         <Card>
-          <CardContent className="pt-6 text-center space-y-4">
-            <FileText className="h-12 w-12 mx-auto text-muted-foreground" />
+          <CardContent className="space-y-4 pt-6 text-center">
+            <FileText className="text-muted-foreground mx-auto h-12 w-12" />
             <div>
-              <h3 className="font-semibold mb-1">No invoices yet</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="mb-1 font-semibold">No invoices yet</h3>
+              <p className="text-muted-foreground text-sm">
                 Your payment history will appear here once you make a purchase
               </p>
             </div>
@@ -125,22 +115,16 @@ export default async function InvoicesPage() {
               <TableBody>
                 {payments.map((payment) => (
                   <TableRow key={payment.id}>
-                    <TableCell className="font-medium">
-                      {formatDate(payment.createdAt)}
-                    </TableCell>
+                    <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
                     <TableCell>
                       <div>
-                        <p className="font-medium">
-                          {payment.productId || "One-time purchase"}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="font-medium">{payment.productId || "One-time purchase"}</p>
+                        <p className="text-muted-foreground text-xs">
                           Invoice #{payment.stripeId?.slice(-8)}
                         </p>
                       </div>
                     </TableCell>
-                    <TableCell className="font-mono">
-                      {formatCurrency(payment.amount)}
-                    </TableCell>
+                    <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
                     <TableCell>{getStatusBadge(payment.status)}</TableCell>
                     <TableCell className="text-right">
                       <InvoicesClient paymentId={payment.id} />
@@ -154,19 +138,17 @@ export default async function InvoicesPage() {
       )}
 
       {/* Information Cards */}
-      <div className="grid md:grid-cols-2 gap-6 mt-8">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-lg">
               <FileText className="h-5 w-5" />
               Invoice Details
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground space-y-2">
-            <p>
-              Each invoice includes:
-            </p>
-            <ul className="list-disc list-inside space-y-1 ml-2">
+          <CardContent className="text-muted-foreground space-y-2 text-sm">
+            <p>Each invoice includes:</p>
+            <ul className="ml-2 list-inside list-disc space-y-1">
               <li>Transaction date and amount</li>
               <li>Payment method used</li>
               <li>Invoice number for records</li>
@@ -177,16 +159,15 @@ export default async function InvoicesPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-lg">
               <CheckCircle2 className="h-5 w-5" />
               Email Receipts
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
+          <CardContent className="text-muted-foreground text-sm">
             <p>
-              We automatically send email receipts for all successful payments. Check
-              your inbox at <strong>{session.user.email}</strong> for copies of your
-              receipts.
+              We automatically send email receipts for all successful payments. Check your inbox at{" "}
+              <strong>{session.user.email}</strong> for copies of your receipts.
             </p>
           </CardContent>
         </Card>

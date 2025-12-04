@@ -5,6 +5,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { TemplatePageHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface PricingHeaderProps {
   isYearly: boolean;
@@ -22,7 +24,7 @@ export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps)
 
       {/* Billing Toggle - Terminal Style */}
       <div className="flex items-center justify-center gap-2 pt-4">
-        <div className="border-border inline-flex border font-mono text-xs">
+        <div className={cn(mode.font, "border-border inline-flex border text-xs")}>
           <button
             onClick={() => onToggleBilling(false)}
             className={`px-4 py-2 transition-colors ${
@@ -45,7 +47,7 @@ export function PricingHeader({ isYearly, onToggleBilling }: PricingHeaderProps)
           </button>
         </div>
         {isYearly && (
-          <Badge variant="secondary" className="rounded-none font-mono text-xs">
+          <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
             SAVE 17%
           </Badge>
         )}

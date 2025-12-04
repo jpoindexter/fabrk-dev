@@ -5,13 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -22,6 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const privacyFormSchema = z.object({
   profileVisibility: z.boolean(),
@@ -73,9 +69,7 @@ export function PrivacyForm() {
     } catch (err: unknown) {
       error(
         "Error",
-        err instanceof Error
-          ? err.message
-          : "Failed to update privacy settings. Please try again."
+        err instanceof Error ? err.message : "Failed to update privacy settings. Please try again."
       );
     } finally {
       setIsLoading(false);
@@ -83,10 +77,10 @@ export function PrivacyForm() {
   }
 
   return (
-    <Card className="rounded-none">
+    <Card className={mode.radius}>
       <CardHeader>
-        <CardTitle className="font-mono text-xs">[PRIVACY]:</CardTitle>
-        <CardDescription className="font-mono text-xs">
+        <CardTitle className={cn(mode.font, "text-xs")}>[PRIVACY]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
           Control your privacy settings and how your data is handled.
         </CardDescription>
       </CardHeader>
@@ -97,10 +91,12 @@ export function PrivacyForm() {
               control={form.control}
               name="profileVisibility"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[PROFILE_VISIBILITY]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>
+                      [PROFILE_VISIBILITY]:
+                    </FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Allow your profile to be visible to other users.
                     </FormDescription>
                   </div>
@@ -109,7 +105,10 @@ export function PrivacyForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -120,10 +119,10 @@ export function PrivacyForm() {
               control={form.control}
               name="activityTracking"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[ACTIVITY_TRACKING]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[ACTIVITY_TRACKING]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Allow us to track your activity to improve your experience.
                     </FormDescription>
                   </div>
@@ -132,7 +131,10 @@ export function PrivacyForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -143,10 +145,10 @@ export function PrivacyForm() {
               control={form.control}
               name="analyticsSharing"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[ANALYTICS_SHARING]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[ANALYTICS_SHARING]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Share anonymous usage data to help us improve the product.
                     </FormDescription>
                   </div>
@@ -155,7 +157,10 @@ export function PrivacyForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -166,10 +171,10 @@ export function PrivacyForm() {
               control={form.control}
               name="searchIndexing"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[SEARCH_INDEXING]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[SEARCH_INDEXING]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Allow search engines to index your profile.
                     </FormDescription>
                   </div>
@@ -178,7 +183,10 @@ export function PrivacyForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -189,10 +197,10 @@ export function PrivacyForm() {
               control={form.control}
               name="dataRetention"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[DATA_RETENTION]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[DATA_RETENTION]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Keep my account data if I delete my account.
                     </FormDescription>
                   </div>
@@ -201,14 +209,21 @@ export function PrivacyForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
 
-            <Button type="submit" disabled={isLoading} className="rounded-none font-mono text-xs">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className={cn(mode.radius, mode.font, "text-xs")}
+            >
               {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>

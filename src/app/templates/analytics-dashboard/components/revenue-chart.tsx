@@ -4,6 +4,8 @@
  */
 
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export interface RevenueDataPoint {
   month: string;
@@ -27,14 +29,19 @@ export function RevenueChart({ data }: RevenueChartProps) {
     <div className="border-border bg-card border lg:col-span-4">
       <StyledCardHeader code="0x00" title="REVENUE_CHART" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [REVENUE_OVERVIEW]: PERIOD=6_MONTHS
         </div>
 
         {/* Bar Chart */}
         <div className="relative pl-10">
           {/* Y-axis labels */}
-          <div className="text-muted-foreground absolute top-0 bottom-6 left-0 flex flex-col justify-between font-mono text-xs">
+          <div
+            className={cn(
+              mode.font,
+              "text-muted-foreground absolute top-0 bottom-6 left-0 flex flex-col justify-between text-xs"
+            )}
+          >
             <span>$60k</span>
             <span>$40k</span>
             <span>$20k</span>
@@ -58,7 +65,10 @@ export function RevenueChart({ data }: RevenueChartProps) {
           {/* X-axis labels */}
           <div className="mt-2 flex justify-between gap-2">
             {data.map((dataPoint, i) => (
-              <div key={i} className="text-muted-foreground flex-1 text-center font-mono text-xs">
+              <div
+                key={i}
+                className={cn(mode.font, "text-muted-foreground flex-1 text-center text-xs")}
+              >
                 {dataPoint.month}
               </div>
             ))}
@@ -66,7 +76,12 @@ export function RevenueChart({ data }: RevenueChartProps) {
         </div>
 
         {/* Stats Row */}
-        <div className="border-border mt-4 grid grid-cols-3 gap-4 border-t pt-4 font-mono text-xs">
+        <div
+          className={cn(
+            mode.font,
+            "border-border mt-4 grid grid-cols-3 gap-4 border-t pt-4 text-xs"
+          )}
+        >
           <div>
             <span className="text-muted-foreground">[AVG]:</span>{" "}
             <span className="text-foreground">${avgRevenue.toLocaleString()}</span>

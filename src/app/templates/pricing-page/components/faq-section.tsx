@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface FAQ {
   question: string;
@@ -27,7 +29,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
       <StyledCardHeader code="0x00" title="FAQ" />
 
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [FREQUENTLY_ASKED_QUESTIONS]:
         </div>
 
@@ -37,11 +39,11 @@ export function FAQSection({ faqs }: FAQSectionProps) {
               <AccordionTrigger className="hover:bg-muted/30 [&>svg]:text-muted-foreground px-4 py-4 font-normal hover:no-underline">
                 <div className="flex items-center gap-2">
                   <HelpCircle className="text-primary h-4 w-4" />
-                  <span className="font-mono text-xs">{faq.question}</span>
+                  <span className={cn(mode.font, "text-xs")}>{faq.question}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-4 pt-0 pb-4">
-                <p className="text-muted-foreground pl-6 font-mono text-xs">{faq.answer}</p>
+                <p className={cn(mode.font, "text-muted-foreground pl-6 text-xs")}>{faq.answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

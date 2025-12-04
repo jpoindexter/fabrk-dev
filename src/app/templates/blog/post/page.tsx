@@ -13,6 +13,8 @@ import { StyledCard, StyledCardHeader, PageBadge } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock article data
 const mockArticle = {
@@ -61,6 +63,8 @@ const mockArticle = {
       language: "typescript",
       content: `// app/api/users/route.ts
 import { NextResponse } from "next/server";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export async function GET() {
   const users = await prisma.user.findMany();
@@ -133,7 +137,10 @@ export default function BlogPostTemplate() {
         {/* Back Link */}
         <Link
           href="/templates/blog"
-          className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 font-mono text-sm transition-colors"
+          className={cn(
+            mode.font,
+            "text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors"
+          )}
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Blog
@@ -142,19 +149,21 @@ export default function BlogPostTemplate() {
         {/* Article Header */}
         <header className="mb-12">
           {/* Category */}
-          <Badge className="mb-4 rounded-none font-mono text-xs">{mockArticle.category}</Badge>
+          <Badge className={cn(mode.radius, mode.font, "mb-4 text-xs")}>
+            {mockArticle.category}
+          </Badge>
 
           {/* Title */}
-          <h1 className="mb-6 font-mono text-3xl leading-tight font-bold md:text-4xl">
+          <h1 className={cn(mode.font, "mb-6 text-3xl leading-tight font-bold md:text-4xl")}>
             {mockArticle.title}
           </h1>
 
           {/* Meta: Author + Date + Read Time */}
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-3">
-              <Avatar className="border-border h-10 w-10 rounded-none border">
+              <Avatar className={cn(mode.radius, "border-border h-10 w-10 border")}>
                 <AvatarImage src={mockArticle.author.avatar || undefined} />
-                <AvatarFallback className="rounded-none font-mono text-xs">
+                <AvatarFallback className={cn(mode.radius, mode.font, "text-xs")}>
                   {mockArticle.author.name
                     .split(" ")
                     .map((n) => n[0])
@@ -162,14 +171,16 @@ export default function BlogPostTemplate() {
                 </AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-mono text-sm font-medium">{mockArticle.author.name}</div>
-                <div className="text-muted-foreground font-mono text-xs">
+                <div className={cn(mode.font, "text-sm font-medium")}>
+                  {mockArticle.author.name}
+                </div>
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                   {mockArticle.author.role}
                 </div>
               </div>
             </div>
 
-            <div className="text-muted-foreground flex items-center gap-4 font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground flex items-center gap-4 text-xs")}>
               <div className="flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
                 {mockArticle.date}
@@ -184,7 +195,7 @@ export default function BlogPostTemplate() {
 
         {/* Featured Image Placeholder */}
         <div className="border-border bg-muted/30 mb-12 flex aspect-video items-center justify-center border">
-          <span className="text-muted-foreground font-mono text-sm">[FEATURED_IMAGE]</span>
+          <span className={cn(mode.font, "text-muted-foreground text-sm")}>[FEATURED_IMAGE]</span>
         </div>
 
         {/* Article Content */}
@@ -194,7 +205,7 @@ export default function BlogPostTemplate() {
               return (
                 <h2
                   key={index}
-                  className="border-border mt-10 border-b pb-2 font-mono text-xl font-bold"
+                  className={cn(mode.font, "border-border mt-10 border-b pb-2 text-xl font-bold")}
                 >
                   {block.content}
                 </h2>
@@ -203,7 +214,10 @@ export default function BlogPostTemplate() {
 
             if (block.type === "paragraph") {
               return (
-                <p key={index} className="text-muted-foreground font-mono text-sm leading-relaxed">
+                <p
+                  key={index}
+                  className={cn(mode.font, "text-muted-foreground text-sm leading-relaxed")}
+                >
                   {block.content}
                 </p>
               );
@@ -221,7 +235,7 @@ export default function BlogPostTemplate() {
         <div className="border-border mb-12 border-t pt-6">
           <div className="flex flex-wrap gap-2">
             {mockArticle.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="rounded-none font-mono text-xs">
+              <Badge key={tag} variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                 #{tag}
               </Badge>
             ))}
@@ -230,12 +244,12 @@ export default function BlogPostTemplate() {
 
         {/* Share + Actions */}
         <div className="border-border flex items-center justify-between border-t pt-6">
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
             <Share2 className="mr-2 h-3 w-3" />
             Share
           </Button>
           <Link href="/templates/blog">
-            <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">
+            <Button variant="ghost" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
               View all posts →
             </Button>
           </Link>
@@ -244,7 +258,7 @@ export default function BlogPostTemplate() {
         {/* Features Note */}
         <StyledCard>
           <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
-          <div className="space-y-1 p-4 font-mono text-xs">
+          <div className={cn(mode.font, "space-y-1 p-4 text-xs")}>
             <div>
               <span className="text-success">✓</span> Clean, centered single-column layout
             </div>

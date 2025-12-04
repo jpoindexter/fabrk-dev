@@ -15,6 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ShieldQuestion } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Forgot Password Template - Fabrk",
@@ -44,7 +46,9 @@ export default function ForgotPasswordTemplate() {
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
                   <ShieldQuestion className="text-primary h-5 w-5" />
                 </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight">Reset password</h1>
+                <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
+                  Reset password
+                </h1>
                 <p className="text-muted-foreground text-sm">
                   Enter your email address and we&apos;ll send you a link to reset your password.
                 </p>
@@ -54,7 +58,7 @@ export default function ForgotPasswordTemplate() {
               <div className="grid gap-6">
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs">
+                    <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
                       [EMAIL]:
                     </Label>
                     <Input
@@ -65,11 +69,11 @@ export default function ForgotPasswordTemplate() {
                       autoComplete="email"
                       autoCorrect="off"
                       required
-                      className="rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "text-xs")}
                     />
                   </div>
 
-                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                  <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
                     &gt; SEND_RESET_LINK
                   </Button>
                 </form>

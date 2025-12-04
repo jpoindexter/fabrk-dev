@@ -16,55 +16,63 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { AlertTriangle, Trash2 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function ConfirmationDialog() {
   return (
     <div className="border-border bg-card border">
       <div className="border-border border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">
+        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
           [ [0x00] CONFIRMATION_DIALOG ]
         </span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="mb-1 font-mono font-semibold">Confirmation Dialog</h3>
-          <p className="text-muted-foreground font-mono text-xs">
+          <h3 className={cn(mode.font, "mb-1 font-semibold")}>Confirmation Dialog</h3>
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
             Destructive action confirmation with cancel option
           </p>
         </div>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="destructive" className="rounded-none font-mono text-xs">
+            <Button variant="destructive" className={cn(mode.radius, mode.font, "text-xs")}>
               <Trash2 className="mr-1 h-3 w-3" />
               &gt; DELETE_ITEM
             </Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="border-border rounded-none">
+          <AlertDialogContent className={cn(mode.radius, "border-border")}>
             <AlertDialogHeader>
               <div className="mb-2 flex items-center gap-2">
                 <div className="border-destructive bg-destructive/10 border p-2">
                   <AlertTriangle className="text-destructive h-5 w-5" />
                 </div>
               </div>
-              <AlertDialogTitle className="font-mono">[CONFIRM_DELETE]</AlertDialogTitle>
-              <AlertDialogDescription className="font-mono text-sm">
+              <AlertDialogTitle className={cn(mode.font)}>[CONFIRM_DELETE]</AlertDialogTitle>
+              <AlertDialogDescription className={cn(mode.font, "text-sm")}>
                 This action cannot be undone. This will permanently delete the item and remove all
                 associated data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel className="rounded-none font-mono text-xs">
+              <AlertDialogCancel className={cn(mode.radius, mode.font, "text-xs")}>
                 &gt; CANCEL
               </AlertDialogCancel>
-              <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-none font-mono text-xs">
+              <AlertDialogAction
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+                )}
+              >
                 &gt; DELETE
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
 
-        <div className="text-muted-foreground mt-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [USE_CASE]: Delete, logout, reset, irreversible actions
         </div>
       </div>

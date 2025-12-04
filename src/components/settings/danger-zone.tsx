@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,6 +14,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function DangerZone() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -71,39 +67,39 @@ export function DangerZone() {
   };
 
   return (
-    <Card className="rounded-none border-destructive">
+    <Card className={cn(mode.radius, "border-destructive")}>
       <CardHeader>
-        <CardTitle className="font-mono text-xs text-destructive">[DANGER_ZONE]:</CardTitle>
-        <CardDescription className="font-mono text-xs">
+        <CardTitle className={cn(mode.font, "text-destructive text-xs")}>[DANGER_ZONE]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
           Irreversible and destructive actions.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="border-t pt-4">
-          <h3 className="font-mono text-xs mb-2">[EXPORT_YOUR_DATA]:</h3>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <h3 className={cn(mode.font, "mb-2 text-xs")}>[EXPORT_YOUR_DATA]:</h3>
+          <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             Download a copy of your account data in JSON format.
           </p>
           <Button
             variant="outline"
             onClick={() => setExportDialogOpen(true)}
             disabled={isLoading}
-            className="rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "text-xs")}
           >
             &gt; EXPORT_DATA
           </Button>
         </div>
 
         <div className="border-t pt-4">
-          <h3 className="font-mono text-xs text-destructive mb-2">[DELETE_ACCOUNT]:</h3>
-          <p className="font-mono text-xs text-muted-foreground mb-4">
+          <h3 className={cn(mode.font, "text-destructive mb-2 text-xs")}>[DELETE_ACCOUNT]:</h3>
+          <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             Permanently delete your account and all associated data. This action cannot be undone.
           </p>
           <Button
             variant="destructive"
             onClick={() => setDeleteDialogOpen(true)}
             disabled={isLoading}
-            className="rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "text-xs")}
           >
             &gt; DELETE_ACCOUNT
           </Button>
@@ -111,19 +107,22 @@ export function DangerZone() {
       </CardContent>
 
       <AlertDialog open={exportDialogOpen} onOpenChange={setExportDialogOpen}>
-        <AlertDialogContent className="rounded-none border border-border">
+        <AlertDialogContent className={cn(mode.radius, "border-border border")}>
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-mono text-sm">[EXPORT_DATA]:</AlertDialogTitle>
-            <AlertDialogDescription className="font-mono text-xs">
-              You will receive a download of all your account data in JSON format. This includes your profile, settings, and activity history.
+            <AlertDialogTitle className={cn(mode.font, "text-sm")}>[EXPORT_DATA]:</AlertDialogTitle>
+            <AlertDialogDescription className={cn(mode.font, "text-xs")}>
+              You will receive a download of all your account data in JSON format. This includes
+              your profile, settings, and activity history.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <div className="flex gap-2 justify-end">
-            <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
+          <div className="flex justify-end gap-2">
+            <AlertDialogCancel className={cn(mode.radius, mode.font, "text-xs")}>
+              &gt; CANCEL
+            </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleExportData}
               disabled={isLoading}
-              className="rounded-none font-mono text-xs"
+              className={cn(mode.radius, mode.font, "text-xs")}
             >
               {isLoading ? "> EXPORTING..." : "> EXPORT"}
             </AlertDialogAction>
@@ -132,33 +131,42 @@ export function DangerZone() {
       </AlertDialog>
 
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-        <AlertDialogContent className="max-w-md rounded-none border border-destructive">
+        <AlertDialogContent className={cn("max-w-md", mode.radius, "border-destructive border")}>
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-mono text-sm text-destructive">[DELETE_ACCOUNT]:</AlertDialogTitle>
-            <AlertDialogDescription className="font-mono text-xs">
+            <AlertDialogTitle className={cn(mode.font, "text-destructive text-sm")}>
+              [DELETE_ACCOUNT]:
+            </AlertDialogTitle>
+            <AlertDialogDescription className={cn(mode.font, "text-xs")}>
               This action cannot be undone. Your account and all data will be permanently deleted.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <div className="space-y-4 my-4">
+          <div className="my-4 space-y-4">
             <div>
-              <p className="text-xs font-mono mb-2">
-                Type <span className="font-mono bg-muted px-2 py-1">delete my account</span> to confirm:
+              <p className={cn("text-xs", mode.font, "mb-2")}>
+                Type <span className={cn(mode.font, "bg-muted px-2 py-1")}>delete my account</span>{" "}
+                to confirm:
               </p>
               <Input
                 placeholder="delete my account"
                 value={confirmText}
                 onChange={(e) => setConfirmText(e.target.value)}
                 disabled={isLoading}
-                className="rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "text-xs")}
               />
             </div>
           </div>
-          <div className="flex gap-2 justify-end">
-            <AlertDialogCancel className="rounded-none font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
+          <div className="flex justify-end gap-2">
+            <AlertDialogCancel className={cn(mode.radius, mode.font, "text-xs")}>
+              &gt; CANCEL
+            </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteAccount}
               disabled={isLoading || confirmText !== "delete my account"}
-              className="rounded-none font-mono text-xs bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              className={cn(
+                mode.radius,
+                mode.font,
+                "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+              )}
             >
               {isLoading ? "> DELETING..." : "> DELETE_ACCOUNT"}
             </AlertDialogAction>

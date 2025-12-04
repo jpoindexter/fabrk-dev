@@ -16,6 +16,8 @@ import { NotificationsActionsBar } from "./components/notifications-actions-bar"
 import { NotificationsList } from "./components/notifications-list";
 import { NotificationTypesReference } from "./components/notification-types-reference";
 import { FeaturesCard } from "./components/features-card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const tabs = [
   { id: "all", label: "ALL" },
@@ -55,13 +57,19 @@ export default function NotificationsTemplate() {
         {/* Main Notifications Panel */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center justify-between border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [ [0x00] NOTIFICATIONS ]
             </span>
             <div className="flex items-center gap-2">
               <Bell className="text-muted-foreground h-3 w-3" />
               {unreadCount > 0 && (
-                <Badge className="bg-primary text-primary-foreground h-5 rounded-none px-1.5 font-mono text-xs">
+                <Badge
+                  className={cn(
+                    mode.radius,
+                    mode.font,
+                    "bg-primary text-primary-foreground h-5 px-1.5 text-xs"
+                  )}
+                >
                   {unreadCount}
                 </Badge>
               )}

@@ -4,6 +4,8 @@
  */
 
 import { Checkbox } from "@/components/ui/checkbox";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface StepPreferencesProps {
   emailUpdates: boolean;
@@ -21,18 +23,20 @@ export function StepPreferences({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="mb-1 font-mono text-xl font-semibold">Preferences</h2>
-        <p className="text-muted-foreground font-mono text-xs">Customize your experience</p>
+        <h2 className={cn(mode.font, "mb-1 text-xl font-semibold")}>Preferences</h2>
+        <p className={cn(mode.font, "text-muted-foreground text-xs")}>Customize your experience</p>
       </div>
 
       <div className="space-y-4">
-        <div className="text-muted-foreground font-mono text-xs">[NOTIFICATION_SETTINGS]:</div>
+        <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+          [NOTIFICATION_SETTINGS]:
+        </div>
 
         <div className="space-y-4">
           <div className="border-border flex items-center justify-between border p-4">
             <div>
-              <div className="font-mono text-sm">Email Updates</div>
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-sm")}>Email Updates</div>
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 Product news and announcements
               </div>
             </div>
@@ -44,8 +48,8 @@ export function StepPreferences({
 
           <div className="border-border flex items-center justify-between border p-4">
             <div>
-              <div className="font-mono text-sm">Product Tips</div>
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-sm")}>Product Tips</div>
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 Helpful tips to get the most out of Fabrk
               </div>
             </div>

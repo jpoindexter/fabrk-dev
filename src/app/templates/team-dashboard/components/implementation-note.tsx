@@ -4,14 +4,18 @@
  */
 
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function ImplementationNote() {
   return (
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="FEATURES" />
       <div className="p-6">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-        <div className="space-y-2 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [TEMPLATE_FEATURES]:
+        </div>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> 4 stat cards (Organization, Team Size,
             Pending, Active)
@@ -48,7 +52,7 @@ export function ImplementationNote() {
             <span className="text-success">&gt;</span> Multi-tenancy organization structure
           </div>
         </div>
-        <div className="text-muted-foreground mt-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Add API routes in src/app/api/teams/. Create Team and TeamMember Prisma models.
         </div>
       </div>

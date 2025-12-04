@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface HeroSplitProps {
   headline?: string;
@@ -31,18 +33,34 @@ export function HeroSplit({
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
+              <span
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs"
+                )}
+              >
                 [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-foreground mb-6 font-mono text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h1
+              className={cn(
+                mode.font,
+                "text-foreground mb-6 text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-5xl"
+              )}
+            >
               {headline}
             </h1>
 
             {/* Subheadline */}
-            <p className="text-muted-foreground mb-8 font-mono text-sm leading-relaxed sm:text-base">
+            <p
+              className={cn(
+                mode.font,
+                "text-muted-foreground mb-8 text-sm leading-relaxed sm:text-base"
+              )}
+            >
               {subheadline}
             </p>
 
@@ -50,7 +68,11 @@ export function HeroSplit({
             <div className="mb-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 rounded-none px-6 font-mono text-xs font-semibold transition-all"
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-6 text-xs font-semibold transition-all"
+                )}
                 asChild
               >
                 <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
@@ -58,7 +80,11 @@ export function HeroSplit({
               <Button
                 size="lg"
                 variant="outline"
-                className="border-foreground text-foreground hover:bg-foreground hover:text-background h-12 rounded-none border-2 px-6 font-mono text-xs font-semibold transition-all"
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "border-foreground text-foreground hover:bg-foreground hover:text-background h-12 border-2 px-6 text-xs font-semibold transition-all"
+                )}
                 asChild
               >
                 <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -70,7 +96,11 @@ export function HeroSplit({
               {trustBadges.map((badge) => (
                 <span
                   key={badge}
-                  className="border-border bg-card text-muted-foreground border px-2 py-1 font-mono text-xs"
+                  className={cn(
+                    mode.radius,
+                    mode.font,
+                    "border-border bg-card text-muted-foreground border px-2 py-1 text-xs"
+                  )}
                 >
                   [{badge}]
                 </span>
@@ -78,48 +108,57 @@ export function HeroSplit({
             </div>
 
             {/* Final Sale Notice */}
-            <p className="text-muted-foreground mt-6 font-mono text-xs">
+            <p className={cn(mode.font, "text-muted-foreground mt-6 text-xs")}>
               {"// All sales final • Lifetime v1.x updates"}
             </p>
           </div>
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className="border-foreground bg-muted relative border-2 shadow">
+            <div className={cn(mode.radius, "border-foreground bg-muted relative border-2 shadow")}>
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
-                <div className="border-border/20 bg-card h-full w-full border-2 p-4">
+                <div
+                  className={cn(mode.radius, "border-border/20 bg-card h-full w-full border-2 p-4")}
+                >
                   {/* Header */}
                   <div className="border-foreground/10 mb-4 flex items-center justify-between border-b-2 pb-4">
                     <div className="flex items-center gap-2">
-                      <div className="border-foreground bg-primary h-8 w-8 rounded-none border-2"></div>
+                      <div
+                        className={cn(mode.radius, "border-foreground bg-primary h-8 w-8 border-2")}
+                      ></div>
                       <div>
-                        <div className="bg-foreground/20 h-3 w-24"></div>
-                        <div className="bg-foreground/10 mt-1 h-2 w-16"></div>
+                        <div className={cn(mode.radius, "bg-foreground/20 h-3 w-24")}></div>
+                        <div className={cn(mode.radius, "bg-foreground/10 mt-1 h-2 w-16")}></div>
                       </div>
                     </div>
-                    <div className="border-foreground bg-muted h-8 w-8 border-2"></div>
+                    <div
+                      className={cn(mode.radius, "border-foreground bg-muted h-8 w-8 border-2")}
+                    ></div>
                   </div>
 
                   {/* Stats Cards */}
                   <div className="mb-4 grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="border-foreground bg-card border p-2">
-                        <div className="bg-foreground/10 mb-2 h-2 w-12"></div>
-                        <div className="bg-primary/20 h-4 w-8"></div>
+                      <div
+                        key={i}
+                        className={cn(mode.radius, "border-foreground bg-card border p-2")}
+                      >
+                        <div className={cn(mode.radius, "bg-foreground/10 mb-2 h-2 w-12")}></div>
+                        <div className={cn(mode.radius, "bg-primary/20 h-4 w-8")}></div>
                       </div>
                     ))}
                   </div>
 
                   {/* Data Table Preview */}
-                  <div className="border-foreground bg-card border-2">
+                  <div className={cn(mode.radius, "border-foreground bg-card border-2")}>
                     <div className="border-foreground/10 border-b-2 p-2">
-                      <div className="bg-foreground/20 h-3 w-20"></div>
+                      <div className={cn(mode.radius, "bg-foreground/20 h-3 w-20")}></div>
                     </div>
                     <div className="space-y-2 p-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="flex gap-2">
-                          <div className="bg-foreground/5 h-3 w-full"></div>
+                          <div className={cn(mode.radius, "bg-foreground/5 h-3 w-full")}></div>
                         </div>
                       ))}
                     </div>
@@ -128,14 +167,27 @@ export function HeroSplit({
               </div>
 
               {/* File Count Badge */}
-              <div className="border-foreground bg-primary absolute -right-4 -bottom-4 rounded-none border-2 px-6 py-4">
-                <p className="text-primary-foreground font-mono text-xs font-bold">[161_FILES]</p>
+              <div
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "border-foreground bg-primary absolute -right-4 -bottom-4 border-2 px-6 py-4"
+                )}
+              >
+                <p className="text-primary-foreground text-xs font-bold">[161_FILES]</p>
               </div>
             </div>
 
             {/* Decorative Elements */}
-            <div className="bg-primary/10 absolute top-8 -left-8 -z-10 h-32 w-32 rounded-none"></div>
-            <div className="bg-accent/10 absolute -right-8 -bottom-8 -z-10 h-24 w-24 rounded-none"></div>
+            <div
+              className={cn(mode.radius, "bg-primary/10 absolute top-8 -left-8 -z-10 h-32 w-32")}
+            ></div>
+            <div
+              className={cn(
+                mode.radius,
+                "bg-accent/10 absolute -right-8 -bottom-8 -z-10 h-24 w-24"
+              )}
+            ></div>
           </div>
         </div>
       </div>

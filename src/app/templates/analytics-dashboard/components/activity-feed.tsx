@@ -4,6 +4,8 @@
  */
 
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export interface ActivityItem {
   user: string;
@@ -21,13 +23,13 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
     <div className="border-border bg-card border lg:col-span-3">
       <StyledCardHeader code="0x00" title="ACTIVITY_LOG" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [RECENT_ACTIVITY]: COUNT={activities.length}
         </div>
 
         <div className="space-y-4">
           {activities.map((activity, i) => (
-            <div key={i} className="flex items-center gap-4 font-mono text-xs">
+            <div key={i} className={cn(mode.font, "flex items-center gap-4 text-xs")}>
               <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border">
                 {activity.user
                   .split(" ")

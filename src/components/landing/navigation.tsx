@@ -12,6 +12,8 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +36,7 @@ export function Navigation() {
         >
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+            className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
           >
             <span className="text-primary text-xs">&gt;</span>
             <span className="text-sm font-bold tracking-tight">FABRK</span>
@@ -54,13 +56,16 @@ export function Navigation() {
         >
           {/* Navigation Links with [NAVIGATE]: prefix */}
           <div className="flex items-center gap-1">
-            <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[NAVIGATE]:</span>
             <div className="flex items-center">
               {navLinks.map((link, _index) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground px-4 py-1 font-mono text-sm transition-colors"
+                  className={cn(
+                    "text-muted-foreground hover:text-foreground px-4 py-1 text-sm transition-colors",
+                    mode.font
+                  )}
                 >
                   {link.label}
                 </Link>
@@ -74,10 +79,10 @@ export function Navigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
-            <Button variant="outline" asChild className="rounded-none font-mono text-xs">
+            <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
               <Link href="/demo">&gt; VIEW_DEMO</Link>
             </Button>
-            <Button asChild className="rounded-none font-mono text-xs">
+            <Button asChild className={cn("text-xs", mode.radius, mode.font)}>
               <Link href="#pricing" className="scroll-smooth">
                 &gt; GET_STARTED
               </Link>
@@ -97,24 +102,29 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 rounded-none"
+                className={cn("h-10 w-10", mode.radius)}
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] rounded-none p-6">
+            <SheetContent side="right" className={cn("w-[300px] p-6", mode.radius)}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
-                <span className="text-muted-foreground font-mono text-xs">[SYSTEM_MENU]</span>
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                  [SYSTEM_MENU]
+                </span>
               </div>
               <nav className="flex flex-col space-y-4">
-                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>[NAVIGATE]:</span>
                 {navLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
                     <Link
                       href={link.href}
-                      className="text-foreground hover:text-primary font-mono text-sm transition-colors"
+                      className={cn(
+                        "text-foreground hover:text-primary text-sm transition-colors",
+                        mode.font
+                      )}
                       onClick={() => setIsOpen(false)}
                     >
                       &gt; {link.label}
@@ -122,7 +132,7 @@ export function Navigation() {
                   </SheetClose>
                 ))}
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
+                  <span className={cn("text-muted-foreground mb-4 block text-xs", mode.font)}>
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -130,20 +140,20 @@ export function Navigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
+                  <span className={cn("text-muted-foreground mb-4 block text-xs", mode.font)}>
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
                     <Button
                       variant="outline"
-                      className="w-full rounded-none font-mono text-xs"
+                      className={cn("w-full text-xs", mode.radius, mode.font)}
                       asChild
                     >
                       <Link href="/demo">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button className="mt-4 w-full rounded-none font-mono text-xs" asChild>
+                    <Button className={cn("mt-4 w-full text-xs", mode.radius, mode.font)} asChild>
                       <Link href="#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>
@@ -153,7 +163,7 @@ export function Navigation() {
           </Sheet>
 
           {/* Mobile CTA Button */}
-          <Button asChild className="rounded-none font-mono text-xs md:hidden">
+          <Button asChild className={cn("text-xs md:hidden", mode.radius, mode.font)}>
             <Link href="#pricing" className="scroll-smooth">
               &gt; START
             </Link>

@@ -3,6 +3,9 @@
  * Single feature with icon, title and description
  */
 
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
+
 interface FeatureItemProps {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
@@ -16,8 +19,8 @@ export function FeatureItem({ icon: Icon, title, description }: FeatureItemProps
         <Icon className="text-primary size-4" />
       </div>
       <div>
-        <span className="text-foreground font-mono text-xs font-semibold">├─ {title}</span>
-        <span className="text-muted-foreground ml-2 font-mono text-xs">{description}</span>
+        <span className={cn(mode.font, "text-foreground text-xs font-semibold")}>├─ {title}</span>
+        <span className={cn(mode.font, "text-muted-foreground ml-2 text-xs")}>{description}</span>
       </div>
     </div>
   );

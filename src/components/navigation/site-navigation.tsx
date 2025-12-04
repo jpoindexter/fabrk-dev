@@ -12,6 +12,8 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 // Global navigation links
 const navLinks = [
@@ -55,7 +57,7 @@ export function SiteNavigation() {
         >
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+            className={cn(mode.font, "flex items-center gap-2 transition-opacity hover:opacity-80")}
           >
             <span className="text-primary text-xs">&gt;</span>
             <span className="text-sm font-bold tracking-tight">FABRK</span>
@@ -75,7 +77,7 @@ export function SiteNavigation() {
         >
           {/* Global Nav Links */}
           <div className="flex items-center gap-1">
-            <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>[NAVIGATE]:</span>
             <div className="flex items-center">
               {navLinks.map((link) => {
                 // Check if this link is active
@@ -90,11 +92,13 @@ export function SiteNavigation() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-4 py-1 font-mono text-sm transition-colors ${
+                    className={cn(
+                      mode.font,
+                      "px-4 py-1 text-sm transition-colors",
                       isActive
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
+                    )}
                   >
                     {link.label}
                   </Link>
@@ -109,10 +113,10 @@ export function SiteNavigation() {
           {/* Theme + CTA Buttons */}
           <div className="flex items-center gap-2">
             <ThemeDropdown />
-            <Button variant="outline" asChild className="rounded-none font-mono text-xs">
+            <Button variant="outline" asChild className={cn(mode.radius, mode.font, "text-xs")}>
               <Link href="/templates">&gt; VIEW_DEMO</Link>
             </Button>
-            <Button asChild className="rounded-none font-mono text-xs">
+            <Button asChild className={cn(mode.radius, mode.font, "text-xs")}>
               <Link href="/#pricing">&gt; GET_STARTED</Link>
             </Button>
           </div>
@@ -130,19 +134,21 @@ export function SiteNavigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-10 w-10 rounded-none"
+                className={cn(mode.radius, "h-10 w-10")}
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] rounded-none p-6">
+            <SheetContent side="right" className={cn(mode.radius, "w-[300px] p-6")}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="border-border mb-6 border-b pb-4">
-                <span className="text-muted-foreground font-mono text-xs">[SYSTEM_MENU]</span>
+                <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                  [SYSTEM_MENU]
+                </span>
               </div>
               <nav className="flex flex-col space-y-4">
-                <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
+                <span className={cn(mode.font, "text-muted-foreground text-xs")}>[NAVIGATE]:</span>
                 {navLinks.map((link) => {
                   // Hash links don't get highlighted - only actual page routes
                   const isActive = link.href.startsWith("/#")
@@ -155,11 +161,13 @@ export function SiteNavigation() {
                     <SheetClose key={link.href} asChild>
                       <Link
                         href={link.href}
-                        className={`px-2 py-1 font-mono text-sm transition-colors ${
+                        className={cn(
+                          mode.font,
+                          "px-2 py-1 text-sm transition-colors",
                           isActive
                             ? "bg-primary text-primary-foreground"
                             : "text-foreground hover:bg-muted"
-                        }`}
+                        )}
                         onClick={() => setIsOpen(false)}
                       >
                         &gt; {link.label}
@@ -168,7 +176,7 @@ export function SiteNavigation() {
                   );
                 })}
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
+                  <span className={cn(mode.font, "text-muted-foreground mb-4 block text-xs")}>
                     [THEME]:
                   </span>
                   <div className="mb-4 flex items-center gap-2">
@@ -176,20 +184,20 @@ export function SiteNavigation() {
                   </div>
                 </div>
                 <div className="border-border border-t pt-6">
-                  <span className="text-muted-foreground mb-4 block font-mono text-xs">
+                  <span className={cn(mode.font, "text-muted-foreground mb-4 block text-xs")}>
                     [ACTIONS]:
                   </span>
                   <SheetClose asChild>
                     <Button
                       variant="outline"
-                      className="w-full rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "w-full text-xs")}
                       asChild
                     >
                       <Link href="/demo">&gt; VIEW_DEMO</Link>
                     </Button>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Button className="mt-4 w-full rounded-none font-mono text-xs" asChild>
+                    <Button className={cn(mode.radius, mode.font, "mt-4 w-full text-xs")} asChild>
                       <Link href="/#pricing">&gt; GET_STARTED</Link>
                     </Button>
                   </SheetClose>
@@ -199,7 +207,7 @@ export function SiteNavigation() {
           </Sheet>
 
           {/* Mobile CTA Button */}
-          <Button asChild className="rounded-none font-mono text-xs md:hidden">
+          <Button asChild className={cn(mode.radius, mode.font, "text-xs md:hidden")}>
             <Link href="/#pricing">&gt; START</Link>
           </Button>
         </motion.div>

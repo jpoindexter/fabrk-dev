@@ -6,6 +6,8 @@
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -60,7 +62,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="border-border bg-background border-t px-6 py-24 font-mono">
+    <section className={cn(mode.font, "border-border bg-background border-t px-6 py-24")}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <motion.div
@@ -90,7 +92,10 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
               viewport={{ once: true }}
-              className="group border-border bg-card hover:border-primary/50 border p-6 transition-all"
+              className={cn(
+                mode.radius,
+                "group border-border bg-card hover:border-primary/50 border p-6 transition-all"
+              )}
             >
               <div className="text-muted-foreground mb-2 text-xs">
                 [0x{(index + 1).toString(16).toUpperCase().padStart(2, "0")}]
@@ -99,8 +104,10 @@ export function TestimonialsSection() {
                 "{testimonial.quote}"
               </span>
               <div className="flex items-center gap-4">
-                <Avatar className="h-10 w-10 rounded-none">
-                  <AvatarFallback className="bg-primary/10 text-primary rounded-none text-xs font-medium">
+                <Avatar className={cn(mode.radius, "h-10 w-10")}>
+                  <AvatarFallback
+                    className={cn(mode.radius, "bg-primary/10 text-primary text-xs font-medium")}
+                  >
                     {testimonial.initials}
                   </AvatarFallback>
                 </Avatar>

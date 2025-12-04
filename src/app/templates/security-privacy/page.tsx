@@ -18,6 +18,8 @@ import { PrivacyTab } from "./components/privacy-tab";
 import { AuditTab } from "./components/audit-tab";
 import { ComplianceTab } from "./components/compliance-tab";
 import { ImplementationNote } from "./components/implementation-note";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock data
 const securityData = {
@@ -145,7 +147,7 @@ export default function SecurityPrivacyTemplate() {
             title="Security & Privacy"
             description="Manage your account security, privacy settings, and data controls"
           />
-          <Button className="rounded-none font-mono text-xs">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Settings className="mr-2 h-4 w-4" />
             &gt; VIEW_AUDIT_LOG
           </Button>

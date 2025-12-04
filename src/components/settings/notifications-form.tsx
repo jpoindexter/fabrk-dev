@@ -5,13 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -22,6 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const notificationsFormSchema = z.object({
   marketingEmails: z.boolean(),
@@ -61,9 +57,7 @@ export function NotificationsForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          result.error || "Failed to update notification settings"
-        );
+        throw new Error(result.error || "Failed to update notification settings");
       }
 
       toast({
@@ -83,10 +77,10 @@ export function NotificationsForm() {
   }
 
   return (
-    <Card className="rounded-none">
+    <Card className={mode.radius}>
       <CardHeader>
-        <CardTitle className="font-mono text-xs">[NOTIFICATIONS]:</CardTitle>
-        <CardDescription className="font-mono text-xs">
+        <CardTitle className={cn(mode.font, "text-xs")}>[NOTIFICATIONS]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
           Manage how and when you receive email notifications.
         </CardDescription>
       </CardHeader>
@@ -97,10 +91,10 @@ export function NotificationsForm() {
               control={form.control}
               name="securityAlerts"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[SECURITY_ALERTS]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[SECURITY_ALERTS]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Receive alerts for suspicious activity and security events.
                     </FormDescription>
                   </div>
@@ -109,7 +103,10 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -120,10 +117,10 @@ export function NotificationsForm() {
               control={form.control}
               name="productUpdates"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[PRODUCT_UPDATES]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[PRODUCT_UPDATES]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Get notified about new features and improvements.
                     </FormDescription>
                   </div>
@@ -132,7 +129,10 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -143,10 +143,10 @@ export function NotificationsForm() {
               control={form.control}
               name="marketingEmails"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[MARKETING_EMAILS]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[MARKETING_EMAILS]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Receive promotional emails and special offers.
                     </FormDescription>
                   </div>
@@ -155,7 +155,10 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
@@ -166,10 +169,10 @@ export function NotificationsForm() {
               control={form.control}
               name="weeklySummary"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between border border-border p-4">
+                <FormItem className="border-border flex flex-row items-center justify-between border p-4">
                   <div className="space-y-0.5">
-                    <FormLabel className="font-mono text-xs">[WEEKLY_SUMMARY]:</FormLabel>
-                    <FormDescription className="font-mono text-xs">
+                    <FormLabel className={cn(mode.font, "text-xs")}>[WEEKLY_SUMMARY]:</FormLabel>
+                    <FormDescription className={cn(mode.font, "text-xs")}>
                       Get a weekly digest of your account activity.
                     </FormDescription>
                   </div>
@@ -178,14 +181,21 @@ export function NotificationsForm() {
                       checked={field.value}
                       onCheckedChange={field.onChange}
                       disabled={isLoading}
-                      className="rounded-none [&>span]:rounded-none h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-4"
+                      className={cn(
+                        mode.radius,
+                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                      )}
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
 
-            <Button type="submit" disabled={isLoading} className="rounded-none font-mono text-xs">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className={cn(mode.radius, mode.font, "text-xs")}
+            >
               {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>

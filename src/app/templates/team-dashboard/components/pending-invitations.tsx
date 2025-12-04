@@ -6,6 +6,8 @@
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Invitation {
   id: string;
@@ -29,7 +31,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="PENDING_INVITES" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [PENDING_INVITATIONS]: COUNT={invitations.length}
         </div>
         <div className="space-y-2">
@@ -38,7 +40,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
               key={invitation.id}
               className="border-border bg-muted/30 flex items-center justify-between border px-4 py-4"
             >
-              <div className="font-mono text-xs">
+              <div className={cn(mode.font, "text-xs")}>
                 <span className="text-muted-foreground">EMAIL: </span>
                 <span className="font-semibold">{invitation.email}</span>
                 <span className="text-muted-foreground ml-4">SENT_BY: </span>
@@ -47,14 +49,14 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
                 <span>{new Date(invitation.sentAt).toLocaleDateString()}</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
                   ROLE: {invitation.role.toUpperCase()}
                 </span>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => handleRevokeInvitation(invitation.id)}
-                  className="rounded-none font-mono text-xs"
+                  className={cn(mode.radius, mode.font, "text-xs")}
                 >
                   &gt; REVOKE
                 </Button>

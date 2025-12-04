@@ -6,13 +6,7 @@
 "use client";
 
 import React, { useState, useEffect, startTransition } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -31,6 +25,8 @@ import {
 } from "@/components/ui/select";
 import { queryAuditLogs, getSecuritySummary, type AuditLogEntry } from "@/lib/security/audit-log";
 import { AlertTriangle, CheckCircle, Info, XCircle } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 function formatDate(date: Date): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -57,13 +53,13 @@ function getSeverityColor(severity: string): "destructive" | "default" | "second
 function getResultIcon(result: string): React.JSX.Element {
   switch (result) {
     case "success":
-      return <CheckCircle className="h-4 w-4 text-success" />;
+      return <CheckCircle className="text-success h-4 w-4" />;
     case "failure":
-      return <XCircle className="h-4 w-4 text-destructive" />;
+      return <XCircle className="text-destructive h-4 w-4" />;
     case "error":
-      return <AlertTriangle className="h-4 w-4 text-warning" />;
+      return <AlertTriangle className="text-warning h-4 w-4" />;
     default:
-      return <Info className="h-4 w-4 text-info" />;
+      return <Info className="text-info h-4 w-4" />;
   }
 }
 
@@ -99,9 +95,7 @@ export default function AdminSecurityPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Security Logs</h1>
-        <p className="text-muted-foreground">
-          Monitor security events and audit logs
-        </p>
+        <p className="text-muted-foreground">Monitor security events and audit logs</p>
       </div>
 
       {/* Summary Cards */}
@@ -109,10 +103,8 @@ export default function AdminSecurityPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Total Events (7d)
-              </CardTitle>
-              <Info className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">Total Events (7d)</CardTitle>
+              <Info className="text-muted-foreground h-4 w-4" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{summary.totalEvents}</div>
@@ -122,36 +114,30 @@ export default function AdminSecurityPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Critical</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-destructive" />
+              <AlertTriangle className="text-destructive h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {summary.bySeverity.critical || 0}
-              </div>
+              <div className="text-2xl font-bold">{summary.bySeverity.critical || 0}</div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">High</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-warning" />
+              <AlertTriangle className="text-warning h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {summary.bySeverity.high || 0}
-              </div>
+              <div className="text-2xl font-bold">{summary.bySeverity.high || 0}</div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Medium</CardTitle>
-              <Info className="h-4 w-4 text-info" />
+              <Info className="text-info h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {summary.bySeverity.medium || 0}
-              </div>
+              <div className="text-2xl font-bold">{summary.bySeverity.medium || 0}</div>
             </CardContent>
           </Card>
         </div>
@@ -180,7 +166,7 @@ export default function AdminSecurityPage() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-none border">
+          <div className={cn("border", mode.radius)}>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -195,22 +181,17 @@ export default function AdminSecurityPage() {
               <TableBody>
                 {logs.length === 0 ? (
                   <TableRow>
-                    <TableCell
-                      colSpan={6}
-                      className="text-center text-muted-foreground"
-                    >
+                    <TableCell colSpan={6} className="text-muted-foreground text-center">
                       No security events found
                     </TableCell>
                   </TableRow>
                 ) : (
                   logs.map((log) => (
                     <TableRow key={log.id}>
-                      <TableCell className="text-xs text-muted-foreground">
+                      <TableCell className="text-muted-foreground text-xs">
                         {formatDate(log.timestamp)}
                       </TableCell>
-                      <TableCell className="font-mono text-xs">
-                        {log.eventType}
-                      </TableCell>
+                      <TableCell className={cn("text-xs", mode.font)}>{log.eventType}</TableCell>
                       <TableCell>{log.action}</TableCell>
                       <TableCell className="text-sm">
                         {log.userEmail || log.userId || "—"}
@@ -222,7 +203,10 @@ export default function AdminSecurityPage() {
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge variant={getSeverityColor(log.severity)} className="w-24 justify-center font-semibold">
+                        <Badge
+                          variant={getSeverityColor(log.severity)}
+                          className="w-24 justify-center font-semibold"
+                        >
                           {log.severity}
                         </Badge>
                       </TableCell>

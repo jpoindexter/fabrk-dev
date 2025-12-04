@@ -15,6 +15,7 @@ import { SessionsSection } from "@/components/account/sessions-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 import { CreditCard, Key, Monitor, Shield, User } from "lucide-react";
 import Link from "next/link";
@@ -60,7 +61,7 @@ export default function AccountPage() {
     <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
         <h1 className="text-4xl font-semibold tracking-tight">Account Settings</h1>
-        <p className="mt-2 text-muted-foreground">Manage your account settings and preferences</p>
+        <p className="text-muted-foreground mt-2">Manage your account settings and preferences</p>
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
@@ -72,8 +73,8 @@ export default function AccountPage() {
                 key={tab.value}
                 value={tab.value}
                 className={cn(
-                  "flex flex-col items-center gap-2 px-4 py-4 data-[state=active]:bg-background",
-                  "transition-colors hover:bg-primary hover:text-primary-foreground"
+                  "data-[state=active]:bg-background flex flex-col items-center gap-2 px-4 py-4",
+                  "hover:bg-primary hover:text-primary-foreground transition-colors"
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -167,7 +168,8 @@ export default function AccountPage() {
                       key={tab.value}
                       onClick={() => setActiveTab(tab.value)}
                       className={cn(
-                        "flex w-full items-start gap-6 rounded-none p-6 text-left transition-colors",
+                        "flex w-full items-start gap-6 p-6 text-left transition-colors",
+                        mode.radius,
                         "hover:bg-primary hover:text-primary-foreground",
                         activeTab === tab.value && "bg-primary text-primary-foreground"
                       )}
@@ -175,9 +177,7 @@ export default function AccountPage() {
                       <Icon className="mt-0.5 size-5" />
                       <div className="space-y-0.5">
                         <p className="text-sm font-medium">{tab.label}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {tab.description}
-                        </p>
+                        <p className="text-muted-foreground text-xs">{tab.description}</p>
                       </div>
                     </Button>
                   );
@@ -191,23 +191,19 @@ export default function AccountPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Plan</span>
+                  <span className="text-muted-foreground text-sm">Plan</span>
                   <span className="text-sm font-medium">Pro</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Status</span>
+                  <span className="text-muted-foreground text-sm">Status</span>
                   <span className="text-primary text-sm font-medium">Active</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">
-                    Member Since
-                  </span>
+                  <span className="text-muted-foreground text-sm">Member Since</span>
                   <span className="text-sm font-medium">Jan 2024</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">
-                    Storage Used
-                  </span>
+                  <span className="text-muted-foreground text-sm">Storage Used</span>
                   <span className="text-sm font-medium">2.4 GB / 10 GB</span>
                 </div>
               </CardContent>
@@ -217,7 +213,7 @@ export default function AccountPage() {
               <CardHeader className="pb-4">
                 <CardTitle className="text-base">Need Help?</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <CardContent className="text-muted-foreground space-y-2 text-sm">
                 <p>
                   Visit our{" "}
                   <Link href="/docs" className="text-primary hover:underline">

@@ -14,6 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { User } from "./types";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface TableToolbarProps {
   table: Table<User>;
@@ -25,24 +27,25 @@ export function TableToolbar({ table }: TableToolbarProps) {
   return (
     <div className="mb-4 flex items-center justify-between gap-4">
       <div className="flex flex-1 items-center gap-2">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="relative max-w-sm flex-1">
+          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input
             placeholder="search_users..."
             value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
-            }
-            className="rounded-none pl-10 font-mono text-xs"
+            onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
+            className={cn(mode.radius, mode.font, "pl-10 text-xs")}
           />
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+            <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
               [COLUMNS] <ChevronDown className="ml-2 h-3 w-3" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="rounded-none border border-border font-mono text-xs">
+          <DropdownMenuContent
+            align="end"
+            className={cn(mode.radius, mode.font, "border-border border text-xs")}
+          >
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
@@ -50,11 +53,9 @@ export function TableToolbar({ table }: TableToolbarProps) {
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className="rounded-none focus:bg-primary focus:text-primary-foreground"
+                    className={cn(mode.radius, "focus:bg-primary focus:text-primary-foreground")}
                     checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
+                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
                   >
                     {column.id.toUpperCase()}
                   </DropdownMenuCheckboxItem>
@@ -67,18 +68,22 @@ export function TableToolbar({ table }: TableToolbarProps) {
       {/* Bulk Actions */}
       {selectedCount > 0 && (
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs text-muted-foreground">
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>
             SELECTED: {selectedCount}
           </span>
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "h-7 text-xs")}>
             <UserCog className="mr-1 h-3 w-3" />
             &gt; ROLE
           </Button>
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "h-7 text-xs")}>
             <UserX className="mr-1 h-3 w-3" />
             &gt; SUSPEND
           </Button>
-          <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs h-7">
+          <Button
+            variant="destructive"
+            size="sm"
+            className={cn(mode.radius, mode.font, "h-7 text-xs")}
+          >
             <Trash2 className="mr-1 h-3 w-3" />
             &gt; DELETE
           </Button>

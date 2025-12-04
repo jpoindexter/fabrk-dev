@@ -19,6 +19,8 @@ import {
   TemplatePageHeader,
   FeaturesCard,
 } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const categories = [
   { id: "all", name: "All", count: 12 },
@@ -132,32 +134,41 @@ export default function BlogTemplate() {
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Image Placeholder */}
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
-                  <span className="text-muted-foreground font-mono text-xs">[FEATURED_IMAGE]</span>
+                  <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    [FEATURED_IMAGE]
+                  </span>
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="flex items-center gap-2">
-                    <Badge variant="default" className="rounded-none font-mono text-xs">
+                    <Badge variant="default" className={cn(mode.radius, mode.font, "text-xs")}>
                       FEATURED
                     </Badge>
                     <Badge
                       variant="outline"
-                      className="border-border rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "border-border text-xs")}
                     >
                       {featuredPost.category.toUpperCase()}
                     </Badge>
                   </div>
 
-                  <h2 className="font-mono text-2xl font-semibold">{featuredPost.title}</h2>
+                  <h2 className={cn(mode.font, "text-2xl font-semibold")}>{featuredPost.title}</h2>
 
-                  <p className="text-muted-foreground font-mono text-sm">{featuredPost.excerpt}</p>
+                  <p className={cn(mode.font, "text-muted-foreground text-sm")}>
+                    {featuredPost.excerpt}
+                  </p>
 
-                  <div className="text-muted-foreground flex items-center gap-4 font-mono text-xs">
+                  <div
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground flex items-center gap-4 text-xs"
+                    )}
+                  >
                     <div className="flex items-center gap-2">
-                      <Avatar className="border-border h-6 w-6 rounded-none border">
+                      <Avatar className={cn(mode.radius, "border-border h-6 w-6 border")}>
                         <AvatarImage src={featuredPost.author.avatar || undefined} />
-                        <AvatarFallback className="rounded-none text-xs">
+                        <AvatarFallback className={cn(mode.radius, "text-xs")}>
                           {" "}
                           {featuredPost.author.name
                             .split(" ")
@@ -177,7 +188,7 @@ export default function BlogTemplate() {
                     </div>
                   </div>
 
-                  <Button asChild className="w-fit rounded-none font-mono text-xs">
+                  <Button asChild className={cn(mode.radius, mode.font, "w-fit text-xs")}>
                     <Link href="/templates/blog/post">
                       &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
                     </Link>
@@ -212,7 +223,7 @@ export default function BlogTemplate() {
               placeholder="Search articles..."
               value={searchQuery}
               onValueChange={setSearchQuery}
-              className="rounded-none font-mono text-xs"
+              className={cn(mode.radius, mode.font, "text-xs")}
             />
           </div>
         </div>
@@ -226,31 +237,48 @@ export default function BlogTemplate() {
 
                 {/* Image Placeholder */}
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
-                  <span className="text-muted-foreground font-mono text-xs">[THUMBNAIL]</span>
+                  <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    [THUMBNAIL]
+                  </span>
                 </div>
 
                 <div className="flex h-[180px] flex-col p-4">
                   <Badge
                     variant="outline"
-                    className="border-border mb-2 w-fit rounded-none font-mono text-xs"
+                    className={cn(mode.radius, mode.font, "border-border mb-2 w-fit text-xs")}
                   >
                     {post.category.toUpperCase()}
                   </Badge>
 
-                  <h3 className="group-hover:text-primary mb-2 line-clamp-2 font-mono text-sm font-semibold transition-colors">
+                  <h3
+                    className={cn(
+                      mode.font,
+                      "group-hover:text-primary mb-2 line-clamp-2 text-sm font-semibold transition-colors"
+                    )}
+                  >
                     {post.title}
                   </h3>
 
-                  <p className="text-muted-foreground mb-4 line-clamp-2 font-mono text-xs">
+                  <p className={cn(mode.font, "text-muted-foreground mb-4 line-clamp-2 text-xs")}>
                     {post.excerpt}
                   </p>
 
                   <div className="border-border mt-auto flex items-center justify-between border-t pt-3">
-                    <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
+                    <div
+                      className={cn(
+                        mode.font,
+                        "text-muted-foreground flex items-center gap-2 text-xs"
+                      )}
+                    >
                       <User className="h-3 w-3" />
                       {post.author.name}
                     </div>
-                    <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
+                    <div
+                      className={cn(
+                        mode.font,
+                        "text-muted-foreground flex items-center gap-2 text-xs"
+                      )}
+                    >
                       {post.readTime}
                     </div>
                   </div>
@@ -265,7 +293,7 @@ export default function BlogTemplate() {
           <StyledCardHeader code="0x0A" title="PAGINATION" />
           <div className="p-4">
             <div className="flex items-center justify-between">
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 [PAGE]: {currentPage} OF 3 | SHOWING {regularPosts.length} POSTS
               </div>
               <div className="flex items-center gap-2">
@@ -274,7 +302,7 @@ export default function BlogTemplate() {
                   size="sm"
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="h-8 rounded-none font-mono text-xs"
+                  className={cn(mode.radius, mode.font, "h-8 text-xs")}
                 >
                   <ChevronLeft className="mr-1 h-3 w-3" />
                   PREV
@@ -286,7 +314,7 @@ export default function BlogTemplate() {
                       variant={currentPage === page ? "default" : "outline"}
                       size="sm"
                       onClick={() => setCurrentPage(page)}
-                      className="h-8 w-8 rounded-none p-0 font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "h-8 w-8 p-0 text-xs")}
                     >
                       {page}
                     </Button>
@@ -297,7 +325,7 @@ export default function BlogTemplate() {
                   size="sm"
                   onClick={() => setCurrentPage((p) => Math.min(3, p + 1))}
                   disabled={currentPage === 3}
-                  className="h-8 rounded-none font-mono text-xs"
+                  className={cn(mode.radius, mode.font, "h-8 text-xs")}
                 >
                   NEXT
                   <ChevronRight className="ml-1 h-3 w-3" />

@@ -16,6 +16,8 @@ import { MetricCards } from "./components/metric-cards";
 import { RevenueChart } from "./components/revenue-chart";
 import { ActivityFeed } from "./components/activity-feed";
 import { AnalyticsTabs } from "./components/analytics-tabs";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock data
 import {
@@ -41,7 +43,7 @@ export default function AnalyticsDashboardTemplate() {
             title="Analytics Dashboard"
             description="Track revenue, users, conversions, and growth metrics"
           />
-          <Button className="rounded-none font-mono text-xs">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Download className="mr-2 h-4 w-4" />
             &gt; EXPORT_DATA
           </Button>

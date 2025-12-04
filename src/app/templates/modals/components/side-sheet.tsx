@@ -16,6 +16,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu, Edit, Settings } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface SideSheetProps {
   open: boolean;
@@ -26,50 +28,54 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
   return (
     <div className="border-border bg-card border">
       <div className="border-border border-b px-4 py-2">
-        <span className="text-muted-foreground font-mono text-xs">[ [0x00] SIDE_SHEET ]</span>
+        <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+          [ [0x00] SIDE_SHEET ]
+        </span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="mb-1 font-mono font-semibold">Side Sheet</h3>
-          <p className="text-muted-foreground font-mono text-xs">
+          <h3 className={cn(mode.font, "mb-1 font-semibold")}>Side Sheet</h3>
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
             Slide-out panel for detailed content or navigation
           </p>
         </div>
 
         <Sheet open={open} onOpenChange={onOpenChange}>
           <SheetTrigger asChild>
-            <Button variant="outline" className="rounded-none font-mono text-xs">
+            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
               <Menu className="mr-1 h-3 w-3" />
               &gt; OPEN_DRAWER
             </Button>
           </SheetTrigger>
-          <SheetContent className="border-border rounded-none">
+          <SheetContent className={cn(mode.radius, "border-border")}>
             <SheetHeader>
-              <SheetTitle className="font-mono">[SETTINGS]</SheetTitle>
-              <SheetDescription className="font-mono text-sm">
+              <SheetTitle className={cn(mode.font)}>[SETTINGS]</SheetTitle>
+              <SheetDescription className={cn(mode.font, "text-sm")}>
                 Configure your application settings here.
               </SheetDescription>
             </SheetHeader>
             <div className="space-y-4 py-6">
               <div className="border-border border p-4">
-                <div className="text-muted-foreground mb-2 font-mono text-xs">[GENERAL]:</div>
+                <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+                  [GENERAL]:
+                </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm">Dark Mode</span>
+                    <span className={cn(mode.font, "text-sm")}>Dark Mode</span>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-7 rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "h-7 text-xs")}
                     >
                       TOGGLE
                     </Button>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-sm">Notifications</span>
+                    <span className={cn(mode.font, "text-sm")}>Notifications</span>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="h-7 rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "h-7 text-xs")}
                     >
                       CONFIGURE
                     </Button>
@@ -77,18 +83,20 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
                 </div>
               </div>
               <div className="border-border border p-4">
-                <div className="text-muted-foreground mb-2 font-mono text-xs">[ACCOUNT]:</div>
+                <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+                  [ACCOUNT]:
+                </div>
                 <div className="space-y-2">
                   <Button
                     variant="ghost"
-                    className="w-full justify-start rounded-none font-mono text-xs"
+                    className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
                   >
                     <Edit className="mr-2 h-3 w-3" />
                     Edit Profile
                   </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start rounded-none font-mono text-xs"
+                    className={cn(mode.radius, mode.font, "w-full justify-start text-xs")}
                   >
                     <Settings className="mr-2 h-3 w-3" />
                     Preferences
@@ -99,7 +107,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
             <SheetFooter>
               <Button
                 onClick={() => onOpenChange(false)}
-                className="rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "text-xs")}
               >
                 &gt; SAVE_CHANGES
               </Button>
@@ -107,7 +115,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
           </SheetContent>
         </Sheet>
 
-        <div className="text-muted-foreground mt-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [USE_CASE]: Settings, detail views, mobile navigation
         </div>
       </div>

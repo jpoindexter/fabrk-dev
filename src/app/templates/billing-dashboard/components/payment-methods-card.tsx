@@ -6,6 +6,8 @@
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
 import { CreditCard, Plus } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface PaymentMethod {
   id: string;
@@ -25,7 +27,9 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="PAYMENT_METHODS" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[PAYMENT_METHODS]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [PAYMENT_METHODS]:
+        </div>
 
         <div className="space-y-4">
           {paymentMethods.map((method) => (
@@ -37,7 +41,7 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
                 <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border">
                   <CreditCard className="h-4 w-4" />
                 </div>
-                <div className="rounded-none font-mono text-xs">
+                <div className={cn(mode.radius, mode.font, "text-xs")}>
                   <div>
                     {method.brand} **** {method.last4}
                   </div>
@@ -47,7 +51,12 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
                 </div>
               </div>
               {method.isDefault && (
-                <span className="border-primary/50 text-primary border px-2 py-0.5 font-mono text-xs">
+                <span
+                  className={cn(
+                    mode.font,
+                    "border-primary/50 text-primary border px-2 py-0.5 text-xs"
+                  )}
+                >
                   DEFAULT
                 </span>
               )}
@@ -55,7 +64,11 @@ export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) 
           ))}
         </div>
 
-        <Button variant="outline" size="sm" className="mt-4 w-full rounded-none font-mono text-xs">
+        <Button
+          variant="outline"
+          size="sm"
+          className={cn(mode.radius, mode.font, "mt-4 w-full text-xs")}
+        >
           <Plus className="mr-2 h-3 w-3" />
           &gt; ADD_PAYMENT_METHOD
         </Button>

@@ -15,6 +15,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import {
   Mail,
   Key,
@@ -38,7 +40,7 @@ import { DesignSystemPreview } from "./preview-design";
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28">
+    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
@@ -48,15 +50,19 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 lg:mb-24"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]</span>
+          <div
+            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
+          >
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+              [ [0x30] DEEP_DIVE ] FEATURE_ANALYSIS │ FIB[377,610]
+            </span>
           </div>
-          <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className={cn(mode.font, "mb-4 text-3xl font-bold tracking-tight lg:text-4xl")}>
             BUILT_FOR_SERIOUS_SAAS_PRODUCTS
           </h2>
-          <p className="max-w-2xl font-mono text-sm text-muted-foreground">
-            Includes many foundational and advanced components that cover a wide range of
-            use-cases without sacrificing flexibility and design.
+          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
+            Includes many foundational and advanced components that cover a wide range of use-cases
+            without sacrificing flexibility and design.
           </p>
         </motion.div>
 
@@ -68,9 +74,21 @@ export function FeaturesSection() {
             title="Authentication"
             description="Full implementation including email/password, social sign-in, MFA, account linking and session management."
             features={[
-              { icon: Mail, title: "Email/Password", description: "Verify email, change password, forgot password flows." },
-              { icon: Key, title: "Social Sign-In", description: "Google, Microsoft, or configure additional providers." },
-              { icon: Shield, title: "Multi-Factor", description: "MFA/2FA using TOTP with authenticator apps." },
+              {
+                icon: Mail,
+                title: "Email/Password",
+                description: "Verify email, change password, forgot password flows.",
+              },
+              {
+                icon: Key,
+                title: "Social Sign-In",
+                description: "Google, Microsoft, or configure additional providers.",
+              },
+              {
+                icon: Shield,
+                title: "Multi-Factor",
+                description: "MFA/2FA using TOTP with authenticator apps.",
+              },
             ]}
           >
             <AuthPreview />
@@ -83,9 +101,21 @@ export function FeaturesSection() {
             description="Built-in support for organizations including member management, invitations and roles."
             reversed
             features={[
-              { icon: UserPlus, title: "Invitations", description: "Invite members, assign roles and gate access." },
-              { icon: Users, title: "Roles", description: "Predefined membership roles or add your own." },
-              { icon: ArrowLeftRight, title: "Transfer Ownership", description: "Give ownership to another member." },
+              {
+                icon: UserPlus,
+                title: "Invitations",
+                description: "Invite members, assign roles and gate access.",
+              },
+              {
+                icon: Users,
+                title: "Roles",
+                description: "Predefined membership roles or add your own.",
+              },
+              {
+                icon: ArrowLeftRight,
+                title: "Transfer Ownership",
+                description: "Give ownership to another member.",
+              },
             ]}
           >
             <OrganizationPreview />
@@ -97,9 +127,21 @@ export function FeaturesSection() {
             title="Billing & Payments"
             description="Securely accept payments on your site and start selling to customers in no time."
             features={[
-              { icon: Receipt, title: "Billing Portal", description: "View transactions, invoices, manage plans." },
-              { icon: Gauge, title: "Restricted Access", description: "Gate features until user upgrades." },
-              { icon: DollarSign, title: "Billing Granularity", description: "Per org, per seat, or usage-based." },
+              {
+                icon: Receipt,
+                title: "Billing Portal",
+                description: "View transactions, invoices, manage plans.",
+              },
+              {
+                icon: Gauge,
+                title: "Restricted Access",
+                description: "Gate features until user upgrades.",
+              },
+              {
+                icon: DollarSign,
+                title: "Billing Granularity",
+                description: "Per org, per seat, or usage-based.",
+              },
             ]}
           >
             <BillingPreview />
@@ -112,9 +154,21 @@ export function FeaturesSection() {
             description="Foundational and advanced components covering wide range of use-cases without sacrificing flexibility."
             reversed
             features={[
-              { icon: Moon, title: "Responsive Design", description: "Works on all screen sizes out of the box." },
-              { icon: Palette, title: "Light and Dark Themes", description: "Toggle with a switch button." },
-              { icon: Layers, title: "Shadcn UI + Tailwind", description: "50+ accessible components included." },
+              {
+                icon: Moon,
+                title: "Responsive Design",
+                description: "Works on all screen sizes out of the box.",
+              },
+              {
+                icon: Palette,
+                title: "Light and Dark Themes",
+                description: "Toggle with a switch button.",
+              },
+              {
+                icon: Layers,
+                title: "Shadcn UI + Tailwind",
+                description: "50+ accessible components included.",
+              },
             ]}
           >
             <DesignSystemPreview />

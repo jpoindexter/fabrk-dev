@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Card } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -90,7 +92,12 @@ export default async function AnalyticsPage() {
         </div>
         <div className="flex items-center gap-2">
           <Select defaultValue="7">
-            <SelectTrigger className="border-border w-[140px] rounded-none border py-2 text-sm font-semibold">
+            <SelectTrigger
+              className={cn(
+                "border-border w-[140px] border py-2 text-sm font-semibold",
+                mode.radius
+              )}
+            >
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -112,7 +119,12 @@ export default async function AnalyticsPage() {
           return (
             <Card key={stat.label} className="border-border border p-6">
               <div className="flex items-center justify-between">
-                <div className="border-border bg-primary/10 flex h-12 w-12 items-center justify-center rounded-none border">
+                <div
+                  className={cn(
+                    "border-border bg-primary/10 flex h-12 w-12 items-center justify-center border",
+                    mode.radius
+                  )}
+                >
                   <Icon className="text-primary h-6 w-6" />
                 </div>
                 <div
@@ -148,7 +160,10 @@ export default async function AnalyticsPage() {
             {mockAnalytics.recentActivity.map((activity, index) => (
               <div
                 key={index}
-                className="border-border bg-muted flex items-center justify-between rounded-none border p-4"
+                className={cn(
+                  "border-border bg-muted flex items-center justify-between border p-4",
+                  mode.radius
+                )}
               >
                 <div>
                   <p className="text-foreground text-sm font-semibold">{activity.action}</p>
@@ -170,7 +185,10 @@ export default async function AnalyticsPage() {
             {mockAnalytics.topPages.map((page, index) => (
               <div
                 key={index}
-                className="border-border bg-muted flex items-center justify-between rounded-none border p-4"
+                className={cn(
+                  "border-border bg-muted flex items-center justify-between border p-4",
+                  mode.radius
+                )}
               >
                 <div className="flex-1">
                   <p className="text-foreground text-sm font-semibold">{page.path}</p>
@@ -195,7 +213,12 @@ export default async function AnalyticsPage() {
           <h3 className="text-foreground text-xl font-bold">Revenue Over Time</h3>
           <p className="text-muted-foreground text-sm">Monthly recurring revenue trend</p>
         </div>
-        <div className="border-border bg-muted flex h-64 items-center justify-center rounded-none border border-dashed">
+        <div
+          className={cn(
+            "border-border bg-muted flex h-64 items-center justify-center border border-dashed",
+            mode.radius
+          )}
+        >
           <div className="text-center">
             <TrendingUp className="text-primary/50 mx-auto mb-2 h-12 w-12" />
             <p className="text-muted-foreground text-sm font-semibold">Chart component goes here</p>
@@ -207,7 +230,7 @@ export default async function AnalyticsPage() {
       </Card>
 
       {/* Implementation Note */}
-      <div className="border-primary bg-primary/5 rounded-none border-2 p-4">
+      <div className={cn("border-primary bg-primary/5 border-2 p-4", mode.radius)}>
         <p className="text-muted-foreground text-sm">
           <span className="text-foreground font-semibold">📊 Implementation Note:</span> This is a
           demo analytics page with mock data. Replace{" "}

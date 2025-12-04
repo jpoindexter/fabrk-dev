@@ -6,6 +6,8 @@
 import { Bell } from "lucide-react";
 import { Notification } from "./notification-types";
 import { NotificationItem } from "./notification-item";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface NotificationsListProps {
   notifications: Notification[];
@@ -22,14 +24,12 @@ export function NotificationsList({
 }: NotificationsListProps) {
   if (notifications.length === 0) {
     return (
-      <div className="border border-border bg-muted/30 p-8 text-center">
-        <Bell className="h-8 w-8 mx-auto text-muted-foreground mb-2" />
-        <div className="font-mono text-sm text-muted-foreground">
-          {activeTab === "unread"
-            ? "[NO_UNREAD_NOTIFICATIONS]"
-            : "[NO_NOTIFICATIONS]"}
+      <div className="border-border bg-muted/30 border p-8 text-center">
+        <Bell className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
+        <div className={cn(mode.font, "text-muted-foreground text-sm")}>
+          {activeTab === "unread" ? "[NO_UNREAD_NOTIFICATIONS]" : "[NO_NOTIFICATIONS]"}
         </div>
-        <div className="font-mono text-xs text-muted-foreground mt-1">
+        <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
           You&apos;re all caught up!
         </div>
       </div>

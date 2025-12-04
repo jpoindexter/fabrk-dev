@@ -6,6 +6,8 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Plan {
   id: string;
@@ -44,9 +46,15 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
             <div className="flex flex-1 flex-col p-4">
               {/* Plan Label */}
               <div className="mb-4 flex items-center justify-between">
-                <div className="text-muted-foreground font-mono text-xs">[{plan.name}]:</div>
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
                 {plan.badge && (
-                  <Badge className="bg-primary text-primary-foreground rounded-none font-mono text-xs">
+                  <Badge
+                    className={cn(
+                      mode.radius,
+                      mode.font,
+                      "bg-primary text-primary-foreground text-xs"
+                    )}
+                  >
                     {plan.badge}
                   </Badge>
                 )}
@@ -60,10 +68,12 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
 
               {/* Features */}
               <div className="border-border mb-4 flex-1 border-t pt-4">
-                <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
+                <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+                  [FEATURES]:
+                </div>
                 <div className="space-y-1">
                   {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 font-mono text-xs">
+                    <div key={idx} className={cn(mode.font, "flex items-center gap-2 text-xs")}>
                       <span className="text-success">&gt;</span>
                       <span>{feature}</span>
                     </div>
@@ -72,7 +82,10 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
               </div>
 
               {/* CTA - At bottom */}
-              <Button variant={plan.ctaVariant} className="w-full rounded-none font-mono text-xs">
+              <Button
+                variant={plan.ctaVariant}
+                className={cn(mode.radius, mode.font, "w-full text-xs")}
+              >
                 &gt; {plan.cta}
               </Button>
             </div>

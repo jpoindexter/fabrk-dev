@@ -28,6 +28,8 @@ import {
   Star,
   ChevronRight,
 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const heroVariations = [
   {
@@ -89,34 +91,39 @@ export default function LandingVariationsTemplate() {
               <StyledCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-3xl space-y-6 text-center">
-                  <Badge variant="secondary" className="rounded-none font-mono text-xs">
+                  <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
                     <Sparkles className="mr-1 h-3 w-3" />
                     NEW: VERSION 2.0 RELEASED
                   </Badge>
 
-                  <h2 className="font-mono text-4xl font-bold tracking-tight md:text-5xl">
+                  <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight md:text-5xl")}>
                     Build faster with
                     <span className="text-primary"> production-ready </span>
                     components
                   </h2>
 
-                  <p className="text-muted-foreground mx-auto max-w-xl font-mono text-sm">
+                  <p className={cn(mode.font, "text-muted-foreground mx-auto max-w-xl text-sm")}>
                     Ship your SaaS in days, not months. 234 components, authentication, payments,
                     and everything you need to launch.
                   </p>
 
                   <div className="flex items-center justify-center gap-4">
-                    <Button className="rounded-none font-mono text-xs">
+                    <Button className={cn(mode.radius, mode.font, "text-xs")}>
                       &gt; GET_STARTED
                       <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
-                    <Button variant="outline" className="rounded-none font-mono text-xs">
+                    <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                       <Play className="mr-1 h-3 w-3" />
                       &gt; WATCH_DEMO
                     </Button>
                   </div>
 
-                  <div className="text-muted-foreground flex items-center justify-center gap-6 pt-4 font-mono text-xs">
+                  <div
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground flex items-center justify-center gap-6 pt-4 text-xs"
+                    )}
+                  >
                     <div className="flex items-center gap-1">
                       <Check className="text-success h-3 w-3" />
                       Free trial
@@ -142,17 +149,17 @@ export default function LandingVariationsTemplate() {
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="grid items-center gap-12 md:grid-cols-2">
                   <div className="space-y-6">
-                    <Badge variant="secondary" className="rounded-none font-mono text-xs">
+                    <Badge variant="secondary" className={cn(mode.radius, mode.font, "text-xs")}>
                       <Zap className="mr-1 h-3 w-3" />
                       TRUSTED BY 10,000+ DEVELOPERS
                     </Badge>
 
-                    <h2 className="font-mono text-4xl font-bold tracking-tight">
+                    <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight")}>
                       The fastest way to build your
                       <span className="text-primary"> next SaaS</span>
                     </h2>
 
-                    <p className="text-muted-foreground font-mono text-sm">
+                    <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                       Stop reinventing the wheel. Our boilerplate gives you authentication,
                       payments, emails, and a beautiful UI out of the box.
                     </p>
@@ -163,7 +170,7 @@ export default function LandingVariationsTemplate() {
                         { icon: Rocket, text: "Deploy in minutes" },
                         { icon: Sparkles, text: "AI-powered features" },
                       ].map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-2 font-mono text-sm">
+                        <div key={idx} className={cn(mode.font, "flex items-center gap-2 text-sm")}>
                           <item.icon className="text-primary h-4 w-4" />
                           {item.text}
                         </div>
@@ -171,18 +178,18 @@ export default function LandingVariationsTemplate() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <Button className="rounded-none font-mono text-xs">
+                      <Button className={cn(mode.radius, mode.font, "text-xs")}>
                         &gt; START_BUILDING
                         <ChevronRight className="ml-1 h-3 w-3" />
                       </Button>
-                      <Button variant="link" className="text-primary font-mono text-xs">
+                      <Button variant="link" className={cn(mode.font, "text-primary text-xs")}>
                         View documentation →
                       </Button>
                     </div>
                   </div>
 
                   <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border">
-                    <span className="text-muted-foreground font-mono text-xs">
+                    <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                       [PRODUCT_SCREENSHOT]
                     </span>
                   </div>
@@ -198,12 +205,12 @@ export default function LandingVariationsTemplate() {
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">
                   <div className="space-y-4 text-center">
-                    <h2 className="font-mono text-4xl font-bold tracking-tight md:text-5xl">
+                    <h2 className={cn(mode.font, "text-4xl font-bold tracking-tight md:text-5xl")}>
                       Ship your startup
                       <span className="text-primary"> this weekend</span>
                     </h2>
 
-                    <p className="text-muted-foreground font-mono text-sm">
+                    <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                       Everything you need. Nothing you don&apos;t.
                     </p>
                   </div>
@@ -211,9 +218,9 @@ export default function LandingVariationsTemplate() {
                   <div className="mx-auto flex max-w-md items-center gap-2">
                     <Input
                       placeholder="Enter your email"
-                      className="rounded-none font-mono text-sm"
+                      className={cn(mode.radius, mode.font, "text-sm")}
                     />
-                    <Button className="rounded-none font-mono text-xs whitespace-nowrap">
+                    <Button className={cn(mode.radius, mode.font, "text-xs whitespace-nowrap")}>
                       &gt; GET_ACCESS
                     </Button>
                   </div>
@@ -223,13 +230,18 @@ export default function LandingVariationsTemplate() {
                       {[1, 2, 3, 4, 5].map((i) => (
                         <Star key={i} className="text-warning fill-warning h-4 w-4" />
                       ))}
-                      <span className="text-muted-foreground ml-2 font-mono text-xs">
+                      <span className={cn(mode.font, "text-muted-foreground ml-2 text-xs")}>
                         4.9/5 from 200+ reviews
                       </span>
                     </div>
                   </div>
 
-                  <div className="text-muted-foreground flex items-center justify-center gap-6 font-mono text-xs">
+                  <div
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground flex items-center justify-center gap-6 text-xs"
+                    )}
+                  >
                     <span className="border-border border px-2 py-1">VERCEL</span>
                     <span className="border-border border px-2 py-1">STRIPE</span>
                     <span className="border-border border px-2 py-1">PRISMA</span>
@@ -256,9 +268,11 @@ export default function LandingVariationsTemplate() {
             >
               <StyledCardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
               <div className="p-4">
-                <h3 className="mb-1 font-mono font-semibold">{variation.name}</h3>
-                <p className="text-muted-foreground font-mono text-xs">{variation.description}</p>
-                <div className="mt-4 font-mono text-xs">
+                <h3 className={cn(mode.font, "mb-1 font-semibold")}>{variation.name}</h3>
+                <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                  {variation.description}
+                </p>
+                <div className={cn(mode.font, "mt-4 text-xs")}>
                   [BEST_FOR]: {variation.id === "centered" && "Product launches, SaaS"}
                   {variation.id === "split" && "Feature showcases, B2B"}
                   {variation.id === "minimal" && "Waitlists, early stage"}

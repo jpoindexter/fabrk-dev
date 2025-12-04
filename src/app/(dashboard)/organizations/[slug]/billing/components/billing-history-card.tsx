@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/table";
 import type { Invoice } from "./types";
 import { getInvoiceStatusBadge } from "./utils";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface BillingHistoryCardProps {
   invoices: Invoice[];
@@ -27,7 +29,7 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
   }
 
   return (
-    <Card className="border-border rounded-none border">
+    <Card className={cn("border-border border", mode.radius)}>
       <CardHeader>
         <CardTitle>Billing History</CardTitle>
         <CardDescription>View and download past invoices</CardDescription>

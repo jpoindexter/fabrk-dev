@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Download, BarChart3 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export interface PageData {
   page: string;
@@ -57,13 +59,18 @@ export function AnalyticsTabs({
       {/* Overview Tab */}
       <StyledTabsContent value="overview">
         <div className="border-border bg-card border border-t-0 p-4">
-          <div className="text-muted-foreground mb-4 font-mono text-xs">
+          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [TOP_PAGES]: SORTED_BY=VIEWS
           </div>
 
           {/* Terminal Table */}
           <div className="border-border border">
-            <div className="border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 font-mono text-xs">
+            <div
+              className={cn(
+                mode.font,
+                "border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 text-xs"
+              )}
+            >
               <span className="text-muted-foreground">[PAGE]</span>
               <span className="text-muted-foreground">[VIEWS]</span>
               <span className="text-muted-foreground">[BOUNCE]</span>
@@ -73,7 +80,7 @@ export function AnalyticsTabs({
               {pageData.map((row, i) => (
                 <div
                   key={i}
-                  className="hover:bg-muted/30 grid grid-cols-4 px-4 py-4 font-mono text-xs"
+                  className={cn(mode.font, "hover:bg-muted/30 grid grid-cols-4 px-4 py-4 text-xs")}
                 >
                   <span className="text-foreground">{row.page}</span>
                   <span className="text-muted-foreground">{row.views}</span>
@@ -94,11 +101,13 @@ export function AnalyticsTabs({
           <div className="grid gap-4 md:grid-cols-2">
             {/* Traffic Sources */}
             <div className="border-border border p-4">
-              <div className="text-muted-foreground mb-4 font-mono text-xs">[TRAFFIC_SOURCES]:</div>
+              <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+                [TRAFFIC_SOURCES]:
+              </div>
               <div className="space-y-4">
                 {trafficSources.map((source, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="flex items-center justify-between font-mono text-xs">
+                    <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
                       <span className="text-foreground">{source.source}</span>
                       <span className="text-muted-foreground">{source.percentage}%</span>
                     </div>
@@ -110,13 +119,13 @@ export function AnalyticsTabs({
 
             {/* Device Breakdown */}
             <div className="border-border border p-4">
-              <div className="text-muted-foreground mb-4 font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
                 [DEVICE_BREAKDOWN]:
               </div>
               <div className="space-y-4">
                 {deviceBreakdown.map((device, i) => (
                   <div key={i} className="space-y-1">
-                    <div className="flex items-center justify-between font-mono text-xs">
+                    <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
                       <span className="text-foreground">{device.device}</span>
                       <span className="text-muted-foreground">{device.percentage}%</span>
                     </div>
@@ -132,7 +141,9 @@ export function AnalyticsTabs({
       {/* Reports Tab */}
       <StyledTabsContent value="reports">
         <div className="border-border bg-card border border-t-0 p-4">
-          <div className="text-muted-foreground mb-4 font-mono text-xs">[AVAILABLE_REPORTS]:</div>
+          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+            [AVAILABLE_REPORTS]:
+          </div>
           <div className="grid gap-4 md:grid-cols-2">
             {[
               { name: "MONTHLY_SUMMARY", desc: "Overview of all metrics" },
@@ -143,8 +154,8 @@ export function AnalyticsTabs({
               <div key={i} className="border-border border p-4">
                 <div className="mb-4 flex items-start justify-between">
                   <div>
-                    <div className="text-foreground font-mono text-xs">[{report.name}]</div>
-                    <div className="text-muted-foreground mt-1 font-mono text-xs">
+                    <div className={cn(mode.font, "text-foreground text-xs")}>[{report.name}]</div>
+                    <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
                       {report.desc}
                     </div>
                   </div>
@@ -153,7 +164,7 @@ export function AnalyticsTabs({
                 <Button
                   size="sm"
                   variant="outline"
-                  className="w-full rounded-none font-mono text-xs"
+                  className={cn(mode.radius, mode.font, "w-full text-xs")}
                 >
                   <Download className="mr-2 h-3 w-3" />
                   &gt; GENERATE

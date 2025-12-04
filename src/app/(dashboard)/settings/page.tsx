@@ -16,6 +16,8 @@ import { PrivacyForm } from "@/components/settings/privacy-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { AlertTriangle, Bell, Download, Globe, Lock, Palette } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function SettingsPage() {
   const sections = [
@@ -73,7 +75,7 @@ export default function SettingsPage() {
     <div className="container mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8">
         <h1 className="text-4xl font-semibold tracking-tight">Settings</h1>
-        <p className="mt-2 text-muted-foreground">
+        <p className="text-muted-foreground mt-2">
           Manage your application preferences and settings
         </p>
       </div>
@@ -90,9 +92,11 @@ export default function SettingsPage() {
                 <CardHeader>
                   <div className="flex items-center gap-6">
                     <div
-                      className={`rounded-none p-2 ${
+                      className={cn(
+                        "p-2",
+                        mode.radius,
                         section.isDanger ? "bg-destructive/10" : "bg-primary/10"
-                      }`}
+                      )}
                     >
                       <Icon
                         className={`size-5 ${

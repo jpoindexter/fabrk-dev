@@ -28,6 +28,8 @@ import { TableToolbar } from "./components/table-toolbar";
 import { DataTable } from "./components/data-table";
 import { PaginationControls } from "./components/pagination-controls";
 import { FeaturesNote } from "./components/features-note";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function UserManagementTemplate() {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -88,7 +90,7 @@ export default function UserManagementTemplate() {
             title="User Management"
             description="Manage users, roles, and permissions with TanStack Table"
           />
-          <Button className="rounded-none font-mono text-xs">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD_USER
           </Button>
@@ -103,7 +105,7 @@ export default function UserManagementTemplate() {
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 [ALL_USERS]: COUNT={mockUsers.length} | FILTERED=
                 {table.getFilteredRowModel().rows.length}
               </div>
@@ -111,7 +113,7 @@ export default function UserManagementTemplate() {
                 onClick={exportToCSV}
                 variant="outline"
                 size="sm"
-                className="h-7 rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "h-7 text-xs")}
               >
                 <Download className="mr-2 h-3 w-3" />
                 &gt; EXPORT_CSV

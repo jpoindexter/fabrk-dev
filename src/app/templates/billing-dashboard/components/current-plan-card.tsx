@@ -6,6 +6,8 @@
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Subscription {
   plan: string;
@@ -30,8 +32,15 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
         <div className="flex items-start justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2">
-              <span className="text-muted-foreground font-mono text-xs">[CURRENT_PLAN]:</span>
-              <span className="border-success/50 text-success border px-2 py-0.5 font-mono text-xs">
+              <span className={cn(mode.font, "text-muted-foreground text-xs")}>
+                [CURRENT_PLAN]:
+              </span>
+              <span
+                className={cn(
+                  mode.font,
+                  "border-success/50 text-success border px-2 py-0.5 text-xs"
+                )}
+              >
                 ACTIVE
               </span>
             </div>
@@ -39,7 +48,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               <Star className="text-primary h-5 w-5" />
               <span className="text-2xl font-bold">{subscription.plan}</span>
             </div>
-            <div className="text-muted-foreground font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               STARTED: {formatDate(subscription.startDate)}
             </div>
           </div>
@@ -48,17 +57,17 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
               ${subscription.price}
               <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
-            <div className="text-muted-foreground mt-1 font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
               NEXT_BILLING: {formatDate(subscription.nextBillingDate)}
             </div>
           </div>
         </div>
 
         <div className="border-border mt-4 border-t pt-4">
-          <div className="text-muted-foreground mb-4 font-mono text-xs">[FEATURES]:</div>
+          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[FEATURES]:</div>
           <div className="grid grid-cols-2 gap-2">
             {subscription.features.map((feature, idx) => (
-              <div key={idx} className="flex items-center gap-2 font-mono text-xs">
+              <div key={idx} className={cn(mode.font, "flex items-center gap-2 text-xs")}>
                 <span className="text-success">&gt;</span>
                 <span>{feature}</span>
               </div>
@@ -67,10 +76,10 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
         </div>
 
         <div className="border-border mt-4 flex gap-2 border-t pt-4">
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
             &gt; MANAGE_SUBSCRIPTION
           </Button>
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
             &gt; UPGRADE_TO_ENTERPRISE
           </Button>
         </div>

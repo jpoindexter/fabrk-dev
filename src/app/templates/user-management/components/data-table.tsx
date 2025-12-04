@@ -5,6 +5,8 @@
 import { Table } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 import type { User } from "./types";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps {
   table: Table<User>;
@@ -12,9 +14,9 @@ interface DataTableProps {
 
 export function DataTable({ table }: DataTableProps) {
   return (
-    <div className="border border-border">
+    <div className="border-border border">
       {/* Table Header */}
-      <div className="border-b border-border bg-muted/30">
+      <div className="border-border bg-muted/30 border-b">
         {table.getHeaderGroups().map((headerGroup) => (
           <div key={headerGroup.id} className="flex items-center px-4 py-2">
             {headerGroup.headers.map((header) => (
@@ -28,10 +30,7 @@ export function DataTable({ table }: DataTableProps) {
               >
                 {header.isPlaceholder
                   ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                  : flexRender(header.column.columnDef.header, header.getContext())}
               </div>
             ))}
           </div>
@@ -39,12 +38,12 @@ export function DataTable({ table }: DataTableProps) {
       </div>
 
       {/* Table Body */}
-      <div className="divide-y divide-border">
+      <div className="divide-border divide-y">
         {table.getRowModel().rows?.length ? (
           table.getRowModel().rows.map((row) => (
             <div
               key={row.id}
-              className={`flex items-center px-4 py-4 hover:bg-muted/30 ${
+              className={`hover:bg-muted/30 flex items-center px-4 py-4 ${
                 row.getIsSelected() ? "bg-primary/5" : ""
               }`}
             >
@@ -53,21 +52,24 @@ export function DataTable({ table }: DataTableProps) {
                   key={cell.id}
                   className="flex-1"
                   style={{
-                    width: cell.column.id === "select" ? 40 : cell.column.id === "actions" ? 60 : undefined,
-                    flex: cell.column.id === "select" || cell.column.id === "actions" ? "0 0 auto" : 1,
+                    width:
+                      cell.column.id === "select"
+                        ? 40
+                        : cell.column.id === "actions"
+                          ? 60
+                          : undefined,
+                    flex:
+                      cell.column.id === "select" || cell.column.id === "actions" ? "0 0 auto" : 1,
                   }}
                 >
-                  {flexRender(
-                    cell.column.columnDef.cell,
-                    cell.getContext()
-                  )}
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </div>
               ))}
             </div>
           ))
         ) : (
           <div className="px-4 py-8 text-center">
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [NO_RESULTS]: Query returned 0 users
             </span>
           </div>

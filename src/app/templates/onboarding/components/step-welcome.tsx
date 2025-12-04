@@ -4,6 +4,8 @@
  */
 
 import { Sparkles } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function StepWelcome() {
   return (
@@ -12,14 +14,16 @@ export function StepWelcome() {
         <Sparkles className="text-primary h-8 w-8" />
       </div>
       <div>
-        <h2 className="mb-2 font-mono text-2xl font-semibold">Welcome to Fabrk</h2>
-        <p className="text-muted-foreground font-mono text-sm">
+        <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold")}>Welcome to Fabrk</h2>
+        <p className={cn(mode.font, "text-muted-foreground text-sm")}>
           Let's get you set up in just a few steps. This will only take about 2 minutes.
         </p>
       </div>
       <div className="border-border border p-4 text-left">
-        <div className="text-muted-foreground mb-2 font-mono text-xs">[WHAT_YOULL_SET_UP]:</div>
-        <div className="space-y-1.5 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+          [WHAT_YOULL_SET_UP]:
+        </div>
+        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> Your profile information
           </div>

@@ -1,10 +1,8 @@
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import {
-  siTypescript,
-  siPrisma,
-  siEslint,
-} from "simple-icons";
+import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function DeveloperExperienceSection() {
   const features = [
@@ -59,49 +57,66 @@ export function DeveloperExperienceSection() {
   ];
 
   return (
-    <section className="scroll-mt-16 border-t border-border bg-background px-6 py-24 font-mono">
+    <section
+      className={cn("border-border bg-background scroll-mt-16 border-t px-6 py-24", mode.font)}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 text-center">
-          <span className="inline-block border border-border bg-card px-4 py-1 text-xs text-muted-foreground mb-4">
+          <span
+            className={cn(
+              "border-border bg-card text-muted-foreground mb-4 inline-block border px-4 py-1 text-xs",
+              mode.radius
+            )}
+          >
             [ BUILT_FOR_DEVELOPERS ]
           </span>
         </div>
 
         <div className="text-center">
-          <span className="text-xs text-muted-foreground">[0x00]</span>
-          <h2 className="mb-2 text-2xl font-bold tracking-tight">
-            DEVELOPER_EXPERIENCE_MATTERS
-          </h2>
+          <span className="text-muted-foreground text-xs">[0x00]</span>
+          <h2 className="mb-2 text-2xl font-bold tracking-tight">DEVELOPER_EXPERIENCE_MATTERS</h2>
         </div>
-        <p className="mb-16 text-center text-sm text-muted-foreground">
+        <p className="text-muted-foreground mb-16 text-center text-sm">
           &gt; Fast builds, clean code, zero friction. Ship features, not fight tooling.
         </p>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const IconComponent =
-              feature.iconComponent === "folder" ? FolderTree :
-              feature.iconComponent === "zap" ? Zap :
-              feature.iconComponent === "terminal" ? Terminal :
-              feature.iconComponent === "code" ? Code2 :
-              null;
+              feature.iconComponent === "folder"
+                ? FolderTree
+                : feature.iconComponent === "zap"
+                  ? Zap
+                  : feature.iconComponent === "terminal"
+                    ? Terminal
+                    : feature.iconComponent === "code"
+                      ? Code2
+                      : null;
 
             return (
               <div
                 key={feature.title}
-                className="group border border-border bg-card p-6 transition-all hover:border-primary/50"
+                className={cn(
+                  "group border-border bg-card hover:border-primary/50 border p-6 transition-all",
+                  mode.radius
+                )}
               >
-                <div className="mb-4 inline-flex items-center justify-center bg-primary/10 p-4">
+                <div
+                  className={cn(
+                    "bg-primary/10 mb-4 inline-flex items-center justify-center p-4",
+                    mode.radius
+                  )}
+                >
                   {feature.icon ? (
-                    <SimpleIcon path={feature.icon} className="h-6 w-6 text-primary" />
+                    <SimpleIcon path={feature.icon} className="text-primary h-6 w-6" />
                   ) : IconComponent ? (
-                    <IconComponent className="h-6 w-6 text-primary" />
+                    <IconComponent className="text-primary h-6 w-6" />
                   ) : null}
                 </div>
                 <h3 className="mb-4 text-sm font-bold">
-                  {feature.title.toUpperCase().replace(/ /g, '_')}
+                  {feature.title.toUpperCase().replace(/ /g, "_")}
                 </h3>
-                <p className="text-xs leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground text-xs leading-relaxed">
                   {feature.description}
                 </p>
               </div>

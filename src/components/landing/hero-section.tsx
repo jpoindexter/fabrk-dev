@@ -21,6 +21,8 @@ import {
   siStripe,
   siResend,
 } from "simple-icons";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 // Typewriter effect component
 function TypeWriter({
@@ -112,7 +114,7 @@ function HeroCodeDemo() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="p-6 font-mono text-xs">
+    <div ref={ref} className={cn("p-6 text-xs", mode.font)}>
       {/* git clone */}
       <div className="text-muted-foreground">
         <span className="text-success">~</span>{" "}
@@ -219,7 +221,13 @@ export function HeroSection() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
+              <span
+                className={cn(
+                  "border-border bg-card text-muted-foreground inline-block border px-4 py-1 text-xs",
+                  mode.radius,
+                  mode.font
+                )}
+              >
                 [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
               </span>
             </motion.div>
@@ -230,8 +238,8 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-muted-foreground mb-2 font-mono text-sm">FABRK_INIT:</h1>
-              <h2 className="mb-6 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+              <h1 className={cn("text-muted-foreground mb-2 text-sm", mode.font)}>FABRK_INIT:</h1>
+              <h2 className={cn("mb-6 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
                 BUILDING_YOUR_SAAS
                 <br />
                 <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>
@@ -243,16 +251,16 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="border-border bg-card mb-8 border p-4"
+              className={cn("border-border bg-card mb-8 border p-4", mode.radius)}
             >
-              <div className="text-muted-foreground mb-4 font-mono text-xs">
+              <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                 [ [0x01] STATUS ]────────────────────────
               </div>
-              <p className="text-muted-foreground mb-4 font-mono text-sm">
+              <p className={cn("text-muted-foreground mb-4 text-sm", mode.font)}>
                 Why spend valuable time tackling auth, billing, emails, organizations, invites and
                 onboarding? Focus on your business and skip the noise.
               </p>
-              <div className="flex flex-wrap gap-4 font-mono text-sm">
+              <div className={cn("flex flex-wrap gap-4 text-sm", mode.font)}>
                 <span>
                   <span className="text-muted-foreground">Speed:</span>{" "}
                   <span className="text-primary">OPTIMIZED</span>
@@ -271,10 +279,10 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-8 flex flex-col gap-4 sm:flex-row"
             >
-              <PolarCheckoutButton className="rounded-none font-mono text-xs">
+              <PolarCheckoutButton className={cn("text-xs", mode.radius, mode.font)}>
                 &gt; EXECUTE: GET_FABRK
               </PolarCheckoutButton>
-              <Button variant="outline" asChild className="rounded-none font-mono text-xs">
+              <Button variant="outline" asChild className={cn("text-xs", mode.radius, mode.font)}>
                 <Link href="/demo">&gt; VIEW: LIVE_DEMO</Link>
               </Button>
             </motion.div>
@@ -285,18 +293,21 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="text-muted-foreground mb-4 font-mono text-xs">
+              <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
                 [ [0x02] POWERED_BY ] FIB[1,1,2,3,5,8,13]
               </div>
               <div className="flex flex-wrap gap-4">
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="border-border bg-card flex items-center gap-2 border px-2 py-1"
+                    className={cn(
+                      "border-border bg-card flex items-center gap-2 border px-2 py-1",
+                      mode.radius
+                    )}
                   >
                     <SimpleIcon path={tech.path} className="size-3.5" />
-                    <span className="font-mono text-xs">{tech.name}</span>
-                    <span className="text-success font-mono text-xs">[OK]</span>
+                    <span className={cn("text-xs", mode.font)}>{tech.name}</span>
+                    <span className={cn("text-success text-xs", mode.font)}>[OK]</span>
                   </div>
                 ))}
               </div>
@@ -312,13 +323,13 @@ export function HeroSection() {
           >
             {/* Terminal Window Frame */}
             <motion.div
-              className="border-border bg-card border"
+              className={cn("border-border bg-card border", mode.radius)}
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {/* Window Title Bar */}
               <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
+                <span className={cn("text-muted-foreground text-xs", mode.font)}>
                   [ terminal — ~/projects ]
                 </span>
               </div>

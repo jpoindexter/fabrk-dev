@@ -4,15 +4,17 @@
  */
 
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function PatternComparison() {
   return (
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="COMPARISON" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[WHEN_TO_USE]:</div>
         <div className="border-border overflow-x-auto border">
-          <table className="w-full font-mono text-xs">
+          <table className={cn(mode.font, "w-full text-xs")}>
             <thead>
               <tr className="border-border bg-muted/30 border-b">
                 <th className="text-muted-foreground px-4 py-2 text-left">[PATTERN]</th>

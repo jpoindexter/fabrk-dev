@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Github, UserPlus } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Sign Up Template - Fabrk",
@@ -45,7 +47,9 @@ export default function SignUpTemplate() {
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
                   <UserPlus className="text-primary h-5 w-5" />
                 </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight">Create an account</h1>
+                <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>
+                  Create an account
+                </h1>
                 <p className="text-muted-foreground text-sm">
                   Enter your information to get started with Fabrk
                 </p>
@@ -56,31 +60,31 @@ export default function SignUpTemplate() {
                 <form className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="first-name" className="font-mono text-xs">
+                      <Label htmlFor="first-name" className={cn(mode.font, "text-xs")}>
                         [FIRST_NAME]:
                       </Label>
                       <Input
                         id="first-name"
                         placeholder="John"
                         required
-                        className="rounded-none font-mono text-xs"
+                        className={cn(mode.radius, mode.font, "text-xs")}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="last-name" className="font-mono text-xs">
+                      <Label htmlFor="last-name" className={cn(mode.font, "text-xs")}>
                         [LAST_NAME]:
                       </Label>
                       <Input
                         id="last-name"
                         placeholder="Doe"
                         required
-                        className="rounded-none font-mono text-xs"
+                        className={cn(mode.radius, mode.font, "text-xs")}
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs">
+                    <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
                       [EMAIL]:
                     </Label>
                     <Input
@@ -91,12 +95,12 @@ export default function SignUpTemplate() {
                       autoComplete="email"
                       autoCorrect="off"
                       required
-                      className="rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "text-xs")}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="font-mono text-xs">
+                    <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
                       [PASSWORD]:
                     </Label>
                     <Input
@@ -105,18 +109,21 @@ export default function SignUpTemplate() {
                       placeholder="Create a password"
                       autoComplete="new-password"
                       required
-                      className="rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "text-xs")}
                     />
-                    <p className="text-muted-foreground font-mono text-xs">
+                    <p className={cn(mode.font, "text-muted-foreground text-xs")}>
                       Must be at least 8 characters long
                     </p>
                   </div>
 
                   <div className="flex items-start space-x-2">
-                    <Checkbox id="terms" className="mt-0.5 rounded-none" />
+                    <Checkbox id="terms" className={cn(mode.radius, "mt-0.5")} />
                     <Label
                       htmlFor="terms"
-                      className="text-muted-foreground font-mono text-xs leading-normal font-normal"
+                      className={cn(
+                        mode.font,
+                        "text-muted-foreground text-xs leading-normal font-normal"
+                      )}
                     >
                       I agree to the{" "}
                       <Link href="#" className="text-primary hover:underline">
@@ -129,7 +136,7 @@ export default function SignUpTemplate() {
                     </Label>
                   </div>
 
-                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                  <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
                     &gt; CREATE_ACCOUNT
                   </Button>
                 </form>
@@ -146,11 +153,11 @@ export default function SignUpTemplate() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                  <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Button>
-                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                  <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                     <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                       <path
                         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"

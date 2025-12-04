@@ -4,6 +4,8 @@
 
 import { ArrowUpDown } from "lucide-react";
 import type { Column } from "@tanstack/react-table";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function DataTableColumnHeader<TData>({
   column,
@@ -15,7 +17,10 @@ export function DataTableColumnHeader<TData>({
   return (
     <button
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      className="flex items-center gap-1 font-mono text-xs text-muted-foreground hover:text-foreground"
+      className={cn(
+        mode.font,
+        "text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs"
+      )}
     >
       [{title.toUpperCase()}]
       <ArrowUpDown className="h-3 w-3" />

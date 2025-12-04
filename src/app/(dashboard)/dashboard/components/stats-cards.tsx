@@ -5,20 +5,10 @@
 
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  DollarSign,
-  Users,
-  Upload,
-  TrendingUp,
-  ArrowUpRight,
-  ArrowDownRight,
-} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
+import { DollarSign, Users, Upload, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 interface DashboardStats {
   totalRevenue: number;
@@ -50,20 +40,20 @@ function StatCard({ title, icon: Icon, value, change, loading, customContent }: 
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <Icon className="h-4 w-4 text-muted-foreground" />
+        <Icon className="text-muted-foreground h-4 w-4" />
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">{loading ? "..." : value}</div>
         {!loading && change !== undefined && (
-          <p className="text-xs text-muted-foreground flex items-center gap-1">
+          <p className="text-muted-foreground flex items-center gap-1 text-xs">
             {change >= 0 ? (
               <>
-                <ArrowUpRight className="h-3 w-3 text-success" />
+                <ArrowUpRight className="text-success h-3 w-3" />
                 <span className="text-success">+{change}%</span>
               </>
             ) : (
               <>
-                <ArrowDownRight className="h-3 w-3 text-destructive" />
+                <ArrowDownRight className="text-destructive h-3 w-3" />
                 <span className="text-destructive">{change}%</span>
               </>
             )}
@@ -111,9 +101,9 @@ export function StatsCards({ stats, loading }: StatsCardsProps) {
         customContent={
           stats && (
             <div className="mt-2">
-              <div className="h-2 w-full bg-secondary rounded-none overflow-hidden">
+              <div className={cn("bg-secondary h-2 w-full overflow-hidden", mode.radius)}>
                 <div
-                  className="h-full bg-primary transition-all duration-300"
+                  className="bg-primary h-full transition-all duration-300"
                   data-storage-percent={(stats.storageUsed / stats.storageLimit) * 100}
                   style={{
                     width: `${(stats.storageUsed / stats.storageLimit) * 100}%`,

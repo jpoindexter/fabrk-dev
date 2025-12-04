@@ -6,6 +6,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { docsStructure, docContent } from "./docs-data";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface DocsSidebarProps {
   activeDoc: string;
@@ -14,15 +16,15 @@ interface DocsSidebarProps {
 
 export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
   return (
-    <aside className="w-64 border-r border-b border-border bg-card">
+    <aside className="border-border bg-card w-64 border-r border-b">
       <nav className="space-y-6 p-4">
         {docsStructure.map((section, idx) => {
           const Icon = section.icon;
           return (
             <div key={idx}>
               <div className="mb-4 flex items-center gap-2">
-                <Icon className="h-4 w-4 text-primary" />
-                <h3 className="font-mono text-xs font-bold">
+                <Icon className="text-primary h-4 w-4" />
+                <h3 className={cn(mode.font, "text-xs font-bold")}>
                   [{section.section.toUpperCase().replace(/ /g, "_")}]:
                 </h3>
               </div>
@@ -38,15 +40,15 @@ export function DocsSidebar({ activeDoc, onDocChange }: DocsSidebarProps) {
                           activeDoc === page.id
                             ? "bg-primary text-primary-foreground"
                             : hasContent
-                            ? "text-muted-foreground hover:bg-muted hover:text-foreground"
-                            : "text-muted-foreground/50 cursor-not-allowed"
+                              ? "text-muted-foreground hover:bg-muted hover:text-foreground"
+                              : "text-muted-foreground/50 cursor-not-allowed"
                         }`}
                       >
                         <span>{page.title}</span>
                         {page.badge && (
                           <Badge
                             variant={activeDoc === page.id ? "secondary" : "outline"}
-                            className="text-xs rounded-none py-0 h-5"
+                            className={cn(mode.radius, "h-5 py-0 text-xs")}
                           >
                             {page.badge}
                           </Badge>

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 type FAQCategory = "general" | "technical" | "payment" | "license";
 
@@ -131,29 +132,29 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="border border-border bg-card"
+      className={cn("border-border bg-card border", mode.radius)}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
-        className="flex w-full items-center justify-between p-4 text-left transition-colors hover:bg-muted/50"
+        className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
       >
-        <span className="font-mono text-sm">
+        <span className={cn("text-sm", mode.font)}>
           <span className="text-primary">├─</span>
-          <span className="ml-2 text-muted-foreground">[QUERY]:</span>
-          <span className="ml-2 text-foreground">{question}</span>
+          <span className="text-muted-foreground ml-2">[QUERY]:</span>
+          <span className="text-foreground ml-2">{question}</span>
         </span>
         <ChevronDown
           className={cn(
-            "size-4 text-muted-foreground transition-transform",
+            "text-muted-foreground size-4 transition-transform",
             isOpen && "rotate-180"
           )}
         />
       </button>
       {isOpen && (
-        <div className="border-t border-border bg-muted/30 p-4">
-          <span className="font-mono text-xs text-muted-foreground">└─ [RESPONSE]: </span>
-          <span className="font-mono text-xs text-foreground">{answer}</span>
+        <div className="border-border bg-muted/30 border-t p-4">
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>└─ [RESPONSE]: </span>
+          <span className={cn("text-foreground text-xs", mode.font)}>{answer}</span>
         </div>
       )}
     </motion.div>
@@ -166,10 +167,7 @@ export function FAQSection() {
   const filteredFaqs = faqs.filter((faq) => faq.category === activeCategory);
 
   return (
-    <section
-      id="faq"
-      className="scroll-mt-16 border-t border-border px-6 py-20 lg:py-28"
-    >
+    <section id="faq" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <motion.div
@@ -179,10 +177,14 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[ [0x60] KNOWLEDGE_BASE ] QUERY_SYSTEM │ FIB[13] ENTRIES</span>
+          <div
+            className={cn("border-border bg-card mb-4 inline-block border px-4 py-1", mode.radius)}
+          >
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>
+              [ [0x60] KNOWLEDGE_BASE ] QUERY_SYSTEM │ FIB[13] ENTRIES
+            </span>
           </div>
-          <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className={cn("mb-4 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
             FREQUENTLY_ASKED_QUESTIONS
           </h2>
         </motion.div>
@@ -196,14 +198,18 @@ export function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[ CATEGORIES ]</div>
+            <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+              [ CATEGORIES ]
+            </div>
             <div className="flex flex-row gap-2 lg:flex-col lg:gap-1">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={cn(
-                    "border px-4 py-2 text-left font-mono text-xs transition-colors",
+                    "border px-4 py-2 text-left text-xs transition-colors",
+                    mode.radius,
+                    mode.font,
                     activeCategory === category.id
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-card text-muted-foreground hover:border-primary/50 hover:text-foreground"

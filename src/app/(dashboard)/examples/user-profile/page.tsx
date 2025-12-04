@@ -3,6 +3,8 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 import {
   User,
   Mail,
@@ -101,7 +103,7 @@ export default async function UserProfilePage() {
             <div className="flex flex-col items-center text-center">
               {/* Avatar */}
               <div className="relative">
-                <div className="border-border h-32 w-32 overflow-hidden rounded-none border">
+                <div className={cn("border-border h-32 w-32 overflow-hidden border", mode.radius)}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={mockUserProfile.avatar}
@@ -109,14 +111,24 @@ export default async function UserProfilePage() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="border-background bg-success absolute right-0 bottom-0 rounded-none border-2 p-1">
-                  <div className="bg-success h-3 w-3 rounded-none"></div>
+                <div
+                  className={cn(
+                    "border-background bg-success absolute right-0 bottom-0 border-2 p-1",
+                    mode.radius
+                  )}
+                >
+                  <div className={cn("bg-success h-3 w-3", mode.radius)}></div>
                 </div>
               </div>
 
               {/* Name & Role */}
               <h2 className="text-foreground mt-4 text-2xl font-bold">{mockUserProfile.name}</h2>
-              <span className="border-border bg-primary text-primary-foreground mt-1 inline-block rounded-none border px-4 py-1 text-xs font-semibold">
+              <span
+                className={cn(
+                  "border-border bg-primary text-primary-foreground mt-1 inline-block border px-4 py-1 text-xs font-semibold",
+                  mode.radius
+                )}
+              >
                 {mockUserProfile.role}
               </span>
 
@@ -243,13 +255,17 @@ export default async function UserProfilePage() {
                       <div className="flex items-center gap-2">
                         <h4 className="text-foreground text-lg font-bold">{project.name}</h4>
                         <span
-                          className={`inline-block rounded-none px-2 py-0.5 text-xs font-semibold ${
-                            project.status === "Live"
-                              ? "bg-success/20 text-success"
-                              : project.status === "In Development"
-                                ? "bg-info/20 text-info"
-                                : "bg-warning/20 text-warning"
-                          }`}
+                          className={cn(
+                            `inline-block`,
+                            mode.radius,
+                            `px-2 py-0.5 text-xs font-semibold ${
+                              project.status === "Live"
+                                ? "bg-success/20 text-success"
+                                : project.status === "In Development"
+                                  ? "bg-info/20 text-info"
+                                  : "bg-warning/20 text-warning"
+                            }`
+                          )}
                         >
                           {project.status}
                         </span>
@@ -283,7 +299,12 @@ export default async function UserProfilePage() {
             <div className="space-y-4">
               {mockUserProfile.activity.map((activity, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="border-border bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-none border">
+                  <div
+                    className={cn(
+                      "border-border bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center border",
+                      mode.radius
+                    )}
+                  >
                     <User className="text-primary h-5 w-5" />
                   </div>
                   <div className="flex-1">
@@ -301,7 +322,7 @@ export default async function UserProfilePage() {
       </div>
 
       {/* Implementation Note */}
-      <div className="border-primary bg-primary/5 rounded-none border-2 p-4">
+      <div className={cn("border-primary bg-primary/5 border-2 p-4", mode.radius)}>
         <p className="text-muted-foreground text-sm">
           <span className="text-foreground font-semibold">👤 Implementation Note:</span> This is a
           demo user profile page with mock data. Replace{" "}

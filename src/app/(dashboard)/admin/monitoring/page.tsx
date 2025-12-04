@@ -6,13 +6,7 @@
 "use client";
 
 import { useState, useEffect, startTransition } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -35,6 +29,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { getErrorStats, getPerformanceStats, clearErrorLogs } from "@/lib/monitoring";
 import { AlertTriangle, Activity, Trash2 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 function formatDate(date: Date) {
   return new Intl.DateTimeFormat("en-US", {
@@ -72,16 +68,10 @@ export default function AdminMonitoringPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Monitoring</h1>
-          <p className="text-muted-foreground">
-            Error tracking and performance metrics
-          </p>
+          <p className="text-muted-foreground">Error tracking and performance metrics</p>
         </div>
         <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setRefreshKey((k) => k + 1)}
-          >
+          <Button variant="outline" size="sm" onClick={() => setRefreshKey((k) => k + 1)}>
             Refresh
           </Button>
           <Button
@@ -101,10 +91,8 @@ export default function AdminMonitoringPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Total Errors (24h)
-              </CardTitle>
-              <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">Total Errors (24h)</CardTitle>
+              <AlertTriangle className="text-muted-foreground h-4 w-4" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{errorStats.total}</div>
@@ -114,36 +102,30 @@ export default function AdminMonitoringPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Errors</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-destructive" />
+              <AlertTriangle className="text-destructive h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {errorStats.byType.error || 0}
-              </div>
+              <div className="text-2xl font-bold">{errorStats.byType.error || 0}</div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Warnings</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-warning" />
+              <AlertTriangle className="text-warning h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {errorStats.byType.warning || 0}
-              </div>
+              <div className="text-2xl font-bold">{errorStats.byType.warning || 0}</div>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Info</CardTitle>
-              <Activity className="h-4 w-4 text-info" />
+              <Activity className="text-info h-4 w-4" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {errorStats.byType.info || 0}
-              </div>
+              <div className="text-2xl font-bold">{errorStats.byType.info || 0}</div>
             </CardContent>
           </Card>
         </div>
@@ -161,15 +143,13 @@ export default function AdminMonitoringPage() {
               {Object.entries(perfStats.averages).map(([name, value]) => (
                 <div
                   key={name}
-                  className="flex items-center justify-between rounded-none border p-4"
+                  className={cn("flex items-center justify-between border p-4", mode.radius)}
                 >
                   <div>
-                    <div className="text-sm font-medium capitalize">
-                      {name.replace(/_/g, " ")}
-                    </div>
+                    <div className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}</div>
                     <div className="text-2xl font-bold">{value}ms</div>
                   </div>
-                  <Activity className="h-8 w-8 text-muted-foreground" />
+                  <Activity className="text-muted-foreground h-8 w-8" />
                 </div>
               ))}
             </div>
@@ -185,7 +165,7 @@ export default function AdminMonitoringPage() {
             <CardDescription>Errors sorted by occurrence count</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-none border">
+            <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -198,7 +178,7 @@ export default function AdminMonitoringPage() {
                 <TableBody>
                   {errorStats.topErrors.map((error) => (
                     <TableRow key={error.id}>
-                      <TableCell className="max-w-md truncate font-mono text-xs">
+                      <TableCell className={cn("max-w-md truncate text-xs", mode.font)}>
                         {error.message}
                       </TableCell>
                       <TableCell>
@@ -207,17 +187,15 @@ export default function AdminMonitoringPage() {
                             error.type === "error"
                               ? "default"
                               : error.type === "warning"
-                              ? "accent"
-                              : "secondary"
+                                ? "accent"
+                                : "secondary"
                           }
                         >
                           {error.type}
                         </Badge>
                       </TableCell>
-                      <TableCell className="font-semibold">
-                        {error.count || 1}x
-                      </TableCell>
-                      <TableCell className="text-xs text-muted-foreground">
+                      <TableCell className="font-semibold">{error.count || 1}x</TableCell>
+                      <TableCell className="text-muted-foreground text-xs">
                         {formatDate(error.timestamp)}
                       </TableCell>
                     </TableRow>
@@ -237,7 +215,7 @@ export default function AdminMonitoringPage() {
             <CardDescription>Last 20 error events</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="rounded-none border">
+            <div className={cn("border", mode.radius)}>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -250,10 +228,10 @@ export default function AdminMonitoringPage() {
                 <TableBody>
                   {errorStats.recentErrors.map((error) => (
                     <TableRow key={error.id}>
-                      <TableCell className="text-xs text-muted-foreground">
+                      <TableCell className="text-muted-foreground text-xs">
                         {formatDate(error.timestamp)}
                       </TableCell>
-                      <TableCell className="max-w-md truncate font-mono text-xs">
+                      <TableCell className={cn("max-w-md truncate text-xs", mode.font)}>
                         {error.message}
                       </TableCell>
                       <TableCell>
@@ -262,16 +240,14 @@ export default function AdminMonitoringPage() {
                             error.type === "error"
                               ? "default"
                               : error.type === "warning"
-                              ? "accent"
-                              : "secondary"
+                                ? "accent"
+                                : "secondary"
                           }
                         >
                           {error.type}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-sm">
-                        {error.context?.component || "—"}
-                      </TableCell>
+                      <TableCell className="text-sm">{error.context?.component || "—"}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -286,11 +262,9 @@ export default function AdminMonitoringPage() {
         <Card>
           <CardContent className="flex h-48 items-center justify-center">
             <div className="text-center">
-              <Activity className="mx-auto h-12 w-12 text-muted-foreground" />
+              <Activity className="text-muted-foreground mx-auto h-12 w-12" />
               <h3 className="mt-4 text-lg font-semibold">No errors recorded</h3>
-              <p className="text-sm text-muted-foreground">
-                Your application is running smoothly
-              </p>
+              <p className="text-muted-foreground text-sm">Your application is running smoothly</p>
             </div>
           </CardContent>
         </Card>
@@ -302,7 +276,8 @@ export default function AdminMonitoringPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Clear All Error Logs?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete all error logs and performance metrics from the monitoring system.
+              This action cannot be undone. This will permanently delete all error logs and
+              performance metrics from the monitoring system.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

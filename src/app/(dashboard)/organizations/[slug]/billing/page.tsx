@@ -17,6 +17,8 @@ import { BillingHeader } from "./components/billing-header";
 import { CurrentPlanCard } from "./components/current-plan-card";
 import { UsageStatsCard } from "./components/usage-stats-card";
 import { BillingHistoryCard } from "./components/billing-history-card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function OrganizationBillingPage() {
   const router = useRouter();
@@ -101,14 +103,14 @@ export default function OrganizationBillingPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
       </div>
     );
   }
 
   if (!organization) {
     return (
-      <Card className="rounded-none border border-border">
+      <Card className={cn("border-border border", mode.radius)}>
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>

@@ -7,6 +7,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import { PreviewHeader } from "./preview-header";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function AuthPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,17 +54,24 @@ export function AuthPreview() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="border-border bg-card w-full max-w-sm border">
+    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-sm border")}>
       <PreviewHeader title="auth_module.exe" animated />
 
       <div className="p-6">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[AUTH_FORM]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>[AUTH_FORM]:</div>
 
         <div className="space-y-4">
           <div>
-            <span className="text-muted-foreground mb-1.5 block font-mono text-xs">EMAIL:</span>
-            <div className="border-border bg-background flex min-h-[36px] items-center border px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground mb-1.5 block text-xs")}>
+              EMAIL:
+            </span>
+            <div
+              className={cn(
+                mode.radius,
+                "border-border bg-background flex min-h-[36px] items-center border px-4 py-2"
+              )}
+            >
+              <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                 {emailText}
                 {emailText.length < fullEmail.length && showCursor && (
                   <span className="text-primary">|</span>
@@ -71,36 +80,66 @@ export function AuthPreview() {
             </div>
           </div>
           <div>
-            <span className="text-muted-foreground mb-1.5 block font-mono text-xs">PASSWORD:</span>
-            <div className="border-border bg-background flex min-h-[36px] items-center border px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground mb-1.5 block text-xs")}>
+              PASSWORD:
+            </span>
+            <div
+              className={cn(
+                mode.radius,
+                "border-border bg-background flex min-h-[36px] items-center border px-4 py-2"
+              )}
+            >
+              <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                 {"•".repeat(passwordDots)}
                 {passwordDots < 8 && passwordDots > 0 && showCursor && (
                   <span className="text-primary">|</span>
                 )}
               </span>
               {passwordDots === 0 && emailText.length >= fullEmail.length && showCursor && (
-                <span className="text-primary font-mono text-xs">|</span>
+                <span className={cn(mode.font, "text-primary text-xs")}>|</span>
               )}
             </div>
           </div>
-          <div className="bg-primary cursor-pointer px-4 py-2 text-center transition-opacity hover:opacity-90">
-            <span className="text-primary-foreground font-mono text-xs">&gt; AUTHENTICATE</span>
+          <div
+            className={cn(
+              mode.radius,
+              "bg-primary cursor-pointer px-4 py-2 text-center transition-opacity hover:opacity-90"
+            )}
+          >
+            <span className={cn(mode.font, "text-primary-foreground text-xs")}>
+              &gt; AUTHENTICATE
+            </span>
           </div>
           <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
               <div className="border-border w-full border-t" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-card text-muted-foreground px-2 font-mono text-xs">OR</span>
+              <span
+                className={cn(mode.radius, mode.font, "bg-card text-muted-foreground px-2 text-xs")}
+              >
+                OR
+              </span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center transition-colors">
-              <span className="font-mono text-xs">GOOGLE</span>
+            <div
+              className={cn(
+                mode.radius,
+                mode.font,
+                "border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors"
+              )}
+            >
+              GOOGLE
             </div>
-            <div className="border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center transition-colors">
-              <span className="font-mono text-xs">MICROSOFT</span>
+            <div
+              className={cn(
+                mode.radius,
+                mode.font,
+                "border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors"
+              )}
+            >
+              MICROSOFT
             </div>
           </div>
         </div>

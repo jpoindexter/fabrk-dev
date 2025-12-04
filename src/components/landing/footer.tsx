@@ -16,6 +16,8 @@ import {
   siX,
   siGithub,
 } from "simple-icons";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const techStack = [
   { name: "NEXT.JS", path: siNextdotjs.path },

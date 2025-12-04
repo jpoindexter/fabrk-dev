@@ -8,6 +8,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2 } from "lucide-react";
 import { PreviewHeader } from "./preview-header";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export function OrganizationPreview() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,13 +31,19 @@ export function OrganizationPreview() {
   }, [isInView]);
 
   return (
-    <div ref={ref} className="border-border bg-card w-full max-w-md border">
+    <div ref={ref} className={cn(mode.radius, "border-border bg-card w-full max-w-md border")}>
       <PreviewHeader title="org_manager.exe" />
 
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between">
-          <span className="text-muted-foreground font-mono text-xs">[ORGANIZATIONS]:</span>
-          <button className="border-primary text-primary hover:bg-primary hover:text-primary-foreground border px-2 py-1 font-mono text-xs transition-colors">
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ORGANIZATIONS]:</span>
+          <button
+            className={cn(
+              mode.radius,
+              mode.font,
+              "border-primary text-primary hover:bg-primary hover:text-primary-foreground border px-2 py-1 text-xs transition-colors"
+            )}
+          >
             + ADD_ORG
           </button>
         </div>
@@ -43,15 +51,20 @@ export function OrganizationPreview() {
         {/* Fixed height container to prevent layout shift */}
         <div className="min-h-[116px] space-y-2">
           {/* ACME_INC - always visible */}
-          <div className="border-border bg-background flex items-center justify-between border p-4">
+          <div
+            className={cn(
+              mode.radius,
+              "border-border bg-background flex items-center justify-between border p-4"
+            )}
+          >
             <div className="flex items-center gap-4">
               <Building2 className="text-muted-foreground size-4" />
               <div>
-                <span className="block font-mono text-xs">ACME_INC</span>
-                <span className="text-muted-foreground font-mono text-xs">12 members</span>
+                <span className={cn(mode.font, "block text-xs")}>ACME_INC</span>
+                <span className={cn(mode.font, "text-muted-foreground text-xs")}>12 members</span>
               </div>
             </div>
-            <span className="text-success font-mono text-xs">OWNER</span>
+            <span className={cn(mode.font, "text-success text-xs")}>OWNER</span>
           </div>
 
           {/* STARTUP_CO - appears after button click */}
@@ -59,24 +72,36 @@ export function OrganizationPreview() {
             initial={{ opacity: 0, x: -20 }}
             animate={showStartup ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="border-border bg-background flex items-center justify-between border p-4"
+            className={cn(
+              mode.radius,
+              "border-border bg-background flex items-center justify-between border p-4"
+            )}
           >
             <div className="flex items-center gap-4">
               <Building2 className="text-muted-foreground size-4" />
               <div>
-                <span className="block font-mono text-xs">STARTUP_CO</span>
-                <span className="text-muted-foreground font-mono text-xs">5 members</span>
+                <span className={cn(mode.font, "block text-xs")}>STARTUP_CO</span>
+                <span className={cn(mode.font, "text-muted-foreground text-xs")}>5 members</span>
               </div>
             </div>
-            <span className="text-success font-mono text-xs">ADMIN</span>
+            <span className={cn(mode.font, "text-success text-xs")}>ADMIN</span>
           </motion.div>
         </div>
 
         <div className="border-border mt-4 border-t pt-4">
-          <span className="text-muted-foreground mb-2 block font-mono text-xs">[ROLES]:</span>
+          <span className={cn(mode.font, "text-muted-foreground mb-2 block text-xs")}>
+            [ROLES]:
+          </span>
           <div className="flex flex-wrap gap-2">
             {["OWNER", "ADMIN", "MEMBER", "GUEST"].map((role) => (
-              <span key={role} className="border-border bg-card border px-2 py-1 font-mono text-xs">
+              <span
+                key={role}
+                className={cn(
+                  mode.radius,
+                  mode.font,
+                  "border-border bg-card border px-2 py-1 text-xs"
+                )}
+              >
                 {role}
               </span>
             ))}

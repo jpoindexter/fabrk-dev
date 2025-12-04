@@ -9,6 +9,8 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Activity, Star, GitBranch, LucideIcon } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ActivityItem {
   id: string;
@@ -61,8 +63,10 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
                   <Icon className="text-muted-foreground h-4 w-4" />
                 </div>
                 <div className="flex-1">
-                  <div className="font-mono text-sm">{item.title}</div>
-                  <div className="text-muted-foreground font-mono text-xs">{item.timestamp}</div>
+                  <div className={cn(mode.font, "text-sm")}>{item.title}</div>
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    {item.timestamp}
+                  </div>
                 </div>
               </div>
             );
@@ -80,24 +84,28 @@ export function ProfileTabs({ activity, projects }: ProfileTabsProps) {
               <div className="flex items-start justify-between">
                 <div>
                   <div className="mb-1 flex items-center gap-2">
-                    <span className="text-primary font-mono text-sm font-medium">
+                    <span className={cn(mode.font, "text-primary text-sm font-medium")}>
                       {project.name}
                     </span>
                     <Badge
                       variant="outline"
-                      className="border-border rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "border-border text-xs")}
                     >
                       {project.language}
                     </Badge>
                   </div>
-                  <p className="text-muted-foreground font-mono text-xs">{project.description}</p>
+                  <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    {project.description}
+                  </p>
                 </div>
-                <div className="text-muted-foreground flex items-center gap-1 font-mono text-xs">
+                <div
+                  className={cn(mode.font, "text-muted-foreground flex items-center gap-1 text-xs")}
+                >
                   <Star className="h-3 w-3" />
                   {project.stars}
                 </div>
               </div>
-              <div className="text-muted-foreground mt-2 font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground mt-2 text-xs")}>
                 Updated {project.updated}
               </div>
             </div>

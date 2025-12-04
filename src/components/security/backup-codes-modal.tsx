@@ -18,6 +18,8 @@ import {
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { AlertTriangle, Copy, Check, RefreshCw, Download } from "lucide-react";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 interface BackupCodesModalProps {
   open: boolean;
@@ -137,7 +139,12 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
 
         {isLoading ? (
           <div className="py-8 text-center">
-            <div className="border-primary mx-auto mb-4 h-8 w-8 animate-spin rounded-none border-b-2"></div>
+            <div
+              className={cn(
+                mode.radius,
+                "border-primary mx-auto mb-4 h-8 w-8 animate-spin border-b-2"
+              )}
+            ></div>
             <p className="text-muted-foreground text-sm">Loading backup codes...</p>
           </div>
         ) : codes.length > 0 ? (
@@ -150,13 +157,16 @@ export function BackupCodesModal({ open, onOpenChange, onRegenerate }: BackupCod
               </AlertDescription>
             </Alert>
 
-            <div className="bg-muted grid grid-cols-2 gap-4 rounded-none p-4">
+            <div className={cn(mode.radius, "bg-muted grid grid-cols-2 gap-4 p-4")}>
               {codes.map((code, index) => (
                 <div
                   key={index}
-                  className="bg-background border-border flex items-center justify-between rounded-none border p-4"
+                  className={cn(
+                    mode.radius,
+                    "bg-background border-border flex items-center justify-between border p-4"
+                  )}
                 >
-                  <span className="font-mono text-sm font-medium">{code}</span>
+                  <span className={cn(mode.font, "text-sm font-medium")}>{code}</span>
                   <Button
                     variant="ghost"
                     size="sm"

@@ -6,6 +6,8 @@
 import { Progress } from "@/components/ui/progress";
 import { StyledCardHeader } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface UsageMetric {
   current: number;
@@ -30,11 +32,13 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="USAGE_METRICS" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[USAGE_THIS_MONTH]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [USAGE_THIS_MONTH]:
+        </div>
 
         <div className="space-y-4">
           <div className="space-y-2">
-            <div className="flex items-center justify-between font-mono text-xs">
+            <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
                 <Users className="h-3 w-3" />
                 TEAM_MEMBERS
@@ -47,7 +51,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between font-mono text-xs">
+            <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
                 <HardDrive className="h-3 w-3" />
                 STORAGE
@@ -62,7 +66,7 @@ export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between font-mono text-xs">
+            <div className={cn(mode.font, "flex items-center justify-between text-xs")}>
               <span className="flex items-center gap-2">
                 <Zap className="h-3 w-3" />
                 API_CALLS

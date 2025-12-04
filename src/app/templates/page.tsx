@@ -6,6 +6,8 @@
 
 import Link from "next/link";
 import { LayoutDashboard, Settings, Users, FileText, Palette, Lock } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const categories = [
   {
@@ -76,12 +78,12 @@ export default function TemplatesPage() {
       {/* Header */}
       <section className="space-y-4">
         <div className="border-border inline-block border px-4 py-1">
-          <span className="text-muted-foreground font-mono text-xs">
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>
             [TEMPLATE_GALLERY]: BROWSE_TEMPLATES
           </span>
         </div>
-        <h1 className="font-mono text-4xl font-bold">Template Gallery</h1>
-        <p className="text-muted-foreground max-w-2xl font-mono text-sm">
+        <h1 className={cn(mode.font, "text-4xl font-bold")}>Template Gallery</h1>
+        <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
           Choose a category to explore ready-to-use templates included with Fabrk.
         </p>
       </section>
@@ -93,7 +95,7 @@ export default function TemplatesPage() {
             <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
               {/* Card Header */}
               <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
+                <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                   [MODULE]: {category.module}
                 </span>
                 <category.icon className="text-muted-foreground size-4" />
@@ -102,7 +104,7 @@ export default function TemplatesPage() {
               {/* Card Content */}
               <div className="p-4">
                 {/* Status & Count */}
-                <div className="mb-4 flex items-center justify-between font-mono text-xs">
+                <div className={cn(mode.font, "mb-4 flex items-center justify-between text-xs")}>
                   <div>
                     <span className="text-muted-foreground">STATUS: </span>
                     <span className="text-success">{category.status}</span>
@@ -116,20 +118,30 @@ export default function TemplatesPage() {
                 </div>
 
                 {/* Title */}
-                <h2 className="mb-2 font-mono text-lg font-semibold">{category.name}</h2>
+                <h2 className={cn(mode.font, "mb-2 text-lg font-semibold")}>{category.name}</h2>
 
                 {/* Description */}
-                <div className="mb-4 font-mono text-xs">
+                <div className={cn(mode.font, "mb-4 text-xs")}>
                   <span className="text-muted-foreground">DESC: </span>
                   <span className="text-foreground">{category.description}</span>
                 </div>
 
                 {/* Action */}
                 <div className="flex items-center justify-between">
-                  <span className="text-primary group-hover:text-primary/80 font-mono text-xs transition-colors">
+                  <span
+                    className={cn(
+                      mode.font,
+                      "text-primary group-hover:text-primary/80 text-xs transition-colors"
+                    )}
+                  >
                     &gt; BROWSE_TEMPLATES
                   </span>
-                  <span className="text-muted-foreground font-mono text-xs transition-transform group-hover:translate-x-1">
+                  <span
+                    className={cn(
+                      mode.font,
+                      "text-muted-foreground text-xs transition-transform group-hover:translate-x-1"
+                    )}
+                  >
                     →
                   </span>
                 </div>

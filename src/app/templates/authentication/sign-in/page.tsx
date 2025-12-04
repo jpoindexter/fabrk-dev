@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Github, Lock } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Sign In Template - Fabrk",
@@ -45,7 +47,7 @@ export default function SignInTemplate() {
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
                   <Lock className="text-primary h-5 w-5" />
                 </div>
-                <h1 className="font-mono text-2xl font-bold tracking-tight">Welcome back</h1>
+                <h1 className={cn(mode.font, "text-2xl font-bold tracking-tight")}>Welcome back</h1>
                 <p className="text-muted-foreground text-sm">
                   Enter your email to sign in to your account
                 </p>
@@ -55,7 +57,7 @@ export default function SignInTemplate() {
               <div className="grid gap-6">
                 <form className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs">
+                    <Label htmlFor="email" className={cn(mode.font, "text-xs")}>
                       [EMAIL]:
                     </Label>
                     <Input
@@ -65,12 +67,12 @@ export default function SignInTemplate() {
                       autoCapitalize="none"
                       autoComplete="email"
                       autoCorrect="off"
-                      className="rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "text-xs")}
                     />
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label htmlFor="password" className="font-mono text-xs">
+                      <Label htmlFor="password" className={cn(mode.font, "text-xs")}>
                         [PASSWORD]:
                       </Label>
                       <Link
@@ -85,21 +87,21 @@ export default function SignInTemplate() {
                       type="password"
                       placeholder="••••••••"
                       autoComplete="current-password"
-                      className="rounded-none font-mono text-xs"
+                      className={cn(mode.radius, mode.font, "text-xs")}
                     />
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="remember" className="rounded-none" />
+                    <Checkbox id="remember" className={cn(mode.radius)} />
                     <Label
                       htmlFor="remember"
-                      className="text-muted-foreground font-mono text-xs font-normal"
+                      className={cn(mode.font, "text-muted-foreground text-xs font-normal")}
                     >
                       Remember me for 30 days
                     </Label>
                   </div>
 
-                  <Button className="w-full rounded-none font-mono text-xs" type="submit">
+                  <Button className={cn(mode.radius, mode.font, "w-full text-xs")} type="submit">
                     &gt; SIGN_IN
                   </Button>
                 </form>
@@ -116,11 +118,11 @@ export default function SignInTemplate() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                  <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Button>
-                  <Button variant="outline" className="rounded-none font-mono text-xs">
+                  <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
                     <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                       <path
                         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -162,8 +164,10 @@ export default function SignInTemplate() {
         <StyledCard>
           <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
           <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+              [TEMPLATE_FEATURES]:
+            </div>
+            <div className={cn(mode.font, "space-y-1.5 text-xs")}>
               <div>
                 <span className="text-success">&gt;</span> Centered card layout with shadow
               </div>

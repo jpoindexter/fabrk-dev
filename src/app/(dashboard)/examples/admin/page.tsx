@@ -5,6 +5,8 @@ import { MoreHorizontal, Mail, Shield, User } from "lucide-react";
 import { DataTable } from "@/components/ui/data-table";
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
 import { Button } from "@/components/ui/button";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -77,7 +79,9 @@ const columns: ColumnDef<User>[] = [
       if (!row) return null;
       return (
         <div className="flex items-center gap-2">
-          <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-none">
+          <div
+            className={cn("bg-primary/10 flex h-8 w-8 items-center justify-center", mode.radius)}
+          >
             <User className="text-primary h-4 w-4" />
           </div>
           <span className="text-foreground font-medium">{row.getValue("name")}</span>
@@ -108,9 +112,13 @@ const columns: ColumnDef<User>[] = [
         <div className="flex items-center gap-2">
           <Shield className="text-muted-foreground h-4 w-4" />
           <span
-            className={`rounded-none px-2 py-1 text-xs font-semibold ${
-              role === "ADMIN" ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
-            }`}
+            className={cn(
+              ``,
+              mode.radius,
+              `px-2 py-1 text-xs font-semibold ${
+                role === "ADMIN" ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
+              }`
+            )}
           >
             {role}
           </span>
@@ -126,13 +134,17 @@ const columns: ColumnDef<User>[] = [
       const status = row.getValue("status") as string;
       return (
         <span
-          className={`inline-flex rounded-none px-4 py-1 text-xs font-semibold ${
-            status === "active"
-              ? "bg-success/20 text-success-foreground"
-              : status === "pending"
-                ? "bg-warning/20 text-warning-foreground"
-                : "bg-destructive/20 text-destructive-foreground"
-          }`}
+          className={cn(
+            `inline-flex`,
+            mode.radius,
+            `px-4 py-1 text-xs font-semibold ${
+              status === "active"
+                ? "bg-success/20 text-success-foreground"
+                : status === "pending"
+                  ? "bg-warning/20 text-warning-foreground"
+                  : "bg-destructive/20 text-destructive-foreground"
+            }`
+          )}
         >
           {status}
         </span>
@@ -192,17 +204,17 @@ export default function AdminPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="border-border bg-card rounded-none border p-6">
+        <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Total Users</p>
           <p className="text-foreground text-3xl font-bold">{users.length}</p>
         </div>
-        <div className="border-border bg-card rounded-none border p-6">
+        <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Active Users</p>
           <p className="text-success text-3xl font-bold">
             {users.filter((u) => u.status === "active").length}
           </p>
         </div>
-        <div className="border-border bg-card rounded-none border p-6">
+        <div className={cn("border-border bg-card border p-6", mode.radius)}>
           <p className="text-muted-foreground text-sm font-medium">Admins</p>
           <p className="text-primary text-3xl font-bold">
             {users.filter((u) => u.role === "ADMIN").length}

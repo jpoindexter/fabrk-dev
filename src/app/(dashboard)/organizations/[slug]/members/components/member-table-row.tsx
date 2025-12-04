@@ -7,14 +7,7 @@
 
 import * as React from "react";
 import { useSession } from "next-auth/react";
-import {
-  MoreVertical,
-  Shield,
-  Trash2,
-  Crown,
-  UserCheck,
-  UserX,
-} from "lucide-react";
+import { MoreVertical, Shield, Trash2, Crown, UserCheck, UserX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -27,6 +20,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { TableCell, TableRow } from "@/components/ui/table";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Member {
   id: string;
@@ -92,7 +87,7 @@ export function MemberTableRow({
     <TableRow>
       <TableCell>
         <div className="flex items-center gap-4">
-          <Avatar className="h-8 w-8 border border-border">
+          <Avatar className="border-border h-8 w-8 border">
             <AvatarImage src={member.user.image || ""} />
             <AvatarFallback className="text-xs">
               {member.user.name
@@ -104,28 +99,21 @@ export function MemberTableRow({
           </Avatar>
           <div>
             <p className="font-medium">{member.user.name}</p>
-            {isCurrentUser && (
-              <span className="text-xs text-muted-foreground">(You)</span>
-            )}
+            {isCurrentUser && <span className="text-muted-foreground text-xs">(You)</span>}
           </div>
         </div>
       </TableCell>
       <TableCell>
-        <span className="text-sm text-muted-foreground">
-          {member.user.email}
-        </span>
+        <span className="text-muted-foreground text-sm">{member.user.email}</span>
       </TableCell>
       <TableCell>
-        <Badge
-          variant={getRoleBadgeVariant(member.role)}
-          className="gap-1 w-24 justify-center"
-        >
+        <Badge variant={getRoleBadgeVariant(member.role)} className="w-24 justify-center gap-1">
           {getRoleIcon(member.role)}
           {member.role}
         </Badge>
       </TableCell>
       <TableCell>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-muted-foreground text-sm">
           {new Date(member.joinedAt).toLocaleDateString()}
         </span>
       </TableCell>
@@ -137,10 +125,7 @@ export function MemberTableRow({
                 <MoreVertical className="h-4 w-4" aria-hidden="true" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="rounded-none border border-border"
-            >
+            <DropdownMenuContent align="end" className={cn("border-border border", mode.radius)}>
               <DropdownMenuLabel>Manage Member</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem

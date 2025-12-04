@@ -6,6 +6,8 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface PaginationProps {
   currentPage: number;
@@ -21,7 +23,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <StyledCardHeader code="0x00" title="PAGINATION" />
       <div className="p-4">
         <div className="flex items-center justify-between">
-          <div className="text-muted-foreground font-mono text-xs">
+          <div className={cn(mode.font, "text-muted-foreground text-xs")}>
             [PAGE]: {currentPage} OF {totalPages}
           </div>
           <div className="flex items-center gap-2">
@@ -30,7 +32,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               size="sm"
               onClick={() => onPageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="h-8 rounded-none font-mono text-xs"
+              className={cn(mode.radius, mode.font, "h-8 text-xs")}
             >
               <ChevronLeft className="mr-1 h-3 w-3" />
               PREV
@@ -42,7 +44,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
                   variant={currentPage === page ? "default" : "outline"}
                   size="sm"
                   onClick={() => onPageChange(page)}
-                  className="h-8 w-8 rounded-none p-0 font-mono text-xs"
+                  className={cn(mode.radius, mode.font, "h-8 w-8 p-0 text-xs")}
                 >
                   {page}
                 </Button>
@@ -53,7 +55,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
               size="sm"
               onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className="h-8 rounded-none font-mono text-xs"
+              className={cn(mode.radius, mode.font, "h-8 text-xs")}
             >
               NEXT
               <ChevronRight className="ml-1 h-3 w-3" />

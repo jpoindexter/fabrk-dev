@@ -7,6 +7,8 @@
 
 import { Users } from "lucide-react";
 import { InviteMemberDialog } from "./invite-member-dialog";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface MembersPageHeaderProps {
   organizationId: string;
@@ -22,22 +24,17 @@ export function MembersPageHeader({
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <div className="rounded-none border border-border bg-primary p-2">
-          <Users className="h-6 w-6 text-primary-foreground" />
+        <div className={cn("border-border bg-primary border p-2", mode.radius)}>
+          <Users className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
           <h1 className="text-3xl font-bold">Team Members</h1>
-          <p className="text-muted-foreground">
-            Manage members and roles for {organizationName}
-          </p>
+          <p className="text-muted-foreground">Manage members and roles for {organizationName}</p>
         </div>
       </div>
 
       {isOwnerOrAdmin && (
-        <InviteMemberDialog
-          organizationId={organizationId}
-          organizationName={organizationName}
-        />
+        <InviteMemberDialog organizationId={organizationId} organizationName={organizationName} />
       )}
     </div>
   );

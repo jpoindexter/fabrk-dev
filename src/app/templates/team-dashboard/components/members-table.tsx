@@ -25,6 +25,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Users, Crown, Shield, Eye, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Member {
   id: string;
@@ -67,12 +69,17 @@ export function MembersTable({ members }: MembersTableProps) {
     <div className="border-border bg-card border">
       <StyledCardHeader code="0x00" title="TEAM_MEMBERS" />
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
         <div className="border-border border">
           {/* Table Header */}
-          <div className="border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 font-mono text-xs">
+          <div
+            className={cn(
+              mode.font,
+              "border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 text-xs"
+            )}
+          >
             <span className="text-muted-foreground">[MEMBER]</span>
             <span className="text-muted-foreground">[ROLE]</span>
             <span className="text-muted-foreground">[LAST_ACTIVE]</span>
@@ -85,38 +92,52 @@ export function MembersTable({ members }: MembersTableProps) {
               return (
                 <div key={member.id} className="grid grid-cols-4 items-center px-4 py-4">
                   <div className="flex items-center gap-4">
-                    <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border font-mono text-xs">
+                    <div
+                      className={cn(
+                        mode.font,
+                        "border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs"
+                      )}
+                    >
                       {member.name
                         .split(" ")
                         .map((n) => n[0])
                         .join("")}
                     </div>
                     <div>
-                      <p className="font-mono text-xs font-semibold">{member.name}</p>
-                      <p className="text-muted-foreground font-mono text-xs">{member.email}</p>
+                      <p className={cn(mode.font, "text-xs font-semibold")}>{member.name}</p>
+                      <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                        {member.email}
+                      </p>
                     </div>
                   </div>
                   <div>
-                    <span className="border-border inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs">
+                    <span
+                      className={cn(
+                        mode.font,
+                        "border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs"
+                      )}
+                    >
                       <RoleIcon className="h-3 w-3" />
                       {member.role.toUpperCase()}
                     </span>
                   </div>
-                  <div className="text-muted-foreground font-mono text-xs">{member.lastActive}</div>
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    {member.lastActive}
+                  </div>
                   <div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="rounded-none font-mono text-xs"
+                          className={cn(mode.radius, mode.font, "text-xs")}
                         >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
                         align="end"
-                        className="border-border rounded-none border font-mono text-xs"
+                        className={cn(mode.radius, mode.font, "border-border border text-xs")}
                       >
                         <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
                         <DropdownMenuSeparator />
@@ -147,20 +168,23 @@ export function MembersTable({ members }: MembersTableProps) {
                                 </DropdownMenuItem>
                               </AlertDialogTrigger>
                               <AlertDialogContent>
-                                <AlertDialogTitle className="font-mono">
+                                <AlertDialogTitle className={cn(mode.font)}>
                                   [CONFIRM_REMOVAL]
                                 </AlertDialogTitle>
-                                <AlertDialogDescription className="font-mono text-xs">
+                                <AlertDialogDescription className={cn(mode.font, "text-xs")}>
                                   WARNING: This action will remove the member from the team. They
                                   will lose all access.
                                 </AlertDialogDescription>
                                 <div className="flex justify-end gap-4">
-                                  <AlertDialogCancel className="font-mono text-xs">
+                                  <AlertDialogCancel className={cn(mode.font, "text-xs")}>
                                     &gt; CANCEL
                                   </AlertDialogCancel>
                                   <AlertDialogAction
                                     onClick={handleRemoveMember}
-                                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
+                                    className={cn(
+                                      mode.font,
+                                      "bg-destructive text-destructive-foreground hover:bg-destructive/90 text-xs"
+                                    )}
                                   >
                                     &gt; CONFIRM_REMOVE
                                   </AlertDialogAction>

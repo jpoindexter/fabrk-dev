@@ -5,6 +5,8 @@
 
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Plan {
   name: string;
@@ -21,7 +23,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
   return (
     <>
       {/* Alert */}
-      <div className="border-warning bg-warning/10 border p-4 font-mono text-xs">
+      <div className={cn(mode.font, "border-warning bg-warning/10 border p-4 text-xs")}>
         <span className="text-warning-foreground font-bold">[WARNING]:</span>{" "}
         <span className="text-foreground">
           Changing your plan will take effect at the next billing cycle
@@ -38,9 +40,14 @@ export function PlanCards({ plans }: PlanCardsProps) {
             <StyledCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
             <div className="flex flex-1 flex-col p-4">
               <div className="mb-4 flex items-center justify-between">
-                <div className="text-muted-foreground font-mono text-xs">[{plan.name}]:</div>
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>[{plan.name}]:</div>
                 {plan.current && (
-                  <span className="border-primary/50 text-primary border px-2 py-0.5 font-mono text-xs">
+                  <span
+                    className={cn(
+                      mode.font,
+                      "border-primary/50 text-primary border px-2 py-0.5 text-xs"
+                    )}
+                  >
                     CURRENT
                   </span>
                 )}
@@ -52,10 +59,12 @@ export function PlanCards({ plans }: PlanCardsProps) {
               </div>
 
               <div className="border-border mb-4 flex-1 border-t pt-4">
-                <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
+                <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+                  [FEATURES]:
+                </div>
                 <div className="space-y-1">
                   {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 font-mono text-xs">
+                    <div key={idx} className={cn(mode.font, "flex items-center gap-2 text-xs")}>
                       <span className="text-success">&gt;</span>
                       <span>{feature}</span>
                     </div>
@@ -64,7 +73,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
               </div>
 
               <Button
-                className="w-full rounded-none font-mono text-xs"
+                className={cn(mode.radius, mode.font, "w-full text-xs")}
                 variant={plan.current ? "outline" : "default"}
                 disabled={plan.current}
               >
@@ -77,15 +86,15 @@ export function PlanCards({ plans }: PlanCardsProps) {
 
       {/* Custom Plan */}
       <div className="border-border bg-card border p-4">
-        <div className="text-muted-foreground mb-2 font-mono text-xs">[CUSTOM_PLAN]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>[CUSTOM_PLAN]:</div>
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-mono text-sm">Need a custom plan?</div>
-            <div className="text-muted-foreground font-mono text-xs">
+            <div className={cn(mode.font, "text-sm")}>Need a custom plan?</div>
+            <div className={cn(mode.font, "text-muted-foreground text-xs")}>
               Contact our sales team for custom pricing and features
             </div>
           </div>
-          <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
+          <Button variant="outline" size="sm" className={cn(mode.radius, mode.font, "text-xs")}>
             &gt; CONTACT_SALES
           </Button>
         </div>

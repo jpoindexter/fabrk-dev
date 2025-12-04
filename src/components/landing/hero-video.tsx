@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface HeroVideoProps {
   headline?: string;
@@ -63,18 +65,34 @@ export function HeroVideo({
         <div className="mx-auto max-w-4xl text-center">
           {/* Early Access Badge */}
           <div className="mb-8">
-            <span className="border-foreground/30 bg-foreground/10 text-foreground inline-block border-2 px-4 py-2 font-mono text-sm backdrop-blur-sm">
+            <span
+              className={cn(
+                mode.radius,
+                mode.font,
+                "border-foreground/30 bg-foreground/10 text-foreground inline-block border-2 px-4 py-2 text-sm backdrop-blur-sm"
+              )}
+            >
               [ EARLY_ACCESS ] JOIN_FIRST_100_CUSTOMERS
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-foreground mb-8 font-mono text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1
+            className={cn(
+              mode.font,
+              "text-foreground mb-8 text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+            )}
+          >
             {headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-foreground/90 mx-auto mb-12 max-w-2xl font-mono text-lg leading-relaxed sm:text-xl">
+          <p
+            className={cn(
+              mode.font,
+              "text-foreground/90 mx-auto mb-12 max-w-2xl text-lg leading-relaxed sm:text-xl"
+            )}
+          >
             &gt; {subheadline}
           </p>
 
@@ -82,7 +100,11 @@ export function HeroVideo({
           <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="bg-card text-foreground hover:bg-muted h-14 rounded-none px-8 font-mono text-sm font-semibold transition-all hover:scale-105"
+              className={cn(
+                mode.radius,
+                mode.font,
+                "bg-card text-foreground hover:bg-muted h-14 px-8 text-sm font-semibold transition-all hover:scale-105"
+              )}
               asChild
             >
               <Link href={ctaPrimary.href}>
@@ -91,7 +113,11 @@ export function HeroVideo({
             </Button>
             <Button
               size="lg"
-              className="border-foreground text-foreground hover:bg-card hover:text-foreground h-14 rounded-none border-2 bg-transparent px-8 font-mono text-sm font-semibold transition-all"
+              className={cn(
+                mode.radius,
+                mode.font,
+                "border-foreground text-foreground hover:bg-card hover:text-foreground h-14 border-2 bg-transparent px-8 text-sm font-semibold transition-all"
+              )}
               asChild
             >
               <Link href={ctaSecondary.href}>
@@ -101,11 +127,14 @@ export function HeroVideo({
           </div>
 
           {/* Trust Badges */}
-          <div className="mb-8 flex flex-wrap justify-center gap-4 font-mono">
+          <div className={cn(mode.font, "mb-8 flex flex-wrap justify-center gap-4")}>
             {trustBadges.map((badge) => (
               <span
                 key={badge}
-                className="border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm"
+                className={cn(
+                  mode.radius,
+                  "border-foreground/30 bg-foreground/10 text-foreground border-2 px-4 py-1 text-xs backdrop-blur-sm"
+                )}
               >
                 [{badge.toUpperCase().replace(/ /g, "_")}]
               </span>
@@ -113,7 +142,7 @@ export function HeroVideo({
           </div>
 
           {/* Final Sale Notice */}
-          <p className="text-foreground/80 font-mono text-xs">
+          <p className={cn(mode.font, "text-foreground/80 text-xs")}>
             ALL_SALES_FINAL • LIFETIME_V1.X_UPDATES
           </p>
         </div>

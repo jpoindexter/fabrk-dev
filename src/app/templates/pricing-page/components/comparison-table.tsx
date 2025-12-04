@@ -5,6 +5,8 @@
 
 import { Check, X } from "lucide-react";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ComparisonFeature {
   name: string;
@@ -34,10 +36,12 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
       <StyledCardHeader code="0x00" title="COMPARISON" />
 
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[FEATURE_COMPARISON]:</div>
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [FEATURE_COMPARISON]:
+        </div>
 
         <div className="border-border overflow-x-auto border">
-          <table className="w-full font-mono text-xs">
+          <table className={cn(mode.font, "w-full text-xs")}>
             <thead>
               <tr className="border-border bg-muted/30 border-b">
                 <th className="text-muted-foreground px-4 py-4 text-left">[FEATURE]</th>

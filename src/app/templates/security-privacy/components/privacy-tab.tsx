@@ -4,6 +4,8 @@
 
 import { Switch } from "@/components/ui/switch";
 import { StyledCardHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface PrivacySettings {
   profileVisibility: boolean;
@@ -26,8 +28,10 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
       <div className="border-border bg-card border">
         <StyledCardHeader code="0x00" title="PROFILE_PRIVACY" />
         <div className="p-4">
-          <div className="text-muted-foreground mb-4 font-mono text-xs">[PROFILE_ACTIVITY]:</div>
-          <div className="space-y-4 font-mono text-xs">
+          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+            [PROFILE_ACTIVITY]:
+          </div>
+          <div className={cn(mode.font, "space-y-4 text-xs")}>
             {[
               {
                 key: "profileVisibility" as const,
@@ -56,7 +60,10 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
                 <Switch
                   checked={privacy[setting.key]}
                   onCheckedChange={() => onToggle(setting.key)}
-                  className="h-5 w-9 rounded-none [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                  className={cn(
+                    mode.radius,
+                    "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                  )}
                 />
               </div>
             ))}
@@ -68,8 +75,10 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
       <div className="border-border bg-card border">
         <StyledCardHeader code="0x00" title="COOKIES" />
         <div className="p-4">
-          <div className="text-muted-foreground mb-4 font-mono text-xs">[COOKIE_PREFERENCES]:</div>
-          <div className="space-y-4 font-mono text-xs">
+          <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+            [COOKIE_PREFERENCES]:
+          </div>
+          <div className={cn(mode.font, "space-y-4 text-xs")}>
             {[
               {
                 key: "cookiesEssential" as const,
@@ -102,7 +111,10 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
                   checked={privacy[setting.key]}
                   onCheckedChange={() => onToggle(setting.key)}
                   disabled={setting.disabled}
-                  className="h-5 w-9 rounded-none [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                  className={cn(
+                    mode.radius,
+                    "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                  )}
                 />
               </div>
             ))}

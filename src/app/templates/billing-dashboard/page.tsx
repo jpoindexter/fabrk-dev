@@ -20,6 +20,8 @@ import { RecentInvoicesCard } from "./components/recent-invoices-card";
 import { PlanCards } from "./components/plan-cards";
 import { BillingHistoryTable } from "./components/billing-history-table";
 import { TemplateFeaturesCard } from "./components/template-features-card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock data
 const subscription = {
@@ -175,7 +177,7 @@ export default function BillingDashboardTemplate() {
             title="Billing & Subscription"
             description="Manage your subscription, payments, and billing information"
           />
-          <Button className="rounded-none font-mono text-xs">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <ArrowUpRight className="mr-2 h-4 w-4" />
             &gt; UPGRADE_PLAN
           </Button>

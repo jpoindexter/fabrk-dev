@@ -12,6 +12,8 @@ import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { EmailFeatures } from "./components/email-features";
 import { TemplatePageHeader } from "@/components/ui/card";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string, primaryColor: string): string {
@@ -110,19 +112,24 @@ export default function EmailTemplatesShowcase() {
                   <div className="mb-6 flex items-center justify-between">
                     <div>
                       <div className="mb-1 flex items-center gap-2">
-                        <h2 className="font-mono text-lg font-bold">{template.name}</h2>
-                        <span className="border-border text-muted-foreground border px-2 py-0.5 font-mono text-xs">
+                        <h2 className={cn(mode.font, "text-lg font-bold")}>{template.name}</h2>
+                        <span
+                          className={cn(
+                            mode.font,
+                            "border-border text-muted-foreground border px-2 py-0.5 text-xs"
+                          )}
+                        >
                           {template.category}
                         </span>
                       </div>
-                      <p className="text-muted-foreground font-mono text-sm">
+                      <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                         {template.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Email Preview */}
-                  <div className="border-border bg-muted mb-6 rounded-none border p-8">
+                  <div className={cn(mode.radius, "border-border bg-muted mb-6 border p-8")}>
                     <iframe
                       srcDoc={injectScrollbarStyles(template.preview, primaryColor)}
                       title={template.name}
@@ -131,7 +138,12 @@ export default function EmailTemplatesShowcase() {
                   </div>
 
                   {/* Template Details */}
-                  <div className="border-border grid gap-6 border-t pt-6 font-mono text-xs md:grid-cols-2">
+                  <div
+                    className={cn(
+                      mode.font,
+                      "border-border grid gap-6 border-t pt-6 text-xs md:grid-cols-2"
+                    )}
+                  >
                     <div>
                       <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
                       <div className="flex flex-wrap gap-2">

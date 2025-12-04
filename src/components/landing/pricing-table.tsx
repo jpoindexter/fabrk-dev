@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface PricingPlan {
   name: string;
@@ -123,44 +125,50 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
   const renderFeatureValue = (value: boolean | string) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className="h-5 w-5 text-success" />
+        <Check className="text-success h-5 w-5" />
       ) : (
-        <X className="h-5 w-5 text-destructive" />
+        <X className="text-destructive h-5 w-5" />
       );
     }
-    return <span className="text-sm font-medium text-foreground">{value}</span>;
+    return <span className="text-foreground text-sm font-medium">{value}</span>;
   };
 
   return (
-    <section className="border-t border-border bg-background px-6 py-24 font-mono" id="pricing">
+    <section
+      className={cn(mode.font, "border-border bg-background border-t px-6 py-24")}
+      id="pricing"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <span className="text-xs text-muted-foreground">[0x00]</span>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground">
+          <span className="text-muted-foreground text-xs">[0x00]</span>
+          <h2 className="text-foreground mb-4 text-3xl font-bold tracking-tight">
             COMPARE_AND_CHOOSE
           </h2>
-          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
             &gt; See how Fabrk stacks up against the competition. Same features, 60-77% cheaper.
           </p>
         </div>
 
         {/* Pricing Table */}
-        <div className="overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none">
+        <div
+          className={cn(
+            mode.radius,
+            "[&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-2"
+          )}
+        >
           <div className="inline-block min-w-full align-middle">
-            <table className="min-w-full border-2 border-foreground shadow">
+            <table className={cn(mode.radius, "border-foreground min-w-full border-2 shadow")}>
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 border-b-2 border-r-2 border-foreground bg-muted px-6 py-4 text-left">
-                    <span className="text-sm font-semibold text-muted-foreground">
-                      Features
-                    </span>
+                  <th className="border-foreground bg-muted sticky left-0 z-10 border-r-2 border-b-2 px-6 py-4 text-left">
+                    <span className="text-muted-foreground text-sm font-semibold">Features</span>
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`border-b-2 border-l-2 border-foreground px-6 py-4 ${
+                      className={`border-foreground border-b-2 border-l-2 px-6 py-4 ${
                         plan.highlighted ? "bg-primary text-primary-foreground" : "bg-muted"
                       }`}
                     >
@@ -175,7 +183,9 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           </h3>
                           <p
                             className={`mt-1 text-sm ${
-                              plan.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"
+                              plan.highlighted
+                                ? "text-primary-foreground/80"
+                                : "text-muted-foreground"
                             }`}
                           >
                             {plan.description}
@@ -189,7 +199,12 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                           {plan.price}
                         </div>
                         {plan.highlighted && (
-                          <span className="inline-block border border-primary-foreground/30 bg-primary-foreground/10 px-2 py-0.5 text-xs text-primary-foreground">
+                          <span
+                            className={cn(
+                              mode.radius,
+                              "border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground inline-block border px-2 py-0.5 text-xs"
+                            )}
+                          >
                             [BEST_VALUE]
                           </span>
                         )}
@@ -202,25 +217,18 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
               {/* Feature Rows */}
               <tbody>
                 {Object.entries(featureLabels).map(([key, label], _index) => (
-                  <tr
-                    key={key}
-                    className="bg-card"
-                  >
-                    <td className="sticky left-0 z-10 border-r-2 border-foreground bg-inherit px-6 py-4">
-                      <span className="text-sm font-semibold text-foreground">
-                        {label}
-                      </span>
+                  <tr key={key} className="bg-card">
+                    <td className="border-foreground sticky left-0 z-10 border-r-2 bg-inherit px-6 py-4">
+                      <span className="text-foreground text-sm font-semibold">{label}</span>
                     </td>
                     {plans.map((plan) => (
                       <td
                         key={`${plan.name}-${key}`}
-                        className={`border-l-2 border-foreground px-6 py-4 text-center ${
+                        className={`border-foreground border-l-2 px-6 py-4 text-center ${
                           plan.highlighted ? "" : ""
                         }`}
                       >
-                        {renderFeatureValue(
-                          plan.features[key] as boolean | string
-                        )}
+                        {renderFeatureValue(plan.features[key] as boolean | string)}
                       </td>
                     ))}
                   </tr>
@@ -229,26 +237,27 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
               {/* CTA Row */}
               <tfoot>
-                <tr className="border-t-2 border-foreground">
-                  <td className="sticky left-0 z-10 border-r-2 border-foreground bg-card px-6 py-6"></td>
+                <tr className="border-foreground border-t-2">
+                  <td className="border-foreground bg-card sticky left-0 z-10 border-r-2 px-6 py-6"></td>
                   {plans.map((plan) => (
                     <td
                       key={`cta-${plan.name}`}
-                      className={`border-l-2 border-foreground px-6 py-6 ${
+                      className={`border-foreground border-l-2 px-6 py-6 ${
                         plan.highlighted ? "" : "bg-card"
                       }`}
                     >
                       <Button
-                        className={`rounded-none w-full ${
-                          plan.highlighted
-                            ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                            : "border-2 border-foreground bg-card text-foreground hover:bg-foreground hover:text-background"
-                        }`}
+                        className={cn(
+                          mode.radius,
+                          `w-full ${
+                            plan.highlighted
+                              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                              : "border-foreground bg-card text-foreground hover:bg-foreground hover:text-background border-2"
+                          }`
+                        )}
                         asChild
                       >
-                        <Link href={plan.cta?.href || "#"}>
-                          {plan.cta?.text || "Learn More"}
-                        </Link>
+                        <Link href={plan.cta?.href || "#"}>{plan.cta?.text || "Learn More"}</Link>
                       </Button>
                     </td>
                   ))}
@@ -260,14 +269,14 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
 
         {/* Savings Highlight */}
         <div className="mt-8 text-center">
-          <p className="text-sm font-semibold text-primary">
+          <p className={cn(mode.font, "text-primary text-sm font-semibold")}>
             [SAVINGS] SAVE_60-77%_WITH_FABRK • SAME_FEATURES_BETTER_STACK
           </p>
         </div>
 
         {/* Final Sale Notice */}
         <div className="mt-8 text-center">
-          <p className="text-xs text-muted-foreground">
+          <p className={cn(mode.font, "text-muted-foreground text-xs")}>
             ALL_SALES_FINAL • DIGITAL_PRODUCT • LIFETIME_V1.X_UPDATES_INCLUDED
           </p>
         </div>

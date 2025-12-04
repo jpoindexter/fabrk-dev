@@ -13,6 +13,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const teamSizes = [
   { value: "1", label: "Just me" },
@@ -50,33 +52,33 @@ export function StepWorkspace({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="mb-1 font-mono text-xl font-semibold">Your Workspace</h2>
-        <p className="text-muted-foreground font-mono text-xs">Set up your team workspace</p>
+        <h2 className={cn(mode.font, "mb-1 text-xl font-semibold")}>Your Workspace</h2>
+        <p className={cn(mode.font, "text-muted-foreground text-xs")}>Set up your team workspace</p>
       </div>
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label className="font-mono text-xs">[WORKSPACE_NAME]:</Label>
+          <Label className={cn(mode.font, "text-xs")}>[WORKSPACE_NAME]:</Label>
           <Input
             placeholder="Acme Inc"
             value={workspaceName}
             onChange={(e) => onWorkspaceNameChange(e.target.value)}
-            className="rounded-none font-mono text-sm"
+            className={cn(mode.radius, mode.font, "text-sm")}
           />
         </div>
 
         <div className="space-y-2">
-          <Label className="font-mono text-xs">[TEAM_SIZE]:</Label>
+          <Label className={cn(mode.font, "text-xs")}>[TEAM_SIZE]:</Label>
           <Select value={teamSize} onValueChange={onTeamSizeChange}>
-            <SelectTrigger className="rounded-none font-mono text-sm">
+            <SelectTrigger className={cn(mode.radius, mode.font, "text-sm")}>
               <SelectValue placeholder="Select team size" />
             </SelectTrigger>
-            <SelectContent className="rounded-none">
+            <SelectContent className={cn(mode.radius)}>
               {teamSizes.map((size) => (
                 <SelectItem
                   key={size.value}
                   value={size.value}
-                  className="text-left font-mono text-sm"
+                  className={cn(mode.font, "text-left text-sm")}
                 >
                   {size.label}
                 </SelectItem>
@@ -86,7 +88,7 @@ export function StepWorkspace({
         </div>
 
         <div className="space-y-2">
-          <Label className="font-mono text-xs">[PRIMARY_USE_CASE]:</Label>
+          <Label className={cn(mode.font, "text-xs")}>[PRIMARY_USE_CASE]:</Label>
           <div className="space-y-2">
             {useCases.map((useCase) => (
               <div key={useCase.id} className="flex items-center space-x-2">
@@ -95,7 +97,7 @@ export function StepWorkspace({
                   checked={selectedUseCases.includes(useCase.id)}
                   onCheckedChange={() => onToggleUseCase(useCase.id)}
                 />
-                <label htmlFor={useCase.id} className="cursor-pointer font-mono text-xs">
+                <label htmlFor={useCase.id} className={cn(mode.font, "cursor-pointer text-xs")}>
                   {useCase.label}
                 </label>
               </div>

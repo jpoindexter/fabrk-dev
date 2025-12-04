@@ -6,6 +6,8 @@
 
 import { motion } from "framer-motion";
 import { FeatureItem, type FeatureItemProps } from "./feature-item";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface FeatureSectionLayoutProps {
   spec: string;
@@ -22,10 +24,12 @@ export function FeatureSectionLayout({
   description,
   features,
   reversed,
-  children
+  children,
 }: FeatureSectionLayoutProps) {
   return (
-    <div className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
+    <div
+      className={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}
+    >
       {/* Text Content */}
       <motion.div
         initial={{ opacity: 0, x: reversed ? 20 : -20 }}
@@ -35,17 +39,22 @@ export function FeatureSectionLayout({
         className="flex flex-col justify-center"
       >
         {/* Spec Label */}
-        <div className="mb-4 inline-block self-start border border-border bg-card px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">[ SPEC ] {spec}</span>
+        <div
+          className={cn(
+            mode.radius,
+            "border-border bg-card mb-4 inline-block self-start border px-4 py-1"
+          )}
+        >
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>[ SPEC ] {spec}</span>
         </div>
 
         {/* Title */}
-        <h3 className="mb-4 font-mono text-2xl font-bold">{title}</h3>
+        <h3 className={cn(mode.font, "mb-4 text-2xl font-bold")}>{title}</h3>
 
         {/* Description */}
-        <div className="mb-6 border-l-2 border-border pl-4">
-          <span className="font-mono text-xs text-muted-foreground">│ [DESC]: </span>
-          <span className="font-mono text-xs text-muted-foreground">{description}</span>
+        <div className="border-border mb-6 border-l-2 pl-4">
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>│ [DESC]: </span>
+          <span className={cn(mode.font, "text-muted-foreground text-xs")}>{description}</span>
         </div>
 
         {/* Feature List */}

@@ -5,6 +5,8 @@
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface ActiveSession {
   id: string;
@@ -42,8 +44,10 @@ export function SecurityTab({
                 <Smartphone className="text-primary h-5 w-5" />
               </div>
               <div>
-                <div className="text-muted-foreground font-mono text-xs">[TWO_FACTOR_AUTH]:</div>
-                <div className="text-muted-foreground font-mono text-xs">
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                  [TWO_FACTOR_AUTH]:
+                </div>
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                   Add an extra layer of security with TOTP
                 </div>
               </div>
@@ -58,11 +62,11 @@ export function SecurityTab({
               {twoFactorEnabled ? "ENABLED" : "DISABLED"}
             </span>
           </div>
-          <p className="text-muted-foreground mb-4 font-mono text-xs">
+          <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             Use an authenticator app like Google Authenticator or Authy to generate time-based
             codes.
           </p>
-          <Button onClick={onEnable2FA} className="rounded-none font-mono text-xs">
+          <Button onClick={onEnable2FA} className={cn(mode.radius, mode.font, "text-xs")}>
             <Smartphone className="mr-2 h-4 w-4" />
             &gt; {twoFactorEnabled ? "MANAGE_2FA" : "ENABLE_2FA"}
           </Button>
@@ -78,12 +82,12 @@ export function SecurityTab({
               <Clock className="text-primary h-5 w-5" />
             </div>
             <div>
-              <div className="text-muted-foreground font-mono text-xs">
+              <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                 [ACTIVE_SESSIONS]: COUNT={activeSessions.length}
               </div>
             </div>
           </div>
-          <div className="space-y-4 font-mono text-xs">
+          <div className={cn(mode.font, "space-y-4 text-xs")}>
             {activeSessions.map((session) => (
               <div
                 key={session.id}
@@ -108,7 +112,7 @@ export function SecurityTab({
                     variant="outline"
                     size="sm"
                     onClick={() => onRevokeSession(session.id)}
-                    className="rounded-none font-mono text-xs"
+                    className={cn(mode.radius, mode.font, "text-xs")}
                   >
                     <LogOut className="mr-2 h-3 w-3" />
                     &gt; REVOKE
@@ -118,7 +122,11 @@ export function SecurityTab({
             ))}
           </div>
           <div className="mt-4 flex justify-end">
-            <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs">
+            <Button
+              variant="destructive"
+              size="sm"
+              className={cn(mode.radius, mode.font, "text-xs")}
+            >
               <LogOut className="mr-2 h-3 w-3" />
               &gt; SIGN_OUT_ALL_OTHER_DEVICES
             </Button>
@@ -136,13 +144,13 @@ export function SecurityTab({
                 <Key className="text-primary h-5 w-5" />
               </div>
               <div>
-                <div className="text-muted-foreground font-mono text-xs">[PASSWORD]:</div>
-                <div className="text-muted-foreground font-mono text-xs">
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>[PASSWORD]:</div>
+                <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                   Last changed: {new Date(lastPasswordChange).toLocaleDateString()}
                 </div>
               </div>
             </div>
-            <Button variant="outline" className="rounded-none font-mono text-xs">
+            <Button variant="outline" className={cn(mode.radius, mode.font, "text-xs")}>
               &gt; CHANGE_PASSWORD
             </Button>
           </div>

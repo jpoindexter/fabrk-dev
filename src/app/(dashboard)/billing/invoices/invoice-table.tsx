@@ -13,6 +13,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Download, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Payment {
   id: string;
@@ -34,11 +36,23 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "succeeded":
-        return <Badge variant="default" className="w-24 justify-center font-semibold">Paid</Badge>;
+        return (
+          <Badge variant="default" className="w-24 justify-center font-semibold">
+            Paid
+          </Badge>
+        );
       case "failed":
-        return <Badge variant="outline" className="w-24 justify-center font-semibold">Failed</Badge>;
+        return (
+          <Badge variant="outline" className="w-24 justify-center font-semibold">
+            Failed
+          </Badge>
+        );
       default:
-        return <Badge variant="secondary" className="w-24 justify-center font-semibold">Pending</Badge>;
+        return (
+          <Badge variant="secondary" className="w-24 justify-center font-semibold">
+            Pending
+          </Badge>
+        );
     }
   };
 
@@ -103,10 +117,7 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       success("Invoice opened", "The invoice has been opened in a new window");
     } catch (err: unknown) {
       console.error("Invoice download error:", err);
-      error(
-        "Download failed",
-        err instanceof Error ? err.message : "Failed to download invoice"
-      );
+      error("Download failed", err instanceof Error ? err.message : "Failed to download invoice");
     } finally {
       setDownloadingId(null);
     }
@@ -126,22 +137,16 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
       <TableBody>
         {payments.map((payment) => (
           <TableRow key={payment.id}>
-            <TableCell className="font-medium">
-              {formatDate(payment.createdAt)}
-            </TableCell>
+            <TableCell className="font-medium">{formatDate(payment.createdAt)}</TableCell>
             <TableCell>
               <div>
-                <p className="font-medium">
-                  {payment.productId || "One-time purchase"}
-                </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="font-medium">{payment.productId || "One-time purchase"}</p>
+                <p className="text-muted-foreground text-xs">
                   Invoice #{payment.stripeId?.slice(-8)}
                 </p>
               </div>
             </TableCell>
-            <TableCell className="font-mono">
-              {formatCurrency(payment.amount)}
-            </TableCell>
+            <TableCell className={mode.font}>{formatCurrency(payment.amount)}</TableCell>
             <TableCell>{getStatusBadge(payment.status)}</TableCell>
             <TableCell className="text-right">
               {payment.status === "succeeded" && (
@@ -152,9 +157,9 @@ export function InvoiceTable({ payments }: InvoiceTableProps) {
                   disabled={downloadingId === payment.id}
                 >
                   {downloadingId === payment.id ? (
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
-                    <Download className="h-4 w-4 mr-2" />
+                    <Download className="mr-2 h-4 w-4" />
                   )}
                   {downloadingId === payment.id ? "Opening..." : "Download"}
                 </Button>

@@ -6,6 +6,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import type { Usage } from "./types";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface UsageStatsCardProps {
   usage: Usage;
@@ -13,7 +15,7 @@ interface UsageStatsCardProps {
 
 export function UsageStatsCard({ usage }: UsageStatsCardProps) {
   return (
-    <Card className="border-border rounded-none border">
+    <Card className={cn("border-border border", mode.radius)}>
       <CardHeader>
         <CardTitle>Usage This Month</CardTitle>
         <CardDescription>Track your organization's resource consumption</CardDescription>

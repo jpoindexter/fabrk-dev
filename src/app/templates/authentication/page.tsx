@@ -8,6 +8,8 @@
 import Link from "next/link";
 import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export default function AuthenticationPage() {
   const categoryTemplates = getTemplatesByCategory("auth");
@@ -19,14 +21,14 @@ export default function AuthenticationPage() {
         {/* Category Header */}
         <section className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [CATEGORY]: AUTHENTICATION
             </span>
           </div>
           <div className="flex items-center gap-4">
             {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
-            <h1 className="font-mono text-3xl font-bold">Authentication</h1>
-            <span className="border-border border px-2 py-0.5 font-mono text-xs">
+            <h1 className={cn(mode.font, "text-3xl font-bold")}>Authentication</h1>
+            <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
               COUNT: {categoryTemplates.length}
             </span>
           </div>
@@ -39,7 +41,7 @@ export default function AuthenticationPage() {
               <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground font-mono text-xs">
+                  <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, "_")}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
@@ -48,7 +50,7 @@ export default function AuthenticationPage() {
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div className="mb-4 flex items-center justify-between font-mono text-xs">
+                  <div className={cn(mode.font, "mb-4 flex items-center justify-between text-xs")}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -61,22 +63,24 @@ export default function AuthenticationPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-2 font-mono text-lg font-semibold">{template.name}</h3>
+                  <h3 className={cn(mode.font, "mb-2 text-lg font-semibold")}>{template.name}</h3>
 
                   {/* Description */}
-                  <div className="mb-4 font-mono text-xs">
+                  <div className={cn(mode.font, "mb-4 text-xs")}>
                     <span className="text-muted-foreground">DESC: </span>
                     <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
+                    <div className={cn(mode.font, "text-muted-foreground mb-2 text-xs")}>
+                      [FEATURES]:
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className="border-border border px-2 py-0.5 font-mono text-xs"
+                          className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}
                         >
                           {feature}
                         </span>
@@ -86,10 +90,20 @@ export default function AuthenticationPage() {
 
                   {/* Action */}
                   <div className="flex items-center justify-between">
-                    <span className="text-primary group-hover:text-primary/80 font-mono text-xs transition-colors">
+                    <span
+                      className={cn(
+                        mode.font,
+                        "text-primary group-hover:text-primary/80 text-xs transition-colors"
+                      )}
+                    >
                       &gt; VIEW_TEMPLATE
                     </span>
-                    <span className="text-muted-foreground font-mono text-xs transition-transform group-hover:translate-x-1">
+                    <span
+                      className={cn(
+                        mode.font,
+                        "text-muted-foreground text-xs transition-transform group-hover:translate-x-1"
+                      )}
+                    >
                       →
                     </span>
                   </div>
@@ -103,8 +117,10 @@ export default function AuthenticationPage() {
         <StyledCard>
           <StyledCardHeader code="0x00" title="AUTH_FEATURES" />
           <div className="p-6">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[AUTH_TEMPLATES]:</div>
-            <div className="space-y-2 font-mono text-xs">
+            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+              [AUTH_TEMPLATES]:
+            </div>
+            <div className={cn(mode.font, "space-y-2 text-xs")}>
               <div>
                 <span className="text-success">&gt;</span> Pre-built flows for Login, Register, and
                 Recovery

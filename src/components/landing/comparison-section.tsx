@@ -7,6 +7,8 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 // Animated counter component
 function AnimatedCounter({
@@ -86,15 +88,17 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
+          <div
+            className={cn(mode.radius, "border-border bg-card mb-4 inline-block border px-4 py-1")}
+          >
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [ [0x50] BUILD_VS_FABRK ] TIME_TO_MARKET │ FIB[21,34,55,89]
             </span>
           </div>
-          <h2 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className={cn(mode.font, "mb-4 text-3xl font-bold tracking-tight lg:text-4xl")}>
             WHY_BUILD_FROM_SCRATCH?
           </h2>
-          <p className="text-muted-foreground max-w-2xl font-mono text-sm">
+          <p className={cn(mode.font, "text-muted-foreground max-w-2xl text-sm")}>
             See how much time and effort Fabrk saves you compared to manual setup.
           </p>
         </motion.div>
@@ -105,11 +109,11 @@ export function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="border-border bg-card border"
+          className={cn(mode.radius, "border-border bg-card border")}
         >
           {/* Table Header */}
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [ [0x51] comparison_table.exe │ PID:4096 ]
             </span>
           </div>
@@ -117,7 +121,12 @@ export function ComparisonSection() {
           {/* Table Content */}
           <div className="p-6">
             {/* Column Headers */}
-            <div className="border-border mb-4 grid grid-cols-3 gap-4 border-b pb-4 font-mono text-xs">
+            <div
+              className={cn(
+                mode.font,
+                "border-border mb-4 grid grid-cols-3 gap-4 border-b pb-4 text-xs"
+              )}
+            >
               <div className="text-muted-foreground">FEATURE</div>
               <div className="text-destructive text-center">MANUAL_SETUP</div>
               <div className="text-success text-center">FABRK</div>
@@ -137,7 +146,10 @@ export function ComparisonSection() {
                   }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   viewport={{ once: true }}
-                  className="border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 font-mono text-xs"
+                  className={cn(
+                    mode.font,
+                    "border-border -mx-4 grid cursor-default grid-cols-3 gap-4 border-b px-4 py-4 text-xs"
+                  )}
                 >
                   <div className="text-foreground">{feature.name}</div>
                   <div className="text-center">
@@ -164,7 +176,7 @@ export function ComparisonSection() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.65 }}
               viewport={{ once: true }}
-              className="border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4 font-mono"
+              className={cn(mode.font, "border-border mt-4 grid grid-cols-3 gap-4 border-t-2 pt-4")}
             >
               <div className="text-sm font-bold">TOTAL</div>
               <div className="text-destructive text-center text-sm font-bold">
@@ -183,14 +195,14 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="mt-6"
         >
-          <div className="border-border bg-card border p-4">
-            <span className="text-muted-foreground font-mono text-xs">
+          <div className={cn(mode.radius, "border-border bg-card border p-4")}>
+            <span className={cn(mode.font, "text-muted-foreground text-xs")}>
               [ [0x52] NOTE ]─────────────────────────────────────────────────────
             </span>
-            <span className="text-muted-foreground mt-1 block font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground mt-1 block text-xs")}>
               │ Start building your unique features on day one. Skip boilerplate.
             </span>
-            <span className="text-muted-foreground mt-1 block font-mono text-xs">
+            <span className={cn(mode.font, "text-muted-foreground mt-1 block text-xs")}>
               └───────────────────────────────────────────────────────────────────┘
             </span>
           </div>

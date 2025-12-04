@@ -28,6 +28,8 @@ import {
   Bell,
   BarChart,
 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const emptyStates = [
   {
@@ -135,7 +137,7 @@ export default function EmptyStatesTemplate() {
             return (
               <div key={state.id} className="border-border bg-card flex flex-col border">
                 <div className="border-border border-b px-4 py-2">
-                  <span className="text-muted-foreground font-mono text-xs">
+                  <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                     [ [0x0{emptyStates.indexOf(state)}] {state.id.toUpperCase().replace(/-/g, "_")}{" "}
                     ]
                   </span>
@@ -161,8 +163,10 @@ export default function EmptyStatesTemplate() {
 
                     {/* Title & Description */}
                     <div className="mt-4">
-                      <h3 className="mb-1 font-mono text-lg font-semibold">{state.title}</h3>
-                      <p className="text-muted-foreground font-mono text-xs">{state.description}</p>
+                      <h3 className={cn(mode.font, "mb-1 text-lg font-semibold")}>{state.title}</h3>
+                      <p className={cn(mode.font, "text-muted-foreground text-xs")}>
+                        {state.description}
+                      </p>
                     </div>
 
                     {/* Terminal Output */}
@@ -193,7 +197,7 @@ export default function EmptyStatesTemplate() {
                           <Button
                             key={idx}
                             variant={action.primary ? "default" : "outline"}
-                            className="rounded-none font-mono text-xs"
+                            className={cn(mode.radius, mode.font, "text-xs")}
                           >
                             {ActionIcon && <ActionIcon className="mr-1 h-3 w-3" />}
                             &gt; {action.label}
@@ -212,8 +216,10 @@ export default function EmptyStatesTemplate() {
         <StyledCard>
           <StyledCardHeader code="0x08" title="USE_CASES" />
           <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
-            <div className="grid gap-4 font-mono text-xs md:grid-cols-2">
+            <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+              [WHEN_TO_USE]:
+            </div>
+            <div className={cn(mode.font, "grid gap-4 text-xs md:grid-cols-2")}>
               <div className="space-y-2">
                 <div className="font-semibold">[NO_DATA]</div>
                 <div className="text-muted-foreground">

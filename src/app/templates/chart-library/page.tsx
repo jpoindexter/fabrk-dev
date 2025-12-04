@@ -28,6 +28,8 @@ import {
   Legend,
 } from "recharts";
 import { TrendingUp, Download } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Mock data
 const revenueData = [
@@ -94,7 +96,7 @@ const CustomTooltip = ({
 }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="border-border bg-card border p-4 font-mono text-xs">
+      <div className={cn(mode.font, "border-border bg-card border p-4 text-xs")}>
         <p className="mb-1 font-bold">{label}</p>
         {payload.map((entry: TooltipPayload, index: number) => (
           <p key={index} style={{ color: entry.color }}>
@@ -128,7 +130,7 @@ export default function ChartLibraryTemplate() {
             title="Chart Library"
             description="Recharts visualization components for data-driven dashboards"
           />
-          <Button className="rounded-none font-mono text-xs">
+          <Button className={cn(mode.radius, mode.font, "text-xs")}>
             <Download className="mr-2 h-4 w-4" />
             &gt; VIEW_DOCS
           </Button>
@@ -137,33 +139,41 @@ export default function ChartLibraryTemplate() {
         {/* Stats - Terminal Style */}
         <div className="grid gap-4 md:grid-cols-4">
           <div className="border-border bg-card border p-4">
-            <div className="text-muted-foreground mb-1 font-mono text-xs">[TOTAL_REVENUE]:</div>
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
+              [TOTAL_REVENUE]:
+            </div>
             <div className="text-3xl font-bold">$91.9K</div>
-            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
+            <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +23.5%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div className="text-muted-foreground mb-1 font-mono text-xs">[ACTIVE_USERS]:</div>
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
+              [ACTIVE_USERS]:
+            </div>
             <div className="text-3xl font-bold">12.5K</div>
-            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
+            <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +941%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div className="text-muted-foreground mb-1 font-mono text-xs">[CONVERSION_RATE]:</div>
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
+              [CONVERSION_RATE]:
+            </div>
             <div className="text-3xl font-bold">4.5%</div>
-            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
+            <div className={cn(mode.font, "text-success mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3" />
               +0.8%
             </div>
           </div>
           <div className="border-border bg-card border p-4">
-            <div className="text-muted-foreground mb-1 font-mono text-xs">[AVG_ORDER_VALUE]:</div>
+            <div className={cn(mode.font, "text-muted-foreground mb-1 text-xs")}>
+              [AVG_ORDER_VALUE]:
+            </div>
             <div className="text-3xl font-bold">$89</div>
-            <div className="text-destructive mt-1 flex items-center gap-1 font-mono text-xs">
+            <div className={cn(mode.font, "text-destructive mt-1 flex items-center gap-1 text-xs")}>
               <TrendingUp className="h-3 w-3 rotate-180" />
               -2.3%
             </div>
@@ -183,12 +193,14 @@ export default function ChartLibraryTemplate() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="text-muted-foreground font-mono text-xs">[REVENUE_OVERVIEW]:</div>
-                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    [REVENUE_OVERVIEW]:
+                  </div>
+                  <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
                     Monthly revenue, expenses, and profit (2024)
                   </div>
                 </div>
-                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
                   MULTI_LINE
                 </span>
               </div>
@@ -238,12 +250,14 @@ export default function ChartLibraryTemplate() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="text-muted-foreground font-mono text-xs">[USER_GROWTH]:</div>
-                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    [USER_GROWTH]:
+                  </div>
+                  <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
                     Total active users over time
                   </div>
                 </div>
-                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
                   SOLID_FILL
                 </span>
               </div>
@@ -285,14 +299,14 @@ export default function ChartLibraryTemplate() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="text-muted-foreground font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                     [CONVERSION_FUNNEL]:
                   </div>
-                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
                     User journey from visitor to retained customer
                   </div>
                 </div>
-                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
                   HORIZONTAL_BARS
                 </span>
               </div>
@@ -329,12 +343,14 @@ export default function ChartLibraryTemplate() {
             <div className="border-border bg-card border border-t-0 p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="text-muted-foreground font-mono text-xs">[TRAFFIC_SOURCES]:</div>
-                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>
+                    [TRAFFIC_SOURCES]:
+                  </div>
+                  <div className={cn(mode.font, "text-muted-foreground mt-1 text-xs")}>
                     Distribution of website visitors by source
                   </div>
                 </div>
-                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                <span className={cn(mode.font, "border-border border px-2 py-0.5 text-xs")}>
                   DONUT_CHART
                 </span>
               </div>
@@ -366,7 +382,7 @@ export default function ChartLibraryTemplate() {
 
                 <div className="space-y-4">
                   {trafficSourceData.map((source, idx) => (
-                    <div key={idx} className="flex items-center gap-4 font-mono text-sm">
+                    <div key={idx} className={cn(mode.font, "flex items-center gap-4 text-sm")}>
                       <div
                         className="border-border h-4 w-4 border"
                         style={{ backgroundColor: source.color }}

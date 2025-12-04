@@ -5,13 +5,17 @@
  */
 
 import { CodeWindow } from "./code-window";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 export function ImplementationNote() {
   return (
     <CodeWindow filename="features.md">
       <div className="p-4">
-        <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-        <div className="space-y-1.5 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
+          [TEMPLATE_FEATURES]:
+        </div>
+        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> 4-tab navigation (General, Account, Privacy,
             Billing)
@@ -51,7 +55,7 @@ export function ImplementationNote() {
             <span className="text-success">&gt;</span> Terminal console aesthetic
           </div>
         </div>
-        <div className="text-muted-foreground mt-4 font-mono text-xs">
+        <div className={cn(mode.font, "text-muted-foreground mt-4 text-xs")}>
           [NOTE]: Form components in src/components/settings/. Connect to your API for save
           functionality.
         </div>

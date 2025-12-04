@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import {
   Dialog,
   DialogContent,
@@ -116,25 +118,27 @@ export function ExitIntentPopup({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-md rounded-none">
+      <DialogContent className={cn(mode.radius, "max-w-md")}>
         <DialogHeader>
           <div className="mb-4 flex justify-center">
-            <div className="bg-primary/10 p-4">
+            <div className={cn(mode.radius, "bg-primary/10 p-4")}>
               <Sparkles className="text-primary h-8 w-8" />
             </div>
           </div>
-          <DialogTitle className="text-center font-mono text-2xl">{title}</DialogTitle>
-          <DialogDescription className="text-center font-mono text-sm">
+          <DialogTitle className={cn(mode.font, "text-center text-2xl")}>{title}</DialogTitle>
+          <DialogDescription className={cn(mode.font, "text-center text-sm")}>
             {description}
           </DialogDescription>
         </DialogHeader>
 
         {showPricing && (
-          <div className="border-border bg-card my-4 border p-4">
+          <div className={cn(mode.radius, "border-border bg-card my-4 border p-4")}>
             <div className="text-center">
               <div className="mb-2 flex items-center justify-center gap-4">
-                <span className="text-foreground font-mono text-3xl font-bold">$175</span>
-                <span className="text-muted-foreground font-mono text-lg line-through">$299</span>
+                <span className={cn(mode.font, "text-foreground text-3xl font-bold")}>$175</span>
+                <span className={cn(mode.font, "text-muted-foreground text-lg line-through")}>
+                  $299
+                </span>
               </div>
               <span className="text-muted-foreground block text-xs">
                 One-time payment. Lifetime access.
@@ -146,14 +150,14 @@ export function ExitIntentPopup({
         <DialogFooter className="flex-col gap-2 sm:flex-col">
           <PolarCheckoutButton
             discountId={EXIT_INTENT_DISCOUNT_ID}
-            className="w-full rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "w-full text-xs")}
           >
             &gt; GET_FABRK_NOW
           </PolarCheckoutButton>
           <Button
             onClick={handleClose}
             variant="ghost"
-            className="w-full rounded-none font-mono text-xs"
+            className={cn(mode.radius, mode.font, "w-full text-xs")}
             size="sm"
           >
             {secondaryCtaText}

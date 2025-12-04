@@ -25,6 +25,8 @@ import {
   ArrowLeft,
   AlertTriangle,
 } from "lucide-react";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 const errorPages = [
   {
@@ -167,7 +169,7 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Error Code */}
-                      <div className="font-mono">
+                      <div className={cn(mode.font)}>
                         <span
                           className={`text-6xl font-bold ${
                             error.id === "503" ? "text-warning" : "text-destructive"
@@ -179,8 +181,10 @@ export default function ErrorPagesTemplate() {
 
                       {/* Title & Description */}
                       <div>
-                        <h2 className="mb-2 font-mono text-2xl font-semibold">{error.title}</h2>
-                        <p className="text-muted-foreground font-mono text-sm">
+                        <h2 className={cn(mode.font, "mb-2 text-2xl font-semibold")}>
+                          {error.title}
+                        </h2>
+                        <p className={cn(mode.font, "text-muted-foreground text-sm")}>
                           {error.description}
                         </p>
                       </div>
@@ -208,31 +212,37 @@ export default function ErrorPagesTemplate() {
                       {/* Actions */}
                       <div className="flex items-center justify-center gap-4">
                         {error.actions.includes("GO_HOME") && (
-                          <Button className="rounded-none font-mono text-xs">
+                          <Button className={cn(mode.radius, mode.font, "text-xs")}>
                             <Home className="mr-1 h-3 w-3" />
                             &gt; GO_HOME
                           </Button>
                         )}
                         {error.actions.includes("GO_BACK") && (
-                          <Button variant="outline" className="rounded-none font-mono text-xs">
+                          <Button
+                            variant="outline"
+                            className={cn(mode.radius, mode.font, "text-xs")}
+                          >
                             <ArrowLeft className="mr-1 h-3 w-3" />
                             &gt; GO_BACK
                           </Button>
                         )}
                         {error.actions.includes("TRY_AGAIN") && (
-                          <Button className="rounded-none font-mono text-xs">
+                          <Button className={cn(mode.radius, mode.font, "text-xs")}>
                             <RefreshCw className="mr-1 h-3 w-3" />
                             &gt; TRY_AGAIN
                           </Button>
                         )}
                         {error.actions.includes("REFRESH") && (
-                          <Button className="rounded-none font-mono text-xs">
+                          <Button className={cn(mode.radius, mode.font, "text-xs")}>
                             <RefreshCw className="mr-1 h-3 w-3" />
                             &gt; REFRESH
                           </Button>
                         )}
                         {error.actions.includes("STATUS_PAGE") && (
-                          <Button variant="outline" className="rounded-none font-mono text-xs">
+                          <Button
+                            variant="outline"
+                            className={cn(mode.radius, mode.font, "text-xs")}
+                          >
                             <AlertTriangle className="mr-1 h-3 w-3" />
                             &gt; STATUS_PAGE
                           </Button>
@@ -240,7 +250,7 @@ export default function ErrorPagesTemplate() {
                       </div>
 
                       {/* Request ID */}
-                      <div className="text-muted-foreground font-mono text-xs">
+                      <div className={cn(mode.font, "text-muted-foreground text-xs")}>
                         REQUEST_ID: req_abc123def456
                       </div>
                     </div>
@@ -274,15 +284,15 @@ export default function ErrorPagesTemplate() {
                         error.id === "503" ? "text-warning" : "text-destructive"
                       }`}
                     />
-                    <span className="font-mono text-sm font-semibold">
+                    <span className={cn(mode.font, "text-sm font-semibold")}>
                       {error.code} - {error.title}
                     </span>
                   </div>
-                  <p className="text-muted-foreground mb-4 font-mono text-xs">
+                  <p className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
                     {error.description}
                   </p>
-                  <div className="text-muted-foreground font-mono text-xs">[USE_CASE]:</div>
-                  <div className="mt-1 font-mono text-xs">
+                  <div className={cn(mode.font, "text-muted-foreground text-xs")}>[USE_CASE]:</div>
+                  <div className={cn(mode.font, "mt-1 text-xs")}>
                     {error.id === "error" && "React errors, unexpected exceptions"}
                     {error.id === "404" && "Invalid routes, deleted content"}
                     {error.id === "500" && "Server crashes, API failures"}

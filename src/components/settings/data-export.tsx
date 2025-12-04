@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -19,6 +13,8 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 type ExportFormat = "json" | "csv";
 
@@ -72,31 +68,41 @@ export function DataExport() {
   };
 
   return (
-    <Card className="rounded-none">
+    <Card className={mode.radius}>
       <CardHeader>
-        <CardTitle className="font-mono text-xs">[EXPORT_DATA]:</CardTitle>
-        <CardDescription className="font-mono text-xs">
+        <CardTitle className={cn(mode.font, "text-xs")}>[EXPORT_DATA]:</CardTitle>
+        <CardDescription className={cn(mode.font, "text-xs")}>
           Download a copy of your account data in your preferred format.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <Label htmlFor="format-select" className="font-mono text-xs">
+          <Label htmlFor="format-select" className={cn(mode.font, "text-xs")}>
             [FORMAT]:
           </Label>
           <Select value={format} onValueChange={(value) => setFormat(value as ExportFormat)}>
-            <SelectTrigger id="format-select" disabled={isLoading} className="rounded-none">
+            <SelectTrigger id="format-select" disabled={isLoading} className={mode.radius}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="json" className="rounded-none focus:bg-primary focus:text-primary-foreground">JSON</SelectItem>
-              <SelectItem value="csv" className="rounded-none focus:bg-primary focus:text-primary-foreground">CSV</SelectItem>
+              <SelectItem
+                value="json"
+                className={cn(mode.radius, "focus:bg-primary focus:text-primary-foreground")}
+              >
+                JSON
+              </SelectItem>
+              <SelectItem
+                value="csv"
+                className={cn(mode.radius, "focus:bg-primary focus:text-primary-foreground")}
+              >
+                CSV
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
 
-        <div className="border-t pt-4 space-y-4">
-          <Label className="font-mono text-xs">[DATA_TO_INCLUDE]:</Label>
+        <div className="space-y-4 border-t pt-4">
+          <Label className={cn(mode.font, "text-xs")}>[DATA_TO_INCLUDE]:</Label>
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -104,11 +110,11 @@ export function DataExport() {
                 checked={options.includeProfile}
                 onCheckedChange={() => handleOptionChange("includeProfile")}
                 disabled={isLoading}
-                className="rounded-none"
+                className={mode.radius}
               />
               <Label
                 htmlFor="profile"
-                className="font-mono text-xs font-normal cursor-pointer flex-1"
+                className={cn(mode.font, "flex-1 cursor-pointer text-xs font-normal")}
               >
                 Profile Information
               </Label>
@@ -120,11 +126,11 @@ export function DataExport() {
                 checked={options.includeSettings}
                 onCheckedChange={() => handleOptionChange("includeSettings")}
                 disabled={isLoading}
-                className="rounded-none"
+                className={mode.radius}
               />
               <Label
                 htmlFor="settings"
-                className="font-mono text-xs font-normal cursor-pointer flex-1"
+                className={cn(mode.font, "flex-1 cursor-pointer text-xs font-normal")}
               >
                 Settings & Preferences
               </Label>
@@ -136,11 +142,11 @@ export function DataExport() {
                 checked={options.includeActivity}
                 onCheckedChange={() => handleOptionChange("includeActivity")}
                 disabled={isLoading}
-                className="rounded-none"
+                className={mode.radius}
               />
               <Label
                 htmlFor="activity"
-                className="font-mono text-xs font-normal cursor-pointer flex-1"
+                className={cn(mode.font, "flex-1 cursor-pointer text-xs font-normal")}
               >
                 Activity History
               </Label>
@@ -152,11 +158,11 @@ export function DataExport() {
                 checked={options.includePreferences}
                 onCheckedChange={() => handleOptionChange("includePreferences")}
                 disabled={isLoading}
-                className="rounded-none"
+                className={mode.radius}
               />
               <Label
                 htmlFor="preferences"
-                className="font-mono text-xs font-normal cursor-pointer flex-1"
+                className={cn(mode.font, "flex-1 cursor-pointer text-xs font-normal")}
               >
                 User Preferences
               </Label>
@@ -167,12 +173,12 @@ export function DataExport() {
         <Button
           onClick={handleExport}
           disabled={isLoading || !Object.values(options).some((v) => v)}
-          className="w-full rounded-none font-mono text-xs"
+          className={cn("w-full", mode.radius, mode.font, "text-xs")}
         >
           {isLoading ? "> EXPORTING..." : "> DOWNLOAD_DATA"}
         </Button>
 
-        <p className="font-mono text-xs text-muted-foreground pt-2">
+        <p className={cn(mode.font, "text-muted-foreground pt-2 text-xs")}>
           Your data is encrypted and will be deleted from our servers after download.
         </p>
       </CardContent>
