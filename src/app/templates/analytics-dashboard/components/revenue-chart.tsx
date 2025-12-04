@@ -3,7 +3,7 @@
  * Revenue Chart - Terminal-style bar chart
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export interface RevenueDataPoint {
   month: string;
@@ -25,7 +25,7 @@ export function RevenueChart({ data }: RevenueChartProps) {
 
   return (
     <div className="border-border bg-card border lg:col-span-4">
-      <TerminalCardHeader code="0x00" title="REVENUE_CHART" />
+      <StyledCardHeader code="0x00" title="REVENUE_CHART" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">
           [REVENUE_OVERVIEW]: PERIOD=6_MONTHS

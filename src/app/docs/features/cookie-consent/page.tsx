@@ -3,7 +3,7 @@
 import { FeatureGuideTemplate } from "@/components/docs";
 import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from "@/components/docs";
 import { docsTypography } from "@/components/docs";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Cookie, Shield, Settings, Download } from "lucide-react";
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ function CookieConsentDemo() {
   return (
     <div className="border-border bg-card w-full max-w-md border">
       {/* Terminal Header */}
-      <TerminalCardHeader code="0x00" title="COMPONENT" />
+      <StyledCardHeader code="0x00" title="COMPONENT" />
 
       <div className="space-y-4 p-4">
         <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ export default function CookieConsentPage() {
           description: "The cookie consent component is already in your layout. No setup required!",
           code: `// Already in src/app/layout.tsx
 import { CookieConsent } from "@/components/cookie-consent";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export default function RootLayout({ children }) {
   return (

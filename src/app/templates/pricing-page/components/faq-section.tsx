@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface FAQ {
   question: string;
@@ -24,7 +24,7 @@ interface FAQSectionProps {
 export function FAQSection({ faqs }: FAQSectionProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="FAQ" />
+      <StyledCardHeader code="0x00" title="FAQ" />
 
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">

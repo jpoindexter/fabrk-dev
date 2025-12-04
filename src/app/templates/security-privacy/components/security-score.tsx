@@ -4,7 +4,7 @@
 
 import { useMemo } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface SecurityScoreProps {
   user: {
@@ -26,7 +26,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
 
   return (
     <div className="border-primary bg-card border">
-      <TerminalCardHeader code="0x00" title="SECURITY_SCORE" />
+      <StyledCardHeader code="0x00" title="SECURITY_SCORE" />
       <div className="p-4">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-4">

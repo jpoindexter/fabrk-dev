@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -32,7 +32,7 @@ export function InviteSection() {
 
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="INVITE_MEMBER" />
+      <StyledCardHeader code="0x00" title="INVITE_MEMBER" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[INVITE_TEAM_MEMBER]:</div>
         <div className="flex gap-4">

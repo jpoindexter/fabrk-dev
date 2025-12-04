@@ -4,7 +4,7 @@
  * Production-ready ✓
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export function TableOfContents() {
   const headings = [
@@ -21,7 +21,7 @@ export function TableOfContents() {
       className="border-border bg-card hidden w-64 border-b border-l xl:block"
       aria-label="Table of contents"
     >
-      <TerminalCardHeader code="0x00" title="TOC" />
+      <StyledCardHeader code="0x00" title="TOC" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[ON_THIS_PAGE]:</div>
         <nav>

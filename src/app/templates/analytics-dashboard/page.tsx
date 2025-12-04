@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { TemplatePageHeader, TerminalFeaturesCard } from "@/components/ui/card";
+import { TemplatePageHeader, FeaturesCard } from "@/components/ui/card";
 
 // Components
 import { MetricCards } from "./components/metric-cards";
@@ -66,7 +66,7 @@ export default function AnalyticsDashboardTemplate() {
         />
 
         {/* Template Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x00"
           features={[
             "4 key metric cards (revenue, users, conversions, growth)",

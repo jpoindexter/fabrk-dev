@@ -8,10 +8,10 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
   TerminalOutput,
 } from "@/components/ui/card";
 import {
@@ -209,8 +209,8 @@ export default function EmptyStatesTemplate() {
         </div>
 
         {/* Use Cases Reference */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x08" title="USE_CASES" />
+        <StyledCard>
+          <StyledCardHeader code="0x08" title="USE_CASES" />
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
             <div className="grid gap-4 font-mono text-xs md:grid-cols-2">
@@ -238,10 +238,10 @@ export default function EmptyStatesTemplate() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
 
         {/* Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x09"
           features={[
             "8 common empty state patterns",

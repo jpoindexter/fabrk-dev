@@ -4,7 +4,7 @@
 
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +15,7 @@ interface EmailTabNavigationProps {
 export function EmailTabNavigation({ templates }: EmailTabNavigationProps) {
   return (
     <div className={cn("border-border bg-card border", mode.radius)}>
-      <TerminalCardHeader code="0x00" title="EMAIL_TABS" />
+      <StyledCardHeader code="0x00" title="EMAIL_TABS" />
       <TabsList
         className={cn(
           "h-auto w-full justify-start overflow-x-auto border-0 bg-transparent p-0",

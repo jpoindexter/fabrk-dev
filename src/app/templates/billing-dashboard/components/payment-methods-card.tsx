@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { CreditCard, Plus } from "lucide-react";
 
 interface PaymentMethod {
@@ -23,7 +23,7 @@ interface PaymentMethodsCardProps {
 export function PaymentMethodsCard({ paymentMethods }: PaymentMethodsCardProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="PAYMENT_METHODS" />
+      <StyledCardHeader code="0x00" title="PAYMENT_METHODS" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[PAYMENT_METHODS]:</div>
 

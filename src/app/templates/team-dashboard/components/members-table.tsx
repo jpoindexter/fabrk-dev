@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -65,7 +65,7 @@ export function MembersTable({ members }: MembersTableProps) {
 
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="TEAM_MEMBERS" />
+      <StyledCardHeader code="0x00" title="TEAM_MEMBERS" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">
           [TEAM_MEMBERS]: COUNT={members.length}

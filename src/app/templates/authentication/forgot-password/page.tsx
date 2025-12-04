@@ -7,10 +7,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,8 +34,8 @@ export default function ForgotPasswordTemplate() {
         />
 
         {/* Template Preview */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="PREVIEW" />
+        <StyledCard>
+          <StyledCardHeader code="0x00" title="PREVIEW" />
 
           <div className="bg-background/50 flex min-h-[500px] flex-col items-center justify-center p-4 sm:p-8">
             <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
@@ -86,10 +86,10 @@ export default function ForgotPasswordTemplate() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
 
         {/* Template Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x01"
           features={[
             "Clean, focused recovery form",

@@ -5,7 +5,7 @@
 
 "use client";
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 
 interface Badge {
@@ -22,7 +22,7 @@ interface BadgesSectionProps {
 export function BadgesSection({ badges }: BadgesSectionProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="BADGES" />
+      <StyledCardHeader code="0x00" title="BADGES" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">
           [ACHIEVEMENTS]: {badges.length} BADGES_EARNED

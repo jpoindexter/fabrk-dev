@@ -7,10 +7,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,8 +35,8 @@ export default function SignInTemplate() {
         />
 
         {/* Template Preview */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="PREVIEW" />
+        <StyledCard>
+          <StyledCardHeader code="0x00" title="PREVIEW" />
 
           <div className="bg-background/50 flex min-h-[600px] flex-col items-center justify-center p-4 sm:p-8">
             <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
@@ -156,11 +156,11 @@ export default function SignInTemplate() {
               </p>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
+        <StyledCard>
+          <StyledCardHeader code="0x01" title="TEMPLATE_FEATURES" />
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
@@ -184,7 +184,7 @@ export default function SignInTemplate() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
       </main>
     </div>
   );

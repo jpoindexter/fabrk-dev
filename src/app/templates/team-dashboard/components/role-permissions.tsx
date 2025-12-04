@@ -3,7 +3,7 @@
  * Role Permissions - Display role permissions reference
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Users, Crown, Shield, Eye, type LucideIcon } from "lucide-react";
 
 const roleIcons: Record<string, LucideIcon> = {
@@ -35,7 +35,7 @@ const rolePermissions = [
 export function RolePermissions() {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="PERMISSIONS" />
+      <StyledCardHeader code="0x00" title="PERMISSIONS" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[ROLE_PERMISSIONS]:</div>
         <div className="space-y-4 font-mono text-xs">

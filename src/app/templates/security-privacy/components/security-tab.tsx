@@ -3,7 +3,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
 
 interface ActiveSession {
@@ -34,7 +34,7 @@ export function SecurityTab({
     <div className="space-y-6">
       {/* 2FA Section */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="TWO_FACTOR" />
+        <StyledCardHeader code="0x00" title="TWO_FACTOR" />
         <div className="p-4">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -71,7 +71,7 @@ export function SecurityTab({
 
       {/* Active Sessions */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="SESSIONS" />
+        <StyledCardHeader code="0x00" title="SESSIONS" />
         <div className="p-4">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -128,7 +128,7 @@ export function SecurityTab({
 
       {/* Password */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="PASSWORD" />
+        <StyledCardHeader code="0x00" title="PASSWORD" />
         <div className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

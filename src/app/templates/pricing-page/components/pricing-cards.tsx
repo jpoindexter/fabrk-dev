@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface Plan {
   id: string;
@@ -39,7 +39,7 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
             }`}
           >
             {/* Card Header */}
-            <TerminalCardHeader code="0x00" title="PRICING" />
+            <StyledCardHeader code="0x00" title="PRICING" />
 
             <div className="flex flex-1 flex-col p-4">
               {/* Plan Label */}

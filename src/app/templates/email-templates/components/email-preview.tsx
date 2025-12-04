@@ -4,7 +4,7 @@
 
 import { TabsContent } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string, primaryColor: string): string {
@@ -48,7 +48,7 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
     <TabsContent value={template.id} className="mt-6">
       <div className="border-border bg-card border">
         {/* Tab Header */}
-        <TerminalCardHeader code="0x00" title="EMAIL_PREVIEW" />
+        <StyledCardHeader code="0x00" title="EMAIL_PREVIEW" />
 
         {/* Content Area */}
         <div className="p-6">

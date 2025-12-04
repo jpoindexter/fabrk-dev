@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
 
 interface Payment {
@@ -33,7 +33,7 @@ export function RecentInvoicesCard({
   return (
     <div className="border-border bg-card border">
       <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <TerminalCardHeader code="0x00" title="RECENT_INVOICES" />
+        <StyledCardHeader code="0x00" title="RECENT_INVOICES" />
         <Button
           variant="ghost"
           size="sm"

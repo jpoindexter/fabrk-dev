@@ -3,12 +3,12 @@
  * Features Card - Display template features
  */
 
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 
 export function FeaturesCard() {
   return (
-    <TerminalCard>
-      <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
+    <StyledCard>
+      <StyledCardHeader code="0x00" title="TEMPLATE_FEATURES" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
         <div className="space-y-1.5 font-mono text-xs">
@@ -38,6 +38,6 @@ export function FeaturesCard() {
           [NOTE]: Connect to your API to persist onboarding data.
         </div>
       </div>
-    </TerminalCard>
+    </StyledCard>
   );
 }

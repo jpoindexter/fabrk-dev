@@ -3,12 +3,12 @@
  * Pattern Comparison - Table comparing modal patterns
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export function PatternComparison() {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="COMPARISON" />
+      <StyledCardHeader code="0x00" title="COMPARISON" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
         <div className="border-border overflow-x-auto border">

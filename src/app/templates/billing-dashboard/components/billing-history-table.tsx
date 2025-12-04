@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Download } from "lucide-react";
 
 interface Payment {
@@ -31,7 +31,7 @@ export function BillingHistoryTable({
   return (
     <>
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="BILLING_HISTORY" />
+        <StyledCardHeader code="0x00" title="BILLING_HISTORY" />
 
         <div className="p-4">
           <div className="mb-4 flex items-center justify-between">

@@ -20,7 +20,7 @@ import {
 import { UserPlus, Download } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader, TemplatePageHeader } from "@/components/ui/card";
 import { columns } from "./components/user-table-columns";
 import { mockUsers } from "./components/types";
 import { StatsCards } from "./components/stats-cards";
@@ -98,8 +98,8 @@ export default function UserManagementTemplate() {
         <StatsCards users={mockUsers} />
 
         {/* Main Table Card - Terminal Style */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="USERS_DATABASE" />
+        <StyledCard>
+          <StyledCardHeader code="0x00" title="USERS_DATABASE" />
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
@@ -127,7 +127,7 @@ export default function UserManagementTemplate() {
             {/* Pagination */}
             <PaginationControls table={table} />
           </div>
-        </TerminalCard>
+        </StyledCard>
 
         {/* Implementation Note */}
         <FeaturesNote />

@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -41,7 +41,7 @@ export function ComplianceTab({
     <div className="space-y-6">
       {/* GDPR Rights */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="GDPR_RIGHTS" />
+        <StyledCardHeader code="0x00" title="GDPR_RIGHTS" />
         <div className="p-4">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
@@ -93,7 +93,7 @@ export function ComplianceTab({
 
       {/* Danger Zone */}
       <div className="border-destructive bg-card border">
-        <TerminalCardHeader code="0x00" title="DANGER_ZONE" />
+        <StyledCardHeader code="0x00" title="DANGER_ZONE" />
         <div className="p-4">
           <div className="mb-4 flex items-center gap-4">
             <div className="border-border bg-destructive/10 flex h-10 w-10 items-center justify-center border">

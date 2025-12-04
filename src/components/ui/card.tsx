@@ -156,13 +156,13 @@ CardFooter.displayName = "CardFooter";
  *
  * @example
  * ```tsx
- * <TerminalCard>
- *   <TerminalCardHeader code="0x00" title="SECTION_TITLE" />
+ * <StyledCard>
+ *   <StyledCardHeader code="0x00" title="SECTION_TITLE" />
  *   <CardContent>...</CardContent>
- * </TerminalCard>
+ * </StyledCard>
  * ```
  */
-export type TerminalCardHeaderProps = {
+export type StyledCardHeaderProps = {
   /** Hex code displayed in brackets (e.g., "0x00", "0x01") */
   code?: string;
   /** Title displayed after the hex code in UPPERCASE_SNAKE_CASE */
@@ -171,7 +171,7 @@ export type TerminalCardHeaderProps = {
   className?: string;
 };
 
-const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderProps>(
+const StyledCardHeader = React.forwardRef<HTMLDivElement, StyledCardHeaderProps>(
   ({ code = "0x00", title, className }, ref) => (
     <div
       ref={ref}
@@ -184,15 +184,15 @@ const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderPr
     </div>
   )
 );
-TerminalCardHeader.displayName = "TerminalCardHeader";
+StyledCardHeader.displayName = "StyledCardHeader";
 
 /**
  * Terminal-style card container
  * Wrapper for cards that use the terminal aesthetic
  */
-export type TerminalCardProps = React.HTMLAttributes<HTMLDivElement>;
+export type StyledCardProps = React.HTMLAttributes<HTMLDivElement>;
 
-const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
+const StyledCard = React.forwardRef<HTMLDivElement, StyledCardProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
@@ -204,7 +204,7 @@ const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
     </div>
   )
 );
-TerminalCard.displayName = "TerminalCard";
+StyledCard.displayName = "StyledCard";
 
 /**
  * Terminal-style label with brackets
@@ -413,14 +413,14 @@ TemplatePageHeader.displayName = "TemplatePageHeader";
  *
  * @example
  * ```tsx
- * <TerminalFeaturesCard
+ * <FeaturesCard
  *   title="TEMPLATE_FEATURES"
  *   features={["Feature 1", "Feature 2"]}
  *   note="Connect to your API for real data."
  * />
  * ```
  */
-export type TerminalFeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
+export type FeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Card header title */
   title?: string;
   /** Hex code for header */
@@ -433,7 +433,7 @@ export type TerminalFeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
   featureIcon?: "arrow" | "check" | "dot";
 };
 
-const TerminalFeaturesCard = React.forwardRef<HTMLDivElement, TerminalFeaturesCardProps>(
+const FeaturesCard = React.forwardRef<HTMLDivElement, FeaturesCardProps>(
   (
     {
       title = "TEMPLATE_FEATURES",
@@ -446,8 +446,8 @@ const TerminalFeaturesCard = React.forwardRef<HTMLDivElement, TerminalFeaturesCa
     },
     ref
   ) => (
-    <TerminalCard ref={ref} className={className} {...props}>
-      <TerminalCardHeader code={code} title={title} />
+    <StyledCard ref={ref} className={className} {...props}>
+      <StyledCardHeader code={code} title={title} />
       <div className="p-4">
         <TerminalLabel className="mb-4">{title}</TerminalLabel>
         <TerminalFeatureList>
@@ -459,10 +459,10 @@ const TerminalFeaturesCard = React.forwardRef<HTMLDivElement, TerminalFeaturesCa
         </TerminalFeatureList>
         {note && <TerminalNote>{note}</TerminalNote>}
       </div>
-    </TerminalCard>
+    </StyledCard>
   )
 );
-TerminalFeaturesCard.displayName = "TerminalFeaturesCard";
+FeaturesCard.displayName = "FeaturesCard";
 
 /**
  * Terminal-style output window
@@ -507,14 +507,14 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TerminalLabel,
   TerminalFeatureItem,
   TerminalFeatureList,
   TerminalNote,
   TerminalBadge,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
   TerminalOutput,
 };

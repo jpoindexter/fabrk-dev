@@ -6,7 +6,7 @@
 import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface FilterCategory {
   id: string;
@@ -43,7 +43,7 @@ export function FiltersSidebar({
   return (
     <div className="w-full shrink-0 space-y-4 md:w-64">
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="FILTERS" />
+        <StyledCardHeader code="0x00" title="FILTERS" />
 
         <div className="space-y-4 p-4">
           {/* Filter Header */}

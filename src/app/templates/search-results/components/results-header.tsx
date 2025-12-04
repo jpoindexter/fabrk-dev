@@ -5,7 +5,7 @@
 
 import { Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -31,7 +31,7 @@ export function ResultsHeader({
 }: ResultsHeaderProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="RESULTS" />
+      <StyledCardHeader code="0x00" title="RESULTS" />
       <div className="flex items-center justify-between p-4">
         <div className="text-muted-foreground font-mono text-xs">
           [SHOWING]: {resultsCount} results

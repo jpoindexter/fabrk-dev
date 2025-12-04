@@ -14,10 +14,10 @@ import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from "lu
 import { InputSearch } from "@/components/ui/input-search";
 import Link from "next/link";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
 } from "@/components/ui/card";
 
 const categories = [
@@ -125,8 +125,8 @@ export default function BlogTemplate() {
 
         {/* Featured Post */}
         {featuredPost && activeCategory === "all" && (
-          <TerminalCard>
-            <TerminalCardHeader code="0x00" title="FEATURED_POST" />
+          <StyledCard>
+            <StyledCardHeader code="0x00" title="FEATURED_POST" />
 
             <div className="p-6">
               <div className="grid gap-6 md:grid-cols-2">
@@ -185,7 +185,7 @@ export default function BlogTemplate() {
                 </div>
               </div>
             </div>
-          </TerminalCard>
+          </StyledCard>
         )}
 
         {/* Category Filters + Search - Industry standard horizontal layout */}
@@ -221,8 +221,8 @@ export default function BlogTemplate() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {regularPosts.map((post) => (
             <Link key={post.id} href="/templates/blog/post">
-              <TerminalCard className="hover:border-primary/50 group transition-colors">
-                <TerminalCardHeader code={`0x0${post.id}`} title={`POST_${post.id}`} />
+              <StyledCard className="hover:border-primary/50 group transition-colors">
+                <StyledCardHeader code={`0x0${post.id}`} title={`POST_${post.id}`} />
 
                 {/* Image Placeholder */}
                 <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
@@ -255,14 +255,14 @@ export default function BlogTemplate() {
                     </div>
                   </div>
                 </div>
-              </TerminalCard>
+              </StyledCard>
             </Link>
           ))}
         </div>
 
         {/* Pagination */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x0A" title="PAGINATION" />
+        <StyledCard>
+          <StyledCardHeader code="0x0A" title="PAGINATION" />
           <div className="p-4">
             <div className="flex items-center justify-between">
               <div className="text-muted-foreground font-mono text-xs">
@@ -305,10 +305,10 @@ export default function BlogTemplate() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
 
         {/* Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x0B"
           features={[
             "Featured post hero section",

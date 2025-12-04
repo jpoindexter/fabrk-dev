@@ -6,7 +6,7 @@
 "use client";
 
 import Link from "next/link";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AdminPanelsPage() {
@@ -100,8 +100,8 @@ export default function AdminPanelsPage() {
         </div>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
+        <StyledCard>
+          <StyledCardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
           <div className="p-6">
             <div className="text-muted-foreground mb-4 font-mono text-xs">
               [ADMIN_PANEL_TEMPLATES]:
@@ -130,7 +130,7 @@ export default function AdminPanelsPage() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
       </main>
     </div>
   );

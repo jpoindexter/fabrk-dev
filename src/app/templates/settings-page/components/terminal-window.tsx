@@ -5,7 +5,7 @@
  */
 
 import { type ReactNode } from "react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface TerminalWindowProps {
   filename: string;
@@ -20,7 +20,7 @@ export function TerminalWindow({
 }: TerminalWindowProps) {
   return (
     <div className={`border ${borderColor} bg-card`}>
-      <TerminalCardHeader code="0x00" title={filename.replace(/\.[^/.]+$/, "").toUpperCase()} />
+      <StyledCardHeader code="0x00" title={filename.replace(/\.[^/.]+$/, "").toUpperCase()} />
       {children}
     </div>
   );

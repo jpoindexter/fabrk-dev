@@ -6,7 +6,7 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface SearchBarProps {
   searchQuery: string;
@@ -17,7 +17,7 @@ interface SearchBarProps {
 export function SearchBar({ searchQuery, onSearchChange, resultsCount }: SearchBarProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="SEARCH" />
+      <StyledCardHeader code="0x00" title="SEARCH" />
       <div className="p-4">
         <div className="flex gap-2">
           <div className="relative flex-1">

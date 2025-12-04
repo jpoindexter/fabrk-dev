@@ -5,7 +5,7 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface PaginationProps {
   currentPage: number;
@@ -18,7 +18,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
 
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="PAGINATION" />
+      <StyledCardHeader code="0x00" title="PAGINATION" />
       <div className="p-4">
         <div className="flex items-center justify-between">
           <div className="text-muted-foreground font-mono text-xs">

@@ -2,12 +2,12 @@
  * Implementation note card showing template features
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export function FeaturesNote() {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="FEATURES" />
+      <StyledCardHeader code="0x00" title="FEATURES" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
         <div className="space-y-1.5 font-mono text-xs">

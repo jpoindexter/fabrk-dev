@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 interface Subscription {
@@ -25,7 +25,7 @@ interface CurrentPlanCardProps {
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
     <div className="border-primary bg-card border">
-      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" />
+      <StyledCardHeader code="0x00" title="SUBSCRIPTION" />
       <div className="p-4">
         <div className="flex items-start justify-between">
           <div>

@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface Plan {
   name: string;
@@ -35,7 +35,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
             key={plan.name}
             className={`bg-card flex flex-col border ${plan.current ? "border-primary" : "border-border"}`}
           >
-            <TerminalCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
+            <StyledCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
             <div className="flex flex-1 flex-col p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div className="text-muted-foreground font-mono text-xs">[{plan.name}]:</div>

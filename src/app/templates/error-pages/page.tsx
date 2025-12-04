@@ -10,10 +10,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
   TerminalOutput,
 } from "@/components/ui/card";
 import {
@@ -142,8 +142,8 @@ export default function ErrorPagesTemplate() {
             };
             return (
               <StyledTabsContent key={error.id} value={error.id}>
-                <TerminalCard>
-                  <TerminalCardHeader
+                <StyledCard>
+                  <StyledCardHeader
                     code={codeMap[error.id] || "0x00"}
                     title={`ERROR_${error.code}`}
                   />
@@ -245,7 +245,7 @@ export default function ErrorPagesTemplate() {
                       </div>
                     </div>
                   </div>
-                </TerminalCard>
+                </StyledCard>
               </StyledTabsContent>
             );
           })}
@@ -262,8 +262,8 @@ export default function ErrorPagesTemplate() {
               "503": "0x07",
             };
             return (
-              <TerminalCard key={error.id}>
-                <TerminalCardHeader
+              <StyledCard key={error.id}>
+                <StyledCardHeader
                   code={exampleCodeMap[error.id] || "0x04"}
                   title={`${error.code}_EXAMPLE`}
                 />
@@ -289,13 +289,13 @@ export default function ErrorPagesTemplate() {
                     {error.id === "503" && "Planned downtime, updates"}
                   </div>
                 </div>
-              </TerminalCard>
+              </StyledCard>
             );
           })}
         </div>
 
         {/* Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x08"
           features={[
             "Generic error, 404, 500, 503 templates",

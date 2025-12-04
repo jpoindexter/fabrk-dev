@@ -12,10 +12,10 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import {
-  TerminalCard,
-  TerminalCardHeader,
+  StyledCard,
+  StyledCardHeader,
   TemplatePageHeader,
-  TerminalFeaturesCard,
+  FeaturesCard,
 } from "@/components/ui/card";
 import {
   ArrowRight,
@@ -85,8 +85,8 @@ export default function LandingVariationsTemplate() {
           {/* Hero Previews */}
           {/* Centered Hero */}
           <StyledTabsContent value="centered">
-            <TerminalCard>
-              <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
+            <StyledCard>
+              <StyledCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-3xl space-y-6 text-center">
                   <Badge variant="secondary" className="rounded-none font-mono text-xs">
@@ -132,13 +132,13 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </TerminalCard>
+            </StyledCard>
           </StyledTabsContent>
 
           {/* Split Hero */}
           <StyledTabsContent value="split">
-            <TerminalCard>
-              <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
+            <StyledCard>
+              <StyledCardHeader code="0x02" title="HERO_SPLIT" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="grid items-center gap-12 md:grid-cols-2">
                   <div className="space-y-6">
@@ -188,13 +188,13 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </TerminalCard>
+            </StyledCard>
           </StyledTabsContent>
 
           {/* Minimal Hero */}
           <StyledTabsContent value="minimal">
-            <TerminalCard>
-              <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
+            <StyledCard>
+              <StyledCardHeader code="0x03" title="HERO_MINIMAL" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">
                   <div className="space-y-4 text-center">
@@ -237,14 +237,14 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </TerminalCard>
+            </StyledCard>
           </StyledTabsContent>
         </StyledTabs>
 
         {/* Quick Reference Grid */}
         <div className="grid gap-4 md:grid-cols-3">
           {heroVariations.map((variation, idx) => (
-            <TerminalCard
+            <StyledCard
               key={variation.id}
               role="button"
               tabIndex={0}
@@ -254,7 +254,7 @@ export default function LandingVariationsTemplate() {
               onClick={() => setActiveVariation(variation.id)}
               onKeyDown={(e) => e.key === "Enter" && setActiveVariation(variation.id)}
             >
-              <TerminalCardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
+              <StyledCardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
               <div className="p-4">
                 <h3 className="mb-1 font-mono font-semibold">{variation.name}</h3>
                 <p className="text-muted-foreground font-mono text-xs">{variation.description}</p>
@@ -264,12 +264,12 @@ export default function LandingVariationsTemplate() {
                   {variation.id === "minimal" && "Waitlists, early stage"}
                 </div>
               </div>
-            </TerminalCard>
+            </StyledCard>
           ))}
         </div>
 
         {/* Features Card */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x07"
           features={[
             "3 hero variations (centered, split, minimal)",

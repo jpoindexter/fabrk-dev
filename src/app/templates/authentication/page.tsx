@@ -6,7 +6,7 @@
 "use client";
 
 import Link from "next/link";
-import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
+import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AuthenticationPage() {
@@ -100,8 +100,8 @@ export default function AuthenticationPage() {
         </div>
 
         {/* Template Features Card */}
-        <TerminalCard>
-          <TerminalCardHeader code="0x00" title="AUTH_FEATURES" />
+        <StyledCard>
+          <StyledCardHeader code="0x00" title="AUTH_FEATURES" />
           <div className="p-6">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[AUTH_TEMPLATES]:</div>
             <div className="space-y-2 font-mono text-xs">
@@ -131,7 +131,7 @@ export default function AuthenticationPage() {
               </div>
             </div>
           </div>
-        </TerminalCard>
+        </StyledCard>
       </main>
     </div>
   );

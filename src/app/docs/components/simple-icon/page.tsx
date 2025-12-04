@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { SimpleIcon } from "@/components/ui/simple-icon";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import {
   siReact,
   siNextdotjs,
@@ -177,7 +177,7 @@ import { siReact } from "simple-icons"`}
           description: "Icon showcase with terminal-style wrapper.",
           preview: (
             <div className="border-border bg-card rounded-none border">
-              <TerminalCardHeader code="0x00" title="COMPONENT" />
+              <StyledCardHeader code="0x00" title="COMPONENT" />
               <div className="p-4">
                 <div className="text-muted-foreground mb-4 font-mono text-xs">[STACK]:</div>
                 <div className="flex gap-4">
@@ -192,7 +192,7 @@ import { siReact } from "simple-icons"`}
             </div>
           ),
           code: `<div className="rounded-none border border-border bg-card">
-  <TerminalCardHeader code="0x00" title="COMPONENT" />
+  <StyledCardHeader code="0x00" title="COMPONENT" />
   <div className="p-4">
     <div className="font-mono text-xs text-muted-foreground mb-4">[STACK]:</div>
     <div className="flex gap-4">

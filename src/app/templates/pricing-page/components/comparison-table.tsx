@@ -4,7 +4,7 @@
  */
 
 import { Check, X } from "lucide-react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface ComparisonFeature {
   name: string;
@@ -31,7 +31,7 @@ function renderCell(value: string | boolean) {
 export function ComparisonTable({ features }: ComparisonTableProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="COMPARISON" />
+      <StyledCardHeader code="0x00" title="COMPARISON" />
 
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[FEATURE_COMPARISON]:</div>

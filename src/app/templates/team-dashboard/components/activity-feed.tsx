@@ -4,7 +4,7 @@
  */
 
 import { Clock } from "lucide-react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface Activity {
   id: string;
@@ -22,7 +22,7 @@ interface ActivityFeedProps {
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="ACTIVITY_LOG" />
+      <StyledCardHeader code="0x00" title="ACTIVITY_LOG" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[ACTIVITY_FEED]:</div>
         <div className="space-y-4">

@@ -5,7 +5,7 @@
 
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface Invitation {
   id: string;
@@ -27,7 +27,7 @@ export function PendingInvitations({ invitations }: PendingInvitationsProps) {
 
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="PENDING_INVITES" />
+      <StyledCardHeader code="0x00" title="PENDING_INVITES" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">
           [PENDING_INVITATIONS]: COUNT={invitations.length}

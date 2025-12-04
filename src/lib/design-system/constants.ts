@@ -82,7 +82,7 @@ export const TERMINAL_TYPOGRAPHY = {
     description: "Terminal-style section heading",
   },
 
-  // Card header text (inside TerminalCardHeader)
+  // Card header text (inside StyledCardHeader)
   cardHeader: {
     className: "font-mono text-xs text-muted-foreground",
     description: "Terminal card header - [ [0xXX] TITLE ]",

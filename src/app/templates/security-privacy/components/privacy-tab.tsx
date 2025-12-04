@@ -3,7 +3,7 @@
  */
 
 import { Switch } from "@/components/ui/switch";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 interface PrivacySettings {
   profileVisibility: boolean;
@@ -24,7 +24,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
     <div className="space-y-6">
       {/* Profile Privacy */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="PROFILE_PRIVACY" />
+        <StyledCardHeader code="0x00" title="PROFILE_PRIVACY" />
         <div className="p-4">
           <div className="text-muted-foreground mb-4 font-mono text-xs">[PROFILE_ACTIVITY]:</div>
           <div className="space-y-4 font-mono text-xs">
@@ -66,7 +66,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
 
       {/* Cookie Preferences */}
       <div className="border-border bg-card border">
-        <TerminalCardHeader code="0x00" title="COOKIES" />
+        <StyledCardHeader code="0x00" title="COOKIES" />
         <div className="p-4">
           <div className="text-muted-foreground mb-4 font-mono text-xs">[COOKIE_PREFERENCES]:</div>
           <div className="space-y-4 font-mono text-xs">

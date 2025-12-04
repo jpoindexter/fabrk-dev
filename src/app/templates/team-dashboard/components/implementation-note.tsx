@@ -3,12 +3,12 @@
  * Implementation Note - Template features documentation
  */
 
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 
 export function ImplementationNote() {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="FEATURES" />
+      <StyledCardHeader code="0x00" title="FEATURES" />
       <div className="p-6">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
         <div className="space-y-2 font-mono text-xs">

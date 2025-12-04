@@ -9,7 +9,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
-import { TemplatePageHeader, TerminalFeaturesCard } from "@/components/ui/card";
+import { TemplatePageHeader, FeaturesCard } from "@/components/ui/card";
 import {
   LineChart,
   Line,
@@ -391,7 +391,7 @@ export default function ChartLibraryTemplate() {
         </StyledTabs>
 
         {/* Implementation Note */}
-        <TerminalFeaturesCard
+        <FeaturesCard
           code="0x01"
           features={[
             "4 chart types (Line, Area, Bar, Pie/Donut)",

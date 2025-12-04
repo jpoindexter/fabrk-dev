@@ -4,7 +4,7 @@
  */
 
 import { Progress } from "@/components/ui/progress";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { StyledCardHeader } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
 
 interface UsageMetric {
@@ -28,7 +28,7 @@ interface UsageMetricsCardProps {
 export function UsageMetricsCard({ usage }: UsageMetricsCardProps) {
   return (
     <div className="border-border bg-card border">
-      <TerminalCardHeader code="0x00" title="USAGE_METRICS" />
+      <StyledCardHeader code="0x00" title="USAGE_METRICS" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">[USAGE_THIS_MONTH]:</div>
 
