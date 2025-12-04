@@ -11,33 +11,89 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 // Core Components
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { ActivityTimeline, TimelineEvent } from "@/components/ui/activity-timeline";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Autocomplete } from "@/components/ui/autocomplete";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AvatarGroup } from "@/components/ui/avatar-group";
 import { Badge } from "@/components/ui/badge";
 import { Banner } from "@/components/ui/banner";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ColorPicker } from "@/components/ui/color-picker";
 import { Combobox } from "@/components/ui/combobox";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Container } from "@/components/ui/container";
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 import { CopyButton } from "@/components/ui/copy-button";
 import { DatePicker } from "@/components/ui/date-picker";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { DonutChart } from "@/components/ui/donut-chart";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Field } from "@/components/ui/field";
 import { FormError } from "@/components/ui/form-error";
@@ -55,11 +111,31 @@ import { InputSearch } from "@/components/ui/input-search";
 import { KpiCard } from "@/components/ui/kpi-card";
 import { Label } from "@/components/ui/label";
 import { Spinner, LoadingButton } from "@/components/ui/loading";
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 import { MultiSelect } from "@/components/ui/multi-select";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { NotificationBadge } from "@/components/ui/notification-badge";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext } from "@/components/ui/pagination";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+} from "@/components/ui/pagination";
 import { PasswordStrength } from "@/components/ui/password-strength";
 import { PieChart } from "@/components/ui/pie-chart";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -67,16 +143,36 @@ import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Rating } from "@/components/ui/rating";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Slider } from "@/components/ui/slider";
 import { Sparkline } from "@/components/ui/sparkline";
 import { StatCard } from "@/components/ui/stat-card";
 import { StatusIndicator } from "@/components/ui/status-indicator";
 import { Switch } from "@/components/ui/switch";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { TimePicker } from "@/components/ui/time-picker";
@@ -86,13 +182,23 @@ import { H1, H2, H3, H4, Body, Small } from "@/components/ui/typography";
 import { WindowControls, WindowHeader } from "@/components/ui/window-controls";
 
 // Icons
-import { AlertCircle, Bell, Check, ChevronRight, File, Home, Info, Mail, Search, Settings, User, Terminal, X } from "lucide-react";
+import {
+  AlertCircle,
+  Bell,
+  ChevronRight,
+  File,
+  Info,
+  Mail,
+  Search,
+  Settings,
+  User,
+} from "lucide-react";
 
 // Section Header Component
 function SectionHeader({ code, title }: { code: string; title: string }) {
   return (
-    <div className="border-b border-border bg-card px-6 py-4">
-      <span className={cn("text-sm text-muted-foreground", mode.font)}>
+    <div className="border-border bg-card border-b px-6 py-4">
+      <span className={cn("text-muted-foreground text-sm", mode.font)}>
         [ [{code}] {title} ]
       </span>
     </div>
@@ -104,6 +210,7 @@ export default function ComponentShowcasePage() {
   const [sliderValue, setSliderValue] = React.useState([50]);
   const [switchChecked, setSwitchChecked] = React.useState(false);
   const [rating, setRating] = React.useState(3);
+  // eslint-disable-next-line design-system/no-hardcoded-colors -- ColorPicker requires hex value
   const [color, setColor] = React.useState("#3b82f6");
   const [progress] = React.useState(65);
 
@@ -118,17 +225,52 @@ export default function ComponentShowcasePage() {
   const sparklineData = [65, 59, 80, 81, 56, 55, 40, 68, 72, 95, 88, 76];
 
   const timelineEvents: TimelineEvent[] = [
-    { id: "1", title: "Project started", description: "Initial commit", timestamp: "2 hours ago", type: "created", user: { name: "John Doe" } },
-    { id: "2", title: "First release", description: "v1.0.0 deployed", timestamp: "1 hour ago", type: "updated", user: { name: "Jane Smith" } },
+    {
+      id: "1",
+      title: "Project started",
+      description: "Initial commit",
+      timestamp: "2 hours ago",
+      type: "created",
+      user: { name: "John Doe" },
+    },
+    {
+      id: "2",
+      title: "First release",
+      description: "v1.0.0 deployed",
+      timestamp: "1 hour ago",
+      type: "updated",
+      user: { name: "Jane Smith" },
+    },
   ];
 
-  const heatmapData = Array.from({ length: 7 }, (_, row) =>
-    Array.from({ length: 7 }, (_, col) => ({
-      x: col,
-      y: row,
-      value: Math.floor(Math.random() * 5),
-    }))
-  ).flat();
+  // Static heatmap data to avoid hydration mismatch (no Math.random())
+  const heatmapData = [
+    { x: 0, y: 0, value: 2 },
+    { x: 1, y: 0, value: 3 },
+    { x: 2, y: 0, value: 1 },
+    { x: 3, y: 0, value: 4 },
+    { x: 4, y: 0, value: 0 },
+    { x: 0, y: 1, value: 1 },
+    { x: 1, y: 1, value: 4 },
+    { x: 2, y: 1, value: 2 },
+    { x: 3, y: 1, value: 3 },
+    { x: 4, y: 1, value: 1 },
+    { x: 0, y: 2, value: 3 },
+    { x: 1, y: 2, value: 2 },
+    { x: 2, y: 2, value: 4 },
+    { x: 3, y: 2, value: 1 },
+    { x: 4, y: 2, value: 2 },
+    { x: 0, y: 3, value: 0 },
+    { x: 1, y: 3, value: 1 },
+    { x: 2, y: 3, value: 3 },
+    { x: 3, y: 3, value: 4 },
+    { x: 4, y: 3, value: 2 },
+    { x: 0, y: 4, value: 4 },
+    { x: 1, y: 4, value: 3 },
+    { x: 2, y: 4, value: 0 },
+    { x: 3, y: 4, value: 2 },
+    { x: 4, y: 4, value: 3 },
+  ];
 
   const funnelData = [
     { label: "Visitors", value: 1000, color: "hsl(var(--primary))" },
@@ -150,25 +292,26 @@ export default function ComponentShowcasePage() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         {/* Header */}
-        <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+        <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur">
           <div className="flex items-center gap-4 px-6 py-4">
             <WindowControls size="sm" />
-            <span className={cn("text-sm text-muted-foreground", mode.font)}>
+            <span className={cn("text-muted-foreground text-sm", mode.font)}>
               component-showcase.tsx — 99 COMPONENTS
             </span>
           </div>
           {/* Table of Contents */}
-          <ScrollArea className="border-t border-border">
+          <ScrollArea className="border-border border-t">
             <div className="flex gap-2 px-6 py-3">
               {sections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
                   className={cn(
-                    "whitespace-nowrap border border-border bg-card px-3 py-1 text-xs hover:bg-muted",
-                    mode.font, mode.radius
+                    "border-border bg-card hover:bg-muted border px-3 py-1 text-xs whitespace-nowrap",
+                    mode.font,
+                    mode.radius
                   )}
                 >
                   {section.title}
@@ -182,7 +325,7 @@ export default function ComponentShowcasePage() {
           {/* ============================================ */}
           {/* SECTION 1: BUTTONS & ACTIONS */}
           {/* ============================================ */}
-          <section id="buttons" className={cn("border border-border", mode.radius)}>
+          <section id="buttons" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x01" title="BUTTONS_&_ACTIONS" />
             <div className="space-y-8 p-6">
               {/* Button Variants */}
@@ -205,7 +348,9 @@ export default function ComponentShowcasePage() {
                   <Button size="sm">&gt; SMALL</Button>
                   <Button size="default">&gt; DEFAULT</Button>
                   <Button size="lg">&gt; LARGE</Button>
-                  <Button size="icon"><Settings className="size-4" /></Button>
+                  <Button size="icon" aria-label="Settings">
+                    <Settings className="size-4" />
+                  </Button>
                 </div>
               </div>
 
@@ -219,7 +364,13 @@ export default function ComponentShowcasePage() {
               <div>
                 <Label className="mb-4 block">[COPY_BUTTON]:</Label>
                 <div className="flex items-center gap-2">
-                  <code className={cn("border border-border bg-muted px-3 py-1 text-sm", mode.font, mode.radius)}>
+                  <code
+                    className={cn(
+                      "border-border bg-muted border px-3 py-1 text-sm",
+                      mode.font,
+                      mode.radius
+                    )}
+                  >
                     npm install fabrk
                   </code>
                   <CopyButton value="npm install fabrk" />
@@ -231,7 +382,9 @@ export default function ComponentShowcasePage() {
                 <Label className="mb-4 block">[CHECKBOX]:</Label>
                 <div className="flex items-center gap-2">
                   <Checkbox id="terms" />
-                  <Label htmlFor="terms" className="text-sm">Accept terms and conditions</Label>
+                  <Label htmlFor="terms" className="text-sm">
+                    Accept terms and conditions
+                  </Label>
                 </div>
               </div>
 
@@ -270,7 +423,7 @@ export default function ComponentShowcasePage() {
           {/* ============================================ */}
           {/* SECTION 2: INPUTS & FORMS */}
           {/* ============================================ */}
-          <section id="inputs" className={cn("border border-border", mode.radius)}>
+          <section id="inputs" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x02" title="INPUTS_&_FORMS" />
             <div className="space-y-8 p-6">
               {/* Input */}
@@ -316,7 +469,7 @@ export default function ComponentShowcasePage() {
               <div>
                 <Label className="mb-4 block">[INPUT_GROUP]:</Label>
                 <InputGroup className="max-w-sm">
-                  <Mail className="size-4 text-muted-foreground" />
+                  <Mail className="text-muted-foreground size-4" />
                   <Input placeholder="email@example.com" />
                 </InputGroup>
               </div>
@@ -403,7 +556,12 @@ export default function ComponentShowcasePage() {
               {/* Slider */}
               <div>
                 <Label className="mb-4 block">[SLIDER]: {sliderValue[0]}%</Label>
-                <Slider value={sliderValue} onValueChange={setSliderValue} max={100} className="max-w-sm" />
+                <Slider
+                  value={sliderValue}
+                  onValueChange={setSliderValue}
+                  max={100}
+                  className="max-w-sm"
+                />
               </div>
 
               {/* PasswordStrength */}
@@ -437,7 +595,7 @@ export default function ComponentShowcasePage() {
           {/* ============================================ */}
           {/* SECTION 3: DATA DISPLAY */}
           {/* ============================================ */}
-          <section id="display" className={cn("border border-border", mode.radius)}>
+          <section id="display" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x03" title="DATA_DISPLAY" />
             <div className="space-y-8 p-6">
               {/* Badge */}
@@ -455,8 +613,12 @@ export default function ComponentShowcasePage() {
               <div>
                 <Label className="mb-4 block">[NOTIFICATION_BADGE]:</Label>
                 <div className="flex gap-4">
-                  <NotificationBadge count={5}><Bell className="size-5" /></NotificationBadge>
-                  <NotificationBadge count={99}><Mail className="size-5" /></NotificationBadge>
+                  <NotificationBadge count={5}>
+                    <Bell className="size-5" />
+                  </NotificationBadge>
+                  <NotificationBadge count={99}>
+                    <Mail className="size-5" />
+                  </NotificationBadge>
                 </div>
               </div>
 
@@ -508,7 +670,9 @@ export default function ComponentShowcasePage() {
                     <CardDescription>Card description goes here</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">Card content with some example text.</p>
+                    <p className="text-muted-foreground text-sm">
+                      Card content with some example text.
+                    </p>
                   </CardContent>
                   <CardFooter>
                     <Button size="sm">&gt; ACTION</Button>
@@ -529,7 +693,13 @@ export default function ComponentShowcasePage() {
               {/* KpiCard */}
               <div>
                 <Label className="mb-4 block">[KPI_CARD]:</Label>
-                <KpiCard title="Conversion Rate" value="3.24%" subtitle="vs last month" trend="up" change={0.5} />
+                <KpiCard
+                  title="Conversion Rate"
+                  value="3.24%"
+                  subtitle="vs last month"
+                  trend="up"
+                  change={0.5}
+                />
               </div>
 
               {/* Table */}
@@ -546,12 +716,16 @@ export default function ComponentShowcasePage() {
                   <TableBody>
                     <TableRow>
                       <TableCell>John Doe</TableCell>
-                      <TableCell><Badge>Active</Badge></TableCell>
+                      <TableCell>
+                        <Badge>Active</Badge>
+                      </TableCell>
                       <TableCell>Admin</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>Jane Smith</TableCell>
-                      <TableCell><Badge variant="secondary">Pending</Badge></TableCell>
+                      <TableCell>
+                        <Badge variant="secondary">Pending</Badge>
+                      </TableCell>
                       <TableCell>User</TableCell>
                     </TableRow>
                   </TableBody>
@@ -563,7 +737,7 @@ export default function ComponentShowcasePage() {
                 <Label className="mb-4 block">[CODE_BLOCK]:</Label>
                 <CodeBlock
                   code={`const greeting = "Hello, World!";
-console.log(greeting);`}
+return greeting;`}
                   language="typescript"
                 />
               </div>
@@ -584,7 +758,12 @@ console.log(greeting);`}
               {/* Calendar */}
               <div>
                 <Label className="mb-4 block">[CALENDAR]:</Label>
-                <Calendar mode="single" selected={date} onSelect={setDate} className="border border-border" />
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  className="border-border border"
+                />
               </div>
 
               {/* ActivityTimeline */}
@@ -598,7 +777,7 @@ console.log(greeting);`}
           {/* ============================================ */}
           {/* SECTION 4: CHARTS & VISUALIZATION */}
           {/* ============================================ */}
-          <section id="charts" className={cn("border border-border", mode.radius)}>
+          <section id="charts" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x04" title="CHARTS_&_VISUALIZATION" />
             <div className="space-y-8 p-6">
               {/* PieChart */}
@@ -648,13 +827,13 @@ console.log(greeting);`}
           {/* ============================================ */}
           {/* SECTION 5: FEEDBACK & STATUS */}
           {/* ============================================ */}
-          <section id="feedback" className={cn("border border-border", mode.radius)}>
+          <section id="feedback" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x05" title="FEEDBACK_&_STATUS" />
             <div className="space-y-8 p-6">
               {/* Alert */}
               <div>
                 <Label className="mb-4 block">[ALERT]:</Label>
-                <div className="space-y-4 max-w-md">
+                <div className="max-w-md space-y-4">
                   <Alert>
                     <Info className="size-4" />
                     <AlertTitle>Information</AlertTitle>
@@ -689,7 +868,7 @@ console.log(greeting);`}
               {/* Skeleton */}
               <div>
                 <Label className="mb-4 block">[SKELETON]:</Label>
-                <div className="space-y-2 max-w-sm">
+                <div className="max-w-sm space-y-2">
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-3/4" />
                   <Skeleton className="h-4 w-1/2" />
@@ -720,7 +899,7 @@ console.log(greeting);`}
           {/* ============================================ */}
           {/* SECTION 6: OVERLAYS & DIALOGS */}
           {/* ============================================ */}
-          <section id="overlays" className={cn("border border-border", mode.radius)}>
+          <section id="overlays" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x06" title="OVERLAYS_&_DIALOGS" />
             <div className="space-y-8 p-6">
               {/* Dialog */}
@@ -790,7 +969,7 @@ console.log(greeting);`}
                   <PopoverContent>
                     <div className="space-y-2">
                       <h4 className={cn("text-sm font-medium", mode.font)}>Popover Title</h4>
-                      <p className="text-sm text-muted-foreground">Popover content goes here.</p>
+                      <p className="text-muted-foreground text-sm">Popover content goes here.</p>
                     </div>
                   </PopoverContent>
                 </Popover>
@@ -806,7 +985,7 @@ console.log(greeting);`}
                   <HoverCardContent>
                     <div className="space-y-2">
                       <h4 className={cn("text-sm font-medium", mode.font)}>HoverCard Title</h4>
-                      <p className="text-sm text-muted-foreground">HoverCard content on hover.</p>
+                      <p className="text-muted-foreground text-sm">HoverCard content on hover.</p>
                     </div>
                   </HoverCardContent>
                 </HoverCard>
@@ -835,9 +1014,18 @@ console.log(greeting);`}
                   <DropdownMenuContent>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem><User className="mr-2 size-4" />Profile</DropdownMenuItem>
-                    <DropdownMenuItem><Settings className="mr-2 size-4" />Settings</DropdownMenuItem>
-                    <DropdownMenuItem><Mail className="mr-2 size-4" />Email</DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <User className="mr-2 size-4" />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Settings className="mr-2 size-4" />
+                      Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Mail className="mr-2 size-4" />
+                      Email
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -846,7 +1034,12 @@ console.log(greeting);`}
               <div>
                 <Label className="mb-4 block">[CONTEXT_MENU]:</Label>
                 <ContextMenu>
-                  <ContextMenuTrigger className={cn("flex h-24 w-48 items-center justify-center border border-dashed border-border text-sm", mode.font)}>
+                  <ContextMenuTrigger
+                    className={cn(
+                      "border-border flex h-24 w-48 items-center justify-center border border-dashed text-sm",
+                      mode.font
+                    )}
+                  >
                     Right-click here
                   </ContextMenuTrigger>
                   <ContextMenuContent>
@@ -860,14 +1053,23 @@ console.log(greeting);`}
               {/* Command */}
               <div>
                 <Label className="mb-4 block">[COMMAND]:</Label>
-                <Command className="border border-border max-w-sm">
+                <Command className="border-border max-w-sm border">
                   <CommandInput placeholder="Search..." />
                   <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup heading="Suggestions">
-                      <CommandItem><File className="mr-2 size-4" />Documents</CommandItem>
-                      <CommandItem><Settings className="mr-2 size-4" />Settings</CommandItem>
-                      <CommandItem><User className="mr-2 size-4" />Profile</CommandItem>
+                      <CommandItem>
+                        <File className="mr-2 size-4" />
+                        Documents
+                      </CommandItem>
+                      <CommandItem>
+                        <Settings className="mr-2 size-4" />
+                        Settings
+                      </CommandItem>
+                      <CommandItem>
+                        <User className="mr-2 size-4" />
+                        Profile
+                      </CommandItem>
                     </CommandGroup>
                   </CommandList>
                 </Command>
@@ -882,8 +1084,8 @@ console.log(greeting);`}
                       Toggle Section <ChevronRight className="size-4" />
                     </Button>
                   </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-2 border border-border p-4">
-                    <p className="text-sm text-muted-foreground">This content is collapsible.</p>
+                  <CollapsibleContent className="border-border mt-2 border p-4">
+                    <p className="text-muted-foreground text-sm">This content is collapsible.</p>
                   </CollapsibleContent>
                 </Collapsible>
               </div>
@@ -893,7 +1095,7 @@ console.log(greeting);`}
           {/* ============================================ */}
           {/* SECTION 7: NAVIGATION */}
           {/* ============================================ */}
-          <section id="navigation" className={cn("border border-border", mode.radius)}>
+          <section id="navigation" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x07" title="NAVIGATION" />
             <div className="space-y-8 p-6">
               {/* Tabs */}
@@ -905,9 +1107,15 @@ console.log(greeting);`}
                     <TabsTrigger value="tab2">Tab 2</TabsTrigger>
                     <TabsTrigger value="tab3">Tab 3</TabsTrigger>
                   </TabsList>
-                  <TabsContent value="tab1" className="p-4">Tab 1 content</TabsContent>
-                  <TabsContent value="tab2" className="p-4">Tab 2 content</TabsContent>
-                  <TabsContent value="tab3" className="p-4">Tab 3 content</TabsContent>
+                  <TabsContent value="tab1" className="p-4">
+                    Tab 1 content
+                  </TabsContent>
+                  <TabsContent value="tab2" className="p-4">
+                    Tab 2 content
+                  </TabsContent>
+                  <TabsContent value="tab3" className="p-4">
+                    Tab 3 content
+                  </TabsContent>
                 </Tabs>
               </div>
 
@@ -951,11 +1159,23 @@ console.log(greeting);`}
                 <Label className="mb-4 block">[PAGINATION]:</Label>
                 <Pagination>
                   <PaginationContent>
-                    <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
-                    <PaginationItem><PaginationLink href="#">1</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink href="#" isActive>2</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationNext href="#" /></PaginationItem>
+                    <PaginationItem>
+                      <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#">1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#" isActive>
+                        2
+                      </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#">3</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationNext href="#" />
+                    </PaginationItem>
                   </PaginationContent>
                 </Pagination>
               </div>
@@ -968,7 +1188,7 @@ console.log(greeting);`}
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="p-4 w-48">
+                        <div className="w-48 p-4">
                           <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
                         </div>
                       </NavigationMenuContent>
@@ -976,7 +1196,7 @@ console.log(greeting);`}
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="p-4 w-48">
+                        <div className="w-48 p-4">
                           <NavigationMenuLink href="/components">All Components</NavigationMenuLink>
                         </div>
                       </NavigationMenuContent>
@@ -1012,7 +1232,7 @@ console.log(greeting);`}
           {/* ============================================ */}
           {/* SECTION 8: LAYOUT & CONTAINERS */}
           {/* ============================================ */}
-          <section id="layout" className={cn("border border-border", mode.radius)}>
+          <section id="layout" className={cn("border-border border", mode.radius)}>
             <SectionHeader code="0x08" title="LAYOUT_&_CONTAINERS" />
             <div className="space-y-8 p-6">
               {/* WindowControls */}
@@ -1021,23 +1241,23 @@ console.log(greeting);`}
                 <div className="flex gap-8">
                   <div className="text-center">
                     <WindowControls size="xs" />
-                    <p className="mt-2 text-xs text-muted-foreground">xs</p>
+                    <p className="text-muted-foreground mt-2 text-xs">xs</p>
                   </div>
                   <div className="text-center">
                     <WindowControls size="sm" />
-                    <p className="mt-2 text-xs text-muted-foreground">sm</p>
+                    <p className="text-muted-foreground mt-2 text-xs">sm</p>
                   </div>
                   <div className="text-center">
                     <WindowControls size="md" />
-                    <p className="mt-2 text-xs text-muted-foreground">md</p>
+                    <p className="text-muted-foreground mt-2 text-xs">md</p>
                   </div>
                   <div className="text-center">
                     <WindowControls size="lg" />
-                    <p className="mt-2 text-xs text-muted-foreground">lg</p>
+                    <p className="text-muted-foreground mt-2 text-xs">lg</p>
                   </div>
                   <div className="text-center">
                     <WindowControls size="sm" animated />
-                    <p className="mt-2 text-xs text-muted-foreground">animated</p>
+                    <p className="text-muted-foreground mt-2 text-xs">animated</p>
                   </div>
                 </div>
               </div>
@@ -1045,10 +1265,10 @@ console.log(greeting);`}
               {/* WindowHeader */}
               <div>
                 <Label className="mb-4 block">[WINDOW_HEADER]:</Label>
-                <div className={cn("border border-border", mode.radius)}>
+                <div className={cn("border-border border", mode.radius)}>
                   <WindowHeader filename="example.tsx" />
                   <div className="p-4">
-                    <p className="text-sm text-muted-foreground">Window content</p>
+                    <p className="text-muted-foreground text-sm">Window content</p>
                   </div>
                 </div>
               </div>
@@ -1056,8 +1276,10 @@ console.log(greeting);`}
               {/* Container */}
               <div>
                 <Label className="mb-4 block">[CONTAINER]:</Label>
-                <Container className="border border-dashed border-border p-4">
-                  <p className="text-sm text-muted-foreground">Container with max-width constraints</p>
+                <Container className="border-border border border-dashed p-4">
+                  <p className="text-muted-foreground text-sm">
+                    Container with max-width constraints
+                  </p>
                 </Container>
               </div>
 
@@ -1065,19 +1287,21 @@ console.log(greeting);`}
               <div>
                 <Label className="mb-4 block">[GRID]:</Label>
                 <Grid cols={3} gap={4}>
-                  <div className="border border-border bg-muted p-4 text-center text-sm">1</div>
-                  <div className="border border-border bg-muted p-4 text-center text-sm">2</div>
-                  <div className="border border-border bg-muted p-4 text-center text-sm">3</div>
+                  <div className="border-border bg-muted border p-4 text-center text-sm">1</div>
+                  <div className="border-border bg-muted border p-4 text-center text-sm">2</div>
+                  <div className="border-border bg-muted border p-4 text-center text-sm">3</div>
                 </Grid>
               </div>
 
               {/* ScrollArea */}
               <div>
                 <Label className="mb-4 block">[SCROLL_AREA]:</Label>
-                <ScrollArea className="h-32 w-48 border border-border">
+                <ScrollArea className="border-border h-32 w-48 border">
                   <div className="p-4">
                     {Array.from({ length: 10 }).map((_, i) => (
-                      <p key={i} className="text-sm">Scrollable item {i + 1}</p>
+                      <p key={i} className="text-sm">
+                        Scrollable item {i + 1}
+                      </p>
                     ))}
                   </div>
                 </ScrollArea>
@@ -1098,7 +1322,7 @@ console.log(greeting);`}
                 <Label className="mb-4 block">[ASPECT_RATIO]:</Label>
                 <div className="w-48">
                   <AspectRatio ratio={16 / 9} className="bg-muted flex items-center justify-center">
-                    <span className="text-sm text-muted-foreground">16:9</span>
+                    <span className="text-muted-foreground text-sm">16:9</span>
                   </AspectRatio>
                 </div>
               </div>
