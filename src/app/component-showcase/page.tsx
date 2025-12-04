@@ -1,647 +1,1112 @@
 "use client";
 
 /**
- * Component Showcase Page
- * Single page displaying ALL UI components for visual consistency review
+ * COMPREHENSIVE COMPONENT SHOWCASE
+ * All 99 UI components in one scrollable page
  */
 
-import { useState } from "react";
+import * as React from "react";
+import { mode } from "@/lib/design-system";
 import { cn } from "@/lib/utils";
-import { mode, formatLabel, formatButtonText } from "@/lib/design-system";
+import { toast } from "sonner";
 
-// UI Components
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Switch } from "@/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// Core Components
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from "@/components/ui/sheet";
+import { ActivityTimeline, TimelineEvent } from "@/components/ui/activity-timeline";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Autocomplete } from "@/components/ui/autocomplete";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { WindowControls, WindowHeader } from "@/components/ui/window-controls";
-import { CodeBlock } from "@/components/ui/code-block";
+import { AvatarGroup } from "@/components/ui/avatar-group";
+import { Badge } from "@/components/ui/badge";
+import { Banner } from "@/components/ui/banner";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ColorPicker } from "@/components/ui/color-picker";
+import { Combobox } from "@/components/ui/combobox";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Container } from "@/components/ui/container";
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu";
+import { CopyButton } from "@/components/ui/copy-button";
+import { DatePicker } from "@/components/ui/date-picker";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { DonutChart } from "@/components/ui/donut-chart";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Field } from "@/components/ui/field";
+import { FormError } from "@/components/ui/form-error";
+import { FunnelChart } from "@/components/ui/funnel-chart";
+import { Gauge } from "@/components/ui/gauge";
+import { Grid } from "@/components/ui/grid";
+import { Heatmap } from "@/components/ui/heatmap";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Input } from "@/components/ui/input";
+import { InputGroup } from "@/components/ui/input-group";
+import { InputNumber } from "@/components/ui/input-number";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { InputPassword } from "@/components/ui/input-password";
+import { InputSearch } from "@/components/ui/input-search";
+import { KpiCard } from "@/components/ui/kpi-card";
+import { Label } from "@/components/ui/label";
+import { Spinner, LoadingButton } from "@/components/ui/loading";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { NotificationBadge } from "@/components/ui/notification-badge";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext } from "@/components/ui/pagination";
+import { PasswordStrength } from "@/components/ui/password-strength";
+import { PieChart } from "@/components/ui/pie-chart";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Progress } from "@/components/ui/progress";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Rating } from "@/components/ui/rating";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Slider } from "@/components/ui/slider";
+import { Sparkline } from "@/components/ui/sparkline";
+import { StatCard } from "@/components/ui/stat-card";
+import { StatusIndicator } from "@/components/ui/status-indicator";
+import { Switch } from "@/components/ui/switch";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+import { TimePicker } from "@/components/ui/time-picker";
+import { Toaster } from "@/components/ui/toaster";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { H1, H2, H3, H4, Body, Small } from "@/components/ui/typography";
+import { WindowControls, WindowHeader } from "@/components/ui/window-controls";
 
-import {
-  AlertCircle,
-  CheckCircle2,
-  Info,
-  AlertTriangle,
-  Mail,
-  Settings,
-  User,
-  Bell,
-  ChevronDown,
-  Search,
-  Plus,
-  Trash2,
-  Edit,
-  MoreHorizontal,
-  Home,
-  FileText
-} from "lucide-react";
+// Icons
+import { AlertCircle, Bell, Check, ChevronRight, File, Home, Info, Mail, Search, Settings, User, Terminal, X } from "lucide-react";
 
-function Section({ title, code, children }: { title: string; code: string; children: React.ReactNode }) {
+// Section Header Component
+function SectionHeader({ code, title }: { code: string; title: string }) {
   return (
-    <section className="border-border bg-card mb-8 border">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <WindowControls size="sm" />
-        <span className={cn("text-muted-foreground text-xs", mode.font)}>
-          [ [{code}] {title.toUpperCase().replace(/ /g, "_")} ]
-        </span>
-      </div>
-      <div className="p-6">{children}</div>
-    </section>
+    <div className="border-b border-border bg-card px-6 py-4">
+      <span className={cn("text-sm text-muted-foreground", mode.font)}>
+        [ [{code}] {title} ]
+      </span>
+    </div>
   );
 }
 
 export default function ComponentShowcasePage() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const [sliderValue, setSliderValue] = useState([50]);
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [sliderValue, setSliderValue] = React.useState([50]);
+  const [switchChecked, setSwitchChecked] = React.useState(false);
+  const [rating, setRating] = React.useState(3);
+  const [color, setColor] = React.useState("#3b82f6");
+  const [progress] = React.useState(65);
+
+  // Mock data
+  const pieData = [
+    { label: "React", value: 35, color: "hsl(var(--primary))" },
+    { label: "Vue", value: 25, color: "hsl(var(--chart-2))" },
+    { label: "Angular", value: 20, color: "hsl(var(--chart-3))" },
+    { label: "Svelte", value: 20, color: "hsl(var(--chart-4))" },
+  ];
+
+  const sparklineData = [65, 59, 80, 81, 56, 55, 40, 68, 72, 95, 88, 76];
+
+  const timelineEvents: TimelineEvent[] = [
+    { id: "1", title: "Project started", description: "Initial commit", timestamp: "2 hours ago", type: "created", user: { name: "John Doe" } },
+    { id: "2", title: "First release", description: "v1.0.0 deployed", timestamp: "1 hour ago", type: "updated", user: { name: "Jane Smith" } },
+  ];
+
+  const heatmapData = Array.from({ length: 7 }, (_, row) =>
+    Array.from({ length: 7 }, (_, col) => ({
+      x: col,
+      y: row,
+      value: Math.floor(Math.random() * 5),
+    }))
+  ).flat();
+
+  const funnelData = [
+    { label: "Visitors", value: 1000, color: "hsl(var(--primary))" },
+    { label: "Signups", value: 500, color: "hsl(var(--chart-2))" },
+    { label: "Trials", value: 200, color: "hsl(var(--chart-3))" },
+    { label: "Paid", value: 50, color: "hsl(var(--chart-4))" },
+  ];
+
+  const sections = [
+    { id: "buttons", title: "BUTTONS_&_ACTIONS" },
+    { id: "inputs", title: "INPUTS_&_FORMS" },
+    { id: "display", title: "DATA_DISPLAY" },
+    { id: "charts", title: "CHARTS_&_VISUALIZATION" },
+    { id: "feedback", title: "FEEDBACK_&_STATUS" },
+    { id: "overlays", title: "OVERLAYS_&_DIALOGS" },
+    { id: "navigation", title: "NAVIGATION" },
+    { id: "layout", title: "LAYOUT_&_CONTAINERS" },
+  ];
 
   return (
     <TooltipProvider>
-      <div className={cn("min-h-screen bg-background p-8", mode.font)}>
-        <div className="mx-auto max-w-6xl">
-          {/* Header */}
-          <header className="mb-12 text-center">
-            <div className={cn("border-border bg-card mb-4 inline-block border px-4 py-1", mode.radius)}>
-              <span className="text-muted-foreground text-xs">[ [0x00] COMPONENT_SHOWCASE ]</span>
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+          <div className="flex items-center gap-4 px-6 py-4">
+            <WindowControls size="sm" />
+            <span className={cn("text-sm text-muted-foreground", mode.font)}>
+              component-showcase.tsx — 99 COMPONENTS
+            </span>
+          </div>
+          {/* Table of Contents */}
+          <ScrollArea className="border-t border-border">
+            <div className="flex gap-2 px-6 py-3">
+              {sections.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className={cn(
+                    "whitespace-nowrap border border-border bg-card px-3 py-1 text-xs hover:bg-muted",
+                    mode.font, mode.radius
+                  )}
+                >
+                  {section.title}
+                </a>
+              ))}
             </div>
-            <h1 className="mb-4 text-3xl font-bold">ALL_COMPONENTS</h1>
-            <p className="text-muted-foreground text-sm">
-              &gt; Visual consistency review - all components on one page
-            </p>
-          </header>
+          </ScrollArea>
+        </header>
 
-          {/* ==================== BUTTONS ==================== */}
-          <Section title="Buttons" code="0x01">
-            <div className="space-y-6">
+        <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
+          {/* ============================================ */}
+          {/* SECTION 1: BUTTONS & ACTIONS */}
+          {/* ============================================ */}
+          <section id="buttons" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x01" title="BUTTONS_&_ACTIONS" />
+            <div className="space-y-8 p-6">
+              {/* Button Variants */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[VARIANTS]:</h3>
-                <div className="flex flex-wrap gap-3">
-                  <Button variant="default">&gt; DEFAULT</Button>
+                <Label className="mb-4 block">[BUTTON_VARIANTS]:</Label>
+                <div className="flex flex-wrap gap-4">
+                  <Button>&gt; DEFAULT</Button>
                   <Button variant="secondary">&gt; SECONDARY</Button>
+                  <Button variant="destructive">&gt; DESTRUCTIVE</Button>
                   <Button variant="outline">&gt; OUTLINE</Button>
                   <Button variant="ghost">&gt; GHOST</Button>
                   <Button variant="link">&gt; LINK</Button>
-                  <Button variant="destructive">&gt; DESTRUCTIVE</Button>
                 </div>
               </div>
+
+              {/* Button Sizes */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[SIZES]:</h3>
-                <div className="flex flex-wrap items-center gap-3">
+                <Label className="mb-4 block">[BUTTON_SIZES]:</Label>
+                <div className="flex flex-wrap items-center gap-4">
                   <Button size="sm">&gt; SMALL</Button>
                   <Button size="default">&gt; DEFAULT</Button>
                   <Button size="lg">&gt; LARGE</Button>
-                  <Button size="xl">&gt; EXTRA_LARGE</Button>
-                  <Button size="icon" aria-label="Settings"><Settings className="h-4 w-4" /></Button>
+                  <Button size="icon"><Settings className="size-4" /></Button>
                 </div>
               </div>
+
+              {/* LoadingButton */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[STATES]:</h3>
-                <div className="flex flex-wrap gap-3">
-                  <Button loading>&gt; LOADING</Button>
-                  <Button disabled>&gt; DISABLED</Button>
-                  <Button><Mail className="mr-2 h-4 w-4" /> &gt; WITH_ICON</Button>
-                </div>
+                <Label className="mb-4 block">[LOADING_BUTTON]:</Label>
+                <LoadingButton loading>&gt; LOADING...</LoadingButton>
               </div>
-            </div>
-          </Section>
 
-          {/* ==================== INPUTS ==================== */}
-          <Section title="Form Inputs" code="0x02">
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="text-input">{formatLabel("Text Input")}</Label>
-                  <Input id="text-input" placeholder="Enter text..." />
-                </div>
-                <div>
-                  <Label htmlFor="email-input">{formatLabel("Email")}</Label>
-                  <Input id="email-input" type="email" placeholder="name@example.com" />
-                </div>
-                <div>
-                  <Label htmlFor="password-input">{formatLabel("Password")}</Label>
-                  <Input id="password-input" type="password" placeholder="••••••••" />
-                </div>
-                <div>
-                  <Label htmlFor="disabled-input">{formatLabel("Disabled")}</Label>
-                  <Input id="disabled-input" placeholder="Disabled input" disabled />
-                </div>
-                <div>
-                  <Label htmlFor="search-input">{formatLabel("Search")}</Label>
-                  <div className="relative">
-                    <Search className="text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
-                    <Input id="search-input" className="pl-10" placeholder="Search..." />
-                  </div>
+              {/* CopyButton */}
+              <div>
+                <Label className="mb-4 block">[COPY_BUTTON]:</Label>
+                <div className="flex items-center gap-2">
+                  <code className={cn("border border-border bg-muted px-3 py-1 text-sm", mode.font, mode.radius)}>
+                    npm install fabrk
+                  </code>
+                  <CopyButton value="npm install fabrk" />
                 </div>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="textarea">{formatLabel("Textarea")}</Label>
-                  <Textarea id="textarea" placeholder="Type your message..." rows={4} />
-                </div>
-                <div>
-                  <Label htmlFor="select">{formatLabel("Select")}</Label>
-                  <Select>
-                    <SelectTrigger id="select">
-                      <SelectValue placeholder="Select an option" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="option1">Option 1</SelectItem>
-                      <SelectItem value="option2">Option 2</SelectItem>
-                      <SelectItem value="option3">Option 3</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label>{formatLabel("Slider")}</Label>
-                  <Slider
-                    value={sliderValue}
-                    onValueChange={setSliderValue}
-                    max={100}
-                    step={1}
-                    className="mt-2"
-                  />
-                  <span className="text-muted-foreground text-xs">Value: {sliderValue[0]}</span>
-                </div>
-              </div>
-            </div>
-          </Section>
 
-          {/* ==================== CHECKBOXES & RADIO & SWITCH ==================== */}
-          <Section title="Selection Controls" code="0x03">
-            <div className="grid gap-6 md:grid-cols-3">
-              <div className="space-y-4">
-                <h3 className="text-muted-foreground mb-3 text-xs">[CHECKBOX]:</h3>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox1" aria-label="Accept terms" />
-                  <Label htmlFor="checkbox1">{formatLabel("Accept terms")}</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox2" defaultChecked aria-label="Subscribe" />
-                  <Label htmlFor="checkbox2">{formatLabel("Subscribe")}</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox3" disabled aria-label="Disabled" />
-                  <Label htmlFor="checkbox3">{formatLabel("Disabled")}</Label>
+              {/* Checkbox */}
+              <div>
+                <Label className="mb-4 block">[CHECKBOX]:</Label>
+                <div className="flex items-center gap-2">
+                  <Checkbox id="terms" />
+                  <Label htmlFor="terms" className="text-sm">Accept terms and conditions</Label>
                 </div>
               </div>
-              <div className="space-y-4">
-                <h3 className="text-muted-foreground mb-3 text-xs">[RADIO]:</h3>
-                <RadioGroup defaultValue="option1">
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option1" id="r1" />
-                    <Label htmlFor="r1">{formatLabel("Option 1")}</Label>
+
+              {/* Switch */}
+              <div>
+                <Label className="mb-4 block">[SWITCH]:</Label>
+                <div className="flex items-center gap-2">
+                  <Switch checked={switchChecked} onCheckedChange={setSwitchChecked} />
+                  <Label className="text-sm">{switchChecked ? "ON" : "OFF"}</Label>
+                </div>
+              </div>
+
+              {/* Rating */}
+              <div>
+                <Label className="mb-4 block">[RATING]:</Label>
+                <Rating rating={rating} onRatingChange={setRating} showValue />
+              </div>
+
+              {/* Radio Group */}
+              <div>
+                <Label className="mb-4 block">[RADIO_GROUP]:</Label>
+                <RadioGroup defaultValue="option-1">
+                  <div className="flex items-center gap-2">
+                    <RadioGroupItem value="option-1" id="r1" />
+                    <Label htmlFor="r1">Option 1</Label>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option2" id="r2" />
-                    <Label htmlFor="r2">{formatLabel("Option 2")}</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option3" id="r3" />
-                    <Label htmlFor="r3">{formatLabel("Option 3")}</Label>
+                  <div className="flex items-center gap-2">
+                    <RadioGroupItem value="option-2" id="r2" />
+                    <Label htmlFor="r2">Option 2</Label>
                   </div>
                 </RadioGroup>
               </div>
-              <div className="space-y-4">
-                <h3 className="text-muted-foreground mb-3 text-xs">[SWITCH]:</h3>
-                <div className="flex items-center space-x-2">
-                  <Switch id="switch1" aria-label="Notifications" />
-                  <Label htmlFor="switch1">{formatLabel("Notifications")}</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch id="switch2" defaultChecked aria-label="Dark mode" />
-                  <Label htmlFor="switch2">{formatLabel("Dark mode")}</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch id="switch3" disabled aria-label="Disabled" />
-                  <Label htmlFor="switch3">{formatLabel("Disabled")}</Label>
-                </div>
+            </div>
+          </section>
+
+          {/* ============================================ */}
+          {/* SECTION 2: INPUTS & FORMS */}
+          {/* ============================================ */}
+          <section id="inputs" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x02" title="INPUTS_&_FORMS" />
+            <div className="space-y-8 p-6">
+              {/* Input */}
+              <div>
+                <Label className="mb-4 block">[INPUT]:</Label>
+                <Input placeholder="Enter text..." className="max-w-sm" />
+              </div>
+
+              {/* InputPassword */}
+              <div>
+                <Label className="mb-4 block">[INPUT_PASSWORD]:</Label>
+                <InputPassword placeholder="Enter password..." className="max-w-sm" />
+              </div>
+
+              {/* InputSearch */}
+              <div>
+                <Label className="mb-4 block">[INPUT_SEARCH]:</Label>
+                <InputSearch placeholder="Search..." className="max-w-sm" />
+              </div>
+
+              {/* InputNumber */}
+              <div>
+                <Label className="mb-4 block">[INPUT_NUMBER]:</Label>
+                <InputNumber defaultValue={42} className="max-w-sm" />
+              </div>
+
+              {/* InputOTP */}
+              <div>
+                <Label className="mb-4 block">[INPUT_OTP]:</Label>
+                <InputOTP maxLength={6}>
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+
+              {/* InputGroup */}
+              <div>
+                <Label className="mb-4 block">[INPUT_GROUP]:</Label>
+                <InputGroup className="max-w-sm">
+                  <Mail className="size-4 text-muted-foreground" />
+                  <Input placeholder="email@example.com" />
+                </InputGroup>
+              </div>
+
+              {/* Textarea */}
+              <div>
+                <Label className="mb-4 block">[TEXTAREA]:</Label>
+                <Textarea placeholder="Enter description..." className="max-w-sm" />
+              </div>
+
+              {/* Select */}
+              <div>
+                <Label className="mb-4 block">[SELECT]:</Label>
+                <Select>
+                  <SelectTrigger className="max-w-sm">
+                    <SelectValue placeholder="Select option" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">Option 1</SelectItem>
+                    <SelectItem value="2">Option 2</SelectItem>
+                    <SelectItem value="3">Option 3</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* MultiSelect */}
+              <div>
+                <Label className="mb-4 block">[MULTI_SELECT]:</Label>
+                <MultiSelect
+                  options={[
+                    { value: "react", label: "React" },
+                    { value: "vue", label: "Vue" },
+                    { value: "angular", label: "Angular" },
+                  ]}
+                  selected={[]}
+                  onChange={() => {}}
+                  placeholder="Select frameworks"
+                  className="max-w-sm"
+                />
+              </div>
+
+              {/* Combobox */}
+              <div>
+                <Label className="mb-4 block">[COMBOBOX]:</Label>
+                <Combobox
+                  options={[
+                    { value: "next", label: "Next.js" },
+                    { value: "remix", label: "Remix" },
+                    { value: "astro", label: "Astro" },
+                  ]}
+                  placeholder="Select framework"
+                  className="max-w-sm"
+                />
+              </div>
+
+              {/* Autocomplete */}
+              <div>
+                <Label className="mb-4 block">[AUTOCOMPLETE]:</Label>
+                <Autocomplete
+                  options={["React", "Vue", "Angular", "Svelte"]}
+                  placeholder="Search frameworks..."
+                  className="max-w-sm"
+                />
+              </div>
+
+              {/* DatePicker */}
+              <div>
+                <Label className="mb-4 block">[DATE_PICKER]:</Label>
+                <DatePicker />
+              </div>
+
+              {/* TimePicker */}
+              <div>
+                <Label className="mb-4 block">[TIME_PICKER]:</Label>
+                <TimePicker />
+              </div>
+
+              {/* ColorPicker */}
+              <div>
+                <Label className="mb-4 block">[COLOR_PICKER]:</Label>
+                <ColorPicker color={color} onChange={setColor} />
+              </div>
+
+              {/* Slider */}
+              <div>
+                <Label className="mb-4 block">[SLIDER]: {sliderValue[0]}%</Label>
+                <Slider value={sliderValue} onValueChange={setSliderValue} max={100} className="max-w-sm" />
+              </div>
+
+              {/* PasswordStrength */}
+              <div>
+                <Label className="mb-4 block">[PASSWORD_STRENGTH]:</Label>
+                <PasswordStrength value="MySecureP@ss123" className="max-w-sm" />
+              </div>
+
+              {/* Field */}
+              <div>
+                <Label className="mb-4 block">[FIELD]:</Label>
+                <Field className="max-w-sm">
+                  <Label>Email</Label>
+                  <Input placeholder="email@example.com" />
+                </Field>
+              </div>
+
+              {/* FormError */}
+              <div>
+                <Label className="mb-4 block">[FORM_ERROR]:</Label>
+                <FormError
+                  what="Unable to save changes"
+                  why="The server is temporarily unavailable."
+                  how="Please wait a moment and try again."
+                  className="max-w-md"
+                />
               </div>
             </div>
-          </Section>
+          </section>
 
-          {/* ==================== BADGES ==================== */}
-          <Section title="Badges" code="0x04">
-            <div className="flex flex-wrap gap-3">
-              <Badge>DEFAULT</Badge>
-              <Badge variant="secondary">SECONDARY</Badge>
-              <Badge variant="outline">OUTLINE</Badge>
-              <Badge variant="destructive">DESTRUCTIVE</Badge>
-              <Badge className="bg-success text-success-foreground">SUCCESS</Badge>
-              <Badge className="bg-warning text-warning-foreground">WARNING</Badge>
-            </div>
-          </Section>
-
-          {/* ==================== ALERTS ==================== */}
-          <Section title="Alerts" code="0x05">
-            <div className="space-y-4">
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertTitle>DEFAULT_ALERT</AlertTitle>
-                <AlertDescription>This is a default informational alert message.</AlertDescription>
-              </Alert>
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertTitle>ERROR_ALERT</AlertTitle>
-                <AlertDescription>This is a destructive error alert message.</AlertDescription>
-              </Alert>
-            </div>
-          </Section>
-
-          {/* ==================== CARDS ==================== */}
-          <Section title="Cards" code="0x06">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>CARD_TITLE</CardTitle>
-                  <CardDescription>Card description text goes here</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">Card content with some example text.</p>
-                </CardContent>
-                <CardFooter className="flex gap-2">
-                  <Button variant="outline">&gt; CANCEL</Button>
-                  <Button>&gt; CONFIRM</Button>
-                </CardFooter>
-              </Card>
-              <Card>
-                <WindowHeader filename="example.tsx" />
-                <CardContent className="p-4">
-                  <p className="text-sm">Card with window header for terminal style.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </Section>
-
-          {/* ==================== TABS ==================== */}
-          <Section title="Tabs" code="0x07">
-            <Tabs defaultValue="tab1">
-              <TabsList>
-                <TabsTrigger value="tab1">&gt; TAB_1</TabsTrigger>
-                <TabsTrigger value="tab2">&gt; TAB_2</TabsTrigger>
-                <TabsTrigger value="tab3">&gt; TAB_3</TabsTrigger>
-              </TabsList>
-              <TabsContent value="tab1" className="border-border mt-4 border p-4">
-                <p className="text-sm">Content for Tab 1</p>
-              </TabsContent>
-              <TabsContent value="tab2" className="border-border mt-4 border p-4">
-                <p className="text-sm">Content for Tab 2</p>
-              </TabsContent>
-              <TabsContent value="tab3" className="border-border mt-4 border p-4">
-                <p className="text-sm">Content for Tab 3</p>
-              </TabsContent>
-            </Tabs>
-          </Section>
-
-          {/* ==================== ACCORDION ==================== */}
-          <Section title="Accordion" code="0x08">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>ACCORDION_ITEM_1</AccordionTrigger>
-                <AccordionContent>
-                  Content for the first accordion item.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>ACCORDION_ITEM_2</AccordionTrigger>
-                <AccordionContent>
-                  Content for the second accordion item.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>ACCORDION_ITEM_3</AccordionTrigger>
-                <AccordionContent>
-                  Content for the third accordion item.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </Section>
-
-          {/* ==================== DIALOGS ==================== */}
-          <Section title="Dialogs & Modals" code="0x09">
-            <div className="flex flex-wrap gap-3">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline">&gt; OPEN_DIALOG</Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>DIALOG_TITLE</DialogTitle>
-                    <DialogDescription>Dialog description text goes here.</DialogDescription>
-                  </DialogHeader>
-                  <div className="py-4">
-                    <p className="text-sm">Dialog content</p>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="outline">&gt; CANCEL</Button>
-                    <Button>&gt; CONFIRM</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline">&gt; OPEN_SHEET</Button>
-                </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>SHEET_TITLE</SheetTitle>
-                    <SheetDescription>Sheet description text goes here.</SheetDescription>
-                  </SheetHeader>
-                  <div className="py-4">
-                    <p className="text-sm">Sheet content</p>
-                  </div>
-                  <SheetFooter>
-                    <Button>&gt; SAVE_CHANGES</Button>
-                  </SheetFooter>
-                </SheetContent>
-              </Sheet>
-
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="destructive">&gt; ALERT_DIALOG</Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>ARE_YOU_SURE?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
-                    <AlertDialogAction>&gt; CONTINUE</AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </div>
-          </Section>
-
-          {/* ==================== POPOVERS & TOOLTIPS ==================== */}
-          <Section title="Popovers & Tooltips" code="0x0A">
-            <div className="flex flex-wrap gap-3">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline">&gt; POPOVER</Button>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <div className="space-y-2">
-                    <h4 className="font-medium">POPOVER_TITLE</h4>
-                    <p className="text-muted-foreground text-sm">Popover content goes here.</p>
-                  </div>
-                </PopoverContent>
-              </Popover>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline">&gt; HOVER_ME</Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Tooltip content</p>
-                </TooltipContent>
-              </Tooltip>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">
-                    &gt; DROPDOWN <ChevronDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>
-                    <User className="mr-2 h-4 w-4" /> Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <Settings className="mr-2 h-4 w-4" /> Settings
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Trash2 className="mr-2 h-4 w-4" /> Delete
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </Section>
-
-          {/* ==================== PROGRESS ==================== */}
-          <Section title="Progress & Loading" code="0x0B">
-            <div className="space-y-6">
+          {/* ============================================ */}
+          {/* SECTION 3: DATA DISPLAY */}
+          {/* ============================================ */}
+          <section id="display" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x03" title="DATA_DISPLAY" />
+            <div className="space-y-8 p-6">
+              {/* Badge */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[PROGRESS_BAR]:</h3>
-                <Progress value={33} className="w-full" />
-                <span className="text-muted-foreground mt-1 block text-xs">33%</span>
-              </div>
-              <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[SKELETON]:</h3>
-                <div className="flex items-center space-x-4">
-                  <Skeleton className="h-12 w-12" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
+                <Label className="mb-4 block">[BADGE]:</Label>
+                <div className="flex flex-wrap gap-2">
+                  <Badge>Default</Badge>
+                  <Badge variant="secondary">Secondary</Badge>
+                  <Badge variant="destructive">Destructive</Badge>
+                  <Badge variant="outline">Outline</Badge>
                 </div>
               </div>
-            </div>
-          </Section>
 
-          {/* ==================== TABLE ==================== */}
-          <Section title="Table" code="0x0C">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>NAME</TableHead>
-                  <TableHead>STATUS</TableHead>
-                  <TableHead>ROLE</TableHead>
-                  <TableHead className="text-right">ACTIONS</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell>John Doe</TableCell>
-                  <TableCell><Badge className="bg-success text-success-foreground">ACTIVE</Badge></TableCell>
-                  <TableCell>Admin</TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" aria-label="Edit"><Edit className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" aria-label="More"><MoreHorizontal className="h-4 w-4" /></Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Jane Smith</TableCell>
-                  <TableCell><Badge className="bg-warning text-warning-foreground">PENDING</Badge></TableCell>
-                  <TableCell>User</TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" aria-label="Edit"><Edit className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" aria-label="More"><MoreHorizontal className="h-4 w-4" /></Button>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Bob Wilson</TableCell>
-                  <TableCell><Badge variant="destructive">INACTIVE</Badge></TableCell>
-                  <TableCell>User</TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" aria-label="Edit"><Edit className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" aria-label="More"><MoreHorizontal className="h-4 w-4" /></Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </Section>
-
-          {/* ==================== AVATARS ==================== */}
-          <Section title="Avatars" code="0x0D">
-            <div className="flex items-center gap-4">
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="User" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <Avatar>
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              <Avatar>
-                <AvatarFallback>AB</AvatarFallback>
-              </Avatar>
-            </div>
-          </Section>
-
-          {/* ==================== NAVIGATION ==================== */}
-          <Section title="Navigation" code="0x0E">
-            <div className="space-y-6">
+              {/* NotificationBadge */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[BREADCRUMB]:</h3>
+                <Label className="mb-4 block">[NOTIFICATION_BADGE]:</Label>
+                <div className="flex gap-4">
+                  <NotificationBadge count={5}><Bell className="size-5" /></NotificationBadge>
+                  <NotificationBadge count={99}><Mail className="size-5" /></NotificationBadge>
+                </div>
+              </div>
+
+              {/* StatusIndicator */}
+              <div>
+                <Label className="mb-4 block">[STATUS_INDICATOR]:</Label>
+                <div className="flex gap-4">
+                  <StatusIndicator status="online" label="Online" />
+                  <StatusIndicator status="offline" label="Offline" />
+                  <StatusIndicator status="busy" label="Busy" />
+                  <StatusIndicator status="away" label="Away" />
+                </div>
+              </div>
+
+              {/* Avatar */}
+              <div>
+                <Label className="mb-4 block">[AVATAR]:</Label>
+                <div className="flex gap-4">
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <Avatar>
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                </div>
+              </div>
+
+              {/* AvatarGroup */}
+              <div>
+                <Label className="mb-4 block">[AVATAR_GROUP]:</Label>
+                <AvatarGroup
+                  avatars={[
+                    { fallback: "JD", src: "https://github.com/shadcn.png" },
+                    { fallback: "JD" },
+                    { fallback: "BS" },
+                    { fallback: "+5" },
+                  ]}
+                  max={3}
+                />
+              </div>
+
+              {/* Card */}
+              <div>
+                <Label className="mb-4 block">[CARD]:</Label>
+                <Card className="max-w-sm">
+                  <CardHeader>
+                    <CardTitle>Card Title</CardTitle>
+                    <CardDescription>Card description goes here</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">Card content with some example text.</p>
+                  </CardContent>
+                  <CardFooter>
+                    <Button size="sm">&gt; ACTION</Button>
+                  </CardFooter>
+                </Card>
+              </div>
+
+              {/* StatCard */}
+              <div>
+                <Label className="mb-4 block">[STAT_CARD]:</Label>
+                <div className="grid gap-4 md:grid-cols-3">
+                  <StatCard title="Total Users" value="12,345" change={12} trend="up" />
+                  <StatCard title="Revenue" value="$45,231" change={-3} trend="down" />
+                  <StatCard title="Active" value="1,234" change={5} trend="up" />
+                </div>
+              </div>
+
+              {/* KpiCard */}
+              <div>
+                <Label className="mb-4 block">[KPI_CARD]:</Label>
+                <KpiCard title="Conversion Rate" value="3.24%" subtitle="vs last month" trend="up" change={0.5} />
+              </div>
+
+              {/* Table */}
+              <div>
+                <Label className="mb-4 block">[TABLE]:</Label>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Role</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>John Doe</TableCell>
+                      <TableCell><Badge>Active</Badge></TableCell>
+                      <TableCell>Admin</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Jane Smith</TableCell>
+                      <TableCell><Badge variant="secondary">Pending</Badge></TableCell>
+                      <TableCell>User</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+
+              {/* CodeBlock */}
+              <div>
+                <Label className="mb-4 block">[CODE_BLOCK]:</Label>
+                <CodeBlock
+                  code={`const greeting = "Hello, World!";
+console.log(greeting);`}
+                  language="typescript"
+                />
+              </div>
+
+              {/* Typography */}
+              <div>
+                <Label className="mb-4 block">[TYPOGRAPHY]:</Label>
+                <div className="space-y-2">
+                  <H1>Heading 1</H1>
+                  <H2>Heading 2</H2>
+                  <H3>Heading 3</H3>
+                  <H4>Heading 4</H4>
+                  <Body>Body text paragraph</Body>
+                  <Small>Small text</Small>
+                </div>
+              </div>
+
+              {/* Calendar */}
+              <div>
+                <Label className="mb-4 block">[CALENDAR]:</Label>
+                <Calendar mode="single" selected={date} onSelect={setDate} className="border border-border" />
+              </div>
+
+              {/* ActivityTimeline */}
+              <div>
+                <Label className="mb-4 block">[ACTIVITY_TIMELINE]:</Label>
+                <ActivityTimeline events={timelineEvents} />
+              </div>
+            </div>
+          </section>
+
+          {/* ============================================ */}
+          {/* SECTION 4: CHARTS & VISUALIZATION */}
+          {/* ============================================ */}
+          <section id="charts" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x04" title="CHARTS_&_VISUALIZATION" />
+            <div className="space-y-8 p-6">
+              {/* PieChart */}
+              <div>
+                <Label className="mb-4 block">[PIE_CHART]:</Label>
+                <div className="h-64 w-64">
+                  <PieChart data={pieData} />
+                </div>
+              </div>
+
+              {/* DonutChart */}
+              <div>
+                <Label className="mb-4 block">[DONUT_CHART]:</Label>
+                <div className="h-64 w-64">
+                  <DonutChart data={pieData} />
+                </div>
+              </div>
+
+              {/* Gauge */}
+              <div>
+                <Label className="mb-4 block">[GAUGE]:</Label>
+                <Gauge value={75} max={100} label="Performance" />
+              </div>
+
+              {/* Sparkline */}
+              <div>
+                <Label className="mb-4 block">[SPARKLINE]:</Label>
+                <Sparkline data={sparklineData} className="h-12 w-48" />
+              </div>
+
+              {/* FunnelChart */}
+              <div>
+                <Label className="mb-4 block">[FUNNEL_CHART]:</Label>
+                <div className="h-64">
+                  <FunnelChart data={funnelData} />
+                </div>
+              </div>
+
+              {/* Heatmap */}
+              <div>
+                <Label className="mb-4 block">[HEATMAP]:</Label>
+                <Heatmap data={heatmapData} />
+              </div>
+            </div>
+          </section>
+
+          {/* ============================================ */}
+          {/* SECTION 5: FEEDBACK & STATUS */}
+          {/* ============================================ */}
+          <section id="feedback" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x05" title="FEEDBACK_&_STATUS" />
+            <div className="space-y-8 p-6">
+              {/* Alert */}
+              <div>
+                <Label className="mb-4 block">[ALERT]:</Label>
+                <div className="space-y-4 max-w-md">
+                  <Alert>
+                    <Info className="size-4" />
+                    <AlertTitle>Information</AlertTitle>
+                    <AlertDescription>This is an informational alert message.</AlertDescription>
+                  </Alert>
+                  <Alert variant="destructive">
+                    <AlertCircle className="size-4" />
+                    <AlertTitle>Error</AlertTitle>
+                    <AlertDescription>This is an error alert message.</AlertDescription>
+                  </Alert>
+                </div>
+              </div>
+
+              {/* Banner */}
+              <div>
+                <Label className="mb-4 block">[BANNER]:</Label>
+                <Banner>New feature available! Check out our latest update.</Banner>
+              </div>
+
+              {/* Progress */}
+              <div>
+                <Label className="mb-4 block">[PROGRESS]: {progress}%</Label>
+                <Progress value={progress} className="max-w-sm" />
+              </div>
+
+              {/* Spinner */}
+              <div>
+                <Label className="mb-4 block">[SPINNER]:</Label>
+                <Spinner />
+              </div>
+
+              {/* Skeleton */}
+              <div>
+                <Label className="mb-4 block">[SKELETON]:</Label>
+                <div className="space-y-2 max-w-sm">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
+                </div>
+              </div>
+
+              {/* Toast */}
+              <div>
+                <Label className="mb-4 block">[TOAST]:</Label>
+                <Button onClick={() => toast.success("Operation successful!")}>
+                  &gt; SHOW_TOAST
+                </Button>
+              </div>
+
+              {/* EmptyState */}
+              <div>
+                <Label className="mb-4 block">[EMPTY_STATE]:</Label>
+                <EmptyState
+                  title="No results found"
+                  description="Try adjusting your search or filters."
+                  icon={Search}
+                  action={{ label: "> CLEAR_FILTERS", onClick: () => {} }}
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* ============================================ */}
+          {/* SECTION 6: OVERLAYS & DIALOGS */}
+          {/* ============================================ */}
+          <section id="overlays" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x06" title="OVERLAYS_&_DIALOGS" />
+            <div className="space-y-8 p-6">
+              {/* Dialog */}
+              <div>
+                <Label className="mb-4 block">[DIALOG]:</Label>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">&gt; OPEN_DIALOG</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Dialog Title</DialogTitle>
+                      <DialogDescription>Dialog description goes here.</DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4">Dialog content</div>
+                    <DialogFooter>
+                      <Button>&gt; CONFIRM</Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </div>
+
+              {/* AlertDialog */}
+              <div>
+                <Label className="mb-4 block">[ALERT_DIALOG]:</Label>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="destructive">&gt; DELETE_ITEM</Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
+                      <AlertDialogAction>&gt; DELETE</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
+
+              {/* Sheet */}
+              <div>
+                <Label className="mb-4 block">[SHEET]:</Label>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline">&gt; OPEN_SHEET</Button>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Sheet Title</SheetTitle>
+                      <SheetDescription>Sheet description goes here.</SheetDescription>
+                    </SheetHeader>
+                    <div className="py-4">Sheet content</div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+
+              {/* Popover */}
+              <div>
+                <Label className="mb-4 block">[POPOVER]:</Label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline">&gt; OPEN_POPOVER</Button>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <div className="space-y-2">
+                      <h4 className={cn("text-sm font-medium", mode.font)}>Popover Title</h4>
+                      <p className="text-sm text-muted-foreground">Popover content goes here.</p>
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              {/* HoverCard */}
+              <div>
+                <Label className="mb-4 block">[HOVER_CARD]:</Label>
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <Button variant="link">&gt; HOVER_ME</Button>
+                  </HoverCardTrigger>
+                  <HoverCardContent>
+                    <div className="space-y-2">
+                      <h4 className={cn("text-sm font-medium", mode.font)}>HoverCard Title</h4>
+                      <p className="text-sm text-muted-foreground">HoverCard content on hover.</p>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </div>
+
+              {/* Tooltip */}
+              <div>
+                <Label className="mb-4 block">[TOOLTIP]:</Label>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline">&gt; HOVER_FOR_TOOLTIP</Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>This is a tooltip</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+
+              {/* DropdownMenu */}
+              <div>
+                <Label className="mb-4 block">[DROPDOWN_MENU]:</Label>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline">&gt; OPEN_MENU</Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem><User className="mr-2 size-4" />Profile</DropdownMenuItem>
+                    <DropdownMenuItem><Settings className="mr-2 size-4" />Settings</DropdownMenuItem>
+                    <DropdownMenuItem><Mail className="mr-2 size-4" />Email</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+
+              {/* ContextMenu */}
+              <div>
+                <Label className="mb-4 block">[CONTEXT_MENU]:</Label>
+                <ContextMenu>
+                  <ContextMenuTrigger className={cn("flex h-24 w-48 items-center justify-center border border-dashed border-border text-sm", mode.font)}>
+                    Right-click here
+                  </ContextMenuTrigger>
+                  <ContextMenuContent>
+                    <ContextMenuItem>Edit</ContextMenuItem>
+                    <ContextMenuItem>Copy</ContextMenuItem>
+                    <ContextMenuItem>Delete</ContextMenuItem>
+                  </ContextMenuContent>
+                </ContextMenu>
+              </div>
+
+              {/* Command */}
+              <div>
+                <Label className="mb-4 block">[COMMAND]:</Label>
+                <Command className="border border-border max-w-sm">
+                  <CommandInput placeholder="Search..." />
+                  <CommandList>
+                    <CommandEmpty>No results found.</CommandEmpty>
+                    <CommandGroup heading="Suggestions">
+                      <CommandItem><File className="mr-2 size-4" />Documents</CommandItem>
+                      <CommandItem><Settings className="mr-2 size-4" />Settings</CommandItem>
+                      <CommandItem><User className="mr-2 size-4" />Profile</CommandItem>
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </div>
+
+              {/* Collapsible */}
+              <div>
+                <Label className="mb-4 block">[COLLAPSIBLE]:</Label>
+                <Collapsible className="max-w-sm">
+                  <CollapsibleTrigger asChild>
+                    <Button variant="outline" className="w-full justify-between">
+                      Toggle Section <ChevronRight className="size-4" />
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-2 border border-border p-4">
+                    <p className="text-sm text-muted-foreground">This content is collapsible.</p>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
+          </section>
+
+          {/* ============================================ */}
+          {/* SECTION 7: NAVIGATION */}
+          {/* ============================================ */}
+          <section id="navigation" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x07" title="NAVIGATION" />
+            <div className="space-y-8 p-6">
+              {/* Tabs */}
+              <div>
+                <Label className="mb-4 block">[TABS]:</Label>
+                <Tabs defaultValue="tab1" className="max-w-md">
+                  <TabsList>
+                    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                    <TabsTrigger value="tab3">Tab 3</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="tab1" className="p-4">Tab 1 content</TabsContent>
+                  <TabsContent value="tab2" className="p-4">Tab 2 content</TabsContent>
+                  <TabsContent value="tab3" className="p-4">Tab 3 content</TabsContent>
+                </Tabs>
+              </div>
+
+              {/* Accordion */}
+              <div>
+                <Label className="mb-4 block">[ACCORDION]:</Label>
+                <Accordion type="single" collapsible className="max-w-md">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>Section 1</AccordionTrigger>
+                    <AccordionContent>Content for section 1</AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Section 2</AccordionTrigger>
+                    <AccordionContent>Content for section 2</AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
+              {/* Breadcrumb */}
+              <div>
+                <Label className="mb-4 block">[BREADCRUMB]:</Label>
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem>
-                      <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                      <BreadcrumbLink href="/">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+                      <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbLink>Breadcrumb</BreadcrumbLink>
+                      <BreadcrumbPage>Components</BreadcrumbPage>
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
               </div>
+
+              {/* Pagination */}
               <div>
-                <h3 className="text-muted-foreground mb-3 text-xs">[PAGINATION]:</h3>
+                <Label className="mb-4 block">[PAGINATION]:</Label>
                 <Pagination>
                   <PaginationContent>
-                    <PaginationItem>
-                      <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#" isActive>2</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">3</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationNext href="#" />
-                    </PaginationItem>
+                    <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
+                    <PaginationItem><PaginationLink href="#">1</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink href="#" isActive>2</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
+                    <PaginationItem><PaginationNext href="#" /></PaginationItem>
                   </PaginationContent>
                 </Pagination>
               </div>
-            </div>
-          </Section>
 
-          {/* ==================== CALENDAR ==================== */}
-          <Section title="Calendar" code="0x0F">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="border-border border"
-            />
-          </Section>
+              {/* NavigationMenu */}
+              <div>
+                <Label className="mb-4 block">[NAVIGATION_MENU]:</Label>
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="p-4 w-48">
+                          <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <div className="p-4 w-48">
+                          <NavigationMenuLink href="/components">All Components</NavigationMenuLink>
+                        </div>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
 
-          {/* ==================== CODE BLOCK ==================== */}
-          <Section title="Code Block" code="0x10">
-            <CodeBlock
-              code={`function greet(name: string) {
-  return \`Hello, \${name}!\`;
-}
-
-const message = greet("World");`}
-              language="typescript"
-            />
-          </Section>
-
-          {/* ==================== SEPARATORS ==================== */}
-          <Section title="Separators" code="0x11">
-            <div className="space-y-4">
-              <Separator />
-              <div className="flex items-center gap-4">
-                <span className="text-sm">Item 1</span>
-                <Separator orientation="vertical" className="h-4" />
-                <span className="text-sm">Item 2</span>
-                <Separator orientation="vertical" className="h-4" />
-                <span className="text-sm">Item 3</span>
+              {/* Menubar */}
+              <div>
+                <Label className="mb-4 block">[MENUBAR]:</Label>
+                <Menubar>
+                  <MenubarMenu>
+                    <MenubarTrigger>File</MenubarTrigger>
+                    <MenubarContent>
+                      <MenubarItem>New</MenubarItem>
+                      <MenubarItem>Open</MenubarItem>
+                      <MenubarItem>Save</MenubarItem>
+                    </MenubarContent>
+                  </MenubarMenu>
+                  <MenubarMenu>
+                    <MenubarTrigger>Edit</MenubarTrigger>
+                    <MenubarContent>
+                      <MenubarItem>Undo</MenubarItem>
+                      <MenubarItem>Redo</MenubarItem>
+                    </MenubarContent>
+                  </MenubarMenu>
+                </Menubar>
               </div>
             </div>
-          </Section>
+          </section>
 
-          {/* ==================== WINDOW CONTROLS ==================== */}
-          <Section title="Window Controls" code="0x12">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div>
-                  <h4 className="text-muted-foreground mb-2 text-xs">[XS]:</h4>
-                  <WindowControls size="xs" />
+          {/* ============================================ */}
+          {/* SECTION 8: LAYOUT & CONTAINERS */}
+          {/* ============================================ */}
+          <section id="layout" className={cn("border border-border", mode.radius)}>
+            <SectionHeader code="0x08" title="LAYOUT_&_CONTAINERS" />
+            <div className="space-y-8 p-6">
+              {/* WindowControls */}
+              <div>
+                <Label className="mb-4 block">[WINDOW_CONTROLS]:</Label>
+                <div className="flex gap-8">
+                  <div className="text-center">
+                    <WindowControls size="xs" />
+                    <p className="mt-2 text-xs text-muted-foreground">xs</p>
+                  </div>
+                  <div className="text-center">
+                    <WindowControls size="sm" />
+                    <p className="mt-2 text-xs text-muted-foreground">sm</p>
+                  </div>
+                  <div className="text-center">
+                    <WindowControls size="md" />
+                    <p className="mt-2 text-xs text-muted-foreground">md</p>
+                  </div>
+                  <div className="text-center">
+                    <WindowControls size="lg" />
+                    <p className="mt-2 text-xs text-muted-foreground">lg</p>
+                  </div>
+                  <div className="text-center">
+                    <WindowControls size="sm" animated />
+                    <p className="mt-2 text-xs text-muted-foreground">animated</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-muted-foreground mb-2 text-xs">[SM]:</h4>
-                  <WindowControls size="sm" />
+              </div>
+
+              {/* WindowHeader */}
+              <div>
+                <Label className="mb-4 block">[WINDOW_HEADER]:</Label>
+                <div className={cn("border border-border", mode.radius)}>
+                  <WindowHeader filename="example.tsx" />
+                  <div className="p-4">
+                    <p className="text-sm text-muted-foreground">Window content</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-muted-foreground mb-2 text-xs">[MD]:</h4>
-                  <WindowControls size="md" />
+              </div>
+
+              {/* Container */}
+              <div>
+                <Label className="mb-4 block">[CONTAINER]:</Label>
+                <Container className="border border-dashed border-border p-4">
+                  <p className="text-sm text-muted-foreground">Container with max-width constraints</p>
+                </Container>
+              </div>
+
+              {/* Grid */}
+              <div>
+                <Label className="mb-4 block">[GRID]:</Label>
+                <Grid cols={3} gap={4}>
+                  <div className="border border-border bg-muted p-4 text-center text-sm">1</div>
+                  <div className="border border-border bg-muted p-4 text-center text-sm">2</div>
+                  <div className="border border-border bg-muted p-4 text-center text-sm">3</div>
+                </Grid>
+              </div>
+
+              {/* ScrollArea */}
+              <div>
+                <Label className="mb-4 block">[SCROLL_AREA]:</Label>
+                <ScrollArea className="h-32 w-48 border border-border">
+                  <div className="p-4">
+                    {Array.from({ length: 10 }).map((_, i) => (
+                      <p key={i} className="text-sm">Scrollable item {i + 1}</p>
+                    ))}
+                  </div>
+                </ScrollArea>
+              </div>
+
+              {/* Separator */}
+              <div>
+                <Label className="mb-4 block">[SEPARATOR]:</Label>
+                <div className="max-w-sm space-y-2">
+                  <p className="text-sm">Above separator</p>
+                  <Separator />
+                  <p className="text-sm">Below separator</p>
                 </div>
-                <div>
-                  <h4 className="text-muted-foreground mb-2 text-xs">[LG]:</h4>
-                  <WindowControls size="lg" />
-                </div>
-                <div>
-                  <h4 className="text-muted-foreground mb-2 text-xs">[ANIMATED]:</h4>
-                  <WindowControls size="sm" animated />
+              </div>
+
+              {/* AspectRatio */}
+              <div>
+                <Label className="mb-4 block">[ASPECT_RATIO]:</Label>
+                <div className="w-48">
+                  <AspectRatio ratio={16 / 9} className="bg-muted flex items-center justify-center">
+                    <span className="text-sm text-muted-foreground">16:9</span>
+                  </AspectRatio>
                 </div>
               </div>
             </div>
-          </Section>
+          </section>
+        </main>
 
-          {/* Footer */}
-          <footer className="border-border mt-12 border-t pt-8 text-center">
-            <p className="text-muted-foreground text-xs">
-              [ [0xFF] END_OF_COMPONENTS ] Total: 50+ components
-            </p>
-          </footer>
-        </div>
+        <Toaster />
       </div>
     </TooltipProvider>
   );
