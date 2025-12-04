@@ -9,6 +9,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
@@ -243,12 +244,8 @@ export default function BlogPostTemplate() {
         </div>
 
         {/* Features Note */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x00] TEMPLATE_FEATURES ]
-            </span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="TEMPLATE_FEATURES" />
           <div className="space-y-1 p-4 font-mono text-xs">
             <div>
               <span className="text-success">✓</span> Clean, centered single-column layout
@@ -266,7 +263,7 @@ export default function BlogPostTemplate() {
               <span className="text-success">✓</span> Industry-standard Vercel/Next.js pattern
             </div>
           </div>
-        </div>
+        </TerminalCard>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Download, BarChart3 } from "lucide-react";
@@ -43,14 +44,7 @@ export function AnalyticsTabs({
   return (
     <Tabs value={activeTab} onValueChange={onTabChange}>
       <div className="border-border bg-card border">
-        <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-          <div className="flex gap-2">
-            <div className="bg-destructive/50 size-2 rounded-none" />
-            <div className="bg-warning/50 size-2 rounded-none" />
-            <div className="bg-success/50 size-2 rounded-none" />
-          </div>
-          <span className="text-muted-foreground font-mono text-xs">analytics_tabs.tsx</span>
-        </div>
+        <TerminalCardHeader code="0x00" title="ANALYTICS_TABS" />
 
         {/* Terminal Tab Navigation */}
         <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">

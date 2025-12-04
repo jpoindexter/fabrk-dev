@@ -3,6 +3,8 @@
  * Activity Feed - Recent user activity log
  */
 
+import { TerminalCardHeader } from "@/components/ui/card";
+
 export interface ActivityItem {
   user: string;
   action: string;
@@ -17,14 +19,7 @@ interface ActivityFeedProps {
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
     <div className="border-border bg-card border lg:col-span-3">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-        <div className="flex gap-2">
-          <div className="bg-destructive/50 size-2 rounded-none" />
-          <div className="bg-warning/50 size-2 rounded-none" />
-          <div className="bg-success/50 size-2 rounded-none" />
-        </div>
-        <span className="text-muted-foreground font-mono text-xs">activity_log.txt</span>
-      </div>
+      <TerminalCardHeader code="0x00" title="ACTIVITY_LOG" />
       <div className="p-4">
         <div className="text-muted-foreground mb-4 font-mono text-xs">
           [RECENT_ACTIVITY]: COUNT={activities.length}

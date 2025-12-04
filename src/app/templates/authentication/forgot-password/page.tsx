@@ -6,6 +6,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, ShieldQuestion } from "lucide-react";
@@ -36,15 +37,8 @@ export default function ForgotPasswordTemplate() {
         </div>
 
         {/* Template Preview */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">preview.tsx</span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="PREVIEW" />
 
           <div className="bg-background/50 flex min-h-[500px] flex-col items-center justify-center p-4 sm:p-8">
             <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6 shadow-sm">
@@ -95,18 +89,11 @@ export default function ForgotPasswordTemplate() {
               </div>
             </div>
           </div>
-        </div>
+        </TerminalCard>
 
         {/* Template Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x01" title="TEMPLATE_FEATURES" />
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
@@ -124,7 +111,7 @@ export default function ForgotPasswordTemplate() {
               </div>
             </div>
           </div>
-        </div>
+        </TerminalCard>
       </main>
     </div>
   );

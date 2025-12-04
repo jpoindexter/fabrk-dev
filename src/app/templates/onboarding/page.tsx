@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { User, Building2, Settings, CheckCircle2, Sparkles } from "lucide-react";
-import { TerminalHeader } from "./components/terminal-header";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { ProgressSection } from "./components/progress-section";
 import { StepWelcome } from "./components/step-welcome";
 import { StepProfile } from "./components/step-profile";
@@ -79,7 +79,7 @@ export default function OnboardingTemplate() {
 
         {/* Main Onboarding Card */}
         <div className="border-border bg-card mx-auto max-w-2xl border">
-          <TerminalHeader filename="onboarding.tsx" />
+          <TerminalCardHeader code="0x00" title="ONBOARDING" />
 
           <ProgressSection currentStep={currentStep} steps={steps} progress={progress} />
 
