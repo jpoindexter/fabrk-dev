@@ -220,11 +220,18 @@ export default function BlogPostTemplate() {
 
             if (block.type === "code") {
               return (
-                <div key={index} className="border-border overflow-hidden border">
-                  <div className="bg-muted border-border flex items-center justify-between border-b px-4 py-2">
-                    <span className="text-muted-foreground font-mono text-xs">
-                      {block.language}
-                    </span>
+                <div key={index} className="border-border bg-card overflow-hidden border">
+                  <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-2">
+                        <div className="bg-destructive/50 size-2 rounded-none" />
+                        <div className="bg-warning/50 size-2 rounded-none" />
+                        <div className="bg-success/50 size-2 rounded-none" />
+                      </div>
+                      <span className="text-muted-foreground font-mono text-xs">
+                        {block.language}
+                      </span>
+                    </div>
                     <Button
                       variant="ghost"
                       size="sm"
