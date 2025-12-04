@@ -6,11 +6,11 @@
 
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowLeft, Calendar, Clock, Copy, Check, Share2 } from "lucide-react";
+import { CodeBlock } from "@/components/ui/code-block";
+import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
 
 // Mock article data
@@ -121,17 +121,9 @@ export async function POST(request: Request) {
 };
 
 export default function BlogPostTemplate() {
-  const [copiedCode, setCopiedCode] = useState<number | null>(null);
-
-  const handleCopyCode = (code: string, index: number) => {
-    navigator.clipboard.writeText(code);
-    setCopiedCode(index);
-    setTimeout(() => setCopiedCode(null), 2000);
-  };
-
   return (
     <div className="bg-background min-h-screen">
-      <div className="container mx-auto max-w-3xl px-6 py-12">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Template Badge */}
         <div className="mb-8">
           <div className="border-border inline-block border px-4 py-1">
@@ -219,42 +211,7 @@ export default function BlogPostTemplate() {
             }
 
             if (block.type === "code") {
-              return (
-                <div key={index} className="border-border bg-card overflow-hidden border">
-                  <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-2">
-                        <div className="bg-destructive/50 size-2 rounded-none" />
-                        <div className="bg-warning/50 size-2 rounded-none" />
-                        <div className="bg-success/50 size-2 rounded-none" />
-                      </div>
-                      <span className="text-muted-foreground font-mono text-xs">
-                        {block.language}
-                      </span>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleCopyCode(block.content, index)}
-                      className="h-7 rounded-none font-mono text-xs"
-                      aria-label={copiedCode === index ? "Code copied" : "Copy code"}
-                    >
-                      {copiedCode === index ? (
-                        <>
-                          <Check className="mr-1 h-3 w-3" /> Copied
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="mr-1 h-3 w-3" /> Copy
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                  <pre className="overflow-x-auto p-4" tabIndex={0}>
-                    <code className="text-foreground font-mono text-xs">{block.content}</code>
-                  </pre>
-                </div>
-              );
+              return <CodeBlock key={index} code={block.content} language={block.language} />;
             }
 
             return null;
@@ -286,9 +243,13 @@ export default function BlogPostTemplate() {
         </div>
 
         {/* Features Note */}
-        <div className="border-border bg-muted/30 mt-12 border p-6">
-          <div className="text-muted-foreground mb-3 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-          <div className="space-y-1 font-mono text-xs">
+        <div className="border-border bg-card border">
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x00] TEMPLATE_FEATURES ]
+            </span>
+          </div>
+          <div className="space-y-1 p-4 font-mono text-xs">
             <div>
               <span className="text-success">✓</span> Clean, centered single-column layout
             </div>

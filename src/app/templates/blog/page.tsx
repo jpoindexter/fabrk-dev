@@ -246,20 +246,20 @@ export default function BlogTemplate() {
                 <div className="flex h-[180px] flex-col p-4">
                   <Badge
                     variant="outline"
-                    className="border-border mb-3 w-fit rounded-none font-mono text-xs"
+                    className="border-border mb-2 w-fit rounded-none font-mono text-xs"
                   >
                     {post.category.toUpperCase()}
                   </Badge>
 
-                  <h3 className="group-hover:text-primary mb-3 line-clamp-2 font-mono text-lg font-semibold transition-colors">
+                  <h3 className="group-hover:text-primary mb-2 line-clamp-2 font-mono text-sm font-semibold transition-colors">
                     {post.title}
                   </h3>
 
-                  <p className="text-muted-foreground mb-auto line-clamp-2 font-mono text-xs">
+                  <p className="text-muted-foreground mb-4 line-clamp-2 font-mono text-xs">
                     {post.excerpt}
                   </p>
 
-                  <div className="border-border flex items-center justify-between border-t pt-2">
+                  <div className="border-border mt-auto flex items-center justify-between border-t pt-3">
                     <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
                       <User className="h-3 w-3" />
                       {post.author.name}

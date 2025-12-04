@@ -65,14 +65,9 @@ export default function LandingVariationsTemplate() {
         {/* Variation Selector */}
         <Tabs value={activeVariation} onValueChange={setActiveVariation}>
           <div className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-none" />
-                <div className="bg-warning/50 size-2 rounded-none" />
-                <div className="bg-success/50 size-2 rounded-none" />
-              </div>
+            <div className="border-border border-b px-4 py-2">
               <span className="text-muted-foreground font-mono text-xs">
-                variation_selector.tsx
+                [ [0x00] VARIATION_SELECTOR ]
               </span>
             </div>
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
@@ -95,13 +90,10 @@ export default function LandingVariationsTemplate() {
           {/* Centered Hero */}
           <TabsContent value="centered" className="mt-6">
             <div className="border-border bg-card border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="bg-destructive/50 size-2 rounded-none" />
-                  <div className="bg-warning/50 size-2 rounded-none" />
-                  <div className="bg-success/50 size-2 rounded-none" />
-                </div>
-                <span className="text-muted-foreground font-mono text-xs">hero_centered.tsx</span>
+              <div className="border-border border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [0x01] HERO_CENTERED ]
+                </span>
               </div>
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-3xl space-y-6 text-center">
@@ -154,13 +146,10 @@ export default function LandingVariationsTemplate() {
           {/* Split Hero */}
           <TabsContent value="split" className="mt-6">
             <div className="border-border bg-card border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="bg-destructive/50 size-2 rounded-none" />
-                  <div className="bg-warning/50 size-2 rounded-none" />
-                  <div className="bg-success/50 size-2 rounded-none" />
-                </div>
-                <span className="text-muted-foreground font-mono text-xs">hero_split.tsx</span>
+              <div className="border-border border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [0x02] HERO_SPLIT ]
+                </span>
               </div>
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="grid items-center gap-12 md:grid-cols-2">
@@ -217,13 +206,10 @@ export default function LandingVariationsTemplate() {
           {/* Minimal Hero */}
           <TabsContent value="minimal" className="mt-6">
             <div className="border-border bg-card border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="bg-destructive/50 size-2 rounded-none" />
-                  <div className="bg-warning/50 size-2 rounded-none" />
-                  <div className="bg-success/50 size-2 rounded-none" />
-                </div>
-                <span className="text-muted-foreground font-mono text-xs">hero_minimal.tsx</span>
+              <div className="border-border border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [0x03] HERO_MINIMAL ]
+                </span>
               </div>
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">
@@ -273,7 +259,7 @@ export default function LandingVariationsTemplate() {
 
         {/* Quick Reference Grid */}
         <div className="grid gap-4 md:grid-cols-3">
-          {heroVariations.map((variation) => (
+          {heroVariations.map((variation, idx) => (
             <div
               key={variation.id}
               role="button"
@@ -286,13 +272,10 @@ export default function LandingVariationsTemplate() {
               onClick={() => setActiveVariation(variation.id)}
               onKeyDown={(e) => e.key === "Enter" && setActiveVariation(variation.id)}
             >
-              <div className="border-border flex items-center gap-2 border-b px-4 py-1.5">
-                <div className="flex gap-1">
-                  <div className="bg-destructive/50 size-1.5 rounded-none" />
-                  <div className="bg-warning/50 size-1.5 rounded-none" />
-                  <div className="bg-success/50 size-1.5 rounded-none" />
-                </div>
-                <span className="text-muted-foreground font-mono text-xs">{variation.id}.tsx</span>
+              <div className="border-border border-b px-4 py-2">
+                <span className="text-muted-foreground font-mono text-xs">
+                  [ [0x0{idx + 4}] {variation.id.toUpperCase()} ]
+                </span>
               </div>
               <div className="p-4">
                 <h3 className="mb-1 font-mono font-semibold">{variation.name}</h3>
@@ -309,16 +292,12 @@ export default function LandingVariationsTemplate() {
 
         {/* Features Card */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x07] TEMPLATE_FEATURES ]
+            </span>
           </div>
           <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div>
                 <span className="text-success">&gt;</span> 3 hero variations (centered, split,

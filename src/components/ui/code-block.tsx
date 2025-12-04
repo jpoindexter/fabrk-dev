@@ -30,11 +30,11 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
       {/* Copy button - appears on hover */}
       <button
         onClick={handleCopy}
-        className="text-muted-foreground hover:text-foreground absolute top-2 right-2 z-10 p-1.5 font-mono text-xs opacity-0 transition-opacity group-hover:opacity-100"
+        className="absolute top-2 right-2 z-10 p-1.5 font-mono text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 hover:text-slate-200"
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}
       >
         {copied ? (
-          <Check className="text-success h-4 w-4" aria-hidden="true" />
+          <Check className="h-4 w-4 text-green-400" aria-hidden="true" />
         ) : (
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
