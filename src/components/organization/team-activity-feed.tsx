@@ -29,6 +29,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 
 export type ActivityType =
   | "created"
@@ -168,7 +169,8 @@ export function TeamActivityFeed({
                         </Avatar>
                         <div
                           className={cn(
-                            "border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center rounded-none border",
+                            "border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center border",
+                            mode.radius,
                             config.bgColor
                           )}
                         >

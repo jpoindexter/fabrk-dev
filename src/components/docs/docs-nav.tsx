@@ -16,6 +16,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 // Convert to TERMINAL_CASE
 function toDisplayCase(str: string): string {
@@ -261,7 +263,7 @@ export function DocsNav() {
         {/* Right Side: Theme + Home Button */}
         <div className="flex items-center gap-2">
           <ThemeDropdown />
-          <Button asChild className="rounded-none font-mono text-xs">
+          <Button asChild className={cn(mode.radius, "font-mono text-xs")}>
             <Link href="/">&gt; HOME</Link>
           </Button>
         </div>

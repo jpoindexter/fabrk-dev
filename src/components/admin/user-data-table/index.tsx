@@ -38,6 +38,7 @@ import { createUserColumns, UserData } from "./user-table-columns";
 import { UserTableToolbar } from "./user-table-toolbar";
 import { UserTablePagination } from "./user-table-pagination";
 
+import { mode } from "@/lib/design-system/visual-mode";
 // Re-export UserData type for external usage
 export type { UserData };
 
@@ -61,10 +62,7 @@ export function UserDataTable({
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
-  const columns = React.useMemo(
-    () => createUserColumns({ onEdit, onDelete }),
-    [onEdit, onDelete]
-  );
+  const columns = React.useMemo(() => createUserColumns({ onEdit, onDelete }), [onEdit, onDelete]);
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table API design is incompatible with React Compiler but works correctly
   const table = useReactTable({
@@ -96,20 +94,17 @@ export function UserDataTable({
       />
 
       {/* Table */}
-      <div className="rounded-none border border-border">
+      <div className={cn("border-border border", mode.radius)}>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-b border-border">
+              <TableRow key={headerGroup.id} className="border-border border-b">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="font-black text-foreground">
+                    <TableHead key={header.id} className="text-foreground font-black">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -122,7 +117,7 @@ export function UserDataTable({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="border-b border-border"
+                  className="border-border border-b"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -134,7 +129,7 @@ export function UserDataTable({
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground">
+                  <div className="text-muted-foreground flex flex-col items-center justify-center gap-2">
                     <Users className="h-8 w-8" />
                     <p>No users found.</p>
                   </div>

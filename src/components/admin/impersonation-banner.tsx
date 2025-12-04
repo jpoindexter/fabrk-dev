@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, X } from "lucide-react";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface ImpersonationStatus {
   isImpersonating: boolean;
   originalUser?: {
@@ -69,7 +71,7 @@ export function ImpersonationBanner() {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
           <AlertTriangle className="text-warning h-5 w-5" />
-          <span className="text-foreground font-mono text-sm">
+          <span className={cn("text-foreground text-sm", mode.font)}>
             <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing as:{" "}
             <strong>{status.targetUser?.name || status.targetUser?.email || "User"}</strong>
           </span>

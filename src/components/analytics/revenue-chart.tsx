@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 export interface RevenueDataPoint {
   period: string;
   mrr: number;
@@ -105,7 +106,7 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className="border-border bg-card rounded-none border p-4">
+            <div className={cn("border-border bg-card border p-4", mode.radius)}>
               <p className="text-foreground mb-2 text-sm font-bold">{payload[0].payload.period}</p>
               <div className="space-y-1">
                 <p className="text-muted-foreground text-xs">
@@ -152,14 +153,14 @@ export function RevenueChart({
       <CardContent className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="border-border bg-card rounded-none border p-4">
+          <div className={cn("border-border bg-card border p-4", mode.radius)}>
             <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
             <p className="text-foreground text-2xl font-black">
               {formatCompactCurrency(latestMRR)}
             </p>
           </div>
           {showArr && (
-            <div className="border-border bg-accent/50 rounded-none border p-4">
+            <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
               <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
               <p className="text-foreground text-2xl font-black">
                 {formatCompactCurrency(latestARR)}
@@ -201,7 +202,7 @@ export function RevenueChart({
         </div>
 
         {/* Chart */}
-        <div className="border-border bg-card rounded-none border p-4">
+        <div className={cn("border-border bg-card border p-4", mode.radius)}>
           <ResponsiveContainer width="100%" height={300}>
             {chartType === "area" ? (
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

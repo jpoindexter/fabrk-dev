@@ -9,6 +9,8 @@ import React, { Component, ReactNode } from "react";
 import { captureError } from "@/lib/monitoring/error-tracker";
 import { Button } from "@/components/ui/button";
 import { AlertCircle } from "lucide-react";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 interface Props {
   children: ReactNode;
@@ -68,17 +70,15 @@ export class ErrorBoundary extends Component<Props, State> {
       // Default fallback UI
       return (
         <div className="flex min-h-[400px] flex-col items-center justify-center p-8 text-center">
-          <AlertCircle className="mb-4 h-12 w-12 text-destructive" />
+          <AlertCircle className="text-destructive mb-4 h-12 w-12" />
           <h2 className="mb-2 text-2xl font-bold">Something went wrong</h2>
-          <p className="mb-6 text-muted-foreground">
+          <p className="text-muted-foreground mb-6">
             We're sorry for the inconvenience. Please try refreshing the page.
           </p>
           {process.env.NODE_ENV === "development" && this.state.error && (
-            <details className="mb-4 max-w-2xl rounded-none border p-4 text-left">
-              <summary className="cursor-pointer font-semibold">
-                Error Details
-              </summary>
-              <pre className="mt-2 overflow-auto text-xs">
+            <details className={cn("mb-4 max-w-2xl border p-4 text-left", mode.radius)}>
+              <summary className="cursor-pointer font-semibold">Error Details</summary>
+              <pre className={cn("mt-2 overflow-auto text-xs", mode.font)}>
                 {this.state.error.message}
                 {"\n\n"}
                 {this.state.error.stack}

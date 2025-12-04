@@ -23,6 +23,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 export interface FunnelStage {
   name: string;
   value: number;
@@ -91,7 +92,7 @@ export function FunnelVisualizer({
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className="border-border h-3 w-3 rounded-none border"
+                      className={cn("border-border h-3 w-3 border", mode.radius)}
                       style={{ backgroundColor: color }}
                     />
                     <span className="text-foreground text-sm font-bold">{stage.name}</span>
@@ -110,7 +111,10 @@ export function FunnelVisualizer({
               {/* Funnel Bar */}
               <div className="relative">
                 <div
-                  className="border-border h-12 rounded-none border transition-all duration-500 ease-out"
+                  className={cn(
+                    "border-border h-12 border transition-all duration-500 ease-out",
+                    mode.radius
+                  )}
                   style={{
                     width: `${widthPercentage}%`,
                     backgroundColor: color,
@@ -134,7 +138,7 @@ export function FunnelVisualizer({
 
         {/* Overall Conversion */}
         <div className="border-border border-t pt-4">
-          <div className="bg-accent/50 flex items-center justify-between rounded-none p-4">
+          <div className={cn("bg-accent/50 flex items-center justify-between p-4", mode.radius)}>
             <span className="text-foreground text-sm font-medium">Overall Conversion Rate</span>
             <span className="text-primary text-2xl font-black">
               {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%

@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { generateFAQSchema } from "@/lib/seo/structured-data";
 import { ClientSchemaScript } from "@/components/security/client-schema-script";
 
+import { mode } from "@/lib/design-system/visual-mode";
 export interface FAQ {
   question: string;
   answer: string;
@@ -50,37 +51,28 @@ export function FAQSection({ faqs, title, description, className }: FAQSectionPr
       <ClientSchemaScript schema={schema} />
 
       <section className={cn("mx-auto max-w-3xl", className)}>
-        {title && (
-          <h2 className="mb-2 text-3xl font-bold text-foreground">{title}</h2>
-        )}
-        {description && (
-          <p className="mb-8 text-lg text-muted-foreground">{description}</p>
-        )}
+        {title && <h2 className="text-foreground mb-2 text-3xl font-bold">{title}</h2>}
+        {description && <p className="text-muted-foreground mb-8 text-lg">{description}</p>}
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="rounded-none border border-border bg-card"
-            >
+            <div key={index} className={cn("border-border bg-card border", mode.radius)}>
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between p-6 text-left"
                 aria-expanded={openIndex === index}
               >
-                <h3 className="text-lg font-semibold text-foreground pr-4">
-                  {faq.question}
-                </h3>
+                <h3 className="text-foreground pr-4 text-lg font-semibold">{faq.question}</h3>
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform",
+                    "text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform",
                     openIndex === index && "rotate-180"
                   )}
                 />
               </button>
 
               {openIndex === index && (
-                <div className="border-t border-border p-6 pt-4">
+                <div className="border-border border-t p-6 pt-4">
                   <p className="text-foreground">{faq.answer}</p>
                 </div>
               )}

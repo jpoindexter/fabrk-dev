@@ -20,8 +20,7 @@
 import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
-
+import { mode } from "@/lib/design-system/visual-mode";
 interface MarketingSection {
   /** Unique identifier for the section (used as key) */
   id: string;
@@ -165,19 +164,19 @@ export function MarketingPageHeader({
       <div className="mx-auto max-w-4xl text-center">
         {/* Terminal Badge */}
         <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
-          <span className="text-muted-foreground font-mono text-xs">
+          <span className={cn("text-muted-foreground text-xs", mode.font)}>
             [ [{code}] {title.toUpperCase().replace(/ /g, "_")} ]{badge ? ` ${badge}` : ""}
           </span>
         </div>
 
         {/* Title */}
-        <h1 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
+        <h1 className={cn("mb-4 text-3xl font-bold tracking-tight lg:text-4xl", mode.font)}>
           {title.toUpperCase().replace(/ /g, "_")}
         </h1>
 
         {/* Description */}
         {description && (
-          <p className="text-muted-foreground mx-auto max-w-2xl font-mono text-sm">
+          <p className={cn("text-muted-foreground mx-auto max-w-2xl text-sm", mode.font)}>
             &gt; {description.toUpperCase().replace(/ /g, "_")}
           </p>
         )}

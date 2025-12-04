@@ -23,13 +23,9 @@ import {
   InputOTPSlot,
   InputOTPSeparator,
 } from "@/components/ui/input-otp";
-import {
-  AlertTriangle,
-  Loader2,
-  Copy,
-  Check,
-  CheckCircle2,
-} from "lucide-react";
+import { AlertTriangle, Loader2, Copy, Check, CheckCircle2 } from "lucide-react";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 type SetupStep = "qr" | "verify" | "backup";
 
@@ -105,8 +101,7 @@ export function Security2FASetupDialog({
           <DialogDescription>
             {setupStep === "qr" &&
               "Scan the QR code with your authenticator app (Google Authenticator, Authy, etc.)"}
-            {setupStep === "verify" &&
-              "Enter the 6-digit code from your authenticator app"}
+            {setupStep === "verify" && "Enter the 6-digit code from your authenticator app"}
             {setupStep === "backup" &&
               "Store these codes safely. You can use them to sign in if you lose access to your authenticator."}
           </DialogDescription>
@@ -114,25 +109,20 @@ export function Security2FASetupDialog({
 
         {setupStep === "qr" && (
           <div className="space-y-4">
-            <div className="flex justify-center p-4 bg-card rounded-none border border-border">
+            <div
+              className={cn("bg-card border-border flex justify-center border p-4", mode.radius)}
+            >
               <QRCodeSVG value={qrCodeUri} size={200} />
             </div>
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground text-center">
+              <p className="text-muted-foreground text-center text-sm">
                 Can&apos;t scan? Enter this code manually:
               </p>
-              <div className="flex items-center gap-2 p-2 bg-muted rounded-none">
-                <code className="flex-1 text-xs font-mono break-all">
-                  {totpSecret}
-                </code>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleCopySecret}
-                  className="shrink-0"
-                >
+              <div className={cn("bg-muted flex items-center gap-2 p-2", mode.radius)}>
+                <code className={cn("flex-1 text-xs break-all", mode.font)}>{totpSecret}</code>
+                <Button variant="ghost" size="sm" onClick={handleCopySecret} className="shrink-0">
                   {copiedSecret ? (
-                    <Check className="h-4 w-4 text-success" />
+                    <Check className="text-success h-4 w-4" />
                   ) : (
                     <Copy className="h-4 w-4" />
                   )}
@@ -170,11 +160,7 @@ export function Security2FASetupDialog({
               </InputOTP>
             </div>
             <DialogFooter className="flex-col gap-2 sm:flex-row">
-              <Button
-                variant="outline"
-                onClick={() => setSetupStep("qr")}
-                disabled={isVerifying}
-              >
+              <Button variant="outline" onClick={() => setSetupStep("qr")} disabled={isVerifying}>
                 Back
               </Button>
               <Button
@@ -191,9 +177,9 @@ export function Security2FASetupDialog({
 
         {setupStep === "backup" && (
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-2 p-4 bg-muted rounded-none">
+            <div className={cn("bg-muted grid grid-cols-2 gap-2 p-4", mode.radius)}>
               {backupCodes.map((code, i) => (
-                <code key={i} className="text-sm font-mono text-center py-1">
+                <code key={i} className={cn("py-1 text-center text-sm", mode.font)}>
                   {code}
                 </code>
               ))}

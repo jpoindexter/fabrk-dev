@@ -8,6 +8,8 @@ import { Check } from "lucide-react";
 import { generateHowToSchema } from "@/lib/seo/structured-data";
 import { SchemaScript } from "./schema-script";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 export interface HowToStep {
   name: string;
   text: string;
@@ -60,11 +62,11 @@ export function HowTo({
       <SchemaScript schema={schema} />
 
       <div className={className}>
-        <h2 className="mb-2 text-3xl font-bold text-foreground">{title}</h2>
-        <p className="mb-8 text-lg text-muted-foreground">{description}</p>
+        <h2 className="text-foreground mb-2 text-3xl font-bold">{title}</h2>
+        <p className="text-muted-foreground mb-8 text-lg">{description}</p>
 
         {(totalTime || estimatedCost) && (
-          <div className="mb-8 flex gap-6 text-sm text-muted-foreground">
+          <div className="text-muted-foreground mb-8 flex gap-6 text-sm">
             {totalTime && (
               <div>
                 <span className="font-semibold">Total Time:</span> {totalTime}
@@ -81,14 +83,17 @@ export function HowTo({
         <ol className="space-y-6">
           {steps.map((step, index) => (
             <li key={index} className="flex gap-4">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-none bg-info text-info-foreground font-semibold">
+              <div
+                className={cn(
+                  "bg-info text-info-foreground flex h-8 w-8 flex-shrink-0 items-center justify-center font-semibold",
+                  mode.radius
+                )}
+              >
                 {index + 1}
               </div>
 
               <div className="flex-1">
-                <h3 className="mb-2 text-xl font-semibold text-foreground">
-                  {step.name}
-                </h3>
+                <h3 className="text-foreground mb-2 text-xl font-semibold">{step.name}</h3>
                 <p className="text-muted-foreground">{step.text}</p>
 
                 {step.image && (
@@ -96,13 +101,13 @@ export function HowTo({
                   <img
                     src={step.image}
                     alt={step.name}
-                    className="mt-4 rounded-none border border-border"
+                    className={cn("border-border mt-4 border", mode.radius)}
                   />
                 )}
               </div>
 
               <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center">
-                <Check className="h-5 w-5 text-success" />
+                <Check className="text-success h-5 w-5" />
               </div>
             </li>
           ))}

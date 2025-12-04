@@ -12,6 +12,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Copy, Key } from "lucide-react";
 import { LicenseCardProps } from "./purchase-status-types";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: LicenseCardProps) {
   if (!licenseKey) return null;
 
@@ -26,13 +28,13 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="rounded-none bg-muted p-6 font-mono text-sm dark:bg-muted">
+          <div className={cn("bg-muted dark:bg-muted p-6 text-sm", mode.font, mode.radius)}>
             {licenseKey}
           </div>
           <Button
             variant="outline"
             onClick={onCopyLicense}
-            className="w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="focus-visible:ring-ring w-full focus-visible:ring-2 focus-visible:outline-none"
           >
             {copiedLicense ? (
               <>✓ Copied to Clipboard</>
@@ -43,7 +45,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
               </>
             )}
           </Button>
-          <p className="text-xs text-muted-foreground dark:text-muted-foreground">
+          <p className="text-muted-foreground dark:text-muted-foreground text-xs">
             Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>

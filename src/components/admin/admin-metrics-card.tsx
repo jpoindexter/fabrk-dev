@@ -21,6 +21,7 @@ import { TrendingDown, TrendingUp, Minus } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 interface AdminMetricsCardProps {
   title: string;
   value: string | number;
@@ -71,16 +72,16 @@ export function AdminMetricsCard({
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="flex-1 space-y-4">
-            <p className="text-sm font-medium text-muted-foreground">{title}</p>
+            <p className="text-muted-foreground text-sm font-medium">{title}</p>
 
             {loading ? (
               <div className="space-y-2">
-                <div className="h-8 w-24 animate-pulse rounded bg-muted" />
-                <div className="h-4 w-20 animate-pulse rounded bg-muted" />
+                <div className="bg-muted h-8 w-24 animate-pulse rounded" />
+                <div className="bg-muted h-4 w-20 animate-pulse rounded" />
               </div>
             ) : (
               <>
-                <div className="text-3xl font-black text-foreground">
+                <div className="text-foreground text-3xl font-black">
                   {typeof value === "number" ? value.toLocaleString() : value}
                 </div>
 
@@ -88,7 +89,8 @@ export function AdminMetricsCard({
                   <div className="flex items-center gap-2">
                     <div
                       className={cn(
-                        "flex items-center gap-1 rounded-none border-border px-2 py-0.5 text-xs font-bold",
+                        "border-border flex items-center gap-1 px-2 py-0.5 text-xs font-bold",
+                        mode.radius,
                         isPositive && "border-primary bg-primary/10 text-primary",
                         isNegative && "border-destructive bg-destructive/10 text-destructive",
                         isNeutral && "border-border bg-muted text-muted-foreground"
@@ -97,7 +99,7 @@ export function AdminMetricsCard({
                       <TrendIcon className="h-3 w-3" />
                       {Math.abs(change).toFixed(1)}%
                     </div>
-                    <span className="text-xs text-muted-foreground">{changeLabel}</span>
+                    <span className="text-muted-foreground text-xs">{changeLabel}</span>
                   </div>
                 )}
               </>
@@ -107,7 +109,8 @@ export function AdminMetricsCard({
           {icon && (
             <div
               className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-none border border-border",
+                "border-border flex h-12 w-12 items-center justify-center border",
+                mode.radius,
                 iconWrapperStyles[variant],
                 iconClassName
               )}
@@ -121,7 +124,8 @@ export function AdminMetricsCard({
       {/* Background decoration */}
       <div
         className={cn(
-          "absolute -right-8 -bottom-8 h-32 w-32 rounded-none blur-3xl opacity-20",
+          "absolute -right-8 -bottom-8 h-32 w-32 opacity-20 blur-3xl",
+          mode.radius,
           variant === "primary" && "bg-primary",
           variant === "success" && "bg-primary",
           variant === "warning" && "bg-warning",

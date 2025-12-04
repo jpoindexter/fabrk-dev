@@ -20,7 +20,7 @@
  * // → Entire site switches to rounded ShadCN style
  */
 
-export type VisualMode = "sharp" | "standard" | "minimal";
+export type VisualMode = "sharp" | "standard" | "minimal" | "linear";
 
 export interface VisualModeConfig {
   /** Border radius class - applied to cards, buttons, inputs, etc. */
@@ -84,6 +84,17 @@ export const visualModes: Record<VisualMode, VisualModeConfig> = {
     inputStyle: "rounded-md border-input/50",
     borderWidth: "border-0",
   },
+  linear: {
+    radius: "rounded-lg",
+    font: "font-sans",
+    shadow: "shadow-sm",
+    buttonPrefix: "",
+    labelFormat: "plain",
+    cardHeader: "simple",
+    textTransform: "normal",
+    inputStyle: "rounded-lg border-input",
+    borderWidth: "border",
+  },
 };
 
 // ============================================================================
@@ -94,9 +105,10 @@ export const visualModes: Record<VisualMode, VisualModeConfig> = {
  * Current visual mode for the entire application.
  *
  * Change this value to switch the entire site's aesthetic:
- * - "sharp" → Sharp corners, monospace, angular style
+ * - "sharp" → Sharp corners, monospace, angular (terminal) style
  * - "standard" → Rounded corners, sans-serif, modern SaaS style
  * - "minimal" → Subtle rounded corners, clean and minimal
+ * - "linear" → Linear.app style - rounded, clean, subtle shadows
  */
 export const CURRENT_MODE: VisualMode = "sharp";
 

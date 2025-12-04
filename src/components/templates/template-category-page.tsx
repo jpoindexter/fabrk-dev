@@ -9,6 +9,8 @@
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface Template {
   id: string;
   name: string;
@@ -48,14 +50,14 @@ export function TemplateCategoryPage({
         {/* Category Header */}
         <section className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>
               [CATEGORY]: {categoryCode}
             </span>
           </div>
           <div className="flex items-center gap-4">
             {CategoryIcon && <CategoryIcon className="text-primary h-6 w-6" />}
-            <h1 className="font-mono text-3xl font-bold">{title}</h1>
-            <span className="border-border border px-2 py-0.5 font-mono text-xs">
+            <h1 className={cn("text-3xl font-bold", mode.font)}>{title}</h1>
+            <span className={cn("border-border border px-2 py-0.5 text-xs", mode.font)}>
               COUNT: {templates.length}
             </span>
           </div>
@@ -68,7 +70,7 @@ export function TemplateCategoryPage({
               <div className="border-border bg-card hover:border-primary/50 group border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
-                  <span className="text-muted-foreground font-mono text-xs">
+                  <span className={cn("text-muted-foreground text-xs", mode.font)}>
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, "_")}
                   </span>
                   <template.icon className="text-muted-foreground size-4" />
@@ -77,7 +79,7 @@ export function TemplateCategoryPage({
                 {/* Card Content */}
                 <div className="p-4">
                   {/* Status & Badge */}
-                  <div className="mb-4 flex items-center justify-between font-mono text-xs">
+                  <div className={cn("mb-4 flex items-center justify-between text-xs", mode.font)}>
                     <div>
                       <span className="text-muted-foreground">STATUS: </span>
                       <span className="text-success">READY</span>
@@ -90,22 +92,24 @@ export function TemplateCategoryPage({
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-2 font-mono text-lg font-semibold">{template.name}</h3>
+                  <h3 className={cn("mb-2 text-lg font-semibold", mode.font)}>{template.name}</h3>
 
                   {/* Description */}
-                  <div className="mb-4 font-mono text-xs">
+                  <div className={cn("mb-4 text-xs", mode.font)}>
                     <span className="text-muted-foreground">DESC: </span>
                     <span className="text-foreground">{template.description}</span>
                   </div>
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
+                    <div className={cn("text-muted-foreground mb-2 text-xs", mode.font)}>
+                      [FEATURES]:
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className="border-border border px-2 py-0.5 font-mono text-xs"
+                          className={cn("border-border border px-2 py-0.5 text-xs", mode.font)}
                         >
                           {feature}
                         </span>
@@ -115,10 +119,20 @@ export function TemplateCategoryPage({
 
                   {/* Action */}
                   <div className="flex items-center justify-between">
-                    <span className="text-primary group-hover:text-primary/80 font-mono text-xs transition-colors">
+                    <span
+                      className={cn(
+                        "text-primary group-hover:text-primary/80 text-xs transition-colors",
+                        mode.font
+                      )}
+                    >
                       &gt; VIEW_TEMPLATE
                     </span>
-                    <span className="text-muted-foreground font-mono text-xs transition-transform group-hover:translate-x-1">
+                    <span
+                      className={cn(
+                        "text-muted-foreground text-xs transition-transform group-hover:translate-x-1",
+                        mode.font
+                      )}
+                    >
                       →
                     </span>
                   </div>
@@ -131,11 +145,13 @@ export function TemplateCategoryPage({
         {/* Template Features Card */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">[ features.md ]</span>
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[ features.md ]</span>
           </div>
           <div className="p-6">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">{featureCardTitle}</div>
-            <div className="space-y-2 font-mono text-xs">
+            <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+              {featureCardTitle}
+            </div>
+            <div className={cn("space-y-2 text-xs", mode.font)}>
               {features.map((feature, index) => (
                 <div key={index}>
                   <span className="text-success">&gt;</span> {feature}

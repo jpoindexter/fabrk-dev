@@ -20,6 +20,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye } from "lucide-react";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface ImpersonateButtonProps {
   userId: string;
   userName?: string;
@@ -72,7 +74,7 @@ export function ImpersonateButton({
           variant="ghost"
           size="sm"
           disabled={disabled}
-          className="font-mono text-xs"
+          className={cn("text-xs", mode.font)}
           aria-label={`Impersonate ${userName || userEmail}`}
         >
           <Eye className="mr-1 h-4 w-4" />
@@ -81,8 +83,8 @@ export function ImpersonateButton({
       </DialogTrigger>
       <DialogContent className="border-border bg-card border">
         <DialogHeader>
-          <DialogTitle className="text-foreground font-mono">[IMPERSONATE_USER]</DialogTitle>
-          <DialogDescription className="text-muted-foreground font-mono text-sm">
+          <DialogTitle className={cn("text-foreground", mode.font)}>[IMPERSONATE_USER]</DialogTitle>
+          <DialogDescription className={cn("text-muted-foreground text-sm", mode.font)}>
             You will view the dashboard as{" "}
             <strong className="text-foreground">{userName || userEmail}</strong>. This action will
             be logged.
@@ -91,7 +93,7 @@ export function ImpersonateButton({
 
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="reason" className="font-mono text-xs">
+            <Label htmlFor="reason" className={cn("text-xs", mode.font)}>
               [REASON]:
             </Label>
             <Input
@@ -99,21 +101,29 @@ export function ImpersonateButton({
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="e.g., Customer support ticket #1234"
-              className="font-mono text-sm"
+              className={cn("text-sm", mode.font)}
             />
-            <p className="text-muted-foreground font-mono text-xs">
+            <p className={cn("text-muted-foreground text-xs", mode.font)}>
               Optional but recommended for audit purposes
             </p>
           </div>
 
-          {error && <p className="text-destructive font-mono text-xs">[ERROR]: {error}</p>}
+          {error && <p className={cn("text-destructive text-xs", mode.font)}>[ERROR]: {error}</p>}
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)} className="font-mono text-xs">
+          <Button
+            variant="outline"
+            onClick={() => setOpen(false)}
+            className={cn("text-xs", mode.font)}
+          >
             CANCEL
           </Button>
-          <Button onClick={handleImpersonate} disabled={loading} className="font-mono text-xs">
+          <Button
+            onClick={handleImpersonate}
+            disabled={loading}
+            className={cn("text-xs", mode.font)}
+          >
             {loading ? "STARTING..." : "> START_IMPERSONATION"}
           </Button>
         </DialogFooter>

@@ -11,6 +11,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Clock, LogOut } from "lucide-react";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface SecuritySessionsCardProps {
   sessionVersion: number;
   isInvalidatingSessions: boolean;
@@ -26,7 +28,7 @@ export function SecuritySessionsCard({
     <Card>
       <CardHeader>
         <div className="flex items-center gap-4">
-          <div className="bg-primary/10 border-border rounded-none border p-4">
+          <div className={cn("bg-primary/10 border-border border p-4", mode.radius)}>
             <Clock className="text-primary h-6 w-6" />
           </div>
           <div>
@@ -40,7 +42,12 @@ export function SecuritySessionsCard({
 
         {/* Placeholder for active sessions - would require Session model */}
         <div className="space-y-4">
-          <div className="border-border flex items-center justify-between rounded-none border p-4">
+          <div
+            className={cn(
+              "border-border flex items-center justify-between border p-4",
+              mode.radius
+            )}
+          >
             <div>
               <p className="text-sm font-medium">Current Session</p>
               <p className="text-muted-foreground text-xs">Your current browser session</p>

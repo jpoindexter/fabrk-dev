@@ -11,6 +11,8 @@ import type {
   CookieCategory,
   DetailsTabContentProps,
 } from "./cookie-consent-types";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 export function ConsentTabContent({
   preferences,
@@ -22,7 +24,7 @@ export function ConsentTabContent({
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <div className="bg-muted flex items-center justify-between rounded-none border p-4">
+        <div className={cn("bg-muted flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
             <h4 className="text-foreground text-base leading-tight font-semibold">
               Necessary Cookies
@@ -34,7 +36,7 @@ export function ConsentTabContent({
           <Switch checked={true} disabled />
         </div>
 
-        <div className="flex items-center justify-between rounded-none border p-4">
+        <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
             <h4 className="text-foreground text-base leading-tight font-semibold">
               Preference Cookies
@@ -49,7 +51,7 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-none border p-4">
+        <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
             <h4 className="text-foreground text-base leading-tight font-semibold">
               Statistics Cookies
@@ -64,7 +66,7 @@ export function ConsentTabContent({
           />
         </div>
 
-        <div className="flex items-center justify-between rounded-none border p-4">
+        <div className={cn("flex items-center justify-between border p-4", mode.radius)}>
           <div className="flex-1">
             <h4 className="text-foreground text-base leading-tight font-semibold">
               Marketing Cookies
@@ -191,9 +193,9 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
           </div>
           <div className="ml-6 space-y-2">
             {category.cookies.map((cookie) => (
-              <div key={cookie.name} className="bg-muted rounded-none border p-4">
+              <div key={cookie.name} className={cn("bg-muted border p-4", mode.radius)}>
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold">{cookie.name}</span>
+                  <span className={cn("text-xs font-semibold", mode.font)}>{cookie.name}</span>
                   <span className="text-muted-foreground text-xs font-normal">
                     {cookie.duration}
                   </span>
@@ -311,7 +313,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
           </Button>
         </div>
 
-        <div className="bg-primary/10 rounded-none border p-4">
+        <div className={cn("bg-primary/10 border p-4", mode.radius)}>
           <div className="flex items-start space-x-4">
             <Shield className="text-primary mt-0.5 size-5" />
             <div>

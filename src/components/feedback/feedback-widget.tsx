@@ -19,12 +19,10 @@ import {
 import { MessageCircle, X, Star } from "lucide-react";
 import type { FeedbackType } from "@/lib/feedback";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface FeedbackWidgetProps {
-  onSubmit: (feedback: {
-    type: FeedbackType;
-    message: string;
-    rating?: number;
-  }) => void;
+  onSubmit: (feedback: { type: FeedbackType; message: string; rating?: number }) => void;
 }
 
 export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
@@ -56,7 +54,10 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-none bg-info text-info-foreground transition-all hover:scale-110 hover:bg-info/80"
+        className={cn(
+          "bg-info text-info-foreground hover:bg-info/80 fixed right-6 bottom-6 flex h-14 w-14 items-center justify-center transition-all hover:scale-110",
+          mode.radius
+        )}
         aria-label="Give feedback"
       >
         <MessageCircle className="h-6 w-6" />
@@ -65,9 +66,9 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 rounded-none border border-border bg-card">
-      <div className="flex items-center justify-between border-b border-border p-4">
-        <h3 className="font-semibold text-foreground">Send Feedback</h3>
+    <div className={cn("border-border bg-card fixed right-6 bottom-6 w-96 border", mode.radius)}>
+      <div className="border-border flex items-center justify-between border-b p-4">
+        <h3 className="text-foreground font-semibold">Send Feedback</h3>
         <button
           onClick={() => setIsOpen(false)}
           className="text-muted-foreground hover:text-foreground"
@@ -80,8 +81,8 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
       {submitted ? (
         <div className="p-6 text-center">
           <div className="mb-2 text-4xl">✅</div>
-          <h4 className="mb-1 font-semibold text-foreground">Thanks for your feedback!</h4>
-          <p className="text-sm text-muted-foreground">We appreciate your input.</p>
+          <h4 className="text-foreground mb-1 font-semibold">Thanks for your feedback!</h4>
+          <p className="text-muted-foreground text-sm">We appreciate your input.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="p-4">
@@ -127,9 +128,7 @@ export function FeedbackWidget({ onSubmit }: FeedbackWidgetProps) {
                 >
                   <Star
                     className={`h-6 w-6 ${
-                      num <= rating
-                        ? "fill-warning text-warning"
-                        : "text-muted-foreground/50"
+                      num <= rating ? "fill-warning text-warning" : "text-muted-foreground/50"
                     }`}
                   />
                 </button>

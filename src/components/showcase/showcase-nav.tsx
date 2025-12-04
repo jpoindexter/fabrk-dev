@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 const showcasePages = [
   {
     title: "What's Included",
@@ -69,7 +70,8 @@ export function ShowcaseNav() {
               <Link key={page.href} href={page.href} className="block">
                 <div
                   className={cn(
-                    "rounded-none border-2 p-4 transition-all",
+                    "border-2 p-4 transition-all",
+                    mode.radius,
                     "hover:border-primary/50",
                     isActive ? "border-primary bg-primary/10" : "border-border bg-background"
                   )}

@@ -11,6 +11,8 @@ import { useEffect, useRef, useState } from "react";
 import { AboutTabContent, ConsentTabContent, DetailsTabContent } from "./cookie-consent-tabs";
 import type { CookiePreferences } from "./cookie-consent-types";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 const DEFAULT_PREFERENCES: CookiePreferences = {
   necessary: true,
   preferences: false,
@@ -61,7 +63,7 @@ function updateGoogleConsent(prefs: CookiePreferences) {
   // Ensure dataLayer and gtag exist
   win.dataLayer = win.dataLayer || [];
   if (!win.gtag) {
-    win.gtag = function() {
+    win.gtag = function () {
       win.dataLayer?.push(arguments);
     };
   }
@@ -197,7 +199,10 @@ export function CookieConsent() {
       {showButton && !showModal && (
         <button
           onClick={openModal}
-          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-none border bg-background px-4 py-4 text-foreground transition-all duration-300 animate-in slide-in-from-bottom-5 hover:bg-muted"
+          className={cn(
+            "bg-background text-foreground animate-in slide-in-from-bottom-5 hover:bg-muted fixed right-6 bottom-6 z-50 flex items-center gap-2 border px-4 py-4 transition-all duration-300",
+            mode.radius
+          )}
           aria-label="Cookie Settings"
         >
           <Cookie className="size-5" />
@@ -209,7 +214,7 @@ export function CookieConsent() {
       {showModal && (
         <div className="fixed inset-0 z-[100] overflow-y-auto">
           <div
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm"
+            className="bg-background/80 fixed inset-0 backdrop-blur-sm"
             onClick={closeModal}
             onKeyDown={(e) => e.key === "Escape" && closeModal()}
             role="button"
@@ -218,26 +223,33 @@ export function CookieConsent() {
           />
           <div className="flex min-h-full items-center justify-center p-4">
             <div
-              className={`relative w-full max-w-2xl rounded-none border bg-background transition-all duration-300 ${
+              className={cn(
+                "bg-background relative w-full max-w-2xl border transition-all duration-300",
+                mode.radius,
                 isExiting ? "scale-95 opacity-0" : "scale-100 opacity-100"
-              }`}
+              )}
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b p-6">
                 <div className="flex items-center gap-4">
-                  <div className="rounded-none border bg-muted p-2">
+                  <div className={cn("bg-muted border p-2", mode.radius)}>
                     <Cookie className="size-6" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-semibold leading-tight text-foreground">Cookie Preferences</h2>
-                    <p className="text-sm font-normal leading-relaxed text-muted-foreground">
+                    <h2 className="text-foreground text-xl leading-tight font-semibold">
+                      Cookie Preferences
+                    </h2>
+                    <p className="text-muted-foreground text-sm leading-relaxed font-normal">
                       Manage your cookie settings
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="rounded-none p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring"
+                  className={cn(
+                    "focus:ring-ring p-2 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none",
+                    mode.radius
+                  )}
                   aria-label="Close"
                 >
                   <X className="size-4" />
@@ -252,7 +264,7 @@ export function CookieConsent() {
                     onClick={() => setActiveTab(tab)}
                     className={`flex-1 px-6 py-4 text-sm font-medium transition-colors ${
                       activeTab === tab
-                        ? "border-b-2 border-primary text-primary"
+                        ? "border-primary text-primary border-b-2"
                         : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     }`}
                   >

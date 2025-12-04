@@ -19,6 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { mode } from "@/lib/design-system/visual-mode";
 
 interface Organization {
   id: string;
@@ -95,7 +96,12 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
   if (loading) {
     return (
-      <div className="border-border bg-card flex items-center gap-2 rounded-none border px-4 py-2">
+      <div
+        className={cn(
+          "border-border bg-card flex items-center gap-2 border px-4 py-2",
+          mode.radius
+        )}
+      >
         <Building2 className="text-muted-foreground h-4 w-4" />
         <span className="text-muted-foreground text-sm">Loading...</span>
       </div>
@@ -121,7 +127,8 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           aria-expanded={open}
           aria-label="Select organization"
           className={cn(
-            "border-border w-[200px] justify-between gap-2 rounded-none border transition-all",
+            "border-border w-[200px] justify-between gap-2 border transition-all",
+            mode.radius,
             className
           )}
         >
@@ -139,7 +146,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="border-border w-[200px] rounded-none border shadow"
+        className={cn("border-border w-[200px] border shadow", mode.radius)}
       >
         <DropdownMenuLabel className="text-muted-foreground text-xs">
           Your Organizations

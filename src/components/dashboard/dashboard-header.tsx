@@ -24,7 +24,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { OrgSwitcher } from "@/components/organization/org-switcher";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
+import { mode } from "@/lib/design-system";
 export function DashboardHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -105,7 +105,7 @@ export function DashboardHeader() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="relative h-10 w-10 rounded-none"
+                className={cn("relative h-10 w-10", mode.radius)}
                 aria-label="User menu"
               >
                 <Avatar className="border-border h-10 w-10 border">
@@ -118,7 +118,7 @@ export function DashboardHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="border-border w-56 rounded-none border shadow"
+              className={cn("border-border w-56 border shadow", mode.radius)}
             >
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
@@ -193,7 +193,8 @@ export function DashboardHeader() {
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "border-border flex items-center gap-4 rounded-none border px-4 py-4 text-sm font-medium transition-all",
+                          "border-border flex items-center gap-4 border px-4 py-4 text-sm font-medium transition-all",
+                          mode.radius,
                           isActive
                             ? "bg-primary text-primary-foreground"
                             : "bg-card hover:bg-primary hover:text-primary-foreground"
@@ -209,7 +210,8 @@ export function DashboardHeader() {
                       href="/admin"
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "border-border flex items-center gap-4 rounded-none border px-4 py-4 text-sm font-medium transition-all",
+                        "border-border flex items-center gap-4 border px-4 py-4 text-sm font-medium transition-all",
+                        mode.radius,
                         pathname.startsWith("/admin")
                           ? "bg-primary text-primary-foreground"
                           : "bg-card hover:bg-primary hover:text-primary-foreground"

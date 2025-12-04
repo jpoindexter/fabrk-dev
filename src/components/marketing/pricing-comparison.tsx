@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 export interface PricingPlan {
   id: string;
   name: string;
@@ -124,7 +125,7 @@ export function PricingComparison({
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="border-border overflow-hidden rounded-none border">
+      <div className={cn("border-border overflow-hidden border", mode.radius)}>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -196,7 +197,7 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className="border-border bg-card rounded-none border p-6 text-center">
+      <div className={cn("border-border bg-card border p-6 text-center", mode.radius)}>
         <h3 className="text-foreground mb-2 text-xl font-black">Need help choosing?</h3>
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations

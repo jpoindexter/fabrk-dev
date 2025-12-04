@@ -30,6 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system/visual-mode";
 
 export interface OrgCardProps {
   id?: string;
@@ -84,7 +85,12 @@ export function OrgCard({
       <CardContent className="p-6">
         {/* Active indicator */}
         {isActive && (
-          <div className="bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none">
+          <div
+            className={cn(
+              "bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center",
+              mode.radius
+            )}
+          >
             <CheckCircle2 className="text-primary-foreground h-4 w-4" />
           </div>
         )}
@@ -92,7 +98,7 @@ export function OrgCard({
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
           <div className="flex min-w-0 flex-1 items-start gap-4">
-            <Avatar className="border-border h-12 w-12 rounded-none border">
+            <Avatar className={cn("border-border h-12 w-12 border", mode.radius)}>
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (

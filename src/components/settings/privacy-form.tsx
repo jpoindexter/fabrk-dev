@@ -107,7 +107,7 @@ export function PrivacyForm() {
                       disabled={isLoading}
                       className={cn(
                         mode.radius,
-                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                        `h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:${mode.radius} [&>span]:data-[state=checked]:translate-x-4`
                       )}
                     />
                   </FormControl>
@@ -133,7 +133,7 @@ export function PrivacyForm() {
                       disabled={isLoading}
                       className={cn(
                         mode.radius,
-                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                        `h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:${mode.radius} [&>span]:data-[state=checked]:translate-x-4`
                       )}
                     />
                   </FormControl>
@@ -159,7 +159,7 @@ export function PrivacyForm() {
                       disabled={isLoading}
                       className={cn(
                         mode.radius,
-                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                        `h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:${mode.radius} [&>span]:data-[state=checked]:translate-x-4`
                       )}
                     />
                   </FormControl>
@@ -185,7 +185,7 @@ export function PrivacyForm() {
                       disabled={isLoading}
                       className={cn(
                         mode.radius,
-                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                        `h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:${mode.radius} [&>span]:data-[state=checked]:translate-x-4`
                       )}
                     />
                   </FormControl>
@@ -211,7 +211,7 @@ export function PrivacyForm() {
                       disabled={isLoading}
                       className={cn(
                         mode.radius,
-                        "h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:rounded-none [&>span]:data-[state=checked]:translate-x-4"
+                        `h-5 w-9 [&>span]:h-3 [&>span]:w-3 [&>span]:${mode.radius} [&>span]:data-[state=checked]:translate-x-4`
                       )}
                     />
                   </FormControl>

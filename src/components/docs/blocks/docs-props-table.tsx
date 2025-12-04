@@ -11,6 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { docsTypography } from "../typography";
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 
 interface Prop {
   name: string;
@@ -27,12 +29,10 @@ interface DocsPropsTableProps {
 
 export function DocsPropsTable({ props }: DocsPropsTableProps) {
   return (
-    <div className="border border-border rounded-none overflow-hidden bg-card">
+    <div className={cn("border-border bg-card overflow-hidden border", mode.radius)}>
       {/* Terminal Header */}
-      <div className="border-b border-border px-4 py-2 bg-card">
-        <span className="font-mono text-xs text-muted-foreground">
-          [ [0x00] API_REFERENCE ]
-        </span>
+      <div className="border-border bg-card border-b px-4 py-2">
+        <span className="text-muted-foreground font-mono text-xs">[ [0x00] API_REFERENCE ]</span>
       </div>
       <Table>
         <TableHeader>
@@ -60,9 +60,7 @@ export function DocsPropsTable({ props }: DocsPropsTableProps) {
                   <span className="text-muted-foreground">-</span>
                 )}
               </TableCell>
-              <TableCell className={docsTypography.caption}>
-                {prop.description}
-              </TableCell>
+              <TableCell className={docsTypography.caption}>{prop.description}</TableCell>
             </TableRow>
           ))}
         </TableBody>

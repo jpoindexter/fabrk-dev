@@ -3,7 +3,8 @@
 import { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "sonner";
-
+import { mode } from "@/lib/design-system";
+import { cn } from "@/lib/utils";
 /**
  * Client-side providers
  * DaisyUI theme system (data-theme attribute)
@@ -24,10 +25,7 @@ export function Providers({ children }: ProvidersProps) {
         position="top-right"
         richColors
         toastOptions={{
-          className: "!rounded-none border border-border font-mono text-xs",
-          style: {
-            borderRadius: 0,
-          },
+          className: cn("border border-border text-xs", mode.radius, mode.font),
         }}
       />
     </SessionProvider>

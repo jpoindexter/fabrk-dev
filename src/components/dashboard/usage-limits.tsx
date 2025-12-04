@@ -6,6 +6,8 @@ import { formatUsageDisplay, getUsagePercentage } from "@/lib/features/access-co
 import { AlertCircle, Database, FolderOpen, Globe, Users } from "lucide-react";
 import Link from "next/link";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface UsageLimitsProps {
   user: { subscriptionTier?: string; email?: string; name?: string };
 }
@@ -40,11 +42,11 @@ export function UsageLimits({ user }: UsageLimitsProps) {
   };
 
   return (
-    <div className="rounded-none border border-border bg-muted/30 p-6">
+    <div className={cn("border-border bg-muted/30 border p-6", mode.radius)}>
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <AlertCircle className="h-5 w-5 text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
-          <h3 className="font-medium text-muted-foreground dark:text-muted-foreground">
+          <AlertCircle className="text-primary focus-visible:ring-ring h-5 w-5 focus-visible:ring-2 focus-visible:outline-none" />
+          <h3 className="text-muted-foreground dark:text-muted-foreground font-medium">
             Free Tier Usage Limits
           </h3>
         </div>
@@ -63,11 +65,11 @@ export function UsageLimits({ user }: UsageLimitsProps) {
           const isNearLimit = percentage >= 80;
 
           return (
-            <div key={resource} className="rounded-none bg-background p-4 dark:bg-muted">
+            <div key={resource} className={cn("bg-background dark:bg-muted p-4", mode.radius)}>
               <div className="mb-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm font-medium text-muted-foreground dark:text-muted-foreground">
+                  <Icon className="text-muted-foreground h-4 w-4" />
+                  <span className="text-muted-foreground dark:text-muted-foreground text-sm font-medium">
                     {resourceLabels[resource]}
                   </span>
                 </div>
@@ -86,7 +88,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
                 className={`h-2 ${isNearLimit ? "bg-destructive" : ""}`}
               />
               {isNearLimit && (
-                <p className="mt-2 text-xs text-destructive">
+                <p className="text-destructive mt-2 text-xs">
                   Approaching limit - upgrade recommended
                 </p>
               )}
@@ -95,8 +97,8 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         })}
       </div>
 
-      <div className="mt-4 rounded-none bg-primary p-4 dark:bg-primary/30">
-        <p className="text-sm text-primary dark:text-primary">
+      <div className={cn("bg-primary dark:bg-primary/30 mt-4 p-4", mode.radius)}>
+        <p className="text-primary dark:text-primary text-sm">
           💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources and unlock premium
           features like OAuth, payments, and email integration.
         </p>

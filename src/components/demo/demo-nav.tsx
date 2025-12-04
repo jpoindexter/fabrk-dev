@@ -8,6 +8,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 interface DemoNavProps {
   backButtonText?: string;
@@ -29,7 +31,7 @@ export function DemoNav({
         {/* Logo/Home Link - Terminal Style */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+          className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
         >
           <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-bold tracking-tight">FABRK</span>
@@ -39,7 +41,7 @@ export function DemoNav({
         {/* Right Side: Theme Controls + Back Button */}
         <div className="flex items-center gap-2">
           <ThemeDropdown />
-          <Button asChild className="rounded-none font-mono text-xs">
+          <Button asChild className={cn("text-xs", mode.radius, mode.font)}>
             <Link href={backButtonHref}>&gt; {backButtonText.toUpperCase()}</Link>
           </Button>
         </div>

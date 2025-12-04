@@ -5,6 +5,9 @@
  * Production-ready ✓
  */
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
+
 interface LogoProps {
   size?: number;
   className?: string;
@@ -15,7 +18,12 @@ export function Logo({ size = 20, className = "" }: LogoProps = {}) {
   const height = (size / 28) * 40;
 
   return (
-    <div className="border-foreground bg-primary inline-flex items-center gap-2 rounded-none border-2 px-2 py-1 transition-all hover:-translate-y-0.5">
+    <div
+      className={cn(
+        "border-foreground bg-primary inline-flex items-center gap-2 border-2 px-2 py-1 transition-all hover:-translate-y-0.5",
+        mode.radius
+      )}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}

@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import { logger } from "@/lib/logger";
+import { mode } from "@/lib/design-system/visual-mode";
 
 interface ApiKeyGeneratorProps {
   apiKey?: string;
@@ -164,7 +165,7 @@ export function ApiKeyGenerator({
             </div>
 
             {/* Security Notice */}
-            <div className="border-border bg-warning/10 rounded-none border p-4">
+            <div className={cn("border-border bg-warning/10 border p-4", mode.radius)}>
               <div className="flex gap-2">
                 <AlertTriangle className="text-warning mt-0.5 h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 space-y-1">
@@ -223,7 +224,12 @@ export function ApiKeyGenerator({
             {/* No API Key State */}
             <div className="space-y-4 py-8 text-center">
               <div className="flex justify-center">
-                <div className="border-border bg-primary/10 flex h-12 w-12 items-center justify-center rounded-none border">
+                <div
+                  className={cn(
+                    "border-border bg-primary/10 flex h-12 w-12 items-center justify-center border",
+                    mode.radius
+                  )}
+                >
                   <Key className="text-primary h-6 w-6" />
                 </div>
               </div>
@@ -247,7 +253,9 @@ export function ApiKeyGenerator({
         {apiKey && (
           <div className="space-y-2">
             <p className="text-foreground text-xs font-bold">Usage Example:</p>
-            <div className="border-border bg-muted/50 rounded-none border p-4 font-mono text-xs">
+            <div
+              className={cn("border-border bg-muted/50 border p-4 text-xs", mode.radius, mode.font)}
+            >
               <div className="text-muted-foreground">
                 curl -H "Authorization: Bearer {prefix}..."
               </div>

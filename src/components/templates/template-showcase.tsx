@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Copy, Check, Code, ExternalLink } from "lucide-react";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface TemplateShowcaseProps {
   /** Template code identifier (e.g., "BLOG", "ANALYTICS") */
   code: string;
@@ -64,16 +66,18 @@ export function TemplateShowcase({
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: {code}</span>
+              <span className={cn("text-muted-foreground text-xs", mode.font)}>
+                [TEMPLATE]: {code}
+              </span>
             </div>
             {badge && (
-              <Badge variant="default" className="rounded-none font-mono text-xs">
+              <Badge variant="default" className={cn("text-xs", mode.font, mode.radius)}>
                 {badge.toUpperCase()}
               </Badge>
             )}
           </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">{title}</h1>
-          <p className="text-muted-foreground font-mono text-sm">{description}</p>
+          <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+          <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
 
           {/* Action buttons */}
           <div className="flex items-center gap-2 pt-2">
@@ -82,7 +86,7 @@ export function TemplateShowcase({
                 variant="outline"
                 size="sm"
                 onClick={handleCopyCode}
-                className="rounded-none font-mono text-xs"
+                className={cn("text-xs", mode.font, mode.radius)}
                 aria-label={copied ? "Code copied" : "Copy template code"}
               >
                 {copied ? (
@@ -103,7 +107,7 @@ export function TemplateShowcase({
                 variant="outline"
                 size="sm"
                 asChild
-                className="rounded-none font-mono text-xs"
+                className={cn("text-xs", mode.font, mode.radius)}
               >
                 <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
                   <Code className="mr-1 h-3 w-3" />
@@ -121,11 +125,18 @@ export function TemplateShowcase({
         {/* Features Card */}
         <div className="border-border bg-card border">
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">[ features.md ]</span>
+            <span className={cn("text-muted-foreground text-xs", mode.font)}>[ features.md ]</span>
           </div>
           <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="grid gap-x-8 gap-y-1.5 font-mono text-xs md:grid-cols-2 lg:grid-cols-3">
+            <div className={cn("text-muted-foreground mb-4 text-xs", mode.font)}>
+              [TEMPLATE_FEATURES]:
+            </div>
+            <div
+              className={cn(
+                "grid gap-x-8 gap-y-1.5 text-xs md:grid-cols-2 lg:grid-cols-3",
+                mode.font
+              )}
+            >
               {features.map((feature, index) => (
                 <div key={index}>
                   <span className="text-success">&gt;</span> {feature}
@@ -133,7 +144,9 @@ export function TemplateShowcase({
               ))}
             </div>
             {note && (
-              <div className="text-muted-foreground mt-4 font-mono text-xs">[NOTE]: {note}</div>
+              <div className={cn("text-muted-foreground mt-4 text-xs", mode.font)}>
+                [NOTE]: {note}
+              </div>
             )}
           </div>
         </div>

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 const themes = [
   { id: "light", name: "Light", preview: "#ffffff" },
   { id: "dark", name: "Dark", preview: "#1d232a" },
@@ -80,13 +81,7 @@ export function ThemeDropdown() {
 
   if (!mounted) {
     return (
-      <Button
-        variant="ghost"
-        size="sm"
-        className="rounded-none"
-        disabled
-        aria-label="Loading theme"
-      >
+      <Button variant="ghost" size="sm" className={mode.radius} disabled aria-label="Loading theme">
         <Palette className="h-4 w-4" />
       </Button>
     );
@@ -100,14 +95,14 @@ export function ThemeDropdown() {
         <Button
           variant="ghost"
           size="sm"
-          className="gap-2 rounded-none"
+          className={cn("gap-2", mode.radius)}
           aria-label={`Change theme, current: ${currentThemeName}`}
         >
           <Palette className="h-4 w-4" />
           <span className="hidden sm:inline">{currentThemeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48 rounded-none">
+      <DropdownMenuContent align="end" className={cn("w-48", mode.radius)}>
         {themes.map((theme) => (
           <DropdownMenuItem
             key={theme.id}
@@ -118,7 +113,7 @@ export function ThemeDropdown() {
             )}
           >
             <div
-              className="mr-2 h-4 w-4 rounded-none border"
+              className={cn("mr-2 h-4 w-4 border", mode.radius)}
               style={{ backgroundColor: theme.preview }}
             />
             {theme.name}

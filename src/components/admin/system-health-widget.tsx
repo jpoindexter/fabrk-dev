@@ -25,6 +25,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
+import { mode } from "@/lib/design-system/visual-mode";
 export interface SystemHealthMetric {
   label: string;
   value: number;
@@ -143,7 +144,8 @@ export function SystemHealthWidget({
               <div
                 key={i}
                 className={cn(
-                  "h-2 flex-1 rounded-none",
+                  "h-2 flex-1",
+                  mode.radius,
                   i < Math.floor((avgResponseTime / 1000) * 10)
                     ? responseTimeStatus === "healthy"
                       ? "bg-primary"
@@ -181,7 +183,7 @@ export function SystemHealthWidget({
         </div>
 
         {/* Requests Per Minute */}
-        <div className="border-border bg-accent/50 rounded-none border p-4">
+        <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm font-medium">Requests/min</span>
             <span className="text-foreground text-xl font-black">
@@ -192,7 +194,9 @@ export function SystemHealthWidget({
       </CardContent>
 
       {/* Background decoration */}
-      <div className="bg-primary/5 absolute -top-8 -right-8 h-32 w-32 rounded-none blur-3xl" />
+      <div
+        className={cn("bg-primary/5 absolute -top-8 -right-8 h-32 w-32 blur-3xl", mode.radius)}
+      />
     </Card>
   );
 }

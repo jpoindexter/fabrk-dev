@@ -30,6 +30,8 @@ import {
   findTemplateByHref,
   toDisplayCase,
 } from "@/app/templates/templates-nav-data";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 export function TemplatesNav() {
   const pathname = usePathname();
@@ -41,7 +43,7 @@ export function TemplatesNav() {
         {/* Logo/Home Link - Terminal Style */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+          className={cn("flex items-center gap-2 transition-opacity hover:opacity-80", mode.font)}
         >
           <span className="text-primary text-xs">&gt;</span>
           <span className="text-sm font-bold tracking-tight">FABRK</span>
@@ -51,7 +53,7 @@ export function TemplatesNav() {
         {/* Breadcrumbs - Center */}
         <div className="flex flex-1 justify-center">
           <Breadcrumb>
-            <BreadcrumbList className="font-mono text-xs">
+            <BreadcrumbList className={cn("text-xs", mode.font)}>
               {/* Root templates level - just show TEMPLATES as current */}
               {!section && !template && (
                 <BreadcrumbItem>
@@ -124,12 +126,15 @@ export function TemplatesNav() {
           {/* Quick Navigation Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" className="h-8 w-8 rounded-none">
+              <Button variant="outline" size="icon" className={cn("h-8 w-8", mode.radius)}>
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Navigation menu</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="border-border w-56 rounded-none font-mono">
+            <DropdownMenuContent
+              align="end"
+              className={cn("border-border w-56 border", mode.radius, mode.font)}
+            >
               <DropdownMenuLabel className="text-muted-foreground text-xs">
                 [NAVIGATE]:
               </DropdownMenuLabel>

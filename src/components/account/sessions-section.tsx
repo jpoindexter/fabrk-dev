@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import {
   AlertDialog,
@@ -19,6 +13,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 interface Session {
   id: string;
@@ -83,41 +79,39 @@ export function SessionsSection() {
     <Card>
       <CardHeader>
         <CardTitle>Active Sessions</CardTitle>
-        <CardDescription>
-          Manage your active sessions across devices.
-        </CardDescription>
+        <CardDescription>Manage your active sessions across devices.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {sessions.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No active sessions.</p>
+            <p className="text-muted-foreground text-sm">No active sessions.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead className="border-b">
                   <tr>
-                    <th className="text-left py-2 px-2 font-medium">Device</th>
-                    <th className="text-left py-2 px-2 font-medium">Browser</th>
-                    <th className="text-left py-2 px-2 font-medium">IP Address</th>
-                    <th className="text-left py-2 px-2 font-medium">Last Active</th>
-                    <th className="text-left py-2 px-2 font-medium">Action</th>
+                    <th className="px-2 py-2 text-left font-medium">Device</th>
+                    <th className="px-2 py-2 text-left font-medium">Browser</th>
+                    <th className="px-2 py-2 text-left font-medium">IP Address</th>
+                    <th className="px-2 py-2 text-left font-medium">Last Active</th>
+                    <th className="px-2 py-2 text-left font-medium">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sessions.map((session) => (
                     <tr key={session.id} className="border-b last:border-b-0">
-                      <td className="py-4 px-2">
+                      <td className="px-2 py-4">
                         <div>
                           <p className="font-medium">{session.device}</p>
                           {session.isCurrent && (
-                            <p className="text-xs text-success">Current session</p>
+                            <p className="text-success text-xs">Current session</p>
                           )}
                         </div>
                       </td>
-                      <td className="py-4 px-2">{session.browser}</td>
-                      <td className="py-4 px-2 font-mono text-xs">{session.ip}</td>
-                      <td className="py-4 px-2">{session.lastActive}</td>
-                      <td className="py-4 px-2">
+                      <td className="px-2 py-4">{session.browser}</td>
+                      <td className={cn("px-2 py-4 text-xs", mode.font)}>{session.ip}</td>
+                      <td className="px-2 py-4">{session.lastActive}</td>
+                      <td className="px-2 py-4">
                         <Button
                           variant="ghost"
                           size="sm"
@@ -145,7 +139,7 @@ export function SessionsSection() {
               This will sign out the device from this session. You can sign back in anytime.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <div className="flex gap-2 justify-end">
+          <div className="flex justify-end gap-2">
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeSessionId && handleRevokeSession(revokeSessionId)}

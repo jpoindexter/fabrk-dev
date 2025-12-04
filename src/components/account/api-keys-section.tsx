@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,6 +16,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 
 interface ApiKey {
   id: string;
@@ -118,9 +114,7 @@ export function ApiKeysSection() {
         <div className="flex items-center justify-between">
           <div>
             <CardTitle>API Keys</CardTitle>
-            <CardDescription>
-              Generate and manage API keys for your applications.
-            </CardDescription>
+            <CardDescription>Generate and manage API keys for your applications.</CardDescription>
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
@@ -130,8 +124,8 @@ export function ApiKeysSection() {
               <DialogHeader>
                 <DialogTitle>Generate API Key</DialogTitle>
                 <DialogDescription>
-                  Create a new API key for your application. Keep it secure and
-                  don't share it publicly.
+                  Create a new API key for your application. Keep it secure and don't share it
+                  publicly.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4 py-4">
@@ -143,7 +137,7 @@ export function ApiKeysSection() {
                     value={newKeyName}
                     onChange={(e) => setNewKeyName(e.target.value)}
                   />
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-muted-foreground text-xs">
                     Give your API key a descriptive name to identify its purpose.
                   </p>
                 </div>
@@ -166,39 +160,26 @@ export function ApiKeysSection() {
       </CardHeader>
       <CardContent>
         {apiKeys.length === 0 ? (
-          <div className="rounded-none border border-dashed p-8 text-center">
-            <p className="text-sm text-muted-foreground mb-4">
+          <div className={cn("border border-dashed p-8 text-center", mode.radius)}>
+            <p className="text-muted-foreground mb-4 text-sm">
               No API keys yet. Generate one to get started.
             </p>
           </div>
         ) : (
           <div className="space-y-4">
             {apiKeys.map((apiKey) => (
-              <div
-                key={apiKey.id}
-                className="rounded-none border p-4 space-y-4"
-              >
+              <div key={apiKey.id} className={cn("space-y-4 border p-4", mode.radius)}>
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="font-medium">{apiKey.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      Created on {apiKey.createdAt}
-                    </p>
+                    <p className="text-muted-foreground text-xs">Created on {apiKey.createdAt}</p>
                   </div>
-                  {apiKey.lastUsed && (
-                    <Badge variant="outline">
-                      Last used: {apiKey.lastUsed}
-                    </Badge>
-                  )}
+                  {apiKey.lastUsed && <Badge variant="outline">Last used: {apiKey.lastUsed}</Badge>}
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex gap-2">
-                    <Input
-                      value={apiKey.key}
-                      readOnly
-                      className="font-mono text-sm"
-                    />
+                    <Input value={apiKey.key} readOnly className={cn("text-sm", mode.font)} />
                     <Button
                       variant="outline"
                       onClick={() => handleCopyKey(apiKey.key)}
@@ -211,7 +192,7 @@ export function ApiKeysSection() {
 
                 <div className="flex justify-end">
                   <Button
-                                      variant="destructive"
+                    variant="destructive"
                     size="sm"
                     onClick={() => handleDeleteKey(apiKey.id)}
                   >

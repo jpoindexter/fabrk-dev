@@ -11,6 +11,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface NPSSurveyProps {
   onSubmit: (score: number, comment?: string) => void;
   onDismiss?: () => void;
@@ -41,20 +43,18 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
 
   if (step === "thanks") {
     return (
-      <div className="rounded-none border border-success/30 bg-success/10 p-6 text-center">
-        <h3 className="mb-2 text-lg font-semibold text-success-foreground">Thank you!</h3>
-        <p className="text-sm text-success">
-          Your feedback helps us improve our product.
-        </p>
+      <div className={cn("border-success/30 bg-success/10 border p-6 text-center", mode.radius)}>
+        <h3 className="text-success-foreground mb-2 text-lg font-semibold">Thank you!</h3>
+        <p className="text-success text-sm">Your feedback helps us improve our product.</p>
       </div>
     );
   }
 
   if (step === "comment") {
     return (
-      <div className="rounded-none border border-border bg-card p-6">
+      <div className={cn("border-border bg-card border p-6", mode.radius)}>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-foreground">
+          <h3 className="text-foreground text-lg font-semibold">
             Thanks for your rating! Want to tell us more?
           </h3>
           {onDismiss && (
@@ -89,9 +89,9 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
   }
 
   return (
-    <div className="rounded-none border border-border bg-card p-6">
+    <div className={cn("border-border bg-card border p-6", mode.radius)}>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">
+        <h3 className="text-foreground text-lg font-semibold">
           How likely are you to recommend us to a friend?
         </h3>
         {onDismiss && (
@@ -110,13 +110,15 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
           <button
             key={num}
             onClick={() => handleScoreSelect(num)}
-            className={`flex h-12 w-12 items-center justify-center rounded-none border font-semibold transition-all hover:scale-105 ${
+            className={cn(
+              "flex h-12 w-12 items-center justify-center border font-semibold transition-all hover:scale-105",
+              mode.radius,
               num <= 6
                 ? "border-destructive/30 bg-destructive/10 hover:border-destructive/50 hover:bg-destructive/20"
                 : num <= 8
                   ? "border-warning/30 bg-warning/10 hover:border-warning/50 hover:bg-warning/20"
                   : "border-success/30 bg-success/10 hover:border-success/50 hover:bg-success/20"
-            }`}
+            )}
             aria-label={`Score ${num}`}
           >
             {num}
@@ -124,7 +126,7 @@ export function NPSSurvey({ onSubmit, onDismiss }: NPSSurveyProps) {
         ))}
       </div>
 
-      <div className="flex justify-between text-xs text-muted-foreground">
+      <div className="text-muted-foreground flex justify-between text-xs">
         <span>Not likely</span>
         <span>Very likely</span>
       </div>

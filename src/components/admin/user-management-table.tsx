@@ -46,6 +46,8 @@ import {
 import { MoreHorizontal, Search, UserCog, Ban, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { mode } from "@/lib/design-system/visual-mode";
+import { cn } from "@/lib/utils";
 interface User {
   id: string;
   name: string | null;
@@ -94,9 +96,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
         throw new Error(error.error || "Failed to update role");
       }
 
-      setUsers(
-        users.map((u) => (u.id === userId ? { ...u, role: newRole } : u))
-      );
+      setUsers(users.map((u) => (u.id === userId ? { ...u, role: newRole } : u)));
       toast.success("User role updated successfully");
       router.refresh();
     } catch (error: unknown) {
@@ -170,9 +170,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
   return (
     <>
       {/* Filters */}
-      <div className="flex items-center gap-4 mb-4">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+      <div className="mb-4 flex items-center gap-4">
+        <div className="relative max-w-sm flex-1">
+          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input
             placeholder="Search users..."
             value={searchQuery}
@@ -185,15 +185,21 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
             <SelectValue placeholder="Filter by role" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all" className="font-semibold">All Roles</SelectItem>
-            <SelectItem value="USER" className="font-semibold">Users</SelectItem>
-            <SelectItem value="ADMIN" className="font-semibold">Admins</SelectItem>
+            <SelectItem value="all" className="font-semibold">
+              All Roles
+            </SelectItem>
+            <SelectItem value="USER" className="font-semibold">
+              Users
+            </SelectItem>
+            <SelectItem value="ADMIN" className="font-semibold">
+              Admins
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Table */}
-      <div className="rounded-none border">
+      <div className={cn("border", mode.radius)}>
         <Table>
           <TableHeader>
             <TableRow>
@@ -210,19 +216,14 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
           <TableBody>
             {filteredUsers.length === 0 ? (
               <TableRow>
-                <TableCell
-                  colSpan={8}
-                  className="text-center text-muted-foreground"
-                >
+                <TableCell colSpan={8} className="text-muted-foreground text-center">
                   No users found
                 </TableCell>
               </TableRow>
             ) : (
               filteredUsers.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell className="font-medium">
-                    {user.name || "—"}
-                  </TableCell>
+                  <TableCell className="font-medium">{user.name || "—"}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <Badge
@@ -233,16 +234,23 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="w-24 justify-center font-semibold">{user.tier || "FREE"}</Badge>
+                    <Badge variant="outline" className="w-24 justify-center font-semibold">
+                      {user.tier || "FREE"}
+                    </Badge>
                   </TableCell>
                   <TableCell>{user._count.sessions}</TableCell>
                   <TableCell>
                     {user.emailVerified ? (
-                      <Badge variant="default" className="bg-success w-24 justify-center font-semibold">
+                      <Badge
+                        variant="default"
+                        className="bg-success w-24 justify-center font-semibold"
+                      >
                         Yes
                       </Badge>
                     ) : (
-                      <Badge variant="accent" className="w-24 justify-center font-semibold">No</Badge>
+                      <Badge variant="accent" className="w-24 justify-center font-semibold">
+                        No
+                      </Badge>
                     )}
                   </TableCell>
                   <TableCell className="text-muted-foreground">
@@ -251,11 +259,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          disabled={actionLoading}
-                        >
+                        <Button variant="ghost" size="sm" disabled={actionLoading}>
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -264,17 +268,12 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           onClick={() =>
-                            handleRoleChange(
-                              user.id,
-                              user.role === "ADMIN" ? "USER" : "ADMIN"
-                            )
+                            handleRoleChange(user.id, user.role === "ADMIN" ? "USER" : "ADMIN")
                           }
                           className="font-semibold"
                         >
                           <UserCog className="mr-2 h-4 w-4" />
-                          {user.role === "ADMIN"
-                            ? "Remove Admin"
-                            : "Make Admin"}
+                          {user.role === "ADMIN" ? "Remove Admin" : "Make Admin"}
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleSuspendUser(user.id)}
@@ -310,9 +309,9 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete the
-              user account for <strong>{selectedUser?.email}</strong> and remove
-              all associated data from the database.
+              This action cannot be undone. This will permanently delete the user account for{" "}
+              <strong>{selectedUser?.email}</strong> and remove all associated data from the
+              database.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
