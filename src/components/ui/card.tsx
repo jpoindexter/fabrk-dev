@@ -200,6 +200,262 @@ const TerminalCard = React.forwardRef<HTMLDivElement, TerminalCardProps>(
 );
 TerminalCard.displayName = "TerminalCard";
 
+/**
+ * Terminal-style label with brackets
+ * Used for [LABEL]: patterns throughout templates
+ *
+ * @example
+ * ```tsx
+ * <TerminalLabel>TEMPLATE_FEATURES</TerminalLabel>
+ * // Renders: [TEMPLATE_FEATURES]:
+ * ```
+ */
+export type TerminalLabelProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** The label text (will be wrapped in brackets with colon) */
+  children: React.ReactNode;
+  /** Whether to show the colon after the brackets */
+  showColon?: boolean;
+};
+
+const TerminalLabel = React.forwardRef<HTMLDivElement, TerminalLabelProps>(
+  ({ children, showColon = true, className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-label"
+      className={cn("text-muted-foreground font-mono text-xs", className)}
+      {...props}
+    >
+      [{children}]{showColon ? ":" : ""}
+    </div>
+  )
+);
+TerminalLabel.displayName = "TerminalLabel";
+
+/**
+ * Terminal-style feature list item with > prefix
+ * Used for listing features in template cards
+ *
+ * @example
+ * ```tsx
+ * <TerminalFeatureItem>Multi-step form wizard</TerminalFeatureItem>
+ * // Renders: > Multi-step form wizard
+ * ```
+ */
+export type TerminalFeatureItemProps = React.HTMLAttributes<HTMLDivElement> & {
+  children: React.ReactNode;
+  /** Icon to use before text. Defaults to ">" */
+  icon?: "arrow" | "check" | "dot";
+};
+
+const TerminalFeatureItem = React.forwardRef<HTMLDivElement, TerminalFeatureItemProps>(
+  ({ children, icon = "arrow", className, ...props }, ref) => {
+    const iconMap = {
+      arrow: ">",
+      check: "✓",
+      dot: "•",
+    };
+
+    return (
+      <div
+        ref={ref}
+        data-slot="terminal-feature-item"
+        className={cn("font-mono text-xs", className)}
+        {...props}
+      >
+        <span className="text-success">{iconMap[icon]}</span> {children}
+      </div>
+    );
+  }
+);
+TerminalFeatureItem.displayName = "TerminalFeatureItem";
+
+/**
+ * Terminal-style feature list container
+ * Wraps multiple TerminalFeatureItem components
+ *
+ * @example
+ * ```tsx
+ * <TerminalFeatureList>
+ *   <TerminalFeatureItem>Feature 1</TerminalFeatureItem>
+ *   <TerminalFeatureItem>Feature 2</TerminalFeatureItem>
+ * </TerminalFeatureList>
+ * ```
+ */
+export type TerminalFeatureListProps = React.HTMLAttributes<HTMLDivElement>;
+
+const TerminalFeatureList = React.forwardRef<HTMLDivElement, TerminalFeatureListProps>(
+  ({ className, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-feature-list"
+      className={cn("space-y-1.5 font-mono text-xs", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+);
+TerminalFeatureList.displayName = "TerminalFeatureList";
+
+/**
+ * Terminal-style note/info text
+ * Used for [NOTE]: patterns at the bottom of feature cards
+ *
+ * @example
+ * ```tsx
+ * <TerminalNote>Connect to your API to persist data.</TerminalNote>
+ * // Renders: [NOTE]: Connect to your API to persist data.
+ * ```
+ */
+export type TerminalNoteProps = React.HTMLAttributes<HTMLDivElement> & {
+  children: React.ReactNode;
+  /** Label text. Defaults to "NOTE" */
+  label?: string;
+};
+
+const TerminalNote = React.forwardRef<HTMLDivElement, TerminalNoteProps>(
+  ({ children, label = "NOTE", className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-note"
+      className={cn("text-muted-foreground mt-4 font-mono text-xs", className)}
+      {...props}
+    >
+      [{label}]: {children}
+    </div>
+  )
+);
+TerminalNote.displayName = "TerminalNote";
+
+/**
+ * Terminal-style page badge
+ * Used for [TEMPLATE]: NAME badges at top of template pages
+ *
+ * @example
+ * ```tsx
+ * <TerminalBadge>SIGN_IN</TerminalBadge>
+ * // Renders: [TEMPLATE]: SIGN_IN
+ * ```
+ */
+export type TerminalBadgeProps = React.HTMLAttributes<HTMLDivElement> & {
+  children: React.ReactNode;
+  /** Prefix label. Defaults to "TEMPLATE" */
+  prefix?: string;
+};
+
+const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
+  ({ children, prefix = "TEMPLATE", className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="terminal-badge"
+      className={cn("border-border inline-block border px-4 py-1", className)}
+      {...props}
+    >
+      <span className="text-muted-foreground font-mono text-xs">
+        [{prefix}]: {children}
+      </span>
+    </div>
+  )
+);
+TerminalBadge.displayName = "TerminalBadge";
+
+/**
+ * Template page header component
+ * Combines badge, title, and description in a consistent layout
+ *
+ * @example
+ * ```tsx
+ * <TemplatePageHeader
+ *   badge="SIGN_IN"
+ *   title="Sign In"
+ *   description="Login page with social auth options"
+ * />
+ * ```
+ */
+export type TemplatePageHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Badge text (appears in [TEMPLATE]: BADGE) */
+  badge: string;
+  /** Page title */
+  title: string;
+  /** Page description */
+  description?: string;
+  /** Badge prefix. Defaults to "TEMPLATE" */
+  badgePrefix?: string;
+};
+
+const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderProps>(
+  ({ badge, title, description, badgePrefix = "TEMPLATE", className, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="template-page-header"
+      className={cn("space-y-2", className)}
+      {...props}
+    >
+      <TerminalBadge prefix={badgePrefix}>{badge}</TerminalBadge>
+      <h1 className="font-mono text-4xl font-semibold tracking-tight">{title}</h1>
+      {description && <p className="text-muted-foreground font-mono text-sm">{description}</p>}
+    </div>
+  )
+);
+TemplatePageHeader.displayName = "TemplatePageHeader";
+
+/**
+ * Terminal-style features card with header and feature list
+ * Complete card component for template feature documentation
+ *
+ * @example
+ * ```tsx
+ * <TerminalFeaturesCard
+ *   title="TEMPLATE_FEATURES"
+ *   features={["Feature 1", "Feature 2"]}
+ *   note="Connect to your API for real data."
+ * />
+ * ```
+ */
+export type TerminalFeaturesCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Card header title */
+  title?: string;
+  /** Hex code for header */
+  code?: string;
+  /** List of feature strings */
+  features: string[];
+  /** Optional note text at bottom */
+  note?: string;
+  /** Feature icon type */
+  featureIcon?: "arrow" | "check" | "dot";
+};
+
+const TerminalFeaturesCard = React.forwardRef<HTMLDivElement, TerminalFeaturesCardProps>(
+  (
+    {
+      title = "TEMPLATE_FEATURES",
+      code = "0x00",
+      features,
+      note,
+      featureIcon = "arrow",
+      className,
+      ...props
+    },
+    ref
+  ) => (
+    <TerminalCard ref={ref} className={className} {...props}>
+      <TerminalCardHeader code={code} title={title} />
+      <div className="p-4">
+        <TerminalLabel className="mb-4">{title}</TerminalLabel>
+        <TerminalFeatureList>
+          {features.map((feature, index) => (
+            <TerminalFeatureItem key={index} icon={featureIcon}>
+              {feature}
+            </TerminalFeatureItem>
+          ))}
+        </TerminalFeatureList>
+        {note && <TerminalNote>{note}</TerminalNote>}
+      </div>
+    </TerminalCard>
+  )
+);
+TerminalFeaturesCard.displayName = "TerminalFeaturesCard";
+
 export {
   Card,
   CardContent,
@@ -209,4 +465,11 @@ export {
   CardTitle,
   TerminalCard,
   TerminalCardHeader,
+  TerminalLabel,
+  TerminalFeatureItem,
+  TerminalFeatureList,
+  TerminalNote,
+  TerminalBadge,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
 };

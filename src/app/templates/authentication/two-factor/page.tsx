@@ -40,7 +40,7 @@ export default function TwoFactorTemplate() {
           <TerminalCardHeader code="0x00" title="PREVIEW" />
 
           <div className="bg-background/50 flex min-h-[500px] flex-col items-center justify-center p-4 sm:p-8">
-            <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6 shadow-sm">
+            <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6">
               {/* Header */}
               <div className="flex flex-col space-y-2 text-center">
                 <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">

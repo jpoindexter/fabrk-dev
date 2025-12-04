@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardHeader, TerminalFeaturesCard } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   FileQuestion,
@@ -116,12 +117,8 @@ export default function ErrorPagesTemplate() {
 
         {/* Error Type Selector with Tabs */}
         <Tabs value={activeError} onValueChange={setActiveError}>
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] ERROR_TYPES ]
-              </span>
-            </div>
+          <TerminalCard>
+            <TerminalCardHeader code="0x00" title="ERROR_TYPES" />
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {errorPages.map((error) => (
                 <TabsTrigger
@@ -133,27 +130,24 @@ export default function ErrorPagesTemplate() {
                 </TabsTrigger>
               ))}
             </TabsList>
-          </div>
+          </TerminalCard>
 
           {/* Error Preview */}
           {errorPages.map((error) => {
             const Icon = error.icon;
+            const codeMap: Record<string, string> = {
+              error: "0x00",
+              "404": "0x01",
+              "500": "0x02",
+              "503": "0x03",
+            };
             return (
               <TabsContent key={error.id} value={error.id} className="mt-6">
-                <div className="border-border bg-card border">
-                  <div className="border-border border-b px-4 py-2">
-                    <span className="text-muted-foreground font-mono text-xs">
-                      [ [0x0
-                      {error.id === "error"
-                        ? "0"
-                        : error.id === "404"
-                          ? "1"
-                          : error.id === "500"
-                            ? "2"
-                            : "3"}
-                      ] ERROR_{error.code} ]
-                    </span>
-                  </div>
+                <TerminalCard>
+                  <TerminalCardHeader
+                    code={codeMap[error.id] || "0x00"}
+                    title={`ERROR_${error.code}`}
+                  />
 
                   <div className="p-8">
                     {/* Error Content */}
@@ -262,7 +256,7 @@ export default function ErrorPagesTemplate() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </TerminalCard>
               </TabsContent>
             );
           })}
@@ -272,21 +266,18 @@ export default function ErrorPagesTemplate() {
         <div className="grid gap-4 md:grid-cols-3">
           {errorPages.map((error) => {
             const ErrorIcon = error.icon;
+            const exampleCodeMap: Record<string, string> = {
+              error: "0x04",
+              "404": "0x05",
+              "500": "0x06",
+              "503": "0x07",
+            };
             return (
-              <div key={error.id} className="border-border bg-card border">
-                <div className="border-border border-b px-4 py-2">
-                  <span className="text-muted-foreground font-mono text-xs">
-                    [ [0x0
-                    {error.id === "error"
-                      ? "4"
-                      : error.id === "404"
-                        ? "5"
-                        : error.id === "500"
-                          ? "6"
-                          : "7"}
-                    ] {error.code}_EXAMPLE ]
-                  </span>
-                </div>
+              <TerminalCard key={error.id}>
+                <TerminalCardHeader
+                  code={exampleCodeMap[error.id] || "0x04"}
+                  title={`${error.code}_EXAMPLE`}
+                />
                 <div className="p-4">
                   <div className="mb-2 flex items-center gap-2">
                     <ErrorIcon
@@ -309,45 +300,24 @@ export default function ErrorPagesTemplate() {
                     {error.id === "503" && "Planned downtime, updates"}
                   </div>
                 </div>
-              </div>
+              </TerminalCard>
             );
           })}
         </div>
 
         {/* Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x08] TEMPLATE_FEATURES ]
-            </span>
-          </div>
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal-style error output
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Contextual action buttons
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Request ID for debugging
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Color-coded severity (error vs warning)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Maintenance mode with ETA
-              </div>
-            </div>
-            <div className="text-muted-foreground mt-4 font-mono text-xs">
-              [NOTE]: Copy these to app/not-found.tsx, app/error.tsx, and app/maintenance/page.tsx
-            </div>
-          </div>
-        </div>
+        <TerminalFeaturesCard
+          code="0x08"
+          features={[
+            "Generic error, 404, 500, 503 templates",
+            "Terminal-style error output",
+            "Contextual action buttons",
+            "Request ID for debugging",
+            "Color-coded severity (error vs warning)",
+            "Maintenance mode with ETA",
+          ]}
+          note="Copy these to app/not-found.tsx, app/error.tsx, and app/maintenance/page.tsx"
+        />
       </div>
     </div>
   );

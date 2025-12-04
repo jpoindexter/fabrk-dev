@@ -26,7 +26,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
   return (
     <div
       className={cn(
-        "border-border bg-card relative flex w-full items-start gap-4 rounded-none border p-4 shadow-sm transition-colors",
+        "border-border bg-card relative flex w-full items-start gap-4 rounded-none border p-4 transition-colors",
         !notification.read && "bg-primary/5 hover:bg-primary/10"
       )}
     >

@@ -5,7 +5,16 @@
  * This file documents the standardized spacing, typography, and component sizes
  * that have been unified across the entire application.
  *
+ * Industry Standards Followed:
+ * - 8-point grid system (Material Design, Apple HIG)
+ * - Major Third (1.25) type scale (Tailwind default)
+ * - WCAG 2.1 AA accessibility compliance
+ * - Mobile-first responsive design
+ * - Terminal aesthetic with monospace typography
+ *
  * @see /CLAUDE.md for design system philosophy
+ * @see https://m3.material.io/foundations/layout/understanding-layout
+ * @see https://www.w3.org/WAI/WCAG21/quickref/
  */
 
 // ============================================================================
@@ -47,6 +56,120 @@ export const TYPOGRAPHY = {
   extraSmall: {
     className: "text-xs",
     description: "Extra small text for captions",
+  },
+} as const;
+
+// ============================================================================
+// TERMINAL TYPOGRAPHY - For template pages with terminal aesthetic
+// ============================================================================
+
+export const TERMINAL_TYPOGRAPHY = {
+  // Page header - main page title
+  pageTitle: {
+    className: "font-mono text-4xl font-semibold tracking-tight",
+    description: "Terminal-style page title",
+  },
+
+  // Page subtitle/description
+  pageDescription: {
+    className: "font-mono text-sm text-muted-foreground",
+    description: "Terminal-style page description",
+  },
+
+  // Section heading inside cards
+  sectionHeading: {
+    className: "font-mono text-lg font-semibold",
+    description: "Terminal-style section heading",
+  },
+
+  // Card header text (inside TerminalCardHeader)
+  cardHeader: {
+    className: "font-mono text-xs text-muted-foreground",
+    description: "Terminal card header - [ [0xXX] TITLE ]",
+  },
+
+  // Labels like [LABEL]:
+  label: {
+    className: "font-mono text-xs text-muted-foreground",
+    description: "Terminal-style label with brackets",
+  },
+
+  // Body text inside terminal cards
+  body: {
+    className: "font-mono text-xs",
+    description: "Terminal-style body text",
+  },
+
+  // Feature list items
+  feature: {
+    className: "font-mono text-xs",
+    description: "Terminal-style feature list item",
+  },
+
+  // Note/info text
+  note: {
+    className: "font-mono text-xs text-muted-foreground",
+    description: "Terminal-style note text",
+  },
+
+  // Badge/status text
+  badge: {
+    className: "font-mono text-xs",
+    description: "Terminal-style badge text",
+  },
+
+  // Code/hex prefix
+  code: {
+    className: "font-mono text-xs",
+    description: "Terminal-style code/hex display",
+  },
+} as const;
+
+// ============================================================================
+// DOCS TYPOGRAPHY - For documentation pages
+// ============================================================================
+
+export const DOCS_TYPOGRAPHY = {
+  // H1 - Main page title
+  h1: {
+    className: "font-mono text-3xl font-bold tracking-tight",
+    description: "Docs page main heading",
+  },
+
+  // H2 - Section heading
+  h2: {
+    className: "font-mono text-2xl font-semibold",
+    description: "Docs section heading",
+  },
+
+  // H3 - Subsection heading
+  h3: {
+    className: "font-mono text-xl font-semibold",
+    description: "Docs subsection heading",
+  },
+
+  // H4 - Card/component title
+  h4: {
+    className: "font-mono text-lg font-medium",
+    description: "Docs card heading",
+  },
+
+  // Paragraph text
+  paragraph: {
+    className: "font-mono text-sm leading-relaxed",
+    description: "Docs paragraph text",
+  },
+
+  // Caption/small text
+  caption: {
+    className: "font-mono text-xs text-muted-foreground",
+    description: "Docs caption text",
+  },
+
+  // Code inline
+  codeInline: {
+    className: "font-mono text-xs bg-muted px-1.5 py-0.5 rounded-none",
+    description: "Inline code snippet",
   },
 } as const;
 
@@ -138,7 +261,8 @@ export const PAGINATION = {
 
 export const SCROLL = {
   // Scrollbar styling for scrollable containers
-  containerClass: "scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none",
+  containerClass:
+    "scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none",
   description: "Styled scrollbar for overflow-x-auto containers (pricing table, data tables)",
 
   // Apply to: pricing-table, data-table containers
@@ -151,8 +275,8 @@ export const SCROLL = {
 
 export const BREAKPOINTS = {
   // Tailwind breakpoints used throughout the app
-  sm: "640px",  // md: in Tailwind (confusing but standard)
-  md: "768px",  // lg: in Tailwind
+  sm: "640px", // md: in Tailwind (confusing but standard)
+  md: "768px", // lg: in Tailwind
   lg: "1024px", // xl: in Tailwind
   xl: "1280px", // 2xl: in Tailwind
 

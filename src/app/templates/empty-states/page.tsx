@@ -7,6 +7,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardHeader, TerminalFeaturesCard } from "@/components/ui/card";
 import {
   FileQuestion,
   Search,
@@ -218,10 +219,8 @@ export default function EmptyStatesTemplate() {
         </div>
 
         {/* Use Cases Reference */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">[ [0x08] USE_CASES ]</span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x08" title="USE_CASES" />
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
             <div className="grid gap-4 font-mono text-xs md:grid-cols-2">
@@ -249,42 +248,21 @@ export default function EmptyStatesTemplate() {
               </div>
             </div>
           </div>
-        </div>
+        </TerminalCard>
 
         {/* Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x09] TEMPLATE_FEATURES ]
-            </span>
-          </div>
-          <div className="p-4">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> 8 common empty state patterns
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Terminal-style status output
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Contextual action buttons
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Error state differentiation
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> First-time user guidance
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Search result fallback
-              </div>
-            </div>
-            <div className="text-muted-foreground mt-4 font-mono text-xs">
-              [NOTE]: Customize icons, copy, and actions based on your specific use case.
-            </div>
-          </div>
-        </div>
+        <TerminalFeaturesCard
+          code="0x09"
+          features={[
+            "8 common empty state patterns",
+            "Terminal-style status output",
+            "Contextual action buttons",
+            "Error state differentiation",
+            "First-time user guidance",
+            "Search result fallback",
+          ]}
+          note="Customize icons, copy, and actions based on your specific use case."
+        />
       </div>
     </div>
   );
