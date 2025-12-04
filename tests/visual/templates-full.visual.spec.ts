@@ -120,7 +120,7 @@ test.describe('Template Pages Terminal Style', () => {
       }
 
       // Verify terminal header pattern exists
-      const terminalHeaders = await page.locator('text=/\\[.*\\]/).count();
+      const terminalHeaders = await page.locator('text=/\\[.*\\]/').count();
       expect(terminalHeaders, `${templateName} should use terminal-style headers with brackets`).toBeGreaterThan(0);
     });
   }
