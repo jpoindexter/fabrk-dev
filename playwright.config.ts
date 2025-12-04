@@ -18,6 +18,15 @@ export default defineConfig({
     ['json', { outputFile: 'test-results/results.json' }],
   ],
 
+  /* Visual regression testing configuration */
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixels: 100,
+      threshold: 0.2,
+    },
+  },
+  snapshotDir: './tests/__snapshots__',
+
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
