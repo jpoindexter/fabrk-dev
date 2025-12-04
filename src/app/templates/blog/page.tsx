@@ -10,8 +10,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from "lucide-react";
+import { InputSearch } from "@/components/ui/input-search";
 import Link from "next/link";
 
 const categories = [
@@ -212,14 +212,12 @@ export default function BlogTemplate() {
           </div>
 
           {/* Search */}
-          <div className="relative w-full sm:w-64">
-            <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-            <Input
-              type="search"
+          <div className="w-full sm:w-64">
+            <InputSearch
               placeholder="Search articles..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="rounded-none pl-10 font-mono text-xs"
+              onValueChange={setSearchQuery}
+              className="rounded-none font-mono text-xs"
             />
           </div>
         </div>

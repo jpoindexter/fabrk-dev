@@ -46,7 +46,7 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
 
     return (
       <div data-slot="input-search" className="relative">
-        <Search className={`"h-4 w-4" absolute left-2.5 top-2.5 text-muted-foreground`} />
+        <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
         <Input
           ref={ref}
           type="search"
@@ -57,8 +57,8 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
           {...props}
         />
         {loading ? (
-          <div className="absolute right-2.5 top-2.5">
-            <Loader2 className={`"h-4 w-4" animate-spin text-muted-foreground`} />
+          <div className="absolute top-2.5 right-2.5">
+            <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
           </div>
         ) : (
           showClearButton &&
@@ -67,12 +67,12 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
               type="button"
               variant="ghost"
               size="sm"
-              className={`absolute right-0 top-0 h-full px-4 py-1 hover:bg-background/0`}
+              className={`hover:bg-background/0 absolute top-0 right-0 h-full px-4 py-1`}
               onClick={handleClear}
               disabled={disabled}
               aria-label="Clear search"
             >
-              <X className={`"h-4 w-4" text-muted-foreground`} />
+              <X className="text-muted-foreground h-4 w-4" />
             </Button>
           )
         )}
