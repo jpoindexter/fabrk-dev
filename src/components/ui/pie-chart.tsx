@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export interface PieChartDataItem {
   label: string;
@@ -95,28 +96,22 @@ export function PieChart({
   };
 
   // Calculate angles without mutation (industry-standard pattern)
-  const segmentsWithAngles = segments.reduce<Array<typeof segments[0] & { startAngle: number; endAngle: number }>>(
-    (acc, segment) => {
-      const prevEndAngle = acc.length > 0 ? acc[acc.length - 1].endAngle : -90;
-      const angle = (segment.value / total) * 360;
-      acc.push({
-        ...segment,
-        startAngle: prevEndAngle,
-        endAngle: prevEndAngle + angle,
-      });
-      return acc;
-    },
-    []
-  );
+  const segmentsWithAngles = segments.reduce<
+    Array<(typeof segments)[0] & { startAngle: number; endAngle: number }>
+  >((acc, segment) => {
+    const prevEndAngle = acc.length > 0 ? acc[acc.length - 1].endAngle : -90;
+    const angle = (segment.value / total) * 360;
+    acc.push({
+      ...segment,
+      startAngle: prevEndAngle,
+      endAngle: prevEndAngle + angle,
+    });
+    return acc;
+  }, []);
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className="mx-auto"
-      >
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="mx-auto">
         {segmentsWithAngles.map((segment, index) => {
           const { startAngle, endAngle } = segment;
 
@@ -132,10 +127,7 @@ export function PieChart({
                 fill={segment.color}
                 stroke="hsl(var(--background))"
                 strokeWidth={2}
-                className={cn(
-                  "transition-all cursor-pointer",
-                  isHovered && "opacity-90"
-                )}
+                className={cn("cursor-pointer transition-all", isHovered && "opacity-90")}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSegmentClick?.(segment, index)}
@@ -146,11 +138,9 @@ export function PieChart({
                   y={getLabelPosition(startAngle, endAngle).y}
                   textAnchor="middle"
                   dominantBaseline="middle"
-                  className="fill-background text-xs font-medium pointer-events-none"
+                  className="fill-background pointer-events-none text-xs font-medium"
                 >
-                  {showPercentages
-                    ? `${segment.percentage.toFixed(0)}%`
-                    : segment.label}
+                  {showPercentages ? `${segment.percentage.toFixed(0)}%` : segment.label}
                 </text>
               )}
             </g>
@@ -159,7 +149,7 @@ export function PieChart({
       </svg>
 
       {showLegend && (
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
           {segments.map((segment, index) => (
             <div
               key={index}
@@ -167,26 +157,24 @@ export function PieChart({
               tabIndex={0}
               aria-label={`${segment.label}: ${segment.percentage.toFixed(1)}%`}
               className={cn(
-                "flex items-center gap-2 cursor-pointer transition-opacity",
-                hoveredIndex !== null &&
-                  hoveredIndex !== index &&
-                  "opacity-50"
+                "flex cursor-pointer items-center gap-2 transition-opacity",
+                hoveredIndex !== null && hoveredIndex !== index && "opacity-50"
               )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => onSegmentClick?.(segment, index)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
                   onSegmentClick?.(segment, index);
                 }
               }}
             >
               <div
-                className="w-3 h-3 rounded-none border"
+                className={cn("h-3 w-3 border", mode.radius)}
                 style={{ backgroundColor: segment.color }}
               />
-              <span className="text-xs font-medium">
+              <span className={cn("text-xs font-medium", mode.font)}>
                 {segment.label}
                 {showPercentages && (
                   <span className="text-muted-foreground ml-1">

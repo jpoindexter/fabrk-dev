@@ -11,21 +11,9 @@ import { useSession } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import {
-  Save,
-  Trash2,
-  AlertTriangle,
-  Loader2,
-  Settings as SettingsIcon,
-} from "lucide-react";
+import { Save, Trash2, AlertTriangle, Loader2, Settings as SettingsIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -177,17 +165,17 @@ export default function OrganizationSettingsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
       </div>
     );
   }
 
   if (!organization) {
     return (
-      <Card className="rounded-none border border-border">
+      <Card className="border-border rounded-none border">
         <CardContent className="py-12">
           <div className="text-center">
-            <AlertTriangle className="mx-auto h-12 w-12 text-destructive" />
+            <AlertTriangle className="text-destructive mx-auto h-12 w-12" />
             <h3 className="mt-4 text-lg font-medium">Organization not found</h3>
             <Button onClick={() => router.push("/dashboard")} className="mt-4">
               Back to Dashboard
@@ -204,8 +192,8 @@ export default function OrganizationSettingsPage() {
     <div className="mx-auto max-w-4xl space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className="rounded-none border border-border bg-primary p-2">
-          <SettingsIcon className="h-6 w-6 text-primary-foreground" />
+        <div className="border-border bg-primary rounded-none border p-2">
+          <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
           <h1 className="text-3xl font-bold">Organization Settings</h1>
@@ -216,12 +204,10 @@ export default function OrganizationSettingsPage() {
       </div>
 
       {/* General Settings */}
-      <Card className="rounded-none border border-border shadow-sm">
+      <Card className="border-border rounded-none border">
         <CardHeader>
           <CardTitle>General Information</CardTitle>
-          <CardDescription>
-            Update your organization's public information
-          </CardDescription>
+          <CardDescription>Update your organization's public information</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -235,14 +221,12 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="Acme Inc."
-                        className="rounded-none border border-border"
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      The public name of your organization
-                    </FormDescription>
+                    <FormDescription>The public name of your organization</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -257,7 +241,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="acme-inc"
-                        className="rounded-none border border-border"
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -279,7 +263,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Textarea
                         placeholder="What does your organization do?"
-                        className="rounded-none border border-border"
+                        className="border-border rounded-none border"
                         rows={3}
                         disabled={!isOwnerOrAdmin}
                         {...field}
@@ -299,14 +283,12 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="https://example.com/logo.png"
-                        className="rounded-none border border-border"
+                        className="border-border rounded-none border"
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      Direct URL to your organization's logo image
-                    </FormDescription>
+                    <FormDescription>Direct URL to your organization's logo image</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -314,11 +296,7 @@ export default function OrganizationSettingsPage() {
 
               {isOwnerOrAdmin && (
                 <div className="flex justify-end gap-2 pt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => form.reset()}
-                  >
+                  <Button type="button" variant="outline" onClick={() => form.reset()}>
                     Reset
                   </Button>
                   <Button type="submit" disabled={saving}>
@@ -335,20 +313,18 @@ export default function OrganizationSettingsPage() {
 
       {/* Danger Zone (Owner Only) */}
       {organization.role === "OWNER" && (
-        <Card className="rounded-none border border-destructive shadow-sm">
+        <Card className="border-destructive rounded-none border">
           <CardHeader>
             <CardTitle className="text-destructive">Danger Zone</CardTitle>
-            <CardDescription>
-              Irreversible actions that affect your organization
-            </CardDescription>
+            <CardDescription>Irreversible actions that affect your organization</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-start justify-between rounded-none border border-destructive bg-destructive/10 p-4">
+            <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
               <div className="flex-1">
                 <h4 className="font-medium">Delete Organization</h4>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Permanently delete this organization and all associated data. This action
-                  cannot be undone.
+                <p className="text-muted-foreground mt-1 text-sm">
+                  Permanently delete this organization and all associated data. This action cannot
+                  be undone.
                 </p>
               </div>
               <AlertDialog>
@@ -358,10 +334,10 @@ export default function OrganizationSettingsPage() {
                     Delete
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className="rounded-none border border-border">
+                <AlertDialogContent className="border-border rounded-none border">
                   <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2">
-                      <AlertTriangle className="h-5 w-5 text-destructive" />
+                      <AlertTriangle className="text-destructive h-5 w-5" />
                       Delete Organization
                     </AlertDialogTitle>
                     <AlertDialogDescription>

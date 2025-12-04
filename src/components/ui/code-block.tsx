@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import { Copy, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface CodeBlockProps {
   code: string;
@@ -30,7 +32,10 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
       {/* Copy button - appears on hover */}
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 z-10 p-1.5 font-mono text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 hover:text-slate-200"
+        className={cn(
+          "absolute top-2 right-2 z-10 p-1.5 text-xs text-slate-400 opacity-0 transition-opacity group-hover:opacity-100 hover:text-slate-200",
+          mode.font
+        )}
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}
       >
         {copied ? (
@@ -39,7 +44,7 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
           <Copy className="h-4 w-4" aria-hidden="true" />
         )}
       </button>
-      <div className="bg-card rounded-none">
+      <div className={cn("bg-card", mode.radius)}>
         <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (
             <pre

@@ -19,6 +19,7 @@
 import * as React from "react";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 
 export interface ImageUploaderProps {
@@ -65,7 +66,7 @@ export function ImageUploader({
   // Use external props if provided, otherwise use internal state
   const error = externalError ?? internalError;
   const uploading = externalUploading ?? internalUploading;
-  const isMultiple = externalMultiple ?? (maxFiles > 1);
+  const isMultiple = externalMultiple ?? maxFiles > 1;
 
   // Sync internal state with external value
   React.useEffect(() => {
@@ -190,16 +191,17 @@ export function ImageUploader({
         onDrop={handleDrop}
         onClick={() => !disabled && fileInputRef.current?.click()}
         onKeyDown={(e) => {
-          if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
+          if ((e.key === "Enter" || e.key === " ") && !disabled) {
             e.preventDefault();
             fileInputRef.current?.click();
           }
         }}
         className={cn(
-          "relative flex flex-col items-center justify-center rounded-none border-2 border-dashed bg-muted/20 px-6 py-8 transition-all cursor-pointer",
+          "bg-muted/20 relative flex cursor-pointer flex-col items-center justify-center border-2 border-dashed px-6 py-8 transition-all",
+          mode.radius,
           isDragging && "border-primary bg-primary/10",
           error && "border-destructive bg-destructive/10",
-          disabled && "opacity-50 cursor-not-allowed",
+          disabled && "cursor-not-allowed opacity-50",
           !disabled && "hover:border-primary hover:bg-primary/5"
         )}
         role="button"
@@ -207,18 +209,24 @@ export function ImageUploader({
         aria-label="Upload images"
         aria-disabled={disabled}
       >
-        <Upload className={cn(
-          "mb-4 h-10 w-10 transition-colors",
-          isDragging ? "text-primary" : "text-muted-foreground"
-        )} />
-        <p className="mb-2 text-sm font-medium text-foreground">
+        <Upload
+          className={cn(
+            "mb-4 h-10 w-10 transition-colors",
+            isDragging ? "text-primary" : "text-muted-foreground"
+          )}
+        />
+        <p className="text-foreground mb-2 text-sm font-medium">
           {isDragging ? "Drop files here" : "Click to upload or drag and drop"}
         </p>
-        <p className="text-xs text-muted-foreground">
-          {accept.split(",").map(t => t.split("/")[1]).join(", ").toUpperCase()}
-          {" "}(max {(maxSize / 1024 / 1024).toFixed(0)}MB each)
+        <p className="text-muted-foreground text-xs">
+          {accept
+            .split(",")
+            .map((t) => t.split("/")[1])
+            .join(", ")
+            .toUpperCase()}{" "}
+          (max {(maxSize / 1024 / 1024).toFixed(0)}MB each)
         </p>
-        <p className="mt-2 text-xs text-muted-foreground">
+        <p className="text-muted-foreground mt-2 text-xs">
           {files.length}/{maxFiles} files uploaded
         </p>
 
@@ -236,8 +244,8 @@ export function ImageUploader({
 
       {/* Error Message */}
       {error && (
-        <div className="rounded-none border border-destructive bg-destructive/10 px-4 py-4">
-          <p className="text-sm font-medium text-destructive">{error}</p>
+        <div className={cn("border-destructive bg-destructive/10 border px-4 py-4", mode.radius)}>
+          <p className="text-destructive text-sm font-medium">{error}</p>
         </div>
       )}
 
@@ -247,18 +255,17 @@ export function ImageUploader({
           {files.map((file, index) => (
             <div
               key={`${file.name}-${index}`}
-              className="group relative aspect-square overflow-hidden rounded-none border bg-muted shadow-sm"
+              className={cn(
+                "group bg-muted relative aspect-square overflow-hidden border",
+                mode.radius
+              )}
             >
               {file.preview ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={file.preview}
-                  alt={file.name}
-                  className="h-full w-full object-cover"
-                />
+                <img src={file.preview} alt={file.name} className="h-full w-full object-cover" />
               ) : (
                 <div className="flex h-full w-full items-center justify-center">
-                  <ImageIcon className="h-10 w-10 text-muted-foreground" />
+                  <ImageIcon className="text-muted-foreground h-10 w-10" />
                 </div>
               )}
 
@@ -270,7 +277,8 @@ export function ImageUploader({
                 }}
                 disabled={disabled}
                 className={cn(
-                  "absolute right-2 top-2 rounded-none border bg-destructive p-1 text-destructive-foreground shadow-sm opacity-0 transition-all",
+                  "bg-destructive text-destructive-foreground absolute top-2 right-2 border p-1 opacity-0 transition-all",
+                  mode.radius,
                   "group-hover:opacity-100 hover:scale-110 active:scale-95",
                   disabled && "cursor-not-allowed opacity-50"
                 )}
@@ -280,13 +288,9 @@ export function ImageUploader({
               </button>
 
               {/* File Info Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-overlay px-2 py-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-                <p className="truncate text-xs font-medium text-foreground">
-                  {file.name}
-                </p>
-                <p className="text-xs text-foreground/80">
-                  {formatFileSize(file.size)}
-                </p>
+              <div className="bg-overlay absolute right-0 bottom-0 left-0 px-2 py-1.5 opacity-0 transition-opacity group-hover:opacity-100">
+                <p className="text-foreground truncate text-xs font-medium">{file.name}</p>
+                <p className="text-foreground/80 text-xs">{formatFileSize(file.size)}</p>
               </div>
             </div>
           ))}

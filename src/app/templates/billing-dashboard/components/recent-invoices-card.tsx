@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { CheckCircle2, XCircle, Clock, Download } from "lucide-react";
 
 interface Payment {
@@ -30,25 +31,22 @@ export function RecentInvoicesCard({
   onViewAll,
 }: RecentInvoicesCardProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">recent_invoices.log</span>
+    <div className="border-border bg-card border">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
+        <TerminalCardHeader code="0x00" title="RECENT_INVOICES" />
         <Button
           variant="ghost"
           size="sm"
           onClick={onViewAll}
-          className="ml-auto font-mono text-xs h-6 rounded-none"
+          className="ml-auto h-6 rounded-none font-mono text-xs"
         >
           &gt; VIEW_ALL
         </Button>
       </div>
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">[RECENT_INVOICES]: LIMIT=3</div>
+        <div className="text-muted-foreground mb-4 font-mono text-xs">
+          [RECENT_INVOICES]: LIMIT=3
+        </div>
 
         <div className="space-y-2">
           {payments.slice(0, 3).map((payment) => {
@@ -56,15 +54,15 @@ export function RecentInvoicesCard({
             return (
               <div
                 key={payment.id}
-                className="flex items-center justify-between border border-border p-4 font-mono text-xs"
+                className="border-border flex items-center justify-between border p-4 font-mono text-xs"
               >
                 <div className="flex items-center gap-4">
                   {payment.status === "succeeded" ? (
-                    <CheckCircle2 className="h-4 w-4 text-success" />
+                    <CheckCircle2 className="text-success h-4 w-4" />
                   ) : payment.status === "failed" ? (
-                    <XCircle className="h-4 w-4 text-destructive" />
+                    <XCircle className="text-destructive h-4 w-4" />
                   ) : (
-                    <Clock className="h-4 w-4 text-warning" />
+                    <Clock className="text-warning h-4 w-4" />
                   )}
                   <div>
                     <div>{payment.description}</div>
@@ -73,10 +71,15 @@ export function RecentInvoicesCard({
                 </div>
                 <div className="flex items-center gap-4">
                   <span>{formatCurrency(payment.amount)}</span>
-                  <span className={`border px-2 py-0.5 ${status.color} ${
-                    payment.status === "succeeded" ? "border-success/50" :
-                    payment.status === "failed" ? "border-destructive/50" : "border-warning/50"
-                  }`}>
+                  <span
+                    className={`border px-2 py-0.5 ${status.color} ${
+                      payment.status === "succeeded"
+                        ? "border-success/50"
+                        : payment.status === "failed"
+                          ? "border-destructive/50"
+                          : "border-warning/50"
+                    }`}
+                  >
                     {status.text}
                   </span>
                   <button className="hover:text-foreground text-muted-foreground">

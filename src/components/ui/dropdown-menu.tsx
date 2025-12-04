@@ -4,6 +4,7 @@ import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
@@ -22,7 +23,9 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-1.5",
+      mode.radius,
+      mode.font,
       inset && "pl-8",
       className
     )}
@@ -41,7 +44,8 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-none border p-1.5",
+      "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden border p-1.5",
+      mode.radius,
       className
     )}
     {...props}
@@ -100,8 +104,9 @@ const DropdownMenuContent = React.forwardRef<
       data-slot="dropdown-menu-content"
       sideOffset={sideOffset}
       className={cn(
-        "bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden rounded-none border p-1.5",
+        "bg-popover text-popover-foreground z-50 min-w-[8rem] overflow-hidden border p-1.5",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        mode.radius,
         className
       )}
       {...props}
@@ -155,7 +160,9 @@ const DropdownMenuItem = React.forwardRef<
     data-slot="dropdown-menu-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile (accounts for subpixel rendering)
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none px-2 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      mode.radius,
+      mode.font,
       inset && "pl-8",
       className
     )}
@@ -172,7 +179,9 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      mode.radius,
+      mode.font,
       className
     )}
     checked={checked}
@@ -196,7 +205,9 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      mode.radius,
+      mode.font,
       className
     )}
     {...props}
@@ -219,7 +230,7 @@ const DropdownMenuLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={cn("px-2 py-1.5 font-mono text-xs font-semibold", inset && "pl-8", className)}
+    className={cn("px-2 py-1.5 text-xs font-semibold", mode.font, inset && "pl-8", className)}
     {...props}
   />
 ));
@@ -240,7 +251,7 @@ DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 const DropdownMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
-      className={cn("text-muted-foreground ml-auto font-mono text-xs tracking-widest", className)}
+      className={cn("text-muted-foreground ml-auto text-xs tracking-widest", mode.font, className)}
       {...props}
     />
   );

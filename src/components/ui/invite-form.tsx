@@ -23,6 +23,7 @@
 import * as React from "react";
 import { X, Send, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -189,10 +190,7 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
       <form
         ref={ref}
         onSubmit={handleSubmit}
-        className={cn(
-          "rounded-none border bg-card p-6 shadow-sm",
-          className
-        )}
+        className={cn("bg-card border p-6", mode.radius, className)}
       >
         <div className="space-y-4">
           {/* Email Input */}
@@ -216,25 +214,21 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
                 }
               }}
               placeholder={
-                allowMultiple
-                  ? "Enter email and press Enter or comma"
-                  : "email@example.com"
+                allowMultiple ? "Enter email and press Enter or comma" : "email@example.com"
               }
               error={!!errors.email}
               disabled={isSubmitting}
             />
-            {errors.email && (
-              <p className="text-sm font-normal text-destructive">{errors.email}</p>
-            )}
+            {errors.email && <p className="text-destructive text-sm font-normal">{errors.email}</p>}
             {allowMultiple && emails.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 {emails.map((email) => (
                   <Badge key={email} variant="secondary" className="gap-1">
                     {email}
                     <button
                       type="button"
                       onClick={() => handleRemoveEmail(email)}
-                      className="ml-1 hover:text-destructive"
+                      className="hover:text-destructive ml-1"
                       aria-label={`Remove ${email}`}
                     >
                       <X className="h-3 w-3" />
@@ -318,16 +312,21 @@ const InviteForm = React.forwardRef<HTMLFormElement, InviteFormProps>(
 
           {/* Submit Error */}
           {errors.submit && (
-            <div className="rounded-none border border-destructive bg-destructive/10 p-4">
-              <p className="text-sm font-normal text-destructive">{errors.submit}</p>
+            <div className={cn("border-destructive bg-destructive/10 border p-4", mode.radius)}>
+              <p className="text-destructive text-sm font-normal">{errors.submit}</p>
             </div>
           )}
 
           {/* Success Message */}
           {showSuccess && (
-            <div className="rounded-none border border-primary bg-primary/10 p-4 flex items-center gap-2">
-              <Check className="h-4 w-4 text-primary" />
-              <p className="text-sm font-normal text-primary">
+            <div
+              className={cn(
+                "border-primary bg-primary/10 flex items-center gap-2 border p-4",
+                mode.radius
+              )}
+            >
+              <Check className="text-primary h-4 w-4" />
+              <p className="text-primary text-sm font-normal">
                 Invitation{allowMultiple && "s"} sent successfully!
               </p>
             </div>

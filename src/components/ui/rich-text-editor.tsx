@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import DOMPurify from "isomorphic-dompurify";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -287,7 +289,7 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
       <div className={`w-full ${className}`}>
         {/* Toolbar */}
         {!readOnly && (
-          <div className="bg-card mb-2 flex flex-wrap gap-1 rounded-none border p-2 shadow-sm">
+          <div className={cn("bg-card mb-2 flex flex-wrap gap-1 border p-2", mode.radius)}>
             {toolbarButtons.map((tool, index) => (
               <Button
                 key={index}
@@ -322,7 +324,10 @@ const RichTextEditor = React.forwardRef<HTMLDivElement, RichTextEditorProps>(
           onInput={handleInput}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`bg-background text-foreground w-full overflow-y-auto rounded-none border p-4 transition-all focus-visible:outline-none ${isFocused ? "shadow-sm" : "shadow-sm"} ${readOnly ? "bg-muted/50 cursor-default" : "cursor-text"} prose prose-sm prose-headings:font-semibold prose-headings:text-foreground prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-em:italic prose-em:text-foreground prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-foreground max-w-none`}
+          className={cn(
+            `bg-background text-foreground w-full overflow-y-auto border p-4 transition-all focus-visible:outline-none ${readOnly ? "bg-muted/50 cursor-default" : "cursor-text"} prose prose-sm prose-headings:font-semibold prose-headings:text-foreground prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:underline prose-strong:font-semibold prose-strong:text-foreground prose-em:italic prose-em:text-foreground prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:text-foreground max-w-none`,
+            mode.radius
+          )}
           style={{
             minHeight,
             maxHeight,

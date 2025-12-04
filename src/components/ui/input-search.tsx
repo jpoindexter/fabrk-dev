@@ -12,6 +12,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Loader2, Search, X } from "lucide-react";
 import * as React from "react";
 
@@ -53,7 +54,9 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
           onChange={(e) => onValueChange?.(e.target.value)}
           disabled={disabled}
           className={cn(
-            "border-border bg-background flex h-8 w-full rounded-none border py-2 pr-4 pl-10 font-mono text-xs transition-colors",
+            "border-border bg-background flex h-8 w-full border py-2 pr-4 pl-10 text-xs transition-colors",
+            mode.radius,
+            mode.font,
             "placeholder:text-muted-foreground",
             "focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none",
             "disabled:cursor-not-allowed disabled:opacity-50",

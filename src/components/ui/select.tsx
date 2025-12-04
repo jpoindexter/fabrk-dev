@@ -3,6 +3,7 @@
  * - Component under 150 lines ✓
  * - No hardcoded styles ✓
  * - Design tokens only ✓
+ * - Uses Visual Mode System for aesthetic switching
  *
  * @example
  * ```tsx
@@ -25,6 +26,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const Select = SelectPrimitive.Root;
 
@@ -43,7 +45,10 @@ const SelectTrigger = React.forwardRef<
     data-slot="select-trigger"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
-      "bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between rounded-none border px-4 font-mono text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1",
+      // Radius and font from Visual Mode System
+      "bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[48px] w-full items-center justify-between border px-4 text-xs transition-colors focus:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 sm:h-8 [&>span]:line-clamp-1",
+      mode.radius,
+      mode.font,
       className
     )}
     {...props}
@@ -109,7 +114,9 @@ const SelectContent = React.forwardRef<
       ref={ref}
       data-slot="select-content"
       className={cn(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-32 overflow-hidden rounded-none border",
+        // Radius from Visual Mode System
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-32 overflow-hidden border",
+        mode.radius,
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className
@@ -175,7 +182,10 @@ const SelectItem = React.forwardRef<
     data-slot="select-item"
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center rounded-none pr-2 pl-8 font-mono text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      // Radius and font from Visual Mode System
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      mode.radius,
+      mode.font,
       className
     )}
     {...props}
@@ -199,7 +209,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pr-2 pl-8 font-mono text-xs font-medium", className)}
+    className={cn("py-1.5 pr-2 pl-8 text-xs font-medium", mode.font, className)}
     {...props}
   />
 ));

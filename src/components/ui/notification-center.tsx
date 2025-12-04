@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Bell, Check, X, Info, AlertTriangle, CheckCircle, XCircle, AtSign } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -71,7 +72,9 @@ const formatTimestamp = (timestamp: Date | string): string => {
 };
 
 // Utility to group notifications by date
-const groupNotificationsByDate = (notifications: Notification[]): Record<string, Notification[]> => {
+const groupNotificationsByDate = (
+  notifications: Notification[]
+): Record<string, Notification[]> => {
   const now = new Date();
   const groups: Record<string, Notification[]> = {
     Today: [],
@@ -81,9 +84,10 @@ const groupNotificationsByDate = (notifications: Notification[]): Record<string,
   };
 
   notifications.forEach((notification) => {
-    const date = typeof notification.timestamp === "string"
-      ? new Date(notification.timestamp)
-      : notification.timestamp;
+    const date =
+      typeof notification.timestamp === "string"
+        ? new Date(notification.timestamp)
+        : notification.timestamp;
     const diffInDays = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
 
     if (diffInDays === 0) {
@@ -98,9 +102,7 @@ const groupNotificationsByDate = (notifications: Notification[]): Record<string,
   });
 
   // Remove empty groups
-  return Object.fromEntries(
-    Object.entries(groups).filter(([_, items]) => items.length > 0)
-  );
+  return Object.fromEntries(Object.entries(groups).filter(([_, items]) => items.length > 0));
 };
 
 // Individual notification item component
@@ -149,15 +151,16 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         tabIndex={0}
         aria-label={notification.title}
         className={cn(
-          "relative flex gap-4 p-4 rounded-none border border-transparent transition-all",
-          "hover:border hover:bg-muted/50 hover:shadow-sm cursor-pointer",
+          "relative flex gap-4 border border-transparent p-4 transition-all",
+          mode.radius,
+          "hover:bg-muted/50 cursor-pointer hover:border",
           !notification.read && "bg-primary/5"
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             handleClick();
           }
@@ -165,43 +168,50 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
       >
         {/* Unread indicator */}
         {!notification.read && (
-          <div className="absolute left-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-none bg-primary" />
+          <div
+            className={cn(
+              "bg-primary absolute top-1/2 left-1 h-2 w-2 -translate-y-1/2",
+              mode.radius
+            )}
+          />
         )}
 
         {/* Avatar or icon */}
-        <div className="flex-shrink-0 ml-4">
+        <div className="ml-4 flex-shrink-0">
           {notification.avatar ? (
             <Avatar className="h-10 w-10">
               <AvatarImage src={notification.avatar} alt={notification.title} />
               <AvatarFallback>{notification.title.substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
           ) : (
-            <div className="h-10 w-10 rounded-none border bg-background flex items-center justify-center shadow-sm">
+            <div
+              className={cn(
+                "bg-background flex h-10 w-10 items-center justify-center border",
+                mode.radius
+              )}
+            >
               {getNotificationIcon(notification.type)}
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <p className="font-mono text-xs font-semibold text-foreground">{notification.title}</p>
-            <span className="text-xs text-muted-foreground whitespace-nowrap">
+            <p className={cn("text-foreground text-xs font-semibold", mode.font)}>
+              {notification.title}
+            </p>
+            <span className="text-muted-foreground text-xs whitespace-nowrap">
               {formatTimestamp(notification.timestamp)}
             </span>
           </div>
-          <p className="font-mono text-xs text-muted-foreground mt-0.5 line-clamp-2">
+          <p className={cn("text-muted-foreground mt-0.5 line-clamp-2 text-xs", mode.font)}>
             {notification.message}
           </p>
 
           {/* Action button */}
           {notification.actionLabel && notification.onAction && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="mt-2 h-7 text-xs"
-              onClick={handleAction}
-            >
+            <Button size="sm" variant="outline" className="mt-2 h-7 text-xs" onClick={handleAction}>
               {notification.actionLabel}
             </Button>
           )}
@@ -209,23 +219,23 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
 
         {/* Actions (visible on hover) */}
         {isHovered && (
-          <div className="flex items-start gap-1 flex-shrink-0">
+          <div className="flex flex-shrink-0 items-start gap-1">
             {!notification.read && onMarkAsRead && (
               <button
                 onClick={handleMarkAsRead}
-                className="p-1 rounded-none hover:bg-muted transition-colors"
+                className={cn("hover:bg-muted p-1 transition-colors", mode.radius)}
                 aria-label="Mark as read"
               >
-                <Check className="h-4 w-4 text-success" aria-hidden="true" />
+                <Check className="text-success h-4 w-4" aria-hidden="true" />
               </button>
             )}
             {onDelete && (
               <button
                 onClick={handleDelete}
-                className="p-1 rounded-none hover:bg-muted transition-colors"
+                className={cn("hover:bg-muted p-1 transition-colors", mode.radius)}
                 aria-label="Delete notification"
               >
-                <X className="h-4 w-4 text-destructive" aria-hidden="true" />
+                <X className="text-destructive h-4 w-4" aria-hidden="true" />
               </button>
             )}
           </div>
@@ -275,7 +285,12 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           >
             <Bell className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-none bg-destructive text-destructive-foreground text-xs font-semibold flex items-center justify-center border shadow-sm">
+              <span
+                className={cn(
+                  "bg-destructive text-destructive-foreground absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center border text-xs font-semibold",
+                  mode.radius
+                )}
+              >
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}
@@ -289,17 +304,12 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
           style={{ maxHeight: `${maxHeight}px` }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <h3 className="font-semibold text-lg">Notifications</h3>
+          <div className="flex items-center justify-between border-b p-4">
+            <h3 className="text-lg font-semibold">Notifications</h3>
             <div className="flex items-center gap-2">
               {unreadCount > 0 && onMarkAllAsRead && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 text-xs"
-                  onClick={onMarkAllAsRead}
-                >
-                  <Check className="h-3 w-3 mr-1" />
+                <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={onMarkAllAsRead}>
+                  <Check className="mr-1 h-3 w-3" />
                   Mark all read
                 </Button>
               )}
@@ -307,10 +317,10 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 text-xs text-destructive hover:text-destructive"
+                  className="text-destructive hover:text-destructive h-8 text-xs"
                   onClick={onClearAll}
                 >
-                  <X className="h-3 w-3 mr-1" />
+                  <X className="mr-1 h-3 w-3" />
                   Clear all
                 </Button>
               )}
@@ -319,23 +329,30 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
 
           {/* Notification list */}
           {notifications.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 px-4">
-              <div className="w-16 h-16 rounded-none bg-muted flex items-center justify-center mb-4">
-                <Bell className="h-8 w-8 text-muted-foreground" />
+            <div className="flex flex-col items-center justify-center px-4 py-12">
+              <div
+                className={cn(
+                  "bg-muted mb-4 flex h-16 w-16 items-center justify-center",
+                  mode.radius
+                )}
+              >
+                <Bell className="text-muted-foreground h-8 w-8" />
               </div>
-              <p className="font-semibold text-foreground mb-1">You're all caught up!</p>
-              <p className="font-mono text-xs text-muted-foreground text-center">
+              <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
+              <p className={cn("text-muted-foreground text-center text-xs", mode.font)}>
                 No new notifications at the moment
               </p>
             </div>
           ) : (
             <ScrollArea className="h-full" style={{ maxHeight: `${maxHeight - 73}px` }}>
-              <div className="p-2 space-y-1">
+              <div className="space-y-1 p-2">
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div className="sticky top-0 bg-muted px-4 py-1.5 rounded-none mb-2 z-10">
-                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                      <div
+                        className={cn("bg-muted sticky top-0 z-10 mb-2 px-4 py-1.5", mode.radius)}
+                      >
+                        <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                           {group}
                         </span>
                       </div>

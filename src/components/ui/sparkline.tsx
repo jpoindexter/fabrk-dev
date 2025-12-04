@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface SparklineProps {
   data: number[];
@@ -65,12 +66,7 @@ export function Sparkline({
       className={cn("sparkline", className)}
     >
       {showArea && areaPathData && (
-        <path
-          d={areaPathData}
-          fill={fillColor || color}
-          opacity={0.2}
-          className="sparkline-area"
-        />
+        <path d={areaPathData} fill={fillColor || color} opacity={0.2} className="sparkline-area" />
       )}
       <path
         d={pathData}
@@ -122,30 +118,19 @@ export function SparklineCard({
   const changeColor = isPositive ? "text-success" : "text-destructive";
 
   return (
-    <div
-      className={cn(
-        "rounded-none border bg-card p-4",
-        className
-      )}
-    >
-      <div className="flex items-start justify-between mb-2">
+    <div className={cn("bg-card border p-4", mode.radius, className)}>
+      <div className="mb-2 flex items-start justify-between">
         <div className="flex-1">
-          <p className="text-sm text-muted-foreground mb-1">{title}</p>
-          <p className="text-2xl font-semibold leading-none">{value}</p>
+          <p className="text-muted-foreground mb-1 text-sm">{title}</p>
+          <p className="text-2xl leading-none font-semibold">{value}</p>
           {change && (
-            <p className={cn("text-xs font-medium mt-1", changeColor)}>
+            <p className={cn("mt-1 text-xs font-medium", changeColor)}>
               {isPositive ? "+" : ""}
               {change.value}%{change.label && ` ${change.label}`}
             </p>
           )}
         </div>
-        <Sparkline
-          data={data}
-          width={80}
-          height={40}
-          color={sparklineColor}
-          showArea={showArea}
-        />
+        <Sparkline data={data} width={80} height={40} color={sparklineColor} showArea={showArea} />
       </div>
     </div>
   );
@@ -167,11 +152,14 @@ export function SparklineGroup({ items, className }: SparklineGroupProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="flex items-center justify-between gap-4 p-4 rounded-none border bg-card hover:bg-primary hover:text-primary-foreground transition-colors"
+          className={cn(
+            "bg-card hover:bg-primary hover:text-primary-foreground flex items-center justify-between gap-4 border p-4 transition-colors",
+            mode.radius
+          )}
         >
           <div className="flex-1">
             <p className="text-sm font-medium">{item.label}</p>
-            <p className="text-xs text-muted-foreground">{item.value}</p>
+            <p className="text-muted-foreground text-xs">{item.value}</p>
           </div>
           <Sparkline
             data={item.data}

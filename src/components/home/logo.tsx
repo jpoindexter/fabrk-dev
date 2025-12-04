@@ -6,23 +6,23 @@
  */
 
 interface LogoProps {
-  size?: number
-  className?: string
+  size?: number;
+  className?: string;
 }
 
 export function Logo({ size = 20, className = "" }: LogoProps = {}) {
   // Calculate proportional height (28:40 ratio from original)
-  const height = (size / 28) * 40
+  const height = (size / 28) * 40;
 
   return (
-    <div className="inline-flex items-center gap-2 border-2 border-foreground bg-primary px-2 py-1 rounded-none shadow-sm transition-all hover:shadow hover:-translate-y-0.5">
+    <div className="border-foreground bg-primary inline-flex items-center gap-2 rounded-none border-2 px-2 py-1 transition-all hover:-translate-y-0.5">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={height}
         viewBox="0 0 28 40"
         fill="none"
-        className={`${className} flex-shrink-0 block text-primary-foreground`}
+        className={`${className} text-primary-foreground block flex-shrink-0`}
         aria-label="Fabrk Logo"
       >
         {/* F - Sharp geometric shapes */}
@@ -36,7 +36,9 @@ export function Logo({ size = 20, className = "" }: LogoProps = {}) {
         <polygon points="0,30 7,30 7,40 0,40" fill="currentColor" />
         <polygon points="7,33 14,33 14,40 7,40" fill="currentColor" />
       </svg>
-      <span className="text-lg font-black uppercase leading-none tracking-tight text-primary-foreground">Fabrk</span>
+      <span className="text-primary-foreground text-lg leading-none font-black tracking-tight uppercase">
+        Fabrk
+      </span>
     </div>
-  )
+  );
 }

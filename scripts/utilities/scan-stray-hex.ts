@@ -15,7 +15,7 @@ const HSL_PATTERN = /hsla?\([^)]+\)/g;
 
 const ALLOWED_PATHS = [
   "src/emails/",
-  "src/lib/design-system/tokens.ts",
+  "src/lib/design-system/",
   "src/styles/",
   "public/",
   ".storybook/",
@@ -153,7 +153,7 @@ async function main() {
   }
 
   console.error(
-    "\n💡 Tip: Use design tokens from src/lib/design-system/tokens.ts instead."
+    "\n💡 Tip: Use design tokens from globals.css or src/lib/design-system instead."
   );
   console.error(
     "   For legitimate cases (SVG brand colors, animations), add the path to ALLOWED_PATHS.\n"

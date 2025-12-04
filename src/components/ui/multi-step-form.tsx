@@ -14,6 +14,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import * as React from "react";
 import { Button } from "./button";
 
@@ -44,7 +45,17 @@ export const MultiStepForm = React.forwardRef<HTMLDivElement, MultiStepFormProps
     ref
   ) => {
     if (loading) {
-      return <div ref={ref} className={cn("h-96 animate-pulse rounded bg-card border border-border", className, "")} />;
+      return (
+        <div
+          ref={ref}
+          className={cn(
+            "bg-card border-border h-96 animate-pulse border",
+            mode.radius,
+            className,
+            ""
+          )}
+        />
+      );
     }
 
     if (error) {
@@ -63,8 +74,12 @@ export const MultiStepForm = React.forwardRef<HTMLDivElement, MultiStepFormProps
             <div key={i} className="flex items-center">
               <div
                 className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-none font-mono text-xs font-medium",
-                  i <= currentStep ? "bg-primary text-primary-foreground" : "bg-card border border-border",
+                  "flex h-8 w-8 items-center justify-center text-xs font-medium",
+                  mode.radius,
+                  mode.font,
+                  i <= currentStep
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-card border-border border",
                   ""
                 )}
                 aria-current={i === currentStep ? "step" : undefined}

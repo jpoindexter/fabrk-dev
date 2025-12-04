@@ -50,7 +50,9 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
         // Set current org from first org or active org from API response
         if (data.activeOrganizationId) {
-          const active = data.organizations.find((org: Organization) => org.id === data.activeOrganizationId);
+          const active = data.organizations.find(
+            (org: Organization) => org.id === data.activeOrganizationId
+          );
           setCurrentOrg(active || data.organizations[0] || null);
         } else {
           setCurrentOrg(data.organizations[0] || null);
@@ -93,9 +95,9 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 rounded-none border border-border bg-card px-4 py-2">
-        <Building2 className="h-4 w-4 text-muted-foreground" />
-        <span className="text-sm text-muted-foreground">Loading...</span>
+      <div className="border-border bg-card flex items-center gap-2 rounded-none border px-4 py-2">
+        <Building2 className="text-muted-foreground h-4 w-4" />
+        <span className="text-muted-foreground text-sm">Loading...</span>
       </div>
     );
   }
@@ -103,11 +105,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
   // Show personal workspace if no orgs
   if (organizations.length === 0) {
     return (
-      <Button
-        variant="outline"
-        onClick={handleCreateOrg}
-        className="gap-2"
-      >
+      <Button variant="outline" onClick={handleCreateOrg} className="gap-2">
         <Plus className="h-4 w-4" />
         Create Organization
       </Button>
@@ -123,7 +121,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           aria-expanded={open}
           aria-label="Select organization"
           className={cn(
-            "w-[200px] justify-between gap-2 rounded-none border border-border shadow-sm hover:shadow transition-all",
+            "border-border w-[200px] justify-between gap-2 rounded-none border transition-all",
             className
           )}
         >
@@ -131,7 +129,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={currentOrg.logo} alt={currentOrg.name} className="h-5 w-5 rounded" />
           ) : (
-            <Building2 className="h-4 w-4 text-muted-foreground" />
+            <Building2 className="text-muted-foreground h-4 w-4" />
           )}
           <span className="flex-1 truncate text-left text-sm font-medium">
             {currentOrg?.name || "Select organization"}
@@ -141,9 +139,9 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-[200px] rounded-none border border-border shadow"
+        className="border-border w-[200px] rounded-none border shadow"
       >
-        <DropdownMenuLabel className="text-xs text-muted-foreground">
+        <DropdownMenuLabel className="text-muted-foreground text-xs">
           Your Organizations
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -158,24 +156,18 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img src={org.logo} alt={org.name} className="h-5 w-5 rounded" />
               ) : (
-                <Building2 className="h-4 w-4 text-muted-foreground" />
+                <Building2 className="text-muted-foreground h-4 w-4" />
               )}
               <span className="flex-1 truncate text-sm">{org.name}</span>
-              {currentOrg?.id === org.id && (
-                <Check className="h-4 w-4 text-primary" />
-              )}
+              {currentOrg?.id === org.id && <Check className="text-primary h-4 w-4" />}
             </div>
-            {org.role && (
-              <span className="ml-auto text-xs text-muted-foreground">
-                {org.role}
-              </span>
-            )}
+            {org.role && <span className="text-muted-foreground ml-auto text-xs">{org.role}</span>}
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={handleCreateOrg}
-          className="cursor-pointer text-primary font-semibold"
+          className="text-primary cursor-pointer font-semibold"
         >
           <Plus className="mr-2 h-4 w-4" />
           <span className="text-sm">Create Organization</span>

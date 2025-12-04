@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import {
   FileText,
   Edit,
@@ -163,7 +164,8 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
       {/* Icon */}
       <div
         className={cn(
-          "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-none border shadow-sm",
+          "relative flex h-10 w-10 shrink-0 items-center justify-center border",
+          mode.radius,
           config.color
         )}
       >
@@ -221,7 +223,7 @@ function TimelineItem({ event, isLast, compact }: TimelineItemProps) {
 
         {/* Expanded Content */}
         {!compact && (isExpanded || (!hasExpandableContent && event.description)) && (
-          <div className="bg-card rounded-none border p-4 shadow-sm">
+          <div className={cn("bg-card border p-4", mode.radius)}>
             {event.description && (
               <p className="text-muted-foreground text-sm">{event.description}</p>
             )}
@@ -310,8 +312,8 @@ export function ActivityTimeline({
 
   if (events.length === 0) {
     return (
-      <div className={cn("bg-muted rounded-none border p-8 text-center shadow-sm", className)}>
-        <p className="text-muted-foreground text-sm">No activity yet</p>
+      <div className={cn("bg-muted border p-8 text-center", mode.radius, className)}>
+        <p className={cn("text-muted-foreground text-sm", mode.font)}>No activity yet</p>
       </div>
     );
   }
@@ -359,13 +361,21 @@ export function ActivityTimeline({
 
       {/* Timeline */}
       {filteredEvents.length === 0 ? (
-        <div className="bg-muted rounded-none border p-8 text-center shadow-sm">
-          <p className="text-muted-foreground text-sm">No events match the selected filters</p>
+        <div className={cn("bg-muted border p-8 text-center", mode.radius)}>
+          <p className={cn("text-muted-foreground text-sm", mode.font)}>
+            No events match the selected filters
+          </p>
         </div>
       ) : groupByDate ? (
         Object.entries(groupedEvents).map(([dateGroup, groupEvents]) => (
           <div key={dateGroup} className="space-y-4">
-            <h4 className="bg-muted text-muted-foreground rounded-none px-4 py-2 text-xs font-semibold tracking-wide uppercase">
+            <h4
+              className={cn(
+                "bg-muted text-muted-foreground px-4 py-2 text-xs font-semibold tracking-wide uppercase",
+                mode.radius,
+                mode.font
+              )}
+            >
               {dateGroup}
             </h4>
             <div className="pl-2">

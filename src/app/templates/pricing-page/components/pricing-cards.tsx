@@ -5,6 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 interface Plan {
   id: string;
@@ -25,7 +26,7 @@ interface PricingCardsProps {
 
 export function PricingCards({ plans, isYearly }: PricingCardsProps) {
   return (
-    <div className="grid md:grid-cols-3 gap-6">
+    <div className="grid gap-6 md:grid-cols-3">
       {plans.map((plan) => {
         const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
         const period = isYearly ? "/year" : "/month";
@@ -33,54 +34,36 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
         return (
           <div
             key={plan.id}
-            className={`border bg-card flex flex-col ${
+            className={`bg-card flex flex-col border ${
               plan.badge ? "border-primary" : "border-border"
             }`}
           >
             {/* Card Header */}
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">
-                {plan.id}_plan.json
-              </span>
-            </div>
+            <TerminalCardHeader code="0x00" title="PRICING" />
 
-            <div className="p-4 flex flex-col flex-1">
+            <div className="flex flex-1 flex-col p-4">
               {/* Plan Label */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="font-mono text-xs text-muted-foreground">
-                  [{plan.name}]:
-                </div>
+              <div className="mb-4 flex items-center justify-between">
+                <div className="text-muted-foreground font-mono text-xs">[{plan.name}]:</div>
                 {plan.badge && (
-                  <Badge className="rounded-none font-mono text-xs bg-primary text-primary-foreground">
+                  <Badge className="bg-primary text-primary-foreground rounded-none font-mono text-xs">
                     {plan.badge}
                   </Badge>
                 )}
               </div>
 
               {/* Price */}
-              <div className="text-3xl font-bold mb-4">
+              <div className="mb-4 text-3xl font-bold">
                 ${price}
-                <span className="text-lg text-muted-foreground font-normal">
-                  {period}
-                </span>
+                <span className="text-muted-foreground text-lg font-normal">{period}</span>
               </div>
 
               {/* Features */}
-              <div className="border-t border-border pt-4 mb-4 flex-1">
-                <div className="font-mono text-xs text-muted-foreground mb-2">
-                  [FEATURES]:
-                </div>
+              <div className="border-border mb-4 flex-1 border-t pt-4">
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
                 <div className="space-y-1">
                   {plan.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 font-mono text-xs"
-                    >
+                    <div key={idx} className="flex items-center gap-2 font-mono text-xs">
                       <span className="text-success">&gt;</span>
                       <span>{feature}</span>
                     </div>
@@ -89,10 +72,7 @@ export function PricingCards({ plans, isYearly }: PricingCardsProps) {
               </div>
 
               {/* CTA - At bottom */}
-              <Button
-                variant={plan.ctaVariant}
-                className="w-full rounded-none font-mono text-xs"
-              >
+              <Button variant={plan.ctaVariant} className="w-full rounded-none font-mono text-xs">
                 &gt; {plan.cta}
               </Button>
             </div>

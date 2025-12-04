@@ -3,6 +3,7 @@
 import * as React from "react";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 
 interface EmptyStateProps {
@@ -16,34 +17,21 @@ interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({
-  icon: Icon,
-  title,
-  description,
-  action,
-  className,
-}: EmptyStateProps) {
+export function EmptyState({ icon: Icon, title, description, action, className }: EmptyStateProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center p-8 text-center",
-        className
-      )}
-    >
+    <div className={cn("flex flex-col items-center justify-center p-8 text-center", className)}>
       {Icon && (
-        <div className="rounded-none border bg-muted p-4 mb-4">
-          <Icon className="h-12 w-12 text-muted-foreground" />
+        <div className={cn("bg-muted mb-4 border p-4", mode.radius)}>
+          <Icon className="text-muted-foreground h-12 w-12" />
         </div>
       )}
-      <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
+      <h3 className="text-foreground mb-2 text-lg font-semibold">{title}</h3>
       {description && (
-        <p className="font-mono text-xs text-muted-foreground max-w-sm mb-4">
+        <p className={cn("text-muted-foreground mb-4 max-w-sm text-xs", mode.font)}>
           {description}
         </p>
       )}
-      {action && (
-        <Button onClick={action.onClick}>{action.label}</Button>
-      )}
+      {action && <Button onClick={action.onClick}>{action.label}</Button>}
     </div>
   );
 }

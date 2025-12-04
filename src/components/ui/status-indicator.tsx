@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export type Status = "online" | "offline" | "busy" | "away" | "idle";
 
@@ -45,26 +46,20 @@ export function StatusIndicator({
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className="relative flex items-center justify-center">
-        <div
-          className={cn(
-            "rounded-none",
-            sizeMap[size],
-            statusColors[status]
-          )}
-        />
+        <div className={cn(sizeMap[size], statusColors[status], mode.radius)} />
         {showPulse && status === "online" && (
           <div
             className={cn(
-              "absolute rounded-none animate-ping",
+              "absolute animate-ping opacity-75",
               sizeMap[size],
               statusColors[status],
-              "opacity-75"
+              mode.radius
             )}
           />
         )}
       </div>
       {label !== undefined && (
-        <span className="font-mono text-xs text-muted-foreground">
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>
           {label || statusLabels[status]}
         </span>
       )}

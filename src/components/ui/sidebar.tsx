@@ -3,6 +3,7 @@
 import * as React from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 
 export interface SidebarItem {
@@ -22,16 +23,9 @@ interface SidebarProps {
   onItemClick?: (item: SidebarItem) => void;
 }
 
-export function Sidebar({
-  items,
-  defaultCollapsed = false,
-  className,
-  onItemClick,
-}: SidebarProps) {
+export function Sidebar({ items, defaultCollapsed = false, className, onItemClick }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(
-    new Set()
-  );
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set());
 
   const toggleExpanded = (id: string) => {
     setExpandedItems((prev) => {
@@ -63,21 +57,26 @@ export function Sidebar({
         <button
           onClick={() => handleItemClick(item)}
           className={cn(
-            "w-full flex items-center gap-2 px-4 py-2 text-left font-mono text-xs transition-all rounded-none",
+            "flex w-full items-center gap-2 px-4 py-2 text-left text-xs transition-all",
+            mode.radius,
+            mode.font,
             "hover:bg-primary hover:text-primary-foreground",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
             depth > 0 && "ml-4"
           )}
           style={{ paddingLeft: `${(depth + 1) * 12}px` }}
         >
-          {item.icon && (
-            <span className="flex-shrink-0">{item.icon}</span>
-          )}
+          {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
           {!isCollapsed && (
             <>
               <span className="flex-1 font-medium">{item.label}</span>
               {item.badge && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-none bg-primary text-xs font-semibold text-primary-foreground">
+                <span
+                  className={cn(
+                    "bg-primary text-primary-foreground flex h-5 w-5 items-center justify-center text-xs font-semibold",
+                    mode.radius
+                  )}
+                >
                   {item.badge}
                 </span>
               )}
@@ -105,15 +104,13 @@ export function Sidebar({
   return (
     <aside
       className={cn(
-        "flex flex-col border-r bg-card transition-all duration-300",
+        "bg-card flex flex-col border-r transition-all duration-300",
         isCollapsed ? "w-16" : "w-64",
         className
       )}
     >
       <div className="flex items-center justify-between border-b p-4">
-        {!isCollapsed && (
-          <h2 className="text-lg font-semibold">Navigation</h2>
-        )}
+        {!isCollapsed && <h2 className="text-lg font-semibold">Navigation</h2>}
         <Button
           variant="ghost"
           size="icon"
@@ -121,16 +118,10 @@ export function Sidebar({
           className="ml-auto"
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {isCollapsed ? (
-            <Menu className="h-5 w-5" />
-          ) : (
-            <X className="h-5 w-5" />
-          )}
+          {isCollapsed ? <Menu className="h-5 w-5" /> : <X className="h-5 w-5" />}
         </Button>
       </div>
-      <nav className="flex-1 space-y-1 p-2">
-        {items.map((item) => renderItem(item))}
-      </nav>
+      <nav className="flex-1 space-y-1 p-2">{items.map((item) => renderItem(item))}</nav>
     </aside>
   );
 }

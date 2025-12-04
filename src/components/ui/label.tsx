@@ -12,6 +12,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import * as React from "react";
 
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -27,7 +28,8 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         ref={ref}
         className={cn(
           // Terminal typography
-          "font-mono text-xs font-semibold",
+          "text-xs font-semibold",
+          mode.font,
           "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
           "transition-colors duration-200",
           error && "text-destructive",
@@ -38,7 +40,7 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         {children}
         {/* UX Heuristic #5: Error Prevention - Show required indicator */}
         {required && (
-          <span className="ml-1 text-destructive" aria-label="required">
+          <span className="text-destructive ml-1" aria-label="required">
             *
           </span>
         )}

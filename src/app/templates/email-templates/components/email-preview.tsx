@@ -4,6 +4,7 @@
 
 import { TabsContent } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 // Inject custom scrollbar styling into email HTML
 function injectScrollbarStyles(html: string, primaryColor: string): string {
@@ -34,7 +35,7 @@ function injectScrollbarStyles(html: string, primaryColor: string): string {
       }
     </style>
   `;
-  return html.replace('</head>', `${scrollbarStyles}</head>`);
+  return html.replace("</head>", `${scrollbarStyles}</head>`);
 }
 
 interface EmailPreviewProps {
@@ -45,47 +46,40 @@ interface EmailPreviewProps {
 export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
   return (
     <TabsContent value={template.id} className="mt-6">
-      <div className="border border-border bg-card">
+      <div className="border-border bg-card border">
         {/* Tab Header */}
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive/50" />
-            <div className="size-2 rounded-none bg-warning/50" />
-            <div className="size-2 rounded-none bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">{template.id}_email.html</span>
-        </div>
+        <TerminalCardHeader code="0x00" title="EMAIL_PREVIEW" />
 
         {/* Content Area */}
         <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
+          <div className="mb-6 flex items-center justify-between">
             <div>
-              <div className="flex items-center gap-2 mb-1">
+              <div className="mb-1 flex items-center gap-2">
                 <h2 className="font-mono text-lg font-bold">{template.name}</h2>
-                <span className="border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground">
+                <span className="border-border text-muted-foreground border px-2 py-0.5 font-mono text-xs">
                   {template.category}
                 </span>
               </div>
-              <p className="font-mono text-sm text-muted-foreground">{template.description}</p>
+              <p className="text-muted-foreground font-mono text-sm">{template.description}</p>
             </div>
           </div>
 
           {/* Email Preview */}
-          <div className="border border-border bg-muted p-8 rounded-none mb-6">
+          <div className="border-border bg-muted mb-6 rounded-none border p-8">
             <iframe
               srcDoc={injectScrollbarStyles(template.preview, primaryColor)}
               title={template.name}
-              className="min-h-[600px] w-full max-w-[600px] mx-auto block border border-border bg-white shadow-sm"
+              className="border-border bg-background mx-auto block min-h-[600px] w-full max-w-[600px] border"
             />
           </div>
 
           {/* Template Details */}
-          <div className="grid md:grid-cols-2 gap-6 border-t border-border pt-6 font-mono text-xs">
+          <div className="border-border grid gap-6 border-t pt-6 font-mono text-xs md:grid-cols-2">
             <div>
               <div className="text-muted-foreground mb-2">[TRIGGER_EVENTS]:</div>
               <div className="flex flex-wrap gap-2">
                 {template.triggers.map((trigger, idx) => (
-                  <span key={idx} className="border border-border bg-muted/30 px-2 py-1">
+                  <span key={idx} className="border-border bg-muted/30 border px-2 py-1">
                     &gt; {trigger}
                   </span>
                 ))}
@@ -96,7 +90,10 @@ export function EmailPreview({ template, primaryColor }: EmailPreviewProps) {
               <div className="text-muted-foreground mb-2">[VARIABLES]:</div>
               <div className="flex flex-wrap gap-2">
                 {template.variables.map((variable, idx) => (
-                  <span key={idx} className="border border-primary/30 bg-primary/5 px-2 py-1 text-primary">
+                  <span
+                    key={idx}
+                    className="border-primary/30 bg-primary/5 text-primary border px-2 py-1"
+                  >
                     {`{${variable}}`}
                   </span>
                 ))}

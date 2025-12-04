@@ -17,6 +17,8 @@
 
 import * as React from "react";
 import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 /**
  * Lazy-loaded Rich Text Editor
@@ -27,8 +29,8 @@ export const LazyRichTextEditor = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="bg-muted flex h-48 items-center justify-center rounded-none border">
-        <span className="text-muted-foreground font-mono text-xs">Loading editor...</span>
+      <div className={cn("bg-muted flex h-48 items-center justify-center border", mode.radius)}>
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>Loading editor...</span>
       </div>
     ),
   }
@@ -43,8 +45,8 @@ export const LazyMarkdownEditor = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="bg-muted flex h-48 items-center justify-center rounded-none border">
-        <span className="text-muted-foreground font-mono text-xs">Loading editor...</span>
+      <div className={cn("bg-muted flex h-48 items-center justify-center border", mode.radius)}>
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>Loading editor...</span>
       </div>
     ),
   }
@@ -59,8 +61,10 @@ export const LazyColorPicker = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="bg-muted flex h-10 w-10 items-center justify-center rounded-none border">
-        <span className="text-muted-foreground font-mono text-xs">...</span>
+      <div
+        className={cn("bg-muted flex h-10 w-10 items-center justify-center border", mode.radius)}
+      >
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>...</span>
       </div>
     ),
   }
@@ -73,8 +77,8 @@ export const LazyColorPicker = dynamic(
 export const LazyCropper = dynamic(() => import("./cropper").then((mod) => mod.Cropper), {
   ssr: false,
   loading: () => (
-    <div className="bg-muted flex h-64 items-center justify-center rounded-none border">
-      <span className="text-muted-foreground font-mono text-xs">Loading cropper...</span>
+    <div className={cn("bg-muted flex h-64 items-center justify-center border", mode.radius)}>
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>Loading cropper...</span>
     </div>
   ),
 });

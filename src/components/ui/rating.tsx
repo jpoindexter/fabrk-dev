@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 interface RatingProps {
   rating?: number;
@@ -73,9 +74,7 @@ export function Rating({
                 className={cn(
                   sizeMap[size],
                   "transition-all",
-                  isFilled
-                    ? "fill-primary text-primary"
-                    : "fill-none text-muted-foreground"
+                  isFilled ? "fill-primary text-primary" : "text-muted-foreground fill-none"
                 )}
               />
             </button>
@@ -83,7 +82,7 @@ export function Rating({
         })}
       </div>
       {showValue && (
-        <span className="font-mono text-xs font-medium text-muted-foreground ml-2">
+        <span className={cn("text-muted-foreground ml-2 text-xs font-medium", mode.font)}>
           {rating.toFixed(1)} / {maxRating}
         </span>
       )}

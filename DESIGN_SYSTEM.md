@@ -9,9 +9,11 @@
 3. [Spacing](#spacing)
 4. [Shadows & Effects](#shadows--effects)
 5. [Terminal Aesthetic](#terminal-aesthetic)
-6. [Components](#components)
-7. [Themes](#themes)
-8. [Accessibility](#accessibility)
+6. [Visual Mode System](#visual-mode-system) ⭐ NEW
+7. [Marketing Page Template](#marketing-page-template) ⭐ NEW
+8. [Components](#components)
+9. [Themes](#themes)
+10. [Accessibility](#accessibility)
 
 ---
 
@@ -222,15 +224,25 @@ All spacing follows multiples of 4px/8px for visual consistency.
 
 | Class | Use |
 |-------|-----|
-| `shadow-sm` | Subtle elevation for cards |
-| `shadow-[4px_4px_0px_0px_var(--border)]` | Terminal-style hard shadow |
+| `shadow-none` | Default for all static elements |
+| `shadow-[4px_4px_0px_0px_var(--border)]` | Terminal-style hard shadow (optional) |
+| `shadow-sm` | **Only** on floating interactive elements |
 
 ### Banned Shadows
 
-- `shadow-md`
-- `shadow-lg`
-- `shadow-xl`
-- `shadow-2xl`
+Terminal aesthetic = **NO SHADOWS** on cards and containers.
+
+- `shadow-sm` ❌ (removed from all static elements)
+- `shadow-md` ❌
+- `shadow-lg` ❌
+- `shadow-xl` ❌
+- `shadow-2xl` ❌
+
+**Exception:** Shadows are allowed on interactive floating elements only:
+- Slider thumb (`slider.tsx`)
+- Switch toggle (`switch.tsx`)
+- Command palette (`command.tsx`)
+- Navigation dropdowns (`navigation-menu.tsx`, `menubar.tsx`)
 
 ### Transitions
 
@@ -350,6 +362,110 @@ From `globals.css`:
 .terminal-scanlines /* Subtle CRT effect */
 .terminal-preview   /* Forces rounded-none on all children */
 ```
+
+---
+
+## Visual Mode System
+
+The Visual Mode System allows switching the entire site aesthetic by changing **ONE line** of code.
+
+### Configuration
+
+```tsx
+// src/lib/design-system/visual-mode.ts
+
+// THE ONE LINE TO CHANGE
+export const CURRENT_MODE: VisualMode = "terminal";
+// Options: "terminal" | "standard" | "minimal"
+```
+
+### Available Modes
+
+| Mode | Radius | Font | Shadows | Button Style |
+|------|--------|------|---------|--------------|
+| **terminal** | `rounded-none` | `font-mono` | None | `> SUBMIT` |
+| **standard** | `rounded-lg` | `font-sans` | `shadow-sm` | `Submit` |
+| **minimal** | `rounded-md` | `font-sans` | None | `Submit` |
+
+### Usage in Components
+
+```tsx
+import { mode, formatLabel, formatButtonText } from "@/lib/design-system";
+
+// Use mode config directly
+<div className={cn(mode.radius, mode.font)}>
+
+// Format labels according to mode
+<label>{formatLabel("Email")}</label>
+// terminal: "[EMAIL]:" | standard: "Email"
+
+// Format button text
+<Button>{formatButtonText("Submit")}</Button>
+// terminal: "> SUBMIT" | standard: "Submit"
+```
+
+### Exports from `@/lib/design-system`
+
+| Export | Type | Description |
+|--------|------|-------------|
+| `mode` | Object | Current mode configuration |
+| `CURRENT_MODE` | String | Current mode name |
+| `formatLabel(label)` | Function | Format labels per mode |
+| `formatButtonText(text)` | Function | Format button text per mode |
+| `formatCardTitle(title, code)` | Function | Format card titles per mode |
+| `isTerminalMode()` | Function | Check if terminal mode |
+
+---
+
+## Marketing Page Template
+
+All marketing pages use `MarketingPageTemplate` for consistent structure.
+
+### Usage
+
+```tsx
+import { MarketingPageTemplate } from "@/components/templates/marketing-page-template";
+
+export default function AboutPage() {
+  return (
+    <MarketingPageTemplate
+      hero={<AboutHero />}
+      sections={[
+        { id: "mission", component: <MissionSection /> },
+        { id: "values", component: <ValuesSection />, background: "muted" },
+      ]}
+      cta={<AboutCTA />}
+    />
+  );
+}
+```
+
+### Template Structure
+
+```
+MarketingPageTemplate
+├── SiteNavigation (always)
+├── <main>
+│   ├── Hero Section (required)
+│   ├── Content Sections (array or children)
+│   └── CTA Section (optional)
+└── Footer (always)
+```
+
+### Props
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `hero` | ReactNode | Yes | Hero section component |
+| `sections` | Array | No | Array of section objects |
+| `cta` | ReactNode | No | CTA section component |
+| `children` | ReactNode | No | Alternative to sections array |
+
+### Section Background Options
+
+- `"default"` - No background
+- `"muted"` - `bg-muted/30`
+- `"accent"` - `bg-accent/10`
 
 ---
 

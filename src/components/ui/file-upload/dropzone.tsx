@@ -6,6 +6,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import * as React from "react";
 
 export interface DropzoneProps {
@@ -50,7 +51,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+      if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         handleClick();
       }
@@ -70,7 +71,8 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
           onKeyDown={handleKeyDown}
           aria-label="Upload files"
           className={cn(
-            "cursor-pointer rounded-none border-2 border-dashed border-border p-8 text-center transition-colors",
+            "border-border cursor-pointer border-2 border-dashed p-8 text-center transition-colors",
+            mode.radius,
             isDragOver && "border-primary bg-primary/5",
             className
           )}

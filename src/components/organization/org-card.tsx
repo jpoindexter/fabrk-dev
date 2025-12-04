@@ -75,8 +75,8 @@ export function OrgCard({
   return (
     <Card
       className={cn(
-        "group relative cursor-pointer transition-all duration-200 hover:shadow",
-        isActive && "ring-2 ring-primary shadow",
+        "group relative cursor-pointer transition-all duration-200",
+        isActive && "ring-primary shadow ring-2",
         className
       )}
       onClick={onSelect}
@@ -84,15 +84,15 @@ export function OrgCard({
       <CardContent className="p-6">
         {/* Active indicator */}
         {isActive && (
-          <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none bg-primary shadow-sm">
-            <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
+          <div className="bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none">
+            <CheckCircle2 className="text-primary-foreground h-4 w-4" />
           </div>
         )}
 
         <div className="flex items-start justify-between gap-4">
           {/* Left side - Logo & Info */}
-          <div className="flex items-start gap-4 flex-1 min-w-0">
-            <Avatar className="h-12 w-12 rounded-none border border-border shadow-sm">
+          <div className="flex min-w-0 flex-1 items-start gap-4">
+            <Avatar className="border-border h-12 w-12 rounded-none border">
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
@@ -102,18 +102,15 @@ export function OrgCard({
               )}
             </Avatar>
 
-            <div className="flex-1 min-w-0 space-y-2">
+            <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="font-black text-foreground text-lg truncate">{name}</h3>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge
-                    variant="outline"
-                    className={cn("font-medium text-xs", planColors[plan])}
-                  >
+                <h3 className="text-foreground truncate text-lg font-black">{name}</h3>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge variant="outline" className={cn("text-xs font-medium", planColors[plan])}>
                     {plan}
                   </Badge>
                   {role === "Owner" && (
-                    <Badge variant="outline" className="font-medium text-xs">
+                    <Badge variant="outline" className="text-xs font-medium">
                       <Crown className="mr-1 h-3 w-3" />
                       {role}
                     </Badge>
@@ -121,7 +118,7 @@ export function OrgCard({
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="text-muted-foreground flex items-center gap-2 text-sm">
                 <Users className="h-4 w-4" />
                 <span>
                   {memberCount} member{memberCount !== 1 ? "s" : ""}
@@ -136,7 +133,7 @@ export function OrgCard({
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="h-8 w-8 p-0 opacity-0 transition-opacity group-hover:opacity-100"
               >
                 <MoreVertical className="h-4 w-4" />
                 <span className="sr-only">Open menu</span>

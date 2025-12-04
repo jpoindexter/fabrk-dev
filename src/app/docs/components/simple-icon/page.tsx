@@ -2,6 +2,7 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { SimpleIcon } from "@/components/ui/simple-icon";
+import { TerminalCardHeader } from "@/components/ui/card";
 import {
   siReact,
   siNextdotjs,
@@ -57,12 +58,7 @@ import { siReact } from "simple-icons"`}
           preview: (
             <div className="flex gap-4">
               {techStack.map(({ name, icon }) => (
-                <SimpleIcon
-                  key={name}
-                  path={icon.path}
-                  title={name}
-                  className="h-10 w-10"
-                />
+                <SimpleIcon key={name} path={icon.path} title={name} className="h-10 w-10" />
               ))}
             </div>
           ),
@@ -90,12 +86,7 @@ import { siReact } from "simple-icons"`}
           preview: (
             <div className="flex gap-4">
               {platforms.map(({ name, icon }) => (
-                <SimpleIcon
-                  key={name}
-                  path={icon.path}
-                  title={name}
-                  className="h-10 w-10"
-                />
+                <SimpleIcon key={name} path={icon.path} title={name} className="h-10 w-10" />
               ))}
             </div>
           ),
@@ -142,10 +133,18 @@ import { siReact } from "simple-icons"`}
           description: "Icons with different text colors using Tailwind utilities.",
           preview: (
             <div className="flex items-center gap-4">
-              <SimpleIcon path={siReact.path} className="h-10 w-10 text-primary" title="Primary" />
-              <SimpleIcon path={siNextdotjs.path} className="h-10 w-10 text-foreground" title="Foreground" />
-              <SimpleIcon path={siTypescript.path} className="h-10 w-10 text-info" title="Info" />
-              <SimpleIcon path={siTailwindcss.path} className="h-10 w-10 text-success" title="Success" />
+              <SimpleIcon path={siReact.path} className="text-primary h-10 w-10" title="Primary" />
+              <SimpleIcon
+                path={siNextdotjs.path}
+                className="text-foreground h-10 w-10"
+                title="Foreground"
+              />
+              <SimpleIcon path={siTypescript.path} className="text-info h-10 w-10" title="Info" />
+              <SimpleIcon
+                path={siTailwindcss.path}
+                className="text-success h-10 w-10"
+                title="Success"
+              />
             </div>
           ),
           code: `<div className="flex items-center gap-4">
@@ -177,22 +176,15 @@ import { siReact } from "simple-icons"`}
           title: "Terminal Style",
           description: "Icon showcase with terminal-style wrapper.",
           preview: (
-            <div className="rounded-none border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="size-2 rounded-none bg-destructive/50" />
-                  <div className="size-2 rounded-none bg-warning/50" />
-                  <div className="size-2 rounded-none bg-success/50" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">tech-stack</span>
-              </div>
+            <div className="border-border bg-card rounded-none border">
+              <TerminalCardHeader code="0x00" title="COMPONENT" />
               <div className="p-4">
-                <div className="font-mono text-xs text-muted-foreground mb-4">[STACK]:</div>
+                <div className="text-muted-foreground mb-4 font-mono text-xs">[STACK]:</div>
                 <div className="flex gap-4">
                   {techStack.map(({ name, icon }) => (
                     <div key={name} className="flex flex-col items-center gap-2">
                       <SimpleIcon path={icon.path} title={name} className="h-10 w-10" />
-                      <span className="font-mono text-xs text-muted-foreground">{name}</span>
+                      <span className="text-muted-foreground font-mono text-xs">{name}</span>
                     </div>
                   ))}
                 </div>
@@ -200,14 +192,7 @@ import { siReact } from "simple-icons"`}
             </div>
           ),
           code: `<div className="rounded-none border border-border bg-card">
-  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-    <div className="flex gap-2">
-      <div className="size-2 rounded-none bg-destructive/50" />
-      <div className="size-2 rounded-none bg-warning/50" />
-      <div className="size-2 rounded-none bg-success/50" />
-    </div>
-    <span className="font-mono text-xs text-muted-foreground">tech-stack</span>
-  </div>
+  <TerminalCardHeader code="0x00" title="COMPONENT" />
   <div className="p-4">
     <div className="font-mono text-xs text-muted-foreground mb-4">[STACK]:</div>
     <div className="flex gap-4">
@@ -233,7 +218,8 @@ import { siReact } from "simple-icons"`}
           name: "className",
           type: "string",
           default: '"h-6 w-6"',
-          description: "Tailwind classes for size and color. Use text-* for color, h-* w-* for size.",
+          description:
+            "Tailwind classes for size and color. Use text-* for color, h-* w-* for size.",
         },
         {
           name: "title",

@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -80,7 +81,10 @@ export function MultiSelect({
                 <Badge key={option.value} variant="secondary" className="mr-1 mb-1">
                   {option.label}
                   <button
-                    className="ring-offset-background focus-visible:ring-ring ml-1 rounded-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    className={cn(
+                      "ring-offset-background focus-visible:ring-ring ml-1 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+                      mode.radius
+                    )}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         handleUnselect(option.value);
@@ -115,7 +119,8 @@ export function MultiSelect({
                   <CommandItem key={option.value} onSelect={() => handleSelect(option.value)}>
                     <div
                       className={cn(
-                        "border-primary mr-2 flex h-4 w-4 items-center justify-center rounded-none border",
+                        "border-primary mr-2 flex h-4 w-4 items-center justify-center border",
+                        mode.radius,
                         isSelected
                           ? "bg-primary text-primary-foreground"
                           : "opacity-50 [&_svg]:invisible"

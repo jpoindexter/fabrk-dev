@@ -1,21 +1,14 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
-const Skeleton = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "animate-pulse rounded-none bg-muted",
-        className
-      )}
-      {...props}
-    />
-  );
-});
+const Skeleton = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={cn("bg-muted animate-pulse", mode.radius, className)} {...props} />
+    );
+  }
+);
 
 Skeleton.displayName = "Skeleton";
 

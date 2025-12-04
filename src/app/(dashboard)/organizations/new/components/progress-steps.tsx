@@ -17,9 +17,9 @@ export function ProgressSteps({ currentStep, totalSteps }: ProgressStepsProps) {
       {Array.from({ length: totalSteps }, (_, i) => i + 1).map((s) => (
         <React.Fragment key={s}>
           <div
-            className={`flex h-10 w-10 items-center justify-center rounded-none border border-border font-bold transition-all ${
+            className={`border-border flex h-10 w-10 items-center justify-center rounded-none border font-bold transition-all ${
               currentStep >= s
-                ? "bg-primary text-primary-foreground shadow-sm"
+                ? "bg-primary text-primary-foreground"
                 : "bg-card text-muted-foreground"
             }`}
           >

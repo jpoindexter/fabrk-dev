@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export interface HeatmapDataItem {
   x: string | number;
@@ -36,9 +37,7 @@ export function Heatmap({
   className,
   onCellClick,
 }: HeatmapProps) {
-  const [hoveredCell, setHoveredCell] = React.useState<HeatmapDataItem | null>(
-    null
-  );
+  const [hoveredCell, setHoveredCell] = React.useState<HeatmapDataItem | null>(null);
 
   const xLabels = Array.from(new Set(data.map((d) => d.x))).sort();
   const yLabels = Array.from(new Set(data.map((d) => d.y))).sort();
@@ -50,10 +49,7 @@ export function Heatmap({
 
   const getColor = (value: number) => {
     const normalized = (value - minValue) / range;
-    const index = Math.min(
-      Math.floor(normalized * colorScale.length),
-      colorScale.length - 1
-    );
+    const index = Math.min(Math.floor(normalized * colorScale.length), colorScale.length - 1);
     return colorScale[index];
   };
 
@@ -81,7 +77,7 @@ export function Heatmap({
 
         <div>
           {showLabels && (
-            <div className="flex mb-2">
+            <div className="mb-2 flex">
               {xLabels.map((label) => (
                 <div
                   key={String(label)}
@@ -96,11 +92,7 @@ export function Heatmap({
 
           <div className="flex flex-col" style={{ gap: `${gap}px` }}>
             {yLabels.map((yLabel) => (
-              <div
-                key={String(yLabel)}
-                className="flex"
-                style={{ gap: `${gap}px` }}
-              >
+              <div key={String(yLabel)} className="flex" style={{ gap: `${gap}px` }}>
                 {xLabels.map((xLabel) => {
                   const cellData = getCellData(xLabel, yLabel);
                   const isHovered = hoveredCell === cellData;
@@ -109,7 +101,7 @@ export function Heatmap({
                     return (
                       <div
                         key={String(xLabel)}
-                        className="rounded-none border bg-muted"
+                        className={cn("bg-muted border", mode.radius)}
                         style={{ width: cellSize, height: cellSize }}
                       />
                     );
@@ -122,8 +114,9 @@ export function Heatmap({
                       tabIndex={0}
                       aria-label={`${cellData.y} × ${cellData.x}: ${cellData.value}`}
                       className={cn(
-                        "rounded-none border flex items-center justify-center cursor-pointer transition-all",
-                        isHovered && "scale-110 shadow-sm"
+                        "flex cursor-pointer items-center justify-center border transition-all",
+                        mode.radius,
+                        isHovered && "scale-110"
                       )}
                       style={{
                         width: cellSize,
@@ -134,17 +127,13 @@ export function Heatmap({
                       onMouseLeave={() => setHoveredCell(null)}
                       onClick={() => onCellClick?.(cellData)}
                       onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
+                        if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
                           onCellClick?.(cellData);
                         }
                       }}
                     >
-                      {showValues && (
-                        <span className="text-xs font-medium">
-                          {cellData.value}
-                        </span>
-                      )}
+                      {showValues && <span className="text-xs font-medium">{cellData.value}</span>}
                     </div>
                   );
                 })}
@@ -155,7 +144,9 @@ export function Heatmap({
       </div>
 
       {hoveredCell && (
-        <div className="absolute bottom-0 left-0 right-0 mt-4 p-4 border rounded-none bg-card shadow-sm">
+        <div
+          className={cn("bg-card absolute right-0 bottom-0 left-0 mt-4 border p-4", mode.radius)}
+        >
           <p className="text-xs font-medium">
             {hoveredCell.y} × {hoveredCell.x}
           </p>

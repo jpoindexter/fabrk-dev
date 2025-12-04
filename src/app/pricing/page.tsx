@@ -2,10 +2,14 @@
  * ✅ FABRK PAGE
  * Dedicated Pricing Page - Terminal console style
  * Production-ready ✓
+ *
+ * Uses MarketingPageTemplate for consistent structure
  */
 import { Metadata } from "next";
-import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/landing/footer";
+import {
+  MarketingPageTemplate,
+  MarketingPageHeader,
+} from "@/components/templates/marketing-page-template";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { FAQSection } from "@/components/landing/faq-section";
 
@@ -17,35 +21,19 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
- <div className=" font-mono">
-      <SiteNavigation />
-
-      <main>
-        {/* Page Header */}
-        <section className="border-b border-border px-6 py-16 lg:py-20">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">
-                [ [0x00] PRICING ] COMMERCIAL_LICENSE
-              </span>
-            </div>
-            <h1 className="mb-4 font-mono text-3xl font-bold tracking-tight lg:text-4xl">
-              SIMPLE_TRANSPARENT_PRICING
-            </h1>
-            <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground">
-              &gt; ONE_TIME_PAYMENT. LIFETIME_UPDATES. NO_SUBSCRIPTIONS.
-            </p>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <PricingSection />
-
-        {/* FAQ Section */}
-        <FAQSection />
-      </main>
-
-      <Footer />
-    </div>
+    <MarketingPageTemplate
+      hero={
+        <MarketingPageHeader
+          code="0x00"
+          badge="COMMERCIAL_LICENSE"
+          title="Simple Transparent Pricing"
+          description="One time payment. Lifetime updates. No subscriptions."
+        />
+      }
+      sections={[
+        { id: "pricing", component: <PricingSection /> },
+        { id: "faq", component: <FAQSection /> },
+      ]}
+    />
   );
 }

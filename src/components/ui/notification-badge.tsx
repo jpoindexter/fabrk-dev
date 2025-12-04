@@ -14,6 +14,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export interface NotificationBadgeProps {
   count?: number;
@@ -29,10 +30,7 @@ export interface NotificationBadgeProps {
   className?: string;
 }
 
-const NotificationBadge = React.forwardRef<
-  HTMLDivElement,
-  NotificationBadgeProps
->(
+const NotificationBadge = React.forwardRef<HTMLDivElement, NotificationBadgeProps>(
   (
     {
       count,
@@ -49,14 +47,18 @@ const NotificationBadge = React.forwardRef<
     },
     ref
   ) => {
-    const displayCount = count !== undefined && count > max ? `${max}+` : count !== undefined ? Math.floor(count).toString() : '';
-    const shouldShow = count === undefined ? dot : (count > 0 || showZero);
+    const displayCount =
+      count !== undefined && count > max
+        ? `${max}+`
+        : count !== undefined
+          ? Math.floor(count).toString()
+          : "";
+    const shouldShow = count === undefined ? dot : count > 0 || showZero;
 
     // Variant styles
     const variantStyles = {
       primary: "bg-primary text-primary-foreground border-primary",
-      destructive:
-        "bg-destructive text-destructive-foreground border-destructive",
+      destructive: "bg-destructive text-destructive-foreground border-destructive",
       success: "bg-success text-success-foreground border-success",
       warning: "bg-warning text-warning-foreground border-warning",
     };
@@ -85,7 +87,8 @@ const NotificationBadge = React.forwardRef<
         {shouldShow && (
           <span
             className={cn(
-              "absolute z-10 flex items-center justify-center border font-semibold shadow-sm transition-all duration-150 rounded-none tabular-nums",
+              "absolute z-10 flex items-center justify-center border font-semibold tabular-nums transition-all duration-150",
+              mode.radius,
               variantStyles[variant],
               positionStyles[position],
               sizeStyles[size],
@@ -96,9 +99,7 @@ const NotificationBadge = React.forwardRef<
             aria-live="polite"
             aria-atomic="true"
           >
-            {!dot && (
-              <span className="px-1 leading-none">{displayCount}</span>
-            )}
+            {!dot && <span className="px-1 leading-none">{displayCount}</span>}
           </span>
         )}
       </div>

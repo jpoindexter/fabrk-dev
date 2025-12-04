@@ -7,6 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { TerminalCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -30,33 +31,41 @@ export function InviteSection() {
   };
 
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">invite_member.sh</span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="INVITE_MEMBER" />
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">[INVITE_TEAM_MEMBER]:</div>
+        <div className="text-muted-foreground mb-4 font-mono text-xs">[INVITE_TEAM_MEMBER]:</div>
         <div className="flex gap-4">
           <Input
             type="email"
             placeholder="email@example.com"
             value={inviteEmail}
             onChange={(e) => setInviteEmail(e.target.value)}
-            className="rounded-none flex-1 font-mono text-xs"
+            className="flex-1 rounded-none font-mono text-xs"
           />
           <Select value={inviteRole} onValueChange={setInviteRole}>
-            <SelectTrigger className="rounded-none w-32 font-mono text-xs">
+            <SelectTrigger className="w-32 rounded-none font-mono text-xs">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-none">
-              <SelectItem value="admin" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">ADMIN</SelectItem>
-              <SelectItem value="member" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">MEMBER</SelectItem>
-              <SelectItem value="guest" className="font-mono text-xs rounded-none focus:bg-primary focus:text-primary-foreground">GUEST</SelectItem>
+              <SelectItem
+                value="admin"
+                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+              >
+                ADMIN
+              </SelectItem>
+              <SelectItem
+                value="member"
+                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+              >
+                MEMBER
+              </SelectItem>
+              <SelectItem
+                value="guest"
+                className="focus:bg-primary focus:text-primary-foreground rounded-none font-mono text-xs"
+              >
+                GUEST
+              </SelectItem>
             </SelectContent>
           </Select>
           <Button onClick={handleInvite} className="rounded-none font-mono text-xs">

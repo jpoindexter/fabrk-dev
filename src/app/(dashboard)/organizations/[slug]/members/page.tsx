@@ -9,20 +9,8 @@ import * as React from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
 import { MembersPageHeader } from "./components/members-page-header";
 import { MemberTableRow } from "./components/member-table-row";
@@ -121,9 +109,7 @@ export default function OrganizationMembersPage() {
       }
 
       setMembers((prev) =>
-        prev.map((m) =>
-          m.id === memberId ? { ...m, role: newRole as Member["role"] } : m
-        )
+        prev.map((m) => (m.id === memberId ? { ...m, role: newRole as Member["role"] } : m))
       );
       toast.success("Member role updated successfully");
     } catch (error: unknown) {
@@ -135,14 +121,14 @@ export default function OrganizationMembersPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
       </div>
     );
   }
 
   if (!organization) {
     return (
-      <Card className="rounded-none border border-border">
+      <Card className="border-border rounded-none border">
         <CardContent className="py-12">
           <div className="text-center">
             <h3 className="text-lg font-medium">Organization not found</h3>
@@ -167,12 +153,10 @@ export default function OrganizationMembersPage() {
       />
 
       {/* Members Table */}
-      <Card className="rounded-none border border-border shadow-sm">
+      <Card className="border-border rounded-none border">
         <CardHeader>
           <CardTitle>Members ({members.length})</CardTitle>
-          <CardDescription>
-            View and manage all members of your organization
-          </CardDescription>
+          <CardDescription>View and manage all members of your organization</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>

@@ -5,6 +5,7 @@
 
 import { Grid, List, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -29,25 +30,16 @@ export function ResultsHeader({
   onViewModeChange,
 }: ResultsHeaderProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          results_header.tsx
-        </span>
-      </div>
-      <div className="p-4 flex items-center justify-between">
-        <div className="font-mono text-xs text-muted-foreground">
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="RESULTS" />
+      <div className="flex items-center justify-between p-4">
+        <div className="text-muted-foreground font-mono text-xs">
           [SHOWING]: {resultsCount} results
         </div>
         <div className="flex items-center gap-2">
           <Select value={sortBy} onValueChange={onSortChange}>
-            <SelectTrigger className="w-[140px] h-8 rounded-none font-mono text-xs">
-              <SlidersHorizontal className="h-3 w-3 mr-1" />
+            <SelectTrigger className="h-8 w-[140px] rounded-none font-mono text-xs">
+              <SlidersHorizontal className="mr-1 h-3 w-3" />
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-none font-mono text-xs">
@@ -56,12 +48,12 @@ export function ResultsHeader({
               <SelectItem value="rating">Top Rated</SelectItem>
             </SelectContent>
           </Select>
-          <div className="flex border border-border">
+          <div className="border-border flex border">
             <Button
               variant={viewMode === "grid" ? "default" : "ghost"}
               size="sm"
               onClick={() => onViewModeChange("grid")}
-              className="rounded-none h-8 w-8 p-0"
+              className="h-8 w-8 rounded-none p-0"
             >
               <Grid className="h-3 w-3" />
             </Button>
@@ -69,7 +61,7 @@ export function ResultsHeader({
               variant={viewMode === "list" ? "default" : "ghost"}
               size="sm"
               onClick={() => onViewModeChange("list")}
-              className="rounded-none h-8 w-8 p-0 border-l border-border"
+              className="border-border h-8 w-8 rounded-none border-l p-0"
             >
               <List className="h-3 w-3" />
             </Button>

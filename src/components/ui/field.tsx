@@ -16,6 +16,7 @@ import { useMemo } from "react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export type FieldSetProps = React.ComponentProps<"fieldset">;
 export type FieldLegendProps = React.ComponentProps<"legend"> & { variant?: "legend" | "label" };
@@ -57,7 +58,8 @@ function FieldLegend({
       className={cn(
         "mb-4 font-medium",
         "data-[variant=legend]:text-base",
-        "data-[variant=label]:font-mono data-[variant=label]:text-xs",
+        "data-[variant=label]:text-xs",
+        "data-[variant=label]:" + mode.font,
         className
       )}
       {...props}
@@ -140,7 +142,8 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
       data-slot="field-label"
       className={cn(
         "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-none has-[>[data-slot=field]]:border [&>[data-slot=field]]:p-4",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:border [&>[data-slot=field]]:p-4",
+        `has-[>[data-slot=field]]:${mode.radius}`,
         "has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
@@ -155,7 +158,8 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-2 font-mono text-xs leading-snug font-medium group-data-[disabled=true]/field:opacity-50",
+        "flex w-fit items-center gap-2 text-xs leading-snug font-medium group-data-[disabled=true]/field:opacity-50",
+        mode.font,
         className
       )}
       {...props}
@@ -169,9 +173,10 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground font-mono text-xs leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance",
+        "text-muted-foreground text-xs leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance",
         "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        mode.font,
         className
       )}
       {...props}
@@ -192,7 +197,8 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content={!!children}
       className={cn(
-        "relative -my-2 h-5 font-mono text-xs group-data-[variant=outline]/field-group:-mb-2",
+        "relative -my-2 h-5 text-xs group-data-[variant=outline]/field-group:-mb-2",
+        mode.font,
         className
       )}
       {...props}
@@ -247,7 +253,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-destructive font-mono text-xs font-normal", className)}
+      className={cn("text-destructive text-xs font-normal", mode.font, className)}
       {...props}
     >
       {content}

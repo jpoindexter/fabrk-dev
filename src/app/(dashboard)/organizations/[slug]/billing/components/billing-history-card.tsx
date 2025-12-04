@@ -5,13 +5,7 @@
 
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -33,12 +27,10 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
   }
 
   return (
-    <Card className="rounded-none border border-border shadow-sm">
+    <Card className="border-border rounded-none border">
       <CardHeader>
         <CardTitle>Billing History</CardTitle>
-        <CardDescription>
-          View and download past invoices
-        </CardDescription>
+        <CardDescription>View and download past invoices</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
@@ -53,27 +45,13 @@ export function BillingHistoryCard({ invoices }: BillingHistoryCardProps) {
           <TableBody>
             {invoices.map((invoice) => (
               <TableRow key={invoice.id}>
-                <TableCell>
-                  {new Date(invoice.created).toLocaleDateString()}
-                </TableCell>
-                <TableCell className="font-medium">
-                  ${(invoice.amount / 100).toFixed(2)}
-                </TableCell>
-                <TableCell>
-                  {getInvoiceStatusBadge(invoice.status)}
-                </TableCell>
+                <TableCell>{new Date(invoice.created).toLocaleDateString()}</TableCell>
+                <TableCell className="font-medium">${(invoice.amount / 100).toFixed(2)}</TableCell>
+                <TableCell>{getInvoiceStatusBadge(invoice.status)}</TableCell>
                 <TableCell>
                   {invoice.invoicePdf && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                    >
-                      <a
-                        href={invoice.invoicePdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                    <Button variant="ghost" size="sm" asChild>
+                      <a href={invoice.invoicePdf} target="_blank" rel="noopener noreferrer">
                         <Download className="h-4 w-4" />
                       </a>
                     </Button>

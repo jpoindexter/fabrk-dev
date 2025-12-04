@@ -60,12 +60,12 @@ export function PricingComparison({
   const renderFeatureValue = (value: boolean | string | number) => {
     if (typeof value === "boolean") {
       return value ? (
-        <Check className="h-5 w-5 text-primary" />
+        <Check className="text-primary h-5 w-5" />
       ) : (
-        <X className="h-5 w-5 text-muted-foreground" />
+        <X className="text-muted-foreground h-5 w-5" />
       );
     }
-    return <span className="text-sm font-medium text-foreground">{value}</span>;
+    return <span className="text-foreground text-sm font-medium">{value}</span>;
   };
 
   return (
@@ -76,35 +76,35 @@ export function PricingComparison({
           <Card
             key={plan.id}
             className={cn(
-              "relative overflow-hidden transition-all duration-200 hover:shadow",
-              plan.popular && "ring-2 ring-primary shadow"
+              "relative overflow-hidden transition-all duration-200",
+              plan.popular && "ring-primary shadow ring-2"
             )}
           >
             {plan.popular && (
-              <div className="absolute -right-12 top-6 rotate-45 bg-primary px-12 py-1 text-xs font-bold text-primary-foreground shadow-sm">
+              <div className="bg-primary text-primary-foreground absolute top-6 -right-12 rotate-45 px-12 py-1 text-xs font-bold">
                 Popular
               </div>
             )}
 
             <CardHeader className="space-y-4">
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-xl font-black text-foreground">{plan.name}</h3>
-                  {plan.name === "Enterprise" && <Crown className="h-5 w-5 text-primary" />}
-                  {plan.popular && <Zap className="h-5 w-5 text-primary" />}
+                <div className="mb-2 flex items-center gap-2">
+                  <h3 className="text-foreground text-xl font-black">{plan.name}</h3>
+                  {plan.name === "Enterprise" && <Crown className="text-primary h-5 w-5" />}
+                  {plan.popular && <Zap className="text-primary h-5 w-5" />}
                 </div>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
+                <p className="text-muted-foreground text-sm">{plan.description}</p>
               </div>
 
               <div className="space-y-1">
                 {plan.price === "Custom" ? (
-                  <div className="text-3xl font-black text-foreground">Custom</div>
+                  <div className="text-foreground text-3xl font-black">Custom</div>
                 ) : (
                   <>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black text-foreground">${plan.price}</span>
+                      <span className="text-foreground text-3xl font-black">${plan.price}</span>
                       {plan.interval && (
-                        <span className="text-sm text-muted-foreground">/{plan.interval}</span>
+                        <span className="text-muted-foreground text-sm">/{plan.interval}</span>
                       )}
                     </div>
                   </>
@@ -124,17 +124,17 @@ export function PricingComparison({
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="rounded-none border border-border overflow-hidden">
+      <div className="border-border overflow-hidden rounded-none border">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border bg-muted">
+              <tr className="border-border bg-muted border-b">
                 <th className="p-4 text-left">
-                  <span className="text-sm font-black text-foreground">Features</span>
+                  <span className="text-foreground text-sm font-black">Features</span>
                 </th>
                 {plans.map((plan) => (
-                  <th key={plan.id} className="p-4 text-center min-w-[120px]">
-                    <span className="text-sm font-black text-foreground">{plan.name}</span>
+                  <th key={plan.id} className="min-w-[120px] p-4 text-center">
+                    <span className="text-foreground text-sm font-black">{plan.name}</span>
                   </th>
                 ))}
               </tr>
@@ -145,9 +145,9 @@ export function PricingComparison({
                   {categories.map((category, _categoryIndex) => (
                     <React.Fragment key={category || "uncategorized"}>
                       {/* Category Header */}
-                      <tr className="border-t border-border">
+                      <tr className="border-border border-t">
                         <td colSpan={plans.length + 1} className="p-4">
-                          <span className="text-xs font-black text-foreground uppercase tracking-wide">
+                          <span className="text-foreground text-xs font-black tracking-wide uppercase">
                             {category || "Other Features"}
                           </span>
                         </td>
@@ -156,10 +156,10 @@ export function PricingComparison({
                       {getFeaturesByCategory(category).map((feature, featureIndex) => (
                         <tr
                           key={`${category}-${featureIndex}`}
-                          className="border-t border-border hover:bg-muted/50 transition-colors"
+                          className="border-border hover:bg-muted/50 border-t transition-colors"
                         >
                           <td className="p-4">
-                            <span className="text-sm text-foreground">{feature.name}</span>
+                            <span className="text-foreground text-sm">{feature.name}</span>
                           </td>
                           {plans.map((plan) => (
                             <td key={plan.id} className="p-4 text-center">
@@ -176,10 +176,10 @@ export function PricingComparison({
                   {features.map((feature, index) => (
                     <tr
                       key={index}
-                      className="border-t border-border hover:bg-primary/5 transition-colors"
+                      className="border-border hover:bg-primary/5 border-t transition-colors"
                     >
                       <td className="p-4">
-                        <span className="text-sm text-foreground">{feature.name}</span>
+                        <span className="text-foreground text-sm">{feature.name}</span>
                       </td>
                       {plans.map((plan) => (
                         <td key={plan.id} className="p-4 text-center">
@@ -196,9 +196,9 @@ export function PricingComparison({
       </div>
 
       {/* Bottom CTA */}
-      <div className="rounded-none border border-border bg-card p-6 text-center">
-        <h3 className="text-xl font-black text-foreground mb-2">Need help choosing?</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+      <div className="border-border bg-card rounded-none border p-6 text-center">
+        <h3 className="text-foreground mb-2 text-xl font-black">Need help choosing?</h3>
+        <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>
         <Button variant="outline">Contact Sales</Button>

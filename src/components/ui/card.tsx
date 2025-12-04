@@ -1,6 +1,7 @@
 /**
  * ✅ FABRK COMPONENT
  * Card component for grouping related content with consistent styling.
+ * Uses Visual Mode System for aesthetic switching.
  *
  * @example
  * ```tsx
@@ -11,6 +12,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -38,7 +40,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       className={cn(
         // Vercel minimal styles - Border only, no shadow
-        "bg-card text-card-foreground rounded-none border",
+        // Radius from Visual Mode System
+        "bg-card text-card-foreground border",
+        mode.radius,
 
         // Subtle transition
         "transition-colors",
@@ -76,8 +80,9 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       data-slot="card-title"
       ref={ref}
       className={cn(
-        // Terminal typography - semibold for headings
-        "font-mono text-base font-semibold",
+        // Typography - font from Visual Mode System
+        "text-base font-semibold",
+        mode.font,
         "text-card-foreground",
 
         // Dark mode
@@ -97,8 +102,9 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
       data-slot="card-description"
       ref={ref}
       className={cn(
-        // Terminal typography - normal weight for body text
-        "font-mono text-xs font-normal",
+        // Typography - font from Visual Mode System
+        "text-xs font-normal",
+        mode.font,
         "text-muted-foreground",
 
         // Dark mode
@@ -172,7 +178,7 @@ const TerminalCardHeader = React.forwardRef<HTMLDivElement, TerminalCardHeaderPr
       data-slot="terminal-card-header"
       className={cn("border-border border-b px-4 py-2", className)}
     >
-      <span className="text-muted-foreground font-mono text-xs">
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [ [{code}] {title} ]
       </span>
     </div>
@@ -222,7 +228,7 @@ const TerminalLabel = React.forwardRef<HTMLDivElement, TerminalLabelProps>(
     <div
       ref={ref}
       data-slot="terminal-label"
-      className={cn("text-muted-foreground font-mono text-xs", className)}
+      className={cn("text-muted-foreground text-xs", mode.font, className)}
       {...props}
     >
       [{children}]{showColon ? ":" : ""}
@@ -259,7 +265,7 @@ const TerminalFeatureItem = React.forwardRef<HTMLDivElement, TerminalFeatureItem
       <div
         ref={ref}
         data-slot="terminal-feature-item"
-        className={cn("font-mono text-xs", className)}
+        className={cn("text-xs", mode.font, className)}
         {...props}
       >
         <span className="text-success">{iconMap[icon]}</span> {children}
@@ -288,7 +294,7 @@ const TerminalFeatureList = React.forwardRef<HTMLDivElement, TerminalFeatureList
     <div
       ref={ref}
       data-slot="terminal-feature-list"
-      className={cn("space-y-1.5 font-mono text-xs", className)}
+      className={cn("space-y-1.5 text-xs", mode.font, className)}
       {...props}
     >
       {children}
@@ -318,7 +324,7 @@ const TerminalNote = React.forwardRef<HTMLDivElement, TerminalNoteProps>(
     <div
       ref={ref}
       data-slot="terminal-note"
-      className={cn("text-muted-foreground mt-4 font-mono text-xs", className)}
+      className={cn("text-muted-foreground mt-4 text-xs", mode.font, className)}
       {...props}
     >
       [{label}]: {children}
@@ -348,10 +354,10 @@ const TerminalBadge = React.forwardRef<HTMLDivElement, TerminalBadgeProps>(
     <div
       ref={ref}
       data-slot="terminal-badge"
-      className={cn("border-border inline-block border px-4 py-1", className)}
+      className={cn("border-border inline-block border px-4 py-1", mode.radius, className)}
       {...props}
     >
-      <span className="text-muted-foreground font-mono text-xs">
+      <span className={cn("text-muted-foreground text-xs", mode.font)}>
         [{prefix}]: {children}
       </span>
     </div>
@@ -392,8 +398,10 @@ const TemplatePageHeader = React.forwardRef<HTMLDivElement, TemplatePageHeaderPr
       {...props}
     >
       <TerminalBadge prefix={badgePrefix}>{badge}</TerminalBadge>
-      <h1 className="font-mono text-4xl font-semibold tracking-tight">{title}</h1>
-      {description && <p className="text-muted-foreground font-mono text-sm">{description}</p>}
+      <h1 className={cn("text-4xl font-semibold tracking-tight", mode.font)}>{title}</h1>
+      {description && (
+        <p className={cn("text-muted-foreground text-sm", mode.font)}>{description}</p>
+      )}
     </div>
   )
 );
@@ -480,13 +488,13 @@ const TerminalOutput = React.forwardRef<HTMLDivElement, TerminalOutputProps>(
     <div
       ref={ref}
       data-slot="terminal-output"
-      className={cn("border-border bg-card border text-left", className)}
+      className={cn("border-border bg-card border text-left", mode.radius, className)}
       {...props}
     >
       <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
-        <span className="text-muted-foreground font-mono text-xs">[ {title} ]</span>
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>[ {title} ]</span>
       </div>
-      <div className="text-foreground space-y-0.5 p-4 font-mono text-xs">{children}</div>
+      <div className={cn("text-foreground space-y-0.5 p-4 text-xs", mode.font)}>{children}</div>
     </div>
   )
 );

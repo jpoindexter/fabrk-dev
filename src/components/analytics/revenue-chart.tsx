@@ -105,17 +105,19 @@ export function RevenueChart({
       ({ active, payload }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className="rounded-none border border-border bg-card p-4 shadow-sm">
-              <p className="text-sm font-bold text-foreground mb-2">
-                {payload[0].payload.period}
-              </p>
+            <div className="border-border bg-card rounded-none border p-4">
+              <p className="text-foreground mb-2 text-sm font-bold">{payload[0].payload.period}</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">
-                  MRR: <span className="font-bold text-primary">{formatCurrency(payload[0].value)}</span>
+                <p className="text-muted-foreground text-xs">
+                  MRR:{" "}
+                  <span className="text-primary font-bold">{formatCurrency(payload[0].value)}</span>
                 </p>
                 {showArr && payload[1] && (
-                  <p className="text-xs text-muted-foreground">
-                    ARR: <span className="font-bold text-accent">{formatCurrency(payload[1].value)}</span>
+                  <p className="text-muted-foreground text-xs">
+                    ARR:{" "}
+                    <span className="text-accent font-bold">
+                      {formatCurrency(payload[1].value)}
+                    </span>
                   </p>
                 )}
               </div>
@@ -132,11 +134,11 @@ export function RevenueChart({
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between">
           <div>
-            <CardTitle className="text-base font-black flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-primary" />
+            <CardTitle className="flex items-center gap-2 text-base font-black">
+              <DollarSign className="text-primary h-4 w-4" />
               Revenue Analytics
             </CardTitle>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-muted-foreground mt-1 text-xs">
               Monthly Recurring Revenue (MRR) {showArr && "and Annual Recurring Revenue (ARR)"}
             </p>
           </div>
@@ -150,16 +152,16 @@ export function RevenueChart({
       <CardContent className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-none border border-border bg-card p-4">
-            <p className="text-xs font-medium text-muted-foreground mb-1">Current MRR</p>
-            <p className="text-2xl font-black text-foreground">
+          <div className="border-border bg-card rounded-none border p-4">
+            <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
+            <p className="text-foreground text-2xl font-black">
               {formatCompactCurrency(latestMRR)}
             </p>
           </div>
           {showArr && (
-            <div className="rounded-none border border-border bg-accent/50 p-4">
-              <p className="text-xs font-medium text-muted-foreground mb-1">Projected ARR</p>
-              <p className="text-2xl font-black text-foreground">
+            <div className="border-border bg-accent/50 rounded-none border p-4">
+              <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
+              <p className="text-foreground text-2xl font-black">
                 {formatCompactCurrency(latestARR)}
               </p>
             </div>
@@ -199,7 +201,7 @@ export function RevenueChart({
         </div>
 
         {/* Chart */}
-        <div className="rounded-none border border-border p-4 bg-card">
+        <div className="border-border bg-card rounded-none border p-4">
           <ResponsiveContainer width="100%" height={300}>
             {chartType === "area" ? (
               <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>

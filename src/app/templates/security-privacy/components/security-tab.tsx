@@ -3,6 +3,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { Smartphone, Clock, LogOut, Key } from "lucide-react";
 
 interface ActiveSession {
@@ -32,36 +33,34 @@ export function SecurityTab({
   return (
     <div className="space-y-6">
       {/* 2FA Section */}
-      <div className="border border-border bg-card">
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive/50" />
-            <div className="size-2 rounded-none bg-warning/50" />
-            <div className="size-2 rounded-none bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">two_factor.config</span>
-        </div>
+      <div className="border-border bg-card border">
+        <TerminalCardHeader code="0x00" title="TWO_FACTOR" />
         <div className="p-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
-                <Smartphone className="h-5 w-5 text-primary" />
+              <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+                <Smartphone className="text-primary h-5 w-5" />
               </div>
               <div>
-                <div className="font-mono text-xs text-muted-foreground">[TWO_FACTOR_AUTH]:</div>
-                <div className="font-mono text-xs text-muted-foreground">Add an extra layer of security with TOTP</div>
+                <div className="text-muted-foreground font-mono text-xs">[TWO_FACTOR_AUTH]:</div>
+                <div className="text-muted-foreground font-mono text-xs">
+                  Add an extra layer of security with TOTP
+                </div>
               </div>
             </div>
-            <span className={`border px-2 py-0.5 font-mono text-xs ${
-              twoFactorEnabled
-                ? "border-success/50 text-success"
-                : "border-destructive/50 text-destructive"
-            }`}>
+            <span
+              className={`border px-2 py-0.5 font-mono text-xs ${
+                twoFactorEnabled
+                  ? "border-success/50 text-success"
+                  : "border-destructive/50 text-destructive"
+              }`}
+            >
               {twoFactorEnabled ? "ENABLED" : "DISABLED"}
             </span>
           </div>
-          <p className="mb-4 font-mono text-xs text-muted-foreground">
-            Use an authenticator app like Google Authenticator or Authy to generate time-based codes.
+          <p className="text-muted-foreground mb-4 font-mono text-xs">
+            Use an authenticator app like Google Authenticator or Authy to generate time-based
+            codes.
           </p>
           <Button onClick={onEnable2FA} className="rounded-none font-mono text-xs">
             <Smartphone className="mr-2 h-4 w-4" />
@@ -71,35 +70,37 @@ export function SecurityTab({
       </div>
 
       {/* Active Sessions */}
-      <div className="border border-border bg-card">
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive/50" />
-            <div className="size-2 rounded-none bg-warning/50" />
-            <div className="size-2 rounded-none bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">sessions.log</span>
-        </div>
+      <div className="border-border bg-card border">
+        <TerminalCardHeader code="0x00" title="SESSIONS" />
         <div className="p-4">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
-              <Clock className="h-5 w-5 text-primary" />
+          <div className="mb-4 flex items-center gap-4">
+            <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+              <Clock className="text-primary h-5 w-5" />
             </div>
             <div>
-              <div className="font-mono text-xs text-muted-foreground">[ACTIVE_SESSIONS]: COUNT={activeSessions.length}</div>
+              <div className="text-muted-foreground font-mono text-xs">
+                [ACTIVE_SESSIONS]: COUNT={activeSessions.length}
+              </div>
             </div>
           </div>
           <div className="space-y-4 font-mono text-xs">
             {activeSessions.map((session) => (
-              <div key={session.id} className="flex items-center justify-between border border-border p-4">
+              <div
+                key={session.id}
+                className="border-border flex items-center justify-between border p-4"
+              >
                 <div>
                   <div className="flex items-center gap-2">
                     <span>{session.device}</span>
                     {session.isCurrent && (
-                      <span className="border border-primary/50 px-1.5 py-0.5 text-primary">CURRENT</span>
+                      <span className="border-primary/50 text-primary border px-1.5 py-0.5">
+                        CURRENT
+                      </span>
                     )}
                   </div>
-                  <div className="text-muted-foreground">{session.location} • {session.ip}</div>
+                  <div className="text-muted-foreground">
+                    {session.location} • {session.ip}
+                  </div>
                   <div className="text-muted-foreground">Last active: {session.lastActive}</div>
                 </div>
                 {!session.isCurrent && (
@@ -116,7 +117,7 @@ export function SecurityTab({
               </div>
             ))}
           </div>
-          <div className="flex justify-end mt-4">
+          <div className="mt-4 flex justify-end">
             <Button variant="destructive" size="sm" className="rounded-none font-mono text-xs">
               <LogOut className="mr-2 h-3 w-3" />
               &gt; SIGN_OUT_ALL_OTHER_DEVICES
@@ -126,24 +127,17 @@ export function SecurityTab({
       </div>
 
       {/* Password */}
-      <div className="border border-border bg-card">
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive/50" />
-            <div className="size-2 rounded-none bg-warning/50" />
-            <div className="size-2 rounded-none bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">password.config</span>
-        </div>
+      <div className="border-border bg-card border">
+        <TerminalCardHeader code="0x00" title="PASSWORD" />
         <div className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center border border-border bg-primary/10">
-                <Key className="h-5 w-5 text-primary" />
+              <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+                <Key className="text-primary h-5 w-5" />
               </div>
               <div>
-                <div className="font-mono text-xs text-muted-foreground">[PASSWORD]:</div>
-                <div className="font-mono text-xs text-muted-foreground">
+                <div className="text-muted-foreground font-mono text-xs">[PASSWORD]:</div>
+                <div className="text-muted-foreground font-mono text-xs">
                   Last changed: {new Date(lastPasswordChange).toLocaleDateString()}
                 </div>
               </div>

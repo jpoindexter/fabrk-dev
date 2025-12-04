@@ -27,6 +27,7 @@
 
 import { Table } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import * as React from "react";
 
@@ -61,21 +62,21 @@ function DataTablePaginationInner<TData>(
       aria-label="Table pagination"
     >
       <div className={`flex items-center space-x-2`}>
-        <p className="font-mono text-xs text-muted-foreground">
+        <p className={cn("text-muted-foreground text-xs", mode.font)}>
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </p>
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className={`flex items-center space-x-2`}>
-          <p className="font-mono text-xs font-medium">Rows per page</p>
+          <p className={cn("text-xs font-medium", mode.font)}>Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {
               table.setPageSize(Number(value));
             }}
           >
-            <SelectTrigger className="h-8 w-[70px] font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            <SelectTrigger className="focus-visible:ring-ring h-8 w-[70px] font-semibold focus-visible:ring-2 focus-visible:outline-none">
               <SelectValue placeholder={`${table.getState().pagination.pageSize}`} />
             </SelectTrigger>
             <SelectContent className="min-w-[70px]">
@@ -87,13 +88,13 @@ function DataTablePaginationInner<TData>(
             </SelectContent>
           </Select>
         </div>
-        <div className="font-mono text-xs flex w-24 items-center justify-center font-medium">
+        <div className={cn("flex w-24 items-center justify-center text-xs font-medium", mode.font)}>
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <div className={`flex items-center space-x-2`}>
           <Button
             variant="outline"
-            className={`"h-10 w-10" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
+            className={`"h-10 w-10" focus-visible:ring-ring hidden p-0 focus-visible:ring-2 focus-visible:outline-none lg:flex`}
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
@@ -102,7 +103,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-10 w-10" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-10 w-10" focus-visible:ring-ring p-0 focus-visible:ring-2 focus-visible:outline-none`}
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -111,7 +112,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-10 w-10" p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+            className={`"h-10 w-10" focus-visible:ring-ring p-0 focus-visible:ring-2 focus-visible:outline-none`}
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
@@ -120,7 +121,7 @@ function DataTablePaginationInner<TData>(
           </Button>
           <Button
             variant="outline"
-            className={`"h-10 w-10" hidden p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:flex`}
+            className={`"h-10 w-10" focus-visible:ring-ring hidden p-0 focus-visible:ring-2 focus-visible:outline-none lg:flex`}
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >

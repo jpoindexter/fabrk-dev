@@ -6,6 +6,7 @@
 import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 interface FilterCategory {
   id: string;
@@ -40,20 +41,11 @@ export function FiltersSidebar({
   const hasActiveFilters = selectedCategory !== "all" || selectedTags.length > 0;
 
   return (
-    <div className="w-full md:w-64 shrink-0 space-y-4">
-      <div className="border border-border bg-card">
-        <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-          <div className="flex gap-2">
-            <div className="size-2 rounded-none bg-destructive/50" />
-            <div className="size-2 rounded-none bg-warning/50" />
-            <div className="size-2 rounded-none bg-success/50" />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">
-            filters.tsx
-          </span>
-        </div>
+    <div className="w-full shrink-0 space-y-4 md:w-64">
+      <div className="border-border bg-card border">
+        <TerminalCardHeader code="0x00" title="FILTERS" />
 
-        <div className="p-4 space-y-4">
+        <div className="space-y-4 p-4">
           {/* Filter Header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-mono text-xs">
@@ -65,9 +57,9 @@ export function FiltersSidebar({
                 variant="ghost"
                 size="sm"
                 onClick={onClearFilters}
-                className="h-6 px-2 font-mono text-xs text-muted-foreground"
+                className="text-muted-foreground h-6 px-2 font-mono text-xs"
               >
-                <X className="h-3 w-3 mr-1" />
+                <X className="mr-1 h-3 w-3" />
                 CLEAR
               </Button>
             )}
@@ -75,15 +67,13 @@ export function FiltersSidebar({
 
           {/* Category Filter */}
           <div className="space-y-2">
-            <div className="font-mono text-xs text-muted-foreground">
-              [CATEGORY]:
-            </div>
+            <div className="text-muted-foreground font-mono text-xs">[CATEGORY]:</div>
             <div className="space-y-1">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => onCategoryChange(category.id)}
-                  className={`w-full flex items-center justify-between px-2 py-1.5 font-mono text-xs border border-border transition-colors ${
+                  className={`border-border flex w-full items-center justify-between border px-2 py-1.5 font-mono text-xs transition-colors ${
                     selectedCategory === category.id
                       ? "bg-primary text-primary-foreground"
                       : "hover:bg-muted"
@@ -98,25 +88,17 @@ export function FiltersSidebar({
 
           {/* Tags Filter */}
           <div className="space-y-2">
-            <div className="font-mono text-xs text-muted-foreground">
-              [TAGS]:
-            </div>
+            <div className="text-muted-foreground font-mono text-xs">[TAGS]:</div>
             <div className="space-y-1">
               {tags.map((tag) => (
-                <div
-                  key={tag.id}
-                  className="flex items-center gap-2 px-2 py-1"
-                >
+                <div key={tag.id} className="flex items-center gap-2 px-2 py-1">
                   <Checkbox
                     id={tag.id}
                     checked={selectedTags.includes(tag.id)}
                     onCheckedChange={() => onTagToggle(tag.id)}
                     className="rounded-none"
                   />
-                  <label
-                    htmlFor={tag.id}
-                    className="font-mono text-xs cursor-pointer"
-                  >
+                  <label htmlFor={tag.id} className="cursor-pointer font-mono text-xs">
                     {tag.label}
                   </label>
                 </div>

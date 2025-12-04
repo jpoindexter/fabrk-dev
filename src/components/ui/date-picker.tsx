@@ -1,32 +1,16 @@
 "use client";
 
 import * as React from "react";
-import {
-  format,
-  setMonth,
-  setYear,
-  subDays,
-  subMonths,
-  startOfMonth,
-  endOfMonth,
-} from "date-fns";
-import {
-  CalendarIcon,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-} from "lucide-react";
+import { format, setMonth, setYear, subDays, subMonths, startOfMonth, endOfMonth } from "date-fns";
+import { CalendarIcon, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
+import { mode as visualMode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -165,21 +149,15 @@ function DatePicker({
   className,
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
-  const [month, setMonthState] = React.useState<Date>(
-    value || rangeValue?.from || new Date()
-  );
+  const [month, setMonthState] = React.useState<Date>(value || rangeValue?.from || new Date());
 
   // Time state (for showTime mode)
   const [hours, setHours] = React.useState<string>(
     value ? format(value, use24Hour ? "HH" : "hh") : "12"
   );
-  const [minutes, setMinutes] = React.useState<string>(
-    value ? format(value, "mm") : "00"
-  );
+  const [minutes, setMinutes] = React.useState<string>(value ? format(value, "mm") : "00");
   const [period, setPeriod] = React.useState<"AM" | "PM">(
-    value && !use24Hour
-      ? (format(value, "a").toUpperCase() as "AM" | "PM")
-      : "AM"
+    value && !use24Hour ? (format(value, "a").toUpperCase() as "AM" | "PM") : "AM"
   );
 
   // Generate year options
@@ -294,18 +272,14 @@ function DatePicker({
     const maxHours = use24Hour ? 23 : 12;
     const minHours = use24Hour ? 0 : 1;
     const newHours = parseInt(hours) + 1;
-    setHours(
-      (newHours > maxHours ? minHours : newHours).toString().padStart(2, "0")
-    );
+    setHours((newHours > maxHours ? minHours : newHours).toString().padStart(2, "0"));
   };
 
   const decrementHours = () => {
     const maxHours = use24Hour ? 23 : 12;
     const minHours = use24Hour ? 0 : 1;
     const newHours = parseInt(hours) - 1;
-    setHours(
-      (newHours < minHours ? maxHours : newHours).toString().padStart(2, "0")
-    );
+    setHours((newHours < minHours ? maxHours : newHours).toString().padStart(2, "0"));
   };
 
   const incrementMinutes = () => {
@@ -338,10 +312,7 @@ function DatePicker({
 
   const isSelectedMonth = (monthIndex: number) => {
     if (!value) return false;
-    return (
-      value.getMonth() === monthIndex &&
-      value.getFullYear() === month.getFullYear()
-    );
+    return value.getMonth() === monthIndex && value.getFullYear() === month.getFullYear();
   };
 
   const displayValue = getDisplayValue();
@@ -353,7 +324,9 @@ function DatePicker({
           variant="outline"
           disabled={disabled}
           className={cn(
-            "w-full justify-start text-left font-mono text-xs rounded-none",
+            "w-full justify-start text-left text-xs",
+            visualMode.radius,
+            visualMode.font,
             !displayValue && "text-muted-foreground",
             className
           )}
@@ -363,42 +336,38 @@ function DatePicker({
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-auto p-0 rounded-none" align="start">
+      <PopoverContent className={cn("w-auto p-0", visualMode.radius)} align="start">
         {/* Month/Year Dropdowns */}
         {showMonthYearPicker && !monthOnly && (
-          <div className="flex gap-2 p-4 border-b border-border">
-            <Select
-              value={month.getMonth().toString()}
-              onValueChange={handleMonthChange}
-            >
-              <SelectTrigger className="flex-1 h-8 rounded-none font-mono text-xs">
+          <div className="border-border flex gap-2 border-b p-4">
+            <Select value={month.getMonth().toString()} onValueChange={handleMonthChange}>
+              <SelectTrigger
+                className={cn("h-8 flex-1 text-xs", visualMode.radius, visualMode.font)}
+              >
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-none">
+              <SelectContent className={visualMode.radius}>
                 {MONTHS.map((m, i) => (
                   <SelectItem
                     key={m}
                     value={i.toString()}
-                    className="font-mono text-xs text-left"
+                    className={cn("text-left text-xs", visualMode.font)}
                   >
                     {m}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            <Select
-              value={month.getFullYear().toString()}
-              onValueChange={handleYearChange}
-            >
-              <SelectTrigger className="w-24 h-8 rounded-none font-mono text-xs">
+            <Select value={month.getFullYear().toString()} onValueChange={handleYearChange}>
+              <SelectTrigger className={cn("h-8 w-24 text-xs", visualMode.radius, visualMode.font)}>
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="rounded-none max-h-60">
+              <SelectContent className={cn("max-h-60", visualMode.radius)}>
                 {years.map((y) => (
                   <SelectItem
                     key={y}
                     value={y.toString()}
-                    className="font-mono text-xs text-left"
+                    className={cn("text-left text-xs", visualMode.font)}
                   >
                     {y}
                   </SelectItem>
@@ -410,17 +379,19 @@ function DatePicker({
 
         {/* Presets (range mode) */}
         {mode === "range" && showPresets && (
-          <div className="p-4 border-b border-border">
+          <div className="border-border border-b p-4">
             <Select onValueChange={handlePresetSelect}>
-              <SelectTrigger className="w-full h-8 rounded-none font-mono text-xs">
+              <SelectTrigger
+                className={cn("h-8 w-full text-xs", visualMode.radius, visualMode.font)}
+              >
                 <SelectValue placeholder="Quick select..." />
               </SelectTrigger>
-              <SelectContent className="rounded-none">
+              <SelectContent className={visualMode.radius}>
                 {presets.map((preset) => (
                   <SelectItem
                     key={preset.label}
                     value={preset.label}
-                    className="font-mono text-xs text-left"
+                    className={cn("text-left text-xs", visualMode.font)}
                   >
                     {preset.label}
                   </SelectItem>
@@ -433,31 +404,23 @@ function DatePicker({
         {/* Month-Only Picker */}
         {monthOnly ? (
           <>
-            <div className="flex items-center justify-between p-4 border-b border-border">
+            <div className="border-border flex items-center justify-between border-b p-4">
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 w-8 p-0 rounded-none"
-                onClick={() =>
-                  setMonthState(
-                    new Date(month.getFullYear() - 1, month.getMonth())
-                  )
-                }
+                className={cn("h-8 w-8 p-0", visualMode.radius)}
+                onClick={() => setMonthState(new Date(month.getFullYear() - 1, month.getMonth()))}
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
               </Button>
-              <span className="font-mono text-sm font-semibold">
+              <span className={cn("text-sm font-semibold", visualMode.font)}>
                 {month.getFullYear()}
               </span>
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 w-8 p-0 rounded-none"
-                onClick={() =>
-                  setMonthState(
-                    new Date(month.getFullYear() + 1, month.getMonth())
-                  )
-                }
+                className={cn("h-8 w-8 p-0", visualMode.radius)}
+                onClick={() => setMonthState(new Date(month.getFullYear() + 1, month.getMonth()))}
               >
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </Button>
@@ -469,9 +432,10 @@ function DatePicker({
                   variant={isSelectedMonth(index) ? "default" : "ghost"}
                   size="sm"
                   className={cn(
-                    "h-9 rounded-none font-mono text-xs",
-                    isSelectedMonth(index) &&
-                      "bg-primary text-primary-foreground"
+                    "h-9 text-xs",
+                    visualMode.radius,
+                    visualMode.font,
+                    isSelectedMonth(index) && "bg-primary text-primary-foreground"
                   )}
                   disabled={isMonthDisabled(index)}
                   onClick={() => handleMonthSelect(index)}
@@ -484,24 +448,26 @@ function DatePicker({
         ) : showTime && mode === "single" ? (
           /* Date + Time Picker */
           <Tabs defaultValue="date" className="w-full">
-            <TabsList className="w-full rounded-none border-b border-border bg-muted/50">
+            <TabsList
+              className={cn("border-border bg-muted/50 w-full border-b", visualMode.radius)}
+            >
               <TabsTrigger
                 value="date"
-                className="flex-1 rounded-none font-mono text-xs"
+                className={cn("flex-1 text-xs", visualMode.radius, visualMode.font)}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" aria-hidden="true" />
                 DATE
               </TabsTrigger>
               <TabsTrigger
                 value="time"
-                className="flex-1 rounded-none font-mono text-xs"
+                className={cn("flex-1 text-xs", visualMode.radius, visualMode.font)}
               >
                 <Clock className="mr-2 h-4 w-4" aria-hidden="true" />
                 TIME
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="date" className="p-0 m-0">
+            <TabsContent value="date" className="m-0 p-0">
               <Calendar
                 mode="single"
                 selected={value}
@@ -521,18 +487,18 @@ function DatePicker({
               />
             </TabsContent>
 
-            <TabsContent value="time" className="p-4 m-0">
+            <TabsContent value="time" className="m-0 p-4">
               <div className="flex items-start justify-center gap-2">
                 {/* Hours */}
                 <div className="flex flex-col items-center gap-1">
-                  <span className="font-mono text-xs text-muted-foreground mb-1">
+                  <span className={cn("text-muted-foreground mb-1 text-xs", visualMode.font)}>
                     [HRS]
                   </span>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={incrementHours}
-                    className="h-8 w-12 p-0 rounded-none font-mono text-xs"
+                    className={cn("h-8 w-12 p-0 text-xs", visualMode.radius, visualMode.font)}
                   >
                     +
                   </Button>
@@ -547,33 +513,35 @@ function DatePicker({
                         setHours(val.toString().padStart(2, "0"));
                       }
                     }}
-                    className="h-8 w-12 text-center font-mono text-xs rounded-none"
+                    className={cn(
+                      "h-8 w-12 text-center text-xs",
+                      visualMode.radius,
+                      visualMode.font
+                    )}
                   />
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={decrementHours}
-                    className="h-8 w-12 p-0 rounded-none font-mono text-xs"
+                    className={cn("h-8 w-12 p-0 text-xs", visualMode.radius, visualMode.font)}
                   >
                     -
                   </Button>
                 </div>
 
                 {/* Separator */}
-                <span className="font-mono text-xs font-semibold mt-6 pt-1">
-                  :
-                </span>
+                <span className={cn("mt-6 pt-1 text-xs font-semibold", visualMode.font)}>:</span>
 
                 {/* Minutes */}
                 <div className="flex flex-col items-center gap-1">
-                  <span className="font-mono text-xs text-muted-foreground mb-1">
+                  <span className={cn("text-muted-foreground mb-1 text-xs", visualMode.font)}>
                     [MIN]
                   </span>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={incrementMinutes}
-                    className="h-8 w-12 p-0 rounded-none font-mono text-xs"
+                    className={cn("h-8 w-12 p-0 text-xs", visualMode.radius, visualMode.font)}
                   >
                     +
                   </Button>
@@ -586,13 +554,17 @@ function DatePicker({
                         setMinutes(val.toString().padStart(2, "0"));
                       }
                     }}
-                    className="h-8 w-12 text-center font-mono text-xs rounded-none"
+                    className={cn(
+                      "h-8 w-12 text-center text-xs",
+                      visualMode.radius,
+                      visualMode.font
+                    )}
                   />
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={decrementMinutes}
-                    className="h-8 w-12 p-0 rounded-none font-mono text-xs"
+                    className={cn("h-8 w-12 p-0 text-xs", visualMode.radius, visualMode.font)}
                   >
                     -
                   </Button>
@@ -600,15 +572,15 @@ function DatePicker({
 
                 {/* AM/PM Toggle */}
                 {!use24Hour && (
-                  <div className="flex flex-col items-center gap-1 ml-2">
-                    <span className="font-mono text-xs text-muted-foreground mb-1">
+                  <div className="ml-2 flex flex-col items-center gap-1">
+                    <span className={cn("text-muted-foreground mb-1 text-xs", visualMode.font)}>
                       [PERIOD]
                     </span>
                     <Button
                       variant={period === "AM" ? "default" : "outline"}
                       size="sm"
                       onClick={() => setPeriod("AM")}
-                      className="h-8 w-12 rounded-none font-mono text-xs"
+                      className={cn("h-8 w-12 text-xs", visualMode.radius, visualMode.font)}
                     >
                       AM
                     </Button>
@@ -616,7 +588,7 @@ function DatePicker({
                       variant={period === "PM" ? "default" : "outline"}
                       size="sm"
                       onClick={() => setPeriod("PM")}
-                      className="h-8 w-12 rounded-none font-mono text-xs"
+                      className={cn("h-8 w-12 text-xs", visualMode.radius, visualMode.font)}
                     >
                       PM
                     </Button>
@@ -676,11 +648,11 @@ function DatePicker({
 
         {/* Footer Actions */}
         {(showTime || mode === "range") && !monthOnly && (
-          <div className="flex gap-2 p-4 border-t border-border">
+          <div className="border-border flex gap-2 border-t p-4">
             <Button
               variant="outline"
               size="sm"
-              className="flex-1 rounded-none font-mono text-xs"
+              className={cn("flex-1 text-xs", visualMode.radius, visualMode.font)}
               onClick={() => {
                 if (mode === "range") {
                   onRangeChange?.(undefined);
@@ -693,7 +665,7 @@ function DatePicker({
             </Button>
             <Button
               size="sm"
-              className="flex-1 rounded-none font-mono text-xs"
+              className={cn("flex-1 text-xs", visualMode.radius, visualMode.font)}
               onClick={showTime ? handleTimeApply : () => setOpen(false)}
               disabled={showTime && !value}
             >

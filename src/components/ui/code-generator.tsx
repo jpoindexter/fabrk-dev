@@ -16,6 +16,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Code2, Copy, Download, Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
@@ -89,12 +90,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
     };
 
     return (
-      <div
-        data-slot="code-generator"
-        ref={ref}
-        className={cn("space-y-6", className)}
-        {...props}
-      >
+      <div data-slot="code-generator" ref={ref} className={cn("space-y-6", className)} {...props}>
         <div className={"space-y-2"}>
           <Textarea
             placeholder={placeholder}
@@ -124,7 +120,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
         {generatedCode && (
           <Card className={"p-6"}>
             <div className="mb-2 flex items-center justify-between">
-              <span className={`"text-sm" font-medium text-muted-foreground`}>Generated Code</span>
+              <span className={`"text-sm" text-muted-foreground font-medium`}>Generated Code</span>
               <div className={"flex gap-2"}>
                 <Button variant="ghost" size="icon" onClick={handleCopy} className="size-8">
                   <Copy className="size-4" />
@@ -136,9 +132,7 @@ const CodeGenerator = React.forwardRef<HTMLDivElement, CodeGeneratorProps>(
                 </Button>
               </div>
             </div>
-            <pre
-              className={`overflow-x-auto rounded-none border border-border bg-card `}
-            >
+            <pre className={cn("border-border bg-card overflow-x-auto border", mode.radius)}>
               <code className={`language-${language}`}>{generatedCode}</code>
             </pre>
           </Card>

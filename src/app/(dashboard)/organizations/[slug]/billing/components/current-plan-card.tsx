@@ -13,13 +13,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { Organization, Subscription } from "./types";
 import { getStatusBadge } from "./utils";
@@ -41,14 +35,12 @@ export function CurrentPlanCard({
   onUpgrade,
 }: CurrentPlanCardProps) {
   return (
-    <Card className="rounded-none border border-border shadow-sm">
+    <Card className="border-border rounded-none border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
             <CardTitle>Current Plan</CardTitle>
-            <CardDescription>
-              Your organization's subscription and billing details
-            </CardDescription>
+            <CardDescription>Your organization's subscription and billing details</CardDescription>
           </div>
           {subscription && getStatusBadge(subscription.status)}
         </div>
@@ -69,10 +61,7 @@ export function CurrentPlanCard({
                     <TrendingUp className="mr-2 h-4 w-4" />
                     Upgrade Plan
                   </Button>
-                  <Button
-                    onClick={onManageBilling}
-                    disabled={loadingPortal}
-                  >
+                  <Button onClick={onManageBilling} disabled={loadingPortal}>
                     {loadingPortal && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     <ExternalLink className="mr-2 h-4 w-4" />
                     Manage Billing
@@ -84,8 +73,8 @@ export function CurrentPlanCard({
             <Separator />
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-none border border-border bg-card p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="border-border bg-card rounded-none border p-4">
+                <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4" />
                   Billing Period
                 </div>
@@ -94,18 +83,16 @@ export function CurrentPlanCard({
                 </p>
               </div>
 
-              <div className="rounded-none border border-border bg-card p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="border-border bg-card rounded-none border p-4">
+                <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <DollarSign className="h-4 w-4" />
                   Next Payment
                 </div>
-                <p className="mt-2 font-medium">
-                  ${(subscription.plan.amount / 100).toFixed(2)}
-                </p>
+                <p className="mt-2 font-medium">${(subscription.plan.amount / 100).toFixed(2)}</p>
               </div>
 
-              <div className="rounded-none border border-border bg-card p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="border-border bg-card rounded-none border p-4">
+                <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <CheckCircle2 className="h-4 w-4" />
                   Status
                 </div>
@@ -114,12 +101,12 @@ export function CurrentPlanCard({
             </div>
 
             {subscription.cancelAtPeriodEnd && (
-              <div className="rounded-none border border-border border-destructive bg-destructive/10 p-4">
+              <div className="border-border border-destructive bg-destructive/10 rounded-none border p-4">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="h-5 w-5 text-destructive" />
+                  <AlertTriangle className="text-destructive h-5 w-5" />
                   <div>
-                    <h4 className="font-medium text-destructive">Subscription Ending</h4>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                    <h4 className="text-destructive font-medium">Subscription Ending</h4>
+                    <p className="text-muted-foreground mt-1 text-sm">
                       Your subscription will end on{" "}
                       {new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You can
                       reactivate it anytime before then.
@@ -130,10 +117,10 @@ export function CurrentPlanCard({
             )}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <DollarSign className="mx-auto h-12 w-12 text-muted-foreground" />
+          <div className="py-12 text-center">
+            <DollarSign className="text-muted-foreground mx-auto h-12 w-12" />
             <h3 className="mt-4 text-lg font-medium">No Active Subscription</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="text-muted-foreground mt-2 text-sm">
               Upgrade to a paid plan to unlock premium features
             </p>
             {isOwnerOrAdmin && (

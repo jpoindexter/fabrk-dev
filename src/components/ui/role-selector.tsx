@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Crown, Shield, User, Eye, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
@@ -146,14 +147,20 @@ export function RoleSelector({
               onClick={() => handleRoleClick(role.id, role.disabled)}
               disabled={role.disabled}
               className={cn(
-                "group bg-card relative flex items-start gap-4 rounded-none border p-4 text-left shadow-sm transition-all",
-                selected && "border-primary bg-primary/5 shadow-sm",
-                !selected && !role.disabled && "hover:opacity-90 hover:shadow-sm",
+                "group bg-card relative flex items-start gap-4 border p-4 text-left transition-all",
+                mode.radius,
+                selected && "border-primary bg-primary/5",
+                !selected && !role.disabled && "hover:opacity-90",
                 role.disabled && "cursor-not-allowed opacity-50"
               )}
             >
               {selected && (
-                <div className="bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-none border shadow-sm">
+                <div
+                  className={cn(
+                    "bg-primary absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center border",
+                    mode.radius
+                  )}
+                >
                   <Check className="text-primary-foreground h-3 w-3" />
                 </div>
               )}
@@ -161,7 +168,8 @@ export function RoleSelector({
               {Icon && (
                 <div
                   className={cn(
-                    "bg-background flex h-10 w-10 shrink-0 items-center justify-center rounded-none border shadow-sm",
+                    "bg-background flex h-10 w-10 shrink-0 items-center justify-center border",
+                    mode.radius,
                     selected && "bg-primary text-primary-foreground"
                   )}
                 >
@@ -224,14 +232,20 @@ export function RoleSelector({
             onClick={() => handleRoleClick(role.id, role.disabled)}
             disabled={role.disabled}
             className={cn(
-              "group bg-card relative flex flex-col items-center rounded-none border p-6 text-center shadow-sm transition-all",
-              selected && "border-primary bg-primary/5 shadow-sm",
-              !selected && !role.disabled && "hover:opacity-90 hover:shadow-sm",
+              "group bg-card relative flex flex-col items-center border p-6 text-center transition-all",
+              mode.radius,
+              selected && "border-primary bg-primary/5",
+              !selected && !role.disabled && "hover:opacity-90",
               role.disabled && "cursor-not-allowed opacity-50"
             )}
           >
             {selected && (
-              <div className="bg-primary absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-none border shadow-sm">
+              <div
+                className={cn(
+                  "bg-primary absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center border",
+                  mode.radius
+                )}
+              >
                 <Check className="text-primary-foreground h-4 w-4" />
               </div>
             )}
@@ -239,8 +253,9 @@ export function RoleSelector({
             {Icon && (
               <div
                 className={cn(
-                  "bg-background mb-4 flex h-16 w-16 items-center justify-center rounded-none border shadow-sm transition-all",
-                  selected && "bg-primary text-primary-foreground shadow-sm"
+                  "bg-background mb-4 flex h-16 w-16 items-center justify-center border transition-all",
+                  mode.radius,
+                  selected && "bg-primary text-primary-foreground"
                 )}
               >
                 <Icon className="h-8 w-8" />

@@ -24,6 +24,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   error?: boolean;
@@ -35,7 +36,9 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <textarea
         data-slot="textarea"
         className={cn(
-          "bg-background placeholder:text-muted-foreground focus-visible:ring-primary flex min-h-20 w-full rounded-none border px-4 py-2 font-mono text-xs font-normal transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "bg-background placeholder:text-muted-foreground focus-visible:ring-primary flex min-h-20 w-full border px-4 py-2 text-xs font-normal transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          mode.radius,
+          mode.font,
           error && "border-destructive focus-visible:ring-destructive",
           className
         )}

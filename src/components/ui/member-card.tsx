@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -41,9 +42,9 @@ export interface MemberCardProps {
 const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact" }) => {
   if (variant === "compact") {
     return (
-      <div className="bg-card flex items-center gap-4 rounded-none border p-4 shadow-sm">
+      <div className={cn("bg-card flex items-center gap-4 border p-4", mode.radius)}>
         <div className="relative">
-          <div className="bg-muted h-10 w-10 animate-pulse rounded-none" />
+          <div className={cn("bg-muted h-10 w-10 animate-pulse", mode.radius)} />
         </div>
         <div className="flex-1 space-y-2">
           <div className="bg-muted h-4 w-32 animate-pulse rounded" />
@@ -55,10 +56,10 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
   }
 
   return (
-    <div className="bg-card rounded-none border p-6 shadow-sm">
+    <div className={cn("bg-card border p-6", mode.radius)}>
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
-          <div className="bg-muted h-20 w-20 animate-pulse rounded-none" />
+          <div className={cn("bg-muted h-20 w-20 animate-pulse", mode.radius)} />
         </div>
         <div className="w-full space-y-2">
           <div className="bg-muted mx-auto h-5 w-3/4 animate-pulse rounded" />
@@ -67,8 +68,8 @@ const MemberCardSkeleton = ({ variant = "card" }: { variant?: "card" | "compact"
           <div className="bg-muted h-3 w-5/6 animate-pulse rounded" />
         </div>
         <div className="flex gap-2">
-          <div className="bg-muted h-9 w-20 animate-pulse rounded-none" />
-          <div className="bg-muted h-9 w-20 animate-pulse rounded-none" />
+          <div className={cn("bg-muted h-9 w-20 animate-pulse", mode.radius)} />
+          <div className={cn("bg-muted h-9 w-20 animate-pulse", mode.radius)} />
         </div>
       </div>
     </div>
@@ -126,7 +127,8 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
         <div
           ref={ref}
           className={cn(
-            "bg-card flex items-center gap-4 rounded-none border p-4 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
+            "bg-card flex items-center gap-4 border p-4 transition-all hover:opacity-90",
+            mode.radius,
             className
           )}
           {...props}
@@ -139,7 +141,8 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "border-card absolute right-0 bottom-0 h-3 w-3 rounded-none border",
+                  "border-card absolute right-0 bottom-0 h-3 w-3 border",
+                  mode.radius,
                   getStatusColor(member.status)
                 )}
               />
@@ -216,10 +219,7 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "bg-card rounded-none border p-6 shadow-sm transition-all hover:opacity-90 hover:shadow-sm",
-          className
-        )}
+        className={cn("bg-card border p-6 transition-all hover:opacity-90", mode.radius, className)}
         {...props}
       >
         <div className="flex flex-col items-center space-y-4">
@@ -231,7 +231,8 @@ const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
             {member.status && (
               <div
                 className={cn(
-                  "border-card absolute right-1 bottom-1 h-4 w-4 rounded-none border",
+                  "border-card absolute right-1 bottom-1 h-4 w-4 border",
+                  mode.radius,
                   getStatusColor(member.status)
                 )}
               />

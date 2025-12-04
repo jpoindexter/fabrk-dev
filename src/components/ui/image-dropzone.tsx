@@ -12,6 +12,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Image as ImageIcon, Upload, X } from "lucide-react";
 import * as React from "react";
 
@@ -175,7 +176,8 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             }
           }}
           className={cn(
-            "relative cursor-pointer rounded-none border border-dashed p-6 text-center transition-colors",
+            "relative cursor-pointer border border-dashed p-6 text-center transition-colors",
+            mode.radius,
             isDragging
               ? "border-primary bg-primary/5"
               : "border-muted-foreground/25 hover:border-muted-foreground/50",
@@ -192,9 +194,9 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
             className="sr-only"
           />
 
-          <Upload className={`mx-auto h-12 w-12 text-muted-foreground`} />
+          <Upload className={`text-muted-foreground mx-auto h-12 w-12`} />
           <p className={`"text-sm" mt-2 font-medium`}>Drop images here or click to upload</p>
-          <p className={`"text-xs" mt-1 text-muted-foreground`}>
+          <p className={`"text-xs" text-muted-foreground mt-1`}>
             {acceptedFormats.map((f) => f.split("/")[1].toUpperCase()).join(", ")} up to{" "}
             {maxSize / 1024 / 1024}MB
           </p>
@@ -203,10 +205,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
         {files.length > 0 && (
           <div className={`mt-4 space-y-2`}>
             {files.map((file, index) => (
-              <div
-                key={index}
-                className={`flex items-center gap-4 rounded-none border p-4`}
-              >
+              <div key={index} className={cn("flex items-center gap-4 border p-4", mode.radius)}>
                 {preview && previews[index] ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -215,7 +214,7 @@ const ImageDropzone = React.forwardRef<HTMLDivElement, ImageDropzoneProps>(
                     className={`h-12 w-12 rounded object-cover`}
                   />
                 ) : (
-                  <ImageIcon className={`h-12 w-12 text-muted-foreground`} aria-hidden="true" />
+                  <ImageIcon className={`text-muted-foreground h-12 w-12`} aria-hidden="true" />
                 )}
                 <div className="min-w-0 flex-1">
                   <p className={`"text-sm" truncate font-medium`}>{file.name}</p>

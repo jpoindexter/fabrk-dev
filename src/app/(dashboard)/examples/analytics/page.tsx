@@ -90,7 +90,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="flex items-center gap-2">
           <Select defaultValue="7">
-            <SelectTrigger className="border-border w-[140px] rounded-none border py-2 text-sm font-semibold shadow-sm">
+            <SelectTrigger className="border-border w-[140px] rounded-none border py-2 text-sm font-semibold">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -110,7 +110,7 @@ export default async function AnalyticsPage() {
           const isPositive = stat.trend === "up";
 
           return (
-            <Card key={stat.label} className="border-border border p-6 shadow-sm">
+            <Card key={stat.label} className="border-border border p-6">
               <div className="flex items-center justify-between">
                 <div className="border-border bg-primary/10 flex h-12 w-12 items-center justify-center rounded-none border">
                   <Icon className="text-primary h-6 w-6" />
@@ -139,7 +139,7 @@ export default async function AnalyticsPage() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Recent Activity */}
-        <Card className="border-border border p-6 shadow-sm">
+        <Card className="border-border border p-6">
           <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
             <h3 className="text-foreground text-xl font-bold">Recent Activity</h3>
             <button className="text-primary text-sm font-semibold hover:underline">View All</button>
@@ -161,7 +161,7 @@ export default async function AnalyticsPage() {
         </Card>
 
         {/* Top Pages */}
-        <Card className="border-border border p-6 shadow-sm">
+        <Card className="border-border border p-6">
           <div className="border-border mb-4 flex items-center justify-between border-b pb-4">
             <h3 className="text-foreground text-xl font-bold">Top Pages</h3>
             <button className="text-primary text-sm font-semibold hover:underline">View All</button>
@@ -190,7 +190,7 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Chart Placeholder */}
-      <Card className="border-border border p-6 shadow-sm">
+      <Card className="border-border border p-6">
         <div className="border-border mb-4 border-b pb-4">
           <h3 className="text-foreground text-xl font-bold">Revenue Over Time</h3>
           <p className="text-muted-foreground text-sm">Monthly recurring revenue trend</p>

@@ -24,25 +24,25 @@ export function HeroSplit({
   const imageOrder = imagePosition === "left" ? "lg:order-1" : "lg:order-2";
 
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
+    <section className="bg-background relative overflow-hidden px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Content Side */}
           <div className={`${contentOrder} flex flex-col justify-center`}>
             {/* Early Access Badge */}
             <div className="mb-6">
-              <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
+              <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
                 [ EARLY_ACCESS ] JOIN_FIRST_100_LAUNCH_CUSTOMERS
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="mb-6 font-mono text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h1 className="text-foreground mb-6 font-mono text-3xl leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-5xl">
               {headline}
             </h1>
 
             {/* Subheadline */}
-            <p className="mb-8 font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p className="text-muted-foreground mb-8 font-mono text-sm leading-relaxed sm:text-base">
               {subheadline}
             </p>
 
@@ -50,7 +50,7 @@ export function HeroSplit({
             <div className="mb-8 flex flex-col gap-4 sm:flex-row">
               <Button
                 size="lg"
-                className="rounded-none h-12 bg-primary px-6 font-mono text-xs font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 rounded-none px-6 font-mono text-xs font-semibold transition-all"
                 asChild
               >
                 <Link href={ctaPrimary.href}>{ctaPrimary.text}</Link>
@@ -58,7 +58,7 @@ export function HeroSplit({
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-none h-12 border-2 border-foreground px-6 font-mono text-xs font-semibold text-foreground transition-all hover:bg-foreground hover:text-background"
+                className="border-foreground text-foreground hover:bg-foreground hover:text-background h-12 rounded-none border-2 px-6 font-mono text-xs font-semibold transition-all"
                 asChild
               >
                 <Link href={ctaSecondary.href}>{ctaSecondary.text}</Link>
@@ -70,7 +70,7 @@ export function HeroSplit({
               {trustBadges.map((badge) => (
                 <span
                   key={badge}
-                  className="border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground"
+                  className="border-border bg-card text-muted-foreground border px-2 py-1 font-mono text-xs"
                 >
                   [{badge}]
                 </span>
@@ -78,51 +78,48 @@ export function HeroSplit({
             </div>
 
             {/* Final Sale Notice */}
-            <p className="mt-6 font-mono text-xs text-muted-foreground">
+            <p className="text-muted-foreground mt-6 font-mono text-xs">
               {"// All sales final • Lifetime v1.x updates"}
             </p>
           </div>
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className="relative border-2 border-foreground bg-muted shadow">
+            <div className="border-foreground bg-muted relative border-2 shadow">
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
-                <div className="h-full w-full border-2 border-border/20 bg-card p-4">
+                <div className="border-border/20 bg-card h-full w-full border-2 p-4">
                   {/* Header */}
-                  <div className="mb-4 flex items-center justify-between border-b-2 border-foreground/10 pb-4">
+                  <div className="border-foreground/10 mb-4 flex items-center justify-between border-b-2 pb-4">
                     <div className="flex items-center gap-2">
-                      <div className="h-8 w-8 rounded-none border-2 border-foreground bg-primary"></div>
+                      <div className="border-foreground bg-primary h-8 w-8 rounded-none border-2"></div>
                       <div>
-                        <div className="h-3 w-24 bg-foreground/20"></div>
-                        <div className="mt-1 h-2 w-16 bg-foreground/10"></div>
+                        <div className="bg-foreground/20 h-3 w-24"></div>
+                        <div className="bg-foreground/10 mt-1 h-2 w-16"></div>
                       </div>
                     </div>
-                    <div className="h-8 w-8 border-2 border-foreground bg-muted"></div>
+                    <div className="border-foreground bg-muted h-8 w-8 border-2"></div>
                   </div>
 
                   {/* Stats Cards */}
                   <div className="mb-4 grid grid-cols-3 gap-2">
                     {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="border border-foreground bg-card p-2 shadow-sm"
-                      >
-                        <div className="mb-2 h-2 w-12 bg-foreground/10"></div>
-                        <div className="h-4 w-8 bg-primary/20"></div>
+                      <div key={i} className="border-foreground bg-card border p-2">
+                        <div className="bg-foreground/10 mb-2 h-2 w-12"></div>
+                        <div className="bg-primary/20 h-4 w-8"></div>
                       </div>
                     ))}
                   </div>
 
                   {/* Data Table Preview */}
-                  <div className="border-2 border-foreground bg-card">
-                    <div className="border-b-2 border-foreground/10 p-2">
-                      <div className="h-3 w-20 bg-foreground/20"></div>
+                  <div className="border-foreground bg-card border-2">
+                    <div className="border-foreground/10 border-b-2 p-2">
+                      <div className="bg-foreground/20 h-3 w-20"></div>
                     </div>
                     <div className="space-y-2 p-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div key={i} className="flex gap-2">
-                          <div className="h-3 w-full bg-foreground/5"></div>
+                          <div className="bg-foreground/5 h-3 w-full"></div>
                         </div>
                       ))}
                     </div>
@@ -131,14 +128,14 @@ export function HeroSplit({
               </div>
 
               {/* File Count Badge */}
-              <div className="absolute -bottom-4 -right-4 rounded-none border-2 border-foreground bg-primary px-6 py-4 shadow-sm">
-                <p className="font-mono text-xs font-bold text-primary-foreground">[161_FILES]</p>
+              <div className="border-foreground bg-primary absolute -right-4 -bottom-4 rounded-none border-2 px-6 py-4">
+                <p className="text-primary-foreground font-mono text-xs font-bold">[161_FILES]</p>
               </div>
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute -left-8 top-8 -z-10 h-32 w-32 rounded-none bg-primary/10"></div>
-            <div className="absolute -bottom-8 -right-8 -z-10 h-24 w-24 rounded-none bg-accent/10"></div>
+            <div className="bg-primary/10 absolute top-8 -left-8 -z-10 h-32 w-32 rounded-none"></div>
+            <div className="bg-accent/10 absolute -right-8 -bottom-8 -z-10 h-24 w-24 rounded-none"></div>
           </div>
         </div>
       </div>

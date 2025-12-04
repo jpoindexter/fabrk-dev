@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export type InputGroupProps = React.ComponentProps<"div"> & {
   size?: "sm" | "md" | "lg";
@@ -41,7 +42,8 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
       data-size={size}
       role="group"
       className={cn(
-        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-none border shadow-xs transition-[color,box-shadow] focus-visible:outline-none",
+        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center border shadow-xs transition-[color,box-shadow] focus-visible:outline-none",
+        mode.radius,
         "h-9 has-[>textarea]:h-auto",
 
         // Variants based on alignment.
@@ -65,7 +67,11 @@ function InputGroup({ className, size, ...props }: InputGroupProps) {
 InputGroup.displayName = "InputGroup";
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 font-mono text-xs font-medium text-muted-foreground group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-none [&>svg:not([class*='size-'])]:size-4",
+  cn(
+    "flex h-auto cursor-text select-none items-center justify-center gap-2 py-1.5 text-xs font-medium text-muted-foreground group-data-[disabled=true]/input-group:opacity-50 [&>svg:not([class*='size-'])]:size-4",
+    mode.font,
+    `[&>kbd]:${mode.radius}`
+  ),
   {
     variants: {
       align: {
@@ -114,14 +120,14 @@ function InputGroupAddon({
 }
 InputGroupAddon.displayName = "InputGroupAddon";
 
-const inputGroupButtonVariants = cva("flex items-center gap-2 font-mono text-xs shadow-none", {
+const inputGroupButtonVariants = cva(cn("flex items-center gap-2 text-xs shadow-none", mode.font), {
   variants: {
     size: {
-      xs: "h-6 gap-1 rounded-none px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-      sm: "h-8 gap-2 rounded-none px-2.5 has-[>svg]:px-2.5",
+      xs: cn("h-6 gap-1 px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5", mode.radius),
+      sm: cn("h-8 gap-2 px-2.5 has-[>svg]:px-2.5", mode.radius),
       // Industry standard: Minimal padding p-1 for icon buttons
-      "icon-xs": "size-6 rounded-none p-1 has-[>svg]:p-1",
-      "icon-sm": "size-8 p-1 has-[>svg]:p-1",
+      "icon-xs": cn("size-6 p-1 has-[>svg]:p-1", mode.radius),
+      "icon-sm": cn("size-8 p-1 has-[>svg]:p-1", mode.radius),
     },
   },
   defaultVariants: {
@@ -155,7 +161,8 @@ function InputGroupText({ className, asChild = false, ...props }: InputGroupText
     <Comp
       data-slot="input-group-text"
       className={cn(
-        "text-muted-foreground flex items-center gap-2 font-mono text-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        "text-muted-foreground flex items-center gap-2 text-xs [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        mode.font,
         className
       )}
       {...props}
@@ -169,7 +176,8 @@ function InputGroupInput({ className, ...props }: React.ComponentProps<"input">)
     <Input
       data-slot="input-group-control"
       className={cn(
-        "flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
+        mode.radius,
         className
       )}
       {...props}
@@ -183,7 +191,8 @@ function InputGroupTextarea({ className, ...props }: React.ComponentProps<"texta
     <Textarea
       data-slot="input-group-control"
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-transparent py-4 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 resize-none border-0 bg-transparent py-4 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        mode.radius,
         className
       )}
       {...props}

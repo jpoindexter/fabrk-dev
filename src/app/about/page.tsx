@@ -1,12 +1,13 @@
 /**
  * About Us Page
  * Company story, mission, and values - Terminal Console Style
+ *
+ * Uses MarketingPageTemplate for consistent structure
  */
 
 "use client";
 
-import { SiteNavigation } from "@/components/navigation";
-import { Footer } from "@/components/landing/footer";
+import { MarketingPageTemplate } from "@/components/templates/marketing-page-template";
 import { AboutHero } from "./components/about-hero";
 import { MissionSection } from "./components/mission-section";
 import { ValuesSection } from "./components/values-section";
@@ -16,15 +17,15 @@ import { AboutCTA } from "./components/about-cta";
 
 export default function AboutPage() {
   return (
-    <div className="font-mono">
-      <SiteNavigation />
-      <AboutHero />
-      <MissionSection />
-      <ValuesSection />
-      <StorySection />
-      <WhyChooseSection />
-      <AboutCTA />
-      <Footer />
-    </div>
+    <MarketingPageTemplate
+      hero={<AboutHero />}
+      sections={[
+        { id: "mission", component: <MissionSection /> },
+        { id: "values", component: <ValuesSection /> },
+        { id: "story", component: <StorySection /> },
+        { id: "why-choose", component: <WhyChooseSection /> },
+      ]}
+      cta={<AboutCTA />}
+    />
   );
 }

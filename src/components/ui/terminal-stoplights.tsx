@@ -7,9 +7,11 @@
  */
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 // TOGGLE: Change rounded-none to rounded-full for circular stoplights
-const dotBase = "rounded-none";
+// Now uses mode.radius for dynamic switching
+const dotBase = mode.radius;
 
 interface TerminalStoplightsProps {
   className?: string;
@@ -23,10 +25,7 @@ const sizeClasses = {
   lg: "size-4",
 };
 
-export function TerminalStoplights({
-  className,
-  size = "sm",
-}: TerminalStoplightsProps) {
+export function TerminalStoplights({ className, size = "sm" }: TerminalStoplightsProps) {
   const dotSize = sizeClasses[size];
 
   return (
@@ -56,17 +55,10 @@ export function TerminalHeader({
   size = "sm",
 }: TerminalHeaderProps) {
   return (
-    <div
-      className={cn(
-        "flex items-center gap-2 border-b border-border px-4 py-2",
-        className
-      )}
-    >
+    <div className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}>
       <TerminalStoplights size={size} />
       {filename && (
-        <span className="font-mono text-xs text-muted-foreground">
-          {filename}
-        </span>
+        <span className={cn("text-muted-foreground text-xs", mode.font)}>{filename}</span>
       )}
       {children}
     </div>

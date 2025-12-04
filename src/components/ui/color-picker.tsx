@@ -4,6 +4,7 @@ import * as React from "react";
 import Sketch from "@uiw/react-color-sketch";
 import { Paintbrush } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -79,7 +80,7 @@ export function ColorPicker({
   // Inline variant - always visible, no popover
   if (variant === "inline") {
     return (
-      <div className={cn("bg-card border-border w-fit rounded-none border p-0", className)}>
+      <div className={cn("bg-card border-border w-fit border p-0", mode.radius, className)}>
         <SketchPicker />
       </div>
     );
@@ -94,7 +95,8 @@ export function ColorPicker({
             type="button"
             disabled={disabled}
             className={cn(
-              "border-border h-7 w-7 cursor-pointer rounded-none border transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50",
+              "border-border h-7 w-7 cursor-pointer border transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50",
+              mode.radius,
               className
             )}
             style={{ backgroundColor: localColor }}
@@ -102,7 +104,7 @@ export function ColorPicker({
           />
         </PopoverTrigger>
         <PopoverContent
-          className="border-border bg-card w-auto rounded-none border p-0"
+          className={cn("border-border bg-card w-auto border p-0", mode.radius)}
           align="start"
         >
           <SketchPicker />
@@ -123,14 +125,16 @@ export function ColorPicker({
             disabled={disabled}
           >
             <div
-              className="border-border h-4 w-4 rounded-none border"
+              className={cn("border-border h-4 w-4 border", mode.radius)}
               style={{ backgroundColor: localColor }}
             />
-            <span className="font-mono text-xs">{localColor.replace("#", "").toUpperCase()}</span>
+            <span className={cn("text-xs", mode.font)}>
+              {localColor.replace("#", "").toUpperCase()}
+            </span>
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="border-border bg-card w-auto rounded-none border p-0"
+          className={cn("border-border bg-card w-auto border p-0", mode.radius)}
           align="start"
         >
           <SketchPicker width={200} />
@@ -154,18 +158,18 @@ export function ColorPicker({
         >
           <div className="flex w-full items-center gap-2">
             <div
-              className="border-border h-4 w-4 rounded-none border"
+              className={cn("border-border h-4 w-4 border", mode.radius)}
               style={{ backgroundColor: localColor }}
             />
             <Paintbrush className="h-4 w-4" />
-            <span className="flex-1 truncate font-mono text-xs">
+            <span className={cn("flex-1 truncate text-xs", mode.font)}>
               {localColor?.toUpperCase() || placeholder}
             </span>
           </div>
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="border-border bg-card w-auto rounded-none border p-0"
+        className={cn("border-border bg-card w-auto border p-0", mode.radius)}
         align="start"
       >
         <SketchPicker />

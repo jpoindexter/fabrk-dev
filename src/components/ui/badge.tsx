@@ -2,9 +2,10 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-none border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-2 uppercase",
+  "inline-flex items-center justify-center border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-2 uppercase",
   {
     variants: {
       variant: {
@@ -18,9 +19,9 @@ const badgeVariants = cva(
       },
       size: {
         // Industry standard: Minimum py-1.5 (6px) for touch-friendly spacing
-        sm: "px-2 py-2 font-mono text-xs font-semibold [&>svg]:size-3",
-        md: "px-4 py-2 font-mono text-xs font-medium [&>svg]:size-3",
-        lg: "px-4 py-2 font-mono text-xs font-semibold [&>svg]:size-4",
+        sm: "px-2 py-2 text-xs font-semibold [&>svg]:size-3",
+        md: "px-4 py-2 text-xs font-medium [&>svg]:size-3",
+        lg: "px-4 py-2 text-xs font-semibold [&>svg]:size-4",
       },
     },
     defaultVariants: {
@@ -45,7 +46,7 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant, size }), className)}
+      className={cn(badgeVariants({ variant, size }), mode.radius, mode.font, className)}
       {...props}
     />
   );

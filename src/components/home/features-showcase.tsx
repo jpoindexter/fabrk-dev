@@ -129,7 +129,14 @@ interface FeatureCardProps {
   index: number;
 }
 
-function FeatureCard({ icon: Icon, module, status, title: _title, description, index }: FeatureCardProps) {
+function FeatureCard({
+  icon: Icon,
+  module,
+  status,
+  title: _title,
+  description,
+  index,
+}: FeatureCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -138,22 +145,24 @@ function FeatureCard({ icon: Icon, module, status, title: _title, description, i
       transition={{
         duration: 0.5,
         delay: index * 0.08,
-        ease: [0.21, 0.47, 0.32, 0.98]
+        ease: [0.21, 0.47, 0.32, 0.98],
       }}
       whileHover={{
         y: -4,
-        transition: { duration: 0.2 }
+        transition: { duration: 0.2 },
       }}
-      className="group border border-border bg-card transition-colors hover:border-primary/50 hover:shadow-sm"
+      className="group border-border bg-card hover:border-primary/50 border transition-colors"
     >
       {/* Module Header */}
-      <div className="flex items-center justify-between border-b border-border px-4 py-2">
-        <span className="font-mono text-xs text-muted-foreground">[ [0x{(index + 17).toString(16).toUpperCase().padStart(2, '0')}] {module} ]</span>
+      <div className="border-border flex items-center justify-between border-b px-4 py-2">
+        <span className="text-muted-foreground font-mono text-xs">
+          [ [0x{(index + 17).toString(16).toUpperCase().padStart(2, "0")}] {module} ]
+        </span>
         <motion.div
           whileHover={{ rotate: 12, scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
-          <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+          <Icon className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
         </motion.div>
       </div>
 
@@ -184,7 +193,7 @@ function FeatureCard({ icon: Icon, module, status, title: _title, description, i
 
 export function FeaturesShowcase() {
   return (
-    <section className="border-t border-border py-16 lg:py-24">
+    <section className="border-border border-t py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -194,20 +203,20 @@ export function FeaturesShowcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="mb-4 inline-block border border-border bg-card px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES</span>
+          <div className="border-border bg-card mb-4 inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x10] STACK_CONFIG ] FIB[89,144,233] MODULES
+            </span>
           </div>
-          <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">
-            SOLID_FOUNDATION
-          </h2>
-          <p className="max-w-2xl font-mono text-sm text-muted-foreground">
+          <h2 className="mb-4 font-mono text-2xl font-bold tracking-tight">SOLID_FOUNDATION</h2>
+          <p className="text-muted-foreground max-w-2xl font-mono text-sm">
             Everything you need to build a production-ready SaaS. Authentication, payments,
             multi-tenancy, and more—all pre-configured and ready to customize.
           </p>
         </motion.div>
 
         {/* 4x3 Features Grid */}
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((feature, index) => (
             <FeatureCard
               key={feature.id}

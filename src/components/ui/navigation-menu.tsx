@@ -6,6 +6,7 @@ import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -38,7 +39,11 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-none border bg-background px-4 py-2 font-mono text-xs font-medium transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/90 data-[active]:text-primary-foreground data-[state=open]:bg-primary/90 data-[state=open]:text-primary-foreground"
+  cn(
+    "group inline-flex h-9 w-max items-center justify-center border bg-background px-4 py-2 text-xs font-medium transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/90 data-[active]:text-primary-foreground data-[state=open]:bg-primary/90 data-[state=open]:text-primary-foreground",
+    mode.radius,
+    mode.font
+  )
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -84,7 +89,8 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute top-full left-0 flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center bg-card text-card-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-none border shadow-sm md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "origin-top-center bg-card text-card-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border md:w-[var(--radix-navigation-menu-viewport-width)]",
+        mode.radius,
         className
       )}
       ref={ref}
@@ -106,7 +112,7 @@ const NavigationMenuIndicator = React.forwardRef<
     )}
     {...props}
   >
-    <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-sm" />
+    <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm" />
   </NavigationMenuPrimitive.Indicator>
 ));
 NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;

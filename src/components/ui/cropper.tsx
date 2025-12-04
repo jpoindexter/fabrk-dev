@@ -11,6 +11,7 @@
  */
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import * as React from "react";
 import { CropperControls } from "./cropper-controls";
 
@@ -256,15 +257,13 @@ const Cropper = React.forwardRef<HTMLDivElement, CropperProps>(
     };
 
     return (
-      <div
-        data-slot="cropper"
-        ref={ref}
-        className={cn("space-y-6", className)}
-        {...props}
-      >
+      <div data-slot="cropper" ref={ref} className={cn("space-y-6", className)} {...props}>
         <div
           ref={containerRef}
-          className="relative h-96 w-full overflow-hidden rounded-none border border-border bg-card"
+          className={cn(
+            "border-border bg-card relative h-96 w-full overflow-hidden border",
+            mode.radius
+          )}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}

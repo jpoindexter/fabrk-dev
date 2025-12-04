@@ -25,6 +25,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Copy, FileText, Hash, Plus, Save, Variable, X } from "lucide-react";
 import * as React from "react";
 import { PromptBuilderProps, PromptTemplate, usePromptBuilder } from "./prompt-builder-logic";
@@ -81,7 +82,12 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
     };
 
     return (
-      <div data-slot="prompt-builder" ref={ref} className={cn("space-y-6 rounded-none border p-6", className)} {...props}>
+      <div
+        data-slot="prompt-builder"
+        ref={ref}
+        className={cn("space-y-6 border p-6", mode.radius, className)}
+        {...props}
+      >
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="editor">Editor</TabsTrigger>
@@ -134,7 +140,7 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
                 onChange={(e) => setPromptContent(e.target.value)}
                 placeholder={placeholder}
                 rows={10}
-                className={`"text-sm" font-mono`}
+                className={cn("text-sm", mode.font)}
               />
               <p className={`"text-xs" text-muted-foreground`}>
                 Tip: Use {"{{variableName}}"} syntax to create variables
@@ -174,21 +180,18 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
               <ScrollArea className="h-96">
                 <div className={`space-y-4 pr-4`}>
                   {variables.length === 0 ? (
-                    <p className={`"text-sm" py-8 text-center text-muted-foreground`}>
+                    <p className={`"text-sm" text-muted-foreground py-8 text-center`}>
                       No variables defined. Add variables or extract them from your prompt.
                     </p>
                   ) : (
                     variables.map((variable) => (
-                      <div
-                        key={variable.id}
-                        className={`space-y-2 rounded-none border p-4`}
-                      >
+                      <div key={variable.id} className={cn("space-y-2 border p-4", mode.radius)}>
                         <div className="flex items-center justify-between">
                           <Input
                             placeholder="Variable name"
                             value={variable.name}
                             onChange={(e) => updateVariable(variable.id, { name: e.target.value })}
-                            className={`"text-sm" w-32 font-mono`}
+                            className={cn("w-32 text-sm", mode.font)}
                           />
                           <Button
                             variant="ghost"
@@ -241,10 +244,10 @@ const PromptBuilder = React.forwardRef<HTMLDivElement, PromptBuilderProps>(
             <TabsContent value="preview" className={`space-y-6`}>
               <div className={`space-y-2`}>
                 <Label>Processed Prompt</Label>
-                <ScrollArea
-                  className={`h-96 rounded-none border bg-card `}
-                >
-                  <pre className={`"text-sm" whitespace-pre-wrap font-mono`}>{processPrompt()}</pre>
+                <ScrollArea className={cn("bg-card h-96 border", mode.radius)}>
+                  <pre className={cn("text-sm whitespace-pre-wrap", mode.font)}>
+                    {processPrompt()}
+                  </pre>
                 </ScrollArea>
               </div>
 

@@ -29,6 +29,7 @@ import {
 import DOMPurify from "isomorphic-dompurify";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -63,7 +64,7 @@ function parseMarkdown(markdown: string): string {
   // Code blocks (must be first to prevent other parsing inside)
   html = html.replace(
     /```(\w+)?\n([\s\S]*?)```/g,
-    '<pre class="bg-muted rounded-none p-4 my-4 overflow-x-auto border"><code class="text-sm font-mono">$2</code></pre>'
+    `<pre class="bg-muted ${mode.radius} p-4 my-4 overflow-x-auto border"><code class="text-sm ${mode.font}">$2</code></pre>`
   );
 
   // Headers (h1-h6)
@@ -91,27 +92,33 @@ function parseMarkdown(markdown: string): string {
   // Inline code
   html = html.replace(
     /`([^`]+)`/g,
-    '<code class="bg-muted px-1.5 py-0.5 rounded text-sm font-mono border">$1</code>'
+    `<code class="bg-muted px-1.5 py-0.5 ${mode.radius} text-sm ${mode.font} border">$1</code>`
   );
 
   // Unordered lists
   html = html.replace(/^\*\s+(.+)$/gm, '<li class="ml-4 list-disc">$1</li>');
   html = html.replace(/^-\s+(.+)$/gm, '<li class="ml-4 list-disc">$1</li>');
-  html = html.replace(/(<li class="ml-4 list-disc">.*<\/li>\n?)+/g, '<ul class="my-4 space-y-1">$&</ul>');
+  html = html.replace(
+    /(<li class="ml-4 list-disc">.*<\/li>\n?)+/g,
+    '<ul class="my-4 space-y-1">$&</ul>'
+  );
 
   // Ordered lists
   html = html.replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-4 list-decimal">$1</li>');
-  html = html.replace(/(<li class="ml-4 list-decimal">.*<\/li>\n?)+/g, '<ol class="my-4 space-y-1">$&</ol>');
+  html = html.replace(
+    /(<li class="ml-4 list-decimal">.*<\/li>\n?)+/g,
+    '<ol class="my-4 space-y-1">$&</ol>'
+  );
 
   // Paragraphs (wrap non-tag lines)
-  const lines = html.split('\n');
+  const lines = html.split("\n");
   const wrappedLines = lines.map((line) => {
-    if (!line.trim()) return '';
+    if (!line.trim()) return "";
     if (line.match(/^<(h[1-6]|ul|ol|pre|li)/)) return line;
     if (line.match(/^<\/(h[1-6]|ul|ol|pre|li)/)) return line;
     return `<p class="my-2 leading-relaxed">${line}</p>`;
   });
-  html = wrappedLines.join('\n');
+  html = wrappedLines.join("\n");
 
   return html;
 }
@@ -134,25 +141,28 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
     // Insert markdown syntax at cursor position (industry-standard useCallback pattern)
-    const insertMarkdown = React.useCallback((before: string, after: string = "") => {
-      const textarea = textareaRef.current;
-      if (!textarea) return;
+    const insertMarkdown = React.useCallback(
+      (before: string, after: string = "") => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
 
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const selectedText = value.substring(start, end);
-      const newText =
-        value.substring(0, start) + before + selectedText + after + value.substring(end);
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selectedText = value.substring(start, end);
+        const newText =
+          value.substring(0, start) + before + selectedText + after + value.substring(end);
 
-      onChange(newText);
+        onChange(newText);
 
-      // Restore cursor position
-      setTimeout(() => {
-        textarea.focus();
-        const newCursorPos = start + before.length + selectedText.length;
-        textarea.setSelectionRange(newCursorPos, newCursorPos);
-      }, 0);
-    }, [value, onChange]);
+        // Restore cursor position
+        setTimeout(() => {
+          textarea.focus();
+          const newCursorPos = start + before.length + selectedText.length;
+          textarea.setSelectionRange(newCursorPos, newCursorPos);
+        }, 0);
+      },
+      [value, onChange]
+    );
 
     // Define toolbar buttons as stable data (avoid ref capture during render)
     const toolbarButtons = [
@@ -171,7 +181,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
       <div ref={ref} className={cn("flex flex-col gap-4", className)}>
         {/* Toolbar */}
         {!previewOnly && !disabled && (
-          <div className="flex items-center gap-2 p-2 rounded-none border bg-card shadow-sm">
+          <div className={cn("bg-card flex items-center gap-2 border p-2", mode.radius)}>
             <div className="flex items-center gap-1">
               {toolbarButtons.map((btn) => (
                 <Button
@@ -190,7 +200,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
             {/* Preview toggle (only show if not editorOnly/previewOnly) */}
             {!editorOnly && !previewOnly && (
               <>
-                <div className="h-6 w-px bg-border mx-2" />
+                <div className="bg-border mx-2 h-6 w-px" />
                 <Button
                   variant="ghost"
                   size="sm"
@@ -226,7 +236,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
           {isEditorVisible && (
             <div className="flex flex-col">
               {isPreviewVisible && (
-                <div className="flex items-center gap-2 mb-2 text-sm font-medium text-muted-foreground">
+                <div className="text-muted-foreground mb-2 flex items-center gap-2 text-sm font-medium">
                   <Edit3 className="h-4 w-4" />
                   <span>Editor</span>
                 </div>
@@ -237,10 +247,7 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                 onChange={(e) => onChange(e.target.value)}
                 placeholder={placeholder}
                 disabled={disabled}
-                className={cn(
-                  "font-mono text-sm resize-none",
-                  "focus-visible:ring-2"
-                )}
+                className={cn("resize-none font-mono text-sm", "focus-visible:ring-2")}
                 style={{ minHeight }}
               />
             </div>
@@ -250,14 +257,15 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
           {isPreviewVisible && (
             <div className="flex flex-col">
               {isEditorVisible && (
-                <div className="flex items-center gap-2 mb-2 text-sm font-medium text-muted-foreground">
+                <div className="text-muted-foreground mb-2 flex items-center gap-2 text-sm font-medium">
                   <Eye className="h-4 w-4" />
                   <span>Preview</span>
                 </div>
               )}
               <div
                 className={cn(
-                  "rounded-none border bg-card p-4 shadow-sm overflow-y-auto",
+                  "bg-card overflow-y-auto border p-4",
+                  mode.radius,
                   "prose prose-sm max-w-none",
                   "prose-headings:text-foreground prose-p:text-foreground",
                   "prose-strong:text-foreground prose-code:text-foreground",
@@ -267,15 +275,37 @@ export const MarkdownEditor = React.forwardRef<HTMLDivElement, MarkdownEditorPro
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(parseMarkdown(value), {
                     ALLOWED_TAGS: [
-                      "h1", "h2", "h3", "h4", "h5", "h6",
-                      "p", "br", "strong", "em", "u", "s",
-                      "a", "ul", "ol", "li", "blockquote",
-                      "code", "pre", "img", "table", "thead",
-                      "tbody", "tr", "th", "td"
+                      "h1",
+                      "h2",
+                      "h3",
+                      "h4",
+                      "h5",
+                      "h6",
+                      "p",
+                      "br",
+                      "strong",
+                      "em",
+                      "u",
+                      "s",
+                      "a",
+                      "ul",
+                      "ol",
+                      "li",
+                      "blockquote",
+                      "code",
+                      "pre",
+                      "img",
+                      "table",
+                      "thead",
+                      "tbody",
+                      "tr",
+                      "th",
+                      "td",
                     ],
                     ALLOWED_ATTR: ["href", "src", "alt", "title", "class", "target", "rel"],
-                    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
-                  })
+                    ALLOWED_URI_REGEXP:
+                      /^(?:(?:https?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.\-:]|$))/i,
+                  }),
                 }}
               />
             </div>

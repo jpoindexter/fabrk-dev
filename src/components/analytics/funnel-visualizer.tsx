@@ -110,7 +110,7 @@ export function FunnelVisualizer({
               {/* Funnel Bar */}
               <div className="relative">
                 <div
-                  className="border-border h-12 rounded-none border shadow-sm transition-all duration-500 ease-out"
+                  className="border-border h-12 rounded-none border transition-all duration-500 ease-out"
                   style={{
                     width: `${widthPercentage}%`,
                     backgroundColor: color,

@@ -4,6 +4,7 @@ import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { Square } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -29,8 +30,9 @@ const RadioGroupItem = React.forwardRef<
       ref={ref}
       data-slot="radio-group-item"
       className={cn(
-        "aspect-square h-5 w-5 rounded-none border text-primary ring-offset-background transition-colors",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+        "text-primary ring-offset-background aspect-square h-5 w-5 border transition-colors",
+        mode.radius,
+        "focus-visible:ring-primary focus:outline-none focus-visible:ring-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}

@@ -45,8 +45,15 @@ const CRITICAL_PATTERNS = [
   },
   {
     name: 'banned shadows',
-    pattern: /shadow-(md|lg|xl|2xl|inner)\b/,
-    message: 'Use shadow-sm or shadow-none only',
+    pattern: /shadow-(sm|md|lg|xl|2xl|inner)\b/,
+    message: 'Terminal aesthetic = no shadows. Use shadow-none or remove shadow class.',
+    exceptions: ['slider.tsx', 'switch.tsx', 'command.tsx', 'navigation-menu.tsx', 'menubar.tsx'],
+  },
+  {
+    name: 'colored dots pattern',
+    pattern: /bg-(destructive|warning|success)\/50.*size-2/,
+    message: 'Use TerminalCardHeader instead of colored dots pattern',
+    exceptions: ['pricing-section.tsx', '/docs/'], // Intentional: animated landing, code examples
   },
   {
     name: 'hardcoded white/black',
@@ -90,8 +97,50 @@ function checkFile(filePath, patterns, isWarning = false) {
   const lines = content.split('\n');
 
   patterns.forEach(({ name, pattern, message, exceptions = [] }) => {
+    // Special handling for console.log - skip commented lines
+    if (name === 'console.log') {
+      lines.forEach((line, index) => {
+        if (exceptions.some(exc => line.includes(exc))) return;
+        const trimmed = line.trim();
+        // Skip if line is commented out
+        if (trimmed.startsWith('//')) return;
+        if (pattern.test(line)) {
+          violations.push({
+            file: filePath,
+            line: index + 1,
+            name,
+            message,
+            isWarning,
+            content: line.trim().substring(0, 80),
+          });
+        }
+      });
+      return;
+    }
+
+    // Special handling for target="_blank" - check next few lines for rel attribute
+    if (name === 'target="_blank" without rel') {
+      lines.forEach((line, index) => {
+        if (pattern.test(line)) {
+          // Check next 3 lines for rel="noopener noreferrer"
+          const contextLines = lines.slice(index, index + 4).join(' ');
+          if (!contextLines.includes('rel="noopener noreferrer"')) {
+            violations.push({
+              file: filePath,
+              line: index + 1,
+              name,
+              message,
+              isWarning,
+              content: line.trim().substring(0, 80),
+            });
+          }
+        }
+      });
+      return;
+    }
+
+    // Default pattern checking
     lines.forEach((line, index) => {
-      // Skip if line contains an exception
       if (exceptions.some(exc => line.includes(exc))) return;
 
       if (pattern.test(line)) {

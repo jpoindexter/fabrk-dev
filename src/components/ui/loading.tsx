@@ -11,17 +11,12 @@
  */
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button, ButtonProps } from "./button";
 
-
-
 // Spinner Component
-
-
-
-
 
 export type LoadingSpinnerProps = React.ComponentProps<"div">;
 
@@ -39,7 +34,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
 
     return (
       <div
-      data-slot="spinner"
+        data-slot="spinner"
         ref={ref}
         role="status"
         aria-label="Loading"
@@ -47,7 +42,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         {...props}
       >
         <svg
-          className={cn("animate-spin text-primary", sizeClasses[size], "")}
+          className={cn("text-primary animate-spin", sizeClasses[size], "")}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -84,19 +79,20 @@ export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   ({ className, variant = "text", width: _width, height: _height, ...props }, ref) => {
     const variantClasses = {
-      text: "h-4 w-full rounded-none",
-      circular: "rounded-none",
-      rectangular: "rounded-none",
+      text: "h-4 w-full",
+      circular: "",
+      rectangular: "",
     };
 
     return (
-      <div data-slot="skeleton"
+      <div
+        data-slot="skeleton"
         ref={ref}
         className={cn(
-          "h-full w-full animate-pulse bg-card border border-border",
+          "bg-card border-border h-full w-full animate-pulse border",
+          mode.radius,
           variantClasses[variant],
-          className,
-          ""
+          className
         )}
         aria-hidden="true"
         {...props}
@@ -114,19 +110,14 @@ export interface LoadingContainerProps extends React.HTMLAttributes<HTMLDivEleme
 export const LoadingContainer = React.forwardRef<HTMLDivElement, LoadingContainerProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <div data-slot="loading-container"
+      <div
+        data-slot="loading-container"
         ref={ref}
-        className={cn(
-          `flex min-h-96 flex-col items-center justify-center gap-6`,
-          className,
-          ""
-        )}
+        className={cn(`flex min-h-96 flex-col items-center justify-center gap-6`, className, "")}
         {...props}
       >
         <Spinner size="lg" />
-        {children && (
-          <p className={`text-base dark:text-muted-foreground`}>{children}</p>
-        )}
+        {children && <p className={`dark:text-muted-foreground text-base`}>{children}</p>}
       </div>
     );
   }

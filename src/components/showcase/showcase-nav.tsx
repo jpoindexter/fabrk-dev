@@ -70,10 +70,8 @@ export function ShowcaseNav() {
                 <div
                   className={cn(
                     "rounded-none border-2 p-4 transition-all",
-                    "hover:border-primary/50 hover:shadow-sm",
-                    isActive
-                      ? "border-primary bg-primary/10 shadow-sm"
-                      : "border-border bg-background"
+                    "hover:border-primary/50",
+                    isActive ? "border-primary bg-primary/10" : "border-border bg-background"
                   )}
                 >
                   <div className="mb-2 flex items-start justify-between">

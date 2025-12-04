@@ -2,17 +2,18 @@
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import Link from "next/link";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 // Simplified Footer Demo
 function FooterDemo() {
   return (
-    <footer className="w-full border border-border bg-background">
+    <footer className="border-border bg-background w-full border">
       {/* Tech Stack Bar */}
-      <div className="border-b border-border p-4">
-        <div className="mb-2 font-mono text-xs text-muted-foreground">[ TECH_STACK ]</div>
+      <div className="border-border border-b p-4">
+        <div className="text-muted-foreground mb-2 font-mono text-xs">[ TECH_STACK ]</div>
         <div className="flex flex-wrap gap-2">
           {["NEXT.JS", "REACT", "TYPESCRIPT", "TAILWIND"].map((tech) => (
-            <span key={tech} className="border border-border bg-card px-2 py-1 font-mono text-xs">
+            <span key={tech} className="border-border bg-card border px-2 py-1 font-mono text-xs">
               {tech} <span className="text-success">[OK]</span>
             </span>
           ))}
@@ -23,7 +24,7 @@ function FooterDemo() {
       <div className="grid gap-6 p-6 lg:grid-cols-[1fr_auto]">
         {/* Logo & Status */}
         <div>
-          <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
+          <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
             [ SYSTEM_INFO ]
           </span>
           <Link href="#" className="mt-4 flex items-center gap-2 font-mono">
@@ -37,35 +38,58 @@ function FooterDemo() {
         </div>
 
         {/* Nav Links */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-            <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
-            </div>
-            <span className="font-mono text-xs text-muted-foreground">nav_links.exe</span>
-          </div>
-          <div className="grid grid-cols-3 divide-x divide-border">
+        <div className="border-border bg-card border">
+          <TerminalCardHeader code="0x00" title="COMPONENT" />
+          <div className="divide-border grid grid-cols-3 divide-x">
             <div className="p-4">
-              <div className="mb-2 font-mono text-xs text-muted-foreground">[ PRODUCT ]</div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ PRODUCT ]</div>
               <div className="flex flex-col gap-1">
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; FEATURES</Link>
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; PRICING</Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; FEATURES
+                </Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; PRICING
+                </Link>
               </div>
             </div>
             <div className="p-4">
-              <div className="mb-2 font-mono text-xs text-muted-foreground">[ COMPANY ]</div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ COMPANY ]</div>
               <div className="flex flex-col gap-1">
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; ABOUT</Link>
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; CONTACT</Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; ABOUT
+                </Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; CONTACT
+                </Link>
               </div>
             </div>
             <div className="p-4">
-              <div className="mb-2 font-mono text-xs text-muted-foreground">[ LEGAL ]</div>
+              <div className="text-muted-foreground mb-2 font-mono text-xs">[ LEGAL ]</div>
               <div className="flex flex-col gap-1">
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; TERMS</Link>
-                <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">&gt; PRIVACY</Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; TERMS
+                </Link>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground font-mono text-xs"
+                >
+                  &gt; PRIVACY
+                </Link>
               </div>
             </div>
           </div>
@@ -73,8 +97,8 @@ function FooterDemo() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-border p-4">
-        <span className="font-mono text-xs text-muted-foreground">
+      <div className="border-border border-t p-4">
+        <span className="text-muted-foreground font-mono text-xs">
           [ COPYRIGHT ] © 2024 Fabrk │ All rights reserved
         </span>
       </div>
@@ -85,13 +109,19 @@ function FooterDemo() {
 // Simple Footer variant
 function SimpleFooterDemo() {
   return (
-    <footer className="w-full border border-border bg-background p-4">
+    <footer className="border-border bg-background w-full border p-4">
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <span className="font-mono text-xs text-muted-foreground">© 2024 Your Company</span>
+        <span className="text-muted-foreground font-mono text-xs">© 2024 Your Company</span>
         <nav className="flex gap-4">
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">Privacy</Link>
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">Terms</Link>
-          <Link href="#" className="font-mono text-xs text-muted-foreground hover:text-foreground">Contact</Link>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            Privacy
+          </Link>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            Terms
+          </Link>
+          <Link href="#" className="text-muted-foreground hover:text-foreground font-mono text-xs">
+            Contact
+          </Link>
         </nav>
       </div>
     </footer>
@@ -143,13 +173,22 @@ export default function LandingPage() {
           description: "Footer social media buttons",
           preview: (
             <div className="flex gap-2">
-              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link
+                href="#"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+              >
                 X
               </Link>
-              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link
+                href="#"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+              >
                 GitHub
               </Link>
-              <Link href="#" className="flex items-center gap-2 border border-border px-4 py-1.5 font-mono text-xs text-muted-foreground hover:border-primary/50 hover:text-foreground">
+              <Link
+                href="#"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+              >
                 Discord
               </Link>
             </div>

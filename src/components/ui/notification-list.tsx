@@ -15,6 +15,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { AlertCircle, Bell, Check, X } from "lucide-react";
 import * as React from "react";
 
@@ -51,18 +52,14 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
   ) => {
     if (loading) {
       return (
-        <div
-          data-slot="notification-list"
-          ref={ref}
-          className={cn(`space-y-2`, className, "")}
-        >
+        <div data-slot="notification-list" ref={ref} className={cn(`space-y-2`, className, "")}>
           {[...Array(3)].map((_, i) => (
-            <div key={i} className={`animate-pulse  `}>
-              <div className={`flex gap-6 `}>
-                <div className={`"h-8 w-8" rounded-none border border-border bg-card`} />
-                <div className={`flex-1 space-y-2 `}>
-                  <div className="h-4 w-3/4 rounded border border-border bg-card" />
-                  <div className="h-3 w-1/2 rounded border border-border bg-card" />
+            <div key={i} className={`animate-pulse`}>
+              <div className={`flex gap-6`}>
+                <div className={cn(`"h-8 w-8" border-border bg-card border`, mode.radius)} />
+                <div className={`flex-1 space-y-2`}>
+                  <div className={cn("border-border bg-card h-4 w-3/4 border", mode.radius)} />
+                  <div className={cn("border-border bg-card h-3 w-1/2 border", mode.radius)} />
                 </div>
               </div>
             </div>
@@ -73,7 +70,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
 
     if (error) {
       return (
-        <div className={cn("p-6 text-destructive", className, "")}>Error loading notifications</div>
+        <div className={cn("text-destructive p-6", className, "")}>Error loading notifications</div>
       );
     }
 
@@ -84,7 +81,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
         case "warning":
           return (
             <AlertCircle
-              className={`"h-4 w-4" text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring`}
+              className={`"h-4 w-4" text-accent-foreground focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none`}
             />
           );
         case "error":
@@ -97,7 +94,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
     return (
       <div ref={ref} className={cn("", className, "")} {...props}>
         {notifications.length === 0 ? (
-          <div className="p-8 text-center text-muted-foreground dark:text-muted-foreground">
+          <div className="text-muted-foreground dark:text-muted-foreground p-8 text-center">
             No notifications
           </div>
         ) : (
@@ -107,8 +104,8 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                 key={notification.id}
                 className={cn(
                   "cursor-pointer p-6 transition-all duration-200",
-                  "hover:translate-x-1 hover:bg-primary/50",
-                  "focus-within:ring-2 focus-within:ring-ring focus-visible:outline-none",
+                  "hover:bg-primary/50 hover:translate-x-1",
+                  "focus-within:ring-ring focus-within:ring-2 focus-visible:outline-none",
                   !notification.read && "bg-primary/10 dark:bg-primary/5",
                   ""
                 )}
@@ -123,25 +120,28 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                 }}
                 aria-label={`Notification: ${notification.title}${!notification.read ? " (unread)" : ""}`}
               >
-                <div className={`flex gap-6 `}>
+                <div className={`flex gap-6`}>
                   <div
-                    className={`"h-8 w-8" flex items-center justify-center rounded-none border border-border bg-card transition-transform hover:scale-110`}
+                    className={cn(
+                      `"h-8 w-8" border-border bg-card flex items-center justify-center border transition-transform hover:scale-110`,
+                      mode.radius
+                    )}
                   >
                     {getIcon(notification.type)}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="line-clamp-1 font-medium transition-colors hover:text-primary dark:text-muted-foreground dark:hover:text-primary">
+                    <p className="hover:text-primary dark:text-muted-foreground dark:hover:text-primary line-clamp-1 font-medium transition-colors">
                       {notification.title}
                     </p>
                     {notification.description && (
                       <p
-                        className={`"text-sm" line-clamp-2 text-muted-foreground transition-colors dark:text-muted-foreground dark:hover:text-muted-foreground`}
+                        className={`"text-sm" text-muted-foreground dark:text-muted-foreground dark:hover:text-muted-foreground line-clamp-2 transition-colors`}
                       >
                         {notification.description}
                       </p>
                     )}
                     <p
-                      className={`"text-xs" mt-2 text-muted-foreground transition-colors dark:text-muted-foreground dark:hover:text-muted-foreground`}
+                      className={`"text-xs" text-muted-foreground dark:text-muted-foreground dark:hover:text-muted-foreground mt-2 transition-colors`}
                     >
                       {notification.time}
                     </p>
@@ -152,7 +152,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                         e.stopPropagation();
                         onDismiss(notification.id);
                       }}
-                      className="text-muted-foreground transition-all hover:scale-110 hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:text-muted-foreground dark:hover:text-destructive"
+                      className="text-muted-foreground hover:text-destructive focus-visible:ring-ring dark:text-muted-foreground dark:hover:text-destructive transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
                       aria-label="Dismiss notification"
                     >
                       <X className={`"h-4 w-4"`} />

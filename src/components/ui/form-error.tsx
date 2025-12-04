@@ -12,14 +12,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { AlertCircle, RefreshCw } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";
-
-
-
-
-
 
 export interface FormErrorProps {
   what?: string;
@@ -35,24 +31,25 @@ export const FormError = React.forwardRef<HTMLDivElement, FormErrorProps>(
   ({ what = "Something went wrong", why, how, onRetry, helpLink, className, id }, ref) => {
     return (
       <div
-      data-slot="form-error"
+        data-slot="form-error"
         ref={ref}
         id={id}
         role="alert"
         aria-live="polite"
         className={cn(
-          "rounded-none border border-destructive/50 bg-destructive/15 p-6",
+          "border-destructive/50 bg-destructive/15 border p-6",
+          mode.radius,
           "dark:border-destructive/50 dark:bg-destructive/15",
           className
         )}
       >
         <div className={`flex gap-4`}>
           <AlertCircle
-            className={`"h-5 w-5" mt-0.5 shrink-0 text-destructive dark:text-destructive`}
+            className={`"h-5 w-5" text-destructive dark:text-destructive mt-0.5 shrink-0`}
           />
           <div className={`flex-1 space-y-2`}>
             {/* What went wrong */}
-            <p className={`"text-sm" font-medium text-destructive dark:text-destructive`}>{what}</p>
+            <p className={`"text-sm" text-destructive dark:text-destructive font-medium`}>{what}</p>
 
             {/* Why it happened */}
             {why && <p className={`"text-sm" text-muted-foreground`}>{why}</p>}

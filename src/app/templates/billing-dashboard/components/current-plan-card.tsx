@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 interface Subscription {
@@ -23,45 +24,38 @@ interface CurrentPlanCardProps {
 
 export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardProps) {
   return (
-    <div className="border border-primary bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">subscription.config</span>
-      </div>
+    <div className="border-primary bg-card border">
+      <TerminalCardHeader code="0x00" title="SUBSCRIPTION" />
       <div className="p-4">
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="font-mono text-xs text-muted-foreground">[CURRENT_PLAN]:</span>
-              <span className="border border-success/50 px-2 py-0.5 font-mono text-xs text-success">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="text-muted-foreground font-mono text-xs">[CURRENT_PLAN]:</span>
+              <span className="border-success/50 text-success border px-2 py-0.5 font-mono text-xs">
                 ACTIVE
               </span>
             </div>
-            <div className="flex items-center gap-4 mb-2">
-              <Star className="h-5 w-5 text-primary" />
+            <div className="mb-2 flex items-center gap-4">
+              <Star className="text-primary h-5 w-5" />
               <span className="text-2xl font-bold">{subscription.plan}</span>
             </div>
-            <div className="font-mono text-xs text-muted-foreground">
+            <div className="text-muted-foreground font-mono text-xs">
               STARTED: {formatDate(subscription.startDate)}
             </div>
           </div>
           <div className="text-right">
             <div className="text-3xl font-bold">
               ${subscription.price}
-              <span className="text-lg text-muted-foreground font-normal">/mo</span>
+              <span className="text-muted-foreground text-lg font-normal">/mo</span>
             </div>
-            <div className="font-mono text-xs text-muted-foreground mt-1">
+            <div className="text-muted-foreground mt-1 font-mono text-xs">
               NEXT_BILLING: {formatDate(subscription.nextBillingDate)}
             </div>
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border">
-          <div className="font-mono text-xs text-muted-foreground mb-4">[FEATURES]:</div>
+        <div className="border-border mt-4 border-t pt-4">
+          <div className="text-muted-foreground mb-4 font-mono text-xs">[FEATURES]:</div>
           <div className="grid grid-cols-2 gap-2">
             {subscription.features.map((feature, idx) => (
               <div key={idx} className="flex items-center gap-2 font-mono text-xs">
@@ -72,7 +66,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border flex gap-2">
+        <div className="border-border mt-4 flex gap-2 border-t pt-4">
           <Button variant="outline" size="sm" className="rounded-none font-mono text-xs">
             &gt; MANAGE_SUBSCRIPTION
           </Button>

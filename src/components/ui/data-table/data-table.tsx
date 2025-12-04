@@ -13,6 +13,8 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 import {
   Table,
@@ -68,26 +70,28 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar
-        table={table}
-        searchKey={searchKey}
-        searchPlaceholder={searchPlaceholder}
-      />
-      <div className="overflow-x-auto rounded-none border border-border bg-card shadow-sm scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-none">
+      <DataTableToolbar table={table} searchKey={searchKey} searchPlaceholder={searchPlaceholder} />
+      <div
+        className={cn(
+          "border-border bg-card [&::-webkit-scrollbar-track]:bg-muted [&::-webkit-scrollbar-thumb]:bg-border overflow-x-auto scroll-smooth border [&::-webkit-scrollbar]:h-2",
+          mode.radius,
+          `[&::-webkit-scrollbar-thumb]:${mode.radius}`
+        )}
+      >
         <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="border-b border-border hover:bg-transparent">
+              <TableRow
+                key={headerGroup.id}
+                className="border-border border-b hover:bg-transparent"
+              >
                 {headerGroup.headers.map((header) => {
                   if (!header || !header.column) return null;
                   return (
-                    <TableHead key={header.id} className="font-bold text-foreground">
+                    <TableHead key={header.id} className="text-foreground font-bold">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                        : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
                 })}
@@ -101,12 +105,7 @@ export function DataTable<TData, TValue>({
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   onClick={() => onRowClick?.(row.original)}
-                  className={`
-                    border-b border-foreground/10
-                    ${index % 2 === 0 ? "bg-card" : "bg-muted"}
-                    ${onRowClick ? "cursor-pointer hover:bg-muted/50" : ""}
-                    ${row.getIsSelected() ? "bg-primary/10" : ""}
-                  `}
+                  className={`border-foreground/10 border-b ${index % 2 === 0 ? "bg-card" : "bg-muted"} ${onRowClick ? "hover:bg-muted/50 cursor-pointer" : ""} ${row.getIsSelected() ? "bg-primary/10" : ""} `}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -119,11 +118,13 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
                   <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="font-mono text-xs text-muted-foreground">No results found.</p>
+                    <p className={cn("text-muted-foreground text-xs", mode.font)}>
+                      No results found.
+                    </p>
                     {searchKey && !!table.getColumn(searchKey)?.getFilterValue() && (
                       <button
                         onClick={() => table.getColumn(searchKey)?.setFilterValue("")}
-                        className="text-xs text-primary hover:underline"
+                        className="text-primary text-xs hover:underline"
                       >
                         Clear search
                       </button>

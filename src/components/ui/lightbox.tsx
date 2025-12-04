@@ -21,6 +21,7 @@ import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 export interface LightboxItem {
   id?: string;
@@ -159,13 +160,13 @@ export function Lightbox({
       aria-modal="true"
       aria-label="Lightbox"
       className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center bg-foreground/95 backdrop-blur-sm",
+        "bg-foreground/95 fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm",
         "animate-in fade-in duration-200",
         className
       )}
       onClick={handleBackdropClick}
       onKeyDown={(e) => {
-        if (e.key === 'Escape') {
+        if (e.key === "Escape") {
           onClose();
         }
       }}
@@ -174,7 +175,7 @@ export function Lightbox({
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 top-4 z-50 border border-border bg-card text-foreground hover:bg-muted"
+        className="border-border bg-card text-foreground hover:bg-muted absolute top-4 right-4 z-50 border"
         onClick={onClose}
         aria-label="Close lightbox"
       >
@@ -188,8 +189,8 @@ export function Lightbox({
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute left-4 top-1/2 z-50 -translate-y-1/2 border border-border bg-card text-foreground hover:bg-muted",
-              currentIndex === 0 && "opacity-50 cursor-not-allowed"
+              "border-border bg-card text-foreground hover:bg-muted absolute top-1/2 left-4 z-50 -translate-y-1/2 border",
+              currentIndex === 0 && "cursor-not-allowed opacity-50"
             )}
             onClick={handlePrevious}
             disabled={currentIndex === 0}
@@ -202,8 +203,8 @@ export function Lightbox({
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute right-4 top-1/2 z-50 -translate-y-1/2 border border-border bg-card text-foreground hover:bg-muted",
-              currentIndex === items.length - 1 && "opacity-50 cursor-not-allowed"
+              "border-border bg-card text-foreground hover:bg-muted absolute top-1/2 right-4 z-50 -translate-y-1/2 border",
+              currentIndex === items.length - 1 && "cursor-not-allowed opacity-50"
             )}
             onClick={handleNext}
             disabled={currentIndex === items.length - 1}
@@ -216,11 +217,11 @@ export function Lightbox({
 
       {/* Zoom controls */}
       {enableZoom && currentItem.type === "image" && (
-        <div className="absolute right-4 top-20 z-50 flex flex-col gap-2">
+        <div className="absolute top-20 right-4 z-50 flex flex-col gap-2">
           <Button
             variant="ghost"
             size="sm"
-            className="border border-border bg-card text-foreground hover:bg-muted"
+            className="border-border bg-card text-foreground hover:bg-muted border"
             onClick={handleZoomIn}
             disabled={zoomLevel >= 3}
             aria-label="Zoom in"
@@ -230,7 +231,7 @@ export function Lightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="border border-border bg-card text-foreground hover:bg-muted"
+            className="border-border bg-card text-foreground hover:bg-muted border"
             onClick={handleZoomOut}
             disabled={zoomLevel <= 0.5}
             aria-label="Zoom out"
@@ -242,7 +243,12 @@ export function Lightbox({
 
       {/* Image counter */}
       {hasMultipleItems && (
-        <div className="absolute left-1/2 top-4 z-50 -translate-x-1/2 rounded-none border border-border bg-card px-4 py-1 text-sm font-semibold text-foreground">
+        <div
+          className={cn(
+            "border-border bg-card text-foreground absolute top-4 left-1/2 z-50 -translate-x-1/2 border px-4 py-1 text-sm font-semibold",
+            mode.radius
+          )}
+        >
           {currentIndex + 1} / {items.length}
         </div>
       )}
@@ -281,23 +287,24 @@ export function Lightbox({
 
       {/* Caption */}
       {currentItem.caption && (
-        <div className="absolute bottom-0 left-0 right-0 z-50 bg-foreground/80 px-6 py-4 text-center backdrop-blur-sm">
-          <p className="text-sm text-foreground">{currentItem.caption}</p>
+        <div className="bg-foreground/80 absolute right-0 bottom-0 left-0 z-50 px-6 py-4 text-center backdrop-blur-sm">
+          <p className="text-foreground text-sm">{currentItem.caption}</p>
         </div>
       )}
 
       {/* Thumbnail strip */}
       {showThumbnails && hasMultipleItems && (
-        <div className="absolute bottom-0 left-0 right-0 z-50 flex justify-center gap-2 bg-foreground/80 p-4 backdrop-blur-sm">
+        <div className="bg-foreground/80 absolute right-0 bottom-0 left-0 z-50 flex justify-center gap-2 p-4 backdrop-blur-sm">
           <div className="flex gap-2 overflow-x-auto">
             {items.map((item, index) => (
               <button
                 key={index}
                 onClick={() => handleThumbnailClick(index)}
                 className={cn(
-                  "h-16 w-16 flex-shrink-0 overflow-hidden rounded-none border-2 transition-all",
+                  "h-16 w-16 flex-shrink-0 overflow-hidden border-2 transition-all",
+                  mode.radius,
                   index === currentIndex
-                    ? "border-foreground ring-2 ring-primary ring-offset-2 ring-offset-background"
+                    ? "border-foreground ring-primary ring-offset-background ring-2 ring-offset-2"
                     : "border-foreground/50 opacity-60 hover:opacity-100"
                 )}
                 aria-label={`View image ${index + 1}`}
@@ -310,11 +317,7 @@ export function Lightbox({
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <video
-                    src={item.src}
-                    className="h-full w-full object-cover"
-                    muted
-                  />
+                  <video src={item.src} className="h-full w-full object-cover" muted />
                 )}
               </button>
             ))}

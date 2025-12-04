@@ -12,6 +12,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 import { useEffect, useRef, useState, startTransition } from "react";
@@ -95,10 +96,13 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
             onFocus={() => setIsOpen(true)}
             placeholder={placeholder}
             className={cn(
-              "border-input bg-background flex h-8 w-full rounded-none border px-4 py-2 font-mono text-xs",
+              "border-input bg-background flex h-8 w-full border px-4 py-2 text-xs",
+              mode.radius,
+              mode.font,
               "ring-offset-background",
               "dark:border-border dark:bg-card/50 dark:text-foreground",
-              "file:bg-background/0 file:border-0 file:font-mono file:text-xs file:font-medium",
+              "file:bg-background/0 file:border-0 file:text-xs file:font-medium",
+              mode.font,
               "placeholder:text-muted-foreground dark:placeholder:text-muted-foreground",
               "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
               "dark:focus-visible:ring-primary dark:focus-visible:ring-offset-background",
@@ -142,7 +146,10 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
           <div
             id="autocomplete-list"
             role="listbox"
-            className="border-border bg-popover dark:border-border dark:bg-background absolute z-10 mt-2 max-h-60 w-full overflow-auto rounded-none border"
+            className={cn(
+              "border-border bg-popover dark:border-border dark:bg-background absolute z-10 mt-2 max-h-60 w-full overflow-auto border",
+              mode.radius
+            )}
           >
             {filtered.length > 0 ? (
               filtered.map((option, i) => {
@@ -171,7 +178,8 @@ export const Autocomplete = React.forwardRef<HTMLDivElement, AutocompleteProps>(
                     }}
                     tabIndex={0}
                     className={cn(
-                      "cursor-pointer px-4 py-4 font-mono text-xs focus-visible:outline-none",
+                      "cursor-pointer px-4 py-4 text-xs focus-visible:outline-none",
+                      mode.font,
                       "hover:bg-primary hover:text-primary-foreground",
                       "dark:text-muted-foreground dark:hover:bg-primary dark:hover:text-primary-foreground",
                       i === highlightedIndex && "bg-primary text-primary-foreground"

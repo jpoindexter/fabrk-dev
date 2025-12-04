@@ -16,6 +16,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
@@ -42,7 +43,18 @@ const sizeClasses = {
 };
 
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
-  ({ className, avatars = [], max = 4, size = "md", overlap = true, "aria-label": ariaLabel = "Avatar group", ...props }, ref) => {
+  (
+    {
+      className,
+      avatars = [],
+      max = 4,
+      size = "md",
+      overlap = true,
+      "aria-label": ariaLabel = "Avatar group",
+      ...props
+    },
+    ref
+  ) => {
     const displayAvatars = avatars.slice(0, max);
     const remainingCount = Math.max(0, avatars.length - max);
 
@@ -60,7 +72,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
             key={index}
             className={cn(
               sizeClasses[size],
-              overlap && "ring-2 ring-background",
+              overlap && "ring-background ring-2",
               "transition-transform hover:z-10 hover:scale-110"
             )}
           >
@@ -73,8 +85,9 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
           <div
             className={cn(
               sizeClasses[size],
-              "flex items-center justify-center rounded-none border bg-card text-xs font-medium",
-              overlap && "ring-2 ring-background"
+              "bg-card flex items-center justify-center border text-xs font-medium",
+              mode.radius,
+              overlap && "ring-background ring-2"
             )}
             aria-label={`${remainingCount} more ${remainingCount === 1 ? "person" : "people"}`}
             role="img"

@@ -4,6 +4,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 interface Plan {
   name: string;
@@ -20,8 +21,11 @@ export function PlanCards({ plans }: PlanCardsProps) {
   return (
     <>
       {/* Alert */}
-      <div className="border border-warning bg-warning/10 p-4 font-mono text-xs">
-        <span className="font-bold text-warning-foreground">[WARNING]:</span> <span className="text-foreground">Changing your plan will take effect at the next billing cycle</span>
+      <div className="border-warning bg-warning/10 border p-4 font-mono text-xs">
+        <span className="text-warning-foreground font-bold">[WARNING]:</span>{" "}
+        <span className="text-foreground">
+          Changing your plan will take effect at the next billing cycle
+        </span>
       </div>
 
       {/* Plan Cards */}
@@ -29,33 +33,26 @@ export function PlanCards({ plans }: PlanCardsProps) {
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`border bg-card flex flex-col ${plan.current ? "border-primary" : "border-border"}`}
+            className={`bg-card flex flex-col border ${plan.current ? "border-primary" : "border-border"}`}
           >
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">{plan.name.toLowerCase()}_plan.json</span>
-            </div>
-            <div className="p-4 flex flex-col flex-1">
-              <div className="flex items-center justify-between mb-4">
-                <div className="font-mono text-xs text-muted-foreground">[{plan.name}]:</div>
+            <TerminalCardHeader code="0x00" title={`${plan.name.toUpperCase()}_PLAN`} />
+            <div className="flex flex-1 flex-col p-4">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="text-muted-foreground font-mono text-xs">[{plan.name}]:</div>
                 {plan.current && (
-                  <span className="border border-primary/50 px-2 py-0.5 font-mono text-xs text-primary">
+                  <span className="border-primary/50 text-primary border px-2 py-0.5 font-mono text-xs">
                     CURRENT
                   </span>
                 )}
               </div>
 
-              <div className="text-3xl font-bold mb-4">
+              <div className="mb-4 text-3xl font-bold">
                 ${plan.price}
-                <span className="text-lg text-muted-foreground font-normal">/mo</span>
+                <span className="text-muted-foreground text-lg font-normal">/mo</span>
               </div>
 
-              <div className="border-t border-border pt-4 mb-4 flex-1">
-                <div className="font-mono text-xs text-muted-foreground mb-2">[FEATURES]:</div>
+              <div className="border-border mb-4 flex-1 border-t pt-4">
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
                 <div className="space-y-1">
                   {plan.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2 font-mono text-xs">
@@ -67,7 +64,7 @@ export function PlanCards({ plans }: PlanCardsProps) {
               </div>
 
               <Button
-                className="w-full font-mono text-xs rounded-none"
+                className="w-full rounded-none font-mono text-xs"
                 variant={plan.current ? "outline" : "default"}
                 disabled={plan.current}
               >
@@ -79,12 +76,12 @@ export function PlanCards({ plans }: PlanCardsProps) {
       </div>
 
       {/* Custom Plan */}
-      <div className="border border-border bg-card p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-2">[CUSTOM_PLAN]:</div>
+      <div className="border-border bg-card border p-4">
+        <div className="text-muted-foreground mb-2 font-mono text-xs">[CUSTOM_PLAN]:</div>
         <div className="flex items-center justify-between">
           <div>
             <div className="font-mono text-sm">Need a custom plan?</div>
-            <div className="font-mono text-xs text-muted-foreground">
+            <div className="text-muted-foreground font-mono text-xs">
               Contact our sales team for custom pricing and features
             </div>
           </div>

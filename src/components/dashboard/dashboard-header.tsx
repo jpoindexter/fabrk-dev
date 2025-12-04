@@ -9,17 +9,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Home,
-  Settings,
-  CreditCard,
-  Code,
-  LogOut,
-  User,
-  Shield,
-  Menu,
-  X,
-} from "lucide-react";
+import { Home, Settings, CreditCard, Code, LogOut, User, Shield, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/home/logo";
 import { Button } from "@/components/ui/button";
@@ -63,7 +53,7 @@ export function DashboardHeader() {
   const isAdmin = false; // No admin for showcase
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm">
+    <header className="border-border bg-background sticky top-0 z-50 w-full border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/dashboard" className="flex items-center gap-2">
@@ -80,7 +70,7 @@ export function DashboardHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary",
+                  "hover:text-primary flex items-center gap-2 text-sm font-medium transition-colors",
                   isActive ? "text-foreground" : "text-muted-foreground"
                 )}
               >
@@ -93,7 +83,7 @@ export function DashboardHeader() {
             <Link
               href="/admin"
               className={cn(
-                "flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary",
+                "hover:text-primary flex items-center gap-2 text-sm font-medium transition-colors",
                 pathname.startsWith("/admin") ? "text-foreground" : "text-muted-foreground"
               )}
             >
@@ -118,7 +108,7 @@ export function DashboardHeader() {
                 className="relative h-10 w-10 rounded-none"
                 aria-label="User menu"
               >
-                <Avatar className="h-10 w-10 border border-border">
+                <Avatar className="border-border h-10 w-10 border">
                   <AvatarImage src={mockUser.image || ""} alt={mockUser.name} />
                   <AvatarFallback className="bg-primary text-primary-foreground font-bold">
                     {userInitials}
@@ -128,16 +118,12 @@ export function DashboardHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="w-56 rounded-none border border-border shadow"
+              className="border-border w-56 rounded-none border shadow"
             >
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
-                    {mockUser.name}
-                  </p>
-                  <p className="text-xs leading-none text-muted-foreground">
-                    {mockUser.email}
-                  </p>
+                  <p className="text-sm leading-none font-medium">{mockUser.name}</p>
+                  <p className="text-muted-foreground text-xs leading-none">{mockUser.email}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -163,7 +149,7 @@ export function DashboardHeader() {
                 <>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href="/admin" className="cursor-pointer text-primary">
+                    <Link href="/admin" className="text-primary cursor-pointer">
                       <Shield className="mr-2 h-4 w-4" />
                       Admin
                     </Link>
@@ -172,7 +158,7 @@ export function DashboardHeader() {
               )}
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/" className="cursor-pointer text-muted-foreground">
+                <Link href="/" className="text-muted-foreground cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />
                   Back to Home
                 </Link>
@@ -191,13 +177,13 @@ export function DashboardHeader() {
               <div className="flex flex-col space-y-6 py-6">
                 {/* Mobile Org Switcher */}
                 <div>
-                  <p className="mb-2 text-sm font-medium text-muted-foreground">Organization</p>
+                  <p className="text-muted-foreground mb-2 text-sm font-medium">Organization</p>
                   <OrgSwitcher className="w-full" />
                 </div>
 
                 {/* Mobile Navigation */}
                 <nav className="flex flex-col space-y-2">
-                  <p className="text-sm font-medium text-muted-foreground">Navigation</p>
+                  <p className="text-muted-foreground text-sm font-medium">Navigation</p>
                   {navigationItems.map((item) => {
                     const Icon = item.icon;
                     const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -207,9 +193,9 @@ export function DashboardHeader() {
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "flex items-center gap-4 rounded-none border border-border px-4 py-4 text-sm font-medium transition-all",
+                          "border-border flex items-center gap-4 rounded-none border px-4 py-4 text-sm font-medium transition-all",
                           isActive
-                            ? "bg-primary text-primary-foreground shadow-sm"
+                            ? "bg-primary text-primary-foreground"
                             : "bg-card hover:bg-primary hover:text-primary-foreground"
                         )}
                       >
@@ -223,9 +209,9 @@ export function DashboardHeader() {
                       href="/admin"
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "flex items-center gap-4 rounded-none border border-border px-4 py-4 text-sm font-medium transition-all",
+                        "border-border flex items-center gap-4 rounded-none border px-4 py-4 text-sm font-medium transition-all",
                         pathname.startsWith("/admin")
-                          ? "bg-primary text-primary-foreground shadow-sm"
+                          ? "bg-primary text-primary-foreground"
                           : "bg-card hover:bg-primary hover:text-primary-foreground"
                       )}
                     >

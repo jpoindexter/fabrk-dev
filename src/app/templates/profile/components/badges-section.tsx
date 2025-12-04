@@ -5,6 +5,7 @@
 
 "use client";
 
+import { TerminalCardHeader } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 
 interface Badge {
@@ -20,19 +21,10 @@ interface BadgesSectionProps {
 
 export function BadgesSection({ badges }: BadgesSectionProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          badges.tsx
-        </span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="BADGES" />
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">
+        <div className="text-muted-foreground mb-4 font-mono text-xs">
           [ACHIEVEMENTS]: {badges.length} BADGES_EARNED
         </div>
         <div className="flex flex-wrap gap-4">
@@ -41,7 +33,7 @@ export function BadgesSection({ badges }: BadgesSectionProps) {
             return (
               <div
                 key={badge.id}
-                className="flex items-center gap-2 border border-border px-4 py-2 bg-muted/30"
+                className="border-border bg-muted/30 flex items-center gap-2 border px-4 py-2"
               >
                 <Icon className={`h-4 w-4 text-${badge.color}`} />
                 <span className="font-mono text-xs">{badge.name}</span>

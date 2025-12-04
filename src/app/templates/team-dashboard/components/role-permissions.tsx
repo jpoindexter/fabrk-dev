@@ -3,6 +3,7 @@
  * Role Permissions - Display role permissions reference
  */
 
+import { TerminalCardHeader } from "@/components/ui/card";
 import { Users, Crown, Shield, Eye, type LucideIcon } from "lucide-react";
 
 const roleIcons: Record<string, LucideIcon> = {
@@ -33,27 +34,20 @@ const rolePermissions = [
 
 export function RolePermissions() {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">permissions.config</span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="PERMISSIONS" />
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">[ROLE_PERMISSIONS]:</div>
+        <div className="text-muted-foreground mb-4 font-mono text-xs">[ROLE_PERMISSIONS]:</div>
         <div className="space-y-4 font-mono text-xs">
           {rolePermissions.map((item) => {
             const RoleIcon = roleIcons[item.role];
             return (
               <div key={item.role}>
-                <div className="flex items-center gap-2 mb-1">
-                  <RoleIcon className="h-3 w-3 text-primary" />
+                <div className="mb-1 flex items-center gap-2">
+                  <RoleIcon className="text-primary h-3 w-3" />
                   <span className="font-semibold">{item.role.toUpperCase()}</span>
                 </div>
-                <div className="ml-4 space-y-0.5 text-muted-foreground">
+                <div className="text-muted-foreground ml-4 space-y-0.5">
                   {item.permissions.map((perm, idx) => (
                     <div key={idx}>&gt; {perm}</div>
                   ))}

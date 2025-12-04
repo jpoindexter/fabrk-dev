@@ -130,8 +130,8 @@ export function TeamActivityFeed({
     <Card className={cn("overflow-hidden", className)}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-black flex items-center gap-2">
-            <Activity className="h-4 w-4 text-primary" />
+          <CardTitle className="flex items-center gap-2 text-base font-black">
+            <Activity className="text-primary h-4 w-4" />
             Team Activity
           </CardTitle>
           <Badge variant="outline" className="font-medium">
@@ -144,31 +144,31 @@ export function TeamActivityFeed({
         <ScrollArea className="h-full" style={{ maxHeight }}>
           <div className="space-y-0 p-6 pt-0">
             {activities.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
-                <Activity className="h-8 w-8 mb-2" />
+              <div className="text-muted-foreground flex flex-col items-center justify-center py-12">
+                <Activity className="mb-2 h-8 w-8" />
                 <p className="text-sm">No recent activity</p>
               </div>
             ) : (
               <div className="relative space-y-4">
                 {/* Timeline line */}
-                <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-border" />
+                <div className="bg-border absolute top-0 bottom-0 left-[19px] w-0.5" />
 
                 {activities.map((activity, _index) => {
                   const config = activityConfig[activity.type];
                   const Icon = config.icon;
 
                   return (
-                    <div key={activity.id} className="relative flex gap-4 group">
+                    <div key={activity.id} className="group relative flex gap-4">
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
-                        <Avatar className="h-10 w-10 border border-border shadow-sm">
+                        <Avatar className="border-border h-10 w-10 border">
                           <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
                             {getInitials(activity.user.name)}
                           </AvatarFallback>
                         </Avatar>
                         <div
                           className={cn(
-                            "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-none border border-border",
+                            "border-border absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center rounded-none border",
                             config.bgColor
                           )}
                         >
@@ -177,14 +177,14 @@ export function TeamActivityFeed({
                       </div>
 
                       {/* Activity content */}
-                      <div className="flex-1 min-w-0 space-y-1 pt-1">
+                      <div className="min-w-0 flex-1 space-y-1 pt-1">
                         <div className="flex items-start justify-between gap-2">
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm text-foreground">
+                          <div className="min-w-0 flex-1">
+                            <p className="text-foreground text-sm">
                               <span className="font-bold">{activity.user.name}</span>{" "}
                               <span className="text-muted-foreground">{activity.action}</span>
                               {activity.target && (
-                                <span className="font-medium text-foreground">
+                                <span className="text-foreground font-medium">
                                   {" "}
                                   {activity.target}
                                 </span>
@@ -192,7 +192,7 @@ export function TeamActivityFeed({
                             </p>
                           </div>
                           {showTimestamp && (
-                            <time className="text-xs text-muted-foreground flex-shrink-0">
+                            <time className="text-muted-foreground flex-shrink-0 text-xs">
                               {formatTimestamp(activity.timestamp)}
                             </time>
                           )}
@@ -200,7 +200,7 @@ export function TeamActivityFeed({
 
                         {/* Metadata */}
                         {activity.metadata && Object.keys(activity.metadata).length > 0 && (
-                          <div className="flex flex-wrap gap-2 mt-2">
+                          <div className="mt-2 flex flex-wrap gap-2">
                             {Object.entries(activity.metadata).map(([key, value]) => (
                               <Badge key={key} variant="secondary" className="text-xs font-normal">
                                 {key}: {String(value)}

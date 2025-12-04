@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 interface FAQ {
   question: string;
@@ -22,38 +23,25 @@ interface FAQSectionProps {
 
 export function FAQSection({ faqs }: FAQSectionProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">faq.md</span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="FAQ" />
 
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">
+        <div className="text-muted-foreground mb-4 font-mono text-xs">
           [FREQUENTLY_ASKED_QUESTIONS]:
         </div>
 
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((faq, idx) => (
-            <AccordionItem
-              key={idx}
-              value={`faq-${idx}`}
-              className="border border-border"
-            >
-              <AccordionTrigger className="px-4 py-4 hover:bg-muted/30 hover:no-underline font-normal [&>svg]:text-muted-foreground">
+            <AccordionItem key={idx} value={`faq-${idx}`} className="border-border border">
+              <AccordionTrigger className="hover:bg-muted/30 [&>svg]:text-muted-foreground px-4 py-4 font-normal hover:no-underline">
                 <div className="flex items-center gap-2">
-                  <HelpCircle className="h-4 w-4 text-primary" />
+                  <HelpCircle className="text-primary h-4 w-4" />
                   <span className="font-mono text-xs">{faq.question}</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-4 pb-4 pt-0">
-                <p className="font-mono text-xs text-muted-foreground pl-6">
-                  {faq.answer}
-                </p>
+              <AccordionContent className="px-4 pt-0 pb-4">
+                <p className="text-muted-foreground pl-6 font-mono text-xs">{faq.answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

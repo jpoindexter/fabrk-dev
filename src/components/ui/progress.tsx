@@ -3,6 +3,7 @@
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 function Progress({
   className,
@@ -15,14 +16,15 @@ function Progress({
     <ProgressPrimitive.Root
       data-slot="progress"
       className={cn(
-        "relative h-5 w-full overflow-hidden rounded-none border bg-background",
-        className,
+        "bg-background relative h-5 w-full overflow-hidden border",
+        mode.radius,
+        className
       )}
       {...props}
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="h-full w-full flex-1 bg-primary transition-all"
+        className="bg-primary h-full w-full flex-1 transition-all"
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

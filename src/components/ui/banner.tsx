@@ -3,6 +3,7 @@
 import * as React from "react";
 import { X, AlertCircle, Info, CheckCircle, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 import { Button } from "@/components/ui/button";
 
 export type BannerVariant = "info" | "success" | "warning" | "error";
@@ -44,7 +45,8 @@ export function Banner({
   return (
     <div
       className={cn(
-        "flex items-start gap-4 rounded-none border-l-4 p-4",
+        "flex items-start gap-4 border-l-4 p-4",
+        mode.radius,
         variantStyles[variant],
         className
       )}
@@ -52,23 +54,18 @@ export function Banner({
     >
       <div className="flex-shrink-0">{variantIcons[variant]}</div>
       <div className="flex-1">
-        {title && <p className="font-semibold mb-1">{title}</p>}
-        <div className="font-mono text-xs">{children}</div>
+        {title && <p className="mb-1 font-semibold">{title}</p>}
+        <div className={cn("text-xs", mode.font)}>{children}</div>
       </div>
       {action && (
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={action.onClick}
-          className="flex-shrink-0"
-        >
+        <Button variant="outline" size="sm" onClick={action.onClick} className="flex-shrink-0">
           {action.label}
         </Button>
       )}
       {onDismiss && (
         <button
           onClick={onDismiss}
-          className="flex-shrink-0 rounded-none p-1 hover:bg-muted transition-colors"
+          className={cn("hover:bg-muted flex-shrink-0 p-1 transition-colors", mode.radius)}
           aria-label="Dismiss"
         >
           <X className="h-4 w-4" />

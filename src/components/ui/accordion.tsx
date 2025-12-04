@@ -4,6 +4,7 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { mode } from "@/lib/design-system";
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -29,7 +30,8 @@ const AccordionTrigger = React.forwardRef<
       ref={ref}
       data-slot="accordion-trigger"
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-mono text-xs font-semibold transition-colors hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 text-xs font-semibold transition-colors hover:underline [&[data-state=open]>svg]:rotate-180",
+        mode.font,
         className
       )}
       suppressHydrationWarning
@@ -49,11 +51,14 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     data-slot="accordion-content"
-    className="overflow-hidden font-mono text-xs transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className={cn(
+      "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-xs transition-all",
+      mode.font
+    )}
     suppressHydrationWarning
     {...props}
   >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+    <div className={cn("pt-0 pb-4", className)}>{children}</div>
   </AccordionPrimitive.Content>
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;

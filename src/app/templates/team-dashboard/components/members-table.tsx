@@ -6,6 +6,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { TerminalCardHeader } from "@/components/ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,15 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Users,
-  Crown,
-  Shield,
-  Eye,
-  MoreHorizontal,
-  Trash2,
-  type LucideIcon,
-} from "lucide-react";
+import { Users, Crown, Shield, Eye, MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
 
 interface Member {
   id: string;
@@ -71,59 +64,60 @@ export function MembersTable({ members }: MembersTableProps) {
   };
 
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">team_members.db</span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="TEAM_MEMBERS" />
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">
+        <div className="text-muted-foreground mb-4 font-mono text-xs">
           [TEAM_MEMBERS]: COUNT={members.length}
         </div>
-        <div className="border border-border">
+        <div className="border-border border">
           {/* Table Header */}
-          <div className="grid grid-cols-4 border-b border-border bg-muted/30 px-4 py-2 font-mono text-xs">
+          <div className="border-border bg-muted/30 grid grid-cols-4 border-b px-4 py-2 font-mono text-xs">
             <span className="text-muted-foreground">[MEMBER]</span>
             <span className="text-muted-foreground">[ROLE]</span>
             <span className="text-muted-foreground">[LAST_ACTIVE]</span>
             <span className="text-muted-foreground">[ACTIONS]</span>
           </div>
           {/* Table Body */}
-          <div className="divide-y divide-border">
+          <div className="divide-border divide-y">
             {members.map((member) => {
               const RoleIcon = roleIcons[member.role];
               return (
                 <div key={member.id} className="grid grid-cols-4 items-center px-4 py-4">
                   <div className="flex items-center gap-4">
-                    <div className="flex h-8 w-8 items-center justify-center border border-border bg-muted font-mono text-xs">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
+                    <div className="border-border bg-muted flex h-8 w-8 items-center justify-center border font-mono text-xs">
+                      {member.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </div>
                     <div>
                       <p className="font-mono text-xs font-semibold">{member.name}</p>
-                      <p className="font-mono text-xs text-muted-foreground">{member.email}</p>
+                      <p className="text-muted-foreground font-mono text-xs">{member.email}</p>
                     </div>
                   </div>
                   <div>
-                    <span className="inline-flex items-center gap-1 border border-border px-2 py-0.5 font-mono text-xs">
+                    <span className="border-border inline-flex items-center gap-1 border px-2 py-0.5 font-mono text-xs">
                       <RoleIcon className="h-3 w-3" />
                       {member.role.toUpperCase()}
                     </span>
                   </div>
-                  <div className="font-mono text-xs text-muted-foreground">
-                    {member.lastActive}
-                  </div>
+                  <div className="text-muted-foreground font-mono text-xs">{member.lastActive}</div>
                   <div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="rounded-none font-mono text-xs"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="rounded-none border border-border font-mono text-xs">
+                      <DropdownMenuContent
+                        align="end"
+                        className="border-border rounded-none border font-mono text-xs"
+                      >
                         <DropdownMenuLabel>[ACTIONS]:</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         {member.role !== "owner" && (
@@ -153,12 +147,17 @@ export function MembersTable({ members }: MembersTableProps) {
                                 </DropdownMenuItem>
                               </AlertDialogTrigger>
                               <AlertDialogContent>
-                                <AlertDialogTitle className="font-mono">[CONFIRM_REMOVAL]</AlertDialogTitle>
+                                <AlertDialogTitle className="font-mono">
+                                  [CONFIRM_REMOVAL]
+                                </AlertDialogTitle>
                                 <AlertDialogDescription className="font-mono text-xs">
-                                  WARNING: This action will remove the member from the team. They will lose all access.
+                                  WARNING: This action will remove the member from the team. They
+                                  will lose all access.
                                 </AlertDialogDescription>
-                                <div className="flex gap-4 justify-end">
-                                  <AlertDialogCancel className="font-mono text-xs">&gt; CANCEL</AlertDialogCancel>
+                                <div className="flex justify-end gap-4">
+                                  <AlertDialogCancel className="font-mono text-xs">
+                                    &gt; CANCEL
+                                  </AlertDialogCancel>
                                   <AlertDialogAction
                                     onClick={handleRemoveMember}
                                     className="bg-destructive text-destructive-foreground hover:bg-destructive/90 font-mono text-xs"
@@ -171,9 +170,7 @@ export function MembersTable({ members }: MembersTableProps) {
                           </>
                         )}
                         {member.role === "owner" && (
-                          <DropdownMenuItem disabled>
-                            [LOCKED]: OWNER_ROLE
-                          </DropdownMenuItem>
+                          <DropdownMenuItem disabled>[LOCKED]: OWNER_ROLE</DropdownMenuItem>
                         )}
                       </DropdownMenuContent>
                     </DropdownMenu>
