@@ -6,6 +6,7 @@
 "use client";
 
 import Link from "next/link";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function MarketingPage() {
@@ -97,12 +98,8 @@ export default function MarketingPage() {
         </div>
 
         {/* Template Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x00] MARKETING_TEMPLATES ]
-            </span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="MARKETING_FEATURES" />
           <div className="p-6">
             <div className="text-muted-foreground mb-4 font-mono text-xs">
               [MARKETING_TEMPLATES]:
@@ -131,7 +128,7 @@ export default function MarketingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </TerminalCard>
       </main>
     </div>
   );

@@ -171,13 +171,10 @@ export default function ChartLibraryTemplate() {
         {/* Chart Tabs - Terminal Style */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <div className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-none" />
-                <div className="bg-warning/50 size-2 rounded-none" />
-                <div className="bg-success/50 size-2 rounded-none" />
-              </div>
-              <span className="text-muted-foreground font-mono text-xs">charts.tsx</span>
+            <div className="border-border border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
+                [ [0x00] CHART_NAVIGATION ]
+              </span>
             </div>
 
             {/* Tab Navigation */}
@@ -408,13 +405,10 @@ export default function ChartLibraryTemplate() {
 
         {/* Implementation Note */}
         <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
+          <div className="border-border border-b px-4 py-2">
+            <span className="text-muted-foreground font-mono text-xs">
+              [ [0x01] TEMPLATE_FEATURES ]
+            </span>
           </div>
           <div className="p-4">
             <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>

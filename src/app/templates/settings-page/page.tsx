@@ -29,31 +29,27 @@ export default function SettingsPageTemplate() {
   return (
     <div>
       {/* Page Content */}
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <SettingsHeader />
 
         {/* Tabs Container */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           {/* Tab Navigation - Terminal Style */}
-          <div className="border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-              <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
-              </div>
-              <span className="font-mono text-xs text-muted-foreground">settings_nav.tsx</span>
+          <div className="border-border bg-card border">
+            <div className="border-border border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
+                [ [0x00] SETTINGS_NAVIGATION ]
+              </span>
             </div>
-            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {TAB_ITEMS.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className="flex items-center gap-2 px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs"
                 >
-                  <tab.icon className="h-3 w-3" />
-                  [{tab.label}]
+                  <tab.icon className="h-3 w-3" />[{tab.label}]
                 </TabsTrigger>
               ))}
             </TabsList>

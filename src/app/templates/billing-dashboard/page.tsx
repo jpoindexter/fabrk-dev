@@ -185,13 +185,10 @@ export default function BillingDashboardTemplate() {
         {/* Terminal Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <div className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-              <div className="flex gap-2">
-                <div className="bg-destructive/50 size-2 rounded-none" />
-                <div className="bg-warning/50 size-2 rounded-none" />
-                <div className="bg-success/50 size-2 rounded-none" />
-              </div>
-              <span className="text-muted-foreground font-mono text-xs">billing_nav.tsx</span>
+            <div className="border-border border-b px-4 py-2">
+              <span className="text-muted-foreground font-mono text-xs">
+                [ [0x00] BILLING_NAVIGATION ]
+              </span>
             </div>
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {(["overview", "plans", "history"] as const).map((tab) => (

@@ -6,6 +6,7 @@
 "use client";
 
 import Link from "next/link";
+import { TerminalCard, TerminalCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
 
 export default function AdminPanelsPage() {
@@ -99,15 +100,8 @@ export default function AdminPanelsPage() {
         </div>
 
         {/* Template Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">features.md</span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="ADMIN_PANEL_FEATURES" />
           <div className="p-6">
             <div className="text-muted-foreground mb-4 font-mono text-xs">
               [ADMIN_PANEL_TEMPLATES]:
@@ -136,7 +130,7 @@ export default function AdminPanelsPage() {
               </div>
             </div>
           </div>
-        </div>
+        </TerminalCard>
       </main>
     </div>
   );
