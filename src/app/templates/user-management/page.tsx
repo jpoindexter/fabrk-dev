@@ -20,6 +20,7 @@ import {
 import { UserPlus, Download } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
 import { columns } from "./components/user-table-columns";
 import { mockUsers } from "./components/types";
 import { StatsCards } from "./components/stats-cards";
@@ -82,17 +83,11 @@ export default function UserManagementTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: USER_MANAGEMENT
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">User Management</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Manage users, roles, and permissions with TanStack Table
-            </p>
-          </div>
+          <TemplatePageHeader
+            badge="USER_MANAGEMENT"
+            title="User Management"
+            description="Manage users, roles, and permissions with TanStack Table"
+          />
           <Button className="rounded-none font-mono text-xs">
             <UserPlus className="mr-2 h-4 w-4" />
             &gt; ADD_USER
@@ -103,12 +98,8 @@ export default function UserManagementTemplate() {
         <StatsCards users={mockUsers} />
 
         {/* Main Table Card - Terminal Style */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x00] USERS_DATABASE ]
-            </span>
-          </div>
+        <TerminalCard>
+          <TerminalCardHeader code="0x00" title="USERS_DATABASE" />
 
           <div className="p-4">
             <div className="mb-4 flex items-center justify-between">
@@ -136,7 +127,7 @@ export default function UserManagementTemplate() {
             {/* Pagination */}
             <PaginationControls table={table} />
           </div>
-        </div>
+        </TerminalCard>
 
         {/* Implementation Note */}
         <FeaturesNote />

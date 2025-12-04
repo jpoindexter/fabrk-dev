@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Shield, Lock, Activity, FileText, Settings } from "lucide-react";
+import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
 import { SecurityScore } from "./components/security-score";
 import { SecurityTab } from "./components/security-tab";
 import { PrivacyTab } from "./components/privacy-tab";
@@ -132,17 +133,11 @@ export default function SecurityPrivacyTemplate() {
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="space-y-2">
-            <div className="border-border inline-block border px-4 py-1">
-              <span className="text-muted-foreground font-mono text-xs">
-                [TEMPLATE]: SECURITY_PRIVACY
-              </span>
-            </div>
-            <h1 className="font-mono text-4xl font-semibold tracking-tight">Security & Privacy</h1>
-            <p className="text-muted-foreground font-mono text-sm">
-              Manage your account security, privacy settings, and data controls
-            </p>
-          </div>
+          <TemplatePageHeader
+            badge="SECURITY_PRIVACY"
+            title="Security & Privacy"
+            description="Manage your account security, privacy settings, and data controls"
+          />
           <Button className="rounded-none font-mono text-xs">
             <Settings className="mr-2 h-4 w-4" />
             &gt; VIEW_AUDIT_LOG
@@ -154,12 +149,8 @@ export default function SecurityPrivacyTemplate() {
 
         {/* Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] SECURITY_NAVIGATION ]
-              </span>
-            </div>
+          <TerminalCard>
+            <TerminalCardHeader code="0x00" title="SECURITY_NAVIGATION" />
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {[
                 { id: "security", label: "SECURITY", icon: Shield },
@@ -176,7 +167,7 @@ export default function SecurityPrivacyTemplate() {
                 </TabsTrigger>
               ))}
             </TabsList>
-          </div>
+          </TerminalCard>
 
           {/* Tab Contents */}
           <TabsContent value="security" className="mt-6">

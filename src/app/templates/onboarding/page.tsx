@@ -8,7 +8,7 @@
 
 import { useState } from "react";
 import { User, Building2, Settings, CheckCircle2, Sparkles } from "lucide-react";
-import { TerminalCardHeader } from "@/components/ui/card";
+import { TerminalCard, TerminalCardHeader, TemplatePageHeader } from "@/components/ui/card";
 import { ProgressSection } from "./components/progress-section";
 import { StepWelcome } from "./components/step-welcome";
 import { StepProfile } from "./components/step-profile";
@@ -65,20 +65,14 @@ export default function OnboardingTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: ONBOARDING_FLOW
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Onboarding Flow</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Multi-step wizard for new user onboarding with progress tracking
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="ONBOARDING_FLOW"
+          title="Onboarding Flow"
+          description="Multi-step wizard for new user onboarding with progress tracking"
+        />
 
         {/* Main Onboarding Card */}
-        <div className="border-border bg-card mx-auto max-w-2xl border">
+        <TerminalCard className="mx-auto max-w-2xl">
           <TerminalCardHeader code="0x00" title="ONBOARDING" />
 
           <ProgressSection currentStep={currentStep} steps={steps} progress={progress} />
@@ -129,7 +123,7 @@ export default function OnboardingTemplate() {
           {currentStep < 5 && (
             <NavigationControls currentStep={currentStep} onBack={handleBack} onNext={handleNext} />
           )}
-        </div>
+        </TerminalCard>
 
         <FeaturesCard />
       </div>

@@ -13,6 +13,7 @@ import { SideSheet } from "./components/side-sheet";
 import { PopoverExample } from "./components/popover-example";
 import { PatternComparison } from "./components/pattern-comparison";
 import { FeaturesCard } from "./components/features-card";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 export default function ModalsTemplate() {
   const [formDialogOpen, setFormDialogOpen] = useState(false);
@@ -22,17 +23,11 @@ export default function ModalsTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: MODAL_PATTERNS
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Modal Patterns</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Dialog, alert, sheet, and popover patterns for common interactions
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="MODAL_PATTERNS"
+          title="Modal Patterns"
+          description="Dialog, alert, sheet, and popover patterns for common interactions"
+        />
 
         {/* Modal Types Grid */}
         <div className="grid gap-6 md:grid-cols-2">

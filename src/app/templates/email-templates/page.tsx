@@ -13,6 +13,7 @@ import { EmailStats } from "./components/email-stats";
 import { EmailTabNavigation } from "./components/email-tab-navigation";
 import { EmailPreview } from "./components/email-preview";
 import { EmailFeatures } from "./components/email-features";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 export default function EmailTemplatesShowcase() {
   const [activeTab, setActiveTab] = useState(emailTemplates[0].id);
@@ -47,17 +48,11 @@ export default function EmailTemplatesShowcase() {
       {/* Page Content */}
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: EMAIL_TEMPLATES
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Email Templates</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            5 production-ready transactional email templates with HTML and text versions
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="EMAIL_TEMPLATES"
+          title="Email Templates"
+          description="5 production-ready transactional email templates with HTML and text versions"
+        />
 
         {/* Stats - Terminal Style */}
         <EmailStats />

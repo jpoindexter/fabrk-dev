@@ -11,6 +11,7 @@ import { ProfileHeader } from "./components/profile-header";
 import { BadgesSection } from "./components/badges-section";
 import { ProfileTabs } from "./components/profile-tabs";
 import { FeaturesCard } from "./components/features-card";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 const mockUser = {
   name: "Alex Chen",
@@ -107,17 +108,11 @@ export default function ProfilePageTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: PROFILE_PAGE
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Profile Page</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            User profile with stats, activity feed, projects, and badges
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="PROFILE_PAGE"
+          title="Profile Page"
+          description="User profile with stats, activity feed, projects, and badges"
+        />
 
         {/* Profile Header */}
         <ProfileHeader user={mockUser} />

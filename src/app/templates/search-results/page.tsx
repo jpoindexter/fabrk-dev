@@ -13,6 +13,7 @@ import { ResultsHeader } from "./components/results-header";
 import { ResultsGrid } from "./components/results-grid";
 import { Pagination } from "./components/pagination";
 import { FeaturesCard } from "./components/features-card";
+import { TemplatePageHeader } from "@/components/ui/card";
 
 const mockResults = [
   {
@@ -110,17 +111,11 @@ export default function SearchResultsTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: SEARCH_RESULTS
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">Search Results</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Search interface with filters, sorting, and pagination
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="SEARCH_RESULTS"
+          title="Search Results"
+          description="Search interface with filters, sorting, and pagination"
+        />
 
         {/* Search Bar */}
         <SearchBar

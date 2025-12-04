@@ -12,6 +12,12 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
+  TerminalCard,
+  TerminalCardHeader,
+  TemplatePageHeader,
+  TerminalFeaturesCard,
+} from "@/components/ui/card";
+import {
   ArrowRight,
   Play,
   Sparkles,
@@ -48,28 +54,16 @@ export default function LandingVariationsTemplate() {
     <div>
       <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="border-border inline-block border px-4 py-1">
-            <span className="text-muted-foreground font-mono text-xs">
-              [TEMPLATE]: LANDING_VARIATIONS
-            </span>
-          </div>
-          <h1 className="font-mono text-4xl font-semibold tracking-tight">
-            Landing Page Variations
-          </h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            Three hero section variations for different use cases
-          </p>
-        </div>
+        <TemplatePageHeader
+          badge="LANDING_VARIATIONS"
+          title="Landing Page Variations"
+          description="Three hero section variations for different use cases"
+        />
 
         {/* Variation Selector */}
         <Tabs value={activeVariation} onValueChange={setActiveVariation}>
-          <div className="border-border bg-card border">
-            <div className="border-border border-b px-4 py-2">
-              <span className="text-muted-foreground font-mono text-xs">
-                [ [0x00] VARIATION_SELECTOR ]
-              </span>
-            </div>
+          <TerminalCard>
+            <TerminalCardHeader code="0x00" title="VARIATION_SELECTOR" />
             <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {heroVariations.map((variation) => (
                 <TabsTrigger
@@ -84,17 +78,13 @@ export default function LandingVariationsTemplate() {
             <div className="text-muted-foreground border-border border-t p-4 font-mono text-xs">
               [SELECTED]: {heroVariations.find((v) => v.id === activeVariation)?.description}
             </div>
-          </div>
+          </TerminalCard>
 
           {/* Hero Previews */}
           {/* Centered Hero */}
           <TabsContent value="centered" className="mt-6">
-            <div className="border-border bg-card border">
-              <div className="border-border border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x01] HERO_CENTERED ]
-                </span>
-              </div>
+            <TerminalCard>
+              <TerminalCardHeader code="0x01" title="HERO_CENTERED" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-3xl space-y-6 text-center">
                   <Badge variant="secondary" className="rounded-none font-mono text-xs">
@@ -140,17 +130,13 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </div>
+            </TerminalCard>
           </TabsContent>
 
           {/* Split Hero */}
           <TabsContent value="split" className="mt-6">
-            <div className="border-border bg-card border">
-              <div className="border-border border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x02] HERO_SPLIT ]
-                </span>
-              </div>
+            <TerminalCard>
+              <TerminalCardHeader code="0x02" title="HERO_SPLIT" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="grid items-center gap-12 md:grid-cols-2">
                   <div className="space-y-6">
@@ -200,17 +186,13 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </div>
+            </TerminalCard>
           </TabsContent>
 
           {/* Minimal Hero */}
           <TabsContent value="minimal" className="mt-6">
-            <div className="border-border bg-card border">
-              <div className="border-border border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x03] HERO_MINIMAL ]
-                </span>
-              </div>
+            <TerminalCard>
+              <TerminalCardHeader code="0x03" title="HERO_MINIMAL" />
               <div className="from-muted/30 bg-gradient-to-b to-transparent p-8">
                 <div className="mx-auto max-w-2xl space-y-8">
                   <div className="space-y-4 text-center">
@@ -253,30 +235,24 @@ export default function LandingVariationsTemplate() {
                   </div>
                 </div>
               </div>
-            </div>
+            </TerminalCard>
           </TabsContent>
         </Tabs>
 
         {/* Quick Reference Grid */}
         <div className="grid gap-4 md:grid-cols-3">
           {heroVariations.map((variation, idx) => (
-            <div
+            <TerminalCard
               key={variation.id}
               role="button"
               tabIndex={0}
-              className={`bg-card cursor-pointer border transition-colors ${
-                activeVariation === variation.id
-                  ? "border-primary"
-                  : "border-border hover:border-primary/50"
+              className={`cursor-pointer transition-colors ${
+                activeVariation === variation.id ? "border-primary" : "hover:border-primary/50"
               }`}
               onClick={() => setActiveVariation(variation.id)}
               onKeyDown={(e) => e.key === "Enter" && setActiveVariation(variation.id)}
             >
-              <div className="border-border border-b px-4 py-2">
-                <span className="text-muted-foreground font-mono text-xs">
-                  [ [0x0{idx + 4}] {variation.id.toUpperCase()} ]
-                </span>
-              </div>
+              <TerminalCardHeader code={`0x0${idx + 4}`} title={variation.id.toUpperCase()} />
               <div className="p-4">
                 <h3 className="mb-1 font-mono font-semibold">{variation.name}</h3>
                 <p className="text-muted-foreground font-mono text-xs">{variation.description}</p>
@@ -286,45 +262,23 @@ export default function LandingVariationsTemplate() {
                   {variation.id === "minimal" && "Waitlists, early stage"}
                 </div>
               </div>
-            </div>
+            </TerminalCard>
           ))}
         </div>
 
         {/* Features Card */}
-        <div className="border-border bg-card border">
-          <div className="border-border border-b px-4 py-2">
-            <span className="text-muted-foreground font-mono text-xs">
-              [ [0x07] TEMPLATE_FEATURES ]
-            </span>
-          </div>
-          <div className="p-4">
-            <div className="space-y-1.5 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> 3 hero variations (centered, split,
-                minimal)
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Interactive variation switcher
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Trust badges and social proof
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Email capture form
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Feature highlights
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Responsive layouts
-              </div>
-            </div>
-            <div className="text-muted-foreground mt-4 font-mono text-xs">
-              [NOTE]: Mix and match elements from each variation to create your perfect landing
-              page.
-            </div>
-          </div>
-        </div>
+        <TerminalFeaturesCard
+          code="0x07"
+          features={[
+            "3 hero variations (centered, split, minimal)",
+            "Interactive variation switcher",
+            "Trust badges and social proof",
+            "Email capture form",
+            "Feature highlights",
+            "Responsive layouts",
+          ]}
+          note="Mix and match elements from each variation to create your perfect landing page."
+        />
       </div>
     </div>
   );
