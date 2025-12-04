@@ -188,21 +188,38 @@ export default function BlogTemplate() {
         )}
 
         {/* Category Filters */}
-        <div className="flex flex-wrap gap-2">
-          <span className="text-muted-foreground py-2 font-mono text-xs">[FILTER]:</span>
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`border-border flex items-center gap-2 border px-3 py-1.5 font-mono text-xs transition-colors ${
-                activeCategory === category.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"
-              }`}
-            >
-              {category.name} ({category.count})
-            </button>
-          ))}
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center justify-between border-b px-4 py-2">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-2">
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
+              </div>
+              <span className="text-muted-foreground font-mono text-xs">filter.tsx</span>
+            </div>
+            <span className="text-muted-foreground font-mono text-xs">
+              [{filteredPosts.length} POSTS]
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 p-4">
+            <span className="text-muted-foreground font-mono text-xs">[CATEGORY]:</span>
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`border px-3 py-1.5 font-mono text-xs transition-colors ${
+                  activeCategory === category.id
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-muted/30 text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                }`}
+              >
+                {activeCategory === category.id && <span className="mr-1">&gt;</span>}
+                {category.name}
+                <span className="text-muted-foreground ml-1 opacity-60">({category.count})</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Blog Grid */}
