@@ -44,6 +44,8 @@ const allowPatterns = [
   /email-.*\.ts$/,
   // Intentional hex colors: Profile template with placeholder demo ID
   /src\/app\/templates\/profile\/page\.tsx$/,
+  // Intentional hex colors: Component showcase uses ColorPicker which requires hex values
+  /src\/app\/component-showcase\/page\.tsx$/,
 ];
 
 const hexPattern = /#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?![0-9a-fA-F])(?=[$\s'"),.;:}\]>/]|$)/g;
