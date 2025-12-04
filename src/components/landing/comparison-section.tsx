@@ -109,13 +109,8 @@ export function ComparisonSection() {
         >
           {/* Table Header */}
           <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2.5 rounded-none" />
-              <div className="bg-warning/50 size-2.5 rounded-none" />
-              <div className="bg-success/50 size-2.5 rounded-none" />
-            </div>
             <span className="text-muted-foreground font-mono text-xs">
-              [0x51] comparison_table.exe │ PID:4096
+              [ [0x51] comparison_table.exe │ PID:4096 ]
             </span>
           </div>
 

@@ -1339,33 +1339,14 @@ body:has(.terminal-preview) [data-slot="alert-dialog-content"] textarea {
    ============================================ */
 
 @layer utilities {
-  /* Terminal stoplight dots - macOS window controls
-   * Toggle this single class between rounded-none and rounded-full
-   * to control all stoplights across the entire codebase
+  /* Terminal window header - simple bracket style
+   * Pattern: [ title ]
    */
-  .terminal-dot {
-    @apply size-2 rounded-none;
-  }
-
-  /* Stoplight color variants - inline the base styles to avoid self-reference */
-  .terminal-dot-close {
-    @apply bg-destructive/50 size-2 rounded-none;
-  }
-
-  .terminal-dot-minimize {
-    @apply bg-warning/50 size-2 rounded-none;
-  }
-
-  .terminal-dot-maximize {
-    @apply bg-success/50 size-2 rounded-none;
-  }
-
-  /* Terminal window header with stoplights */
   .terminal-header {
     @apply border-border flex items-center gap-2 border-b px-4 py-2;
   }
 
-  .terminal-stoplights {
-    @apply flex gap-2;
+  .terminal-header-title {
+    @apply text-muted-foreground font-mono text-xs;
   }
 }

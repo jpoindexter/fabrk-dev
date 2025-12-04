@@ -4,6 +4,7 @@
  */
 
 import { Clock } from "lucide-react";
+import { TerminalCardHeader } from "@/components/ui/card";
 
 interface Activity {
   id: string;
@@ -20,24 +21,14 @@ interface ActivityFeedProps {
 
 export function ActivityFeed({ activities }: ActivityFeedProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-        <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
-        </div>
-        <span className="font-mono text-xs text-muted-foreground">activity.log</span>
-      </div>
+    <div className="border-border bg-card border">
+      <TerminalCardHeader code="0x00" title="ACTIVITY_LOG" />
       <div className="p-4">
-        <div className="font-mono text-xs text-muted-foreground mb-4">[ACTIVITY_FEED]:</div>
+        <div className="text-muted-foreground mb-4 font-mono text-xs">[ACTIVITY_FEED]:</div>
         <div className="space-y-4">
           {activities.map((activity) => (
-            <div
-              key={activity.id}
-              className="flex gap-4 border-l-2 border-primary pl-4"
-            >
-              <Clock className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground" />
+            <div key={activity.id} className="border-primary flex gap-4 border-l-2 pl-4">
+              <Clock className="text-muted-foreground mt-0.5 h-3 w-3 shrink-0" />
               <div className="font-mono text-xs">
                 <p>
                   <span className="text-foreground">{activity.user}</span>{" "}
@@ -49,9 +40,7 @@ export function ActivityFeed({ activities }: ActivityFeedProps) {
                   </span>{" "}
                   <span className="text-foreground">{activity.target}</span>
                 </p>
-                {activity.details && (
-                  <p className="text-muted-foreground">{activity.details}</p>
-                )}
+                {activity.details && <p className="text-muted-foreground">{activity.details}</p>}
                 <p className="text-muted-foreground">{activity.timestamp}</p>
               </div>
             </div>
