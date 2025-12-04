@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/incompatible-library */
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { DataTableColumnHeader } from "@/components/ui/data-table-header";
@@ -30,21 +31,15 @@ export default function DataTableHeaderPage() {
   const columns: ColumnDef<SampleData>[] = [
     {
       accessorKey: "name",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Project Name" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Project Name" />,
     },
     {
       accessorKey: "status",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Status" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
     },
     {
       accessorKey: "amount",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Amount" />
-      ),
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Amount" />,
       cell: ({ row }) => {
         const amount = row.getValue("amount") as number;
         return `$${amount.toLocaleString()}`;
@@ -76,16 +71,10 @@ export default function DataTableHeaderPage() {
             <table className="w-full">
               <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className="border-b border-border">
+                  <tr key={headerGroup.id} className="border-border border-b">
                     {headerGroup.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="px-4 py-4 text-left font-medium"
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                      <th key={header.id} className="px-4 py-4 text-left font-medium">
+                        {flexRender(header.column.columnDef.header, header.getContext())}
                       </th>
                     ))}
                   </tr>
@@ -93,13 +82,10 @@ export default function DataTableHeaderPage() {
               </thead>
               <tbody>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className="border-b border-border">
+                  <tr key={row.id} className="border-border border-b">
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-4 py-4">
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}
                   </tr>
@@ -133,23 +119,17 @@ const table = useReactTable({
           description: "Click to toggle between ascending, descending, and unsorted",
           preview: (
             <div className="space-y-2">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="text-muted-foreground font-mono text-xs">
                 [INTERACTIVE]: Click headers to sort
               </span>
               <div className="overflow-auto">
                 <table className="w-full">
                   <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
-                      <tr key={headerGroup.id} className="border-b border-border">
+                      <tr key={headerGroup.id} className="border-border border-b">
                         {headerGroup.headers.map((header) => (
-                          <th
-                            key={header.id}
-                            className="px-4 py-2 text-left font-medium"
-                          >
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                          <th key={header.id} className="px-4 py-2 text-left font-medium">
+                            {flexRender(header.column.columnDef.header, header.getContext())}
                           </th>
                         ))}
                       </tr>
@@ -169,10 +149,7 @@ const table = useReactTable({
           description: "Shows arrows up-down icon when not sorted",
           preview: (
             <div className="flex items-center gap-2">
-              <DataTableColumnHeader
-                column={table.getColumn("name")!}
-                title="Project Name"
-              />
+              <DataTableColumnHeader column={table.getColumn("name")!} title="Project Name" />
             </div>
           ),
           code: `// Default state shows unsorted icon
@@ -183,7 +160,7 @@ const table = useReactTable({
           description: "Shows up arrow when sorted A-Z or 0-9",
           preview: (
             <div className="space-y-2">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="text-muted-foreground font-mono text-xs">
                 [STATE]: Ascending sort
               </span>
               <div className="flex items-center gap-2">
@@ -200,7 +177,7 @@ const table = useReactTable({
           description: "Shows down arrow when sorted Z-A or 9-0",
           preview: (
             <div className="space-y-2">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="text-muted-foreground font-mono text-xs">
                 [STATE]: Descending sort
               </span>
               <div className="flex items-center gap-2">
@@ -215,9 +192,7 @@ const table = useReactTable({
         {
           title: "Non-Sortable Column",
           description: "Renders as plain text when column cannot be sorted",
-          preview: (
-            <div className="font-mono text-sm">Actions</div>
-          ),
+          preview: <div className="font-mono text-sm">Actions</div>,
           code: `// When column.getCanSort() === false
 // Renders without button or icons`,
         },

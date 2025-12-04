@@ -5,6 +5,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getPublishedPosts, getCategories, formatDate, formatReadTime } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -87,11 +88,12 @@ export default async function BlogPage({
                   className="group border-border bg-card hover:border-primary border transition-all"
                 >
                   {post.featuredImage && (
-                    <div className="border-border aspect-video overflow-hidden border-b">
-                      <img
+                    <div className="border-border relative aspect-video overflow-hidden border-b">
+                      <Image
                         src={post.featuredImage}
                         alt={`Featured image for ${post.title}`}
-                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform group-hover:scale-105"
                       />
                     </div>
                   )}

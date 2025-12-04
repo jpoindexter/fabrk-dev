@@ -10,7 +10,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, Tag, User } from "lucide-react";
+import { Calendar, Clock, ChevronLeft, ChevronRight, ArrowRight, User } from "lucide-react";
+import Link from "next/link";
 
 const categories = [
   { id: "all", name: "All", count: 12 },
@@ -108,7 +109,7 @@ export default function BlogTemplate() {
           <div className="border-border inline-block border px-4 py-1">
             <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: BLOG</span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">Blog</h1>
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Blog</h1>
           <p className="text-muted-foreground font-mono text-sm">
             Articles, tutorials, and updates from the team
           </p>
@@ -124,9 +125,6 @@ export default function BlogTemplate() {
                 <div className="bg-success/50 size-2 rounded-none" />
               </div>
               <span className="text-muted-foreground font-mono text-xs">featured.tsx</span>
-              <Badge variant="default" className="ml-auto rounded-none font-mono text-xs">
-                FEATURED
-              </Badge>
             </div>
 
             <div className="p-6">
@@ -138,14 +136,19 @@ export default function BlogTemplate() {
 
                 {/* Content */}
                 <div className="flex flex-col justify-center space-y-4">
-                  <Badge
-                    variant="outline"
-                    className="border-border w-fit rounded-none font-mono text-xs"
-                  >
-                    {featuredPost.category.toUpperCase()}
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="default" className="rounded-none font-mono text-xs">
+                      FEATURED
+                    </Badge>
+                    <Badge
+                      variant="outline"
+                      className="border-border rounded-none font-mono text-xs"
+                    >
+                      {featuredPost.category.toUpperCase()}
+                    </Badge>
+                  </div>
 
-                  <h2 className="text-2xl font-semibold">{featuredPost.title}</h2>
+                  <h2 className="font-mono text-2xl font-semibold">{featuredPost.title}</h2>
 
                   <p className="text-muted-foreground font-mono text-sm">{featuredPost.excerpt}</p>
 
@@ -173,8 +176,10 @@ export default function BlogTemplate() {
                     </div>
                   </div>
 
-                  <Button className="w-fit rounded-none font-mono text-xs">
-                    &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
+                  <Button asChild className="w-fit rounded-none font-mono text-xs">
+                    <Link href="/templates/blog/post">
+                      &gt; READ_ARTICLE <ArrowRight className="ml-1 h-3 w-3" />
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -182,76 +187,70 @@ export default function BlogTemplate() {
           </div>
         )}
 
-        {/* Categories */}
-        <div className="border-border bg-card border">
-          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-            <div className="flex gap-2">
-              <div className="bg-destructive/50 size-2 rounded-none" />
-              <div className="bg-warning/50 size-2 rounded-none" />
-              <div className="bg-success/50 size-2 rounded-none" />
-            </div>
-            <span className="text-muted-foreground font-mono text-xs">categories.tsx</span>
-          </div>
-          <div className="border-border flex flex-wrap border-b font-mono text-xs">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`border-border flex items-center gap-2 border-r px-4 py-2 transition-colors ${
-                  activeCategory === category.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                <Tag className="h-3 w-3" />[{category.name}]
-                <span className="text-xs">({category.count})</span>
-              </button>
-            ))}
-          </div>
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-2">
+          <span className="text-muted-foreground py-2 font-mono text-xs">[FILTER]:</span>
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`border-border flex items-center gap-2 border px-3 py-1.5 font-mono text-xs transition-colors ${
+                activeCategory === category.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"
+              }`}
+            >
+              {category.name} ({category.count})
+            </button>
+          ))}
         </div>
 
         {/* Blog Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {regularPosts.map((post) => (
-            <div key={post.id} className="border-border bg-card group border">
-              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
-                <div className="flex gap-2">
-                  <div className="bg-destructive/50 size-2 rounded-none" />
-                  <div className="bg-warning/50 size-2 rounded-none" />
-                  <div className="bg-success/50 size-2 rounded-none" />
-                </div>
-                <span className="text-muted-foreground font-mono text-xs">post_{post.id}.tsx</span>
-              </div>
-
-              {/* Image Placeholder */}
-              <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
-                <span className="text-muted-foreground font-mono text-xs">[THUMBNAIL]</span>
-              </div>
-
-              <div className="space-y-4 p-4">
-                <Badge variant="outline" className="border-border rounded-none font-mono text-xs">
-                  {post.category.toUpperCase()}
-                </Badge>
-
-                <h3 className="group-hover:text-primary text-lg font-semibold transition-colors">
-                  {post.title}
-                </h3>
-
-                <p className="text-muted-foreground line-clamp-2 font-mono text-xs">
-                  {post.excerpt}
-                </p>
-
-                <div className="border-border flex items-center justify-between border-t pt-2">
-                  <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
-                    <User className="h-3 w-3" />
-                    {post.author.name}
+            <Link key={post.id} href="/templates/blog/post">
+              <div className="border-border bg-card hover:border-primary/50 group border transition-colors">
+                <div className="border-border flex items-center gap-2 border-b px-4 py-2">
+                  <div className="flex gap-2">
+                    <div className="bg-destructive/50 size-2 rounded-none" />
+                    <div className="bg-warning/50 size-2 rounded-none" />
+                    <div className="bg-success/50 size-2 rounded-none" />
                   </div>
-                  <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
-                    {post.readTime}
+                  <span className="text-muted-foreground font-mono text-xs">
+                    post_{post.id}.tsx
+                  </span>
+                </div>
+
+                {/* Image Placeholder */}
+                <div className="border-border bg-muted/30 flex aspect-video items-center justify-center border-b">
+                  <span className="text-muted-foreground font-mono text-xs">[THUMBNAIL]</span>
+                </div>
+
+                <div className="space-y-4 p-4">
+                  <Badge variant="outline" className="border-border rounded-none font-mono text-xs">
+                    {post.category.toUpperCase()}
+                  </Badge>
+
+                  <h3 className="group-hover:text-primary font-mono text-lg font-semibold transition-colors">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-muted-foreground line-clamp-2 font-mono text-xs">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="border-border flex items-center justify-between border-t pt-2">
+                    <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
+                      <User className="h-3 w-3" />
+                      {post.author.name}
+                    </div>
+                    <div className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
+                      {post.readTime}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

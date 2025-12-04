@@ -80,7 +80,7 @@ export default function TemplatesPage() {
             [TEMPLATE_GALLERY]: BROWSE_TEMPLATES
           </span>
         </div>
-        <h1 className="text-4xl font-bold">Template Gallery</h1>
+        <h1 className="font-mono text-4xl font-bold">Template Gallery</h1>
         <p className="text-muted-foreground max-w-2xl font-mono text-sm">
           Choose a category to explore ready-to-use templates included with Fabrk.
         </p>
@@ -116,7 +116,7 @@ export default function TemplatesPage() {
                 </div>
 
                 {/* Title */}
-                <h2 className="mb-2 text-lg font-semibold">{category.name}</h2>
+                <h2 className="mb-2 font-mono text-lg font-semibold">{category.name}</h2>
 
                 {/* Description */}
                 <div className="mb-4 font-mono text-xs">

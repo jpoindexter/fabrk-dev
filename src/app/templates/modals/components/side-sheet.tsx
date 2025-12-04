@@ -24,21 +24,19 @@ interface SideSheetProps {
 
 export function SideSheet({ open, onOpenChange }: SideSheetProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+    <div className="border-border bg-card border">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
+          <div className="bg-destructive/50 size-2 rounded-none" />
+          <div className="bg-warning/50 size-2 rounded-none" />
+          <div className="bg-success/50 size-2 rounded-none" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          side_sheet.tsx
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">side_sheet.tsx</span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="font-semibold mb-1">Side Sheet</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h3 className="mb-1 font-mono font-semibold">Side Sheet</h3>
+          <p className="text-muted-foreground font-mono text-xs">
             Slide-out panel for detailed content or navigation
           </p>
         </div>
@@ -50,25 +48,23 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
               &gt; OPEN_DRAWER
             </Button>
           </SheetTrigger>
-          <SheetContent className="rounded-none border-border">
+          <SheetContent className="border-border rounded-none">
             <SheetHeader>
               <SheetTitle className="font-mono">[SETTINGS]</SheetTitle>
               <SheetDescription className="font-mono text-sm">
                 Configure your application settings here.
               </SheetDescription>
             </SheetHeader>
-            <div className="py-6 space-y-4">
-              <div className="border border-border p-4">
-                <div className="font-mono text-xs text-muted-foreground mb-2">
-                  [GENERAL]:
-                </div>
+            <div className="space-y-4 py-6">
+              <div className="border-border border p-4">
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[GENERAL]:</div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-sm">Dark Mode</span>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="rounded-none font-mono text-xs h-7"
+                      className="h-7 rounded-none font-mono text-xs"
                     >
                       TOGGLE
                     </Button>
@@ -78,17 +74,15 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="rounded-none font-mono text-xs h-7"
+                      className="h-7 rounded-none font-mono text-xs"
                     >
                       CONFIGURE
                     </Button>
                   </div>
                 </div>
               </div>
-              <div className="border border-border p-4">
-                <div className="font-mono text-xs text-muted-foreground mb-2">
-                  [ACCOUNT]:
-                </div>
+              <div className="border-border border p-4">
+                <div className="text-muted-foreground mb-2 font-mono text-xs">[ACCOUNT]:</div>
                 <div className="space-y-2">
                   <Button
                     variant="ghost"
@@ -118,7 +112,7 @@ export function SideSheet({ open, onOpenChange }: SideSheetProps) {
           </SheetContent>
         </Sheet>
 
-        <div className="mt-4 font-mono text-xs text-muted-foreground">
+        <div className="text-muted-foreground mt-4 font-mono text-xs">
           [USE_CASE]: Settings, detail views, mobile navigation
         </div>
       </div>

@@ -6,15 +6,7 @@
 
 "use client";
 
-import {
-  Star,
-  GitBranch,
-  MessageSquare,
-  Award,
-  Zap,
-  TrendingUp,
-  Activity,
-} from "lucide-react";
+import { Star, GitBranch, MessageSquare, Award, Zap, TrendingUp, Activity } from "lucide-react";
 import { ProfileHeader } from "./components/profile-header";
 import { BadgesSection } from "./components/badges-section";
 import { ProfileTabs } from "./components/profile-tabs";
@@ -113,18 +105,16 @@ const mockBadges = [
 export default function ProfilePageTemplate() {
   return (
     <div>
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
               [TEMPLATE]: PROFILE_PAGE
             </span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Profile Page
-          </h1>
-          <p className="font-mono text-sm text-muted-foreground">
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Profile Page</h1>
+          <p className="text-muted-foreground font-mono text-sm">
             User profile with stats, activity feed, projects, and badges
           </p>
         </div>

@@ -3,10 +3,12 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Cropper } from "@/components/ui/cropper";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function CropperPage() {
   const [croppedImage, setCroppedImage] = useState<string | null>(null);
-  const sampleImage = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop";
+  const sampleImage =
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop";
 
   const handleCrop = (blob: Blob) => {
     const url = URL.createObjectURL(blob);
@@ -23,17 +25,17 @@ export default function CropperPage() {
       mainPreview={{
         preview: (
           <div className="space-y-4">
-            <Cropper
-              image={sampleImage}
-              onCrop={handleCrop}
-            />
+            <Cropper image={sampleImage} onCrop={handleCrop} />
             {croppedImage && (
               <div className="mt-4">
-                <p className="text-sm font-medium mb-2">Cropped Result:</p>
-                <img
+                <p className="mb-2 text-sm font-medium">Cropped Result:</p>
+                <Image
                   src={croppedImage}
                   alt="Cropped result"
-                  className="max-w-xs border border-border"
+                  width={320}
+                  height={240}
+                  className="border-border max-w-xs border"
+                  unoptimized
                 />
               </div>
             )}
@@ -55,13 +57,7 @@ const handleCrop = (blob: Blob) => {
         {
           title: "Square Crop (1:1)",
           description: "Cropper with 1:1 aspect ratio for square images.",
-          preview: (
-            <Cropper
-              image={sampleImage}
-              aspectRatio={1}
-              onCrop={handleCrop}
-            />
-          ),
+          preview: <Cropper image={sampleImage} aspectRatio={1} onCrop={handleCrop} />,
           code: `<Cropper
   image={sampleImage}
   aspectRatio={1}
@@ -71,13 +67,7 @@ const handleCrop = (blob: Blob) => {
         {
           title: "Portrait (3:4)",
           description: "Cropper with 3:4 aspect ratio for portrait images.",
-          preview: (
-            <Cropper
-              image={sampleImage}
-              aspectRatio={3 / 4}
-              onCrop={handleCrop}
-            />
-          ),
+          preview: <Cropper image={sampleImage} aspectRatio={3 / 4} onCrop={handleCrop} />,
           code: `<Cropper
   image={sampleImage}
   aspectRatio={3 / 4}
@@ -87,13 +77,7 @@ const handleCrop = (blob: Blob) => {
         {
           title: "Landscape (16:9)",
           description: "Cropper with 16:9 aspect ratio for landscape images.",
-          preview: (
-            <Cropper
-              image={sampleImage}
-              aspectRatio={16 / 9}
-              onCrop={handleCrop}
-            />
-          ),
+          preview: <Cropper image={sampleImage} aspectRatio={16 / 9} onCrop={handleCrop} />,
           code: `<Cropper
   image={sampleImage}
   aspectRatio={16 / 9}
@@ -104,12 +88,7 @@ const handleCrop = (blob: Blob) => {
           title: "Round Crop",
           description: "Cropper with circular crop shape for profile pictures.",
           preview: (
-            <Cropper
-              image={sampleImage}
-              cropShape="round"
-              aspectRatio={1}
-              onCrop={handleCrop}
-            />
+            <Cropper image={sampleImage} cropShape="round" aspectRatio={1} onCrop={handleCrop} />
           ),
           code: `<Cropper
   image={sampleImage}
@@ -121,14 +100,7 @@ const handleCrop = (blob: Blob) => {
         {
           title: "Custom Zoom Range",
           description: "Cropper with custom minimum and maximum zoom levels.",
-          preview: (
-            <Cropper
-              image={sampleImage}
-              minZoom={0.5}
-              maxZoom={5}
-              onCrop={handleCrop}
-            />
-          ),
+          preview: <Cropper image={sampleImage} minZoom={0.5} maxZoom={5} onCrop={handleCrop} />,
           code: `<Cropper
   image={sampleImage}
   minZoom={0.5}
@@ -139,13 +111,7 @@ const handleCrop = (blob: Blob) => {
         {
           title: "Without Grid",
           description: "Cropper without the rule-of-thirds grid overlay.",
-          preview: (
-            <Cropper
-              image={sampleImage}
-              showGrid={false}
-              onCrop={handleCrop}
-            />
-          ),
+          preview: <Cropper image={sampleImage} showGrid={false} onCrop={handleCrop} />,
           code: `<Cropper
   image={sampleImage}
   showGrid={false}

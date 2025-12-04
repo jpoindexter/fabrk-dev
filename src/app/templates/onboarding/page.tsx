@@ -7,13 +7,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  User,
-  Building2,
-  Settings,
-  CheckCircle2,
-  Sparkles,
-} from "lucide-react";
+import { User, Building2, Settings, CheckCircle2, Sparkles } from "lucide-react";
 import { TerminalHeader } from "./components/terminal-header";
 import { ProgressSection } from "./components/progress-section";
 import { StepWelcome } from "./components/step-welcome";
@@ -69,46 +63,36 @@ export default function OnboardingTemplate() {
 
   return (
     <div>
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
               [TEMPLATE]: ONBOARDING_FLOW
             </span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">
-            Onboarding Flow
-          </h1>
-          <p className="font-mono text-sm text-muted-foreground">
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Onboarding Flow</h1>
+          <p className="text-muted-foreground font-mono text-sm">
             Multi-step wizard for new user onboarding with progress tracking
           </p>
         </div>
 
         {/* Main Onboarding Card */}
-        <div className="border border-border bg-card max-w-2xl mx-auto">
+        <div className="border-border bg-card mx-auto max-w-2xl border">
           <TerminalHeader filename="onboarding.tsx" />
 
-          <ProgressSection
-            currentStep={currentStep}
-            steps={steps}
-            progress={progress}
-          />
+          <ProgressSection currentStep={currentStep} steps={steps} progress={progress} />
 
           {/* Step Content */}
-          <div className="p-6 min-h-[400px]">
+          <div className="min-h-[400px] p-6">
             {currentStep === 1 && <StepWelcome />}
 
             {currentStep === 2 && (
               <StepProfile
                 fullName={formData.fullName}
                 role={formData.role}
-                onFullNameChange={(value) =>
-                  setFormData({ ...formData, fullName: value })
-                }
-                onRoleChange={(value) =>
-                  setFormData({ ...formData, role: value })
-                }
+                onFullNameChange={(value) => setFormData({ ...formData, fullName: value })}
+                onRoleChange={(value) => setFormData({ ...formData, role: value })}
               />
             )}
 
@@ -120,9 +104,7 @@ export default function OnboardingTemplate() {
                 onWorkspaceNameChange={(value) =>
                   setFormData({ ...formData, workspaceName: value })
                 }
-                onTeamSizeChange={(value) =>
-                  setFormData({ ...formData, teamSize: value })
-                }
+                onTeamSizeChange={(value) => setFormData({ ...formData, teamSize: value })}
                 onToggleUseCase={toggleUseCase}
               />
             )}
@@ -145,11 +127,7 @@ export default function OnboardingTemplate() {
 
           {/* Navigation */}
           {currentStep < 5 && (
-            <NavigationControls
-              currentStep={currentStep}
-              onBack={handleBack}
-              onNext={handleNext}
-            />
+            <NavigationControls currentStep={currentStep} onBack={handleBack} onNext={handleNext} />
           )}
         </div>
 

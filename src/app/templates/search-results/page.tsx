@@ -97,9 +97,7 @@ export default function SearchResultsTemplate() {
 
   const toggleTag = (tagId: string) => {
     setSelectedTags((prev) =>
-      prev.includes(tagId)
-        ? prev.filter((t) => t !== tagId)
-        : [...prev, tagId]
+      prev.includes(tagId) ? prev.filter((t) => t !== tagId) : [...prev, tagId]
     );
   };
 
@@ -110,16 +108,16 @@ export default function SearchResultsTemplate() {
 
   return (
     <div>
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
               [TEMPLATE]: SEARCH_RESULTS
             </span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">Search Results</h1>
-          <p className="font-mono text-sm text-muted-foreground">
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Search Results</h1>
+          <p className="text-muted-foreground font-mono text-sm">
             Search interface with filters, sorting, and pagination
           </p>
         </div>
@@ -132,7 +130,7 @@ export default function SearchResultsTemplate() {
         />
 
         {/* Main Content */}
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col gap-6 md:flex-row">
           {/* Filters Sidebar */}
           <FiltersSidebar
             categories={filterCategories}
@@ -156,11 +154,7 @@ export default function SearchResultsTemplate() {
 
             <ResultsGrid results={mockResults} viewMode={viewMode} />
 
-            <Pagination
-              currentPage={currentPage}
-              totalPages={5}
-              onPageChange={setCurrentPage}
-            />
+            <Pagination currentPage={currentPage} totalPages={5} onPageChange={setCurrentPage} />
           </div>
         </div>
 

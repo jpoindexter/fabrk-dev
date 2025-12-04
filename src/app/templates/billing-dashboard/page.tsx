@@ -111,12 +111,7 @@ const plans = [
   {
     name: "PROFESSIONAL",
     price: 29,
-    features: [
-      "Unlimited projects",
-      "10 team members",
-      "Priority support",
-      "Advanced analytics",
-    ],
+    features: ["Unlimited projects", "10 team members", "Priority support", "Advanced analytics"],
     current: true,
   },
   {
@@ -165,17 +160,19 @@ export default function BillingDashboardTemplate() {
   return (
     <div>
       {/* Page Content */}
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: BILLING_DASHBOARD</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">
+                [TEMPLATE]: BILLING_DASHBOARD
+              </span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">
               Billing & Subscription
             </h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="text-muted-foreground font-mono text-sm">
               Manage your subscription, payments, and billing information
             </p>
           </div>
@@ -187,21 +184,21 @@ export default function BillingDashboardTemplate() {
 
         {/* Terminal Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+          <div className="border-border bg-card border">
+            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">billing_nav.tsx</span>
+              <span className="text-muted-foreground font-mono text-xs">billing_nav.tsx</span>
             </div>
-            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {(["overview", "plans", "history"] as const).map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground rounded-none border-r px-4 py-2 font-mono text-xs"
                 >
                   [{tab.toUpperCase()}]
                 </TabsTrigger>

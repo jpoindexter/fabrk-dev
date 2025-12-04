@@ -50,10 +50,8 @@ export function StepWorkspace({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">Your Workspace</h2>
-        <p className="font-mono text-xs text-muted-foreground">
-          Set up your team workspace
-        </p>
+        <h2 className="mb-1 font-mono text-xl font-semibold">Your Workspace</h2>
+        <p className="text-muted-foreground font-mono text-xs">Set up your team workspace</p>
       </div>
 
       <div className="space-y-4">
@@ -78,7 +76,7 @@ export function StepWorkspace({
                 <SelectItem
                   key={size.value}
                   value={size.value}
-                  className="font-mono text-sm text-left"
+                  className="text-left font-mono text-sm"
                 >
                   {size.label}
                 </SelectItem>
@@ -97,10 +95,7 @@ export function StepWorkspace({
                   checked={selectedUseCases.includes(useCase.id)}
                   onCheckedChange={() => onToggleUseCase(useCase.id)}
                 />
-                <label
-                  htmlFor={useCase.id}
-                  className="font-mono text-xs cursor-pointer"
-                >
+                <label htmlFor={useCase.id} className="cursor-pointer font-mono text-xs">
                   {useCase.label}
                 </label>
               </div>

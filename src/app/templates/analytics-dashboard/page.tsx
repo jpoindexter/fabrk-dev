@@ -30,17 +30,19 @@ export default function AnalyticsDashboardTemplate() {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
- <div >
+    <div>
       {/* Page Content */}
-      <main className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: ANALYTICS_DASHBOARD</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">
+                [TEMPLATE]: ANALYTICS_DASHBOARD
+              </span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">Analytics Dashboard</h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">Analytics Dashboard</h1>
+            <p className="text-muted-foreground font-mono text-sm">
               Track revenue, users, conversions, and growth metrics
             </p>
           </div>
@@ -69,27 +71,49 @@ export default function AnalyticsDashboardTemplate() {
         />
 
         {/* Template Features Card */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
-              <div><span className="text-success">&gt;</span> 4 key metric cards (revenue, users, conversions, growth)</div>
-              <div><span className="text-success">&gt;</span> Revenue overview chart with 6-month data</div>
-              <div><span className="text-success">&gt;</span> Recent activity feed with user avatars</div>
-              <div><span className="text-success">&gt;</span> Tabbed analytics section (Overview, Analytics, Reports)</div>
-              <div><span className="text-success">&gt;</span> Top performing pages table with bounce rates</div>
-              <div><span className="text-success">&gt;</span> Traffic sources breakdown with progress bars</div>
-              <div><span className="text-success">&gt;</span> Device breakdown statistics</div>
-              <div><span className="text-success">&gt;</span> Report generation templates</div>
-              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
+              <div>
+                <span className="text-success">&gt;</span> 4 key metric cards (revenue, users,
+                conversions, growth)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Revenue overview chart with 6-month data
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Recent activity feed with user avatars
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Tabbed analytics section (Overview,
+                Analytics, Reports)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Top performing pages table with bounce
+                rates
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Traffic sources breakdown with progress
+                bars
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Device breakdown statistics
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Report generation templates
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terminal console aesthetic
+              </div>
             </div>
           </div>
         </div>

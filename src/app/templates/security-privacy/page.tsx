@@ -48,10 +48,34 @@ const securityData = {
     },
   ],
   auditLog: [
-    { id: "log_001", action: "Password changed", timestamp: "2024-11-10 14:23", ip: "192.168.1.1", status: "success" as const },
-    { id: "log_002", action: "Login", timestamp: "2024-11-09 09:15", ip: "192.168.1.1", status: "success" as const },
-    { id: "log_003", action: "Failed login attempt", timestamp: "2024-11-08 22:45", ip: "203.0.113.0", status: "failed" as const },
-    { id: "log_004", action: "OAuth connected (Google)", timestamp: "2024-11-05 16:30", ip: "192.168.1.1", status: "success" as const },
+    {
+      id: "log_001",
+      action: "Password changed",
+      timestamp: "2024-11-10 14:23",
+      ip: "192.168.1.1",
+      status: "success" as const,
+    },
+    {
+      id: "log_002",
+      action: "Login",
+      timestamp: "2024-11-09 09:15",
+      ip: "192.168.1.1",
+      status: "success" as const,
+    },
+    {
+      id: "log_003",
+      action: "Failed login attempt",
+      timestamp: "2024-11-08 22:45",
+      ip: "203.0.113.0",
+      status: "failed" as const,
+    },
+    {
+      id: "log_004",
+      action: "OAuth connected (Google)",
+      timestamp: "2024-11-05 16:30",
+      ip: "192.168.1.1",
+      status: "success" as const,
+    },
   ],
 };
 
@@ -93,7 +117,9 @@ export default function SecurityPrivacyTemplate() {
   };
 
   const handleViewPolicy = (type: "privacy" | "terms") => {
-    toast.info(`[${type.toUpperCase()}]: Opening ${type === "privacy" ? "Privacy Policy" : "Terms of Service"}...`);
+    toast.info(
+      `[${type.toUpperCase()}]: Opening ${type === "privacy" ? "Privacy Policy" : "Terms of Service"}...`
+    );
   };
 
   const handleDeleteAccount = () => {
@@ -103,17 +129,17 @@ export default function SecurityPrivacyTemplate() {
   return (
     <div>
       {/* Page Content */}
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: SECURITY_PRIVACY</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">
+                [TEMPLATE]: SECURITY_PRIVACY
+              </span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">
-              Security & Privacy
-            </h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">Security & Privacy</h1>
+            <p className="text-muted-foreground font-mono text-sm">
               Manage your account security, privacy settings, and data controls
             </p>
           </div>
@@ -128,29 +154,28 @@ export default function SecurityPrivacyTemplate() {
 
         {/* Tab Navigation */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+          <div className="border-border bg-card border">
+            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">security_nav.tsx</span>
+              <span className="text-muted-foreground font-mono text-xs">security_nav.tsx</span>
             </div>
-            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
-              {([
+            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
+              {[
                 { id: "security", label: "SECURITY", icon: Shield },
                 { id: "privacy", label: "PRIVACY", icon: Lock },
                 { id: "audit", label: "AUDIT_LOG", icon: Activity },
                 { id: "compliance", label: "COMPLIANCE", icon: FileText },
-              ]).map((tab) => (
+              ].map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className="flex items-center gap-2 px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs"
                 >
-                  <tab.icon className="h-3 w-3" />
-                  [{tab.label}]
+                  <tab.icon className="h-3 w-3" />[{tab.label}]
                 </TabsTrigger>
               ))}
             </TabsList>

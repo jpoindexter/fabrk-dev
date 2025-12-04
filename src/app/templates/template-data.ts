@@ -175,6 +175,15 @@ export const templates: Template[] = [
     features: ["Featured hero", "Category filter", "Post cards", "Pagination"],
   },
   {
+    id: "blog-post",
+    name: "Blog Post",
+    description: "Individual article view with rich content, code blocks, and engagement",
+    category: "marketing",
+    icon: FileText,
+    href: "/templates/blog/post",
+    features: ["Rich content", "Code blocks", "Table of contents", "Related posts"],
+  },
+  {
     id: "landing-variations",
     name: "Landing Variations",
     description: "3 hero section variations for different use cases",

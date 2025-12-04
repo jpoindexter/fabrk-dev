@@ -40,7 +40,12 @@ const emptyStates = [
       { label: "CREATE_PROJECT", primary: true, icon: Plus },
       { label: "IMPORT_DATA", primary: false, icon: Upload },
     ],
-    terminal: ["$ user.onboarding --status", "PROJECTS: 0", "SETUP_COMPLETE: false", "HINT: create_first_project"],
+    terminal: [
+      "$ user.onboarding --status",
+      "PROJECTS: 0",
+      "SETUP_COMPLETE: false",
+      "HINT: create_first_project",
+    ],
   },
   {
     id: "search-empty",
@@ -48,7 +53,7 @@ const emptyStates = [
     description: "We couldn't find anything matching your search. Try different keywords.",
     icon: Search,
     actions: [{ label: "CLEAR_SEARCH", primary: false, icon: RefreshCw }],
-    terminal: ["$ search --query=\"foobar123\"", "MATCHES: 0", "SUGGESTIONS: try_different_keywords"],
+    terminal: ['$ search --query="foobar123"', "MATCHES: 0", "SUGGESTIONS: try_different_keywords"],
   },
   {
     id: "error-state",
@@ -56,7 +61,12 @@ const emptyStates = [
     description: "We encountered an error loading your data. Please try again.",
     icon: AlertCircle,
     actions: [{ label: "TRY_AGAIN", primary: true, icon: RefreshCw }],
-    terminal: ["$ fetch --resource=data", "ERROR: connection_timeout", "CODE: ERR_NETWORK_500", "RETRY: recommended"],
+    terminal: [
+      "$ fetch --resource=data",
+      "ERROR: connection_timeout",
+      "CODE: ERR_NETWORK_500",
+      "RETRY: recommended",
+    ],
   },
   {
     id: "no-team",
@@ -80,7 +90,12 @@ const emptyStates = [
     description: "You have no new notifications. Check back later.",
     icon: Bell,
     actions: [{ label: "NOTIFICATION_SETTINGS", primary: false, icon: null }],
-    terminal: ["$ notifications.unread --count", "UNREAD: 0", "LAST_CHECK: just now", "STATUS: all_read"],
+    terminal: [
+      "$ notifications.unread --count",
+      "UNREAD: 0",
+      "LAST_CHECK: just now",
+      "STATUS: all_read",
+    ],
   },
   {
     id: "no-analytics",
@@ -98,43 +113,41 @@ const emptyStates = [
 export default function EmptyStatesTemplate() {
   return (
     <div>
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
               [TEMPLATE]: EMPTY_STATES
             </span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">Empty States</h1>
-          <p className="font-mono text-sm text-muted-foreground">
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Empty States</h1>
+          <p className="text-muted-foreground font-mono text-sm">
             Helpful empty state patterns for various scenarios
           </p>
         </div>
 
         {/* Empty State Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {emptyStates.map((state) => {
             const Icon = state.icon;
             return (
-              <div key={state.id} className="border border-border bg-card flex flex-col">
-                <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div key={state.id} className="border-border bg-card flex flex-col border">
+                <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                   <div className="flex gap-2">
-                    <div className="size-2 rounded-none bg-destructive/50" />
-                    <div className="size-2 rounded-none bg-warning/50" />
-                    <div className="size-2 rounded-none bg-success/50" />
+                    <div className="bg-destructive/50 size-2 rounded-none" />
+                    <div className="bg-warning/50 size-2 rounded-none" />
+                    <div className="bg-success/50 size-2 rounded-none" />
                   </div>
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {state.id}.tsx
-                  </span>
+                  <span className="text-muted-foreground font-mono text-xs">{state.id}.tsx</span>
                 </div>
 
-                <div className="p-6 h-full flex flex-col">
+                <div className="flex h-full flex-col p-6">
                   {/* Empty State Content */}
-                  <div className="text-center flex flex-col flex-1">
+                  <div className="flex flex-1 flex-col text-center">
                     {/* Icon */}
                     <div
-                      className={`w-16 h-16 mx-auto border flex items-center justify-center ${
+                      className={`mx-auto flex h-16 w-16 items-center justify-center border ${
                         state.id === "error-state"
                           ? "border-destructive bg-destructive/10"
                           : "border-border bg-muted/30"
@@ -142,34 +155,28 @@ export default function EmptyStatesTemplate() {
                     >
                       <Icon
                         className={`h-8 w-8 ${
-                          state.id === "error-state"
-                            ? "text-destructive"
-                            : "text-muted-foreground"
+                          state.id === "error-state" ? "text-destructive" : "text-muted-foreground"
                         }`}
                       />
                     </div>
 
                     {/* Title & Description */}
                     <div className="mt-4">
-                      <h3 className="text-lg font-semibold mb-1">{state.title}</h3>
-                      <p className="font-mono text-xs text-muted-foreground">
-                        {state.description}
-                      </p>
+                      <h3 className="mb-1 font-mono text-lg font-semibold">{state.title}</h3>
+                      <p className="text-muted-foreground font-mono text-xs">{state.description}</p>
                     </div>
 
                     {/* Terminal Output */}
-                    <div className="border border-border bg-card text-left mt-4">
-                      <div className="flex items-center gap-2 border-b border-border/50 px-4 py-1.5">
+                    <div className="border-border bg-card mt-4 border text-left">
+                      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
                         <div className="flex gap-2">
-                          <div className="size-2 rounded-none bg-destructive/50" />
-                          <div className="size-2 rounded-none bg-warning/50" />
-                          <div className="size-2 rounded-none bg-success/50" />
+                          <div className="bg-destructive/50 size-2 rounded-none" />
+                          <div className="bg-warning/50 size-2 rounded-none" />
+                          <div className="bg-success/50 size-2 rounded-none" />
                         </div>
-                        <span className="font-mono text-xs text-muted-foreground">
-                          terminal
-                        </span>
+                        <span className="text-muted-foreground font-mono text-xs">terminal</span>
                       </div>
-                      <div className="p-4 font-mono text-xs text-foreground space-y-0.5">
+                      <div className="text-foreground space-y-0.5 p-4 font-mono text-xs">
                         {state.terminal.map((line, idx) => (
                           <div
                             key={idx}
@@ -190,7 +197,7 @@ export default function EmptyStatesTemplate() {
                     </div>
 
                     {/* Actions - pushed to bottom */}
-                    <div className="flex items-center justify-center gap-2 mt-auto pt-4">
+                    <div className="mt-auto flex items-center justify-center gap-2 pt-4">
                       {state.actions.map((action, idx) => {
                         const ActionIcon = action.icon;
                         return (
@@ -213,22 +220,18 @@ export default function EmptyStatesTemplate() {
         </div>
 
         {/* Use Cases Reference */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">
-              use_cases.md
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">use_cases.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">
-              [WHEN_TO_USE]:
-            </div>
-            <div className="grid md:grid-cols-2 gap-4 font-mono text-xs">
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[WHEN_TO_USE]:</div>
+            <div className="grid gap-4 font-mono text-xs md:grid-cols-2">
               <div className="space-y-2">
                 <div className="font-semibold">[NO_DATA]</div>
                 <div className="text-muted-foreground">
@@ -249,30 +252,24 @@ export default function EmptyStatesTemplate() {
               </div>
               <div className="space-y-2">
                 <div className="font-semibold">[ERROR_STATE]</div>
-                <div className="text-muted-foreground">
-                  API failures, network errors, timeouts
-                </div>
+                <div className="text-muted-foreground">API failures, network errors, timeouts</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Features Card */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">
-              features.md
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">
-              [TEMPLATE_FEATURES]:
-            </div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div>
                 <span className="text-success">&gt;</span> 8 common empty state patterns
@@ -293,7 +290,7 @@ export default function EmptyStatesTemplate() {
                 <span className="text-success">&gt;</span> Search result fallback
               </div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
+            <div className="text-muted-foreground mt-4 font-mono text-xs">
               [NOTE]: Customize icons, copy, and actions based on your specific use case.
             </div>
           </div>

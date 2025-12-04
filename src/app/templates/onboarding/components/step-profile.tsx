@@ -28,19 +28,12 @@ interface StepProfileProps {
   onRoleChange: (value: string) => void;
 }
 
-export function StepProfile({
-  fullName,
-  role,
-  onFullNameChange,
-  onRoleChange,
-}: StepProfileProps) {
+export function StepProfile({ fullName, role, onFullNameChange, onRoleChange }: StepProfileProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold mb-1">Your Profile</h2>
-        <p className="font-mono text-xs text-muted-foreground">
-          Tell us a bit about yourself
-        </p>
+        <h2 className="mb-1 font-mono text-xl font-semibold">Your Profile</h2>
+        <p className="text-muted-foreground font-mono text-xs">Tell us a bit about yourself</p>
       </div>
 
       <div className="space-y-4">
@@ -65,7 +58,7 @@ export function StepProfile({
                 <SelectItem
                   key={role.value}
                   value={role.value}
-                  className="font-mono text-sm text-left"
+                  className="text-left font-mono text-sm"
                 >
                   {role.label}
                 </SelectItem>

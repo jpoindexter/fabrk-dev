@@ -66,10 +66,7 @@ export default function UserManagementTemplate() {
       user.lastLogin,
     ]);
 
-    const csv = [
-      headers.join(","),
-      ...csvData.map((row) => row.join(",")),
-    ].join("\n");
+    const csv = [headers.join(","), ...csvData.map((row) => row.join(","))].join("\n");
 
     const blob = new Blob([csv], { type: "text/csv" });
     const url = window.URL.createObjectURL(blob);
@@ -82,15 +79,17 @@ export default function UserManagementTemplate() {
   return (
     <div>
       {/* Page Content */}
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: USER_MANAGEMENT</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">
+                [TEMPLATE]: USER_MANAGEMENT
+              </span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">User Management</h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">User Management</h1>
+            <p className="text-muted-foreground font-mono text-sm">
               Manage users, roles, and permissions with TanStack Table
             </p>
           </div>
@@ -104,22 +103,28 @@ export default function UserManagementTemplate() {
         <StatsCards users={mockUsers} />
 
         {/* Main Table Card - Terminal Style */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">users.db</span>
+            <span className="text-muted-foreground font-mono text-xs">users.db</span>
           </div>
 
           <div className="p-4">
-            <div className="flex items-center justify-between mb-4">
-              <div className="font-mono text-xs text-muted-foreground">
-                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED={table.getFilteredRowModel().rows.length}
+            <div className="mb-4 flex items-center justify-between">
+              <div className="text-muted-foreground font-mono text-xs">
+                [ALL_USERS]: COUNT={mockUsers.length} | FILTERED=
+                {table.getFilteredRowModel().rows.length}
               </div>
-              <Button onClick={exportToCSV} variant="outline" size="sm" className="rounded-none font-mono text-xs h-7">
+              <Button
+                onClick={exportToCSV}
+                variant="outline"
+                size="sm"
+                className="h-7 rounded-none font-mono text-xs"
+              >
                 <Download className="mr-2 h-3 w-3" />
                 &gt; EXPORT_CSV
               </Button>

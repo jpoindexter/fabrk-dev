@@ -4,30 +4,24 @@
  */
 
 import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Info, X } from "lucide-react";
 
 export function PopoverExample() {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+    <div className="border-border bg-card border">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
+          <div className="bg-destructive/50 size-2 rounded-none" />
+          <div className="bg-warning/50 size-2 rounded-none" />
+          <div className="bg-success/50 size-2 rounded-none" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          popover.tsx
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">popover.tsx</span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="font-semibold mb-1">Popover</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h3 className="mb-1 font-mono font-semibold">Popover</h3>
+          <p className="text-muted-foreground font-mono text-xs">
             Contextual floating content triggered by click
           </p>
         </div>
@@ -39,27 +33,18 @@ export function PopoverExample() {
               &gt; MORE_INFO
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-80 rounded-none border-border">
+          <PopoverContent className="border-border w-80 rounded-none">
             <div className="space-y-4">
-              <div className="font-mono text-xs text-muted-foreground">
-                [INFO]:
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[INFO]:</div>
               <div className="font-mono text-sm">
-                This popover displays contextual information without blocking the
-                page. Great for help text, quick actions, or mini forms.
+                This popover displays contextual information without blocking the page. Great for
+                help text, quick actions, or mini forms.
               </div>
               <div className="flex items-center gap-2">
-                <Button
-                  size="sm"
-                  className="rounded-none font-mono text-xs h-7"
-                >
+                <Button size="sm" className="h-7 rounded-none font-mono text-xs">
                   &gt; LEARN_MORE
                 </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="rounded-none font-mono text-xs h-7"
-                >
+                <Button variant="ghost" size="sm" className="h-7 rounded-none font-mono text-xs">
                   <X className="h-3 w-3" />
                 </Button>
               </div>
@@ -67,7 +52,7 @@ export function PopoverExample() {
           </PopoverContent>
         </Popover>
 
-        <div className="mt-4 font-mono text-xs text-muted-foreground">
+        <div className="text-muted-foreground mt-4 font-mono text-xs">
           [USE_CASE]: Tooltips, quick actions, filter dropdowns
         </div>
       </div>

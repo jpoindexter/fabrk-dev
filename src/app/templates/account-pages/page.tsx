@@ -13,33 +13,35 @@ export default function AccountPagesPage() {
   const categoryInfo = getCategoryInfo("account");
 
   return (
- <div >
-      <main className="container mx-auto max-w-7xl px-6 py-12 space-y-12">
+    <div>
+      <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
         {/* Category Header */}
         <section className="space-y-4">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">[CATEGORY]: ACCOUNT_PAGES</span>
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">
+              [CATEGORY]: ACCOUNT_PAGES
+            </span>
           </div>
           <div className="flex items-center gap-4">
-            {categoryInfo && <categoryInfo.icon className="h-6 w-6 text-primary" />}
-            <h1 className="text-3xl font-bold">Account Pages</h1>
-            <span className="border border-border px-2 py-0.5 font-mono text-xs">
+            {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
+            <h1 className="font-mono text-3xl font-bold">Account Pages</h1>
+            <span className="border-border border px-2 py-0.5 font-mono text-xs">
               COUNT: {categoryTemplates.length}
             </span>
           </div>
         </section>
 
         {/* Templates Grid */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {categoryTemplates.map((template) => (
             <Link key={template.id} href={template.href}>
-              <div className="group border border-border bg-card transition-colors hover:border-primary/50">
+              <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
                 {/* Card Header */}
-                <div className="flex items-center justify-between border-b border-border px-4 py-2">
-                  <span className="font-mono text-xs text-muted-foreground">
+                <div className="border-border flex items-center justify-between border-b px-4 py-2">
+                  <span className="text-muted-foreground font-mono text-xs">
                     [TEMPLATE]: {template.id.toUpperCase().replace(/-/g, "_")}
                   </span>
-                  <template.icon className="size-4 text-muted-foreground" />
+                  <template.icon className="text-muted-foreground size-4" />
                 </div>
 
                 {/* Card Content */}
@@ -51,14 +53,14 @@ export default function AccountPagesPage() {
                       <span className="text-success">READY</span>
                     </div>
                     {template.badge && (
-                      <div className="border border-primary/50 px-2 py-0.5 text-primary">
+                      <div className="border-primary/50 text-primary border px-2 py-0.5">
                         {template.badge.toUpperCase()}
                       </div>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-2 text-lg font-semibold">{template.name}</h3>
+                  <h3 className="mb-2 font-mono text-lg font-semibold">{template.name}</h3>
 
                   {/* Description */}
                   <div className="mb-4 font-mono text-xs">
@@ -68,12 +70,12 @@ export default function AccountPagesPage() {
 
                   {/* Features */}
                   <div className="mb-4">
-                    <div className="mb-2 font-mono text-xs text-muted-foreground">[FEATURES]:</div>
+                    <div className="text-muted-foreground mb-2 font-mono text-xs">[FEATURES]:</div>
                     <div className="flex flex-wrap gap-2">
                       {template.features.map((feature) => (
                         <span
                           key={feature}
-                          className="border border-border px-2 py-0.5 font-mono text-xs"
+                          className="border-border border px-2 py-0.5 font-mono text-xs"
                         >
                           {feature}
                         </span>
@@ -83,10 +85,10 @@ export default function AccountPagesPage() {
 
                   {/* Action */}
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs text-primary transition-colors group-hover:text-primary/80">
+                    <span className="text-primary group-hover:text-primary/80 font-mono text-xs transition-colors">
                       &gt; VIEW_TEMPLATE
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground group-hover:translate-x-1 transition-transform">
+                    <span className="text-muted-foreground font-mono text-xs transition-transform group-hover:translate-x-1">
                       →
                     </span>
                   </div>
@@ -97,25 +99,45 @@ export default function AccountPagesPage() {
         </div>
 
         {/* Template Features Card */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-6">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[ACCOUNT_PAGE_TEMPLATES]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">
+              [ACCOUNT_PAGE_TEMPLATES]:
+            </div>
             <div className="space-y-2 font-mono text-xs">
-              <div><span className="text-success">&gt;</span> Settings page with 4-tab navigation</div>
-              <div><span className="text-success">&gt;</span> Appearance settings (theme, font size, layout)</div>
-              <div><span className="text-success">&gt;</span> Notification preferences (email, push, in-app)</div>
-              <div><span className="text-success">&gt;</span> Privacy controls (data sharing, cookies, analytics)</div>
-              <div><span className="text-success">&gt;</span> Language & region settings</div>
-              <div><span className="text-success">&gt;</span> Account security (password, 2FA, sessions)</div>
-              <div><span className="text-success">&gt;</span> Subscription and billing management</div>
+              <div>
+                <span className="text-success">&gt;</span> Settings page with 4-tab navigation
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Appearance settings (theme, font size,
+                layout)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Notification preferences (email, push,
+                in-app)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Privacy controls (data sharing, cookies,
+                analytics)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Language & region settings
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Account security (password, 2FA,
+                sessions)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Subscription and billing management
+              </div>
             </div>
           </div>
         </div>

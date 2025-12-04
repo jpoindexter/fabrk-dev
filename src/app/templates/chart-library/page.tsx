@@ -26,10 +26,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import {
-  TrendingUp,
-  Download,
-} from "lucide-react";
+import { TrendingUp, Download } from "lucide-react";
 
 // Mock data
 const revenueData = [
@@ -85,10 +82,18 @@ interface TooltipPayload {
   color: string;
 }
 
-const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string }) => {
+const CustomTooltip = ({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: TooltipPayload[];
+  label?: string;
+}) => {
   if (active && payload && payload.length) {
     return (
-      <div className="border border-border bg-card p-4 font-mono text-xs">
+      <div className="border-border bg-card border p-4 font-mono text-xs">
         <p className="mb-1 font-bold">{label}</p>
         {payload.map((entry: TooltipPayload, index: number) => (
           <p key={index} style={{ color: entry.color }}>
@@ -105,19 +110,19 @@ export default function ChartLibraryTemplate() {
   const [activeTab, setActiveTab] = useState("line");
 
   return (
- <div >
+    <div>
       {/* Page Content */}
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: CHART_LIBRARY</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">
+                [TEMPLATE]: CHART_LIBRARY
+              </span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">
-              Chart Library
-            </h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">Chart Library</h1>
+            <p className="text-muted-foreground font-mono text-sm">
               Recharts visualization components for data-driven dashboards
             </p>
           </div>
@@ -129,34 +134,34 @@ export default function ChartLibraryTemplate() {
 
         {/* Stats - Terminal Style */}
         <div className="grid gap-4 md:grid-cols-4">
-          <div className="border border-border bg-card p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-1">[TOTAL_REVENUE]:</div>
+          <div className="border-border bg-card border p-4">
+            <div className="text-muted-foreground mb-1 font-mono text-xs">[TOTAL_REVENUE]:</div>
             <div className="text-3xl font-bold">$91.9K</div>
-            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
               <TrendingUp className="h-3 w-3" />
               +23.5%
             </div>
           </div>
-          <div className="border border-border bg-card p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-1">[ACTIVE_USERS]:</div>
+          <div className="border-border bg-card border p-4">
+            <div className="text-muted-foreground mb-1 font-mono text-xs">[ACTIVE_USERS]:</div>
             <div className="text-3xl font-bold">12.5K</div>
-            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
               <TrendingUp className="h-3 w-3" />
               +941%
             </div>
           </div>
-          <div className="border border-border bg-card p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-1">[CONVERSION_RATE]:</div>
+          <div className="border-border bg-card border p-4">
+            <div className="text-muted-foreground mb-1 font-mono text-xs">[CONVERSION_RATE]:</div>
             <div className="text-3xl font-bold">4.5%</div>
-            <div className="flex items-center gap-1 font-mono text-xs text-success mt-1">
+            <div className="text-success mt-1 flex items-center gap-1 font-mono text-xs">
               <TrendingUp className="h-3 w-3" />
               +0.8%
             </div>
           </div>
-          <div className="border border-border bg-card p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-1">[AVG_ORDER_VALUE]:</div>
+          <div className="border-border bg-card border p-4">
+            <div className="text-muted-foreground mb-1 font-mono text-xs">[AVG_ORDER_VALUE]:</div>
             <div className="text-3xl font-bold">$89</div>
-            <div className="flex items-center gap-1 font-mono text-xs text-destructive mt-1">
+            <div className="text-destructive mt-1 flex items-center gap-1 font-mono text-xs">
               <TrendingUp className="h-3 w-3 rotate-180" />
               -2.3%
             </div>
@@ -165,23 +170,23 @@ export default function ChartLibraryTemplate() {
 
         {/* Chart Tabs - Terminal Style */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <div className="border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+          <div className="border-border bg-card border">
+            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">charts.tsx</span>
+              <span className="text-muted-foreground font-mono text-xs">charts.tsx</span>
             </div>
 
             {/* Tab Navigation */}
-            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {(["line", "area", "bar", "pie"] as const).map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground rounded-none border-r px-4 py-2 font-mono text-xs"
                 >
                   [{tab.toUpperCase()}_CHART]
                 </TabsTrigger>
@@ -191,24 +196,54 @@ export default function ChartLibraryTemplate() {
 
           {/* Line Chart */}
           <TabsContent value="line" className="mt-0">
-            <div className="border border-border border-t-0 bg-card p-4">
-              <div className="flex items-center justify-between mb-4">
+            <div className="border-border bg-card border border-t-0 p-4">
+              <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="font-mono text-xs text-muted-foreground">[REVENUE_OVERVIEW]:</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">Monthly revenue, expenses, and profit (2024)</div>
+                  <div className="text-muted-foreground font-mono text-xs">[REVENUE_OVERVIEW]:</div>
+                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                    Monthly revenue, expenses, and profit (2024)
+                  </div>
                 </div>
-                <span className="border border-border px-2 py-0.5 font-mono text-xs">MULTI_LINE</span>
+                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                  MULTI_LINE
+                </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={revenueData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                  <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`} />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                  />
+                  <YAxis
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                    tickFormatter={(value) => `$${(value / 1000).toFixed(1)}K`}
+                  />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend wrapperStyle={{ fontSize: "12px" }} />
-                  <Line type="monotone" dataKey="revenue" stroke="oklch(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
-                  <Line type="monotone" dataKey="expenses" stroke="oklch(var(--destructive))" strokeWidth={2} dot={{ r: 4 }} />
-                  <Line type="monotone" dataKey="profit" stroke="oklch(var(--success))" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="oklch(var(--primary))"
+                    strokeWidth={2}
+                    dot={{ r: 4 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="expenses"
+                    stroke="oklch(var(--destructive))"
+                    strokeWidth={2}
+                    dot={{ r: 4 }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="profit"
+                    stroke="oklch(var(--success))"
+                    strokeWidth={2}
+                    dot={{ r: 4 }}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -216,21 +251,46 @@ export default function ChartLibraryTemplate() {
 
           {/* Area Chart */}
           <TabsContent value="area" className="mt-0">
-            <div className="border border-border border-t-0 bg-card p-4">
-              <div className="flex items-center justify-between mb-4">
+            <div className="border-border bg-card border border-t-0 p-4">
+              <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="font-mono text-xs text-muted-foreground">[USER_GROWTH]:</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">Total active users over time</div>
+                  <div className="text-muted-foreground font-mono text-xs">[USER_GROWTH]:</div>
+                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                    Total active users over time
+                  </div>
                 </div>
-                <span className="border border-border px-2 py-0.5 font-mono text-xs">SOLID_FILL</span>
+                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                  SOLID_FILL
+                </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={userGrowthData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                  <YAxis tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
-                  <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
-                  <Area type="monotone" dataKey="users" stroke="oklch(var(--primary))" strokeWidth={2} fillOpacity={0.3} fill="oklch(var(--primary))" />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                  />
+                  <YAxis
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                    tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "oklch(var(--card))",
+                      border: "1px solid oklch(var(--border))",
+                      fontSize: "12px",
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="users"
+                    stroke="oklch(var(--primary))"
+                    strokeWidth={2}
+                    fillOpacity={0.3}
+                    fill="oklch(var(--primary))"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -238,20 +298,42 @@ export default function ChartLibraryTemplate() {
 
           {/* Bar Chart */}
           <TabsContent value="bar" className="mt-0">
-            <div className="border border-border border-t-0 bg-card p-4">
-              <div className="flex items-center justify-between mb-4">
+            <div className="border-border bg-card border border-t-0 p-4">
+              <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="font-mono text-xs text-muted-foreground">[CONVERSION_FUNNEL]:</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">User journey from visitor to retained customer</div>
+                  <div className="text-muted-foreground font-mono text-xs">
+                    [CONVERSION_FUNNEL]:
+                  </div>
+                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                    User journey from visitor to retained customer
+                  </div>
                 </div>
-                <span className="border border-border px-2 py-0.5 font-mono text-xs">HORIZONTAL_BARS</span>
+                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                  HORIZONTAL_BARS
+                </span>
               </div>
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={conversionFunnelData} layout="vertical">
                   <CartesianGrid strokeDasharray="3 3" stroke="oklch(var(--border))" />
-                  <XAxis type="number" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`} />
-                  <YAxis type="category" dataKey="stage" tick={{ fontSize: 12 }} tickLine={{ stroke: "oklch(var(--border))" }} />
-                  <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                  <XAxis
+                    type="number"
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                    tickFormatter={(value) => `${(value / 1000).toFixed(1)}K`}
+                  />
+                  <YAxis
+                    type="category"
+                    dataKey="stage"
+                    tick={{ fontSize: 12 }}
+                    tickLine={{ stroke: "oklch(var(--border))" }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "oklch(var(--card))",
+                      border: "1px solid oklch(var(--border))",
+                      fontSize: "12px",
+                    }}
+                  />
                   <Bar dataKey="count" fill="oklch(var(--primary))" radius={[0, 0, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -260,13 +342,17 @@ export default function ChartLibraryTemplate() {
 
           {/* Pie Chart */}
           <TabsContent value="pie" className="mt-0">
-            <div className="border border-border border-t-0 bg-card p-4">
-              <div className="flex items-center justify-between mb-4">
+            <div className="border-border bg-card border border-t-0 p-4">
+              <div className="mb-4 flex items-center justify-between">
                 <div>
-                  <div className="font-mono text-xs text-muted-foreground">[TRAFFIC_SOURCES]:</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">Distribution of website visitors by source</div>
+                  <div className="text-muted-foreground font-mono text-xs">[TRAFFIC_SOURCES]:</div>
+                  <div className="text-muted-foreground mt-1 font-mono text-xs">
+                    Distribution of website visitors by source
+                  </div>
                 </div>
-                <span className="border border-border px-2 py-0.5 font-mono text-xs">DONUT_CHART</span>
+                <span className="border-border border px-2 py-0.5 font-mono text-xs">
+                  DONUT_CHART
+                </span>
               </div>
               <div className="flex items-center justify-center gap-12">
                 <ResponsiveContainer width={400} height={400}>
@@ -284,19 +370,32 @@ export default function ChartLibraryTemplate() {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <Tooltip contentStyle={{ background: "oklch(var(--card))", border: "1px solid oklch(var(--border))", fontSize: "12px" }} />
+                    <Tooltip
+                      contentStyle={{
+                        background: "oklch(var(--card))",
+                        border: "1px solid oklch(var(--border))",
+                        fontSize: "12px",
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
 
                 <div className="space-y-4">
                   {trafficSourceData.map((source, idx) => (
                     <div key={idx} className="flex items-center gap-4 font-mono text-sm">
-                      <div className="h-4 w-4 border border-border" style={{ backgroundColor: source.color }} />
+                      <div
+                        className="border-border h-4 w-4 border"
+                        style={{ backgroundColor: source.color }}
+                      />
                       <span className="w-32">{source.name}</span>
                       <div className="text-right">
                         <div className="font-bold">{source.value.toLocaleString()}</div>
                         <div className="text-muted-foreground">
-                          {((source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
+                          {(
+                            (source.value / trafficSourceData.reduce((a, b) => a + b.value, 0)) *
+                            100
+                          ).toFixed(1)}
+                          %
                         </div>
                       </div>
                     </div>
@@ -308,30 +407,53 @@ export default function ChartLibraryTemplate() {
         </Tabs>
 
         {/* Implementation Note */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
-              <div><span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar, Pie/Donut)</div>
-              <div><span className="text-success">&gt;</span> Recharts library (npm install recharts)</div>
-              <div><span className="text-success">&gt;</span> Custom tooltips with terminal styling</div>
-              <div><span className="text-success">&gt;</span> Solid fills with theme colors</div>
-              <div><span className="text-success">&gt;</span> Responsive containers (adapts to screen size)</div>
-              <div><span className="text-success">&gt;</span> Custom color schemes matching design system</div>
-              <div><span className="text-success">&gt;</span> Formatted axes (K notation for large numbers)</div>
-              <div><span className="text-success">&gt;</span> Tab navigation between chart types</div>
-              <div><span className="text-success">&gt;</span> Terminal console aesthetic</div>
+              <div>
+                <span className="text-success">&gt;</span> 4 chart types (Line, Area, Bar,
+                Pie/Donut)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Recharts library (npm install recharts)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Custom tooltips with terminal styling
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Solid fills with theme colors
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Responsive containers (adapts to screen
+                size)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Custom color schemes matching design
+                system
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Formatted axes (K notation for large
+                numbers)
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Tab navigation between chart types
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terminal console aesthetic
+              </div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
-              [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed, Treemap, and more.
+            <div className="text-muted-foreground mt-4 font-mono text-xs">
+              [NOTE]: Replace mock data with your API. Recharts supports Scatter, Radar, Composed,
+              Treemap, and more.
             </div>
           </div>
         </div>

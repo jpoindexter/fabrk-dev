@@ -24,7 +24,8 @@ const errorPages = [
     id: "error",
     code: "ERROR",
     title: "Something Went Wrong",
-    description: "We're sorry, but something unexpected happened. This error has been logged and we're looking into it.",
+    description:
+      "We're sorry, but something unexpected happened. This error has been logged and we're looking into it.",
     icon: AlertTriangle,
     terminal: [
       "$ process.run --component=App",
@@ -101,42 +102,37 @@ export default function ErrorPagesTemplate() {
 
   return (
     <div>
-      <div className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <div className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="inline-block border border-border px-4 py-1">
-            <span className="font-mono text-xs text-muted-foreground">
-              [TEMPLATE]: ERROR_PAGES
-            </span>
+          <div className="border-border inline-block border px-4 py-1">
+            <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: ERROR_PAGES</span>
           </div>
-          <h1 className="text-4xl font-semibold tracking-tight">Error Pages</h1>
-          <p className="font-mono text-sm text-muted-foreground">
+          <h1 className="font-mono text-4xl font-semibold tracking-tight">Error Pages</h1>
+          <p className="text-muted-foreground font-mono text-sm">
             Terminal-styled error pages for generic errors, 404, 500, and maintenance states
           </p>
         </div>
 
         {/* Error Type Selector with Tabs */}
         <Tabs value={activeError} onValueChange={setActiveError}>
-          <div className="border border-border bg-card">
-            <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+          <div className="border-border bg-card border">
+            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <div className="flex gap-2">
-                <div className="size-2 rounded-none bg-destructive/50" />
-                <div className="size-2 rounded-none bg-warning/50" />
-                <div className="size-2 rounded-none bg-success/50" />
+                <div className="bg-destructive/50 size-2 rounded-none" />
+                <div className="bg-warning/50 size-2 rounded-none" />
+                <div className="bg-success/50 size-2 rounded-none" />
               </div>
-              <span className="font-mono text-xs text-muted-foreground">
-                error_types.tsx
-              </span>
+              <span className="text-muted-foreground font-mono text-xs">error_types.tsx</span>
             </div>
-            <TabsList className="w-full justify-start rounded-none border-0 bg-transparent p-0 h-auto">
+            <TabsList className="h-auto w-full justify-start rounded-none border-0 bg-transparent p-0">
               {errorPages.map((error) => (
                 <TabsTrigger
                   key={error.id}
                   value={error.id}
-                  className="flex items-center gap-2 px-4 py-2 border-r border-border rounded-none font-mono text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground"
+                  className="border-border data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:bg-muted data-[state=inactive]:hover:text-foreground flex items-center gap-2 rounded-none border-r px-4 py-2 font-mono text-xs"
                 >
-                  <error.icon className="h-3 w-3" />
-                  [{error.code}]
+                  <error.icon className="h-3 w-3" />[{error.code}]
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -147,24 +143,24 @@ export default function ErrorPagesTemplate() {
             const Icon = error.icon;
             return (
               <TabsContent key={error.id} value={error.id} className="mt-6">
-                <div className="border border-border bg-card">
-                  <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+                <div className="border-border bg-card border">
+                  <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                     <div className="flex gap-2">
-                      <div className="size-2 rounded-none bg-destructive/50" />
-                      <div className="size-2 rounded-none bg-warning/50" />
-                      <div className="size-2 rounded-none bg-success/50" />
+                      <div className="bg-destructive/50 size-2 rounded-none" />
+                      <div className="bg-warning/50 size-2 rounded-none" />
+                      <div className="bg-success/50 size-2 rounded-none" />
                     </div>
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="text-muted-foreground font-mono text-xs">
                       error_{error.code}.tsx
                     </span>
                   </div>
 
                   <div className="p-8">
                     {/* Error Content */}
-                    <div className="max-w-lg mx-auto text-center space-y-6">
+                    <div className="mx-auto max-w-lg space-y-6 text-center">
                       {/* Icon */}
                       <div
-                        className={`w-20 h-20 mx-auto border flex items-center justify-center ${
+                        className={`mx-auto flex h-20 w-20 items-center justify-center border ${
                           error.id === "503"
                             ? "border-warning bg-warning/10"
                             : "border-destructive bg-destructive/10"
@@ -172,9 +168,7 @@ export default function ErrorPagesTemplate() {
                       >
                         <Icon
                           className={`h-10 w-10 ${
-                            error.id === "503"
-                              ? "text-warning"
-                              : "text-destructive"
+                            error.id === "503" ? "text-warning" : "text-destructive"
                           }`}
                         />
                       </div>
@@ -183,9 +177,7 @@ export default function ErrorPagesTemplate() {
                       <div className="font-mono">
                         <span
                           className={`text-6xl font-bold ${
-                            error.id === "503"
-                              ? "text-warning"
-                              : "text-destructive"
+                            error.id === "503" ? "text-warning" : "text-destructive"
                           }`}
                         >
                           {error.code}
@@ -194,27 +186,23 @@ export default function ErrorPagesTemplate() {
 
                       {/* Title & Description */}
                       <div>
-                        <h2 className="text-2xl font-semibold mb-2">
-                          {error.title}
-                        </h2>
-                        <p className="font-mono text-sm text-muted-foreground">
+                        <h2 className="mb-2 font-mono text-2xl font-semibold">{error.title}</h2>
+                        <p className="text-muted-foreground font-mono text-sm">
                           {error.description}
                         </p>
                       </div>
 
                       {/* Terminal Output */}
-                      <div className="border border-border bg-card text-left">
-                        <div className="flex items-center gap-2 border-b border-border/50 px-4 py-1.5">
+                      <div className="border-border bg-card border text-left">
+                        <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
                           <div className="flex gap-2">
-                            <div className="size-2 rounded-none bg-destructive/50" />
-                            <div className="size-2 rounded-none bg-warning/50" />
-                            <div className="size-2 rounded-none bg-success/50" />
+                            <div className="bg-destructive/50 size-2 rounded-none" />
+                            <div className="bg-warning/50 size-2 rounded-none" />
+                            <div className="bg-success/50 size-2 rounded-none" />
                           </div>
-                          <span className="font-mono text-xs text-muted-foreground">
-                            terminal
-                          </span>
+                          <span className="text-muted-foreground font-mono text-xs">terminal</span>
                         </div>
-                        <div className="p-4 font-mono text-xs text-foreground space-y-0.5">
+                        <div className="text-foreground space-y-0.5 p-4 font-mono text-xs">
                           {error.terminal.map((line, idx) => (
                             <div
                               key={idx}
@@ -238,44 +226,38 @@ export default function ErrorPagesTemplate() {
                       <div className="flex items-center justify-center gap-4">
                         {error.actions.includes("GO_HOME") && (
                           <Button className="rounded-none font-mono text-xs">
-                            <Home className="h-3 w-3 mr-1" />
+                            <Home className="mr-1 h-3 w-3" />
                             &gt; GO_HOME
                           </Button>
                         )}
                         {error.actions.includes("GO_BACK") && (
-                          <Button
-                            variant="outline"
-                            className="rounded-none font-mono text-xs"
-                          >
-                            <ArrowLeft className="h-3 w-3 mr-1" />
+                          <Button variant="outline" className="rounded-none font-mono text-xs">
+                            <ArrowLeft className="mr-1 h-3 w-3" />
                             &gt; GO_BACK
                           </Button>
                         )}
                         {error.actions.includes("TRY_AGAIN") && (
                           <Button className="rounded-none font-mono text-xs">
-                            <RefreshCw className="h-3 w-3 mr-1" />
+                            <RefreshCw className="mr-1 h-3 w-3" />
                             &gt; TRY_AGAIN
                           </Button>
                         )}
                         {error.actions.includes("REFRESH") && (
                           <Button className="rounded-none font-mono text-xs">
-                            <RefreshCw className="h-3 w-3 mr-1" />
+                            <RefreshCw className="mr-1 h-3 w-3" />
                             &gt; REFRESH
                           </Button>
                         )}
                         {error.actions.includes("STATUS_PAGE") && (
-                          <Button
-                            variant="outline"
-                            className="rounded-none font-mono text-xs"
-                          >
-                            <AlertTriangle className="h-3 w-3 mr-1" />
+                          <Button variant="outline" className="rounded-none font-mono text-xs">
+                            <AlertTriangle className="mr-1 h-3 w-3" />
                             &gt; STATUS_PAGE
                           </Button>
                         )}
                       </div>
 
                       {/* Request ID */}
-                      <div className="font-mono text-xs text-muted-foreground">
+                      <div className="text-muted-foreground font-mono text-xs">
                         REQUEST_ID: req_abc123def456
                       </div>
                     </div>
@@ -287,23 +269,21 @@ export default function ErrorPagesTemplate() {
         </Tabs>
 
         {/* Usage Examples */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid gap-4 md:grid-cols-3">
           {errorPages.map((error) => {
             const ErrorIcon = error.icon;
             return (
-              <div key={error.id} className="border border-border bg-card">
-                <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+              <div key={error.id} className="border-border bg-card border">
+                <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                   <div className="flex gap-2">
-                    <div className="size-2 rounded-none bg-destructive/50" />
-                    <div className="size-2 rounded-none bg-warning/50" />
-                    <div className="size-2 rounded-none bg-success/50" />
+                    <div className="bg-destructive/50 size-2 rounded-none" />
+                    <div className="bg-warning/50 size-2 rounded-none" />
+                    <div className="bg-success/50 size-2 rounded-none" />
                   </div>
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {error.code}.tsx
-                  </span>
+                  <span className="text-muted-foreground font-mono text-xs">{error.code}.tsx</span>
                 </div>
                 <div className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="mb-2 flex items-center gap-2">
                     <ErrorIcon
                       className={`h-4 w-4 ${
                         error.id === "503" ? "text-warning" : "text-destructive"
@@ -313,13 +293,11 @@ export default function ErrorPagesTemplate() {
                       {error.code} - {error.title}
                     </span>
                   </div>
-                  <p className="font-mono text-xs text-muted-foreground mb-4">
+                  <p className="text-muted-foreground mb-4 font-mono text-xs">
                     {error.description}
                   </p>
-                  <div className="font-mono text-xs text-muted-foreground">
-                    [USE_CASE]:
-                  </div>
-                  <div className="font-mono text-xs mt-1">
+                  <div className="text-muted-foreground font-mono text-xs">[USE_CASE]:</div>
+                  <div className="mt-1 font-mono text-xs">
                     {error.id === "error" && "React errors, unexpected exceptions"}
                     {error.id === "404" && "Invalid routes, deleted content"}
                     {error.id === "500" && "Server crashes, API failures"}
@@ -332,49 +310,39 @@ export default function ErrorPagesTemplate() {
         </div>
 
         {/* Features Card */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">
-              features.md
-            </span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">
-              [TEMPLATE_FEATURES]:
-            </div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
               <div>
                 <span className="text-success">&gt;</span> Generic error, 404, 500, 503 templates
               </div>
               <div>
-                <span className="text-success">&gt;</span> Terminal-style error
-                output
+                <span className="text-success">&gt;</span> Terminal-style error output
               </div>
               <div>
-                <span className="text-success">&gt;</span> Contextual action
-                buttons
+                <span className="text-success">&gt;</span> Contextual action buttons
               </div>
               <div>
-                <span className="text-success">&gt;</span> Request ID for
-                debugging
+                <span className="text-success">&gt;</span> Request ID for debugging
               </div>
               <div>
-                <span className="text-success">&gt;</span> Color-coded severity
-                (error vs warning)
+                <span className="text-success">&gt;</span> Color-coded severity (error vs warning)
               </div>
               <div>
-                <span className="text-success">&gt;</span> Maintenance mode with
-                ETA
+                <span className="text-success">&gt;</span> Maintenance mode with ETA
               </div>
             </div>
-            <div className="mt-4 font-mono text-xs text-muted-foreground">
-              [NOTE]: Copy these to app/not-found.tsx, app/error.tsx, and
-              app/maintenance/page.tsx
+            <div className="text-muted-foreground mt-4 font-mono text-xs">
+              [NOTE]: Copy these to app/not-found.tsx, app/error.tsx, and app/maintenance/page.tsx
             </div>
           </div>
         </div>

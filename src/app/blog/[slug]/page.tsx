@@ -6,6 +6,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import {
   getPostBySlug,
@@ -87,9 +88,11 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="text-muted-foreground flex flex-wrap items-center gap-4 font-mono text-xs">
               <div className="flex items-center gap-2">
                 {post.author.image && (
-                  <img
+                  <Image
                     src={post.author.image}
                     alt={`${post.author.name || "Author"} avatar`}
+                    width={24}
+                    height={24}
                     className="h-6 w-6 rounded-full"
                   />
                 )}
@@ -107,11 +110,12 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Featured Image */}
         {post.featuredImage && (
-          <div className="border-border mb-8 overflow-hidden border">
-            <img
+          <div className="border-border relative mb-8 aspect-video overflow-hidden border">
+            <Image
               src={post.featuredImage}
               alt={`Featured image for ${post.title}`}
-              className="w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         )}

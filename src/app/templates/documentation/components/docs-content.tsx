@@ -10,12 +10,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  ChevronRight,
-  Copy,
-  CheckCircle2,
-  ExternalLink,
-} from "lucide-react";
+import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
 
 interface DocsContentProps {
@@ -40,18 +35,16 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
     <main className="flex-1 p-8">
       <div className="mx-auto max-w-4xl space-y-6">
         {/* Template Label */}
-        <div className="inline-block border border-border px-4 py-1">
-          <span className="font-mono text-xs text-muted-foreground">
-            [TEMPLATE]: DOCUMENTATION
-          </span>
+        <div className="border-border inline-block border px-4 py-1">
+          <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: DOCUMENTATION</span>
         </div>
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-mono text-xs">
           <span className="text-muted-foreground">Docs</span>
-          <ChevronRight className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+          <ChevronRight className="text-muted-foreground h-3 w-3" aria-hidden="true" />
           <span className="text-muted-foreground">Getting Started</span>
-          <ChevronRight className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+          <ChevronRight className="text-muted-foreground h-3 w-3" aria-hidden="true" />
           <span className="text-foreground" aria-current="page">
             {currentDoc.title}
           </span>
@@ -59,17 +52,13 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
 
         {/* Page Header */}
         <header>
-          <h1 className="text-4xl font-semibold tracking-tight mb-4 text-foreground">
+          <h1 className="text-foreground mb-4 font-mono text-4xl font-semibold tracking-tight">
             {currentDoc.title}
           </h1>
-          <p className="font-mono text-sm text-muted-foreground mb-4">
-            {currentDoc.description}
-          </p>
+          <p className="text-muted-foreground mb-4 font-mono text-sm">{currentDoc.description}</p>
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="rounded-none font-mono text-xs">
-              <time dateTime={currentDoc.lastUpdated}>
-                Last updated: {currentDoc.lastUpdated}
-              </time>
+              <time dateTime={currentDoc.lastUpdated}>Last updated: {currentDoc.lastUpdated}</time>
             </Badge>
             <Button
               variant="ghost"
@@ -92,7 +81,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               return (
                 <h2
                   key={idx}
-                  className="font-mono text-sm font-bold mt-8 mb-4 text-foreground scroll-mt-20"
+                  className="text-foreground mt-8 mb-4 scroll-mt-20 font-mono text-sm font-bold"
                   id={section.content.toLowerCase().replace(/\s+/g, "-")}
                 >
                   [{section.content.toUpperCase().replace(/ /g, "_")}]:
@@ -108,15 +97,15 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                   role="region"
                   aria-label={`Code example in ${section.language || "code"}`}
                 >
-                  <div className="border border-border overflow-hidden bg-card">
-                    <div className="flex items-center justify-between bg-muted px-4 py-2 border-b border-border">
+                  <div className="border-border bg-card overflow-hidden border">
+                    <div className="bg-muted border-border flex items-center justify-between border-b px-4 py-2">
                       <div className="flex items-center gap-2">
                         <div className="flex gap-2">
-                          <div className="size-2 rounded-none bg-destructive/50" />
-                          <div className="size-2 rounded-none bg-warning/50" />
-                          <div className="size-2 rounded-none bg-success/50" />
+                          <div className="bg-destructive/50 size-2 rounded-none" />
+                          <div className="bg-warning/50 size-2 rounded-none" />
+                          <div className="bg-success/50 size-2 rounded-none" />
                         </div>
-                        <span className="font-mono text-xs text-muted-foreground">
+                        <span className="text-muted-foreground font-mono text-xs">
                           {section.language || "code"}
                         </span>
                       </div>
@@ -124,11 +113,9 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleCopyCode(section.content, `code-${idx}`)}
-                        className="rounded-none font-mono text-xs h-7"
+                        className="h-7 rounded-none font-mono text-xs"
                         aria-label={
-                          copiedCode === `code-${idx}`
-                            ? "Code copied"
-                            : "Copy code to clipboard"
+                          copiedCode === `code-${idx}` ? "Code copied" : "Copy code to clipboard"
                         }
                       >
                         {copiedCode === `code-${idx}` ? (
@@ -145,8 +132,8 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
                       </Button>
                     </div>
                     <div className="bg-card">
-                      <pre className="overflow-auto p-4 m-0 text-xs leading-relaxed" tabIndex={0}>
-                        <code className="font-mono text-foreground">{section.content}</code>
+                      <pre className="m-0 overflow-auto p-4 text-xs leading-relaxed" tabIndex={0}>
+                        <code className="text-foreground font-mono">{section.content}</code>
                       </pre>
                     </div>
                   </div>
@@ -155,7 +142,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
             }
 
             return (
-              <p key={idx} className="font-mono text-xs leading-relaxed text-muted-foreground">
+              <p key={idx} className="text-muted-foreground font-mono text-xs leading-relaxed">
                 {section.content}
               </p>
             );
@@ -183,24 +170,24 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
         </nav>
 
         {/* Help Section */}
-        <div className="mt-12 border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card mt-12 border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">help.tsx</span>
+            <span className="text-muted-foreground font-mono text-xs">help.tsx</span>
           </div>
           <div className="p-4">
-            <div className="font-mono text-xs text-muted-foreground mb-1">[NEED_HELP]:</div>
-            <div className="font-mono text-xs text-muted-foreground mb-4">
+            <div className="text-muted-foreground mb-1 font-mono text-xs">[NEED_HELP]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">
               Can't find what you're looking for?
             </div>
             <div className="space-y-2">
               <Button
                 variant="outline"
-                className="rounded-none w-full justify-start font-mono text-xs"
+                className="w-full justify-start rounded-none font-mono text-xs"
                 aria-label="Ask question on GitHub Discussions"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -208,7 +195,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-none w-full justify-start font-mono text-xs"
+                className="w-full justify-start rounded-none font-mono text-xs"
                 aria-label="Report an issue on GitHub"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />
@@ -216,7 +203,7 @@ export function DocsContent({ currentDoc }: DocsContentProps) {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-none w-full justify-start font-mono text-xs"
+                className="w-full justify-start rounded-none font-mono text-xs"
                 aria-label="Contact support team"
               >
                 <ExternalLink className="mr-2 h-3 w-3" aria-hidden="true" />

@@ -20,40 +20,40 @@ export default function SignUpTemplate() {
   return (
     <div>
       {/* Page Content */}
-      <main className="container mx-auto max-w-7xl px-6 py-8 space-y-6">
+      <main className="container mx-auto max-w-7xl space-y-6 px-6 py-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="inline-block border border-border px-4 py-1">
-              <span className="font-mono text-xs text-muted-foreground">[TEMPLATE]: SIGN_UP</span>
+            <div className="border-border inline-block border px-4 py-1">
+              <span className="text-muted-foreground font-mono text-xs">[TEMPLATE]: SIGN_UP</span>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">Sign Up</h1>
-            <p className="font-mono text-sm text-muted-foreground">
+            <h1 className="font-mono text-4xl font-semibold tracking-tight">Sign Up</h1>
+            <p className="text-muted-foreground font-mono text-sm">
               Registration page with form validation and social providers
             </p>
           </div>
         </div>
 
         {/* Template Preview */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">preview.tsx</span>
+            <span className="text-muted-foreground font-mono text-xs">preview.tsx</span>
           </div>
-          
-          <div className="flex min-h-[700px] flex-col items-center justify-center p-4 sm:p-8 bg-background/50">
-            <div className="w-full max-w-[380px] space-y-6 border border-border bg-background p-6 shadow-sm">
+
+          <div className="bg-background/50 flex min-h-[700px] flex-col items-center justify-center p-4 sm:p-8">
+            <div className="border-border bg-background w-full max-w-[380px] space-y-6 border p-6 shadow-sm">
               {/* Header */}
               <div className="flex flex-col space-y-2 text-center">
-                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center border border-border bg-card">
-                  <UserPlus className="h-5 w-5 text-primary" />
+                <div className="border-border bg-card mx-auto mb-2 flex h-10 w-10 items-center justify-center border">
+                  <UserPlus className="text-primary h-5 w-5" />
                 </div>
-                <h1 className="text-2xl font-bold tracking-tight">Create an account</h1>
-                <p className="text-sm text-muted-foreground">
+                <h1 className="font-mono text-2xl font-bold tracking-tight">Create an account</h1>
+                <p className="text-muted-foreground text-sm">
                   Enter your information to get started with Fabrk
                 </p>
               </div>
@@ -63,17 +63,33 @@ export default function SignUpTemplate() {
                 <form className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="first-name" className="font-mono text-xs">[FIRST_NAME]:</Label>
-                      <Input id="first-name" placeholder="John" required className="rounded-none font-mono text-xs" />
+                      <Label htmlFor="first-name" className="font-mono text-xs">
+                        [FIRST_NAME]:
+                      </Label>
+                      <Input
+                        id="first-name"
+                        placeholder="John"
+                        required
+                        className="rounded-none font-mono text-xs"
+                      />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="last-name" className="font-mono text-xs">[LAST_NAME]:</Label>
-                      <Input id="last-name" placeholder="Doe" required className="rounded-none font-mono text-xs" />
+                      <Label htmlFor="last-name" className="font-mono text-xs">
+                        [LAST_NAME]:
+                      </Label>
+                      <Input
+                        id="last-name"
+                        placeholder="Doe"
+                        required
+                        className="rounded-none font-mono text-xs"
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs">[EMAIL]:</Label>
+                    <Label htmlFor="email" className="font-mono text-xs">
+                      [EMAIL]:
+                    </Label>
                     <Input
                       id="email"
                       placeholder="name@example.com"
@@ -87,7 +103,9 @@ export default function SignUpTemplate() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="font-mono text-xs">[PASSWORD]:</Label>
+                    <Label htmlFor="password" className="font-mono text-xs">
+                      [PASSWORD]:
+                    </Label>
                     <Input
                       id="password"
                       type="password"
@@ -96,7 +114,7 @@ export default function SignUpTemplate() {
                       required
                       className="rounded-none font-mono text-xs"
                     />
-                    <p className="text-xs text-muted-foreground font-mono">
+                    <p className="text-muted-foreground font-mono text-xs">
                       Must be at least 8 characters long
                     </p>
                   </div>
@@ -105,7 +123,7 @@ export default function SignUpTemplate() {
                     <Checkbox id="terms" className="mt-0.5 rounded-none" />
                     <Label
                       htmlFor="terms"
-                      className="text-xs font-mono font-normal text-muted-foreground leading-normal"
+                      className="text-muted-foreground font-mono text-xs leading-normal font-normal"
                     >
                       I agree to the{" "}
                       <Link href="#" className="text-primary hover:underline">
@@ -125,10 +143,10 @@ export default function SignUpTemplate() {
 
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-border" />
+                    <span className="border-border w-full border-t" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-background px-2 text-muted-foreground">
+                    <span className="bg-background text-muted-foreground px-2">
                       Or sign up with
                     </span>
                   </div>
@@ -164,11 +182,11 @@ export default function SignUpTemplate() {
                 </div>
               </div>
 
-              <p className="px-8 text-center text-sm text-muted-foreground">
+              <p className="text-muted-foreground px-8 text-center text-sm">
                 Already have an account?{" "}
                 <Link
                   href="/templates/authentication/sign-in"
-                  className="underline underline-offset-4 hover:text-primary"
+                  className="hover:text-primary underline underline-offset-4"
                 >
                   Sign in
                 </Link>
@@ -178,23 +196,33 @@ export default function SignUpTemplate() {
         </div>
 
         {/* Template Features Card */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <div className="flex gap-2">
-              <div className="size-2 rounded-none bg-destructive/50" />
-              <div className="size-2 rounded-none bg-warning/50" />
-              <div className="size-2 rounded-none bg-success/50" />
+              <div className="bg-destructive/50 size-2 rounded-none" />
+              <div className="bg-warning/50 size-2 rounded-none" />
+              <div className="bg-success/50 size-2 rounded-none" />
             </div>
-            <span className="font-mono text-xs text-muted-foreground">features.md</span>
+            <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-4">
-            <div className="mb-4 font-mono text-xs text-muted-foreground">[TEMPLATE_FEATURES]:</div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">[TEMPLATE_FEATURES]:</div>
             <div className="space-y-1.5 font-mono text-xs">
-              <div><span className="text-success">&gt;</span> Multi-step registration form layout</div>
-              <div><span className="text-success">&gt;</span> Terms of Service checkbox validation</div>
-              <div><span className="text-success">&gt;</span> Password strength indicator support</div>
-              <div><span className="text-success">&gt;</span> Social sign-up integration</div>
-              <div><span className="text-success">&gt;</span> Mobile-responsive card design</div>
+              <div>
+                <span className="text-success">&gt;</span> Multi-step registration form layout
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Terms of Service checkbox validation
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Password strength indicator support
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Social sign-up integration
+              </div>
+              <div>
+                <span className="text-success">&gt;</span> Mobile-responsive card design
+              </div>
             </div>
           </div>
         </div>

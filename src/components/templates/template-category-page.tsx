@@ -1,17 +1,47 @@
 /**
- * ✅ FABRK COMPONENT
- * Admin Panels Category - Terminal console style
- * Production-ready ✓
+ * FABRK COMPONENT
+ * Template Category Page - Standard wrapper for category listing pages
+ * Provides consistent layout for template category grids
  */
+
 "use client";
 
 import Link from "next/link";
-import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
+import { LucideIcon } from "lucide-react";
 
-export default function AdminPanelsPage() {
-  const categoryTemplates = getTemplatesByCategory("admin");
-  const categoryInfo = getCategoryInfo("admin");
+interface Template {
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  badge?: string;
+  href: string;
+  features: string[];
+}
 
+interface TemplateCategoryPageProps {
+  /** Category code for display (e.g., "DASHBOARDS", "AUTHENTICATION") */
+  categoryCode: string;
+  /** Display title of the category */
+  title: string;
+  /** Category icon component */
+  icon?: LucideIcon;
+  /** List of templates in this category */
+  templates: Template[];
+  /** Features to display in the bottom card */
+  features: string[];
+  /** Feature card title (e.g., "[DASHBOARD_TEMPLATES]:") */
+  featureCardTitle: string;
+}
+
+export function TemplateCategoryPage({
+  categoryCode,
+  title,
+  icon: CategoryIcon,
+  templates,
+  features,
+  featureCardTitle,
+}: TemplateCategoryPageProps) {
   return (
     <div>
       <main className="container mx-auto max-w-7xl space-y-12 px-6 py-12">
@@ -19,23 +49,23 @@ export default function AdminPanelsPage() {
         <section className="space-y-4">
           <div className="border-border inline-block border px-4 py-1">
             <span className="text-muted-foreground font-mono text-xs">
-              [CATEGORY]: ADMIN_PANELS
+              [CATEGORY]: {categoryCode}
             </span>
           </div>
           <div className="flex items-center gap-4">
-            {categoryInfo && <categoryInfo.icon className="text-primary h-6 w-6" />}
-            <h1 className="font-mono text-3xl font-bold">Admin Panels</h1>
+            {CategoryIcon && <CategoryIcon className="text-primary h-6 w-6" />}
+            <h1 className="font-mono text-3xl font-bold">{title}</h1>
             <span className="border-border border px-2 py-0.5 font-mono text-xs">
-              COUNT: {categoryTemplates.length}
+              COUNT: {templates.length}
             </span>
           </div>
         </section>
 
         {/* Templates Grid */}
         <div className="grid gap-4 md:grid-cols-2">
-          {categoryTemplates.map((template) => (
+          {templates.map((template) => (
             <Link key={template.id} href={template.href}>
-              <div className="group border-border bg-card hover:border-primary/50 border transition-colors">
+              <div className="border-border bg-card hover:border-primary/50 group border transition-colors">
                 {/* Card Header */}
                 <div className="border-border flex items-center justify-between border-b px-4 py-2">
                   <span className="text-muted-foreground font-mono text-xs">
@@ -109,31 +139,13 @@ export default function AdminPanelsPage() {
             <span className="text-muted-foreground font-mono text-xs">features.md</span>
           </div>
           <div className="p-6">
-            <div className="text-muted-foreground mb-4 font-mono text-xs">
-              [ADMIN_PANEL_TEMPLATES]:
-            </div>
+            <div className="text-muted-foreground mb-4 font-mono text-xs">{featureCardTitle}</div>
             <div className="space-y-2 font-mono text-xs">
-              <div>
-                <span className="text-success">&gt;</span> User management with role-based access
-                control
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Invitation system with 7-day token expiry
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Organization switcher with multi-tenancy
-                support
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Audit logs and activity tracking
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Data tables with sorting, filtering, and
-                pagination
-              </div>
-              <div>
-                <span className="text-success">&gt;</span> Webhook management and delivery history
-              </div>
+              {features.map((feature, index) => (
+                <div key={index}>
+                  <span className="text-success">&gt;</span> {feature}
+                </div>
+              ))}
             </div>
           </div>
         </div>

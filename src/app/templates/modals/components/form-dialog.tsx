@@ -27,21 +27,19 @@ interface FormDialogProps {
 
 export function FormDialog({ open, onOpenChange }: FormDialogProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+    <div className="border-border bg-card border">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
+          <div className="bg-destructive/50 size-2 rounded-none" />
+          <div className="bg-warning/50 size-2 rounded-none" />
+          <div className="bg-success/50 size-2 rounded-none" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          form_dialog.tsx
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">form_dialog.tsx</span>
       </div>
       <div className="p-6">
         <div className="mb-4">
-          <h3 className="font-semibold mb-1">Form Dialog</h3>
-          <p className="font-mono text-xs text-muted-foreground">
+          <h3 className="mb-1 font-mono font-semibold">Form Dialog</h3>
+          <p className="text-muted-foreground font-mono text-xs">
             Modal form for creating or editing items
           </p>
         </div>
@@ -53,7 +51,7 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
               &gt; CREATE_PROJECT
             </Button>
           </DialogTrigger>
-          <DialogContent className="rounded-none border-border">
+          <DialogContent className="border-border rounded-none">
             <DialogHeader>
               <DialogTitle className="font-mono">[NEW_PROJECT]</DialogTitle>
               <DialogDescription className="font-mono text-sm">
@@ -72,7 +70,7 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
                 <Label className="font-mono text-xs">[DESCRIPTION]:</Label>
                 <Textarea
                   placeholder="Describe your project..."
-                  className="rounded-none font-mono text-sm resize-none"
+                  className="resize-none rounded-none font-mono text-sm"
                   rows={3}
                 />
               </div>
@@ -95,7 +93,7 @@ export function FormDialog({ open, onOpenChange }: FormDialogProps) {
           </DialogContent>
         </Dialog>
 
-        <div className="mt-4 font-mono text-xs text-muted-foreground">
+        <div className="text-muted-foreground mt-4 font-mono text-xs">
           [USE_CASE]: Create, edit, quick forms, settings
         </div>
       </div>

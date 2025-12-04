@@ -35,25 +35,23 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   return (
-    <div className="border border-border bg-card">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+    <div className="border-border bg-card border">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <div className="flex gap-2">
-          <div className="size-2 rounded-none bg-destructive/50" />
-          <div className="size-2 rounded-none bg-warning/50" />
-          <div className="size-2 rounded-none bg-success/50" />
+          <div className="bg-destructive/50 size-2 rounded-none" />
+          <div className="bg-warning/50 size-2 rounded-none" />
+          <div className="bg-success/50 size-2 rounded-none" />
         </div>
-        <span className="font-mono text-xs text-muted-foreground">
-          profile.tsx
-        </span>
+        <span className="text-muted-foreground font-mono text-xs">profile.tsx</span>
       </div>
 
       <div className="p-6">
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col gap-6 md:flex-row">
           {/* Avatar Section */}
           <div className="flex-shrink-0">
-            <Avatar className="h-32 w-32 border-2 border-border rounded-none shadow-none">
+            <Avatar className="border-border h-32 w-32 rounded-none border-2 shadow-none">
               <AvatarImage src={user.avatar || undefined} />
-              <AvatarFallback className="rounded-none bg-muted text-2xl font-mono">
+              <AvatarFallback className="bg-muted rounded-none font-mono text-2xl">
                 {user.name
                   .split(" ")
                   .map((n) => n[0])
@@ -63,10 +61,10 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           </div>
 
           {/* Info Section */}
-          <div className="flex-1 flex flex-col gap-4">
+          <div className="flex flex-1 flex-col gap-4">
             {/* Name + Buttons row */}
             <div className="flex items-center justify-between gap-4">
-              <h2 className="text-2xl font-semibold">{user.name}</h2>
+              <h2 className="font-mono text-2xl font-semibold">{user.name}</h2>
               <div className="flex gap-2">
                 <Button className="rounded-none font-mono text-xs">
                   <Edit className="mr-1 h-3 w-3" />
@@ -79,24 +77,25 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
             </div>
 
             {/* Location */}
-            <div className="flex items-center gap-1 font-mono text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-1 font-mono text-sm">
               <MapPin className="h-3 w-3" />
               {user.location}
             </div>
 
             {/* Bio */}
-            <p className="font-mono text-sm text-muted-foreground">{user.bio}</p>
+            <p className="text-muted-foreground font-mono text-sm">{user.bio}</p>
           </div>
         </div>
 
         {/* Stats - bottom row in boxes */}
-        <div className="flex mt-6 pt-6 border-t border-border">
+        <div className="border-border mt-6 flex border-t pt-6">
           {Object.entries(user.stats).map(([key, value], index) => (
-            <div key={key} className={`text-center px-4 py-2 border border-border ${index > 0 ? 'border-l-0' : ''}`}>
+            <div
+              key={key}
+              className={`border-border border px-4 py-2 text-center ${index > 0 ? "border-l-0" : ""}`}
+            >
               <div className="text-xl font-bold">{value}</div>
-              <div className="font-mono text-xs text-muted-foreground uppercase">
-                {key}
-              </div>
+              <div className="text-muted-foreground font-mono text-xs uppercase">{key}</div>
             </div>
           ))}
         </div>

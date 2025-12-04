@@ -21,7 +21,7 @@ export function StepPreferences({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="mb-1 text-xl font-semibold">Preferences</h2>
+        <h2 className="mb-1 font-mono text-xl font-semibold">Preferences</h2>
         <p className="text-muted-foreground font-mono text-xs">Customize your experience</p>
       </div>
 
