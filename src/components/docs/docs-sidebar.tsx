@@ -5,10 +5,18 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { ChevronRight, PanelLeftClose, PanelLeft, ExternalLink, LucideIcon } from "lucide-react";
+import {
+  ChevronRight,
+  PanelLeftClose,
+  PanelLeft,
+  ExternalLink,
+  LucideIcon,
+  Search,
+  X,
+} from "lucide-react";
 
 export interface NavItem {
   title: string;
@@ -91,6 +99,66 @@ export function DocsSidebar({
 
   // Sidebar collapse state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter navigation based on search query
+  const filteredNavigation = useMemo(() => {
+    if (!searchQuery.trim()) return navigation;
+
+    const query = searchQuery.toLowerCase();
+    return navigation
+      .map((section) => {
+        // Filter direct items
+        const matchingItems = section.items.filter((item) =>
+          item.title.toLowerCase().includes(query)
+        );
+
+        // Filter sub-section items
+        const matchingSubSections = section.subSections
+          ?.map((sub) => ({
+            ...sub,
+            items: sub.items.filter((item) => item.title.toLowerCase().includes(query)),
+          }))
+          .filter((sub) => sub.items.length > 0);
+
+        // Check if section title matches
+        const sectionMatches = section.title.toLowerCase().includes(query);
+
+        if (
+          sectionMatches ||
+          matchingItems.length > 0 ||
+          (matchingSubSections && matchingSubSections.length > 0)
+        ) {
+          return {
+            ...section,
+            items: sectionMatches ? section.items : matchingItems,
+            subSections: sectionMatches ? section.subSections : matchingSubSections,
+          };
+        }
+        return null;
+      })
+      .filter(Boolean) as NavSection[];
+  }, [navigation, searchQuery]);
+
+  // When searching, expand all sections with matches
+  const sectionsToExpand = useMemo(() => {
+    if (!searchQuery.trim()) return expandedSections;
+    return new Set(filteredNavigation.map((_, i) => i));
+  }, [searchQuery, filteredNavigation, expandedSections]);
+
+  // When searching, expand all matching sub-sections
+  const subSectionsToExpand = useMemo(() => {
+    if (!searchQuery.trim()) return expandedSubSections;
+    const expanded = new Set<string>();
+    filteredNavigation.forEach((section, sectionIndex) => {
+      section.subSections?.forEach((_, subIndex) => {
+        expanded.add(`${sectionIndex}-${subIndex}`);
+      });
+    });
+    return expanded;
+  }, [searchQuery, filteredNavigation, expandedSubSections]);
 
   // Update expanded sections when pathname changes
   // Note: We intentionally read expandedSections/expandedSubSections to check if already expanded
@@ -183,8 +251,37 @@ export function DocsSidebar({
             </button>
           </div>
 
-          {navigation.map((section, sectionIndex) => {
-            const isExpanded = expandedSections.has(sectionIndex);
+          {/* Search input */}
+          <div className="relative mb-3">
+            <Search className="text-muted-foreground absolute top-1/2 left-2 h-3 w-3 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search docs..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 w-full border py-1.5 pr-7 pl-7 font-mono text-xs focus:ring-1 focus:outline-none"
+              aria-label="Search documentation"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="text-muted-foreground hover:text-foreground absolute top-1/2 right-2 -translate-y-1/2"
+                aria-label="Clear search"
+              >
+                <X className="h-3 w-3" />
+              </button>
+            )}
+          </div>
+
+          {/* No results message */}
+          {searchQuery && filteredNavigation.length === 0 && (
+            <div className="text-muted-foreground py-4 text-center font-mono text-xs">
+              No results for &quot;{searchQuery}&quot;
+            </div>
+          )}
+
+          {filteredNavigation.map((section, sectionIndex) => {
+            const isExpanded = sectionsToExpand.has(sectionIndex);
             const hasActiveItem =
               section.items.some((item) => pathname === item.href) ||
               pathname === section.href ||
@@ -260,7 +357,7 @@ export function DocsSidebar({
                     {/* Sub-sections (nested collapsible groups) */}
                     {section.subSections?.map((subSection, subIndex) => {
                       const subKey = `${sectionIndex}-${subIndex}`;
-                      const isSubExpanded = expandedSubSections.has(subKey);
+                      const isSubExpanded = subSectionsToExpand.has(subKey);
                       const hasActiveSubItem = subSection.items.some(
                         (item) => pathname === item.href
                       );
