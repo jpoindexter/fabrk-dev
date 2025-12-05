@@ -1,11 +1,7 @@
 "use client";
 
 import { ComponentShowcaseTemplate } from "@/components/docs";
-import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from "@/components/ui/hover-card";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarDays, MapPin, Link as LinkIcon } from "lucide-react";
@@ -30,22 +26,20 @@ export default function HoverCardPage() {
                 @nextjs
               </Button>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 rounded-none">
+            <HoverCardContent className="w-80">
               <div className="flex justify-between space-x-4">
-                <Avatar className="rounded-none">
+                <Avatar>
                   <AvatarImage src="https://github.com/vercel.png" />
-                  <AvatarFallback className="rounded-none">VC</AvatarFallback>
+                  <AvatarFallback>VC</AvatarFallback>
                 </Avatar>
                 <div className="space-y-1">
                   <h4 className="font-mono text-sm font-semibold">@nextjs</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     The React Framework - created and maintained by @vercel.
                   </p>
                   <div className="flex items-center pt-2">
                     <CalendarDays className="mr-2 h-4 w-4 opacity-70" />
-                    <span className="text-xs text-muted-foreground">
-                      Joined December 2021
-                    </span>
+                    <span className="text-muted-foreground text-xs">Joined December 2021</span>
                   </div>
                 </div>
               </div>
@@ -83,15 +77,16 @@ export default function HoverCardPage() {
           preview: (
             <HoverCard>
               <HoverCardTrigger asChild>
-                <span className="cursor-pointer border-b border-dashed border-border font-mono text-sm">
+                <span className="border-border cursor-pointer border-b border-dashed font-mono text-sm">
                   Hover for details
                 </span>
               </HoverCardTrigger>
-              <HoverCardContent className="w-64 rounded-none">
+              <HoverCardContent className="w-64">
                 <div className="space-y-2">
                   <h4 className="font-mono text-sm font-semibold">Information</h4>
-                  <p className="text-sm text-muted-foreground">
-                    This is additional information that appears when you hover over the trigger element.
+                  <p className="text-muted-foreground text-sm">
+                    This is additional information that appears when you hover over the trigger
+                    element.
                   </p>
                 </div>
               </HoverCardContent>
@@ -119,25 +114,21 @@ export default function HoverCardPage() {
           preview: (
             <HoverCard>
               <HoverCardTrigger asChild>
-                <Button variant="outline" className="rounded-none font-mono text-xs">
+                <Button variant="outline" className="font-mono text-xs">
                   &gt; VIEW_LOCATION
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 rounded-none">
+              <HoverCardContent className="w-80">
                 <div className="space-y-4">
                   <h4 className="font-mono text-sm font-semibold">San Francisco, CA</h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">
-                        123 Market Street
-                      </span>
+                      <MapPin className="text-muted-foreground h-4 w-4" />
+                      <span className="text-muted-foreground text-sm">123 Market Street</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <LinkIcon className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm text-muted-foreground">
-                        www.example.com
-                      </span>
+                      <LinkIcon className="text-muted-foreground h-4 w-4" />
+                      <span className="text-muted-foreground text-sm">www.example.com</span>
                     </div>
                   </div>
                 </div>
@@ -171,34 +162,34 @@ export default function HoverCardPage() {
           preview: (
             <HoverCard>
               <HoverCardTrigger asChild>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <Avatar className="h-8 w-8 rounded-none">
+                <div className="flex cursor-pointer items-center gap-2">
+                  <Avatar className="h-8 w-8">
                     <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback className="rounded-none">SC</AvatarFallback>
+                    <AvatarFallback>SC</AvatarFallback>
                   </Avatar>
                   <span className="font-mono text-sm">@shadcn</span>
                 </div>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 rounded-none">
+              <HoverCardContent className="w-80">
                 <div className="flex gap-4">
-                  <Avatar className="rounded-none">
+                  <Avatar>
                     <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback className="rounded-none">SC</AvatarFallback>
+                    <AvatarFallback>SC</AvatarFallback>
                   </Avatar>
                   <div className="space-y-2">
                     <div>
                       <h4 className="font-mono text-sm font-semibold">shadcn</h4>
-                      <p className="text-xs text-muted-foreground">@shadcn</p>
+                      <p className="text-muted-foreground text-xs">@shadcn</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       Building beautiful UIs with React and Tailwind CSS.
                     </p>
-                    <div className="flex gap-4 pt-2 text-xs text-muted-foreground">
+                    <div className="text-muted-foreground flex gap-4 pt-2 text-xs">
                       <div>
-                        <span className="font-semibold text-foreground">142</span> Following
+                        <span className="text-foreground font-semibold">142</span> Following
                       </div>
                       <div>
-                        <span className="font-semibold text-foreground">2.4k</span> Followers
+                        <span className="text-foreground font-semibold">2.4k</span> Followers
                       </div>
                     </div>
                   </div>
@@ -240,17 +231,15 @@ export default function HoverCardPage() {
           preview: (
             <HoverCard>
               <HoverCardTrigger asChild>
-                <Button variant="outline" className="rounded-none font-mono text-xs">
+                <Button variant="outline" className="font-mono text-xs">
                   &gt; HOVER_INFO
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 rounded-none">
+              <HoverCardContent className="w-80">
                 <div className="space-y-4">
-                  <div className="font-mono text-xs text-muted-foreground">
-                    [SYSTEM_INFO]:
-                  </div>
-                  <div className="border border-border bg-muted/30 p-4">
-                    <div className="mb-2 font-mono text-xs text-muted-foreground">
+                  <div className="text-muted-foreground font-mono text-xs">[SYSTEM_INFO]:</div>
+                  <div className="border-border bg-muted/30 border p-4">
+                    <div className="text-muted-foreground mb-2 font-mono text-xs">
                       [ [0x00] STATUS ]
                     </div>
                     <div className="space-y-1 font-mono text-xs">

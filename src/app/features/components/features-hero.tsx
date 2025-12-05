@@ -61,13 +61,13 @@ export function FeaturesHero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <Button asChild size="lg" className="rounded-none text-xs">
+            <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
                 &gt; EXECUTE: GET_FABRK
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-none text-xs">
+            <Button asChild variant="outline" size="lg" className="text-xs">
               <Link href="/docs">&gt; VIEW: DOCUMENTATION</Link>
             </Button>
           </motion.div>

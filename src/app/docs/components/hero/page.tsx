@@ -7,11 +7,11 @@ import { WindowControls } from "@/components/ui/window-controls";
 // Simplified Hero Demo for docs
 function HeroDemo() {
   return (
-    <section className="w-full border border-border bg-background p-6">
+    <section className="border-border bg-background w-full border p-6">
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Left Column */}
         <div>
-          <span className="mb-4 inline-block border border-border bg-card px-4 py-1">
+          <span className="border-border bg-card mb-4 inline-block border px-4 py-1">
             [ [0x00] SYSTEM_INIT ] SAAS_BOILERPLATE_v2.0
           </span>
           <h1 className="mb-2">FABRK_INIT:</h1>
@@ -20,25 +20,31 @@ function HeroDemo() {
             <br />
             <span className="text-primary">JUST_GOT_UNFAIRLY_EASY.</span>
           </h2>
-          <div className="mb-6 border border-border bg-card p-4">
+          <div className="border-border bg-card mb-6 border p-4">
             <div className="mb-2">[ [0x01] STATUS ]</div>
-            <p className="mb-4">
-              Skip auth, billing, emails. Focus on your product.
-            </p>
+            <p className="mb-4">Skip auth, billing, emails. Focus on your product.</p>
             <div className="flex gap-4">
-              <span><span className="text-muted-foreground">Speed:</span> <span className="text-primary">OPTIMIZED</span></span>
-              <span><span className="text-muted-foreground">Integration:</span> <span className="text-primary">SEAMLESS</span></span>
+              <span>
+                <span className="text-muted-foreground">Speed:</span>{" "}
+                <span className="text-primary">OPTIMIZED</span>
+              </span>
+              <span>
+                <span className="text-muted-foreground">Integration:</span>{" "}
+                <span className="text-primary">SEAMLESS</span>
+              </span>
             </div>
           </div>
           <div className="flex gap-4">
-            <Button className="rounded-none font-mono text-xs">&gt; GET_FABRK</Button>
-            <Button variant="outline" className="rounded-none font-mono text-xs">&gt; VIEW_DEMO</Button>
+            <Button className="font-mono text-xs">&gt; GET_FABRK</Button>
+            <Button variant="outline" className="font-mono text-xs">
+              &gt; VIEW_DEMO
+            </Button>
           </div>
         </div>
 
         {/* Right Column - Terminal */}
-        <div className="border border-border bg-card">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+        <div className="border-border bg-card border">
+          <div className="border-border flex items-center gap-2 border-b px-4 py-2">
             <WindowControls size="sm" />
             <span>terminal — ~/projects</span>
           </div>
@@ -46,13 +52,17 @@ function HeroDemo() {
             <div>
               <span className="text-success">~</span> git clone https://github.com/you/fabrk
             </div>
-            <div className="mt-1">Cloning... <span className="text-success">done</span></div>
+            <div className="mt-1">
+              Cloning... <span className="text-success">done</span>
+            </div>
             <div className="mt-2">
               <span className="text-success">~</span> npm install && npm run dev
             </div>
-            <div className="mt-2 border border-success/30 bg-success/10 p-2">
+            <div className="border-success/30 bg-success/10 mt-2 border p-2">
               <div className="text-success">▲ Ready</div>
-              <div>Local: <span className="text-primary">http://localhost:3000</span></div>
+              <div>
+                Local: <span className="text-primary">http://localhost:3000</span>
+              </div>
             </div>
           </div>
         </div>
@@ -64,21 +74,19 @@ function HeroDemo() {
 // Split Hero variant
 function HeroSplitDemo() {
   return (
-    <section className="w-full border border-border bg-background">
+    <section className="border-border bg-background w-full border">
       <div className="grid lg:grid-cols-2">
         <div className="p-6">
-          <span className="mb-4 inline-block border border-border px-2 py-1">
-            [0x00] LAUNCH
-          </span>
+          <span className="border-border mb-4 inline-block border px-2 py-1">[0x00] LAUNCH</span>
           <h1 className="mb-4 font-mono text-xl font-semibold">
             Ship faster with <span className="text-primary">Fabrk</span>
           </h1>
           <p className="mb-6">
             Production-ready Next.js boilerplate with auth, payments, and more.
           </p>
-          <Button className="rounded-none font-mono text-xs">&gt; GET_STARTED</Button>
+          <Button className="font-mono text-xs">&gt; GET_STARTED</Button>
         </div>
-        <div className="border-t border-border bg-muted/30 p-6 lg:border-l lg:border-t-0">
+        <div className="border-border bg-muted/30 border-t p-6 lg:border-t-0 lg:border-l">
           <div>
             <div className="mb-2"># Quick start</div>
             <div className="text-foreground">npx create-fabrk-app my-app</div>
@@ -126,15 +134,17 @@ export default function LandingPage() {
           title: "Terminal Window",
           description: "Animated terminal showing installation",
           preview: (
-            <div className="w-full max-w-md border border-border bg-card">
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+            <div className="border-border bg-card w-full max-w-md border">
+              <div className="border-border flex items-center gap-2 border-b px-4 py-2">
                 <WindowControls size="sm" />
                 <span>terminal</span>
               </div>
               <div className="p-4">
-                <div><span className="text-success">$</span> npm create fabrk-app</div>
+                <div>
+                  <span className="text-success">$</span> npm create fabrk-app
+                </div>
                 <div className="mt-1">Creating project...</div>
-                <div className="mt-1 text-success">✓ Done!</div>
+                <div className="text-success mt-1">✓ Done!</div>
               </div>
             </div>
           ),

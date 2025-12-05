@@ -89,19 +89,19 @@ export default function AvatarPage() {
           description: "Multiple avatars in a horizontal group",
           preview: (
             <div className="flex -space-x-4">
-              <Avatar className="border-2 border-background">
+              <Avatar className="border-background border-2">
                 <AvatarImage src="https://github.com/shadcn.png" alt="User 1" />
                 <AvatarFallback>U1</AvatarFallback>
               </Avatar>
-              <Avatar className="border-2 border-background">
+              <Avatar className="border-background border-2">
                 <AvatarImage src="https://github.com/vercel.png" alt="User 2" />
                 <AvatarFallback>U2</AvatarFallback>
               </Avatar>
-              <Avatar className="border-2 border-background">
+              <Avatar className="border-background border-2">
                 <AvatarImage src="/invalid.png" alt="User 3" />
                 <AvatarFallback>U3</AvatarFallback>
               </Avatar>
-              <Avatar className="border-2 border-background">
+              <Avatar className="border-background border-2">
                 <AvatarFallback>+5</AvatarFallback>
               </Avatar>
             </div>
@@ -132,7 +132,9 @@ export default function AvatarPage() {
                 <AvatarFallback className="bg-success text-success-foreground">CD</AvatarFallback>
               </Avatar>
               <Avatar>
-                <AvatarFallback className="bg-secondary text-secondary-foreground">EF</AvatarFallback>
+                <AvatarFallback className="bg-secondary text-secondary-foreground">
+                  EF
+                </AvatarFallback>
               </Avatar>
               <Avatar>
                 <AvatarFallback className="bg-warning text-warning-foreground">GH</AvatarFallback>
@@ -156,20 +158,20 @@ export default function AvatarPage() {
                   <AvatarImage src="https://github.com/shadcn.png" alt="Online User" />
                   <AvatarFallback>ON</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-success" />
+                <span className="border-background bg-success absolute right-0 bottom-0 h-3 w-3 border-2" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarImage src="https://github.com/vercel.png" alt="Busy User" />
                   <AvatarFallback>BS</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-warning" />
+                <span className="border-background bg-warning absolute right-0 bottom-0 h-3 w-3 border-2" />
               </div>
               <div className="relative">
                 <Avatar>
                   <AvatarFallback>OF</AvatarFallback>
                 </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-muted-foreground" />
+                <span className="border-background bg-muted-foreground absolute right-0 bottom-0 h-3 w-3 border-2" />
               </div>
             </div>
           ),
@@ -178,7 +180,7 @@ export default function AvatarPage() {
     <AvatarImage src="..." alt="Online User" />
     <AvatarFallback>ON</AvatarFallback>
   </Avatar>
-  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-none border-2 border-background bg-success" />
+  <span className="absolute bottom-0 right-0 h-3 w-3 border-2 border-background bg-success" />
 </div>`,
         },
       ]}

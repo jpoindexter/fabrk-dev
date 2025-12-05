@@ -13,7 +13,7 @@ import { ArrowRight } from "lucide-react";
 
 export function FeaturesCTA() {
   return (
-    <section className="border-t border-border bg-primary/5 py-20 lg:py-24">
+    <section className="border-border bg-primary/5 border-t py-20 lg:py-24">
       <div className="container mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -22,25 +22,21 @@ export function FeaturesCTA() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="text-xs text-muted-foreground">[0x30]</span>
-          <h2 className="text-4xl font-semibold tracking-tight mb-4">
-            READY_TO_SHIP?
-          </h2>
-          <p className="mx-auto mb-8 max-w-xl text-sm text-muted-foreground">
-            Get Fabrk and launch your SaaS in days, not months. All features included,
-            fully tested, and production-ready.
+          <span className="text-muted-foreground text-xs">[0x30]</span>
+          <h2 className="mb-4 text-4xl font-semibold tracking-tight">READY_TO_SHIP?</h2>
+          <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-sm">
+            Get Fabrk and launch your SaaS in days, not months. All features included, fully tested,
+            and production-ready.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" className="rounded-none text-xs">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild size="lg" className="text-xs">
               <Link href="/#pricing">
                 &gt; EXECUTE: GET_STARTED
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-none text-xs">
-              <Link href="/templates">
-                &gt; VIEW: TEMPLATES
-              </Link>
+            <Button asChild variant="outline" size="lg" className="text-xs">
+              <Link href="/templates">&gt; VIEW: TEMPLATES</Link>
             </Button>
           </div>
         </motion.div>

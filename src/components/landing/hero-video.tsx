@@ -80,7 +80,7 @@ export function HeroVideo({
           <h1
             className={cn(
               mode.font,
-              "text-foreground mb-8 text-5xl leading-[1.1] font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+              "text-foreground mb-8 text-5xl leading-tight font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
             )}
           >
             {headline}

@@ -34,9 +34,9 @@ function PricingDemo() {
   ];
 
   return (
-    <section className="w-full border border-border bg-background p-6">
+    <section className="border-border bg-background w-full border p-6">
       <div className="mb-6 text-center">
-        <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
+        <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x30] PRICING ] SELECT_PLAN
         </span>
         <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE_YOUR_PLAN</h2>
@@ -45,27 +45,31 @@ function PricingDemo() {
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`border bg-card p-6 ${plan.popular ? "border-primary" : "border-border"}`}
+            className={`bg-card border p-6 ${plan.popular ? "border-primary" : "border-border"}`}
           >
             {plan.popular && (
-              <span className="mb-2 inline-block font-mono text-xs text-primary">[POPULAR]</span>
+              <span className="text-primary mb-2 inline-block font-mono text-xs">[POPULAR]</span>
             )}
             <div className="mb-4">
-              <span className="font-mono text-xs text-muted-foreground">{plan.name}</span>
+              <span className="text-muted-foreground font-mono text-xs">{plan.name}</span>
               <div className="mt-1 font-mono text-2xl font-semibold">
-                {plan.price}<span className="text-sm text-muted-foreground">{plan.period}</span>
+                {plan.price}
+                <span className="text-muted-foreground text-sm">{plan.period}</span>
               </div>
             </div>
             <ul className="mb-6 space-y-2">
               {plan.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                  <Check className="h-3 w-3 text-success" />
+                <li
+                  key={feature}
+                  className="text-muted-foreground flex items-center gap-2 font-mono text-xs"
+                >
+                  <Check className="text-success h-3 w-3" />
                   {feature}
                 </li>
               ))}
             </ul>
             <Button
-              className="w-full rounded-none font-mono text-xs"
+              className="w-full font-mono text-xs"
               variant={plan.popular ? "default" : "outline"}
             >
               &gt; {plan.cta}
@@ -80,21 +84,33 @@ function PricingDemo() {
 // Single Pricing Card
 function PricingCardDemo() {
   return (
-    <div className="w-full max-w-sm border border-primary bg-card p-6">
-      <span className="mb-2 inline-block font-mono text-xs text-primary">[RECOMMENDED]</span>
+    <div className="border-primary bg-card w-full max-w-sm border p-6">
+      <span className="text-primary mb-2 inline-block font-mono text-xs">[RECOMMENDED]</span>
       <div className="mb-4">
-        <span className="font-mono text-xs text-muted-foreground">LIFETIME</span>
+        <span className="text-muted-foreground font-mono text-xs">LIFETIME</span>
         <div className="mt-1 font-mono text-4xl font-semibold">
-          $299<span className="text-sm text-muted-foreground"> one-time</span>
+          $299<span className="text-muted-foreground text-sm"> one-time</span>
         </div>
       </div>
       <ul className="mb-6 space-y-2">
-        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Full source code</li>
-        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Lifetime updates</li>
-        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Discord community</li>
-        <li className="flex items-center gap-2 font-mono text-xs"><Check className="h-3 w-3 text-success" />Unlimited projects</li>
+        <li className="flex items-center gap-2 font-mono text-xs">
+          <Check className="text-success h-3 w-3" />
+          Full source code
+        </li>
+        <li className="flex items-center gap-2 font-mono text-xs">
+          <Check className="text-success h-3 w-3" />
+          Lifetime updates
+        </li>
+        <li className="flex items-center gap-2 font-mono text-xs">
+          <Check className="text-success h-3 w-3" />
+          Discord community
+        </li>
+        <li className="flex items-center gap-2 font-mono text-xs">
+          <Check className="text-success h-3 w-3" />
+          Unlimited projects
+        </li>
       </ul>
-      <Button className="w-full rounded-none font-mono text-xs">&gt; GET_ACCESS</Button>
+      <Button className="w-full font-mono text-xs">&gt; GET_ACCESS</Button>
     </div>
   );
 }
@@ -145,9 +161,13 @@ export default function LandingPage() {
           description: "Monthly/yearly toggle for subscriptions",
           preview: (
             <div className="flex items-center justify-center gap-2 p-2">
-              <Button variant="default" size="sm" className="rounded-none font-mono text-xs">&gt; MONTHLY</Button>
-              <Button variant="ghost" size="sm" className="rounded-none font-mono text-xs">&gt; YEARLY</Button>
-              <span className="font-mono text-xs text-success">[-20%]</span>
+              <Button variant="default" size="sm" className="font-mono text-xs">
+                &gt; MONTHLY
+              </Button>
+              <Button variant="ghost" size="sm" className="font-mono text-xs">
+                &gt; YEARLY
+              </Button>
+              <span className="text-success font-mono text-xs">[-20%]</span>
             </div>
           ),
           code: `const [yearly, setYearly] = useState(false);

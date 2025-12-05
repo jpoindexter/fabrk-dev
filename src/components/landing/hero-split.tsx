@@ -48,7 +48,7 @@ export function HeroSplit({
             <h1
               className={cn(
                 mode.font,
-                "text-foreground mb-6 text-3xl leading-[1.1] font-semibold tracking-tight sm:text-4xl md:text-5xl"
+                "text-foreground mb-6 text-3xl leading-tight font-semibold tracking-tight sm:text-4xl md:text-5xl"
               )}
             >
               {headline}
