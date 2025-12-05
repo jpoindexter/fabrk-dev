@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Header */}
         <header className="border-border bg-card mb-8 border">
-          <div className="border-border border-b px-6 py-3">
+          <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ ARTICLE ]</span>
           </div>
           <div className="p-6">

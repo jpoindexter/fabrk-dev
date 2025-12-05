@@ -633,7 +633,7 @@ export default function VisualTestPage() {
           <div className="p-2">
             <button
               onClick={() => setSidebarCollapsed(false)}
-              className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-1.5"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center p-2"
               aria-label="Expand sidebar"
             >
               <PanelLeft className="h-4 w-4" />
@@ -645,7 +645,7 @@ export default function VisualTestPage() {
         {!sidebarCollapsed && (
           <nav className="flex flex-1 flex-col overflow-hidden">
             {/* Header */}
-            <div className="border-border flex items-center justify-between border-b p-3">
+            <div className="border-border flex items-center justify-between border-b p-4">
               <span className="text-muted-foreground text-xs">[ VISUAL_TESTER ]</span>
               <button
                 onClick={() => setSidebarCollapsed(true)}
@@ -657,7 +657,7 @@ export default function VisualTestPage() {
             </div>
 
             {/* Stats */}
-            <div className="border-border border-b px-3 py-2 text-xs">
+            <div className="border-border border-b px-4 py-2 text-xs">
               <span className="text-success">{stats.ok}</span>
               <span className="text-muted-foreground"> / </span>
               <span className="text-destructive">{stats.issues}</span>
@@ -675,14 +675,14 @@ export default function VisualTestPage() {
             </div>
 
             {/* Search */}
-            <div className="border-border relative border-b p-3">
+            <div className="border-border relative border-b p-4">
               <Search className="text-muted-foreground absolute top-1/2 left-5 h-3 w-3 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search pages..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary w-full border py-1.5 pr-7 pl-7 text-xs focus:outline-none"
+                className="border-border bg-muted/50 text-foreground placeholder:text-muted-foreground focus:border-primary w-full border py-2 pr-8 pl-8 text-xs focus:outline-none"
               />
               {searchQuery && (
                 <button
@@ -711,7 +711,7 @@ export default function VisualTestPage() {
                     <button
                       onClick={() => toggleSection(sectionIndex)}
                       className={cn(
-                        "flex w-full items-center gap-2 py-1.5 text-xs font-semibold transition-colors",
+                        "flex w-full items-center gap-2 py-2 text-xs font-semibold transition-colors",
                         hasActiveItem
                           ? "text-primary"
                           : "text-muted-foreground hover:text-foreground"
@@ -804,7 +804,7 @@ export default function VisualTestPage() {
       {/* Right Pane - iframe */}
       <div className="relative flex-1">
         {/* Path Bar */}
-        <div className="border-border bg-card flex items-center justify-between border-b px-3 py-2">
+        <div className="border-border bg-card flex items-center justify-between border-b px-4 py-2">
           <span className="text-muted-foreground text-xs">[PATH]: {currentPath}</span>
           <a
             href={currentPath}
@@ -842,7 +842,7 @@ export default function VisualTestPage() {
           <div
             onMouseDown={handleMouseDown}
             className={cn(
-              "border-border flex cursor-move items-center gap-2 border-b px-2 py-1.5",
+              "border-border flex cursor-move items-center gap-2 border-b px-2 py-2",
               isDragging && "bg-muted"
             )}
           >
@@ -900,13 +900,13 @@ export default function VisualTestPage() {
           {taggerCollapsed === false && (
             <>
               {/* Status Buttons */}
-              <div className="p-3">
+              <div className="p-4">
                 <div className="text-muted-foreground mb-2 text-xs">[STATUS]:</div>
                 <div className="flex gap-1">
                   <button
                     onClick={() => setStatus("ok")}
                     className={cn(
-                      "flex flex-1 items-center justify-center gap-1 border px-2 py-1.5 text-xs transition-colors",
+                      "flex flex-1 items-center justify-center gap-1 border px-2 py-2 text-xs transition-colors",
                       current.status === "ok"
                         ? "border-success bg-success text-success-foreground"
                         : "border-border hover:border-success hover:text-success"
@@ -918,7 +918,7 @@ export default function VisualTestPage() {
                   <button
                     onClick={() => setStatus("issue")}
                     className={cn(
-                      "flex flex-1 items-center justify-center gap-1 border px-2 py-1.5 text-xs transition-colors",
+                      "flex flex-1 items-center justify-center gap-1 border px-2 py-2 text-xs transition-colors",
                       current.status === "issue"
                         ? "border-destructive bg-destructive text-destructive-foreground"
                         : "border-border hover:border-destructive hover:text-destructive"
@@ -930,7 +930,7 @@ export default function VisualTestPage() {
                   <button
                     onClick={() => setStatus("skip")}
                     className={cn(
-                      "flex flex-1 items-center justify-center gap-1 border px-2 py-1.5 text-xs transition-colors",
+                      "flex flex-1 items-center justify-center gap-1 border px-2 py-2 text-xs transition-colors",
                       current.status === "skip"
                         ? "border-warning bg-warning text-warning-foreground"
                         : "border-border hover:border-warning hover:text-warning"
@@ -943,7 +943,7 @@ export default function VisualTestPage() {
               </div>
 
               {/* Note Section */}
-              <div className="border-border border-t p-3">
+              <div className="border-border border-t p-4">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-muted-foreground text-xs">[NOTE]:</span>
                   <button
@@ -976,7 +976,7 @@ export default function VisualTestPage() {
               </div>
 
               {/* Element Inspection */}
-              <div className="border-border border-t p-3">
+              <div className="border-border border-t p-4">
                 <div className="mb-2 flex items-center justify-between">
                   <span className="text-muted-foreground text-xs">[INSPECT]:</span>
                   <button
@@ -1027,7 +1027,7 @@ export default function VisualTestPage() {
                           }
                           e.target.value = "";
                         }}
-                        className="border-border bg-muted/50 text-muted-foreground focus:border-primary w-full appearance-none border px-2 py-1.5 pr-7 text-xs focus:outline-none"
+                        className="border-border bg-muted/50 text-muted-foreground focus:border-primary w-full appearance-none border px-2 py-2 pr-8 text-xs focus:outline-none"
                         defaultValue=""
                       >
                         <option value="" disabled>
@@ -1060,7 +1060,7 @@ export default function VisualTestPage() {
 
                 {/* Tagged Elements List */}
                 {current.elements && current.elements.length > 0 && (
-                  <div className="mt-3 space-y-1">
+                  <div className="mt-4 space-y-1">
                     <p className="text-muted-foreground text-xs">
                       [TAGGED: {current.elements.length}]
                     </p>
@@ -1068,7 +1068,7 @@ export default function VisualTestPage() {
                       {current.elements.map((tag) => (
                         <div
                           key={tag.timestamp}
-                          className="group border-destructive/30 bg-destructive/5 flex items-start gap-1 border p-1.5"
+                          className="group border-destructive/30 bg-destructive/5 flex items-start gap-1 border p-2"
                         >
                           <Target className="text-destructive mt-0.5 h-3 w-3 shrink-0" />
                           <div className="min-w-0 flex-1">

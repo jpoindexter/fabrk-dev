@@ -62,7 +62,7 @@ export function AuthPreview() {
 
         <div className="space-y-4">
           <div>
-            <span className={cn(mode.font, "text-muted-foreground mb-1.5 block text-xs")}>
+            <span className={cn(mode.font, "text-muted-foreground mb-2 block text-xs")}>
               EMAIL:
             </span>
             <div
@@ -80,7 +80,7 @@ export function AuthPreview() {
             </div>
           </div>
           <div>
-            <span className={cn(mode.font, "text-muted-foreground mb-1.5 block text-xs")}>
+            <span className={cn(mode.font, "text-muted-foreground mb-2 block text-xs")}>
               PASSWORD:
             </span>
             <div

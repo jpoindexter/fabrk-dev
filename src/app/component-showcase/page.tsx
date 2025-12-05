@@ -303,13 +303,13 @@ export default function ComponentShowcasePage() {
           </div>
           {/* Table of Contents */}
           <ScrollArea className="border-border border-t">
-            <div className="flex gap-2 px-6 py-3">
+            <div className="flex gap-2 px-6 py-2">
               {sections.map((section) => (
                 <a
                   key={section.id}
                   href={`#${section.id}`}
                   className={cn(
-                    "border-border bg-card hover:bg-muted border px-3 py-1 text-xs whitespace-nowrap",
+                    "border-border bg-card hover:bg-muted border px-4 py-1 text-xs whitespace-nowrap",
                     mode.font,
                     mode.radius
                   )}
@@ -366,7 +366,7 @@ export default function ComponentShowcasePage() {
                 <div className="flex items-center gap-2">
                   <code
                     className={cn(
-                      "border-border bg-muted border px-3 py-1 text-sm",
+                      "border-border bg-muted border px-4 py-1 text-sm",
                       mode.font,
                       mode.radius
                     )}

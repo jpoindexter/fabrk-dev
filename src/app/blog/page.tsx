@@ -34,7 +34,7 @@ export default async function BlogPage({
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="border-border bg-card mb-12 border">
-          <div className="border-border border-b px-6 py-3">
+          <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
           </div>
           <div className="p-6">
@@ -51,7 +51,7 @@ export default async function BlogPage({
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className={`border px-3 py-1 font-mono text-xs transition-colors ${
+                className={`border px-4 py-1 font-mono text-xs transition-colors ${
                   !categorySlug
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"
@@ -63,7 +63,7 @@ export default async function BlogPage({
                 <Link
                   key={cat.id}
                   href={`/blog?category=${cat.slug}`}
-                  className={`border px-3 py-1 font-mono text-xs transition-colors ${
+                  className={`border px-4 py-1 font-mono text-xs transition-colors ${
                     categorySlug === cat.slug
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"

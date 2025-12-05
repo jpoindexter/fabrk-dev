@@ -67,7 +67,7 @@ export function FeaturesSection() {
         </motion.div>
 
         {/* Feature Sections */}
-        <div className="space-y-20 lg:space-y-28">
+        <div className="space-y-20 lg:space-y-24">
           {/* Authentication */}
           <FeatureSectionLayout
             spec="AUTHENTICATION"

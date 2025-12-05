@@ -69,7 +69,7 @@ export function ImpersonationBanner() {
   return (
     <div className="border-warning bg-warning/10 fixed top-0 right-0 left-0 z-[100] border-b-2 px-4 py-2">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <AlertTriangle className="text-warning h-5 w-5" />
           <span className={cn("text-foreground text-sm", mode.font)}>
             <span className="text-warning">[IMPERSONATION_MODE]</span> Viewing as:{" "}

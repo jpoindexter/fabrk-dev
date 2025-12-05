@@ -356,7 +356,7 @@ export function formatDate(date: Date | string): string {
             </div>
             <div className="border-border border-t pt-4">
               <h4 className="mb-2 font-mono text-sm font-bold">Example Usage</h4>
-              <pre className="bg-muted overflow-x-auto p-3 text-xs">
+              <pre className="bg-muted overflow-x-auto p-4 text-xs">
                 {`<Callout type="warning" title="Important">
   This is a warning callout in your blog post.
 </Callout>

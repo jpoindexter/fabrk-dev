@@ -68,7 +68,7 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
       {/* Architecture Diagram */}
       <DocsSection title="High-Level Overview">
         <DocsCard title="SYSTEM_DIAGRAM">
-          <div className="text-muted-foreground space-y-3 font-mono text-xs">
+          <div className="text-muted-foreground space-y-4 font-mono text-xs">
             {/* Client Layer */}
             <div className="border-border bg-muted border p-4 text-center">
               <div className="text-foreground font-semibold">CLIENT</div>
@@ -84,14 +84,14 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
             {/* Edge Layer */}
             <div className="border-border bg-muted border p-4">
-              <div className="text-foreground mb-3 text-center font-semibold">EDGE</div>
+              <div className="text-foreground mb-4 text-center font-semibold">EDGE</div>
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <div className="border-border bg-card border p-3 text-center">
+                <div className="border-border bg-card border p-4 text-center">
                   <div>Vercel Edge</div>
                   <div>Network</div>
                 </div>
                 <span className="text-primary">→</span>
-                <div className="border-border bg-card border p-3 text-center">
+                <div className="border-border bg-card border p-4 text-center">
                   <div>Middleware.ts</div>
                   <div>(Auth/Routing)</div>
                 </div>
@@ -107,12 +107,12 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
             {/* Server Layer */}
             <div className="border-border bg-muted border p-4">
-              <div className="text-foreground mb-3 text-center font-semibold">SERVER</div>
+              <div className="text-foreground mb-4 text-center font-semibold">SERVER</div>
               <div className="border-border bg-card border p-4">
-                <div className="mb-3 text-center">Next.js App Router</div>
+                <div className="mb-4 text-center">Next.js App Router</div>
                 <div className="flex flex-wrap items-center justify-center gap-4">
-                  <div className="border-border bg-muted border p-3 text-center">RSC Pages</div>
-                  <div className="border-border bg-muted border p-3 text-center">
+                  <div className="border-border bg-muted border p-4 text-center">RSC Pages</div>
+                  <div className="border-border bg-muted border p-4 text-center">
                     Server Actions
                   </div>
                 </div>
@@ -130,15 +130,15 @@ export const updateUserProfile = action(schema, async ({ input, ctx }) => {
 
             {/* Data Layer */}
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <div className="border-border bg-muted border p-3 text-center">
+              <div className="border-border bg-muted border p-4 text-center">
                 <div className="text-foreground">PostgreSQL</div>
                 <div>(Prisma)</div>
               </div>
-              <div className="border-border bg-muted border p-3 text-center">
+              <div className="border-border bg-muted border p-4 text-center">
                 <div className="text-foreground">Stripe</div>
                 <div>Payments</div>
               </div>
-              <div className="border-border bg-muted border p-3 text-center">
+              <div className="border-border bg-muted border p-4 text-center">
                 <div className="text-foreground">Resend</div>
                 <div>Email</div>
               </div>

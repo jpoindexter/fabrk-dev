@@ -252,7 +252,7 @@ export function DocsSidebar({
           </div>
 
           {/* Search input */}
-          <div className="relative mb-3">
+          <div className="relative mb-4">
             <Search className="text-muted-foreground absolute top-1/2 left-2 h-3 w-3 -translate-y-1/2" />
             <input
               type="text"

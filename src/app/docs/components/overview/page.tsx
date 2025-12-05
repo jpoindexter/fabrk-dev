@@ -6,7 +6,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "UI Components Overview - Fabrk Docs",
-  description: "Complete list of 100+ production-ready UI components included in Fabrk boilerplate.",
+  description:
+    "Complete list of 100+ production-ready UI components included in Fabrk boilerplate.",
 };
 
 const componentCategories = [
@@ -184,10 +185,7 @@ const componentCategories = [
 ];
 
 export default function ComponentsOverviewPage() {
-  const totalComponents = componentCategories.reduce(
-    (acc, cat) => acc + cat.components.length,
-    0
-  );
+  const totalComponents = componentCategories.reduce((acc, cat) => acc + cat.components.length, 0);
 
   return (
     <FeatureGuideTemplate
@@ -197,8 +195,16 @@ export default function ComponentsOverviewPage() {
       description="100+ production-ready components built with Radix UI and Tailwind CSS."
       overview={`${totalComponents}+ components across ${componentCategories.length} categories. All fully typed with TypeScript. Built on Radix UI primitives for accessibility.`}
       features={[
-        { icon: Component, title: `${totalComponents}+`, description: "Production-ready components." },
-        { icon: Layers, title: `${componentCategories.length}`, description: "Component categories." },
+        {
+          icon: Component,
+          title: `${totalComponents}+`,
+          description: "Production-ready components.",
+        },
+        {
+          icon: Layers,
+          title: `${componentCategories.length}`,
+          description: "Component categories.",
+        },
         { icon: Code, title: "100%", description: "TypeScript coverage." },
         { icon: Palette, title: "Radix", description: "Accessible primitives." },
       ]}
@@ -225,14 +231,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
               <Link
                 key={component.name}
                 href={`/docs/components/${component.name}`}
-                className="block border border-border bg-card p-3 transition-colors hover:border-primary/50 hover:bg-primary/5"
+                className="border-border bg-card hover:border-primary/50 hover:bg-primary/5 block border p-4 transition-colors"
               >
-                <div className={docsTypography.h4}>
-                  {component.name}
-                </div>
-                <div className={`mt-1 ${docsTypography.caption}`}>
-                  {component.description}
-                </div>
+                <div className={docsTypography.h4}>{component.name}</div>
+                <div className={`mt-1 ${docsTypography.caption}`}>{component.description}</div>
               </Link>
             ))}
           </div>
