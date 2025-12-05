@@ -4,7 +4,7 @@
  * Uses Visual Mode System for aesthetic switching.
  *
  * Design System Integration:
- * - Imports from @/lib/design-system for static mode
+ * - Imports from @/design-system for static mode
  * - Radius and font from visual mode config
  * - Spacing follows 8-point grid: px-6 (24px), py-4 (16px), gap-x-4 (16px)
  *
@@ -21,7 +21,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 /**
  * Alert Variants using Design System Tokens

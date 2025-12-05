@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import { AboutTabContent, ConsentTabContent, DetailsTabContent } from "./cookie-consent-tabs";
 import type { CookiePreferences } from "./cookie-consent-types";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 const DEFAULT_PREFERENCES: CookiePreferences = {
   necessary: true,

@@ -18,7 +18,7 @@ import { PrivacyTab } from "./components/privacy-tab";
 import { AuditTab } from "./components/audit-tab";
 import { ComplianceTab } from "./components/compliance-tab";
 import { ImplementationNote } from "./components/implementation-note";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Mock data

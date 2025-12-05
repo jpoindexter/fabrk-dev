@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Key } from "lucide-react";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export function SecurityPasswordCard() {
   return (

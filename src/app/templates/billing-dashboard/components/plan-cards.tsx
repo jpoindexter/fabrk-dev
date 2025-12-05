@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/ui/button";
 import { StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Plan {

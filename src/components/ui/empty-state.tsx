@@ -3,7 +3,7 @@
 import * as React from "react";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode, formatButtonText } from "@/lib/design-system";
+import { mode, formatButtonText } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 interface EmptyStateProps {

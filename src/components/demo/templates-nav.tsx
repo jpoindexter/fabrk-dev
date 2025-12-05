@@ -30,7 +30,7 @@ import {
   findTemplateByHref,
   toDisplayCase,
 } from "@/app/templates/templates-nav-data";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function TemplatesNav() {

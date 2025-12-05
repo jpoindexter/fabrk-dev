@@ -16,7 +16,7 @@ import { MetricCards } from "./components/metric-cards";
 import { RevenueChart } from "./components/revenue-chart";
 import { ActivityFeed } from "./components/activity-feed";
 import { AnalyticsTabs } from "./components/analytics-tabs";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Mock data

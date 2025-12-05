@@ -3,7 +3,7 @@
 import { Users, Lock, Shield, Webhook, Key, Radio, Server, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export function EnterpriseFeaturesSection() {
   const enterpriseFeatures = [

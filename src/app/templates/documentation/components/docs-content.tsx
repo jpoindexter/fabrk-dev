@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { PageBadge } from "@/components/ui/card";
 import { ChevronRight, Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { parseContent } from "./content-parser";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface DocsContentProps {

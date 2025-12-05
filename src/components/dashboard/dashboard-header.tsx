@@ -24,7 +24,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { OrgSwitcher } from "@/components/organization/org-switcher";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 export function DashboardHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);

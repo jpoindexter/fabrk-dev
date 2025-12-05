@@ -6,7 +6,7 @@ import { CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { Square } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 const ContextMenu = ContextMenuPrimitive.Root;
 

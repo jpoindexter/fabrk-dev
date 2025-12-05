@@ -16,8 +16,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { mode } from "@/lib/design-system/visual-mode";
-import { formatLabel } from "@/lib/design-system";
+import { mode } from "@/design-system";
+import { formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ApiKey {

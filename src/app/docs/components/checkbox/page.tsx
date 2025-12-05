@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function CheckboxPage() {
   return (

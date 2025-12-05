@@ -13,7 +13,7 @@ import { StyledCard, StyledCardHeader, PageBadge } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Mock article data
@@ -63,7 +63,7 @@ const mockArticle = {
       language: "typescript",
       content: `// app/api/users/route.ts
 import { NextResponse } from "next/server";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export async function GET() {

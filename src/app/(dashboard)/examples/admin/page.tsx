@@ -5,7 +5,7 @@ import { MoreHorizontal, Mail, Shield, User } from "lucide-react";
 import { DataTable } from "@/components/ui/data-table";
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
 import { Button } from "@/components/ui/button";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -199,7 +199,9 @@ export default function AdminPage() {
           <h1 className="text-foreground text-3xl font-bold">User Management</h1>
           <p className="text-muted-foreground">Manage users, roles, and permissions</p>
         </div>
-        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">&gt; ADD_USER</Button>
+        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+          &gt; ADD_USER
+        </Button>
       </div>
 
       {/* Stats Cards */}

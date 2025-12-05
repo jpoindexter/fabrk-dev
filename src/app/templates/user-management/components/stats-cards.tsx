@@ -3,7 +3,7 @@
  */
 
 import type { User } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface StatsCardsProps {

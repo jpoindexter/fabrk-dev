@@ -25,7 +25,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { Copy, FileText, Hash, Plus, Save, Variable, X } from "lucide-react";
 import * as React from "react";
 import { PromptBuilderProps, PromptTemplate, usePromptBuilder } from "./prompt-builder-logic";

@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 interface Organization {
   id: string;

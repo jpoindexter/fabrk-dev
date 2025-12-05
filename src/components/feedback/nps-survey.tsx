@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface NPSSurveyProps {
   onSubmit: (score: number, comment?: string) => void;

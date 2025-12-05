@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Smartphone, CheckCircle2, XCircle } from "lucide-react";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Security2FACardProps {

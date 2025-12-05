@@ -5,7 +5,7 @@
 
 import { StyledCardHeader } from "@/components/ui/card";
 import { Users, Crown, Shield, Eye, type LucideIcon } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const roleIcons: Record<string, LucideIcon> = {

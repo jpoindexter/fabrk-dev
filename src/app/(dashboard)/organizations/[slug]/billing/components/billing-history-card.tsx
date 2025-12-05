@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/table";
 import type { Invoice } from "./types";
 import { getInvoiceStatusBadge } from "./utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface BillingHistoryCardProps {

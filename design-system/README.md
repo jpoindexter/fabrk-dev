@@ -87,7 +87,7 @@ function ThemeSwitcher() {
 ### 3. Using Static Mode (Server Components)
 
 ```tsx
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 function Card({ children }) {
   return (
@@ -270,7 +270,7 @@ const fileResult = validateFile(fileContent);
 
 **Before (static):**
 ```tsx
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 <div className={mode.radius} />
 ```
 

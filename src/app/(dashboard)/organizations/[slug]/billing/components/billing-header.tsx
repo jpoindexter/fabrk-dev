@@ -5,7 +5,7 @@
 
 import { CreditCard } from "lucide-react";
 import type { Organization } from "./types";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface BillingHeaderProps {

@@ -16,7 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Camera, Mail, User, Calendar, Shield } from "lucide-react";
 import { toast } from "sonner";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function ProfilePage() {

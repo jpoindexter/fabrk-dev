@@ -30,7 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 export interface OrgCardProps {
   id?: string;

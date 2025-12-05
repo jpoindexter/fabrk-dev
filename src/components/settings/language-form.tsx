@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 const languageFormSchema = z.object({
   language: z.enum(["en", "es", "fr", "de", "ja", "zh", "pt", "ko"]),

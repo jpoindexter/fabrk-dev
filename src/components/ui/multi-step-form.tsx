@@ -14,7 +14,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import * as React from "react";
 import { Button } from "./button";
 
@@ -104,7 +104,9 @@ export const MultiStepForm = React.forwardRef<HTMLDivElement, MultiStepFormProps
           <Button onClick={onPrev} disabled={currentStep === 0} variant="outline">
             &gt; PREVIOUS
           </Button>
-          <Button onClick={onNext}>{currentStep === steps.length - 1 ? "&gt; FINISH" : "&gt; NEXT"}</Button>
+          <Button onClick={onNext}>
+            {currentStep === steps.length - 1 ? "&gt; FINISH" : "&gt; NEXT"}
+          </Button>
         </div>
       </div>
     );

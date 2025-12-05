@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Palette, Sparkles, Users, BarChart3, Home, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 const showcasePages = [
   {
     title: "What's Included",

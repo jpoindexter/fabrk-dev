@@ -4,7 +4,7 @@ import * as React from "react";
 import Sketch from "@uiw/react-color-sketch";
 import { Paintbrush } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 

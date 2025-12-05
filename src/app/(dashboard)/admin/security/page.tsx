@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/select";
 import { queryAuditLogs, getSecuritySummary, type AuditLogEntry } from "@/lib/security/audit-log";
 import { AlertTriangle, CheckCircle, Info, XCircle } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 function formatDate(date: Date): string {

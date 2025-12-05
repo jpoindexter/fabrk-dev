@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { getErrorStats, getPerformanceStats, clearErrorLogs } from "@/lib/monitoring";
 import { AlertTriangle, Activity, Trash2 } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 function formatDate(date: Date) {

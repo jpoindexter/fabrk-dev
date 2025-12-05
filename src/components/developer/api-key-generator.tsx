@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import { logger } from "@/lib/logger";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 interface ApiKeyGeneratorProps {
   apiKey?: string;

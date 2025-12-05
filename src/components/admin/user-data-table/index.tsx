@@ -38,7 +38,7 @@ import { createUserColumns, UserData } from "./user-table-columns";
 import { UserTableToolbar } from "./user-table-toolbar";
 import { UserTablePagination } from "./user-table-pagination";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 // Re-export UserData type for external usage
 export type { UserData };
 

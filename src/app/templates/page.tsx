@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { LayoutDashboard, Settings, Users, FileText, Palette, Lock } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const categories = [

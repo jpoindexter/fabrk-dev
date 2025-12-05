@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 
 export default function SelectPage() {
   return (
@@ -159,7 +159,9 @@ export default function SelectPage() {
               <SelectContent>
                 <SelectItem value="admin">Admin</SelectItem>
                 <SelectItem value="member">Member</SelectItem>
-                <SelectItem value="owner" disabled>Owner (Unavailable)</SelectItem>
+                <SelectItem value="owner" disabled>
+                  Owner (Unavailable)
+                </SelectItem>
               </SelectContent>
             </Select>
           ),

@@ -2,7 +2,7 @@ import { SimpleIcon } from "@/components/ui/simple-icon";
 import { siTypescript, siPrisma, siEslint } from "simple-icons";
 import { Zap, FolderTree, Terminal, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export function DeveloperExperienceSection() {
   const features = [

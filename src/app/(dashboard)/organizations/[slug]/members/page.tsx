@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { MembersPageHeader } from "./components/members-page-header";
 import { MemberTableRow } from "./components/member-table-row";
 import { RolePermissionsCard } from "./components/role-permissions-card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Member {

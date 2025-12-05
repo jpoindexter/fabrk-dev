@@ -6,7 +6,7 @@
 import { Progress } from "@/components/ui/progress";
 import { StyledCardHeader } from "@/components/ui/card";
 import { Users, HardDrive, Zap } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface UsageMetric {

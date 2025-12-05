@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {

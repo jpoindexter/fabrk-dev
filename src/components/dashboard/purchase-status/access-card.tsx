@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckCircle, Download, RefreshCw } from "lucide-react";
 import { AccessCardProps } from "./purchase-status-types";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export function AccessCard({
   hasAccess,

@@ -15,7 +15,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { AlertCircle, Bell, Check, X } from "lucide-react";
 import * as React from "react";
 

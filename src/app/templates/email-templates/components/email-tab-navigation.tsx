@@ -5,7 +5,7 @@
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { EmailTemplate } from "./email-template-data";
 import { StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface EmailTabNavigationProps {

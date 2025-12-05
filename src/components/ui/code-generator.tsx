@@ -16,7 +16,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Code2, Copy, Download, Loader2 } from "lucide-react";
 import * as React from "react";
 import { Button } from "./button";

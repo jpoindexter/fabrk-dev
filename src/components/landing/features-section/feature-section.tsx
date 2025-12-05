@@ -7,7 +7,7 @@
 import { motion } from "framer-motion";
 import { FeatureItem, type FeatureItemProps } from "./feature-item";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface FeatureSectionLayoutProps {
   spec: string;

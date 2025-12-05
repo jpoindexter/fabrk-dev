@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CreditCard, AlertTriangle } from "lucide-react";
 import { CodeWindow } from "./code-window";
 import { SectionHeader } from "./section-header";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function BillingTab() {

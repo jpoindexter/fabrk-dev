@@ -3,7 +3,7 @@
 import { ComponentShowcaseTemplate } from "@/components/docs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { formatLabel } from "@/lib/design-system";
+import { formatLabel } from "@/design-system";
 import { useState } from "react";
 
 export default function RadioGroupPage() {
@@ -105,7 +105,7 @@ export default function RadioGroupPage() {
                   <Label htmlFor="d1" className="font-mono text-sm font-semibold">
                     {formatLabel("Card Payment")}
                   </Label>
-                  <p className="font-mono text-xs text-muted-foreground">
+                  <p className="text-muted-foreground font-mono text-xs">
                     Pay with credit or debit card
                   </p>
                 </div>
@@ -116,7 +116,7 @@ export default function RadioGroupPage() {
                   <Label htmlFor="d2" className="font-mono text-sm font-semibold">
                     {formatLabel("Bank Transfer")}
                   </Label>
-                  <p className="font-mono text-xs text-muted-foreground">
+                  <p className="text-muted-foreground font-mono text-xs">
                     Direct bank account transfer
                   </p>
                 </div>
@@ -127,7 +127,7 @@ export default function RadioGroupPage() {
                   <Label htmlFor="d3" className="font-mono text-sm font-semibold">
                     {formatLabel("Cryptocurrency")}
                   </Label>
-                  <p className="font-mono text-xs text-muted-foreground">
+                  <p className="text-muted-foreground font-mono text-xs">
                     Pay with Bitcoin or Ethereum
                   </p>
                 </div>
@@ -160,19 +160,13 @@ export default function RadioGroupPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="disabled1" id="e2" disabled />
-                <Label
-                  htmlFor="e2"
-                  className="font-mono text-sm text-muted-foreground"
-                >
+                <Label htmlFor="e2" className="text-muted-foreground font-mono text-sm">
                   {formatLabel("Disabled Option")}
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="disabled2" id="e3" disabled />
-                <Label
-                  htmlFor="e3"
-                  className="font-mono text-sm text-muted-foreground"
-                >
+                <Label htmlFor="e3" className="text-muted-foreground font-mono text-sm">
                   {formatLabel("Also Disabled")}
                 </Label>
               </div>
@@ -194,9 +188,7 @@ export default function RadioGroupPage() {
           description: "Radio group with terminal-themed styling",
           preview: (
             <div className="space-y-2">
-              <div className="font-mono text-xs text-muted-foreground">
-                [SELECT_OPTION]:
-              </div>
+              <div className="text-muted-foreground font-mono text-xs">[SELECT_OPTION]:</div>
               <RadioGroup defaultValue="option1">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="option1" id="t1" />

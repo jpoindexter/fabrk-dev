@@ -16,7 +16,7 @@ import { PrivacyForm } from "@/components/settings/privacy-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { AlertTriangle, Bell, Download, Globe, Lock, Palette } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function SettingsPage() {

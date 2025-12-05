@@ -23,7 +23,7 @@
 import * as React from "react";
 import { X, Send, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode, formatLabel } from "@/lib/design-system";
+import { mode, formatLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";

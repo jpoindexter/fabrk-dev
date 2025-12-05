@@ -11,7 +11,7 @@ import { DiscountCounter } from "@/components/polar/discount-counter";
 import { PolarCheckoutButton } from "@/components/polar/checkout-button";
 import { WindowControls } from "@/components/ui/window-controls";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export function PricingSection() {
   const features = [

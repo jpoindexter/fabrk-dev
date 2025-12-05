@@ -5,7 +5,7 @@
 
 import { Check, X } from "lucide-react";
 import { StyledCardHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ComparisonFeature {

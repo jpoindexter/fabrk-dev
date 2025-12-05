@@ -9,7 +9,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 const DEMO_ROUTES = [
   { id: "team", label: "Team Dashboard", path: "/templates/team-dashboard" },

@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeDropdown } from "@/components/theme/theme-dropdown";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface DemoNavProps {

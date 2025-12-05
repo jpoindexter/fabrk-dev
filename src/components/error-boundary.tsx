@@ -9,7 +9,7 @@ import React, { Component, ReactNode } from "react";
 import { captureError } from "@/lib/monitoring/error-tracker";
 import { Button } from "@/components/ui/button";
 import { AlertCircle } from "lucide-react";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Props {

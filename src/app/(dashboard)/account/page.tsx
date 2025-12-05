@@ -15,7 +15,7 @@ import { SessionsSection } from "@/components/account/sessions-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 import { CreditCard, Key, Monitor, Shield, User } from "lucide-react";
 import Link from "next/link";

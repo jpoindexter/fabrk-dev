@@ -9,7 +9,7 @@ import { motion, useInView } from "framer-motion";
 import { Moon, Layers, Palette } from "lucide-react";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export function DesignSystemPreview() {
   const ref = useRef<HTMLDivElement>(null);

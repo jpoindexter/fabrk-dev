@@ -11,7 +11,7 @@ import type {
   CookieCategory,
   DetailsTabContentProps,
 } from "./cookie-consent-types";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function ConsentTabContent({

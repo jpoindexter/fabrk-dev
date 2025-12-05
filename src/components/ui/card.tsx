@@ -4,7 +4,7 @@
  * Uses Visual Mode System for aesthetic switching.
  *
  * Design System Integration:
- * - Imports from @/lib/design-system for static mode (server components)
+ * - Imports from @/design-system for static mode (server components)
  * - Radius from visual mode config (mode.radius applies the correct value)
  * - Focus ring using design tokens (focus-within:ring-primary)
  * - Spacing follows 8-point grid: p-6 (24px), space-y-2 (8px)
@@ -32,7 +32,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   /**

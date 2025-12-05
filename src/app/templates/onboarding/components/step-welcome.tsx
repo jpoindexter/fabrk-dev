@@ -4,7 +4,7 @@
  */
 
 import { Sparkles } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function StepWelcome() {

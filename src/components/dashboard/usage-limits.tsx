@@ -6,7 +6,7 @@ import { formatUsageDisplay, getUsagePercentage } from "@/lib/features/access-co
 import { AlertCircle, Database, FolderOpen, Globe, Users } from "lucide-react";
 import Link from "next/link";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 interface UsageLimitsProps {
   user: { subscriptionTier?: string; email?: string; name?: string };

@@ -29,7 +29,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 
 export type ActivityType =
   | "created"

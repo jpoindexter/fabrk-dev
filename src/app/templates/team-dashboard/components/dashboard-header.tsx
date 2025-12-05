@@ -6,7 +6,7 @@
 import { Button } from "@/components/ui/button";
 import { Settings } from "lucide-react";
 import { TemplatePageHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export function DashboardHeader() {

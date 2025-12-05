@@ -6,7 +6,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { docsStructure, docContent } from "./docs-data";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface DocsSidebarProps {

@@ -4,7 +4,7 @@
  * Uses Visual Mode System for aesthetic switching.
  *
  * Design System Integration:
- * - Imports from @/lib/design-system for static mode (server components)
+ * - Imports from @/design-system for static mode (server components)
  * - Radius and font from visual mode config
  * - Focus ring using design tokens (focus-visible:ring-primary)
  * - Height follows 8-point grid: h-8 (32px)
@@ -18,7 +18,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Loader2 } from "lucide-react";
 import * as React from "react";
 

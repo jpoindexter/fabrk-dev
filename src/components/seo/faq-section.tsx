@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { generateFAQSchema } from "@/lib/seo/structured-data";
 import { ClientSchemaScript } from "@/components/security/client-schema-script";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 export interface FAQ {
   question: string;
   answer: string;

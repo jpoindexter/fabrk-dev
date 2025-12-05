@@ -7,7 +7,7 @@
  */
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 // TOGGLE: Change rounded-none to rounded-full for circular stoplights
 // Now uses mode.radius for dynamic switching
@@ -34,9 +34,18 @@ export function WindowControls({ className, size = "sm", animated = false }: Win
 
   return (
     <div className={cn("flex gap-2", className)}>
-      <div className={cn(dotBase, dotSize, "bg-destructive/50", animationClass)} style={animated ? { animationDelay: "0ms" } : undefined} />
-      <div className={cn(dotBase, dotSize, "bg-warning/50", animationClass)} style={animated ? { animationDelay: "200ms" } : undefined} />
-      <div className={cn(dotBase, dotSize, "bg-success/50", animationClass)} style={animated ? { animationDelay: "400ms" } : undefined} />
+      <div
+        className={cn(dotBase, dotSize, "bg-destructive/50", animationClass)}
+        style={animated ? { animationDelay: "0ms" } : undefined}
+      />
+      <div
+        className={cn(dotBase, dotSize, "bg-warning/50", animationClass)}
+        style={animated ? { animationDelay: "200ms" } : undefined}
+      />
+      <div
+        className={cn(dotBase, dotSize, "bg-success/50", animationClass)}
+        style={animated ? { animationDelay: "400ms" } : undefined}
+      />
     </div>
   );
 }
@@ -53,7 +62,13 @@ interface WindowHeaderProps {
   animated?: boolean;
 }
 
-export function WindowHeader({ filename, className, children, size = "sm", animated = false }: WindowHeaderProps) {
+export function WindowHeader({
+  filename,
+  className,
+  children,
+  size = "sm",
+  animated = false,
+}: WindowHeaderProps) {
   return (
     <div className={cn("border-border flex items-center gap-2 border-b px-4 py-2", className)}>
       <WindowControls size={size} animated={animated} />

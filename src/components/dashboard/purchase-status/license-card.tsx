@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Copy, Key } from "lucide-react";
 import { LicenseCardProps } from "./purchase-status-types";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: LicenseCardProps) {
   if (!licenseKey) return null;

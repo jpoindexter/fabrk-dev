@@ -180,7 +180,7 @@ visualModes = {
 
 **Usage in components:**
 ```tsx
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 <Card className={cn("border", mode.radius, mode.font)} />
 ```
 

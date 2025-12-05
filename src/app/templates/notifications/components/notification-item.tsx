@@ -6,7 +6,7 @@ import { Check, Trash2 } from "lucide-react"; // Import Lucide icons used direct
 import Link from "next/link";
 import { useMemo } from "react";
 import { getTypeIcon, getTypeColor } from "./notification-types"; // Import getTypeIcon and getTypeColor
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 interface NotificationItemProps {
   notification: Notification;

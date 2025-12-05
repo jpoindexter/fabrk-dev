@@ -29,7 +29,7 @@ import * as React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { LucideIcon } from "lucide-react";
 
 export interface StyledTab {

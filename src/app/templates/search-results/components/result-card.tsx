@@ -6,7 +6,7 @@
 import { Clock, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { WindowControls } from "@/components/ui/window-controls";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface Result {

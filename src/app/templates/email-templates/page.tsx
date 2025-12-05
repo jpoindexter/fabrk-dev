@@ -12,7 +12,7 @@ import { emailTemplates } from "./components/email-template-data";
 import { EmailStats } from "./components/email-stats";
 import { EmailFeatures } from "./components/email-features";
 import { TemplatePageHeader } from "@/components/ui/card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 // Inject custom scrollbar styling into email HTML

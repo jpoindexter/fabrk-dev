@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 // Animated counter for billing
 function BillingCounter({

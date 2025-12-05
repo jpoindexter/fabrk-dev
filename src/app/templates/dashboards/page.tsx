@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 import { getCategoryInfo, getTemplatesByCategory } from "../template-data";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function DashboardsPage() {

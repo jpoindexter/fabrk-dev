@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Bell, Check, X, Info, AlertTriangle, CheckCircle, XCircle, AtSign } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

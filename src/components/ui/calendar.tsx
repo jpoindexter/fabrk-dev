@@ -6,7 +6,7 @@ import { DayPicker, DayPickerProps, useDayPicker } from "react-day-picker";
 import { format, addMonths, subMonths } from "date-fns";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 export type CalendarProps = DayPickerProps & {

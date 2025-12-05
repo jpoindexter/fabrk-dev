@@ -24,7 +24,7 @@ import {
   InputOTPSeparator,
 } from "@/components/ui/input-otp";
 import { AlertTriangle, Loader2, Copy, Check, CheckCircle2 } from "lucide-react";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 type SetupStep = "qr" | "verify" | "backup";

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/table";
 import { format } from "date-fns";
 import { Shield, User, Building, Key, Flag } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 async function getAuditLogs() {

@@ -8,7 +8,7 @@ import { Check } from "lucide-react";
 import { generateHowToSchema } from "@/lib/seo/structured-data";
 import { SchemaScript } from "./schema-script";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 export interface HowToStep {
   name: string;

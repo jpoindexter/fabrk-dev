@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { StyledTabs, StyledTabsContent } from "@/components/ui/styled-tabs";
 import { Activity, Star, GitBranch, LucideIcon } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 interface ActivityItem {

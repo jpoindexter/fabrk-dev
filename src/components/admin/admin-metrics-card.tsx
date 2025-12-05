@@ -21,7 +21,7 @@ import { TrendingDown, TrendingUp, Minus } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 interface AdminMetricsCardProps {
   title: string;
   value: string | number;

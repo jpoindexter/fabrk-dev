@@ -16,7 +16,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import {
   Mail,
   Key,

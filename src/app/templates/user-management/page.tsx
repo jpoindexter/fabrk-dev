@@ -28,7 +28,7 @@ import { TableToolbar } from "./components/table-toolbar";
 import { DataTable } from "./components/data-table";
 import { PaginationControls } from "./components/pagination-controls";
 import { FeaturesNote } from "./components/features-note";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function UserManagementTemplate() {

@@ -16,7 +16,7 @@ import { NotificationsActionsBar } from "./components/notifications-actions-bar"
 import { NotificationsList } from "./components/notifications-list";
 import { NotificationTypesReference } from "./components/notification-types-reference";
 import { FeaturesCard } from "./components/features-card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 const tabs = [

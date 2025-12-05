@@ -17,7 +17,7 @@ import { BillingHeader } from "./components/billing-header";
 import { CurrentPlanCard } from "./components/current-plan-card";
 import { UsageStatsCard } from "./components/usage-stats-card";
 import { BillingHistoryCard } from "./components/billing-history-card";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function OrganizationBillingPage() {

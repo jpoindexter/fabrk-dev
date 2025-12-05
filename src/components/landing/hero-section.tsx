@@ -22,7 +22,7 @@ import {
   siResend,
 } from "simple-icons";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 // Typewriter effect component
 function TypeWriter({

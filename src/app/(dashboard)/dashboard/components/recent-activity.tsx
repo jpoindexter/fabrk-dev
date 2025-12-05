@@ -7,7 +7,7 @@
 
 import { Card, CardContent, StyledCardHeader } from "@/components/ui/card";
 import { Activity, DollarSign, Upload, Settings, Shield, Clock } from "lucide-react";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export interface ActivityItem {

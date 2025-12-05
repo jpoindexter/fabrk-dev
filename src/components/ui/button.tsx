@@ -4,7 +4,7 @@
  * Uses Visual Mode System for aesthetic switching.
  *
  * Design System Integration:
- * - Imports from @/lib/design-system for static mode (server components)
+ * - Imports from @/design-system for static mode (server components)
  * - Radius, font, and text transform from visual mode config
  * - Follows 8-point grid spacing system
  *
@@ -20,7 +20,7 @@ import { Loader2 } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 /**
  * Button Variants using Design System Tokens

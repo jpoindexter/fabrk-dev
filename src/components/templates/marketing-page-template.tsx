@@ -20,7 +20,7 @@
 import { SiteNavigation } from "@/components/navigation";
 import { Footer } from "@/components/landing/footer";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system/visual-mode";
+import { mode } from "@/design-system";
 interface MarketingSection {
   /** Unique identifier for the section (used as key) */
   id: string;

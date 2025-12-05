@@ -9,7 +9,7 @@ import { motion, useInView } from "framer-motion";
 import { Building2 } from "lucide-react";
 import { PreviewHeader } from "./preview-header";
 import { cn } from "@/lib/utils";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 
 export function OrganizationPreview() {
   const ref = useRef<HTMLDivElement>(null);

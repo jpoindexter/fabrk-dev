@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { CreditCard, Plus, Trash2, CheckCircle2, ArrowLeft, Shield } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { mode } from "@/lib/design-system";
+import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
 export default function PaymentMethodsPage() {
