@@ -32,8 +32,8 @@ import { mode } from "@/design-system";
  * - bg-accent, text-accent-foreground → Highlighted badge
  */
 const badgeVariants = cva(
-  // Base styles - inline-flex for icon alignment, uppercase in terminal mode
-  "inline-flex items-center justify-center border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-2 uppercase",
+  // Base styles - inline-flex for icon alignment, text transform handled by mode.textTransform
+  "inline-flex items-center justify-center border w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-colors gap-2",
   {
     variants: {
       variant: {
@@ -80,7 +80,13 @@ function Badge({
   return (
     <Comp
       data-slot="badge"
-      className={cn(badgeVariants({ variant, size }), mode.radius, mode.font, className)}
+      className={cn(
+        badgeVariants({ variant, size }),
+        mode.radius,
+        mode.font,
+        mode.textTransform === "uppercase" && "uppercase",
+        className
+      )}
       {...props}
     />
   );
