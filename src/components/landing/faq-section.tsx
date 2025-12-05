@@ -167,7 +167,7 @@ export function FAQSection() {
   const filteredFaqs = faqs.filter((faq) => faq.category === activeCategory);
 
   return (
-    <section id="faq" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
+    <section id="faq" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <motion.div

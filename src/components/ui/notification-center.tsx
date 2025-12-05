@@ -349,9 +349,7 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
                 {Object.entries(groupedNotifications).map(([group, items]) => (
                   <div key={group}>
                     {groupByDate && (
-                      <div
-                        className={cn("bg-muted sticky top-0 z-10 mb-2 px-4 py-1.5", mode.radius)}
-                      >
+                      <div className={cn("bg-muted sticky top-0 z-10 mb-2 px-4 py-2", mode.radius)}>
                         <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
                           {group}
                         </span>

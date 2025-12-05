@@ -85,7 +85,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       ref={ref}
       className={cn(
         // Base styles - 8px spacing system
-        "flex flex-col space-y-2 p-6", // 16px gap (2 × 8px), 24px padding (3 × 8px)
+        "flex flex-col space-y-2 p-6", // 8px gap, 24px padding (both on 8-point grid)
         className
       )}
       {...props}
@@ -317,7 +317,7 @@ const FeatureList = React.forwardRef<HTMLDivElement, FeatureListProps>(
     <div
       ref={ref}
       data-slot="feature-list"
-      className={cn("space-y-1.5 text-xs", mode.font, className)}
+      className={cn("space-y-2 text-xs", mode.font, className)}
       {...props}
     >
       {children}
@@ -514,7 +514,7 @@ const CodeOutput = React.forwardRef<HTMLDivElement, CodeOutputProps>(
       className={cn("border-border bg-card border text-left", mode.radius, className)}
       {...props}
     >
-      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-1.5">
+      <div className="border-border/50 flex items-center gap-2 border-b px-4 py-2">
         <span className={cn("text-muted-foreground text-xs", mode.font)}>[ {title} ]</span>
       </div>
       <div className={cn("text-foreground space-y-0.5 p-4 text-xs", mode.font)}>{children}</div>

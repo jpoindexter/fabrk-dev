@@ -175,30 +175,30 @@ export default function LandingPage() {
             <div className="flex gap-2">
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
               >
                 X
               </Link>
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
               >
                 GitHub
               </Link>
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs"
+                className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
               >
                 Discord
               </Link>
             </div>
           ),
           code: `<div className="flex gap-2">
-  <a href="https://x.com" className="border px-4 py-1.5">
+  <a href="https://x.com" className="border px-4 py-2">
     <XIcon className="h-4 w-4" />
     X
   </a>
-  <a href="https://github.com" className="border px-4 py-1.5">
+  <a href="https://github.com" className="border px-4 py-2">
     <GithubIcon className="h-4 w-4" />
     GitHub
   </a>

@@ -75,7 +75,7 @@ export function FiltersSidebar({
                 <button
                   key={category.id}
                   onClick={() => onCategoryChange(category.id)}
-                  className={`border-border flex w-full items-center justify-between border px-2 py-1.5 font-mono text-xs transition-colors ${
+                  className={`border-border flex w-full items-center justify-between border px-2 py-2 font-mono text-xs transition-colors ${
                     selectedCategory === category.id
                       ? "bg-primary text-primary-foreground"
                       : "hover:bg-muted"

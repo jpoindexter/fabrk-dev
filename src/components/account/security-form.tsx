@@ -5,13 +5,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -99,9 +95,7 @@ export function SecurityForm() {
     <Card>
       <CardHeader>
         <CardTitle>Security Settings</CardTitle>
-        <CardDescription>
-          Change your password to keep your account secure.
-        </CardDescription>
+        <CardDescription>Change your password to keep your account secure.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -113,11 +107,7 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Current Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter current password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter current password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,15 +120,9 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>New Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Enter new password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Enter new password" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    Must be at least 8 characters long.
-                  </FormDescription>
+                  <FormDescription>Must be at least 8 characters long.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -150,18 +134,14 @@ export function SecurityForm() {
                 <FormItem>
                   <FormLabel>Confirm New Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Confirm new password"
-                      {...field}
-                    />
+                    <Input type="password" placeholder="Confirm new password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Updating..." : "Update Password"}
+              {isLoading ? "> UPDATING..." : "> UPDATE_PASSWORD"}
             </Button>
           </form>
         </Form>

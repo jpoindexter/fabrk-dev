@@ -354,7 +354,7 @@ export default function OrganizationSettingsPage() {
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
                     <AlertDialogAction
                       onClick={handleDelete}
                       disabled={deleting}

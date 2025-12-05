@@ -23,7 +23,7 @@ export function NotificationTypesReference() {
         const Icon = getTypeIcon(item.type);
         return (
           <div key={item.type} className="border-border bg-card border">
-            <div className="border-border flex items-center gap-2 border-b px-4 py-1.5">
+            <div className="border-border flex items-center gap-2 border-b px-4 py-2">
               <WindowControls size="xs" />
               <span className={cn(mode.font, "text-muted-foreground text-xs")}>
                 {item.type}.tsx

@@ -92,7 +92,7 @@ const CommandGroup = React.forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
-      "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1.5 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold",
+      "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-semibold",
       className
     )}
     {...props}
@@ -120,7 +120,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "aria-selected:bg-primary aria-selected:text-primary-foreground relative flex h-[48px] cursor-default items-center px-2 py-1.5 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto",
+      "aria-selected:bg-primary aria-selected:text-primary-foreground relative flex h-[48px] cursor-default items-center px-2 py-2 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto",
       mode.radius,
       mode.font,
       className

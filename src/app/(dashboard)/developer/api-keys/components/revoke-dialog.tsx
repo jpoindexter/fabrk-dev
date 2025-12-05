@@ -27,12 +27,12 @@ export function RevokeDialog({ open, onOpenChange, onConfirm }: RevokeDialogProp
         <AlertDialogHeader>
           <AlertDialogTitle>Revoke API Key?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently revoke the API key and
-            immediately stop all API requests using this key.
+            This action cannot be undone. This will permanently revoke the API key and immediately
+            stop all API requests using this key.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"

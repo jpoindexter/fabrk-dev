@@ -67,7 +67,7 @@ export default function AdminMonitoringPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Monitoring</h1>
+          <h1 className="text-4xl font-semibold tracking-tight">Monitoring</h1>
           <p className="text-muted-foreground">Error tracking and performance metrics</p>
         </div>
         <div className="flex gap-2">
@@ -281,7 +281,7 @@ export default function AdminMonitoringPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={confirmClearLogs}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"

@@ -15,7 +15,7 @@ export function FeaturesCard() {
         <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
           [TEMPLATE_FEATURES]:
         </div>
-        <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+        <div className={cn(mode.font, "space-y-2 text-xs")}>
           <div>
             <span className="text-success">&gt;</span> Search bar with query display
           </div>

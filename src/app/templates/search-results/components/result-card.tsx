@@ -26,7 +26,7 @@ interface ResultCardProps {
 export function ResultCard({ result }: ResultCardProps) {
   return (
     <div className="border-border bg-card hover:bg-muted/30 border transition-colors">
-      <div className="border-border flex items-center gap-2 border-b px-4 py-1.5">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <WindowControls size="xs" />
         <span className={cn(mode.font, "text-muted-foreground text-xs")}>
           result_{result.id}.tsx

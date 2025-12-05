@@ -40,7 +40,7 @@ import { DesignSystemPreview } from "./preview-design";
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
+    <section id="features" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div

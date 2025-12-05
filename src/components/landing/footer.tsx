@@ -173,7 +173,7 @@ export function Footer() {
               href="https://x.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs transition-colors"
+              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs transition-colors"
             >
               <SimpleIcon path={siX.path} className="size-3.5" />
               <span>X</span>
@@ -182,7 +182,7 @@ export function Footer() {
               href="https://github.com/fabrk"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-1.5 font-mono text-xs transition-colors"
+              className="border-border text-muted-foreground hover:border-primary/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs transition-colors"
             >
               <SimpleIcon path={siGithub.path} className="size-3.5" />
               <span>GitHub</span>

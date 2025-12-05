@@ -15,21 +15,24 @@ function FeaturesDemo() {
   ];
 
   return (
-    <section className="w-full border border-border bg-background p-6">
+    <section className="border-border bg-background w-full border p-6">
       <div className="mb-6">
-        <span className="inline-block border border-border bg-card px-4 py-1 font-mono text-xs text-muted-foreground">
+        <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
           [ [0x20] FEATURES ] CORE_MODULES
         </span>
         <h2 className="mt-4 font-mono text-xl font-bold">WHAT&apos;S_INCLUDED</h2>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
-          <div key={feature.title} className="border border-border bg-card p-4 transition-colors hover:border-primary/50">
+          <div
+            key={feature.title}
+            className="border-border bg-card hover:border-primary/50 border p-4 transition-colors"
+          >
             <div className="mb-4 flex items-center gap-2">
-              <feature.icon className="h-4 w-4 text-primary" />
+              <feature.icon className="text-primary h-4 w-4" />
               <span className="font-mono text-xs font-bold">{feature.title}</span>
             </div>
-            <p className="font-mono text-xs text-muted-foreground">{feature.desc}</p>
+            <p className="text-muted-foreground font-mono text-xs">{feature.desc}</p>
           </div>
         ))}
       </div>
@@ -48,13 +51,18 @@ function TechStackDemo() {
   ];
 
   return (
-    <div className="w-full border border-border bg-background p-6">
-      <div className="mb-4 font-mono text-xs text-muted-foreground">[ TECH_STACK ] DEPENDENCIES</div>
+    <div className="border-border bg-background w-full border p-6">
+      <div className="text-muted-foreground mb-4 font-mono text-xs">
+        [ TECH_STACK ] DEPENDENCIES
+      </div>
       <div className="flex flex-wrap gap-4">
         {tech.map((t) => (
-          <div key={t.name} className="flex items-center gap-2 border border-border bg-card px-4 py-1.5">
+          <div
+            key={t.name}
+            className="border-border bg-card flex items-center gap-2 border px-4 py-2"
+          >
             <span className="font-mono text-xs">{t.name}</span>
-            <span className="font-mono text-xs text-success">[{t.status}]</span>
+            <span className="text-success font-mono text-xs">[{t.status}]</span>
           </div>
         ))}
       </div>
@@ -97,12 +105,12 @@ export default function LandingPage() {
           title: "Feature Card",
           description: "Individual feature card component",
           preview: (
-            <div className="max-w-sm border border-border bg-card p-4 transition-colors hover:border-primary/50">
+            <div className="border-border bg-card hover:border-primary/50 max-w-sm border p-4 transition-colors">
               <div className="mb-4 flex items-center gap-2">
-                <Shield className="h-4 w-4 text-primary" />
+                <Shield className="text-primary h-4 w-4" />
                 <span className="font-mono text-xs font-bold">AUTHENTICATION</span>
               </div>
-              <p className="font-mono text-xs text-muted-foreground">
+              <p className="text-muted-foreground font-mono text-xs">
                 NextAuth v5 with Google OAuth, credentials, and magic link support.
               </p>
             </div>

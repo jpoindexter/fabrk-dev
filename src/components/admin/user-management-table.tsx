@@ -315,7 +315,7 @@ export function UserManagementTable({ initialUsers }: UserManagementTableProps) 
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteUser}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"

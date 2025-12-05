@@ -24,7 +24,7 @@ export function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-28">
+    <section id="pricing" className="border-border scroll-mt-16 border-t px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">

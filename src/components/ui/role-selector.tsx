@@ -209,7 +209,7 @@ export function RoleSelector({
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
+                <AlertDialogCancel onClick={handleCancel}>&gt; CANCEL</AlertDialogCancel>
                 <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -294,7 +294,7 @@ export function RoleSelector({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
+              <AlertDialogCancel onClick={handleCancel}>&gt; CANCEL</AlertDialogCancel>
               <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

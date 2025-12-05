@@ -28,7 +28,7 @@ export function TemplateFeatures() {
           <div className={cn(mode.font, "text-muted-foreground mb-4 text-xs")}>
             [TEMPLATE_FEATURES]:
           </div>
-          <div className={cn(mode.font, "space-y-1.5 text-xs")}>
+          <div className={cn(mode.font, "space-y-2 text-xs")}>
             {features.map((feature, idx) => (
               <div key={idx}>
                 <span className="text-success">&gt;</span> {feature}

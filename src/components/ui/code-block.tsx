@@ -33,7 +33,7 @@ export function CodeBlock({ code, language = "typescript" }: CodeBlockProps) {
       <button
         onClick={handleCopy}
         className={cn(
-          "text-muted-foreground hover:text-foreground absolute top-2 right-2 z-10 p-1.5 text-xs opacity-0 transition-opacity group-hover:opacity-100",
+          "text-muted-foreground hover:text-foreground absolute top-2 right-2 z-10 p-2 text-xs opacity-0 transition-opacity group-hover:opacity-100",
           mode.font
         )}
         aria-label={copied ? "Code copied" : "Copy code to clipboard"}

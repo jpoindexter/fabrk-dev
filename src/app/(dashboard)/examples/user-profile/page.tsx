@@ -82,7 +82,7 @@ export default async function UserProfilePage() {
     <div className="space-y-8 p-8">
       {/* Page Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-foreground text-3xl font-bold tracking-tight">User Profile</h1>
+        <h1 className="text-foreground text-4xl font-semibold tracking-tight">User Profile</h1>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Share2 className="mr-2 h-4 w-4" />

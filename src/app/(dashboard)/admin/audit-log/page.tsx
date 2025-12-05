@@ -136,7 +136,7 @@ export default function AuditLogPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Audit Log</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">Audit Log</h1>
         <p className="text-muted-foreground">
           Immutable audit trail of all sensitive operations (showing last 100 entries)
         </p>

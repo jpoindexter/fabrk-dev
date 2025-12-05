@@ -209,7 +209,7 @@ export function ApiKeyGenerator({
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogCancel>&gt; CANCEL</AlertDialogCancel>
                       <AlertDialogAction onClick={onRevoke} className="bg-destructive">
                         Revoke Key
                       </AlertDialogAction>

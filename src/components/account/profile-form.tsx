@@ -6,13 +6,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { mode } from "@/design-system";
+import { cn } from "@/lib/utils";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -81,9 +77,7 @@ export function ProfileForm() {
     } catch (err: unknown) {
       error(
         "Error",
-        err instanceof Error
-          ? err.message
-          : "Failed to update profile. Please try again."
+        err instanceof Error ? err.message : "Failed to update profile. Please try again."
       );
     } finally {
       setIsLoading(false);
@@ -94,9 +88,7 @@ export function ProfileForm() {
     <Card>
       <CardHeader>
         <CardTitle>Profile Information</CardTitle>
-        <CardDescription>
-          Update your account profile information.
-        </CardDescription>
+        <CardDescription>Update your account profile information.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -110,9 +102,7 @@ export function ProfileForm() {
                   <FormControl>
                     <Input placeholder="Your name" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
+                  <FormDescription>This is your public display name.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -124,21 +114,15 @@ export function ProfileForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="your.email@example.com"
-                      {...field}
-                    />
+                    <Input type="email" placeholder="your.email@example.com" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    Your email address for account notifications.
-                  </FormDescription>
+                  <FormDescription>Your email address for account notifications.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Saving..." : "Save Changes"}
+              {isLoading ? "> SAVING..." : "> SAVE_CHANGES"}
             </Button>
           </form>
         </Form>

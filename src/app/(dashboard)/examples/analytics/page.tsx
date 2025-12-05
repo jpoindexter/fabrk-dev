@@ -85,7 +85,7 @@ export default async function AnalyticsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-foreground text-3xl font-bold tracking-tight">Analytics</h1>
+          <h1 className="text-foreground text-4xl font-semibold tracking-tight">Analytics</h1>
           <p className="text-muted-foreground mt-2 text-sm">
             Track your SaaS performance and growth metrics
           </p>

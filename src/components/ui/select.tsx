@@ -127,7 +127,7 @@ const SelectContent = React.forwardRef<
       <SelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={cn(
-          "p-1.5",
+          "p-2",
           position === "popper" &&
             "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
         )}
@@ -183,7 +183,7 @@ const SelectItem = React.forwardRef<
     className={cn(
       // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
       // Radius and font from Visual Mode System
-      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-1.5",
+      "hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 text-xs select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2",
       mode.radius,
       mode.font,
       className
@@ -209,7 +209,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pr-2 pl-8 text-xs font-medium", mode.font, className)}
+    className={cn("py-2 pr-2 pl-8 text-xs font-medium", mode.font, className)}
     {...props}
   />
 ));
