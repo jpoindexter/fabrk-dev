@@ -112,7 +112,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Uptime</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-black">{uptime}%</span>
+              <span className="text-foreground text-lg font-bold">{uptime}%</span>
               {uptime >= 99.9 && <TrendingUp className="text-primary h-4 w-4" />}
             </div>
           </div>
@@ -135,7 +135,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Avg Response Time</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-black">{avgResponseTime}ms</span>
+              <span className="text-foreground text-lg font-bold">{avgResponseTime}ms</span>
               <TrendingDown className="text-primary h-4 w-4" />
             </div>
           </div>
@@ -167,7 +167,7 @@ export function SystemHealthWidget({
               <span className="text-foreground text-sm font-medium">Error Rate</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-foreground text-lg font-black">{errorRate}%</span>
+              <span className="text-foreground text-lg font-bold">{errorRate}%</span>
               {errorRate <= 0.5 && <TrendingDown className="text-primary h-4 w-4" />}
             </div>
           </div>
@@ -186,7 +186,7 @@ export function SystemHealthWidget({
         <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm font-medium">Requests/min</span>
-            <span className="text-foreground text-xl font-black">
+            <span className="text-foreground text-xl font-bold">
               {requestsPerMinute.toLocaleString()}
             </span>
           </div>

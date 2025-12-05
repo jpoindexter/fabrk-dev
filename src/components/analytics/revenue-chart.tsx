@@ -159,14 +159,12 @@ export function RevenueChart({
         <div className="grid grid-cols-2 gap-4">
           <div className={cn("border-border bg-card border p-4", mode.radius)}>
             <p className="text-muted-foreground mb-1 text-xs font-medium">Current MRR</p>
-            <p className="text-foreground text-2xl font-black">
-              {formatCompactCurrency(latestMRR)}
-            </p>
+            <p className="text-foreground text-2xl font-bold">{formatCompactCurrency(latestMRR)}</p>
           </div>
           {showArr && (
             <div className={cn("border-border bg-accent/50 border p-4", mode.radius)}>
               <p className="text-muted-foreground mb-1 text-xs font-medium">Projected ARR</p>
-              <p className="text-foreground text-2xl font-black">
+              <p className="text-foreground text-2xl font-bold">
                 {formatCompactCurrency(latestARR)}
               </p>
             </div>

@@ -103,7 +103,7 @@ export function FunnelVisualizer({
                     </Badge>
                   )}
                 </div>
-                <span className="text-foreground text-lg font-black">
+                <span className="text-foreground text-lg font-bold">
                   {stage.value.toLocaleString()}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export function FunnelVisualizer({
         <div className="border-border border-t pt-4">
           <div className={cn("bg-accent/50 flex items-center justify-between p-4", mode.radius)}>
             <span className="text-foreground text-sm font-medium">Overall Conversion Rate</span>
-            <span className="text-primary text-2xl font-black">
+            <span className="text-primary text-2xl font-bold">
               {((stages[stages.length - 1].value / stages[0].value) * 100).toFixed(2)}%
             </span>
           </div>

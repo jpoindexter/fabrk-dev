@@ -102,7 +102,7 @@ export function OrgCard({
               {logo ? (
                 <AvatarImage src={logo} alt={name} />
               ) : (
-                <AvatarFallback className="bg-primary text-primary-foreground text-lg font-black">
+                <AvatarFallback className="bg-primary text-primary-foreground text-lg font-bold">
                   {initials}
                 </AvatarFallback>
               )}
@@ -110,7 +110,7 @@ export function OrgCard({
 
             <div className="min-w-0 flex-1 space-y-2">
               <div className="space-y-1">
-                <h3 className="text-foreground truncate text-lg font-black">{name}</h3>
+                <h3 className="text-foreground truncate text-lg font-semibold">{name}</h3>
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="outline" className={cn("text-xs font-medium", planColors[plan])}>
                     {plan}

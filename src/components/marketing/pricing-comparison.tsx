@@ -90,7 +90,7 @@ export function PricingComparison({
             <CardHeader className="space-y-4">
               <div>
                 <div className="mb-2 flex items-center gap-2">
-                  <h3 className="text-foreground text-xl font-black">{plan.name}</h3>
+                  <h3 className="text-foreground text-xl font-semibold">{plan.name}</h3>
                   {plan.name === "Enterprise" && <Crown className="text-primary h-5 w-5" />}
                   {plan.popular && <Zap className="text-primary h-5 w-5" />}
                 </div>
@@ -99,11 +99,11 @@ export function PricingComparison({
 
               <div className="space-y-1">
                 {plan.price === "Custom" ? (
-                  <div className="text-foreground text-3xl font-black">Custom</div>
+                  <div className="text-foreground text-3xl font-bold">Custom</div>
                 ) : (
                   <>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-foreground text-3xl font-black">${plan.price}</span>
+                      <span className="text-foreground text-3xl font-bold">${plan.price}</span>
                       {plan.interval && (
                         <span className="text-muted-foreground text-sm">/{plan.interval}</span>
                       )}
@@ -131,11 +131,11 @@ export function PricingComparison({
             <thead>
               <tr className="border-border bg-muted border-b">
                 <th className="p-4 text-left">
-                  <span className="text-foreground text-sm font-black">Features</span>
+                  <span className="text-foreground text-sm font-semibold">Features</span>
                 </th>
                 {plans.map((plan) => (
                   <th key={plan.id} className="min-w-[120px] p-4 text-center">
-                    <span className="text-foreground text-sm font-black">{plan.name}</span>
+                    <span className="text-foreground text-sm font-semibold">{plan.name}</span>
                   </th>
                 ))}
               </tr>
@@ -148,7 +148,7 @@ export function PricingComparison({
                       {/* Category Header */}
                       <tr className="border-border border-t">
                         <td colSpan={plans.length + 1} className="p-4">
-                          <span className="text-foreground text-xs font-black tracking-wide uppercase">
+                          <span className="text-foreground text-xs font-semibold tracking-wide uppercase">
                             {category || "Other Features"}
                           </span>
                         </td>
@@ -198,7 +198,7 @@ export function PricingComparison({
 
       {/* Bottom CTA */}
       <div className={cn("border-border bg-card border p-6 text-center", mode.radius)}>
-        <h3 className="text-foreground mb-2 text-xl font-black">Need help choosing?</h3>
+        <h3 className="text-foreground mb-2 text-xl font-bold">Need help choosing?</h3>
         <p className="text-muted-foreground mb-4 text-sm">
           Contact our team for personalized recommendations
         </p>

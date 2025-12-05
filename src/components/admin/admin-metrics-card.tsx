@@ -81,7 +81,7 @@ export function AdminMetricsCard({
               </div>
             ) : (
               <>
-                <div className="text-foreground text-3xl font-black">
+                <div className="text-foreground text-3xl font-bold">
                   {typeof value === "number" ? value.toLocaleString() : value}
                 </div>
 
