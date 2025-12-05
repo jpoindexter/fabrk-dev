@@ -1,27 +1,112 @@
 /**
- * Design Token Primitives
+ * Design System Primitives
  *
- * Raw, context-free design values. These are the building blocks
- * that semantic tokens reference. Never use primitives directly in components.
- *
- * Naming Convention: category-scale (e.g., space-4, color-gray-500)
- *
- * @see https://www.designtokens.org/glossary/
+ * Raw, immutable values that themes select from.
+ * These are the foundation - never use directly in components.
+ * Components should only reference semantic tokens.
  */
 
-// ============================================================================
-// SPACING SCALE (8-point grid)
-// ============================================================================
+// =============================================================================
+// COLOR PRIMITIVES
+// =============================================================================
 
-/**
- * Spacing scale based on 8-point grid system
- * Used by: padding, margin, gap, positioning
- *
- * Scale: 0, 1, 2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96
- * Base unit: 4px (Tailwind default)
- */
-export const spacing = {
-  0: "0px",
+export const colors = {
+  white: "#ffffff",
+  black: "#000000",
+
+  gray: {
+    50: "oklch(98% 0.005 240)",
+    100: "oklch(96% 0.005 240)",
+    200: "oklch(92% 0.005 240)",
+    300: "oklch(87% 0.005 240)",
+    400: "oklch(70% 0.005 240)",
+    500: "oklch(55% 0.005 240)",
+    600: "oklch(45% 0.005 240)",
+    700: "oklch(37% 0.01 240)",
+    800: "oklch(27% 0.01 240)",
+    900: "oklch(21% 0.01 240)",
+    950: "oklch(14% 0.01 240)",
+  },
+
+  primary: {
+    50: "oklch(97% 0.02 290)",
+    100: "oklch(94% 0.04 290)",
+    200: "oklch(88% 0.08 290)",
+    300: "oklch(79% 0.14 290)",
+    400: "oklch(70% 0.18 290)",
+    500: "oklch(60% 0.20 290)",
+    600: "oklch(52% 0.22 290)",
+    700: "oklch(45% 0.22 290)",
+    800: "oklch(38% 0.20 290)",
+    900: "oklch(32% 0.18 290)",
+    950: "oklch(22% 0.15 290)",
+  },
+
+  red: {
+    50: "oklch(97% 0.02 25)",
+    100: "oklch(94% 0.05 25)",
+    200: "oklch(88% 0.10 25)",
+    300: "oklch(78% 0.16 25)",
+    400: "oklch(68% 0.20 25)",
+    500: "oklch(60% 0.22 25)",
+    600: "oklch(52% 0.24 25)",
+    700: "oklch(45% 0.22 25)",
+    800: "oklch(38% 0.18 25)",
+    900: "oklch(32% 0.14 25)",
+    950: "oklch(22% 0.10 25)",
+  },
+
+  green: {
+    50: "oklch(97% 0.02 145)",
+    100: "oklch(94% 0.04 145)",
+    200: "oklch(88% 0.08 145)",
+    300: "oklch(78% 0.12 145)",
+    400: "oklch(70% 0.16 145)",
+    500: "oklch(65% 0.18 145)",
+    600: "oklch(55% 0.18 145)",
+    700: "oklch(48% 0.16 145)",
+    800: "oklch(40% 0.14 145)",
+    900: "oklch(32% 0.12 145)",
+    950: "oklch(22% 0.08 145)",
+  },
+
+  amber: {
+    50: "oklch(97% 0.02 85)",
+    100: "oklch(94% 0.05 85)",
+    200: "oklch(90% 0.10 85)",
+    300: "oklch(85% 0.14 80)",
+    400: "oklch(82% 0.16 75)",
+    500: "oklch(80% 0.16 85)",
+    600: "oklch(70% 0.18 75)",
+    700: "oklch(60% 0.16 70)",
+    800: "oklch(50% 0.14 65)",
+    900: "oklch(40% 0.12 60)",
+    950: "oklch(28% 0.08 55)",
+  },
+
+  blue: {
+    50: "oklch(97% 0.02 250)",
+    100: "oklch(94% 0.04 250)",
+    200: "oklch(88% 0.08 250)",
+    300: "oklch(78% 0.14 250)",
+    400: "oklch(68% 0.18 250)",
+    500: "oklch(60% 0.18 250)",
+    600: "oklch(52% 0.20 250)",
+    700: "oklch(45% 0.18 250)",
+    800: "oklch(38% 0.16 250)",
+    900: "oklch(32% 0.14 250)",
+    950: "oklch(22% 0.10 250)",
+  },
+} as const;
+
+// =============================================================================
+// SPACING PRIMITIVES (8-point grid)
+// =============================================================================
+
+export const space = {
+  0: "0",
+  px: "1px",
+  0.5: "0.125rem", // 2px
   1: "0.25rem", // 4px
   2: "0.5rem", // 8px
   4: "1rem", // 16px
@@ -36,43 +121,20 @@ export const spacing = {
   40: "10rem", // 160px
   48: "12rem", // 192px
   64: "16rem", // 256px
-  80: "20rem", // 320px
-  96: "24rem", // 384px
 } as const;
 
-/**
- * Tailwind spacing class mapping
- * These are the ONLY spacing values allowed in the design system
- */
-export const spacingClasses = {
-  0: "0",
-  1: "1", // 4px - micro spacing only
-  2: "2", // 8px
-  4: "4", // 16px
-  6: "6", // 24px
-  8: "8", // 32px
-  10: "10", // 40px
-  12: "12", // 48px
-  16: "16", // 64px
-  20: "20", // 80px
-  24: "24", // 96px
-  32: "32", // 128px
-  40: "40", // 160px
-  48: "48", // 192px
-  64: "64", // 256px
-  80: "80", // 320px
-  96: "96", // 384px
+// =============================================================================
+// TYPOGRAPHY PRIMITIVES
+// =============================================================================
+
+export const fontFamily = {
+  sans: '"Inter", system-ui, -apple-system, sans-serif',
+  mono: '"JetBrains Mono", "Fira Code", ui-monospace, monospace',
+  display: '"Inter", system-ui, sans-serif',
 } as const;
 
-// ============================================================================
-// TYPOGRAPHY SCALE
-// ============================================================================
-
-/**
- * Font size scale (Major Third - 1.25 ratio)
- * Matches Tailwind's default scale
- */
 export const fontSize = {
+  "2xs": "0.625rem", // 10px
   xs: "0.75rem", // 12px
   sm: "0.875rem", // 14px
   base: "1rem", // 16px
@@ -85,12 +147,15 @@ export const fontSize = {
   "6xl": "3.75rem", // 60px
   "7xl": "4.5rem", // 72px
   "8xl": "6rem", // 96px
-  "9xl": "8rem", // 128px
 } as const;
 
-/**
- * Line height scale
- */
+export const fontWeight = {
+  normal: "400",
+  medium: "500",
+  semibold: "600",
+  bold: "700",
+} as const;
+
 export const lineHeight = {
   none: "1",
   tight: "1.25",
@@ -100,54 +165,22 @@ export const lineHeight = {
   loose: "2",
 } as const;
 
-/**
- * Font weight scale
- */
-export const fontWeight = {
-  thin: "100",
-  extralight: "200",
-  light: "300",
-  normal: "400",
-  medium: "500",
-  semibold: "600",
-  bold: "700",
-  extrabold: "800",
-  black: "900",
-} as const;
-
-/**
- * Letter spacing scale
- */
 export const letterSpacing = {
   tighter: "-0.05em",
   tight: "-0.025em",
-  normal: "0em",
+  normal: "0",
   wide: "0.025em",
   wider: "0.05em",
   widest: "0.1em",
 } as const;
 
-/**
- * Font family primitives
- */
-export const fontFamily = {
-  sans: 'var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  mono: 'var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-  serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
-} as const;
+// =============================================================================
+// RADIUS PRIMITIVES
+// =============================================================================
 
-// ============================================================================
-// BORDER RADIUS SCALE
-// ============================================================================
-
-/**
- * Border radius scale
- * Terminal mode uses "none", modern modes use sm/md/lg
- */
-export const borderRadius = {
-  none: "0px",
+export const radius = {
+  none: "0",
   sm: "0.125rem", // 2px
-  base: "0.25rem", // 4px
   md: "0.375rem", // 6px
   lg: "0.5rem", // 8px
   xl: "0.75rem", // 12px
@@ -156,18 +189,14 @@ export const borderRadius = {
   full: "9999px",
 } as const;
 
-// ============================================================================
-// SHADOW SCALE
-// ============================================================================
+// =============================================================================
+// SHADOW PRIMITIVES
+// =============================================================================
 
-/**
- * Shadow scale
- * Terminal mode uses "none", modern modes use subtle shadows
- */
 export const shadow = {
   none: "none",
-  sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-  base: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+  xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+  sm: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
   md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
@@ -175,150 +204,123 @@ export const shadow = {
   inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
 } as const;
 
-// ============================================================================
-// BORDER WIDTH SCALE
-// ============================================================================
-
-export const borderWidth = {
-  0: "0px",
-  1: "1px",
-  2: "2px",
-  4: "4px",
-  8: "8px",
-} as const;
-
-// ============================================================================
-// OPACITY SCALE
-// ============================================================================
-
-export const opacity = {
-  0: "0",
-  5: "0.05",
-  10: "0.1",
-  20: "0.2",
-  25: "0.25",
-  30: "0.3",
-  40: "0.4",
-  50: "0.5",
-  60: "0.6",
-  70: "0.7",
-  75: "0.75",
-  80: "0.8",
-  90: "0.9",
-  95: "0.95",
-  100: "1",
-} as const;
-
-// ============================================================================
-// Z-INDEX SCALE
-// ============================================================================
-
-export const zIndex = {
-  auto: "auto",
-  0: "0",
-  10: "10",
-  20: "20",
-  30: "30",
-  40: "40",
-  50: "50", // Dropdowns, tooltips
-  60: "60", // Fixed headers
-  70: "70", // Modals backdrop
-  80: "80", // Modals
-  90: "90", // Toasts
-  100: "100", // Maximum
-} as const;
-
-// ============================================================================
-// ANIMATION DURATION
-// ============================================================================
+// =============================================================================
+// MOTION PRIMITIVES
+// =============================================================================
 
 export const duration = {
-  75: "75ms",
-  100: "100ms",
-  150: "150ms",
-  200: "200ms",
-  300: "300ms",
-  500: "500ms",
-  700: "700ms",
-  1000: "1000ms",
+  instant: "0ms",
+  fast: "100ms",
+  normal: "200ms",
+  slow: "300ms",
+  slower: "500ms",
+  slowest: "1000ms",
 } as const;
-
-// ============================================================================
-// ANIMATION EASING
-// ============================================================================
 
 export const easing = {
   linear: "linear",
   in: "cubic-bezier(0.4, 0, 1, 1)",
   out: "cubic-bezier(0, 0, 0.2, 1)",
   inOut: "cubic-bezier(0.4, 0, 0.2, 1)",
-  spring: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+  bounce: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+  spring: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
 } as const;
 
-// ============================================================================
-// BREAKPOINTS
-// ============================================================================
+// =============================================================================
+// BREAKPOINT PRIMITIVES
+// =============================================================================
 
-export const breakpoints = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  "2xl": "1536px",
+export const breakpoint = {
+  xs: "0px",
+  sm: "480px",
+  md: "640px",
+  lg: "768px",
+  xl: "1024px",
+  "2xl": "1280px",
+  "3xl": "1536px",
 } as const;
 
-// ============================================================================
-// CONTAINER WIDTHS
-// ============================================================================
+// =============================================================================
+// CONTAINER PRIMITIVES
+// =============================================================================
 
-export const containerWidth = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  "2xl": "1536px",
-  "3xl": "1920px",
+export const container = {
+  xs: "320px",
+  sm: "480px",
+  md: "640px",
+  lg: "768px",
+  xl: "1024px",
+  "2xl": "1280px",
+  "3xl": "1536px",
   full: "100%",
   prose: "65ch",
 } as const;
 
-// ============================================================================
-// EXPORTS
-// ============================================================================
+// =============================================================================
+// Z-INDEX PRIMITIVES
+// =============================================================================
 
-export const primitives = {
-  spacing,
-  spacingClasses,
-  fontSize,
-  lineHeight,
-  fontWeight,
-  letterSpacing,
-  fontFamily,
-  borderRadius,
-  shadow,
-  borderWidth,
-  opacity,
-  zIndex,
-  duration,
-  easing,
-  breakpoints,
-  containerWidth,
+export const zIndex = {
+  behind: -1,
+  base: 0,
+  raised: 10,
+  dropdown: 20,
+  sticky: 30,
+  overlay: 40,
+  modal: 50,
+  popover: 60,
+  toast: 70,
+  tooltip: 80,
+  max: 9999,
 } as const;
 
-export type Spacing = keyof typeof spacing;
-export type FontSize = keyof typeof fontSize;
-export type LineHeight = keyof typeof lineHeight;
-export type FontWeight = keyof typeof fontWeight;
-export type LetterSpacing = keyof typeof letterSpacing;
-export type FontFamily = keyof typeof fontFamily;
-export type BorderRadius = keyof typeof borderRadius;
-export type Shadow = keyof typeof shadow;
-export type BorderWidth = keyof typeof borderWidth;
-export type Opacity = keyof typeof opacity;
-export type ZIndex = keyof typeof zIndex;
-export type Duration = keyof typeof duration;
-export type Easing = keyof typeof easing;
-export type Breakpoint = keyof typeof breakpoints;
-export type ContainerWidth = keyof typeof containerWidth;
+// =============================================================================
+// BORDER PRIMITIVES
+// =============================================================================
+
+export const borderWidth = {
+  none: "0",
+  default: "1px",
+  2: "2px",
+  4: "4px",
+} as const;
+
+// =============================================================================
+// ACCESSIBILITY PRIMITIVES
+// =============================================================================
+
+export const accessibility = {
+  touchTarget: {
+    min: "44px",
+    comfortable: "48px",
+  },
+  focusRing: {
+    width: "2px",
+    offset: "2px",
+  },
+} as const;
+
+// =============================================================================
+// BUNDLED EXPORT
+// =============================================================================
+
+export const primitives = {
+  colors,
+  space,
+  fontFamily,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  letterSpacing,
+  radius,
+  shadow,
+  duration,
+  easing,
+  breakpoint,
+  container,
+  zIndex,
+  borderWidth,
+  accessibility,
+} as const;
 
 export default primitives;
