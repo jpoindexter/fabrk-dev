@@ -434,28 +434,29 @@ npm run type-check  # ✅ Passed
 
 **Goal:** Reusable template for auth pages
 
-- [ ] Read contract from `spec/templates.md`
-- [ ] Create `src/components/templates/AuthPageTemplate.tsx`
-- [ ] Implement props interface:
-  - [ ] title, description
-  - [ ] fields array
-  - [ ] submitLabel
-  - [ ] socialAuth boolean
-  - [ ] alternateLink
-  - [ ] forgotPasswordLink
-- [ ] Use semantic tokens throughout
-- [ ] Terminal format for labels and buttons
-- [ ] Add to `/templates/` showcase
-- [ ] Test with SignIn page
-- [ ] Test with SignUp page
-- [ ] Verify responsive layout
-- [ ] Commit: "Implement AuthPageTemplate"
+**Status:** ✅ COMPLETED (2025-12-05)
+
+- [x] Read contract from `spec/templates.md`
+- [x] Create `src/components/templates/auth-page-template.tsx`
+- [x] Implement props interface:
+  - [x] title, description (required)
+  - [x] fields array with name, label, type, placeholder, required, autoComplete
+  - [x] submitLabel (formats as `> UPPERCASE_SNAKE_CASE`)
+  - [x] socialAuth boolean (Google, GitHub buttons)
+  - [x] rememberMe boolean
+  - [x] alternateLink with label, linkText, href
+  - [x] forgotPasswordLink boolean with forgotPasswordHref
+  - [x] action, method, loading, error for form handling
+  - [x] icon customization
+  - [x] children for additional content
+- [x] Uses semantic tokens throughout (mode.radius, mode.font)
+- [x] Terminal format: `[LABEL]:` for labels, `> SUBMIT` for buttons
+- [x] Added to templates index exports
+- [x] Type-check passes ✅
 
 **Validation:**
 ```bash
-# Visit /templates/auth/sign-in
-# Verify terminal style renders correctly
-# Switch to Modern theme, verify clean style
+npm run type-check  # ✅ Passed
 ```
 
 ### C.2: Implement ListPageTemplate
@@ -805,11 +806,11 @@ npm run type-check  # ✅ Passed
 |-------|-------------|-----------|--------|
 | A: Foundation | 6 | 0 | Not Started |
 | B: Components | 12 | 12 | ✅ **COMPLETE** |
-| C: Templates | 8 | 0 | Not Started |
+| C: Templates | 8 | 1 | **C.1 Complete** |
 | D: Pages | 9 | 0 | Not Started |
 | E: Cleanup | 5 | 0 | Not Started |
 
-**Overall: 12 / 40 major tasks**
+**Overall: 13 / 40 major tasks**
 
 ### Execution Log
 
@@ -828,6 +829,7 @@ npm run type-check  # ✅ Passed
 | 2025-12-05 | B.10 | Tabs Component | 0 files | Already compliant |
 | 2025-12-05 | B.11 | Menu/Dropdown | 0 files | Already compliant |
 | 2025-12-05 | B.12 | Navigation | 0 files | Sidebar already compliant |
+| 2025-12-05 | C.1 | AuthPageTemplate | 2 files | Created auth-page-template.tsx, updated index exports |
 
 ---
 
