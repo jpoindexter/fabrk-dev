@@ -24,7 +24,7 @@ interface HeatmapProps {
 export function Heatmap({
   data,
   cellSize = 40,
-  gap = 2,
+  gap = 4,
   colorScale = [
     "hsl(var(--muted))",
     "oklch(80% 0.1 240)",

@@ -115,7 +115,7 @@ export function HeroSplit({
 
           {/* Image/Visual Side */}
           <div className={`${imageOrder} relative`}>
-            <div className={cn(mode.radius, "border-foreground bg-muted relative border-2 shadow")}>
+            <div className={cn(mode.radius, "border-foreground bg-muted relative border-2")}>
               {/* Dashboard Mockup */}
               <div className="aspect-4/3 p-6">
                 <div

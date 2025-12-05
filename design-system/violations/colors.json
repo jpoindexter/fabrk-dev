@@ -1,70 +1,85 @@
 {
   "metadata": {
     "generated": "2025-12-05",
-    "totalViolations": 3,
-    "semanticTokens": [
-      "bg-background", "bg-foreground", "bg-card", "bg-popover", "bg-primary", "bg-secondary",
-      "bg-muted", "bg-accent", "bg-destructive", "bg-success", "bg-warning", "bg-info",
-      "text-foreground", "text-muted-foreground", "text-primary", "text-secondary",
-      "text-destructive", "text-success", "text-warning", "text-info",
-      "border-border", "border-primary", "border-destructive", "border-success"
+    "lastUpdated": "2025-12-05",
+    "source": "CONSISTENCY LOCKDOWN AUDIT",
+    "totalViolations": 0,
+    "fixedViolations": 1,
+    "emailExceptions": 16,
+    "status": "COMPLIANT",
+    "allowedPatterns": [
+      "bg-background", "bg-card", "bg-muted", "bg-primary", "bg-secondary", "bg-destructive", "bg-accent",
+      "text-foreground", "text-muted-foreground", "text-primary", "text-primary-foreground",
+      "border-border", "border-primary", "border-destructive",
+      "Opacity modifiers: bg-primary/10, text-foreground/80",
+      "hsl(var(--*)) for CSS-in-JS / Framer Motion"
+    ],
+    "bannedPatterns": [
+      "Raw hex: #ffffff, #000000",
+      "Raw rgb/rgba/hsl/hsla",
+      "Tailwind palette: bg-gray-500, text-blue-600",
+      "bg-white, bg-black, text-white, text-black"
     ]
   },
-  "violations": [
+  "violations": [],
+  "fixed": [
     {
       "id": "COLOR-001",
-      "type": "raw-tailwind-color",
-      "value": "bg-blue-500",
-      "expectedToken": "bg-primary or bg-info",
-      "severity": "low",
-      "isViolation": false,
-      "reason": "Used in documentation example to show anti-pattern - acceptable",
-      "occurrences": 1,
-      "locations": [
-        "src/app/docs/extras/theming/page.tsx:96"
-      ]
+      "file": "src/components/landing/comparison-section.tsx",
+      "line": 143,
+      "fix": "Changed rgba(0, 0, 0, 0.04) to hsl(var(--muted)) in Framer Motion whileHover",
+      "fixedDate": "2025-12-05"
+    }
+  ],
+  "emailExceptions": [
+    {
+      "file": "src/app/api/contact/route.ts",
+      "count": 6,
+      "note": "Email HTML requires inline styles"
     },
     {
-      "id": "COLOR-002",
-      "type": "raw-tailwind-color",
-      "value": "bg-red-500",
-      "expectedToken": "bg-destructive",
-      "severity": "low",
-      "isViolation": false,
-      "reason": "Used in unit test file - acceptable",
-      "occurrences": 1,
-      "locations": [
-        "src/lib/utils.test.ts:33"
-      ]
+      "file": "src/emails/purchase-confirmation.ts",
+      "count": 4,
+      "note": "Email HTML requires inline styles"
     },
     {
-      "id": "COLOR-003",
-      "type": "raw-tailwind-color",
-      "value": "bg-purple-500",
-      "expectedToken": "bg-primary",
-      "severity": "low",
-      "isViolation": false,
-      "reason": "Used in documentation example to show anti-pattern - acceptable",
-      "occurrences": 1,
-      "locations": [
-        "src/app/docs/extras/theming/page.tsx:179"
-      ]
+      "file": "src/emails/verify-email.ts",
+      "count": 1,
+      "note": "Email HTML requires inline styles"
+    },
+    {
+      "file": "src/emails/subscription-update.ts",
+      "count": 1,
+      "note": "Email HTML requires inline styles"
+    },
+    {
+      "file": "src/emails/reset-password.ts",
+      "count": 1,
+      "note": "Email HTML requires inline styles"
+    },
+    {
+      "file": "src/lib/email/email-organization.ts",
+      "count": 2,
+      "note": "Email HTML requires inline styles"
+    },
+    {
+      "file": "src/emails/templates/onboarding.ts",
+      "count": 1,
+      "note": "Email HTML requires inline styles"
+    }
+  ],
+  "documentationExamples": [
+    {
+      "file": "src/app/docs/extras/theming/page.tsx",
+      "line": 96,
+      "value": "bg-blue-500 text-white",
+      "note": "Intentional BAD example in documentation showing incorrect usage"
     }
   ],
   "compliant": {
-    "status": "PASS",
-    "note": "No raw hex colors (#xxx) or rgb/hsl values found in component files",
-    "note2": "No bg-white/text-white/bg-black/text-black found",
-    "scannedPatterns": [
-      "#[0-9a-fA-F]{3,8}",
-      "(bg|text|border)-(white|black)",
-      "(bg|text|border)-(gray|slate|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]+"
-    ]
-  },
-  "summary": {
-    "criticalCount": 0,
-    "mediumCount": 0,
-    "lowCount": 3,
-    "topIssue": "None significant - all raw colors are in docs/tests (acceptable)"
+    "components": "All UI components use semantic tokens",
+    "pages": "All page components use semantic tokens",
+    "charts": "Charts use hsl(var(--primary)), hsl(var(--accent))",
+    "framerMotion": "All Framer Motion animations use CSS variables"
   }
 }

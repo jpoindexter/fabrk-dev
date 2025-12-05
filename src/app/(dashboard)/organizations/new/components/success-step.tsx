@@ -16,9 +16,9 @@ interface SuccessStepProps {
 
 export function SuccessStep({ onComplete }: SuccessStepProps) {
   return (
-    <Card className={cn("border-border border shadow", mode.radius)}>
-      <CardContent className="flex flex-col items-center justify-center py-12">
-        <div className={cn("border-border bg-success border p-4 shadow", mode.radius)}>
+    <Card className={cn("border-border border", mode.radius)}>
+      <CardContent className="flex flex-col items-center justify-center px-6 pt-6 pb-6">
+        <div className={cn("border-border bg-success border p-4", mode.radius)}>
           <Check className="text-success-foreground h-8 w-8" />
         </div>
         <h3 className="mt-4 text-2xl font-semibold">All Set!</h3>

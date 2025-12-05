@@ -78,7 +78,7 @@ export function PricingComparison({
             key={plan.id}
             className={cn(
               "relative overflow-hidden transition-all duration-200",
-              plan.popular && "ring-primary shadow ring-2"
+              plan.popular && "ring-primary ring-2"
             )}
           >
             {plan.popular && (

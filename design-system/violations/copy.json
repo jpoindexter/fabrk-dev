@@ -2,40 +2,190 @@
   "metadata": {
     "generated": "2025-12-05",
     "lastUpdated": "2025-12-05",
-    "totalViolations": 0,
-    "categories": ["casing", "formatting", "terminology"]
+    "source": "CONSISTENCY LOCKDOWN AUDIT",
+    "totalPatterns": 8,
+    "fixedPatterns": 1,
+    "terminalCopyRules": {
+      "buttonText": "> UPPERCASE_WITH_UNDERSCORES",
+      "loadingText": "> LOADING..., > SAVING..., > SENDING...",
+      "labelFormat": "[LABEL]:",
+      "statusFormat": "[STATUS]",
+      "cardHeader": "[ [0x00] TITLE ]"
+    }
   },
-  "violations": [],
-  "fixed": [
+  "inconsistencies": [
     {
       "id": "COPY-001",
-      "phrase": "Get Started",
-      "fix": "Changed default prop to '> GET_STARTED' in checkout-button.tsx",
-      "location": "src/components/pricing/checkout-button.tsx:21"
-    }
-  ],
-  "acceptedPatterns": [
+      "phrase": "Get Started variations",
+      "variants": [
+        {"value": "Get Started", "format": "Title Case"},
+        {"value": "Get Started Now", "format": "Title Case + suffix"},
+        {"value": "> GET_STARTED", "format": "Terminal (correct)"},
+        {"value": "> EXECUTE: GET_STARTED", "format": "Terminal + EXECUTE prefix"}
+      ],
+      "locations": [
+        {"file": "src/components/landing/sticky-cta-bar.tsx", "line": 41, "value": "Get Started"},
+        {"file": "src/components/landing/exit-intent-popup.tsx", "line": 37, "value": "Get Started Now"},
+        {"file": "src/app/features/components/features-cta.tsx", "line": 34, "value": "> EXECUTE: GET_STARTED"},
+        {"file": "src/components/landing/navigation.tsx", "line": 87, "value": "> GET_STARTED"}
+      ],
+      "canonicalForm": "> GET_STARTED",
+      "severity": "medium"
+    },
     {
       "id": "COPY-002",
-      "phrase": "Sign In",
-      "note": "Context-dependent: '> SIGN_IN' for buttons, 'Sign In' for i18n, 'sign in' for prose"
+      "phrase": "Sending loading states",
+      "variants": [
+        {"value": "Sending...", "format": "Title Case"},
+        {"value": "> SENDING...", "format": "Terminal (correct)"},
+        {"value": "Sending email...", "format": "Title Case + context"},
+        {"value": "Sending invites...", "format": "Title Case + context"}
+      ],
+      "locations": [
+        {"file": "src/app/success/page.tsx", "line": 159, "value": "Sending email..."},
+        {"file": "src/components/ui/invite-form.tsx", "line": 340, "value": "Sending invites..."}
+      ],
+      "canonicalForm": "> SENDING...",
+      "severity": "medium"
     },
     {
       "id": "COPY-003",
-      "phrase": "Log Out",
-      "note": "Context-dependent: '> LOG_OUT' for buttons, 'Log out' for menu items in docs"
+      "phrase": "Saving loading states",
+      "variants": [
+        {"value": "Saving...", "format": "Title Case"},
+        {"value": "> SAVING...", "format": "Terminal (correct)"},
+        {"value": "> Saving...", "format": "Mixed case"}
+      ],
+      "locations": [
+        {"file": "src/app/docs/components/loading/page.tsx", "line": 113, "value": "Saving..."}
+      ],
+      "canonicalForm": "> SAVING...",
+      "severity": "low"
     },
     {
       "id": "COPY-004",
-      "phrase": "Dashboard",
-      "note": "Navigation items may use plain 'Dashboard' vs '> DASHBOARD' depending on context"
+      "phrase": "Get Fabrk variations",
+      "variants": [
+        {"value": "Get Fabrk", "format": "Title Case"},
+        {"value": "Get Fabrk Now", "format": "Title Case + suffix"},
+        {"value": "> GET_FABRK", "format": "Terminal"},
+        {"value": "> EXECUTE: GET_FABRK", "format": "Terminal + EXECUTE"},
+        {"value": "> GET_FABRK_NOW", "format": "Terminal + suffix"}
+      ],
+      "locations": [
+        {"file": "src/app/page.tsx", "line": 32, "value": "Get Fabrk Now"},
+        {"file": "src/components/landing/hero-section.tsx", "line": 285, "value": "> EXECUTE: GET_FABRK"},
+        {"file": "src/components/landing/exit-intent-popup.tsx", "line": 88, "value": "> GET_FABRK_NOW"},
+        {"file": "src/components/landing/hero-video.tsx", "line": 44, "value": "Get Fabrk"}
+      ],
+      "canonicalForm": "> GET_FABRK",
+      "severity": "medium"
+    },
+    {
+      "id": "COPY-005",
+      "phrase": "VIEW action pattern",
+      "variants": [
+        {"value": "> VIEW: LIVE_DEMO", "format": "Colon-separated"},
+        {"value": "> VIEW: DOCUMENTATION", "format": "Colon-separated"},
+        {"value": "> VIEW: TEMPLATES", "format": "Colon-separated"},
+        {"value": "> VIEW_DOCS", "format": "Underscore"},
+        {"value": "> VIEW_PLANS", "format": "Underscore"}
+      ],
+      "locations": [
+        {"file": "src/components/landing/hero-section.tsx", "line": 286, "value": "> VIEW: LIVE_DEMO"},
+        {"file": "src/components/landing/hero-split.tsx", "line": 21, "value": "> VIEW_DOCS"},
+        {"file": "src/components/billing/trial-banner.tsx", "line": 75, "value": "> VIEW_PLANS"}
+      ],
+      "canonicalForm": "DECIDE: > VIEW: TARGET or > VIEW_TARGET",
+      "severity": "medium",
+      "note": "Inconsistent delimiter pattern (colon vs underscore)"
+    },
+    {
+      "id": "COPY-006",
+      "phrase": "EXECUTE verb prefix",
+      "variants": [
+        {"value": "> EXECUTE: GET_FABRK", "format": "With EXECUTE"},
+        {"value": "> EXECUTE: GET_STARTED", "format": "With EXECUTE"},
+        {"value": "> GET_STARTED", "format": "Without EXECUTE"},
+        {"value": "> SUBMIT", "format": "Without EXECUTE"}
+      ],
+      "locations": [
+        {"file": "src/components/landing/hero-section.tsx", "line": 285, "value": "> EXECUTE: GET_FABRK"},
+        {"file": "src/app/features/components/features-cta.tsx", "line": 34, "value": "> EXECUTE: GET_STARTED"},
+        {"file": "src/app/docs/components/button/page.tsx", "line": 115, "value": "> GET_STARTED"}
+      ],
+      "canonicalForm": "DECIDE: Use EXECUTE for primary CTAs only, or remove entirely",
+      "severity": "high",
+      "note": "Inconsistent verb prefix usage across buttons"
+    },
+    {
+      "id": "COPY-007",
+      "phrase": "Send action buttons",
+      "variants": [
+        {"value": "Send Magic Link", "format": "Title Case"},
+        {"value": "> SEND_RESET_LINK", "format": "Terminal (correct)"},
+        {"value": "> SEND_MESSAGE", "format": "Terminal (correct)"}
+      ],
+      "locations": [
+        {"file": "src/app/docs/features/magic-links/page.tsx", "line": 174, "value": "Send Magic Link"}
+      ],
+      "canonicalForm": "> SEND_MAGIC_LINK",
+      "severity": "medium"
+    },
+    {
+      "id": "COPY-008",
+      "phrase": "Get API Keys",
+      "variants": [
+        {"value": "Get API Keys", "format": "Title Case"},
+        {"value": "Get Started - $199", "format": "Title Case + price"}
+      ],
+      "locations": [
+        {"file": "src/app/docs/features/polar/page.tsx", "line": 59, "value": "Get API Keys"},
+        {"file": "src/app/docs/features/polar/page.tsx", "line": 103, "value": "Get Started - $199"},
+        {"file": "src/app/docs/features/payments/page.tsx", "line": 60, "value": "Get API Keys"}
+      ],
+      "canonicalForm": "> GET_API_KEYS",
+      "severity": "low",
+      "note": "Documentation pages - may be intentional prose"
+    }
+  ],
+  "fixed": [
+    {
+      "id": "COPY-009",
+      "phrase": "Resend verification email",
+      "fix": "Changed to '> RESEND_VERIFICATION_EMAIL' in both locations",
+      "files": [
+        "src/components/auth/signup-success.tsx:35",
+        "src/components/security/security-settings.tsx:251"
+      ],
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "COPY-010",
+      "phrase": "EXECUTE: SEND_MESSAGE in contact form",
+      "fix": "Simplified to '> SEND_MESSAGE' (removed EXECUTE prefix)",
+      "files": [
+        "src/app/contact/components/contact-form.tsx:229"
+      ],
+      "fixedDate": "2025-12-05"
     }
   ],
   "summary": {
-    "criticalCount": 0,
-    "mediumCount": 0,
-    "lowCount": 0,
-    "infoCount": 0,
-    "status": "COMPLIANT"
+    "bySeverity": {
+      "high": 1,
+      "medium": 5,
+      "low": 2
+    },
+    "systemicIssues": [
+      "EXECUTE prefix usage is inconsistent (some CTAs have it, some don't)",
+      "VIEW pattern uses both colon-separated and underscore formats",
+      "Loading states mix Title Case with Terminal format",
+      "Marketing pages use Title Case while app uses Terminal format"
+    ],
+    "needsDecision": [
+      "EXECUTE prefix: Keep for primary CTAs or remove entirely?",
+      "VIEW delimiter: Use colon (VIEW: TARGET) or underscore (VIEW_TARGET)?",
+      "Loading states: Title Case or UPPERCASE?"
+    ]
   }
 }

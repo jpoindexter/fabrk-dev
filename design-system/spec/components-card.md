@@ -1,18 +1,27 @@
 # Card Component Specification
 
-> Canonical implementation for all card-like containers in Fabrk.
+> Version: 1.0.0
+> Last Updated: 2025-12-05
+> Status: CANONICAL
 
 ---
 
 ## Overview
 
-**Card** is a molecule-level component that groups related content with consistent visual treatment. It serves as the primary container pattern across landing pages, dashboards, documentation, and settings.
+The Card component is a container for grouping related content with consistent styling. It uses the Visual Mode System for theme-aware aesthetics.
 
----
+## Component Hierarchy
 
-## Canonical Implementation
+```
+Card
+├── CardHeader
+│   ├── CardTitle
+│   └── CardDescription
+├── CardContent
+└── CardFooter
+```
 
-### Import
+## Import
 
 ```tsx
 import {
@@ -21,126 +30,99 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter
+  CardFooter,
 } from "@/components/ui/card";
 ```
 
-### Basic Usage
+## Terminal Theme Defaults
+
+| Property | Value | Token |
+|----------|-------|-------|
+| Border Radius | `rounded-none` | `mode.radius` |
+| Shadow | none | (no shadow class) |
+| Border | `border` | 1px solid border-border |
+| Background | `bg-card` | semantic token |
+| Text | `text-card-foreground` | semantic token |
+
+## Spacing (8-Point Grid)
+
+| Component | Padding | Value |
+|-----------|---------|-------|
+| Card | none | Container only |
+| CardHeader | `p-6` | 24px all sides |
+| CardHeader gap | `space-y-2` | 8px vertical |
+| CardContent | `px-6 pt-0 pb-6` | 24px horizontal, 24px bottom |
+| CardFooter | `px-6 pt-0 pb-6` | 24px horizontal, 24px bottom |
+
+## Typography
+
+| Element | Size | Weight | Font |
+|---------|------|--------|------|
+| CardTitle | `text-base` | `font-semibold` | `mode.font` |
+| CardDescription | `text-xs` | `font-normal` | `mode.font` |
+
+## Usage Examples
+
+### Standard Card
 
 ```tsx
 <Card>
   <CardHeader>
-    <CardTitle>Section Title</CardTitle>
-    <CardDescription>Optional description text</CardDescription>
+    <CardTitle>Settings</CardTitle>
+    <CardDescription>Manage your preferences</CardDescription>
   </CardHeader>
   <CardContent>
-    {/* Main content */}
+    <p>Content here</p>
   </CardContent>
   <CardFooter>
-    {/* Actions */}
+    <Button>> SAVE_CHANGES</Button>
   </CardFooter>
 </Card>
 ```
 
----
+### Card Without Header
 
-## Token Mappings
-
-| Property | Token | Value (Terminal Theme) |
-|----------|-------|------------------------|
-| Background | `color.bg.surface` | `bg-card` |
-| Text | `color.text.primary` | `text-card-foreground` |
-| Border | `color.border.default` | `border` (1px) |
-| Border Radius | `radius.semantic.card` | `rounded-none` (via `mode.radius`) |
-| Shadow | `shadow.card` | `shadow-none` |
-| Padding | `space.component.padding.lg` | `p-6` (24px) |
-
----
-
-## Subcomponents
-
-### Card (Container)
+When using CardContent without CardHeader, add `pt-6`:
 
 ```tsx
-<Card
-  as="div" | "article" | "section"
-  className={cn("bg-card text-card-foreground border", mode.radius)}
-/>
+<Card>
+  <CardContent className="pt-6">
+    <p>Content without header</p>
+  </CardContent>
+</Card>
 ```
 
-**Props:**
-- `as`: Semantic element (default: `"div"`)
-- `className`: Additional styling
+### Empty State Card
 
-### CardHeader
+For centered empty states with icons, use `py-12`:
 
 ```tsx
-<CardHeader className="flex flex-col space-y-2 p-6" />
+<Card>
+  <CardContent className="py-12 text-center">
+    <AlertIcon className="mx-auto h-12 w-12 text-muted-foreground" />
+    <h3 className="mt-4 font-semibold">No items found</h3>
+    <p className="text-muted-foreground">Create your first item</p>
+  </CardContent>
+</Card>
 ```
 
-**Token Mappings:**
-- Padding: `p-6` (24px)
-- Gap: `space-y-2` (8px)
+### Highlighted Card (Active/Popular State)
 
-### CardTitle
+Use `ring-2` for highlighting, NOT shadow:
 
 ```tsx
-<CardTitle
-  as="h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-  className="text-base font-semibold"
-/>
+<Card className={cn(
+  isActive && "ring-primary ring-2"
+)}>
+  {/* content */}
+</Card>
 ```
 
-**Token Mappings:**
-| Property | Value | Notes |
-|----------|-------|-------|
-| Font Size | `text-base` (16px) | Standard card title |
-| Font Weight | `font-semibold` (600) | **CANONICAL - DO NOT USE font-black** |
-| Font Family | `mode.font` | `font-mono` for terminal theme |
-| Color | `text-card-foreground` | Inherits from Card |
-
-**Props:**
-- `as`: Heading level (default: `"h3"`)
-
-### CardDescription
-
-```tsx
-<CardDescription className="text-xs text-muted-foreground" />
-```
-
-**Token Mappings:**
-- Font Size: `text-xs` (12px)
-- Color: `text-muted-foreground`
-- Font Family: `mode.font`
-
-### CardContent
-
-```tsx
-<CardContent className="px-6 pt-0 pb-6" />
-```
-
-**Token Mappings:**
-- Horizontal Padding: `px-6` (24px)
-- Bottom Padding: `pb-6` (24px)
-- Top Padding: `pt-0` (0 - follows CardHeader)
-
-### CardFooter
-
-```tsx
-<CardFooter className="flex items-center px-6 pt-0 pb-6" />
-```
-
-**Token Mappings:**
-- Same as CardContent
-- Flex layout for action buttons
-
----
-
-## Terminal-Style Cards
-
-For terminal aesthetic cards with hex code headers, use the styled variants:
+## Styled Variants
 
 ### StyledCard + StyledCardHeader
+
+For terminal-aesthetic cards with hex code headers:
 
 ```tsx
 import { StyledCard, StyledCardHeader } from "@/components/ui/card";
@@ -148,161 +130,73 @@ import { StyledCard, StyledCardHeader } from "@/components/ui/card";
 <StyledCard>
   <StyledCardHeader code="0x00" title="SECTION_TITLE" />
   <div className="p-4">
-    {/* Content */}
+    {/* content */}
   </div>
 </StyledCard>
 ```
 
-**Output:**
-```
-┌─────────────────────────────────────┐
-│ [ [0x00] SECTION_TITLE ]            │
-├─────────────────────────────────────┤
-│ Content area                        │
-└─────────────────────────────────────┘
-```
+Renders as: `[ [0x00] SECTION_TITLE ]`
 
----
+### FeaturesCard
 
-## Visual Variants
-
-### Default (Outline)
-```tsx
-<Card>...</Card>
-```
-- Border: 1px solid
-- Shadow: none
-- Background: `bg-card`
-
-### Interactive (Hover)
-```tsx
-<Card className="transition-colors hover:border-primary cursor-pointer">...</Card>
-```
-- Adds hover state
-- Use for clickable cards
-
-### Danger Zone
-```tsx
-<Card className="border-destructive">
-  <CardHeader>
-    <CardTitle className="text-destructive">Danger Zone</CardTitle>
-  </CardHeader>
-</Card>
-```
-- Red border and title for destructive actions
-
----
-
-## Size Variants (via CardTitle)
-
-For displaying large numbers/stats, apply size directly:
+Pre-built card for feature lists:
 
 ```tsx
-// Stat card with large number
-<CardTitle className="text-3xl">1,234</CardTitle>
+import { FeaturesCard } from "@/components/ui/card";
 
-// Standard card title
-<CardTitle>Settings</CardTitle>
+<FeaturesCard
+  title="TEMPLATE_FEATURES"
+  code="0x00"
+  features={[
+    "Multi-step form wizard",
+    "Real-time validation",
+    "Progress indicator",
+  ]}
+  note="Connect to your API for real data."
+/>
 ```
 
-**Allowed CardTitle sizes:**
-- `text-base` - Default (16px)
-- `text-lg` - Emphasis (18px)
-- `text-xl` - Large (20px)
-- `text-2xl` - Stats (24px)
-- `text-3xl` - Hero stats (30px)
+## Anti-Patterns
 
-**NEVER use `font-black` on CardTitle. Always use default `font-semibold`.**
-
----
-
-## Anti-Patterns (Do Not Do)
-
-### ❌ Using font-black on CardTitle
+### ❌ DON'T: Add shadow to Cards
 
 ```tsx
-// WRONG - font-black is not in design system
-<CardTitle className="text-base font-black">{title}</CardTitle>
-
-// CORRECT - use default font-semibold
-<CardTitle className="text-base">{title}</CardTitle>
+// WRONG - violates terminal theme
+<Card className="shadow">
+<Card className="shadow ring-2">
 ```
 
-### ❌ Building card-like structures with raw divs
+### ✅ DO: Use ring for emphasis
 
 ```tsx
-// WRONG - use Card component
-<div className="border border-border bg-card p-4">
-  <h3 className="font-semibold">Title</h3>
-</div>
-
-// CORRECT - use Card component
-<Card>
-  <CardHeader>
-    <CardTitle>Title</CardTitle>
-  </CardHeader>
-</Card>
+// CORRECT - use ring for highlighting
+<Card className="ring-primary ring-2">
 ```
 
-### ❌ Inconsistent padding
+### ❌ DON'T: Use arbitrary radius
 
 ```tsx
-// WRONG - arbitrary padding
-<CardContent className="p-3">...</CardContent>
-
-// CORRECT - use component defaults (px-6 pb-6)
-<CardContent>...</CardContent>
+// WRONG - violates terminal theme
+<Card className="rounded-lg">
+<Card className="rounded-md">
 ```
 
----
-
-## Migration Guide
-
-### From font-black to font-semibold
+### ✅ DO: Use mode.radius
 
 ```tsx
-// Before
-<CardTitle className="flex items-center gap-2 text-base font-black">
-
-// After (remove font-black)
-<CardTitle className="flex items-center gap-2 text-base">
+// CORRECT - uses theme system
+<Card className={cn("...", mode.radius)}>
 ```
-
-### From raw divs to Card
-
-```tsx
-// Before
-<section className="border border-border bg-card p-6">
-  <h2 className="text-lg font-semibold mb-4">Title</h2>
-  <div>Content</div>
-</section>
-
-// After
-<Card as="section">
-  <CardHeader>
-    <CardTitle as="h2">Title</CardTitle>
-  </CardHeader>
-  <CardContent>Content</CardContent>
-</Card>
-```
-
----
 
 ## Accessibility
 
-- Use semantic `as` prop for proper heading hierarchy
-- Card container should not be focusable unless interactive
-- Interactive cards need focus ring (`focus-within:ring-primary`)
-- Color contrast meets WCAG AA (4.5:1 for text)
+- Card has `focus-within:ring-primary focus-within:ring-2` for keyboard navigation
+- Use semantic heading levels in CardTitle (`as="h2"`, `as="h3"`, etc.)
+- CardHeader, CardContent, CardFooter have `data-slot` attributes for testing
 
----
+## Related Components
 
-## Files
-
-- **Component:** `src/components/ui/card.tsx`
-- **Spec:** `design-system/spec/components-card.md`
-- **Usage Examples:** `src/app/docs/components/card/page.tsx`
-
----
-
-*Card Component Specification v1.0.0*
+- `StyledCard` - Terminal-aesthetic card container
+- `StyledCardHeader` - Hex code header for terminal cards
+- `FeaturesCard` - Pre-built feature list card
+- `CodeOutput` - Code/CLI output display card

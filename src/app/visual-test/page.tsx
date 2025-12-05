@@ -755,7 +755,7 @@ export default function VisualTestPage() {
                               {state.elements && state.elements.length > 0 && (
                                 <span className="text-destructive flex items-center gap-0.5">
                                   <Target className="h-3 w-3" />
-                                  <span className="text-[10px]">{state.elements.length}</span>
+                                  <span className="text-2xs">{state.elements.length}</span>
                                 </span>
                               )}
                               {state.note && <MessageSquare className="text-primary h-3 w-3" />}

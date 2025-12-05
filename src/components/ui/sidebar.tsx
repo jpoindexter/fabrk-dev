@@ -64,7 +64,7 @@ export function Sidebar({ items, defaultCollapsed = false, className, onItemClic
             "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
             depth > 0 && "ml-4"
           )}
-          style={{ paddingLeft: `${(depth + 1) * 12}px` }}
+          style={{ paddingLeft: `${(depth + 1) * 16}px` }}
         >
           {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
           {!isCollapsed && (

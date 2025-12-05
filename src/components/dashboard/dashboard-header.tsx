@@ -118,7 +118,7 @@ export function DashboardHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className={cn("border-border w-56 border shadow", mode.radius)}
+              className={cn("border-border w-56 border", mode.radius)}
             >
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">

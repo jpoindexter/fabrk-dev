@@ -77,7 +77,7 @@ export function OrgCard({
     <Card
       className={cn(
         "group relative cursor-pointer transition-all duration-200",
-        isActive && "ring-primary shadow ring-2",
+        isActive && "ring-primary ring-2",
         className
       )}
       onClick={onSelect}

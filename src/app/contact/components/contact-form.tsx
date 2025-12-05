@@ -66,7 +66,7 @@ export function ContactForm() {
       // Track contact form submission in GTM
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: 'contact_form_submit',
+        event: "contact_form_submit",
         form_subject: formData.subject,
       });
 
@@ -87,22 +87,22 @@ export function ContactForm() {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="border border-border bg-card"
+      className="border-border bg-card border"
     >
       {/* Terminal Header */}
-      <div className="flex items-center gap-2 border-b border-border px-4 py-2">
+      <div className="border-border flex items-center gap-2 border-b px-4 py-2">
         <WindowControls size="md" />
-        <span className="text-xs text-muted-foreground">
+        <span className="text-muted-foreground text-xs">
           [0x01] message_composer.exe │ PID:4096
         </span>
       </div>
 
       <div className="p-6">
-        <div className="flex items-center gap-2 mb-6">
-          <MessageCircle className="h-5 w-5 text-primary" />
+        <div className="mb-6 flex items-center gap-2">
+          <MessageCircle className="text-primary h-5 w-5" />
           <span className="text-sm font-semibold">[MESSAGE_FORM]</span>
         </div>
-        <p className="text-xs text-muted-foreground mb-6">
+        <p className="text-muted-foreground mb-6 text-xs">
           │ &gt; Fill out the form below and we'll get back to you as soon as possible.
         </p>
 
@@ -110,15 +110,13 @@ export function ContactForm() {
           {/* Name Field */}
           <div className="space-y-2">
             <Label htmlFor="name" className="text-xs">
-              NAME <span className="text-destructive">*</span>
+              [NAME]:<span className="text-destructive ml-1">*</span>
             </Label>
             <Input
               id="name"
               className="rounded-none text-sm"
               value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="> Enter your name..."
               required
             />
@@ -127,16 +125,14 @@ export function ContactForm() {
           {/* Email Field */}
           <div className="space-y-2">
             <Label htmlFor="email" className="text-xs">
-              EMAIL <span className="text-destructive">*</span>
+              [EMAIL]:<span className="text-destructive ml-1">*</span>
             </Label>
             <Input
               id="email"
               type="email"
               className="rounded-none text-sm"
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="> Enter your email..."
               required
             />
@@ -145,13 +141,11 @@ export function ContactForm() {
           {/* Subject Field */}
           <div className="space-y-2">
             <Label htmlFor="subject" className="text-xs">
-              SUBJECT <span className="text-destructive">*</span>
+              [SUBJECT]:<span className="text-destructive ml-1">*</span>
             </Label>
             <Select
               value={formData.subject}
-              onValueChange={(value) =>
-                setFormData({ ...formData, subject: value })
-              }
+              onValueChange={(value) => setFormData({ ...formData, subject: value })}
               required
             >
               <SelectTrigger className="rounded-none text-sm">
@@ -172,31 +166,26 @@ export function ContactForm() {
           {/* Message Field */}
           <div className="space-y-2">
             <Label htmlFor="message" className="text-xs">
-              MESSAGE <span className="text-destructive">*</span>
+              [MESSAGE]:<span className="text-destructive ml-1">*</span>
             </Label>
             <Textarea
               id="message"
               className="rounded-none text-sm"
               value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder="> Tell us more about your inquiry..."
               rows={6}
               required
             />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Please provide as much detail as possible
             </p>
           </div>
 
           {/* Success Message */}
           {status === "success" && (
-            <Alert
-              className="rounded-none bg-success/10 border-success/20"
-              aria-live="polite"
-            >
-              <CheckCircle2 className="h-4 w-4 text-success" />
+            <Alert className="bg-success/10 border-success/20 rounded-none" aria-live="polite">
+              <CheckCircle2 className="text-success h-4 w-4" />
               <AlertDescription className="text-success text-xs">
                 [OK] MESSAGE_SENT - We've received your message and will respond within 24 hours.
               </AlertDescription>
@@ -205,11 +194,7 @@ export function ContactForm() {
 
           {/* Error Message */}
           {status === "error" && (
-            <Alert
-              variant="destructive"
-              className="rounded-none"
-              aria-live="polite"
-            >
+            <Alert variant="destructive" className="rounded-none" aria-live="polite">
               <AlertDescription className="text-xs">[ERROR] {errorMessage}</AlertDescription>
             </Alert>
           )}
@@ -218,20 +203,20 @@ export function ContactForm() {
           <Button
             type="submit"
             size="lg"
-            className="rounded-none w-full text-xs"
+            className="w-full rounded-none text-xs"
             disabled={status === "loading"}
           >
             {status === "loading" ? (
-              "&gt; SENDING..."
+              "> SENDING..."
             ) : (
               <>
                 <Send className="mr-2 h-4 w-4" />
-                &gt; EXECUTE: SEND_MESSAGE
+                &gt; SEND_MESSAGE
               </>
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-muted-foreground text-center text-xs">
             By submitting this form, you agree to our{" "}
             <Link href="/privacy" className="text-primary hover:underline">
               PRIVACY_POLICY

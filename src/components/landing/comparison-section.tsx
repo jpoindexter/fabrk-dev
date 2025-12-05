@@ -140,7 +140,7 @@ export function ComparisonSection() {
                   initial={{ opacity: 0, x: -8 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{
-                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                    backgroundColor: "hsl(var(--muted))",
                     x: 2,
                     transition: { duration: 0.2 },
                   }}

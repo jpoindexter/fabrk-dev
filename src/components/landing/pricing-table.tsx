@@ -158,7 +158,7 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
           )}
         >
           <div className="inline-block min-w-full align-middle">
-            <table className={cn(mode.radius, "border-foreground min-w-full border-2 shadow")}>
+            <table className={cn(mode.radius, "border-foreground min-w-full border-2")}>
               {/* Header Row */}
               <thead>
                 <tr>

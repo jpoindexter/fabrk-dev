@@ -50,7 +50,7 @@ export function InviteMembersStep({
   onSkip,
 }: InviteMembersStepProps) {
   return (
-    <Card className={cn("border-border border shadow", mode.radius)}>
+    <Card className={cn("border-border border", mode.radius)}>
       <CardHeader>
         <div className="flex items-center gap-4">
           <div className={cn("border-border bg-primary border p-2", mode.radius)}>
