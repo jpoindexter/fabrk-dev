@@ -1,0 +1,466 @@
+/**
+ * Design System Utility Classes
+ *
+ * Custom utility classes that extend Tailwind.
+ * These provide semantic shortcuts for common patterns.
+ *
+ * Categories:
+ * - Typography utilities
+ * - Spacing utilities
+ * - Layout utilities
+ * - Interactive utilities
+ * - Visual mode utilities
+ *
+ * @see ../tokens/semantic.ts for TypeScript source
+ */
+
+@layer utilities {
+  /* ==========================================================================
+     TYPOGRAPHY UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Heading Styles (App)
+     ------------------------------------------------------------------------- */
+
+  .heading-page {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  .heading-section {
+    @apply text-3xl font-bold;
+  }
+
+  .heading-subsection {
+    @apply text-2xl font-semibold;
+  }
+
+  .heading-card {
+    @apply text-lg font-semibold;
+  }
+
+  .heading-small {
+    @apply text-base font-semibold;
+  }
+
+  .heading-tiny {
+    @apply text-sm font-semibold;
+  }
+
+  /* -------------------------------------------------------------------------
+     Heading Styles (Terminal Mode)
+     ------------------------------------------------------------------------- */
+
+  .heading-page-terminal {
+    @apply font-mono text-4xl font-bold uppercase tracking-tight;
+  }
+
+  .heading-section-terminal {
+    @apply font-mono text-2xl font-bold uppercase;
+  }
+
+  .heading-card-terminal {
+    @apply text-muted-foreground font-mono text-xs uppercase tracking-wide;
+  }
+
+  /* -------------------------------------------------------------------------
+     Body Text Styles
+     ------------------------------------------------------------------------- */
+
+  .body-lead {
+    @apply text-muted-foreground text-lg leading-relaxed;
+  }
+
+  .body-default {
+    @apply text-base leading-relaxed;
+  }
+
+  .body-small {
+    @apply text-sm leading-relaxed;
+  }
+
+  .body-xs {
+    @apply text-xs leading-relaxed;
+  }
+
+  .body-muted {
+    @apply text-muted-foreground text-sm;
+  }
+
+  /* -------------------------------------------------------------------------
+     UI Text Styles
+     ------------------------------------------------------------------------- */
+
+  .ui-button {
+    @apply text-sm font-medium;
+  }
+
+  .ui-label {
+    @apply text-sm font-medium leading-none;
+  }
+
+  .ui-caption {
+    @apply text-muted-foreground text-xs;
+  }
+
+  .ui-badge {
+    @apply text-xs font-medium;
+  }
+
+  .ui-nav {
+    @apply text-sm font-medium;
+  }
+
+  .ui-table-header {
+    @apply text-muted-foreground text-xs font-medium uppercase tracking-wider;
+  }
+
+  /* ==========================================================================
+     SPACING UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Section Spacing
+     Standard vertical padding for page sections
+     ------------------------------------------------------------------------- */
+
+  .section-sm {
+    @apply py-12;
+  }
+
+  .section-md {
+    @apply py-16;
+  }
+
+  .section-lg {
+    @apply py-20;
+  }
+
+  .section-xl {
+    @apply py-24;
+  }
+
+  /* -------------------------------------------------------------------------
+     Container Padding (Responsive)
+     ------------------------------------------------------------------------- */
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-padding-tight {
+    @apply px-4;
+  }
+
+  .container-padding-wide {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+
+  /* -------------------------------------------------------------------------
+     Stack Spacing (Vertical)
+     ------------------------------------------------------------------------- */
+
+  .stack-xs {
+    @apply space-y-1;
+  }
+
+  .stack-sm {
+    @apply space-y-2;
+  }
+
+  .stack-md {
+    @apply space-y-4;
+  }
+
+  .stack-lg {
+    @apply space-y-6;
+  }
+
+  .stack-xl {
+    @apply space-y-8;
+  }
+
+  /* -------------------------------------------------------------------------
+     Inline Spacing (Horizontal)
+     ------------------------------------------------------------------------- */
+
+  .inline-xs {
+    @apply space-x-1;
+  }
+
+  .inline-sm {
+    @apply space-x-2;
+  }
+
+  .inline-md {
+    @apply space-x-4;
+  }
+
+  .inline-lg {
+    @apply space-x-6;
+  }
+
+  /* ==========================================================================
+     LAYOUT UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Flex Shortcuts
+     ------------------------------------------------------------------------- */
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-start {
+    @apply flex items-center justify-start;
+  }
+
+  .flex-end {
+    @apply flex items-center justify-end;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  /* -------------------------------------------------------------------------
+     Grid Shortcuts
+     ------------------------------------------------------------------------- */
+
+  .grid-auto-fit {
+    @apply grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))];
+  }
+
+  .grid-auto-fill {
+    @apply grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))];
+  }
+
+  /* -------------------------------------------------------------------------
+     Container Max-Widths
+     ------------------------------------------------------------------------- */
+
+  .container-prose {
+    @apply mx-auto max-w-prose;
+  }
+
+  .container-sm {
+    @apply mx-auto max-w-2xl;
+  }
+
+  .container-md {
+    @apply mx-auto max-w-4xl;
+  }
+
+  .container-default {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .container-lg {
+    @apply mx-auto max-w-7xl;
+  }
+
+  /* ==========================================================================
+     INTERACTIVE UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Focus States
+     ------------------------------------------------------------------------- */
+
+  .focus-ring {
+    @apply focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .focus-ring-tight {
+    @apply focus-visible:ring-ring focus-visible:ring-2;
+  }
+
+  .focus-ring-primary {
+    @apply focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  /* -------------------------------------------------------------------------
+     Transition Presets
+     ------------------------------------------------------------------------- */
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .transition-default {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-colors-only {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  .transition-transform-only {
+    @apply transition-transform duration-200 ease-out;
+  }
+
+  /* -------------------------------------------------------------------------
+     Disabled State
+     ------------------------------------------------------------------------- */
+
+  .disabled-state {
+    @apply pointer-events-none cursor-not-allowed opacity-50;
+  }
+
+  /* ==========================================================================
+     VISUAL MODE UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Mode-Aware Radius
+     These use CSS custom properties set by visual mode
+     ------------------------------------------------------------------------- */
+
+  .mode-radius {
+    border-radius: var(--mode-radius);
+  }
+
+  .mode-radius-sm {
+    border-radius: var(--mode-radius-sm);
+  }
+
+  .mode-radius-md {
+    border-radius: var(--mode-radius-md);
+  }
+
+  .mode-radius-lg {
+    border-radius: var(--mode-radius-lg);
+  }
+
+  /* -------------------------------------------------------------------------
+     Mode-Aware Shadows
+     ------------------------------------------------------------------------- */
+
+  .mode-shadow {
+    box-shadow: var(--mode-shadow);
+  }
+
+  .mode-shadow-sm {
+    box-shadow: var(--mode-shadow-sm);
+  }
+
+  .mode-shadow-md {
+    box-shadow: var(--mode-shadow-md);
+  }
+
+  .mode-shadow-lg {
+    box-shadow: var(--mode-shadow-lg);
+  }
+
+  /* -------------------------------------------------------------------------
+     Mode-Aware Typography
+     ------------------------------------------------------------------------- */
+
+  .mode-font {
+    font-family: var(--mode-font);
+  }
+
+  .mode-text-transform {
+    text-transform: var(--mode-text-transform);
+  }
+
+  .mode-letter-spacing {
+    letter-spacing: var(--mode-letter-spacing);
+  }
+
+  /* ==========================================================================
+     TERMINAL-SPECIFIC UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Terminal Card Header
+     Pattern: [ [0xXX] TITLE ]
+     ------------------------------------------------------------------------- */
+
+  .terminal-header {
+    @apply border-border flex items-center gap-2 border-b px-4 py-2;
+  }
+
+  .terminal-header-title {
+    @apply text-muted-foreground font-mono text-xs uppercase tracking-wide;
+  }
+
+  /* -------------------------------------------------------------------------
+     Terminal Text Formatting
+     ------------------------------------------------------------------------- */
+
+  .terminal-text {
+    @apply font-mono text-xs uppercase;
+  }
+
+  .terminal-label {
+    @apply text-muted-foreground font-mono text-xs uppercase tracking-wide;
+  }
+
+  .terminal-code {
+    @apply font-mono text-xs;
+  }
+
+  /* -------------------------------------------------------------------------
+     Terminal Status
+     ------------------------------------------------------------------------- */
+
+  .terminal-status {
+    @apply border-border font-mono text-xs uppercase tracking-wide border px-2 py-0.5;
+  }
+
+  .terminal-status-ok {
+    @apply text-success border-success/30;
+  }
+
+  .terminal-status-error {
+    @apply text-destructive border-destructive/30;
+  }
+
+  .terminal-status-warning {
+    @apply text-warning border-warning/30;
+  }
+
+  /* ==========================================================================
+     ACCESSIBILITY UTILITIES
+     ========================================================================== */
+
+  /* -------------------------------------------------------------------------
+     Touch Targets (WCAG 2.1 AA)
+     Ensure 44px minimum touch target on mobile
+     ------------------------------------------------------------------------- */
+
+  .touch-target {
+    @apply min-h-[44px] sm:min-h-0;
+  }
+
+  .touch-target-always {
+    @apply min-h-[44px];
+  }
+
+  /* -------------------------------------------------------------------------
+     Skip Link
+     Visible only on focus for keyboard navigation
+     ------------------------------------------------------------------------- */
+
+  .skip-link {
+    @apply bg-background text-foreground border-border absolute left-1/2 top-0 z-[100] -translate-x-1/2 -translate-y-full border px-4 py-2 font-mono text-sm font-semibold transition-transform focus:translate-y-0;
+  }
+
+  /* -------------------------------------------------------------------------
+     Screen Reader Only
+     ------------------------------------------------------------------------- */
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+}

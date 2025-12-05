@@ -180,6 +180,48 @@ export {
 } from "./spacing/scale";
 
 // ============================================================================
+// UTILITY EXPORTS
+// ============================================================================
+
+export {
+  cssGenerators,
+  generateCSSVariables,
+  generateNestedCSSVariables,
+  generateVisualModeCSS,
+  generatePrimitiveCSS,
+  toKebabCase,
+  toCamelCase,
+  combineClasses,
+  generateInlineStyles,
+  default as cssGeneratorsDefault,
+} from "./utils/generate-css";
+
+export type {
+  CSSVariableOutput,
+  GeneratedCSS,
+} from "./utils/generate-css";
+
+export {
+  validators,
+  validateSpacing,
+  validateTypography,
+  validateColors,
+  validateRadius,
+  validateShadows,
+  validateAll,
+  extractClassStrings,
+  validateFile,
+  rules,
+  BANNED_SPACING_VALUES,
+  default as validatorsDefault,
+} from "./utils/validate-tokens";
+
+export type {
+  ValidationResult,
+  ValidationRule,
+} from "./utils/validate-tokens";
+
+// ============================================================================
 // CONVENIENCE BUNDLES
 // ============================================================================
 
@@ -190,6 +232,8 @@ import { terminalMode, terminalClasses, terminalCopy } from "./themes/terminal";
 import { modernMode, modernClasses, minimalMode, minimalClasses, linearMode, linearClasses } from "./themes/modern";
 import { typographyScale, headingHierarchy, bodyText, uiText } from "./typography/scale";
 import { spacing, semanticSpacing as spacingSemanticSpacing, containerWidths, gridLayouts } from "./spacing/scale";
+import { cssGenerators } from "./utils/generate-css";
+import { validators, rules } from "./utils/validate-tokens";
 import type { VisualModeConfig, VisualModeName } from "./themes/theme.types";
 
 /**
@@ -252,6 +296,15 @@ export const spacingBundle = {
   grids: gridLayouts,
 } as const;
 
+/**
+ * Utilities bundle
+ */
+export const utils = {
+  css: cssGenerators,
+  validators,
+  rules,
+} as const;
+
 // ============================================================================
 // DEFAULT EXPORT
 // ============================================================================
@@ -263,6 +316,7 @@ const designSystem = {
   copyPatterns,
   typography,
   spacing: spacingBundle,
+  utils,
 } as const;
 
 export default designSystem;
